@@ -271,6 +271,11 @@ bool ImageDesignSessionImplementation::readObjectMember(ObjectInputStream* strea
 		return true;
 	}
 
+	if (_name == "idTimeoutEvent") {
+		TypeInfo<Reference<ImageDesignTimeoutEvent*> >::parseFromBinaryStream(&idTimeoutEvent, stream);
+		return true;
+	}
+
 
 	return false;
 }
@@ -318,8 +323,16 @@ int ImageDesignSessionImplementation::writeObjectMembers(ObjectOutputStream* str
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
+	_name = "idTimeoutEvent";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<Reference<ImageDesignTimeoutEvent*> >::toBinaryStream(&idTimeoutEvent, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
 
-	return 4 + FacadeImplementation::writeObjectMembers(stream);
+
+	return 5 + FacadeImplementation::writeObjectMembers(stream);
 }
 
 ImageDesignSessionImplementation::ImageDesignSessionImplementation(CreatureObject* parent) {

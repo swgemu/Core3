@@ -120,6 +120,8 @@ public:
 
 	void setOwnerID(unsigned long long ownerID);
 
+	void destroyObjectFromDatabase(bool destroyContainedObjects = false);
+
 	Vendor* getVendor();
 
 	bool isVendor();
@@ -170,6 +172,8 @@ public:
 	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
 
 	void setOwnerID(unsigned long long ownerID);
+
+	void destroyObjectFromDatabase(bool destroyContainedObjects = false);
 
 	Vendor* getVendor();
 
@@ -223,6 +227,8 @@ public:
 	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
 
 	void setOwnerID(unsigned long long ownerID);
+
+	void destroyObjectFromDatabase(bool destroyContainedObjects);
 
 	bool isVendor();
 

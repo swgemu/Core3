@@ -46,6 +46,7 @@ which carries forward this exception.
 #define ROTATEFURNITURECOMMAND_H_
 
 #include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/objects/tangible/terminal/vendor/VendorTerminal.h"
 
 class RotateFurnitureCommand : public QueueCommand {
 public:
@@ -117,9 +118,28 @@ public:
 		}
 
 		if (!player->getPlayerObject()->isPrivileged()) {
-			if (obj == NULL || obj->getRootParent() != buildingObject || obj->isTerminal()) {
+			if (obj == NULL || obj->getRootParent() != buildingObject || (obj->isTerminal() && !obj->isVendor())) {
 				creature->sendSystemMessage("@player_structure:rotate_what"); //What do you want to rotate?
 				return false;
+
+			//TODO: clean this up
+			} else if (obj->isVendor()) {
+				Vendor* vendor = NULL;
+				if (obj->isTerminal()) {
+					VendorTerminal* vendorTerminal = dynamic_cast<VendorTerminal*>(obj.get());
+					vendor = vendorTerminal->getVendor();
+
+				} else if (obj->isCreatureObject()) {
+					VendorCreature* vendorCreature = dynamic_cast<VendorCreature*>(obj.get());
+					vendor = vendorCreature->getVendor();
+
+				} if (vendor == NULL)
+					return false;
+
+				if (vendor->isInitialized()) {
+					creature->sendSystemMessage("@player_structure:cant_move"); // You cannot move a vendor after it has been initialized
+					return false;
+				}
 			}
 		}
 

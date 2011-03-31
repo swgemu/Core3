@@ -195,6 +195,7 @@ core3_IDLS =	server/login/LoginServer.cpp \
 				server/zone/managers/auction/AuctionManager.cpp \
 				server/zone/managers/auction/AuctionsMap.cpp \
 				server/zone/managers/mission/MissionManager.cpp \
+				server/zone/managers/vendor/VendorManager.cpp \
 				server/zone/objects/resource/ResourceContainer.cpp \
 				server/zone/objects/tangible/component/Component.cpp \
 				server/zone/objects/tangible/component/armor/ArmorComponent.cpp \

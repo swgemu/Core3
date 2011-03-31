@@ -14,6 +14,9 @@ Vendor::Vendor() {
 	vendorType = 0;
 	vendorRef = NULL;
 	initialized = false;
+	vendorSearchEnabled = true;
+	disabled = false;
+	registered = false;
 
 	vendorItems.setNullValue(NULL);
 	vendorItems.setNoDuplicateInsertPlan();
@@ -27,10 +30,9 @@ Vendor::Vendor(const Vendor& v) : Object(), Serializable() {
 	location = v.location;
 	vendorType = v.vendorType;
 	initialized = v.initialized;
+	vendorSearchEnabled = v.vendorSearchEnabled;
+	disabled = v.disabled;
+	registered = v.registered;
 
 	addSerializableVariables();
-}
-
-Vendor::~Vendor() {
-
 }

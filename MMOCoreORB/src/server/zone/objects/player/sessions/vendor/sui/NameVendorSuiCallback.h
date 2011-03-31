@@ -38,7 +38,7 @@ public:
 
 		String name = args->get(0).toString();
 
-		session->handleNameVendor(name);
+		session->createVendor(name);
 	}
 };
 

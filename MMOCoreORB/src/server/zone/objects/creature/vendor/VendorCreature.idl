@@ -56,6 +56,7 @@ import server.zone.templates.SharedObjectTemplate;
 import server.zone.objects.scene.SceneObject;
 import server.zone.packets.object.ObjectMenuResponse;
 import server.zone.packets.scene.AttributeListMessage;
+import server.zone.objects.tangible.wearables.WearableObject;
 
 class VendorCreature extends CreatureObject {
 
@@ -103,6 +104,9 @@ class VendorCreature extends CreatureObject {
 	@local
 	public native void fillAttributeList(AttributeListMessage msg, PlayerCreature object);
 
+	public native void addClothingItem(WearableObject clothing);
+
+	public native void destroyObjectFromDatabase(boolean destroyContainedObjects = false);
 
 	@local
 	public Vendor getVendor() {

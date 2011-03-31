@@ -89,6 +89,22 @@ class AttributeListMessage;
 
 using namespace server::zone::packets::scene;
 
+namespace server {
+namespace zone {
+namespace objects {
+namespace tangible {
+namespace wearables {
+
+class WearableObject;
+
+} // namespace wearables
+} // namespace tangible
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::tangible::wearables;
+
 #include "server/zone/objects/auction/Vendor.h"
 
 #include "engine/core/ManagedObject.h"
@@ -118,6 +134,10 @@ public:
 	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
 
 	void fillAttributeList(AttributeListMessage* msg, PlayerCreature* object);
+
+	void addClothingItem(WearableObject* clothing);
+
+	void destroyObjectFromDatabase(bool destroyContainedObjects = false);
 
 	Vendor* getVendor();
 
@@ -169,6 +189,10 @@ public:
 	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
 
 	void fillAttributeList(AttributeListMessage* msg, PlayerCreature* object);
+
+	void addClothingItem(WearableObject* clothing);
+
+	void destroyObjectFromDatabase(bool destroyContainedObjects = false);
 
 	Vendor* getVendor();
 
@@ -222,6 +246,10 @@ public:
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
 	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
+
+	void addClothingItem(WearableObject* clothing);
+
+	void destroyObjectFromDatabase(bool destroyContainedObjects);
 
 	void setOwnerID(unsigned long long ownerID);
 
