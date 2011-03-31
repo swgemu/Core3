@@ -193,6 +193,8 @@ class BuildingObject extends StructureObject implements QuadTree {
 		return totalCellNumber;
 	}
 	
+	public native abstract boolean addObject(SceneObject object, int containmentType, boolean notifyClient = false);
+	
 	public native int getCurrentNumerOfPlayerItems() ;
 	
 	/**
