@@ -36,10 +36,13 @@ public:
 
 		Vendor* vendor = NULL;
 
-		if (sceno->isTerminal())
-			vendor = ((VendorTerminal*) sceno.get())->getVendor();
-		else if (sceno->isCreatureObject())
-			vendor = ((VendorCreature*) sceno.get())->getVendor();
+		if (sceno->isTerminal()) {
+			VendorTerminal* vendorTerminal = dynamic_cast<VendorTerminal*>(sceno.get());
+			vendor = vendorTerminal->getVendor();
+		} else if (sceno->isCreatureObject()) {
+			VendorCreature* vendorCreature = dynamic_cast<VendorCreature*>(sceno.get());
+			vendor = vendorCreature->getVendor();
+		}
 
 		if (vendor == NULL)
 			return;
