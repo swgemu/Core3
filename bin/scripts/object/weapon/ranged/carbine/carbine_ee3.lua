@@ -42,68 +42,69 @@
 
 
 object_weapon_ranged_carbine_carbine_ee3 = object_weapon_ranged_carbine_shared_carbine_ee3:new {
-	-- ALL, ALLSEXES, ALLFACTIONS, HUMANOIDS, HUMANOID_FOOTWEAR, HUMANOID_MALES, HUMANOID_FEMALES, HUMANOID_IMPERIALS, HUMANOID_REBELS, WOOKIES, ITHORIANS, TWILEKS,
+	 --  ALL, ALLSEXES, ALLFACTIONS, HUMANOIDS, HUMANOID_FOOTWEAR, HUMANOID_MALES, HUMANOID_FEMALES, HUMANOID_IMPERIALS, HUMANOID_REBELS, WOOKIES, ITHORIANS, TWILEKS
 	playerUseMask = ALL,
-
-	-- RANGEDATTACK, MELEEATTACK, FORCEATTACK, TRAPATTACK, GRENADEATTACK, HEAVYACIDBEAMATTACK, ,
-	-- HEAVYLIGHTNINGBEAMATTACK, HEAVYPARTICLEBEAMATTACK, HEAVYROCKETLAUNCHERATTACK, HEAVYLAUNCHERATTACK,
+	
+	 --  RANGEDATTACK, MELEEATTACK, FORCEATTACK, TRAPATTACK, GRENADEATTACK, HEAVYACIDBEAMATTACK,
+	 --  HEAVYLIGHTNINGBEAMATTACK, HEAVYPARTICLEBEAMATTACK, HEAVYROCKETLAUNCHERATTACK, HEAVYLAUNCHERATTACK
 	attackType = RANGEDATTACK,
-
-	-- ENERGY, KINETIC, ELECTRICITY, STUN, BLAST, HEAT, COLD, ACID, FORCE, LIGHTSABER,
+	
+	 --  ENERGY, KINETIC, ELECTRICITY, STUN, BLAST, HEAT, COLD, ACID, FORCE, LIGHTSABER
 	damageType = HEAT,
-
-	-- NONE, LIGHT, MEDIUM, HEAVY,
+	
+	 --  NONE, LIGHT, MEDIUM, HEAVY
 	armorPiercing = NONE,
-
-	-- combat_rangedspecialize_bactarifle, combat_rangedspecialize_rifle, combat_rangedspecialize_pistol, combat_rangedspecialize_heavy, combat_rangedspecialize_carbine,
-	-- combat_meleespecialize_unarmed, combat_meleespecialize_twohand, combat_meleespecialize_polearm, combat_meleespecialize_onehand, combat_general,
-	-- combat_meleespecialize_twohandlightsaber, combat_meleespecialize_polearmlightsaber, combat_meleespecialize_onehandlightsaber,
+	
+	 --  combat_rangedspecialize_bactarifle, combat_rangedspecialize_rifle, combat_rangedspecialize_pistol, combat_rangedspecialize_heavy, combat_rangedspecialize_carbine
+	 --  combat_meleespecialize_unarmed, combat_meleespecialize_twohand, combat_meleespecialize_polearm, combat_meleespecialize_onehand, combat_general,
+	 --  combat_meleespecialize_twohandlightsaber, combat_meleespecialize_polearmlightsaber, combat_meleespecialize_onehandlightsaber
 	xpType = "combat_rangedspecialize_carbine",
-	,
-	-- See http://www.ocdsoft.com/files/certifications.xls,
+	
+	 --  See http://www.ocdsoft.com/files/certifications.xls
 	certificationsRequired = { "cert_carbine_ee3" },
-	-- See http://www.ocdsoft.com/files/accuracy.xls,
+	 --  See http://www.ocdsoft.com/files/accuracy.xls
 	creatureAccuracyModifiers = { "carbine_accuracy" },
-
-	-- See http://www.ocdsoft.com/files/defense.xls,
+	
+	 --  See http://www.ocdsoft.com/files/defense.xls
 	defenderDefenseModifiers = { "ranged_defense" },
-
-	-- Leave as "dodge" for now, may have additions later,
+	
+	 --  Leave as "dodge" for now, may have additions later
 	defenderSecondaryDefenseModifiers = { "dodge" },
-
-	-- See http://www.ocdsoft.com/files/speed.xls,
+	
+	 --  See http://www.ocdsoft.com/files/speed.xls
 	speedModifiers = { "carbine_speed" },
-
-	-- Leave blank for now,
+	
+	 --  Leave blank for now
 	damageModifiers = { },
-	,
-
-	-- The values below are the default values.  To be used for blue frog objects primarily,
+	
+	
+	 --  The values below are the default values.  To be used for blue frog objects primarily
 	healthAttackCost = 44,
 	actionAttackCost = 36,
 	mindAttackCost = 20,
 	forceCost = 0,
-
+	
 	pointBlankAccuracy = 0,
 	pointBlankRange = 0,
-
+	
 	idealRange = 0,
 	idealAccuracy = 0,
-
+	
 	maxRange = 65,
 	maxRangeAccuracy = 0,
-
+	
 	minDamage = 35,
 	maxDamage = 91,
-
+	
 	attackSpeed = 4.7,
+	
 	numberExperimentalProperties = {1, 1, 2, 2, 2, 2, 2, 2, 1, 1, 1, 2, 2, 2, 2},
 	experimentalProperties = {"XX", "XX", "CD", "OQ", "CD", "OQ", "CD", "OQ", "CD", "OQ", "CD", "OQ", "CD", "OQ", "XX", "XX", "XX", "CD", "OQ", "CD", "OQ", "CD", "OQ", "CD", "OQ"},
 	experimentalWeights = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
 	experimentalGroupTitles = {"null", "null", "expDamage", "expDamage", "expDamage", "expDamage", "expEffeciency", "exp_durability", "null", "null", "null", "expRange", "expEffeciency", "expEffeciency", "expEffeciency"},
 	experimentalSubGroupTitles = {"null", "null", "mindamage", "maxdamage", "attackspeed", "woundchance", "roundsused", "hitpoints", "zerorangemod", "maxrangemod", "midrange", "midrangemod", "attackhealthcost", "attackactioncost", "attackmindcost"},
-	experimentalMin = {0, 0, 35, 91, 4.7, 5, 30, 750, -25, -80, 27, -5, 44, 36, 20}, -25, -80, 27, -5, 44, 36, 20},
-	experimentalMax = {0, 0, 65, 169, 3.2, 9, 65, 1500, -25, -80, 27, 5, 24, 20, 11}, -25, -80, 27, 5, 24, 20, 11},
+	experimentalMin = {0, 0, 35, 91, 4.7, 5, 30, 750, -25, -80, 27, -5, 44, 36, 20},
+	experimentalMax = {0, 0, 65, 169, 3.2, 9, 65, 1500, -25, -80, 27, 5, 24, 20, 11},
 	experimentalPrecision = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
 }
 

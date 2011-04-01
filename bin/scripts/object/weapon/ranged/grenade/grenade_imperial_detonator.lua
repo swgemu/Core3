@@ -42,14 +42,15 @@
 
 
 object_weapon_ranged_grenade_grenade_imperial_detonator = object_weapon_ranged_grenade_shared_grenade_imperial_detonator:new {
-
+	
+	
 	numberExperimentalProperties = {1, 1, 2, 2, 2, 2, 1, 2, 2, 2, 2, 1, 2, 2, 2},
 	experimentalProperties = {"XX", "XX", "OQ", "SR", "OQ", "SR", "OQ", "SR", "OQ", "SR", "SR", "OQ", "SR", "OQ", "SR", "OQ", "SR", "OQ", "SR", "XX", "OQ", "SR", "OQ", "SR", "OQ", "SR"},
 	experimentalWeights = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
 	experimentalGroupTitles = {"null", "null", "expDamage", "expDamage", "expDamage", "expDamage", "null", "expRange", "expRange", "expRange", "expRange", "null", "expEffeciency", "expEffeciency", "expEffeciency"},
 	experimentalSubGroupTitles = {"null", "null", "mindamage", "maxdamage", "attackspeed", "woundchance", "hitpoints", "zerorangemod", "maxrangemod", "midrangemod", "midrange", "maxrange", "attackhealthcost", "attackactioncost", "attackmindcost"},
-	experimentalMin = {0, 0, 645, 1300, 6, 7, 1000, -16, -45, 0, 10, 64, 163, 163, 65}, -16, -45, 0, 10, 64, 163, 163, 65},
-	experimentalMax = {0, 0, 989, 2000, 2.5, 13, 1000, 14, -15, 30, 30, 64, 88, 88, 35}, -15, 30, 30, 64, 88, 88, 35},
+	experimentalMin = {0, 0, 645, 1300, 6, 7, 1000, -16, -45, 0, 10, 64, 163, 163, 65},
+	experimentalMax = {0, 0, 989, 2000, 2.5, 13, 1000, 14, -15, 30, 30, 64, 88, 88, 35},
 	experimentalPrecision = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
 }
 

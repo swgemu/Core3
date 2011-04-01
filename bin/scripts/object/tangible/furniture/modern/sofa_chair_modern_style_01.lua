@@ -42,7 +42,8 @@
 
 
 object_tangible_furniture_modern_sofa_chair_modern_style_01 = object_tangible_furniture_modern_shared_sofa_chair_modern_style_01:new {
-
+	
+	
 	numberExperimentalProperties = {1, 1, 1, 2},
 	experimentalProperties = {"XX", "XX", "XX", "DR", "OQ"},
 	experimentalWeights = {1, 1, 1, 1, 1},

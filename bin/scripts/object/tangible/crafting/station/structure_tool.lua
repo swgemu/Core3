@@ -42,23 +42,24 @@
 
 
 object_tangible_crafting_station_structure_tool = object_tangible_crafting_station_shared_structure_tool:new {
-
-   templateType = CRAFTINGTOOL,
-
-   playerUseMask = 65535,
-
-   customizationOptions = {},
-   customizationDefaults = {},
-
-   toolType = 6,
-   complexityLevel = 20,
-   enabledTabs = {512,1024},
+	
+	templateType = CRAFTINGTOOL,
+	
+	playerUseMask = 65535,
+	
+	customizationOptions = {},
+	customizationDefaults = {},
+	
+	toolType = 6,
+	complexityLevel = 20,
+	enabledTabs = {512,1024},
+	
 	numberExperimentalProperties = {1, 1, 1, 1},
 	experimentalProperties = {"XX", "XX", "XX", "CD"},
 	experimentalWeights = {1, 1, 1, 1},
 	experimentalGroupTitles = {"null", "null", "null", "exp_effectiveness"},
 	experimentalSubGroupTitles = {"null", "null", "hitpoints", "usemodifier"},
-	experimentalMin = {0, 0, 1000, -15}, -15},
+	experimentalMin = {0, 0, 1000, -15},
 	experimentalMax = {0, 0, 1000, 15},
 	experimentalPrecision = {0, 0, 0, 0},
 }

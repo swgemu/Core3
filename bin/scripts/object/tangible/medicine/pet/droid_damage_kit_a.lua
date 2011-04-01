@@ -42,7 +42,8 @@
 
 
 object_tangible_medicine_pet_droid_damage_kit_a = object_tangible_medicine_pet_shared_droid_damage_kit_a:new {
-
+	
+	
 	numberExperimentalProperties = {1, 1, 3, 2, 1},
 	experimentalProperties = {"XX", "XX", "CD", "MA", "OQ", "OQ", "UT", "XX"},
 	experimentalWeights = {1, 1, 2, 1, 2, 2, 1, 1},

@@ -42,8 +42,9 @@
 
 
 object_tangible_wearables_bracelet_bracelet_s05_r = object_tangible_wearables_bracelet_shared_bracelet_s05_r:new {
-	-- ALL, ALLSEXES, ALLFACTIONS, HUMANOIDS, HUMANOID_FOOTWEAR, HUMANOID_MALES, HUMANOID_FEMALES, HUMANOID_IMPERIALS, HUMANOID_REBELS, WOOKIEES, ITHORIANS, TWILEKS,
+	 --  ALL, ALLSEXES, ALLFACTIONS, HUMANOIDS, HUMANOID_FOOTWEAR, HUMANOID_MALES, HUMANOID_FEMALES, HUMANOID_IMPERIALS, HUMANOID_REBELS, WOOKIEES, ITHORIANS, TWILEKS
 	playerUseMask = HUMANOIDS,
+	
 	numberExperimentalProperties = {1, 1, 1},
 	experimentalProperties = {"XX", "XX", "XX"},
 	experimentalWeights = {1, 1, 1},

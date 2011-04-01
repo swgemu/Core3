@@ -43,13 +43,13 @@
 
 object_tangible_food_crafted_dessert_pastebread = object_tangible_food_crafted_shared_dessert_pastebread:new {
 	templateType = CONSUMABLE,
-	,
+	
 	duration = 45,
 	filling = 10,
 	nutrition = 10,
-
+	
 	effectType = 1,
-	,
+	
 	fillingMin = 23,
 	fillingMax = 20,
 	flavorMin = 1800,
@@ -58,13 +58,14 @@ object_tangible_food_crafted_dessert_pastebread = object_tangible_food_crafted_s
 	nutritionMax = 1250,
 	quantityMin = 2,
 	quantityMax = 5,
-	,
-	speciesRestriction= "pets",
-
+	
+	speciesRestriction = "pets",
+	
 	modifiers = { "action", 0 },
-
+	
 	buffName = "food.dessert_chandad",
 	buffCRC = 0,
+	
 	numberExperimentalProperties = {1, 1, 1, 2, 2, 2, 2},
 	experimentalProperties = {"XX", "XX", "XX", "OQ", "PE", "DR", "FL", "DR", "PE", "DR", "OQ"},
 	experimentalWeights = {1, 1, 1, 1, 2, 1, 2, 1, 3, 3, 1},

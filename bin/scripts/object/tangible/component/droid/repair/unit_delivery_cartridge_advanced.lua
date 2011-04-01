@@ -42,7 +42,8 @@
 
 
 object_tangible_component_droid_repair_unit_delivery_cartridge_advanced = object_tangible_component_droid_repair_shared_unit_delivery_cartridge_advanced:new {
-
+	
+	
 	numberExperimentalProperties = {1, 1, 2, 1},
 	experimentalProperties = {"XX", "XX", "OQ", "UT", "XX"},
 	experimentalWeights = {1, 1, 1, 2, 1},

@@ -43,13 +43,13 @@
 
 object_tangible_food_crafted_drink_vayerbok = object_tangible_food_crafted_shared_drink_vayerbok:new {
 	templateType = CONSUMABLE,
-	,
+	
 	duration = 10,
 	filling = 10,
 	nutrition = 10,
-
+	
 	effectType = 4,
-
+	
 	fillingMin = 24,
 	fillingMax = 13,
 	flavorMin = 720,
@@ -58,12 +58,13 @@ object_tangible_food_crafted_drink_vayerbok = object_tangible_food_crafted_share
 	nutritionMax = 12,
 	quantityMin = 6,
 	quantityMax = 10,
-
+	
 	modifiers = { "block", 0 },
-
+	
 	buffName = "food.drink_vayerbok",
 	buffCRC = 0,
 	speciesRestriction = "",
+	
 	numberExperimentalProperties = {1, 1, 1, 1, 2, 2, 2, 2, 1},
 	experimentalProperties = {"XX", "XX", "XX", "XX", "OQ", "PE", "FL", "OQ", "DR", "PE", "DR", "OQ", "XX"},
 	experimentalWeights = {1, 1, 1, 1, 1, 2, 2, 1, 1, 3, 3, 1, 1},

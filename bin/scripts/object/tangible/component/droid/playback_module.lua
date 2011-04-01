@@ -42,13 +42,14 @@
 
 
 object_tangible_component_droid_playback_module = object_tangible_component_droid_shared_playback_module:new {
-
+	
+	
 	numberExperimentalProperties = {1, 1, 2, 1, 2, 1},
 	experimentalProperties = {"XX", "XX", "CD", "OQ", "XX", "CD", "OQ", "XX"},
 	experimentalWeights = {1, 1, 1, 1, 1, 1, 1, 1},
 	experimentalGroupTitles = {"null", "null", "exp_durability", "null", "exp_effectiveness", "null"},
 	experimentalSubGroupTitles = {"null", "null", "decayrate", "hitpoints", "mechanism_quality", "playback_module"},
-	experimentalMin = {0, 0, 5, 1000, -10, 1}, -10, 1},
+	experimentalMin = {0, 0, 5, 1000, -10, 1},
 	experimentalMax = {0, 0, 15, 1000, 15, 1},
 	experimentalPrecision = {0, 0, 0, 0, 0, 0},
 }

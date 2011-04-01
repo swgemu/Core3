@@ -42,7 +42,8 @@
 
 
 object_tangible_deed_pet_deed_deed_binary_load_lifter_basic = object_tangible_deed_pet_deed_shared_deed_binary_load_lifter_basic:new {
-
+	
+	
 	numberExperimentalProperties = {1, 1, 3, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
 	experimentalProperties = {"XX", "XX", "OQ", "SR", "UT", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX"},
 	experimentalWeights = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},

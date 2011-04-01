@@ -42,7 +42,8 @@
 
 
 object_tangible_component_food_container_small_glass = object_tangible_component_food_shared_container_small_glass:new {
-
+	
+	
 	numberExperimentalProperties = {1, 1, 1},
 	experimentalProperties = {"XX", "XX", "XX"},
 	experimentalWeights = {1, 1, 1},

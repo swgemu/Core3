@@ -42,13 +42,14 @@
 
 
 object_tangible_parrot_cage_parrot_cage = object_tangible_parrot_cage_shared_parrot_cage:new {
-
+	
+	
 	numberExperimentalProperties = {1, 1, 1, 1},
 	experimentalProperties = {"XX", "XX", "UT", "CD"},
 	experimentalWeights = {1, 1, 1, 1},
 	experimentalGroupTitles = {"null", "null", "exp_durability", "exp_effectiveness"},
 	experimentalSubGroupTitles = {"null", "null", "hitpoints", "usemodifier"},
-	experimentalMin = {0, 0, 100, -15}, -15},
+	experimentalMin = {0, 0, 100, -15},
 	experimentalMax = {0, 0, 150, 15},
 	experimentalPrecision = {0, 0, 0, 0},
 }

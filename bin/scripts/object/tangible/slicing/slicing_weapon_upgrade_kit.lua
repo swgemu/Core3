@@ -45,13 +45,14 @@ object_tangible_slicing_slicing_weapon_upgrade_kit = object_tangible_slicing_sha
 	templateType = SLICINGTOOL,
 	gameObjectType = 32778,
 	effectiveness = -15,
-
+	
+	
 	numberExperimentalProperties = {1, 1, 1, 1},
 	experimentalProperties = {"XX", "XX", "XX", "CD"},
 	experimentalWeights = {1, 1, 1, 1},
 	experimentalGroupTitles = {"null", "null", "null", "exp_effectiveness"},
 	experimentalSubGroupTitles = {"null", "null", "hitpoints", "usemodifier"},
-	experimentalMin = {0, 0, 1000, -15}, -15},
+	experimentalMin = {0, 0, 1000, -15},
 	experimentalMax = {0, 0, 1000, 15},
 	experimentalPrecision = {0, 0, 0, 0},
 }

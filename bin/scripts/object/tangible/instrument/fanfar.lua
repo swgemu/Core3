@@ -44,6 +44,7 @@
 object_tangible_instrument_fanfar = object_tangible_instrument_shared_fanfar:new {
 	templateType = INSTRUMENT,
 	instrumentType = 3,
+	
 	numberExperimentalProperties = {1, 1, 1, 1},
 	experimentalProperties = {"XX", "XX", "UT", "CD"},
 	experimentalWeights = {1, 1, 1, 1},

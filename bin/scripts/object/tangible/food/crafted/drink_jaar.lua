@@ -42,7 +42,8 @@
 
 
 object_tangible_food_crafted_drink_jaar = object_tangible_food_crafted_shared_drink_jaar:new {
-
+	
+	
 	numberExperimentalProperties = {1, 1, 1, 1, 2, 2, 2},
 	experimentalProperties = {"XX", "XX", "XX", "XX", "OQ", "PE", "DR", "PE", "DR", "OQ"},
 	experimentalWeights = {1, 1, 1, 1, 1, 2, 1, 3, 3, 1},

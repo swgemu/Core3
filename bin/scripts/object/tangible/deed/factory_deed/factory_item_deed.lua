@@ -44,8 +44,9 @@
 object_tangible_deed_factory_deed_factory_item_deed = object_tangible_deed_factory_deed_shared_factory_item_deed:new {
 	templateType = DEED,
 	generatedObjectTemplate = "object/installation/manufacture/weapon_factory.iff",
-
-
+	
+	
+	
 	numberExperimentalProperties = {1, 1, 1, 1, 2, 1},
 	experimentalProperties = {"XX", "XX", "XX", "OQ", "MA", "UT", "UT"},
 	experimentalWeights = {1, 1, 1, 1, 1, 2, 1},

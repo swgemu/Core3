@@ -44,6 +44,7 @@
 object_tangible_instrument_fizz = object_tangible_instrument_shared_fizz:new {
 	templateType = INSTRUMENT,
 	instrumentType = 6,
+	
 	numberExperimentalProperties = {1, 1, 1, 1},
 	experimentalProperties = {"XX", "XX", "UT", "CD"},
 	experimentalWeights = {1, 1, 1, 1},

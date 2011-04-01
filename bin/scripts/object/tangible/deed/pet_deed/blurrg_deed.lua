@@ -42,7 +42,8 @@
 
 
 object_tangible_deed_pet_deed_blurrg_deed = object_tangible_deed_pet_deed_shared_blurrg_deed:new {
-
+	
+	
 	numberExperimentalProperties = {1, 1},
 	experimentalProperties = {"XX", "XX"},
 	experimentalWeights = {1, 1},

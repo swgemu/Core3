@@ -42,7 +42,8 @@
 
 
 object_tangible_component_structure_wall_module = object_tangible_component_structure_shared_wall_module:new {
-
+	
+	
 	numberExperimentalProperties = {1, 1, 1},
 	experimentalProperties = {"XX", "XX", "UT"},
 	experimentalWeights = {1, 1, 1},

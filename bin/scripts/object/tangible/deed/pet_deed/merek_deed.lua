@@ -42,7 +42,8 @@
 
 
 object_tangible_deed_pet_deed_merek_deed = object_tangible_deed_pet_deed_shared_merek_deed:new {
-
+	
+	
 	numberExperimentalProperties = {1, 1},
 	experimentalProperties = {"XX", "XX"},
 	experimentalWeights = {1, 1},

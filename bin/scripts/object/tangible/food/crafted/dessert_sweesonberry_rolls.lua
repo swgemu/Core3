@@ -43,13 +43,13 @@
 
 object_tangible_food_crafted_dessert_sweesonberry_rolls = object_tangible_food_crafted_shared_dessert_sweesonberry_rolls:new {
 	templateType = CONSUMABLE,
-	,
+	
 	duration = 45,
 	filling = 10,
 	nutrition = 10,
-
+	
 	effectType = 1,
-
+	
 	fillingMin = 22,
 	fillingMax = 18,
 	flavorMin = 1800,
@@ -59,11 +59,12 @@ object_tangible_food_crafted_dessert_sweesonberry_rolls = object_tangible_food_c
 	quantityMin = 3,
 	quantityMax = 4,
 	speciesRestriction = "pets",
-
+	
 	modifiers = { "health", 0, "action", 0, "mind", 0 },
-
+	
 	buffName = "food.reduce_spice_downtime",
 	buffCRC = 0,
+	
 	numberExperimentalProperties = {1, 1, 1, 2, 2, 2, 2},
 	experimentalProperties = {"XX", "XX", "XX", "OQ", "PE", "FL", "OQ", "DR", "PE", "DR", "OQ"},
 	experimentalWeights = {1, 1, 1, 1, 2, 2, 1, 1, 3, 3, 1},

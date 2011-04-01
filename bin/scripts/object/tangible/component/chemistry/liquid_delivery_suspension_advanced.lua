@@ -42,7 +42,8 @@
 
 
 object_tangible_component_chemistry_liquid_delivery_suspension_advanced = object_tangible_component_chemistry_shared_liquid_delivery_suspension_advanced:new {
-
+	
+	
 	numberExperimentalProperties = {1, 1, 2, 1, 1},
 	experimentalProperties = {"XX", "XX", "OQ", "PE", "XX", "XX"},
 	experimentalWeights = {1, 1, 2, 1, 1, 1},

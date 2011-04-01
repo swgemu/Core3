@@ -42,13 +42,14 @@
 
 
 object_tangible_component_droid_auto_repair_module = object_tangible_component_droid_shared_auto_repair_module:new {
-
+	
+	
 	numberExperimentalProperties = {1, 1, 2, 1, 2, 2},
 	experimentalProperties = {"XX", "XX", "CD", "OQ", "XX", "CD", "OQ", "CD", "OQ"},
 	experimentalWeights = {1, 1, 1, 1, 1, 1, 1, 1, 1},
 	experimentalGroupTitles = {"null", "null", "exp_durability", "null", "exp_effectiveness", "exp_effectiveness"},
 	experimentalSubGroupTitles = {"null", "null", "decayrate", "hitpoints", "mechanism_quality", "auto_repair_power"},
-	experimentalMin = {0, 0, 5, 1000, -10, 1}, -10, 1},
+	experimentalMin = {0, 0, 5, 1000, -10, 1},
 	experimentalMax = {0, 0, 15, 1000, 15, 25},
 	experimentalPrecision = {0, 0, 0, 0, 0, 0},
 }

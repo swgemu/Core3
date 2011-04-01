@@ -42,14 +42,15 @@
 
 
 object_tangible_component_weapon_sword_core_advanced = object_tangible_component_weapon_shared_sword_core_advanced:new {
-
+	
+	
 	numberExperimentalProperties = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
 	experimentalProperties = {"XX", "XX", "UT", "UT", "UT", "UT", "UT", "UT", "UT", "UT", "UT", "UT", "UT"},
 	experimentalWeights = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
 	experimentalGroupTitles = {"null", "null", "expDamage", "expDamage", "expDamage", "expDamage", "exp_durability", "expRange", "expRange", "expRange", "expEffeciency", "expEffeciency", "expEffeciency"},
 	experimentalSubGroupTitles = {"null", "null", "mindamage", "maxdamage", "attackspeed", "woundchance", "hitpoints", "zerorangemod", "maxrangemod", "midrangemod", "attackhealthcost", "attackactioncost", "attackmindcost"},
 	experimentalMin = {0, 0, 1, 1, 0, 0, 10, 0, 0, 0, 10, 10, 10},
-	experimentalMax = {0, 0, 50, 50, -0.7, 15, 100, 40, 40, 40, -3, -3, -3}, -0.7, 15, 100, 40, 40, 40, -3, -3, -3},
+	experimentalMax = {0, 0, 50, 50, -0.7, 15, 100, 40, 40, 40, -3, -3, -3},
 	experimentalPrecision = {0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0},
 }
 

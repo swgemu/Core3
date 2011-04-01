@@ -43,13 +43,13 @@
 
 object_tangible_food_crafted_dessert_vagnerian_canape = object_tangible_food_crafted_shared_dessert_vagnerian_canape:new {
 	templateType = CONSUMABLE,
-	,
+	
 	duration = 45,
 	filling = 10,
 	nutrition = 10,
-
+	
 	effectType = 1,
-
+	
 	fillingMin = 41,
 	fillingMax = 27,
 	flavorMin = 450,
@@ -58,12 +58,13 @@ object_tangible_food_crafted_dessert_vagnerian_canape = object_tangible_food_cra
 	nutritionMax = 375,
 	quantityMin = 6,
 	quantityMax = 10,
-
+	
 	modifiers = { "focus", 0, "willpower", 0 },
-
+	
 	buffName = "food.dessert_vagnerian_canape",
 	buffCRC = 0xFB554185,
 	speciesRestriction = "",
+	
 	numberExperimentalProperties = {1, 1, 1, 2, 2, 2, 2},
 	experimentalProperties = {"XX", "XX", "XX", "OQ", "PE", "FL", "OQ", "DR", "PE", "DR", "OQ"},
 	experimentalWeights = {1, 1, 1, 1, 2, 2, 1, 1, 3, 3, 1},

@@ -42,13 +42,14 @@
 
 
 object_tangible_component_droid_performer_effects_e = object_tangible_component_droid_shared_performer_effects_e:new {
-
+	
+	
 	numberExperimentalProperties = {1, 1, 2, 1, 2, 1},
 	experimentalProperties = {"XX", "XX", "CD", "OQ", "XX", "CD", "OQ", "XX"},
 	experimentalWeights = {1, 1, 1, 1, 1, 1, 1, 1},
 	experimentalGroupTitles = {"null", "null", "exp_durability", "null", "exp_effectiveness", "null"},
 	experimentalSubGroupTitles = {"null", "null", "decayrate", "hitpoints", "mechanism_quality", "entertainer_effects"},
-	experimentalMin = {0, 0, 5, 1000, -10, 10000}, -10, 10000},
+	experimentalMin = {0, 0, 5, 1000, -10, 10000},
 	experimentalMax = {0, 0, 15, 1000, 15, 10000},
 	experimentalPrecision = {0, 0, 0, 0, 0, 0},
 }

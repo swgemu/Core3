@@ -42,7 +42,8 @@
 
 
 object_tangible_component_food_ingredient_carbosyrup = object_tangible_component_food_shared_ingredient_carbosyrup:new {
-
+	
+	
 	numberExperimentalProperties = {1, 1, 1},
 	experimentalProperties = {"XX", "XX", "XX"},
 	experimentalWeights = {1, 1, 1},

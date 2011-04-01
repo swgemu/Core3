@@ -42,7 +42,8 @@
 
 
 object_tangible_component_munition_warhead_light = object_tangible_component_munition_shared_warhead_light:new {
-
+	
+	
 	numberExperimentalProperties = {1, 1, 2, 2, 2, 1},
 	experimentalProperties = {"XX", "XX", "CD", "UT", "CD", "UT", "CD", "UT", "XX"},
 	experimentalWeights = {1, 1, 1, 1, 1, 1, 1, 1, 1},

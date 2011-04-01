@@ -54,6 +54,7 @@ object_tangible_medicine_crafted_medpack_poison_health_a = object_tangible_medic
 	potency = 150,
 	commandToExecute = "/applypoison",
 	area = 0,
+	
 	numberExperimentalProperties = {1, 1, 2, 2, 2, 2, 2, 2, 1},
 	experimentalProperties = {"XX", "XX", "OQ", "PE", "OQ", "UT", "CD", "OQ", "OQ", "PE", "OQ", "PE", "DR", "OQ", "XX"},
 	experimentalWeights = {1, 1, 2, 1, 2, 1, 1, 2, 2, 1, 2, 1, 1, 1, 1},

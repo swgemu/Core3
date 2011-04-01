@@ -42,7 +42,8 @@
 
 
 object_tangible_scout_trap_trap_webber = object_tangible_scout_trap_shared_trap_webber:new {
-
+	
+	
 	numberExperimentalProperties = {1, 1, 1, 1},
 	experimentalProperties = {"XX", "XX", "XX", "XX"},
 	experimentalWeights = {1, 1, 1, 1},

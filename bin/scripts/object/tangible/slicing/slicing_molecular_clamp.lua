@@ -44,12 +44,13 @@
 object_tangible_slicing_slicing_molecular_clamp = object_tangible_slicing_shared_slicing_molecular_clamp:new {
 	templateType = SLICINGTOOL,
 	gameObjectType = 32775,
+	
 	numberExperimentalProperties = {1, 1, 1, 1},
 	experimentalProperties = {"XX", "XX", "XX", "CD"},
 	experimentalWeights = {1, 1, 1, 1},
 	experimentalGroupTitles = {"null", "null", "null", "exp_effectiveness"},
 	experimentalSubGroupTitles = {"null", "null", "hitpoints", "usemodifier"},
-	experimentalMin = {0, 0, 1000, -15}, -15},
+	experimentalMin = {0, 0, 1000, -15},
 	experimentalMax = {0, 0, 1000, 15},
 	experimentalPrecision = {0, 0, 0, 0},
 }

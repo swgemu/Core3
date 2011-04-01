@@ -48,6 +48,7 @@ object_tangible_medicine_crafted_medpack_enhance_poison_b = object_tangible_medi
 	effectiveness = 100,
 	duration = 1800,
 	attribute = 9,
+	
 	numberExperimentalProperties = {1, 1, 2, 2, 2, 2, 1},
 	experimentalProperties = {"XX", "XX", "OQ", "PE", "OQ", "UT", "OQ", "PE", "OQ", "PE", "XX"},
 	experimentalWeights = {1, 1, 2, 1, 2, 1, 2, 1, 2, 1, 1},

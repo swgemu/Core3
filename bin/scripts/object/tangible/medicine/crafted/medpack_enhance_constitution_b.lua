@@ -48,7 +48,8 @@ object_tangible_medicine_crafted_medpack_enhance_constitution_b = object_tangibl
 	effectiveness = 200,
 	duration = 1800,
 	attribute = 2,
-
+	
+	
 	numberExperimentalProperties = {1, 1, 2, 2, 2, 2, 1},
 	experimentalProperties = {"XX", "XX", "OQ", "PE", "OQ", "UT", "DR", "OQ", "OQ", "PE", "XX"},
 	experimentalWeights = {1, 1, 2, 1, 2, 1, 1, 1, 2, 1, 1},

@@ -42,7 +42,8 @@
 
 
 object_tangible_furniture_all_frn_all_chair_upholstered_s1 = object_tangible_furniture_all_shared_frn_all_chair_upholstered_s1:new {
-
+	
+	
 	numberExperimentalProperties = {1, 1, 1, 2},
 	experimentalProperties = {"XX", "XX", "XX", "DR", "OQ"},
 	experimentalWeights = {1, 1, 1, 1, 1},

@@ -42,7 +42,8 @@
 
 
 object_tangible_droid_navicomputer_1 = object_tangible_droid_shared_navicomputer_1:new {
-
+	
+	
 	numberExperimentalProperties = {1, 1},
 	experimentalProperties = {"XX", "XX"},
 	experimentalWeights = {1, 1},

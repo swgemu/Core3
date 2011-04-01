@@ -42,7 +42,8 @@
 
 
 object_weapon_mine_wp_mine_xg = object_weapon_mine_shared_wp_mine_xg:new {
-
+	
+	
 	numberExperimentalProperties = {1, 1, 2, 2, 2, 2, 1},
 	experimentalProperties = {"XX", "XX", "SR", "UT", "SR", "UT", "SR", "UT", "SR", "UT", "XX"},
 	experimentalWeights = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},

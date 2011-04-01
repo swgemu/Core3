@@ -45,6 +45,7 @@ object_tangible_deed_city_deed_hospital_corellia_deed = object_tangible_deed_cit
 	templateType = DEED,
 	gameObjectType = 8388609,
 	generatedObjectTemplate = "object/building/player/city/hospital_corellia.iff",
+	
 	numberExperimentalProperties = {1, 1, 1},
 	experimentalProperties = {"XX", "XX", "XX"},
 	experimentalWeights = {1, 1, 1},

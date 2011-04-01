@@ -45,6 +45,7 @@ object_tangible_deed_city_deed_garage_corellia_deed = object_tangible_deed_city_
 	templateType = DEED,
 	gameObjectType = 8388609,
 	generatedObjectTemplate = "object/building/player/player_garage_corellia_style_01.iff",
+	
 	numberExperimentalProperties = {1, 1, 1},
 	experimentalProperties = {"XX", "XX", "DR"},
 	experimentalWeights = {1, 1, 1},

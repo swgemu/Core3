@@ -45,6 +45,7 @@ object_tangible_deed_city_deed_bank_corellia_deed = object_tangible_deed_city_de
 	templateType = DEED,
 	gameObjectType = 8388609,
 	generatedObjectTemplate = "object/building/player/city/bank_corellia.iff",
+	
 	numberExperimentalProperties = {1, 1, 1},
 	experimentalProperties = {"XX", "XX", "DR"},
 	experimentalWeights = {1, 1, 1},

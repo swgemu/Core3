@@ -42,8 +42,9 @@
 
 
 object_tangible_wearables_shirt_shirt_s04 = object_tangible_wearables_shirt_shared_shirt_s04:new {
-	-- ALL, ALLSEXES, ALLFACTIONS, HUMANOIDS, HUMANOID_FOOTWEAR, HUMANOID_MALES, HUMANOID_FEMALES, HUMANOID_IMPERIALS, HUMANOID_REBELS, WOOKIEES, ITHORIANS, TWILEKS,
+	 --  ALL, ALLSEXES, ALLFACTIONS, HUMANOIDS, HUMANOID_FOOTWEAR, HUMANOID_MALES, HUMANOID_FEMALES, HUMANOID_IMPERIALS, HUMANOID_REBELS, WOOKIEES, ITHORIANS, TWILEKS
 	playerUseMask = HUMANOIDS,
+	
 	numberExperimentalProperties = {1, 1, 1, 1},
 	experimentalProperties = {"XX", "XX", "XX", "XX"},
 	experimentalWeights = {1, 1, 1, 1},

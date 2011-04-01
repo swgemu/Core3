@@ -44,6 +44,7 @@
 object_tangible_instrument_flute_droopy = object_tangible_instrument_shared_flute_droopy:new {
 	templateType = INSTRUMENT,
 	instrumentType = 4,
+	
 	numberExperimentalProperties = {1, 1, 1, 1},
 	experimentalProperties = {"XX", "XX", "UT", "CD"},
 	experimentalWeights = {1, 1, 1, 1},

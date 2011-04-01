@@ -43,13 +43,13 @@
 
 object_tangible_food_crafted_dessert_chandad = object_tangible_food_crafted_shared_dessert_chandad:new {
 	templateType = CONSUMABLE,
-	,
+	
 	duration = 45,
 	filling = 10,
 	nutrition = 10,
-
+	
 	effectType = 4,
-	,
+	
 	fillingMin = 17,
 	fillingMax = 10,
 	flavorMin = 720,
@@ -58,12 +58,13 @@ object_tangible_food_crafted_dessert_chandad = object_tangible_food_crafted_shar
 	nutritionMax = 12,
 	quantityMin = 6,
 	quantityMax = 10,
-
+	
 	modifiers = { "surveying", 0 },
-
+	
 	buffName = "food.dessert_chandad",
 	buffCRC = 0,
 	speciesRestriction = "",
+	
 	numberExperimentalProperties = {1, 1, 1, 2, 2, 2, 2},
 	experimentalProperties = {"XX", "XX", "XX", "OQ", "PE", "DR", "FL", "DR", "PE", "DR", "OQ"},
 	experimentalWeights = {1, 1, 1, 1, 2, 1, 2, 1, 3, 3, 1},

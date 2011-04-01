@@ -42,7 +42,8 @@
 
 
 object_tangible_food_crafted_dish_dustcrepe = object_tangible_food_crafted_shared_dish_dustcrepe:new {
-
+	
+	
 	numberExperimentalProperties = {1, 1, 1, 2, 2, 2},
 	experimentalProperties = {"XX", "XX", "XX", "OQ", "PE", "DR", "PE", "DR", "OQ"},
 	experimentalWeights = {1, 1, 1, 1, 2, 1, 3, 3, 1},

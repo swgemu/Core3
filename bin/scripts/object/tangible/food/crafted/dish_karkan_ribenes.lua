@@ -43,13 +43,13 @@
 
 object_tangible_food_crafted_dish_karkan_ribenes = object_tangible_food_crafted_shared_dish_karkan_ribenes:new {
 	templateType = CONSUMABLE,
-	,
+	
 	duration = 30,
 	filling = 10,
 	nutrition = 10,
-
+	
 	effectType = 0,
-
+	
 	fillingMin = 3,
 	fillingMax = 2,
 	flavorMin = 0,
@@ -59,11 +59,12 @@ object_tangible_food_crafted_dish_karkan_ribenes = object_tangible_food_crafted_
 	quantityMin = 2,
 	quantityMax = 5,
 	speciesRestriction = "2",
-
+	
 	modifiers = { "enhanced_regen", 0 },
-
+	
 	buffName = "",
 	buffCRC = 0,
+	
 	numberExperimentalProperties = {1, 1, 1, 2, 2, 2},
 	experimentalProperties = {"XX", "XX", "XX", "DR", "OQ", "OQ", "PE", "FL", "OQ"},
 	experimentalWeights = {1, 1, 1, 1, 1, 1, 2, 2, 1},

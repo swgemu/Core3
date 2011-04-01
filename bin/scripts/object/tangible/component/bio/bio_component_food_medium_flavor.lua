@@ -42,7 +42,8 @@
 
 
 object_tangible_component_bio_bio_component_food_medium_flavor = object_tangible_component_bio_shared_bio_component_food_medium_flavor:new {
-
+	
+	
 	numberExperimentalProperties = {1, 1, 1, 3},
 	experimentalProperties = {"XX", "XX", "XX", "FL", "OQ", "PE"},
 	experimentalWeights = {1, 1, 1, 1, 2, 2},

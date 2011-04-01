@@ -42,7 +42,8 @@
 
 
 object_tangible_component_food_ingredient_ball_of_dough = object_tangible_component_food_shared_ingredient_ball_of_dough:new {
-
+	
+	
 	numberExperimentalProperties = {1, 1, 1},
 	experimentalProperties = {"XX", "XX", "XX"},
 	experimentalWeights = {1, 1, 1},

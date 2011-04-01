@@ -42,7 +42,8 @@
 
 
 object_tangible_food_crafted_dish_rations = object_tangible_food_crafted_shared_dish_rations:new {
-
+	
+	
 	numberExperimentalProperties = {1, 1, 1, 2, 2, 2, 2},
 	experimentalProperties = {"XX", "XX", "XX", "OQ", "PE", "FL", "OQ", "DR", "SR", "DR", "OQ"},
 	experimentalWeights = {1, 1, 1, 1, 2, 2, 1, 1, 3, 3, 1},

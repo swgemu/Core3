@@ -42,7 +42,8 @@
 
 
 object_tangible_powerup_weapon_ranged_stock = object_tangible_powerup_weapon_shared_ranged_stock:new {
-
+	
+	
 	numberExperimentalProperties = {1, 1, 1, 1},
 	experimentalProperties = {"XX", "XX", "XX", "OQ"},
 	experimentalWeights = {1, 1, 1, 1},
