@@ -72,7 +72,7 @@ object_draft_schematic_clothing_clothing_armor_tantel_chest = object_draft_schem
    combineTypes = {0, 0, 0, 0, 0, 0, 1, 1, 1},
    contribution = {100, 100, 100, 100, 100, 100, 100, 100, 100},
 
-   templates { = 
+   templates = {
               3641538473, -- Script: 'object/tangible/wearables/armor/tantel/armor_tantel_skreej_chest_plate.iff'
              }
 

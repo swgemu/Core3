@@ -72,7 +72,7 @@ object_draft_schematic_food_drink_tssolok = object_draft_schematic_food_shared_d
    combineTypes = {1, 0, 1, 1},
    contribution = {100, 100, 100, 100},
 
-   templates { = 
+   templates = {
               3592370666, -- Script: 'object/tangible/food/crafted/drink_tssolok.iff'
              }
 

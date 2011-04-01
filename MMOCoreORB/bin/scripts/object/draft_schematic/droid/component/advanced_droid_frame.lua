@@ -72,7 +72,7 @@ object_draft_schematic_droid_component_advanced_droid_frame = object_draft_schem
    combineTypes = {0, 0},
    contribution = {100, 100},
 
-   templates { = 
+   templates = {
               2590099248, -- Script: 'object/tangible/component/droid/advanced_droid_frame.iff'
              }
 

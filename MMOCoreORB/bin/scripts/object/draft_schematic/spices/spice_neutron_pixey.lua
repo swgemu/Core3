@@ -72,7 +72,7 @@ object_draft_schematic_spices_spice_neutron_pixey = object_draft_schematic_spice
    combineTypes = {0, 0, 0},
    contribution = {100, 100, 100},
 
-   templates { = 
+   templates = {
               205254138, -- Script: 'object/tangible/food/spice/spice_neutron_pixey.iff'
              }
 

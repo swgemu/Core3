@@ -72,7 +72,7 @@ object_draft_schematic_spices_spice_sedative_h4b = object_draft_schematic_spices
    combineTypes = {0, 0, 0},
    contribution = {100, 100, 100},
 
-   templates { = 
+   templates = {
               83272939, -- Script: 'object/tangible/food/spice/spice_sedative_h4b.iff'
              }
 

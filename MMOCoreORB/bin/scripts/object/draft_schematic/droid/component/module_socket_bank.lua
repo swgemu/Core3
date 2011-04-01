@@ -72,7 +72,7 @@ object_draft_schematic_droid_component_module_socket_bank = object_draft_schemat
    combineTypes = {0, 0, 0, 0, 0, 1, 1, 1},
    contribution = {100, 100, 100, 100, 100, 100, 100, 100},
 
-   templates { = 
+   templates = {
               3606382606, -- Script: 'object/tangible/component/droid/socket_bank.iff'
              }
 

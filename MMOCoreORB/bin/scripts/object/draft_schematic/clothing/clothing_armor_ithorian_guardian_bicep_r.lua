@@ -72,7 +72,7 @@ object_draft_schematic_clothing_clothing_armor_ithorian_guardian_bicep_r = objec
    combineTypes = {0, 0, 0, 0, 0, 0, 1, 1, 1},
    contribution = {100, 100, 100, 100, 100, 100, 100, 100, 100},
 
-   templates { = 
+   templates = {
               2050980817, -- Script: 'object/tangible/wearables/armor/ithorian_guardian/ith_armor_s02_bicep_r.iff'
              }
 

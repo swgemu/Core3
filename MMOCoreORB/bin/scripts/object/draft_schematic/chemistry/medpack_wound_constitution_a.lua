@@ -72,7 +72,7 @@ object_draft_schematic_chemistry_medpack_wound_constitution_a = object_draft_sch
    combineTypes = {0, 0},
    contribution = {100, 100},
 
-   templates { = 
+   templates = {
               2886216028, -- Script: 'object/tangible/medicine/crafted/medpack_wound_constitution_a.iff'
              }
 

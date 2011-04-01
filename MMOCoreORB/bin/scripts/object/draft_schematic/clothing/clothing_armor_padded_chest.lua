@@ -72,7 +72,7 @@ object_draft_schematic_clothing_clothing_armor_padded_chest = object_draft_schem
    combineTypes = {0, 0, 0, 0, 0, 0, 1, 1, 1},
    contribution = {100, 100, 100, 100, 100, 100, 100, 100, 100},
 
-   templates { = 
+   templates = {
               689622929, -- Script: 'object/tangible/wearables/armor/padded/armor_padded_s01_chest_plate.iff'
              }
 

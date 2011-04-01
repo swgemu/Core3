@@ -72,7 +72,7 @@ object_draft_schematic_structure_installation_mining_gas_light = object_draft_sc
    combineTypes = {0, 0, 0, 0, 0},
    contribution = {100, 100, 100, 100, 100},
 
-   templates { = 
+   templates = {
               3758163402, -- Script: 'object/tangible/deed/harvester_deed/harvester_gas_deed.iff'
              }
 

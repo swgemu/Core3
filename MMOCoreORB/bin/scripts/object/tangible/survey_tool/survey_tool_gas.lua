@@ -42,19 +42,19 @@
 
 
 object_tangible_survey_tool_survey_tool_gas = object_tangible_survey_tool_shared_survey_tool_gas:new {
-	
+
 	templateType = SURVEYTOOL,
-	
+
 	playerUseMask = 65535,
-	
+
 	customizationOptions = {},
 	customizationDefaults = {},
-	
+
 	toolType = 4,
 	toolAnimation = "clienteffect/survey_tool_gas.cef",
 	sampleAnimation = "clienteffect/survey_sample_gas.cef",
 	surveyType = "gas",
-	
+
 	numberExperimentalProperties = {1, 1, 1, 1},
 	experimentalProperties = {"XX", "XX", "XX", "CD"},
 	experimentalWeights = {1, 1, 1, 1},
@@ -63,5 +63,6 @@ object_tangible_survey_tool_survey_tool_gas = object_tangible_survey_tool_shared
 	experimentalMin = {0, 0, 1000, -15},
 	experimentalMax = {0, 0, 1000, 15},
 	experimentalPrecision = {0, 0, 0, 0},
+
 }
 ObjectTemplates:addTemplate(object_tangible_survey_tool_survey_tool_gas, "object/tangible/survey_tool/survey_tool_gas.iff")

@@ -42,8 +42,8 @@
 
 
 object_tangible_component_food_ingredient_carbosyrup = object_tangible_component_food_shared_ingredient_carbosyrup:new {
-	
-	
+
+
 	numberExperimentalProperties = {1, 1, 1},
 	experimentalProperties = {"XX", "XX", "XX"},
 	experimentalWeights = {1, 1, 1},
@@ -52,6 +52,7 @@ object_tangible_component_food_ingredient_carbosyrup = object_tangible_component
 	experimentalMin = {0, 0, 1000},
 	experimentalMax = {0, 0, 1000},
 	experimentalPrecision = {0, 0, 0},
+
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_food_ingredient_carbosyrup, "object/tangible/component/food/ingredient_carbosyrup.iff")

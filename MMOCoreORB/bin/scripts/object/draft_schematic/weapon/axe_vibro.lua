@@ -72,7 +72,7 @@ object_draft_schematic_weapon_axe_vibro = object_draft_schematic_weapon_shared_a
    combineTypes = {0, 0, 1},
    contribution = {100, 100, 100},
 
-   templates { = 
+   templates = {
               589649861, -- Script: 'object/weapon/melee/axe/axe_vibroaxe.iff'
              }
 

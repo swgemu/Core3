@@ -72,7 +72,7 @@ object_draft_schematic_food_additive_additive_medium = object_draft_schematic_fo
    combineTypes = {0, 1},
    contribution = {100, 100},
 
-   templates { = 
+   templates = {
               1269715552, -- Script: 'object/tangible/food/crafted/additive/additive_medium.iff'
              }
 

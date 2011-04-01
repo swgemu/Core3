@@ -72,7 +72,7 @@ object_draft_schematic_weapon_rifle_light_blaster_dh17_carbine = object_draft_sc
    combineTypes = {0, 0, 0, 1, 1, 1, 1},
    contribution = {100, 100, 100, 100, 100, 100, 100},
 
-   templates { = 
+   templates = {
               3185522316, -- Script: 'object/weapon/ranged/carbine/carbine_dh17.iff'
              }
 

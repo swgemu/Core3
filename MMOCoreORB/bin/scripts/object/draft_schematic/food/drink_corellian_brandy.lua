@@ -72,7 +72,7 @@ object_draft_schematic_food_drink_corellian_brandy = object_draft_schematic_food
    combineTypes = {0, 0, 1, 1, 1},
    contribution = {100, 100, 100, 100, 100},
 
-   templates { = 
+   templates = {
               3159619198, -- Script: 'object/tangible/food/crafted/drink_corellian_brandy.iff'
              }
 

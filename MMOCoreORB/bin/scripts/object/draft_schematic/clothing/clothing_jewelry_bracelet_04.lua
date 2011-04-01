@@ -72,7 +72,7 @@ object_draft_schematic_clothing_clothing_jewelry_bracelet_04 = object_draft_sche
    combineTypes = {0, 0, 1},
    contribution = {100, 100, 100},
 
-   templates { = 
+   templates = {
               2659748803, -- Script: 'object/tangible/wearables/bracelet/bracelet_s04_l.iff'
              }
 

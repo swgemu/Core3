@@ -72,7 +72,7 @@ object_draft_schematic_bio_engineer_creature_creature_fambaa = object_draft_sche
    combineTypes = {1, 0, 0},
    contribution = {100, 100, 100},
 
-   templates { = 
+   templates = {
               1393707178, -- Script: 'object/tangible/deed/pet_deed/fambaa_deed.iff'
              }
 

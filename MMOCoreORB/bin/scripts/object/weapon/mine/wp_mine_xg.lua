@@ -42,8 +42,8 @@
 
 
 object_weapon_mine_wp_mine_xg = object_weapon_mine_shared_wp_mine_xg:new {
-	
-	
+
+
 	numberExperimentalProperties = {1, 1, 2, 2, 2, 2, 1},
 	experimentalProperties = {"XX", "XX", "SR", "UT", "SR", "UT", "SR", "UT", "SR", "UT", "XX"},
 	experimentalWeights = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
@@ -52,6 +52,7 @@ object_weapon_mine_wp_mine_xg = object_weapon_mine_shared_wp_mine_xg:new {
 	experimentalMin = {0, 0, 70, 280, 7, 7, 1000},
 	experimentalMax = {0, 0, 130, 520, 4, 13, 1000},
 	experimentalPrecision = {0, 0, 0, 0, 0, 0, 0},
+
 }
 
 ObjectTemplates:addTemplate(object_weapon_mine_wp_mine_xg, "object/weapon/mine/wp_mine_xg.iff")

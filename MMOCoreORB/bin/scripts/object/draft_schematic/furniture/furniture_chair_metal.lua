@@ -72,7 +72,7 @@ object_draft_schematic_furniture_furniture_chair_metal = object_draft_schematic_
    combineTypes = {0, 0},
    contribution = {100, 100},
 
-   templates { = 
+   templates = {
               3557663084, -- Script: 'object/tangible/furniture/all/frn_all_chair_metal_s1.iff'
              }
 

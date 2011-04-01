@@ -72,7 +72,7 @@ object_draft_schematic_chemistry_medpack_enhance_quickness_c = object_draft_sche
    combineTypes = {0, 0, 1, 1, 1},
    contribution = {100, 100, 100, 100, 100},
 
-   templates { = 
+   templates = {
               2872652064, -- Script: 'object/tangible/medicine/crafted/medpack_enhance_quickness_c.iff'
              }
 

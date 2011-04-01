@@ -42,67 +42,67 @@
 
 
 object_weapon_melee_polearm_polearm_vibro_axe = object_weapon_melee_polearm_shared_polearm_vibro_axe:new {
-	
-	 --  ALL, ALLSEXES, ALLFACTIONS, HUMANOIDS, HUMANOID_FOOTWEAR, HUMANOID_MALES, HUMANOID_FEMALES, HUMANOID_IMPERIALS, HUMANOID_REBELS, WOOKIES, ITHORIANS, TWILEKS
+
+	--   ALL, ALLSEXES, ALLFACTIONS, HUMANOIDS, HUMANOID_FOOTWEAR, HUMANOID_MALES, HUMANOID_FEMALES, HUMANOID_IMPERIALS, HUMANOID_REBELS, WOOKIES, ITHORIANS, TWILEKS
 	playerUseMask = ALL,
-	
-	 --  RANGEDATTACK, MELEEATTACK, FORCEATTACK, TRAPATTACK, GRENADEATTACK, HEAVYACIDBEAMATTACK,
-	 --  HEAVYLIGHTNINGBEAMATTACK, HEAVYPARTICLEBEAMATTACK, HEAVYROCKETLAUNCHERATTACK, HEAVYLAUNCHERATTACK
+
+	--   RANGEDATTACK, MELEEATTACK, FORCEATTACK, TRAPATTACK, GRENADEATTACK, HEAVYACIDBEAMATTACK,
+	--   HEAVYLIGHTNINGBEAMATTACK, HEAVYPARTICLEBEAMATTACK, HEAVYROCKETLAUNCHERATTACK, HEAVYLAUNCHERATTACK
 	attackType = MELEEATTACK,
-	
-	 --  ENERGY, KINETIC, ELECTRICITY, STUN, BLAST, HEAT, COLD, ACID, FORCE, LIGHTSABER
+
+	--   ENERGY, KINETIC, ELECTRICITY, STUN, BLAST, HEAT, COLD, ACID, FORCE, LIGHTSABER
 	damageType = KINETIC,
-	
-	 --  NONE, LIGHT, MEDIUM, HEAVY
+
+	--   NONE, LIGHT, MEDIUM, HEAVY
 	armorPiercing = MEDIUM,
-	
-	 --  combat_rangedspecialize_bactarifle, combat_rangedspecialize_rifle, combat_rangedspecialize_pistol, combat_rangedspecialize_heavy, combat_rangedspecialize_carbine
-	 --  combat_meleespecialize_unarmed, combat_meleespecialize_twohand, combat_meleespecialize_polearm, combat_meleespecialize_onehand, combat_general,
-	 --  combat_meleespecialize_twohandlightsaber, combat_meleespecialize_polearmlightsaber, combat_meleespecialize_onehandlightsaber
+
+	--   combat_rangedspecialize_bactarifle, combat_rangedspecialize_rifle, combat_rangedspecialize_pistol, combat_rangedspecialize_heavy, combat_rangedspecialize_carbine
+	--   combat_meleespecialize_unarmed, combat_meleespecialize_twohand, combat_meleespecialize_polearm, combat_meleespecialize_onehand, combat_general,
+	--   combat_meleespecialize_twohandlightsaber, combat_meleespecialize_polearmlightsaber, combat_meleespecialize_onehandlightsaber
 	xpType = "combat_meleespecialize_polearm",
-	
-	 --  See http://www.ocdsoft.com/files/certifications.xls
+
+	--   See http://www.ocdsoft.com/files/certifications.xls
 	certificationsRequired = { "cert_lance_vibro_axe" },
-	 --  See http://www.ocdsoft.com/files/accuracy.xls
+	--   See http://www.ocdsoft.com/files/accuracy.xls
 	creatureAccuracyModifiers = { "polearm_accuracy" },
-	
-	 --  See http://www.ocdsoft.com/files/defense.xls
+
+	--   See http://www.ocdsoft.com/files/defense.xls
 	defenderDefenseModifiers = { "melee_defense" },
-	
-	 --  Leave as "dodge" for now, may have additions later
+
+	--   Leave as "dodge" for now, may have additions later
 	defenderSecondaryDefenseModifiers = { "dodge" },
-	
-	 --  See http://www.ocdsoft.com/files/speed.xls
+
+	--   See http://www.ocdsoft.com/files/speed.xls
 	speedModifiers = { "polearm_speed" },
-	
-	 --  Leave blank for now
+
+	--   Leave blank for now
 	damageModifiers = { },
-	
-	
-	 --  The values below are the default values.  To be used for blue frog objects primarily
+
+
+	--   The values below are the default values.  To be used for blue frog objects primarily
 	healthAttackCost = 78,
 	actionAttackCost = 65,
 	mindAttackCost = 29,
 	forceCost = 0,
-	
+
 	pointBlankAccuracy = 0,
 	pointBlankRange = -45,
-	
+
 	idealRange = -45,
 	idealAccuracy = 3,
-	
+
 	maxRange = -45,
 	maxRangeAccuracy = 7,
-	
-	
-	
+
+
+
 	minDamage = 49,
-	
+
 	maxDamage = 196,
-	
+
 	attackSpeed = 6.5,
-	
-	
+
+
 	numberExperimentalProperties = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
 	experimentalProperties = {"XX", "XX", "SR", "SR", "SR", "SR", "SR", "SR", "SR", "XX", "SR", "XX", "SR", "SR", "SR"},
 	experimentalWeights = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
@@ -111,6 +111,7 @@ object_weapon_melee_polearm_polearm_vibro_axe = object_weapon_melee_polearm_shar
 	experimentalMin = {0, 0, 49, 196, 6.5, 23, 750, -45, -40, 3, -45, 7, 78, 65, 29},
 	experimentalMax = {0, 0, 91, 364, 4.5, 43, 1500, -20, -20, 3, -20, 7, 45, 35, 15},
 	experimentalPrecision = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+
 }
 
 ObjectTemplates:addTemplate(object_weapon_melee_polearm_polearm_vibro_axe, "object/weapon/melee/polearm/polearm_vibro_axe.iff")

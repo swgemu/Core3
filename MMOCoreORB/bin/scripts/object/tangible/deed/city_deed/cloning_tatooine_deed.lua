@@ -45,7 +45,7 @@ object_tangible_deed_city_deed_cloning_tatooine_deed = object_tangible_deed_city
 	templateType = DEED,
 	gameObjectType = 8388609,
 	generatedObjectTemplate = "object/building/player/city/cloning_tatooine.iff",
-	
+
 	numberExperimentalProperties = {1, 1, 1},
 	experimentalProperties = {"XX", "XX", "DR"},
 	experimentalWeights = {1, 1, 1},
@@ -54,6 +54,7 @@ object_tangible_deed_city_deed_cloning_tatooine_deed = object_tangible_deed_city
 	experimentalMin = {0, 0, 35000},
 	experimentalMax = {0, 0, 75000},
 	experimentalPrecision = {0, 0, 0},
+
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_city_deed_cloning_tatooine_deed, "object/tangible/deed/city_deed/cloning_tatooine_deed.iff")

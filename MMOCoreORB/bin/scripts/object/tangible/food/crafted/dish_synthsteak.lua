@@ -43,13 +43,13 @@
 
 object_tangible_food_crafted_dish_synthsteak = object_tangible_food_crafted_shared_dish_synthsteak:new {
 	templateType = CONSUMABLE,
-	
+
 	duration = 30,
 	filling = 10,
 	nutrition = 10,
-	
+
 	effectType = 3,
-	
+
 	fillingMin = 29,
 	fillingMax = 20,
 	flavorMin = 22,
@@ -58,13 +58,13 @@ object_tangible_food_crafted_dish_synthsteak = object_tangible_food_crafted_shar
 	nutritionMax = 31,
 	quantityMin = 4,
 	quantityMax = 7,
-	
+
 	modifiers = { "mitigate_damage", 0 },
-	
+
 	buffName = "food.mitigate_damage",
 	buffCRC = 0,
 	speciesRestriction = "",
-	
+
 	numberExperimentalProperties = {1, 1, 1, 2, 2, 2, 2},
 	experimentalProperties = {"XX", "XX", "XX", "OQ", "PE", "FL", "OQ", "DR", "SR", "DR", "OQ"},
 	experimentalWeights = {1, 1, 1, 1, 2, 2, 1, 1, 3, 3, 1},
@@ -73,6 +73,7 @@ object_tangible_food_crafted_dish_synthsteak = object_tangible_food_crafted_shar
 	experimentalMin = {0, 0, 1000, 75, 60, 60, 80},
 	experimentalMax = {0, 0, 1000, 120, 120, 100, 120},
 	experimentalPrecision = {0, 0, 0, 10, 10, 10, 10},
+
 }
 
 ObjectTemplates:addTemplate(object_tangible_food_crafted_dish_synthsteak, "object/tangible/food/crafted/dish_synthsteak.iff")

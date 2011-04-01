@@ -44,9 +44,9 @@
 object_tangible_deed_generator_deed_generator_wind_deed = object_tangible_deed_generator_deed_shared_generator_wind_deed:new {
 	templateType = DEED,
 	generatedObjectTemplate = "object/installation/generators/power_generator_wind_style_1.iff",
-	
-	
-	
+
+
+
 	numberExperimentalProperties = {1, 1, 3, 2, 1},
 	experimentalProperties = {"XX", "XX", "HR", "SR", "UT", "MA", "UT", "XX"},
 	experimentalWeights = {1, 1, 1, 1, 2, 1, 2, 1},
@@ -55,6 +55,7 @@ object_tangible_deed_generator_deed_generator_wind_deed = object_tangible_deed_g
 	experimentalMin = {0, 0, 4, 25000, 1000},
 	experimentalMax = {0, 0, 10, 50000, 1000},
 	experimentalPrecision = {0, 0, 0, 0, 0},
+
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_generator_deed_generator_wind_deed, "object/tangible/deed/generator_deed/generator_wind_deed.iff")

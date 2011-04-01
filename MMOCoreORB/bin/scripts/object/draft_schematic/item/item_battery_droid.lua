@@ -72,7 +72,7 @@ object_draft_schematic_item_item_battery_droid = object_draft_schematic_item_sha
    combineTypes = {0, 0, 0},
    contribution = {100, 100, 100},
 
-   templates { = 
+   templates = {
               1496112814, -- Script: 'object/tangible/droid_battery/battery.iff'
              }
 

@@ -72,7 +72,7 @@ object_draft_schematic_bio_engineer_creature_creature_ronto = object_draft_schem
    combineTypes = {1, 0, 0},
    contribution = {100, 100, 100},
 
-   templates { = 
+   templates = {
               57752717, -- Script: 'object/tangible/deed/pet_deed/ronto_deed.iff'
              }
 

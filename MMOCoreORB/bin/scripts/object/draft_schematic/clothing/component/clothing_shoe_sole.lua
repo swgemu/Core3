@@ -72,7 +72,7 @@ object_draft_schematic_clothing_component_clothing_shoe_sole = object_draft_sche
    combineTypes = {0, 0},
    contribution = {100, 100},
 
-   templates { = 
+   templates = {
               3400573006, -- Script: 'object/tangible/component/clothing/shoe_sole.iff'
              }
 

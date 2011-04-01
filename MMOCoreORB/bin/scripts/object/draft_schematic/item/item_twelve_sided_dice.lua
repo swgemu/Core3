@@ -72,7 +72,7 @@ object_draft_schematic_item_item_twelve_sided_dice = object_draft_schematic_item
    combineTypes = {0, 0},
    contribution = {100, 100},
 
-   templates { = 
+   templates = {
               1909907640, -- Script: 'object/tangible/dice/eqp_twelve_sided_dice_set.iff'
              }
 

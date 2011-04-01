@@ -42,8 +42,8 @@
 
 
 object_tangible_component_chemistry_dispersal_mechanism = object_tangible_component_chemistry_shared_dispersal_mechanism:new {
-	
-	
+
+
 	numberExperimentalProperties = {1, 1, 1, 2, 2, 2, 1, 1, 1},
 	experimentalProperties = {"XX", "XX", "XX", "DR", "OQ", "DR", "OQ", "DR", "OQ", "XX", "XX", "XX"},
 	experimentalWeights = {1, 1, 1, 1, 3, 1, 2, 1, 2, 1, 1, 1},
@@ -52,6 +52,7 @@ object_tangible_component_chemistry_dispersal_mechanism = object_tangible_compon
 	experimentalMin = {0, 0, 0, 1, 10, 1, 0, 0, 1000},
 	experimentalMax = {0, 0, 0, 10, 1, 10, 0, 0, 1000},
 	experimentalPrecision = {0, 0, 0, 0, 0, 0, 0, 0, 0},
+
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_chemistry_dispersal_mechanism, "object/tangible/component/chemistry/dispersal_mechanism.iff")

@@ -72,7 +72,7 @@ object_draft_schematic_item_item_powerup_weapon_ranged_three = object_draft_sche
    combineTypes = {0, 0},
    contribution = {100, 100},
 
-   templates { = 
+   templates = {
               1006954225, -- Script: 'object/tangible/powerup/weapon/ranged_muzzle.iff'
              }
 

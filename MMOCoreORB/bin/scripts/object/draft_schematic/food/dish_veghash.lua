@@ -72,7 +72,7 @@ object_draft_schematic_food_dish_veghash = object_draft_schematic_food_shared_di
    combineTypes = {1, 0, 0, 0, 1},
    contribution = {100, 100, 100, 100, 100},
 
-   templates { = 
+   templates = {
               1602372839, -- Script: 'object/tangible/food/crafted/dish_veghash.iff'
              }
 

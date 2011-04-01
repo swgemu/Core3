@@ -72,7 +72,7 @@ object_draft_schematic_armor_component_deflector_shield_generator_energy_ray = o
    combineTypes = {0, 0, 0, 0},
    contribution = {100, 100, 100, 100},
 
-   templates { = 
+   templates = {
               3106447809, -- Script: 'object/tangible/component/armor/deflector_shield_generator_energy_ray.iff'
              }
 

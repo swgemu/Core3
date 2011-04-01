@@ -72,7 +72,7 @@ object_draft_schematic_chemistry_component_biologic_effect_controller_advanced =
    combineTypes = {0, 0},
    contribution = {100, 100},
 
-   templates { = 
+   templates = {
               1952373811, -- Script: 'object/tangible/component/chemistry/biologic_effect_controller_advanced.iff'
              }
 

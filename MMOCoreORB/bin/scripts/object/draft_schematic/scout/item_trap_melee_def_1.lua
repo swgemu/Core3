@@ -72,7 +72,7 @@ object_draft_schematic_scout_item_trap_melee_def_1 = object_draft_schematic_scou
    combineTypes = {0, 0},
    contribution = {100, 100},
 
-   templates { = 
+   templates = {
               35614291, -- Script: 'object/tangible/scout/trap/trap_melee_def_1.iff'
              }
 

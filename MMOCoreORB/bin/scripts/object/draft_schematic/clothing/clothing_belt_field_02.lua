@@ -72,7 +72,7 @@ object_draft_schematic_clothing_clothing_belt_field_02 = object_draft_schematic_
    combineTypes = {0, 0, 0},
    contribution = {100, 100, 100},
 
-   templates { = 
+   templates = {
               1252613084, -- Script: 'object/tangible/wearables/belt/belt_s02.iff'
              }
 

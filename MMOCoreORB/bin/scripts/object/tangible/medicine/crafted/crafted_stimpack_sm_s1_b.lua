@@ -46,7 +46,7 @@ object_tangible_medicine_crafted_crafted_stimpack_sm_s1_b = object_tangible_medi
 	templateType = STIMPACK,
 	medicineUse = 10,
 	effectiveness = 150,
-	
+
 	numberExperimentalProperties = {1, 1, 2, 2, 1, 1},
 	experimentalProperties = {"XX", "XX", "OQ", "PE", "OQ", "UT", "XX", "XX"},
 	experimentalWeights = {1, 1, 2, 1, 2, 1, 1, 1},
@@ -55,6 +55,7 @@ object_tangible_medicine_crafted_crafted_stimpack_sm_s1_b = object_tangible_medi
 	experimentalMin = {0, 0, 75, 15, 5, 1000},
 	experimentalMax = {0, 0, 200, 30, 5, 1000},
 	experimentalPrecision = {0, 0, 0, 0, 0, 0},
+
 }
 
 ObjectTemplates:addTemplate(object_tangible_medicine_crafted_crafted_stimpack_sm_s1_b, "object/tangible/medicine/crafted/crafted_stimpack_sm_s1_b.iff")

@@ -72,7 +72,7 @@ object_draft_schematic_bio_engineer_creature_creature_dewback = object_draft_sch
    combineTypes = {1, 0, 0},
    contribution = {100, 100, 100},
 
-   templates { = 
+   templates = {
               4178408464, -- Script: 'object/tangible/deed/pet_deed/dewback_deed.iff'
              }
 

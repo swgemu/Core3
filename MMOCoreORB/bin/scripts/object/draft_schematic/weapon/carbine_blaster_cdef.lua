@@ -72,7 +72,7 @@ object_draft_schematic_weapon_carbine_blaster_cdef = object_draft_schematic_weap
    combineTypes = {0, 0, 0},
    contribution = {100, 100, 100},
 
-   templates { = 
+   templates = {
               3081731554, -- Script: 'object/weapon/ranged/carbine/carbine_cdef.iff'
              }
 

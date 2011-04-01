@@ -72,7 +72,7 @@ object_draft_schematic_weapon_sword = object_draft_schematic_weapon_shared_sword
    combineTypes = {0, 0, 1},
    contribution = {100, 100, 100},
 
-   templates { = 
+   templates = {
               3621186351, -- Script: 'object/weapon/melee/sword/sword_01.iff'
              }
 

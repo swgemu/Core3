@@ -42,8 +42,8 @@
 
 
 object_tangible_component_armor_armor_segment_composite = object_tangible_component_armor_shared_armor_segment_composite:new {
-	
-	
+
+
 	numberExperimentalProperties = {1, 1, 1, 2, 2, 2, 2, 2, 1, 1, 2, 1},
 	experimentalProperties = {"XX", "XX", "XX", "OQ", "SR", "OQ", "UT", "MA", "OQ", "MA", "OQ", "MA", "OQ", "XX", "XX", "OQ", "SR", "XX"},
 	experimentalWeights = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
@@ -52,6 +52,7 @@ object_tangible_component_armor_armor_segment_composite = object_tangible_compon
 	experimentalMin = {0, 0, 1000, 1, 100, 13, 13, 16, 1, 256, 1, 100},
 	experimentalMax = {0, 0, 1000, 10, 1000, 1, 1, 1, 1, 256, 15, 1000},
 	experimentalPrecision = {0, 0, 0, 10, 0, 0, 0, 0, 0, 0, 0, 0},
+
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_armor_armor_segment_composite, "object/tangible/component/armor/armor_segment_composite.iff")

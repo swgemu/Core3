@@ -72,7 +72,7 @@ object_draft_schematic_droid_component_repair_unit_casing_advanced = object_draf
    combineTypes = {0, 0},
    contribution = {100, 100},
 
-   templates { = 
+   templates = {
               4219947642, -- Script: 'object/tangible/component/droid/repair/repair_unit_casing_advanced.iff'
              }
 

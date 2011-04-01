@@ -72,7 +72,7 @@ object_draft_schematic_food_component_ingredient_ball_of_dough = object_draft_sc
    combineTypes = {0},
    contribution = {100},
 
-   templates { = 
+   templates = {
               2225013790, -- Script: 'object/tangible/component/food/ingredient_ball_of_dough.iff'
              }
 

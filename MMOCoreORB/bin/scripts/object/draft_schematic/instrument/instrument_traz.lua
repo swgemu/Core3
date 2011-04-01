@@ -72,7 +72,7 @@ object_draft_schematic_instrument_instrument_traz = object_draft_schematic_instr
    combineTypes = {0, 0},
    contribution = {100, 100},
 
-   templates { = 
+   templates = {
               2939341884, -- Script: 'object/tangible/instrument/traz.iff'
              }
 

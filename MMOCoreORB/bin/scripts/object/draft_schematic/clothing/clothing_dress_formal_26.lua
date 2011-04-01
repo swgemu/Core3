@@ -72,7 +72,7 @@ object_draft_schematic_clothing_clothing_dress_formal_26 = object_draft_schemati
    combineTypes = {0, 1, 1, 1, 1},
    contribution = {100, 100, 100, 100, 100},
 
-   templates { = 
+   templates = {
               612391735, -- Script: 'object/tangible/wearables/dress/dress_s26.iff'
              }
 

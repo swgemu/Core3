@@ -72,7 +72,7 @@ object_draft_schematic_food_dessert_smugglers_delight = object_draft_schematic_f
    combineTypes = {1, 1, 0, 0, 1},
    contribution = {100, 100, 100, 100, 100},
 
-   templates { = 
+   templates = {
               2080884324, -- Script: 'object/tangible/food/crafted/dessert_smugglers_delight.iff'
              }
 

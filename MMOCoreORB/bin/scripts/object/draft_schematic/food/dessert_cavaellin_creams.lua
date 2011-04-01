@@ -72,7 +72,7 @@ object_draft_schematic_food_dessert_cavaellin_creams = object_draft_schematic_fo
    combineTypes = {1, 1, 0, 0, 1},
    contribution = {100, 100, 100, 100, 100},
 
-   templates { = 
+   templates = {
               2361562246, -- Script: 'object/tangible/food/crafted/dessert_cavaellin_creams.iff'
              }
 

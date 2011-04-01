@@ -72,7 +72,7 @@ object_draft_schematic_food_dessert_pastebread = object_draft_schematic_food_sha
    combineTypes = {0, 0, 0, 1},
    contribution = {100, 100, 100, 100},
 
-   templates { = 
+   templates = {
               920119228, -- Script: 'object/tangible/food/crafted/dessert_pastebread.iff'
              }
 

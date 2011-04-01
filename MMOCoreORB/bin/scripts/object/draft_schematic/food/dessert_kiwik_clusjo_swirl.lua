@@ -72,7 +72,7 @@ object_draft_schematic_food_dessert_kiwik_clusjo_swirl = object_draft_schematic_
    combineTypes = {0, 0, 0, 0, 1},
    contribution = {100, 100, 100, 100, 100},
 
-   templates { = 
+   templates = {
               2974799889, -- Script: 'object/tangible/food/crafted/dessert_kiwik_clusjo_swirl.iff'
              }
 

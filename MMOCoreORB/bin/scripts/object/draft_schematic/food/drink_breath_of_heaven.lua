@@ -72,7 +72,7 @@ object_draft_schematic_food_drink_breath_of_heaven = object_draft_schematic_food
    combineTypes = {1, 1, 0, 0, 1, 1},
    contribution = {100, 100, 100, 100, 100, 100},
 
-   templates { = 
+   templates = {
               1492257317, -- Script: 'object/tangible/food/crafted/drink_breath_of_heaven.iff'
              }
 

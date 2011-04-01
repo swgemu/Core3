@@ -72,7 +72,7 @@ object_draft_schematic_scout_item_camp_improved = object_draft_schematic_scout_s
    combineTypes = {0, 0},
    contribution = {100, 100},
 
-   templates { = 
+   templates = {
               1573108791, -- Script: 'object/tangible/scout/camp/camp_improved.iff'
              }
 

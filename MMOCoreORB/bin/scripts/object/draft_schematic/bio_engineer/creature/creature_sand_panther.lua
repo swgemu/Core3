@@ -72,7 +72,7 @@ object_draft_schematic_bio_engineer_creature_creature_sand_panther = object_draf
    combineTypes = {1, 0, 0},
    contribution = {100, 100, 100},
 
-   templates { = 
+   templates = {
               3600154500, -- Script: 'object/tangible/deed/pet_deed/sand_panther_deed.iff'
              }
 

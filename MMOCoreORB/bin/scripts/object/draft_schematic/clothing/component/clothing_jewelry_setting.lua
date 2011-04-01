@@ -72,7 +72,7 @@ object_draft_schematic_clothing_component_clothing_jewelry_setting = object_draf
    combineTypes = {0, 0, 0},
    contribution = {100, 100, 100},
 
-   templates { = 
+   templates = {
               3680867846, -- Script: 'object/tangible/component/clothing/jewelry_setting.iff'
              }
 

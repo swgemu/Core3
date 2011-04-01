@@ -72,7 +72,7 @@ object_draft_schematic_food_drink_veronian_berry_wine = object_draft_schematic_f
    combineTypes = {0, 0, 1, 1, 1},
    contribution = {100, 100, 100, 100, 100},
 
-   templates { = 
+   templates = {
               3145063113, -- Script: 'object/tangible/food/crafted/drink_veronian_berry_wine.iff'
              }
 

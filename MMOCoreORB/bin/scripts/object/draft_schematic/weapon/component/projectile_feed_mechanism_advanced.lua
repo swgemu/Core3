@@ -72,7 +72,7 @@ object_draft_schematic_weapon_component_projectile_feed_mechanism_advanced = obj
    combineTypes = {0, 0, 1},
    contribution = {100, 100, 100},
 
-   templates { = 
+   templates = {
               590597969, -- Script: 'object/tangible/component/weapon/projectile_feed_mechanism_advanced.iff'
              }
 

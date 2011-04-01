@@ -43,13 +43,13 @@
 
 object_tangible_food_crafted_dessert_gorrnar = object_tangible_food_crafted_shared_dessert_gorrnar:new {
 	templateType = CONSUMABLE,
-	
+
 	duration = 45,
 	filling = 10,
 	nutrition = 10,
-	
+
 	effectType = 3,
-	
+
 	fillingMin = 30,
 	fillingMax = 19,
 	flavorMin = 960,
@@ -58,13 +58,13 @@ object_tangible_food_crafted_dessert_gorrnar = object_tangible_food_crafted_shar
 	nutritionMax = 24,
 	quantityMin = 5,
 	quantityMax = 7,
-	
+
 	modifiers = { "reduce_clone_wounds", 0 },
-	
+
 	buffName = "food.reduce_clone_wounds",
 	buffCRC = 0,
 	speciesRestriction = "",
-	
+
 	numberExperimentalProperties = {1, 1, 3, 2, 2, 2},
 	experimentalProperties = {"XX", "XX", "DR", "OQ", "UT", "DR", "OQ", "OQ", "PE", "FL", "OQ"},
 	experimentalWeights = {1, 1, 4, 1, 1, 1, 1, 1, 2, 2, 1},
@@ -73,6 +73,7 @@ object_tangible_food_crafted_dessert_gorrnar = object_tangible_food_crafted_shar
 	experimentalMin = {0, 0, 1000, 75, 60, 80},
 	experimentalMax = {0, 0, 1000, 120, 100, 120},
 	experimentalPrecision = {0, 0, 0, 10, 10, 10},
+
 }
 
 ObjectTemplates:addTemplate(object_tangible_food_crafted_dessert_gorrnar, "object/tangible/food/crafted/dessert_gorrnar.iff")

@@ -72,7 +72,7 @@ object_draft_schematic_scout_item_camokit_tatooine = object_draft_schematic_scou
    combineTypes = {0, 0, 0},
    contribution = {100, 100, 100},
 
-   templates { = 
+   templates = {
               4127652599, -- Script: 'object/tangible/scout/camokit/camokit_tatooine.iff'
              }
 

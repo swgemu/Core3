@@ -72,7 +72,7 @@ object_draft_schematic_clothing_clothing_hat_twilek_formal_05 = object_draft_sch
    combineTypes = {0, 1, 1, 1},
    contribution = {100, 100, 100, 100},
 
-   templates { = 
+   templates = {
               2169492787, -- Script: 'object/tangible/wearables/hat/hat_twilek_s05.iff'
              }
 

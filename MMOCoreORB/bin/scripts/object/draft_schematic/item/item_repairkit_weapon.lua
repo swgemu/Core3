@@ -72,7 +72,7 @@ object_draft_schematic_item_item_repairkit_weapon = object_draft_schematic_item_
    combineTypes = {0, 0},
    contribution = {100, 100},
 
-   templates { = 
+   templates = {
               4269687909, -- Script: 'object/tangible/crafting/station/weapon_repair.iff'
              }
 

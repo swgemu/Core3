@@ -42,8 +42,8 @@
 
 
 object_tangible_component_droid_crafting_module_food = object_tangible_component_droid_shared_crafting_module_food:new {
-	
-	
+
+
 	numberExperimentalProperties = {1, 1, 2, 1, 2, 1},
 	experimentalProperties = {"XX", "XX", "CD", "OQ", "XX", "CD", "OQ", "XX"},
 	experimentalWeights = {1, 1, 1, 1, 1, 1, 1, 1},
@@ -52,6 +52,7 @@ object_tangible_component_droid_crafting_module_food = object_tangible_component
 	experimentalMin = {0, 0, 5, 1000, -10, 10},
 	experimentalMax = {0, 0, 15, 1000, 15, 10},
 	experimentalPrecision = {0, 0, 0, 0, 0, 0},
+
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_droid_crafting_module_food, "object/tangible/component/droid/crafting_module_food.iff")

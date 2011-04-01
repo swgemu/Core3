@@ -72,7 +72,7 @@ object_draft_schematic_furniture_furniture_lamp_freestanding = object_draft_sche
    combineTypes = {0, 0, 0, 0},
    contribution = {100, 100, 100, 100},
 
-   templates { = 
+   templates = {
               304186597, -- Script: 'object/tangible/furniture/all/frn_all_lamp_free_s01.iff'
              }
 

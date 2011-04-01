@@ -72,7 +72,7 @@ object_draft_schematic_droid_component_medic_module_6 = object_draft_schematic_d
    combineTypes = {0, 0, 1, 1},
    contribution = {100, 100, 100, 100},
 
-   templates { = 
+   templates = {
               1990035908, -- Script: 'object/tangible/component/droid/medic_module_6.iff'
              }
 

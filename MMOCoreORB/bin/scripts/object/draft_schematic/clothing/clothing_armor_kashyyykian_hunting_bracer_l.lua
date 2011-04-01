@@ -72,7 +72,7 @@ object_draft_schematic_clothing_clothing_armor_kashyyykian_hunting_bracer_l = ob
    combineTypes = {0, 0, 0, 0, 0, 1, 1, 1, 0},
    contribution = {100, 100, 100, 100, 100, 100, 100, 100, 100},
 
-   templates { = 
+   templates = {
               811367898, -- Script: 'object/tangible/wearables/armor/kashyyykian_hunting/armor_kashyyykian_hunting_bracer_l.iff'
              }
 

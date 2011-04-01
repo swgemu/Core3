@@ -72,7 +72,7 @@ object_draft_schematic_food_drink_elshandruu_pica_thundercloud = object_draft_sc
    combineTypes = {1, 0, 0, 0, 1, 1},
    contribution = {100, 100, 100, 100, 100, 100},
 
-   templates { = 
+   templates = {
               3328378890, -- Script: 'object/tangible/food/crafted/drink_elshandruu_pica_thundercloud.iff'
              }
 

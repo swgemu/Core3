@@ -72,7 +72,7 @@ object_draft_schematic_food_dish_teltier_noodles = object_draft_schematic_food_s
    combineTypes = {0, 0, 1, 1},
    contribution = {100, 100, 100, 100},
 
-   templates { = 
+   templates = {
               1664157751, -- Script: 'object/tangible/food/crafted/dish_teltier_noodles.iff'
              }
 

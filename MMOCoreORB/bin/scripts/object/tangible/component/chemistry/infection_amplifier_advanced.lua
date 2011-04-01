@@ -42,8 +42,8 @@
 
 
 object_tangible_component_chemistry_infection_amplifier_advanced = object_tangible_component_chemistry_shared_infection_amplifier_advanced:new {
-	
-	
+
+
 	numberExperimentalProperties = {1, 1, 2, 1, 1, 1, 1, 1, 1},
 	experimentalProperties = {"XX", "XX", "DR", "OQ", "XX", "XX", "XX", "XX", "XX", "XX"},
 	experimentalWeights = {1, 1, 1, 3, 1, 1, 1, 1, 1, 1},
@@ -52,6 +52,7 @@ object_tangible_component_chemistry_infection_amplifier_advanced = object_tangib
 	experimentalMin = {0, 0, 5, 0, 0, 0, 0, 0, 1000},
 	experimentalMax = {0, 0, 75, 0, 0, 0, 0, 0, 1000},
 	experimentalPrecision = {0, 0, 0, 0, 0, 0, 0, 0, 0},
+
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_chemistry_infection_amplifier_advanced, "object/tangible/component/chemistry/infection_amplifier_advanced.iff")

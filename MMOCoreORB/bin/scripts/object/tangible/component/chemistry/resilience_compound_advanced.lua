@@ -42,8 +42,8 @@
 
 
 object_tangible_component_chemistry_resilience_compound_advanced = object_tangible_component_chemistry_shared_resilience_compound_advanced:new {
-	
-	
+
+
 	numberExperimentalProperties = {1, 1, 1, 1, 1, 1, 2, 2, 1},
 	experimentalProperties = {"XX", "XX", "XX", "XX", "XX", "XX", "DR", "OQ", "DR", "OQ", "XX"},
 	experimentalWeights = {1, 1, 1, 1, 1, 1, 1, 2, 1, 1, 1},
@@ -52,6 +52,7 @@ object_tangible_component_chemistry_resilience_compound_advanced = object_tangib
 	experimentalMin = {0, 0, 0, 0, 0, 0, 10, 5, 1000},
 	experimentalMax = {0, 0, 0, 0, 0, 0, 100, 180, 1000},
 	experimentalPrecision = {0, 0, 0, 0, 0, 0, 0, 0, 0},
+
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_chemistry_resilience_compound_advanced, "object/tangible/component/chemistry/resilience_compound_advanced.iff")

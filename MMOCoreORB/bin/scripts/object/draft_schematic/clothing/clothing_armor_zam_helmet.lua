@@ -72,7 +72,7 @@ object_draft_schematic_clothing_clothing_armor_zam_helmet = object_draft_schemat
    combineTypes = {0, 0, 0, 0, 0, 0, 1, 1},
    contribution = {100, 100, 100, 100, 100, 100, 100, 100},
 
-   templates { = 
+   templates = {
               1289593246, -- Script: 'object/tangible/wearables/armor/zam/armor_zam_wesell_helmet.iff'
              }
 

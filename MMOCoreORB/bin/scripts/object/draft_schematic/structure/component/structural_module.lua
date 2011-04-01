@@ -72,7 +72,7 @@ object_draft_schematic_structure_component_structural_module = object_draft_sche
    combineTypes = {0, 0, 0},
    contribution = {100, 100, 100},
 
-   templates { = 
+   templates = {
               2974425116, -- Script: 'object/tangible/component/structure/structural_module.iff'
              }
 

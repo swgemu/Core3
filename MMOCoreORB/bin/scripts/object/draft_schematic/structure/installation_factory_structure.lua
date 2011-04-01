@@ -72,7 +72,7 @@ object_draft_schematic_structure_installation_factory_structure = object_draft_s
    combineTypes = {0, 1, 0, 0, 1, 1, 1},
    contribution = {100, 100, 100, 100, 100, 100, 100},
 
-   templates { = 
+   templates = {
               484449112, -- Script: 'object/tangible/deed/factory_deed/factory_structure_deed.iff'
              }
 

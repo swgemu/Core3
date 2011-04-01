@@ -72,7 +72,7 @@ object_draft_schematic_food_component_container_small_glass = object_draft_schem
    combineTypes = {0},
    contribution = {100},
 
-   templates { = 
+   templates = {
               4144999161, -- Script: 'object/tangible/component/food/container_small_glass.iff'
              }
 

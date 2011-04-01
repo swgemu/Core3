@@ -72,7 +72,7 @@ object_draft_schematic_droid_droid_damage_repair_kit_a = object_draft_schematic_
    combineTypes = {0, 0, 0, 1, 0},
    contribution = {100, 100, 100, 100, 100},
 
-   templates { = 
+   templates = {
               1317824494, -- Script: 'object/tangible/medicine/pet/droid_damage_kit_a.iff'
              }
 

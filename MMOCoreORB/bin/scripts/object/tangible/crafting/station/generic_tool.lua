@@ -42,18 +42,18 @@
 
 
 object_tangible_crafting_station_generic_tool = object_tangible_crafting_station_shared_generic_tool:new {
-	
+
 	templateType = CRAFTINGTOOL,
-	
+
 	playerUseMask = 65535,
-	
+
 	customizationOptions = {},
 	customizationDefaults = {},
-	
+
 	toolType = 3,
 	complexityLevel = 15,
 	enabledTabs = {1,2,4,8,1024,4096,524288,2148007936},
-	
+
 	numberExperimentalProperties = {1, 1, 1, 1},
 	experimentalProperties = {"XX", "XX", "XX", "CD"},
 	experimentalWeights = {1, 1, 1, 1},
@@ -62,5 +62,6 @@ object_tangible_crafting_station_generic_tool = object_tangible_crafting_station
 	experimentalMin = {0, 0, 1000, -15},
 	experimentalMax = {0, 0, 1000, 15},
 	experimentalPrecision = {0, 0, 0, 0},
+
 }
 ObjectTemplates:addTemplate(object_tangible_crafting_station_generic_tool, "object/tangible/crafting/station/generic_tool.iff")

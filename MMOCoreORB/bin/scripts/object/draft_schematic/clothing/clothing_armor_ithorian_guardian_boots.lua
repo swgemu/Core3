@@ -72,7 +72,7 @@ object_draft_schematic_clothing_clothing_armor_ithorian_guardian_boots = object_
    combineTypes = {0, 0, 0, 0, 0, 0, 1, 1, 1},
    contribution = {100, 100, 100, 100, 100, 100, 100, 100, 100},
 
-   templates { = 
+   templates = {
               2062241693, -- Script: 'object/tangible/wearables/armor/ithorian_guardian/ith_armor_s02_boots.iff'
              }
 

@@ -72,7 +72,7 @@ object_draft_schematic_clothing_clothing_armor_ithorian_sentinel_gloves = object
    combineTypes = {0, 0, 0, 0, 0, 0, 1, 1, 1},
    contribution = {100, 100, 100, 100, 100, 100, 100, 100, 100},
 
-   templates { = 
+   templates = {
               2132891736, -- Script: 'object/tangible/wearables/armor/ithorian_sentinel/ith_armor_s03_gloves.iff'
              }
 

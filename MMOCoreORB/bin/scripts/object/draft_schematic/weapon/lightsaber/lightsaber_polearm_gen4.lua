@@ -72,7 +72,7 @@ object_draft_schematic_weapon_lightsaber_lightsaber_polearm_gen4 = object_draft_
    combineTypes = {0, 1, 0, 0, 1, 0, 0},
    contribution = {100, 100, 100, 100, 100, 100, 100},
 
-   templates { = 
+   templates = {
               2630499944, -- Script: 'object/weapon/melee/polearm/crafted_saber/sword_lightsaber_polearm_gen4.iff'
              }
 

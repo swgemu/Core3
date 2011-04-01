@@ -42,8 +42,8 @@
 
 
 object_tangible_component_droid_droid_interplanetary_survey = object_tangible_component_droid_shared_droid_interplanetary_survey:new {
-	
-	
+
+
 	numberExperimentalProperties = {1, 1, 3, 3, 3},
 	experimentalProperties = {"XX", "XX", "OQ", "SR", "UT", "OQ", "SR", "UT", "OQ", "SR", "UT"},
 	experimentalWeights = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
@@ -52,6 +52,7 @@ object_tangible_component_droid_droid_interplanetary_survey = object_tangible_co
 	experimentalMin = {0, 0, 5, 3, 0},
 	experimentalMax = {0, 0, 15, 15, 100},
 	experimentalPrecision = {0, 0, 0, 0, 0},
+
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_droid_droid_interplanetary_survey, "object/tangible/component/droid/droid_interplanetary_survey.iff")

@@ -72,7 +72,7 @@ object_draft_schematic_scout_item_camokit_lok = object_draft_schematic_scout_sha
    combineTypes = {0, 0, 0},
    contribution = {100, 100, 100},
 
-   templates { = 
+   templates = {
               977748045, -- Script: 'object/tangible/scout/camokit/camokit_lok.iff'
              }
 

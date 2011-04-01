@@ -72,7 +72,7 @@ object_draft_schematic_food_dish_thakitillo = object_draft_schematic_food_shared
    combineTypes = {0, 0, 0, 0, 1},
    contribution = {100, 100, 100, 100, 100},
 
-   templates { = 
+   templates = {
               4057409963, -- Script: 'object/tangible/food/crafted/dish_thakitillo.iff'
              }
 

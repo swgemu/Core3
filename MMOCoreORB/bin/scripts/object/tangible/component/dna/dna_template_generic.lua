@@ -42,8 +42,8 @@
 
 
 object_tangible_component_dna_dna_template_generic = object_tangible_component_dna_shared_dna_template_generic:new {
-	
-	
+
+
 	numberExperimentalProperties = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
 	experimentalProperties = {"XX", "XX", "UT", "CR", "CD", "DR", "HR", "FL", "MA", "PE", "OQ", "SR"},
 	experimentalWeights = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
@@ -52,6 +52,7 @@ object_tangible_component_dna_dna_template_generic = object_tangible_component_d
 	experimentalMin = {0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
 	experimentalMax = {0, 0, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000},
 	experimentalPrecision = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_dna_dna_template_generic, "object/tangible/component/dna/dna_template_generic.iff")

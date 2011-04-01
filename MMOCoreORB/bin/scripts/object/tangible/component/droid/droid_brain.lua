@@ -42,8 +42,8 @@
 
 
 object_tangible_component_droid_droid_brain = object_tangible_component_droid_shared_droid_brain:new {
-	
-	
+
+
 	numberExperimentalProperties = {1, 1, 2, 1, 2},
 	experimentalProperties = {"XX", "XX", "CD", "OQ", "XX", "CD", "OQ"},
 	experimentalWeights = {1, 1, 1, 1, 1, 1, 1},
@@ -52,6 +52,7 @@ object_tangible_component_droid_droid_brain = object_tangible_component_droid_sh
 	experimentalMin = {0, 0, 5, 1000, -10},
 	experimentalMax = {0, 0, 15, 1000, 15},
 	experimentalPrecision = {0, 0, 0, 0, 0},
+
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_droid_droid_brain, "object/tangible/component/droid/droid_brain.iff")

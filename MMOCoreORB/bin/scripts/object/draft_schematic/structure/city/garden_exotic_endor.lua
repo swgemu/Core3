@@ -72,7 +72,7 @@ object_draft_schematic_structure_city_garden_exotic_endor = object_draft_schemat
    combineTypes = {0, 0, 1},
    contribution = {100, 100, 100},
 
-   templates { = 
+   templates = {
               3619763926, -- Script: 'object/tangible/deed/city_deed/garden_endor_lrg_01_deed.iff'
              }
 

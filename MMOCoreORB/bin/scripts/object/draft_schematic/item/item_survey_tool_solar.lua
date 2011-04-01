@@ -72,7 +72,7 @@ object_draft_schematic_item_item_survey_tool_solar = object_draft_schematic_item
    combineTypes = {0, 0, 0},
    contribution = {100, 100, 100},
 
-   templates { = 
+   templates = {
               2609023122, -- Script: 'object/tangible/survey_tool/survey_tool_solar.iff'
              }
 

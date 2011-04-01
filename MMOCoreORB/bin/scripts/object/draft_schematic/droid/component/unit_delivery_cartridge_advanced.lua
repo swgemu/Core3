@@ -72,7 +72,7 @@ object_draft_schematic_droid_component_unit_delivery_cartridge_advanced = object
    combineTypes = {0, 0},
    contribution = {100, 100},
 
-   templates { = 
+   templates = {
               3629850941, -- Script: 'object/tangible/component/droid/repair/unit_delivery_cartridge_advanced.iff'
              }
 

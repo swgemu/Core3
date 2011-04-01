@@ -72,7 +72,7 @@ object_draft_schematic_droid_component_stimpack_dispensor = object_draft_schemat
    combineTypes = {0, 0, 0},
    contribution = {100, 100, 100},
 
-   templates { = 
+   templates = {
               1137924050, -- Script: 'object/tangible/component/droid/stimpack_dispensor.iff'
              }
 

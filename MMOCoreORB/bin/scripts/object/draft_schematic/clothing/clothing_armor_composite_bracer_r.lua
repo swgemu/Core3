@@ -72,7 +72,7 @@ object_draft_schematic_clothing_clothing_armor_composite_bracer_r = object_draft
    combineTypes = {0, 0, 0, 0, 0, 0, 1, 1, 1},
    contribution = {100, 100, 100, 100, 100, 100, 100, 100, 100},
 
-   templates { = 
+   templates = {
               3565760915, -- Script: 'object/tangible/wearables/armor/composite/armor_composite_bracer_r.iff'
              }
 

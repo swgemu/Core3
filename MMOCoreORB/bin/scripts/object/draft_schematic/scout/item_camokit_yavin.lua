@@ -72,7 +72,7 @@ object_draft_schematic_scout_item_camokit_yavin = object_draft_schematic_scout_s
    combineTypes = {0, 0, 0},
    contribution = {100, 100, 100},
 
-   templates { = 
+   templates = {
               823720266, -- Script: 'object/tangible/scout/camokit/camokit_yavin.iff'
              }
 

@@ -72,7 +72,7 @@ object_draft_schematic_armor_armor_segment_kashyyykian_black_mtn = object_draft_
    combineTypes = {0, 0, 0, 1, 1, 1},
    contribution = {100, 100, 100, 100, 100, 100},
 
-   templates { = 
+   templates = {
               775748867, -- Script: 'object/tangible/component/armor/armor_segment_kashyyykian_black_mtn.iff'
              }
 

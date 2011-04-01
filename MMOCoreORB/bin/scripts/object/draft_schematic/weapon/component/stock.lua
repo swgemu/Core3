@@ -72,7 +72,7 @@ object_draft_schematic_weapon_component_stock = object_draft_schematic_weapon_co
    combineTypes = {0, 0},
    contribution = {100, 100},
 
-   templates { = 
+   templates = {
               3643274181, -- Script: 'object/tangible/component/weapon/stock.iff'
              }
 

@@ -72,7 +72,7 @@ object_draft_schematic_clothing_clothing_bikini_casual_01 = object_draft_schemat
    combineTypes = {1, 0, 0},
    contribution = {100, 100, 100},
 
-   templates { = 
+   templates = {
               2755567307, -- Script: 'object/tangible/wearables/bikini/bikini_s01.iff'
              }
 

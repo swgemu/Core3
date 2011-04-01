@@ -44,9 +44,9 @@
 object_tangible_deed_factory_deed_factory_item_deed = object_tangible_deed_factory_deed_shared_factory_item_deed:new {
 	templateType = DEED,
 	generatedObjectTemplate = "object/installation/manufacture/weapon_factory.iff",
-	
-	
-	
+
+
+
 	numberExperimentalProperties = {1, 1, 1, 1, 2, 1},
 	experimentalProperties = {"XX", "XX", "XX", "OQ", "MA", "UT", "UT"},
 	experimentalWeights = {1, 1, 1, 1, 1, 2, 1},
@@ -55,6 +55,7 @@ object_tangible_deed_factory_deed_factory_item_deed = object_tangible_deed_facto
 	experimentalMin = {0, 0, 0, 5, 1500, 5000},
 	experimentalMax = {0, 0, 0, 12, 4000, 7000},
 	experimentalPrecision = {0, 0, 0, 0, 0, 0},
+
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_factory_deed_factory_item_deed, "object/tangible/deed/factory_deed/factory_item_deed.iff")

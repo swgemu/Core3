@@ -72,7 +72,7 @@ object_draft_schematic_droid_droid_surgical = object_draft_schematic_droid_share
    combineTypes = {1, 0, 0, 0, 1, 1, 1, 1, 1, 1},
    contribution = {100, 100, 100, 100, 100, 100, 100, 100, 100, 100},
 
-   templates { = 
+   templates = {
               2131786640, -- Script: 'object/tangible/deed/pet_deed/deed_surgical_basic.iff'
              }
 

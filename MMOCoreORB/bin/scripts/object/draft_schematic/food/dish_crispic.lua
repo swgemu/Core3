@@ -72,7 +72,7 @@ object_draft_schematic_food_dish_crispic = object_draft_schematic_food_shared_di
    combineTypes = {0, 0, 1},
    contribution = {100, 100, 100},
 
-   templates { = 
+   templates = {
               437634302, -- Script: 'object/tangible/food/crafted/dish_crispic.iff'
              }
 

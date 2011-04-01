@@ -72,7 +72,7 @@ object_draft_schematic_spices_spice_sweetblossom = object_draft_schematic_spices
    combineTypes = {0, 0, 0},
    contribution = {100, 100, 100},
 
-   templates { = 
+   templates = {
               2956359146, -- Script: 'object/tangible/food/spice/spice_sweetblossom.iff'
              }
 

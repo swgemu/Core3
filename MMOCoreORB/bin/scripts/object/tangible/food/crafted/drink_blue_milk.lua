@@ -43,13 +43,13 @@
 
 object_tangible_food_crafted_drink_blue_milk = object_tangible_food_crafted_shared_drink_blue_milk:new {
 	templateType = CONSUMABLE,
-	
+
 	duration = 10,
 	filling = 10,
 	nutrition = 10,
-	
+
 	effectType = 6,
-	
+
 	fillingMin = 36,
 	fillingMax = 22,
 	flavorMin = 0,
@@ -58,13 +58,13 @@ object_tangible_food_crafted_drink_blue_milk = object_tangible_food_crafted_shar
 	nutritionMax = 495,
 	quantityMin = 4,
 	quantityMax = 7,
-	
+
 	modifiers = { "mind", 0 },
-	
+
 	buffName = "",
 	buffCRC = 0,
 	speciesRestriction = "",
-	
+
 	numberExperimentalProperties = {1, 1, 1, 1, 2, 2, 2, 1},
 	experimentalProperties = {"XX", "XX", "XX", "XX", "DR", "OQ", "OQ", "PE", "FL", "OQ", "XX"},
 	experimentalWeights = {1, 1, 1, 1, 1, 1, 1, 2, 2, 1, 1},
@@ -73,6 +73,7 @@ object_tangible_food_crafted_drink_blue_milk = object_tangible_food_crafted_shar
 	experimentalMin = {0, 0, 1000, 0, 75, 60, 80, 1},
 	experimentalMax = {0, 0, 1000, 0, 120, 100, 120, 1},
 	experimentalPrecision = {0, 0, 0, 0, 10, 10, 10, 0},
+
 }
 
 ObjectTemplates:addTemplate(object_tangible_food_crafted_drink_blue_milk, "object/tangible/food/crafted/drink_blue_milk.iff")

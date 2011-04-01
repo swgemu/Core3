@@ -72,7 +72,7 @@ object_draft_schematic_armor_component_armor_layer_acid = object_draft_schematic
    combineTypes = {0, 0, 0},
    contribution = {100, 100, 100},
 
-   templates { = 
+   templates = {
               1875688539, -- Script: 'object/tangible/component/armor/armor_layer_acid.iff'
              }
 

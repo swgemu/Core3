@@ -42,8 +42,8 @@
 
 
 object_tangible_component_clothing_metal_fasteners = object_tangible_component_clothing_shared_metal_fasteners:new {
-	
-	
+
+
 	numberExperimentalProperties = {1, 1, 1},
 	experimentalProperties = {"XX", "XX", "XX"},
 	experimentalWeights = {1, 1, 1},
@@ -52,6 +52,7 @@ object_tangible_component_clothing_metal_fasteners = object_tangible_component_c
 	experimentalMin = {0, 0, 1000},
 	experimentalMax = {0, 0, 1000},
 	experimentalPrecision = {0, 0, 0},
+
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_clothing_metal_fasteners, "object/tangible/component/clothing/metal_fasteners.iff")

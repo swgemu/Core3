@@ -72,7 +72,7 @@ object_draft_schematic_structure_city_theater_naboo = object_draft_schematic_str
    combineTypes = {0, 0, 0, 1, 1, 1},
    contribution = {100, 100, 100, 100, 100, 100},
 
-   templates { = 
+   templates = {
               829956410, -- Script: 'object/tangible/deed/city_deed/theater_naboo_deed.iff'
              }
 

@@ -42,8 +42,8 @@
 
 
 object_tangible_powerup_weapon_mine_explosive = object_tangible_powerup_weapon_shared_mine_explosive:new {
-	
-	
+
+
 	numberExperimentalProperties = {1, 1, 1, 2},
 	experimentalProperties = {"XX", "XX", "XX", "CD", "OQ"},
 	experimentalWeights = {1, 1, 1, 2, 1},
@@ -52,6 +52,7 @@ object_tangible_powerup_weapon_mine_explosive = object_tangible_powerup_weapon_s
 	experimentalMin = {0, 0, 1000, 1},
 	experimentalMax = {0, 0, 1000, 100},
 	experimentalPrecision = {0, 0, 0, 0},
+
 }
 
 ObjectTemplates:addTemplate(object_tangible_powerup_weapon_mine_explosive, "object/tangible/powerup/weapon/mine_explosive.iff")

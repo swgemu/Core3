@@ -72,7 +72,7 @@ object_draft_schematic_food_dessert_blap_biscuit = object_draft_schematic_food_s
    combineTypes = {1, 1, 1, 0, 1},
    contribution = {100, 100, 100, 100, 100},
 
-   templates { = 
+   templates = {
               1901385280, -- Script: 'object/tangible/food/crafted/dessert_blap_biscuit.iff'
              }
 

@@ -72,7 +72,7 @@ object_draft_schematic_droid_component_item_storage_module_4 = object_draft_sche
    combineTypes = {0, 0, 0, 0},
    contribution = {100, 100, 100, 100},
 
-   templates { = 
+   templates = {
               2991281436, -- Script: 'object/tangible/component/droid/item_storage_module_4.iff'
              }
 

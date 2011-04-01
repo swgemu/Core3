@@ -72,7 +72,7 @@ object_draft_schematic_food_dessert_citros_snow_cake = object_draft_schematic_fo
    combineTypes = {1, 0, 0, 1},
    contribution = {100, 100, 100, 100},
 
-   templates { = 
+   templates = {
               144581616, -- Script: 'object/tangible/food/crafted/dessert_citros_snow_cake.iff'
              }
 

@@ -72,7 +72,7 @@ object_draft_schematic_scout_item_camokit_endor = object_draft_schematic_scout_s
    combineTypes = {0, 0, 0},
    contribution = {100, 100, 100},
 
-   templates { = 
+   templates = {
               4036311659, -- Script: 'object/tangible/scout/camokit/camokit_endor.iff'
              }
 

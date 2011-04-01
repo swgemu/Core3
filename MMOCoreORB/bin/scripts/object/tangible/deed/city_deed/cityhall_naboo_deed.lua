@@ -45,7 +45,7 @@ object_tangible_deed_city_deed_cityhall_naboo_deed = object_tangible_deed_city_d
 	templateType = DEED,
 	gameObjectType = 8388609,
 	generatedObjectTemplate = "object/building/player/city/cityhall_naboo.iff",
-	
+
 	numberExperimentalProperties = {1, 1, 1},
 	experimentalProperties = {"XX", "XX", "DR"},
 	experimentalWeights = {1, 1, 1},
@@ -54,6 +54,7 @@ object_tangible_deed_city_deed_cityhall_naboo_deed = object_tangible_deed_city_d
 	experimentalMin = {0, 0, 50000},
 	experimentalMax = {0, 0, 100000},
 	experimentalPrecision = {0, 0, 0},
+
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_city_deed_cityhall_naboo_deed, "object/tangible/deed/city_deed/cityhall_naboo_deed.iff")

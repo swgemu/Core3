@@ -72,7 +72,7 @@ object_draft_schematic_space_repair_engine_repair_kit = object_draft_schematic_s
    combineTypes = {0, 0},
    contribution = {100, 100},
 
-   templates { = 
+   templates = {
               1455294754, -- Script: 'object/tangible/ship/crafted/repair/repair_kit_engine.iff'
              }
 

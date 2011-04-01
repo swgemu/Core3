@@ -72,7 +72,7 @@ object_draft_schematic_clothing_clothing_ith_jewelry_necklace_11 = object_draft_
    combineTypes = {0, 0, 0},
    contribution = {100, 100, 100},
 
-   templates { = 
+   templates = {
               3627326371, -- Script: 'object/tangible/wearables/ithorian/ith_necklace_s11.iff'
              }
 

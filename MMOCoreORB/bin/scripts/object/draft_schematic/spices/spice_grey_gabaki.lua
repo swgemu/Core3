@@ -72,7 +72,7 @@ object_draft_schematic_spices_spice_grey_gabaki = object_draft_schematic_spices_
    combineTypes = {0, 0},
    contribution = {100, 100},
 
-   templates { = 
+   templates = {
               649015964, -- Script: 'object/tangible/food/spice/spice_grey_gabaki.iff'
              }
 

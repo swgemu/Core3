@@ -72,7 +72,7 @@ object_draft_schematic_bio_engineer_creature_creature_bocatt = object_draft_sche
    combineTypes = {1, 0, 0},
    contribution = {100, 100, 100},
 
-   templates { = 
+   templates = {
               3037633332, -- Script: 'object/tangible/deed/pet_deed/bocatt_deed.iff'
              }
 

@@ -72,7 +72,7 @@ object_draft_schematic_scout_item_trap_enraging_spur = object_draft_schematic_sc
    combineTypes = {0, 0, 0},
    contribution = {100, 100, 100},
 
-   templates { = 
+   templates = {
               2897575624, -- Script: 'object/tangible/scout/trap/trap_enraging_spur.iff'
              }
 

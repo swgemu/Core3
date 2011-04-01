@@ -72,7 +72,7 @@ object_draft_schematic_structure_house_player_large = object_draft_schematic_str
    combineTypes = {0, 0, 0, 1, 1, 1},
    contribution = {100, 100, 100, 100, 100, 100},
 
-   templates { = 
+   templates = {
               804050572, -- Script: 'object/tangible/deed/player_house_deed/tatooine_house_large_deed.iff'
              }
 

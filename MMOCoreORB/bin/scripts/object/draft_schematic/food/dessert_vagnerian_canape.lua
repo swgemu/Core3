@@ -72,7 +72,7 @@ object_draft_schematic_food_dessert_vagnerian_canape = object_draft_schematic_fo
    combineTypes = {1, 0, 0, 1, 1},
    contribution = {100, 100, 100, 100, 100},
 
-   templates { = 
+   templates = {
               2242480065, -- Script: 'object/tangible/food/crafted/dessert_vagnerian_canape.iff'
              }
 

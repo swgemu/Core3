@@ -72,7 +72,7 @@ object_draft_schematic_structure_city_bank_corellia = object_draft_schematic_str
    combineTypes = {0, 0, 0, 1, 1, 1},
    contribution = {100, 100, 100, 100, 100, 100},
 
-   templates { = 
+   templates = {
               2461359060, -- Script: 'object/tangible/deed/city_deed/bank_corellia_deed.iff'
              }
 

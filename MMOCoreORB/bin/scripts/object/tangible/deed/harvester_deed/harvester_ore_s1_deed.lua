@@ -44,9 +44,9 @@
 object_tangible_deed_harvester_deed_harvester_ore_s1_deed = object_tangible_deed_harvester_deed_shared_harvester_ore_s1_deed:new {
 	templateType = DEED,
 	generatedObjectTemplate = "object/installation/mining_ore/mining_ore_harvester_style_1.iff",
-	
-	
-	
+
+
+
 	numberExperimentalProperties = {1, 1, 3, 2, 1},
 	experimentalProperties = {"XX", "XX", "HR", "SR", "UT", "MA", "UT", "XX"},
 	experimentalWeights = {1, 1, 1, 1, 2, 1, 2, 1},
@@ -55,6 +55,7 @@ object_tangible_deed_harvester_deed_harvester_ore_s1_deed = object_tangible_deed
 	experimentalMin = {0, 0, 1, 25000, 1000},
 	experimentalMax = {0, 0, 5, 50000, 1000},
 	experimentalPrecision = {0, 0, 0, 0, 0},
+
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_harvester_deed_harvester_ore_s1_deed, "object/tangible/deed/harvester_deed/harvester_ore_s1_deed.iff")

@@ -42,8 +42,8 @@
 
 
 object_tangible_deed_pet_deed_sand_panther_deed = object_tangible_deed_pet_deed_shared_sand_panther_deed:new {
-	
-	
+
+
 	numberExperimentalProperties = {1, 1},
 	experimentalProperties = {"XX", "XX"},
 	experimentalWeights = {1, 1},
@@ -52,6 +52,7 @@ object_tangible_deed_pet_deed_sand_panther_deed = object_tangible_deed_pet_deed_
 	experimentalMin = {0, 0},
 	experimentalMax = {0, 0},
 	experimentalPrecision = {0, 0},
+
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_sand_panther_deed, "object/tangible/deed/pet_deed/sand_panther_deed.iff")

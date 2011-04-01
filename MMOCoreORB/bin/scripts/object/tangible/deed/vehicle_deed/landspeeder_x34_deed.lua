@@ -42,12 +42,12 @@
 
 
 object_tangible_deed_vehicle_deed_landspeeder_x34_deed = object_tangible_deed_vehicle_deed_shared_landspeeder_x34_deed:new {
-	
+
 	templateType = VEHICLEDEED,
-	
+
 	controlDeviceObjectTemplate = "object/intangible/vehicle/landspeeder_x34_pcd.iff",
 	generatedObjectTemplate = "object/mobile/vehicle/landspeeder_x34.iff",
-	
+
 	numberExperimentalProperties = {1, 1, 1},
 	experimentalProperties = {"XX", "XX", "SR"},
 	experimentalWeights = {1, 1, 1},
@@ -56,6 +56,7 @@ object_tangible_deed_vehicle_deed_landspeeder_x34_deed = object_tangible_deed_ve
 	experimentalMin = {0, 0, 1500},
 	experimentalMax = {0, 0, 3000},
 	experimentalPrecision = {0, 0, 0},
+
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_vehicle_deed_landspeeder_x34_deed, "object/tangible/deed/vehicle_deed/landspeeder_x34_deed.iff")

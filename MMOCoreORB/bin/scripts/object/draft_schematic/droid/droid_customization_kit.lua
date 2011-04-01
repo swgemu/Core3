@@ -72,7 +72,7 @@ object_draft_schematic_droid_droid_customization_kit = object_draft_schematic_dr
    combineTypes = {0, 0, 0, 0, 0},
    contribution = {100, 100, 100, 100, 100},
 
-   templates { = 
+   templates = {
               3780648213, -- Script: 'object/tangible/item/droid_customization.iff'
              }
 

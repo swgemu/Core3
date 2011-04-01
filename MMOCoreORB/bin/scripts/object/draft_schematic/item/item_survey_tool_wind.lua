@@ -72,7 +72,7 @@ object_draft_schematic_item_item_survey_tool_wind = object_draft_schematic_item_
    combineTypes = {0, 0, 0},
    contribution = {100, 100, 100},
 
-   templates { = 
+   templates = {
               2588277210, -- Script: 'object/tangible/survey_tool/survey_tool_wind.iff'
              }
 

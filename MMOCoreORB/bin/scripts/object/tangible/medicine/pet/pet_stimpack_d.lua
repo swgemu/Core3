@@ -42,8 +42,8 @@
 
 
 object_tangible_medicine_pet_pet_stimpack_d = object_tangible_medicine_pet_shared_pet_stimpack_d:new {
-	
-	
+
+
 	numberExperimentalProperties = {1, 1, 2, 2, 1, 1},
 	experimentalProperties = {"XX", "XX", "OQ", "PE", "OQ", "UT", "XX", "XX"},
 	experimentalWeights = {1, 1, 2, 1, 2, 1, 1, 1},
@@ -52,6 +52,7 @@ object_tangible_medicine_pet_pet_stimpack_d = object_tangible_medicine_pet_share
 	experimentalMin = {0, 0, 350, 10, 15, 1000},
 	experimentalMax = {0, 0, 1500, 30, 15, 1000},
 	experimentalPrecision = {0, 0, 0, 0, 0, 0},
+
 }
 
 ObjectTemplates:addTemplate(object_tangible_medicine_pet_pet_stimpack_d, "object/tangible/medicine/pet/pet_stimpack_d.iff")

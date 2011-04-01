@@ -72,7 +72,7 @@ object_draft_schematic_structure_city_theater_tatooine = object_draft_schematic_
    combineTypes = {0, 0, 0, 1, 1, 1},
    contribution = {100, 100, 100, 100, 100, 100},
 
-   templates { = 
+   templates = {
               1184163772, -- Script: 'object/tangible/deed/city_deed/theater_tatooine_deed.iff'
              }
 

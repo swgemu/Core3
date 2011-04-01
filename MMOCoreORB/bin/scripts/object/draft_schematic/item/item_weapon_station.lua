@@ -72,7 +72,7 @@ object_draft_schematic_item_item_weapon_station = object_draft_schematic_item_sh
    combineTypes = {0, 0, 1, 1, 1},
    contribution = {100, 100, 100, 100, 100},
 
-   templates { = 
+   templates = {
               889081003, -- Script: 'object/tangible/crafting/station/weapon_station.iff'
              }
 

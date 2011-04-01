@@ -42,8 +42,8 @@
 
 
 object_tangible_furniture_all_frn_all_light_lamp_free_s04 = object_tangible_furniture_all_shared_frn_all_light_lamp_free_s04:new {
-	
-	
+
+
 	numberExperimentalProperties = {1, 1, 1, 2},
 	experimentalProperties = {"XX", "XX", "XX", "DR", "OQ"},
 	experimentalWeights = {1, 1, 1, 1, 1},
@@ -52,6 +52,7 @@ object_tangible_furniture_all_frn_all_light_lamp_free_s04 = object_tangible_furn
 	experimentalMin = {0, 0, 1000, 21},
 	experimentalMax = {0, 0, 1000, 42},
 	experimentalPrecision = {0, 0, 0, 0},
+
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_all_frn_all_light_lamp_free_s04, "object/tangible/furniture/all/frn_all_light_lamp_free_s04.iff")

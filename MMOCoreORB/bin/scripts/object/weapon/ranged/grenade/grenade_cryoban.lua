@@ -42,8 +42,8 @@
 
 
 object_weapon_ranged_grenade_grenade_cryoban = object_weapon_ranged_grenade_shared_grenade_cryoban:new {
-	
-	
+
+
 	numberExperimentalProperties = {1, 1, 2, 2, 2, 2, 1, 2, 2, 2, 1, 1, 2, 2, 2},
 	experimentalProperties = {"XX", "XX", "CD", "UT", "CD", "UT", "CD", "UT", "CD", "UT", "XX", "CD", "UT", "CD", "UT", "CD", "UT", "XX", "XX", "CD", "UT", "CD", "UT", "CD", "UT"},
 	experimentalWeights = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
@@ -52,6 +52,7 @@ object_weapon_ranged_grenade_grenade_cryoban = object_weapon_ranged_grenade_shar
 	experimentalMin = {0, 0, 190, 320, 6.5, 7, 1000, -14, -45, 0, 10, 64, 52, 130, 20},
 	experimentalMax = {0, 0, 270, 650, 3, 13, 1000, 16, -15, 30, 30, 64, 28, 70, 11},
 	experimentalPrecision = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+
 }
 
 ObjectTemplates:addTemplate(object_weapon_ranged_grenade_grenade_cryoban, "object/weapon/ranged/grenade/grenade_cryoban.iff")

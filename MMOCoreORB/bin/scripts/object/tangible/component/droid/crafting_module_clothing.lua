@@ -42,8 +42,8 @@
 
 
 object_tangible_component_droid_crafting_module_clothing = object_tangible_component_droid_shared_crafting_module_clothing:new {
-	
-	
+
+
 	numberExperimentalProperties = {1, 1, 2, 1, 2, 1},
 	experimentalProperties = {"XX", "XX", "CD", "OQ", "XX", "CD", "OQ", "XX"},
 	experimentalWeights = {1, 1, 1, 1, 1, 1, 1, 1},
@@ -52,6 +52,7 @@ object_tangible_component_droid_crafting_module_clothing = object_tangible_compo
 	experimentalMin = {0, 0, 5, 1000, -10, 100},
 	experimentalMax = {0, 0, 15, 1000, 15, 100},
 	experimentalPrecision = {0, 0, 0, 0, 0, 0},
+
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_droid_crafting_module_clothing, "object/tangible/component/droid/crafting_module_clothing.iff")

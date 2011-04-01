@@ -42,8 +42,8 @@
 
 
 object_tangible_component_structure_light_ore_mining_unit = object_tangible_component_structure_shared_light_ore_mining_unit:new {
-	
-	
+
+
 	numberExperimentalProperties = {1, 1, 1, 3},
 	experimentalProperties = {"XX", "XX", "XX", "HR", "SR", "UT"},
 	experimentalWeights = {1, 1, 1, 1, 1, 2},
@@ -52,6 +52,7 @@ object_tangible_component_structure_light_ore_mining_unit = object_tangible_comp
 	experimentalMin = {0, 0, 1000, 1},
 	experimentalMax = {0, 0, 1000, 5},
 	experimentalPrecision = {0, 0, 0, 0},
+
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_structure_light_ore_mining_unit, "object/tangible/component/structure/light_ore_mining_unit.iff")

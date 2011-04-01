@@ -42,18 +42,18 @@
 
 
 object_tangible_crafting_station_space_tool = object_tangible_crafting_station_shared_space_tool:new {
-	
+
 	templateType = CRAFTINGTOOL,
-	
+
 	playerUseMask = 65535,
-	
+
 	customizationOptions = {},
 	customizationDefaults = {},
-	
+
 	toolType = 5,
 	complexityLevel = 20,
 	enabledTabs = {131072,262144},
-	
+
 	numberExperimentalProperties = {1, 1, 1, 1},
 	experimentalProperties = {"XX", "XX", "XX", "CD"},
 	experimentalWeights = {1, 1, 1, 1},
@@ -62,5 +62,6 @@ object_tangible_crafting_station_space_tool = object_tangible_crafting_station_s
 	experimentalMin = {0, 0, 1000, -15},
 	experimentalMax = {0, 0, 1000, 15},
 	experimentalPrecision = {0, 0, 0, 0},
+
 }
 ObjectTemplates:addTemplate(object_tangible_crafting_station_space_tool, "object/tangible/crafting/station/space_tool.iff")

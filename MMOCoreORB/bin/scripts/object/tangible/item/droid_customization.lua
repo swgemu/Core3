@@ -42,8 +42,8 @@
 
 
 object_tangible_item_droid_customization = object_tangible_item_shared_droid_customization:new {
-	
-	
+
+
 	numberExperimentalProperties = {1, 1, 1, 1, 2},
 	experimentalProperties = {"XX", "XX", "XX", "XX", "CD", "OQ"},
 	experimentalWeights = {1, 1, 1, 1, 1, 1},
@@ -52,6 +52,7 @@ object_tangible_item_droid_customization = object_tangible_item_shared_droid_cus
 	experimentalMin = {0, 0, 5, 1000, 1},
 	experimentalMax = {0, 0, 15, 1000, 10},
 	experimentalPrecision = {0, 0, 0, 0, 0},
+
 }
 
 ObjectTemplates:addTemplate(object_tangible_item_droid_customization, "object/tangible/item/droid_customization.iff")

@@ -72,7 +72,7 @@ object_draft_schematic_droid_component_personality_module_stupid = object_draft_
    combineTypes = {0, 0},
    contribution = {100, 100},
 
-   templates { = 
+   templates = {
               67891909, -- Script: 'object/tangible/component/droid/personality_module_stupid.iff'
              }
 

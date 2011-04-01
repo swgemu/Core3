@@ -72,7 +72,7 @@ object_draft_schematic_furniture_furniture_chest_elegant = object_draft_schemati
    combineTypes = {0, 0},
    contribution = {100, 100},
 
-   templates { = 
+   templates = {
               2703056296, -- Script: 'object/tangible/furniture/elegant/chest_s01.iff'
              }
 
