@@ -43,6 +43,14 @@
 
 object_weapon_ranged_grenade_grenade_fragmentation_light = object_weapon_ranged_grenade_shared_grenade_fragmentation_light:new {
 
+	numberExperimentalProperties = {1, 1, 2, 2, 2, 2, 1, 2, 2, 2, 2, 1, 2, 2, 2},
+	experimentalProperties = {"XX", "XX", "OQ", "SR", "OQ", "SR", "OQ", "SR", "OQ", "SR", "SR", "OQ", "SR", "OQ", "SR", "OQ", "SR", "OQ", "SR", "XX", "OQ", "SR", "OQ", "SR", "OQ", "SR"},
+	experimentalWeights = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+	experimentalGroupTitles = {"null", "null", "expDamage", "expDamage", "expDamage", "expDamage", "null", "expRange", "expRange", "expRange", "expRange", "null", "expEffeciency", "expEffeciency", "expEffeciency"},
+	experimentalSubGroupTitles = {"null", "null", "mindamage", "maxdamage", "attackspeed", "woundchance", "hitpoints", "zerorangemod", "maxrangemod", "midrangemod", "midrange", "maxrange", "attackhealthcost", "attackactioncost", "attackmindcost"},
+	experimentalMin = {0, 0, 130, 220, 5.5, 7, 1000, -16, -45, 0, 10, 64, 75, 65, 13}, -16, -45, 0, 10, 64, 75, 65, 13},
+	experimentalMax = {0, 0, 170, 760, 2.5, 13, 1000, 14, 15, 30, 30, 64, 35, 25, 7},
+	experimentalPrecision = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
 }
 
 ObjectTemplates:addTemplate(object_weapon_ranged_grenade_grenade_fragmentation_light, "object/weapon/ranged/grenade/grenade_fragmentation_light.iff")

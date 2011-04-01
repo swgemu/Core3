@@ -42,8 +42,16 @@
 
 
 object_tangible_wearables_bracelet_bracelet_s06_l = object_tangible_wearables_bracelet_shared_bracelet_s06_l:new {
-	-- ALL, ALLSEXES, ALLFACTIONS, HUMANOIDS, HUMANOID_FOOTWEAR, HUMANOID_MALES, HUMANOID_FEMALES, HUMANOID_IMPERIALS, HUMANOID_REBELS, WOOKIEES, ITHORIANS, TWILEKS
-	playerUseMask = HUMANOIDS
+	-- ALL, ALLSEXES, ALLFACTIONS, HUMANOIDS, HUMANOID_FOOTWEAR, HUMANOID_MALES, HUMANOID_FEMALES, HUMANOID_IMPERIALS, HUMANOID_REBELS, WOOKIEES, ITHORIANS, TWILEKS,
+	playerUseMask = HUMANOIDS,
+	numberExperimentalProperties = {1, 1, 1},
+	experimentalProperties = {"XX", "XX", "XX"},
+	experimentalWeights = {1, 1, 1},
+	experimentalGroupTitles = {"null", "null", "null"},
+	experimentalSubGroupTitles = {"null", "null", "hitpoints"},
+	experimentalMin = {0, 0, 1000},
+	experimentalMax = {0, 0, 1000},
+	experimentalPrecision = {0, 0, 0},
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_bracelet_bracelet_s06_l, "object/tangible/wearables/bracelet/bracelet_s06_l.iff")

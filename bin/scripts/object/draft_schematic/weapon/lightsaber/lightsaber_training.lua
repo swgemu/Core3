@@ -72,15 +72,9 @@ object_draft_schematic_weapon_lightsaber_lightsaber_training = object_draft_sche
    combineTypes = {0, 1, 0, 0, 1, 0, 0},
    contribution = {100, 100, 100, 100, 100, 100, 100},
 
-   numberExperimentalProperties = {1, 1, 2, 2, 2, 2, 2, 1, 1, 1},
-   experimentalProperties = {"XX", "XX", "CD", "OQ", "CD", "OQ", "CD", "OQ", "SR", "UT", "CD", "OQ", "OQ", "OQ", "OQ"},
-   experimentalWeights = {1, 1, 1, 2, 1, 2, 1, 1, 1, 1, 1, 2, 1, 1, 1},
-   experimentalGroupTitles = {"null", "null", "expDamage", "expDamage", "expDamage", "expDamage", "expEffeciency", "expEffeciency", "expEffeciency", "expEffeciency"},
-   experimentalSubGroupTitles = {"null", "null", "mindamage", "maxdamage", "attackspeed", "woundchance", "forcecost", "attackhealthcost", "attackactioncost", "attackmindcost"},
-   experimentalMin = {0, 0, 50, 130, 4.8, 2, 15, 20, 35, 40},
-   experimentalMax = {0, 0, 70, 170, 4.5, 10, 18, 15, 25, 25},
-   experimentalPrecision = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+   templates { = 
+              1530854406, -- Script: 'object/weapon/melee/sword/crafted_saber/sword_lightsaber_training.iff'
+             }
 
-   tanoCRC = 1530854406, -- Script: 'object/weapon/melee/sword/crafted_saber/sword_lightsaber_training.iff'
 }
 ObjectTemplates:addTemplate(object_draft_schematic_weapon_lightsaber_lightsaber_training, "object/draft_schematic/weapon/lightsaber/lightsaber_training.iff")

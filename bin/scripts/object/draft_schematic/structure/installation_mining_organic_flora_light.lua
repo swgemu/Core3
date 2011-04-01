@@ -72,15 +72,9 @@ object_draft_schematic_structure_installation_mining_organic_flora_light = objec
    combineTypes = {0, 0, 0, 0, 0},
    contribution = {100, 100, 100, 100, 100},
 
-   numberExperimentalProperties = {1, 1, 3, 2, 1},
-   experimentalProperties = {"XX", "XX", "HR", "SR", "UT", "MA", "UT", "XX"},
-   experimentalWeights = {1, 1, 1, 1, 2, 1, 2, 1},
-   experimentalGroupTitles = {"null", "null", "expEffeciency", "expStorage", "null"},
-   experimentalSubGroupTitles = {"null", "null", "extractrate", "hoppersize", "hitpoints"},
-   experimentalMin = {0, 0, 1, 25000, 1000},
-   experimentalMax = {0, 0, 5, 50000, 1000},
-   experimentalPrecision = {0, 0, 0, 0, 0},
+   templates { = 
+              1562242514, -- Script: 'object/tangible/deed/harvester_deed/harvester_flora_deed.iff'
+             }
 
-   tanoCRC = 1562242514, -- Script: 'object/tangible/deed/harvester_deed/harvester_flora_deed.iff'
 }
 ObjectTemplates:addTemplate(object_draft_schematic_structure_installation_mining_organic_flora_light, "object/draft_schematic/structure/installation_mining_organic_flora_light.iff")

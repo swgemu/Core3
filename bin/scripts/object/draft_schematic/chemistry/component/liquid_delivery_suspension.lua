@@ -72,15 +72,9 @@ object_draft_schematic_chemistry_component_liquid_delivery_suspension = object_d
    combineTypes = {0, 0},
    contribution = {100, 100},
 
-   numberExperimentalProperties = {1, 1, 2, 1, 1},
-   experimentalProperties = {"XX", "XX", "OQ", "PE", "XX", "XX"},
-   experimentalWeights = {1, 1, 2, 1, 1, 1},
-   experimentalGroupTitles = {"null", "null", "exp_effectiveness", "null", "null"},
-   experimentalSubGroupTitles = {"null", "null", "power", "charges", "hitpoints"},
-   experimentalMin = {0, 0, 5, 0, 1000},
-   experimentalMax = {0, 0, 60, 0, 1000},
-   experimentalPrecision = {0, 0, 0, 0, 0},
+   templates { = 
+              3216390038, -- Script: 'object/tangible/component/chemistry/liquid_delivery_suspension.iff'
+             }
 
-   tanoCRC = 3216390038, -- Script: 'object/tangible/component/chemistry/liquid_delivery_suspension.iff'
 }
 ObjectTemplates:addTemplate(object_draft_schematic_chemistry_component_liquid_delivery_suspension, "object/draft_schematic/chemistry/component/liquid_delivery_suspension.iff")

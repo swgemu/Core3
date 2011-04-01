@@ -72,15 +72,9 @@ object_draft_schematic_munition_detonator_thermal_class_a = object_draft_schemat
    combineTypes = {0, 0, 0, 0, 1, 1, 1, 1},
    contribution = {100, 100, 100, 100, 100, 100, 100, 100},
 
-   numberExperimentalProperties = {1, 1, 2, 2, 2, 2, 1, 2, 2, 2, 2, 1, 2, 2, 2},
-   experimentalProperties = {"XX", "XX", "OQ", "SR", "OQ", "SR", "OQ", "SR", "OQ", "SR", "SR", "OQ", "SR", "OQ", "SR", "OQ", "SR", "OQ", "SR", "XX", "OQ", "SR", "OQ", "SR", "OQ", "SR"},
-   experimentalWeights = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
-   experimentalGroupTitles = {"null", "null", "expDamage", "expDamage", "expDamage", "expDamage", "null", "expRange", "expRange", "expRange", "expRange", "null", "expEffeciency", "expEffeciency", "expEffeciency"},
-   experimentalSubGroupTitles = {"null", "null", "mindamage", "maxdamage", "attackspeed", "woundchance", "hitpoints", "zerorangemod", "maxrangemod", "midrangemod", "midrange", "maxrange", "attackhealthcost", "attackactioncost", "attackmindcost"},
-   experimentalMin = {0, 0, 570, 1334, 5.4, 7, 1000, -16, -45, 0, 10, 64, 98, 98, 46},
-   experimentalMax = {0, 0, 870, 1690, 2.4, 13, 1000, 14, 15, 30, 30, 64, 53, 53, 25},
-   experimentalPrecision = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+   templates { = 
+              2966006759, -- Script: 'object/weapon/ranged/grenade/grenade_thermal_detonator.iff'
+             }
 
-   tanoCRC = 2966006759, -- Script: 'object/weapon/ranged/grenade/grenade_thermal_detonator.iff'
 }
 ObjectTemplates:addTemplate(object_draft_schematic_munition_detonator_thermal_class_a, "object/draft_schematic/munition/detonator_thermal_class_a.iff")

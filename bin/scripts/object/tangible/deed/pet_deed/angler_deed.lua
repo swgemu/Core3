@@ -43,6 +43,14 @@
 
 object_tangible_deed_pet_deed_angler_deed = object_tangible_deed_pet_deed_shared_angler_deed:new {
 
+	numberExperimentalProperties = {1, 1},
+	experimentalProperties = {"XX", "XX"},
+	experimentalWeights = {1, 1},
+	experimentalGroupTitles = {"null", "null"},
+	experimentalSubGroupTitles = {"null", "null"},
+	experimentalMin = {0, 0},
+	experimentalMax = {0, 0},
+	experimentalPrecision = {0, 0},
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_angler_deed, "object/tangible/deed/pet_deed/angler_deed.iff")

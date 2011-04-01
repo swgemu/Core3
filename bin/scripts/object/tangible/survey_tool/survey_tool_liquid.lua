@@ -53,6 +53,14 @@ object_tangible_survey_tool_survey_tool_liquid = object_tangible_survey_tool_sha
    toolType = 2,
    toolAnimation = "clienteffect/survey_tool_liquid.cef",
    sampleAnimation = "clienteffect/survey_sample_liquid.cef",
-   surveyType = "chemical"
+   surveyType = "chemical",
+	numberExperimentalProperties = {1, 1, 1, 1},
+	experimentalProperties = {"XX", "XX", "XX", "CD"},
+	experimentalWeights = {1, 1, 1, 1},
+	experimentalGroupTitles = {"null", "null", "null", "exp_effectiveness"},
+	experimentalSubGroupTitles = {"null", "null", "hitpoints", "usemodifier"},
+	experimentalMin = {0, 0, 1000, -15}, -15},
+	experimentalMax = {0, 0, 1000, 15},
+	experimentalPrecision = {0, 0, 0, 0},
 }
 ObjectTemplates:addTemplate(object_tangible_survey_tool_survey_tool_liquid, "object/tangible/survey_tool/survey_tool_liquid.iff")

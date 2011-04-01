@@ -72,15 +72,9 @@ object_draft_schematic_bio_engineer_creature_creature_bolle_bol = object_draft_s
    combineTypes = {1, 0, 0},
    contribution = {100, 100, 100},
 
-   numberExperimentalProperties = {1, 1},
-   experimentalProperties = {"XX", "XX"},
-   experimentalWeights = {1, 1},
-   experimentalGroupTitles = {"null", "null"},
-   experimentalSubGroupTitles = {"null", "null"},
-   experimentalMin = {0, 0},
-   experimentalMax = {0, 0},
-   experimentalPrecision = {0, 0},
+   templates { = 
+              4149887647, -- Script: 'object/tangible/deed/pet_deed/bolle_bol_deed.iff'
+             }
 
-   tanoCRC = 4149887647, -- Script: 'object/tangible/deed/pet_deed/bolle_bol_deed.iff'
 }
 ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_creature_creature_bolle_bol, "object/draft_schematic/bio_engineer/creature/creature_bolle_bol.iff")

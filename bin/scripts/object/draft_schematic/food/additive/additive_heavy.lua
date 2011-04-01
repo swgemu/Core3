@@ -72,15 +72,9 @@ object_draft_schematic_food_additive_additive_heavy = object_draft_schematic_foo
    combineTypes = {0, 1},
    contribution = {100, 100},
 
-   numberExperimentalProperties = {1, 1, 1},
-   experimentalProperties = {"XX", "XX", "XX"},
-   experimentalWeights = {1, 1, 1},
-   experimentalGroupTitles = {"null", "null", "null"},
-   experimentalSubGroupTitles = {"null", "null", "hitpoints"},
-   experimentalMin = {0, 0, 1000},
-   experimentalMax = {0, 0, 1000},
-   experimentalPrecision = {0, 0, 0},
+   templates { = 
+              3509640022, -- Script: 'object/tangible/food/crafted/additive/additive_heavy.iff'
+             }
 
-   tanoCRC = 3509640022, -- Script: 'object/tangible/food/crafted/additive/additive_heavy.iff'
 }
 ObjectTemplates:addTemplate(object_draft_schematic_food_additive_additive_heavy, "object/draft_schematic/food/additive/additive_heavy.iff")

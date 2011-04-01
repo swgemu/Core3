@@ -72,15 +72,9 @@ object_draft_schematic_droid_component_droid_brain_advanced = object_draft_schem
    combineTypes = {0, 0, 0, 0, 1, 1},
    contribution = {100, 100, 100, 100, 100, 100},
 
-   numberExperimentalProperties = {1, 1, 2, 1, 2},
-   experimentalProperties = {"XX", "XX", "CD", "OQ", "XX", "CD", "OQ"},
-   experimentalWeights = {1, 1, 1, 1, 1, 1, 1},
-   experimentalGroupTitles = {"null", "null", "exp_durability", "null", "exp_effectiveness"},
-   experimentalSubGroupTitles = {"null", "null", "decayrate", "hitpoints", "mechanism_quality"},
-   experimentalMin = {0, 0, 5, 1000, -10},
-   experimentalMax = {0, 0, 15, 1000, 15},
-   experimentalPrecision = {0, 0, 0, 0, 0},
+   templates { = 
+              179959659, -- Script: 'object/tangible/component/droid/droid_brain_advanced.iff'
+             }
 
-   tanoCRC = 179959659, -- Script: 'object/tangible/component/droid/droid_brain_advanced.iff'
 }
 ObjectTemplates:addTemplate(object_draft_schematic_droid_component_droid_brain_advanced, "object/draft_schematic/droid/component/droid_brain_advanced.iff")

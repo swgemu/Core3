@@ -72,15 +72,9 @@ object_draft_schematic_spices_spice_booster_blue = object_draft_schematic_spices
    combineTypes = {0, 0, 0},
    contribution = {100, 100, 100},
 
-   numberExperimentalProperties = {1, 1, 3},
-   experimentalProperties = {"XX", "XX", "DR", "OQ", "UT"},
-   experimentalWeights = {1, 1, 4, 1, 1},
-   experimentalGroupTitles = {"null", "null", "exp_nutrition"},
-   experimentalSubGroupTitles = {"null", "null", "hitpoints"},
-   experimentalMin = {0, 0, 1000},
-   experimentalMax = {0, 0, 1000},
-   experimentalPrecision = {0, 0, 0},
+   templates { = 
+              1672986063, -- Script: 'object/tangible/food/spice/spice_booster_blue.iff'
+             }
 
-   tanoCRC = 1672986063, -- Script: 'object/tangible/food/spice/spice_booster_blue.iff'
 }
 ObjectTemplates:addTemplate(object_draft_schematic_spices_spice_booster_blue, "object/draft_schematic/spices/spice_booster_blue.iff")

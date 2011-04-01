@@ -72,15 +72,9 @@ object_draft_schematic_structure_installation_generator_solar = object_draft_sch
    combineTypes = {0, 0, 0, 0, 0, 1, 1, 1},
    contribution = {100, 100, 100, 100, 100, 100, 100, 100},
 
-   numberExperimentalProperties = {1, 1, 1, 2, 1},
-   experimentalProperties = {"XX", "XX", "XX", "MA", "UT", "XX"},
-   experimentalWeights = {1, 1, 1, 1, 2, 1},
-   experimentalGroupTitles = {"null", "null", "null", "expStorage", "null"},
-   experimentalSubGroupTitles = {"null", "null", "extractrate", "hoppersize", "hitpoints"},
-   experimentalMin = {0, 0, 6, 50000, 1000},
-   experimentalMax = {0, 0, 15, 75000, 1000},
-   experimentalPrecision = {0, 0, 0, 0, 0},
+   templates { = 
+              3849933819, -- Script: 'object/tangible/deed/generator_deed/generator_solar_deed.iff'
+             }
 
-   tanoCRC = 3849933819, -- Script: 'object/tangible/deed/generator_deed/generator_solar_deed.iff'
 }
 ObjectTemplates:addTemplate(object_draft_schematic_structure_installation_generator_solar, "object/draft_schematic/structure/installation_generator_solar.iff")

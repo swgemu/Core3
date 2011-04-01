@@ -43,6 +43,14 @@
 
 object_tangible_droid_droid_space_memory_module_1 = object_tangible_droid_shared_droid_space_memory_module_1:new {
 
+	numberExperimentalProperties = {1, 1},
+	experimentalProperties = {"XX", "XX"},
+	experimentalWeights = {1, 1},
+	experimentalGroupTitles = {"null", "null"},
+	experimentalSubGroupTitles = {"null", "null"},
+	experimentalMin = {0, 0},
+	experimentalMax = {0, 0},
+	experimentalPrecision = {0, 0},
 }
 
 ObjectTemplates:addTemplate(object_tangible_droid_droid_space_memory_module_1, "object/tangible/droid/droid_space_memory_module_1.iff")

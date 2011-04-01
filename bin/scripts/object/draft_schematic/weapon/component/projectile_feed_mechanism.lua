@@ -72,15 +72,9 @@ object_draft_schematic_weapon_component_projectile_feed_mechanism = object_draft
    combineTypes = {0, 0, 1},
    contribution = {100, 100, 100},
 
-   numberExperimentalProperties = {1, 1, 1, 1, 1, 1},
-   experimentalProperties = {"XX", "XX", "UT", "UT", "UT", "UT"},
-   experimentalWeights = {1, 1, 1, 1, 1, 1},
-   experimentalGroupTitles = {"null", "null", "expDamage", "expDamage", "expDamage", "exp_durability"},
-   experimentalSubGroupTitles = {"null", "null", "mindamage", "maxdamage", "attackspeed", "hitpoints"},
-   experimentalMin = {0, 0, 1, 1, 0, 10},
-   experimentalMax = {0, 0, 10, 20, -0.5, 100},
-   experimentalPrecision = {0, 0, 0, 0, 1, 0},
+   templates { = 
+              2820353414, -- Script: 'object/tangible/component/weapon/projectile_feed_mechanism.iff'
+             }
 
-   tanoCRC = 2820353414, -- Script: 'object/tangible/component/weapon/projectile_feed_mechanism.iff'
 }
 ObjectTemplates:addTemplate(object_draft_schematic_weapon_component_projectile_feed_mechanism, "object/draft_schematic/weapon/component/projectile_feed_mechanism.iff")

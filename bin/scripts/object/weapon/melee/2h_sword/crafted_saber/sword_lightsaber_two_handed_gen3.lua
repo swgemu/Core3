@@ -43,43 +43,43 @@
 
 object_weapon_melee_2h_sword_crafted_saber_sword_lightsaber_two_handed_gen3 = object_weapon_melee_2h_sword_crafted_saber_shared_sword_lightsaber_two_handed_gen3:new {
 
-	-- ALL, ALLSEXES, ALLFACTIONS, HUMANOIDS, HUMANOID_FOOTWEAR, HUMANOID_MALES, HUMANOID_FEMALES, HUMANOID_IMPERIALS, HUMANOID_REBELS, WOOKIES, ITHORIANS, TWILEKS
+	-- ALL, ALLSEXES, ALLFACTIONS, HUMANOIDS, HUMANOID_FOOTWEAR, HUMANOID_MALES, HUMANOID_FEMALES, HUMANOID_IMPERIALS, HUMANOID_REBELS, WOOKIES, ITHORIANS, TWILEKS,
 	playerUseMask = ALL,
 
-	-- RANGEDATTACK, MELEEATTACK, FORCEATTACK, TRAPATTACK, GRENADEATTACK, HEAVYACIDBEAMATTACK, 
-	-- HEAVYLIGHTNINGBEAMATTACK, HEAVYPARTICLEBEAMATTACK, HEAVYROCKETLAUNCHERATTACK, HEAVYLAUNCHERATTACK
+	-- RANGEDATTACK, MELEEATTACK, FORCEATTACK, TRAPATTACK, GRENADEATTACK, HEAVYACIDBEAMATTACK, ,
+	-- HEAVYLIGHTNINGBEAMATTACK, HEAVYPARTICLEBEAMATTACK, HEAVYROCKETLAUNCHERATTACK, HEAVYLAUNCHERATTACK,
 	attackType = MELEEATTACK,
 
-	-- ENERGY, KINETIC, ELECTRICITY, STUN, BLAST, HEAT, COLD, ACID, FORCE, LIGHTSABER
+	-- ENERGY, KINETIC, ELECTRICITY, STUN, BLAST, HEAT, COLD, ACID, FORCE, LIGHTSABER,
 	damageType = LIGHTSABER,
 
-	-- NONE, LIGHT, MEDIUM, HEAVY
+	-- NONE, LIGHT, MEDIUM, HEAVY,
 	armorPiercing = MEDIUM,
 
-	-- combat_rangedspecialize_bactarifle, combat_rangedspecialize_rifle, combat_rangedspecialize_pistol, combat_rangedspecialize_heavy, combat_rangedspecialize_carbine
+	-- combat_rangedspecialize_bactarifle, combat_rangedspecialize_rifle, combat_rangedspecialize_pistol, combat_rangedspecialize_heavy, combat_rangedspecialize_carbine,
 	-- combat_meleespecialize_unarmed, combat_meleespecialize_twohand, combat_meleespecialize_polearm, combat_meleespecialize_onehand, combat_general,
-	-- combat_meleespecialize_twohandlightsaber, combat_meleespecialize_polearmlightsaber, combat_meleespecialize_onehandlightsaber
+	-- combat_meleespecialize_twohandlightsaber, combat_meleespecialize_polearmlightsaber, combat_meleespecialize_onehandlightsaber,
 	xpType = "combat_meleespecialize_twohandlightsaber",
-	
-	-- See http://www.ocdsoft.com/files/certifications.xls
+	,
+	-- See http://www.ocdsoft.com/files/certifications.xls,
 	certificationsRequired = { "cert_twohandlightsaber_gen3" },
-	-- See http://www.ocdsoft.com/files/accuracy.xls
+	-- See http://www.ocdsoft.com/files/accuracy.xls,
 	creatureAccuracyModifiers = { "twohandlightsaber_accuracy" },
 
-	-- See http://www.ocdsoft.com/files/defense.xls
+	-- See http://www.ocdsoft.com/files/defense.xls,
 	defenderDefenseModifiers = { "melee_defense" },
 
-	-- Leave as "dodge" for now, may have additions later
+	-- Leave as "dodge" for now, may have additions later,
 	defenderSecondaryDefenseModifiers = { "dodge" },
 
-	-- See http://www.ocdsoft.com/files/speed.xls
+	-- See http://www.ocdsoft.com/files/speed.xls,
 	speedModifiers = { "twohandlightsaber_speed" },
 
-	-- Leave blank for now
+	-- Leave blank for now,
 	damageModifiers = { },
-	
+	,
 
-	-- The values below are the default values.  To be used for blue frog objects primarily
+	-- The values below are the default values.  To be used for blue frog objects primarily,
 	healthAttackCost = 85,
 	actionAttackCost = 50,
 	mindAttackCost = 35,
@@ -97,8 +97,16 @@ object_weapon_melee_2h_sword_crafted_saber_sword_lightsaber_two_handed_gen3 = ob
 	minDamage = 175,
         maxDamage = 255,
 
-	attackSpeed = 4.8
+	attackSpeed = 4.8,
 
+	numberExperimentalProperties = {1, 1, 2, 2, 2, 2, 2, 1, 1, 1},
+	experimentalProperties = {"XX", "XX", "CD", "OQ", "CD", "OQ", "CD", "OQ", "SR", "UT", "CD", "OQ", "OQ", "OQ", "OQ"},
+	experimentalWeights = {1, 1, 1, 2, 1, 2, 1, 1, 1, 1, 1, 2, 1, 1, 1},
+	experimentalGroupTitles = {"null", "null", "expDamage", "expDamage", "expDamage", "expDamage", "expEffeciency", "expEffeciency", "expEffeciency", "expEffeciency"},
+	experimentalSubGroupTitles = {"null", "null", "mindamage", "maxdamage", "attackspeed", "woundchance", "forcecost", "attackhealthcost", "attackactioncost", "attackmindcost"},
+	experimentalMin = {0, 0, 175, 255, 4.8, 19, 36, 85, 50, 35},
+	experimentalMax = {0, 0, 185, 295, 4.5, 31, 40, 55, 45, 30},
+	experimentalPrecision = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
 }
 
 ObjectTemplates:addTemplate(object_weapon_melee_2h_sword_crafted_saber_sword_lightsaber_two_handed_gen3, "object/weapon/melee/2h_sword/crafted_saber/sword_lightsaber_two_handed_gen3.iff")

@@ -43,61 +43,69 @@
 
 object_weapon_melee_2h_sword_2h_sword_katana = object_weapon_melee_2h_sword_shared_2h_sword_katana:new {
 
-	-- ALL, ALLSEXES, ALLFACTIONS, HUMANOIDS, HUMANOID_FOOTWEAR, HUMANOID_MALES, HUMANOID_FEMALES, HUMANOID_IMPERIALS, HUMANOID_REBELS, WOOKIES, ITHORIANS, TWILEKS
+	-- ALL, ALLSEXES, ALLFACTIONS, HUMANOIDS, HUMANOID_FOOTWEAR, HUMANOID_MALES, HUMANOID_FEMALES, HUMANOID_IMPERIALS, HUMANOID_REBELS, WOOKIES, ITHORIANS, TWILEKS,
 	playerUseMask = ALL,
-	
+	,
 	-- RANGEDATTACK, MELEEATTACK, FORCEATTACK, TRAPATTACK, GRENADEATTACK, HEAVYACIDBEAMATTACK,
-	-- HEAVYLIGHTNINGBEAMATTACK, HEAVYPARTICLEBEAMATTACK, HEAVYROCKETLAUNCHERATTACK, HEAVYLAUNCHERATTACK
+	-- HEAVYLIGHTNINGBEAMATTACK, HEAVYPARTICLEBEAMATTACK, HEAVYROCKETLAUNCHERATTACK, HEAVYLAUNCHERATTACK,
 	attackType = MELEEATTACK,
-	
-	-- ENERGY, KINETIC, ELECTRICITY, STUN, BLAST, HEAT, COLD, ACID, FORCE, LIGHTSABER
+	,
+	-- ENERGY, KINETIC, ELECTRICITY, STUN, BLAST, HEAT, COLD, ACID, FORCE, LIGHTSABER,
 	damageType = KINETIC,
-	
-	-- NONE, LIGHT, MEDIUM, HEAVY
+	,
+	-- NONE, LIGHT, MEDIUM, HEAVY,
 	armorPiercing = MEDIUM,
-	
-	-- combat_rangedspecialize_bactarifle, combat_rangedspecialize_rifle, combat_rangedspecialize_pistol, combat_rangedspecialize_heavy, combat_rangedspecialize_carbine
+	,
+	-- combat_rangedspecialize_bactarifle, combat_rangedspecialize_rifle, combat_rangedspecialize_pistol, combat_rangedspecialize_heavy, combat_rangedspecialize_carbine,
 	-- combat_meleespecialize_unarmed, combat_meleespecialize_twohand, combat_meleespecialize_polearm, combat_meleespecialize_onehand, combat_general,
-	-- combat_meleespecialize_twohandlightsaber, combat_meleespecialize_polearmlightsaber, combat_meleespecialize_onehandlightsaber
+	-- combat_meleespecialize_twohandlightsaber, combat_meleespecialize_polearmlightsaber, combat_meleespecialize_onehandlightsaber,
 	xpType = "combat_meleespecialize_twohand",
-	       
-	-- See http://www.ocdsoft.com/files/certifications.xls
+	       ,
+	-- See http://www.ocdsoft.com/files/certifications.xls,
 	certificationsRequired = { "cert_sword_2h_katana" },
-	-- See http://www.ocdsoft.com/files/accuracy.xls
+	-- See http://www.ocdsoft.com/files/accuracy.xls,
 	creatureAccuracyModifiers = { "twohandedmelee_accuracy" },
-	
-	-- See http://www.ocdsoft.com/files/defense.xls
+	,
+	-- See http://www.ocdsoft.com/files/defense.xls,
 	defenderDefenseModifiers = { "melee_defense" },
-	
-	-- Leave as "dodge" for now, may have additions later
+	,
+	-- Leave as "dodge" for now, may have additions later,
 	defenderSecondaryDefenseModifiers = { "dodge" },
-	
-	-- See http://www.ocdsoft.com/files/speed.xls
+	,
+	-- See http://www.ocdsoft.com/files/speed.xls,
 	speedModifiers = { "twohandmelee_speed" },
-	
-	-- Leave blank for now
+	,
+	-- Leave blank for now,
 	damageModifiers = { },
-	       
-	
-	-- The values below are the default values.  To be used for blue frog objects primarily
+	       ,
+	,
+	-- The values below are the default values.  To be used for blue frog objects primarily,
 	healthAttackCost = 27,
 	actionAttackCost = 65,
 	mindAttackCost = 33,
 	forceCost = 0,
-	
+	,
 	pointBlankAccuracy = 0,
 	pointBlankRange = 8,
-	
+	,
 	idealRange = 8,
 	idealAccuracy = 3,
-	
+	,
 	maxRange = 8,
 	maxRangeAccuracy = 5,
 
 	minDamage = 11,
         maxDamage = 112,
-	
-	attackSpeed = 4.6
+	,
+	attackSpeed = 4.6,
+	numberExperimentalProperties = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+	experimentalProperties = {"XX", "XX", "SR", "SR", "SR", "SR", "SR", "SR", "SR", "XX", "SR", "XX", "SR", "SR", "SR"},
+	experimentalWeights = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+	experimentalGroupTitles = {"null", "null", "expDamage", "expDamage", "expDamage", "expDamage", "exp_durability", "expRange", "expRange", "null", "expRange", "null", "expEffeciency", "expEffeciency", "expEffeciency"},
+	experimentalSubGroupTitles = {"null", "null", "mindamage", "maxdamage", "attackspeed", "woundchance", "hitpoints", "zerorangemod", "maxrangemod", "midrange", "midrangemod", "maxrange", "attackhealthcost", "attackactioncost", "attackmindcost"},
+	experimentalMin = {0, 0, 11, 112, 4.6, 15, 750, -4, -4, 3, -4, 4, 27, 65, 33}, -4, -4, 3, -4, 4, 27, 65, 33},
+	experimentalMax = {0, 0, 20, 208, 3.1, 27, 1500, 6, 6, 3, 6, 4, 15, 35, 18},
+	experimentalPrecision = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
 }
 
 ObjectTemplates:addTemplate(object_weapon_melee_2h_sword_2h_sword_katana, "object/weapon/melee/2h_sword/2h_sword_katana.iff")

@@ -72,15 +72,9 @@ object_draft_schematic_chemistry_medpack_poison_area_action_b = object_draft_sch
    combineTypes = {0, 0, 0, 1, 1, 1},
    contribution = {100, 100, 100, 100, 100, 100},
 
-   numberExperimentalProperties = {1, 1, 2, 2, 2, 2, 2, 2, 2, 1},
-   experimentalProperties = {"XX", "XX", "OQ", "PE", "OQ", "UT", "CD", "OQ", "CD", "OQ", "OQ", "PE", "OQ", "PE", "DR", "OQ", "XX"},
-   experimentalWeights = {1, 1, 2, 1, 2, 1, 1, 2, 1, 2, 2, 1, 2, 1, 1, 1, 1},
-   experimentalGroupTitles = {"null", "null", "exp_effectiveness", "expCharges", "expCharges", "exp_effectiveness", "expEaseOfUse", "expEaseOfUse", "exp_effectiveness", "null"},
-   experimentalSubGroupTitles = {"null", "null", "power", "charges", "range", "area", "skillmodmin", "potency", "duration", "hitpoints"},
-   experimentalMin = {0, 0, 10, 15, 15, 15, 75, 25, 30, 1000},
-   experimentalMax = {0, 0, 100, 25, 30, 5, 50, 100, 180, 1000},
-   experimentalPrecision = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+   templates { = 
+              3574708501, -- Script: 'object/tangible/medicine/crafted/medpack_poison_area_action_b.iff'
+             }
 
-   tanoCRC = 3574708501, -- Script: 'object/tangible/medicine/crafted/medpack_poison_area_action_b.iff'
 }
 ObjectTemplates:addTemplate(object_draft_schematic_chemistry_medpack_poison_area_action_b, "object/draft_schematic/chemistry/medpack_poison_area_action_b.iff")

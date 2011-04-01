@@ -44,18 +44,18 @@
 object_tangible_wearables_armor_bone_armor_bone_s01_bracer_l = object_tangible_wearables_armor_bone_shared_armor_bone_s01_bracer_l:new {
 	templateType = ARMOROBJECT,
 
-	-- ALL, ALLSEXES, ALLFACTIONS, HUMANOIDS, HUMANOID_FOOTWEAR, HUMANOID_MALES, HUMANOID_FEMALES, HUMANOID_IMPERIALS, HUMANOID_REBELS, WOOKIEES, ITHORIANS, TWILEKS
+	-- ALL, ALLSEXES, ALLFACTIONS, HUMANOIDS, HUMANOID_FOOTWEAR, HUMANOID_MALES, HUMANOID_FEMALES, HUMANOID_IMPERIALS, HUMANOID_REBELS, WOOKIEES, ITHORIANS, TWILEKS,
 	playerUseMask = HUMANOIDS,
-	
-	-- kineticeffectiveness, energyeffectiveness, electricaleffectiveness, stuneffectiveness, blasteffectiveness, heateffectiveness, coldeffectiveness, acideffectiveness, restraineffectiveness
+	,
+	-- kineticeffectiveness, energyeffectiveness, electricaleffectiveness, stuneffectiveness, blasteffectiveness, heateffectiveness, coldeffectiveness, acideffectiveness, restraineffectiveness,
 	vunerability = KINETIC + BLAST + STUN + HEAT + LIGHTSABER,
 
-	-- These are default Blue Frog stats
+	-- These are default Blue Frog stats,
 	healthEncumbrance = 1,
 	actionEncumbrance = 1,
 	mindEncumbrance = 1,
 
-	-- LIGHT, MEDIUM, HEAVY
+	-- LIGHT, MEDIUM, HEAVY,
 	rating = LIGHT,
 
 	kinetic = 15,
@@ -66,7 +66,15 @@ object_tangible_wearables_armor_bone_armor_bone_s01_bracer_l = object_tangible_w
 	heat = 15,
 	cold = 15,
 	acid = 15,
-	lightSaber = 0
+	lightSaber = 0,
+	numberExperimentalProperties = {1, 1, 1, 2, 2, 2, 2, 2, 2, 1, 1, 2, 1},
+	experimentalProperties = {"XX", "XX", "XX", "OQ", "SR", "OQ", "SR", "OQ", "UT", "MA", "OQ", "MA", "OQ", "MA", "OQ", "XX", "XX", "OQ", "SR", "XX"},
+	experimentalWeights = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+	experimentalGroupTitles = {"null", "null", "null", "exp_durability", "exp_quality", "exp_durability", "exp_durability", "exp_durability", "exp_durability", "null", "null", "exp_resistance", "null"},
+	experimentalSubGroupTitles = {"null", "null", "sockets", "hit_points", "armor_effectiveness", "armor_integrity", "armor_health_encumbrance", "armor_action_encumbrance", "armor_mind_encumbrance", "armor_rating", "armor_special_type", "armor_special_effectiveness", "armor_special_integrity"},
+	experimentalMin = {0, 0, 0, 1000, 5, 7500, 6, 8, 4, 1, 2, 5, 7500},
+	experimentalMax = {0, 0, 0, 1000, 20, 12500, 4, 4, 2, 1, 2, 30, 12500},
+	experimentalPrecision = {0, 0, 0, 0, 10, 0, 0, 0, 0, 0, 0, 0, 0},
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_armor_bone_armor_bone_s01_bracer_l, "object/tangible/wearables/armor/bone/armor_bone_s01_bracer_l.iff")

@@ -72,15 +72,9 @@ object_draft_schematic_chemistry_medpack_enhance_strength_a = object_draft_schem
    combineTypes = {0, 0, 1, 1, 1},
    contribution = {100, 100, 100, 100, 100},
 
-   numberExperimentalProperties = {1, 1, 2, 2, 2, 2, 1},
-   experimentalProperties = {"XX", "XX", "OQ", "PE", "OQ", "UT", "DR", "OQ", "OQ", "PE", "XX"},
-   experimentalWeights = {1, 1, 2, 1, 2, 1, 1, 1, 2, 1, 1},
-   experimentalGroupTitles = {"null", "null", "exp_effectiveness", "expCharges", "exp_effectiveness", "expEaseOfUse", "null"},
-   experimentalSubGroupTitles = {"null", "null", "power", "charges", "duration", "skillmodmin", "hitpoints"},
-   experimentalMin = {0, 0, 10, 5, 1200, 60, 1000},
-   experimentalMax = {0, 0, 100, 10, 3600, 50, 1000},
-   experimentalPrecision = {0, 0, 0, 0, 0, 0, 0},
+   templates { = 
+              4259318854, -- Script: 'object/tangible/medicine/crafted/medpack_enhance_strength_a.iff'
+             }
 
-   tanoCRC = 4259318854, -- Script: 'object/tangible/medicine/crafted/medpack_enhance_strength_a.iff'
 }
 ObjectTemplates:addTemplate(object_draft_schematic_chemistry_medpack_enhance_strength_a, "object/draft_schematic/chemistry/medpack_enhance_strength_a.iff")

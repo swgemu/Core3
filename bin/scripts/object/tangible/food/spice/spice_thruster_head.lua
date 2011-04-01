@@ -43,7 +43,7 @@
 
 object_tangible_food_spice_spice_thruster_head = object_tangible_food_spice_shared_spice_thruster_head:new {
 	templateType = CONSUMABLE,
-	
+	,
 	duration = 400,
 	filling = 0,
 	nutrition = 0,
@@ -63,7 +63,15 @@ object_tangible_food_spice_spice_thruster_head = object_tangible_food_spice_shar
 
 	buffName = "thruster_head",
 	buffCRC = 0,
-	speciesRestriction = ""
+	speciesRestriction = "",
+	numberExperimentalProperties = {1, 1, 3},
+	experimentalProperties = {"XX", "XX", "DR", "OQ", "UT"},
+	experimentalWeights = {1, 1, 4, 1, 1},
+	experimentalGroupTitles = {"null", "null", "exp_nutrition"},
+	experimentalSubGroupTitles = {"null", "null", "hitpoints"},
+	experimentalMin = {0, 0, 1000},
+	experimentalMax = {0, 0, 1000},
+	experimentalPrecision = {0, 0, 0},
 }
 
 ObjectTemplates:addTemplate(object_tangible_food_spice_spice_thruster_head, "object/tangible/food/spice/spice_thruster_head.iff")

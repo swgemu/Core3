@@ -72,15 +72,9 @@ object_draft_schematic_food_drink_jaar = object_draft_schematic_food_shared_drin
    combineTypes = {0, 0, 1, 1},
    contribution = {100, 100, 100, 100},
 
-   numberExperimentalProperties = {1, 1, 1, 1, 2, 2, 2},
-   experimentalProperties = {"XX", "XX", "XX", "XX", "OQ", "PE", "DR", "PE", "DR", "OQ"},
-   experimentalWeights = {1, 1, 1, 1, 1, 2, 1, 3, 3, 1},
-   experimentalGroupTitles = {"null", "null", "null", "null", "exp_nutrition", "exp_quantity", "exp_filling"},
-   experimentalSubGroupTitles = {"null", "null", "hitpoints", "quantity_bonus", "nutrition", "quantity", "filling"},
-   experimentalMin = {0, 0, 1000, 0, 75, 60, 80},
-   experimentalMax = {0, 0, 1000, 0, 120, 100, 120},
-   experimentalPrecision = {0, 0, 0, 0, 0, 0, 0},
+   templates { = 
+              1186404816, -- Script: 'object/tangible/food/crafted/drink_jaar.iff'
+             }
 
-   tanoCRC = 1186404816, -- Script: 'object/tangible/food/crafted/drink_jaar.iff'
 }
 ObjectTemplates:addTemplate(object_draft_schematic_food_drink_jaar, "object/draft_schematic/food/drink_jaar.iff")

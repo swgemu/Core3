@@ -72,15 +72,9 @@ object_draft_schematic_weapon_component_chemical_dispersion_mechanism_advanced =
    combineTypes = {0, 0, 0},
    contribution = {100, 100, 100},
 
-   numberExperimentalProperties = {1, 1, 2, 2, 1},
-   experimentalProperties = {"XX", "XX", "HR", "OQ", "HR", "OQ", "OQ"},
-   experimentalWeights = {1, 1, 2, 1, 2, 1, 1},
-   experimentalGroupTitles = {"null", "null", "expDamage", "expDamage", "exp_durability"},
-   experimentalSubGroupTitles = {"null", "null", "mindamage", "maxdamage", "hitpoints"},
-   experimentalMin = {0, 0, 1, 1, 10},
-   experimentalMax = {0, 0, 20, 20, 100},
-   experimentalPrecision = {0, 0, 0, 0, 0},
+   templates { = 
+              3394909007, -- Script: 'object/tangible/component/weapon/chemical_dispersion_mechanism_advanced.iff'
+             }
 
-   tanoCRC = 3394909007, -- Script: 'object/tangible/component/weapon/chemical_dispersion_mechanism_advanced.iff'
 }
 ObjectTemplates:addTemplate(object_draft_schematic_weapon_component_chemical_dispersion_mechanism_advanced, "object/draft_schematic/weapon/component/chemical_dispersion_mechanism_advanced.iff")

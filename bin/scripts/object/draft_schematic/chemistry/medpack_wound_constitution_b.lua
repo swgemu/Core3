@@ -72,15 +72,9 @@ object_draft_schematic_chemistry_medpack_wound_constitution_b = object_draft_sch
    combineTypes = {0, 0, 1, 1, 1},
    contribution = {100, 100, 100, 100, 100},
 
-   numberExperimentalProperties = {1, 1, 2, 2, 2, 1},
-   experimentalProperties = {"XX", "XX", "OQ", "PE", "OQ", "UT", "OQ", "PE", "XX"},
-   experimentalWeights = {1, 1, 2, 1, 2, 1, 2, 1, 1},
-   experimentalGroupTitles = {"null", "null", "exp_effectiveness", "expCharges", "null", "null"},
-   experimentalSubGroupTitles = {"null", "null", "power", "charges", "skillmodmin", "hitpoints"},
-   experimentalMin = {0, 0, 30, 15, 5, 1000},
-   experimentalMax = {0, 0, 60, 30, 5, 1000},
-   experimentalPrecision = {0, 0, 0, 0, 0, 0},
+   templates { = 
+              1998553547, -- Script: 'object/tangible/medicine/crafted/medpack_wound_constitution_b.iff'
+             }
 
-   tanoCRC = 1998553547, -- Script: 'object/tangible/medicine/crafted/medpack_wound_constitution_b.iff'
 }
 ObjectTemplates:addTemplate(object_draft_schematic_chemistry_medpack_wound_constitution_b, "object/draft_schematic/chemistry/medpack_wound_constitution_b.iff")

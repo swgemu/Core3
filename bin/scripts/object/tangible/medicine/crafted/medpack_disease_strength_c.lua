@@ -53,7 +53,15 @@ object_tangible_medicine_crafted_medpack_disease_strength_c = object_tangible_me
 	dotType = DISEASED,
 	potency = 350,
 	commandToExecute = "/applydisease",
-	area = 0
+	area = 0,
+	numberExperimentalProperties = {1, 1, 2, 2, 2, 2, 2, 2, 1},
+	experimentalProperties = {"XX", "XX", "OQ", "PE", "OQ", "UT", "CD", "OQ", "OQ", "PE", "OQ", "PE", "DR", "OQ", "XX"},
+	experimentalWeights = {1, 1, 2, 1, 2, 1, 1, 2, 2, 1, 2, 1, 1, 1, 1},
+	experimentalGroupTitles = {"null", "null", "exp_effectiveness", "expCharges", "expCharges", "expEaseOfUse", "expEaseOfUse", "exp_effectiveness", "null"},
+	experimentalSubGroupTitles = {"null", "null", "power", "charges", "range", "skillmodmin", "potency", "duration", "hitpoints"},
+	experimentalMin = {0, 0, 10, 15, 15, 80, 25, 120, 1000},
+	experimentalMax = {0, 0, 60, 35, 30, 40, 150, 1000, 1000},
+	experimentalPrecision = {0, 0, 0, 0, 0, 0, 0, 0, 0},
 }
 
 ObjectTemplates:addTemplate(object_tangible_medicine_crafted_medpack_disease_strength_c, "object/tangible/medicine/crafted/medpack_disease_strength_c.iff")

@@ -43,6 +43,14 @@
 
 object_tangible_component_armor_shield_generator_personal = object_tangible_component_armor_shared_shield_generator_personal:new {
 
+	numberExperimentalProperties = {1, 1, 1, 2, 2, 2, 2, 2, 1, 1, 2, 1},
+	experimentalProperties = {"XX", "XX", "XX", "CD", "OQ", "OQ", "UT", "MA", "OQ", "MA", "OQ", "MA", "OQ", "XX", "XX", "OQ", "SR", "XX"},
+	experimentalWeights = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+	experimentalGroupTitles = {"null", "null", "exp_durability", "exp_quality", "exp_durability", "null", "null", "null", "null", "null", "exp_resistance", "null"},
+	experimentalSubGroupTitles = {"null", "null", "hit_points", "armor_effectiveness", "armor_integrity", "armor_health_encumbrance", "armor_action_encumbrance", "armor_mind_encumbrance", "armor_rating", "armor_special_type", "armor_special_effectiveness", "armor_special_integrity"},
+	experimentalMin = {0, 0, 1000, 1, 1500, 0, 0, 0, 1, 2, 1, 1400},
+	experimentalMax = {0, 0, 1000, 20, 2800, 0, 0, 0, 1, 2, 30, 2800},
+	experimentalPrecision = {0, 0, 0, 10, 0, 0, 0, 0, 0, 0, 0, 0},
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_armor_shield_generator_personal, "object/tangible/component/armor/shield_generator_personal.iff")

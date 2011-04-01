@@ -72,15 +72,9 @@ object_draft_schematic_droid_droid_wound_repair_kit_d = object_draft_schematic_d
    combineTypes = {0, 0, 0, 0, 0},
    contribution = {100, 100, 100, 100, 100},
 
-   numberExperimentalProperties = {1, 1, 3, 2, 1},
-   experimentalProperties = {"XX", "XX", "CD", "MA", "OQ", "OQ", "UT", "XX"},
-   experimentalWeights = {1, 1, 2, 1, 2, 2, 1, 1},
-   experimentalGroupTitles = {"null", "null", "exp_effectiveness", "expCharges", "null"},
-   experimentalSubGroupTitles = {"null", "null", "power", "charges", "hitpoints"},
-   experimentalMin = {0, 0, 80, 8, 1000},
-   experimentalMax = {0, 0, 400, 24, 1000},
-   experimentalPrecision = {0, 0, 0, 0, 0},
+   templates { = 
+              3475973239, -- Script: 'object/tangible/medicine/pet/droid_wound_kit_d.iff'
+             }
 
-   tanoCRC = 3475973239, -- Script: 'object/tangible/medicine/pet/droid_wound_kit_d.iff'
 }
 ObjectTemplates:addTemplate(object_draft_schematic_droid_droid_wound_repair_kit_d, "object/draft_schematic/droid/droid_wound_repair_kit_d.iff")

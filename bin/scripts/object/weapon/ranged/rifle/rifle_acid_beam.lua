@@ -42,43 +42,43 @@
 
 
 object_weapon_ranged_rifle_rifle_acid_beam = object_weapon_ranged_rifle_shared_rifle_acid_beam:new {
-	-- ALL, ALLSEXES, ALLFACTIONS, HUMANOIDS, HUMANOID_FOOTWEAR, HUMANOID_MALES, HUMANOID_FEMALES, HUMANOID_IMPERIALS, HUMANOID_REBELS, WOOKIES, ITHORIANS, TWILEKS
+	-- ALL, ALLSEXES, ALLFACTIONS, HUMANOIDS, HUMANOID_FOOTWEAR, HUMANOID_MALES, HUMANOID_FEMALES, HUMANOID_IMPERIALS, HUMANOID_REBELS, WOOKIES, ITHORIANS, TWILEKS,
 	playerUseMask = ALL,
 
-	-- RANGEDATTACK, MELEEATTACK, FORCEATTACK, TRAPATTACK, GRENADEATTACK, HEAVYACIDBEAMATTACK, 
-	-- HEAVYLIGHTNINGBEAMATTACK, HEAVYPARTICLEBEAMATTACK, HEAVYROCKETLAUNCHERATTACK, HEAVYLAUNCHERATTACK
+	-- RANGEDATTACK, MELEEATTACK, FORCEATTACK, TRAPATTACK, GRENADEATTACK, HEAVYACIDBEAMATTACK, ,
+	-- HEAVYLIGHTNINGBEAMATTACK, HEAVYPARTICLEBEAMATTACK, HEAVYROCKETLAUNCHERATTACK, HEAVYLAUNCHERATTACK,
 	attackType = RANGEDATTACK,
 
-	-- ENERGY, KINETIC, ELECTRICITY, STUN, BLAST, HEAT, COLD, ACID, FORCE, LIGHTSABER
+	-- ENERGY, KINETIC, ELECTRICITY, STUN, BLAST, HEAT, COLD, ACID, FORCE, LIGHTSABER,
 	damageType = ACID,
 
-	-- NONE, LIGHT, MEDIUM, HEAVY
+	-- NONE, LIGHT, MEDIUM, HEAVY,
 	armorPiercing = NONE,
 
-	-- combat_rangedspecialize_bactarifle, combat_rangedspecialize_rifle, combat_rangedspecialize_pistol, combat_rangedspecialize_heavy, combat_rangedspecialize_carbine
+	-- combat_rangedspecialize_bactarifle, combat_rangedspecialize_rifle, combat_rangedspecialize_pistol, combat_rangedspecialize_heavy, combat_rangedspecialize_carbine,
 	-- combat_meleespecialize_unarmed, combat_meleespecialize_twohand, combat_meleespecialize_polearm, combat_meleespecialize_onehand, combat_general,
-	-- combat_meleespecialize_twohandlightsaber, combat_meleespecialize_polearmlightsaber, combat_meleespecialize_onehandlightsaber
+	-- combat_meleespecialize_twohandlightsaber, combat_meleespecialize_polearmlightsaber, combat_meleespecialize_onehandlightsaber,
 	xpType = "combat_rangedspecialize_heavy",
-	
-	-- See http://www.ocdsoft.com/files/certifications.xls
+	,
+	-- See http://www.ocdsoft.com/files/certifications.xls,
 	certificationsRequired = { "cert_rifle_acid_beam" },
-	-- See http://www.ocdsoft.com/files/accuracy.xls
+	-- See http://www.ocdsoft.com/files/accuracy.xls,
 	creatureAccuracyModifiers = { "heavy_acid_beam_accuracy" },
 
-	-- See http://www.ocdsoft.com/files/defense.xls
+	-- See http://www.ocdsoft.com/files/defense.xls,
 	defenderDefenseModifiers = { "ranged_defense" },
 
-	-- Leave as "dodge" for now, may have additions later
+	-- Leave as "dodge" for now, may have additions later,
 	defenderSecondaryDefenseModifiers = { "dodge" },
 
-	-- See http://www.ocdsoft.com/files/speed.xls
+	-- See http://www.ocdsoft.com/files/speed.xls,
 	speedModifiers = { "heavy_acid_beam_speed" },
 
-	-- Leave blank for now
+	-- Leave blank for now,
 	damageModifiers = { },
-	
+	,
 
-	-- The values below are the default values.  To be used for blue frog objects primarily
+	-- The values below are the default values.  To be used for blue frog objects primarily,
 	healthAttackCost = 103,
 	actionAttackCost = 65,
 	mindAttackCost = 20,
@@ -92,11 +92,19 @@ object_weapon_ranged_rifle_rifle_acid_beam = object_weapon_ranged_rifle_shared_r
 
 	maxRange = 65,
 	maxRangeAccuracy = -121,
-	
+	,
 	minDamage = 200,
 	maxDamage = 470,
-	
-	attackSpeed = 7.7
+	,
+	attackSpeed = 7.7,
+	numberExperimentalProperties = {1, 1, 2, 2, 2, 2, 2, 1, 1, 2, 1, 2, 2, 2},
+	experimentalProperties = {"XX", "XX", "CD", "OQ", "CD", "OQ", "CD", "OQ", "CD", "OQ", "CD", "OQ", "XX", "XX", "CD", "OQ", "XX", "CD", "OQ", "CD", "OQ", "CD", "OQ"},
+	experimentalWeights = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+	experimentalGroupTitles = {"null", "null", "expDamage", "expDamage", "expDamage", "expDamage", "exp_durability", "expRange", "null", "expRange", "expRange", "expEffeciency", "expEffeciency", "expEffeciency"},
+	experimentalSubGroupTitles = {"null", "null", "mindamage", "maxdamage", "attackspeed", "woundchance", "hitpoints", "zerorangemod", "midrange", "midrangemod", "maxrangemod", "attackhealthcost", "attackactioncost", "attackmindcost"},
+	experimentalMin = {0, 0, 200, 470, 7.7, 19, 750, 15, 35, -21, -121, 103, 65, 20}, -21, -121, 103, 65, 20},
+	experimentalMax = {0, 0, 330, 770, 5.5, 35, 1500, 25, 35, -5, -90, 62, 35, 15}, -5, -90, 62, 35, 15},
+	experimentalPrecision = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
 }
 
 ObjectTemplates:addTemplate(object_weapon_ranged_rifle_rifle_acid_beam, "object/weapon/ranged/rifle/rifle_acid_beam.iff")

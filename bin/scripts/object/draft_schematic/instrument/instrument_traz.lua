@@ -72,15 +72,9 @@ object_draft_schematic_instrument_instrument_traz = object_draft_schematic_instr
    combineTypes = {0, 0},
    contribution = {100, 100},
 
-   numberExperimentalProperties = {1, 1, 1, 1},
-   experimentalProperties = {"XX", "XX", "UT", "CD"},
-   experimentalWeights = {1, 1, 1, 1},
-   experimentalGroupTitles = {"null", "null", "null", "exp_quality"},
-   experimentalSubGroupTitles = {"null", "null", "hitpoints", "quality"},
-   experimentalMin = {0, 0, 1000, 1},
-   experimentalMax = {0, 0, 1000, 100},
-   experimentalPrecision = {0, 0, 0, 0},
+   templates { = 
+              2939341884, -- Script: 'object/tangible/instrument/traz.iff'
+             }
 
-   tanoCRC = 2939341884, -- Script: 'object/tangible/instrument/traz.iff'
 }
 ObjectTemplates:addTemplate(object_draft_schematic_instrument_instrument_traz, "object/draft_schematic/instrument/instrument_traz.iff")

@@ -72,15 +72,9 @@ object_draft_schematic_structure_installation_mining_gas = object_draft_schemati
    combineTypes = {0, 0, 0, 0, 1, 0, 1, 1, 1},
    contribution = {100, 100, 100, 100, 100, 100, 100, 100, 100},
 
-   numberExperimentalProperties = {1, 1, 3, 2, 1},
-   experimentalProperties = {"XX", "XX", "HR", "SR", "UT", "MA", "UT", "XX"},
-   experimentalWeights = {1, 1, 1, 1, 2, 1, 2, 1},
-   experimentalGroupTitles = {"null", "null", "expEffeciency", "expStorage", "null"},
-   experimentalSubGroupTitles = {"null", "null", "extractrate", "hoppersize", "hitpoints"},
-   experimentalMin = {0, 0, 2, 50000, 1000},
-   experimentalMax = {0, 0, 6, 75000, 1000},
-   experimentalPrecision = {0, 0, 0, 0, 0},
+   templates { = 
+              4022604405, -- Script: 'object/tangible/deed/harvester_deed/harvester_gas_deed_medium.iff'
+             }
 
-   tanoCRC = 4022604405, -- Script: 'object/tangible/deed/harvester_deed/harvester_gas_deed_medium.iff'
 }
 ObjectTemplates:addTemplate(object_draft_schematic_structure_installation_mining_gas, "object/draft_schematic/structure/installation_mining_gas.iff")

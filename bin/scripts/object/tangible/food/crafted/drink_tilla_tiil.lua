@@ -43,7 +43,7 @@
 
 object_tangible_food_crafted_drink_tilla_tiil = object_tangible_food_crafted_shared_drink_tilla_tiil:new {
 	templateType = CONSUMABLE,
-	
+	,
 	duration = 10,
 	filling = 10,
 	nutrition = 10,
@@ -63,7 +63,15 @@ object_tangible_food_crafted_drink_tilla_tiil = object_tangible_food_crafted_sha
 
 	buffName = "",
 	buffCRC = 0,
-	speciesRestriction = ""
+	speciesRestriction = "",
+	numberExperimentalProperties = {1, 1, 1, 1, 2, 1, 2, 1},
+	experimentalProperties = {"XX", "XX", "XX", "XX", "DR", "OQ", "XX", "DR", "FL", "XX"},
+	experimentalWeights = {1, 1, 1, 1, 1, 1, 1, 1, 2, 1},
+	experimentalGroupTitles = {"null", "null", "null", "null", "exp_nutrition", "null", "exp_filling", "null"},
+	experimentalSubGroupTitles = {"null", "null", "hitpoints", "quantity_bonus", "nutrition", "quantity", "filling", "stomach"},
+	experimentalMin = {0, 0, 1000, 0, 75, 60, 80, 1},
+	experimentalMax = {0, 0, 1000, 0, 120, 100, 120, 1},
+	experimentalPrecision = {0, 0, 0, 0, 10, 0, 10, 0},
 }
 
 ObjectTemplates:addTemplate(object_tangible_food_crafted_drink_tilla_tiil, "object/tangible/food/crafted/drink_tilla_tiil.iff")

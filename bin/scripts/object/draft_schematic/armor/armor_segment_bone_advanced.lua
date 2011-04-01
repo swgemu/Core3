@@ -72,15 +72,9 @@ object_draft_schematic_armor_armor_segment_bone_advanced = object_draft_schemati
    combineTypes = {0, 0, 1},
    contribution = {100, 100, 100},
 
-   numberExperimentalProperties = {1, 1, 1, 2, 2, 2, 2, 2, 1, 1, 2, 1},
-   experimentalProperties = {"XX", "XX", "XX", "OQ", "SR", "OQ", "UT", "MA", "OQ", "MA", "OQ", "MA", "OQ", "XX", "XX", "OQ", "SR", "XX"},
-   experimentalWeights = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
-   experimentalGroupTitles = {"null", "null", "exp_durability", "exp_quality", "exp_durability", "exp_durability", "exp_durability", "exp_durability", "null", "null", "exp_resistance", "null"},
-   experimentalSubGroupTitles = {"null", "null", "hit_points", "armor_effectiveness", "armor_integrity", "armor_health_encumbrance", "armor_action_encumbrance", "armor_mind_encumbrance", "armor_rating", "armor_special_type", "armor_special_effectiveness", "armor_special_integrity"},
-   experimentalMin = {0, 0, 1000, 1, 100, 6, 8, 4, 1, 2, 1, 100},
-   experimentalMax = {0, 0, 1000, 10, 1000, 1, 1, 1, 1, 2, 20, 1000},
-   experimentalPrecision = {0, 0, 0, 10, 0, 0, 0, 0, 0, 0, 0, 0},
+   templates { = 
+              3592675569, -- Script: 'object/tangible/component/armor/armor_segment_bone_advanced.iff'
+             }
 
-   tanoCRC = 3592675569, -- Script: 'object/tangible/component/armor/armor_segment_bone_advanced.iff'
 }
 ObjectTemplates:addTemplate(object_draft_schematic_armor_armor_segment_bone_advanced, "object/draft_schematic/armor/armor_segment_bone_advanced.iff")

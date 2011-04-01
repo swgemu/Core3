@@ -43,19 +43,19 @@
 
 object_tangible_food_crafted_drink_aitha = object_tangible_food_crafted_shared_drink_aitha:new {
 	templateType = CONSUMABLE,
-	
+	,
 	duration = 45,
 	filling = 10,
 	nutrition = 10,
 
 	effectType = 0,
-	
+	,
 	fillingMin = 18,
 	fillingMax = 11,
-	
+	,
 	flavorMin = 6600,
 	flavorMax = 10800,
-	
+	,
 	nutritionMin = 110,
 	nutritionMax = 180,
 	quantityMin = 4,
@@ -65,8 +65,16 @@ object_tangible_food_crafted_drink_aitha = object_tangible_food_crafted_shared_d
 
 	buffName = "",
 	buffCRC = 0,
-	speciesRestriction = ""
+	speciesRestriction = "",
 
+	numberExperimentalProperties = {1, 1, 1, 1, 2, 2, 2, 1},
+	experimentalProperties = {"XX", "XX", "XX", "XX", "OQ", "PE", "DR", "PE", "DR", "OQ", "XX"},
+	experimentalWeights = {1, 1, 1, 1, 1, 2, 1, 3, 3, 1, 1},
+	experimentalGroupTitles = {"null", "null", "null", "null", "exp_nutrition", "exp_quantity", "exp_filling", "null"},
+	experimentalSubGroupTitles = {"null", "null", "hitpoints", "quantity_bonus", "nutrition", "quantity", "filling", "stomach"},
+	experimentalMin = {0, 0, 1000, 0, 75, 60, 80, 1},
+	experimentalMax = {0, 0, 1000, 0, 120, 100, 120, 1},
+	experimentalPrecision = {0, 0, 0, 0, 0, 0, 0, 0},
 }
 
 ObjectTemplates:addTemplate(object_tangible_food_crafted_drink_aitha, "object/tangible/food/crafted/drink_aitha.iff")

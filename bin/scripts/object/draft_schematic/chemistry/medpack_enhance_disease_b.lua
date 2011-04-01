@@ -72,15 +72,9 @@ object_draft_schematic_chemistry_medpack_enhance_disease_b = object_draft_schema
    combineTypes = {0, 0, 0, 0, 1, 1, 1},
    contribution = {100, 100, 100, 100, 100, 100, 100},
 
-   numberExperimentalProperties = {1, 1, 2, 2, 2, 2, 1},
-   experimentalProperties = {"XX", "XX", "OQ", "PE", "OQ", "UT", "OQ", "PE", "OQ", "PE", "XX"},
-   experimentalWeights = {1, 1, 2, 1, 2, 1, 2, 1, 2, 1, 1},
-   experimentalGroupTitles = {"null", "null", "exp_effectiveness", "expCharges", "expDuration", "null", "null"},
-   experimentalSubGroupTitles = {"null", "null", "power", "charges", "duration", "skillmodmin", "hitpoints"},
-   experimentalMin = {0, 0, 35, 5, 1200, 90, 1000},
-   experimentalMax = {0, 0, 320, 20, 4800, 90, 1000},
-   experimentalPrecision = {0, 0, 0, 0, 0, 0, 0},
+   templates { = 
+              1203539532, -- Script: 'object/tangible/medicine/crafted/medpack_enhance_disease_b.iff'
+             }
 
-   tanoCRC = 1203539532, -- Script: 'object/tangible/medicine/crafted/medpack_enhance_disease_b.iff'
 }
 ObjectTemplates:addTemplate(object_draft_schematic_chemistry_medpack_enhance_disease_b, "object/draft_schematic/chemistry/medpack_enhance_disease_b.iff")

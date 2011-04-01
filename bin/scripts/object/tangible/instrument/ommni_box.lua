@@ -43,7 +43,15 @@
 
 object_tangible_instrument_ommni_box = object_tangible_instrument_shared_ommni_box:new {
 	templateType = INSTRUMENT,
-	instrumentType = 8
+	instrumentType = 8,
+	numberExperimentalProperties = {1, 1, 1, 1},
+	experimentalProperties = {"XX", "XX", "UT", "CD"},
+	experimentalWeights = {1, 1, 1, 1},
+	experimentalGroupTitles = {"null", "null", "null", "exp_quality"},
+	experimentalSubGroupTitles = {"null", "null", "hitpoints", "quality"},
+	experimentalMin = {0, 0, 1000, 1},
+	experimentalMax = {0, 0, 1000, 100},
+	experimentalPrecision = {0, 0, 0, 0},
 }
 
 ObjectTemplates:addTemplate(object_tangible_instrument_ommni_box, "object/tangible/instrument/ommni_box.iff")

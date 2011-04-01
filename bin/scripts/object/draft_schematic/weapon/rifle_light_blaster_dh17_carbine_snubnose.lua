@@ -72,15 +72,9 @@ object_draft_schematic_weapon_rifle_light_blaster_dh17_carbine_snubnose = object
    combineTypes = {0, 0, 0, 1, 1, 1, 1},
    contribution = {100, 100, 100, 100, 100, 100, 100},
 
-   numberExperimentalProperties = {1, 1, 2, 2, 2, 2, 2, 2, 1, 1, 1, 2, 2, 2, 2},
-   experimentalProperties = {"XX", "XX", "CD", "OQ", "CD", "OQ", "CD", "OQ", "CD", "OQ", "CD", "OQ", "CD", "OQ", "XX", "XX", "XX", "CD", "OQ", "CD", "OQ", "CD", "OQ", "CD", "OQ"},
-   experimentalWeights = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
-   experimentalGroupTitles = {"null", "null", "expDamage", "expDamage", "expDamage", "expDamage", "expEffeciency", "exp_durability", "null", "null", "null", "expRange", "expEffeciency", "expEffeciency", "expEffeciency"},
-   experimentalSubGroupTitles = {"null", "null", "mindamage", "maxdamage", "attackspeed", "woundchance", "roundsused", "hitpoints", "zerorangemod", "maxrangemod", "midrange", "midrangemod", "attackhealthcost", "attackactioncost", "attackmindcost"},
-   experimentalMin = {0, 0, 28, 81, 4.5, 6, 30, 750, -25, -80, 25, -5, 29, 31, 16},
-   experimentalMax = {0, 0, 52, 150, 3.1, 12, 65, 1500, -25, -80, 25, 5, 15, 17, 8},
-   experimentalPrecision = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+   templates { = 
+              648215202, -- Script: 'object/weapon/ranged/carbine/carbine_dh17_snubnose.iff'
+             }
 
-   tanoCRC = 648215202, -- Script: 'object/weapon/ranged/carbine/carbine_dh17_snubnose.iff'
 }
 ObjectTemplates:addTemplate(object_draft_schematic_weapon_rifle_light_blaster_dh17_carbine_snubnose, "object/draft_schematic/weapon/rifle_light_blaster_dh17_carbine_snubnose.iff")

@@ -43,6 +43,14 @@
 
 object_tangible_component_bio_bio_component_clothing_casual_medic_2 = object_tangible_component_bio_shared_bio_component_clothing_casual_medic_2:new {
 
+	numberExperimentalProperties = {1, 1, 1, 1, 1, 3, 1, 3},
+	experimentalProperties = {"XX", "XX", "XX", "XX", "XX", "FL", "OQ", "PE", "XX", "FL", "OQ", "PE"},
+	experimentalWeights = {1, 1, 1, 1, 1, 1, 2, 2, 1, 1, 2, 2},
+	experimentalGroupTitles = {"null", "null", "null", "null", "null", "exp_effectiveness", "null", "exp_effectiveness"},
+	experimentalSubGroupTitles = {"null", "null", "decayrate", "hitpoints", "mod_idx_one", "mod_val_one", "mod_idx_two", "mod_val_two"},
+	experimentalMin = {0, 0, 30, 1000, 102, 3, 103, 3},
+	experimentalMax = {0, 0, 50, 1000, 102, 20, 103, 20},
+	experimentalPrecision = {0, 0, 0, 0, 0, 0, 0, 0},
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_bio_bio_component_clothing_casual_medic_2, "object/tangible/component/bio/bio_component_clothing_casual_medic_2.iff")

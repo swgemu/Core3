@@ -72,15 +72,9 @@ object_draft_schematic_vehicle_vehicle_customization_kit = object_draft_schemati
    combineTypes = {0, 0, 0, 1, 1},
    contribution = {100, 100, 100, 100, 100},
 
-   numberExperimentalProperties = {1, 1, 1, 2},
-   experimentalProperties = {"XX", "XX", "XX", "CD", "OQ"},
-   experimentalWeights = {1, 1, 1, 1, 1},
-   experimentalGroupTitles = {"null", "null", "null", "exp_quality"},
-   experimentalSubGroupTitles = {"null", "null", "hit_points", "charges"},
-   experimentalMin = {0, 0, 1000, 1},
-   experimentalMax = {0, 0, 1000, 10},
-   experimentalPrecision = {0, 0, 0, 0},
+   templates { = 
+              2275981129, -- Script: 'object/tangible/item/vehicle_customization.iff'
+             }
 
-   tanoCRC = 2275981129, -- Script: 'object/tangible/item/vehicle_customization.iff'
 }
 ObjectTemplates:addTemplate(object_draft_schematic_vehicle_vehicle_customization_kit, "object/draft_schematic/vehicle/vehicle_customization_kit.iff")

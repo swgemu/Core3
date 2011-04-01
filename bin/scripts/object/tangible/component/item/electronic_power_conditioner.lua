@@ -43,6 +43,14 @@
 
 object_tangible_component_item_electronic_power_conditioner = object_tangible_component_item_shared_electronic_power_conditioner:new {
 
+	numberExperimentalProperties = {1, 1, 1, 1},
+	experimentalProperties = {"XX", "XX", "UT", "OQ"},
+	experimentalWeights = {1, 1, 1, 1},
+	experimentalGroupTitles = {"null", "null", "exp_durability", "exp_effectiveness"},
+	experimentalSubGroupTitles = {"null", "null", "hitpoints", "usemodifier"},
+	experimentalMin = {0, 0, 100, -5}, -5},
+	experimentalMax = {0, 0, 150, 5},
+	experimentalPrecision = {0, 0, 0, 0},
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_item_electronic_power_conditioner, "object/tangible/component/item/electronic_power_conditioner.iff")

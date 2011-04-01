@@ -72,15 +72,9 @@ object_draft_schematic_droid_droid_damage_repair_kit_b = object_draft_schematic_
    combineTypes = {0, 0, 0, 1, 0},
    contribution = {100, 100, 100, 100, 100},
 
-   numberExperimentalProperties = {1, 1, 3, 2, 1},
-   experimentalProperties = {"XX", "XX", "CD", "MA", "OQ", "OQ", "UT", "XX"},
-   experimentalWeights = {1, 1, 2, 1, 2, 2, 1, 1},
-   experimentalGroupTitles = {"null", "null", "exp_effectiveness", "expCharges", "null"},
-   experimentalSubGroupTitles = {"null", "null", "energy", "charges", "hitpoints"},
-   experimentalMin = {0, 0, 300, 10, 1000},
-   experimentalMax = {0, 0, 1125, 20, 1000},
-   experimentalPrecision = {0, 0, 0, 0, 0},
+   templates { = 
+              2510016377, -- Script: 'object/tangible/medicine/pet/droid_damage_kit_b.iff'
+             }
 
-   tanoCRC = 2510016377, -- Script: 'object/tangible/medicine/pet/droid_damage_kit_b.iff'
 }
 ObjectTemplates:addTemplate(object_draft_schematic_droid_droid_damage_repair_kit_b, "object/draft_schematic/droid/droid_damage_repair_kit_b.iff")

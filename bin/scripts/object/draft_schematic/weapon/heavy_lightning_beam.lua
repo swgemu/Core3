@@ -72,15 +72,9 @@ object_draft_schematic_weapon_heavy_lightning_beam = object_draft_schematic_weap
    combineTypes = {0, 0, 0, 0, 1, 0, 1, 1},
    contribution = {100, 100, 100, 100, 100, 100, 100, 100},
 
-   numberExperimentalProperties = {1, 1, 2, 2, 2, 2, 2, 2, 1, 1, 1, 2, 2, 2, 2, 2},
-   experimentalProperties = {"XX", "XX", "CD", "OQ", "CD", "OQ", "CD", "OQ", "CD", "OQ", "CD", "OQ", "CD", "OQ", "XX", "XX", "XX", "CD", "OQ", "CD", "OQ", "CD", "OQ", "CD", "OQ", "CD", "OQ"},
-   experimentalWeights = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
-   experimentalGroupTitles = {"null", "null", "expDamage", "expDamage", "expDamage", "expDamage", "expEffeciency", "exp_durability", "null", "null", "null", "expRange", "expEffeciency", "expEffeciency", "expEffeciency", "expEffeciency"},
-   experimentalSubGroupTitles = {"null", "null", "mindamage", "maxdamage", "attackspeed", "woundchance", "roundsused", "hitpoints", "zerorangemod", "maxrangemod", "midrange", "midrangemod", "charges", "attackhealthcost", "attackactioncost", "attackmindcost"},
-   experimentalMin = {0, 0, 936, 1550, 9.6, 13, 30, 750, -45, -125, 32, 0, 25, 45, 97, 26},
-   experimentalMax = {0, 0, 1340, 3400, 5.4, 23, 65, 1500, -35, -95, 32, 40, 50, 24, 52, 14},
-   experimentalPrecision = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+   templates { = 
+              949442296, -- Script: 'object/weapon/ranged/heavy/heavy_lightning_beam.iff'
+             }
 
-   tanoCRC = 949442296, -- Script: 'object/weapon/ranged/heavy/heavy_lightning_beam.iff'
 }
 ObjectTemplates:addTemplate(object_draft_schematic_weapon_heavy_lightning_beam, "object/draft_schematic/weapon/heavy_lightning_beam.iff")

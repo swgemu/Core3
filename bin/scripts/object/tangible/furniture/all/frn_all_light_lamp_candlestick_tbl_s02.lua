@@ -43,6 +43,14 @@
 
 object_tangible_furniture_all_frn_all_light_lamp_candlestick_tbl_s02 = object_tangible_furniture_all_shared_frn_all_light_lamp_candlestick_tbl_s02:new {
 
+	numberExperimentalProperties = {1, 1, 1, 2},
+	experimentalProperties = {"XX", "XX", "XX", "DR", "OQ"},
+	experimentalWeights = {1, 1, 1, 1, 1},
+	experimentalGroupTitles = {"null", "null", "null", "exp_quality"},
+	experimentalSubGroupTitles = {"null", "null", "hitpoints", "lifespan"},
+	experimentalMin = {0, 0, 1000, 7},
+	experimentalMax = {0, 0, 1000, 21},
+	experimentalPrecision = {0, 0, 0, 0},
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_all_frn_all_light_lamp_candlestick_tbl_s02, "object/tangible/furniture/all/frn_all_light_lamp_candlestick_tbl_s02.iff")

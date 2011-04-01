@@ -72,15 +72,9 @@ object_draft_schematic_structure_installation_generator_wind = object_draft_sche
    combineTypes = {0, 0, 0, 0, 0},
    contribution = {100, 100, 100, 100, 100},
 
-   numberExperimentalProperties = {1, 1, 3, 2, 1},
-   experimentalProperties = {"XX", "XX", "HR", "SR", "UT", "MA", "UT", "XX"},
-   experimentalWeights = {1, 1, 1, 1, 2, 1, 2, 1},
-   experimentalGroupTitles = {"null", "null", "expEffeciency", "expStorage", "null"},
-   experimentalSubGroupTitles = {"null", "null", "extractrate", "hoppersize", "hitpoints"},
-   experimentalMin = {0, 0, 4, 25000, 1000},
-   experimentalMax = {0, 0, 10, 50000, 1000},
-   experimentalPrecision = {0, 0, 0, 0, 0},
+   templates { = 
+              3948268743, -- Script: 'object/tangible/deed/generator_deed/generator_wind_deed.iff'
+             }
 
-   tanoCRC = 3948268743, -- Script: 'object/tangible/deed/generator_deed/generator_wind_deed.iff'
 }
 ObjectTemplates:addTemplate(object_draft_schematic_structure_installation_generator_wind, "object/draft_schematic/structure/installation_generator_wind.iff")

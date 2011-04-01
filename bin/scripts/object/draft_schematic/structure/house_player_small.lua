@@ -72,15 +72,9 @@ object_draft_schematic_structure_house_player_small = object_draft_schematic_str
    combineTypes = {0, 0, 0, 1, 1, 1},
    contribution = {100, 100, 100, 100, 100, 100},
 
-   numberExperimentalProperties = {1, 1, 1},
-   experimentalProperties = {"XX", "XX", "DR"},
-   experimentalWeights = {1, 1, 1},
-   experimentalGroupTitles = {"null", "null", "exp_durability"},
-   experimentalSubGroupTitles = {"null", "null", "hitpoints"},
-   experimentalMin = {0, 0, 21000},
-   experimentalMax = {0, 0, 39000},
-   experimentalPrecision = {0, 0, 0},
+   templates { = 
+              1869271087, -- Script: 'object/tangible/deed/player_house_deed/tatooine_house_small_deed.iff'
+             }
 
-   tanoCRC = 1869271087, -- Script: 'object/tangible/deed/player_house_deed/tatooine_house_small_deed.iff'
 }
 ObjectTemplates:addTemplate(object_draft_schematic_structure_house_player_small, "object/draft_schematic/structure/house_player_small.iff")

@@ -72,15 +72,9 @@ object_draft_schematic_chemistry_component_release_mechanism_duration = object_d
    combineTypes = {0, 0},
    contribution = {100, 100},
 
-   numberExperimentalProperties = {1, 1, 2, 1, 1},
-   experimentalProperties = {"XX", "XX", "OQ", "PE", "XX", "XX"},
-   experimentalWeights = {1, 1, 2, 1, 1, 1},
-   experimentalGroupTitles = {"null", "null", "exp_effectiveness", "null", "null"},
-   experimentalSubGroupTitles = {"null", "null", "power", "charges", "hitpoints"},
-   experimentalMin = {0, 0, 1, 0, 1000},
-   experimentalMax = {0, 0, 20, 0, 1000},
-   experimentalPrecision = {0, 0, 0, 0, 0},
+   templates { = 
+              418150404, -- Script: 'object/tangible/component/chemistry/release_mechanism_duration.iff'
+             }
 
-   tanoCRC = 418150404, -- Script: 'object/tangible/component/chemistry/release_mechanism_duration.iff'
 }
 ObjectTemplates:addTemplate(object_draft_schematic_chemistry_component_release_mechanism_duration, "object/draft_schematic/chemistry/component/release_mechanism_duration.iff")

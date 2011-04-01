@@ -43,6 +43,14 @@
 
 object_tangible_food_crafted_drink_starshine_surprise = object_tangible_food_crafted_shared_drink_starshine_surprise:new {
 
+	numberExperimentalProperties = {1, 1, 1, 1, 2, 2, 2, 1},
+	experimentalProperties = {"XX", "XX", "XX", "XX", "OQ", "PE", "DR", "PE", "DR", "OQ", "XX"},
+	experimentalWeights = {1, 1, 1, 1, 1, 2, 1, 3, 3, 1, 1},
+	experimentalGroupTitles = {"null", "null", "null", "null", "exp_nutrition", "exp_quantity", "exp_filling", "null"},
+	experimentalSubGroupTitles = {"null", "null", "hitpoints", "quantity_bonus", "nutrition", "quantity", "filling", "stomach"},
+	experimentalMin = {0, 0, 1000, 0, 75, 60, 80, 1},
+	experimentalMax = {0, 0, 1000, 0, 120, 100, 120, 1},
+	experimentalPrecision = {0, 0, 0, 0, 0, 0, 0, 0},
 }
 
 ObjectTemplates:addTemplate(object_tangible_food_crafted_drink_starshine_surprise, "object/tangible/food/crafted/drink_starshine_surprise.iff")

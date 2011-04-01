@@ -43,43 +43,43 @@
 
 object_weapon_melee_polearm_lance_controllerfp = object_weapon_melee_polearm_shared_lance_controllerfp:new {
 
-	-- ALL, ALLSEXES, ALLFACTIONS, HUMANOIDS, HUMANOID_FOOTWEAR, HUMANOID_MALES, HUMANOID_FEMALES, HUMANOID_IMPERIALS, HUMANOID_REBELS, WOOKIES, ITHORIANS, TWILEKS
+	-- ALL, ALLSEXES, ALLFACTIONS, HUMANOIDS, HUMANOID_FOOTWEAR, HUMANOID_MALES, HUMANOID_FEMALES, HUMANOID_IMPERIALS, HUMANOID_REBELS, WOOKIES, ITHORIANS, TWILEKS,
 	playerUseMask = ALL,
 
-	-- RANGEDATTACK, MELEEATTACK, FORCEATTACK, TRAPATTACK, GRENADEATTACK, HEAVYACIDBEAMATTACK, 
-	-- HEAVYLIGHTNINGBEAMATTACK, HEAVYPARTICLEBEAMATTACK, HEAVYROCKETLAUNCHERATTACK, HEAVYLAUNCHERATTACK
+	-- RANGEDATTACK, MELEEATTACK, FORCEATTACK, TRAPATTACK, GRENADEATTACK, HEAVYACIDBEAMATTACK, ,
+	-- HEAVYLIGHTNINGBEAMATTACK, HEAVYPARTICLEBEAMATTACK, HEAVYROCKETLAUNCHERATTACK, HEAVYLAUNCHERATTACK,
 	attackType = MELEEATTACK,
 
-	-- ENERGY, KINETIC, ELECTRICITY, STUN, BLAST, HEAT, COLD, ACID, FORCE, LIGHTSABER
+	-- ENERGY, KINETIC, ELECTRICITY, STUN, BLAST, HEAT, COLD, ACID, FORCE, LIGHTSABER,
 	damageType = KINETIC,
 
-	-- NONE, LIGHT, MEDIUM, HEAVY
+	-- NONE, LIGHT, MEDIUM, HEAVY,
 	armorPiercing = NONE,
 
-	-- combat_rangedspecialize_bactarifle, combat_rangedspecialize_rifle, combat_rangedspecialize_pistol, combat_rangedspecialize_heavy, combat_rangedspecialize_carbine
+	-- combat_rangedspecialize_bactarifle, combat_rangedspecialize_rifle, combat_rangedspecialize_pistol, combat_rangedspecialize_heavy, combat_rangedspecialize_carbine,
 	-- combat_meleespecialize_unarmed, combat_meleespecialize_twohand, combat_meleespecialize_polearm, combat_meleespecialize_onehand, combat_general,
-	-- combat_meleespecialize_twohandlightsaber, combat_meleespecialize_polearmlightsaber, combat_meleespecialize_onehandlightsaber
+	-- combat_meleespecialize_twohandlightsaber, combat_meleespecialize_polearmlightsaber, combat_meleespecialize_onehandlightsaber,
 	xpType = "combat_meleespecialize_polearm",
-	
-	-- See http://www.ocdsoft.com/files/certifications.xls
+	,
+	-- See http://www.ocdsoft.com/files/certifications.xls,
 	certificationsRequired = { "cert_lance_controllerfp" },
-	-- See http://www.ocdsoft.com/files/accuracy.xls
+	-- See http://www.ocdsoft.com/files/accuracy.xls,
 	creatureAccuracyModifiers = { "polearm_accuracy" },
 
-	-- See http://www.ocdsoft.com/files/defense.xls
+	-- See http://www.ocdsoft.com/files/defense.xls,
 	defenderDefenseModifiers = { "melee_defense" },
 
-	-- Leave as "dodge" for now, may have additions later
+	-- Leave as "dodge" for now, may have additions later,
 	defenderSecondaryDefenseModifiers = { "dodge" },
 
-	-- See http://www.ocdsoft.com/files/speed.xls
+	-- See http://www.ocdsoft.com/files/speed.xls,
 	speedModifiers = { "polearm_speed" },
 
-	-- Leave blank for now
+	-- Leave blank for now,
 	damageModifiers = { },
-	
+	,
 
-	-- The values below are the default values.  To be used for blue frog objects primarily
+	-- The values below are the default values.  To be used for blue frog objects primarily,
 	healthAttackCost = 26,
 	actionAttackCost = 59,
 	mindAttackCost = 29,
@@ -97,8 +97,16 @@ object_weapon_melee_polearm_lance_controllerfp = object_weapon_melee_polearm_sha
 	minDamage = 7,
 	maxDamage = 133,
 
-	attackSpeed = 7
+	attackSpeed = 7,
 
+	numberExperimentalProperties = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+	experimentalProperties = {"XX", "XX", "SR", "SR", "SR", "SR", "SR", "SR", "SR", "XX", "SR", "XX", "SR", "SR", "SR"},
+	experimentalWeights = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+	experimentalGroupTitles = {"null", "null", "expDamage", "expDamage", "expDamage", "expDamage", "exp_durability", "expRange", "expRange", "null", "expRange", "null", "expEffeciency", "expEffeciency", "expEffeciency"},
+	experimentalSubGroupTitles = {"null", "null", "mindamage", "maxdamage", "attackspeed", "woundchance", "hitpoints", "zerorangemod", "maxrangemod", "midrange", "midrangemod", "maxrange", "attackhealthcost", "attackactioncost", "attackmindcost"},
+	experimentalMin = {0, 0, 7, 133, 7, 9, 750, 5, 5, 3, 5, 5, 26, 59, 29},
+	experimentalMax = {0, 0, 13, 247, 4, 18, 1500, 15, 15, 3, 15, 5, 14, 32, 15},
+	experimentalPrecision = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
 }
 
 ObjectTemplates:addTemplate(object_weapon_melee_polearm_lance_controllerfp, "object/weapon/melee/polearm/lance_controllerfp.iff")

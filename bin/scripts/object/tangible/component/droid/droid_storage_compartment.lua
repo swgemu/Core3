@@ -43,6 +43,14 @@
 
 object_tangible_component_droid_droid_storage_compartment = object_tangible_component_droid_shared_droid_storage_compartment:new {
 
+	numberExperimentalProperties = {1, 1, 1, 1, 1},
+	experimentalProperties = {"XX", "XX", "DR", "XX", "OQ"},
+	experimentalWeights = {1, 1, 1, 1, 1},
+	experimentalGroupTitles = {"null", "null", "exp_durability", "null", "exp_effectiveness"},
+	experimentalSubGroupTitles = {"null", "null", "decayrate", "hitpoints", "usemodifier"},
+	experimentalMin = {0, 0, 5, 1000, -5}, -5},
+	experimentalMax = {0, 0, 15, 1000, 5},
+	experimentalPrecision = {0, 0, 0, 0, 0},
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_droid_droid_storage_compartment, "object/tangible/component/droid/droid_storage_compartment.iff")

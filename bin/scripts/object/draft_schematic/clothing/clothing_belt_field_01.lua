@@ -72,15 +72,9 @@ object_draft_schematic_clothing_clothing_belt_field_01 = object_draft_schematic_
    combineTypes = {0, 0, 0},
    contribution = {100, 100, 100},
 
-   numberExperimentalProperties = {1, 1, 1, 1},
-   experimentalProperties = {"XX", "XX", "XX", "XX"},
-   experimentalWeights = {1, 1, 1, 1},
-   experimentalGroupTitles = {"null", "null", "null", "null"},
-   experimentalSubGroupTitles = {"null", "null", "sockets", "hitpoints"},
-   experimentalMin = {0, 0, 0, 1000},
-   experimentalMax = {0, 0, 0, 1000},
-   experimentalPrecision = {0, 0, 0, 0},
+   templates { = 
+              2445210443, -- Script: 'object/tangible/wearables/belt/belt_s01.iff'
+             }
 
-   tanoCRC = 2445210443, -- Script: 'object/tangible/wearables/belt/belt_s01.iff'
 }
 ObjectTemplates:addTemplate(object_draft_schematic_clothing_clothing_belt_field_01, "object/draft_schematic/clothing/clothing_belt_field_01.iff")

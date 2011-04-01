@@ -72,15 +72,9 @@ object_draft_schematic_food_dessert_bofa_treat = object_draft_schematic_food_sha
    combineTypes = {0, 0, 1},
    contribution = {100, 100, 100},
 
-   numberExperimentalProperties = {1, 1, 1, 2, 2, 2, 2},
-   experimentalProperties = {"XX", "XX", "XX", "OQ", "PE", "FL", "OQ", "DR", "PE", "DR", "OQ"},
-   experimentalWeights = {1, 1, 1, 1, 2, 2, 1, 1, 3, 3, 1},
-   experimentalGroupTitles = {"null", "null", "null", "exp_nutrition", "exp_flavor", "exp_quantity", "exp_filling"},
-   experimentalSubGroupTitles = {"null", "null", "hitpoints", "nutrition", "flavor", "quantity", "filling"},
-   experimentalMin = {0, 0, 1000, 75, 60, 60, 80},
-   experimentalMax = {0, 0, 1000, 120, 120, 100, 120},
-   experimentalPrecision = {0, 0, 0, 0, 0, 0, 0},
+   templates { = 
+              4271319597, -- Script: 'object/tangible/food/crafted/dessert_bofa_treat.iff'
+             }
 
-   tanoCRC = 4271319597, -- Script: 'object/tangible/food/crafted/dessert_bofa_treat.iff'
 }
 ObjectTemplates:addTemplate(object_draft_schematic_food_dessert_bofa_treat, "object/draft_schematic/food/dessert_bofa_treat.iff")

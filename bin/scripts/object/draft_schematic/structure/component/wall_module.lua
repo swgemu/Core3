@@ -72,15 +72,9 @@ object_draft_schematic_structure_component_wall_module = object_draft_schematic_
    combineTypes = {0, 0, 0, 1},
    contribution = {100, 100, 100, 100},
 
-   numberExperimentalProperties = {1, 1, 1},
-   experimentalProperties = {"XX", "XX", "UT"},
-   experimentalWeights = {1, 1, 1},
-   experimentalGroupTitles = {"null", "null", "exp_durability"},
-   experimentalSubGroupTitles = {"null", "null", "hitpoints"},
-   experimentalMin = {0, 0, 200},
-   experimentalMax = {0, 0, 500},
-   experimentalPrecision = {0, 0, 0},
+   templates { = 
+              1742616016, -- Script: 'object/tangible/component/structure/wall_module.iff'
+             }
 
-   tanoCRC = 1742616016, -- Script: 'object/tangible/component/structure/wall_module.iff'
 }
 ObjectTemplates:addTemplate(object_draft_schematic_structure_component_wall_module, "object/draft_schematic/structure/component/wall_module.iff")

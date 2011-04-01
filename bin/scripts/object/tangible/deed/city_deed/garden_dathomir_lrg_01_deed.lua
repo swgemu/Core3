@@ -44,7 +44,15 @@
 object_tangible_deed_city_deed_garden_dathomir_lrg_01_deed = object_tangible_deed_city_deed_shared_garden_dathomir_lrg_01_deed:new {
 	templateType = DEED,
 	gameObjectType = 8388609,
-	generatedObjectTemplate = "object/building/player/city/garden_dathomir_lrg_01.iff"
+	generatedObjectTemplate = "object/building/player/city/garden_dathomir_lrg_01.iff",
+	numberExperimentalProperties = {1, 1, 1},
+	experimentalProperties = {"XX", "XX", "XX"},
+	experimentalWeights = {1, 1, 1},
+	experimentalGroupTitles = {"null", "null", "null"},
+	experimentalSubGroupTitles = {"null", "null", "hitpoints"},
+	experimentalMin = {0, 0, 35000},
+	experimentalMax = {0, 0, 75000},
+	experimentalPrecision = {0, 0, 0},
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_city_deed_garden_dathomir_lrg_01_deed, "object/tangible/deed/city_deed/garden_dathomir_lrg_01_deed.iff")

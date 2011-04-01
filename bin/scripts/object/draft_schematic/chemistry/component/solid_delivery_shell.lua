@@ -72,15 +72,9 @@ object_draft_schematic_chemistry_component_solid_delivery_shell = object_draft_s
    combineTypes = {0, 0},
    contribution = {100, 100},
 
-   numberExperimentalProperties = {1, 1, 2, 1, 1},
-   experimentalProperties = {"XX", "XX", "OQ", "PE", "XX", "XX"},
-   experimentalWeights = {1, 1, 2, 1, 1, 1},
-   experimentalGroupTitles = {"null", "null", "exp_effectiveness", "null", "null"},
-   experimentalSubGroupTitles = {"null", "null", "power", "charges", "hitpoints"},
-   experimentalMin = {0, 0, 1, 0, 1000},
-   experimentalMax = {0, 0, 20, 0, 1000},
-   experimentalPrecision = {0, 0, 0, 0, 0},
+   templates { = 
+              3737748835, -- Script: 'object/tangible/component/chemistry/solid_delivery_shell.iff'
+             }
 
-   tanoCRC = 3737748835, -- Script: 'object/tangible/component/chemistry/solid_delivery_shell.iff'
 }
 ObjectTemplates:addTemplate(object_draft_schematic_chemistry_component_solid_delivery_shell, "object/draft_schematic/chemistry/component/solid_delivery_shell.iff")

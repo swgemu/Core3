@@ -72,15 +72,9 @@ object_draft_schematic_furniture_furniture_table_tatooine_cafe = object_draft_sc
    combineTypes = {0, 0},
    contribution = {100, 100},
 
-   numberExperimentalProperties = {1, 1, 1, 2},
-   experimentalProperties = {"XX", "XX", "XX", "DR", "OQ"},
-   experimentalWeights = {1, 1, 1, 1, 1},
-   experimentalGroupTitles = {"null", "null", "null", "exp_quality"},
-   experimentalSubGroupTitles = {"null", "null", "hitpoints", "quality"},
-   experimentalMin = {0, 0, 1000, 1},
-   experimentalMax = {0, 0, 1000, 100},
-   experimentalPrecision = {0, 0, 0, 0},
+   templates { = 
+              2220940298, -- Script: 'object/tangible/furniture/tatooine/frn_tato_tbl_cafe_table_style_01.iff'
+             }
 
-   tanoCRC = 2220940298, -- Script: 'object/tangible/furniture/tatooine/frn_tato_tbl_cafe_table_style_01.iff'
 }
 ObjectTemplates:addTemplate(object_draft_schematic_furniture_furniture_table_tatooine_cafe, "object/draft_schematic/furniture/furniture_table_tatooine_cafe.iff")

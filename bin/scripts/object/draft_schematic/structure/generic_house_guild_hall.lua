@@ -72,15 +72,9 @@ object_draft_schematic_structure_generic_house_guild_hall = object_draft_schemat
    combineTypes = {0, 0, 0, 1, 1, 1},
    contribution = {100, 100, 100, 100, 100, 100},
 
-   numberExperimentalProperties = {1, 1, 1},
-   experimentalProperties = {"XX", "XX", "DR"},
-   experimentalWeights = {1, 1, 1},
-   experimentalGroupTitles = {"null", "null", "exp_durability"},
-   experimentalSubGroupTitles = {"null", "null", "hitpoints"},
-   experimentalMin = {0, 0, 50000},
-   experimentalMax = {0, 0, 100000},
-   experimentalPrecision = {0, 0, 0},
+   templates { = 
+              515603184, -- Script: 'object/tangible/deed/guild_deed/generic_guild_deed.iff'
+             }
 
-   tanoCRC = 515603184, -- Script: 'object/tangible/deed/guild_deed/generic_guild_deed.iff'
 }
 ObjectTemplates:addTemplate(object_draft_schematic_structure_generic_house_guild_hall, "object/draft_schematic/structure/generic_house_guild_hall.iff")

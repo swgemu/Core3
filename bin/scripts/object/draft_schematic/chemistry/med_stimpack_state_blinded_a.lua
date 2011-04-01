@@ -72,15 +72,9 @@ object_draft_schematic_chemistry_med_stimpack_state_blinded_a = object_draft_sch
    combineTypes = {0, 0, 0, 1, 1, 1},
    contribution = {100, 100, 100, 100, 100, 100},
 
-   numberExperimentalProperties = {1, 1, 2, 2, 1, 1},
-   experimentalProperties = {"XX", "XX", "OQ", "UT", "OQ", "PE", "XX", "XX"},
-   experimentalWeights = {1, 1, 2, 1, 2, 1, 1, 1},
-   experimentalGroupTitles = {"null", "null", "expCharges", "expEaseOfUse", "expRange", "null"},
-   experimentalSubGroupTitles = {"null", "null", "charges", "skillmodmin", "range", "hitpoints"},
-   experimentalMin = {0, 0, 10, 40, 15, 1000},
-   experimentalMax = {0, 0, 30, 20, 20, 1000},
-   experimentalPrecision = {0, 0, 0, 0, 0, 0},
+   templates { = 
+              273431060, -- Script: 'object/tangible/medicine/crafted/medpack_blinded_a.iff'
+             }
 
-   tanoCRC = 273431060, -- Script: 'object/tangible/medicine/crafted/medpack_blinded_a.iff'
 }
 ObjectTemplates:addTemplate(object_draft_schematic_chemistry_med_stimpack_state_blinded_a, "object/draft_schematic/chemistry/med_stimpack_state_blinded_a.iff")

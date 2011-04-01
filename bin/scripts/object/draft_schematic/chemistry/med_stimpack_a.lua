@@ -72,15 +72,9 @@ object_draft_schematic_chemistry_med_stimpack_a = object_draft_schematic_chemist
    combineTypes = {0, 0},
    contribution = {100, 100},
 
-   numberExperimentalProperties = {1, 1, 2, 2, 1, 1},
-   experimentalProperties = {"XX", "XX", "OQ", "PE", "OQ", "UT", "XX", "XX"},
-   experimentalWeights = {1, 1, 2, 1, 2, 1, 1, 1},
-   experimentalGroupTitles = {"null", "null", "exp_effectiveness", "expCharges", "null", "null"},
-   experimentalSubGroupTitles = {"null", "null", "power", "charges", "skillmodmin", "hitpoints"},
-   experimentalMin = {0, 0, 75, 10, 5, 1000},
-   experimentalMax = {0, 0, 100, 20, 5, 1000},
-   experimentalPrecision = {0, 0, 0, 0, 0, 0},
+   templates { = 
+              2637295026, -- Script: 'object/tangible/medicine/crafted/crafted_stimpack_sm_s1_a.iff'
+             }
 
-   tanoCRC = 2637295026, -- Script: 'object/tangible/medicine/crafted/crafted_stimpack_sm_s1_a.iff'
 }
 ObjectTemplates:addTemplate(object_draft_schematic_chemistry_med_stimpack_a, "object/draft_schematic/chemistry/med_stimpack_a.iff")

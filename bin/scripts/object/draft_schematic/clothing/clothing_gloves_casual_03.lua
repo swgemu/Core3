@@ -72,15 +72,9 @@ object_draft_schematic_clothing_clothing_gloves_casual_03 = object_draft_schemat
    combineTypes = {0, 0, 0},
    contribution = {100, 100, 100},
 
-   numberExperimentalProperties = {1, 1, 1, 1},
-   experimentalProperties = {"XX", "XX", "XX", "XX"},
-   experimentalWeights = {1, 1, 1, 1},
-   experimentalGroupTitles = {"null", "null", "null", "null"},
-   experimentalSubGroupTitles = {"null", "null", "sockets", "hitpoints"},
-   experimentalMin = {0, 0, 0, 1000},
-   experimentalMax = {0, 0, 0, 1000},
-   experimentalPrecision = {0, 0, 0, 0},
+   templates { = 
+              2708556357, -- Script: 'object/tangible/wearables/gloves/gloves_s03.iff'
+             }
 
-   tanoCRC = 2708556357, -- Script: 'object/tangible/wearables/gloves/gloves_s03.iff'
 }
 ObjectTemplates:addTemplate(object_draft_schematic_clothing_clothing_gloves_casual_03, "object/draft_schematic/clothing/clothing_gloves_casual_03.iff")

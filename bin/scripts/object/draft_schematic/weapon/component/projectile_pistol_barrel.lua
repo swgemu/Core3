@@ -72,15 +72,9 @@ object_draft_schematic_weapon_component_projectile_pistol_barrel = object_draft_
    combineTypes = {0, 0},
    contribution = {100, 100},
 
-   numberExperimentalProperties = {1, 1, 2, 2, 2, 2, 2, 1, 1, 1, 2},
-   experimentalProperties = {"XX", "XX", "HR", "SR", "HR", "SR", "HR", "SR", "HR", "SR", "HR", "SR", "XX", "XX", "XX", "HR", "SR"},
-   experimentalWeights = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
-   experimentalGroupTitles = {"null", "null", "expDamage", "expDamage", "expDamage", "expDamage", "exp_durability", "null", "null", "null", "expRange"},
-   experimentalSubGroupTitles = {"null", "null", "mindamage", "maxdamage", "attackspeed", "woundchance", "hitpoints", "zerorangemod", "maxrangemod", "minrangemod", "midrangemod"},
-   experimentalMin = {0, 0, 1, 1, 0, 0, 10, 0, 0, 0, 0},
-   experimentalMax = {0, 0, 10, 20, -0.5, 5, 100, 0, 0, 0, 10},
-   experimentalPrecision = {0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0},
+   templates { = 
+              6493761, -- Script: 'object/tangible/component/weapon/projectile_pistol_barrel.iff'
+             }
 
-   tanoCRC = 6493761, -- Script: 'object/tangible/component/weapon/projectile_pistol_barrel.iff'
 }
 ObjectTemplates:addTemplate(object_draft_schematic_weapon_component_projectile_pistol_barrel, "object/draft_schematic/weapon/component/projectile_pistol_barrel.iff")

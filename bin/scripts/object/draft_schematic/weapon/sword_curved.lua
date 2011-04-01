@@ -72,15 +72,9 @@ object_draft_schematic_weapon_sword_curved = object_draft_schematic_weapon_share
    combineTypes = {0, 0, 1},
    contribution = {100, 100, 100},
 
-   numberExperimentalProperties = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
-   experimentalProperties = {"XX", "XX", "SR", "SR", "SR", "SR", "SR", "SR", "SR", "XX", "SR", "XX", "SR", "SR", "SR"},
-   experimentalWeights = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
-   experimentalGroupTitles = {"null", "null", "expDamage", "expDamage", "expDamage", "expDamage", "exp_durability", "expRange", "expRange", "null", "expRange", "null", "expEffeciency", "expEffeciency", "expEffeciency"},
-   experimentalSubGroupTitles = {"null", "null", "mindamage", "maxdamage", "attackspeed", "woundchance", "hitpoints", "zerorangemod", "maxrangemod", "midrange", "midrangemod", "maxrange", "attackhealthcost", "attackactioncost", "attackmindcost"},
-   experimentalMin = {0, 0, 18, 70, 4, 12, 750, -2, -2, 3, -2, 4, 23, 52, 33},
-   experimentalMax = {0, 0, 33, 130, 2.8, 24, 1500, 8, 8, 3, 8, 4, 13, 28, 18},
-   experimentalPrecision = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+   templates { = 
+              213992376, -- Script: 'object/weapon/melee/sword/sword_02.iff'
+             }
 
-   tanoCRC = 213992376, -- Script: 'object/weapon/melee/sword/sword_02.iff'
 }
 ObjectTemplates:addTemplate(object_draft_schematic_weapon_sword_curved, "object/draft_schematic/weapon/sword_curved.iff")

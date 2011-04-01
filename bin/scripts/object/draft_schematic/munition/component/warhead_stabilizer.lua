@@ -72,15 +72,9 @@ object_draft_schematic_munition_component_warhead_stabilizer = object_draft_sche
    combineTypes = {0, 0, 0, 0, 0, 0},
    contribution = {100, 100, 100, 100, 100, 100},
 
-   numberExperimentalProperties = {1, 1, 2, 2, 2, 2, 1, 2, 2, 2, 2, 2, 2},
-   experimentalProperties = {"XX", "XX", "CD", "UT", "CD", "UT", "CD", "UT", "CD", "UT", "XX", "CD", "UT", "CD", "UT", "CD", "UT", "CD", "UT", "CD", "UT", "CD", "UT"},
-   experimentalWeights = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
-   experimentalGroupTitles = {"null", "null", "expDamage", "expDamage", "expDamage", "expDamage", "null", "expRange", "expRange", "expRange", "expEffeciency", "expEffeciency", "expEffeciency"},
-   experimentalSubGroupTitles = {"null", "null", "mindamage", "maxdamage", "attackspeed", "woundchance", "hitpoints", "zerorangemod", "maxrangemod", "midrangemod", "attackhealthcost", "attackactioncost", "attackmindcost"},
-   experimentalMin = {0, 0, 0, 0, 1, 0, 1000, -5, -5, -5, 5, 5, 5},
-   experimentalMax = {0, 0, 50, 50, 0, 15, 1000, 10, 10, 10, 0, 0, 0},
-   experimentalPrecision = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+   templates { = 
+              987072330, -- Script: 'object/tangible/component/munition/warhead_stabilizer.iff'
+             }
 
-   tanoCRC = 987072330, -- Script: 'object/tangible/component/munition/warhead_stabilizer.iff'
 }
 ObjectTemplates:addTemplate(object_draft_schematic_munition_component_warhead_stabilizer, "object/draft_schematic/munition/component/warhead_stabilizer.iff")

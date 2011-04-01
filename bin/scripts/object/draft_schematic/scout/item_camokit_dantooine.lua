@@ -72,15 +72,9 @@ object_draft_schematic_scout_item_camokit_dantooine = object_draft_schematic_sco
    combineTypes = {0, 0},
    contribution = {100, 100},
 
-   numberExperimentalProperties = {1, 1, 1, 1},
-   experimentalProperties = {"XX", "XX", "XX", "OQ"},
-   experimentalWeights = {1, 1, 1, 1},
-   experimentalGroupTitles = {"null", "null", "null", "exp_quantity"},
-   experimentalSubGroupTitles = {"null", "null", "hitpoints", "quantity"},
-   experimentalMin = {0, 0, 1000, 5},
-   experimentalMax = {0, 0, 1000, 20},
-   experimentalPrecision = {0, 0, 0, 0},
+   templates { = 
+              2217205281, -- Script: 'object/tangible/scout/camokit/camokit_dantooine.iff'
+             }
 
-   tanoCRC = 2217205281, -- Script: 'object/tangible/scout/camokit/camokit_dantooine.iff'
 }
 ObjectTemplates:addTemplate(object_draft_schematic_scout_item_camokit_dantooine, "object/draft_schematic/scout/item_camokit_dantooine.iff")

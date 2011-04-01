@@ -72,15 +72,9 @@ object_draft_schematic_clothing_clothing_armor_zam_belt = object_draft_schematic
    combineTypes = {0, 0, 1},
    contribution = {100, 100, 100},
 
-   numberExperimentalProperties = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
-   experimentalProperties = {"XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX"},
-   experimentalWeights = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
-   experimentalGroupTitles = {"null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null"},
-   experimentalSubGroupTitles = {"null", "null", "sockets", "hit_points", "armor_effectiveness", "armor_integrity", "armor_health_encumbrance", "armor_action_encumbrance", "armor_mind_encumbrance", "armor_rating", "armor_special_type", "armor_special_effectiveness", "armor_special_integrity"},
-   experimentalMin = {0, 0, 0, 1000, 0, 0, 0, 0, 0, 1, 0, 0, 0},
-   experimentalMax = {0, 0, 0, 1000, 0, 0, 0, 0, 0, 1, 0, 0, 0},
-   experimentalPrecision = {0, 0, 0, 0, 10, 0, 0, 0, 0, 0, 0, 0, 0},
+   templates { = 
+              3902505671, -- Script: 'object/tangible/wearables/armor/zam/armor_zam_wesell_belt.iff'
+             }
 
-   tanoCRC = 3902505671, -- Script: 'object/tangible/wearables/armor/zam/armor_zam_wesell_belt.iff'
 }
 ObjectTemplates:addTemplate(object_draft_schematic_clothing_clothing_armor_zam_belt, "object/draft_schematic/clothing/clothing_armor_zam_belt.iff")

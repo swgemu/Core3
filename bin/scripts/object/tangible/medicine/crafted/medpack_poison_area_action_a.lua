@@ -53,7 +53,15 @@ object_tangible_medicine_crafted_medpack_poison_area_action_a = object_tangible_
 	dotType = POISONED,
 	potency = 150,
 	commandToExecute = "/applypoison",
-	area = 10
+	area = 10,
+	numberExperimentalProperties = {1, 1, 2, 2, 2, 2, 2, 2, 2, 1},
+	experimentalProperties = {"XX", "XX", "OQ", "PE", "OQ", "UT", "CD", "OQ", "CD", "OQ", "OQ", "PE", "OQ", "PE", "DR", "OQ", "XX"},
+	experimentalWeights = {1, 1, 2, 1, 2, 1, 1, 2, 1, 2, 2, 1, 2, 1, 1, 1, 1},
+	experimentalGroupTitles = {"null", "null", "exp_effectiveness", "expCharges", "expCharges", "exp_effectiveness", "expEaseOfUse", "expEaseOfUse", "exp_effectiveness", "null"},
+	experimentalSubGroupTitles = {"null", "null", "power", "charges", "range", "area", "skillmodmin", "potency", "duration", "hitpoints"},
+	experimentalMin = {0, 0, 10, 5, 15, 10, 50, 25, 30, 1000},
+	experimentalMax = {0, 0, 50, 15, 20, 5, 30, 50, 120, 1000},
+	experimentalPrecision = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
 }
 
 ObjectTemplates:addTemplate(object_tangible_medicine_crafted_medpack_poison_area_action_a, "object/tangible/medicine/crafted/medpack_poison_area_action_a.iff")

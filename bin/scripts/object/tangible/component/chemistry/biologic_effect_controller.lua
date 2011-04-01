@@ -43,6 +43,14 @@
 
 object_tangible_component_chemistry_biologic_effect_controller = object_tangible_component_chemistry_shared_biologic_effect_controller:new {
 
+	numberExperimentalProperties = {1, 1, 2, 2, 1},
+	experimentalProperties = {"XX", "XX", "OQ", "PE", "OQ", "UT", "XX"},
+	experimentalWeights = {1, 1, 2, 1, 2, 1, 1},
+	experimentalGroupTitles = {"null", "null", "exp_effectiveness", "expCharges", "null"},
+	experimentalSubGroupTitles = {"null", "null", "power", "charges", "hitpoints"},
+	experimentalMin = {0, 0, 1, 1, 1000},
+	experimentalMax = {0, 0, 10, 10, 1000},
+	experimentalPrecision = {0, 0, 0, 0, 0},
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_chemistry_biologic_effect_controller, "object/tangible/component/chemistry/biologic_effect_controller.iff")

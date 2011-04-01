@@ -72,15 +72,9 @@ object_draft_schematic_item_item_powerup_weapon_thrown_explosive = object_draft_
    combineTypes = {0, 0},
    contribution = {100, 100},
 
-   numberExperimentalProperties = {1, 1, 1, 1},
-   experimentalProperties = {"XX", "XX", "XX", "XX"},
-   experimentalWeights = {1, 1, 1, 1},
-   experimentalGroupTitles = {"null", "null", "null", "exp_effectiveness"},
-   experimentalSubGroupTitles = {"null", "null", "hitpoints", "effect"},
-   experimentalMin = {0, 0, 1000, 1},
-   experimentalMax = {0, 0, 1000, 100},
-   experimentalPrecision = {0, 0, 0, 0},
+   templates { = 
+              1602787778, -- Script: 'object/tangible/powerup/weapon/thrown_explosive.iff'
+             }
 
-   tanoCRC = 1602787778, -- Script: 'object/tangible/powerup/weapon/thrown_explosive.iff'
 }
 ObjectTemplates:addTemplate(object_draft_schematic_item_item_powerup_weapon_thrown_explosive, "object/draft_schematic/item/item_powerup_weapon_thrown_explosive.iff")

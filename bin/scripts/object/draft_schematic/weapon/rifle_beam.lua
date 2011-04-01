@@ -72,15 +72,9 @@ object_draft_schematic_weapon_rifle_beam = object_draft_schematic_weapon_shared_
    combineTypes = {0, 0, 0, 0, 1, 0, 1, 1},
    contribution = {100, 100, 100, 100, 100, 100, 100, 100},
 
-   numberExperimentalProperties = {1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2},
-   experimentalProperties = {"XX", "XX", "CD", "OQ", "CD", "OQ", "CD", "OQ", "CD", "OQ", "CD", "OQ", "CD", "OQ", "CD", "OQ", "CD", "OQ", "CD", "OQ"},
-   experimentalWeights = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
-   experimentalGroupTitles = {"null", "null", "expDamage", "expDamage", "expDamage", "expDamage", "exp_durability", "expRange", "expEffeciency", "expEffeciency", "expEffeciency"},
-   experimentalSubGroupTitles = {"null", "null", "mindamage", "maxdamage", "attackspeed", "woundchance", "hitpoints", "midrangemod", "attackhealthcost", "attackactioncost", "attackmindcost"},
-   experimentalMin = {0, 0, 53, 95, 6.2, 19, 750, -10, 26, 58, 55},
-   experimentalMax = {0, 0, 98, 176, 4.3, 35, 1500, 10, 14, 32, 24},
-   experimentalPrecision = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+   templates { = 
+              1223042704, -- Script: 'object/weapon/ranged/rifle/rifle_beam.iff'
+             }
 
-   tanoCRC = 1223042704, -- Script: 'object/weapon/ranged/rifle/rifle_beam.iff'
 }
 ObjectTemplates:addTemplate(object_draft_schematic_weapon_rifle_beam, "object/draft_schematic/weapon/rifle_beam.iff")

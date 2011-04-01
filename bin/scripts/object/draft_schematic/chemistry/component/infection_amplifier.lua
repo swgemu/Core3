@@ -72,15 +72,9 @@ object_draft_schematic_chemistry_component_infection_amplifier = object_draft_sc
    combineTypes = {0, 0},
    contribution = {100, 100},
 
-   numberExperimentalProperties = {1, 1, 2, 1, 1, 1, 1, 1, 1},
-   experimentalProperties = {"XX", "XX", "DR", "OQ", "XX", "XX", "XX", "XX", "XX", "XX"},
-   experimentalWeights = {1, 1, 1, 3, 1, 1, 1, 1, 1, 1},
-   experimentalGroupTitles = {"null", "null", "exp_effectiveness", "null", "null", "null", "null", "null", "null"},
-   experimentalSubGroupTitles = {"null", "null", "power", "charges", "area", "range", "potency", "duration", "hitpoints"},
-   experimentalMin = {0, 0, 1, 0, 0, 0, 0, 0, 1000},
-   experimentalMax = {0, 0, 25, 0, 0, 0, 0, 0, 1000},
-   experimentalPrecision = {0, 0, 0, 0, 0, 0, 0, 0, 0},
+   templates { = 
+              4183588171, -- Script: 'object/tangible/component/chemistry/infection_amplifier.iff'
+             }
 
-   tanoCRC = 4183588171, -- Script: 'object/tangible/component/chemistry/infection_amplifier.iff'
 }
 ObjectTemplates:addTemplate(object_draft_schematic_chemistry_component_infection_amplifier, "object/draft_schematic/chemistry/component/infection_amplifier.iff")

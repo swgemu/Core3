@@ -72,15 +72,9 @@ object_draft_schematic_clothing_clothing_ith_pants_field_04 = object_draft_schem
    combineTypes = {0, 0, 1, 1},
    contribution = {100, 100, 100, 100},
 
-   numberExperimentalProperties = {1, 1, 1, 1},
-   experimentalProperties = {"XX", "XX", "XX", "XX"},
-   experimentalWeights = {1, 1, 1, 1},
-   experimentalGroupTitles = {"null", "null", "null", "null"},
-   experimentalSubGroupTitles = {"null", "null", "sockets", "hitpoints"},
-   experimentalMin = {0, 0, 0, 1000},
-   experimentalMax = {0, 0, 0, 1000},
-   experimentalPrecision = {0, 0, 0, 0},
+   templates { = 
+              2408811258, -- Script: 'object/tangible/wearables/ithorian/ith_pants_s04.iff'
+             }
 
-   tanoCRC = 2408811258, -- Script: 'object/tangible/wearables/ithorian/ith_pants_s04.iff'
 }
 ObjectTemplates:addTemplate(object_draft_schematic_clothing_clothing_ith_pants_field_04, "object/draft_schematic/clothing/clothing_ith_pants_field_04.iff")

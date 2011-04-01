@@ -72,15 +72,9 @@ object_draft_schematic_droid_component_chassis_droid_surgical = object_draft_sch
    combineTypes = {1, 0, 0, 0, 1, 1, 1},
    contribution = {100, 100, 100, 100, 100, 100, 100},
 
-   numberExperimentalProperties = {1, 1, 3, 1, 1, 1, 3, 1, 1, 1, 1, 1, 1, 1},
-   experimentalProperties = {"XX", "XX", "OQ", "SR", "UT", "XX", "XX", "XX", "OQ", "SR", "UT", "OQ", "XX", "XX", "XX", "XX", "XX", "XX"},
-   experimentalWeights = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
-   experimentalGroupTitles = {"null", "null", "exp_durability", "null", "null", "null", "exp_quality", "exp_effectiveness", "null", "null", "null", "null", "null", "null"},
-   experimentalSubGroupTitles = {"null", "null", "decayrate", "armoreffectiveness", "armorintegrity", "armorencumbrance", "mechanism_quality", "power_level", "storage_module", "data_module", "personality_module", "medical_module", "repair_module", "armor_module"},
-   experimentalMin = {0, 0, 5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-   experimentalMax = {0, 0, 15, 0, 0, 0, 100, 50, 0, 0, 0, 0, 0, 0},
-   experimentalPrecision = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+   templates { = 
+              4078351147, -- Script: 'object/tangible/component/droid/surgical_droid_chassis.iff'
+             }
 
-   tanoCRC = 4078351147, -- Script: 'object/tangible/component/droid/surgical_droid_chassis.iff'
 }
 ObjectTemplates:addTemplate(object_draft_schematic_droid_component_chassis_droid_surgical, "object/draft_schematic/droid/component/chassis_droid_surgical.iff")

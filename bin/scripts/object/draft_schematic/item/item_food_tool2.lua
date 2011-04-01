@@ -72,15 +72,9 @@ object_draft_schematic_item_item_food_tool2 = object_draft_schematic_item_shared
    combineTypes = {0, 0, 0},
    contribution = {100, 100, 100},
 
-   numberExperimentalProperties = {1, 1, 1, 1},
-   experimentalProperties = {"XX", "XX", "XX", "CD"},
-   experimentalWeights = {1, 1, 1, 1},
-   experimentalGroupTitles = {"null", "null", "null", "exp_effectiveness"},
-   experimentalSubGroupTitles = {"null", "null", "hitpoints", "usemodifier"},
-   experimentalMin = {0, 0, 1000, -15},
-   experimentalMax = {0, 0, 1000, 15},
-   experimentalPrecision = {0, 0, 0, 0},
+   templates { = 
+              1552915488, -- Script: 'object/tangible/crafting/station/food_tool.iff'
+             }
 
-   tanoCRC = 1552915488, -- Script: 'object/tangible/crafting/station/food_tool.iff'
 }
 ObjectTemplates:addTemplate(object_draft_schematic_item_item_food_tool2, "object/draft_schematic/item/item_food_tool2.iff")

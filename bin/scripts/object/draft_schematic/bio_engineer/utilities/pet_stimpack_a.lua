@@ -72,15 +72,9 @@ object_draft_schematic_bio_engineer_utilities_pet_stimpack_a = object_draft_sche
    combineTypes = {0, 0, 1, 1, 1},
    contribution = {100, 100, 100, 100, 100},
 
-   numberExperimentalProperties = {1, 1, 2, 2, 1, 1},
-   experimentalProperties = {"XX", "XX", "OQ", "PE", "OQ", "UT", "XX", "XX"},
-   experimentalWeights = {1, 1, 2, 1, 2, 1, 1, 1},
-   experimentalGroupTitles = {"null", "null", "exp_effectiveness", "expCharges", "null", "null"},
-   experimentalSubGroupTitles = {"null", "null", "power", "charges", "decayrate", "hitpoints"},
-   experimentalMin = {0, 0, 100, 10, 15, 1000},
-   experimentalMax = {0, 0, 500, 15, 15, 1000},
-   experimentalPrecision = {0, 0, 0, 0, 0, 0},
+   templates { = 
+              38436739, -- Script: 'object/tangible/medicine/pet/pet_stimpack_a.iff'
+             }
 
-   tanoCRC = 38436739, -- Script: 'object/tangible/medicine/pet/pet_stimpack_a.iff'
 }
 ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_utilities_pet_stimpack_a, "object/draft_schematic/bio_engineer/utilities/pet_stimpack_a.iff")

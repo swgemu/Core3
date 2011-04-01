@@ -43,6 +43,14 @@
 
 object_tangible_component_munition_warhead_heavy = object_tangible_component_munition_shared_warhead_heavy:new {
 
+	numberExperimentalProperties = {1, 1, 2, 2, 2, 1},
+	experimentalProperties = {"XX", "XX", "DR", "OQ", "DR", "OQ", "DR", "OQ", "XX"},
+	experimentalWeights = {1, 1, 1, 1, 1, 1, 1, 1, 1},
+	experimentalGroupTitles = {"null", "null", "expDamage", "expDamage", "expDamage", "null"},
+	experimentalSubGroupTitles = {"null", "null", "mindamage", "maxdamage", "woundchance", "hitpoints"},
+	experimentalMin = {0, 0, 10, 100, 0, 1000},
+	experimentalMax = {0, 0, 50, 200, 3, 1000},
+	experimentalPrecision = {0, 0, 0, 0, 0, 0},
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_munition_warhead_heavy, "object/tangible/component/munition/warhead_heavy.iff")

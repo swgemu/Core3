@@ -72,15 +72,9 @@ object_draft_schematic_clothing_clothing_shirt_field_09 = object_draft_schematic
    combineTypes = {0, 0},
    contribution = {100, 100},
 
-   numberExperimentalProperties = {1, 1, 1, 1},
-   experimentalProperties = {"XX", "XX", "XX", "XX"},
-   experimentalWeights = {1, 1, 1, 1},
-   experimentalGroupTitles = {"null", "null", "null", "null"},
-   experimentalSubGroupTitles = {"null", "null", "sockets", "hitpoints"},
-   experimentalMin = {0, 0, 0, 1000},
-   experimentalMax = {0, 0, 0, 1000},
-   experimentalPrecision = {0, 0, 0, 0},
+   templates { = 
+              3245207489, -- Script: 'object/tangible/wearables/shirt/shirt_s09.iff'
+             }
 
-   tanoCRC = 3245207489, -- Script: 'object/tangible/wearables/shirt/shirt_s09.iff'
 }
 ObjectTemplates:addTemplate(object_draft_schematic_clothing_clothing_shirt_field_09, "object/draft_schematic/clothing/clothing_shirt_field_09.iff")

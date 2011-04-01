@@ -72,15 +72,9 @@ object_draft_schematic_clothing_clothing_wke_hood_s03 = object_draft_schematic_c
    combineTypes = {0, 0},
    contribution = {100, 100},
 
-   numberExperimentalProperties = {1, 1, 1, 1},
-   experimentalProperties = {"XX", "XX", "XX", "XX"},
-   experimentalWeights = {1, 1, 1, 1},
-   experimentalGroupTitles = {"null", "null", "null", "null"},
-   experimentalSubGroupTitles = {"null", "null", "sockets", "hitpoints"},
-   experimentalMin = {0, 0, 0, 1000},
-   experimentalMax = {0, 0, 0, 1000},
-   experimentalPrecision = {0, 0, 0, 0},
+   templates { = 
+              2482867072, -- Script: 'object/tangible/wearables/wookiee/wke_hood_s03.iff'
+             }
 
-   tanoCRC = 2482867072, -- Script: 'object/tangible/wearables/wookiee/wke_hood_s03.iff'
 }
 ObjectTemplates:addTemplate(object_draft_schematic_clothing_clothing_wke_hood_s03, "object/draft_schematic/clothing/clothing_wke_hood_s03.iff")

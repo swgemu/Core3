@@ -72,15 +72,9 @@ object_draft_schematic_droid_component_data_storage_module_5 = object_draft_sche
    combineTypes = {0, 0, 0, 0, 0, 1},
    contribution = {100, 100, 100, 100, 100, 100},
 
-   numberExperimentalProperties = {1, 1, 2, 1, 2, 2},
-   experimentalProperties = {"XX", "XX", "CD", "OQ", "XX", "CD", "OQ", "CD", "OQ"},
-   experimentalWeights = {1, 1, 1, 1, 1, 1, 1, 1, 1},
-   experimentalGroupTitles = {"null", "null", "exp_durability", "null", "exp_effectiveness", "exp_effectiveness"},
-   experimentalSubGroupTitles = {"null", "null", "decayrate", "hitpoints", "mechanism_quality", "data_module"},
-   experimentalMin = {0, 0, 5, 1000, -10, 9},
-   experimentalMax = {0, 0, 15, 1000, 15, 11},
-   experimentalPrecision = {0, 0, 0, 0, 0, 0},
+   templates { = 
+              757407457, -- Script: 'object/tangible/component/droid/data_storage_module_5.iff'
+             }
 
-   tanoCRC = 757407457, -- Script: 'object/tangible/component/droid/data_storage_module_5.iff'
 }
 ObjectTemplates:addTemplate(object_draft_schematic_droid_component_data_storage_module_5, "object/draft_schematic/droid/component/data_storage_module_5.iff")

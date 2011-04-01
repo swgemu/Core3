@@ -72,15 +72,9 @@ object_draft_schematic_weapon_component_blade_vibro_unit_advanced = object_draft
    combineTypes = {0, 0, 0, 1},
    contribution = {100, 100, 100, 100},
 
-   numberExperimentalProperties = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
-   experimentalProperties = {"XX", "XX", "UT", "UT", "UT", "UT", "UT", "UT", "UT", "UT", "UT", "UT", "UT"},
-   experimentalWeights = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
-   experimentalGroupTitles = {"null", "null", "expDamage", "expDamage", "expDamage", "expDamage", "exp_durability", "expRange", "expRange", "expRange", "expEffeciency", "expEffeciency", "expEffeciency"},
-   experimentalSubGroupTitles = {"null", "null", "mindamage", "maxdamage", "attackspeed", "woundchance", "hitpoints", "zerorangemod", "maxrangemod", "midrangemod", "attackhealthcost", "attackactioncost", "attackmindcost"},
-   experimentalMin = {0, 0, 1, 1, 0, 0, 10, 0, 0, 0, 10, 10, 10},
-   experimentalMax = {0, 0, 50, 75, -0.7, 25, 100, 30, 30, 30, -3, -3, -3},
-   experimentalPrecision = {0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0},
+   templates { = 
+              344340565, -- Script: 'object/tangible/component/weapon/vibro_unit_advanced.iff'
+             }
 
-   tanoCRC = 344340565, -- Script: 'object/tangible/component/weapon/vibro_unit_advanced.iff'
 }
 ObjectTemplates:addTemplate(object_draft_schematic_weapon_component_blade_vibro_unit_advanced, "object/draft_schematic/weapon/component/blade_vibro_unit_advanced.iff")

@@ -72,15 +72,9 @@ object_draft_schematic_chemistry_component_dispersal_mechanism_advanced = object
    combineTypes = {0, 0},
    contribution = {100, 100},
 
-   numberExperimentalProperties = {1, 1, 1, 2, 2, 2, 1, 1, 1},
-   experimentalProperties = {"XX", "XX", "XX", "DR", "OQ", "DR", "OQ", "DR", "OQ", "XX", "XX", "XX"},
-   experimentalWeights = {1, 1, 1, 1, 3, 1, 2, 1, 2, 1, 1, 1},
-   experimentalGroupTitles = {"null", "null", "null", "expCharges", "exp_effectiveness", "expCharges", "null", "null", "null"},
-   experimentalSubGroupTitles = {"null", "null", "power", "charges", "area", "range", "potency", "duration", "hitpoints"},
-   experimentalMin = {0, 0, 0, 5, 20, 5, 0, 0, 1000},
-   experimentalMax = {0, 0, 0, 30, 5, 25, 0, 0, 1000},
-   experimentalPrecision = {0, 0, 0, 0, 0, 0, 0, 0, 0},
+   templates { = 
+              1015462194, -- Script: 'object/tangible/component/chemistry/dispersal_mechanism_advanced.iff'
+             }
 
-   tanoCRC = 1015462194, -- Script: 'object/tangible/component/chemistry/dispersal_mechanism_advanced.iff'
 }
 ObjectTemplates:addTemplate(object_draft_schematic_chemistry_component_dispersal_mechanism_advanced, "object/draft_schematic/chemistry/component/dispersal_mechanism_advanced.iff")

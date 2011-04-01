@@ -43,6 +43,14 @@
 
 object_tangible_component_armor_deflector_shield_generator_particle = object_tangible_component_armor_shared_deflector_shield_generator_particle:new {
 
+	numberExperimentalProperties = {1, 1, 1},
+	experimentalProperties = {"XX", "XX", "XX"},
+	experimentalWeights = {1, 1, 1},
+	experimentalGroupTitles = {"null", "null", "exp_durability"},
+	experimentalSubGroupTitles = {"null", "null", "hit_points"},
+	experimentalMin = {0, 0, 1000},
+	experimentalMax = {0, 0, 1000},
+	experimentalPrecision = {0, 0, 0},
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_armor_deflector_shield_generator_particle, "object/tangible/component/armor/deflector_shield_generator_particle.iff")

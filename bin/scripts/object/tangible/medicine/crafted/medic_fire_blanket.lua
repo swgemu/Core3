@@ -48,7 +48,15 @@ object_tangible_medicine_crafted_medic_fire_blanket = object_tangible_medicine_c
 	effectiveness = 100,
 	state = ONFIRE,
 	commandToExecute = "/extinguishfire",
-	area = 0
+	area = 0,
+	numberExperimentalProperties = {1, 1, 2, 2, 2, 1},
+	experimentalProperties = {"XX", "XX", "OQ", "PE", "OQ", "UT", "OQ", "PE", "XX"},
+	experimentalWeights = {1, 1, 2, 1, 2, 1, 2, 1, 1},
+	experimentalGroupTitles = {"null", "null", "exp_effectiveness", "expCharges", "expEaseOfUse", "null"},
+	experimentalSubGroupTitles = {"null", "null", "power", "charges", "skillmodmin", "hitpoints"},
+	experimentalMin = {0, 0, 100, 20, 70, 1000},
+	experimentalMax = {0, 0, 500, 40, 55, 1000},
+	experimentalPrecision = {0, 0, 0, 0, 0, 0},
 }
 
 ObjectTemplates:addTemplate(object_tangible_medicine_crafted_medic_fire_blanket, "object/tangible/medicine/crafted/medic_fire_blanket.iff")

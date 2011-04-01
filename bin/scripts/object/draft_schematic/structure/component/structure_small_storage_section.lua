@@ -72,15 +72,9 @@ object_draft_schematic_structure_component_structure_small_storage_section = obj
    combineTypes = {0, 0},
    contribution = {100, 100},
 
-   numberExperimentalProperties = {1, 1, 1},
-   experimentalProperties = {"XX", "XX", "XX"},
-   experimentalWeights = {1, 1, 1},
-   experimentalGroupTitles = {"null", "null", "null"},
-   experimentalSubGroupTitles = {"null", "null", "hitpoints"},
-   experimentalMin = {0, 0, 200},
-   experimentalMax = {0, 0, 500},
-   experimentalPrecision = {0, 0, 0},
+   templates { = 
+              2655229135, -- Script: 'object/tangible/component/structure/structure_small_storage_section.iff'
+             }
 
-   tanoCRC = 2655229135, -- Script: 'object/tangible/component/structure/structure_small_storage_section.iff'
 }
 ObjectTemplates:addTemplate(object_draft_schematic_structure_component_structure_small_storage_section, "object/draft_schematic/structure/component/structure_small_storage_section.iff")

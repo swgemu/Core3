@@ -72,15 +72,9 @@ object_draft_schematic_clothing_clothing_ith_shirt_casual_12 = object_draft_sche
    combineTypes = {0, 0},
    contribution = {100, 100},
 
-   numberExperimentalProperties = {1, 1, 1, 1},
-   experimentalProperties = {"XX", "XX", "XX", "XX"},
-   experimentalWeights = {1, 1, 1, 1},
-   experimentalGroupTitles = {"null", "null", "null", "null"},
-   experimentalSubGroupTitles = {"null", "null", "sockets", "hitpoints"},
-   experimentalMin = {0, 0, 0, 1000},
-   experimentalMax = {0, 0, 0, 1000},
-   experimentalPrecision = {0, 0, 0, 0},
+   templates { = 
+              526250150, -- Script: 'object/tangible/wearables/ithorian/ith_shirt_s12.iff'
+             }
 
-   tanoCRC = 526250150, -- Script: 'object/tangible/wearables/ithorian/ith_shirt_s12.iff'
 }
 ObjectTemplates:addTemplate(object_draft_schematic_clothing_clothing_ith_shirt_casual_12, "object/draft_schematic/clothing/clothing_ith_shirt_casual_12.iff")

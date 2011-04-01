@@ -72,15 +72,9 @@ object_draft_schematic_munition_component_warhead_chemical = object_draft_schema
    combineTypes = {0, 0, 0, 0, 1},
    contribution = {100, 100, 100, 100, 100},
 
-   numberExperimentalProperties = {1, 1, 2, 2, 2, 2, 1, 2, 2, 2, 2, 2, 2},
-   experimentalProperties = {"XX", "XX", "CD", "UT", "CD", "UT", "CD", "UT", "CD", "UT", "XX", "CD", "UT", "CD", "UT", "CD", "UT", "CD", "UT", "CD", "UT", "CD", "UT"},
-   experimentalWeights = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
-   experimentalGroupTitles = {"null", "null", "expDamage", "expDamage", "expDamage", "expDamage", "null", "expRange", "expRange", "expRange", "expEffeciency", "expEffeciency", "expEffeciency"},
-   experimentalSubGroupTitles = {"null", "null", "mindamage", "maxdamage", "attackspeed", "woundchance", "hitpoints", "zerorangemod", "maxrangemod", "midrangemod", "attackhealthcost", "attackactioncost", "attackmindcost"},
-   experimentalMin = {0, 0, 0, 0, 1, 0, 1000, -5, -5, -5, 5, 5, 5},
-   experimentalMax = {0, 0, 20, 30, 0, 3, 1000, 0, 0, 0, 0, 0, 0},
-   experimentalPrecision = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+   templates { = 
+              1729827693, -- Script: 'object/tangible/component/munition/warhead_chemical.iff'
+             }
 
-   tanoCRC = 1729827693, -- Script: 'object/tangible/component/munition/warhead_chemical.iff'
 }
 ObjectTemplates:addTemplate(object_draft_schematic_munition_component_warhead_chemical, "object/draft_schematic/munition/component/warhead_chemical.iff")
