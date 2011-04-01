@@ -72,7 +72,7 @@ object_draft_schematic_clothing_clothing_wke_shirt_s01 = object_draft_schematic_
    combineTypes = {0, 0},
    contribution = {100, 100},
 
-   templates { = 
+   templates = {
               4063563888, -- Script: 'object/tangible/wearables/wookiee/wke_shirt_s01.iff'
              }
 

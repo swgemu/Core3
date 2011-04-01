@@ -72,7 +72,7 @@ object_draft_schematic_weapon_lance_vibro_controller_fp = object_draft_schematic
    combineTypes = {0, 0, 1, 1},
    contribution = {100, 100, 100, 100},
 
-   templates { = 
+   templates = {
               3892633613, -- Script: 'object/weapon/melee/polearm/lance_controllerfp.iff'
              }
 

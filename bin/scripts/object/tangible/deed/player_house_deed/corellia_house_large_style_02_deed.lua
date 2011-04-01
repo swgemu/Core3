@@ -44,9 +44,9 @@
 object_tangible_deed_player_house_deed_corellia_house_large_style_02_deed = object_tangible_deed_player_house_deed_shared_corellia_house_large_style_02_deed:new {
 	templateType = DEED,
 	generatedObjectTemplate = "object/building/player/player_house_corellia_large_style_02.iff",
-	
-	
-	
+
+
+
 	numberExperimentalProperties = {1, 1, 1},
 	experimentalProperties = {"XX", "XX", "DR"},
 	experimentalWeights = {1, 1, 1},
@@ -55,6 +55,7 @@ object_tangible_deed_player_house_deed_corellia_house_large_style_02_deed = obje
 	experimentalMin = {0, 0, 50000},
 	experimentalMax = {0, 0, 100000},
 	experimentalPrecision = {0, 0, 0},
+
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_player_house_deed_corellia_house_large_style_02_deed, "object/tangible/deed/player_house_deed/corellia_house_large_style_02_deed.iff")

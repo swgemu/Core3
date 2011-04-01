@@ -72,7 +72,7 @@ object_draft_schematic_item_item_ballot_box_terminal = object_draft_schematic_it
    combineTypes = {0, 0, 0, 0, 0, 0, 0},
    contribution = {100, 100, 100, 100, 100, 100, 100},
 
-   templates { = 
+   templates = {
               2743027205, -- Script: 'object/tangible/terminal/terminal_ballot_box.iff'
              }
 

@@ -72,7 +72,7 @@ object_draft_schematic_weapon_sword_ryyk_blade = object_draft_schematic_weapon_s
    combineTypes = {0, 0, 1},
    contribution = {100, 100, 100},
 
-   templates { = 
+   templates = {
               2964575136, -- Script: 'object/weapon/melee/sword/sword_blade_ryyk.iff'
              }
 

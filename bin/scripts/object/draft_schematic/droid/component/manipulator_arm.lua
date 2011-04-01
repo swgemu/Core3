@@ -72,7 +72,7 @@ object_draft_schematic_droid_component_manipulator_arm = object_draft_schematic_
    combineTypes = {0, 0, 0, 0, 0},
    contribution = {100, 100, 100, 100, 100},
 
-   templates { = 
+   templates = {
               962004762, -- Script: 'object/tangible/component/droid/manipulator_arm.iff'
              }
 

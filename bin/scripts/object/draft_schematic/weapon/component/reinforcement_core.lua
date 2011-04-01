@@ -72,7 +72,7 @@ object_draft_schematic_weapon_component_reinforcement_core = object_draft_schema
    combineTypes = {0},
    contribution = {100},
 
-   templates { = 
+   templates = {
               4069474310, -- Script: 'object/tangible/component/weapon/reinforcement_core.iff'
              }
 

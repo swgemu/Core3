@@ -72,7 +72,7 @@ object_draft_schematic_bio_engineer_utilities_pet_stimpack_c = object_draft_sche
    combineTypes = {0, 0, 1, 1, 1},
    contribution = {100, 100, 100, 100, 100},
 
-   templates { = 
+   templates = {
               2421207193, -- Script: 'object/tangible/medicine/pet/pet_stimpack_c.iff'
              }
 

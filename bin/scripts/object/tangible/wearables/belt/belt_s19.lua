@@ -42,9 +42,9 @@
 
 
 object_tangible_wearables_belt_belt_s19 = object_tangible_wearables_belt_shared_belt_s19:new {
-	 --  ALL, ALLSEXES, ALLFACTIONS, HUMANOIDS, HUMANOID_FOOTWEAR, HUMANOID_MALES, HUMANOID_FEMALES, HUMANOID_IMPERIALS, HUMANOID_REBELS, WOOKIEES, ITHORIANS, TWILEKS
+	--   ALL, ALLSEXES, ALLFACTIONS, HUMANOIDS, HUMANOID_FOOTWEAR, HUMANOID_MALES, HUMANOID_FEMALES, HUMANOID_IMPERIALS, HUMANOID_REBELS, WOOKIEES, ITHORIANS, TWILEKS
 	playerUseMask = HUMANOIDS + WOOKIEES + ITHORIANS,
-	
+
 	numberExperimentalProperties = {1, 1, 1, 1},
 	experimentalProperties = {"XX", "XX", "XX", "XX"},
 	experimentalWeights = {1, 1, 1, 1},
@@ -53,6 +53,7 @@ object_tangible_wearables_belt_belt_s19 = object_tangible_wearables_belt_shared_
 	experimentalMin = {0, 0, 0, 1000},
 	experimentalMax = {0, 0, 0, 1000},
 	experimentalPrecision = {0, 0, 0, 0},
+
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_belt_belt_s19, "object/tangible/wearables/belt/belt_s19.iff")

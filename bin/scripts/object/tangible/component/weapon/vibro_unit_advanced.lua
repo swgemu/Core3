@@ -42,8 +42,8 @@
 
 
 object_tangible_component_weapon_vibro_unit_advanced = object_tangible_component_weapon_shared_vibro_unit_advanced:new {
-	
-	
+
+
 	numberExperimentalProperties = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
 	experimentalProperties = {"XX", "XX", "UT", "UT", "UT", "UT", "UT", "UT", "UT", "UT", "UT", "UT", "UT"},
 	experimentalWeights = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
@@ -52,6 +52,7 @@ object_tangible_component_weapon_vibro_unit_advanced = object_tangible_component
 	experimentalMin = {0, 0, 1, 1, 0, 0, 10, 0, 0, 0, 10, 10, 10},
 	experimentalMax = {0, 0, 50, 75, -0.7, 25, 100, 30, 30, 30, -3, -3, -3},
 	experimentalPrecision = {0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0},
+
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_weapon_vibro_unit_advanced, "object/tangible/component/weapon/vibro_unit_advanced.iff")

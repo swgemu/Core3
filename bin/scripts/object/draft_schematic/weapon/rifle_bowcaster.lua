@@ -72,7 +72,7 @@ object_draft_schematic_weapon_rifle_bowcaster = object_draft_schematic_weapon_sh
    combineTypes = {0, 0, 0, 1, 1, 1, 1},
    contribution = {100, 100, 100, 100, 100, 100, 100},
 
-   templates { = 
+   templates = {
               2364395151, -- Script: 'object/weapon/ranged/rifle/rifle_bowcaster.iff'
              }
 

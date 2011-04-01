@@ -72,7 +72,7 @@ object_draft_schematic_bio_engineer_creature_creature_zucca_boar = object_draft_
    combineTypes = {1, 0, 0},
    contribution = {100, 100, 100},
 
-   templates { = 
+   templates = {
               3873592423, -- Script: 'object/tangible/deed/pet_deed/zucca_boar_deed.iff'
              }
 

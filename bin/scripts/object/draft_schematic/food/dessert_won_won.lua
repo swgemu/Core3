@@ -72,7 +72,7 @@ object_draft_schematic_food_dessert_won_won = object_draft_schematic_food_shared
    combineTypes = {0, 0, 0, 0, 1},
    contribution = {100, 100, 100, 100, 100},
 
-   templates { = 
+   templates = {
               3766089714, -- Script: 'object/tangible/food/crafted/dessert_won_won.iff'
              }
 

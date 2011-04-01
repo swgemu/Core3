@@ -42,8 +42,8 @@
 
 
 object_tangible_component_droid_repair_capacitor_low_discharge = object_tangible_component_droid_repair_shared_capacitor_low_discharge:new {
-	
-	
+
+
 	numberExperimentalProperties = {1, 1, 3, 1},
 	experimentalProperties = {"XX", "XX", "CD", "OQ", "PE", "XX"},
 	experimentalWeights = {1, 1, 1, 1, 2, 1},
@@ -52,6 +52,7 @@ object_tangible_component_droid_repair_capacitor_low_discharge = object_tangible
 	experimentalMin = {0, 0, 10, 1000},
 	experimentalMax = {0, 0, 50, 1000},
 	experimentalPrecision = {0, 0, 0, 0},
+
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_droid_repair_capacitor_low_discharge, "object/tangible/component/droid/repair/capacitor_low_discharge.iff")

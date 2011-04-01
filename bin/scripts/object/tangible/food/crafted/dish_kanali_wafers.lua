@@ -43,31 +43,31 @@
 
 object_tangible_food_crafted_dish_kanali_wafers = object_tangible_food_crafted_shared_dish_kanali_wafers:new {
 	templateType = CONSUMABLE,
-	
+
 	duration = 45,
 	filling = 10,
 	nutrition = 10,
-	
+
 	effectType = 1,
-	
+
 	fillingMin = 17,
 	fillingMax = 10,
-	
+
 	flavorMin = 1800,
 	flavorMax = 3600,
-	
+
 	nutritionMin = 30,
 	nutritionMax = 60,
 	quantityMin = 6,
 	quantityMax = 10,
-	
+
 	modifiers = { "constitution", 0 },
-	
+
 	buffName = "food.dish_kanali_wafers",
 	buffCRC = 0,
 	speciesRestriction = "",
-	
-	
+
+
 	numberExperimentalProperties = {1, 1, 1, 2, 2, 2, 2},
 	experimentalProperties = {"XX", "XX", "XX", "OQ", "PE", "FL", "OQ", "DR", "SR", "DR", "OQ"},
 	experimentalWeights = {1, 1, 1, 1, 2, 2, 1, 1, 3, 3, 1},
@@ -76,6 +76,7 @@ object_tangible_food_crafted_dish_kanali_wafers = object_tangible_food_crafted_s
 	experimentalMin = {0, 0, 1000, 75, 60, 60, 80},
 	experimentalMax = {0, 0, 1000, 120, 120, 100, 120},
 	experimentalPrecision = {0, 0, 0, 0, 0, 0, 0},
+
 }
 
 ObjectTemplates:addTemplate(object_tangible_food_crafted_dish_kanali_wafers, "object/tangible/food/crafted/dish_kanali_wafers.iff")

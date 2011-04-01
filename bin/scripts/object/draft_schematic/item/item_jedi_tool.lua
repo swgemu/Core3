@@ -72,7 +72,7 @@ object_draft_schematic_item_item_jedi_tool = object_draft_schematic_item_shared_
    combineTypes = {0, 0, 0},
    contribution = {100, 100, 100},
 
-   templates { = 
+   templates = {
               3651422589, -- Script: 'object/tangible/crafting/station/jedi_tool.iff'
              }
 

@@ -72,7 +72,7 @@ object_draft_schematic_droid_component_diagnostic_circuit_advanced = object_draf
    combineTypes = {0, 0},
    contribution = {100, 100},
 
-   templates { = 
+   templates = {
               2845190290, -- Script: 'object/tangible/component/droid/repair/diagnostic_circuit_advanced.iff'
              }
 

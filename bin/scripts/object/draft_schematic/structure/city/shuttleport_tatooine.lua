@@ -72,7 +72,7 @@ object_draft_schematic_structure_city_shuttleport_tatooine = object_draft_schema
    combineTypes = {0, 0, 0, 1, 1, 1, 1},
    contribution = {100, 100, 100, 100, 100, 100, 100},
 
-   templates { = 
+   templates = {
               3625663873, -- Script: 'object/tangible/deed/city_deed/shuttleport_tatooine_deed.iff'
              }
 

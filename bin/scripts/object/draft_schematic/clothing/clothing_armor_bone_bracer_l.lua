@@ -72,7 +72,7 @@ object_draft_schematic_clothing_clothing_armor_bone_bracer_l = object_draft_sche
    combineTypes = {0, 0, 0, 0, 0, 0, 1, 1, 1, 1},
    contribution = {100, 100, 100, 100, 100, 100, 100, 100, 100, 100},
 
-   templates { = 
+   templates = {
               1185807341, -- Script: 'object/tangible/wearables/armor/bone/armor_bone_s01_bracer_l.iff'
              }
 

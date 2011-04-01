@@ -72,7 +72,7 @@ object_draft_schematic_food_dish_kanali_wafers = object_draft_schematic_food_sha
    combineTypes = {1, 0, 0, 1},
    contribution = {100, 100, 100, 100},
 
-   templates { = 
+   templates = {
               179201581, -- Script: 'object/tangible/food/crafted/dish_kanali_wafers.iff'
              }
 

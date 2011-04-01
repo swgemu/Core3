@@ -72,7 +72,7 @@ object_draft_schematic_scout_item_camokit_rori = object_draft_schematic_scout_sh
    combineTypes = {0, 0, 0},
    contribution = {100, 100, 100},
 
-   templates { = 
+   templates = {
               1344428416, -- Script: 'object/tangible/scout/camokit/camokit_rori.iff'
              }
 

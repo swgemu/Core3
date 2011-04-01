@@ -72,7 +72,7 @@ object_draft_schematic_droid_component_struct_maint_module_1 = object_draft_sche
    combineTypes = {0, 0, 0},
    contribution = {100, 100, 100},
 
-   templates { = 
+   templates = {
               181086847, -- Script: 'object/tangible/component/droid/struct_maint_module_1.iff'
              }
 

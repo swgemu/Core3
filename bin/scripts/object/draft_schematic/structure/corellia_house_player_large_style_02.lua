@@ -72,7 +72,7 @@ object_draft_schematic_structure_corellia_house_player_large_style_02 = object_d
    combineTypes = {0, 0, 0, 1, 1, 1},
    contribution = {100, 100, 100, 100, 100, 100},
 
-   templates { = 
+   templates = {
               184159956, -- Script: 'object/tangible/deed/player_house_deed/corellia_house_large_style_02_deed.iff'
              }
 

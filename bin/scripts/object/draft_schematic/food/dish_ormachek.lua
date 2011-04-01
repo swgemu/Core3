@@ -72,7 +72,7 @@ object_draft_schematic_food_dish_ormachek = object_draft_schematic_food_shared_d
    combineTypes = {0, 1, 0, 0},
    contribution = {100, 100, 100, 100},
 
-   templates { = 
+   templates = {
               1599302627, -- Script: 'object/tangible/food/crafted/dish_ormachek.iff'
              }
 

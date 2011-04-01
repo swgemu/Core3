@@ -42,18 +42,18 @@
 
 
 object_tangible_crafting_station_clothing_tool = object_tangible_crafting_station_shared_clothing_tool:new {
-	
+
 	templateType = CRAFTINGTOOL,
-	
+
 	playerUseMask = 65535,
-	
+
 	customizationOptions = {},
 	customizationDefaults = {},
-	
+
 	toolType = 1,
 	complexityLevel = 20,
 	enabledTabs = {2,8,16384,32768},
-	
+
 	numberExperimentalProperties = {1, 1, 1, 1},
 	experimentalProperties = {"XX", "XX", "XX", "CD"},
 	experimentalWeights = {1, 1, 1, 1},
@@ -62,5 +62,6 @@ object_tangible_crafting_station_clothing_tool = object_tangible_crafting_statio
 	experimentalMin = {0, 0, 1000, -15},
 	experimentalMax = {0, 0, 1000, 15},
 	experimentalPrecision = {0, 0, 0, 0},
+
 }
 ObjectTemplates:addTemplate(object_tangible_crafting_station_clothing_tool, "object/tangible/crafting/station/clothing_tool.iff")

@@ -72,7 +72,7 @@ object_draft_schematic_chemistry_medpack_poison_mind_b = object_draft_schematic_
    combineTypes = {0, 0, 0, 1, 1, 1},
    contribution = {100, 100, 100, 100, 100, 100},
 
-   templates { = 
+   templates = {
               1683114645, -- Script: 'object/tangible/medicine/crafted/medpack_poison_mind_b.iff'
              }
 

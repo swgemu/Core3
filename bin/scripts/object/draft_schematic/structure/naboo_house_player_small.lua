@@ -72,7 +72,7 @@ object_draft_schematic_structure_naboo_house_player_small = object_draft_schemat
    combineTypes = {0, 0, 0, 1, 1, 1},
    contribution = {100, 100, 100, 100, 100, 100},
 
-   templates { = 
+   templates = {
               1758566085, -- Script: 'object/tangible/deed/naboo/player_house_deed/naboo_house_small_deed.iff'
              }
 

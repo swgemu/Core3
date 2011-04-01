@@ -42,8 +42,8 @@
 
 
 object_tangible_dice_eqp_chance_cube = object_tangible_dice_shared_eqp_chance_cube:new {
-	
-	
+
+
 	numberExperimentalProperties = {1, 1, 1, 1},
 	experimentalProperties = {"XX", "XX", "XX", "CD"},
 	experimentalWeights = {1, 1, 1, 1},
@@ -52,6 +52,7 @@ object_tangible_dice_eqp_chance_cube = object_tangible_dice_shared_eqp_chance_cu
 	experimentalMin = {0, 0, 1000, -15},
 	experimentalMax = {0, 0, 1000, 15},
 	experimentalPrecision = {0, 0, 0, 0},
+
 }
 
 ObjectTemplates:addTemplate(object_tangible_dice_eqp_chance_cube, "object/tangible/dice/eqp_chance_cube.iff")

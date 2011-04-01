@@ -72,7 +72,7 @@ object_draft_schematic_droid_component_crafting_module_weapon = object_draft_sch
    combineTypes = {0, 0, 0},
    contribution = {100, 100, 100},
 
-   templates { = 
+   templates = {
               1355437665, -- Script: 'object/tangible/component/droid/crafting_module_weapon.iff'
              }
 

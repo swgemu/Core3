@@ -72,7 +72,7 @@ object_draft_schematic_chemistry_component_liquid_delivery_suspension_advanced =
    combineTypes = {0, 0},
    contribution = {100, 100},
 
-   templates { = 
+   templates = {
               2454210198, -- Script: 'object/tangible/component/chemistry/liquid_delivery_suspension_advanced.iff'
              }
 

@@ -72,7 +72,7 @@ object_draft_schematic_food_dish_karkan_ribenes = object_draft_schematic_food_sh
    combineTypes = {1, 0, 0, 1},
    contribution = {100, 100, 100, 100},
 
-   templates { = 
+   templates = {
               3972167412, -- Script: 'object/tangible/food/crafted/dish_karkan_ribenes.iff'
              }
 

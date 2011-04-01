@@ -42,8 +42,8 @@
 
 
 object_tangible_component_structure_fluidic_drilling_pumping_unit = object_tangible_component_structure_shared_fluidic_drilling_pumping_unit:new {
-	
-	
+
+
 	numberExperimentalProperties = {1, 1, 1, 3},
 	experimentalProperties = {"XX", "XX", "XX", "HR", "SR", "UT"},
 	experimentalWeights = {1, 1, 1, 1, 1, 2},
@@ -52,6 +52,7 @@ object_tangible_component_structure_fluidic_drilling_pumping_unit = object_tangi
 	experimentalMin = {0, 0, 1000, 1},
 	experimentalMax = {0, 0, 5000, 5},
 	experimentalPrecision = {0, 0, 0, 0},
+
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_structure_fluidic_drilling_pumping_unit, "object/tangible/component/structure/fluidic_drilling_pumping_unit.iff")

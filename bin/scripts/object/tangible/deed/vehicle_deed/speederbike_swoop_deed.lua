@@ -42,12 +42,12 @@
 
 
 object_tangible_deed_vehicle_deed_speederbike_swoop_deed = object_tangible_deed_vehicle_deed_shared_speederbike_swoop_deed:new {
-	
+
 	templateType = VEHICLEDEED,
-	
+
 	controlDeviceObjectTemplate = "object/intangible/vehicle/speederbike_swoop_pcd.iff",
 	generatedObjectTemplate = "object/mobile/vehicle/speederbike_swoop.iff",
-	
+
 	numberExperimentalProperties = {1, 1, 1},
 	experimentalProperties = {"XX", "XX", "SR"},
 	experimentalWeights = {1, 1, 1},
@@ -56,6 +56,7 @@ object_tangible_deed_vehicle_deed_speederbike_swoop_deed = object_tangible_deed_
 	experimentalMin = {0, 0, 1000},
 	experimentalMax = {0, 0, 2500},
 	experimentalPrecision = {0, 0, 0},
+
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_vehicle_deed_speederbike_swoop_deed, "object/tangible/deed/vehicle_deed/speederbike_swoop_deed.iff")

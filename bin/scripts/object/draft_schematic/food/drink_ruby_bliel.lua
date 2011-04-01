@@ -72,7 +72,7 @@ object_draft_schematic_food_drink_ruby_bliel = object_draft_schematic_food_share
    combineTypes = {0, 0, 1, 1},
    contribution = {100, 100, 100, 100},
 
-   templates { = 
+   templates = {
               3685363360, -- Script: 'object/tangible/food/crafted/drink_ruby_bliel.iff'
              }
 

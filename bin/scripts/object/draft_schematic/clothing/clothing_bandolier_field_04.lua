@@ -72,7 +72,7 @@ object_draft_schematic_clothing_clothing_bandolier_field_04 = object_draft_schem
    combineTypes = {1, 0, 0, 0, 1},
    contribution = {100, 100, 100, 100, 100},
 
-   templates { = 
+   templates = {
               3935913405, -- Script: 'object/tangible/wearables/bandolier/bandolier_s04.iff'
              }
 

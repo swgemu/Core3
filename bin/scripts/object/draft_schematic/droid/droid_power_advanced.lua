@@ -72,7 +72,7 @@ object_draft_schematic_droid_droid_power_advanced = object_draft_schematic_droid
    combineTypes = {0, 0, 0, 1, 1, 1, 1, 1, 1},
    contribution = {100, 100, 100, 100, 100, 100, 100, 100, 100},
 
-   templates { = 
+   templates = {
               2104859440, -- Script: 'object/tangible/deed/pet_deed/deed_power_advanced_basic.iff'
              }
 

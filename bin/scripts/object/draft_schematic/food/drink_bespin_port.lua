@@ -72,7 +72,7 @@ object_draft_schematic_food_drink_bespin_port = object_draft_schematic_food_shar
    combineTypes = {1, 0, 0, 0, 1, 1},
    contribution = {100, 100, 100, 100, 100, 100},
 
-   templates { = 
+   templates = {
               3473339719, -- Script: 'object/tangible/food/crafted/drink_bespin_port.iff'
              }
 

@@ -72,7 +72,7 @@ object_draft_schematic_food_dish_synthsteak = object_draft_schematic_food_shared
    combineTypes = {0, 0, 0, 1},
    contribution = {100, 100, 100, 100},
 
-   templates { = 
+   templates = {
               1834531933, -- Script: 'object/tangible/food/crafted/dish_synthsteak.iff'
              }
 

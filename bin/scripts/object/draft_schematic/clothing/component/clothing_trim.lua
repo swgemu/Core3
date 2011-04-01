@@ -72,7 +72,7 @@ object_draft_schematic_clothing_component_clothing_trim = object_draft_schematic
    combineTypes = {0, 0},
    contribution = {100, 100},
 
-   templates { = 
+   templates = {
               1645938657, -- Script: 'object/tangible/component/clothing/trim.iff'
              }
 

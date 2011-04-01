@@ -72,7 +72,7 @@ object_draft_schematic_weapon_lightsaber_lightsaber_one_hand_gen2 = object_draft
    combineTypes = {0, 1, 0, 0, 1, 0, 0},
    contribution = {100, 100, 100, 100, 100, 100, 100},
 
-   templates { = 
+   templates = {
               735438027, -- Script: 'object/weapon/melee/sword/crafted_saber/sword_lightsaber_one_handed_gen2.iff'
              }
 

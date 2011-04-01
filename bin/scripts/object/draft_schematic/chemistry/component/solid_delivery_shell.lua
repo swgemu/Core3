@@ -72,7 +72,7 @@ object_draft_schematic_chemistry_component_solid_delivery_shell = object_draft_s
    combineTypes = {0, 0},
    contribution = {100, 100},
 
-   templates { = 
+   templates = {
               3737748835, -- Script: 'object/tangible/component/chemistry/solid_delivery_shell.iff'
              }
 

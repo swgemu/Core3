@@ -72,7 +72,7 @@ object_draft_schematic_furniture_furniture_armoire_elegant = object_draft_schema
    combineTypes = {0, 1},
    contribution = {100, 100},
 
-   templates { = 
+   templates = {
               96162438, -- Script: 'object/tangible/furniture/elegant/armoire_elegant_s01.iff'
              }
 

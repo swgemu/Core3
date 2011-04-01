@@ -72,7 +72,7 @@ object_draft_schematic_item_craftable_bug_habitat = object_draft_schematic_item_
    combineTypes = {0, 0, 1},
    contribution = {100, 100, 100},
 
-   templates { = 
+   templates = {
               2142449639, -- Script: 'object/tangible/bug_jar/craftable_bug_habitat.iff'
              }
 

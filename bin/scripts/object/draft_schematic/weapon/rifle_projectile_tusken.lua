@@ -72,7 +72,7 @@ object_draft_schematic_weapon_rifle_projectile_tusken = object_draft_schematic_w
    combineTypes = {0, 0, 0, 1, 1, 1, 1},
    contribution = {100, 100, 100, 100, 100, 100, 100},
 
-   templates { = 
+   templates = {
               2270083762, -- Script: 'object/weapon/ranged/rifle/rifle_tusken.iff'
              }
 

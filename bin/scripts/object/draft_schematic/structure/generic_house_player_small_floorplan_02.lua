@@ -72,7 +72,7 @@ object_draft_schematic_structure_generic_house_player_small_floorplan_02 = objec
    combineTypes = {0, 0, 0, 1, 1, 1},
    contribution = {100, 100, 100, 100, 100, 100},
 
-   templates { = 
+   templates = {
               1833857021, -- Script: 'object/tangible/deed/player_house_deed/generic_house_small_floor_02_deed.iff'
              }
 

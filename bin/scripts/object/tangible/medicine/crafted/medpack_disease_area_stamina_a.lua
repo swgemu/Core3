@@ -54,7 +54,7 @@ object_tangible_medicine_crafted_medpack_disease_area_stamina_a = object_tangibl
 	potency = 150,
 	commandToExecute = "/applydisease",
 	area = 10,
-	
+
 	numberExperimentalProperties = {1, 1, 2, 2, 2, 2, 2, 2, 2, 1},
 	experimentalProperties = {"XX", "XX", "OQ", "PE", "OQ", "UT", "CD", "OQ", "CD", "OQ", "OQ", "PE", "OQ", "PE", "DR", "OQ", "XX"},
 	experimentalWeights = {1, 1, 2, 1, 2, 1, 1, 2, 1, 2, 2, 1, 2, 1, 1, 1, 1},
@@ -63,6 +63,7 @@ object_tangible_medicine_crafted_medpack_disease_area_stamina_a = object_tangibl
 	experimentalMin = {0, 0, 10, 5, 15, 10, 60, 25, 120, 1000},
 	experimentalMax = {0, 0, 20, 15, 20, 5, 40, 50, 600, 1000},
 	experimentalPrecision = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+
 }
 
 ObjectTemplates:addTemplate(object_tangible_medicine_crafted_medpack_disease_area_stamina_a, "object/tangible/medicine/crafted/medpack_disease_area_stamina_a.iff")

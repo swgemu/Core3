@@ -44,9 +44,9 @@
 object_tangible_deed_harvester_deed_harvester_liquid_deed_heavy = object_tangible_deed_harvester_deed_shared_harvester_liquid_deed_heavy:new {
 	templateType = DEED,
 	generatedObjectTemplate = "object/installation/mining_liquid/mining_liquid_harvester_style_3.iff",
-	
-	
-	
+
+
+
 	numberExperimentalProperties = {1, 1, 3, 2, 1},
 	experimentalProperties = {"XX", "XX", "HR", "SR", "UT", "MA", "UT", "XX"},
 	experimentalWeights = {1, 1, 1, 1, 2, 1, 2, 1},
@@ -55,6 +55,7 @@ object_tangible_deed_harvester_deed_harvester_liquid_deed_heavy = object_tangibl
 	experimentalMin = {0, 0, 3, 100000, 1000},
 	experimentalMax = {0, 0, 7, 150000, 1000},
 	experimentalPrecision = {0, 0, 0, 0, 0},
+
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_harvester_deed_harvester_liquid_deed_heavy, "object/tangible/deed/harvester_deed/harvester_liquid_deed_heavy.iff")

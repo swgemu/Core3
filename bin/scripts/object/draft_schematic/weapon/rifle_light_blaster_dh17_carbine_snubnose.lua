@@ -72,7 +72,7 @@ object_draft_schematic_weapon_rifle_light_blaster_dh17_carbine_snubnose = object
    combineTypes = {0, 0, 0, 1, 1, 1, 1},
    contribution = {100, 100, 100, 100, 100, 100, 100},
 
-   templates { = 
+   templates = {
               648215202, -- Script: 'object/weapon/ranged/carbine/carbine_dh17_snubnose.iff'
              }
 

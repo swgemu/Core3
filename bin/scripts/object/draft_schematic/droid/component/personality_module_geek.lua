@@ -72,7 +72,7 @@ object_draft_schematic_droid_component_personality_module_geek = object_draft_sc
    combineTypes = {0, 0, 1, 1, 1, 1, 1},
    contribution = {100, 100, 100, 100, 100, 100, 100},
 
-   templates { = 
+   templates = {
               789436461, -- Script: 'object/tangible/component/droid/personality_module_geek.iff'
              }
 

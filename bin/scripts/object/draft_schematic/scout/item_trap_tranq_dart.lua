@@ -72,7 +72,7 @@ object_draft_schematic_scout_item_trap_tranq_dart = object_draft_schematic_scout
    combineTypes = {0, 0, 0},
    contribution = {100, 100, 100},
 
-   templates { = 
+   templates = {
               3433589446, -- Script: 'object/tangible/scout/trap/trap_tranq_dart.iff'
              }
 

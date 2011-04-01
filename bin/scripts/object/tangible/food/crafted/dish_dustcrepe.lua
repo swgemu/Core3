@@ -42,8 +42,8 @@
 
 
 object_tangible_food_crafted_dish_dustcrepe = object_tangible_food_crafted_shared_dish_dustcrepe:new {
-	
-	
+
+
 	numberExperimentalProperties = {1, 1, 1, 2, 2, 2},
 	experimentalProperties = {"XX", "XX", "XX", "OQ", "PE", "DR", "PE", "DR", "OQ"},
 	experimentalWeights = {1, 1, 1, 1, 2, 1, 3, 3, 1},
@@ -52,6 +52,7 @@ object_tangible_food_crafted_dish_dustcrepe = object_tangible_food_crafted_share
 	experimentalMin = {0, 0, 1000, 75, 60, 80},
 	experimentalMax = {0, 0, 1000, 120, 100, 120},
 	experimentalPrecision = {0, 0, 0, 0, 0, 0},
+
 }
 
 ObjectTemplates:addTemplate(object_tangible_food_crafted_dish_dustcrepe, "object/tangible/food/crafted/dish_dustcrepe.iff")

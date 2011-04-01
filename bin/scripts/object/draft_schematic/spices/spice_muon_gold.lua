@@ -72,7 +72,7 @@ object_draft_schematic_spices_spice_muon_gold = object_draft_schematic_spices_sh
    combineTypes = {0, 0, 0},
    contribution = {100, 100, 100},
 
-   templates { = 
+   templates = {
               4110460458, -- Script: 'object/tangible/food/spice/spice_muon_gold.iff'
              }
 

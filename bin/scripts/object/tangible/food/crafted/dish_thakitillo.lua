@@ -43,13 +43,13 @@
 
 object_tangible_food_crafted_dish_thakitillo = object_tangible_food_crafted_shared_dish_thakitillo:new {
 	templateType = CONSUMABLE,
-	
+
 	duration = 30,
 	filling = 10,
 	nutrition = 10,
-	
+
 	effectType = 4,
-	
+
 	fillingMin = 47,
 	fillingMax = 33,
 	flavorMin = 540,
@@ -58,13 +58,13 @@ object_tangible_food_crafted_dish_thakitillo = object_tangible_food_crafted_shar
 	nutritionMax = 50,
 	quantityMin = 1,
 	quantityMax = 3,
-	
+
 	modifiers = { "knockdown_defense", 0 },
-	
+
 	buffName = "food.dish_thakitillo",
 	buffCRC = 0xDC5D4FD7,
 	speciesRestriction = "",
-	
+
 	numberExperimentalProperties = {1, 1, 1, 2, 2, 2, 2},
 	experimentalProperties = {"XX", "XX", "XX", "OQ", "PE", "DR", "FL", "DR", "PE", "DR", "OQ"},
 	experimentalWeights = {1, 1, 1, 1, 2, 1, 2, 1, 3, 3, 1},
@@ -73,6 +73,7 @@ object_tangible_food_crafted_dish_thakitillo = object_tangible_food_crafted_shar
 	experimentalMin = {0, 0, 1000, 75, 60, 60, 80},
 	experimentalMax = {0, 0, 1000, 120, 120, 100, 120},
 	experimentalPrecision = {0, 0, 0, 0, 10, 0, 0},
+
 }
 
 ObjectTemplates:addTemplate(object_tangible_food_crafted_dish_thakitillo, "object/tangible/food/crafted/dish_thakitillo.iff")

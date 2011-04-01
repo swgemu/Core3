@@ -72,7 +72,7 @@ object_draft_schematic_food_additive_additive_heavy = object_draft_schematic_foo
    combineTypes = {0, 1},
    contribution = {100, 100},
 
-   templates { = 
+   templates = {
               3509640022, -- Script: 'object/tangible/food/crafted/additive/additive_heavy.iff'
              }
 

@@ -72,7 +72,7 @@ object_draft_schematic_droid_component_personality_module_prissy = object_draft_
    combineTypes = {0, 0, 1, 0},
    contribution = {100, 100, 100, 100},
 
-   templates { = 
+   templates = {
               2491560891, -- Script: 'object/tangible/component/droid/personality_module_prissy.iff'
              }
 

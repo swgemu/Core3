@@ -72,7 +72,7 @@ object_draft_schematic_armor_armor_segment_padded_advanced = object_draft_schema
    combineTypes = {0, 0, 0, 1, 1, 1},
    contribution = {100, 100, 100, 100, 100, 100},
 
-   templates { = 
+   templates = {
               1141198733, -- Script: 'object/tangible/component/armor/armor_segment_padded_advanced.iff'
              }
 

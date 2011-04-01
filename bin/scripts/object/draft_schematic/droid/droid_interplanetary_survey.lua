@@ -72,7 +72,7 @@ object_draft_schematic_droid_droid_interplanetary_survey = object_draft_schemati
    combineTypes = {0, 0, 0, 0, 0, 1, 1, 1, 1},
    contribution = {100, 100, 100, 100, 100, 100, 100, 100, 100},
 
-   templates { = 
+   templates = {
               3351452767, -- Script: 'object/tangible/component/droid/droid_interplanetary_survey.iff'
              }
 

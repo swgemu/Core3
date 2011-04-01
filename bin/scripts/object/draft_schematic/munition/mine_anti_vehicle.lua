@@ -72,7 +72,7 @@ object_draft_schematic_munition_mine_anti_vehicle = object_draft_schematic_munit
    combineTypes = {0, 0, 0, 0, 0, 1, 1, 1, 1},
    contribution = {100, 100, 100, 100, 100, 100, 100, 100, 100},
 
-   templates { = 
+   templates = {
               394148601, -- Script: 'object/weapon/mine/wp_mine_anti_vehicle.iff'
              }
 

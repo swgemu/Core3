@@ -72,7 +72,7 @@ object_draft_schematic_food_drink_jaar = object_draft_schematic_food_shared_drin
    combineTypes = {0, 0, 1, 1},
    contribution = {100, 100, 100, 100},
 
-   templates { = 
+   templates = {
               1186404816, -- Script: 'object/tangible/food/crafted/drink_jaar.iff'
              }
 

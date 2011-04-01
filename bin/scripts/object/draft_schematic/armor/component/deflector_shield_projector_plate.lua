@@ -72,7 +72,7 @@ object_draft_schematic_armor_component_deflector_shield_projector_plate = object
    combineTypes = {0, 0, 0},
    contribution = {100, 100, 100},
 
-   templates { = 
+   templates = {
               1906195493, -- Script: 'object/tangible/component/armor/deflector_shield_projector_plate.iff'
              }
 

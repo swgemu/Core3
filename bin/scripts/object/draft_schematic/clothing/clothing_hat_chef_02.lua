@@ -72,7 +72,7 @@ object_draft_schematic_clothing_clothing_hat_chef_02 = object_draft_schematic_cl
    combineTypes = {1, 0, 1},
    contribution = {100, 100, 100},
 
-   templates { = 
+   templates = {
               224739647, -- Script: 'object/tangible/wearables/hat/hat_chef_s02.iff'
              }
 

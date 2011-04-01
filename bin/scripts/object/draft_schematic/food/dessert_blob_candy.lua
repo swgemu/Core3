@@ -72,7 +72,7 @@ object_draft_schematic_food_dessert_blob_candy = object_draft_schematic_food_sha
    combineTypes = {1, 0, 1},
    contribution = {100, 100, 100},
 
-   templates { = 
+   templates = {
               2255031927, -- Script: 'object/tangible/food/crafted/dessert_blob_candy.iff'
              }
 

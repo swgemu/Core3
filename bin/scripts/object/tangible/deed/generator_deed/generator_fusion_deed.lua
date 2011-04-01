@@ -44,9 +44,9 @@
 object_tangible_deed_generator_deed_generator_fusion_deed = object_tangible_deed_generator_deed_shared_generator_fusion_deed:new {
 	templateType = DEED,
 	generatedObjectTemplate = "object/installation/generators/power_generator_fusion_style_1.iff",
-	
-	
-	
+
+
+
 	numberExperimentalProperties = {1, 1, 1, 2, 1},
 	experimentalProperties = {"XX", "XX", "XX", "MA", "UT", "XX"},
 	experimentalWeights = {1, 1, 1, 1, 2, 1},
@@ -55,6 +55,7 @@ object_tangible_deed_generator_deed_generator_fusion_deed = object_tangible_deed
 	experimentalMin = {0, 0, 6, 100000, 1000},
 	experimentalMax = {0, 0, 12, 150000, 1000},
 	experimentalPrecision = {0, 0, 0, 0, 0},
+
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_generator_deed_generator_fusion_deed, "object/tangible/deed/generator_deed/generator_fusion_deed.iff")

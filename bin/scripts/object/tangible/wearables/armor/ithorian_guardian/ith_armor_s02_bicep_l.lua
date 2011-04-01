@@ -43,21 +43,21 @@
 
 object_tangible_wearables_armor_ithorian_guardian_ith_armor_s02_bicep_l = object_tangible_wearables_armor_ithorian_guardian_shared_ith_armor_s02_bicep_l:new {
 	templateType = ARMOROBJECT,
-	
-	 --  ALL, ALLSEXES, ALLFACTIONS, HUMANOIDS, HUMANOID_FOOTWEAR, HUMANOID_MALES, HUMANOID_FEMALES, HUMANOID_IMPERIALS, HUMANOID_REBELS, WOOKIEES, ITHORIANS, TWILEKS
+
+	--   ALL, ALLSEXES, ALLFACTIONS, HUMANOIDS, HUMANOID_FOOTWEAR, HUMANOID_MALES, HUMANOID_FEMALES, HUMANOID_IMPERIALS, HUMANOID_REBELS, WOOKIEES, ITHORIANS, TWILEKS
 	playerUseMask = ITHORIANS,
-	
-	 --  Damage types in WeaponObject
+
+	--   Damage types in WeaponObject
 	vunerability = ACID + STUN + LIGHTSABER,
-	
-	 --  These are default Blue Frog stats
+
+	--   These are default Blue Frog stats
 	healthEncumbrance = 1,
 	actionEncumbrance = 1,
 	mindEncumbrance = 1,
-	
-	 --  LIGHT, MEDIUM, HEAVY
+
+	--   LIGHT, MEDIUM, HEAVY
 	rating = LIGHT,
-	
+
 	kinetic = 15,
 	energy = 15,
 	electricity = 15,
@@ -67,7 +67,7 @@ object_tangible_wearables_armor_ithorian_guardian_ith_armor_s02_bicep_l = object
 	cold = 15,
 	acid = 15,
 	lightSaber = 0,
-	
+
 	numberExperimentalProperties = {1, 1, 1, 2, 2, 2, 2, 2, 2, 1, 1, 2, 1},
 	experimentalProperties = {"XX", "XX", "XX", "OQ", "SR", "OQ", "SR", "OQ", "UT", "MA", "OQ", "MA", "OQ", "MA", "OQ", "XX", "XX", "OQ", "SR", "XX"},
 	experimentalWeights = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
@@ -76,6 +76,7 @@ object_tangible_wearables_armor_ithorian_guardian_ith_armor_s02_bicep_l = object
 	experimentalMin = {0, 0, 0, 1000, 5, 15000, 13, 13, 16, 1, 1, 5, 15000},
 	experimentalMax = {0, 0, 0, 1000, 30, 25000, 8, 8, 9, 1, 1, 40, 25000},
 	experimentalPrecision = {0, 0, 0, 0, 10, 0, 0, 0, 0, 0, 0, 0, 0},
+
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_armor_ithorian_guardian_ith_armor_s02_bicep_l, "object/tangible/wearables/armor/ithorian_guardian/ith_armor_s02_bicep_l.iff")

@@ -42,8 +42,8 @@
 
 
 object_tangible_component_item_electronic_energy_distributor = object_tangible_component_item_shared_electronic_energy_distributor:new {
-	
-	
+
+
 	numberExperimentalProperties = {1, 1, 1, 1},
 	experimentalProperties = {"XX", "XX", "UT", "OQ"},
 	experimentalWeights = {1, 1, 1, 1},
@@ -52,6 +52,7 @@ object_tangible_component_item_electronic_energy_distributor = object_tangible_c
 	experimentalMin = {0, 0, 100, -5},
 	experimentalMax = {0, 0, 150, 5},
 	experimentalPrecision = {0, 0, 0, 0},
+
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_item_electronic_energy_distributor, "object/tangible/component/item/electronic_energy_distributor.iff")

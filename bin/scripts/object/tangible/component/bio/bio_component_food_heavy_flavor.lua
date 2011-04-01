@@ -42,8 +42,8 @@
 
 
 object_tangible_component_bio_bio_component_food_heavy_flavor = object_tangible_component_bio_shared_bio_component_food_heavy_flavor:new {
-	
-	
+
+
 	numberExperimentalProperties = {1, 1, 1, 3},
 	experimentalProperties = {"XX", "XX", "XX", "FL", "OQ", "PE"},
 	experimentalWeights = {1, 1, 1, 1, 2, 2},
@@ -52,6 +52,7 @@ object_tangible_component_bio_bio_component_food_heavy_flavor = object_tangible_
 	experimentalMin = {0, 0, 1000, 50},
 	experimentalMax = {0, 0, 1000, 70},
 	experimentalPrecision = {0, 0, 0, 0},
+
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_bio_bio_component_food_heavy_flavor, "object/tangible/component/bio/bio_component_food_heavy_flavor.iff")

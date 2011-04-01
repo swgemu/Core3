@@ -46,7 +46,7 @@ object_tangible_medicine_crafted_medpack_stunned_a = object_tangible_medicine_cr
 	templateType = STATEPACK,
 	medicineUse = 5,
 	state = STUNNED,
-	
+
 	numberExperimentalProperties = {1, 1, 2, 2, 1, 1},
 	experimentalProperties = {"XX", "XX", "OQ", "UT", "OQ", "PE", "XX", "XX"},
 	experimentalWeights = {1, 1, 2, 1, 2, 1, 1, 1},
@@ -55,6 +55,7 @@ object_tangible_medicine_crafted_medpack_stunned_a = object_tangible_medicine_cr
 	experimentalMin = {0, 0, 10, 40, 15, 1000},
 	experimentalMax = {0, 0, 30, 20, 20, 1000},
 	experimentalPrecision = {0, 0, 0, 0, 0, 0},
+
 }
 
 ObjectTemplates:addTemplate(object_tangible_medicine_crafted_medpack_stunned_a, "object/tangible/medicine/crafted/medpack_stunned_a.iff")

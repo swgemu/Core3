@@ -72,7 +72,7 @@ object_draft_schematic_droid_droid_r4_advanced = object_draft_schematic_droid_sh
    combineTypes = {1, 0, 1, 1, 1, 1, 1},
    contribution = {100, 100, 100, 100, 100, 100, 100},
 
-   templates { = 
+   templates = {
               3168808092, -- Script: 'object/tangible/deed/pet_deed/deed_r4_advanced_basic.iff'
              }
 

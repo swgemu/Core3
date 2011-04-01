@@ -72,7 +72,7 @@ object_draft_schematic_droid_component_chassis_droid_r2 = object_draft_schematic
    combineTypes = {0, 0, 1, 1, 1, 1, 1},
    contribution = {100, 100, 100, 100, 100, 100, 100},
 
-   templates { = 
+   templates = {
               545401676, -- Script: 'object/tangible/component/droid/r2_droid_chassis.iff'
              }
 

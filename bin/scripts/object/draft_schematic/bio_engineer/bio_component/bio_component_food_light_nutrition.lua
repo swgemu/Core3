@@ -72,7 +72,7 @@ object_draft_schematic_bio_engineer_bio_component_bio_component_food_light_nutri
    combineTypes = {0, 0, 0, 1},
    contribution = {100, 100, 100, 100},
 
-   templates { = 
+   templates = {
               4208188122, -- Script: 'object/tangible/component/bio/bio_component_food_light_nutrition.iff'
              }
 

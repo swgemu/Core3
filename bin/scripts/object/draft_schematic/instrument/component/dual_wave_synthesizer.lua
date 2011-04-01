@@ -72,7 +72,7 @@ object_draft_schematic_instrument_component_dual_wave_synthesizer = object_draft
    combineTypes = {0, 0, 0},
    contribution = {100, 100, 100},
 
-   templates { = 
+   templates = {
               89531137, -- Script: 'object/tangible/component/instrument/dual_wave_synthesizer.iff'
              }
 

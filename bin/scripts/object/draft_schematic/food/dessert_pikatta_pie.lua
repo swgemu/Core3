@@ -72,7 +72,7 @@ object_draft_schematic_food_dessert_pikatta_pie = object_draft_schematic_food_sh
    combineTypes = {0, 0, 0, 1, 1},
    contribution = {100, 100, 100, 100, 100},
 
-   templates { = 
+   templates = {
               507210122, -- Script: 'object/tangible/food/crafted/dessert_pikatta_pie.iff'
              }
 

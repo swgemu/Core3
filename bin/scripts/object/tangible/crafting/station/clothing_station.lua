@@ -42,17 +42,17 @@
 
 
 object_tangible_crafting_station_clothing_station = object_tangible_crafting_station_shared_clothing_station:new {
-	
+
 	templateType = CRAFTINGSTATION,
-	
+
 	playerUseMask = 65535,
-	
+
 	customizationOptions = {},
 	customizationDefaults = {},
-	
+
 	stationType = 1,
 	complexityLevel = 100,
-	
+
 	numberExperimentalProperties = {1, 1, 1, 1},
 	experimentalProperties = {"XX", "XX", "XX", "CD"},
 	experimentalWeights = {1, 1, 1, 1},
@@ -61,5 +61,6 @@ object_tangible_crafting_station_clothing_station = object_tangible_crafting_sta
 	experimentalMin = {0, 0, 1000, -15},
 	experimentalMax = {0, 0, 1000, 15},
 	experimentalPrecision = {0, 0, 0, 0},
+
 }
 ObjectTemplates:addTemplate(object_tangible_crafting_station_clothing_station, "object/tangible/crafting/station/clothing_station.iff")

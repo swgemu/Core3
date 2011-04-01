@@ -42,8 +42,8 @@
 
 
 object_tangible_component_weapon_stock = object_tangible_component_weapon_shared_stock:new {
-	
-	
+
+
 	numberExperimentalProperties = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
 	experimentalProperties = {"XX", "XX", "SR", "SR", "SR", "SR", "SR", "SR", "SR", "SR", "SR"},
 	experimentalWeights = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
@@ -52,6 +52,7 @@ object_tangible_component_weapon_stock = object_tangible_component_weapon_shared
 	experimentalMin = {0, 0, 1, 1, 1, 0, 10, 0, 25, 25, 25},
 	experimentalMax = {0, 0, 20, 20, 0, 5, 100, 20, 0, 0, 0},
 	experimentalPrecision = {0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0},
+
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_weapon_stock, "object/tangible/component/weapon/stock.iff")

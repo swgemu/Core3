@@ -72,7 +72,7 @@ object_draft_schematic_structure_city_hospital_corellia = object_draft_schematic
    combineTypes = {0, 0, 0, 1, 1, 1},
    contribution = {100, 100, 100, 100, 100, 100},
 
-   templates { = 
+   templates = {
               3156061728, -- Script: 'object/tangible/deed/city_deed/hospital_corellia_deed.iff'
              }
 

@@ -42,8 +42,8 @@
 
 
 object_tangible_component_armor_deflector_shield_emitter_assembly = object_tangible_component_armor_shared_deflector_shield_emitter_assembly:new {
-	
-	
+
+
 	numberExperimentalProperties = {1, 1, 1},
 	experimentalProperties = {"XX", "XX", "XX"},
 	experimentalWeights = {1, 1, 1},
@@ -52,6 +52,7 @@ object_tangible_component_armor_deflector_shield_emitter_assembly = object_tangi
 	experimentalMin = {0, 0, 1000},
 	experimentalMax = {0, 0, 1000},
 	experimentalPrecision = {0, 0, 0},
+
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_armor_deflector_shield_emitter_assembly, "object/tangible/component/armor/deflector_shield_emitter_assembly.iff")

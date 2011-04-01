@@ -72,7 +72,7 @@ object_draft_schematic_weapon_rifle_blaster_ionization_jawa = object_draft_schem
    combineTypes = {0, 0, 0, 1, 1},
    contribution = {100, 100, 100, 100, 100},
 
-   templates { = 
+   templates = {
               3691078044, -- Script: 'object/weapon/ranged/rifle/rifle_jawa_ion.iff'
              }
 

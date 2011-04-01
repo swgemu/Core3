@@ -72,7 +72,7 @@ object_draft_schematic_item_item_space_tool = object_draft_schematic_item_shared
    combineTypes = {0, 0, 0},
    contribution = {100, 100, 100},
 
-   templates { = 
+   templates = {
               1702405330, -- Script: 'object/tangible/crafting/station/space_tool.iff'
              }
 

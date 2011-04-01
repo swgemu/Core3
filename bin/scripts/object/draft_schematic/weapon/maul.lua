@@ -72,7 +72,7 @@ object_draft_schematic_weapon_maul = object_draft_schematic_weapon_shared_maul:n
    combineTypes = {0, 0, 0, 1},
    contribution = {100, 100, 100, 100},
 
-   templates { = 
+   templates = {
               3681800010, -- Script: 'object/weapon/melee/2h_sword/2h_sword_maul.iff'
              }
 

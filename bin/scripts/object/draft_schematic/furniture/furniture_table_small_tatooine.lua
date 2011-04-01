@@ -72,7 +72,7 @@ object_draft_schematic_furniture_furniture_table_small_tatooine = object_draft_s
    combineTypes = {0, 0},
    contribution = {100, 100},
 
-   templates { = 
+   templates = {
               3724040631, -- Script: 'object/tangible/furniture/tatooine/frn_tato_table_small_style_01.iff'
              }
 

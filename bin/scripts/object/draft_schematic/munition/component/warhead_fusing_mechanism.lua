@@ -72,7 +72,7 @@ object_draft_schematic_munition_component_warhead_fusing_mechanism = object_draf
    combineTypes = {0, 0, 0, 0, 0},
    contribution = {100, 100, 100, 100, 100},
 
-   templates { = 
+   templates = {
               425324353, -- Script: 'object/tangible/component/munition/warhead_fusing_mechanism.iff'
              }
 

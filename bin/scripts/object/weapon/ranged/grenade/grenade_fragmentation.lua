@@ -42,8 +42,8 @@
 
 
 object_weapon_ranged_grenade_grenade_fragmentation = object_weapon_ranged_grenade_shared_grenade_fragmentation:new {
-	
-	
+
+
 	numberExperimentalProperties = {1, 1, 2, 2, 2, 2, 1, 2, 2, 2, 2, 1, 2, 2, 2},
 	experimentalProperties = {"XX", "XX", "OQ", "SR", "OQ", "SR", "OQ", "SR", "OQ", "SR", "SR", "OQ", "SR", "OQ", "SR", "OQ", "SR", "OQ", "SR", "XX", "OQ", "SR", "OQ", "SR", "OQ", "SR"},
 	experimentalWeights = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
@@ -52,6 +52,7 @@ object_weapon_ranged_grenade_grenade_fragmentation = object_weapon_ranged_grenad
 	experimentalMin = {0, 0, 200, 400, 4.5, 7, 1000, -16, -45, 0, 10, 64, 104, 104, 20},
 	experimentalMax = {0, 0, 296, 1450, 3.5, 13, 1000, 14, 15, 30, 30, 64, 56, 56, 11},
 	experimentalPrecision = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+
 }
 
 ObjectTemplates:addTemplate(object_weapon_ranged_grenade_grenade_fragmentation, "object/weapon/ranged/grenade/grenade_fragmentation.iff")

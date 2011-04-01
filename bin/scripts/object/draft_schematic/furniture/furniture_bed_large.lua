@@ -72,7 +72,7 @@ object_draft_schematic_furniture_furniture_bed_large = object_draft_schematic_fu
    combineTypes = {0, 0},
    contribution = {100, 100},
 
-   templates { = 
+   templates = {
               3640258591, -- Script: 'object/tangible/furniture/all/frn_all_bed_lg_s1.iff'
              }
 

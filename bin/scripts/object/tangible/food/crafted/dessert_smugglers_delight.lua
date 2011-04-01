@@ -43,13 +43,13 @@
 
 object_tangible_food_crafted_dessert_smugglers_delight = object_tangible_food_crafted_shared_dessert_smugglers_delight:new {
 	templateType = CONSUMABLE,
-	
+
 	duration = 45,
 	filling = 10,
 	nutrition = 10,
-	
+
 	effectType = 3,
-	
+
 	fillingMin = 29,
 	fillingMax = 19,
 	flavorMin = 1,
@@ -58,13 +58,13 @@ object_tangible_food_crafted_dessert_smugglers_delight = object_tangible_food_cr
 	nutritionMax = 50,
 	quantityMin = 1,
 	quantityMax = 1,
-	
+
 	modifiers = { "reduce_spice_downtime", 0 },
-	
+
 	buffName = "food.reduce_spice_downtime",
 	buffCRC = 0,
 	speciesRestriction = "",
-	
+
 	numberExperimentalProperties = {1, 1, 1, 2, 2, 2},
 	experimentalProperties = {"XX", "XX", "XX", "DR", "OQ", "OQ", "PE", "FL", "OQ"},
 	experimentalWeights = {1, 1, 1, 1, 1, 1, 2, 2, 1},
@@ -73,6 +73,7 @@ object_tangible_food_crafted_dessert_smugglers_delight = object_tangible_food_cr
 	experimentalMin = {0, 0, 1000, 75, 60, 80},
 	experimentalMax = {0, 0, 1000, 120, 100, 120},
 	experimentalPrecision = {0, 0, 0, 10, 10, 10},
+
 }
 
 ObjectTemplates:addTemplate(object_tangible_food_crafted_dessert_smugglers_delight, "object/tangible/food/crafted/dessert_smugglers_delight.iff")

@@ -45,8 +45,8 @@ object_tangible_slicing_slicing_laser_knife = object_tangible_slicing_shared_sli
 	templateType = SLICINGTOOL,
 	gameObjectType = 32777,
 	effectiveness = 0,
-	
-	
+
+
 	numberExperimentalProperties = {1, 1, 1, 1},
 	experimentalProperties = {"XX", "XX", "XX", "CD"},
 	experimentalWeights = {1, 1, 1, 1},
@@ -55,6 +55,7 @@ object_tangible_slicing_slicing_laser_knife = object_tangible_slicing_shared_sli
 	experimentalMin = {0, 0, 1000, -15},
 	experimentalMax = {0, 0, 1000, 15},
 	experimentalPrecision = {0, 0, 0, 0},
+
 }
 
 ObjectTemplates:addTemplate(object_tangible_slicing_slicing_laser_knife, "object/tangible/slicing/slicing_laser_knife.iff")

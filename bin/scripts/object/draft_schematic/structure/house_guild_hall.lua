@@ -72,7 +72,7 @@ object_draft_schematic_structure_house_guild_hall = object_draft_schematic_struc
    combineTypes = {0, 0, 0, 1, 1, 1},
    contribution = {100, 100, 100, 100, 100, 100},
 
-   templates { = 
+   templates = {
               3502677060, -- Script: 'object/tangible/deed/guild_deed/tatooine_guild_deed.iff'
              }
 

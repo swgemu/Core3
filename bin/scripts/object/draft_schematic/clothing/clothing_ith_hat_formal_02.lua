@@ -72,7 +72,7 @@ object_draft_schematic_clothing_clothing_ith_hat_formal_02 = object_draft_schema
    combineTypes = {1, 0, 1},
    contribution = {100, 100, 100},
 
-   templates { = 
+   templates = {
               2923676272, -- Script: 'object/tangible/wearables/ithorian/ith_hat_s02.iff'
              }
 

@@ -72,7 +72,7 @@ object_draft_schematic_structure_merchant_tent = object_draft_schematic_structur
    combineTypes = {0, 0, 0, 1, 1},
    contribution = {100, 100, 100, 100, 100},
 
-   templates { = 
+   templates = {
               3260268069, -- Script: 'object/tangible/deed/player_house_deed/merchant_tent_style_01_deed.iff'
              }
 

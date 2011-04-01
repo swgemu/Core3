@@ -72,7 +72,7 @@ object_draft_schematic_droid_component_performer_effects_a = object_draft_schema
    combineTypes = {0, 0, 0},
    contribution = {100, 100, 100},
 
-   templates { = 
+   templates = {
               17780609, -- Script: 'object/tangible/component/droid/performer_effects_a.iff'
              }
 

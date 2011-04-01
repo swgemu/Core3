@@ -72,7 +72,7 @@ object_draft_schematic_structure_installation_mining_liquid_heavy = object_draft
    combineTypes = {0, 0, 0, 0, 1, 0, 1, 1, 1},
    contribution = {100, 100, 100, 100, 100, 100, 100, 100, 100},
 
-   templates { = 
+   templates = {
               2964348823, -- Script: 'object/tangible/deed/harvester_deed/harvester_liquid_deed_heavy.iff'
              }
 

@@ -72,7 +72,7 @@ object_draft_schematic_furniture_furniture_tree_potted = object_draft_schematic_
    combineTypes = {0, 0, 0},
    contribution = {100, 100, 100},
 
-   templates { = 
+   templates = {
               3849941999, -- Script: 'object/tangible/furniture/all/frn_all_tree_potted_s1.iff'
              }
 

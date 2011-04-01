@@ -72,7 +72,7 @@ object_draft_schematic_weapon_knife_survival = object_draft_schematic_weapon_sha
    combineTypes = {0, 0, 0, 0},
    contribution = {100, 100, 100, 100},
 
-   templates { = 
+   templates = {
               4162479504, -- Script: 'object/weapon/melee/knife/knife_survival.iff'
              }
 

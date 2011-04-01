@@ -72,7 +72,7 @@ object_draft_schematic_clothing_clothing_armor_ithorian_sentinel_bracer_l = obje
    combineTypes = {0, 0, 0, 0, 0, 0, 1, 1, 1},
    contribution = {100, 100, 100, 100, 100, 100, 100, 100, 100},
 
-   templates { = 
+   templates = {
               2527271949, -- Script: 'object/tangible/wearables/armor/ithorian_sentinel/ith_armor_s03_bracer_l.iff'
              }
 

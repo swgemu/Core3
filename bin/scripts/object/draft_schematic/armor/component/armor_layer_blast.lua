@@ -72,7 +72,7 @@ object_draft_schematic_armor_component_armor_layer_blast = object_draft_schemati
    combineTypes = {0, 0, 0, 0},
    contribution = {100, 100, 100, 100},
 
-   templates { = 
+   templates = {
               192857538, -- Script: 'object/tangible/component/armor/armor_layer_blast.iff'
              }
 

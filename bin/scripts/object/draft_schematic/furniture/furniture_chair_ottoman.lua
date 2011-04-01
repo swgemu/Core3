@@ -72,7 +72,7 @@ object_draft_schematic_furniture_furniture_chair_ottoman = object_draft_schemati
    combineTypes = {0, 0},
    contribution = {100, 100},
 
-   templates { = 
+   templates = {
               1982983683, -- Script: 'object/tangible/furniture/all/frn_all_couch_ottoman_s1.iff'
              }
 

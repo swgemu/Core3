@@ -72,7 +72,7 @@ object_draft_schematic_furniture_furniture_candle_free_s01_on = object_draft_sch
    combineTypes = {0, 0, 0},
    contribution = {100, 100, 100},
 
-   templates { = 
+   templates = {
               3378039776, -- Script: 'object/tangible/furniture/all/frn_all_light_lamp_candlestick_free_s01.iff'
              }
 

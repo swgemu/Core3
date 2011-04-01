@@ -72,7 +72,7 @@ object_draft_schematic_item_item_firework_five = object_draft_schematic_item_sha
    combineTypes = {0, 0, 0, 0},
    contribution = {100, 100, 100, 100},
 
-   templates { = 
+   templates = {
               1316345489, -- Script: 'object/tangible/firework/firework_five.iff'
              }
 

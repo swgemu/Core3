@@ -72,7 +72,7 @@ object_draft_schematic_munition_component_warhead_chemical = object_draft_schema
    combineTypes = {0, 0, 0, 0, 1},
    contribution = {100, 100, 100, 100, 100},
 
-   templates { = 
+   templates = {
               1729827693, -- Script: 'object/tangible/component/munition/warhead_chemical.iff'
              }
 

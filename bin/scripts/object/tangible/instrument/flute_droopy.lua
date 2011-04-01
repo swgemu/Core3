@@ -44,7 +44,7 @@
 object_tangible_instrument_flute_droopy = object_tangible_instrument_shared_flute_droopy:new {
 	templateType = INSTRUMENT,
 	instrumentType = 4,
-	
+
 	numberExperimentalProperties = {1, 1, 1, 1},
 	experimentalProperties = {"XX", "XX", "UT", "CD"},
 	experimentalWeights = {1, 1, 1, 1},
@@ -53,6 +53,7 @@ object_tangible_instrument_flute_droopy = object_tangible_instrument_shared_flut
 	experimentalMin = {0, 0, 1000, 1},
 	experimentalMax = {0, 0, 1000, 100},
 	experimentalPrecision = {0, 0, 0, 0},
+
 }
 
 ObjectTemplates:addTemplate(object_tangible_instrument_flute_droopy, "object/tangible/instrument/flute_droopy.iff")

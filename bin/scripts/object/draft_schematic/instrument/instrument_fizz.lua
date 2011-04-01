@@ -72,7 +72,7 @@ object_draft_schematic_instrument_instrument_fizz = object_draft_schematic_instr
    combineTypes = {0, 0},
    contribution = {100, 100},
 
-   templates { = 
+   templates = {
               3009564677, -- Script: 'object/tangible/instrument/fizz.iff'
              }
 

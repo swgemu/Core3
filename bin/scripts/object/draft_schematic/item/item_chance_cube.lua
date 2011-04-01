@@ -72,7 +72,7 @@ object_draft_schematic_item_item_chance_cube = object_draft_schematic_item_share
    combineTypes = {0, 0, 0, 0},
    contribution = {100, 100, 100, 100},
 
-   templates { = 
+   templates = {
               1191840474, -- Script: 'object/tangible/dice/eqp_chance_cube.iff'
              }
 

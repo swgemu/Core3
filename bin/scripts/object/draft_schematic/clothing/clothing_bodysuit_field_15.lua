@@ -72,7 +72,7 @@ object_draft_schematic_clothing_clothing_bodysuit_field_15 = object_draft_schema
    combineTypes = {0, 0, 1},
    contribution = {100, 100, 100},
 
-   templates { = 
+   templates = {
               287562025, -- Script: 'object/tangible/wearables/bodysuit/bodysuit_s15.iff'
              }
 

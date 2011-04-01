@@ -72,7 +72,7 @@ object_draft_schematic_weapon_knuckler_vibro = object_draft_schematic_weapon_sha
    combineTypes = {0, 0, 0, 0, 1},
    contribution = {100, 100, 100, 100, 100},
 
-   templates { = 
+   templates = {
               102348899, -- Script: 'object/weapon/melee/special/vibroknuckler.iff'
              }
 

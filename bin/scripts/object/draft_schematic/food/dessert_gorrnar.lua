@@ -72,7 +72,7 @@ object_draft_schematic_food_dessert_gorrnar = object_draft_schematic_food_shared
    combineTypes = {0, 1, 1, 0, 1},
    contribution = {100, 100, 100, 100, 100},
 
-   templates { = 
+   templates = {
               281064494, -- Script: 'object/tangible/food/crafted/dessert_gorrnar.iff'
              }
 

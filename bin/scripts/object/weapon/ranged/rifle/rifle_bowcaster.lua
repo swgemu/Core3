@@ -42,65 +42,65 @@
 
 
 object_weapon_ranged_rifle_rifle_bowcaster = object_weapon_ranged_rifle_shared_rifle_bowcaster:new {
-	 --  ALL, ALLSEXES, ALLFACTIONS, HUMANOIDS, HUMANOID_FOOTWEAR, HUMANOID_MALES, HUMANOID_FEMALES, HUMANOID_IMPERIALS, HUMANOID_REBELS, WOOKIEES, ITHORIANS, TWILEKS
+	--   ALL, ALLSEXES, ALLFACTIONS, HUMANOIDS, HUMANOID_FOOTWEAR, HUMANOID_MALES, HUMANOID_FEMALES, HUMANOID_IMPERIALS, HUMANOID_REBELS, WOOKIEES, ITHORIANS, TWILEKS
 	playerUseMask = WOOKIEES,
-	
-	 --  RANGEDATTACK, MELEEATTACK, FORCEATTACK, TRAPATTACK, GRENADEATTACK, HEAVYACIDBEAMATTACK,
-	 --  HEAVYLIGHTNINGBEAMATTACK, HEAVYPARTICLEBEAMATTACK, HEAVYROCKETLAUNCHERATTACK, HEAVYLAUNCHERATTACK
+
+	--   RANGEDATTACK, MELEEATTACK, FORCEATTACK, TRAPATTACK, GRENADEATTACK, HEAVYACIDBEAMATTACK,
+	--   HEAVYLIGHTNINGBEAMATTACK, HEAVYPARTICLEBEAMATTACK, HEAVYROCKETLAUNCHERATTACK, HEAVYLAUNCHERATTACK
 	attackType = RANGEDATTACK,
-	
-	 --  ENERGY, KINETIC, ELECTRICITY, STUN, BLAST, HEAT, COLD, ACID, FORCE, LIGHTSABER
+
+	--   ENERGY, KINETIC, ELECTRICITY, STUN, BLAST, HEAT, COLD, ACID, FORCE, LIGHTSABER
 	damageType = ENERGY,
-	
-	 --  NONE, LIGHT, MEDIUM, HEAVY
+
+	--   NONE, LIGHT, MEDIUM, HEAVY
 	armorPiercing = NONE,
-	
-	 --  combat_rangedspecialize_bactarifle, combat_rangedspecialize_rifle, combat_rangedspecialize_pistol, combat_rangedspecialize_heavy, combat_rangedspecialize_carbine
-	 --  combat_meleespecialize_unarmed, combat_meleespecialize_twohand, combat_meleespecialize_polearm, combat_meleespecialize_onehand, combat_general,
-	 --  combat_meleespecialize_twohandlightsaber, combat_meleespecialize_polearmlightsaber, combat_meleespecialize_onehandlightsaber
+
+	--   combat_rangedspecialize_bactarifle, combat_rangedspecialize_rifle, combat_rangedspecialize_pistol, combat_rangedspecialize_heavy, combat_rangedspecialize_carbine
+	--   combat_meleespecialize_unarmed, combat_meleespecialize_twohand, combat_meleespecialize_polearm, combat_meleespecialize_onehand, combat_general,
+	--   combat_meleespecialize_twohandlightsaber, combat_meleespecialize_polearmlightsaber, combat_meleespecialize_onehandlightsaber
 	xpType = "combat_rangedspecialize_rifle",
-	
-	 --  See http://www.ocdsoft.com/files/certifications.xls
+
+	--   See http://www.ocdsoft.com/files/certifications.xls
 	certificationsRequired = { "cert_rifle_bowcaster" },
-	 --  See http://www.ocdsoft.com/files/accuracy.xls
+	--   See http://www.ocdsoft.com/files/accuracy.xls
 	creatureAccuracyModifiers = { "rifle_accuracy" },
-	
-	 --  See http://www.ocdsoft.com/files/defense.xls
+
+	--   See http://www.ocdsoft.com/files/defense.xls
 	defenderDefenseModifiers = { "ranged_defense" },
-	
-	 --  Leave as "dodge" for now, may have additions later
+
+	--   Leave as "dodge" for now, may have additions later
 	defenderSecondaryDefenseModifiers = { "block" },
-	
-	 --  See http://www.ocdsoft.com/files/speed.xls
+
+	--   See http://www.ocdsoft.com/files/speed.xls
 	speedModifiers = { "rifle_speed" },
-	
-	 --  Leave blank for now
+
+	--   Leave blank for now
 	damageModifiers = { },
-	
-	
-	 --  The values below are the default values.  To be used for blue frog objects primarily
+
+
+	--   The values below are the default values.  To be used for blue frog objects primarily
 	healthAttackCost = 34,
 	actionAttackCost = 34,
 	mindAttackCost = 48,
 	forceCost = 0,
-	
+
 	pointBlankAccuracy = 0,
 	pointBlankRange = 0,
-	
+
 	idealRange = 0,
 	idealAccuracy = 0,
-	
+
 	minDamage = 77,
 	maxDamage = 131,
-	
+
 	maxRange = 65,
 	maxRangeAccuracy = 0,
-	
+
 	attackSpeed = 8,
-	
-	
-	
-	
+
+
+
+
 	numberExperimentalProperties = {1, 1, 2, 2, 2, 2, 2, 2, 1, 1, 1, 2, 2, 2, 2},
 	experimentalProperties = {"XX", "XX", "CD", "OQ", "CD", "OQ", "CD", "OQ", "CD", "OQ", "CD", "OQ", "CD", "OQ", "XX", "XX", "XX", "CD", "OQ", "CD", "OQ", "CD", "OQ", "CD", "OQ"},
 	experimentalWeights = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
@@ -109,6 +109,7 @@ object_weapon_ranged_rifle_rifle_bowcaster = object_weapon_ranged_rifle_shared_r
 	experimentalMin = {0, 0, 77, 131, 8, 9, 30, 750, -30, -80, 45, -5, 34, 34, 48},
 	experimentalMax = {0, 0, 130, 234, 5, 17, 65, 1500, -30, -80, 45, 5, 18, 18, 26},
 	experimentalPrecision = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+
 }
 
 ObjectTemplates:addTemplate(object_weapon_ranged_rifle_rifle_bowcaster, "object/weapon/ranged/rifle/rifle_bowcaster.iff")

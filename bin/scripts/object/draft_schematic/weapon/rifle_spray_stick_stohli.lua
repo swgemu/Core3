@@ -72,7 +72,7 @@ object_draft_schematic_weapon_rifle_spray_stick_stohli = object_draft_schematic_
    combineTypes = {0, 0, 0, 1, 1, 1},
    contribution = {100, 100, 100, 100, 100, 100},
 
-   templates { = 
+   templates = {
               2069010987, -- Script: 'object/weapon/ranged/rifle/rifle_spraystick.iff'
              }
 

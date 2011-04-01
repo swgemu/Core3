@@ -42,8 +42,8 @@
 
 
 object_tangible_component_weapon_projectile_rifle_barrel = object_tangible_component_weapon_shared_projectile_rifle_barrel:new {
-	
-	
+
+
 	numberExperimentalProperties = {1, 1, 2, 2, 2, 2, 2, 1, 1, 1, 2},
 	experimentalProperties = {"XX", "XX", "HR", "SR", "HR", "SR", "HR", "SR", "HR", "SR", "HR", "SR", "XX", "XX", "XX", "HR", "SR"},
 	experimentalWeights = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
@@ -52,6 +52,7 @@ object_tangible_component_weapon_projectile_rifle_barrel = object_tangible_compo
 	experimentalMin = {0, 0, 1, 1, 0, 0, 10, 0, 0, 0, 0},
 	experimentalMax = {0, 0, 10, 10, -0.5, 5, 100, 0, 0, 0, 20},
 	experimentalPrecision = {0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0},
+
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_weapon_projectile_rifle_barrel, "object/tangible/component/weapon/projectile_rifle_barrel.iff")

@@ -42,8 +42,8 @@
 
 
 object_tangible_component_droid_le_repair_droid_chassis = object_tangible_component_droid_shared_le_repair_droid_chassis:new {
-	
-	
+
+
 	numberExperimentalProperties = {1, 1, 3, 1, 1, 1, 3, 1, 1, 1, 1, 1, 1, 1},
 	experimentalProperties = {"XX", "XX", "OQ", "SR", "UT", "XX", "XX", "XX", "OQ", "SR", "UT", "OQ", "XX", "XX", "XX", "XX", "XX", "XX"},
 	experimentalWeights = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
@@ -52,6 +52,7 @@ object_tangible_component_droid_le_repair_droid_chassis = object_tangible_compon
 	experimentalMin = {0, 0, 5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
 	experimentalMax = {0, 0, 15, 0, 0, 0, 100, 50, 0, 0, 0, 0, 0, 0},
 	experimentalPrecision = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_droid_le_repair_droid_chassis, "object/tangible/component/droid/le_repair_droid_chassis.iff")

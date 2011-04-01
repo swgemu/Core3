@@ -72,7 +72,7 @@ object_draft_schematic_item_component_item_electronic_control_unit = object_draf
    combineTypes = {0, 0, 0, 0, 0, 0},
    contribution = {100, 100, 100, 100, 100, 100},
 
-   templates { = 
+   templates = {
               625267053, -- Script: 'object/tangible/component/item/electronic_control_unit.iff'
              }
 

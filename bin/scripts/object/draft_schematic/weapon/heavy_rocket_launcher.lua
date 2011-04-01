@@ -72,7 +72,7 @@ object_draft_schematic_weapon_heavy_rocket_launcher = object_draft_schematic_wea
    combineTypes = {0, 0, 0, 1, 0, 1, 1, 1},
    contribution = {100, 100, 100, 100, 100, 100, 100, 100},
 
-   templates { = 
+   templates = {
               3368144786, -- Script: 'object/weapon/ranged/heavy/heavy_rocket_launcher.iff'
              }
 

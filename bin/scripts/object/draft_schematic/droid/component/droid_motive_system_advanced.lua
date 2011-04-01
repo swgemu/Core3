@@ -72,7 +72,7 @@ object_draft_schematic_droid_component_droid_motive_system_advanced = object_dra
    combineTypes = {0, 0, 0, 0, 0, 1},
    contribution = {100, 100, 100, 100, 100, 100},
 
-   templates { = 
+   templates = {
               1479171359, -- Script: 'object/tangible/component/droid/droid_motive_system_advanced.iff'
              }
 

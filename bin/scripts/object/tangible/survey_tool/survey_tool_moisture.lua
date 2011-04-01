@@ -42,19 +42,19 @@
 
 
 object_tangible_survey_tool_survey_tool_moisture = object_tangible_survey_tool_shared_survey_tool_moisture:new {
-	
+
 	templateType = SURVEYTOOL,
-	
+
 	playerUseMask = 65535,
-	
+
 	customizationOptions = {},
 	customizationDefaults = {},
-	
+
 	toolType = 7,
 	toolAnimation = "clienteffect/survey_tool_liquid.cef",
 	sampleAnimation = "clienteffect/survey_sample_liquid.cef",
 	surveyType = "water",
-	
+
 	numberExperimentalProperties = {1, 1, 1, 1},
 	experimentalProperties = {"XX", "XX", "XX", "CD"},
 	experimentalWeights = {1, 1, 1, 1},
@@ -63,5 +63,6 @@ object_tangible_survey_tool_survey_tool_moisture = object_tangible_survey_tool_s
 	experimentalMin = {0, 0, 1000, -15},
 	experimentalMax = {0, 0, 1000, 15},
 	experimentalPrecision = {0, 0, 0, 0},
+
 }
 ObjectTemplates:addTemplate(object_tangible_survey_tool_survey_tool_moisture, "object/tangible/survey_tool/survey_tool_moisture.iff")

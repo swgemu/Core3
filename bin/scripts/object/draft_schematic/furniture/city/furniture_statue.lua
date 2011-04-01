@@ -72,7 +72,7 @@ object_draft_schematic_furniture_city_furniture_statue = object_draft_schematic_
    combineTypes = {0, 0},
    contribution = {100, 100},
 
-   templates { = 
+   templates = {
               311218477, -- Script: 'object/tangible/furniture/city/statue_gungan_head.iff'
              }
 

@@ -72,7 +72,7 @@ object_draft_schematic_clothing_clothing_armor_chitin_bracer_r = object_draft_sc
    combineTypes = {0, 0, 0, 0, 0, 0, 1, 1, 1},
    contribution = {100, 100, 100, 100, 100, 100, 100, 100, 100},
 
-   templates { = 
+   templates = {
               247689044, -- Script: 'object/tangible/wearables/armor/chitin/armor_chitin_s01_bracer_r.iff'
              }
 

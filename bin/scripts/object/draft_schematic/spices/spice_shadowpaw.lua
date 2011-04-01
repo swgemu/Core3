@@ -72,7 +72,7 @@ object_draft_schematic_spices_spice_shadowpaw = object_draft_schematic_spices_sh
    combineTypes = {0, 0},
    contribution = {100, 100},
 
-   templates { = 
+   templates = {
               3911095556, -- Script: 'object/tangible/food/spice/spice_shadowpaw.iff'
              }
 

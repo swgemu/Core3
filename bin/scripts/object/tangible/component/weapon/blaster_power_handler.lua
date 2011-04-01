@@ -42,8 +42,8 @@
 
 
 object_tangible_component_weapon_blaster_power_handler = object_tangible_component_weapon_shared_blaster_power_handler:new {
-	
-	
+
+
 	numberExperimentalProperties = {1, 1, 2, 2, 2, 2},
 	experimentalProperties = {"XX", "XX", "CD", "OQ", "CD", "OQ", "CD", "OQ", "CD", "OQ"},
 	experimentalWeights = {1, 1, 2, 1, 2, 1, 2, 1, 2, 1},
@@ -52,6 +52,7 @@ object_tangible_component_weapon_blaster_power_handler = object_tangible_compone
 	experimentalMin = {0, 0, 1, 1, 0, 10},
 	experimentalMax = {0, 0, 10, 20, -0.5, 100},
 	experimentalPrecision = {0, 0, 0, 0, 1, 0},
+
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_weapon_blaster_power_handler, "object/tangible/component/weapon/blaster_power_handler.iff")

@@ -72,7 +72,7 @@ object_draft_schematic_clothing_component_clothing_synthetic_cloth = object_draf
    combineTypes = {0, 0, 1},
    contribution = {100, 100, 100},
 
-   templates { = 
+   templates = {
               1899204179, -- Script: 'object/tangible/component/clothing/synthetic_cloth.iff'
              }
 

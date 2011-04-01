@@ -72,7 +72,7 @@ object_draft_schematic_spices_spice_booster_blue = object_draft_schematic_spices
    combineTypes = {0, 0, 0},
    contribution = {100, 100, 100},
 
-   templates { = 
+   templates = {
               1672986063, -- Script: 'object/tangible/food/spice/spice_booster_blue.iff'
              }
 

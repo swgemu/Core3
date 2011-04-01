@@ -72,7 +72,7 @@ object_draft_schematic_weapon_rifle_light_blaster_imperial_scout_carbine = objec
    combineTypes = {0, 0, 0, 1, 1, 1, 1},
    contribution = {100, 100, 100, 100, 100, 100, 100},
 
-   templates { = 
+   templates = {
               1778522271, -- Script: 'object/weapon/ranged/carbine/carbine_elite.iff'
              }
 

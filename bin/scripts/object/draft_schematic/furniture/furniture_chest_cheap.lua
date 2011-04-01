@@ -72,7 +72,7 @@ object_draft_schematic_furniture_furniture_chest_cheap = object_draft_schematic_
    combineTypes = {0, 0},
    contribution = {100, 100},
 
-   templates { = 
+   templates = {
               303725605, -- Script: 'object/tangible/furniture/cheap/chest_s01.iff'
              }
 

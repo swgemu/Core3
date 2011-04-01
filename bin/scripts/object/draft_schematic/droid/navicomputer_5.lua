@@ -72,7 +72,7 @@ object_draft_schematic_droid_navicomputer_5 = object_draft_schematic_droid_share
    combineTypes = {0, 0, 0, 0, 0},
    contribution = {100, 100, 100, 100, 100},
 
-   templates { = 
+   templates = {
               2054353411, -- Script: 'object/tangible/droid/navicomputer_5.iff'
              }
 

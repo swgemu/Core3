@@ -72,7 +72,7 @@ object_draft_schematic_weapon_pistol_launcher = object_draft_schematic_weapon_sh
    combineTypes = {0, 0, 0, 1, 1, 1},
    contribution = {100, 100, 100, 100, 100, 100},
 
-   templates { = 
+   templates = {
               1980615506, -- Script: 'object/weapon/ranged/pistol/pistol_launcher.iff'
              }
 

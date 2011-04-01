@@ -72,7 +72,7 @@ object_draft_schematic_chemistry_medpack_revive = object_draft_schematic_chemist
    combineTypes = {0, 0, 1, 1},
    contribution = {100, 100, 100, 100},
 
-   templates { = 
+   templates = {
               794688942, -- Script: 'object/tangible/medicine/crafted/medpack_revive.iff'
              }
 

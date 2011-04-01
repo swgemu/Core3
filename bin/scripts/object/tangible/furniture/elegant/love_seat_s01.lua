@@ -42,8 +42,8 @@
 
 
 object_tangible_furniture_elegant_love_seat_s01 = object_tangible_furniture_elegant_shared_love_seat_s01:new {
-	
-	
+
+
 	numberExperimentalProperties = {1, 1, 1, 2},
 	experimentalProperties = {"XX", "XX", "XX", "DR", "OQ"},
 	experimentalWeights = {1, 1, 1, 1, 1},
@@ -52,6 +52,7 @@ object_tangible_furniture_elegant_love_seat_s01 = object_tangible_furniture_eleg
 	experimentalMin = {0, 0, 1000, 1},
 	experimentalMax = {0, 0, 1000, 100},
 	experimentalPrecision = {0, 0, 0, 0},
+
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_elegant_love_seat_s01, "object/tangible/furniture/elegant/love_seat_s01.iff")

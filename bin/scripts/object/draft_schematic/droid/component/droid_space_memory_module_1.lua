@@ -72,7 +72,7 @@ object_draft_schematic_droid_component_droid_space_memory_module_1 = object_draf
    combineTypes = {0, 0, 0, 0, 1},
    contribution = {100, 100, 100, 100, 100},
 
-   templates { = 
+   templates = {
               628706991, -- Script: 'object/tangible/droid/droid_space_memory_module_1.iff'
              }
 

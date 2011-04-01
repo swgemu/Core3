@@ -72,7 +72,7 @@ object_draft_schematic_clothing_component_clothing_fiberplast_panel = object_dra
    combineTypes = {0, 0},
    contribution = {100, 100},
 
-   templates { = 
+   templates = {
               300281711, -- Script: 'object/tangible/component/clothing/fiberplast_panel.iff'
              }
 

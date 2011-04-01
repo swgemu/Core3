@@ -72,7 +72,7 @@ object_draft_schematic_armor_armor_segment_zam = object_draft_schematic_armor_sh
    combineTypes = {0, 0, 1},
    contribution = {100, 100, 100},
 
-   templates { = 
+   templates = {
               1804298795, -- Script: 'object/tangible/component/armor/armor_segment_zam.iff'
              }
 

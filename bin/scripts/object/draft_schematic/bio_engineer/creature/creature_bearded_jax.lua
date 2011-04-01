@@ -72,7 +72,7 @@ object_draft_schematic_bio_engineer_creature_creature_bearded_jax = object_draft
    combineTypes = {1, 0, 0},
    contribution = {100, 100, 100},
 
-   templates { = 
+   templates = {
               121209143, -- Script: 'object/tangible/deed/pet_deed/bearded_jax_deed.iff'
              }
 

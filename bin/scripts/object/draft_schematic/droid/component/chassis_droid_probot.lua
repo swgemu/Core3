@@ -72,7 +72,7 @@ object_draft_schematic_droid_component_chassis_droid_probot = object_draft_schem
    combineTypes = {0, 0, 0, 1, 1, 1, 1, 1},
    contribution = {100, 100, 100, 100, 100, 100, 100, 100},
 
-   templates { = 
+   templates = {
               1492711008, -- Script: 'object/tangible/component/droid/probot_droid_chassis.iff'
              }
 

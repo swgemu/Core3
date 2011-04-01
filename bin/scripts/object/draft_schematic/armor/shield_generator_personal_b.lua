@@ -72,7 +72,7 @@ object_draft_schematic_armor_shield_generator_personal_b = object_draft_schemati
    combineTypes = {0, 0, 0, 1, 1, 1, 1, 1, 1},
    contribution = {100, 100, 100, 100, 100, 100, 100, 100, 100},
 
-   templates { = 
+   templates = {
               4256080763, -- Script: 'object/tangible/component/armor/shield_generator_personal_b.iff'
              }
 

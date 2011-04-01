@@ -72,7 +72,7 @@ object_draft_schematic_clothing_clothing_armor_padded_bicep_r = object_draft_sch
    combineTypes = {0, 0, 0, 0, 0, 0, 1, 1, 1},
    contribution = {100, 100, 100, 100, 100, 100, 100, 100, 100},
 
-   templates { = 
+   templates = {
               1871505314, -- Script: 'object/tangible/wearables/armor/padded/armor_padded_s01_bicep_r.iff'
              }
 

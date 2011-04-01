@@ -72,7 +72,7 @@ object_draft_schematic_clothing_clothing_jewelry_ring_01 = object_draft_schemati
    combineTypes = {0, 0, 1},
    contribution = {100, 100, 100},
 
-   templates { = 
+   templates = {
               2106144434, -- Script: 'object/tangible/wearables/ring/ring_s01.iff'
              }
 

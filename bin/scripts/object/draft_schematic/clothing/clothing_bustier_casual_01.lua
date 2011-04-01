@@ -72,7 +72,7 @@ object_draft_schematic_clothing_clothing_bustier_casual_01 = object_draft_schema
    combineTypes = {1, 0, 0},
    contribution = {100, 100, 100},
 
-   templates { = 
+   templates = {
               4217226906, -- Script: 'object/tangible/wearables/bustier/bustier_s01.iff'
              }
 

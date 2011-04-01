@@ -72,7 +72,7 @@ object_draft_schematic_food_drink_alcohol = object_draft_schematic_food_shared_d
    combineTypes = {0},
    contribution = {100},
 
-   templates { = 
+   templates = {
               181145794, -- Script: 'object/tangible/food/crafted/drink_alcohol.iff'
              }
 
