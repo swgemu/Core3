@@ -72,15 +72,9 @@ object_draft_schematic_structure_component_structure_generator_turbine = object_
    combineTypes = {0, 0, 0, 0, 0, 0, 0},
    contribution = {100, 100, 100, 100, 100, 100, 100},
 
-   numberExperimentalProperties = {1, 1, 1},
-   experimentalProperties = {"XX", "XX", "UT"},
-   experimentalWeights = {1, 1, 1},
-   experimentalGroupTitles = {"null", "null", "null"},
-   experimentalSubGroupTitles = {"null", "null", "hitpoints"},
-   experimentalMin = {0, 0, 1000},
-   experimentalMax = {0, 0, 5000},
-   experimentalPrecision = {0, 0, 0},
+   templates { = 
+              3265938450, -- Script: 'object/tangible/component/structure/generator_turbine.iff'
+             }
 
-   tanoCRC = 3265938450, -- Script: 'object/tangible/component/structure/generator_turbine.iff'
 }
 ObjectTemplates:addTemplate(object_draft_schematic_structure_component_structure_generator_turbine, "object/draft_schematic/structure/component/structure_generator_turbine.iff")

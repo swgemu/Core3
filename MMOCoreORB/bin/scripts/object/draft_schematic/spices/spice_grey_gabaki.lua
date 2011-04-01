@@ -72,15 +72,9 @@ object_draft_schematic_spices_spice_grey_gabaki = object_draft_schematic_spices_
    combineTypes = {0, 0},
    contribution = {100, 100},
 
-   numberExperimentalProperties = {1, 1, 1},
-   experimentalProperties = {"XX", "XX", "XX"},
-   experimentalWeights = {1, 1, 1},
-   experimentalGroupTitles = {"null", "null", "null"},
-   experimentalSubGroupTitles = {"null", "null", "hitpoints"},
-   experimentalMin = {0, 0, 1000},
-   experimentalMax = {0, 0, 1000},
-   experimentalPrecision = {0, 0, 0},
+   templates { = 
+              649015964, -- Script: 'object/tangible/food/spice/spice_grey_gabaki.iff'
+             }
 
-   tanoCRC = 649015964, -- Script: 'object/tangible/food/spice/spice_grey_gabaki.iff'
 }
 ObjectTemplates:addTemplate(object_draft_schematic_spices_spice_grey_gabaki, "object/draft_schematic/spices/spice_grey_gabaki.iff")

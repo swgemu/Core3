@@ -72,15 +72,9 @@ object_draft_schematic_clothing_component_clothing_trim = object_draft_schematic
    combineTypes = {0, 0},
    contribution = {100, 100},
 
-   numberExperimentalProperties = {1, 1, 1},
-   experimentalProperties = {"XX", "XX", "XX"},
-   experimentalWeights = {1, 1, 1},
-   experimentalGroupTitles = {"null", "null", "null"},
-   experimentalSubGroupTitles = {"null", "null", "hitpoints"},
-   experimentalMin = {0, 0, 1000},
-   experimentalMax = {0, 0, 1000},
-   experimentalPrecision = {0, 0, 0},
+   templates { = 
+              1645938657, -- Script: 'object/tangible/component/clothing/trim.iff'
+             }
 
-   tanoCRC = 1645938657, -- Script: 'object/tangible/component/clothing/trim.iff'
 }
 ObjectTemplates:addTemplate(object_draft_schematic_clothing_component_clothing_trim, "object/draft_schematic/clothing/component/clothing_trim.iff")

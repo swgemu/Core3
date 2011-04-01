@@ -72,15 +72,9 @@ object_draft_schematic_structure_naboo_house_player_small = object_draft_schemat
    combineTypes = {0, 0, 0, 1, 1, 1},
    contribution = {100, 100, 100, 100, 100, 100},
 
-   numberExperimentalProperties = {1, 1, 1},
-   experimentalProperties = {"XX", "XX", "DR"},
-   experimentalWeights = {1, 1, 1},
-   experimentalGroupTitles = {"null", "null", "exp_durability"},
-   experimentalSubGroupTitles = {"null", "null", "hitpoints"},
-   experimentalMin = {0, 0, 21000},
-   experimentalMax = {0, 0, 39000},
-   experimentalPrecision = {0, 0, 0},
+   templates { = 
+              1758566085, -- Script: 'object/tangible/deed/naboo/player_house_deed/naboo_house_small_deed.iff'
+             }
 
-   tanoCRC = 1758566085, -- Script: 'object/tangible/deed/naboo/player_house_deed/naboo_house_small_deed.iff'
 }
 ObjectTemplates:addTemplate(object_draft_schematic_structure_naboo_house_player_small, "object/draft_schematic/structure/naboo_house_player_small.iff")

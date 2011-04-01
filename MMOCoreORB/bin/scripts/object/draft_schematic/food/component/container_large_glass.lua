@@ -72,15 +72,9 @@ object_draft_schematic_food_component_container_large_glass = object_draft_schem
    combineTypes = {0},
    contribution = {100},
 
-   numberExperimentalProperties = {1, 1, 1},
-   experimentalProperties = {"XX", "XX", "XX"},
-   experimentalWeights = {1, 1, 1},
-   experimentalGroupTitles = {"null", "null", "null"},
-   experimentalSubGroupTitles = {"null", "null", "quantity_bonus"},
-   experimentalMin = {0, 0, 2},
-   experimentalMax = {0, 0, 2},
-   experimentalPrecision = {0, 0, 0},
+   templates { = 
+              1167030670, -- Script: 'object/tangible/component/food/container_large_glass.iff'
+             }
 
-   tanoCRC = 1167030670, -- Script: 'object/tangible/component/food/container_large_glass.iff'
 }
 ObjectTemplates:addTemplate(object_draft_schematic_food_component_container_large_glass, "object/draft_schematic/food/component/container_large_glass.iff")

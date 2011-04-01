@@ -43,6 +43,14 @@
 
 object_tangible_medicine_pet_pet_vitapack_a = object_tangible_medicine_pet_shared_pet_vitapack_a:new {
 
+	numberExperimentalProperties = {1, 1, 1, 1, 1},
+	experimentalProperties = {"XX", "XX", "XX", "XX", "XX"},
+	experimentalWeights = {1, 1, 1, 1, 1},
+	experimentalGroupTitles = {"null", "null", "exp_effectiveness", "null", "null"},
+	experimentalSubGroupTitles = {"null", "null", "strength", "decayrate", "hitpoints"},
+	experimentalMin = {0, 0, 10, 15, 1000},
+	experimentalMax = {0, 0, 40, 15, 1000},
+	experimentalPrecision = {0, 0, 0, 0, 0},
 }
 
 ObjectTemplates:addTemplate(object_tangible_medicine_pet_pet_vitapack_a, "object/tangible/medicine/pet/pet_vitapack_a.iff")

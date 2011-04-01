@@ -72,15 +72,9 @@ object_draft_schematic_item_item_space_station = object_draft_schematic_item_sha
    combineTypes = {0, 0, 1, 1, 1},
    contribution = {100, 100, 100, 100, 100},
 
-   numberExperimentalProperties = {1, 1, 1, 1},
-   experimentalProperties = {"XX", "XX", "XX", "CD"},
-   experimentalWeights = {1, 1, 1, 1},
-   experimentalGroupTitles = {"null", "null", "null", "exp_effectiveness"},
-   experimentalSubGroupTitles = {"null", "null", "hitpoints", "usemodifier"},
-   experimentalMin = {0, 0, 1000, -15},
-   experimentalMax = {0, 0, 1000, 15},
-   experimentalPrecision = {0, 0, 0, 0},
+   templates { = 
+              2102867079, -- Script: 'object/tangible/crafting/station/space_station.iff'
+             }
 
-   tanoCRC = 2102867079, -- Script: 'object/tangible/crafting/station/space_station.iff'
 }
 ObjectTemplates:addTemplate(object_draft_schematic_item_item_space_station, "object/draft_schematic/item/item_space_station.iff")

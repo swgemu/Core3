@@ -72,15 +72,9 @@ object_draft_schematic_bio_engineer_utilities_pet_vitapack_b = object_draft_sche
    combineTypes = {0, 0, 1, 1},
    contribution = {100, 100, 100, 100},
 
-   numberExperimentalProperties = {1, 1, 1, 1, 1},
-   experimentalProperties = {"XX", "XX", "XX", "XX", "XX"},
-   experimentalWeights = {1, 1, 1, 1, 1},
-   experimentalGroupTitles = {"null", "null", "exp_effectiveness", "null", "null"},
-   experimentalSubGroupTitles = {"null", "null", "strength", "decayrate", "hitpoints"},
-   experimentalMin = {0, 0, 25, 15, 1000},
-   experimentalMax = {0, 0, 70, 15, 1000},
-   experimentalPrecision = {0, 0, 0, 0, 0},
+   templates { = 
+              1330259587, -- Script: 'object/tangible/medicine/pet/pet_vitapack_b.iff'
+             }
 
-   tanoCRC = 1330259587, -- Script: 'object/tangible/medicine/pet/pet_vitapack_b.iff'
 }
 ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_utilities_pet_vitapack_b, "object/draft_schematic/bio_engineer/utilities/pet_vitapack_b.iff")

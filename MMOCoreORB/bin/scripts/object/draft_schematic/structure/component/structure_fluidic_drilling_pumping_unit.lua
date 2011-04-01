@@ -72,15 +72,9 @@ object_draft_schematic_structure_component_structure_fluidic_drilling_pumping_un
    combineTypes = {0, 0, 0, 0, 0},
    contribution = {100, 100, 100, 100, 100},
 
-   numberExperimentalProperties = {1, 1, 1, 3},
-   experimentalProperties = {"XX", "XX", "XX", "HR", "SR", "UT"},
-   experimentalWeights = {1, 1, 1, 1, 1, 2},
-   experimentalGroupTitles = {"null", "null", "null", "expEffeciency"},
-   experimentalSubGroupTitles = {"null", "null", "hitpoints", "extractrate"},
-   experimentalMin = {0, 0, 1000, 1},
-   experimentalMax = {0, 0, 5000, 5},
-   experimentalPrecision = {0, 0, 0, 0},
+   templates { = 
+              521645928, -- Script: 'object/tangible/component/structure/fluidic_drilling_pumping_unit.iff'
+             }
 
-   tanoCRC = 521645928, -- Script: 'object/tangible/component/structure/fluidic_drilling_pumping_unit.iff'
 }
 ObjectTemplates:addTemplate(object_draft_schematic_structure_component_structure_fluidic_drilling_pumping_unit, "object/draft_schematic/structure/component/structure_fluidic_drilling_pumping_unit.iff")

@@ -72,15 +72,9 @@ object_draft_schematic_weapon_component_blaster_power_handler = object_draft_sch
    combineTypes = {0, 0, 0, 0, 0, 1},
    contribution = {100, 100, 100, 100, 100, 100},
 
-   numberExperimentalProperties = {1, 1, 2, 2, 2, 2},
-   experimentalProperties = {"XX", "XX", "CD", "OQ", "CD", "OQ", "CD", "OQ", "CD", "OQ"},
-   experimentalWeights = {1, 1, 2, 1, 2, 1, 2, 1, 2, 1},
-   experimentalGroupTitles = {"null", "null", "expDamage", "expDamage", "expDamage", "exp_durability"},
-   experimentalSubGroupTitles = {"null", "null", "mindamage", "maxdamage", "attackspeed", "hitpoints"},
-   experimentalMin = {0, 0, 1, 1, 0, 10},
-   experimentalMax = {0, 0, 10, 20, -0.5, 100},
-   experimentalPrecision = {0, 0, 0, 0, 1, 0},
+   templates { = 
+              702649693, -- Script: 'object/tangible/component/weapon/blaster_power_handler.iff'
+             }
 
-   tanoCRC = 702649693, -- Script: 'object/tangible/component/weapon/blaster_power_handler.iff'
 }
 ObjectTemplates:addTemplate(object_draft_schematic_weapon_component_blaster_power_handler, "object/draft_schematic/weapon/component/blaster_power_handler.iff")

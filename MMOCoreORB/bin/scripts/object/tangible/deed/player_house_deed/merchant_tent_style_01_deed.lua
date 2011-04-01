@@ -44,7 +44,15 @@
 object_tangible_deed_player_house_deed_merchant_tent_style_01_deed = object_tangible_deed_player_house_deed_shared_merchant_tent_style_01_deed:new {
 	templateType = DEED,
 	gameObjectType = 8388609,
-	generatedObjectTemplate = "object/building/player/player_merchant_tent_style_01.iff"
+	generatedObjectTemplate = "object/building/player/player_merchant_tent_style_01.iff",
+	numberExperimentalProperties = {1, 1, 1},
+	experimentalProperties = {"XX", "XX", "DR"},
+	experimentalWeights = {1, 1, 1},
+	experimentalGroupTitles = {"null", "null", "exp_durability"},
+	experimentalSubGroupTitles = {"null", "null", "hitpoints"},
+	experimentalMin = {0, 0, 21000},
+	experimentalMax = {0, 0, 39000},
+	experimentalPrecision = {0, 0, 0},
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_player_house_deed_merchant_tent_style_01_deed, "object/tangible/deed/player_house_deed/merchant_tent_style_01_deed.iff")

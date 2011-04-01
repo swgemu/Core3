@@ -72,15 +72,9 @@ object_draft_schematic_food_dish_veghash = object_draft_schematic_food_shared_di
    combineTypes = {1, 0, 0, 0, 1},
    contribution = {100, 100, 100, 100, 100},
 
-   numberExperimentalProperties = {1, 1, 1, 2, 2, 2, 2},
-   experimentalProperties = {"XX", "XX", "XX", "OQ", "PE", "FL", "OQ", "DR", "PE", "DR", "OQ"},
-   experimentalWeights = {1, 1, 1, 1, 2, 2, 1, 1, 3, 3, 1},
-   experimentalGroupTitles = {"null", "null", "null", "exp_nutrition", "exp_flavor", "exp_quantity", "exp_filling"},
-   experimentalSubGroupTitles = {"null", "null", "hitpoints", "nutrition", "flavor", "quantity", "filling"},
-   experimentalMin = {0, 0, 1000, 75, 60, 60, 80},
-   experimentalMax = {0, 0, 1000, 120, 120, 100, 120},
-   experimentalPrecision = {0, 0, 0, 10, 10, 10, 10},
+   templates { = 
+              1602372839, -- Script: 'object/tangible/food/crafted/dish_veghash.iff'
+             }
 
-   tanoCRC = 1602372839, -- Script: 'object/tangible/food/crafted/dish_veghash.iff'
 }
 ObjectTemplates:addTemplate(object_draft_schematic_food_dish_veghash, "object/draft_schematic/food/dish_veghash.iff")

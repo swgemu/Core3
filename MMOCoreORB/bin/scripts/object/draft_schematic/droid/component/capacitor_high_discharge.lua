@@ -72,15 +72,9 @@ object_draft_schematic_droid_component_capacitor_high_discharge = object_draft_s
    combineTypes = {0, 0, 0},
    contribution = {100, 100, 100},
 
-   numberExperimentalProperties = {1, 1, 3, 1},
-   experimentalProperties = {"XX", "XX", "CD", "OQ", "PE", "XX"},
-   experimentalWeights = {1, 1, 1, 1, 2, 1},
-   experimentalGroupTitles = {"null", "null", "exp_effectiveness", "null"},
-   experimentalSubGroupTitles = {"null", "null", "energy", "hitpoints"},
-   experimentalMin = {0, 0, 30, 1000},
-   experimentalMax = {0, 0, 150, 1000},
-   experimentalPrecision = {0, 0, 0, 0},
+   templates { = 
+              2701467545, -- Script: 'object/tangible/component/droid/repair/capacitor_high_discharge.iff'
+             }
 
-   tanoCRC = 2701467545, -- Script: 'object/tangible/component/droid/repair/capacitor_high_discharge.iff'
 }
 ObjectTemplates:addTemplate(object_draft_schematic_droid_component_capacitor_high_discharge, "object/draft_schematic/droid/component/capacitor_high_discharge.iff")

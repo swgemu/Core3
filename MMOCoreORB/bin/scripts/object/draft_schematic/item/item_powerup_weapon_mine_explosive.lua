@@ -72,15 +72,9 @@ object_draft_schematic_item_item_powerup_weapon_mine_explosive = object_draft_sc
    combineTypes = {0, 0},
    contribution = {100, 100},
 
-   numberExperimentalProperties = {1, 1, 1, 2},
-   experimentalProperties = {"XX", "XX", "XX", "CD", "OQ"},
-   experimentalWeights = {1, 1, 1, 2, 1},
-   experimentalGroupTitles = {"null", "null", "null", "exp_effectiveness"},
-   experimentalSubGroupTitles = {"null", "null", "hitpoints", "effect"},
-   experimentalMin = {0, 0, 1000, 1},
-   experimentalMax = {0, 0, 1000, 100},
-   experimentalPrecision = {0, 0, 0, 0},
+   templates { = 
+              2177419691, -- Script: 'object/tangible/powerup/weapon/mine_explosive.iff'
+             }
 
-   tanoCRC = 2177419691, -- Script: 'object/tangible/powerup/weapon/mine_explosive.iff'
 }
 ObjectTemplates:addTemplate(object_draft_schematic_item_item_powerup_weapon_mine_explosive, "object/draft_schematic/item/item_powerup_weapon_mine_explosive.iff")

@@ -72,15 +72,9 @@ object_draft_schematic_item_craftable_bug_habitat = object_draft_schematic_item_
    combineTypes = {0, 0, 1},
    contribution = {100, 100, 100},
 
-   numberExperimentalProperties = {1, 1, 1},
-   experimentalProperties = {"XX", "XX", "XX"},
-   experimentalWeights = {1, 1, 1},
-   experimentalGroupTitles = {"null", "null", "null"},
-   experimentalSubGroupTitles = {"null", "null", "hitpoints"},
-   experimentalMin = {0, 0, 1000},
-   experimentalMax = {0, 0, 1000},
-   experimentalPrecision = {0, 0, 0},
+   templates { = 
+              2142449639, -- Script: 'object/tangible/bug_jar/craftable_bug_habitat.iff'
+             }
 
-   tanoCRC = 2142449639, -- Script: 'object/tangible/bug_jar/craftable_bug_habitat.iff'
 }
 ObjectTemplates:addTemplate(object_draft_schematic_item_craftable_bug_habitat, "object/draft_schematic/item/craftable_bug_habitat.iff")

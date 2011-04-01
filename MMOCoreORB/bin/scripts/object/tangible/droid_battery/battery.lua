@@ -43,6 +43,14 @@
 
 object_tangible_droid_battery_battery = object_tangible_droid_battery_shared_battery:new {
 
+	numberExperimentalProperties = {1, 1, 1, 1},
+	experimentalProperties = {"XX", "XX", "XX", "CD"},
+	experimentalWeights = {1, 1, 1, 1},
+	experimentalGroupTitles = {"null", "null", "null", "exp_quality"},
+	experimentalSubGroupTitles = {"null", "null", "hitpoints", "charge"},
+	experimentalMin = {0, 0, 1000, 1},
+	experimentalMax = {0, 0, 1000, 5},
+	experimentalPrecision = {0, 0, 0, 0},
 }
 
 ObjectTemplates:addTemplate(object_tangible_droid_battery_battery, "object/tangible/droid_battery/battery.iff")

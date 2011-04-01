@@ -72,15 +72,9 @@ object_draft_schematic_space_repair_engine_repair_kit = object_draft_schematic_s
    combineTypes = {0, 0},
    contribution = {100, 100},
 
-   numberExperimentalProperties = {1, 1, 1},
-   experimentalProperties = {"XX", "XX", "XX"},
-   experimentalWeights = {1, 1, 1},
-   experimentalGroupTitles = {"null", "null", "exp_repaircharges"},
-   experimentalSubGroupTitles = {"null", "null", "repaircharges"},
-   experimentalMin = {0, 0, 8000},
-   experimentalMax = {0, 0, 12000},
-   experimentalPrecision = {0, 0, 0},
+   templates { = 
+              1455294754, -- Script: 'object/tangible/ship/crafted/repair/repair_kit_engine.iff'
+             }
 
-   tanoCRC = 1455294754, -- Script: 'object/tangible/ship/crafted/repair/repair_kit_engine.iff'
 }
 ObjectTemplates:addTemplate(object_draft_schematic_space_repair_engine_repair_kit, "object/draft_schematic/space/repair/engine_repair_kit.iff")

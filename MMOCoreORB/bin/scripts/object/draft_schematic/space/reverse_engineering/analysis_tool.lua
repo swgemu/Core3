@@ -72,15 +72,9 @@ object_draft_schematic_space_reverse_engineering_analysis_tool = object_draft_sc
    combineTypes = {0, 0},
    contribution = {100, 100},
 
-   numberExperimentalProperties = {1, 1, 2},
-   experimentalProperties = {"XX", "XX", "CD", "OQ"},
-   experimentalWeights = {1, 1, 1, 1},
-   experimentalGroupTitles = {"null", "null", "exp_charges"},
-   experimentalSubGroupTitles = {"null", "null", "charges"},
-   experimentalMin = {0, 0, 5},
-   experimentalMax = {0, 0, 20},
-   experimentalPrecision = {0, 0, 0},
+   templates { = 
+              368231243, -- Script: 'object/tangible/ship/crafted/reverse_engineering/analysis_tool.iff'
+             }
 
-   tanoCRC = 368231243, -- Script: 'object/tangible/ship/crafted/reverse_engineering/analysis_tool.iff'
 }
 ObjectTemplates:addTemplate(object_draft_schematic_space_reverse_engineering_analysis_tool, "object/draft_schematic/space/reverse_engineering/analysis_tool.iff")

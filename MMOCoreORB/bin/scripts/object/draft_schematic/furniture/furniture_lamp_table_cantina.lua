@@ -72,15 +72,9 @@ object_draft_schematic_furniture_furniture_lamp_table_cantina = object_draft_sch
    combineTypes = {0, 0, 0},
    contribution = {100, 100, 100},
 
-   numberExperimentalProperties = {1, 1, 1, 1},
-   experimentalProperties = {"XX", "XX", "XX", "XX"},
-   experimentalWeights = {1, 1, 1, 1},
-   experimentalGroupTitles = {"null", "null", "null", "exp_quality"},
-   experimentalSubGroupTitles = {"null", "null", "hitpoints", "quality"},
-   experimentalMin = {0, 0, 1000, 1},
-   experimentalMax = {0, 0, 1000, 100},
-   experimentalPrecision = {0, 0, 0, 0},
+   templates { = 
+              2345066053, -- Script: 'object/tangible/furniture/all/frn_all_lamp_tatt_s01.iff'
+             }
 
-   tanoCRC = 2345066053, -- Script: 'object/tangible/furniture/all/frn_all_lamp_tatt_s01.iff'
 }
 ObjectTemplates:addTemplate(object_draft_schematic_furniture_furniture_lamp_table_cantina, "object/draft_schematic/furniture/furniture_lamp_table_cantina.iff")

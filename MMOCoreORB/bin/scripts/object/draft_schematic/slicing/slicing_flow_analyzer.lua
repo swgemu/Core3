@@ -72,15 +72,9 @@ object_draft_schematic_slicing_slicing_flow_analyzer = object_draft_schematic_sl
    combineTypes = {0, 0, 0},
    contribution = {100, 100, 100},
 
-   numberExperimentalProperties = {1, 1, 1, 1},
-   experimentalProperties = {"XX", "XX", "XX", "CD"},
-   experimentalWeights = {1, 1, 1, 1},
-   experimentalGroupTitles = {"null", "null", "null", "exp_effectiveness"},
-   experimentalSubGroupTitles = {"null", "null", "hitpoints", "usemodifier"},
-   experimentalMin = {0, 0, 1000, -15},
-   experimentalMax = {0, 0, 1000, 15},
-   experimentalPrecision = {0, 0, 0, 0},
+   templates { = 
+              3083691712, -- Script: 'object/tangible/slicing/slicing_flow_analyzer.iff'
+             }
 
-   tanoCRC = 3083691712, -- Script: 'object/tangible/slicing/slicing_flow_analyzer.iff'
 }
 ObjectTemplates:addTemplate(object_draft_schematic_slicing_slicing_flow_analyzer, "object/draft_schematic/slicing/slicing_flow_analyzer.iff")

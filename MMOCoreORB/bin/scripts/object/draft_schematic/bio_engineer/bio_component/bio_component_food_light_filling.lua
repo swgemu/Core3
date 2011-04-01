@@ -72,15 +72,9 @@ object_draft_schematic_bio_engineer_bio_component_bio_component_food_light_filli
    combineTypes = {0, 0, 0, 1},
    contribution = {100, 100, 100, 100},
 
-   numberExperimentalProperties = {1, 1, 1, 3},
-   experimentalProperties = {"XX", "XX", "XX", "FL", "OQ", "PE"},
-   experimentalWeights = {1, 1, 1, 1, 2, 2},
-   experimentalGroupTitles = {"null", "null", "null", "exp_filling"},
-   experimentalSubGroupTitles = {"null", "null", "hitpoints", "add_filling"},
-   experimentalMin = {0, 0, 1000, 5},
-   experimentalMax = {0, 0, 1000, 15},
-   experimentalPrecision = {0, 0, 0, 0},
+   templates { = 
+              1502763095, -- Script: 'object/tangible/component/bio/bio_component_food_light_filling.iff'
+             }
 
-   tanoCRC = 1502763095, -- Script: 'object/tangible/component/bio/bio_component_food_light_filling.iff'
 }
 ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_bio_component_bio_component_food_light_filling, "object/draft_schematic/bio_engineer/bio_component/bio_component_food_light_filling.iff")

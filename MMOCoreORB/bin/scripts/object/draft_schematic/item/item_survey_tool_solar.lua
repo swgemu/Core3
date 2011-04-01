@@ -72,15 +72,9 @@ object_draft_schematic_item_item_survey_tool_solar = object_draft_schematic_item
    combineTypes = {0, 0, 0},
    contribution = {100, 100, 100},
 
-   numberExperimentalProperties = {1, 1, 1, 1},
-   experimentalProperties = {"XX", "XX", "XX", "CD"},
-   experimentalWeights = {1, 1, 1, 1},
-   experimentalGroupTitles = {"null", "null", "null", "exp_effectiveness"},
-   experimentalSubGroupTitles = {"null", "null", "hitpoints", "usemodifier"},
-   experimentalMin = {0, 0, 1000, -15},
-   experimentalMax = {0, 0, 1000, 15},
-   experimentalPrecision = {0, 0, 0, 0},
+   templates { = 
+              2609023122, -- Script: 'object/tangible/survey_tool/survey_tool_solar.iff'
+             }
 
-   tanoCRC = 2609023122, -- Script: 'object/tangible/survey_tool/survey_tool_solar.iff'
 }
 ObjectTemplates:addTemplate(object_draft_schematic_item_item_survey_tool_solar, "object/draft_schematic/item/item_survey_tool_solar.iff")

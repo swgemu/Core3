@@ -72,15 +72,9 @@ object_draft_schematic_instrument_instrument_slitherhorn = object_draft_schemati
    combineTypes = {0, 0},
    contribution = {100, 100},
 
-   numberExperimentalProperties = {1, 1, 1, 1},
-   experimentalProperties = {"XX", "XX", "UT", "CD"},
-   experimentalWeights = {1, 1, 1, 1},
-   experimentalGroupTitles = {"null", "null", "null", "exp_quality"},
-   experimentalSubGroupTitles = {"null", "null", "hitpoints", "quality"},
-   experimentalMin = {0, 0, 1000, 1},
-   experimentalMax = {0, 0, 1000, 100},
-   experimentalPrecision = {0, 0, 0, 0},
+   templates { = 
+              1194649487, -- Script: 'object/tangible/instrument/slitherhorn.iff'
+             }
 
-   tanoCRC = 1194649487, -- Script: 'object/tangible/instrument/slitherhorn.iff'
 }
 ObjectTemplates:addTemplate(object_draft_schematic_instrument_instrument_slitherhorn, "object/draft_schematic/instrument/instrument_slitherhorn.iff")

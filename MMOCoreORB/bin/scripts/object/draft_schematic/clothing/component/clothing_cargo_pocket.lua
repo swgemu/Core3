@@ -72,15 +72,9 @@ object_draft_schematic_clothing_component_clothing_cargo_pocket = object_draft_s
    combineTypes = {0, 0},
    contribution = {100, 100},
 
-   numberExperimentalProperties = {1, 1, 1},
-   experimentalProperties = {"XX", "XX", "XX"},
-   experimentalWeights = {1, 1, 1},
-   experimentalGroupTitles = {"null", "null", "null"},
-   experimentalSubGroupTitles = {"null", "null", "hitpoints"},
-   experimentalMin = {0, 0, 1000},
-   experimentalMax = {0, 0, 1000},
-   experimentalPrecision = {0, 0, 0},
+   templates { = 
+              1125237674, -- Script: 'object/tangible/component/clothing/cargo_pocket.iff'
+             }
 
-   tanoCRC = 1125237674, -- Script: 'object/tangible/component/clothing/cargo_pocket.iff'
 }
 ObjectTemplates:addTemplate(object_draft_schematic_clothing_component_clothing_cargo_pocket, "object/draft_schematic/clothing/component/clothing_cargo_pocket.iff")

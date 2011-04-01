@@ -72,15 +72,9 @@ object_draft_schematic_instrument_component_dual_wave_synthesizer = object_draft
    combineTypes = {0, 0, 0},
    contribution = {100, 100, 100},
 
-   numberExperimentalProperties = {1, 1, 1},
-   experimentalProperties = {"XX", "XX", "XX"},
-   experimentalWeights = {1, 1, 1},
-   experimentalGroupTitles = {"null", "null", "null"},
-   experimentalSubGroupTitles = {"null", "null", "hitpoints"},
-   experimentalMin = {0, 0, 1000},
-   experimentalMax = {0, 0, 1000},
-   experimentalPrecision = {0, 0, 0},
+   templates { = 
+              89531137, -- Script: 'object/tangible/component/instrument/dual_wave_synthesizer.iff'
+             }
 
-   tanoCRC = 89531137, -- Script: 'object/tangible/component/instrument/dual_wave_synthesizer.iff'
 }
 ObjectTemplates:addTemplate(object_draft_schematic_instrument_component_dual_wave_synthesizer, "object/draft_schematic/instrument/component/dual_wave_synthesizer.iff")

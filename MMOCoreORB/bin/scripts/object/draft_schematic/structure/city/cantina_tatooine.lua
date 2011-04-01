@@ -72,15 +72,9 @@ object_draft_schematic_structure_city_cantina_tatooine = object_draft_schematic_
    combineTypes = {0, 0, 0, 1, 1, 1},
    contribution = {100, 100, 100, 100, 100, 100},
 
-   numberExperimentalProperties = {1, 1, 1},
-   experimentalProperties = {"XX", "XX", "DR"},
-   experimentalWeights = {1, 1, 1},
-   experimentalGroupTitles = {"null", "null", "exp_durability"},
-   experimentalSubGroupTitles = {"null", "null", "hitpoints"},
-   experimentalMin = {0, 0, 35000},
-   experimentalMax = {0, 0, 75000},
-   experimentalPrecision = {0, 0, 0},
+   templates { = 
+              3769764090, -- Script: 'object/tangible/deed/city_deed/cantina_tatooine_deed.iff'
+             }
 
-   tanoCRC = 3769764090, -- Script: 'object/tangible/deed/city_deed/cantina_tatooine_deed.iff'
 }
 ObjectTemplates:addTemplate(object_draft_schematic_structure_city_cantina_tatooine, "object/draft_schematic/structure/city/cantina_tatooine.iff")

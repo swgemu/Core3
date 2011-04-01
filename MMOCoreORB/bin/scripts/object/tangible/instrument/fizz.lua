@@ -43,7 +43,15 @@
 
 object_tangible_instrument_fizz = object_tangible_instrument_shared_fizz:new {
 	templateType = INSTRUMENT,
-	instrumentType = 6
+	instrumentType = 6,
+	numberExperimentalProperties = {1, 1, 1, 1},
+	experimentalProperties = {"XX", "XX", "UT", "CD"},
+	experimentalWeights = {1, 1, 1, 1},
+	experimentalGroupTitles = {"null", "null", "null", "exp_quality"},
+	experimentalSubGroupTitles = {"null", "null", "hitpoints", "quality"},
+	experimentalMin = {0, 0, 1000, 1},
+	experimentalMax = {0, 0, 1000, 100},
+	experimentalPrecision = {0, 0, 0, 0},
 }
 
 ObjectTemplates:addTemplate(object_tangible_instrument_fizz, "object/tangible/instrument/fizz.iff")

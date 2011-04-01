@@ -43,7 +43,7 @@
 
 object_tangible_food_crafted_dish_rakririan_burnout_sauce = object_tangible_food_crafted_shared_dish_rakririan_burnout_sauce:new {
 	templateType = CONSUMABLE,
-	
+	,
 	duration = 10,
 	filling = 10,
 	nutrition = 10,
@@ -63,7 +63,15 @@ object_tangible_food_crafted_dish_rakririan_burnout_sauce = object_tangible_food
 
 	buffName = "food.dish_rakririan_burnout_sauce",
 	buffCRC = 0,
-	speciesRestriction = ""
+	speciesRestriction = "",
+	numberExperimentalProperties = {1, 1, 1, 2, 2, 2, 2},
+	experimentalProperties = {"XX", "XX", "XX", "OQ", "PE", "DR", "PE", "DR", "PE", "DR", "OQ"},
+	experimentalWeights = {1, 1, 1, 1, 2, 1, 2, 1, 3, 3, 1},
+	experimentalGroupTitles = {"null", "null", "null", "exp_nutrition", "exp_flavor", "exp_quantity", "exp_filling"},
+	experimentalSubGroupTitles = {"null", "null", "hitpoints", "nutrition", "flavor", "quantity", "filling"},
+	experimentalMin = {0, 0, 1000, 75, 60, 60, 80},
+	experimentalMax = {0, 0, 1000, 120, 120, 100, 120},
+	experimentalPrecision = {0, 0, 0, 10, 10, 10, 10},
 }
 
 ObjectTemplates:addTemplate(object_tangible_food_crafted_dish_rakririan_burnout_sauce, "object/tangible/food/crafted/dish_rakririan_burnout_sauce.iff")

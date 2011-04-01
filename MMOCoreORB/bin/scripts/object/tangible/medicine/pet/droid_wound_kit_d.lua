@@ -43,6 +43,14 @@
 
 object_tangible_medicine_pet_droid_wound_kit_d = object_tangible_medicine_pet_shared_droid_wound_kit_d:new {
 
+	numberExperimentalProperties = {1, 1, 3, 2, 1},
+	experimentalProperties = {"XX", "XX", "CD", "MA", "OQ", "OQ", "UT", "XX"},
+	experimentalWeights = {1, 1, 2, 1, 2, 2, 1, 1},
+	experimentalGroupTitles = {"null", "null", "exp_effectiveness", "expCharges", "null"},
+	experimentalSubGroupTitles = {"null", "null", "power", "charges", "hitpoints"},
+	experimentalMin = {0, 0, 80, 8, 1000},
+	experimentalMax = {0, 0, 400, 24, 1000},
+	experimentalPrecision = {0, 0, 0, 0, 0},
 }
 
 ObjectTemplates:addTemplate(object_tangible_medicine_pet_droid_wound_kit_d, "object/tangible/medicine/pet/droid_wound_kit_d.iff")

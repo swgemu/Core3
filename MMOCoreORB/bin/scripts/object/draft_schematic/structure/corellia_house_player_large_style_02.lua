@@ -72,15 +72,9 @@ object_draft_schematic_structure_corellia_house_player_large_style_02 = object_d
    combineTypes = {0, 0, 0, 1, 1, 1},
    contribution = {100, 100, 100, 100, 100, 100},
 
-   numberExperimentalProperties = {1, 1, 1},
-   experimentalProperties = {"XX", "XX", "DR"},
-   experimentalWeights = {1, 1, 1},
-   experimentalGroupTitles = {"null", "null", "exp_durability"},
-   experimentalSubGroupTitles = {"null", "null", "hitpoints"},
-   experimentalMin = {0, 0, 50000},
-   experimentalMax = {0, 0, 100000},
-   experimentalPrecision = {0, 0, 0},
+   templates { = 
+              184159956, -- Script: 'object/tangible/deed/player_house_deed/corellia_house_large_style_02_deed.iff'
+             }
 
-   tanoCRC = 184159956, -- Script: 'object/tangible/deed/player_house_deed/corellia_house_large_style_02_deed.iff'
 }
 ObjectTemplates:addTemplate(object_draft_schematic_structure_corellia_house_player_large_style_02, "object/draft_schematic/structure/corellia_house_player_large_style_02.iff")

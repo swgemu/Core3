@@ -72,15 +72,9 @@ object_draft_schematic_chemistry_medpack_disease_area_constitution_a = object_dr
    combineTypes = {0, 0, 0, 1, 1, 1},
    contribution = {100, 100, 100, 100, 100, 100},
 
-   numberExperimentalProperties = {1, 1, 2, 2, 2, 2, 2, 2, 2, 1},
-   experimentalProperties = {"XX", "XX", "OQ", "PE", "OQ", "UT", "CD", "OQ", "CD", "OQ", "OQ", "PE", "OQ", "PE", "DR", "OQ", "XX"},
-   experimentalWeights = {1, 1, 2, 1, 2, 1, 1, 2, 1, 2, 2, 1, 2, 1, 1, 1, 1},
-   experimentalGroupTitles = {"null", "null", "exp_effectiveness", "expCharges", "expCharges", "exp_effectiveness", "expEaseOfUse", "expEaseOfUse", "exp_effectiveness", "null"},
-   experimentalSubGroupTitles = {"null", "null", "power", "charges", "range", "area", "skillmodmin", "potency", "duration", "hitpoints"},
-   experimentalMin = {0, 0, 10, 5, 15, 10, 60, 25, 120, 1000},
-   experimentalMax = {0, 0, 20, 15, 20, 5, 40, 50, 600, 1000},
-   experimentalPrecision = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+   templates { = 
+              3128279694, -- Script: 'object/tangible/medicine/crafted/medpack_disease_area_constitution_a.iff'
+             }
 
-   tanoCRC = 3128279694, -- Script: 'object/tangible/medicine/crafted/medpack_disease_area_constitution_a.iff'
 }
 ObjectTemplates:addTemplate(object_draft_schematic_chemistry_medpack_disease_area_constitution_a, "object/draft_schematic/chemistry/medpack_disease_area_constitution_a.iff")

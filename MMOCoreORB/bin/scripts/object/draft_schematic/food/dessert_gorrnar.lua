@@ -72,15 +72,9 @@ object_draft_schematic_food_dessert_gorrnar = object_draft_schematic_food_shared
    combineTypes = {0, 1, 1, 0, 1},
    contribution = {100, 100, 100, 100, 100},
 
-   numberExperimentalProperties = {1, 1, 3, 2, 2, 2},
-   experimentalProperties = {"XX", "XX", "DR", "OQ", "UT", "DR", "OQ", "OQ", "PE", "FL", "OQ"},
-   experimentalWeights = {1, 1, 4, 1, 1, 1, 1, 1, 2, 2, 1},
-   experimentalGroupTitles = {"null", "null", "null", "exp_nutrition", "exp_quantity", "exp_filling"},
-   experimentalSubGroupTitles = {"null", "null", "hitpoints", "nutrition", "quantity", "filling"},
-   experimentalMin = {0, 0, 1000, 75, 60, 80},
-   experimentalMax = {0, 0, 1000, 120, 100, 120},
-   experimentalPrecision = {0, 0, 0, 10, 10, 10},
+   templates { = 
+              281064494, -- Script: 'object/tangible/food/crafted/dessert_gorrnar.iff'
+             }
 
-   tanoCRC = 281064494, -- Script: 'object/tangible/food/crafted/dessert_gorrnar.iff'
 }
 ObjectTemplates:addTemplate(object_draft_schematic_food_dessert_gorrnar, "object/draft_schematic/food/dessert_gorrnar.iff")

@@ -72,15 +72,9 @@ object_draft_schematic_droid_component_performer_effects_c = object_draft_schema
    combineTypes = {0, 0, 0},
    contribution = {100, 100, 100},
 
-   numberExperimentalProperties = {1, 1, 2, 1, 2, 1},
-   experimentalProperties = {"XX", "XX", "CD", "OQ", "XX", "CD", "OQ", "XX"},
-   experimentalWeights = {1, 1, 1, 1, 1, 1, 1, 1},
-   experimentalGroupTitles = {"null", "null", "exp_durability", "null", "exp_effectiveness", "null"},
-   experimentalSubGroupTitles = {"null", "null", "decayrate", "hitpoints", "mechanism_quality", "entertainer_effects"},
-   experimentalMin = {0, 0, 5, 1000, -10, 100},
-   experimentalMax = {0, 0, 15, 1000, 15, 100},
-   experimentalPrecision = {0, 0, 0, 0, 0, 0},
+   templates { = 
+              2467659931, -- Script: 'object/tangible/component/droid/performer_effects_c.iff'
+             }
 
-   tanoCRC = 2467659931, -- Script: 'object/tangible/component/droid/performer_effects_c.iff'
 }
 ObjectTemplates:addTemplate(object_draft_schematic_droid_component_performer_effects_c, "object/draft_schematic/droid/component/performer_effects_c.iff")

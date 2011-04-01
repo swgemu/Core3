@@ -72,15 +72,9 @@ object_draft_schematic_droid_component_combat_module = object_draft_schematic_dr
    combineTypes = {0, 0, 0, 1},
    contribution = {100, 100, 100, 100},
 
-   numberExperimentalProperties = {1, 1, 1, 1, 2, 2},
-   experimentalProperties = {"XX", "XX", "XX", "XX", "CD", "OQ", "CD", "OQ"},
-   experimentalWeights = {1, 1, 1, 1, 1, 1, 1, 1},
-   experimentalGroupTitles = {"null", "null", "null", "null", "exp_effectiveness", "exp_effectiveness"},
-   experimentalSubGroupTitles = {"null", "null", "decayrate", "hitpoints", "mechanism_quality", "cmbt_module"},
-   experimentalMin = {0, 0, 5, 1000, -10, 1},
-   experimentalMax = {0, 0, 15, 1000, 15, 110},
-   experimentalPrecision = {0, 0, 0, 0, 0, 0},
+   templates { = 
+              946727014, -- Script: 'object/tangible/component/droid/combat_module.iff'
+             }
 
-   tanoCRC = 946727014, -- Script: 'object/tangible/component/droid/combat_module.iff'
 }
 ObjectTemplates:addTemplate(object_draft_schematic_droid_component_combat_module, "object/draft_schematic/droid/component/combat_module.iff")

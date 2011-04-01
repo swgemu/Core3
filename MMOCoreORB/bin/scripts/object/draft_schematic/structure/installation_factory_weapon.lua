@@ -72,15 +72,9 @@ object_draft_schematic_structure_installation_factory_weapon = object_draft_sche
    combineTypes = {0, 1, 0, 0, 1, 1, 1},
    contribution = {100, 100, 100, 100, 100, 100, 100},
 
-   numberExperimentalProperties = {1, 1, 1, 1, 2, 1},
-   experimentalProperties = {"XX", "XX", "XX", "OQ", "MA", "UT", "UT"},
-   experimentalWeights = {1, 1, 1, 1, 1, 2, 1},
-   experimentalGroupTitles = {"null", "null", "null", "expEffeciency", "expStorage", "exp_durability"},
-   experimentalSubGroupTitles = {"null", "null", "extractrate", "buildrate", "hoppersize", "hitpoints"},
-   experimentalMin = {0, 0, 0, 5, 1500, 5000},
-   experimentalMax = {0, 0, 0, 12, 4000, 7000},
-   experimentalPrecision = {0, 0, 0, 0, 0, 0},
+   templates { = 
+              77296590, -- Script: 'object/tangible/deed/factory_deed/factory_item_deed.iff'
+             }
 
-   tanoCRC = 77296590, -- Script: 'object/tangible/deed/factory_deed/factory_item_deed.iff'
 }
 ObjectTemplates:addTemplate(object_draft_schematic_structure_installation_factory_weapon, "object/draft_schematic/structure/installation_factory_weapon.iff")

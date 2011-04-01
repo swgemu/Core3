@@ -43,6 +43,14 @@
 
 object_tangible_component_bio_bio_component_food_light_filling = object_tangible_component_bio_shared_bio_component_food_light_filling:new {
 
+	numberExperimentalProperties = {1, 1, 1, 3},
+	experimentalProperties = {"XX", "XX", "XX", "FL", "OQ", "PE"},
+	experimentalWeights = {1, 1, 1, 1, 2, 2},
+	experimentalGroupTitles = {"null", "null", "null", "exp_filling"},
+	experimentalSubGroupTitles = {"null", "null", "hitpoints", "add_filling"},
+	experimentalMin = {0, 0, 1000, 5},
+	experimentalMax = {0, 0, 1000, 15},
+	experimentalPrecision = {0, 0, 0, 0},
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_bio_bio_component_food_light_filling, "object/tangible/component/bio/bio_component_food_light_filling.iff")

@@ -72,15 +72,9 @@ object_draft_schematic_weapon_staff_metal = object_draft_schematic_weapon_shared
    combineTypes = {0, 0, 0, 0},
    contribution = {100, 100, 100, 100},
 
-   numberExperimentalProperties = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
-   experimentalProperties = {"XX", "XX", "SR", "SR", "SR", "XX", "SR", "SR", "SR", "XX", "SR", "XX", "SR", "SR", "SR"},
-   experimentalWeights = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
-   experimentalGroupTitles = {"null", "null", "expDamage", "expDamage", "expDamage", "null", "exp_durability", "expRange", "expRange", "null", "expRange", "null", "expEffeciency", "expEffeciency", "expEffeciency"},
-   experimentalSubGroupTitles = {"null", "null", "mindamage", "maxdamage", "attackspeed", "woundchance", "hitpoints", "zerorangemod", "maxrangemod", "midrange", "midrangemod", "maxrange", "attackhealthcost", "attackactioncost", "attackmindcost"},
-   experimentalMin = {0, 0, 56, 95, 6, 7, 750, -5, -5, 3, -5, 5, 9, 66, 39},
-   experimentalMax = {0, 0, 90, 143, 4.2, 7, 1500, 5, 5, 3, 5, 5, 4, 36, 21},
-   experimentalPrecision = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+   templates { = 
+              3821153504, -- Script: 'object/weapon/melee/polearm/lance_staff_metal.iff'
+             }
 
-   tanoCRC = 3821153504, -- Script: 'object/weapon/melee/polearm/lance_staff_metal.iff'
 }
 ObjectTemplates:addTemplate(object_draft_schematic_weapon_staff_metal, "object/draft_schematic/weapon/staff_metal.iff")

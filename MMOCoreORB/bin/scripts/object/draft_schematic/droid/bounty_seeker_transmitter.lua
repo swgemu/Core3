@@ -72,15 +72,9 @@ object_draft_schematic_droid_bounty_seeker_transmitter = object_draft_schematic_
    combineTypes = {0, 0, 1, 1, 1},
    contribution = {100, 100, 100, 100, 100},
 
-   numberExperimentalProperties = {1, 1, 3, 3},
-   experimentalProperties = {"XX", "XX", "OQ", "SR", "UT", "OQ", "SR", "UT"},
-   experimentalWeights = {1, 1, 1, 1, 1, 1, 1, 1},
-   experimentalGroupTitles = {"null", "null", "exp_durability", "exp_quality"},
-   experimentalSubGroupTitles = {"null", "null", "decayrate", "mechanism_quality"},
-   experimentalMin = {0, 0, 5, 0},
-   experimentalMax = {0, 0, 15, 100},
-   experimentalPrecision = {0, 0, 0, 0},
+   templates { = 
+              1293954524, -- Script: 'object/tangible/mission/mission_bounty_droid_seeker.iff'
+             }
 
-   tanoCRC = 1293954524, -- Script: 'object/tangible/mission/mission_bounty_droid_seeker.iff'
 }
 ObjectTemplates:addTemplate(object_draft_schematic_droid_bounty_seeker_transmitter, "object/draft_schematic/droid/bounty_seeker_transmitter.iff")

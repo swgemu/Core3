@@ -72,15 +72,9 @@ object_draft_schematic_droid_navicomputer_3 = object_draft_schematic_droid_share
    combineTypes = {0, 0, 0, 0, 0},
    contribution = {100, 100, 100, 100, 100},
 
-   numberExperimentalProperties = {1, 1},
-   experimentalProperties = {"XX", "XX"},
-   experimentalWeights = {1, 1},
-   experimentalGroupTitles = {"null", "null"},
-   experimentalSubGroupTitles = {"null", "null"},
-   experimentalMin = {0, 0},
-   experimentalMax = {0, 0},
-   experimentalPrecision = {0, 0},
+   templates { = 
+              3365715610, -- Script: 'object/tangible/droid/navicomputer_3.iff'
+             }
 
-   tanoCRC = 3365715610, -- Script: 'object/tangible/droid/navicomputer_3.iff'
 }
 ObjectTemplates:addTemplate(object_draft_schematic_droid_navicomputer_3, "object/draft_schematic/droid/navicomputer_3.iff")

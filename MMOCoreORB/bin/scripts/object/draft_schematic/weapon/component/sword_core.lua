@@ -72,15 +72,9 @@ object_draft_schematic_weapon_component_sword_core = object_draft_schematic_weap
    combineTypes = {0},
    contribution = {100},
 
-   numberExperimentalProperties = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
-   experimentalProperties = {"XX", "XX", "UT", "UT", "UT", "UT", "UT", "UT", "UT", "UT", "UT", "UT", "UT"},
-   experimentalWeights = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
-   experimentalGroupTitles = {"null", "null", "expDamage", "expDamage", "expDamage", "expDamage", "exp_durability", "expRange", "expRange", "expRange", "expEffeciency", "expEffeciency", "expEffeciency"},
-   experimentalSubGroupTitles = {"null", "null", "mindamage", "maxdamage", "attackspeed", "woundchance", "hitpoints", "zerorangemod", "maxrangemod", "midrangemod", "attackhealthcost", "attackactioncost", "attackmindcost"},
-   experimentalMin = {0, 0, 1, 1, 0, 0, 10, 0, 0, 0, 10, 10, 10},
-   experimentalMax = {0, 0, 20, 20, -0.5, 10, 100, 10, 10, 10, 0, 0, 0},
-   experimentalPrecision = {0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0},
+   templates { = 
+              716551990, -- Script: 'object/tangible/component/weapon/sword_core.iff'
+             }
 
-   tanoCRC = 716551990, -- Script: 'object/tangible/component/weapon/sword_core.iff'
 }
 ObjectTemplates:addTemplate(object_draft_schematic_weapon_component_sword_core, "object/draft_schematic/weapon/component/sword_core.iff")

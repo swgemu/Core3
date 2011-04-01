@@ -72,15 +72,9 @@ object_draft_schematic_clothing_clothing_jewelry_necklace_09 = object_draft_sche
    combineTypes = {0, 0, 1},
    contribution = {100, 100, 100},
 
-   numberExperimentalProperties = {1, 1, 1},
-   experimentalProperties = {"XX", "XX", "XX"},
-   experimentalWeights = {1, 1, 1},
-   experimentalGroupTitles = {"null", "null", "null"},
-   experimentalSubGroupTitles = {"null", "null", "hitpoints"},
-   experimentalMin = {0, 0, 1000},
-   experimentalMax = {0, 0, 1000},
-   experimentalPrecision = {0, 0, 0},
+   templates { = 
+              2046882028, -- Script: 'object/tangible/wearables/necklace/necklace_s09.iff'
+             }
 
-   tanoCRC = 2046882028, -- Script: 'object/tangible/wearables/necklace/necklace_s09.iff'
 }
 ObjectTemplates:addTemplate(object_draft_schematic_clothing_clothing_jewelry_necklace_09, "object/draft_schematic/clothing/clothing_jewelry_necklace_09.iff")

@@ -72,15 +72,9 @@ object_draft_schematic_weapon_lightsaber_lightsaber_refined_crystal_pack = objec
    combineTypes = {0, 0, 0, 1, 1, 1, 1},
    contribution = {100, 100, 100, 100, 100, 100, 100},
 
-   numberExperimentalProperties = {1, 1},
-   experimentalProperties = {"XX", "XX"},
-   experimentalWeights = {1, 1},
-   experimentalGroupTitles = {"null", "null"},
-   experimentalSubGroupTitles = {"null", "null"},
-   experimentalMin = {0, 0},
-   experimentalMax = {0, 0},
-   experimentalPrecision = {0, 0},
+   templates { = 
+              855539713, -- Script: 'object/tangible/component/weapon/lightsaber/lightsaber_refined_crystal_pack.iff'
+             }
 
-   tanoCRC = 855539713, -- Script: 'object/tangible/component/weapon/lightsaber/lightsaber_refined_crystal_pack.iff'
 }
 ObjectTemplates:addTemplate(object_draft_schematic_weapon_lightsaber_lightsaber_refined_crystal_pack, "object/draft_schematic/weapon/lightsaber/lightsaber_refined_crystal_pack.iff")

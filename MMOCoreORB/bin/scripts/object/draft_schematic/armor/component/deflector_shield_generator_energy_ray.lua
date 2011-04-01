@@ -72,15 +72,9 @@ object_draft_schematic_armor_component_deflector_shield_generator_energy_ray = o
    combineTypes = {0, 0, 0, 0},
    contribution = {100, 100, 100, 100},
 
-   numberExperimentalProperties = {1, 1, 1},
-   experimentalProperties = {"XX", "XX", "XX"},
-   experimentalWeights = {1, 1, 1},
-   experimentalGroupTitles = {"null", "null", "exp_durability"},
-   experimentalSubGroupTitles = {"null", "null", "hit_points"},
-   experimentalMin = {0, 0, 1000},
-   experimentalMax = {0, 0, 1000},
-   experimentalPrecision = {0, 0, 0},
+   templates { = 
+              3106447809, -- Script: 'object/tangible/component/armor/deflector_shield_generator_energy_ray.iff'
+             }
 
-   tanoCRC = 3106447809, -- Script: 'object/tangible/component/armor/deflector_shield_generator_energy_ray.iff'
 }
 ObjectTemplates:addTemplate(object_draft_schematic_armor_component_deflector_shield_generator_energy_ray, "object/draft_schematic/armor/component/deflector_shield_generator_energy_ray.iff")

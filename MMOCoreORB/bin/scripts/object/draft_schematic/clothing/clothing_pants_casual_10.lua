@@ -72,15 +72,9 @@ object_draft_schematic_clothing_clothing_pants_casual_10 = object_draft_schemati
    combineTypes = {0, 1},
    contribution = {100, 100},
 
-   numberExperimentalProperties = {1, 1, 1, 1},
-   experimentalProperties = {"XX", "XX", "XX", "XX"},
-   experimentalWeights = {1, 1, 1, 1},
-   experimentalGroupTitles = {"null", "null", "null", "null"},
-   experimentalSubGroupTitles = {"null", "null", "sockets", "hitpoints"},
-   experimentalMin = {0, 0, 0, 1000},
-   experimentalMax = {0, 0, 0, 1000},
-   experimentalPrecision = {0, 0, 0, 0},
+   templates { = 
+              4043160410, -- Script: 'object/tangible/wearables/pants/pants_s10.iff'
+             }
 
-   tanoCRC = 4043160410, -- Script: 'object/tangible/wearables/pants/pants_s10.iff'
 }
 ObjectTemplates:addTemplate(object_draft_schematic_clothing_clothing_pants_casual_10, "object/draft_schematic/clothing/clothing_pants_casual_10.iff")

@@ -72,15 +72,9 @@ object_draft_schematic_droid_component_unit_delivery_cartridge_advanced = object
    combineTypes = {0, 0},
    contribution = {100, 100},
 
-   numberExperimentalProperties = {1, 1, 2, 1},
-   experimentalProperties = {"XX", "XX", "OQ", "UT", "XX"},
-   experimentalWeights = {1, 1, 1, 2, 1},
-   experimentalGroupTitles = {"null", "null", "expCharges", "null"},
-   experimentalSubGroupTitles = {"null", "null", "charges", "hitpoints"},
-   experimentalMin = {0, 0, 3, 1000},
-   experimentalMax = {0, 0, 15, 1000},
-   experimentalPrecision = {0, 0, 0, 0},
+   templates { = 
+              3629850941, -- Script: 'object/tangible/component/droid/repair/unit_delivery_cartridge_advanced.iff'
+             }
 
-   tanoCRC = 3629850941, -- Script: 'object/tangible/component/droid/repair/unit_delivery_cartridge_advanced.iff'
 }
 ObjectTemplates:addTemplate(object_draft_schematic_droid_component_unit_delivery_cartridge_advanced, "object/draft_schematic/droid/component/unit_delivery_cartridge_advanced.iff")

@@ -72,15 +72,9 @@ object_draft_schematic_weapon_lightsaber_lightsaber_two_hand_gen2 = object_draft
    combineTypes = {0, 1, 0, 0, 1, 0, 0},
    contribution = {100, 100, 100, 100, 100, 100, 100},
 
-   numberExperimentalProperties = {1, 1, 2, 2, 2, 2, 2, 1, 1, 1},
-   experimentalProperties = {"XX", "XX", "CD", "OQ", "CD", "OQ", "CD", "OQ", "SR", "UT", "CD", "OQ", "OQ", "OQ", "OQ"},
-   experimentalWeights = {1, 1, 1, 2, 1, 2, 1, 1, 1, 1, 1, 2, 1, 1, 1},
-   experimentalGroupTitles = {"null", "null", "expDamage", "expDamage", "expDamage", "expDamage", "expEffeciency", "expEffeciency", "expEffeciency", "expEffeciency"},
-   experimentalSubGroupTitles = {"null", "null", "mindamage", "maxdamage", "attackspeed", "woundchance", "forcecost", "attackhealthcost", "attackactioncost", "attackmindcost"},
-   experimentalMin = {0, 0, 100, 190, 4.8, 13, 24, 55, 47, 25},
-   experimentalMax = {0, 0, 120, 230, 4.5, 25, 28, 40, 32, 20},
-   experimentalPrecision = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+   templates { = 
+              3265794749, -- Script: 'object/weapon/melee/2h_sword/crafted_saber/sword_lightsaber_two_handed_gen2.iff'
+             }
 
-   tanoCRC = 3265794749, -- Script: 'object/weapon/melee/2h_sword/crafted_saber/sword_lightsaber_two_handed_gen2.iff'
 }
 ObjectTemplates:addTemplate(object_draft_schematic_weapon_lightsaber_lightsaber_two_hand_gen2, "object/draft_schematic/weapon/lightsaber/lightsaber_two_hand_gen2.iff")

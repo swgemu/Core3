@@ -72,15 +72,9 @@ object_draft_schematic_vehicle_civilian_speeder_bike = object_draft_schematic_ve
    combineTypes = {0, 0},
    contribution = {100, 100},
 
-   numberExperimentalProperties = {1, 1, 1},
-   experimentalProperties = {"XX", "XX", "SR"},
-   experimentalWeights = {1, 1, 1},
-   experimentalGroupTitles = {"null", "null", "exp_durability"},
-   experimentalSubGroupTitles = {"null", "null", "hit_points"},
-   experimentalMin = {0, 0, 1000},
-   experimentalMax = {0, 0, 2500},
-   experimentalPrecision = {0, 0, 0},
+   templates { = 
+              1418540261, -- Script: 'object/tangible/deed/vehicle_deed/speederbike_deed.iff'
+             }
 
-   tanoCRC = 1418540261, -- Script: 'object/tangible/deed/vehicle_deed/speederbike_deed.iff'
 }
 ObjectTemplates:addTemplate(object_draft_schematic_vehicle_civilian_speeder_bike, "object/draft_schematic/vehicle/civilian/speeder_bike.iff")

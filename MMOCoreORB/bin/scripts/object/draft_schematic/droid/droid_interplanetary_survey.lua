@@ -72,15 +72,9 @@ object_draft_schematic_droid_droid_interplanetary_survey = object_draft_schemati
    combineTypes = {0, 0, 0, 0, 0, 1, 1, 1, 1},
    contribution = {100, 100, 100, 100, 100, 100, 100, 100, 100},
 
-   numberExperimentalProperties = {1, 1, 3, 3, 3},
-   experimentalProperties = {"XX", "XX", "OQ", "SR", "UT", "OQ", "SR", "UT", "OQ", "SR", "UT"},
-   experimentalWeights = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
-   experimentalGroupTitles = {"null", "null", "exp_durability", "exp_count", "exp_quality"},
-   experimentalSubGroupTitles = {"null", "null", "decayrate", "droid_count", "mechanism_quality"},
-   experimentalMin = {0, 0, 5, 3, 0},
-   experimentalMax = {0, 0, 15, 15, 100},
-   experimentalPrecision = {0, 0, 0, 0, 0},
+   templates { = 
+              3351452767, -- Script: 'object/tangible/component/droid/droid_interplanetary_survey.iff'
+             }
 
-   tanoCRC = 3351452767, -- Script: 'object/tangible/component/droid/droid_interplanetary_survey.iff'
 }
 ObjectTemplates:addTemplate(object_draft_schematic_droid_droid_interplanetary_survey, "object/draft_schematic/droid/droid_interplanetary_survey.iff")

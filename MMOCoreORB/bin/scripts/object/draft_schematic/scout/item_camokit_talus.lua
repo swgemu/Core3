@@ -72,15 +72,9 @@ object_draft_schematic_scout_item_camokit_talus = object_draft_schematic_scout_s
    combineTypes = {0, 0, 0},
    contribution = {100, 100, 100},
 
-   numberExperimentalProperties = {1, 1, 1, 1},
-   experimentalProperties = {"XX", "XX", "XX", "OQ"},
-   experimentalWeights = {1, 1, 1, 1},
-   experimentalGroupTitles = {"null", "null", "null", "exp_quantity"},
-   experimentalSubGroupTitles = {"null", "null", "hitpoints", "quantity"},
-   experimentalMin = {0, 0, 1000, 5},
-   experimentalMax = {0, 0, 1000, 20},
-   experimentalPrecision = {0, 0, 0, 0},
+   templates { = 
+              731773507, -- Script: 'object/tangible/scout/camokit/camokit_talus.iff'
+             }
 
-   tanoCRC = 731773507, -- Script: 'object/tangible/scout/camokit/camokit_talus.iff'
 }
 ObjectTemplates:addTemplate(object_draft_schematic_scout_item_camokit_talus, "object/draft_schematic/scout/item_camokit_talus.iff")

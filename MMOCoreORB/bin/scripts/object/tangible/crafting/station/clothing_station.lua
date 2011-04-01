@@ -50,6 +50,15 @@ object_tangible_crafting_station_clothing_station = object_tangible_crafting_sta
    customizationOptions = {},
    customizationDefaults = {},
 
-   stationType = 1,   complexityLevel = 100
+   stationType = 1,
+   complexityLevel = 100,
+	numberExperimentalProperties = {1, 1, 1, 1},
+	experimentalProperties = {"XX", "XX", "XX", "CD"},
+	experimentalWeights = {1, 1, 1, 1},
+	experimentalGroupTitles = {"null", "null", "null", "exp_effectiveness"},
+	experimentalSubGroupTitles = {"null", "null", "hitpoints", "usemodifier"},
+	experimentalMin = {0, 0, 1000, -15}, -15},
+	experimentalMax = {0, 0, 1000, 15},
+	experimentalPrecision = {0, 0, 0, 0},
 }
 ObjectTemplates:addTemplate(object_tangible_crafting_station_clothing_station, "object/tangible/crafting/station/clothing_station.iff")

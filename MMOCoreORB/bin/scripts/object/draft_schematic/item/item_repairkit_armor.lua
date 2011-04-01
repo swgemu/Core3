@@ -72,15 +72,9 @@ object_draft_schematic_item_item_repairkit_armor = object_draft_schematic_item_s
    combineTypes = {0, 0},
    contribution = {100, 100},
 
-   numberExperimentalProperties = {1, 1, 1, 1},
-   experimentalProperties = {"XX", "XX", "UT", "CD"},
-   experimentalWeights = {1, 1, 1, 1},
-   experimentalGroupTitles = {"null", "null", "exp_durability", "exp_quality"},
-   experimentalSubGroupTitles = {"null", "null", "hitpoints", "quality"},
-   experimentalMin = {0, 0, 1000, 1},
-   experimentalMax = {0, 0, 1000, 100},
-   experimentalPrecision = {0, 0, 0, 0},
+   templates { = 
+              3397088197, -- Script: 'object/tangible/crafting/station/armor_repair.iff'
+             }
 
-   tanoCRC = 3397088197, -- Script: 'object/tangible/crafting/station/armor_repair.iff'
 }
 ObjectTemplates:addTemplate(object_draft_schematic_item_item_repairkit_armor, "object/draft_schematic/item/item_repairkit_armor.iff")

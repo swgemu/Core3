@@ -72,15 +72,9 @@ object_draft_schematic_droid_component_medic_module_6 = object_draft_schematic_d
    combineTypes = {0, 0, 1, 1},
    contribution = {100, 100, 100, 100},
 
-   numberExperimentalProperties = {1, 1, 2, 1, 2, 2},
-   experimentalProperties = {"XX", "XX", "CD", "OQ", "XX", "CD", "OQ", "CD", "OQ"},
-   experimentalWeights = {1, 1, 1, 1, 1, 1, 1, 1, 1},
-   experimentalGroupTitles = {"null", "null", "exp_durability", "null", "exp_effectiveness", "exp_effectiveness"},
-   experimentalSubGroupTitles = {"null", "null", "decayrate", "hitpoints", "mechanism_quality", "medical_module"},
-   experimentalMin = {0, 0, 5, 1000, -10, 11},
-   experimentalMax = {0, 0, 15, 1000, 15, 13},
-   experimentalPrecision = {0, 0, 0, 0, 0, 0},
+   templates { = 
+              1990035908, -- Script: 'object/tangible/component/droid/medic_module_6.iff'
+             }
 
-   tanoCRC = 1990035908, -- Script: 'object/tangible/component/droid/medic_module_6.iff'
 }
 ObjectTemplates:addTemplate(object_draft_schematic_droid_component_medic_module_6, "object/draft_schematic/droid/component/medic_module_6.iff")

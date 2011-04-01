@@ -72,15 +72,9 @@ object_draft_schematic_munition_mine_anti_vehicle = object_draft_schematic_munit
    combineTypes = {0, 0, 0, 0, 0, 1, 1, 1, 1},
    contribution = {100, 100, 100, 100, 100, 100, 100, 100, 100},
 
-   numberExperimentalProperties = {1, 1, 2, 2, 2, 2, 1},
-   experimentalProperties = {"XX", "XX", "SR", "UT", "SR", "UT", "SR", "UT", "SR", "UT", "XX"},
-   experimentalWeights = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
-   experimentalGroupTitles = {"null", "null", "expDamage", "expDamage", "expDamage", "expDamage", "null"},
-   experimentalSubGroupTitles = {"null", "null", "mindamage", "maxdamage", "attackspeed", "woundchance", "hitpoints"},
-   experimentalMin = {0, 0, 70, 210, 13, 7, 1000},
-   experimentalMax = {0, 0, 130, 390, 9, 13, 1000},
-   experimentalPrecision = {0, 0, 0, 0, 0, 0, 0},
+   templates { = 
+              394148601, -- Script: 'object/weapon/mine/wp_mine_anti_vehicle.iff'
+             }
 
-   tanoCRC = 394148601, -- Script: 'object/weapon/mine/wp_mine_anti_vehicle.iff'
 }
 ObjectTemplates:addTemplate(object_draft_schematic_munition_mine_anti_vehicle, "object/draft_schematic/munition/mine_anti_vehicle.iff")

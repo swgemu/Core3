@@ -72,15 +72,9 @@ object_draft_schematic_slicing_slicing_molecular_clamp = object_draft_schematic_
    combineTypes = {0, 0, 0},
    contribution = {100, 100, 100},
 
-   numberExperimentalProperties = {1, 1, 1, 1},
-   experimentalProperties = {"XX", "XX", "XX", "CD"},
-   experimentalWeights = {1, 1, 1, 1},
-   experimentalGroupTitles = {"null", "null", "null", "exp_effectiveness"},
-   experimentalSubGroupTitles = {"null", "null", "hitpoints", "usemodifier"},
-   experimentalMin = {0, 0, 1000, -15},
-   experimentalMax = {0, 0, 1000, 15},
-   experimentalPrecision = {0, 0, 0, 0},
+   templates { = 
+              2757688576, -- Script: 'object/tangible/slicing/slicing_molecular_clamp.iff'
+             }
 
-   tanoCRC = 2757688576, -- Script: 'object/tangible/slicing/slicing_molecular_clamp.iff'
 }
 ObjectTemplates:addTemplate(object_draft_schematic_slicing_slicing_molecular_clamp, "object/draft_schematic/slicing/slicing_molecular_clamp.iff")

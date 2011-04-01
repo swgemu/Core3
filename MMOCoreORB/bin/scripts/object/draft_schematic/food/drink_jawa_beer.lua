@@ -72,15 +72,9 @@ object_draft_schematic_food_drink_jawa_beer = object_draft_schematic_food_shared
    combineTypes = {0, 0, 1, 1},
    contribution = {100, 100, 100, 100},
 
-   numberExperimentalProperties = {1, 1, 1, 1, 2, 2, 2, 2, 1},
-   experimentalProperties = {"XX", "XX", "XX", "XX", "OQ", "PE", "FL", "OQ", "DR", "SR", "DR", "OQ", "XX"},
-   experimentalWeights = {1, 1, 1, 1, 1, 2, 2, 1, 1, 3, 3, 1, 1},
-   experimentalGroupTitles = {"null", "null", "null", "null", "exp_nutrition", "exp_flavor", "exp_quantity", "exp_filling", "null"},
-   experimentalSubGroupTitles = {"null", "null", "hitpoints", "quantity_bonus", "nutrition", "flavor", "quantity", "filling", "stomach"},
-   experimentalMin = {0, 0, 1000, 0, 75, 60, 60, 80, 1},
-   experimentalMax = {0, 0, 1000, 0, 120, 120, 100, 120, 1},
-   experimentalPrecision = {0, 0, 0, 0, 0, 0, 0, 0, 0},
+   templates { = 
+              3058622993, -- Script: 'object/tangible/food/crafted/drink_jawa_beer.iff'
+             }
 
-   tanoCRC = 3058622993, -- Script: 'object/tangible/food/crafted/drink_jawa_beer.iff'
 }
 ObjectTemplates:addTemplate(object_draft_schematic_food_drink_jawa_beer, "object/draft_schematic/food/drink_jawa_beer.iff")

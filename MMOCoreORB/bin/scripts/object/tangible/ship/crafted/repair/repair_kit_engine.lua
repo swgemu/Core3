@@ -43,6 +43,14 @@
 
 object_tangible_ship_crafted_repair_repair_kit_engine = object_tangible_ship_crafted_repair_shared_repair_kit_engine:new {
 
+	numberExperimentalProperties = {1, 1, 1},
+	experimentalProperties = {"XX", "XX", "XX"},
+	experimentalWeights = {1, 1, 1},
+	experimentalGroupTitles = {"null", "null", "exp_repaircharges"},
+	experimentalSubGroupTitles = {"null", "null", "repaircharges"},
+	experimentalMin = {0, 0, 8000},
+	experimentalMax = {0, 0, 12000},
+	experimentalPrecision = {0, 0, 0},
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_repair_repair_kit_engine, "object/tangible/ship/crafted/repair/repair_kit_engine.iff")

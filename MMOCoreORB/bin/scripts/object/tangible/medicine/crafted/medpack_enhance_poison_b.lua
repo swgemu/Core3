@@ -47,7 +47,15 @@ object_tangible_medicine_crafted_medpack_enhance_poison_b = object_tangible_medi
 	medicineUse = 5,
 	effectiveness = 100,
 	duration = 1800,
-	attribute = 9
+	attribute = 9,
+	numberExperimentalProperties = {1, 1, 2, 2, 2, 2, 1},
+	experimentalProperties = {"XX", "XX", "OQ", "PE", "OQ", "UT", "OQ", "PE", "OQ", "PE", "XX"},
+	experimentalWeights = {1, 1, 2, 1, 2, 1, 2, 1, 2, 1, 1},
+	experimentalGroupTitles = {"null", "null", "exp_effectiveness", "expCharges", "expDuration", "null", "null"},
+	experimentalSubGroupTitles = {"null", "null", "power", "charges", "duration", "skillmodmin", "hitpoints"},
+	experimentalMin = {0, 0, 35, 5, 1200, 90, 1000},
+	experimentalMax = {0, 0, 320, 20, 4800, 90, 1000},
+	experimentalPrecision = {0, 0, 0, 0, 0, 0, 0},
 }
 
 ObjectTemplates:addTemplate(object_tangible_medicine_crafted_medpack_enhance_poison_b, "object/tangible/medicine/crafted/medpack_enhance_poison_b.iff")

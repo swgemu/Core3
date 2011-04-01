@@ -72,15 +72,9 @@ object_draft_schematic_instrument_instrument_nalargon = object_draft_schematic_i
    combineTypes = {0, 0},
    contribution = {100, 100},
 
-   numberExperimentalProperties = {1, 1, 1, 1},
-   experimentalProperties = {"XX", "XX", "UT", "CD"},
-   experimentalWeights = {1, 1, 1, 1},
-   experimentalGroupTitles = {"null", "null", "null", "exp_quality"},
-   experimentalSubGroupTitles = {"null", "null", "hitpoints", "quality"},
-   experimentalMin = {0, 0, 1000, 1},
-   experimentalMax = {0, 0, 1000, 100},
-   experimentalPrecision = {0, 0, 0, 0},
+   templates { = 
+              4212938940, -- Script: 'object/tangible/instrument/nalargon.iff'
+             }
 
-   tanoCRC = 4212938940, -- Script: 'object/tangible/instrument/nalargon.iff'
 }
 ObjectTemplates:addTemplate(object_draft_schematic_instrument_instrument_nalargon, "object/draft_schematic/instrument/instrument_nalargon.iff")

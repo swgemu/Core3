@@ -43,6 +43,14 @@
 
 object_tangible_component_weapon_projectile_pistol_barrel = object_tangible_component_weapon_shared_projectile_pistol_barrel:new {
 
+	numberExperimentalProperties = {1, 1, 2, 2, 2, 2, 2, 1, 1, 1, 2},
+	experimentalProperties = {"XX", "XX", "HR", "SR", "HR", "SR", "HR", "SR", "HR", "SR", "HR", "SR", "XX", "XX", "XX", "HR", "SR"},
+	experimentalWeights = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+	experimentalGroupTitles = {"null", "null", "expDamage", "expDamage", "expDamage", "expDamage", "exp_durability", "null", "null", "null", "expRange"},
+	experimentalSubGroupTitles = {"null", "null", "mindamage", "maxdamage", "attackspeed", "woundchance", "hitpoints", "zerorangemod", "maxrangemod", "minrangemod", "midrangemod"},
+	experimentalMin = {0, 0, 1, 1, 0, 0, 10, 0, 0, 0, 0},
+	experimentalMax = {0, 0, 10, 20, -0.5, 5, 100, 0, 0, 0, 10}, -0.5, 5, 100, 0, 0, 0, 10},
+	experimentalPrecision = {0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0},
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_weapon_projectile_pistol_barrel, "object/tangible/component/weapon/projectile_pistol_barrel.iff")

@@ -72,15 +72,9 @@ object_draft_schematic_spices_spice_crash_n_burn = object_draft_schematic_spices
    combineTypes = {0, 0, 0},
    contribution = {100, 100, 100},
 
-   numberExperimentalProperties = {1, 1, 3},
-   experimentalProperties = {"XX", "XX", "DR", "OQ", "UT"},
-   experimentalWeights = {1, 1, 4, 1, 1},
-   experimentalGroupTitles = {"null", "null", "exp_nutrition"},
-   experimentalSubGroupTitles = {"null", "null", "hitpoints"},
-   experimentalMin = {0, 0, 1000},
-   experimentalMax = {0, 0, 1000},
-   experimentalPrecision = {0, 0, 0},
+   templates { = 
+              4093488394, -- Script: 'object/tangible/food/spice/spice_crash_n_burn.iff'
+             }
 
-   tanoCRC = 4093488394, -- Script: 'object/tangible/food/spice/spice_crash_n_burn.iff'
 }
 ObjectTemplates:addTemplate(object_draft_schematic_spices_spice_crash_n_burn, "object/draft_schematic/spices/spice_crash_n_burn.iff")

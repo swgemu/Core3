@@ -72,15 +72,9 @@ object_draft_schematic_food_component_ingredient_ball_of_dough = object_draft_sc
    combineTypes = {0},
    contribution = {100},
 
-   numberExperimentalProperties = {1, 1, 1},
-   experimentalProperties = {"XX", "XX", "XX"},
-   experimentalWeights = {1, 1, 1},
-   experimentalGroupTitles = {"null", "null", "null"},
-   experimentalSubGroupTitles = {"null", "null", "hitpoints"},
-   experimentalMin = {0, 0, 1000},
-   experimentalMax = {0, 0, 1000},
-   experimentalPrecision = {0, 0, 0},
+   templates { = 
+              2225013790, -- Script: 'object/tangible/component/food/ingredient_ball_of_dough.iff'
+             }
 
-   tanoCRC = 2225013790, -- Script: 'object/tangible/component/food/ingredient_ball_of_dough.iff'
 }
 ObjectTemplates:addTemplate(object_draft_schematic_food_component_ingredient_ball_of_dough, "object/draft_schematic/food/component/ingredient_ball_of_dough.iff")

@@ -72,15 +72,9 @@ object_draft_schematic_space_weapon_missile_countermeasure_chaff_pack = object_d
    combineTypes = {0, 0},
    contribution = {100, 100},
 
-   numberExperimentalProperties = {1, 1, 2, 2, 1, 2, 1},
-   experimentalProperties = {"XX", "XX", "CD", "OQ", "CD", "OQ", "XX", "CD", "OQ", "XX"},
-   experimentalWeights = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
-   experimentalGroupTitles = {"null", "null", "exp_maximum_chaff_effectiveness", "exp_min_chaff_effectiveness", "null", "exp_ammo", "null"},
-   experimentalSubGroupTitles = {"null", "null", "fltmaxeffectiveness", "fltmineffectiveness", "fltrefirerate", "fltmaxammo", "energy_per_shot"},
-   experimentalMin = {0, 0, 68, 43, 289, 12, 0},
-   experimentalMax = {0, 0, 92, 58, 391, 16, 0},
-   experimentalPrecision = {0, 0, 0, 0, 0, 0, 0},
+   templates { = 
+              3507929913, -- Script: 'object/tangible/ship/crafted/weapon/missile/countermeasure_chaff_pack.iff'
+             }
 
-   tanoCRC = 3507929913, -- Script: 'object/tangible/ship/crafted/weapon/missile/countermeasure_chaff_pack.iff'
 }
 ObjectTemplates:addTemplate(object_draft_schematic_space_weapon_missile_countermeasure_chaff_pack, "object/draft_schematic/space/weapon/missile/countermeasure_chaff_pack.iff")

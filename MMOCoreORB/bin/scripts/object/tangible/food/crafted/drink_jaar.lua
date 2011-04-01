@@ -43,6 +43,14 @@
 
 object_tangible_food_crafted_drink_jaar = object_tangible_food_crafted_shared_drink_jaar:new {
 
+	numberExperimentalProperties = {1, 1, 1, 1, 2, 2, 2},
+	experimentalProperties = {"XX", "XX", "XX", "XX", "OQ", "PE", "DR", "PE", "DR", "OQ"},
+	experimentalWeights = {1, 1, 1, 1, 1, 2, 1, 3, 3, 1},
+	experimentalGroupTitles = {"null", "null", "null", "null", "exp_nutrition", "exp_quantity", "exp_filling"},
+	experimentalSubGroupTitles = {"null", "null", "hitpoints", "quantity_bonus", "nutrition", "quantity", "filling"},
+	experimentalMin = {0, 0, 1000, 0, 75, 60, 80},
+	experimentalMax = {0, 0, 1000, 0, 120, 100, 120},
+	experimentalPrecision = {0, 0, 0, 0, 0, 0, 0},
 }
 
 ObjectTemplates:addTemplate(object_tangible_food_crafted_drink_jaar, "object/tangible/food/crafted/drink_jaar.iff")

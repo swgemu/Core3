@@ -72,15 +72,9 @@ object_draft_schematic_armor_component_armor_layer_acid = object_draft_schematic
    combineTypes = {0, 0, 0},
    contribution = {100, 100, 100},
 
-   numberExperimentalProperties = {1, 1, 1, 2, 2, 2, 2, 2, 1, 1, 2, 1},
-   experimentalProperties = {"XX", "XX", "XX", "OQ", "SR", "OQ", "UT", "MA", "OQ", "MA", "OQ", "MA", "OQ", "XX", "XX", "OQ", "SR", "XX"},
-   experimentalWeights = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
-   experimentalGroupTitles = {"null", "null", "exp_durability", "exp_quality", "exp_durability", "exp_durability", "exp_durability", "exp_durability", "null", "null", "exp_resistance", "null"},
-   experimentalSubGroupTitles = {"null", "null", "hit_points", "armor_effectiveness", "armor_integrity", "armor_health_encumbrance", "armor_action_encumbrance", "armor_mind_encumbrance", "armor_rating", "armor_special_type", "armor_special_effectiveness", "armor_special_integrity"},
-   experimentalMin = {0, 0, 1000, 1, 100, 20, 20, 20, 1, 128, 1, 20},
-   experimentalMax = {0, 0, 1000, 5, 1000, 0, 0, 0, 1, 128, 15, 50},
-   experimentalPrecision = {0, 0, 0, 10, 0, 0, 0, 0, 0, 0, 0, 0},
+   templates { = 
+              1875688539, -- Script: 'object/tangible/component/armor/armor_layer_acid.iff'
+             }
 
-   tanoCRC = 1875688539, -- Script: 'object/tangible/component/armor/armor_layer_acid.iff'
 }
 ObjectTemplates:addTemplate(object_draft_schematic_armor_component_armor_layer_acid, "object/draft_schematic/armor/component/armor_layer_acid.iff")

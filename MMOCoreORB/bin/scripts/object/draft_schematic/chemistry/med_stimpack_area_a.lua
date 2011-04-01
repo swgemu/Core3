@@ -72,15 +72,9 @@ object_draft_schematic_chemistry_med_stimpack_area_a = object_draft_schematic_ch
    combineTypes = {0, 0, 0, 1, 1, 1},
    contribution = {100, 100, 100, 100, 100, 100},
 
-   numberExperimentalProperties = {1, 1, 2, 2, 2, 2, 2, 1},
-   experimentalProperties = {"XX", "XX", "OQ", "PE", "OQ", "UT", "OQ", "PE", "CD", "OQ", "CD", "OQ", "XX"},
-   experimentalWeights = {1, 1, 2, 1, 2, 1, 2, 1, 1, 2, 1, 2, 1},
-   experimentalGroupTitles = {"null", "null", "exp_effectiveness", "expCharges", "expEaseOfUse", "expCharges", "exp_effectiveness", "null"},
-   experimentalSubGroupTitles = {"null", "null", "power", "charges", "skillmodmin", "range", "area", "hitpoints"},
-   experimentalMin = {0, 0, 100, 10, 50, 15, 20, 1000},
-   experimentalMax = {0, 0, 300, 20, 40, 20, 10, 1000},
-   experimentalPrecision = {0, 0, 0, 0, 0, 0, 0, 0},
+   templates { = 
+              3366364830, -- Script: 'object/tangible/medicine/crafted/medpack_grenade_area_a.iff'
+             }
 
-   tanoCRC = 3366364830, -- Script: 'object/tangible/medicine/crafted/medpack_grenade_area_a.iff'
 }
 ObjectTemplates:addTemplate(object_draft_schematic_chemistry_med_stimpack_area_a, "object/draft_schematic/chemistry/med_stimpack_area_a.iff")

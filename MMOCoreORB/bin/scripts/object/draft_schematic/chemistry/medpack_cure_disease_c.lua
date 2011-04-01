@@ -72,15 +72,9 @@ object_draft_schematic_chemistry_medpack_cure_disease_c = object_draft_schematic
    combineTypes = {0, 0, 1, 1},
    contribution = {100, 100, 100, 100},
 
-   numberExperimentalProperties = {1, 1, 2, 2, 2, 1},
-   experimentalProperties = {"XX", "XX", "OQ", "PE", "OQ", "UT", "OQ", "PE", "XX"},
-   experimentalWeights = {1, 1, 2, 1, 2, 1, 2, 1, 1},
-   experimentalGroupTitles = {"null", "null", "exp_effectiveness", "expCharges", "expEaseOfUse", "null"},
-   experimentalSubGroupTitles = {"null", "null", "power", "charges", "skillmodmin", "hitpoints"},
-   experimentalMin = {0, 0, 10, 20, 100, 1000},
-   experimentalMax = {0, 0, 80, 40, 70, 1000},
-   experimentalPrecision = {0, 0, 0, 0, 0, 0},
+   templates { = 
+              2608832501, -- Script: 'object/tangible/medicine/crafted/medpack_cure_disease_c.iff'
+             }
 
-   tanoCRC = 2608832501, -- Script: 'object/tangible/medicine/crafted/medpack_cure_disease_c.iff'
 }
 ObjectTemplates:addTemplate(object_draft_schematic_chemistry_medpack_cure_disease_c, "object/draft_schematic/chemistry/medpack_cure_disease_c.iff")

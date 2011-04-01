@@ -43,6 +43,14 @@
 
 object_tangible_food_crafted_additive_additive_heavy = object_tangible_food_crafted_additive_shared_additive_heavy:new {
 
+	numberExperimentalProperties = {1, 1, 1},
+	experimentalProperties = {"XX", "XX", "XX"},
+	experimentalWeights = {1, 1, 1},
+	experimentalGroupTitles = {"null", "null", "null"},
+	experimentalSubGroupTitles = {"null", "null", "hitpoints"},
+	experimentalMin = {0, 0, 1000},
+	experimentalMax = {0, 0, 1000},
+	experimentalPrecision = {0, 0, 0},
 }
 
 ObjectTemplates:addTemplate(object_tangible_food_crafted_additive_additive_heavy, "object/tangible/food/crafted/additive/additive_heavy.iff")

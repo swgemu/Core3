@@ -72,15 +72,9 @@ object_draft_schematic_food_dish_dustcrepe = object_draft_schematic_food_shared_
    combineTypes = {0, 0, 1},
    contribution = {100, 100, 100},
 
-   numberExperimentalProperties = {1, 1, 1, 2, 2, 2},
-   experimentalProperties = {"XX", "XX", "XX", "OQ", "PE", "DR", "PE", "DR", "OQ"},
-   experimentalWeights = {1, 1, 1, 1, 2, 1, 3, 3, 1},
-   experimentalGroupTitles = {"null", "null", "null", "exp_nutrition", "exp_quantity", "exp_filling"},
-   experimentalSubGroupTitles = {"null", "null", "hitpoints", "nutrition", "quantity", "filling"},
-   experimentalMin = {0, 0, 1000, 75, 60, 80},
-   experimentalMax = {0, 0, 1000, 120, 100, 120},
-   experimentalPrecision = {0, 0, 0, 0, 0, 0},
+   templates { = 
+              2054517358, -- Script: 'object/tangible/food/crafted/dish_dustcrepe.iff'
+             }
 
-   tanoCRC = 2054517358, -- Script: 'object/tangible/food/crafted/dish_dustcrepe.iff'
 }
 ObjectTemplates:addTemplate(object_draft_schematic_food_dish_dustcrepe, "object/draft_schematic/food/dish_dustcrepe.iff")

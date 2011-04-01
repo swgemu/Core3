@@ -72,15 +72,9 @@ object_draft_schematic_vehicle_civilian_landspeeder_x34 = object_draft_schematic
    combineTypes = {0, 0},
    contribution = {100, 100},
 
-   numberExperimentalProperties = {1, 1, 1},
-   experimentalProperties = {"XX", "XX", "SR"},
-   experimentalWeights = {1, 1, 1},
-   experimentalGroupTitles = {"null", "null", "exp_durability"},
-   experimentalSubGroupTitles = {"null", "null", "hit_points"},
-   experimentalMin = {0, 0, 1500},
-   experimentalMax = {0, 0, 3000},
-   experimentalPrecision = {0, 0, 0},
+   templates { = 
+              3267740067, -- Script: 'object/tangible/deed/vehicle_deed/landspeeder_x34_deed.iff'
+             }
 
-   tanoCRC = 3267740067, -- Script: 'object/tangible/deed/vehicle_deed/landspeeder_x34_deed.iff'
 }
 ObjectTemplates:addTemplate(object_draft_schematic_vehicle_civilian_landspeeder_x34, "object/draft_schematic/vehicle/civilian/landspeeder_x34.iff")

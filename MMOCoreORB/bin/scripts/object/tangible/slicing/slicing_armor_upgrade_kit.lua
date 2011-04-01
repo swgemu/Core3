@@ -44,8 +44,16 @@
 object_tangible_slicing_slicing_armor_upgrade_kit = object_tangible_slicing_shared_slicing_armor_upgrade_kit:new {
 	templateType = SLICINGTOOL,
 	gameObjectType = 32779,
-	effectiveness = -15
+	effectiveness = -15,
 
+	numberExperimentalProperties = {1, 1, 1, 1, 1},
+	experimentalProperties = {"XX", "XX", "XX", "CD", "XX"},
+	experimentalWeights = {1, 1, 1, 1, 1},
+	experimentalGroupTitles = {"null", "null", "null", "exp_effectiveness", "0"},
+	experimentalSubGroupTitles = {"null", "null", "hitpoints", "usemodifier", "0"},
+	experimentalMin = {0, 0, 1000, -15, 0}, -15, 0},
+	experimentalMax = {0, 0, 1000, 15, 0},
+	experimentalPrecision = {0, 0, 0, 0, 0},
 }
 
 ObjectTemplates:addTemplate(object_tangible_slicing_slicing_armor_upgrade_kit, "object/tangible/slicing/slicing_armor_upgrade_kit.iff")

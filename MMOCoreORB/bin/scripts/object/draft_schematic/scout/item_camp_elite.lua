@@ -72,15 +72,9 @@ object_draft_schematic_scout_item_camp_elite = object_draft_schematic_scout_shar
    combineTypes = {0, 0, 0},
    contribution = {100, 100, 100},
 
-   numberExperimentalProperties = {1, 1, 1, 1},
-   experimentalProperties = {"XX", "XX", "XX", "XX"},
-   experimentalWeights = {1, 1, 1, 1},
-   experimentalGroupTitles = {"null", "null", "null", "null"},
-   experimentalSubGroupTitles = {"null", "null", "hitpoints", "quality"},
-   experimentalMin = {0, 0, 1000, 1},
-   experimentalMax = {0, 0, 1000, 100},
-   experimentalPrecision = {0, 0, 0, 0},
+   templates { = 
+              4064064934, -- Script: 'object/tangible/scout/camp/camp_elite.iff'
+             }
 
-   tanoCRC = 4064064934, -- Script: 'object/tangible/scout/camp/camp_elite.iff'
 }
 ObjectTemplates:addTemplate(object_draft_schematic_scout_item_camp_elite, "object/draft_schematic/scout/item_camp_elite.iff")

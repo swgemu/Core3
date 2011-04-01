@@ -43,6 +43,14 @@
 
 object_tangible_ship_crafted_reverse_engineering_analysis_tool = object_tangible_ship_crafted_reverse_engineering_shared_analysis_tool:new {
 
+	numberExperimentalProperties = {1, 1, 2},
+	experimentalProperties = {"XX", "XX", "CD", "OQ"},
+	experimentalWeights = {1, 1, 1, 1},
+	experimentalGroupTitles = {"null", "null", "exp_charges"},
+	experimentalSubGroupTitles = {"null", "null", "charges"},
+	experimentalMin = {0, 0, 5},
+	experimentalMax = {0, 0, 20},
+	experimentalPrecision = {0, 0, 0},
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_reverse_engineering_analysis_tool, "object/tangible/ship/crafted/reverse_engineering/analysis_tool.iff")

@@ -43,6 +43,14 @@
 
 object_tangible_component_chemistry_resilience_compound = object_tangible_component_chemistry_shared_resilience_compound:new {
 
+	numberExperimentalProperties = {1, 1, 1, 1, 1, 1, 2, 2, 1},
+	experimentalProperties = {"XX", "XX", "XX", "XX", "XX", "XX", "DR", "OQ", "DR", "OQ", "XX"},
+	experimentalWeights = {1, 1, 1, 1, 1, 1, 1, 2, 1, 1, 1},
+	experimentalGroupTitles = {"null", "null", "null", "null", "null", "null", "expEaseOfUse", "exp_effectiveness", "null"},
+	experimentalSubGroupTitles = {"null", "null", "power", "charges", "area", "range", "potency", "duration", "hitpoints"},
+	experimentalMin = {0, 0, 0, 0, 0, 0, 1, 1, 1000},
+	experimentalMax = {0, 0, 0, 0, 0, 0, 30, 60, 1000},
+	experimentalPrecision = {0, 0, 0, 0, 0, 0, 0, 0, 0},
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_chemistry_resilience_compound, "object/tangible/component/chemistry/resilience_compound.iff")

@@ -72,15 +72,9 @@ object_draft_schematic_furniture_furniture_lamp_desk_s01_on = object_draft_schem
    combineTypes = {0, 0, 0},
    contribution = {100, 100, 100},
 
-   numberExperimentalProperties = {1, 1, 1, 1},
-   experimentalProperties = {"XX", "XX", "XX", "XX"},
-   experimentalWeights = {1, 1, 1, 1},
-   experimentalGroupTitles = {"null", "null", "null", "exp_quality"},
-   experimentalSubGroupTitles = {"null", "null", "hitpoints", "lifespan"},
-   experimentalMin = {0, 0, 1000, 21},
-   experimentalMax = {0, 0, 1000, 42},
-   experimentalPrecision = {0, 0, 0, 0},
+   templates { = 
+              3745632348, -- Script: 'object/tangible/furniture/all/frn_all_light_lamp_desk_s01.iff'
+             }
 
-   tanoCRC = 3745632348, -- Script: 'object/tangible/furniture/all/frn_all_light_lamp_desk_s01.iff'
 }
 ObjectTemplates:addTemplate(object_draft_schematic_furniture_furniture_lamp_desk_s01_on, "object/draft_schematic/furniture/furniture_lamp_desk_s01_on.iff")

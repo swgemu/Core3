@@ -72,15 +72,9 @@ object_draft_schematic_clothing_clothing_armor_chitin_helmet = object_draft_sche
    combineTypes = {0, 0, 0, 0, 0, 0, 1, 1, 1},
    contribution = {100, 100, 100, 100, 100, 100, 100, 100, 100},
 
-   numberExperimentalProperties = {1, 1, 1, 2, 2, 2, 2, 2, 2, 1, 1, 2, 1},
-   experimentalProperties = {"XX", "XX", "XX", "OQ", "SR", "OQ", "SR", "OQ", "UT", "MA", "OQ", "MA", "OQ", "MA", "OQ", "XX", "XX", "OQ", "SR", "XX"},
-   experimentalWeights = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
-   experimentalGroupTitles = {"null", "null", "null", "null", "exp_quality", "exp_durability", "exp_durability", "exp_durability", "exp_durability", "null", "null", "exp_resistance", "null"},
-   experimentalSubGroupTitles = {"null", "null", "sockets", "hit_points", "armor_effectiveness", "armor_integrity", "armor_health_encumbrance", "armor_action_encumbrance", "armor_mind_encumbrance", "armor_rating", "armor_special_type", "armor_special_effectiveness", "armor_special_integrity"},
-   experimentalMin = {0, 0, 0, 1000, 5, 15000, 13, 13, 188, 1, 1, 5, 15000},
-   experimentalMax = {0, 0, 0, 1000, 30, 25000, 8, 8, 113, 1, 1, 40, 25000},
-   experimentalPrecision = {0, 0, 0, 0, 10, 0, 0, 0, 0, 0, 0, 0, 0},
+   templates { = 
+              4235045418, -- Script: 'object/tangible/wearables/armor/chitin/armor_chitin_s01_helmet.iff'
+             }
 
-   tanoCRC = 4235045418, -- Script: 'object/tangible/wearables/armor/chitin/armor_chitin_s01_helmet.iff'
 }
 ObjectTemplates:addTemplate(object_draft_schematic_clothing_clothing_armor_chitin_helmet, "object/draft_schematic/clothing/clothing_armor_chitin_helmet.iff")

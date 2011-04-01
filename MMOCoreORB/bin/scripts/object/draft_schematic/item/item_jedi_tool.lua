@@ -72,15 +72,9 @@ object_draft_schematic_item_item_jedi_tool = object_draft_schematic_item_shared_
    combineTypes = {0, 0, 0},
    contribution = {100, 100, 100},
 
-   numberExperimentalProperties = {1, 1, 1, 1},
-   experimentalProperties = {"XX", "XX", "XX", "CD"},
-   experimentalWeights = {1, 1, 1, 1},
-   experimentalGroupTitles = {"null", "null", "null", "exp_effectiveness"},
-   experimentalSubGroupTitles = {"null", "null", "hitpoints", "usemodifier"},
-   experimentalMin = {0, 0, 1000, -15},
-   experimentalMax = {0, 0, 1000, 15},
-   experimentalPrecision = {0, 0, 0, 0},
+   templates { = 
+              3651422589, -- Script: 'object/tangible/crafting/station/jedi_tool.iff'
+             }
 
-   tanoCRC = 3651422589, -- Script: 'object/tangible/crafting/station/jedi_tool.iff'
 }
 ObjectTemplates:addTemplate(object_draft_schematic_item_item_jedi_tool, "object/draft_schematic/item/item_jedi_tool.iff")

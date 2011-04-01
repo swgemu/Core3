@@ -44,8 +44,16 @@
 object_tangible_slicing_slicing_flow_analyzer = object_tangible_slicing_shared_slicing_flow_analyzer:new {
 	templateType = SLICINGTOOL,
 	gameObjectType = 32776,
-	effectiveness = -15.0
+	effectiveness = -15.0,
 
+	numberExperimentalProperties = {1, 1, 1, 1},
+	experimentalProperties = {"XX", "XX", "XX", "CD"},
+	experimentalWeights = {1, 1, 1, 1},
+	experimentalGroupTitles = {"null", "null", "null", "exp_effectiveness"},
+	experimentalSubGroupTitles = {"null", "null", "hitpoints", "usemodifier"},
+	experimentalMin = {0, 0, 1000, -15}, -15},
+	experimentalMax = {0, 0, 1000, 15},
+	experimentalPrecision = {0, 0, 0, 0},
 }
 
 ObjectTemplates:addTemplate(object_tangible_slicing_slicing_flow_analyzer, "object/tangible/slicing/slicing_flow_analyzer.iff")

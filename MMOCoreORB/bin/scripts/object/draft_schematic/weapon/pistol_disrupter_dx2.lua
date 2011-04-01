@@ -72,15 +72,9 @@ object_draft_schematic_weapon_pistol_disrupter_dx2 = object_draft_schematic_weap
    combineTypes = {0, 0, 0, 1, 1, 1},
    contribution = {100, 100, 100, 100, 100, 100},
 
-   numberExperimentalProperties = {1, 1, 2, 2, 2, 2, 2, 2, 2, 1, 1, 1, 2, 2, 2},
-   experimentalProperties = {"XX", "XX", "CD", "OQ", "CD", "OQ", "CD", "OQ", "CD", "OQ", "CD", "OQ", "CD", "OQ", "CD", "OQ", "XX", "XX", "XX", "CD", "OQ", "CD", "OQ", "CD", "OQ"},
-   experimentalWeights = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
-   experimentalGroupTitles = {"null", "null", "expDamage", "expDamage", "expDamage", "expDamage", "expEffeciency", "exp_durability", "expRange", "null", "null", "null", "expEffeciency", "expEffeciency", "expEffeciency"},
-   experimentalSubGroupTitles = {"null", "null", "mindamage", "maxdamage", "attackspeed", "woundchance", "roundsused", "hitpoints", "zerorangemod", "maxrangemod", "midrange", "midrangemod", "attackhealthcost", "attackactioncost", "attackmindcost"},
-   experimentalMin = {0, 0, 42, 79, 4.6, 8, 15, 750, 18, -90, 16, 14, 26, 46, 17},
-   experimentalMax = {0, 0, 78, 117, 3.2, 16, 60, 1500, 33, -90, 16, 30, 14, 25, 9},
-   experimentalPrecision = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+   templates { = 
+              3457275751, -- Script: 'object/weapon/ranged/pistol/pistol_dx2.iff'
+             }
 
-   tanoCRC = 3457275751, -- Script: 'object/weapon/ranged/pistol/pistol_dx2.iff'
 }
 ObjectTemplates:addTemplate(object_draft_schematic_weapon_pistol_disrupter_dx2, "object/draft_schematic/weapon/pistol_disrupter_dx2.iff")

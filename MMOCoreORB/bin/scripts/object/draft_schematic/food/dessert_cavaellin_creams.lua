@@ -72,15 +72,9 @@ object_draft_schematic_food_dessert_cavaellin_creams = object_draft_schematic_fo
    combineTypes = {1, 1, 0, 0, 1},
    contribution = {100, 100, 100, 100, 100},
 
-   numberExperimentalProperties = {1, 1, 1, 2, 2, 2},
-   experimentalProperties = {"XX", "XX", "XX", "DR", "OQ", "OQ", "PE", "DR", "FL"},
-   experimentalWeights = {1, 1, 1, 1, 1, 1, 2, 1, 2},
-   experimentalGroupTitles = {"null", "null", "null", "exp_nutrition", "exp_quantity", "exp_filling"},
-   experimentalSubGroupTitles = {"null", "null", "hitpoints", "nutrition", "quantity", "filling"},
-   experimentalMin = {0, 0, 1000, 75, 60, 80},
-   experimentalMax = {0, 0, 1000, 120, 100, 120},
-   experimentalPrecision = {0, 0, 0, 10, 10, 10},
+   templates { = 
+              2361562246, -- Script: 'object/tangible/food/crafted/dessert_cavaellin_creams.iff'
+             }
 
-   tanoCRC = 2361562246, -- Script: 'object/tangible/food/crafted/dessert_cavaellin_creams.iff'
 }
 ObjectTemplates:addTemplate(object_draft_schematic_food_dessert_cavaellin_creams, "object/draft_schematic/food/dessert_cavaellin_creams.iff")

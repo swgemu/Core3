@@ -72,15 +72,9 @@ object_draft_schematic_chemistry_medpack_disease_willpower_b = object_draft_sche
    combineTypes = {0, 0, 0, 1, 1, 1},
    contribution = {100, 100, 100, 100, 100, 100},
 
-   numberExperimentalProperties = {1, 1, 2, 2, 2, 2, 2, 2, 1},
-   experimentalProperties = {"XX", "XX", "OQ", "PE", "OQ", "UT", "CD", "OQ", "OQ", "PE", "OQ", "PE", "DR", "OQ", "XX"},
-   experimentalWeights = {1, 1, 2, 1, 2, 1, 1, 2, 2, 1, 2, 1, 1, 1, 1},
-   experimentalGroupTitles = {"null", "null", "exp_effectiveness", "expCharges", "expCharges", "expEaseOfUse", "expEaseOfUse", "exp_effectiveness", "null"},
-   experimentalSubGroupTitles = {"null", "null", "power", "charges", "range", "skillmodmin", "potency", "duration", "hitpoints"},
-   experimentalMin = {0, 0, 10, 10, 15, 50, 25, 120, 1000},
-   experimentalMax = {0, 0, 40, 25, 30, 30, 100, 800, 1000},
-   experimentalPrecision = {0, 0, 0, 0, 0, 0, 0, 0, 0},
+   templates { = 
+              1941170211, -- Script: 'object/tangible/medicine/crafted/medpack_disease_willpower_b.iff'
+             }
 
-   tanoCRC = 1941170211, -- Script: 'object/tangible/medicine/crafted/medpack_disease_willpower_b.iff'
 }
 ObjectTemplates:addTemplate(object_draft_schematic_chemistry_medpack_disease_willpower_b, "object/draft_schematic/chemistry/medpack_disease_willpower_b.iff")
