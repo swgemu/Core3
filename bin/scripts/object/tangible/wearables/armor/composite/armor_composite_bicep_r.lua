@@ -44,18 +44,18 @@
 object_tangible_wearables_armor_composite_armor_composite_bicep_r = object_tangible_wearables_armor_composite_shared_armor_composite_bicep_r:new {
 	templateType = ARMOROBJECT,
 
-	-- ALL, ALLSEXES, ALLFACTIONS, HUMANOIDS, HUMANOID_FOOTWEAR, HUMANOID_MALES, HUMANOID_FEMALES, HUMANOID_IMPERIALS, HUMANOID_REBELS, WOOKIEES, ITHORIANS, TWILEKS
+	-- ALL, ALLSEXES, ALLFACTIONS, HUMANOIDS, HUMANOID_FOOTWEAR, HUMANOID_MALES, HUMANOID_FEMALES, HUMANOID_IMPERIALS, HUMANOID_REBELS, WOOKIEES, ITHORIANS, TWILEKS,
 	playerUseMask = HUMANOIDS,
-	
-	-- Damage types in WeaponObject
+	,
+	-- Damage types in WeaponObject,
 	vunerability = STUN + LIGHTSABER,
 
-	-- These are default Blue Frog stats
+	-- These are default Blue Frog stats,
 	healthEncumbrance = 1,
 	actionEncumbrance = 1,
 	mindEncumbrance = 1,
 
-	-- LIGHT, MEDIUM, HEAVY
+	-- LIGHT, MEDIUM, HEAVY,
 	rating = LIGHT,
 
 	kinetic = 15,
@@ -66,7 +66,15 @@ object_tangible_wearables_armor_composite_armor_composite_bicep_r = object_tangi
 	heat = 15,
 	cold = 15,
 	acid = 15,
-	lightSaber = 0
+	lightSaber = 0,
+	numberExperimentalProperties = {1, 1, 1, 1, 2, 2, 2, 2, 2, 1, 1, 2, 1},
+	experimentalProperties = {"XX", "XX", "XX", "XX", "OQ", "SR", "OQ", "UT", "MA", "OQ", "MA", "OQ", "MA", "OQ", "XX", "XX", "OQ", "SR", "XX"},
+	experimentalWeights = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+	experimentalGroupTitles = {"null", "null", "null", "exp_durability", "exp_quality", "exp_resistance", "exp_durability", "exp_durability", "exp_durability", "null", "null", "exp_resistance", "null"},
+	experimentalSubGroupTitles = {"null", "null", "sockets", "hit_points", "armor_effectiveness", "armor_integrity", "armor_health_encumbrance", "armor_action_encumbrance", "armor_mind_encumbrance", "armor_rating", "armor_special_type", "armor_special_effectiveness", "armor_special_integrity"},
+	experimentalMin = {0, 0, 0, 1000, 1, 30000, 25, 22, 25, 1, 0, 0, 0},
+	experimentalMax = {0, 0, 0, 1000, 40, 50000, 15, 13, 15, 1, 0, 0, 0},
+	experimentalPrecision = {0, 0, 0, 0, 10, 0, 0, 0, 0, 0, 0, 0, 0},
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_armor_composite_armor_composite_bicep_r, "object/tangible/wearables/armor/composite/armor_composite_bicep_r.iff")

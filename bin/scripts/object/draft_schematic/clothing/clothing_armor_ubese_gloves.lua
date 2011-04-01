@@ -72,15 +72,9 @@ object_draft_schematic_clothing_clothing_armor_ubese_gloves = object_draft_schem
    combineTypes = {0, 0, 0, 0, 0, 0, 1, 1, 1},
    contribution = {100, 100, 100, 100, 100, 100, 100, 100, 100},
 
-   numberExperimentalProperties = {1, 1, 1, 2, 2, 2, 2, 2, 2, 1, 1, 2, 1},
-   experimentalProperties = {"XX", "XX", "XX", "OQ", "SR", "OQ", "SR", "OQ", "UT", "MA", "OQ", "MA", "OQ", "MA", "OQ", "XX", "XX", "OQ", "SR", "XX"},
-   experimentalWeights = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
-   experimentalGroupTitles = {"null", "null", "null", "exp_durability", "exp_quality", "exp_durability", "exp_durability", "exp_durability", "exp_durability", "null", "null", "exp_resistance", "null"},
-   experimentalSubGroupTitles = {"null", "null", "sockets", "hit_points", "armor_effectiveness", "armor_integrity", "armor_health_encumbrance", "armor_action_encumbrance", "armor_mind_encumbrance", "armor_rating", "armor_special_type", "armor_special_effectiveness", "armor_special_integrity"},
-   experimentalMin = {0, 0, 0, 1000, 1, 15000, 11, 28, 19, 1, 1, 1, 18750},
-   experimentalMax = {0, 0, 0, 1000, 30, 25000, 7, 17, 11, 1, 1, 40, 31250},
-   experimentalPrecision = {0, 0, 0, 0, 10, 0, 0, 0, 0, 0, 0, 0, 0},
+   templates { = 
+              2870233660, -- Script: 'object/tangible/wearables/armor/ubese/armor_ubese_gloves.iff'
+             }
 
-   tanoCRC = 2870233660, -- Script: 'object/tangible/wearables/armor/ubese/armor_ubese_gloves.iff'
 }
 ObjectTemplates:addTemplate(object_draft_schematic_clothing_clothing_armor_ubese_gloves, "object/draft_schematic/clothing/clothing_armor_ubese_gloves.iff")

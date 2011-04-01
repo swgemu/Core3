@@ -72,15 +72,9 @@ object_draft_schematic_food_drink_bespin_port = object_draft_schematic_food_shar
    combineTypes = {1, 0, 0, 0, 1, 1},
    contribution = {100, 100, 100, 100, 100, 100},
 
-   numberExperimentalProperties = {1, 1, 1, 1, 2, 2, 2, 1},
-   experimentalProperties = {"XX", "XX", "XX", "XX", "DR", "OQ", "OQ", "PE", "FL", "OQ", "XX"},
-   experimentalWeights = {1, 1, 1, 1, 1, 1, 1, 2, 2, 1, 1},
-   experimentalGroupTitles = {"null", "null", "null", "null", "exp_nutrition", "exp_quantity", "exp_filling", "null"},
-   experimentalSubGroupTitles = {"null", "null", "hitpoints", "quantity_bonus", "nutrition", "quantity", "filling", "stomach"},
-   experimentalMin = {0, 0, 1000, 0, 75, 60, 80, 1},
-   experimentalMax = {0, 0, 1000, 0, 120, 100, 120, 1},
-   experimentalPrecision = {0, 0, 0, 0, 10, 10, 10, 0},
+   templates { = 
+              3473339719, -- Script: 'object/tangible/food/crafted/drink_bespin_port.iff'
+             }
 
-   tanoCRC = 3473339719, -- Script: 'object/tangible/food/crafted/drink_bespin_port.iff'
 }
 ObjectTemplates:addTemplate(object_draft_schematic_food_drink_bespin_port, "object/draft_schematic/food/drink_bespin_port.iff")

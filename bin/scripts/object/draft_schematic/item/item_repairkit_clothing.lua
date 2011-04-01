@@ -72,15 +72,9 @@ object_draft_schematic_item_item_repairkit_clothing = object_draft_schematic_ite
    combineTypes = {0, 0},
    contribution = {100, 100},
 
-   numberExperimentalProperties = {1, 1, 1, 1},
-   experimentalProperties = {"XX", "XX", "UT", "CD"},
-   experimentalWeights = {1, 1, 1, 1},
-   experimentalGroupTitles = {"null", "null", "exp_durability", "exp_quality"},
-   experimentalSubGroupTitles = {"null", "null", "hitpoints", "quality"},
-   experimentalMin = {0, 0, 1000, 1},
-   experimentalMax = {0, 0, 1000, 100},
-   experimentalPrecision = {0, 0, 0, 0},
+   templates { = 
+              2302530121, -- Script: 'object/tangible/crafting/station/clothing_repair.iff'
+             }
 
-   tanoCRC = 2302530121, -- Script: 'object/tangible/crafting/station/clothing_repair.iff'
 }
 ObjectTemplates:addTemplate(object_draft_schematic_item_item_repairkit_clothing, "object/draft_schematic/item/item_repairkit_clothing.iff")

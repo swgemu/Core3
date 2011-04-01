@@ -72,15 +72,9 @@ object_draft_schematic_clothing_clothing_hat_formal_13 = object_draft_schematic_
    combineTypes = {1, 0, 1},
    contribution = {100, 100, 100},
 
-   numberExperimentalProperties = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
-   experimentalProperties = {"XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX"},
-   experimentalWeights = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
-   experimentalGroupTitles = {"null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null"},
-   experimentalSubGroupTitles = {"null", "null", "sockets", "hitpoints", "mod_idx_one", "mod_val_one", "mod_idx_two", "mod_val_two", "mod_idx_three", "mod_val_three", "mod_idx_four", "mod_val_four", "mod_idx_five", "mod_val_five", "mod_idx_six", "mod_val_six"},
-   experimentalMin = {0, 0, 0, 1000, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-   experimentalMax = {0, 0, 0, 1000, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-   experimentalPrecision = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+   templates { = 
+              1011222558, -- Script: 'object/tangible/wearables/hat/hat_s13.iff'
+             }
 
-   tanoCRC = 1011222558, -- Script: 'object/tangible/wearables/hat/hat_s13.iff'
 }
 ObjectTemplates:addTemplate(object_draft_schematic_clothing_clothing_hat_formal_13, "object/draft_schematic/clothing/clothing_hat_formal_13.iff")

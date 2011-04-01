@@ -48,8 +48,16 @@ object_tangible_medicine_crafted_medpack_cure_poison_area_a = object_tangible_me
 	effectiveness = 100,
 	state = POISONED,
 	commandToExecute = "/curepoison",
-	area = 5
+	area = 5,
 
+	numberExperimentalProperties = {1, 1, 2, 2, 2, 1, 1},
+	experimentalProperties = {"XX", "XX", "OQ", "PE", "OQ", "UT", "OQ", "PE", "XX", "XX"},
+	experimentalWeights = {1, 1, 2, 1, 2, 1, 1, 2, 1, 1},
+	experimentalGroupTitles = {"null", "null", "exp_effectiveness", "expCharges", "expRange", "null", "null"},
+	experimentalSubGroupTitles = {"null", "null", "power", "charges", "area", "skillmodmin", "hitpoints"},
+	experimentalMin = {0, 0, 10, 10, 5, 70, 1000},
+	experimentalMax = {0, 0, 90, 20, 0, 70, 1000},
+	experimentalPrecision = {0, 0, 0, 0, 0, 0, 0},
 }
 
 ObjectTemplates:addTemplate(object_tangible_medicine_crafted_medpack_cure_poison_area_a, "object/tangible/medicine/crafted/medpack_cure_poison_area_a.iff")

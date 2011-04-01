@@ -72,15 +72,9 @@ object_draft_schematic_item_item_firework_eleven = object_draft_schematic_item_s
    combineTypes = {0, 0, 0, 0},
    contribution = {100, 100, 100, 100},
 
-   numberExperimentalProperties = {1, 1, 1, 1},
-   experimentalProperties = {"XX", "XX", "XX", "OQ"},
-   experimentalWeights = {1, 1, 1, 1},
-   experimentalGroupTitles = {"null", "null", "null", "exp_effectiveness"},
-   experimentalSubGroupTitles = {"null", "null", "hitpoints", "charges"},
-   experimentalMin = {0, 0, 1000, 2},
-   experimentalMax = {0, 0, 1000, 10},
-   experimentalPrecision = {0, 0, 0, 0},
+   templates { = 
+              3480923776, -- Script: 'object/tangible/firework/firework_s11.iff'
+             }
 
-   tanoCRC = 3480923776, -- Script: 'object/tangible/firework/firework_s11.iff'
 }
 ObjectTemplates:addTemplate(object_draft_schematic_item_item_firework_eleven, "object/draft_schematic/item/item_firework_eleven.iff")

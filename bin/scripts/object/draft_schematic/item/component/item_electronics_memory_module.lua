@@ -72,15 +72,9 @@ object_draft_schematic_item_component_item_electronics_memory_module = object_dr
    combineTypes = {0, 0, 0, 0, 0},
    contribution = {100, 100, 100, 100, 100},
 
-   numberExperimentalProperties = {1, 1, 1, 1},
-   experimentalProperties = {"XX", "XX", "UT", "OQ"},
-   experimentalWeights = {1, 1, 1, 1},
-   experimentalGroupTitles = {"null", "null", "exp_durability", "exp_effectiveness"},
-   experimentalSubGroupTitles = {"null", "null", "hitpoints", "usemodifier"},
-   experimentalMin = {0, 0, 100, -5},
-   experimentalMax = {0, 0, 150, 5},
-   experimentalPrecision = {0, 0, 0, 0},
+   templates { = 
+              270787698, -- Script: 'object/tangible/component/item/electronics_memory_module.iff'
+             }
 
-   tanoCRC = 270787698, -- Script: 'object/tangible/component/item/electronics_memory_module.iff'
 }
 ObjectTemplates:addTemplate(object_draft_schematic_item_component_item_electronics_memory_module, "object/draft_schematic/item/component/item_electronics_memory_module.iff")

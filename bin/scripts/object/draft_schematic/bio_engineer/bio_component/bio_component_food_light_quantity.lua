@@ -72,15 +72,9 @@ object_draft_schematic_bio_engineer_bio_component_bio_component_food_light_quant
    combineTypes = {0, 0, 0, 1},
    contribution = {100, 100, 100, 100},
 
-   numberExperimentalProperties = {1, 1, 1, 3},
-   experimentalProperties = {"XX", "XX", "XX", "FL", "OQ", "PE"},
-   experimentalWeights = {1, 1, 1, 1, 2, 2},
-   experimentalGroupTitles = {"null", "null", "null", "exp_quantity"},
-   experimentalSubGroupTitles = {"null", "null", "hitpoints", "add_quantity"},
-   experimentalMin = {0, 0, 1000, 100},
-   experimentalMax = {0, 0, 1000, 200},
-   experimentalPrecision = {0, 0, 0, 0},
+   templates { = 
+              3262355037, -- Script: 'object/tangible/component/bio/bio_component_food_light_quantity.iff'
+             }
 
-   tanoCRC = 3262355037, -- Script: 'object/tangible/component/bio/bio_component_food_light_quantity.iff'
 }
 ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_bio_component_bio_component_food_light_quantity, "object/draft_schematic/bio_engineer/bio_component/bio_component_food_light_quantity.iff")

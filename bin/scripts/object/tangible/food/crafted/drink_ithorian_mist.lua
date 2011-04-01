@@ -43,7 +43,7 @@
 
 object_tangible_food_crafted_drink_ithorian_mist = object_tangible_food_crafted_shared_drink_ithorian_mist:new {
 	templateType = CONSUMABLE,
-	
+	,
 	duration = 10,
 	filling = 10,
 	nutrition = 10,
@@ -63,7 +63,15 @@ object_tangible_food_crafted_drink_ithorian_mist = object_tangible_food_crafted_
 
 	buffName = "food.drink_ithorian_mist",
 	buffCRC = 0,
-	speciesRestriction = ""
+	speciesRestriction = "",
+	numberExperimentalProperties = {1, 1, 1, 1, 2, 2, 2, 2, 1},
+	experimentalProperties = {"XX", "XX", "XX", "XX", "OQ", "PE", "DR", "FL", "DR", "PE", "DR", "OQ", "XX"},
+	experimentalWeights = {1, 1, 1, 1, 1, 2, 1, 2, 1, 3, 3, 1, 1},
+	experimentalGroupTitles = {"null", "null", "null", "null", "exp_nutrition", "exp_flavor", "exp_quantity", "exp_filling", "null"},
+	experimentalSubGroupTitles = {"null", "null", "hitpoints", "quantity_bonus", "nutrition", "flavor", "quantity", "filling", "stomach"},
+	experimentalMin = {0, 0, 1000, 0, 75, 60, 60, 80, 1},
+	experimentalMax = {0, 0, 1000, 0, 120, 120, 100, 120, 1},
+	experimentalPrecision = {0, 0, 0, 0, 10, 10, 10, 10, 0},
 }
 
 ObjectTemplates:addTemplate(object_tangible_food_crafted_drink_ithorian_mist, "object/tangible/food/crafted/drink_ithorian_mist.iff")

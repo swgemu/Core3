@@ -72,15 +72,9 @@ object_draft_schematic_droid_component_repair_unit_casing = object_draft_schemat
    combineTypes = {0, 0},
    contribution = {100, 100},
 
-   numberExperimentalProperties = {1, 1, 2, 1},
-   experimentalProperties = {"XX", "XX", "OQ", "UT", "XX"},
-   experimentalWeights = {1, 1, 1, 2, 1},
-   experimentalGroupTitles = {"null", "null", "expCharges", "null"},
-   experimentalSubGroupTitles = {"null", "null", "charges", "hitpoints"},
-   experimentalMin = {0, 0, 1, 1000},
-   experimentalMax = {0, 0, 5, 1000},
-   experimentalPrecision = {0, 0, 0, 0},
+   templates { = 
+              2140634822, -- Script: 'object/tangible/component/droid/repair/repair_unit_casing.iff'
+             }
 
-   tanoCRC = 2140634822, -- Script: 'object/tangible/component/droid/repair/repair_unit_casing.iff'
 }
 ObjectTemplates:addTemplate(object_draft_schematic_droid_component_repair_unit_casing, "object/draft_schematic/droid/component/repair_unit_casing.iff")

@@ -43,6 +43,14 @@
 
 object_tangible_component_droid_performer_effects_d = object_tangible_component_droid_shared_performer_effects_d:new {
 
+	numberExperimentalProperties = {1, 1, 2, 1, 2, 1},
+	experimentalProperties = {"XX", "XX", "CD", "OQ", "XX", "CD", "OQ", "XX"},
+	experimentalWeights = {1, 1, 1, 1, 1, 1, 1, 1},
+	experimentalGroupTitles = {"null", "null", "exp_durability", "null", "exp_effectiveness", "null"},
+	experimentalSubGroupTitles = {"null", "null", "decayrate", "hitpoints", "mechanism_quality", "entertainer_effects"},
+	experimentalMin = {0, 0, 5, 1000, -10, 1000}, -10, 1000},
+	experimentalMax = {0, 0, 15, 1000, 15, 1000},
+	experimentalPrecision = {0, 0, 0, 0, 0, 0},
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_droid_performer_effects_d, "object/tangible/component/droid/performer_effects_d.iff")

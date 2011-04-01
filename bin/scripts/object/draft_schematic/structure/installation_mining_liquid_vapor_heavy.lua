@@ -72,15 +72,9 @@ object_draft_schematic_structure_installation_mining_liquid_vapor_heavy = object
    combineTypes = {0, 0, 0, 0, 1, 0, 1, 1, 1},
    contribution = {100, 100, 100, 100, 100, 100, 100, 100, 100},
 
-   numberExperimentalProperties = {1, 1, 3, 2, 1},
-   experimentalProperties = {"XX", "XX", "HR", "SR", "UT", "MA", "UT", "XX"},
-   experimentalWeights = {1, 1, 1, 1, 2, 1, 2, 1},
-   experimentalGroupTitles = {"null", "null", "expEffeciency", "expStorage", "null"},
-   experimentalSubGroupTitles = {"null", "null", "extractrate", "hoppersize", "hitpoints"},
-   experimentalMin = {0, 0, 3, 100000, 1000},
-   experimentalMax = {0, 0, 7, 150000, 1000},
-   experimentalPrecision = {0, 0, 0, 0, 0},
+   templates { = 
+              2334135912, -- Script: 'object/tangible/deed/harvester_deed/harvester_moisture_deed_heavy.iff'
+             }
 
-   tanoCRC = 2334135912, -- Script: 'object/tangible/deed/harvester_deed/harvester_moisture_deed_heavy.iff'
 }
 ObjectTemplates:addTemplate(object_draft_schematic_structure_installation_mining_liquid_vapor_heavy, "object/draft_schematic/structure/installation_mining_liquid_vapor_heavy.iff")

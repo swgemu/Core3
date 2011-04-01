@@ -72,15 +72,9 @@ object_draft_schematic_clothing_clothing_armor_ithorian_defender_leggings = obje
    combineTypes = {0, 0, 0, 0, 0, 0, 1, 1, 1},
    contribution = {100, 100, 100, 100, 100, 100, 100, 100, 100},
 
-   numberExperimentalProperties = {1, 1, 1, 2, 2, 2, 2, 2, 2, 1, 1, 2, 1},
-   experimentalProperties = {"XX", "XX", "XX", "OQ", "SR", "OQ", "SR", "OQ", "UT", "MA", "OQ", "MA", "OQ", "MA", "OQ", "XX", "XX", "OQ", "SR", "XX"},
-   experimentalWeights = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
-   experimentalGroupTitles = {"null", "null", "null", "exp_durability", "exp_quality", "exp_durability", "exp_durability", "exp_durability", "exp_durability", "null", "null", "exp_resistance", "null"},
-   experimentalSubGroupTitles = {"null", "null", "sockets", "hit_points", "armor_effectiveness", "armor_integrity", "armor_health_encumbrance", "armor_action_encumbrance", "armor_mind_encumbrance", "armor_rating", "armor_special_type", "armor_special_effectiveness", "armor_special_integrity"},
-   experimentalMin = {0, 0, 0, 1000, 1, 18750, 52, 175, 23, 1, 4, 1, 18750},
-   experimentalMax = {0, 0, 0, 1000, 30, 31250, 31, 105, 14, 1, 4, 40, 31250},
-   experimentalPrecision = {0, 0, 0, 0, 10, 0, 0, 0, 0, 0, 0, 0, 0},
+   templates { = 
+              1749090194, -- Script: 'object/tangible/wearables/armor/ithorian_defender/ith_armor_s01_leggings.iff'
+             }
 
-   tanoCRC = 1749090194, -- Script: 'object/tangible/wearables/armor/ithorian_defender/ith_armor_s01_leggings.iff'
 }
 ObjectTemplates:addTemplate(object_draft_schematic_clothing_clothing_armor_ithorian_defender_leggings, "object/draft_schematic/clothing/clothing_armor_ithorian_defender_leggings.iff")

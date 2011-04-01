@@ -72,15 +72,9 @@ object_draft_schematic_droid_component_crafting_module_weapon = object_draft_sch
    combineTypes = {0, 0, 0},
    contribution = {100, 100, 100},
 
-   numberExperimentalProperties = {1, 1, 2, 1, 2, 1},
-   experimentalProperties = {"XX", "XX", "CD", "OQ", "XX", "CD", "OQ", "XX"},
-   experimentalWeights = {1, 1, 1, 1, 1, 1, 1, 1},
-   experimentalGroupTitles = {"null", "null", "exp_durability", "null", "exp_effectiveness", "exp_effectiveness"},
-   experimentalSubGroupTitles = {"null", "null", "decayrate", "hitpoints", "mechanism_quality", "crafting_module"},
-   experimentalMin = {0, 0, 5, 1000, -10, 1},
-   experimentalMax = {0, 0, 15, 1000, 15, 1},
-   experimentalPrecision = {0, 0, 0, 0, 0, 0},
+   templates { = 
+              1355437665, -- Script: 'object/tangible/component/droid/crafting_module_weapon.iff'
+             }
 
-   tanoCRC = 1355437665, -- Script: 'object/tangible/component/droid/crafting_module_weapon.iff'
 }
 ObjectTemplates:addTemplate(object_draft_schematic_droid_component_crafting_module_weapon, "object/draft_schematic/droid/component/crafting_module_weapon.iff")

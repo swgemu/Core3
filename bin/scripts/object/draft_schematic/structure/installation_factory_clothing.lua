@@ -72,15 +72,9 @@ object_draft_schematic_structure_installation_factory_clothing = object_draft_sc
    combineTypes = {0, 1, 0, 0, 1, 1, 1},
    contribution = {100, 100, 100, 100, 100, 100, 100},
 
-   numberExperimentalProperties = {1, 1, 1, 2, 2, 2},
-   experimentalProperties = {"XX", "XX", "XX", "DR", "UT", "DR", "UT", "DR", "UT"},
-   experimentalWeights = {1, 1, 1, 1, 2, 1, 2, 1, 2},
-   experimentalGroupTitles = {"null", "null", "null", "expEffeciency", "expStorage", "exp_durability"},
-   experimentalSubGroupTitles = {"null", "null", "extractrate", "buildrate", "hoppersize", "hitpoints"},
-   experimentalMin = {0, 0, 0, 5, 1500, 5000},
-   experimentalMax = {0, 0, 0, 12, 4000, 7000},
-   experimentalPrecision = {0, 0, 0, 0, 0, 0},
+   templates { = 
+              494810594, -- Script: 'object/tangible/deed/factory_deed/factory_clothing_deed.iff'
+             }
 
-   tanoCRC = 494810594, -- Script: 'object/tangible/deed/factory_deed/factory_clothing_deed.iff'
 }
 ObjectTemplates:addTemplate(object_draft_schematic_structure_installation_factory_clothing, "object/draft_schematic/structure/installation_factory_clothing.iff")

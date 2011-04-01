@@ -43,6 +43,14 @@
 
 object_tangible_component_bio_bio_component_clothing_casual_taming = object_tangible_component_bio_shared_bio_component_clothing_casual_taming:new {
 
+	numberExperimentalProperties = {1, 1, 1, 1, 1, 3, 1, 3},
+	experimentalProperties = {"XX", "XX", "XX", "XX", "XX", "FL", "OQ", "PE", "XX", "FL", "OQ", "PE"},
+	experimentalWeights = {1, 1, 1, 1, 1, 1, 2, 2, 1, 1, 2, 2},
+	experimentalGroupTitles = {"null", "null", "null", "null", "null", "exp_effectiveness", "null", "exp_effectiveness"},
+	experimentalSubGroupTitles = {"null", "null", "decayrate", "hitpoints", "mod_idx_one", "mod_val_one", "mod_idx_two", "mod_val_two"},
+	experimentalMin = {0, 0, 30, 1000, 104, 1, 105, 1},
+	experimentalMax = {0, 0, 50, 1000, 104, 10, 105, 10},
+	experimentalPrecision = {0, 0, 0, 0, 0, 0, 0, 0},
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_bio_bio_component_clothing_casual_taming, "object/tangible/component/bio/bio_component_clothing_casual_taming.iff")

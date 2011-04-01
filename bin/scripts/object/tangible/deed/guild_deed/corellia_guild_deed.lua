@@ -43,9 +43,17 @@
 
 object_tangible_deed_guild_deed_corellia_guild_deed = object_tangible_deed_guild_deed_shared_corellia_guild_deed:new {
 	templateType = DEED,
-	generatedObjectTemplate = "object/building/player/player_guildhall_corellia_style_01.iff"
+	generatedObjectTemplate = "object/building/player/player_guildhall_corellia_style_01.iff",
 
 
+	numberExperimentalProperties = {1, 1, 1},
+	experimentalProperties = {"XX", "XX", "DR"},
+	experimentalWeights = {1, 1, 1},
+	experimentalGroupTitles = {"null", "null", "exp_durability"},
+	experimentalSubGroupTitles = {"null", "null", "hitpoints"},
+	experimentalMin = {0, 0, 50000},
+	experimentalMax = {0, 0, 100000},
+	experimentalPrecision = {0, 0, 0},
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_guild_deed_corellia_guild_deed, "object/tangible/deed/guild_deed/corellia_guild_deed.iff")

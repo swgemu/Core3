@@ -72,15 +72,9 @@ object_draft_schematic_structure_city_theater_naboo = object_draft_schematic_str
    combineTypes = {0, 0, 0, 1, 1, 1},
    contribution = {100, 100, 100, 100, 100, 100},
 
-   numberExperimentalProperties = {1, 1, 1},
-   experimentalProperties = {"XX", "XX", "DR"},
-   experimentalWeights = {1, 1, 1},
-   experimentalGroupTitles = {"null", "null", "exp_durability"},
-   experimentalSubGroupTitles = {"null", "null", "hitpoints"},
-   experimentalMin = {0, 0, 35000},
-   experimentalMax = {0, 0, 75000},
-   experimentalPrecision = {0, 0, 0},
+   templates { = 
+              829956410, -- Script: 'object/tangible/deed/city_deed/theater_naboo_deed.iff'
+             }
 
-   tanoCRC = 829956410, -- Script: 'object/tangible/deed/city_deed/theater_naboo_deed.iff'
 }
 ObjectTemplates:addTemplate(object_draft_schematic_structure_city_theater_naboo, "object/draft_schematic/structure/city/theater_naboo.iff")

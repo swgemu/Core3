@@ -43,6 +43,14 @@
 
 object_tangible_component_droid_personality_module_stupid = object_tangible_component_droid_shared_personality_module_stupid:new {
 
+	numberExperimentalProperties = {1, 1, 2, 1, 2, 1},
+	experimentalProperties = {"XX", "XX", "CD", "OQ", "XX", "CD", "OQ", "XX"},
+	experimentalWeights = {1, 1, 1, 1, 1, 1, 1, 1},
+	experimentalGroupTitles = {"null", "null", "exp_durability", "null", "exp_effectiveness", "null"},
+	experimentalSubGroupTitles = {"null", "null", "decayrate", "hitpoints", "mechanism_quality", "personality_module"},
+	experimentalMin = {0, 0, 5, 1000, -10, 5}, -10, 5},
+	experimentalMax = {0, 0, 15, 1000, 15, 5},
+	experimentalPrecision = {0, 0, 0, 0, 0, 0},
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_droid_personality_module_stupid, "object/tangible/component/droid/personality_module_stupid.iff")

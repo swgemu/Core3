@@ -72,15 +72,9 @@ object_draft_schematic_chemistry_component_resilience_compound = object_draft_sc
    combineTypes = {0, 0},
    contribution = {100, 100},
 
-   numberExperimentalProperties = {1, 1, 1, 1, 1, 1, 2, 2, 1},
-   experimentalProperties = {"XX", "XX", "XX", "XX", "XX", "XX", "DR", "OQ", "DR", "OQ", "XX"},
-   experimentalWeights = {1, 1, 1, 1, 1, 1, 1, 2, 1, 1, 1},
-   experimentalGroupTitles = {"null", "null", "null", "null", "null", "null", "expEaseOfUse", "exp_effectiveness", "null"},
-   experimentalSubGroupTitles = {"null", "null", "power", "charges", "area", "range", "potency", "duration", "hitpoints"},
-   experimentalMin = {0, 0, 0, 0, 0, 0, 1, 1, 1000},
-   experimentalMax = {0, 0, 0, 0, 0, 0, 30, 60, 1000},
-   experimentalPrecision = {0, 0, 0, 0, 0, 0, 0, 0, 0},
+   templates { = 
+              3797845095, -- Script: 'object/tangible/component/chemistry/resilience_compound.iff'
+             }
 
-   tanoCRC = 3797845095, -- Script: 'object/tangible/component/chemistry/resilience_compound.iff'
 }
 ObjectTemplates:addTemplate(object_draft_schematic_chemistry_component_resilience_compound, "object/draft_schematic/chemistry/component/resilience_compound.iff")

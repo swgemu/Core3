@@ -47,7 +47,15 @@ object_tangible_medicine_crafted_medpack_enhance_quickness_b = object_tangible_m
 	medicineUse = 5,
 	effectiveness = 100,
 	duration = 1800,
-	attribute = 4
+	attribute = 4,
+	numberExperimentalProperties = {1, 1, 2, 2, 2, 2, 1},
+	experimentalProperties = {"XX", "XX", "OQ", "PE", "OQ", "UT", "DR", "OQ", "OQ", "PE", "XX"},
+	experimentalWeights = {1, 1, 2, 1, 2, 1, 1, 1, 2, 1, 1},
+	experimentalGroupTitles = {"null", "null", "exp_effectiveness", "expCharges", "exp_effectiveness", "expEaseOfUse", "null"},
+	experimentalSubGroupTitles = {"null", "null", "power", "charges", "duration", "skillmodmin", "hitpoints"},
+	experimentalMin = {0, 0, 20, 5, 1200, 70, 100},
+	experimentalMax = {0, 0, 200, 15, 7200, 55, 150},
+	experimentalPrecision = {0, 0, 0, 0, 0, 0, 0},
 }
 
 ObjectTemplates:addTemplate(object_tangible_medicine_crafted_medpack_enhance_quickness_b, "object/tangible/medicine/crafted/medpack_enhance_quickness_b.iff")

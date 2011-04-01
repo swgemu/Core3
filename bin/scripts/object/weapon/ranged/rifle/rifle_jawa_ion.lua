@@ -42,43 +42,43 @@
 
 
 object_weapon_ranged_rifle_rifle_jawa_ion = object_weapon_ranged_rifle_shared_rifle_jawa_ion:new {
-	-- ALL, ALLSEXES, ALLFACTIONS, HUMANOIDS, HUMANOID_FOOTWEAR, HUMANOID_MALES, HUMANOID_FEMALES, HUMANOID_IMPERIALS, HUMANOID_REBELS, WOOKIES, ITHORIANS, TWILEKS
+	-- ALL, ALLSEXES, ALLFACTIONS, HUMANOIDS, HUMANOID_FOOTWEAR, HUMANOID_MALES, HUMANOID_FEMALES, HUMANOID_IMPERIALS, HUMANOID_REBELS, WOOKIES, ITHORIANS, TWILEKS,
 	playerUseMask = ALL,
 
-	-- RANGEDATTACK, MELEEATTACK, FORCEATTACK, TRAPATTACK, GRENADEATTACK, HEAVYACIDBEAMATTACK, 
-	-- HEAVYLIGHTNINGBEAMATTACK, HEAVYPARTICLEBEAMATTACK, HEAVYROCKETLAUNCHERATTACK, HEAVYLAUNCHERATTACK
+	-- RANGEDATTACK, MELEEATTACK, FORCEATTACK, TRAPATTACK, GRENADEATTACK, HEAVYACIDBEAMATTACK, ,
+	-- HEAVYLIGHTNINGBEAMATTACK, HEAVYPARTICLEBEAMATTACK, HEAVYROCKETLAUNCHERATTACK, HEAVYLAUNCHERATTACK,
 	attackType = RANGEDATTACK,
 
-	-- ENERGY, KINETIC, ELECTRICITY, STUN, BLAST, HEAT, COLD, ACID, FORCE, LIGHTSABER
+	-- ENERGY, KINETIC, ELECTRICITY, STUN, BLAST, HEAT, COLD, ACID, FORCE, LIGHTSABER,
 	damageType = STUN,
 
-	-- NONE, LIGHT, MEDIUM, HEAVY
+	-- NONE, LIGHT, MEDIUM, HEAVY,
 	armorPiercing = LIGHT,
 
-	-- combat_rangedspecialize_bactarifle, combat_rangedspecialize_rifle, combat_rangedspecialize_pistol, combat_rangedspecialize_heavy, combat_rangedspecialize_carbine
+	-- combat_rangedspecialize_bactarifle, combat_rangedspecialize_rifle, combat_rangedspecialize_pistol, combat_rangedspecialize_heavy, combat_rangedspecialize_carbine,
 	-- combat_meleespecialize_unarmed, combat_meleespecialize_twohand, combat_meleespecialize_polearm, combat_meleespecialize_onehand, combat_general,
-	-- combat_meleespecialize_twohandlightsaber, combat_meleespecialize_polearmlightsaber, combat_meleespecialize_onehandlightsaber
+	-- combat_meleespecialize_twohandlightsaber, combat_meleespecialize_polearmlightsaber, combat_meleespecialize_onehandlightsaber,
 	xpType = "combat_rangedspecialize_rifle",
-	
-	-- See http://www.ocdsoft.com/files/certifications.xls
+	,
+	-- See http://www.ocdsoft.com/files/certifications.xls,
 	certificationsRequired = { "cert_rifle_jawa_ion" },
-	-- See http://www.ocdsoft.com/files/accuracy.xls
+	-- See http://www.ocdsoft.com/files/accuracy.xls,
 	creatureAccuracyModifiers = { "rifle_accuracy" },
 
-	-- See http://www.ocdsoft.com/files/defense.xls
+	-- See http://www.ocdsoft.com/files/defense.xls,
 	defenderDefenseModifiers = { "ranged_defense" },
 
-	-- Leave as "dodge" for now, may have additions later
+	-- Leave as "dodge" for now, may have additions later,
 	defenderSecondaryDefenseModifiers = { "dodge" },
 
-	-- See http://www.ocdsoft.com/files/speed.xls
+	-- See http://www.ocdsoft.com/files/speed.xls,
 	speedModifiers = { "rifle_speed" },
 
-	-- Leave blank for now
+	-- Leave blank for now,
 	damageModifiers = { },
-	
+	,
 
-	-- The values below are the default values.  To be used for blue frog objects primarily
+	-- The values below are the default values.  To be used for blue frog objects primarily,
 	healthAttackCost = 16,
 	actionAttackCost = 33,
 	mindAttackCost = 52,
@@ -96,7 +96,15 @@ object_weapon_ranged_rifle_rifle_jawa_ion = object_weapon_ranged_rifle_shared_ri
 	minDamage = 56,
 	maxDamage = 105,
 
-	attackSpeed = 8.5
+	attackSpeed = 8.5,
+	numberExperimentalProperties = {1, 1, 2, 2, 2, 2, 2, 2, 1, 1, 1, 2, 2, 2, 2},
+	experimentalProperties = {"XX", "XX", "CD", "OQ", "CD", "OQ", "CD", "OQ", "CD", "OQ", "CD", "OQ", "CD", "OQ", "XX", "XX", "XX", "CD", "OQ", "CD", "OQ", "CD", "OQ", "CD", "OQ"},
+	experimentalWeights = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+	experimentalGroupTitles = {"null", "null", "expDamage", "expDamage", "expDamage", "expDamage", "expEffeciency", "exp_durability", "null", "null", "null", "expRange", "expEffeciency", "expEffeciency", "expEffeciency"},
+	experimentalSubGroupTitles = {"null", "null", "mindamage", "maxdamage", "attackspeed", "woundchance", "roundsused", "hitpoints", "zerorangemod", "maxrangemod", "midrange", "midrangemod", "attackhealthcost", "attackactioncost", "attackmindcost"},
+	experimentalMin = {0, 0, 56, 105, 8.5, 3, 15, 750, -50, -80, 40, -5, 16, 33, 52}, -50, -80, 40, -5, 16, 33, 52},
+	experimentalMax = {0, 0, 104, 195, 5.9, 5, 55, 1500, -50, -80, 40, 5, 8, 18, 28}, -50, -80, 40, 5, 8, 18, 28},
+	experimentalPrecision = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
 }
 
 ObjectTemplates:addTemplate(object_weapon_ranged_rifle_rifle_jawa_ion, "object/weapon/ranged/rifle/rifle_jawa_ion.iff")

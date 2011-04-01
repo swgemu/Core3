@@ -72,15 +72,9 @@ object_draft_schematic_structure_city_hospital_naboo = object_draft_schematic_st
    combineTypes = {0, 0, 0, 1, 1, 1},
    contribution = {100, 100, 100, 100, 100, 100},
 
-   numberExperimentalProperties = {1, 1, 1},
-   experimentalProperties = {"XX", "XX", "DR"},
-   experimentalWeights = {1, 1, 1},
-   experimentalGroupTitles = {"null", "null", "exp_durability"},
-   experimentalSubGroupTitles = {"null", "null", "hitpoints"},
-   experimentalMin = {0, 0, 35000},
-   experimentalMax = {0, 0, 75000},
-   experimentalPrecision = {0, 0, 0},
+   templates { = 
+              1666247491, -- Script: 'object/tangible/deed/city_deed/hospital_naboo_deed.iff'
+             }
 
-   tanoCRC = 1666247491, -- Script: 'object/tangible/deed/city_deed/hospital_naboo_deed.iff'
 }
 ObjectTemplates:addTemplate(object_draft_schematic_structure_city_hospital_naboo, "object/draft_schematic/structure/city/hospital_naboo.iff")

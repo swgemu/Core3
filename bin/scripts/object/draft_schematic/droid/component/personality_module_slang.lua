@@ -72,15 +72,9 @@ object_draft_schematic_droid_component_personality_module_slang = object_draft_s
    combineTypes = {0, 0, 1, 0, 1, 1},
    contribution = {100, 100, 100, 100, 100, 100},
 
-   numberExperimentalProperties = {1, 1, 2, 1, 2, 1},
-   experimentalProperties = {"XX", "XX", "CD", "OQ", "XX", "CD", "OQ", "XX"},
-   experimentalWeights = {1, 1, 1, 1, 1, 1, 1, 1},
-   experimentalGroupTitles = {"null", "null", "exp_durability", "null", "exp_effectiveness", "null"},
-   experimentalSubGroupTitles = {"null", "null", "decayrate", "hitpoints", "mechanism_quality", "personality_module"},
-   experimentalMin = {0, 0, 5, 1000, -10, 25},
-   experimentalMax = {0, 0, 15, 1000, 15, 25},
-   experimentalPrecision = {0, 0, 0, 0, 0, 0},
+   templates { = 
+              2116866934, -- Script: 'object/tangible/component/droid/personality_module_slang.iff'
+             }
 
-   tanoCRC = 2116866934, -- Script: 'object/tangible/component/droid/personality_module_slang.iff'
 }
 ObjectTemplates:addTemplate(object_draft_schematic_droid_component_personality_module_slang, "object/draft_schematic/droid/component/personality_module_slang.iff")

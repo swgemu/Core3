@@ -72,15 +72,9 @@ object_draft_schematic_droid_droid_3p0 = object_draft_schematic_droid_shared_dro
    combineTypes = {1, 0, 0, 1, 1, 1, 1, 1, 1},
    contribution = {100, 100, 100, 100, 100, 100, 100, 100, 100},
 
-   numberExperimentalProperties = {1, 1, 3, 1, 1, 3, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
-   experimentalProperties = {"XX", "XX", "OQ", "SR", "UT", "XX", "XX", "OQ", "SR", "UT", "OQ", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX"},
-   experimentalWeights = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
-   experimentalGroupTitles = {"null", "null", "exp_durability", "null", "null", "exp_quality", "exp_effectiveness", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null"},
-   experimentalSubGroupTitles = {"null", "null", "decayrate", "armor_toughness", "armorencumbrance", "mechanism_quality", "power_level", "storage_module", "data_module", "personality_module", "medical_module", "crafting_module", "repair_module", "armor_module", "armoreffectiveness", "playback_module", "struct_module", "harvest_power", "trap_bonus", "merchant_barker", "bomb_level", "stimpack_capacity", "stimpack_speed", "auto_repair_power", "entertainer_effects"},
-   experimentalMin = {0, 0, 5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-   experimentalMax = {0, 0, 15, 0, 0, 100, 50, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-   experimentalPrecision = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+   templates { = 
+              3056760053, -- Script: 'object/tangible/deed/pet_deed/deed_3p0_basic.iff'
+             }
 
-   tanoCRC = 3056760053, -- Script: 'object/tangible/deed/pet_deed/deed_3p0_basic.iff'
 }
 ObjectTemplates:addTemplate(object_draft_schematic_droid_droid_3p0, "object/draft_schematic/droid/droid_3p0.iff")

@@ -45,7 +45,15 @@ object_tangible_medicine_crafted_crafted_stimpack_sm_s1_d = object_tangible_medi
 	gameObjectType = 8236,
 	templateType = STIMPACK,
 	medicineUse = 30,
-	effectiveness = 500
+	effectiveness = 500,
+	numberExperimentalProperties = {1, 1, 2, 2, 2, 1},
+	experimentalProperties = {"XX", "XX", "OQ", "PE", "OQ", "UT", "OQ", "PE", "XX"},
+	experimentalWeights = {1, 1, 2, 1, 2, 1, 2, 1, 1},
+	experimentalGroupTitles = {"null", "null", "exp_effectiveness", "expCharges", "expEaseOfUse", "null"},
+	experimentalSubGroupTitles = {"null", "null", "power", "charges", "skillmodmin", "hitpoints"},
+	experimentalMin = {0, 0, 150, 25, 45, 1000},
+	experimentalMax = {0, 0, 700, 50, 30, 1000},
+	experimentalPrecision = {0, 0, 0, 0, 0, 0},
 }
 
 ObjectTemplates:addTemplate(object_tangible_medicine_crafted_crafted_stimpack_sm_s1_d, "object/tangible/medicine/crafted/crafted_stimpack_sm_s1_d.iff")

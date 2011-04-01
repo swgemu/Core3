@@ -72,15 +72,9 @@ object_draft_schematic_droid_component_droid_space_memory_module_1 = object_draf
    combineTypes = {0, 0, 0, 0, 1},
    contribution = {100, 100, 100, 100, 100},
 
-   numberExperimentalProperties = {1, 1},
-   experimentalProperties = {"XX", "XX"},
-   experimentalWeights = {1, 1},
-   experimentalGroupTitles = {"null", "null"},
-   experimentalSubGroupTitles = {"null", "null"},
-   experimentalMin = {0, 0},
-   experimentalMax = {0, 0},
-   experimentalPrecision = {0, 0},
+   templates { = 
+              628706991, -- Script: 'object/tangible/droid/droid_space_memory_module_1.iff'
+             }
 
-   tanoCRC = 628706991, -- Script: 'object/tangible/droid/droid_space_memory_module_1.iff'
 }
 ObjectTemplates:addTemplate(object_draft_schematic_droid_component_droid_space_memory_module_1, "object/draft_schematic/droid/component/droid_space_memory_module_1.iff")

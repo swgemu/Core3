@@ -66,21 +66,15 @@ object_draft_schematic_clothing_clothing_bandolier_field_07 = object_draft_schem
 
    ingredientTemplateNames = {"craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n"},
    ingredientTitleNames = {"hardware", "load_bearing_harness", "reinforcement"},
-   ingredientSlotType = {1, 0, 2},
+   ingredientSlotType = {2, 0, 2},
    resourceTypes = {"object/tangible/component/clothing/shared_metal_fasteners.iff", "fiberplast", "object/tangible/component/clothing/shared_fiberplast_panel.iff"},
    resourceQuantities = {1, 15, 1},
    combineTypes = {1, 0, 1},
    contribution = {100, 100, 100},
 
-   numberExperimentalProperties = {1, 1, 1, 1},
-   experimentalProperties = {"XX", "XX", "XX", "XX"},
-   experimentalWeights = {1, 1, 1, 1},
-   experimentalGroupTitles = {"null", "null", "null", "null"},
-   experimentalSubGroupTitles = {"null", "null", "sockets", "hitpoints"},
-   experimentalMin = {0, 0, 0, 1000},
-   experimentalMax = {0, 0, 0, 1000},
-   experimentalPrecision = {0, 0, 0, 0},
+   templates { = 
+              831450410, -- Script: 'object/tangible/wearables/bandolier/bandolier_s07.iff'
+             }
 
-   tanoCRC = 831450410, -- Script: 'object/tangible/wearables/bandolier/bandolier_s07.iff'
 }
 ObjectTemplates:addTemplate(object_draft_schematic_clothing_clothing_bandolier_field_07, "object/draft_schematic/clothing/clothing_bandolier_field_07.iff")

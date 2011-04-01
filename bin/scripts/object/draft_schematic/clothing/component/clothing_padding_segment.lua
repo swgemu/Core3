@@ -72,15 +72,9 @@ object_draft_schematic_clothing_component_clothing_padding_segment = object_draf
    combineTypes = {0, 0, 0},
    contribution = {100, 100, 100},
 
-   numberExperimentalProperties = {1, 1, 1, 2, 2, 2, 2, 2, 1},
-   experimentalProperties = {"XX", "XX", "XX", "OQ", "SR", "OQ", "UT", "OQ", "SR", "OQ", "SR", "OQ", "SR", "XX"},
-   experimentalWeights = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
-   experimentalGroupTitles = {"null", "null", "null", "exp_quality", "exp_durability", "exp_durability", "exp_durability", "exp_durability", "null"},
-   experimentalSubGroupTitles = {"null", "null", "hit_points", "armor_effectiveness", "armor_integrity", "armor_health_encumbrance", "armor_action_encumbrance", "armor_mind_encumbrance", "armor_rating"},
-   experimentalMin = {0, 0, 1000, 1, 50, 9, 11, 9, 1},
-   experimentalMax = {0, 0, 1000, 5, 500, 1, 1, 1, 1},
-   experimentalPrecision = {0, 0, 0, 10, 0, 0, 0, 0, 0},
+   templates { = 
+              349677024, -- Script: 'object/tangible/component/clothing/padding_segment.iff'
+             }
 
-   tanoCRC = 349677024, -- Script: 'object/tangible/component/clothing/padding_segment.iff'
 }
 ObjectTemplates:addTemplate(object_draft_schematic_clothing_component_clothing_padding_segment, "object/draft_schematic/clothing/component/clothing_padding_segment.iff")

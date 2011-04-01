@@ -46,7 +46,15 @@ object_tangible_medicine_crafted_medpack_wound_stamina_e = object_tangible_medic
 	templateType = WOUNDPACK,
 	medicineUse = 5,
 	effectiveness = 100,
-	attribute = 5
+	attribute = 5,
+	numberExperimentalProperties = {1, 1, 2, 2, 2, 1},
+	experimentalProperties = {"XX", "XX", "OQ", "PE", "OQ", "UT", "OQ", "PE", "XX"},
+	experimentalWeights = {1, 1, 2, 1, 2, 1, 2, 1, 1},
+	experimentalGroupTitles = {"null", "null", "exp_effectiveness", "expCharges", "expEaseOfUse", "null"},
+	experimentalSubGroupTitles = {"null", "null", "power", "charges", "skillmodmin", "hitpoints"},
+	experimentalMin = {0, 0, 30, 30, 90, 1000},
+	experimentalMax = {0, 0, 400, 60, 60, 1000},
+	experimentalPrecision = {0, 0, 0, 0, 0, 0},
 }
 
 ObjectTemplates:addTemplate(object_tangible_medicine_crafted_medpack_wound_stamina_e, "object/tangible/medicine/crafted/medpack_wound_stamina_e.iff")

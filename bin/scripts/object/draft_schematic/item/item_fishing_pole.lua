@@ -72,15 +72,9 @@ object_draft_schematic_item_item_fishing_pole = object_draft_schematic_item_shar
    combineTypes = {0, 0, 0, 0},
    contribution = {100, 100, 100, 100},
 
-   numberExperimentalProperties = {1, 1, 1, 1},
-   experimentalProperties = {"XX", "XX", "XX", "UT"},
-   experimentalWeights = {1, 1, 1, 1},
-   experimentalGroupTitles = {"null", "null", "null", "exp_effectiveness"},
-   experimentalSubGroupTitles = {"null", "null", "hitpoints", "usemodifier"},
-   experimentalMin = {0, 0, 1000, 0},
-   experimentalMax = {0, 0, 1000, 100},
-   experimentalPrecision = {0, 0, 0, 0},
+   templates { = 
+              2403580220, -- Script: 'object/tangible/fishing/fishing_pole.iff'
+             }
 
-   tanoCRC = 2403580220, -- Script: 'object/tangible/fishing/fishing_pole.iff'
 }
 ObjectTemplates:addTemplate(object_draft_schematic_item_item_fishing_pole, "object/draft_schematic/item/item_fishing_pole.iff")

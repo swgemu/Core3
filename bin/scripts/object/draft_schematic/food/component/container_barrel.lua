@@ -72,15 +72,9 @@ object_draft_schematic_food_component_container_barrel = object_draft_schematic_
    combineTypes = {0, 1, 1},
    contribution = {100, 100, 100},
 
-   numberExperimentalProperties = {1, 1, 1},
-   experimentalProperties = {"XX", "XX", "XX"},
-   experimentalWeights = {1, 1, 1},
-   experimentalGroupTitles = {"null", "null", "null"},
-   experimentalSubGroupTitles = {"null", "null", "quantity_bonus"},
-   experimentalMin = {0, 0, 6},
-   experimentalMax = {0, 0, 6},
-   experimentalPrecision = {0, 0, 0},
+   templates { = 
+              3961204086, -- Script: 'object/tangible/component/food/container_barrel.iff'
+             }
 
-   tanoCRC = 3961204086, -- Script: 'object/tangible/component/food/container_barrel.iff'
 }
 ObjectTemplates:addTemplate(object_draft_schematic_food_component_container_barrel, "object/draft_schematic/food/component/container_barrel.iff")

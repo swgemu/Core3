@@ -43,6 +43,14 @@
 
 object_tangible_component_droid_item_storage_module_5 = object_tangible_component_droid_shared_item_storage_module_5:new {
 
+	numberExperimentalProperties = {1, 1, 2, 1, 2, 2},
+	experimentalProperties = {"XX", "XX", "CD", "OQ", "XX", "CD", "OQ", "CD", "OQ"},
+	experimentalWeights = {1, 1, 1, 1, 1, 1, 1, 1, 1},
+	experimentalGroupTitles = {"null", "null", "exp_durability", "null", "exp_effectiveness", "exp_effectiveness"},
+	experimentalSubGroupTitles = {"null", "null", "decayrate", "hitpoints", "mechanism_quality", "storage_module"},
+	experimentalMin = {0, 0, 5, 1000, -10, 9}, -10, 9},
+	experimentalMax = {0, 0, 15, 1000, 15, 11},
+	experimentalPrecision = {0, 0, 0, 0, 0, 0},
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_droid_item_storage_module_5, "object/tangible/component/droid/item_storage_module_5.iff")

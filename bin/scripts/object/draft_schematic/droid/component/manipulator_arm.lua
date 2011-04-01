@@ -72,15 +72,9 @@ object_draft_schematic_droid_component_manipulator_arm = object_draft_schematic_
    combineTypes = {0, 0, 0, 0, 0},
    contribution = {100, 100, 100, 100, 100},
 
-   numberExperimentalProperties = {1, 1, 1, 1, 1},
-   experimentalProperties = {"XX", "XX", "OQ", "XX", "OQ"},
-   experimentalWeights = {1, 1, 1, 1, 1},
-   experimentalGroupTitles = {"null", "null", "exp_durability", "null", "exp_effectiveness"},
-   experimentalSubGroupTitles = {"null", "null", "decayrate", "hitpoints", "mechanism_quality"},
-   experimentalMin = {0, 0, 5, 1000, -10},
-   experimentalMax = {0, 0, 15, 1000, 15},
-   experimentalPrecision = {0, 0, 0, 0, 0},
+   templates { = 
+              962004762, -- Script: 'object/tangible/component/droid/manipulator_arm.iff'
+             }
 
-   tanoCRC = 962004762, -- Script: 'object/tangible/component/droid/manipulator_arm.iff'
 }
 ObjectTemplates:addTemplate(object_draft_schematic_droid_component_manipulator_arm, "object/draft_schematic/droid/component/manipulator_arm.iff")

@@ -53,6 +53,14 @@ object_tangible_survey_tool_survey_tool_mineral = object_tangible_survey_tool_sh
    toolType = 6,
    toolAnimation = "clienteffect/survey_tool_mineral.cef",
    sampleAnimation = "clienteffect/survey_sample_mineral.cef",
-   surveyType = "mineral"
+   surveyType = "mineral",
+	numberExperimentalProperties = {1, 1, 1, 1},
+	experimentalProperties = {"XX", "XX", "XX", "CD"},
+	experimentalWeights = {1, 1, 1, 1},
+	experimentalGroupTitles = {"null", "null", "null", "exp_effectiveness"},
+	experimentalSubGroupTitles = {"null", "null", "hitpoints", "usemodifier"},
+	experimentalMin = {0, 0, 1000, -15}, -15},
+	experimentalMax = {0, 0, 1000, 15},
+	experimentalPrecision = {0, 0, 0, 0},
 }
 ObjectTemplates:addTemplate(object_tangible_survey_tool_survey_tool_mineral, "object/tangible/survey_tool/survey_tool_mineral.iff")

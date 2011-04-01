@@ -43,7 +43,15 @@
 
 object_tangible_firework_firework_five = object_tangible_firework_shared_firework_five:new {
 	fireworkObject = "object/static/firework/fx_05.iff",
-	templateType = FIREWORK
+	templateType = FIREWORK,
+	numberExperimentalProperties = {1, 1, 1, 1},
+	experimentalProperties = {"XX", "XX", "XX", "OQ"},
+	experimentalWeights = {1, 1, 1, 1},
+	experimentalGroupTitles = {"null", "null", "null", "exp_effectiveness"},
+	experimentalSubGroupTitles = {"null", "null", "hitpoints", "charges"},
+	experimentalMin = {0, 0, 1000, 2},
+	experimentalMax = {0, 0, 1000, 10},
+	experimentalPrecision = {0, 0, 0, 0},
 }
 
 ObjectTemplates:addTemplate(object_tangible_firework_firework_five, "object/tangible/firework/firework_five.iff")

@@ -43,9 +43,17 @@
 
 object_tangible_deed_harvester_deed_harvester_gas_deed_medium = object_tangible_deed_harvester_deed_shared_harvester_gas_deed_medium:new {
 	templateType = DEED,
-	generatedObjectTemplate = "object/installation/mining_gas/mining_gas_harvester_style_2.iff"
+	generatedObjectTemplate = "object/installation/mining_gas/mining_gas_harvester_style_2.iff",
 
 
+	numberExperimentalProperties = {1, 1, 3, 2, 1},
+	experimentalProperties = {"XX", "XX", "HR", "SR", "UT", "MA", "UT", "XX"},
+	experimentalWeights = {1, 1, 1, 1, 2, 1, 2, 1},
+	experimentalGroupTitles = {"null", "null", "expEffeciency", "expStorage", "null"},
+	experimentalSubGroupTitles = {"null", "null", "extractrate", "hoppersize", "hitpoints"},
+	experimentalMin = {0, 0, 2, 50000, 1000},
+	experimentalMax = {0, 0, 6, 75000, 1000},
+	experimentalPrecision = {0, 0, 0, 0, 0},
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_harvester_deed_harvester_gas_deed_medium, "object/tangible/deed/harvester_deed/harvester_gas_deed_medium.iff")

@@ -72,15 +72,9 @@ object_draft_schematic_droid_component_sensor_package_droid = object_draft_schem
    combineTypes = {0, 0, 0, 0, 0, 0},
    contribution = {100, 100, 100, 100, 100, 100},
 
-   numberExperimentalProperties = {1, 1, 2, 1, 2},
-   experimentalProperties = {"XX", "XX", "CD", "OQ", "XX", "CD", "OQ"},
-   experimentalWeights = {1, 1, 1, 1, 1, 1, 1},
-   experimentalGroupTitles = {"null", "null", "exp_durability", "null", "exp_effectiveness"},
-   experimentalSubGroupTitles = {"null", "null", "decayrate", "hitpoints", "mechanism_quality"},
-   experimentalMin = {0, 0, 5, 1000, -10},
-   experimentalMax = {0, 0, 15, 1000, 15},
-   experimentalPrecision = {0, 0, 0, 0, 0},
+   templates { = 
+              2994894242, -- Script: 'object/tangible/component/droid/sensor_package_droid.iff'
+             }
 
-   tanoCRC = 2994894242, -- Script: 'object/tangible/component/droid/sensor_package_droid.iff'
 }
 ObjectTemplates:addTemplate(object_draft_schematic_droid_component_sensor_package_droid, "object/draft_schematic/droid/component/sensor_package_droid.iff")

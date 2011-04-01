@@ -72,15 +72,9 @@ object_draft_schematic_clothing_clothing_backpack_field_04 = object_draft_schema
    combineTypes = {1, 1, 0, 0},
    contribution = {100, 100, 100, 100},
 
-   numberExperimentalProperties = {1, 1, 1},
-   experimentalProperties = {"XX", "XX", "XX"},
-   experimentalWeights = {1, 1, 1},
-   experimentalGroupTitles = {"null", "null", "null"},
-   experimentalSubGroupTitles = {"null", "null", "hitpoints"},
-   experimentalMin = {0, 0, 1000},
-   experimentalMax = {0, 0, 1000},
-   experimentalPrecision = {0, 0, 0},
+   templates { = 
+              1538478937, -- Script: 'object/tangible/wearables/backpack/backpack_s04.iff'
+             }
 
-   tanoCRC = 1538478937, -- Script: 'object/tangible/wearables/backpack/backpack_s04.iff'
 }
 ObjectTemplates:addTemplate(object_draft_schematic_clothing_clothing_backpack_field_04, "object/draft_schematic/clothing/clothing_backpack_field_04.iff")

@@ -72,15 +72,9 @@ object_draft_schematic_food_dish_protato = object_draft_schematic_food_shared_di
    combineTypes = {0, 0},
    contribution = {100, 100},
 
-   numberExperimentalProperties = {1, 1, 1},
-   experimentalProperties = {"XX", "XX", "XX"},
-   experimentalWeights = {1, 1, 1},
-   experimentalGroupTitles = {"null", "null", "null"},
-   experimentalSubGroupTitles = {"null", "null", "hitpoints"},
-   experimentalMin = {0, 0, 1000},
-   experimentalMax = {0, 0, 1000},
-   experimentalPrecision = {0, 0, 0},
+   templates { = 
+              3308445162, -- Script: 'object/tangible/food/crafted/dish_protato.iff'
+             }
 
-   tanoCRC = 3308445162, -- Script: 'object/tangible/food/crafted/dish_protato.iff'
 }
 ObjectTemplates:addTemplate(object_draft_schematic_food_dish_protato, "object/draft_schematic/food/dish_protato.iff")

@@ -43,19 +43,19 @@
 
 object_tangible_food_crafted_dessert_pkneb = object_tangible_food_crafted_shared_dessert_pkneb:new {
 	templateType = CONSUMABLE,
-	
+	,
 	duration = 45,
 	filling = 10,
 	nutrition = 10,
 
 	effectType = 4,
-	
+	,
 	fillingMin = 17,
 	fillingMax = 10,
-	
+	,
 	flavorMin = 720,
 	flavorMax = 1440,
-	
+	,
 	nutritionMin = 7.5,
 	nutritionMax = 12,
 	quantityMin = 6,
@@ -65,8 +65,16 @@ object_tangible_food_crafted_dessert_pkneb = object_tangible_food_crafted_shared
 
 	buffName = "food.dessert_pkneb",
 	buffCRC = 0,
-	speciesRestriction = ""
+	speciesRestriction = "",
 
+	numberExperimentalProperties = {1, 1, 1, 2, 2, 2, 2},
+	experimentalProperties = {"XX", "XX", "XX", "OQ", "PE", "FL", "OQ", "DR", "PE", "DR", "OQ"},
+	experimentalWeights = {1, 1, 1, 1, 2, 2, 1, 1, 3, 3, 1},
+	experimentalGroupTitles = {"null", "null", "null", "exp_nutrition", "exp_flavor", "exp_quantity", "exp_filling"},
+	experimentalSubGroupTitles = {"null", "null", "hitpoints", "nutrition", "flavor", "quantity", "filling"},
+	experimentalMin = {0, 0, 1000, 75, 60, 60, 80},
+	experimentalMax = {0, 0, 1000, 120, 120, 100, 120},
+	experimentalPrecision = {0, 0, 0, 0, 0, 0, 0},
 }
 
 ObjectTemplates:addTemplate(object_tangible_food_crafted_dessert_pkneb, "object/tangible/food/crafted/dessert_pkneb.iff")

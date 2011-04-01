@@ -72,15 +72,9 @@ object_draft_schematic_bio_engineer_bio_component_bio_component_food_light_flavo
    combineTypes = {0, 0, 0, 1},
    contribution = {100, 100, 100, 100},
 
-   numberExperimentalProperties = {1, 1, 1, 3},
-   experimentalProperties = {"XX", "XX", "XX", "FL", "OQ", "PE"},
-   experimentalWeights = {1, 1, 1, 1, 2, 2},
-   experimentalGroupTitles = {"null", "null", "null", "exp_flavor"},
-   experimentalSubGroupTitles = {"null", "null", "hitpoints", "add_flavor"},
-   experimentalMin = {0, 0, 1000, 10},
-   experimentalMax = {0, 0, 1000, 30},
-   experimentalPrecision = {0, 0, 0, 0},
+   templates { = 
+              2013813835, -- Script: 'object/tangible/component/bio/bio_component_food_light_flavor.iff'
+             }
 
-   tanoCRC = 2013813835, -- Script: 'object/tangible/component/bio/bio_component_food_light_flavor.iff'
 }
 ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_bio_component_bio_component_food_light_flavor, "object/draft_schematic/bio_engineer/bio_component/bio_component_food_light_flavor.iff")

@@ -72,15 +72,9 @@ object_draft_schematic_structure_installation_generator_fusion = object_draft_sc
    combineTypes = {0, 0, 1, 0, 0, 1, 0, 1, 1, 1},
    contribution = {100, 100, 100, 100, 100, 100, 100, 100, 100, 100},
 
-   numberExperimentalProperties = {1, 1, 1, 2, 1},
-   experimentalProperties = {"XX", "XX", "XX", "MA", "UT", "XX"},
-   experimentalWeights = {1, 1, 1, 1, 2, 1},
-   experimentalGroupTitles = {"null", "null", "null", "expStorage", "null"},
-   experimentalSubGroupTitles = {"null", "null", "extractrate", "hoppersize", "hitpoints"},
-   experimentalMin = {0, 0, 6, 100000, 1000},
-   experimentalMax = {0, 0, 12, 150000, 1000},
-   experimentalPrecision = {0, 0, 0, 0, 0},
+   templates { = 
+              153768002, -- Script: 'object/tangible/deed/generator_deed/generator_fusion_deed.iff'
+             }
 
-   tanoCRC = 153768002, -- Script: 'object/tangible/deed/generator_deed/generator_fusion_deed.iff'
 }
 ObjectTemplates:addTemplate(object_draft_schematic_structure_installation_generator_fusion, "object/draft_schematic/structure/installation_generator_fusion.iff")

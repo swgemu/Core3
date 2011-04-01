@@ -72,15 +72,9 @@ object_draft_schematic_food_drink_alcohol = object_draft_schematic_food_shared_d
    combineTypes = {0},
    contribution = {100},
 
-   numberExperimentalProperties = {1, 1, 1, 1, 1},
-   experimentalProperties = {"XX", "XX", "XX", "XX", "XX"},
-   experimentalWeights = {1, 1, 1, 1, 1},
-   experimentalGroupTitles = {"null", "null", "null", "null", "null"},
-   experimentalSubGroupTitles = {"null", "null", "hitpoints", "quantity_bonus", "stomach"},
-   experimentalMin = {0, 0, 1000, 0, 1},
-   experimentalMax = {0, 0, 1000, 0, 1},
-   experimentalPrecision = {0, 0, 0, 0, 0},
+   templates { = 
+              181145794, -- Script: 'object/tangible/food/crafted/drink_alcohol.iff'
+             }
 
-   tanoCRC = 181145794, -- Script: 'object/tangible/food/crafted/drink_alcohol.iff'
 }
 ObjectTemplates:addTemplate(object_draft_schematic_food_drink_alcohol, "object/draft_schematic/food/drink_alcohol.iff")

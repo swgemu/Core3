@@ -43,7 +43,7 @@
 
 object_tangible_food_crafted_dessert_blap_biscuit = object_tangible_food_crafted_shared_dessert_blap_biscuit:new {
 	templateType = CONSUMABLE,
-	
+	,
 	duration = 10,
 	filling = 10,
 	nutrition = 10,
@@ -63,7 +63,15 @@ object_tangible_food_crafted_dessert_blap_biscuit = object_tangible_food_crafted
 	modifiers = { "health", 0 },
 
 	buffName = "",
-	buffCRC = 0
+	buffCRC = 0,
+	numberExperimentalProperties = {1, 1, 1, 2, 2, 2, 2},
+	experimentalProperties = {"XX", "XX", "XX", "OQ", "PE", "FL", "OQ", "DR", "PE", "DR", "OQ"},
+	experimentalWeights = {1, 1, 1, 1, 2, 2, 1, 1, 3, 3, 1},
+	experimentalGroupTitles = {"null", "null", "null", "exp_nutrition", "exp_flavor", "exp_quantity", "exp_filling"},
+	experimentalSubGroupTitles = {"null", "null", "hitpoints", "nutrition", "flavor", "quantity", "filling"},
+	experimentalMin = {0, 0, 1000, 75, 60, 60, 80},
+	experimentalMax = {0, 0, 1000, 120, 120, 100, 120},
+	experimentalPrecision = {0, 0, 0, 10, 10, 10, 10},
 }
 
 ObjectTemplates:addTemplate(object_tangible_food_crafted_dessert_blap_biscuit, "object/tangible/food/crafted/dessert_blap_biscuit.iff")

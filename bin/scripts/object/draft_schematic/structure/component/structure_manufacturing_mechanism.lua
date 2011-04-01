@@ -72,15 +72,9 @@ object_draft_schematic_structure_component_structure_manufacturing_mechanism = o
    combineTypes = {0, 0, 0, 0, 1},
    contribution = {100, 100, 100, 100, 100},
 
-   numberExperimentalProperties = {1, 1, 1},
-   experimentalProperties = {"XX", "XX", "XX"},
-   experimentalWeights = {1, 1, 1},
-   experimentalGroupTitles = {"null", "null", "null"},
-   experimentalSubGroupTitles = {"null", "null", "hitpoints"},
-   experimentalMin = {0, 0, 1000},
-   experimentalMax = {0, 0, 5000},
-   experimentalPrecision = {0, 0, 0},
+   templates { = 
+              2607616608, -- Script: 'object/tangible/component/structure/manufacturing_mechanism.iff'
+             }
 
-   tanoCRC = 2607616608, -- Script: 'object/tangible/component/structure/manufacturing_mechanism.iff'
 }
 ObjectTemplates:addTemplate(object_draft_schematic_structure_component_structure_manufacturing_mechanism, "object/draft_schematic/structure/component/structure_manufacturing_mechanism.iff")

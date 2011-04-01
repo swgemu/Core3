@@ -43,6 +43,14 @@
 
 object_tangible_dice_eqp_configurable_group_dice = object_tangible_dice_shared_eqp_configurable_group_dice:new {
 
+	numberExperimentalProperties = {1, 1, 1, 1},
+	experimentalProperties = {"XX", "XX", "XX", "CD"},
+	experimentalWeights = {1, 1, 1, 1},
+	experimentalGroupTitles = {"null", "null", "null", "exp_effectiveness"},
+	experimentalSubGroupTitles = {"null", "null", "hitpoints", "usemodifier"},
+	experimentalMin = {0, 0, 1000, -15}, -15},
+	experimentalMax = {0, 0, 1000, 15},
+	experimentalPrecision = {0, 0, 0, 0},
 }
 
 ObjectTemplates:addTemplate(object_tangible_dice_eqp_configurable_group_dice, "object/tangible/dice/eqp_configurable_group_dice.iff")

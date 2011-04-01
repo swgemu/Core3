@@ -72,15 +72,9 @@ object_draft_schematic_chemistry_medpack_enhance_stamina_d = object_draft_schema
    combineTypes = {0, 0, 1, 1, 1},
    contribution = {100, 100, 100, 100, 100},
 
-   numberExperimentalProperties = {1, 1, 2, 2, 2, 2, 1},
-   experimentalProperties = {"XX", "XX", "OQ", "PE", "OQ", "UT", "DR", "OQ", "OQ", "PE", "XX"},
-   experimentalWeights = {1, 1, 2, 1, 2, 1, 1, 1, 2, 1, 1},
-   experimentalGroupTitles = {"null", "null", "exp_effectiveness", "expCharges", "exp_effectiveness", "expEaseOfUse", "null"},
-   experimentalSubGroupTitles = {"null", "null", "power", "charges", "duration", "skillmodmin", "hitpoints"},
-   experimentalMin = {0, 0, 40, 5, 1200, 100, 1000},
-   experimentalMax = {0, 0, 800, 25, 14200, 70, 1000},
-   experimentalPrecision = {0, 0, 0, 0, 0, 0, 0},
+   templates { = 
+              878775808, -- Script: 'object/tangible/medicine/crafted/medpack_enhance_stamina_d.iff'
+             }
 
-   tanoCRC = 878775808, -- Script: 'object/tangible/medicine/crafted/medpack_enhance_stamina_d.iff'
 }
 ObjectTemplates:addTemplate(object_draft_schematic_chemistry_medpack_enhance_stamina_d, "object/draft_schematic/chemistry/medpack_enhance_stamina_d.iff")

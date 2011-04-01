@@ -43,6 +43,14 @@
 
 object_tangible_food_crafted_drink_alcohol = object_tangible_food_crafted_shared_drink_alcohol:new {
 
+	numberExperimentalProperties = {1, 1, 1, 1, 1},
+	experimentalProperties = {"XX", "XX", "XX", "XX", "XX"},
+	experimentalWeights = {1, 1, 1, 1, 1},
+	experimentalGroupTitles = {"null", "null", "null", "null", "null"},
+	experimentalSubGroupTitles = {"null", "null", "hitpoints", "quantity_bonus", "stomach"},
+	experimentalMin = {0, 0, 1000, 0, 1},
+	experimentalMax = {0, 0, 1000, 0, 1},
+	experimentalPrecision = {0, 0, 0, 0, 0},
 }
 
 ObjectTemplates:addTemplate(object_tangible_food_crafted_drink_alcohol, "object/tangible/food/crafted/drink_alcohol.iff")

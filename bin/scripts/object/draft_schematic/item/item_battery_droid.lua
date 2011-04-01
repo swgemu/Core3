@@ -72,15 +72,9 @@ object_draft_schematic_item_item_battery_droid = object_draft_schematic_item_sha
    combineTypes = {0, 0, 0},
    contribution = {100, 100, 100},
 
-   numberExperimentalProperties = {1, 1, 1, 1},
-   experimentalProperties = {"XX", "XX", "XX", "CD"},
-   experimentalWeights = {1, 1, 1, 1},
-   experimentalGroupTitles = {"null", "null", "null", "exp_quality"},
-   experimentalSubGroupTitles = {"null", "null", "hitpoints", "charge"},
-   experimentalMin = {0, 0, 1000, 1},
-   experimentalMax = {0, 0, 1000, 5},
-   experimentalPrecision = {0, 0, 0, 0},
+   templates { = 
+              1496112814, -- Script: 'object/tangible/droid_battery/battery.iff'
+             }
 
-   tanoCRC = 1496112814, -- Script: 'object/tangible/droid_battery/battery.iff'
 }
 ObjectTemplates:addTemplate(object_draft_schematic_item_item_battery_droid, "object/draft_schematic/item/item_battery_droid.iff")

@@ -72,15 +72,9 @@ object_draft_schematic_droid_component_power_supply_redundant = object_draft_sch
    combineTypes = {0, 0, 0},
    contribution = {100, 100, 100},
 
-   numberExperimentalProperties = {1, 1, 3, 1},
-   experimentalProperties = {"XX", "XX", "CD", "OQ", "PE", "XX"},
-   experimentalWeights = {1, 1, 1, 1, 2, 1},
-   experimentalGroupTitles = {"null", "null", "exp_effectiveness", "null"},
-   experimentalSubGroupTitles = {"null", "null", "power", "hitpoints"},
-   experimentalMin = {0, 0, 1, 1000},
-   experimentalMax = {0, 0, 5, 1000},
-   experimentalPrecision = {0, 0, 0, 0},
+   templates { = 
+              2770068609, -- Script: 'object/tangible/component/droid/repair/power_supply_redundant.iff'
+             }
 
-   tanoCRC = 2770068609, -- Script: 'object/tangible/component/droid/repair/power_supply_redundant.iff'
 }
 ObjectTemplates:addTemplate(object_draft_schematic_droid_component_power_supply_redundant, "object/draft_schematic/droid/component/power_supply_redundant.iff")

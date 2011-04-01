@@ -72,15 +72,9 @@ object_draft_schematic_food_component_container_cask = object_draft_schematic_fo
    combineTypes = {0, 1},
    contribution = {100, 100},
 
-   numberExperimentalProperties = {1, 1, 1},
-   experimentalProperties = {"XX", "XX", "XX"},
-   experimentalWeights = {1, 1, 1},
-   experimentalGroupTitles = {"null", "null", "null"},
-   experimentalSubGroupTitles = {"null", "null", "quantity_bonus"},
-   experimentalMin = {0, 0, 4},
-   experimentalMax = {0, 0, 4},
-   experimentalPrecision = {0, 0, 0},
+   templates { = 
+              3552621287, -- Script: 'object/tangible/component/food/container_cask.iff'
+             }
 
-   tanoCRC = 3552621287, -- Script: 'object/tangible/component/food/container_cask.iff'
 }
 ObjectTemplates:addTemplate(object_draft_schematic_food_component_container_cask, "object/draft_schematic/food/component/container_cask.iff")

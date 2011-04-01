@@ -72,15 +72,9 @@ object_draft_schematic_clothing_clothing_bodysuit_formal_06 = object_draft_schem
    combineTypes = {0, 1, 1},
    contribution = {100, 100, 100},
 
-   numberExperimentalProperties = {1, 1, 1, 1},
-   experimentalProperties = {"XX", "XX", "XX", "XX"},
-   experimentalWeights = {1, 1, 1, 1},
-   experimentalGroupTitles = {"null", "null", "null", "null"},
-   experimentalSubGroupTitles = {"null", "null", "sockets", "hitpoints"},
-   experimentalMin = {0, 0, 0, 1000},
-   experimentalMax = {0, 0, 0, 1000},
-   experimentalPrecision = {0, 0, 0, 0},
+   templates { = 
+              3508305094, -- Script: 'object/tangible/wearables/bodysuit/bodysuit_s06.iff'
+             }
 
-   tanoCRC = 3508305094, -- Script: 'object/tangible/wearables/bodysuit/bodysuit_s06.iff'
 }
 ObjectTemplates:addTemplate(object_draft_schematic_clothing_clothing_bodysuit_formal_06, "object/draft_schematic/clothing/clothing_bodysuit_formal_06.iff")

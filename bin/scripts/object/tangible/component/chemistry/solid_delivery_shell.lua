@@ -43,6 +43,14 @@
 
 object_tangible_component_chemistry_solid_delivery_shell = object_tangible_component_chemistry_shared_solid_delivery_shell:new {
 
+	numberExperimentalProperties = {1, 1, 2, 1, 1},
+	experimentalProperties = {"XX", "XX", "OQ", "PE", "XX", "XX"},
+	experimentalWeights = {1, 1, 2, 1, 1, 1},
+	experimentalGroupTitles = {"null", "null", "exp_effectiveness", "null", "null"},
+	experimentalSubGroupTitles = {"null", "null", "power", "charges", "hitpoints"},
+	experimentalMin = {0, 0, 1, 0, 1000},
+	experimentalMax = {0, 0, 20, 0, 1000},
+	experimentalPrecision = {0, 0, 0, 0, 0},
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_chemistry_solid_delivery_shell, "object/tangible/component/chemistry/solid_delivery_shell.iff")

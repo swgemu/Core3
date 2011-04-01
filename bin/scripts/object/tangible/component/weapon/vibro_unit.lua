@@ -43,6 +43,14 @@
 
 object_tangible_component_weapon_vibro_unit = object_tangible_component_weapon_shared_vibro_unit:new {
 
+	numberExperimentalProperties = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+	experimentalProperties = {"XX", "XX", "UT", "UT", "UT", "UT", "UT", "UT", "UT", "UT", "UT", "UT", "UT"},
+	experimentalWeights = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+	experimentalGroupTitles = {"null", "null", "expDamage", "expDamage", "expDamage", "expDamage", "exp_durability", "expRange", "expRange", "expRange", "expEffeciency", "expEffeciency", "expEffeciency"},
+	experimentalSubGroupTitles = {"null", "null", "mindamage", "maxdamage", "attackspeed", "woundchance", "hitpoints", "zerorangemod", "maxrangemod", "midrangemod", "attackhealthcost", "attackactioncost", "attackmindcost"},
+	experimentalMin = {0, 0, 1, 1, 0, 0, 10, 0, 0, 0, 10, 10, 10},
+	experimentalMax = {0, 0, 20, 30, -0.5, 10, 100, 10, 10, 10, 0, 0, 0}, -0.5, 10, 100, 10, 10, 10, 0, 0, 0},
+	experimentalPrecision = {0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0},
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_weapon_vibro_unit, "object/tangible/component/weapon/vibro_unit.iff")

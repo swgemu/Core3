@@ -43,9 +43,17 @@
 
 object_tangible_deed_generator_deed_generator_solar_deed = object_tangible_deed_generator_deed_shared_generator_solar_deed:new {
 	templateType = DEED,
-	generatedObjectTemplate = "object/installation/generators/power_generator_solar_style_1.iff"
+	generatedObjectTemplate = "object/installation/generators/power_generator_solar_style_1.iff",
 
 
+	numberExperimentalProperties = {1, 1, 1, 2, 1},
+	experimentalProperties = {"XX", "XX", "XX", "MA", "UT", "XX"},
+	experimentalWeights = {1, 1, 1, 1, 2, 1},
+	experimentalGroupTitles = {"null", "null", "null", "expStorage", "null"},
+	experimentalSubGroupTitles = {"null", "null", "extractrate", "hoppersize", "hitpoints"},
+	experimentalMin = {0, 0, 6, 50000, 1000},
+	experimentalMax = {0, 0, 15, 75000, 1000},
+	experimentalPrecision = {0, 0, 0, 0, 0},
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_generator_deed_generator_solar_deed, "object/tangible/deed/generator_deed/generator_solar_deed.iff")

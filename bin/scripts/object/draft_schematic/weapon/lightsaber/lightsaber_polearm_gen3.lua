@@ -72,15 +72,9 @@ object_draft_schematic_weapon_lightsaber_lightsaber_polearm_gen3 = object_draft_
    combineTypes = {0, 1, 0, 0, 1, 0, 0},
    contribution = {100, 100, 100, 100, 100, 100, 100},
 
-   numberExperimentalProperties = {1, 1, 2, 2, 2, 2, 2, 1, 1, 1},
-   experimentalProperties = {"XX", "XX", "CD", "OQ", "CD", "OQ", "CD", "OQ", "SR", "UT", "CD", "OQ", "OQ", "OQ", "OQ"},
-   experimentalWeights = {1, 1, 1, 2, 1, 2, 1, 1, 1, 1, 1, 2, 1, 1, 1},
-   experimentalGroupTitles = {"null", "null", "expDamage", "expDamage", "expDamage", "expDamage", "expEffeciency", "expEffeciency", "expEffeciency", "expEffeciency"},
-   experimentalSubGroupTitles = {"null", "null", "mindamage", "maxdamage", "attackspeed", "woundchance", "forcecost", "attackhealthcost", "attackactioncost", "attackmindcost"},
-   experimentalMin = {0, 0, 195, 285, 5.1, 19, 36, 50, 85, 35},
-   experimentalMax = {0, 0, 215, 305, 4.8, 31, 40, 45, 55, 30},
-   experimentalPrecision = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+   templates { = 
+              1730745724, -- Script: 'object/weapon/melee/polearm/crafted_saber/sword_lightsaber_polearm_gen3.iff'
+             }
 
-   tanoCRC = 1730745724, -- Script: 'object/weapon/melee/polearm/crafted_saber/sword_lightsaber_polearm_gen3.iff'
 }
 ObjectTemplates:addTemplate(object_draft_schematic_weapon_lightsaber_lightsaber_polearm_gen3, "object/draft_schematic/weapon/lightsaber/lightsaber_polearm_gen3.iff")

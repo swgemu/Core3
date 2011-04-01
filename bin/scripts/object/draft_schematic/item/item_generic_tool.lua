@@ -72,15 +72,9 @@ object_draft_schematic_item_item_generic_tool = object_draft_schematic_item_shar
    combineTypes = {0, 0, 0},
    contribution = {100, 100, 100},
 
-   numberExperimentalProperties = {1, 1, 1, 1},
-   experimentalProperties = {"XX", "XX", "XX", "CD"},
-   experimentalWeights = {1, 1, 1, 1},
-   experimentalGroupTitles = {"null", "null", "null", "exp_effectiveness"},
-   experimentalSubGroupTitles = {"null", "null", "hitpoints", "usemodifier"},
-   experimentalMin = {0, 0, 1000, -15},
-   experimentalMax = {0, 0, 1000, 15},
-   experimentalPrecision = {0, 0, 0, 0},
+   templates { = 
+              339194814, -- Script: 'object/tangible/crafting/station/generic_tool.iff'
+             }
 
-   tanoCRC = 339194814, -- Script: 'object/tangible/crafting/station/generic_tool.iff'
 }
 ObjectTemplates:addTemplate(object_draft_schematic_item_item_generic_tool, "object/draft_schematic/item/item_generic_tool.iff")

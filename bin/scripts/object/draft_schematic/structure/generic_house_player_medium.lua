@@ -72,15 +72,9 @@ object_draft_schematic_structure_generic_house_player_medium = object_draft_sche
    combineTypes = {0, 0, 0, 1, 1, 1},
    contribution = {100, 100, 100, 100, 100, 100},
 
-   numberExperimentalProperties = {1, 1, 1},
-   experimentalProperties = {"XX", "XX", "DR"},
-   experimentalWeights = {1, 1, 1},
-   experimentalGroupTitles = {"null", "null", "exp_durability"},
-   experimentalSubGroupTitles = {"null", "null", "hitpoints"},
-   experimentalMin = {0, 0, 35000},
-   experimentalMax = {0, 0, 75000},
-   experimentalPrecision = {0, 0, 0},
+   templates { = 
+              1104298913, -- Script: 'object/tangible/deed/player_house_deed/generic_house_medium_deed.iff'
+             }
 
-   tanoCRC = 1104298913, -- Script: 'object/tangible/deed/player_house_deed/generic_house_medium_deed.iff'
 }
 ObjectTemplates:addTemplate(object_draft_schematic_structure_generic_house_player_medium, "object/draft_schematic/structure/generic_house_player_medium.iff")

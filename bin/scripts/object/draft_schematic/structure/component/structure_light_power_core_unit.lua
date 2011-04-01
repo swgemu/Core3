@@ -72,15 +72,9 @@ object_draft_schematic_structure_component_structure_light_power_core_unit = obj
    combineTypes = {0, 0, 0, 0, 0, 0, 0},
    contribution = {100, 100, 100, 100, 100, 100, 100},
 
-   numberExperimentalProperties = {1, 1, 1},
-   experimentalProperties = {"XX", "XX", "XX"},
-   experimentalWeights = {1, 1, 1},
-   experimentalGroupTitles = {"null", "null", "null"},
-   experimentalSubGroupTitles = {"null", "null", "hitpoints"},
-   experimentalMin = {0, 0, 1000},
-   experimentalMax = {0, 0, 5000},
-   experimentalPrecision = {0, 0, 0},
+   templates { = 
+              3219788767, -- Script: 'object/tangible/component/structure/light_power_core_unit.iff'
+             }
 
-   tanoCRC = 3219788767, -- Script: 'object/tangible/component/structure/light_power_core_unit.iff'
 }
 ObjectTemplates:addTemplate(object_draft_schematic_structure_component_structure_light_power_core_unit, "object/draft_schematic/structure/component/structure_light_power_core_unit.iff")

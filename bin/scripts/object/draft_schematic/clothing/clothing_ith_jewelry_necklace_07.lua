@@ -72,15 +72,9 @@ object_draft_schematic_clothing_clothing_ith_jewelry_necklace_07 = object_draft_
    combineTypes = {0, 0, 0},
    contribution = {100, 100, 100},
 
-   numberExperimentalProperties = {1, 1, 1},
-   experimentalProperties = {"XX", "XX", "XX"},
-   experimentalWeights = {1, 1, 1},
-   experimentalGroupTitles = {"null", "null", "null"},
-   experimentalSubGroupTitles = {"null", "null", "hitpoints"},
-   experimentalMin = {0, 0, 1000},
-   experimentalMax = {0, 0, 1000},
-   experimentalPrecision = {0, 0, 0},
+   templates { = 
+              1911740994, -- Script: 'object/tangible/wearables/ithorian/ith_necklace_s07.iff'
+             }
 
-   tanoCRC = 1911740994, -- Script: 'object/tangible/wearables/ithorian/ith_necklace_s07.iff'
 }
 ObjectTemplates:addTemplate(object_draft_schematic_clothing_clothing_ith_jewelry_necklace_07, "object/draft_schematic/clothing/clothing_ith_jewelry_necklace_07.iff")

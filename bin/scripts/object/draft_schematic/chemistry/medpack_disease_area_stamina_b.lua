@@ -72,15 +72,9 @@ object_draft_schematic_chemistry_medpack_disease_area_stamina_b = object_draft_s
    combineTypes = {0, 0, 0, 1, 1, 1},
    contribution = {100, 100, 100, 100, 100, 100},
 
-   numberExperimentalProperties = {1, 1, 2, 2, 2, 2, 2, 2, 2, 1},
-   experimentalProperties = {"XX", "XX", "OQ", "PE", "OQ", "UT", "CD", "OQ", "CD", "OQ", "OQ", "PE", "OQ", "PE", "DR", "OQ", "XX"},
-   experimentalWeights = {1, 1, 2, 1, 2, 1, 1, 2, 1, 2, 2, 1, 2, 1, 1, 1, 1},
-   experimentalGroupTitles = {"null", "null", "exp_effectiveness", "expCharges", "expCharges", "exp_effectiveness", "expEaseOfUse", "expEaseOfUse", "exp_effectiveness", "null"},
-   experimentalSubGroupTitles = {"null", "null", "power", "charges", "range", "area", "skillmodmin", "potency", "duration", "hitpoints"},
-   experimentalMin = {0, 0, 10, 10, 15, 15, 90, 25, 120, 1000},
-   experimentalMax = {0, 0, 30, 25, 30, 5, 60, 100, 800, 1000},
-   experimentalPrecision = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+   templates { = 
+              3048767642, -- Script: 'object/tangible/medicine/crafted/medpack_disease_area_stamina_b.iff'
+             }
 
-   tanoCRC = 3048767642, -- Script: 'object/tangible/medicine/crafted/medpack_disease_area_stamina_b.iff'
 }
 ObjectTemplates:addTemplate(object_draft_schematic_chemistry_medpack_disease_area_stamina_b, "object/draft_schematic/chemistry/medpack_disease_area_stamina_b.iff")

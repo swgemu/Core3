@@ -72,15 +72,9 @@ object_draft_schematic_item_item_powerup_weapon_ranged_four = object_draft_schem
    combineTypes = {0, 0},
    contribution = {100, 100},
 
-   numberExperimentalProperties = {1, 1, 1, 1},
-   experimentalProperties = {"XX", "XX", "XX", "OQ"},
-   experimentalWeights = {1, 1, 1, 1},
-   experimentalGroupTitles = {"null", "null", "null", "exp_effectiveness"},
-   experimentalSubGroupTitles = {"null", "null", "hitpoints", "effect"},
-   experimentalMin = {0, 0, 1000, 1},
-   experimentalMax = {0, 0, 1000, 100},
-   experimentalPrecision = {0, 0, 0, 0},
+   templates { = 
+              2336971866, -- Script: 'object/tangible/powerup/weapon/ranged_power.iff'
+             }
 
-   tanoCRC = 2336971866, -- Script: 'object/tangible/powerup/weapon/ranged_power.iff'
 }
 ObjectTemplates:addTemplate(object_draft_schematic_item_item_powerup_weapon_ranged_four, "object/draft_schematic/item/item_powerup_weapon_ranged_four.iff")

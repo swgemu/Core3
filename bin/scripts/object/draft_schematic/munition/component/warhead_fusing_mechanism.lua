@@ -72,15 +72,9 @@ object_draft_schematic_munition_component_warhead_fusing_mechanism = object_draf
    combineTypes = {0, 0, 0, 0, 0},
    contribution = {100, 100, 100, 100, 100},
 
-   numberExperimentalProperties = {1, 1, 2, 2, 2, 2, 1, 2, 2, 2, 2, 2, 2},
-   experimentalProperties = {"XX", "XX", "CD", "UT", "CD", "UT", "CD", "UT", "CD", "UT", "XX", "CD", "UT", "CD", "UT", "CD", "UT", "CD", "UT", "CD", "UT", "CD", "UT"},
-   experimentalWeights = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
-   experimentalGroupTitles = {"null", "null", "expDamage", "expDamage", "expDamage", "expDamage", "null", "expRange", "expRange", "expRange", "expEffeciency", "expEffeciency", "expEffeciency"},
-   experimentalSubGroupTitles = {"null", "null", "mindamage", "maxdamage", "attackspeed", "woundchance", "hitpoints", "zerorangemod", "maxrangemod", "midrangemod", "attackhealthcost", "attackactioncost", "attackmindcost"},
-   experimentalMin = {0, 0, 0, 0, 1, 0, 1000, -5, -5, -5, 5, 5, 5},
-   experimentalMax = {0, 0, 20, 30, 0, 1, 1000, 0, 0, 0, 0, 0, 0},
-   experimentalPrecision = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+   templates { = 
+              425324353, -- Script: 'object/tangible/component/munition/warhead_fusing_mechanism.iff'
+             }
 
-   tanoCRC = 425324353, -- Script: 'object/tangible/component/munition/warhead_fusing_mechanism.iff'
 }
 ObjectTemplates:addTemplate(object_draft_schematic_munition_component_warhead_fusing_mechanism, "object/draft_schematic/munition/component/warhead_fusing_mechanism.iff")

@@ -72,15 +72,9 @@ object_draft_schematic_weapon_pistol_launcher = object_draft_schematic_weapon_sh
    combineTypes = {0, 0, 0, 1, 1, 1},
    contribution = {100, 100, 100, 100, 100, 100},
 
-   numberExperimentalProperties = {1, 1, 2, 2, 2, 2, 1, 2, 2, 2, 2, 2},
-   experimentalProperties = {"XX", "XX", "CD", "OQ", "CD", "OQ", "CD", "OQ", "CD", "OQ", "XX", "CD", "OQ", "CD", "OQ", "CD", "OQ", "CD", "OQ", "CD", "OQ"},
-   experimentalWeights = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
-   experimentalGroupTitles = {"null", "null", "expDamage", "expDamage", "expDamage", "expDamage", "null", "exp_durability", "expRange", "expEffeciency", "expEffeciency", "expEffeciency"},
-   experimentalSubGroupTitles = {"null", "null", "mindamage", "maxdamage", "attackspeed", "woundchance", "roundsused", "hitpoints", "midrangemod", "attackhealthcost", "attackactioncost", "attackmindcost"},
-   experimentalMin = {0, 0, 17, 91, 5.5, 13, 1, 750, -15, 20, 58, 20},
-   experimentalMax = {0, 0, 33, 169, 3.7, 23, 3, 1500, 0, 10, 31, 10},
-   experimentalPrecision = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+   templates { = 
+              1980615506, -- Script: 'object/weapon/ranged/pistol/pistol_launcher.iff'
+             }
 
-   tanoCRC = 1980615506, -- Script: 'object/weapon/ranged/pistol/pistol_launcher.iff'
 }
 ObjectTemplates:addTemplate(object_draft_schematic_weapon_pistol_launcher, "object/draft_schematic/weapon/pistol_launcher.iff")

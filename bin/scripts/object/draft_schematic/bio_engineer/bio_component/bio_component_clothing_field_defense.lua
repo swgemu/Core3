@@ -72,15 +72,9 @@ object_draft_schematic_bio_engineer_bio_component_bio_component_clothing_field_d
    combineTypes = {0, 0, 0},
    contribution = {100, 100, 100},
 
-   numberExperimentalProperties = {1, 1, 1, 1, 1, 3, 1, 3},
-   experimentalProperties = {"XX", "XX", "XX", "XX", "XX", "FL", "OQ", "PE", "XX", "FL", "OQ", "PE"},
-   experimentalWeights = {1, 1, 1, 1, 1, 1, 2, 2, 1, 1, 2, 2},
-   experimentalGroupTitles = {"null", "null", "null", "null", "null", "exp_effectiveness", "null", "exp_effectiveness"},
-   experimentalSubGroupTitles = {"null", "null", "decayrate", "hitpoints", "mod_idx_four", "mod_val_four", "mod_idx_five", "mod_val_five"},
-   experimentalMin = {0, 0, 30, 1000, 115, 1, 116, 1},
-   experimentalMax = {0, 0, 50, 1000, 115, 10, 116, 3},
-   experimentalPrecision = {0, 0, 0, 0, 0, 0, 0, 0},
+   templates { = 
+              1257707338, -- Script: 'object/tangible/component/bio/bio_component_clothing_field_defense.iff'
+             }
 
-   tanoCRC = 1257707338, -- Script: 'object/tangible/component/bio/bio_component_clothing_field_defense.iff'
 }
 ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_bio_component_bio_component_clothing_field_defense, "object/draft_schematic/bio_engineer/bio_component/bio_component_clothing_field_defense.iff")

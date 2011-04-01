@@ -72,15 +72,9 @@ object_draft_schematic_droid_component_diagnostic_circuit = object_draft_schemat
    combineTypes = {0, 0},
    contribution = {100, 100},
 
-   numberExperimentalProperties = {1, 1, 2, 3, 3, 1},
-   experimentalProperties = {"XX", "XX", "OQ", "UT", "CD", "MA", "OQ", "CD", "MA", "OQ", "XX"},
-   experimentalWeights = {1, 1, 2, 1, 2, 1, 1, 2, 1, 1, 1},
-   experimentalGroupTitles = {"null", "null", "expCharges", "exp_effectiveness", "exp_effectiveness", "null"},
-   experimentalSubGroupTitles = {"null", "null", "charges", "power", "energy", "hitpoints"},
-   experimentalMin = {0, 0, 1, 1, 10, 1000},
-   experimentalMax = {0, 0, 5, 5, 50, 1000},
-   experimentalPrecision = {0, 0, 0, 0, 0, 0},
+   templates { = 
+              2253051163, -- Script: 'object/tangible/component/droid/repair/diagnostic_circuit.iff'
+             }
 
-   tanoCRC = 2253051163, -- Script: 'object/tangible/component/droid/repair/diagnostic_circuit.iff'
 }
 ObjectTemplates:addTemplate(object_draft_schematic_droid_component_diagnostic_circuit, "object/draft_schematic/droid/component/diagnostic_circuit.iff")

@@ -72,15 +72,9 @@ object_draft_schematic_bio_engineer_bio_component_bio_component_food_medium_nutr
    combineTypes = {0, 0, 0, 1},
    contribution = {100, 100, 100, 100},
 
-   numberExperimentalProperties = {1, 1, 1, 3},
-   experimentalProperties = {"XX", "XX", "XX", "FL", "OQ", "PE"},
-   experimentalWeights = {1, 1, 1, 1, 2, 2},
-   experimentalGroupTitles = {"null", "null", "null", "exp_nutrition"},
-   experimentalSubGroupTitles = {"null", "null", "hitpoints", "add_nutrition"},
-   experimentalMin = {0, 0, 1000, 60},
-   experimentalMax = {0, 0, 1000, 90},
-   experimentalPrecision = {0, 0, 0, 0},
+   templates { = 
+              136419610, -- Script: 'object/tangible/component/bio/bio_component_food_medium_nutrition.iff'
+             }
 
-   tanoCRC = 136419610, -- Script: 'object/tangible/component/bio/bio_component_food_medium_nutrition.iff'
 }
 ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_bio_component_bio_component_food_medium_nutrition, "object/draft_schematic/bio_engineer/bio_component/bio_component_food_medium_nutrition.iff")

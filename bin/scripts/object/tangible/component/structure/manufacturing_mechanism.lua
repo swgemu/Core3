@@ -43,6 +43,14 @@
 
 object_tangible_component_structure_manufacturing_mechanism = object_tangible_component_structure_shared_manufacturing_mechanism:new {
 
+	numberExperimentalProperties = {1, 1, 1},
+	experimentalProperties = {"XX", "XX", "XX"},
+	experimentalWeights = {1, 1, 1},
+	experimentalGroupTitles = {"null", "null", "null"},
+	experimentalSubGroupTitles = {"null", "null", "hitpoints"},
+	experimentalMin = {0, 0, 1000},
+	experimentalMax = {0, 0, 5000},
+	experimentalPrecision = {0, 0, 0},
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_structure_manufacturing_mechanism, "object/tangible/component/structure/manufacturing_mechanism.iff")

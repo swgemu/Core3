@@ -72,15 +72,9 @@ object_draft_schematic_munition_grenade_proton = object_draft_schematic_munition
    combineTypes = {0, 0, 0, 0, 1, 1, 1, 1, 1},
    contribution = {100, 100, 100, 100, 100, 100, 100, 100, 100},
 
-   numberExperimentalProperties = {1, 1, 2, 2, 2, 2, 1, 2, 2, 2, 1, 1, 2, 2, 2},
-   experimentalProperties = {"XX", "XX", "CD", "UT", "CD", "UT", "CD", "UT", "CD", "UT", "XX", "CD", "UT", "CD", "UT", "CD", "UT", "XX", "XX", "CD", "UT", "CD", "UT", "CD", "UT"},
-   experimentalWeights = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
-   experimentalGroupTitles = {"null", "null", "expDamage", "expDamage", "expDamage", "expDamage", "null", "expRange", "expRange", "expRange", "expRange", "null", "expEffeciency", "expEffeciency", "expEffeciency"},
-   experimentalSubGroupTitles = {"null", "null", "mindamage", "maxdamage", "attackspeed", "woundchance", "hitpoints", "zerorangemod", "maxrangemod", "midrangemod", "midrange", "maxrange", "attackhealthcost", "attackactioncost", "attackmindcost"},
-   experimentalMin = {0, 0, 923, 2300, 9, 7, 1000, -16, -45, 0, 10, 64, 139, 178, 125},
-   experimentalMax = {0, 0, 1534, 2900, 4.5, 13, 1000, 14, -15, 30, 25, 64, 85, 73, 86},
-   experimentalPrecision = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+   templates { = 
+              3663525414, -- Script: 'object/weapon/ranged/grenade/grenade_proton.iff'
+             }
 
-   tanoCRC = 3663525414, -- Script: 'object/weapon/ranged/grenade/grenade_proton.iff'
 }
 ObjectTemplates:addTemplate(object_draft_schematic_munition_grenade_proton, "object/draft_schematic/munition/grenade_proton.iff")

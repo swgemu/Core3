@@ -43,6 +43,14 @@
 
 object_tangible_component_weapon_projectile_feed_mechanism = object_tangible_component_weapon_shared_projectile_feed_mechanism:new {
 
+	numberExperimentalProperties = {1, 1, 1, 1, 1, 1},
+	experimentalProperties = {"XX", "XX", "UT", "UT", "UT", "UT"},
+	experimentalWeights = {1, 1, 1, 1, 1, 1},
+	experimentalGroupTitles = {"null", "null", "expDamage", "expDamage", "expDamage", "exp_durability"},
+	experimentalSubGroupTitles = {"null", "null", "mindamage", "maxdamage", "attackspeed", "hitpoints"},
+	experimentalMin = {0, 0, 1, 1, 0, 10},
+	experimentalMax = {0, 0, 10, 20, -0.5, 100}, -0.5, 100},
+	experimentalPrecision = {0, 0, 0, 0, 1, 0},
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_weapon_projectile_feed_mechanism, "object/tangible/component/weapon/projectile_feed_mechanism.iff")

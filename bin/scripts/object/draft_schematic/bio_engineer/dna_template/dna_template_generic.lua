@@ -72,15 +72,9 @@ object_draft_schematic_bio_engineer_dna_template_dna_template_generic = object_d
    combineTypes = {0, 0, 0, 0, 0},
    contribution = {100, 100, 100, 100, 100},
 
-   numberExperimentalProperties = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
-   experimentalProperties = {"XX", "XX", "UT", "CR", "CD", "DR", "HR", "FL", "MA", "PE", "OQ", "SR"},
-   experimentalWeights = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
-   experimentalGroupTitles = {"null", "null", "expPhysiqueProfile", "expPhysiqueProfile", "expProwessProfile", "expProwessProfile", "expMentalProfile", "expMentalProfile", "expPsychologicalProfile", "expPsychologicalProfile", "expAggressionProfile", "expAggressionProfile"},
-   experimentalSubGroupTitles = {"null", "null", "hardiness", "fortitude", "dexterity", "endurance", "intellect", "cleverness", "dependability", "courage", "fierceness", "power"},
-   experimentalMin = {0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
-   experimentalMax = {0, 0, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000},
-   experimentalPrecision = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+   templates { = 
+              3537593180, -- Script: 'object/tangible/component/dna/dna_template_generic.iff'
+             }
 
-   tanoCRC = 3537593180, -- Script: 'object/tangible/component/dna/dna_template_generic.iff'
 }
 ObjectTemplates:addTemplate(object_draft_schematic_bio_engineer_dna_template_dna_template_generic, "object/draft_schematic/bio_engineer/dna_template/dna_template_generic.iff")

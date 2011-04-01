@@ -44,63 +44,71 @@
 object_weapon_melee_baton_baton_stun = object_weapon_melee_baton_shared_baton_stun:new {
 
 	gameObjectType = 131079,
-	
-	-- ALL, ALLSEXES, ALLFACTIONS, HUMANOIDS, HUMANOID_FOOTWEAR, HUMANOID_MALES, HUMANOID_FEMALES, HUMANOID_IMPERIALS, HUMANOID_REBELS, WOOKIES, ITHORIANS, TWILEKS
+	,
+	-- ALL, ALLSEXES, ALLFACTIONS, HUMANOIDS, HUMANOID_FOOTWEAR, HUMANOID_MALES, HUMANOID_FEMALES, HUMANOID_IMPERIALS, HUMANOID_REBELS, WOOKIES, ITHORIANS, TWILEKS,
 	playerUseMask = ALL,
-	
+	,
 	-- RANGEDATTACK, MELEEATTACK, FORCEATTACK, TRAPATTACK, GRENADEATTACK, HEAVYACIDBEAMATTACK,
-	-- HEAVYLIGHTNINGBEAMATTACK, HEAVYPARTICLEBEAMATTACK, HEAVYROCKETLAUNCHERATTACK, HEAVYLAUNCHERATTACK
+	-- HEAVYLIGHTNINGBEAMATTACK, HEAVYPARTICLEBEAMATTACK, HEAVYROCKETLAUNCHERATTACK, HEAVYLAUNCHERATTACK,
 	attackType = MELEEATTACK,
-	
-	-- ENERGY, KINETIC, ELECTRICITY, STUN, BLAST, HEAT, COLD, ACID, FORCE, LIGHTSABER
+	,
+	-- ENERGY, KINETIC, ELECTRICITY, STUN, BLAST, HEAT, COLD, ACID, FORCE, LIGHTSABER,
 	damageType = STUN,
-	
-	-- NONE, LIGHT, MEDIUM, HEAVY
+	,
+	-- NONE, LIGHT, MEDIUM, HEAVY,
 	armorPiercing = NONE,
-	
-	-- combat_rangedspecialize_bactarifle, combat_rangedspecialize_rifle, combat_rangedspecialize_pistol, combat_rangedspecialize_heavy, combat_rangedspecialize_carbine
+	,
+	-- combat_rangedspecialize_bactarifle, combat_rangedspecialize_rifle, combat_rangedspecialize_pistol, combat_rangedspecialize_heavy, combat_rangedspecialize_carbine,
 	-- combat_meleespecialize_unarmed, combat_meleespecialize_twohand, combat_meleespecialize_polearm, combat_meleespecialize_onehand, combat_general,
-	-- combat_meleespecialize_twohandlightsaber, combat_meleespecialize_polearmlightsaber, combat_meleespecialize_onehandlightsaber
+	-- combat_meleespecialize_twohandlightsaber, combat_meleespecialize_polearmlightsaber, combat_meleespecialize_onehandlightsaber,
 	xpType = "combat_meleespecialize_onehand",
-	       
-	-- See http://www.ocdsoft.com/files/certifications.xls
+	       ,
+	-- See http://www.ocdsoft.com/files/certifications.xls,
 	certificationsRequired = { "cert_baton_stun" },
-	-- See http://www.ocdsoft.com/files/accuracy.xls
+	-- See http://www.ocdsoft.com/files/accuracy.xls,
 	creatureAccuracyModifiers = { "onehandmelee_accuracy" },
-	
-	-- See http://www.ocdsoft.com/files/defense.xls
+	,
+	-- See http://www.ocdsoft.com/files/defense.xls,
 	defenderDefenseModifiers = { "melee_defense" },
-	
-	-- Leave as "dodge" for now, may have additions later
+	,
+	-- Leave as "dodge" for now, may have additions later,
 	defenderSecondaryDefenseModifiers = { "dodge" },
-	
-	-- See http://www.ocdsoft.com/files/speed.xls
+	,
+	-- See http://www.ocdsoft.com/files/speed.xls,
 	speedModifiers = { "onehandmelee_speed" },
-	
-	-- Leave blank for now
+	,
+	-- Leave blank for now,
 	damageModifiers = { },
-	       
-	
-	-- The values below are the default values.  To be used for blue frog objects primarily
+	       ,
+	,
+	-- The values below are the default values.  To be used for blue frog objects primarily,
 	healthAttackCost = 10,
 	actionAttackCost = 45,
 	mindAttackCost = 39,
 	forceCost = 0,
-	
+	,
 	pointBlankAccuracy = 0,
 	pointBlankRange = -5,
-	
+	,
 	idealRange = -5,
 	idealAccuracy = 2,
-	
+	,
 	maxRange = -5,
 	maxRangeAccuracy = 4,
 
 	minDamage = 28,
 	maxDamage = 53,
-	
-	attackSpeed = 4.2
+	,
+	attackSpeed = 4.2,
 
+	numberExperimentalProperties = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+	experimentalProperties = {"XX", "XX", "SR", "SR", "SR", "SR", "SR", "SR", "SR", "XX", "SR", "XX", "SR", "SR", "SR"},
+	experimentalWeights = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+	experimentalGroupTitles = {"null", "null", "expDamage", "expDamage", "expDamage", "expDamage", "exp_durability", "expRange", "expRange", "null", "expRange", "null", "expEffeciency", "expEffeciency", "expEffeciency"},
+	experimentalSubGroupTitles = {"null", "null", "mindamage", "maxdamage", "attackspeed", "woundchance", "hitpoints", "zerorangemod", "maxrangemod", "midrange", "midrangemod", "maxrange", "attackhealthcost", "attackactioncost", "attackmindcost"},
+	experimentalMin = {0, 0, 28, 53, 4.2, 1, 750, -5, -5, 2, -5, 4, 10, 45, 39}, -5, -5, 2, -5, 4, 10, 45, 39},
+	experimentalMax = {0, 0, 52, 98, 2.9, 3, 1500, 5, 5, 2, 5, 4, 4, 24, 19},
+	experimentalPrecision = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
 }
 
 ObjectTemplates:addTemplate(object_weapon_melee_baton_baton_stun, "object/weapon/melee/baton/baton_stun.iff")

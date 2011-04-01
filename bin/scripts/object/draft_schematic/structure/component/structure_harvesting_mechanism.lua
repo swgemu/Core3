@@ -72,15 +72,9 @@ object_draft_schematic_structure_component_structure_harvesting_mechanism = obje
    combineTypes = {0, 0, 0, 0, 0},
    contribution = {100, 100, 100, 100, 100},
 
-   numberExperimentalProperties = {1, 1, 1, 3},
-   experimentalProperties = {"XX", "XX", "XX", "HR", "SR", "UT"},
-   experimentalWeights = {1, 1, 1, 1, 1, 2},
-   experimentalGroupTitles = {"null", "null", "null", "expEffeciency"},
-   experimentalSubGroupTitles = {"null", "null", "hitpoints", "extractrate"},
-   experimentalMin = {0, 0, 1000, 1},
-   experimentalMax = {0, 0, 5000, 5},
-   experimentalPrecision = {0, 0, 0, 0},
+   templates { = 
+              2971470632, -- Script: 'object/tangible/component/structure/harvesting_mechanism.iff'
+             }
 
-   tanoCRC = 2971470632, -- Script: 'object/tangible/component/structure/harvesting_mechanism.iff'
 }
 ObjectTemplates:addTemplate(object_draft_schematic_structure_component_structure_harvesting_mechanism, "object/draft_schematic/structure/component/structure_harvesting_mechanism.iff")

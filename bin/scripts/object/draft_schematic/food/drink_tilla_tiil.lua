@@ -72,15 +72,9 @@ object_draft_schematic_food_drink_tilla_tiil = object_draft_schematic_food_share
    combineTypes = {1, 0, 0, 0, 1, 1},
    contribution = {100, 100, 100, 100, 100, 100},
 
-   numberExperimentalProperties = {1, 1, 1, 1, 2, 1, 2, 1},
-   experimentalProperties = {"XX", "XX", "XX", "XX", "DR", "OQ", "XX", "DR", "FL", "XX"},
-   experimentalWeights = {1, 1, 1, 1, 1, 1, 1, 1, 2, 1},
-   experimentalGroupTitles = {"null", "null", "null", "null", "exp_nutrition", "null", "exp_filling", "null"},
-   experimentalSubGroupTitles = {"null", "null", "hitpoints", "quantity_bonus", "nutrition", "quantity", "filling", "stomach"},
-   experimentalMin = {0, 0, 1000, 0, 75, 60, 80, 1},
-   experimentalMax = {0, 0, 1000, 0, 120, 100, 120, 1},
-   experimentalPrecision = {0, 0, 0, 0, 10, 0, 10, 0},
+   templates { = 
+              2812437578, -- Script: 'object/tangible/food/crafted/drink_tilla_tiil.iff'
+             }
 
-   tanoCRC = 2812437578, -- Script: 'object/tangible/food/crafted/drink_tilla_tiil.iff'
 }
 ObjectTemplates:addTemplate(object_draft_schematic_food_drink_tilla_tiil, "object/draft_schematic/food/drink_tilla_tiil.iff")
