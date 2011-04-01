@@ -72,7 +72,7 @@ object_draft_schematic_furniture_city_furniture_fountain = object_draft_schemati
    combineTypes = {0, 0, 0},
    contribution = {100, 100, 100},
 
-   templates { = 
+   templates = {
               1159824029, -- Script: 'object/tangible/furniture/city/fountain_generic.iff'
              }
 

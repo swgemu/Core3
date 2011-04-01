@@ -72,7 +72,7 @@ object_draft_schematic_furniture_furniture_terminal_freestanding = object_draft_
    combineTypes = {0, 1, 1},
    contribution = {100, 100, 100},
 
-   templates { = 
+   templates = {
               1842503243, -- Script: 'object/tangible/furniture/all/frn_all_data_terminal_free_s1.iff'
              }
 

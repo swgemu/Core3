@@ -72,7 +72,7 @@ object_draft_schematic_droid_component_detonation_module = object_draft_schemati
    combineTypes = {0, 0, 0},
    contribution = {100, 100, 100},
 
-   templates { = 
+   templates = {
               508750598, -- Script: 'object/tangible/component/droid/detonation_module.iff'
              }
 

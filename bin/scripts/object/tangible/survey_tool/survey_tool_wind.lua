@@ -42,19 +42,19 @@
 
 
 object_tangible_survey_tool_survey_tool_wind = object_tangible_survey_tool_shared_survey_tool_wind:new {
-	
+
 	templateType = SURVEYTOOL,
-	
+
 	playerUseMask = 65535,
-	
+
 	customizationOptions = {},
 	customizationDefaults = {},
-	
+
 	toolType = 8,
 	toolAnimation = "clienteffect/survey_tool_gas.cef",
 	sampleAnimation = "clienteffect/survey_sample_gas.cef",
 	surveyType = "energy_renewable_unlimited_wind",
-	
+
 	numberExperimentalProperties = {1, 1, 1, 1},
 	experimentalProperties = {"XX", "XX", "XX", "CD"},
 	experimentalWeights = {1, 1, 1, 1},
@@ -63,5 +63,6 @@ object_tangible_survey_tool_survey_tool_wind = object_tangible_survey_tool_share
 	experimentalMin = {0, 0, 1000, -15},
 	experimentalMax = {0, 0, 1000, 15},
 	experimentalPrecision = {0, 0, 0, 0},
+
 }
 ObjectTemplates:addTemplate(object_tangible_survey_tool_survey_tool_wind, "object/tangible/survey_tool/survey_tool_wind.iff")

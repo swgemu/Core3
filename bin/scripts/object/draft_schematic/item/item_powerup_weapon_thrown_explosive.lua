@@ -72,7 +72,7 @@ object_draft_schematic_item_item_powerup_weapon_thrown_explosive = object_draft_
    combineTypes = {0, 0},
    contribution = {100, 100},
 
-   templates { = 
+   templates = {
               1602787778, -- Script: 'object/tangible/powerup/weapon/thrown_explosive.iff'
              }
 

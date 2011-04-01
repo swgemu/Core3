@@ -42,18 +42,18 @@
 
 
 object_tangible_crafting_station_structure_tool = object_tangible_crafting_station_shared_structure_tool:new {
-	
+
 	templateType = CRAFTINGTOOL,
-	
+
 	playerUseMask = 65535,
-	
+
 	customizationOptions = {},
 	customizationDefaults = {},
-	
+
 	toolType = 6,
 	complexityLevel = 20,
 	enabledTabs = {512,1024},
-	
+
 	numberExperimentalProperties = {1, 1, 1, 1},
 	experimentalProperties = {"XX", "XX", "XX", "CD"},
 	experimentalWeights = {1, 1, 1, 1},
@@ -62,5 +62,6 @@ object_tangible_crafting_station_structure_tool = object_tangible_crafting_stati
 	experimentalMin = {0, 0, 1000, -15},
 	experimentalMax = {0, 0, 1000, 15},
 	experimentalPrecision = {0, 0, 0, 0},
+
 }
 ObjectTemplates:addTemplate(object_tangible_crafting_station_structure_tool, "object/tangible/crafting/station/structure_tool.iff")

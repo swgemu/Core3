@@ -72,7 +72,7 @@ object_draft_schematic_food_dish_terratta = object_draft_schematic_food_shared_d
    combineTypes = {0, 0, 1, 0, 1},
    contribution = {100, 100, 100, 100, 100},
 
-   templates { = 
+   templates = {
               2305535774, -- Script: 'object/tangible/food/crafted/dish_terratta.iff'
              }
 

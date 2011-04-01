@@ -72,7 +72,7 @@ object_draft_schematic_slicing_slicing_weapon_upgrade_kit = object_draft_schemat
    combineTypes = {0, 0, 0},
    contribution = {100, 100, 100},
 
-   templates { = 
+   templates = {
               96542655, -- Script: 'object/tangible/slicing/slicing_weapon_upgrade_kit.iff'
              }
 

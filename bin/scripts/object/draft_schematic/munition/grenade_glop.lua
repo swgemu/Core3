@@ -72,7 +72,7 @@ object_draft_schematic_munition_grenade_glop = object_draft_schematic_munition_s
    combineTypes = {0, 0, 0, 0, 1, 1, 1, 1},
    contribution = {100, 100, 100, 100, 100, 100, 100, 100},
 
-   templates { = 
+   templates = {
               869624722, -- Script: 'object/weapon/ranged/grenade/grenade_glop.iff'
              }
 

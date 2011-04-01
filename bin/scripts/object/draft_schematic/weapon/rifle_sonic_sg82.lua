@@ -72,7 +72,7 @@ object_draft_schematic_weapon_rifle_sonic_sg82 = object_draft_schematic_weapon_s
    combineTypes = {0, 0, 0, 1, 1},
    contribution = {100, 100, 100, 100, 100},
 
-   templates { = 
+   templates = {
               3146716110, -- Script: 'object/weapon/ranged/rifle/rifle_sg82.iff'
              }
 

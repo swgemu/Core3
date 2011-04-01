@@ -42,8 +42,8 @@
 
 
 object_weapon_ranged_heavy_heavy_rocket_launcher = object_weapon_ranged_heavy_shared_heavy_rocket_launcher:new {
-	
-	
+
+
 	numberExperimentalProperties = {1, 1, 2, 2, 2, 2, 2, 2, 1, 1, 1, 2, 2, 2, 2, 2},
 	experimentalProperties = {"XX", "XX", "CD", "OQ", "CD", "OQ", "CD", "OQ", "CD", "OQ", "CD", "OQ", "CD", "OQ", "XX", "XX", "XX", "CD", "OQ", "CD", "OQ", "CD", "OQ", "CD", "OQ", "CD", "OQ"},
 	experimentalWeights = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
@@ -52,6 +52,7 @@ object_weapon_ranged_heavy_heavy_rocket_launcher = object_weapon_ranged_heavy_sh
 	experimentalMin = {0, 0, 900, 1550, 12, 17, 30, 750, -120, 20, 48, 0, 25, 124, 85, 60},
 	experimentalMax = {0, 0, 1350, 4500, 7, 31, 65, 1500, -90, 60, 48, 35, 50, 67, 40, 36},
 	experimentalPrecision = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+
 }
 
 ObjectTemplates:addTemplate(object_weapon_ranged_heavy_heavy_rocket_launcher, "object/weapon/ranged/heavy/heavy_rocket_launcher.iff")

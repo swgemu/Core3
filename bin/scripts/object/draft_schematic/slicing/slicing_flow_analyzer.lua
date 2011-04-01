@@ -72,7 +72,7 @@ object_draft_schematic_slicing_slicing_flow_analyzer = object_draft_schematic_sl
    combineTypes = {0, 0, 0},
    contribution = {100, 100, 100},
 
-   templates { = 
+   templates = {
               3083691712, -- Script: 'object/tangible/slicing/slicing_flow_analyzer.iff'
              }
 

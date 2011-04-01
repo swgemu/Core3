@@ -72,7 +72,7 @@ object_draft_schematic_clothing_clothing_ith_vest_field_01 = object_draft_schema
    combineTypes = {0, 0},
    contribution = {100, 100},
 
-   templates { = 
+   templates = {
               2098025238, -- Script: 'object/tangible/wearables/ithorian/ith_vest_s01.iff'
              }
 

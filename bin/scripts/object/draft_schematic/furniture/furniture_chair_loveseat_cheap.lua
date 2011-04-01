@@ -72,7 +72,7 @@ object_draft_schematic_furniture_furniture_chair_loveseat_cheap = object_draft_s
    combineTypes = {0, 0},
    contribution = {100, 100},
 
-   templates { = 
+   templates = {
               3899164510, -- Script: 'object/tangible/furniture/cheap/love_seat_s01.iff'
              }
 

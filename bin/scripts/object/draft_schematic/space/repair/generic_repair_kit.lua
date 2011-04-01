@@ -72,7 +72,7 @@ object_draft_schematic_space_repair_generic_repair_kit = object_draft_schematic_
    combineTypes = {0, 0},
    contribution = {100, 100},
 
-   templates { = 
+   templates = {
               4121649182, -- Script: 'object/tangible/ship/crafted/repair/repair_kit_ship.iff'
              }
 

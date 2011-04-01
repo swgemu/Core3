@@ -72,7 +72,7 @@ object_draft_schematic_slicing_slicing_molecular_clamp = object_draft_schematic_
    combineTypes = {0, 0, 0},
    contribution = {100, 100, 100},
 
-   templates { = 
+   templates = {
               2757688576, -- Script: 'object/tangible/slicing/slicing_molecular_clamp.iff'
              }
 

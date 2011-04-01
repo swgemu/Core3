@@ -72,7 +72,7 @@ object_draft_schematic_item_item_powerup_weapon_melee_generic = object_draft_sch
    combineTypes = {0, 0},
    contribution = {100, 100},
 
-   templates { = 
+   templates = {
               1327818409, -- Script: 'object/tangible/powerup/weapon/melee_generic.iff'
              }
 

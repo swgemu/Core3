@@ -72,7 +72,7 @@ object_draft_schematic_chemistry_medpack_disease_area_focus_a = object_draft_sch
    combineTypes = {0, 0, 0, 1, 1, 1},
    contribution = {100, 100, 100, 100, 100, 100},
 
-   templates { = 
+   templates = {
               3088521037, -- Script: 'object/tangible/medicine/crafted/medpack_disease_area_focus_a.iff'
              }
 

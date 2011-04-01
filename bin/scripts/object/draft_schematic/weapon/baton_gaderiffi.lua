@@ -72,7 +72,7 @@ object_draft_schematic_weapon_baton_gaderiffi = object_draft_schematic_weapon_sh
    combineTypes = {0, 0, 0, 1},
    contribution = {100, 100, 100, 100},
 
-   templates { = 
+   templates = {
               4274961640, -- Script: 'object/weapon/melee/baton/baton_gaderiffi.iff'
              }
 

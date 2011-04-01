@@ -72,7 +72,7 @@ object_draft_schematic_weapon_knife_vibroblade = object_draft_schematic_weapon_s
    combineTypes = {0, 0, 0, 0, 1},
    contribution = {100, 100, 100, 100, 100},
 
-   templates { = 
+   templates = {
               1982554682, -- Script: 'object/weapon/melee/knife/knife_vibroblade.iff'
              }
 

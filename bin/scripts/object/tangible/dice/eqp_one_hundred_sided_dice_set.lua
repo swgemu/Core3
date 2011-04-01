@@ -42,8 +42,8 @@
 
 
 object_tangible_dice_eqp_one_hundred_sided_dice_set = object_tangible_dice_shared_eqp_one_hundred_sided_dice_set:new {
-	
-	
+
+
 	numberExperimentalProperties = {1, 1, 1, 1},
 	experimentalProperties = {"XX", "XX", "XX", "CD"},
 	experimentalWeights = {1, 1, 1, 1},
@@ -52,6 +52,7 @@ object_tangible_dice_eqp_one_hundred_sided_dice_set = object_tangible_dice_share
 	experimentalMin = {0, 0, 1000, -15},
 	experimentalMax = {0, 0, 1000, 15},
 	experimentalPrecision = {0, 0, 0, 0},
+
 }
 
 ObjectTemplates:addTemplate(object_tangible_dice_eqp_one_hundred_sided_dice_set, "object/tangible/dice/eqp_one_hundred_sided_dice_set.iff")

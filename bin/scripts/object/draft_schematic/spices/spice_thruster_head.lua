@@ -72,7 +72,7 @@ object_draft_schematic_spices_spice_thruster_head = object_draft_schematic_spice
    combineTypes = {0, 0, 0},
    contribution = {100, 100, 100},
 
-   templates { = 
+   templates = {
               4162250224, -- Script: 'object/tangible/food/spice/spice_thruster_head.iff'
              }
 

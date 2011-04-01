@@ -43,21 +43,21 @@
 
 object_tangible_wearables_armor_zam_armor_zam_wesell_chest_plate = object_tangible_wearables_armor_zam_shared_armor_zam_wesell_chest_plate:new {
 	templateType = ARMOROBJECT,
-	
-	 --  ALL, ALLSEXES, ALLFACTIONS, HUMANOIDS, HUMANOID_FOOTWEAR, HUMANOID_MALES, HUMANOID_FEMALES, HUMANOID_IMPERIALS, HUMANOID_REBELS, WOOKIEES, ITHORIANS, TWILEKS
+
+	--   ALL, ALLSEXES, ALLFACTIONS, HUMANOIDS, HUMANOID_FOOTWEAR, HUMANOID_MALES, HUMANOID_FEMALES, HUMANOID_IMPERIALS, HUMANOID_REBELS, WOOKIEES, ITHORIANS, TWILEKS
 	playerUseMask = HUMANOIDS,
-	
-	 --  Damage types in WeaponObject
+
+	--   Damage types in WeaponObject
 	vunerability = ACID + ENERGY + STUN + LIGHTSABER,
-	
-	 --  These are default Blue Frog stats
+
+	--   These are default Blue Frog stats
 	healthEncumbrance = 1,
 	actionEncumbrance = 1,
 	mindEncumbrance = 1,
-	
-	 --  LIGHT, MEDIUM, HEAVY
+
+	--   LIGHT, MEDIUM, HEAVY
 	rating = LIGHT,
-	
+
 	kinetic = 15,
 	energy = 15,
 	electricity = 15,
@@ -67,7 +67,7 @@ object_tangible_wearables_armor_zam_armor_zam_wesell_chest_plate = object_tangib
 	cold = 15,
 	acid = 15,
 	lightSaber = 0,
-	
+
 	numberExperimentalProperties = {1, 1, 1, 2, 2, 2, 2, 2, 2, 1, 1, 2, 1},
 	experimentalProperties = {"XX", "XX", "XX", "OQ", "SR", "OQ", "SR", "OQ", "UT", "MA", "OQ", "MA", "OQ", "MA", "OQ", "XX", "XX", "OQ", "SR", "XX"},
 	experimentalWeights = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
@@ -76,6 +76,7 @@ object_tangible_wearables_armor_zam_armor_zam_wesell_chest_plate = object_tangib
 	experimentalMin = {0, 0, 0, 1000, 1, 11250, 75, 11, 6, 1, 32, 1, 18750},
 	experimentalMax = {0, 0, 0, 1000, 20, 18750, 45, 7, 3, 1, 32, 40, 31250},
 	experimentalPrecision = {0, 0, 0, 0, 10, 0, 0, 0, 0, 0, 0, 0, 0},
+
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_armor_zam_armor_zam_wesell_chest_plate, "object/tangible/wearables/armor/zam/armor_zam_wesell_chest_plate.iff")

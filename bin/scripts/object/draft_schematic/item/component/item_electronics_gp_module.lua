@@ -72,7 +72,7 @@ object_draft_schematic_item_component_item_electronics_gp_module = object_draft_
    combineTypes = {0, 0, 0, 0, 0},
    contribution = {100, 100, 100, 100, 100},
 
-   templates { = 
+   templates = {
               1358787449, -- Script: 'object/tangible/component/item/electronics_gp_module.iff'
              }
 

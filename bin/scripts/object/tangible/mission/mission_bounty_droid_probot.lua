@@ -42,8 +42,8 @@
 
 
 object_tangible_mission_mission_bounty_droid_probot = object_tangible_mission_shared_mission_bounty_droid_probot:new {
-	
-	
+
+
 	numberExperimentalProperties = {1, 1, 3, 3},
 	experimentalProperties = {"XX", "XX", "OQ", "SR", "UT", "OQ", "SR", "UT"},
 	experimentalWeights = {1, 1, 1, 1, 1, 1, 1, 1},
@@ -52,6 +52,7 @@ object_tangible_mission_mission_bounty_droid_probot = object_tangible_mission_sh
 	experimentalMin = {0, 0, 5, 0},
 	experimentalMax = {0, 0, 15, 100},
 	experimentalPrecision = {0, 0, 0, 0},
+
 }
 
 ObjectTemplates:addTemplate(object_tangible_mission_mission_bounty_droid_probot, "object/tangible/mission/mission_bounty_droid_probot.iff")

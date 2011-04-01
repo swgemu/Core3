@@ -72,7 +72,7 @@ object_draft_schematic_bio_engineer_bio_component_bio_component_clothing_field_d
    combineTypes = {0, 0, 0},
    contribution = {100, 100, 100},
 
-   templates { = 
+   templates = {
               1257707338, -- Script: 'object/tangible/component/bio/bio_component_clothing_field_defense.iff'
              }
 

@@ -72,7 +72,7 @@ object_draft_schematic_instrument_instrument_fanfar = object_draft_schematic_ins
    combineTypes = {0, 0},
    contribution = {100, 100},
 
-   templates { = 
+   templates = {
               1877084449, -- Script: 'object/tangible/instrument/fanfar.iff'
              }
 

@@ -72,7 +72,7 @@ object_draft_schematic_chemistry_med_stimpack_range_b = object_draft_schematic_c
    combineTypes = {0, 0, 0, 1, 1, 1},
    contribution = {100, 100, 100, 100, 100, 100},
 
-   templates { = 
+   templates = {
               3643611411, -- Script: 'object/tangible/medicine/crafted/medpack_grenade_damage_b.iff'
              }
 

@@ -72,7 +72,7 @@ object_draft_schematic_furniture_city_furniture_streetlamp = object_draft_schema
    combineTypes = {0, 0, 1},
    contribution = {100, 100, 100},
 
-   templates { = 
+   templates = {
               206484018, -- Script: 'object/tangible/furniture/city/streetlamp_large_01.iff'
              }
 

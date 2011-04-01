@@ -72,7 +72,7 @@ object_draft_schematic_bio_engineer_dna_template_dna_template_generic = object_d
    combineTypes = {0, 0, 0, 0, 0},
    contribution = {100, 100, 100, 100, 100},
 
-   templates { = 
+   templates = {
               3537593180, -- Script: 'object/tangible/component/dna/dna_template_generic.iff'
              }
 

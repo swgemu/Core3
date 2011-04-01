@@ -72,7 +72,7 @@ object_draft_schematic_chemistry_med_stimpack_d = object_draft_schematic_chemist
    combineTypes = {0, 0, 1, 1, 1},
    contribution = {100, 100, 100, 100, 100},
 
-   templates { = 
+   templates = {
               4106750396, -- Script: 'object/tangible/medicine/crafted/crafted_stimpack_sm_s1_d.iff'
              }
 

@@ -72,7 +72,7 @@ object_draft_schematic_structure_component_structure_harvesting_mechanism = obje
    combineTypes = {0, 0, 0, 0, 0},
    contribution = {100, 100, 100, 100, 100},
 
-   templates { = 
+   templates = {
               2971470632, -- Script: 'object/tangible/component/structure/harvesting_mechanism.iff'
              }
 

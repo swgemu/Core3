@@ -72,7 +72,7 @@ object_draft_schematic_item_item_powerup_weapon_ranged_two = object_draft_schema
    combineTypes = {0, 0},
    contribution = {100, 100},
 
-   templates { = 
+   templates = {
               130303407, -- Script: 'object/tangible/powerup/weapon/ranged_grip.iff'
              }
 

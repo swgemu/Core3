@@ -72,7 +72,7 @@ object_draft_schematic_structure_generic_house_player_medium_style_02 = object_d
    combineTypes = {0, 0, 0, 1, 1, 1},
    contribution = {100, 100, 100, 100, 100, 100},
 
-   templates { = 
+   templates = {
               2141929965, -- Script: 'object/tangible/deed/player_house_deed/generic_house_medium_style_02_deed.iff'
              }
 

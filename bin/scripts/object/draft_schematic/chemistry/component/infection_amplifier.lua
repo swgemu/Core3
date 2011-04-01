@@ -72,7 +72,7 @@ object_draft_schematic_chemistry_component_infection_amplifier = object_draft_sc
    combineTypes = {0, 0},
    contribution = {100, 100},
 
-   templates { = 
+   templates = {
               4183588171, -- Script: 'object/tangible/component/chemistry/infection_amplifier.iff'
              }
 

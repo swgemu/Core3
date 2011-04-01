@@ -72,7 +72,7 @@ object_draft_schematic_weapon_component_chemical_dispersion_mechanism = object_d
    combineTypes = {0, 0, 0},
    contribution = {100, 100, 100},
 
-   templates { = 
+   templates = {
               2912350837, -- Script: 'object/tangible/component/weapon/chemical_dispersion_mechanism.iff'
              }
 

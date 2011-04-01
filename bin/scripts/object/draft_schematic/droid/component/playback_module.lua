@@ -72,7 +72,7 @@ object_draft_schematic_droid_component_playback_module = object_draft_schematic_
    combineTypes = {0, 0, 0},
    contribution = {100, 100, 100},
 
-   templates { = 
+   templates = {
               3696957141, -- Script: 'object/tangible/component/droid/playback_module.iff'
              }
 

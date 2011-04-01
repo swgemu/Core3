@@ -72,7 +72,7 @@ object_draft_schematic_food_dessert_pyollian_cake = object_draft_schematic_food_
    combineTypes = {1, 0, 0, 1},
    contribution = {100, 100, 100, 100},
 
-   templates { = 
+   templates = {
               1472463975, -- Script: 'object/tangible/food/crafted/dessert_pyollian_cake.iff'
              }
 

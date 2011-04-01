@@ -72,7 +72,7 @@ object_draft_schematic_weapon_lance_vibro = object_draft_schematic_weapon_shared
    combineTypes = {0, 0, 0, 1},
    contribution = {100, 100, 100, 100},
 
-   templates { = 
+   templates = {
               1358850609, -- Script: 'object/weapon/melee/polearm/lance_vibrolance.iff'
              }
 

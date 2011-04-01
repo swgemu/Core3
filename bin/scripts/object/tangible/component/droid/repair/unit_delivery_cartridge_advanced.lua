@@ -42,8 +42,8 @@
 
 
 object_tangible_component_droid_repair_unit_delivery_cartridge_advanced = object_tangible_component_droid_repair_shared_unit_delivery_cartridge_advanced:new {
-	
-	
+
+
 	numberExperimentalProperties = {1, 1, 2, 1},
 	experimentalProperties = {"XX", "XX", "OQ", "UT", "XX"},
 	experimentalWeights = {1, 1, 1, 2, 1},
@@ -52,6 +52,7 @@ object_tangible_component_droid_repair_unit_delivery_cartridge_advanced = object
 	experimentalMin = {0, 0, 3, 1000},
 	experimentalMax = {0, 0, 15, 1000},
 	experimentalPrecision = {0, 0, 0, 0},
+
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_droid_repair_unit_delivery_cartridge_advanced, "object/tangible/component/droid/repair/unit_delivery_cartridge_advanced.iff")

@@ -72,7 +72,7 @@ object_draft_schematic_item_item_space_station = object_draft_schematic_item_sha
    combineTypes = {0, 0, 1, 1, 1},
    contribution = {100, 100, 100, 100, 100},
 
-   templates { = 
+   templates = {
               2102867079, -- Script: 'object/tangible/crafting/station/space_station.iff'
              }
 

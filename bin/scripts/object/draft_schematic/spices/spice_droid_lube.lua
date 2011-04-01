@@ -72,7 +72,7 @@ object_draft_schematic_spices_spice_droid_lube = object_draft_schematic_spices_s
    combineTypes = {0, 0, 0},
    contribution = {100, 100, 100},
 
-   templates { = 
+   templates = {
               3974108643, -- Script: 'object/tangible/food/spice/spice_droid_lube.iff'
              }
 

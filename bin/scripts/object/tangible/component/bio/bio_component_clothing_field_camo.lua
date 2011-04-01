@@ -42,8 +42,8 @@
 
 
 object_tangible_component_bio_bio_component_clothing_field_camo = object_tangible_component_bio_shared_bio_component_clothing_field_camo:new {
-	
-	
+
+
 	numberExperimentalProperties = {1, 1, 1, 1, 1, 3, 1, 3},
 	experimentalProperties = {"XX", "XX", "XX", "XX", "XX", "FL", "OQ", "PE", "XX", "FL", "OQ", "PE"},
 	experimentalWeights = {1, 1, 1, 1, 1, 1, 2, 2, 1, 1, 2, 2},
@@ -52,6 +52,7 @@ object_tangible_component_bio_bio_component_clothing_field_camo = object_tangibl
 	experimentalMin = {0, 0, 30, 1000, 111, 1, 119, 1},
 	experimentalMax = {0, 0, 50, 1000, 111, 10, 119, 10},
 	experimentalPrecision = {0, 0, 0, 0, 0, 0, 0, 0},
+
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_bio_bio_component_clothing_field_camo, "object/tangible/component/bio/bio_component_clothing_field_camo.iff")

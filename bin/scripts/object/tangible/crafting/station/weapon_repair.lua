@@ -42,15 +42,15 @@
 
 
 object_tangible_crafting_station_weapon_repair = object_tangible_crafting_station_shared_weapon_repair:new {
-	
-	 -- templateType = 0,
-	
+
+	--  templateType = 0,
+
 	playerUseMask = 65535,
-	
+
 	customizationOptions = {},
 	customizationDefaults = {},
-	
-	
+
+
 	numberExperimentalProperties = {1, 1, 1, 1},
 	experimentalProperties = {"XX", "XX", "UT", "CD"},
 	experimentalWeights = {1, 1, 1, 1},
@@ -59,5 +59,6 @@ object_tangible_crafting_station_weapon_repair = object_tangible_crafting_statio
 	experimentalMin = {0, 0, 1000, 1},
 	experimentalMax = {0, 0, 1000, 100},
 	experimentalPrecision = {0, 0, 0, 0},
+
 }
 ObjectTemplates:addTemplate(object_tangible_crafting_station_weapon_repair, "object/tangible/crafting/station/weapon_repair.iff")

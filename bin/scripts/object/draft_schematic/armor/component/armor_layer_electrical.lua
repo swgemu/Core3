@@ -72,7 +72,7 @@ object_draft_schematic_armor_component_armor_layer_electrical = object_draft_sch
    combineTypes = {0, 0, 0},
    contribution = {100, 100, 100},
 
-   templates { = 
+   templates = {
               2222171364, -- Script: 'object/tangible/component/armor/armor_layer_electrical.iff'
              }
 

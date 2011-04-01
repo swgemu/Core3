@@ -72,7 +72,7 @@ object_draft_schematic_food_drink_ithorian_mist = object_draft_schematic_food_sh
    combineTypes = {0, 0, 1, 1, 1},
    contribution = {100, 100, 100, 100, 100},
 
-   templates { = 
+   templates = {
               1468700561, -- Script: 'object/tangible/food/crafted/drink_ithorian_mist.iff'
              }
 

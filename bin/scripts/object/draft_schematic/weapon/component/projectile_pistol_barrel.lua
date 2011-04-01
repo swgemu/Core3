@@ -72,7 +72,7 @@ object_draft_schematic_weapon_component_projectile_pistol_barrel = object_draft_
    combineTypes = {0, 0},
    contribution = {100, 100},
 
-   templates { = 
+   templates = {
               6493761, -- Script: 'object/tangible/component/weapon/projectile_pistol_barrel.iff'
              }
 

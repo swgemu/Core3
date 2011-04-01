@@ -72,7 +72,7 @@ object_draft_schematic_space_weapon_missile_countermeasure_chaff_pack = object_d
    combineTypes = {0, 0},
    contribution = {100, 100},
 
-   templates { = 
+   templates = {
               3507929913, -- Script: 'object/tangible/ship/crafted/weapon/missile/countermeasure_chaff_pack.iff'
              }
 

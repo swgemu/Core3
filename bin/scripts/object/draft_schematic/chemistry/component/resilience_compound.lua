@@ -72,7 +72,7 @@ object_draft_schematic_chemistry_component_resilience_compound = object_draft_sc
    combineTypes = {0, 0},
    contribution = {100, 100},
 
-   templates { = 
+   templates = {
               3797845095, -- Script: 'object/tangible/component/chemistry/resilience_compound.iff'
              }
 

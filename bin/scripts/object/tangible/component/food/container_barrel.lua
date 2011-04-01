@@ -42,8 +42,8 @@
 
 
 object_tangible_component_food_container_barrel = object_tangible_component_food_shared_container_barrel:new {
-	
-	
+
+
 	numberExperimentalProperties = {1, 1, 1},
 	experimentalProperties = {"XX", "XX", "XX"},
 	experimentalWeights = {1, 1, 1},
@@ -52,6 +52,7 @@ object_tangible_component_food_container_barrel = object_tangible_component_food
 	experimentalMin = {0, 0, 6},
 	experimentalMax = {0, 0, 6},
 	experimentalPrecision = {0, 0, 0},
+
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_food_container_barrel, "object/tangible/component/food/container_barrel.iff")

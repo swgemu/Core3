@@ -72,7 +72,7 @@ object_draft_schematic_food_dish_bivoli_tempari = object_draft_schematic_food_sh
    combineTypes = {1, 1, 0, 0, 1},
    contribution = {100, 100, 100, 100, 100},
 
-   templates { = 
+   templates = {
               230572551, -- Script: 'object/tangible/food/crafted/dish_bivoli_tempari.iff'
              }
 

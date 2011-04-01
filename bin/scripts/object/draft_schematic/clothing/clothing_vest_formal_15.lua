@@ -72,7 +72,7 @@ object_draft_schematic_clothing_clothing_vest_formal_15 = object_draft_schematic
    combineTypes = {0, 0, 1, 1},
    contribution = {100, 100, 100, 100},
 
-   templates { = 
+   templates = {
               1396547578, -- Script: 'object/tangible/wearables/vest/vest_s15.iff'
              }
 

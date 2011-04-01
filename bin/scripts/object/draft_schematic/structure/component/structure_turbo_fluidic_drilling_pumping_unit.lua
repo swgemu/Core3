@@ -72,7 +72,7 @@ object_draft_schematic_structure_component_structure_turbo_fluidic_drilling_pump
    combineTypes = {0, 0, 0, 0, 0},
    contribution = {100, 100, 100, 100, 100},
 
-   templates { = 
+   templates = {
               135758881, -- Script: 'object/tangible/component/structure/turbo_fluidic_drilling_pumping_unit.iff'
              }
 

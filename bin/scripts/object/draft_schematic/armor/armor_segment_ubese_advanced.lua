@@ -72,7 +72,7 @@ object_draft_schematic_armor_armor_segment_ubese_advanced = object_draft_schemat
    combineTypes = {0, 0, 0, 1, 1},
    contribution = {100, 100, 100, 100, 100},
 
-   templates { = 
+   templates = {
               1102511316, -- Script: 'object/tangible/component/armor/armor_segment_ubese_advanced.iff'
              }
 

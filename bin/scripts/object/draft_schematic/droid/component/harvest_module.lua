@@ -72,7 +72,7 @@ object_draft_schematic_droid_component_harvest_module = object_draft_schematic_d
    combineTypes = {0, 0, 0},
    contribution = {100, 100, 100},
 
-   templates { = 
+   templates = {
               1840155737, -- Script: 'object/tangible/component/droid/harvest_module.iff'
              }
 

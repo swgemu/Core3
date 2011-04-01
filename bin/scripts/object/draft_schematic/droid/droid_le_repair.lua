@@ -72,7 +72,7 @@ object_draft_schematic_droid_droid_le_repair = object_draft_schematic_droid_shar
    combineTypes = {1, 0, 1, 1, 1, 1, 1, 1, 1, 1},
    contribution = {100, 100, 100, 100, 100, 100, 100, 100, 100, 100},
 
-   templates { = 
+   templates = {
               15781339, -- Script: 'object/tangible/deed/pet_deed/deed_le_repair_basic.iff'
              }
 

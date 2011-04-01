@@ -72,7 +72,7 @@ object_draft_schematic_clothing_clothing_jewelry_necklace_11 = object_draft_sche
    combineTypes = {0, 0, 0},
    contribution = {100, 100, 100},
 
-   templates { = 
+   templates = {
               549583506, -- Script: 'object/tangible/wearables/necklace/necklace_s11.iff'
              }
 

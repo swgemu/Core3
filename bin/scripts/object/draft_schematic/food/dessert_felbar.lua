@@ -72,7 +72,7 @@ object_draft_schematic_food_dessert_felbar = object_draft_schematic_food_shared_
    combineTypes = {1, 0, 0, 1},
    contribution = {100, 100, 100, 100},
 
-   templates { = 
+   templates = {
               3264524389, -- Script: 'object/tangible/food/crafted/dessert_felbar.iff'
              }
 

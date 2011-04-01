@@ -42,8 +42,8 @@
 
 
 object_tangible_component_droid_armor_module_1 = object_tangible_component_droid_shared_armor_module_1:new {
-	
-	
+
+
 	numberExperimentalProperties = {1, 1, 2, 1, 2, 2, 2},
 	experimentalProperties = {"XX", "XX", "OQ", "SR", "XX", "CD", "OQ", "CD", "OQ", "CD", "OQ"},
 	experimentalWeights = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
@@ -52,6 +52,7 @@ object_tangible_component_droid_armor_module_1 = object_tangible_component_droid
 	experimentalMin = {0, 0, 5, 1000, -10, 100, 1},
 	experimentalMax = {0, 0, 15, 1000, 15, 300, 3},
 	experimentalPrecision = {0, 0, 0, 0, 0, 0, 0},
+
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_droid_armor_module_1, "object/tangible/component/droid/armor_module_1.iff")

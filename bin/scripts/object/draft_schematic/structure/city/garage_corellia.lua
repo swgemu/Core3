@@ -72,7 +72,7 @@ object_draft_schematic_structure_city_garage_corellia = object_draft_schematic_s
    combineTypes = {0, 0, 0, 1, 1, 1},
    contribution = {100, 100, 100, 100, 100, 100},
 
-   templates { = 
+   templates = {
               1687102775, -- Script: 'object/tangible/deed/city_deed/garage_corellia_deed.iff'
              }
 

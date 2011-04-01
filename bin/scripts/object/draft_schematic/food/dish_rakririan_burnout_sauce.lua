@@ -72,7 +72,7 @@ object_draft_schematic_food_dish_rakririan_burnout_sauce = object_draft_schemati
    combineTypes = {0, 1, 0, 0, 1},
    contribution = {100, 100, 100, 100, 100},
 
-   templates { = 
+   templates = {
               2639501071, -- Script: 'object/tangible/food/crafted/dish_rakririan_burnout_sauce.iff'
              }
 

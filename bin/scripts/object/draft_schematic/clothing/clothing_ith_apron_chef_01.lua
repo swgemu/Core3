@@ -72,7 +72,7 @@ object_draft_schematic_clothing_clothing_ith_apron_chef_01 = object_draft_schema
    combineTypes = {1, 0, 1, 1, 0},
    contribution = {100, 100, 100, 100, 100},
 
-   templates { = 
+   templates = {
               1813585851, -- Script: 'object/tangible/wearables/ithorian/apron_chef_jacket_s01_ith.iff'
              }
 

@@ -72,7 +72,7 @@ object_draft_schematic_furniture_furniture_toolchest_large = object_draft_schema
    combineTypes = {0, 0},
    contribution = {100, 100},
 
-   templates { = 
+   templates = {
               3475702053, -- Script: 'object/tangible/furniture/all/frn_all_toolchest_lg_s01.iff'
              }
 

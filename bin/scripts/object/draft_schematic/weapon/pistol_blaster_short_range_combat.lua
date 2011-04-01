@@ -72,7 +72,7 @@ object_draft_schematic_weapon_pistol_blaster_short_range_combat = object_draft_s
    combineTypes = {0, 0, 0, 1, 1, 1},
    contribution = {100, 100, 100, 100, 100, 100},
 
-   templates { = 
+   templates = {
               1691705957, -- Script: 'object/weapon/ranged/pistol/pistol_srcombat.iff'
              }
 

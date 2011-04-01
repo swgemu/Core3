@@ -72,7 +72,7 @@ object_draft_schematic_munition_component_warhead_stabilizer = object_draft_sche
    combineTypes = {0, 0, 0, 0, 0, 0},
    contribution = {100, 100, 100, 100, 100, 100},
 
-   templates { = 
+   templates = {
               987072330, -- Script: 'object/tangible/component/munition/warhead_stabilizer.iff'
              }
 

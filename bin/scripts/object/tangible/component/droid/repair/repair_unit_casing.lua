@@ -42,8 +42,8 @@
 
 
 object_tangible_component_droid_repair_repair_unit_casing = object_tangible_component_droid_repair_shared_repair_unit_casing:new {
-	
-	
+
+
 	numberExperimentalProperties = {1, 1, 2, 1},
 	experimentalProperties = {"XX", "XX", "OQ", "UT", "XX"},
 	experimentalWeights = {1, 1, 1, 2, 1},
@@ -52,6 +52,7 @@ object_tangible_component_droid_repair_repair_unit_casing = object_tangible_comp
 	experimentalMin = {0, 0, 1, 1000},
 	experimentalMax = {0, 0, 5, 1000},
 	experimentalPrecision = {0, 0, 0, 0},
+
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_droid_repair_repair_unit_casing, "object/tangible/component/droid/repair/repair_unit_casing.iff")

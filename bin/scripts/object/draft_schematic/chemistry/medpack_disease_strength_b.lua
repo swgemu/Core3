@@ -72,7 +72,7 @@ object_draft_schematic_chemistry_medpack_disease_strength_b = object_draft_schem
    combineTypes = {0, 0, 0, 1, 1, 1},
    contribution = {100, 100, 100, 100, 100, 100},
 
-   templates { = 
+   templates = {
               4088499080, -- Script: 'object/tangible/medicine/crafted/medpack_disease_strength_b.iff'
              }
 

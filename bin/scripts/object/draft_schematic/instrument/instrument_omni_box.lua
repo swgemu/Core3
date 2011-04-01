@@ -72,7 +72,7 @@ object_draft_schematic_instrument_instrument_omni_box = object_draft_schematic_i
    combineTypes = {0, 0},
    contribution = {100, 100},
 
-   templates { = 
+   templates = {
               1555712712, -- Script: 'object/tangible/instrument/ommni_box.iff'
              }
 

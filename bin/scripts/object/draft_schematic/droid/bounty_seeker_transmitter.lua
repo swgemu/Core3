@@ -72,7 +72,7 @@ object_draft_schematic_droid_bounty_seeker_transmitter = object_draft_schematic_
    combineTypes = {0, 0, 1, 1, 1},
    contribution = {100, 100, 100, 100, 100},
 
-   templates { = 
+   templates = {
               1293954524, -- Script: 'object/tangible/mission/mission_bounty_droid_seeker.iff'
              }
 

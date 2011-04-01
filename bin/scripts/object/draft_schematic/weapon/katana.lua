@@ -72,7 +72,7 @@ object_draft_schematic_weapon_katana = object_draft_schematic_weapon_shared_kata
    combineTypes = {0, 0, 1},
    contribution = {100, 100, 100},
 
-   templates { = 
+   templates = {
               653612816, -- Script: 'object/weapon/melee/2h_sword/2h_sword_katana.iff'
              }
 

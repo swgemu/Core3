@@ -72,7 +72,7 @@ object_draft_schematic_food_dish_gruuvan_shaal = object_draft_schematic_food_sha
    combineTypes = {0, 0, 0, 1},
    contribution = {100, 100, 100, 100},
 
-   templates { = 
+   templates = {
               1353161551, -- Script: 'object/tangible/food/crafted/dish_gruuvan_shaal.iff'
              }
 

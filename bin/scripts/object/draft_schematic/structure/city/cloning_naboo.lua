@@ -72,7 +72,7 @@ object_draft_schematic_structure_city_cloning_naboo = object_draft_schematic_str
    combineTypes = {0, 0, 0, 1, 1, 1},
    contribution = {100, 100, 100, 100, 100, 100},
 
-   templates { = 
+   templates = {
               330359378, -- Script: 'object/tangible/deed/city_deed/cloning_naboo_deed.iff'
              }
 

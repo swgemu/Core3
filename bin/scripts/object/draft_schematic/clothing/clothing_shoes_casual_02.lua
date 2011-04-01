@@ -72,7 +72,7 @@ object_draft_schematic_clothing_clothing_shoes_casual_02 = object_draft_schemati
    combineTypes = {0, 0, 0},
    contribution = {100, 100, 100},
 
-   templates { = 
+   templates = {
               1735484596, -- Script: 'object/tangible/wearables/shoes/shoes_s02.iff'
              }
 

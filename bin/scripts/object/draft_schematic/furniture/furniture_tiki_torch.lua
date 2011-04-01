@@ -72,7 +72,7 @@ object_draft_schematic_furniture_furniture_tiki_torch = object_draft_schematic_f
    combineTypes = {0, 1, 0},
    contribution = {100, 100, 100},
 
-   templates { = 
+   templates = {
               3927885786, -- Script: 'object/tangible/furniture/all/frn_all_tiki_torch_s1.iff'
              }
 

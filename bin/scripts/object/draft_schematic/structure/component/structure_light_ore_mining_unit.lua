@@ -72,7 +72,7 @@ object_draft_schematic_structure_component_structure_light_ore_mining_unit = obj
    combineTypes = {0, 0, 0, 0, 0},
    contribution = {100, 100, 100, 100, 100},
 
-   templates { = 
+   templates = {
               83506741, -- Script: 'object/tangible/component/structure/light_ore_mining_unit.iff'
              }
 

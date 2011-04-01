@@ -72,7 +72,7 @@ object_draft_schematic_instrument_instrument_nalargon = object_draft_schematic_i
    combineTypes = {0, 0},
    contribution = {100, 100},
 
-   templates { = 
+   templates = {
               4212938940, -- Script: 'object/tangible/instrument/nalargon.iff'
              }
 

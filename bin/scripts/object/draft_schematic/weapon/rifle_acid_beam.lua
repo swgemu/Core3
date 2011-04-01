@@ -72,7 +72,7 @@ object_draft_schematic_weapon_rifle_acid_beam = object_draft_schematic_weapon_sh
    combineTypes = {0, 0, 0, 1, 1, 1, 1},
    contribution = {100, 100, 100, 100, 100, 100, 100},
 
-   templates { = 
+   templates = {
               4227426203, -- Script: 'object/weapon/ranged/rifle/rifle_acid_beam.iff'
              }
 

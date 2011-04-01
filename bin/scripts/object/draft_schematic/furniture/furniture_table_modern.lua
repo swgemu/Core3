@@ -72,7 +72,7 @@ object_draft_schematic_furniture_furniture_table_modern = object_draft_schematic
    combineTypes = {0, 0},
    contribution = {100, 100},
 
-   templates { = 
+   templates = {
               1384894624, -- Script: 'object/tangible/furniture/modern/table_modern_style_01.iff'
              }
 

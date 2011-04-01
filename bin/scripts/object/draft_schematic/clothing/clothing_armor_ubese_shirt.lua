@@ -72,7 +72,7 @@ object_draft_schematic_clothing_clothing_armor_ubese_shirt = object_draft_schema
    combineTypes = {0, 0, 0},
    contribution = {100, 100, 100},
 
-   templates { = 
+   templates = {
               569575162, -- Script: 'object/tangible/wearables/armor/ubese/armor_ubese_shirt.iff'
              }
 

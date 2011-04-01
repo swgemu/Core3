@@ -72,7 +72,7 @@ object_draft_schematic_furniture_furniture_lamp_table_s02_on = object_draft_sche
    combineTypes = {0, 0, 0},
    contribution = {100, 100, 100},
 
-   templates { = 
+   templates = {
               3462734390, -- Script: 'object/tangible/furniture/all/frn_all_light_lamp_table_s02.iff'
              }
 

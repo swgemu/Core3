@@ -72,7 +72,7 @@ object_draft_schematic_weapon_rifle_blaster_e11 = object_draft_schematic_weapon_
    combineTypes = {0, 0, 0, 1, 1, 1, 1},
    contribution = {100, 100, 100, 100, 100, 100, 100},
 
-   templates { = 
+   templates = {
               709369610, -- Script: 'object/weapon/ranged/rifle/rifle_e11.iff'
              }
 

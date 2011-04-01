@@ -43,13 +43,13 @@
 
 object_tangible_food_crafted_drink_flameout = object_tangible_food_crafted_shared_drink_flameout:new {
 	templateType = CONSUMABLE,
-	
+
 	duration = 10,
 	filling = 10,
 	nutrition = 10,
-	
+
 	effectType = 3,
-	
+
 	fillingMin = 72,
 	fillingMax = 43,
 	flavorMin = 3,
@@ -58,13 +58,13 @@ object_tangible_food_crafted_drink_flameout = object_tangible_food_crafted_share
 	nutritionMax = 100,
 	quantityMin = 2,
 	quantityMax = 5,
-	
+
 	modifiers = { "mitigate_damage", 0 },
-	
+
 	buffName = "food.mitigate_damage",
 	buffCRC = 0,
 	speciesRestriction = "",
-	
+
 	numberExperimentalProperties = {1, 1, 1, 1, 2, 2, 2, 2, 1},
 	experimentalProperties = {"XX", "XX", "XX", "XX", "OQ", "PE", "DR", "FL", "DR", "PE", "DR", "OQ", "XX"},
 	experimentalWeights = {1, 1, 1, 1, 1, 2, 1, 2, 1, 3, 3, 1, 1},
@@ -73,6 +73,7 @@ object_tangible_food_crafted_drink_flameout = object_tangible_food_crafted_share
 	experimentalMin = {0, 0, 1000, 0, 75, 60, 60, 80, 1},
 	experimentalMax = {0, 0, 1000, 0, 120, 120, 100, 120, 1},
 	experimentalPrecision = {0, 0, 0, 0, 0, 10, 0, 0, 0},
+
 }
 
 ObjectTemplates:addTemplate(object_tangible_food_crafted_drink_flameout, "object/tangible/food/crafted/drink_flameout.iff")

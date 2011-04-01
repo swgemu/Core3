@@ -42,8 +42,8 @@
 
 
 object_tangible_component_structure_structure_small_storage_section = object_tangible_component_structure_shared_structure_small_storage_section:new {
-	
-	
+
+
 	numberExperimentalProperties = {1, 1, 1},
 	experimentalProperties = {"XX", "XX", "XX"},
 	experimentalWeights = {1, 1, 1},
@@ -52,6 +52,7 @@ object_tangible_component_structure_structure_small_storage_section = object_tan
 	experimentalMin = {0, 0, 200},
 	experimentalMax = {0, 0, 500},
 	experimentalPrecision = {0, 0, 0},
+
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_structure_structure_small_storage_section, "object/tangible/component/structure/structure_small_storage_section.iff")

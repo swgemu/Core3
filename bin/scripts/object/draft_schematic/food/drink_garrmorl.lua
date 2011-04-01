@@ -72,7 +72,7 @@ object_draft_schematic_food_drink_garrmorl = object_draft_schematic_food_shared_
    combineTypes = {1, 0, 0, 1, 1},
    contribution = {100, 100, 100, 100, 100},
 
-   templates { = 
+   templates = {
               1833668435, -- Script: 'object/tangible/food/crafted/drink_garrmorl.iff'
              }
 

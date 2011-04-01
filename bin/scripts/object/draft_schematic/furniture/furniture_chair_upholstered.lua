@@ -72,7 +72,7 @@ object_draft_schematic_furniture_furniture_chair_upholstered = object_draft_sche
    combineTypes = {0, 0},
    contribution = {100, 100},
 
-   templates { = 
+   templates = {
               3884115433, -- Script: 'object/tangible/furniture/all/frn_all_chair_upholstered_s1.iff'
              }
 

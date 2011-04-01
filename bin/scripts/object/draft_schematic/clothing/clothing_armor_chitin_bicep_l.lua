@@ -72,7 +72,7 @@ object_draft_schematic_clothing_clothing_armor_chitin_bicep_l = object_draft_sch
    combineTypes = {0, 0, 0, 0, 0, 0, 1, 1, 1},
    contribution = {100, 100, 100, 100, 100, 100, 100, 100, 100},
 
-   templates { = 
+   templates = {
               1026806068, -- Script: 'object/tangible/wearables/armor/chitin/armor_chitin_s01_bicep_l.iff'
              }
 

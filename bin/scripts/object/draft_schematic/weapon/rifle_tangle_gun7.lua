@@ -72,7 +72,7 @@ object_draft_schematic_weapon_rifle_tangle_gun7 = object_draft_schematic_weapon_
    combineTypes = {0, 0, 0, 1, 1, 1},
    contribution = {100, 100, 100, 100, 100, 100},
 
-   templates { = 
+   templates = {
               3357582048, -- Script: 'object/weapon/ranged/pistol/pistol_tangle.iff'
              }
 

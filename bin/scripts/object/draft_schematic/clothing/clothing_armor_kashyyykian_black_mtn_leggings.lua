@@ -72,7 +72,7 @@ object_draft_schematic_clothing_clothing_armor_kashyyykian_black_mtn_leggings = 
    combineTypes = {0, 0, 0, 0, 0, 1, 1, 1, 0},
    contribution = {100, 100, 100, 100, 100, 100, 100, 100, 100},
 
-   templates { = 
+   templates = {
               523674485, -- Script: 'object/tangible/wearables/armor/kashyyykian_black_mtn/armor_kashyyykian_black_mtn_leggings.iff'
              }
 

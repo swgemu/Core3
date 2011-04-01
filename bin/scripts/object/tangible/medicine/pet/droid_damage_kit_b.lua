@@ -42,8 +42,8 @@
 
 
 object_tangible_medicine_pet_droid_damage_kit_b = object_tangible_medicine_pet_shared_droid_damage_kit_b:new {
-	
-	
+
+
 	numberExperimentalProperties = {1, 1, 3, 2, 1},
 	experimentalProperties = {"XX", "XX", "CD", "MA", "OQ", "OQ", "UT", "XX"},
 	experimentalWeights = {1, 1, 2, 1, 2, 2, 1, 1},
@@ -52,6 +52,7 @@ object_tangible_medicine_pet_droid_damage_kit_b = object_tangible_medicine_pet_s
 	experimentalMin = {0, 0, 300, 10, 1000},
 	experimentalMax = {0, 0, 1125, 20, 1000},
 	experimentalPrecision = {0, 0, 0, 0, 0},
+
 }
 
 ObjectTemplates:addTemplate(object_tangible_medicine_pet_droid_damage_kit_b, "object/tangible/medicine/pet/droid_damage_kit_b.iff")

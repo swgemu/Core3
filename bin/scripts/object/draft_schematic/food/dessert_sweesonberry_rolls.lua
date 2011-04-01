@@ -72,7 +72,7 @@ object_draft_schematic_food_dessert_sweesonberry_rolls = object_draft_schematic_
    combineTypes = {1, 1, 0, 0, 1},
    contribution = {100, 100, 100, 100, 100},
 
-   templates { = 
+   templates = {
               1461830070, -- Script: 'object/tangible/food/crafted/dessert_sweesonberry_rolls.iff'
              }
 

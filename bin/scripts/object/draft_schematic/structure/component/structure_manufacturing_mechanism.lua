@@ -72,7 +72,7 @@ object_draft_schematic_structure_component_structure_manufacturing_mechanism = o
    combineTypes = {0, 0, 0, 0, 1},
    contribution = {100, 100, 100, 100, 100},
 
-   templates { = 
+   templates = {
               2607616608, -- Script: 'object/tangible/component/structure/manufacturing_mechanism.iff'
              }
 

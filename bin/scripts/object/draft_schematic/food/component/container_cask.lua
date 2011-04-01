@@ -72,7 +72,7 @@ object_draft_schematic_food_component_container_cask = object_draft_schematic_fo
    combineTypes = {0, 1},
    contribution = {100, 100},
 
-   templates { = 
+   templates = {
               3552621287, -- Script: 'object/tangible/component/food/container_cask.iff'
              }
 

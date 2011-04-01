@@ -72,7 +72,7 @@ object_draft_schematic_structure_city_garden_medium = object_draft_schematic_str
    combineTypes = {0, 0, 1},
    contribution = {100, 100, 100},
 
-   templates { = 
+   templates = {
               3277729940, -- Script: 'object/tangible/deed/city_deed/garden_corellia_med_01_deed.iff'
              }
 

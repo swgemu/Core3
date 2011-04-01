@@ -42,8 +42,8 @@
 
 
 object_tangible_component_armor_armor_segment_padded = object_tangible_component_armor_shared_armor_segment_padded:new {
-	
-	
+
+
 	numberExperimentalProperties = {1, 1, 1, 2, 2, 2, 2, 2, 1, 1, 2, 1},
 	experimentalProperties = {"XX", "XX", "XX", "OQ", "SR", "OQ", "UT", "MA", "OQ", "MA", "OQ", "MA", "OQ", "XX", "XX", "OQ", "SR", "XX"},
 	experimentalWeights = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
@@ -52,6 +52,7 @@ object_tangible_component_armor_armor_segment_padded = object_tangible_component
 	experimentalMin = {0, 0, 1000, 1, 100, 9, 12, 6, 1, 4, 1, 100},
 	experimentalMax = {0, 0, 1000, 8, 1000, 1, 1, 1, 1, 4, 15, 1000},
 	experimentalPrecision = {0, 0, 0, 10, 0, 0, 0, 0, 0, 0, 0, 0},
+
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_armor_armor_segment_padded, "object/tangible/component/armor/armor_segment_padded.iff")

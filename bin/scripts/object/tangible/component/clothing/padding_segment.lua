@@ -42,8 +42,8 @@
 
 
 object_tangible_component_clothing_padding_segment = object_tangible_component_clothing_shared_padding_segment:new {
-	
-	
+
+
 	numberExperimentalProperties = {1, 1, 1, 2, 2, 2, 2, 2, 1},
 	experimentalProperties = {"XX", "XX", "XX", "OQ", "SR", "OQ", "UT", "OQ", "SR", "OQ", "SR", "OQ", "SR", "XX"},
 	experimentalWeights = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
@@ -52,6 +52,7 @@ object_tangible_component_clothing_padding_segment = object_tangible_component_c
 	experimentalMin = {0, 0, 1000, 1, 50, 9, 11, 9, 1},
 	experimentalMax = {0, 0, 1000, 5, 500, 1, 1, 1, 1},
 	experimentalPrecision = {0, 0, 0, 10, 0, 0, 0, 0, 0},
+
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_clothing_padding_segment, "object/tangible/component/clothing/padding_segment.iff")

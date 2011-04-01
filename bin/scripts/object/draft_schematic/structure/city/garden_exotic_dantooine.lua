@@ -72,7 +72,7 @@ object_draft_schematic_structure_city_garden_exotic_dantooine = object_draft_sch
    combineTypes = {0, 0, 1},
    contribution = {100, 100, 100},
 
-   templates { = 
+   templates = {
               3634031237, -- Script: 'object/tangible/deed/city_deed/garden_dantooine_lrg_01_deed.iff'
              }
 

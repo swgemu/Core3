@@ -43,13 +43,13 @@
 
 object_tangible_food_crafted_dish_ormachek = object_tangible_food_crafted_shared_dish_ormachek:new {
 	templateType = CONSUMABLE,
-	
+
 	duration = 10,
 	filling = 10,
 	nutrition = 10,
-	
+
 	effectType = 3,
-	
+
 	fillingMin = 90,
 	fillingMax = 55,
 	flavorMin = 11,
@@ -58,13 +58,13 @@ object_tangible_food_crafted_dish_ormachek = object_tangible_food_crafted_shared
 	nutritionMax = 5,
 	quantityMin = 1,
 	quantityMax = 1,
-	
+
 	modifiers = { "xp_increase", 0 },
-	
+
 	buffName = "food.xp_increase",
 	buffCRC = 0,
 	speciesRestriction = "",
-	
+
 	numberExperimentalProperties = {1, 1, 1, 2, 2, 1, 2},
 	experimentalProperties = {"XX", "XX", "XX", "OQ", "PE", "FL", "OQ", "XX", "DR", "OQ"},
 	experimentalWeights = {1, 1, 1, 1, 2, 2, 1, 1, 3, 1},
@@ -73,6 +73,7 @@ object_tangible_food_crafted_dish_ormachek = object_tangible_food_crafted_shared
 	experimentalMin = {0, 0, 1000, 75, 60, 60, 80},
 	experimentalMax = {0, 0, 1000, 120, 120, 100, 120},
 	experimentalPrecision = {0, 0, 0, 10, 10, 0, 10},
+
 }
 
 ObjectTemplates:addTemplate(object_tangible_food_crafted_dish_ormachek, "object/tangible/food/crafted/dish_ormachek.iff")

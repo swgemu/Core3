@@ -49,7 +49,7 @@ object_tangible_medicine_crafted_medpack_cure_disease_b = object_tangible_medici
 	state = DISEASED,
 	commandToExecute = "/curedisease",
 	area = 0,
-	
+
 	numberExperimentalProperties = {1, 1, 2, 2, 2, 1},
 	experimentalProperties = {"XX", "XX", "OQ", "PE", "OQ", "UT", "OQ", "PE", "XX"},
 	experimentalWeights = {1, 1, 2, 1, 2, 1, 2, 1, 1},
@@ -58,6 +58,7 @@ object_tangible_medicine_crafted_medpack_cure_disease_b = object_tangible_medici
 	experimentalMin = {0, 0, 10, 15, 80, 1000},
 	experimentalMax = {0, 0, 50, 30, 51, 1000},
 	experimentalPrecision = {0, 0, 0, 0, 0, 0},
+
 }
 
 ObjectTemplates:addTemplate(object_tangible_medicine_crafted_medpack_cure_disease_b, "object/tangible/medicine/crafted/medpack_cure_disease_b.iff")

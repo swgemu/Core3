@@ -43,31 +43,31 @@
 
 object_tangible_food_crafted_drink_caf = object_tangible_food_crafted_shared_drink_caf:new {
 	templateType = CONSUMABLE,
-	
+
 	duration = 45,
 	filling = 10,
 	nutrition = 10,
-	
+
 	effectType = 1,
-	
+
 	fillingMin = 17,
 	fillingMax = 10,
-	
+
 	flavorMin = 2100,
 	flavorMax = 3600,
-	
+
 	nutritionMin = 35,
 	nutritionMax = 60,
 	quantityMin = 6,
 	quantityMax = 10,
-	
+
 	modifiers = { "willpower", 0 },
-	
+
 	buffName = "food.drink_caf",
 	buffCRC = 0,
 	speciesRestriction = "",
-	
-	
+
+
 	numberExperimentalProperties = {1, 1, 1, 1, 2, 2, 2, 2, 1},
 	experimentalProperties = {"XX", "XX", "XX", "XX", "OQ", "PE", "DR", "FL", "DR", "PE", "DR", "OQ", "XX"},
 	experimentalWeights = {1, 1, 1, 1, 1, 2, 1, 2, 1, 3, 3, 1, 1},
@@ -76,6 +76,7 @@ object_tangible_food_crafted_drink_caf = object_tangible_food_crafted_shared_dri
 	experimentalMin = {0, 0, 1000, 0, 75, 60, 60, 80, 1},
 	experimentalMax = {0, 0, 1000, 0, 120, 120, 100, 120, 1},
 	experimentalPrecision = {0, 0, 0, 0, 0, 0, 0, 0, 0},
+
 }
 
 ObjectTemplates:addTemplate(object_tangible_food_crafted_drink_caf, "object/tangible/food/crafted/drink_caf.iff")

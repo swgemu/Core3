@@ -72,7 +72,7 @@ object_draft_schematic_chemistry_component_release_mechanism_duration = object_d
    combineTypes = {0, 0},
    contribution = {100, 100},
 
-   templates { = 
+   templates = {
               418150404, -- Script: 'object/tangible/component/chemistry/release_mechanism_duration.iff'
              }
 

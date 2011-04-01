@@ -42,19 +42,19 @@
 
 
 object_tangible_survey_tool_survey_tool_solar = object_tangible_survey_tool_shared_survey_tool_solar:new {
-	
+
 	templateType = SURVEYTOOL,
-	
+
 	playerUseMask = 65535,
-	
+
 	customizationOptions = {},
 	customizationDefaults = {},
-	
+
 	toolType = 1,
 	toolAnimation = "clienteffect/survey_tool_moisture.cef",
 	sampleAnimation = "clienteffect/survey_sample_moisture.cef",
 	surveyType = "energy_renewable_unlimited_solar",
-	
+
 	numberExperimentalProperties = {1, 1, 1, 1},
 	experimentalProperties = {"XX", "XX", "XX", "CD"},
 	experimentalWeights = {1, 1, 1, 1},
@@ -63,5 +63,6 @@ object_tangible_survey_tool_survey_tool_solar = object_tangible_survey_tool_shar
 	experimentalMin = {0, 0, 1000, -15},
 	experimentalMax = {0, 0, 1000, 15},
 	experimentalPrecision = {0, 0, 0, 0},
+
 }
 ObjectTemplates:addTemplate(object_tangible_survey_tool_survey_tool_solar, "object/tangible/survey_tool/survey_tool_solar.iff")

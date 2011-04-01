@@ -42,8 +42,8 @@
 
 
 object_tangible_component_instrument_dual_wave_synthesizer = object_tangible_component_instrument_shared_dual_wave_synthesizer:new {
-	
-	
+
+
 	numberExperimentalProperties = {1, 1, 1},
 	experimentalProperties = {"XX", "XX", "XX"},
 	experimentalWeights = {1, 1, 1},
@@ -52,6 +52,7 @@ object_tangible_component_instrument_dual_wave_synthesizer = object_tangible_com
 	experimentalMin = {0, 0, 1000},
 	experimentalMax = {0, 0, 1000},
 	experimentalPrecision = {0, 0, 0},
+
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_instrument_dual_wave_synthesizer, "object/tangible/component/instrument/dual_wave_synthesizer.iff")

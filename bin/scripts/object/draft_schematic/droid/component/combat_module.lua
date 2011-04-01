@@ -72,7 +72,7 @@ object_draft_schematic_droid_component_combat_module = object_draft_schematic_dr
    combineTypes = {0, 0, 0, 1},
    contribution = {100, 100, 100, 100},
 
-   templates { = 
+   templates = {
               946727014, -- Script: 'object/tangible/component/droid/combat_module.iff'
              }
 

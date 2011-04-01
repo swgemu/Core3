@@ -72,7 +72,7 @@ object_draft_schematic_clothing_clothing_ith_bodysuit_casual_04 = object_draft_s
    combineTypes = {1, 0},
    contribution = {100, 100},
 
-   templates { = 
+   templates = {
               2003768676, -- Script: 'object/tangible/wearables/ithorian/ith_bodysuit_s04.iff'
              }
 

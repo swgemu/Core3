@@ -43,13 +43,13 @@
 
 object_tangible_food_crafted_dessert_felbar = object_tangible_food_crafted_shared_dessert_felbar:new {
 	templateType = CONSUMABLE,
-	
+
 	duration = 45,
 	filling = 10,
 	nutrition = 1000,
-	
+
 	effectType = 1,
-	
+
 	fillingMin = 23,
 	fillingMax = 15,
 	flavorMin = 1800,
@@ -59,12 +59,12 @@ object_tangible_food_crafted_dessert_felbar = object_tangible_food_crafted_share
 	quantityMin = 3,
 	quantityMax = 7,
 	speciesRestriction = "pets",
-	
+
 	modifiers = { "mind", 0 },
-	
+
 	buffName = "",
 	buffCRC = 0,
-	
+
 	numberExperimentalProperties = {1, 1, 1, 2, 2, 2, 2},
 	experimentalProperties = {"XX", "XX", "XX", "OQ", "PE", "FL", "OQ", "DR", "PE", "DR", "OQ"},
 	experimentalWeights = {1, 1, 1, 1, 2, 2, 1, 1, 3, 3, 1},
@@ -73,6 +73,7 @@ object_tangible_food_crafted_dessert_felbar = object_tangible_food_crafted_share
 	experimentalMin = {0, 0, 1000, 75, 60, 60, 80},
 	experimentalMax = {0, 0, 1000, 120, 120, 100, 120},
 	experimentalPrecision = {0, 0, 0, 10, 10, 10, 10},
+
 }
 
 ObjectTemplates:addTemplate(object_tangible_food_crafted_dessert_felbar, "object/tangible/food/crafted/dessert_felbar.iff")

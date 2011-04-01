@@ -72,7 +72,7 @@ object_draft_schematic_structure_component_structure_light_power_core_unit = obj
    combineTypes = {0, 0, 0, 0, 0, 0, 0},
    contribution = {100, 100, 100, 100, 100, 100, 100},
 
-   templates { = 
+   templates = {
               3219788767, -- Script: 'object/tangible/component/structure/light_power_core_unit.iff'
              }
 

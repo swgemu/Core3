@@ -43,13 +43,13 @@
 
 object_tangible_food_crafted_drink_corellian_ale = object_tangible_food_crafted_shared_drink_corellian_ale:new {
 	templateType = CONSUMABLE,
-	
+
 	duration = 10,
 	filling = 10,
 	nutrition = 10,
-	
+
 	effectType = 4,
-	
+
 	fillingMin = 17,
 	fillingMax = 10,
 	flavorMin = 720,
@@ -58,13 +58,13 @@ object_tangible_food_crafted_drink_corellian_ale = object_tangible_food_crafted_
 	nutritionMax = 12,
 	quantityMin = 6,
 	quantityMax = 12,
-	
+
 	modifiers = { "healing_music_wound", 0 },
-	
+
 	buffName = "food.drink_corellian_ale",
 	buffCRC = 0,
 	speciesRestriction = "",
-	
+
 	numberExperimentalProperties = {1, 1, 1, 1, 2, 2, 2, 2, 1},
 	experimentalProperties = {"XX", "XX", "XX", "XX", "OQ", "PE", "FL", "OQ", "DR", "PE", "DR", "OQ", "XX"},
 	experimentalWeights = {1, 1, 1, 1, 1, 2, 2, 1, 1, 3, 3, 1, 1},
@@ -73,6 +73,7 @@ object_tangible_food_crafted_drink_corellian_ale = object_tangible_food_crafted_
 	experimentalMin = {0, 0, 1000, 0, 75, 60, 60, 80, 1},
 	experimentalMax = {0, 0, 1000, 0, 120, 120, 100, 120, 1},
 	experimentalPrecision = {0, 0, 0, 0, 10, 10, 10, 10, 0},
+
 }
 
 ObjectTemplates:addTemplate(object_tangible_food_crafted_drink_corellian_ale, "object/tangible/food/crafted/drink_corellian_ale.iff")

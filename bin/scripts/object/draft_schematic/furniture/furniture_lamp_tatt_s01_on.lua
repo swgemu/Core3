@@ -72,7 +72,7 @@ object_draft_schematic_furniture_furniture_lamp_tatt_s01_on = object_draft_schem
    combineTypes = {0, 0, 0, 0},
    contribution = {100, 100, 100, 100},
 
-   templates { = 
+   templates = {
               2229856773, -- Script: 'object/tangible/furniture/all/frn_all_light_lamp_tatt_s01.iff'
              }
 

@@ -43,13 +43,13 @@
 
 object_tangible_food_spice_spice_grey_gabaki = object_tangible_food_spice_shared_spice_grey_gabaki:new {
 	templateType = CONSUMABLE,
-	
+
 	duration = 500,
 	filling = 0,
 	nutrition = 0,
-	
+
 	effectType = 5,
-	
+
 	fillingMin = 0,
 	fillingMax = 0,
 	flavorMin = 0,
@@ -58,13 +58,13 @@ object_tangible_food_spice_spice_grey_gabaki = object_tangible_food_spice_shared
 	nutritionMax = 0,
 	quantityMin = 0,
 	quantityMax = 0,
-	
+
 	modifiers = { "focus", 500 },
-	
+
 	buffName = "grey_gabaki",
 	buffCRC = 0,
 	speciesRestriction = "",
-	
+
 	numberExperimentalProperties = {1, 1, 1},
 	experimentalProperties = {"XX", "XX", "XX"},
 	experimentalWeights = {1, 1, 1},
@@ -73,6 +73,7 @@ object_tangible_food_spice_spice_grey_gabaki = object_tangible_food_spice_shared
 	experimentalMin = {0, 0, 1000},
 	experimentalMax = {0, 0, 1000},
 	experimentalPrecision = {0, 0, 0},
+
 }
 
 ObjectTemplates:addTemplate(object_tangible_food_spice_spice_grey_gabaki, "object/tangible/food/spice/spice_grey_gabaki.iff")

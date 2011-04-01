@@ -42,8 +42,8 @@
 
 
 object_tangible_deed_pet_deed_gurreck_deed = object_tangible_deed_pet_deed_shared_gurreck_deed:new {
-	
-	
+
+
 	numberExperimentalProperties = {1, 1},
 	experimentalProperties = {"XX", "XX"},
 	experimentalWeights = {1, 1},
@@ -52,6 +52,7 @@ object_tangible_deed_pet_deed_gurreck_deed = object_tangible_deed_pet_deed_share
 	experimentalMin = {0, 0},
 	experimentalMax = {0, 0},
 	experimentalPrecision = {0, 0},
+
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_gurreck_deed, "object/tangible/deed/pet_deed/gurreck_deed.iff")

@@ -72,7 +72,7 @@ object_draft_schematic_clothing_clothing_backpack_field_01 = object_draft_schema
    combineTypes = {0, 0, 0, 0},
    contribution = {100, 100, 100, 100},
 
-   templates { = 
+   templates = {
               843757399, -- Script: 'object/tangible/wearables/backpack/backpack_s01.iff'
              }
 

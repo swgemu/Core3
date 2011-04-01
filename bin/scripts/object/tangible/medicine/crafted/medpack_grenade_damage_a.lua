@@ -49,7 +49,7 @@ object_tangible_medicine_crafted_medpack_grenade_damage_a = object_tangible_medi
 	area = 0,
 	range = 10,
 	effectiveness = 100,
-	
+
 	numberExperimentalProperties = {1, 1, 2, 2, 2, 2, 1},
 	experimentalProperties = {"XX", "XX", "OQ", "PE", "OQ", "UT", "OQ", "PE", "CD", "OQ", "XX"},
 	experimentalWeights = {1, 1, 2, 1, 2, 1, 2, 1, 1, 2, 1},
@@ -58,6 +58,7 @@ object_tangible_medicine_crafted_medpack_grenade_damage_a = object_tangible_medi
 	experimentalMin = {0, 0, 75, 10, 5, 15, 1000},
 	experimentalMax = {0, 0, 150, 20, 1, 20, 1000},
 	experimentalPrecision = {0, 0, 0, 0, 0, 0, 0},
+
 }
 
 ObjectTemplates:addTemplate(object_tangible_medicine_crafted_medpack_grenade_damage_a, "object/tangible/medicine/crafted/medpack_grenade_damage_a.iff")

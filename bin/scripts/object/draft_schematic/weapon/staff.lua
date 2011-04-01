@@ -72,7 +72,7 @@ object_draft_schematic_weapon_staff = object_draft_schematic_weapon_shared_staff
    combineTypes = {0},
    contribution = {100},
 
-   templates { = 
+   templates = {
               3576318568, -- Script: 'object/weapon/melee/polearm/lance_staff_wood_s1.iff'
              }
 

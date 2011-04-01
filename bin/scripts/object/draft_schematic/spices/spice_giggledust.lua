@@ -72,7 +72,7 @@ object_draft_schematic_spices_spice_giggledust = object_draft_schematic_spices_s
    combineTypes = {0, 0, 0},
    contribution = {100, 100, 100},
 
-   templates { = 
+   templates = {
               3866148125, -- Script: 'object/tangible/food/spice/spice_giggledust.iff'
              }
 

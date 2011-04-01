@@ -72,7 +72,7 @@ object_draft_schematic_food_component_ingredient_carbosyrup = object_draft_schem
    combineTypes = {0},
    contribution = {100},
 
-   templates { = 
+   templates = {
               3081531044, -- Script: 'object/tangible/component/food/ingredient_carbosyrup.iff'
              }
 

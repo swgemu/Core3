@@ -42,8 +42,8 @@
 
 
 object_tangible_ship_crafted_repair_repair_kit_ship = object_tangible_ship_crafted_repair_shared_repair_kit_ship:new {
-	
-	
+
+
 	numberExperimentalProperties = {1, 1, 2},
 	experimentalProperties = {"XX", "XX", "CD", "OQ"},
 	experimentalWeights = {1, 1, 1, 3},
@@ -52,6 +52,7 @@ object_tangible_ship_crafted_repair_repair_kit_ship = object_tangible_ship_craft
 	experimentalMin = {0, 0, 6000},
 	experimentalMax = {0, 0, 10000},
 	experimentalPrecision = {0, 0, 0},
+
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_repair_repair_kit_ship, "object/tangible/ship/crafted/repair/repair_kit_ship.iff")

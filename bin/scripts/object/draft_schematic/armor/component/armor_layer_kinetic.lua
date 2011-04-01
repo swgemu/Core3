@@ -72,7 +72,7 @@ object_draft_schematic_armor_component_armor_layer_kinetic = object_draft_schema
    combineTypes = {0, 0, 0},
    contribution = {100, 100, 100},
 
-   templates { = 
+   templates = {
               3311102868, -- Script: 'object/tangible/component/armor/armor_layer_kinetic.iff'
              }
 

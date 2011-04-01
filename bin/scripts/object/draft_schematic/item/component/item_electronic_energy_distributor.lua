@@ -72,7 +72,7 @@ object_draft_schematic_item_component_item_electronic_energy_distributor = objec
    combineTypes = {0, 0, 0, 0, 0, 0},
    contribution = {100, 100, 100, 100, 100, 100},
 
-   templates { = 
+   templates = {
               178069991, -- Script: 'object/tangible/component/item/electronic_energy_distributor.iff'
              }
 

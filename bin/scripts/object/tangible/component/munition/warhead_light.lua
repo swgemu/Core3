@@ -42,8 +42,8 @@
 
 
 object_tangible_component_munition_warhead_light = object_tangible_component_munition_shared_warhead_light:new {
-	
-	
+
+
 	numberExperimentalProperties = {1, 1, 2, 2, 2, 1},
 	experimentalProperties = {"XX", "XX", "CD", "UT", "CD", "UT", "CD", "UT", "XX"},
 	experimentalWeights = {1, 1, 1, 1, 1, 1, 1, 1, 1},
@@ -52,6 +52,7 @@ object_tangible_component_munition_warhead_light = object_tangible_component_mun
 	experimentalMin = {0, 0, 5, 80, 0, 1000},
 	experimentalMax = {0, 0, 30, 140, 3, 1000},
 	experimentalPrecision = {0, 0, 0, 0, 0, 0},
+
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_munition_warhead_light, "object/tangible/component/munition/warhead_light.iff")

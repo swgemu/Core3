@@ -72,7 +72,7 @@ object_draft_schematic_clothing_clothing_armor_bone_boots = object_draft_schemat
    combineTypes = {0, 0, 0, 0, 0, 0, 1, 1, 1},
    contribution = {100, 100, 100, 100, 100, 100, 100, 100, 100},
 
-   templates { = 
+   templates = {
               1652891098, -- Script: 'object/tangible/wearables/armor/bone/armor_bone_s01_boots.iff'
              }
 

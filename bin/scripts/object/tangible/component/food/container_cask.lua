@@ -42,8 +42,8 @@
 
 
 object_tangible_component_food_container_cask = object_tangible_component_food_shared_container_cask:new {
-	
-	
+
+
 	numberExperimentalProperties = {1, 1, 1},
 	experimentalProperties = {"XX", "XX", "XX"},
 	experimentalWeights = {1, 1, 1},
@@ -52,6 +52,7 @@ object_tangible_component_food_container_cask = object_tangible_component_food_s
 	experimentalMin = {0, 0, 4},
 	experimentalMax = {0, 0, 4},
 	experimentalPrecision = {0, 0, 0},
+
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_food_container_cask, "object/tangible/component/food/container_cask.iff")

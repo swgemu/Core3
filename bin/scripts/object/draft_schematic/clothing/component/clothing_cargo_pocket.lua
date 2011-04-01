@@ -72,7 +72,7 @@ object_draft_schematic_clothing_component_clothing_cargo_pocket = object_draft_s
    combineTypes = {0, 0},
    contribution = {100, 100},
 
-   templates { = 
+   templates = {
               1125237674, -- Script: 'object/tangible/component/clothing/cargo_pocket.iff'
              }
 

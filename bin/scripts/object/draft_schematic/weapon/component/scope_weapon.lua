@@ -72,7 +72,7 @@ object_draft_schematic_weapon_component_scope_weapon = object_draft_schematic_we
    combineTypes = {0, 0, 0, 0, 0},
    contribution = {100, 100, 100, 100, 100},
 
-   templates { = 
+   templates = {
               403078591, -- Script: 'object/tangible/component/weapon/scope_weapon.iff'
              }
 

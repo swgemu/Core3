@@ -42,8 +42,8 @@
 
 
 object_tangible_furniture_elegant_chest_s01 = object_tangible_furniture_elegant_shared_chest_s01:new {
-	
-	
+
+
 	numberExperimentalProperties = {1, 1, 1, 2},
 	experimentalProperties = {"XX", "XX", "XX", "DR", "OQ"},
 	experimentalWeights = {1, 1, 1, 1, 1},
@@ -52,6 +52,7 @@ object_tangible_furniture_elegant_chest_s01 = object_tangible_furniture_elegant_
 	experimentalMin = {0, 0, 1000, 1},
 	experimentalMax = {0, 0, 1000, 100},
 	experimentalPrecision = {0, 0, 0, 0},
+
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_elegant_chest_s01, "object/tangible/furniture/elegant/chest_s01.iff")

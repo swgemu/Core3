@@ -72,7 +72,7 @@ object_draft_schematic_weapon_component_blaster_power_handler_advanced = object_
    combineTypes = {0, 0, 0, 0, 0, 1},
    contribution = {100, 100, 100, 100, 100, 100},
 
-   templates { = 
+   templates = {
               34919568, -- Script: 'object/tangible/component/weapon/blaster_power_handler_advanced.iff'
              }
 

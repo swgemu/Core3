@@ -42,8 +42,8 @@
 
 
 object_weapon_ranged_grenade_grenade_glop = object_weapon_ranged_grenade_shared_grenade_glop:new {
-	
-	
+
+
 	numberExperimentalProperties = {1, 1, 2, 2, 2, 2, 1, 2, 2, 2, 2, 1, 2, 2, 2},
 	experimentalProperties = {"XX", "XX", "OQ", "SR", "OQ", "SR", "OQ", "SR", "OQ", "SR", "SR", "OQ", "SR", "OQ", "SR", "OQ", "SR", "OQ", "SR", "XX", "OQ", "SR", "OQ", "SR", "OQ", "SR"},
 	experimentalWeights = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
@@ -52,6 +52,7 @@ object_weapon_ranged_grenade_grenade_glop = object_weapon_ranged_grenade_shared_
 	experimentalMin = {0, 0, 200, 460, 5.8, 7, 1000, -16, -45, 0, 10, 64, 130, 52, 20},
 	experimentalMax = {0, 0, 340, 1780, 3.4, 13, 1000, 14, -15, 30, 30, 64, 70, 28, 11},
 	experimentalPrecision = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+
 }
 
 ObjectTemplates:addTemplate(object_weapon_ranged_grenade_grenade_glop, "object/weapon/ranged/grenade/grenade_glop.iff")

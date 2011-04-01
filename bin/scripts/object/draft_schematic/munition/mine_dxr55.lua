@@ -72,7 +72,7 @@ object_draft_schematic_munition_mine_dxr55 = object_draft_schematic_munition_sha
    combineTypes = {0, 0, 0, 0, 0, 1, 1, 1, 1},
    contribution = {100, 100, 100, 100, 100, 100, 100, 100, 100},
 
-   templates { = 
+   templates = {
               4243010094, -- Script: 'object/weapon/mine/wp_mine_drx55.iff'
              }
 
