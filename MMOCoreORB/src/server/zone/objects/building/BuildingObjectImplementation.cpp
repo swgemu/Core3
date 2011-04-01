@@ -57,6 +57,17 @@ int BuildingObjectImplementation::getCurrentNumerOfPlayerItems() {
 	return items;
 }
 
+void BuildingObjectImplementation::createCellObjects() {
+	for (int i = 0; i < totalCellNumber; ++i) {
+		SceneObject* newCell = getZoneServer()->createObject(0xAD431713, getPersistenceLevel());
+
+		if (!addObject(newCell, -1))
+			error("could not add cell");
+	}
+
+	updateToDatabase();
+}
+
 void BuildingObjectImplementation::sendContainerObjectsTo(SceneObject* player) {
 	for (int i = 0; i < cells.size(); ++i) {
 		CellObject* cell = cells.get(i);
@@ -91,7 +102,7 @@ void BuildingObjectImplementation::sendTo(SceneObject* player, bool doClose) {
 }
 
 Vector3 BuildingObjectImplementation::getEjectionPoint() {
-/*
+	/*
 	PortalLayout* portalLayout = templateObject->getPortalLayout();
 
 	if (portalLayout == NULL)
@@ -101,7 +112,7 @@ Vector3 BuildingObjectImplementation::getEjectionPoint() {
 
 	if (floorMesh == NULL)
 		return;
-		*/
+	 */
 
 	Vector3 ejectionPoint = getWorldPosition();
 
@@ -225,10 +236,10 @@ void BuildingObjectImplementation::notifyInsert(QuadTreeEntry* obj) {
 			/*if (childStub->isCreatureObject()
 					|| (scno->getRootParent() == _this) && (scno->isInRange(childStub, 128))) {*/
 
-				if (isStaticBuilding()) {
-					child->addInRangeObject(obj, false);
-					obj->addInRangeObject(child, false);
-				}
+			if (isStaticBuilding()) {
+				child->addInRangeObject(obj, false);
+				obj->addInRangeObject(child, false);
+			}
 			//}
 		}
 	}
@@ -272,8 +283,8 @@ void BuildingObjectImplementation::addCell(CellObject* cell) {
 
 	cell->setCellNumber(cells.size());
 
-	if (!addObject(cell, -1))
-		error("could not add cell");
+	/*if (!addObject(cell, -1))
+		error("could not add cell");*/
 }
 
 void BuildingObjectImplementation::destroyObjectFromDatabase(bool destroyContainedObjects) {
@@ -295,7 +306,7 @@ void BuildingObjectImplementation::destroyObjectFromDatabase(bool destroyContain
 }
 
 void BuildingObjectImplementation::updateCellPermissionsTo(SceneObject* player) {
-/*	if (!player->isInRange(_this, 256))
+	/*	if (!player->isInRange(_this, 256))
 		return;*/
 
 	bool allowEntry = true;
@@ -381,7 +392,7 @@ uint32 BuildingObjectImplementation::getMaximumNumberOfPlayerItems() {
 bool BuildingObjectImplementation::addObject(SceneObject* object, int containmentType, bool notifyClient) {
 	if (object->isCellObject()) {
 		addCell((CellObject*) object);
-		return true;
+		//return true;
 	}
 
 	return StructureObjectImplementation::addObject(object, containmentType, notifyClient);

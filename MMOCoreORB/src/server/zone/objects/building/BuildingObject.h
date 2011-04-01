@@ -184,8 +184,6 @@ public:
 
 	void sendDestroyTo(SceneObject* player);
 
-	void addCell(CellObject* cell);
-
 	bool isStaticBuilding();
 
 	CellObject* getCell(int idx);
@@ -303,8 +301,10 @@ public:
 
 	void sendDestroyTo(SceneObject* player);
 
+private:
 	void addCell(CellObject* cell);
 
+public:
 	bool isStaticBuilding();
 
 	CellObject* getCell(int idx);
@@ -403,8 +403,6 @@ public:
 	void sendBaselinesTo(SceneObject* player);
 
 	void sendDestroyTo(SceneObject* player);
-
-	void addCell(CellObject* cell);
 
 	bool isStaticBuilding();
 
