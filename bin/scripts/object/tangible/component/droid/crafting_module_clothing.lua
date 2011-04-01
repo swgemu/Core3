@@ -42,13 +42,14 @@
 
 
 object_tangible_component_droid_crafting_module_clothing = object_tangible_component_droid_shared_crafting_module_clothing:new {
-
+	
+	
 	numberExperimentalProperties = {1, 1, 2, 1, 2, 1},
 	experimentalProperties = {"XX", "XX", "CD", "OQ", "XX", "CD", "OQ", "XX"},
 	experimentalWeights = {1, 1, 1, 1, 1, 1, 1, 1},
 	experimentalGroupTitles = {"null", "null", "exp_durability", "null", "exp_effectiveness", "exp_effectiveness"},
 	experimentalSubGroupTitles = {"null", "null", "decayrate", "hitpoints", "mechanism_quality", "crafting_module"},
-	experimentalMin = {0, 0, 5, 1000, -10, 100}, -10, 100},
+	experimentalMin = {0, 0, 5, 1000, -10, 100},
 	experimentalMax = {0, 0, 15, 1000, 15, 100},
 	experimentalPrecision = {0, 0, 0, 0, 0, 0},
 }

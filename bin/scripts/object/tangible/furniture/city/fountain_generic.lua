@@ -42,7 +42,8 @@
 
 
 object_tangible_furniture_city_fountain_generic = object_tangible_furniture_city_shared_fountain_generic:new {
-
+	
+	
 	numberExperimentalProperties = {1, 1, 1},
 	experimentalProperties = {"XX", "XX", "XX"},
 	experimentalWeights = {1, 1, 1},

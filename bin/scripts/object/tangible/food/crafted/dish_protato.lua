@@ -43,6 +43,7 @@
 
 object_tangible_food_crafted_dish_protato = object_tangible_food_crafted_shared_dish_protato:new {
 	gameObjectType = 262144,
+	
 	numberExperimentalProperties = {1, 1, 1},
 	experimentalProperties = {"XX", "XX", "XX"},
 	experimentalWeights = {1, 1, 1},

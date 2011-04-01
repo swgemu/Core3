@@ -42,7 +42,8 @@
 
 
 object_tangible_component_structure_harvesting_mechanism = object_tangible_component_structure_shared_harvesting_mechanism:new {
-
+	
+	
 	numberExperimentalProperties = {1, 1, 1, 3},
 	experimentalProperties = {"XX", "XX", "XX", "HR", "SR", "UT"},
 	experimentalWeights = {1, 1, 1, 1, 1, 2},

@@ -47,6 +47,7 @@ object_tangible_medicine_crafted_medpack_wound_quickness_c = object_tangible_med
 	medicineUse = 5,
 	effectiveness = 100,
 	attribute = 4,
+	
 	numberExperimentalProperties = {1, 1, 2, 2, 2, 1},
 	experimentalProperties = {"XX", "XX", "OQ", "PE", "OQ", "UT", "OQ", "PE", "XX"},
 	experimentalWeights = {1, 1, 2, 1, 2, 1, 2, 1, 1},

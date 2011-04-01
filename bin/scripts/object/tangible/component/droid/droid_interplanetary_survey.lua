@@ -42,7 +42,8 @@
 
 
 object_tangible_component_droid_droid_interplanetary_survey = object_tangible_component_droid_shared_droid_interplanetary_survey:new {
-
+	
+	
 	numberExperimentalProperties = {1, 1, 3, 3, 3},
 	experimentalProperties = {"XX", "XX", "OQ", "SR", "UT", "OQ", "SR", "UT", "OQ", "SR", "UT"},
 	experimentalWeights = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},

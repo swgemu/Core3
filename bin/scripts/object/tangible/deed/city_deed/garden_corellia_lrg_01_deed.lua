@@ -45,6 +45,7 @@ object_tangible_deed_city_deed_garden_corellia_lrg_01_deed = object_tangible_dee
 	templateType = DEED,
 	gameObjectType = 8388609,
 	generatedObjectTemplate = "object/building/player/city/garden_corellia_lrg_01.iff",
+	
 	numberExperimentalProperties = {1, 1, 1},
 	experimentalProperties = {"XX", "XX", "XX"},
 	experimentalWeights = {1, 1, 1},

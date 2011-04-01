@@ -42,7 +42,8 @@
 
 
 object_tangible_droid_droid_space_memory_module_1 = object_tangible_droid_shared_droid_space_memory_module_1:new {
-
+	
+	
 	numberExperimentalProperties = {1, 1},
 	experimentalProperties = {"XX", "XX"},
 	experimentalWeights = {1, 1},

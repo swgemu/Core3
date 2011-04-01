@@ -42,7 +42,8 @@
 
 
 object_tangible_fishing_fishing_pole = object_tangible_fishing_shared_fishing_pole:new {
-
+	
+	
 	numberExperimentalProperties = {1, 1, 1, 1},
 	experimentalProperties = {"XX", "XX", "XX", "UT"},
 	experimentalWeights = {1, 1, 1, 1},

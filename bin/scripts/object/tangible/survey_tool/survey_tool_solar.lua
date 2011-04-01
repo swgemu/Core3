@@ -42,24 +42,25 @@
 
 
 object_tangible_survey_tool_survey_tool_solar = object_tangible_survey_tool_shared_survey_tool_solar:new {
-
-   templateType = SURVEYTOOL,
-
-   playerUseMask = 65535,
-
-   customizationOptions = {},
-   customizationDefaults = {},
-
-   toolType = 1,
-   toolAnimation = "clienteffect/survey_tool_moisture.cef",
-   sampleAnimation = "clienteffect/survey_sample_moisture.cef",
-   surveyType = "energy_renewable_unlimited_solar",
+	
+	templateType = SURVEYTOOL,
+	
+	playerUseMask = 65535,
+	
+	customizationOptions = {},
+	customizationDefaults = {},
+	
+	toolType = 1,
+	toolAnimation = "clienteffect/survey_tool_moisture.cef",
+	sampleAnimation = "clienteffect/survey_sample_moisture.cef",
+	surveyType = "energy_renewable_unlimited_solar",
+	
 	numberExperimentalProperties = {1, 1, 1, 1},
 	experimentalProperties = {"XX", "XX", "XX", "CD"},
 	experimentalWeights = {1, 1, 1, 1},
 	experimentalGroupTitles = {"null", "null", "null", "exp_effectiveness"},
 	experimentalSubGroupTitles = {"null", "null", "hitpoints", "usemodifier"},
-	experimentalMin = {0, 0, 1000, -15}, -15},
+	experimentalMin = {0, 0, 1000, -15},
 	experimentalMax = {0, 0, 1000, 15},
 	experimentalPrecision = {0, 0, 0, 0},
 }

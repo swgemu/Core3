@@ -42,15 +42,16 @@
 
 
 object_tangible_crafting_station_clothing_repair = object_tangible_crafting_station_shared_clothing_repair:new {
-
-   --templateType = 0,
-
-   playerUseMask = 65535,
-
-   customizationOptions = {},
-   customizationDefaults = {},
-
-
+	
+	 -- templateType = 0,
+	
+	playerUseMask = 65535,
+	
+	customizationOptions = {},
+	customizationDefaults = {},
+	
+	
+	
 	numberExperimentalProperties = {1, 1, 1, 1},
 	experimentalProperties = {"XX", "XX", "UT", "CD"},
 	experimentalWeights = {1, 1, 1, 1},

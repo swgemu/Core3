@@ -54,6 +54,7 @@ object_tangible_medicine_crafted_medpack_disease_area_stamina_b = object_tangibl
 	potency = 250,
 	commandToExecute = "/applydisease",
 	area = 10,
+	
 	numberExperimentalProperties = {1, 1, 2, 2, 2, 2, 2, 2, 2, 1},
 	experimentalProperties = {"XX", "XX", "OQ", "PE", "OQ", "UT", "CD", "OQ", "CD", "OQ", "OQ", "PE", "OQ", "PE", "DR", "OQ", "XX"},
 	experimentalWeights = {1, 1, 2, 1, 2, 1, 1, 2, 1, 2, 2, 1, 2, 1, 1, 1, 1},

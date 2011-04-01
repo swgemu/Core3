@@ -42,7 +42,8 @@
 
 
 object_tangible_furniture_cheap_armoire_s01 = object_tangible_furniture_cheap_shared_armoire_s01:new {
-
+	
+	
 	numberExperimentalProperties = {1, 1, 1, 2},
 	experimentalProperties = {"XX", "XX", "XX", "DR", "OQ"},
 	experimentalWeights = {1, 1, 1, 1, 1},

@@ -42,9 +42,10 @@
 
 
 object_tangible_instrument_slitherhorn = object_tangible_instrument_shared_slitherhorn:new {
-templateType = INSTRUMENT,
+	templateType = INSTRUMENT,
 	instrumentType = 2,
-
+	
+	
 	numberExperimentalProperties = {1, 1, 1, 1},
 	experimentalProperties = {"XX", "XX", "UT", "CD"},
 	experimentalWeights = {1, 1, 1, 1},

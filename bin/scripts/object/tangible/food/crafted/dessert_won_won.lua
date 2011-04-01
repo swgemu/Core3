@@ -43,13 +43,13 @@
 
 object_tangible_food_crafted_dessert_won_won = object_tangible_food_crafted_shared_dessert_won_won:new {
 	templateType = CONSUMABLE,
-	,
+	
 	duration = 45,
 	filling = 10,
 	nutrition = 10,
-
+	
 	effectType = 1,
-	,
+	
 	fillingMin = 41,
 	fillingMax = 27,
 	flavorMin = 450,
@@ -58,12 +58,13 @@ object_tangible_food_crafted_dessert_won_won = object_tangible_food_crafted_shar
 	nutritionMax = 375,
 	quantityMin = 6,
 	quantityMax = 10,
-
+	
 	modifiers = { "strength", 0, "constitution", 0 },
-
+	
 	buffName = "food.dessert_won_won",
 	buffCRC = 0,
 	speciesRestriction = "",
+	
 	numberExperimentalProperties = {1, 1, 1, 2, 2, 2, 2},
 	experimentalProperties = {"XX", "XX", "XX", "OQ", "PE", "DR", "FL", "DR", "PE", "DR", "OQ"},
 	experimentalWeights = {1, 1, 1, 1, 2, 1, 2, 1, 3, 3, 1},

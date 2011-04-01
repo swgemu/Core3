@@ -42,7 +42,8 @@
 
 
 object_tangible_scout_camokit_camokit_talus = object_tangible_scout_camokit_shared_camokit_talus:new {
-
+	
+	
 	numberExperimentalProperties = {1, 1, 1, 1},
 	experimentalProperties = {"XX", "XX", "XX", "OQ"},
 	experimentalWeights = {1, 1, 1, 1},

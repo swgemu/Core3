@@ -44,8 +44,9 @@
 object_tangible_deed_player_house_deed_tatooine_house_small_style_02_deed = object_tangible_deed_player_house_deed_shared_tatooine_house_small_style_02_deed:new {
 	templateType = DEED,
 	generatedObjectTemplate = "object/building/player/player_house_tatooine_small_style_02.iff",
-
-
+	
+	
+	
 	numberExperimentalProperties = {1, 1, 1},
 	experimentalProperties = {"XX", "XX", "DR"},
 	experimentalWeights = {1, 1, 1},

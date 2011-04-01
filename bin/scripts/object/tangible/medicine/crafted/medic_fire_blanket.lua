@@ -49,6 +49,7 @@ object_tangible_medicine_crafted_medic_fire_blanket = object_tangible_medicine_c
 	state = ONFIRE,
 	commandToExecute = "/extinguishfire",
 	area = 0,
+	
 	numberExperimentalProperties = {1, 1, 2, 2, 2, 1},
 	experimentalProperties = {"XX", "XX", "OQ", "PE", "OQ", "UT", "OQ", "PE", "XX"},
 	experimentalWeights = {1, 1, 2, 1, 2, 1, 2, 1, 1},

@@ -44,8 +44,9 @@
 object_tangible_deed_generator_deed_generator_solar_deed = object_tangible_deed_generator_deed_shared_generator_solar_deed:new {
 	templateType = DEED,
 	generatedObjectTemplate = "object/installation/generators/power_generator_solar_style_1.iff",
-
-
+	
+	
+	
 	numberExperimentalProperties = {1, 1, 1, 2, 1},
 	experimentalProperties = {"XX", "XX", "XX", "MA", "UT", "XX"},
 	experimentalWeights = {1, 1, 1, 1, 2, 1},

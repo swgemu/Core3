@@ -44,8 +44,9 @@
 object_tangible_deed_harvester_deed_harvester_liquid_deed_medium = object_tangible_deed_harvester_deed_shared_harvester_liquid_deed_medium:new {
 	templateType = DEED,
 	generatedObjectTemplate = "object/installation/mining_liquid/mining_liquid_harvester_style_2.iff",
-
-
+	
+	
+	
 	numberExperimentalProperties = {1, 1, 3, 2, 1},
 	experimentalProperties = {"XX", "XX", "HR", "SR", "UT", "MA", "UT", "XX"},
 	experimentalWeights = {1, 1, 1, 1, 2, 1, 2, 1},

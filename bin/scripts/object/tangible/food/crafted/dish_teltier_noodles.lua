@@ -43,30 +43,31 @@
 
 object_tangible_food_crafted_dish_teltier_noodles = object_tangible_food_crafted_shared_dish_teltier_noodles:new {
 	templateType = CONSUMABLE,
-	,
+	
 	duration = 45,
 	filling = 10,
 	nutrition = 10,
-
+	
 	effectType = 1,
-	,
+	
 	fillingMin = 17,
 	fillingMax = 10,
-	,
+	
 	flavorMin = 1800,
 	flavorMax = 3600,
-	,
+	
 	nutritionMin = 30,
 	nutritionMax = 60,
 	quantityMin = 6,
 	quantityMax = 10,
-
+	
 	modifiers = { "stamina", 0 },
-
+	
 	buffName = "food.dish_teltier_noodles",
 	buffCRC = 0,
 	speciesRestriction = "",
-
+	
+	
 	numberExperimentalProperties = {1, 1, 1, 2, 2, 2, 2},
 	experimentalProperties = {"XX", "XX", "XX", "OQ", "PE", "FL", "OQ", "DR", "SR", "DR", "OQ"},
 	experimentalWeights = {1, 1, 1, 1, 2, 2, 1, 1, 3, 3, 1},

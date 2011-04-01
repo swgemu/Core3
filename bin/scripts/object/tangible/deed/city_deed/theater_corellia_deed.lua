@@ -45,6 +45,7 @@ object_tangible_deed_city_deed_theater_corellia_deed = object_tangible_deed_city
 	templateType = DEED,
 	gameObjectType = 8388609,
 	generatedObjectTemplate = "object/building/player/city/theater_corellia.iff",
+	
 	numberExperimentalProperties = {1, 1, 1},
 	experimentalProperties = {"XX", "XX", "DR"},
 	experimentalWeights = {1, 1, 1},

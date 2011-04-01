@@ -43,13 +43,13 @@
 
 object_tangible_food_crafted_dessert_bantha_butter = object_tangible_food_crafted_shared_dessert_bantha_butter:new {
 	templateType = CONSUMABLE,
-	,
+	
 	duration = 45,
 	filling = 10,
 	nutrition = 10,
-
+	
 	effectType = 1,
-	,
+	
 	fillingMin = 41,
 	fillingMax = 28,
 	flavorMin = 450,
@@ -58,12 +58,13 @@ object_tangible_food_crafted_dessert_bantha_butter = object_tangible_food_crafte
 	nutritionMax = 375,
 	quantityMin = 6,
 	quantityMax = 10,
-
+	
 	modifiers = { },
-
+	
 	buffName = "",
 	buffCRC = 0,
 	speciesRestriction = "",
+	
 	numberExperimentalProperties = {1, 1, 1},
 	experimentalProperties = {"XX", "XX", "XX"},
 	experimentalWeights = {1, 1, 1},

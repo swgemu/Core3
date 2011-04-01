@@ -43,13 +43,13 @@
 
 object_tangible_food_spice_spice_neutron_pixey = object_tangible_food_spice_shared_spice_neutron_pixey:new {
 	templateType = CONSUMABLE,
-	,
+	
 	duration = 800,
 	filling = 0,
 	nutrition = 0,
-
+	
 	effectType = 5,
-
+	
 	fillingMin = 0,
 	fillingMax = 0,
 	flavorMin = 0,
@@ -58,12 +58,13 @@ object_tangible_food_spice_spice_neutron_pixey = object_tangible_food_spice_shar
 	nutritionMax = 0,
 	quantityMin = 0,
 	quantityMax = 0,
-
+	
 	modifiers = { "health", 1000, "strength" , 200, "constitution", 200, "action", 500, "quickness", 50, "stamina", 50 },
-
+	
 	buffName = "neutron_pixey",
 	buffCRC = 0,
 	speciesRestriction = "",
+	
 	numberExperimentalProperties = {1, 1, 3},
 	experimentalProperties = {"XX", "XX", "DR", "OQ", "UT"},
 	experimentalWeights = {1, 1, 4, 1, 1},

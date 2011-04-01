@@ -42,7 +42,8 @@
 
 
 object_tangible_food_crafted_drink_alcohol = object_tangible_food_crafted_shared_drink_alcohol:new {
-
+	
+	
 	numberExperimentalProperties = {1, 1, 1, 1, 1},
 	experimentalProperties = {"XX", "XX", "XX", "XX", "XX"},
 	experimentalWeights = {1, 1, 1, 1, 1},

@@ -42,7 +42,8 @@
 
 
 object_tangible_food_crafted_additive_additive_light = object_tangible_food_crafted_additive_shared_additive_light:new {
-
+	
+	
 	numberExperimentalProperties = {1, 1, 1},
 	experimentalProperties = {"XX", "XX", "XX"},
 	experimentalWeights = {1, 1, 1},

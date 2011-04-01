@@ -43,13 +43,13 @@
 
 object_tangible_food_spice_spice_shadowpaw = object_tangible_food_spice_shared_spice_shadowpaw:new {
 	templateType = CONSUMABLE,
-	,
+	
 	duration = 600,
 	filling = 0,
 	nutrition = 0,
-
+	
 	effectType = 5,
-
+	
 	fillingMin = 0,
 	fillingMax = 0,
 	flavorMin = 0,
@@ -58,12 +58,13 @@ object_tangible_food_spice_spice_shadowpaw = object_tangible_food_spice_shared_s
 	nutritionMax = 0,
 	quantityMin = 0,
 	quantityMax = 0,
-
+	
 	modifiers = { "strength" , -100, "action" , 250, "quickness", 250 },
-
+	
 	buffName = "shadowpaw",
 	buffCRC = 0,
 	speciesRestriction = "",
+	
 	numberExperimentalProperties = {1, 1, 3},
 	experimentalProperties = {"XX", "XX", "DR", "OQ", "UT"},
 	experimentalWeights = {1, 1, 4, 1, 1},

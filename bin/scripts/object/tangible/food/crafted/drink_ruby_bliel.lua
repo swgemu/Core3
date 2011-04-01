@@ -42,7 +42,8 @@
 
 
 object_tangible_food_crafted_drink_ruby_bliel = object_tangible_food_crafted_shared_drink_ruby_bliel:new {
-
+	
+	
 	numberExperimentalProperties = {1, 1, 1, 1, 2, 2, 2, 2, 1},
 	experimentalProperties = {"XX", "XX", "XX", "XX", "OQ", "PE", "DR", "FL", "DR", "PE", "DR", "OQ", "XX"},
 	experimentalWeights = {1, 1, 1, 1, 1, 2, 1, 2, 1, 3, 3, 1, 1},

@@ -49,6 +49,7 @@ object_tangible_medicine_crafted_medpack_cure_poison_a = object_tangible_medicin
 	state = POISONED,
 	commandToExecute = "/curepoison",
 	area = 0,
+	
 	numberExperimentalProperties = {1, 1, 2, 2, 1, 1},
 	experimentalProperties = {"XX", "XX", "OQ", "PE", "OQ", "UT", "XX", "XX"},
 	experimentalWeights = {1, 1, 2, 1, 2, 1, 1, 1},

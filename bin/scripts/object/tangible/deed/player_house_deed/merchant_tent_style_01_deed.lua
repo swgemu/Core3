@@ -45,6 +45,7 @@ object_tangible_deed_player_house_deed_merchant_tent_style_01_deed = object_tang
 	templateType = DEED,
 	gameObjectType = 8388609,
 	generatedObjectTemplate = "object/building/player/player_merchant_tent_style_01.iff",
+	
 	numberExperimentalProperties = {1, 1, 1},
 	experimentalProperties = {"XX", "XX", "DR"},
 	experimentalWeights = {1, 1, 1},

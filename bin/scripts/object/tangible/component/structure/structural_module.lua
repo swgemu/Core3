@@ -42,7 +42,8 @@
 
 
 object_tangible_component_structure_structural_module = object_tangible_component_structure_shared_structural_module:new {
-
+	
+	
 	numberExperimentalProperties = {1, 1, 1},
 	experimentalProperties = {"XX", "XX", "XX"},
 	experimentalWeights = {1, 1, 1},

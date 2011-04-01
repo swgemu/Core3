@@ -42,7 +42,8 @@
 
 
 object_tangible_component_structure_fluidic_drilling_pumping_unit = object_tangible_component_structure_shared_fluidic_drilling_pumping_unit:new {
-
+	
+	
 	numberExperimentalProperties = {1, 1, 1, 3},
 	experimentalProperties = {"XX", "XX", "XX", "HR", "SR", "UT"},
 	experimentalWeights = {1, 1, 1, 1, 1, 2},

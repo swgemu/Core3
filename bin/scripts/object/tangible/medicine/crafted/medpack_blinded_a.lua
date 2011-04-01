@@ -46,6 +46,7 @@ object_tangible_medicine_crafted_medpack_blinded_a = object_tangible_medicine_cr
 	templateType = STATEPACK,
 	medicineUse = 5,
 	state = BLINDED,
+	
 	numberExperimentalProperties = {1, 1, 2, 2, 1, 1},
 	experimentalProperties = {"XX", "XX", "OQ", "UT", "OQ", "PE", "XX", "XX"},
 	experimentalWeights = {1, 1, 2, 1, 2, 1, 1, 1},

@@ -42,7 +42,8 @@
 
 
 object_tangible_component_clothing_reinforced_fiber_panels = object_tangible_component_clothing_shared_reinforced_fiber_panels:new {
-
+	
+	
 	numberExperimentalProperties = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
 	experimentalProperties = {"XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX"},
 	experimentalWeights = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},

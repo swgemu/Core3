@@ -42,7 +42,8 @@
 
 
 object_tangible_component_weapon_scope_weapon_advanced = object_tangible_component_weapon_shared_scope_weapon_advanced:new {
-
+	
+	
 	numberExperimentalProperties = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
 	experimentalProperties = {"XX", "XX", "OQ", "OQ", "XX", "XX", "OQ", "OQ", "OQ", "OQ"},
 	experimentalWeights = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1},

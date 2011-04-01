@@ -43,30 +43,31 @@
 
 object_tangible_food_crafted_drink_aitha = object_tangible_food_crafted_shared_drink_aitha:new {
 	templateType = CONSUMABLE,
-	,
+	
 	duration = 45,
 	filling = 10,
 	nutrition = 10,
-
+	
 	effectType = 0,
-	,
+	
 	fillingMin = 18,
 	fillingMax = 11,
-	,
+	
 	flavorMin = 6600,
 	flavorMax = 10800,
-	,
+	
 	nutritionMin = 110,
 	nutritionMax = 180,
 	quantityMin = 4,
 	quantityMax = 7,
-
+	
 	modifiers = { "mind_heal", 0 },
-
+	
 	buffName = "",
 	buffCRC = 0,
 	speciesRestriction = "",
-
+	
+	
 	numberExperimentalProperties = {1, 1, 1, 1, 2, 2, 2, 1},
 	experimentalProperties = {"XX", "XX", "XX", "XX", "OQ", "PE", "DR", "PE", "DR", "OQ", "XX"},
 	experimentalWeights = {1, 1, 1, 1, 1, 2, 1, 3, 3, 1, 1},
