@@ -24,7 +24,7 @@
  *	BuildingObjectStub
  */
 
-enum {RPC_CREATECELLOBJECTS__ = 6,RPC_DESTROYOBJECTFROMDATABASE__BOOL_,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_SENDCONTAINEROBJECTSTO__SCENEOBJECT_,RPC_UPDATECELLPERMISSIONSTO__SCENEOBJECT_,RPC_NOTIFYSTRUCTUREPLACED__PLAYERCREATURE_,RPC_REMOVEFROMZONE__,RPC_NOTIFYINSERTTOZONE__SCENEOBJECT_,RPC_SENDTO__SCENEOBJECT_BOOL_,RPC_SENDBASELINESTO__SCENEOBJECT_,RPC_SENDDESTROYTO__SCENEOBJECT_,RPC_ADDCELL__CELLOBJECT_,RPC_ISSTATICBUILDING__,RPC_GETCELL__INT_,RPC_GETTOTALCELLNUMBER__,RPC_ADDOBJECT__SCENEOBJECT_INT_BOOL_,RPC_GETCURRENTNUMEROFPLAYERITEMS__,RPC_ONENTER__PLAYERCREATURE_,RPC_ONEXIT__PLAYERCREATURE_,RPC_ISBUILDINGOBJECT__,RPC_ISMEDICALBUILDINGOBJECT__,RPC_SETSIGNOBJECT__SIGNOBJECT_,RPC_GETSIGNOBJECT__,RPC_ISCITYHALLBUILDING__,RPC_SETACCESSFEE__INT_,RPC_GETACCESSFEE__,RPC_ISPUBLICSTRUCTURE__,RPC_SETPUBLICSTRUCTURE__BOOL_,RPC_GETMAXIMUMNUMBEROFPLAYERITEMS__};
+enum {RPC_CREATECELLOBJECTS__ = 6,RPC_DESTROYOBJECTFROMDATABASE__BOOL_,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_SENDCONTAINEROBJECTSTO__SCENEOBJECT_,RPC_UPDATECELLPERMISSIONSTO__SCENEOBJECT_,RPC_NOTIFYSTRUCTUREPLACED__PLAYERCREATURE_,RPC_REMOVEFROMZONE__,RPC_NOTIFYINSERTTOZONE__SCENEOBJECT_,RPC_SENDTO__SCENEOBJECT_BOOL_,RPC_SENDBASELINESTO__SCENEOBJECT_,RPC_SENDDESTROYTO__SCENEOBJECT_,RPC_ISSTATICBUILDING__,RPC_GETCELL__INT_,RPC_GETTOTALCELLNUMBER__,RPC_ADDOBJECT__SCENEOBJECT_INT_BOOL_,RPC_GETCURRENTNUMEROFPLAYERITEMS__,RPC_ONENTER__PLAYERCREATURE_,RPC_ONEXIT__PLAYERCREATURE_,RPC_ISBUILDINGOBJECT__,RPC_ISMEDICALBUILDINGOBJECT__,RPC_SETSIGNOBJECT__SIGNOBJECT_,RPC_GETSIGNOBJECT__,RPC_ISCITYHALLBUILDING__,RPC_SETACCESSFEE__INT_,RPC_GETACCESSFEE__,RPC_ISPUBLICSTRUCTURE__,RPC_SETPUBLICSTRUCTURE__BOOL_,RPC_GETMAXIMUMNUMBEROFPLAYERITEMS__};
 
 BuildingObject::BuildingObject() : StructureObject(DummyConstructorParameter::instance()) {
 	BuildingObjectImplementation* _implementation = new BuildingObjectImplementation();
@@ -261,20 +261,6 @@ void BuildingObject::sendDestroyTo(SceneObject* player) {
 		method.executeWithVoidReturn();
 	} else
 		_implementation->sendDestroyTo(player);
-}
-
-void BuildingObject::addCell(CellObject* cell) {
-	BuildingObjectImplementation* _implementation = (BuildingObjectImplementation*) _getImplementation();
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, RPC_ADDCELL__CELLOBJECT_);
-		method.addObjectParameter(cell);
-
-		method.executeWithVoidReturn();
-	} else
-		_implementation->addCell(cell);
 }
 
 bool BuildingObject::isStaticBuilding() {
@@ -730,21 +716,6 @@ BuildingObjectImplementation::BuildingObjectImplementation() {
 	publicStructure = true;
 }
 
-void BuildingObjectImplementation::createCellObjects() {
-	// server/zone/objects/building/BuildingObject.idl():  		}
-	for (	// server/zone/objects/building/BuildingObject.idl():  		for (int i = 0;
-	int i = 0;
-	i < totalCellNumber;
- ++i) {
-	// server/zone/objects/building/BuildingObject.idl():  			SceneObject newCell = getZoneServer().createObject(0xAD431713, 2);
-	SceneObject* newCell = getZoneServer()->createObject(0xAD431713, 2);
-	// server/zone/objects/building/BuildingObject.idl():  			addCell((CellObject)newCell);
-	addCell((CellObject*) newCell);
-}
-	// server/zone/objects/building/BuildingObject.idl():  		updateToDatabase();
-	updateToDatabase();
-}
-
 int BuildingObjectImplementation::notifyStructurePlaced(PlayerCreature* player) {
 	// server/zone/objects/building/BuildingObject.idl():  		return 0;
 	return 0;
@@ -857,9 +828,6 @@ Packet* BuildingObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 	case RPC_SENDDESTROYTO__SCENEOBJECT_:
 		sendDestroyTo((SceneObject*) inv->getObjectParameter());
 		break;
-	case RPC_ADDCELL__CELLOBJECT_:
-		addCell((CellObject*) inv->getObjectParameter());
-		break;
 	case RPC_ISSTATICBUILDING__:
 		resp->insertBoolean(isStaticBuilding());
 		break;
@@ -960,10 +928,6 @@ void BuildingObjectAdapter::sendBaselinesTo(SceneObject* player) {
 
 void BuildingObjectAdapter::sendDestroyTo(SceneObject* player) {
 	((BuildingObjectImplementation*) impl)->sendDestroyTo(player);
-}
-
-void BuildingObjectAdapter::addCell(CellObject* cell) {
-	((BuildingObjectImplementation*) impl)->addCell(cell);
 }
 
 bool BuildingObjectAdapter::isStaticBuilding() {
