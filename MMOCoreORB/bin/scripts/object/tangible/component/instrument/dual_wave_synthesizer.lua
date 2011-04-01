@@ -42,7 +42,8 @@
 
 
 object_tangible_component_instrument_dual_wave_synthesizer = object_tangible_component_instrument_shared_dual_wave_synthesizer:new {
-
+	
+	
 	numberExperimentalProperties = {1, 1, 1},
 	experimentalProperties = {"XX", "XX", "XX"},
 	experimentalWeights = {1, 1, 1},

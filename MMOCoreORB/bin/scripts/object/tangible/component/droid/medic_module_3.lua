@@ -42,13 +42,14 @@
 
 
 object_tangible_component_droid_medic_module_3 = object_tangible_component_droid_shared_medic_module_3:new {
-
+	
+	
 	numberExperimentalProperties = {1, 1, 2, 1, 2, 2},
 	experimentalProperties = {"XX", "XX", "CD", "OQ", "XX", "CD", "OQ", "CD", "OQ"},
 	experimentalWeights = {1, 1, 1, 1, 1, 1, 1, 1, 1},
 	experimentalGroupTitles = {"null", "null", "exp_durability", "null", "exp_effectiveness", "exp_effectiveness"},
 	experimentalSubGroupTitles = {"null", "null", "decayrate", "hitpoints", "mechanism_quality", "medical_module"},
-	experimentalMin = {0, 0, 5, 1000, -10, 5}, -10, 5},
+	experimentalMin = {0, 0, 5, 1000, -10, 5},
 	experimentalMax = {0, 0, 15, 1000, 15, 7},
 	experimentalPrecision = {0, 0, 0, 0, 0, 0},
 }

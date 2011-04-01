@@ -45,6 +45,7 @@ object_tangible_deed_city_deed_shuttleport_tatooine_deed = object_tangible_deed_
 	templateType = DEED,
 	gameObjectType = 8388609,
 	generatedObjectTemplate = "object/building/player/city/shuttleport_tatooine.iff",
+	
 	numberExperimentalProperties = {1, 1, 1},
 	experimentalProperties = {"XX", "XX", "DR"},
 	experimentalWeights = {1, 1, 1},

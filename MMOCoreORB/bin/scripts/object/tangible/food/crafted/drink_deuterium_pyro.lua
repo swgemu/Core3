@@ -43,13 +43,13 @@
 
 object_tangible_food_crafted_drink_deuterium_pyro = object_tangible_food_crafted_shared_drink_deuterium_pyro:new {
 	templateType = CONSUMABLE,
-	,
+	
 	duration = 10,
 	filling = 10,
 	nutrition = 10,
-
+	
 	effectType = 4,
-
+	
 	fillingMin = 17,
 	fillingMax = 10,
 	flavorMin = 720,
@@ -58,12 +58,13 @@ object_tangible_food_crafted_drink_deuterium_pyro = object_tangible_food_crafted
 	nutritionMax = 12,
 	quantityMin = 6,
 	quantityMax = 12,
-
+	
 	modifiers = { "intimidate_defense", 0 },
-
+	
 	buffName = "food.drink_deuterium_pyro",
 	buffCRC = 0,
 	speciesRestriction = "",
+	
 	numberExperimentalProperties = {1, 1, 1, 1, 2, 2, 2, 2, 1},
 	experimentalProperties = {"XX", "XX", "XX", "XX", "OQ", "PE", "DR", "FL", "DR", "PE", "DR", "OQ", "XX"},
 	experimentalWeights = {1, 1, 1, 1, 1, 2, 1, 2, 1, 3, 3, 1, 1},

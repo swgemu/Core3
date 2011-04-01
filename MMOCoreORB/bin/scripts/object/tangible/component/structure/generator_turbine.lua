@@ -42,7 +42,8 @@
 
 
 object_tangible_component_structure_generator_turbine = object_tangible_component_structure_shared_generator_turbine:new {
-
+	
+	
 	numberExperimentalProperties = {1, 1, 1},
 	experimentalProperties = {"XX", "XX", "UT"},
 	experimentalWeights = {1, 1, 1},

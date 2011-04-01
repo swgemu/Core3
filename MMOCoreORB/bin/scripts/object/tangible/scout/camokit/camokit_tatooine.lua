@@ -42,7 +42,8 @@
 
 
 object_tangible_scout_camokit_camokit_tatooine = object_tangible_scout_camokit_shared_camokit_tatooine:new {
-
+	
+	
 	numberExperimentalProperties = {1, 1, 1, 1},
 	experimentalProperties = {"XX", "XX", "XX", "OQ"},
 	experimentalWeights = {1, 1, 1, 1},

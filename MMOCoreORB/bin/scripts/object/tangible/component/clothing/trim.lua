@@ -42,7 +42,8 @@
 
 
 object_tangible_component_clothing_trim = object_tangible_component_clothing_shared_trim:new {
-
+	
+	
 	numberExperimentalProperties = {1, 1, 1},
 	experimentalProperties = {"XX", "XX", "XX"},
 	experimentalWeights = {1, 1, 1},

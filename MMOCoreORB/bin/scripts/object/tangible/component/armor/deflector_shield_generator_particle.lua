@@ -42,7 +42,8 @@
 
 
 object_tangible_component_armor_deflector_shield_generator_particle = object_tangible_component_armor_shared_deflector_shield_generator_particle:new {
-
+	
+	
 	numberExperimentalProperties = {1, 1, 1},
 	experimentalProperties = {"XX", "XX", "XX"},
 	experimentalWeights = {1, 1, 1},

@@ -42,7 +42,8 @@
 
 
 object_tangible_component_droid_repair_power_supply_redundant = object_tangible_component_droid_repair_shared_power_supply_redundant:new {
-
+	
+	
 	numberExperimentalProperties = {1, 1, 3, 1},
 	experimentalProperties = {"XX", "XX", "CD", "OQ", "PE", "XX"},
 	experimentalWeights = {1, 1, 1, 1, 2, 1},

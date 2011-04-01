@@ -42,7 +42,8 @@
 
 
 object_tangible_furniture_city_statue_gungan_head = object_tangible_furniture_city_shared_statue_gungan_head:new {
-
+	
+	
 	numberExperimentalProperties = {1, 1, 1},
 	experimentalProperties = {"XX", "XX", "XX"},
 	experimentalWeights = {1, 1, 1},

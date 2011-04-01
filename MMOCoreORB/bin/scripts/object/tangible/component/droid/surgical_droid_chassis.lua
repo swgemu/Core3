@@ -42,7 +42,8 @@
 
 
 object_tangible_component_droid_surgical_droid_chassis = object_tangible_component_droid_shared_surgical_droid_chassis:new {
-
+	
+	
 	numberExperimentalProperties = {1, 1, 3, 1, 1, 1, 3, 1, 1, 1, 1, 1, 1, 1},
 	experimentalProperties = {"XX", "XX", "OQ", "SR", "UT", "XX", "XX", "XX", "OQ", "SR", "UT", "OQ", "XX", "XX", "XX", "XX", "XX", "XX"},
 	experimentalWeights = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},

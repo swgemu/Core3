@@ -47,6 +47,7 @@ object_tangible_scout_camp_camp_quality = object_tangible_scout_camp_shared_camp
 	duration = 3600,
 	exp = 1000,
 	spawnObjectTemplate = "object/building/poi/scout_camp_s0.iff",
+	
 	numberExperimentalProperties = {1, 1, 1, 1},
 	experimentalProperties = {"XX", "XX", "XX", "XX"},
 	experimentalWeights = {1, 1, 1, 1},

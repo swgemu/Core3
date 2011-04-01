@@ -42,7 +42,8 @@
 
 
 object_tangible_component_chemistry_resilience_compound = object_tangible_component_chemistry_shared_resilience_compound:new {
-
+	
+	
 	numberExperimentalProperties = {1, 1, 1, 1, 1, 1, 2, 2, 1},
 	experimentalProperties = {"XX", "XX", "XX", "XX", "XX", "XX", "DR", "OQ", "DR", "OQ", "XX"},
 	experimentalWeights = {1, 1, 1, 1, 1, 1, 1, 2, 1, 1, 1},

@@ -42,7 +42,8 @@
 
 
 object_tangible_component_food_container_barrel = object_tangible_component_food_shared_container_barrel:new {
-
+	
+	
 	numberExperimentalProperties = {1, 1, 1},
 	experimentalProperties = {"XX", "XX", "XX"},
 	experimentalWeights = {1, 1, 1},

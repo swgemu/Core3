@@ -42,7 +42,8 @@
 
 
 object_tangible_component_droid_repair_diagnostic_circuit = object_tangible_component_droid_repair_shared_diagnostic_circuit:new {
-
+	
+	
 	numberExperimentalProperties = {1, 1, 2, 3, 3, 1},
 	experimentalProperties = {"XX", "XX", "OQ", "UT", "CD", "MA", "OQ", "CD", "MA", "OQ", "XX"},
 	experimentalWeights = {1, 1, 2, 1, 2, 1, 1, 2, 1, 1, 1},

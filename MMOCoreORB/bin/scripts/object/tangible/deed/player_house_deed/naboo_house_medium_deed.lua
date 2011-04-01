@@ -44,8 +44,9 @@
 object_tangible_deed_player_house_deed_naboo_house_medium_deed = object_tangible_deed_player_house_deed_shared_naboo_house_medium_deed:new {
 	templateType = DEED,
 	generatedObjectTemplate = "object/building/player/player_house_naboo_medium_style_01.iff",
-
-
+	
+	
+	
 	numberExperimentalProperties = {1, 1, 1},
 	experimentalProperties = {"XX", "XX", "DR"},
 	experimentalWeights = {1, 1, 1},

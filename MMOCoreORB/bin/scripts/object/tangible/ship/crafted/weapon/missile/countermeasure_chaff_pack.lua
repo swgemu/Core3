@@ -42,7 +42,8 @@
 
 
 object_tangible_ship_crafted_weapon_missile_countermeasure_chaff_pack = object_tangible_ship_crafted_weapon_missile_shared_countermeasure_chaff_pack:new {
-
+	
+	
 	numberExperimentalProperties = {1, 1, 2, 2, 1, 2, 1},
 	experimentalProperties = {"XX", "XX", "CD", "OQ", "CD", "OQ", "XX", "CD", "OQ", "XX"},
 	experimentalWeights = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1},

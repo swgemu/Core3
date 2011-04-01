@@ -43,13 +43,13 @@
 
 object_tangible_food_spice_spice_gunjack = object_tangible_food_spice_shared_spice_gunjack:new {
 	templateType = CONSUMABLE,
-	,
+	
 	duration = 600,
 	filling = 0,
 	nutrition = 0,
-
+	
 	effectType = 5,
-
+	
 	fillingMin = 0,
 	fillingMax = 0,
 	flavorMin = 0,
@@ -58,12 +58,13 @@ object_tangible_food_spice_spice_gunjack = object_tangible_food_spice_shared_spi
 	nutritionMax = 0,
 	quantityMin = 0,
 	quantityMax = 0,
-
+	
 	modifiers = { "strength", 500, "quickness" , -200, "focus", -100 },
-
+	
 	buffName = "gunjack",
 	buffCRC = 0,
 	speciesRestriction = "",
+	
 	numberExperimentalProperties = {1, 1, 3},
 	experimentalProperties = {"XX", "XX", "DR", "OQ", "UT"},
 	experimentalWeights = {1, 1, 4, 1, 1},

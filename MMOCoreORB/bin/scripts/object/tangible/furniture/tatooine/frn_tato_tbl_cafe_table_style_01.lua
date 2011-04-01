@@ -42,7 +42,8 @@
 
 
 object_tangible_furniture_tatooine_frn_tato_tbl_cafe_table_style_01 = object_tangible_furniture_tatooine_shared_frn_tato_tbl_cafe_table_style_01:new {
-
+	
+	
 	numberExperimentalProperties = {1, 1, 1, 2},
 	experimentalProperties = {"XX", "XX", "XX", "DR", "OQ"},
 	experimentalWeights = {1, 1, 1, 1, 1},

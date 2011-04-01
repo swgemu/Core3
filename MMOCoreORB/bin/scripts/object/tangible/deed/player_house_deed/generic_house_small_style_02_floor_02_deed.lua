@@ -44,8 +44,9 @@
 object_tangible_deed_player_house_deed_generic_house_small_style_02_floor_02_deed = object_tangible_deed_player_house_deed_shared_generic_house_small_style_02_floor_02_deed:new {
 	templateType = DEED,
 	generatedObjectTemplate = "object/building/player/player_house_generic_small_style_02_floorplan_02.iff",
-
-
+	
+	
+	
 	numberExperimentalProperties = {1, 1, 1},
 	experimentalProperties = {"XX", "XX", "DR"},
 	experimentalWeights = {1, 1, 1},

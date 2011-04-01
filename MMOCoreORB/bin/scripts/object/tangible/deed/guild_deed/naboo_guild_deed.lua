@@ -44,8 +44,9 @@
 object_tangible_deed_guild_deed_naboo_guild_deed = object_tangible_deed_guild_deed_shared_naboo_guild_deed:new {
 	templateType = DEED,
 	generatedObjectTemplate = "object/building/player/player_guildhall_naboo_style_01.iff",
-
-
+	
+	
+	
 	numberExperimentalProperties = {1, 1, 1},
 	experimentalProperties = {"XX", "XX", "DR"},
 	experimentalWeights = {1, 1, 1},

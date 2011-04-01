@@ -42,7 +42,8 @@
 
 
 object_tangible_droid_battery_battery = object_tangible_droid_battery_shared_battery:new {
-
+	
+	
 	numberExperimentalProperties = {1, 1, 1, 1},
 	experimentalProperties = {"XX", "XX", "XX", "CD"},
 	experimentalWeights = {1, 1, 1, 1},

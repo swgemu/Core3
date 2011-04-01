@@ -42,7 +42,8 @@
 
 
 object_tangible_ship_crafted_repair_repair_kit_droid_interface = object_tangible_ship_crafted_repair_shared_repair_kit_droid_interface:new {
-
+	
+	
 	numberExperimentalProperties = {1, 1, 2},
 	experimentalProperties = {"XX", "XX", "CD", "OQ"},
 	experimentalWeights = {1, 1, 1, 3},

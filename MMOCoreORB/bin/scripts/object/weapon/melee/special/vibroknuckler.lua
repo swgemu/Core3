@@ -42,63 +42,64 @@
 
 
 object_weapon_melee_special_vibroknuckler = object_weapon_melee_special_shared_vibroknuckler:new {
-
-	-- ALL, ALLSEXES, ALLFACTIONS, HUMANOIDS, HUMANOID_FOOTWEAR, HUMANOID_MALES, HUMANOID_FEMALES, HUMANOID_IMPERIALS, HUMANOID_REBELS, WOOKIES, ITHORIANS, TWILEKS,
+	
+	 --  ALL, ALLSEXES, ALLFACTIONS, HUMANOIDS, HUMANOID_FOOTWEAR, HUMANOID_MALES, HUMANOID_FEMALES, HUMANOID_IMPERIALS, HUMANOID_REBELS, WOOKIES, ITHORIANS, TWILEKS
 	playerUseMask = ALL,
-	,
-	-- RANGEDATTACK, MELEEATTACK, FORCEATTACK, TRAPATTACK, GRENADEATTACK, HEAVYACIDBEAMATTACK,
-	-- HEAVYLIGHTNINGBEAMATTACK, HEAVYPARTICLEBEAMATTACK, HEAVYROCKETLAUNCHERATTACK, HEAVYLAUNCHERATTACK,
+	
+	 --  RANGEDATTACK, MELEEATTACK, FORCEATTACK, TRAPATTACK, GRENADEATTACK, HEAVYACIDBEAMATTACK,
+	 --  HEAVYLIGHTNINGBEAMATTACK, HEAVYPARTICLEBEAMATTACK, HEAVYROCKETLAUNCHERATTACK, HEAVYLAUNCHERATTACK
 	attackType = MELEEATTACK,
-	,
-	-- ENERGY, KINETIC, ELECTRICITY, STUN, BLAST, HEAT, COLD, ACID, FORCE, LIGHTSABER,
+	
+	 --  ENERGY, KINETIC, ELECTRICITY, STUN, BLAST, HEAT, COLD, ACID, FORCE, LIGHTSABER
 	damageType = KINETIC,
-	,
-	-- NONE, LIGHT, MEDIUM, HEAVY,
+	
+	 --  NONE, LIGHT, MEDIUM, HEAVY
 	armorPiercing = LIGHT,
-	,
-	-- combat_rangedspecialize_bactarifle, combat_rangedspecialize_rifle, combat_rangedspecialize_pistol, combat_rangedspecialize_heavy, combat_rangedspecialize_carbine,
-	-- combat_meleespecialize_unarmed, combat_meleespecialize_twohand, combat_meleespecialize_polearm, combat_meleespecialize_onehand, combat_general,
-	-- combat_meleespecialize_twohandlightsaber, combat_meleespecialize_polearmlightsaber, combat_meleespecialize_onehandlightsaber,
+	
+	 --  combat_rangedspecialize_bactarifle, combat_rangedspecialize_rifle, combat_rangedspecialize_pistol, combat_rangedspecialize_heavy, combat_rangedspecialize_carbine
+	 --  combat_meleespecialize_unarmed, combat_meleespecialize_twohand, combat_meleespecialize_polearm, combat_meleespecialize_onehand, combat_general,
+	 --  combat_meleespecialize_twohandlightsaber, combat_meleespecialize_polearmlightsaber, combat_meleespecialize_onehandlightsaber
 	xpType = "combat_meleespecialize_unarmed",
-	       ,
-	-- See http://www.ocdsoft.com/files/certifications.xls,
+	
+	 --  See http://www.ocdsoft.com/files/certifications.xls
 	certificationsRequired = { "cert_vibroknuckler" },
-	-- See http://www.ocdsoft.com/files/accuracy.xls,
+	 --  See http://www.ocdsoft.com/files/accuracy.xls
 	creatureAccuracyModifiers = { "unarmed_accuracy" },
-	,
-	-- See http://www.ocdsoft.com/files/defense.xls,
+	
+	 --  See http://www.ocdsoft.com/files/defense.xls
 	defenderDefenseModifiers = { "melee_defense" },
-	,
-	-- Leave as "dodge" for now, may have additions later,
+	
+	 --  Leave as "dodge" for now, may have additions later
 	defenderSecondaryDefenseModifiers = { "dodge" },
-	,
-	-- See http://www.ocdsoft.com/files/speed.xls,
+	
+	 --  See http://www.ocdsoft.com/files/speed.xls
 	speedModifiers = { "unarmed_speed" },
-	,
-	-- Leave blank for now,
+	
+	 --  Leave blank for now
 	damageModifiers = { "unarmed_damage" },
-	       ,
-	,
-	-- The values below are the default values.  To be used for blue frog objects primarily,
+	
+	
+	 --  The values below are the default values.  To be used for blue frog objects primarily
 	healthAttackCost = 36,
 	actionAttackCost = 54,
 	mindAttackCost = 36,
 	forceCost = 0,
-	,
+	
 	pointBlankAccuracy = 0,
 	pointBlankRange = 5,
-	,
+	
 	idealRange = 5,
 	idealAccuracy = 1,
-	,
+	
 	maxRange = 5,
 	maxRangeAccuracy = 5,
-
+	
 	minDamage = 50,
 	maxDamage = 120,
-	,
+	
 	attackSpeed = 3.6,
-
+	
+	
 	numberExperimentalProperties = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
 	experimentalProperties = {"XX", "XX", "SR", "SR", "SR", "SR", "SR", "SR", "SR", "XX", "SR", "XX", "SR", "SR", "SR"},
 	experimentalWeights = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},

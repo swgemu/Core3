@@ -42,24 +42,25 @@
 
 
 object_tangible_survey_tool_survey_tool_liquid = object_tangible_survey_tool_shared_survey_tool_liquid:new {
-
-   templateType = SURVEYTOOL,
-
-   playerUseMask = 65535,
-
-   customizationOptions = {},
-   customizationDefaults = {},
-
-   toolType = 2,
-   toolAnimation = "clienteffect/survey_tool_liquid.cef",
-   sampleAnimation = "clienteffect/survey_sample_liquid.cef",
-   surveyType = "chemical",
+	
+	templateType = SURVEYTOOL,
+	
+	playerUseMask = 65535,
+	
+	customizationOptions = {},
+	customizationDefaults = {},
+	
+	toolType = 2,
+	toolAnimation = "clienteffect/survey_tool_liquid.cef",
+	sampleAnimation = "clienteffect/survey_sample_liquid.cef",
+	surveyType = "chemical",
+	
 	numberExperimentalProperties = {1, 1, 1, 1},
 	experimentalProperties = {"XX", "XX", "XX", "CD"},
 	experimentalWeights = {1, 1, 1, 1},
 	experimentalGroupTitles = {"null", "null", "null", "exp_effectiveness"},
 	experimentalSubGroupTitles = {"null", "null", "hitpoints", "usemodifier"},
-	experimentalMin = {0, 0, 1000, -15}, -15},
+	experimentalMin = {0, 0, 1000, -15},
 	experimentalMax = {0, 0, 1000, 15},
 	experimentalPrecision = {0, 0, 0, 0},
 }

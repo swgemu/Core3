@@ -42,7 +42,8 @@
 
 
 object_tangible_component_droid_repair_repair_unit_casing = object_tangible_component_droid_repair_shared_repair_unit_casing:new {
-
+	
+	
 	numberExperimentalProperties = {1, 1, 2, 1},
 	experimentalProperties = {"XX", "XX", "OQ", "UT", "XX"},
 	experimentalWeights = {1, 1, 1, 2, 1},

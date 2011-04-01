@@ -46,6 +46,7 @@ object_tangible_medicine_crafted_medpack_dizzy_a = object_tangible_medicine_craf
 	templateType = STATEPACK,
 	medicineUse = 5,
 	state = DIZZY,
+	
 	numberExperimentalProperties = {1, 1, 2, 2, 1, 1},
 	experimentalProperties = {"XX", "XX", "OQ", "UT", "OQ", "PE", "XX", "XX"},
 	experimentalWeights = {1, 1, 2, 1, 2, 1, 1, 1},

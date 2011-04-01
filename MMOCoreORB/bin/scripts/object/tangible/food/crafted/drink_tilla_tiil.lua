@@ -43,13 +43,13 @@
 
 object_tangible_food_crafted_drink_tilla_tiil = object_tangible_food_crafted_shared_drink_tilla_tiil:new {
 	templateType = CONSUMABLE,
-	,
+	
 	duration = 10,
 	filling = 10,
 	nutrition = 10,
-
+	
 	effectType = 0,
-
+	
 	fillingMin = 90,
 	fillingMax = 60,
 	flavorMin = 0,
@@ -58,12 +58,13 @@ object_tangible_food_crafted_drink_tilla_tiil = object_tangible_food_crafted_sha
 	nutritionMax = 19,
 	quantityMin = 1,
 	quantityMax = 1,
-
+	
 	modifiers = { "food_reduce", 0 },
-
+	
 	buffName = "",
 	buffCRC = 0,
 	speciesRestriction = "",
+	
 	numberExperimentalProperties = {1, 1, 1, 1, 2, 1, 2, 1},
 	experimentalProperties = {"XX", "XX", "XX", "XX", "DR", "OQ", "XX", "DR", "FL", "XX"},
 	experimentalWeights = {1, 1, 1, 1, 1, 1, 1, 1, 2, 1},

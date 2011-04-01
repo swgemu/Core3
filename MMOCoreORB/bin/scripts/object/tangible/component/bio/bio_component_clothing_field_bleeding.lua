@@ -42,7 +42,8 @@
 
 
 object_tangible_component_bio_bio_component_clothing_field_bleeding = object_tangible_component_bio_shared_bio_component_clothing_field_bleeding:new {
-
+	
+	
 	numberExperimentalProperties = {1, 1, 1, 1, 1, 3},
 	experimentalProperties = {"XX", "XX", "XX", "XX", "XX", "FL", "OQ", "PE"},
 	experimentalWeights = {1, 1, 1, 1, 1, 1, 1, 1},

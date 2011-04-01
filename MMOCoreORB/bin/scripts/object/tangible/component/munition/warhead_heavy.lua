@@ -42,7 +42,8 @@
 
 
 object_tangible_component_munition_warhead_heavy = object_tangible_component_munition_shared_warhead_heavy:new {
-
+	
+	
 	numberExperimentalProperties = {1, 1, 2, 2, 2, 1},
 	experimentalProperties = {"XX", "XX", "DR", "OQ", "DR", "OQ", "DR", "OQ", "XX"},
 	experimentalWeights = {1, 1, 1, 1, 1, 1, 1, 1, 1},

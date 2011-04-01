@@ -42,7 +42,8 @@
 
 
 object_tangible_component_weapon_stock_advanced = object_tangible_component_weapon_shared_stock_advanced:new {
-
+	
+	
 	numberExperimentalProperties = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
 	experimentalProperties = {"XX", "XX", "SR", "SR", "SR", "SR", "SR", "SR", "SR", "SR", "SR"},
 	experimentalWeights = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},

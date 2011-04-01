@@ -43,13 +43,13 @@
 
 object_tangible_food_crafted_dish_scrimpi = object_tangible_food_crafted_shared_dish_scrimpi:new {
 	templateType = CONSUMABLE,
-	,
+	
 	duration = 10,
 	filling = 10,
 	nutrition = 10,
-
+	
 	effectType = 1,
-
+	
 	fillingMin = 35,
 	fillingMax = 25,
 	flavorMin = 1800,
@@ -58,12 +58,13 @@ object_tangible_food_crafted_dish_scrimpi = object_tangible_food_crafted_shared_
 	nutritionMax = 240,
 	quantityMin = 3,
 	quantityMax = 4,
-
+	
 	modifiers = { "quickness", 0 },
-
+	
 	buffName = "food.dish_scrimpi",
 	buffCRC = 0,
 	speciesRestriction = "",
+	
 	numberExperimentalProperties = {1, 1, 1, 2, 2, 2, 2},
 	experimentalProperties = {"XX", "XX", "XX", "OQ", "PE", "DR", "OQ", "DR", "PE", "DR", "OQ"},
 	experimentalWeights = {1, 1, 1, 1, 2, 1, 2, 1, 3, 3, 1},

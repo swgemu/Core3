@@ -42,7 +42,8 @@
 
 
 object_tangible_component_structure_power_core_unit = object_tangible_component_structure_shared_power_core_unit:new {
-
+	
+	
 	numberExperimentalProperties = {1, 1, 1},
 	experimentalProperties = {"XX", "XX", "XX"},
 	experimentalWeights = {1, 1, 1},

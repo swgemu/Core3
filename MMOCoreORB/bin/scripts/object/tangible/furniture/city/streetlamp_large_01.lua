@@ -42,7 +42,8 @@
 
 
 object_tangible_furniture_city_streetlamp_large_01 = object_tangible_furniture_city_shared_streetlamp_large_01:new {
-
+	
+	
 	numberExperimentalProperties = {1, 1, 1},
 	experimentalProperties = {"XX", "XX", "XX"},
 	experimentalWeights = {1, 1, 1},

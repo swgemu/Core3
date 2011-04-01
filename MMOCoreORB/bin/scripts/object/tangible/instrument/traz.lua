@@ -44,6 +44,7 @@
 object_tangible_instrument_traz = object_tangible_instrument_shared_traz:new {
 	templateType = INSTRUMENT,
 	instrumentType = 1,
+	
 	numberExperimentalProperties = {1, 1, 1, 1},
 	experimentalProperties = {"XX", "XX", "UT", "CD"},
 	experimentalWeights = {1, 1, 1, 1},

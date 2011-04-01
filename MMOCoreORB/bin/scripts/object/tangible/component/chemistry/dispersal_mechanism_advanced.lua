@@ -42,7 +42,8 @@
 
 
 object_tangible_component_chemistry_dispersal_mechanism_advanced = object_tangible_component_chemistry_shared_dispersal_mechanism_advanced:new {
-
+	
+	
 	numberExperimentalProperties = {1, 1, 1, 2, 2, 2, 1, 1, 1},
 	experimentalProperties = {"XX", "XX", "XX", "DR", "OQ", "DR", "OQ", "DR", "OQ", "XX", "XX", "XX"},
 	experimentalWeights = {1, 1, 1, 1, 3, 1, 2, 1, 2, 1, 1, 1},

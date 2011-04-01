@@ -43,6 +43,7 @@
 
 object_tangible_wearables_bikini_bikini_leggings_s01 = object_tangible_wearables_bikini_shared_bikini_leggings_s01:new {
 	playerUseMask = HUMANOID_FEMALES,
+	
 	numberExperimentalProperties = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
 	experimentalProperties = {"XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX"},
 	experimentalWeights = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},

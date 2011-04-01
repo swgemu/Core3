@@ -42,7 +42,8 @@
 
 
 object_tangible_component_armor_shield_generator_personal_b = object_tangible_component_armor_shared_shield_generator_personal_b:new {
-
+	
+	
 	numberExperimentalProperties = {1, 1, 1, 2, 2, 2, 2, 2, 1, 1, 2, 1},
 	experimentalProperties = {"XX", "XX", "XX", "CD", "OQ", "OQ", "UT", "MA", "OQ", "MA", "OQ", "MA", "OQ", "XX", "XX", "OQ", "SR", "XX"},
 	experimentalWeights = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},

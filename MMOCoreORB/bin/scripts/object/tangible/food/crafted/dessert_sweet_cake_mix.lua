@@ -43,13 +43,13 @@
 
 object_tangible_food_crafted_dessert_sweet_cake_mix = object_tangible_food_crafted_shared_dessert_sweet_cake_mix:new {
 	templateType = CONSUMABLE,
-	,
+	
 	duration = 0,
 	filling = 0,
 	nutrition = 0,
-
+	
 	effectType = 0,
-	,
+	
 	fillingMin = 0,
 	fillingMax = 0,
 	flavorMin = 0,
@@ -58,12 +58,13 @@ object_tangible_food_crafted_dessert_sweet_cake_mix = object_tangible_food_craft
 	nutritionMax = 0,
 	quantityMin = 0,
 	quantityMax = 0,
-
+	
 	modifiers = { },
-
+	
 	buffName = "",
 	buffCRC = 0,
 	speciesRestriction = "",
+	
 	numberExperimentalProperties = {1, 1, 1},
 	experimentalProperties = {"XX", "XX", "XX"},
 	experimentalWeights = {1, 1, 1},

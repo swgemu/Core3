@@ -45,6 +45,7 @@ object_tangible_deed_city_deed_cantina_naboo_deed = object_tangible_deed_city_de
 	templateType = DEED,
 	gameObjectType = 8388609,
 	generatedObjectTemplate = "object/building/player/city/cantina_naboo.iff",
+	
 	numberExperimentalProperties = {1, 1, 1},
 	experimentalProperties = {"XX", "XX", "DR"},
 	experimentalWeights = {1, 1, 1},

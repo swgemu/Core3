@@ -44,6 +44,7 @@
 object_tangible_firework_show = object_tangible_firework_shared_show:new {
 	fireworkObject = "object/static/firework/show_launcher.iff",
 	templateType = FIREWORK,
+	
 	numberExperimentalProperties = {1, 1, 1, 1},
 	experimentalProperties = {"XX", "XX", "XX", "OQ"},
 	experimentalWeights = {1, 1, 1, 1},

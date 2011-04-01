@@ -43,21 +43,21 @@
 
 object_tangible_wearables_armor_chitin_armor_chitin_s01_bracer_r = object_tangible_wearables_armor_chitin_shared_armor_chitin_s01_bracer_r:new {
 	templateType = ARMOROBJECT,
-
-	-- ALL, ALLSEXES, ALLFACTIONS, HUMANOIDS, HUMANOID_FOOTWEAR, HUMANOID_MALES, HUMANOID_FEMALES, HUMANOID_IMPERIALS, HUMANOID_REBELS, WOOKIEES, ITHORIANS, TWILEKS,
+	
+	 --  ALL, ALLSEXES, ALLFACTIONS, HUMANOIDS, HUMANOID_FOOTWEAR, HUMANOID_MALES, HUMANOID_FEMALES, HUMANOID_IMPERIALS, HUMANOID_REBELS, WOOKIEES, ITHORIANS, TWILEKS
 	playerUseMask = HUMANOIDS,
-	,
-	-- Damagetypes in WeaponObject,
+	
+	 --  Damagetypes in WeaponObject
 	vunerability = STUN + HEAT + COLD + ENERGY + LIGHTSABER,
-
-	-- These are default Blue Frog stats,
+	
+	 --  These are default Blue Frog stats
 	healthEncumbrance = 1,
 	actionEncumbrance = 1,
 	mindEncumbrance = 1,
-
-	-- LIGHT, MEDIUM, HEAVY,
+	
+	 --  LIGHT, MEDIUM, HEAVY
 	rating = LIGHT,
-
+	
 	kinetic = 15,
 	energy = 15,
 	electricity = 15,
@@ -67,6 +67,7 @@ object_tangible_wearables_armor_chitin_armor_chitin_s01_bracer_r = object_tangib
 	cold = 15,
 	acid = 15,
 	lightSaber = 0,
+	
 	numberExperimentalProperties = {1, 1, 1, 2, 2, 2, 2, 2, 2, 1, 1, 2, 1},
 	experimentalProperties = {"XX", "XX", "XX", "OQ", "SR", "OQ", "SR", "OQ", "UT", "MA", "OQ", "MA", "OQ", "MA", "OQ", "XX", "XX", "OQ", "SR", "XX"},
 	experimentalWeights = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},

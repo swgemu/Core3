@@ -44,8 +44,9 @@
 object_tangible_deed_harvester_deed_harvester_gas_deed = object_tangible_deed_harvester_deed_shared_harvester_gas_deed:new {
 	templateType = DEED,
 	generatedObjectTemplate = "object/installation/mining_gas/mining_gas_harvester_style_1.iff",
-
-
+	
+	
+	
 	numberExperimentalProperties = {1, 1, 3, 2, 1},
 	experimentalProperties = {"XX", "XX", "HR", "SR", "UT", "MA", "UT", "XX"},
 	experimentalWeights = {1, 1, 1, 1, 2, 1, 2, 1},

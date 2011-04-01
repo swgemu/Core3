@@ -42,7 +42,8 @@
 
 
 object_tangible_component_structure_manufacturing_mechanism = object_tangible_component_structure_shared_manufacturing_mechanism:new {
-
+	
+	
 	numberExperimentalProperties = {1, 1, 1},
 	experimentalProperties = {"XX", "XX", "XX"},
 	experimentalWeights = {1, 1, 1},

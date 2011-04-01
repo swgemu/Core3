@@ -42,7 +42,8 @@
 
 
 object_tangible_deed_naboo_player_house_deed_naboo_house_small_deed = object_tangible_deed_naboo_player_house_deed_shared_naboo_house_small_deed:new {
-
+	
+	
 	numberExperimentalProperties = {1, 1, 1},
 	experimentalProperties = {"XX", "XX", "DR"},
 	experimentalWeights = {1, 1, 1},

@@ -44,6 +44,7 @@
 object_tangible_instrument_mandoviol = object_tangible_instrument_shared_mandoviol:new {
 	templateType = INSTRUMENT,
 	instrumentType = 10,
+	
 	numberExperimentalProperties = {1, 1, 1, 1},
 	experimentalProperties = {"XX", "XX", "UT", "CD"},
 	experimentalWeights = {1, 1, 1, 1},

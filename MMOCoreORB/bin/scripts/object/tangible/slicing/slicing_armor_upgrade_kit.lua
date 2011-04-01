@@ -45,13 +45,14 @@ object_tangible_slicing_slicing_armor_upgrade_kit = object_tangible_slicing_shar
 	templateType = SLICINGTOOL,
 	gameObjectType = 32779,
 	effectiveness = -15,
-
+	
+	
 	numberExperimentalProperties = {1, 1, 1, 1, 1},
 	experimentalProperties = {"XX", "XX", "XX", "CD", "XX"},
 	experimentalWeights = {1, 1, 1, 1, 1},
 	experimentalGroupTitles = {"null", "null", "null", "exp_effectiveness", "0"},
 	experimentalSubGroupTitles = {"null", "null", "hitpoints", "usemodifier", "0"},
-	experimentalMin = {0, 0, 1000, -15, 0}, -15, 0},
+	experimentalMin = {0, 0, 1000, -15, 0},
 	experimentalMax = {0, 0, 1000, 15, 0},
 	experimentalPrecision = {0, 0, 0, 0, 0},
 }

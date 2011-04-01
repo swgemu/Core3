@@ -42,7 +42,8 @@
 
 
 object_tangible_deed_pet_deed_bol_deed = object_tangible_deed_pet_deed_shared_bol_deed:new {
-
+	
+	
 	numberExperimentalProperties = {1, 1},
 	experimentalProperties = {"XX", "XX"},
 	experimentalWeights = {1, 1},

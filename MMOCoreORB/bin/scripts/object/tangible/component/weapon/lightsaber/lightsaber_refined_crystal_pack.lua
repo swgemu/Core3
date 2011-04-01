@@ -42,7 +42,8 @@
 
 
 object_tangible_component_weapon_lightsaber_lightsaber_refined_crystal_pack = object_tangible_component_weapon_lightsaber_shared_lightsaber_refined_crystal_pack:new {
-
+	
+	
 	numberExperimentalProperties = {1, 1},
 	experimentalProperties = {"XX", "XX"},
 	experimentalWeights = {1, 1},

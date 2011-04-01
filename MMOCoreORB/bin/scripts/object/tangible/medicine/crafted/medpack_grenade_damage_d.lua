@@ -49,6 +49,7 @@ object_tangible_medicine_crafted_medpack_grenade_damage_d = object_tangible_medi
 	area = 0,
 	range = 10,
 	effectiveness = 800,
+	
 	numberExperimentalProperties = {1, 1, 2, 2, 2, 2, 1},
 	experimentalProperties = {"XX", "XX", "OQ", "PE", "OQ", "UT", "OQ", "PE", "CD", "OQ", "XX"},
 	experimentalWeights = {1, 1, 2, 1, 2, 1, 2, 1, 1, 2, 1},

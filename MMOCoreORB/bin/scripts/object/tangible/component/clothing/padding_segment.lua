@@ -42,7 +42,8 @@
 
 
 object_tangible_component_clothing_padding_segment = object_tangible_component_clothing_shared_padding_segment:new {
-
+	
+	
 	numberExperimentalProperties = {1, 1, 1, 2, 2, 2, 2, 2, 1},
 	experimentalProperties = {"XX", "XX", "XX", "OQ", "SR", "OQ", "UT", "OQ", "SR", "OQ", "SR", "OQ", "SR", "XX"},
 	experimentalWeights = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
