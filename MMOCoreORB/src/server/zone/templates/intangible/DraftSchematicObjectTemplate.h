@@ -9,8 +9,8 @@
 #define DRAFTSCHEMATICOBJECTTEMPLATE_H_
 
 #include "SharedDraftSchematicObjectTemplate.h"
+#include "../SharedTangibleObjectTemplate.h"
 #include "server/zone/objects/draftschematic/draftslot/DraftSlot.h"
-#include "server/zone/objects/draftschematic/resourceweight/ResourceWeight.h"
 
 class DraftSchematicObjectTemplate : public SharedDraftSchematicObjectTemplate {
 protected:
@@ -68,20 +68,11 @@ protected:
 	Vector<short>* combineTypes;
 	Vector<short>* contribution;
 
-	Vector<short>* numberExperimentalProperties;
-	Vector<String>* experimentalProperties;
-	Vector<short>* experimentalWeights;
-	Vector<String>* experimentalGroupTitles;
-	Vector<String>* experimentalSubGroupTitles;
-	Vector<int>* experimentalMin;
-	Vector<int>* experimentalMax;
-	Vector<short>* experimentalPrecision;
-
-	uint32 tanoCRC;
+	Vector<uint32>* availableTemplates;
 
 	Vector<Reference<DraftSlot* > >* draftSlots;
 
-	Vector<Reference<ResourceWeight* > >* resourceWeights;
+	SharedTangibleObjectTemplate* tangibleTemplate;
 
 public:
 	DraftSchematicObjectTemplate();
@@ -95,17 +86,10 @@ public:
         return draftSlots;
     }
 
-	Vector<Reference<ResourceWeight* > >* getResourceWeights() {
-        return resourceWeights;
-    }
-
     void addSlot(DraftSlot* slot) {
 		draftSlots->add(slot);
 	}
 
-    void addResourceWeight(ResourceWeight* weight) {
-		resourceWeights->add(weight);
-	}
 
     String getAssemblySkill() {
         return assemblySkill;
@@ -125,34 +109,6 @@ public:
 
     int getCraftingToolTab() {
         return craftingToolTab;
-    }
-
-    Vector<String>* getExperimentalGroupTitles() {
-        return experimentalGroupTitles;
-    }
-
-    Vector<int>* getExperimentalMax() {
-        return experimentalMax;
-    }
-
-    Vector<int>* getExperimentalMin() {
-        return experimentalMin;
-    }
-
-    Vector<short >* getExperimentalPrecision() {
-        return experimentalPrecision;
-    }
-
-    Vector<String>* getExperimentalProperties() {
-        return experimentalProperties;
-    }
-
-    Vector<String>* getExperimentalSubGroupTitles() {
-        return experimentalSubGroupTitles;
-    }
-
-    Vector<short >* getExperimentalWeights() {
-        return experimentalWeights;
     }
 
     String getExperimentingSkill() {
@@ -191,10 +147,6 @@ public:
         return ingredientTitleNames;
     }
 
-    Vector<short >* getNumberExperimentalProperties() {
-        return numberExperimentalProperties;
-    }
-
     Vector<int>* getResourceQuantities() {
         return resourceQuantities;
     }
@@ -208,7 +160,7 @@ public:
     }
 
     uint32 getTanoCRC() {
-        return tanoCRC;
+        return availableTemplates->get(0);
     }
 
     int getXp() {
@@ -222,6 +174,8 @@ public:
     String getCustomObjectName() {
         return customObjectName;
     }
+
+	Vector<Reference<ResourceWeight* > >* getResourceWeights();
 
 };
 
