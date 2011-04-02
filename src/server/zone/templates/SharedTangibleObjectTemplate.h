@@ -8,6 +8,8 @@
 #ifndef SHAREDTANGIBLEOBJECTTEMPLATE_H_
 #define SHAREDTANGIBLEOBJECTTEMPLATE_H_
 
+#include "server/zone/objects/draftschematic/resourceweight/ResourceWeight.h"
+
 #include "SharedObjectTemplate.h"
 
 class SharedTangibleObjectTemplate : public SharedObjectTemplate {
@@ -37,16 +39,22 @@ protected:
 
 	bool sliceable;
 
+	Vector<short>* numberExperimentalProperties;
+	Vector<String>* experimentalProperties;
+	Vector<short>* experimentalWeights;
+	Vector<String>* experimentalGroupTitles;
+	Vector<String>* experimentalSubGroupTitles;
+	Vector<int>* experimentalMin;
+	Vector<int>* experimentalMax;
+	Vector<short>* experimentalPrecision;
+
+	Vector<Reference<ResourceWeight* > >* resourceWeights;
 	//CustomizationVariableMapping customizationVariableMapping;
 
 public:
-	SharedTangibleObjectTemplate() {
+	SharedTangibleObjectTemplate();
 
-	}
-
-	~SharedTangibleObjectTemplate() {
-
-	}
+	~SharedTangibleObjectTemplate();
 
 	void readObject(LuaObject* templateData);
 
@@ -126,6 +134,45 @@ public:
 		return sliceable;
 	}
 
+    Vector<short >* getNumberExperimentalProperties() {
+        return numberExperimentalProperties;
+    }
+
+    Vector<String>* getExperimentalProperties() {
+        return experimentalProperties;
+    }
+
+    Vector<short >* getExperimentalWeights() {
+        return experimentalWeights;
+    }
+
+    Vector<String>* getExperimentalGroupTitles() {
+        return experimentalGroupTitles;
+    }
+
+    Vector<String>* getExperimentalSubGroupTitles() {
+        return experimentalSubGroupTitles;
+    }
+
+    Vector<int>* getExperimentalMin() {
+        return experimentalMin;
+    }
+
+    Vector<int>* getExperimentalMax() {
+        return experimentalMax;
+    }
+
+    Vector<short >* getExperimentalPrecision() {
+        return experimentalPrecision;
+    }
+
+    void addResourceWeight(ResourceWeight* weight) {
+		resourceWeights->add(weight);
+	}
+
+    Vector<Reference<ResourceWeight* > >* getResourceWeights() {
+    	return resourceWeights;
+    }
 };
 
 
