@@ -94,6 +94,14 @@ public:
 
 	void sandstormTick();
 
+	void enableWeather(PlayerCreature* player);
+
+	void disableWeather(PlayerCreature* player);
+
+	void changeWeather(PlayerCreature* player, int newWeather);
+
+	void weatherInfo(PlayerCreature* player);
+
 	void setWeatherID(unsigned int value);
 
 	unsigned int getWeatherID();
@@ -213,6 +221,14 @@ public:
 
 	void sandstormTick();
 
+	void enableWeather(PlayerCreature* player);
+
+	void disableWeather(PlayerCreature* player);
+
+	void changeWeather(PlayerCreature* player, int newWeather);
+
+	void weatherInfo(PlayerCreature* player);
+
 	void setWeatherID(unsigned int value);
 
 	unsigned int getWeatherID();
@@ -281,6 +297,14 @@ public:
 	void sendWeatherPacket(PlayerCreature* player);
 
 	void sandstormTick();
+
+	void enableWeather(PlayerCreature* player);
+
+	void disableWeather(PlayerCreature* player);
+
+	void changeWeather(PlayerCreature* player, int newWeather);
+
+	void weatherInfo(PlayerCreature* player);
 
 	void setWeatherID(unsigned int value);
 

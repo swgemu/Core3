@@ -64,7 +64,6 @@ public:
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
-
 		if (!checkStateMask(creature))
 			return INVALIDSTATE;
 
@@ -80,7 +79,8 @@ public:
 		tokenizer.getStringToken(commandName);
 
 		String restOfArguments;
-		tokenizer.finalToken(restOfArguments);
+		if (tokenizer.hasMoreTokens())
+			tokenizer.finalToken(restOfArguments);
 
 		int ret = methodFactory.runMethod(commandName, creature, target, restOfArguments);
 
