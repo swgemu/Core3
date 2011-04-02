@@ -63,6 +63,5 @@ object_tangible_survey_tool_survey_tool_gas = object_tangible_survey_tool_shared
 	experimentalMin = {0, 0, 1000, -15},
 	experimentalMax = {0, 0, 1000, 15},
 	experimentalPrecision = {0, 0, 0, 0},
-
 }
 ObjectTemplates:addTemplate(object_tangible_survey_tool_survey_tool_gas, "object/tangible/survey_tool/survey_tool_gas.iff")

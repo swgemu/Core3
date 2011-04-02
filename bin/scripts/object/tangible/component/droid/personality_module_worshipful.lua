@@ -52,7 +52,6 @@ object_tangible_component_droid_personality_module_worshipful = object_tangible_
 	experimentalMin = {0, 0, 5, 1000, -10, 20},
 	experimentalMax = {0, 0, 15, 1000, 15, 20},
 	experimentalPrecision = {0, 0, 0, 0, 0, 0},
-
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_droid_personality_module_worshipful, "object/tangible/component/droid/personality_module_worshipful.iff")

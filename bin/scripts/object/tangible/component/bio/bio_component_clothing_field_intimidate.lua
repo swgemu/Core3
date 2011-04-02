@@ -52,7 +52,6 @@ object_tangible_component_bio_bio_component_clothing_field_intimidate = object_t
 	experimentalMin = {0, 0, 30, 1000, 117, 1, 118, 1},
 	experimentalMax = {0, 0, 50, 1000, 117, 10, 118, 10},
 	experimentalPrecision = {0, 0, 0, 0, 0, 0, 0, 0},
-
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_bio_bio_component_clothing_field_intimidate, "object/tangible/component/bio/bio_component_clothing_field_intimidate.iff")

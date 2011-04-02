@@ -52,7 +52,6 @@ object_tangible_component_droid_data_storage_module_4 = object_tangible_componen
 	experimentalMin = {0, 0, 5, 1000, -10, 7},
 	experimentalMax = {0, 0, 15, 1000, 15, 9},
 	experimentalPrecision = {0, 0, 0, 0, 0, 0},
-
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_droid_data_storage_module_4, "object/tangible/component/droid/data_storage_module_4.iff")

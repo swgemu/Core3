@@ -52,7 +52,6 @@ object_tangible_furniture_modern_armoire_modern_style_01 = object_tangible_furni
 	experimentalMin = {0, 0, 1000, 1},
 	experimentalMax = {0, 0, 1000, 100},
 	experimentalPrecision = {0, 0, 0, 0},
-
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_modern_armoire_modern_style_01, "object/tangible/furniture/modern/armoire_modern_style_01.iff")

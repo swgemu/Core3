@@ -61,6 +61,5 @@ object_tangible_crafting_station_clothing_station = object_tangible_crafting_sta
 	experimentalMin = {0, 0, 1000, -15},
 	experimentalMax = {0, 0, 1000, 15},
 	experimentalPrecision = {0, 0, 0, 0},
-
 }
 ObjectTemplates:addTemplate(object_tangible_crafting_station_clothing_station, "object/tangible/crafting/station/clothing_station.iff")

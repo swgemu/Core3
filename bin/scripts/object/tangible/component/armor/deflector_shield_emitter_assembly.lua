@@ -52,7 +52,6 @@ object_tangible_component_armor_deflector_shield_emitter_assembly = object_tangi
 	experimentalMin = {0, 0, 1000},
 	experimentalMax = {0, 0, 1000},
 	experimentalPrecision = {0, 0, 0},
-
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_armor_deflector_shield_emitter_assembly, "object/tangible/component/armor/deflector_shield_emitter_assembly.iff")

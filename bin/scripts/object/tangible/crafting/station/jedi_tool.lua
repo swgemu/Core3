@@ -62,6 +62,5 @@ object_tangible_crafting_station_jedi_tool = object_tangible_crafting_station_sh
 	experimentalMin = {0, 0, 1000, -15},
 	experimentalMax = {0, 0, 1000, 15},
 	experimentalPrecision = {0, 0, 0, 0},
-
 }
 ObjectTemplates:addTemplate(object_tangible_crafting_station_jedi_tool, "object/tangible/crafting/station/jedi_tool.iff")

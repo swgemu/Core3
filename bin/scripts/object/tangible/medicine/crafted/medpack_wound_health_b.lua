@@ -56,7 +56,6 @@ object_tangible_medicine_crafted_medpack_wound_health_b = object_tangible_medici
 	experimentalMin = {0, 0, 30, 15, 5, 1000},
 	experimentalMax = {0, 0, 60, 30, 5, 1000},
 	experimentalPrecision = {0, 0, 0, 0, 0, 0},
-
 }
 
 ObjectTemplates:addTemplate(object_tangible_medicine_crafted_medpack_wound_health_b, "object/tangible/medicine/crafted/medpack_wound_health_b.iff")

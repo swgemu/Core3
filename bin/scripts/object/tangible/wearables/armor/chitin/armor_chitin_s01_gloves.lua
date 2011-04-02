@@ -44,18 +44,18 @@
 object_tangible_wearables_armor_chitin_armor_chitin_s01_gloves = object_tangible_wearables_armor_chitin_shared_armor_chitin_s01_gloves:new {
 	templateType = ARMOROBJECT,
 
-	--   ALL, ALLSEXES, ALLFACTIONS, HUMANOIDS, HUMANOID_FOOTWEAR, HUMANOID_MALES, HUMANOID_FEMALES, HUMANOID_IMPERIALS, HUMANOID_REBELS, WOOKIEES, ITHORIANS, TWILEKS
+	-- ALL, ALLSEXES, ALLFACTIONS, HUMANOIDS, HUMANOID_FOOTWEAR, HUMANOID_MALES, HUMANOID_FEMALES, HUMANOID_IMPERIALS, HUMANOID_REBELS, WOOKIEES, ITHORIANS, TWILEKS
 	playerUseMask = HUMANOIDS,
 
-	--   Damagetypes in WeaponObject
+	-- Damagetypes in WeaponObject
 	vunerability = STUN + HEAT + COLD + ENERGY + LIGHTSABER,
 
-	--   These are default Blue Frog stats
+	-- These are default Blue Frog stats
 	healthEncumbrance = 1,
 	actionEncumbrance = 1,
 	mindEncumbrance = 1,
 
-	--   LIGHT, MEDIUM, HEAVY
+	-- LIGHT, MEDIUM, HEAVY
 	rating = LIGHT,
 
 	kinetic = 15,
@@ -76,7 +76,6 @@ object_tangible_wearables_armor_chitin_armor_chitin_s01_gloves = object_tangible
 	experimentalMin = {0, 0, 0, 1000, 5, 15000, 13, 25, 16, 1, 1, 5, 15000},
 	experimentalMax = {0, 0, 0, 1000, 30, 25000, 8, 15, 9, 1, 1, 40, 25000},
 	experimentalPrecision = {0, 0, 0, 0, 10, 0, 0, 0, 0, 0, 0, 0, 0},
-
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_armor_chitin_armor_chitin_s01_gloves, "object/tangible/wearables/armor/chitin/armor_chitin_s01_gloves.iff")

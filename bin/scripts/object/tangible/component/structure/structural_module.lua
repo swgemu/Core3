@@ -52,7 +52,6 @@ object_tangible_component_structure_structural_module = object_tangible_componen
 	experimentalMin = {0, 0, 200},
 	experimentalMax = {0, 0, 500},
 	experimentalPrecision = {0, 0, 0},
-
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_structure_structural_module, "object/tangible/component/structure/structural_module.iff")

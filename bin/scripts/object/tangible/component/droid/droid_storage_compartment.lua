@@ -52,7 +52,6 @@ object_tangible_component_droid_droid_storage_compartment = object_tangible_comp
 	experimentalMin = {0, 0, 5, 1000, -5},
 	experimentalMax = {0, 0, 15, 1000, 5},
 	experimentalPrecision = {0, 0, 0, 0, 0},
-
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_droid_droid_storage_compartment, "object/tangible/component/droid/droid_storage_compartment.iff")

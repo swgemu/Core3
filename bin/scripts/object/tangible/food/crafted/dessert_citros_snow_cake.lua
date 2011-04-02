@@ -73,7 +73,6 @@ object_tangible_food_crafted_dessert_citros_snow_cake = object_tangible_food_cra
 	experimentalMin = {0, 0, 1000, 75, 60, 60, 80},
 	experimentalMax = {0, 0, 1000, 120, 120, 100, 120},
 	experimentalPrecision = {0, 0, 0, 0, 0, 0, 0},
-
 }
 
 ObjectTemplates:addTemplate(object_tangible_food_crafted_dessert_citros_snow_cake, "object/tangible/food/crafted/dessert_citros_snow_cake.iff")

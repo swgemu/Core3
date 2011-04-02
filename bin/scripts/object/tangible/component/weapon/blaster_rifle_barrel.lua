@@ -52,7 +52,6 @@ object_tangible_component_weapon_blaster_rifle_barrel = object_tangible_componen
 	experimentalMin = {0, 0, 0, 0, 0, 0, 10, 0, 0, 0, 0},
 	experimentalMax = {0, 0, 10, 10, -0.5, 5, 100, 0, 0, 0, 20},
 	experimentalPrecision = {0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0},
-
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_weapon_blaster_rifle_barrel, "object/tangible/component/weapon/blaster_rifle_barrel.iff")

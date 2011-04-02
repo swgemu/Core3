@@ -73,7 +73,6 @@ object_tangible_food_crafted_drink_flameout = object_tangible_food_crafted_share
 	experimentalMin = {0, 0, 1000, 0, 75, 60, 60, 80, 1},
 	experimentalMax = {0, 0, 1000, 0, 120, 120, 100, 120, 1},
 	experimentalPrecision = {0, 0, 0, 0, 0, 10, 0, 0, 0},
-
 }
 
 ObjectTemplates:addTemplate(object_tangible_food_crafted_drink_flameout, "object/tangible/food/crafted/drink_flameout.iff")

@@ -52,7 +52,6 @@ object_tangible_deed_naboo_player_house_deed_naboo_house_small_deed = object_tan
 	experimentalMin = {0, 0, 21000},
 	experimentalMax = {0, 0, 39000},
 	experimentalPrecision = {0, 0, 0},
-
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_naboo_player_house_deed_naboo_house_small_deed, "object/tangible/deed/naboo/player_house_deed/naboo_house_small_deed.iff")

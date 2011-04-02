@@ -52,7 +52,6 @@ object_tangible_deed_pet_deed_roba_deed = object_tangible_deed_pet_deed_shared_r
 	experimentalMin = {0, 0},
 	experimentalMax = {0, 0},
 	experimentalPrecision = {0, 0},
-
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_roba_deed, "object/tangible/deed/pet_deed/roba_deed.iff")

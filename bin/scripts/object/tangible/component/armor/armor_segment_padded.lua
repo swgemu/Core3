@@ -52,7 +52,6 @@ object_tangible_component_armor_armor_segment_padded = object_tangible_component
 	experimentalMin = {0, 0, 1000, 1, 100, 9, 12, 6, 1, 4, 1, 100},
 	experimentalMax = {0, 0, 1000, 8, 1000, 1, 1, 1, 1, 4, 15, 1000},
 	experimentalPrecision = {0, 0, 0, 10, 0, 0, 0, 0, 0, 0, 0, 0},
-
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_armor_armor_segment_padded, "object/tangible/component/armor/armor_segment_padded.iff")

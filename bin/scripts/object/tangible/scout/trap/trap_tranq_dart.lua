@@ -52,7 +52,6 @@ object_tangible_scout_trap_trap_tranq_dart = object_tangible_scout_trap_shared_t
 	experimentalMin = {0, 0, 1000, 1},
 	experimentalMax = {0, 0, 1000, 100},
 	experimentalPrecision = {0, 0, 0, 0},
-
 }
 
 ObjectTemplates:addTemplate(object_tangible_scout_trap_trap_tranq_dart, "object/tangible/scout/trap/trap_tranq_dart.iff")

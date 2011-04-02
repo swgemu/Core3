@@ -54,7 +54,6 @@ object_tangible_deed_city_deed_garage_naboo_deed = object_tangible_deed_city_dee
 	experimentalMin = {0, 0, 35000},
 	experimentalMax = {0, 0, 75000},
 	experimentalPrecision = {0, 0, 0},
-
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_city_deed_garage_naboo_deed, "object/tangible/deed/city_deed/garage_naboo_deed.iff")

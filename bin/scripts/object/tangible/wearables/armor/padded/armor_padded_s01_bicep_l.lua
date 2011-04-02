@@ -44,18 +44,18 @@
 object_tangible_wearables_armor_padded_armor_padded_s01_bicep_l = object_tangible_wearables_armor_padded_shared_armor_padded_s01_bicep_l:new {
 	templateType = ARMOROBJECT,
 
-	--   ALL, ALLSEXES, ALLFACTIONS, HUMANOIDS, HUMANOID_FOOTWEAR, HUMANOID_MALES, HUMANOID_FEMALES, HUMANOID_IMPERIALS, HUMANOID_REBELS, WOOKIEES, ITHORIANS, TWILEKS
+	-- ALL, ALLSEXES, ALLFACTIONS, HUMANOIDS, HUMANOID_FOOTWEAR, HUMANOID_MALES, HUMANOID_FEMALES, HUMANOID_IMPERIALS, HUMANOID_REBELS, WOOKIEES, ITHORIANS, TWILEKS
 	playerUseMask = HUMANOIDS,
 
-	--   Damage types in WeaponObject
+	-- Damage types in WeaponObject
 	vunerability = HEAT + ACID + STUN + LIGHTSABER,
 
-	--   These are default Blue Frog stats
+	-- These are default Blue Frog stats
 	healthEncumbrance = 1,
 	actionEncumbrance = 1,
 	mindEncumbrance = 1,
 
-	--   LIGHT, MEDIUM, HEAVY
+	-- LIGHT, MEDIUM, HEAVY
 	rating = LIGHT,
 
 	kinetic = 15,
@@ -76,7 +76,6 @@ object_tangible_wearables_armor_padded_armor_padded_s01_bicep_l = object_tangibl
 	experimentalMin = {0, 0, 0, 1000, 1, 18750, 17, 22, 23, 1, 4, 1, 18750},
 	experimentalMax = {0, 0, 0, 1000, 30, 31250, 10, 13, 14, 1, 4, 40, 31250},
 	experimentalPrecision = {0, 0, 0, 0, 10, 0, 0, 0, 0, 0, 0, 0, 0},
-
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_armor_padded_armor_padded_s01_bicep_l, "object/tangible/wearables/armor/padded/armor_padded_s01_bicep_l.iff")

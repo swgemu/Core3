@@ -52,7 +52,6 @@ object_tangible_component_structure_fluidic_drilling_pumping_unit = object_tangi
 	experimentalMin = {0, 0, 1000, 1},
 	experimentalMax = {0, 0, 5000, 5},
 	experimentalPrecision = {0, 0, 0, 0},
-
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_structure_fluidic_drilling_pumping_unit, "object/tangible/component/structure/fluidic_drilling_pumping_unit.iff")

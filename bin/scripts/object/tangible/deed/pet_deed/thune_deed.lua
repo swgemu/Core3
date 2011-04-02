@@ -52,7 +52,6 @@ object_tangible_deed_pet_deed_thune_deed = object_tangible_deed_pet_deed_shared_
 	experimentalMin = {0, 0},
 	experimentalMax = {0, 0},
 	experimentalPrecision = {0, 0},
-
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_thune_deed, "object/tangible/deed/pet_deed/thune_deed.iff")

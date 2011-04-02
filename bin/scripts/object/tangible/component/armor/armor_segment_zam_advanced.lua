@@ -52,7 +52,6 @@ object_tangible_component_armor_armor_segment_zam_advanced = object_tangible_com
 	experimentalMin = {0, 0, 1000, 1, 1, 100, 6, 8, 4, 1, 32, 1, 100},
 	experimentalMax = {0, 0, 1000, 40, 10, 1000, 1, 1, 1, 1, 32, 20, 1000},
 	experimentalPrecision = {0, 0, 0, 0, 10, 0, 0, 0, 0, 0, 0, 0, 0},
-
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_armor_armor_segment_zam_advanced, "object/tangible/component/armor/armor_segment_zam_advanced.iff")

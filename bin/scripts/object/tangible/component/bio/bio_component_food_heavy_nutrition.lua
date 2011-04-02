@@ -52,7 +52,6 @@ object_tangible_component_bio_bio_component_food_heavy_nutrition = object_tangib
 	experimentalMin = {0, 0, 1000, 90},
 	experimentalMax = {0, 0, 1000, 120},
 	experimentalPrecision = {0, 0, 0, 0},
-
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_bio_bio_component_food_heavy_nutrition, "object/tangible/component/bio/bio_component_food_heavy_nutrition.iff")

@@ -52,7 +52,6 @@ object_tangible_component_item_micro_sensor_suite = object_tangible_component_it
 	experimentalMin = {0, 0, 100, -5},
 	experimentalMax = {0, 0, 150, 5},
 	experimentalPrecision = {0, 0, 0, 0},
-
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_item_micro_sensor_suite, "object/tangible/component/item/micro_sensor_suite.iff")

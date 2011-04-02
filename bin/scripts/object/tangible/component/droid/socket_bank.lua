@@ -52,7 +52,6 @@ object_tangible_component_droid_socket_bank = object_tangible_component_droid_sh
 	experimentalMin = {0, 0, 1, 100, -10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
 	experimentalMax = {0, 0, 100, 150, 15, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
 	experimentalPrecision = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_droid_socket_bank, "object/tangible/component/droid/socket_bank.iff")

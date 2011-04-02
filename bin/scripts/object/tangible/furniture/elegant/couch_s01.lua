@@ -52,7 +52,6 @@ object_tangible_furniture_elegant_couch_s01 = object_tangible_furniture_elegant_
 	experimentalMin = {0, 0, 1000, 1},
 	experimentalMax = {0, 0, 1000, 100},
 	experimentalPrecision = {0, 0, 0, 0},
-
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_elegant_couch_s01, "object/tangible/furniture/elegant/couch_s01.iff")

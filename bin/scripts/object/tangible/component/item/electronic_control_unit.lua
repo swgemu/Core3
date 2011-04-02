@@ -52,7 +52,6 @@ object_tangible_component_item_electronic_control_unit = object_tangible_compone
 	experimentalMin = {0, 0, 100, -5},
 	experimentalMax = {0, 0, 150, 5},
 	experimentalPrecision = {0, 0, 0, 0},
-
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_item_electronic_control_unit, "object/tangible/component/item/electronic_control_unit.iff")

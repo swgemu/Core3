@@ -52,7 +52,6 @@ object_tangible_component_droid_stimpack_dispensor = object_tangible_component_d
 	experimentalMin = {0, 0, 5, 1000, -10, 1, 1},
 	experimentalMax = {0, 0, 15, 1000, 15, 100, 10},
 	experimentalPrecision = {0, 0, 0, 0, 0, 0, 0},
-
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_droid_stimpack_dispensor, "object/tangible/component/droid/stimpack_dispensor.iff")

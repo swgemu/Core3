@@ -52,7 +52,6 @@ object_tangible_component_droid_probot_droid_chassis = object_tangible_component
 	experimentalMin = {0, 0, 5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
 	experimentalMax = {0, 0, 15, 0, 0, 0, 100, 50, 0, 0, 0, 0, 0, 0},
 	experimentalPrecision = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_droid_probot_droid_chassis, "object/tangible/component/droid/probot_droid_chassis.iff")

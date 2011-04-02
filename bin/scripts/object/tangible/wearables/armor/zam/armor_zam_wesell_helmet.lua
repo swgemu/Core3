@@ -44,18 +44,18 @@
 object_tangible_wearables_armor_zam_armor_zam_wesell_helmet = object_tangible_wearables_armor_zam_shared_armor_zam_wesell_helmet:new {
 	templateType = ARMOROBJECT,
 
-	--   ALL, ALLSEXES, ALLFACTIONS, HUMANOIDS, HUMANOID_FOOTWEAR, HUMANOID_MALES, HUMANOID_FEMALES, HUMANOID_IMPERIALS, HUMANOID_REBELS, WOOKIEES, ITHORIANS, TWILEKS
+	-- ALL, ALLSEXES, ALLFACTIONS, HUMANOIDS, HUMANOID_FOOTWEAR, HUMANOID_MALES, HUMANOID_FEMALES, HUMANOID_IMPERIALS, HUMANOID_REBELS, WOOKIEES, ITHORIANS, TWILEKS
 	playerUseMask = HUMANOIDS,
 
-	--   Damage types in WeaponObject
+	-- Damage types in WeaponObject
 	vunerability = ACID + ENERGY + STUN + LIGHTSABER,
 
-	--   These are default Blue Frog stats
+	-- These are default Blue Frog stats
 	healthEncumbrance = 1,
 	actionEncumbrance = 1,
 	mindEncumbrance = 1,
 
-	--   LIGHT, MEDIUM, HEAVY
+	-- LIGHT, MEDIUM, HEAVY
 	rating = LIGHT,
 
 	kinetic = 15,
@@ -76,7 +76,6 @@ object_tangible_wearables_armor_zam_armor_zam_wesell_helmet = object_tangible_we
 	experimentalMin = {0, 0, 0, 1000, 1, 11250, 8, 4, 68, 1, 32, 1, 18750},
 	experimentalMax = {0, 0, 0, 1000, 20, 18750, 5, 2, 41, 1, 32, 40, 31250},
 	experimentalPrecision = {0, 0, 0, 0, 10, 0, 0, 0, 0, 0, 0, 0, 0},
-
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_armor_zam_armor_zam_wesell_helmet, "object/tangible/wearables/armor/zam/armor_zam_wesell_helmet.iff")

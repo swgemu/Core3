@@ -52,7 +52,6 @@ object_tangible_component_droid_advanced_droid_frame = object_tangible_component
 	experimentalMin = {0, 0, 5, 1000, -10},
 	experimentalMax = {0, 0, 15, 1000, 15},
 	experimentalPrecision = {0, 0, 0, 0, 0},
-
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_droid_advanced_droid_frame, "object/tangible/component/droid/advanced_droid_frame.iff")

@@ -52,7 +52,6 @@ object_tangible_component_munition_warhead_heavy = object_tangible_component_mun
 	experimentalMin = {0, 0, 10, 100, 0, 1000},
 	experimentalMax = {0, 0, 50, 200, 3, 1000},
 	experimentalPrecision = {0, 0, 0, 0, 0, 0},
-
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_munition_warhead_heavy, "object/tangible/component/munition/warhead_heavy.iff")

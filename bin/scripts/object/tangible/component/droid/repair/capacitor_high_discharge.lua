@@ -52,7 +52,6 @@ object_tangible_component_droid_repair_capacitor_high_discharge = object_tangibl
 	experimentalMin = {0, 0, 30, 1000},
 	experimentalMax = {0, 0, 150, 1000},
 	experimentalPrecision = {0, 0, 0, 0},
-
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_droid_repair_capacitor_high_discharge, "object/tangible/component/droid/repair/capacitor_high_discharge.iff")

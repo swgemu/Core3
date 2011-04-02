@@ -52,7 +52,6 @@ object_tangible_component_structure_manufacturing_mechanism = object_tangible_co
 	experimentalMin = {0, 0, 1000},
 	experimentalMax = {0, 0, 5000},
 	experimentalPrecision = {0, 0, 0},
-
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_structure_manufacturing_mechanism, "object/tangible/component/structure/manufacturing_mechanism.iff")

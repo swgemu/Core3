@@ -52,7 +52,6 @@ object_tangible_powerup_weapon_ranged_stock = object_tangible_powerup_weapon_sha
 	experimentalMin = {0, 0, 1000, 1},
 	experimentalMax = {0, 0, 1000, 100},
 	experimentalPrecision = {0, 0, 0, 0},
-
 }
 
 ObjectTemplates:addTemplate(object_tangible_powerup_weapon_ranged_stock, "object/tangible/powerup/weapon/ranged_stock.iff")
