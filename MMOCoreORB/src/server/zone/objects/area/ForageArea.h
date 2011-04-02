@@ -39,9 +39,9 @@ public:
     	 	return 0;
 
     	 //Check if player is inside this area.
-    	 if (abs(xCoord - playerX) >= 10)
+    	 if (abs(xCoord - playerX) >= SIZE)
     	 	return 1;
-    	 else if (abs(yCoord - playerY) >= 10)
+    	 else if (abs(yCoord - playerY) >= SIZE)
     	 	return 1;
     	 else if (planet != playerPlanet)
     	 	return 1;
