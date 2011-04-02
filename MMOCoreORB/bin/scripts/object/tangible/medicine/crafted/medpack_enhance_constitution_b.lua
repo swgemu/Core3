@@ -58,7 +58,6 @@ object_tangible_medicine_crafted_medpack_enhance_constitution_b = object_tangibl
 	experimentalMin = {0, 0, 20, 5, 1200, 70, 100},
 	experimentalMax = {0, 0, 200, 15, 7200, 55, 150},
 	experimentalPrecision = {0, 0, 0, 0, 0, 0, 0},
-
 }
 
 ObjectTemplates:addTemplate(object_tangible_medicine_crafted_medpack_enhance_constitution_b, "object/tangible/medicine/crafted/medpack_enhance_constitution_b.iff")

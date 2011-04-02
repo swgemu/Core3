@@ -55,7 +55,6 @@ object_tangible_slicing_slicing_laser_knife = object_tangible_slicing_shared_sli
 	experimentalMin = {0, 0, 1000, -15},
 	experimentalMax = {0, 0, 1000, 15},
 	experimentalPrecision = {0, 0, 0, 0},
-
 }
 
 ObjectTemplates:addTemplate(object_tangible_slicing_slicing_laser_knife, "object/tangible/slicing/slicing_laser_knife.iff")

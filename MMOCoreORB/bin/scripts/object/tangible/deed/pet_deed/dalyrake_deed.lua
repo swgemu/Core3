@@ -52,7 +52,6 @@ object_tangible_deed_pet_deed_dalyrake_deed = object_tangible_deed_pet_deed_shar
 	experimentalMin = {0, 0},
 	experimentalMax = {0, 0},
 	experimentalPrecision = {0, 0},
-
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_dalyrake_deed, "object/tangible/deed/pet_deed/dalyrake_deed.iff")

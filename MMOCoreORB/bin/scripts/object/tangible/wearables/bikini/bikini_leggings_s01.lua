@@ -52,7 +52,6 @@ object_tangible_wearables_bikini_bikini_leggings_s01 = object_tangible_wearables
 	experimentalMin = {0, 0, 0, 1000, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
 	experimentalMax = {0, 0, 0, 1000, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
 	experimentalPrecision = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_bikini_bikini_leggings_s01, "object/tangible/wearables/bikini/bikini_leggings_s01.iff")

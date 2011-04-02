@@ -55,7 +55,6 @@ object_tangible_deed_generator_deed_generator_wind_deed = object_tangible_deed_g
 	experimentalMin = {0, 0, 4, 25000, 1000},
 	experimentalMax = {0, 0, 10, 50000, 1000},
 	experimentalPrecision = {0, 0, 0, 0, 0},
-
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_generator_deed_generator_wind_deed, "object/tangible/deed/generator_deed/generator_wind_deed.iff")

@@ -52,7 +52,6 @@ object_tangible_component_item_electronic_power_conditioner = object_tangible_co
 	experimentalMin = {0, 0, 100, -5},
 	experimentalMax = {0, 0, 150, 5},
 	experimentalPrecision = {0, 0, 0, 0},
-
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_item_electronic_power_conditioner, "object/tangible/component/item/electronic_power_conditioner.iff")

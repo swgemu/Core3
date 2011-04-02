@@ -52,7 +52,6 @@ object_tangible_component_bio_bio_component_food_light_filling = object_tangible
 	experimentalMin = {0, 0, 1000, 5},
 	experimentalMax = {0, 0, 1000, 15},
 	experimentalPrecision = {0, 0, 0, 0},
-
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_bio_bio_component_food_light_filling, "object/tangible/component/bio/bio_component_food_light_filling.iff")

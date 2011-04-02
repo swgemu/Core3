@@ -52,7 +52,6 @@ object_tangible_droid_navicomputer_1 = object_tangible_droid_shared_navicomputer
 	experimentalMin = {0, 0},
 	experimentalMax = {0, 0},
 	experimentalPrecision = {0, 0},
-
 }
 
 ObjectTemplates:addTemplate(object_tangible_droid_navicomputer_1, "object/tangible/droid/navicomputer_1.iff")

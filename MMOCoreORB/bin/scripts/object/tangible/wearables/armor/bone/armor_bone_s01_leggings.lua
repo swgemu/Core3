@@ -44,18 +44,18 @@
 object_tangible_wearables_armor_bone_armor_bone_s01_leggings = object_tangible_wearables_armor_bone_shared_armor_bone_s01_leggings:new {
 	templateType = ARMOROBJECT,
 
-	--   ALL, ALLSEXES, ALLFACTIONS, HUMANOIDS, HUMANOID_FOOTWEAR, HUMANOID_MALES, HUMANOID_FEMALES, HUMANOID_IMPERIALS, HUMANOID_REBELS, WOOKIEES, ITHORIANS, TWILEKS
+	-- ALL, ALLSEXES, ALLFACTIONS, HUMANOIDS, HUMANOID_FOOTWEAR, HUMANOID_MALES, HUMANOID_FEMALES, HUMANOID_IMPERIALS, HUMANOID_REBELS, WOOKIEES, ITHORIANS, TWILEKS
 	playerUseMask = HUMANOIDS,
 
-	--   kineticeffectiveness, energyeffectiveness, electricaleffectiveness, stuneffectiveness, blasteffectiveness, heateffectiveness, coldeffectiveness, acideffectiveness, restraineffectiveness
+	-- kineticeffectiveness, energyeffectiveness, electricaleffectiveness, stuneffectiveness, blasteffectiveness, heateffectiveness, coldeffectiveness, acideffectiveness, restraineffectiveness
 	vunerability = KINETIC + BLAST + STUN + HEAT + LIGHTSABER,
 
-	--   These are default Blue Frog stats
+	-- These are default Blue Frog stats
 	healthEncumbrance = 1,
 	actionEncumbrance = 1,
 	mindEncumbrance = 1,
 
-	--   LIGHT, MEDIUM, HEAVY
+	-- LIGHT, MEDIUM, HEAVY
 	rating = LIGHT,
 
 	kinetic = 15,
@@ -76,7 +76,6 @@ object_tangible_wearables_armor_bone_armor_bone_s01_leggings = object_tangible_w
 	experimentalMin = {0, 0, 0, 1000, 5, 7500, 18, 60, 4, 1, 2, 5, 7500},
 	experimentalMax = {0, 0, 0, 1000, 20, 12500, 10, 36, 2, 1, 2, 30, 12500},
 	experimentalPrecision = {0, 0, 0, 0, 10, 0, 0, 0, 0, 0, 0, 0, 0},
-
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_armor_bone_armor_bone_s01_leggings, "object/tangible/wearables/armor/bone/armor_bone_s01_leggings.iff")

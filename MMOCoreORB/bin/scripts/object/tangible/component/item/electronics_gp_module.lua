@@ -52,7 +52,6 @@ object_tangible_component_item_electronics_gp_module = object_tangible_component
 	experimentalMin = {0, 0, 100, -5},
 	experimentalMax = {0, 0, 150, 5},
 	experimentalPrecision = {0, 0, 0, 0},
-
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_item_electronics_gp_module, "object/tangible/component/item/electronics_gp_module.iff")

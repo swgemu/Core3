@@ -56,7 +56,6 @@ object_tangible_deed_vehicle_deed_landspeeder_x34_deed = object_tangible_deed_ve
 	experimentalMin = {0, 0, 1500},
 	experimentalMax = {0, 0, 3000},
 	experimentalPrecision = {0, 0, 0},
-
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_vehicle_deed_landspeeder_x34_deed, "object/tangible/deed/vehicle_deed/landspeeder_x34_deed.iff")

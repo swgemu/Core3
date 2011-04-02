@@ -52,7 +52,6 @@ object_tangible_component_droid_crafting_module_weapon = object_tangible_compone
 	experimentalMin = {0, 0, 5, 1000, -10, 1},
 	experimentalMax = {0, 0, 15, 1000, 15, 1},
 	experimentalPrecision = {0, 0, 0, 0, 0, 0},
-
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_droid_crafting_module_weapon, "object/tangible/component/droid/crafting_module_weapon.iff")

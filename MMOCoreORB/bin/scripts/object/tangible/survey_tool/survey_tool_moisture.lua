@@ -63,6 +63,5 @@ object_tangible_survey_tool_survey_tool_moisture = object_tangible_survey_tool_s
 	experimentalMin = {0, 0, 1000, -15},
 	experimentalMax = {0, 0, 1000, 15},
 	experimentalPrecision = {0, 0, 0, 0},
-
 }
 ObjectTemplates:addTemplate(object_tangible_survey_tool_survey_tool_moisture, "object/tangible/survey_tool/survey_tool_moisture.iff")

@@ -52,7 +52,6 @@ object_tangible_furniture_modern_coffee_table_modern_style_01 = object_tangible_
 	experimentalMin = {0, 0, 1000, 1},
 	experimentalMax = {0, 0, 1000, 100},
 	experimentalPrecision = {0, 0, 0, 0},
-
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_modern_coffee_table_modern_style_01, "object/tangible/furniture/modern/coffee_table_modern_style_01.iff")

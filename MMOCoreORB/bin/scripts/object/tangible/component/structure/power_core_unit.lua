@@ -52,7 +52,6 @@ object_tangible_component_structure_power_core_unit = object_tangible_component_
 	experimentalMin = {0, 0, 1000},
 	experimentalMax = {0, 0, 5000},
 	experimentalPrecision = {0, 0, 0},
-
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_structure_power_core_unit, "object/tangible/component/structure/power_core_unit.iff")

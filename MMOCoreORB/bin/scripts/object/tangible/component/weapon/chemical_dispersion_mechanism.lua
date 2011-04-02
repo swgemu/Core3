@@ -52,7 +52,6 @@ object_tangible_component_weapon_chemical_dispersion_mechanism = object_tangible
 	experimentalMin = {0, 0, 1, 1, 10},
 	experimentalMax = {0, 0, 10, 10, 100},
 	experimentalPrecision = {0, 0, 0, 0, 0},
-
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_weapon_chemical_dispersion_mechanism, "object/tangible/component/weapon/chemical_dispersion_mechanism.iff")

@@ -52,7 +52,6 @@ object_tangible_deed_pet_deed_slice_hound_deed = object_tangible_deed_pet_deed_s
 	experimentalMin = {0, 0},
 	experimentalMax = {0, 0},
 	experimentalPrecision = {0, 0},
-
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_slice_hound_deed, "object/tangible/deed/pet_deed/slice_hound_deed.iff")

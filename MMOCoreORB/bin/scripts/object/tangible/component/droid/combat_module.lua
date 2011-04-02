@@ -52,7 +52,6 @@ object_tangible_component_droid_combat_module = object_tangible_component_droid_
 	experimentalMin = {0, 0, 5, 1000, -10, 1},
 	experimentalMax = {0, 0, 15, 1000, 15, 110},
 	experimentalPrecision = {0, 0, 0, 0, 0, 0},
-
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_droid_combat_module, "object/tangible/component/droid/combat_module.iff")

@@ -52,7 +52,6 @@ object_tangible_dice_eqp_ten_sided_dice_set = object_tangible_dice_shared_eqp_te
 	experimentalMin = {0, 0, 1000, -15},
 	experimentalMax = {0, 0, 1000, 15},
 	experimentalPrecision = {0, 0, 0, 0},
-
 }
 
 ObjectTemplates:addTemplate(object_tangible_dice_eqp_ten_sided_dice_set, "object/tangible/dice/eqp_ten_sided_dice_set.iff")

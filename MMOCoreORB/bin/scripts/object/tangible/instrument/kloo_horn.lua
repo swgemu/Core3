@@ -53,7 +53,6 @@ object_tangible_instrument_kloo_horn = object_tangible_instrument_shared_kloo_ho
 	experimentalMin = {0, 0, 1000, 1},
 	experimentalMax = {0, 0, 1000, 100},
 	experimentalPrecision = {0, 0, 0, 0},
-
 }
 
 ObjectTemplates:addTemplate(object_tangible_instrument_kloo_horn, "object/tangible/instrument/kloo_horn.iff")

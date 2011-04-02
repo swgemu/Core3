@@ -62,6 +62,5 @@ object_tangible_crafting_station_weapon_tool = object_tangible_crafting_station_
 	experimentalMin = {0, 0, 1000, -15},
 	experimentalMax = {0, 0, 1000, 15},
 	experimentalPrecision = {0, 0, 0, 0},
-
 }
 ObjectTemplates:addTemplate(object_tangible_crafting_station_weapon_tool, "object/tangible/crafting/station/weapon_tool.iff")

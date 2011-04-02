@@ -73,7 +73,6 @@ object_tangible_food_spice_spice_neutron_pixey = object_tangible_food_spice_shar
 	experimentalMin = {0, 0, 1000},
 	experimentalMax = {0, 0, 1000},
 	experimentalPrecision = {0, 0, 0},
-
 }
 
 ObjectTemplates:addTemplate(object_tangible_food_spice_spice_neutron_pixey, "object/tangible/food/spice/spice_neutron_pixey.iff")

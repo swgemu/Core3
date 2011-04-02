@@ -55,7 +55,6 @@ object_tangible_deed_harvester_deed_harvester_flora_deed = object_tangible_deed_
 	experimentalMin = {0, 0, 1, 25000, 1000},
 	experimentalMax = {0, 0, 5, 50000, 1000},
 	experimentalPrecision = {0, 0, 0, 0, 0},
-
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_harvester_deed_harvester_flora_deed, "object/tangible/deed/harvester_deed/harvester_flora_deed.iff")

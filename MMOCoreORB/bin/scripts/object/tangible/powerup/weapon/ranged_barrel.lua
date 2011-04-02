@@ -52,7 +52,6 @@ object_tangible_powerup_weapon_ranged_barrel = object_tangible_powerup_weapon_sh
 	experimentalMin = {0, 0, 1000, 1},
 	experimentalMax = {0, 0, 1000, 100},
 	experimentalPrecision = {0, 0, 0, 0},
-
 }
 
 ObjectTemplates:addTemplate(object_tangible_powerup_weapon_ranged_barrel, "object/tangible/powerup/weapon/ranged_barrel.iff")

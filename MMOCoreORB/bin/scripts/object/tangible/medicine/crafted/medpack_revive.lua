@@ -52,7 +52,6 @@ object_tangible_medicine_crafted_medpack_revive = object_tangible_medicine_craft
 	experimentalMin = {0, 0, 1, 60, 1000},
 	experimentalMax = {0, 0, 10, 30, 1000},
 	experimentalPrecision = {0, 0, 0, 0, 0},
-
 }
 
 ObjectTemplates:addTemplate(object_tangible_medicine_crafted_medpack_revive, "object/tangible/medicine/crafted/medpack_revive.iff")

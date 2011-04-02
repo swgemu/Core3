@@ -73,7 +73,6 @@ object_tangible_food_spice_spice_gunjack = object_tangible_food_spice_shared_spi
 	experimentalMin = {0, 0, 1000},
 	experimentalMax = {0, 0, 1000},
 	experimentalPrecision = {0, 0, 0},
-
 }
 
 ObjectTemplates:addTemplate(object_tangible_food_spice_spice_gunjack, "object/tangible/food/spice/spice_gunjack.iff")

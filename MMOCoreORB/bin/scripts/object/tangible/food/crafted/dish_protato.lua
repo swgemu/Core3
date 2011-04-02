@@ -52,7 +52,6 @@ object_tangible_food_crafted_dish_protato = object_tangible_food_crafted_shared_
 	experimentalMin = {0, 0, 1000},
 	experimentalMax = {0, 0, 1000},
 	experimentalPrecision = {0, 0, 0},
-
 }
 
 ObjectTemplates:addTemplate(object_tangible_food_crafted_dish_protato, "object/tangible/food/crafted/dish_protato.iff")

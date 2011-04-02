@@ -55,7 +55,6 @@ object_tangible_deed_generator_deed_generator_solar_deed = object_tangible_deed_
 	experimentalMin = {0, 0, 6, 50000, 1000},
 	experimentalMax = {0, 0, 15, 75000, 1000},
 	experimentalPrecision = {0, 0, 0, 0, 0},
-
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_generator_deed_generator_solar_deed, "object/tangible/deed/generator_deed/generator_solar_deed.iff")

@@ -52,7 +52,6 @@ object_tangible_deed_pet_deed_krahbu_deed = object_tangible_deed_pet_deed_shared
 	experimentalMin = {0, 0},
 	experimentalMax = {0, 0},
 	experimentalPrecision = {0, 0},
-
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_krahbu_deed, "object/tangible/deed/pet_deed/krahbu_deed.iff")
