@@ -43,10 +43,11 @@
 
 object_tangible_scout_camp_camp_elite = object_tangible_scout_camp_shared_camp_elite:new {
 	templateType = CAMPKIT,
-	campType = 5,
+	campType = 4,
 	duration = 3600,
-	exp = 1250,
-	spawnObjectTemplate = "object/building/poi/scout_camp_s0.iff",
+	radius = 24,
+	experience = 1100,
+	spawnObjectTemplate = "object/building/poi/scout_camp_s4.iff",
 
 	numberExperimentalProperties = {1, 1, 1, 1},
 	experimentalProperties = {"XX", "XX", "XX", "XX"},
