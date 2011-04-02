@@ -42,7 +42,7 @@
 
 
 object_tangible_wearables_dress_dress_s26 = object_tangible_wearables_dress_shared_dress_s26:new {
-	--   ALL, ALLSEXES, ALLFACTIONS, HUMANOIDS, HUMANOID_FOOTWEAR, HUMANOID_MALES, HUMANOID_FEMALES, HUMANOID_IMPERIALS, HUMANOID_REBELS, WOOKIEES, ITHORIANS, TWILEKS
+	-- ALL, ALLSEXES, ALLFACTIONS, HUMANOIDS, HUMANOID_FOOTWEAR, HUMANOID_MALES, HUMANOID_FEMALES, HUMANOID_IMPERIALS, HUMANOID_REBELS, WOOKIEES, ITHORIANS, TWILEKS
 	playerUseMask = HUMANOID_FEMALES,
 
 	numberExperimentalProperties = {1, 1, 1, 1},
@@ -53,7 +53,6 @@ object_tangible_wearables_dress_dress_s26 = object_tangible_wearables_dress_shar
 	experimentalMin = {0, 0, 0, 1000},
 	experimentalMax = {0, 0, 0, 1000},
 	experimentalPrecision = {0, 0, 0, 0},
-
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_dress_dress_s26, "object/tangible/wearables/dress/dress_s26.iff")

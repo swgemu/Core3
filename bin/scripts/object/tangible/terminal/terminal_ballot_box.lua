@@ -52,7 +52,6 @@ object_tangible_terminal_terminal_ballot_box = object_tangible_terminal_shared_t
 	experimentalMin = {0, 0, 1000, -15},
 	experimentalMax = {0, 0, 1000, 15},
 	experimentalPrecision = {0, 0, 0, 0},
-
 }
 
 ObjectTemplates:addTemplate(object_tangible_terminal_terminal_ballot_box, "object/tangible/terminal/terminal_ballot_box.iff")

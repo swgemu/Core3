@@ -52,7 +52,6 @@ object_tangible_component_clothing_jewelry_setting = object_tangible_component_c
 	experimentalMin = {0, 0, 1000},
 	experimentalMax = {0, 0, 1000},
 	experimentalPrecision = {0, 0, 0},
-
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_clothing_jewelry_setting, "object/tangible/component/clothing/jewelry_setting.iff")

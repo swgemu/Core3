@@ -52,7 +52,6 @@ object_tangible_component_clothing_trim = object_tangible_component_clothing_sha
 	experimentalMin = {0, 0, 1000},
 	experimentalMax = {0, 0, 1000},
 	experimentalPrecision = {0, 0, 0},
-
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_clothing_trim, "object/tangible/component/clothing/trim.iff")

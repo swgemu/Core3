@@ -52,7 +52,6 @@ object_tangible_deed_pet_deed_kwi_deed = object_tangible_deed_pet_deed_shared_kw
 	experimentalMin = {0, 0},
 	experimentalMax = {0, 0},
 	experimentalPrecision = {0, 0},
-
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_kwi_deed, "object/tangible/deed/pet_deed/kwi_deed.iff")

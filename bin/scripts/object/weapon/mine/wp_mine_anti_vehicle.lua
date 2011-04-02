@@ -52,7 +52,6 @@ object_weapon_mine_wp_mine_anti_vehicle = object_weapon_mine_shared_wp_mine_anti
 	experimentalMin = {0, 0, 70, 210, 13, 7, 1000},
 	experimentalMax = {0, 0, 130, 390, 9, 13, 1000},
 	experimentalPrecision = {0, 0, 0, 0, 0, 0, 0},
-
 }
 
 ObjectTemplates:addTemplate(object_weapon_mine_wp_mine_anti_vehicle, "object/weapon/mine/wp_mine_anti_vehicle.iff")

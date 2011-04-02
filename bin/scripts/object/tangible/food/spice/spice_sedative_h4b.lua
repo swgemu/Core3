@@ -73,7 +73,6 @@ object_tangible_food_spice_spice_sedative_h4b = object_tangible_food_spice_share
 	experimentalMin = {0, 0, 1000},
 	experimentalMax = {0, 0, 1000},
 	experimentalPrecision = {0, 0, 0},
-
 }
 
 ObjectTemplates:addTemplate(object_tangible_food_spice_spice_sedative_h4b, "object/tangible/food/spice/spice_sedative_h4b.iff")

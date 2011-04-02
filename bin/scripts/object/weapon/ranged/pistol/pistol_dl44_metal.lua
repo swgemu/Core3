@@ -43,43 +43,43 @@
 
 object_weapon_ranged_pistol_pistol_dl44_metal = object_weapon_ranged_pistol_shared_pistol_dl44_metal:new {
 
-	--   ALL, ALLSEXES, ALLFACTIONS, HUMANOIDS, HUMANOID_FOOTWEAR, HUMANOID_MALES, HUMANOID_FEMALES, HUMANOID_IMPERIALS, HUMANOID_REBELS, WOOKIES, ITHORIANS, TWILEKS
+	-- ALL, ALLSEXES, ALLFACTIONS, HUMANOIDS, HUMANOID_FOOTWEAR, HUMANOID_MALES, HUMANOID_FEMALES, HUMANOID_IMPERIALS, HUMANOID_REBELS, WOOKIES, ITHORIANS, TWILEKS
 	playerUseMask = ALL,
 
-	--   RANGEDATTACK, MELEEATTACK, FORCEATTACK, TRAPATTACK, GRENADEATTACK, HEAVYACIDBEAMATTACK,
-	--   HEAVYLIGHTNINGBEAMATTACK, HEAVYPARTICLEBEAMATTACK, HEAVYROCKETLAUNCHERATTACK, HEAVYLAUNCHERATTACK
+	-- RANGEDATTACK, MELEEATTACK, FORCEATTACK, TRAPATTACK, GRENADEATTACK, HEAVYACIDBEAMATTACK,
+	-- HEAVYLIGHTNINGBEAMATTACK, HEAVYPARTICLEBEAMATTACK, HEAVYROCKETLAUNCHERATTACK, HEAVYLAUNCHERATTACK
 	attackType = RANGEDATTACK,
 
-	--   ENERGY, KINETIC, ELECTRICITY, STUN, BLAST, HEAT, COLD, ACID, FORCE, LIGHTSABER
+	-- ENERGY, KINETIC, ELECTRICITY, STUN, BLAST, HEAT, COLD, ACID, FORCE, LIGHTSABER
 	damageType = ENERGY,
 
-	--   NONE, LIGHT, MEDIUM, HEAVY
+	-- NONE, LIGHT, MEDIUM, HEAVY
 	armorPiercing = NONE,
 
-	--   combat_rangedspecialize_bactarifle, combat_rangedspecialize_rifle, combat_rangedspecialize_pistol, combat_rangedspecialize_heavy, combat_rangedspecialize_carbine
-	--   combat_meleespecialize_unarmed, combat_meleespecialize_twohand, combat_meleespecialize_polearm, combat_meleespecialize_onehand, combat_general,
-	--   combat_meleespecialize_twohandlightsaber, combat_meleespecialize_polearmlightsaber, combat_meleespecialize_onehandlightsaber
+	-- combat_rangedspecialize_bactarifle, combat_rangedspecialize_rifle, combat_rangedspecialize_pistol, combat_rangedspecialize_heavy, combat_rangedspecialize_carbine
+	-- combat_meleespecialize_unarmed, combat_meleespecialize_twohand, combat_meleespecialize_polearm, combat_meleespecialize_onehand, combat_general,
+	-- combat_meleespecialize_twohandlightsaber, combat_meleespecialize_polearmlightsaber, combat_meleespecialize_onehandlightsaber
 	xpType = "combat_rangedspecialize_pistol",
 
-	--   See http://www.ocdsoft.com/files/certifications.xls
+	-- See http://www.ocdsoft.com/files/certifications.xls
 	certificationsRequired = { "cert_pistol_dl44_metal" },
-	--   See http://www.ocdsoft.com/files/accuracy.xls
+	-- See http://www.ocdsoft.com/files/accuracy.xls
 	creatureAccuracyModifiers = { "pistol_accuracy" },
 
-	--   See http://www.ocdsoft.com/files/defense.xls
+	-- See http://www.ocdsoft.com/files/defense.xls
 	defenderDefenseModifiers = { "ranged_defense" },
 
-	--   Leave as "dodge" for now, may have additions later
+	-- Leave as "dodge" for now, may have additions later
 	defenderSecondaryDefenseModifiers = { "dodge" },
 
-	--   See http://www.ocdsoft.com/files/speed.xls
+	-- See http://www.ocdsoft.com/files/speed.xls
 	speedModifiers = { "pistol_speed" },
 
-	--   Leave blank for now
+	-- Leave blank for now
 	damageModifiers = { },
 
 
-	--   The values below are the default values.  To be used for blue frog objects primarily
+	-- The values below are the default values.  To be used for blue frog objects primarily
 	healthAttackCost = 13,
 	actionAttackCost = 38,
 	mindAttackCost = 13,
@@ -107,7 +107,6 @@ object_weapon_ranged_pistol_pistol_dl44_metal = object_weapon_ranged_pistol_shar
 	experimentalMin = {0, 0, 14, 70, 4.4, 5, 10, 750, -12, -80, 8, 11, 13, 38, 13},
 	experimentalMax = {0, 0, 26, 130, 3.1, 9, 50, 1500, -12, -80, 8, 21, 7, 20, 7},
 	experimentalPrecision = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-
 }
 
 ObjectTemplates:addTemplate(object_weapon_ranged_pistol_pistol_dl44_metal, "object/weapon/ranged/pistol/pistol_dl44_metal.iff")

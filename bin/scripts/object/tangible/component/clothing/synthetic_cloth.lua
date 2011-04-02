@@ -52,7 +52,6 @@ object_tangible_component_clothing_synthetic_cloth = object_tangible_component_c
 	experimentalMin = {0, 0, 1000, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
 	experimentalMax = {0, 0, 1000, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
 	experimentalPrecision = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_clothing_synthetic_cloth, "object/tangible/component/clothing/synthetic_cloth.iff")

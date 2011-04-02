@@ -52,7 +52,6 @@ object_tangible_furniture_cheap_armoire_s01 = object_tangible_furniture_cheap_sh
 	experimentalMin = {0, 0, 1000, 1},
 	experimentalMax = {0, 0, 1000, 100},
 	experimentalPrecision = {0, 0, 0, 0},
-
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_cheap_armoire_s01, "object/tangible/furniture/cheap/armoire_s01.iff")

@@ -55,7 +55,6 @@ object_tangible_slicing_slicing_weapon_upgrade_kit = object_tangible_slicing_sha
 	experimentalMin = {0, 0, 1000, -15},
 	experimentalMax = {0, 0, 1000, 15},
 	experimentalPrecision = {0, 0, 0, 0},
-
 }
 
 ObjectTemplates:addTemplate(object_tangible_slicing_slicing_weapon_upgrade_kit, "object/tangible/slicing/slicing_weapon_upgrade_kit.iff")

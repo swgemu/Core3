@@ -52,7 +52,6 @@ object_tangible_ship_crafted_repair_repair_kit_armor = object_tangible_ship_craf
 	experimentalMin = {0, 0, 8000},
 	experimentalMax = {0, 0, 12000},
 	experimentalPrecision = {0, 0, 0},
-
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_repair_repair_kit_armor, "object/tangible/ship/crafted/repair/repair_kit_armor.iff")

@@ -54,7 +54,6 @@ object_tangible_deed_city_deed_hospital_tatooine_deed = object_tangible_deed_cit
 	experimentalMin = {0, 0, 35000},
 	experimentalMax = {0, 0, 75000},
 	experimentalPrecision = {0, 0, 0},
-
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_city_deed_hospital_tatooine_deed, "object/tangible/deed/city_deed/hospital_tatooine_deed.iff")

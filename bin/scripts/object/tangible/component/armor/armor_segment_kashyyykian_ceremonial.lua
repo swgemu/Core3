@@ -52,7 +52,6 @@ object_tangible_component_armor_armor_segment_kashyyykian_ceremonial = object_ta
 	experimentalMin = {0, 0, 1000, 1, 500, 13, 16, 13, 1, 1, 1, 100},
 	experimentalMax = {0, 0, 1000, 5, 2000, 1, 1, 1, 1, 1, 10, 1000},
 	experimentalPrecision = {0, 0, 0, 10, 0, 0, 0, 0, 0, 0, 0, 0},
-
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_armor_armor_segment_kashyyykian_ceremonial, "object/tangible/component/armor/armor_segment_kashyyykian_ceremonial.iff")

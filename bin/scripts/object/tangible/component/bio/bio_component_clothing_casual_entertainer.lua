@@ -52,7 +52,6 @@ object_tangible_component_bio_bio_component_clothing_casual_entertainer = object
 	experimentalMin = {0, 0, 30, 1000, 108, 1, 109, 1},
 	experimentalMax = {0, 0, 50, 1000, 108, 10, 109, 10},
 	experimentalPrecision = {0, 0, 0, 0, 0, 0, 0, 0},
-
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_bio_bio_component_clothing_casual_entertainer, "object/tangible/component/bio/bio_component_clothing_casual_entertainer.iff")

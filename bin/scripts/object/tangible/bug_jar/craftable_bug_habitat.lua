@@ -52,7 +52,6 @@ object_tangible_bug_jar_craftable_bug_habitat = object_tangible_bug_jar_shared_c
 	experimentalMin = {0, 0, 1000},
 	experimentalMax = {0, 0, 1000},
 	experimentalPrecision = {0, 0, 0},
-
 }
 
 ObjectTemplates:addTemplate(object_tangible_bug_jar_craftable_bug_habitat, "object/tangible/bug_jar/craftable_bug_habitat.iff")

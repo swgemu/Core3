@@ -52,7 +52,6 @@ object_tangible_component_chemistry_infection_amplifier = object_tangible_compon
 	experimentalMin = {0, 0, 1, 0, 0, 0, 0, 0, 1000},
 	experimentalMax = {0, 0, 25, 0, 0, 0, 0, 0, 1000},
 	experimentalPrecision = {0, 0, 0, 0, 0, 0, 0, 0, 0},
-
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_chemistry_infection_amplifier, "object/tangible/component/chemistry/infection_amplifier.iff")

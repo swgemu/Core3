@@ -52,7 +52,6 @@ object_tangible_food_crafted_drink_alcohol = object_tangible_food_crafted_shared
 	experimentalMin = {0, 0, 1000, 0, 1},
 	experimentalMax = {0, 0, 1000, 0, 1},
 	experimentalPrecision = {0, 0, 0, 0, 0},
-
 }
 
 ObjectTemplates:addTemplate(object_tangible_food_crafted_drink_alcohol, "object/tangible/food/crafted/drink_alcohol.iff")

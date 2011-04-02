@@ -52,7 +52,6 @@ object_tangible_scout_camokit_camokit_talus = object_tangible_scout_camokit_shar
 	experimentalMin = {0, 0, 1000, 5},
 	experimentalMax = {0, 0, 1000, 20},
 	experimentalPrecision = {0, 0, 0, 0},
-
 }
 
 ObjectTemplates:addTemplate(object_tangible_scout_camokit_camokit_talus, "object/tangible/scout/camokit/camokit_talus.iff")

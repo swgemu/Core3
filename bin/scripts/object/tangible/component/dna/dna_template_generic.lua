@@ -52,7 +52,6 @@ object_tangible_component_dna_dna_template_generic = object_tangible_component_d
 	experimentalMin = {0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
 	experimentalMax = {0, 0, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000},
 	experimentalPrecision = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_dna_dna_template_generic, "object/tangible/component/dna/dna_template_generic.iff")

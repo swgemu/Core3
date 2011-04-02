@@ -73,7 +73,6 @@ object_tangible_food_crafted_dish_blood_chowder = object_tangible_food_crafted_s
 	experimentalMin = {0, 0, 1000, 75, 60, 60, 80},
 	experimentalMax = {0, 0, 1000, 120, 120, 100, 120},
 	experimentalPrecision = {0, 0, 0, 10, 10, 10, 10},
-
 }
 
 ObjectTemplates:addTemplate(object_tangible_food_crafted_dish_blood_chowder, "object/tangible/food/crafted/dish_blood_chowder.iff")

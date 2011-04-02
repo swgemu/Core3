@@ -52,7 +52,6 @@ object_tangible_component_structure_generator_turbine = object_tangible_componen
 	experimentalMin = {0, 0, 1000},
 	experimentalMax = {0, 0, 5000},
 	experimentalPrecision = {0, 0, 0},
-
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_structure_generator_turbine, "object/tangible/component/structure/generator_turbine.iff")

@@ -52,7 +52,6 @@ object_tangible_furniture_tatooine_frn_tato_chair_cafe_style_01 = object_tangibl
 	experimentalMin = {0, 0, 1000, 1},
 	experimentalMax = {0, 0, 1000, 100},
 	experimentalPrecision = {0, 0, 0, 0},
-
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_tatooine_frn_tato_chair_cafe_style_01, "object/tangible/furniture/tatooine/frn_tato_chair_cafe_style_01.iff")

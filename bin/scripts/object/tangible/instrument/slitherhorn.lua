@@ -54,7 +54,6 @@ object_tangible_instrument_slitherhorn = object_tangible_instrument_shared_slith
 	experimentalMin = {0, 0, 1000, 1},
 	experimentalMax = {0, 0, 1000, 100},
 	experimentalPrecision = {0, 0, 0, 0},
-
 }
 
 ObjectTemplates:addTemplate(object_tangible_instrument_slitherhorn, "object/tangible/instrument/slitherhorn.iff")

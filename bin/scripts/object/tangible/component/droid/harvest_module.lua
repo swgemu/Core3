@@ -52,7 +52,6 @@ object_tangible_component_droid_harvest_module = object_tangible_component_droid
 	experimentalMin = {0, 0, 5, 1000, -10, 5},
 	experimentalMax = {0, 0, 15, 1000, 15, 20},
 	experimentalPrecision = {0, 0, 0, 0, 0, 0},
-
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_droid_harvest_module, "object/tangible/component/droid/harvest_module.iff")

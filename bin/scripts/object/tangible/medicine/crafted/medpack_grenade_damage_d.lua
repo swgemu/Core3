@@ -58,7 +58,6 @@ object_tangible_medicine_crafted_medpack_grenade_damage_d = object_tangible_medi
 	experimentalMin = {0, 0, 150, 25, 80, 15, 1000},
 	experimentalMax = {0, 0, 700, 50, 40, 40, 1000},
 	experimentalPrecision = {0, 0, 0, 0, 0, 0, 0},
-
 }
 
 ObjectTemplates:addTemplate(object_tangible_medicine_crafted_medpack_grenade_damage_d, "object/tangible/medicine/crafted/medpack_grenade_damage_d.iff")

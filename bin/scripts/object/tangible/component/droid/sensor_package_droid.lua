@@ -52,7 +52,6 @@ object_tangible_component_droid_sensor_package_droid = object_tangible_component
 	experimentalMin = {0, 0, 5, 1000, -10},
 	experimentalMax = {0, 0, 15, 1000, 15},
 	experimentalPrecision = {0, 0, 0, 0, 0},
-
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_droid_sensor_package_droid, "object/tangible/component/droid/sensor_package_droid.iff")

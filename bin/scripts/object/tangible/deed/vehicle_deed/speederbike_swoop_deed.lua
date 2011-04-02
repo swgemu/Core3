@@ -56,7 +56,6 @@ object_tangible_deed_vehicle_deed_speederbike_swoop_deed = object_tangible_deed_
 	experimentalMin = {0, 0, 1000},
 	experimentalMax = {0, 0, 2500},
 	experimentalPrecision = {0, 0, 0},
-
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_vehicle_deed_speederbike_swoop_deed, "object/tangible/deed/vehicle_deed/speederbike_swoop_deed.iff")

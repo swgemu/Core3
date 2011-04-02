@@ -52,7 +52,6 @@ object_tangible_furniture_all_frn_all_bed_sm_s1 = object_tangible_furniture_all_
 	experimentalMin = {0, 0, 1000, 1},
 	experimentalMax = {0, 0, 1000, 100},
 	experimentalPrecision = {0, 0, 0, 0},
-
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_all_frn_all_bed_sm_s1, "object/tangible/furniture/all/frn_all_bed_sm_s1.iff")

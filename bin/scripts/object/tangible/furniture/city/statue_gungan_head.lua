@@ -52,7 +52,6 @@ object_tangible_furniture_city_statue_gungan_head = object_tangible_furniture_ci
 	experimentalMin = {0, 0, 1000},
 	experimentalMax = {0, 0, 1000},
 	experimentalPrecision = {0, 0, 0},
-
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_city_statue_gungan_head, "object/tangible/furniture/city/statue_gungan_head.iff")

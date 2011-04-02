@@ -44,18 +44,18 @@
 object_tangible_wearables_armor_ubese_armor_ubese_bandolier = object_tangible_wearables_armor_ubese_shared_armor_ubese_bandolier:new {
 	templateType = ARMOROBJECT,
 
-	--   ALL, ALLSEXES, ALLFACTIONS, HUMANOIDS, HUMANOID_FOOTWEAR, HUMANOID_MALES, HUMANOID_FEMALES, HUMANOID_IMPERIALS, HUMANOID_REBELS, WOOKIEES, ITHORIANS, TWILEKS
+	-- ALL, ALLSEXES, ALLFACTIONS, HUMANOIDS, HUMANOID_FOOTWEAR, HUMANOID_MALES, HUMANOID_FEMALES, HUMANOID_IMPERIALS, HUMANOID_REBELS, WOOKIEES, ITHORIANS, TWILEKS
 	playerUseMask = HUMANOIDS,
 
-	--   Damage types in WeaponObject
+	-- Damage types in WeaponObject
 	vunerability = HEAT + COLD + STUN + LIGHTSABER,
 
-	--   These are default Blue Frog stats
+	-- These are default Blue Frog stats
 	healthEncumbrance = 1,
 	actionEncumbrance = 1,
 	mindEncumbrance = 1,
 
-	--   LIGHT, MEDIUM, HEAVY
+	-- LIGHT, MEDIUM, HEAVY
 	rating = LIGHT,
 
 	kinetic = 15,
@@ -76,7 +76,6 @@ object_tangible_wearables_armor_ubese_armor_ubese_bandolier = object_tangible_we
 	experimentalMin = {0, 0, 0, 1000},
 	experimentalMax = {0, 0, 0, 1000},
 	experimentalPrecision = {0, 0, 0, 0},
-
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_armor_ubese_armor_ubese_bandolier, "object/tangible/wearables/armor/ubese/armor_ubese_bandolier.iff")

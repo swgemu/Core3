@@ -52,7 +52,6 @@ object_tangible_component_droid_performer_effects_c = object_tangible_component_
 	experimentalMin = {0, 0, 5, 1000, -10, 100},
 	experimentalMax = {0, 0, 15, 1000, 15, 100},
 	experimentalPrecision = {0, 0, 0, 0, 0, 0},
-
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_droid_performer_effects_c, "object/tangible/component/droid/performer_effects_c.iff")

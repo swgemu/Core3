@@ -73,7 +73,6 @@ object_tangible_food_crafted_dessert_cavaellin_creams = object_tangible_food_cra
 	experimentalMin = {0, 0, 1000, 75, 60, 80},
 	experimentalMax = {0, 0, 1000, 120, 100, 120},
 	experimentalPrecision = {0, 0, 0, 10, 10, 10},
-
 }
 
 ObjectTemplates:addTemplate(object_tangible_food_crafted_dessert_cavaellin_creams, "object/tangible/food/crafted/dessert_cavaellin_creams.iff")

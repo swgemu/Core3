@@ -76,7 +76,6 @@ object_tangible_food_crafted_drink_aitha = object_tangible_food_crafted_shared_d
 	experimentalMin = {0, 0, 1000, 0, 75, 60, 80, 1},
 	experimentalMax = {0, 0, 1000, 0, 120, 100, 120, 1},
 	experimentalPrecision = {0, 0, 0, 0, 0, 0, 0, 0},
-
 }
 
 ObjectTemplates:addTemplate(object_tangible_food_crafted_drink_aitha, "object/tangible/food/crafted/drink_aitha.iff")
