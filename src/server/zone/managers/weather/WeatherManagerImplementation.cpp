@@ -27,14 +27,10 @@ void WeatherManagerImplementation::initialize() {
 	setGlobalLogging(true);
 	setLogging(true);
 
-	//Initialize weather. Some values here are overwritten by lua.
-	weatherEnabled = true;
-	weatherChangeEvent = new WeatherChangeEvent(_this);
-	int time = newWeatherTimeMin + System::random(newWeatherTimeMax - newWeatherTimeMin);
-	weatherChangeEvent->schedule(time * 1000);
+	weatherChangeEvent = NULL;
+	sandstormTickEvent = NULL;
 
-	sandstormEffectsEnabled = false;
-	sandstormTickEvent = new SandstormTickEvent(_this);
+	sandstormEffectsEnabled = false; //Default, because only Tat/Lok overwrite this from the lua.
 
 	//Load weather configuration from the luas.
 	info("Loading configuration from Lua.");
@@ -49,8 +45,17 @@ void WeatherManagerImplementation::initialize() {
 	windY = -1.0f + (float)System::random(2);
 	changeWindDirection();
 
-	if (sandstormEffectsEnabled)
+	//Initialize weather events.
+	if (weatherEnabled) {
+		weatherChangeEvent = new WeatherChangeEvent(_this);
+		int time = newWeatherTimeMin + System::random(newWeatherTimeMax - newWeatherTimeMin);
+		weatherChangeEvent->schedule(time * 1000);
+	}
+
+	if (sandstormEffectsEnabled) {
+		sandstormTickEvent = new SandstormTickEvent(_this);
 		sandstormTick(); //In case the starting weather is level 4.
+	}
 }
 
 
@@ -115,6 +120,8 @@ bool WeatherManagerImplementation::loadLuaConfig() {
 		weatherID = startingWeatherID;
 	else
 		return false;
+
+	targetWeatherID = weatherID;
 
 	//Weather ID odds.
 	int total = 0;
@@ -187,6 +194,7 @@ void WeatherManagerImplementation::loadDefaultValues() {
 
 	weatherEnabled = true;
 	weatherID = System::random(2);
+	targetWeatherID = weatherID;
 
 	//Severity odds used when selecting new weather.
 	levelZeroChance = 70;
@@ -426,7 +434,7 @@ void WeatherManagerImplementation::changeWindDirection() {
 
 void WeatherManagerImplementation::sandstormTick() {
 	Locker weatherManagerLocker(_this);
-	if (!sandstormEffectsEnabled || weatherID != 4)
+	if (!weatherEnabled || !sandstormEffectsEnabled || weatherID != 4)
 		return;
 
 	//Apply sandstorm damage to exposed players.
@@ -509,7 +517,9 @@ void WeatherManagerImplementation::calculateSandstormProtection(PlayerCreature* 
 		if (crc == 0xc20d81d9 || crc == 0x191a294e) { //Tusken Robes.
 			tuskenRobe = true;
 			clothing += 2; //They cover both chest and legs.
-		} else if (crc == 0xd95ec143 || crc == 0x3995e72f || crc == 0x9053a6ce) //Scout Jacket, Heavy Reinforced Jacket, Vested jacket.
+		} else if (crc == 0xd95ec143 || crc == 0x3995e72f) //Scout Jacket, Heavy Reinforced Jacket.
+			clothing += 1;
+		else if (crc == 0x9053a6ce || crc == 0x663c19d1) //Vested jacket, Desert Command Jacket.
 			clothing += 1;
 		else if (robe->isArmorObject())
 			armour += 1;
@@ -560,3 +570,128 @@ void WeatherManagerImplementation::calculateSandstormProtection(PlayerCreature* 
 	sandstormCoverings.add(armour);
 }
 
+
+void WeatherManagerImplementation::enableWeather(PlayerCreature* player) {
+	Locker weatherManagerLocker(_this);
+	if (player == NULL)
+		return;
+
+	weatherEnabled = true;
+
+	if (weatherChangeEvent == NULL)
+		weatherChangeEvent = new WeatherChangeEvent(_this);
+
+	if (weatherChangeEvent->isScheduled())
+		weatherChangeEvent->cancel();
+
+	weatherChangeEvent->setNewWeather(true);
+
+	int time = newWeatherTimeMin + System::random(newWeatherTimeMax - newWeatherTimeMin);
+	weatherChangeEvent->schedule(time * 1000);
+
+	sandstormTick(); //In case sandstorm effects are enabled and weather ID is 4.
+
+	player->sendSystemMessage("The weather on this planet will now change automatically.");
+}
+
+
+void WeatherManagerImplementation::disableWeather(PlayerCreature* player) {
+	Locker weatherManagerLocker(_this);
+	if (player == NULL)
+		return;
+
+	weatherEnabled = false;
+
+	if (weatherChangeEvent != NULL) {
+		if (weatherChangeEvent->isScheduled())
+			weatherChangeEvent->cancel();
+
+		weatherChangeEvent = NULL;
+	}
+
+	player->sendSystemMessage("The weather on this planet will no longer change automatically.");
+}
+
+
+void WeatherManagerImplementation::changeWeather(PlayerCreature* player, int newWeather) {
+	Locker weatherManagerLocker(_this);
+	if (player == NULL)
+		return;
+
+	targetWeatherID = newWeather;
+	weatherID = newWeather;
+
+	//Update players on the planet with new weather and start sandstorm damage if applicable.
+	if (sandstormEffectsEnabled && weatherID == 4) {
+		broadcastWeather(true, true); //Send packet, apply sandstorm damage.
+		if (!sandstormTickEvent->isScheduled())
+			sandstormTickEvent->schedule(sandstormTickTime * 1000);
+	} else
+		broadcastWeather(true, false); //Send packet, don't apply sandstorm damage.
+}
+
+
+void WeatherManagerImplementation::weatherInfo(PlayerCreature* player) {
+	Locker weatherManagerLocker(_this);
+	if (player == NULL)
+		return;
+
+	Locker playerLocker(player);
+
+	String planetName = Planet::getPlanetName(zone->getZoneID());
+
+	Time executionTime;
+	StringBuffer output;
+	output << "Weather info for " << planetName << ":";
+	player->sendSystemMessage(output.toString());
+	output.deleteAll();
+
+	//Operational booleans.
+	output << "weatherEnabled = ";
+	if (weatherEnabled)
+		output << "true";
+	else
+		output << "false";
+
+	output << " and sandstormEffectsEnabled = ";
+
+	if (sandstormEffectsEnabled)
+		output << "true";
+	else
+		output << "false";
+
+	player->sendSystemMessage(output.toString());
+	output.deleteAll();
+
+	//Weather IDs.
+	output << "weatherID = " << weatherID << " and targetWeatherID = " << targetWeatherID;
+	player->sendSystemMessage(output.toString());
+	output.deleteAll();
+
+	output << "windX = " << windX << " and windY = " << windY;
+	player->sendSystemMessage(output.toString());
+	output.deleteAll();
+
+	//Weather change event.
+	if (weatherChangeEvent == NULL)
+		player->sendSystemMessage("weatherChangeEvent is NULL.");
+	else if (weatherChangeEvent->isScheduled()) {
+		executionTime = weatherChangeEvent->getNextExecutionTime();
+		output << "weatherChangeEvent is scheduled to run in " << abs(executionTime.miliDifference() / 1000) << " seconds.";
+		player->sendSystemMessage(output.toString());
+		output.deleteAll();
+	} else
+		player->sendSystemMessage("weatherChangeEvent exists but is not scheduled.");
+
+	//Sandstorm tick event.
+	if (sandstormTickEvent == NULL)
+		player->sendSystemMessage("sandstormTickEvent is NULL.");
+	else if (sandstormTickEvent->isScheduled()) {
+		executionTime = sandstormTickEvent->getNextExecutionTime();
+		output << "sandstormTickEvent is scheduled to run in " << abs(executionTime.miliDifference() / 1000) << " seconds.";
+		player->sendSystemMessage(output.toString());
+		output.deleteAll();
+	} else
+		player->sendSystemMessage("sandstormTickEvent exists but is not scheduled.");
+
+}
