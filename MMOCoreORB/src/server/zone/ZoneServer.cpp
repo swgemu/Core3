@@ -297,7 +297,7 @@ SceneObject* ZoneServer::createObject(unsigned int templateCRC, int persistenceL
 		return _implementation->createObject(templateCRC, persistenceLevel, objectID);
 }
 
-SceneObject* ZoneServer::createStaticObject(unsigned int templateCRC, unsigned long long objectID) {
+SceneObject* ZoneServer::createClientObject(unsigned int templateCRC, unsigned long long objectID) {
 	ZoneServerImplementation* _implementation = (ZoneServerImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
@@ -309,7 +309,7 @@ SceneObject* ZoneServer::createStaticObject(unsigned int templateCRC, unsigned l
 
 		return (SceneObject*) method.executeWithObjectReturn();
 	} else
-		return _implementation->createStaticObject(templateCRC, objectID);
+		return _implementation->createClientObject(templateCRC, objectID);
 }
 
 void ZoneServer::updateObjectToDatabase(SceneObject* object) {
@@ -1549,7 +1549,7 @@ Packet* ZoneServerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		resp->insertLong(createObject(inv->getUnsignedIntParameter(), inv->getSignedIntParameter(), inv->getUnsignedLongParameter())->_getObjectID());
 		break;
 	case RPC_CREATESTATICOBJECT__INT_LONG_:
-		resp->insertLong(createStaticObject(inv->getUnsignedIntParameter(), inv->getUnsignedLongParameter())->_getObjectID());
+		resp->insertLong(createClientObject(inv->getUnsignedIntParameter(), inv->getUnsignedLongParameter())->_getObjectID());
 		break;
 	case RPC_UPDATEOBJECTTODATABASE__SCENEOBJECT_:
 		updateObjectToDatabase((SceneObject*) inv->getObjectParameter());
@@ -1749,8 +1749,8 @@ SceneObject* ZoneServerAdapter::createObject(unsigned int templateCRC, int persi
 	return ((ZoneServerImplementation*) impl)->createObject(templateCRC, persistenceLevel, objectID);
 }
 
-SceneObject* ZoneServerAdapter::createStaticObject(unsigned int templateCRC, unsigned long long objectID) {
-	return ((ZoneServerImplementation*) impl)->createStaticObject(templateCRC, objectID);
+SceneObject* ZoneServerAdapter::createClientObject(unsigned int templateCRC, unsigned long long objectID) {
+	return ((ZoneServerImplementation*) impl)->createClientObject(templateCRC, objectID);
 }
 
 void ZoneServerAdapter::updateObjectToDatabase(SceneObject* object) {

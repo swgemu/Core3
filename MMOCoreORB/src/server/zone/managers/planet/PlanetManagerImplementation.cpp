@@ -81,8 +81,7 @@ void PlanetManagerImplementation::loadSnapshotObject(WorldSnapshotNode* node, Wo
 	String serverTemplate = templateName.replaceFirst("shared_", "");
 	Vector3 position = node->getPosition();
 
-	object = zoneServer->createStaticObject(serverTemplate.hashCode(), objectID);
-	object->setStaticObject(true);
+	object = zoneServer->createClientObject(serverTemplate.hashCode(), objectID);
 
 	object->initializePosition(position.getX(), position.getZ(), position.getY());
 	object->setDirection(node->getDirection());
@@ -232,7 +231,7 @@ void PlanetManagerImplementation::loadNoBuildAreas() {
 		Region* region = (Region*) ObjectManager::instance()->createObject(crc, 0, "");
 		region->initializePosition(x, 0, y);
 		region->setRadius(radius);
-		region->setStaticObject(true);
+		region->setClientObject(true);
 		StringId* objectName = region->getObjectName();
 		objectName->setStringId(fullName);
 
