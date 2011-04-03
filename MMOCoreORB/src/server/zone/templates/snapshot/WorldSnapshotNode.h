@@ -13,6 +13,8 @@
 #include "engine/util/iffstream/chunks/Chunk.h"
 
 class WorldSnapshotNode : public Object {
+	Vector<WorldSnapshotNode> childNodes;
+
 	uint32 objectID;
 	uint32 parentID;
 	uint32 nameID;
@@ -30,6 +32,7 @@ public:
 	}
 
 	WorldSnapshotNode(const WorldSnapshotNode& wsn) : Object() {
+		childNodes = wsn.childNodes;
 		objectID = wsn.objectID;
 		parentID = wsn.parentID;
 		nameID = wsn.nameID;
@@ -44,6 +47,7 @@ public:
 		if (this == &wsn)
 			return *this;
 
+		childNodes = wsn.childNodes;
 		objectID = wsn.objectID;
 		parentID = wsn.parentID;
 		nameID = wsn.nameID;
@@ -60,7 +64,7 @@ public:
 		iffStream->openForm('NODE');
 
 		uint32 version = iffStream->getNextFormType();
-		iffStream->openForm(version);
+		Chunk* versionForm = iffStream->openForm(version);
 
 		switch (version) {
 		case '0000':
@@ -71,8 +75,17 @@ public:
 			nameID = data->readInt();
 			unknown1 = data->readInt();
 
-			direction.set(data->readFloat(), data->readFloat(), data->readFloat(), data->readFloat());
-			position.set(data->readFloat(), data->readFloat(), data->readFloat());
+			float qw = data->readFloat();
+			float qx = data->readFloat();
+			float qy = data->readFloat();
+			float qz = data->readFloat();
+
+			float x = data->readFloat();
+			float z = data->readFloat();
+			float y = data->readFloat();
+
+			direction.set(qw, qx, qy, qz);
+			position.set(x, z, y);
 
 			gameObjectType = data->readFloat();
 			unknown2 = data->readInt();
@@ -82,6 +95,13 @@ public:
 			break;
 		default:
 			break;
+		}
+
+		for (int i = 0; i < versionForm->getChunksSize() - 1; ++i) {
+			WorldSnapshotNode childNode;
+			childNode.parse(iffStream);
+
+			childNodes.add(childNode);
 		}
 
 		iffStream->closeForm(version);
@@ -118,6 +138,14 @@ public:
 
 	uint32 getUnknown2() const {
 		return unknown2;
+	}
+
+	inline int getNodeCount() {
+		return childNodes.size();
+	}
+
+	inline WorldSnapshotNode* getNode(int idx) {
+		return &childNodes.get(idx);
 	}
 };
 

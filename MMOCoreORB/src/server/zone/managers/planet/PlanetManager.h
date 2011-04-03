@@ -151,6 +151,10 @@ using namespace server::zone::objects::player;
 
 #include "server/zone/managers/planet/HuntingTargetEntry.h"
 
+#include "server/zone/templates/snapshot/WorldSnapshotNode.h"
+
+#include "server/zone/templates/snapshot/WorldSnapshotIff.h"
+
 #include "engine/core/ManagedService.h"
 
 #include "engine/log/Logger.h"
@@ -305,6 +309,12 @@ public:
 
 	PlanetManagerImplementation(DummyConstructorParameter* param);
 
+private:
+	void loadSnapshotObjects();
+
+	void loadSnapshotObject(WorldSnapshotNode* node, WorldSnapshotIff* wsiff, int& totalObjects);
+
+public:
 	void initializeTransientMembers();
 
 	void finalize();

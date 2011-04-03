@@ -53,69 +53,10 @@
 
 #include "tasks/StructureConstructionCompleteTask.h"
 
-#include "engine/util/iffstream/IffStream.h"
-#include "server/zone/templates/snapshot/WorldSnapshotIff.h"
-
 #include "StructureManager.h"
 
 #include "server/zone/objects/structure/StructureObject.h"
 #include "server/zone/managers/minigames/events/GamblingEvent.h"
-
-void StructureManagerImplementation::loadWorldSnapshotObjects() {
-	TemplateManager* templateManager = TemplateManager::instance();
-
-	IffStream* iffStream = templateManager->openIffFile("snapshot/" + zone->getPlanetName() + ".ws");
-
-	if (iffStream == NULL) {
-		info("Couldn't find a snapshot for " + zone->getPlanetName(), true);
-		return;
-	}
-
-	WorldSnapshotIff wsiff;
-	wsiff.readObject(iffStream);
-
-	int totalLoaded = 0;
-
-	for (int i = 0; i < wsiff.getNodeCount(); ++i) {
-		WorldSnapshotNode* node = wsiff.getNode(i);
-
-		if (node == NULL)
-			continue;
-
-		uint64 objectID = node->getObjectID();
-
-		ZoneServer* zoneServer = server->getZoneServer();
-
-		SceneObject* savedObject = zoneServer->getObject(objectID);
-
-		if (savedObject != NULL)
-			continue;
-
-		SceneObject* parentObject = zoneServer->getObject(objectID);
-
-		String serverTemplate = wsiff.getObjectTemplateName(node->getNameID());
-		serverTemplate = serverTemplate.replaceFirst("shared_", "");
-		Vector3 position = node->getPosition();
-
-		SceneObject* object = zoneServer->createStaticObject(serverTemplate.hashCode(), objectID);
-		object->setStaticObject(true);
-
-		object->initializePosition(position.getX(), position.getZ(), position.getY());
-		object->setDirection(node->getDirection());
-
-		object->createChildObjects();
-
-		if (parentObject != NULL)
-			parentObject->addObject(object, -1);
-
-		if (parentObject == NULL || parentObject->isCellObject())
-			object->insertToZone(zone);
-
-		++totalLoaded;
-	}
-
-	info("Loaded " + String::valueOf(totalLoaded) + " world snapshot objects.", true);
-}
 
 void StructureManagerImplementation::loadPlayerStructures() {
 
