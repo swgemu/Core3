@@ -49,22 +49,22 @@ MakeStatus = 1
 
 ORB = ""
 
-DBHost = "127.0.0.1"
+DBHost = "172.26.0.2"
 DBPort = 3306
 DBName = "swgemu"
-DBUser = "swgemu"
-DBPass = "123456"
+DBUser = "root"
+DBPass = "swgemu"
 
 LoginPort = 44453
 LoginProcessingThreads = 1
 LoginAllowedConnections = 3000
 LoginRequiredVersion = "20050408-18:00"
 
-MantisHost = "127.0.0.1"
+MantisHost = "172.26.0.2"
 MantisPort = 3306
 MantisName = "swgemu"
-MantisUser = "swgemu"
-MantisPass = "123456"
+MantisUser = "root"
+MantisPass = "swgemu"
 MantisPrfx = "mantis_" -- The prefix for your mantis tables.
 
 AutoReg = 1
@@ -80,13 +80,10 @@ ZoneOnlineCharactersPerAccount = 2 --How many characters are allowed online from
 -- directory of tres with live.cfg
 TrePath = "/Applications/SWGEmu.app/Contents/Resources/transgaming/c_drive/SWGEMU"
 
---Status Server Config
-StatusPort = 44455
-StatusAllowedConnections = 500
-StatusInterval = 30 -- interval to check if zone is locked up (in seconds)
-
 TreFiles = {
 	"default_patch.tre",
+	"patch_sku1_14_00.tre",
+	"patch_14_00.tre",
 	"hotfix_13_1_00.tre",
 	"patch_sku1_13_00.tre",
 	"patch_13_00.tre",
@@ -137,3 +134,9 @@ TreFiles = {
 	"data_music_00.tre",
 	"bottom.tre"
 }
+
+--Status Server Config
+StatusPort = 44455
+StatusAllowedConnections = 500
+StatusInterval = 30 -- interval to check if zone is locked up (in seconds)
+
