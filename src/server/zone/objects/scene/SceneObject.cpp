@@ -2313,7 +2313,7 @@ void SceneObject::setLoggingName(const String& name) {
 		_implementation->setLoggingName(name);
 }
 
-void SceneObject::setStaticObject(bool val) {
+void SceneObject::setClientObject(bool val) {
 	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
@@ -2324,7 +2324,7 @@ void SceneObject::setStaticObject(bool val) {
 
 		method.executeWithVoidReturn();
 	} else
-		_implementation->setStaticObject(val);
+		_implementation->setClientObject(val);
 }
 
 VectorMap<unsigned long long, ManagedReference<SceneObject* > >* SceneObject::getContainerObjects() {
@@ -3513,7 +3513,7 @@ void SceneObjectImplementation::setLoggingName(const String& name) {
 	Logger::setLoggingName(name);
 }
 
-void SceneObjectImplementation::setStaticObject(bool val) {
+void SceneObjectImplementation::setClientObject(bool val) {
 	// server/zone/objects/scene/SceneObject.idl():  		staticObject = val;
 	staticObject = val;
 }
@@ -4120,7 +4120,7 @@ Packet* SceneObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 		setLoggingName(inv->getAsciiParameter(_param0_setLoggingName__String_));
 		break;
 	case RPC_SETSTATICOBJECT__BOOL_:
-		setStaticObject(inv->getBooleanParameter());
+		setClientObject(inv->getBooleanParameter());
 		break;
 	case RPC_HASOBJECTINCONTAINER__LONG_:
 		resp->insertBoolean(hasObjectInContainer(inv->getUnsignedLongParameter()));
@@ -4803,8 +4803,8 @@ void SceneObjectAdapter::setLoggingName(const String& name) {
 	((SceneObjectImplementation*) impl)->setLoggingName(name);
 }
 
-void SceneObjectAdapter::setStaticObject(bool val) {
-	((SceneObjectImplementation*) impl)->setStaticObject(val);
+void SceneObjectAdapter::setClientObject(bool val) {
+	((SceneObjectImplementation*) impl)->setClientObject(val);
 }
 
 bool SceneObjectAdapter::hasObjectInContainer(unsigned long long objectID) {

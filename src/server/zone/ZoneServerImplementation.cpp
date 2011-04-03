@@ -249,8 +249,6 @@ void ZoneServerImplementation::startZones() {
 void ZoneServerImplementation::startManagers() {
 	info("loading managers..");
 
-	objectManager->loadStaticObjects();
-
 	auctionManager = new AuctionManager(_this);
 	auctionManager->deploy();
 	auctionManager->initialize();
@@ -476,13 +474,14 @@ SceneObject* ZoneServerImplementation::createObject(uint32 templateCRC, int pers
 	return obj;
 }
 
-SceneObject* ZoneServerImplementation::createStaticObject(uint32 templateCRC, uint64 oid) {
+SceneObject* ZoneServerImplementation::createClientObject(uint32 templateCRC, uint64 oid) {
 	SceneObject* obj = NULL;
 
 	try {
 		//lock(); ObjectManager has its own mutex
 
-		obj = objectManager->createObject(templateCRC, 1, "staticobjects", oid);
+		obj = objectManager->createObject(templateCRC, 0, "", oid);
+		obj->setClientObject(true);
 
 		//unlock();
 	} catch (Exception& e) {

@@ -1026,7 +1026,7 @@ public:
 
 	void setLoggingName(const String& name);
 
-	void setStaticObject(bool val);
+	void setClientObject(bool val);
 
 	VectorMap<unsigned long long, ManagedReference<SceneObject* > >* getContainerObjects();
 
@@ -1976,7 +1976,7 @@ public:
 
 	void setLoggingName(const String& name);
 
-	void setStaticObject(bool val);
+	void setClientObject(bool val);
 
 	VectorMap<unsigned long long, ManagedReference<SceneObject* > >* getContainerObjects();
 
@@ -2371,7 +2371,7 @@ public:
 
 	void setLoggingName(const String& name);
 
-	void setStaticObject(bool val);
+	void setClientObject(bool val);
 
 	bool hasObjectInContainer(unsigned long long objectID);
 

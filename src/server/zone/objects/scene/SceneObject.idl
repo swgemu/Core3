@@ -1388,7 +1388,7 @@ class SceneObject extends QuadTreeEntry implements Logger {
 		Logger.setLoggingName(name);
 	}
 	
-	public void setStaticObject(boolean val) {
+	public void setClientObject(boolean val) {
 		staticObject = val;
 	}
 
