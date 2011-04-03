@@ -114,8 +114,6 @@ namespace zone {
 		ObjectManager();
 		~ObjectManager();
 
-		void loadStaticObjects();
-
 		bool contains(uint32 objectCRC) {
 			return objectFactory.containsObject(objectCRC);
 		}
