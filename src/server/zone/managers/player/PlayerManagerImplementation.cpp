@@ -342,12 +342,15 @@ bool PlayerManagerImplementation::createPlayer(MessageCallback* data) {
 	//Accounts with an admin level of > 0 are automatically given admin at character creation
 	//if (account->getAdminLevel() > 0) {
 		//ghost->setAdminLevel(account->getAdminLevel());
-	//	ghost->setAdminLevel(2);
 
-		//Vector<String> skills;
-	//	skills.add("admin");
+	//NOTE/TEMPORARY: UNCOMMENT THESE LINES AND RECOMPILE FOR ADMIN ON NEW CHARACTERS.
+		ghost->setAdminLevel(2);
 
-		//ghost->addSkills(skills, false);
+		Vector<String> skills;
+		skills.add("admin");
+
+		ghost->addSkills(skills, false);
+	//STOP UNCOMMENTING
 	//}
 
 	createAllPlayerObjects(playerCreature);

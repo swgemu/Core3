@@ -15,11 +15,13 @@
 #include "server/zone/managers/creature/CreatureManager.h"
 #include "server/zone/managers/weather/WeatherManager.h"
 
-
+#include "engine/util/iffstream/IffStream.h"
+#include "server/zone/templates/snapshot/WorldSnapshotIff.h"
 
 #include "server/zone/objects/tangible/terminal/ticketcollector/TicketCollector.h"
 #include "server/zone/objects/tangible/terminal/travel/TravelTerminal.h"
 #include "server/zone/objects/player/PlayerCreature.h"
+#include "server/zone/objects/building/BuildingObject.h"
 #include "server/zone/packets/player/TravelListResponseMessage.h"
 #include "server/zone/objects/area/BadgeActiveArea.h"
 #include "TravelFare.h"
@@ -49,6 +51,8 @@ void PlanetManagerImplementation::initialize() {
 	loadReconLocations();
 	loadPlayerRegions();
 
+	loadSnapshotObjects();
+
 	loadStaticTangibleObjects();
 
 	structureManager = new StructureManager(zone, server);
@@ -58,6 +62,77 @@ void PlanetManagerImplementation::initialize() {
 		weatherManager = new WeatherManager(zone);
 		weatherManager->initialize();
 	}
+}
+
+void PlanetManagerImplementation::loadSnapshotObject(WorldSnapshotNode* node, WorldSnapshotIff* wsiff, int& totalObjects) {
+	uint64 objectID = node->getObjectID();
+	String templateName = wsiff->getObjectTemplateName(node->getNameID());
+
+	ZoneServer* zoneServer = server->getZoneServer();
+
+	SceneObject* object = zoneServer->getObject(objectID);
+
+	//Object already exists, exit.
+	if (object != NULL)
+		return;
+
+	SceneObject* parentObject = zoneServer->getObject(node->getParentID());
+
+	String serverTemplate = templateName.replaceFirst("shared_", "");
+	Vector3 position = node->getPosition();
+
+	object = zoneServer->createStaticObject(serverTemplate.hashCode(), objectID);
+	object->setStaticObject(true);
+
+	object->initializePosition(position.getX(), position.getZ(), position.getY());
+	object->setDirection(node->getDirection());
+
+	object->createChildObjects();
+
+	if (parentObject != NULL)
+		parentObject->addObject(object, -1);
+
+	if (parentObject == NULL || parentObject->isCellObject())
+		object->insertToZone(zone);
+
+	//Load child nodes
+	for (int i = 0; i < node->getNodeCount(); ++i) {
+		WorldSnapshotNode* childNode = node->getNode(i);
+
+		if (childNode == NULL)
+			continue;
+
+		loadSnapshotObject(childNode, wsiff, totalObjects);
+	}
+
+	++totalObjects;
+}
+
+void PlanetManagerImplementation::loadSnapshotObjects() {
+	TemplateManager* templateManager = TemplateManager::instance();
+
+	IffStream* iffStream = templateManager->openIffFile("snapshot/" + zone->getPlanetName() + ".ws");
+
+	if (iffStream == NULL) {
+		info("Couldn't find a snapshot for " + zone->getPlanetName(), true);
+		return;
+	}
+
+	WorldSnapshotIff wsiff;
+	wsiff.readObject(iffStream);
+
+	int totalObjects = 0;
+
+	for (int i = 0; i < wsiff.getNodeCount(); ++i) {
+		WorldSnapshotNode* node = wsiff.getNode(i);
+
+		if (node == NULL)
+			continue;
+
+		loadSnapshotObject(node, &wsiff, totalObjects);
+	}
+
+	info("Loaded " + String::valueOf(totalObjects) + " snapshot objects.", true);
 }
 
 void PlanetManagerImplementation::loadStaticTangibleObjects() {

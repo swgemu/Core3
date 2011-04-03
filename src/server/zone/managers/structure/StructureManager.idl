@@ -83,12 +83,10 @@ class StructureManager extends ManagedService implements Logger {
 	}
 	
 	private native void loadPlayerStructures();
-	private native void loadWorldSnapshotObjects();
 	
 	public void loadStructures() {
 		Logger.info("Loading structures...", true);
 
-		loadWorldSnapshotObjects();
 		loadPlayerStructures();
 	}
 	

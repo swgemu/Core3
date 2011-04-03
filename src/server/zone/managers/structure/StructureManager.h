@@ -189,8 +189,6 @@ public:
 private:
 	void loadPlayerStructures();
 
-	void loadWorldSnapshotObjects();
-
 public:
 	void loadStructures();
 
