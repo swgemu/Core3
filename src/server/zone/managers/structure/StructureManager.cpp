@@ -334,8 +334,6 @@ StructureManagerImplementation::StructureManagerImplementation(Zone* zne, ZonePr
 void StructureManagerImplementation::loadStructures() {
 	// server/zone/managers/structure/StructureManager.idl():  		Logger.info("Loading structures...", true);
 	Logger::info("Loading structures...", true);
-	// server/zone/managers/structure/StructureManager.idl():  		loadWorldSnapshotObjects();
-	loadWorldSnapshotObjects();
 	// server/zone/managers/structure/StructureManager.idl():  		loadPlayerStructures();
 	loadPlayerStructures();
 }

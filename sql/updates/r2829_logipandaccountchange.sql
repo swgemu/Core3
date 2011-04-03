@@ -18,4 +18,4 @@ CREATE TABLE  `account_bans` (
   `expires` int(10) unsigned NOT NULL default 0,
   `reason` tinytext NOT NULL,
   PRIMARY KEY  USING BTREE (`ban_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=latin1
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
