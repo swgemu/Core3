@@ -141,6 +141,10 @@ using namespace server::zone::objects::player;
 
 #include "server/zone/objects/player/ValidatedPosition.h"
 
+#include "server/zone/managers/player/StartingLocationList.h"
+
+#include "server/zone/managers/player/StartingLocation.h"
+
 #include "engine/log/Logger.h"
 
 #include "engine/lua/Lua.h"
@@ -165,6 +169,10 @@ public:
 	PlayerManager(ZoneServer* zoneServer, ZoneProcessServer* impl);
 
 	void loadNameMap();
+
+	void sendStartingLocationsTo(PlayerCreature* player);
+
+	StartingLocation* getStartingLocation(const String& city);
 
 	bool kickUser(const String& name, const String& admin);
 
@@ -300,6 +308,10 @@ class PlayerManagerImplementation : public ObserverImplementation, public Logger
 public:
 	StartingItemList* startingItemList;
 
+private:
+	StartingLocationList startingLocationList;
+
+public:
 	PlayerManagerImplementation(ZoneServer* zoneServer, ZoneProcessServer* impl);
 
 	PlayerManagerImplementation(DummyConstructorParameter* param);
@@ -309,8 +321,14 @@ public:
 private:
 	void loadStartingItems();
 
+	void loadStartingLocations();
+
 public:
 	void finalize();
+
+	void sendStartingLocationsTo(PlayerCreature* player);
+
+	StartingLocation* getStartingLocation(const String& city);
 
 	bool kickUser(const String& name, const String& admin);
 

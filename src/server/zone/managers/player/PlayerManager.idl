@@ -71,6 +71,9 @@ import server.zone.objects.player.PlayerObject;
 include server.zone.objects.player.ValidatedPosition;
 import engine.util.u3d.Vector3;
 
+include server.zone.managers.player.StartingLocationList;
+include server.zone.managers.player.StartingLocation;
+
 class PlayerManager extends Observer implements Logger {
 	transient ZoneProcessServer processor;
 	
@@ -83,11 +86,22 @@ class PlayerManager extends Observer implements Logger {
 	
 	public native PlayerManager(ZoneServer zoneServer, ZoneProcessServer impl);
 	public native void loadNameMap();
+	
 	private native void loadStartingItems();
+	private native void loadStartingLocations();
 	
 	public native void finalize();
 	
 	public transient StartingItemList startingItemList;
+	
+	@dereferenced
+	private transient StartingLocationList startingLocationList;
+	
+	@local
+	public native void sendStartingLocationsTo(PlayerCreature player);
+	
+	@local
+	public native StartingLocation getStartingLocation(final string city);
 	
 	/**
 	 * Kicks a user
