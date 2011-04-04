@@ -202,7 +202,7 @@ public:
 
 	bool isNoBuildArea(float x, float y, StringId& fullAreaName);
 
-	unsigned int getTravelFare(const String& departurePlanet, const String& arrivalPlanet);
+	int getTravelFare(const String& destinationPlanet);
 
 	void sendPlanetTravelPointListResponse(PlayerCreature* player);
 
@@ -280,6 +280,8 @@ protected:
 
 	RegionMap regionMap;
 
+	VectorMap<String, int> travelFares;
+
 	ManagedReference<StructureManager* > structureManager;
 
 	ManagedReference<WeatherManager* > weatherManager;
@@ -313,6 +315,8 @@ private:
 	void loadSnapshotObject(WorldSnapshotNode* node, WorldSnapshotIff* wsiff, int& totalObjects);
 
 	void loadSnapshotObjects();
+
+	void loadTravelFares();
 
 	void loadLuaConfig();
 
@@ -351,7 +355,7 @@ public:
 
 	bool isNoBuildArea(float x, float y, StringId& fullAreaName);
 
-	unsigned int getTravelFare(const String& departurePlanet, const String& arrivalPlanet);
+	int getTravelFare(const String& destinationPlanet);
 
 	void sendPlanetTravelPointListResponse(PlayerCreature* player);
 
@@ -468,7 +472,7 @@ public:
 
 	void dropShuttle(const String& city);
 
-	unsigned int getTravelFare(const String& departurePlanet, const String& arrivalPlanet);
+	int getTravelFare(const String& destinationPlanet);
 
 	void sendPlanetTravelPointListResponse(PlayerCreature* player);
 
@@ -506,8 +510,7 @@ protected:
 	String _param0_getShuttle__String_;
 	String _param0_addShuttle__String_ShuttleCreature_;
 	String _param0_dropShuttle__String_;
-	String _param0_getTravelFare__String_String_;
-	String _param1_getTravelFare__String_String_;
+	String _param0_getTravelFare__String_;
 	String _param0_hasRegion__String_;
 	String _param0_addHuntingTargetTemplate__String_String_int_;
 	String _param1_addHuntingTargetTemplate__String_String_int_;

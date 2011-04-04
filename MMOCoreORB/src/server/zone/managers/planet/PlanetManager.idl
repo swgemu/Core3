@@ -80,6 +80,9 @@ class PlanetManager extends ManagedService implements Logger {
 	@dereferenced
 	protected RegionMap regionMap;
 	
+	@dereferenced
+	protected VectorMap<string, int> travelFares;
+	
 	protected StructureManager structureManager;
 
 	protected WeatherManager weatherManager;
@@ -115,7 +118,7 @@ class PlanetManager extends ManagedService implements Logger {
 		zone = planet;
 		server = srv;
 				
-		Logger.setLoggingName("PlanetManager");
+		Logger.setLoggingName("PlanetManager " + zone.getPlanetName());
 		Logger.setLogging(false);
 		Logger.setGlobalLogging(true);
 		
@@ -126,12 +129,15 @@ class PlanetManager extends ManagedService implements Logger {
 		structureManager = null;
 
 		weatherManager = null;
-
+		
+		travelFares.setNullValue(0);
+		travelFares.setNoDuplicateInsertPlan();
 	}
 	
 	@local
 	private native void loadSnapshotObject(WorldSnapshotNode node, WorldSnapshotIff wsiff, @dereferenced int totalObjects);
 	private native void loadSnapshotObjects();
+	private native void loadTravelFares();
 	
 	private native void loadLuaConfig();
 	
@@ -165,7 +171,15 @@ class PlanetManager extends ManagedService implements Logger {
 	@local
 	public native boolean isNoBuildArea(float x, float y, @dereferenced StringId fullAreaName);
 	
-	public native unsigned int getTravelFare(final string departurePlanet, final string arrivalPlanet);
+	/**
+	 * Gets the cost to travel via shuttleport/starport to the destination planet.
+	 * If the value is 0, then travel to the planet from this planet is disabled.
+	 * @param destinationPlanet The planet that to which is being travelled. Can be the same planet.
+	 * @return The cost to travel to the destination planet.
+	 */
+	public int getTravelFare(final string destinationPlanet) {
+		return travelFares.get(destinationPlanet);
+	}
 	
 	public native void sendPlanetTravelPointListResponse(PlayerCreature player);
 	
