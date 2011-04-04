@@ -262,6 +262,7 @@ void PlanetManagerImplementation::loadStaticTangibleObjects() {
 }
 
 void PlanetManagerImplementation::loadNoBuildAreas() {
+	//TODO: Deprecate. These should be loaded by their objects upon creation.
 	StringBuffer query;
 	query << "SELECT * FROM no_build_zones WHERE planet_id = " << zone->getZoneID() << ";";
 
@@ -309,40 +310,32 @@ bool PlanetManagerImplementation::isNoBuildArea(float x, float y, StringId& full
 }
 
 void PlanetManagerImplementation::loadRegions() {
-	int zoneID = zone->getZoneID();
+	TemplateManager* templateManager = TemplateManager::instance();
 
-	String managerName = "PlanetManager ";
-	setLoggingName(managerName + Planet::getPlanetName(zoneID));
+	IffStream* iffStream = templateManager->openIffFile("datatables/clientregion/" + zone->getPlanetName() + ".iff");
 
-	if (zoneID > 9)
+	if (iffStream == NULL) {
+		info("No client regions found.", true);
 		return;
-
-	Reference<ResultSet*> result = NULL;
-
-	try {
-		StringBuffer query;
-		query << "SELECT * from clientregion_" << Planet::getPlanetName(zoneID);
-
-		result = ServerDatabase::instance()->executeQuery(query);
-
-		while (result->next()) {
-			String fullName = result->getString(0);
-
-			float x = result->getFloat(1);
-			float y = result->getFloat(2);
-			float radius = result->getFloat(3);
-
-			regionMap.addRegion(zone, fullName, x, y, radius);
-		}
-	} catch (DatabaseException& e) {
-		error(e.getMessage());
 	}
 
-	if (regionMap.size() != 0) {
-		StringBuffer msg;
-		msg << "loaded " << regionMap.size() << " client regions";
-		info(msg.toString(), true);
+	DataTableIff dtiff;
+	dtiff.readObject(iffStream);
+
+	for (int i = 0; i < dtiff.getTotalRows(); ++i) {
+		String regionName;
+		float x, y, radius;
+
+		DataTableRow* row = dtiff.getRow(i);
+		row->getCell(0)->getValue(regionName);
+		row->getCell(1)->getValue(x);
+		row->getCell(2)->getValue(y);
+		row->getCell(3)->getValue(radius);
+
+		regionMap.addRegion(zone, regionName, x, y, radius);
 	}
+
+	info("Added " + String::valueOf(regionMap.size()) + " client regions.", true);
 }
 
 void PlanetManagerImplementation::loadPlayerRegions() {
