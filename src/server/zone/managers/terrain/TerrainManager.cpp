@@ -7,13 +7,22 @@
 
 #include "TerrainManager.h"
 #include "server/zone/Zone.h"
+#include "server/zone/managers/templates/TemplateManager.h"
 
 TerrainManager::TerrainManager(Zone* planet) : Logger("TerrainManager") {
 	zone = planet;
 }
 
-void TerrainManager::initialize(const String& terrainFile) {
-	terrainData.load(terrainFile);
+bool TerrainManager::initialize(const String& terrainFile) {
+	IffStream* iffStream = TemplateManager::instance()->openIffFile(terrainFile);
+
+	if (iffStream == NULL)
+		return false;
+
+	if (iffStream->getNextFormType() != 'PTAT')
+		return false;
+
+	return terrainData.load(iffStream);
 }
 
 /**

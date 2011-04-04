@@ -26,7 +26,7 @@ ProceduralTerrainAppearance::~ProceduralTerrainAppearance() {
 	terrainMaps = NULL;
 }
 
-bool ProceduralTerrainAppearance::load(const String& file) {
+bool ProceduralTerrainAppearance::load(IffStream* iffStream) {
 	waterBoundaries.removeAll();
 
 	delete terrainGenerator;
@@ -35,96 +35,11 @@ bool ProceduralTerrainAppearance::load(const String& file) {
 	terrainGenerator = new TerrainGenerator(this);
 	terrainMaps = new TerrainMaps();
 
+	readObject(iffStream);
 
-	setLoggingName("ProceduralTerrainAppearance " + file);
+	terrainGenerator->processLayers();
 
-	info("trying to open", true);
-
-	IffStream* iffStream = NULL;
-
-	FileInputStream* fileStream = NULL;
-	File* fileObject = NULL;
-
-	try {
-		fileObject = new File(file);
-
-		fileObject->setReadOnly();
-
-		if (!fileObject->exists()) {
-			fileObject->close();
-			delete fileObject;
-			fileObject == NULL;
-			return false;
-		}
-
-		fileStream = new FileInputStream(fileObject);
-	} catch (...) {
-		delete fileObject;
-		fileObject->close();
-		fileObject = NULL;
-		error("could not open " + file);
-
-		throw;
-	}
-
-	info("fileobject opened", true);
-
-	int size = fileObject->size();
-
-	sys::byte* data = new byte[size];
-
-	fileStream->read(data, size);
-
-	fileStream->close();
-	delete fileStream;
-	delete fileObject;
-
-	iffStream = new IffStream();
-
-	if (iffStream != NULL) {
-		try {
-			if (!iffStream->parseChunks(data, size, file)) {
-				delete iffStream;
-				iffStream = NULL;
-
-				error("false on parsing chunks");
-			}
-		} catch (Exception& e) {
-			delete iffStream;
-			iffStream = NULL;
-
-			e.printStackTrace();
-			error("error parsing chunks");
-		} catch (...) {
-			delete iffStream;
-			iffStream = NULL;
-
-			error("error parsing chunks");
-
-			throw;
-		}
-	}
-
-	delete [] data;
-
-	if (iffStream != NULL) {
-		info("loading..", true);
-
-		readObject(iffStream);
-
-		delete iffStream;
-		iffStream = NULL;
-
-		terrainGenerator->processLayers();
-
-
-		info("loading finished", true);
-
-		return true;
-	} else
-		return false;
-
-
+	return true;
 }
 
 void ProceduralTerrainAppearance::parseFromIffStream(engine::util::IffStream* iffStream) {
