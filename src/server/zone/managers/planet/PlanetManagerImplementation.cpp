@@ -43,6 +43,8 @@ void PlanetManagerImplementation::initialize() {
 
 	info("loading planet...", true);
 
+	loadLuaConfig();
+
 	loadRegions();
 	loadBadgeAreas();
 	loadNoBuildAreas();
@@ -50,8 +52,6 @@ void PlanetManagerImplementation::initialize() {
 	loadHuntingTargets();
 	loadReconLocations();
 	loadPlayerRegions();
-
-	loadSnapshotObjects();
 
 	loadStaticTangibleObjects();
 
@@ -62,6 +62,25 @@ void PlanetManagerImplementation::initialize() {
 		weatherManager = new WeatherManager(zone);
 		weatherManager->initialize();
 	}
+}
+
+void PlanetManagerImplementation::loadLuaConfig() {
+	String planetName = zone->getPlanetName();
+
+	Lua* lua = new Lua();
+	lua->init();
+
+	lua->runFile("scripts/managers/planet_manager.lua");
+
+	LuaObject luaObject = lua->getGlobalObject(planetName);
+
+	if (luaObject.getIntField("loadClientObjects") > 0)
+		loadSnapshotObjects();
+
+	luaObject.pop();
+
+	delete lua;
+	lua = NULL;
 }
 
 void PlanetManagerImplementation::loadSnapshotObject(WorldSnapshotNode* node, WorldSnapshotIff* wsiff, int& totalObjects) {

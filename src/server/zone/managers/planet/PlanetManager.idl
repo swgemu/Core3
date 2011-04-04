@@ -59,8 +59,8 @@ import server.zone.managers.weather.WeatherManager;
 import server.zone.managers.objectcontroller.ObjectController;
 import server.zone.objects.creature.shuttle.ShuttleCreature;
 import server.zone.objects.player.PlayerCreature;
-include server.zone.objects.region.Region;
 
+include server.zone.objects.region.Region;
 include server.zone.managers.planet.RegionMap;
 include server.zone.objects.terrain.PlanetNames;
 include server.zone.managers.terrain.TerrainManager;
@@ -129,10 +129,11 @@ class PlanetManager extends ManagedService implements Logger {
 
 	}
 	
-	private native void loadSnapshotObjects();
-	
 	@local
 	private native void loadSnapshotObject(WorldSnapshotNode node, WorldSnapshotIff wsiff, @dereferenced int totalObjects);
+	private native void loadSnapshotObjects();
+	
+	private native void loadLuaConfig();
 	
 	public native void initializeTransientMembers();
 	

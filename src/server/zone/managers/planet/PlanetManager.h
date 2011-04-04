@@ -310,9 +310,11 @@ public:
 	PlanetManagerImplementation(DummyConstructorParameter* param);
 
 private:
+	void loadSnapshotObject(WorldSnapshotNode* node, WorldSnapshotIff* wsiff, int& totalObjects);
+
 	void loadSnapshotObjects();
 
-	void loadSnapshotObject(WorldSnapshotNode* node, WorldSnapshotIff* wsiff, int& totalObjects);
+	void loadLuaConfig();
 
 public:
 	void initializeTransientMembers();
