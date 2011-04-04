@@ -17,6 +17,9 @@
 
 #include "engine/util/iffstream/IffStream.h"
 #include "server/zone/templates/snapshot/WorldSnapshotIff.h"
+#include "server/zone/templates/datatables/DataTableIff.h"
+#include "server/zone/templates/datatables/DataTableRow.h"
+#include "server/zone/templates/datatables/DataTableCell.h"
 
 #include "server/zone/objects/tangible/terminal/ticketcollector/TicketCollector.h"
 #include "server/zone/objects/tangible/terminal/travel/TravelTerminal.h"
@@ -24,7 +27,6 @@
 #include "server/zone/objects/building/BuildingObject.h"
 #include "server/zone/packets/player/TravelListResponseMessage.h"
 #include "server/zone/objects/area/BadgeActiveArea.h"
-#include "TravelFare.h"
 
 void PlanetManagerImplementation::initialize() {
 	terrainManager = new TerrainManager(zone);
@@ -33,17 +35,14 @@ void PlanetManagerImplementation::initialize() {
 
 	numberOfCities = 0;
 
-	if (zoneID < 10) {
-		String planetName = Planet::getPlanetName(zoneID);
+	//TODO: Load from the TRE files.
+	if (zoneID < 10)
+		terrainManager->initialize("planets/" + zone->getPlanetName() + "/" + zone->getPlanetName() + ".trn");
 
-		setLoggingName("PlanetManager " + planetName);
-
-		terrainManager->initialize("planets/" + planetName + "/" + planetName + ".trn");
-	}
-
-	info("loading planet...", true);
+	info("Loading planet...", true);
 
 	loadLuaConfig();
+	loadTravelFares();
 
 	loadRegions();
 	loadBadgeAreas();
@@ -88,6 +87,40 @@ void PlanetManagerImplementation::loadLuaConfig() {
 
 	delete lua;
 	lua = NULL;
+}
+
+void PlanetManagerImplementation::loadTravelFares() {
+	TemplateManager* templateManager = TemplateManager::instance();
+
+	IffStream* iffStream = templateManager->openIffFile("datatables/travel/travel.iff");
+
+	if (iffStream == NULL) {
+		info("Travel fares could not be found.", true);
+		return;
+	}
+
+	DataTableIff dtiff;
+	dtiff.readObject(iffStream);
+
+	Vector<DataTableRow*> rows = dtiff.getRowsByColumn(0, zone->getPlanetName());
+
+	if (rows.size() <= 0) {
+		info("Travel fares could not be found.", true);
+		return;
+	}
+
+	DataTableRow* row = rows.get(0);
+
+	//We want to skip the initial column.
+	for (int i = 1; i < dtiff.getTotalColumns(); ++i) {
+		String planetName = dtiff.getColumnNameByIndex(i);
+		int fare = 0;
+		row->getCell(i)->getValue(fare);
+
+		travelFares.put(planetName, fare);
+	}
+
+	info("Loaded travel fares to " + String::valueOf(travelFares.size()) + " planets.", true);
 }
 
 void PlanetManagerImplementation::loadSnapshotObject(WorldSnapshotNode* node, WorldSnapshotIff* wsiff, int& totalObjects) {
@@ -139,7 +172,7 @@ void PlanetManagerImplementation::loadSnapshotObjects() {
 	IffStream* iffStream = templateManager->openIffFile("snapshot/" + zone->getPlanetName() + ".ws");
 
 	if (iffStream == NULL) {
-		info("Couldn't find a snapshot for " + zone->getPlanetName(), true);
+		info("Snapshot wasn't found.", true);
 		return;
 	}
 
@@ -495,10 +528,6 @@ void PlanetManagerImplementation::loadShuttles() {
 	} catch (DatabaseException& e) {
 		error(e.getMessage());
 	}
-}
-
-uint32 PlanetManagerImplementation::getTravelFare(const String& departurePlanet, const String& arrivalPlanet) {
-	return travelFare[Planet::getPlanetID(departurePlanet)][Planet::getPlanetID(arrivalPlanet)];
 }
 
 void PlanetManagerImplementation::sendPlanetTravelPointListResponse(PlayerCreature* player) {

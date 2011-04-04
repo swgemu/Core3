@@ -111,12 +111,10 @@ public:
 
 		PlanetManager* planetManager = player->getZone()->getPlanetManager();
 
-		uint32 fare = planetManager->getTravelFare(departurePlanet, arrivalPlanet);
+		int fare = planetManager->getTravelFare(arrivalPlanet);
 
-		if (fare == 0) {
-			//Travel not allowed between these planets
-			return GENERALERROR;
-		}
+		if (fare == 0)
+			return GENERALERROR; //Travel not allowed between these planets
 
 		//Replace Underscores with spaces
 		departurePoint = departurePoint.replaceAll("_", " ");

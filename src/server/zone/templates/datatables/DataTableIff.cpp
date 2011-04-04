@@ -110,14 +110,14 @@ void DataTableIff::readObject(IffStream* iffStream) {
 }
 
 Vector<DataTableRow*> DataTableIff::getRowsByColumn(int columnIdx, const String& columnValue) {
-	Vector<DataTableRow*> rows;
+	Vector<DataTableRow*> retRows;
 
 	for (int i = 0; i < rows.size(); ++i) {
 		DataTableRow* row = rows.get(i);
 
 		if (row->getCell(columnIdx)->toString() == columnValue)
-			rows.add(row);
+			retRows.add(row);
 	}
 
-	return rows;
+	return retRows;
 }
