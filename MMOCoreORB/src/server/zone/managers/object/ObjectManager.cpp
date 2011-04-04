@@ -39,7 +39,8 @@ ObjectManager::ObjectManager() : DOBObjectManagerImplementation(), Logger("Objec
 
 	registerObjectTypes();
 
-	databaseManager->loadObjectDatabase("sceneobjects", true, 0);
+	databaseManager->loadObjectDatabase("clientobjects", true, 0);
+	databaseManager->loadObjectDatabase("sceneobjects", true);
 	databaseManager->loadObjectDatabase("playerstructures", true);
 	databaseManager->loadObjectDatabase("buffs", true);
 	databaseManager->loadObjectDatabase("missionobjectives", true);
@@ -361,6 +362,51 @@ void ObjectManager::loadLastUsedObjectID() {
 	info("done loading last used object id 0x" + String::hexvalueOf((int64)nextObjectID).toUpperCase());
 }
 
+<<<<<<< .mine
+void ObjectManager::loadStaticObjects() {
+	Locker _locker(this);
+
+	info("loading static objects...", true);
+
+	ObjectDatabase* staticDatabase = databaseManager->loadObjectDatabase("clientobjects", true, 0);
+
+	ObjectDatabaseIterator iterator(staticDatabase);
+
+	uint32 serverObjectCRC;
+	uint64 objectID;
+
+	ObjectInputStream objectData(2000);
+
+	while (iterator.getNextKeyAndValue(objectID, &objectData)) {
+		SceneObject* object = (SceneObject*) getObject(objectID);
+
+		if (object != NULL)
+			continue;
+
+		if (!Serializable::getVariable<uint32>("serverObjectCRC", &serverObjectCRC, &objectData)) {
+			error("unknown scene object in static database");
+			continue;
+		}
+
+		if (object == NULL) {
+			object = createObject(serverObjectCRC, 0, "clientobjects", objectID);
+
+			if (object == NULL) {
+				error("could not load object from static database");
+
+				continue;
+			}
+
+			_locker.release();
+			deSerializeObject(object, &objectData);
+
+			objectData.reset();
+		}
+	}
+}
+
+=======
+>>>>>>> .r3015
 int ObjectManager::commitUpdatePersistentObjectToDB(DistributedObject* object) {
 	if (!((ManagedObject*)object)->isPersistent()) {
 		object->_setUpdated(false);
