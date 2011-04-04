@@ -87,3 +87,7 @@ space_corellia = {
 tutorial = {
 	loadClientObjects = 0
 }
+
+dungeon1 = {
+	loadClientObjects = 0
+}
