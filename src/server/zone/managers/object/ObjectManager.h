@@ -118,6 +118,8 @@ namespace zone {
 			return objectFactory.containsObject(objectCRC);
 		}
 
+		void loadStaticObjects();
+
 		// object methods
 		SceneObject* createObject(uint32 objectCRC, int persistenceLevel, const String& database, uint64 oid = 0);
 
