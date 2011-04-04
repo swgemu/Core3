@@ -190,10 +190,11 @@ void PlanetManagerImplementation::loadSnapshotObjects() {
 		loadSnapshotObject(node, &wsiff, totalObjects);
 	}
 
-	info("Loaded " + String::valueOf(totalObjects) + " snapshot objects.", true);
+	info("Loaded " + String::valueOf(totalObjects) + " client objects from world snapshot.", true);
 }
 
 void PlanetManagerImplementation::loadStaticTangibleObjects() {
+	//TODO: Deprecate this to load from lua files.
 	StringBuffer query;
 
 	query << "SELECT * FROM statictangibleobjects WHERE zoneid = " << zone->getZoneID() << ";";

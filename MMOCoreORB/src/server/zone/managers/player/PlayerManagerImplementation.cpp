@@ -58,6 +58,7 @@
 
 #include "server/zone/packets/tangible/TangibleObjectDeltaMessage3.h"
 #include "server/zone/packets/player/PlayerObjectDeltaMessage6.h"
+#include "server/zone/packets/object/StartingLocationListMessage.h"
 
 #include "server/zone/Zone.h"
 
@@ -72,6 +73,7 @@ PlayerManagerImplementation::PlayerManagerImplementation(ZoneServer* zoneServer,
 	globalExpMultiplier = 1.0f;
 
 	loadStartingItems();
+	loadStartingLocations();
 
 	setGlobalLogging(true);
 	setLogging(false);
@@ -88,6 +90,19 @@ void PlayerManagerImplementation::loadStartingItems() {
 		error("unknown error while loadStartingItems");
 		error(e.getMessage());
 	}
+}
+
+void PlayerManagerImplementation::loadStartingLocations() {
+	IffStream* iffStream = TemplateManager::instance()->openIffFile("datatables/creation/starting_locations.iff");
+
+	if (iffStream == NULL) {
+		info("Couldn't load starting locations.", true);
+		return;
+	}
+
+	startingLocationList.parseFromIffStream(iffStream);
+
+	info("Loaded " + String::valueOf(startingLocationList.getTotalLocations()) + " starting locations.", true);
 }
 
 void PlayerManagerImplementation::finalize() {
@@ -2309,4 +2324,25 @@ void PlayerManagerImplementation::generateHologrindProfessions(PlayerCreature* p
 	}
 
 	player->setHologrindProfessions(hologrindProfessions);
+}
+
+void PlayerManagerImplementation::sendStartingLocationsTo(PlayerCreature* player) {
+	StartingLocationListMessage* slm = new StartingLocationListMessage(player);
+	startingLocationList.insertToMessage(slm);
+
+	player->sendMessage(slm);
+}
+
+StartingLocation* PlayerManagerImplementation::getStartingLocation(const String& city) {
+	for (int i = 0; i < startingLocationList.size(); ++i) {
+		StartingLocation* loc = &startingLocationList.get(i);
+
+		if (loc == NULL)
+			continue;
+
+		if (loc->getLocation() == city)
+			return loc;
+	}
+
+	return NULL;
 }

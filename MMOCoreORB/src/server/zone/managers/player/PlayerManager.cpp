@@ -54,6 +54,24 @@ void PlayerManager::loadNameMap() {
 		_implementation->loadNameMap();
 }
 
+void PlayerManager::sendStartingLocationsTo(PlayerCreature* player) {
+	PlayerManagerImplementation* _implementation = (PlayerManagerImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		throw ObjectNotLocalException(this);
+
+	} else
+		_implementation->sendStartingLocationsTo(player);
+}
+
+StartingLocation* PlayerManager::getStartingLocation(const String& city) {
+	PlayerManagerImplementation* _implementation = (PlayerManagerImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		throw ObjectNotLocalException(this);
+
+	} else
+		return _implementation->getStartingLocation(city);
+}
+
 bool PlayerManager::kickUser(const String& name, const String& admin) {
 	PlayerManagerImplementation* _implementation = (PlayerManagerImplementation*) _getImplementation();
 	if (_implementation == NULL) {

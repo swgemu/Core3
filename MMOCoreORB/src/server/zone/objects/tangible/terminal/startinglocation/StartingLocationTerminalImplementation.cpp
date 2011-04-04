@@ -6,10 +6,8 @@
  */
 
 #include "StartingLocationTerminal.h"
-#include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/player/PlayerCreature.h"
-
-#include "server/zone/packets/object/StartingLocationList.h"
+#include "server/zone/managers/player/PlayerManager.h"
 
 void StartingLocationTerminalImplementation::initializeTransientMembers() {
 	TerminalImplementation::initializeTransientMembers();
@@ -23,8 +21,7 @@ int StartingLocationTerminalImplementation::handleObjectMenuSelect(PlayerCreatur
 	if (selectedID != 20) // not use object
 		return 1;
 
-	StartingLocationList* sll = new StartingLocationList(player);
-	player->sendMessage(sll);
+	server->getPlayerManager()->sendStartingLocationsTo(player);
 
 	return 0;
 }
