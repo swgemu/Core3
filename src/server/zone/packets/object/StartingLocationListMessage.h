@@ -42,63 +42,19 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#ifndef STARTINGLOCATIONLIST_H_
-#define STARTINGLOCATIONLIST_H_
+#ifndef STARTINGLOCATIONLISTMESSAGE_H_
+#define STARTINGLOCATIONLISTMESSAGE_H_
 
 #include "ObjectControllerMessage.h"
 
-class StartingLocationList : public ObjectControllerMessage {
-	int listCount;
+class StartingLocationListMessage : public ObjectControllerMessage {
 public:
-	StartingLocationList(CreatureObject* creo)
+	StartingLocationListMessage(CreatureObject* creo)
 			: ObjectControllerMessage(creo->getObjectID(), 0x1B, 0x1FC) {
-		listCount = 0;
-		insertInt(0);
 
-		//TODO: Maybe pull this from the database.
-		AddLocation("tatooine", "mos_eisley", true);
-		AddLocation("tatooine", "bestine", true);
-		AddLocation("tatooine", "mos_entha", false);
-		AddLocation("tatooine", "mos_espa", false);
-		AddLocation("naboo", "theed", true);
-		AddLocation("naboo", "moenia", true);
-		AddLocation("naboo", "keren", false);
-		AddLocation("naboo", "kaadara", false);
-		AddLocation("corellia", "coronet", true);
-		AddLocation("corellia", "tyrena", true);
-		AddLocation("corellia", "kor_vella", false);
-		AddLocation("corellia", "doaba_guerfel", false);
-		AddLocation("talus", "dearic", false);
-		AddLocation("talus", "nashal", false);
-		AddLocation("rori", "restuss", false);
-		AddLocation("rori", "narmle", false);
-
+		//Populate with PlayerManager::sendStartingLocationListTo()
 	}
-
-	void AddLocation(const String& planet, const String& city, bool available) {
-		StringBuffer picture;
-		picture << "/styles.location." << planet << "." << city;
-
-		insertAscii(city);
-		insertAscii(planet);
-		insertInt(0); //??
-		insertInt(0); //??
-		insertAscii(""); //??
-		insertAscii(picture.toString()); //Picture.
-		insertAscii(""); //??
-
-		if (available == true)
-			insertByte(1);
-		else
-			insertByte(0);
-
-		updateListCount();
-	}
-
-	void updateListCount() {
-			insertInt(30, ++listCount);
-		}
 };
 
-#endif /*STARTINGLOCATIONLIST_H_*/
+#endif /*STARTINGLOCATIONLISTMESSAGE_H_*/
 
