@@ -72,12 +72,19 @@ void PlanetManagerImplementation::loadLuaConfig() {
 
 	lua->runFile("scripts/managers/planet_manager.lua");
 
+	//Get's the configuration settings object for this planet.
 	LuaObject luaObject = lua->getGlobalObject(planetName);
 
-	if (luaObject.getIntField("loadClientObjects") > 0)
-		loadSnapshotObjects();
+	if (luaObject.isValidTable()) {
+		if (luaObject.getIntField("loadClientObjects") > 0)
+			loadSnapshotObjects();
+		else
+			info("Client object loading disabled.", true);
 
-	luaObject.pop();
+		luaObject.pop();
+	} else {
+		info("Configuration settings not found.", true);
+	}
 
 	delete lua;
 	lua = NULL;
