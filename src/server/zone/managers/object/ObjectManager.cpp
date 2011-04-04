@@ -362,7 +362,6 @@ void ObjectManager::loadLastUsedObjectID() {
 	info("done loading last used object id 0x" + String::hexvalueOf((int64)nextObjectID).toUpperCase());
 }
 
-<<<<<<< .mine
 void ObjectManager::loadStaticObjects() {
 	Locker _locker(this);
 
@@ -405,8 +404,6 @@ void ObjectManager::loadStaticObjects() {
 	}
 }
 
-=======
->>>>>>> .r3015
 int ObjectManager::commitUpdatePersistentObjectToDB(DistributedObject* object) {
 	if (!((ManagedObject*)object)->isPersistent()) {
 		object->_setUpdated(false);
