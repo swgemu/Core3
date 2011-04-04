@@ -30,7 +30,7 @@ class TerrainManager : public Logger {
 public:
 	TerrainManager(Zone* planet);
 
-	void initialize(const String& terrainFile);
+	bool initialize(const String& terrainFile);
 
 	inline bool getWaterHeight(float x, float y, float& waterHeight) {
 		return terrainData.getWater(x, y, waterHeight);

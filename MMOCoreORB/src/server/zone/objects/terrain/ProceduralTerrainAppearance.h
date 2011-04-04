@@ -73,7 +73,7 @@ public:
 	ProceduralTerrainAppearance();
 	~ProceduralTerrainAppearance();
 
-	bool load(const String& file);
+	bool load(engine::util::IffStream* iffStream);
 
 	void parseFromIffStream(engine::util::IffStream* iffStream);
 	void parseFromIffStream(engine::util::IffStream* iffStream, Version<'0014'>);

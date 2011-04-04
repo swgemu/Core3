@@ -35,11 +35,13 @@ void PlanetManagerImplementation::initialize() {
 
 	numberOfCities = 0;
 
-	//TODO: Load from the TRE files.
-	if (zoneID < 10)
-		terrainManager->initialize("planets/" + zone->getPlanetName() + "/" + zone->getPlanetName() + ".trn");
-
 	info("Loading planet...", true);
+
+	//TODO: Load from the TRE files.
+	if (terrainManager->initialize("terrain/" + zone->getPlanetName() + ".trn"))
+		info("Loaded terrain file successfully.", true);
+	else
+		error("Failed to load terrain file.");
 
 	loadLuaConfig();
 	loadTravelFares();
