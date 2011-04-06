@@ -34,7 +34,7 @@ void MissionManagerImplementation::loadLairObjectsToSpawn() {
 
 	String query = "SELECT * FROM mission_manager_spawn_lairs";
 
-	ResultSet* res = ServerDatabase::instance()->executeQuery(query);
+	Reference<ResultSet*> res = ServerDatabase::instance()->executeQuery(query);
 
 	while (res->next()) {
 		String templateObject = res->getString(1);
@@ -50,8 +50,6 @@ void MissionManagerImplementation::loadLairObjectsToSpawn() {
 		}
 	}
 
-	delete res;
-
 	/*StringBuffer msg;
 	msg << "loaded " << lairObjectTemplatesToSpawn.size() << " lairs to spawn";
 	info(msg.toString(), true);*/
@@ -62,7 +60,7 @@ void MissionManagerImplementation::loadNpcObjectsToSpawn() {
 
 	String query = "SELECT * FROM mission_manager_spawn_bounty";
 
-	ResultSet* res = NULL;
+	Reference<ResultSet*> res = NULL;
 
 	try {
 		res = ServerDatabase::instance()->executeQuery(query);

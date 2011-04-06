@@ -58,6 +58,7 @@ include server.zone.objects.region.RegionCenterPoint;
 include server.zone.objects.region.RegionCenterPointList;
 import server.zone.objects.installation.shuttle.ShuttleInstallation;
 import server.zone.Zone;
+import server.zone.objects.scene.SceneObject;
 
 class Region extends ActiveArea {	
 	@dereferenced

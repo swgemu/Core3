@@ -45,7 +45,7 @@ which carries forward this exception.
 package server.zone.objects.draftschematic;
 
 import engine.service.proto.BaseMessage;
-
+import server.zone.objects.scene.SceneObject;
 import server.zone.packets.scene.AttributeListMessage;
 include server.zone.packets.object.ObjectControllerMessage;
 import server.zone.objects.intangible.IntangibleObject;
@@ -55,6 +55,7 @@ include server.zone.objects.draftschematic.resourceweight.ResourceWeight;
 import server.zone.templates.SharedObjectTemplate;
 import server.zone.objects.player.PlayerCreature;
 import server.zone.objects.area.ActiveArea;
+import system.util.Vector;
 
 class DraftSchematic extends IntangibleObject {
 

@@ -55,6 +55,18 @@ using namespace server::zone::objects::player;
 
 namespace server {
 namespace zone {
+namespace templates {
+
+class SharedObjectTemplate;
+
+} // namespace templates
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::templates;
+
+namespace server {
+namespace zone {
 namespace packets {
 namespace scene {
 
@@ -86,6 +98,8 @@ using namespace server::zone;
 #include "server/zone/objects/tangible/TangibleObject.h"
 
 #include "engine/lua/LuaObject.h"
+
+#include "system/util/VectorMap.h"
 
 namespace server {
 namespace zone {

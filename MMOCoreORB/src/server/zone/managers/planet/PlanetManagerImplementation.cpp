@@ -269,7 +269,7 @@ void PlanetManagerImplementation::loadNoBuildAreas() {
 	StringBuffer query;
 	query << "SELECT * FROM no_build_zones WHERE planet_id = " << zone->getZoneID() << ";";
 
-	ResultSet* result = ServerDatabase::instance()->executeQuery(query);
+	Reference<ResultSet*> result = ServerDatabase::instance()->executeQuery(query);
 
 	while (result->next()) {
 		float x = result->getFloat(5);
@@ -304,8 +304,6 @@ void PlanetManagerImplementation::loadNoBuildAreas() {
 
 		//addNoBuildArea(x, y, radius + 300); // Adding 500 as a buffer for spawns since this patch doesn't need buildings
 	}
-
-	delete result;
 }
 
 bool PlanetManagerImplementation::isNoBuildArea(float x, float y, StringId& fullAreaName) {
@@ -554,7 +552,7 @@ void PlanetManagerImplementation::loadBadgeAreas() {
 	StringBuffer query;
 	query << "SELECT x, y, z, badge_id FROM badge_areas WHERE planet_id = " << zone->getZoneID() << ";";
 
-	ResultSet* result = ServerDatabase::instance()->executeQuery(query);
+	Reference<ResultSet*> result = ServerDatabase::instance()->executeQuery(query);
 
 	uint32 crc = String("object/badge_area.iff").hashCode();
 
@@ -571,8 +569,6 @@ void PlanetManagerImplementation::loadBadgeAreas() {
 		area->initializePosition(x, z, y);
 		area->insertToZone(zone);
 	}
-
-	delete result;
 }
 
 void PlanetManagerImplementation::loadPerformanceLocations() {

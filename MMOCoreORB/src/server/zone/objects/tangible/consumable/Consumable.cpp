@@ -22,6 +22,8 @@
 
 #include "server/zone/objects/manufactureschematic/ManufactureSchematic.h"
 
+#include "server/zone/templates/SharedObjectTemplate.h"
+
 /*
  *	ConsumableStub
  */

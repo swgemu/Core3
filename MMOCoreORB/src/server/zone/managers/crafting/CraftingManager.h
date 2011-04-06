@@ -73,6 +73,8 @@ using namespace server::zone::objects::draftschematic;
 
 #include "engine/lua/Lua.h"
 
+#include "system/util/Vector.h"
+
 #include "server/zone/managers/ZoneManager.h"
 
 namespace server {

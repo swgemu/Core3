@@ -107,6 +107,8 @@ using namespace server::zone::objects::area;
 
 #include "engine/util/u3d/Vector3.h"
 
+#include "system/lang/Time.h"
+
 namespace server {
 namespace zone {
 namespace objects {

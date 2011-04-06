@@ -63,11 +63,43 @@ class ManufactureSchematic;
 
 using namespace server::zone::objects::manufactureschematic;
 
+namespace server {
+namespace zone {
+namespace objects {
+namespace player {
+
+class PlayerCreature;
+
+} // namespace player
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::player;
+
+namespace server {
+namespace zone {
+namespace packets {
+namespace object {
+
+class ObjectMenuResponse;
+
+} // namespace object
+} // namespace packets
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::packets::object;
+
 #include "server/zone/packets/scene/AttributeListMessage.h"
 
 #include "server/zone/objects/tangible/TangibleObject.h"
 
 #include "engine/lua/LuaObject.h"
+
+#include "system/util/VectorMap.h"
+
+#include "system/util/Vector.h"
 
 namespace server {
 namespace zone {

@@ -63,6 +63,8 @@ import server.zone.objects.resource.ResourceSpawn;
 import server.zone.objects.resource.ResourceContainer;
 import server.zone.objects.area.ActiveArea;
 include server.zone.objects.installation.HopperList;
+import system.lang.Time;
+import server.zone.objects.scene.SceneObject;
 
 
 class InstallationObject extends StructureObject {

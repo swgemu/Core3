@@ -85,6 +85,8 @@ using namespace server::zone::objects::resource;
 
 #include "engine/core/ManagedObject.h"
 
+#include "server/zone/objects/scene/SceneObject.h"
+
 namespace server {
 namespace zone {
 namespace objects {

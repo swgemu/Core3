@@ -569,10 +569,6 @@ bool AiAgentImplementation::findNextPosition(float maxDistance, WorldCoordinates
 	while (!found && patrolPoints.size() != 0) {
 		PatrolPoint* targetPosition = &patrolPoints.get(0);
 
-		/*StringBuffer msg;
-			msg << "targetPosition " << targetPosition->getPositionX() << " " << targetPosition->getPositionZ() << " " << targetPosition->getPositionY() << " " << targetPosition->getCell();
-			info(msg.toString(), true);*/
-
 		Vector<WorldCoordinates>* path = pathFinder->findPath(_this, targetPosition->getCoordinates());
 
 		if (path == NULL) {
@@ -588,18 +584,6 @@ bool AiAgentImplementation::findNextPosition(float maxDistance, WorldCoordinates
 
 		for (int i = 1; i < path->size() && !found; ++i) { // i = 0 is our position
 			WorldCoordinates* coord = &path->get(i);
-
-			/*if (parent != NULL) {
-					if (coord->getCell() != NULL) {
-						StringBuffer msg2;
-						msg2 << "checking coord " << coord->getX() << " " << coord->getZ() << " " << coord->getY() << " " << coord->getCell()->getObjectID();
-						info(msg2.toString(), true);
-					} else {
-						StringBuffer msg2;
-						msg2 << "checking coord " << coord->getX() << " " << coord->getZ() << " " << coord->getY();
-						info(msg2.toString(), true);
-					}
-				}*/
 
 			Vector3 nextWorldPos = coord->getWorldPosition();
 
@@ -629,14 +613,6 @@ bool AiAgentImplementation::findNextPosition(float maxDistance, WorldCoordinates
 
 					found = false;
 				} else {
-					/*if (parent != NULL) {
-							info("pathDistance = " + String::valueOf(pathDistance), true);
-							info("newSpeedSquared = " + String::valueOf(newSpeedSquared), true);
-							info("maxDistance = " + String::valueOf(maxDistance), true);
-							info("i = " + String::valueOf(i), true);
-							info("path->size() - 1 = " + String::valueOf(path->size() - 1), true);
-						}*/
-
 					//lets convert source and target coordinates to model or world space
 
 					Vector3 oldCoordinates = oldCoord->getPoint();
@@ -676,22 +652,6 @@ bool AiAgentImplementation::findNextPosition(float maxDistance, WorldCoordinates
 							}
 						}
 
-
-						/*if (parent != NULL) {
-								info("dx = " + String::valueOf(dx), true);
-								info("dy = " + String::valueOf(dy), true);
-								info("dist = " + String::valueOf(dist), true);
-								info("rest = " + String::valueOf(newSpeed), true);
-								info("oldCoord x = " + String::valueOf(oldCoordinates.getX()), true);
-								info("oldCoord y = " + String::valueOf(oldCoordinates.getY()), true);
-								info("current x = " + String::valueOf(getPositionX()), true);
-								info("current y = " + String::valueOf(getPositionY()), true);
-								info("next x = " + String::valueOf(nextPosition.getX()), true);
-								info("next y = " + String::valueOf(nextPosition.getY()), true);
-								info("new x = " + String::valueOf(newPositionX), true);
-								info("new y = " + String::valueOf(newPositionY), true);
-							}*/
-
 						if (nextPosition.getCell() == NULL) {
 							newPositionZ = zone->getHeight(newPositionX, newPositionY);
 							//newPositionZ = nextPosition.getZ();
@@ -706,7 +666,6 @@ bool AiAgentImplementation::findNextPosition(float maxDistance, WorldCoordinates
 					}
 				}
 			}
-
 
 			oldCoord = coord;
 		}
@@ -805,15 +764,6 @@ void AiAgentImplementation::doMovement() {
 
 	nextStepPosition.setPosition(nextPosition.getX(), nextPosition.getZ(), nextPosition.getY());
 	nextStepPosition.setCell(nextPosition.getCell());
-
-
-	/*if (parent != NULL) {
-		StringBuffer msg;
-		msg << "setting nextPosition to " << nextStepPosition.getPositionX() << " " << nextStepPosition.getPositionZ() << " " << nextStepPosition.getPositionY() << " 0x" << hex << nextStepPosition.getCell();
-		info(msg.toString(), true);
-	}*/
-
-	Vector3 nextStepWorldPosition = nextStepPosition.getWorldPosition();
 
 	float directionangle = atan2(nextPosition.getX() - getPositionX(), nextPosition.getY() - getPositionY());
 

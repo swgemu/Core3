@@ -24,6 +24,8 @@
 
 #include "server/zone/objects/area/ActiveArea.h"
 
+#include "server/zone/objects/scene/SceneObject.h"
+
 /*
  *	InstallationObjectStub
  */

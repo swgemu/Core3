@@ -75,6 +75,8 @@ using namespace server::zone::managers::weather::events;
 
 #include "system/lang/ref/Reference.h"
 
+#include "system/util/Vector.h"
+
 namespace server {
 namespace zone {
 namespace managers {

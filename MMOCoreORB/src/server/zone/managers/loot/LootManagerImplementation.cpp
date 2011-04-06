@@ -26,7 +26,7 @@ void LootManagerImplementation::initialize() {
 	int amountGroups = 0;
 	int amountObjects = 0;
 	try {
-		ResultSet* result;
+		Reference<ResultSet*> result;
 		StringBuffer query;
 
 		query << "SELECT * FROM loottable;";
@@ -72,7 +72,6 @@ void LootManagerImplementation::initialize() {
 			}
 		}
 
-		delete result;
 	}  catch (Exception& e) {
 		error(e.getMessage());
 	}
@@ -84,7 +83,7 @@ LootGroupObject* LootManagerImplementation::createLootGroup(uint32 lootGroup) {
 	LootGroupObject* lootGroupObject;
 
 	try {
-		ResultSet* result;
+		Reference<ResultSet*> result;
 		StringBuffer query;
 
 		query << "SELECT * FROM lootgroup_weight WHERE lootgroup=" << lootGroup << ";";
@@ -101,8 +100,6 @@ LootGroupObject* LootManagerImplementation::createLootGroup(uint32 lootGroup) {
 		} else {
 			info("Could not create LootGroup " + String::valueOf(lootGroup), true);
 		}
-
-		delete result;
 
 	}  catch (Exception& e) {
 		error(e.getMessage());

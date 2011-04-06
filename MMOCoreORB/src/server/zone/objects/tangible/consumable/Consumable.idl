@@ -56,6 +56,8 @@ import server.zone.ZoneServer;
 import server.zone.objects.creature.buffs.Buff;
 import server.zone.objects.manufactureschematic.ManufactureSchematic;
 include server.zone.objects.manufactureschematic.craftingvalues.CraftingValues;
+import system.util.VectorMap;
+import server.zone.templates.SharedObjectTemplate;
 
 class Consumable extends TangibleObject {
 	protected int duration;

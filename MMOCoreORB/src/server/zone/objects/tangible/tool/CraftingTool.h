@@ -95,11 +95,55 @@ class ActiveArea;
 
 using namespace server::zone::objects::area;
 
+namespace server {
+namespace zone {
+namespace packets {
+namespace scene {
+
+class AttributeListMessage;
+
+} // namespace scene
+} // namespace packets
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::packets::scene;
+
+namespace server {
+namespace zone {
+namespace objects {
+namespace player {
+
+class PlayerCreature;
+
+} // namespace player
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::player;
+
+namespace server {
+namespace zone {
+namespace templates {
+
+class SharedObjectTemplate;
+
+} // namespace templates
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::templates;
+
 #include "server/zone/objects/tangible/tool/CraftingStation.h"
+
+#include "server/zone/objects/manufactureschematic/craftingvalues/CraftingValues.h"
 
 #include "engine/lua/LuaObject.h"
 
 #include "server/zone/objects/tangible/tool/ToolTangibleObject.h"
+
+#include "system/util/Vector.h"
 
 namespace server {
 namespace zone {

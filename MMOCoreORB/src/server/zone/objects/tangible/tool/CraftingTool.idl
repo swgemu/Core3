@@ -54,6 +54,11 @@ import server.zone.managers.crafting.CraftingManager;
 import server.zone.objects.manufactureschematic.ManufactureSchematic;
 import server.zone.objects.tangible.tool.ToolTangibleObject;
 import server.zone.objects.area.ActiveArea;
+import server.zone.packets.scene.AttributeListMessage;
+import server.zone.objects.player.PlayerCreature;
+include server.zone.objects.manufactureschematic.craftingvalues.CraftingValues;
+import system.util.Vector;
+import server.zone.templates.SharedObjectTemplate;
 
 class CraftingTool extends ToolTangibleObject {
 	

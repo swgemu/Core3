@@ -52,7 +52,7 @@ import server.zone.Zone;
 import server.zone.objects.player.PlayerCreature;
 import server.zone.managers.weather.events.WeatherChangeEvent;
 import server.zone.managers.weather.events.SandstormTickEvent;
-
+import system.util.Vector;
 
 class WeatherManager extends ManagedService implements Lua {
 	@weakReference

@@ -109,6 +109,8 @@ using namespace server::zone::packets::object;
 
 #include "engine/lua/LuaObject.h"
 
+#include "system/util/Vector.h"
+
 namespace server {
 namespace zone {
 namespace objects {

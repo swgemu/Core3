@@ -48,12 +48,11 @@ public:
 		StringBuffer query;
 		query << "SELECT session_id FROM sessions WHERE account_id = " << accountID << ";";
 
-		ResultSet* result = ServerDatabase::instance()->executeQuery(query);
+		Reference<ResultSet*> result = ServerDatabase::instance()->executeQuery(query);
 
 		if (result != NULL && result->next()) {
 			uint32 sesskey = result->getUnsignedInt(0);
 
-			delete result;
 			result = NULL;
 
 			if (sesskey == sessionID) {
@@ -83,8 +82,6 @@ public:
 				//}
 			}
 		}
-
-		delete result;
 
 		ErrorMessage* errMsg = new ErrorMessage("Login Error", "Your session key is invalid, or has expired. Please restart your client.", 0x0);
 		client->sendMessage(errMsg);

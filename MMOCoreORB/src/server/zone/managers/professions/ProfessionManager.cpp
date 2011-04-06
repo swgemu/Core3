@@ -679,7 +679,7 @@ void ProfessionManager::loadProfessionsFromDatabase() {
 
 	lock();
 
-	ResultSet* result;
+	Reference<ResultSet*> result;
 
 	StringBuffer query;
 	query << "SELECT * FROM skills";
@@ -712,7 +712,6 @@ void ProfessionManager::loadProfessionsFromDatabase() {
 
 	}
 
-	delete result;
 
 	for (int i = 0; i < skillBoxMap.size(); i++) {
 		SkillBox* sBox = skillBoxMap.get(i);
@@ -824,7 +823,7 @@ SkillBox* ProfessionManager::loadBox(const String& name, Profession* profession)
 	StringBuffer query;
 	query << "SELECT * FROM skills WHERE skill_name = '" << name << "'";
 
-	ResultSet* result = ServerDatabase::instance()->executeQuery(query);
+	Reference<ResultSet*> result = ServerDatabase::instance()->executeQuery(query);
 
 	if (!result->next()) {
 		StringBuffer msg;
@@ -837,8 +836,6 @@ SkillBox* ProfessionManager::loadBox(const String& name, Profession* profession)
 
 	if (!isProfession)
 		box = loadSkillBox(result, profession);
-
-	delete result;
 
 	return box;
 }

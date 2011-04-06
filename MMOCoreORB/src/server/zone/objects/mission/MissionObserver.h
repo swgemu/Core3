@@ -57,6 +57,8 @@ using namespace server::zone::objects::scene;
 
 #include "engine/util/Observable.h"
 
+#include "engine/log/Logger.h"
+
 namespace server {
 namespace zone {
 namespace objects {

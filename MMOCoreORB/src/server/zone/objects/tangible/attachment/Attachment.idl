@@ -49,13 +49,13 @@ import engine.lua.LuaObject;
 import server.zone.packets.object.ObjectMenuResponse;
 import server.zone.objects.scene.SceneObject;
 import server.zone.objects.player.PlayerCreature;
+import server.zone.templates.SharedObjectTemplate;
 import server.zone.packets.scene.AttributeListMessage;
 include server.zone.objects.tangible.wearables.WearableSkillModMap;
 include server.zone.objects.tangible.wearables.WearableSkillMods;
-
-import server.zone.Zone;
-
 include server.zone.packets.scene.AttributeListMessage;
+import server.zone.Zone;
+import system.util.VectorMap;
 
 class Attachment extends TangibleObject {
 

@@ -50,8 +50,11 @@ import server.zone.packets.object.ObjectMenuResponse;
 import server.zone.objects.scene.SceneObject;
 import server.zone.Zone;
 import server.zone.objects.manufactureschematic.ManufactureSchematic;
-
 include server.zone.packets.scene.AttributeListMessage;
+import system.util.VectorMap;
+import system.util.Vector;
+import server.zone.objects.player.PlayerCreature;
+import server.zone.packets.object.ObjectMenuResponse;
 
 class Component extends TangibleObject {
 	

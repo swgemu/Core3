@@ -144,8 +144,6 @@ void ZoneServerImplementation::initialize() {
 		if (result->next())
 			name = result->getString(0);
 
-		delete result;
-
 	} catch (DatabaseException& e) {
 		info("Unhandled exception when getting galaxy name from database.");
 	}

@@ -53,24 +53,24 @@ import server.zone.packets.scene.AttributeListMessage;
 import server.zone.objects.player.PlayerCreature;
 import system.util.VectorMap;
 import system.lang.ref.Reference;
-
+import system.util.Vector;
 include server.zone.templates.SharedObjectTemplate;
 
 class LootkitObject extends TangibleObject {	
 	
 	@dereferenced
-	VectorMap<unsigned int, boolean> components;
+	protected VectorMap<unsigned int, boolean> components;
 		
 	@dereferenced
-	VectorMap<unsigned int, string> attributes;
+	protected VectorMap<unsigned int, string> attributes;
 	
 	@dereferenced
-	Vector<unsigned int> comps;
+	protected Vector<unsigned int> comps;
 	
 	@dereferenced
-	Vector<unsigned int> reward;
+	protected Vector<unsigned int> reward;
 	
-	boolean deleteComponents;
+	protected boolean deleteComponents;
 	
 	public LootkitObject() {
 		Logger.setLoggingName("LootKitObject");

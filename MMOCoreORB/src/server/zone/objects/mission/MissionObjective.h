@@ -73,6 +73,10 @@ using namespace server::zone::objects::player;
 
 #include "system/util/SortedVector.h"
 
+#include "engine/log/Logger.h"
+
+#include "engine/core/ManagedObject.h"
+
 namespace server {
 namespace zone {
 namespace objects {
