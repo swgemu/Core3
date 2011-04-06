@@ -48,6 +48,7 @@ which carries forward this exception.
 #include "server/zone/objects/scene/SceneObject.h"
 
 #include "WeatherCommand.h"
+#include "VendorInfoCommand.h"
 
 
 #include "ServerCommandFactory.h"
@@ -61,6 +62,7 @@ public:
 		: QueueCommand(name, server) {
 
 		methodFactory.registerMethod<WeatherCommand>("weather");
+		methodFactory.registerMethod<VendorInfoCommand>("vendorinfo");
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {

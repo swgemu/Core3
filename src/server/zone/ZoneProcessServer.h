@@ -139,6 +139,20 @@ class ObjectManager;
 
 using namespace server::zone::managers::object;
 
+namespace server {
+namespace zone {
+namespace managers {
+namespace vendor {
+
+class VendorManager;
+
+} // namespace vendor
+} // namespace managers
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::managers::vendor;
+
 #include "engine/core/ManagedService.h"
 
 namespace server {
@@ -149,6 +163,8 @@ public:
 	ZoneProcessServer(ZoneServer* server);
 
 	void initialize();
+
+	VendorManager* getVendorManager();
 
 	ZoneServer* getZoneServer();
 
@@ -192,6 +208,8 @@ class ZoneProcessServerImplementation : public ManagedServiceImplementation {
 protected:
 	ManagedReference<ZoneServer* > zoneServer;
 
+	VendorManager* vendorManager;
+
 	ZonePacketHandler* zonePacketHandler;
 
 	NameManager* nameManager;
@@ -212,6 +230,8 @@ public:
 	void initialize();
 
 	void finalize();
+
+	VendorManager* getVendorManager();
 
 	ZoneServer* getZoneServer();
 

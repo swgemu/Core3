@@ -10,6 +10,9 @@
 #include "server/zone/packets/scene/AttributeListMessage.h"
 #include "server/zone/packets/object/ObjectMenuResponse.h"
 #include "server/zone/objects/building/BuildingObject.h"
+#include "server/zone/objects/tangible/wearables/WearableObject.h"
+#include "server/zone/objects/tangible/TangibleObject.h"
+#include "server/zone/objects/tangible/weapon/WeaponObject.h"
 
 #include "server/zone/templates/tangible/VendorCreatureTemplate.h"
 #include "server/zone/ZoneServer.h"
@@ -19,6 +22,20 @@
 #include "server/zone/managers/auction/AuctionManager.h"
 #include "server/zone/managers/auction/AuctionsMap.h"
 
+#include "server/zone/managers/vendor/VendorManager.h"
+#include "server/zone/managers/vendor/VendorOutfitManager.h"
+#include "server/zone/managers/vendor/Outfit.h"
+
+void VendorCreatureImplementation::initializeTransientMembers() {
+	CreatureObjectImplementation::initializeTransientMembers();
+
+	if (vendor.isInitialized())
+		vendor.rescheduleEvent();
+
+	VendorManager::instance()->addVendor(getObjectID(), &vendor);
+
+}
+
 void VendorCreatureImplementation::loadTemplateData(SharedObjectTemplate* templateData) {
 	CreatureObjectImplementation::loadTemplateData(templateData);
 
@@ -27,35 +44,6 @@ void VendorCreatureImplementation::loadTemplateData(SharedObjectTemplate* templa
 
 	vendor.setVendor(_this);
 	vendor.setVendorType(Vendor::NPCVENDOR);
-
-	VendorCreatureTemplate* vendorTempl = dynamic_cast<VendorCreatureTemplate*> (templateData);
-
-	if (vendorTempl == NULL)
-		return;
-
-	String hairFile = vendorTempl->getHairFile();
-	SceneObject* hairSlot = getSlottedObject("hair");
-
-	if (hairSlot == NULL || !hairFile.isEmpty()) {
-		String hairCustomization;
-		ManagedReference<PlayerManager*> pman = Core::lookupObject<ZoneServer>("ZoneServer")->getPlayerManager();
-		TangibleObject* hair = pman->createHairObject(hairFile, hairCustomization);
-
-		addObject(hair, 4);
-	}
-
-	Vector<uint32>* clothes = vendorTempl->getClothes();
-
-	for (int i = 0; i < clothes->size(); ++i) {
-		uint32 templateCRC = clothes->get(i);
-
-		ManagedReference<SceneObject*> obj = Core::lookupObject<ZoneServer>("ZoneServer")->createObject(templateCRC, 0);
-
-		if (obj != NULL) {
-			addObject(obj, 4);
-		}
-
-	}
 
 }
 
@@ -113,9 +101,12 @@ int VendorCreatureImplementation::handleObjectMenuSelect(PlayerCreature* player,
 			return 0;
 		}
 
+		if (vendor.isInitialized())
+			return 0;
+
 		player->sendSystemMessage("@player_structure:vendor_initialized");
 		vendor.setInitialized(true);
-
+		vendor.runVendorCheck();
 		return 0;
 	}
 
@@ -159,11 +150,107 @@ void VendorCreatureImplementation::fillAttributeList(AttributeListMessage* alm, 
 
 }
 
-void VendorCreatureImplementation::addClothingItem(WearableObject* clothing) {
+void VendorCreatureImplementation::addClothingItem(PlayerCreature* player, TangibleObject* clothing) {
+	if (!clothing->isWearableObject() && !clothing->isWeaponObject())
+		return;
+
+	if (player->getObjectID() != vendor.getOwnerID())
+		return;
+
+	uint16 clothingMask = clothing->getPlayerUseMask();
+	uint16 vendorMask = getWearableMask();
+	uint16 maskRes = ~clothingMask & vendorMask;
+
+	if (maskRes != 0) {
+		//TODO: Change this so the vendor speaks it can't wear that item. like live.
+		player->sendSystemMessage("That vendor lacks the necessary requirements to wear this object");
+		return;
+	}
+
+	ManagedReference<SceneObject*> clothingParent = clothing->getParent();
+
+	if (clothingParent == NULL)
+		return;
+
+	clothingParent->removeObject(clothing, true);
+
+	for (int i = 0; i < clothing->getArrangementDescriptorSize(); ++i) {
+		String arrangementDescriptor = clothing->getArrangementDescriptor(i);
+		ManagedReference<SceneObject*> slot = getSlottedObject(arrangementDescriptor);
+		if (slot != NULL) {
+			removeObject(slot, true);
+			slot->destroyObjectFromDatabase(true);
+		}
+	}
+
+	addObject(clothing, 4, false);
+	doAnimation("pose_proudly");
+	broadcastObject(clothing, true);
+	//TODO: Add Chat message from vendor when item is added.
 
 }
 
+void VendorCreatureImplementation::createChildObjects() {
+	CreatureObjectImplementation::createChildObjects();
+
+	VendorCreatureTemplate* vendorTempl = dynamic_cast<VendorCreatureTemplate*> (getObjectTemplate());
+
+	if (vendorTempl == NULL)
+		return;
+
+	String randomOutfit = vendorTempl->getOutfitName(System::random(vendorTempl->getOutfitsSize() -1));
+	if (randomOutfit.isEmpty())
+		return;
+
+	Outfit* outfit = VendorOutfitManager::instance()->getOutfit(randomOutfit);
+
+	if (outfit == NULL)
+		return;
+
+	String hairFile = vendorTempl->getHairFile(System::random(vendorTempl->getHairSize() - 1));
+	SceneObject* hairSlot = getSlottedObject("hair");
+
+	if (hairSlot == NULL && !hairFile.isEmpty()) {
+		String hairCustomization;
+		ManagedReference<PlayerManager*> pman = getZoneServer()->getPlayerManager();
+		TangibleObject* hair = pman->createHairObject(hairFile, hairCustomization);
+
+		addObject(hair, 4);
+	}
+
+	Vector<uint32>* clothing = outfit->getClothing();
+
+	for (int i = 0; i < clothing->size(); ++i) {
+		ManagedReference<SceneObject*> obj = getZoneServer()->createObject(clothing->get(i), 1);
+		if (obj == NULL)
+			continue;
+
+		for (int k = 0; k < obj->getArrangementDescriptorSize(); ++k) {
+			String arrangementDescriptor = obj->getArrangementDescriptor(k);
+			ManagedReference<SceneObject*> slot = getSlottedObject(arrangementDescriptor);
+			if (slot != NULL) {
+				removeObject(slot, false);
+				slot->destroyObjectFromDatabase(true);
+			}
+		}
+
+		addObject(obj, 4);
+	}
+
+	// Customization Variables -- TESTING
+	//setCustomizationVariable("index_color_skin", 230);
+	//setCustomizationVariable("blend_skinny", 0);
+	//setCustomizationVariable("blend_fat", (((1 - .5f) / .5f) * 255));
+
+}
+
+void VendorCreatureImplementation::addVendorToMap() {
+	VendorManager::instance()->addVendor(getObjectID(), &vendor);
+}
+
 void VendorCreatureImplementation::destroyObjectFromDatabase(bool destroyContainedObject) {
+	VendorManager::instance()->dropVendor(getObjectID());
+
 	ManagedReference<AuctionManager*> aman = getZoneServer()->getAuctionManager();
 	if (aman == NULL)
 		return;

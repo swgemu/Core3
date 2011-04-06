@@ -46,6 +46,9 @@ which carries forward this exception.
 #define CREATEVENDORCOMMAND_H_
 
 #include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/objects/building/BuildingObject.h"
+#include "server/zone/objects/player/PlayerCreature.h"
+#include "server/zone/objects/player/sessions/vendor/CreateVendorSession.h"
 
 class CreateVendorCommand : public QueueCommand {
 public:
@@ -62,6 +65,28 @@ public:
 
 		if (!checkInvalidPostures(creature))
 			return INVALIDPOSTURE;
+
+		if (!creature->isPlayerCreature())
+			return GENERALERROR;
+
+		ManagedReference<PlayerCreature*> player = (PlayerCreature*) creature;
+		SceneObject* parent = player->getRootParent();
+
+		if (parent == NULL || !parent->isBuildingObject()) {
+			player->sendSystemMessage("@player_structure:must_be_in_building");
+			return GENERALERROR;
+		}
+
+		ManagedReference<BuildingObject*> building = (BuildingObject*) parent;
+
+		if (!building->isOnAdminList(player)) {
+			player->sendSystemMessage("@player_structure:must_be_admin");
+			return GENERALERROR;
+		}
+
+		//Create Session
+		ManagedReference<CreateVendorSession*> session = new CreateVendorSession(player);
+		session->initalizeWindow(player);
 
 		return SUCCESS;
 	}

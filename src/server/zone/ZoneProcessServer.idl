@@ -57,10 +57,13 @@ import server.zone.managers.sui.SuiManager;
 import server.zone.managers.player.PlayerManager;
 import server.zone.managers.professions.ProfessionManager;
 import server.zone.managers.object.ObjectManager;
+import server.zone.managers.vendor.VendorManager;
 
 class ZoneProcessServer extends ManagedService {
 	@weak
 	transient protected ZoneServer zoneServer;
+
+	transient protected VendorManager vendorManager;
 
 	@local
 	transient protected ZonePacketHandler zonePacketHandler;
@@ -89,8 +92,13 @@ class ZoneProcessServer extends ManagedService {
 	public native void initialize();
 
 	public native void finalize();
-	
+
 	// setters and getters
+	@local
+	public VendorManager getVendorManager() {
+		return vendorManager;
+	}
+
 	public ZoneServer getZoneServer() {
 		return zoneServer;
 	}

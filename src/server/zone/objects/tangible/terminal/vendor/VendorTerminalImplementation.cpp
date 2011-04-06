@@ -14,6 +14,16 @@
 #include "server/zone/managers/auction/AuctionManager.h"
 #include "server/zone/managers/auction/AuctionsMap.h"
 
+void VendorTerminalImplementation::initializeTransientMembers() {
+	TerminalImplementation::initializeTransientMembers();
+
+	if (vendor.isInitialized())
+		vendor.rescheduleEvent();
+
+	VendorManager::instance()->addVendor(getObjectID(), &vendor);
+
+}
+
 void VendorTerminalImplementation::loadTemplateData(SharedObjectTemplate* templateData) {
 	TerminalImplementation::loadTemplateData(templateData);
 	optionsBitmask = 0x108;
@@ -78,6 +88,7 @@ int VendorTerminalImplementation::handleObjectMenuSelect(PlayerCreature* player,
 
 		player->sendSystemMessage("@player_structure:vendor_initialized");
 		vendor.setInitialized(true);
+		vendor.runVendorCheck();
 
 		return 0;
 	}
@@ -117,6 +128,8 @@ int VendorTerminalImplementation::handleObjectMenuSelect(PlayerCreature* player,
 }
 
 void VendorTerminalImplementation::destroyObjectFromDatabase(bool destroyContainedObject) {
+	VendorManager::instance()->dropVendor(getObjectID());
+
 	ManagedReference<AuctionManager*> aman = getZoneServer()->getAuctionManager();
 	if (aman == NULL)
 		return;
@@ -128,4 +141,8 @@ void VendorTerminalImplementation::destroyObjectFromDatabase(bool destroyContain
 	amap->decreasePlayerVendorCount(vendor.getOwnerID());
 
 	TerminalImplementation::destroyObjectFromDatabase(destroyContainedObject);
+}
+
+void VendorTerminalImplementation::addVendorToMap() {
+	VendorManager::instance()->addVendor(getObjectID(), &vendor);
 }

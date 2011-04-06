@@ -635,6 +635,24 @@ int StructureManagerImplementation::changePrivacy(PlayerCreature* player, Struct
 		return 0;
 	}
 
+	// Check for a vendor before allowing the building to be set to private.
+	if (structureObject->isPublicStructure() && structureObject->isBuildingObject()) {
+		BuildingObject* buildo = (BuildingObject*) structureObject;
+
+		for (int i = 0; i < buildo->getTotalCellNumber(); ++i) {
+			CellObject* cell = buildo->getCell(i);
+			if (cell == NULL)
+				continue;
+
+			for (int j = 0; j < cell->getContainerObjectsSize(); ++j) {
+				if (cell->getContainerObject(j)->isVendor()) {
+					player->sendSystemMessage("@player_structure:vendor_no_private"); //A structure hosting a vendor cannot be declared private.
+					return 0;
+				}
+			}
+		}
+	}
+
 	structureObject->setPublicStructure(!structureObject->isPublicStructure());
 
 	if (structureObject->isPublicStructure())

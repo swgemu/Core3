@@ -54,6 +54,7 @@ which carries forward this exception.
 #include "managers/holocron/HolocronManager.h"
 #include "managers/professions/ProfessionManager.h"
 #include "server/zone/objects/creature/professions/SkillBox.h"
+#include "managers/vendor/VendorManager.h"
 
 #include "managers/objectcontroller/ObjectController.h"
 
@@ -69,6 +70,8 @@ ZoneProcessServerImplementation::ZoneProcessServerImplementation(ZoneServer* ser
 	professionManager = NULL;
 
 	zonePacketHandler = NULL;
+
+	vendorManager = NULL;
 }
 
 void ZoneProcessServerImplementation::finalize() {
@@ -95,9 +98,16 @@ void ZoneProcessServerImplementation::finalize() {
 	if (professionManager != NULL) {
 		professionManager = NULL;
 	}
+
+	if (vendorManager != NULL)
+		vendorManager = NULL;
 }
 
 void ZoneProcessServerImplementation::initialize() {
+
+	vendorManager = VendorManager::instance();
+	vendorManager->initialize();
+
 	zonePacketHandler = new ZonePacketHandler("ZonePacketHandler", _this);
 	zonePacketHandler->setLogging(false);
 
@@ -110,4 +120,5 @@ void ZoneProcessServerImplementation::initialize() {
 	professionManager = ProfessionManager::instance();
 	professionManager->setObjectController(objectController);
 	professionManager->initialize();
+
 }

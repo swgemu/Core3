@@ -84,6 +84,8 @@ class ImageDesignSession : public Facade {
 public:
 	ImageDesignSession(CreatureObject* parent);
 
+	void initializeTransientMembers();
+
 	void startImageDesign(PlayerCreature* designer, PlayerCreature* targetPlayer);
 
 	void updateImageDesign(unsigned long long designer, unsigned long long targetPlayer, unsigned long long tent, int type, const ImageDesignData& data);
@@ -144,6 +146,8 @@ public:
 	ImageDesignSessionImplementation(CreatureObject* parent);
 
 	ImageDesignSessionImplementation(DummyConstructorParameter* param);
+
+	void initializeTransientMembers();
 
 	void startImageDesign(PlayerCreature* designer, PlayerCreature* targetPlayer);
 
@@ -207,6 +211,8 @@ public:
 	ImageDesignSessionAdapter(ImageDesignSessionImplementation* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
+
+	void initializeTransientMembers();
 
 	int initializeSession();
 

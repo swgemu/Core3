@@ -1218,8 +1218,6 @@ void CreatureObjectImplementation::deleteQueueAction(uint32 actionCount) {
 uint32 CreatureObjectImplementation::getWearableMask() {
 	uint16 characterMask = 0;
 
-	int raceID = Races::getRaceID(TemplateManager::instance()->getTemplateFile(serverObjectCRC));
-
 	if (this->isRebel())
 		characterMask |= WearableObject::REBEL;
 	else if (this->isImperial())
@@ -1230,70 +1228,46 @@ uint32 CreatureObjectImplementation::getWearableMask() {
 	/*if (this->isOnLeave())
 		characterMask |= WearableObject::COVERT;*/
 
-	switch (raceID) {
-	case 0:
-		characterMask |= WearableObject::MALE | WearableObject::HUMAN;
+	switch (species) {
+	case 0: // HUMAN
+		characterMask |= WearableObject::HUMAN;
 		break;
-	case 1:
-		characterMask |= WearableObject::MALE | WearableObject::TRANDOSHAN;
+	case 2: // TRANDOSHAN
+		characterMask |= WearableObject::TRANDOSHAN;
 		break;
-	case 2:
-		characterMask |= WearableObject::MALE | WearableObject::TWILEK;
+	case 6: // TWILEK
+		characterMask |= WearableObject::TWILEK;
 		break;
-	case 3:
-		characterMask |= WearableObject::MALE | WearableObject::BOTHAN;
+	case 5: // BOTHAN
+		characterMask |= WearableObject::BOTHAN;
 		break;
-	case 4:
-		characterMask |= WearableObject::MALE | WearableObject::ZABRAK;
+	case 7: // ZABRAK
+		characterMask |= WearableObject::ZABRAK;
 		break;
-	case 5:
-		characterMask |= WearableObject::MALE | WearableObject::RODIAN;
+	case 1: // RODIAN
+		characterMask |= WearableObject::RODIAN;
 		break;
-	case 6:
-		characterMask |= WearableObject::MALE | WearableObject::MONCALAMARI;
+	case 3: //MONCALAMARI
+		characterMask |= WearableObject::MONCALAMARI;
 		break;
-	case 7:
-		characterMask |= WearableObject::MALE | WearableObject::WOOKIEE;
+	case 4: //WOOKIEE:
+		characterMask |= WearableObject::WOOKIEE;
 		break;
-	case 8:
-		characterMask |= WearableObject::MALE | WearableObject::SULLUSTAN;
+	case 49: //SULLUSTAN:
+		characterMask |= WearableObject::SULLUSTAN;
 		break;
-	case 9:
-		characterMask |= WearableObject::MALE | WearableObject::ITHORIAN;
-		break;
-	case 10:
-		characterMask |= WearableObject::FEMALE | WearableObject::HUMAN;
-		break;
-	case 11:
-		characterMask |= WearableObject::FEMALE | WearableObject::TRANDOSHAN;
-		break;
-	case 12:
-		characterMask |= WearableObject::FEMALE | WearableObject::TWILEK;
-		break;
-	case 13:
-		characterMask |= WearableObject::FEMALE | WearableObject::BOTHAN;
-		break;
-	case 14:
-		characterMask |= WearableObject::FEMALE | WearableObject::ZABRAK;
-		break;
-	case 15:
-		characterMask |= WearableObject::FEMALE | WearableObject::RODIAN;
-		break;
-	case 16:
-		characterMask |= WearableObject::FEMALE | WearableObject::MONCALAMARI;
-		break;
-	case 17:
-		characterMask |= WearableObject::FEMALE | WearableObject::WOOKIEE;
-		break;
-	case 18:
-		characterMask |= WearableObject::FEMALE | WearableObject::SULLUSTAN;
-		break;
-	case 19:
-		characterMask |= WearableObject::FEMALE | WearableObject::ITHORIAN;
+	case 33: //ITHORIAN:
+		characterMask |= WearableObject::ITHORIAN;
 		break;
 	}
 
+	if (gender == MALE)
+		characterMask |= WearableObject::MALE;
+	else if (gender == FEMALE)
+		characterMask |= WearableObject::FEMALE;
+
 	return characterMask;
+
 }
 
 int CreatureObjectImplementation::canAddObject(SceneObject* object, int containmentType, String& errorDescription) {

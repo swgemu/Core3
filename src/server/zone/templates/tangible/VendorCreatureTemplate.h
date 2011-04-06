@@ -11,10 +11,8 @@
 #include "server/zone/templates/tangible/SharedCreatureObjectTemplate.h"
 
 class VendorCreatureTemplate : public SharedCreatureObjectTemplate {
-
-	Vector<uint32> clothes;
-
-	String hairFile;
+	Vector<String> outfits;
+	Vector<String> hairFile;
 
 public:
 	VendorCreatureTemplate() {
@@ -28,27 +26,44 @@ public:
 	void readObject(LuaObject* templateData) {
 		SharedCreatureObjectTemplate::readObject(templateData);
 
-		hairFile = templateData->getStringField("hair");
+		LuaObject hairTemplate = templateData->getObjectField("hair");
 
-		LuaObject clothesTemplate = templateData->getObjectField("clothes");
+		for (int i = 1; i <= hairTemplate.getTableSize(); ++i) {
+			hairFile.add(hairTemplate.getStringAt(i));
+		}
+
+		hairTemplate.pop();
+
+		LuaObject clothesTemplate = templateData->getObjectField("clothing");
 
 		for (int i = 1; i <= clothesTemplate.getTableSize(); ++i) {
-			String file = clothesTemplate.getStringAt(i);
-			uint32 templateCRC = file.hashCode();
-
-			clothes.add(templateCRC);
+			outfits.add(clothesTemplate.getStringAt(i));
 		}
 
 		clothesTemplate.pop();
 
     }
 
-	inline String getHairFile() const {
-		return hairFile;
+	inline String getHairFile(int idx) {
+		if (idx < 0 || idx > hairFile.size())
+			return "";
+
+		return hairFile.get(idx);
 	}
 
-	inline Vector<uint32>* getClothes() {
-		return &clothes;
+	inline String getOutfitName(int idx) {
+		if (idx < 0 || idx > outfits.size())
+			return "";
+
+		return outfits.get(idx);
+	}
+
+	inline int getOutfitsSize() {
+		return outfits.size();
+	}
+
+	inline int getHairSize() {
+		return hairFile.size();
 	}
 
 	bool isVendorCreatureTemplate() {

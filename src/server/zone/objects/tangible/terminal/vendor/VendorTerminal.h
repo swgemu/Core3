@@ -112,15 +112,19 @@ class VendorTerminal : public Terminal {
 public:
 	VendorTerminal();
 
+	void initializeTransientMembers();
+
 	void loadTemplateData(SharedObjectTemplate* templateData);
 
 	void fillObjectMenuResponse(ObjectMenuResponse* menuResponse, PlayerCreature* player);
 
 	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
 
-	void setOwnerID(unsigned long long ownerID);
-
 	void destroyObjectFromDatabase(bool destroyContainedObjects = false);
+
+	void addVendorToMap();
+
+	void setOwnerID(unsigned long long ownerID);
 
 	Vendor* getVendor();
 
@@ -165,15 +169,19 @@ public:
 
 	VendorTerminalImplementation(DummyConstructorParameter* param);
 
+	void initializeTransientMembers();
+
 	void loadTemplateData(SharedObjectTemplate* templateData);
 
 	void fillObjectMenuResponse(ObjectMenuResponse* menuResponse, PlayerCreature* player);
 
 	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
 
-	void setOwnerID(unsigned long long ownerID);
-
 	void destroyObjectFromDatabase(bool destroyContainedObjects = false);
+
+	void addVendorToMap();
+
+	void setOwnerID(unsigned long long ownerID);
 
 	Vendor* getVendor();
 
@@ -224,11 +232,15 @@ public:
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
+	void initializeTransientMembers();
+
 	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
 
-	void setOwnerID(unsigned long long ownerID);
-
 	void destroyObjectFromDatabase(bool destroyContainedObjects);
+
+	void addVendorToMap();
+
+	void setOwnerID(unsigned long long ownerID);
 
 	bool isVendor();
 

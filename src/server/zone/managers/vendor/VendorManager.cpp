@@ -14,14 +14,26 @@
 #include "server/zone/objects/auction/AuctionItem.h"
 #include "server/zone/objects/player/sui/inputbox/SuiInputBox.h"
 #include "server/zone/managers/vendor/sui/RenameVendorSuiCallback.h"
-
+#include "server/zone/managers/name/NameManager.h"
 #include "server/zone/managers/auction/AuctionManager.h"
 #include "server/zone/managers/auction/AuctionsMap.h"
 #include "server/zone/managers/planet/PlanetManager.h"
+#include "events/AwardXpEvent.h"
 
 VendorManager::VendorManager() {
 	setLoggingName("VendorManager");
 
+}
+
+void VendorManager::initialize() {
+	vendorMap.setNullValue(NULL);
+	vendorMap.setNoDuplicateInsertPlan();
+
+	Reference<AwardXpEvent*> xpEvent = new AwardXpEvent();
+	xpEvent->schedule(1000);
+
+	loadLuaVendors();
+	loadVendorOutfits();
 }
 
 void VendorManager::loadLuaVendors() {
@@ -38,6 +50,12 @@ void VendorManager::loadLuaVendors() {
 
 	menu.pop();
 
+}
+
+bool VendorManager::isValidVendorName(const String& name) {
+	//TODO: Temp hack
+	NameManager* nman = Core::lookupObject<ZoneProcessServer>("ZoneProcessServer")->getNameManager();
+	return nman->validateName(name, 0) == 7;
 }
 
 void VendorManager::handleDisplayStatus(PlayerCreature* player, Vendor* vendor) {
@@ -117,9 +135,15 @@ void VendorManager::handleRegisterVendor(PlayerCreature* player, Vendor* vendor)
 
 }
 
-void VendorManager::handleRenameVendor(TangibleObject* vendor, String& name) {
+void VendorManager::handleRenameVendor(PlayerCreature* player, TangibleObject* vendor, String& name) {
 	if (vendor == NULL)
 		return;
+
+	if (!isValidVendorName(name)) {
+		player->sendSystemMessage("@player_structure:obscene");
+		sendRenameVendorTo(player, vendor);
+		return;
+	}
 
 	Locker _locker(vendor);
 
@@ -141,5 +165,33 @@ void VendorManager::handleRenameVendor(TangibleObject* vendor, String& name) {
 
 	vendo->setRegistered(false);
 	//TODO: unregister from the planetary map.
+
+}
+
+void VendorManager::handleAwardVendorLookXP(PlayerCreature* player, Vendor* vendor) {
+	if (player->getObjectID() == vendor->getOwnerID())
+		return;
+
+	ManagedReference<PlayerManager*> pman = player->getZoneServer()->getPlayerManager();
+	ManagedReference<SceneObject*> ownerRef = player->getZoneServer()->getObject(vendor->getOwnerID());
+	if (!ownerRef->isPlayerCreature())
+		return;
+
+	ManagedReference<PlayerCreature*> owner = (PlayerCreature*) ownerRef.get();
+	ManagedReference<SceneObject*> vendorRef = vendor->getVendor();
+
+	if (!player->checkCooldownRecovery("vendoruse" + String::valueOf(vendorRef->getObjectID()))) {
+		return;
+	}
+
+	Locker playerLocker(owner);
+	Locker customerLocker(player);
+
+	pman->awardExperience(owner, "merchant", 50, false);
+	player->addCooldown("vendoruse" + String::valueOf(vendorRef->getObjectID()), 600 * 1000); // 10min
+
+}
+
+void VendorManager::randomizeCustomization(CreatureObject* vendor) {
 
 }
