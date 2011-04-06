@@ -250,6 +250,7 @@ core3_IDLS =	server/login/LoginServer.cpp \
 				server/zone/objects/tangible/terminal/characterbuilder/CharacterBuilderTerminal.cpp
 				
 core3_SOURCES =	$(core3_IDLS) \
+		tre3/TreeFile.cpp \
 		server/zone/managers/vendor/VendorOutfitManager.cpp \
 		server/conf/ConfigManager.cpp \
 		server/features/Features.cpp \
