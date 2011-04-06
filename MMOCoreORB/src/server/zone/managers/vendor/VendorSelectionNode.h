@@ -120,7 +120,7 @@ public:
 	}
 
 	VendorSelectionNode* getNode(int idx) {
-		if (idx < 0 || idx > childNodes.size())
+		if (idx < 0 || idx >= childNodes.size())
 			return NULL;
 
 		return &childNodes.get(idx);
