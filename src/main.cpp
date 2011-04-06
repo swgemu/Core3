@@ -45,6 +45,7 @@ which carries forward this exception.
 #include "server/ServerCore.h"
 
 #include "server/zone/objects/scene/SceneObject.h"
+#include "tre3/TreeFile.h"
 
 class TestClass : public Object {
 	static const int ELEMENT_COUNT = 100;
@@ -158,6 +159,17 @@ void testTransactions() {
 }
 
 int main(int argc, char* argv[]) {
+/*
+	Time time;
+
+	TreeFile tre;
+	tre.read("/home/crush/swg/patch_12_00.tre");
+
+	System::out << "Read in " << time.miliDifference() << endl;
+
+
+	return 0;*/
+
 	try {
 		Vector<String> arguments;
 		for (int i = 1; i < argc; ++i) {
