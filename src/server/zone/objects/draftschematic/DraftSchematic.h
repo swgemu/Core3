@@ -13,6 +13,20 @@
 
 namespace server {
 namespace zone {
+namespace objects {
+namespace scene {
+
+class SceneObject;
+
+} // namespace scene
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::scene;
+
+namespace server {
+namespace zone {
 namespace packets {
 namespace scene {
 
@@ -76,6 +90,8 @@ using namespace server::zone::objects::area;
 #include "engine/service/proto/BaseMessage.h"
 
 #include "server/zone/objects/intangible/IntangibleObject.h"
+
+#include "system/util/Vector.h"
 
 namespace server {
 namespace zone {

@@ -4,9 +4,13 @@
 
 #include "WearableObject.h"
 
+#include "server/zone/packets/scene/AttributeListMessage.h"
+
 #include "server/zone/objects/manufactureschematic/ManufactureSchematic.h"
 
 #include "server/zone/Zone.h"
+
+#include "server/zone/objects/player/PlayerCreature.h"
 
 /*
  *	WearableObjectStub

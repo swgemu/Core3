@@ -65,6 +65,8 @@ using namespace server::zone::objects::player;
 
 #include "system/lang/String.h"
 
+#include "system/util/SortedVector.h"
+
 namespace server {
 namespace zone {
 namespace objects {

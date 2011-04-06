@@ -51,6 +51,7 @@ import server.zone.objects.cell.CellObject;
 include server.zone.templates.tangible.CloningBuildingObjectTemplate;
 include server.zone.objects.building.cloning.CloneSpawnPoint;
 include server.zone.managers.templates.TemplateManager;
+include server.zone.templates.SharedObjectTemplate;
 
 class CloningBuildingObject extends BuildingObject {
 	public CloningBuildingObject() {

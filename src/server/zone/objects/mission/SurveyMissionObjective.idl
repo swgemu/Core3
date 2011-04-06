@@ -51,6 +51,7 @@ import server.zone.objects.mission.MissionObjective;
 import server.zone.objects.mission.MissionObserver;
 import server.zone.objects.scene.SceneObject;
 import server.zone.objects.resource.ResourceSpawn;
+import engine.core.ManagedObject;
 
 class SurveyMissionObjective extends MissionObjective {
 	protected ResourceSpawn spawn;

@@ -54,6 +54,7 @@ import server.zone.objects.tangible.terminal.city.CityVoteTerminal;
 import system.util.SortedVector;
 import system.util.VectorMap;
 import system.lang.Time;
+import server.zone.objects.player.PlayerCreature;
 
 class CityHallObject extends BuildingObject {
 	@dereferenced

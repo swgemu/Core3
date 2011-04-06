@@ -51,8 +51,8 @@ import server.zone.objects.tangible.TangibleObject;
 include server.zone.objects.resource.ResourceSpawn;
 import server.zone.objects.player.PlayerCreature;
 import server.zone.objects.area.ActiveArea;
-
 include server.zone.packets.scene.AttributeListMessage;
+import server.zone.objects.scene.SceneObject;
 
 class ResourceContainer extends TangibleObject {
 

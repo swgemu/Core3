@@ -52,6 +52,7 @@ include server.zone.objects.guild.GuildMemberInfo;
 import server.zone.objects.player.PlayerCreature;
 import server.zone.objects.scene.SceneObject;
 import system.lang.String;
+import system.util.SortedVector;
 
 class GuildObject extends SceneObject {
 	protected ChatRoom chatRoom;

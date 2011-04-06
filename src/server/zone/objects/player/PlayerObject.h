@@ -115,6 +115,20 @@ class SharedObjectTemplate;
 
 using namespace server::zone::templates;
 
+namespace server {
+namespace zone {
+namespace objects {
+namespace player {
+
+class PlayerCreature;
+
+} // namespace player
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::player;
+
 #include "server/zone/objects/creature/professions/Certification.h"
 
 #include "server/zone/objects/draftschematic/DraftSchematic.h"
@@ -142,6 +156,14 @@ using namespace server::zone::templates;
 #include "engine/lua/LuaObject.h"
 
 #include "server/zone/objects/intangible/IntangibleObject.h"
+
+#include "system/util/Vector.h"
+
+#include "system/util/VectorMap.h"
+
+#include "engine/service/proto/BasePacket.h"
+
+#include "engine/service/proto/BaseMessage.h"
 
 namespace server {
 namespace zone {

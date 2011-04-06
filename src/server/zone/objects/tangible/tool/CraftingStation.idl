@@ -47,10 +47,12 @@ package server.zone.objects.tangible.tool;
 import server.zone.objects.tangible.tool.ToolTangibleObject;
 import engine.lua.LuaObject;
 import server.zone.objects.scene.SceneObject;
-include server.zone.objects.player.PlayerCreature;
 import server.zone.Zone;
 import server.zone.packets.object.ObjectMenuResponse;
 import server.zone.objects.manufactureschematic.ManufactureSchematic;
+import server.zone.templates.SharedObjectTemplate;
+import server.zone.packets.scene.AttributeListMessage;
+import server.zone.objects.player.PlayerCreature;
 
 class CraftingStation extends ToolTangibleObject {
 	

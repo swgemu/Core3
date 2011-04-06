@@ -83,6 +83,8 @@ using namespace server::zone::objects::player;
 
 #include "system/lang/ref/Reference.h"
 
+#include "system/util/Vector.h"
+
 namespace server {
 namespace zone {
 namespace objects {
@@ -132,6 +134,7 @@ namespace tangible {
 namespace loot {
 
 class LootkitObjectImplementation : public TangibleObjectImplementation {
+protected:
 	VectorMap<unsigned int, bool> components;
 
 	VectorMap<unsigned int, String> attributes;

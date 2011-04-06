@@ -18,7 +18,7 @@ void HolocronManager::loadBugCategories() {
 
 	String query = "SELECT `category` FROM `" + MantisDatabase::getTablePrefix() + "project_category_table` WHERE project_id = 1;";
 
-	ResultSet* result = NULL;
+	Reference<ResultSet*> result = NULL;
 
 	try {
 		result = MantisDatabase::instance()->executeQuery(query);
@@ -37,7 +37,6 @@ void HolocronManager::loadBugCategories() {
 	}
 
 	if (result != NULL) {
-		delete result;
 		result = NULL;
 	}
 }
@@ -59,7 +58,7 @@ void HolocronManager::submitTicket(ZoneClientSession* client, const UnicodeStrin
 	StringBuffer query;
 	query << "INSERT INTO `" << MantisDatabase::getTablePrefix() << "bug_text_table` (`description`, `steps_to_reproduce`, `additional_information`) VALUES ('" << sanitizedBody << "', '', '" << summary << "');";
 
-	ResultSet* result = NULL;
+	Reference<ResultSet*> result = NULL;
 
 	try {
 		result = MantisDatabase::instance()->executeQuery(query.toString());
@@ -86,7 +85,6 @@ void HolocronManager::submitTicket(ZoneClientSession* client, const UnicodeStrin
 	}
 
 	if (result != NULL) {
-		delete result;
 		result = NULL;
 	}
 
@@ -106,7 +104,7 @@ uint32 HolocronManager::getReporterId(ZoneClientSession* client) {
 	StringBuffer query;
 	query << "SELECT `id` FROM `" << MantisDatabase::getTablePrefix() << "user_table` WHERE `username` = '" << account->getUsername() << "' LIMIT 1;";
 
-	ResultSet* result = NULL;
+	Reference<ResultSet*> result = NULL;
 
 	try {
 		result = MantisDatabase::instance()->executeQuery(query.toString());
@@ -119,7 +117,6 @@ uint32 HolocronManager::getReporterId(ZoneClientSession* client) {
 	}
 
 	if (result != NULL) {
-		delete result;
 		result = NULL;
 	}
 

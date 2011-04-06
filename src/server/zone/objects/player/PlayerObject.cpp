@@ -20,6 +20,8 @@
 
 #include "server/zone/templates/SharedObjectTemplate.h"
 
+#include "server/zone/objects/player/PlayerCreature.h"
+
 /*
  *	PlayerObjectStub
  */

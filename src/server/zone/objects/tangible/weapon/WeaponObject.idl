@@ -55,6 +55,7 @@ import server.zone.objects.manufactureschematic.ManufactureSchematic;
 import server.zone.templates.SharedObjectTemplate;
 include server.zone.templates.tangible.SharedWeaponObjectTemplate;
 import server.zone.packets.object.ObjectMenuResponse;
+import system.util.Vector;
 
 class WeaponObject extends TangibleObject {
 	protected int attackType;

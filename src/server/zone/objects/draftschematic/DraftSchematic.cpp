@@ -4,6 +4,8 @@
 
 #include "DraftSchematic.h"
 
+#include "server/zone/objects/scene/SceneObject.h"
+
 #include "server/zone/packets/scene/AttributeListMessage.h"
 
 #include "server/zone/templates/SharedObjectTemplate.h"

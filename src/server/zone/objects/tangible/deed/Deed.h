@@ -37,6 +37,20 @@ using namespace server::zone::packets::scene;
 
 namespace server {
 namespace zone {
+namespace objects {
+namespace player {
+
+class PlayerCreature;
+
+} // namespace player
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::player;
+
+namespace server {
+namespace zone {
 namespace templates {
 
 class SharedObjectTemplate;
@@ -46,6 +60,20 @@ class SharedObjectTemplate;
 } // namespace server
 
 using namespace server::zone::templates;
+
+namespace server {
+namespace zone {
+namespace objects {
+namespace manufactureschematic {
+
+class ManufactureSchematic;
+
+} // namespace manufactureschematic
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::manufactureschematic;
 
 #include "engine/lua/LuaObject.h"
 

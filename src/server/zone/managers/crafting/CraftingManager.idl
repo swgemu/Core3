@@ -52,7 +52,7 @@ import server.zone.objects.player.PlayerObject;
 import server.zone.objects.player.PlayerCreature;
 import server.zone.objects.manufactureschematic.ManufactureSchematic;
 import server.zone.objects.draftschematic.DraftSchematic;
-
+import system.util.Vector;
 import server.zone.managers.ZoneManager;
 include server.zone.managers.crafting.schematicmap.SchematicMap;
 

@@ -45,11 +45,13 @@ which carries forward this exception.
 package server.zone.objects.tangible.wearables;
 
 import server.zone.objects.tangible.TangibleObject;
+import server.zone.packets.scene.AttributeListMessage;
 import engine.lua.LuaObject;
 import server.zone.objects.manufactureschematic.ManufactureSchematic;
 include server.zone.objects.tangible.attachment.Attachment;
 include server.zone.objects.tangible.wearables.WearableSkillModMap;
 import server.zone.Zone;
+import server.zone.objects.player.PlayerCreature;
 
 class WearableObject extends TangibleObject {	
 	protected int socketCount;

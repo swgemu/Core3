@@ -307,9 +307,9 @@ using namespace server::zone::objects::structure;
 
 #include "system/util/VectorMap.h"
 
-#include "engine/util/u3d/QuadTreeEntry.h"
+#include "system/util/Vector.h"
 
-#include "engine/util/u3d/Vector3.h"
+#include "engine/util/u3d/QuadTreeEntry.h"
 
 #include "server/zone/objects/creature/CreatureObject.h"
 

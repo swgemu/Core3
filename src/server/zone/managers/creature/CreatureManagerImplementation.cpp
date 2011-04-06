@@ -231,7 +231,7 @@ void CreatureManagerImplementation::loadSingleSpawns() {
 
 	int planetid = zone->getZoneID();
 
-	ResultSet* result = NULL;
+	Reference<ResultSet*> result = NULL;
 	StringBuffer query;
 	query << "SELECT * FROM world_server_static_spawns WHERE zoneid = " << planetid << ";";
 
@@ -317,8 +317,6 @@ void CreatureManagerImplementation::loadSingleSpawns() {
 	}
 
 	info("static creatures spawned: " + String::valueOf(i), true);
-
-	delete result;
 }
 
 int CreatureManagerImplementation::notifyDestruction(TangibleObject* destructor, AiAgent* destructedObject, int condition) {
@@ -384,7 +382,7 @@ void CreatureManagerImplementation::loadTrainers() {
 
 	int planetid = zone->getZoneID();
 
-	ResultSet* result;
+	Reference<ResultSet*> result;
 	StringBuffer query;
 	query << "SELECT * FROM trainers WHERE Planet = " << planetid << ";";
 	result = ServerDatabase::instance()->executeQuery(query);
@@ -484,7 +482,6 @@ void CreatureManagerImplementation::loadTrainers() {
 			zone->addMapLocation(trainer->getObjectID(), trainername, worldx, worldy, 19, planetmapid, 0);*/
 	}
 
-	delete result;
 }
 
 void CreatureManagerImplementation::loadMissionSpawns() {
@@ -492,7 +489,7 @@ void CreatureManagerImplementation::loadMissionSpawns() {
 
 	int planetid = zone->getZoneID();
 
-	ResultSet* result = NULL;
+	Reference<ResultSet*> result = NULL;
 	StringBuffer query;
 	query << "SELECT * FROM mission_manager_npcs WHERE zoneid = " << planetid << ";";
 
@@ -560,14 +557,10 @@ void CreatureManagerImplementation::loadMissionSpawns() {
 	} catch (...) {
 		error("unreported exception caught in CreatureManagerImplementation::loadMissionSpawns()");
 
-		delete result;
-
 		throw;
 	}
 
 	//info("mission npcs spawned: " + String::valueOf(i), true);
-
-	delete result;
 }
 
 void CreatureManagerImplementation::loadInformants() {
@@ -575,7 +568,7 @@ void CreatureManagerImplementation::loadInformants() {
 
 	int planetid = zone->getZoneID();
 
-	ResultSet* result;
+	Reference<ResultSet*> result;
 	StringBuffer query;
 	query << "SELECT * FROM mission_manager_informants WHERE planet = " << planetid << ";";
 
@@ -613,12 +606,9 @@ void CreatureManagerImplementation::loadInformants() {
 	} catch (...) {
 		error("unreported exception caught in CreatureManagerImplementation::loadInformants()");
 
-		delete result;
-
 		throw;
 	}
 
-	delete result;
 }
 
 void CreatureManagerImplementation::harvest(Creature* creature, PlayerCreature* player, int selectedID) {
