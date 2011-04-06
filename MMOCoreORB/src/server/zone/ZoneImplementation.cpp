@@ -226,6 +226,21 @@ int ZoneImplementation::getInRangeObjects(float x, float y, float range, SortedV
 	return objects->size();
 }
 
+int ZoneImplementation::getInRangeActiveAreas(float x, float y, float range, SortedVector<ManagedReference<ActiveArea*> > objects) {
+	Locker locker(_this);
+
+	SortedVector<QuadTreeEntry*> entryObjects;
+
+	regionTree->inRange(x, y, range, entryObjects);
+
+	for (int i = 0; i < entryObjects.size(); ++i) {
+		ActiveArea* obj = dynamic_cast<ActiveArea*>(entryObjects.get(i));
+		objects->put(obj);
+	}
+
+	return objects->size();
+}
+
 void ZoneImplementation::updateActiveAreas(SceneObject* object) {
 	SortedVector<ManagedReference<ActiveArea* > > areas = *dynamic_cast<SortedVector<ManagedReference<ActiveArea* > >* >(object->getActiveAreas());
 
