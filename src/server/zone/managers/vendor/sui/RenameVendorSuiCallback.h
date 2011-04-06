@@ -36,7 +36,7 @@ public:
 		if (vendor == NULL)
 			return;
 
-		VendorManager::instance()->handleRenameVendor(vendor, name);
+		VendorManager::instance()->handleRenameVendor(player, vendor, name);
 	}
 };
 

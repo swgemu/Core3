@@ -22,7 +22,7 @@
  *	VendorCreatureStub
  */
 
-enum {RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_,RPC_ADDCLOTHINGITEM__WEARABLEOBJECT_,RPC_DESTROYOBJECTFROMDATABASE__BOOL_,RPC_SETOWNERID__LONG_,RPC_ISVENDOR__,RPC_ISVENDORCREATURE__};
+enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_,RPC_ADDCLOTHINGITEM__PLAYERCREATURE_TANGIBLEOBJECT_,RPC_DESTROYOBJECTFROMDATABASE__BOOL_,RPC_CREATECHILDOBJECTS__,RPC_ADDVENDORTOMAP__,RPC_SETOWNERID__LONG_,RPC_ISVENDOR__,RPC_ISVENDORCREATURE__};
 
 VendorCreature::VendorCreature() : CreatureObject(DummyConstructorParameter::instance()) {
 	VendorCreatureImplementation* _implementation = new VendorCreatureImplementation();
@@ -36,6 +36,19 @@ VendorCreature::VendorCreature(DummyConstructorParameter* param) : CreatureObjec
 VendorCreature::~VendorCreature() {
 }
 
+
+void VendorCreature::initializeTransientMembers() {
+	VendorCreatureImplementation* _implementation = (VendorCreatureImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_INITIALIZETRANSIENTMEMBERS__);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->initializeTransientMembers();
+}
 
 void VendorCreature::loadTemplateData(SharedObjectTemplate* templateData) {
 	VendorCreatureImplementation* _implementation = (VendorCreatureImplementation*) _getImplementation();
@@ -79,18 +92,19 @@ void VendorCreature::fillAttributeList(AttributeListMessage* msg, PlayerCreature
 		_implementation->fillAttributeList(msg, object);
 }
 
-void VendorCreature::addClothingItem(WearableObject* clothing) {
+void VendorCreature::addClothingItem(PlayerCreature* player, TangibleObject* clothing) {
 	VendorCreatureImplementation* _implementation = (VendorCreatureImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_ADDCLOTHINGITEM__WEARABLEOBJECT_);
+		DistributedMethod method(this, RPC_ADDCLOTHINGITEM__PLAYERCREATURE_TANGIBLEOBJECT_);
+		method.addObjectParameter(player);
 		method.addObjectParameter(clothing);
 
 		method.executeWithVoidReturn();
 	} else
-		_implementation->addClothingItem(clothing);
+		_implementation->addClothingItem(player, clothing);
 }
 
 void VendorCreature::destroyObjectFromDatabase(bool destroyContainedObjects) {
@@ -105,6 +119,32 @@ void VendorCreature::destroyObjectFromDatabase(bool destroyContainedObjects) {
 		method.executeWithVoidReturn();
 	} else
 		_implementation->destroyObjectFromDatabase(destroyContainedObjects);
+}
+
+void VendorCreature::createChildObjects() {
+	VendorCreatureImplementation* _implementation = (VendorCreatureImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_CREATECHILDOBJECTS__);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->createChildObjects();
+}
+
+void VendorCreature::addVendorToMap() {
+	VendorCreatureImplementation* _implementation = (VendorCreatureImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_ADDVENDORTOMAP__);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->addVendorToMap();
 }
 
 Vendor* VendorCreature::getVendor() {
@@ -329,14 +369,23 @@ Packet* VendorCreatureAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
+	case RPC_INITIALIZETRANSIENTMEMBERS__:
+		initializeTransientMembers();
+		break;
 	case RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_:
 		resp->insertSignedInt(handleObjectMenuSelect((PlayerCreature*) inv->getObjectParameter(), inv->getByteParameter()));
 		break;
-	case RPC_ADDCLOTHINGITEM__WEARABLEOBJECT_:
-		addClothingItem((WearableObject*) inv->getObjectParameter());
+	case RPC_ADDCLOTHINGITEM__PLAYERCREATURE_TANGIBLEOBJECT_:
+		addClothingItem((PlayerCreature*) inv->getObjectParameter(), (TangibleObject*) inv->getObjectParameter());
 		break;
 	case RPC_DESTROYOBJECTFROMDATABASE__BOOL_:
 		destroyObjectFromDatabase(inv->getBooleanParameter());
+		break;
+	case RPC_CREATECHILDOBJECTS__:
+		createChildObjects();
+		break;
+	case RPC_ADDVENDORTOMAP__:
+		addVendorToMap();
 		break;
 	case RPC_SETOWNERID__LONG_:
 		setOwnerID(inv->getUnsignedLongParameter());
@@ -354,16 +403,28 @@ Packet* VendorCreatureAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 	return resp;
 }
 
+void VendorCreatureAdapter::initializeTransientMembers() {
+	((VendorCreatureImplementation*) impl)->initializeTransientMembers();
+}
+
 int VendorCreatureAdapter::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
 	return ((VendorCreatureImplementation*) impl)->handleObjectMenuSelect(player, selectedID);
 }
 
-void VendorCreatureAdapter::addClothingItem(WearableObject* clothing) {
-	((VendorCreatureImplementation*) impl)->addClothingItem(clothing);
+void VendorCreatureAdapter::addClothingItem(PlayerCreature* player, TangibleObject* clothing) {
+	((VendorCreatureImplementation*) impl)->addClothingItem(player, clothing);
 }
 
 void VendorCreatureAdapter::destroyObjectFromDatabase(bool destroyContainedObjects) {
 	((VendorCreatureImplementation*) impl)->destroyObjectFromDatabase(destroyContainedObjects);
+}
+
+void VendorCreatureAdapter::createChildObjects() {
+	((VendorCreatureImplementation*) impl)->createChildObjects();
+}
+
+void VendorCreatureAdapter::addVendorToMap() {
+	((VendorCreatureImplementation*) impl)->addVendorToMap();
 }
 
 void VendorCreatureAdapter::setOwnerID(unsigned long long ownerID) {

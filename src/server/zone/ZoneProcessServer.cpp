@@ -24,6 +24,8 @@
 
 #include "server/zone/managers/object/ObjectManager.h"
 
+#include "server/zone/managers/vendor/VendorManager.h"
+
 /*
  *	ZoneProcessServerStub
  */
@@ -54,6 +56,15 @@ void ZoneProcessServer::initialize() {
 		method.executeWithVoidReturn();
 	} else
 		_implementation->initialize();
+}
+
+VendorManager* ZoneProcessServer::getVendorManager() {
+	ZoneProcessServerImplementation* _implementation = (ZoneProcessServerImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		throw ObjectNotLocalException(this);
+
+	} else
+		return _implementation->getVendorManager();
 }
 
 ZoneServer* ZoneProcessServer::getZoneServer() {
@@ -268,6 +279,11 @@ int ZoneProcessServerImplementation::writeObjectMembers(ObjectOutputStream* stre
 	uint16 _totalSize;
 
 	return 0 + ManagedServiceImplementation::writeObjectMembers(stream);
+}
+
+VendorManager* ZoneProcessServerImplementation::getVendorManager() {
+	// server/zone/ZoneProcessServer.idl():  		return vendorManager;
+	return vendorManager;
 }
 
 ZoneServer* ZoneProcessServerImplementation::getZoneServer() {

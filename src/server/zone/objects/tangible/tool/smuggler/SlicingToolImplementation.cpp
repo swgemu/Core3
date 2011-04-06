@@ -19,6 +19,9 @@ void SlicingToolImplementation::loadTemplateData(SharedObjectTemplate* templateD
 
 	SlicingToolTemplate* slicingTempl = dynamic_cast<SlicingToolTemplate*> (templateData);
 
+	if (slicingTempl == NULL)
+		return;
+
 	effectiveness = slicingTempl->getEffectiveness();
 
 }

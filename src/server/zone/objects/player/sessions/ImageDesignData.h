@@ -125,7 +125,7 @@ public:
 			message->parseAscii(attr);
 
 			uint32 val = message->parseInt();
-			System::out << attr + String::valueOf(val) << endl;
+			//System::out << attr + String::valueOf(val) << endl;
 			colorAttributes.put(attr, val);
 		}
 

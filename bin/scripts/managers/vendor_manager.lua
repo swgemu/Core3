@@ -88,11 +88,8 @@ zabrakNode:addChildNode(maleNode)
 zabrakNode:addChildNode(femaleNode)
 npcNode:addChildNode(zabrakNode)
 
---Aqualish
-aqualishNode = VendorSelectionNode("@player_structure:race_aqualish", "aqualish_", "@player_structure:gender_", 60)
-aqualishNode:addChildNode(maleNode)
-aqualishNode:addChildNode(femaleNode)
-npcNode:addChildNode(aqualishNode)
+--Aqualish (Male Only - Female model is bugged. Is not in game on live)
+npcNode:addChildNode(VendorSelectionNode("@player_structure:race_aqualish", "aqualish_male.iff", "", 60))
 
 --Bith
 bithNode = VendorSelectionNode("@player_structure:race_bith", "bith_", "@player_structure:gender_", 60)
@@ -101,13 +98,13 @@ bithNode:addChildNode(femaleNode)
 npcNode:addChildNode(bithNode)
 
 --Devaronian
-npcNode:addChildNode(VendorSelectionNode("@player_structure:race_devaronian", "devaronian.iff", "", 60))
+npcNode:addChildNode(VendorSelectionNode("@player_structure:race_devaronian", "devaronian_male.iff", "", 60))
 
 --Gran
-npcNode:addChildNode(VendorSelectionNode("@player_structure:race_gran", "gran.iff", "", 60))
+npcNode:addChildNode(VendorSelectionNode("@player_structure:race_gran", "gran_male.iff", "", 60))
 
 -- Ishi Tib
-npcNode:addChildNode(VendorSelectionNode("@player_structure:race_ishi_tib", "ishi_tib.iff", "", 60))
+npcNode:addChildNode(VendorSelectionNode("@player_structure:race_ishi_tib", "ishi_tib_male.iff", "", 60))
 
 --Ithorian
 ithorianNode = VendorSelectionNode("@player_structure:race_ithorian", "ithorian_", "@player_structure:gender_", 60)
@@ -116,10 +113,10 @@ ithorianNode:addChildNode(femaleNode)
 npcNode:addChildNode(ithorianNode)
 
 --Nikto
-npcNode:addChildNode(VendorSelectionNode("@player_structure:race_nikto", "nikto.iff", "", 60))
+npcNode:addChildNode(VendorSelectionNode("@player_structure:race_nikto", "nikto_male.iff", "", 60))
 
 --Quarren
-npcNode:addChildNode(VendorSelectionNode("@player_structure:race_quarren", "quarren.iff", "", 60))
+npcNode:addChildNode(VendorSelectionNode("@player_structure:race_quarren", "quarren_male.iff", "", 60))
 
 --Sullustan
 sullustanNode = VendorSelectionNode("@player_structure:race_sullustan", "sullustan_", "@player_structure:gender_", 60)
@@ -128,7 +125,7 @@ sullustanNode:addChildNode(femaleNode)
 npcNode:addChildNode(sullustanNode)
 
 --Weequay
-npcNode:addChildNode(VendorSelectionNode("@player_structure:race_weequay", "weequay.iff", "", 60))
+npcNode:addChildNode(VendorSelectionNode("@player_structure:race_weequay", "weequay_male.iff", "", 60))
 
 -- Add the inital types to the root menu
 rootNode:addChildNode(terminalNode)

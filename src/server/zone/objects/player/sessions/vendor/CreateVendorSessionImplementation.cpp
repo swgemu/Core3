@@ -109,6 +109,19 @@ void CreateVendorSessionImplementation::handleMenuSelect(byte menuID) {
 }
 
 void CreateVendorSessionImplementation::createVendor(String& name) {
+	if (!VendorManager::instance()->isValidVendorName(name)) {
+		player->sendSystemMessage("@player_structure:obscene");
+		SuiInputBox* input = new SuiInputBox(player, SuiWindowType::STRUCTURE_NAME_VENDOR);
+		input->setCallback(new NameVendorSuiCallback(player->getZoneServer()));
+		input->setCancelButton(true, "@cancel");
+		input->setPromptTitle("@player_structure:name_t");
+		input->setPromptText("@player_structure:name_d");
+
+		player->sendMessage(input->generateMessage());
+		player->addSuiBox(input);
+		return;
+	}
+
 	vendor = player->getZoneServer()->createObject(templatePath.hashCode());
 
 	ManagedReference<SceneObject*> inventory = player->getSlottedObject("inventory");
@@ -118,14 +131,23 @@ void CreateVendorSessionImplementation::createVendor(String& name) {
 		return;
 	}
 
+	if (inventory->hasFullContainerObjects()) {
+		player->sendSystemMessage("@player_structure:create_failed");
+		cancelSession();
+		return;
+	}
+
 	Locker inventoryLocker(inventory);
 
 	if (vendor->isTerminal()) {
 		VendorTerminal* vendorTerminal = dynamic_cast<VendorTerminal*>(vendor.get());
 		vendorTerminal->setOwnerID(player->getObjectID());
+		vendorTerminal->addVendorToMap();
 	} else if (vendor->isCreatureObject()) {
 		VendorCreature* vendorCreature = dynamic_cast<VendorCreature*>(vendor.get());
 		vendorCreature->setOwnerID(player->getObjectID());
+		vendorCreature->createChildObjects();
+		vendorCreature->addVendorToMap();
 	} else {
 		player->sendSystemMessage("Invalid vendor object during createVendor()");
 		return;

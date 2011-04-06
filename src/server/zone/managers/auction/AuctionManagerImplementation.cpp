@@ -33,6 +33,7 @@
 #include "server/zone/Zone.h"
 #include "server/chat/ChatManager.h"
 #include "CheckAuctionsTask.h"
+#include "server/zone/managers/vendor/VendorManager.h"
 
 void AuctionManagerImplementation::initialize() {
 	auctionMap = new AuctionsMap();
@@ -286,6 +287,8 @@ void AuctionManagerImplementation::addSaleItem(PlayerCreature* player, uint64 ob
 		player->sendMessage(soldMessage);
 		return;
 	}
+
+	//TODO: ADD MERCHANT SKILL CHECKS!
 
 	ManagedReference<SceneObject*> objectToSell = zoneServer->getObject(objectid);
 
@@ -1030,7 +1033,7 @@ void AuctionManagerImplementation::getData(PlayerCreature* player, int extent, u
 	ManagedReference<SceneObject*> sceno = zoneServer->getObject(vendorObjectID);
 
 	if (sceno == NULL || !sceno->isVendor()) {
-		error("null / no vendor in getData()");
+		error("null vendor in getData()");
 		return;
 	}
 
@@ -1040,6 +1043,10 @@ void AuctionManagerImplementation::getData(PlayerCreature* player, int extent, u
 		error("null vendor in getData()");
 		return;
 	}
+
+	//TODO: Handle Merchant XP for players using other players vendors...
+	if (!vendor->isBazaarTerminal())
+		VendorManager::instance()->handleAwardVendorLookXP(player, vendor);
 
 	switch (extent) {
 	case 0:
