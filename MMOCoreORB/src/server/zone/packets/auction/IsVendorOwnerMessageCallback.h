@@ -26,8 +26,6 @@ public:
 	}
 
 	void parse(Message* message) {
-		//characterID = message->parseLong(6);
-		//System::out << message->toStringData() << endl;
 		oid = message->parseLong();
 	}
 

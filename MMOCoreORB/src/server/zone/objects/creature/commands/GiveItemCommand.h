@@ -51,6 +51,7 @@ which carries forward this exception.
 
 #include "server/zone/objects/tangible/attachment/Attachment.h"
 #include "server/zone/objects/tangible/wearables/WearableObject.h"
+#include "server/zone/objects/creature/vendor/VendorCreature.h"
 
 class GiveItemCommand : public QueueCommand {
 public:
@@ -67,6 +68,9 @@ public:
 
 		if (!checkInvalidPostures(creature))
 			return INVALIDPOSTURE;
+
+		if (!creature->isPlayerCreature())
+			return GENERALERROR;
 
 		StringTokenizer args(arguments.toString());
 
@@ -88,15 +92,35 @@ public:
 					wearable->applyAttachment((PlayerCreature*) creature, attachment);
 					return SUCCESS;
 				}
+
+			} else if (object->isWearableObject() || object->isWeaponObject()) {
+				PlayerCreature* player = (PlayerCreature*) creature;
+				if (player->getSkillMod("hiring") < 90) {
+					player->sendSystemMessage("You lack the necessary skills to perform that action");
+					return GENERALERROR;
+				}
+				TangibleObject* clothing = (TangibleObject*) object.get();
+
+				if (!args.hasMoreTokens())
+					return GENERALERROR;
+
+				uint64 targetObjectID = args.getLongToken();
+
+				ManagedReference<SceneObject*> sceno = server->getZoneServer()->getObject(targetObjectID);
+
+				if (sceno->isVendor() && sceno->isCreatureObject()) {
+					VendorCreature* vendor = dynamic_cast<VendorCreature*>(sceno.get());
+					vendor->addClothingItem((PlayerCreature*) creature, clothing);
+					return SUCCESS;
+
+				}
 			}
 		}
 
-		if (creature->isPlayerCreature()) {
-			ManagedReference<PlayerCreature*> pl = (PlayerCreature*) creature;
-			ManagedReference<PlayerObject*> ghost = pl->getPlayerObject();
-			if (!ghost->hasSkill("admin"))
-				return GENERALERROR;
-		}
+		ManagedReference<PlayerCreature*> pl = (PlayerCreature*) creature;
+		ManagedReference<PlayerObject*> ghost = pl->getPlayerObject();
+		if (!ghost->hasSkill("admin"))
+			return GENERALERROR;
 
 		ManagedReference<PlayerCreature*> player = NULL;
 

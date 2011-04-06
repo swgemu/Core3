@@ -65,8 +65,10 @@ class VendorCreature extends CreatureObject {
 
 	public VendorCreature() {
 		Logger.setLoggingName("VendorCreature");
-		
+	
 	}
+
+	public native void initializeTransientMembers();
 
 	/**
 	 * Reads and sets the template data from a SharedObjectTemplate LuaObject
@@ -104,9 +106,13 @@ class VendorCreature extends CreatureObject {
 	@local
 	public native void fillAttributeList(AttributeListMessage msg, PlayerCreature object);
 
-	public native void addClothingItem(WearableObject clothing);
+	public native void addClothingItem(PlayerCreature player, TangibleObject clothing);
 
 	public native void destroyObjectFromDatabase(boolean destroyContainedObjects = false);
+
+	public native void createChildObjects();
+
+	public native void addVendorToMap();
 
 	@local
 	public Vendor getVendor() {

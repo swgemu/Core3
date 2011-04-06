@@ -76,7 +76,7 @@ void AttachmentImplementation::addSkillMod(const String& skillModType, int skill
 }
 
 bool AttachmentImplementation::removeAttachment(PlayerCreature* player) {
-	SceneObject* container = _this->getParent();
+	SceneObject* container = parent;
 
 	if (container == NULL)
 		return 0;

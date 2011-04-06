@@ -227,6 +227,7 @@ core3_IDLS =	server/login/LoginServer.cpp \
 				server/zone/objects/tangible/terminal/vendor/bazaar/BazaarTerminal.cpp \
 				server/zone/objects/auction/AuctionItem.cpp \
 				server/zone/objects/auction/Vendor.cpp \
+				server/zone/objects/auction/events/VendorCheckTask.cpp \
 				server/zone/objects/tangible/terminal/elevator/ElevatorTerminal.cpp \
 				server/zone/objects/tangible/terminal/structure/StructureTerminal.cpp \
 				server/zone/objects/tangible/terminal/travel/TravelTerminal.cpp \
@@ -249,6 +250,7 @@ core3_IDLS =	server/login/LoginServer.cpp \
 				server/zone/objects/tangible/terminal/characterbuilder/CharacterBuilderTerminal.cpp
 				
 core3_SOURCES =	$(core3_IDLS) \
+		server/zone/managers/vendor/VendorOutfitManager.cpp \
 		server/conf/ConfigManager.cpp \
 		server/features/Features.cpp \
 		server/db/ServerDatabase.cpp \

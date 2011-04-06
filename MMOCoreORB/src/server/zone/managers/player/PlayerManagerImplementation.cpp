@@ -359,12 +359,12 @@ bool PlayerManagerImplementation::createPlayer(MessageCallback* data) {
 		//ghost->setAdminLevel(account->getAdminLevel());
 
 	//NOTE/TEMPORARY: UNCOMMENT THESE LINES AND RECOMPILE FOR ADMIN ON NEW CHARACTERS.
-		ghost->setAdminLevel(2);
+		/*ghost->setAdminLevel(2);
 
 		Vector<String> skills;
 		skills.add("admin");
 
-		ghost->addSkills(skills, false);
+		ghost->addSkills(skills, false);*/
 	//STOP UNCOMMENTING
 	//}
 

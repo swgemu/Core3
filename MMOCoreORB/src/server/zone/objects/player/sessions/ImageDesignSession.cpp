@@ -14,7 +14,7 @@
  *	ImageDesignSessionStub
  */
 
-enum {RPC_INITIALIZESESSION__,RPC_DOPAYMENT__,RPC_CANCELSESSION__,RPC_CLEARSESSION__,RPC_CLEARIDTIMEOUTEVENT__,RPC_DEQUEUEIDTIMEOUTEVENT__,RPC_SESSIONTIMEOUT__};
+enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_INITIALIZESESSION__,RPC_DOPAYMENT__,RPC_CANCELSESSION__,RPC_CLEARSESSION__,RPC_CLEARIDTIMEOUTEVENT__,RPC_DEQUEUEIDTIMEOUTEVENT__,RPC_SESSIONTIMEOUT__};
 
 ImageDesignSession::ImageDesignSession(CreatureObject* parent) : Facade(DummyConstructorParameter::instance()) {
 	ImageDesignSessionImplementation* _implementation = new ImageDesignSessionImplementation(parent);
@@ -28,6 +28,19 @@ ImageDesignSession::ImageDesignSession(DummyConstructorParameter* param) : Facad
 ImageDesignSession::~ImageDesignSession() {
 }
 
+
+void ImageDesignSession::initializeTransientMembers() {
+	ImageDesignSessionImplementation* _implementation = (ImageDesignSessionImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_INITIALIZETRANSIENTMEMBERS__);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->initializeTransientMembers();
+}
 
 void ImageDesignSession::startImageDesign(PlayerCreature* designer, PlayerCreature* targetPlayer) {
 	ImageDesignSessionImplementation* _implementation = (ImageDesignSessionImplementation*) _getImplementation();
@@ -271,11 +284,6 @@ bool ImageDesignSessionImplementation::readObjectMember(ObjectInputStream* strea
 		return true;
 	}
 
-	if (_name == "idTimeoutEvent") {
-		TypeInfo<Reference<ImageDesignTimeoutEvent*> >::parseFromBinaryStream(&idTimeoutEvent, stream);
-		return true;
-	}
-
 
 	return false;
 }
@@ -323,16 +331,8 @@ int ImageDesignSessionImplementation::writeObjectMembers(ObjectOutputStream* str
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "idTimeoutEvent";
-	_name.toBinaryStream(stream);
-	_offset = stream->getOffset();
-	stream->writeShort(0);
-	TypeInfo<Reference<ImageDesignTimeoutEvent*> >::toBinaryStream(&idTimeoutEvent, stream);
-	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
-	stream->writeShort(_offset, _totalSize);
 
-
-	return 5 + FacadeImplementation::writeObjectMembers(stream);
+	return 4 + FacadeImplementation::writeObjectMembers(stream);
 }
 
 ImageDesignSessionImplementation::ImageDesignSessionImplementation(CreatureObject* parent) {
@@ -343,15 +343,17 @@ ImageDesignSessionImplementation::ImageDesignSessionImplementation(CreatureObjec
 	Logger::setLogging(true);
 	// server/zone/objects/player/sessions/ImageDesignSession.idl():  		initializeSession();
 	initializeSession();
+}
+
+int ImageDesignSessionImplementation::initializeSession() {
 	// server/zone/objects/player/sessions/ImageDesignSession.idl():  		designerCreature = null;
 	designerCreature = NULL;
 	// server/zone/objects/player/sessions/ImageDesignSession.idl():  		targetCreature = null;
 	targetCreature = NULL;
 	// server/zone/objects/player/sessions/ImageDesignSession.idl():  		imageDesignManager = null;
 	imageDesignManager = NULL;
-}
-
-int ImageDesignSessionImplementation::initializeSession() {
+	// server/zone/objects/player/sessions/ImageDesignSession.idl():  		idTimeoutEvent = null;
+	idTimeoutEvent = NULL;
 	// server/zone/objects/player/sessions/ImageDesignSession.idl():  		return 0;
 	return 0;
 }
@@ -413,6 +415,9 @@ Packet* ImageDesignSessionAdapter::invokeMethod(uint32 methid, DistributedMethod
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
+	case RPC_INITIALIZETRANSIENTMEMBERS__:
+		initializeTransientMembers();
+		break;
 	case RPC_INITIALIZESESSION__:
 		resp->insertSignedInt(initializeSession());
 		break;
@@ -439,6 +444,10 @@ Packet* ImageDesignSessionAdapter::invokeMethod(uint32 methid, DistributedMethod
 	}
 
 	return resp;
+}
+
+void ImageDesignSessionAdapter::initializeTransientMembers() {
+	((ImageDesignSessionImplementation*) impl)->initializeTransientMembers();
 }
 
 int ImageDesignSessionAdapter::initializeSession() {

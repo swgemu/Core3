@@ -17,6 +17,17 @@
 
 #include "server/zone/objects/player/events/ImageDesignTimeoutEvent.h"
 
+void ImageDesignSessionImplementation::initializeTransientMembers() {
+	FacadeImplementation::initializeTransientMembers();
+
+	if (idTimeoutEvent == NULL) {
+		idTimeoutEvent = new ImageDesignTimeoutEvent(_this);
+		idTimeoutEvent->schedule(1000);
+	} else {
+		idTimeoutEvent->reschedule(1000);
+	}
+}
+
 void ImageDesignSessionImplementation::startImageDesign(PlayerCreature* designer, PlayerCreature* targetPlayer) {
 	uint64 tentID = 0;
 

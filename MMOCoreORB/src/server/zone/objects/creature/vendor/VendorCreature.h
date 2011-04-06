@@ -127,6 +127,8 @@ class VendorCreature : public CreatureObject {
 public:
 	VendorCreature();
 
+	void initializeTransientMembers();
+
 	void loadTemplateData(SharedObjectTemplate* templateData);
 
 	void fillObjectMenuResponse(ObjectMenuResponse* menuResponse, PlayerCreature* player);
@@ -135,9 +137,13 @@ public:
 
 	void fillAttributeList(AttributeListMessage* msg, PlayerCreature* object);
 
-	void addClothingItem(WearableObject* clothing);
+	void addClothingItem(PlayerCreature* player, TangibleObject* clothing);
 
 	void destroyObjectFromDatabase(bool destroyContainedObjects = false);
+
+	void createChildObjects();
+
+	void addVendorToMap();
 
 	Vendor* getVendor();
 
@@ -182,6 +188,8 @@ public:
 
 	VendorCreatureImplementation(DummyConstructorParameter* param);
 
+	void initializeTransientMembers();
+
 	void loadTemplateData(SharedObjectTemplate* templateData);
 
 	void fillObjectMenuResponse(ObjectMenuResponse* menuResponse, PlayerCreature* player);
@@ -190,9 +198,13 @@ public:
 
 	void fillAttributeList(AttributeListMessage* msg, PlayerCreature* object);
 
-	void addClothingItem(WearableObject* clothing);
+	void addClothingItem(PlayerCreature* player, TangibleObject* clothing);
 
 	void destroyObjectFromDatabase(bool destroyContainedObjects = false);
+
+	void createChildObjects();
+
+	void addVendorToMap();
 
 	Vendor* getVendor();
 
@@ -245,11 +257,17 @@ public:
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
+	void initializeTransientMembers();
+
 	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
 
-	void addClothingItem(WearableObject* clothing);
+	void addClothingItem(PlayerCreature* player, TangibleObject* clothing);
 
 	void destroyObjectFromDatabase(bool destroyContainedObjects);
+
+	void createChildObjects();
+
+	void addVendorToMap();
 
 	void setOwnerID(unsigned long long ownerID);
 

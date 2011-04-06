@@ -11,12 +11,21 @@
 #include "engine/core/Core.h"
 #include "server/zone/objects/auction/AuctionItem.h"
 #include "server/zone/objects/player/PlayerCreature.h"
+#include "server/zone/objects/auction/events/VendorCheckTask.h"
+
+namespace server {
+namespace zone {
+namespace objects {
+namespace auction {
 
 class Vendor : public Serializable {
 protected:
 	VectorMap<unsigned long long, ManagedReference<AuctionItem*> > vendorItems;
 
 	ManagedWeakReference<SceneObject*> vendorRef;
+
+	Reference<VendorCheckTask*> vendorCheckTask;
+	Time nextCheckTime;
 
 	unsigned long long ownerID;
 	String location;
@@ -25,6 +34,7 @@ protected:
 	bool vendorSearchEnabled;
 	bool disabled;
 	bool registered;
+	byte itemWarningLevel;
 
 	inline void addSerializableVariables() {
 		addSerializableVariable("vendorItems", &vendorItems);
@@ -35,12 +45,17 @@ protected:
 		addSerializableVariable("vendorSearchEnabled", &vendorSearchEnabled);
 		addSerializableVariable("disabled", &disabled);
 		addSerializableVariable("registered", &registered);
+		addSerializableVariable("itemWarningLevel", &itemWarningLevel);
+		addSerializableVariable("nextCheckTime", &nextCheckTime);
+
 	}
 
 public:
 	static const byte VENDORTERMINAL = 0x01;
 	static const byte BAZAARTERMINAL = 0x02;
 	static const byte NPCVENDOR = 0x03;
+
+	static const int CHECKINTERVAL = 1; // days
 
 	Vendor();
 
@@ -54,12 +69,45 @@ public:
 		vendorSearchEnabled = v.vendorSearchEnabled;
 		disabled = v.disabled;
 		registered = v.registered;
+		itemWarningLevel = v.itemWarningLevel;
+		nextCheckTime = v.nextCheckTime;
 
 		return *this;
 	}
 
 	~Vendor() {
 		vendorRef = NULL;
+
+		clearEvents();
+	}
+
+	void sendVendorUpdateMail(bool isEmpty);
+	void sendVendorDestroyMail();
+	void runVendorCheck();
+
+	inline void clearEvents() {
+		if (vendorCheckTask != NULL) {
+			if (vendorCheckTask->isQueued())
+				vendorCheckTask->cancel();
+			vendorCheckTask = NULL;
+		}
+	}
+
+	inline void rescheduleEvent() {
+		if (vendorCheckTask != NULL || isBazaarTerminal() || vendorItems.size() > 0)
+			return;
+
+		if (nextCheckTime.isPast()) {
+			vendorCheckTask = new VendorCheckTask(vendorRef.get());
+			vendorCheckTask->schedule(1000);
+		} else {
+			vendorCheckTask = new VendorCheckTask(vendorRef.get());
+			vendorCheckTask->schedule(nextCheckTime);
+		}
+	}
+
+	inline void setNextCheckTime(Time time) {
+		nextCheckTime = time;
 	}
 
 	inline void setVendor(SceneObject* objRef) {
@@ -67,6 +115,9 @@ public:
 	}
 
 	inline void addVendorItem(AuctionItem* item) {
+		if (vendorItems.size() == 0 && !isBazaarTerminal())
+			sendVendorUpdateMail(false);
+
 		vendorItems.put(item->getAuctionedItemObjectID(), item);
 	}
 
@@ -76,30 +127,53 @@ public:
 
 	inline void dropVendorItem(unsigned long long itemID) {
 		vendorItems.drop(itemID);
+
+		if (vendorItems.size() <= 0 && !isBazaarTerminal()) {
+			if (vendorCheckTask != NULL)
+				vendorCheckTask->reschedule(1000);
+			else {
+				vendorCheckTask = new VendorCheckTask(vendorRef.get());
+				vendorCheckTask->schedule(1000);
+			}
+		}
+
 	}
 
 	inline void dropVendorItem(AuctionItem* item) {
 		vendorItems.drop(item->getAuctionedItemObjectID());
+
+		if (vendorItems.size() <= 0 && !isBazaarTerminal()) {
+			if (vendorCheckTask != NULL)
+				vendorCheckTask->reschedule(1000);
+			else {
+				vendorCheckTask = new VendorCheckTask(vendorRef.get());
+				vendorCheckTask->schedule(1000);
+			}
+		}
 	}
 
 	inline void setOwnerID(unsigned long long objID) {
 		ownerID = objID;
 	}
 
-	inline void setInitialized (bool val) {
+	inline void setInitialized(bool val) {
 		initialized = val;
 	}
 
-	inline void setVendorSearchEnabled (bool enabled) {
+	inline void setVendorSearchEnabled(bool enabled) {
 		vendorSearchEnabled = enabled;
 	}
 
-	inline void setDisabled (bool isDisabled) {
+	inline void setDisabled(bool isDisabled) {
 		disabled = isDisabled;
 	}
 
-	inline void setRegistered (bool reg) {
+	inline void setRegistered(bool reg) {
 		registered = reg;
+	}
+
+	inline void setItemWarningLevel(byte lvl) {
+		itemWarningLevel = lvl;
 	}
 
 	inline SceneObject* getVendor() {
@@ -127,6 +201,10 @@ public:
 
 	inline void setVendorType(byte type) {
 		vendorType = type;
+	}
+
+	inline byte getItemWarningLevel() {
+		return itemWarningLevel;
 	}
 
 	inline byte getVendorType() {
@@ -186,5 +264,12 @@ public:
 	}
 
 };
+
+}
+}
+}
+}
+
+using namespace server::zone::objects::auction;
 
 #endif /* VENDOR_H_ */

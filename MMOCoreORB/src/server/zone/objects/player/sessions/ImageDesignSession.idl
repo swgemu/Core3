@@ -72,7 +72,7 @@ class ImageDesignSession extends Facade {
 	@dereferenced
 	protected ImageDesignData imageDesignData;
 
-	protected Reference<ImageDesignTimeoutEvent> idTimeoutEvent;
+	protected transient Reference<ImageDesignTimeoutEvent> idTimeoutEvent;
 	
 	public ImageDesignSession(CreatureObject parent) {
 		Logger.setLoggingName("ImageDesignSession");
@@ -80,10 +80,10 @@ class ImageDesignSession extends Facade {
 		
 		initializeSession();
 
-		designerCreature = null;
-		targetCreature = null;
-		imageDesignManager = null;
 	}
+	
+
+	public native void initializeTransientMembers();
 	
 	/**
 	 * Starts an ImageDesign session between the designer and the target player.
@@ -111,6 +111,11 @@ class ImageDesignSession extends Facade {
 	public native void cancelImageDesign(unsigned long designer, unsigned long targetPlayer, unsigned long tent, int type, @dereferenced final ImageDesignData data);	
 
 	public int initializeSession() {
+		designerCreature = null;
+		targetCreature = null;
+		imageDesignManager = null;
+		idTimeoutEvent = null;
+
 		return 0;
 	}
 	

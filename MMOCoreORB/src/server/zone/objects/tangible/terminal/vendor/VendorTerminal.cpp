@@ -20,7 +20,7 @@
  *	VendorTerminalStub
  */
 
-enum {RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_,RPC_SETOWNERID__LONG_,RPC_DESTROYOBJECTFROMDATABASE__BOOL_,RPC_ISVENDOR__,RPC_ISVENDORTERMINAL__};
+enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_,RPC_DESTROYOBJECTFROMDATABASE__BOOL_,RPC_ADDVENDORTOMAP__,RPC_SETOWNERID__LONG_,RPC_ISVENDOR__,RPC_ISVENDORTERMINAL__};
 
 VendorTerminal::VendorTerminal() : Terminal(DummyConstructorParameter::instance()) {
 	VendorTerminalImplementation* _implementation = new VendorTerminalImplementation();
@@ -34,6 +34,19 @@ VendorTerminal::VendorTerminal(DummyConstructorParameter* param) : Terminal(para
 VendorTerminal::~VendorTerminal() {
 }
 
+
+void VendorTerminal::initializeTransientMembers() {
+	VendorTerminalImplementation* _implementation = (VendorTerminalImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_INITIALIZETRANSIENTMEMBERS__);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->initializeTransientMembers();
+}
 
 void VendorTerminal::loadTemplateData(SharedObjectTemplate* templateData) {
 	VendorTerminalImplementation* _implementation = (VendorTerminalImplementation*) _getImplementation();
@@ -68,20 +81,6 @@ int VendorTerminal::handleObjectMenuSelect(PlayerCreature* player, byte selected
 		return _implementation->handleObjectMenuSelect(player, selectedID);
 }
 
-void VendorTerminal::setOwnerID(unsigned long long ownerID) {
-	VendorTerminalImplementation* _implementation = (VendorTerminalImplementation*) _getImplementation();
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, RPC_SETOWNERID__LONG_);
-		method.addUnsignedLongParameter(ownerID);
-
-		method.executeWithVoidReturn();
-	} else
-		_implementation->setOwnerID(ownerID);
-}
-
 void VendorTerminal::destroyObjectFromDatabase(bool destroyContainedObjects) {
 	VendorTerminalImplementation* _implementation = (VendorTerminalImplementation*) _getImplementation();
 	if (_implementation == NULL) {
@@ -94,6 +93,33 @@ void VendorTerminal::destroyObjectFromDatabase(bool destroyContainedObjects) {
 		method.executeWithVoidReturn();
 	} else
 		_implementation->destroyObjectFromDatabase(destroyContainedObjects);
+}
+
+void VendorTerminal::addVendorToMap() {
+	VendorTerminalImplementation* _implementation = (VendorTerminalImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_ADDVENDORTOMAP__);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->addVendorToMap();
+}
+
+void VendorTerminal::setOwnerID(unsigned long long ownerID) {
+	VendorTerminalImplementation* _implementation = (VendorTerminalImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_SETOWNERID__LONG_);
+		method.addUnsignedLongParameter(ownerID);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->setOwnerID(ownerID);
 }
 
 Vendor* VendorTerminal::getVendor() {
@@ -304,14 +330,20 @@ Packet* VendorTerminalAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
+	case RPC_INITIALIZETRANSIENTMEMBERS__:
+		initializeTransientMembers();
+		break;
 	case RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_:
 		resp->insertSignedInt(handleObjectMenuSelect((PlayerCreature*) inv->getObjectParameter(), inv->getByteParameter()));
 		break;
-	case RPC_SETOWNERID__LONG_:
-		setOwnerID(inv->getUnsignedLongParameter());
-		break;
 	case RPC_DESTROYOBJECTFROMDATABASE__BOOL_:
 		destroyObjectFromDatabase(inv->getBooleanParameter());
+		break;
+	case RPC_ADDVENDORTOMAP__:
+		addVendorToMap();
+		break;
+	case RPC_SETOWNERID__LONG_:
+		setOwnerID(inv->getUnsignedLongParameter());
 		break;
 	case RPC_ISVENDOR__:
 		resp->insertBoolean(isVendor());
@@ -326,16 +358,24 @@ Packet* VendorTerminalAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 	return resp;
 }
 
+void VendorTerminalAdapter::initializeTransientMembers() {
+	((VendorTerminalImplementation*) impl)->initializeTransientMembers();
+}
+
 int VendorTerminalAdapter::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
 	return ((VendorTerminalImplementation*) impl)->handleObjectMenuSelect(player, selectedID);
 }
 
-void VendorTerminalAdapter::setOwnerID(unsigned long long ownerID) {
-	((VendorTerminalImplementation*) impl)->setOwnerID(ownerID);
-}
-
 void VendorTerminalAdapter::destroyObjectFromDatabase(bool destroyContainedObjects) {
 	((VendorTerminalImplementation*) impl)->destroyObjectFromDatabase(destroyContainedObjects);
+}
+
+void VendorTerminalAdapter::addVendorToMap() {
+	((VendorTerminalImplementation*) impl)->addVendorToMap();
+}
+
+void VendorTerminalAdapter::setOwnerID(unsigned long long ownerID) {
+	((VendorTerminalImplementation*) impl)->setOwnerID(ownerID);
 }
 
 bool VendorTerminalAdapter::isVendor() {

@@ -67,6 +67,8 @@ class VendorTerminal extends Terminal {
 		
 	}
 
+	public native void initializeTransientMembers();
+
 	/**
 	 * Reads and sets the template data from a SharedObjectTemplate LuaObject
 	 * @pre { templateData is a valid pointer }
@@ -93,11 +95,13 @@ class VendorTerminal extends Terminal {
 	 */
 	public native int handleObjectMenuSelect(PlayerCreature player, byte selectedID);
 
+	public native void destroyObjectFromDatabase(boolean destroyContainedObjects = false);
+
+	public native void addVendorToMap();
+
 	public void setOwnerID(unsigned long ownerID) {
 		vendor.setOwnerID(ownerID);
 	}
-
-	public native void destroyObjectFromDatabase(boolean destroyContainedObjects = false);
 
 	@local
 	public Vendor getVendor() {
