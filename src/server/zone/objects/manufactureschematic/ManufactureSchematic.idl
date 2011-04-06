@@ -58,9 +58,9 @@ include server.zone.packets.object.ObjectControllerMessage;
 include server.zone.objects.manufactureschematic.ingredientslots.IngredientSlot;
 include server.zone.objects.manufactureschematic.IngredientSlots;
 include server.zone.objects.manufactureschematic.craftingvalues.CraftingValues;
+import system.util.Vector;
 
 class ManufactureSchematic extends IntangibleObject {
-
 	protected DraftSchematic draftSchematic;
 	protected TangibleObject prototype;
 	protected float dataSize;

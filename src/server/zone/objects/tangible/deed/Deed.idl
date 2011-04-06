@@ -48,8 +48,9 @@ import engine.lua.LuaObject;
 import server.zone.objects.tangible.TangibleObject;
 import server.zone.Zone;
 import server.zone.packets.scene.AttributeListMessage;
-
+import server.zone.objects.player.PlayerCreature;
 import server.zone.templates.SharedObjectTemplate;
+import server.zone.objects.manufactureschematic.ManufactureSchematic;
 
 class Deed extends TangibleObject {
 	protected string generatedObjectTemplate;

@@ -51,6 +51,7 @@ import server.zone.objects.player.PlayerCreature;
 import server.zone.packets.object.ObjectMenuResponse;
 import system.util.VectorMap;
 import server.zone.Zone;
+import server.zone.templates.SharedObjectTemplate;
 
 class BazaarTerminal extends VendorTerminal {
 	

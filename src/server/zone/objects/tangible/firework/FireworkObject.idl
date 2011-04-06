@@ -53,14 +53,14 @@ import server.zone.packets.object.ObjectMenuResponse;
 import server.zone.objects.player.PlayerCreature;
 import server.zone.ZoneServer;
 include server.zone.templates.tangible.FireworkObjectTemplate;
+include server.zone.templates.SharedObjectTemplate;
 
 class FireworkObject extends TangibleObject {	
-		
 	protected string fireworkObject;
 	
 	public FireworkObject() {
 		Logger.setLoggingName("FireworkObject");
-		
+
 		fireworkObject = "object/static/firework/fx_01.iff";
 	}
 	

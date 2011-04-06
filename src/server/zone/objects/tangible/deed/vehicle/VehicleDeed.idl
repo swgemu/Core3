@@ -51,6 +51,7 @@ import server.zone.Zone;
 import server.zone.packets.object.ObjectMenuResponse;
 import server.zone.objects.manufactureschematic.ManufactureSchematic;
 include server.zone.packets.scene.AttributeListMessage;
+import server.zone.objects.player.PlayerCreature;
 
 import server.zone.templates.SharedObjectTemplate;
 

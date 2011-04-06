@@ -10,6 +10,8 @@
 
 #include "server/zone/objects/player/PlayerCreature.h"
 
+#include "server/zone/templates/SharedObjectTemplate.h"
+
 #include "server/zone/packets/scene/AttributeListMessage.h"
 
 #include "server/zone/Zone.h"

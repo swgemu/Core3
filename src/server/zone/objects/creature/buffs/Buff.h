@@ -69,6 +69,8 @@ using namespace server::zone::objects::creature::buffs;
 
 #include "system/lang/Time.h"
 
+#include "engine/log/Logger.h"
+
 namespace server {
 namespace zone {
 namespace objects {

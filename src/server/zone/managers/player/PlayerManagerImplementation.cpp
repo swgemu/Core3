@@ -119,7 +119,7 @@ void PlayerManagerImplementation::loadNameMap() {
 	try {
 		String query = "SELECT * FROM characters where character_oid > 16777216 order by character_oid asc";
 
-		ResultSet* res = ServerDatabase::instance()->executeQuery(query);
+		Reference<ResultSet*> res = ServerDatabase::instance()->executeQuery(query);
 
 		while (res->next()) {
 			uint64 oid = res->getUnsignedLong(0);
@@ -128,7 +128,6 @@ void PlayerManagerImplementation::loadNameMap() {
 			nameMap->put(firstName.toLowerCase(), oid);
 		}
 
-		delete res;
 	} catch (Exception& e) {
 		error(e.getMessage());
 	}
@@ -214,10 +213,8 @@ bool PlayerManagerImplementation::checkExistentNameInDatabase(const String& name
 		String query = "SELECT * FROM characters WHERE lower(firstname) = \""
 					   + fname + "\"";
 
-		ResultSet* res = ServerDatabase::instance()->executeQuery(query);
+		Reference<ResultSet*> res = ServerDatabase::instance()->executeQuery(query);
 		bool nameExists = res->next();
-
-		delete res;
 
 		return !nameExists;
 	} catch (DatabaseException& e) {

@@ -133,6 +133,20 @@ class PlayerCreature;
 
 using namespace server::zone::objects::player;
 
+namespace server {
+namespace zone {
+namespace objects {
+namespace scene {
+
+class SceneObject;
+
+} // namespace scene
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::scene;
+
 #include "server/zone/objects/region/Region.h"
 
 #include "server/zone/managers/planet/RegionMap.h"
@@ -164,6 +178,8 @@ using namespace server::zone::objects::player;
 #include "system/util/SortedVector.h"
 
 #include "system/util/VectorMap.h"
+
+#include "system/util/Vector.h"
 
 namespace server {
 namespace zone {

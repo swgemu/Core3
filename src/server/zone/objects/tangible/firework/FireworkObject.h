@@ -89,6 +89,8 @@ using namespace server::zone;
 
 #include "server/zone/templates/tangible/FireworkObjectTemplate.h"
 
+#include "server/zone/templates/SharedObjectTemplate.h"
+
 #include "server/zone/objects/tangible/TangibleObject.h"
 
 #include "engine/lua/LuaObject.h"

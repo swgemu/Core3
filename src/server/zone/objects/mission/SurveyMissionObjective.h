@@ -73,6 +73,8 @@ using namespace server::zone::objects::resource;
 
 #include "server/zone/objects/mission/MissionObjective.h"
 
+#include "engine/core/ManagedObject.h"
+
 namespace server {
 namespace zone {
 namespace objects {

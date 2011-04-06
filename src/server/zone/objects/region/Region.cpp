@@ -20,6 +20,8 @@
 
 #include "server/zone/Zone.h"
 
+#include "server/zone/objects/scene/SceneObject.h"
+
 /*
  *	RegionStub
  */

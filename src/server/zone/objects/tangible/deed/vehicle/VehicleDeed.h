@@ -65,6 +65,20 @@ using namespace server::zone::objects::manufactureschematic;
 
 namespace server {
 namespace zone {
+namespace objects {
+namespace player {
+
+class PlayerCreature;
+
+} // namespace player
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::player;
+
+namespace server {
+namespace zone {
 namespace templates {
 
 class SharedObjectTemplate;

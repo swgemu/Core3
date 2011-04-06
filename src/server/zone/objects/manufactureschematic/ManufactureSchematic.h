@@ -97,6 +97,8 @@ using namespace server::zone::objects::area;
 
 #include "server/zone/objects/intangible/IntangibleObject.h"
 
+#include "system/util/Vector.h"
+
 namespace server {
 namespace zone {
 namespace objects {

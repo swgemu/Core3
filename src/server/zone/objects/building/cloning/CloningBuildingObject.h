@@ -41,6 +41,8 @@ using namespace server::zone::objects::cell;
 
 #include "server/zone/managers/templates/TemplateManager.h"
 
+#include "server/zone/templates/SharedObjectTemplate.h"
+
 #include "server/zone/objects/building/BuildingObject.h"
 
 #include "engine/lua/LuaObject.h"

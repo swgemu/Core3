@@ -14,6 +14,8 @@
 
 #include "server/zone/objects/tangible/terminal/city/CityVoteTerminal.h"
 
+#include "server/zone/objects/player/PlayerCreature.h"
+
 /*
  *	CityHallObjectStub
  */

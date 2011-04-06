@@ -66,6 +66,11 @@ include server.zone.objects.player.variables.SchematicList;
 include server.zone.objects.player.variables.FactionStandingList;
 import server.zone.Zone;
 import server.zone.templates.SharedObjectTemplate;
+import system.util.Vector;
+import system.util.VectorMap;
+import engine.service.proto.BasePacket;
+import engine.service.proto.BaseMessage;
+import server.zone.objects.player.PlayerCreature;
 
 class PlayerObject extends IntangibleObject {	
 	protected unsigned int characterBitmask;

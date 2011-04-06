@@ -16,6 +16,12 @@
 
 #include "server/zone/objects/area/ActiveArea.h"
 
+#include "server/zone/packets/scene/AttributeListMessage.h"
+
+#include "server/zone/objects/player/PlayerCreature.h"
+
+#include "server/zone/templates/SharedObjectTemplate.h"
+
 /*
  *	CraftingToolStub
  */

@@ -13,6 +13,20 @@
 
 namespace server {
 namespace zone {
+namespace packets {
+namespace scene {
+
+class AttributeListMessage;
+
+} // namespace scene
+} // namespace packets
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::packets::scene;
+
+namespace server {
+namespace zone {
 namespace objects {
 namespace manufactureschematic {
 
@@ -34,6 +48,20 @@ class Zone;
 } // namespace server
 
 using namespace server::zone;
+
+namespace server {
+namespace zone {
+namespace objects {
+namespace player {
+
+class PlayerCreature;
+
+} // namespace player
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::player;
 
 #include "server/zone/objects/tangible/attachment/Attachment.h"
 
