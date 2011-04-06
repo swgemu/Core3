@@ -55,6 +55,7 @@ import server.zone.ZoneProcessServer;
 include server.zone.ZoneServer;
 import server.zone.managers.structure.StructureManager;
 import server.zone.objects.scene.SceneObject;
+import server.zone.objects.area.ActiveArea;
 import server.zone.managers.planet.PlanetManager;
 import server.zone.managers.city.CityManager;
 import server.zone.managers.creature.CreatureManager;
@@ -120,6 +121,9 @@ class Zone extends ManagedObject implements QuadTree {
 	
 	@local
 	public native int getInRangeObjects(float x, float y, float range, SortedVector<SceneObject> objects);
+	
+	@local
+	public native int getInRangeActiveAreas(float x, float y, float range, SortedVector<ActiveArea> objects);
 	
 	@local
 	@dereferenced
