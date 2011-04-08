@@ -51,6 +51,20 @@ using namespace server::zone::objects::scene;
 
 namespace server {
 namespace zone {
+namespace objects {
+namespace area {
+
+class ActiveArea;
+
+} // namespace area
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::area;
+
+namespace server {
+namespace zone {
 namespace managers {
 namespace planet {
 
@@ -180,6 +194,8 @@ public:
 
 	int getInRangeObjects(float x, float y, float range, SortedVector<ManagedReference<SceneObject* > >* objects);
 
+	int getInRangeActiveAreas(float x, float y, float range, SortedVector<ManagedReference<ActiveArea* > >* objects);
+
 	SortedVector<ManagedReference<SceneObject* > > getPlanetaryObjectList(unsigned int mapObjectLocationType);
 
 	void insert(QuadTreeEntry* entry);
@@ -293,6 +309,8 @@ public:
 	QuadTree* getRegionTree();
 
 	int getInRangeObjects(float x, float y, float range, SortedVector<ManagedReference<SceneObject* > >* objects);
+
+	int getInRangeActiveAreas(float x, float y, float range, SortedVector<ManagedReference<ActiveArea* > >* objects);
 
 	SortedVector<ManagedReference<SceneObject* > > getPlanetaryObjectList(unsigned int mapObjectLocationType);
 

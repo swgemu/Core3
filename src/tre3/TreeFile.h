@@ -12,7 +12,11 @@
 #include "TreeFileRecord.h"
 #include "TreeDataBlock.h"
 
+class TreeArchive;
+
 class TreeFile : public Logger {
+	TreeArchive* treeArchive;
+
 	String filePath;
 	int version;
 	int totalRecords;
@@ -21,7 +25,7 @@ class TreeFile : public Logger {
 	TreeDataBlock fileBlock;
 	TreeDataBlock nameBlock;
 
-	Vector<TreeFileRecord> records;
+	Vector<Reference<TreeFileRecord*> > records;
 
 	void readHeader(FileInputStream& fileStream);
 	void readFileBlock(FileInputStream& fileStream);
@@ -29,7 +33,7 @@ class TreeFile : public Logger {
 	void readMD5Sums(FileInputStream& fileStream);
 
 public:
-	TreeFile();
+	TreeFile(TreeArchive* archive);
 	~TreeFile();
 
 	void read(const String& path);

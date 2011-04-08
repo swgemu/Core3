@@ -6,10 +6,12 @@
  */
 
 #include "TreeFile.h"
-#include "TreeFileRecord.h"
+//#include "TreeFileRecord.h"
+#include "TreeArchive.h"
 
-TreeFile::TreeFile() {
+TreeFile::TreeFile(TreeArchive* archive) {
 	version = 0;
+	treeArchive = archive;
 }
 
 TreeFile::~TreeFile() {
@@ -18,7 +20,7 @@ TreeFile::~TreeFile() {
 
 void TreeFile::read(const String& path) {
 	setLoggingName("TreeFile " + path);
-	setLogging(false);
+	setLogging(true);
 
 	filePath = path;
 
@@ -95,8 +97,8 @@ void TreeFile::readFileBlock(FileInputStream& fileStream) {
 	//Load the records.
 	uint32 bufferOffset = 0;
 	for (int i = 0; i < totalRecords; ++i) {
-		TreeFileRecord tfr;
-		bufferOffset += tfr.readFromBuffer(fileBlock.getUncompressedData() + bufferOffset);
+		TreeFileRecord* tfr = new TreeFileRecord();
+		bufferOffset += tfr->readFromBuffer(fileBlock.getUncompressedData() + bufferOffset);
 
 		records.add(tfr);
 	}
@@ -106,17 +108,16 @@ void TreeFile::readNameBlock(FileInputStream& fileStream) {
 	nameBlock.uncompress(fileStream);
 
 	for (int i = 0; i < totalRecords; ++i) {
-		TreeFileRecord* record = &records.get(i);
+		TreeFileRecord* record = records.get(i);
 
-		String recordName(nameBlock.getUncompressedData() + record->getNameOffset());
-
-		record->setRecordName(recordName);
+		if (treeArchive != NULL)
+			treeArchive->addRecord(nameBlock.getUncompressedData() + record->getNameOffset(), record);
 	}
 }
 
 void TreeFile::readMD5Sums(FileInputStream& fileStream) {
 	for (int i = 0; i < totalRecords; ++i) {
-		TreeFileRecord* record = &records.get(i);
+		TreeFileRecord* record = records.get(i);
 
 		byte md5[16];
 		fileStream.read(md5, 16);
