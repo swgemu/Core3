@@ -12,7 +12,6 @@
 
 class TreeFileRecord : public Object {
 	String recordName;
-	String baseName;
 
 	uint32 checksum;
 	uint32 uncompressedSize;
@@ -24,13 +23,11 @@ class TreeFileRecord : public Object {
 	byte md5Sum[16];
 
 public:
-	TreeFileRecord() {
+	TreeFileRecord() : Object() {
 
 	}
 
 	TreeFileRecord(const TreeFileRecord& tfr) : Object() {
-		recordName = tfr.recordName;
-		baseName = tfr.baseName;
 		checksum = tfr.checksum;
 		uncompressedSize = tfr.uncompressedSize;
 		fileOffset = tfr.fileOffset;
@@ -44,8 +41,6 @@ public:
 		if (this == &tfr)
 			return *this;
 
-		recordName = tfr.recordName;
-		baseName = tfr.baseName;
 		checksum = tfr.checksum;
 		uncompressedSize = tfr.uncompressedSize;
 		fileOffset = tfr.fileOffset;
@@ -55,6 +50,10 @@ public:
 		memcpy(md5Sum, tfr.md5Sum, 16);
 
 		return *this;
+	}
+
+	int compareTo(const TreeFileRecord& tfr) const {
+		return recordName.compareTo(tfr.recordName);
 	}
 
 	void read(FileInputStream& fileStream) {
@@ -102,17 +101,8 @@ public:
 		return str.toString();
 	}
 
-	inline void setRecordName(const String& name) {
-		recordName = name;
-		baseName = name.subString(name.lastIndexOf('/') + 1, name.lastIndexOf('.'));
-	}
-
 	inline void setMD5Sum(byte sum[16]) {
 		memcpy(&md5Sum, sum, 16);
-	}
-
-	inline String getBaseName() const {
-		return baseName;
 	}
 
 	inline uint32 getNameOffset() {
@@ -121,6 +111,14 @@ public:
 
 	inline uint32 getCompressionType() {
 		return compressionType;
+	}
+
+	inline void setRecordName(const String& name) {
+		recordName = name;
+	}
+
+	inline String& getRecordName() {
+		return recordName;
 	}
 };
 

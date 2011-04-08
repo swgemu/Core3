@@ -36,7 +36,7 @@ and as the GNU LGPL requires distribution of source code.
 
 Note that people who make modified versions of Engine3 are not obligated
 to grant this special exception for their modified versions;
-it is their choice whether to do so. The GNU Lesser General Public License
+it is their choice whether to do so. The GtreedirNU Lesser General Public License
 gives permission to release a modified version without this exception;
 this exception also makes it possible to release a modified version
 which carries forward this exception.
@@ -45,7 +45,7 @@ which carries forward this exception.
 #include "server/ServerCore.h"
 
 #include "server/zone/objects/scene/SceneObject.h"
-#include "tre3/TreeFile.h"
+#include "tre3/TreeArchive.h"
 
 class TestClass : public Object {
 	static const int ELEMENT_COUNT = 100;
@@ -159,11 +159,65 @@ void testTransactions() {
 }
 
 int main(int argc, char* argv[]) {
-/*
+	/*
 	Time time;
 
-	TreeFile tre;
-	tre.read("/home/crush/swg/patch_12_00.tre");
+	String trePath = "/home/crush/Desktop/SWGEmu/";
+
+	TreeArchive archive;
+	archive.unpackFile(trePath + "bottom.tre");
+	archive.unpackFile(trePath + "default_patch.tre");
+	archive.unpackFile(trePath + "data_animation_00.tre");
+	archive.unpackFile(trePath + "data_music_00.tre");
+	archive.unpackFile(trePath + "data_other_00.tre");
+	archive.unpackFile(trePath + "data_sample_00.tre");
+	archive.unpackFile(trePath + "data_sample_01.tre");
+	archive.unpackFile(trePath + "data_sample_02.tre");
+	archive.unpackFile(trePath + "data_sample_03.tre");
+	archive.unpackFile(trePath + "data_sample_04.tre");
+	archive.unpackFile(trePath + "data_skeletal_mesh_00.tre");
+	archive.unpackFile(trePath + "data_skeletal_mesh_01.tre");
+	archive.unpackFile(trePath + "data_static_mesh_00.tre");
+	archive.unpackFile(trePath + "data_static_mesh_01.tre");
+	archive.unpackFile(trePath + "data_texture_00.tre");
+	archive.unpackFile(trePath + "data_texture_01.tre");
+	archive.unpackFile(trePath + "data_texture_02.tre");
+	archive.unpackFile(trePath + "data_texture_03.tre");
+	archive.unpackFile(trePath + "data_texture_04.tre");
+	archive.unpackFile(trePath + "data_texture_05.tre");
+	archive.unpackFile(trePath + "data_texture_06.tre");
+	archive.unpackFile(trePath + "data_texture_07.tre");
+	archive.unpackFile(trePath + "patch_00.tre");
+	archive.unpackFile(trePath + "patch_01.tre");
+	archive.unpackFile(trePath + "patch_02.tre");
+	archive.unpackFile(trePath + "patch_03.tre");
+	archive.unpackFile(trePath + "patch_04.tre");
+	archive.unpackFile(trePath + "patch_05.tre");
+	archive.unpackFile(trePath + "patch_06.tre");
+	archive.unpackFile(trePath + "patch_07.tre");
+	archive.unpackFile(trePath + "patch_08.tre");
+	archive.unpackFile(trePath + "patch_09.tre");
+	archive.unpackFile(trePath + "patch_10.tre");
+	archive.unpackFile(trePath + "data_sku1_00.tre");
+	archive.unpackFile(trePath + "data_sku1_01.tre");
+	archive.unpackFile(trePath + "data_sku1_02.tre");
+	archive.unpackFile(trePath + "data_sku1_03.tre");
+	archive.unpackFile(trePath + "data_sku1_04.tre");
+	archive.unpackFile(trePath + "data_sku1_05.tre");
+	archive.unpackFile(trePath + "patch_11_00.tre");
+	archive.unpackFile(trePath + "patch_11_01.tre");
+	archive.unpackFile(trePath + "patch_11_02.tre");
+	archive.unpackFile(trePath + "patch_11_03.tre");
+	archive.unpackFile(trePath + "data_sku1_06.tre");
+	archive.unpackFile(trePath + "data_sku1_07.tre");
+	archive.unpackFile(trePath + "patch_12_00.tre");
+	archive.unpackFile(trePath + "patch_sku1_12_00.tre");
+	archive.unpackFile(trePath + "patch_13_00.tre");
+	archive.unpackFile(trePath + "patch_sku1_13_00.tre");
+	archive.unpackFile(trePath + "patch_14_00.tre");
+	archive.unpackFile(trePath + "patch_sku1_14_00.tre");
+
+	archive.printNodesByPath("terrain");
 
 	System::out << "Read in " << time.miliDifference() << endl;
 

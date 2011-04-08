@@ -10,6 +10,8 @@
 
 #include "server/zone/objects/scene/SceneObject.h"
 
+#include "server/zone/objects/area/ActiveArea.h"
+
 #include "server/zone/managers/planet/PlanetManager.h"
 
 #include "server/zone/managers/city/CityManager.h"
@@ -112,6 +114,15 @@ int Zone::getInRangeObjects(float x, float y, float range, SortedVector<ManagedR
 
 	} else
 		return _implementation->getInRangeObjects(x, y, range, objects);
+}
+
+int Zone::getInRangeActiveAreas(float x, float y, float range, SortedVector<ManagedReference<ActiveArea* > >* objects) {
+	ZoneImplementation* _implementation = (ZoneImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		throw ObjectNotLocalException(this);
+
+	} else
+		return _implementation->getInRangeActiveAreas(x, y, range, objects);
 }
 
 SortedVector<ManagedReference<SceneObject* > > Zone::getPlanetaryObjectList(unsigned int mapObjectLocationType) {

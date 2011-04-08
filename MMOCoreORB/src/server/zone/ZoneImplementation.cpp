@@ -226,7 +226,7 @@ int ZoneImplementation::getInRangeObjects(float x, float y, float range, SortedV
 	return objects->size();
 }
 
-int ZoneImplementation::getInRangeActiveAreas(float x, float y, float range, SortedVector<ManagedReference<ActiveArea*> > objects) {
+int ZoneImplementation::getInRangeActiveAreas(float x, float y, float range, SortedVector<ManagedReference<ActiveArea*> >* objects) {
 	Locker locker(_this);
 
 	SortedVector<QuadTreeEntry*> entryObjects;
