@@ -99,7 +99,7 @@ class ResourceContainer extends TangibleObject {
 	 */
 	public native void sendBaselinesTo(SceneObject player);
 	
-	public native void setQuantity(int quantity, boolean destroyOnZero = true);
+	public native void setQuantity(unsigned int newQuantity, boolean notifyClient = true);
 	
 	public boolean isResourceContainer() {
 		return true;
@@ -112,6 +112,8 @@ class ResourceContainer extends TangibleObject {
 	public int getUseCount() {
 		return getQuantity();
 	}
+
+	public native void setUseCount(unsigned int newUseCount, boolean notifyClient = true);
 	
 	public void setSpawnObject(ResourceSpawn spawn) {
 		spawnObject = spawn;

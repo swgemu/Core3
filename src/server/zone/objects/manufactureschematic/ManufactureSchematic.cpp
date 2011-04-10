@@ -18,7 +18,7 @@
  *	ManufactureSchematicStub
  */
 
-enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_SENDTO__SCENEOBJECT_BOOL_,RPC_SENDBASELINESTO__SCENEOBJECT_,RPC_SYNCHRONIZEDUILISTEN__SCENEOBJECT_INT_,RPC_SYNCHRONIZEDUISTOPLISTEN__SCENEOBJECT_INT_,RPC_UPDATETODATABASEALLOBJECTS__BOOL_,RPC_ISMANUFACTURESCHEMATIC__,RPC_SETDRAFTSCHEMATIC__SCENEOBJECT_DRAFTSCHEMATIC_,RPC_INITIALIZEINGREDIENTSLOTS__SCENEOBJECT_DRAFTSCHEMATIC_,RPC_CLEANUPINGREDIENTSLOTS__,RPC_GETDRAFTSCHEMATIC__,RPC_GETSLOTCOUNT__,RPC_INCREASECOMPLEXITY__,RPC_DECREASECOMPLEXITY__,RPC_GETCOMPLEXITY__,RPC_ISFIRSTCRAFTINGUPDATE__,RPC_SETFIRSTCRAFTINGUPDATECOMPLETE__,RPC_ISREADYFORASSEMBLY__,RPC_SETASSEMBLED__,RPC_ISASSEMBLED__,RPC_SETCOMPLETED__,RPC_ISCOMPLETED__,RPC_SETCRAFTER__PLAYERCREATURE_,RPC_GETCRAFTER__,RPC_SETEXPERIMENTINGCOUNTER__INT_,RPC_GETEXPERIMENTINGCOUNTER__,RPC_GETEXPERIMENTINGCOUNTERPREVIOUS__,RPC_SETMANUFACTURELIMIT__INT_,RPC_GETMANUFACTURELIMIT__,RPC_SETPROTOTYPE__TANGIBLEOBJECT_,RPC_GETPROTOTYPE__,RPC_INITIALIZEFACTORYINGREDIENTS__,RPC_GETFACTORYINGREDIENTSSIZE__,RPC_GETFACTORYINGREDIENT__INT_,RPC_GETFACTORYINGREDIENTSLOTTYPE__INT_};
+enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_SENDTO__SCENEOBJECT_BOOL_,RPC_SENDBASELINESTO__SCENEOBJECT_,RPC_SYNCHRONIZEDUILISTEN__SCENEOBJECT_INT_,RPC_SYNCHRONIZEDUISTOPLISTEN__SCENEOBJECT_INT_,RPC_UPDATETODATABASEALLOBJECTS__BOOL_,RPC_ISMANUFACTURESCHEMATIC__,RPC_SETDRAFTSCHEMATIC__SCENEOBJECT_DRAFTSCHEMATIC_,RPC_INITIALIZEINGREDIENTSLOTS__SCENEOBJECT_DRAFTSCHEMATIC_,RPC_CLEANUPINGREDIENTSLOTS__,RPC_GETDRAFTSCHEMATIC__,RPC_GETSLOTCOUNT__,RPC_INCREASECOMPLEXITY__,RPC_DECREASECOMPLEXITY__,RPC_GETCOMPLEXITY__,RPC_ISFIRSTCRAFTINGUPDATE__,RPC_SETFIRSTCRAFTINGUPDATECOMPLETE__,RPC_ISREADYFORASSEMBLY__,RPC_SETASSEMBLED__,RPC_ISASSEMBLED__,RPC_SETCOMPLETED__,RPC_ISCOMPLETED__,RPC_SETCRAFTER__PLAYERCREATURE_,RPC_GETCRAFTER__,RPC_SETEXPERIMENTINGCOUNTER__INT_,RPC_GETEXPERIMENTINGCOUNTER__,RPC_GETEXPERIMENTINGCOUNTERPREVIOUS__,RPC_SETMANUFACTURELIMIT__INT_,RPC_GETMANUFACTURELIMIT__,RPC_SETPROTOTYPE__TANGIBLEOBJECT_,RPC_GETPROTOTYPE__,RPC_CANMANUFACTUREITEM__STRING_STRING_,RPC_MANUFACTUREITEM__,RPC_CREATEFACTORYBLUEPRINT__,RPC_GETBLUEPRINTSIZE__,};
 
 ManufactureSchematic::ManufactureSchematic() : IntangibleObject(DummyConstructorParameter::instance()) {
 	ManufactureSchematicImplementation* _implementation = new ManufactureSchematicImplementation();
@@ -479,58 +479,67 @@ TangibleObject* ManufactureSchematic::getPrototype() {
 		return _implementation->getPrototype();
 }
 
-void ManufactureSchematic::initializeFactoryIngredients() {
+void ManufactureSchematic::canManufactureItem(String& type, String& displayedName) {
 	ManufactureSchematicImplementation* _implementation = (ManufactureSchematicImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_INITIALIZEFACTORYINGREDIENTS__);
+		DistributedMethod method(this, RPC_CANMANUFACTUREITEM__STRING_STRING_);
+		method.addAsciiParameter(type);
+		method.addAsciiParameter(displayedName);
 
 		method.executeWithVoidReturn();
 	} else
-		_implementation->initializeFactoryIngredients();
+		_implementation->canManufactureItem(type, displayedName);
 }
 
-int ManufactureSchematic::getFactoryIngredientsSize() {
+void ManufactureSchematic::manufactureItem() {
 	ManufactureSchematicImplementation* _implementation = (ManufactureSchematicImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_GETFACTORYINGREDIENTSSIZE__);
+		DistributedMethod method(this, RPC_MANUFACTUREITEM__);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->manufactureItem();
+}
+
+void ManufactureSchematic::createFactoryBlueprint() {
+	ManufactureSchematicImplementation* _implementation = (ManufactureSchematicImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_CREATEFACTORYBLUEPRINT__);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->createFactoryBlueprint();
+}
+
+int ManufactureSchematic::getBlueprintSize() {
+	ManufactureSchematicImplementation* _implementation = (ManufactureSchematicImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_GETBLUEPRINTSIZE__);
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return _implementation->getFactoryIngredientsSize();
+		return _implementation->getBlueprintSize();
 }
 
-SceneObject* ManufactureSchematic::getFactoryIngredient(int i) {
+BlueprintEntry* ManufactureSchematic::getBlueprintEntry(int i) {
 	ManufactureSchematicImplementation* _implementation = (ManufactureSchematicImplementation*) _getImplementation();
 	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
+		throw ObjectNotLocalException(this);
 
-		DistributedMethod method(this, RPC_GETFACTORYINGREDIENT__INT_);
-		method.addSignedIntParameter(i);
-
-		return (SceneObject*) method.executeWithObjectReturn();
 	} else
-		return _implementation->getFactoryIngredient(i);
-}
-
-int ManufactureSchematic::getFactoryIngredientSlotType(int i) {
-	ManufactureSchematicImplementation* _implementation = (ManufactureSchematicImplementation*) _getImplementation();
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, RPC_GETFACTORYINGREDIENTSLOTTYPE__INT_);
-		method.addSignedIntParameter(i);
-
-		return method.executeWithSignedIntReturn();
-	} else
-		return _implementation->getFactoryIngredientSlotType(i);
+		return _implementation->getBlueprintEntry(i);
 }
 
 DistributedObjectServant* ManufactureSchematic::_getImplementation() {
@@ -677,13 +686,8 @@ bool ManufactureSchematicImplementation::readObjectMember(ObjectInputStream* str
 		return true;
 	}
 
-	if (_name == "factoryIngredients") {
-		TypeInfo<Vector<ManagedReference<TangibleObject* > > >::parseFromBinaryStream(&factoryIngredients, stream);
-		return true;
-	}
-
-	if (_name == "factoryIngredientSlotType") {
-		TypeInfo<Vector<int> >::parseFromBinaryStream(&factoryIngredientSlotType, stream);
+	if (_name == "factoryBlueprint") {
+		TypeInfo<FactoryBlueprint >::parseFromBinaryStream(&factoryBlueprint, stream);
 		return true;
 	}
 
@@ -806,19 +810,11 @@ int ManufactureSchematicImplementation::writeObjectMembers(ObjectOutputStream* s
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "factoryIngredients";
+	_name = "factoryBlueprint";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
-	TypeInfo<Vector<ManagedReference<TangibleObject* > > >::toBinaryStream(&factoryIngredients, stream);
-	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
-	stream->writeShort(_offset, _totalSize);
-
-	_name = "factoryIngredientSlotType";
-	_name.toBinaryStream(stream);
-	_offset = stream->getOffset();
-	stream->writeShort(0);
-	TypeInfo<Vector<int> >::toBinaryStream(&factoryIngredientSlotType, stream);
+	TypeInfo<FactoryBlueprint >::toBinaryStream(&factoryBlueprint, stream);
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
@@ -887,7 +883,7 @@ int ManufactureSchematicImplementation::writeObjectMembers(ObjectOutputStream* s
 	stream->writeShort(_offset, _totalSize);
 
 
-	return 18 + IntangibleObjectImplementation::writeObjectMembers(stream);
+	return 17 + IntangibleObjectImplementation::writeObjectMembers(stream);
 }
 
 ManufactureSchematicImplementation::ManufactureSchematicImplementation() {
@@ -1008,23 +1004,9 @@ TangibleObject* ManufactureSchematicImplementation::getPrototype() {
 	return prototype;
 }
 
-int ManufactureSchematicImplementation::getFactoryIngredientsSize() {
-	// server/zone/objects/manufactureschematic/ManufactureSchematic.idl():  		return factoryIngredients.size();
-	return (&factoryIngredients)->size();
-}
-
-SceneObject* ManufactureSchematicImplementation::getFactoryIngredient(int i) {
-	// server/zone/objects/manufactureschematic/ManufactureSchematic.idl():  		return factoryIngredients.get(i);
-	return (&factoryIngredients)->get(i);
-}
-
-int ManufactureSchematicImplementation::getFactoryIngredientSlotType(int i) {
-	// server/zone/objects/manufactureschematic/ManufactureSchematic.idl():  			return 0;
-	if ((&factoryIngredientSlotType)->size() > i)	// server/zone/objects/manufactureschematic/ManufactureSchematic.idl():  			return factoryIngredientSlotType.get(i);
-	return (&factoryIngredientSlotType)->get(i);
-
-	else 	// server/zone/objects/manufactureschematic/ManufactureSchematic.idl():  			return 0;
-	return 0;
+int ManufactureSchematicImplementation::getBlueprintSize() {
+	// server/zone/objects/manufactureschematic/ManufactureSchematic.idl():  		return factoryBlueprint.getConsolidatedSize();
+	return (&factoryBlueprint)->getConsolidatedSize();
 }
 
 /*
@@ -1131,17 +1113,17 @@ Packet* ManufactureSchematicAdapter::invokeMethod(uint32 methid, DistributedMeth
 	case RPC_GETPROTOTYPE__:
 		resp->insertLong(getPrototype()->_getObjectID());
 		break;
-	case RPC_INITIALIZEFACTORYINGREDIENTS__:
-		initializeFactoryIngredients();
+	case RPC_CANMANUFACTUREITEM__STRING_STRING_:
+		canManufactureItem(inv->getAsciiParameter(_param0_canManufactureItem__String_String_), inv->getAsciiParameter(_param1_canManufactureItem__String_String_));
 		break;
-	case RPC_GETFACTORYINGREDIENTSSIZE__:
-		resp->insertSignedInt(getFactoryIngredientsSize());
+	case RPC_MANUFACTUREITEM__:
+		manufactureItem();
 		break;
-	case RPC_GETFACTORYINGREDIENT__INT_:
-		resp->insertLong(getFactoryIngredient(inv->getSignedIntParameter())->_getObjectID());
+	case RPC_CREATEFACTORYBLUEPRINT__:
+		createFactoryBlueprint();
 		break;
-	case RPC_GETFACTORYINGREDIENTSLOTTYPE__INT_:
-		resp->insertSignedInt(getFactoryIngredientSlotType(inv->getSignedIntParameter()));
+	case RPC_GETBLUEPRINTSIZE__:
+		resp->insertSignedInt(getBlueprintSize());
 		break;
 	default:
 		return NULL;
@@ -1274,20 +1256,20 @@ TangibleObject* ManufactureSchematicAdapter::getPrototype() {
 	return ((ManufactureSchematicImplementation*) impl)->getPrototype();
 }
 
-void ManufactureSchematicAdapter::initializeFactoryIngredients() {
-	((ManufactureSchematicImplementation*) impl)->initializeFactoryIngredients();
+void ManufactureSchematicAdapter::canManufactureItem(String& type, String& displayedName) {
+	((ManufactureSchematicImplementation*) impl)->canManufactureItem(type, displayedName);
 }
 
-int ManufactureSchematicAdapter::getFactoryIngredientsSize() {
-	return ((ManufactureSchematicImplementation*) impl)->getFactoryIngredientsSize();
+void ManufactureSchematicAdapter::manufactureItem() {
+	((ManufactureSchematicImplementation*) impl)->manufactureItem();
 }
 
-SceneObject* ManufactureSchematicAdapter::getFactoryIngredient(int i) {
-	return ((ManufactureSchematicImplementation*) impl)->getFactoryIngredient(i);
+void ManufactureSchematicAdapter::createFactoryBlueprint() {
+	((ManufactureSchematicImplementation*) impl)->createFactoryBlueprint();
 }
 
-int ManufactureSchematicAdapter::getFactoryIngredientSlotType(int i) {
-	return ((ManufactureSchematicImplementation*) impl)->getFactoryIngredientSlotType(i);
+int ManufactureSchematicAdapter::getBlueprintSize() {
+	return ((ManufactureSchematicImplementation*) impl)->getBlueprintSize();
 }
 
 /*

@@ -58,9 +58,11 @@ include server.zone.packets.object.ObjectControllerMessage;
 include server.zone.objects.manufactureschematic.ingredientslots.IngredientSlot;
 include server.zone.objects.manufactureschematic.IngredientSlots;
 include server.zone.objects.manufactureschematic.craftingvalues.CraftingValues;
-import system.util.Vector;
+include server.zone.objects.manufactureschematic.factoryblueprint.FactoryBlueprint;
+include server.zone.objects.manufactureschematic.factoryblueprint.BlueprintEntry;
 
 class ManufactureSchematic extends IntangibleObject {
+
 	protected DraftSchematic draftSchematic;
 	protected TangibleObject prototype;
 	protected float dataSize;
@@ -71,10 +73,7 @@ class ManufactureSchematic extends IntangibleObject {
 	protected boolean firstCraftingUpdate;
 	
 	@dereferenced
-	protected Vector<TangibleObject> factoryIngredients;
-	
-	@dereferenced
-	protected Vector<int> factoryIngredientSlotType;
+	protected FactoryBlueprint factoryBlueprint;
 	
 	@dereferenced
 	protected IngredientSlots ingredientSlots;
@@ -250,20 +249,16 @@ class ManufactureSchematic extends IntangibleObject {
 		return prototype;
 	}
 	
-	public native void initializeFactoryIngredients();
+	public native void canManufactureItem(string type, string displayedName);
 	
-	public int getFactoryIngredientsSize() {
-		return factoryIngredients.size();
+	public native void manufactureItem();
+	
+	public native void createFactoryBlueprint();
+	
+	public int getBlueprintSize() {
+		return factoryBlueprint.getConsolidatedSize();
 	}
 	
-	public SceneObject getFactoryIngredient(int i) {
-		return factoryIngredients.get(i);
-	}
-	
-	public int getFactoryIngredientSlotType(int i) {
-		if(factoryIngredientSlotType.size() > i)
-			return factoryIngredientSlotType.get(i);
-		else
-			return 0;
-	}
+	@local
+	public native BlueprintEntry getBlueprintEntry(int i);
 }

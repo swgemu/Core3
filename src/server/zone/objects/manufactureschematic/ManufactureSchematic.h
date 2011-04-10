@@ -91,13 +91,15 @@ using namespace server::zone::objects::area;
 
 #include "server/zone/objects/manufactureschematic/craftingvalues/CraftingValues.h"
 
+#include "server/zone/objects/manufactureschematic/factoryblueprint/FactoryBlueprint.h"
+
+#include "server/zone/objects/manufactureschematic/factoryblueprint/BlueprintEntry.h"
+
 #include "system/lang/ref/Reference.h"
 
 #include "engine/service/proto/BaseMessage.h"
 
 #include "server/zone/objects/intangible/IntangibleObject.h"
-
-#include "system/util/Vector.h"
 
 namespace server {
 namespace zone {
@@ -176,13 +178,15 @@ public:
 
 	TangibleObject* getPrototype();
 
-	void initializeFactoryIngredients();
+	void canManufactureItem(String& type, String& displayedName);
 
-	int getFactoryIngredientsSize();
+	void manufactureItem();
 
-	SceneObject* getFactoryIngredient(int i);
+	void createFactoryBlueprint();
 
-	int getFactoryIngredientSlotType(int i);
+	int getBlueprintSize();
+
+	BlueprintEntry* getBlueprintEntry(int i);
 
 	DistributedObjectServant* _getImplementation();
 
@@ -226,9 +230,7 @@ protected:
 
 	bool firstCraftingUpdate;
 
-	Vector<ManagedReference<TangibleObject* > > factoryIngredients;
-
-	Vector<int> factoryIngredientSlotType;
+	FactoryBlueprint factoryBlueprint;
 
 	IngredientSlots ingredientSlots;
 
@@ -319,13 +321,15 @@ public:
 
 	TangibleObject* getPrototype();
 
-	void initializeFactoryIngredients();
+	void canManufactureItem(String& type, String& displayedName);
 
-	int getFactoryIngredientsSize();
+	void manufactureItem();
 
-	SceneObject* getFactoryIngredient(int i);
+	void createFactoryBlueprint();
 
-	int getFactoryIngredientSlotType(int i);
+	int getBlueprintSize();
+
+	BlueprintEntry* getBlueprintEntry(int i);
 
 	ManufactureSchematic* _this;
 
@@ -432,14 +436,17 @@ public:
 
 	TangibleObject* getPrototype();
 
-	void initializeFactoryIngredients();
+	void canManufactureItem(String& type, String& displayedName);
 
-	int getFactoryIngredientsSize();
+	void manufactureItem();
 
-	SceneObject* getFactoryIngredient(int i);
+	void createFactoryBlueprint();
 
-	int getFactoryIngredientSlotType(int i);
+	int getBlueprintSize();
 
+protected:
+	String _param0_canManufactureItem__String_String_;
+	String _param1_canManufactureItem__String_String_;
 };
 
 class ManufactureSchematicHelper : public DistributedObjectClassHelper, public Singleton<ManufactureSchematicHelper> {

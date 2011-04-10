@@ -84,13 +84,15 @@ public:
 
 	void sendBaselinesTo(SceneObject* player);
 
-	void setQuantity(int quantity, bool destroyOnZero = true);
+	void setQuantity(unsigned int newQuantity, bool notifyClient = true);
 
 	bool isResourceContainer();
 
 	int getQuantity();
 
 	int getUseCount();
+
+	void setUseCount(unsigned int newUseCount, bool notifyClient = true);
 
 	void setSpawnObject(ResourceSpawn* spawn);
 
@@ -156,13 +158,15 @@ public:
 
 	void sendBaselinesTo(SceneObject* player);
 
-	void setQuantity(int quantity, bool destroyOnZero = true);
+	void setQuantity(unsigned int newQuantity, bool notifyClient = true);
 
 	bool isResourceContainer();
 
 	int getQuantity();
 
 	int getUseCount();
+
+	void setUseCount(unsigned int newUseCount, bool notifyClient = true);
 
 	void setSpawnObject(ResourceSpawn* spawn);
 
@@ -229,13 +233,15 @@ public:
 
 	void sendBaselinesTo(SceneObject* player);
 
-	void setQuantity(int quantity, bool destroyOnZero);
+	void setQuantity(unsigned int newQuantity, bool notifyClient);
 
 	bool isResourceContainer();
 
 	int getQuantity();
 
 	int getUseCount();
+
+	void setUseCount(unsigned int newUseCount, bool notifyClient);
 
 	void setSpawnObject(ResourceSpawn* spawn);
 

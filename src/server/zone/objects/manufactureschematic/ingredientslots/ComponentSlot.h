@@ -179,7 +179,7 @@ public:
 					TangibleObject* newTano = (TangibleObject*) objectManager->cloneObject(incomingTano);
 					newTano->setParent(NULL);
 
-					newTano->setUseCount(getQuantity() + needs, true);
+					newTano->setUseCount(needs, true);
 
 					contents.add(newTano);
 					contentsPreviousParent.add(incomingTanoParent);

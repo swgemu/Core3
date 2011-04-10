@@ -65,51 +65,21 @@ void ManufactureSchematicImplementation::fillAttributeList(AttributeListMessage*
 
 	try {
 
-		String resourceHead = "cat_manf_schem_ing_resource.\"";
+		for (int i = 0; i < factoryBlueprint.getCompleteSize(); ++i) {
 
-		String name;
-		int value;
+			BlueprintEntry* entry = factoryBlueprint.getCompleteEntry(i);
 
-		for (int i = 0; i < factoryIngredients.size(); ++i) {
-
-			ManagedReference<TangibleObject*> ingredient = factoryIngredients.get(i);
-
-			if (ingredient == NULL)
+			if(entry == NULL)
 				continue;
 
-			int slottype = factoryIngredientSlotType.get(i);
-
-			bool requiresIdentical = (slottype == IngredientSlot::IDENTICALSLOT || slottype == IngredientSlot::OPTIONALIDENTICALSLOT);
-
-			if (ingredient->isResourceContainer()) {
-				ManagedReference<ResourceContainer*> rcno =
-						(ResourceContainer*) ingredient.get();
-
-				name = resourceHead + rcno->getSpawnObject()->getName();
-				value = rcno->getQuantity();
-
-				alm->insertAttribute(name, value);
-
-			} else {
-
-				ManagedReference<TangibleObject*> component =
-						(TangibleObject*) ingredient.get();
-
-				name = resourceHead + component->getObjectName()->getDisplayedName();
-
-				if(requiresIdentical)
-					name += " " + component->getCraftersSerial();
-
-				value = component->getUseCount();
-
-				alm->insertAttribute(name, value);
-			}
+			entry->insertSchematicAttribute(alm);
 		}
 
 		alm->insertAttribute("manf_limit", manufactureLimit);
 
 		if (prototype != NULL)
 			prototype->fillAttributeList(alm, object);
+
 	} catch (Exception& e) {
 		error("Unhandled Exception in ManufactureSchematicImplementation::fillAttributeList");
 	}
@@ -119,10 +89,6 @@ void ManufactureSchematicImplementation::updateToDatabaseAllObjects(bool startTa
 
 	if(prototype != NULL)
 		prototype->updateToDatabase();
-
-	for(int i = 0; i < factoryIngredients.size(); ++i) {
-		factoryIngredients.get(i)->updateToDatabase();
-	}
 
 	IntangibleObjectImplementation::updateToDatabaseAllObjects(startTask);
 }
@@ -309,14 +275,14 @@ void ManufactureSchematicImplementation::setPrototype(TangibleObject* tano) {
 	crafter = NULL;
 	dataSize = draftSchematic->getSize();
 
-	initializeFactoryIngredients();
+	createFactoryBlueprint();
 
 	cleanupIngredientSlots();
 
 	updateToDatabase();
 }
 
-void ManufactureSchematicImplementation::initializeFactoryIngredients() {
+void ManufactureSchematicImplementation::createFactoryBlueprint() {
 
 	for (int i = 0; i < ingredientSlots.size(); ++i) {
 		Reference<IngredientSlot*> ingredientSlot = getIngredientSlot(i);
@@ -331,8 +297,20 @@ void ManufactureSchematicImplementation::initializeFactoryIngredients() {
 
 		ingredient->setUseCount(ingredientSlot->getRequiredQuantity(), false);
 
-		addObject(ingredient, -1, true);
-		factoryIngredients.add(ingredient);
-		factoryIngredientSlotType.add(ingredientSlot->getSlotType());
+		factoryBlueprint.addIngredient(ingredient, ingredientSlot->isIdentical());
 	}
 }
+
+BlueprintEntry* ManufactureSchematicImplementation::getBlueprintEntry(int i) {
+	return factoryBlueprint.getConsolidatedEntry(i);
+}
+
+void ManufactureSchematicImplementation::canManufactureItem(String &type, String &displayedName) {
+	factoryBlueprint.canManufactureItem(type, displayedName);
+}
+
+void ManufactureSchematicImplementation::manufactureItem() {
+	factoryBlueprint.manufactureItem();
+	setManufactureLimit(getManufactureLimit() - 1);
+}
+

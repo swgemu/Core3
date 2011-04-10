@@ -235,45 +235,11 @@ void FactoryObjectImplementation::sendIngredientsNeededSui(PlayerCreature* playe
 
 	ingredientList->setOkButton(true, "@ok");
 
-	/// List Ingredients
 	ManagedReference<ManufactureSchematic* > schematic = dynamic_cast<ManufactureSchematic*>(getContainerObject(0));
 
-	for (int i = 0; i < schematic->getFactoryIngredientsSize(); ++i) {
-
-		ManagedReference<SceneObject* > ingredient = dynamic_cast<SceneObject*>(schematic->getFactoryIngredient(i));
-
-		if (ingredient == NULL) {
-			String sendstring = "Error adding ingredient - Contact Kyle";
-			ingredientList->addMenuItem(sendstring, 0);
-			continue;
-		}
-
-		if (ingredient->isResourceContainer()) {
-			ManagedReference<ResourceContainer*> rcno = (ResourceContainer*) ingredient.get();
-
-			String sendstring = rcno->getSpawnObject()->getName() + ":\\>200" + rcno->getQuantity();
-
-			ingredientList->addMenuItem(sendstring, 0);
-
-		} else {
-
-			ManagedReference<TangibleObject*> component = dynamic_cast<TangibleObject*>(ingredient.get());
-
-			StringBuffer sendstring;
-			sendstring << component->getObjectName()->getDisplayedName();
-
-			int slottype = schematic->getFactoryIngredientSlotType(i);
-			bool requiresIdentical = (slottype == IngredientSlot::IDENTICALSLOT || slottype == IngredientSlot::OPTIONALIDENTICALSLOT);
-
-			if(requiresIdentical)
-				sendstring << " " << component->getCraftersSerial();
-			else
-				sendstring << " ()";
-
-			sendstring << ":\\>200" << component->getUseCount();
-
-			ingredientList->addMenuItem(sendstring.toString(), 0);
-		}
+	for (int i = 0; i < schematic->getBlueprintSize(); ++i) {
+		BlueprintEntry* blueprintEntry = schematic->getBlueprintEntry(i);
+		blueprintEntry->insertFactoryIngredient(ingredientList);
 	}
 
 	ingredientList->setUsingObject(_this);
@@ -290,7 +256,7 @@ void FactoryObjectImplementation::sendIngredientHopper(PlayerCreature* player) {
 		return;
 	}
 
-	inputHopper->sendTo(player, true);
+	inputHopper->sendWithoutContainerObjectsTo(player);
 	inputHopper->openContainerTo(player);
 }
 
@@ -302,7 +268,7 @@ void FactoryObjectImplementation::sendOutputHopper(PlayerCreature* player) {
 		return;
 	}
 
-	outputHopper->sendTo(player, true);
+	outputHopper->sendWithoutContainerObjectsTo(player);
 	outputHopper->openContainerTo(player);
 }
 
@@ -382,8 +348,8 @@ void FactoryObjectImplementation::handleOperateToggle(PlayerCreature* player) {
 	if(!operating) {
 		currentUserName = player->getFirstName();
 		currentRunCount = 0;
-		startFactory();
-		player->sendSystemMessage("manf_station", "activated"); //Station activated
+		if(startFactory())
+			player->sendSystemMessage("manf_station", "activated"); //Station activated
 	} else {
 
 		stopFactory("manf_done", getObjectName()->getDisplayedName(), "", currentRunCount);
@@ -392,16 +358,17 @@ void FactoryObjectImplementation::handleOperateToggle(PlayerCreature* player) {
 	}
 }
 
-void FactoryObjectImplementation::startFactory() {
+bool FactoryObjectImplementation::startFactory() {
 	if (getContainerObjectsSize() == 0) {
-		return;
+		return false;
 	}
 
-	Locker _locker(_this);
+	ManagedReference<ManufactureSchematic* > schematic = dynamic_cast<ManufactureSchematic*>(getContainerObject(0));
 
-	operating = true;
+	timer = ((int)schematic->getComplexity()) * 2;
 
-	timer = (int)(dynamic_cast<ManufactureSchematic*>(getContainerObject(0)))->getComplexity() * 2;
+	if(!populateSchematicBlueprint(schematic))
+		return false;
 
 	// Add sampletask
 	Reference<CreateFactoryObjectTask* > createFactoryObjectTask = new CreateFactoryObjectTask(_this);
@@ -409,7 +376,27 @@ void FactoryObjectImplementation::startFactory() {
 
 	createFactoryObjectTask->schedule(timer * 1000);
 
+	operating = true;
+
 	updateToDatabase();
+	return true;
+}
+
+bool FactoryObjectImplementation::populateSchematicBlueprint(ManufactureSchematic* schematic) {
+
+	ManagedReference<SceneObject*> inputHopper = getSlottedObject("ingredient_hopper");
+
+	if(inputHopper == NULL) {
+		error("Factory Ingredient Hopper missing.  WTF");
+		return false;
+	}
+
+	for(int i = 0; i < schematic->getBlueprintSize(); ++i) {
+		BlueprintEntry* entry = schematic->getBlueprintEntry(i);
+		entry->setHopper(inputHopper);
+		collectMatchesInInputHopper(entry, inputHopper);
+	}
+	return true;
 }
 
 void FactoryObjectImplementation::stopFactory(const String& message, const String& tt, const String& to, const int di) {
@@ -436,29 +423,34 @@ void FactoryObjectImplementation::stopFactory(const String& message, const Strin
 		if(di != -1)
 			emailBody.setDI(di);
 		UnicodeString subject = "@system_msg:manf_done_sub";
+
+		/*WaypointObject* newwaypoint = (WaypointObject*) server->getZoneServer()->createObject(0xc456e788, 1);
+
+		newwaypoint->setCustomName(UnicodeString(this->getObjectName()->getDisplayedName()));
+		newwaypoint->setPlanetCRC(Planet::getPlanetCRC(getZone()->getPlanetName()));
+		newwaypoint->setPosition(this->getPositionX(), this->getPositionZ(), this->getPositionY());
+		newwaypoint->setColor(WaypointObject::COLOR_BLUE);
+		newwaypoint->setActive(false);
+
+		chatManager->sendMail(getObjectName()->getDisplayedName(), subject, emailBody, currentUserName, newwaypoint);*/
+
 		chatManager->sendMail(getObjectName()->getDisplayedName(), subject, emailBody, currentUserName);
 	}
 
 	updateToDatabase();
 }
 
-void FactoryObjectImplementation::stopFactory(TangibleObject* ingredient) {
+void FactoryObjectImplementation::stopFactory(String &type, String &displayedName) {
 
-	if(ingredient->isResourceContainer()) {
+	if(type == "resource") {
 
-		ResourceContainer* rcnoObject = (ResourceContainer*) ingredient;
-
-		if(rcnoObject->getSpawnName() == "")
+		if(displayedName == "")
 			stopFactory("manf_no_unknown_resource", getObjectName()->getDisplayedName(), "", -1);
 		else
-			stopFactory("manf_no_named_resource", getObjectName()->getDisplayedName(), rcnoObject->getSpawnName(), -1);
+			stopFactory("manf_no_named_resource", getObjectName()->getDisplayedName(), displayedName, -1);
 
 	} else {
-
-		if(ingredient->getCustomObjectName().toString() == "")
-			stopFactory("manf_no_component", getObjectName()->getDisplayedName(), ingredient->getObjectName()->getDisplayedName(), -1);
-		else
-			stopFactory("manf_no_component", getObjectName()->getDisplayedName(), ingredient->getCustomObjectName().toString(), -1);
+		stopFactory("manf_no_component", getObjectName()->getDisplayedName(), displayedName, -1);
 	}
 }
 
@@ -486,45 +478,48 @@ void FactoryObjectImplementation::createNewObject() {
 		return;
 	}
 
-	try {
-		if (removeIngredientsFromHopper(schematic)) {
+	String type = "";
+	String displayedName = "";
 
-			ManagedReference<FactoryCrate*> crate = locateCrateInOutputHopper(prototype);
+	schematic->canManufactureItem(type, displayedName);
 
-			if (crate == NULL)
-				crate = createNewFactoryCrate(prototype);
-			else
-				crate->setUseCount(crate->getUseCount() + 1);
-
-			currentRunCount++;
-
-			if (crate == NULL) {
-				stopFactory("manf_error_7", "", "", -1);
-				return;
-			}
-
-			Locker locker(crate);
-
-			Reference<Task*> pending = getPendingTask("createFactoryObject");
-
-			schematic->setManufactureLimit(schematic->getManufactureLimit() - 1);
-
-			if(schematic->getManufactureLimit() == 0) {
-
-				removeObject(schematic);
-				stopFactory("manf_done", getObjectName()->getDisplayedName(), "", currentRunCount);
-
-			} else if (pending != NULL)
-				pending->reschedule(timer * 1000);
-			else
-				stopFactory("manf_error", "", "", -1);
-
-		}
-
-		updateToDatabase();
-	} catch (Exception& e) {
-		error("unhandled exception in FactoryObjectImplementation::createNewObject()");
+	if (displayedName != "") {
+		stopFactory(type, displayedName);
+		return;
 	}
+
+	ManagedReference<FactoryCrate*> crate =
+			locateCrateInOutputHopper(prototype);
+
+	if (crate == NULL)
+		crate = createNewFactoryCrate(prototype);
+	else {
+		Locker locker(crate);
+		crate->setUseCount(crate->getUseCount() + 1);
+	}
+
+	if (crate == NULL) {
+		stopFactory("manf_error_7", "", "", -1);
+		return;
+	}
+
+	schematic->manufactureItem();
+	currentRunCount++;
+
+	Reference<Task*> pending = getPendingTask("createFactoryObject");
+
+	if (schematic->getManufactureLimit() == 0) {
+
+		removeObject(schematic);
+		stopFactory("manf_done", getObjectName()->getDisplayedName(), "",
+				currentRunCount);
+
+	} else if (pending != NULL)
+		pending->reschedule(timer * 1000);
+	else
+		stopFactory("manf_error", "", "", -1);
+
+	updateToDatabase();
 }
 
 FactoryCrate* FactoryObjectImplementation::locateCrateInOutputHopper(TangibleObject* prototype) {
@@ -571,7 +566,7 @@ FactoryCrate* FactoryObjectImplementation::createNewFactoryCrate(TangibleObject*
 		return false;
 	}
 
-	outputHopper->addObject(crate, -1, false);
+	outputHopper->addObject(crate, -1, true);
 	broadcastObject(crate, true);
 
 	crate->updateToDatabase();
@@ -579,151 +574,57 @@ FactoryCrate* FactoryObjectImplementation::createNewFactoryCrate(TangibleObject*
 	return crate;
 }
 
-bool FactoryObjectImplementation::removeIngredientsFromHopper(ManufactureSchematic* schematic) {
-	/// List Ingredients
+void FactoryObjectImplementation::collectMatchesInInputHopper(
+		BlueprintEntry* entry, SceneObject* inputHopper) {
 
-	ManagedReference<SceneObject*> inputHopper = getSlottedObject("ingredient_hopper");
+	entry->clearMatches();
+	for (int i = 0; i < inputHopper->getContainerObjectsSize(); ++i) {
 
-	if(inputHopper == NULL) {
-		stopFactory("manf_error_5", "", "", -1);
-		return false;
-	}
+		ManagedReference<TangibleObject*> object =
+				(TangibleObject*) inputHopper->getContainerObject(i);
 
-	VectorMap<TangibleObject*, int> usableIngredients;
-	usableIngredients.setNoDuplicateInsertPlan();
-	usableIngredients.setAllowOverwriteInsertPlan();
-
-	for (int i = 0; i < schematic->getFactoryIngredientsSize(); ++i) {
-
-		ManagedReference<TangibleObject*> ingredient = dynamic_cast<TangibleObject*>(schematic->getFactoryIngredient(i));
-
-		if(ingredient == NULL) {
-			error("NULL ingredient in FactoryObjectImplementation::removeIngredientsFromHopper");
+		if (object == NULL) {
+			error("NULL hopper object in FactoryObjectImplementation::countItemInInputHopper");
 			continue;
 		}
 
-		int slottype = schematic->getFactoryIngredientSlotType(i);
+		String key = "";
+		String serial = "";
 
-		bool requiresIdentical = (slottype == IngredientSlot::IDENTICALSLOT || slottype == IngredientSlot::OPTIONALIDENTICALSLOT);
+		if (object->isResourceContainer()) {
 
-		ManagedReference<TangibleObject*> usableObject = findMatchInInputHopper(inputHopper, ingredient, requiresIdentical);
+			ResourceContainer* rcnoObject = (ResourceContainer*) object.get();
 
-		if(usableObject == NULL || !usableObject->isTangibleObject()) {
-			stopFactory(ingredient);
-			return false;
-		}
+			key = rcnoObject->getSpawnName();
 
-		if(usableIngredients.contains(usableObject)) {
-			int currentUsedValue = usableIngredients.get(usableObject);
-			if(currentUsedValue + ingredient->getUseCount() > usableObject->getUseCount())
-				return false;
-			else
-				usableIngredients.put(usableObject, currentUsedValue + ingredient->getUseCount());
-		} else {
-			usableIngredients.put(usableObject, ingredient->getUseCount());
-		}
-	}
-
-	for(int i = 0; i < usableIngredients.size(); ++i) {
-
-		ManagedReference<TangibleObject* > ingredient = usableIngredients.elementAt(i).getKey();
-
-		if(ingredient->isResourceContainer()) {
-
-			ResourceContainer* rcnoObject = dynamic_cast<ResourceContainer*>(ingredient.get());
-			rcnoObject->setQuantity(rcnoObject->getQuantity() - usableIngredients.get(i));
-
-			ResourceContainerObjectDeltaMessage3* rcnod3 = new ResourceContainerObjectDeltaMessage3(rcnoObject);
-			rcnod3->setQuantity(rcnoObject->getQuantity());
-			rcnod3->close();
-			broadcastMessage(rcnod3, true);
-
-		} else if(ingredient->isFactoryCrate()){
-
-			ingredient->setUseCount(ingredient->getUseCount() - usableIngredients.get(i));
-
-			FactoryCrateObjectDeltaMessage3* fcty3 = new FactoryCrateObjectDeltaMessage3((FactoryCrate*)ingredient.get());
-			fcty3->setQuantity(ingredient->getUseCount());
-			fcty3->close();
-			broadcastMessage(fcty3, true);
-
-		} else {
-
-			ingredient->setUseCount(ingredient->getUseCount() - usableIngredients.get(i));
-
-			TangibleObjectDeltaMessage3* dtano3 = new TangibleObjectDeltaMessage3(ingredient);
-			dtano3->setQuantity(ingredient->getUseCount());
-			dtano3->close();
-			broadcastMessage(dtano3, true);
-		}
-	}
-
-	return true;
-}
-
-TangibleObject* FactoryObjectImplementation::findMatchInInputHopper(
-		SceneObject* inputHopper, TangibleObject* ingredient, bool requiresIdentical) {
-
-	try {
-
-		ResourceContainer* rcnoIngredient = dynamic_cast<ResourceContainer*>(ingredient);
-		int quantity = 0;
-
-		for (int i = 0; i < inputHopper->getContainerObjectsSize(); ++i) {
-
-			ManagedReference<TangibleObject*> object =
-					(TangibleObject*) inputHopper->getContainerObject(i);
-
-			if (object == NULL) {
-				error("NULL hopper object in FactoryObjectImplementation::countItemInInputHopper");
+			if(entry->getKey() == key) {
+				entry->addMatch(object);
 				continue;
 			}
 
-			if (object->isResourceContainer()) {
+		} else {
 
-				if(rcnoIngredient == NULL)
-					continue;
+			TangibleObject* prototype = NULL;
 
-				ResourceContainer* rcnoObject = (ResourceContainer*) object.get();
-
-				String test = rcnoIngredient->getSpawnName();
-				String test2 = rcnoObject->getSpawnName();
-
-				if (rcnoIngredient->getSpawnName() == rcnoObject->getSpawnName()
-						&& rcnoIngredient->getQuantity() <= rcnoObject->getQuantity())
-					return object;
-
+			if (object->isFactoryCrate()) {
+				FactoryCrate* crate = (FactoryCrate*) object.get();
+				prototype = crate->getPrototype();
 			} else {
+				prototype = object;
+			}
 
-				ManagedReference<TangibleObject*> prototype = NULL;
+			key = String::valueOf(prototype->getServerObjectCRC());
+			serial = prototype->getCraftersSerial();
 
-				if(object->isFactoryCrate()) {
-					FactoryCrate* crate = (FactoryCrate*) object.get();
-					prototype = crate->getPrototype();
-				} else
-					prototype = object;
+			if(entry->getKey() == key) {
 
-				if(requiresIdentical) {
-
-					if (ingredient->getCraftersSerial() == prototype->getCraftersSerial()
-							&& ingredient->getUseCount() <= object->getUseCount())
-					return object;
-
-				} else {
-
-					if (ingredient->getServerObjectCRC() == prototype->getServerObjectCRC()
-							&& ingredient->getUseCount() <= object->getUseCount())
-					return object;
-
+				if(entry->needsIdentical()) {
+					if(entry->getSerial() != serial)
+						continue;
 				}
+
+				entry->addMatch(object);
 			}
 		}
-
-		return NULL;
-
-	} catch (Exception& e) {
-		error("unreported exception caught in TangibleObject* FactoryObjectImplementation::findMatchInInputHopper(");
-
-		return NULL;
 	}
 }
