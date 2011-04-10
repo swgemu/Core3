@@ -67,6 +67,8 @@ class ActiveArea;
 
 using namespace server::zone::objects::area;
 
+#include "server/zone/objects/manufactureschematic/factoryblueprint/BlueprintEntry.h"
+
 #include "server/zone/objects/installation/InstallationObject.h"
 
 namespace server {
@@ -187,11 +189,11 @@ public:
 	void handleOperateToggle(PlayerCreature* player);
 
 private:
-	void startFactory();
+	bool startFactory();
 
 	void stopFactory(const String& message, const String& tt, const String& to, const int di);
 
-	void stopFactory(TangibleObject* ingredient);
+	void stopFactory(String& type, String& displayedName);
 
 public:
 	void createNewObject();
@@ -201,9 +203,9 @@ private:
 
 	FactoryCrate* createNewFactoryCrate(TangibleObject* prototype);
 
-	bool removeIngredientsFromHopper(ManufactureSchematic* schematic);
+	bool populateSchematicBlueprint(ManufactureSchematic* schematic);
 
-	TangibleObject* findMatchInInputHopper(SceneObject* inputHopper, TangibleObject* ingredient, bool identical);
+	void collectMatchesInInputHopper(BlueprintEntry* entry, SceneObject* inputHopper);
 
 public:
 	FactoryObject* _this;

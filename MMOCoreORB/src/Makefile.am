@@ -160,6 +160,8 @@ core3_IDLS =	server/login/LoginServer.cpp \
 				server/zone/objects/draftschematic/DraftSchematic.cpp \
 				server/zone/objects/manufactureschematic/ManufactureSchematic.cpp \
 				server/zone/objects/manufactureschematic/craftingvalues/CraftingValues.cpp \
+				server/zone/objects/manufactureschematic/factoryblueprint/FactoryBlueprint.cpp \
+				server/zone/objects/manufactureschematic/factoryblueprint/BlueprintEntry.cpp \
 				server/zone/objects/resource/ResourceSpawn.cpp \
 				server/zone/objects/structure/StructureObject.cpp \
 				server/zone/objects/tangible/fishing/FishingPoleObject.cpp \

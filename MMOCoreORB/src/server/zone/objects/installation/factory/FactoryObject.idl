@@ -5,6 +5,7 @@ import server.zone.objects.manufactureschematic.ManufactureSchematic;
 import server.zone.objects.factorycrate.FactoryCrate;
 import server.zone.objects.tangible.TangibleObject;
 import server.zone.objects.area.ActiveArea;
+include server.zone.objects.manufactureschematic.factoryblueprint.BlueprintEntry;
 
 class FactoryObject extends InstallationObject {
 
@@ -103,11 +104,11 @@ class FactoryObject extends InstallationObject {
 
 	public native void handleOperateToggle(PlayerCreature player);
 	
-	private native void startFactory();
+	private native boolean startFactory(); 
 	
 	private native void stopFactory(final string message, final string tt, final string to, final int di);
 
-	private native void stopFactory(TangibleObject ingredient);
+	private native void stopFactory(string type, string displayedName);
 	
 	public native void createNewObject();
 	
@@ -115,7 +116,7 @@ class FactoryObject extends InstallationObject {
 
 	private native FactoryCrate createNewFactoryCrate(TangibleObject prototype);
 
-	private native boolean removeIngredientsFromHopper(ManufactureSchematic schematic);
+	private native boolean populateSchematicBlueprint(ManufactureSchematic schematic);
 
-	private native TangibleObject findMatchInInputHopper(SceneObject inputHopper, TangibleObject ingredient, boolean identical);
+	private native void collectMatchesInInputHopper(BlueprintEntry entry, SceneObject inputHopper);
 }

@@ -14,7 +14,7 @@
  *	ResourceContainerStub
  */
 
-enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_DESTROYOBJECTFROMDATABASE__BOOL_,RPC_SENDBASELINESTO__SCENEOBJECT_,RPC_SETQUANTITY__INT_BOOL_,RPC_ISRESOURCECONTAINER__,RPC_GETQUANTITY__,RPC_GETUSECOUNT__,RPC_SETSPAWNOBJECT__RESOURCESPAWN_,RPC_GETSPAWNNAME__,RPC_GETSPAWNTYPE__,RPC_GETSPAWNID__,RPC_GETSPAWNOBJECT__,RPC_SPLIT__INT_,RPC_SPLIT__INT_PLAYERCREATURE_,RPC_COMBINE__RESOURCECONTAINER_};
+enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_DESTROYOBJECTFROMDATABASE__BOOL_,RPC_SENDBASELINESTO__SCENEOBJECT_,RPC_SETQUANTITY__INT_BOOL_,RPC_ISRESOURCECONTAINER__,RPC_GETQUANTITY__,RPC_GETUSECOUNT__,RPC_SETUSECOUNT__INT_BOOL_,RPC_SETSPAWNOBJECT__RESOURCESPAWN_,RPC_GETSPAWNNAME__,RPC_GETSPAWNTYPE__,RPC_GETSPAWNID__,RPC_GETSPAWNOBJECT__,RPC_SPLIT__INT_,RPC_SPLIT__INT_PLAYERCREATURE_,RPC_COMBINE__RESOURCECONTAINER_};
 
 ResourceContainer::ResourceContainer() : TangibleObject(DummyConstructorParameter::instance()) {
 	ResourceContainerImplementation* _implementation = new ResourceContainerImplementation();
@@ -79,19 +79,19 @@ void ResourceContainer::sendBaselinesTo(SceneObject* player) {
 		_implementation->sendBaselinesTo(player);
 }
 
-void ResourceContainer::setQuantity(int quantity, bool destroyOnZero) {
+void ResourceContainer::setQuantity(unsigned int newQuantity, bool notifyClient) {
 	ResourceContainerImplementation* _implementation = (ResourceContainerImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, RPC_SETQUANTITY__INT_BOOL_);
-		method.addSignedIntParameter(quantity);
-		method.addBooleanParameter(destroyOnZero);
+		method.addUnsignedIntParameter(newQuantity);
+		method.addBooleanParameter(notifyClient);
 
 		method.executeWithVoidReturn();
 	} else
-		_implementation->setQuantity(quantity, destroyOnZero);
+		_implementation->setQuantity(newQuantity, notifyClient);
 }
 
 bool ResourceContainer::isResourceContainer() {
@@ -131,6 +131,21 @@ int ResourceContainer::getUseCount() {
 		return method.executeWithSignedIntReturn();
 	} else
 		return _implementation->getUseCount();
+}
+
+void ResourceContainer::setUseCount(unsigned int newUseCount, bool notifyClient) {
+	ResourceContainerImplementation* _implementation = (ResourceContainerImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_SETUSECOUNT__INT_BOOL_);
+		method.addUnsignedIntParameter(newUseCount);
+		method.addBooleanParameter(notifyClient);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->setUseCount(newUseCount, notifyClient);
 }
 
 void ResourceContainer::setSpawnObject(ResourceSpawn* spawn) {
@@ -488,7 +503,7 @@ Packet* ResourceContainerAdapter::invokeMethod(uint32 methid, DistributedMethod*
 		sendBaselinesTo((SceneObject*) inv->getObjectParameter());
 		break;
 	case RPC_SETQUANTITY__INT_BOOL_:
-		setQuantity(inv->getSignedIntParameter(), inv->getBooleanParameter());
+		setQuantity(inv->getUnsignedIntParameter(), inv->getBooleanParameter());
 		break;
 	case RPC_ISRESOURCECONTAINER__:
 		resp->insertBoolean(isResourceContainer());
@@ -498,6 +513,9 @@ Packet* ResourceContainerAdapter::invokeMethod(uint32 methid, DistributedMethod*
 		break;
 	case RPC_GETUSECOUNT__:
 		resp->insertSignedInt(getUseCount());
+		break;
+	case RPC_SETUSECOUNT__INT_BOOL_:
+		setUseCount(inv->getUnsignedIntParameter(), inv->getBooleanParameter());
 		break;
 	case RPC_SETSPAWNOBJECT__RESOURCESPAWN_:
 		setSpawnObject((ResourceSpawn*) inv->getObjectParameter());
@@ -542,8 +560,8 @@ void ResourceContainerAdapter::sendBaselinesTo(SceneObject* player) {
 	((ResourceContainerImplementation*) impl)->sendBaselinesTo(player);
 }
 
-void ResourceContainerAdapter::setQuantity(int quantity, bool destroyOnZero) {
-	((ResourceContainerImplementation*) impl)->setQuantity(quantity, destroyOnZero);
+void ResourceContainerAdapter::setQuantity(unsigned int newQuantity, bool notifyClient) {
+	((ResourceContainerImplementation*) impl)->setQuantity(newQuantity, notifyClient);
 }
 
 bool ResourceContainerAdapter::isResourceContainer() {
@@ -556,6 +574,10 @@ int ResourceContainerAdapter::getQuantity() {
 
 int ResourceContainerAdapter::getUseCount() {
 	return ((ResourceContainerImplementation*) impl)->getUseCount();
+}
+
+void ResourceContainerAdapter::setUseCount(unsigned int newUseCount, bool notifyClient) {
+	((ResourceContainerImplementation*) impl)->setUseCount(newUseCount, notifyClient);
 }
 
 void ResourceContainerAdapter::setSpawnObject(ResourceSpawn* spawn) {

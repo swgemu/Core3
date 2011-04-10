@@ -75,12 +75,16 @@ void ResourceContainerImplementation::sendBaselinesTo(SceneObject* player) {
 	player->sendMessage(rnco6);
 }
 
-void ResourceContainerImplementation::setQuantity(int quantity, bool destroyOnZero) {
+void ResourceContainerImplementation::setUseCount(uint32 newQuantity, bool notifyClient) {
+	setQuantity(newQuantity, notifyClient);
+}
+
+void ResourceContainerImplementation::setQuantity(uint32 quantity, bool doNotify) {
 	Locker _locker(_this);
 
 	stackQuantity = quantity;
 
-	if(stackQuantity < 1 && destroyOnZero) {
+	if(stackQuantity < 1) {
 
 		if(parent != NULL) {
 			parent->broadcastDestroy(_this, true);
@@ -99,6 +103,9 @@ void ResourceContainerImplementation::setQuantity(int quantity, bool destroyOnZe
 		newStackSize = stackQuantity - ResourceContainer::MAXSIZE;
 		stackQuantity = ResourceContainer::MAXSIZE;
 	}
+
+	if(!doNotify)
+		return;
 
 	if (newStackSize > 0) {
 		if (parent != NULL) {

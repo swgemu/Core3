@@ -514,7 +514,7 @@ public:
 
 	virtual void setCombatState();
 
-	void setUseCount(unsigned int newUseCount, bool notifyClient = true);
+	virtual void setUseCount(unsigned int newUseCount, bool notifyClient = true);
 
 	void decreaseUseCount(PlayerCreature* player = NULL);
 
