@@ -9,9 +9,11 @@
 #define TREEFILERECORD_H_
 
 #include "engine/engine.h"
+#include "TreeDataBlock.h"
 
-class TreeFileRecord : public Object {
+class TreeFileRecord : public Object, public Logger {
 	String recordName;
+	String treeFilePath;
 
 	uint32 checksum;
 	uint32 uncompressedSize;
@@ -23,11 +25,14 @@ class TreeFileRecord : public Object {
 	byte md5Sum[16];
 
 public:
-	TreeFileRecord() : Object() {
-
+	TreeFileRecord() : Object(), Logger() {
+		setLoggingName("TreeFileRecord");
+		setLogging(true);
 	}
 
-	TreeFileRecord(const TreeFileRecord& tfr) : Object() {
+	TreeFileRecord(const TreeFileRecord& tfr) : Object(), Logger() {
+		recordName = tfr.recordName;
+		treeFilePath = tfr.treeFilePath;
 		checksum = tfr.checksum;
 		uncompressedSize = tfr.uncompressedSize;
 		fileOffset = tfr.fileOffset;
@@ -35,12 +40,17 @@ public:
 		compressedSize = tfr.compressedSize;
 		nameOffset = tfr.nameOffset;
 		memcpy(md5Sum, tfr.md5Sum, 16);
+
+		setLoggingName("TreeFileRecord " + recordName);
+		setLogging(true);
 	}
 
 	TreeFileRecord& operator= (const TreeFileRecord& tfr) {
 		if (this == &tfr)
 			return *this;
 
+		recordName = tfr.recordName;
+		treeFilePath = tfr.treeFilePath;
 		checksum = tfr.checksum;
 		uncompressedSize = tfr.uncompressedSize;
 		fileOffset = tfr.fileOffset;
@@ -49,11 +59,17 @@ public:
 		nameOffset = tfr.nameOffset;
 		memcpy(md5Sum, tfr.md5Sum, 16);
 
+		setLoggingName("TreeFileRecord " + recordName);
+
 		return *this;
 	}
 
 	int compareTo(const TreeFileRecord& tfr) const {
 		return recordName.compareTo(tfr.recordName);
+	}
+
+	int compareTo(const String& fileName) const {
+		return recordName.compareTo(fileName);
 	}
 
 	void read(FileInputStream& fileStream) {
@@ -89,6 +105,33 @@ public:
 	    return bufferOffset;
 	}
 
+	byte* getBytes() {
+		File* file = new File(treeFilePath);
+
+		FileInputStream fileStream(file);
+
+		if (!file->exists()) {
+			System::out << "File does not exist " << treeFilePath << endl;
+			return NULL;
+		}
+
+		byte* buffer = NULL;
+
+		fileStream.skip(fileOffset);
+
+		TreeDataBlock db;
+		db.setCompressedSize(compressedSize);
+		db.setUncompressedSize(uncompressedSize);
+		db.setCompressionType(compressionType);
+		db.uncompress(fileStream);
+
+		buffer = (byte*) db.getUncompressedData();
+
+		fileStream.close();
+
+		return buffer;
+	}
+
 	String toString() const {
 		StringBuffer str;
 		str << "Checksum: " << checksum;
@@ -113,12 +156,20 @@ public:
 		return compressionType;
 	}
 
+	inline uint32 getUncompressedSize() {
+		return uncompressedSize;
+	}
+
 	inline void setRecordName(const String& name) {
 		recordName = name;
 	}
 
 	inline String& getRecordName() {
 		return recordName;
+	}
+
+	inline void setTreeFilePath(const String& path) {
+		treeFilePath = path;
 	}
 };
 

@@ -81,6 +81,8 @@
 #include "server/zone/templates/appearance/DetailAppearanceTemplate.h"
 #include "server/zone/templates/appearance/ComponentAppearanceTemplate.h"
 
+#include "tre3/TreeArchive.h"
+
 #include "server/conf/ConfigManager.h"
 
 Lua* TemplateManager::luaTemplatesInstance = NULL;
@@ -151,9 +153,10 @@ void TemplateManager::loadTreArchive() {
 	if (treFilesToLoad.size() == 0)
 		return;
 
-	info("loading tres..", true);
+	info("Loading TRE archives...", true);
 
-	treeDirectory = new treArchive();
+	//treeDirectory = new treArchive();
+	treeDirectory = new TreeArchive();
 
 	int j = 0;
 
@@ -163,20 +166,26 @@ void TemplateManager::loadTreArchive() {
 		String fullPath = path + "/";
 		fullPath += file;
 
-		if (!treeDirectory->addFile(fullPath.toCharArray()))
-			error("could not load " + fullPath);
-		else
-			++j;
+		treeDirectory->unpackFile(fullPath);
+
+		//if (!treeDirectory->addFile(fullPath.toCharArray()))
+			//error("could not load " + fullPath);
+		//else
+			//++j;
 	}
 
-	if (j == 0) {
-		delete treeDirectory;
-		treeDirectory = NULL;
-	}
+	info("Loading terrain corellia", true);
+
+	//if (j == 0) {
+		//delete treeDirectory;
+		//treeDirectory = NULL;
+	//}
+
+	//treeDirectory->printNodesByPath("terrain");
 
 	//treeDirectory->printArchiveContents();
 
-	info("tres loaded", true);
+	info("Finished loading TRE archives.", true);
 }
 
 void TemplateManager::addTemplate(uint32 key, const String& fullName, LuaObject* templateData) {
@@ -424,21 +433,12 @@ IffStream* TemplateManager::openIffFile(const String& fileName) {
 	if (treeDirectory == NULL)
 		return NULL;
 
-	std::stringstream* stringStream = treeDirectory->getFileStream(fileName.toCharArray());
+	int size = 0;
+	byte* data = treeDirectory->getBytes(fileName, size);
 
-	if (stringStream == NULL)
+
+	if (size == 0)
 		return NULL;
-
-	stringStream->seekg (0, std::ios::end);
-	int size = stringStream->tellg();
-	stringStream->seekg(0, std::ios::beg);
-
-	sys::byte* data = new byte[size];
-
-	stringStream->read((char*)data, size);
-
-	//stringStream->close();
-	delete stringStream;
 
 	iffStream = new IffStream();
 

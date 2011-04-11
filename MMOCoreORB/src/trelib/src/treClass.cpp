@@ -192,7 +192,7 @@ bool treClass::readFileBlock( std::ifstream &file )
 		<< ": Failed to read/uncompress data!" << std::endl;
       return false;
     }
-    
+
     // Fail if block is null...
     if( NULL == fileBlock.getUncompressedDataPtr() ) { return false; }
 

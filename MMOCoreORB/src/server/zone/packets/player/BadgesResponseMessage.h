@@ -59,7 +59,7 @@ public:
 		insertLong(player->getObjectID()); //Player ID
 		//insertInt(1); //List Counter? who knows.
 
-		insertInt(0x0F); //needs to be 0F in order to show badges. *shrug*
+		insertInt(0x10); //needs to be 0F in order to show badges. *shrug*
 
 		setCompression(true);
 
@@ -79,6 +79,7 @@ public:
 		       	insertInt(0); //BADGE BITMASK 5 ID 128 - 159
 		       	*/
 
+		insertInt(1);
 		insertInt(0);
 		insertInt(0);
 		insertInt(0);
