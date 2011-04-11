@@ -57,29 +57,15 @@ public:
 		insertShort(0x03);
 		insertInt(0x6D89D25B);  // CRC
 		insertLong(player->getObjectID()); //Player ID
-		//insertInt(1); //List Counter? who knows.
 
-		insertInt(0x10); //needs to be 0F in order to show badges. *shrug*
+		insertInt(0x0F); //Number of bitmasks to send
 
 		setCompression(true);
 
 		for (int i = 0; i < 5; ++i) {
 			insertInt(badges->getBitmask(i));
 		}
-
-			/*
-		       	insertInt(1); //BADGE BITMASK 1 ID 0 - 31 5 BADGES
-
-		       	insertInt(0); //BADGE BITMASK 2 ID 32 - 63 PROJECT DEADEYE
-
-		       	insertInt(0); //BADGE BITMASK 3 ID 64 - 95 MASTER RANGER
-
-		       	insertInt(0); //BADGE BITMASK 4 ID 96. 127 IMPERIAL ENCAMPMENT
-
-		       	insertInt(0); //BADGE BITMASK 5 ID 128 - 159
-		       	*/
-
-		insertInt(1);
+		insertInt(0);
 		insertInt(0);
 		insertInt(0);
 		insertInt(0);
