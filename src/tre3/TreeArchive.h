@@ -10,9 +10,10 @@
 
 #include "engine/engine.h"
 #include "TreeFile.h"
+#include "TreeDirectory.h"
 
 class TreeArchive : public Logger {
-	VectorMap<String, SortedVector<Reference<TreeFileRecord*> > > nodeMap;
+	VectorMap<String, TreeDirectory> nodeMap;
 
 public:
 	TreeArchive() {
@@ -35,10 +36,10 @@ public:
 		record->setRecordName(fileName);
 
 		if (nodeMap.contains(dir)) {
-			SortedVector<Reference<TreeFileRecord*> >* records = &nodeMap.get(dir);
+			TreeDirectory* records = &nodeMap.get(dir);
 			records->put(record);
 		} else {
-			SortedVector<Reference<TreeFileRecord*> > records;
+			TreeDirectory records;
 			records.setNoDuplicateInsertPlan();
 			records.put(record);
 
@@ -46,8 +47,33 @@ public:
 		}
 	}
 
+	byte* getBytes(const String& recordPath, int& size) {
+		int pos = recordPath.lastIndexOf("/");
+		String dir = recordPath.subString(0, pos);
+		String fileName = recordPath.subString(pos+1, recordPath.length());
+
+		TreeDirectory* treeDir = &nodeMap.get(dir);
+
+		if (treeDir == NULL) {
+			error("Path does not exist.");
+			return NULL;
+		}
+
+		int idx = treeDir->find(fileName);
+
+		if (idx == -1) {
+			error("Did not find fileName: " + fileName);
+			return NULL;
+		}
+
+		Reference<TreeFileRecord*> record = treeDir->get(idx);
+		size = record->getUncompressedSize();
+
+		return record->getBytes();
+	}
+
 	void printNodesByPath(const String& path) {
-		SortedVector<Reference<TreeFileRecord*> >* records = &nodeMap.get(path);
+		TreeDirectory* records = &nodeMap.get(path);
 
 		if (records == NULL) {
 			error("No files at specified path.");

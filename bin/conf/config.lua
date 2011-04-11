@@ -49,22 +49,22 @@ MakeStatus = 1
 
 ORB = ""
 
-DBHost = "172.26.0.2"
+DBHost = "127.0.0.1"
 DBPort = 3306
 DBName = "swgemu"
-DBUser = "root"
-DBPass = "swgemu"
+DBUser = "swgemu"
+DBPass = "123456"
 
 LoginPort = 44453
 LoginProcessingThreads = 1
 LoginAllowedConnections = 3000
 LoginRequiredVersion = "20050408-18:00"
 
-MantisHost = "172.26.0.2"
+MantisHost = "127.0.0.1"
 MantisPort = 3306
 MantisName = "swgemu"
-MantisUser = "root"
-MantisPass = "swgemu"
+MantisUser = "swgemu"
+MantisPass = "123456"
 MantisPrfx = "mantis_" -- The prefix for your mantis tables.
 
 AutoReg = 1
@@ -78,61 +78,71 @@ ZoneGalaxyID = 2 --The actual zone server's galaxyID. Should coordinate with you
 ZoneOnlineCharactersPerAccount = 2 --How many characters are allowed online from a single account.
 
 -- directory of tres with live.cfg
-TrePath = "/Applications/SWGEmu.app/Contents/Resources/transgaming/c_drive/SWGEMU"
+TrePath = "/home/crush/swg"
 
 TreFiles = {
+	"bottom.tre",
 	"default_patch.tre",
-	"patch_sku1_14_00.tre",
-	"patch_14_00.tre",
-	"hotfix_13_1_00.tre",
-	"patch_sku1_13_00.tre",
-	"patch_13_00.tre",
-	"patch_sku1_12_00.tre",
-	"patch_12_00.tre",
-	"patch_11_03.tre",
-	"data_sku1_07.tre",
-	"patch_11_02.tre",
-	"data_sku1_06.tre",
-	"patch_11_01.tre",
-	"patch_11_00.tre",
-	"data_sku1_05.tre",
-	"data_sku1_04.tre",
-	"data_sku1_03.tre",
-	"data_sku1_02.tre",
-	"data_sku1_01.tre",
-	"data_sku1_00.tre",
-	"patch_10.tre",
-	"patch_09.tre",
-	"patch_08.tre",
-	"patch_07.tre",
-	"patch_06.tre",
-	"patch_05.tre",
-	"patch_04.tre",
-	"patch_03.tre",
-	"patch_02.tre",
-	"patch_01.tre",
-	"patch_00.tre",
-	"data_other_00.tre",
-	"data_static_mesh_01.tre",
-	"data_static_mesh_00.tre",
-	"data_texture_07.tre",
-	"data_texture_06.tre",
-	"data_texture_05.tre",
-	"data_texture_04.tre",
-	"data_texture_03.tre",
-	"data_texture_02.tre",
-	"data_texture_01.tre",
-	"data_texture_00.tre",
-	"data_skeletal_mesh_01.tre",
-	"data_skeletal_mesh_00.tre",
 	"data_animation_00.tre",
-	"data_sample_04.tre",
-	"data_sample_03.tre",
-	"data_sample_02.tre",
-	"data_sample_01.tre",
-	"data_sample_00.tre",
 	"data_music_00.tre",
-	"bottom.tre"
+	"data_other_00.tre",
+	"data_sample_00.tre",
+	"data_sample_01.tre",
+	"data_sample_02.tre",
+	"data_sample_03.tre",
+	"data_sample_04.tre",
+	"data_skeletal_mesh_00.tre",
+	"data_skeletal_mesh_01.tre",
+	"data_static_mesh_00.tre",
+	"data_static_mesh_01.tre",
+	"data_texture_00.tre",
+	"data_texture_01.tre",
+	"data_texture_02.tre",
+	"data_texture_03.tre",
+	"data_texture_04.tre",
+	"data_texture_05.tre",
+	"data_texture_06.tre",
+	"data_texture_07.tre",
+	"patch_00.tre",
+	"patch_01.tre",
+	"patch_02.tre",
+	"patch_03.tre",
+	"patch_04.tre",
+	"patch_05.tre",
+	"patch_06.tre",
+	"patch_07.tre",
+	"patch_08.tre",
+	"patch_09.tre",
+	"patch_10.tre",
+	"data_sku1_00.tre",
+	"data_sku1_01.tre",
+	"data_sku1_02.tre",
+	"data_sku1_03.tre",
+	"data_sku1_04.tre",
+	"data_sku1_05.tre",
+	"patch_11_00.tre",
+	"patch_11_01.tre",
+	"patch_11_02.tre",
+	"patch_11_03.tre",
+	"data_sku1_06.tre",
+	"data_sku1_07.tre",
+	"hotfix_sku1_11_2_00.tre",
+	"hotfix_sku1_11_3_00.tre",
+	"hotfix_sku1_11_4_00.tre",
+	"hotfix_sku1_11_5_00.tre",
+	"hotfix_sku1_11_6_00.tre",
+	"hotfix_sku1_11_7_00.tre",
+	"hotfix_sku1_11_10_00.tre",
+	"hotfix_sku1_11_12_00.tre",
+	"hotfix_sku1_11_13_00.tre",
+	"patch_12_00.tre",
+	"patch_sku1_12_00.tre",
+	"hotfix_sku1_12_1_00.tre",
+	"patch_13_00.tre",
+	"patch_sku1_13_00.tre",
+	"hotfix_sku1_14_1_00.tre",
+	"patch_14_00.tre",
+	"patch_sku1_14_00.tre"
 }
 
 --Status Server Config

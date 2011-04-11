@@ -25,6 +25,8 @@ class FloorMesh;
 class PortalLayout;
 class AppearanceTemplate;
 
+class TreeArchive;
+
 class TemplateManager : public Singleton<TemplateManager>, public Logger {
 	TemplateCRCMap* templateCRCMap;
 
@@ -34,7 +36,8 @@ class TemplateManager : public Singleton<TemplateManager>, public Logger {
 	FloorMeshMap* floorMeshMap;
 	AppearanceMap* appearanceMap;
 
-	treArchive* treeDirectory;
+	//treArchive* treeDirectory;
+	TreeArchive* treeDirectory;
 
 	ReadWriteLock appearanceMapLock;
 

@@ -98,6 +98,7 @@ void TreeFile::readFileBlock(FileInputStream& fileStream) {
 	uint32 bufferOffset = 0;
 	for (int i = 0; i < totalRecords; ++i) {
 		TreeFileRecord* tfr = new TreeFileRecord();
+		tfr->setTreeFilePath(filePath);
 		bufferOffset += tfr->readFromBuffer(fileBlock.getUncompressedData() + bufferOffset);
 
 		records.add(tfr);

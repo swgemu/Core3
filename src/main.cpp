@@ -162,7 +162,7 @@ int main(int argc, char* argv[]) {
 	/*
 	Time time;
 
-	String trePath = "/home/crush/Desktop/SWGEmu/";
+	String trePath = "/home/crush/swg/";
 
 	TreeArchive archive;
 	archive.unpackFile(trePath + "bottom.tre");
