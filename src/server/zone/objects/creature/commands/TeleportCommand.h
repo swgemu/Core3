@@ -66,8 +66,8 @@ public:
 		StringTokenizer args(arguments.toString());
 
 		try {
-			String terrainName;
-			args.getStringToken(terrainName);
+			String zoneName;
+			args.getStringToken(zoneName);
 			float posx = args.getFloatToken();
 			float posy = args.getFloatToken();
 
@@ -76,7 +76,7 @@ public:
 			if (args.hasMoreTokens())
 				parent = args.getLongToken();
 
-			creature->switchZone(terrainName, posx, 0, posy, parent);
+			creature->switchZone(zoneName, posx, 0, posy, parent);
 		} catch (Exception& e) {
 			creature->sendSystemMessage("invalid arguments for teleport command");
 		}

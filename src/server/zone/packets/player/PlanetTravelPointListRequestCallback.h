@@ -16,7 +16,7 @@
 
 class PlanetTravelPointListRequestCallback : public MessageCallback {
 	uint64 objectid;
-	String terrainName;
+	String zoneName;
 public:
 	PlanetTravelPointListRequestCallback(ZoneClientSession* client, ZoneProcessServer* server) :
 		MessageCallback(client, server) {
@@ -25,7 +25,7 @@ public:
 
 	void parse(Message* message) {
 		objectid = message->parseLong();
-		message->parseAscii(terrainName);
+		message->parseAscii(zoneName);
 	}
 
 	void run() {
@@ -36,7 +36,7 @@ public:
 
 		Locker _locker(object);
 
-		Zone* zone = server->getZoneServer()->getZone(terrainName);
+		Zone* zone = server->getZoneServer()->getZone(zoneName);
 
 		if (zone == NULL)
 			return;

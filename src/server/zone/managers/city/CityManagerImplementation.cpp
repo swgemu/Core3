@@ -24,33 +24,28 @@ int CityManagerImplementation::newCityGracePeriod = 0;
 void CityManagerImplementation::loadLuaConfig() {
 	info("Loading config file.", true);
 
-	String terrainName = zone->getTerrainName();
+	String zoneName = zone->getZoneName();
 
 	Lua* lua = new Lua();
 	lua->init();
 
 	lua->runFile("scripts/managers/city_manager.lua");
 
-	/*
-	 * TODO: Refactor this to use terrainName
-
 	LuaObject luaObject = lua->getGlobalObject("CitiesAllowed");
 
 	if (luaObject.isValidTable()) {
-		lua_State* L = luaObject.getLuaState();
-		lua_rawgeti(L, -1, zoneid+1);
-		LuaObject a(L);
+		LuaObject rankTable = luaObject.getObjectField(zoneName);
 
-		for (int i = 1; i <= a.getTableSize(); ++i)
-			citiesAllowedPerRank.add(a.getIntAt(i));
+		for (int i = 1; i <= rankTable.getTableSize(); ++i)
+			citiesAllowedPerRank.add(rankTable.getIntAt(i));
 
-		a.pop();
+		rankTable.pop();
 	}
 
 	luaObject.pop();
 
 	//Only load the static values on the first zone.
-	if (zoneid == 0) {
+	if (!configLoaded) {
 		cityUpdateInterval = lua->getGlobalInt("CityUpdateInterval");
 		newCityGracePeriod = lua->getGlobalInt("NewCityGracePeriod");
 
@@ -71,9 +66,9 @@ void CityManagerImplementation::loadLuaConfig() {
 		}
 
 		luaObject.pop();
-	}
 
-	*/
+		configLoaded = true;
+	}
 
 	delete lua;
 	lua = NULL;

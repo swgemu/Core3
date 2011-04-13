@@ -608,7 +608,7 @@ void PlayerManagerImplementation::createTutorialBuilding(PlayerCreature* player)
 	player->initializePosition(27.0f, -3.5f, -165.0f);
 	player->setZone(zone);
 	cellTut->addObject(player, -1);
-	player->setSavedTerrainName(zone->getTerrainName());
+	player->setSavedTerrainName(zone->getZoneName());
 	player->setSavedParentID(cellTut->getObjectID());
 
 	tutorial->updateToDatabase();
@@ -636,7 +636,7 @@ void PlayerManagerImplementation::createSkippedTutorialBuilding(PlayerCreature* 
 	player->initializePosition(27.0f, -3.5f, -165.0f);
 	player->setZone(zone);
 	cellTut->addObject(player, -1);
-	player->setSavedTerrainName(zone->getTerrainName());
+	player->setSavedTerrainName(zone->getZoneName());
 	player->setSavedParentID(cellTut->getObjectID());
 
 	tutorial->updateToDatabase();
@@ -978,7 +978,7 @@ void PlayerManagerImplementation::sendActivateCloneRequest(PlayerCreature* playe
 	cloneMenu->addMenuItem("@base_player:revive_closest", closestCloning->getObjectID());
 
 	//Check if predesignated is on this planet or not.
-	if (preDesignatedFacility != NULL && preDesignatedFacility->getZone()->getTerrainName() == zone->getTerrainName())
+	if (preDesignatedFacility != NULL && preDesignatedFacility->getZone()->getZoneName() == zone->getZoneName())
 		cloneMenu->addMenuItem("@base_player:revive_bind", preDesignatedFacility->getObjectID());
 
 	player->addSuiBox(cloneMenu);
@@ -1017,7 +1017,7 @@ void PlayerManagerImplementation::sendPlayerToCloner(PlayerCreature* player, uin
 
 	Zone* zone = player->getZone();
 
-	player->switchZone(zone->getTerrainName(), coordinate->getPositionX(), coordinate->getPositionZ(), coordinate->getPositionY(), cell->getObjectID());
+	player->switchZone(zone->getZoneName(), coordinate->getPositionX(), coordinate->getPositionZ(), coordinate->getPositionY(), cell->getObjectID());
 
 	Reference<Task*> task = new PlayerIncapacitationRecoverTask(player, true);
 	task->schedule(3 * 1000);

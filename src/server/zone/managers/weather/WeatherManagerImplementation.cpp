@@ -23,7 +23,7 @@
 void WeatherManagerImplementation::initialize() {
 	//Customize the Manager's name.
 	String managerName = "WeatherManager ";
-	setLoggingName(managerName + zone->getTerrainName());
+	setLoggingName(managerName + zone->getZoneName());
 	setGlobalLogging(true);
 	setLogging(true);
 
@@ -68,7 +68,7 @@ bool WeatherManagerImplementation::loadLuaConfig() {
 	if (!lua->runFile("scripts/managers/weather_manager.lua"))
 		return false;
 
-	LuaObject luaObject = lua->getGlobalObject(zone->getTerrainName + "_weather");
+	LuaObject luaObject = lua->getGlobalObject(zone->getZoneName + "_weather");
 
 	if (!luaObject.isValidTable())
 		return false;
@@ -120,9 +120,9 @@ bool WeatherManagerImplementation::loadLuaConfig() {
 
 	//Optional sandstorm feature for Tatooine & Lok.
 	//TODO: Should make this a list of planets, so that new planets can easily be added from lua.
-	String terrainName = zone->getTerrainName();
+	String zoneName = zone->getZoneName();
 
-	if (terrainName == "tatooine"" || terrainName == "lok") {
+	if (zoneName == "tatooine"" || zoneName == "lok") {
 		sandstormEffectsEnabled = luaObject.getByteField("sandstormEffectsEnabled");
 
 		sandstormWounds = luaObject.getIntField("sandstormWounds");
@@ -296,7 +296,7 @@ void WeatherManagerImplementation::broadcastWeather(bool notifyPlayer, bool doSa
 
 		if (player->isOnline() && !player->isTeleporting()) {
 			//Check if player is on this planet.
-			if (player->getZone()->getTerrainName() != zone->getTerrainName())
+			if (player->getZone()->getZoneName() != zone->getZoneName())
 				continue;
 
 			//Send the weather packet.
@@ -599,7 +599,7 @@ void WeatherManagerImplementation::weatherInfo(PlayerCreature* player) {
 
 	Locker playerLocker(player);
 
-	String planetName = zone->getTerrainName();
+	String planetName = zone->getZoneName();
 
 	Time executionTime;
 	StringBuffer output;

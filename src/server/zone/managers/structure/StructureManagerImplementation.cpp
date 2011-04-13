@@ -78,7 +78,6 @@ void StructureManagerImplementation::loadPlayerStructures() {
 	int i = 0;
 
 	try {
-		//int planetid = zone->getZoneID();
 		uint64 currentZoneObjectID = zone->_getObjectID();
 		ObjectDatabaseIterator iterator(playerStructuresDatabase);
 
@@ -415,7 +414,7 @@ int StructureManagerImplementation::placeStructure(PlayerCreature* player, Struc
 		waypointObject->setCustomName(full);
 		waypointObject->setActive(true);
 		waypointObject->setPosition(x, z, y);
-		String planetName = zone->getTerrainName();
+		String planetName = zone->getZoneName();
 		waypointObject->setPlanetCRC(planetName.hashCode());
 
 		playerObject->addWaypoint(waypointObject, false, true);

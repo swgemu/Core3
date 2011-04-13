@@ -396,7 +396,7 @@ void InstallationObjectImplementation::updateHopper(Time& workingTime, bool shut
 	Time harvestUntil = (spawnExpireTimestamp.compareTo(currentTime) > 0) ? spawnExpireTimestamp : currentTime;
 
 	float elapsedTime = (harvestUntil.getTime() - resourceHopperTimestamp.getTime());
-	float spawnDensity = spawn->getDensityAt(getZone()->getTerrainName(), positionX, positionY);
+	float spawnDensity = spawn->getDensityAt(getZone()->getZoneName(), positionX, positionY);
 
 	float harvestAmount = (elapsedTime / 60.0) * (spawnDensity * getExtractionRate());
 
@@ -406,7 +406,7 @@ void InstallationObjectImplementation::updateHopper(Time& workingTime, bool shut
 	float currentQuantity = container->getQuantity();
 
 	if (harvestAmount > 0) {
-		spawn->extractResource(zone->getTerrainName(), (int) harvestAmount);
+		spawn->extractResource(zone->getZoneName(), (int) harvestAmount);
 
 		updateResourceContainerQuantity(container, (int) (currentQuantity + harvestAmount), true);
 		//container->setQuantity(currentQuantity + harvestAmount);
@@ -675,6 +675,6 @@ float InstallationObjectImplementation::getActualRate() {
 	ResourceContainer* container = resourceHopper.get(0);
 	ResourceSpawn* spawn = container->getSpawnObject();
 
-	return extractionRate * (spawn->getDensityAt(zone->getTerrainName(), positionX, positionY));
+	return extractionRate * (spawn->getDensityAt(zone->getZoneName(), positionX, positionY));
 }
 

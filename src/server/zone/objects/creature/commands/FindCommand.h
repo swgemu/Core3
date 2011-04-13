@@ -115,7 +115,7 @@ public:
 		PlayerObject* ghost = player->getPlayerObject();
 
 		Zone* zone = player->getZone();
-		String planet = zone->getTerrainName();
+		String planet = zone->getZoneName();
 		StringIdChatParameter msg;
 
 		ManagedReference<WaypointObject*> wpt =
@@ -165,7 +165,7 @@ public:
 		String objClientString = stringManager->getStringId(objFullName.hashCode());
 
 		if (regClientString.isEmpty()) {
-			regClientString = object->getZone()->getTerrainName();
+			regClientString = object->getZone()->getZoneName();
 			regClientString[0] = toupper(regClientString[0]);
 		}
 

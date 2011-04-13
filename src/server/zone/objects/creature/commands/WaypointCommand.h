@@ -78,7 +78,7 @@ public:
 		String waypointData = arguments.toString();
 
 		String waypointName = "New Waypoint";
-		String planet = creature->getZone()->getTerrainName();
+		String planet = creature->getZone()->getZoneName();
 		float x = creature->getPositionX();
 		float y = creature->getPositionY();
 		float z = 0.0f;

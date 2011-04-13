@@ -69,7 +69,7 @@ public:
 		insertInt(Races::getRaceID(player->getRaceName())); // Race ID
  
 		insertAscii(Region::getRegionName(player->getRegionID())); //Region Name
-		insertAscii(player->getZone()->getTerrainName()); //Planet
+		insertAscii(player->getZone()->getZoneName()); //Planet
  
   		if (player->isGuilded())
 			insertAscii(player->getGuildName()); //Guild

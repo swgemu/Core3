@@ -432,7 +432,7 @@ void PlayerCreatureImplementation::unload() {
 	unloadSpawnedChildren();
 
 	if (zone != NULL) {
-		savedTerrainName = zone->getTerrainName();
+		savedTerrainName = zone->getZoneName();
 
 		if (isInQuadTree()) {
 			if (parent != NULL) {

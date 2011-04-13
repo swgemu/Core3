@@ -13,6 +13,9 @@
 
 class TreeDirectory : public SortedVector<Reference<TreeFileRecord*> > {
 public:
+	TreeDirectory() : SortedVector<Reference<TreeFileRecord*> >() {
+		setNoDuplicateInsertPlan();
+	}
 	int compare(Reference<TreeFileRecord*>& o1, const Reference<TreeFileRecord*>& o2) const {
 		return o1->compareTo(*o2.get());
 	}

@@ -56,7 +56,7 @@ import server.zone.ZoneServer;
 class FishObject extends TangibleObject {	
 		
 	protected string player;
-	protected string terrainName;
+	protected string zoneName;
 	protected string timeCaught;
 	protected float length;
 	
@@ -75,7 +75,7 @@ class FishObject extends TangibleObject {
 	
 	public void setAttributes(final string playerName, final string terrainN, string timestamp, float fishLength) {
 		player = playerName;
-		terrainName = terrainN;
+		zoneName = terrainN;
 		timeCaught = timestamp;
 		length = fishLength;
 	}

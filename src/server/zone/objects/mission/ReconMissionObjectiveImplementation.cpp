@@ -40,7 +40,7 @@ void ReconMissionObjectiveImplementation::activate() {
 		locationActiveArea->setRadius(32.f);
 		locationActiveArea->insertToZone(zone);
 
-		info("inserting to zone " + zone->getTerrainName), true);
+		info("inserting to zone " + zone->getZoneName), true);
 	}
 
 	WaypointObject* waypoint = mission->getWaypointToMission();

@@ -991,7 +991,7 @@ void SceneObjectImplementation::switchZone(const String& newTerrainName, float n
 	if (zone == NULL)
 		return;
 
-	Zone* newZone = getZoneServer()->getZone(newZoneID);
+	Zone* newZone = getZoneServer()->getZone(newTerrainName);
 
 	if (newZone == NULL)
 		return;
@@ -1517,7 +1517,7 @@ uint32 SceneObjectImplementation::getPlanetCRC() {
 	if (zone == NULL)
 		return 0;
 
-	return zone->getTerrainName().hashCode();
+	return zone->getZoneName().hashCode();
 }
 
 void SceneObjectImplementation::createChildObjects() {

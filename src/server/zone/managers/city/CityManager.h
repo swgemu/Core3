@@ -167,6 +167,8 @@ public:
 private:
 	Vector<byte> citiesAllowedPerRank;
 
+	bool configLoaded;
+
 public:
 	static const byte NEWCITY = 0;
 

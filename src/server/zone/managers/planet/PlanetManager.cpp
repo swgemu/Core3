@@ -729,8 +729,8 @@ PlanetManagerImplementation::PlanetManagerImplementation(Zone* planet, ZoneProce
 	zone = planet;
 	// server/zone/managers/planet/PlanetManager.idl():  		server = srv;
 	server = srv;
-	// server/zone/managers/planet/PlanetManager.idl():  		Logger.setLoggingName("PlanetManager " + zone.getTerrainName());
-	Logger::setLoggingName("PlanetManager " + zone->getTerrainName());
+	// server/zone/managers/planet/PlanetManager.idl():  		Logger.setLoggingName("PlanetManager " + zone.getZoneName());
+	Logger::setLoggingName("PlanetManager " + zone->getZoneName());
 	// server/zone/managers/planet/PlanetManager.idl():  		Logger.setLogging(false);
 	Logger::setLogging(false);
 	// server/zone/managers/planet/PlanetManager.idl():  		Logger.setGlobalLogging(true);

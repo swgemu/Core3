@@ -567,18 +567,18 @@ int ZoneServer::getServerState() {
 		return _implementation->getServerState();
 }
 
-Zone* ZoneServer::getZone(const String& terrainName) {
+Zone* ZoneServer::getZone(const String& zoneName) {
 	ZoneServerImplementation* _implementation = (ZoneServerImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, RPC_GETZONE__STRING_);
-		method.addAsciiParameter(terrainName);
+		method.addAsciiParameter(zoneName);
 
 		return (Zone*) method.executeWithObjectReturn();
 	} else
-		return _implementation->getZone(terrainName);
+		return _implementation->getZone(zoneName);
 }
 
 int ZoneServer::getZoneCount() {
@@ -1388,9 +1388,9 @@ int ZoneServerImplementation::getServerState() {
 	return serverState;
 }
 
-Zone* ZoneServerImplementation::getZone(const String& terrainName) {
-	// server/zone/ZoneServer.idl():  		return zones.get(terrainName);
-	return (&zones)->get(terrainName);
+Zone* ZoneServerImplementation::getZone(const String& zoneName) {
+	// server/zone/ZoneServer.idl():  		return zones.get(zoneName);
+	return (&zones)->get(zoneName);
 }
 
 int ZoneServerImplementation::getZoneCount() {
@@ -1839,8 +1839,8 @@ int ZoneServerAdapter::getServerState() {
 	return ((ZoneServerImplementation*) impl)->getServerState();
 }
 
-Zone* ZoneServerAdapter::getZone(const String& terrainName) {
-	return ((ZoneServerImplementation*) impl)->getZone(terrainName);
+Zone* ZoneServerAdapter::getZone(const String& zoneName) {
+	return ((ZoneServerImplementation*) impl)->getZone(zoneName);
 }
 
 int ZoneServerAdapter::getZoneCount() {

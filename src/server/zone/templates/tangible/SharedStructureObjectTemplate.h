@@ -38,8 +38,8 @@ public:
 		return lotSize;
 	}
 
-	inline bool isAllowedZone(const String& terrainName) {
-		return allowedZones.contains(terrainName);
+	inline bool isAllowedZone(const String& zoneName) {
+		return allowedZones.contains(zoneName);
 	}
 
 	inline int getBaseMaintenanceRate() {

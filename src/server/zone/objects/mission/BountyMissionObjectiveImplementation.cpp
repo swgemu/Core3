@@ -96,12 +96,12 @@ void BountyMissionObjectiveImplementation::complete() {
 	missionManager->removeMission(mission, player);
 }
 
-void BountyMissionObjectiveImplementation::spawnTarget(const String& terrainName) {
+void BountyMissionObjectiveImplementation::spawnTarget(const String& zoneName) {
 	if (npcTarget != NULL && npcTarget->isInQuadTree())
 		return;
 
 	ZoneServer* zoneServer = getPlayerOwner()->getZoneServer();
-	Zone* zone = zoneServer->getZone(terrainName);
+	Zone* zone = zoneServer->getZone(zoneName);
 	CreatureManager* cmng = zone->getCreatureManager();
 
 	ManagedReference<CreatureObject*> npcCreature = NULL;
@@ -150,7 +150,7 @@ int BountyMissionObjectiveImplementation::notifyObserverEvent(MissionObserver* o
 		// switch mission level to determine how the waypoint is given
 		// level 0: give straight waypoint (target on planet)
 		if (level == 0) {
-			spawnTarget(player->getZone()->getTerrainName());
+			spawnTarget(player->getZone()->getZoneName());
 
 			WaypointObject* waypoint = mission->getWaypointToMission();
 

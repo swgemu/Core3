@@ -53,7 +53,7 @@ void BuildingDeedImplementation::fillAttributeList(AttributeListMessage* alm, Pl
 	for (int i = 0; i < 10; ++i) {
 		if (buildingTemplate->isAllowedZone(i)) {
 			StringBuffer planetName;
-			planetName << "@planet_n:" << zone->getTerrainName();
+			planetName << "@planet_n:" << zone->getZoneName();
 			alm->insertAttribute("examine_scene", planetName.toString()); //Can Be Built On
 		}
 	}

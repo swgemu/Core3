@@ -366,7 +366,7 @@ void MissionManagerImplementation::populateMissionList(MissionTerminal* missionT
 }
 
 void MissionManagerImplementation::randomizeDestroyMission(PlayerCreature* player, MissionObject* mission) {
-	/* TODO: Redo this section to use terrainName
+	/* TODO: Redo this section to use zoneName
 	//String mission = "mission/mission_destroy_neutral_easy_creature_naboo";
 	int zoneID = player->getZone()->getZoneID();
 
@@ -395,7 +395,7 @@ void MissionManagerImplementation::randomizeDestroyMission(PlayerCreature* playe
 
 	Vector3 startPos = player->getCoordinate(System::random(1000) + 1000, (float)System::random(360));
 	//mission->setMissionTarget(lairObjectTemplate->getObjectName());
-	mission->setStartPlanetCRC(player->getZone()->getTerrainName().hashCode());
+	mission->setStartPlanetCRC(player->getZone()->getZoneName().hashCode());
 	mission->setStartPosition(startPos.getX(), startPos.getY(), player->getPlanetCRC());
 	mission->setCreatorName(nm->makeCreatureName());
 

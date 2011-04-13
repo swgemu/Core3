@@ -61,7 +61,7 @@ public:
 		if (inso->getObjectSubType() == TangibleObjectImplementation::HARVESTER) {
 			HarvesterObject* hino = (HarvesterObject*) inso;
 			ResourceManager* resourceManager = inso->getZone()->getZoneServer()->getResourceManager();
-			ResourceList* list = resourceManager->getResourceListAtLocation(inso->getZone()->getTerrainName(), inso->getPositionX(), inso->getPositionY(), hino->getHarvesterType());
+			ResourceList* list = resourceManager->getResourceListAtLocation(inso->getZone()->getZoneName(), inso->getPositionX(), inso->getPositionY(), hino->getHarvesterType());
 
 			if (list == NULL)
 				System::out << "list was null!" << endl;

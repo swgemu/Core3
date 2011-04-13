@@ -74,7 +74,9 @@ import server.zone.objects.building.cloning.CloningBuildingObject;
 import server.zone.objects.creature.CreatureObject;
 
 class Zone extends ManagedObject implements QuadTree {
-	private string terrainName;
+	private string zoneName;
+	
+	private unsigned int zoneCRC;
 	
 	private transient ZoneProcessServer processor;
 
@@ -186,7 +188,7 @@ class Zone extends ManagedObject implements QuadTree {
 	public native float getMinY();
 	public native float getMaxY();
 	
-	public string getTerrainName() {
-		return terrainName;
+	public string getZoneName() {
+		return zoneName;
 	}
 }

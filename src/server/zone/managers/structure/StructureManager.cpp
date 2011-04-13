@@ -321,8 +321,8 @@ StructureManagerImplementation::StructureManagerImplementation(Zone* zne, ZonePr
 	server = proc;
 	// server/zone/managers/structure/StructureManager.idl():  		templateManager = TemplateManager.instance();
 	templateManager = TemplateManager::instance();
-	// server/zone/managers/structure/StructureManager.idl():  		string managerName = "StructureManager " + zone.getTerrainName();
-	String managerName = "StructureManager " + zone->getTerrainName();
+	// server/zone/managers/structure/StructureManager.idl():  		string managerName = "StructureManager " + zone.getZoneName();
+	String managerName = "StructureManager " + zone->getZoneName();
 	// server/zone/managers/structure/StructureManager.idl():  		Logger.setLoggingName(managerName);
 	Logger::setLoggingName(managerName);
 	// server/zone/managers/structure/StructureManager.idl():  		Logger.setGlobalLogging(true);

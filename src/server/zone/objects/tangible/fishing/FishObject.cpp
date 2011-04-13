@@ -233,8 +233,8 @@ bool FishObjectImplementation::readObjectMember(ObjectInputStream* stream, const
 		return true;
 	}
 
-	if (_name == "terrainName") {
-		TypeInfo<String >::parseFromBinaryStream(&terrainName, stream);
+	if (_name == "zoneName") {
+		TypeInfo<String >::parseFromBinaryStream(&zoneName, stream);
 		return true;
 	}
 
@@ -271,11 +271,11 @@ int FishObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "terrainName";
+	_name = "zoneName";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
-	TypeInfo<String >::toBinaryStream(&terrainName, stream);
+	TypeInfo<String >::toBinaryStream(&zoneName, stream);
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
@@ -317,8 +317,8 @@ void FishObjectImplementation::initializeTransientMembers() {
 void FishObjectImplementation::setAttributes(const String& playerName, const String& terrainN, String& timestamp, float fishLength) {
 	// server/zone/objects/tangible/fishing/FishObject.idl():  		player = playerName;
 	player = playerName;
-	// server/zone/objects/tangible/fishing/FishObject.idl():  		terrainName = terrainN;
-	terrainName = terrainN;
+	// server/zone/objects/tangible/fishing/FishObject.idl():  		zoneName = terrainN;
+	zoneName = terrainN;
 	// server/zone/objects/tangible/fishing/FishObject.idl():  		timeCaught = timestamp;
 	timeCaught = timestamp;
 	// server/zone/objects/tangible/fishing/FishObject.idl():  		length = fishLength;

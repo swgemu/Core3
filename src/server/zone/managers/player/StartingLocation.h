@@ -14,7 +14,7 @@
 
 
 class StartingLocation : public Object {
-	String terrainName;
+	String zoneName;
 	String location;
 	String planet;
 	String cell;
@@ -47,7 +47,7 @@ public:
 		description = sl.description;
 		radius = sl.radius;
 		heading = sl.heading;
-		terrainName = sl.terrainName;
+		zoneName = sl.zoneName;
 	}
 
 	StartingLocation& operator= (const StartingLocation& sl) {
@@ -64,7 +64,7 @@ public:
 		description = sl.description;
 		radius = sl.radius;
 		heading = sl.heading;
-		terrainName = sl.terrainName;
+		zoneName = sl.zoneName;
 
 		return *this;
 	}
@@ -86,9 +86,8 @@ public:
 		row->getCell(6)->getValue(image);
 
 		//Get the terrain name from the image path.
-		//TODO: Need to find a better way to get the planet id
 		//17 = "/styles.location." 17 characters long
-		terrainName = image.subString(17, image.lastIndexOf('.'));
+		zoneName = image.subString(17, image.lastIndexOf('.'));
 
 		row->getCell(7)->getValue(description);
 		row->getCell(8)->getValue(radius);
@@ -126,8 +125,8 @@ public:
 		return Long::valueOf(cell);
 	}
 
-	inline String getTerrainName() const {
-		return terrainName;
+	inline String getZoneName() const {
+		return zoneName;
 	}
 
 	inline String getLocation() const {

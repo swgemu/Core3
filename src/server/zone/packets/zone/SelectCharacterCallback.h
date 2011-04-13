@@ -72,7 +72,7 @@ public:
 				player->info("reloading");
 
 			} else {
-				String terrainName = player->getSavedTerrainName();
+				String zoneName = player->getSavedTerrainName();
 				uint64 savedParentID = player->getSavedParentID();
 
 				ManagedReference<SceneObject*> parent = zoneServer->getObject(savedParentID, true);
@@ -83,7 +83,7 @@ public:
 				}
 
 				try {
-					zone = zoneServer->getZone(terrainName);
+					zone = zoneServer->getZone(zoneName);
 				} catch (Exception& e) {
 					zone = NULL;
 				}

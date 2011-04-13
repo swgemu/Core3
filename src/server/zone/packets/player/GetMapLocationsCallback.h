@@ -17,7 +17,7 @@
 #include "GetMapLocationsResponseMessage.h"
 
 class GetMapLocationsCallback : public MessageCallback {
-	String terrainName;
+	String zoneName;
 
 public:
 	GetMapLocationsCallback(ZoneClientSession* client, ZoneProcessServer* server) :
@@ -26,7 +26,7 @@ public:
 	}
 
 	void parse(Message* message) {
-		message->parseAscii(terrainName);
+		message->parseAscii(zoneName);
 	}
 
 	void run() {
@@ -37,7 +37,7 @@ public:
 
 		Locker _locker(object);
 
-		Zone* zone = server->getZoneServer()->getZone(terrainName);
+		Zone* zone = server->getZoneServer()->getZone(zoneName);
 
 		if (zone != NULL)
 			zone->sendMapLocationsTo(object);

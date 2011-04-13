@@ -240,7 +240,7 @@ public:
 
 	float getMaxY();
 
-	String getTerrainName();
+	String getZoneName();
 
 	DistributedObjectServant* _getImplementation();
 
@@ -251,7 +251,7 @@ protected:
 
 	virtual ~Zone();
 
-	String _return_getTerrainName;
+	String _return_getZoneName;
 
 	friend class ZoneHelper;
 };
@@ -265,7 +265,9 @@ namespace server {
 namespace zone {
 
 class ZoneImplementation : public ManagedObjectImplementation, public QuadTree {
-	String terrainName;
+	String zoneName;
+
+	unsigned int zoneCRC;
 
 	ManagedReference<ZoneProcessServer* > processor;
 
@@ -354,7 +356,7 @@ public:
 
 	float getMaxY();
 
-	String getTerrainName();
+	String getZoneName();
 
 	Zone* _this;
 
@@ -441,7 +443,7 @@ public:
 
 	float getMaxY();
 
-	String getTerrainName();
+	String getZoneName();
 
 };
 

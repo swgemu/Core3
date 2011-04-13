@@ -36,7 +36,7 @@ void PlanetManagerImplementation::initialize() {
 	info("Loading planet...", true);
 
 	//TODO: Load from the TRE files.
-	if (terrainManager->initialize("terrain/" + zone->getTerrainName() + ".trn"))
+	if (terrainManager->initialize("terrain/" + zone->getZoneName() + ".trn"))
 		info("Loaded terrain file successfully.", true);
 	else
 		error("Failed to load terrain file.");
@@ -62,7 +62,7 @@ void PlanetManagerImplementation::initialize() {
 }
 
 void PlanetManagerImplementation::loadLuaConfig() {
-	String planetName = zone->getTerrainName();
+	String planetName = zone->getZoneName();
 
 	Lua* lua = new Lua();
 	lua->init();
@@ -100,7 +100,7 @@ void PlanetManagerImplementation::loadTravelFares() {
 	DataTableIff dtiff;
 	dtiff.readObject(iffStream);
 
-	Vector<DataTableRow*> rows = dtiff.getRowsByColumn(0, zone->getTerrainName());
+	Vector<DataTableRow*> rows = dtiff.getRowsByColumn(0, zone->getZoneName());
 
 	if (rows.size() <= 0) {
 		info("Travel fares could not be found.", true);
@@ -167,7 +167,7 @@ void PlanetManagerImplementation::loadSnapshotObject(WorldSnapshotNode* node, Wo
 void PlanetManagerImplementation::loadSnapshotObjects() {
 	TemplateManager* templateManager = TemplateManager::instance();
 
-	IffStream* iffStream = templateManager->openIffFile("snapshot/" + zone->getTerrainName() + ".ws");
+	IffStream* iffStream = templateManager->openIffFile("snapshot/" + zone->getZoneName() + ".ws");
 
 	if (iffStream == NULL) {
 		info("Snapshot wasn't found.", true);
@@ -206,7 +206,7 @@ bool PlanetManagerImplementation::isNoBuildArea(float x, float y, StringId& full
 void PlanetManagerImplementation::loadRegions() {
 	TemplateManager* templateManager = TemplateManager::instance();
 
-	IffStream* iffStream = templateManager->openIffFile("datatables/clientregion/" + zone->getTerrainName() + ".iff");
+	IffStream* iffStream = templateManager->openIffFile("datatables/clientregion/" + zone->getZoneName() + ".iff");
 
 	if (iffStream == NULL) {
 		info("No client regions found.", true);
@@ -249,7 +249,6 @@ void PlanetManagerImplementation::loadPlayerRegions() {
 	int i = 0;
 
 	try {
-		//int planetid = zone->getZoneID();
 		uint64 currentZoneObjectID = zone->_getObjectID();
 		ObjectDatabaseIterator iterator(cityRegionsDatabase);
 
@@ -315,7 +314,7 @@ void PlanetManagerImplementation::loadShuttles() {
 void PlanetManagerImplementation::sendPlanetTravelPointListResponse(PlayerCreature* player) {
 	lock();
 
-	TravelListResponseMessage* msg = new TravelListResponseMessage(zone->getTerrainName());
+	TravelListResponseMessage* msg = new TravelListResponseMessage(zone->getZoneName());
 
 	shuttleMap.resetIterator();
 

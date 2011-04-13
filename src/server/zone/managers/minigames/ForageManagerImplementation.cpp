@@ -50,7 +50,7 @@ void ForageManagerImplementation::startForaging(PlayerCreature* player, bool sco
 	ManagedReference<ZoneServer*> zoneServer = player->getZoneServer();
 
 	//Queue the foraging task.
-	Reference<Task*> foragingEvent = new ForagingEvent(player, zoneServer, scoutForage, playerX, playerY, player->getZone()->getTerrainName());
+	Reference<Task*> foragingEvent = new ForagingEvent(player, zoneServer, scoutForage, playerX, playerY, player->getZone()->getZoneName());
 	player->addPendingTask("foraging", foragingEvent);
 	foragingEvent->schedule(8500);
 
@@ -59,7 +59,7 @@ void ForageManagerImplementation::startForaging(PlayerCreature* player, bool sco
 
 }
 
-void ForageManagerImplementation::finishForaging(PlayerCreature* player, bool scoutForage, float forageX, float forageY, const String& terrainName) {
+void ForageManagerImplementation::finishForaging(PlayerCreature* player, bool scoutForage, float forageX, float forageY, const String& zoneName) {
 	if (player == NULL)
 		return;
 
@@ -72,7 +72,7 @@ void ForageManagerImplementation::finishForaging(PlayerCreature* player, bool sc
 	float playerX = player->getPositionX();
 	float playerY = player->getPositionY();
 
-	if ((abs(playerX - forageX) > 2.0) || (abs(playerY - forageY) > 2.0) || player->getZone()->getTerrainName() != terrainName) {
+	if ((abs(playerX - forageX) > 2.0) || (abs(playerY - forageY) > 2.0) || player->getZone()->getZoneName() != zoneName) {
 		player->sendSystemMessage("@skl_use:sys_forage_movefail"); //"You fail to forage because you moved."
 		return;
 	}
@@ -87,13 +87,13 @@ void ForageManagerImplementation::finishForaging(PlayerCreature* player, bool sc
 	Reference<ForageAreaCollection*> forageAreaCollection = forageAreas.get(player->getFirstName());
 
 	if (forageAreaCollection != NULL) { //Player has foraged before.
-		if (!forageAreaCollection->checkForageAreas(forageX, forageY, terrainName)) {
+		if (!forageAreaCollection->checkForageAreas(forageX, forageY, zoneName)) {
 			player->sendSystemMessage("@skl_use:sys_forage_empty"); //"There is nothing in this area to forage."
 			return;
 		}
 
 	} else { //Player has not foraged before.
-		forageAreaCollection = new ForageAreaCollection(player, forageX, forageY, terrainName);
+		forageAreaCollection = new ForageAreaCollection(player, forageX, forageY, zoneName);
 		forageAreas.put(player->getFirstName(), forageAreaCollection);
 	}
 
@@ -119,7 +119,7 @@ void ForageManagerImplementation::finishForaging(PlayerCreature* player, bool sc
 
 	} else {
 		player->sendSystemMessage("@skl_use:sys_forage_success"); //"Your attempt at foraging was a success!
-		forageGiveItems(player, scoutForage, forageX, forageY, terrainName);
+		forageGiveItems(player, scoutForage, forageX, forageY, zoneName);
 	}
 
 	return;

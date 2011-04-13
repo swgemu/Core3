@@ -119,7 +119,7 @@ class PlanetManager extends ManagedService implements Logger {
 		zone = planet;
 		server = srv;
 				
-		Logger.setLoggingName("PlanetManager " + zone.getTerrainName());
+		Logger.setLoggingName("PlanetManager " + zone.getZoneName());
 		Logger.setLogging(false);
 		Logger.setGlobalLogging(true);
 		

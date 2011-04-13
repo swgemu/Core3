@@ -62,11 +62,11 @@ which carries forward this exception.
 #include "server/zone/templates/appearance/PathGraph.h"
 
 
-ZoneImplementation::ZoneImplementation(ZoneProcessServer* serv, const String& zoneName) : ManagedObjectImplementation(), QuadTree(-8192, -8192, 8192, 8192) {
+ZoneImplementation::ZoneImplementation(ZoneProcessServer* serv, const String& name) : ManagedObjectImplementation(), QuadTree(-8192, -8192, 8192, 8192) {
 	processor = serv;
 	server = processor->getZoneServer();
 
-	terrainName = zoneName;
+	zoneName = name;
 
 	heightMap = new HeightMap();
 	regionTree = new QuadTree(-8192, -8192, 8192, 8192);
@@ -85,7 +85,7 @@ void ZoneImplementation::initializePrivateData() {
 	planetManager = new PlanetManager(_this, processor);
 
 	creatureManager = new CreatureManager(_this);
-	creatureManager->deploy("CreatureManager " + terrainName);
+	creatureManager->deploy("CreatureManager " + zoneName);
 	creatureManager->setZoneProcessor(processor);
 
 	cityManager = new CityManager(_this);
@@ -280,7 +280,7 @@ void ZoneImplementation::dropSceneObject(SceneObject* object)  {
 }
 
 void ZoneImplementation::sendMapLocationsTo(SceneObject* player) {
-	GetMapLocationsResponseMessage* gmlr = new GetMapLocationsResponseMessage(terrainName);
+	GetMapLocationsResponseMessage* gmlr = new GetMapLocationsResponseMessage(zoneName);
 
 	mapLocations.rlock();
 

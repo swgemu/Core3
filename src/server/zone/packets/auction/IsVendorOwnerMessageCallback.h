@@ -45,7 +45,7 @@ public:
 		if (player == NULL)
 			return;
 
-		String planetString = zone->getTerrainName();
+		String planetString = zone->getZoneName();
 		String vendorRegion = ""; // TODO: Vendors don't have regions impl yet.
 
 		//TODO: Relook at this! - POLONEL

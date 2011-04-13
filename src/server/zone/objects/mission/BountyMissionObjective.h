@@ -104,7 +104,7 @@ public:
 
 	void complete();
 
-	void spawnTarget(const String& terrainName);
+	void spawnTarget(const String& zoneName);
 
 	int notifyObserverEvent(MissionObserver* observer, unsigned int eventType, Observable* observable, ManagedObject* arg1, long long arg2);
 
@@ -155,7 +155,7 @@ public:
 
 	void complete();
 
-	void spawnTarget(const String& terrainName);
+	void spawnTarget(const String& zoneName);
 
 	int notifyObserverEvent(MissionObserver* observer, unsigned int eventType, Observable* observable, ManagedObject* arg1, long long arg2);
 
@@ -212,7 +212,7 @@ public:
 
 	void complete();
 
-	void spawnTarget(const String& terrainName);
+	void spawnTarget(const String& zoneName);
 
 	int notifyObserverEvent(MissionObserver* observer, unsigned int eventType, Observable* observable, ManagedObject* arg1, long long arg2);
 

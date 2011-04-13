@@ -264,7 +264,7 @@ void SurveyToolImplementation::sendSurveyTo(PlayerCreature* player, const String
 	lastResourceSurveyName = resname;
 
 	PlayClientEffectLoc* effect = new PlayClientEffectLoc(surveyAnimation,
-			player->getZone()->getTerrainName(),
+			player->getZone()->getZoneName(),
 			player->getPositionX(), player->getPositionZ(),
 			player->getPositionY());
 
@@ -395,7 +395,7 @@ void SurveyToolImplementation::surveyCnodeMinigame(PlayerCreature* player, int v
 
 	// Update new waypoint
 	newwaypoint->setCustomName(UnicodeString("Resource Survey"));
-	newwaypoint->setPlanetCRC(player->getZone()->getTerrainName().hashCode());
+	newwaypoint->setPlanetCRC(player->getZone()->getZoneName().hashCode());
 	newwaypoint->setPosition(richSampleLocation->getPositionX(), 0, richSampleLocation->getPositionY());
 	newwaypoint->setColor(WaypointObject::COLOR_BLUE);
 	newwaypoint->setSpecialTypeID(WaypointObject::SPECIALTYPE_RESOURCE);

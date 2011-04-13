@@ -62,7 +62,7 @@ class ForagingEvent : public Task {
 	bool scoutForage;
 	float forageX;
 	float forageY;
-	String terrainName;
+	String zoneName;
 
 public:
 	ForagingEvent(PlayerCreature* player, ZoneServer* zoneServer, bool scoutForage, float playerX, float playerY, const String& planet) : Task() {
@@ -71,14 +71,14 @@ public:
 		this->scoutForage = scoutForage;
 		this->forageX = playerX;
 		this->forageY = playerY;
-		this->terrainName = planet;
+		this->zoneName = planet;
 	}
 
 	void run() {
 		try {
 			ManagedReference<ForageManager*> forageManager = zoneServer->getForageManager();
 			if (forageManager != NULL)
-				forageManager->finishForaging(player, scoutForage, forageX, forageY, terrainName);
+				forageManager->finishForaging(player, scoutForage, forageX, forageY, zoneName);
 
 		} catch (...) {
 			player->error("unreported exception in ForagingEvent::run()");

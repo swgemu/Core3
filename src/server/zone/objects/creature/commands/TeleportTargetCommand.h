@@ -84,13 +84,13 @@ public:
 			if (targetZone == NULL)
 				return GENERALERROR;
 
-			String terrainName = targetZone->getTerrainName();
+			String zoneName = targetZone->getZoneName();
 			float posx = creature->getPositionX();
 			float posy = creature->getPositionY();
 			float posz = creature->getPositionZ();
 			uint64 parentid = creature->getParentID();
 
-			player->switchZone(terrainName, posx, posz, posy, parentid);
+			player->switchZone(zoneName, posx, posz, posy, parentid);
 
 		} catch (Exception& e) {
 			creature->sendSystemMessage("invalid arguments for teleport command");

@@ -658,7 +658,7 @@ int AuctionManagerImplementation::checkRetrieve(PlayerCreature* player, uint64 o
 			}
 		} else {
 			StringBuffer msg;
-			msg << "null area for bazaar terminal at" << strongRef->getPositionX() << " " << strongRef->getPositionY() << " zone " << strongRef->getZone()->getTerrainName();
+			msg << "null area for bazaar terminal at" << strongRef->getPositionX() << " " << strongRef->getPositionY() << " zone " << strongRef->getZone()->getZoneName();
 			error(msg);
 		}
 	}
@@ -793,7 +793,7 @@ AuctionItem* AuctionManagerImplementation::createVendorItem(PlayerCreature* play
 
 	String playername = player->getFirstName().toLowerCase();
 	String descr = description.toString();
-	String planetStr = zone->getTerrainName();
+	String planetStr = zone->getZoneName();
 
 	AuctionItem* item  = new AuctionItem(objectToSell->getObjectID());
 

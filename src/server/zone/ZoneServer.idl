@@ -276,8 +276,8 @@ class ZoneServer extends ManagedService implements Logger {
 		return serverState;
 	}
 
-	public Zone getZone(final string terrainName) {
-		return zones.get(terrainName);
+	public Zone getZone(final string zoneName) {
+		return zones.get(zoneName);
 	}
 	
 	public int getZoneCount() {

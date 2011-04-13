@@ -143,7 +143,7 @@ class FishObjectImplementation : public TangibleObjectImplementation {
 protected:
 	String player;
 
-	String terrainName;
+	String zoneName;
 
 	String timeCaught;
 

@@ -434,7 +434,7 @@ public:
 
 	int getServerState();
 
-	Zone* getZone(const String& terrainName);
+	Zone* getZone(const String& zoneName);
 
 	int getZoneCount();
 
@@ -667,7 +667,7 @@ public:
 
 	int getServerState();
 
-	Zone* getZone(const String& terrainName);
+	Zone* getZone(const String& zoneName);
 
 	int getZoneCount();
 
@@ -830,7 +830,7 @@ public:
 
 	int getServerState();
 
-	Zone* getZone(const String& terrainName);
+	Zone* getZone(const String& zoneName);
 
 	int getZoneCount();
 

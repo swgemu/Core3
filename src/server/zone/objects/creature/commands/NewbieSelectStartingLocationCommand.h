@@ -71,7 +71,7 @@ public:
 
 		Zone* zone = player->getZone();
 
-		if (zone == NULL || zone->getTerrainName() != "tutorial")
+		if (zone == NULL || zone->getZoneName() != "tutorial")
 			return GENERALERROR;
 
 		ManagedReference<SceneObject*> cell = creature->getParent();
@@ -90,7 +90,7 @@ public:
 			return GENERALERROR;
 		}
 
-		player->switchZone(startingLocation->getTerrainName(), startingLocation->getX(), startingLocation->getX(), startingLocation->getY(), startingLocation->getCell());
+		player->switchZone(startingLocation->getZoneName(), startingLocation->getX(), startingLocation->getX(), startingLocation->getY(), startingLocation->getCell());
 		player->setDirection(startingLocation->getHeading());
 
 		if (tutorial != NULL)

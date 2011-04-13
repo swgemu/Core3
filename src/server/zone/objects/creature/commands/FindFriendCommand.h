@@ -100,7 +100,7 @@ public:
 		if (zone == NULL)
 			return GENERALERROR;
 
-		String planet = zone->getTerrainName();
+		String planet = zone->getZoneName();
 
 		float x, z = 0, y;
 

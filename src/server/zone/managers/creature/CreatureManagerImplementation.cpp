@@ -230,7 +230,7 @@ void CreatureManagerImplementation::loadSingleSpawns() {
 	info("Loading single spawns...", true);
 
 	//TODO: Convert to Lua
-	//Use terrainName
+	//Use zoneName
 
 	info("Static creatures spawned: " + String::valueOf(i), true);
 }
@@ -359,14 +359,14 @@ void CreatureManagerImplementation::harvest(Creature* creature, PlayerCreature* 
 
 	int quantityExtracted = int(quantity * float(player->getSkillMod("creature_harvesting") / 100.0f));
 
-	ManagedReference<ResourceSpawn*> resourceSpawn = resourceManager->getCurrentSpawn(restype, player->getZone()->getTerrainName());
+	ManagedReference<ResourceSpawn*> resourceSpawn = resourceManager->getCurrentSpawn(restype, player->getZone()->getZoneName());
 
 	if (resourceSpawn == NULL) {
 		player->sendSystemMessage("Error: Server cannot locate a current spawn of " + restype);
 		return;
 	}
 
-	float density = resourceSpawn->getDensityAt(player->getZone()->getTerrainName(), player->getPositionX(), player->getPositionY());
+	float density = resourceSpawn->getDensityAt(player->getZone()->getZoneName(), player->getPositionX(), player->getPositionY());
 
 	String creatureHealth = "";
 

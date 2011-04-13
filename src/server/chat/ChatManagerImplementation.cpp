@@ -106,7 +106,7 @@ void ChatManagerImplementation::initiateRooms() {
 		if (zone == NULL)
 			continue;
 
-		ChatRoom* planetRoom = createRoom(zone->getTerrainName(), core3Room);
+		ChatRoom* planetRoom = createRoom(zone->getZoneName(), core3Room);
 		core3Room->addSubRoom(planetRoom);
 
 		ChatRoom* planetaryChat = createRoom("chat", planetRoom);

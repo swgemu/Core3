@@ -85,18 +85,18 @@ void BountyMissionObjective::complete() {
 		_implementation->complete();
 }
 
-void BountyMissionObjective::spawnTarget(const String& terrainName) {
+void BountyMissionObjective::spawnTarget(const String& zoneName) {
 	BountyMissionObjectiveImplementation* _implementation = (BountyMissionObjectiveImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, RPC_SPAWNTARGET__STRING_);
-		method.addAsciiParameter(terrainName);
+		method.addAsciiParameter(zoneName);
 
 		method.executeWithVoidReturn();
 	} else
-		_implementation->spawnTarget(terrainName);
+		_implementation->spawnTarget(zoneName);
 }
 
 int BountyMissionObjective::notifyObserverEvent(MissionObserver* observer, unsigned int eventType, Observable* observable, ManagedObject* arg1, long long arg2) {
@@ -350,8 +350,8 @@ void BountyMissionObjectiveAdapter::complete() {
 	((BountyMissionObjectiveImplementation*) impl)->complete();
 }
 
-void BountyMissionObjectiveAdapter::spawnTarget(const String& terrainName) {
-	((BountyMissionObjectiveImplementation*) impl)->spawnTarget(terrainName);
+void BountyMissionObjectiveAdapter::spawnTarget(const String& zoneName) {
+	((BountyMissionObjectiveImplementation*) impl)->spawnTarget(zoneName);
 }
 
 int BountyMissionObjectiveAdapter::notifyObserverEvent(MissionObserver* observer, unsigned int eventType, Observable* observable, ManagedObject* arg1, long long arg2) {
