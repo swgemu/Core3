@@ -160,7 +160,7 @@ void TemplateManager::loadTreArchive() {
 
 	int j = 0;
 
-	for (int i = treFilesToLoad.size() - 1; i >= 0; --i) {
+	for (int i = 0; i < treFilesToLoad.size(); ++i) {
 		String file = treFilesToLoad.get(i);
 
 		String fullPath = path + "/";

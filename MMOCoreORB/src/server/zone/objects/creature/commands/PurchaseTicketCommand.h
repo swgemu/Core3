@@ -120,7 +120,8 @@ public:
 		departurePoint = departurePoint.replaceAll("_", " ");
 		arrivalPoint = arrivalPoint.replaceAll("_", " ");
 
-		ManagedReference<ShuttleCreature*> shuttle = planetManager->getShuttle(departurePoint);
+		//ManagedReference<ShuttleCreature*> shuttle = planetManager->getShuttle(departurePoint);
+		ShuttleCreature* shuttle = NULL;
 
 		if (shuttle == NULL) {
 			SuiMessageBox* sui = new SuiMessageBox(player, SuiWindowType::TICKET_PURCHASE_MESSAGE);
@@ -133,7 +134,8 @@ public:
 			return GENERALERROR;
 		}
 
-		uint32 tax = shuttle->getTax();
+		uint32 tax = 0;
+		//uint32 tax = shuttle->getTax();
 
 		uint32 totalFee = fare + tax;
 

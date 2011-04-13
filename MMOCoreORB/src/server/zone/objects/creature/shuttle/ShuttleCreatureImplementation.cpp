@@ -42,7 +42,8 @@ void ShuttleCreatureImplementation::sendPlayerTo(PlayerCreature* player, TicketO
 			return;
 
 		PlanetManager* planetManager = arrivalZone->getPlanetManager();
-		ShuttleCreature* arrivalShuttle = planetManager->getShuttle(shuttle);
+		ShuttleCreature* arrivalShuttle = NULL;
+		//ShuttleCreature* arrivalShuttle = planetManager->getShuttle(shuttle);
 
 		if (arrivalShuttle != NULL) {
 			float x, z, y;

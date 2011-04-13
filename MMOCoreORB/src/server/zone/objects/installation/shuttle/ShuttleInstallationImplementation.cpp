@@ -49,7 +49,7 @@ void ShuttleInstallationImplementation::spawnShuttleObjects() {
 		shuttle->updateZone(false);
 
 		PlanetManager* planetManager = zone->getPlanetManager();
-		planetManager->addShuttle(shuttleName, shuttle);
+		//planetManager->addShuttle(shuttleName, shuttle);
 
 		shuttle->doTakeOff();
 
@@ -116,7 +116,7 @@ void ShuttleInstallationImplementation::despawnShuttleObjects() {
 	String shuttleName = getActiveRegion()->getCustomObjectName().toString();
 
 	ManagedReference<PlanetManager*> planetManager = zone->getPlanetManager();
-	planetManager->dropShuttle(shuttleName);
+	//planetManager->dropShuttle(shuttleName);
 
 	if (shuttle != NULL)
 		shuttle->removeFromZone();

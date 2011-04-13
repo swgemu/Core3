@@ -131,9 +131,6 @@ void ZoneImplementation::startManagers() {
 #ifndef WITH_STM
 	creatureManager->initialize();
 #endif
-
-	planetManager->loadShuttles();
-
 	cityManager->loadLuaConfig();
 
 	ObjectDatabaseManager::instance()->commitLocalTransaction();

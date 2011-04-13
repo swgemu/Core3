@@ -155,8 +155,6 @@ using namespace server::zone::objects::scene;
 
 #include "server/zone/managers/terrain/TerrainManager.h"
 
-#include "server/zone/managers/planet/ShuttleMap.h"
-
 #include "server/zone/managers/planet/NoBuildAreaMap.h"
 
 #include "server/zone/managers/planet/MissionTargetMap.h"
@@ -200,8 +198,6 @@ public:
 
 	void loadNoBuildAreas();
 
-	void loadShuttles();
-
 	void loadBadgeAreas();
 
 	void loadPerformanceLocations();
@@ -209,12 +205,6 @@ public:
 	void loadHuntingTargets();
 
 	void loadReconLocations();
-
-	ShuttleCreature* getShuttle(const String& arrivalPoint);
-
-	void addShuttle(const String& city, ShuttleCreature* shuttle);
-
-	void dropShuttle(const String& city);
 
 	bool isNoBuildArea(float x, float y, StringId& fullAreaName);
 
@@ -308,8 +298,6 @@ protected:
 
 	TerrainManager* terrainManager;
 
-	ShuttleMap shuttleMap;
-
 	NoBuildAreaMap noBuildAreaMap;
 
 	MissionTargetMap missionNpcs;
@@ -349,8 +337,6 @@ public:
 
 	void loadNoBuildAreas();
 
-	void loadShuttles();
-
 	void loadBadgeAreas();
 
 	void loadPerformanceLocations();
@@ -363,12 +349,6 @@ protected:
 	void loadStaticTangibleObjects();
 
 public:
-	ShuttleCreature* getShuttle(const String& arrivalPoint);
-
-	void addShuttle(const String& city, ShuttleCreature* shuttle);
-
-	void dropShuttle(const String& city);
-
 	bool isNoBuildArea(float x, float y, StringId& fullAreaName);
 
 	int getTravelFare(const String& destinationPlanet);
@@ -472,8 +452,6 @@ public:
 
 	void loadNoBuildAreas();
 
-	void loadShuttles();
-
 	void loadBadgeAreas();
 
 	void loadPerformanceLocations();
@@ -481,12 +459,6 @@ public:
 	void loadHuntingTargets();
 
 	void loadReconLocations();
-
-	ShuttleCreature* getShuttle(const String& arrivalPoint);
-
-	void addShuttle(const String& city, ShuttleCreature* shuttle);
-
-	void dropShuttle(const String& city);
 
 	int getTravelFare(const String& destinationPlanet);
 
@@ -523,9 +495,6 @@ public:
 	void addInformant(SceneObject* obj);
 
 protected:
-	String _param0_getShuttle__String_;
-	String _param0_addShuttle__String_ShuttleCreature_;
-	String _param0_dropShuttle__String_;
 	String _param0_getTravelFare__String_;
 	String _param0_hasRegion__String_;
 	String _param0_addHuntingTargetTemplate__String_String_int_;

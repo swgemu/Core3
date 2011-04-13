@@ -80,23 +80,33 @@ public:
 			return;
 
 		try {
-			row->getCell(0)->getValue(location);
-			row->getCell(1)->getValue(planet);
-			row->getCell(2)->getValue(x);
-			row->getCell(3)->getValue(y);
-			row->getCell(4)->getValue(cell);
-			row->getCell(5)->getValue(image);
-
-			//Get the zone ID from the image path.
-			//17 = "/styles.location." 17 characters long
-			zoneID = Planet::getPlanetID(image.subString(17, image.lastIndexOf('.')));
-
-			row->getCell(6)->getValue(description);
-			row->getCell(7)->getValue(radius);
-			row->getCell(8)->getValue(heading);
+			if (row->getCellsSize() > 9) {
+				row->getCell(0)->getValue(location);
+				row->getCell(1)->getValue(planet);
+				row->getCell(2)->getValue(x);
+				row->getCell(3)->getValue(z);
+				row->getCell(4)->getValue(y);
+				row->getCell(5)->getValue(cell);
+				row->getCell(6)->getValue(image);
+				row->getCell(7)->getValue(description);
+				row->getCell(8)->getValue(radius);
+				row->getCell(9)->getValue(heading);
+			} else {
+				row->getCell(0)->getValue(location);
+				row->getCell(1)->getValue(planet);
+				row->getCell(2)->getValue(x);
+				row->getCell(3)->getValue(y);
+				row->getCell(4)->getValue(cell);
+				row->getCell(5)->getValue(image);
+				row->getCell(6)->getValue(description);
+				row->getCell(7)->getValue(radius);
+				row->getCell(8)->getValue(heading);
+			}
 		} catch (Exception& e) {
 			System::out << "Error parsing values in StartingLocation. Possible column mismatch." << endl;
 		}
+
+		zoneID = Planet::getPlanetID(image.subString(17, image.lastIndexOf('.')));//17 = "/styles.location." 17 characters long
 	}
 
 	void insertToMessage(Message* msg) {

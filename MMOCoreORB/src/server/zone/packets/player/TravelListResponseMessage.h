@@ -78,7 +78,7 @@ class TravelListResponseMessage : public BaseMessage {
 public:
     TravelListResponseMessage(const String& planet) : BaseMessage() {
 		insertShort(0x06);
-		insertInt(0x4D32541F);  // CRC
+		insertInt(0x4D32541F);  //PlanetTravelPointListResponse
         insertAscii(planet);
 
         setCompression(true);
