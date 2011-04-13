@@ -58,13 +58,17 @@ public:
 		insertInt(0x6D89D25B);  // CRC
 		insertLong(player->getObjectID()); //Player ID
 
-		insertInt(0x0F); //Number of bitmasks to send
+		//TODO: Ensure that number of bitmasks doesn't exceed the highest idx settable in the badgeMap.
+		insertInt(0x05); //Number of bitmasks to send
 
 		setCompression(true);
 
+		//TODO: Loop through a vector of bitmasks.
 		for (int i = 0; i < 5; ++i) {
 			insertInt(badges->getBitmask(i));
 		}
+
+		/*insertInt(0);
 		insertInt(0);
 		insertInt(0);
 		insertInt(0);
@@ -74,8 +78,7 @@ public:
 		insertInt(0);
 		insertInt(0);
 		insertInt(0);
-		insertInt(0);
-		insertInt(0);
+		insertInt(0);*/
 	}
 
 };

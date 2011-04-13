@@ -174,8 +174,6 @@ void TemplateManager::loadTreArchive() {
 			//++j;
 	}
 
-	info("Loading terrain corellia", true);
-
 	//if (j == 0) {
 		//delete treeDirectory;
 		//treeDirectory = NULL;

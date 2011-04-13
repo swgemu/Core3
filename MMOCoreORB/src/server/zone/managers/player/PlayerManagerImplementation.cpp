@@ -74,6 +74,7 @@ PlayerManagerImplementation::PlayerManagerImplementation(ZoneServer* zoneServer,
 
 	loadStartingItems();
 	loadStartingLocations();
+	loadBadgeMap();
 
 	setGlobalLogging(true);
 	setLogging(false);
@@ -93,6 +94,8 @@ void PlayerManagerImplementation::loadStartingItems() {
 }
 
 void PlayerManagerImplementation::loadStartingLocations() {
+	info("Loading starting locations.");
+
 	IffStream* iffStream = TemplateManager::instance()->openIffFile("datatables/creation/starting_locations.iff");
 
 	if (iffStream == NULL) {
@@ -103,6 +106,36 @@ void PlayerManagerImplementation::loadStartingLocations() {
 	startingLocationList.parseFromIffStream(iffStream);
 
 	info("Loaded " + String::valueOf(startingLocationList.getTotalLocations()) + " starting locations.", true);
+}
+
+void PlayerManagerImplementation::loadBadgeMap() {
+	info("Loading badges.");
+
+	IffStream* iffStream = TemplateManager::instance()->openIffFile("datatables/badge/badge_map.iff");
+
+	if (iffStream == NULL) {
+		info("Couldn't load badge map.", true);
+		return;
+	}
+
+	DataTableIff dtiff;
+	dtiff.readObject(iffStream);
+
+
+	for (int i = 0; i < dtiff.getTotalRows(); ++i) {
+		int idx = 0;
+		String key;
+
+		DataTableRow* row = dtiff.getRow(i);
+		row->getCell(0)->getValue(idx);
+		row->getCell(1)->getValue(key);
+		badgeMap.put(idx, key);
+
+		if (idx > highestBadgeIndex)
+			highestBadgeIndex = idx;
+	}
+
+	info("Loaded " + String::valueOf(badgeMap.size()) + " badges.", true);
 }
 
 void PlayerManagerImplementation::finalize() {

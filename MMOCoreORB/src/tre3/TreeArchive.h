@@ -40,7 +40,6 @@ public:
 			records->put(record);
 		} else {
 			TreeDirectory records;
-			records.setNoDuplicateInsertPlan();
 			records.put(record);
 
 			nodeMap.put(dir, records);

@@ -79,22 +79,24 @@ public:
 		if (row == NULL)
 			return;
 
-		row->getCell(0)->getValue(location);
-		row->getCell(1)->getValue(planet);
-		row->getCell(2)->getValue(x);
-		row->getCell(3)->getValue(z);
-		row->getCell(4)->getValue(y);
-		row->getCell(5)->getValue(cell);
-		row->getCell(6)->getValue(image);
+		try {
+			row->getCell(0)->getValue(location);
+			row->getCell(1)->getValue(planet);
+			row->getCell(2)->getValue(x);
+			row->getCell(3)->getValue(y);
+			row->getCell(4)->getValue(cell);
+			row->getCell(5)->getValue(image);
 
-		//Get the zone ID from the image path.
-		//TODO: Need to find a better way to get the planet id
-		//17 = "/styles.location." 17 characters long
-		zoneID = Planet::getPlanetID(image.subString(17, image.lastIndexOf('.')));
+			//Get the zone ID from the image path.
+			//17 = "/styles.location." 17 characters long
+			zoneID = Planet::getPlanetID(image.subString(17, image.lastIndexOf('.')));
 
-		row->getCell(7)->getValue(description);
-		row->getCell(8)->getValue(radius);
-		row->getCell(9)->getValue(heading);
+			row->getCell(6)->getValue(description);
+			row->getCell(7)->getValue(radius);
+			row->getCell(8)->getValue(heading);
+		} catch (Exception& e) {
+			System::out << "Error parsing values in StartingLocation. Possible column mismatch." << endl;
+		}
 	}
 
 	void insertToMessage(Message* msg) {

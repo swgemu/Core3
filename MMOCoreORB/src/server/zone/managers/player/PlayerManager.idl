@@ -77,6 +77,11 @@ include server.zone.managers.player.StartingLocation;
 class PlayerManager extends Observer implements Logger {
 	transient ZoneProcessServer processor;
 	
+	@dereferenced
+	private transient VectorMap<int, string> badgeMap;
+	
+	private int highestBadgeIndex;
+	
 	@weakReference
 	private ZoneServer server;
 	
@@ -89,6 +94,11 @@ class PlayerManager extends Observer implements Logger {
 	
 	private native void loadStartingItems();
 	private native void loadStartingLocations();
+	private native void loadBadgeMap();
+	
+	public int getHighestBadgeIndex() {
+		return highestBadgeIndex;
+	}
 	
 	public native void finalize();
 	

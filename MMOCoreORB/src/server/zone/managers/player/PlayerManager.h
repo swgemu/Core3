@@ -170,6 +170,8 @@ public:
 
 	void loadNameMap();
 
+	int getHighestBadgeIndex();
+
 	void sendStartingLocationsTo(PlayerCreature* player);
 
 	StartingLocation* getStartingLocation(const String& city);
@@ -297,6 +299,10 @@ namespace player {
 class PlayerManagerImplementation : public ObserverImplementation, public Logger {
 	ManagedReference<ZoneProcessServer* > processor;
 
+	VectorMap<int, String> badgeMap;
+
+	int highestBadgeIndex;
+
 	ManagedWeakReference<ZoneServer* > server;
 
 	PlayerMap* playerMap;
@@ -323,7 +329,11 @@ private:
 
 	void loadStartingLocations();
 
+	void loadBadgeMap();
+
 public:
+	int getHighestBadgeIndex();
+
 	void finalize();
 
 	void sendStartingLocationsTo(PlayerCreature* player);
@@ -468,6 +478,8 @@ public:
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
 	void loadNameMap();
+
+	int getHighestBadgeIndex();
 
 	void finalize();
 
