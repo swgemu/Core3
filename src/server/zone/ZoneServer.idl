@@ -1,0 +1,380 @@
+/*
+Copyright (C) 2007 <SWGEmu>
+ 
+This File is part of Core3.
+ 
+This program is free software; you can redistribute 
+it and/or modify it under the terms of the GNU Lesser 
+General Public License as published by the Free Software
+Foundation; either version 2 of the License, 
+or (at your option) any later version.
+ 
+This program is distributed in the hope that it will be useful, 
+but WITHOUT ANY WARRANTY; without even the implied warranty of 
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. 
+See the GNU Lesser General Public License for
+more details.
+ 
+You should have received a copy of the GNU Lesser General 
+Public License along with this program; if not, write to
+the Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
+ 
+Linking Engine3 statically or dynamically with other modules 
+is making a combined work based on Engine3. 
+Thus, the terms and conditions of the GNU Lesser General Public License 
+cover the whole combination.
+ 
+In addition, as a special exception, the copyright holders of Engine3 
+give you permission to combine Engine3 program with free software 
+programs or libraries that are released under the GNU LGPL and with 
+code included in the standard release of Core3 under the GNU LGPL 
+license (or modified versions of such code, with unchanged license). 
+You may copy and distribute such a system following the terms of the 
+GNU LGPL for Engine3 and the licenses of the other code concerned, 
+provided that you include the source code of that other code when 
+and as the GNU LGPL requires distribution of source code.
+ 
+Note that people who make modified versions of Engine3 are not obligated 
+to grant this special exception for their modified versions; 
+it is their choice whether to do so. The GNU Lesser General Public License 
+gives permission to release a modified version without this exception; 
+this exception also makes it possible to release a modified version 
+which carries forward this exception.
+*/
+
+package server.zone;
+
+import server.zone.objects.scene.SceneObject;
+
+import engine.service.proto.BasePacketHandler;
+import engine.service.DatagramServiceThread;
+import engine.service.ServiceHandler;
+import engine.service.ServiceClient;
+import engine.service.Message;
+import engine.core.ManagedService;
+import engine.core.TaskManager;
+import engine.log.Logger;
+
+import system.lang.Exception;
+import system.lang.Time;
+import system.lang.ref.Reference;
+import system.util.Vector;
+import system.net.Socket;
+import system.net.SocketAddress;
+import system.net.Packet;
+import system.thread.atomic.AtomicInteger;
+
+import server.login.account.Account;
+import server.zone.ZoneProcessServer;
+import server.zone.ZoneClientSession;
+import server.zone.ZoneHandler;
+import server.zone.Zone;
+import server.chat.ChatManager;
+import server.zone.managers.object.ObjectManager;
+import server.zone.managers.player.PlayerManager;
+import server.zone.managers.objectcontroller.ObjectController;
+import server.zone.managers.radial.RadialManager;
+import server.zone.managers.professions.ProfessionManager;
+import server.zone.managers.resource.ResourceManager;
+import server.zone.managers.crafting.CraftingManager;
+import server.zone.managers.loot.LootManager;
+import server.zone.managers.auction.AuctionManager;
+import server.zone.managers.minigames.FishingManager;
+import server.zone.managers.mission.MissionManager;
+import server.zone.managers.minigames.GamblingManager;
+import server.zone.managers.minigames.ForageManager;
+import server.zone.managers.stringid.StringIdManager;
+import server.zone.managers.creature.CreatureTemplateManager;
+import server.zone.managers.guild.GuildManager;
+
+class ZoneServer extends ManagedService implements Logger {
+	private transient DatagramServiceThread datagramService;
+	
+	private transient BasePacketHandler phandler;
+
+	private transient ZoneHandler zoneHandler;
+	
+	private transient ZoneProcessServer processor;
+
+	@dereferenced
+	private Vector<Zone> zones;
+	
+	private transient ObjectManager objectManager;
+	private PlayerManager playerManager;
+	private ChatManager chatManager;
+	private RadialManager radialManager;
+
+	private ResourceManager resourceManager;
+	private CraftingManager craftingManager;
+	private LootManager lootManager;
+	private AuctionManager auctionManager;
+	private MissionManager missionManager;
+	private GuildManager guildManager;
+	
+	private FishingManager fishingManager;
+	private GamblingManager gamblingManager;
+	private ForageManager forageManager;
+	
+	private transient StringIdManager stringIdManager;
+	
+	private transient CreatureTemplateManager creatureTemplateManager;
+
+	private int totalSentPackets;
+	
+	private int totalResentPackets;
+
+	@dereferenced
+	private AtomicInteger currentPlayers;
+	
+	@dereferenced
+	private AtomicInteger maximumPlayers;
+	
+	@dereferenced
+	private AtomicInteger totalPlayers;
+	
+	@dereferenced
+	private AtomicInteger totalDeletedPlayers;
+	
+	private int serverState;
+
+	private string name;
+	private string messageoftheDay;
+
+	private int galaxyID;
+	
+	@dereferenced
+	private Time startTimestamp;
+	
+	public static final int OFFLINE = 0;
+	public static final int LOADING = 1;
+	public static final int ONLINE = 2;
+	public static final int LOCKED = 3;
+	
+	public native ZoneServer(int galaxyid = 2);/* {
+		//super(Dat)
+		galaxyID = galaxyid;
+
+		name = "Core3";
+
+		phandler = null;
+
+		processor = null;
+		procThreadCount = processingThreads;
+
+		objectManager = null;
+		playerManager = null;
+		chatManager = null;
+		objectController = null;
+		radialManager = null;
+
+		totalSentPackets = 0;
+		totalResentPackets = 0;
+
+		currentPlayers = 0;
+		maximumPlayers = 0;
+		totalPlayers = 0;
+		totalDeletedPlayers = 0;
+
+		serverState = OFFLINE;
+
+		Logger.setLogging(false);
+		DatagramServiceThread.setLockName("ZoneServerLock");
+
+		taskManager = TaskManager.instance();
+		taskManager.setLogging(false);
+	}*/
+	
+	public native void initializeTransientMembers();
+	
+	@local
+	public native ZoneClientSession createConnection(Socket sock, @dereferenced SocketAddress addr);
+	
+	public native void initialize();
+
+	public native void shutdown();
+
+	public native void startManagers();
+	
+	public native void startZones();
+
+	public native void stopManagers();
+	
+	public native void start(int p, int mconn = 10);
+	
+	public native void stop();
+
+	@local
+	public native void handleMessage(ZoneClientSession client, Packet message);
+
+	@local
+	public native void processMessage(Message message);
+
+	@local
+	public native boolean handleError(ZoneClientSession client, @dereferenced Exception e);
+	
+	public native void addTotalSentPacket(int count);
+	public native void addTotalResentPacket(int count);
+	
+	public native void printInfo(boolean forcedLog = true);
+	public native void printEvents();
+	
+	public native SceneObject getObject(unsigned long objectID, boolean doLock = true);
+	public native SceneObject createObject(unsigned int templateCRC, int persistenceLevel = 2, unsigned long objectID = 0);
+	public native SceneObject createClientObject(unsigned int templateCRC, unsigned long objectID = 0);
+	public native void updateObjectToDatabase(SceneObject object);
+	public native void updateObjectToStaticDatabase(SceneObject object);
+	public native void destroyObjectFromDatabase(unsigned long objectID);
+
+	
+	public native void lock(boolean doLock = true);
+
+	public native void unlock(boolean doLock = true);
+	
+	public void fixScheduler() {
+		//scheduler.fixQueue();
+	}
+	
+	public native void changeUserCap(int amount = 50);
+
+	public native int getConnectionCount();
+	
+	public native void increaseOnlinePlayers();
+	
+	public native void decreaseOnlinePlayers();
+
+	public native void increaseTotalDeletedPlayers();
+
+	public int getGalaxyID() {
+		return galaxyID;
+	}
+	
+	public native string getServerName();
+	
+	public boolean isServerLocked() {
+		return serverState == LOCKED;
+	}
+
+	public boolean isServerOnline() {
+		return serverState == ONLINE;
+	}
+
+	public boolean isServerOffline() {
+		return serverState == OFFLINE;
+	}
+
+	public boolean isServerLoading() {
+		return serverState == LOADING;
+	}
+
+	public int getServerState() {
+		return serverState;
+	}
+
+	public Zone getZone(int index) {
+		return zones.get(index);
+	}
+	
+	public int getZoneCount() {
+		return zones.size();
+	}
+
+	public int getMaxPlayers() {
+		return maximumPlayers.get();
+	}
+
+	public int getTotalPlayers() {
+		return totalPlayers.get();
+	}
+
+	public int getDeletedPlayers() {
+		return totalDeletedPlayers.get();
+	}
+	
+	@local
+	public ObjectManager getObjectManager() {
+		return objectManager;
+	}
+	
+	public PlayerManager getPlayerManager() {
+		return playerManager;
+	}
+	
+	public ChatManager getChatManager() {
+		return chatManager;
+	}
+	
+	public ObjectController getObjectController() {
+		return processor.getObjectController();
+	}
+	
+	public MissionManager getMissionManager() {
+		return missionManager;
+	}
+	
+	public RadialManager getRadialManager() {
+		return radialManager;
+	}
+	
+	public GuildManager getGuildManager() {
+		return guildManager;
+	}
+	
+	public ResourceManager getResourceManager() {
+		return resourceManager;
+	}
+	
+	public CraftingManager getCraftingManager() {
+		return craftingManager;
+	}
+	
+	public LootManager getLootManager() {
+		return lootManager;
+	}
+
+	public AuctionManager getAuctionManager() {
+		return auctionManager;
+	}
+	
+	public FishingManager getFishingManager() {
+		return fishingManager;
+	}
+	
+	public GamblingManager getGamblingManager() {
+		return gamblingManager;
+	}
+
+	public ForageManager getForageManager() {
+		return forageManager;
+	}
+	
+	public native Account getAccount(unsigned int accountID);
+	
+	@local
+	public ProfessionManager getProfessionManager() {
+		return processor.getProfessionManager();
+	}
+
+	@local
+	public Time getStartTimestamp() {
+		return startTimestamp;
+	}
+	
+	public native void setServerName(final string servername);
+
+	public synchronized void setGalaxyID(int galaxyid) {
+		galaxyID = galaxyid;
+	}
+
+	public synchronized void setServerState(int state) {
+		serverState = state;
+	}
+	
+	public native void setServerStateLocked();
+
+	public native void setServerStateOnline();
+	
+	public native void loadMessageoftheDay();
+
+	public native void changeMessageoftheDay(final string newMOTD);
+	public native string getMessageoftheDay();
+}

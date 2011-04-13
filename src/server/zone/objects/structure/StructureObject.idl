@@ -1,0 +1,351 @@
+/*
+Copyright (C) 2007 <SWGEmu>
+ 
+This File is part of Core3.
+ 
+This program is free software; you can redistribute 
+it and/or modify it under the terms of the GNU Lesser 
+General Public License as published by the Free Software
+Foundation; either version 2 of the License, 
+or (at your option) any later version.
+ 
+This program is distributed in the hope that it will be useful, 
+but WITHOUT ANY WARRANTY; without even the implied warranty of 
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. 
+See the GNU Lesser General Public License for
+more details.
+ 
+You should have received a copy of the GNU Lesser General 
+Public License along with this program; if not, write to
+the Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
+ 
+Linking Engine3 statically or dynamically with other modules 
+is making a combined work based on Engine3. 
+Thus, the terms and conditions of the GNU Lesser General Public License 
+cover the whole combination.
+ 
+In addition, as a special exception, the copyright holders of Engine3 
+give you permission to combine Engine3 program with free software 
+programs or libraries that are released under the GNU LGPL and with 
+code included in the standard release of Core3 under the GNU LGPL 
+license (or modified versions of such code, with unchanged license). 
+You may copy and distribute such a system following the terms of the 
+GNU LGPL for Engine3 and the licenses of the other code concerned, 
+provided that you include the source code of that other code when 
+and as the GNU LGPL requires distribution of source code.
+ 
+Note that people who make modified versions of Engine3 are not obligated 
+to grant this special exception for their modified versions; 
+it is their choice whether to do so. The GNU Lesser General Public License 
+gives permission to release a modified version without this exception; 
+this exception also makes it possible to release a modified version 
+which carries forward this exception.
+*/
+
+package server.zone.objects.structure;
+
+import server.zone.objects.tangible.TangibleObject;
+
+include server.zone.objects.structure.StructurePermissionList;
+import server.zone.objects.structure.events.StructureMaintenanceTask;
+
+import server.zone.objects.scene.SceneObject;
+import server.zone.objects.creature.CreatureObject;
+import server.zone.objects.player.PlayerCreature;
+import server.zone.templates.SharedObjectTemplate;
+import server.zone.objects.area.ActiveArea;
+import engine.util.u3d.AABBTree;
+import engine.util.u3d.AABBNode;
+import engine.util.u3d.Vector3;
+import system.lang.Time;
+
+include server.zone.packets.ui.CreateClientPathMessage;
+
+class StructureObject extends TangibleObject {
+	//@dereferenced
+	//protected PlayerStructureComponent playerStructureComponent;
+	
+	protected transient StructureMaintenanceTask structureMaintenanceTask;
+	//protected transient StructurePowerTask structurePowerTask;
+	
+	@dereferenced
+	protected StructurePermissionList structurePermissionList;
+	
+	@dereferenced
+	protected Time maintenanceExpires;
+	
+	@dereferenced
+	protected Time powerExpires;
+	
+	protected unsigned long ownerObjectID;
+	protected unsigned long deedObjectID;
+	
+	protected int lotSize;
+	
+	protected unsigned int destroyCode;
+	
+	protected int baseMaintenanceRate;
+	protected int basePowerRate;
+	
+	protected float surplusMaintenance;
+	protected float surplusPower;
+	
+	protected int length;
+	protected int width;
+	
+	public StructureObject() {
+		Logger.setLoggingName("StructureObject");
+		
+		super.staticObject = false;
+		
+		lotSize = 0;
+		
+		ownerObjectID = 0;
+		
+		deedObjectID = 0;
+		
+		destroyCode = 0;
+		
+		baseMaintenanceRate = 0;
+		
+		basePowerRate = 0;
+		
+		surplusMaintenance = 0;
+		
+		surplusPower = 0;
+
+		length = 0;
+		
+		width = 0;
+		
+		structureMaintenanceTask = null;
+	}
+	
+	public native void initializeTransientMembers();
+	
+	public native void finalize();
+	
+	/**
+	 * Reads and sets the template data from a SharedObjectTemplate LuaObject
+	 * @pre { templateData is a valid pointer }
+	 * @post { SceneObject members are initialized }
+	 * @param templateData templateData points to the LuaObject that is used to initialize SceneObejct members
+	 */
+	@local
+	public native void loadTemplateData(SharedObjectTemplate templateData);
+	
+	public void createChildObjects() {
+		super.createChildObjects();
+	}
+	
+	/**
+	 * Gets called when the structure has been created;
+	 */
+	public abstract int notifyStructurePlaced(PlayerCreature player) {
+		return 0;
+	}
+	
+	public abstract boolean checkRequisitesForPlacement(PlayerCreature player) {
+		return true;
+	}
+	
+	public native void sendStatusTo(PlayerCreature player);
+	public native void sendDestroyConfirmTo(PlayerCreature player);
+	public native void sendDestroyCodeTo(PlayerCreature player);
+	public native void sendManageMaintenanceTo(PlayerCreature player);
+	public native void sendChangeNamePromptTo(PlayerCreature player);
+	
+	public native string getTimeString(unsigned int timestamp);
+	
+	/**
+	 * Generates and sets a random 6 digit code to be confirmed before allowing a player to destroy a structure.
+	 * @return int The generated 6 digit destroy code.
+	 */
+	public abstract unsigned int generateDestroyCode() {
+		destroyCode = System.random(899999) + 100000;
+		return destroyCode;
+	}
+	
+	public boolean isValidDestroyCode(unsigned int code) {
+		return (destroyCode == code);
+	}
+	
+	public native void scheduleMaintenanceExpirationEvent();
+	
+	/**
+	 * Returns if the object is on the admin list or not for this structure.
+	 * @param obj The object to check for admin permissions on.
+	 * @return boolean True if the object is on the admin list.
+	 */
+	public boolean isOnAdminList(SceneObject obj) {
+		return structurePermissionList.isOnAdminList(obj.getObjectID());
+	}
+	
+	public boolean isOnAdminList(unsigned long oid) {
+		return structurePermissionList.isOnAdminList(oid);
+	}
+	
+	public boolean isOnEntryList(SceneObject obj) {
+		return structurePermissionList.isOnEntryList(obj.getObjectID());
+	}
+	
+	public boolean isOnEntryList(unsigned long oid) {
+		return structurePermissionList.isOnEntryList(oid);
+	}
+	
+	public boolean isOnBanList(SceneObject obj) {
+		return structurePermissionList.isOnBanList(obj.getObjectID());
+	}
+	
+	public boolean isOnBanList(unsigned long oid) {
+		return structurePermissionList.isOnBanList(oid);
+	}
+	
+	public native boolean isOwnerOf(SceneObject obj);
+	public native boolean isOwnerOf(unsigned long oid);
+	
+	public boolean isOnAccessList(SceneObject obj) {
+		//TODO: Vector of objects that have temporary access to the structure.
+		return false;
+	}
+	
+	public boolean isOnAccessList(unsigned long oid) {
+		//TODO: See above.
+		return false;
+	}
+
+	public void sendPermissionListTo(PlayerCreature player, final string listName) {
+		structurePermissionList.sendTo(player, listName);
+	}
+	
+	public native boolean addPermission(PlayerCreature player, PlayerCreature targetPlayer, final string listName);
+	public native boolean addPermission(PlayerCreature player, final string targetPlayerName, final string listName);
+	public native boolean removePermission(PlayerCreature player, PlayerCreature targetPlayer, final string listName);
+	public native boolean removePermission(PlayerCreature player, final string targetPlayerName, final string listName);
+
+	public native void createVendor(PlayerCreature player);
+	
+	/**
+	 * Returns the cost to redeed this building. The redeed cost is 50 times the hourly maintenance rate.
+	 * @return int The cost to redeed this building.
+	 */
+	public int getRedeedCost() {
+		return (baseMaintenanceRate * 50);
+	}
+	
+	public unsigned long getOwnerObjectID() {
+		return ownerObjectID;
+	}
+	
+	public unsigned long getDeedObjectID() {
+		return deedObjectID;
+	}
+	
+	public int getLotSize() {
+		return lotSize;
+	}
+	
+	public unsigned int getDestroyCode() {
+		return destroyCode;
+	}
+	
+	public int getBaseMaintenanceRate() {
+		return baseMaintenanceRate;
+	}
+	
+	public int getBasePowerRate() {
+		return basePowerRate;
+	}
+	
+	public int getSurplusMaintenance() {
+		return surplusMaintenance;
+	}
+	
+	public int getSurplusPower() {
+		return surplusPower;
+	}
+	
+	public abstract boolean isPublicStructure() {
+		return false;
+	}
+	
+	public void setOwnerObjectID(unsigned long objectID) {
+		//Remove the old owner from permission list.
+		structurePermissionList.removePermission(ownerObjectID, StructurePermissionList.OWNER);
+		
+		//Research: Add them as an administrator?
+		//structurePermissionList.addPermission(ownerObjectID, StructurePermissionList.ADMIN);
+
+		ownerObjectID = objectID;
+
+		structurePermissionList.addPermission(objectID, StructurePermissionList.OWNER);
+	}
+	
+	public void setDeedObjectID(unsigned long deedID) {
+		deedObjectID = deedID;
+	}
+	
+	public void setLotSize(int lots) {
+		lotSize = lots;
+	}
+	
+	public void setDestroyCode(unsigned int code) {
+		destroyCode = code;
+	}
+	
+	public void setBaseMaintenanceRate(int rate) {
+		baseMaintenanceRate = rate;
+	}
+	
+	public void setBasePowerRate(int rate) {
+		basePowerRate = rate;
+	}
+	
+	public void setSurplusMaintenance(int surplus) {
+		surplusMaintenance = surplus;
+	}
+	
+	public void addMaintenance(int add) {
+		surplusMaintenance += add;
+	}
+	
+	public void setSurplusPower(int surplus) {
+		surplusPower = surplus;
+	}
+	
+	public void addPower(int add) {
+		surplusPower += add;
+	}
+	
+	public abstract void setPublicStructure(boolean privacy) {
+		
+	}
+	
+	public boolean isStructureObject() {
+		return true;
+	}
+	
+	//The + 1 is for a bug with IDL where <= throws an error...
+	public boolean isRedeedable() {
+		return (getRedeedCost() < (surplusMaintenance + 1));
+	}
+	
+	public int getLength() {
+		return length;
+	}
+	
+	@local
+	public native AABBTree getAABBTree();
+	
+	public void setLength(int len) {
+		length = len;
+	}
+	
+	public int getWidth() {
+		return width;
+	}
+	
+	public void setWidth(int wid) {
+		width = wid;
+	}
+}

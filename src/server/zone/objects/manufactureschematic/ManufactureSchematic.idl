@@ -1,0 +1,264 @@
+/*
+Copyright (C) 2007 <SWGEmu>
+ 
+This File is part of Core3.
+ 
+This program is free software; you can redistribute 
+it and/or modify it under the terms of the GNU Lesser 
+General Public License as published by the Free Software
+Foundation; either version 2 of the License, 
+or (at your option) any later version.
+ 
+This program is distributed in the hope that it will be useful, 
+but WITHOUT ANY WARRANTY; without even the implied warranty of 
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. 
+See the GNU Lesser General Public License for
+more details.
+ 
+You should have received a copy of the GNU Lesser General 
+Public License along with this program; if not, write to
+the Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
+ 
+Linking Engine3 statically or dynamically with other modules 
+is making a combined work based on Engine3. 
+Thus, the terms and conditions of the GNU Lesser General Public License 
+cover the whole combination.
+ 
+In addition, as a special exception, the copyright holders of Engine3 
+give you permission to combine Engine3 program with free software 
+programs or libraries that are released under the GNU LGPL and with 
+code included in the standard release of Core3 under the GNU LGPL 
+license (or modified versions of such code, with unchanged license). 
+You may copy and distribute such a system following the terms of the 
+GNU LGPL for Engine3 and the licenses of the other code concerned, 
+provided that you include the source code of that other code when 
+and as the GNU LGPL requires distribution of source code.
+ 
+Note that people who make modified versions of Engine3 are not obligated 
+to grant this special exception for their modified versions; 
+it is their choice whether to do so. The GNU Lesser General Public License 
+gives permission to release a modified version without this exception; 
+this exception also makes it possible to release a modified version 
+which carries forward this exception.
+*/
+
+package server.zone.objects.manufactureschematic;
+
+import system.lang.ref.Reference;
+import engine.service.proto.BaseMessage;
+
+import server.zone.objects.intangible.IntangibleObject;
+import server.zone.packets.scene.AttributeListMessage;
+import server.zone.objects.draftschematic.DraftSchematic;
+include server.zone.objects.player.PlayerCreature;
+import server.zone.objects.scene.SceneObject;
+import server.zone.objects.tangible.TangibleObject;
+import server.zone.objects.area.ActiveArea;
+include server.zone.packets.object.ObjectControllerMessage;
+include server.zone.objects.manufactureschematic.ingredientslots.IngredientSlot;
+include server.zone.objects.manufactureschematic.IngredientSlots;
+include server.zone.objects.manufactureschematic.craftingvalues.CraftingValues;
+include server.zone.objects.manufactureschematic.factoryblueprint.FactoryBlueprint;
+include server.zone.objects.manufactureschematic.factoryblueprint.BlueprintEntry;
+
+class ManufactureSchematic extends IntangibleObject {
+
+	protected DraftSchematic draftSchematic;
+	protected TangibleObject prototype;
+	protected float dataSize;
+	protected int manufactureLimit;
+	protected float complexity;
+	protected unsigned int crcToSend; 
+	protected PlayerCreature crafter;
+	protected boolean firstCraftingUpdate;
+	
+	@dereferenced
+	protected FactoryBlueprint factoryBlueprint;
+	
+	@dereferenced
+	protected IngredientSlots ingredientSlots;
+	
+	protected boolean assembled;
+	protected boolean completed;
+	protected int experimentingCounter;
+	protected int experimentingCounterPrevious;
+	
+	@dereferenced
+	protected CraftingValues craftingValues;
+	
+	@dereferenced
+	protected Vector<byte> customizationOptions;
+	
+	@dereferenced
+	protected Vector<byte> customizationDefaultValues;
+	
+	public ManufactureSchematic() {
+		Logger.setLoggingName("ManufactureSchematic");
+		prototype = null;
+		firstCraftingUpdate = true;
+	}
+	
+	public void initializeTransientMembers() {
+		super.initializeTransientMembers();
+		
+	}
+
+	/**
+	 * Fills the attribute list message options that are sent to player creature
+	 * @pre { }
+	 * @post { }
+	 * @param msg attribute list message with the attributes
+	 * @param object player creature to which the message is sent
+	 */
+	@local
+	public native void fillAttributeList(AttributeListMessage msg, PlayerCreature object);
+
+	/**
+	 * Sends the necessary messages to player in order to create this object
+	 * @pre { this object is locked }
+	 * @post { this object is locked, player received this object }
+	 * @param player SceneObject that will receive the messages
+	 * @param doClose if true a SceneObjectCloseMessage is sent to finish the object
+	 */
+	public native abstract void sendTo(SceneObject player, boolean doClose);
+	
+	/**
+	 * Sends the baseline messages of this object to the specified player\
+	 * @pre { this object is locked }
+	 * @post { this object is locked, player received the baseline messages }
+	 * @param player SceneObject that will receive the baselines 
+	 */
+	public native void sendBaselinesTo(SceneObject player);
+	
+	/**
+	 * Calls the appropriate UI Listener Function
+	 * @pre { this object is locked, object is locked }
+	 * @post {this object is locked, object is locked }
+	 * @param player PlayerCreature using the item
+	 * @param value value from packet
+	 */
+	public native abstract void synchronizedUIListen(SceneObject player, int value);
+	
+	/**
+	 * Calls the appropriate UI Stop Listener Function
+	 * @pre { this object is locked, object is locked }
+	 * @post {this object is locked, object is locked }
+	 * @param player PlayerCreature using the item
+	 * @param value value from packet
+	 */
+	public native abstract void synchronizedUIStopListen(SceneObject player, int value);
+	
+	public native void updateToDatabaseAllObjects(boolean startTask);
+	
+	public boolean isManufactureSchematic() {
+		return true;
+	}
+	
+	public native void setDraftSchematic(SceneObject craftingTool, DraftSchematic schematic);
+	
+	public native void initializeIngredientSlots(SceneObject craftingTool, DraftSchematic schematic);
+	
+	public native void cleanupIngredientSlots();
+	
+	public DraftSchematic getDraftSchematic() {
+		return draftSchematic;
+	}
+	
+	@local
+	@dereferenced
+	public native Reference<IngredientSlot> getIngredientSlot(int index);
+	
+	public native int getSlotCount();
+	
+	public void increaseComplexity() {
+		complexity++;
+	}
+	
+	public void decreaseComplexity() {
+		if(complexity > 1)
+			complexity = complexity - 1;
+	}
+	
+	public float getComplexity() {
+		return complexity;
+	}
+	
+	public boolean isFirstCraftingUpdate() {
+		return firstCraftingUpdate;
+	}
+	
+	public void setFirstCraftingUpdateComplete() {
+		firstCraftingUpdate = false;
+	}
+	
+	public native boolean isReadyForAssembly();
+	
+	public void setAssembled() {
+		assembled = true;
+	}
+	
+	public boolean isAssembled() {
+		return assembled;
+	}
+	
+	public void setCompleted() {
+		completed = true;
+	}
+	
+	public boolean isCompleted() {
+		return completed;
+	}
+	
+	public void setCrafter(PlayerCreature player) {
+		crafter = player;
+	}
+	
+	public PlayerCreature getCrafter() {
+		return crafter;
+	}
+	
+	@local
+	public CraftingValues getCraftingValues() {
+		return craftingValues;
+	}
+	
+	public void setExperimentingCounter(int value) {
+		experimentingCounterPrevious = experimentingCounter;
+		experimentingCounter = value;
+	}
+	
+	public int getExperimentingCounter() {
+		return experimentingCounter;
+	}
+
+	public int getExperimentingCounterPrevious() {
+		return experimentingCounterPrevious;
+	}
+	
+	public void setManufactureLimit(int limit) {
+		manufactureLimit = limit;
+	}
+	
+	public int getManufactureLimit() {
+		return manufactureLimit;
+	}
+	
+	public native void setPrototype(TangibleObject tano);
+	
+	public native TangibleObject getPrototype() {
+		return prototype;
+	}
+	
+	public native void canManufactureItem(string type, string displayedName);
+	
+	public native void manufactureItem();
+	
+	public native void createFactoryBlueprint();
+	
+	public int getBlueprintSize() {
+		return factoryBlueprint.getConsolidatedSize();
+	}
+	
+	@local
+	public native BlueprintEntry getBlueprintEntry(int i);
+}

@@ -1,0 +1,232 @@
+/*
+Copyright (C) 2007 <SWGEmu>
+ 
+This File is part of Core3.
+ 
+This program is free software; you can redistribute 
+it and/or modify it under the terms of the GNU Lesser 
+General Public License as published by the Free Software
+Foundation; either version 2 of the License, 
+or (at your option) any later version.
+ 
+This program is distributed in the hope that it will be useful, 
+but WITHOUT ANY WARRANTY; without even the implied warranty of 
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. 
+See the GNU Lesser General Public License for
+more details.
+ 
+You should have received a copy of the GNU Lesser General 
+Public License along with this program; if not, write to
+the Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
+ 
+Linking Engine3 statically or dynamically with other modules 
+is making a combined work based on Engine3. 
+Thus, the terms and conditions of the GNU Lesser General Public License 
+cover the whole combination.
+ 
+In addition, as a special exception, the copyright holders of Engine3 
+give you permission to combine Engine3 program with free software 
+programs or libraries that are released under the GNU LGPL and with 
+code included in the standard release of Core3 under the GNU LGPL 
+license (or modified versions of such code, with unchanged license). 
+You may copy and distribute such a system following the terms of the 
+GNU LGPL for Engine3 and the licenses of the other code concerned, 
+provided that you include the source code of that other code when 
+and as the GNU LGPL requires distribution of source code.
+ 
+Note that people who make modified versions of Engine3 are not obligated 
+to grant this special exception for their modified versions; 
+it is their choice whether to do so. The GNU Lesser General Public License 
+gives permission to release a modified version without this exception; 
+this exception also makes it possible to release a modified version 
+which carries forward this exception.
+*/
+
+package server.zone.objects.draftschematic;
+
+import engine.service.proto.BaseMessage;
+import server.zone.objects.scene.SceneObject;
+import server.zone.packets.scene.AttributeListMessage;
+include server.zone.packets.object.ObjectControllerMessage;
+import server.zone.objects.intangible.IntangibleObject;
+include server.zone.templates.intangible.DraftSchematicObjectTemplate;
+include server.zone.objects.draftschematic.draftslot.DraftSlot;
+include server.zone.objects.draftschematic.resourceweight.ResourceWeight;
+import server.zone.templates.SharedObjectTemplate;
+import server.zone.objects.player.PlayerCreature;
+import server.zone.objects.area.ActiveArea;
+import system.util.Vector;
+
+class DraftSchematic extends IntangibleObject {
+
+	/// Arbitrary ID for the schematic
+	private unsigned int schematicID; 
+	
+	/// SharedDraftSchematicTemplate
+	private transient DraftSchematicObjectTemplate schematicTemplate;
+	
+	private int useCount;
+	
+	public DraftSchematic() {
+		schematicTemplate = null;
+		useCount = 0;
+		schematicID = 0;
+		
+		Logger.setLoggingName("DraftSchematic");
+	}
+
+	/**
+	 * Initializes the transient members of SceneObject, must call the inherited object method first.
+	 * @pre {transient members are not initialized }
+	 * @post { transient members are initialized }
+	 */
+	public native void initializeTransientMembers();
+	
+	@local
+	public native void loadTemplateData(SharedObjectTemplate templateData);
+	
+	/**
+	 * Fills the attribute list message options that are sent to player creature
+	 * @pre { }
+	 * @post { }
+	 * @param msg attribute list message with the attributes
+	 * @param object player creature to which the message is sent
+	 */
+	@local
+	public native void fillAttributeList(AttributeListMessage msg, PlayerCreature object);
+
+	
+	/**
+	 * Sends the baseline messages of this object to the specified player\
+	 * @pre { this object is locked }
+	 * @post { this object is locked, player received the baseline messages }
+	 * @param player SceneObject that will receive the baselines 
+	 */
+	public native void sendBaselinesTo(SceneObject player);
+	
+	/**
+	 * Sends the ingredients of this object to the specified player\
+	 * @pre { this object is locked }
+	 * @post { this object is locked, player received the baseline messages }
+	 * @param player SceneObject that will receive the ingredients 
+	 */
+	public native void sendDraftSlotsTo(PlayerCreature player);
+	
+	@local
+	private native void insertIngredients(ObjectControllerMessage msg);
+	
+	/**
+	 * Sends the resource weights of this object to the specified player\
+	 * @pre { this object is locked }
+	 * @post { this object is locked, player received the baseline messages }
+	 * @param player SceneObject that will receive the ingredients 
+	 */
+	public native void sendResourceWeightsTo(PlayerCreature player);
+
+	public native SceneObject createManufactureSchematic(SceneObject craftingTool = null);
+	
+	/**
+	 * Setter for the schematic ID
+	 * \param id incoming ID
+	 */
+	public void setSchematicID(unsigned int id) {
+		schematicID = id;
+	}
+	
+	/**
+	 * Setter for the crafting tool tab mask
+	 * \return schematicID
+	 */
+	public unsigned int getSchematicID() {
+		return schematicID;
+	}
+	
+	public native int getDraftSlotCount();
+	
+	public boolean isValidDraftSchematic() {
+		return schematicTemplate != null;
+	}
+	
+	@local
+	public native DraftSlot getDraftSlot(int i);
+	
+	public native int getResourceWeightCount();
+	
+	@local
+	public native ResourceWeight getResourceWeight(int i);
+	
+	/**
+	 * Getter for complexity
+	 * \return complexity
+	 */
+	public native float getComplexity();
+
+	/**
+	 * Setter for the crafting tool tab mask
+	 * \return toolTab
+	 */
+	public native unsigned int getToolTab();
+
+	/**
+	 * getter for the schematic size
+	 * \return size
+	 */
+	public native float getSize();
+
+	/**
+	 * getter for xpType
+	 * \return size
+	 */
+	public native string getXpType();
+
+	/**
+	 * getter for the xpAmount
+	 * \return xpAmount
+	 */
+	public native int getXpAmount();
+
+	/**
+	 * getter for assemblyMod
+	 * \return assemblyMod
+	 */
+	public native string getAssemblySkill();
+
+	/**
+	 * getter for experiementationMod
+	 * \return experiementationMod
+	 */
+	public native string getExperimentationSkill();
+	
+	public native string getCustomizationSkill();
+	
+	@local
+	public native Vector<byte> getCustomizationOptions();
+	
+	@local
+	public native Vector<string> getCustomizationStringNames();
+	
+	@local
+	public native Vector<byte> getCustomizationDefaultValues();
+
+	public native string getCustomName();
+	
+	public native unsigned int getTanoCRC();
+
+	public native string getGroupName();
+	
+	public int getUseCount() {
+		return useCount;
+	}
+	
+	public void setUseCount(int count) {
+		useCount = count;
+	}
+	
+	public void decreaseUseCount(int count = 1) {
+		setUseCount(useCount - 1);
+	}
+	
+	public void increaseUseCount(int count) {
+		setUseCount(useCount + count);
+	}
+}

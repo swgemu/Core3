@@ -1,0 +1,323 @@
+/*
+Copyright (C) 2007 <SWGEmu>
+ 
+This File is part of Core3.
+ 
+This program is free software; you can redistribute 
+it and/or modify it under the terms of the GNU Lesser 
+General Public License as published by the Free Software
+Foundation; either version 2 of the License, 
+or (at your option) any later version.
+ 
+This program is distributed in the hope that it will be useful, 
+but WITHOUT ANY WARRANTY; without even the implied warranty of 
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. 
+See the GNU Lesser General Public License for
+more details.
+ 
+You should have received a copy of the GNU Lesser General 
+Public License along with this program; if not, write to
+the Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
+ 
+Linking Engine3 statically or dynamically with other modules 
+is making a combined work based on Engine3. 
+Thus, the terms and conditions of the GNU Lesser General Public License 
+cover the whole combination.
+ 
+In addition, as a special exception, the copyright holders of Engine3 
+give you permission to combine Engine3 program with free software 
+programs or libraries that are released under the GNU LGPL and with 
+code included in the standard release of Core3 under the GNU LGPL 
+license (or modified versions of such code, with unchanged license). 
+You may copy and distribute such a system following the terms of the 
+GNU LGPL for Engine3 and the licenses of the other code concerned, 
+provided that you include the source code of that other code when 
+and as the GNU LGPL requires distribution of source code.
+ 
+Note that people who make modified versions of Engine3 are not obligated 
+to grant this special exception for their modified versions; 
+it is their choice whether to do so. The GNU Lesser General Public License 
+gives permission to release a modified version without this exception; 
+this exception also makes it possible to release a modified version 
+which carries forward this exception.
+*/
+
+package server.zone.objects.building.city;
+
+import server.zone.objects.building.BuildingObject;
+import engine.lua.LuaObject;
+import server.zone.Zone;
+import server.zone.managers.city.CityManager;
+import server.zone.objects.region.Region;
+import server.zone.objects.tangible.terminal.city.CityTerminal;
+import server.zone.objects.tangible.terminal.city.CityVoteTerminal;
+import system.util.SortedVector;
+import system.util.VectorMap;
+import system.lang.Time;
+import server.zone.objects.player.PlayerCreature;
+
+class CityHallObject extends BuildingObject {
+	@dereferenced
+	protected SortedVector<unsigned long> declaredCitizens;
+	
+	@dereferenced
+	protected SortedVector<unsigned long> militiaMembers;
+	
+	@dereferenced
+	protected SortedVector<unsigned long> bannedPlayers;
+	
+	@dereferenced
+	protected SortedVector<unsigned long> cityStructures;
+	
+	@dereferenced
+	protected VectorMap<unsigned long, unsigned int> playerZoningRights;
+	
+	protected boolean zoningEnabled;
+	
+	protected Region cityRegion;
+	protected string cityName;
+	protected byte cityRank;
+	protected byte citySpecialization;
+	
+	protected float incomeTax;
+	protected float propertyTax;
+	protected float salesTax;
+	
+	@dereferenced
+	protected Time nextCityUpdate;
+	
+	protected unsigned long mayorObjectID;
+	
+	protected CityTerminal cityTerminal;
+	protected CityVoteTerminal cityVoteTerminal;
+	
+	public CityHallObject() {
+		setLoggingName("CityHallObject");
+		
+		cityName = "test city";
+		
+		cityRank = CityManager.NEWCITY;
+	
+		cityRegion = null;
+		
+		citySpecialization = 0;
+		
+		mayorObjectID = 0;
+		
+		zoningEnabled = false;
+		
+		incomeTax = 0.0f;
+		propertyTax = 0.0f;
+		salesTax = 0.0f;
+		
+		playerZoningRights.setInsertPlan(3); //ALLOW_OVERWRITE
+		playerZoningRights.setNullValue(0);
+		
+		cityStructures.setInsertPlan(3);
+		
+		militiaMembers.setInsertPlan(3);
+
+		declaredCitizens.setInsertPlan(3);
+		
+		bannedPlayers.setInsertPlan(3);
+	}
+	
+	/**
+	 * Inserts this object into zone
+	 * @pre { this object is locked }
+	 * @post { this object is locked and inserted into zone }
+	 * @param zone Zone object where this object will be inserted
+	 */
+	public void insertToZone(Zone zone) {
+		super.insertToZone(zone);
+		
+		spawnCityHallObjects();
+	}
+	
+	public void removeFromZone() {
+		despawnCityHallObjects();
+	
+		super.removeFromZone();
+		
+		updateToDatabaseWithoutChildren();
+	}
+
+	public void notifyLoadFromDatabase() {
+		super.notifyLoadFromDatabase();
+
+		CityManager cityManager = super.zone.getCityManager();
+
+		cityManager.addCity(this);
+	}
+	
+	public native void spawnCityHallObjects();
+	public native void despawnCityHallObjects();
+	
+	public native boolean checkRequisitesForPlacement(PlayerCreature player);
+	
+	public void setCityName(final string name) {
+		cityName = name;
+	}
+	
+	public string getCityName() {
+		return cityName;
+	}
+	
+	public byte getCityRank() {
+		return cityRank;
+	}
+	
+	public native void sendCityNamePromptTo(PlayerCreature player, boolean newCity = false);
+	public native void sendStatusTo(PlayerCreature player);
+	public native void sendCitizenshipReportTo(PlayerCreature player);
+	public native void sendStructureReportTo(PlayerCreature player);
+	public native void sendTreasuryReportTo(PlayerCreature player);
+	public native void sendCityAdvancementTo(PlayerCreature player);
+	public native void sendMaintenanceReportTo(PlayerCreature player);
+	
+	public native void sendChangeCityNameTo(PlayerCreature player);
+	public native void sendEnableZoningTo(PlayerCreature player);
+	public native void sendManageMilitiaTo(PlayerCreature player);
+	public native void sendAddMilitiaMemberTo(PlayerCreature player);
+	public native void sendAdjustTaxesTo(PlayerCreature player);
+	public native void sendTreasuryDepositTo(PlayerCreature player);
+	public native void sendTreasuryWithdrawalTo(PlayerCreature player);
+	public native void sendCitySpecializationSelectionTo(PlayerCreature player);
+	
+	public native void toggleCityRegistration(PlayerCreature player);
+	
+	public native void destroyObjectFromDatabase(boolean destroyContainedObjects = false);
+	
+	/**
+	 * Gets called when the structure has been created;
+	 */
+	public native int notifyStructurePlaced(PlayerCreature player);
+	
+	public boolean isCityHallBuilding() {
+		return true;
+	}
+	
+	/**
+	 * Adds the player to the zoning rights map for the specified number of seconds.
+	 * @param playerID The object ID of the player being added to the map.
+	 * @param seconds How many seconds from the current time does the player have before the zoning rights expire. Default is 24 hours.
+	 */
+	public native void addZoningRights(unsigned long playerID, unsigned int seconds = 86400);
+	
+	/**
+	 * Removes the player ID from the zoning rights map.
+	 * @param playerID The object ID of the player to remove from the zoning rights map.
+	 */
+	public void removeZoningRights(unsigned long playerID) {
+		playerZoningRights.drop(playerID);
+	}
+	
+	/**
+	 * Checks to see if the player has zoning rights in this city hall's city limits.
+	 * @param playerID The object ID of the player who we are checking for zoning rights.
+	 */
+	public native boolean hasZoningRights(unsigned long playerID);
+	
+	public unsigned long getMayorObjectID() {
+		return mayorObjectID;
+	}
+	
+	public void setMayorObjectID(unsigned long oid) {
+		mayorObjectID = oid;
+	}
+	
+	public boolean isMayor(unsigned long playerID) {
+		return playerID == mayorObjectID;
+	}
+	
+	public boolean isBanned(unsigned long playerID) {
+		return bannedPlayers.contains(playerID);
+	}
+	
+	public void addBannedPlayer(unsigned long playerID) {
+		bannedPlayers.put(playerID);
+	}
+	
+	public void removeBannedPlayer(unsigned long playerID) {
+		bannedPlayers.drop(playerID);
+	}
+	
+	public CityTerminal getCityTerminal() {
+		return cityTerminal;
+	}
+	
+	public CityVoteTerminal getCityVoteTerminal() {
+		return cityVoteTerminal;
+	}
+	
+	public Region getCityRegion() {
+		return cityRegion;
+	}
+	
+	public void setCityRegion(Region region) {
+		cityRegion = region;
+	}
+	
+	public int getCivicStructureCap() {
+		return cityRank * 6 + 1;
+	}
+	
+	public boolean isZoningEnabled() {
+		return zoningEnabled;
+	}
+	
+	public void toggleZoningEnabled(PlayerCreature player) {
+		zoningEnabled = !zoningEnabled;
+		
+		if (zoningEnabled)
+			player.sendSystemMessage("@city/city:zoning_enabled"); //Your city now has zoning enabled.
+		else
+			player.sendSystemMessage("@city/city:zoning_disabled"); //Your city now has zoning disabled.
+	}
+	
+	public void setZoningEnabled(boolean enabled) {
+		zoningEnabled = enabled;
+	}
+	
+	public boolean isCityUpdatePast() {
+		return nextCityUpdate.isPast();
+	}
+	
+	public native void rescheduleCityUpdate(unsigned int minutes);
+	
+	public int getCitizenCount() {
+		return declaredCitizens.size();
+	}
+	
+	public void addCitizen(unsigned long playerID) {
+		declaredCitizens.put(playerID);
+	}
+	
+	public void removeCitizen(unsigned long playerID) {
+		declaredCitizens.drop(playerID);
+	}
+	
+	public boolean isCitizen(unsigned long playerID) {
+		return declaredCitizens.contains(playerID);
+	}
+	
+	public void addMilitiaMember(unsigned long playerID) {
+		militiaMembers.put(playerID);
+	}
+	
+	public void removeMilitiaMember(unsigned long playerID) {
+		militiaMembers.drop(playerID);
+	}
+	
+	public boolean isMilitiaMember(unsigned long playerID) {
+		return militiaMembers.contains(playerID);
+	}
+	
+	public unsigned long getCitizenObjectID(int idx) {
+		return declaredCitizens.get(idx);
+	}
+	
+	public void setCityRank(byte rank) {
+		cityRank = rank;
+	}
+}

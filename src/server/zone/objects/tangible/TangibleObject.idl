@@ -1,0 +1,577 @@
+/*
+Copyright (C) 2007 <SWGEmu>
+
+This File is part of Core3.
+
+This program is free software; you can redistribute
+it and/or modify it under the terms of the GNU Lesser
+General Public License as published by the Free Software
+Foundation; either version 2 of the License,
+or (at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+See the GNU Lesser General Public License for
+more details.
+
+You should have received a copy of the GNU Lesser General
+Public License along with this program; if not, write to
+the Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
+
+Linking Engine3 statically or dynamically with other modules
+is making a combined work based on Engine3.
+Thus, the terms and conditions of the GNU Lesser General Public License
+cover the whole combination.
+
+In addition, as a special exception, the copyright holders of Engine3
+give you permission to combine Engine3 program with free software
+programs or libraries that are released under the GNU LGPL and with
+code included in the standard release of Core3 under the GNU LGPL
+license (or modified versions of such code, with unchanged license).
+You may copy and distribute such a system following the terms of the
+GNU LGPL for Engine3 and the licenses of the other code concerned,
+provided that you include the source code of that other code when
+and as the GNU LGPL requires distribution of source code.
+
+Note that people who make modified versions of Engine3 are not obligated
+to grant this special exception for their modified versions;
+it is their choice whether to do so. The GNU Lesser General Public License
+gives permission to release a modified version without this exception;
+this exception also makes it possible to release a modified version
+which carries forward this exception.
+*/
+
+package server.zone.objects.tangible;
+
+import server.zone.objects.scene.SceneObject;
+import engine.lua.LuaObject;
+import system.util.Vector;
+import system.util.SortedVector;
+import engine.log.Logger;
+import server.zone.packets.scene.AttributeListMessage;
+import server.zone.objects.player.PlayerCreature;
+import server.zone.Zone;
+import server.zone.objects.creature.CreatureObject;
+import server.zone.objects.manufactureschematic.ManufactureSchematic;
+import server.zone.objects.factorycrate.FactoryCrate;
+
+include server.zone.objects.scene.variables.CustomizationVariables;
+include server.zone.objects.scene.variables.DeltaVector;
+import server.zone.templates.SharedObjectTemplate;
+include server.zone.objects.manufactureschematic.craftingvalues.CraftingValues;
+include server.zone.templates.SharedObjectTemplate;
+import server.zone.packets.object.ObjectMenuResponse;
+
+class TangibleObject extends SceneObject {
+	protected boolean targetable;
+	
+	protected float complexity;
+	protected int volume;
+	
+	protected int faction;
+	
+	@dereferenced
+	protected CustomizationVariables customizationVariables;
+	
+	protected int conditionDamage;
+	protected int maxCondition;
+	protected int useCount;
+	
+	protected short level;
+	
+	protected unsigned int optionsBitmask;
+	protected unsigned int pvpStatusBitmask;
+	
+	protected byte unknownByte;
+	protected string craftersName;
+	protected string craftersSerial;
+	
+	@dereferenced
+	protected DeltaVector<SceneObject> defenderList;
+	
+	protected unsigned short playerUseMask;
+	
+	protected boolean sliceable;
+	protected boolean sliced;
+	
+	//item mask
+	public static final unsigned short MALE = 0x01;
+	public static final unsigned short FEMALE = 0x02;
+
+	public static final unsigned short HUMAN = 0x004;
+	public static final unsigned short TRANDOSHAN = 0x008;
+	public static final unsigned short TWILEK = 0x010;
+	public static final unsigned short BOTHAN = 0x020;
+	public static final unsigned short ZABRAK = 0x040;
+	public static final unsigned short RODIAN = 0x080;
+	public static final unsigned short MONCALAMARI = 0x100;
+	public static final unsigned short WOOKIEE = 0x200;
+	public static final unsigned short SULLUSTAN = 0x400;
+	public static final unsigned short ITHORIAN = 0x800;
+
+	public static final unsigned short NEUTRAL = 0x1000;
+	public static final unsigned short IMPERIAL = 0x2000;
+	public static final unsigned short REBEL = 0x4000;
+	public static final unsigned short COVERT = 0x8000;
+	
+	public static final unsigned short ALL = 0xFFFF;
+	public static final unsigned short ALLSEXES = 0x03;// MALE | FEMALE;
+	public static final unsigned short ALLFACTIONS = 0xF000; //NEUTRAL | IMPERIAL | REBEL | COVERT;
+	public static final unsigned short HUMANOIDS = 0xF5FF;//ALL & ~(WOOKIEE | ITHORIAN);
+	public static final unsigned short HUMANOID_FOOTWEAR = 0xF5F7;//HUMANOIDS & ~TRANDOSHAN;
+	public static final unsigned short HUMANOID_HANDWEAR = 0xF5F7;//HUMANOIDS & ~TRANDOSHAN;
+	public static final unsigned short HUMANOID_HEADWEAR = 0xF5EF;//HUMANOIDS & ~TWILEK;
+	public static final unsigned short HUMANOID_MALES = 0xF5FD;//HUMANOIDS & ~FEMALE;
+	public static final unsigned short HUMANOID_FEMALES = 0xF5FE;//HUMANOIDS & ~MALE;
+	public static final unsigned short HUMANOID_IMPERIALS = 0x15FF;//HUMANOIDS & ~(REBEL | NEUTRAL | COVERT);
+	public static final unsigned short HUMANOID_REBELS = 0x45FF;//HUMANOIDS & ~(IMPERIAL | NEUTRAL | COVERT);
+	public static final unsigned short NO_RODIANS = 0xFF7F;//ALL & ~RODIAN;
+	public static final unsigned short NO_MONCALAMARI = 0xFEFF;//ALL & ~MONCALAMARI;
+	public static final unsigned short NO_WOOKIES = 0xFDFF;//ALL & ~WOOKIEE;
+	public static final unsigned short WOOKIEES = 0xF203;//WOOKIEE | ALLSEXES | ALLFACTIONS;
+	public static final unsigned short ITHORIANS = 0xF803;//ITHORIAN | ALLSEXES | ALLFACTIONS;
+	public static final unsigned short TWILEKS = 0xF013;//TWILEK | ALLSEXES | ALLFACTIONS;
+	
+	/**
+	 * TangibleObject constructor, used to initialized the object
+	 * @pre { templateData is a valid SharedTangibleObjectTemplate LuaObject that contains the necessary values to initialize CreatureObject }
+	 * @post { TangibleObject is initialized } 
+	 * @param templateData templateData points to the SharedTangibleObjectTemplate LuaObject that is used to initialize TangibleObject members
+	 */
+	public TangibleObject() {
+		Logger.setLoggingName("TangibleObject");
+		
+		initializeMembers();
+	}
+	
+	public void initializeMembers() {
+		faction = 0;
+		level = 1;
+		useCount = 1;
+		
+		complexity = 100.f;
+
+		volume = 1;
+
+		unknownByte = 1;
+
+		useCount = 1;
+
+		conditionDamage = 0;
+		
+		sliceable = false;
+		sliced = false;
+	}
+	
+	/**
+	 * Reads and sets the template data from a SharedTangibleObjectTemplate LuaObject
+	 * @pre { templateData is a valid pointer }
+	 * @post { TangibleObject members are initialized }
+	 * @param templateData templateData points to the SharedTangibleObjectTemplate LuaObject that is used to initialize the TangibleObject members
+	 */
+	@local
+	public native void loadTemplateData(SharedObjectTemplate templateData);
+	
+	/**
+	 * Initializes the transient members of SceneObject, must call the inherited object method first.
+	 * @pre {transient members are not initialized }
+	 * @post { transient members are initialized }
+	 */
+	public native void initializeTransientMembers();
+
+	/**
+	 * Fills the radial options, needs to be overriden
+	 * @pre { this object is locked }
+	 * @post { this object is locked, menuResponse is complete}
+	 * @param menuResponse ObjectMenuResponse that will be sent to the client
+	 */
+	@local
+	public native void fillObjectMenuResponse(ObjectMenuResponse menuResponse, PlayerCreature player);
+	
+	/**
+	 * Handles the radial selection sent by the client, must be overriden by inherited objects
+	 * @pre { this object is locked, player is locked }
+	 * @post { this object is locked, player is locked }
+	 * @param player PlayerCreature that selected the option
+	 * @param selectedID selected menu id
+	 * @returns 0 if successfull
+	 */
+	public native int handleObjectMenuSelect(PlayerCreature player, byte selectedID);
+	
+	/**
+	 * Updates the custom name of the object
+	 * @pre { this locked }
+	 * @post { this locked }
+	 */
+	public native void setCustomObjectName(final unicode name, boolean notifyClient);
+	
+	/**
+	 * Sends the TANO baseline messages of this object to the specified player
+	 * @pre { this object is locked }
+	 * @post { this object is locked, player received the baseline messages }
+	 * @param player SceneObject that will receive the baselines 
+	 */
+	public native abstract void sendBaselinesTo(SceneObject player);
+	
+	/**
+	 * Calls the appropriate UI Listener Function
+	 * @pre { this object is locked, object is locked }
+	 * @post {this object is locked, object is locked }
+	 * @param player PlayerCreature using the item
+	 * @param value value from packet
+	 */
+	public native abstract void synchronizedUIListen(SceneObject player, int value);
+	
+	/**
+	 * Calls the appropriate UI Stop Listener Function
+	 * @pre { this object is locked, object is locked }
+	 * @post {this object is locked, object is locked }
+	 * @param player PlayerCreature using the item
+	 * @param value value from packet
+	 */
+	public native abstract void synchronizedUIStopListen(SceneObject player, int value);
+	
+	/**
+	 * Sets the active defender
+	 * @pre { this object is locked }
+	 * @post { this object is locked, defender is active }
+	 * @param defender SceneObject to set as the active defender
+	 */
+	public native abstract void setDefender(SceneObject defender);
+	
+	/**
+	 * Adds a SceneObject to the defender vector
+	 * @pre { this object is locked }
+	 * @post { this object is locked, defender is in the defender vector }
+	 * @param defender SceneObject to add to the defender vector
+	 */
+	public native abstract void addDefender(SceneObject defender);
+	
+	/**
+	 * Removes the specified defender from the defender vector
+	 * @pre { this object is locked }
+	 * @post { this object is locked, defender is not in the defender vector }
+	 * @param defender SceneObject to remove from the defender vector
+	 */
+	public native abstract void removeDefender(SceneObject defender);
+	
+	/**
+	 * Removes all the defenders from the defender vector
+	 * @pre { this object is locked }
+	 * @post { this object is locked, defender vector is empty }
+	 */
+	public native abstract void removeDefenders();
+	
+	/**
+	 * Sets the combat state, needs to be overriden
+	 * @pre { this object is locked }
+	 * @post { this object is locked, this object is in a combat state }
+	 */
+	public abstract void setCombatState() {
+		
+	}
+	
+	/**
+	 * Updates the object count delta
+	 * @pre { this object is locked }
+	 * @post { this object is locked }
+	 * @param newUseCount new value to update
+	 */
+	public native abstract void setUseCount(unsigned int newUseCount, boolean notifyClient = true);
+	
+	/**
+	 * Decreases use count, when reaches 0 destroys itself
+	 */
+	public native void decreaseUseCount(PlayerCreature player = null);
+	
+	/**
+	 * Fills the attribute list message options that are sent to player creature
+	 * @pre { }
+	 * @post { }
+	 * @param msg attribute list message with the attributes
+	 * @param object player creature to which the message is sent
+	 */
+	@local
+	public native void fillAttributeList(AttributeListMessage msg, PlayerCreature object);
+	
+	/**
+	 * Cleares the combat state
+	 * @pre { this object is locked }
+	 * @post { this object is locked, this object is not in a combat state }
+	 * @param clearDefenders if true the defender vector willl be emptied
+	 */
+	public abstract void clearCombatState(boolean clearDefenders = true) {
+		if (clearDefenders)
+			removeDefenders();
+	}
+	
+	/**
+	 * Evaluates if this object contains the specified defender
+	 * @pre { this object is locked }
+	 * @post { this object is locked }
+	 * @return returns true if SceneObject defender exists in the defender vector
+	 */
+	public boolean hasDefender(SceneObject defender) {
+		for (int i = 0; i < defenderList.size(); ++i) {
+			if (defenderList.get(i) == defender)
+				return true;
+		}
+		
+		return false;
+	}
+	
+	/**
+	 * Evaluates if this object can be attacket by the passed creature object
+	 * @pre { this object is locked }
+	 * @post { this object is locked}
+	 * @return returns true if the creature object can attack this 
+	 */
+	public abstract boolean isAttackableBy(CreatureObject object) {
+		return false;
+	}
+	
+	/**
+	 * Evaluates if this creature is aggresive to the object
+	 * @pre { }
+	 * @post { }
+	 * @return returns true if its aggressive
+	 */
+	public abstract boolean isAggressiveTo(PlayerCreature object) {
+		return false;
+	}
+	
+	/**
+	 * Sends the pvp options bitmask
+	 * @pre { this object is locked}
+	 * @post { this object is locked }
+	 */
+	public abstract native void sendPvpStatusTo(PlayerCreature player);
+	
+	/**
+	 * Inflicts damage into the object
+	 * @pre { attacker, this object is locked }
+	 * @post { attacker, this object is locked }
+	 * @return unused for now
+	 */
+	public native abstract int inflictDamage(TangibleObject attacker, int damageType, int damage, boolean destroy, boolean notifyClient = true);
+	
+	/**
+	 * Heals damage
+	 * @pre { this, healer locked }
+	 * @post { this, healer locked }
+	 * @return returns total health healed
+	 */
+	public native abstract int healDamage(TangibleObject healer, int damageType, int damageToHeal, boolean notifyClient = true);
+	
+	
+	/**
+	 * Sets the condition damage variable
+	 * @pre { this object is locked }
+	 * @post { this object is locked }
+	 * @param condDamage new condition damage
+	 */
+	public native void setConditionDamage(int condDamage, boolean notifyClient = true);
+	
+	/**
+	 * Updates a customization variable
+	 */
+	public native void setCustomizationVariable(byte type, byte value, boolean notifyClient = true);
+
+	public native void setCustomizationVariable(final string type, byte value, boolean notifyClient = true);
+	
+	public native void setOptionsBitmask(unsigned int bitmask, boolean notifyClient = true);
+	
+	@local
+	public abstract void updateCraftingValues(ManufactureSchematic schematic) {
+		error("Unhandled updateCraftingValues for this object type");
+	}
+	
+	public abstract native int notifyObjectDestructionObservers(TangibleObject attacker, int condition);
+	
+	public byte getUnknownByte() {
+		return unknownByte;
+	}
+	
+	public abstract boolean isTicketCollector() {
+		return false;
+	}
+	
+	public abstract boolean isTicketObject() {
+		return false;
+	}
+	
+	@local
+	public CustomizationVariables getCustomizationVariables() {
+		return customizationVariables;
+	}
+	
+	public abstract int getUseCount() {
+		return useCount;
+	}
+	
+	public int getMaxCondition() {
+		return maxCondition;
+	}
+	
+	public void setMaxCondition(int maxCond) {
+		maxCondition = maxCond;
+	}
+	
+	public int getConditionDamage() {
+		return conditionDamage;
+	}
+	
+	public int getVolume() {
+		return volume;
+	}
+	
+	public float getComplexity() {
+		return complexity;
+	}
+	
+	public unsigned int getOptionsBitmask() {
+		return optionsBitmask;
+	}
+	
+	public int getLevel() {
+		return level;
+	}
+	
+	public unsigned int getPvpStatusBitmask() {
+		return pvpStatusBitmask;
+	}
+	
+	public boolean isTangibleObject() {
+		return true;
+	}
+	
+	public void getCustomizationString(string variables) {
+		customizationVariables.getData(variables);
+	}
+	
+	@local
+	public DeltaVector<SceneObject> getDefenderList() {
+		return defenderList;
+	}
+	
+	public SceneObject getMainDefender() {
+		return defenderList.get(0);
+	}
+	
+	public boolean isDestroyed() {
+		return conditionDamage > maxCondition;
+	}
+	
+	public unsigned int getPlayerUseMask() {
+		return playerUseMask;
+	}
+	
+	public void setFaction(unsigned int crc) {
+		faction = crc;
+	}
+	
+	public int getFaction() {
+		return faction;
+	}
+	
+	public boolean isRebel() {
+		return faction == 0x16148850;
+	}
+	
+	public boolean isImperial() {
+		return faction == 0xDB4ACC54;
+	}
+	
+	public boolean isNeutral() {
+		return faction == 0;
+	}
+	
+	public boolean isSliceable() {
+		if (sliced)
+			return false;
+		else if (isContainerObject())
+			return sliceable;
+		else if (isMissionTerminal())
+			return sliceable;
+		else if (isWeaponObject())
+			return sliceable;
+		else if (isArmorObject())
+			return sliceable;
+		else if (super.gameObjectType == super.PLAYERLOOTCRATE)
+			return sliceable;
+
+		return false;
+	}
+
+	public boolean isSliced() {
+		return sliced;
+	}
+
+	public void setSliceable(boolean val) {
+		sliceable = val;
+	}
+
+	public void setSliced(boolean slice) {
+		sliced = slice;
+	}
+	
+	public abstract boolean isPharmaceuticalObject() {
+		return false;
+	}
+	
+	public void setCustomizationString(final string vars) {
+		customizationVariables.parseFromClientString(vars);
+	}
+	
+	public void setPvpStatusBitmask(int bitmask) {
+		pvpStatusBitmask = bitmask;
+	}
+	
+	public void setCraftersName(string name) {
+		craftersName = name;
+	}
+	
+	public abstract string getCraftersName() {
+		return craftersName;
+	}
+	
+	public void setCraftersSerial(string serial) {
+		craftersSerial = serial;
+	}
+	
+	public void setLevel(int lev) {
+		level = lev;
+	}
+	
+	public abstract string getCraftersSerial() {
+		return craftersSerial;
+	}
+	
+	public boolean isFromFactoryCrate() {
+		return optionsBitmask & 0x2100;
+	}
+	
+	/*
+	 * Set the initial values for this object based on the schematic
+	 */
+	public native void setInitialCraftingValues(ManufactureSchematic manufactureSchematic, int assemblySuccess = 1);
+	
+	/*
+	 * Add the subcomponent stats to this based on the items in the schematic
+	 */
+	public native boolean applyComponentStats(ManufactureSchematic manufactureSchematic);
+
+	/*
+	 * Creates a factory crate for this object, can insert this object or a clone
+	 */
+	public native FactoryCrate createFactoryCrate(boolean insertSelf = false);
+
+}
+
+
+
+
+
+
+

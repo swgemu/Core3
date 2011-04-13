@@ -1,0 +1,36 @@
+grizzled_bark_mite = Creature:new {
+	objectName = "@mob/creature_names:grizzled_bark_mite",
+	socialGroup = "Bark Mite",
+	pvpFaction = "",
+	faction = "",
+	level = 14,
+	chanceHit = 0.300000,
+	damageMin = 160,
+	damageMax = 170,
+	baseXp = 714,
+	baseHAM = 1700,
+	baseHAMmax = 1700,
+	armor = 0,
+	resists = {0,0,0,0,0,0,0,-1,-1},
+	meatType = "meat_insect",
+	meatAmount = 10,
+	hideType = "",
+	hideAmount = 0,
+	boneType = "",
+	boneAmount = 0,
+	milk = 0,
+	tamingChance = 0.250000,
+	ferocity = 0,
+	pvpBitmask = AGGRESSIVE + ATTACKABLE,
+	creatureBitmask = PACK + HERD,
+	diet = CARNIVORE,
+
+	templates = {"object/mobile/bark_mite.iff"},
+	lootgroups = {},
+	weapons = {},
+	attacks = {
+		{"intimidationattack","intimidationChance=50"}
+	}
+}
+
+CreatureTemplates:addCreatureTemplate(grizzled_bark_mite, "grizzled_bark_mite")

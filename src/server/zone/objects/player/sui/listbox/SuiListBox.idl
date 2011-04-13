@@ -1,0 +1,142 @@
+/*
+Copyright (C) 2007 <SWGEmu>
+ 
+This File is part of Core3.
+ 
+This program is free software; you can redistribute 
+it and/or modify it under the terms of the GNU Lesser 
+General Public License as published by the Free Software
+Foundation; either version 2 of the License, 
+or (at your option) any later version.
+ 
+This program is distributed in the hope that it will be useful, 
+but WITHOUT ANY WARRANTY; without even the implied warranty of 
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. 
+See the GNU Lesser General Public License for
+more details.
+ 
+You should have received a copy of the GNU Lesser General 
+Public License along with this program; if not, write to
+the Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
+ 
+Linking Engine3 statically or dynamically with other modules 
+is making a combined work based on Engine3. 
+Thus, the terms and conditions of the GNU Lesser General Public License 
+cover the whole combination.
+ 
+In addition, as a special exception, the copyright holders of Engine3 
+give you permission to combine Engine3 program with free software 
+programs or libraries that are released under the GNU LGPL and with 
+code included in the standard release of Core3 under the GNU LGPL 
+license (or modified versions of such code, with unchanged license). 
+You may copy and distribute such a system following the terms of the 
+GNU LGPL for Engine3 and the licenses of the other code concerned, 
+provided that you include the source code of that other code when 
+and as the GNU LGPL requires distribution of source code.
+ 
+Note that people who make modified versions of Engine3 are not obligated 
+to grant this special exception for their modified versions; 
+it is their choice whether to do so. The GNU Lesser General Public License 
+gives permission to release a modified version without this exception; 
+this exception also makes it possible to release a modified version 
+which carries forward this exception.
+*/
+
+package server.zone.objects.player.sui.listbox;
+
+import engine.lua.LuaObject;
+import server.zone.objects.scene.SceneObject;
+import server.zone.objects.player.PlayerCreature;
+import engine.service.proto.BaseMessage;
+import server.zone.objects.player.sui.SuiBox;
+
+include server.zone.objects.player.sui.listbox.SuiListBoxMenuItem;
+include server.zone.packets.ui.SuiCreatePageMessage;
+
+class SuiListBox extends SuiBox {
+	@dereferenced
+	protected Vector<SuiListBoxMenuItem> menuItems;
+
+	protected int type;
+
+	private unsigned long next;
+	private unsigned long previous;
+	
+	public static final int MSGSELECTED = 0;
+	public static final int HANDLESINGLEBUTTON = 1;
+	public static final int HANDLETWOBUTTON = 2;
+	public static final int HANDLETHREEBUTTON = 3;
+	
+	public SuiListBox(PlayerCreature player, unsigned int windowType, unsigned int listBoxType = 0) {
+		super(player, windowType, SuiBox.LISTBOX);
+		
+		type = listBoxType;
+		
+		init();
+	}
+
+	public void init() {
+		next = 0;
+		previous = 0;
+	}
+
+	/**
+	 * Use to add Menu Item to the ListBox Sui class. List will be looped through in generateBody
+	 */
+	public void addMenuItem(final string name, unsigned long objectID = 0) {
+		SuiListBoxMenuItem item = new SuiListBoxMenuItem(name, objectID);
+		menuItems.add(item);
+	}
+
+	public string getMenuItemName(int index){
+		SuiListBoxMenuItem menuItem = menuItems.get(index);
+		
+		return menuItem.getOptionName();
+	}
+
+	/**
+	 * Clears all Menu Items from the list box
+	 * \warning If you are going to reuse the SuiBox object and call this method, you most likely need to call clearOptions() in SuiBoxImplementation
+	 */
+	public void removeAllMenuItems(){
+		menuItems.removeAll();
+	}
+
+	public unsigned long getMenuObjectID(unsigned int idx) {
+		if (idx < menuItems.size()) {
+			
+			SuiListBoxMenuItem menuItem = menuItems.get(idx);
+			
+			if (menuItem != null)
+				return menuItem.getObjectID();
+		}
+		
+		return 0;
+	}
+
+	public int getMenuSize() {
+		return menuItems.size();
+	}
+
+	public native BaseMessage generateMessage();
+
+	public void setNextBox(unsigned int boxID){
+		next = boxID;
+	}
+
+	public void setPreviousBox(unsigned int boxID){
+		previous = boxID;
+	}
+
+	public unsigned long getNextBox(){
+		return next;
+	}
+
+	public unsigned long getPreviousBox(){
+		return previous;
+	}
+	
+	public boolean isListBox() {
+		return true;
+	}
+}

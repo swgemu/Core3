@@ -1,0 +1,119 @@
+/*
+Copyright (C) 2007 <SWGEmu>
+
+This File is part of Core3.
+
+This program is free software; you can redistribute
+it and/or modify it under the terms of the GNU Lesser
+General Public License as published by the Free Software
+Foundation; either version 2 of the License,
+or (at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+See the GNU Lesser General Public License for
+more details.
+
+You should have received a copy of the GNU Lesser General
+Public License along with this program; if not, write to
+the Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
+
+Linking Engine3 statically or dynamically with other modules
+is making a combined work based on Engine3.
+Thus, the terms and conditions of the GNU Lesser General Public License
+cover the whole combination.
+
+In addition, as a special exception, the copyright holders of Engine3
+give you permission to combine Engine3 program with free software
+programs or libraries that are released under the GNU LGPL and with
+code included in the standard release of Core3 under the GNU LGPL
+license (or modified versions of such code, with unchanged license).
+You may copy and distribute such a system following the terms of the
+GNU LGPL for Engine3 and the licenses of the other code concerned,
+provided that you include the source code of that other code when
+and as the GNU LGPL requires distribution of source code.
+
+Note that people who make modified versions of Engine3 are not obligated
+to grant this special exception for their modified versions;
+it is their choice whether to do so. The GNU Lesser General Public License
+gives permission to release a modified version without this exception;
+this exception also makes it possible to release a modified version
+which carries forward this exception.
+ */
+
+package server.zone.managers.mission;
+
+import system.util.SortedVector;
+
+import server.zone.ZoneServer;
+import server.zone.ZoneProcessServer;
+import server.zone.objects.mission.MissionObject;
+import engine.util.Observer;
+import server.zone.objects.tangible.terminal.mission.MissionTerminal;
+import server.zone.objects.player.PlayerCreature;
+import server.zone.objects.region.Region;
+import server.zone.objects.scene.SceneObject;
+import server.zone.managers.stringid.StringIdManager;
+include server.zone.managers.mission.LairObjectsToSpawnMap;
+
+class MissionManager extends Observer implements Logger {
+	@weakReference
+	protected ZoneServer server;
+	transient ZoneProcessServer processor;
+	
+	@dereferenced
+	protected LairObjectsToSpawnMap lairObjectTemplatesToSpawn;
+	
+	@dereferenced
+	protected SortedVector<unsigned int> npcObjectTemplatesToSpawn;
+	
+	public static final unsigned int UNKNOWN_TARGET = 0xB911DA26;
+	
+	public MissionManager(ZoneServer srv, ZoneProcessServer impl) {
+		server = srv;
+		processor = impl;
+		Logger.setLoggingName("MissionManager");		
+
+		lairObjectTemplatesToSpawn.setNoDuplicateInsertPlan();
+		
+		loadLairObjectsToSpawn();
+		loadNpcObjectsToSpawn();
+	}
+	
+	public native void loadLairObjectsToSpawn();
+	public native void loadNpcObjectsToSpawn();
+	
+	public native void handleMissionListRequest(MissionTerminal missionTerminal, PlayerCreature player, int counter);
+	public native void handleMissionAccept(MissionTerminal missionTerminal, MissionObject mission, PlayerCreature player);
+	public native void handleMissionAbort(MissionObject mission, PlayerCreature player);
+	
+	public native void removeMission(MissionObject mission, PlayerCreature player);
+	
+	public native void populateMissionList(MissionTerminal missionTerminal, PlayerCreature player, int counter);
+	
+	public native void randomizeSurveyMission(PlayerCreature player, MissionObject mission);
+	public native void randomizeDestroyMission(PlayerCreature player, MissionObject mission);
+	public native void randomizeBountyMission(PlayerCreature player, MissionObject mission);
+	public native void randomizeDeliverMission(PlayerCreature player, MissionObject mission);
+	public native void randomizeCraftingMission(PlayerCreature player, MissionObject mission);
+	public native void randomizeEntertainerMission(PlayerCreature player, MissionObject mission);
+	public native void randomizeHuntingMission(PlayerCreature player, MissionObject mission);
+	public native void randomizeReconMission(PlayerCreature player, MissionObject mission);
+	public native void randomizeImperialDestroyMission(PlayerCreature player, MissionObject mission);
+	public native void randomizeImperialDeliverMission(PlayerCreature player, MissionObject mission);
+	public native void randomizeRebelDestroyMission(PlayerCreature player, MissionObject mission);
+	public native void randomizeRebelDeliverMission(PlayerCreature player, MissionObject mission);
+
+	
+	public native void createMissionObjectives(MissionObject mission, MissionTerminal missionTerminal, PlayerCreature player);
+	public native void createSurveyMissionObjectives(MissionObject mission, MissionTerminal missionTerminal, PlayerCreature player);
+	public native void createDestroyMissionObjectives(MissionObject mission, MissionTerminal missionTerminal, PlayerCreature player);
+	public native void createDeliverMissionObjectives(MissionObject mission, MissionTerminal missionTerminal, PlayerCreature player);
+	public native void createEntertainerMissionObjectives(MissionObject mission, MissionTerminal missionTerminal, PlayerCreature player);
+	public native void createHuntingMissionObjectives(MissionObject mission, MissionTerminal missionTerminal, PlayerCreature player);
+	public native void createReconMissionObjectives(MissionObject mission, MissionTerminal missionTerminal, PlayerCreature player);
+	public native void createBountyMissionObjectives(MissionObject mission, MissionTerminal missionTerminal, PlayerCreature player);
+	
+	public native boolean hasSurveyMission(PlayerCreature player, final string spawn);
+}

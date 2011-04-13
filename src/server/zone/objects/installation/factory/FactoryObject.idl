@@ -1,0 +1,122 @@
+package server.zone.objects.installation.factory;
+
+import server.zone.objects.installation.InstallationObject;
+import server.zone.objects.manufactureschematic.ManufactureSchematic;
+import server.zone.objects.factorycrate.FactoryCrate;
+import server.zone.objects.tangible.TangibleObject;
+import server.zone.objects.area.ActiveArea;
+include server.zone.objects.manufactureschematic.factoryblueprint.BlueprintEntry;
+
+class FactoryObject extends InstallationObject {
+
+	@dereferenced
+	protected Vector<int> craftingTabsSupported;
+	
+	protected int timer;
+	
+	protected string currentUserName;
+	protected int currentRunCount;
+	
+	public FactoryObject() {
+		Logger.setLoggingName("FactoryObject");
+	}
+	
+	@local
+	public native void loadTemplateData(SharedObjectTemplate templateData);
+	
+	public native void initializeTransientMembers();
+	
+	/**
+	 * Gets called when this objects is loaded from database
+	 * @pre { this locked }
+	 * @post { this locked }
+	 */
+	public void notifyLoadFromDatabase() {
+		super.notifyLoadFromDatabase();
+		
+		if (super.operating) {
+			startFactory();
+		}
+	}
+	
+	/**
+	 * Fills the attribute list message options that are sent to player creature
+	 * @pre { }
+	 * @post { }
+	 * @param msg attribute list message with the attributes
+	 * @param object player creature to which the message is sent
+	 */
+	@local
+	public native void fillAttributeList(AttributeListMessage msg, PlayerCreature object);
+	
+	/**
+	 * Fills the radial options, needs to be overriden
+	 * @pre { this object is locked }
+	 * @post { this object is locked, menuResponse is complete}
+	 * @param menuResponse ObjectMenuResponse that will be sent to the client
+	 */
+	@local
+	public native void fillObjectMenuResponse(ObjectMenuResponse menuResponse, PlayerCreature player);
+	
+	/**
+	 * Handles the radial selection sent by the client, must be overriden by inherited objects
+	 * @pre { this object is locked, player is locked }
+	 * @post { this object is locked, player is locked }
+	 * @param player PlayerCreature that selected the option
+	 * @param selectedID selected menu id
+	 * @returns 0 if successfull
+	 */
+	public native int handleObjectMenuSelect(PlayerCreature player, byte selectedID);
+	
+	public boolean isFactory() {
+		return true;
+	}
+	
+	/**
+	 * Handles creating the hoppers
+	 */
+	public native void createChildObjects();
+
+	public native void updateInstallationWork();
+
+	/**
+	 * Handles sending the SUI full of manufacturing schematics
+	 * that will work in this station
+	 */
+	public native void sendInsertManuSui(PlayerCreature player);
+	
+	public native void sendIngredientsNeededSui(PlayerCreature player);
+	
+	public native void sendIngredientHopper(PlayerCreature player);
+	
+	public native void sendOutputHopper(PlayerCreature player);
+	/**
+	 * Handles inputting the schematic to the 
+	 * factory
+	 */
+	public native void handleInsertFactorySchem(PlayerCreature player, ManufactureSchematic schematic);
+	
+	/**
+	 * Handles inputting the schematic to the 
+	 * factory
+	 */
+	public native void handleRemoveFactorySchem(PlayerCreature player);
+
+	public native void handleOperateToggle(PlayerCreature player);
+	
+	private native boolean startFactory(); 
+	
+	private native void stopFactory(final string message, final string tt, final string to, final int di);
+
+	private native void stopFactory(string type, string displayedName);
+	
+	public native void createNewObject();
+	
+	private native FactoryCrate locateCrateInOutputHopper(TangibleObject prototype);
+
+	private native FactoryCrate createNewFactoryCrate(TangibleObject prototype);
+
+	private native boolean populateSchematicBlueprint(ManufactureSchematic schematic);
+
+	private native void collectMatchesInInputHopper(BlueprintEntry entry, SceneObject inputHopper);
+}

@@ -1,0 +1,202 @@
+/*
+Copyright (C) 2007 <SWGEmu>
+ 
+This File is part of Core3.
+ 
+This program is free software; you can redistribute 
+it and/or modify it under the terms of the GNU Lesser 
+General Public License as published by the Free Software
+Foundation; either version 2 of the License, 
+or (at your option) any later version.
+ 
+This program is distributed in the hope that it will be useful, 
+but WITHOUT ANY WARRANTY; without even the implied warranty of 
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. 
+See the GNU Lesser General Public License for
+more details.
+ 
+You should have received a copy of the GNU Lesser General 
+Public License along with this program; if not, write to
+the Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
+ 
+Linking Engine3 statically or dynamically with other modules 
+is making a combined work based on Engine3. 
+Thus, the terms and conditions of the GNU Lesser General Public License 
+cover the whole combination.
+ 
+In addition, as a special exception, the copyright holders of Engine3 
+give you permission to combine Engine3 program with free software 
+programs or libraries that are released under the GNU LGPL and with 
+code included in the standard release of Core3 under the GNU LGPL 
+license (or modified versions of such code, with unchanged license). 
+You may copy and distribute such a system following the terms of the 
+GNU LGPL for Engine3 and the licenses of the other code concerned, 
+provided that you include the source code of that other code when 
+and as the GNU LGPL requires distribution of source code.
+ 
+Note that people who make modified versions of Engine3 are not obligated 
+to grant this special exception for their modified versions; 
+it is their choice whether to do so. The GNU Lesser General Public License 
+gives permission to release a modified version without this exception; 
+this exception also makes it possible to release a modified version 
+which carries forward this exception.
+*/
+
+package server.zone;
+
+import engine.util.u3d.QuadTree;
+import engine.util.u3d.QuadTreeEntry;
+
+import system.lang.Time;
+import engine.core.TaskManager;
+import engine.core.ManagedObject;
+
+import server.zone.ZoneProcessServer;
+include server.zone.ZoneServer;
+import server.zone.managers.structure.StructureManager;
+import server.zone.objects.scene.SceneObject;
+import server.zone.objects.area.ActiveArea;
+import server.zone.managers.planet.PlanetManager;
+import server.zone.managers.city.CityManager;
+import server.zone.managers.creature.CreatureManager;
+import server.zone.managers.objectcontroller.ObjectController;
+import system.util.VectorMap;
+import system.util.SortedVector;
+
+
+include server.zone.managers.planet.HeightMap;
+include server.zone.managers.object.ObjectMap;
+include server.zone.managers.planet.MapLocationTable;
+include engine.util.u3d.Vector3;
+
+import system.lang.System;
+import server.zone.objects.building.cloning.CloningBuildingObject;
+import server.zone.objects.creature.CreatureObject;
+
+class Zone extends ManagedObject implements QuadTree {
+	private int zoneID;
+
+	private transient ZoneProcessServer processor;
+
+	@dereferenced
+	private ObjectMap objectMap;
+	
+	//private StructureManager structureManager; // move to planet manager when converted
+	
+	private PlanetManager planetManager;
+	
+	private CityManager cityManager;
+	
+	private CreatureManager creatureManager;
+	
+	@weakReference
+	private ZoneServer server;
+	
+	private transient QuadTree regionTree;
+
+	@dereferenced
+	private Time galacticTime;
+	
+	private transient HeightMap heightMap;
+	
+	@dereferenced
+	private transient MapLocationTable mapLocations;
+	
+	private boolean managersStarted;
+	
+	public native Zone(ZoneProcessServer processor, int zoneid);
+	public native void initializeTransientMembers();
+	public native void finalize();
+	
+	public native CloningBuildingObject getNearestCloningBuilding(CreatureObject creature);
+	
+	public native SceneObject getNearestPlanetaryObject(SceneObject object, unsigned int mapObjectLocationType);
+	
+	public native void initializePrivateData();
+	
+	@local
+	public QuadTree getRegionTree() {
+		return regionTree;
+	}
+	
+	@local
+	public native int getInRangeObjects(float x, float y, float range, SortedVector<SceneObject> objects);
+	
+	@local
+	public native int getInRangeActiveAreas(float x, float y, float range, SortedVector<ActiveArea> objects);
+	
+	@local
+	@dereferenced
+	public native SortedVector<SceneObject> getPlanetaryObjectList(unsigned int mapObjectLocationType);
+	
+	@local
+	public native void insert(QuadTreeEntry entry);
+	
+	@local
+	public native void remove(QuadTreeEntry entry);
+	
+	@local
+	public native void update(QuadTreeEntry entry);
+
+	@local
+	public native void inRange(QuadTreeEntry entry, float range);
+	
+	public native void updateActiveAreas(SceneObject object);
+
+	public native void startManagers();
+
+	public native void stopManagers();
+	
+	public native float getHeight(float x, float y);
+
+	public native void addSceneObject(SceneObject object);
+	
+	public native void sendMapLocationsTo(final string planetName, SceneObject player);
+	
+	public native void dropSceneObject(SceneObject object);
+	
+	//public native void registerPlanetaryMapObject(SceneObject object);
+	//public native void unregisterPlanetaryMapObject(SceneObject object);
+
+	// setters and getters
+	public int getZoneID() {
+		return zoneID;
+	}
+	
+	public native string getPlanetName();
+	
+	//public native SceneObject lookupObject(unsigned long objectID);
+	
+	public PlanetManager getPlanetManager() {
+		return planetManager;
+	}
+	
+	public CityManager getCityManager() {
+		return cityManager;
+	}
+
+	public ZoneServer getZoneServer() {
+		return server;
+	}
+	
+	public CreatureManager getCreatureManager() {
+		return creatureManager;
+	}
+	
+	public unsigned long getGalacticTime() {
+		return galacticTime.miliDifference() / 1000;
+	}
+
+	public boolean hasManagersStarted() {
+		return managersStarted;
+	}
+	
+	/**
+	 * Functions to return the size of the
+	 * trn file
+	 */
+	public native float getMinX();	
+	public native float getMaxX();
+	public native float getMinY();
+	public native float getMaxY();
+}

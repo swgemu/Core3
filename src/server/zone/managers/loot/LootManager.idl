@@ -1,0 +1,103 @@
+/*
+Copyright (C) 2007 <SWGEmu>
+
+This File is part of Core3.
+
+This program is free software; you can redistribute
+it and/or modify it under the terms of the GNU Lesser
+General Public License as published by the Free Software
+Foundation; either version 2 of the License,
+or (at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+See the GNU Lesser General Public License for
+more details.
+
+You should have received a copy of the GNU Lesser General
+Public License along with this program; if not, write to
+the Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
+
+Linking Engine3 statically or dynamically with other modules
+is making a combined work based on Engine3.
+Thus, the terms and conditions of the GNU Lesser General Public License
+cover the whole combination.
+
+In addition, as a special exception, the copyright holders of Engine3
+give you permission to combine Engine3 program with free software
+programs or libraries that are released under the GNU LGPL and with
+code included in the standard release of Core3 under the GNU LGPL
+license (or modified versions of such code, with unchanged license).
+You may copy and distribute such a system following the terms of the
+GNU LGPL for Engine3 and the licenses of the other code concerned,
+provided that you include the source code of that other code when
+and as the GNU LGPL requires distribution of source code.
+
+Note that people who make modified versions of Engine3 are not obligated
+to grant this special exception for their modified versions;
+it is their choice whether to do so. The GNU Lesser General Public License
+gives permission to release a modified version without this exception;
+this exception also makes it possible to release a modified version
+which carries forward this exception.
+*/
+
+package server.zone.managers.loot;
+
+import system.lang.ref.Reference;
+import system.util.VectorMap;
+import engine.lua.Lua;
+
+import server.zone.Zone;
+import server.zone.objects.scene.SceneObject;
+import server.zone.objects.player.PlayerCreature;
+import server.zone.managers.ZoneManager;
+import server.zone.managers.crafting.CraftingManager;
+import server.zone.managers.loot.lootgroup.LootGroupObject;
+import server.zone.managers.loot.lootgroup.LootObject;
+
+class LootManager extends ZoneManager {
+	private transient CraftingManager craftingManager;
+	
+	public static final unsigned int FORAGEGENERAL = 4;
+	public static final unsigned int MEDICALFORAGEBASIC = 5;
+	public static final unsigned int MEDICALFORAGEADVANCED = 6;
+	public static final unsigned int MEDICALFORAGEEXCEPTIONAL = 7;
+	public static final unsigned int FORAGEBAIT = 8;
+	public static final unsigned int FORAGERARE = 9;
+	public static final unsigned int FISHING = 13;
+	public static final unsigned int FISHINGRARE = 14;
+	
+	@dereferenced
+	protected VectorMap<unsigned int, LootGroupObject> lootGroups;
+	
+	public LootManager(CraftingManager craftman) {
+		super("LootManager");
+		
+		lootGroups.setNullValue(null);
+		lootGroups.setNoDuplicateInsertPlan();
+
+		craftingManager = craftman;
+	}
+	
+	public native void initialize();
+	
+	@local
+	protected native LootGroupObject createLootGroup(unsigned int lootGroup);
+	
+	public boolean contains(unsigned int lootGroup) {
+		return (lootGroups.contains(lootGroup));
+	}
+	
+	public native void createLoot(PlayerCreature receiver, SceneObject container, int level, unsigned int lootGroup, int objectCount = 0);
+	
+	@local
+	public native void createLoot(PlayerCreature receiver, SceneObject container, int level, Vector<unsigned int> lootGroup);
+	
+	protected native boolean attachLoot(PlayerCreature receiver, LootObject loot, SceneObject container, int objectCount = 0);
+	
+	/*
+	 * @TODO: Remove this
+	 */
+	public native void testLoot(PlayerCreature receiver, SceneObject container);
+}

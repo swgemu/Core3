@@ -1,0 +1,5 @@
+object_resource_container_bottle_water = object_resource_container_shared_resource_container_inorganic_bottle_water:new {
+	
+}
+
+ObjectTemplates:addTemplate(object_resource_container_bottle_water, "object/resource_container/bottle_water.iff")

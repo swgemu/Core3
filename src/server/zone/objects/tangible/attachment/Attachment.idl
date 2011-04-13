@@ -1,0 +1,197 @@
+/*
+Copyright (C) 2007 <SWGEmu>
+ 
+This File is part of Core3.
+ 
+This program is free software; you can redistribute 
+it and/or modify it under the terms of the GNU Lesser 
+General Public License as published by the Free Software
+Foundation; either version 2 of the License, 
+or (at your option) any later version.
+ 
+This program is distributed in the hope that it will be useful, 
+but WITHOUT ANY WARRANTY; without even the implied warranty of 
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. 
+See the GNU Lesser General Public License for
+more details.
+ 
+You should have received a copy of the GNU Lesser General 
+Public License along with this program; if not, write to
+the Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
+ 
+Linking Engine3 statically or dynamically with other modules 
+is making a combined work based on Engine3. 
+Thus, the terms and conditions of the GNU Lesser General Public License 
+cover the whole combination.
+ 
+In addition, as a special exception, the copyright holders of Engine3 
+give you permission to combine Engine3 program with free software 
+programs or libraries that are released under the GNU LGPL and with 
+code included in the standard release of Core3 under the GNU LGPL 
+license (or modified versions of such code, with unchanged license). 
+You may copy and distribute such a system following the terms of the 
+GNU LGPL for Engine3 and the licenses of the other code concerned, 
+provided that you include the source code of that other code when 
+and as the GNU LGPL requires distribution of source code.
+ 
+Note that people who make modified versions of Engine3 are not obligated 
+to grant this special exception for their modified versions; 
+it is their choice whether to do so. The GNU Lesser General Public License 
+gives permission to release a modified version without this exception; 
+this exception also makes it possible to release a modified version 
+which carries forward this exception.
+*/
+
+package server.zone.objects.tangible.attachement;
+
+import server.zone.objects.tangible.TangibleObject;
+import engine.lua.LuaObject;
+import server.zone.packets.object.ObjectMenuResponse;
+import server.zone.objects.scene.SceneObject;
+import server.zone.objects.player.PlayerCreature;
+import server.zone.templates.SharedObjectTemplate;
+import server.zone.packets.scene.AttributeListMessage;
+include server.zone.objects.tangible.wearables.WearableSkillModMap;
+include server.zone.objects.tangible.wearables.WearableSkillMods;
+include server.zone.packets.scene.AttributeListMessage;
+import server.zone.Zone;
+import system.util.VectorMap;
+
+class Attachment extends TangibleObject {
+
+	protected int maxModifiers;
+
+	protected int attachmentType;
+
+	@dereferenced
+	protected VectorMap<string, int> skillModMap;
+
+	protected WearableSkillMods wearableSkillMods;
+
+	protected static final int CLOTHINGTYPE = 1;
+	protected static final int ARMORTYPE = 2;
+	
+	public Attachment() {
+		Logger.setLoggingName("Attachment");
+
+		skillModMap.setNullValue(null);
+		skillModMap.setNoDuplicateInsertPlan();
+				
+		generateSkillMods();
+
+	}
+
+	public native void initializeTransientMembers();
+
+	public native void initializeMembers();
+
+	/**
+	 * Reads and sets the template data from a SharedTangibleObjectTemplate LuaObject
+	 * @pre { templateData is a valid pointer }
+	 * @post { TangibleObject members are initialized }
+	 * @param templateData templateData points to the SharedTangibleObjectTemplate LuaObject that is used to initialize the TangibleObject members
+	 */
+	@local
+	public void loadTemplateData(SharedObjectTemplate templateData) {
+		super.loadTemplateData(templateData);
+		
+		initializeMembers();
+	}
+	
+	/**
+	 * Fills the attribute list message options that are sent to player creature
+	 * @pre { }
+	 * @post { }
+	 * @param msg attribute list message with the attributes
+	 * @param object player creature to which the message is sent
+	 */
+	@local
+	public native void fillAttributeList(AttributeListMessage msg, PlayerCreature object);
+
+	/**
+	 * Sets the ammount of Skill Mods on the attachment
+	 * @pre { }
+	 * @post { }
+	 * @param modCount number of Skill Mods
+	 */
+	public void setSkillModCount(int modCount) {
+		maxModifiers = modCount;
+	}
+
+	/**
+	 * Returns the Count of Skill Mod
+	 * @pre { }
+	 * @post { }
+	 */
+	public int getSkillModCount() {
+		return skillModMap.size();
+	}
+
+	/**
+	 * Returns the Name of Skill Mod at a index
+	 * @pre { }
+	 * @post { }
+	 * @param idx index of the Skill Mod
+	 */
+	public native string getSkillModName(int idx);
+
+	/**
+	 * Returns the Value of Skill Mod at a index
+	 * @pre { }
+	 * @post { }
+	 * @param idx index of the Skill Mod
+	 */
+	public native int getSkillModValue(int idx);
+
+	public int getSkillModValue(string name) {
+		return skillModMap.get(name);
+	}
+
+	
+	public native void parseSkillModAttributeString(string attr);
+
+	/**
+	 * Adds a Skill Mod with a certain value
+	 * @pre { }
+	 * @post { }
+	 * @param skillModType name of the skill mod
+	 * @param skillModValue value of the skill mod
+	 */	
+	public native void addSkillMod(final string skillModType, int skillModValue);
+	
+	/**
+	 * Removes the attachment from the player's inventory
+	 * @pre { }
+	 * @post { }
+	 * @param player The player to remove the attachment from
+	 */
+	public native boolean removeAttachment(PlayerCreature player);
+
+	/**
+	 * Generates random skill mods
+	 * @pre { }
+	 * @post { }
+	 */
+	public native void generateSkillMods();
+
+	/**
+	 * Generates random skill mods value based on on luck and creature level
+	 * @pre { }
+	 * @post { }
+	 * @param luck Players skill mod luck value
+	 * @param creatureLevel the level of the creature in which dropped this attachment
+	 */
+	public native int getRandomModValue(int luck, int creatureLevel);
+	
+	public boolean isAttachment() {
+		return true; 
+	}        
+
+	public boolean isArmorAttachment() {
+		return super.gameObjectType == super.ARMORATTACHMENT;
+	}          
+
+	public boolean isClothingAttachment() {
+		return super.gameObjectType == super.CLOTHINGATTACHMENT;
+	}                                                       
+}

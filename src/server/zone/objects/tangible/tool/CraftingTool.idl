@@ -1,0 +1,226 @@
+/*
+Copyright (C) 2007 <SWGEmu>
+
+This File is part of Core3.
+
+This program is free software; you can redistribute
+it and/or modify it under the terms of the GNU Lesser
+General Public License as published by the Free Software
+Foundation; either version 2 of the License,
+or (at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+See the GNU Lesser General Public License for
+more details.
+
+You should have received a copy of the GNU Lesser General
+Public License along with this program; if not, write to
+the Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
+
+Linking Engine3 statically or dynamically with other modules
+is making a combined work based on Engine3.
+Thus, the terms and conditions of the GNU Lesser General Public License
+cover the whole combination.
+
+In addition, as a special exception, the copyright holders of Engine3
+give you permission to combine Engine3 program with free software
+programs or libraries that are released under the GNU LGPL and with
+code included in the standard release of Core3 under the GNU LGPL
+license (or modified versions of such code, with unchanged license).
+You may copy and distribute such a system following the terms of the
+GNU LGPL for Engine3 and the licenses of the other code concerned,
+provided that you include the source code of that other code when
+and as the GNU LGPL requires distribution of source code.
+
+Note that people who make modified versions of Engine3 are not obligated
+to grant this special exception for their modified versions;
+it is their choice whether to do so. The GNU Lesser General Public License
+gives permission to release a modified version without this exception;
+this exception also makes it possible to release a modified version
+which carries forward this exception.
+*/
+
+package server.zone.objects.tangible.tool;
+
+
+import engine.lua.LuaObject;
+import server.zone.objects.scene.SceneObject;
+import server.zone.objects.draftschematic.DraftSchematic;
+include server.zone.objects.tangible.tool.CraftingStation;
+import server.zone.packets.object.ObjectMenuResponse;
+import server.zone.managers.crafting.CraftingManager;
+import server.zone.objects.manufactureschematic.ManufactureSchematic;
+import server.zone.objects.tangible.tool.ToolTangibleObject;
+import server.zone.objects.area.ActiveArea;
+import server.zone.packets.scene.AttributeListMessage;
+import server.zone.objects.player.PlayerCreature;
+include server.zone.objects.manufactureschematic.craftingvalues.CraftingValues;
+import system.util.Vector;
+import server.zone.templates.SharedObjectTemplate;
+
+class CraftingTool extends ToolTangibleObject {
+	
+	protected int type;
+	protected float effectiveness;
+	protected string status;
+	protected int complexityLevel;
+	
+	protected CraftingManager craftingManager;
+	
+	@dereferenced
+	protected Vector<unsigned int> enabledTabs;
+	
+	@dereferenced
+	protected Vector<DraftSchematic> currentSchematicList;
+
+	protected CraftingStation craftingStation;
+	
+	protected int state;
+	protected transient int insertCounter;
+	
+	protected transient int experimentationPointsTotal;
+	protected transient int experimentationPointsUsed;
+	
+	protected transient int assemblyResult;
+	protected transient int experimentationResult;
+
+	protected transient unsigned long lastExperimentationTimestamp;
+
+	public static final int CLOTHING = 1; // Clothing and Armor Crafting Tool
+	public static final int FOOD = 2; // Food and Chemical Crafting Tool
+	public static final int GENERIC = 3; // Generic Crafting Tool
+	public static final int JEDI = 4; // Lightsaber Crafting Tool
+	public static final int SPACE = 5; // Starship Crafting Tool
+	public static final int STRUCTURE = 6; // Structure and Furniture Crafting Tool
+	public static final int WEAPON = 7; // Weapon Droid and General Item Crafting Tool
+	
+	public CraftingTool() {
+		Logger.setLoggingName("CraftingTool");
+		status = "@crafting:tool_status_ready";
+		state = 1;
+		effectiveness = -15;
+	}
+	
+	public void initializeTransientMembers() {
+		super.initializeTransientMembers();
+		lastExperimentationTimestamp = 0;
+	}
+	
+	@local
+	public native void loadTemplateData(SharedObjectTemplate templateData);
+	
+	@local
+	public native void fillObjectMenuResponse(ObjectMenuResponse menuResponse, PlayerCreature player);
+	
+	/**
+	 * Handles the radial selection sent by the client
+	 * @pre { this object is locked, player is locked }
+	 * @post { this object is locked, player is locked }
+	 * @returns 0 if successfull
+	 */
+	public native int handleObjectMenuSelect(PlayerCreature player, byte selectedID);
+	
+	/**
+	 * Fills the attribute list message options that are sent to player creature
+	 * @pre { }
+	 * @post { }
+	 * @param msg attribute list message with the attributes
+	 * @param object player creature to which the message is sent
+	 */
+	@local
+	public native void fillAttributeList(AttributeListMessage msg, PlayerCreature object);
+	
+	public native void updateCraftingValues(ManufactureSchematic schematic);
+	
+	public boolean isCraftingTool() {
+		return true;
+	}
+	
+	public boolean isReady() {
+		return status == "@crafting:tool_status_ready";
+	}
+	
+	public int getToolType() {
+		return type;
+	}
+	
+	public native TangibleObject getPrototype();
+	
+	public ManufactureSchematic getManufactureSchematic() {
+		return (ManufactureSchematic)getSlottedObject("test_manf_schematic");
+	}
+	
+	@local
+	public native Vector<unsigned int> getToolTabs();
+	
+	public native void requestCraftingSession(PlayerCreature player, CraftingStation craftingStation = null);
+	
+	private native void sendStart(PlayerCreature player);
+	
+	private native void sendToolStartFailure(PlayerCreature player);
+	
+	public native void cancelCraftingSession(PlayerCreature player);
+	
+	public native void clearCraftingSession();
+	
+	private native void closeCraftingWindow(PlayerCreature player, int clientCounter);
+	
+	private native void locateCraftingStation(PlayerCreature player, int toolType);
+
+	public native void selectDraftSchematic(PlayerCreature player, int index);
+	
+	public native boolean createSessionObjects(PlayerCreature player, DraftSchematic draftschematic);
+	
+	public native boolean createManufactureSchematic(PlayerCreature player, DraftSchematic draftschematic);
+	
+	public native boolean createPrototype(PlayerCreature player, DraftSchematic draftschematic);
+
+	public native void synchronizedUIListenForSchematic(PlayerCreature player);
+	
+	public native void addIngredient(PlayerCreature player, TangibleObject tano, int slot, int clientCounter);
+	
+	private native void sendIngredientAddSuccess(PlayerCreature player, int slot, int clientCounter);
+	
+	public native void removeIngredient(PlayerCreature player, TangibleObject tano, int slot, int clientCounter);
+	
+	private native void sendIngredientRemoveSuccess(PlayerCreature player, int slot, int clientCounter);
+	
+	private native void sendSlotMessage(PlayerCreature player, int clientCounter, int message);
+	
+	public native void nextCraftingStage(PlayerCreature player, int clientCounter);
+
+	private native void initialAssembly(PlayerCreature player, int counter);
+	
+	private native void finishAssembly(PlayerCreature player, int clientCounter);
+
+	public native void experiment(PlayerCreature player, int numRowsAttempted, string expString, int clientCounter);
+
+	@local
+	private native void experimentRow(CraftingValues craftingValues, int rowEffected, int pointsAttempted, 
+			float failure);
+	
+	public native void customization(PlayerCreature player, string name, int schematicCount, string customization);
+
+	private native void finishStage1(PlayerCreature player, int clientCounter);
+	
+	private native void finishStage2(PlayerCreature player, int clientCounter);
+
+	public native void createPrototype(PlayerCreature player, int clientCounter, int practice);
+
+	public native void createManfSchematic(PlayerCreature player, int clientCounter);
+	
+	public native void createObject(PlayerCreature player, int timer, boolean create);
+	
+	public native void depositObject(PlayerCreature player, boolean practice);
+
+	public unsigned long getLastExperimentationTimestamp() {
+		return lastExperimentationTimestamp;
+	}
+	
+	public int getExperimentationResult() {
+		return experimentationResult;
+	}
+
+}

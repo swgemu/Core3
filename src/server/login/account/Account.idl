@@ -1,0 +1,101 @@
+package server.login.account;
+
+import engine.core.ManagedObject;
+import engine.log.Logger;
+import server.login.account.AccountManager;
+import server.zone.ZoneClientSession;
+import system.util.VectorMap;
+import system.lang.Time;
+import system.lang.System;
+
+class Account extends ManagedObject implements Logger {
+	@dereferenced
+	protected VectorMap<unsigned int, ZoneClientSession> zoneSessions;
+	
+	protected transient AccountManager accountManager;
+	
+	protected string username;
+	
+	protected unsigned int accountID;
+	protected unsigned int stationID;
+	protected unsigned int adminLevel;
+	protected unsigned int created;
+	
+	public Account(AccountManager accManage, final string usern, unsigned int accountid, unsigned int stationid) {
+		username = usern;
+		accountID = accountid;
+		stationID = stationid;
+		
+		accountManager = accManage;
+		
+		adminLevel = 0;
+		
+		created = System.getTime();
+		
+		zoneSessions.setInsertPlan(2); //NO_DUPLICATE
+		zoneSessions.setNullValue(null);
+	}
+	
+	public boolean hasMaxOnlineCharacters() {
+		return zoneSessions.size() + 1 > accountManager.getMaxOnlineCharacters();
+	}
+	
+	public ZoneClientSession getZoneSession(unsigned int sessionID) {
+		return zoneSessions.get(sessionID);
+	}
+	
+	public boolean containsZoneSession(unsigned int sessionID) {
+		return zoneSessions.contains(sessionID);
+	}
+	
+	public void addZoneSession(ZoneClientSession client) {
+		zoneSessions.put(client.getSessionID(), client);
+	}
+	
+	public void removeZoneSession(unsigned int sessionID) {
+		zoneSessions.drop(sessionID);
+		
+		if (zoneSessions.size() < 1)
+			accountManager.dropAccount(accountID);
+	}
+	
+	public void setAccountID(unsigned int accountid) {
+		accountID = accountid;
+	}
+	
+	public void setStationID(unsigned int stationid) {
+		stationID = stationid;
+	}
+	
+	public void setAdminLevel(unsigned int adminlvl) {
+		adminLevel = adminlvl;
+	}
+	
+	public void setUsername(final string usern) {
+		username = usern;
+	}
+	
+	public void setTimeCreated(unsigned int seconds) {
+		created = seconds;
+	}
+	
+	public unsigned int getAccountID() {
+		return accountID;
+	}
+	
+	public unsigned int getStationID() {
+		return stationID;
+	}
+	
+	public unsigned int getAdminLevel() {
+		return adminLevel;
+	}
+	
+	public string getUsername() {
+		return username;
+	}
+
+	public unsigned int getTimeCreated() {
+		return created;
+	}
+}

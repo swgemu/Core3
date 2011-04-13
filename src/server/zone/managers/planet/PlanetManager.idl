@@ -1,0 +1,292 @@
+/*
+Copyright (C) 2007 <SWGEmu>
+ 
+This File is part of Core3.
+ 
+This program is free software; you can redistribute 
+it and/or modify it under the terms of the GNU Lesser 
+General Public License as published by the Free Software
+Foundation; either version 2 of the License, 
+or (at your option) any later version.
+ 
+This program is distributed in the hope that it will be useful, 
+but WITHOUT ANY WARRANTY; without even the implied warranty of 
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. 
+See the GNU Lesser General Public License for
+more details.
+ 
+You should have received a copy of the GNU Lesser General 
+Public License along with this program; if not, write to
+the Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
+ 
+Linking Engine3 statically or dynamically with other modules 
+is making a combined work based on Engine3. 
+Thus, the terms and conditions of the GNU Lesser General Public License 
+cover the whole combination.
+ 
+In addition, as a special exception, the copyright holders of Engine3 
+give you permission to combine Engine3 program with free software 
+programs or libraries that are released under the GNU LGPL and with 
+code included in the standard release of Core3 under the GNU LGPL 
+license (or modified versions of such code, with unchanged license). 
+You may copy and distribute such a system following the terms of the 
+GNU LGPL for Engine3 and the licenses of the other code concerned, 
+provided that you include the source code of that other code when 
+and as the GNU LGPL requires distribution of source code.
+ 
+Note that people who make modified versions of Engine3 are not obligated 
+to grant this special exception for their modified versions; 
+it is their choice whether to do so. The GNU Lesser General Public License 
+gives permission to release a modified version without this exception; 
+this exception also makes it possible to release a modified version 
+which carries forward this exception.
+*/
+
+package server.zone.managers.planet;
+
+import engine.core.ManagedService;
+
+import server.zone.Zone;
+import server.zone.ZoneProcessServer;
+import engine.log.Logger;
+import server.zone.objects.building.BuildingObject;
+import system.thread.Thread;
+import system.util.SortedVector;
+import system.util.VectorMap;
+import server.zone.objects.scene.variables.StringId;
+import server.zone.managers.structure.StructureManager;
+import server.zone.managers.weather.WeatherManager;
+import server.zone.managers.objectcontroller.ObjectController;
+import server.zone.objects.creature.shuttle.ShuttleCreature;
+import server.zone.objects.player.PlayerCreature;
+import server.zone.objects.scene.SceneObject;
+include server.zone.objects.region.Region;
+include server.zone.managers.planet.RegionMap;
+include server.zone.objects.terrain.PlanetNames;
+include server.zone.managers.terrain.TerrainManager;
+include server.zone.managers.planet.ShuttleMap;
+include server.zone.managers.planet.NoBuildAreaMap;
+include server.zone.managers.planet.MissionTargetMap;
+include server.zone.managers.planet.HuntingTargetMap;
+include server.zone.managers.planet.HuntingTargetEntry;
+import system.util.Vector;
+
+include server.zone.templates.snapshot.WorldSnapshotNode;
+include server.zone.templates.snapshot.WorldSnapshotIff;
+
+class PlanetManager extends ManagedService implements Logger {
+	@weakReference
+	protected Zone zone;
+	
+	@dereferenced
+	protected RegionMap regionMap;
+	
+	@dereferenced
+	protected VectorMap<string, int> travelFares;
+	
+	protected StructureManager structureManager;
+
+	protected WeatherManager weatherManager;
+	
+	protected int numberOfCities;
+		
+	protected transient ZoneProcessServer server;
+	protected transient TerrainManager terrainManager;
+	
+	@dereferenced
+	protected transient ShuttleMap shuttleMap;
+	
+	@dereferenced
+	protected transient NoBuildAreaMap noBuildAreaMap;
+	
+	@dereferenced
+	protected transient MissionTargetMap missionNpcs;
+	
+	@dereferenced
+	protected transient MissionTargetMap performanceLocations;
+	
+	@dereferenced
+	protected transient HuntingTargetMap huntingTargets;
+	
+	@dereferenced
+	protected transient MissionTargetMap reconLocs;
+	
+	@dereferenced
+	protected transient MissionTargetMap informants;
+
+	
+	public PlanetManager(Zone planet, ZoneProcessServer srv) {
+		zone = planet;
+		server = srv;
+				
+		Logger.setLoggingName("PlanetManager " + zone.getPlanetName());
+		Logger.setLogging(false);
+		Logger.setGlobalLogging(true);
+		
+		terrainManager = null;
+		
+		numberOfCities = 0;
+		
+		structureManager = null;
+
+		weatherManager = null;
+		
+		travelFares.setNullValue(0);
+		travelFares.setNoDuplicateInsertPlan();
+	}
+	
+	@local
+	private native void loadSnapshotObject(WorldSnapshotNode node, WorldSnapshotIff wsiff, @dereferenced int totalObjects);
+	private native void loadSnapshotObjects();
+	private native void loadTravelFares();
+	
+	private native void loadLuaConfig();
+	
+	public native void initializeTransientMembers();
+	
+	public native void finalize();
+	
+	public native void initialize();
+	public native void loadRegions();
+	public native void loadPlayerRegions();
+	public native void loadNoBuildAreas();
+	public native void loadShuttles();
+	public native void loadBadgeAreas();
+	public native void loadPerformanceLocations();
+	public native void loadHuntingTargets();
+	public native void loadReconLocations();
+	protected native void loadStaticTangibleObjects();
+	
+	public synchronized ShuttleCreature getShuttle(final string arrivalPoint) {
+		return shuttleMap.get(arrivalPoint);
+	}
+	
+	public synchronized void addShuttle(final string city, ShuttleCreature shuttle) {
+		shuttleMap.put(city, shuttle);
+	}
+	
+	public synchronized void dropShuttle(final string city) {
+		shuttleMap.remove(city);
+	}
+	
+	@local
+	public native boolean isNoBuildArea(float x, float y, @dereferenced StringId fullAreaName);
+	
+	/**
+	 * Gets the cost to travel via shuttleport/starport to the destination planet.
+	 * If the value is 0, then travel to the planet from this planet is disabled.
+	 * @param destinationPlanet The planet that to which is being travelled. Can be the same planet.
+	 * @return The cost to travel to the destination planet.
+	 */
+	public int getTravelFare(final string destinationPlanet) {
+		return travelFares.get(destinationPlanet);
+	}
+	
+	public native void sendPlanetTravelPointListResponse(PlayerCreature player);
+	
+	/*@local
+	public boolean getRegion(@dereferenced StringId name, float x, float y) {
+		return regionMap.getRegion(name, x, y);
+	}*/
+	
+	@local
+	@dereferenced
+	public Vector<Region> getRegions(@dereferenced StringId regionName) {
+		return regionMap.getRegions(regionName);
+	}
+	
+	public StructureManager getStructureManager() {
+		return structureManager;
+	}
+
+	public WeatherManager getWeatherManager() {
+		return weatherManager;
+	}
+	
+	@local
+	public TerrainManager getTerrainManager() {
+		return terrainManager;
+	}
+	
+	public Region getRegion(float x, float y) {
+		return regionMap.getRegion(x, y);
+	}
+	
+	public int getRegionCount() {
+		return regionMap.size();
+	}
+	
+	public int getNumberOfCities() {
+		return numberOfCities;
+	}
+	
+	public void increaseNumberOfCities() {
+		numberOfCities = numberOfCities + 1;
+	}
+	
+	public Region getRegion(int index) {
+		return regionMap.getRegion(index);
+	}
+	
+	public void addRegion(Region region) {
+		regionMap.addRegion(region);
+	}
+	
+	public void dropRegion(Region region) {
+		regionMap.dropRegion(region);
+	}
+	
+	public boolean hasRegion(final string name) {
+		return regionMap.containsRegion(name);
+	}
+	
+	public void addPerformanceLocation(SceneObject obj) {
+		performanceLocations.add(obj);
+	}
+	
+	@local
+	public MissionTargetMap getPerformanceLocations() {
+		return performanceLocations;
+	}
+	
+	public void addMissionNpc(SceneObject npc) {
+		missionNpcs.add(npc);
+	}
+	
+	@local
+	public MissionTargetMap getMissionNpcs() {
+		return missionNpcs;
+	}
+	
+	public void addHuntingTargetTemplate(final string temp1, final string temp2, int level) {
+		huntingTargets.addTarget(temp1, temp2, level);
+	}
+	
+	@local
+	public HuntingTargetEntry getHuntingTargetTemplate(int level) {
+		return huntingTargets.getRandomTarget(level);
+	}
+	
+	public void addReconLoc(SceneObject obj) {
+		reconLocs.add(obj);
+	}
+	
+	@local
+	public MissionTargetMap getReconLocs() {
+		return reconLocs;
+	}
+	
+	public void addInformant(SceneObject obj) {
+		informants.add(obj);
+	}
+	
+	@local
+	public MissionTargetMap getInformants() {
+		return informants;
+	}
+	
+	/*public Region getRegion(final string regionName) {
+		return regionMap.getRegion(regionName);
+	}*/
+		
+}

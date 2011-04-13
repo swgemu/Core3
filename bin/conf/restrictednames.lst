@@ -1,0 +1,651 @@
+--Copyright (C) 2007 <SWGEmu>
+ 
+--This File is part of Core3.
+ 
+--This program is free software; you can redistribute 
+--it and/or modify it under the terms of the GNU Lesser 
+--General Public License as published by the Free Software
+--Foundation; either version 2 of the License, 
+--or (at your option) any later version.
+ 
+--This program is distributed in the hope that it will be useful, 
+--but WITHOUT ANY WARRANTY; without even the implied warranty of 
+--MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. 
+--See the GNU Lesser General Public License for
+--more details.
+ 
+--You should have received a copy of the GNU Lesser General 
+--Public License along with this program; if not, write to
+--the Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
+ 
+--Linking Engine3 statically or dynamically with other modules 
+--is making a combined work based on Engine3. 
+--Thus, the terms and conditions of the GNU Lesser General Public License 
+--cover the whole combination.
+ 
+--In addition, as a special exception, the copyright holders of Engine3 
+--give you permission to combine Engine3 program with free software 
+--programs or libraries that are released under the GNU LGPL and with 
+--code included in the standard release of Core3 under the GNU LGPL 
+--license (or modified versions of such code, with unchanged license). 
+--You may copy and distribute such a system following the terms of the 
+--GNU LGPL for Engine3 and the licenses of the other code concerned, 
+--provided that you include the source code of that other code when 
+--and as the GNU LGPL requires distribution of source code.
+ 
+--Note that people who make modified versions of Engine3 are not obligated 
+--to grant this special exception for their modified versions; 
+--it is their choice whether to do so. The GNU Lesser General Public License 
+--gives permission to release a modified version without this exception; 
+--this exception also makes it possible to release a modified version 
+--which carries forward this exception.
+
+[profane]
+--These is where the profane words go.  If any of these words are in a part of the name, it will be filtered.
+anal
+ass
+biatch
+bitch
+boob
+christ
+clit
+cock
+cum
+cunt
+damn
+dick
+dingleberry
+dong
+fag
+fuck
+fuk
+fuxxor
+george lucas
+gook
+hooker
+jackoff
+jesus
+jew
+jizz
+kike
+kunt
+labia
+masterbait
+masterbate
+masturbait
+nazi
+negro
+nigg
+nipple
+penis
+piss
+prick
+pussy
+satan
+sex
+shit
+skank
+slut
+spawnthemonkey
+spick
+sucks
+tit
+twat
+vagina
+whore
+wtf
+Admiral
+Admirals
+Allah
+Anakin
+asshole
+ballbeater
+ballhitter
+balllicker
+ballsucker
+bangher
+bastard
+bastid
+bitch
+blowme
+Bobba
+Bodhisattva
+boobie
+Bothan
+breast
+Buddha
+captain
+captains
+Chewbackka
+Christ
+cock
+Commander
+Commanders
+coonass
+cracka
+crap
+CSR
+cum
+cunt
+Darth
+dick
+Diq
+Donkeypunch
+fack
+fag
+Fett
+feck
+fuck
+fuk
+Fuqu
+General
+Generals
+ghey
+-GM
+_GM
+GM-
+GM_
+god
+HillBilly
+Human
+Isuccacocc
+Ithorian
+Jango
+Jedi
+Jehovah
+Jehova
+Jesus
+klukluxklan
+KneeGrow
+kunt
+Lando
+Leia
+lesbian
+lieutenant
+Lieutenant
+lieutenants
+Major
+Majors
+Marshal
+Marshals
+Messiah
+MonCalomari
+nazi
+niga
+nigga
+nigger
+nympho
+Officer
+Officers
+Padme
+Penis
+Panis
+Player
+poon
+prick
+Private
+Privates
+pubic
+pussy
+Quirfag
+qunt
+raghead
+redneck
+Rodian
+seaman
+seamans
+seeman
+seemen
+semen
+Sith
+skank
+skanq
+Skywalker
+slut
+snatch
+Solo
+spoog
+STFU
+suck
+suckme
+Sullistan
+swganh
+SWGEmu
+tarbaby
+testicle
+Trandoshan
+twi'lek
+Vader
+vagina
+wanker
+Warrant Officers
+Warrants
+wetback
+whore
+Wookie
+Yoda
+Yahweh
+Yahveh
+Zabrak
+skiiwalker
+Jedi
+Jeedi
+jedii
+jiidi
+Hitler
+lootmeh
+loot
+lawlicake
+lawli
+medirty
+lester
+mohlester
+moelester
+EyeP
+eyepfreely
+airmarshall
+medic
+doctor
+sittstain
+shitstain
+sitt
+stain
+Emperor
+palpatine
+Palpatin
+DARKLORD
+DerkLord
+Lord
+Sith
+Siith
+Sithlord
+
+[developer]
+--This is where names similar to develper names go.
+--I can't think of any
+
+[fiction]
+--This is where star wars names you want filtered go.
+Aarrba
+Aayla Secura
+Achk Med-Beq
+Ackmena
+Acros-Krik
+Adi Gallia
+Admiral Ozzel
+Admiral Ackbar
+Admiral Daala
+Admiral Piett
+Admiral Screed
+Admiral Thrawn
+Agen Kolar
+Ak-rev
+Aks Moe
+Aldar Beedo
+Amaiza
+Anakin Skywalker
+Anakin Solo
+Anchor Blue
+Anduvil
+Antidar Williams
+Ark Roose
+Aron Peacebringer
+Asajj Ventress
+Ask Aak
+Augara Jowil
+Auren Yomm
+Aurra Sing
+Ayy Vida
+Axkva Min
+Bail Organa
+Bana Breemu
+Bane Malar
+Barada
+Baron Papanoida
+Barquin D'an
+Barriss Offee
+Bastila Shan
+Ben Kenobi
+Ben Quadinaros
+Beru Lars
+Bib Fortuna
+Biggs Darklighter
+Boba Fett
+Boles Roor
+Borsk Fey'lya
+Boss Nass
+Bossk
+Brakiss
+Bren Derlin
+Bria Tharen
+Bultar Swan
+Callista
+Calo Nord
+Canderous Ordo
+Cane Adiss
+Captain Needa
+Captain Panaka
+Captain Rekab
+Captain Tarpals
+Captain Typho
+Captain-Supervisor Grammel
+Carl
+Carlist Rieekan
+Carth Onasi
+Cebann Veekan
+Chancellor Valorum
+Charal
+Chewbacca
+Chi Eekway
+Chief Chirpa
+Chukha-Trok
+Chyler
+Cindel Towani
+Clegg Holdfast
+Cliegg Lars
+Coleman Trebor
+Commander Bacara
+Commander Bly
+Commander Cody
+Commander Gree
+Commander Neyo
+Commander Thire
+Conan Motti
+Corde
+Corla Metonae
+Corran Horn
+Count Dooku
+Crix Madine
+Daakman Barrek
+Dack Ralter
+Dannl Faytonni
+Darth Bandon
+Darth Malak
+Darth Maul
+Darth Sidious
+Darth Vader
+Dash Rendar
+Daultay Dofine
+Davik Kang
+Deej Warrick
+Dengar
+Depa Billaba
+Dexter Jettster
+Diva Shaliqua
+Doc
+Doctor Evazan
+Doda Boedonawieedo
+Dorme
+Droopy McCool
+Dud Bolt
+Durge
+Ebe Endocott
+Eeth Koth
+Elan Mak
+Elan Sleazebaggano
+Ephant Mon
+Even Piell
+Exar Kun
+Fang Zar
+Fema Baab
+Fiolla
+Foul Moudama
+Gaeriel Captison
+Gaff
+Gallandro
+Garindan
+Garm Bel
+Gasgano
+General Grievous
+General Tagge
+General Veers
+General Yavid
+Ghent
+Giddean Danu
+Gilad Pellaeon
+Gizor Dellso
+Governor Koong
+Gragra
+Greeata
+Greedo
+Grizz Frix
+Halla
+Han Solo
+Hermi Odle
+Hermione Bagwa
+Horox Ryyder
+Iaco Stark
+Indiana Jones
+Isolder
+Ister Paddie
+Jabba
+Jacen Solo
+Jaina Solo
+Jan Dodonna
+Jango Fett
+Jann Tosh
+Janu Godalhi
+Janus Greejatus
+Jar-Jar Binks
+Jasper McKnives
+Jaxxon
+Jek Porkins
+Jem Ysanna
+Jessa
+Jessica Meade
+Jira
+Jobal Naberrie
+Jocasta Nu
+Joh Yowza
+Jolee Bindo
+Joruus C'baoth
+Juhani
+K'Kruhk
+Kabe
+Kaink
+Kalyn Farnmir
+Ketwol
+Ki-Adi-Mundi
+Kir Kanos
+Kit Fisto
+Kitik Keed'kak
+Kitster
+Kleb Zellock
+Komari Vosa
+Kybo Ren-Cha
+Kyp Durron
+Lama Su
+Lando Calrissian
+Lars Needa
+Leektar
+Leia Organa
+Lexi Dio
+Lieutenant Oicunn
+Lobot
+Logray
+Lott Dod
+Luke Skywalker
+Luminara Unduli
+Lumiya
+Lushros Dofine
+Lyn Me
+Mace Towani
+Mace Windu
+Magaloof
+Male-Dee
+Mara-Jade Skywalker
+Mars Guo
+Mas Amedda
+Mawhonic
+Max Rebo
+Maxiron Agolerga
+Meena Tills
+Melas
+Melee
+Merumeru
+Mission Vao
+Moff Jerjerrod
+Moff Tarkin
+Momaw Nadon
+Mon Julpa
+Mon Mothma
+Muftak
+Mungo Baobab
+Myhr Rho
+Nar Hida
+Nee Alavar
+Nem Bees
+Neva Kee
+Niai Fieso
+Nien Nunb
+Nilo
+Noa Briqualon
+Nom Anor
+Nute Gunray
+Nym
+Nyrat Agira
+Oakie Dokes
+Obi-Wan Kenobi
+Odumin
+Ody Mandrell
+Olana Chion
+Onaconda Farr
+Onara Kuat
+Oola
+Oppo Rancisis
+Orn Free Taa
+Oro Dassyne
+Orrimaarko
+Ottegru Grey
+Owen Lars
+Pablo-Jill
+Padme Amidala
+Palpatine
+Paploo
+Pash Cracken
+Passel Argente
+Pax Bonkik
+Paxi Sylo
+Pello Scrambas
+Plo Koon
+Po Nudo
+Poggle
+Ponda Baba
+Pooja Naberrie
+Pote Snitkin
+Prince Xizor
+Princess Leia
+Queen Apailana
+Queen Izrina
+Queen Jamillia
+Qui-Gon Jinn
+Quinlan Vos
+Rappertunie
+Ratts Tyerell
+Red
+Ree-Yees
+Rekkon
+Rep Been
+Rep Teers
+Reti
+Ric Olie
+Romeo Treblanc
+Ronet Coorr
+Roron Corobb
+Rukh
+Rune Haako
+Ruwee Naberrie
+Ryoo Naberrie
+Rystall
+Sabe
+Saelt-Marae
+Saesee Tiin
+Sagoro Autem
+Salacious Crumb
+Salla Zend
+Salporin
+San Hill
+Saul Karath
+Sebulba
+Sei Taria
+Seib Nod
+Sena Midanyl
+Serji-X Arrogantus
+Sha'a Gi
+Shaak Ti
+Shmi Skywalker
+Shodu
+Shu Mai
+Silya Shessaun
+Sio Bibble
+Siri Tachi
+Sly Moore
+Slyther Bushforb
+Sola Naberrie
+Sora Bulq
+Stass Allie
+Swilla Corey
+Sy Snootles
+Talon Karrde
+Tanith Shire
+Tannon Praji
+Tarfful
+Tarkov
+Tarr Seirr
+Tas Kee
+Taun We
+Teckla
+Teek
+Teemto Pagalies
+Terak
+Terr Taneel
+Tessek
+Theomet Danle
+Tikkes
+Tion Medon
+Toonbuck Toora
+Toryn Farr
+Tru Veld
+Tsavong Lah
+Tundra Dowmeia
+Tzizvvt
+Ulic Qel-Droma
+Umpass-stay
+Vergere
+Vilmarh Grahrk
+Voolvif Monn
+Wald
+Wam Lufba
+Wan Sandage
+Wat Tambor
+Watto
+Wedge Antilles
+Wes Janson
+Wicket Warrick
+Willrow Hood
+Willy
+Winter
+Wuher
+Yaddle
+Yarael Poof
+Yarna D'al Gargan
+Yoda
+Yoxgit
+Ysanne Isard
+Zaalbar
+Zam Wesell
+Zett Jukassa
+Zev Senesca
+Zuckuss
+
+[reserved]
+--This is where you put any other restricted name.
+kryat
+human
+twi'lek
+moncalamari
+wookiee
+zabrak
+bothan
+rodian
+trandoshan
