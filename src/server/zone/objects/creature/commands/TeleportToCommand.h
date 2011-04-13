@@ -67,41 +67,30 @@ public:
 
 		StringTokenizer args(arguments.toString());
 
+		String name;
+		args.getStringToken(name);
+
+		PlayerManager* playerManager = server->getZoneServer()->getPlayerManager();
+		ManagedReference<PlayerCreature*> player = playerManager->getPlayer(name);
+
+		if (player == NULL)
+			return GENERALERROR;
+
 		try {
-			String name;
-			args.getStringToken(name);
+			Locker clocker(player, creature);
 
-			PlayerManager* playerManager = server->getZoneServer()->getPlayerManager();
-			ManagedReference<PlayerCreature*> player = playerManager->getPlayer(name);
+			Zone* targetZone = player->getZone();
 
-			if (player != NULL) {
+			if (targetZone == NULL)
+				return GENERALERROR;
 
-				int zoneid = 0;
-				float posx = 0, posy = 0, posz = 0;
-				uint64 parentid = 0;
+			String terrainName = targetZone->getTerrainName();
+			float posx = player->getPositionX();
+			float posy = player->getPositionY();
+			float posz = player->getPositionZ();
+			uint64 parentid = player->getParentID();
 
-				try {
-					Locker clocker(player, creature);
-
-					Zone* targetZone = player->getZone();
-
-					if (targetZone == NULL) {
-						return GENERALERROR;
-					}
-
-					zoneid = targetZone->getZoneID();
-					posx = player->getPositionX();
-					posy = player->getPositionY();
-					posz = player->getPositionZ();
-					parentid = player->getParentID();
-
-				} catch (Exception& e) {
-
-				}
-
-				creature->switchZone(zoneid, posx, posz, posy, parentid);
-			}
-
+			creature->switchZone(zoneid, posx, posz, posy, parentid);
 
 		} catch (Exception& e) {
 			creature->sendSystemMessage("invalid arguments for teleport command");

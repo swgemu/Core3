@@ -88,7 +88,7 @@ public:
 
 	void setBidderName(const String& name);
 
-	void setPlanet(unsigned short planetid);
+	void setPlanet(const String& planetid);
 
 	void setOwnerName(const String& name);
 
@@ -203,7 +203,7 @@ protected:
 
 	String bidderName;
 
-	unsigned short planet;
+	String planet;
 
 	String region;
 
@@ -266,7 +266,7 @@ public:
 
 	void setBidderName(const String& name);
 
-	void setPlanet(unsigned short planetid);
+	void setPlanet(const String& planetid);
 
 	void setOwnerName(const String& name);
 

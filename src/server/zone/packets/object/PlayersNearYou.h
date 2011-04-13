@@ -48,12 +48,11 @@ which carries forward this exception.
 #include "ObjectControllerMessage.h"
  
 #include "../../objects/player/PlayerObject.h"
-#include "../../objects/player/PlayerImplementation.h"
+#include "server/zone/objects/player/PlayerCreature.h"
 
 #include "../../objects/player/Races.h"
  
 #include "../../objects/terrain/RegionNames.h"
-#include "../../objects/terrain/PlanetNames.h"
  
 class PlayersNearYouMessage : public ObjectControllerMessage {
 public:
@@ -62,14 +61,15 @@ public:
  		insertInt(0);
 	}
  
-	void addFoundPlayer(Player* player) {
+	void addFoundPlayer(PlayerCreature* player) {
 		insertInt(0); //List counter for something.
-		insertUnicode(player->getCharacterName());
+		insertUnicode(player->getDisplayedName());
  
+		//TODO: Change this...
 		insertInt(Races::getRaceID(player->getRaceName())); // Race ID
  
 		insertAscii(Region::getRegionName(player->getRegionID())); //Region Name
-		insertAscii(Planet::getPlanetName(player->getZoneID())); //Planet
+		insertAscii(player->getZone()->getTerrainName()); //Planet
  
   		if (player->isGuilded())
 			insertAscii(player->getGuildName()); //Guild

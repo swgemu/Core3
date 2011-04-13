@@ -82,7 +82,7 @@ class BountyMissionObjective extends MissionObjective {
 	public native void abort();
 	public native void complete();
 	
-	public native void spawnTarget(int zoneID);
+	public native void spawnTarget(final string terrainName);
 	
 	public native int notifyObserverEvent(MissionObserver observer, unsigned int eventType, Observable observable, ManagedObject arg1, long arg2);
 	

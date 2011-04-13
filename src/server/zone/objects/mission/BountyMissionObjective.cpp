@@ -18,7 +18,7 @@
  *	BountyMissionObjectiveStub
  */
 
-enum {RPC_FINALIZE__ = 6,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_ACTIVATE__,RPC_ABORT__,RPC_COMPLETE__,RPC_SPAWNTARGET__INT_,RPC_NOTIFYOBSERVEREVENT__MISSIONOBSERVER_INT_OBSERVABLE_MANAGEDOBJECT_LONG_,};
+enum {RPC_FINALIZE__ = 6,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_ACTIVATE__,RPC_ABORT__,RPC_COMPLETE__,RPC_SPAWNTARGET__STRING_,RPC_NOTIFYOBSERVEREVENT__MISSIONOBSERVER_INT_OBSERVABLE_MANAGEDOBJECT_LONG_,};
 
 BountyMissionObjective::BountyMissionObjective(MissionObject* mission) : MissionObjective(DummyConstructorParameter::instance()) {
 	BountyMissionObjectiveImplementation* _implementation = new BountyMissionObjectiveImplementation(mission);
@@ -85,18 +85,18 @@ void BountyMissionObjective::complete() {
 		_implementation->complete();
 }
 
-void BountyMissionObjective::spawnTarget(int zoneID) {
+void BountyMissionObjective::spawnTarget(const String& terrainName) {
 	BountyMissionObjectiveImplementation* _implementation = (BountyMissionObjectiveImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_SPAWNTARGET__INT_);
-		method.addSignedIntParameter(zoneID);
+		DistributedMethod method(this, RPC_SPAWNTARGET__STRING_);
+		method.addAsciiParameter(terrainName);
 
 		method.executeWithVoidReturn();
 	} else
-		_implementation->spawnTarget(zoneID);
+		_implementation->spawnTarget(terrainName);
 }
 
 int BountyMissionObjective::notifyObserverEvent(MissionObserver* observer, unsigned int eventType, Observable* observable, ManagedObject* arg1, long long arg2) {
@@ -317,8 +317,8 @@ Packet* BountyMissionObjectiveAdapter::invokeMethod(uint32 methid, DistributedMe
 	case RPC_COMPLETE__:
 		complete();
 		break;
-	case RPC_SPAWNTARGET__INT_:
-		spawnTarget(inv->getSignedIntParameter());
+	case RPC_SPAWNTARGET__STRING_:
+		spawnTarget(inv->getAsciiParameter(_param0_spawnTarget__String_));
 		break;
 	case RPC_NOTIFYOBSERVEREVENT__MISSIONOBSERVER_INT_OBSERVABLE_MANAGEDOBJECT_LONG_:
 		resp->insertSignedInt(notifyObserverEvent((MissionObserver*) inv->getObjectParameter(), inv->getUnsignedIntParameter(), (Observable*) inv->getObjectParameter(), (ManagedObject*) inv->getObjectParameter(), inv->getSignedLongParameter()));
@@ -350,8 +350,8 @@ void BountyMissionObjectiveAdapter::complete() {
 	((BountyMissionObjectiveImplementation*) impl)->complete();
 }
 
-void BountyMissionObjectiveAdapter::spawnTarget(int zoneID) {
-	((BountyMissionObjectiveImplementation*) impl)->spawnTarget(zoneID);
+void BountyMissionObjectiveAdapter::spawnTarget(const String& terrainName) {
+	((BountyMissionObjectiveImplementation*) impl)->spawnTarget(terrainName);
 }
 
 int BountyMissionObjectiveAdapter::notifyObserverEvent(MissionObserver* observer, unsigned int eventType, Observable* observable, ManagedObject* arg1, long long arg2) {

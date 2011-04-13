@@ -104,7 +104,7 @@ public:
 
 	void complete();
 
-	void spawnTarget(int zoneID);
+	void spawnTarget(const String& terrainName);
 
 	int notifyObserverEvent(MissionObserver* observer, unsigned int eventType, Observable* observable, ManagedObject* arg1, long long arg2);
 
@@ -155,7 +155,7 @@ public:
 
 	void complete();
 
-	void spawnTarget(int zoneID);
+	void spawnTarget(const String& terrainName);
 
 	int notifyObserverEvent(MissionObserver* observer, unsigned int eventType, Observable* observable, ManagedObject* arg1, long long arg2);
 
@@ -212,10 +212,12 @@ public:
 
 	void complete();
 
-	void spawnTarget(int zoneID);
+	void spawnTarget(const String& terrainName);
 
 	int notifyObserverEvent(MissionObserver* observer, unsigned int eventType, Observable* observable, ManagedObject* arg1, long long arg2);
 
+protected:
+	String _param0_spawnTarget__String_;
 };
 
 class BountyMissionObjectiveHelper : public DistributedObjectClassHelper, public Singleton<BountyMissionObjectiveHelper> {

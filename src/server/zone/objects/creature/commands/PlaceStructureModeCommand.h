@@ -127,12 +127,12 @@ public:
 
 		ManagedReference<Zone*> zone = player->getZone();
 
-		if (zone == NULL || !structureTemplate->isAllowedZone(zone->getZoneID())) {
+		if (zone == NULL || !structureTemplate->isAllowedZone(zone->getTerrainName())) {
 			player->sendSystemMessage("@player_structure:wrong_planet"); //That deed cannot be used on this planet.
 			return GENERALERROR;
 		}
 
-		String planetName = zone->getPlanetName();
+		String planetName = zone->getTerrainName();
 
 		/*if (planetName == "rori" || planetName == "yavin4") {
 			player->sendSystemMessage("Structure placement is currently disabled on this planet");

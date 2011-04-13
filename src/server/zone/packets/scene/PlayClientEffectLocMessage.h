@@ -51,7 +51,7 @@ class PlayClientEffectLoc : public BaseMessage {
 public:
 	int listSize;
 	
-	PlayClientEffectLoc(const String& file, int planet, float x, float z, float y) : BaseMessage() {
+	PlayClientEffectLoc(const String& file, const String& terrainName, float x, float z, float y) : BaseMessage() {
 		/* Struct
 		 * 09 00 // Operand
 		 * 74 9E 94 02 // Opcode
@@ -66,38 +66,7 @@ public:
 		insertShort(9);
 		insertInt(0x02949E74);
 		insertAscii(file);
-		switch(planet) {
-		case 0:
-			insertAscii("corellia");
-			break;
-		case 1:
-			insertAscii("dantooine");
-			break;
-		case 2:
-			insertAscii("dathomir");
-			break;
-		case 3:
-			insertAscii("endor");
-			break;
-		case 4:
-			insertAscii("lok");
-			break;
-		case 5:
-			insertAscii("naboo");
-			break;
-		case 6:
-			insertAscii("rori");
-			break;
-		case 7:
-			insertAscii("talus");
-			break;
-		case 8:
-			insertAscii("tatooine");
-			break;
-		case 9:
-			insertAscii("yavin4");
-			break;
-		}
+		insertAscii(terrainName);
 		insertFloat(x);
 		insertFloat(z);
 		insertFloat(y);

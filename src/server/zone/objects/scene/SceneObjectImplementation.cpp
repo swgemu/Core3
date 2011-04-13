@@ -985,7 +985,7 @@ void SceneObjectImplementation::insertToZone(Zone* newZone) {
 	teleport(positionX, positionZ, positionY, getParentID());
 }
 
-void SceneObjectImplementation::switchZone(int newZoneID, float newPostionX, float newPositionZ, float newPositionY, uint64 parentID) {
+void SceneObjectImplementation::switchZone(const String& newTerrainName, float newPostionX, float newPositionZ, float newPositionY, uint64 parentID) {
 	ManagedReference<SceneObject*> thisLocker = _this;
 
 	if (zone == NULL)
@@ -1517,7 +1517,7 @@ uint32 SceneObjectImplementation::getPlanetCRC() {
 	if (zone == NULL)
 		return 0;
 
-	return zone->getPlanetName().hashCode();
+	return zone->getTerrainName().hashCode();
 }
 
 void SceneObjectImplementation::createChildObjects() {

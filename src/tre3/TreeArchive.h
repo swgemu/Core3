@@ -72,22 +72,11 @@ public:
 		return record->getBytes();
 	}
 
-	void printNodesByPath(const String& path) {
-		TreeDirectory* records = &nodeMap.get(path);
+	TreeDirectory* getDirectory(const String& path) {
+		if (!nodeMap.contains(path))
+			return NULL;
 
-		if (records == NULL) {
-			error("No files at specified path.");
-			return;
-		}
-
-		for (int i = 0; i < records->size(); ++i) {
-			Reference<TreeFileRecord*> record = records->elementAt(i);
-
-			String recordName = record->getRecordName();
-
-			if (recordName.indexOf(".trn") != -1)
-				info(recordName);
-		}
+		return &nodeMap.get(path);
 	}
 };
 

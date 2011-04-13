@@ -75,7 +75,7 @@ class StructureManager extends ManagedService implements Logger {
 
 		templateManager = TemplateManager.instance();
 
-		string managerName = "StructureManager " + zone.getPlanetName();
+		string managerName = "StructureManager " + zone.getTerrainName();
 		Logger.setLoggingName(managerName);
 
 		Logger.setGlobalLogging(true);

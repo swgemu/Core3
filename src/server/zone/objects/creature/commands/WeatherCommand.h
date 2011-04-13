@@ -20,11 +20,11 @@ public:
 		ManagedReference<PlayerCreature*> player = (PlayerCreature*) creature;
 		ManagedReference<WeatherManager*> weatherManager = player->getZone()->getPlanetManager()->getWeatherManager();
 
-		//Check for valid zone.
-		if (player->getZone()->getZoneID() > 9) {
-			player->sendSystemMessage("You can't use the weather command in this zone.");
-			return 1;
-		}
+		//Check for valid zone. Handle this in your manager.
+		//if (player->getZone()->getZoneID() > 9) {
+		//	player->sendSystemMessage("You can't use the weather command in this zone.");
+	//		return 1;
+		//}
 
 		//Parse the weather command.
 		StringTokenizer tokenizer(arguments.toString());

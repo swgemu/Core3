@@ -158,7 +158,7 @@ void AuctionItem::setBidderName(const String& name) {
 		_implementation->setBidderName(name);
 }
 
-void AuctionItem::setPlanet(unsigned short planetid) {
+void AuctionItem::setPlanet(const String& planetid) {
 	AuctionItemImplementation* _implementation = (AuctionItemImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
@@ -759,7 +759,7 @@ bool AuctionItemImplementation::readObjectMember(ObjectInputStream* stream, cons
 	}
 
 	if (_name == "planet") {
-		TypeInfo<unsigned short >::parseFromBinaryStream(&planet, stream);
+		TypeInfo<String >::parseFromBinaryStream(&planet, stream);
 		return true;
 	}
 
@@ -915,7 +915,7 @@ int AuctionItemImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
-	TypeInfo<unsigned short >::toBinaryStream(&planet, stream);
+	TypeInfo<String >::toBinaryStream(&planet, stream);
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
@@ -1135,7 +1135,7 @@ void AuctionItemImplementation::setBidderName(const String& name) {
 	bidderName = name;
 }
 
-void AuctionItemImplementation::setPlanet(unsigned short planetid) {
+void AuctionItemImplementation::setPlanet(const String& planetid) {
 	// server/zone/objects/auction/AuctionItem.idl():  		planet = planetid;
 	planet = planetid;
 }

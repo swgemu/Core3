@@ -114,7 +114,7 @@ public:
 			return false;
 		}
 
-		if (zone->getZoneID() == 39) {
+		if (zone->getTerrainName() == "dungeon1") {
 			creature->sendSystemMessage("cbt_spam", "burst_run_space_dungeon"); //"The artificial gravity makes burst running impossible here."
 
 			return false;

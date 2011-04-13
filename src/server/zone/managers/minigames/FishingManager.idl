@@ -72,7 +72,7 @@ class FishingManager extends Observer implements Logger {
 	protected Vector<string> rareLoot;
 	
 	@dereferenced
-	protected Vector<int> color;
+	protected VectorMap<string, int> color;
 	
 	@dereferenced
 	protected Vector<int> fishLength;
@@ -201,6 +201,7 @@ class FishingManager extends Observer implements Logger {
 	}
 	
 	public void initializeLoot() {
+		//TODO: This should be loaded from a lua config "fishing_manager.lua"
 		miscLoot.add("object/tangible/wearables/shoes/shoes_s07.iff");
 		miscLoot.add("object/tangible/wearables/shoes/shoes_s02.iff");
 		miscLoot.add("object/tangible/food/foraged/foraged_fruit_s1.iff");
@@ -209,16 +210,17 @@ class FishingManager extends Observer implements Logger {
 	}
 	
 	public void initializeColor() {
-		color.add(61);
-		color.add(51);
-		color.add(21);
-		color.add(32);
-		color.add(8);
-		color.add(14);
-		color.add(55);
-		color.add(0);
-		color.add(7);
-		color.add(41);
+		//TODO: Move this to a lua...
+		color.put("corellia", 61);
+		color.put("dantooine", 51);
+		color.put("dathomir", 21);
+		color.put("endor", 32);
+		color.put("lok", 8);
+		color.put("naboo", 14);
+		color.put("rori", 55);
+		color.put("talus", 0);
+		color.put("tatooine", 7);
+		color.put("yavin4", 41);
 	}
 	
 	public int notifyObserverEvent(unsigned int eventType, Observable observable, ManagedObject arg1, long arg2) {

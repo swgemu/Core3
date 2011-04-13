@@ -74,15 +74,13 @@ import server.zone.objects.building.cloning.CloningBuildingObject;
 import server.zone.objects.creature.CreatureObject;
 
 class Zone extends ManagedObject implements QuadTree {
-	private int zoneID;
-
+	private string terrainName;
+	
 	private transient ZoneProcessServer processor;
 
 	@dereferenced
 	private ObjectMap objectMap;
-	
-	//private StructureManager structureManager; // move to planet manager when converted
-	
+
 	private PlanetManager planetManager;
 	
 	private CityManager cityManager;
@@ -104,7 +102,7 @@ class Zone extends ManagedObject implements QuadTree {
 	
 	private boolean managersStarted;
 	
-	public native Zone(ZoneProcessServer processor, int zoneid);
+	public native Zone(ZoneProcessServer processor, final string zoneName);
 	public native void initializeTransientMembers();
 	public native void finalize();
 	
@@ -151,21 +149,9 @@ class Zone extends ManagedObject implements QuadTree {
 
 	public native void addSceneObject(SceneObject object);
 	
-	public native void sendMapLocationsTo(final string planetName, SceneObject player);
+	public native void sendMapLocationsTo(SceneObject player);
 	
 	public native void dropSceneObject(SceneObject object);
-	
-	//public native void registerPlanetaryMapObject(SceneObject object);
-	//public native void unregisterPlanetaryMapObject(SceneObject object);
-
-	// setters and getters
-	public int getZoneID() {
-		return zoneID;
-	}
-	
-	public native string getPlanetName();
-	
-	//public native SceneObject lookupObject(unsigned long objectID);
 	
 	public PlanetManager getPlanetManager() {
 		return planetManager;
@@ -199,4 +185,8 @@ class Zone extends ManagedObject implements QuadTree {
 	public native float getMaxX();
 	public native float getMinY();
 	public native float getMaxY();
+	
+	public string getTerrainName() {
+		return terrainName;
+	}
 }

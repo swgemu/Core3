@@ -24,15 +24,15 @@ int CityManagerImplementation::newCityGracePeriod = 0;
 void CityManagerImplementation::loadLuaConfig() {
 	info("Loading config file.", true);
 
-	int zoneid = zone->getZoneID();
-
-	if (zoneid > 9)
-		return;
+	String terrainName = zone->getTerrainName();
 
 	Lua* lua = new Lua();
 	lua->init();
 
 	lua->runFile("scripts/managers/city_manager.lua");
+
+	/*
+	 * TODO: Refactor this to use terrainName
 
 	LuaObject luaObject = lua->getGlobalObject("CitiesAllowed");
 
@@ -72,6 +72,8 @@ void CityManagerImplementation::loadLuaConfig() {
 
 		luaObject.pop();
 	}
+
+	*/
 
 	delete lua;
 	lua = NULL;

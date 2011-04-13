@@ -76,6 +76,8 @@ which carries forward this exception.
 #include "server/zone/objects/player/PlayerCreature.h"
 #include "server/zone/objects/creature/professions/SkillBox.h"
 
+#include "tre3/TreeDirectory.h"
+
 #include "ZoneProcessServer.h"
 #include "ZonePacketHandler.h"
 #include "ZoneHandler.h"
@@ -85,8 +87,7 @@ which carries forward this exception.
 ZoneServerImplementation::ZoneServerImplementation(int galaxyid) :
 		ManagedServiceImplementation(), Logger("ZoneServer") {
 	galaxyID = galaxyid;
-
-	name = "Core3";
+	galaxyName = "Core3";
 
 	processor = NULL;
 
@@ -142,10 +143,10 @@ void ZoneServerImplementation::initialize() {
 		Reference<ResultSet*> result = ServerDatabase::instance()->executeQuery(query);
 
 		if (result->next())
-			name = result->getString(0);
+			galaxyName = result->getString(0);
 
 	} catch (DatabaseException& e) {
-		info("Unhandled exception when getting galaxy name from database.");
+		info("Loading galaxy name: " + e.getMessage());
 	}
 
 	processor = new ZoneProcessServer(_this);
@@ -193,54 +194,39 @@ void ZoneServerImplementation::initialize() {
 }
 
 void ZoneServerImplementation::startZones() {
-	info("Initializing zones", true);
+	info("Initializing zones.", true);
 
-	for (int i = 0; i < 45; ++i) {
-		Zone* zone = NULL;
+	TreeDirectory* records = TemplateManager::instance()->getTreeDirectory("terrain");
 
-#ifndef WITH_STM
-		if (i <= 10 || i == 42) {
-#else
-		if (i <= 0 || i == 42) {
-#endif
-			zone = new Zone(processor, i);
+	for (int i = 0; i < records->size(); ++i) {
+			Reference<TreeFileRecord*> record = records->elementAt(i);
+
+			if (record == NULL)
+				continue;
+
+			String recordName = record->getRecordName();
+
+			if (recordName.indexOf(".trn") == -1)
+				continue;
+
+			//Load zones from the .trn file names.
+			String zoneName = recordName.subString(recordName.lastIndexOf('/'), recordName.lastIndexOf('.'));
+
+			info("Loading zone " + zoneName + ".", true);
+
+			Zone* zone = new Zone(processor, zoneName);
 			zone->initializePrivateData();
+
 			uint64 zoneObjectID = 0;
 
 			zoneObjectID = ~zoneObjectID;
 			zoneObjectID -= i;
 			zone->_setObjectID(zoneObjectID);
 
-			zone->deploy("Zone", i);
+			zone->deploy("Zone " + zoneName, i);
 
-		}
-
-		zones.add(zone);
-	}
-
-	for (int i = 0; i < zones.size(); ++i) {
-		Zone* zone = zones.get(i);
-
-		if (zone != NULL) {
 			zone->startManagers();
-
-			/*Reference<Task*> task = new ZoneLoadManagersTask(zone);
-			Core::getTaskManager()->executeTask(task);*/
-		}
 	}
-
-	/*for (int i = 0; i < zones.size(); ++i) {
-		Zone* zone = zones.get(i);
-
-		if (zone != NULL) {
-			if (!zone->hasManagersStarted()){
-				Thread::sleep(500);
-
-				--i;
-			}
-		}
-	}*/
-
 }
 
 void ZoneServerImplementation::startManagers() {
@@ -601,14 +587,6 @@ void ZoneServerImplementation::lock(bool doLock) {
 
 void ZoneServerImplementation::unlock(bool doLock) {
 	datagramService->unlock(doLock);
-}
-
-String ZoneServerImplementation::getServerName() {
-	return name;
-}
-
-void ZoneServerImplementation::setServerName(const String& na) {
-	name = na;
 }
 
 void ZoneServerImplementation::setServerStateLocked() {

@@ -51,7 +51,7 @@ which carries forward this exception.
 #include "../../player/PlayerObject.h"
 #include "../../../Zone.h"
 
-#include "server/zone/objects/terrain/PlanetNames.h"
+
 #include "server/zone/managers/object/ObjectManager.h"
 
 class WaypointCommand : public QueueCommand {
@@ -78,7 +78,7 @@ public:
 		String waypointData = arguments.toString();
 
 		String waypointName = "New Waypoint";
-		String planet = Planet::getPlanetName(creature->getZone()->getZoneID());
+		String planet = creature->getZone()->getTerrainName();
 		float x = creature->getPositionX();
 		float y = creature->getPositionY();
 		float z = 0.0f;

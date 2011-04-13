@@ -366,7 +366,7 @@ void MissionManagerImplementation::populateMissionList(MissionTerminal* missionT
 }
 
 void MissionManagerImplementation::randomizeDestroyMission(PlayerCreature* player, MissionObject* mission) {
-
+	/* TODO: Redo this section to use terrainName
 	//String mission = "mission/mission_destroy_neutral_easy_creature_naboo";
 	int zoneID = player->getZone()->getZoneID();
 
@@ -395,7 +395,7 @@ void MissionManagerImplementation::randomizeDestroyMission(PlayerCreature* playe
 
 	Vector3 startPos = player->getCoordinate(System::random(1000) + 1000, (float)System::random(360));
 	//mission->setMissionTarget(lairObjectTemplate->getObjectName());
-	mission->setStartPlanetCRC(player->getZone()->getPlanetName().hashCode());
+	mission->setStartPlanetCRC(player->getZone()->getTerrainName().hashCode());
 	mission->setStartPosition(startPos.getX(), startPos.getY(), player->getPlanetCRC());
 	mission->setCreatorName(nm->makeCreatureName());
 
@@ -409,9 +409,11 @@ void MissionManagerImplementation::randomizeDestroyMission(PlayerCreature* playe
 	mission->setMissionDescription("mission/mission_destroy_neutral_easy_creature", "m" + String::valueOf(randTexts) + "d");
 
 	mission->setTypeCRC(MissionObject::DESTROY);
+	*/
 }
 
 void MissionManagerImplementation::randomizeSurveyMission(PlayerCreature* player, MissionObject* mission) {
+	/*
 	int maxLevel = 50;
 	int minLevel = 10;
 
@@ -473,9 +475,11 @@ void MissionManagerImplementation::randomizeSurveyMission(PlayerCreature* player
 	mission->setCreatorName(nm->makeCreatureName());
 
 	mission->setTypeCRC(MissionObject::SURVEY);
+	*/
 }
 
 void MissionManagerImplementation::randomizeBountyMission(PlayerCreature* player, MissionObject* mission) {
+	/*
 	int zoneID = player->getZone()->getZoneID();
 
 	// TODO: switch difficulties in here
@@ -512,9 +516,11 @@ void MissionManagerImplementation::randomizeBountyMission(PlayerCreature* player
 	mission->setMissionDescription("mission/mission_bounty_neutral_easy", "m" + String::valueOf(randTexts) + "d");
 
 	mission->setTypeCRC(MissionObject::BOUNTY);
+	*/
 }
 
 void MissionManagerImplementation::randomizeDeliverMission(PlayerCreature* player, MissionObject* mission) {
+	/*
 	PlanetManager* pmng = player->getZone()->getPlanetManager();
 	MissionTargetMap* missionNpcs = pmng->getMissionNpcs();
 	// need at least 2 NPCs to have a delivery mission
@@ -555,6 +561,7 @@ void MissionManagerImplementation::randomizeDeliverMission(PlayerCreature* playe
 	mission->setMissionDescription("mission/mission_deliver_neutral_easy", "m" + String::valueOf(randTexts) + "d");
 
 	mission->setTypeCRC(MissionObject::DELIVER);
+	*/
 }
 
 void MissionManagerImplementation::randomizeCraftingMission(PlayerCreature* player, MissionObject* mission) {
@@ -572,6 +579,7 @@ void MissionManagerImplementation::randomizeCraftingMission(PlayerCreature* play
 }
 
 void MissionManagerImplementation::randomizeEntertainerMission(PlayerCreature* player, MissionObject* mission) {
+	/*
 	PlanetManager* pmng = player->getZone()->getPlanetManager();
 	MissionTargetMap* performanceLocations = pmng->getPerformanceLocations();
 	if (performanceLocations->size() <= 0) {
@@ -618,9 +626,11 @@ void MissionManagerImplementation::randomizeEntertainerMission(PlayerCreature* p
 		mission->setTypeCRC(MissionObject::MUSICIAN);
 	else
 		mission->setTypeCRC(MissionObject::DANCER);
+	*/
 }
 
 void MissionManagerImplementation::randomizeHuntingMission(PlayerCreature* player, MissionObject* mission) {
+	/*
 	PlanetManager* pmng = player->getZone()->getPlanetManager();
 
 	// TODO: randomize difficulty (weighted by what?) once more missions are in the db
@@ -654,9 +664,11 @@ void MissionManagerImplementation::randomizeHuntingMission(PlayerCreature* playe
 	mission->setMissionDescription("mission/mission_npc_hunting_neutral_easy", "m" + String::valueOf(randTexts) + "o");
 
 	mission->setTypeCRC(MissionObject::HUNTING);
+	*/
 }
 
 void MissionManagerImplementation::randomizeReconMission(PlayerCreature* player, MissionObject* mission) {
+	/*
 	PlanetManager* pmng = player->getZone()->getPlanetManager();
 
 	MissionTargetMap* reconlocs = pmng->getReconLocs();
@@ -694,6 +706,7 @@ void MissionManagerImplementation::randomizeReconMission(PlayerCreature* player,
 	mission->setMissionDescription("mission/mission_npc_recon_neutral_easy", "m" + String::valueOf(randTexts) + "o");
 
 	mission->setTypeCRC(MissionObject::RECON);
+	*/
 }
 
 void MissionManagerImplementation::randomizeImperialDestroyMission(PlayerCreature* player, MissionObject* mission) {

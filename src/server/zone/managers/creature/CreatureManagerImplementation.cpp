@@ -227,96 +227,12 @@ void CreatureManagerImplementation::loadSpawnAreas() {
 }
 
 void CreatureManagerImplementation::loadSingleSpawns() {
-	info("loading single spawns...", true);
+	info("Loading single spawns...", true);
 
-	int planetid = zone->getZoneID();
+	//TODO: Convert to Lua
+	//Use terrainName
 
-	Reference<ResultSet*> result = NULL;
-	StringBuffer query;
-	query << "SELECT * FROM world_server_static_spawns WHERE zoneid = " << planetid << ";";
-
-	int i = 0;
-
-	try {
-		result = ServerDatabase::instance()->executeQuery(query);
-
-		while (result->next()) {
-			uint64 parentid = result->getUnsignedLong(2);
-			String templateFile = result->getString(3);
-			float ox = result->getFloat(4);
-			float oy = result->getFloat(5);
-			float oz = result->getFloat(6);
-			float ow = result->getFloat(7);
-			float x = result->getFloat(8);
-			float z = result->getFloat(9);
-			float y = result->getFloat(10);
-			int level = result->getInt(11);
-			String anim = result->getString(12);
-			int creatureBitmask = result->getInt(13);
-			int combatFlags = result->getInt(14);
-			float respawnTimer = result->getFloat(15);
-
-			if (z == 0 && parentid == 0)
-				z = zone->getHeight(x, y);
-
-			ManagedReference<CreatureObject*> creature = spawnCreature(templateFile.hashCode(), x, z, y, parentid);
-
-			if (creature == NULL) {
-				error("trying to spawn unknown creature " + templateFile);
-			} else {
-				ManagedReference<SceneObject*> parentObject;
-
-				if (parentid != 0) {
-					parentObject = zoneServer->getObject(parentid);
-				}
-
-				creature->setDirection(ow, ox, oy, oz);
-				creature->setLevel(level);
-				creature->setMoodString(anim);
-				creature->setPvpStatusBitmask(combatFlags);
-				creature->setOptionsBitmask(creatureBitmask);
-
-				if (creature->isAiAgent()) {
-					AiAgent* aiAgent = (AiAgent*)creature.get();
-					aiAgent->setHomeLocation(x, z, y, parentObject);
-					aiAgent->setRespawnTimer(respawnTimer);
-					aiAgent->setDespawnOnNoPlayerInRange(false);
-				}
-			}
-
-			/*int id = result->getInt(0);
-
-			String templateFile = result->getString(3);
-
-			uint32 templateCRC = UnsignedInteger::valueOf(templateFile);
-			String fullString;
-
-			try {
-				fullString = TemplateManager::instance()->getTemplateFile(templateCRC);
-			} catch (...) {
-				error("wrong crc " + String::valueOf(templateCRC));
-				continue;
-			}
-
-			fullString = fullString.replaceAll("shared_", "");
-
-			StringBuffer query;
-			query << "UPDATE world_server_static_spawns SET file = '" << fullString << "' WHERE id = " << id;
-			ServerDatabase::instance()->executeStatement(query);*/
-
-			++i;
-
-		}
-
-	} catch (Exception& e) {
-		error(e.getMessage());
-	} catch (...) {
-		error("unreported exception caught in CreatureManagerImplementation::loadSingleSpawns()");
-
-		throw;
-	}
-
-	info("static creatures spawned: " + String::valueOf(i), true);
+	info("Static creatures spawned: " + String::valueOf(i), true);
 }
 
 int CreatureManagerImplementation::notifyDestruction(TangibleObject* destructor, AiAgent* destructedObject, int condition) {
@@ -377,238 +293,19 @@ int CreatureManagerImplementation::notifyDestruction(TangibleObject* destructor,
 
 void CreatureManagerImplementation::loadTrainers() {
 	info("loading trainers...", true);
-
-	ProfessionManager* professionManager = ProfessionManager::instance();
-
-	int planetid = zone->getZoneID();
-
-	Reference<ResultSet*> result;
-	StringBuffer query;
-	query << "SELECT * FROM trainers WHERE Planet = " << planetid << ";";
-	result = ServerDatabase::instance()->executeQuery(query);
-
-	while (result->next()) {
-		String location = result->getString(0);
-		String customname = result->getString(1);
-		String name = result->getString(2);
-		String profession = result->getString(3);
-
-		uint64 crc1 = strtoul(result->getString(4), NULL, 16);
-		uint64 crc2 = strtoul(result->getString(5), NULL, 16);
-		uint64 crc3 = strtoul(result->getString(6), NULL, 16);
-
-		uint64 cell = result->getUnsignedLong(8);
-		float worldx = result->getFloat(9);
-		float worldy = result->getFloat(10);
-		float worldz = result->getFloat(11);
-		float cellx = result->getFloat(12);
-		float celly = result->getFloat(13);
-		float cellz = result->getFloat(14);
-		float oY = result->getFloat(15);
-		float oW = result->getFloat(16);
-
-		uint8 planetmapid = result->getInt(18);
-
-		float x = worldx;
-		float y = worldy;
-		float z = worldz;
-
-		if (cell != 0) {
-			x = cellx;
-			y = celly;
-			z = cellz;
-		}
-
-		int trainerID = result->getInt(17);
-
-		int rand = System::random(2);
-
-		TrainerCreature* trainer = NULL;
-		Profession* professionObject = professionManager->getProfession(profession);
-
-
-		ManagedReference<CreatureObject*> trainerCreature = NULL;
-
-		//TODO: convert the trainer table crcs to server templates with appropiate game object type see object/mobile/dressed_merchant_trainer_01.lua
-		/*if (rand == 0 && crc1 != 0) {
-			trainerCreature = spawnCreature(crc1, x, z, y, cell);
-		} else if (rand == 1 && crc2 != 0) {
-			trainerCreature = spawnCreature(crc2, x, z, y, cell);
-		} else {
-			trainerCreature = spawnCreature(crc3, x, z, y, cell);
-		}*/
-
-		uint64 CRC = 0;
-		if (rand == 0 && crc1 != 0)
-			CRC = crc1;
-		else if (rand == 1 && crc2 != 0)
-			CRC = crc2;
-		else
-			CRC = crc3;
-
-		trainerCreature = spawnCreature(CRC, x, z, y, cell);
-
-		//trainerCreature
-
-		if (trainerCreature->isTrainerCreature()) {
-			trainer = (TrainerCreature*) trainerCreature.get();
-			StringId nameId("creature_names", name);
-			trainer->setObjectName(nameId);
-
-			trainer->setProfession(professionObject);
-			trainer->setTrainerID(trainerID);
-
-			trainer->setDirection(oW, 0, oY, 0);
-
-			trainer->setLocation(location);
-		}
-
-
-		/*if (rand == 0 && crc1 != 0)
-			trainer = spawnTrainer(profession, name, "", crc1, cell, x, y, z, oY, oW, true, trainerID);
-		else if (rand == 1 && crc2 != 0)
-			trainer = spawnTrainer(profession, name, "", crc2, cell, x, y, z, oY, oW, true, trainerID);
-		else
-			trainer = spawnTrainer(profession, name, "", crc3, cell, x, y, z, oY, oW, true, trainerID);
-
-			*/
-
-
-		//TODO: Replace this once thoop commits his trainer fix.
-		//UnicodeString trainername = makeCreatureName(customname);
-		trainer->setCustomObjectName(customname, false);
-
-		/*if (planetmapid > 0)
-			zone->addMapLocation(trainer->getObjectID(), trainername, worldx, worldy, 19, planetmapid, 0);*/
-	}
-
+	//TODO: Load trainers in same Lua as creatures.
 }
 
 void CreatureManagerImplementation::loadMissionSpawns() {
 	info("loading mission spawns...", true);
 
-	int planetid = zone->getZoneID();
-
-	Reference<ResultSet*> result = NULL;
-	StringBuffer query;
-	query << "SELECT * FROM mission_manager_npcs WHERE zoneid = " << planetid << ";";
-
-	//int i = 0;
-
-	try {
-		result = ServerDatabase::instance()->executeQuery(query);
-
-		while (result->next()) {
-			uint64 parentid = result->getUnsignedLong(2);
-			String templateFile = result->getString(3);
-			float ox = result->getFloat(4);
-			float oy = result->getFloat(5);
-			float oz = result->getFloat(6);
-			float ow = result->getFloat(7);
-			float x = result->getFloat(8);
-			float z = result->getFloat(9);
-			float y = result->getFloat(10);
-			int level = result->getInt(11);
-			String anim = result->getString(12);
-			int creatureBitmask = result->getInt(13);
-
-			if (z == 0 && parentid == 0)
-				z = zone->getHeight(x, y);
-
-			ManagedReference<CreatureObject*> creature = spawnCreature(templateFile.hashCode(), x, z, y, parentid);
-
-			if (creature == NULL) {
-				error("trying to spawn unknown creature " + templateFile);
-			} else {
-				ManagedReference<SceneObject*> parentObject;
-
-				if (parentid != 0) {
-					parentObject = zoneServer->getObject(parentid);
-				}
-
-				creature->setDirection(ow, ox, oy, oz);
-				creature->setLevel(level);
-				creature->setMoodString(anim);
-				creature->setPvpStatusBitmask(0);
-				creature->setOptionsBitmask(creatureBitmask);
-
-				if (creature->isAiAgent()) {
-					AiAgent* aiAgent = (AiAgent*)creature.get();
-					aiAgent->setHomeLocation(x, z, y, parentObject);
-					aiAgent->setRespawnTimer(60);
-					aiAgent->setDespawnOnNoPlayerInRange(false);
-
-					NameManager* nm = zoneProcessor->getNameManager();
-					if (nm != NULL)
-						aiAgent->setCustomObjectName(nm->makeCreatureName(true), false);
-
-					PlanetManager* pmng = zone->getPlanetManager();
-
-					if (pmng != NULL)
-						pmng->addMissionNpc(aiAgent);
-				}
-			}
-
-			//++i;
-		}
-
-	} catch (Exception& e) {
-		error(e.getMessage());
-	} catch (...) {
-		error("unreported exception caught in CreatureManagerImplementation::loadMissionSpawns()");
-
-		throw;
-	}
-
-	//info("mission npcs spawned: " + String::valueOf(i), true);
+	//TODO: Load in same lua as creatures.
 }
 
 void CreatureManagerImplementation::loadInformants() {
 	info("loading informants...", true);
 
-	int planetid = zone->getZoneID();
-
-	Reference<ResultSet*> result;
-	StringBuffer query;
-	query << "SELECT * FROM mission_manager_informants WHERE planet = " << planetid << ";";
-
-	try {
-		result = ServerDatabase::instance()->executeQuery(query);
-
-		while (result->next()) {
-			uint64 cell = result->getUnsignedLong(2);
-			float x = result->getFloat(3);
-			float y = result->getFloat(4);
-			float z = result->getFloat(5);
-			float oY = result->getFloat(6);
-			float oW = result->getFloat(7);
-			int level = result->getInt(8);
-
-			InformantCreature* informant = NULL;
-			ManagedReference<CreatureObject*> informantCreature = NULL;
-
-			// is this the only informant CRC?
-			informantCreature = spawnCreature(String("object/mobile/dressed_hutt_informant_quest.iff").hashCode(), x, z, y, cell);
-
-			if (informantCreature->isInformantCreature()) {
-				informant = (InformantCreature*) informantCreature.get();
-				informant->setLevel(level);
-
-				informant->setDirection(oW, 0, oY, 0);
-			}
-
-			NameManager* nm = zoneProcessor->getNameManager();
-			if (nm != NULL && informant != NULL)
-				informant->setCustomObjectName(nm->makeCreatureName(true), false);
-		}
-	} catch (Exception& e) {
-		error(e.getMessage());
-	} catch (...) {
-		error("unreported exception caught in CreatureManagerImplementation::loadInformants()");
-
-		throw;
-	}
-
+	//TODO: Load in same lua as creatures.
 }
 
 void CreatureManagerImplementation::harvest(Creature* creature, PlayerCreature* player, int selectedID) {
@@ -662,14 +359,14 @@ void CreatureManagerImplementation::harvest(Creature* creature, PlayerCreature* 
 
 	int quantityExtracted = int(quantity * float(player->getSkillMod("creature_harvesting") / 100.0f));
 
-	ManagedReference<ResourceSpawn*> resourceSpawn = resourceManager->getCurrentSpawn(restype, player->getZone()->getZoneID());
+	ManagedReference<ResourceSpawn*> resourceSpawn = resourceManager->getCurrentSpawn(restype, player->getZone()->getTerrainName());
 
 	if (resourceSpawn == NULL) {
 		player->sendSystemMessage("Error: Server cannot locate a current spawn of " + restype);
 		return;
 	}
 
-	float density = resourceSpawn->getDensityAt(player->getZone()->getZoneID(), player->getPositionX(), player->getPositionY());
+	float density = resourceSpawn->getDensityAt(player->getZone()->getTerrainName(), player->getPositionX(), player->getPositionY());
 
 	String creatureHealth = "";
 

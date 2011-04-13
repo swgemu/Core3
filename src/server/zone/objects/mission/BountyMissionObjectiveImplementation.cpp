@@ -6,7 +6,7 @@
  */
 
 #include "BountyMissionObjective.h"
-#include "server/zone/objects/terrain/PlanetNames.h"
+
 #include "server/zone/objects/waypoint/WaypointObject.h"
 #include "server/zone/objects/creature/informant/InformantCreature.h"
 #include "server/zone/Zone.h"
@@ -96,12 +96,12 @@ void BountyMissionObjectiveImplementation::complete() {
 	missionManager->removeMission(mission, player);
 }
 
-void BountyMissionObjectiveImplementation::spawnTarget(int zoneID) {
+void BountyMissionObjectiveImplementation::spawnTarget(const String& terrainName) {
 	if (npcTarget != NULL && npcTarget->isInQuadTree())
 		return;
 
 	ZoneServer* zoneServer = getPlayerOwner()->getZoneServer();
-	Zone* zone = zoneServer->getZone(zoneID);
+	Zone* zone = zoneServer->getZone(terrainName);
 	CreatureManager* cmng = zone->getCreatureManager();
 
 	ManagedReference<CreatureObject*> npcCreature = NULL;
@@ -150,7 +150,7 @@ int BountyMissionObjectiveImplementation::notifyObserverEvent(MissionObserver* o
 		// switch mission level to determine how the waypoint is given
 		// level 0: give straight waypoint (target on planet)
 		if (level == 0) {
-			spawnTarget(player->getZone()->getZoneID());
+			spawnTarget(player->getZone()->getTerrainName());
 
 			WaypointObject* waypoint = mission->getWaypointToMission();
 

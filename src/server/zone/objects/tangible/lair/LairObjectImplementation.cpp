@@ -132,7 +132,7 @@ void LairObjectImplementation::healLair(TangibleObject* attacker) {
 	broadcastMessage(heal, false);
 
 	PlayClientEffectLoc* healLoc = new PlayClientEffectLoc("clienteffect/healing_healdamage.cef",
-			zone->getZoneID(), getPositionX(),
+			zone->getTerrainName(), getPositionX(),
 			getPositionZ(), getPositionY());
 	broadcastMessage(healLoc, false);
 }

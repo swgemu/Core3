@@ -151,8 +151,6 @@ using namespace server::zone::objects::scene;
 
 #include "server/zone/managers/planet/RegionMap.h"
 
-#include "server/zone/objects/terrain/PlanetNames.h"
-
 #include "server/zone/managers/terrain/TerrainManager.h"
 
 #include "server/zone/managers/planet/ShuttleMap.h"

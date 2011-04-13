@@ -30,7 +30,7 @@ public:
 
 	void loadMap(Zone* z) {
 		zone = z;
-		String planetName = zone->getPlanetName();
+		String planetName = zone->getTerrainName();
 
 		Lua::init();
 

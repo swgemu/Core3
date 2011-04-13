@@ -43,7 +43,6 @@ which carries forward this exception.
 */
 
 #include "Zone.h"
-#include "objects/terrain/PlanetNames.h"
 
 #include "ZoneProcessServer.h"
 #include "objects/scene/SceneObject.h"
@@ -54,7 +53,7 @@ which carries forward this exception.
 #include "server/zone/managers/objectcontroller/ObjectController.h"
 #include "server/zone/templates/SharedObjectTemplate.h"
 #include "server/zone/packets/player/GetMapLocationsResponseMessage.h"
-#include "server/zone/objects/terrain/PlanetNames.h"
+
 #include "server/zone/objects/building/cloning/CloningBuildingObject.h"
 #include "server/zone/objects/cell/CellObject.h"
 #include "server/zone/templates/SharedObjectTemplate.h"
@@ -63,11 +62,11 @@ which carries forward this exception.
 #include "server/zone/templates/appearance/PathGraph.h"
 
 
-ZoneImplementation::ZoneImplementation(ZoneProcessServer* serv, int id) : ManagedObjectImplementation(), QuadTree(-8192, -8192, 8192, 8192) {
-	zoneID = id;
-
+ZoneImplementation::ZoneImplementation(ZoneProcessServer* serv, const String& zoneName) : ManagedObjectImplementation(), QuadTree(-8192, -8192, 8192, 8192) {
 	processor = serv;
 	server = processor->getZoneServer();
+
+	terrainName = zoneName;
 
 	heightMap = new HeightMap();
 	regionTree = new QuadTree(-8192, -8192, 8192, 8192);
@@ -86,7 +85,7 @@ void ZoneImplementation::initializePrivateData() {
 	planetManager = new PlanetManager(_this, processor);
 
 	creatureManager = new CreatureManager(_this);
-	creatureManager->deploy("CreatureManager", zoneID);
+	creatureManager->deploy("CreatureManager " + terrainName);
 	creatureManager->setZoneProcessor(processor);
 
 	cityManager = new CityManager(_this);
@@ -108,22 +107,14 @@ void ZoneImplementation::initializeTransientMembers() {
 
 	mapLocations.setNoDuplicateInsertPlan();
 
-	if (zoneID <= 9) {
-		String planetName = Planet::getPlanetName(zoneID);
-
-		heightMap->load("planets/" + planetName + "/" + planetName + ".hmap");
-	}
+	//heightMap->load("planets/" + planetName + "/" + planetName + ".hmap");
 }
 
 void ZoneImplementation::startManagers() {
 	//if (zoneID > 45) //TODO: Change back to 9 sometimes. We use Zone 10 (Space Corellia) as a "prison" for the CSRs sending bad players there
 	//	return;
 
-	if (zoneID <= 9) {
-		String planetName = Planet::getPlanetName(zoneID);
-
-		heightMap->load("planets/" + planetName + "/" + planetName + ".hmap");
-	}
+	//heightMap->load("planets/" + planetName + "/" + planetName + ".hmap");
 
 	planetManager->initialize();
 
@@ -288,8 +279,8 @@ void ZoneImplementation::dropSceneObject(SceneObject* object)  {
 	mapLocations.dropObject(object);
 }
 
-void ZoneImplementation::sendMapLocationsTo(const String& planetName, SceneObject* player) {
-	GetMapLocationsResponseMessage* gmlr = new GetMapLocationsResponseMessage(planetName);
+void ZoneImplementation::sendMapLocationsTo(SceneObject* player) {
+	GetMapLocationsResponseMessage* gmlr = new GetMapLocationsResponseMessage(terrainName);
 
 	mapLocations.rlock();
 
@@ -458,12 +449,6 @@ SortedVector<ManagedReference<SceneObject*> > ZoneImplementation::getPlanetaryOb
 	mapLocations.runlock();
 
 	return retVector;
-}
-
-String ZoneImplementation::getPlanetName() {
-	String planetName = Planet::getPlanetName(getZoneID());
-
-	return planetName;
 }
 
 float ZoneImplementation::getMinX() {

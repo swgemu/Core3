@@ -11,7 +11,7 @@
 #include "../MessageCallback.h"
 
 #include "IsVendorOwnerResponseMessage.h"
-#include "server/zone/objects/terrain/PlanetNames.h"
+
 
 #include "server/zone/Zone.h"
 
@@ -45,7 +45,7 @@ public:
 		if (player == NULL)
 			return;
 
-		String planetString = Planet::getPlanetName(zone->getZoneID());
+		String planetString = zone->getTerrainName();
 		String vendorRegion = ""; // TODO: Vendors don't have regions impl yet.
 
 		//TODO: Relook at this! - POLONEL

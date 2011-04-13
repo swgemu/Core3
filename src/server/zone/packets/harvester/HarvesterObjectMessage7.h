@@ -18,7 +18,7 @@ public:
 		Vector<ManagedReference<ResourceSpawn*> > resourceList;
 
 		ResourceManager* resourceManager = hino->getZoneServer()->getResourceManager();
-		resourceManager->getResourceListByType(resourceList, hino->getInstallationType(), hino->getZone()->getZoneID());
+		resourceManager->getResourceListByType(resourceList, hino->getInstallationType(), hino->getZone()->getTerrainName());
 
 		insertHopperSpawnObjects(&resourceList, hino);
 

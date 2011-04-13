@@ -9,7 +9,7 @@
 #include "server/zone/templates/tangible/SharedBuildingObjectTemplate.h"
 #include "server/zone/managers/templates/TemplateManager.h"
 #include "server/zone/packets/scene/AttributeListMessage.h"
-#include "server/zone/objects/terrain/PlanetNames.h"
+
 #include "server/zone/objects/player/PlayerCreature.h"
 #include "server/zone/packets/player/EnterStructurePlacementModeMessage.h"
 
@@ -53,7 +53,7 @@ void BuildingDeedImplementation::fillAttributeList(AttributeListMessage* alm, Pl
 	for (int i = 0; i < 10; ++i) {
 		if (buildingTemplate->isAllowedZone(i)) {
 			StringBuffer planetName;
-			planetName << "@planet_n:" << Planet::getPlanetName(i);
+			planetName << "@planet_n:" << zone->getTerrainName();
 			alm->insertAttribute("examine_scene", planetName.toString()); //Can Be Built On
 		}
 	}

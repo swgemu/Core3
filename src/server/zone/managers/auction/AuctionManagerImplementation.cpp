@@ -26,7 +26,7 @@
 #include "server/zone/objects/player/PlayerCreature.h"
 #include "server/zone/objects/region/Region.h"
 #include "server/zone/objects/area/BadgeActiveArea.h"
-#include "server/zone/objects/terrain/PlanetNames.h"
+
 #include "server/zone/objects/scene/SceneObject.h"
 #include "server/zone/objects/waypoint/WaypointObject.h"
 #include "server/zone/ZoneServer.h"
@@ -658,7 +658,7 @@ int AuctionManagerImplementation::checkRetrieve(PlayerCreature* player, uint64 o
 			}
 		} else {
 			StringBuffer msg;
-			msg << "null area for bazaar terminal at" << strongRef->getPositionX() << " " << strongRef->getPositionY() << " zone " << strongRef->getZone()->getZoneID();
+			msg << "null area for bazaar terminal at" << strongRef->getPositionX() << " " << strongRef->getPositionY() << " zone " << strongRef->getZone()->getTerrainName();
 			error(msg);
 		}
 	}
@@ -791,15 +791,13 @@ AuctionItem* AuctionManagerImplementation::createVendorItem(PlayerCreature* play
 	expireTime.addMiliTime(duration * 1000);
 	uint64 expire = expireTime.getMiliTime() / 1000;
 
-	int planet = zone->getZoneID();
-
 	String playername = player->getFirstName().toLowerCase();
 	String descr = description.toString();
-	String planetStr = Planet::getPlanetName(planet);
+	String planetStr = zone->getTerrainName();
 
 	AuctionItem* item  = new AuctionItem(objectToSell->getObjectID());
 
-	item->setPlanet(planet);
+	item->setPlanet(planetStr);
 
 	ActiveArea* area = terminal->getActiveRegion();
 	String region = "";

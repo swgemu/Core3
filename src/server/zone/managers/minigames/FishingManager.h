@@ -348,7 +348,7 @@ protected:
 
 	Vector<String> rareLoot;
 
-	Vector<int> color;
+	VectorMap<String, int> color;
 
 	Vector<int> fishLength;
 

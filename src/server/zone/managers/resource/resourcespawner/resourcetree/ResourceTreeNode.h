@@ -52,7 +52,6 @@ which carries forward this exception.
 #define RESOURCETREENODE_H_
 
 #include "ResourceTreeEntry.h"
-#include "server/zone/objects/terrain/PlanetNames.h"
 #include "server/zone/objects/player/sui/listbox/SuiListBox.h"
 
 class ResourceTreeNode {

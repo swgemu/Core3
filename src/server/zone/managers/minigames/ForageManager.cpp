@@ -14,7 +14,7 @@
  *	ForageManagerStub
  */
 
-enum {RPC_DELETEFORAGEAREACOLLECTION__STRING_ = 6,RPC_STARTFORAGING__PLAYERCREATURE_BOOL_,RPC_FINISHFORAGING__PLAYERCREATURE_BOOL_FLOAT_FLOAT_INT_,RPC_FORAGEGIVEITEMS__PLAYERCREATURE_BOOL_FLOAT_FLOAT_INT_,RPC_FORAGEGIVERESOURCE__PLAYERCREATURE_FLOAT_FLOAT_INT_};
+enum {RPC_DELETEFORAGEAREACOLLECTION__STRING_ = 6,RPC_STARTFORAGING__PLAYERCREATURE_BOOL_,RPC_FINISHFORAGING__PLAYERCREATURE_BOOL_FLOAT_FLOAT_STRING_,RPC_FORAGEGIVEITEMS__PLAYERCREATURE_BOOL_FLOAT_FLOAT_STRING_,RPC_FORAGEGIVERESOURCE__PLAYERCREATURE_FLOAT_FLOAT_STRING_};
 
 ForageManager::ForageManager(ZoneServer* server) : Observer(DummyConstructorParameter::instance()) {
 	ForageManagerImplementation* _implementation = new ForageManagerImplementation(server);
@@ -58,53 +58,53 @@ void ForageManager::startForaging(PlayerCreature* player, bool scoutForage) {
 		_implementation->startForaging(player, scoutForage);
 }
 
-void ForageManager::finishForaging(PlayerCreature* player, bool scoutForage, float forageX, float forageY, int planet) {
+void ForageManager::finishForaging(PlayerCreature* player, bool scoutForage, float forageX, float forageY, const String& planet) {
 	ForageManagerImplementation* _implementation = (ForageManagerImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_FINISHFORAGING__PLAYERCREATURE_BOOL_FLOAT_FLOAT_INT_);
+		DistributedMethod method(this, RPC_FINISHFORAGING__PLAYERCREATURE_BOOL_FLOAT_FLOAT_STRING_);
 		method.addObjectParameter(player);
 		method.addBooleanParameter(scoutForage);
 		method.addFloatParameter(forageX);
 		method.addFloatParameter(forageY);
-		method.addSignedIntParameter(planet);
+		method.addAsciiParameter(planet);
 
 		method.executeWithVoidReturn();
 	} else
 		_implementation->finishForaging(player, scoutForage, forageX, forageY, planet);
 }
 
-void ForageManager::forageGiveItems(PlayerCreature* player, bool scoutForage, float forageX, float forageY, int planet) {
+void ForageManager::forageGiveItems(PlayerCreature* player, bool scoutForage, float forageX, float forageY, const String& planet) {
 	ForageManagerImplementation* _implementation = (ForageManagerImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_FORAGEGIVEITEMS__PLAYERCREATURE_BOOL_FLOAT_FLOAT_INT_);
+		DistributedMethod method(this, RPC_FORAGEGIVEITEMS__PLAYERCREATURE_BOOL_FLOAT_FLOAT_STRING_);
 		method.addObjectParameter(player);
 		method.addBooleanParameter(scoutForage);
 		method.addFloatParameter(forageX);
 		method.addFloatParameter(forageY);
-		method.addSignedIntParameter(planet);
+		method.addAsciiParameter(planet);
 
 		method.executeWithVoidReturn();
 	} else
 		_implementation->forageGiveItems(player, scoutForage, forageX, forageY, planet);
 }
 
-void ForageManager::forageGiveResource(PlayerCreature* player, float forageX, float forageY, int planet) {
+void ForageManager::forageGiveResource(PlayerCreature* player, float forageX, float forageY, const String& planet) {
 	ForageManagerImplementation* _implementation = (ForageManagerImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_FORAGEGIVERESOURCE__PLAYERCREATURE_FLOAT_FLOAT_INT_);
+		DistributedMethod method(this, RPC_FORAGEGIVERESOURCE__PLAYERCREATURE_FLOAT_FLOAT_STRING_);
 		method.addObjectParameter(player);
 		method.addFloatParameter(forageX);
 		method.addFloatParameter(forageY);
-		method.addSignedIntParameter(planet);
+		method.addAsciiParameter(planet);
 
 		method.executeWithVoidReturn();
 	} else
@@ -294,14 +294,14 @@ Packet* ForageManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv
 	case RPC_STARTFORAGING__PLAYERCREATURE_BOOL_:
 		startForaging((PlayerCreature*) inv->getObjectParameter(), inv->getBooleanParameter());
 		break;
-	case RPC_FINISHFORAGING__PLAYERCREATURE_BOOL_FLOAT_FLOAT_INT_:
-		finishForaging((PlayerCreature*) inv->getObjectParameter(), inv->getBooleanParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getSignedIntParameter());
+	case RPC_FINISHFORAGING__PLAYERCREATURE_BOOL_FLOAT_FLOAT_STRING_:
+		finishForaging((PlayerCreature*) inv->getObjectParameter(), inv->getBooleanParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getAsciiParameter(_param4_finishForaging__PlayerCreature_bool_float_float_String_));
 		break;
-	case RPC_FORAGEGIVEITEMS__PLAYERCREATURE_BOOL_FLOAT_FLOAT_INT_:
-		forageGiveItems((PlayerCreature*) inv->getObjectParameter(), inv->getBooleanParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getSignedIntParameter());
+	case RPC_FORAGEGIVEITEMS__PLAYERCREATURE_BOOL_FLOAT_FLOAT_STRING_:
+		forageGiveItems((PlayerCreature*) inv->getObjectParameter(), inv->getBooleanParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getAsciiParameter(_param4_forageGiveItems__PlayerCreature_bool_float_float_String_));
 		break;
-	case RPC_FORAGEGIVERESOURCE__PLAYERCREATURE_FLOAT_FLOAT_INT_:
-		forageGiveResource((PlayerCreature*) inv->getObjectParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getSignedIntParameter());
+	case RPC_FORAGEGIVERESOURCE__PLAYERCREATURE_FLOAT_FLOAT_STRING_:
+		forageGiveResource((PlayerCreature*) inv->getObjectParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getAsciiParameter(_param3_forageGiveResource__PlayerCreature_float_float_String_));
 		break;
 	default:
 		return NULL;
@@ -318,15 +318,15 @@ void ForageManagerAdapter::startForaging(PlayerCreature* player, bool scoutForag
 	((ForageManagerImplementation*) impl)->startForaging(player, scoutForage);
 }
 
-void ForageManagerAdapter::finishForaging(PlayerCreature* player, bool scoutForage, float forageX, float forageY, int planet) {
+void ForageManagerAdapter::finishForaging(PlayerCreature* player, bool scoutForage, float forageX, float forageY, const String& planet) {
 	((ForageManagerImplementation*) impl)->finishForaging(player, scoutForage, forageX, forageY, planet);
 }
 
-void ForageManagerAdapter::forageGiveItems(PlayerCreature* player, bool scoutForage, float forageX, float forageY, int planet) {
+void ForageManagerAdapter::forageGiveItems(PlayerCreature* player, bool scoutForage, float forageX, float forageY, const String& planet) {
 	((ForageManagerImplementation*) impl)->forageGiveItems(player, scoutForage, forageX, forageY, planet);
 }
 
-void ForageManagerAdapter::forageGiveResource(PlayerCreature* player, float forageX, float forageY, int planet) {
+void ForageManagerAdapter::forageGiveResource(PlayerCreature* player, float forageX, float forageY, const String& planet) {
 	((ForageManagerImplementation*) impl)->forageGiveResource(player, forageX, forageY, planet);
 }
 

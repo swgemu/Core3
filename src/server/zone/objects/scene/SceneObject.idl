@@ -751,12 +751,12 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	 * Switches zone and position of this object
 	 * @pre { this object is locked }
 	 * @post { this object is locked, is in the new zone and in the new position }
-	 * @param newZoneID new zone id where the object will be inserted
+	 * @param newTerrainName Name of the new terrain where the player will be inserted.
 	 * @param newPositionX new position X
 	 * @param newPositionZ new position Z
 	 * @param newPositionY new position Y
 	 */
-	public native abstract void switchZone(int newZoneID, float newPostionX, float newPositionZ, float newPositionY, unsigned long parentID = 0);
+	public native abstract void switchZone(final string newTerrainName, float newPostionX, float newPositionZ, float newPositionY, unsigned long parentID = 0);
 	
 	public native abstract void teleport(float newPositionX, float newPositionZ, float newPositionY, unsigned long parentID = 0);
 

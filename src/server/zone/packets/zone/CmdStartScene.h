@@ -57,19 +57,18 @@ which carries forward this exception.
 class CmdStartScene : public BaseMessage {
 public:
 	CmdStartScene(PlayerCreature* creo) : BaseMessage(50) {
-		String terrainName;
 		Zone* zone = creo->getZone();
-		terrainName = Terrain::getTerrainName(zone->getZoneID());
 
 		insertShort(0x09);
 		insertInt(0x3AE6DFAE);
 		insertByte(0);
 		insertLong(creo->getObjectID());
-	 	insertAscii(terrainName); //terrain name
+	 	insertAscii(zone->getTerrainName()); //terrain name
 	 	insertFloat(creo->getPositionX()); //X
 	 	insertFloat(creo->getPositionZ()); //Z
 	 	insertFloat(creo->getPositionY()); //Y
 	 	
+	 	//TODO: This should be deprecated when possible.
 	 	insertAscii(Races::getRace(creo->getRaceID()));
 	 	
 	 	insertLong(creo->getZone()->getGalacticTime()); //galactic time

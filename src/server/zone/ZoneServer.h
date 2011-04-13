@@ -420,7 +420,9 @@ public:
 
 	int getGalaxyID();
 
-	String getServerName();
+	String getGalaxyName();
+
+	void setGalaxyName(const String& name);
 
 	bool isServerLocked();
 
@@ -432,7 +434,7 @@ public:
 
 	int getServerState();
 
-	Zone* getZone(int index);
+	Zone* getZone(const String& terrainName);
 
 	int getZoneCount();
 
@@ -476,8 +478,6 @@ public:
 
 	Time* getStartTimestamp();
 
-	void setServerName(const String& servername);
-
 	void setGalaxyID(int galaxyid);
 
 	void setServerState(int state);
@@ -501,8 +501,8 @@ protected:
 
 	virtual ~ZoneServer();
 
+	String _return_getGalaxyName;
 	String _return_getMessageoftheDay;
-	String _return_getServerName;
 
 	friend class ZoneServerHelper;
 };
@@ -524,7 +524,7 @@ class ZoneServerImplementation : public ManagedServiceImplementation, public Log
 
 	ManagedReference<ZoneProcessServer* > processor;
 
-	Vector<ManagedReference<Zone* > > zones;
+	VectorMap<String, ManagedReference<Zone* > > zones;
 
 	ObjectManager* objectManager;
 
@@ -570,7 +570,7 @@ class ZoneServerImplementation : public ManagedServiceImplementation, public Log
 
 	int serverState;
 
-	String name;
+	String galaxyName;
 
 	String messageoftheDay;
 
@@ -653,7 +653,9 @@ public:
 
 	int getGalaxyID();
 
-	String getServerName();
+	String getGalaxyName();
+
+	void setGalaxyName(const String& name);
 
 	bool isServerLocked();
 
@@ -665,7 +667,7 @@ public:
 
 	int getServerState();
 
-	Zone* getZone(int index);
+	Zone* getZone(const String& terrainName);
 
 	int getZoneCount();
 
@@ -708,8 +710,6 @@ public:
 	ProfessionManager* getProfessionManager();
 
 	Time* getStartTimestamp();
-
-	void setServerName(const String& servername);
 
 	void setGalaxyID(int galaxyid);
 
@@ -816,7 +816,9 @@ public:
 
 	int getGalaxyID();
 
-	String getServerName();
+	String getGalaxyName();
+
+	void setGalaxyName(const String& name);
 
 	bool isServerLocked();
 
@@ -828,7 +830,7 @@ public:
 
 	int getServerState();
 
-	Zone* getZone(int index);
+	Zone* getZone(const String& terrainName);
 
 	int getZoneCount();
 
@@ -866,8 +868,6 @@ public:
 
 	Account* getAccount(unsigned int accountID);
 
-	void setServerName(const String& servername);
-
 	void setGalaxyID(int galaxyid);
 
 	void setServerState(int state);
@@ -883,7 +883,8 @@ public:
 	String getMessageoftheDay();
 
 protected:
-	String _param0_setServerName__String_;
+	String _param0_setGalaxyName__String_;
+	String _param0_getZone__String_;
 	String _param0_changeMessageoftheDay__String_;
 };
 

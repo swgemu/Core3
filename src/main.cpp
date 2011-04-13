@@ -158,72 +158,7 @@ void testTransactions() {
 	exit(0);
 }
 
-int main(int argc, char* argv[]) {
-	/*
-	Time time;
-
-	String trePath = "/home/crush/swg/";
-
-	TreeArchive archive;
-	archive.unpackFile(trePath + "bottom.tre");
-	archive.unpackFile(trePath + "default_patch.tre");
-	archive.unpackFile(trePath + "data_animation_00.tre");
-	archive.unpackFile(trePath + "data_music_00.tre");
-	archive.unpackFile(trePath + "data_other_00.tre");
-	archive.unpackFile(trePath + "data_sample_00.tre");
-	archive.unpackFile(trePath + "data_sample_01.tre");
-	archive.unpackFile(trePath + "data_sample_02.tre");
-	archive.unpackFile(trePath + "data_sample_03.tre");
-	archive.unpackFile(trePath + "data_sample_04.tre");
-	archive.unpackFile(trePath + "data_skeletal_mesh_00.tre");
-	archive.unpackFile(trePath + "data_skeletal_mesh_01.tre");
-	archive.unpackFile(trePath + "data_static_mesh_00.tre");
-	archive.unpackFile(trePath + "data_static_mesh_01.tre");
-	archive.unpackFile(trePath + "data_texture_00.tre");
-	archive.unpackFile(trePath + "data_texture_01.tre");
-	archive.unpackFile(trePath + "data_texture_02.tre");
-	archive.unpackFile(trePath + "data_texture_03.tre");
-	archive.unpackFile(trePath + "data_texture_04.tre");
-	archive.unpackFile(trePath + "data_texture_05.tre");
-	archive.unpackFile(trePath + "data_texture_06.tre");
-	archive.unpackFile(trePath + "data_texture_07.tre");
-	archive.unpackFile(trePath + "patch_00.tre");
-	archive.unpackFile(trePath + "patch_01.tre");
-	archive.unpackFile(trePath + "patch_02.tre");
-	archive.unpackFile(trePath + "patch_03.tre");
-	archive.unpackFile(trePath + "patch_04.tre");
-	archive.unpackFile(trePath + "patch_05.tre");
-	archive.unpackFile(trePath + "patch_06.tre");
-	archive.unpackFile(trePath + "patch_07.tre");
-	archive.unpackFile(trePath + "patch_08.tre");
-	archive.unpackFile(trePath + "patch_09.tre");
-	archive.unpackFile(trePath + "patch_10.tre");
-	archive.unpackFile(trePath + "data_sku1_00.tre");
-	archive.unpackFile(trePath + "data_sku1_01.tre");
-	archive.unpackFile(trePath + "data_sku1_02.tre");
-	archive.unpackFile(trePath + "data_sku1_03.tre");
-	archive.unpackFile(trePath + "data_sku1_04.tre");
-	archive.unpackFile(trePath + "data_sku1_05.tre");
-	archive.unpackFile(trePath + "patch_11_00.tre");
-	archive.unpackFile(trePath + "patch_11_01.tre");
-	archive.unpackFile(trePath + "patch_11_02.tre");
-	archive.unpackFile(trePath + "patch_11_03.tre");
-	archive.unpackFile(trePath + "data_sku1_06.tre");
-	archive.unpackFile(trePath + "data_sku1_07.tre");
-	archive.unpackFile(trePath + "patch_12_00.tre");
-	archive.unpackFile(trePath + "patch_sku1_12_00.tre");
-	archive.unpackFile(trePath + "patch_13_00.tre");
-	archive.unpackFile(trePath + "patch_sku1_13_00.tre");
-	archive.unpackFile(trePath + "patch_14_00.tre");
-	archive.unpackFile(trePath + "patch_sku1_14_00.tre");
-
-	archive.printNodesByPath("terrain");
-
-	System::out << "Read in " << time.miliDifference() << endl;
-
-
-	return 0;*/
-
+int main(int argc, char* argv[])
 	try {
 		Vector<String> arguments;
 		for (int i = 1; i < argc; ++i) {

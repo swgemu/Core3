@@ -62,7 +62,7 @@ import server.zone.objects.player.PlayerCreature;
 import server.zone.objects.scene.SceneObject;
 include server.zone.objects.region.Region;
 include server.zone.managers.planet.RegionMap;
-include server.zone.objects.terrain.PlanetNames;
+
 include server.zone.managers.terrain.TerrainManager;
 include server.zone.managers.planet.ShuttleMap;
 include server.zone.managers.planet.NoBuildAreaMap;
@@ -119,7 +119,7 @@ class PlanetManager extends ManagedService implements Logger {
 		zone = planet;
 		server = srv;
 				
-		Logger.setLoggingName("PlanetManager " + zone.getPlanetName());
+		Logger.setLoggingName("PlanetManager " + zone.getTerrainName());
 		Logger.setLogging(false);
 		Logger.setGlobalLogging(true);
 		

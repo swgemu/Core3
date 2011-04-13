@@ -48,7 +48,7 @@
 #include "server/zone/objects/scene/SceneObject.h"
 #include "server/chat/ChatManager.h"
 #include "server/zone/Zone.h"
-#include "server/zone/objects/terrain/PlanetNames.h"
+
 #include "server/zone/objects/waypoint/WaypointObject.h"
 #include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/managers/planet/MapLocationType.h"
@@ -115,7 +115,7 @@ public:
 		PlayerObject* ghost = player->getPlayerObject();
 
 		Zone* zone = player->getZone();
-		String planet = Planet::getPlanetName(zone->getZoneID());
+		String planet = zone->getTerrainName();
 		StringIdChatParameter msg;
 
 		ManagedReference<WaypointObject*> wpt =
@@ -165,7 +165,7 @@ public:
 		String objClientString = stringManager->getStringId(objFullName.hashCode());
 
 		if (regClientString.isEmpty()) {
-			regClientString = object->getZone()->getPlanetName();
+			regClientString = object->getZone()->getTerrainName();
 			regClientString[0] = toupper(regClientString[0]);
 		}
 

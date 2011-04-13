@@ -14,6 +14,7 @@
 #include "server/zone/templates/SharedObjectTemplate.h"
 
 #include "treLib/treArchive.hpp"
+#include "tre3/TreeArchive.h"
 
 class TemplateCRCMap;
 class ClientTemplateCRCMap;
@@ -25,7 +26,7 @@ class FloorMesh;
 class PortalLayout;
 class AppearanceTemplate;
 
-class TreeArchive;
+class TreeDirectory;
 
 class TemplateManager : public Singleton<TemplateManager>, public Logger {
 	TemplateCRCMap* templateCRCMap;
@@ -61,6 +62,10 @@ public:
 	SharedObjectTemplate* getTemplate(uint32 key);
 
 	IffStream* openIffFile(const String& fileName);
+
+	TreeDirectory* getTreeDirectory(const String& path) {
+		return treeDirectory->getDirectory(path);
+	}
 
 	FloorMesh* getFloorMesh(const String& fileName);
 	PortalLayout* getPortalLayout(const String& fileName);

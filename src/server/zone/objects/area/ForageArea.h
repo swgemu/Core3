@@ -15,7 +15,7 @@ protected:
 
 	static const uint8 SIZE = 10;     //Determines the side length of the forage area 'box' (in meters).
 	static const uint8 EXPIRE = 30;   //Determines the age when each area expires (in minutes).
-	uint8 planet;
+	String planet;
 	short xCoord;
 	short yCoord;
 	Time expiration;
@@ -24,15 +24,15 @@ public:
 
 	uint8 uses;
 
-     ForageArea(short playerX, short playerY, int plt) {
+     ForageArea(short playerX, short playerY, const String& plt) {
     	 xCoord = playerX;
     	 yCoord = playerY;
-    	 planet = (uint8)plt;
+    	 planet = plt;
     	 expiration.addMiliTime(EXPIRE*60000);
     	 uses = 1;
      }
 
-     int checkPermission(short playerX, short playerY, int playerPlanet) {
+     int checkPermission(short playerX, short playerY, const String& playerPlanet) {
 
     	 //Check if area is expired.
     	 if (expiration.isPast())

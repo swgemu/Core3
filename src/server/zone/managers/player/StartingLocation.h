@@ -11,9 +11,10 @@
 #include "engine/engine.h"
 #include "server/zone/templates/datatables/DataTableRow.h"
 #include "server/zone/templates/datatables/DataTableCell.h"
-#include "server/zone/objects/terrain/PlanetNames.h"
+
 
 class StartingLocation : public Object {
+	String terrainName;
 	String location;
 	String planet;
 	String cell;
@@ -26,8 +27,6 @@ class StartingLocation : public Object {
 	float radius;
 	float heading;
 
-	int zoneID;
-
 public:
 	StartingLocation() {
 		x = 0.f;
@@ -35,7 +34,6 @@ public:
 		z = 0.f;
 		radius = 0.f;
 		heading = 0.f;
-		zoneID = 0;
 	}
 
 	StartingLocation(const StartingLocation& sl) : Object() {
@@ -49,7 +47,7 @@ public:
 		description = sl.description;
 		radius = sl.radius;
 		heading = sl.heading;
-		zoneID = sl.zoneID;
+		terrainName = sl.terrainName;
 	}
 
 	StartingLocation& operator= (const StartingLocation& sl) {
@@ -66,7 +64,7 @@ public:
 		description = sl.description;
 		radius = sl.radius;
 		heading = sl.heading;
-		zoneID = sl.zoneID;
+		terrainName = sl.terrainName;
 
 		return *this;
 	}
@@ -87,10 +85,10 @@ public:
 		row->getCell(5)->getValue(cell);
 		row->getCell(6)->getValue(image);
 
-		//Get the zone ID from the image path.
+		//Get the terrain name from the image path.
 		//TODO: Need to find a better way to get the planet id
 		//17 = "/styles.location." 17 characters long
-		zoneID = Planet::getPlanetID(image.subString(17, image.lastIndexOf('.')));
+		terrainName = image.subString(17, image.lastIndexOf('.'));
 
 		row->getCell(7)->getValue(description);
 		row->getCell(8)->getValue(radius);
@@ -128,8 +126,8 @@ public:
 		return Long::valueOf(cell);
 	}
 
-	inline int getZoneID() const {
-		return zoneID;
+	inline String getTerrainName() const {
+		return terrainName;
 	}
 
 	inline String getLocation() const {

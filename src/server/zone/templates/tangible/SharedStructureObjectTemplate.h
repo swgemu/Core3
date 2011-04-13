@@ -12,7 +12,7 @@
 
 class SharedStructureObjectTemplate : public SharedTangibleObjectTemplate {
 protected:
-	SortedVector<unsigned int> allowedZones;
+	SortedVector<String> allowedZones;
 
 	String constructionMarkerTemplate;
 	String abilityRequired;
@@ -22,8 +22,6 @@ protected:
 
 	uint8 lotSize;
 	uint8 cityRankRequired;
-	uint8 length;
-	uint8 width;
 
 public:
 	SharedStructureObjectTemplate() {
@@ -40,8 +38,8 @@ public:
 		return lotSize;
 	}
 
-	inline bool isAllowedZone(unsigned int zoneID) {
-		return (allowedZones.find(zoneID) != -1);
+	inline bool isAllowedZone(const String& terrainName) {
+		return allowedZones.contains(terrainName);
 	}
 
 	inline int getBaseMaintenanceRate() {
@@ -54,14 +52,6 @@ public:
 
 	inline String& getAbilityRequired() {
 		return abilityRequired;
-	}
-
-	inline uint8 getLength() {
-		return length;
-	}
-
-	inline uint8 getWidth() {
-		return width;
 	}
 
 	inline uint8 getCityRankRequired() {

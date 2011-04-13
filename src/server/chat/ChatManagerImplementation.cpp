@@ -29,7 +29,7 @@
 
 #include "room/ChatRoom.h"
 #include "room/ChatRoomMap.h"
-#include "server/zone/objects/terrain/PlanetNames.h"
+
 
 
 ChatManagerImplementation::ChatManagerImplementation(ZoneServer* serv, int initsize) : ManagedServiceImplementation() {
@@ -106,7 +106,7 @@ void ChatManagerImplementation::initiateRooms() {
 		if (zone == NULL)
 			continue;
 
-		ChatRoom* planetRoom = createRoom(Planet::getPlanetName(i), core3Room);
+		ChatRoom* planetRoom = createRoom(zone->getTerrainName(), core3Room);
 		core3Room->addSubRoom(planetRoom);
 
 		ChatRoom* planetaryChat = createRoom("chat", planetRoom);

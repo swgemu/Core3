@@ -103,7 +103,7 @@ public:
 
 	void initializeTransientMembers();
 
-	void setAttributes(String& playerName, int planetID, String& timestamp, float fishLength);
+	void setAttributes(const String& playerName, const String& terrainN, String& timestamp, float fishLength);
 
 	void fillObjectMenuResponse(ObjectMenuResponse* menuResponse, PlayerCreature* player);
 
@@ -143,7 +143,7 @@ class FishObjectImplementation : public TangibleObjectImplementation {
 protected:
 	String player;
 
-	int planet;
+	String terrainName;
 
 	String timeCaught;
 
@@ -156,7 +156,7 @@ public:
 
 	void initializeTransientMembers();
 
-	void setAttributes(String& playerName, int planetID, String& timestamp, float fishLength);
+	void setAttributes(const String& playerName, const String& terrainN, String& timestamp, float fishLength);
 
 	void fillObjectMenuResponse(ObjectMenuResponse* menuResponse, PlayerCreature* player);
 
@@ -211,7 +211,7 @@ public:
 
 	void initializeTransientMembers();
 
-	void setAttributes(String& playerName, int planetID, String& timestamp, float fishLength);
+	void setAttributes(const String& playerName, const String& terrainN, String& timestamp, float fishLength);
 
 	void fillObjectMenuResponse(ObjectMenuResponse* menuResponse, PlayerCreature* player);
 
@@ -222,8 +222,9 @@ public:
 	void filet(PlayerCreature* player);
 
 protected:
-	String _param0_setAttributes__String_int_String_float_;
-	String _param2_setAttributes__String_int_String_float_;
+	String _param0_setAttributes__String_String_String_float_;
+	String _param1_setAttributes__String_String_String_float_;
+	String _param2_setAttributes__String_String_String_float_;
 };
 
 class FishObjectHelper : public DistributedObjectClassHelper, public Singleton<FishObjectHelper> {

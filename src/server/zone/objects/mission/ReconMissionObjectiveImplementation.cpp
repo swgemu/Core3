@@ -7,7 +7,7 @@
 
 #include "ReconMissionObjective.h"
 #include "server/zone/objects/area/MissionReconActiveArea.h"
-#include "server/zone/objects/terrain/PlanetNames.h"
+
 #include "server/zone/objects/waypoint/WaypointObject.h"
 #include "server/zone/objects/tangible/lair/LairObject.h"
 #include "server/zone/Zone.h"
@@ -40,7 +40,7 @@ void ReconMissionObjectiveImplementation::activate() {
 		locationActiveArea->setRadius(32.f);
 		locationActiveArea->insertToZone(zone);
 
-		info("inserting to zone " + zone->getPlanetName(), true);
+		info("inserting to zone " + zone->getTerrainName), true);
 	}
 
 	WaypointObject* waypoint = mission->getWaypointToMission();

@@ -44,7 +44,7 @@ void ShuttleInstallationImplementation::spawnShuttleObjects() {
 		shuttle->setArrivalPoint(positionX, positionY, positionZ);
 		shuttle->setStarport(false);
 		shuttle->setTax(10);
-		shuttle->setPlanet(zone->getPlanetName());
+		shuttle->setPlanet(zone->getTerrainName());
 		shuttle->setCity(shuttleName);
 		shuttle->updateZone(false);
 

@@ -132,7 +132,7 @@ public:
 		//Player is in the tutorial zone and is allowed to migrate stats.
 		Zone* zone = creature->getZone();
 
-		if (zone != NULL && zone->getZoneID() == 42)
+		if (zone != NULL && zone->getTerrainName() == "tutorial")
 			session->migrateStats();
 
 

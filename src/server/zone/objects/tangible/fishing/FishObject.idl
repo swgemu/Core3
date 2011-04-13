@@ -56,16 +56,13 @@ import server.zone.ZoneServer;
 class FishObject extends TangibleObject {	
 		
 	protected string player;
-	protected int planet;
+	protected string terrainName;
 	protected string timeCaught;
 	protected float length;
 	
 	public FishObject() {
 		Logger.setLoggingName("FishObject");
 		
-		player = "";
-		planet = 0;
-		timeCaught = "";
 		length = 0.0;
 	}
 	
@@ -76,9 +73,9 @@ class FishObject extends TangibleObject {
 	}
 	
 	
-	public void setAttributes(string playerName, int planetID, string timestamp, float fishLength) {
+	public void setAttributes(final string playerName, final string terrainN, string timestamp, float fishLength) {
 		player = playerName;
-		planet = planetID;
+		terrainName = terrainN;
 		timeCaught = timestamp;
 		length = fishLength;
 	}

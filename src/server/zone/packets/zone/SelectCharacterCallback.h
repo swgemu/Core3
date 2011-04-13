@@ -72,7 +72,7 @@ public:
 				player->info("reloading");
 
 			} else {
-				int zoneID = player->getSavedZoneID();
+				String terrainName = player->getSavedTerrainName();
 				uint64 savedParentID = player->getSavedParentID();
 
 				ManagedReference<SceneObject*> parent = zoneServer->getObject(savedParentID, true);
@@ -83,7 +83,7 @@ public:
 				}
 
 				try {
-					zone = zoneServer->getZone(zoneID);
+					zone = zoneServer->getZone(terrainName);
 				} catch (Exception& e) {
 					zone = NULL;
 				}
@@ -117,7 +117,7 @@ public:
 				}
 
 				if (zone == NULL)
-					zone = zoneServer->getZone(0);
+					zone = zoneServer->getZone("corellia");
 
 				player->insertToZone(zone);
 			}

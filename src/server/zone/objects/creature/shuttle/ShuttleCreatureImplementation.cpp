@@ -11,7 +11,7 @@
 
 #include "server/zone/objects/player/PlayerCreature.h"
 #include "server/zone/objects/tangible/ticket/TicketObject.h"
-#include "server/zone/objects/terrain/PlanetNames.h"
+
 #include "server/zone/Zone.h"
 #include "server/zone/ZoneServer.h"
 #include "server/zone/managers/planet/PlanetManager.h"
