@@ -70,6 +70,7 @@ include server.zone.managers.planet.HuntingTargetMap;
 include server.zone.managers.planet.HuntingTargetEntry;
 import system.util.Vector;
 
+include server.zone.managers.planet.events.ShuttleDestinationReachedEvent;
 include server.zone.templates.snapshot.WorldSnapshotNode;
 include server.zone.templates.snapshot.WorldSnapshotIff;
 
@@ -83,6 +84,9 @@ class PlanetManager extends ManagedService implements Logger {
 	@dereferenced
 	protected VectorMap<string, int> travelFares;
 	
+	@dereferenced
+	protected VectorMap<unsigned long, ShuttleDestinationReachedEvent> shuttleRoutes;
+	
 	protected StructureManager structureManager;
 
 	protected WeatherManager weatherManager;
@@ -90,6 +94,7 @@ class PlanetManager extends ManagedService implements Logger {
 	protected int numberOfCities;
 		
 	protected transient ZoneProcessServer server;
+	
 	protected transient TerrainManager terrainManager;
 
 	@dereferenced
@@ -135,6 +140,9 @@ class PlanetManager extends ManagedService implements Logger {
 	private native void loadSnapshotObject(WorldSnapshotNode node, WorldSnapshotIff wsiff, @dereferenced int totalObjects);
 	private native void loadSnapshotObjects();
 	private native void loadTravelFares();
+	private native void startTravelRoutes();
+	
+	public native void scheduleShuttleRoute(SceneObject obj);
 	
 	private native void loadLuaConfig();
 	

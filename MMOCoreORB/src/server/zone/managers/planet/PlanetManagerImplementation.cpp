@@ -195,6 +195,26 @@ void PlanetManagerImplementation::loadSnapshotObjects() {
 	info("Loaded " + String::valueOf(totalObjects) + " client objects from world snapshot.", true);
 }
 
+void PlanetManagerImplementation::startTravelRoutes() {
+	//Load shuttleports first.
+	SortedVector<ManagedReference<SceneObject*> > objs = zone->getPlanetaryObjectList(14);
+
+	for (int i = 0; i < objs.size(); ++i)
+		scheduleShuttleRoute(objs.get(i));
+
+	//Now do the starports.
+	objs = zone->getPlanetaryObjectList(15);
+
+	for (int i = 0; i < objs.size(); ++i)
+		scheduleShuttleRoute(objs.get(i));
+}
+
+void PlanetManagerImplementation::scheduleShuttleRoute(SceneObject* starport) {
+	//All starports have their shuttles outdoors, for obvious reasons, except for Theed...
+	//SortedVector<ManagedReference<SceneObject*> > outdoorObjects = starport->getOutdoorChildObjects();
+
+}
+
 void PlanetManagerImplementation::loadStaticTangibleObjects() {
 	//TODO: Deprecate this to load from lua files.
 	StringBuffer query;

@@ -163,6 +163,8 @@ using namespace server::zone::objects::scene;
 
 #include "server/zone/managers/planet/HuntingTargetEntry.h"
 
+#include "server/zone/managers/planet/events/ShuttleDestinationReachedEvent.h"
+
 #include "server/zone/templates/snapshot/WorldSnapshotNode.h"
 
 #include "server/zone/templates/snapshot/WorldSnapshotIff.h"
@@ -187,6 +189,8 @@ namespace planet {
 class PlanetManager : public ManagedService {
 public:
 	PlanetManager(Zone* planet, ZoneProcessServer* srv);
+
+	void scheduleShuttleRoute(SceneObject* obj);
 
 	void initializeTransientMembers();
 
@@ -288,6 +292,8 @@ protected:
 
 	VectorMap<String, int> travelFares;
 
+	VectorMap<unsigned long long, ShuttleDestinationReachedEvent*> shuttleRoutes;
+
 	ManagedReference<StructureManager* > structureManager;
 
 	ManagedReference<WeatherManager* > weatherManager;
@@ -322,6 +328,12 @@ private:
 
 	void loadTravelFares();
 
+	void startTravelRoutes();
+
+public:
+	void scheduleShuttleRoute(SceneObject* obj);
+
+private:
 	void loadLuaConfig();
 
 public:
@@ -439,6 +451,8 @@ public:
 	PlanetManagerAdapter(PlanetManagerImplementation* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
+
+	void scheduleShuttleRoute(SceneObject* obj);
 
 	void initializeTransientMembers();
 

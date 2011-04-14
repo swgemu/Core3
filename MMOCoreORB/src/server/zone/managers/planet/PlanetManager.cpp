@@ -28,7 +28,7 @@
  *	PlanetManagerStub
  */
 
-enum {RPC_INITIALIZETRANSIENTMEMBERS__,RPC_FINALIZE__,RPC_INITIALIZE__,RPC_LOADREGIONS__,RPC_LOADPLAYERREGIONS__,RPC_LOADNOBUILDAREAS__,RPC_LOADBADGEAREAS__,RPC_LOADPERFORMANCELOCATIONS__,RPC_LOADHUNTINGTARGETS__,RPC_LOADRECONLOCATIONS__,RPC_GETTRAVELFARE__STRING_,RPC_SENDPLANETTRAVELPOINTLISTRESPONSE__PLAYERCREATURE_,RPC_GETSTRUCTUREMANAGER__,RPC_GETWEATHERMANAGER__,RPC_GETREGION__FLOAT_FLOAT_,RPC_GETREGIONCOUNT__,RPC_GETNUMBEROFCITIES__,RPC_INCREASENUMBEROFCITIES__,RPC_GETREGION__INT_,RPC_ADDREGION__REGION_,RPC_DROPREGION__REGION_,RPC_HASREGION__STRING_,RPC_ADDPERFORMANCELOCATION__SCENEOBJECT_,RPC_ADDMISSIONNPC__SCENEOBJECT_,RPC_ADDHUNTINGTARGETTEMPLATE__STRING_STRING_INT_,RPC_ADDRECONLOC__SCENEOBJECT_,RPC_ADDINFORMANT__SCENEOBJECT_,};
+enum {RPC_SCHEDULESHUTTLEROUTE__SCENEOBJECT_,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_FINALIZE__,RPC_INITIALIZE__,RPC_LOADREGIONS__,RPC_LOADPLAYERREGIONS__,RPC_LOADNOBUILDAREAS__,RPC_LOADBADGEAREAS__,RPC_LOADPERFORMANCELOCATIONS__,RPC_LOADHUNTINGTARGETS__,RPC_LOADRECONLOCATIONS__,RPC_GETTRAVELFARE__STRING_,RPC_SENDPLANETTRAVELPOINTLISTRESPONSE__PLAYERCREATURE_,RPC_GETSTRUCTUREMANAGER__,RPC_GETWEATHERMANAGER__,RPC_GETREGION__FLOAT_FLOAT_,RPC_GETREGIONCOUNT__,RPC_GETNUMBEROFCITIES__,RPC_INCREASENUMBEROFCITIES__,RPC_GETREGION__INT_,RPC_ADDREGION__REGION_,RPC_DROPREGION__REGION_,RPC_HASREGION__STRING_,RPC_ADDPERFORMANCELOCATION__SCENEOBJECT_,RPC_ADDMISSIONNPC__SCENEOBJECT_,RPC_ADDHUNTINGTARGETTEMPLATE__STRING_STRING_INT_,RPC_ADDRECONLOC__SCENEOBJECT_,RPC_ADDINFORMANT__SCENEOBJECT_,};
 
 PlanetManager::PlanetManager(Zone* planet, ZoneProcessServer* srv) : ManagedService(DummyConstructorParameter::instance()) {
 	PlanetManagerImplementation* _implementation = new PlanetManagerImplementation(planet, srv);
@@ -42,6 +42,20 @@ PlanetManager::PlanetManager(DummyConstructorParameter* param) : ManagedService(
 PlanetManager::~PlanetManager() {
 }
 
+
+void PlanetManager::scheduleShuttleRoute(SceneObject* obj) {
+	PlanetManagerImplementation* _implementation = (PlanetManagerImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_SCHEDULESHUTTLEROUTE__SCENEOBJECT_);
+		method.addObjectParameter(obj);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->scheduleShuttleRoute(obj);
+}
 
 void PlanetManager::initializeTransientMembers() {
 	PlanetManagerImplementation* _implementation = (PlanetManagerImplementation*) _getImplementation();
@@ -585,6 +599,11 @@ bool PlanetManagerImplementation::readObjectMember(ObjectInputStream* stream, co
 		return true;
 	}
 
+	if (_name == "shuttleRoutes") {
+		TypeInfo<VectorMap<unsigned long long, ShuttleDestinationReachedEvent*> >::parseFromBinaryStream(&shuttleRoutes, stream);
+		return true;
+	}
+
 	if (_name == "structureManager") {
 		TypeInfo<ManagedReference<StructureManager* > >::parseFromBinaryStream(&structureManager, stream);
 		return true;
@@ -639,6 +658,14 @@ int PlanetManagerImplementation::writeObjectMembers(ObjectOutputStream* stream) 
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
+	_name = "shuttleRoutes";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<VectorMap<unsigned long long, ShuttleDestinationReachedEvent*> >::toBinaryStream(&shuttleRoutes, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
 	_name = "structureManager";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
@@ -664,7 +691,7 @@ int PlanetManagerImplementation::writeObjectMembers(ObjectOutputStream* stream) 
 	stream->writeShort(_offset, _totalSize);
 
 
-	return 6 + ManagedServiceImplementation::writeObjectMembers(stream);
+	return 7 + ManagedServiceImplementation::writeObjectMembers(stream);
 }
 
 PlanetManagerImplementation::PlanetManagerImplementation(Zone* planet, ZoneProcessServer* srv) {
@@ -819,6 +846,9 @@ Packet* PlanetManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
+	case RPC_SCHEDULESHUTTLEROUTE__SCENEOBJECT_:
+		scheduleShuttleRoute((SceneObject*) inv->getObjectParameter());
+		break;
 	case RPC_INITIALIZETRANSIENTMEMBERS__:
 		initializeTransientMembers();
 		break;
@@ -905,6 +935,10 @@ Packet* PlanetManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv
 	}
 
 	return resp;
+}
+
+void PlanetManagerAdapter::scheduleShuttleRoute(SceneObject* obj) {
+	((PlanetManagerImplementation*) impl)->scheduleShuttleRoute(obj);
 }
 
 void PlanetManagerAdapter::initializeTransientMembers() {

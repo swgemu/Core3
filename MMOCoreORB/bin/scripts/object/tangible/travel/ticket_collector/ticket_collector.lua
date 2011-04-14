@@ -42,7 +42,8 @@
 
 
 object_tangible_travel_ticket_collector_ticket_collector = object_tangible_travel_ticket_collector_shared_ticket_collector:new {
-	gameObjectType = 16401
+	gameObjectType = 16401,
+	optionsBitmask = 256
 }
 
 ObjectTemplates:addTemplate(object_tangible_travel_ticket_collector_ticket_collector, "object/tangible/travel/ticket_collector/ticket_collector.iff")
