@@ -15,7 +15,6 @@ TreeFile::TreeFile(TreeArchive* archive) {
 }
 
 TreeFile::~TreeFile() {
-
 }
 
 void TreeFile::read(const String& path) {
@@ -30,13 +29,13 @@ void TreeFile::read(const String& path) {
 
 	if (!file->exists()) {
 		error("File does not exist.");
+		delete file;
 		return;
 	}
 
 	readHeader(fileStream);
 
-	if (file != NULL)
-		delete file;
+	delete file;
 }
 
 void TreeFile::readHeader(FileInputStream& fileStream) {
@@ -92,28 +91,32 @@ void TreeFile::readHeader(FileInputStream& fileStream) {
 
 void TreeFile::readFileBlock(FileInputStream& fileStream) {
 	fileStream.skip(dataOffset - 36);
-	fileBlock.uncompress(fileStream);
+	byte* uncompressedData = fileBlock.uncompress(fileStream);
 
 	//Load the records.
 	uint32 bufferOffset = 0;
 	for (int i = 0; i < totalRecords; ++i) {
 		TreeFileRecord* tfr = new TreeFileRecord();
 		tfr->setTreeFilePath(filePath);
-		bufferOffset += tfr->readFromBuffer(fileBlock.getUncompressedData() + bufferOffset);
+		bufferOffset += tfr->readFromBuffer(uncompressedData + bufferOffset);
 
 		records.add(tfr);
 	}
+
+	delete [] uncompressedData;
 }
 
 void TreeFile::readNameBlock(FileInputStream& fileStream) {
-	nameBlock.uncompress(fileStream);
+	byte* uncompressedData = nameBlock.uncompress(fileStream);
 
 	for (int i = 0; i < totalRecords; ++i) {
 		TreeFileRecord* record = records.get(i);
 
 		if (treeArchive != NULL)
-			treeArchive->addRecord(nameBlock.getUncompressedData() + record->getNameOffset(), record);
+			treeArchive->addRecord(((char*) uncompressedData) + record->getNameOffset(), record);
 	}
+
+	delete [] uncompressedData;
 }
 
 void TreeFile::readMD5Sums(FileInputStream& fileStream) {

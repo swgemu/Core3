@@ -20,9 +20,6 @@ class TreeDataBlock {
 	unsigned long compressedSize;
 	unsigned long uncompressedSize;
 
-	byte* uncompressedData;
-	byte* compressedData;
-
 	//md5sum
 
 public:
@@ -33,16 +30,12 @@ public:
 		compressionType = 0;
 		compressedSize = 0;
 		uncompressedSize = 0;
-		uncompressedData = NULL;
-		compressedData = NULL;
 	}
 
 	TreeDataBlock(const TreeDataBlock& tdb) {
 		compressionType = tdb.compressionType;
 		compressedSize = tdb.compressedSize;
 		uncompressedSize = tdb.uncompressedSize;
-		uncompressedData = tdb.uncompressedData;
-		compressedData = tdb.compressedData;
 	}
 
 	TreeDataBlock& operator= (const TreeDataBlock& tdb) {
@@ -52,8 +45,6 @@ public:
 		compressionType = tdb.compressionType;
 		compressedSize = tdb.compressedSize;
 		uncompressedSize = tdb.uncompressedSize;
-		uncompressedData = tdb.uncompressedData;
-		compressedData = tdb.compressedData;
 
 		return *this;
 	}
@@ -62,25 +53,31 @@ public:
 
 	}
 
-	void uncompress(FileInputStream& fileStream) {
-		uncompressedData = new byte[uncompressedSize];
+	/**
+	 * Uncompresses a block of data and returns it in a byte buffer.
+	 * @param fileStream FileInputStream that has been advanced to the position of the compressedData and will be read for the compressedSize
+	 */
+	byte* uncompress(FileInputStream& fileStream) {
+		byte* uncompressedData = new byte[uncompressedSize];
 
 		switch (compressionType) {
 		case 2: //Data is compressed
 		{
-			compressedData = new byte[compressedSize];
+			byte* compressedData = new byte[compressedSize];
 
 			fileStream.read(compressedData, compressedSize);
 
 			int result = zlib::uncompress(uncompressedData, &uncompressedSize, compressedData, compressedSize);
 
-			//TODO: Handle error messages.
+			delete [] compressedData;
 		}
 			break;
 		case 0: //Data is uncompressed
 		default:
 			fileStream.read(uncompressedData, uncompressedSize);
 		}
+
+		return uncompressedData;
 	}
 
 	void compress() {
@@ -105,10 +102,6 @@ public:
 
 	inline uint32 getUncompressedSize() {
 		return uncompressedSize;
-	}
-
-	inline char* getUncompressedData() const {
-		return (char*) uncompressedData;
 	}
 };
 

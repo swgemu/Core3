@@ -434,7 +434,6 @@ IffStream* TemplateManager::openIffFile(const String& fileName) {
 	int size = 0;
 	byte* data = treeDirectory->getBytes(fileName, size);
 
-
 	if (size == 0)
 		return NULL;
 

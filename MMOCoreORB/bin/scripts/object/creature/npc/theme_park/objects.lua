@@ -400,7 +400,7 @@ object_creature_npc_theme_park_shared_player_shuttle = SharedCreatureObjectTempl
 	postureAlignToTerrain = {0,0,1,0,0,1,0,1,0,0,0,0,1,1,1},
 
 	race = 0,
-	rangedIntCustomizationVariables = {},l
+	rangedIntCustomizationVariables = {},
 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,

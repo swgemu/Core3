@@ -46,18 +46,16 @@ public:
 		}
 	}
 
+	/**
+	 * Gets a byte buffer from the specified path.
+	 * Don't forget to delete the pointer when finished.
+	 */
 	byte* getBytes(const String& recordPath, int& size) {
 		int pos = recordPath.lastIndexOf("/");
 		String dir = recordPath.subString(0, pos);
 		String fileName = recordPath.subString(pos+1, recordPath.length());
 
 		TreeDirectory* treeDir = &nodeMap.get(dir);
-
-		if (treeDir == NULL) {
-			error("Path does not exist.");
-			return NULL;
-		}
-
 		int idx = treeDir->find(fileName);
 
 		if (idx == -1) {
@@ -67,25 +65,22 @@ public:
 
 		Reference<TreeFileRecord*> record = treeDir->get(idx);
 		size = record->getUncompressedSize();
-
 		return record->getBytes();
 	}
 
-	void printNodesByPath(const String& path) {
+	/**
+	 * Prints a list of all the files at this path based on the filter passed.
+	 * @param path The path at which to search.
+	 * @param filter The filter, which accepts wildcards in the form of *. Default is *.
+	 */
+	void printNodesByPath(const String& path, const String& filter) {
 		TreeDirectory* records = &nodeMap.get(path);
-
-		if (records == NULL) {
-			error("No files at specified path.");
-			return;
-		}
 
 		for (int i = 0; i < records->size(); ++i) {
 			Reference<TreeFileRecord*> record = records->elementAt(i);
 
 			String recordName = record->getRecordName();
-
-			if (recordName.indexOf(".trn") != -1)
-				info(recordName);
+			info(recordName); //TODO: Filter matching.
 		}
 	}
 };

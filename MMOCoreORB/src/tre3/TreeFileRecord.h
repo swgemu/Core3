@@ -81,25 +81,25 @@ public:
 		fileStream.read((byte*) &nameOffset, 4);
 	}
 
-	uint32 readFromBuffer(const char* buffer) {
+	uint32 readFromBuffer(const byte* buffer) {
 	    uint32 bufferOffset = 0;
 
-	    memcpy(&checksum, buffer + bufferOffset, sizeof(checksum));
+	    checksum = *(uint32*)(buffer + bufferOffset);
 	    bufferOffset += sizeof(checksum);
 
-	    memcpy(&uncompressedSize, buffer + bufferOffset, sizeof(uncompressedSize));
+	    uncompressedSize = *(uint32*)(buffer + bufferOffset);
 	    bufferOffset += sizeof(uncompressedSize);
 
-	    memcpy(&fileOffset, buffer + bufferOffset, sizeof(fileOffset));
+	    fileOffset = *(uint32*)(buffer + bufferOffset);
 	    bufferOffset += sizeof(fileOffset);
 
-	    memcpy(&compressionType, buffer + bufferOffset, sizeof(compressionType));
+	    compressionType = *(uint32*)(buffer + bufferOffset);
 	    bufferOffset += sizeof(compressionType);
 
-	    memcpy(&compressedSize, buffer + bufferOffset, sizeof(compressedSize));
+	    compressedSize = *(uint32*)(buffer + bufferOffset);
 	    bufferOffset += sizeof(compressedSize);
 
-	    memcpy(&nameOffset, buffer + bufferOffset, sizeof(nameOffset));
+	    nameOffset = *(uint32*)(buffer + bufferOffset);
 	    bufferOffset += sizeof(nameOffset);
 
 	    return bufferOffset;
@@ -111,11 +111,10 @@ public:
 		FileInputStream fileStream(file);
 
 		if (!file->exists()) {
-			System::out << "File does not exist " << treeFilePath << endl;
+			error("Tree File does not exist: " + treeFilePath);
+			delete file;
 			return NULL;
 		}
-
-		byte* buffer = NULL;
 
 		fileStream.skip(fileOffset);
 
@@ -123,9 +122,8 @@ public:
 		db.setCompressedSize(compressedSize);
 		db.setUncompressedSize(uncompressedSize);
 		db.setCompressionType(compressionType);
-		db.uncompress(fileStream);
 
-		buffer = (byte*) db.getUncompressedData();
+		byte* buffer = db.uncompress(fileStream);
 
 		fileStream.close();
 
