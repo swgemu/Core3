@@ -220,7 +220,7 @@ ResourceSpawn* ResourceSpawner::manualCreateResourceSpawn(const String& type) {
 }
 
 ResourceSpawn* ResourceSpawner::createResourceSpawn(const String& type,
-		const Vector<String> excludes, int zonerestriction) {
+		const Vector<String> excludes, String zonerestriction) {
 	ResourceTreeEntry* resourceEntry = resourceTree->getEntry(type, excludes,
 			zonerestriction);
 
@@ -274,7 +274,7 @@ ResourceSpawn* ResourceSpawner::createResourceSpawn(const String& type,
 
 	newSpawn->setContainerCRC(resourceEntry->getContainerCRC());
 
-	Vector<uint32> activeZones;
+	Vector<String> activeZones;
 	activeResourceZones.clone(activeZones);
 
 	newSpawn->createSpawnMaps(resourceEntry->isJTL(),
@@ -371,7 +371,7 @@ void ResourceSpawner::sendResourceListForSurvey(PlayerCreature* player,
 		const int toolType, const String& surveyType) {
 
 	ZoneResourceMap* zoneMap = resourceMap->getZoneResourceList(
-			player->getZone()->getZoneID());
+			player->getZone()->getTerrainName());
 	if (zoneMap == NULL) {
 		player->sendSystemMessage("The tool fails to locate any resources");
 		return;

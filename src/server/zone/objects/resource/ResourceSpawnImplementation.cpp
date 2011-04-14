@@ -155,21 +155,21 @@ String ResourceSpawnImplementation::getFamilyName() {
 }
 
 void ResourceSpawnImplementation::createSpawnMaps(bool jtl, int minpool, int maxpool,
-		int zonerestriction, Vector<uint32>& activeZones) {
+		String& zonerestriction, Vector<String>& activeZones) {
 
 	int concentration = getConcentration(jtl);
-	Vector<uint32> zoneids = getSpawnZones(minpool, maxpool, zonerestriction, activeZones);
+	Vector<String> zonenames = getSpawnZones(minpool, maxpool, zonerestriction, activeZones);
 
-	for (int i = 0; i < zoneids.size(); ++i) {
+	for (int i = 0; i < zonenames.size(); ++i) {
 
-		Zone* zone = server->getZoneServer()->getZone(zoneids.get(i));
+		Zone* zone = server->getZoneServer()->getZone(zonenames.get(i));
 		if (zone == NULL)
 			continue;
 
 		SpawnDensityMap newMap(isType("ore"), concentration, zone->getMinX(),
 				zone->getMaxX(), zone->getMinY(), zone->getMaxY());
 
-		spawnMaps.put((uint32) zoneids.get(i), newMap);
+		spawnMaps.put(zonenames.get(i), newMap);
 	}
 }
 
@@ -189,14 +189,14 @@ int ResourceSpawnImplementation::getConcentration(bool jtl) {
 		return SpawnDensityMap::MEDIUMDENSITY;
 }
 
-Vector<uint32> ResourceSpawnImplementation::getSpawnZones(int minpool, int maxpool,
-		int zonerestriction, Vector<uint32>& activeZones) {
+Vector<String> ResourceSpawnImplementation::getSpawnZones(int minpool, int maxpool,
+		String& zonerestriction, Vector<String>& activeZones) {
 
 	/**
 	 * Here we are using defined rules to set the number
 	 * of zones and specific zones of this specific spawn
 	 */
-	Vector<uint32> zoneids;
+	Vector<String> zonenames;
 	int zonecount = 0;
 
 	if(minpool == maxpool)
@@ -205,9 +205,9 @@ Vector<uint32> ResourceSpawnImplementation::getSpawnZones(int minpool, int maxpo
 		zonecount = System::random(maxpool - minpool) + minpool;
 
 	/// If resource is zone restricted, add only the restricted zone
-	if (zonerestriction != -1) {
-		zoneids.add((uint32) zonerestriction);
-		return zoneids;
+	if (zonerestriction != "") {
+		zonenames.add(zonerestriction);
+		return zonenames;
 	}
 
 	/// Randomly remove entries until the Vector contains
@@ -218,34 +218,34 @@ Vector<uint32> ResourceSpawnImplementation::getSpawnZones(int minpool, int maxpo
 	return activeZones;
 }
 
-float ResourceSpawnImplementation::getDensityAt(int zoneid, float x, float y) {
-	if (!spawnMaps.contains((uint32) zoneid))
+float ResourceSpawnImplementation::getDensityAt(String& zoneName, float x, float y) {
+	if (!spawnMaps.contains(zoneName))
 		return 0;
 
-	SpawnDensityMap map = spawnMaps.get((uint32) zoneid);
+	SpawnDensityMap map = spawnMaps.get(zoneName);
 
 	return map.getDensityAt(x, y);
 }
 
-int ResourceSpawnImplementation::getSpawnMapZone(int i) {
+String ResourceSpawnImplementation::getSpawnMapZone(int i) {
 	if (spawnMaps.size() > i)
 		return spawnMaps.elementAt(i).getKey();
 	else
-		return -1;
+		return "";
 }
 
 uint32 ResourceSpawnImplementation::getPlanetCRC() {
-	int id = getSpawnMapZone(0);
+	String zoneName = getSpawnMapZone(0);
 
-	if (id == -1)
+	if (zoneName == "")
 		return 0;
 
-	Zone* zone = server->getZoneServer()->getZone(id);
+	Zone* zone = server->getZoneServer()->getZone(zoneName);
 
-	return zone->getPlanetName().hashCode();
+	return zone->getTerrainName().hashCode();
 }
 
-void ResourceSpawnImplementation::extractResource(int zoneid, int units) {
+void ResourceSpawnImplementation::extractResource(String& zoneName, int units) {
 	unitsInCirculation += units;
 
 }
@@ -312,7 +312,7 @@ void ResourceSpawnImplementation::print() {
 	}
 
 	for (int i = 0; i < spawnMaps.size(); ++i) {
-		info(Planet::getPlanetName(spawnMaps.elementAt(i).getKey()));
+		info(spawnMaps.elementAt(i).getKey());
 		spawnMaps.get(i).print();
 	}
 

@@ -119,7 +119,7 @@ bool ResourceTree::buildTreeFromDatabase() {
 
 				entry->setResourceContainerType(res->getString(47));
 				entry->setRandomNameClass(res->getString(48));
-				entry->setZoneRestriction(res->getInt(49));
+				entry->setZoneRestriction(res->getString(49));
 				entry->setJTL(res->getInt(50));
 				entry->setSurveyToolType(res->getInt(51));
 				String containerFile = res->getString(52);
@@ -150,8 +150,8 @@ bool ResourceTree::buildTreeFromDatabase() {
 	return true;
 }
 
-ResourceTreeEntry* ResourceTree::getEntry(const String& type, Vector<String> excludes, int zoneid) {
-	return baseNode->getEntry(type, excludes, zoneid);
+ResourceTreeEntry* ResourceTree::getEntry(const String& type, const Vector<String>& excludes, const String& zoneName) {
+	return baseNode->getEntry(type, excludes, zoneName);
 }
 
 void ResourceTree::toString() {

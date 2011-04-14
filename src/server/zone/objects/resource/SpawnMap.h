@@ -54,7 +54,7 @@ which carries forward this exception.
 #include "engine/engine.h"
 
 
-class SpawnMap : public VectorMap<uint32, SpawnDensityMap> {
+class SpawnMap : public VectorMap<String, SpawnDensityMap> {
 
 public:
 	SpawnMap() {

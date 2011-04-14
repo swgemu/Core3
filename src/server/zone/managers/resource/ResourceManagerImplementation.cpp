@@ -72,7 +72,7 @@ void ResourceManagerImplementation::initialize() {
 }
 
 bool ResourceManagerImplementation::loadConfigFile() {
-	return runFile("scripts/resources/config.lua");
+	return runFile("scripts/managers/resource_manager.lua");
 }
 
 int ResourceManagerImplementation::notifyObserverEvent(uint32 eventType, Observable* observable, ManagedObject* arg1, int64 arg2) {
@@ -248,7 +248,7 @@ ResourceSpawn* ResourceManagerImplementation::getCurrentSpawn(const String& rest
 	return resourceSpawner->getCurrentSpawn(restype, zoneid);
 }
 
-void ResourceManagerImplementation::getResourceListByType(Vector<ManagedReference<ResourceSpawn*> >& list, int type, int zoneid) {
+void ResourceManagerImplementation::getResourceListByType(Vector<ManagedReference<ResourceSpawn*> >& list, int type, String& zoneName) {
 	list.removeAll();
 
 	rlock();
@@ -258,7 +258,7 @@ void ResourceManagerImplementation::getResourceListByType(Vector<ManagedReferenc
 	try {
 		ResourceMap* resourceMap = resourceSpawner->getResourceMap();
 
-		ZoneResourceMap* zoneMap = resourceMap->getZoneResourceList(zoneid);
+		ZoneResourceMap* zoneMap = resourceMap->getZoneResourceList(zoneName);
 
 		if (zoneMap != NULL) {
 			for (int i = 0; i < zoneMap->size(); ++i) {

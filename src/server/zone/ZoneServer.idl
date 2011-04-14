@@ -59,6 +59,7 @@ import system.lang.Exception;
 import system.lang.Time;
 import system.lang.ref.Reference;
 import system.util.Vector;
+import system.util.VectorMap;
 import system.net.Socket;
 import system.net.SocketAddress;
 import system.net.Packet;
@@ -276,8 +277,8 @@ class ZoneServer extends ManagedService implements Logger {
 		return serverState;
 	}
 
-	public Zone getZone(final string zoneName) {
-		return zones.get(zoneName);
+	public Zone getZone(final string terrainName) {
+		return zones.get(terrainName);
 	}
 	
 	public int getZoneCount() {

@@ -58,6 +58,9 @@ which carries forward this exception.
  * The ResourceTree class is a representation of the
  * resource_tree table in MySQL
  */
+
+
+
 class ResourceTree {
 private:
 
@@ -82,7 +85,7 @@ public:
 	 * \param zoneid If the resource is tied to a certain zone
 	 */
 	ResourceTreeEntry* getEntry(const String& type,
-			Vector<String> excludes = 0, int zoneid = -1);
+			const Vector<String>& excludes = 0,  const String& zoneName = "");
 
 	ResourceTreeNode* getBaseNode() {
 		return baseNode;

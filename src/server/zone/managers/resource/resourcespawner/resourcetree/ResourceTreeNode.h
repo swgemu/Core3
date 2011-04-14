@@ -78,7 +78,7 @@ public:
 
 	void add(ResourceTreeEntry* entry);
 
-	ResourceTreeEntry* getEntry(const String& type, Vector<String> excludes = 0, int zoneid = -1);
+	ResourceTreeEntry* getEntry(const String& type, const Vector<String>& excludes = 0, const String& zoneName = "");
 
 	ResourceTreeEntry* find(ResourceTreeEntry* entry, const String& type);
 	ResourceTreeNode* find(ResourceTreeNode* node, const String& type);

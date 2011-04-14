@@ -85,7 +85,7 @@ private:
 
 	ResourceMap* resourceMap;
 
-	Vector<uint32> activeResourceZones;
+	Vector<String> activeResourceZones;
 
 	MinimumPool* minimumPool;
 	FixedPool* fixedPool;
@@ -108,7 +108,7 @@ public:
 	void initializeRandomPool(const String& includes, const String& excludes, const int size);
 	void initializeNativePool(const String& includes, const String& excludes);
 
-	void addPlanet(const int planetid);
+	void addPlanet(const String planetName);
 	void setSpawningParameters(const int dur, const float throt,
 			const int override, const int spawnquantity);
 

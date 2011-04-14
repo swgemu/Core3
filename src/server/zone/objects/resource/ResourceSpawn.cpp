@@ -16,7 +16,7 @@
  *	ResourceSpawnStub
  */
 
-enum {RPC_FINALIZE__ = 6,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_DECREASECONTAINERREFERENCECOUNT__,RPC_SETNAME__STRING_,RPC_SETTYPE__STRING_,RPC_SETSPAWNPOOL__INT_,RPC_SETZONERESTRICTION__INT_,RPC_ADDCLASS__STRING_,RPC_ADDSTFCLASS__STRING_,RPC_ADDATTRIBUTE__STRING_INT_,RPC_ISTYPE__STRING_,RPC_SETSURVEYTOOLTYPE__INT_,RPC_SETISENERGY__BOOL_,RPC_GETNAME__,RPC_GETTYPE__,RPC_GETCLASS__INT_,RPC_GETFINALCLASS__,RPC_GETFAMILYNAME__,RPC_SETSPAWNED__LONG_,RPC_SETDESPAWNED__LONG_,RPC_GETDESPAWNED__,RPC_SETCONTAINERCRC__INT_,RPC_GETCONTAINERCRC__,RPC_GETSPAWNPOOL__,RPC_ISENERGY__,RPC_GETZONERESTRICTION__,RPC_GETSURVEYTOOLTYPE__,RPC_GETSPAWNMAPSIZE__,RPC_EXTRACTRESOURCE__INT_INT_,RPC_CREATERESOURCE__INT_,RPC_GETPLANETCRC__,RPC_GETATTRIBUTEVALUE__INT_,RPC_GETVALUEOF__INT_,RPC_ADDSTATSTODEEDLISTBOX__SUILISTBOX_,};
+enum {RPC_FINALIZE__ = 6,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_DECREASECONTAINERREFERENCECOUNT__,RPC_SETNAME__STRING_,RPC_SETTYPE__STRING_,RPC_SETSPAWNPOOL__INT_,RPC_SETZONERESTRICTION__STRING_,RPC_ADDCLASS__STRING_,RPC_ADDSTFCLASS__STRING_,RPC_ADDATTRIBUTE__STRING_INT_,RPC_ISTYPE__STRING_,RPC_SETSURVEYTOOLTYPE__INT_,RPC_SETISENERGY__BOOL_,RPC_GETNAME__,RPC_GETTYPE__,RPC_GETCLASS__INT_,RPC_GETFINALCLASS__,RPC_GETFAMILYNAME__,RPC_SETSPAWNED__LONG_,RPC_SETDESPAWNED__LONG_,RPC_GETDESPAWNED__,RPC_SETCONTAINERCRC__INT_,RPC_GETCONTAINERCRC__,RPC_GETSPAWNPOOL__,RPC_ISENERGY__,RPC_GETZONERESTRICTION__,RPC_GETSURVEYTOOLTYPE__,RPC_GETSPAWNMAPSIZE__,RPC_EXTRACTRESOURCE__STRING_INT_,RPC_CREATERESOURCE__INT_,RPC_GETPLANETCRC__,RPC_GETATTRIBUTEVALUE__INT_,RPC_GETVALUEOF__INT_,RPC_ADDSTATSTODEEDLISTBOX__SUILISTBOX_,};
 
 ResourceSpawn::ResourceSpawn() : SceneObject(DummyConstructorParameter::instance()) {
 	ResourceSpawnImplementation* _implementation = new ResourceSpawnImplementation();
@@ -108,18 +108,18 @@ void ResourceSpawn::setSpawnPool(int pool) {
 		_implementation->setSpawnPool(pool);
 }
 
-void ResourceSpawn::setZoneRestriction(int zone) {
+void ResourceSpawn::setZoneRestriction(String& zoneName) {
 	ResourceSpawnImplementation* _implementation = (ResourceSpawnImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_SETZONERESTRICTION__INT_);
-		method.addSignedIntParameter(zone);
+		DistributedMethod method(this, RPC_SETZONERESTRICTION__STRING_);
+		method.addAsciiParameter(zoneName);
 
 		method.executeWithVoidReturn();
 	} else
-		_implementation->setZoneRestriction(zone);
+		_implementation->setZoneRestriction(zoneName);
 }
 
 void ResourceSpawn::addClass(const String& newclass) {
@@ -372,7 +372,7 @@ bool ResourceSpawn::isEnergy() {
 		return _implementation->isEnergy();
 }
 
-int ResourceSpawn::getZoneRestriction() {
+String ResourceSpawn::getZoneRestriction() {
 	ResourceSpawnImplementation* _implementation = (ResourceSpawnImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
@@ -380,7 +380,8 @@ int ResourceSpawn::getZoneRestriction() {
 
 		DistributedMethod method(this, RPC_GETZONERESTRICTION__);
 
-		return method.executeWithSignedIntReturn();
+		method.executeWithAsciiReturn(_return_getZoneRestriction);
+		return _return_getZoneRestriction;
 	} else
 		return _implementation->getZoneRestriction();
 }
@@ -411,19 +412,19 @@ int ResourceSpawn::getSpawnMapSize() {
 		return _implementation->getSpawnMapSize();
 }
 
-void ResourceSpawn::extractResource(int zoneid, int units) {
+void ResourceSpawn::extractResource(String& zoneName, int units) {
 	ResourceSpawnImplementation* _implementation = (ResourceSpawnImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_EXTRACTRESOURCE__INT_INT_);
-		method.addSignedIntParameter(zoneid);
+		DistributedMethod method(this, RPC_EXTRACTRESOURCE__STRING_INT_);
+		method.addAsciiParameter(zoneName);
 		method.addSignedIntParameter(units);
 
 		method.executeWithVoidReturn();
 	} else
-		_implementation->extractResource(zoneid, units);
+		_implementation->extractResource(zoneName, units);
 }
 
 ResourceContainer* ResourceSpawn::createResource(int units) {
@@ -440,7 +441,7 @@ ResourceContainer* ResourceSpawn::createResource(int units) {
 		return _implementation->createResource(units);
 }
 
-int ResourceSpawn::getSpawnMapZone(int i) {
+String ResourceSpawn::getSpawnMapZone(int i) {
 	ResourceSpawnImplementation* _implementation = (ResourceSpawnImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
@@ -458,7 +459,7 @@ bool ResourceSpawn::isUnknownType() {
 		return _implementation->isUnknownType();
 }
 
-void ResourceSpawn::createSpawnMaps(bool jtl, int minpool, int maxpool, int zonerestriction, Vector<unsigned int>& activeZones) {
+void ResourceSpawn::createSpawnMaps(bool jtl, int minpool, int maxpool, String& zonerestriction, Vector<String>& activeZones) {
 	ResourceSpawnImplementation* _implementation = (ResourceSpawnImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
@@ -480,13 +481,13 @@ unsigned int ResourceSpawn::getPlanetCRC() {
 		return _implementation->getPlanetCRC();
 }
 
-float ResourceSpawn::getDensityAt(int zoneid, float x, float y) {
+float ResourceSpawn::getDensityAt(String& zoneName, float x, float y) {
 	ResourceSpawnImplementation* _implementation = (ResourceSpawnImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		return _implementation->getDensityAt(zoneid, x, y);
+		return _implementation->getDensityAt(zoneName, x, y);
 }
 
 bool ResourceSpawn::inShift() {
@@ -691,7 +692,7 @@ bool ResourceSpawnImplementation::readObjectMember(ObjectInputStream* stream, co
 	}
 
 	if (_name == "zoneRestriction") {
-		TypeInfo<int >::parseFromBinaryStream(&zoneRestriction, stream);
+		TypeInfo<String >::parseFromBinaryStream(&zoneRestriction, stream);
 		return true;
 	}
 
@@ -812,7 +813,7 @@ int ResourceSpawnImplementation::writeObjectMembers(ObjectOutputStream* stream) 
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
-	TypeInfo<int >::toBinaryStream(&zoneRestriction, stream);
+	TypeInfo<String >::toBinaryStream(&zoneRestriction, stream);
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
@@ -959,9 +960,9 @@ void ResourceSpawnImplementation::setSpawnPool(int pool) {
 }
 }
 
-void ResourceSpawnImplementation::setZoneRestriction(int zone) {
-	// server/zone/objects/resource/ResourceSpawn.idl():   	zoneRestriction = zone;
-	zoneRestriction = zone;
+void ResourceSpawnImplementation::setZoneRestriction(String& zoneName) {
+	// server/zone/objects/resource/ResourceSpawn.idl():   	zoneRestriction = zoneName;
+	zoneRestriction = zoneName;
 }
 
 void ResourceSpawnImplementation::addClass(const String& newclass) {
@@ -1074,7 +1075,7 @@ bool ResourceSpawnImplementation::isEnergy() {
 	return energy;
 }
 
-int ResourceSpawnImplementation::getZoneRestriction() {
+String ResourceSpawnImplementation::getZoneRestriction() {
 	// server/zone/objects/resource/ResourceSpawn.idl():   	return zoneRestriction;
 	return zoneRestriction;
 }
@@ -1123,8 +1124,8 @@ Packet* ResourceSpawnAdapter::invokeMethod(uint32 methid, DistributedMethod* inv
 	case RPC_SETSPAWNPOOL__INT_:
 		setSpawnPool(inv->getSignedIntParameter());
 		break;
-	case RPC_SETZONERESTRICTION__INT_:
-		setZoneRestriction(inv->getSignedIntParameter());
+	case RPC_SETZONERESTRICTION__STRING_:
+		setZoneRestriction(inv->getAsciiParameter(_param0_setZoneRestriction__String_));
 		break;
 	case RPC_ADDCLASS__STRING_:
 		addClass(inv->getAsciiParameter(_param0_addClass__String_));
@@ -1181,7 +1182,7 @@ Packet* ResourceSpawnAdapter::invokeMethod(uint32 methid, DistributedMethod* inv
 		resp->insertBoolean(isEnergy());
 		break;
 	case RPC_GETZONERESTRICTION__:
-		resp->insertSignedInt(getZoneRestriction());
+		resp->insertAscii(getZoneRestriction());
 		break;
 	case RPC_GETSURVEYTOOLTYPE__:
 		resp->insertSignedInt(getSurveyToolType());
@@ -1189,8 +1190,8 @@ Packet* ResourceSpawnAdapter::invokeMethod(uint32 methid, DistributedMethod* inv
 	case RPC_GETSPAWNMAPSIZE__:
 		resp->insertSignedInt(getSpawnMapSize());
 		break;
-	case RPC_EXTRACTRESOURCE__INT_INT_:
-		extractResource(inv->getSignedIntParameter(), inv->getSignedIntParameter());
+	case RPC_EXTRACTRESOURCE__STRING_INT_:
+		extractResource(inv->getAsciiParameter(_param0_extractResource__String_int_), inv->getSignedIntParameter());
 		break;
 	case RPC_CREATERESOURCE__INT_:
 		resp->insertLong(createResource(inv->getSignedIntParameter())->_getObjectID());
@@ -1238,8 +1239,8 @@ void ResourceSpawnAdapter::setSpawnPool(int pool) {
 	((ResourceSpawnImplementation*) impl)->setSpawnPool(pool);
 }
 
-void ResourceSpawnAdapter::setZoneRestriction(int zone) {
-	((ResourceSpawnImplementation*) impl)->setZoneRestriction(zone);
+void ResourceSpawnAdapter::setZoneRestriction(String& zoneName) {
+	((ResourceSpawnImplementation*) impl)->setZoneRestriction(zoneName);
 }
 
 void ResourceSpawnAdapter::addClass(const String& newclass) {
@@ -1314,7 +1315,7 @@ bool ResourceSpawnAdapter::isEnergy() {
 	return ((ResourceSpawnImplementation*) impl)->isEnergy();
 }
 
-int ResourceSpawnAdapter::getZoneRestriction() {
+String ResourceSpawnAdapter::getZoneRestriction() {
 	return ((ResourceSpawnImplementation*) impl)->getZoneRestriction();
 }
 
@@ -1326,8 +1327,8 @@ int ResourceSpawnAdapter::getSpawnMapSize() {
 	return ((ResourceSpawnImplementation*) impl)->getSpawnMapSize();
 }
 
-void ResourceSpawnAdapter::extractResource(int zoneid, int units) {
-	((ResourceSpawnImplementation*) impl)->extractResource(zoneid, units);
+void ResourceSpawnAdapter::extractResource(String& zoneName, int units) {
+	((ResourceSpawnImplementation*) impl)->extractResource(zoneName, units);
 }
 
 ResourceContainer* ResourceSpawnAdapter::createResource(int units) {
