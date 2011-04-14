@@ -242,10 +242,10 @@ uint32 ResourceSpawnImplementation::getPlanetCRC() {
 
 	Zone* zone = server->getZoneServer()->getZone(zoneName);
 
-	return zone->getTerrainName().hashCode();
+	return zone->getZoneName().hashCode();
 }
 
-void ResourceSpawnImplementation::extractResource(String& zoneName, int units) {
+void ResourceSpawnImplementation::extractResource(const String& zoneName, int units) {
 	unitsInCirculation += units;
 
 }

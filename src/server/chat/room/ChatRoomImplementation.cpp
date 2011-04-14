@@ -64,7 +64,7 @@ void ChatRoomImplementation::sendTo(PlayerCreature* player) {
 }
 
 void ChatRoomImplementation::sendDestroyTo(PlayerCreature* player) {
-	ChatOnDestroyRoom* msg = new ChatOnDestroyRoom("SWG", server->getServerName(), roomID);
+	ChatOnDestroyRoom* msg = new ChatOnDestroyRoom("SWG", server->getGalaxyName(), roomID);
 	player->sendMessage(msg);
 }
 
@@ -75,7 +75,7 @@ void ChatRoomImplementation::addPlayer(PlayerCreature* player, bool doLock) {
 		//return;
 	}
 
-	ChatOnEnteredRoom* coer = new ChatOnEnteredRoom(server->getServerName(), player->getFirstName(), roomID);
+	ChatOnEnteredRoom* coer = new ChatOnEnteredRoom(server->getGalaxyName(), player->getFirstName(), roomID);
 	player->sendMessage(coer);
 
 	locker.release();
@@ -150,6 +150,6 @@ void ChatRoomImplementation::removeAllPlayers() {
 }
 
 
-String ChatRoomImplementation::getServerName() {
-	return server->getServerName();
+String ChatRoomImplementation::getGalaxyName() {
+	return server->getGalaxyName();
 }

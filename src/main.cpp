@@ -158,7 +158,7 @@ void testTransactions() {
 	exit(0);
 }
 
-int main(int argc, char* argv[])
+int main(int argc, char* argv[]) {
 	try {
 		Vector<String> arguments;
 		for (int i = 1; i < argc; ++i) {

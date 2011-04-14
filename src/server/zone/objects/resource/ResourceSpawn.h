@@ -152,7 +152,7 @@ public:
 
 	int getSpawnMapSize();
 
-	void extractResource(String& zoneName, int units);
+	void extractResource(const String& zoneName, int units);
 
 	ResourceContainer* createResource(int units);
 
@@ -309,7 +309,7 @@ public:
 
 	int getSpawnMapSize();
 
-	void extractResource(String& zoneName, int units);
+	void extractResource(const String& zoneName, int units);
 
 	ResourceContainer* createResource(int units);
 
@@ -440,7 +440,7 @@ public:
 
 	int getSpawnMapSize();
 
-	void extractResource(String& zoneName, int units);
+	void extractResource(const String& zoneName, int units);
 
 	ResourceContainer* createResource(int units);
 

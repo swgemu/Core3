@@ -232,7 +232,7 @@ void CreatureManagerImplementation::loadSingleSpawns() {
 	//TODO: Convert to Lua
 	//Use zoneName
 
-	info("Static creatures spawned: " + String::valueOf(i), true);
+	//info("Static creatures spawned: " + String::valueOf(i), true);
 }
 
 int CreatureManagerImplementation::notifyDestruction(TangibleObject* destructor, AiAgent* destructedObject, int condition) {

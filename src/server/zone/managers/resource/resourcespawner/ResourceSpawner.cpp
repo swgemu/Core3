@@ -115,8 +115,8 @@ void ResourceSpawner::initializeNativePool(const String& includes,
 	nativePool->initialize(includes, excludes);
 }
 
-void ResourceSpawner::addPlanet(const int planetid) {
-	activeResourceZones.add(planetid);
+void ResourceSpawner::addPlanet(const String& planetName) {
+	activeResourceZones.add(planetName);
 }
 
 void ResourceSpawner::setSpawningParameters(const int dur, const float throt,
@@ -220,7 +220,7 @@ ResourceSpawn* ResourceSpawner::manualCreateResourceSpawn(const String& type) {
 }
 
 ResourceSpawn* ResourceSpawner::createResourceSpawn(const String& type,
-		const Vector<String> excludes, String zonerestriction) {
+		const Vector<String>& excludes, const String& zonerestriction) {
 	ResourceTreeEntry* resourceEntry = resourceTree->getEntry(type, excludes,
 			zonerestriction);
 
@@ -291,15 +291,15 @@ ResourceSpawn* ResourceSpawner::createResourceSpawn(const String& type,
 }
 
 ResourceSpawn* ResourceSpawner::createResourceSpawn(const String& type,
-		int zonerestriction) {
+		const String& zonerestriction) {
 	Vector<String> excludes;
 
 	return createResourceSpawn(type, excludes, zonerestriction);
 }
 
 ResourceSpawn* ResourceSpawner::createResourceSpawn(
-		const Vector<String> includes, const Vector<String> excludes,
-		int zonerestriction) {
+		const Vector<String>& includes, const Vector<String>& excludes,
+		const String& zonerestriction) {
 
 	String type = includes.get(System::random(includes.size() - 1));
 
@@ -363,7 +363,7 @@ long ResourceSpawner::getRandomUnixTimestamp(int min, int max) {
 
 }
 
-Vector<uint32> ResourceSpawner::getActiveResourceZones() {
+Vector<String>& ResourceSpawner::getActiveResourceZones() {
 	return activeResourceZones;
 }
 
@@ -371,7 +371,7 @@ void ResourceSpawner::sendResourceListForSurvey(PlayerCreature* player,
 		const int toolType, const String& surveyType) {
 
 	ZoneResourceMap* zoneMap = resourceMap->getZoneResourceList(
-			player->getZone()->getTerrainName());
+			player->getZone()->getZoneName());
 	if (zoneMap == NULL) {
 		player->sendSystemMessage("The tool fails to locate any resources");
 		return;
@@ -416,7 +416,7 @@ void ResourceSpawner::sendSurvey(PlayerCreature* player, const String& resname) 
 			|| player->getZone() == NULL)
 		return;
 
-	int zoneid = player->getZone()->getZoneID();
+	String zoneName = player->getZone()->getZoneName();
 
 	Survey* surveyMessage = new Survey();
 
@@ -440,7 +440,7 @@ void ResourceSpawner::sendSurvey(PlayerCreature* player, const String& resname) 
 	for (int i = 0; i < points; i++) {
 		for (int j = 0; j < points; j++) {
 
-			float density = resourceMap->getDensityAt(resname, zoneid, posX,
+			float density = resourceMap->getDensityAt(resname, zoneName, posX,
 					posY);
 
 			if (density > maxDensity) {
@@ -477,8 +477,7 @@ void ResourceSpawner::sendSurvey(PlayerCreature* player, const String& resname) 
 
 		// Update new waypoint
 		newwaypoint->setCustomName(UnicodeString("Resource Survey"));
-		newwaypoint->setPlanetCRC(Planet::getPlanetCRC(Planet::getPlanetName(
-				player->getZone()->getZoneID())));
+		newwaypoint->setPlanetCRC(player->getZone()->getZoneCRC());
 		newwaypoint->setPosition(maxX, 0, maxY);
 		newwaypoint->setColor(WaypointObject::COLOR_BLUE);
 		newwaypoint->setSpecialTypeID(WaypointObject::SPECIALTYPE_RESOURCE);
@@ -516,18 +515,18 @@ void ResourceSpawner::sendSample(PlayerCreature* player, const String& resname,
 	player->inflictDamage(player, CreatureAttribute::ACTION, 200, false, true);
 
 	PlayClientEffectLoc* effect = new PlayClientEffectLoc(sampleAnimation,
-			player->getZone()->getZoneID(), player->getPositionX(),
+			player->getZone()->getZoneName(), player->getPositionX(),
 			player->getPositionZ(), player->getPositionY());
 
 	player->broadcastMessage(effect, true);
 
 	// Obtain position information
-	int zoneid = player->getZone()->getZoneID();
+	String zoneName = player->getZone()->getZoneName();
 	float posX = player->getPositionX();
 	float posY = player->getPositionY();
 
 	// Get resource Density ay players position
-	float density = resourceMap->getDensityAt(resname, zoneid, posX, posY);
+	float density = resourceMap->getDensityAt(resname, zoneName, posX, posY);
 
 	// Add sampleresultstask
 	Reference<SampleResultsTask*> sampleResultsTask = new SampleResultsTask(
@@ -551,7 +550,7 @@ void ResourceSpawner::sendSampleResults(PlayerCreature* player,
 
 	Locker playerLocker(player);
 
-	int zoneid = player->getZone()->getZoneID();
+	String zoneName = player->getZone()->getZoneName();
 
 	// If density is too low, we can't obtain a sample
 	if (density < .10f) {
@@ -638,7 +637,7 @@ void ResourceSpawner::sendSampleResults(PlayerCreature* player,
 
 	// We need the spawn object to track extraction
 	ManagedReference<ResourceSpawn*> resourceSpawn = resourceMap->get(resname);
-	resourceSpawn->extractResource(zoneid, unitsExtracted);
+	resourceSpawn->extractResource(zoneName, unitsExtracted);
 
 	int xp = (int) (((float) unitsExtracted / (float) maxUnitsExtracted)
 			* xpcap);
@@ -704,9 +703,9 @@ void ResourceSpawner::addResourceToPlayerInventory(PlayerCreature* player, Resou
 ResourceContainer* ResourceSpawner::harvestResource(PlayerCreature* player,
 		const String& type, const int quantity) {
 
-	int zoneid = player->getZone()->getZoneID();
+	String zoneName = player->getZone()->getZoneName();
 
-	ZoneResourceMap* zoneMap = resourceMap->getZoneResourceList(zoneid);
+	ZoneResourceMap* zoneMap = resourceMap->getZoneResourceList(zoneName);
 	if (zoneMap == NULL) {
 		player->sendSystemMessage("Failed to locate any resources");
 		return NULL;
@@ -718,7 +717,7 @@ ResourceContainer* ResourceSpawner::harvestResource(PlayerCreature* player,
 		resourceSpawn = zoneMap->get(i);
 
 		if (resourceSpawn != NULL && resourceSpawn->getType() == type) {
-			resourceSpawn->extractResource(player->getZone()->getZoneID(), quantity);
+			resourceSpawn->extractResource(player->getZone()->getZoneName(), quantity);
 			return resourceSpawn->createResource(quantity);
 		}
 
@@ -729,14 +728,14 @@ ResourceContainer* ResourceSpawner::harvestResource(PlayerCreature* player,
 
 void ResourceSpawner::harvestResource(PlayerCreature* player, ResourceSpawn* resourceSpawn, int quantity) {
 
-	resourceSpawn->extractResource(player->getZone()->getZoneID(), quantity);
+	resourceSpawn->extractResource(player->getZone()->getZoneName(), quantity);
 
 	addResourceToPlayerInventory(player, resourceSpawn, quantity);
 }
 
-ResourceSpawn* ResourceSpawner::getCurrentSpawn(const String& restype, const int zoneid) {
+ResourceSpawn* ResourceSpawner::getCurrentSpawn(const String& restype, const String& zoneName) {
 
-	ZoneResourceMap* zoneMap = resourceMap->getZoneResourceList(zoneid);
+	ZoneResourceMap* zoneMap = resourceMap->getZoneResourceList(zoneName);
 
 	if (zoneMap == NULL) {
 		return NULL;

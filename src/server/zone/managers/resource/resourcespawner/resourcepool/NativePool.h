@@ -64,7 +64,7 @@ class NativePool : public ResourcePool {
 private:
 
 	/// Current zones with active resources
-	Vector<uint32> activeResourceZones;
+	Vector<String> activeResourceZones;
 
 public:
 

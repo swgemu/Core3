@@ -123,7 +123,7 @@ public:
 
 	UnicodeString getTitle();
 
-	String getServerName();
+	String getGalaxyName();
 
 	void setOwner(const String& Owner);
 
@@ -152,9 +152,9 @@ protected:
 
 	String _return_getCreator;
 	String _return_getFullPath;
+	String _return_getGalaxyName;
 	String _return_getName;
 	String _return_getOwner;
-	String _return_getServerName;
 
 	UnicodeString _return_getTitle;
 
@@ -262,7 +262,7 @@ public:
 
 	UnicodeString getTitle();
 
-	String getServerName();
+	String getGalaxyName();
 
 	void setOwner(const String& Owner);
 
@@ -379,7 +379,7 @@ public:
 
 	UnicodeString getTitle();
 
-	String getServerName();
+	String getGalaxyName();
 
 	void setOwner(const String& Owner);
 

@@ -412,7 +412,7 @@ int ResourceSpawn::getSpawnMapSize() {
 		return _implementation->getSpawnMapSize();
 }
 
-void ResourceSpawn::extractResource(String& zoneName, int units) {
+void ResourceSpawn::extractResource(const String& zoneName, int units) {
 	ResourceSpawnImplementation* _implementation = (ResourceSpawnImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
@@ -1327,7 +1327,7 @@ int ResourceSpawnAdapter::getSpawnMapSize() {
 	return ((ResourceSpawnImplementation*) impl)->getSpawnMapSize();
 }
 
-void ResourceSpawnAdapter::extractResource(String& zoneName, int units) {
+void ResourceSpawnAdapter::extractResource(const String& zoneName, int units) {
 	((ResourceSpawnImplementation*) impl)->extractResource(zoneName, units);
 }
 

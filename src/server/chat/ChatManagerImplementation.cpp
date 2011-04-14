@@ -84,7 +84,7 @@ void ChatManagerImplementation::initiateRooms() {
 	mainRoom->setPrivate();
 	gameRooms.put("SWG", mainRoom);
 
-	ChatRoom* core3Room = createRoom(server->getServerName(), mainRoom);
+	ChatRoom* core3Room = createRoom(server->getGalaxyName(), mainRoom);
 	core3Room->setPrivate();
 	mainRoom->addSubRoom(core3Room);
 
@@ -565,7 +565,7 @@ ChatRoom* ChatManagerImplementation::createGroupRoom(uint64 groupID, PlayerCreat
 void ChatManagerImplementation::destroyRoom(ChatRoom* room) {
 	Locker _locker(_this);
 
-	ChatOnDestroyRoom* msg = new ChatOnDestroyRoom("SWG", server->getServerName(), room->getRoomID());
+	ChatOnDestroyRoom* msg = new ChatOnDestroyRoom("SWG", server->getGalaxyName(), room->getRoomID());
 	room->broadcastMessage(msg);
 	room->removeAllPlayers();
 

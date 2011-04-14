@@ -335,6 +335,8 @@ using namespace server::zone::managers::guild;
 
 #include "system/util/Vector.h"
 
+#include "system/util/VectorMap.h"
+
 #include "system/net/Socket.h"
 
 #include "system/net/SocketAddress.h"
@@ -434,7 +436,7 @@ public:
 
 	int getServerState();
 
-	Zone* getZone(const String& zoneName);
+	Zone* getZone(const String& terrainName);
 
 	int getZoneCount();
 
@@ -667,7 +669,7 @@ public:
 
 	int getServerState();
 
-	Zone* getZone(const String& zoneName);
+	Zone* getZone(const String& terrainName);
 
 	int getZoneCount();
 
@@ -830,7 +832,7 @@ public:
 
 	int getServerState();
 
-	Zone* getZone(const String& zoneName);
+	Zone* getZone(const String& terrainName);
 
 	int getZoneCount();
 

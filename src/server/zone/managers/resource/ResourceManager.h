@@ -164,7 +164,7 @@ public:
 
 	void givePlayerResource(PlayerCreature* playerCreature, const String& restype, const int quantity);
 
-	ResourceSpawn* getCurrentSpawn(const String& restype, int zoneid);
+	ResourceSpawn* getCurrentSpawn(const String& restype, const String& zoneName);
 
 	ResourceSpawn* getResourceSpawn(const String& spawnName);
 
@@ -240,7 +240,7 @@ public:
 
 	void givePlayerResource(PlayerCreature* playerCreature, const String& restype, const int quantity);
 
-	ResourceSpawn* getCurrentSpawn(const String& restype, int zoneid);
+	ResourceSpawn* getCurrentSpawn(const String& restype, const String& zoneName);
 
 	ResourceSpawn* getResourceSpawn(const String& spawnName);
 
@@ -325,7 +325,7 @@ public:
 
 	void givePlayerResource(PlayerCreature* playerCreature, const String& restype, const int quantity);
 
-	ResourceSpawn* getCurrentSpawn(const String& restype, int zoneid);
+	ResourceSpawn* getCurrentSpawn(const String& restype, const String& zoneName);
 
 	ResourceSpawn* getResourceSpawn(const String& spawnName);
 
@@ -339,7 +339,8 @@ protected:
 	String _param1_harvestResource__PlayerCreature_String_int_;
 	String _param1_createResourceSpawn__PlayerCreature_String_;
 	String _param1_givePlayerResource__PlayerCreature_String_int_;
-	String _param0_getCurrentSpawn__String_int_;
+	String _param0_getCurrentSpawn__String_String_;
+	String _param1_getCurrentSpawn__String_String_;
 	String _param0_getResourceSpawn__String_;
 	String _param0_addChildrenToDeedListBox__String_ResourceDeedListBox_bool_;
 };

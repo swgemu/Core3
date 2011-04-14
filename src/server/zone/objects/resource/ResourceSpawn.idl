@@ -259,7 +259,7 @@ class ResourceSpawn extends SceneObject {
     	return spawnMaps.size();
     }
     
-    public native void extractResource(string zoneName, int units);
+    public native void extractResource(final string zoneName, int units);
     
     public native ResourceContainer createResource(int units);
 
