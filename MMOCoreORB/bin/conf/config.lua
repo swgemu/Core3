@@ -78,7 +78,7 @@ ZoneGalaxyID = 2 --The actual zone server's galaxyID. Should coordinate with you
 ZoneOnlineCharactersPerAccount = 2 --How many characters are allowed online from a single account.
 
 -- directory of tres with live.cfg
-TrePath = "/home/crush/Desktop/SWGEmu"
+TrePath = "/home/crush/swg"
 
 TreFiles = {
 	"default_patch.tre",

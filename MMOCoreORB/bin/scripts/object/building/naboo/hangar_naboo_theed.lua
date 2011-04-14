@@ -49,7 +49,9 @@ object_building_naboo_hangar_naboo_theed = object_building_naboo_shared_hangar_n
 		{templateFile = "object/tangible/terminal/terminal_travel.iff", x = -26.9453, z = 0.749357, y = -67.1413, ox = 0, oy = 1, oz = 0, ow = 0, cellid = 2, containmentType = -1},
 		{templateFile = "object/tangible/terminal/terminal_travel.iff", x = 26.9453, z = 0.749357, y = -67.1413, ox = 0, oy = 1, oz = 0, ow = 0, cellid = 3, containmentType = -1},
 		{templateFile = "object/tangible/terminal/terminal_travel.iff", x = -9.49707, z = 7.97928, y = -45.2359, ox = 0, oy = 0, oz = 0, ow = 1, cellid = 4, containmentType = -1},
-		{templateFile = "object/tangible/terminal/terminal_travel.iff", x = 9.49707, z = 7.97928, y = -45.2359, ox = 0, oy = 0, oz = 0, ow = 1, cellid = 4, containmentType = -1}
+		{templateFile = "object/tangible/terminal/terminal_travel.iff", x = 9.49707, z = 7.97928, y = -45.2359, ox = 0, oy = 0, oz = 0, ow = 1, cellid = 4, containmentType = -1},
+		{templateFile = "object/tangible/travel/ticket_collector/ticket_collector.iff", x = -10, z = 7.97928, y = 10, ox = 0, oy = -0.707107, oz = 0, ow = 0.707107, cellid = 4, containmentType = -1},
+		{templateFile = "object/creature/npc/theme_park/player_transport_theed_hangar.iff", x = 0, z = 7.97928, y = 0, ox = 0, oy = 1, oz = 0, ow = 1, cellid = 4, containmentType = -1}
 	}
 }
 

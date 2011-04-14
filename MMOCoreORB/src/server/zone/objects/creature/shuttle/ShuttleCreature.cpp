@@ -8,6 +8,8 @@
 
 #include "server/zone/objects/player/PlayerCreature.h"
 
+#include "server/zone/objects/building/BuildingObject.h"
+
 #include "server/zone/objects/tangible/ticket/TicketObject.h"
 
 #include "server/zone/managers/planet/PlanetManager.h"
@@ -24,7 +26,7 @@
  *	ShuttleCreatureStub
  */
 
-enum {RPC_DOTAKEOFF__ = 6,RPC_DOLANDING__,RPC_ACTIVATERECOVERY__,RPC_ISATTACKABLEBY__CREATUREOBJECT_,RPC_SENDPLAYERTO__PLAYERCREATURE_TICKETOBJECT_,RPC_GETARRIVALTIME__,RPC_GETLANDINGTIME__,RPC_SETARRIVALPOINT__FLOAT_FLOAT_FLOAT_,RPC_SETSTARPORT__BOOL_,RPC_SETPLANET__STRING_,RPC_SETCITY__STRING_,RPC_SETTAX__INT_,RPC_GETPLANET__,RPC_GETCITY__,RPC_GETTAX__,RPC_ISSTARPORT__,RPC_ISSHUTTLECREATURE__};
+enum {RPC_INSERTTOBUILDING__BUILDINGOBJECT_ = 6,RPC_DOTAKEOFF__,RPC_DOLANDING__,RPC_ACTIVATERECOVERY__,RPC_ISATTACKABLEBY__CREATUREOBJECT_,RPC_SENDPLAYERTO__PLAYERCREATURE_TICKETOBJECT_,RPC_GETARRIVALTIME__,RPC_GETLANDINGTIME__,RPC_SETARRIVALPOINT__FLOAT_FLOAT_FLOAT_,RPC_SETSTARPORT__BOOL_,RPC_SETPLANET__STRING_,RPC_SETCITY__STRING_,RPC_SETTAX__INT_,RPC_GETPLANET__,RPC_GETCITY__,RPC_GETTAX__,RPC_ISSTARPORT__,RPC_ISSHUTTLECREATURE__};
 
 ShuttleCreature::ShuttleCreature() : CreatureObject(DummyConstructorParameter::instance()) {
 	ShuttleCreatureImplementation* _implementation = new ShuttleCreatureImplementation();
@@ -38,6 +40,20 @@ ShuttleCreature::ShuttleCreature(DummyConstructorParameter* param) : CreatureObj
 ShuttleCreature::~ShuttleCreature() {
 }
 
+
+void ShuttleCreature::insertToBuilding(BuildingObject* building) {
+	ShuttleCreatureImplementation* _implementation = (ShuttleCreatureImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_INSERTTOBUILDING__BUILDINGOBJECT_);
+		method.addObjectParameter(building);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->insertToBuilding(building);
+}
 
 void ShuttleCreature::doTakeOff() {
 	ShuttleCreatureImplementation* _implementation = (ShuttleCreatureImplementation*) _getImplementation();
@@ -602,6 +618,9 @@ Packet* ShuttleCreatureAdapter::invokeMethod(uint32 methid, DistributedMethod* i
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
+	case RPC_INSERTTOBUILDING__BUILDINGOBJECT_:
+		insertToBuilding((BuildingObject*) inv->getObjectParameter());
+		break;
 	case RPC_DOTAKEOFF__:
 		doTakeOff();
 		break;
@@ -658,6 +677,10 @@ Packet* ShuttleCreatureAdapter::invokeMethod(uint32 methid, DistributedMethod* i
 	}
 
 	return resp;
+}
+
+void ShuttleCreatureAdapter::insertToBuilding(BuildingObject* building) {
+	((ShuttleCreatureImplementation*) impl)->insertToBuilding(building);
 }
 
 void ShuttleCreatureAdapter::doTakeOff() {

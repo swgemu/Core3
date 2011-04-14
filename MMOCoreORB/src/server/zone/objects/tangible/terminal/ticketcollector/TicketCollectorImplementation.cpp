@@ -18,76 +18,10 @@
 #include "server/zone/objects/building/city/CityHallObject.h"
 
 int TicketCollectorImplementation::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
-	// Pre: player wlocked
-	// Post: player wlocked
-
 	if (selectedID != 20)
 		return 0;
 
-	if (player->isMounted()) {
-		player->sendSystemMessage("travel", "no_pets");
-		return 0;
-	}
-
-	if (player->isInCombat())
-		return 0;
-
-	ManagedReference<SceneObject*> inventory = player->getSlottedObject("inventory");
-
-	if (inventory == NULL)
-		return 0;
-
-	if (!checkTime(shuttle, player))
-		return 0;
-
-	String city = shuttle->getCity();
-	String planet = shuttle->getPlanet();
-
-	//Check to see if they have been city banned from travelling in this city.
-	ManagedReference<ActiveArea*> activeArea = getActiveRegion();
-
-	if (activeArea != NULL && activeArea->isRegion()) {
-		Region* region = (Region*) activeArea.get();
-
-		ManagedReference<CityHallObject*> city = region->getCityHall();
-
-		if (city != NULL && city->isBanned(player->getObjectID())) {
-			player->sendSystemMessage("@city/city:city_cant_board"); //You are banned from using the services of this city.\nYou may not board the transport.
-			return 0;
-		}
-	}
-
-	ManagedReference<SuiListBox*> sui = new SuiListBox(player, SuiWindowType::TICKET_COLLECTOR_RESPONSES);
-	sui->setPromptTitle("@travel:ticket_collector_name");
-	sui->setPromptText("@travel:boarding_ticket_selection");
-	sui->setCancelButton(true, "");
-
-	for (int i = 0; i < inventory->getContainerObjectsSize(); ++i) {
-		SceneObject* obj = inventory->getContainerObject(i);
-
-		if (!obj->isTangibleObject())
-			continue;
-
-		TangibleObject* item = (TangibleObject*) obj;
-
-		if (item->isTicketObject()) {
-			TicketObject* ticket = (TicketObject*) item;
-
-			if (ticket->getDeparturePoint() == shuttle->getCity()) {
-				StringBuffer line;
-				line << "@planet_n:" << ticket->getArrivalPlanet() << " - " << ticket->getArrivalPoint();
-
-				sui->addMenuItem(line.toString(), ticket->getObjectID());
-			}
-		}
-	}
-
-	if (sui->getMenuSize() == 0) {
-		player->sendSystemMessage("travel", "no_ticket");
-	} else {
-		player->addSuiBox(sui);
-		player->sendMessage(sui->generateMessage());
-	}
+	player->sendSystemMessage("Travel is currently disabled.");
 
 	return 0;
 }

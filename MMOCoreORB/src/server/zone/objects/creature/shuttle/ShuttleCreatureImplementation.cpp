@@ -16,6 +16,18 @@
 #include "server/zone/ZoneServer.h"
 #include "server/zone/managers/planet/PlanetManager.h"
 
+void ShuttleCreatureImplementation::insertToBuilding(BuildingObject* building) {
+	CreatureObjectImplementation::insertToBuilding(building);
+
+	//System::out << "insertToBuilding" << endl;
+
+	//zone->unlock();
+
+	//doTakeOff();
+
+	//zone->wlock();
+}
+
 int64 ShuttleCreatureImplementation::getLandingTime() {
 	Time landing = shuttleLandingEvent->getNextExecutionTime();
 
@@ -66,7 +78,7 @@ void ShuttleCreatureImplementation::sendPlayerTo(PlayerCreature* player, TicketO
 }
 
 void ShuttleCreatureImplementation::doTakeOff() {
-	int landin = 300000;
+	int landin = 10000;
 
 	if (shuttleTakeOffEvent == NULL)
 		shuttleTakeOffEvent = new ShuttleTakeOffEvent(_this);
@@ -87,5 +99,5 @@ void ShuttleCreatureImplementation::doLanding() {
 
 	doCombatAnimation((ShuttleCreature*) _this, 0xAB290245, 0);
 
-	shuttleTakeOffEvent->schedule(90000);
+	shuttleTakeOffEvent->schedule(10000);
 }

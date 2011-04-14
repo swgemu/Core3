@@ -38,6 +38,20 @@ using namespace server::zone::objects::player;
 namespace server {
 namespace zone {
 namespace objects {
+namespace building {
+
+class BuildingObject;
+
+} // namespace building
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::building;
+
+namespace server {
+namespace zone {
+namespace objects {
 namespace tangible {
 namespace ticket {
 
@@ -143,6 +157,8 @@ class ShuttleCreature : public CreatureObject {
 public:
 	ShuttleCreature();
 
+	void insertToBuilding(BuildingObject* building);
+
 	void doTakeOff();
 
 	void doLanding();
@@ -233,6 +249,8 @@ public:
 
 	ShuttleCreatureImplementation(DummyConstructorParameter* param);
 
+	void insertToBuilding(BuildingObject* building);
+
 	void doTakeOff();
 
 	void doLanding();
@@ -311,6 +329,8 @@ public:
 	ShuttleCreatureAdapter(ShuttleCreatureImplementation* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
+
+	void insertToBuilding(BuildingObject* building);
 
 	void doTakeOff();
 

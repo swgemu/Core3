@@ -53,6 +53,7 @@ import system.util.SortedVector;
 import server.zone.objects.creature.CreatureObject;
 import server.zone.objects.creature.CreatureObject;
 import server.zone.objects.player.PlayerCreature;
+import server.zone.objects.building.BuildingObject;
 import server.zone.objects.tangible.ticket.TicketObject;
 import system.lang.ref.Reference;
 import server.zone.managers.planet.PlanetManager;
@@ -81,6 +82,8 @@ class ShuttleCreature extends CreatureObject {
 		Logger.setLogging(false);
 		Logger.setGlobalLogging(true);
 	}
+	
+	public native void insertToBuilding(BuildingObject building);
 	
 	public native void doTakeOff();
 	

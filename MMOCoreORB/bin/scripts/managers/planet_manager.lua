@@ -61,7 +61,7 @@ lok = {
 }
 
 naboo = {
-	loadClientObjects = 0
+	loadClientObjects = 1
 }
 
 rori = {
