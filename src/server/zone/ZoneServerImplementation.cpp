@@ -210,7 +210,7 @@ void ZoneServerImplementation::startZones() {
 				continue;
 
 			//Load zones from the .trn file names.
-			String zoneName = recordName.subString(recordName.lastIndexOf('/'), recordName.lastIndexOf('.'));
+			String zoneName = recordName.subString(0, recordName.lastIndexOf('.'));
 
 			info("Loading zone " + zoneName + ".", true);
 
@@ -232,6 +232,10 @@ void ZoneServerImplementation::startZones() {
 void ZoneServerImplementation::startManagers() {
 	info("loading managers..");
 
+	resourceManager = new ResourceManager(_this, processor, objectManager);
+	resourceManager->deploy("ResourceManager");
+	resourceManager->initialize();
+
 	auctionManager = new AuctionManager(_this);
 	auctionManager->deploy();
 	auctionManager->initialize();
@@ -241,10 +245,6 @@ void ZoneServerImplementation::startManagers() {
 
 	radialManager = new RadialManager(_this);
 	radialManager->deploy("RadialManager");
-
-	resourceManager = new ResourceManager(_this, processor, objectManager);
-	resourceManager->deploy("ResourceManager");
-	resourceManager->initialize();
 
 	fishingManager = new FishingManager(_this);
 	fishingManager->deploy();
