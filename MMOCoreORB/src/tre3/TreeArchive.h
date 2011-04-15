@@ -46,6 +46,10 @@ public:
 		}
 	}
 
+	TreeDirectory* getTreeDirectory(const String& path) {
+		return &nodeMap.get(path);
+	}
+
 	/**
 	 * Gets a byte buffer from the specified path.
 	 * Don't forget to delete the pointer when finished.
