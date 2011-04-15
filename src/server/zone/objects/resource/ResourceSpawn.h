@@ -108,7 +108,7 @@ public:
 
 	void setSpawnPool(int pool);
 
-	void setZoneRestriction(String& zoneName);
+	void setZoneRestriction(const String& zoneName);
 
 	void addClass(const String& newclass);
 
@@ -160,11 +160,11 @@ public:
 
 	bool isUnknownType();
 
-	void createSpawnMaps(bool jtl, int minpool, int maxpool, String& zonerestriction, Vector<String>& activeZones);
+	void createSpawnMaps(bool jtl, int minpool, int maxpool, const String& zonerestriction, Vector<String>& activeZones);
 
 	unsigned int getPlanetCRC();
 
-	float getDensityAt(String& zoneName, float x, float y);
+	float getDensityAt(const String& zoneName, float x, float y);
 
 	bool inShift();
 
@@ -265,7 +265,7 @@ public:
 
 	void setSpawnPool(int pool);
 
-	void setZoneRestriction(String& zoneName);
+	void setZoneRestriction(const String& zoneName);
 
 	void addClass(const String& newclass);
 
@@ -317,7 +317,7 @@ public:
 
 	bool isUnknownType();
 
-	void createSpawnMaps(bool jtl, int minpool, int maxpool, String& zonerestriction, Vector<String>& activeZones);
+	void createSpawnMaps(bool jtl, int minpool, int maxpool, const String& zonerestriction, Vector<String>& activeZones);
 
 private:
 	int getConcentration(bool jtl);
@@ -326,10 +326,10 @@ public:
 	unsigned int getPlanetCRC();
 
 private:
-	Vector<String> getSpawnZones(int minpool, int maxpool, String& zonerestriction, Vector<String>& activeZones);
+	Vector<String> getSpawnZones(int minpool, int maxpool, const String& zonerestriction, Vector<String>& activeZones);
 
 public:
-	float getDensityAt(String& zoneName, float x, float y);
+	float getDensityAt(const String& zoneName, float x, float y);
 
 	bool inShift();
 
@@ -396,7 +396,7 @@ public:
 
 	void setSpawnPool(int pool);
 
-	void setZoneRestriction(String& zoneName);
+	void setZoneRestriction(const String& zoneName);
 
 	void addClass(const String& newclass);
 

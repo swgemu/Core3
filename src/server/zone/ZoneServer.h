@@ -438,6 +438,8 @@ public:
 
 	Zone* getZone(const String& terrainName);
 
+	Zone* getZone(int idx);
+
 	int getZoneCount();
 
 	int getMaxPlayers();
@@ -671,6 +673,8 @@ public:
 
 	Zone* getZone(const String& terrainName);
 
+	Zone* getZone(int idx);
+
 	int getZoneCount();
 
 	int getMaxPlayers();
@@ -833,6 +837,8 @@ public:
 	int getServerState();
 
 	Zone* getZone(const String& terrainName);
+
+	Zone* getZone(int idx);
 
 	int getZoneCount();
 

@@ -108,7 +108,7 @@ void ResourceSpawn::setSpawnPool(int pool) {
 		_implementation->setSpawnPool(pool);
 }
 
-void ResourceSpawn::setZoneRestriction(String& zoneName) {
+void ResourceSpawn::setZoneRestriction(const String& zoneName) {
 	ResourceSpawnImplementation* _implementation = (ResourceSpawnImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
@@ -459,7 +459,7 @@ bool ResourceSpawn::isUnknownType() {
 		return _implementation->isUnknownType();
 }
 
-void ResourceSpawn::createSpawnMaps(bool jtl, int minpool, int maxpool, String& zonerestriction, Vector<String>& activeZones) {
+void ResourceSpawn::createSpawnMaps(bool jtl, int minpool, int maxpool, const String& zonerestriction, Vector<String>& activeZones) {
 	ResourceSpawnImplementation* _implementation = (ResourceSpawnImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
@@ -481,7 +481,7 @@ unsigned int ResourceSpawn::getPlanetCRC() {
 		return _implementation->getPlanetCRC();
 }
 
-float ResourceSpawn::getDensityAt(String& zoneName, float x, float y) {
+float ResourceSpawn::getDensityAt(const String& zoneName, float x, float y) {
 	ResourceSpawnImplementation* _implementation = (ResourceSpawnImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
@@ -960,7 +960,7 @@ void ResourceSpawnImplementation::setSpawnPool(int pool) {
 }
 }
 
-void ResourceSpawnImplementation::setZoneRestriction(String& zoneName) {
+void ResourceSpawnImplementation::setZoneRestriction(const String& zoneName) {
 	// server/zone/objects/resource/ResourceSpawn.idl():   	zoneRestriction = zoneName;
 	zoneRestriction = zoneName;
 }
@@ -1239,7 +1239,7 @@ void ResourceSpawnAdapter::setSpawnPool(int pool) {
 	((ResourceSpawnImplementation*) impl)->setSpawnPool(pool);
 }
 
-void ResourceSpawnAdapter::setZoneRestriction(String& zoneName) {
+void ResourceSpawnAdapter::setZoneRestriction(const String& zoneName) {
 	((ResourceSpawnImplementation*) impl)->setZoneRestriction(zoneName);
 }
 

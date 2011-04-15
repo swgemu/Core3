@@ -42,6 +42,14 @@ public:
 		return allowedZones.contains(zoneName);
 	}
 
+	inline int getTotalAllowedZones() {
+		return allowedZones.size();
+	}
+
+	inline String getAllowedZone(int i) const {
+		return allowedZones.get(i);
+	}
+
 	inline int getBaseMaintenanceRate() {
 		return baseMaintenanceRate;
 	}
@@ -64,6 +72,15 @@ public:
 
 	inline virtual bool isPublicStructure() {
 		return false;
+	}
+
+	//TODO: Deprecate. Use SFP
+	inline int getWidth() {
+		return 0;
+	}
+
+	inline int getLength() {
+		return 0;
 	}
 };
 

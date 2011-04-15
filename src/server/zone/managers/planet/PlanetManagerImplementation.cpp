@@ -316,17 +316,6 @@ void PlanetManagerImplementation::sendPlanetTravelPointListResponse(PlayerCreatu
 
 	TravelListResponseMessage* msg = new TravelListResponseMessage(zone->getZoneName());
 
-	shuttleMap.resetIterator();
-
-	while (shuttleMap.hasNext()) {
-		ShuttleCreature* shuttle = shuttleMap.getNextValue();
-
-		float x, y, z;
-		shuttle->getArrivalPoint(x, y, z);
-
-		msg->addPoint(shuttle->getCity(), x, z, y, shuttle->getTax(), shuttle->isStarport());
-	}
-
 	unlock();
 
 	msg->generateMessage();

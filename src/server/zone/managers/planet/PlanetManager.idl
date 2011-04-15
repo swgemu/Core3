@@ -57,14 +57,12 @@ import server.zone.objects.scene.variables.StringId;
 import server.zone.managers.structure.StructureManager;
 import server.zone.managers.weather.WeatherManager;
 import server.zone.managers.objectcontroller.ObjectController;
-import server.zone.objects.creature.shuttle.ShuttleCreature;
 import server.zone.objects.player.PlayerCreature;
 import server.zone.objects.scene.SceneObject;
 include server.zone.objects.region.Region;
 include server.zone.managers.planet.RegionMap;
 
 include server.zone.managers.terrain.TerrainManager;
-include server.zone.managers.planet.ShuttleMap;
 include server.zone.managers.planet.NoBuildAreaMap;
 include server.zone.managers.planet.MissionTargetMap;
 include server.zone.managers.planet.HuntingTargetMap;
@@ -92,9 +90,6 @@ class PlanetManager extends ManagedService implements Logger {
 		
 	protected transient ZoneProcessServer server;
 	protected transient TerrainManager terrainManager;
-	
-	@dereferenced
-	protected transient ShuttleMap shuttleMap;
 	
 	@dereferenced
 	protected transient NoBuildAreaMap noBuildAreaMap;
@@ -156,18 +151,6 @@ class PlanetManager extends ManagedService implements Logger {
 	public native void loadHuntingTargets();
 	public native void loadReconLocations();
 	protected native void loadStaticTangibleObjects();
-	
-	public synchronized ShuttleCreature getShuttle(final string arrivalPoint) {
-		return shuttleMap.get(arrivalPoint);
-	}
-	
-	public synchronized void addShuttle(final string city, ShuttleCreature shuttle) {
-		shuttleMap.put(city, shuttle);
-	}
-	
-	public synchronized void dropShuttle(final string city) {
-		shuttleMap.remove(city);
-	}
 	
 	@local
 	public native boolean isNoBuildArea(float x, float y, @dereferenced StringId fullAreaName);

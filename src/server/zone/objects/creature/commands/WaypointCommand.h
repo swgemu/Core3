@@ -136,7 +136,7 @@ public:
 					//A waypoint in the form of /waypoint planet X Z Y - Planetary Map
 					planet = arg1;
 
-					if (Planet::getPlanetID(planet) < 0) { //Not a valid planet name - malformed command
+					if (server->getZoneServer()->getZone(planet) == NULL) { //Not a valid planet name - malformed command
 						creature->sendSystemMessage(usageError);
 						return GENERALERROR;
 					}

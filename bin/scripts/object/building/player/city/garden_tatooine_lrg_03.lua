@@ -45,7 +45,7 @@ object_building_player_city_garden_tatooine_lrg_03 = object_building_player_city
 
 	lotSize = 0,
 	baseMaintenanceRate = 0,
-	allowedZones = {1,4,8},
+	allowedZones = {"dantooine", "lok", "tatooine"},
 	length = 7,
 	width = 7,
 	cityRankRequired = 3,

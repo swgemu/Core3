@@ -77,130 +77,27 @@ public:
 		if (inventory == NULL)
 			return GENERALERROR;
 
-		StringTokenizer tokenizer(arguments.toString());
-
 		String departurePlanet;
-		if (tokenizer.hasMoreTokens())
-			tokenizer.getStringToken(departurePlanet);
-		else
-			return GENERALERROR;
-
-		String departurePoint;
-		if (tokenizer.hasMoreTokens())
-			tokenizer.getStringToken(departurePoint);
-		else
-			return GENERALERROR;
+		String departureCity;
 
 		String arrivalPlanet;
-		if (tokenizer.hasMoreTokens())
-			tokenizer.getStringToken(arrivalPlanet);
-		else
-			return GENERALERROR;
-
-		String arrivalPoint;
-		if (tokenizer.hasMoreTokens())
-			tokenizer.getStringToken(arrivalPoint);
-		else
-			return GENERALERROR;
+		String arrivalCity;
 
 		bool roundTrip;
-		if (tokenizer.hasMoreTokens())
-			roundTrip = tokenizer.getIntToken();
-		else
-			return GENERALERROR;
 
-		PlanetManager* planetManager = player->getZone()->getPlanetManager();
+		StringTokenizer tokenizer(arguments.toString());
 
-		int fare = planetManager->getTravelFare(arrivalPlanet);
-
-		if (fare == 0)
-			return GENERALERROR; //Travel not allowed between these planets
-
-		//Replace Underscores with spaces
-		departurePoint = departurePoint.replaceAll("_", " ");
-		arrivalPoint = arrivalPoint.replaceAll("_", " ");
-
-		ManagedReference<ShuttleCreature*> shuttle = planetManager->getShuttle(departurePoint);
-
-		if (shuttle == NULL) {
-			SuiMessageBox* sui = new SuiMessageBox(player, SuiWindowType::TICKET_PURCHASE_MESSAGE);
-			sui->setPromptTitle("@base_player:swg");
-			sui->setPromptText("@travel:no_location_found");
-
-			player->addSuiBox(sui);
-
-			player->sendMessage(sui->generateMessage());
-			return GENERALERROR;
+		try {
+			tokenizer.getStringToken(departurePlanet);
+			tokenizer.getStringToken(departureCity);
+			tokenizer.getStringToken(arrivalPlanet);
+			tokenizer.getStringToken(arrivalCity);
+			roundTrip = (bool) tokenizer.getIntToken();
+		} catch(Exception& e) {
+			return INVALIDPARAMETERS;
 		}
 
-		uint32 tax = shuttle->getTax();
-
-		uint32 totalFee = fare + tax;
-
-		if (roundTrip)
-			totalFee *= 2;
-
-		if (player->verifyCashCredits(totalFee)) {
-
-			player->substractCashCredits(totalFee);
-
-		} else if (player->verifyBankCredits(totalFee)) {
-
-			player->substractBankCredits(totalFee);
-
-		} else {
-
-			SuiMessageBox* sui = new SuiMessageBox(player, SuiWindowType::TICKET_PURCHASE_MESSAGE);
-			sui->setPromptTitle("@base_player:swg");
-			sui->setPromptText("@travel:short_funds");
-
-			player->addSuiBox(sui);
-
-			player->sendMessage(sui->generateMessage());
-			return SUCCESS;
-		}
-
-		//
-
-		uint32 crc = String("object/tangible/travel/travel_ticket/base/base_travel_ticket.iff").hashCode();
-
-		// create ticket item
-		ManagedReference<TicketObject*> ticket = (TicketObject*) server->getZoneServer()->createObject(crc, 1);
-		ticket->setDeparturePlanet(departurePlanet);
-		ticket->setDeparturePoint(departurePoint);
-		ticket->setArrivalPlanet(arrivalPlanet);
-		ticket->setArrivalPoint(arrivalPoint);
-
-		inventory->addObject(ticket, -1);
-		ticket->sendTo(player, true);
-
-		ticket->updateToDatabase();
-
-		if (roundTrip) {
-			ManagedReference<TicketObject*> ticketObj = (TicketObject*) server->getZoneServer()->createObject(crc, 1);
-			ticketObj->setDeparturePlanet(arrivalPlanet);
-			ticketObj->setDeparturePoint(arrivalPoint);
-			ticketObj->setArrivalPlanet(departurePlanet);
-			ticketObj->setArrivalPoint(departurePoint);
-
-			inventory->addObject(ticketObj, -1);
-			ticketObj->sendTo(player, true);
-
-			ticketObj->updateToDatabase();
-		}
-
-		SuiMessageBox* sui = new SuiMessageBox(player, SuiWindowType::TICKET_PURCHASE_MESSAGE);
-		sui->setPromptTitle("@base_player:swg");
-		sui->setPromptText("@travel:ticket_purchase_complete");
-
-		player->addSuiBox(sui);
-		player->sendMessage(sui->generateMessage());
-
-		//TODO: This should say the city name if bought from a city?
-		StringIdChatParameter params("@base_player:prose_pay_acct_success");
-		params.setDI(totalFee);
-		params.setTO("@money/acct_n:travelsystem"); //the Galactic Travel Commission
-		player->sendSystemMessage(params);
+		//TODO: Create the ticket object.
 
 		return SUCCESS;
 	}

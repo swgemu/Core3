@@ -100,7 +100,6 @@ core3_IDLS =	server/login/LoginServer.cpp \
 				server/zone/objects/creature/Creature.cpp \
 				server/zone/objects/creature/AiAgent.cpp \
 				server/zone/objects/creature/AiObserver.cpp \
-				server/zone/objects/creature/shuttle/ShuttleCreature.cpp \
 				server/zone/objects/creature/buffs/Buff.cpp \
 				server/zone/objects/creature/aigroup/AiGroup.cpp \
 				server/zone/objects/creature/aigroup/HerdGroup.cpp \
@@ -386,7 +385,6 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/creature/commands/QueueCommand.cpp \
 		server/zone/objects/creature/LuaCreatureObject.cpp \
 		server/zone/objects/creature/VehicleObjectImplementation.cpp \
-		server/zone/objects/creature/shuttle/ShuttleCreatureImplementation.cpp \
 		server/zone/objects/creature/variables/SkillBoxList.cpp \
 		server/zone/objects/creature/aigroup/AiGroupImplementation.cpp \
 		server/zone/objects/creature/aigroup/HerdGroupImplementation.cpp \

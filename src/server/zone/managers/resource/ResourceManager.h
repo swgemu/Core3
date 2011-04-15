@@ -158,7 +158,7 @@ public:
 
 	void removePowerFromPlayer(PlayerCreature* player, unsigned int power);
 
-	void getResourceListByType(Vector<ManagedReference<ResourceSpawn* > >& list, int type, String& zoneName);
+	void getResourceListByType(Vector<ManagedReference<ResourceSpawn* > >& list, int type, const String& zoneName);
 
 	void createResourceSpawn(PlayerCreature* playerCreature, const String& restype);
 
@@ -234,7 +234,7 @@ public:
 
 	void removePowerFromPlayer(PlayerCreature* player, unsigned int power);
 
-	void getResourceListByType(Vector<ManagedReference<ResourceSpawn* > >& list, int type, String& zoneName);
+	void getResourceListByType(Vector<ManagedReference<ResourceSpawn* > >& list, int type, const String& zoneName);
 
 	void createResourceSpawn(PlayerCreature* playerCreature, const String& restype);
 

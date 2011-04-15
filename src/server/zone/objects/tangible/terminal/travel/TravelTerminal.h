@@ -65,22 +65,6 @@ class TicketObject;
 
 using namespace server::zone::objects::tangible::ticket;
 
-namespace server {
-namespace zone {
-namespace objects {
-namespace creature {
-namespace shuttle {
-
-class ShuttleCreature;
-
-} // namespace shuttle
-} // namespace creature
-} // namespace objects
-} // namespace zone
-} // namespace server
-
-using namespace server::zone::objects::creature::shuttle;
-
 #include "server/zone/objects/tangible/terminal/Terminal.h"
 
 #include "engine/lua/LuaObject.h"
@@ -99,8 +83,6 @@ public:
 	void initializeTransientMembers();
 
 	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
-
-	void setShuttle(ShuttleCreature* shut);
 
 	DistributedObjectServant* _getImplementation();
 
@@ -131,8 +113,6 @@ namespace terminal {
 namespace travel {
 
 class TravelTerminalImplementation : public TerminalImplementation {
-protected:
-	ManagedReference<ShuttleCreature* > shuttle;
 
 public:
 	TravelTerminalImplementation();
@@ -142,8 +122,6 @@ public:
 	void initializeTransientMembers();
 
 	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
-
-	void setShuttle(ShuttleCreature* shut);
 
 	TravelTerminal* _this;
 
@@ -191,8 +169,6 @@ public:
 	void initializeTransientMembers();
 
 	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
-
-	void setShuttle(ShuttleCreature* shut);
 
 };
 

@@ -12,13 +12,11 @@
 
 #include "server/zone/objects/tangible/ticket/TicketObject.h"
 
-#include "server/zone/objects/creature/shuttle/ShuttleCreature.h"
-
 /*
  *	TravelTerminalStub
  */
 
-enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_,RPC_SETSHUTTLE__SHUTTLECREATURE_};
+enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_};
 
 TravelTerminal::TravelTerminal() : Terminal(DummyConstructorParameter::instance()) {
 	TravelTerminalImplementation* _implementation = new TravelTerminalImplementation();
@@ -59,20 +57,6 @@ int TravelTerminal::handleObjectMenuSelect(PlayerCreature* player, byte selected
 		return method.executeWithSignedIntReturn();
 	} else
 		return _implementation->handleObjectMenuSelect(player, selectedID);
-}
-
-void TravelTerminal::setShuttle(ShuttleCreature* shut) {
-	TravelTerminalImplementation* _implementation = (TravelTerminalImplementation*) _getImplementation();
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, RPC_SETSHUTTLE__SHUTTLECREATURE_);
-		method.addObjectParameter(shut);
-
-		method.executeWithVoidReturn();
-	} else
-		_implementation->setShuttle(shut);
 }
 
 DistributedObjectServant* TravelTerminal::_getImplementation() {
@@ -179,11 +163,6 @@ bool TravelTerminalImplementation::readObjectMember(ObjectInputStream* stream, c
 	if (TerminalImplementation::readObjectMember(stream, _name))
 		return true;
 
-	if (_name == "shuttle") {
-		TypeInfo<ManagedReference<ShuttleCreature* > >::parseFromBinaryStream(&shuttle, stream);
-		return true;
-	}
-
 
 	return false;
 }
@@ -199,16 +178,8 @@ int TravelTerminalImplementation::writeObjectMembers(ObjectOutputStream* stream)
 	String _name;
 	int _offset;
 	uint16 _totalSize;
-	_name = "shuttle";
-	_name.toBinaryStream(stream);
-	_offset = stream->getOffset();
-	stream->writeShort(0);
-	TypeInfo<ManagedReference<ShuttleCreature* > >::toBinaryStream(&shuttle, stream);
-	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
-	stream->writeShort(_offset, _totalSize);
 
-
-	return 1 + TerminalImplementation::writeObjectMembers(stream);
+	return 0 + TerminalImplementation::writeObjectMembers(stream);
 }
 
 TravelTerminalImplementation::TravelTerminalImplementation() {
@@ -222,11 +193,6 @@ void TravelTerminalImplementation::initializeTransientMembers() {
 	TerminalImplementation::initializeTransientMembers();
 	// server/zone/objects/tangible/terminal/travel/TravelTerminal.idl():  		Logger.setLoggingName("TravelTerminal");
 	Logger::setLoggingName("TravelTerminal");
-}
-
-void TravelTerminalImplementation::setShuttle(ShuttleCreature* shut) {
-	// server/zone/objects/tangible/terminal/travel/TravelTerminal.idl():  		shuttle = shut;
-	shuttle = shut;
 }
 
 /*
@@ -246,9 +212,6 @@ Packet* TravelTerminalAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 	case RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_:
 		resp->insertSignedInt(handleObjectMenuSelect((PlayerCreature*) inv->getObjectParameter(), inv->getByteParameter()));
 		break;
-	case RPC_SETSHUTTLE__SHUTTLECREATURE_:
-		setShuttle((ShuttleCreature*) inv->getObjectParameter());
-		break;
 	default:
 		return NULL;
 	}
@@ -262,10 +225,6 @@ void TravelTerminalAdapter::initializeTransientMembers() {
 
 int TravelTerminalAdapter::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
 	return ((TravelTerminalImplementation*) impl)->handleObjectMenuSelect(player, selectedID);
-}
-
-void TravelTerminalAdapter::setShuttle(ShuttleCreature* shut) {
-	((TravelTerminalImplementation*) impl)->setShuttle(shut);
 }
 
 /*

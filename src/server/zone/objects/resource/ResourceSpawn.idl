@@ -153,7 +153,7 @@ class ResourceSpawn extends SceneObject {
     	}
     }
     
-    public void setZoneRestriction(string zoneName) {
+    public void setZoneRestriction(final string zoneName) {
     	zoneRestriction = zoneName;
     }
 
@@ -270,7 +270,7 @@ class ResourceSpawn extends SceneObject {
 	public native boolean isUnknownType();
     
     @local
-    public native void createSpawnMaps(boolean jtl, int minpool, int maxpool, string zonerestriction, @dereferenced Vector<string> activeZones);
+    public native void createSpawnMaps(boolean jtl, int minpool, int maxpool, final string zonerestriction, @dereferenced Vector<string> activeZones);
     
     @local 	
 	private native int getConcentration(boolean jtl);
@@ -279,10 +279,10 @@ class ResourceSpawn extends SceneObject {
 	
 	@local 	
 	@dereferenced
-	private native Vector<string> getSpawnZones(int minpool, int maxpool, string zonerestriction, @dereferenced Vector<string> activeZones);
+	private native Vector<string> getSpawnZones(int minpool, int maxpool, final string zonerestriction, @dereferenced Vector<string> activeZones);
     
     @local
-    public native float getDensityAt(string zoneName, float x, float y);
+    public native float getDensityAt(final string zoneName, float x, float y);
     
     @local
     public native boolean inShift();

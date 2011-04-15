@@ -50,7 +50,6 @@ import server.zone.objects.tangible.terminal.Terminal;
 import server.zone.objects.tangible.terminal.vendor.bazaar.BazaarTerminal;
 import server.zone.objects.area.ActiveArea;
 import server.zone.objects.player.PlayerCreature;
-import server.zone.objects.creature.shuttle.ShuttleCreature;
 import server.zone.objects.building.city.CityHallObject;
 import server.zone.objects.creature.CreatureObject;
 include server.zone.objects.scene.variables.StringId;

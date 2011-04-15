@@ -7,7 +7,6 @@
 
 #include "Region.h"
 #include "server/zone/objects/player/PlayerCreature.h"
-#include "server/zone/objects/creature/shuttle/ShuttleCreature.h"
 #include "server/zone/Zone.h"
 #include "server/zone/objects/installation/shuttle/ShuttleInstallation.h"
 #include "server/zone/managers/planet/PlanetManager.h"
@@ -39,17 +38,6 @@ void RegionImplementation::insertToZone(Zone* zone) {
 	if (!isInQuadTree())
 		return;
 
-	unlock();
-
-	try {
-		if (shuttleInstallation != NULL) {
-			shuttleInstallation->spawnShuttleObjects();
-		}
-	} catch (Exception& e) {
-	}
-
-	wlock();
-
 	zone->getPlanetManager()->addRegion(_this);
 }
 
@@ -64,6 +52,4 @@ void RegionImplementation::sendDepartingMessage(PlayerCreature* player) {
 }
 
 void RegionImplementation::despawnCityObjects() {
-	if (shuttleInstallation != NULL)
-		shuttleInstallation->removeFromZone();
 }

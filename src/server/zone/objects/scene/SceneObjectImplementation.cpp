@@ -1517,7 +1517,7 @@ uint32 SceneObjectImplementation::getPlanetCRC() {
 	if (zone == NULL)
 		return 0;
 
-	return zone->getZoneName().hashCode();
+	return zone->getZoneCRC();
 }
 
 void SceneObjectImplementation::createChildObjects() {

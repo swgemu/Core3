@@ -68,7 +68,7 @@ bool WeatherManagerImplementation::loadLuaConfig() {
 	if (!lua->runFile("scripts/managers/weather_manager.lua"))
 		return false;
 
-	LuaObject luaObject = lua->getGlobalObject(zone->getZoneName + "_weather");
+	LuaObject luaObject = lua->getGlobalObject(zone->getZoneName() + "_weather");
 
 	if (!luaObject.isValidTable())
 		return false;
@@ -122,7 +122,7 @@ bool WeatherManagerImplementation::loadLuaConfig() {
 	//TODO: Should make this a list of planets, so that new planets can easily be added from lua.
 	String zoneName = zone->getZoneName();
 
-	if (zoneName == "tatooine"" || zoneName == "lok") {
+	if (zoneName == "tatooine" || zoneName == "lok") {
 		sandstormEffectsEnabled = luaObject.getByteField("sandstormEffectsEnabled");
 
 		sandstormWounds = luaObject.getIntField("sandstormWounds");

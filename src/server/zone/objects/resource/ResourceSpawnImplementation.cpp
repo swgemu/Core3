@@ -155,7 +155,7 @@ String ResourceSpawnImplementation::getFamilyName() {
 }
 
 void ResourceSpawnImplementation::createSpawnMaps(bool jtl, int minpool, int maxpool,
-		String& zonerestriction, Vector<String>& activeZones) {
+		const String& zonerestriction, Vector<String>& activeZones) {
 
 	int concentration = getConcentration(jtl);
 	Vector<String> zonenames = getSpawnZones(minpool, maxpool, zonerestriction, activeZones);
@@ -190,7 +190,7 @@ int ResourceSpawnImplementation::getConcentration(bool jtl) {
 }
 
 Vector<String> ResourceSpawnImplementation::getSpawnZones(int minpool, int maxpool,
-		String& zonerestriction, Vector<String>& activeZones) {
+		const String& zonerestriction, Vector<String>& activeZones) {
 
 	/**
 	 * Here we are using defined rules to set the number
@@ -218,7 +218,7 @@ Vector<String> ResourceSpawnImplementation::getSpawnZones(int minpool, int maxpo
 	return activeZones;
 }
 
-float ResourceSpawnImplementation::getDensityAt(String& zoneName, float x, float y) {
+float ResourceSpawnImplementation::getDensityAt(const String& zoneName, float x, float y) {
 	if (!spawnMaps.contains(zoneName))
 		return 0;
 
@@ -242,7 +242,7 @@ uint32 ResourceSpawnImplementation::getPlanetCRC() {
 
 	Zone* zone = server->getZoneServer()->getZone(zoneName);
 
-	return zone->getZoneName().hashCode();
+	return zone->getZoneCRC();
 }
 
 void ResourceSpawnImplementation::extractResource(const String& zoneName, int units) {

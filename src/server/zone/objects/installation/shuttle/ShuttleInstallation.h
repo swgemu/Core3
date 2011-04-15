@@ -106,22 +106,6 @@ using namespace server::zone::templates;
 namespace server {
 namespace zone {
 namespace objects {
-namespace creature {
-namespace shuttle {
-
-class ShuttleCreature;
-
-} // namespace shuttle
-} // namespace creature
-} // namespace objects
-} // namespace zone
-} // namespace server
-
-using namespace server::zone::objects::creature::shuttle;
-
-namespace server {
-namespace zone {
-namespace objects {
 namespace tangible {
 namespace terminal {
 namespace ticketcollector {
@@ -177,14 +161,6 @@ class ShuttleInstallation : public InstallationObject {
 public:
 	ShuttleInstallation();
 
-	void insertToZone(Zone* zone);
-
-	void removeFromZone();
-
-	void spawnShuttleObjects();
-
-	void despawnShuttleObjects();
-
 	bool checkRequisitesForPlacement(PlayerCreature* player);
 
 	DistributedObjectServant* _getImplementation();
@@ -214,25 +190,11 @@ namespace installation {
 namespace shuttle {
 
 class ShuttleInstallationImplementation : public InstallationObjectImplementation {
-protected:
-	ManagedReference<ShuttleCreature* > shuttle;
-
-	ManagedReference<TicketCollector* > ticketCollector;
-
-	ManagedReference<TravelTerminal* > travelTerminal;
 
 public:
 	ShuttleInstallationImplementation();
 
 	ShuttleInstallationImplementation(DummyConstructorParameter* param);
-
-	void insertToZone(Zone* zone);
-
-	void removeFromZone();
-
-	void spawnShuttleObjects();
-
-	void despawnShuttleObjects();
 
 	bool checkRequisitesForPlacement(PlayerCreature* player);
 
@@ -278,14 +240,6 @@ public:
 	ShuttleInstallationAdapter(ShuttleInstallationImplementation* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
-
-	void insertToZone(Zone* zone);
-
-	void removeFromZone();
-
-	void spawnShuttleObjects();
-
-	void despawnShuttleObjects();
 
 	bool checkRequisitesForPlacement(PlayerCreature* player);
 

@@ -50,11 +50,12 @@ void BuildingDeedImplementation::fillAttributeList(AttributeListMessage* alm, Pl
 	if (surplusMaintenance > 0)
 		alm->insertAttribute("examine_maintenance", String::valueOf(surplusMaintenance)); //Surplus Maintenance
 
-	for (int i = 0; i < 10; ++i) {
-		if (buildingTemplate->isAllowedZone(i)) {
-			StringBuffer planetName;
-			planetName << "@planet_n:" << zone->getZoneName();
-			alm->insertAttribute("examine_scene", planetName.toString()); //Can Be Built On
-		}
+	for (int i = 0; i < buildingTemplate->getTotalAllowedZones(); ++i) {
+		String zoneName = buildingTemplate->getAllowedZone(i);
+
+		if (zoneName.isEmpty())
+			continue;
+
+		alm->insertAttribute("examine_scene", "@planet_n:" + zoneName); //Can Be Built On
 	}
 }

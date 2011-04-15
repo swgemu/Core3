@@ -44,7 +44,7 @@
 object_building_player_city_shuttleport_naboo = object_building_player_city_shared_shuttleport_naboo:new {
 	lotSize = 0,
 	baseMaintenanceRate = 0,
-	allowedZones = {1,5,6},
+	allowedZones = {"dantooine", "naboo", "rori"},
 	length = 5,
 	width = 5,
 	cityRankRequired = 4,

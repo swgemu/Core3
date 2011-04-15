@@ -395,7 +395,7 @@ void MissionManagerImplementation::randomizeDestroyMission(PlayerCreature* playe
 
 	Vector3 startPos = player->getCoordinate(System::random(1000) + 1000, (float)System::random(360));
 	//mission->setMissionTarget(lairObjectTemplate->getObjectName());
-	mission->setStartPlanetCRC(player->getZone()->getZoneName().hashCode());
+	mission->setStartPlanetCRC(player->getZone()->getZoneCRC());
 	mission->setStartPosition(startPos.getX(), startPos.getY(), player->getPlanetCRC());
 	mission->setCreatorName(nm->makeCreatureName());
 

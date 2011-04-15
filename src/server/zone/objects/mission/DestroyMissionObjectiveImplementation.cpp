@@ -34,6 +34,7 @@ void DestroyMissionObjectiveImplementation::destroyObjectFromDatabase() {
 }
 
 void DestroyMissionObjectiveImplementation::activate() {
+	/*
 	if ((observers.size() != 0 && lairObject != NULL) || mission == NULL) {
 		return;
 	}
@@ -69,6 +70,7 @@ void DestroyMissionObjectiveImplementation::activate() {
 	waypoint->setActive(true);
 
 	mission->updateMissionLocation();
+	*/
 }
 
 void DestroyMissionObjectiveImplementation::spawnLair() {

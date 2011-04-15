@@ -45,7 +45,7 @@ object_building_player_city_bank_naboo = object_building_player_city_shared_bank
 
 	lotSize = 0,
 	baseMaintenanceRate = 0,
-	allowedZones = {1,5,6},
+	allowedZones = {"dantooine", "naboo", "rori"},
 	length = 4,
 	width = 4,
 	mapLocationsType1 = 2,

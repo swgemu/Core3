@@ -50,11 +50,8 @@ import engine.lua.LuaObject;
 import server.zone.objects.player.PlayerCreature;
 import server.zone.Zone;
 import server.zone.objects.tangible.ticket.TicketObject;
-import server.zone.objects.creature.shuttle.ShuttleCreature;
 
 class TicketCollector extends Terminal {
-	protected ShuttleCreature shuttle;
-	
 	public TicketCollector() {		
 		Logger.setLoggingName("TicketCollector");
 	}
@@ -75,13 +72,8 @@ class TicketCollector extends Terminal {
 	public native int handleObjectMenuSelect(PlayerCreature player, byte selectedID);
 	
 	public native void useTicket(PlayerCreature player, TicketObject ticket);
-	public native boolean checkTime(ShuttleCreature shuttle, PlayerCreature player);
 	
 	public boolean isTicketCollector() {
 		return true;
-	}
-	
-	public void setShuttle(ShuttleCreature shut) {
-		shuttle = shut;
 	}
 }

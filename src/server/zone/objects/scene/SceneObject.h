@@ -284,8 +284,6 @@ public:
 
 	static const int TRAINERCREATURE = 0x40A;
 
-	static const int SHUTTLECREATURE = 0x40B;
-
 	static const int JUNKDEALERCREATURE = 0x40C;
 
 	static const int INFORMANTCREATURE = 0x40D;
@@ -1229,8 +1227,6 @@ public:
 	static const int PLAYERCREATURE = 0x409;
 
 	static const int TRAINERCREATURE = 0x40A;
-
-	static const int SHUTTLECREATURE = 0x40B;
 
 	static const int JUNKDEALERCREATURE = 0x40C;
 

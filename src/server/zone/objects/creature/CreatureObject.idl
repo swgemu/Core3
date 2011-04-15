@@ -1388,10 +1388,6 @@ class CreatureObject extends TangibleObject {
 		return stateBitmask & CreatureState.COVER;
 	}
 	
-	public abstract boolean isShuttleCreature() {
-		return false;
-	}
-	
 	public abstract boolean isNonPlayerCreature() {
 		return false;
 	}

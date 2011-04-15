@@ -10,8 +10,6 @@
 
 #include "server/zone/objects/player/PlayerCreature.h"
 
-#include "server/zone/objects/creature/shuttle/ShuttleCreature.h"
-
 #include "server/zone/objects/building/city/CityHallObject.h"
 
 #include "server/zone/objects/creature/CreatureObject.h"

@@ -18,8 +18,6 @@
 
 #include "server/zone/managers/objectcontroller/ObjectController.h"
 
-#include "server/zone/objects/creature/shuttle/ShuttleCreature.h"
-
 #include "server/zone/objects/player/PlayerCreature.h"
 
 #include "server/zone/objects/scene/SceneObject.h"
@@ -28,7 +26,7 @@
  *	PlanetManagerStub
  */
 
-enum {RPC_INITIALIZETRANSIENTMEMBERS__,RPC_FINALIZE__,RPC_INITIALIZE__,RPC_LOADREGIONS__,RPC_LOADPLAYERREGIONS__,RPC_LOADNOBUILDAREAS__,RPC_LOADSHUTTLES__,RPC_LOADBADGEAREAS__,RPC_LOADPERFORMANCELOCATIONS__,RPC_LOADHUNTINGTARGETS__,RPC_LOADRECONLOCATIONS__,RPC_GETSHUTTLE__STRING_,RPC_ADDSHUTTLE__STRING_SHUTTLECREATURE_,RPC_DROPSHUTTLE__STRING_,RPC_GETTRAVELFARE__STRING_,RPC_SENDPLANETTRAVELPOINTLISTRESPONSE__PLAYERCREATURE_,RPC_GETSTRUCTUREMANAGER__,RPC_GETWEATHERMANAGER__,RPC_GETREGION__FLOAT_FLOAT_,RPC_GETREGIONCOUNT__,RPC_GETNUMBEROFCITIES__,RPC_INCREASENUMBEROFCITIES__,RPC_GETREGION__INT_,RPC_ADDREGION__REGION_,RPC_DROPREGION__REGION_,RPC_HASREGION__STRING_,RPC_ADDPERFORMANCELOCATION__SCENEOBJECT_,RPC_ADDMISSIONNPC__SCENEOBJECT_,RPC_ADDHUNTINGTARGETTEMPLATE__STRING_STRING_INT_,RPC_ADDRECONLOC__SCENEOBJECT_,RPC_ADDINFORMANT__SCENEOBJECT_,};
+enum {RPC_INITIALIZETRANSIENTMEMBERS__,RPC_FINALIZE__,RPC_INITIALIZE__,RPC_LOADREGIONS__,RPC_LOADPLAYERREGIONS__,RPC_LOADNOBUILDAREAS__,RPC_LOADSHUTTLES__,RPC_LOADBADGEAREAS__,RPC_LOADPERFORMANCELOCATIONS__,RPC_LOADHUNTINGTARGETS__,RPC_LOADRECONLOCATIONS__,RPC_GETTRAVELFARE__STRING_,RPC_SENDPLANETTRAVELPOINTLISTRESPONSE__PLAYERCREATURE_,RPC_GETSTRUCTUREMANAGER__,RPC_GETWEATHERMANAGER__,RPC_GETREGION__FLOAT_FLOAT_,RPC_GETREGIONCOUNT__,RPC_GETNUMBEROFCITIES__,RPC_INCREASENUMBEROFCITIES__,RPC_GETREGION__INT_,RPC_ADDREGION__REGION_,RPC_DROPREGION__REGION_,RPC_HASREGION__STRING_,RPC_ADDPERFORMANCELOCATION__SCENEOBJECT_,RPC_ADDMISSIONNPC__SCENEOBJECT_,RPC_ADDHUNTINGTARGETTEMPLATE__STRING_STRING_INT_,RPC_ADDRECONLOC__SCENEOBJECT_,RPC_ADDINFORMANT__SCENEOBJECT_,};
 
 PlanetManager::PlanetManager(Zone* planet, ZoneProcessServer* srv) : ManagedService(DummyConstructorParameter::instance()) {
 	PlanetManagerImplementation* _implementation = new PlanetManagerImplementation(planet, srv);
@@ -171,49 +169,6 @@ void PlanetManager::loadReconLocations() {
 		method.executeWithVoidReturn();
 	} else
 		_implementation->loadReconLocations();
-}
-
-ShuttleCreature* PlanetManager::getShuttle(const String& arrivalPoint) {
-	PlanetManagerImplementation* _implementation = (PlanetManagerImplementation*) _getImplementation();
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, RPC_GETSHUTTLE__STRING_);
-		method.addAsciiParameter(arrivalPoint);
-
-		return (ShuttleCreature*) method.executeWithObjectReturn();
-	} else
-		return _implementation->getShuttle(arrivalPoint);
-}
-
-void PlanetManager::addShuttle(const String& city, ShuttleCreature* shuttle) {
-	PlanetManagerImplementation* _implementation = (PlanetManagerImplementation*) _getImplementation();
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, RPC_ADDSHUTTLE__STRING_SHUTTLECREATURE_);
-		method.addAsciiParameter(city);
-		method.addObjectParameter(shuttle);
-
-		method.executeWithVoidReturn();
-	} else
-		_implementation->addShuttle(city, shuttle);
-}
-
-void PlanetManager::dropShuttle(const String& city) {
-	PlanetManagerImplementation* _implementation = (PlanetManagerImplementation*) _getImplementation();
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, RPC_DROPSHUTTLE__STRING_);
-		method.addAsciiParameter(city);
-
-		method.executeWithVoidReturn();
-	} else
-		_implementation->dropShuttle(city);
 }
 
 bool PlanetManager::isNoBuildArea(float x, float y, StringId& fullAreaName) {
@@ -749,24 +704,6 @@ PlanetManagerImplementation::PlanetManagerImplementation(Zone* planet, ZoneProce
 	(&travelFares)->setNoDuplicateInsertPlan();
 }
 
-ShuttleCreature* PlanetManagerImplementation::getShuttle(const String& arrivalPoint) {
-	Locker _locker(_this);
-	// server/zone/managers/planet/PlanetManager.idl():  		return shuttleMap.get(arrivalPoint);
-	return (&shuttleMap)->get(arrivalPoint);
-}
-
-void PlanetManagerImplementation::addShuttle(const String& city, ShuttleCreature* shuttle) {
-	Locker _locker(_this);
-	// server/zone/managers/planet/PlanetManager.idl():  		shuttleMap.put(city, shuttle);
-	(&shuttleMap)->put(city, shuttle);
-}
-
-void PlanetManagerImplementation::dropShuttle(const String& city) {
-	Locker _locker(_this);
-	// server/zone/managers/planet/PlanetManager.idl():  		shuttleMap.remove(city);
-	(&shuttleMap)->remove(city);
-}
-
 int PlanetManagerImplementation::getTravelFare(const String& destinationPlanet) {
 	// server/zone/managers/planet/PlanetManager.idl():  		return travelFares.get(destinationPlanet);
 	return (&travelFares)->get(destinationPlanet);
@@ -926,15 +863,6 @@ Packet* PlanetManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv
 	case RPC_LOADRECONLOCATIONS__:
 		loadReconLocations();
 		break;
-	case RPC_GETSHUTTLE__STRING_:
-		resp->insertLong(getShuttle(inv->getAsciiParameter(_param0_getShuttle__String_))->_getObjectID());
-		break;
-	case RPC_ADDSHUTTLE__STRING_SHUTTLECREATURE_:
-		addShuttle(inv->getAsciiParameter(_param0_addShuttle__String_ShuttleCreature_), (ShuttleCreature*) inv->getObjectParameter());
-		break;
-	case RPC_DROPSHUTTLE__STRING_:
-		dropShuttle(inv->getAsciiParameter(_param0_dropShuttle__String_));
-		break;
 	case RPC_GETTRAVELFARE__STRING_:
 		resp->insertSignedInt(getTravelFare(inv->getAsciiParameter(_param0_getTravelFare__String_)));
 		break;
@@ -1035,18 +963,6 @@ void PlanetManagerAdapter::loadHuntingTargets() {
 
 void PlanetManagerAdapter::loadReconLocations() {
 	((PlanetManagerImplementation*) impl)->loadReconLocations();
-}
-
-ShuttleCreature* PlanetManagerAdapter::getShuttle(const String& arrivalPoint) {
-	return ((PlanetManagerImplementation*) impl)->getShuttle(arrivalPoint);
-}
-
-void PlanetManagerAdapter::addShuttle(const String& city, ShuttleCreature* shuttle) {
-	((PlanetManagerImplementation*) impl)->addShuttle(city, shuttle);
-}
-
-void PlanetManagerAdapter::dropShuttle(const String& city) {
-	((PlanetManagerImplementation*) impl)->dropShuttle(city);
 }
 
 int PlanetManagerAdapter::getTravelFare(const String& destinationPlanet) {

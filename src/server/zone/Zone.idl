@@ -191,4 +191,8 @@ class Zone extends ManagedObject implements QuadTree {
 	public string getZoneName() {
 		return zoneName;
 	}
+	
+	public unsigned int getZoneCRC() {
+		return zoneCRC;
+	}
 }

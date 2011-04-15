@@ -28,7 +28,7 @@
  *	ZoneStub
  */
 
-enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_FINALIZE__,RPC_GETNEARESTCLONINGBUILDING__CREATUREOBJECT_,RPC_GETNEARESTPLANETARYOBJECT__SCENEOBJECT_INT_,RPC_INITIALIZEPRIVATEDATA__,RPC_UPDATEACTIVEAREAS__SCENEOBJECT_,RPC_STARTMANAGERS__,RPC_STOPMANAGERS__,RPC_GETHEIGHT__FLOAT_FLOAT_,RPC_ADDSCENEOBJECT__SCENEOBJECT_,RPC_SENDMAPLOCATIONSTO__SCENEOBJECT_,RPC_DROPSCENEOBJECT__SCENEOBJECT_,RPC_GETPLANETMANAGER__,RPC_GETCITYMANAGER__,RPC_GETZONESERVER__,RPC_GETCREATUREMANAGER__,RPC_GETGALACTICTIME__,RPC_HASMANAGERSSTARTED__,RPC_GETMINX__,RPC_GETMAXX__,RPC_GETMINY__,RPC_GETMAXY__,RPC_GETZONENAME__};
+enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_FINALIZE__,RPC_GETNEARESTCLONINGBUILDING__CREATUREOBJECT_,RPC_GETNEARESTPLANETARYOBJECT__SCENEOBJECT_INT_,RPC_INITIALIZEPRIVATEDATA__,RPC_UPDATEACTIVEAREAS__SCENEOBJECT_,RPC_STARTMANAGERS__,RPC_STOPMANAGERS__,RPC_GETHEIGHT__FLOAT_FLOAT_,RPC_ADDSCENEOBJECT__SCENEOBJECT_,RPC_SENDMAPLOCATIONSTO__SCENEOBJECT_,RPC_DROPSCENEOBJECT__SCENEOBJECT_,RPC_GETPLANETMANAGER__,RPC_GETCITYMANAGER__,RPC_GETZONESERVER__,RPC_GETCREATUREMANAGER__,RPC_GETGALACTICTIME__,RPC_HASMANAGERSSTARTED__,RPC_GETMINX__,RPC_GETMAXX__,RPC_GETMINY__,RPC_GETMAXY__,RPC_GETZONENAME__,RPC_GETZONECRC__};
 
 Zone::Zone(ZoneProcessServer* processor, const String& zoneName) : ManagedObject(DummyConstructorParameter::instance()) {
 	ZoneImplementation* _implementation = new ZoneImplementation(processor, zoneName);
@@ -411,6 +411,19 @@ String Zone::getZoneName() {
 		return _implementation->getZoneName();
 }
 
+unsigned int Zone::getZoneCRC() {
+	ZoneImplementation* _implementation = (ZoneImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_GETZONECRC__);
+
+		return method.executeWithUnsignedIntReturn();
+	} else
+		return _implementation->getZoneCRC();
+}
+
 DistributedObjectServant* Zone::_getImplementation() {
 
 	_updated = true;
@@ -689,6 +702,11 @@ String ZoneImplementation::getZoneName() {
 	return zoneName;
 }
 
+unsigned int ZoneImplementation::getZoneCRC() {
+	// server/zone/Zone.idl():  		return zoneCRC;
+	return zoneCRC;
+}
+
 /*
  *	ZoneAdapter
  */
@@ -768,6 +786,9 @@ Packet* ZoneAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		break;
 	case RPC_GETZONENAME__:
 		resp->insertAscii(getZoneName());
+		break;
+	case RPC_GETZONECRC__:
+		resp->insertInt(getZoneCRC());
 		break;
 	default:
 		return NULL;
@@ -866,6 +887,10 @@ float ZoneAdapter::getMaxY() {
 
 String ZoneAdapter::getZoneName() {
 	return ((ZoneImplementation*) impl)->getZoneName();
+}
+
+unsigned int ZoneAdapter::getZoneCRC() {
+	return ((ZoneImplementation*) impl)->getZoneCRC();
 }
 
 /*

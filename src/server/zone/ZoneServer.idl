@@ -281,6 +281,15 @@ class ZoneServer extends ManagedService implements Logger {
 		return zones.get(terrainName);
 	}
 	
+	/**
+	 * Gets a note based on it's position in the zone map.
+	 * NOTE: This idx is not to be considered consistent.
+	 * @param idx The index in the map to get the zone.
+	 */
+	public Zone getZone(int idx) {
+		return zones.get(idx);
+	}
+	
 	public int getZoneCount() {
 		return zones.size();
 	}

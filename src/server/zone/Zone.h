@@ -242,6 +242,8 @@ public:
 
 	String getZoneName();
 
+	unsigned int getZoneCRC();
+
 	DistributedObjectServant* _getImplementation();
 
 	void _setImplementation(DistributedObjectServant* servant);
@@ -358,6 +360,8 @@ public:
 
 	String getZoneName();
 
+	unsigned int getZoneCRC();
+
 	Zone* _this;
 
 	operator const Zone*();
@@ -444,6 +448,8 @@ public:
 	float getMaxY();
 
 	String getZoneName();
+
+	unsigned int getZoneCRC();
 
 };
 

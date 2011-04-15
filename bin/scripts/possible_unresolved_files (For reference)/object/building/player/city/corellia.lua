@@ -2,7 +2,7 @@ object_building_player_city_bank_corellia = object_building_player_city_shared_b
 	lotSize = 0,
 	baseMaintenanceRate = 0,
 	mapLocationsType1 = 2,
-	allowedZones = {0,7},
+	allowedZones = {"corellia", "talus"},
 	cityRankRequired = 2,
 	abilitiesRequired = {"placeBank"}
 }
@@ -14,7 +14,7 @@ object_building_player_city_cantina_corellia = object_building_player_city_share
 	baseMaintenanceRate = 0,
 	gameObjectType = 518,
 	mapLocationsType1 = 3,
-	allowedZones = {0,7},
+	allowedZones = {"corellia", "talus"},
 	cityRankRequired = 2
 }
 
@@ -24,7 +24,7 @@ object_building_player_city_cityhall_corellia = object_building_player_city_shar
 	lotSize = 0,
 	baseMaintenanceRate = 0,
 	mapLocationsType1 = 50,
-	allowedZones = {0,7},
+	allowedZones = {"corellia", "talus"},
 	cityRankRequired = 0
 }
 
@@ -35,7 +35,7 @@ object_building_player_city_cloning_corellia = object_building_player_city_share
 	baseMaintenanceRate = 0,
 	gameObjectType = 519,
 	mapLocationsType1 = 5,
-	allowedZones = {0,7},
+	allowedZones = {"corellia", "talus"},
 	cityRankRequired = 3,
 	abilitiesRequired = {"placeCloningFacility"}
 }
@@ -47,7 +47,7 @@ object_building_player_city_hospital_corellia = object_building_player_city_shar
 	baseMaintenanceRate = 0,
 	gameObjectType = 517,
 	mapLocationsType1 = 13,
-	allowedZones = {0,7},
+	allowedZones = {"corellia", "talus"},
 	cityRankRequired = 3
 }
 
@@ -56,7 +56,7 @@ ObjectTemplates:addTemplate(object_building_player_city_hospital_corellia, "obje
 object_building_player_city_shuttleport_corellia = object_building_player_city_shared_shuttleport_corellia:new {
 	lotSize = 0,
 	baseMaintenanceRate = 0,
-	allowedZones = {0,7},
+	allowedZones = {"corellia", "talus"},
 	cityRankRequired = 4,
 	abilitiesRequired = {"placeShuttleport"}
 }
@@ -68,7 +68,7 @@ object_building_player_city_theater_corellia = object_building_player_city_share
 	baseMaintenanceRate = 0,
 	gameObjectType = 524,
 	mapLocationsType1 = 51,
-	allowedZones = {0,7},
+	allowedZones = {"corellia", "talus"},
 	cityRankRequired = 4
 }
 
@@ -77,7 +77,7 @@ ObjectTemplates:addTemplate(object_building_player_city_theater_corellia, "objec
 object_building_player_city_garden_corellia_lrg_01 = object_building_player_city_shared_garden_corellia_lrg_01:new {
 	lotSize = 0,
 	baseMaintenanceRate = 0,
-	allowedZones = {0,7},
+	allowedZones = {"corellia", "talus"},
 	cityRankRequired = 3,
 	abilitiesRequired = {"placeLargeGarden"}
 }
@@ -87,7 +87,7 @@ ObjectTemplates:addTemplate(object_building_player_city_garden_corellia_lrg_01, 
 object_building_player_city_garden_corellia_lrg_02 = object_building_player_city_shared_garden_corellia_lrg_02:new {
 	lotSize = 0,
 	baseMaintenanceRate = 0,
-	allowedZones = {0,7},
+	allowedZones = {"corellia", "talus"},
 	cityRankRequired = 3,
 	abilitiesRequired = {"placeLargeGarden"}
 }
@@ -97,7 +97,7 @@ ObjectTemplates:addTemplate(object_building_player_city_garden_corellia_lrg_02, 
 object_building_player_city_garden_corellia_lrg_03 = object_building_player_city_shared_garden_corellia_lrg_03:new {
 	lotSize = 0,
 	baseMaintenanceRate = 0,
-	allowedZones = {0,7},
+	allowedZones = {"corellia", "talus"},
 	cityRankRequired = 3,
 	abilitiesRequired = {"placeLargeGarden"}
 }
@@ -107,7 +107,7 @@ ObjectTemplates:addTemplate(object_building_player_city_garden_corellia_lrg_03, 
 object_building_player_city_garden_corellia_lrg_04 = object_building_player_city_shared_garden_corellia_lrg_04:new {
 	lotSize = 0,
 	baseMaintenanceRate = 0,
-	allowedZones = {0,7},
+	allowedZones = {"corellia", "talus"},
 	cityRankRequired = 3,
 	abilitiesRequired = {"placeLargeGarden"}
 }
@@ -117,7 +117,7 @@ ObjectTemplates:addTemplate(object_building_player_city_garden_corellia_lrg_04, 
 object_building_player_city_garden_corellia_lrg_05 = object_building_player_city_shared_garden_corellia_lrg_05:new {
 	lotSize = 0,
 	baseMaintenanceRate = 0,
-	allowedZones = {0,7},
+	allowedZones = {"corellia", "talus"},
 	cityRankRequired = 3,
 	abilitiesRequired = {"placeLargeGarden"}
 }
@@ -127,7 +127,7 @@ ObjectTemplates:addTemplate(object_building_player_city_garden_corellia_lrg_05, 
 object_building_player_city_garden_corellia_med_01 = object_building_player_city_shared_garden_corellia_med_01:new {
 	lotSize = 0,
 	baseMaintenanceRate = 0,
-	allowedZones = {0,7},
+	allowedZones = {"corellia", "talus"},
 	cityRankRequired = 2,
 	abilitiesRequired = {"placeMediumGarden"}
 }
@@ -137,7 +137,7 @@ ObjectTemplates:addTemplate(object_building_player_city_garden_corellia_med_01, 
 object_building_player_city_garden_corellia_med_02 = object_building_player_city_shared_garden_corellia_med_02:new {
 	lotSize = 0,
 	baseMaintenanceRate = 0,
-	allowedZones = {0,7},
+	allowedZones = {"corellia", "talus"},
 	cityRankRequired = 2,
 	abilitiesRequired = {"placeMediumGarden"}
 }
@@ -147,7 +147,7 @@ ObjectTemplates:addTemplate(object_building_player_city_garden_corellia_med_02, 
 object_building_player_city_garden_corellia_med_03 = object_building_player_city_shared_garden_corellia_med_03:new {
 	lotSize = 0,
 	baseMaintenanceRate = 0,
-	allowedZones = {0,7},
+	allowedZones = {"corellia", "talus"},
 	cityRankRequired = 2,
 	abilitiesRequired = {"placeMediumGarden"}
 }
@@ -157,7 +157,7 @@ ObjectTemplates:addTemplate(object_building_player_city_garden_corellia_med_03, 
 object_building_player_city_garden_corellia_med_04 = object_building_player_city_shared_garden_corellia_med_04:new {
 	lotSize = 0,
 	baseMaintenanceRate = 0,
-	allowedZones = {0,7},
+	allowedZones = {"corellia", "talus"},
 	cityRankRequired = 2,
 	abilitiesRequired = {"placeMediumGarden"}
 }
@@ -167,7 +167,7 @@ ObjectTemplates:addTemplate(object_building_player_city_garden_corellia_med_04, 
 object_building_player_city_garden_corellia_med_05 = object_building_player_city_shared_garden_corellia_med_05:new {
 	lotSize = 0,
 	baseMaintenanceRate = 0,
-	allowedZones = {0,7},
+	allowedZones = {"corellia", "talus"},
 	cityRankRequired = 2,
 	abilitiesRequired = {"placeMediumGarden"}
 }
@@ -177,7 +177,7 @@ ObjectTemplates:addTemplate(object_building_player_city_garden_corellia_med_05, 
 object_building_player_city_garden_corellia_sml_01 = object_building_player_city_shared_garden_corellia_sml_01:new {
 	lotSize = 0,
 	baseMaintenanceRate = 0,
-	allowedZones = {0,7},
+	allowedZones = {"corellia", "talus"},
 	cityRankRequired = 1,
 	abilitiesRequired = {"placeSmallGarden"}
 }
@@ -187,7 +187,7 @@ ObjectTemplates:addTemplate(object_building_player_city_garden_corellia_sml_01, 
 object_building_player_city_garden_corellia_sml_02 = object_building_player_city_shared_garden_corellia_sml_02:new {
 	lotSize = 0,
 	baseMaintenanceRate = 0,
-	allowedZones = {0,7},
+	allowedZones = {"corellia", "talus"},
 	cityRankRequired = 1,
 	abilitiesRequired = {"placeSmallGarden"}
 }
@@ -197,7 +197,7 @@ ObjectTemplates:addTemplate(object_building_player_city_garden_corellia_sml_02, 
 object_building_player_city_garden_corellia_sml_03 = object_building_player_city_shared_garden_corellia_sml_03:new {
 	lotSize = 0,
 	baseMaintenanceRate = 0,
-	allowedZones = {0,7},
+	allowedZones = {"corellia", "talus"},
 	cityRankRequired = 1,
 	abilitiesRequired = {"placeSmallGarden"}
 }
@@ -207,7 +207,7 @@ ObjectTemplates:addTemplate(object_building_player_city_garden_corellia_sml_03, 
 object_building_player_city_garden_corellia_sml_04 = object_building_player_city_shared_garden_corellia_sml_04:new {
 	lotSize = 0,
 	baseMaintenanceRate = 0,
-	allowedZones = {0,7},
+	allowedZones = {"corellia", "talus"},
 	cityRankRequired = 1,
 	abilitiesRequired = {"placeSmallGarden"}
 }
@@ -217,7 +217,7 @@ ObjectTemplates:addTemplate(object_building_player_city_garden_corellia_sml_04, 
 object_building_player_city_garden_corellia_sml_05 = object_building_player_city_shared_garden_corellia_sml_05:new {
 	lotSize = 0,
 	baseMaintenanceRate = 0,
-	allowedZones = {0,7},
+	allowedZones = {"corellia", "talus"},
 	cityRankRequired = 1,
 	abilitiesRequired = {"placeSmallGarden"}
 }

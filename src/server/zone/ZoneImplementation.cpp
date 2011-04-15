@@ -67,6 +67,7 @@ ZoneImplementation::ZoneImplementation(ZoneProcessServer* serv, const String& na
 	server = processor->getZoneServer();
 
 	zoneName = name;
+	zoneCRC = name.hashCode();
 
 	heightMap = new HeightMap();
 	regionTree = new QuadTree(-8192, -8192, 8192, 8192);

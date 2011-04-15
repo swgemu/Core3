@@ -106,22 +106,6 @@ using namespace server::zone::managers::objectcontroller;
 namespace server {
 namespace zone {
 namespace objects {
-namespace creature {
-namespace shuttle {
-
-class ShuttleCreature;
-
-} // namespace shuttle
-} // namespace creature
-} // namespace objects
-} // namespace zone
-} // namespace server
-
-using namespace server::zone::objects::creature::shuttle;
-
-namespace server {
-namespace zone {
-namespace objects {
 namespace player {
 
 class PlayerCreature;
@@ -152,8 +136,6 @@ using namespace server::zone::objects::scene;
 #include "server/zone/managers/planet/RegionMap.h"
 
 #include "server/zone/managers/terrain/TerrainManager.h"
-
-#include "server/zone/managers/planet/ShuttleMap.h"
 
 #include "server/zone/managers/planet/NoBuildAreaMap.h"
 
@@ -207,12 +189,6 @@ public:
 	void loadHuntingTargets();
 
 	void loadReconLocations();
-
-	ShuttleCreature* getShuttle(const String& arrivalPoint);
-
-	void addShuttle(const String& city, ShuttleCreature* shuttle);
-
-	void dropShuttle(const String& city);
 
 	bool isNoBuildArea(float x, float y, StringId& fullAreaName);
 
@@ -306,8 +282,6 @@ protected:
 
 	TerrainManager* terrainManager;
 
-	ShuttleMap shuttleMap;
-
 	NoBuildAreaMap noBuildAreaMap;
 
 	MissionTargetMap missionNpcs;
@@ -361,12 +335,6 @@ protected:
 	void loadStaticTangibleObjects();
 
 public:
-	ShuttleCreature* getShuttle(const String& arrivalPoint);
-
-	void addShuttle(const String& city, ShuttleCreature* shuttle);
-
-	void dropShuttle(const String& city);
-
 	bool isNoBuildArea(float x, float y, StringId& fullAreaName);
 
 	int getTravelFare(const String& destinationPlanet);
@@ -480,12 +448,6 @@ public:
 
 	void loadReconLocations();
 
-	ShuttleCreature* getShuttle(const String& arrivalPoint);
-
-	void addShuttle(const String& city, ShuttleCreature* shuttle);
-
-	void dropShuttle(const String& city);
-
 	int getTravelFare(const String& destinationPlanet);
 
 	void sendPlanetTravelPointListResponse(PlayerCreature* player);
@@ -521,9 +483,6 @@ public:
 	void addInformant(SceneObject* obj);
 
 protected:
-	String _param0_getShuttle__String_;
-	String _param0_addShuttle__String_ShuttleCreature_;
-	String _param0_dropShuttle__String_;
 	String _param0_getTravelFare__String_;
 	String _param0_hasRegion__String_;
 	String _param0_addHuntingTargetTemplate__String_String_int_;

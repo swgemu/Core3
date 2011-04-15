@@ -57,41 +57,13 @@ import system.lang.ref.Reference;
 import server.zone.Zone;
 import server.zone.templates.SharedObjectTemplate;
 import system.util.VectorMap;
-import server.zone.objects.creature.shuttle.ShuttleCreature;
 import server.zone.objects.tangible.terminal.ticketcollector.TicketCollector;
 import server.zone.objects.tangible.terminal.travel.TravelTerminal;
 
 class ShuttleInstallation extends InstallationObject {
-	protected ShuttleCreature shuttle;
-	protected TicketCollector ticketCollector;
-	protected TravelTerminal travelTerminal;
-	
 	public ShuttleInstallation() {
 		setLoggingName("ShuttleInstallation");
 	}
-	
-	/**
-	 * Inserts this object into zone
-	 * @pre { this object is locked }
-	 * @post { this object is locked and inserted into zone }
-	 * @param zone Zone object where this object will be inserted
-	 */
-	public void insertToZone(Zone zone) {
-		super.insertToZone(zone);
-		
-		spawnShuttleObjects();
-	}
-	
-	public void removeFromZone() {
-		despawnShuttleObjects();
-	
-		super.removeFromZone();
-		
-		updateToDatabaseWithoutChildren();
-	}
-	
-	public native void spawnShuttleObjects();
-	public native void despawnShuttleObjects();
 	
 	public native boolean checkRequisitesForPlacement(PlayerCreature player);
 }

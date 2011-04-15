@@ -201,7 +201,7 @@ void ResourceManager::removePowerFromPlayer(PlayerCreature* player, unsigned int
 		_implementation->removePowerFromPlayer(player, power);
 }
 
-void ResourceManager::getResourceListByType(Vector<ManagedReference<ResourceSpawn* > >& list, int type, String& zoneName) {
+void ResourceManager::getResourceListByType(Vector<ManagedReference<ResourceSpawn* > >& list, int type, const String& zoneName) {
 	ResourceManagerImplementation* _implementation = (ResourceManagerImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);

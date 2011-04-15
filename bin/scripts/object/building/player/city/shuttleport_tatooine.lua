@@ -44,7 +44,7 @@
 object_building_player_city_shuttleport_tatooine = object_building_player_city_shared_shuttleport_tatooine:new {
 	lotSize = 0,
 	baseMaintenanceRate = 0,
-	allowedZones = {1,4,8},
+	allowedZones = {"dantooine", "lok", "tatooine"},
 	length = 5,
 	width = 5,
 	cityRankRequired = 4,

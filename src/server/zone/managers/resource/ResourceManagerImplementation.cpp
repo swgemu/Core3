@@ -257,7 +257,7 @@ ResourceSpawn* ResourceManagerImplementation::getCurrentSpawn(const String& rest
 	return resourceSpawner->getCurrentSpawn(restype, zoneName);
 }
 
-void ResourceManagerImplementation::getResourceListByType(Vector<ManagedReference<ResourceSpawn*> >& list, int type, String& zoneName) {
+void ResourceManagerImplementation::getResourceListByType(Vector<ManagedReference<ResourceSpawn*> >& list, int type, const String& zoneName) {
 	list.removeAll();
 
 	rlock();

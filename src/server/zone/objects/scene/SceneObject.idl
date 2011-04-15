@@ -189,7 +189,6 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	public static final int PROBOTCREATURE = 0x403;
 	public static final int PLAYERCREATURE = 0x409;
 	public static final int TRAINERCREATURE = 0x40A;
-	public static final int SHUTTLECREATURE = 0x40B;
 	public static final int JUNKDEALERCREATURE = 0x40C;
 	public static final int INFORMANTCREATURE = 0x40D;
 	public static final int VENDORCREATURE = 0x40E;
