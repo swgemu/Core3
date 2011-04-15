@@ -15,7 +15,6 @@
 #include "server/zone/Zone.h"
 
 class PlanetTravelPointListRequestCallback : public MessageCallback {
-	uint64 objectid;
 	String planet;
 
 public:
@@ -25,7 +24,7 @@ public:
 	}
 
 	void parse(Message* message) {
-		objectid = message->parseLong();
+		message->shiftOffset(8); //We don't need the player object, we got it already.
 		message->parseAscii(planet);
 	}
 
@@ -39,11 +38,13 @@ public:
 
 		int id = Planet::getPlanetID(planet);
 
+		if (id == -1)
+			return;
+
 		Zone* zone = server->getZoneServer()->getZone(id);
 
 		if (zone != NULL) {
 			PlanetManager* planetManager = zone->getPlanetManager();
-
 			planetManager->sendPlanetTravelPointListResponse(object);
 		}
 	}

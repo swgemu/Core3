@@ -76,10 +76,19 @@ class TravelListResponseMessage : public BaseMessage {
 	Vector<TravelPoint*> travelPoints;
 	
 public:
+	TravelListResponseMessage() : BaseMessage() {
+		insertShort(0x06);
+		insertInt(0x4D32541F); //PlanetTravelPointListResponse
+
+		insertAscii("naboo");
+	}
+
     TravelListResponseMessage(const String& planet) : BaseMessage() {
 		insertShort(0x06);
 		insertInt(0x4D32541F);  //PlanetTravelPointListResponse
         insertAscii(planet);
+
+        System::out << "TravelListResponseMessage" << endl;
 
         setCompression(true);
 	}

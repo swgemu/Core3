@@ -18,11 +18,15 @@ int TravelTerminalImplementation::handleObjectMenuSelect(PlayerCreature* player,
 	if (selectedID != 20)
 		return 0;
 
-	player->sendSystemMessage("Planetary travel is currently disabled.");
+	if (controlledObject == NULL)
+		return 0;
 
-	return 0;
+	if (controlledObject->getZone() == NULL)
+		return 0;
 
-	EnterTicketPurchaseModeMessage* etpm = new EnterTicketPurchaseModeMessage(shuttle->getPlanet(), shuttle->getCity());
+	//Make sure the controlled object is in a region, or the region name will fail.
+
+	EnterTicketPurchaseModeMessage* etpm = new EnterTicketPurchaseModeMessage(controlledObject);
 	player->sendMessage(etpm);
 
 	return 0;

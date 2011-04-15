@@ -46,16 +46,29 @@ which carries forward this exception.
 #define ENTERTICKETPURCHASEMODEMESSAGE_H_
 
 #include "engine/engine.h"
+#include "server/zone/objects/structure/StructureObject.h"
+#include "server/zone/objects/terrain/PlanetNames.h"
+#include "server/zone/objects/region/Region.h"
+#include "server/zone/Zone.h"
 
 class EnterTicketPurchaseModeMessage : public BaseMessage {
 public:
 
-    EnterTicketPurchaseModeMessage(String planet, String city) : BaseMessage() {
+    EnterTicketPurchaseModeMessage(const String& planet, const String& city) : BaseMessage() {
 		insertShort(0x03);
 		insertInt(0x904DAE1A);  // CRC
         insertAscii(planet);
         insertAscii(city);
         
+	}
+
+    EnterTicketPurchaseModeMessage(SceneObject* port) : BaseMessage() {
+		insertShort(0x03);
+		insertInt(0x904DAE1A);  //EnterTicketPurchaseModeMessage
+
+		//TODO: Replace with getZone()->getZoneName()
+        insertAscii(Planet::getPlanetName(port->getZone()->getZoneID()));
+        insertAscii(((Region*) port->getActiveRegion())->getObjectName()->getDisplayedName());
 	}
 	
 };
