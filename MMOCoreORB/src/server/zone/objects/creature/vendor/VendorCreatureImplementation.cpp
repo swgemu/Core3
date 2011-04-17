@@ -36,6 +36,10 @@ void VendorCreatureImplementation::initializeTransientMembers() {
 
 }
 
+void VendorCreatureImplementation::finalize() {
+	VendorManager::instance()->dropVendor(getObjectID());
+}
+
 void VendorCreatureImplementation::loadTemplateData(SharedObjectTemplate* templateData) {
 	CreatureObjectImplementation::loadTemplateData(templateData);
 

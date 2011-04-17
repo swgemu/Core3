@@ -52,15 +52,21 @@ void VendorCheckTask::run() {
 	if (!vendorObj->isVendor() || vendorObj == NULL)
 			return;
 
-		Locker vendorLocker(vendorObj);
-
 		Vendor* vendor = NULL;
 
 		if (vendorObj->isTerminal()) {
 			VendorTerminal* terminal = dynamic_cast<VendorTerminal*>(vendorObj.get());
+
+			if (terminal == NULL)
+				return;
+
 			vendor = terminal->getVendor();
 		} else if (vendorObj->isCreatureObject()) {
 			VendorCreature* vendorCreature = dynamic_cast<VendorCreature*>(vendorObj.get());
+
+			if (vendorCreature == NULL)
+				return;
+
 			vendor = vendorCreature->getVendor();
 		}
 
@@ -70,13 +76,10 @@ void VendorCheckTask::run() {
 		if (vendor->isBazaarTerminal())
 			return;
 
-		ManagedReference<SceneObject*> strongOwnerRef = vendorObj->getZoneServer()->getObject(vendor->getOwnerID());
-
-		if (!strongOwnerRef->isPlayerCreature() || strongOwnerRef == NULL)
-			return;
-
 		int itemCount = vendor->getVendorItemCount();
 		int itemWarningLevel = vendor->getItemWarningLevel();
+
+		Locker vendorLocker(vendorObj);
 
 		if (itemCount > 0) {
 			vendor->setItemWarningLevel(0);

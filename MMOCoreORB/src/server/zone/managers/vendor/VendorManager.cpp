@@ -154,9 +154,17 @@ void VendorManager::handleRenameVendor(PlayerCreature* player, TangibleObject* v
 	Vendor* vendo = NULL;
 	if (vendor->isTerminal()) {
 		VendorTerminal* terminal = dynamic_cast<VendorTerminal*>(vendor);
+
+		if (terminal == NULL)
+			return;
+
 		vendo = terminal->getVendor();
 	} else if (vendor->isCreatureObject()) {
 		VendorCreature* vendorCreature = dynamic_cast<VendorCreature*>(vendor);
+
+		if (vendorCreature == NULL)
+			return;
+
 		vendo = vendorCreature->getVendor();
 	}
 
@@ -185,7 +193,7 @@ void VendorManager::handleAwardVendorLookXP(PlayerCreature* player, Vendor* vend
 	}
 
 	Locker playerLocker(owner);
-	Locker customerLocker(player);
+	Locker customerLocker(player, owner);
 
 	pman->awardExperience(owner, "merchant", 50, false);
 	player->addCooldown("vendoruse" + String::valueOf(vendorRef->getObjectID()), 600 * 1000); // 10min

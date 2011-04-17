@@ -22,7 +22,7 @@
  *	VendorCreatureStub
  */
 
-enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_,RPC_ADDCLOTHINGITEM__PLAYERCREATURE_TANGIBLEOBJECT_,RPC_DESTROYOBJECTFROMDATABASE__BOOL_,RPC_CREATECHILDOBJECTS__,RPC_ADDVENDORTOMAP__,RPC_SETOWNERID__LONG_,RPC_ISVENDOR__,RPC_ISVENDORCREATURE__};
+enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_FINALIZE__,RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_,RPC_ADDCLOTHINGITEM__PLAYERCREATURE_TANGIBLEOBJECT_,RPC_DESTROYOBJECTFROMDATABASE__BOOL_,RPC_CREATECHILDOBJECTS__,RPC_ADDVENDORTOMAP__,RPC_SETOWNERID__LONG_,RPC_ISVENDOR__,RPC_ISVENDORCREATURE__};
 
 VendorCreature::VendorCreature() : CreatureObject(DummyConstructorParameter::instance()) {
 	VendorCreatureImplementation* _implementation = new VendorCreatureImplementation();
@@ -216,11 +216,9 @@ VendorCreatureImplementation::VendorCreatureImplementation(DummyConstructorParam
 
 
 VendorCreatureImplementation::~VendorCreatureImplementation() {
+	VendorCreatureImplementation::finalize();
 }
 
-
-void VendorCreatureImplementation::finalize() {
-}
 
 void VendorCreatureImplementation::_initializeImplementation() {
 	_setClassHelper(VendorCreatureHelper::instance());
@@ -372,6 +370,9 @@ Packet* VendorCreatureAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 	case RPC_INITIALIZETRANSIENTMEMBERS__:
 		initializeTransientMembers();
 		break;
+	case RPC_FINALIZE__:
+		finalize();
+		break;
 	case RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_:
 		resp->insertSignedInt(handleObjectMenuSelect((PlayerCreature*) inv->getObjectParameter(), inv->getByteParameter()));
 		break;
@@ -405,6 +406,10 @@ Packet* VendorCreatureAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 
 void VendorCreatureAdapter::initializeTransientMembers() {
 	((VendorCreatureImplementation*) impl)->initializeTransientMembers();
+}
+
+void VendorCreatureAdapter::finalize() {
+	((VendorCreatureImplementation*) impl)->finalize();
 }
 
 int VendorCreatureAdapter::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {

@@ -190,6 +190,8 @@ public:
 
 	void initializeTransientMembers();
 
+	void finalize();
+
 	void loadTemplateData(SharedObjectTemplate* templateData);
 
 	void fillObjectMenuResponse(ObjectMenuResponse* menuResponse, PlayerCreature* player);
@@ -224,8 +226,6 @@ public:
 protected:
 	virtual ~VendorCreatureImplementation();
 
-	void finalize();
-
 	void _initializeImplementation();
 
 	void _setStub(DistributedObjectStub* stub);
@@ -258,6 +258,8 @@ public:
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
 	void initializeTransientMembers();
+
+	void finalize();
 
 	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
 

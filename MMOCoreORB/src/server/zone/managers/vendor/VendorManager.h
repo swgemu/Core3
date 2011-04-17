@@ -24,7 +24,7 @@ namespace zone {
 namespace managers {
 namespace vendor {
 
-class VendorManager : public Singleton<VendorManager>, public Logger {
+class VendorManager : public Singleton<VendorManager>, public Mutex, public Logger {
 protected:
 	VendorSelectionNode rootNode;
 	VectorMap<uint64, Vendor*> vendorMap;
@@ -71,15 +71,19 @@ public:
 	}
 
 	inline void addVendor(uint64 objectID, Vendor* vendor) {
-		if (!vendor->isBazaarTerminal())
+		if (!vendor->isBazaarTerminal()) {
+			Locker locker(this);
 			vendorMap.put(objectID, vendor);
+		}
 	}
 
 	inline void dropVendor(uint64 objectID) {
+		Locker locker(this);
 		vendorMap.drop(objectID);
 	}
 
 	inline void dropVendor(int idx) {
+		Locker locker(this);
 		vendorMap.drop(idx);
 	}
 

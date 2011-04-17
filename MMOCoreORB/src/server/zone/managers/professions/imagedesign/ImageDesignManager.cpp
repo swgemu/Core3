@@ -72,7 +72,7 @@ void ImageDesignManager::updateCustomization(const String& customizationName, fl
 	CustomizationVariables hairCustomization;
 
 	if (customData == NULL) {
-		System::out << "Unable to get CustomizationData for " + speciesGender + "_" + customizationName << endl;
+		//System::out << "Unable to get CustomizationData for " + speciesGender + "_" + customizationName << endl;
 		return;
 	}
 
@@ -121,7 +121,7 @@ void ImageDesignManager::updateCustomization(const String& customizationName, fl
 			tokenizer.getStringToken(token_1);
 			if (tokenizer.hasMoreTokens())
 				tokenizer.getStringToken(token_2);
-			System::out << token_1 << "   " << token_2 << endl;
+			//System::out << token_1 << "   " << token_2 << endl;
 			if (token_2 == "") {
 				if (customData->getIsVarHairColor())
 					hairCustomization.setVariable(token_1, (value * 255));
@@ -199,7 +199,7 @@ void ImageDesignManager::updateCustomization(const String& customizationName, ui
 	CustomizationVariables hairCustomization;
 
 	if (customData == NULL) {
-		System::out << "Unable to get CustomizationData for " + speciesGender + "_" + customizationName << endl;
+		//System::out << "Unable to get CustomizationData for " + speciesGender + "_" + customizationName << endl;
 		return;
 	}
 
@@ -213,7 +213,7 @@ void ImageDesignManager::updateCustomization(const String& customizationName, ui
 		while (tokenizer.hasMoreTokens()) {
 			String attribute;
 			tokenizer.getStringToken(attribute);
-			System::out << attribute << endl;
+			//System::out << attribute << endl;
 			if (customData->getIsVarHairColor())
 				hairCustomization.setVariable(attribute,value);
 				//session->setHairAttribute(attribute, value);

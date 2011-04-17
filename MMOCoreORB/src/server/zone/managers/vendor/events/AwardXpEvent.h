@@ -56,6 +56,8 @@ public:
 
 			ManagedReference<PlayerCreature*> owner = (PlayerCreature*) ownerRef.get();
 
+			Locker locker(owner);
+
 			pman->awardExperience(owner, "merchant", 150, false);
 
 		}

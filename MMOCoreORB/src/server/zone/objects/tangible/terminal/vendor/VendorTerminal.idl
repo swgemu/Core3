@@ -69,6 +69,8 @@ class VendorTerminal extends Terminal {
 
 	public native void initializeTransientMembers();
 
+	public native void finalize();
+
 	/**
 	 * Reads and sets the template data from a SharedObjectTemplate LuaObject
 	 * @pre { templateData is a valid pointer }

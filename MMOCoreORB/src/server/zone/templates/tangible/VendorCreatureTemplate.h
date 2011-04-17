@@ -45,14 +45,14 @@ public:
     }
 
 	inline String getHairFile(int idx) {
-		if (idx < 0 || idx > hairFile.size())
+		if (idx < 0 || idx >= hairFile.size())
 			return "";
 
 		return hairFile.get(idx);
 	}
 
 	inline String getOutfitName(int idx) {
-		if (idx < 0 || idx > outfits.size())
+		if (idx < 0 || idx >= outfits.size())
 			return "";
 
 		return outfits.get(idx);

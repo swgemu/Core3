@@ -20,7 +20,7 @@
  *	VendorTerminalStub
  */
 
-enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_,RPC_DESTROYOBJECTFROMDATABASE__BOOL_,RPC_ADDVENDORTOMAP__,RPC_SETOWNERID__LONG_,RPC_ISVENDOR__,RPC_ISVENDORTERMINAL__};
+enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_FINALIZE__,RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_,RPC_DESTROYOBJECTFROMDATABASE__BOOL_,RPC_ADDVENDORTOMAP__,RPC_SETOWNERID__LONG_,RPC_ISVENDOR__,RPC_ISVENDORTERMINAL__};
 
 VendorTerminal::VendorTerminal() : Terminal(DummyConstructorParameter::instance()) {
 	VendorTerminalImplementation* _implementation = new VendorTerminalImplementation();
@@ -177,11 +177,9 @@ VendorTerminalImplementation::VendorTerminalImplementation(DummyConstructorParam
 
 
 VendorTerminalImplementation::~VendorTerminalImplementation() {
+	VendorTerminalImplementation::finalize();
 }
 
-
-void VendorTerminalImplementation::finalize() {
-}
 
 void VendorTerminalImplementation::_initializeImplementation() {
 	_setClassHelper(VendorTerminalHelper::instance());
@@ -333,6 +331,9 @@ Packet* VendorTerminalAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 	case RPC_INITIALIZETRANSIENTMEMBERS__:
 		initializeTransientMembers();
 		break;
+	case RPC_FINALIZE__:
+		finalize();
+		break;
 	case RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_:
 		resp->insertSignedInt(handleObjectMenuSelect((PlayerCreature*) inv->getObjectParameter(), inv->getByteParameter()));
 		break;
@@ -360,6 +361,10 @@ Packet* VendorTerminalAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 
 void VendorTerminalAdapter::initializeTransientMembers() {
 	((VendorTerminalImplementation*) impl)->initializeTransientMembers();
+}
+
+void VendorTerminalAdapter::finalize() {
+	((VendorTerminalImplementation*) impl)->finalize();
 }
 
 int VendorTerminalAdapter::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {

@@ -62,7 +62,7 @@ void Vendor::sendVendorUpdateMail(bool isEmpty) {
 	if (!strongOwnerRef->isPlayerCreature())
 		return;
 
-	ManagedReference<PlayerCreature*> owner = (PlayerCreature*) strongOwnerRef.get();
+	PlayerCreature* owner = (PlayerCreature*) strongOwnerRef.get();
 	ChatManager* cman = owner->getZoneServer()->getChatManager();
 
 	String sender = vendorRef->getObjectName()->getDisplayedName();
@@ -92,7 +92,7 @@ void Vendor::sendVendorDestroyMail() {
 	if (!strongOwnerRef->isPlayerCreature())
 		return;
 
-	ManagedReference<PlayerCreature*> owner = (PlayerCreature*) strongOwnerRef.get();
+	PlayerCreature* owner = (PlayerCreature*) strongOwnerRef.get();
 	ChatManager* cman = owner->getZoneServer()->getChatManager();
 
 	String sender = vendorRef->getObjectName()->getDisplayedName();
