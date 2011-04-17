@@ -13,8 +13,6 @@
 #include "server/zone/objects/player/PlayerCreature.h"
 #include "server/zone/objects/auction/events/VendorCheckTask.h"
 
-using namespace server::zone::managers::vendor;
-
 namespace server {
 namespace zone {
 namespace objects {
