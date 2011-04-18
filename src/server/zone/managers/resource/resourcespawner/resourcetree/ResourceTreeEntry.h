@@ -124,6 +124,7 @@ public:
 
 		recycled = false;
 		children = false;
+		jtl = false;
 
 		maxtype = 0;
 		mintype = 0;
@@ -134,6 +135,10 @@ public:
 		randomNameClass = "";
 
 		zoneRestriction = "";
+
+		surveyToolType = -1;
+
+		containerCRC = 0;
 
 		attributeMap.setNullValue(NULL);
 	}
@@ -427,6 +432,7 @@ public:
     void setResourceContainerType(String resourceContainerType)
     {
         this->resourceContainerType = resourceContainerType;
+        containerCRC = resourceContainerType.hashCode();
     }
 
     /**
@@ -491,14 +497,6 @@ public:
      */
     int getSurveyToolType() {
     	return surveyToolType;
-    }
-
-    /**
-     * Sets containerCRC
-     * \param crc
-     */
-    void setContainerCRC(uint32 crc) {
-    	containerCRC = crc;
     }
 
     /**

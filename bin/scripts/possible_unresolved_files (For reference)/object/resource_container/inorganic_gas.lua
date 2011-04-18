@@ -1,5 +1,0 @@
-object_resource_container_inorganic_gas = object_resource_container_shared_resource_container_inorganic_gas:new {
-	
-}
-
-ObjectTemplates:addTemplate(object_resource_container_inorganic_gas, "object/resource_container/inorganic_gas.iff")

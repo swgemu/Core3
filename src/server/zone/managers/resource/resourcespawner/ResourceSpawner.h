@@ -85,6 +85,7 @@ private:
 
 	ResourceMap* resourceMap;
 
+	Vector<String> jtlResources;
 	Vector<String> activeResourceZones;
 
 	MinimumPool* minimumPool;
@@ -109,6 +110,7 @@ public:
 	void initializeNativePool(const String& includes, const String& excludes);
 
 	void addPlanet(const String& planetName);
+	void addJtlResource(const String& resourceName);
 	void setSpawningParameters(const int dur, const float throt,
 			const int override, const int spawnquantity);
 
@@ -148,8 +150,11 @@ private:
 	int randomizeValue(int min, int max);
 	long getRandomExpirationTime(ResourceTreeEntry* resourceEntry);
 	long getRandomUnixTimestamp(int min, int max);
+
+	Vector<String>& getJtlResources();
 	Vector<String>& getActiveResourceZones();
 
+	friend class ResourceTree;
 	friend class ResourceManager;
 	friend class NativePool;
 };

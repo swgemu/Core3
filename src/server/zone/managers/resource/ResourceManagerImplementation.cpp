@@ -124,6 +124,17 @@ bool ResourceManagerImplementation::loadConfigData() {
 	resourceSpawner->setSpawningParameters(aveduration,
 			spawnThrottling, lowerGateOverride, maxSpawnQuantity);
 
+	String jtlResources = getGlobalString("jtlresources");
+
+	StringTokenizer jtlTokens(jtlResources);
+	jtlTokens.setDelimeter(",");
+
+	while(jtlTokens.hasMoreTokens()) {
+		String token;
+		jtlTokens.getStringToken(token);
+		resourceSpawner->addJtlResource(token);
+	}
+
 	String minpoolinc = getGlobalString("minimumpoolincludes");
 	String minpoolexc = getGlobalString("minimumpoolexcludes");
 	resourceSpawner->initializeMinimumPool(minpoolinc, minpoolexc);

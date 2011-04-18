@@ -71,7 +71,7 @@ ResourceSpawner::ResourceSpawner(ManagedReference<ZoneServer*> serv,
 	objectManager = objMan;
 	samplingMultiplier = 1; //should be 1 for normal use
 
-	resourceTree = new ResourceTree();
+	resourceTree = new ResourceTree(this);
 	resourceMap = new ResourceMap();
 
 	minimumPool = new MinimumPool(this);
@@ -117,6 +117,10 @@ void ResourceSpawner::initializeNativePool(const String& includes,
 
 void ResourceSpawner::addPlanet(const String& planetName) {
 	activeResourceZones.add(planetName);
+}
+
+void ResourceSpawner::addJtlResource(const String& resourceName) {
+	jtlResources.add(resourceName);
 }
 
 void ResourceSpawner::setSpawningParameters(const int dur, const float throt,
@@ -365,6 +369,10 @@ long ResourceSpawner::getRandomUnixTimestamp(int min, int max) {
 
 Vector<String>& ResourceSpawner::getActiveResourceZones() {
 	return activeResourceZones;
+}
+
+Vector<String>& ResourceSpawner::getJtlResources() {
+	return jtlResources;
 }
 
 void ResourceSpawner::sendResourceListForSurvey(PlayerCreature* player,

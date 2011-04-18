@@ -104,7 +104,7 @@ class ResourceSpawn extends SceneObject {
        	spawned = 0;
        	despawned = 0;
        	surveyToolType = 0;
-       	zoneRestriction = 0;
+       	zoneRestriction = "";
        	spawnPool = 0;
        	dbDestroyed = false;
        	energy = false;

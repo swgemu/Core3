@@ -83,7 +83,7 @@ class SurveyTool extends ToolTangibleObject {
 	public static final int WIND = 8;
 	public static final int FUSION = 9;
 	
-	public static final int CREATURE = -1;
+	public static final int NOTYPE = -1;
 	
 	public SurveyTool() {
 		Logger.setLoggingName("SurveyTool");

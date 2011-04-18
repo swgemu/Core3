@@ -923,8 +923,8 @@ ResourceSpawnImplementation::ResourceSpawnImplementation() {
 	despawned = 0;
 	// server/zone/objects/resource/ResourceSpawn.idl():   	surveyToolType = 0;
 	surveyToolType = 0;
-	// server/zone/objects/resource/ResourceSpawn.idl():   	zoneRestriction = 0;
-	zoneRestriction = 0;
+	// server/zone/objects/resource/ResourceSpawn.idl():   	zoneRestriction = "";
+	zoneRestriction = "";
 	// server/zone/objects/resource/ResourceSpawn.idl():   	spawnPool = 0;
 	spawnPool = 0;
 	// server/zone/objects/resource/ResourceSpawn.idl():   	dbDestroyed = false;

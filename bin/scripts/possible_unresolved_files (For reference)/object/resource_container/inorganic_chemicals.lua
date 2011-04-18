@@ -1,5 +1,0 @@
-object_resource_container_inorganic_chemicals = object_resource_container_shared_resource_container_inorganic_chemicals:new {
-	
-}
-
-ObjectTemplates:addTemplate(object_resource_container_inorganic_chemicals, "object/resource_container/inorganic_chemicals.iff")

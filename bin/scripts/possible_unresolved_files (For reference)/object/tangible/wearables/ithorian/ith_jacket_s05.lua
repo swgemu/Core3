@@ -1,5 +1,0 @@
-object_tangible_wearables_ithorian_ith_jacket_s05 = object_tangible_wearables_ithorian_shared_ith_jacket_s05:new {
-	playerUseMask = ITHORIANS
-}
-
-ObjectTemplates:addTemplate(object_tangible_wearables_ithorian_ith_jacket_s05, "object/tangible/wearables/ithorian/ith_jacket_s05.iff")

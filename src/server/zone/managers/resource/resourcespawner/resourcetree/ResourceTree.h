@@ -53,25 +53,32 @@ which carries forward this exception.
 
 #include "ResourceTreeNode.h"
 #include "ResourceTreeEntry.h"
+#include "server/zone/templates/datatables/DataTableIff.h"
+#include "server/zone/templates/datatables/DataTableRow.h"
+#include "server/zone/templates/datatables/DataTableCell.h"
+//#include "../ResourceSpawner.h"
 
 /**
  * The ResourceTree class is a representation of the
- * resource_tree table in MySQL
+ * resource_tree table in the datatable
  */
 
+class ResourceSpawner;
 
-
-class ResourceTree {
+class ResourceTree : public Logger {
 private:
 
 	/// The tree's base node
 	ResourceTreeNode* baseNode;
 
+	/// Resource Spawner object
+	ResourceSpawner* spawner;
+
 public:
 	/**
 	 * Constructor
 	 */
-	ResourceTree();
+	ResourceTree(ResourceSpawner* spawn);
 
 	/**
 	 * Destructor
@@ -100,8 +107,22 @@ private:
 	/*
 	 * Loads tree from database
 	 */
-	bool buildTreeFromDatabase();
+	bool buildTreeFromClient();
 
+	/*
+	 * Sets Zone restriction
+	 */
+	void setZoneRestriction(ResourceTreeEntry* entry);
+
+	/*
+	 * Sets if resource is from JTL
+	 */
+	void setJtl(ResourceTreeEntry* entry);
+
+	/*
+	 * Sets the survey tool tyoe
+	 */
+	void setSurveyToolType(ResourceTreeEntry* entry);
 };
 
 

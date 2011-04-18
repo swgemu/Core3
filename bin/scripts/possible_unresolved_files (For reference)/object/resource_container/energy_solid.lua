@@ -1,5 +1,0 @@
-object_resource_container_energy_solid = object_resource_container_shared_resource_container_energy_solid:new {
-	
-}
-
-ObjectTemplates:addTemplate(object_resource_container_energy_solid, "object/resource_container/energy_solid.iff")
