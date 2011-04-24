@@ -226,6 +226,8 @@ void ZoneServerImplementation::startZones() {
 			zone->deploy("Zone " + zoneName, i);
 
 			zone->startManagers();
+
+			zones.put(zoneName, zone);
 	}
 }
 

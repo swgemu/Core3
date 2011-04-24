@@ -669,6 +669,7 @@ void PlayerManagerImplementation::createSkippedTutorialBuilding(PlayerCreature* 
 	player->initializePosition(27.0f, -3.5f, -165.0f);
 	player->setZone(zone);
 	cellTut->addObject(player, -1);
+	player->setSavedTerrainName(zone->getZoneName());
 	player->setSavedParentID(cellTut->getObjectID());
 
 	tutorial->updateToDatabase();
