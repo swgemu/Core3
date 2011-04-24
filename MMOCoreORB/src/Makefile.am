@@ -252,6 +252,7 @@ core3_IDLS =	server/login/LoginServer.cpp \
 				server/zone/objects/tangible/terminal/characterbuilder/CharacterBuilderTerminal.cpp
 				
 core3_SOURCES =	$(core3_IDLS) \
+		server/zone/managers/player/creation/PlayerCreationManager.cpp \
 		tre3/TreeFile.cpp \
 		server/zone/managers/vendor/VendorOutfitManager.cpp \
 		server/conf/ConfigManager.cpp \
@@ -472,6 +473,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/mission/ReconMissionObjectiveImplementation.cpp \
 		server/zone/objects/mission/MissionObserverImplementation.cpp \
 		server/zone/templates/datatables/DataTableIff.cpp \
+		server/zone/templates/datatables/DataTableCell.cpp \
 		server/zone/templates/snapshot/WorldSnapshotIff.cpp \
 		server/zone/templates/SharedTangibleObjectTemplate.cpp \
 		server/zone/templates/appearance/FloorMesh.cpp \

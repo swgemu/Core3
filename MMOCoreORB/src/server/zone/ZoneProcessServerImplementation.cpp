@@ -42,6 +42,7 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
+#include "server/zone/managers/player/creation/PlayerCreationManager.h"
 #include "ZoneProcessServer.h"
 
 #include "ZoneServer.h"
@@ -104,9 +105,10 @@ void ZoneProcessServerImplementation::finalize() {
 }
 
 void ZoneProcessServerImplementation::initialize() {
-
 	vendorManager = VendorManager::instance();
 	vendorManager->initialize();
+
+	playerCreationManager = PlayerCreationManager::instance();
 
 	zonePacketHandler = new ZonePacketHandler("ZonePacketHandler", _this);
 	zonePacketHandler->setLogging(false);

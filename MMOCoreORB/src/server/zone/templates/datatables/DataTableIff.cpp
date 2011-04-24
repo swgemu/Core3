@@ -14,6 +14,13 @@ DataTableIff::DataTableIff() {
 }
 
 DataTableIff::~DataTableIff() {
+	clearDataTable();
+}
+
+void DataTableIff::clearDataTable() {
+	columns.removeAll();
+	columnTypes.removeAll();
+
 	while (rows.size() > 0) {
 		DataTableRow* row = rows.remove(0);
 
@@ -73,23 +80,20 @@ void DataTableIff::readObject(IffStream* iffStream) {
 				cell = new DataTableCellString();
 				cell->parse(chunk);
 				break;
-			case 'c':
-				break;
 			case 'h':
 				cell = new DataTableCellHex();
 				cell->parse(chunk);
-				break;
-			case 'p':
 				break;
 			case 'b':
 				cell = new DataTableCellBinary();
 				cell->parse(chunk);
 				break;
+			case 'c':
+			case 'p':
 			case 'e':
-				break;
 			case 'z':
-				break;
 			case 'i':
+			case 'I':
 			default:
 				cell = new DataTableCellInt();
 				cell->parse(chunk);

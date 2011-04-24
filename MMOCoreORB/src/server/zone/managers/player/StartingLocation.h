@@ -80,27 +80,28 @@ public:
 			return;
 
 		try {
+			//New style has added the z position.
 			if (row->getCellsSize() > 9) {
-				row->getCell(0)->getValue(location);
-				row->getCell(1)->getValue(planet);
-				row->getCell(2)->getValue(x);
-				row->getCell(3)->getValue(z);
-				row->getCell(4)->getValue(y);
-				row->getCell(5)->getValue(cell);
-				row->getCell(6)->getValue(image);
-				row->getCell(7)->getValue(description);
-				row->getCell(8)->getValue(radius);
-				row->getCell(9)->getValue(heading);
+				row->getValue(0, location);
+				row->getValue(1, planet);
+				row->getValue(2, x);
+				row->getValue(3, z);
+				row->getValue(4, y);
+				row->getValue(5, cell);
+				row->getValue(6, image);
+				row->getValue(7, description);
+				row->getValue(8, radius);
+				row->getValue(9, heading);
 			} else {
-				row->getCell(0)->getValue(location);
-				row->getCell(1)->getValue(planet);
-				row->getCell(2)->getValue(x);
-				row->getCell(3)->getValue(y);
-				row->getCell(4)->getValue(cell);
-				row->getCell(5)->getValue(image);
-				row->getCell(6)->getValue(description);
-				row->getCell(7)->getValue(radius);
-				row->getCell(8)->getValue(heading);
+				row->getValue(0, location);
+				row->getValue(1, planet);
+				row->getValue(2, x);
+				row->getValue(3, y);
+				row->getValue(4, cell);
+				row->getValue(5, image);
+				row->getValue(6, description);
+				row->getValue(7, radius);
+				row->getValue(8, heading);
 			}
 		} catch (Exception& e) {
 			System::out << "Error parsing values in StartingLocation. Possible column mismatch." << endl;

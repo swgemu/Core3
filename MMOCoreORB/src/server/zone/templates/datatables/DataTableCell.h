@@ -17,24 +17,9 @@ public:
 
 	virtual void parse(Chunk* chunk) = 0;
 
-	virtual void getValue(String& out) {
-		out = "";
-	}
-
-	virtual void getValue(float& out) {
-		out = 0.f;
-	}
-
-	virtual void getValue(int& out) {
-		out = 0;
-	}
-
-	virtual void getValue(uint32& out) {
-		out = 0;
-	}
-
-	virtual void getValue(bool& out) {
-		out = false;
+	template<typename V>
+	void getValue(V& out) {
+		throw Exception("No valid type specified.");
 	}
 
 	virtual byte getType() = 0;

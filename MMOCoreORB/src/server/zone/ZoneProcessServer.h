@@ -13,6 +13,22 @@
 
 namespace server {
 namespace zone {
+namespace managers {
+namespace player {
+namespace creation {
+
+class PlayerCreationManager;
+
+} // namespace creation
+} // namespace player
+} // namespace managers
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::managers::player::creation;
+
+namespace server {
+namespace zone {
 
 class ZoneServer;
 
@@ -207,6 +223,8 @@ namespace zone {
 class ZoneProcessServerImplementation : public ManagedServiceImplementation {
 protected:
 	ManagedReference<ZoneServer* > zoneServer;
+
+	PlayerCreationManager* playerCreationManager;
 
 	VendorManager* vendorManager;
 

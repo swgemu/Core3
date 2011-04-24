@@ -97,24 +97,23 @@ public:
 
 	void parseRow(DataTableRow* row) {
 		try {
-			//Skip cell 0. We don't need to store it.
-			row->getCell(1)->getValue(customizationGroup);
-			row->getCell(2)->getValue(type);
-			row->getCell(3)->getValue(customizationName);
-			row->getCell(4)->getValue(variables);
-			row->getCell(5)->getValue(isScale);
-			row->getCell(6)->getValue(reverse);
-			row->getCell(7)->getValue(colorLinked);
-			row->getCell(8)->getValue(colorLinkedtoSelf0);
-			row->getCell(9)->getValue(colorLinkedtoSelf1);
-			row->getCell(10)->getValue(cameraYaw);
-			row->getCell(11)->getValue(discrete);
-			row->getCell(12)->getValue(randomizable);
-			row->getCell(13)->getValue(randomizableGroup);
-			row->getCell(14)->getValue(isVarHairColor);
-			row->getCell(15)->getValue(imageDesignSkillMod);
-			row->getCell(16)->getValue(skillModValue);
-			row->getCell(17)->getValue(modificationType);
+			row->getValue(1, customizationGroup);
+			row->getValue(2, type);
+			row->getValue(3, customizationName);
+			row->getValue(4, variables);
+			row->getValue(5, isScale);
+			row->getValue(6, reverse);
+			row->getValue(7, colorLinked);
+			row->getValue(8, colorLinkedtoSelf0);
+			row->getValue(9, colorLinkedtoSelf1);
+			row->getValue(10, cameraYaw);
+			row->getValue(11, discrete);
+			row->getValue(12, randomizable);
+			row->getValue(13, randomizableGroup);
+			row->getValue(14, isVarHairColor);
+			row->getValue(15, imageDesignSkillMod);
+			row->getValue(16, skillModValue);
+			row->getValue(17, modificationType);
 		} catch (Exception& e) {
 			System::out << "CustomizationData::parse() exception: " << e.getMessage() << endl;
 		}

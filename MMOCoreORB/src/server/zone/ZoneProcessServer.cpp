@@ -4,6 +4,8 @@
 
 #include "ZoneProcessServer.h"
 
+#include "server/zone/managers/player/creation/PlayerCreationManager.h"
+
 #include "server/zone/ZoneServer.h"
 
 #include "server/zone/ZonePacketHandler.h"

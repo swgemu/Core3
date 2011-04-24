@@ -39,6 +39,11 @@ public:
 	int getCellsSize() {
 		return cells.size();
 	}
+
+	template <typename V>
+	void getValue(int idx, V& out) {
+		cells.get(idx)->getValue(out);
+	}
 };
 
 #endif /* DATATABLEROW_H_ */

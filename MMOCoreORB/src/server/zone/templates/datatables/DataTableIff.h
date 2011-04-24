@@ -24,6 +24,8 @@ public:
 
 	void readObject(IffStream* iffStream);
 
+	void clearDataTable();
+
 	/**
 	 * Returns a collection of rows whose column specified by the column index matches the specified column value.
 	 * @param columnIdx Which column to lookup.
