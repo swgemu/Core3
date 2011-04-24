@@ -159,7 +159,7 @@ bool ResourceTree::buildTreeFromClient() {
 	}
 	/// Update the Stf Entries now that the tree is built
 	baseNode->updateEntries();
-baseNode->toString();
+
 	return true;
 }
 

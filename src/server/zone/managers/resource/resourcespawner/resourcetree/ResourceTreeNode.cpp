@@ -229,10 +229,12 @@ void ResourceTreeNode::getEntryPool(Vector<ResourceTreeEntry*>& candidates,
 		}
 	}
 
+
 	for(int i = 0; i < nodes.size(); ++i) {
 		ResourceTreeNode* node = nodes.get(i);
 		node->getEntryPool(candidates, excludes);
 	}
+
 }
 
 void ResourceTreeNode::updateEntries() {
