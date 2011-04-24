@@ -506,7 +506,7 @@ public:
 
 	Time* getServerMovementTimeStamp();
 
-	int getSavedZoneID();
+	String getSavedTerrainName();
 
 	String getFirstName();
 
@@ -514,7 +514,7 @@ public:
 
 	void setSavedParentID(unsigned long long id);
 
-	void setSavedZoneID(int id);
+	void setSavedTerrainName(const String& name);
 
 	void setSkillPoints(int points);
 
@@ -637,6 +637,7 @@ protected:
 	String _return_getLastNpcConvMessStr;
 	String _return_getLastNpcConvOption;
 	String _return_getLastNpcConvStr;
+	String _return_getSavedTerrainName;
 
 	UnicodeString _return_getBiography;
 
@@ -659,7 +660,7 @@ class PlayerCreatureImplementation : public CreatureObjectImplementation {
 protected:
 	ManagedReference<ZoneClientSession* > owner;
 
-	int savedZoneID;
+	String savedTerrainName;
 
 	unsigned long long savedParentID;
 
@@ -926,7 +927,7 @@ public:
 
 	Time* getServerMovementTimeStamp();
 
-	int getSavedZoneID();
+	String getSavedTerrainName();
 
 	String getFirstName();
 
@@ -934,7 +935,7 @@ public:
 
 	void setSavedParentID(unsigned long long id);
 
-	void setSavedZoneID(int id);
+	void setSavedTerrainName(const String& name);
 
 	void setSkillPoints(int points);
 
@@ -1235,7 +1236,7 @@ public:
 
 	unsigned long long getServerMovementTimeDelta();
 
-	int getSavedZoneID();
+	String getSavedTerrainName();
 
 	String getFirstName();
 
@@ -1243,7 +1244,7 @@ public:
 
 	void setSavedParentID(unsigned long long id);
 
-	void setSavedZoneID(int id);
+	void setSavedTerrainName(const String& name);
 
 	void setSkillPoints(int points);
 
@@ -1352,6 +1353,7 @@ protected:
 	String _param0_addToConsentList__String_;
 	String _param0_hasInConsentList__String_;
 	String _param0_removeFromConsentList__String_;
+	String _param0_setSavedTerrainName__String_;
 	UnicodeString _param0_setBiography__UnicodeString_;
 };
 

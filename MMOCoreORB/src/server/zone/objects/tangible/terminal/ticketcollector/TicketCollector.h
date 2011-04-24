@@ -65,22 +65,6 @@ class TicketObject;
 
 using namespace server::zone::objects::tangible::ticket;
 
-namespace server {
-namespace zone {
-namespace objects {
-namespace creature {
-namespace shuttle {
-
-class ShuttleCreature;
-
-} // namespace shuttle
-} // namespace creature
-} // namespace objects
-} // namespace zone
-} // namespace server
-
-using namespace server::zone::objects::creature::shuttle;
-
 #include "server/zone/objects/tangible/terminal/Terminal.h"
 
 #include "engine/lua/LuaObject.h"
@@ -102,11 +86,7 @@ public:
 
 	void useTicket(PlayerCreature* player, TicketObject* ticket);
 
-	bool checkTime(ShuttleCreature* shuttle, PlayerCreature* player);
-
 	bool isTicketCollector();
-
-	void setShuttle(ShuttleCreature* shut);
 
 	DistributedObjectServant* _getImplementation();
 
@@ -137,8 +117,6 @@ namespace terminal {
 namespace ticketcollector {
 
 class TicketCollectorImplementation : public TerminalImplementation {
-protected:
-	ManagedReference<ShuttleCreature* > shuttle;
 
 public:
 	TicketCollectorImplementation();
@@ -151,11 +129,7 @@ public:
 
 	void useTicket(PlayerCreature* player, TicketObject* ticket);
 
-	bool checkTime(ShuttleCreature* shuttle, PlayerCreature* player);
-
 	bool isTicketCollector();
-
-	void setShuttle(ShuttleCreature* shut);
 
 	TicketCollector* _this;
 
@@ -206,11 +180,7 @@ public:
 
 	void useTicket(PlayerCreature* player, TicketObject* ticket);
 
-	bool checkTime(ShuttleCreature* shuttle, PlayerCreature* player);
-
 	bool isTicketCollector();
-
-	void setShuttle(ShuttleCreature* shut);
 
 };
 

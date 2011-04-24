@@ -284,8 +284,6 @@ public:
 
 	static const int TRAINERCREATURE = 0x40A;
 
-	static const int SHUTTLECREATURE = 0x40B;
-
 	static const int JUNKDEALERCREATURE = 0x40C;
 
 	static const int INFORMANTCREATURE = 0x40D;
@@ -762,7 +760,7 @@ public:
 
 	void insertToBuilding(BuildingObject* building);
 
-	void switchZone(int newZoneID, float newPostionX, float newPositionZ, float newPositionY, unsigned long long parentID = 0);
+	void switchZone(const String& newTerrainName, float newPostionX, float newPositionZ, float newPositionY, unsigned long long parentID = 0);
 
 	void teleport(float newPositionX, float newPositionZ, float newPositionY, unsigned long long parentID = 0);
 
@@ -1229,8 +1227,6 @@ public:
 	static const int PLAYERCREATURE = 0x409;
 
 	static const int TRAINERCREATURE = 0x40A;
-
-	static const int SHUTTLECREATURE = 0x40B;
 
 	static const int JUNKDEALERCREATURE = 0x40C;
 
@@ -1712,7 +1708,7 @@ public:
 
 	virtual void insertToBuilding(BuildingObject* building);
 
-	virtual void switchZone(int newZoneID, float newPostionX, float newPositionZ, float newPositionY, unsigned long long parentID = 0);
+	virtual void switchZone(const String& newTerrainName, float newPostionX, float newPositionZ, float newPositionY, unsigned long long parentID = 0);
 
 	virtual void teleport(float newPositionX, float newPositionZ, float newPositionY, unsigned long long parentID = 0);
 
@@ -2135,7 +2131,7 @@ public:
 
 	void insertToBuilding(BuildingObject* building);
 
-	void switchZone(int newZoneID, float newPostionX, float newPositionZ, float newPositionY, unsigned long long parentID);
+	void switchZone(const String& newTerrainName, float newPostionX, float newPositionZ, float newPositionY, unsigned long long parentID);
 
 	void teleport(float newPositionX, float newPositionZ, float newPositionY, unsigned long long parentID);
 
@@ -2414,6 +2410,7 @@ protected:
 	String _param0_error__String_;
 	String _param2_canAddObject__SceneObject_int_String_;
 	UnicodeString _param0_setCustomObjectName__UnicodeString_bool_;
+	String _param0_switchZone__String_float_float_float_long_;
 	String _param0_hasSlotDescriptor__String_;
 	String _param0_getSlottedObject__String_;
 	String _param0_setLoggingName__String_;

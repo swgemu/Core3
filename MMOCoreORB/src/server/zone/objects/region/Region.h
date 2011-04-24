@@ -64,22 +64,6 @@ using namespace server::zone::objects::player;
 namespace server {
 namespace zone {
 namespace objects {
-namespace creature {
-namespace shuttle {
-
-class ShuttleCreature;
-
-} // namespace shuttle
-} // namespace creature
-} // namespace objects
-} // namespace zone
-} // namespace server
-
-using namespace server::zone::objects::creature::shuttle;
-
-namespace server {
-namespace zone {
-namespace objects {
 namespace building {
 namespace city {
 

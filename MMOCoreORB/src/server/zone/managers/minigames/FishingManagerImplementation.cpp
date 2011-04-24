@@ -18,7 +18,7 @@
 #include "server/zone/Zone.h"
 #include "server/zone/managers/planet/PlanetManager.h"
 #include "server/zone/managers/player/PlayerManager.h"
-#include "server/zone/objects/terrain/PlanetNames.h"
+
 #include "server/zone/ZoneServer.h"
 #include "server/chat/StringIdChatParameter.h"
 #include "server/zone/managers/minigames/events/FishingEvent.h"
@@ -439,7 +439,7 @@ void FishingManagerImplementation::success(PlayerCreature* player, int fish, Sce
 
 				length = System::random(length)+quality;
 
-				lootFishObject->setAttributes(name, zone->getZoneID(), time, length / 100);
+				lootFishObject->setAttributes(name, zone->getZoneName(), time, length / 100);
 
 				//if (player->hasSkillBox("outdoors_ranger_novice") || player->hasSkillBox("outdoors_scout_novice")) {
 				int xp;
@@ -454,7 +454,7 @@ void FishingManagerImplementation::success(PlayerCreature* player, int fish, Sce
 				Locker playerLocker(player);
 				playerManager->awardExperience(player, "camp", xp, true);
 
-				lootFishObject->setCustomizationVariable(CustomizationVariableTypes::PRIVATE_INDEX_COLOR_1, color.get(zone->getZoneID()));
+				lootFishObject->setCustomizationVariable(CustomizationVariableTypes::PRIVATE_INDEX_COLOR_1, color.get(zone->getZoneName()));
 
 				String baitString = "object/tangible/fishing/bait/bait_chum.iff";
 				ManagedReference<TangibleObject*> baitObject = (TangibleObject*)zoneServer->createObject(baitString.hashCode(), 2);
@@ -469,7 +469,7 @@ void FishingManagerImplementation::success(PlayerCreature* player, int fish, Sce
 					lootFishObject->addObject(baitObject, -1, true);
 				}
 
-				String resourceString = Planet::getPlanetName(zone->getZoneID());
+				String resourceString = zone->getZoneName();
 				resourceString = "seafood_fish_" + resourceString;
 				int amount = System::random(50)+factor;
 				ManagedReference<ResourceManager*> resourceManager = zone->getZoneServer()->getResourceManager();

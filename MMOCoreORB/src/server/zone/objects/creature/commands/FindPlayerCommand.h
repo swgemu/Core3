@@ -108,7 +108,7 @@ public:
 		text << "Online Status:\t  " << (targetObject->isOffline() ? "\\#ff3300 Offline" : "\\#00ff33 Online") << "\\#.\n";
 
 		Vector3 worldPosition = targetObject->getWorldPosition();
-		text << "World Position:\t  {x:" << worldPosition.getX() << ", z:" << worldPosition.getZ() << ", y:" << worldPosition.getY() << "} " << Planet::getPlanetNameByCrc(targetObject->getPlanetCRC()) << "\n";
+		text << "World Position:\t  {x:" << worldPosition.getX() << ", z:" << worldPosition.getZ() << ", y:" << worldPosition.getY() << "} " << "\n";
 
 		if (targetObject->getParent() != NULL && targetObject->getParent()->isCellObject()) {
 			ManagedReference<CellObject*> cell = (CellObject*) targetObject->getParent();

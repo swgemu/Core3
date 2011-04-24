@@ -20,7 +20,7 @@
  *	FishObjectStub
  */
 
-enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_SETATTRIBUTES__STRING_INT_STRING_FLOAT_,RPC_FILLOBJECTMENURESPONSE__OBJECTMENURESPONSE_PLAYERCREATURE_,RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_,RPC_FILLATTRIBUTELIST__ATTRIBUTELISTMESSAGE_PLAYERCREATURE_,RPC_FILET__PLAYERCREATURE_};
+enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_SETATTRIBUTES__STRING_STRING_STRING_FLOAT_,RPC_FILLOBJECTMENURESPONSE__OBJECTMENURESPONSE_PLAYERCREATURE_,RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_,RPC_FILLATTRIBUTELIST__ATTRIBUTELISTMESSAGE_PLAYERCREATURE_,RPC_FILET__PLAYERCREATURE_};
 
 FishObject::FishObject() : TangibleObject(DummyConstructorParameter::instance()) {
 	FishObjectImplementation* _implementation = new FishObjectImplementation();
@@ -48,21 +48,21 @@ void FishObject::initializeTransientMembers() {
 		_implementation->initializeTransientMembers();
 }
 
-void FishObject::setAttributes(String& playerName, int planetID, String& timestamp, float fishLength) {
+void FishObject::setAttributes(const String& playerName, const String& terrainN, String& timestamp, float fishLength) {
 	FishObjectImplementation* _implementation = (FishObjectImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_SETATTRIBUTES__STRING_INT_STRING_FLOAT_);
+		DistributedMethod method(this, RPC_SETATTRIBUTES__STRING_STRING_STRING_FLOAT_);
 		method.addAsciiParameter(playerName);
-		method.addSignedIntParameter(planetID);
+		method.addAsciiParameter(terrainN);
 		method.addAsciiParameter(timestamp);
 		method.addFloatParameter(fishLength);
 
 		method.executeWithVoidReturn();
 	} else
-		_implementation->setAttributes(playerName, planetID, timestamp, fishLength);
+		_implementation->setAttributes(playerName, terrainN, timestamp, fishLength);
 }
 
 void FishObject::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, PlayerCreature* player) {
@@ -233,8 +233,8 @@ bool FishObjectImplementation::readObjectMember(ObjectInputStream* stream, const
 		return true;
 	}
 
-	if (_name == "planet") {
-		TypeInfo<int >::parseFromBinaryStream(&planet, stream);
+	if (_name == "zoneName") {
+		TypeInfo<String >::parseFromBinaryStream(&zoneName, stream);
 		return true;
 	}
 
@@ -271,11 +271,11 @@ int FishObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "planet";
+	_name = "zoneName";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
-	TypeInfo<int >::toBinaryStream(&planet, stream);
+	TypeInfo<String >::toBinaryStream(&zoneName, stream);
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
@@ -303,12 +303,6 @@ FishObjectImplementation::FishObjectImplementation() {
 	_initializeImplementation();
 	// server/zone/objects/tangible/fishing/FishObject.idl():  		Logger.setLoggingName("FishObject");
 	Logger::setLoggingName("FishObject");
-	// server/zone/objects/tangible/fishing/FishObject.idl():  		player = "";
-	player = "";
-	// server/zone/objects/tangible/fishing/FishObject.idl():  		planet = 0;
-	planet = 0;
-	// server/zone/objects/tangible/fishing/FishObject.idl():  		timeCaught = "";
-	timeCaught = "";
 	// server/zone/objects/tangible/fishing/FishObject.idl():  		length = 0.0;
 	length = 0.0;
 }
@@ -320,11 +314,11 @@ void FishObjectImplementation::initializeTransientMembers() {
 	Logger::setLoggingName("FishObject");
 }
 
-void FishObjectImplementation::setAttributes(String& playerName, int planetID, String& timestamp, float fishLength) {
+void FishObjectImplementation::setAttributes(const String& playerName, const String& terrainN, String& timestamp, float fishLength) {
 	// server/zone/objects/tangible/fishing/FishObject.idl():  		player = playerName;
 	player = playerName;
-	// server/zone/objects/tangible/fishing/FishObject.idl():  		planet = planetID;
-	planet = planetID;
+	// server/zone/objects/tangible/fishing/FishObject.idl():  		zoneName = terrainN;
+	zoneName = terrainN;
 	// server/zone/objects/tangible/fishing/FishObject.idl():  		timeCaught = timestamp;
 	timeCaught = timestamp;
 	// server/zone/objects/tangible/fishing/FishObject.idl():  		length = fishLength;
@@ -345,8 +339,8 @@ Packet* FishObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	case RPC_INITIALIZETRANSIENTMEMBERS__:
 		initializeTransientMembers();
 		break;
-	case RPC_SETATTRIBUTES__STRING_INT_STRING_FLOAT_:
-		setAttributes(inv->getAsciiParameter(_param0_setAttributes__String_int_String_float_), inv->getSignedIntParameter(), inv->getAsciiParameter(_param2_setAttributes__String_int_String_float_), inv->getFloatParameter());
+	case RPC_SETATTRIBUTES__STRING_STRING_STRING_FLOAT_:
+		setAttributes(inv->getAsciiParameter(_param0_setAttributes__String_String_String_float_), inv->getAsciiParameter(_param1_setAttributes__String_String_String_float_), inv->getAsciiParameter(_param2_setAttributes__String_String_String_float_), inv->getFloatParameter());
 		break;
 	case RPC_FILLOBJECTMENURESPONSE__OBJECTMENURESPONSE_PLAYERCREATURE_:
 		fillObjectMenuResponse((ObjectMenuResponse*) inv->getObjectParameter(), (PlayerCreature*) inv->getObjectParameter());
@@ -371,8 +365,8 @@ void FishObjectAdapter::initializeTransientMembers() {
 	((FishObjectImplementation*) impl)->initializeTransientMembers();
 }
 
-void FishObjectAdapter::setAttributes(String& playerName, int planetID, String& timestamp, float fishLength) {
-	((FishObjectImplementation*) impl)->setAttributes(playerName, planetID, timestamp, fishLength);
+void FishObjectAdapter::setAttributes(const String& playerName, const String& terrainN, String& timestamp, float fishLength) {
+	((FishObjectImplementation*) impl)->setAttributes(playerName, terrainN, timestamp, fishLength);
 }
 
 void FishObjectAdapter::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, PlayerCreature* player) {

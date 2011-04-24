@@ -72,7 +72,7 @@ void ResourceManagerImplementation::initialize() {
 }
 
 bool ResourceManagerImplementation::loadConfigFile() {
-	return runFile("scripts/resources/config.lua");
+	return runFile("scripts/managers/resource_manager.lua");
 }
 
 int ResourceManagerImplementation::notifyObserverEvent(uint32 eventType, Observable* observable, ManagedObject* arg1, int64 arg2) {
@@ -109,7 +109,8 @@ bool ResourceManagerImplementation::loadConfigData() {
 	zonesTokens.setDelimeter(",");
 
 	while(zonesTokens.hasMoreTokens()) {
-		int token = zonesTokens.getIntToken();
+		String token;
+		zonesTokens.getStringToken(token);
 		resourceSpawner->addPlanet(token);
 	}
 
@@ -122,6 +123,17 @@ bool ResourceManagerImplementation::loadConfigData() {
 
 	resourceSpawner->setSpawningParameters(aveduration,
 			spawnThrottling, lowerGateOverride, maxSpawnQuantity);
+
+	String jtlResources = getGlobalString("jtlresources");
+
+	StringTokenizer jtlTokens(jtlResources);
+	jtlTokens.setDelimeter(",");
+
+	while(jtlTokens.hasMoreTokens()) {
+		String token;
+		jtlTokens.getStringToken(token);
+		resourceSpawner->addJtlResource(token);
+	}
 
 	String minpoolinc = getGlobalString("minimumpoolincludes");
 	String minpoolexc = getGlobalString("minimumpoolexcludes");
@@ -144,9 +156,17 @@ bool ResourceManagerImplementation::loadConfigData() {
 }
 
 void ResourceManagerImplementation::loadDefaultConfig() {
-	for(int i = 0;i < 10; ++i) {
-		resourceSpawner->addPlanet(i);
-	}
+
+	resourceSpawner->addPlanet("corellia");
+	resourceSpawner->addPlanet("lok");
+	resourceSpawner->addPlanet("yavin4");
+	resourceSpawner->addPlanet("dantooine");
+	resourceSpawner->addPlanet("dathomir");
+	resourceSpawner->addPlanet("naboo");
+	resourceSpawner->addPlanet("rori");
+	resourceSpawner->addPlanet("talus");
+	resourceSpawner->addPlanet("tatooine");
+	resourceSpawner->addPlanet("endor");
 
 	shiftInterval = 7200000;
 	resourceSpawner->setSpawningParameters(86400, 90, 1000, 0);
@@ -244,11 +264,11 @@ ResourceSpawn* ResourceManagerImplementation::getResourceSpawn(const String& spa
 	return spawn;
 }
 
-ResourceSpawn* ResourceManagerImplementation::getCurrentSpawn(const String& restype, int zoneid) {
-	return resourceSpawner->getCurrentSpawn(restype, zoneid);
+ResourceSpawn* ResourceManagerImplementation::getCurrentSpawn(const String& restype, const String& zoneName) {
+	return resourceSpawner->getCurrentSpawn(restype, zoneName);
 }
 
-void ResourceManagerImplementation::getResourceListByType(Vector<ManagedReference<ResourceSpawn*> >& list, int type, int zoneid) {
+void ResourceManagerImplementation::getResourceListByType(Vector<ManagedReference<ResourceSpawn*> >& list, int type, const String& zoneName) {
 	list.removeAll();
 
 	rlock();
@@ -258,7 +278,7 @@ void ResourceManagerImplementation::getResourceListByType(Vector<ManagedReferenc
 	try {
 		ResourceMap* resourceMap = resourceSpawner->getResourceMap();
 
-		ZoneResourceMap* zoneMap = resourceMap->getZoneResourceList(zoneid);
+		ZoneResourceMap* zoneMap = resourceMap->getZoneResourceList(zoneName);
 
 		if (zoneMap != NULL) {
 			for (int i = 0; i < zoneMap->size(); ++i) {
@@ -372,7 +392,7 @@ void ResourceManagerImplementation::givePlayerResource(PlayerCreature* playerCre
 		ResourceContainer* newResource = spawn->createResource(quantity);
 
 		if(newResource != NULL) {
-			spawn->extractResource(-1, quantity);
+			spawn->extractResource("", quantity);
 			inventory->broadcastObject(newResource, true);
 			inventory->addObject(newResource, -1, true);
 			newResource->updateToDatabase();

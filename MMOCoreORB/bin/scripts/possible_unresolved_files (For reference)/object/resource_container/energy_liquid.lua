@@ -1,5 +1,0 @@
-object_resource_container_energy_liquid = object_resource_container_shared_resource_container_energy_liquid:new {
-	
-}
-
-ObjectTemplates:addTemplate(object_resource_container_energy_liquid, "object/resource_container/energy_liquid.iff")

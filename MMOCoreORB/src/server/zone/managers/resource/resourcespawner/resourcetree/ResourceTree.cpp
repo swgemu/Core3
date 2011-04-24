@@ -48,15 +48,16 @@ which carries forward this exception.
  * \date 5-03-10
  */
 
-#include "../../../../../db/ServerDatabase.h"
 #include "ResourceTree.h"
 #include "ResourceTreeEntry.h"
 #include "ResourceAttribute.h"
 #include "server/zone/managers/templates/TemplateManager.h"
+#include "../ResourceSpawner.h"
 
-ResourceTree::ResourceTree() {
+ResourceTree::ResourceTree(ResourceSpawner* spawn) : Logger() {
 
-	buildTreeFromDatabase();
+	spawner = spawn;
+	buildTreeFromClient();
 }
 
 ResourceTree::~ResourceTree() {
@@ -64,94 +65,175 @@ ResourceTree::~ResourceTree() {
 	delete baseNode;
 }
 
-bool ResourceTree::buildTreeFromDatabase() {
+bool ResourceTree::buildTreeFromClient() {
+
+	TemplateManager* templateManager = TemplateManager::instance();
+
+	IffStream* iffStream = templateManager->openIffFile(
+			"datatables/resource/resource_tree.iff");
+
+	if (iffStream == NULL) {
+		info("The Resource Tree could not be found.", true);
+		return false;
+	}
+
+	DataTableIff dtiff;
+	dtiff.readObject(iffStream);
+
+	Vector < String > currentClasses;
+	currentClasses.removeAll();
 
 	baseNode = new ResourceTreeNode("resource", "Resource", 0);
 
-	String query = "SELECT resource_tree.index,resource_tree.stfname, resource_tree.class1, "
-			"resource_tree.class2, resource_tree.class3, resource_tree.class4, resource_tree.class5, "
-			"resource_tree.class6, resource_tree.class7, resource_tree.maxtype, resource_tree.mintype, "
-			"resource_tree.minpool, resource_tree.maxpool, resource_tree.recycled, resource_tree.attrib1, "
-			"resource_tree.attrib2, resource_tree.attrib3, resource_tree.attrib4, resource_tree.attrib5, "
-			"resource_tree.attrib6, resource_tree.attrib7, resource_tree.attrib8, resource_tree.attrib9, "
-			"resource_tree.attrib10, resource_tree.attrib11, resource_tree.attrib1min, resource_tree.attrib1max, "
-			"resource_tree.attrib2min, resource_tree.attrib2max, resource_tree.attrib3min, resource_tree.attrib3max, "
-			"resource_tree.attrib4min, resource_tree.attrib4max, resource_tree.attrib5min, resource_tree.attrib5max, "
-			"resource_tree.attrib6min, resource_tree.attrib6max, resource_tree.attrib7min, resource_tree.attrib7max, "
-			"resource_tree.attrib8min, resource_tree.attrib8max, resource_tree.attrib9min, resource_tree.attrib9max, "
-			"resource_tree.attrib10min, resource_tree.attrib10max, resource_tree.attrib11min, resource_tree.attrib11max, "
-			"resource_tree.resourcecontainer, resource_tree.randomname, resource_tree.zoneRestriction, resource_tree.jtl, "
-			"resource_tree.toolType, resource_tree.resourcecontainer FROM resource_tree ORDER BY resource_tree.index ASC";
+	String stringvalue;
+	int intvalue;
+	bool boolValue;
 
-	try {
-		Reference<ResultSet*> res = ServerDatabase::instance()->executeQuery(query);
+	for (int i = 0; i < dtiff.getTotalRows(); ++i) {
 
-		if (res->size() != 0) {
-			while (res->next()) {
+		DataTableRow* row = dtiff.getRow(i);
 
-				/// Build the ResourceTreeEntry
+		row->getCell(1)->getValue(stringvalue);
 
-				String type = res->getString(1);
-				ResourceTreeEntry* entry = new ResourceTreeEntry(type);
+		ResourceTreeEntry* entry = new ResourceTreeEntry(stringvalue);
 
-				for(int i = 2; i <= 8; ++i) {
-					String newclass = res->getString(i);
-					if(newclass != "")
-						entry->addClass(newclass);
-				}
+		for (int j = 3; j <= 9; ++j) {
+			String resourceclass;
+			row->getCell(j)->getValue(resourceclass);
 
-				entry->setMaxtype(res->getInt(9));
-				entry->setMintype(res->getInt(10));
-				entry->setMinpool(res->getInt(11));
-				entry->setMaxpool(res->getInt(12));
+			if (resourceclass == "")
+				continue;
 
-				entry->setRecycled(res->getBoolean(13));
+			while (currentClasses.size() > j - 2)
+				currentClasses.removeElementAt(j - 2);
 
-				for(int i = 14; i <= 24; ++i) {
-					String attribname = res->getString(i);
-					if (attribname != "") {
-						int min = res->getInt(i + 11 + (i - 14));
-						int max = res->getInt(i + 12 + (i - 14));
-
-						entry->addAttribute(new ResourceAttribute(attribname, min, max));
-					}
-				}
-
-				entry->setResourceContainerType(res->getString(47));
-				entry->setRandomNameClass(res->getString(48));
-				entry->setZoneRestriction(res->getInt(49));
-				entry->setJTL(res->getInt(50));
-				entry->setSurveyToolType(res->getInt(51));
-				String containerFile = res->getString(52);
-
-				uint32 hashCode = containerFile.hashCode();
-				entry->setContainerCRC(hashCode);
-
-				try {
-					if (hashCode != 0)
-						TemplateManager::instance()->getTemplateFile(hashCode);
-				} catch (Exception& e) {
-					System::out << e.getMessage() << " for file " << containerFile << endl;
-				}
-
-				/// Add entry to the tree
-				baseNode->add(entry);
-			}
-			/// Update the Stf Entries now that the tree is built
-			baseNode->updateEntries();
+			currentClasses.add(resourceclass);
 		}
-	} catch (DatabaseException& e) {
-		System::out << "Database error in buildTreeFromDatabase\n";
-		System::out << e.getMessage() << endl;
+		/*System::out << "********* " << type << " ***********" << endl;
+		 for(int j = 0; j < currentClasses.size(); ++j) {
+		 entry->addClass(currentClasses.get(j));
+		 System::out << currentClasses.get(j) << endl;
+		 }
+		 System::out << "************************************" << endl;*/
 
-		return false;
+		row->getValue(10, intvalue);
+		entry->setMaxtype(intvalue);
+
+		row->getValue(11, intvalue);
+		entry->setMintype(intvalue);
+
+		row->getValue(12, intvalue);
+		entry->setMinpool(intvalue);
+
+		row->getValue(13, intvalue);
+		entry->setMaxpool(intvalue);
+
+		row->getValue(14, boolValue);
+		entry->setRecycled(boolValue);
+
+		for (int j = 16; j <= 26; ++j) {
+			row->getCell(j)->getValue(stringvalue);
+			if (stringvalue == "")
+				break;
+
+			int min;
+			row->getCell(j + 11 + (j - 16))->getValue(min);
+
+			int max;
+			row->getCell(j + 12 + (j - 16))->getValue(max);
+
+			entry->addAttribute(new ResourceAttribute(stringvalue, min, max));
+		}
+
+		row->getCell(49)->getValue(stringvalue);
+		entry->setResourceContainerType(stringvalue);
+
+		row->getCell(50)->getValue(stringvalue);
+		entry->setRandomNameClass(stringvalue);
+
+		setZoneRestriction(entry);
+		setJtl(entry);
+		setSurveyToolType(entry);
+
+		/// Add entry to the tree
+		baseNode->add(entry);
 	}
+	/// Update the Stf Entries now that the tree is built
+	baseNode->updateEntries();
 
 	return true;
 }
 
-ResourceTreeEntry* ResourceTree::getEntry(const String& type, Vector<String> excludes, int zoneid) {
-	return baseNode->getEntry(type, excludes, zoneid);
+ResourceTreeEntry* ResourceTree::getEntry(const String& type, const Vector<String>& excludes, const String& zoneName) {
+	return baseNode->getEntry(type, excludes, zoneName);
+}
+
+void ResourceTree::setZoneRestriction(ResourceTreeEntry* entry) {
+	String name = entry->getType();
+
+	Vector<String>& activeZones = spawner->getActiveResourceZones();
+
+	for(int i = 0; i < activeZones.size(); ++i) {
+		String zonename = activeZones.get(i);
+
+		if(name.indexOf(zonename) != -1) {
+			entry->setZoneRestriction(zonename);
+			return;
+		}
+	}
+}
+
+void ResourceTree::setJtl(ResourceTreeEntry* entry) {
+	String name = entry->getType();
+
+	Vector<String>& jtlResources = spawner->getJtlResources();
+
+	for(int i = 0; i < jtlResources.size(); ++i) {
+		String jtlresource = jtlResources.get(i);
+
+		if(name == jtlresource) {
+			entry->setJTL(true);
+			return;
+		}
+	}
+}
+
+void ResourceTree::setSurveyToolType(ResourceTreeEntry* entry) {
+
+	if(entry->isType("energy")) {
+
+		String type = entry->getType();
+		if(type.indexOf("geothermal") != -1)
+			entry->setSurveyToolType(SurveyTool::GEOTHERMAL);
+		else if(type.indexOf("solar") != -1)
+			entry->setSurveyToolType(SurveyTool::SOLAR);
+		else if(type.indexOf("unlimited_wind") != -1)
+			entry->setSurveyToolType(SurveyTool::WIND);
+		else
+			entry->setSurveyToolType(SurveyTool::NOTYPE);
+
+	} else if(entry->isType("chemical"))
+		entry->setSurveyToolType(SurveyTool::CHEMICAL);
+
+	else if(entry->isType("flora_resource"))
+		entry->setSurveyToolType(SurveyTool::FLORA);
+
+	else if(entry->isType("gas"))
+		entry->setSurveyToolType(SurveyTool::GAS);
+
+	else if(entry->isType("mineral")) {
+
+		if(entry->isType("radioactive"))
+			entry->setSurveyToolType(SurveyTool::FUSION);
+		else
+			entry->setSurveyToolType(SurveyTool::MINERAL);
+	}
+
+	else if(entry->isType("water"))
+		entry->setSurveyToolType(SurveyTool::WATER);
+
+	else
+		entry->setSurveyToolType(SurveyTool::NOTYPE);
 }
 
 void ResourceTree::toString() {

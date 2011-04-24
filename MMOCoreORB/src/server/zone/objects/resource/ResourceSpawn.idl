@@ -74,7 +74,7 @@ class ResourceSpawn extends SceneObject {
 	protected VectorMap<string, int> spawnAttributes;
 
 	protected int spawnPool;
-	protected int zoneRestriction;
+	protected string zoneRestriction;
 	
 	protected int surveyToolType;
 	protected unsigned int containerCRC;
@@ -104,7 +104,7 @@ class ResourceSpawn extends SceneObject {
        	spawned = 0;
        	despawned = 0;
        	surveyToolType = 0;
-       	zoneRestriction = 0;
+       	zoneRestriction = "";
        	spawnPool = 0;
        	dbDestroyed = false;
        	energy = false;
@@ -153,8 +153,8 @@ class ResourceSpawn extends SceneObject {
     	}
     }
     
-    public void setZoneRestriction(int zone) {
-    	zoneRestriction = zone;
+    public void setZoneRestriction(final string zoneName) {
+    	zoneRestriction = zoneName;
     }
 
     /**
@@ -247,7 +247,7 @@ class ResourceSpawn extends SceneObject {
     	return energy;
     }
     
-    public int getZoneRestriction() {
+    public string getZoneRestriction() {
     	return zoneRestriction;
     }
     
@@ -259,18 +259,18 @@ class ResourceSpawn extends SceneObject {
     	return spawnMaps.size();
     }
     
-    public native void extractResource(int zoneid, int units);
+    public native void extractResource(final string zoneName, int units);
     
     public native ResourceContainer createResource(int units);
 
     @local
-    public native int getSpawnMapZone(int i);
+    public native string getSpawnMapZone(int i);
     
     @local 	
 	public native boolean isUnknownType();
     
     @local
-    public native void createSpawnMaps(boolean jtl, int minpool, int maxpool, int zonerestriction, @dereferenced Vector<unsigned int> activeZones);
+    public native void createSpawnMaps(boolean jtl, int minpool, int maxpool, final string zonerestriction, @dereferenced Vector<string> activeZones);
     
     @local 	
 	private native int getConcentration(boolean jtl);
@@ -279,10 +279,10 @@ class ResourceSpawn extends SceneObject {
 	
 	@local 	
 	@dereferenced
-	private native Vector<unsigned int> getSpawnZones(int minpool, int maxpool, int zonerestriction, @dereferenced Vector<unsigned int> activeZones);
+	private native Vector<string> getSpawnZones(int minpool, int maxpool, final string zonerestriction, @dereferenced Vector<string> activeZones);
     
     @local
-    public native float getDensityAt(int zoneid, float x, float y);
+    public native float getDensityAt(final string zoneName, float x, float y);
     
     @local
     public native boolean inShift();

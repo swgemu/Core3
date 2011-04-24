@@ -12,7 +12,7 @@
 
 class SharedStructureObjectTemplate : public SharedTangibleObjectTemplate {
 protected:
-	SortedVector<unsigned int> allowedZones;
+	SortedVector<String> allowedZones;
 
 	String constructionMarkerTemplate;
 	String abilityRequired;
@@ -22,8 +22,6 @@ protected:
 
 	uint8 lotSize;
 	uint8 cityRankRequired;
-	uint8 length;
-	uint8 width;
 
 public:
 	SharedStructureObjectTemplate() {
@@ -40,8 +38,16 @@ public:
 		return lotSize;
 	}
 
-	inline bool isAllowedZone(unsigned int zoneID) {
-		return (allowedZones.find(zoneID) != -1);
+	inline bool isAllowedZone(const String& zoneName) {
+		return allowedZones.contains(zoneName);
+	}
+
+	inline int getTotalAllowedZones() {
+		return allowedZones.size();
+	}
+
+	inline String getAllowedZone(int i) const {
+		return allowedZones.get(i);
 	}
 
 	inline int getBaseMaintenanceRate() {
@@ -56,14 +62,6 @@ public:
 		return abilityRequired;
 	}
 
-	inline uint8 getLength() {
-		return length;
-	}
-
-	inline uint8 getWidth() {
-		return width;
-	}
-
 	inline uint8 getCityRankRequired() {
 		return cityRankRequired;
 	}
@@ -74,6 +72,15 @@ public:
 
 	inline virtual bool isPublicStructure() {
 		return false;
+	}
+
+	//TODO: Deprecate. Use SFP
+	inline int getWidth() {
+		return 0;
+	}
+
+	inline int getLength() {
+		return 0;
 	}
 };
 

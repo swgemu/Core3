@@ -48,9 +48,10 @@ SharedBuildingObjectTemplate = SharedTangibleObjectTemplate:new {
 	
 	lotSize = 0,
 	baseMaintenanceRate = 0,
+	
 	--What zones can this building be built by a player on.
-	--Default is corellia, lok, naboo, rori, talus, tatooine
-	allowedZones = {0, 4, 5, 6, 7, 8},
+	--Default is corellia, dantooine, lok, naboo, rori, talus, tatooine
+	allowedZones = {"corellia", "dantooine", "lok", "naboo", "rori", "talus", "tatooine"},
 	
 	--The minimum rank of a player city required for this structure to be placed.
 	cityRankRequired = 0,

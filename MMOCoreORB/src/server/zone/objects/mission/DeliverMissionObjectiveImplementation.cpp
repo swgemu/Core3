@@ -7,7 +7,7 @@
 
 #include "DeliverMissionObjective.h"
 #include "server/zone/objects/area/MissionSpawnActiveArea.h"
-#include "server/zone/objects/terrain/PlanetNames.h"
+
 #include "server/zone/objects/waypoint/WaypointObject.h"
 #include "server/zone/objects/creature/AiAgent.h"
 #include "server/zone/objects/region/Region.h"

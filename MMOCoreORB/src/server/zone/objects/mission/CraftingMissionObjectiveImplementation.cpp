@@ -6,7 +6,7 @@
  */
 
 #include "CraftingMissionObjective.h"
-#include "server/zone/objects/terrain/PlanetNames.h"
+
 #include "server/zone/objects/waypoint/WaypointObject.h"
 #include "server/zone/objects/tangible/lair/LairObject.h"
 #include "server/zone/Zone.h"

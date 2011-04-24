@@ -85,8 +85,8 @@ object_weapon_melee_polearm_polearm_vibro_axe = object_weapon_melee_polearm_shar
 	mindAttackCost = 29,
 	forceCost = 0,
 
-	pointBlankAccuracy = 0,
-	pointBlankRange = -45,
+	pointBlankAccuracy = -45,
+	pointBlankRange = 0,
 
 	idealRange = -45,
 	idealAccuracy = 3,

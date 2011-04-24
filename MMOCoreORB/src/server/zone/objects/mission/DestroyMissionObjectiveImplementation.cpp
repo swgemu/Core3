@@ -7,7 +7,7 @@
 
 #include "DestroyMissionObjective.h"
 #include "server/zone/objects/area/MissionSpawnActiveArea.h"
-#include "server/zone/objects/terrain/PlanetNames.h"
+
 #include "server/zone/objects/waypoint/WaypointObject.h"
 #include "server/zone/objects/tangible/lair/LairObject.h"
 #include "server/zone/Zone.h"
@@ -34,6 +34,7 @@ void DestroyMissionObjectiveImplementation::destroyObjectFromDatabase() {
 }
 
 void DestroyMissionObjectiveImplementation::activate() {
+	/*
 	if ((observers.size() != 0 && lairObject != NULL) || mission == NULL) {
 		return;
 	}
@@ -69,6 +70,7 @@ void DestroyMissionObjectiveImplementation::activate() {
 	waypoint->setActive(true);
 
 	mission->updateMissionLocation();
+	*/
 }
 
 void DestroyMissionObjectiveImplementation::spawnLair() {

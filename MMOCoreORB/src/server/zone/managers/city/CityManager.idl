@@ -72,6 +72,8 @@ class CityManager extends ManagedService implements Logger {
 	@dereferenced
 	private transient Vector<byte> citiesAllowedPerRank;
 	
+	private transient boolean configLoaded;
+	
 	//City Ranks
 	public static final byte NEWCITY = 0;
 	public static final byte OUTPOST = 1;
@@ -89,6 +91,8 @@ class CityManager extends ManagedService implements Logger {
 		
 		cities.setNullValue(null);
 		cities.setInsertPlan(3); //ALLOW_OVERWRITE
+		
+		configLoaded = false;
 	}
 	
 	/**

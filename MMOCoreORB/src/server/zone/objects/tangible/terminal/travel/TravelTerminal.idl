@@ -50,11 +50,8 @@ import engine.lua.LuaObject;
 import server.zone.objects.player.PlayerCreature;
 import server.zone.Zone;
 import server.zone.objects.tangible.ticket.TicketObject;
-import server.zone.objects.creature.shuttle.ShuttleCreature;
 
-class TravelTerminal extends Terminal {
-	protected ShuttleCreature shuttle;
-	
+class TravelTerminal extends Terminal {	
 	public TravelTerminal() {		
 		Logger.setLoggingName("TravelTerminal");
 	}
@@ -73,8 +70,4 @@ class TravelTerminal extends Terminal {
 	 * @returns 0 if successfull
 	 */
 	public native int handleObjectMenuSelect(PlayerCreature player, byte selectedID);
-	
-	public void setShuttle(ShuttleCreature shut) {
-		shuttle = shut;
-	}
 }

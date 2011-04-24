@@ -45,7 +45,7 @@ object_building_player_city_garden_naboo_lrg_05 = object_building_player_city_sh
 
 	lotSize = 0,
 	baseMaintenanceRate = 0,
-	allowedZones = {1,5,6},
+	allowedZones = {"dantooine", "naboo", "rori"},
 	length = 7,
 	width = 7,
 	cityRankRequired = 3,

@@ -11,13 +11,13 @@
 
 #include "../MessageCallback.h"
 #include "server/zone/objects/scene/SceneObject.h"
-#include "server/zone/objects/terrain/PlanetNames.h"
+
 #include "server/zone/managers/planet/PlanetManager.h"
 #include "server/zone/Zone.h"
 #include "GetMapLocationsResponseMessage.h"
 
 class GetMapLocationsCallback : public MessageCallback {
-	String planet;
+	String zoneName;
 
 public:
 	GetMapLocationsCallback(ZoneClientSession* client, ZoneProcessServer* server) :
@@ -26,7 +26,7 @@ public:
 	}
 
 	void parse(Message* message) {
-		message->parseAscii(planet);
+		message->parseAscii(zoneName);
 	}
 
 	void run() {
@@ -37,16 +37,10 @@ public:
 
 		Locker _locker(object);
 
-		int id = Planet::getPlanetID(planet);
+		Zone* zone = server->getZoneServer()->getZone(zoneName);
 
-		if (id == -1)
-			return;
-
-		Zone* zone = server->getZoneServer()->getZone(id);
-
-		if (zone != NULL) {
-			zone->sendMapLocationsTo(planet, object);
-		}
+		if (zone != NULL)
+			zone->sendMapLocationsTo(object);
 	}
 };
 

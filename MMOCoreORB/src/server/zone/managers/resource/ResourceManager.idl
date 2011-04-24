@@ -106,12 +106,12 @@ class ResourceManager extends Observer implements Lua {
 	public native void removePowerFromPlayer(PlayerCreature player, unsigned int power);
 	
 	@local
-	public native void getResourceListByType(@dereferenced Vector<ResourceSpawn> list, int type, int zoneid);
+	public native void getResourceListByType(@dereferenced Vector<ResourceSpawn> list, int type, final string zoneName);
 	
 	public native void createResourceSpawn(PlayerCreature playerCreature, final string restype);
 	public native void givePlayerResource(PlayerCreature playerCreature, final string restype, final int quantity);
 
-	public native ResourceSpawn getCurrentSpawn(final string restype, int zoneid);
+	public native ResourceSpawn getCurrentSpawn(final string restype, final string zoneName);
 	public native ResourceSpawn getResourceSpawn(final string spawnName);
 	
 	private native boolean loadConfigFile();

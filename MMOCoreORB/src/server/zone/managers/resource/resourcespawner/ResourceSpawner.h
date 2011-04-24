@@ -85,7 +85,8 @@ private:
 
 	ResourceMap* resourceMap;
 
-	Vector<uint32> activeResourceZones;
+	Vector<String> jtlResources;
+	Vector<String> activeResourceZones;
 
 	MinimumPool* minimumPool;
 	FixedPool* fixedPool;
@@ -108,16 +109,17 @@ public:
 	void initializeRandomPool(const String& includes, const String& excludes, const int size);
 	void initializeNativePool(const String& includes, const String& excludes);
 
-	void addPlanet(const int planetid);
+	void addPlanet(const String& planetName);
+	void addJtlResource(const String& resourceName);
 	void setSpawningParameters(const int dur, const float throt,
 			const int override, const int spawnquantity);
 
 	void start();
 	void shiftResources();
 
-	ResourceSpawn* createResourceSpawn(const String& type, int zonerestriction = -1);
-	ResourceSpawn* createResourceSpawn(const String& type, const Vector<String> excludes, int zonerestriction = -1);
-	ResourceSpawn* createResourceSpawn(const Vector<String> includes, const Vector<String> excludes = 0, int zonerestriction = -1);
+	ResourceSpawn* createResourceSpawn(const String& type, const String& zonerestriction = "");
+	ResourceSpawn* createResourceSpawn(const String& type, const Vector<String>& excludes, const String& zonerestriction = "");
+	ResourceSpawn* createResourceSpawn(const Vector<String>& includes, const Vector<String>& excludes = 0, const String& zonerestriction = "");
 
 	ResourceSpawn* manualCreateResourceSpawn(const String& type);
 
@@ -131,7 +133,7 @@ public:
 	void harvestResource(PlayerCreature* player, ResourceSpawn* resourceSpawn, int quantity);
 	void addResourceToPlayerInventory(PlayerCreature* player, ResourceSpawn* resourceSpawn, int unitsExtracted);
 
-	ResourceSpawn* getCurrentSpawn(const String& restype, const int zoneid);
+	ResourceSpawn* getCurrentSpawn(const String& restype, const String& zoneName);
 
 	ResourceSpawn* getFromRandomPool(const String& type);
 
@@ -148,8 +150,11 @@ private:
 	int randomizeValue(int min, int max);
 	long getRandomExpirationTime(ResourceTreeEntry* resourceEntry);
 	long getRandomUnixTimestamp(int min, int max);
-	Vector<uint32> getActiveResourceZones();
 
+	Vector<String>& getJtlResources();
+	Vector<String>& getActiveResourceZones();
+
+	friend class ResourceTree;
 	friend class ResourceManager;
 	friend class NativePool;
 };

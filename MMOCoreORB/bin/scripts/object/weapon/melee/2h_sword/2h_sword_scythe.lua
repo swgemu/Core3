@@ -85,8 +85,8 @@ object_weapon_melee_2h_sword_2h_sword_scythe = object_weapon_melee_2h_sword_shar
 	mindAttackCost = 43,
 	forceCost = 0,
 	
-	pointBlankAccuracy = 0,
-	pointBlankRange = -8,
+	pointBlankAccuracy = -8,
+	pointBlankRange = 0,
 	
 	idealRange = 16,
 	idealAccuracy = 6,

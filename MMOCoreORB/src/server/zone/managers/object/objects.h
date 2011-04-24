@@ -13,7 +13,6 @@
 #include "server/zone/objects/creature/vendor/VendorCreature.h"
 #include "server/zone/objects/creature/Creature.h"
 #include "server/zone/objects/creature/VehicleObject.h"
-#include "server/zone/objects/creature/shuttle/ShuttleCreature.h"
 #include "server/zone/objects/intangible/IntangibleObject.h"
 #include "server/zone/objects/intangible/VehicleControlDevice.h"
 #include "server/zone/objects/tangible/Container.h"

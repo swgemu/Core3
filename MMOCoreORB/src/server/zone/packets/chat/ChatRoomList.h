@@ -85,11 +85,12 @@ public:
 		insertAscii(channel->getFullPath());
 		
 		insertAscii("SWG");
-		insertAscii(channel->getServerName());
+		insertAscii(channel->getGalaxyName());
 		insertAscii(channel->getOwner());	
 		
+		//This struct is a ChatAvatarId
 		insertAscii("SWG");
-		insertAscii(channel->getServerName());
+		insertAscii(channel->getGalaxyName());
 		insertAscii(channel->getCreator());
 		
 		insertUnicode(channel->getTitle());
@@ -110,7 +111,7 @@ public:
 		
 		for (int i = 0; i < size; i++) {
 			insertAscii("SWG");
-			insertAscii(room->getServerName());
+			insertAscii(room->getGalaxyName());
 			insertAscii(room->playerList.get(i)->getFirstName());
 		}*/
 		

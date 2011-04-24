@@ -95,7 +95,7 @@ public:
 
 	static const int FUSION = 9;
 
-	static const int CREATURE = -1;
+	static const int NOTYPE = -1;
 
 	SurveyTool();
 
@@ -220,7 +220,7 @@ public:
 
 	static const int FUSION = 9;
 
-	static const int CREATURE = -1;
+	static const int NOTYPE = -1;
 
 	SurveyToolImplementation();
 

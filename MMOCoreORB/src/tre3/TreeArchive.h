@@ -72,20 +72,12 @@ public:
 		return record->getBytes();
 	}
 
-	/**
-	 * Prints a list of all the files at this path based on the filter passed.
-	 * @param path The path at which to search.
-	 * @param filter The filter, which accepts wildcards in the form of *. Default is *.
-	 */
-	void printNodesByPath(const String& path, const String& filter) {
-		TreeDirectory* records = &nodeMap.get(path);
 
-		for (int i = 0; i < records->size(); ++i) {
-			Reference<TreeFileRecord*> record = records->elementAt(i);
+	TreeDirectory* getDirectory(const String& path) {
+		if (!nodeMap.contains(path))
+			return NULL;
 
-			String recordName = record->getRecordName();
-			info(recordName); //TODO: Filter matching.
-		}
+		return &nodeMap.get(path);
 	}
 };
 

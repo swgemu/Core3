@@ -62,7 +62,7 @@ public:
 
 		setCompression(true);
 
-		String serverName = ghost->getZoneServer()->getServerName();
+		String serverName = ghost->getZoneServer()->getGalaxyName();
 
 		DeltaVector<String>* friendList = ghost->getFriendList();
 		insertInt(friendList->size());

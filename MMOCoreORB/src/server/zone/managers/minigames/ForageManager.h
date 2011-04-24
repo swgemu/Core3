@@ -70,11 +70,11 @@ public:
 
 	void startForaging(PlayerCreature* player, bool scoutForage);
 
-	void finishForaging(PlayerCreature* player, bool scoutForage, float forageX, float forageY, int planet);
+	void finishForaging(PlayerCreature* player, bool scoutForage, float forageX, float forageY, const String& planet);
 
-	void forageGiveItems(PlayerCreature* player, bool scoutForage, float forageX, float forageY, int planet);
+	void forageGiveItems(PlayerCreature* player, bool scoutForage, float forageX, float forageY, const String& planet);
 
-	void forageGiveResource(PlayerCreature* player, float forageX, float forageY, int planet);
+	void forageGiveResource(PlayerCreature* player, float forageX, float forageY, const String& planet);
 
 	DistributedObjectServant* _getImplementation();
 
@@ -115,11 +115,11 @@ public:
 
 	void startForaging(PlayerCreature* player, bool scoutForage);
 
-	void finishForaging(PlayerCreature* player, bool scoutForage, float forageX, float forageY, int planet);
+	void finishForaging(PlayerCreature* player, bool scoutForage, float forageX, float forageY, const String& planet);
 
-	void forageGiveItems(PlayerCreature* player, bool scoutForage, float forageX, float forageY, int planet);
+	void forageGiveItems(PlayerCreature* player, bool scoutForage, float forageX, float forageY, const String& planet);
 
-	void forageGiveResource(PlayerCreature* player, float forageX, float forageY, int planet);
+	void forageGiveResource(PlayerCreature* player, float forageX, float forageY, const String& planet);
 
 	ForageManager* _this;
 
@@ -168,14 +168,17 @@ public:
 
 	void startForaging(PlayerCreature* player, bool scoutForage);
 
-	void finishForaging(PlayerCreature* player, bool scoutForage, float forageX, float forageY, int planet);
+	void finishForaging(PlayerCreature* player, bool scoutForage, float forageX, float forageY, const String& planet);
 
-	void forageGiveItems(PlayerCreature* player, bool scoutForage, float forageX, float forageY, int planet);
+	void forageGiveItems(PlayerCreature* player, bool scoutForage, float forageX, float forageY, const String& planet);
 
-	void forageGiveResource(PlayerCreature* player, float forageX, float forageY, int planet);
+	void forageGiveResource(PlayerCreature* player, float forageX, float forageY, const String& planet);
 
 protected:
 	String _param0_deleteForageAreaCollection__String_;
+	String _param4_finishForaging__PlayerCreature_bool_float_float_String_;
+	String _param4_forageGiveItems__PlayerCreature_bool_float_float_String_;
+	String _param3_forageGiveResource__PlayerCreature_float_float_String_;
 };
 
 class ForageManagerHelper : public DistributedObjectClassHelper, public Singleton<ForageManagerHelper> {

@@ -29,7 +29,7 @@
 
 #include "room/ChatRoom.h"
 #include "room/ChatRoomMap.h"
-#include "server/zone/objects/terrain/PlanetNames.h"
+
 
 
 ChatManagerImplementation::ChatManagerImplementation(ZoneServer* serv, int initsize) : ManagedServiceImplementation() {
@@ -84,7 +84,7 @@ void ChatManagerImplementation::initiateRooms() {
 	mainRoom->setPrivate();
 	gameRooms.put("SWG", mainRoom);
 
-	ChatRoom* core3Room = createRoom(server->getServerName(), mainRoom);
+	ChatRoom* core3Room = createRoom(server->getGalaxyName(), mainRoom);
 	core3Room->setPrivate();
 	mainRoom->addSubRoom(core3Room);
 
@@ -106,7 +106,7 @@ void ChatManagerImplementation::initiateRooms() {
 		if (zone == NULL)
 			continue;
 
-		ChatRoom* planetRoom = createRoom(Planet::getPlanetName(i), core3Room);
+		ChatRoom* planetRoom = createRoom(zone->getZoneName(), core3Room);
 		core3Room->addSubRoom(planetRoom);
 
 		ChatRoom* planetaryChat = createRoom("chat", planetRoom);
@@ -565,7 +565,7 @@ ChatRoom* ChatManagerImplementation::createGroupRoom(uint64 groupID, PlayerCreat
 void ChatManagerImplementation::destroyRoom(ChatRoom* room) {
 	Locker _locker(_this);
 
-	ChatOnDestroyRoom* msg = new ChatOnDestroyRoom("SWG", server->getServerName(), room->getRoomID());
+	ChatOnDestroyRoom* msg = new ChatOnDestroyRoom("SWG", server->getGalaxyName(), room->getRoomID());
 	room->broadcastMessage(msg);
 	room->removeAllPlayers();
 

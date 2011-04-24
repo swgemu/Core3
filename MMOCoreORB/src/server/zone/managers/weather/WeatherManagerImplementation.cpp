@@ -16,14 +16,14 @@
 #include "server/zone/objects/player/PlayerCreature.h"
 #include "server/zone/objects/creature/CreatureAttribute.h"
 #include "server/zone/objects/creature/CreaturePosture.h"
-#include "server/zone/objects/terrain/PlanetNames.h"
+
 #include "server/zone/packets/scene/ServerWeatherMessage.h"
 
 
 void WeatherManagerImplementation::initialize() {
 	//Customize the Manager's name.
 	String managerName = "WeatherManager ";
-	setLoggingName(managerName + Planet::getPlanetName(zone->getZoneID()));
+	setLoggingName(managerName + zone->getZoneName());
 	setGlobalLogging(true);
 	setLogging(true);
 
@@ -68,44 +68,7 @@ bool WeatherManagerImplementation::loadLuaConfig() {
 	if (!lua->runFile("scripts/managers/weather_manager.lua"))
 		return false;
 
-	String planetWeather;
-
-	switch (zone->getZoneID()) {
-	case 0:
-		planetWeather = "corellia_weather";
-		break;
-	case 1:
-		planetWeather = "dantooine_weather";
-		break;
-	case 2:
-		planetWeather = "dathomir_weather";
-		break;
-	case 3:
-		planetWeather = "endor_weather";
-		break;
-	case 4:
-		planetWeather = "lok_weather";
-		break;
-	case 5:
-		planetWeather = "naboo_weather";
-		break;
-	case 6:
-		planetWeather = "rori_weather";
-		break;
-	case 7:
-		planetWeather = "talus_weather";
-		break;
-	case 8:
-		planetWeather = "tatooine_weather";
-		break;
-	case 9:
-		planetWeather = "yavin4_weather";
-		break;
-	default:
-		return false;
-	}
-
-	LuaObject luaObject = lua->getGlobalObject(planetWeather);
+	LuaObject luaObject = lua->getGlobalObject(zone->getZoneName() + "_weather");
 
 	if (!luaObject.isValidTable())
 		return false;
@@ -156,9 +119,10 @@ bool WeatherManagerImplementation::loadLuaConfig() {
 		return false;
 
 	//Optional sandstorm feature for Tatooine & Lok.
-	int planet = zone->getZoneID();
+	//TODO: Should make this a list of planets, so that new planets can easily be added from lua.
+	String zoneName = zone->getZoneName();
 
-	if (planet == 4 || planet == 8) {
+	if (zoneName == "tatooine" || zoneName == "lok") {
 		sandstormEffectsEnabled = luaObject.getByteField("sandstormEffectsEnabled");
 
 		sandstormWounds = luaObject.getIntField("sandstormWounds");
@@ -332,7 +296,7 @@ void WeatherManagerImplementation::broadcastWeather(bool notifyPlayer, bool doSa
 
 		if (player->isOnline() && !player->isTeleporting()) {
 			//Check if player is on this planet.
-			if (player->getZone()->getZoneID() != zone->getZoneID())
+			if (player->getZone()->getZoneName() != zone->getZoneName())
 				continue;
 
 			//Send the weather packet.
@@ -361,9 +325,6 @@ void WeatherManagerImplementation::sendWeatherPacket(PlayerCreature* player) {
 		return;
 
 	Locker playerLocker(player);
-
-	if (player->getZone()->getZoneID() > 9)
-		return;
 
 	ServerWeatherMessage* weatherMessage = new ServerWeatherMessage(_this);
 	player->sendMessage(weatherMessage);
@@ -638,7 +599,7 @@ void WeatherManagerImplementation::weatherInfo(PlayerCreature* player) {
 
 	Locker playerLocker(player);
 
-	String planetName = Planet::getPlanetName(zone->getZoneID());
+	String planetName = zone->getZoneName();
 
 	Time executionTime;
 	StringBuffer output;

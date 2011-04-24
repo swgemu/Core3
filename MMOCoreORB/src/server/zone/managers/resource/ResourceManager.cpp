@@ -22,7 +22,7 @@
  *	ResourceManagerStub
  */
 
-enum {RPC_STOP__ = 6,RPC_INITIALIZE__,RPC_SHIFTRESOURCES__,RPC_NOTIFYOBSERVEREVENT__INT_OBSERVABLE_MANAGEDOBJECT_LONG_,RPC_SENDRESOURCELISTFORSURVEY__PLAYERCREATURE_INT_STRING_,RPC_SENDSURVEY__PLAYERCREATURE_STRING_,RPC_SENDSAMPLE__PLAYERCREATURE_STRING_STRING_,RPC_HARVESTRESOURCE__PLAYERCREATURE_STRING_INT_,RPC_HARVESTRESOURCETOPLAYER__PLAYERCREATURE_RESOURCESPAWN_INT_,RPC_GETAVAILABLEPOWERFROMPLAYER__PLAYERCREATURE_,RPC_REMOVEPOWERFROMPLAYER__PLAYERCREATURE_INT_,RPC_CREATERESOURCESPAWN__PLAYERCREATURE_STRING_,RPC_GIVEPLAYERRESOURCE__PLAYERCREATURE_STRING_INT_,RPC_GETCURRENTSPAWN__STRING_INT_,RPC_GETRESOURCESPAWN__STRING_,RPC_ADDCHILDRENTODEEDLISTBOX__STRING_RESOURCEDEEDLISTBOX_BOOL_};
+enum {RPC_STOP__ = 6,RPC_INITIALIZE__,RPC_SHIFTRESOURCES__,RPC_NOTIFYOBSERVEREVENT__INT_OBSERVABLE_MANAGEDOBJECT_LONG_,RPC_SENDRESOURCELISTFORSURVEY__PLAYERCREATURE_INT_STRING_,RPC_SENDSURVEY__PLAYERCREATURE_STRING_,RPC_SENDSAMPLE__PLAYERCREATURE_STRING_STRING_,RPC_HARVESTRESOURCE__PLAYERCREATURE_STRING_INT_,RPC_HARVESTRESOURCETOPLAYER__PLAYERCREATURE_RESOURCESPAWN_INT_,RPC_GETAVAILABLEPOWERFROMPLAYER__PLAYERCREATURE_,RPC_REMOVEPOWERFROMPLAYER__PLAYERCREATURE_INT_,RPC_CREATERESOURCESPAWN__PLAYERCREATURE_STRING_,RPC_GIVEPLAYERRESOURCE__PLAYERCREATURE_STRING_INT_,RPC_GETCURRENTSPAWN__STRING_STRING_,RPC_GETRESOURCESPAWN__STRING_,RPC_ADDCHILDRENTODEEDLISTBOX__STRING_RESOURCEDEEDLISTBOX_BOOL_};
 
 ResourceManager::ResourceManager(ZoneServer* server, ZoneProcessServer* impl, ObjectManager* objectMan) : Observer(DummyConstructorParameter::instance()) {
 	ResourceManagerImplementation* _implementation = new ResourceManagerImplementation(server, impl, objectMan);
@@ -201,13 +201,13 @@ void ResourceManager::removePowerFromPlayer(PlayerCreature* player, unsigned int
 		_implementation->removePowerFromPlayer(player, power);
 }
 
-void ResourceManager::getResourceListByType(Vector<ManagedReference<ResourceSpawn* > >& list, int type, int zoneid) {
+void ResourceManager::getResourceListByType(Vector<ManagedReference<ResourceSpawn* > >& list, int type, const String& zoneName) {
 	ResourceManagerImplementation* _implementation = (ResourceManagerImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		_implementation->getResourceListByType(list, type, zoneid);
+		_implementation->getResourceListByType(list, type, zoneName);
 }
 
 void ResourceManager::createResourceSpawn(PlayerCreature* playerCreature, const String& restype) {
@@ -241,19 +241,19 @@ void ResourceManager::givePlayerResource(PlayerCreature* playerCreature, const S
 		_implementation->givePlayerResource(playerCreature, restype, quantity);
 }
 
-ResourceSpawn* ResourceManager::getCurrentSpawn(const String& restype, int zoneid) {
+ResourceSpawn* ResourceManager::getCurrentSpawn(const String& restype, const String& zoneName) {
 	ResourceManagerImplementation* _implementation = (ResourceManagerImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_GETCURRENTSPAWN__STRING_INT_);
+		DistributedMethod method(this, RPC_GETCURRENTSPAWN__STRING_STRING_);
 		method.addAsciiParameter(restype);
-		method.addSignedIntParameter(zoneid);
+		method.addAsciiParameter(zoneName);
 
 		return (ResourceSpawn*) method.executeWithObjectReturn();
 	} else
-		return _implementation->getCurrentSpawn(restype, zoneid);
+		return _implementation->getCurrentSpawn(restype, zoneName);
 }
 
 ResourceSpawn* ResourceManager::getResourceSpawn(const String& spawnName) {
@@ -488,8 +488,8 @@ Packet* ResourceManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* i
 	case RPC_GIVEPLAYERRESOURCE__PLAYERCREATURE_STRING_INT_:
 		givePlayerResource((PlayerCreature*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_givePlayerResource__PlayerCreature_String_int_), inv->getSignedIntParameter());
 		break;
-	case RPC_GETCURRENTSPAWN__STRING_INT_:
-		resp->insertLong(getCurrentSpawn(inv->getAsciiParameter(_param0_getCurrentSpawn__String_int_), inv->getSignedIntParameter())->_getObjectID());
+	case RPC_GETCURRENTSPAWN__STRING_STRING_:
+		resp->insertLong(getCurrentSpawn(inv->getAsciiParameter(_param0_getCurrentSpawn__String_String_), inv->getAsciiParameter(_param1_getCurrentSpawn__String_String_))->_getObjectID());
 		break;
 	case RPC_GETRESOURCESPAWN__STRING_:
 		resp->insertLong(getResourceSpawn(inv->getAsciiParameter(_param0_getResourceSpawn__String_))->_getObjectID());
@@ -556,8 +556,8 @@ void ResourceManagerAdapter::givePlayerResource(PlayerCreature* playerCreature, 
 	((ResourceManagerImplementation*) impl)->givePlayerResource(playerCreature, restype, quantity);
 }
 
-ResourceSpawn* ResourceManagerAdapter::getCurrentSpawn(const String& restype, int zoneid) {
-	return ((ResourceManagerImplementation*) impl)->getCurrentSpawn(restype, zoneid);
+ResourceSpawn* ResourceManagerAdapter::getCurrentSpawn(const String& restype, const String& zoneName) {
+	return ((ResourceManagerImplementation*) impl)->getCurrentSpawn(restype, zoneName);
 }
 
 ResourceSpawn* ResourceManagerAdapter::getResourceSpawn(const String& spawnName) {

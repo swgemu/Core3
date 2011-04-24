@@ -59,7 +59,7 @@ public:
 		insertInt(0x60B5098B);  // Opcode
 		
 		insertAscii("SWG");
-		insertAscii(room->getServerName());
+		insertAscii(room->getGalaxyName());
 		
 		insertAscii(player->getFirstName());
 		

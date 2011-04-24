@@ -27,6 +27,7 @@ class PortalLayout;
 class AppearanceTemplate;
 class TreeDirectory;
 
+
 class TemplateManager : public Singleton<TemplateManager>, public Logger {
 	TemplateCRCMap* templateCRCMap;
 
@@ -63,7 +64,7 @@ public:
 	IffStream* openIffFile(const String& fileName);
 
 	TreeDirectory* getTreeDirectory(const String& path) {
-		return treeDirectory->getTreeDirectory(path);
+		return treeDirectory->getDirectory(path);
 	}
 
 	FloorMesh* getFloorMesh(const String& fileName);

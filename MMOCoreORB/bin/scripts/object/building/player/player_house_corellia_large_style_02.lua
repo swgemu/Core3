@@ -44,7 +44,7 @@
 object_building_player_player_house_corellia_large_style_02 = object_building_player_shared_player_house_corellia_large_style_02:new {
 	lotSize = 5,
 	baseMaintenanceRate = 50,
-	allowedZones = {0,7},
+	allowedZones = {"corellia", "talus"},
 	publicStructure = 0,
 	childObjects = {
 			{templateFile = "object/tangible/terminal/terminal_player_structure.iff", x = -6.22, z = 4.585, y = -3.85, ox = 0, oy = 1, oz = 0, ow = 0, cellid = 1, containmentType = -1},

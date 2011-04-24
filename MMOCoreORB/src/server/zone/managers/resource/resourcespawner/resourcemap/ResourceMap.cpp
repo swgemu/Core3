@@ -64,9 +64,9 @@ ResourceMap::~ResourceMap() {
 	removeAll();
 }
 
-float ResourceMap::getDensityAt(const String& resourcename, int zoneid, float x, float y) {
+float ResourceMap::getDensityAt(const String& resourcename, String zoneName, float x, float y) {
 	ManagedReference<ResourceSpawn* > resourceSpawn = get(resourcename);
-	return resourceSpawn->getDensityAt(zoneid, x, y);
+	return resourceSpawn->getDensityAt(zoneName, x, y);
 }
 
 void ResourceMap::add(const String& resname, ManagedReference<ResourceSpawn* > resourceSpawn) {
@@ -81,14 +81,14 @@ void ResourceMap::add(const String& resname, ManagedReference<ResourceSpawn* > r
 	typemap->add(resourceSpawn);
 
 	for(int i = 0; i < resourceSpawn->getSpawnMapSize(); ++i) {
-		uint32 zone = (uint32)resourceSpawn->getSpawnMapZone(i);
+		String zoneName = resourceSpawn->getSpawnMapZone(i);
 
-		if (zone != -1) {
-			ZoneResourceMap* map = dynamic_cast<ZoneResourceMap*>(zoneResourceMap.get(zone));
+		if (zoneName != "") {
+			ZoneResourceMap* map = dynamic_cast<ZoneResourceMap*>(zoneResourceMap.get(zoneName));
 
 			if(map == NULL) {
 				map = new ZoneResourceMap();
-				zoneResourceMap.put(zone, map);
+				zoneResourceMap.put(zoneName, map);
 			}
 
 			map->put(resourceSpawn->getName(), resourceSpawn);
@@ -103,10 +103,10 @@ void ResourceMap::add(const String& resname, ManagedReference<ResourceSpawn* > r
 void ResourceMap::remove(ManagedReference<ResourceSpawn* > resourceSpawn) {
 
 	for(int i = 0; i < resourceSpawn->getSpawnMapSize(); ++i) {
-		uint32 zone = (uint32)resourceSpawn->getSpawnMapZone(i);
+		String zoneName = resourceSpawn->getSpawnMapZone(i);
 
-		if (zone != -1) {
-			ZoneResourceMap* map = dynamic_cast<ZoneResourceMap*>(zoneResourceMap.get(zone));
+		if (zoneName != "") {
+			ZoneResourceMap* map = dynamic_cast<ZoneResourceMap*>(zoneResourceMap.get(zoneName));
 
 			if (map != NULL)
 				map->drop(resourceSpawn->getName());
@@ -114,8 +114,8 @@ void ResourceMap::remove(ManagedReference<ResourceSpawn* > resourceSpawn) {
 	}
 }
 
-void ResourceMap::remove(ManagedReference<ResourceSpawn* > resourceSpawn, uint32 zoneid) {
-	ZoneResourceMap* map = dynamic_cast<ZoneResourceMap*>(zoneResourceMap.get(zoneid));
+void ResourceMap::remove(ManagedReference<ResourceSpawn* > resourceSpawn, String zoneName) {
+	ZoneResourceMap* map = dynamic_cast<ZoneResourceMap*>(zoneResourceMap.get(zoneName));
 
 	if (map != NULL)
 		map->drop(resourceSpawn->getName());

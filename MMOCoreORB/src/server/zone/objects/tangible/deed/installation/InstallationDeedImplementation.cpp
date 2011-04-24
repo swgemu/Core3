@@ -10,7 +10,7 @@
 #include "server/zone/templates/tangible/SharedInstallationObjectTemplate.h"
 #include "server/zone/managers/templates/TemplateManager.h"
 #include "server/zone/packets/scene/AttributeListMessage.h"
-#include "server/zone/objects/terrain/PlanetNames.h"
+
 #include "server/zone/objects/player/PlayerCreature.h"
 #include "server/zone/packets/player/EnterStructurePlacementModeMessage.h"
 

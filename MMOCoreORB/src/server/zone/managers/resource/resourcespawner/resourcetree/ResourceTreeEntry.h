@@ -97,7 +97,7 @@ private:
 	bool children;
 
 	/// Notates id this resource is restricted to a zone
-	short zoneRestriction;
+	String zoneRestriction;
 
 	/// Lets us know if this resource was a JTL resource
 	bool jtl;
@@ -124,6 +124,7 @@ public:
 
 		recycled = false;
 		children = false;
+		jtl = false;
 
 		maxtype = 0;
 		mintype = 0;
@@ -133,7 +134,11 @@ public:
 		resourceContainerType = "";
 		randomNameClass = "";
 
-		zoneRestriction = -1;
+		zoneRestriction = "";
+
+		surveyToolType = -1;
+
+		containerCRC = 0;
 
 		attributeMap.setNullValue(NULL);
 	}
@@ -335,7 +340,7 @@ public:
 	 * Gets zoneRestriction
 	 * \return zoneRestriction
 	 */
-    int getZoneRestriction() {
+    String& getZoneRestriction() {
     	return zoneRestriction;
     }
 
@@ -427,6 +432,7 @@ public:
     void setResourceContainerType(String resourceContainerType)
     {
         this->resourceContainerType = resourceContainerType;
+        containerCRC = resourceContainerType.hashCode();
     }
 
     /**
@@ -449,7 +455,7 @@ public:
       * sets zoneRestriction
       * \param zone
       */
-    void setZoneRestriction(int zone) {
+    void setZoneRestriction(String zone) {
     	zoneRestriction = zone;
     }
 
@@ -458,7 +464,7 @@ public:
       * \return isZoneRestricted
       */
     bool isZoneRestricted() {
-    	return zoneRestriction != -1;
+    	return zoneRestriction != "";
     }
 
     /**
@@ -491,14 +497,6 @@ public:
      */
     int getSurveyToolType() {
     	return surveyToolType;
-    }
-
-    /**
-     * Sets containerCRC
-     * \param crc
-     */
-    void setContainerCRC(uint32 crc) {
-    	containerCRC = crc;
     }
 
     /**

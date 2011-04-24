@@ -63,7 +63,7 @@ class AuctionItem extends ManagedObject {
 	protected string ownerName;
 	protected string bidderName;
 
-	protected unsigned short planet;
+	protected string planet;
 	protected string region;
 	protected string location;
 	protected string terminalTitle;
@@ -156,7 +156,7 @@ class AuctionItem extends ManagedObject {
 	}
 	
 	@local
-	public void setPlanet(unsigned short planetid) {
+	public void setPlanet(final string planetid) {
 		planet = planetid;
 	}
 	

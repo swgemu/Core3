@@ -44,7 +44,7 @@
 object_building_player_player_guildhall_tatooine_style_01 = object_building_player_shared_player_guildhall_tatooine_style_01:new {
 	lotSize = 5,
 	baseMaintenanceRate = 100,
-	allowedZones = {1,4,8},
+	allowedZones = {"dantooine", "lok", "tatooine"},
 	mapLocationsType1 = 7,
 	publicStructure = 0,
 	constructionMarker = "object/building/player/construction/construction_player_guildhall_tatooine_style_01.iff",

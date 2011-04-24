@@ -7,7 +7,7 @@
 
 #include "ReconMissionObjective.h"
 #include "server/zone/objects/area/MissionReconActiveArea.h"
-#include "server/zone/objects/terrain/PlanetNames.h"
+
 #include "server/zone/objects/waypoint/WaypointObject.h"
 #include "server/zone/objects/tangible/lair/LairObject.h"
 #include "server/zone/Zone.h"
@@ -19,6 +19,7 @@
 #include "MissionObserver.h"
 
 void ReconMissionObjectiveImplementation::activate() {
+	/*
 	if (mission == NULL)
 		return;
 
@@ -33,14 +34,13 @@ void ReconMissionObjectiveImplementation::activate() {
 		uint32 startPlanetCRC = mission->getStartPlanetCRC();
 
 		String planetName = Planet::getPlanetNameByCrc(startPlanetCRC);
-		int id = Planet::getPlanetID(planetName);
 
-		Zone* zone = zoneServer->getZone(id);
+		Zone* zone = zoneServer->getZone(planetName);
 		locationActiveArea->initializePosition(mission->getStartPositionX(), 0, mission->getStartPositionY());
 		locationActiveArea->setRadius(32.f);
 		locationActiveArea->insertToZone(zone);
 
-		info("inserting to zone " + zone->getPlanetName(), true);
+		info("inserting to zone " + zone->getZoneName(), true);
 	}
 
 	WaypointObject* waypoint = mission->getWaypointToMission();
@@ -53,6 +53,7 @@ void ReconMissionObjectiveImplementation::activate() {
 	waypoint->setActive(true);
 
 	mission->updateMissionLocation();
+	*/
 }
 
 void ReconMissionObjectiveImplementation::abort() {

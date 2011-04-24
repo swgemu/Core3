@@ -446,6 +446,8 @@ CityManagerImplementation::CityManagerImplementation(Zone* zne) {
 	(&cities)->setNullValue(NULL);
 	// server/zone/managers/city/CityManager.idl():  		cities.setInsertPlan(3);
 	(&cities)->setInsertPlan(3);
+	// server/zone/managers/city/CityManager.idl():  		configLoaded = false;
+	configLoaded = false;
 }
 
 byte CityManagerImplementation::getCitiesAllowed(byte rank) {

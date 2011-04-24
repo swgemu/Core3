@@ -57,7 +57,7 @@ public:
 		Vector<ManagedReference<ResourceSpawn*> > resourceList;
 
 		ResourceManager* resourceManager = hino->getZoneServer()->getResourceManager();
-		resourceManager->getResourceListByType(resourceList, hino->getInstallationType(), hino->getZone()->getZoneID());
+		resourceManager->getResourceListByType(resourceList, hino->getInstallationType(), hino->getZone()->getZoneName());
 
 		/*StringBuffer msg;
 		msg << "resource list for type " << hino->getInstallationType() << " with size " << resourceList.size();
@@ -83,7 +83,7 @@ public:
 			insertLong(ri->getObjectID());
 			insertAscii(ri->getName());
 			insertAscii(ri->getType());
-			insertByte((int) (ri->getDensityAt(hino->getZone()->getZoneID(), hino->getPositionX(), hino->getPositionY()) * 100.f));
+			insertByte((int) (ri->getDensityAt(hino->getZone()->getZoneName(), hino->getPositionX(), hino->getPositionY()) * 100.f));
 		}
 
 	}

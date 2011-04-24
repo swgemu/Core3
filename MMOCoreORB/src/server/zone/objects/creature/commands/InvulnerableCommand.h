@@ -69,7 +69,7 @@ public:
 
 		PlayerCreature* player = (PlayerCreature*) creature;
 
-		if (player->isRidingMount() || player->isRidingCreature() || player->getZone()->getZoneID() > 9)
+		if (player->isRidingMount() || player->isRidingCreature())
 			return GENERALERROR;
 
 		StringTokenizer args(arguments.toString());

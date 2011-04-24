@@ -180,7 +180,7 @@ namespace zone {
 
 class Zone : public ManagedObject {
 public:
-	Zone(ZoneProcessServer* processor, int zoneid);
+	Zone(ZoneProcessServer* processor, const String& zoneName);
 
 	void initializeTransientMembers();
 
@@ -216,13 +216,9 @@ public:
 
 	void addSceneObject(SceneObject* object);
 
-	void sendMapLocationsTo(const String& planetName, SceneObject* player);
+	void sendMapLocationsTo(SceneObject* player);
 
 	void dropSceneObject(SceneObject* object);
-
-	int getZoneID();
-
-	String getPlanetName();
 
 	PlanetManager* getPlanetManager();
 
@@ -244,6 +240,10 @@ public:
 
 	float getMaxY();
 
+	String getZoneName();
+
+	unsigned int getZoneCRC();
+
 	DistributedObjectServant* _getImplementation();
 
 	void _setImplementation(DistributedObjectServant* servant);
@@ -253,7 +253,7 @@ protected:
 
 	virtual ~Zone();
 
-	String _return_getPlanetName;
+	String _return_getZoneName;
 
 	friend class ZoneHelper;
 };
@@ -267,7 +267,9 @@ namespace server {
 namespace zone {
 
 class ZoneImplementation : public ManagedObjectImplementation, public QuadTree {
-	int zoneID;
+	String zoneName;
+
+	unsigned int zoneCRC;
 
 	ManagedReference<ZoneProcessServer* > processor;
 
@@ -292,7 +294,7 @@ class ZoneImplementation : public ManagedObjectImplementation, public QuadTree {
 	bool managersStarted;
 
 public:
-	ZoneImplementation(ZoneProcessServer* processor, int zoneid);
+	ZoneImplementation(ZoneProcessServer* processor, const String& zoneName);
 
 	ZoneImplementation(DummyConstructorParameter* param);
 
@@ -332,13 +334,9 @@ public:
 
 	void addSceneObject(SceneObject* object);
 
-	void sendMapLocationsTo(const String& planetName, SceneObject* player);
+	void sendMapLocationsTo(SceneObject* player);
 
 	void dropSceneObject(SceneObject* object);
-
-	int getZoneID();
-
-	String getPlanetName();
 
 	PlanetManager* getPlanetManager();
 
@@ -359,6 +357,10 @@ public:
 	float getMinY();
 
 	float getMaxY();
+
+	String getZoneName();
+
+	unsigned int getZoneCRC();
 
 	Zone* _this;
 
@@ -421,13 +423,9 @@ public:
 
 	void addSceneObject(SceneObject* object);
 
-	void sendMapLocationsTo(const String& planetName, SceneObject* player);
+	void sendMapLocationsTo(SceneObject* player);
 
 	void dropSceneObject(SceneObject* object);
-
-	int getZoneID();
-
-	String getPlanetName();
 
 	PlanetManager* getPlanetManager();
 
@@ -449,8 +447,10 @@ public:
 
 	float getMaxY();
 
-protected:
-	String _param0_sendMapLocationsTo__String_SceneObject_;
+	String getZoneName();
+
+	unsigned int getZoneCRC();
+
 };
 
 class ZoneHelper : public DistributedObjectClassHelper, public Singleton<ZoneHelper> {

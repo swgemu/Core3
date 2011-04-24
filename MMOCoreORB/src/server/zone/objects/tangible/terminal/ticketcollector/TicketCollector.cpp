@@ -12,13 +12,11 @@
 
 #include "server/zone/objects/tangible/ticket/TicketObject.h"
 
-#include "server/zone/objects/creature/shuttle/ShuttleCreature.h"
-
 /*
  *	TicketCollectorStub
  */
 
-enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_,RPC_USETICKET__PLAYERCREATURE_TICKETOBJECT_,RPC_CHECKTIME__SHUTTLECREATURE_PLAYERCREATURE_,RPC_ISTICKETCOLLECTOR__,RPC_SETSHUTTLE__SHUTTLECREATURE_};
+enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_,RPC_USETICKET__PLAYERCREATURE_TICKETOBJECT_,RPC_ISTICKETCOLLECTOR__};
 
 TicketCollector::TicketCollector() : Terminal(DummyConstructorParameter::instance()) {
 	TicketCollectorImplementation* _implementation = new TicketCollectorImplementation();
@@ -76,21 +74,6 @@ void TicketCollector::useTicket(PlayerCreature* player, TicketObject* ticket) {
 		_implementation->useTicket(player, ticket);
 }
 
-bool TicketCollector::checkTime(ShuttleCreature* shuttle, PlayerCreature* player) {
-	TicketCollectorImplementation* _implementation = (TicketCollectorImplementation*) _getImplementation();
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, RPC_CHECKTIME__SHUTTLECREATURE_PLAYERCREATURE_);
-		method.addObjectParameter(shuttle);
-		method.addObjectParameter(player);
-
-		return method.executeWithBooleanReturn();
-	} else
-		return _implementation->checkTime(shuttle, player);
-}
-
 bool TicketCollector::isTicketCollector() {
 	TicketCollectorImplementation* _implementation = (TicketCollectorImplementation*) _getImplementation();
 	if (_implementation == NULL) {
@@ -102,20 +85,6 @@ bool TicketCollector::isTicketCollector() {
 		return method.executeWithBooleanReturn();
 	} else
 		return _implementation->isTicketCollector();
-}
-
-void TicketCollector::setShuttle(ShuttleCreature* shut) {
-	TicketCollectorImplementation* _implementation = (TicketCollectorImplementation*) _getImplementation();
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, RPC_SETSHUTTLE__SHUTTLECREATURE_);
-		method.addObjectParameter(shut);
-
-		method.executeWithVoidReturn();
-	} else
-		_implementation->setShuttle(shut);
 }
 
 DistributedObjectServant* TicketCollector::_getImplementation() {
@@ -222,11 +191,6 @@ bool TicketCollectorImplementation::readObjectMember(ObjectInputStream* stream, 
 	if (TerminalImplementation::readObjectMember(stream, _name))
 		return true;
 
-	if (_name == "shuttle") {
-		TypeInfo<ManagedReference<ShuttleCreature* > >::parseFromBinaryStream(&shuttle, stream);
-		return true;
-	}
-
 
 	return false;
 }
@@ -242,16 +206,8 @@ int TicketCollectorImplementation::writeObjectMembers(ObjectOutputStream* stream
 	String _name;
 	int _offset;
 	uint16 _totalSize;
-	_name = "shuttle";
-	_name.toBinaryStream(stream);
-	_offset = stream->getOffset();
-	stream->writeShort(0);
-	TypeInfo<ManagedReference<ShuttleCreature* > >::toBinaryStream(&shuttle, stream);
-	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
-	stream->writeShort(_offset, _totalSize);
 
-
-	return 1 + TerminalImplementation::writeObjectMembers(stream);
+	return 0 + TerminalImplementation::writeObjectMembers(stream);
 }
 
 TicketCollectorImplementation::TicketCollectorImplementation() {
@@ -270,11 +226,6 @@ void TicketCollectorImplementation::initializeTransientMembers() {
 bool TicketCollectorImplementation::isTicketCollector() {
 	// server/zone/objects/tangible/terminal/ticketcollector/TicketCollector.idl():  		return true;
 	return true;
-}
-
-void TicketCollectorImplementation::setShuttle(ShuttleCreature* shut) {
-	// server/zone/objects/tangible/terminal/ticketcollector/TicketCollector.idl():  		shuttle = shut;
-	shuttle = shut;
 }
 
 /*
@@ -297,14 +248,8 @@ Packet* TicketCollectorAdapter::invokeMethod(uint32 methid, DistributedMethod* i
 	case RPC_USETICKET__PLAYERCREATURE_TICKETOBJECT_:
 		useTicket((PlayerCreature*) inv->getObjectParameter(), (TicketObject*) inv->getObjectParameter());
 		break;
-	case RPC_CHECKTIME__SHUTTLECREATURE_PLAYERCREATURE_:
-		resp->insertBoolean(checkTime((ShuttleCreature*) inv->getObjectParameter(), (PlayerCreature*) inv->getObjectParameter()));
-		break;
 	case RPC_ISTICKETCOLLECTOR__:
 		resp->insertBoolean(isTicketCollector());
-		break;
-	case RPC_SETSHUTTLE__SHUTTLECREATURE_:
-		setShuttle((ShuttleCreature*) inv->getObjectParameter());
 		break;
 	default:
 		return NULL;
@@ -325,16 +270,8 @@ void TicketCollectorAdapter::useTicket(PlayerCreature* player, TicketObject* tic
 	((TicketCollectorImplementation*) impl)->useTicket(player, ticket);
 }
 
-bool TicketCollectorAdapter::checkTime(ShuttleCreature* shuttle, PlayerCreature* player) {
-	return ((TicketCollectorImplementation*) impl)->checkTime(shuttle, player);
-}
-
 bool TicketCollectorAdapter::isTicketCollector() {
 	return ((TicketCollectorImplementation*) impl)->isTicketCollector();
-}
-
-void TicketCollectorAdapter::setShuttle(ShuttleCreature* shut) {
-	((TicketCollectorImplementation*) impl)->setShuttle(shut);
 }
 
 /*

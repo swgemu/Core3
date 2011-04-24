@@ -10,12 +10,12 @@
 
 
 #include "../MessageCallback.h"
-#include "server/zone/objects/terrain/PlanetNames.h"
+
 #include "server/zone/managers/planet/PlanetManager.h"
 #include "server/zone/Zone.h"
 
 class PlanetTravelPointListRequestCallback : public MessageCallback {
-	String planet;
+	String zoneName;
 
 public:
 	PlanetTravelPointListRequestCallback(ZoneClientSession* client, ZoneProcessServer* server) :
@@ -25,7 +25,7 @@ public:
 
 	void parse(Message* message) {
 		message->shiftOffset(8); //We don't need the player object, we got it already.
-		message->parseAscii(planet);
+		message->parseAscii(zoneName);
 	}
 
 	void run() {
@@ -36,17 +36,13 @@ public:
 
 		Locker _locker(object);
 
-		int id = Planet::getPlanetID(planet);
+		Zone* zone = server->getZoneServer()->getZone(zoneName);
 
-		if (id == -1)
+		if (zone == NULL)
 			return;
 
-		Zone* zone = server->getZoneServer()->getZone(id);
-
-		if (zone != NULL) {
-			PlanetManager* planetManager = zone->getPlanetManager();
-			planetManager->sendPlanetTravelPointListResponse(object);
-		}
+		PlanetManager* planetManager = zone->getPlanetManager();
+		planetManager->sendPlanetTravelPointListResponse(object);
 	}
 };
 

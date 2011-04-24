@@ -10,7 +10,7 @@
 #include "server/zone/packets/scene/AttributeListMessage.h"
 #include "server/zone/objects/player/PlayerCreature.h"
 #include "server/zone/packets/object/ObjectMenuResponse.h"
-#include "server/zone/objects/terrain/PlanetNames.h"
+
 #include "system/util/VectorMap.h"
 
 int FishObjectImplementation::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
@@ -65,6 +65,7 @@ void FishObjectImplementation::fillAttributeList(AttributeListMessage* alm, Play
 	String lengthText = String::valueOf(length) + "m";
 	alm->insertAttribute("length", lengthText);
 
-	String planetText = Planet::getPlanetName(planet);
-	alm->insertAttribute("planet", planetText);
+	//TODO: Reenable with new zone system.
+	//String planetText = Planet::getPlanetName(planet);
+	//alm->insertAttribute("planet", planetText);
 }

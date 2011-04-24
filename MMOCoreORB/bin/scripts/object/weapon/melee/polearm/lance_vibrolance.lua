@@ -85,8 +85,8 @@ object_weapon_melee_polearm_lance_vibrolance = object_weapon_melee_polearm_share
 	mindAttackCost = 29,
 	forceCost = 0,
 
-	pointBlankAccuracy = 0,
-	pointBlankRange = -24,
+	pointBlankAccuracy = -24,
+	pointBlankRange = 0,
 
 	idealRange = -24,
 	idealAccuracy = 4,

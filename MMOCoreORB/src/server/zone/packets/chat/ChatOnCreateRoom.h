@@ -65,11 +65,11 @@ public:
 		insertAscii(room->getFullPath());
 		
 		insertAscii("SWG");
-		insertAscii(room->getServerName());
+		insertAscii(room->getGalaxyName());
 		insertAscii(room->getCreator());
 		
 		insertAscii("SWG");
-		insertAscii(room->getServerName());
+		insertAscii(room->getGalaxyName());
 		insertAscii(room->getCreator());
 		
 		insertUnicode(room->getTitle());
@@ -90,7 +90,7 @@ public:
 		
 		for (int i = 0; i < size; i++) {
 			insertAscii("SWG");
-			insertAscii(room->getServerName());
+			insertAscii(room->getGalaxyName());
 			insertAscii(room->playerList.get(i)->getFirstName());
 		}*/
 		

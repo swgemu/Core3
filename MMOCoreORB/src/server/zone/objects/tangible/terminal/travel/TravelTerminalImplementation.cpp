@@ -8,7 +8,6 @@
 #include "TravelTerminal.h"
 
 #include "server/zone/packets/player/EnterTicketPurchaseModeMessage.h"
-#include "server/zone/objects/creature/shuttle/ShuttleCreature.h"
 #include "server/zone/objects/player/PlayerCreature.h"
 #include "server/zone/objects/area/ActiveArea.h"
 #include "server/zone/objects/region/Region.h"
@@ -21,13 +20,10 @@ int TravelTerminalImplementation::handleObjectMenuSelect(PlayerCreature* player,
 	if (controlledObject == NULL)
 		return 0;
 
-	if (controlledObject->getZone() == NULL)
-		return 0;
-
 	//Make sure the controlled object is in a region, or the region name will fail.
 
-	EnterTicketPurchaseModeMessage* etpm = new EnterTicketPurchaseModeMessage(controlledObject);
-	player->sendMessage(etpm);
+	//EnterTicketPurchaseModeMessage* etpm = new EnterTicketPurchaseModeMessage(controlledObject);
+	//player->sendMessage(etpm);
 
 	return 0;
 }

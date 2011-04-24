@@ -85,8 +85,8 @@ object_weapon_melee_2h_sword_2h_sword_maul = object_weapon_melee_2h_sword_shared
 	mindAttackCost = 16,
 	forceCost = 0,
 
-	pointBlankAccuracy = 0,
-	pointBlankRange = -19,
+	pointBlankAccuracy = -19,
+	pointBlankRange = 0,
 
 	idealRange = -20,
 	idealAccuracy = 3,

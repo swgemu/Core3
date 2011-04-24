@@ -54,7 +54,7 @@ int LairObjectImplementation::notifyObjectDestructionObservers(TangibleObject* a
 	PlayClientEffectObjectMessage* explode = new PlayClientEffectObjectMessage(_this, "clienteffect/lair_damage_heavy.cef", "");
 	broadcastMessage(explode, false);
 
-	PlayClientEffectLoc* explodeLoc = new PlayClientEffectLoc("clienteffect/lair_damage_heavy.cef", zone->getZoneID(), positionX, positionZ, positionY);
+	PlayClientEffectLoc* explodeLoc = new PlayClientEffectLoc("clienteffect/lair_damage_heavy.cef", zone->getZoneName(), positionX, positionZ, positionY);
 	broadcastMessage(explodeLoc, false);
 
 	removeFromZone();
@@ -132,7 +132,7 @@ void LairObjectImplementation::healLair(TangibleObject* attacker) {
 	broadcastMessage(heal, false);
 
 	PlayClientEffectLoc* healLoc = new PlayClientEffectLoc("clienteffect/healing_healdamage.cef",
-			zone->getZoneID(), getPositionX(),
+			zone->getZoneName(), getPositionX(),
 			getPositionZ(), getPositionY());
 	broadcastMessage(healLoc, false);
 }

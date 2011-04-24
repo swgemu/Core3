@@ -6,7 +6,7 @@
  */
 
 #include "PlanetManager.h"
-#include "server/zone/objects/terrain/PlanetNames.h"
+
 
 #include "server/db/ServerDatabase.h"
 #include "server/zone/Zone.h"
@@ -31,14 +31,12 @@
 void PlanetManagerImplementation::initialize() {
 	terrainManager = new TerrainManager(zone);
 
-	int zoneID = zone->getZoneID();
-
 	numberOfCities = 0;
 
 	info("Loading planet...", true);
 
 	//TODO: Load from the TRE files.
-	if (terrainManager->initialize("terrain/" + zone->getPlanetName() + ".trn"))
+	if (terrainManager->initialize("terrain/" + zone->getZoneName() + ".trn"))
 		info("Loaded terrain file successfully.", true);
 	else
 		error("Failed to load terrain file.");
@@ -59,14 +57,12 @@ void PlanetManagerImplementation::initialize() {
 	structureManager = new StructureManager(zone, server);
 	structureManager->loadStructures();
 
-	if (zone->getZoneID() < 10) { //No need for a weather manager in tutorial or corvette etc.
-		weatherManager = new WeatherManager(zone);
-		weatherManager->initialize();
-	}
+	weatherManager = new WeatherManager(zone);
+	weatherManager->initialize();
 }
 
 void PlanetManagerImplementation::loadLuaConfig() {
-	String planetName = zone->getPlanetName();
+	String planetName = zone->getZoneName();
 
 	Lua* lua = new Lua();
 	lua->init();
@@ -104,7 +100,7 @@ void PlanetManagerImplementation::loadTravelFares() {
 	DataTableIff dtiff;
 	dtiff.readObject(iffStream);
 
-	Vector<DataTableRow*> rows = dtiff.getRowsByColumn(0, zone->getPlanetName());
+	Vector<DataTableRow*> rows = dtiff.getRowsByColumn(0, zone->getZoneName());
 
 	if (rows.size() <= 0) {
 		info("Travel fares could not be found.", true);
@@ -171,7 +167,7 @@ void PlanetManagerImplementation::loadSnapshotObject(WorldSnapshotNode* node, Wo
 void PlanetManagerImplementation::loadSnapshotObjects() {
 	TemplateManager* templateManager = TemplateManager::instance();
 
-	IffStream* iffStream = templateManager->openIffFile("snapshot/" + zone->getPlanetName() + ".ws");
+	IffStream* iffStream = templateManager->openIffFile("snapshot/" + zone->getZoneName() + ".ws");
 
 	if (iffStream == NULL) {
 		info("Snapshot wasn't found.", true);
@@ -217,113 +213,10 @@ void PlanetManagerImplementation::scheduleShuttleRoute(SceneObject* starport) {
 
 void PlanetManagerImplementation::loadStaticTangibleObjects() {
 	//TODO: Deprecate this to load from lua files.
-	StringBuffer query;
-
-	query << "SELECT * FROM statictangibleobjects WHERE zoneid = " << zone->getZoneID() << ";";
-
-	Reference<ResultSet*> result = NULL;
-
-	int i = 0;
-
-	try {
-		result = ServerDatabase::instance()->executeQuery(query);
-
-		while (result->next()) {
-			uint64 parentid = result->getUnsignedLong(2);
-			String name = result->getString(3);
-			String templateFile = result->getString(4);
-			int templateType = result->getInt(5);
-			String templateName = result->getString(6);
-			float ox = result->getFloat(7);
-			float oy = result->getFloat(8);
-			float oz = result->getFloat(9);
-			float ow = result->getFloat(10);
-			float x = result->getFloat(11);
-			float z = result->getFloat(12);
-			float y = result->getFloat(13);
-
-			if (z == 0 && parentid == 0)
-				z = zone->getHeight(x, y);
-
-			ManagedReference<SceneObject*> object = server->getZoneServer()->createObject(templateFile.hashCode(), 1);;
-
-			if (object == NULL) {
-				error("trying to spawn unknown tangible object " + templateFile);
-			} else {
-				ManagedReference<SceneObject*> parentObject;
-
-				if (parentid != 0) {
-					parentObject = server->getZoneServer()->getObject(parentid);
-
-					if (parentObject != NULL && !parentObject->isCellObject()) {
-						error("trying to set a parent that is not a cell to tangible objects");
-						parentObject = NULL;
-					}
-				}
-
-				if (parentObject != NULL)
-					parentObject->addObject(object, -1);
-
-				if (!name.isEmpty())
-					object->setCustomObjectName(name, true);
-
-				object->initializePosition(x, z, y);
-				object->setDirection(ow, ox, oy, oz);
-
-				object->insertToZone(zone);
-
-				++i;
-			}
-
-		}
-
-	} catch (Exception& e) {
-		error(e.getMessage());
-	}
-
-	info("static creatures spawned: " + String::valueOf(i), true);
 }
 
 void PlanetManagerImplementation::loadNoBuildAreas() {
 	//TODO: Deprecate. These should be loaded by their objects upon creation.
-	StringBuffer query;
-	query << "SELECT * FROM no_build_zones WHERE planet_id = " << zone->getZoneID() << ";";
-
-	Reference<ResultSet*> result = ServerDatabase::instance()->executeQuery(query);
-
-	while (result->next()) {
-		float x = result->getFloat(5);
-		float y = result->getFloat(6);
-		float radius = result->getFloat(7);
-
-		String zoneType = result->getString(4);
-		String file = result->getString(3);
-		String name = result->getString(2);
-
-		if (zoneType == "poi_badge") {
-			name = file;
-			file = "clientpoi_n";
-		} if (zoneType == "poi") {
-			file = "clientpoi_n";
-		}
-
-		String fullName = "@" + file + ":" + name;
-
-		uint32 crc = String("object/region_area.iff").hashCode();
-
-		Region* region = (Region*) ObjectManager::instance()->createObject(crc, 0, "");
-		region->initializePosition(x, 0, y);
-		region->setRadius(radius);
-		region->setClientObject(true);
-		StringId* objectName = region->getObjectName();
-		objectName->setStringId(fullName);
-
-		//Region* region = new Region(fullName, x, y, radius /* + 300 */);
-		//region->deploy();
-		noBuildAreaMap.add(region);
-
-		//addNoBuildArea(x, y, radius + 300); // Adding 500 as a buffer for spawns since this patch doesn't need buildings
-	}
 }
 
 bool PlanetManagerImplementation::isNoBuildArea(float x, float y, StringId& fullAreaName) {
@@ -333,7 +226,7 @@ bool PlanetManagerImplementation::isNoBuildArea(float x, float y, StringId& full
 void PlanetManagerImplementation::loadRegions() {
 	TemplateManager* templateManager = TemplateManager::instance();
 
-	IffStream* iffStream = templateManager->openIffFile("datatables/clientregion/" + zone->getPlanetName() + ".iff");
+	IffStream* iffStream = templateManager->openIffFile("datatables/clientregion/" + zone->getZoneName() + ".iff");
 
 	if (iffStream == NULL) {
 		info("No client regions found.", true);
@@ -376,7 +269,6 @@ void PlanetManagerImplementation::loadPlayerRegions() {
 	int i = 0;
 
 	try {
-		int planetid = zone->getZoneID();
 		uint64 currentZoneObjectID = zone->_getObjectID();
 		ObjectDatabaseIterator iterator(cityRegionsDatabase);
 
@@ -436,50 +328,11 @@ void PlanetManagerImplementation::finalize() {
 }
 
 void PlanetManagerImplementation::sendPlanetTravelPointListResponse(PlayerCreature* player) {
-	//lock();
 
-	TravelListResponseMessage* msg = new TravelListResponseMessage(Planet::getPlanetName(zone->getZoneID()));
-
-	//shuttleMap.resetIterator();
-
-	//while (shuttleMap.hasNext()) {
-		//ShuttleCreature* shuttle = shuttleMap.getNextValue();
-
-		//float x, y, z;
-		//shuttle->getArrivalPoint(x, y, z);
-
-		//msg->addPoint(shuttle->getCity(), x, z, y, shuttle->getTax(), shuttle->isStarport());
-	//}
-
-	//unlock();
-
-	msg->generateMessage();
-
-	player->sendMessage(msg);
 }
 
 
 void PlanetManagerImplementation::loadBadgeAreas() {
-	StringBuffer query;
-	query << "SELECT x, y, z, badge_id FROM badge_areas WHERE planet_id = " << zone->getZoneID() << ";";
-
-	Reference<ResultSet*> result = ServerDatabase::instance()->executeQuery(query);
-
-	uint32 crc = String("object/badge_area.iff").hashCode();
-
-	while (result->next()) {
-
-		float x = result->getFloat(0);
-		float y = result->getFloat(1);
-		float z = result->getFloat(2);
-		uint32 badgeId = result->getInt(3);
-
-		BadgeActiveArea* area = (BadgeActiveArea*) zone->getZoneServer()->createObject(crc, 0);
-		area->setBadge(badgeId);
-		area->setRadius(100);
-		area->initializePosition(x, z, y);
-		area->insertToZone(zone);
-	}
 }
 
 void PlanetManagerImplementation::loadPerformanceLocations() {
@@ -512,72 +365,11 @@ void PlanetManagerImplementation::loadPerformanceLocations() {
 }
 
 void PlanetManagerImplementation::loadHuntingTargets() {
-	StringBuffer query;
-	query << "SELECT file1,file2,level from mission_manager_hunt_types WHERE zoneid=" << zone->getZoneID() << ";";
-
-	Reference<ResultSet*> result = NULL;
-
-	try {
-		result = ServerDatabase::instance()->executeQuery(query);
-
-		while (result->next()) {
-			String templateName = result->getString(0);
-			String templateNameAlt = result->getString(1);
-			int level = result->getInt(2);
-
-			addHuntingTargetTemplate(templateName, templateNameAlt, level);
-		}
-	} catch (DatabaseException& e) {
-		error(e.getMessage());
-	}
 }
 
 
 void PlanetManagerImplementation::loadReconLocations() {
 	info("loading recon locations ...", true);
-
-	StringBuffer query;
-	query << "SELECT * from mission_manager_recon_locs WHERE zoneid=" << zone->getZoneID() << ";";
-
-	Reference<ResultSet*> result = NULL;
-
-	ManagedReference<TangibleObject*> location = NULL;
-
-	try {
-		result = ServerDatabase::instance()->executeQuery(query);
-		int i = 0;
-
-		while (result->next()) {
-			String tempName = result->getString(2);
-			int tempType = result->getInt(3);
-			float ox = result->getFloat(4);
-			float oy = result->getFloat(5);
-			float oz = result->getFloat(6);
-			float ow = result->getFloat(7);
-			float x = result->getFloat(8);
-			float z = result->getFloat(9);
-			float y = result->getFloat(10);
-
-			location = dynamic_cast<TangibleObject*>(zone->getZoneServer()->createObject(tempName.hashCode(), 1));
-
-			location->initializePosition(x, zone->getHeight(x, y), y);
-			location->setDirection(ow, ox, oy, oz);
-			location->setOptionsBitmask(0x108);
-			location->setPvpStatusBitmask(0);
-			location->insertToZone(zone);
-
-			location->updateToDatabase();
-
-			addReconLoc(location);
-
-			++i;
-		}
-
-		if (i > 0)
-			info(String::valueOf(i) + " recon locations loaded", true);
-	} catch (DatabaseException& e) {
-		error(e.getMessage());
-	}
 }
 
 

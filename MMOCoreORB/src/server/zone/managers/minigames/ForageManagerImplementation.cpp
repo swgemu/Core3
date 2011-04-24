@@ -47,11 +47,10 @@ void ForageManagerImplementation::startForaging(PlayerCreature* player, bool sco
 	//Collect player's current position.
 	float playerX = player->getPositionX();
 	float playerY = player->getPositionY();
-	int planet = player->getZone()->getZoneID();
 	ManagedReference<ZoneServer*> zoneServer = player->getZoneServer();
 
 	//Queue the foraging task.
-	Reference<Task*> foragingEvent = new ForagingEvent(player, zoneServer, scoutForage, playerX, playerY, planet);
+	Reference<Task*> foragingEvent = new ForagingEvent(player, zoneServer, scoutForage, playerX, playerY, player->getZone()->getZoneName());
 	player->addPendingTask("foraging", foragingEvent);
 	foragingEvent->schedule(8500);
 
@@ -60,7 +59,7 @@ void ForageManagerImplementation::startForaging(PlayerCreature* player, bool sco
 
 }
 
-void ForageManagerImplementation::finishForaging(PlayerCreature* player, bool scoutForage, float forageX, float forageY, int planet) {
+void ForageManagerImplementation::finishForaging(PlayerCreature* player, bool scoutForage, float forageX, float forageY, const String& zoneName) {
 	if (player == NULL)
 		return;
 
@@ -72,8 +71,8 @@ void ForageManagerImplementation::finishForaging(PlayerCreature* player, bool sc
 	//Check if player moved.
 	float playerX = player->getPositionX();
 	float playerY = player->getPositionY();
-	int playerPlanet = player->getZone()->getZoneID();
-	if ((abs(playerX - forageX) > 2.0) || (abs(playerY - forageY) > 2.0) || playerPlanet != planet) {
+
+	if ((abs(playerX - forageX) > 2.0) || (abs(playerY - forageY) > 2.0) || player->getZone()->getZoneName() != zoneName) {
 		player->sendSystemMessage("@skl_use:sys_forage_movefail"); //"You fail to forage because you moved."
 		return;
 	}
@@ -88,13 +87,13 @@ void ForageManagerImplementation::finishForaging(PlayerCreature* player, bool sc
 	Reference<ForageAreaCollection*> forageAreaCollection = forageAreas.get(player->getFirstName());
 
 	if (forageAreaCollection != NULL) { //Player has foraged before.
-		if (!forageAreaCollection->checkForageAreas(forageX, forageY, planet)) {
+		if (!forageAreaCollection->checkForageAreas(forageX, forageY, zoneName)) {
 			player->sendSystemMessage("@skl_use:sys_forage_empty"); //"There is nothing in this area to forage."
 			return;
 		}
 
 	} else { //Player has not foraged before.
-		forageAreaCollection = new ForageAreaCollection(player, forageX, forageY, planet);
+		forageAreaCollection = new ForageAreaCollection(player, forageX, forageY, zoneName);
 		forageAreas.put(player->getFirstName(), forageAreaCollection);
 	}
 
@@ -120,14 +119,14 @@ void ForageManagerImplementation::finishForaging(PlayerCreature* player, bool sc
 
 	} else {
 		player->sendSystemMessage("@skl_use:sys_forage_success"); //"Your attempt at foraging was a success!
-		forageGiveItems(player, scoutForage, forageX, forageY, planet);
+		forageGiveItems(player, scoutForage, forageX, forageY, zoneName);
 	}
 
 	return;
 
 }
 
-void ForageManagerImplementation::forageGiveItems(PlayerCreature* player, bool scoutForage, float forageX, float forageY, int planet) {
+void ForageManagerImplementation::forageGiveItems(PlayerCreature* player, bool scoutForage, float forageX, float forageY, const String& planet) {
 	if (player == NULL)
 		return;
 
@@ -212,7 +211,7 @@ void ForageManagerImplementation::forageGiveItems(PlayerCreature* player, bool s
 
 }
 
-void ForageManagerImplementation::forageGiveResource(PlayerCreature* player, float forageX, float forageY, int planet) {
+void ForageManagerImplementation::forageGiveResource(PlayerCreature* player, float forageX, float forageY, const String& planet) {
 	if (player == NULL)
 		return;
 
@@ -225,7 +224,7 @@ void ForageManagerImplementation::forageGiveResource(PlayerCreature* player, flo
 
 	//Get a list of the flora on the planet.
 	Vector<ManagedReference<ResourceSpawn*> > resources;
-	resourceManager->getResourceListByType(resources, 3, planet);
+	//resourceManager->getResourceListByType(resources, 3, planet);
 	if (resources.size() < 1)
 		return;
 
@@ -240,7 +239,7 @@ void ForageManagerImplementation::forageGiveResource(PlayerCreature* player, flo
 		flora = resources.get(key);
 		density = flora->getDensityAt(planet, forageX, forageY);
 
-		if (!density > 0.0 && resources.size() > 1) { //No concentration of this resource near the player.
+		if (density <= 0.0 && resources.size() > 1) { //No concentration of this resource near the player.
 			resources.remove(key); //Remove and pick another one.
 
 		} else { //If there is only one left, we give them that one even if density is 0.

@@ -92,7 +92,7 @@ public:
 class ResourceMap : public VectorMap<String, ManagedReference<ResourceSpawn* > > {
 private:
 
-	VectorMap<uint32, ZoneResourceMap*> zoneResourceMap;
+	VectorMap<String, ZoneResourceMap*> zoneResourceMap;
 	VectorMap<String, TypeResourceMap*> typeResourceMap;
 
 public:
@@ -119,7 +119,7 @@ public:
 	 * \param resourceSpawn The ResourceSpawn object to be removed
 	 * \param zoneid The zone that is despawning resource
 	*/
-	void remove(ManagedReference<ResourceSpawn* > resourceSpawn, uint32 zoneid);
+	void remove(ManagedReference<ResourceSpawn* > resourceSpawn, String zoneName);
 
 	/**
 	 * Get's the density value of resource at given point
@@ -129,16 +129,16 @@ public:
 	 * \param y The value of the y coordinate
 	 * \return Value between -1 and 1 indicating density
 	*/
-	float getDensityAt(const String& resourcename, int zoneid, float x, float y);
+	float getDensityAt(const String& resourcename, String zoneName, float x, float y);
 
 	/**
 	 * Get's the density value of resource at given point
 	 * \param zoneid ID of zone being requesting
 	 * \return ZoneResourceMap* value of the zoneid requested
 	*/
-	inline ZoneResourceMap* getZoneResourceList(uint32 zoneid) {
-		if(zoneResourceMap.contains(zoneid))
-			return zoneResourceMap.get(zoneid);
+	inline ZoneResourceMap* getZoneResourceList(String zoneName) {
+		if(zoneResourceMap.contains(zoneName))
+			return zoneResourceMap.get(zoneName);
 		else
 			return NULL;
 	}

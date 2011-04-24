@@ -732,8 +732,6 @@ public:
 
 	bool isInCover();
 
-	bool isShuttleCreature();
-
 	bool isNonPlayerCreature();
 
 	bool isCreature();
@@ -1377,8 +1375,6 @@ public:
 
 	bool isInCover();
 
-	virtual bool isShuttleCreature();
-
 	virtual bool isNonPlayerCreature();
 
 	virtual bool isCreature();
@@ -1863,8 +1859,6 @@ public:
 	bool isAiming();
 
 	bool isInCover();
-
-	bool isShuttleCreature();
 
 	bool isNonPlayerCreature();
 

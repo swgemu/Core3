@@ -58,7 +58,7 @@ protected:
 
 
 public:
-	ForageAreaCollection(PlayerCreature* player, short forageX, short forageY, int planet) {
+	ForageAreaCollection(PlayerCreature* player, short forageX, short forageY, const String& planet) {
     	//Player is foraging for the first time, so make a new forage area.
 		Reference<ForageArea*> newArea = new ForageArea(forageX, forageY, planet);
     	forageAreas.add(newArea);
@@ -69,7 +69,7 @@ public:
 	}
 
 
-	bool checkForageAreas(short forageX, short forageY, int planet) {
+	bool checkForageAreas(short forageX, short forageY, const String& planet) {
 		Reference<ForageArea*> forageArea;
 		int8 zoneStatus = -1;
 		int8 authorized = -1;

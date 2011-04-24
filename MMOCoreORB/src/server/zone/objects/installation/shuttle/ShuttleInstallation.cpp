@@ -18,8 +18,6 @@
 
 #include "server/zone/templates/SharedObjectTemplate.h"
 
-#include "server/zone/objects/creature/shuttle/ShuttleCreature.h"
-
 #include "server/zone/objects/tangible/terminal/ticketcollector/TicketCollector.h"
 
 #include "server/zone/objects/tangible/terminal/travel/TravelTerminal.h"
@@ -28,7 +26,7 @@
  *	ShuttleInstallationStub
  */
 
-enum {RPC_INSERTTOZONE__ZONE_ = 6,RPC_REMOVEFROMZONE__,RPC_SPAWNSHUTTLEOBJECTS__,RPC_DESPAWNSHUTTLEOBJECTS__,RPC_CHECKREQUISITESFORPLACEMENT__PLAYERCREATURE_};
+enum {RPC_CHECKREQUISITESFORPLACEMENT__PLAYERCREATURE_ = 6};
 
 ShuttleInstallation::ShuttleInstallation() : InstallationObject(DummyConstructorParameter::instance()) {
 	ShuttleInstallationImplementation* _implementation = new ShuttleInstallationImplementation();
@@ -42,59 +40,6 @@ ShuttleInstallation::ShuttleInstallation(DummyConstructorParameter* param) : Ins
 ShuttleInstallation::~ShuttleInstallation() {
 }
 
-
-void ShuttleInstallation::insertToZone(Zone* zone) {
-	ShuttleInstallationImplementation* _implementation = (ShuttleInstallationImplementation*) _getImplementation();
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, RPC_INSERTTOZONE__ZONE_);
-		method.addObjectParameter(zone);
-
-		method.executeWithVoidReturn();
-	} else
-		_implementation->insertToZone(zone);
-}
-
-void ShuttleInstallation::removeFromZone() {
-	ShuttleInstallationImplementation* _implementation = (ShuttleInstallationImplementation*) _getImplementation();
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, RPC_REMOVEFROMZONE__);
-
-		method.executeWithVoidReturn();
-	} else
-		_implementation->removeFromZone();
-}
-
-void ShuttleInstallation::spawnShuttleObjects() {
-	ShuttleInstallationImplementation* _implementation = (ShuttleInstallationImplementation*) _getImplementation();
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, RPC_SPAWNSHUTTLEOBJECTS__);
-
-		method.executeWithVoidReturn();
-	} else
-		_implementation->spawnShuttleObjects();
-}
-
-void ShuttleInstallation::despawnShuttleObjects() {
-	ShuttleInstallationImplementation* _implementation = (ShuttleInstallationImplementation*) _getImplementation();
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, RPC_DESPAWNSHUTTLEOBJECTS__);
-
-		method.executeWithVoidReturn();
-	} else
-		_implementation->despawnShuttleObjects();
-}
 
 bool ShuttleInstallation::checkRequisitesForPlacement(PlayerCreature* player) {
 	ShuttleInstallationImplementation* _implementation = (ShuttleInstallationImplementation*) _getImplementation();
@@ -214,21 +159,6 @@ bool ShuttleInstallationImplementation::readObjectMember(ObjectInputStream* stre
 	if (InstallationObjectImplementation::readObjectMember(stream, _name))
 		return true;
 
-	if (_name == "shuttle") {
-		TypeInfo<ManagedReference<ShuttleCreature* > >::parseFromBinaryStream(&shuttle, stream);
-		return true;
-	}
-
-	if (_name == "ticketCollector") {
-		TypeInfo<ManagedReference<TicketCollector* > >::parseFromBinaryStream(&ticketCollector, stream);
-		return true;
-	}
-
-	if (_name == "travelTerminal") {
-		TypeInfo<ManagedReference<TravelTerminal* > >::parseFromBinaryStream(&travelTerminal, stream);
-		return true;
-	}
-
 
 	return false;
 }
@@ -244,54 +174,14 @@ int ShuttleInstallationImplementation::writeObjectMembers(ObjectOutputStream* st
 	String _name;
 	int _offset;
 	uint16 _totalSize;
-	_name = "shuttle";
-	_name.toBinaryStream(stream);
-	_offset = stream->getOffset();
-	stream->writeShort(0);
-	TypeInfo<ManagedReference<ShuttleCreature* > >::toBinaryStream(&shuttle, stream);
-	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
-	stream->writeShort(_offset, _totalSize);
 
-	_name = "ticketCollector";
-	_name.toBinaryStream(stream);
-	_offset = stream->getOffset();
-	stream->writeShort(0);
-	TypeInfo<ManagedReference<TicketCollector* > >::toBinaryStream(&ticketCollector, stream);
-	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
-	stream->writeShort(_offset, _totalSize);
-
-	_name = "travelTerminal";
-	_name.toBinaryStream(stream);
-	_offset = stream->getOffset();
-	stream->writeShort(0);
-	TypeInfo<ManagedReference<TravelTerminal* > >::toBinaryStream(&travelTerminal, stream);
-	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
-	stream->writeShort(_offset, _totalSize);
-
-
-	return 3 + InstallationObjectImplementation::writeObjectMembers(stream);
+	return 0 + InstallationObjectImplementation::writeObjectMembers(stream);
 }
 
 ShuttleInstallationImplementation::ShuttleInstallationImplementation() {
 	_initializeImplementation();
 	// server/zone/objects/installation/shuttle/ShuttleInstallation.idl():  		setLoggingName("ShuttleInstallation");
 	setLoggingName("ShuttleInstallation");
-}
-
-void ShuttleInstallationImplementation::insertToZone(Zone* zone) {
-	// server/zone/objects/installation/shuttle/ShuttleInstallation.idl():  		super.insertToZone(zone);
-	InstallationObjectImplementation::insertToZone(zone);
-	// server/zone/objects/installation/shuttle/ShuttleInstallation.idl():  		spawnShuttleObjects();
-	spawnShuttleObjects();
-}
-
-void ShuttleInstallationImplementation::removeFromZone() {
-	// server/zone/objects/installation/shuttle/ShuttleInstallation.idl():  		despawnShuttleObjects();
-	despawnShuttleObjects();
-	// server/zone/objects/installation/shuttle/ShuttleInstallation.idl():  		super.removeFromZone();
-	InstallationObjectImplementation::removeFromZone();
-	// server/zone/objects/installation/shuttle/ShuttleInstallation.idl():  		updateToDatabaseWithoutChildren();
-	updateToDatabaseWithoutChildren();
 }
 
 /*
@@ -305,18 +195,6 @@ Packet* ShuttleInstallationAdapter::invokeMethod(uint32 methid, DistributedMetho
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
-	case RPC_INSERTTOZONE__ZONE_:
-		insertToZone((Zone*) inv->getObjectParameter());
-		break;
-	case RPC_REMOVEFROMZONE__:
-		removeFromZone();
-		break;
-	case RPC_SPAWNSHUTTLEOBJECTS__:
-		spawnShuttleObjects();
-		break;
-	case RPC_DESPAWNSHUTTLEOBJECTS__:
-		despawnShuttleObjects();
-		break;
 	case RPC_CHECKREQUISITESFORPLACEMENT__PLAYERCREATURE_:
 		resp->insertBoolean(checkRequisitesForPlacement((PlayerCreature*) inv->getObjectParameter()));
 		break;
@@ -325,22 +203,6 @@ Packet* ShuttleInstallationAdapter::invokeMethod(uint32 methid, DistributedMetho
 	}
 
 	return resp;
-}
-
-void ShuttleInstallationAdapter::insertToZone(Zone* zone) {
-	((ShuttleInstallationImplementation*) impl)->insertToZone(zone);
-}
-
-void ShuttleInstallationAdapter::removeFromZone() {
-	((ShuttleInstallationImplementation*) impl)->removeFromZone();
-}
-
-void ShuttleInstallationAdapter::spawnShuttleObjects() {
-	((ShuttleInstallationImplementation*) impl)->spawnShuttleObjects();
-}
-
-void ShuttleInstallationAdapter::despawnShuttleObjects() {
-	((ShuttleInstallationImplementation*) impl)->despawnShuttleObjects();
 }
 
 bool ShuttleInstallationAdapter::checkRequisitesForPlacement(PlayerCreature* player) {

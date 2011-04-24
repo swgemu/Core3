@@ -108,7 +108,7 @@ public:
 
 	void setSpawnPool(int pool);
 
-	void setZoneRestriction(int zone);
+	void setZoneRestriction(const String& zoneName);
 
 	void addClass(const String& newclass);
 
@@ -146,25 +146,25 @@ public:
 
 	bool isEnergy();
 
-	int getZoneRestriction();
+	String getZoneRestriction();
 
 	int getSurveyToolType();
 
 	int getSpawnMapSize();
 
-	void extractResource(int zoneid, int units);
+	void extractResource(const String& zoneName, int units);
 
 	ResourceContainer* createResource(int units);
 
-	int getSpawnMapZone(int i);
+	String getSpawnMapZone(int i);
 
 	bool isUnknownType();
 
-	void createSpawnMaps(bool jtl, int minpool, int maxpool, int zonerestriction, Vector<unsigned int>& activeZones);
+	void createSpawnMaps(bool jtl, int minpool, int maxpool, const String& zonerestriction, Vector<String>& activeZones);
 
 	unsigned int getPlanetCRC();
 
-	float getDensityAt(int zoneid, float x, float y);
+	float getDensityAt(const String& zoneName, float x, float y);
 
 	bool inShift();
 
@@ -191,7 +191,9 @@ protected:
 	String _return_getFamilyName;
 	String _return_getFinalClass;
 	String _return_getName;
+	String _return_getSpawnMapZone;
 	String _return_getType;
+	String _return_getZoneRestriction;
 
 	friend class ResourceSpawnHelper;
 };
@@ -222,7 +224,7 @@ protected:
 
 	int spawnPool;
 
-	int zoneRestriction;
+	String zoneRestriction;
 
 	int surveyToolType;
 
@@ -263,7 +265,7 @@ public:
 
 	void setSpawnPool(int pool);
 
-	void setZoneRestriction(int zone);
+	void setZoneRestriction(const String& zoneName);
 
 	void addClass(const String& newclass);
 
@@ -301,21 +303,21 @@ public:
 
 	bool isEnergy();
 
-	int getZoneRestriction();
+	String getZoneRestriction();
 
 	int getSurveyToolType();
 
 	int getSpawnMapSize();
 
-	void extractResource(int zoneid, int units);
+	void extractResource(const String& zoneName, int units);
 
 	ResourceContainer* createResource(int units);
 
-	int getSpawnMapZone(int i);
+	String getSpawnMapZone(int i);
 
 	bool isUnknownType();
 
-	void createSpawnMaps(bool jtl, int minpool, int maxpool, int zonerestriction, Vector<unsigned int>& activeZones);
+	void createSpawnMaps(bool jtl, int minpool, int maxpool, const String& zonerestriction, Vector<String>& activeZones);
 
 private:
 	int getConcentration(bool jtl);
@@ -324,10 +326,10 @@ public:
 	unsigned int getPlanetCRC();
 
 private:
-	Vector<unsigned int> getSpawnZones(int minpool, int maxpool, int zonerestriction, Vector<unsigned int>& activeZones);
+	Vector<String> getSpawnZones(int minpool, int maxpool, const String& zonerestriction, Vector<String>& activeZones);
 
 public:
-	float getDensityAt(int zoneid, float x, float y);
+	float getDensityAt(const String& zoneName, float x, float y);
 
 	bool inShift();
 
@@ -394,7 +396,7 @@ public:
 
 	void setSpawnPool(int pool);
 
-	void setZoneRestriction(int zone);
+	void setZoneRestriction(const String& zoneName);
 
 	void addClass(const String& newclass);
 
@@ -432,13 +434,13 @@ public:
 
 	bool isEnergy();
 
-	int getZoneRestriction();
+	String getZoneRestriction();
 
 	int getSurveyToolType();
 
 	int getSpawnMapSize();
 
-	void extractResource(int zoneid, int units);
+	void extractResource(const String& zoneName, int units);
 
 	ResourceContainer* createResource(int units);
 
@@ -453,10 +455,12 @@ public:
 protected:
 	String _param0_setName__String_;
 	String _param0_setType__String_;
+	String _param0_setZoneRestriction__String_;
 	String _param0_addClass__String_;
 	String _param0_addStfClass__String_;
 	String _param0_addAttribute__String_int_;
 	String _param0_isType__String_;
+	String _param0_extractResource__String_int_;
 };
 
 class ResourceSpawnHelper : public DistributedObjectClassHelper, public Singleton<ResourceSpawnHelper> {

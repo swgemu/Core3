@@ -106,22 +106,6 @@ using namespace server::zone::managers::objectcontroller;
 namespace server {
 namespace zone {
 namespace objects {
-namespace creature {
-namespace shuttle {
-
-class ShuttleCreature;
-
-} // namespace shuttle
-} // namespace creature
-} // namespace objects
-} // namespace zone
-} // namespace server
-
-using namespace server::zone::objects::creature::shuttle;
-
-namespace server {
-namespace zone {
-namespace objects {
 namespace player {
 
 class PlayerCreature;
@@ -150,8 +134,6 @@ using namespace server::zone::objects::scene;
 #include "server/zone/objects/region/Region.h"
 
 #include "server/zone/managers/planet/RegionMap.h"
-
-#include "server/zone/objects/terrain/PlanetNames.h"
 
 #include "server/zone/managers/terrain/TerrainManager.h"
 

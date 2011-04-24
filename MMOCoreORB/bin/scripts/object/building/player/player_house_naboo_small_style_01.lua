@@ -44,7 +44,7 @@
 object_building_player_player_house_naboo_small_style_01 = object_building_player_shared_player_house_naboo_small_style_01:new {
 	lotSize = 2,
 	baseMaintenanceRate = 16,
-	allowedZones = {1,5,6},
+	allowedZones = {"dantooine", "naboo", "rori"},
 	publicStructure = 0,
 	sign = {templateFile = "object/tangible/sign/player/house_address_naboo.iff", x = 1.55, z = 2, y = -8.36, ox = 0, oy = 0, oz = 0, ow = 1, cellid = -1, containmentType = -1},
 	childObjects = {

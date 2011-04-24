@@ -59,6 +59,7 @@ import system.lang.Exception;
 import system.lang.Time;
 import system.lang.ref.Reference;
 import system.util.Vector;
+import system.util.VectorMap;
 import system.net.Socket;
 import system.net.SocketAddress;
 import system.net.Packet;
@@ -97,7 +98,7 @@ class ZoneServer extends ManagedService implements Logger {
 	private transient ZoneProcessServer processor;
 
 	@dereferenced
-	private Vector<Zone> zones;
+	private VectorMap<string, Zone> zones;
 	
 	private transient ObjectManager objectManager;
 	private PlayerManager playerManager;
@@ -137,7 +138,7 @@ class ZoneServer extends ManagedService implements Logger {
 	
 	private int serverState;
 
-	private string name;
+	private string galaxyName;
 	private string messageoftheDay;
 
 	private int galaxyID;
@@ -248,7 +249,13 @@ class ZoneServer extends ManagedService implements Logger {
 		return galaxyID;
 	}
 	
-	public native string getServerName();
+	public string getGalaxyName() {
+		return galaxyName;
+	}
+	
+	public void setGalaxyName(final string name) {
+		galaxyName = name;
+	}
 	
 	public boolean isServerLocked() {
 		return serverState == LOCKED;
@@ -270,8 +277,17 @@ class ZoneServer extends ManagedService implements Logger {
 		return serverState;
 	}
 
-	public Zone getZone(int index) {
-		return zones.get(index);
+	public Zone getZone(final string terrainName) {
+		return zones.get(terrainName);
+	}
+	
+	/**
+	 * Gets a note based on it's position in the zone map.
+	 * NOTE: This idx is not to be considered consistent.
+	 * @param idx The index in the map to get the zone.
+	 */
+	public Zone getZone(int idx) {
+		return zones.get(idx);
 	}
 	
 	public int getZoneCount() {
@@ -359,8 +375,6 @@ class ZoneServer extends ManagedService implements Logger {
 		return startTimestamp;
 	}
 	
-	public native void setServerName(final string servername);
-
 	public synchronized void setGalaxyID(int galaxyid) {
 		galaxyID = galaxyid;
 	}

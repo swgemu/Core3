@@ -44,7 +44,7 @@
 object_building_player_city_cantina_tatooine = object_building_player_city_shared_cantina_tatooine:new {
 	lotSize = 5,
 	baseMaintenanceRate = 0,
-	allowedZones = {1,4,8},
+	allowedZones = {"dantooine", "lok", "tatooine"},
 	sign = {templateFile = "object/tangible/sign/player/house_address_tatooine.iff", x = 3.5, z = 2, y = 12.15, ox = 0, oy = 1, oz = 0, ow = 0.0001, cellid = -1, containmentType = -1},
 	length = 7,
 	width = 7,

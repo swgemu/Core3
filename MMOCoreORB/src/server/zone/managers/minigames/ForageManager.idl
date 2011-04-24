@@ -105,7 +105,7 @@ class ForageManager extends Observer implements Logger {
 	 * @param forageY The y coordinate of the player's position when they first started foraging.
 	 * @param planet The planet (zone ID) the player was on when they first started foraging.
 	 */
-	public native void finishForaging(PlayerCreature player, boolean scoutForage, float forageX, float forageY, int planet);
+	public native void finishForaging(PlayerCreature player, boolean scoutForage, float forageX, float forageY, final string planet);
 
 
 	/**
@@ -120,7 +120,7 @@ class ForageManager extends Observer implements Logger {
 	 * @param forageY The y coordinate of the player's position when they first started foraging.
 	 * @param planet The planet (zone ID) the player was on when they first started foraging.
 	 */
-	public native void forageGiveItems(PlayerCreature player, boolean scoutForage, float forageX, float forageY, int planet);
+	public native void forageGiveItems(PlayerCreature player, boolean scoutForage, float forageX, float forageY, final string planet);
 
 
 
@@ -136,7 +136,7 @@ class ForageManager extends Observer implements Logger {
 	 * @param forageY The y coordinate of the player's position when they first started foraging.
 	 * @param planet The planet (zone ID) the player was on when they first started foraging.
 	 */
-	public native void forageGiveResource(PlayerCreature player, float forageX, float forageY, int planet); 
+	public native void forageGiveResource(PlayerCreature player, float forageX, float forageY, final string planet); 
 
 
 

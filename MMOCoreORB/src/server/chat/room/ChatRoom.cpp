@@ -14,7 +14,7 @@
  *	ChatRoomStub
  */
 
-enum {RPC_INIT__ZONESERVER_CHATROOM_STRING_INT_ = 6,RPC_SENDTO__PLAYERCREATURE_,RPC_SENDDESTROYTO__PLAYERCREATURE_,RPC_ADDSUBROOM__CHATROOM_,RPC_REMOVESUBROOM__CHATROOM_,RPC_GETSUBROOM__INT_,RPC_GETSUBROOM__STRING_,RPC_ADDPLAYER__PLAYERCREATURE_BOOL_,RPC_REMOVEPLAYER__PLAYERCREATURE_BOOL_,RPC_REMOVEPLAYER__STRING_,RPC_BROADCASTMESSAGE__BASEMESSAGE_,RPC_HASPLAYER__PLAYERCREATURE_,RPC_HASPLAYER__STRING_,RPC_REMOVEALLPLAYERS__,RPC_SETPRIVATE__,RPC_SETPUBLIC__,RPC_ISPUBLIC__,RPC_ISPRIVATE__,RPC_ISMODERATED__,RPC_SETMODERATED__BOOL_,RPC_GETPLAYER__INT_,RPC_GETPLAYERSIZE__,RPC_SETNAME__STRING_,RPC_GETNAME__,RPC_GETFULLPATH__,RPC_GETOWNER__,RPC_GETCREATOR__,RPC_GETTITLE__,RPC_GETSERVERNAME__,RPC_SETOWNER__STRING_,RPC_SETCREATOR__STRING_,RPC_SETTITLE__STRING_,RPC_SETROOMID__INT_,RPC_GETROOMID__,RPC_GETSUBROOMSSIZE__,RPC_GETPARENT__,RPC_COMPARETO__CHATROOM_};
+enum {RPC_INIT__ZONESERVER_CHATROOM_STRING_INT_ = 6,RPC_SENDTO__PLAYERCREATURE_,RPC_SENDDESTROYTO__PLAYERCREATURE_,RPC_ADDSUBROOM__CHATROOM_,RPC_REMOVESUBROOM__CHATROOM_,RPC_GETSUBROOM__INT_,RPC_GETSUBROOM__STRING_,RPC_ADDPLAYER__PLAYERCREATURE_BOOL_,RPC_REMOVEPLAYER__PLAYERCREATURE_BOOL_,RPC_REMOVEPLAYER__STRING_,RPC_BROADCASTMESSAGE__BASEMESSAGE_,RPC_HASPLAYER__PLAYERCREATURE_,RPC_HASPLAYER__STRING_,RPC_REMOVEALLPLAYERS__,RPC_SETPRIVATE__,RPC_SETPUBLIC__,RPC_ISPUBLIC__,RPC_ISPRIVATE__,RPC_ISMODERATED__,RPC_SETMODERATED__BOOL_,RPC_GETPLAYER__INT_,RPC_GETPLAYERSIZE__,RPC_SETNAME__STRING_,RPC_GETNAME__,RPC_GETFULLPATH__,RPC_GETOWNER__,RPC_GETCREATOR__,RPC_GETTITLE__,RPC_GETGALAXYNAME__,RPC_SETOWNER__STRING_,RPC_SETCREATOR__STRING_,RPC_SETTITLE__STRING_,RPC_SETROOMID__INT_,RPC_GETROOMID__,RPC_GETSUBROOMSSIZE__,RPC_GETPARENT__,RPC_COMPARETO__CHATROOM_};
 
 ChatRoom::ChatRoom() : ManagedObject(DummyConstructorParameter::instance()) {
 	ChatRoomImplementation* _implementation = new ChatRoomImplementation();
@@ -428,18 +428,18 @@ UnicodeString ChatRoom::getTitle() {
 		return _implementation->getTitle();
 }
 
-String ChatRoom::getServerName() {
+String ChatRoom::getGalaxyName() {
 	ChatRoomImplementation* _implementation = (ChatRoomImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_GETSERVERNAME__);
+		DistributedMethod method(this, RPC_GETGALAXYNAME__);
 
-		method.executeWithAsciiReturn(_return_getServerName);
-		return _return_getServerName;
+		method.executeWithAsciiReturn(_return_getGalaxyName);
+		return _return_getGalaxyName;
 	} else
-		return _implementation->getServerName();
+		return _implementation->getGalaxyName();
 }
 
 void ChatRoom::setOwner(const String& Owner) {
@@ -1199,8 +1199,8 @@ Packet* ChatRoomAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	case RPC_GETTITLE__:
 		resp->insertUnicode(getTitle());
 		break;
-	case RPC_GETSERVERNAME__:
-		resp->insertAscii(getServerName());
+	case RPC_GETGALAXYNAME__:
+		resp->insertAscii(getGalaxyName());
 		break;
 	case RPC_SETOWNER__STRING_:
 		setOwner(inv->getAsciiParameter(_param0_setOwner__String_));
@@ -1345,8 +1345,8 @@ UnicodeString ChatRoomAdapter::getTitle() {
 	return ((ChatRoomImplementation*) impl)->getTitle();
 }
 
-String ChatRoomAdapter::getServerName() {
-	return ((ChatRoomImplementation*) impl)->getServerName();
+String ChatRoomAdapter::getGalaxyName() {
+	return ((ChatRoomImplementation*) impl)->getGalaxyName();
 }
 
 void ChatRoomAdapter::setOwner(const String& Owner) {

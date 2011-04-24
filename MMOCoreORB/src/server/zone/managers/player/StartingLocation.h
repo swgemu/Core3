@@ -11,9 +11,10 @@
 #include "engine/engine.h"
 #include "server/zone/templates/datatables/DataTableRow.h"
 #include "server/zone/templates/datatables/DataTableCell.h"
-#include "server/zone/objects/terrain/PlanetNames.h"
+
 
 class StartingLocation : public Object {
+	String zoneName;
 	String location;
 	String planet;
 	String cell;
@@ -26,8 +27,6 @@ class StartingLocation : public Object {
 	float radius;
 	float heading;
 
-	int zoneID;
-
 public:
 	StartingLocation() {
 		x = 0.f;
@@ -35,7 +34,6 @@ public:
 		z = 0.f;
 		radius = 0.f;
 		heading = 0.f;
-		zoneID = 0;
 	}
 
 	StartingLocation(const StartingLocation& sl) : Object() {
@@ -49,7 +47,7 @@ public:
 		description = sl.description;
 		radius = sl.radius;
 		heading = sl.heading;
-		zoneID = sl.zoneID;
+		zoneName = sl.zoneName;
 	}
 
 	StartingLocation& operator= (const StartingLocation& sl) {
@@ -66,7 +64,7 @@ public:
 		description = sl.description;
 		radius = sl.radius;
 		heading = sl.heading;
-		zoneID = sl.zoneID;
+		zoneName = sl.zoneName;
 
 		return *this;
 	}
@@ -107,7 +105,9 @@ public:
 			System::out << "Error parsing values in StartingLocation. Possible column mismatch." << endl;
 		}
 
-		zoneID = Planet::getPlanetID(image.subString(17, image.lastIndexOf('.')));//17 = "/styles.location." 17 characters long
+		//Get the terrain name from the image path.
+		//17 = "/styles.location." 17 characters long
+		zoneName = image.subString(17, image.lastIndexOf('.'));
 	}
 
 	void insertToMessage(Message* msg) {
@@ -141,8 +141,8 @@ public:
 		return Long::valueOf(cell);
 	}
 
-	inline int getZoneID() const {
-		return zoneID;
+	inline String getZoneName() const {
+		return zoneName;
 	}
 
 	inline String getLocation() const {

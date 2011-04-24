@@ -432,7 +432,7 @@ void PlayerCreatureImplementation::unload() {
 	unloadSpawnedChildren();
 
 	if (zone != NULL) {
-		savedZoneID = zone->getZoneID();
+		savedTerrainName = zone->getZoneName();
 
 		if (isInQuadTree()) {
 			if (parent != NULL) {
@@ -730,11 +730,8 @@ void PlayerCreatureImplementation::notifySceneReady() {
 
 	playerObject->sendFriendLists();
 
-	//Update weather if on a planet.
-	if (getZone()->getZoneID() < 10) {
-		ManagedReference<WeatherManager*> weatherManager = getZone()->getPlanetManager()->getWeatherManager();
-		weatherManager->sendWeatherPacket(_this);
-	}
+	ManagedReference<WeatherManager*> weatherManager = getZone()->getPlanetManager()->getWeatherManager();
+	weatherManager->sendWeatherPacket(_this);
 
 	if (isDead()) {
 		//If the player is dead, see if they already have a clone box. If so, resend it.

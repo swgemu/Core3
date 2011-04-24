@@ -51,7 +51,7 @@ which carries forward this exception.
 #include "../../player/PlayerObject.h"
 #include "../../../Zone.h"
 
-#include "server/zone/objects/terrain/PlanetNames.h"
+
 #include "server/zone/managers/object/ObjectManager.h"
 
 class WaypointCommand : public QueueCommand {
@@ -78,7 +78,7 @@ public:
 		String waypointData = arguments.toString();
 
 		String waypointName = "New Waypoint";
-		String planet = Planet::getPlanetName(creature->getZone()->getZoneID());
+		String planet = creature->getZone()->getZoneName();
 		float x = creature->getPositionX();
 		float y = creature->getPositionY();
 		float z = 0.0f;
@@ -136,7 +136,7 @@ public:
 					//A waypoint in the form of /waypoint planet X Z Y - Planetary Map
 					planet = arg1;
 
-					if (Planet::getPlanetID(planet) < 0) { //Not a valid planet name - malformed command
+					if (server->getZoneServer()->getZone(planet) == NULL) { //Not a valid planet name - malformed command
 						creature->sendSystemMessage(usageError);
 						return GENERALERROR;
 					}

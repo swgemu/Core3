@@ -57,12 +57,11 @@ import server.zone.objects.scene.variables.StringId;
 import server.zone.managers.structure.StructureManager;
 import server.zone.managers.weather.WeatherManager;
 import server.zone.managers.objectcontroller.ObjectController;
-import server.zone.objects.creature.shuttle.ShuttleCreature;
 import server.zone.objects.player.PlayerCreature;
 import server.zone.objects.scene.SceneObject;
 include server.zone.objects.region.Region;
 include server.zone.managers.planet.RegionMap;
-include server.zone.objects.terrain.PlanetNames;
+
 include server.zone.managers.terrain.TerrainManager;
 include server.zone.managers.planet.NoBuildAreaMap;
 include server.zone.managers.planet.MissionTargetMap;
@@ -120,7 +119,7 @@ class PlanetManager extends ManagedService implements Logger {
 		zone = planet;
 		server = srv;
 				
-		Logger.setLoggingName("PlanetManager " + zone.getPlanetName());
+		Logger.setLoggingName("PlanetManager " + zone.getZoneName());
 		Logger.setLogging(false);
 		Logger.setGlobalLogging(true);
 		

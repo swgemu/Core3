@@ -160,7 +160,7 @@ ResourceTreeNode* ResourceTreeNode::find(ResourceTreeNode* node, const String& t
 }
 
 ResourceTreeEntry* ResourceTreeNode::getEntry(const String& type,
-		Vector<String> excludes, int zoneid) {
+		const Vector<String>& excludes, const String& zoneName) {
 
 	ResourceTreeEntry* entry = NULL;
 	entry = find(entry, type);
@@ -179,11 +179,9 @@ ResourceTreeEntry* ResourceTreeNode::getEntry(const String& type,
 	if(node == NULL)
 		return NULL;
 
-	if (zoneid != -1) {
+	if (zoneName != "") {
 
-		String planet = Planet::getPlanetName(zoneid);
-
-		return node->getPlanetSpecificEntry(planet);
+		return node->getPlanetSpecificEntry(zoneName);
 
 	} else {
 
@@ -231,10 +229,12 @@ void ResourceTreeNode::getEntryPool(Vector<ResourceTreeEntry*>& candidates,
 		}
 	}
 
+
 	for(int i = 0; i < nodes.size(); ++i) {
 		ResourceTreeNode* node = nodes.get(i);
 		node->getEntryPool(candidates, excludes);
 	}
+
 }
 
 void ResourceTreeNode::updateEntries() {

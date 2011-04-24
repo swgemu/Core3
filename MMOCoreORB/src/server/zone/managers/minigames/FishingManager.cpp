@@ -869,7 +869,7 @@ bool FishingManagerImplementation::readObjectMember(ObjectInputStream* stream, c
 	}
 
 	if (_name == "color") {
-		TypeInfo<Vector<int> >::parseFromBinaryStream(&color, stream);
+		TypeInfo<VectorMap<String, int> >::parseFromBinaryStream(&color, stream);
 		return true;
 	}
 
@@ -951,7 +951,7 @@ int FishingManagerImplementation::writeObjectMembers(ObjectOutputStream* stream)
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
-	TypeInfo<Vector<int> >::toBinaryStream(&color, stream);
+	TypeInfo<VectorMap<String, int> >::toBinaryStream(&color, stream);
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
@@ -1147,26 +1147,26 @@ void FishingManagerImplementation::initializeLoot() {
 }
 
 void FishingManagerImplementation::initializeColor() {
-	// server/zone/managers/minigames/FishingManager.idl():  		color.add(61);
-	(&color)->add(61);
-	// server/zone/managers/minigames/FishingManager.idl():  		color.add(51);
-	(&color)->add(51);
-	// server/zone/managers/minigames/FishingManager.idl():  		color.add(21);
-	(&color)->add(21);
-	// server/zone/managers/minigames/FishingManager.idl():  		color.add(32);
-	(&color)->add(32);
-	// server/zone/managers/minigames/FishingManager.idl():  		color.add(8);
-	(&color)->add(8);
-	// server/zone/managers/minigames/FishingManager.idl():  		color.add(14);
-	(&color)->add(14);
-	// server/zone/managers/minigames/FishingManager.idl():  		color.add(55);
-	(&color)->add(55);
-	// server/zone/managers/minigames/FishingManager.idl():  		color.add(0);
-	(&color)->add(0);
-	// server/zone/managers/minigames/FishingManager.idl():  		color.add(7);
-	(&color)->add(7);
-	// server/zone/managers/minigames/FishingManager.idl():  		color.add(41);
-	(&color)->add(41);
+	// server/zone/managers/minigames/FishingManager.idl():  		color.put("corellia", 61);
+	(&color)->put("corellia", 61);
+	// server/zone/managers/minigames/FishingManager.idl():  		color.put("dantooine", 51);
+	(&color)->put("dantooine", 51);
+	// server/zone/managers/minigames/FishingManager.idl():  		color.put("dathomir", 21);
+	(&color)->put("dathomir", 21);
+	// server/zone/managers/minigames/FishingManager.idl():  		color.put("endor", 32);
+	(&color)->put("endor", 32);
+	// server/zone/managers/minigames/FishingManager.idl():  		color.put("lok", 8);
+	(&color)->put("lok", 8);
+	// server/zone/managers/minigames/FishingManager.idl():  		color.put("naboo", 14);
+	(&color)->put("naboo", 14);
+	// server/zone/managers/minigames/FishingManager.idl():  		color.put("rori", 55);
+	(&color)->put("rori", 55);
+	// server/zone/managers/minigames/FishingManager.idl():  		color.put("talus", 0);
+	(&color)->put("talus", 0);
+	// server/zone/managers/minigames/FishingManager.idl():  		color.put("tatooine", 7);
+	(&color)->put("tatooine", 7);
+	// server/zone/managers/minigames/FishingManager.idl():  		color.put("yavin4", 41);
+	(&color)->put("yavin4", 41);
 }
 
 int FishingManagerImplementation::notifyObserverEvent(unsigned int eventType, Observable* observable, ManagedObject* arg1, long long arg2) {

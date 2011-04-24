@@ -85,7 +85,7 @@ include server.zone.objects.player.ValidatedPosition;
 class PlayerCreature extends CreatureObject {
 	protected transient ZoneClientSession owner;
 	
-	protected int savedZoneID;
+	protected string savedTerrainName;
 	protected unsigned long savedParentID;
 	
 	protected int onlineStatus;
@@ -103,8 +103,10 @@ class PlayerCreature extends CreatureObject {
 	protected Time logoutTimeStamp;
 	
 	protected unsigned int clientLastMovementStamp;
+	
 	@dereferenced
 	protected Time serverLastMovementStamp;
+	
 	protected boolean teleporting;
 	
 	@dereferenced
@@ -198,7 +200,6 @@ class PlayerCreature extends CreatureObject {
 		recoveryEvent = null;
 		accountID = 0;
 
-		savedZoneID = -1;
 		savedParentID = 0;
 		
 		skillPoints = 0;
@@ -616,8 +617,8 @@ class PlayerCreature extends CreatureObject {
 		return serverLastMovementStamp;
 	}
 	
-	public int getSavedZoneID() {
-		return savedZoneID;
+	public string getSavedTerrainName() {
+		return savedTerrainName;
 	}
 	
 	public native string getFirstName();
@@ -627,8 +628,8 @@ class PlayerCreature extends CreatureObject {
 		savedParentID = id;
 	}
 	
-	public void setSavedZoneID(int id) {
-		savedZoneID = id;
+	public void setSavedTerrainName(final string name) {
+		savedTerrainName = name;
 	}
 	
 	public void setSkillPoints(int points) {

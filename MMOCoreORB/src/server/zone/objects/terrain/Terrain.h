@@ -97,7 +97,7 @@ const static char* TerrainNames[] = {
 
 class Terrain {
 public:
-	inline const static char* getTerrainName(int terrainid) {
+	inline const static char* getZoneName(int terrainid) {
 		return TerrainNames[terrainid];
 	}
 

@@ -251,7 +251,7 @@ class ChatRoom extends ManagedObject {
 		return title;
 	}
 
-	public native string getServerName();
+	public native string getGalaxyName();
 
 	public void setOwner(final string Owner) {
 		owner = Owner;

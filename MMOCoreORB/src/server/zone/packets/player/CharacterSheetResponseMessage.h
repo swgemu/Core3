@@ -74,7 +74,8 @@ public:
 			insertFloat(declaredResidence->getPositionX()); //Home Location X
 			insertFloat(declaredResidence->getPositionZ()); //Home Location Z
 			insertFloat(declaredResidence->getPositionY()); //Home Location Y
-			insertAscii(Planet::getPlanetName(declaredResidence->getZone()->getZoneID())); //Home Planet
+			//insertAscii(Planet::getPlanetName(declaredResidence->getZone()->getZoneID())); //Home Planet
+			insertShort(0); //TODO: Reenable with new zone name system.
 		} else {
 			insertFloat(0);
 			insertFloat(0);

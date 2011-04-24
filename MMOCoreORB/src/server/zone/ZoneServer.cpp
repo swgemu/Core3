@@ -54,7 +54,7 @@
  *	ZoneServerStub
  */
 
-enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_INITIALIZE__,RPC_SHUTDOWN__,RPC_STARTMANAGERS__,RPC_STARTZONES__,RPC_STOPMANAGERS__,RPC_START__INT_INT_,RPC_STOP__,RPC_ADDTOTALSENTPACKET__INT_,RPC_ADDTOTALRESENTPACKET__INT_,RPC_PRINTINFO__BOOL_,RPC_PRINTEVENTS__,RPC_GETOBJECT__LONG_BOOL_,RPC_CREATEOBJECT__INT_INT_LONG_,RPC_CREATECLIENTOBJECT__INT_LONG_,RPC_UPDATEOBJECTTODATABASE__SCENEOBJECT_,RPC_UPDATEOBJECTTOSTATICDATABASE__SCENEOBJECT_,RPC_DESTROYOBJECTFROMDATABASE__LONG_,RPC_LOCK__BOOL_,RPC_UNLOCK__BOOL_,RPC_FIXSCHEDULER__,RPC_CHANGEUSERCAP__INT_,RPC_GETCONNECTIONCOUNT__,RPC_INCREASEONLINEPLAYERS__,RPC_DECREASEONLINEPLAYERS__,RPC_INCREASETOTALDELETEDPLAYERS__,RPC_GETGALAXYID__,RPC_GETSERVERNAME__,RPC_ISSERVERLOCKED__,RPC_ISSERVERONLINE__,RPC_ISSERVEROFFLINE__,RPC_ISSERVERLOADING__,RPC_GETSERVERSTATE__,RPC_GETZONE__INT_,RPC_GETZONECOUNT__,RPC_GETMAXPLAYERS__,RPC_GETTOTALPLAYERS__,RPC_GETDELETEDPLAYERS__,RPC_GETPLAYERMANAGER__,RPC_GETCHATMANAGER__,RPC_GETOBJECTCONTROLLER__,RPC_GETMISSIONMANAGER__,RPC_GETRADIALMANAGER__,RPC_GETGUILDMANAGER__,RPC_GETRESOURCEMANAGER__,RPC_GETCRAFTINGMANAGER__,RPC_GETLOOTMANAGER__,RPC_GETAUCTIONMANAGER__,RPC_GETFISHINGMANAGER__,RPC_GETGAMBLINGMANAGER__,RPC_GETFORAGEMANAGER__,RPC_GETACCOUNT__INT_,RPC_SETSERVERNAME__STRING_,RPC_SETGALAXYID__INT_,RPC_SETSERVERSTATE__INT_,RPC_SETSERVERSTATELOCKED__,RPC_SETSERVERSTATEONLINE__,RPC_LOADMESSAGEOFTHEDAY__,RPC_CHANGEMESSAGEOFTHEDAY__STRING_,RPC_GETMESSAGEOFTHEDAY__};
+enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_INITIALIZE__,RPC_SHUTDOWN__,RPC_STARTMANAGERS__,RPC_STARTZONES__,RPC_STOPMANAGERS__,RPC_START__INT_INT_,RPC_STOP__,RPC_ADDTOTALSENTPACKET__INT_,RPC_ADDTOTALRESENTPACKET__INT_,RPC_PRINTINFO__BOOL_,RPC_PRINTEVENTS__,RPC_GETOBJECT__LONG_BOOL_,RPC_CREATEOBJECT__INT_INT_LONG_,RPC_CREATECLIENTOBJECT__INT_LONG_,RPC_UPDATEOBJECTTODATABASE__SCENEOBJECT_,RPC_UPDATEOBJECTTOSTATICDATABASE__SCENEOBJECT_,RPC_DESTROYOBJECTFROMDATABASE__LONG_,RPC_LOCK__BOOL_,RPC_UNLOCK__BOOL_,RPC_FIXSCHEDULER__,RPC_CHANGEUSERCAP__INT_,RPC_GETCONNECTIONCOUNT__,RPC_INCREASEONLINEPLAYERS__,RPC_DECREASEONLINEPLAYERS__,RPC_INCREASETOTALDELETEDPLAYERS__,RPC_GETGALAXYID__,RPC_GETGALAXYNAME__,RPC_SETGALAXYNAME__STRING_,RPC_ISSERVERLOCKED__,RPC_ISSERVERONLINE__,RPC_ISSERVEROFFLINE__,RPC_ISSERVERLOADING__,RPC_GETSERVERSTATE__,RPC_GETZONE__STRING_,RPC_GETZONE__INT_,RPC_GETZONECOUNT__,RPC_GETMAXPLAYERS__,RPC_GETTOTALPLAYERS__,RPC_GETDELETEDPLAYERS__,RPC_GETPLAYERMANAGER__,RPC_GETCHATMANAGER__,RPC_GETOBJECTCONTROLLER__,RPC_GETMISSIONMANAGER__,RPC_GETRADIALMANAGER__,RPC_GETGUILDMANAGER__,RPC_GETRESOURCEMANAGER__,RPC_GETCRAFTINGMANAGER__,RPC_GETLOOTMANAGER__,RPC_GETAUCTIONMANAGER__,RPC_GETFISHINGMANAGER__,RPC_GETGAMBLINGMANAGER__,RPC_GETFORAGEMANAGER__,RPC_GETACCOUNT__INT_,RPC_SETGALAXYID__INT_,RPC_SETSERVERSTATE__INT_,RPC_SETSERVERSTATELOCKED__,RPC_SETSERVERSTATEONLINE__,RPC_LOADMESSAGEOFTHEDAY__,RPC_CHANGEMESSAGEOFTHEDAY__STRING_,RPC_GETMESSAGEOFTHEDAY__};
 
 ZoneServer::ZoneServer(int galaxyid) : ManagedService(DummyConstructorParameter::instance()) {
 	ZoneServerImplementation* _implementation = new ZoneServerImplementation(galaxyid);
@@ -474,18 +474,32 @@ int ZoneServer::getGalaxyID() {
 		return _implementation->getGalaxyID();
 }
 
-String ZoneServer::getServerName() {
+String ZoneServer::getGalaxyName() {
 	ZoneServerImplementation* _implementation = (ZoneServerImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_GETSERVERNAME__);
+		DistributedMethod method(this, RPC_GETGALAXYNAME__);
 
-		method.executeWithAsciiReturn(_return_getServerName);
-		return _return_getServerName;
+		method.executeWithAsciiReturn(_return_getGalaxyName);
+		return _return_getGalaxyName;
 	} else
-		return _implementation->getServerName();
+		return _implementation->getGalaxyName();
+}
+
+void ZoneServer::setGalaxyName(const String& name) {
+	ZoneServerImplementation* _implementation = (ZoneServerImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_SETGALAXYNAME__STRING_);
+		method.addAsciiParameter(name);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->setGalaxyName(name);
 }
 
 bool ZoneServer::isServerLocked() {
@@ -553,18 +567,32 @@ int ZoneServer::getServerState() {
 		return _implementation->getServerState();
 }
 
-Zone* ZoneServer::getZone(int index) {
+Zone* ZoneServer::getZone(const String& terrainName) {
+	ZoneServerImplementation* _implementation = (ZoneServerImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_GETZONE__STRING_);
+		method.addAsciiParameter(terrainName);
+
+		return (Zone*) method.executeWithObjectReturn();
+	} else
+		return _implementation->getZone(terrainName);
+}
+
+Zone* ZoneServer::getZone(int idx) {
 	ZoneServerImplementation* _implementation = (ZoneServerImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, RPC_GETZONE__INT_);
-		method.addSignedIntParameter(index);
+		method.addSignedIntParameter(idx);
 
 		return (Zone*) method.executeWithObjectReturn();
 	} else
-		return _implementation->getZone(index);
+		return _implementation->getZone(idx);
 }
 
 int ZoneServer::getZoneCount() {
@@ -829,20 +857,6 @@ Time* ZoneServer::getStartTimestamp() {
 		return _implementation->getStartTimestamp();
 }
 
-void ZoneServer::setServerName(const String& servername) {
-	ZoneServerImplementation* _implementation = (ZoneServerImplementation*) _getImplementation();
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, RPC_SETSERVERNAME__STRING_);
-		method.addAsciiParameter(servername);
-
-		method.executeWithVoidReturn();
-	} else
-		_implementation->setServerName(servername);
-}
-
 void ZoneServer::setGalaxyID(int galaxyid) {
 	ZoneServerImplementation* _implementation = (ZoneServerImplementation*) _getImplementation();
 	if (_implementation == NULL) {
@@ -1015,7 +1029,7 @@ bool ZoneServerImplementation::readObjectMember(ObjectInputStream* stream, const
 		return true;
 
 	if (_name == "zones") {
-		TypeInfo<Vector<ManagedReference<Zone* > > >::parseFromBinaryStream(&zones, stream);
+		TypeInfo<VectorMap<String, ManagedReference<Zone* > > >::parseFromBinaryStream(&zones, stream);
 		return true;
 	}
 
@@ -1114,8 +1128,8 @@ bool ZoneServerImplementation::readObjectMember(ObjectInputStream* stream, const
 		return true;
 	}
 
-	if (_name == "name") {
-		TypeInfo<String >::parseFromBinaryStream(&name, stream);
+	if (_name == "galaxyName") {
+		TypeInfo<String >::parseFromBinaryStream(&galaxyName, stream);
 		return true;
 	}
 
@@ -1153,7 +1167,7 @@ int ZoneServerImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
-	TypeInfo<Vector<ManagedReference<Zone* > > >::toBinaryStream(&zones, stream);
+	TypeInfo<VectorMap<String, ManagedReference<Zone* > > >::toBinaryStream(&zones, stream);
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
@@ -1309,11 +1323,11 @@ int ZoneServerImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "name";
+	_name = "galaxyName";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
-	TypeInfo<String >::toBinaryStream(&name, stream);
+	TypeInfo<String >::toBinaryStream(&galaxyName, stream);
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
@@ -1353,6 +1367,16 @@ int ZoneServerImplementation::getGalaxyID() {
 	return galaxyID;
 }
 
+String ZoneServerImplementation::getGalaxyName() {
+	// server/zone/ZoneServer.idl():  		return galaxyName;
+	return galaxyName;
+}
+
+void ZoneServerImplementation::setGalaxyName(const String& name) {
+	// server/zone/ZoneServer.idl():  		galaxyName = name;
+	galaxyName = name;
+}
+
 bool ZoneServerImplementation::isServerLocked() {
 	// server/zone/ZoneServer.idl():  		return serverState == LOCKED;
 	return serverState == LOCKED;
@@ -1378,9 +1402,14 @@ int ZoneServerImplementation::getServerState() {
 	return serverState;
 }
 
-Zone* ZoneServerImplementation::getZone(int index) {
-	// server/zone/ZoneServer.idl():  		return zones.get(index);
-	return (&zones)->get(index);
+Zone* ZoneServerImplementation::getZone(const String& terrainName) {
+	// server/zone/ZoneServer.idl():  		return zones.get(terrainName);
+	return (&zones)->get(terrainName);
+}
+
+Zone* ZoneServerImplementation::getZone(int idx) {
+	// server/zone/ZoneServer.idl():  		return zones.get(idx);
+	return (&zones)->get(idx);
 }
 
 int ZoneServerImplementation::getZoneCount() {
@@ -1587,8 +1616,11 @@ Packet* ZoneServerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	case RPC_GETGALAXYID__:
 		resp->insertSignedInt(getGalaxyID());
 		break;
-	case RPC_GETSERVERNAME__:
-		resp->insertAscii(getServerName());
+	case RPC_GETGALAXYNAME__:
+		resp->insertAscii(getGalaxyName());
+		break;
+	case RPC_SETGALAXYNAME__STRING_:
+		setGalaxyName(inv->getAsciiParameter(_param0_setGalaxyName__String_));
 		break;
 	case RPC_ISSERVERLOCKED__:
 		resp->insertBoolean(isServerLocked());
@@ -1604,6 +1636,9 @@ Packet* ZoneServerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		break;
 	case RPC_GETSERVERSTATE__:
 		resp->insertSignedInt(getServerState());
+		break;
+	case RPC_GETZONE__STRING_:
+		resp->insertLong(getZone(inv->getAsciiParameter(_param0_getZone__String_))->_getObjectID());
 		break;
 	case RPC_GETZONE__INT_:
 		resp->insertLong(getZone(inv->getSignedIntParameter())->_getObjectID());
@@ -1661,9 +1696,6 @@ Packet* ZoneServerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		break;
 	case RPC_GETACCOUNT__INT_:
 		resp->insertLong(getAccount(inv->getUnsignedIntParameter())->_getObjectID());
-		break;
-	case RPC_SETSERVERNAME__STRING_:
-		setServerName(inv->getAsciiParameter(_param0_setServerName__String_));
 		break;
 	case RPC_SETGALAXYID__INT_:
 		setGalaxyID(inv->getSignedIntParameter());
@@ -1801,8 +1833,12 @@ int ZoneServerAdapter::getGalaxyID() {
 	return ((ZoneServerImplementation*) impl)->getGalaxyID();
 }
 
-String ZoneServerAdapter::getServerName() {
-	return ((ZoneServerImplementation*) impl)->getServerName();
+String ZoneServerAdapter::getGalaxyName() {
+	return ((ZoneServerImplementation*) impl)->getGalaxyName();
+}
+
+void ZoneServerAdapter::setGalaxyName(const String& name) {
+	((ZoneServerImplementation*) impl)->setGalaxyName(name);
 }
 
 bool ZoneServerAdapter::isServerLocked() {
@@ -1825,8 +1861,12 @@ int ZoneServerAdapter::getServerState() {
 	return ((ZoneServerImplementation*) impl)->getServerState();
 }
 
-Zone* ZoneServerAdapter::getZone(int index) {
-	return ((ZoneServerImplementation*) impl)->getZone(index);
+Zone* ZoneServerAdapter::getZone(const String& terrainName) {
+	return ((ZoneServerImplementation*) impl)->getZone(terrainName);
+}
+
+Zone* ZoneServerAdapter::getZone(int idx) {
+	return ((ZoneServerImplementation*) impl)->getZone(idx);
 }
 
 int ZoneServerAdapter::getZoneCount() {
@@ -1899,10 +1939,6 @@ ForageManager* ZoneServerAdapter::getForageManager() {
 
 Account* ZoneServerAdapter::getAccount(unsigned int accountID) {
 	return ((ZoneServerImplementation*) impl)->getAccount(accountID);
-}
-
-void ZoneServerAdapter::setServerName(const String& servername) {
-	((ZoneServerImplementation*) impl)->setServerName(servername);
 }
 
 void ZoneServerAdapter::setGalaxyID(int galaxyid) {

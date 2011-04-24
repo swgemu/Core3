@@ -47,7 +47,6 @@ which carries forward this exception.
 
 #include "engine/engine.h"
 #include "server/zone/objects/structure/StructureObject.h"
-#include "server/zone/objects/terrain/PlanetNames.h"
 #include "server/zone/objects/region/Region.h"
 #include "server/zone/Zone.h"
 
@@ -66,8 +65,7 @@ public:
 		insertShort(0x03);
 		insertInt(0x904DAE1A);  //EnterTicketPurchaseModeMessage
 
-		//TODO: Replace with getZone()->getZoneName()
-        insertAscii(Planet::getPlanetName(port->getZone()->getZoneID()));
+        insertAscii(port->getZone()->getZoneName());
         insertAscii(((Region*) port->getActiveRegion())->getObjectName()->getDisplayedName());
 	}
 	

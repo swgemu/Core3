@@ -28,10 +28,10 @@
  *	ZoneStub
  */
 
-enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_FINALIZE__,RPC_GETNEARESTCLONINGBUILDING__CREATUREOBJECT_,RPC_GETNEARESTPLANETARYOBJECT__SCENEOBJECT_INT_,RPC_INITIALIZEPRIVATEDATA__,RPC_UPDATEACTIVEAREAS__SCENEOBJECT_,RPC_STARTMANAGERS__,RPC_STOPMANAGERS__,RPC_GETHEIGHT__FLOAT_FLOAT_,RPC_ADDSCENEOBJECT__SCENEOBJECT_,RPC_SENDMAPLOCATIONSTO__STRING_SCENEOBJECT_,RPC_DROPSCENEOBJECT__SCENEOBJECT_,RPC_GETZONEID__,RPC_GETPLANETNAME__,RPC_GETPLANETMANAGER__,RPC_GETCITYMANAGER__,RPC_GETZONESERVER__,RPC_GETCREATUREMANAGER__,RPC_GETGALACTICTIME__,RPC_HASMANAGERSSTARTED__,RPC_GETMINX__,RPC_GETMAXX__,RPC_GETMINY__,RPC_GETMAXY__};
+enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_FINALIZE__,RPC_GETNEARESTCLONINGBUILDING__CREATUREOBJECT_,RPC_GETNEARESTPLANETARYOBJECT__SCENEOBJECT_INT_,RPC_INITIALIZEPRIVATEDATA__,RPC_UPDATEACTIVEAREAS__SCENEOBJECT_,RPC_STARTMANAGERS__,RPC_STOPMANAGERS__,RPC_GETHEIGHT__FLOAT_FLOAT_,RPC_ADDSCENEOBJECT__SCENEOBJECT_,RPC_SENDMAPLOCATIONSTO__SCENEOBJECT_,RPC_DROPSCENEOBJECT__SCENEOBJECT_,RPC_GETPLANETMANAGER__,RPC_GETCITYMANAGER__,RPC_GETZONESERVER__,RPC_GETCREATUREMANAGER__,RPC_GETGALACTICTIME__,RPC_HASMANAGERSSTARTED__,RPC_GETMINX__,RPC_GETMAXX__,RPC_GETMINY__,RPC_GETMAXY__,RPC_GETZONENAME__,RPC_GETZONECRC__};
 
-Zone::Zone(ZoneProcessServer* processor, int zoneid) : ManagedObject(DummyConstructorParameter::instance()) {
-	ZoneImplementation* _implementation = new ZoneImplementation(processor, zoneid);
+Zone::Zone(ZoneProcessServer* processor, const String& zoneName) : ManagedObject(DummyConstructorParameter::instance()) {
+	ZoneImplementation* _implementation = new ZoneImplementation(processor, zoneName);
 	_impl = _implementation;
 	_impl->_setStub(this);
 }
@@ -239,19 +239,18 @@ void Zone::addSceneObject(SceneObject* object) {
 		_implementation->addSceneObject(object);
 }
 
-void Zone::sendMapLocationsTo(const String& planetName, SceneObject* player) {
+void Zone::sendMapLocationsTo(SceneObject* player) {
 	ZoneImplementation* _implementation = (ZoneImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_SENDMAPLOCATIONSTO__STRING_SCENEOBJECT_);
-		method.addAsciiParameter(planetName);
+		DistributedMethod method(this, RPC_SENDMAPLOCATIONSTO__SCENEOBJECT_);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
 	} else
-		_implementation->sendMapLocationsTo(planetName, player);
+		_implementation->sendMapLocationsTo(player);
 }
 
 void Zone::dropSceneObject(SceneObject* object) {
@@ -266,33 +265,6 @@ void Zone::dropSceneObject(SceneObject* object) {
 		method.executeWithVoidReturn();
 	} else
 		_implementation->dropSceneObject(object);
-}
-
-int Zone::getZoneID() {
-	ZoneImplementation* _implementation = (ZoneImplementation*) _getImplementation();
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, RPC_GETZONEID__);
-
-		return method.executeWithSignedIntReturn();
-	} else
-		return _implementation->getZoneID();
-}
-
-String Zone::getPlanetName() {
-	ZoneImplementation* _implementation = (ZoneImplementation*) _getImplementation();
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, RPC_GETPLANETNAME__);
-
-		method.executeWithAsciiReturn(_return_getPlanetName);
-		return _return_getPlanetName;
-	} else
-		return _implementation->getPlanetName();
 }
 
 PlanetManager* Zone::getPlanetManager() {
@@ -425,6 +397,33 @@ float Zone::getMaxY() {
 		return _implementation->getMaxY();
 }
 
+String Zone::getZoneName() {
+	ZoneImplementation* _implementation = (ZoneImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_GETZONENAME__);
+
+		method.executeWithAsciiReturn(_return_getZoneName);
+		return _return_getZoneName;
+	} else
+		return _implementation->getZoneName();
+}
+
+unsigned int Zone::getZoneCRC() {
+	ZoneImplementation* _implementation = (ZoneImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_GETZONECRC__);
+
+		return method.executeWithUnsignedIntReturn();
+	} else
+		return _implementation->getZoneCRC();
+}
+
 DistributedObjectServant* Zone::_getImplementation() {
 
 	_updated = true;
@@ -527,8 +526,13 @@ bool ZoneImplementation::readObjectMember(ObjectInputStream* stream, const Strin
 	if (ManagedObjectImplementation::readObjectMember(stream, _name))
 		return true;
 
-	if (_name == "zoneID") {
-		TypeInfo<int >::parseFromBinaryStream(&zoneID, stream);
+	if (_name == "zoneName") {
+		TypeInfo<String >::parseFromBinaryStream(&zoneName, stream);
+		return true;
+	}
+
+	if (_name == "zoneCRC") {
+		TypeInfo<unsigned int >::parseFromBinaryStream(&zoneCRC, stream);
 		return true;
 	}
 
@@ -582,11 +586,19 @@ int ZoneImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	String _name;
 	int _offset;
 	uint16 _totalSize;
-	_name = "zoneID";
+	_name = "zoneName";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
-	TypeInfo<int >::toBinaryStream(&zoneID, stream);
+	TypeInfo<String >::toBinaryStream(&zoneName, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "zoneCRC";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<unsigned int >::toBinaryStream(&zoneCRC, stream);
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
@@ -647,17 +659,12 @@ int ZoneImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	stream->writeShort(_offset, _totalSize);
 
 
-	return 8 + ManagedObjectImplementation::writeObjectMembers(stream);
+	return 9 + ManagedObjectImplementation::writeObjectMembers(stream);
 }
 
 QuadTree* ZoneImplementation::getRegionTree() {
 	// server/zone/Zone.idl():  		return regionTree;
 	return regionTree;
-}
-
-int ZoneImplementation::getZoneID() {
-	// server/zone/Zone.idl():  		return zoneID;
-	return zoneID;
 }
 
 PlanetManager* ZoneImplementation::getPlanetManager() {
@@ -688,6 +695,16 @@ unsigned long long ZoneImplementation::getGalacticTime() {
 bool ZoneImplementation::hasManagersStarted() {
 	// server/zone/Zone.idl():  		return managersStarted;
 	return managersStarted;
+}
+
+String ZoneImplementation::getZoneName() {
+	// server/zone/Zone.idl():  		return zoneName;
+	return zoneName;
+}
+
+unsigned int ZoneImplementation::getZoneCRC() {
+	// server/zone/Zone.idl():  		return zoneCRC;
+	return zoneCRC;
 }
 
 /*
@@ -731,17 +748,11 @@ Packet* ZoneAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	case RPC_ADDSCENEOBJECT__SCENEOBJECT_:
 		addSceneObject((SceneObject*) inv->getObjectParameter());
 		break;
-	case RPC_SENDMAPLOCATIONSTO__STRING_SCENEOBJECT_:
-		sendMapLocationsTo(inv->getAsciiParameter(_param0_sendMapLocationsTo__String_SceneObject_), (SceneObject*) inv->getObjectParameter());
+	case RPC_SENDMAPLOCATIONSTO__SCENEOBJECT_:
+		sendMapLocationsTo((SceneObject*) inv->getObjectParameter());
 		break;
 	case RPC_DROPSCENEOBJECT__SCENEOBJECT_:
 		dropSceneObject((SceneObject*) inv->getObjectParameter());
-		break;
-	case RPC_GETZONEID__:
-		resp->insertSignedInt(getZoneID());
-		break;
-	case RPC_GETPLANETNAME__:
-		resp->insertAscii(getPlanetName());
 		break;
 	case RPC_GETPLANETMANAGER__:
 		resp->insertLong(getPlanetManager()->_getObjectID());
@@ -772,6 +783,12 @@ Packet* ZoneAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		break;
 	case RPC_GETMAXY__:
 		resp->insertFloat(getMaxY());
+		break;
+	case RPC_GETZONENAME__:
+		resp->insertAscii(getZoneName());
+		break;
+	case RPC_GETZONECRC__:
+		resp->insertInt(getZoneCRC());
 		break;
 	default:
 		return NULL;
@@ -820,20 +837,12 @@ void ZoneAdapter::addSceneObject(SceneObject* object) {
 	((ZoneImplementation*) impl)->addSceneObject(object);
 }
 
-void ZoneAdapter::sendMapLocationsTo(const String& planetName, SceneObject* player) {
-	((ZoneImplementation*) impl)->sendMapLocationsTo(planetName, player);
+void ZoneAdapter::sendMapLocationsTo(SceneObject* player) {
+	((ZoneImplementation*) impl)->sendMapLocationsTo(player);
 }
 
 void ZoneAdapter::dropSceneObject(SceneObject* object) {
 	((ZoneImplementation*) impl)->dropSceneObject(object);
-}
-
-int ZoneAdapter::getZoneID() {
-	return ((ZoneImplementation*) impl)->getZoneID();
-}
-
-String ZoneAdapter::getPlanetName() {
-	return ((ZoneImplementation*) impl)->getPlanetName();
 }
 
 PlanetManager* ZoneAdapter::getPlanetManager() {
@@ -874,6 +883,14 @@ float ZoneAdapter::getMinY() {
 
 float ZoneAdapter::getMaxY() {
 	return ((ZoneImplementation*) impl)->getMaxY();
+}
+
+String ZoneAdapter::getZoneName() {
+	return ((ZoneImplementation*) impl)->getZoneName();
+}
+
+unsigned int ZoneAdapter::getZoneCRC() {
+	return ((ZoneImplementation*) impl)->getZoneCRC();
 }
 
 /*
