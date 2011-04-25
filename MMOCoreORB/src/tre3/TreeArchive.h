@@ -29,20 +29,25 @@ public:
 	}
 
 	void addRecord(const String& path, TreeFileRecord* record) {
-		int pos = path.lastIndexOf("/");
-		String dir = path.subString(0, pos);
-		String fileName = path.subString(pos+1, path.length());
+		try {
+			int pos = path.lastIndexOf("/");
 
-		record->setRecordName(fileName);
+			String dir = path.subString(0, pos);
+			String fileName = path.subString(pos+1, path.length());
 
-		if (nodeMap.contains(dir)) {
-			TreeDirectory* records = &nodeMap.get(dir);
-			records->put(record);
-		} else {
-			TreeDirectory records;
-			records.put(record);
+			record->setRecordName(fileName);
 
-			nodeMap.put(dir, records);
+			if (nodeMap.contains(dir)) {
+				TreeDirectory* records = &nodeMap.get(dir);
+				records->put(record);
+			} else {
+				TreeDirectory records;
+				records.put(record);
+
+				nodeMap.put(dir, records);
+			}
+		} catch (Exception& e) {
+			error("Invalid path: " + path);
 		}
 	}
 
