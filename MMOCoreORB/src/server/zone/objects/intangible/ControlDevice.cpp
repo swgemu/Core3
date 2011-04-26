@@ -8,7 +8,7 @@
 
 #include "server/zone/objects/player/PlayerCreature.h"
 
-#include "server/zone/objects/creature/CreatureObject.h"
+#include "server/zone/objects/tangible/TangibleObject.h"
 
 #include "server/zone/objects/scene/SceneObject.h"
 
@@ -18,7 +18,7 @@
  *	ControlDeviceStub
  */
 
-enum {RPC_UPDATETODATABASEALLOBJECTS__BOOL_ = 6,RPC_STOREOBJECT__PLAYERCREATURE_,RPC_GENERATEOBJECT__PLAYERCREATURE_,RPC_SETCONTROLLEDOBJECT__CREATUREOBJECT_,RPC_GETCONTROLLEDOBJECT__,RPC_ISCONTROLDEVICE__};
+enum {RPC_UPDATETODATABASEALLOBJECTS__BOOL_ = 6,RPC_STOREOBJECT__PLAYERCREATURE_,RPC_GENERATEOBJECT__PLAYERCREATURE_,RPC_SETCONTROLLEDOBJECT__TANGIBLEOBJECT_,RPC_GETCONTROLLEDOBJECT__,RPC_ISCONTROLDEVICE__};
 
 ControlDevice::ControlDevice() : IntangibleObject(DummyConstructorParameter::instance()) {
 	ControlDeviceImplementation* _implementation = new ControlDeviceImplementation();
@@ -75,13 +75,13 @@ void ControlDevice::generateObject(PlayerCreature* player) {
 		_implementation->generateObject(player);
 }
 
-void ControlDevice::setControlledObject(CreatureObject* object) {
+void ControlDevice::setControlledObject(TangibleObject* object) {
 	ControlDeviceImplementation* _implementation = (ControlDeviceImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_SETCONTROLLEDOBJECT__CREATUREOBJECT_);
+		DistributedMethod method(this, RPC_SETCONTROLLEDOBJECT__TANGIBLEOBJECT_);
 		method.addObjectParameter(object);
 
 		method.executeWithVoidReturn();
@@ -89,7 +89,7 @@ void ControlDevice::setControlledObject(CreatureObject* object) {
 		_implementation->setControlledObject(object);
 }
 
-CreatureObject* ControlDevice::getControlledObject() {
+TangibleObject* ControlDevice::getControlledObject() {
 	ControlDeviceImplementation* _implementation = (ControlDeviceImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
@@ -97,7 +97,7 @@ CreatureObject* ControlDevice::getControlledObject() {
 
 		DistributedMethod method(this, RPC_GETCONTROLLEDOBJECT__);
 
-		return (CreatureObject*) method.executeWithObjectReturn();
+		return (TangibleObject*) method.executeWithObjectReturn();
 	} else
 		return _implementation->getControlledObject();
 }
@@ -220,7 +220,7 @@ bool ControlDeviceImplementation::readObjectMember(ObjectInputStream* stream, co
 		return true;
 
 	if (_name == "controlledObject") {
-		TypeInfo<ManagedReference<CreatureObject* > >::parseFromBinaryStream(&controlledObject, stream);
+		TypeInfo<ManagedReference<TangibleObject* > >::parseFromBinaryStream(&controlledObject, stream);
 		return true;
 	}
 
@@ -243,7 +243,7 @@ int ControlDeviceImplementation::writeObjectMembers(ObjectOutputStream* stream) 
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
-	TypeInfo<ManagedReference<CreatureObject* > >::toBinaryStream(&controlledObject, stream);
+	TypeInfo<ManagedReference<TangibleObject* > >::toBinaryStream(&controlledObject, stream);
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
@@ -288,12 +288,12 @@ void ControlDeviceImplementation::generateObject(PlayerCreature* player) {
 	Logger::error("called generateObject on an abstract method");
 }
 
-void ControlDeviceImplementation::setControlledObject(CreatureObject* object) {
+void ControlDeviceImplementation::setControlledObject(TangibleObject* object) {
 	// server/zone/objects/intangible/ControlDevice.idl():  		controlledObject = object;
 	controlledObject = object;
 }
 
-CreatureObject* ControlDeviceImplementation::getControlledObject() {
+TangibleObject* ControlDeviceImplementation::getControlledObject() {
 	// server/zone/objects/intangible/ControlDevice.idl():  		return controlledObject;
 	return controlledObject;
 }
@@ -323,8 +323,8 @@ Packet* ControlDeviceAdapter::invokeMethod(uint32 methid, DistributedMethod* inv
 	case RPC_GENERATEOBJECT__PLAYERCREATURE_:
 		generateObject((PlayerCreature*) inv->getObjectParameter());
 		break;
-	case RPC_SETCONTROLLEDOBJECT__CREATUREOBJECT_:
-		setControlledObject((CreatureObject*) inv->getObjectParameter());
+	case RPC_SETCONTROLLEDOBJECT__TANGIBLEOBJECT_:
+		setControlledObject((TangibleObject*) inv->getObjectParameter());
 		break;
 	case RPC_GETCONTROLLEDOBJECT__:
 		resp->insertLong(getControlledObject()->_getObjectID());
@@ -351,11 +351,11 @@ void ControlDeviceAdapter::generateObject(PlayerCreature* player) {
 	((ControlDeviceImplementation*) impl)->generateObject(player);
 }
 
-void ControlDeviceAdapter::setControlledObject(CreatureObject* object) {
+void ControlDeviceAdapter::setControlledObject(TangibleObject* object) {
 	((ControlDeviceImplementation*) impl)->setControlledObject(object);
 }
 
-CreatureObject* ControlDeviceAdapter::getControlledObject() {
+TangibleObject* ControlDeviceAdapter::getControlledObject() {
 	return ((ControlDeviceImplementation*) impl)->getControlledObject();
 }
 

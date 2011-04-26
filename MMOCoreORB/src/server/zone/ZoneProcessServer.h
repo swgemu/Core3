@@ -14,6 +14,20 @@
 namespace server {
 namespace zone {
 namespace managers {
+namespace skill {
+
+class SkillManager;
+
+} // namespace skill
+} // namespace managers
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::managers::skill;
+
+namespace server {
+namespace zone {
+namespace managers {
 namespace player {
 namespace creation {
 
@@ -223,6 +237,8 @@ namespace zone {
 class ZoneProcessServerImplementation : public ManagedServiceImplementation {
 protected:
 	ManagedReference<ZoneServer* > zoneServer;
+
+	SkillManager* skillManager;
 
 	PlayerCreationManager* playerCreationManager;
 

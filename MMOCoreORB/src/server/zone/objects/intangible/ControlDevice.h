@@ -42,16 +42,16 @@ using namespace server::zone::objects::player;
 namespace server {
 namespace zone {
 namespace objects {
-namespace creature {
+namespace tangible {
 
-class CreatureObject;
+class TangibleObject;
 
-} // namespace creature
+} // namespace tangible
 } // namespace objects
 } // namespace zone
 } // namespace server
 
-using namespace server::zone::objects::creature;
+using namespace server::zone::objects::tangible;
 
 namespace server {
 namespace zone {
@@ -98,9 +98,9 @@ public:
 
 	void generateObject(PlayerCreature* player);
 
-	void setControlledObject(CreatureObject* object);
+	void setControlledObject(TangibleObject* object);
 
-	CreatureObject* getControlledObject();
+	TangibleObject* getControlledObject();
 
 	bool isControlDevice();
 
@@ -130,7 +130,7 @@ namespace intangible {
 
 class ControlDeviceImplementation : public IntangibleObjectImplementation {
 protected:
-	ManagedReference<CreatureObject* > controlledObject;
+	ManagedReference<TangibleObject* > controlledObject;
 
 public:
 	ControlDeviceImplementation();
@@ -143,9 +143,9 @@ public:
 
 	virtual void generateObject(PlayerCreature* player);
 
-	void setControlledObject(CreatureObject* object);
+	void setControlledObject(TangibleObject* object);
 
-	CreatureObject* getControlledObject();
+	TangibleObject* getControlledObject();
 
 	bool isControlDevice();
 
@@ -198,9 +198,9 @@ public:
 
 	void generateObject(PlayerCreature* player);
 
-	void setControlledObject(CreatureObject* object);
+	void setControlledObject(TangibleObject* object);
 
-	CreatureObject* getControlledObject();
+	TangibleObject* getControlledObject();
 
 	bool isControlDevice();
 

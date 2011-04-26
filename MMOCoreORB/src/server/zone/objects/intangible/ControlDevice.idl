@@ -48,14 +48,14 @@ import engine.lua.LuaObject;
 import server.zone.objects.intangible.IntangibleObject;
 import server.zone.objects.creature.VehicleObject;
 import server.zone.objects.player.PlayerCreature;
-import server.zone.objects.creature.CreatureObject;
+import server.zone.objects.tangible.TangibleObject;
 import server.zone.objects.scene.SceneObject;
 import server.zone.Zone;
 include server.zone.managers.radial.RadialOptions;
 
 
 class ControlDevice extends IntangibleObject {
-	protected CreatureObject controlledObject;
+	protected TangibleObject controlledObject;
 	
 	public ControlDevice() {
 		controlledObject = null;
@@ -89,11 +89,11 @@ class ControlDevice extends IntangibleObject {
 		Logger.error("called generateObject on an abstract method");
 	}
 	
-	public void setControlledObject(CreatureObject object) {
+	public void setControlledObject(TangibleObject object) {
 		controlledObject = object;
 	}
 	
-	public CreatureObject getControlledObject() {
+	public TangibleObject getControlledObject() {
 		return controlledObject;
 	}
 	

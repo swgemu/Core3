@@ -390,8 +390,7 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	public static final int MISCCLOTHING = 0x1000011;
 	public static final int SKIRT = 0x1000012;
 	public static final int ITHOGARB = 0x1000013;
-	
-	
+
 	public static final int BADGEAREA = 0x2000000;
 	public static final int REGIONAREA = 0x2000001;
 	public static final int MISSIONSPAWNAREA = 0x2000002;
@@ -404,6 +403,28 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	public static final int HERDGROUP = 0x4000001;
 	public static final int PACKGROUP = 0x4000002;
 	public static final int LAIRGROUP = 0x4000003;
+	
+	public static final int SHIP = 0x20000000;
+	public static final int SHIPFIGHTER = 0x20000001;
+	public static final int SHIPCAPITAL = 0x20000002;
+	public static final int SHIPSTATION = 0x20000003;
+	public static final int SHIPTRANSPORT = 0x20000004;
+	
+	public static final int SHIPATTACHMENT = 0x40000000;
+	public static final int SHIPREACTOR = 0x40000001;
+	public static final int SHIPENGINE = 0x40000002;
+	public static final int SHIPSHIELDGENERATOR = 0x40000003;
+	public static final int SHIPARMOR = 0x40000004;
+	public static final int SHIPWEAPON = 0x40000005;
+	public static final int SHIPWEAPONCAPACITOR = 0x40000006;
+	public static final int SHIPBOOSTER = 0x40000007;
+	public static final int SHIPDROIDINTERFACE = 0x40000008;
+	public static final int SHIPCHASSIS = 0x4000000C;
+	public static final int SHIPMISSLE = 0x4000000D;
+	public static final int SHIPCOUNTERMEASURE = 0x4000000E;
+	public static final int SHIPWEAPONLAUNCHER = 0x4000000F;
+	public static final int SHIPCOUNTERMEASURELAUNCHER = 0x40000010;
+
 	
 	/**
 	 * SceneObject constructor, used to initialize the object.

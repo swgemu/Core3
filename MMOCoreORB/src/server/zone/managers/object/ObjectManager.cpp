@@ -198,7 +198,7 @@ void ObjectManager::registerObjectTypes() {
 	objectFactory.registerObject<MissionObject>(SceneObject::MISSIONOBJECT);
 
 	objectFactory.registerObject<Terminal>(SceneObject::TERMINAL);
-	objectFactory.registerObject<Terminal>(SceneObject::SPACETERMINAL);
+	objectFactory.registerObject<SpaceshipTerminal>(SceneObject::SPACETERMINAL);
 	objectFactory.registerObject<Terminal>(SceneObject::SHIPPINGTERMINAL);
 	objectFactory.registerObject<Terminal>(SceneObject::INTERACTIVETERMINAL);
 	objectFactory.registerObject<MissionTerminal>(SceneObject::MISSIONTERMINAL);
@@ -262,7 +262,9 @@ void ObjectManager::registerObjectTypes() {
 	objectFactory.registerObject<FishingBaitObject>(SceneObject::FISHINGBAIT);
 	objectFactory.registerObject<FishObject>(SceneObject::FISH);
 	objectFactory.registerObject<TangibleObject>(SceneObject::TANGIBLE);
+
 	objectFactory.registerObject<VehicleControlDevice>(SceneObject::VEHICLECONTROLDEVICE);
+	objectFactory.registerObject<ShipControlDevice>(SceneObject::SHIPCONTROLDEVICE);
 
 	objectFactory.registerObject<VehicleObject>(SceneObject::VEHICLE);
 	objectFactory.registerObject<VehicleObject>(SceneObject::HOVERVEHICLE);
@@ -305,6 +307,9 @@ void ObjectManager::registerObjectTypes() {
 	objectFactory.registerObject<HerdGroup>(SceneObject::HERDGROUP);
 	objectFactory.registerObject<PackGroup>(SceneObject::PACKGROUP);
 	objectFactory.registerObject<LairGroup>(SceneObject::LAIRGROUP);
+
+	objectFactory.registerObject<FighterShipObject>(SceneObject::SHIPFIGHTER);
+	objectFactory.registerObject<SpaceStationObject>(SceneObject::SHIPSTATION);
 }
 
 void ObjectManager::updateObjectVersion() {

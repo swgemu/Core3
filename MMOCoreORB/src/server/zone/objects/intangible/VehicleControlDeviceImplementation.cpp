@@ -50,8 +50,12 @@ void VehicleControlDeviceImplementation::generateObject(PlayerCreature* player) 
 	Locker clocker(controlledObject, player);
 
 	controlledObject->initializePosition(player->getPositionX(), player->getPositionZ(), player->getPositionY());
-	controlledObject->setCreatureLink(player);
-	controlledObject->setControlDevice(_this);
+
+	//TODO: Refactor
+	if (controlledObject->isCreatureObject()) {
+		((CreatureObject*)controlledObject.get())->setCreatureLink(player);
+		((CreatureObject*)controlledObject.get())->setControlDevice(_this);
+	}
 
 	controlledObject->insertToZone(player->getZone());
 	controlledObject->inflictDamage(player, 0, System::random(50), true);
@@ -74,7 +78,9 @@ void VehicleControlDeviceImplementation::storeObject(PlayerCreature* player) {
 	}
 
 	controlledObject->removeFromZone();
-	controlledObject->setCreatureLink(NULL);
+
+	if (controlledObject->isCreatureObject())
+		((CreatureObject*) controlledObject.get())->setCreatureLink(NULL);
 
 	updateStatus(0);
 }

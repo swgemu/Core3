@@ -7,6 +7,29 @@
 
 #include "DataTableCell.h"
 
+/**
+ * Parses the string as a comma delimited vector into a SortedVector of Strings.
+ */
+template<> void DataTableCell::getValue<SortedVector<String> >(SortedVector<String>& out) {
+	DataTableCellString* cell = dynamic_cast<DataTableCellString*>(this);
+
+	if (cell == NULL)
+		throw Exception("Wrong cell type.");
+
+	String tokenizedString;
+	cell->getValue(tokenizedString);
+
+	StringTokenizer tokenizer(tokenizedString);
+	tokenizer.setDelimeter(",");
+
+	while (tokenizer.hasMoreTokens()) {
+		String token;
+		tokenizer.getStringToken(token);
+
+		out.put(token);
+	}
+}
+
 template<> void DataTableCell::getValue<String>(String& out) {
 	DataTableCellString* cell = dynamic_cast<DataTableCellString*>(this);
 

@@ -680,6 +680,44 @@ public:
 
 	static const int LAIRGROUP = 0x4000003;
 
+	static const int SHIP = 0x20000000;
+
+	static const int SHIPFIGHTER = 0x20000001;
+
+	static const int SHIPCAPITAL = 0x20000002;
+
+	static const int SHIPSTATION = 0x20000003;
+
+	static const int SHIPTRANSPORT = 0x20000004;
+
+	static const int SHIPATTACHMENT = 0x40000000;
+
+	static const int SHIPREACTOR = 0x40000001;
+
+	static const int SHIPENGINE = 0x40000002;
+
+	static const int SHIPSHIELDGENERATOR = 0x40000003;
+
+	static const int SHIPARMOR = 0x40000004;
+
+	static const int SHIPWEAPON = 0x40000005;
+
+	static const int SHIPWEAPONCAPACITOR = 0x40000006;
+
+	static const int SHIPBOOSTER = 0x40000007;
+
+	static const int SHIPDROIDINTERFACE = 0x40000008;
+
+	static const int SHIPCHASSIS = 0x4000000C;
+
+	static const int SHIPMISSLE = 0x4000000D;
+
+	static const int SHIPCOUNTERMEASURE = 0x4000000E;
+
+	static const int SHIPWEAPONLAUNCHER = 0x4000000F;
+
+	static const int SHIPCOUNTERMEASURELAUNCHER = 0x40000010;
+
 	SceneObject();
 
 	void initializePrivateData();
@@ -1623,6 +1661,44 @@ public:
 	static const int PACKGROUP = 0x4000002;
 
 	static const int LAIRGROUP = 0x4000003;
+
+	static const int SHIP = 0x20000000;
+
+	static const int SHIPFIGHTER = 0x20000001;
+
+	static const int SHIPCAPITAL = 0x20000002;
+
+	static const int SHIPSTATION = 0x20000003;
+
+	static const int SHIPTRANSPORT = 0x20000004;
+
+	static const int SHIPATTACHMENT = 0x40000000;
+
+	static const int SHIPREACTOR = 0x40000001;
+
+	static const int SHIPENGINE = 0x40000002;
+
+	static const int SHIPSHIELDGENERATOR = 0x40000003;
+
+	static const int SHIPARMOR = 0x40000004;
+
+	static const int SHIPWEAPON = 0x40000005;
+
+	static const int SHIPWEAPONCAPACITOR = 0x40000006;
+
+	static const int SHIPBOOSTER = 0x40000007;
+
+	static const int SHIPDROIDINTERFACE = 0x40000008;
+
+	static const int SHIPCHASSIS = 0x4000000C;
+
+	static const int SHIPMISSLE = 0x4000000D;
+
+	static const int SHIPCOUNTERMEASURE = 0x4000000E;
+
+	static const int SHIPWEAPONLAUNCHER = 0x4000000F;
+
+	static const int SHIPCOUNTERMEASURELAUNCHER = 0x40000010;
 
 	SceneObjectImplementation();
 

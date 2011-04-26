@@ -30,6 +30,9 @@
 #include "server/zone/objects/area/ActiveArea.h"
 #include "server/login/packets/ErrorMessage.h"
 
+#include "server/zone/objects/intangible/ShipControlDevice.h"
+#include "server/zone/objects/ship/ShipObject.h"
+
 #include "server/zone/objects/group/GroupObject.h"
 
 #include "server/zone/objects/building/BuildingObject.h"
@@ -609,6 +612,15 @@ bool PlayerManagerImplementation::createAllPlayerObjects(PlayerCreature* player)
 
 	/*SceneObject* mission = server->createObject(3741732474UL, 1); // empty mission
 	datapad->addObject(mission, -1);*/
+
+	//Add a ship
+	ShipControlDevice* shipControlDevice = (ShipControlDevice*) server->createObject(String("object/intangible/ship/sorosuub_space_yacht_pcd.iff").hashCode(), 1);
+	//ShipObject* ship = (ShipObject*) server->createObject(String("object/ship/player/player_sorosuub_space_yacht.iff").hashCode(), 1);
+	//shipControlDevice->setControlledObject(ship);
+
+	//if (!shipControlDevice->addObject(ship, 4))
+		//info("Adding of ship to device failed");
+	datapad->addObject(shipControlDevice, -1);
 
 	return true;
 }

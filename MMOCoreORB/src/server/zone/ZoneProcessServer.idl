@@ -44,6 +44,7 @@ which carries forward this exception.
 
 package server.zone;
 
+import server.zone.managers.skill.SkillManager;
 import server.zone.managers.player.creation.PlayerCreationManager;
 import engine.core.ManagedService;
 
@@ -63,6 +64,8 @@ import server.zone.managers.vendor.VendorManager;
 class ZoneProcessServer extends ManagedService {
 	@weak
 	transient protected ZoneServer zoneServer;
+
+	transient protected SkillManager skillManager;
 
 	transient protected PlayerCreationManager playerCreationManager;
 

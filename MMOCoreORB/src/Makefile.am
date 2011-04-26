@@ -61,7 +61,12 @@ LIBS =	$(SYSTEM_LIBS)  \
 
 bin_PROGRAMS = core3
 
-core3_IDLS =	server/login/LoginServer.cpp \
+core3_IDLS =	server/zone/objects/ship/SpaceStationObject.cpp \
+				server/zone/objects/ship/FighterShipObject.cpp \
+				server/zone/objects/ship/ShipObject.cpp \
+				server/zone/objects/intangible/ShipControlDevice.cpp \
+				server/zone/objects/tangible/terminal/spaceship/SpaceshipTerminal.cpp \
+				server/login/LoginServer.cpp \
 				server/login/account/Account.cpp \
 				server/zone/ZoneServer.cpp \
 				server/zone/ZoneProcessServer.cpp \
@@ -251,6 +256,12 @@ core3_IDLS =	server/login/LoginServer.cpp \
 				server/zone/objects/tangible/terminal/characterbuilder/CharacterBuilderTerminal.cpp
 				
 core3_SOURCES =	$(core3_IDLS) \
+		server/zone/objects/ship/SpaceStationObjectImplementation.cpp \
+		server/zone/objects/ship/FighterShipObjectImplementation.cpp \
+		server/zone/objects/ship/ShipObjectImplementation.cpp \
+		server/zone/objects/intangible/ShipControlDeviceImplementation.cpp \
+		server/zone/objects/tangible/terminal/spaceship/SpaceshipTerminalImplementation.cpp \
+		server/zone/managers/skill/SkillManager.cpp \
 		server/zone/managers/player/creation/PlayerCreationManager.cpp \
 		tre3/TreeFile.cpp \
 		server/zone/managers/vendor/VendorOutfitManager.cpp \

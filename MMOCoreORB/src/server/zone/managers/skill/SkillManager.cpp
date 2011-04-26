@@ -1,8 +1,6 @@
 /*
 Copyright (C) 2007 <SWGEmu>
-
 This File is part of Core3.
-
 This program is free software; you can redistribute
 it and/or modify it under the terms of the GNU Lesser
 General Public License as published by the Free Software
@@ -40,69 +38,41 @@ it is their choice whether to do so. The GNU Lesser General Public License
 gives permission to release a modified version without this exception;
 this exception also makes it possible to release a modified version
 which carries forward this exception.
+
 */
 
-#ifndef GETATTRIBUTESBATCHCOMMAND_H_
-#define GETATTRIBUTESBATCHCOMMAND_H_
+#include "SkillManager.h"
+#include "server/zone/managers/templates/TemplateManager.h"
+#include "server/zone/templates/datatables/DataTableIff.h"
+#include "server/zone/templates/datatables/DataTableRow.h"
 
-#include "server/zone/objects/scene/SceneObject.h"
-#include "server/zone/packets/scene/AttributeListMessage.h"
-#include "server/zone/Zone.h"
+SkillManager::SkillManager()
+		: Logger("SkillManager") {
+	loadClientData();
+}
 
-class GetAttributesBatchCommand : public QueueCommand {
-public:
+SkillManager::~SkillManager() {
+}
 
-	GetAttributesBatchCommand(const String& name, ZoneProcessServer* server)
-		: QueueCommand(name, server) {
+void SkillManager::loadClientData() {
+	IffStream* iffStream = TemplateManager::instance()->openIffFile("datatables/skill/skills.iff");
 
+	if (iffStream == NULL) {
+		error("Could not load skills.");
+		return;
 	}
 
-	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
+	DataTableIff dtiff;
+	dtiff.readObject(iffStream);
 
-		if (!checkStateMask(creature))
-			return INVALIDSTATE;
+	delete iffStream;
 
-		if (!checkInvalidPostures(creature))
-			return INVALIDPOSTURE;
+	for (int i = 0; i < dtiff.getTotalRows(); ++i) {
+		DataTableRow* row = dtiff.getRow(i);
 
-		if (!creature->isPlayerCreature())
-			return GENERALERROR;
+		String name;
+		row->getValue(0, name);
 
-		System::out << arguments.toString() << endl;
-
-		StringTokenizer ids(arguments.toString());
-
-		Zone* zone = creature->getZone();
-
-		if (zone == NULL)
-			return GENERALERROR;
-
-		while (ids.hasMoreTokens()) {
-			uint64 objid = 0;
-
-			try {
-				objid = ids.getLongToken();
-
-			} catch (Exception& e) {
-				error(e.getMessage());
-			}
-
-			if (objid == 0)
-				continue;
-
-			ManagedReference<SceneObject*> object = zone->getZoneServer()->getObject(objid);
-
-			if (object != NULL) {
-				object->sendAttributeListTo((PlayerCreature*)creature);
-			} else {
-				AttributeListMessage* msg = new AttributeListMessage(objid);
-				creature->sendMessage(msg);
-			}
-		}
-
-		return SUCCESS;
+		//info(name);
 	}
-
-};
-
-#endif //GETATTRIBUTESBATCHCOMMAND_H_
+}
