@@ -36,7 +36,18 @@ public:
 		if (player == NULL)
 			return;
 
-		JtlShipListResponse* resp = new JtlShipListResponse(player, terminalObjectID);
+		ManagedReference<SceneObject*> invokedObject = server->getZoneServer()->getObject(terminalObjectID);
+
+		if (invokedObject == NULL)
+			return;
+
+		//This should be handled by the radial?
+		if (!invokedObject->isInRange(player, 9.f)) {
+			player->sendSystemMessage("You are too far out of range.");
+			return;
+		}
+
+		JtlShipListResponse* resp = new JtlShipListResponse(player, invokedObject);
 		player->sendMessage(resp);
 	}
 };

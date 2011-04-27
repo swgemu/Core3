@@ -42,8 +42,8 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#ifndef TRAVELLISTRESPONSEMESSAGE_H_
-#define TRAVELLISTRESPONSEMESSAGE_H_
+#ifndef PLANETTRAVELPOINTLISTRESPONSE_H_
+#define PLANETTRAVELPOINTLISTRESPONSE_H_
 
 #include "engine/engine.h"
 
@@ -69,31 +69,31 @@ public:
 		this->starport = starport;
 	}
 	
-	friend class TravelListResponseMessage;
+	friend class PlanetTravelPointListResponse;
 };
 
-class TravelListResponseMessage : public BaseMessage {
+class PlanetTravelPointListResponse : public BaseMessage {
 	Vector<TravelPoint*> travelPoints;
 	
 public:
-	TravelListResponseMessage() : BaseMessage() {
+	PlanetTravelPointListResponse() : BaseMessage() {
 		insertShort(0x06);
 		insertInt(0x4D32541F); //PlanetTravelPointListResponse
 
 		insertAscii("naboo");
 	}
 
-    TravelListResponseMessage(const String& planet) : BaseMessage() {
+	PlanetTravelPointListResponse(const String& planet) : BaseMessage() {
 		insertShort(0x06);
 		insertInt(0x4D32541F);  //PlanetTravelPointListResponse
         insertAscii(planet);
 
-        System::out << "TravelListResponseMessage" << endl;
+        System::out << "PlanetTravelPointListResponse" << endl;
 
         setCompression(true);
 	}
 	
-	~TravelListResponseMessage() {
+	~PlanetTravelPointListResponse() {
 		while (travelPoints.size() > 0) {
 			TravelPoint* point = travelPoints.remove(0);
 
@@ -156,4 +156,4 @@ public:
 	
 };
 
-#endif /*TRAVELLISTRESPONSEMESSAGE_H_*/
+#endif /*PLANETTRAVELPOINTLISTRESPONSE_H_*/

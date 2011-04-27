@@ -25,7 +25,7 @@
 #include "server/zone/objects/tangible/terminal/travel/TravelTerminal.h"
 #include "server/zone/objects/player/PlayerCreature.h"
 #include "server/zone/objects/building/BuildingObject.h"
-#include "server/zone/packets/player/TravelListResponseMessage.h"
+#include "server/zone/packets/player/PlanetTravelPointListResponse.h"
 #include "server/zone/objects/area/BadgeActiveArea.h"
 
 void PlanetManagerImplementation::initialize() {
@@ -41,10 +41,11 @@ void PlanetManagerImplementation::initialize() {
 	else
 		error("Failed to load terrain file.");
 
+	loadRegions();
+
 	loadLuaConfig();
 	loadTravelFares();
 
-	loadRegions();
 	loadBadgeAreas();
 	loadNoBuildAreas();
 	loadPerformanceLocations();

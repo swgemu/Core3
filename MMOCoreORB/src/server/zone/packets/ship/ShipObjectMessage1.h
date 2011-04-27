@@ -110,14 +110,14 @@ public:
 		insertFloat(0.f);
 		insertFloat(0.f);
 		insertFloat(0.f);
-		insertFloat(0.f);
-		insertFloat(0.f);
-		insertFloat(0.f);
-		insertFloat(0.f);
-		insertFloat(0.f);
-		insertFloat(0.f);
-		insertFloat(0.f);
-		insertFloat(0.f);
+		insertFloat(0.f); //Pitch Acceleration
+		insertFloat(0.f); //Pitch Acceleration Max
+		insertFloat(0.f); //Yaw Acceleration
+		insertFloat(0.f); //Yaw Acceleration Max
+		insertFloat(0.f); //Roll Acceleration
+		insertFloat(0.f); //Roll Acceleration Max
+		insertFloat(0.f); //Max Speed?
+		insertFloat(0.f); //Total Energy?
 		insertFloat(0.f);
 		insertFloat(0.f);
 		insertFloat(0.f);
