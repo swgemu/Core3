@@ -53,7 +53,7 @@ public:
 	ShipObjectMessage3(ShipObject* ship)
 			: TangibleObjectMessage3(ship, 0x53484950, 0x16) {
 
-		insertFloat(1.9f); //?
+		insertFloat(1.9f); //?Speed or Acceleration?
 		insertFloat(10000.f); //chassis cur
 		insertFloat(10000.f); //chassis max
 		insertInt(0x16B73FE9); //unk
@@ -72,13 +72,10 @@ public:
 
 		insertInt(0);
 		insertInt(0);
-
-		insertInt(0);
-		insertInt(0);
-
-		insertFloat(100.f);
-		insertFloat(100.f);
 		
+		insertFloat(0.f);
+		insertFloat(0.f);
+
 		setSize();
 	}
 };

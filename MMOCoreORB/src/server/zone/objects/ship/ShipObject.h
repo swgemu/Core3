@@ -28,6 +28,8 @@ public:
 
 	void sendBaselinesTo(SceneObject* player);
 
+	float getTotalMass();
+
 	DistributedObjectServant* _getImplementation();
 
 	void _setImplementation(DistributedObjectServant* servant);
@@ -53,6 +55,8 @@ namespace objects {
 namespace ship {
 
 class ShipObjectImplementation : public TangibleObjectImplementation {
+protected:
+	float totalMass;
 
 public:
 	ShipObjectImplementation();
@@ -62,6 +66,8 @@ public:
 	void sendTo(SceneObject* player, bool doClose);
 
 	void sendBaselinesTo(SceneObject* player);
+
+	float getTotalMass();
 
 	ShipObject* _this;
 
@@ -109,6 +115,8 @@ public:
 	void sendTo(SceneObject* player, bool doClose);
 
 	void sendBaselinesTo(SceneObject* player);
+
+	float getTotalMass();
 
 };
 

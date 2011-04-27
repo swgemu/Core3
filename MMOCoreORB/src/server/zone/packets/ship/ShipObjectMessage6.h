@@ -64,17 +64,24 @@ public:
 		insertFloat(0.f);
 		insertFloat(0.f);
 		insertFloat(0.f);
-		insertLong(ship->getObjectID());
+		insertLong(ship->getObjectID()); //This is zeroed out on NGE packet caps?
+
+		insertInt(0);
+		insertInt(0);
+		insertInt(0);
+		insertInt(0);
+		insertInt(0);
 
 		insertInt(0);
 		insertInt(0);
 
 		insertInt(0);
-
+		insertInt(0);
+		insertInt(0);
 		insertInt(0);
 		insertInt(0);
 
-		insertInt(0);
+		insertInt(0); //List
 		insertInt(0);
 
 		insertInt(0);

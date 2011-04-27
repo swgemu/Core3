@@ -180,8 +180,6 @@ ShipControlDeviceImplementation::ShipControlDeviceImplementation() {
 	_initializeImplementation();
 	// server/zone/objects/intangible/ShipControlDevice.idl():  		Logger.setLoggingName("ShipControlDevice");
 	Logger::setLoggingName("ShipControlDevice");
-	// server/zone/objects/intangible/ShipControlDevice.idl():  		Logger.setLogging(true);
-	Logger::setLogging(true);
 }
 
 void ShipControlDeviceImplementation::storeObject(PlayerCreature* player) {

@@ -615,11 +615,11 @@ bool PlayerManagerImplementation::createAllPlayerObjects(PlayerCreature* player)
 
 	//Add a ship
 	ShipControlDevice* shipControlDevice = (ShipControlDevice*) server->createObject(String("object/intangible/ship/sorosuub_space_yacht_pcd.iff").hashCode(), 1);
-	//ShipObject* ship = (ShipObject*) server->createObject(String("object/ship/player/player_sorosuub_space_yacht.iff").hashCode(), 1);
-	//shipControlDevice->setControlledObject(ship);
+	ShipObject* ship = (ShipObject*) server->createObject(String("object/ship/player/player_sorosuub_space_yacht.iff").hashCode(), 1);
+	shipControlDevice->setControlledObject(ship);
 
-	//if (!shipControlDevice->addObject(ship, 4))
-		//info("Adding of ship to device failed");
+	if (!shipControlDevice->addObject(ship, 4))
+		info("Adding of ship to device failed");
 	datapad->addObject(shipControlDevice, -1);
 
 	return true;

@@ -47,16 +47,21 @@ import engine.core.ManagedObject;
 import server.zone.objects.tangible.TangibleObject;
 
 class ShipObject extends TangibleObject {
+	protected float totalMass;
+	
 	public ShipObject() {
 		Logger.setLoggingName("ShipObject");
-		Logger.setLogging(true);
-		
-		Logger.info("Creating shipObject");
 		
 		super.unknownByte = 1;
+		
+		totalMass = 5000.0;
 	}
 	
 	public native void sendTo(SceneObject player, boolean doClose);
 	
 	public native void sendBaselinesTo(SceneObject player);
+	
+	public float getTotalMass() {
+		return totalMass;
+	}
 }

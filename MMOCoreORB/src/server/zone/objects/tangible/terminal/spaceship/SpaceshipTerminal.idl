@@ -50,7 +50,6 @@ import server.zone.objects.player.PlayerCreature;
 class SpaceshipTerminal extends Terminal {
 	public SpaceshipTerminal() {
 		Logger.setLoggingName("SpaceshipTerminal");
-		Logger.setLogging(true);
 	}
 	
 	public native int handleObjectMenuSelect(PlayerCreature player, byte selectedID);

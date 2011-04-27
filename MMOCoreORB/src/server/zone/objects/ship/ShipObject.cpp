@@ -8,7 +8,7 @@
  *	ShipObjectStub
  */
 
-enum {RPC_SENDTO__SCENEOBJECT_BOOL_ = 6,RPC_SENDBASELINESTO__SCENEOBJECT_};
+enum {RPC_SENDTO__SCENEOBJECT_BOOL_ = 6,RPC_SENDBASELINESTO__SCENEOBJECT_,RPC_GETTOTALMASS__};
 
 ShipObject::ShipObject() : TangibleObject(DummyConstructorParameter::instance()) {
 	ShipObjectImplementation* _implementation = new ShipObjectImplementation();
@@ -50,6 +50,19 @@ void ShipObject::sendBaselinesTo(SceneObject* player) {
 		method.executeWithVoidReturn();
 	} else
 		_implementation->sendBaselinesTo(player);
+}
+
+float ShipObject::getTotalMass() {
+	ShipObjectImplementation* _implementation = (ShipObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_GETTOTALMASS__);
+
+		return method.executeWithFloatReturn();
+	} else
+		return _implementation->getTotalMass();
 }
 
 DistributedObjectServant* ShipObject::_getImplementation() {
@@ -156,6 +169,11 @@ bool ShipObjectImplementation::readObjectMember(ObjectInputStream* stream, const
 	if (TangibleObjectImplementation::readObjectMember(stream, _name))
 		return true;
 
+	if (_name == "totalMass") {
+		TypeInfo<float >::parseFromBinaryStream(&totalMass, stream);
+		return true;
+	}
+
 
 	return false;
 }
@@ -171,20 +189,31 @@ int ShipObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	String _name;
 	int _offset;
 	uint16 _totalSize;
+	_name = "totalMass";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<float >::toBinaryStream(&totalMass, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
 
-	return 0 + TangibleObjectImplementation::writeObjectMembers(stream);
+
+	return 1 + TangibleObjectImplementation::writeObjectMembers(stream);
 }
 
 ShipObjectImplementation::ShipObjectImplementation() {
 	_initializeImplementation();
 	// server/zone/objects/ship/ShipObject.idl():  		Logger.setLoggingName("ShipObject");
 	Logger::setLoggingName("ShipObject");
-	// server/zone/objects/ship/ShipObject.idl():  		Logger.setLogging(true);
-	Logger::setLogging(true);
-	// server/zone/objects/ship/ShipObject.idl():  		Logger.info("Creating shipObject");
-	Logger::info("Creating shipObject");
 	// server/zone/objects/ship/ShipObject.idl():  		super.unknownByte = 1;
 	TangibleObjectImplementation::unknownByte = 1;
+	// server/zone/objects/ship/ShipObject.idl():  		totalMass = 5000.0;
+	totalMass = 5000.0;
+}
+
+float ShipObjectImplementation::getTotalMass() {
+	// server/zone/objects/ship/ShipObject.idl():  		return totalMass;
+	return totalMass;
 }
 
 /*
@@ -204,6 +233,9 @@ Packet* ShipObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	case RPC_SENDBASELINESTO__SCENEOBJECT_:
 		sendBaselinesTo((SceneObject*) inv->getObjectParameter());
 		break;
+	case RPC_GETTOTALMASS__:
+		resp->insertFloat(getTotalMass());
+		break;
 	default:
 		return NULL;
 	}
@@ -217,6 +249,10 @@ void ShipObjectAdapter::sendTo(SceneObject* player, bool doClose) {
 
 void ShipObjectAdapter::sendBaselinesTo(SceneObject* player) {
 	((ShipObjectImplementation*) impl)->sendBaselinesTo(player);
+}
+
+float ShipObjectAdapter::getTotalMass() {
+	return ((ShipObjectImplementation*) impl)->getTotalMass();
 }
 
 /*

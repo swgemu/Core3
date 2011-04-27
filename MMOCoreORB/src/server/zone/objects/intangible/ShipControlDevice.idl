@@ -50,7 +50,6 @@ import server.zone.objects.player.PlayerCreature;
 class ShipControlDevice extends ControlDevice {
 	public ShipControlDevice() {
 		Logger.setLoggingName("ShipControlDevice");
-		Logger.setLogging(true);
 	}
 	
 	public void storeObject(PlayerCreature player) {

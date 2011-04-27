@@ -68,8 +68,6 @@ public:
 		if (!creature->isPlayerCreature())
 			return GENERALERROR;
 
-		System::out << arguments.toString() << endl;
-
 		StringTokenizer ids(arguments.toString());
 
 		Zone* zone = creature->getZone();

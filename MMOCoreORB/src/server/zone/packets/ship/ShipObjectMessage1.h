@@ -45,29 +45,94 @@ which carries forward this exception.
 #ifndef SHIPOBJECTMESSAGE1_H_
 #define SHIPOBJECTMESSAGE1_H_
 
-#include "../../packets/BaseLineMessage.h"
-
-#include "../../objects/ship/ShipObject.h"
-
+#include "server/zone/packets/BaseLineMessage.h"
+#include "server/zone/objects/ship/ShipObject.h"
 
 class ShipObjectMessage1 : public BaseLineMessage {
 public:
 	ShipObjectMessage1(ShipObject* ship)
 			: BaseLineMessage(ship->getObjectID(), 0x53484950, 1, 0x29) {
 		
-		//Zero out the first 16 lists
-		for (int i = 0; i < 32; ++i)
-			insertInt(0);
-		
-		//Zero out the next 19 floats
-		for (int i = 0; i < 19; ++i)
-			insertFloat(0.f);
-		
-		//Zero out the last 7 ints
-		for (int i = 0; i < 7; ++i)
-			insertInt(0);
+		insertInt(0);
+		insertInt(0);
 
-		setSize(0);
+		insertInt(0);
+		insertInt(0);
+
+		insertInt(0);
+		insertInt(0);
+
+		insertInt(0);
+		insertInt(0);
+
+		insertInt(0);
+		insertInt(0);
+
+		insertInt(0);
+		insertInt(0);
+
+		insertInt(0);
+		insertInt(0);
+
+		insertInt(0);
+		insertInt(0);
+
+		insertInt(0);
+		insertInt(0);
+
+		insertInt(0);
+		insertInt(0);
+
+		insertInt(0);
+		insertInt(0);
+
+		insertInt(0);
+		insertInt(0);
+
+		insertInt(0);
+		insertInt(0);
+
+		insertInt(0);
+		insertInt(0);
+
+		insertInt(0);
+		insertInt(0);
+
+		insertInt(0);
+		insertInt(0);
+		
+		insertInt(0);
+		insertInt(0);
+		
+		insertFloat(ship->getTotalMass());
+		insertFloat(0.f);
+		insertFloat(0.f);
+		insertFloat(0.f);
+		insertFloat(0.f);
+		insertFloat(0.f);
+		insertFloat(0.f);
+		insertFloat(0.f);
+		insertFloat(0.f);
+		insertFloat(0.f);
+		insertFloat(0.f);
+		insertFloat(0.f);
+		insertFloat(0.f);
+		insertFloat(0.f);
+		insertFloat(0.f);
+		insertFloat(0.f);
+		insertFloat(0.f);
+		insertFloat(0.f);
+		insertFloat(0.f);
+
+		insertInt(0);
+		insertInt(0);
+		insertInt(0);
+		insertInt(0);
+		insertInt(0);
+		insertInt(0);
+		insertInt(0);
+
+		setSize();
 	}
 };
 
