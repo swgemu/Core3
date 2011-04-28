@@ -101,7 +101,7 @@ void ServerCore::initialize() {
 		}
 
 		if (configManager->getMakeZone()) {
-			ZoneServer* zoneServer = new ZoneServer(configManager->getZoneGalaxyID());
+			ZoneServer* zoneServer = new ZoneServer(configManager);
 			zoneServer->deploy("ZoneServer");
 
 			zoneServerRef = zoneServer;

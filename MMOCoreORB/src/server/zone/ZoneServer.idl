@@ -71,6 +71,7 @@ import server.zone.ZoneClientSession;
 import server.zone.ZoneHandler;
 import server.zone.Zone;
 import server.chat.ChatManager;
+import server.conf.ConfigManager;
 import server.zone.managers.object.ObjectManager;
 import server.zone.managers.player.PlayerManager;
 import server.zone.managers.objectcontroller.ObjectController;
@@ -92,6 +93,8 @@ class ZoneServer extends ManagedService implements Logger {
 	private transient DatagramServiceThread datagramService;
 	
 	private transient BasePacketHandler phandler;
+	
+	private transient ConfigManager configManager;
 
 	private transient ZoneHandler zoneHandler;
 	
@@ -151,44 +154,14 @@ class ZoneServer extends ManagedService implements Logger {
 	public static final int ONLINE = 2;
 	public static final int LOCKED = 3;
 	
-	public native ZoneServer(int galaxyid = 2);/* {
-		//super(Dat)
-		galaxyID = galaxyid;
-
-		name = "Core3";
-
-		phandler = null;
-
-		processor = null;
-		procThreadCount = processingThreads;
-
-		objectManager = null;
-		playerManager = null;
-		chatManager = null;
-		objectController = null;
-		radialManager = null;
-
-		totalSentPackets = 0;
-		totalResentPackets = 0;
-
-		currentPlayers = 0;
-		maximumPlayers = 0;
-		totalPlayers = 0;
-		totalDeletedPlayers = 0;
-
-		serverState = OFFLINE;
-
-		Logger.setLogging(false);
-		DatagramServiceThread.setLockName("ZoneServerLock");
-
-		taskManager = TaskManager.instance();
-		taskManager.setLogging(false);
-	}*/
+	public native ZoneServer(ConfigManager config);
 	
 	public native void initializeTransientMembers();
 	
 	@local
 	public native ZoneClientSession createConnection(Socket sock, @dereferenced SocketAddress addr);
+	
+	private native void loadGalaxyName();
 	
 	public native void initialize();
 

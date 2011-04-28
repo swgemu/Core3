@@ -88,6 +88,16 @@ class ChatManager;
 using namespace server::chat;
 
 namespace server {
+namespace conf {
+
+class ConfigManager;
+
+} // namespace conf
+} // namespace server
+
+using namespace server::conf;
+
+namespace server {
 namespace zone {
 namespace managers {
 namespace object {
@@ -358,7 +368,7 @@ public:
 
 	static const int LOCKED = 3;
 
-	ZoneServer(int galaxyid = 2);
+	ZoneServer(ConfigManager* config);
 
 	void initializeTransientMembers();
 
@@ -524,6 +534,8 @@ class ZoneServerImplementation : public ManagedServiceImplementation, public Log
 
 	BasePacketHandler* phandler;
 
+	ConfigManager* configManager;
+
 	ZoneHandler* zoneHandler;
 
 	ManagedReference<ZoneProcessServer* > processor;
@@ -591,7 +603,7 @@ public:
 
 	static const int LOCKED = 3;
 
-	ZoneServerImplementation(int galaxyid = 2);
+	ZoneServerImplementation(ConfigManager* config);
 
 	ZoneServerImplementation(DummyConstructorParameter* param);
 
@@ -599,6 +611,10 @@ public:
 
 	ZoneClientSession* createConnection(Socket* sock, SocketAddress& addr);
 
+private:
+	void loadGalaxyName();
+
+public:
 	void initialize();
 
 	void shutdown();

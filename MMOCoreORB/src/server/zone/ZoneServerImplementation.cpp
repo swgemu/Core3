@@ -53,6 +53,8 @@ which carries forward this exception.
 #include "server/login/LoginServer.h"
 #include "server/login/account/Account.h"
 
+#include "server/conf/ConfigManager.h"
+
 #include "managers/object/ObjectManager.h"
 #include "managers/stringid/StringIdManager.h"
 #include "managers/objectcontroller/ObjectController.h"
@@ -84,9 +86,12 @@ which carries forward this exception.
 
 #include "ZoneLoadManagersTask.h"
 
-ZoneServerImplementation::ZoneServerImplementation(int galaxyid) :
+ZoneServerImplementation::ZoneServerImplementation(ConfigManager* config) :
 		ManagedServiceImplementation(), Logger("ZoneServer") {
-	galaxyID = galaxyid;
+
+	configManager = config;
+
+	galaxyID = config->getZoneGalaxyID();
 	galaxyName = "Core3";
 
 	processor = NULL;
@@ -132,13 +137,9 @@ void ZoneServerImplementation::initializeTransientMembers() {
 	ManagedObjectImplementation::initializeTransientMembers();
 }
 
-void ZoneServerImplementation::initialize() {
-	serverState = LOADING;
-
-	//Load the galaxy name from the galaxy table.
+void ZoneServerImplementation::loadGalaxyName() {
 	try {
-		info("Loading galaxy name from the database.");
-		String query = "SELECT name FROM galaxy WHERE galaxy_id = " + galaxyID;
+		String query = "SELECT name FROM galaxy WHERE galaxy_id = " + String::valueOf(galaxyID);
 
 		Reference<ResultSet*> result = ServerDatabase::instance()->executeQuery(query);
 
@@ -146,8 +147,16 @@ void ZoneServerImplementation::initialize() {
 			galaxyName = result->getString(0);
 
 	} catch (DatabaseException& e) {
-		info("Loading galaxy name: " + e.getMessage());
+		info(e.getMessage());
 	}
+
+	setLoggingName("ZoneServer " + galaxyName);
+}
+
+void ZoneServerImplementation::initialize() {
+	serverState = LOADING;
+
+	loadGalaxyName();
 
 	processor = new ZoneProcessServer(_this);
 	processor->deploy("ZoneProcessServer");
@@ -194,40 +203,22 @@ void ZoneServerImplementation::initialize() {
 }
 
 void ZoneServerImplementation::startZones() {
-	info("Initializing zones.", true);
+	info("Loading zones.");
 
-	TreeDirectory* records = TemplateManager::instance()->getTreeDirectory("terrain");
+	SortedVector<String>* enabledZones = configManager->getEnabledZones();
 
-	for (int i = 0; i < records->size(); ++i) {
-			Reference<TreeFileRecord*> record = records->elementAt(i);
+	for (int i = 0; i < enabledZones->size(); ++i) {
+		String zoneName = enabledZones->get(i);
 
-			if (record == NULL)
-				continue;
+		info("Loading zone " + zoneName + ".");
 
-			String recordName = record->getRecordName();
+		Zone* zone = new Zone(processor, zoneName);
+		zone->initializePrivateData();
+		zone->_setObjectID(~0 - i);
+		zone->deploy("Zone " + zoneName);
+		zone->startManagers();
 
-			if (recordName.indexOf(".trn") == -1)
-				continue;
-
-			//Load zones from the .trn file names.
-			String zoneName = recordName.subString(0, recordName.lastIndexOf('.'));
-
-			info("Loading zone " + zoneName + ".", true);
-
-			Zone* zone = new Zone(processor, zoneName);
-			zone->initializePrivateData();
-
-			uint64 zoneObjectID = 0;
-
-			zoneObjectID = ~zoneObjectID;
-			zoneObjectID -= i;
-			zone->_setObjectID(zoneObjectID);
-
-			zone->deploy("Zone " + zoneName, i);
-
-			zone->startManagers();
-
-			zones.put(zoneName, zone);
+		zones.put(zoneName, zone);
 	}
 }
 

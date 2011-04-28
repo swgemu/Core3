@@ -73,6 +73,8 @@ bool ConfigManager::loadConfigData() {
 	trePath = getGlobalString("TrePath");
 	loadTreFileList();
 
+	loadEnabledZones();
+
 	statusPort = getGlobalShort("StatusPort");
 
 	pingPort = getGlobalShort("PingPort");
@@ -103,6 +105,15 @@ void ConfigManager::loadTreFileList() {
 	}
 
 	files.pop();
+}
+
+void ConfigManager::loadEnabledZones() {
+	LuaObject zones = getGlobalObject("ZonesEnabled");
+
+	for (int i = 1; i <= zones.getTableSize(); ++i)
+		enabledZones.put(zones.getStringAt(i));
+
+	zones.pop();
 }
 
 void ConfigManager::loadMOTD() {

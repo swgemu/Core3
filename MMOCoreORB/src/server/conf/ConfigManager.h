@@ -96,6 +96,7 @@ namespace server {
 			String messageOfTheDay;
 
 			Vector<String> treFiles;
+			SortedVector<String> enabledZones;
 
 		public:
 
@@ -138,6 +139,7 @@ namespace server {
 				statusInterval = 60;
 
 				pingAllowedConnections = 3000;
+				enabledZones.setNoDuplicateInsertPlan();
 			}
 
 			~ConfigManager() {
@@ -150,6 +152,7 @@ namespace server {
 			bool loadConfigData();
 			void loadMOTD();
 			void loadTreFileList();
+			void loadEnabledZones();
 
 			//getters
 
@@ -285,6 +288,9 @@ namespace server {
 				return zoneOnlineCharactersPerAccount;
 			}
 
+			SortedVector<String>* getEnabledZones() {
+				return &enabledZones;
+			}
 		};
 	}
 }

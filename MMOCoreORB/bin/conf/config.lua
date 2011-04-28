@@ -77,8 +77,59 @@ ZoneAllowedConnections = 30000
 ZoneGalaxyID = 2 --The actual zone server's galaxyID. Should coordinate with your login server.
 ZoneOnlineCharactersPerAccount = 2 --How many characters are allowed online from a single account.
 
+--The following zones are enabled, and will be loaded with server start.
+--To save on RAM and CPU usage, you should only enable the zones you need.
+--In order to disable a zone, all you have to do is comment it out.
+ZonesEnabled = {
+	--"09",
+	--"10",
+	--"11",
+	--"character_farm",
+	--"cinco_city_test_m5",
+	"corellia",
+	--"creature_test",
+	"dantooine",
+	"dathomir",
+	"dungeon1",
+	"endor",
+	--"endor_asommers",
+	--"floratest",
+	"godclient_test",
+	"lok",
+	"naboo",
+	--"otoh_gunga",
+	--"rivertest",
+	"rori",
+	--"runtimerules",
+	--"simple"
+	--"space_09",
+	"space_corellia",
+	"space_corellia_2",
+	"space_dantooine",
+	"space_dathomir",
+	"space_endor",
+	--"space_env",
+	--"space_halos",
+	--"space_heavy1",
+	--"space_light1",
+	"space_lok",
+	"space_naboo",
+	"space_naboo_2",
+	"space_tatooine",
+	"space_tatooine_2",
+	"space_yavin4",
+	--"taanab",
+	"talus",
+	"tatooine",
+	--"test_wearables",
+	"tutorial",
+	--"umbra",
+	--"watertabletest",
+	"yavin4"
+}
+
 -- directory of tres with live.cfg
-TrePath = "/home/crush/Desktop/SWGEmu"
+TrePath = "/home/crush/swg"
 
 TreFiles = {
 	"default_patch.tre",
