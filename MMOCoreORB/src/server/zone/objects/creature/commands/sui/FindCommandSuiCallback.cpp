@@ -18,7 +18,7 @@ void FindCommandSuiCallback::run(PlayerCreature* player, SuiBox* suiBox, bool ca
 
 	SuiListBox* listBox = (SuiListBox*) suiBox;
 
-	uint8 maploctype = listBox->getMenuObjectID(index);
+	String maploctype = listBox->getMenuItemName(0).subString(14);
 
 	FindCommand::findPlanetaryObject(player, maploctype);
 }

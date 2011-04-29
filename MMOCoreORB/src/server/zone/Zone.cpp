@@ -28,7 +28,7 @@
  *	ZoneStub
  */
 
-enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_FINALIZE__,RPC_GETNEARESTCLONINGBUILDING__CREATUREOBJECT_,RPC_GETNEARESTPLANETARYOBJECT__SCENEOBJECT_INT_,RPC_INITIALIZEPRIVATEDATA__,RPC_UPDATEACTIVEAREAS__SCENEOBJECT_,RPC_STARTMANAGERS__,RPC_STOPMANAGERS__,RPC_GETHEIGHT__FLOAT_FLOAT_,RPC_ADDSCENEOBJECT__SCENEOBJECT_,RPC_SENDMAPLOCATIONSTO__SCENEOBJECT_,RPC_DROPSCENEOBJECT__SCENEOBJECT_,RPC_GETPLANETMANAGER__,RPC_GETCITYMANAGER__,RPC_GETZONESERVER__,RPC_GETCREATUREMANAGER__,RPC_GETGALACTICTIME__,RPC_HASMANAGERSSTARTED__,RPC_GETMINX__,RPC_GETMAXX__,RPC_GETMINY__,RPC_GETMAXY__,RPC_GETZONENAME__,RPC_GETZONECRC__};
+enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_FINALIZE__,RPC_GETNEARESTCLONINGBUILDING__CREATUREOBJECT_,RPC_GETNEARESTPLANETARYOBJECT__SCENEOBJECT_STRING_,RPC_INITIALIZEPRIVATEDATA__,RPC_UPDATEACTIVEAREAS__SCENEOBJECT_,RPC_STARTMANAGERS__,RPC_STOPMANAGERS__,RPC_GETHEIGHT__FLOAT_FLOAT_,RPC_ADDSCENEOBJECT__SCENEOBJECT_,RPC_SENDMAPLOCATIONSTO__SCENEOBJECT_,RPC_DROPSCENEOBJECT__SCENEOBJECT_,RPC_GETPLANETMANAGER__,RPC_GETCITYMANAGER__,RPC_GETZONESERVER__,RPC_GETCREATUREMANAGER__,RPC_GETGALACTICTIME__,RPC_HASMANAGERSSTARTED__,RPC_GETMINX__,RPC_GETMAXX__,RPC_GETMINY__,RPC_GETMAXY__,RPC_GETZONENAME__,RPC_GETZONECRC__};
 
 Zone::Zone(ZoneProcessServer* processor, const String& zoneName) : ManagedObject(DummyConstructorParameter::instance()) {
 	ZoneImplementation* _implementation = new ZoneImplementation(processor, zoneName);
@@ -70,15 +70,15 @@ CloningBuildingObject* Zone::getNearestCloningBuilding(CreatureObject* creature)
 		return _implementation->getNearestCloningBuilding(creature);
 }
 
-SceneObject* Zone::getNearestPlanetaryObject(SceneObject* object, unsigned int mapObjectLocationType) {
+SceneObject* Zone::getNearestPlanetaryObject(SceneObject* object, const String& mapObjectLocationType) {
 	ZoneImplementation* _implementation = (ZoneImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_GETNEARESTPLANETARYOBJECT__SCENEOBJECT_INT_);
+		DistributedMethod method(this, RPC_GETNEARESTPLANETARYOBJECT__SCENEOBJECT_STRING_);
 		method.addObjectParameter(object);
-		method.addUnsignedIntParameter(mapObjectLocationType);
+		method.addAsciiParameter(mapObjectLocationType);
 
 		return (SceneObject*) method.executeWithObjectReturn();
 	} else
@@ -125,7 +125,7 @@ int Zone::getInRangeActiveAreas(float x, float y, float range, SortedVector<Mana
 		return _implementation->getInRangeActiveAreas(x, y, range, objects);
 }
 
-SortedVector<ManagedReference<SceneObject* > > Zone::getPlanetaryObjectList(unsigned int mapObjectLocationType) {
+SortedVector<ManagedReference<SceneObject* > > Zone::getPlanetaryObjectList(const String& mapObjectLocationType) {
 	ZoneImplementation* _implementation = (ZoneImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
@@ -727,8 +727,8 @@ Packet* ZoneAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	case RPC_GETNEARESTCLONINGBUILDING__CREATUREOBJECT_:
 		resp->insertLong(getNearestCloningBuilding((CreatureObject*) inv->getObjectParameter())->_getObjectID());
 		break;
-	case RPC_GETNEARESTPLANETARYOBJECT__SCENEOBJECT_INT_:
-		resp->insertLong(getNearestPlanetaryObject((SceneObject*) inv->getObjectParameter(), inv->getUnsignedIntParameter())->_getObjectID());
+	case RPC_GETNEARESTPLANETARYOBJECT__SCENEOBJECT_STRING_:
+		resp->insertLong(getNearestPlanetaryObject((SceneObject*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_getNearestPlanetaryObject__SceneObject_String_))->_getObjectID());
 		break;
 	case RPC_INITIALIZEPRIVATEDATA__:
 		initializePrivateData();
@@ -809,7 +809,7 @@ CloningBuildingObject* ZoneAdapter::getNearestCloningBuilding(CreatureObject* cr
 	return ((ZoneImplementation*) impl)->getNearestCloningBuilding(creature);
 }
 
-SceneObject* ZoneAdapter::getNearestPlanetaryObject(SceneObject* object, unsigned int mapObjectLocationType) {
+SceneObject* ZoneAdapter::getNearestPlanetaryObject(SceneObject* object, const String& mapObjectLocationType) {
 	return ((ZoneImplementation*) impl)->getNearestPlanetaryObject(object, mapObjectLocationType);
 }
 

@@ -110,7 +110,7 @@ class Zone extends ManagedObject implements QuadTree {
 	
 	public native CloningBuildingObject getNearestCloningBuilding(CreatureObject creature);
 	
-	public native SceneObject getNearestPlanetaryObject(SceneObject object, unsigned int mapObjectLocationType);
+	public native SceneObject getNearestPlanetaryObject(SceneObject object, final string mapObjectLocationType);
 	
 	public native void initializePrivateData();
 	
@@ -127,7 +127,7 @@ class Zone extends ManagedObject implements QuadTree {
 	
 	@local
 	@dereferenced
-	public native SortedVector<SceneObject> getPlanetaryObjectList(unsigned int mapObjectLocationType);
+	public native SortedVector<SceneObject> getPlanetaryObjectList(final string mapObjectLocationType);
 	
 	@local
 	public native void insert(QuadTreeEntry entry);

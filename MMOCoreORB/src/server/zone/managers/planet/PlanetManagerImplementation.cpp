@@ -7,7 +7,6 @@
 
 #include "PlanetManager.h"
 
-
 #include "server/db/ServerDatabase.h"
 #include "server/zone/Zone.h"
 #include "server/zone/ZoneServer.h"
@@ -28,6 +27,8 @@
 #include "server/zone/packets/player/PlanetTravelPointListResponse.h"
 #include "server/zone/objects/area/BadgeActiveArea.h"
 
+PlanetMapCategoryList PlanetManagerImplementation::planetMapCategoryList;
+
 void PlanetManagerImplementation::initialize() {
 	terrainManager = new TerrainManager(zone);
 
@@ -45,6 +46,7 @@ void PlanetManagerImplementation::initialize() {
 
 	loadLuaConfig();
 	loadTravelFares();
+	loadPlanetMapCategories();
 
 	loadBadgeAreas();
 	loadNoBuildAreas();
@@ -60,6 +62,36 @@ void PlanetManagerImplementation::initialize() {
 
 	weatherManager = new WeatherManager(zone);
 	weatherManager->initialize();
+}
+
+void PlanetManagerImplementation::loadPlanetMapCategories() {
+	if (planetMapCategoryList.size() > 0)
+		return;
+
+	TemplateManager* templateManager = TemplateManager::instance();
+
+	IffStream* iffStream = templateManager->openIffFile("datatables/player/planet_map_cat.iff");
+
+	if (iffStream == NULL) {
+		info("Planet Map Categories could not be found.", true);
+		return;
+	}
+
+	DataTableIff dtiff;
+	dtiff.readObject(iffStream);
+
+	delete iffStream;
+
+	for (int i = 0; i < dtiff.getTotalRows(); ++i) {
+		DataTableRow* row = dtiff.getRow(i);
+		Reference<PlanetMapCategory*> planetMapCategory = new PlanetMapCategory();
+		planetMapCategory->parseFromDataTableRow(row);
+		planetMapCategoryList.put(planetMapCategory->getName(), planetMapCategory);
+
+	}
+
+	info("Loaded " + String::valueOf(planetMapCategoryList.size()) + " planet map categories", true);
+
 }
 
 void PlanetManagerImplementation::loadLuaConfig() {
@@ -194,13 +226,13 @@ void PlanetManagerImplementation::loadSnapshotObjects() {
 
 void PlanetManagerImplementation::startTravelRoutes() {
 	//Load shuttleports first.
-	SortedVector<ManagedReference<SceneObject*> > objs = zone->getPlanetaryObjectList(14);
+	SortedVector<ManagedReference<SceneObject*> > objs = zone->getPlanetaryObjectList("shuttleport");
 
 	for (int i = 0; i < objs.size(); ++i)
 		scheduleShuttleRoute(objs.get(i));
 
 	//Now do the starports.
-	objs = zone->getPlanetaryObjectList(15);
+	objs = zone->getPlanetaryObjectList("starport");
 
 	for (int i = 0; i < objs.size(); ++i)
 		scheduleShuttleRoute(objs.get(i));
@@ -343,14 +375,14 @@ void PlanetManagerImplementation::loadPerformanceLocations() {
 	planetaryLocs.setNoDuplicateInsertPlan();
 
 	// get hotels
-	planetaryLocs = zone->getPlanetaryObjectList(12);
+	planetaryLocs = zone->getPlanetaryObjectList("hotel");
 	for (int j = 0; j < planetaryLocs.size(); j++) {
 		SceneObject* obj = planetaryLocs.get(j);
 		addPerformanceLocation(obj);
 	}
 
 	// get theaters
-	planetaryLocs = zone->getPlanetaryObjectList(10);
+	planetaryLocs = zone->getPlanetaryObjectList("guild_theater");
 	for (int j = 0; j < planetaryLocs.size(); j++) {
 		SceneObject* obj = planetaryLocs.get(j);
 		addPerformanceLocation(obj);
@@ -358,7 +390,7 @@ void PlanetManagerImplementation::loadPerformanceLocations() {
 
 	// get cantinas
 	planetaryLocs.removeAll();
-	planetaryLocs = zone->getPlanetaryObjectList(3);
+	planetaryLocs = zone->getPlanetaryObjectList("cantina");
 	for (int j = 0; j < planetaryLocs.size(); j++) {
 		SceneObject* obj = planetaryLocs.get(j);
 		addPerformanceLocation(obj);
@@ -372,5 +404,4 @@ void PlanetManagerImplementation::loadHuntingTargets() {
 void PlanetManagerImplementation::loadReconLocations() {
 	info("loading recon locations ...", true);
 }
-
 

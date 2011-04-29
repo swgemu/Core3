@@ -61,6 +61,8 @@ import server.zone.objects.player.PlayerCreature;
 import server.zone.objects.scene.SceneObject;
 include server.zone.objects.region.Region;
 include server.zone.managers.planet.RegionMap;
+include server.zone.managers.planet.PlanetMapCategoryList;
+include server.zone.managers.planet.PlanetMapCategory;
 
 include server.zone.managers.terrain.TerrainManager;
 include server.zone.managers.planet.NoBuildAreaMap;
@@ -114,6 +116,9 @@ class PlanetManager extends ManagedService implements Logger {
 	@dereferenced
 	protected transient MissionTargetMap informants;
 
+	@dereferenced
+	protected static transient PlanetMapCategoryList planetMapCategoryList;
+
 	
 	public PlanetManager(Zone planet, ZoneProcessServer srv) {
 		zone = planet;
@@ -140,6 +145,7 @@ class PlanetManager extends ManagedService implements Logger {
 	private native void loadSnapshotObjects();
 	private native void loadTravelFares();
 	private native void startTravelRoutes();
+	private native void loadPlanetMapCategories();
 	
 	public native void scheduleShuttleRoute(SceneObject obj);
 	
@@ -278,5 +284,21 @@ class PlanetManager extends ManagedService implements Logger {
 	/*public Region getRegion(final string regionName) {
 		return regionMap.getRegion(regionName);
 	}*/
+
+	@local
+	public PlanetMapCategory getPlanetMapCategoryByName(final string name) {
+		return planetMapCategoryList.get(name);
+	}
+
+	@local
+	public PlanetMapCategory getPlanetMapCategoryById(int id) {
+		for (int i = 0; i < planetMapCategoryList.size(); ++i) {
+			PlanetMapCategory pmc = planetMapCategoryList.get(i);
+			if (pmc.getIndex() == id)
+				return pmc;
+		}
+
+		return null;
+	}
 		
 }

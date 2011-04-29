@@ -13,6 +13,8 @@
 #include "LuaTemplate.h"
 #include "ChildObject.h"
 
+#include "server/zone/managers/planet/PlanetMapCategory.h"
+
 class PortalLayout;
 class AppearanceTemplate;
 
@@ -57,9 +59,7 @@ protected:
 	float locationReservationRadius;
 	uint32 clientObjectCRC;
 
-	int mapLocationsType1;
-	int mapLocationsType2;
-	int mapLocationsType3;
+	Reference<PlanetMapCategory*> planetMapCategory;
 
 	String fullTemplateString;
 
@@ -277,16 +277,8 @@ public:
 		return fullTemplateString;
 	}
 
-	inline int getMapLocationsType1() const {
-		return mapLocationsType1;
-	}
-
-	inline int getMapLocationsType2() const {
-		return mapLocationsType2;
-	}
-
-	inline int getMapLocationsType3() const {
-		return mapLocationsType3;
+	inline PlanetMapCategory* getPlanetMapCategory() const {
+		return planetMapCategory;
 	}
 
 	inline int getChildObjectsSize() {

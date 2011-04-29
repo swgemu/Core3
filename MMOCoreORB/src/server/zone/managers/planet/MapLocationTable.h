@@ -108,7 +108,7 @@ using namespace server::zone::objects::scene;
 	67 = Ships (??)
  */
 
-class MapLocationTable : public VectorMap<uint8, SortedVector<MapLocationEntry> >, public ReadWriteLock {
+class MapLocationTable : public VectorMap<String, SortedVector<MapLocationEntry> >, public ReadWriteLock {
 public:
 	void addObject(SceneObject* object);
 

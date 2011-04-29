@@ -46,6 +46,7 @@ which carries forward this exception.
 #define GETMAPLOCATIONSRESPONSEMESSAGE_H_
 
 #include "engine/engine.h"
+#include "server/zone/managers/planet/PlanetMapCategory.h"
 
 class GetMapLocationsResponseMessage : public BaseMessage {
 	int listSize;
@@ -80,14 +81,14 @@ public:
     	insertInt(0);
 	}
 
-	void addMapLocation(uint64 id, const UnicodeString& name, float x, float y, uint8 type1, uint8 type2, uint8 type3) {
+	void addMapLocation(uint64 id, const UnicodeString& name, float x, float y, PlanetMapCategory* planetMapCategory) {
 		insertLong((uint64)id); //ID 1
 	    insertUnicode(name); //name
 	    insertFloat(x); //X
 	    insertFloat(y); //Y
-	    insertByte(type1); //type
-	    insertByte(type2);
-	    insertByte(type3);
+	    insertByte(planetMapCategory->isCategory() ? planetMapCategory->getIndex() : 0); //type
+	    insertByte(planetMapCategory->isSubCategory() ? planetMapCategory->getIndex() : 0);
+	    insertByte(0);
 
 		updateListSize(1);
 	}

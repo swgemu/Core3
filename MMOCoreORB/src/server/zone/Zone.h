@@ -186,7 +186,7 @@ public:
 
 	CloningBuildingObject* getNearestCloningBuilding(CreatureObject* creature);
 
-	SceneObject* getNearestPlanetaryObject(SceneObject* object, unsigned int mapObjectLocationType);
+	SceneObject* getNearestPlanetaryObject(SceneObject* object, const String& mapObjectLocationType);
 
 	void initializePrivateData();
 
@@ -196,7 +196,7 @@ public:
 
 	int getInRangeActiveAreas(float x, float y, float range, SortedVector<ManagedReference<ActiveArea* > >* objects);
 
-	SortedVector<ManagedReference<SceneObject* > > getPlanetaryObjectList(unsigned int mapObjectLocationType);
+	SortedVector<ManagedReference<SceneObject* > > getPlanetaryObjectList(const String& mapObjectLocationType);
 
 	void insert(QuadTreeEntry* entry);
 
@@ -304,7 +304,7 @@ public:
 
 	CloningBuildingObject* getNearestCloningBuilding(CreatureObject* creature);
 
-	SceneObject* getNearestPlanetaryObject(SceneObject* object, unsigned int mapObjectLocationType);
+	SceneObject* getNearestPlanetaryObject(SceneObject* object, const String& mapObjectLocationType);
 
 	void initializePrivateData();
 
@@ -314,7 +314,7 @@ public:
 
 	int getInRangeActiveAreas(float x, float y, float range, SortedVector<ManagedReference<ActiveArea* > >* objects);
 
-	SortedVector<ManagedReference<SceneObject* > > getPlanetaryObjectList(unsigned int mapObjectLocationType);
+	SortedVector<ManagedReference<SceneObject* > > getPlanetaryObjectList(const String& mapObjectLocationType);
 
 	void insert(QuadTreeEntry* entry);
 
@@ -409,7 +409,7 @@ public:
 
 	CloningBuildingObject* getNearestCloningBuilding(CreatureObject* creature);
 
-	SceneObject* getNearestPlanetaryObject(SceneObject* object, unsigned int mapObjectLocationType);
+	SceneObject* getNearestPlanetaryObject(SceneObject* object, const String& mapObjectLocationType);
 
 	void initializePrivateData();
 
@@ -451,6 +451,8 @@ public:
 
 	unsigned int getZoneCRC();
 
+protected:
+	String _param1_getNearestPlanetaryObject__SceneObject_String_;
 };
 
 class ZoneHelper : public DistributedObjectClassHelper, public Singleton<ZoneHelper> {

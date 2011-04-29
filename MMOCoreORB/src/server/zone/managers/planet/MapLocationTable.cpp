@@ -6,56 +6,45 @@
  */
 
 #include "MapLocationTable.h"
+#include "PlanetMapCategory.h"
 #include "server/zone/objects/scene/SceneObject.h"
 
 void MapLocationTable::addObject(SceneObject* object) {
-	uint8 type1 = object->getMapLocationsType1();
-	uint8 type2 = object->getMapLocationsType2();
-	uint8 type3 = object->getMapLocationsType3();
+	PlanetMapCategory* pmc = object->getPlanetMapCategory();
 
-	if ((type1 == 0) && (type2 == 0) && (type3 == 0) /*&& !object->isPlayerCreature()*/)
+	if (pmc == NULL)
 		return;
 
-	uint8 typeToRegister = type2;
-
-	if (type2 == 0)
-		typeToRegister = type1;
-
-	int index = find(typeToRegister);
+	int index = find(pmc->getName());
 
 	if (index == -1) {
 		SortedVector<MapLocationEntry> sorted;
 		sorted.setNoDuplicateInsertPlan();
 
-		MapLocationEntry entry(object, type1, type2, type3);
+		MapLocationEntry entry(object, pmc);
 		sorted.put(entry);
 
-		this->put(typeToRegister, sorted);
+		put(pmc->getName(), sorted);
 	} else {
 		SortedVector<MapLocationEntry>* vector = &this->elementAt(index).getValue();
 
-		MapLocationEntry entry(object, type1, type2, type3);
+		MapLocationEntry entry(object, pmc);
 		vector->put(entry);
 	}
 }
 
 void MapLocationTable::dropObject(SceneObject* object) {
-	uint8 type2 = object->getMapLocationsType2();
+	PlanetMapCategory* pmc = object->getPlanetMapCategory();
 
-	uint8 typeToRegister = type2;
-
-	if (type2 == 0)
-		typeToRegister = object->getMapLocationsType1();
-
-	int index = find(typeToRegister);
+	int index = find(pmc->getName());
 
 	if (index != -1) {
 		SortedVector<MapLocationEntry>* vector = &this->elementAt(index).getValue();
 
-		MapLocationEntry entry(object, 0, type2, 0);
+		MapLocationEntry entry(object, pmc);
 		vector->drop(entry);
 
 		if (vector->size() == 0)
-			this->remove(index);
+			remove(index);
 	}
 }

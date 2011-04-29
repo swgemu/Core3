@@ -62,38 +62,11 @@
 #include "server/zone/objects/creature/commands/sui/FindCommandSuiCallback.h"
 
 class FindCommand: public QueueCommand {
-	HashTable<String, uint8> argsHashMap;
 
 public:
 
 	FindCommand(const String& name, ZoneProcessServer* server) :
 		QueueCommand(name, server) {
-
-		argsHashMap.put("cantina", MapLocationType::CANTINA);
-		argsHashMap.put("capitol", MapLocationType::CAPITOL);
-		argsHashMap.put("city", MapLocationType::CITY);
-		argsHashMap.put("cloning_facility", MapLocationType::CLONING_FACILITY);
-		argsHashMap.put("guild_combat", MapLocationType::GUILD_COMBAT);
-		argsHashMap.put("guild_commerce", MapLocationType::GUILD_COMMERCE);
-		argsHashMap.put("theater", MapLocationType::GUILD_THEATER);
-		argsHashMap.put("university", MapLocationType::GUILD_UNIVERSITY);
-		argsHashMap.put("salon", MapLocationType::SALON);
-		argsHashMap.put("hotel", MapLocationType::HOTEL);
-		argsHashMap.put("medicalcenter", MapLocationType::MEDICAL_CENTER);
-		argsHashMap.put("garage", MapLocationType::PARKING_GARAGE);
-		argsHashMap.put("shuttleport", MapLocationType::SHUTTLEPORT);
-		argsHashMap.put("starport", MapLocationType::STARPORT);
-		argsHashMap.put("junkvendor", MapLocationType::VENDOR_JUNK);
-		argsHashMap.put("bank", MapLocationType::TERMINAL_BANK);
-		argsHashMap.put("bazaar", MapLocationType::TERMINAL_BAZAAR);
-		argsHashMap.put("mission", MapLocationType::TERMINAL_MISSION);
-		argsHashMap.put("trainer_brawler", MapLocationType::TRAINER_BRAWLER);
-		argsHashMap.put("trainer_artisan", MapLocationType::TRAINER_ARTISAN);
-		argsHashMap.put("trainer_scout", MapLocationType::TRAINER_SCOUT);
-		argsHashMap.put("trainer_marksman", MapLocationType::TRAINER_MARKSMAN);
-		argsHashMap.put("trainer_entertainer", MapLocationType::TRAINER_ENTERTAINER);
-		argsHashMap.put("trainer_medic", MapLocationType::TRAINER_MEDIC);
-		argsHashMap.setNullValue(0);
 
 	}
 
@@ -136,7 +109,7 @@ public:
 		return SUCCESS;
 	}
 
-	static int findPlanetaryObject(PlayerCreature* player, uint8 maplocationtype) {
+	static int findPlanetaryObject(PlayerCreature* player, String& maplocationtype) {
 		Zone* zone = player->getZone();
 		ManagedReference<SceneObject*> object = zone->getNearestPlanetaryObject(player, maplocationtype);
 
@@ -157,7 +130,7 @@ public:
 
 		}
 
-		String objFullName = MapLocationType::getMapLocationName(maplocationtype);
+		String objFullName = "@map_loc_cat_n:" + maplocationtype;
 
 		StringIdManager* stringManager = StringIdManager::instance();
 
@@ -186,30 +159,30 @@ public:
 		box->setPromptTitle("@base_player:find_title"); // /Find Category Selector
 		box->setPromptText("@base_player:find_prompt"); // Select a category of planetary map locations to search for.
 		box->setCancelButton(true, "@cancel");
-		box->addMenuItem("@find_display:cantina", MapLocationType::CANTINA);
-		box->addMenuItem("@find_display:capitol", MapLocationType::CAPITOL);
-		box->addMenuItem("@find_display:city", MapLocationType::CITY);
-		box->addMenuItem("@find_display:cloningfacility", MapLocationType::CLONING_FACILITY);
-		box->addMenuItem("@find_display:guild_combat", MapLocationType::GUILD_COMBAT);
-		box->addMenuItem("@find_display:guild_commerce", MapLocationType::GUILD_COMMERCE);
-		box->addMenuItem("@find_display:guild_theater",	MapLocationType::GUILD_THEATER);
-		box->addMenuItem("@find_display:guild_university", MapLocationType::GUILD_UNIVERSITY);
-		box->addMenuItem("@find_display:salon", MapLocationType::SALON);
-		box->addMenuItem("@find_display:hotel", MapLocationType::HOTEL);
-		box->addMenuItem("@find_display:medicalcenter",	MapLocationType::MEDICAL_CENTER);
-		box->addMenuItem("@find_display:garage", MapLocationType::PARKING_GARAGE);
-		box->addMenuItem("@find_display:shuttleport", MapLocationType::SHUTTLEPORT);
-		box->addMenuItem("@find_display:starport", MapLocationType::STARPORT);
-		box->addMenuItem("@find_display:vendor_junk", MapLocationType::VENDOR_JUNK);
-		box->addMenuItem("@find_display:terminal_bank",	MapLocationType::TERMINAL_BANK);
-		box->addMenuItem("@find_display:terminal_bazaar", MapLocationType::TERMINAL_BAZAAR);
-		box->addMenuItem("@find_display:terminal_mission", MapLocationType::TERMINAL_MISSION);
-		box->addMenuItem("@find_display:trainer_brawler", MapLocationType::TRAINER_BRAWLER);
-		box->addMenuItem("@find_display:trainer_artisan", MapLocationType::TRAINER_ARTISAN);
-		box->addMenuItem("@find_display:trainer_scout", MapLocationType::TRAINER_SCOUT);
-		box->addMenuItem("@find_display:trainer_marksman", MapLocationType::TRAINER_MARKSMAN);
-		box->addMenuItem("@find_display:trainer_entertainer", MapLocationType::TRAINER_ENTERTAINER);
-		box->addMenuItem("@find_display:trainer_medic", MapLocationType::TRAINER_MEDIC);
+		box->addMenuItem("@find_display:cantina");
+		box->addMenuItem("@find_display:capitol");
+		box->addMenuItem("@find_display:city");
+		box->addMenuItem("@find_display:cloningfacility");
+		box->addMenuItem("@find_display:guild_combat");
+		box->addMenuItem("@find_display:guild_commerce");
+		box->addMenuItem("@find_display:guild_theater");
+		box->addMenuItem("@find_display:guild_university");
+		box->addMenuItem("@find_display:salon");
+		box->addMenuItem("@find_display:hotel");
+		box->addMenuItem("@find_display:medicalcenter");
+		box->addMenuItem("@find_display:garage");
+		box->addMenuItem("@find_display:shuttleport");
+		box->addMenuItem("@find_display:starport");
+		box->addMenuItem("@find_display:vendor_junk");
+		box->addMenuItem("@find_display:terminal_bank");
+		box->addMenuItem("@find_display:terminal_bazaar");
+		box->addMenuItem("@find_display:terminal_mission");
+		box->addMenuItem("@find_display:trainer_brawler");
+		box->addMenuItem("@find_display:trainer_artisan");
+		box->addMenuItem("@find_display:trainer_scout");
+		box->addMenuItem("@find_display:trainer_marksman");
+		box->addMenuItem("@find_display:trainer_entertainer");
+		box->addMenuItem("@find_display:trainer_medic");
 
 		player->addSuiBox(box);
 		player->sendMessage(box->generateMessage());
@@ -248,12 +221,10 @@ public:
 				}
 			}
 
-			if (argsHashMap.isEmpty())
-				return GENERALERROR;
 
-			int mapLocType = argsHashMap.get(location);
+			String mapLocType = location;
 
-			if (mapLocType != 0) {
+			if (!mapLocType.isEmpty()) {
 				findPlanetaryObject(player, mapLocType);
 
 			} else {

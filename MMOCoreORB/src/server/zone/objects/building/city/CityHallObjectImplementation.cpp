@@ -76,7 +76,7 @@ bool CityHallObjectImplementation::checkRequisitesForPlacement(PlayerCreature* p
 	}
 
 	//We want to find the nearest City, rather than city hall, since NPC cities
-	ManagedReference<SceneObject*> obj = zone->getNearestPlanetaryObject(player, 17);
+	ManagedReference<SceneObject*> obj = zone->getNearestPlanetaryObject(player, "city");
 
 	if (obj == NULL || !obj->isRegion())
 		return true;

@@ -23,9 +23,7 @@ MapLocationEntry& MapLocationEntry::operator=(const MapLocationEntry& entry) {
 
 	object = entry.object;
 
-	mapLoc1 = entry.mapLoc1;
-	mapLoc2 = entry.mapLoc2;
-	mapLoc3 = entry.mapLoc3;
+	planetMapCategory = entry.planetMapCategory;
 
 	return *this;
 }

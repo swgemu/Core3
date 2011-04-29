@@ -7,6 +7,9 @@
 
 #include "SharedObjectTemplate.h"
 #include "server/zone/managers/templates/TemplateManager.h"
+#include "server/zone/managers/planet/PlanetManager.h"
+
+#include "server/ServerCore.h"
 
 void SharedObjectTemplate::readObject(LuaObject* templateData) {
 	objectName = templateData->getStringField("objectName");
@@ -81,9 +84,8 @@ void SharedObjectTemplate::readObject(LuaObject* templateData) {
 
 	templateType = templateData->getIntField("templateType");
 
-	mapLocationsType1 = templateData->getIntField("mapLocationsType1");
-	mapLocationsType2 = templateData->getIntField("mapLocationsType2");
-	mapLocationsType3 = templateData->getIntField("mapLocationsType3");
+	String mapLocationType = templateData->getStringField("planetMapCategory");
+	planetMapCategory = ServerCore::getZoneServer()->getZone(0)->getPlanetManager()->getPlanetMapCategoryByName(mapLocationType);
 
 	LuaObject luaItemList = templateData->getObjectField("childObjects");
 

@@ -84,6 +84,8 @@ include server.zone.objects.scene.SessionFacadeType;
 import server.zone.templates.SharedObjectTemplate;
 import server.zone.objects.area.ActiveArea;
 
+include server.zone.managers.planet.PlanetMapCategory;
+
 class SceneObject extends QuadTreeEntry implements Logger {
 	protected transient ZoneProcessServer server;
 
@@ -1496,16 +1498,9 @@ class SceneObject extends QuadTreeEntry implements Logger {
 		return activeAreas.contains(area);
 	}
 
-	public int getMapLocationsType1() {
-		return templateObject.getMapLocationsType1();
-	}
-
-	public int getMapLocationsType2() {
-		return templateObject.getMapLocationsType2();
-	}
-
-	public int getMapLocationsType3() {
-		return templateObject.getMapLocationsType3();
+	@local
+	public PlanetMapCategory getPlanetMapCategory() {
+		return templateObject.getPlanetMapCategory();
 	}
 	
 	@local

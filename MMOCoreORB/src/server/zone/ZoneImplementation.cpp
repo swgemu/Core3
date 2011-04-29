@@ -311,7 +311,7 @@ void ZoneImplementation::sendMapLocationsTo(SceneObject* player) {
 					name = fullPath;
 				}
 
-				if (entry->getType1() == 17) {
+				if (entry->getPlanetMapCategory()->getIndex() == 17) {
 					if (!cities.contains(name.toString()))
 						cities.put(name.toString());
 					else
@@ -320,8 +320,8 @@ void ZoneImplementation::sendMapLocationsTo(SceneObject* player) {
 
 				Vector3 pos = object->getWorldPosition();
 
-				gmlr->addMapLocation(object->getObjectID(), name, pos.getX(),
-						pos.getY(), entry->getType1(), entry->getType2(), entry->getType3());
+				gmlr->addMapLocation(object->getObjectID(), name, pos.getX(), pos.getY(),
+						entry->getPlanetMapCategory());
 			}
 
 		}
@@ -351,7 +351,7 @@ CloningBuildingObject* ZoneImplementation::getNearestCloningBuilding(CreatureObj
 	try {
 		//cloning type 5
 
-		int index = mapLocations.find(5);
+		int index = mapLocations.find("cloningfacility");
 
 		float distance = 16000.f;
 
@@ -383,7 +383,7 @@ CloningBuildingObject* ZoneImplementation::getNearestCloningBuilding(CreatureObj
 	return cloning.get();
 }
 
-SceneObject* ZoneImplementation::getNearestPlanetaryObject(SceneObject* object, uint32 mapObjectLocationType) {
+SceneObject* ZoneImplementation::getNearestPlanetaryObject(SceneObject* object, const String& mapObjectLocationType) {
 	ManagedReference<SceneObject*> planetaryObject = NULL;
 
 	mapLocations.rlock();
@@ -421,7 +421,7 @@ SceneObject* ZoneImplementation::getNearestPlanetaryObject(SceneObject* object, 
 	return planetaryObject.get();
 }
 
-SortedVector<ManagedReference<SceneObject*> > ZoneImplementation::getPlanetaryObjectList(uint32 mapObjectLocationType) {
+SortedVector<ManagedReference<SceneObject*> > ZoneImplementation::getPlanetaryObjectList(const String& mapObjectLocationType) {
 	SortedVector<ManagedReference<SceneObject*> > retVector;
 	retVector.setNoDuplicateInsertPlan();
 

@@ -161,6 +161,8 @@ using namespace server::zone::objects::area;
 
 #include "server/zone/objects/scene/SessionFacadeType.h"
 
+#include "server/zone/managers/planet/PlanetMapCategory.h"
+
 #include "engine/log/Logger.h"
 
 #include "engine/core/ManagedReference.h"
@@ -1096,11 +1098,7 @@ public:
 
 	bool hasActiveArea(ActiveArea* area);
 
-	int getMapLocationsType1();
-
-	int getMapLocationsType2();
-
-	int getMapLocationsType3();
+	PlanetMapCategory* getPlanetMapCategory();
 
 	SharedObjectTemplate* getObjectTemplate();
 
@@ -2082,11 +2080,7 @@ public:
 
 	bool hasActiveArea(ActiveArea* area);
 
-	int getMapLocationsType1();
-
-	int getMapLocationsType2();
-
-	int getMapLocationsType3();
+	PlanetMapCategory* getPlanetMapCategory();
 
 	SharedObjectTemplate* getObjectTemplate();
 
@@ -2472,12 +2466,6 @@ public:
 	ActiveArea* getActiveRegion();
 
 	bool hasActiveArea(ActiveArea* area);
-
-	int getMapLocationsType1();
-
-	int getMapLocationsType2();
-
-	int getMapLocationsType3();
 
 	void createChildObjects();
 
