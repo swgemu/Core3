@@ -42,9 +42,9 @@
 
 
 object_building_military_military_base_shed_imperial_style_prison_01 = object_building_military_shared_military_base_shed_imperial_style_prison_01:new {
-	mapLocationsType1 = 0,
-	mapLocationsType2 = 0,
-	mapLocationsType3 = 0
+
+
+
 
 
 }

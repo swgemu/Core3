@@ -42,7 +42,7 @@
 
 
 object_building_general_parking_garage_general = object_building_general_shared_parking_garage_general:new {
-
+	planetMapCategory = "garage"
 }
 
 ObjectTemplates:addTemplate(object_building_general_parking_garage_general, "object/building/general/parking_garage_general.iff")

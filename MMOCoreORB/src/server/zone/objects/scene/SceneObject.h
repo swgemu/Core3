@@ -161,7 +161,7 @@ using namespace server::zone::objects::area;
 
 #include "server/zone/objects/scene/SessionFacadeType.h"
 
-#include "server/zone/managers/planet/PlanetMapCategory.h"
+#include "server/zone/managers/templates/PlanetMapCategory.h"
 
 #include "engine/log/Logger.h"
 
@@ -1099,6 +1099,8 @@ public:
 	bool hasActiveArea(ActiveArea* area);
 
 	PlanetMapCategory* getPlanetMapCategory();
+
+	PlanetMapCategory* getPlanetMapSubCategory();
 
 	SharedObjectTemplate* getObjectTemplate();
 
@@ -2081,6 +2083,8 @@ public:
 	bool hasActiveArea(ActiveArea* area);
 
 	PlanetMapCategory* getPlanetMapCategory();
+
+	PlanetMapCategory* getPlanetMapSubCategory();
 
 	SharedObjectTemplate* getObjectTemplate();
 

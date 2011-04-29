@@ -620,7 +620,9 @@ public:
 
 	BuildingObject* getCloningFacility();
 
-	void setHologrindProfessions(Vector<byte>& profs);
+	void setHologrindMask(unsigned int mask);
+
+	unsigned int getHologrindMask();
 
 	DistributedObjectServant* _getImplementation();
 
@@ -670,7 +672,7 @@ protected:
 
 	ManagedWeakReference<BuildingObject* > cloningFacility;
 
-	Vector<byte> hologrindProfessions;
+	unsigned int holoMask;
 
 	Time logoutTimeStamp;
 
@@ -1041,7 +1043,9 @@ public:
 
 	BuildingObject* getCloningFacility();
 
-	void setHologrindProfessions(Vector<byte>& profs);
+	void setHologrindMask(unsigned int mask);
+
+	unsigned int getHologrindMask();
 
 	PlayerCreature* _this;
 
@@ -1343,6 +1347,10 @@ public:
 	void setCloningFacility(BuildingObject* cloningfac);
 
 	BuildingObject* getCloningFacility();
+
+	void setHologrindMask(unsigned int mask);
+
+	unsigned int getHologrindMask();
 
 protected:
 	String _param0_sendExecuteConsoleCommand__String_;

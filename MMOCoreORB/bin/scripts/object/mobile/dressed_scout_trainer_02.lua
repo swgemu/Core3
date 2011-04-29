@@ -43,8 +43,7 @@
 
 object_mobile_dressed_scout_trainer_02 = object_mobile_shared_dressed_scout_trainer_02:new {
 	gameObjectType = 1034,
-	mapLocationsType1 = 19,
-	mapLocationsType2 = 22
+	planetMapCategory = "trainer_scout"
 }
 
 ObjectTemplates:addTemplate(object_mobile_dressed_scout_trainer_02, "object/mobile/dressed_scout_trainer_02.iff")

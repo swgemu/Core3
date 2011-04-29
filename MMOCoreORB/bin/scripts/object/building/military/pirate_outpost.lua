@@ -42,9 +42,9 @@
 
 
 object_building_military_pirate_outpost = object_building_military_shared_pirate_outpost:new {
-	mapLocationsType1 = 0,
-	mapLocationsType2 = 0,
-	mapLocationsType3 = 0
+
+
+
 
 
 }

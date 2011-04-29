@@ -97,7 +97,7 @@ class PlayerCreature extends CreatureObject {
 	protected BuildingObject cloningFacility;
 	
 	@dereferenced
-	protected Vector<byte> hologrindProfessions;
+	protected unsigned int holoMask;
 	
 	@dereferenced
 	protected Time logoutTimeStamp;
@@ -195,6 +195,8 @@ class PlayerCreature extends CreatureObject {
 		Logger.setLoggingName("PlayerCreature");
 
 		owner = null;
+		
+		holoMask = 0;
 
 		disconnectEvent = null;
 		recoveryEvent = null;
@@ -876,6 +878,11 @@ class PlayerCreature extends CreatureObject {
 		return cloningFacility;
 	}
 	
-	@local
-	public native void setHologrindProfessions(@dereferenced Vector<byte> profs);
+	public void setHologrindMask(unsigned int mask) {
+		holoMask = mask;
+	}
+	
+	public unsigned int getHologrindMask() {
+		return holoMask;
+	}
 }

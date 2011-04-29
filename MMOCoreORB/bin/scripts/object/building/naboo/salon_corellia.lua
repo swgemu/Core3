@@ -42,7 +42,7 @@
 
 
 object_building_naboo_salon_corellia = object_building_naboo_shared_salon_corellia:new {
-
+	planetMapCategory = "salon"
 }
 
 ObjectTemplates:addTemplate(object_building_naboo_salon_corellia, "object/building/naboo/salon_corellia.iff")

@@ -480,24 +480,6 @@ MissionTargetMap* PlanetManager::getInformants() {
 		return _implementation->getInformants();
 }
 
-PlanetMapCategory* PlanetManager::getPlanetMapCategoryByName(const String& name) {
-	PlanetManagerImplementation* _implementation = (PlanetManagerImplementation*) _getImplementation();
-	if (_implementation == NULL) {
-		throw ObjectNotLocalException(this);
-
-	} else
-		return _implementation->getPlanetMapCategoryByName(name);
-}
-
-PlanetMapCategory* PlanetManager::getPlanetMapCategoryById(int id) {
-	PlanetManagerImplementation* _implementation = (PlanetManagerImplementation*) _getImplementation();
-	if (_implementation == NULL) {
-		throw ObjectNotLocalException(this);
-
-	} else
-		return _implementation->getPlanetMapCategoryById(id);
-}
-
 DistributedObjectServant* PlanetManager::_getImplementation() {
 
 	_updated = true;
@@ -849,27 +831,6 @@ void PlanetManagerImplementation::addInformant(SceneObject* obj) {
 MissionTargetMap* PlanetManagerImplementation::getInformants() {
 	// server/zone/managers/planet/PlanetManager.idl():  		return informants;
 	return (&informants);
-}
-
-PlanetMapCategory* PlanetManagerImplementation::getPlanetMapCategoryByName(const String& name) {
-	// server/zone/managers/planet/PlanetManager.idl():  		return planetMapCategoryList.get(name);
-	return (&planetMapCategoryList)->get(name);
-}
-
-PlanetMapCategory* PlanetManagerImplementation::getPlanetMapCategoryById(int id) {
-	// server/zone/managers/planet/PlanetManager.idl():  		}
-	for (	// server/zone/managers/planet/PlanetManager.idl():  		for (int i = 0;
-	int i = 0;
-	i < (&planetMapCategoryList)->size();
- ++i) {
-	// server/zone/managers/planet/PlanetManager.idl():  			PlanetMapCategory pmc = planetMapCategoryList.get(i);
-	PlanetMapCategory* pmc = (&planetMapCategoryList)->get(i);
-	// server/zone/managers/planet/PlanetManager.idl():  		}
-	if (pmc->getIndex() == id)	// server/zone/managers/planet/PlanetManager.idl():  				return pmc;
-	return pmc;
-}
-	// server/zone/managers/planet/PlanetManager.idl():  		return null;
-	return NULL;
 }
 
 /*

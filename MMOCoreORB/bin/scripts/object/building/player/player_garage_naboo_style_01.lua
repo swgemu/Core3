@@ -43,7 +43,7 @@
 
 object_building_player_player_garage_naboo_style_01 = object_building_player_shared_player_garage_naboo_style_01:new {
 	gameObjectType = 4102,
-	mapLocationsType1 = 6,
+	planetMapCategory = "garage",
 	lotSize = 0,
 	baseMaintenanceRate = 0,
 	allowedZones = {"dantooine", "naboo", "rori"},

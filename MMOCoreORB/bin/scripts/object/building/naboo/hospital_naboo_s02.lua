@@ -42,7 +42,7 @@
 
 
 object_building_naboo_hospital_naboo_s02 = object_building_naboo_shared_hospital_naboo_s02:new {
-
+	planetMapCategory = "medicalcenter"
 }
 
 ObjectTemplates:addTemplate(object_building_naboo_hospital_naboo_s02, "object/building/naboo/hospital_naboo_s02.iff")

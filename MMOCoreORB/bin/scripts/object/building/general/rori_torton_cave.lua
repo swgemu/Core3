@@ -42,9 +42,9 @@
 
 
 object_building_general_rori_torton_cave = object_building_general_shared_rori_torton_cave:new {
-	mapLocationsType1 = 0,
-	mapLocationsType2 = 0,
-	mapLocationsType3 = 0
+
+
+
 
 
 }

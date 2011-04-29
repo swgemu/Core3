@@ -42,8 +42,8 @@
 
 
 object_tangible_terminal_terminal_mission_artisan = object_tangible_terminal_shared_terminal_mission_artisan:new {
-	mapLocationsType1 = 41,
-	mapLocationsType2 = 44,
+	planetMapCategory = "terminal",
+	planetMapSubCategory = "terminal_mission",
 	templateType = MISSIONTERMINAL,
 	missionTerminalType = "artisan"
 

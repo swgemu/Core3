@@ -135,10 +135,6 @@ using namespace server::zone::objects::scene;
 
 #include "server/zone/managers/planet/RegionMap.h"
 
-#include "server/zone/managers/planet/PlanetMapCategoryList.h"
-
-#include "server/zone/managers/planet/PlanetMapCategory.h"
-
 #include "server/zone/managers/terrain/TerrainManager.h"
 
 #include "server/zone/managers/planet/NoBuildAreaMap.h"
@@ -246,10 +242,6 @@ public:
 
 	MissionTargetMap* getInformants();
 
-	PlanetMapCategory* getPlanetMapCategoryByName(const String& name);
-
-	PlanetMapCategory* getPlanetMapCategoryById(int id);
-
 	DistributedObjectServant* _getImplementation();
 
 	void _setImplementation(DistributedObjectServant* servant);
@@ -306,8 +298,6 @@ protected:
 
 	MissionTargetMap informants;
 
-	static PlanetMapCategoryList planetMapCategoryList;
-
 public:
 	PlanetManagerImplementation(Zone* planet, ZoneProcessServer* srv);
 
@@ -321,8 +311,6 @@ private:
 	void loadTravelFares();
 
 	void startTravelRoutes();
-
-	void loadPlanetMapCategories();
 
 public:
 	void scheduleShuttleRoute(SceneObject* obj);
@@ -404,10 +392,6 @@ public:
 	void addInformant(SceneObject* obj);
 
 	MissionTargetMap* getInformants();
-
-	PlanetMapCategory* getPlanetMapCategoryByName(const String& name);
-
-	PlanetMapCategory* getPlanetMapCategoryById(int id);
 
 	PlanetManager* _this;
 

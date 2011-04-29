@@ -46,55 +46,53 @@ which carries forward this exception.
 #define GETMAPLOCATIONSRESPONSEMESSAGE_H_
 
 #include "engine/engine.h"
-#include "server/zone/managers/planet/PlanetMapCategory.h"
+
+#include "server/zone/managers/templates/PlanetMapCategory.h"
+#include "server/zone/managers/planet/MapLocationTable.h"
+#include "server/zone/managers/planet/MapLocationEntry.h"
+#include "server/zone/managers/templates/TemplateManager.h"
 
 class GetMapLocationsResponseMessage : public BaseMessage {
-	int listSize;
-	String planetName;
-
 public:
-	GetMapLocationsResponseMessage(const String& planet) : BaseMessage() {
-		planetName = planet;
+	GetMapLocationsResponseMessage(const String& planet, MapLocationTable* mapLocations) : BaseMessage() {
 		insertShort(0x05);
-		insertInt(0x9F80464C);  // CRC
+		insertInt(0x9F80464C);  //GetMapLocationsResponseMessage
 
-		insertAscii(planetName); //planet name
+		insertAscii(planet);
 
-		insertInt(listSize = 0); //size
+		mapLocations->rlock();
+
+		insertInt(0);
+
+		int totalEntries = 0;
+
+		try {
+			for (int i = 0; i < mapLocations->size(); ++i) {
+				SortedVector<MapLocationEntry>* sortedVector = &mapLocations->elementAt(i).getValue();
+
+				for (int j = 0; j < sortedVector->size(); ++j) {
+					(&sortedVector->elementAt(j))->insertToMessage(this);
+					++totalEntries;
+				}
+			}
+
+		} catch (Exception& e) {
+			System::out << e.getMessage() << endl;
+			e.printStackTrace();
+		}
+
+		mapLocations->runlock();
+
+		insertInt(12 + planet.length(), totalEntries);
+
+		insertInt(0); //Blank List
+		insertInt(0); //Blank List
+
+		insertInt(0); //Unknown
+		insertInt(0); //Unknown
+		insertInt(0); //Unknown
 
 		setCompression(true);
-	}
-
-	void updateListSize(int num) {
-		listSize += num;
-		insertInt(12 + planetName.length(), listSize);
-	}
-
-	void addBlankList() {
-		insertInt(0);
-	}
-
-	void addFooter() {
-		//unknowns
-		insertInt(0);
-    	insertInt(0);
-    	insertInt(0);
-	}
-
-	void addMapLocation(uint64 id, const UnicodeString& name, float x, float y, PlanetMapCategory* planetMapCategory) {
-		insertLong((uint64)id); //ID 1
-	    insertUnicode(name); //name
-	    insertFloat(x); //X
-	    insertFloat(y); //Y
-	    insertByte(planetMapCategory->isCategory() ? planetMapCategory->getIndex() : 0); //type
-	    insertByte(planetMapCategory->isSubCategory() ? planetMapCategory->getIndex() : 0);
-	    insertByte(0);
-
-		updateListSize(1);
-	}
-
-	inline int getListSize() {
-		return listSize;
 	}
 
 };

@@ -48,7 +48,7 @@ object_building_player_city_theater_naboo = object_building_player_city_shared_t
 	length = 5,
 	width = 6,
 	gameObjectType = 524,
-	mapLocationsType1 = 51,
+	planetMapCategory = "theater",
 	abilityRequired = "place_theater",
 	sign = {templateFile = "object/tangible/sign/player/house_address.iff", x = 11, z = 2, y = -14.95, ox = 0, oy = -0.707107, oz = 0, ow = 0.707107, cellid = -1, containmentType = -1},
 	cityRankRequired = 4,

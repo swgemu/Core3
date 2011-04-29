@@ -49,7 +49,7 @@ object_building_player_city_cloning_tatooine = object_building_player_city_share
 	width = 5,
 	gameObjectType = 519,
 	sign = {templateFile = "object/tangible/sign/player/house_address_tatooine.iff", x = 9.75, z = 2, y = -3, ox = 0, oy = 0.707107, oz = 0, ow = -0.707107, cellid = -1, containmentType = -1},
-	mapLocationsType1 = 5,
+	planetMapCategory = "cloningfacility",
 	cityRankRequired = 3,
 	spawningPoints = { {x = -9.8, z = -1.2, y = -6.6, ow = 1, ox = 0, oz = 0, oy = 0, cellid = 4} }, -- { x, z, y, ow, ox, oy, oz, cellid }
 	templateType = CLONINGBUILDING,

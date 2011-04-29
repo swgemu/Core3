@@ -42,7 +42,7 @@
 
 
 object_building_general_capitol_general = object_building_general_shared_capitol_general:new {
-
+	planetMapCategory = "capitol"
 }
 
 ObjectTemplates:addTemplate(object_building_general_capitol_general, "object/building/general/capitol_general.iff")

@@ -43,9 +43,9 @@
 
 object_building_naboo_cloning_facility_naboo = object_building_naboo_shared_cloning_facility_naboo:new {
 	gameObjectType = 519,
-	mapLocationsType1 = 5,
-	mapLocationsType2 = 0,
-	mapLocationsType3 = 0,
+	planetMapCategory = "cloningfacility",
+
+
 	childObjects = {
 			{templateFile = "object/tangible/terminal/terminal_cloning.iff", x = 1, z = -0.05, y = 2.5, ox = 0, oy = 0, oz = 0, ow = 1, cellid = 1, containmentType = -1},
 			{templateFile = "object/tangible/terminal/terminal_cloning.iff", x = 1, z = -0.05, y = -1.35, ox = 0, oy = 1, oz = 0, ow = 0, cellid = 1, containmentType = -1}

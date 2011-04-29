@@ -9,7 +9,8 @@
 #define MAPLOCATIONENTRY_H_
 
 #include "engine/engine.h"
-#include "PlanetMapCategory.h"
+
+class PlanetMapCategory;
 
 namespace server {
 namespace zone {
@@ -27,27 +28,30 @@ using namespace server::zone::objects::scene;
 
 class MapLocationEntry : public Object {
 	ManagedReference<SceneObject*> object;
-	Reference<PlanetMapCategory*> planetMapCategory;
+	bool active;
 
 public:
 	MapLocationEntry() {
-
+		active = false;
 	}
 
-	MapLocationEntry(SceneObject* obj, PlanetMapCategory* pmc) {
+	MapLocationEntry(SceneObject* obj) {
 		object = obj;
-
-		planetMapCategory = pmc;
+		active = false;
 	}
 
 	MapLocationEntry(const MapLocationEntry& entry) : Object() {
 		object = entry.object;
-		planetMapCategory = entry.planetMapCategory;
+		active = entry.active;
 	}
 
 	int compareTo(const MapLocationEntry& entry) const;
 
+	void insertToMessage(BaseMessage* message) const;
+
 	MapLocationEntry& operator=(const MapLocationEntry& entry);
+
+	uint64 getObjectID() const;
 
 	inline void setObject(SceneObject* obj) {
 		object = obj;
@@ -57,14 +61,8 @@ public:
 		return object;
 	}
 
-	uint64 getObjectID() const;
-
-	inline void setPlanetMapCategory(PlanetMapCategory* pmc) {
-		planetMapCategory = pmc;
-	}
-
-	inline PlanetMapCategory* getPlanetMapCategory() {
-		return planetMapCategory.get();
+	inline bool isActive() {
+		return active;
 	}
 };
 

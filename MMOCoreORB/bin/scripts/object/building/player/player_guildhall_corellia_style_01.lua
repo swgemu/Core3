@@ -44,7 +44,6 @@
 object_building_player_player_guildhall_corellia_style_01 = object_building_player_shared_player_guildhall_corellia_style_01:new {
 	lotSize = 5,
 	baseMaintenanceRate = 100,
-	mapLocationsType1 = 7,
 	allowedZones = {"corellia", "talus"},
 	publicStructure = 0,
 	constructionMarker = "object/building/player/construction/construction_player_guildhall_corellia_style_01.iff",

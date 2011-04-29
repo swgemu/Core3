@@ -12,8 +12,7 @@
 
 #include "LuaTemplate.h"
 #include "ChildObject.h"
-
-#include "server/zone/managers/planet/PlanetMapCategory.h"
+#include "server/zone/managers/templates/PlanetMapCategory.h"
 
 class PortalLayout;
 class AppearanceTemplate;
@@ -60,6 +59,7 @@ protected:
 	uint32 clientObjectCRC;
 
 	Reference<PlanetMapCategory*> planetMapCategory;
+	Reference<PlanetMapCategory*> planetMapSubCategory;
 
 	String fullTemplateString;
 
@@ -279,6 +279,10 @@ public:
 
 	inline PlanetMapCategory* getPlanetMapCategory() const {
 		return planetMapCategory;
+	}
+
+	inline PlanetMapCategory* getPlanetMapSubCategory() const {
+		return planetMapSubCategory;
 	}
 
 	inline int getChildObjectsSize() {

@@ -2345,27 +2345,13 @@ int PlayerManagerImplementation::checkSpeedHackSecondTest(PlayerCreature* player
 }
 
 void PlayerManagerImplementation::generateHologrindProfessions(PlayerCreature* player) {
-	Vector<byte> hologrindProfessions;
+	uint64 holomask = System::random(5);
+	holomask += System::random(5);
+	holomask += System::random(5);
+	holomask += System::random(5);
+	holomask += System::random(5);
 
-	while (hologrindProfessions.size() < 5) {
-		byte prof = System::random(31);
-
-		bool hasProfession = false;
-
-		for (byte i = 0; i < hologrindProfessions.size(); ++i) {
-			byte holoprof = hologrindProfessions.get(i);
-
-			if (holoprof == prof) {
-				hasProfession = true;
-				break;
-			}
-		}
-
-		if (!hasProfession)
-			hologrindProfessions.add(prof);
-	}
-
-	player->setHologrindProfessions(hologrindProfessions);
+	player->setHologrindMask(holomask);
 }
 
 void PlayerManagerImplementation::sendStartingLocationsTo(PlayerCreature* player) {

@@ -42,7 +42,7 @@
 
 
 object_building_tatooine_shuttleport_tatooine = object_building_tatooine_shared_shuttleport_tatooine:new {
-
+	planetMapCategory = "shuttleport"
 }
 
 ObjectTemplates:addTemplate(object_building_tatooine_shuttleport_tatooine, "object/building/tatooine/shuttleport_tatooine.iff")

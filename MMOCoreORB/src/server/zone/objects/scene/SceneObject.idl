@@ -84,7 +84,7 @@ include server.zone.objects.scene.SessionFacadeType;
 import server.zone.templates.SharedObjectTemplate;
 import server.zone.objects.area.ActiveArea;
 
-include server.zone.managers.planet.PlanetMapCategory;
+include server.zone.managers.templates.PlanetMapCategory;
 
 class SceneObject extends QuadTreeEntry implements Logger {
 	protected transient ZoneProcessServer server;
@@ -1501,6 +1501,11 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	@local
 	public PlanetMapCategory getPlanetMapCategory() {
 		return templateObject.getPlanetMapCategory();
+	}
+	
+	@local
+	public PlanetMapCategory getPlanetMapSubCategory() {
+		return templateObject.getPlanetMapSubCategory();
 	}
 	
 	@local

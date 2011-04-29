@@ -42,7 +42,7 @@
 
 
 object_building_general_starport_general_style_1 = object_building_general_shared_starport_general_style_1:new {
-
+	planetMapCategory = "starport"
 }
 
 ObjectTemplates:addTemplate(object_building_general_starport_general_style_1, "object/building/general/starport_general_style_1.iff")

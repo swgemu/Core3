@@ -42,7 +42,7 @@
 
 
 object_building_general_cantina_general = object_building_general_shared_cantina_general:new {
-
+	planetMapCategory = "cantina"
 }
 
 ObjectTemplates:addTemplate(object_building_general_cantina_general, "object/building/general/cantina_general.iff")

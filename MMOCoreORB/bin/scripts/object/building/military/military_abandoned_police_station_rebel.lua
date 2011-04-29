@@ -42,9 +42,9 @@
 
 
 object_building_military_military_abandoned_police_station_rebel = object_building_military_shared_military_abandoned_police_station_rebel:new {
-	mapLocationsType1 = 0,
-	mapLocationsType2 = 0,
-	mapLocationsType3 = 0
+
+
+
 
 
 }

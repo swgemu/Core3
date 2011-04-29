@@ -9,16 +9,14 @@
 #define PLANETMAPCATEGORYLIST_H_
 
 #include "engine/engine.h"
-#include "PlanetMapCategory.h"
 
-#include "server/zone/templates/datatables/DataTableIff.h"
+class PlanetMapCategory;
 
 class PlanetMapCategoryList : public VectorMap<String, Reference<PlanetMapCategory*> > {
 
 public:
 	PlanetMapCategoryList() : VectorMap<String, Reference<PlanetMapCategory*> >() {
 	}
-
 };
 
 

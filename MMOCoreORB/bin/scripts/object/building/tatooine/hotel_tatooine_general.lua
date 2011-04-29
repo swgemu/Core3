@@ -42,7 +42,7 @@
 
 
 object_building_tatooine_hotel_tatooine_general = object_building_tatooine_shared_hotel_tatooine_general:new {
-
+	planetMapCategory = "hotel"
 }
 
 ObjectTemplates:addTemplate(object_building_tatooine_hotel_tatooine_general, "object/building/tatooine/hotel_tatooine_general.iff")

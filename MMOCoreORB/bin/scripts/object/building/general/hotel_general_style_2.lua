@@ -42,7 +42,7 @@
 
 
 object_building_general_hotel_general_style_2 = object_building_general_shared_hotel_general_style_2:new {
-
+	planetMapCategory = "hotel"
 }
 
 ObjectTemplates:addTemplate(object_building_general_hotel_general_style_2, "object/building/general/hotel_general_style_2.iff")

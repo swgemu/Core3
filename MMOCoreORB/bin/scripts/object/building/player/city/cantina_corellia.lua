@@ -45,7 +45,7 @@ object_building_player_city_cantina_corellia = object_building_player_city_share
 	lotSize = 5,
 	baseMaintenanceRate = 0,
 	gameObjectType = 518,
-	mapLocationsType1 = 3,
+	planetMapCategory = "cantina",
 	allowedZones = {"corellia", "talus"},
 	sign = {templateFile = "object/tangible/sign/player/house_address_corellia.iff", x = 3.5, z = 2, y = 13.65, ox = 0, oy = 1, oz = 0, ow = 0.0001, cellid = -1, containmentType = -1},
 	length = 7,

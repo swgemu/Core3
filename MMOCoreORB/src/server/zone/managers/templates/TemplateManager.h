@@ -16,6 +16,9 @@
 #include "treLib/treArchive.hpp"
 #include "tre3/TreeArchive.h"
 
+#include "PlanetMapCategoryList.h"
+#include "PlanetMapCategory.h"
+
 class TemplateCRCMap;
 class ClientTemplateCRCMap;
 class PortalLayoutMap;
@@ -27,7 +30,6 @@ class PortalLayout;
 class AppearanceTemplate;
 class TreeDirectory;
 
-
 class TemplateManager : public Singleton<TemplateManager>, public Logger {
 	TemplateCRCMap* templateCRCMap;
 
@@ -37,10 +39,15 @@ class TemplateManager : public Singleton<TemplateManager>, public Logger {
 	FloorMeshMap* floorMeshMap;
 	AppearanceMap* appearanceMap;
 
+	PlanetMapCategoryList planetMapCategoryList;
+
 	//treArchive* treeDirectory;
 	TreeArchive* treeDirectory;
 
 	ReadWriteLock appearanceMapLock;
+
+	void loadTreArchive();
+	void loadPlanetMapCategories();
 
 public:
 	static Lua* luaTemplatesInstance;
@@ -52,8 +59,6 @@ public:
 	void registerTemplateObjects();
 
 	void loadLuaTemplates();
-
-	void loadTreArchive();
 
 	void addTemplate(uint32 key, const String& fullName, LuaObject* templateData);
 
@@ -81,6 +86,24 @@ public:
 	static int crcString(lua_State* L);
 	static int addTemplateCRC(lua_State* L);
 	static int addClientTemplate(lua_State* L);
+
+	PlanetMapCategory* getPlanetMapCategoryByName(const String& name) {
+		if (!planetMapCategoryList.contains(name))
+			return NULL;
+
+		return planetMapCategoryList.get(name);
+	}
+
+	PlanetMapCategory* getPlanetMapCategoryById(int idx) {
+		for (int i = 0; i < planetMapCategoryList.size(); ++i) {
+			Reference<PlanetMapCategory*> pmc = planetMapCategoryList.get(i);
+
+			if (pmc->getIndex() == idx)
+				return pmc;
+		}
+
+		return NULL;
+	}
 
 };
 

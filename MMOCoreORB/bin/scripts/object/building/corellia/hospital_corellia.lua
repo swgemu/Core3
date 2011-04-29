@@ -43,9 +43,7 @@
 
 object_building_corellia_hospital_corellia = object_building_corellia_shared_hospital_corellia:new {
 	gameObjectType = 517,
-	mapLocationsType1 = 13,
-	mapLocationsType2 = 0,
-	mapLocationsType3 = 0,
+	planetMapCategory = "medicalcenter",
 	childObjects = {
 		{templateFile = "object/tangible/terminal/terminal_elevator_up.iff", x = 0.122, z = 0.25, y = -2.46, ow = 0.906308, ox = 0, oy = 0.422618, oz = 0, cellid = 13, containmentType = -1},
 		{templateFile = "object/tangible/terminal/terminal_elevator_up.iff", x = 0.14, z = 7.25, y = -2.19, ow = 0.915698, ox = 0, oy = 0.401868, oz = 0, cellid = 13, containmentType = -1},

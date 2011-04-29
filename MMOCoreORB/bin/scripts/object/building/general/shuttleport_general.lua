@@ -42,7 +42,7 @@
 
 
 object_building_general_shuttleport_general = object_building_general_shared_shuttleport_general:new {
-
+	planetMapCategory = "shuttleport"
 }
 
 ObjectTemplates:addTemplate(object_building_general_shuttleport_general, "object/building/general/shuttleport_general.iff")

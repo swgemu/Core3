@@ -43,7 +43,7 @@
 
 object_mobile_junk_malik = object_mobile_shared_junk_malik:new {
 	gameObjectType = 1036,
-	mapLocationsType1 = 26,
+	planetMapCategory = "junkshop",
 	lookAtText = "@mob/creature_names:junk_dealer",
 	objectName = "@mob/creature_names:junk_dealer"
 }

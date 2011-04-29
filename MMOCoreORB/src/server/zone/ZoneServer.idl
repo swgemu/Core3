@@ -45,7 +45,6 @@ which carries forward this exception.
 package server.zone;
 
 import server.zone.objects.scene.SceneObject;
-
 import engine.service.proto.BasePacketHandler;
 import engine.service.DatagramServiceThread;
 import engine.service.ServiceHandler;
@@ -155,7 +154,7 @@ class ZoneServer extends ManagedService implements Logger {
 	public static final int LOCKED = 3;
 	
 	public native ZoneServer(ConfigManager config);
-	
+		
 	public native void initializeTransientMembers();
 	
 	@local

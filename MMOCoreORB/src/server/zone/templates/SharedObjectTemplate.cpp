@@ -12,6 +12,8 @@
 #include "server/ServerCore.h"
 
 void SharedObjectTemplate::readObject(LuaObject* templateData) {
+	TemplateManager* templateManager = TemplateManager::instance();
+
 	objectName = templateData->getStringField("objectName");
 	detailedDescription = templateData->getStringField("detailedDescription");
 	lookAtText = templateData->getStringField("lookAtText");
@@ -84,8 +86,8 @@ void SharedObjectTemplate::readObject(LuaObject* templateData) {
 
 	templateType = templateData->getIntField("templateType");
 
-	String mapLocationType = templateData->getStringField("planetMapCategory");
-	planetMapCategory = ServerCore::getZoneServer()->getZone(0)->getPlanetManager()->getPlanetMapCategoryByName(mapLocationType);
+	planetMapCategory = templateManager->getPlanetMapCategoryByName(templateData->getStringField("planetMapCategory"));
+	planetMapSubCategory = templateManager->getPlanetMapCategoryByName(templateData->getStringField("planetMapSubCategory"));
 
 	LuaObject luaItemList = templateData->getObjectField("childObjects");
 
@@ -99,8 +101,6 @@ void SharedObjectTemplate::readObject(LuaObject* templateData) {
 
 		ChildObject object;
 		object.parseFromLua(&a);
-
-		//System::out << "adding spawning point" << endl;
 
 		childObjects.add(object);
 

@@ -2540,6 +2540,15 @@ PlanetMapCategory* SceneObject::getPlanetMapCategory() {
 		return _implementation->getPlanetMapCategory();
 }
 
+PlanetMapCategory* SceneObject::getPlanetMapSubCategory() {
+	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		throw ObjectNotLocalException(this);
+
+	} else
+		return _implementation->getPlanetMapSubCategory();
+}
+
 SharedObjectTemplate* SceneObject::getObjectTemplate() {
 	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
 	if (_implementation == NULL) {
@@ -3596,6 +3605,11 @@ bool SceneObjectImplementation::hasActiveArea(ActiveArea* area) {
 PlanetMapCategory* SceneObjectImplementation::getPlanetMapCategory() {
 	// server/zone/objects/scene/SceneObject.idl():  		return templateObject.getPlanetMapCategory();
 	return templateObject->getPlanetMapCategory();
+}
+
+PlanetMapCategory* SceneObjectImplementation::getPlanetMapSubCategory() {
+	// server/zone/objects/scene/SceneObject.idl():  		return templateObject.getPlanetMapSubCategory();
+	return templateObject->getPlanetMapSubCategory();
 }
 
 SharedObjectTemplate* SceneObjectImplementation::getObjectTemplate() {

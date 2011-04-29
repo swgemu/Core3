@@ -278,68 +278,7 @@ void ZoneImplementation::dropSceneObject(SceneObject* object)  {
 }
 
 void ZoneImplementation::sendMapLocationsTo(SceneObject* player) {
-	GetMapLocationsResponseMessage* gmlr = new GetMapLocationsResponseMessage(zoneName);
-
-	mapLocations.rlock();
-
-	SortedVector<String> cities;
-
-	try {
-		for (int i = 0; i < mapLocations.size(); ++i) {
-			SortedVector<MapLocationEntry>* sortedVector = &mapLocations.elementAt(i).getValue();
-
-			for (int j = 0; j < sortedVector->size(); ++j) {
-				MapLocationEntry* entry = &sortedVector->elementAt(j);
-				SceneObject* object = entry->getObject();
-				UnicodeString name;
-				StringId* objectName = object->getObjectName();
-
-				if (object->isBuildingObject()) {
-					ActiveArea* area = object->getActiveRegion();
-
-					if (area != NULL) {
-						objectName = area->getObjectName();
-					}
-				}
-
-				name = objectName->getCustomString();
-
-				if (name.length() == 0) {
-					String fullPath;
-					objectName->getFullPath(fullPath);
-
-					name = fullPath;
-				}
-
-				if (entry->getPlanetMapCategory()->getIndex() == 17) {
-					if (!cities.contains(name.toString()))
-						cities.put(name.toString());
-					else
-						continue;
-				}
-
-				Vector3 pos = object->getWorldPosition();
-
-				gmlr->addMapLocation(object->getObjectID(), name, pos.getX(), pos.getY(),
-						entry->getPlanetMapCategory());
-			}
-
-		}
-
-	} catch (Exception& e) {
-		System::out << e.getMessage() << endl;
-		e.printStackTrace();
-	}
-
-	mapLocations.runlock();
-
-	//these will be used for other locations on the planet map
-	gmlr->addBlankList();
-	gmlr->addBlankList();
-
-	//unknown
-	gmlr->addFooter();
-
+	GetMapLocationsResponseMessage* gmlr = new GetMapLocationsResponseMessage(zoneName, &mapLocations);
 	player->sendMessage(gmlr);
 }
 

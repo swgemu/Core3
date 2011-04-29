@@ -42,7 +42,8 @@
 
 
 object_building_general_guild_combat_general_style_01 = object_building_general_shared_guild_combat_general_style_01:new {
-
+	planetMapCategory = "guild",
+	planetMapSubCategory = "guild_combat"
 }
 
 ObjectTemplates:addTemplate(object_building_general_guild_combat_general_style_01, "object/building/general/guild_combat_general_style_01.iff")

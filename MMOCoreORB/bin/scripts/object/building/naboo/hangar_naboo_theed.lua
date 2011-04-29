@@ -43,8 +43,8 @@
 
 object_building_naboo_hangar_naboo_theed = object_building_naboo_shared_hangar_naboo_theed:new {
 	gameObjectType = 521,
-	mapLocationsType2 = 0,
-	mapLocationsType3 = 0,
+	planetMapCategory = "starport",
+
 	childObjects = {
 		{templateFile = "object/tangible/terminal/terminal_travel.iff", x = -26.9453, z = 0.749357, y = -67.1413, ox = 0, oy = 1, oz = 0, ow = 0, cellid = 2, containmentType = -1},
 		{templateFile = "object/tangible/terminal/terminal_travel.iff", x = 26.9453, z = 0.749357, y = -67.1413, ox = 0, oy = 1, oz = 0, ow = 0, cellid = 3, containmentType = -1},

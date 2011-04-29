@@ -42,7 +42,7 @@
 
 
 object_building_naboo_shuttleport_naboo = object_building_naboo_shared_shuttleport_naboo:new {
-
+	planetMapCategory = "shuttleport",
 }
 
 ObjectTemplates:addTemplate(object_building_naboo_shuttleport_naboo, "object/building/naboo/shuttleport_naboo.iff")

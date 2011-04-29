@@ -44,7 +44,7 @@
 object_building_player_city_bank_corellia = object_building_player_city_shared_bank_corellia:new {
 	lotSize = 0,
 	baseMaintenanceRate = 0,
-	mapLocationsType1 = 2,
+	planetMapCategory = "bank",
 	allowedZones = {"corellia", "talus"},
 	length = 4,
 	width = 4,

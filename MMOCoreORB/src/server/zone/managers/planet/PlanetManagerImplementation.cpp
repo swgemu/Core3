@@ -27,18 +27,16 @@
 #include "server/zone/packets/player/PlanetTravelPointListResponse.h"
 #include "server/zone/objects/area/BadgeActiveArea.h"
 
-PlanetMapCategoryList PlanetManagerImplementation::planetMapCategoryList;
-
 void PlanetManagerImplementation::initialize() {
 	terrainManager = new TerrainManager(zone);
 
 	numberOfCities = 0;
 
-	info("Loading planet...", true);
+	info("Loading planet.");
 
 	//TODO: Load from the TRE files.
 	if (terrainManager->initialize("terrain/" + zone->getZoneName() + ".trn"))
-		info("Loaded terrain file successfully.", true);
+		info("Loaded terrain file successfully.");
 	else
 		error("Failed to load terrain file.");
 
@@ -46,7 +44,6 @@ void PlanetManagerImplementation::initialize() {
 
 	loadLuaConfig();
 	loadTravelFares();
-	loadPlanetMapCategories();
 
 	loadBadgeAreas();
 	loadNoBuildAreas();
@@ -64,36 +61,6 @@ void PlanetManagerImplementation::initialize() {
 	weatherManager->initialize();
 }
 
-void PlanetManagerImplementation::loadPlanetMapCategories() {
-	if (planetMapCategoryList.size() > 0)
-		return;
-
-	TemplateManager* templateManager = TemplateManager::instance();
-
-	IffStream* iffStream = templateManager->openIffFile("datatables/player/planet_map_cat.iff");
-
-	if (iffStream == NULL) {
-		info("Planet Map Categories could not be found.", true);
-		return;
-	}
-
-	DataTableIff dtiff;
-	dtiff.readObject(iffStream);
-
-	delete iffStream;
-
-	for (int i = 0; i < dtiff.getTotalRows(); ++i) {
-		DataTableRow* row = dtiff.getRow(i);
-		Reference<PlanetMapCategory*> planetMapCategory = new PlanetMapCategory();
-		planetMapCategory->parseFromDataTableRow(row);
-		planetMapCategoryList.put(planetMapCategory->getName(), planetMapCategory);
-
-	}
-
-	info("Loaded " + String::valueOf(planetMapCategoryList.size()) + " planet map categories", true);
-
-}
-
 void PlanetManagerImplementation::loadLuaConfig() {
 	String planetName = zone->getZoneName();
 
@@ -109,11 +76,11 @@ void PlanetManagerImplementation::loadLuaConfig() {
 		if (luaObject.getIntField("loadClientObjects") > 0)
 			loadSnapshotObjects();
 		else
-			info("Client object loading disabled.", true);
+			info("Client object loading disabled.");
 
 		luaObject.pop();
 	} else {
-		info("Configuration settings not found.", true);
+		warning("Configuration settings not found.");
 	}
 
 	delete lua;
@@ -126,7 +93,7 @@ void PlanetManagerImplementation::loadTravelFares() {
 	IffStream* iffStream = templateManager->openIffFile("datatables/travel/travel.iff");
 
 	if (iffStream == NULL) {
-		info("Travel fares could not be found.", true);
+		warning("Travel fares could not be found.");
 		return;
 	}
 
@@ -136,7 +103,7 @@ void PlanetManagerImplementation::loadTravelFares() {
 	Vector<DataTableRow*> rows = dtiff.getRowsByColumn(0, zone->getZoneName());
 
 	if (rows.size() <= 0) {
-		info("Travel fares could not be found.", true);
+		warning("Travel fares could not be found.");
 		return;
 	}
 
@@ -151,7 +118,7 @@ void PlanetManagerImplementation::loadTravelFares() {
 		travelFares.put(planetName, fare);
 	}
 
-	info("Loaded travel fares to " + String::valueOf(travelFares.size()) + " planets.", true);
+	info("Loaded travel fares to " + String::valueOf(travelFares.size()) + " planets.");
 }
 
 void PlanetManagerImplementation::loadSnapshotObject(WorldSnapshotNode* node, WorldSnapshotIff* wsiff, int& totalObjects) {

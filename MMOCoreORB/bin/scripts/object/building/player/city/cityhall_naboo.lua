@@ -44,7 +44,7 @@
 object_building_player_city_cityhall_naboo = object_building_player_city_shared_cityhall_naboo:new {
 	lotSize = 0,
 	baseMaintenanceRate = 0,
-	mapLocationsType1 = 50,
+	planetMapCategory = "cityhall",
 	allowedZones = {"dantooine", "naboo", "rori"},
 	length = 7,
 	width = 9,

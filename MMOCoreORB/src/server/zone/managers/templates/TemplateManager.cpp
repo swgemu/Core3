@@ -107,7 +107,9 @@ TemplateManager::TemplateManager() {
 
 	registerFunctions();
 	registerGlobals();
+
 	loadTreArchive();
+	loadPlanetMapCategories();
 }
 
 TemplateManager::~TemplateManager() {
@@ -127,8 +129,33 @@ TemplateManager::~TemplateManager() {
 	floorMeshMap = NULL;
 }
 
+void TemplateManager::loadPlanetMapCategories() {
+	IffStream* iffStream = openIffFile("datatables/player/planet_map_cat.iff");
+
+	if (iffStream == NULL) {
+		error("Planet map categories could not be found.");
+		return;
+	}
+
+	DataTableIff dtiff;
+	dtiff.readObject(iffStream);
+
+	delete iffStream;
+
+	for (int i = 0; i < dtiff.getTotalRows(); ++i) {
+		DataTableRow* row = dtiff.getRow(i);
+
+		Reference<PlanetMapCategory*> planetMapCategory = new PlanetMapCategory();
+		planetMapCategory->parseFromDataTableRow(row);
+
+		planetMapCategoryList.put(planetMapCategory->getName(), planetMapCategory);
+	}
+
+	info("Loaded " + String::valueOf(planetMapCategoryList.size()) + " planet map categories.", true);
+}
+
 void TemplateManager::loadLuaTemplates() {
-	info("loading object templates...", true);
+	info("Loading object templates", true);
 
 	try {
 		luaTemplatesInstance->runFile("scripts/object/main.lua");
@@ -137,7 +164,7 @@ void TemplateManager::loadLuaTemplates() {
 		e.printStackTrace();
 	}
 
-	info("done loading object templates", true);
+	info("Finished loading object templates", true);
 	info(String::valueOf(portalLayoutMap->size()) + " portal layouts loaded", true);
 	info(String::valueOf(floorMeshMap->size()) + " floor meshes loaded", true);
 }
@@ -155,7 +182,6 @@ void TemplateManager::loadTreArchive() {
 
 	info("Loading TRE archives...", true);
 
-	//treeDirectory = new treArchive();
 	treeDirectory = new TreeArchive();
 
 	int j = 0;
@@ -167,21 +193,7 @@ void TemplateManager::loadTreArchive() {
 		fullPath += file;
 
 		treeDirectory->unpackFile(fullPath);
-
-		//if (!treeDirectory->addFile(fullPath.toCharArray()))
-			//error("could not load " + fullPath);
-		//else
-			//++j;
 	}
-
-	//if (j == 0) {
-		//delete treeDirectory;
-		//treeDirectory = NULL;
-	//}
-
-	//treeDirectory->printNodesByPath("terrain");
-
-	//treeDirectory->printArchiveContents();
 
 	info("Finished loading TRE archives.", true);
 }

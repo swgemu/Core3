@@ -43,11 +43,7 @@
 
 object_building_corellia_salon_corellia = object_building_corellia_shared_salon_corellia:new {
 	gameObjectType = 530,
-	mapLocationsType1 = 0,
-	mapLocationsType2 = 0,
-	mapLocationsType3 = 0
-
-
+	planetMapCategory = "salon"
 }
 
 ObjectTemplates:addTemplate(object_building_corellia_salon_corellia, "object/building/corellia/salon_corellia.iff")

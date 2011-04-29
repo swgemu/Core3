@@ -42,9 +42,9 @@
 
 
 object_building_lok_mining_cave_01 = object_building_lok_shared_mining_cave_01:new {
-	mapLocationsType1 = 0,
-	mapLocationsType2 = 0,
-	mapLocationsType3 = 0
+
+
+
 
 
 }

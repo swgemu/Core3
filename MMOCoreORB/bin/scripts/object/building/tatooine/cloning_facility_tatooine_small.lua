@@ -43,9 +43,9 @@
 
 object_building_tatooine_cloning_facility_tatooine_small = object_building_tatooine_shared_cloning_facility_tatooine_small:new {
 	gameObjectType = 519,
-	mapLocationsType1 = 5,
-	mapLocationsType2 = 0,
-	mapLocationsType3 = 0,
+	planetMapCategory = "cloningfacility",
+
+
 	childObjects = {
 		{templateFile = "object/tangible/terminal/terminal_cloning.iff", x = -0.42, z = -0.38, y = -0.4, ox = 0, oy = 1, oz = 0, ow = 0, cellid = 9, containmentType = -1}
 	},
