@@ -47,6 +47,7 @@ SharedObjectTemplate = Object:new {
 	 
 	 planetMapCategory = "",
 	 planetMapSubCategory = "",
+	 autoRegisterWithPlanetMap = 1,
 
 	 snapToTerrain = 0,
 	 containerType= 0,

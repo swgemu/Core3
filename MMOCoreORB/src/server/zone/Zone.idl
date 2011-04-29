@@ -180,13 +180,23 @@ class Zone extends ManagedObject implements QuadTree {
 	}
 	
 	/**
-	 * Functions to return the size of the
-	 * trn file
+	 * These functions return the size of the terrain file for this zone.
 	 */
 	public native float getMinX();	
 	public native float getMaxX();
 	public native float getMinY();
 	public native float getMaxY();
+	
+	/**
+	 * Registers the object to the planetary map. This also makes the object visible to the find command.
+	 * @param object The object to register to the planetary map.
+	 */
+	public native void registerObjectWithPlanetaryMap(SceneObject object);
+	/**
+	 * Unregisters the object from the planetary map.
+	 * @param object The object to unregister from the planetary map.
+	 */
+	public native void unregisterObjectWithPlanetaryMap(SceneObject object);
 	
 	public string getZoneName() {
 		return zoneName;

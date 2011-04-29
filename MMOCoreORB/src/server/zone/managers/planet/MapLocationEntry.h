@@ -64,6 +64,14 @@ public:
 	inline bool isActive() {
 		return active;
 	}
+
+	/**
+	 * Sets whether or not this map location entry is currently active.
+	 * @param act This parameter should be true if you wish this location's status be marked as active.
+	 */
+	inline void setActive(bool act) {
+		active = act;
+	}
 };
 
 

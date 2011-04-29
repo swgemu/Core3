@@ -82,6 +82,14 @@ public:
 		waterBoundaries.add(boundary);
 	}
 
+	/**
+	 * Returns the size of the terrain.
+	 * @return float The size of the terrain.
+	 */
+	inline float getSize() {
+		return size;
+	}
+
 	bool getWater(float x, float y, float& waterHeight);
 	float getHeight(float x, float y);
 

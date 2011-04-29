@@ -54,6 +54,14 @@ public:
 	float getHeight(float x, float y) {
 		return terrainData.getHeight(x, y);
 	}
+
+	float getMin() {
+		return terrainData.getSize() / 2 * -1;
+	}
+
+	float getMax() {
+		return terrainData.getSize() / 2;
+	}
 };
 
 

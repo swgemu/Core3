@@ -240,6 +240,10 @@ public:
 
 	float getMaxY();
 
+	void registerObjectWithPlanetaryMap(SceneObject* object);
+
+	void unregisterObjectWithPlanetaryMap(SceneObject* object);
+
 	String getZoneName();
 
 	unsigned int getZoneCRC();
@@ -358,6 +362,10 @@ public:
 
 	float getMaxY();
 
+	void registerObjectWithPlanetaryMap(SceneObject* object);
+
+	void unregisterObjectWithPlanetaryMap(SceneObject* object);
+
 	String getZoneName();
 
 	unsigned int getZoneCRC();
@@ -446,6 +454,10 @@ public:
 	float getMinY();
 
 	float getMaxY();
+
+	void registerObjectWithPlanetaryMap(SceneObject* object);
+
+	void unregisterObjectWithPlanetaryMap(SceneObject* object);
 
 	String getZoneName();
 

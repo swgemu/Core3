@@ -28,7 +28,7 @@
  *	ZoneStub
  */
 
-enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_FINALIZE__,RPC_GETNEARESTCLONINGBUILDING__CREATUREOBJECT_,RPC_GETNEARESTPLANETARYOBJECT__SCENEOBJECT_STRING_,RPC_INITIALIZEPRIVATEDATA__,RPC_UPDATEACTIVEAREAS__SCENEOBJECT_,RPC_STARTMANAGERS__,RPC_STOPMANAGERS__,RPC_GETHEIGHT__FLOAT_FLOAT_,RPC_ADDSCENEOBJECT__SCENEOBJECT_,RPC_SENDMAPLOCATIONSTO__SCENEOBJECT_,RPC_DROPSCENEOBJECT__SCENEOBJECT_,RPC_GETPLANETMANAGER__,RPC_GETCITYMANAGER__,RPC_GETZONESERVER__,RPC_GETCREATUREMANAGER__,RPC_GETGALACTICTIME__,RPC_HASMANAGERSSTARTED__,RPC_GETMINX__,RPC_GETMAXX__,RPC_GETMINY__,RPC_GETMAXY__,RPC_GETZONENAME__,RPC_GETZONECRC__};
+enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_FINALIZE__,RPC_GETNEARESTCLONINGBUILDING__CREATUREOBJECT_,RPC_GETNEARESTPLANETARYOBJECT__SCENEOBJECT_STRING_,RPC_INITIALIZEPRIVATEDATA__,RPC_UPDATEACTIVEAREAS__SCENEOBJECT_,RPC_STARTMANAGERS__,RPC_STOPMANAGERS__,RPC_GETHEIGHT__FLOAT_FLOAT_,RPC_ADDSCENEOBJECT__SCENEOBJECT_,RPC_SENDMAPLOCATIONSTO__SCENEOBJECT_,RPC_DROPSCENEOBJECT__SCENEOBJECT_,RPC_GETPLANETMANAGER__,RPC_GETCITYMANAGER__,RPC_GETZONESERVER__,RPC_GETCREATUREMANAGER__,RPC_GETGALACTICTIME__,RPC_HASMANAGERSSTARTED__,RPC_GETMINX__,RPC_GETMAXX__,RPC_GETMINY__,RPC_GETMAXY__,RPC_REGISTEROBJECTWITHPLANETARYMAP__SCENEOBJECT_,RPC_UNREGISTEROBJECTWITHPLANETARYMAP__SCENEOBJECT_,RPC_GETZONENAME__,RPC_GETZONECRC__};
 
 Zone::Zone(ZoneProcessServer* processor, const String& zoneName) : ManagedObject(DummyConstructorParameter::instance()) {
 	ZoneImplementation* _implementation = new ZoneImplementation(processor, zoneName);
@@ -395,6 +395,34 @@ float Zone::getMaxY() {
 		return method.executeWithFloatReturn();
 	} else
 		return _implementation->getMaxY();
+}
+
+void Zone::registerObjectWithPlanetaryMap(SceneObject* object) {
+	ZoneImplementation* _implementation = (ZoneImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_REGISTEROBJECTWITHPLANETARYMAP__SCENEOBJECT_);
+		method.addObjectParameter(object);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->registerObjectWithPlanetaryMap(object);
+}
+
+void Zone::unregisterObjectWithPlanetaryMap(SceneObject* object) {
+	ZoneImplementation* _implementation = (ZoneImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_UNREGISTEROBJECTWITHPLANETARYMAP__SCENEOBJECT_);
+		method.addObjectParameter(object);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->unregisterObjectWithPlanetaryMap(object);
 }
 
 String Zone::getZoneName() {
@@ -784,6 +812,12 @@ Packet* ZoneAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	case RPC_GETMAXY__:
 		resp->insertFloat(getMaxY());
 		break;
+	case RPC_REGISTEROBJECTWITHPLANETARYMAP__SCENEOBJECT_:
+		registerObjectWithPlanetaryMap((SceneObject*) inv->getObjectParameter());
+		break;
+	case RPC_UNREGISTEROBJECTWITHPLANETARYMAP__SCENEOBJECT_:
+		unregisterObjectWithPlanetaryMap((SceneObject*) inv->getObjectParameter());
+		break;
 	case RPC_GETZONENAME__:
 		resp->insertAscii(getZoneName());
 		break;
@@ -883,6 +917,14 @@ float ZoneAdapter::getMinY() {
 
 float ZoneAdapter::getMaxY() {
 	return ((ZoneImplementation*) impl)->getMaxY();
+}
+
+void ZoneAdapter::registerObjectWithPlanetaryMap(SceneObject* object) {
+	((ZoneImplementation*) impl)->registerObjectWithPlanetaryMap(object);
+}
+
+void ZoneAdapter::unregisterObjectWithPlanetaryMap(SceneObject* object) {
+	((ZoneImplementation*) impl)->unregisterObjectWithPlanetaryMap(object);
 }
 
 String ZoneAdapter::getZoneName() {

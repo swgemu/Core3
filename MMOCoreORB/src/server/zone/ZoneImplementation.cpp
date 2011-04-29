@@ -266,15 +266,25 @@ void ZoneImplementation::updateActiveAreas(SceneObject* object) {
 void ZoneImplementation::addSceneObject(SceneObject* object) {
 	objectMap.put(object->getObjectID(), object);
 
+	if (object->getObjectTemplate()->isAutoRegisteredWithPlanetMap())
+		registerObjectWithPlanetaryMap(object);
+}
+
+//TODO: Do we need to send out some type of update when this happens?
+void ZoneImplementation::registerObjectWithPlanetaryMap(SceneObject* object) {
 	Locker locker(&mapLocations);
 	mapLocations.addObject(object);
+}
+
+void ZoneImplementation::unregisterObjectWithPlanetaryMap(SceneObject* object) {
+	Locker locker(&mapLocations);
+	mapLocations.dropObject(object);
 }
 
 void ZoneImplementation::dropSceneObject(SceneObject* object)  {
 	objectMap.remove(object->getObjectID());
 
-	Locker locker(&mapLocations);
-	mapLocations.dropObject(object);
+	unregisterObjectWithPlanetaryMap(object);
 }
 
 void ZoneImplementation::sendMapLocationsTo(SceneObject* player) {
@@ -389,17 +399,17 @@ SortedVector<ManagedReference<SceneObject*> > ZoneImplementation::getPlanetaryOb
 }
 
 float ZoneImplementation::getMinX() {
-	return -8192;
+	return planetManager->getTerrainManager()->getMin();
 }
 
 float ZoneImplementation::getMaxX() {
-	return 8192;
+	return planetManager->getTerrainManager()->getMax();
 }
 
 float ZoneImplementation::getMinY() {
-	return -8192;
+	return planetManager->getTerrainManager()->getMin();
 }
 
 float ZoneImplementation::getMaxY() {
-	return 8192;
+	return planetManager->getTerrainManager()->getMax();
 }

@@ -88,6 +88,7 @@ void SharedObjectTemplate::readObject(LuaObject* templateData) {
 
 	planetMapCategory = templateManager->getPlanetMapCategoryByName(templateData->getStringField("planetMapCategory"));
 	planetMapSubCategory = templateManager->getPlanetMapCategoryByName(templateData->getStringField("planetMapSubCategory"));
+	autoRegisterWithPlanetMap = templateData->getByteField("autoRegisterWithPlanetMap");
 
 	LuaObject luaItemList = templateData->getObjectField("childObjects");
 
