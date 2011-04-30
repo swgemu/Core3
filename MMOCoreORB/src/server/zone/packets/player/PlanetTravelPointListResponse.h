@@ -88,8 +88,6 @@ public:
 		insertInt(0x4D32541F);  //PlanetTravelPointListResponse
         insertAscii(planet);
 
-        System::out << "PlanetTravelPointListResponse" << endl;
-
         setCompression(true);
 	}
 	

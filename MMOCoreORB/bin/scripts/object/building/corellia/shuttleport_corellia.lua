@@ -42,7 +42,7 @@
 
 
 object_building_corellia_shuttleport_corellia = object_building_corellia_shared_shuttleport_corellia:new {
-	planetMapCategory = "shuttleport",
+	planetMapCategory = "shuttleport"
 }
 
 ObjectTemplates:addTemplate(object_building_corellia_shuttleport_corellia, "object/building/corellia/shuttleport_corellia.iff")

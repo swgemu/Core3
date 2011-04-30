@@ -58,6 +58,8 @@
 #include "server/zone/objects/structure/StructureObject.h"
 #include "server/zone/managers/minigames/events/GamblingEvent.h"
 
+#include "server/zone/templates/footprint/StructureFootprint.h"
+
 void StructureManagerImplementation::loadPlayerStructures() {
 
 	StringBuffer msg;
@@ -314,19 +316,33 @@ int StructureManagerImplementation::placeStructure(PlayerCreature* player, Struc
 	float floraRadius = structureTemplate->getClearFloraRadius();
 	bool snapToTerrain = structureTemplate->getSnapToTerrain();
 
-	float width = structureTemplate->getWidth();
-	float length = structureTemplate->getLength();
+	Reference<StructureFootprint*> structureFootprint = structureTemplate->getStructureFootprint();
+
+	//In a rectangle, the width is defined along the y axis and the length is defined along the x axis.
+	float length = 5; //default them to 5
+	float width = 5;
+
+	if (structureFootprint != NULL) {
+		length = structureFootprint->getLength();
+		width = structureFootprint->getWidth();
+	}
 
 	int orient = direction.getDegrees() / 4;
 
-	if (orient & 1) { //is odd, swap them to account for building rotation
+	if (orient & 1) {
+		//Orientation is odd, so swap them to account for building rotation
 		width = structureTemplate->getLength();
 		length = structureTemplate->getWidth();
 	}
 
-	//Scale them.
-	width *= 4.0f;
-	length *= 4.0f;
+	float centerOffsetX = 0;
+	float centerOffsetY = 0;
+
+	//half the width and length since we are adding it to the center point.
+	width /= 2;
+	length /= 2;
+
+	//TODO: Implement center offset.
 
 	if (floraRadius > 0 && !snapToTerrain)
 		z = terrainManager->getHighestHeight(x - width, y - length, x + width, y + length, 1);

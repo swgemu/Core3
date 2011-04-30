@@ -1591,3 +1591,7 @@ void SceneObjectImplementation::createChildObjects() {
 		obj->updateToDatabase();
 	}
 }
+
+SortedVector<ManagedReference<SceneObject*> >* SceneObjectImplementation::getOutdoorChildObjects() {
+	return &outdoorChildObjects;
+}

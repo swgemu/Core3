@@ -20,6 +20,8 @@
 #include "server/zone/templates/datatables/DataTableRow.h"
 #include "server/zone/templates/datatables/DataTableCell.h"
 
+#include "server/zone/managers/planet/MapLocationType.h"
+
 #include "server/zone/objects/tangible/terminal/ticketcollector/TicketCollector.h"
 #include "server/zone/objects/tangible/terminal/travel/TravelTerminal.h"
 #include "server/zone/objects/player/PlayerCreature.h"
@@ -189,9 +191,12 @@ void PlanetManagerImplementation::loadSnapshotObjects() {
 	}
 
 	info("Loaded " + String::valueOf(totalObjects) + " client objects from world snapshot.", true);
+
+	startTravelRoutes();
 }
 
 void PlanetManagerImplementation::startTravelRoutes() {
+	info ("Starting travel routes.", true);
 	//Load shuttleports first.
 	SortedVector<ManagedReference<SceneObject*> > objs = zone->getPlanetaryObjectList("shuttleport");
 
@@ -199,6 +204,7 @@ void PlanetManagerImplementation::startTravelRoutes() {
 		scheduleShuttleRoute(objs.get(i));
 
 	//Now do the starports.
+
 	objs = zone->getPlanetaryObjectList("starport");
 
 	for (int i = 0; i < objs.size(); ++i)
@@ -207,8 +213,19 @@ void PlanetManagerImplementation::startTravelRoutes() {
 
 void PlanetManagerImplementation::scheduleShuttleRoute(SceneObject* starport) {
 	//All starports have their shuttles outdoors, for obvious reasons, except for Theed...
-	//SortedVector<ManagedReference<SceneObject*> > outdoorObjects = starport->getOutdoorChildObjects();
+	SortedVector<ManagedReference<SceneObject*> >* outdoorObjects = starport->getOutdoorChildObjects();
 
+	for (int i = 0; i < outdoorObjects->size(); ++i) {
+		SceneObject* obj = outdoorObjects->get(i);
+
+		/*
+		//Need to find a better way to do this. Why don't shuttle creatures have a slot descriptor for ghost?
+		if (obj->isCreatureObject() && obj->getObjectTemplate()->getFullTemplateString().indexOf("creature/theme_park/") != -1) {
+			Reference<PlanetTravelLocation*> ptl = new PlanetTravelLocation(obj, starport);
+			planetTravelLocationMap.put(ptl);
+		}
+		*/
+	}
 }
 
 void PlanetManagerImplementation::loadStaticTangibleObjects() {

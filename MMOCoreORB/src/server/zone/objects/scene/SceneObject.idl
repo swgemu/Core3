@@ -1514,5 +1514,9 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	}
 	
 	public native abstract void createChildObjects();
+	
+	
+	@local
+	public native SortedVector<SceneObject> getOutdoorChildObjects();
 }
 

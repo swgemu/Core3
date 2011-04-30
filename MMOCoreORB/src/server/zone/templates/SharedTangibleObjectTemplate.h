@@ -12,6 +12,8 @@
 
 #include "SharedObjectTemplate.h"
 
+class StructureFootprint;
+
 class SharedTangibleObjectTemplate : public SharedObjectTemplate {
 protected:
 	/*PaletteColorCustomizationVariables paletteColorCustomizationVariables;
@@ -19,9 +21,8 @@ protected:
 
 	SocketDestinations socketDestinations;*/
 
-	String structureFootprintFileName;
+	Reference<StructureFootprint*> structureFootprint;
 
-	bool useStructureFootprintOutline;
 	bool targetable;
 
 	uint16 playerUseMask;
@@ -98,16 +99,12 @@ public:
 		return playerUseMask;
 	}
 
-	inline String getStructureFootprintFileName() const {
-		return structureFootprintFileName;
+	inline StructureFootprint* getStructureFootprint() const {
+		return structureFootprint;
 	}
 
 	inline bool getTargetable() const {
 		return targetable;
-	}
-
-	inline bool getUseStructureFootprintOutline() const {
-		return useStructureFootprintOutline;
 	}
 
 	void setCertificationsRequired(Vector<String> certificationsRequired) {
@@ -118,16 +115,8 @@ public:
 		this->playerUseMask = playerUseMask;
 	}
 
-	void setStructureFootprintFileName(String structureFootprintFileName) {
-		this->structureFootprintFileName = structureFootprintFileName;
-	}
-
 	void setTargetable(bool targetable) {
 		this->targetable = targetable;
-	}
-
-	void setUseStructureFootprintOutline(bool useStructureFootprintOutline) {
-		this->useStructureFootprintOutline = useStructureFootprintOutline;
 	}
 
 	inline bool getSliceable() const {

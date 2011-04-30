@@ -80,6 +80,7 @@
 #include "server/zone/templates/appearance/MeshAppearanceTemplate.h"
 #include "server/zone/templates/appearance/DetailAppearanceTemplate.h"
 #include "server/zone/templates/appearance/ComponentAppearanceTemplate.h"
+#include "server/zone/templates/footprint/StructureFootprint.h"
 
 #include "tre3/TreeArchive.h"
 
@@ -167,6 +168,7 @@ void TemplateManager::loadLuaTemplates() {
 	info("Finished loading object templates", true);
 	info(String::valueOf(portalLayoutMap->size()) + " portal layouts loaded", true);
 	info(String::valueOf(floorMeshMap->size()) + " floor meshes loaded", true);
+	info(String::valueOf(structureFootprints.size()) + " structure footprints.", true);
 }
 
 void TemplateManager::loadTreArchive() {
@@ -649,4 +651,30 @@ int TemplateManager::addClientTemplate(lua_State* L) {
 	TemplateManager::instance()->clientTemplateCRCMap->put(crc, ascii);
 
 	return 0;
+}
+
+StructureFootprint* TemplateManager::loadStructureFootprint(const String& filePath) {
+	if (filePath.isEmpty())
+		return NULL;
+
+	Reference<StructureFootprint*> structureFootprint = structureFootprints.get(filePath);
+
+	if (structureFootprint != NULL)
+		return structureFootprint;
+
+	IffStream* iffStream = openIffFile(filePath);
+
+	if (iffStream == NULL) {
+		warning("Could not find referenced Structure Footprint file: " + filePath);
+		return NULL;
+	}
+
+	structureFootprint = new StructureFootprint();
+	structureFootprint->readObject(iffStream);
+
+	delete iffStream;
+
+	structureFootprints.put(filePath, structureFootprint);
+
+	return structureFootprint;
 }

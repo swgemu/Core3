@@ -1106,6 +1106,8 @@ public:
 
 	void createChildObjects();
 
+	SortedVector<ManagedReference<SceneObject* > >* getOutdoorChildObjects();
+
 	DistributedObjectServant* _getImplementation();
 
 	void _setImplementation(DistributedObjectServant* servant);
@@ -2089,6 +2091,8 @@ public:
 	SharedObjectTemplate* getObjectTemplate();
 
 	virtual void createChildObjects();
+
+	SortedVector<ManagedReference<SceneObject* > >* getOutdoorChildObjects();
 
 	SceneObject* _this;
 

@@ -392,12 +392,12 @@ bool PlayerManagerImplementation::createPlayer(MessageCallback* data) {
 		//ghost->setAdminLevel(account->getAdminLevel());
 
 	//NOTE/TEMPORARY: UNCOMMENT THESE LINES AND RECOMPILE FOR ADMIN ON NEW CHARACTERS.
-		/*ghost->setAdminLevel(2);
+		ghost->setAdminLevel(2);
 
 		Vector<String> skills;
 		skills.add("admin");
 
-		ghost->addSkills(skills, false);*/
+		ghost->addSkills(skills, false);
 	//STOP UNCOMMENTING
 	//}
 
@@ -653,7 +653,6 @@ void PlayerManagerImplementation::createTutorialBuilding(PlayerCreature* player)
 	player->initializePosition(27.0f, -3.5f, -165.0f);
 	player->setZone(zone);
 	cellTut->addObject(player, -1);
-	player->setSavedTerrainName(zone->getZoneName());
 	player->setSavedParentID(cellTut->getObjectID());
 
 	tutorial->updateToDatabase();

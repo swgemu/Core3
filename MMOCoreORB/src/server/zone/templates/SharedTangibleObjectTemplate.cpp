@@ -6,6 +6,8 @@
  */
 
 #include "SharedTangibleObjectTemplate.h"
+#include "server/zone/managers/templates/TemplateManager.h"
+#include "server/zone/templates/footprint/StructureFootprint.h"
 
 SharedTangibleObjectTemplate::SharedTangibleObjectTemplate() {
 
@@ -38,6 +40,8 @@ SharedTangibleObjectTemplate::~SharedTangibleObjectTemplate() {
 void SharedTangibleObjectTemplate::readObject(LuaObject* templateData) {
 	SharedObjectTemplate::readObject(templateData);
 
+	TemplateManager* templateManager = TemplateManager::instance();
+
 	LuaObject certifications = templateData->getObjectField("certificationsRequired");
 
 	for (int i = 1; i <= certifications.getTableSize(); ++i) {
@@ -46,7 +50,7 @@ void SharedTangibleObjectTemplate::readObject(LuaObject* templateData) {
 
 	certifications.pop();
 
-	structureFootprintFileName = templateData->getStringField("structureFootprintFileName");
+	structureFootprint = templateManager->loadStructureFootprint(templateData->getStringField("structureFootprintFileName"));
 
 	targetable = templateData->getByteField("targetable");
 
