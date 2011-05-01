@@ -252,8 +252,10 @@ void AuctionManagerImplementation::checkAuctions() {
 }
 
 int AuctionManagerImplementation::checkSaleItem(PlayerCreature* player, SceneObject* object, Vendor* vendor, int price) {
-	if (auctionMap->getPlayerVendorItemCount(player->getObjectID()) >= player->getSkillMod("vendor_item_limit") && !vendor->isBazaarTerminal())
-		return ItemSoldMessage::TOOMANYITEMS;
+	if (player->getObjectID() == vendor->getOwnerID()) {
+		if (auctionMap->getPlayerVendorItemCount(player->getObjectID()) >= player->getSkillMod("vendor_item_limit") && !vendor->isBazaarTerminal())
+			return ItemSoldMessage::TOOMANYITEMS;
+	}
 
 	if (auctionMap->getPlayerAuctionCount(player->getObjectID()) >= MAXSALES && vendor->isBazaarTerminal())
 		return ItemSoldMessage::TOOMANYITEMS;
@@ -1042,7 +1044,7 @@ void AuctionManagerImplementation::getData(PlayerCreature* player, int extent, u
 		return;
 	}
 
-	//TODO: Handle Merchant XP for players using other players vendors...
+	//Handle Merchant XP for players using other players vendors...
 	if (!vendor->isBazaarTerminal())
 		VendorManager::instance()->handleAwardVendorLookXP(player, vendor);
 
@@ -1287,7 +1289,8 @@ Vendor* AuctionManagerImplementation::getVendorFromObject(SceneObject* obj) {
 
 		if (term->isVendorTerminal()) {
 			VendorTerminal* terminal = (VendorTerminal*) term;
-			vendor = terminal->getVendor();
+			if (terminal != NULL)
+				vendor = terminal->getVendor();
 		}
 
 	} else if (obj->isCreatureObject()) {
@@ -1295,7 +1298,8 @@ Vendor* AuctionManagerImplementation::getVendorFromObject(SceneObject* obj) {
 
 		if (creature->isVendorCreature()) {
 			VendorCreature* vendorCreature = (VendorCreature*) obj;
-			vendor = vendorCreature->getVendor();
+			if (vendorCreature != NULL)
+				vendor = vendorCreature->getVendor();
 		}
 
 	}
