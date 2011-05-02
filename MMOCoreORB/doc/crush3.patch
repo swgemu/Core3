@@ -1,0 +1,883 @@
+Index: src/server/zone/managers/planet/PlanetManager.cpp
+===================================================================
+--- src/server/zone/managers/planet/PlanetManager.cpp	(revision 3073)
++++ src/server/zone/managers/planet/PlanetManager.cpp	(working copy)
+@@ -480,6 +480,15 @@
+ 		return _implementation->getInformants();
+ }
+ 
++PlanetTravelPointList* PlanetManager::getPlanetTravelPointList() {
++	PlanetManagerImplementation* _implementation = (PlanetManagerImplementation*) _getImplementation();
++	if (_implementation == NULL) {
++		throw ObjectNotLocalException(this);
++
++	} else
++		return _implementation->getPlanetTravelPointList();
++}
++
+ DistributedObjectServant* PlanetManager::_getImplementation() {
+ 
+ 	_updated = true;
+@@ -597,8 +606,8 @@
+ 		return true;
+ 	}
+ 
+-	if (_name == "shuttleRoutes") {
+-		TypeInfo<VectorMap<unsigned long long, ShuttleDestinationReachedEvent*> >::parseFromBinaryStream(&shuttleRoutes, stream);
++	if (_name == "planetTravelPointList") {
++		TypeInfo<PlanetTravelPointList* >::parseFromBinaryStream(&planetTravelPointList, stream);
+ 		return true;
+ 	}
+ 
+@@ -656,11 +665,11 @@
+ 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+ 	stream->writeShort(_offset, _totalSize);
+ 
+-	_name = "shuttleRoutes";
++	_name = "planetTravelPointList";
+ 	_name.toBinaryStream(stream);
+ 	_offset = stream->getOffset();
+ 	stream->writeShort(0);
+-	TypeInfo<VectorMap<unsigned long long, ShuttleDestinationReachedEvent*> >::toBinaryStream(&shuttleRoutes, stream);
++	TypeInfo<PlanetTravelPointList* >::toBinaryStream(&planetTravelPointList, stream);
+ 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+ 	stream->writeShort(_offset, _totalSize);
+ 
+@@ -833,6 +842,11 @@
+ 	return (&informants);
+ }
+ 
++PlanetTravelPointList* PlanetManagerImplementation::getPlanetTravelPointList() {
++	// server/zone/managers/planet/PlanetManager.idl():  		return planetTravelPointList;
++	return planetTravelPointList;
++}
++
+ /*
+  *	PlanetManagerAdapter
+  */
+Index: src/server/zone/managers/planet/PlanetManager.h
+===================================================================
+--- src/server/zone/managers/planet/PlanetManager.h	(revision 3073)
++++ src/server/zone/managers/planet/PlanetManager.h	(working copy)
+@@ -151,6 +151,12 @@
+ 
+ #include "server/zone/templates/snapshot/WorldSnapshotIff.h"
+ 
++#include "server/zone/managers/planet/PlanetTravelPoint.h"
++
++#include "server/zone/managers/planet/PlanetTravelPointList.h"
++
++#include "server/zone/packets/player/PlanetTravelPointListResponse.h"
++
+ #include "engine/core/ManagedService.h"
+ 
+ #include "engine/log/Logger.h"
+@@ -161,6 +167,8 @@
+ 
+ #include "system/util/VectorMap.h"
+ 
++#include "engine/service/proto/BaseMessage.h"
++
+ #include "system/util/Vector.h"
+ 
+ namespace server {
+@@ -242,6 +250,8 @@
+ 
+ 	MissionTargetMap* getInformants();
+ 
++	PlanetTravelPointList* getPlanetTravelPointList();
++
+ 	DistributedObjectServant* _getImplementation();
+ 
+ 	void _setImplementation(DistributedObjectServant* servant);
+@@ -274,7 +284,7 @@
+ 
+ 	VectorMap<String, int> travelFares;
+ 
+-	VectorMap<unsigned long long, ShuttleDestinationReachedEvent*> shuttleRoutes;
++	PlanetTravelPointList* planetTravelPointList;
+ 
+ 	ManagedReference<StructureManager* > structureManager;
+ 
+@@ -310,7 +320,7 @@
+ 
+ 	void loadTravelFares();
+ 
+-	void startTravelRoutes();
++	void loadTravelLocations();
+ 
+ public:
+ 	void scheduleShuttleRoute(SceneObject* obj);
+@@ -393,6 +403,8 @@
+ 
+ 	MissionTargetMap* getInformants();
+ 
++	PlanetTravelPointList* getPlanetTravelPointList();
++
+ 	PlanetManager* _this;
+ 
+ 	operator const PlanetManager*();
+Index: src/server/zone/managers/planet/PlanetManager.idl
+===================================================================
+--- src/server/zone/managers/planet/PlanetManager.idl	(revision 3073)
++++ src/server/zone/managers/planet/PlanetManager.idl	(working copy)
+@@ -53,6 +53,7 @@
+ import system.thread.Thread;
+ import system.util.SortedVector;
+ import system.util.VectorMap;
++import engine.service.proto.BaseMessage;
+ import server.zone.objects.scene.variables.StringId;
+ import server.zone.managers.structure.StructureManager;
+ import server.zone.managers.weather.WeatherManager;
+@@ -71,6 +72,9 @@
+ include server.zone.managers.planet.events.ShuttleDestinationReachedEvent;
+ include server.zone.templates.snapshot.WorldSnapshotNode;
+ include server.zone.templates.snapshot.WorldSnapshotIff;
++include server.zone.managers.planet.PlanetTravelPoint;
++include server.zone.managers.planet.PlanetTravelPointList;
++include server.zone.packets.player.PlanetTravelPointListResponse;
+ 
+ class PlanetManager extends ManagedService implements Logger {
+ 	@weakReference
+@@ -82,8 +86,8 @@
+ 	@dereferenced
+ 	protected VectorMap<string, int> travelFares;
+ 	
+-	@dereferenced
+-	protected VectorMap<unsigned long, ShuttleDestinationReachedEvent> shuttleRoutes;
++	@local
++	protected PlanetTravelPointList planetTravelPointList;
+ 	
+ 	protected StructureManager structureManager;
+ 
+@@ -137,7 +141,7 @@
+ 	private native void loadSnapshotObject(WorldSnapshotNode node, WorldSnapshotIff wsiff, @dereferenced int totalObjects);
+ 	private native void loadSnapshotObjects();
+ 	private native void loadTravelFares();
+-	private native void startTravelRoutes();
++	private native void loadTravelLocations();
+ 	
+ 	public native void scheduleShuttleRoute(SceneObject obj);
+ 
+@@ -273,7 +277,8 @@
+ 		return informants;
+ 	}
+ 	
+-	/*public Region getRegion(final string regionName) {
+-		return regionMap.getRegion(regionName);
+-	}*/		
++	@local
++	public PlanetTravelPointList getPlanetTravelPointList() {
++		return planetTravelPointList;
++	}
+ }
+Index: src/server/zone/managers/planet/PlanetManagerImplementation.cpp
+===================================================================
+--- src/server/zone/managers/planet/PlanetManagerImplementation.cpp	(revision 3073)
++++ src/server/zone/managers/planet/PlanetManagerImplementation.cpp	(working copy)
+@@ -36,16 +36,18 @@
+ 
+ 	info("Loading planet.");
+ 
+-	//TODO: Load from the TRE files.
+ 	if (terrainManager->initialize("terrain/" + zone->getZoneName() + ".trn"))
+ 		info("Loaded terrain file successfully.");
+ 	else
+ 		error("Failed to load terrain file.");
+ 
++	planetTravelPointList = new PlanetTravelPointList(zone);
++
+ 	loadRegions();
+ 
+ 	loadLuaConfig();
+ 	loadTravelFares();
++	loadTravelLocations();
+ 
+ 	loadBadgeAreas();
+ 	loadNoBuildAreas();
+@@ -191,43 +193,8 @@
+ 	}
+ 
+ 	info("Loaded " + String::valueOf(totalObjects) + " client objects from world snapshot.", true);
+-
+-	startTravelRoutes();
+ }
+ 
+-void PlanetManagerImplementation::startTravelRoutes() {
+-	info ("Starting travel routes.", true);
+-	//Load shuttleports first.
+-	SortedVector<ManagedReference<SceneObject*> > objs = zone->getPlanetaryObjectList("shuttleport");
+-
+-	for (int i = 0; i < objs.size(); ++i)
+-		scheduleShuttleRoute(objs.get(i));
+-
+-	//Now do the starports.
+-
+-	objs = zone->getPlanetaryObjectList("starport");
+-
+-	for (int i = 0; i < objs.size(); ++i)
+-		scheduleShuttleRoute(objs.get(i));
+-}
+-
+-void PlanetManagerImplementation::scheduleShuttleRoute(SceneObject* starport) {
+-	//All starports have their shuttles outdoors, for obvious reasons, except for Theed...
+-	SortedVector<ManagedReference<SceneObject*> >* outdoorObjects = starport->getOutdoorChildObjects();
+-
+-	for (int i = 0; i < outdoorObjects->size(); ++i) {
+-		SceneObject* obj = outdoorObjects->get(i);
+-
+-		/*
+-		//Need to find a better way to do this. Why don't shuttle creatures have a slot descriptor for ghost?
+-		if (obj->isCreatureObject() && obj->getObjectTemplate()->getFullTemplateString().indexOf("creature/theme_park/") != -1) {
+-			Reference<PlanetTravelLocation*> ptl = new PlanetTravelLocation(obj, starport);
+-			planetTravelLocationMap.put(ptl);
+-		}
+-		*/
+-	}
+-}
+-
+ void PlanetManagerImplementation::loadStaticTangibleObjects() {
+ 	//TODO: Deprecate this to load from lua files.
+ }
+@@ -342,13 +309,11 @@
+ void PlanetManagerImplementation::finalize() {
+ 	delete terrainManager;
+ 	terrainManager = NULL;
+-}
+ 
+-void PlanetManagerImplementation::sendPlanetTravelPointListResponse(PlayerCreature* player) {
+-
++	delete planetTravelPointList;
++	planetTravelPointList = NULL;
+ }
+ 
+-
+ void PlanetManagerImplementation::loadBadgeAreas() {
+ }
+ 
+@@ -389,3 +354,59 @@
+ 	info("loading recon locations ...", true);
+ }
+ 
++void PlanetManagerImplementation::loadTravelLocations() {
++	info ("Loading travel locations.", true);
++
++	SortedVector<ManagedReference<SceneObject*> > objs = zone->getPlanetaryObjectList("shuttleport");
++
++	for (int i = 0; i < objs.size(); ++i) {
++		ManagedReference<SceneObject*> obj = objs.get(i);
++
++		ActiveArea* region = obj->getActiveRegion();
++
++		if (region != NULL) {
++			UnicodeString name = region->getCustomObjectName() + " Shuttleport";
++			obj->setCustomObjectName(name, false);
++		}
++
++		PlanetTravelPoint* ptp = new PlanetTravelPoint(obj);
++		planetTravelPointList->put(ptp);
++	}
++
++	objs = zone->getPlanetaryObjectList("starport");
++
++	for (int i = 0; i < objs.size(); ++i)
++		scheduleShuttleRoute(objs.get(i));
++}
++
++void PlanetManagerImplementation::scheduleShuttleRoute(SceneObject* starport) {
++	//All starports have their shuttles outdoors, for obvious reasons, except for Theed...
++	SortedVector<ManagedReference<SceneObject*> >* outdoorObjects = starport->getOutdoorChildObjects();
++
++	for (int i = 0; i < outdoorObjects->size(); ++i) {
++		SceneObject* obj = outdoorObjects->get(i);
++
++		/*
++		//Need to find a better way to do this. Why don't shuttle creatures have a slot descriptor for ghost?
++		if (obj->isCreatureObject() && obj->getObjectTemplate()->getFullTemplateString().indexOf("creature/theme_park/") != -1) {
++			Reference<PlanetTravelLocation*> ptl = new PlanetTravelLocation(obj, starport);
++			planetTravelLocationMap.put(ptl);
++		}
++		*/
++	}
++}
++
++void PlanetManagerImplementation::sendPlanetTravelPointListResponse(PlayerCreature* player) {
++	ManagedReference<Zone*> currentZone = player->getZone();
++
++	System::out << "sendPlanetTravelPointListResponse[" << zone->getZoneName() << "]" << endl;
++
++	//TODO: In case this happens, should we send an empty list to keep the client from hanging?
++	if (travelFares.get(currentZone->getZoneName()) <= 0) {
++		warning("Player is attempting to travel to location that is inaccessible from current location.");
++		return;
++	}
++
++	planetTravelPointList->sendTo(player, (currentZone == zone));
++}
++
+Index: src/server/zone/managers/planet/PlanetTravelLocation.h
+===================================================================
+--- src/server/zone/managers/planet/PlanetTravelLocation.h	(revision 3073)
++++ src/server/zone/managers/planet/PlanetTravelLocation.h	(working copy)
+@@ -1,42 +0,0 @@
+-/*
+- * PlanetTravelLocation.h
+- *
+- *  Created on: Apr 30, 2011
+- *      Author: crush
+- */
+-
+-#ifndef PLANETTRAVELLOCATION_H_
+-#define PLANETTRAVELLOCATION_H_
+-
+-#include "engine/engine.h"
+-
+-using namespace server::zone::objects::creature;
+-using namespace server::zone::objects::scene;
+-
+-class CreatureObject;
+-class SceneObject;
+-
+-class PlanetTravelLocation : public Object {
+-	ManagedReference<CreatureObject*> shuttleCreature;
+-	ManagedReference<SceneObject*> shuttlePort;
+-
+-public:
+-	PlanetTravelLocation(CreatureObject* shuttle, SceneObject* port) {
+-		shuttleCreature = shuttle;
+-		shuttlePort = port;
+-	}
+-
+-	PlanetTravelLocation(const PlanetTravelLocation& ptl) :
+-			Object() {
+-	}
+-
+-	PlanetTravelLocation& operator= (const PlanetTravelLocation& ptl) {
+-		if (this == &ptl)
+-			return *this;
+-
+-		return *this;
+-	}
+-};
+-
+-
+-#endif /* PLANETTRAVELLOCATION_H_ */
+Index: src/server/zone/managers/planet/PlanetTravelPoint.h
+===================================================================
+--- src/server/zone/managers/planet/PlanetTravelPoint.h	(revision 3070)
++++ src/server/zone/managers/planet/PlanetTravelPoint.h	(working copy)
+@@ -1,42 +1,67 @@
+ /*
+- * PlanetTravelLocation.h
++ * PlanetTravelPoint.h
+  *
+  *  Created on: Apr 30, 2011
+  *      Author: crush
+  */
+ 
+-#ifndef PLANETTRAVELLOCATION_H_
+-#define PLANETTRAVELLOCATION_H_
++#ifndef PLANETTRAVELPOINT_H_
++#define PLANETTRAVELPOINT_H_
+ 
+ #include "engine/engine.h"
++#include "server/zone/objects/scene/SceneObject.h"
+ 
+-using namespace server::zone::objects::creature;
+-using namespace server::zone::objects::scene;
+-
+-class CreatureObject;
+-class SceneObject;
+-
+-class PlanetTravelLocation : public Object {
+-	ManagedReference<CreatureObject*> shuttleCreature;
++class PlanetTravelPoint : public Object {
+ 	ManagedReference<SceneObject*> shuttlePort;
+ 
+ public:
+-	PlanetTravelLocation(CreatureObject* shuttle, SceneObject* port) {
+-		shuttleCreature = shuttle;
++	PlanetTravelPoint(SceneObject* port) {
+ 		shuttlePort = port;
+ 	}
+ 
+-	PlanetTravelLocation(const PlanetTravelLocation& ptl) :
++	PlanetTravelPoint(const PlanetTravelPoint& ptp) :
+ 			Object() {
++
++		shuttlePort = ptp.shuttlePort;
+ 	}
+ 
+-	PlanetTravelLocation& operator= (const PlanetTravelLocation& ptl) {
+-		if (this == &ptl)
++	PlanetTravelPoint& operator= (const PlanetTravelPoint& ptp) {
++		if (this == &ptp)
+ 			return *this;
+ 
++		shuttlePort = ptp.shuttlePort;
++
+ 		return *this;
+ 	}
++
++	int compareTo(const PlanetTravelPoint& ptp) const {
++		return (getPortName().compareTo(ptp.getPortName()));
++	}
++
++	float getX() const {
++		return shuttlePort->getWorldPositionX();
++	}
++
++	float getY() const {
++		return shuttlePort->getWorldPositionY();
++	}
++
++	float getZ() const {
++		return shuttlePort->getWorldPositionZ();
++	}
++
++	String getPortName() const {
++		return shuttlePort->getObjectName()->getDisplayedName();
++	}
++
++	int getTax() const {
++		return 0;
++	}
++
++	bool isStarport() const {
++		return (shuttlePort->isPlanetMapCategory("starport"));
++	}
+ };
+ 
+ 
+-#endif /* PLANETTRAVELLOCATION_H_ */
++#endif /* PLANETTRAVELPOINT_H_ */
+Index: src/server/zone/managers/planet/PlanetTravelPointList.h
+===================================================================
+--- src/server/zone/managers/planet/PlanetTravelPointList.h	(revision 0)
++++ src/server/zone/managers/planet/PlanetTravelPointList.h	(revision 0)
+@@ -0,0 +1,86 @@
++/*
++ * PlanetTravelPointList.h
++ *
++ *  Created on: May 1, 2011
++ *      Author: crush
++ */
++
++#ifndef PLANETTRAVELPOINTLIST_H_
++#define PLANETTRAVELPOINTLIST_H_
++
++#include "engine/engine.h"
++
++#include "PlanetTravelPoint.h"
++#include "server/zone/Zone.h"
++#include "server/zone/packets/player/PlanetTravelPointListResponse.h"
++
++class PlanetTravelPointList : public SortedVector<Reference<PlanetTravelPoint*> >, public ReadWriteLock {
++	ManagedWeakReference<Zone*> zone;
++
++public:
++	PlanetTravelPointList(Zone* planet) : SortedVector<Reference<PlanetTravelPoint*> >() {
++		zone = planet;
++	}
++
++	void addPlanetTravelPoint(PlanetTravelPoint* point) {
++		wlock();
++
++		put(point);
++
++		unlock();
++	}
++
++	void removePlanetTravelPoint(PlanetTravelPoint* point) {
++		wlock();
++
++		drop(point);
++
++		unlock();
++	}
++
++	void sendTo(SceneObject* player, bool intraPlanetaryTravel) {
++		BaseMessage* message = new PlanetTravelPointListResponse();
++
++		message->insertAscii(zone->getZoneName());
++
++		rlock();
++
++		int sz = size();
++
++		message->insertInt(sz);
++
++		for (int i = 0; i < sz; ++i) {
++			Reference<PlanetTravelPoint*> point = get(i);
++			message->insertAscii(point->getPortName());
++		}
++
++		message->insertInt(sz);
++
++		for (int i = 0; i < sz; ++i) {
++			Reference<PlanetTravelPoint*> point = get(i);
++			message->insertFloat(point->getX());
++			message->insertFloat(point->getZ());
++			message->insertFloat(point->getY());
++		}
++
++		message->insertInt(sz);
++
++		for (int i = 0; i < sz; ++i) {
++			Reference<PlanetTravelPoint*> point = get(i);
++			message->insertInt(point->getTax());
++		}
++
++		message->insertInt(sz);
++
++		for (int i = 0; i < sz; ++i) {
++			Reference<PlanetTravelPoint*> point = get(i);
++
++			message->insertByte(intraPlanetaryTravel ? 1 : point->isStarport());
++		}
++
++		runlock();
++	}
++};
++
++
++#endif /* PLANETTRAVELPOINTLIST_H_ */
+Index: src/server/zone/objects/scene/SceneObject.cpp
+===================================================================
+--- src/server/zone/objects/scene/SceneObject.cpp	(revision 3073)
++++ src/server/zone/objects/scene/SceneObject.cpp	(working copy)
+@@ -30,7 +30,7 @@
+  *	SceneObjectStub
+  */
+ 
+-enum {RPC_FINALIZE__ = 6,RPC_INITIALIZEPRIVATEDATA__,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_NOTIFYLOADFROMDATABASE__,RPC_INFO__STRING_BOOL_,RPC_ERROR__STRING_,RPC_INRANGEOBJECTS__INT_FLOAT_,RPC_ISINRANGE__SCENEOBJECT_FLOAT_,RPC_ADDOBJECT__SCENEOBJECT_INT_BOOL_,RPC_REMOVEOBJECT__SCENEOBJECT_BOOL_,RPC_CANADDOBJECT__SCENEOBJECT_INT_STRING_,RPC_SYNCHRONIZEDUILISTEN__SCENEOBJECT_INT_,RPC_SYNCHRONIZEDUISTOPLISTEN__SCENEOBJECT_INT_,RPC_UPDATETODATABASE__,RPC_UPDATETODATABASEWITHOUTCHILDREN__,RPC_UPDATETODATABASEALLOBJECTS__BOOL_,RPC_DESTROYOBJECTFROMDATABASE__BOOL_,RPC_CANBEDESTROYED__PLAYERCREATURE_,RPC_CREATE__ZONECLIENTSESSION_,RPC_DESTROY__ZONECLIENTSESSION_,RPC_CLOSE__ZONECLIENTSESSION_,RPC_LINK__ZONECLIENTSESSION_INT_,RPC_LINK__LONG_INT_,RPC_SENDTO__SCENEOBJECT_BOOL_,RPC_SENDWITHOUTPARENTTO__SCENEOBJECT_,RPC_SENDWITHOUTCONTAINEROBJECTSTO__SCENEOBJECT_,RPC_SENDDESTROYTO__SCENEOBJECT_,RPC_SENDBASELINESTO__SCENEOBJECT_,RPC_SENDCONTAINEROBJECTSTO__SCENEOBJECT_,RPC_SENDSLOTTEDOBJECTSTO__SCENEOBJECT_,RPC_SENDTOOWNER__BOOL_,RPC_SENDATTRIBUTELISTTO__PLAYERCREATURE_,RPC_SETCUSTOMOBJECTNAME__UNICODESTRING_BOOL_,RPC_OPENCONTAINERTO__PLAYERCREATURE_,RPC_CLOSECONTAINERTO__PLAYERCREATURE_BOOL_,RPC_INSERTTOZONE__ZONE_,RPC_INSERTTOBUILDING__BUILDINGOBJECT_,RPC_SWITCHZONE__STRING_FLOAT_FLOAT_FLOAT_LONG_,RPC_TELEPORT__FLOAT_FLOAT_FLOAT_LONG_,RPC_REMOVEFROMZONE__,RPC_REMOVEFROMBUILDING__BUILDINGOBJECT_,RPC_UPDATEZONE__BOOL_BOOL_,RPC_UPDATEZONEWITHPARENT__SCENEOBJECT_BOOL_BOOL_,RPC_BROADCASTMESSAGE__BASEPACKET_BOOL_BOOL_,RPC_BROADCASTOBJECT__SCENEOBJECT_BOOL_,RPC_BROADCASTDESTROY__SCENEOBJECT_BOOL_,RPC_SENDMESSAGE__BASEPACKET_,RPC_COMPARETO__SCENEOBJECT_,RPC_GETPARENTID__,RPC_GETACTIVESESSION__INT_,RPC_ADDACTIVESESSION__INT_FACADE_,RPC_CONTAINSACTIVESESSION__INT_,RPC_DROPACTIVESESSION__INT_,RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_,RPC_NOTIFYADDEDTOCLOSEOBJECTS__,RPC_NOTIFYREMOVEDFROMCLOSEOBJECTS__,RPC_GETDISTANCETO__SCENEOBJECT_,RPC_UPDATEVEHICLEPOSITION__,RPC_NOTIFYOBJECTINSERTED__SCENEOBJECT_,RPC_NOTIFYOBJECTREMOVED__SCENEOBJECT_,RPC_HASNOTIFIEDSENTOBJECT__SCENEOBJECT_,RPC_ADDNOTIFIEDSENTOBJECT__SCENEOBJECT_,RPC_REMOVENOTIFIEDSENTOBJECT__SCENEOBJECT_,RPC_GETOBJECTID__,RPC_GETWORLDPOSITIONX__,RPC_GETWORLDPOSITIONY__,RPC_GETWORLDPOSITIONZ__,RPC_GETDIRECTIONX__,RPC_GETDIRECTIONZ__,RPC_GETDIRECTIONY__,RPC_GETDIRECTIONW__,RPC_GETCLIENTOBJECTCRC__,RPC_GETSERVEROBJECTCRC__,RPC_ISWAYPOINTOBJECT__,RPC_GETOBJECTNAMESTRINGIDFILE__,RPC_GETOBJECTNAMESTRINGIDNAME__,RPC_GETARRANGEMENTDESCRIPTORSIZE__,RPC_GETARRANGEMENTDESCRIPTOR__INT_,RPC_GETSLOTDESCRIPTOR__INT_,RPC_HASSLOTDESCRIPTOR__STRING_,RPC_GETSLOTTEDOBJECT__STRING_,RPC_GETSLOTDESCRIPTORSIZE__,RPC_GETCONTAINEROBJECTSSIZE__,RPC_HASFULLCONTAINEROBJECTS__,RPC_GETCONTAINERVOLUMELIMIT__,RPC_GETCONTAINEROBJECT__INT_,RPC_GETCLIENT__,RPC_GETGAMEOBJECTTYPE__,RPC_GETCLIENTGAMEOBJECTTYPE__,RPC_GETCONTAINMENTTYPE__,RPC_GETZONE__,RPC_GETDIRECTIONANGLE__,RPC_GETSPECIALDIRECTIONANGLE__,RPC_ROTATE__INT_,RPC_NOTIFYSELFPOSITIONUPDATE__,RPC_NOTIFYCLOSECONTAINER__PLAYERCREATURE_,RPC_GETMOVEMENTCOUNTER__,RPC_GETPARENT__,RPC_GETZONESERVER__,RPC_GETROOTPARENT__,RPC_GETPARENTRECURSIVELY__INT_,RPC_ISASUBCHILDOF__SCENEOBJECT_,RPC_GETCUSTOMOBJECTNAME__,RPC_GETLOGGINGNAME__,RPC_ISPLAYERCREATURE__,RPC_ISVENDOR__,RPC_ISSHUTTLEINSTALLATION__,RPC_ISPLAYEROBJECT__,RPC_ISACTIVEAREA__,RPC_ISREGION__,RPC_ISCREATUREOBJECT__,RPC_ISVEHICLEOBJECT__,RPC_ISBUILDINGOBJECT__,RPC_ISCLONINGBUILDINGOBJECT__,RPC_ISGARAGE__,RPC_ISWEAPONOBJECT__,RPC_ISWEARABLEOBJECT__,RPC_ISARMOROBJECT__,RPC_ISPSGARMOROBJECT__,RPC_ISCELLOBJECT__,RPC_ISTANGIBLEOBJECT__,RPC_ISRESOURCECONTAINER__,RPC_ISCOMPONENT__,RPC_ISINTANGIBLEOBJECT__,RPC_ISINSTRUMENT__,RPC_ISINSTALLATIONOBJECT__,RPC_ISCITYTERMINAL__,RPC_ISCITYVOTETERMINAL__,RPC_ISFACTORY__,RPC_ISFACTORYCRATE__,RPC_ISFISHINGPOLEOBJECT__,RPC_ISDEEDOBJECT__,RPC_ISVEHICLEDEEDOBJECT__,RPC_ISBUILDINGDEED__,RPC_ISSIGNOBJECT__,RPC_ISINSTALLATIONDEED__,RPC_ISCRAFTINGTOOL__,RPC_ISCRAFTINGSTATION__,RPC_ISMANUFACTURESCHEMATIC__,RPC_ISSTRUCTUREOBJECT__,RPC_ISFISHINGBAIT__,RPC_ISATTACHMENT__,RPC_SETGAMEOBJECTTYPE__INT_,RPC_ADDACTIVEAREA__ACTIVEAREA_,RPC_DROPACTIVEAREA__ACTIVEAREA_,RPC_SETCLIENTOBJECTCRC__INT_,RPC_SETSERVEROBJECTCRC__INT_,RPC_SETPARENT__SCENEOBJECT_,RPC_SETZONE__ZONE_,RPC_SETDIRECTION__FLOAT_FLOAT_FLOAT_FLOAT_,RPC_SETDIRECTION__FLOAT_,RPC_SETMOVEMENTCOUNTER__INT_,RPC_INCREMENTMOVEMENTCOUNTER__,RPC_SETCONTAINMENTTYPE__INT_,RPC_SETLOGGINGNAME__STRING_,RPC_SETCLIENTOBJECT__BOOL_,RPC_HASOBJECTINCONTAINER__LONG_,RPC_HASOBJECTINSLOTTEDCONTAINER__SCENEOBJECT_,RPC_GETCONTAINEROBJECT__LONG_,RPC_GETPLANETCRC__,RPC_ISSTATICOBJECT__,RPC_ISCONTAINEROBJECT__,RPC_ISTERMINAL__,RPC_ISGROUPOBJECT__,RPC_ISGUILDOBJECT__,RPC_ISCONTROLDEVICE__,RPC_ISMISSIONTERMINAL__,RPC_ISMISSIONOBJECT__,RPC_GETACTIVEREGION__,RPC_HASACTIVEAREA__ACTIVEAREA_,RPC_CREATECHILDOBJECTS__,};
++enum {RPC_FINALIZE__ = 6,RPC_INITIALIZEPRIVATEDATA__,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_NOTIFYLOADFROMDATABASE__,RPC_INFO__STRING_BOOL_,RPC_ERROR__STRING_,RPC_INRANGEOBJECTS__INT_FLOAT_,RPC_ISINRANGE__SCENEOBJECT_FLOAT_,RPC_ADDOBJECT__SCENEOBJECT_INT_BOOL_,RPC_REMOVEOBJECT__SCENEOBJECT_BOOL_,RPC_CANADDOBJECT__SCENEOBJECT_INT_STRING_,RPC_SYNCHRONIZEDUILISTEN__SCENEOBJECT_INT_,RPC_SYNCHRONIZEDUISTOPLISTEN__SCENEOBJECT_INT_,RPC_UPDATETODATABASE__,RPC_UPDATETODATABASEWITHOUTCHILDREN__,RPC_UPDATETODATABASEALLOBJECTS__BOOL_,RPC_DESTROYOBJECTFROMDATABASE__BOOL_,RPC_CANBEDESTROYED__PLAYERCREATURE_,RPC_CREATE__ZONECLIENTSESSION_,RPC_DESTROY__ZONECLIENTSESSION_,RPC_CLOSE__ZONECLIENTSESSION_,RPC_LINK__ZONECLIENTSESSION_INT_,RPC_LINK__LONG_INT_,RPC_SENDTO__SCENEOBJECT_BOOL_,RPC_SENDWITHOUTPARENTTO__SCENEOBJECT_,RPC_SENDWITHOUTCONTAINEROBJECTSTO__SCENEOBJECT_,RPC_SENDDESTROYTO__SCENEOBJECT_,RPC_SENDBASELINESTO__SCENEOBJECT_,RPC_SENDCONTAINEROBJECTSTO__SCENEOBJECT_,RPC_SENDSLOTTEDOBJECTSTO__SCENEOBJECT_,RPC_SENDTOOWNER__BOOL_,RPC_SENDATTRIBUTELISTTO__PLAYERCREATURE_,RPC_SETCUSTOMOBJECTNAME__UNICODESTRING_BOOL_,RPC_OPENCONTAINERTO__PLAYERCREATURE_,RPC_CLOSECONTAINERTO__PLAYERCREATURE_BOOL_,RPC_INSERTTOZONE__ZONE_,RPC_INSERTTOBUILDING__BUILDINGOBJECT_,RPC_SWITCHZONE__STRING_FLOAT_FLOAT_FLOAT_LONG_,RPC_TELEPORT__FLOAT_FLOAT_FLOAT_LONG_,RPC_REMOVEFROMZONE__,RPC_REMOVEFROMBUILDING__BUILDINGOBJECT_,RPC_UPDATEZONE__BOOL_BOOL_,RPC_UPDATEZONEWITHPARENT__SCENEOBJECT_BOOL_BOOL_,RPC_BROADCASTMESSAGE__BASEPACKET_BOOL_BOOL_,RPC_BROADCASTOBJECT__SCENEOBJECT_BOOL_,RPC_BROADCASTDESTROY__SCENEOBJECT_BOOL_,RPC_SENDMESSAGE__BASEPACKET_,RPC_COMPARETO__SCENEOBJECT_,RPC_GETPARENTID__,RPC_GETACTIVESESSION__INT_,RPC_ADDACTIVESESSION__INT_FACADE_,RPC_CONTAINSACTIVESESSION__INT_,RPC_DROPACTIVESESSION__INT_,RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_,RPC_NOTIFYADDEDTOCLOSEOBJECTS__,RPC_NOTIFYREMOVEDFROMCLOSEOBJECTS__,RPC_GETDISTANCETO__SCENEOBJECT_,RPC_UPDATEVEHICLEPOSITION__,RPC_NOTIFYOBJECTINSERTED__SCENEOBJECT_,RPC_NOTIFYOBJECTREMOVED__SCENEOBJECT_,RPC_HASNOTIFIEDSENTOBJECT__SCENEOBJECT_,RPC_ADDNOTIFIEDSENTOBJECT__SCENEOBJECT_,RPC_REMOVENOTIFIEDSENTOBJECT__SCENEOBJECT_,RPC_GETOBJECTID__,RPC_GETWORLDPOSITIONX__,RPC_GETWORLDPOSITIONY__,RPC_GETWORLDPOSITIONZ__,RPC_GETDIRECTIONX__,RPC_GETDIRECTIONZ__,RPC_GETDIRECTIONY__,RPC_GETDIRECTIONW__,RPC_GETCLIENTOBJECTCRC__,RPC_GETSERVEROBJECTCRC__,RPC_ISWAYPOINTOBJECT__,RPC_GETOBJECTNAMESTRINGIDFILE__,RPC_GETOBJECTNAMESTRINGIDNAME__,RPC_GETARRANGEMENTDESCRIPTORSIZE__,RPC_GETARRANGEMENTDESCRIPTOR__INT_,RPC_GETSLOTDESCRIPTOR__INT_,RPC_HASSLOTDESCRIPTOR__STRING_,RPC_GETSLOTTEDOBJECT__STRING_,RPC_GETSLOTDESCRIPTORSIZE__,RPC_GETCONTAINEROBJECTSSIZE__,RPC_HASFULLCONTAINEROBJECTS__,RPC_GETCONTAINERVOLUMELIMIT__,RPC_GETCONTAINEROBJECT__INT_,RPC_GETCLIENT__,RPC_GETGAMEOBJECTTYPE__,RPC_GETCLIENTGAMEOBJECTTYPE__,RPC_GETCONTAINMENTTYPE__,RPC_GETZONE__,RPC_GETDIRECTIONANGLE__,RPC_GETSPECIALDIRECTIONANGLE__,RPC_ROTATE__INT_,RPC_NOTIFYSELFPOSITIONUPDATE__,RPC_NOTIFYCLOSECONTAINER__PLAYERCREATURE_,RPC_GETMOVEMENTCOUNTER__,RPC_GETPARENT__,RPC_GETZONESERVER__,RPC_GETROOTPARENT__,RPC_GETPARENTRECURSIVELY__INT_,RPC_ISASUBCHILDOF__SCENEOBJECT_,RPC_GETCUSTOMOBJECTNAME__,RPC_GETLOGGINGNAME__,RPC_ISPLAYERCREATURE__,RPC_ISVENDOR__,RPC_ISSHUTTLEINSTALLATION__,RPC_ISPLAYEROBJECT__,RPC_ISACTIVEAREA__,RPC_ISREGION__,RPC_ISCREATUREOBJECT__,RPC_ISVEHICLEOBJECT__,RPC_ISBUILDINGOBJECT__,RPC_ISCLONINGBUILDINGOBJECT__,RPC_ISGARAGE__,RPC_ISWEAPONOBJECT__,RPC_ISWEARABLEOBJECT__,RPC_ISARMOROBJECT__,RPC_ISPSGARMOROBJECT__,RPC_ISCELLOBJECT__,RPC_ISTANGIBLEOBJECT__,RPC_ISRESOURCECONTAINER__,RPC_ISCOMPONENT__,RPC_ISINTANGIBLEOBJECT__,RPC_ISINSTRUMENT__,RPC_ISINSTALLATIONOBJECT__,RPC_ISCITYTERMINAL__,RPC_ISCITYVOTETERMINAL__,RPC_ISFACTORY__,RPC_ISFACTORYCRATE__,RPC_ISFISHINGPOLEOBJECT__,RPC_ISDEEDOBJECT__,RPC_ISVEHICLEDEEDOBJECT__,RPC_ISBUILDINGDEED__,RPC_ISSIGNOBJECT__,RPC_ISINSTALLATIONDEED__,RPC_ISCRAFTINGTOOL__,RPC_ISCRAFTINGSTATION__,RPC_ISMANUFACTURESCHEMATIC__,RPC_ISSTRUCTUREOBJECT__,RPC_ISFISHINGBAIT__,RPC_ISATTACHMENT__,RPC_SETGAMEOBJECTTYPE__INT_,RPC_ADDACTIVEAREA__ACTIVEAREA_,RPC_DROPACTIVEAREA__ACTIVEAREA_,RPC_SETCLIENTOBJECTCRC__INT_,RPC_SETSERVEROBJECTCRC__INT_,RPC_SETPARENT__SCENEOBJECT_,RPC_SETZONE__ZONE_,RPC_SETDIRECTION__FLOAT_FLOAT_FLOAT_FLOAT_,RPC_SETDIRECTION__FLOAT_,RPC_SETMOVEMENTCOUNTER__INT_,RPC_INCREMENTMOVEMENTCOUNTER__,RPC_SETCONTAINMENTTYPE__INT_,RPC_SETLOGGINGNAME__STRING_,RPC_SETCLIENTOBJECT__BOOL_,RPC_HASOBJECTINCONTAINER__LONG_,RPC_HASOBJECTINSLOTTEDCONTAINER__SCENEOBJECT_,RPC_GETCONTAINEROBJECT__LONG_,RPC_GETPLANETCRC__,RPC_ISSTATICOBJECT__,RPC_ISCONTAINEROBJECT__,RPC_ISTERMINAL__,RPC_ISGROUPOBJECT__,RPC_ISGUILDOBJECT__,RPC_ISCONTROLDEVICE__,RPC_ISMISSIONTERMINAL__,RPC_ISMISSIONOBJECT__,RPC_GETACTIVEREGION__,RPC_HASACTIVEAREA__ACTIVEAREA_,RPC_ISPLANETMAPCATEGORY__STRING_,RPC_ISPLANETMAPSUBCATEGORY__STRING_,RPC_CREATECHILDOBJECTS__,};
+ 
+ SceneObject::SceneObject() : QuadTreeEntry(DummyConstructorParameter::instance()) {
+ 	SceneObjectImplementation* _implementation = new SceneObjectImplementation();
+@@ -2549,6 +2549,34 @@
+ 		return _implementation->getPlanetMapSubCategory();
+ }
+ 
++bool SceneObject::isPlanetMapCategory(const String& catname) {
++	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
++	if (_implementation == NULL) {
++		if (!deployed)
++			throw ObjectNotDeployedException(this);
++
++		DistributedMethod method(this, RPC_ISPLANETMAPCATEGORY__STRING_);
++		method.addAsciiParameter(catname);
++
++		return method.executeWithBooleanReturn();
++	} else
++		return _implementation->isPlanetMapCategory(catname);
++}
++
++bool SceneObject::isPlanetMapSubCategory(const String& catname) {
++	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
++	if (_implementation == NULL) {
++		if (!deployed)
++			throw ObjectNotDeployedException(this);
++
++		DistributedMethod method(this, RPC_ISPLANETMAPSUBCATEGORY__STRING_);
++		method.addAsciiParameter(catname);
++
++		return method.executeWithBooleanReturn();
++	} else
++		return _implementation->isPlanetMapSubCategory(catname);
++}
++
+ SharedObjectTemplate* SceneObject::getObjectTemplate() {
+ 	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
+ 	if (_implementation == NULL) {
+@@ -3621,6 +3649,22 @@
+ 	return templateObject->getPlanetMapSubCategory();
+ }
+ 
++bool SceneObjectImplementation::isPlanetMapCategory(const String& catname) {
++	// server/zone/objects/scene/SceneObject.idl():  		return 
++	if (getPlanetMapCategory() == NULL)	// server/zone/objects/scene/SceneObject.idl():  			return false;
++	return false;
++	// server/zone/objects/scene/SceneObject.idl():  		return (templateObject.getPlanetMapCategory().getName() == catname);
++	return (templateObject->getPlanetMapCategory()->getName() == catname);
++}
++
++bool SceneObjectImplementation::isPlanetMapSubCategory(const String& catname) {
++	// server/zone/objects/scene/SceneObject.idl():  		return 
++	if (getPlanetMapSubCategory() == NULL)	// server/zone/objects/scene/SceneObject.idl():  			return false;
++	return false;
++	// server/zone/objects/scene/SceneObject.idl():  		return (templateObject.getPlanetMapSubCategory().getName() == catname);
++	return (templateObject->getPlanetMapSubCategory()->getName() == catname);
++}
++
+ SharedObjectTemplate* SceneObjectImplementation::getObjectTemplate() {
+ 	// server/zone/objects/scene/SceneObject.idl():  		return templateObject;
+ 	return templateObject;
+@@ -4147,6 +4191,12 @@
+ 	case RPC_HASACTIVEAREA__ACTIVEAREA_:
+ 		resp->insertBoolean(hasActiveArea((ActiveArea*) inv->getObjectParameter()));
+ 		break;
++	case RPC_ISPLANETMAPCATEGORY__STRING_:
++		resp->insertBoolean(isPlanetMapCategory(inv->getAsciiParameter(_param0_isPlanetMapCategory__String_)));
++		break;
++	case RPC_ISPLANETMAPSUBCATEGORY__STRING_:
++		resp->insertBoolean(isPlanetMapSubCategory(inv->getAsciiParameter(_param0_isPlanetMapSubCategory__String_)));
++		break;
+ 	case RPC_CREATECHILDOBJECTS__:
+ 		createChildObjects();
+ 		break;
+@@ -4837,6 +4887,14 @@
+ 	return ((SceneObjectImplementation*) impl)->hasActiveArea(area);
+ }
+ 
++bool SceneObjectAdapter::isPlanetMapCategory(const String& catname) {
++	return ((SceneObjectImplementation*) impl)->isPlanetMapCategory(catname);
++}
++
++bool SceneObjectAdapter::isPlanetMapSubCategory(const String& catname) {
++	return ((SceneObjectImplementation*) impl)->isPlanetMapSubCategory(catname);
++}
++
+ void SceneObjectAdapter::createChildObjects() {
+ 	((SceneObjectImplementation*) impl)->createChildObjects();
+ }
+Index: src/server/zone/objects/scene/SceneObject.h
+===================================================================
+--- src/server/zone/objects/scene/SceneObject.h	(revision 3073)
++++ src/server/zone/objects/scene/SceneObject.h	(working copy)
+@@ -1102,6 +1102,10 @@
+ 
+ 	PlanetMapCategory* getPlanetMapSubCategory();
+ 
++	bool isPlanetMapCategory(const String& catname);
++
++	bool isPlanetMapSubCategory(const String& catname);
++
+ 	SharedObjectTemplate* getObjectTemplate();
+ 
+ 	void createChildObjects();
+@@ -2088,6 +2092,10 @@
+ 
+ 	PlanetMapCategory* getPlanetMapSubCategory();
+ 
++	bool isPlanetMapCategory(const String& catname);
++
++	bool isPlanetMapSubCategory(const String& catname);
++
+ 	SharedObjectTemplate* getObjectTemplate();
+ 
+ 	virtual void createChildObjects();
+@@ -2475,6 +2483,10 @@
+ 
+ 	bool hasActiveArea(ActiveArea* area);
+ 
++	bool isPlanetMapCategory(const String& catname);
++
++	bool isPlanetMapSubCategory(const String& catname);
++
+ 	void createChildObjects();
+ 
+ protected:
+@@ -2486,6 +2498,8 @@
+ 	String _param0_hasSlotDescriptor__String_;
+ 	String _param0_getSlottedObject__String_;
+ 	String _param0_setLoggingName__String_;
++	String _param0_isPlanetMapCategory__String_;
++	String _param0_isPlanetMapSubCategory__String_;
+ };
+ 
+ class SceneObjectHelper : public DistributedObjectClassHelper, public Singleton<SceneObjectHelper> {
+Index: src/server/zone/objects/scene/SceneObject.idl
+===================================================================
+--- src/server/zone/objects/scene/SceneObject.idl	(revision 3073)
++++ src/server/zone/objects/scene/SceneObject.idl	(working copy)
+@@ -1508,6 +1508,20 @@
+ 		return templateObject.getPlanetMapSubCategory();
+ 	}
+ 	
++	public boolean isPlanetMapCategory(final string catname) {
++		if (getPlanetMapCategory() == null)
++			return false;
++		
++		return (templateObject.getPlanetMapCategory().getName() == catname);
++	}
++	
++	public boolean isPlanetMapSubCategory(final string catname) {
++		if (getPlanetMapSubCategory() == null)
++			return false;
++		
++		return (templateObject.getPlanetMapSubCategory().getName() == catname);
++	}
++	
+ 	@local
+ 	public SharedObjectTemplate getObjectTemplate() {
+ 		return templateObject;
+Index: src/server/zone/objects/tangible/terminal/travel/TravelTerminalImplementation.cpp
+===================================================================
+--- src/server/zone/objects/tangible/terminal/travel/TravelTerminalImplementation.cpp	(revision 3073)
++++ src/server/zone/objects/tangible/terminal/travel/TravelTerminalImplementation.cpp	(working copy)
+@@ -22,8 +22,8 @@
+ 
+ 	//Make sure the controlled object is in a region, or the region name will fail.
+ 
+-	//EnterTicketPurchaseModeMessage* etpm = new EnterTicketPurchaseModeMessage(controlledObject);
+-	//player->sendMessage(etpm);
++	EnterTicketPurchaseModeMessage* etpm = new EnterTicketPurchaseModeMessage(controlledObject);
++	player->sendMessage(etpm);
+ 
+ 	return 0;
+ }
+Index: src/server/zone/packets/player/PlanetTravelPointListRequestCallback.h
+===================================================================
+--- src/server/zone/packets/player/PlanetTravelPointListRequestCallback.h	(revision 3073)
++++ src/server/zone/packets/player/PlanetTravelPointListRequestCallback.h	(working copy)
+@@ -38,8 +38,14 @@
+ 
+ 		Zone* zone = server->getZoneServer()->getZone(zoneName);
+ 
+-		if (zone == NULL)
++		System::out << "PlanetTravelPointListRequestCallback[" << zoneName << "]" << endl;
++
++		//If the zone is null, that means it doesn't exist, or isn't loaded. Send an empty response back to the player.
++		if (zone == NULL) {
++			System::out << "Sending blank message" << endl;
++			object->sendMessage(new PlanetTravelPointListResponse(zoneName));
+ 			return;
++		}
+ 
+ 		PlanetManager* planetManager = zone->getPlanetManager();
+ 		planetManager->sendPlanetTravelPointListResponse(object);
+Index: src/server/zone/packets/player/PlanetTravelPointListResponse.h
+===================================================================
+--- src/server/zone/packets/player/PlanetTravelPointListResponse.h	(revision 3073)
++++ src/server/zone/packets/player/PlanetTravelPointListResponse.h	(working copy)
+@@ -47,111 +47,35 @@
+ 
+ #include "engine/engine.h"
+ 
+-class TravelPoint {
+-	String name;
+-	
+-	float positionX;
+-	float positionY;
+-	float positionZ;
+-	
+-	uint32 tax;
+-	uint8 starport;
+-	
+-public:
+-	TravelPoint(const String& Name, float x, float z, float y, uint32 tax, uint8 starport) {
+-		name = Name;
+-		
+-		positionX = x;
+-		positionY = y;
+-		positionZ = z;
+-		
+-		this->tax = tax;
+-		this->starport = starport;
+-	}
+-	
+-	friend class PlanetTravelPointListResponse;
+-};
+-
+ class PlanetTravelPointListResponse : public BaseMessage {
+-	Vector<TravelPoint*> travelPoints;
+-	
+ public:
+-	PlanetTravelPointListResponse() : BaseMessage() {
++	PlanetTravelPointListResponse() {
+ 		insertShort(0x06);
+ 		insertInt(0x4D32541F); //PlanetTravelPointListResponse
+ 
+-		insertAscii("naboo");
++		setCompression(true);
+ 	}
+-
+-	PlanetTravelPointListResponse(const String& planet) : BaseMessage() {
++	
++	/**
++	 * Only use this constructor if you want to send an empty list in the case that the zone isn't loaded,
++	 * or they shouldn't be allowed to travel to the planet.
++	 */
++	PlanetTravelPointListResponse(const String& planetName) {
+ 		insertShort(0x06);
+-		insertInt(0x4D32541F);  //PlanetTravelPointListResponse
+-        insertAscii(planet);
++		insertInt(0x4D32541F); //PlanetTravelPointListResponse
+ 
+-        setCompression(true);
+-	}
+-	
+-	~PlanetTravelPointListResponse() {
+-		while (travelPoints.size() > 0) {
+-			TravelPoint* point = travelPoints.remove(0);
++		insertAscii(planetName);
+ 
+-			delete point;
+-		}
++		insertInt(0);
++		insertInt(0);
++		insertInt(0);
++		insertInt(0);
++
++		setCompression(true);
+ 	}
+-    
+-    void addPoint(const String& name, float x, float z, float y, uint32 tax, uint8 starport) {
+-    	travelPoints.add(new TravelPoint(name, x, z, y, tax, starport));
+-    }
+-    
+-    void generateMessage() {
+-    	insertNames();
+-    	insertCoords();
+-    	insertTax();
+-    	insertStarport();
+-    }
+-    
+-    void insertNames() {
+-    	insertInt(travelPoints.size());
+-        	
+-    	for (int i = 0; i < travelPoints.size(); ++i) {
+-    		TravelPoint* point = travelPoints.get(i);
+-    		
+-    		insertAscii(point->name);
+-    	}
+-    }
+-    
+-    void insertCoords() {
+-    	insertInt(travelPoints.size());
+ 
+-    	for (int i = 0; i < travelPoints.size(); ++i) {
+-    		TravelPoint* point = travelPoints.get(i);
+-
+-    		insertFloat(point->positionX);
+-    		insertFloat(point->positionZ);
+-    		insertFloat(point->positionY);
+-    	}
+-    }
+-    
+-    void insertTax() {
+-    	insertInt(travelPoints.size());
+-
+-    	for (int i = 0; i < travelPoints.size(); ++i) {
+-    		TravelPoint* point = travelPoints.get(i);
+-
+-    		insertInt(point->tax);
+-    	}
+-    }
+-    
+-    void insertStarport() {
+-    	insertInt(travelPoints.size());
+-
+-    	for (int i = 0; i < travelPoints.size(); ++i) {
+-    		TravelPoint* point = travelPoints.get(i);
+-
+-    		insertByte(point->starport);
+-    	}
+-    }
+-	
++	~PlanetTravelPointListResponse() {
++	}
+ };
+ 
+ #endif /*PLANETTRAVELPOINTLISTRESPONSE_H_*/
