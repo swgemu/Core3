@@ -170,6 +170,12 @@ void SceneObjectImplementation::loadTemplateData(SharedObjectTemplate* templateD
 		templateData->getAppearanceTemplate();
 	}
 
+	if (templateData->getPlanetMapCategory() != NULL)
+		planetMapCategory = templateData->getPlanetMapCategory()->getCrc();
+
+	if (templateData->getPlanetMapSubCategory() != NULL)
+		planetMapSubCategory = templateData->getPlanetMapSubCategory()->getCrc();
+
 	templateObject = templateData;
 }
 

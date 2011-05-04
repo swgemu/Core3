@@ -14,6 +14,7 @@
 class PlanetMapCategory : public Object {
 
 	String name;
+	int nameCRC;
 	int index;
 	bool category;
 	bool subCategory;
@@ -28,6 +29,7 @@ public:
 
 	PlanetMapCategory(const PlanetMapCategory& pmc) : Object() {
 		name = pmc.name;
+		nameCRC = pmc.nameCRC;
 		index =  pmc.index;
 		category = pmc.category;
 		subCategory = pmc.subCategory;
@@ -41,6 +43,7 @@ public:
 			return *this;
 
 		name = pmc.name;
+		nameCRC = pmc.nameCRC;
 		index =  pmc.index;
 		category = pmc.category;
 		subCategory = pmc.subCategory;
@@ -62,6 +65,7 @@ public:
 	void parseFromDataTableRow(DataTableRow* row) {
 		try {
 			row->getValue(0, name);
+			nameCRC = name.hashCode();
 			row->getValue(1, index);
 			row->getValue(2, category);
 			row->getValue(3, subCategory);
@@ -77,6 +81,10 @@ public:
 
 	inline String& getName() {
 		return name;
+	}
+
+	inline int getCrc() {
+		return nameCRC;
 	}
 
 	inline int getIndex() {

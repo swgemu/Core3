@@ -163,6 +163,8 @@ using namespace server::zone::objects::area;
 
 #include "server/zone/managers/templates/PlanetMapCategory.h"
 
+#include "server/zone/managers/templates/TemplateManager.h"
+
 #include "engine/log/Logger.h"
 
 #include "engine/core/ManagedReference.h"
@@ -1162,6 +1164,10 @@ protected:
 	Quaternion direction;
 
 	unsigned int movementCounter;
+
+	int planetMapCategory;
+
+	int planetMapSubCategory;
 
 	StringId objectName;
 

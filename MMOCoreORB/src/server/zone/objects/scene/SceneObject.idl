@@ -1,5 +1,5 @@
 /*
-Copyright (C) 2007 <SWGEmu>
+ Copyright (C) 2007 <SWGEmu>
 
 This File is part of Core3.
 
@@ -85,6 +85,7 @@ import server.zone.templates.SharedObjectTemplate;
 import server.zone.objects.area.ActiveArea;
 
 include server.zone.managers.templates.PlanetMapCategory;
+include server.zone.managers.templates.TemplateManager;
 
 class SceneObject extends QuadTreeEntry implements Logger {
 	protected transient ZoneProcessServer server;
@@ -118,6 +119,9 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	@dereferenced
 	protected Vector<string> slotDescriptors;
 */
+	
+	protected int planetMapCategory;
+	protected int planetMapSubCategory;
 
 	@dereferenced
 	protected StringId objectName;
@@ -1500,12 +1504,14 @@ class SceneObject extends QuadTreeEntry implements Logger {
 
 	@local
 	public PlanetMapCategory getPlanetMapCategory() {
-		return templateObject.getPlanetMapCategory();
+		TemplateManager templateManager = TemplateManager.instance();
+		return templateManager.getPlanetMapCategoryByCrc(planetMapCategory);
 	}
 	
 	@local
 	public PlanetMapCategory getPlanetMapSubCategory() {
-		return templateObject.getPlanetMapSubCategory();
+		TemplateManager templateManager = TemplateManager.instance();
+		return templateManager.getPlanetMapCategoryByCrc(planetMapCategory);
 	}
 	
 	@local

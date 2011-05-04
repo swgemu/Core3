@@ -2727,6 +2727,16 @@ bool SceneObjectImplementation::readObjectMember(ObjectInputStream* stream, cons
 		return true;
 	}
 
+	if (_name == "planetMapCategory") {
+		TypeInfo<int >::parseFromBinaryStream(&planetMapCategory, stream);
+		return true;
+	}
+
+	if (_name == "planetMapSubCategory") {
+		TypeInfo<int >::parseFromBinaryStream(&planetMapSubCategory, stream);
+		return true;
+	}
+
 	if (_name == "objectName") {
 		TypeInfo<StringId >::parseFromBinaryStream(&objectName, stream);
 		return true;
@@ -2859,6 +2869,22 @@ int SceneObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
+	_name = "planetMapCategory";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<int >::toBinaryStream(&planetMapCategory, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "planetMapSubCategory";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<int >::toBinaryStream(&planetMapSubCategory, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
 	_name = "objectName";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
@@ -2932,7 +2958,7 @@ int SceneObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	stream->writeShort(_offset, _totalSize);
 
 
-	return 18 + QuadTreeEntryImplementation::writeObjectMembers(stream);
+	return 20 + QuadTreeEntryImplementation::writeObjectMembers(stream);
 }
 
 SceneObjectImplementation::SceneObjectImplementation() {
@@ -3612,13 +3638,17 @@ bool SceneObjectImplementation::hasActiveArea(ActiveArea* area) {
 }
 
 PlanetMapCategory* SceneObjectImplementation::getPlanetMapCategory() {
-	// server/zone/objects/scene/SceneObject.idl():  		return templateObject.getPlanetMapCategory();
-	return templateObject->getPlanetMapCategory();
+	// server/zone/objects/scene/SceneObject.idl():  		TemplateManager templateManager = TemplateManager.instance();
+	TemplateManager* templateManager = TemplateManager::instance();
+	// server/zone/objects/scene/SceneObject.idl():  		return templateManager.getPlanetMapCategoryByCrc(planetMapCategory);
+	return templateManager->getPlanetMapCategoryByCrc(planetMapCategory);
 }
 
 PlanetMapCategory* SceneObjectImplementation::getPlanetMapSubCategory() {
-	// server/zone/objects/scene/SceneObject.idl():  		return templateObject.getPlanetMapSubCategory();
-	return templateObject->getPlanetMapSubCategory();
+	// server/zone/objects/scene/SceneObject.idl():  		TemplateManager templateManager = TemplateManager.instance();
+	TemplateManager* templateManager = TemplateManager::instance();
+	// server/zone/objects/scene/SceneObject.idl():  		return templateManager.getPlanetMapCategoryByCrc(planetMapCategory);
+	return templateManager->getPlanetMapCategoryByCrc(planetMapCategory);
 }
 
 SharedObjectTemplate* SceneObjectImplementation::getObjectTemplate() {

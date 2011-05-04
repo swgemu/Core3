@@ -265,9 +265,7 @@ void ZoneImplementation::updateActiveAreas(SceneObject* object) {
 
 void ZoneImplementation::addSceneObject(SceneObject* object) {
 	objectMap.put(object->getObjectID(), object);
-
-	if (object->getObjectTemplate()->isAutoRegisteredWithPlanetMap())
-		registerObjectWithPlanetaryMap(object);
+	registerObjectWithPlanetaryMap(object);
 }
 
 //TODO: Do we need to send out some type of update when this happens?
@@ -283,7 +281,6 @@ void ZoneImplementation::unregisterObjectWithPlanetaryMap(SceneObject* object) {
 
 void ZoneImplementation::dropSceneObject(SceneObject* object)  {
 	objectMap.remove(object->getObjectID());
-
 	unregisterObjectWithPlanetaryMap(object);
 }
 

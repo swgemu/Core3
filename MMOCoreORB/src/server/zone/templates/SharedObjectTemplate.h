@@ -60,7 +60,6 @@ protected:
 
 	Reference<PlanetMapCategory*> planetMapCategory;
 	Reference<PlanetMapCategory*> planetMapSubCategory;
-	bool autoRegisterWithPlanetMap;
 
 	String fullTemplateString;
 
@@ -284,13 +283,6 @@ public:
 
 	inline PlanetMapCategory* getPlanetMapSubCategory() const {
 		return planetMapSubCategory;
-	}
-
-	/**
-	 * Returns true if this template should be automatically registered with the planet map on insertion to zone.
-	 */
-	bool isAutoRegisteredWithPlanetMap() {
-		return autoRegisterWithPlanetMap;
 	}
 
 	inline int getChildObjectsSize() {

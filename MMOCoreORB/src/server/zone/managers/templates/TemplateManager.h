@@ -101,21 +101,22 @@ public:
 	static int addClientTemplate(lua_State* L);
 
 	PlanetMapCategory* getPlanetMapCategoryByName(const String& name) {
-		if (!planetMapCategoryList.contains(name))
-			return NULL;
-
 		return planetMapCategoryList.get(name);
 	}
 
-	PlanetMapCategory* getPlanetMapCategoryById(int idx) {
-		for (int i = 0; i < planetMapCategoryList.size(); ++i) {
-			Reference<PlanetMapCategory*> pmc = planetMapCategoryList.get(i);
+	PlanetMapCategory* getPlanetMapCategoryByCrc(int crc) {
+		return planetMapCategoryList.get(crc);
+	}
 
-			if (pmc->getIndex() == idx)
-				return pmc;
+	PlanetMapCategory* getPlanetMapCategoryById(int index) {
+		HashTableIterator<int, Reference<PlanetMapCategory*> > iterator(planetMapCategoryList);
+
+		while (iterator.hasNext()) {
+			Reference<PlanetMapCategory*>& cat = iterator.getNextValue();
+
+			if (cat->getIndex() == index)
+				return cat.get();
 		}
-
-		return NULL;
 	}
 
 	/**
