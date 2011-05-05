@@ -58,6 +58,8 @@ which carries forward this exception.
 
 #include "status/StatusServer.h"
 
+#include "web/WebServer.h"
+
 #include "zone/ZoneServer.h"
 
 #include "zone/managers/object/ObjectManager.h"
@@ -73,6 +75,7 @@ ServerCore::ServerCore() : Core("log/core3.log"), Logger("Core") {
 	zoneServerRef = NULL;
 	statusServer = NULL;
 	pingServer = NULL;
+	webServer = NULL;
 	database = NULL;
 
 	configManager = ConfigManager::instance();
@@ -115,6 +118,10 @@ void ServerCore::initialize() {
 			statusServer = new StatusServer(configManager, zoneServerRef);
 		}
 
+		if (configManager->getMakeWeb()) {
+			webServer = WebServer::instance();
+		}
+
 		ZoneServer* zoneServer = zoneServerRef.get();
 
 		if (loginServer != NULL) {
@@ -149,6 +156,10 @@ void ServerCore::initialize() {
 			int statusAllowedConnections = configManager->getStatusAllowedConnections();
 
 			statusServer->start(statusPort);
+		}
+
+		if (webServer != NULL) {
+			webServer->start(configManager);
 		}
 
 		if (pingServer != NULL) {
@@ -191,6 +202,13 @@ void ServerCore::shutdown() {
 
 		delete statusServer;
 		statusServer = NULL;
+	}
+
+	if (webServer != NULL) {
+		webServer->stop();
+
+		delete webServer;
+		webServer = NULL;
 	}
 
 	ZoneServer* zoneServer = zoneServerRef.get();

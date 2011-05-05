@@ -78,6 +78,7 @@ class StatusServer;
 class Features;
 class PingServer;
 class StatusServer;
+class WebServer;
 
 class ServerCore : public Core, public Logger {
 	ConfigManager* configManager;
@@ -95,6 +96,8 @@ class ServerCore : public Core, public Logger {
 	Features* features;
 
 	PingServer* pingServer;
+
+	WebServer* webServer;
 
 	static ManagedReference<server::zone::ZoneServer*> zoneServerRef;
 

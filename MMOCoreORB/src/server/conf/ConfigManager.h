@@ -56,6 +56,7 @@ namespace server {
 			bool makeZone;
 			bool makePing;
 			bool makeStatus;
+			bool makeWeb;
 
 			String orbNamingDirectoryAddress;
 
@@ -77,6 +78,10 @@ namespace server {
 			uint16 statusPort;
 			uint16 loginPort;
 			uint16 pingPort;
+
+			String webPorts;
+			String webAccessLog;
+			String webErrorLog;
 
 			String loginRequiredVersion;
 			int loginProcessingThreads;
@@ -105,6 +110,7 @@ namespace server {
 				makeZone = true;
 				makePing = true;
 				makeStatus = true;
+				makeWeb = true;
 
 				orbNamingDirectoryAddress = "";
 
@@ -123,6 +129,10 @@ namespace server {
 				statusPort = 44455;
 
 				pingPort = 44462;
+
+				webPorts = "44460";
+				webErrorLog = "log/web_error.log";
+				webAccessLog = "log/web_access.log";
 
 				loginProcessingThreads = 1;
 				loginRequiredVersion = "20050408-18:00";
@@ -170,6 +180,10 @@ namespace server {
 
 			inline bool getMakeStatus() {
 				return makeStatus;
+			}
+
+			inline bool getMakeWeb() {
+				return makeWeb;
 			}
 
 			inline String& getORBNamingDirectoryAddress() {
@@ -242,6 +256,18 @@ namespace server {
 
 			inline uint16 getPingPort() {
 				return pingPort;
+			}
+
+			inline String getWebPorts() {
+				return webPorts;
+			}
+
+			inline String getWebAccessLog() {
+				return webAccessLog;
+			}
+
+			inline String getWebErrorLog() {
+				return webErrorLog;
 			}
 
 			inline String& getLoginRequiredVersion() {

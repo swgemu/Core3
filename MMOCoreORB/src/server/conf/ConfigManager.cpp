@@ -54,6 +54,7 @@ bool ConfigManager::loadConfigData() {
 	makeZone = getGlobalByte("MakeZone");
 	makePing = getGlobalByte("MakePing");
 	makeStatus = getGlobalByte("MakeStatus");
+	makeWeb = getGlobalByte("MakeWeb");
 
 	orbNamingDirectoryAddress = getGlobalString("ORB");
 
@@ -93,6 +94,11 @@ bool ConfigManager::loadConfigData() {
 
 	statusAllowedConnections = getGlobalInt("StatusAllowedConnections");
 	statusInterval = getGlobalInt("StatusInterval");
+
+	webPorts = getGlobalString("WebPorts");
+	webAccessLog = getGlobalString("WebAccessLog");
+	webErrorLog = getGlobalString("WebErrorLog");
+
 
 	return true;
 }

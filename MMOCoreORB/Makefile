@@ -66,6 +66,7 @@ idl:
 	#done
 
 config:
+	automake --add-missing
 	autoreconf --force
 	cd build/unix && ../../configure
 	#done
