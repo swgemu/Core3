@@ -276,6 +276,8 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/ping/PingServer.cpp \
 		server/status/StatusServer.cpp \
 		server/ServerCore.cpp \
+		server/web/WebServer.cpp \
+		server/web/mongoose/mongoose.c \
 		server/zone/ZoneServerImplementation.cpp \
 		server/zone/ZoneClientSessionImplementation.cpp \
 		server/zone/ZonePacketHandler.cpp \
