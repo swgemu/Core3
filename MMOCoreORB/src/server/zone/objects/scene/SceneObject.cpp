@@ -2327,6 +2327,24 @@ void SceneObject::setClientObject(bool val) {
 		_implementation->setClientObject(val);
 }
 
+void SceneObject::setPlanetMapCategory(PlanetMapCategory* pmc) {
+	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		throw ObjectNotLocalException(this);
+
+	} else
+		_implementation->setPlanetMapCategory(pmc);
+}
+
+void SceneObject::setPlanetMapSubCategory(PlanetMapCategory* pmc) {
+	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		throw ObjectNotLocalException(this);
+
+	} else
+		_implementation->setPlanetMapSubCategory(pmc);
+}
+
 VectorMap<unsigned long long, ManagedReference<SceneObject* > >* SceneObject::getContainerObjects() {
 	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
 	if (_implementation == NULL) {
@@ -3532,6 +3550,16 @@ void SceneObjectImplementation::setClientObject(bool val) {
 	staticObject = val;
 }
 
+void SceneObjectImplementation::setPlanetMapCategory(PlanetMapCategory* pmc) {
+	// server/zone/objects/scene/SceneObject.idl():  		planetMapCategory = pmc.getCrc();
+	planetMapCategory = pmc->getCrc();
+}
+
+void SceneObjectImplementation::setPlanetMapSubCategory(PlanetMapCategory* pmc) {
+	// server/zone/objects/scene/SceneObject.idl():  		planetMapSubCategory = pmc.getCrc();
+	planetMapSubCategory = pmc->getCrc();
+}
+
 VectorMap<unsigned long long, ManagedReference<SceneObject* > >* SceneObjectImplementation::getContainerObjects() {
 	// server/zone/objects/scene/SceneObject.idl():  		return containerObjects;
 	return (&containerObjects);
@@ -3647,8 +3675,8 @@ PlanetMapCategory* SceneObjectImplementation::getPlanetMapCategory() {
 PlanetMapCategory* SceneObjectImplementation::getPlanetMapSubCategory() {
 	// server/zone/objects/scene/SceneObject.idl():  		TemplateManager templateManager = TemplateManager.instance();
 	TemplateManager* templateManager = TemplateManager::instance();
-	// server/zone/objects/scene/SceneObject.idl():  		return templateManager.getPlanetMapCategoryByCrc(planetMapCategory);
-	return templateManager->getPlanetMapCategoryByCrc(planetMapCategory);
+	// server/zone/objects/scene/SceneObject.idl():  		return templateManager.getPlanetMapCategoryByCrc(planetMapSubCategory);
+	return templateManager->getPlanetMapCategoryByCrc(planetMapSubCategory);
 }
 
 SharedObjectTemplate* SceneObjectImplementation::getObjectTemplate() {

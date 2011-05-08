@@ -58,7 +58,11 @@ public:
 
 	void handleDestoryCallback(PlayerCreature* player, Vendor* vendor);
 
-	void handleRegisterVendor(PlayerCreature* player, Vendor* vendor);
+	void sendRegisterVendorTo(PlayerCreature* player, Vendor* vendor);
+
+	void handleRegisterVendorCallback(PlayerCreature* player, Vendor* vendor, const String& planetMapCategoryName);
+
+	void handleUnregisterVendor(PlayerCreature* player, Vendor* vendor);
 
 	void handleRenameVendor(PlayerCreature* player, TangibleObject* vendor, String& name);
 

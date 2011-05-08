@@ -14,6 +14,7 @@
 #include "server/zone/objects/auction/AuctionItem.h"
 #include "server/zone/objects/player/sui/inputbox/SuiInputBox.h"
 #include "server/zone/managers/vendor/sui/RenameVendorSuiCallback.h"
+#include "server/zone/managers/vendor/sui/RegisterVendorSuiCallback.h"
 #include "server/zone/managers/name/NameManager.h"
 #include "server/zone/managers/auction/AuctionManager.h"
 #include "server/zone/managers/auction/AuctionsMap.h"
@@ -131,12 +132,98 @@ void VendorManager::handleDestoryCallback(PlayerCreature* player, Vendor* vendor
 
 }
 
-void VendorManager::handleRegisterVendor(PlayerCreature* player, Vendor* vendor) {
+void VendorManager::sendRegisterVendorTo(PlayerCreature* player, Vendor* vendor) {
+	SceneObject* vendorObj = vendor->getVendor();
 
+	if (vendorObj == NULL)
+		return;
+
+	SuiListBox* registerBox = new SuiListBox(player, SuiWindowType::STRUCTURE_VENDOR_REGISTER);
+	registerBox->setCallback(new RegisterVendorSuiCallback(player->getZoneServer()));
+	registerBox->setPromptTitle("@player_structure:vendor_mapcat_t");
+	registerBox->setPromptText("@player_structure:vendor_mapcat_d");
+	registerBox->setUsingObject(vendorObj);
+	registerBox->setCancelButton(true, "@cancel");
+
+	registerBox->addMenuItem("@player_structure:subcat_armor");
+	registerBox->addMenuItem("@player_structure:subcat_clothing");
+	registerBox->addMenuItem("@player_structure:subcat_components");
+	registerBox->addMenuItem("@player_structure:subcat_droids");
+	registerBox->addMenuItem("@player_structure:subcat_equipment");
+	registerBox->addMenuItem("@player_structure:subcat_food");
+	registerBox->addMenuItem("@player_structure:subcat_housing");
+	registerBox->addMenuItem("@player_structure:subcat_medical");
+	registerBox->addMenuItem("@player_structure:subcat_pets");
+	registerBox->addMenuItem("@player_structure:subcat_resources");
+	registerBox->addMenuItem("@player_structure:subcat_ships");
+	registerBox->addMenuItem("@player_structure:subcat_tools");
+	registerBox->addMenuItem("@player_structure:subcat_weapons");
+
+	player->sendMessage(registerBox->generateMessage());
+	player->addSuiBox(registerBox);
+
+}
+
+void VendorManager::handleRegisterVendorCallback(PlayerCreature* player, Vendor* vendor, const String& planetMapCategoryName) {
+	ManagedReference<SceneObject*> vendorObj = vendor->getVendor();
+
+	if (vendorObj == NULL)
+		return;
+
+	Zone* zone = vendorObj->getZone();
+
+	if (zone == NULL)
+		return;
+
+	Reference<PlanetMapCategory*> planetMapCategory = TemplateManager::instance()->getPlanetMapCategoryByName("vendor");
+	Reference<PlanetMapCategory*> planetMapSubCategory = TemplateManager::instance()->getPlanetMapCategoryByName("vendor_" + planetMapCategoryName);
+
+	Reference<SharedObjectTemplate*> objectTemplate = vendorObj->getObjectTemplate();
+
+	if (planetMapCategory == NULL || planetMapSubCategory == NULL || objectTemplate == NULL)
+		return;
+
+	Locker locker(vendorObj);
+	Locker zoneLocker(zone);
+
+	vendorObj->setPlanetMapCategory(planetMapCategory);
+	vendorObj->setPlanetMapSubCategory(planetMapSubCategory);
+
+	zone->registerObjectWithPlanetaryMap(vendorObj);
+	vendor->setRegistered(true);
+
+	player->sendSystemMessage("@player_structure:register_vendor_not");
+
+}
+
+void VendorManager::handleUnregisterVendor(PlayerCreature* player, Vendor* vendor) {
+	ManagedReference<SceneObject*> vendorObj = vendor->getVendor();
+
+	if (vendorObj == NULL)
+		return;
+
+	Zone* zone = vendorObj->getZone();
+
+	if (zone == NULL)
+		return;
+
+	Locker locker(vendorObj);
+	Locker zoneLocker(zone);
+
+	zone->unregisterObjectWithPlanetaryMap(vendorObj);
+
+	vendor->setRegistered(false);
+
+	player->sendSystemMessage("@player_structure:unregister_vendor_not");
 }
 
 void VendorManager::handleRenameVendor(PlayerCreature* player, TangibleObject* vendor, String& name) {
 	if (vendor == NULL)
+		return;
+
+	Zone* zone = vendor->getZone();
+
+	if (zone == NULL)
 		return;
 
 	if (!isValidVendorName(name)) {
@@ -171,8 +258,13 @@ void VendorManager::handleRenameVendor(PlayerCreature* player, TangibleObject* v
 	if (vendo == NULL)
 		return;
 
-	vendo->setRegistered(false);
-	//TODO: unregister from the planetary map.
+	if (vendo->isRegistered()) {
+		vendo->setRegistered(false);
+		zone->unregisterObjectWithPlanetaryMap(vendor);
+
+		player->sendSystemMessage("@player_structure:vendor_rename_unreg");
+	} else
+		player->sendSystemMessage("@player_structure:vendor_rename");
 
 }
 

@@ -1068,6 +1068,10 @@ public:
 
 	void setClientObject(bool val);
 
+	void setPlanetMapCategory(PlanetMapCategory* pmc);
+
+	void setPlanetMapSubCategory(PlanetMapCategory* pmc);
+
 	VectorMap<unsigned long long, ManagedReference<SceneObject* > >* getContainerObjects();
 
 	bool hasObjectInContainer(unsigned long long objectID);
@@ -2057,6 +2061,10 @@ public:
 	void setLoggingName(const String& name);
 
 	void setClientObject(bool val);
+
+	void setPlanetMapCategory(PlanetMapCategory* pmc);
+
+	void setPlanetMapSubCategory(PlanetMapCategory* pmc);
 
 	VectorMap<unsigned long long, ManagedReference<SceneObject* > >* getContainerObjects();
 

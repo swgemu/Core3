@@ -26,6 +26,8 @@
 #include "server/zone/managers/vendor/VendorOutfitManager.h"
 #include "server/zone/managers/vendor/Outfit.h"
 
+#include "server/zone/Zone.h"
+
 void VendorCreatureImplementation::initializeTransientMembers() {
 	CreatureObjectImplementation::initializeTransientMembers();
 
@@ -80,7 +82,7 @@ if (!vendor.isInitialized())
 			else
 				menuResponse->addRadialMenuItemToRadialID(240, 243, 3, "@player_structure:enable_vendor_search");
 
-			if (vendor.isRegistered())
+			if (!vendor.isRegistered())
 				menuResponse->addRadialMenuItemToRadialID(240, 244, 3, "@player_structure:register_vendor");
 			else
 				menuResponse->addRadialMenuItemToRadialID(240, 244, 3, "@player_structure:unregister_vendor");
@@ -95,7 +97,7 @@ if (!vendor.isInitialized())
 int VendorCreatureImplementation::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
 	switch (selectedID) {
 	case 241: {
-		VendorManager::instance()->handleDisplayStatus(player, getVendor());
+		VendorManager::instance()->handleDisplayStatus(player, &vendor);
 		return 0;
 	}
 
@@ -127,12 +129,15 @@ int VendorCreatureImplementation::handleObjectMenuSelect(PlayerCreature* player,
 	}
 
 	case 244: {
-		VendorManager::instance()->handleRegisterVendor(player, getVendor());
+		if (!vendor.isRegistered())
+			VendorManager::instance()->sendRegisterVendorTo(player, &vendor);
+		else
+			VendorManager::instance()->handleUnregisterVendor(player, &vendor);
 		return 0;
 	}
 
 	case 245: {
-		VendorManager::instance()->sendDestoryTo(player, getVendor());
+		VendorManager::instance()->sendDestoryTo(player, &vendor);
 		return 0;
 	}
 
