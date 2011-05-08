@@ -236,8 +236,6 @@ void VendorManager::handleRenameVendor(PlayerCreature* player, TangibleObject* v
 
 	vendor->setCustomObjectName("Vendor: " + name, true);
 
-	_locker.release();
-
 	Vendor* vendo = NULL;
 	if (vendor->isTerminal()) {
 		VendorTerminal* terminal = dynamic_cast<VendorTerminal*>(vendor);
@@ -259,6 +257,8 @@ void VendorManager::handleRenameVendor(PlayerCreature* player, TangibleObject* v
 		return;
 
 	if (vendo->isRegistered()) {
+		Locker zoneLocker(zone);
+
 		vendo->setRegistered(false);
 		zone->unregisterObjectWithPlanetaryMap(vendor);
 
