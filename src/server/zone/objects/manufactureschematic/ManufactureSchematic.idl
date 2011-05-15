@@ -166,8 +166,7 @@ class ManufactureSchematic extends IntangibleObject {
 	}
 	
 	@local
-	@dereferenced
-	public native Reference<IngredientSlot> getIngredientSlot(int index);
+	public native IngredientSlot getIngredientSlot(int index);
 	
 	public native int getSlotCount();
 	

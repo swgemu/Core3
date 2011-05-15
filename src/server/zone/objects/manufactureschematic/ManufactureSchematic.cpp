@@ -197,7 +197,7 @@ DraftSchematic* ManufactureSchematic::getDraftSchematic() {
 		return _implementation->getDraftSchematic();
 }
 
-Reference<IngredientSlot*> ManufactureSchematic::getIngredientSlot(int index) {
+IngredientSlot* ManufactureSchematic::getIngredientSlot(int index) {
 	ManufactureSchematicImplementation* _implementation = (ManufactureSchematicImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);

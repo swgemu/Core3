@@ -25,7 +25,7 @@ class FloorMesh;
 class PortalLayout;
 class AppearanceTemplate;
 
-class TemplateManager : public Singleton<TemplateManager>, public Logger {
+class TemplateManager : public Singleton<TemplateManager>, public Logger, public Object {
 	TemplateCRCMap* templateCRCMap;
 
 	ObjectFactory<SharedObjectTemplate* (), uint32> templateFactory;

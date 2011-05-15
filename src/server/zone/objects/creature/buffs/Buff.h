@@ -187,7 +187,7 @@ class BuffImplementation : public ManagedObjectImplementation, public Logger {
 protected:
 	ManagedWeakReference<CreatureObject* > creature;
 
-	Reference<BuffDurationEvent*> buffEvent;
+	Reference<BuffDurationEvent* > buffEvent;
 
 	VectorMap<byte, int> attributeModifiers;
 

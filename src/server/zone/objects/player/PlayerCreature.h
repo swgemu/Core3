@@ -699,9 +699,9 @@ protected:
 
 	int lotsRemaining;
 
-	PlayerDisconnectEvent* disconnectEvent;
+	Reference<PlayerDisconnectEvent* > disconnectEvent;
 
-	PlayerRecoveryEvent* recoveryEvent;
+	Reference<PlayerRecoveryEvent* > recoveryEvent;
 
 	int skillPoints;
 

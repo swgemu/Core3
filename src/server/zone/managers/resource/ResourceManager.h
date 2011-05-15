@@ -199,9 +199,9 @@ class ResourceManagerImplementation : public ObserverImplementation, public Lua 
 
 	ManagedWeakReference<ZoneServer* > zoneServer;
 
-	ResourceSpawner* resourceSpawner;
+	Reference<ResourceSpawner* > resourceSpawner;
 
-	ObjectManager* objectManager;
+	Reference<ObjectManager* > objectManager;
 
 	int shiftInterval;
 

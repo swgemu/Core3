@@ -75,17 +75,13 @@ import engine.util.Observable;
 import server.zone.objects.creature.AiObserver;
 
 class AiAgent extends CreatureObject {
-	@dereferenced
-	protected transient Reference<AiThinkEvent> thinkEvent;
+	protected transient AiThinkEvent thinkEvent;
 	
-	@dereferenced
-	protected transient Reference<AiMoveEvent> moveEvent;
+	protected transient AiMoveEvent moveEvent;
 	
-	@dereferenced
-	protected transient Reference<AiWaitEvent> waitEvent;
+	protected transient AiWaitEvent waitEvent;
 	
-	@dereferenced
-	protected transient Reference<AiAwarenessEvent> awarenessEvent;
+	protected transient AiAwarenessEvent awarenessEvent;
 	
 	@dereferenced
 	protected Vector<string> skillCommands;
@@ -128,8 +124,7 @@ class AiAgent extends CreatureObject {
 	protected float respawnTimer;
 	protected int numberOfPlayersInRange;
 	
-	@dereferenced
-	protected transient Reference<DespawnCreatureOnPlayerDissappear> despawnEvent;
+	protected transient DespawnCreatureOnPlayerDissappear despawnEvent;
 	
 	public static final int UPDATEMOVEMENTINTERVAL = 1000; // msec
 	

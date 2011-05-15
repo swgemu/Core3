@@ -200,7 +200,7 @@ namespace draftschematic {
 class DraftSchematicImplementation : public IntangibleObjectImplementation {
 	unsigned int schematicID;
 
-	DraftSchematicObjectTemplate* schematicTemplate;
+	Reference<DraftSchematicObjectTemplate* > schematicTemplate;
 
 	int useCount;
 

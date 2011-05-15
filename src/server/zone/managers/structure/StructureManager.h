@@ -179,7 +179,7 @@ class StructureManagerImplementation : public ManagedServiceImplementation, publ
 
 	ManagedReference<ZoneProcessServer* > server;
 
-	TemplateManager* templateManager;
+	Reference<TemplateManager* > templateManager;
 
 public:
 	StructureManagerImplementation(Zone* zne, ZoneProcessServer* proc);

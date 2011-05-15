@@ -114,7 +114,7 @@ protected:
 
 	bool abandoned;
 
-	Reference<CampDespawnEvent*> despawnEvent;
+	CampDespawnEvent despawnEvent;
 
 	int maxXP;
 

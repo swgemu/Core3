@@ -72,7 +72,7 @@ which carries forward this exception.
  * The ResourceSpawner class represents all the functions related to ResourceSpawns
  * Including spawning, despawning rules,
  */
-class ResourceSpawner : public Logger {
+class ResourceSpawner : public Logger, public Object {
 private:
 	ManagedReference<ZoneServer* > server;
 	ManagedReference<ZoneProcessServer*> processor;

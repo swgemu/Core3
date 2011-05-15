@@ -60,8 +60,7 @@ include server.chat.StringIdChatParameter;
 
 
 class PowerBoostBuff extends Buff {
-	@dereferenced
-	protected transient Reference<PowerBoostBuffDurationEvent> pbBuffEvent;
+	protected transient PowerBoostBuffDurationEvent pbBuffEvent;
 
 	protected int pbBonus;
 	protected int pbTick;

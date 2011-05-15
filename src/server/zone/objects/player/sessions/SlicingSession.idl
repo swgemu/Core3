@@ -67,8 +67,7 @@ class SlicingSession extends Facade {
 
 	protected SuiListBox slicingSuiBox;
 
-	@dereferenced
-	protected transient Reference<RelockLootContainerEvent> relockEvent;
+	protected transient RelockLootContainerEvent relockEvent;
 
 	protected byte firstCable;
 	protected byte nodeCable;

@@ -51,9 +51,11 @@ which carries forward this exception.
 //#include "objects/player/Player.h"
 #include "LoginMessageProcessorTask.h"
 
-LoginClient::LoginClient(int port) : BaseClient("localhost", port) {
-	setLogging(false);
-	setLoggingName("LoginClient");
+LoginClient::LoginClient(int port, const String& loggingName) {
+	client = new BaseClient("localhost", port);
+
+	client->setLogging(false);
+	client->setLoggingName(loggingName);
 
 	loginSession = NULL;
 
@@ -68,11 +70,13 @@ LoginClient::~LoginClient() {
 
 void LoginClient::initialize() {
 	loginPacketHandler = new LoginPacketHandler(loginSession);
-	BaseClient::initialize();
+
+	client->setHandler(this);
+	client->initialize();
 }
 
-void LoginClient::handleMessage(Packet* message) {
-	basePacketHandler->handlePacket(this, message);
+void LoginClient::handleMessage(ServiceClient* client, Packet* message) {
+	basePacketHandler->handlePacket(LoginClient::client, message);
 }
 
 void LoginClient::processMessage(Message* message) {

@@ -27,7 +27,7 @@ ObjectManager::ObjectManager() : Mutex("ObjectManager"), Logger("ObjectManager")
 		luaInstance = new Lua();
 		luaInstance->init();
 
-		info("loading object templates...", true);
+		info("loading object templates...");
 		registerFunctions();
 		luaInstance->runFile("scripts/object/clientmain.lua");
 

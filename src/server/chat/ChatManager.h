@@ -171,6 +171,8 @@ using namespace server::zone::objects::waypoint;
 
 #include "system/util/VectorMap.h"
 
+#include "system/util/HashTable.h"
+
 #include "engine/log/Logger.h"
 
 namespace server {
@@ -293,7 +295,7 @@ class ChatManagerImplementation : public ManagedServiceImplementation, public Lo
 
 	ManagedWeakReference<PlayerManager* > playerManager;
 
-	PlayerMap* playerMap;
+	Reference<PlayerMap* > playerMap;
 
 	VectorMap<String, ManagedReference<ChatRoom* > > gameRooms;
 
@@ -301,7 +303,7 @@ class ChatManagerImplementation : public ManagedServiceImplementation, public Lo
 
 	ManagedReference<ChatRoom* > guildRoom;
 
-	ChatRoomMap* roomMap;
+	Reference<ChatRoomMap* > roomMap;
 
 	unsigned int roomID;
 

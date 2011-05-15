@@ -68,8 +68,8 @@ import server.zone.objects.scene.SceneObject;
 
 
 class InstallationObject extends StructureObject {
-	@dereferenced
-	protected transient Reference<SyncrhonizedUiListenInstallationTask> syncUiTask;
+	protected transient SyncrhonizedUiListenInstallationTask syncUiTask;
+
 	protected boolean operating;
 	
 	@dereferenced

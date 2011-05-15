@@ -312,10 +312,12 @@ bool PlayerManagerImplementation::createPlayer(MessageCallback* data) {
 	UnicodeString name;
 	callback->getCharacterName(name);
 
+#ifndef WITH_STM
 	if (!checkPlayerName(callback)) {
 		info("invalid name " + name.toString());
 		return false;
 	}
+#endif
 
 	ProfessionManager* professionManager = server->getProfessionManager();
 	String profession;
@@ -1526,7 +1528,7 @@ bool PlayerManagerImplementation::checkTradeItems(PlayerCreature* player, Player
 }
 
 void PlayerManagerImplementation::handleVerifyTradeMessage(PlayerCreature* player) {
-	ObjectController* objectController = server->getObjectController();
+	ManagedReference<ObjectController*> objectController = server->getObjectController();
 
 	Locker locker(player);
 

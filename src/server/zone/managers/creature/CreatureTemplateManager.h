@@ -19,20 +19,21 @@ namespace zone {
 namespace managers {
 namespace creature {
 
-class CreatureTemplateManager : public HashTable<uint32, Reference<CreatureTemplate*> >, private Lua, public Singleton<CreatureTemplateManager> {
+class CreatureTemplateManager : private Lua, public Singleton<CreatureTemplateManager>, public Object {
 protected:
+	HashTable<uint32, Reference<CreatureTemplate*> > templates;
+
 	VectorMap<uint32, Vector<String> > weaponMap;
 	VectorMap<uint32, DynamicSpawnGroup*> dynamicGroupMap;
 	VectorMap<uint32, StaticSpawnGroup*> staticGroupMap;
 
 public:
-	CreatureTemplateManager() : HashTable<uint32,Reference<CreatureTemplate*> >(3000), Lua(), Singleton<CreatureTemplateManager>() {
+	CreatureTemplateManager() : Lua(), Singleton<CreatureTemplateManager>(), templates(3000) {
 		setLogging(false);
 		setGlobalLogging(true);
 		setLoggingName("CreatureTemplateManager");
 
 		Lua::init();
-		setNullValue(NULL);
 
 		lua_register(getLuaState(), "includeFile", includeFile);
 		lua_register(getLuaState(), "addTemplate", addTemplate);
@@ -77,12 +78,16 @@ public:
 		info("done loading mobile templates", true);
 	}
 
+	void addTemplate(uint32 crc, CreatureTemplate* templ) {
+		templates.put(crc, templ);
+	}
+
 	CreatureTemplate* getTemplate(uint32 crc) {
-		return get(crc);
+		return templates.get(crc);
 	}
 
 	CreatureTemplate* getTemplate(String ascii) {
-		return get(ascii.hashCode());
+		return templates.get(ascii.hashCode());
 	}
 
 	Vector<String> getWeapons(uint32 crc) {
@@ -126,7 +131,7 @@ public:
 		newTemp->setTemplateName(ascii);
 		newTemp->readObject(&obj);
 
-		CreatureTemplateManager::instance()->put(crc, newTemp);
+		CreatureTemplateManager::instance()->addTemplate(crc, newTemp);
 
 		return 0;
 	}
@@ -165,6 +170,14 @@ public:
 		CreatureTemplateManager::instance()->staticGroupMap.put(crc, new StaticSpawnGroup(ascii, obj));
 
 		return 0;
+	}
+
+	HashTableIterator<uint32, Reference<CreatureTemplate*> > iterator() {
+		return templates.iterator();
+	}
+
+	int size() {
+		return templates.size();
 	}
 };
 

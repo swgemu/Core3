@@ -44,6 +44,7 @@ which carries forward this exception.
 
 package server.zone.objects.building;
 
+import engine.stm.TransactionalReference;
 import server.zone.objects.structure.StructureObject;
 import engine.lua.LuaObject;
 import engine.util.u3d.QuadTree;
@@ -62,7 +63,10 @@ import engine.util.u3d.Vector3;
 
 include server.zone.objects.cell.CellObject;
 
-class BuildingObject extends StructureObject implements QuadTree {
+class BuildingObject extends StructureObject {
+	protected QuadTree spatialIndexer;
+	//protected TransactionalReference<QuadTree> spatialIndexer;
+	
 	@dereferenced
 	protected Vector<CellObject> cells;
 
@@ -81,7 +85,8 @@ class BuildingObject extends StructureObject implements QuadTree {
 	public BuildingObject() {
 		Logger.setLoggingName("BuildingObject");
 
-		QuadTree.setSize(-1024, -1024, 1024, 1024);
+		spatialIndexer = new QuadTree();
+		spatialIndexer.setSize(-1024, -1024, 1024, 1024);
 
 		super.staticObject = false;
 		

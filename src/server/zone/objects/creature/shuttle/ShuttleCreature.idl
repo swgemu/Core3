@@ -71,10 +71,8 @@ class ShuttleCreature extends CreatureObject {
 	protected float arrivalPositionZ;
 	protected float arrivalPositionY;
 
-	@dereferenced
-	protected transient Reference<ShuttleLandingEvent> shuttleLandingEvent;
-	@dereferenced
-	protected transient Reference<ShuttleTakeOffEvent> shuttleTakeOffEvent;
+	protected transient ShuttleLandingEvent shuttleLandingEvent;
+	protected transient ShuttleTakeOffEvent shuttleTakeOffEvent;
 
 	public ShuttleCreature() {
 		Logger.setLoggingName("ShuttleCreature");

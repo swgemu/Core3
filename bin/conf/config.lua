@@ -49,11 +49,11 @@ MakeStatus = 1
 
 ORB = ""
 
-DBHost = "172.26.0.2"
+DBHost = "192.168.1.100"
 DBPort = 3306
 DBName = "swgemu"
-DBUser = "root"
-DBPass = "swgemu"
+DBUser = "swgemu"
+DBPass = "123456"
 
 LoginPort = 44453
 LoginProcessingThreads = 1

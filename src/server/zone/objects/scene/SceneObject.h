@@ -1147,7 +1147,7 @@ protected:
 
 	unsigned int containmentType;
 
-	SharedObjectTemplate* templateObject;
+	Reference<SharedObjectTemplate* > templateObject;
 
 public:
 	static const int CELLOBJECT = 11;

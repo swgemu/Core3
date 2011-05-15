@@ -357,7 +357,7 @@ protected:
 
 	int forceCost;
 
-	SharedWeaponObjectTemplate* weaponTemplate;
+	Reference<SharedWeaponObjectTemplate* > weaponTemplate;
 
 public:
 	static const int NONE = 0;

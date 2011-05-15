@@ -13,7 +13,9 @@
 class LoginSession;
 class LoginPacketHandler;
 
-class LoginClient : public BaseClient, public ServiceHandler {
+class LoginClient : public ServiceHandler {
+	Reference<BaseClient*> client;
+
 	MessageQueue messageQueue;
 
 	BasePacketHandler* basePacketHandler;
@@ -21,11 +23,19 @@ class LoginClient : public BaseClient, public ServiceHandler {
 	LoginPacketHandler* loginPacketHandler;
 
 public:
-	LoginClient(int port);
+	LoginClient(int port, const String& loggingName);
 
 	~LoginClient();
 
 	void initialize();
+
+	bool connect() {
+		return client->connect();
+	}
+
+	void disconnect() {
+		client->disconnect();
+	}
 
 	ServiceClient* createConnection(Socket* sock, SocketAddress& addr) {
 		return NULL;
@@ -35,9 +45,7 @@ public:
 		return false;
 	}
 
-	void handleMessage(ServiceClient* client, Packet* message) {
-
-	}
+	void handleMessage(ServiceClient* client, Packet* message);
 
 	void processMessage(Message* message);
 
@@ -56,7 +64,7 @@ public:
 	}
 
 	void sendMessage(Message* msg) {
-		BaseClient::sendPacket((BasePacket*) msg);
+		client->sendPacket((BasePacket*) msg);
 
 	#ifdef WITH_STM
 		TransactionalMemoryManager::commitPureTransaction();
@@ -64,13 +72,16 @@ public:
 	}
 
 	void sendMessage(StandaloneBaseMessage* msg) {
-		BaseClient::sendPacket((BasePacket*) msg);
+		client->sendPacket((BasePacket*) msg);
 	}
 
 	LoginSession* getLoginSession() {
 		return loginSession;
 	}
 
+	BaseClient* getClient() {
+		return client;
+	}
 };
 
 

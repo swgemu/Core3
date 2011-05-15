@@ -187,21 +187,21 @@ namespace server {
 namespace login {
 
 class LoginServerImplementation : public ManagedServiceImplementation, public Logger {
-	DatagramServiceThread* datagramService;
+	Reference<DatagramServiceThread* > datagramService;
 
-	BasePacketHandler* phandler;
+	Reference<BasePacketHandler* > phandler;
 
-	LoginHandler* loginHandler;
+	Reference<LoginHandler* > loginHandler;
 
-	LoginProcessServerImplementation* processor;
+	Reference<LoginProcessServerImplementation* > processor;
 
-	ConfigManager* configManager;
+	Reference<ConfigManager* > configManager;
 
-	LoginEnumCluster* enumClusterMessage;
+	Reference<LoginEnumCluster* > enumClusterMessage;
 
-	LoginClusterStatus* clusterStatusMessage;
+	Reference<LoginClusterStatus* > clusterStatusMessage;
 
-	AccountManager* accountManager;
+	Reference<AccountManager* > accountManager;
 
 public:
 	LoginServerImplementation(ConfigManager* config);

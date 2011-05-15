@@ -159,7 +159,9 @@ void ZoneServerImplementation::initialize() {
 	stringIdManager = StringIdManager::instance();
 
 	creatureTemplateManager = CreatureTemplateManager::instance();
+#ifndef WITH_STM
 	creatureTemplateManager->loadTemplates();
+#endif
 
 	phandler = new BasePacketHandler("ZoneServer", zoneHandler);
 	phandler->setLogging(false);
@@ -248,7 +250,9 @@ void ZoneServerImplementation::startManagers() {
 
 	auctionManager = new AuctionManager(_this);
 	auctionManager->deploy();
+#ifndef WITH_STM
 	auctionManager->initialize();
+#endif
 
 	missionManager = new MissionManager(_this, processor);
 	missionManager->deploy("MissionManager");
@@ -258,7 +262,9 @@ void ZoneServerImplementation::startManagers() {
 
 	resourceManager = new ResourceManager(_this, processor, objectManager);
 	resourceManager->deploy("ResourceManager");
+#ifndef WITH_STM
 	resourceManager->initialize();
+#endif
 
 	fishingManager = new FishingManager(_this);
 	fishingManager->deploy();
@@ -272,12 +278,16 @@ void ZoneServerImplementation::startManagers() {
 	lootManager = new LootManager(craftingManager);
 	lootManager->deploy("LootManager");
 	lootManager->setZoneProcessor(processor);
+#ifndef WITH_STM
 	lootManager->initialize();
+#endif
 
 	guildManager = new GuildManager(_this, processor);
 	guildManager->deploy("GuildManager");
 	guildManager->setChatManager(chatManager);
+#ifndef WITH_STM
 	guildManager->loadGuilds();
+#endif
 
 	//Loads the FactionManager LUA Config.
 	FactionManager::instance()->loadLuaConfig();
@@ -596,7 +606,12 @@ void ZoneServerImplementation::increaseTotalDeletedPlayers() {
 }
 
 void ZoneServerImplementation::lock(bool doLock) {
+#ifdef WITH_STM
+	if (doLock && !datagramService->tryLock())
+		throw TransactionAbortedException();
+#else
 	datagramService->lock(doLock);
+#endif
 }
 
 void ZoneServerImplementation::unlock(bool doLock) {

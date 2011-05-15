@@ -63,16 +63,18 @@ which carries forward this exception.
 #include "server/zone/templates/appearance/PathGraph.h"
 
 
-ZoneImplementation::ZoneImplementation(ZoneProcessServer* serv, int id) : ManagedObjectImplementation(), QuadTree(-8192, -8192, 8192, 8192) {
+ZoneImplementation::ZoneImplementation(ZoneProcessServer* serv, int id) : ManagedObjectImplementation() {
+	spatialIndexer = new QuadTree(-8192, -8192, 8192, 8192);
+
 	zoneID = id;
 
 	processor = serv;
 	server = processor->getZoneServer();
 
+	objectMap = new ObjectMap();
+
 	heightMap = new HeightMap();
 	regionTree = new QuadTree(-8192, -8192, 8192, 8192);
-
-	mapLocations.setNoDuplicateInsertPlan();
 
 	managersStarted = false;
 
@@ -80,6 +82,8 @@ ZoneImplementation::ZoneImplementation(ZoneProcessServer* serv, int id) : Manage
 
 	planetManager = NULL;
 	cityManager = NULL;
+
+	mapLocations = new MapLocationTable();
 }
 
 void ZoneImplementation::initializePrivateData() {
@@ -93,20 +97,12 @@ void ZoneImplementation::initializePrivateData() {
 }
 
 void ZoneImplementation::finalize() {
-	//System::out << "deleting height map\n";
-	delete heightMap;
-	heightMap = NULL;
-
-	delete regionTree;
-	regionTree = NULL;
 }
 
 void ZoneImplementation::initializeTransientMembers() {
 	ManagedObjectImplementation::initializeTransientMembers();
 
 	heightMap = new HeightMap();
-
-	mapLocations.setNoDuplicateInsertPlan();
 
 	if (zoneID <= 9) {
 		String planetName = Planet::getPlanetName(zoneID);
@@ -130,11 +126,11 @@ void ZoneImplementation::startManagers() {
 	//FIXME
 #ifndef WITH_STM
 	creatureManager->initialize();
-#endif
 
 	planetManager->loadShuttles();
 
 	cityManager->loadLuaConfig();
+#endif
 
 	ObjectDatabaseManager::instance()->commitLocalTransaction();
 
@@ -190,25 +186,25 @@ float ZoneImplementation::getHeight(float x, float y) {
 void ZoneImplementation::insert(QuadTreeEntry* entry) {
 	Locker locker(_this);
 
-	QuadTree::insert(entry);
+	spatialIndexer->insert(entry);
 }
 
 void ZoneImplementation::remove(QuadTreeEntry* entry) {
 	Locker locker(_this);
 
-	QuadTree::remove(entry);
+	spatialIndexer->remove(entry);
 }
 
 void ZoneImplementation::update(QuadTreeEntry* entry) {
 	Locker locker(_this);
 
-	QuadTree::update(entry);
+	spatialIndexer->update(entry);
 }
 
 void ZoneImplementation::inRange(QuadTreeEntry* entry, float range) {
 	Locker locker(_this);
 
-	QuadTree::inRange(entry, range);
+	spatialIndexer->inRange(entry, range);
 }
 
 int ZoneImplementation::getInRangeObjects(float x, float y, float range, SortedVector<ManagedReference<SceneObject*> >* objects) {
@@ -216,7 +212,7 @@ int ZoneImplementation::getInRangeObjects(float x, float y, float range, SortedV
 
 	SortedVector<QuadTreeEntry*> entryObjects;
 
-	QuadTree::inRange(x, y, range, entryObjects);
+	spatialIndexer->inRange(x, y, range, entryObjects);
 
 	for (int i = 0; i < entryObjects.size(); ++i) {
 		SceneObject* obj = dynamic_cast<SceneObject*>(entryObjects.get(i));
@@ -260,33 +256,34 @@ void ZoneImplementation::updateActiveAreas(SceneObject* object) {
 }
 
 void ZoneImplementation::addSceneObject(SceneObject* object) {
-	objectMap.put(object->getObjectID(), object);
+	objectMap->put(object->getObjectID(), object);
 
-	Locker locker(&mapLocations);
-	mapLocations.addObject(object);
+	Locker locker(mapLocations);
+	mapLocations->addObject(object);
 }
 
 void ZoneImplementation::dropSceneObject(SceneObject* object)  {
-	objectMap.remove(object->getObjectID());
+	objectMap->remove(object->getObjectID());
 
-	Locker locker(&mapLocations);
-	mapLocations.dropObject(object);
+	Locker locker(mapLocations);
+	mapLocations->dropObject(object);
 }
 
 void ZoneImplementation::sendMapLocationsTo(const String& planetName, SceneObject* player) {
 	GetMapLocationsResponseMessage* gmlr = new GetMapLocationsResponseMessage(planetName);
 
-	mapLocations.rlock();
+	mapLocations->rlock();
 
 	SortedVector<String> cities;
+	VectorMap<uint8, SortedVector<MapLocationEntry> > locations = mapLocations->getLocations();
 
 	try {
-		for (int i = 0; i < mapLocations.size(); ++i) {
-			SortedVector<MapLocationEntry>* sortedVector = &mapLocations.elementAt(i).getValue();
+		for (int i = 0; i < locations.size(); ++i) {
+			SortedVector<MapLocationEntry> sortedVector = locations.elementAt(i).getValue();
 
-			for (int j = 0; j < sortedVector->size(); ++j) {
-				MapLocationEntry* entry = &sortedVector->elementAt(j);
-				SceneObject* object = entry->getObject();
+			for (int j = 0; j < sortedVector.size(); ++j) {
+				MapLocationEntry entry = sortedVector.elementAt(j);
+				SceneObject* object = entry.getObject();
 				UnicodeString name;
 				StringId* objectName = object->getObjectName();
 
@@ -307,7 +304,7 @@ void ZoneImplementation::sendMapLocationsTo(const String& planetName, SceneObjec
 					name = fullPath;
 				}
 
-				if (entry->getType1() == 17) {
+				if (entry.getType1() == 17) {
 					if (!cities.contains(name.toString()))
 						cities.put(name.toString());
 					else
@@ -317,7 +314,7 @@ void ZoneImplementation::sendMapLocationsTo(const String& planetName, SceneObjec
 				Vector3 pos = object->getWorldPosition();
 
 				gmlr->addMapLocation(object->getObjectID(), name, pos.getX(),
-						pos.getY(), entry->getType1(), entry->getType2(), entry->getType3());
+						pos.getY(), entry.getType1(), entry.getType2(), entry.getType3());
 			}
 
 		}
@@ -327,7 +324,7 @@ void ZoneImplementation::sendMapLocationsTo(const String& planetName, SceneObjec
 		e.printStackTrace();
 	}
 
-	mapLocations.runlock();
+	mapLocations->runlock();
 
 	//these will be used for other locations on the planet map
 	gmlr->addBlankList();
@@ -342,20 +339,22 @@ void ZoneImplementation::sendMapLocationsTo(const String& planetName, SceneObjec
 CloningBuildingObject* ZoneImplementation::getNearestCloningBuilding(CreatureObject* creature) {
 	ManagedReference<CloningBuildingObject*> cloning = NULL;
 
-	mapLocations.rlock();
+	mapLocations->rlock();
 
 	try {
 		//cloning type 5
 
-		int index = mapLocations.find(5);
+		VectorMap<uint8, SortedVector<MapLocationEntry> > locations = mapLocations->getLocations();
+
+		int index = locations.find(5);
 
 		float distance = 16000.f;
 
 		if (index != -1) {
-			SortedVector<MapLocationEntry>* sortedVector = &mapLocations.elementAt(index).getValue();
+			SortedVector<MapLocationEntry> sortedVector = locations.elementAt(index).getValue();
 
-			for (int i = 0; i < sortedVector->size(); ++i) {
-				SceneObject* object = sortedVector->get(i).getObject();
+			for (int i = 0; i < sortedVector.size(); ++i) {
+				SceneObject* object = sortedVector.get(i).getObject();
 
 				if (object->isCloningBuildingObject()) {
 					float objDistance = object->getDistanceTo(creature);
@@ -369,12 +368,12 @@ CloningBuildingObject* ZoneImplementation::getNearestCloningBuilding(CreatureObj
 
 		}
 	} catch (...) {
-		mapLocations.runlock();
+		mapLocations->runlock();
 
 		throw;
 	}
 
-	mapLocations.runlock();
+	mapLocations->runlock();
 
 	return cloning.get();
 }
@@ -382,20 +381,22 @@ CloningBuildingObject* ZoneImplementation::getNearestCloningBuilding(CreatureObj
 SceneObject* ZoneImplementation::getNearestPlanetaryObject(SceneObject* object, uint32 mapObjectLocationType) {
 	ManagedReference<SceneObject*> planetaryObject = NULL;
 
-	mapLocations.rlock();
+	mapLocations->rlock();
 
 	try {
 		//cloning type 5
 
-		int index = mapLocations.find(mapObjectLocationType);
+		VectorMap<uint8, SortedVector<MapLocationEntry> > locations = mapLocations->getLocations();
+
+		int index = locations.find(mapObjectLocationType);
 
 		float distance = 16000.f;
 
 		if (index != -1) {
-			SortedVector<MapLocationEntry>* sortedVector = &mapLocations.elementAt(index).getValue();
+			SortedVector<MapLocationEntry> sortedVector = locations.elementAt(index).getValue();
 
-			for (int i = 0; i < sortedVector->size(); ++i) {
-				SceneObject* vectorObject = sortedVector->get(i).getObject();
+			for (int i = 0; i < sortedVector.size(); ++i) {
+				SceneObject* vectorObject = sortedVector.get(i).getObject();
 
 				float objDistance = vectorObject->getDistanceTo(object);
 
@@ -407,12 +408,12 @@ SceneObject* ZoneImplementation::getNearestPlanetaryObject(SceneObject* object, 
 
 		}
 	} catch (...) {
-		mapLocations.runlock();
+		mapLocations->runlock();
 
 		throw;
 	}
 
-	mapLocations.runlock();
+	mapLocations->runlock();
 
 	return planetaryObject.get();
 }
@@ -421,26 +422,28 @@ SortedVector<ManagedReference<SceneObject*> > ZoneImplementation::getPlanetaryOb
 	SortedVector<ManagedReference<SceneObject*> > retVector;
 	retVector.setNoDuplicateInsertPlan();
 
-	mapLocations.rlock();
+	mapLocations->rlock();
 
 	try {
-		int index = mapLocations.find(mapObjectLocationType);
+		VectorMap<uint8, SortedVector<MapLocationEntry> > locations = mapLocations->getLocations();
+
+		int index = locations.find(mapObjectLocationType);
 
 		if (index != -1) {
-			SortedVector<MapLocationEntry>* sortedVector = &mapLocations.elementAt(index).getValue();
+			SortedVector<MapLocationEntry> sortedVector = locations.elementAt(index).getValue();
 
-			for (int i = 0; i < sortedVector->size(); ++i) {
-				SceneObject* vectorObject = sortedVector->get(i).getObject();
+			for (int i = 0; i < sortedVector.size(); ++i) {
+				SceneObject* vectorObject = sortedVector.get(i).getObject();
 				retVector.put(vectorObject);
 			}
 		}
 	} catch (...) {
-		mapLocations.runlock();
+		mapLocations->runlock();
 
 		throw;
 	}
 
-	mapLocations.runlock();
+	mapLocations->runlock();
 
 	return retVector;
 }

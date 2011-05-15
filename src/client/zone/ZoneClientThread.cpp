@@ -10,8 +10,18 @@
 
 ZoneClientThread::ZoneClientThread(ZoneClient* zoneClient) : Thread() {
 	client = zoneClient;
+
+	setDetached();
+}
+
+ZoneClientThread::~ZoneClientThread() {
+	client = NULL;
 }
 
 void ZoneClientThread::run() {
-	client->recieveMessages();
+	client->getClient()->recieveMessages();
+}
+
+void ZoneClientThread::stop() {
+	client->getClient()->stop();
 }

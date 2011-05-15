@@ -49,10 +49,28 @@ which carries forward this exception.
 
 #include "server/zone/objects/creature/shuttle/ShuttleCreature.h"
 
-class ShuttleMap : public HashTable<String, ManagedReference<ShuttleCreature*> >, public HashTableIterator<String, ManagedReference<ShuttleCreature*> >  {
+class ShuttleMap : public Object  {
+	HashTable<String, ManagedReference<ShuttleCreature*> > shuttles;
+
 public:
-	ShuttleMap() : HashTable<String,  ManagedReference<ShuttleCreature*> >(2000), HashTableIterator<String,  ManagedReference<ShuttleCreature*> >(this)  {
-		setNullValue(NULL);
+	ShuttleMap() : shuttles(2000) {
+	}
+
+
+	ShuttleCreature* put(const String& name, ShuttleCreature* creature) {
+		return shuttles.put(name, creature);
+	}
+
+	ShuttleCreature* get(const String& name) {
+		return shuttles.get(name);
+	}
+
+	ShuttleCreature* remove(const String& name) {
+		return shuttles.remove(name);
+	}
+
+	HashTableIterator<String,  ManagedReference<ShuttleCreature*> > iterator() {
+		return shuttles.iterator();
 	}
 };
 

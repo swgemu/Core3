@@ -195,7 +195,7 @@ protected:
 
 	bool radioactiveOk;
 
-	Coordinate* richSampleLocation;
+	Reference<Coordinate* > richSampleLocation;
 
 	bool doGamble;
 

@@ -5,31 +5,37 @@
  *      Author: theanswer
  */
 
-#include "LoginSession.h"
-
 #include "LoginClient.h"
 #include "LoginClientThread.h"
 
 #include "../../server/login/packets/AccountVersionMessage.h"
 
+#include "LoginSession.h"
 
 LoginSession::LoginSession(int instance) : Logger("LoginSession" + String::valueOf(instance)) {
 	selectedCharacter = -1;
 	LoginSession::instance = instance;
 
+	loginThread = NULL;
+
 	accountID = 0;
 	sessionID = 0;
+	setLogging(false);
+}
+
+LoginSession::~LoginSession() {
+	if (loginThread != NULL)
+		loginThread->stop();
 }
 
 int accountSuffix = 0;
 
 void LoginSession::run() {
-	LoginClient* login = new LoginClient(44453);
+	Reference<LoginClient*> login = new LoginClient(44453, "LoginClient" + String::valueOf(instance));
 	login->setLoginSession(this);
 	login->initialize();
-	login->setLoggingName("LoginClient" + String::valueOf(instance));
 
-	LoginClientThread* loginThread = new LoginClientThread(login);
+	loginThread = new LoginClientThread(login);
 	loginThread->start();
 
 	if (!login->connect()) {
@@ -37,7 +43,7 @@ void LoginSession::run() {
 		return;
 	}
 
-	info("connected to login server", true);
+	info("connected to login server");
 
 #ifdef WITH_STM
 	TransactionalMemoryManager::commitPureTransaction();
@@ -46,7 +52,7 @@ void LoginSession::run() {
 	char userinput[32];
 	char passwordinput[32];
 
-	info("insert user", true);
+	info("insert user");
 	/*fgets(userinput, sizeof(userinput), stdin);
 
 	info("insert password", true);
@@ -63,7 +69,7 @@ void LoginSession::run() {
 	BaseMessage* acc = new AccountVersionMessage("Akimaki" + String::valueOf(accountSuffix++), "4823848", "20050408-18:00");
 	login->sendMessage(acc);
 
-	info("sent account version message", true);
+	info("sent account version message");
 
 	lock();
 
@@ -73,4 +79,6 @@ void LoginSession::run() {
 	sessionFinalized.timedWait(this, &timeout);
 
 	unlock();
+
+	login->disconnect();
 }

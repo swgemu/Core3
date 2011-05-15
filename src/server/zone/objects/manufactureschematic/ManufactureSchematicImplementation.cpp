@@ -187,7 +187,7 @@ void ManufactureSchematicImplementation::sendBaselinesTo(SceneObject* player) {
 
 }
 
-Reference<IngredientSlot*> ManufactureSchematicImplementation::getIngredientSlot(int index) {
+IngredientSlot* ManufactureSchematicImplementation::getIngredientSlot(int index) {
 	if(index < ingredientSlots.size())
 		return ingredientSlots.get(index);
 

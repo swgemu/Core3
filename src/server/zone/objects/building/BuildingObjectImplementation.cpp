@@ -263,19 +263,19 @@ void BuildingObjectImplementation::notifyDissapear(QuadTreeEntry* obj) {
 }
 
 void BuildingObjectImplementation::insert(QuadTreeEntry* entry) {
-	QuadTree::insert(entry);
+	spatialIndexer->insert(entry);
 }
 
 void BuildingObjectImplementation::remove(QuadTreeEntry* entry) {
-	QuadTree::remove(entry);
+	spatialIndexer->remove(entry);
 }
 
 void BuildingObjectImplementation::update(QuadTreeEntry* entry) {
-	QuadTree::update(entry);
+	spatialIndexer->update(entry);
 }
 
 void BuildingObjectImplementation::inRange(QuadTreeEntry* entry, float range) {
-	QuadTree::inRange(entry, range);
+	spatialIndexer->inRange(entry, range);
 }
 
 void BuildingObjectImplementation::addCell(CellObject* cell) {
@@ -375,7 +375,7 @@ void BuildingObjectImplementation::onEnter(PlayerCreature* player) {
 }
 
 uint32 BuildingObjectImplementation::getMaximumNumberOfPlayerItems() {
-	SharedStructureObjectTemplate* ssot = dynamic_cast<SharedStructureObjectTemplate*>(templateObject);
+	SharedStructureObjectTemplate* ssot = dynamic_cast<SharedStructureObjectTemplate*>(getObjectTemplate());
 
 	if (ssot == NULL)
 		return 0;

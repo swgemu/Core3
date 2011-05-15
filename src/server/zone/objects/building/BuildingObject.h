@@ -121,6 +121,8 @@ using namespace server::zone::templates;
 
 #include "server/zone/objects/cell/CellObject.h"
 
+#include "engine/stm/TransactionalReference.h"
+
 #include "server/zone/objects/structure/StructureObject.h"
 
 #include "engine/lua/LuaObject.h"
@@ -242,8 +244,10 @@ namespace zone {
 namespace objects {
 namespace building {
 
-class BuildingObjectImplementation : public StructureObjectImplementation, public QuadTree {
+class BuildingObjectImplementation : public StructureObjectImplementation {
 protected:
+	Reference<QuadTree* > spatialIndexer;
+
 	Vector<ManagedReference<CellObject* > > cells;
 
 	int totalCellNumber;

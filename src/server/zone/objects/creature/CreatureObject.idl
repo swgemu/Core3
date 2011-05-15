@@ -167,7 +167,6 @@ class CreatureObject extends TangibleObject {
 	@dereferenced
 	protected Time nextAction;
 	
-	@dereferenced
 	protected CooldownTimerMap cooldownTimerMap;
 	
 	@dereferenced

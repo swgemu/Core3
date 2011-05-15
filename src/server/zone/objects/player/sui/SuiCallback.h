@@ -21,9 +21,9 @@ namespace sui {
 
 	class SuiBox;
 
-	class SuiCallback {
+	class SuiCallback : public Object {
 	protected:
-		ZoneServer* server;
+		ManagedReference<ZoneServer*> server;
 
 	public:
 		SuiCallback(ZoneServer* serv) {

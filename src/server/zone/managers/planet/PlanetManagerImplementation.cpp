@@ -31,6 +31,19 @@
 void PlanetManagerImplementation::initialize() {
 	terrainManager = new TerrainManager(zone);
 
+	shuttleMap = new ShuttleMap();
+
+	noBuildAreaMap = new NoBuildAreaMap();
+
+	missionNpcs = new MissionTargetMap();
+
+	performanceLocations = new MissionTargetMap();
+
+	huntingTargets = new HuntingTargetMap();
+
+	reconLocs = new MissionTargetMap();
+	informants = new MissionTargetMap();
+
 	int zoneID = zone->getZoneID();
 
 	numberOfCities = 0;
@@ -46,7 +59,7 @@ void PlanetManagerImplementation::initialize() {
 	loadLuaConfig();
 	loadTravelFares();
 
-	loadRegions();
+	/*loadRegions();
 	loadBadgeAreas();
 	loadNoBuildAreas();
 	loadPerformanceLocations();
@@ -54,14 +67,14 @@ void PlanetManagerImplementation::initialize() {
 	loadReconLocations();
 	loadPlayerRegions();
 
-	loadStaticTangibleObjects();
+	loadStaticTangibleObjects();*/
 
 	structureManager = new StructureManager(zone, server);
-	structureManager->loadStructures();
+	//structureManager->loadStructures();
 
 	if (zone->getZoneID() < 10) { //No need for a weather manager in tutorial or corvette etc.
 		weatherManager = new WeatherManager(zone);
-		weatherManager->initialize();
+		//weatherManager->initialize();
 	}
 }
 
@@ -300,14 +313,14 @@ void PlanetManagerImplementation::loadNoBuildAreas() {
 
 		//Region* region = new Region(fullName, x, y, radius /* + 300 */);
 		//region->deploy();
-		noBuildAreaMap.add(region);
+		noBuildAreaMap->add(region);
 
 		//addNoBuildArea(x, y, radius + 300); // Adding 500 as a buffer for spawns since this patch doesn't need buildings
 	}
 }
 
 bool PlanetManagerImplementation::isNoBuildArea(float x, float y, StringId& fullAreaName) {
-	return noBuildAreaMap.isNoBuildArea(x, y, fullAreaName);
+	return noBuildAreaMap->isNoBuildArea(x, y, fullAreaName);
 }
 
 void PlanetManagerImplementation::loadRegions() {
@@ -464,7 +477,7 @@ void PlanetManagerImplementation::loadShuttles() {
 			shuttle->setPlanet(planetName);
 			shuttle->setCity(shuttleName);
 
-			shuttleMap.put(shuttleName, shuttle);
+			shuttleMap->put(shuttleName, shuttle);
 
 			shuttle->doTakeOff();
 
@@ -529,10 +542,10 @@ void PlanetManagerImplementation::sendPlanetTravelPointListResponse(PlayerCreatu
 
 	TravelListResponseMessage* msg = new TravelListResponseMessage(Planet::getPlanetName(zone->getZoneID()));
 
-	shuttleMap.resetIterator();
+	HashTableIterator<String,  ManagedReference<ShuttleCreature*> > iter = shuttleMap->iterator();
 
-	while (shuttleMap.hasNext()) {
-		ShuttleCreature* shuttle = shuttleMap.getNextValue();
+	while (iter.hasNext()) {
+		ShuttleCreature* shuttle = iter.getNextValue();
 
 		float x, y, z;
 		shuttle->getArrivalPoint(x, y, z);

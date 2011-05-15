@@ -13,11 +13,16 @@
 class ZoneClient;
 
 class ZoneClientThread : public Thread {
-	ZoneClient* client;
+	Reference<ZoneClient*> client;
+
 public:
 	ZoneClientThread(ZoneClient* zoneClient);
 
+	~ZoneClientThread();
+
 	void run();
+
+	void stop();
 };
 
 

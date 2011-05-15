@@ -70,7 +70,7 @@ namespace server {
   namespace managers {
    namespace sui {
 
-	  class SuiManager : public Logger {
+	  class SuiManager : public Logger, public Object {
 	  	ZoneProcessServer* server;
 
 	  public:

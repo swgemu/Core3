@@ -185,7 +185,7 @@ namespace managers {
 namespace crafting {
 
 class CraftingManagerImplementation : public ZoneManagerImplementation, public Lua {
-	SchematicMap* schematicMap;
+	Reference<SchematicMap* > schematicMap;
 
 public:
 	static const short RESOURCE = 0x00;

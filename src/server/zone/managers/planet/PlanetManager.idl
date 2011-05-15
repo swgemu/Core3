@@ -93,27 +93,19 @@ class PlanetManager extends ManagedService implements Logger {
 	protected transient ZoneProcessServer server;
 	protected transient TerrainManager terrainManager;
 	
-	@dereferenced
 	protected transient ShuttleMap shuttleMap;
 	
-	@dereferenced
 	protected transient NoBuildAreaMap noBuildAreaMap;
 	
-	@dereferenced
 	protected transient MissionTargetMap missionNpcs;
 	
-	@dereferenced
 	protected transient MissionTargetMap performanceLocations;
 	
-	@dereferenced
 	protected transient HuntingTargetMap huntingTargets;
 	
-	@dereferenced
 	protected transient MissionTargetMap reconLocs;
 	
-	@dereferenced
 	protected transient MissionTargetMap informants;
-
 	
 	public PlanetManager(Zone planet, ZoneProcessServer srv) {
 		zone = planet;

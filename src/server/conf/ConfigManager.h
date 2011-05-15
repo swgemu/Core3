@@ -50,7 +50,7 @@ which carries forward this exception.
 namespace server {
 	namespace conf {
 
-		class ConfigManager : public Singleton<ConfigManager>, public Lua {
+		class ConfigManager : public Singleton<ConfigManager>, public Lua, public Object {
 
 			bool makeLogin;
 			bool makeZone;

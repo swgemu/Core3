@@ -69,7 +69,7 @@ class CampSiteActiveArea extends ActiveArea {
 	protected boolean abandoned;
 
 	@dereferenced
-	protected Reference<CampDespawnEvent> despawnEvent;
+	protected CampDespawnEvent despawnEvent;
 	/*CampDespawnEvent* despawnEvent;
 	CampAbandonEvent* abandonEvent;*/
 

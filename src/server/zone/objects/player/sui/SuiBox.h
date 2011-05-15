@@ -185,7 +185,7 @@ class SuiBoxImplementation : public ManagedObjectImplementation, public Logger {
 protected:
 	ManagedWeakReference<PlayerCreature* > player;
 
-	SuiCallback* suiCallback;
+	Reference<SuiCallback* > suiCallback;
 
 	unsigned int boxID;
 

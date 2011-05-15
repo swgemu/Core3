@@ -108,11 +108,21 @@ using namespace server::zone::objects::scene;
 	67 = Ships (??)
  */
 
-class MapLocationTable : public VectorMap<uint8, SortedVector<MapLocationEntry> >, public ReadWriteLock {
+class MapLocationTable : public ReadWriteLock, public Object {
+	VectorMap<uint8, SortedVector<MapLocationEntry> > locations;
+
 public:
+	MapLocationTable() {
+		locations.setNoDuplicateInsertPlan();
+	}
+
 	void addObject(SceneObject* object);
 
 	void dropObject(SceneObject* object);
+
+	const VectorMap<uint8, SortedVector<MapLocationEntry> > getLocations() {
+		return locations;
+	}
 };
 
 #endif /* MAPLOCATIONTABLE_H_ */

@@ -516,13 +516,18 @@ bool ZoneImplementation::readObjectMember(ObjectInputStream* stream, const Strin
 	if (ManagedObjectImplementation::readObjectMember(stream, _name))
 		return true;
 
+	if (_name == "spatialIndexer") {
+		TypeInfo<Reference<QuadTree* > >::parseFromBinaryStream(&spatialIndexer, stream);
+		return true;
+	}
+
 	if (_name == "zoneID") {
 		TypeInfo<int >::parseFromBinaryStream(&zoneID, stream);
 		return true;
 	}
 
 	if (_name == "objectMap") {
-		TypeInfo<ObjectMap >::parseFromBinaryStream(&objectMap, stream);
+		TypeInfo<Reference<ObjectMap* > >::parseFromBinaryStream(&objectMap, stream);
 		return true;
 	}
 
@@ -571,6 +576,14 @@ int ZoneImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	String _name;
 	int _offset;
 	uint16 _totalSize;
+	_name = "spatialIndexer";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<Reference<QuadTree* > >::toBinaryStream(&spatialIndexer, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
 	_name = "zoneID";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
@@ -583,7 +596,7 @@ int ZoneImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
-	TypeInfo<ObjectMap >::toBinaryStream(&objectMap, stream);
+	TypeInfo<Reference<ObjectMap* > >::toBinaryStream(&objectMap, stream);
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
@@ -636,7 +649,7 @@ int ZoneImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	stream->writeShort(_offset, _totalSize);
 
 
-	return 8 + ManagedObjectImplementation::writeObjectMembers(stream);
+	return 9 + ManagedObjectImplementation::writeObjectMembers(stream);
 }
 
 QuadTree* ZoneImplementation::getRegionTree() {

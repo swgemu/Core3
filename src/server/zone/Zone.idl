@@ -72,12 +72,13 @@ import system.lang.System;
 import server.zone.objects.building.cloning.CloningBuildingObject;
 import server.zone.objects.creature.CreatureObject;
 
-class Zone extends ManagedObject implements QuadTree {
+class Zone extends ManagedObject {
+	private QuadTree spatialIndexer;
+	
 	private int zoneID;
 
 	private transient ZoneProcessServer processor;
 
-	@dereferenced
 	private ObjectMap objectMap;
 	
 	//private StructureManager structureManager; // move to planet manager when converted
@@ -98,7 +99,6 @@ class Zone extends ManagedObject implements QuadTree {
 	
 	private transient HeightMap heightMap;
 	
-	@dereferenced
 	private transient MapLocationTable mapLocations;
 	
 	private boolean managersStarted;

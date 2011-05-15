@@ -89,21 +89,22 @@ public:
 
 };
 
-class CooldownTimerMap : public HashTable<String, CooldownTimer> {
+class CooldownTimerMap : public Object {
+	HashTable<String, CooldownTimer> timers;
+
 public:
-	CooldownTimerMap() : HashTable<String, CooldownTimer>() {
-		setNullValue(NULL);
+	CooldownTimerMap() {
 	}
 
 	~CooldownTimerMap() {
-		HashTableIterator<String, CooldownTimer> iterator(((HashTable<String, CooldownTimer>*) this));
+		HashTableIterator<String, CooldownTimer> iterator = timers.iterator();
 
 		while (iterator.hasNext())
-			delete iterator.getNextValue();
+			delete iterator.getNextValue().get();
 	}
 
 	bool isPast(const String& cooldownName) {
-		Time* cooldown = HashTable<String, CooldownTimer>::get(cooldownName);
+		Time* cooldown = timers.get(cooldownName);
 
 		if (cooldown == NULL)
 			return true;
@@ -118,11 +119,11 @@ public:
 	}
 
 	Time* updateToCurrentTime(const String& cooldownName) {
-		Time* cooldown = HashTable<String, CooldownTimer>::get(cooldownName);
+		Time* cooldown = timers.get(cooldownName);
 
 		if (cooldown == NULL) {
 			cooldown = new Time();
-			HashTable<String, CooldownTimer>::put(cooldownName, cooldown);
+			timers.put(cooldownName, cooldown);
 		} else {
 			cooldown->updateToCurrentTime();
 		}
@@ -131,19 +132,19 @@ public:
 	}
 
 	void addMiliTime(const String& cooldownName, uint64 mili) {
-		Time* cooldown = HashTable<String, CooldownTimer>::get(cooldownName);
+		Time* cooldown = timers.get(cooldownName);
 
 		if (cooldown == NULL) {
 			cooldown = new Time();
 			cooldown->addMiliTime(mili);
-			HashTable<String, CooldownTimer>::put(cooldownName, cooldown);
+			timers.put(cooldownName, cooldown);
 		} else {
 			cooldown->addMiliTime(mili);
 		}
 	}
 
 	Time* getTime(const String& cooldownName) {
-		Time* cooldown = HashTable<String, CooldownTimer>::get(cooldownName);
+		Time* cooldown = timers.get(cooldownName);
 
 		if (cooldown == NULL)
 			return NULL;

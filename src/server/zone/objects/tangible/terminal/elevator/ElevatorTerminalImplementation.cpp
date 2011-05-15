@@ -16,7 +16,7 @@ void ElevatorTerminalImplementation::fillObjectMenuResponse(ObjectMenuResponse* 
 	if (player->getParent() != parent) //Must be in same cell to use
 		return;
 
-	ElevatorTerminalTemplate* temp = dynamic_cast<ElevatorTerminalTemplate*>(templateObject);
+	ElevatorTerminalTemplate* temp = dynamic_cast<ElevatorTerminalTemplate*>(getObjectTemplate());
 
 	if (temp == NULL)
 		return;
@@ -71,7 +71,7 @@ int ElevatorTerminalImplementation::handleObjectMenuSelect(PlayerCreature* playe
 void ElevatorTerminalImplementation::notifyInsert(QuadTreeEntry* obj) {
 	TerminalImplementation::notifyInsert(obj);
 
-	ElevatorTerminalTemplate* temp = dynamic_cast<ElevatorTerminalTemplate*>(templateObject);
+	ElevatorTerminalTemplate* temp = dynamic_cast<ElevatorTerminalTemplate*>(getObjectTemplate());
 
 	if (temp == NULL)
 		return;
@@ -91,13 +91,13 @@ void ElevatorTerminalImplementation::notifyInsert(QuadTreeEntry* obj) {
 
 	float z = eterm->getPositionZ();
 
-	if (z > positionZ && temp->isMovingUp()) {
+	if (z > getPositionZ() && temp->isMovingUp()) {
 		//Make sure that this is the closest elevator terminal.
 		if (elevatorUp == NULL || elevatorUp->getPositionZ() > z) {
 			elevatorUp = eterm;
 			eterm->setElevatorDown(_this);
 		}
-	} else if (z < positionZ && temp->isMovingDown()) {
+	} else if (z < getPositionZ() && temp->isMovingDown()) {
 		if (elevatorDown == NULL || elevatorDown->getPositionZ() < z) {
 			elevatorDown = eterm;
 			eterm->setElevatorUp(_this);

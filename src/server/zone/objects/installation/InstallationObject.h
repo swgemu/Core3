@@ -294,7 +294,7 @@ namespace installation {
 
 class InstallationObjectImplementation : public StructureObjectImplementation {
 protected:
-	Reference<SyncrhonizedUiListenInstallationTask*> syncUiTask;
+	Reference<SyncrhonizedUiListenInstallationTask* > syncUiTask;
 
 	bool operating;
 

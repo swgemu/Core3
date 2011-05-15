@@ -67,8 +67,9 @@ SchematicMap::SchematicMap() {
 }
 
 SchematicMap::~SchematicMap() {
-	while (groupMap.size() > 0)
-		delete groupMap.remove(0).getValue();
+	//TODO: fix this reclamation
+	/*while (groupMap.size() > 0)
+		delete groupMap.remove(0).getValue();*/
 }
 
 void SchematicMap::initialize(ZoneServer* server) {

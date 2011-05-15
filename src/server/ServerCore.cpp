@@ -80,6 +80,19 @@ ServerCore::ServerCore() : Core("log/core3.log"), Logger("Core") {
 	features = NULL;
 }
 
+class ZoneStatisticsTask : public Task {
+	ManagedReference<ZoneServer*> zoneServer;
+
+public:
+	ZoneStatisticsTask(ZoneServer* server) {
+		zoneServer = server;
+	}
+
+	void run() {
+		zoneServer->printInfo(true);
+	}
+};
+
 void ServerCore::initialize() {
 	info("starting up server..");
 
@@ -161,6 +174,9 @@ void ServerCore::initialize() {
 	#ifndef WITH_STM
 		ObjectManager::instance()->scheduleUpdateToDatabase();
 	#endif
+
+		Task* statiscticsTask = new ZoneStatisticsTask(zoneServerRef);
+		statiscticsTask->schedulePeriodic(1000, 1000);
 
 		info("initialized", true);
 	} catch (ServiceException& e) {
@@ -252,7 +268,7 @@ void ServerCore::handleCommands() {
 			command = line;
 			command = command.replaceFirst("\n", "");
 
-			ZoneServer* zoneServer = zoneServerRef.get();
+			ZoneServer* zoneServer = zoneServerRef.getForUpdate();
 
 			if (command == "exit") {
 				if (zoneServer != NULL) {
@@ -315,7 +331,12 @@ void ServerCore::handleCommands() {
 			System::out << "[ServerCore] unreported Exception caught\n";
 		}
 
-		//Core::commitTask();
+	#ifdef WITH_STM
+		try {
+			TransactionalMemoryManager::commitPureTransaction();
+		} catch (const TransactionAbortedException& e) {
+		}
+	#endif
 	}
 }
 

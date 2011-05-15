@@ -135,11 +135,11 @@ namespace lair {
 
 class LairObjectImplementation : public TangibleObjectImplementation {
 protected:
-	LairObjectTemplate* lairTemplate;
+	Reference<LairObjectTemplate* > lairTemplate;
 
 	Vector<ManagedReference<CreatureObject* > > spawnedCreatures;
 
-	Reference<HealLairEvent*> healLairEvent;
+	Reference<HealLairEvent* > healLairEvent;
 
 	DamageMap damageMap;
 

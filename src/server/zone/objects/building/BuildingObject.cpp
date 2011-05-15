@@ -597,6 +597,11 @@ bool BuildingObjectImplementation::readObjectMember(ObjectInputStream* stream, c
 	if (StructureObjectImplementation::readObjectMember(stream, _name))
 		return true;
 
+	if (_name == "spatialIndexer") {
+		TypeInfo<Reference<QuadTree* > >::parseFromBinaryStream(&spatialIndexer, stream);
+		return true;
+	}
+
 	if (_name == "cells") {
 		TypeInfo<Vector<ManagedReference<CellObject* > > >::parseFromBinaryStream(&cells, stream);
 		return true;
@@ -642,6 +647,14 @@ int BuildingObjectImplementation::writeObjectMembers(ObjectOutputStream* stream)
 	String _name;
 	int _offset;
 	uint16 _totalSize;
+	_name = "spatialIndexer";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<Reference<QuadTree* > >::toBinaryStream(&spatialIndexer, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
 	_name = "cells";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
@@ -691,15 +704,17 @@ int BuildingObjectImplementation::writeObjectMembers(ObjectOutputStream* stream)
 	stream->writeShort(_offset, _totalSize);
 
 
-	return 6 + StructureObjectImplementation::writeObjectMembers(stream);
+	return 7 + StructureObjectImplementation::writeObjectMembers(stream);
 }
 
 BuildingObjectImplementation::BuildingObjectImplementation() {
 	_initializeImplementation();
 	// server/zone/objects/building/BuildingObject.idl():  		Logger.setLoggingName("BuildingObject");
 	Logger::setLoggingName("BuildingObject");
-	// server/zone/objects/building/BuildingObject.idl():  		QuadTree.setSize(-1024, -1024, 1024, 1024);
-	QuadTree::setSize(-1024, -1024, 1024, 1024);
+	// server/zone/objects/building/BuildingObject.idl():  		spatialIndexer = new QuadTree();
+	spatialIndexer = new QuadTree();
+	// server/zone/objects/building/BuildingObject.idl():  		spatialIndexer.setSize(-1024, -1024, 1024, 1024);
+	spatialIndexer->setSize(-1024, -1024, 1024, 1024);
 	// server/zone/objects/building/BuildingObject.idl():  		super.staticObject = false;
 	StructureObjectImplementation::staticObject = false;
 	// server/zone/objects/building/BuildingObject.idl():  		super.containerVolumeLimit = 0xFFFFFFFF;

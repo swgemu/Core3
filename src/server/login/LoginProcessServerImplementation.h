@@ -16,7 +16,7 @@ namespace server {
 		class LoginPacketHandler;
 		class LoginServer;
 
-		class LoginProcessServerImplementation {
+		class LoginProcessServerImplementation : public Object {
 			ManagedWeakReference<LoginServer*> server;
 
 			LoginPacketHandler* loginPacketHandler;

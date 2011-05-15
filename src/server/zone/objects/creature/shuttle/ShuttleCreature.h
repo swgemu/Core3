@@ -224,9 +224,9 @@ protected:
 
 	float arrivalPositionY;
 
-	Reference<ShuttleLandingEvent*> shuttleLandingEvent;
+	Reference<ShuttleLandingEvent* > shuttleLandingEvent;
 
-	Reference<ShuttleTakeOffEvent*> shuttleTakeOffEvent;
+	Reference<ShuttleTakeOffEvent* > shuttleTakeOffEvent;
 
 public:
 	ShuttleCreatureImplementation();

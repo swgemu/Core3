@@ -34,15 +34,6 @@ void ObjectControllerImplementation::loadCommands() {
 }
 
 void ObjectControllerImplementation::finalize() {
-	info("deleting object controller", true);
-
-	delete configManager;
-	configManager = NULL;
-
-	CommandConfigManager::slashCommands = NULL;
-
-	delete queueCommands;
-	queueCommands = NULL;
 }
 
 bool ObjectControllerImplementation::transferObject(SceneObject* objectToTransfer, SceneObject* destinationObject, int containmentType, bool notifyClient) {

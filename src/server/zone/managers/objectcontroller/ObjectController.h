@@ -161,9 +161,9 @@ namespace objectcontroller {
 class ObjectControllerImplementation : public ManagedServiceImplementation, public Lua {
 	ManagedReference<ZoneProcessServer* > server;
 
-	CommandConfigManager* configManager;
+	Reference<CommandConfigManager* > configManager;
 
-	CommandList* queueCommands;
+	Reference<CommandList* > queueCommands;
 
 public:
 	ObjectControllerImplementation(ZoneProcessServer* srv);

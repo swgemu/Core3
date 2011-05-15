@@ -56,10 +56,12 @@ namespace zone {
 namespace managers {
 namespace player {
 
-class PlayerMap : private HashTable<String, ManagedReference<PlayerCreature*> >, private HashTableIterator<String, ManagedReference<PlayerCreature*> >, public Mutex {
+class PlayerMap : public Mutex, public Object {
+	HashTable<String, ManagedReference<PlayerCreature*> > players;
+	HashTableIterator<String, ManagedReference<PlayerCreature*> > iter;
+
 public:
-	PlayerMap(int initsize) : HashTable<String, ManagedReference<PlayerCreature*> >(initsize), HashTableIterator<String, ManagedReference<PlayerCreature*> >(this), Mutex("PlayerMap") {
-		setNullValue(NULL);
+	PlayerMap(int initsize) : Mutex("PlayerMap"), players(initsize), iter(&players) {
 	}
 
 	PlayerCreature* put(const String& name, PlayerCreature* player, bool doLock = true) {
@@ -69,7 +71,7 @@ public:
 
 		try {
 
-			play = HashTable<String, ManagedReference<PlayerCreature*> >::put(name.toLowerCase(), player);
+			play = players.put(name.toLowerCase(), player);
 
 		} catch (Exception& e) {
 			System::out << e.getMessage();
@@ -94,7 +96,7 @@ public:
 
 		try {
 
-			player = HashTable<String, ManagedReference<PlayerCreature*> >::get(name.toLowerCase());
+			player = players.get(name.toLowerCase());
 
 		} catch (Exception& e) {
 			System::out << e.getMessage();
@@ -119,7 +121,7 @@ public:
 
 		try {
 
-			player = HashTable<String, ManagedReference<PlayerCreature*> >::remove(name.toLowerCase());
+			player = players.remove(name.toLowerCase());
 
 		} catch (Exception& e) {
 			System::out << e.getMessage();
@@ -142,7 +144,7 @@ public:
 
 		lock(doLock);
 
-		player = HashTableIterator<String, ManagedReference<PlayerCreature*> >::getNextValue();
+		player = iter.getNextValue();
 
 		unlock(doLock);
 
@@ -158,7 +160,7 @@ public:
 
 		lock(doLock);
 
-		res = HashTableIterator<String, ManagedReference<PlayerCreature*> >::hasNext();
+		res = iter.hasNext();
 
 		unlock(doLock);
 
@@ -168,7 +170,7 @@ public:
 	void resetIterator(bool doLock = true) {
 		lock(doLock);
 
-		HashTableIterator<String, ManagedReference<PlayerCreature*> >::resetIterator();
+		iter.resetIterator();
 
 		unlock(doLock);
 	}
@@ -176,7 +178,7 @@ public:
 	int size(bool doLock = true) {
 		lock(doLock);
 
-		int res = HashTable<String, ManagedReference<PlayerCreature*> >::size();
+		int res = players.size();
 
 		unlock(doLock);
 

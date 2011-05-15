@@ -25,7 +25,7 @@ namespace server {
 		namespace managers {
 			namespace holocron {
 
-				class HolocronManager : public Singleton<HolocronManager>, public Logger {
+				class HolocronManager : public Singleton<HolocronManager>, public Logger, public Object {
 					ZoneProcessServer* processor;
 					SortedVector<BugCategory> categories;
 

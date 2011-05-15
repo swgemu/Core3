@@ -69,7 +69,10 @@ public:
 
 	void run() {
 		try {
-			packetHandler->handleMessage(message);
+			Reference<BaseClient*> client = (BaseClient*) message->getClient();
+
+			if (client->isAvailable())
+				packetHandler->handleMessage(message);
 		} catch (PacketIndexOutOfBoundsException& e) {
 			System::out << e.getMessage();
 

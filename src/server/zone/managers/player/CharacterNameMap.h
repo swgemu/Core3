@@ -11,18 +11,31 @@
 #include "engine/engine.h"
 #include "server/zone/objects/player/PlayerCreature.h"
 
-class CharacterNameMap : public HashTable<String, uint64> {
-public:
-	CharacterNameMap() : HashTable<String, uint64>(3000) {
+class CharacterNameMap : public Object {
+	HashTable<String, uint64> names;
 
+public:
+	CharacterNameMap() : names(3000) {
 	}
 
 	void put(PlayerCreature* player) {
-		HashTable<String, uint64>::put(player->getFirstName().toLowerCase(), player->getObjectID());
+		names.put(player->getFirstName().toLowerCase(), player->getObjectID());
 	}
 
 	void put(const String& name, uint64 oid) {
-		HashTable<String, uint64>::put(name, oid);
+		names.put(name, oid);
+	}
+
+	uint64& get(const String& name) {
+		return names.get(name);
+	}
+
+	bool containsKey(const String& name) {
+		return names.containsKey(name);
+	}
+
+	int size() {
+		return names.size();
 	}
 };
 

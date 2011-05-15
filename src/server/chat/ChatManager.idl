@@ -53,6 +53,7 @@ import engine.service.proto.BaseMessage;
 import server.zone.managers.player.PlayerMap;
 import server.zone.managers.player.PlayerManager;
 import system.util.VectorMap;
+import system.util.HashTable;
 import server.zone.objects.creature.CreatureObject;
 import server.zone.packets.chat.ChatRoomList;
 import server.zone.packets.chat.ChatInstantMessageToCharacter;
@@ -85,6 +86,7 @@ class ChatManager extends ManagedService implements Logger {
 
 	ChatRoom groupRoom;
 	ChatRoom guildRoom;
+	
 	transient ChatRoomMap roomMap;
 
 	unsigned int roomID;

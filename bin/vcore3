@@ -1,1 +1,2 @@
-valgrind --tool=memcheck --leak-check=no --num-callers=20 --show-reachable=yes --suppressions=core3-default.supp --time-stamp=yes --malloc-fill=0 --free-fill=0 --log-file=valgrind.log ./core3
+#valgrind --tool=memcheck --leak-check=no --num-callers=20 --show-reachable=yes --suppressions=core3-default.supp --time-stamp=yes --malloc-fill=0 --free-fill=0 --log-file=log/core3.log ./core3
+valgrind --tool=memcheck --leak-check=no --num-callers=20 --suppressions=core3-default.supp --time-stamp=yes --malloc-fill=0 --free-fill=0 --log-file=log/core3.log ./core3

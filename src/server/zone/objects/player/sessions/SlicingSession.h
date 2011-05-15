@@ -122,7 +122,7 @@ protected:
 
 	ManagedReference<SuiListBox* > slicingSuiBox;
 
-	Reference<RelockLootContainerEvent*> relockEvent;
+	Reference<RelockLootContainerEvent* > relockEvent;
 
 	byte firstCable;
 

@@ -7,7 +7,7 @@
 class ZoneClient;
 class Zone;
 
-class SceneObject : public Coordinate, public Mutex, public Logger, public Object {
+class SceneObject : public Coordinate, public Mutex, public Logger {
 protected:
 	uint64 objectID;
 	uint32 objectCRC;

@@ -338,9 +338,9 @@ void PlayerCreatureImplementation::doRecovery() {
 
 	PlayerObject* playerObject = getPlayerObject();
 
-	if (playerObject != NULL && cooldownTimerMap.isPast("digestEvent")) {
+	if (playerObject != NULL && cooldownTimerMap->isPast("digestEvent")) {
 		playerObject->doDigest();
-		cooldownTimerMap.updateToCurrentAndAddMili("digestEvent", 18000);
+		cooldownTimerMap->updateToCurrentAndAddMili("digestEvent", 18000);
 	}
 
 	if (damageOverTimeList.hasDot() && damageOverTimeList.isNextTickPast()) {
@@ -775,11 +775,11 @@ void PlayerCreatureImplementation::resetFirstIncapacitationTime() {
 	if (!isFirstIncapacitation())
 		resetIncapacitationCounter();
 
-	cooldownTimerMap.updateToCurrentAndAddMili("firstIncapacitationTime", 900000);
+	cooldownTimerMap->updateToCurrentAndAddMili("firstIncapacitationTime", 900000);
 }
 
 bool PlayerCreatureImplementation::isFirstIncapacitationExpired() {
-	return cooldownTimerMap.isPast("firstIncapacitationTime");
+	return cooldownTimerMap->isPast("firstIncapacitationTime");
 }
 
 int PlayerCreatureImplementation::notifyObjectDestructionObservers(TangibleObject* attacker, int condition) {

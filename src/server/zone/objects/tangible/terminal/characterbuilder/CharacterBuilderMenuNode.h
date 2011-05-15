@@ -9,10 +9,10 @@
 #define CHARACTERBUILDERMENUNODE_H_
 
 #include "engine/engine.h"
-#include "lua.hpp"
+
 #include "server/zone/managers/templates/TemplateManager.h"
 
-class CharacterBuilderMenuNode {
+class CharacterBuilderMenuNode : public Object {
 	CharacterBuilderMenuNode* parentNode;
 
 	String displayName;

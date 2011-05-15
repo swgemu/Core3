@@ -250,12 +250,14 @@ using namespace server::zone;
 namespace server {
 namespace zone {
 
-class ZoneImplementation : public ManagedObjectImplementation, public QuadTree {
+class ZoneImplementation : public ManagedObjectImplementation {
+	Reference<QuadTree* > spatialIndexer;
+
 	int zoneID;
 
 	ManagedReference<ZoneProcessServer* > processor;
 
-	ObjectMap objectMap;
+	Reference<ObjectMap* > objectMap;
 
 	ManagedReference<PlanetManager* > planetManager;
 
@@ -265,13 +267,13 @@ class ZoneImplementation : public ManagedObjectImplementation, public QuadTree {
 
 	ManagedWeakReference<ZoneServer* > server;
 
-	QuadTree* regionTree;
+	Reference<QuadTree* > regionTree;
 
 	Time galacticTime;
 
-	HeightMap* heightMap;
+	Reference<HeightMap* > heightMap;
 
-	MapLocationTable mapLocations;
+	Reference<MapLocationTable* > mapLocations;
 
 	bool managersStarted;
 

@@ -132,7 +132,7 @@ public:
 
 	DraftSchematic* getDraftSchematic();
 
-	Reference<IngredientSlot*> getIngredientSlot(int index);
+	IngredientSlot* getIngredientSlot(int index);
 
 	int getSlotCount();
 
@@ -275,7 +275,7 @@ public:
 
 	DraftSchematic* getDraftSchematic();
 
-	Reference<IngredientSlot*> getIngredientSlot(int index);
+	IngredientSlot* getIngredientSlot(int index);
 
 	int getSlotCount();
 

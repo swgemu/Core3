@@ -23,9 +23,9 @@ void WaypointObjectImplementation::loadTemplateData(SharedObjectTemplate* templa
 
 void WaypointObjectImplementation::insertToMessage(BaseMessage* msg) {
 	msg->writeInt(cellID); // cellID
-	msg->writeFloat(positionX);
-	msg->writeFloat(positionZ); //Z
-	msg->writeFloat(positionY);
+	msg->writeFloat(getPositionX());
+	msg->writeFloat(getPositionZ()); //Z
+	msg->writeFloat(getPositionY());
 	msg->writeLong(unknown); //?
 	msg->writeInt(planetCRC);
 

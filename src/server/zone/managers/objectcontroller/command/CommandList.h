@@ -56,10 +56,11 @@ namespace objectcontroller {
 namespace command {
 
 
-class CommandList : public HashTable<uint32, Reference<QueueCommand*> > , public HashTableIterator<uint32, Reference<QueueCommand*> >, public Logger {
+class CommandList : public Logger, public Object {
+	HashTable<uint32, Reference<QueueCommand*> > commands;
+
 public:
-	CommandList() : HashTable<uint32, Reference<QueueCommand*> >(700), HashTableIterator<uint32, Reference<QueueCommand*> >(this) {
-		setNullValue(NULL);
+	CommandList() : commands(700) {
 		setLoggingName("CommandList");
 
 		setGlobalLogging(true);
@@ -73,7 +74,7 @@ public:
 		infoMsg << "adding queueCommand 0x" << hex << crc << " " << value->getQueueCommandName();
 		info(infoMsg);
 
-		HashTable<uint32, Reference<QueueCommand*> >::put(crc, value);
+		commands.put(crc, value);
 	}
 
 	void put(const String& name, QueueCommand* value) {
@@ -83,18 +84,26 @@ public:
 		infoMsg << "adding queueCommand 0x" << hex << crc << " " << name;
 		info(infoMsg);
 
-		HashTable<uint32, Reference<QueueCommand*> >::put(crc, value);
+		commands.put(crc, value);
 	}
 
 	QueueCommand* getSlashCommand(const String& aname) {
 		uint32 crc = aname.hashCode();
-		return HashTable<uint32, Reference<QueueCommand*> >::get(crc);
+
+		return commands.get(crc);
 	}
 
 	QueueCommand* getSlashCommand(uint32 crc) {
-		return HashTable<uint32, Reference<QueueCommand*> >::get(crc);
+		return commands.get(crc);
 	}
 
+	HashTableIterator<uint32, Reference<QueueCommand*> > iterator() {
+		return commands.iterator();
+	}
+
+	int size() {
+		return commands.size();
+	}
 };
 
 

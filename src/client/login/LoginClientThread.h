@@ -13,15 +13,25 @@
 #include "LoginClient.h"
 
 class LoginClientThread : public Thread {
-	LoginClient* client;
+	Reference<BaseClient*> client;
 
 public:
 	LoginClientThread(LoginClient* client) {
-		LoginClientThread::client = client;
+		LoginClientThread::client = client->getClient();
+
+		setDetached();
+	}
+
+	~LoginClientThread() {
+		client = NULL;
 	}
 
 	void run() {
 		client->recieveMessages();
+	}
+
+	void stop() {
+		client->stop();
 	}
 };
 

@@ -125,7 +125,7 @@ protected:
 	ManagedWeakReference<SceneObject* > vendor;
 
 private:
-	VendorSelectionNode* currentNode;
+	Reference<VendorSelectionNode* > currentNode;
 
 protected:
 	ManagedReference<SuiListBox* > suiSelectVendor;

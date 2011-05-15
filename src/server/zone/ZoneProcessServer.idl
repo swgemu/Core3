@@ -63,8 +63,6 @@ class ZoneProcessServer extends ManagedService {
 	@weak
 	transient protected ZoneServer zoneServer;
 
-	transient protected VendorManager vendorManager;
-
 	@local
 	transient protected ZonePacketHandler zonePacketHandler;
 
@@ -76,6 +74,8 @@ class ZoneProcessServer extends ManagedService {
 	transient protected SuiManager suiManager;
 	
 	transient protected ProfessionManager professionManager;
+
+	transient protected VendorManager vendorManager;
 
 	@weak
 	transient protected ObjectController objectController;

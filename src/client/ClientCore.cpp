@@ -58,31 +58,30 @@ void ClientCore::initialize() {
 
 void ClientCore::run() {
 	for (int i = 0; i < instances; ++i) {
-		try {
-			LoginSession loginSession(i);
-			loginSession.run();
+		zones.add(NULL);
+	}
 
-			uint32 selectedCharacter = loginSession.getSelectedCharacter();
-			uint64 objid = 0;
+	int val = 0;
 
-			if (selectedCharacter != -1) {
-				objid = loginSession.getCharacterObjectID(selectedCharacter);
+	while (true) {
+		int charactersToLogin = 10 + System::random(75);
+		int charactersToLogout = 10 + System::random(40);
 
-				info("trying to login " + String::valueOf(objid), true);
-			}
+		for (int i = 0; i < charactersToLogin; ++i) {
+			int index = System::random(instances - 1);
 
-			uint32 acc = loginSession.getAccountID();
-			uint32 session = loginSession.getSessionID();
+			loginCharacter(index);
 
-			Zone* zone = new Zone(i, objid, acc, session);
-			zone->start();
-
-			zones.add(zone);
-		} catch (Exception& e) {
-
+			Thread::sleep(5 + System::random(35));
 		}
 
-		Thread::sleep(1 + System::random(5));
+		for (int i = 0; i < charactersToLogout; ++i) {
+			int index = System::random(instances - 1);
+
+			logoutCharacter(index);
+
+			Thread::sleep(5 + System::random(35));
+		}
 	}
 
 	info("initialized", true);
@@ -91,6 +90,48 @@ void ClientCore::run() {
 
 	/*delete zone;
 	zone = NULL;*/
+}
+
+void ClientCore::loginCharacter(int index) {
+	try {
+		Zone* zone = zones.get(index);
+		if (zone != NULL)
+			return;
+
+		LoginSession loginSession(index);
+		loginSession.run();
+
+		uint32 selectedCharacter = loginSession.getSelectedCharacter();
+		uint64 objid = 0;
+
+		if (selectedCharacter != -1) {
+			objid = loginSession.getCharacterObjectID(selectedCharacter);
+
+			info("trying to login " + String::valueOf(objid));
+		}
+
+		uint32 acc = loginSession.getAccountID();
+		uint32 session = loginSession.getSessionID();
+
+		zone = new Zone(index, objid, acc, session);
+		zone->start();
+
+		zones.set(index, zone);
+	} catch (Exception& e) {
+
+	}
+}
+
+void ClientCore::logoutCharacter(int index) {
+	Zone* zone = zones.get(index);
+	if (zone == NULL || !zone->isStarted())
+		return;
+
+	zones.set(index, NULL);
+
+	zone->disconnect();
+
+	delete zone;
 }
 
 void ClientCore::handleCommands() {
