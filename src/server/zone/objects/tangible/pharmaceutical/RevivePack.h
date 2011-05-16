@@ -226,6 +226,8 @@ public:
 protected:
 	virtual ~RevivePackImplementation();
 
+	Object* clone();
+
 	void finalize();
 
 	void _initializeImplementation();
@@ -251,6 +253,7 @@ protected:
 	int writeObjectMembers(ObjectOutputStream* stream);
 
 	friend class RevivePack;
+	friend class TransactionalObjectHandle<RevivePackImplementation*>;
 };
 
 class RevivePackAdapter : public PharmaceuticalObjectAdapter {

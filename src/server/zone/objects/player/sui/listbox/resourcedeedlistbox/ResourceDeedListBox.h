@@ -139,6 +139,8 @@ public:
 protected:
 	virtual ~ResourceDeedListBoxImplementation();
 
+	Object* clone();
+
 	void _initializeImplementation();
 
 	void _setStub(DistributedObjectStub* stub);
@@ -162,6 +164,7 @@ protected:
 	int writeObjectMembers(ObjectOutputStream* stream);
 
 	friend class ResourceDeedListBox;
+	friend class TransactionalObjectHandle<ResourceDeedListBoxImplementation*>;
 };
 
 class ResourceDeedListBoxAdapter : public SuiListBoxAdapter {

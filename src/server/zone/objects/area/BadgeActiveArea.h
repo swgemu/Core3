@@ -104,6 +104,8 @@ public:
 protected:
 	virtual ~BadgeActiveAreaImplementation();
 
+	Object* clone();
+
 	void finalize();
 
 	void _initializeImplementation();
@@ -129,6 +131,7 @@ protected:
 	int writeObjectMembers(ObjectOutputStream* stream);
 
 	friend class BadgeActiveArea;
+	friend class TransactionalObjectHandle<BadgeActiveAreaImplementation*>;
 };
 
 class BadgeActiveAreaAdapter : public ActiveAreaAdapter {

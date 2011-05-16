@@ -286,6 +286,8 @@ public:
 protected:
 	virtual ~SurveyToolImplementation();
 
+	Object* clone();
+
 	void finalize();
 
 	void _initializeImplementation();
@@ -311,6 +313,7 @@ protected:
 	int writeObjectMembers(ObjectOutputStream* stream);
 
 	friend class SurveyTool;
+	friend class TransactionalObjectHandle<SurveyToolImplementation*>;
 };
 
 class SurveyToolAdapter : public ToolTangibleObjectAdapter {

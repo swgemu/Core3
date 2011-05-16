@@ -193,6 +193,8 @@ public:
 protected:
 	virtual ~DestroyMissionObjectiveImplementation();
 
+	Object* clone();
+
 	void _initializeImplementation();
 
 	void _setStub(DistributedObjectStub* stub);
@@ -216,6 +218,7 @@ protected:
 	int writeObjectMembers(ObjectOutputStream* stream);
 
 	friend class DestroyMissionObjective;
+	friend class TransactionalObjectHandle<DestroyMissionObjectiveImplementation*>;
 };
 
 class DestroyMissionObjectiveAdapter : public MissionObjectiveAdapter {

@@ -152,6 +152,8 @@ public:
 protected:
 	virtual ~TutorialBuildingObjectImplementation();
 
+	Object* clone();
+
 	void finalize();
 
 	void _initializeImplementation();
@@ -177,6 +179,7 @@ protected:
 	int writeObjectMembers(ObjectOutputStream* stream);
 
 	friend class TutorialBuildingObject;
+	friend class TransactionalObjectHandle<TutorialBuildingObjectImplementation*>;
 };
 
 class TutorialBuildingObjectAdapter : public BuildingObjectAdapter {

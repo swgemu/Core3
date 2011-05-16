@@ -183,6 +183,8 @@ public:
 protected:
 	virtual ~VehicleDeedImplementation();
 
+	Object* clone();
+
 	void finalize();
 
 	void _initializeImplementation();
@@ -208,6 +210,7 @@ protected:
 	int writeObjectMembers(ObjectOutputStream* stream);
 
 	friend class VehicleDeed;
+	friend class TransactionalObjectHandle<VehicleDeedImplementation*>;
 };
 
 class VehicleDeedAdapter : public DeedAdapter {

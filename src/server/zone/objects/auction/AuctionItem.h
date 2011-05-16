@@ -346,6 +346,8 @@ public:
 protected:
 	virtual ~AuctionItemImplementation();
 
+	Object* clone();
+
 	void finalize();
 
 	void _initializeImplementation();
@@ -371,6 +373,7 @@ protected:
 	int writeObjectMembers(ObjectOutputStream* stream);
 
 	friend class AuctionItem;
+	friend class TransactionalObjectHandle<AuctionItemImplementation*>;
 };
 
 class AuctionItemAdapter : public ManagedObjectAdapter {

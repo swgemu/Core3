@@ -157,6 +157,8 @@ public:
 protected:
 	virtual ~ReconMissionObjectiveImplementation();
 
+	Object* clone();
+
 	void _initializeImplementation();
 
 	void _setStub(DistributedObjectStub* stub);
@@ -180,6 +182,7 @@ protected:
 	int writeObjectMembers(ObjectOutputStream* stream);
 
 	friend class ReconMissionObjective;
+	friend class TransactionalObjectHandle<ReconMissionObjectiveImplementation*>;
 };
 
 class ReconMissionObjectiveAdapter : public MissionObjectiveAdapter {

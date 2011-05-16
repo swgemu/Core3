@@ -146,6 +146,8 @@ public:
 protected:
 	virtual ~FishingBaitObjectImplementation();
 
+	Object* clone();
+
 	void finalize();
 
 	void _initializeImplementation();
@@ -171,6 +173,7 @@ protected:
 	int writeObjectMembers(ObjectOutputStream* stream);
 
 	friend class FishingBaitObject;
+	friend class TransactionalObjectHandle<FishingBaitObjectImplementation*>;
 };
 
 class FishingBaitObjectAdapter : public TangibleObjectAdapter {

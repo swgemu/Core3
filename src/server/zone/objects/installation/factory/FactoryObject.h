@@ -216,6 +216,8 @@ public:
 protected:
 	virtual ~FactoryObjectImplementation();
 
+	Object* clone();
+
 	void finalize();
 
 	void _initializeImplementation();
@@ -241,6 +243,7 @@ protected:
 	int writeObjectMembers(ObjectOutputStream* stream);
 
 	friend class FactoryObject;
+	friend class TransactionalObjectHandle<FactoryObjectImplementation*>;
 };
 
 class FactoryObjectAdapter : public InstallationObjectAdapter {

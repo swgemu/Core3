@@ -104,6 +104,8 @@ public:
 protected:
 	virtual ~SignObjectImplementation();
 
+	Object* clone();
+
 	void finalize();
 
 	void _initializeImplementation();
@@ -129,6 +131,7 @@ protected:
 	int writeObjectMembers(ObjectOutputStream* stream);
 
 	friend class SignObject;
+	friend class TransactionalObjectHandle<SignObjectImplementation*>;
 };
 
 class SignObjectAdapter : public TangibleObjectAdapter {

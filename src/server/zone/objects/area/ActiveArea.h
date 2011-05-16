@@ -145,6 +145,8 @@ public:
 protected:
 	virtual ~ActiveAreaImplementation();
 
+	Object* clone();
+
 	void finalize();
 
 	void _initializeImplementation();
@@ -170,6 +172,7 @@ protected:
 	int writeObjectMembers(ObjectOutputStream* stream);
 
 	friend class ActiveArea;
+	friend class TransactionalObjectHandle<ActiveAreaImplementation*>;
 };
 
 class ActiveAreaAdapter : public SceneObjectAdapter {

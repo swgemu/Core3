@@ -254,6 +254,8 @@ public:
 protected:
 	virtual ~LoginServerImplementation();
 
+	Object* clone();
+
 	void finalize();
 
 	void _initializeImplementation();
@@ -279,6 +281,7 @@ protected:
 	int writeObjectMembers(ObjectOutputStream* stream);
 
 	friend class LoginServer;
+	friend class TransactionalObjectHandle<LoginServerImplementation*>;
 };
 
 class LoginServerAdapter : public ManagedServiceAdapter {

@@ -230,6 +230,8 @@ public:
 protected:
 	virtual ~CityManagerImplementation();
 
+	Object* clone();
+
 	void finalize();
 
 	void _initializeImplementation();
@@ -255,6 +257,7 @@ protected:
 	int writeObjectMembers(ObjectOutputStream* stream);
 
 	friend class CityManager;
+	friend class TransactionalObjectHandle<CityManagerImplementation*>;
 };
 
 class CityManagerAdapter : public ManagedServiceAdapter {

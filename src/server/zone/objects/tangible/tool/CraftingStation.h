@@ -213,6 +213,8 @@ public:
 protected:
 	virtual ~CraftingStationImplementation();
 
+	Object* clone();
+
 	void finalize();
 
 	void _initializeImplementation();
@@ -238,6 +240,7 @@ protected:
 	int writeObjectMembers(ObjectOutputStream* stream);
 
 	friend class CraftingStation;
+	friend class TransactionalObjectHandle<CraftingStationImplementation*>;
 };
 
 class CraftingStationAdapter : public ToolTangibleObjectAdapter {

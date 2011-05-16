@@ -171,6 +171,8 @@ public:
 protected:
 	virtual ~BountyMissionObjectiveImplementation();
 
+	Object* clone();
+
 	void _initializeImplementation();
 
 	void _setStub(DistributedObjectStub* stub);
@@ -194,6 +196,7 @@ protected:
 	int writeObjectMembers(ObjectOutputStream* stream);
 
 	friend class BountyMissionObjective;
+	friend class TransactionalObjectHandle<BountyMissionObjectiveImplementation*>;
 };
 
 class BountyMissionObjectiveAdapter : public MissionObjectiveAdapter {

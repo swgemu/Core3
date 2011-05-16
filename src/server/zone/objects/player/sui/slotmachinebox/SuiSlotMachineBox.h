@@ -129,6 +129,8 @@ public:
 protected:
 	virtual ~SuiSlotMachineBoxImplementation();
 
+	Object* clone();
+
 	void finalize();
 
 	void _initializeImplementation();
@@ -154,6 +156,7 @@ protected:
 	int writeObjectMembers(ObjectOutputStream* stream);
 
 	friend class SuiSlotMachineBox;
+	friend class TransactionalObjectHandle<SuiSlotMachineBoxImplementation*>;
 };
 
 class SuiSlotMachineBoxAdapter : public SuiListBoxAdapter {

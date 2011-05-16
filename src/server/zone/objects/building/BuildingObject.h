@@ -246,7 +246,7 @@ namespace building {
 
 class BuildingObjectImplementation : public StructureObjectImplementation {
 protected:
-	Reference<QuadTree* > spatialIndexer;
+	TransactionalReference<QuadTree*> spatialIndexer;
 
 	Vector<ManagedReference<CellObject* > > cells;
 
@@ -353,6 +353,8 @@ public:
 protected:
 	virtual ~BuildingObjectImplementation();
 
+	Object* clone();
+
 	void finalize();
 
 	void _initializeImplementation();
@@ -378,6 +380,7 @@ protected:
 	int writeObjectMembers(ObjectOutputStream* stream);
 
 	friend class BuildingObject;
+	friend class TransactionalObjectHandle<BuildingObjectImplementation*>;
 };
 
 class BuildingObjectAdapter : public StructureObjectAdapter {

@@ -193,6 +193,8 @@ public:
 protected:
 	virtual ~MissionTerminalImplementation();
 
+	Object* clone();
+
 	void finalize();
 
 	void _initializeImplementation();
@@ -218,6 +220,7 @@ protected:
 	int writeObjectMembers(ObjectOutputStream* stream);
 
 	friend class MissionTerminal;
+	friend class TransactionalObjectHandle<MissionTerminalImplementation*>;
 };
 
 class MissionTerminalAdapter : public TerminalAdapter {

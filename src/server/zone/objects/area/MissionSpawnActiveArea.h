@@ -115,6 +115,8 @@ public:
 protected:
 	virtual ~MissionSpawnActiveAreaImplementation();
 
+	Object* clone();
+
 	void finalize();
 
 	void _initializeImplementation();
@@ -140,6 +142,7 @@ protected:
 	int writeObjectMembers(ObjectOutputStream* stream);
 
 	friend class MissionSpawnActiveArea;
+	friend class TransactionalObjectHandle<MissionSpawnActiveAreaImplementation*>;
 };
 
 class MissionSpawnActiveAreaAdapter : public ActiveAreaAdapter {

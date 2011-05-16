@@ -59,7 +59,7 @@ void PlanetManagerImplementation::initialize() {
 	loadLuaConfig();
 	loadTravelFares();
 
-	/*loadRegions();
+	loadRegions();
 	loadBadgeAreas();
 	loadNoBuildAreas();
 	loadPerformanceLocations();
@@ -67,14 +67,14 @@ void PlanetManagerImplementation::initialize() {
 	loadReconLocations();
 	loadPlayerRegions();
 
-	loadStaticTangibleObjects();*/
+	loadStaticTangibleObjects();
 
 	structureManager = new StructureManager(zone, server);
-	//structureManager->loadStructures();
+	structureManager->loadStructures();
 
 	if (zone->getZoneID() < 10) { //No need for a weather manager in tutorial or corvette etc.
 		weatherManager = new WeatherManager(zone);
-		//weatherManager->initialize();
+		weatherManager->initialize();
 	}
 }
 

@@ -135,6 +135,8 @@ public:
 protected:
 	virtual ~SpawnAreaImplementation();
 
+	Object* clone();
+
 	void finalize();
 
 	void _initializeImplementation();
@@ -160,6 +162,7 @@ protected:
 	int writeObjectMembers(ObjectOutputStream* stream);
 
 	friend class SpawnArea;
+	friend class TransactionalObjectHandle<SpawnAreaImplementation*>;
 };
 
 class SpawnAreaAdapter : public ActiveAreaAdapter {

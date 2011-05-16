@@ -20,6 +20,31 @@
 
 #include "server/login/packets/LoginEnumCluster.h"
 
+
+// Imported class dependencies
+
+#include "engine/core/ManagedObject.h"
+
+#include "system/util/VectorMap.h"
+
+#include "engine/service/proto/BasePacket.h"
+
+#include "engine/core/ObjectUpdateToDatabaseTask.h"
+
+#include "system/io/ObjectOutputStream.h"
+
+#include "server/zone/objects/scene/SceneObject.h"
+
+#include "engine/service/proto/BaseClientProxy.h"
+
+#include "system/io/ObjectInputStream.h"
+
+#include "server/login/account/Account.h"
+
+#include "server/login/account/AccountManager.h"
+
+#include "server/zone/ZoneClientSession.h"
+
 /*
  *	LoginServerStub
  */
@@ -28,8 +53,8 @@ enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_INITIALIZE__,RPC_SHUTDOWN__,RPC_S
 
 LoginServer::LoginServer(ConfigManager* config) : ManagedService(DummyConstructorParameter::instance()) {
 	LoginServerImplementation* _implementation = new LoginServerImplementation(config);
-	_impl = _implementation;
-	_impl->_setStub(this);
+	ManagedObject::_setImplementation(_implementation);
+	_implementation->_setStub(this);
 }
 
 LoginServer::LoginServer(DummyConstructorParameter* param) : ManagedService(param) {
@@ -255,11 +280,10 @@ LoginClusterStatus* LoginServer::getLoginClusterStatusMessage() {
 DistributedObjectServant* LoginServer::_getImplementation() {
 
 	_updated = true;
-	return _impl;
-}
+	return dynamic_cast<DistributedObjectServant*>(getForUpdate());}
 
 void LoginServer::_setImplementation(DistributedObjectServant* servant) {
-	_impl = servant;
+	setObject(dynamic_cast<LoginServerImplementation*>(servant));
 }
 
 /*
@@ -298,32 +322,30 @@ LoginServerImplementation::operator const LoginServer*() {
 	return _this;
 }
 
+Object* LoginServerImplementation::clone() {
+	return dynamic_cast<Object*>(new LoginServerImplementation(*this));
+}
+
+
 void LoginServerImplementation::lock(bool doLock) {
-	_this->lock(doLock);
 }
 
 void LoginServerImplementation::lock(ManagedObject* obj) {
-	_this->lock(obj);
 }
 
 void LoginServerImplementation::rlock(bool doLock) {
-	_this->rlock(doLock);
 }
 
 void LoginServerImplementation::wlock(bool doLock) {
-	_this->wlock(doLock);
 }
 
 void LoginServerImplementation::wlock(ManagedObject* obj) {
-	_this->wlock(obj);
 }
 
 void LoginServerImplementation::unlock(bool doLock) {
-	_this->unlock(doLock);
 }
 
 void LoginServerImplementation::runlock(bool doLock) {
-	_this->runlock(doLock);
 }
 
 void LoginServerImplementation::_serializationHelperMethod() {

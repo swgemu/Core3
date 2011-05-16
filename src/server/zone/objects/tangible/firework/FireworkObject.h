@@ -166,6 +166,8 @@ public:
 protected:
 	virtual ~FireworkObjectImplementation();
 
+	Object* clone();
+
 	void finalize();
 
 	void _initializeImplementation();
@@ -191,6 +193,7 @@ protected:
 	int writeObjectMembers(ObjectOutputStream* stream);
 
 	friend class FireworkObject;
+	friend class TransactionalObjectHandle<FireworkObjectImplementation*>;
 };
 
 class FireworkObjectAdapter : public TangibleObjectAdapter {

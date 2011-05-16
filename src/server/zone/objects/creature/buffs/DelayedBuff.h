@@ -142,6 +142,8 @@ public:
 protected:
 	virtual ~DelayedBuffImplementation();
 
+	Object* clone();
+
 	void finalize();
 
 	void _initializeImplementation();
@@ -167,6 +169,7 @@ protected:
 	int writeObjectMembers(ObjectOutputStream* stream);
 
 	friend class DelayedBuff;
+	friend class TransactionalObjectHandle<DelayedBuffImplementation*>;
 };
 
 class DelayedBuffAdapter : public BuffAdapter {

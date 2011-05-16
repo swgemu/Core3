@@ -354,6 +354,8 @@ public:
 protected:
 	virtual ~ZoneImplementation();
 
+	Object* clone();
+
 	void _initializeImplementation();
 
 	void _setStub(DistributedObjectStub* stub);
@@ -377,6 +379,7 @@ protected:
 	int writeObjectMembers(ObjectOutputStream* stream);
 
 	friend class Zone;
+	friend class TransactionalObjectHandle<ZoneImplementation*>;
 };
 
 class ZoneAdapter : public ManagedObjectAdapter {

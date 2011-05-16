@@ -8,6 +8,25 @@
 
 #include "server/zone/ZoneClientSession.h"
 
+
+// Imported class dependencies
+
+#include "engine/core/ManagedObject.h"
+
+#include "engine/service/proto/BasePacket.h"
+
+#include "engine/core/ObjectUpdateToDatabaseTask.h"
+
+#include "system/io/ObjectOutputStream.h"
+
+#include "server/zone/objects/scene/SceneObject.h"
+
+#include "engine/service/proto/BaseClientProxy.h"
+
+#include "server/login/account/Account.h"
+
+#include "system/io/ObjectInputStream.h"
+
 /*
  *	AccountStub
  */
@@ -16,8 +35,8 @@ enum {RPC_HASMAXONLINECHARACTERS__ = 6,RPC_GETZONESESSION__INT_,RPC_CONTAINSZONE
 
 Account::Account(AccountManager* accManage, const String& usern, unsigned int accountid, unsigned int stationid) : ManagedObject(DummyConstructorParameter::instance()) {
 	AccountImplementation* _implementation = new AccountImplementation(accManage, usern, accountid, stationid);
-	_impl = _implementation;
-	_impl->_setStub(this);
+	ManagedObject::_setImplementation(_implementation);
+	_implementation->_setStub(this);
 }
 
 Account::Account(DummyConstructorParameter* param) : ManagedObject(param) {
@@ -235,11 +254,10 @@ unsigned int Account::getTimeCreated() {
 DistributedObjectServant* Account::_getImplementation() {
 
 	_updated = true;
-	return _impl;
-}
+	return dynamic_cast<DistributedObjectServant*>(getForUpdate());}
 
 void Account::_setImplementation(DistributedObjectServant* servant) {
-	_impl = servant;
+	setObject(dynamic_cast<AccountImplementation*>(servant));
 }
 
 /*
@@ -278,32 +296,30 @@ AccountImplementation::operator const Account*() {
 	return _this;
 }
 
+Object* AccountImplementation::clone() {
+	return dynamic_cast<Object*>(new AccountImplementation(*this));
+}
+
+
 void AccountImplementation::lock(bool doLock) {
-	_this->lock(doLock);
 }
 
 void AccountImplementation::lock(ManagedObject* obj) {
-	_this->lock(obj);
 }
 
 void AccountImplementation::rlock(bool doLock) {
-	_this->rlock(doLock);
 }
 
 void AccountImplementation::wlock(bool doLock) {
-	_this->wlock(doLock);
 }
 
 void AccountImplementation::wlock(ManagedObject* obj) {
-	_this->wlock(obj);
 }
 
 void AccountImplementation::unlock(bool doLock) {
-	_this->unlock(doLock);
 }
 
 void AccountImplementation::runlock(bool doLock) {
-	_this->runlock(doLock);
 }
 
 void AccountImplementation::_serializationHelperMethod() {

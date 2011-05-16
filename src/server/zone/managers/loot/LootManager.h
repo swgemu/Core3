@@ -218,6 +218,8 @@ public:
 protected:
 	virtual ~LootManagerImplementation();
 
+	Object* clone();
+
 	void finalize();
 
 	void _initializeImplementation();
@@ -243,6 +245,7 @@ protected:
 	int writeObjectMembers(ObjectOutputStream* stream);
 
 	friend class LootManager;
+	friend class TransactionalObjectHandle<LootManagerImplementation*>;
 };
 
 class LootManagerAdapter : public ZoneManagerAdapter {

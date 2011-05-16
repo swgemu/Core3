@@ -146,6 +146,8 @@ public:
 protected:
 	virtual ~BuildingDeedImplementation();
 
+	Object* clone();
+
 	void finalize();
 
 	void _initializeImplementation();
@@ -171,6 +173,7 @@ protected:
 	int writeObjectMembers(ObjectOutputStream* stream);
 
 	friend class BuildingDeed;
+	friend class TransactionalObjectHandle<BuildingDeedImplementation*>;
 };
 
 class BuildingDeedAdapter : public DeedAdapter {

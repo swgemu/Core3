@@ -135,7 +135,7 @@ void ZonePacketHandler::handleClientPermissionsMessage(Message* pack) {
 void ZonePacketHandler::handleCmdStartScene(Message* pack) {
 	BaseClient* client = (BaseClient*) pack->getClient();
 
-	client->info("received start scene", true);
+	client->info("received start scene");
 
 	uint8 unknown = pack->parseByte();
 	uint64 selfPlayerObjectID = pack->parseLong();
@@ -155,6 +155,8 @@ void ZonePacketHandler::handleCmdStartScene(Message* pack) {
 
 	BaseMessage* msg = new CmdSceneReady();
 	client->sendPacket(msg);
+
+	zone->sceneStarted();
 }
 
 void ZonePacketHandler::handleSceneObjectCreateMessage(Message* pack) {

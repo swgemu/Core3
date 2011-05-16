@@ -191,6 +191,8 @@ public:
 protected:
 	virtual ~SlicingToolImplementation();
 
+	Object* clone();
+
 	void finalize();
 
 	void _initializeImplementation();
@@ -216,6 +218,7 @@ protected:
 	int writeObjectMembers(ObjectOutputStream* stream);
 
 	friend class SlicingTool;
+	friend class TransactionalObjectHandle<SlicingToolImplementation*>;
 };
 
 class SlicingToolAdapter : public TangibleObjectAdapter {

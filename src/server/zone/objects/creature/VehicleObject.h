@@ -231,6 +231,8 @@ public:
 protected:
 	virtual ~VehicleObjectImplementation();
 
+	Object* clone();
+
 	void finalize();
 
 	void _initializeImplementation();
@@ -256,6 +258,7 @@ protected:
 	int writeObjectMembers(ObjectOutputStream* stream);
 
 	friend class VehicleObject;
+	friend class TransactionalObjectHandle<VehicleObjectImplementation*>;
 };
 
 class VehicleObjectAdapter : public CreatureObjectAdapter {

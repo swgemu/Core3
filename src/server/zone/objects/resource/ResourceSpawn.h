@@ -351,6 +351,8 @@ public:
 protected:
 	virtual ~ResourceSpawnImplementation();
 
+	Object* clone();
+
 	void _initializeImplementation();
 
 	void _setStub(DistributedObjectStub* stub);
@@ -374,6 +376,7 @@ protected:
 	int writeObjectMembers(ObjectOutputStream* stream);
 
 	friend class ResourceSpawn;
+	friend class TransactionalObjectHandle<ResourceSpawnImplementation*>;
 };
 
 class ResourceSpawnAdapter : public SceneObjectAdapter {

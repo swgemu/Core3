@@ -135,6 +135,8 @@ public:
 protected:
 	virtual ~StructureTerminalImplementation();
 
+	Object* clone();
+
 	void finalize();
 
 	void _initializeImplementation();
@@ -160,6 +162,7 @@ protected:
 	int writeObjectMembers(ObjectOutputStream* stream);
 
 	friend class StructureTerminal;
+	friend class TransactionalObjectHandle<StructureTerminalImplementation*>;
 };
 
 class StructureTerminalAdapter : public TerminalAdapter {

@@ -195,6 +195,8 @@ public:
 protected:
 	virtual ~TicketObjectImplementation();
 
+	Object* clone();
+
 	void finalize();
 
 	void _initializeImplementation();
@@ -220,6 +222,7 @@ protected:
 	int writeObjectMembers(ObjectOutputStream* stream);
 
 	friend class TicketObject;
+	friend class TransactionalObjectHandle<TicketObjectImplementation*>;
 };
 
 class TicketObjectAdapter : public TangibleObjectAdapter {

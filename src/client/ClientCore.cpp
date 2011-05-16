@@ -80,7 +80,7 @@ void ClientCore::run() {
 
 			logoutCharacter(index);
 
-			Thread::sleep(5 + System::random(35));
+			Thread::sleep(50 + System::random(350));
 		}
 	}
 

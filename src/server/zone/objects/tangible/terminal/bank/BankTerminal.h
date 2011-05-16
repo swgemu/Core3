@@ -171,6 +171,8 @@ public:
 protected:
 	virtual ~BankTerminalImplementation();
 
+	Object* clone();
+
 	void finalize();
 
 	void _initializeImplementation();
@@ -196,6 +198,7 @@ protected:
 	int writeObjectMembers(ObjectOutputStream* stream);
 
 	friend class BankTerminal;
+	friend class TransactionalObjectHandle<BankTerminalImplementation*>;
 };
 
 class BankTerminalAdapter : public TerminalAdapter {

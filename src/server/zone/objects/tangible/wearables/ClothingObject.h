@@ -100,6 +100,8 @@ public:
 protected:
 	virtual ~ClothingObjectImplementation();
 
+	Object* clone();
+
 	void finalize();
 
 	void _initializeImplementation();
@@ -125,6 +127,7 @@ protected:
 	int writeObjectMembers(ObjectOutputStream* stream);
 
 	friend class ClothingObject;
+	friend class TransactionalObjectHandle<ClothingObjectImplementation*>;
 };
 
 class ClothingObjectAdapter : public WearableObjectAdapter {

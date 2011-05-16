@@ -70,6 +70,8 @@ public:
 protected:
 	virtual ~PackGroupImplementation();
 
+	Object* clone();
+
 	void finalize();
 
 	void _initializeImplementation();
@@ -95,6 +97,7 @@ protected:
 	int writeObjectMembers(ObjectOutputStream* stream);
 
 	friend class PackGroup;
+	friend class TransactionalObjectHandle<PackGroupImplementation*>;
 };
 
 class PackGroupAdapter : public AiGroupAdapter {

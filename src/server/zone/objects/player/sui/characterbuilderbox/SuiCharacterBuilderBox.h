@@ -105,6 +105,8 @@ public:
 protected:
 	virtual ~SuiCharacterBuilderBoxImplementation();
 
+	Object* clone();
+
 	void finalize();
 
 	void _initializeImplementation();
@@ -130,6 +132,7 @@ protected:
 	int writeObjectMembers(ObjectOutputStream* stream);
 
 	friend class SuiCharacterBuilderBox;
+	friend class TransactionalObjectHandle<SuiCharacterBuilderBoxImplementation*>;
 };
 
 class SuiCharacterBuilderBoxAdapter : public SuiListBoxAdapter {

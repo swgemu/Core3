@@ -228,6 +228,8 @@ public:
 protected:
 	virtual ~WoundPackImplementation();
 
+	Object* clone();
+
 	void finalize();
 
 	void _initializeImplementation();
@@ -253,6 +255,7 @@ protected:
 	int writeObjectMembers(ObjectOutputStream* stream);
 
 	friend class WoundPack;
+	friend class TransactionalObjectHandle<WoundPackImplementation*>;
 };
 
 class WoundPackAdapter : public PharmaceuticalObjectAdapter {

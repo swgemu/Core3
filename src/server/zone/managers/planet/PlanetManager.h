@@ -429,6 +429,8 @@ public:
 protected:
 	virtual ~PlanetManagerImplementation();
 
+	Object* clone();
+
 	void _initializeImplementation();
 
 	void _setStub(DistributedObjectStub* stub);
@@ -452,6 +454,7 @@ protected:
 	int writeObjectMembers(ObjectOutputStream* stream);
 
 	friend class PlanetManager;
+	friend class TransactionalObjectHandle<PlanetManagerImplementation*>;
 };
 
 class PlanetManagerAdapter : public ManagedServiceAdapter {

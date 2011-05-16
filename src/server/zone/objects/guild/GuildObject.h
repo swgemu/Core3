@@ -311,6 +311,8 @@ public:
 protected:
 	virtual ~GuildObjectImplementation();
 
+	Object* clone();
+
 	void finalize();
 
 	void _initializeImplementation();
@@ -336,6 +338,7 @@ protected:
 	int writeObjectMembers(ObjectOutputStream* stream);
 
 	friend class GuildObject;
+	friend class TransactionalObjectHandle<GuildObjectImplementation*>;
 };
 
 class GuildObjectAdapter : public SceneObjectAdapter {

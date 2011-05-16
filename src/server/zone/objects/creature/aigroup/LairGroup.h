@@ -87,6 +87,8 @@ public:
 protected:
 	virtual ~LairGroupImplementation();
 
+	Object* clone();
+
 	void finalize();
 
 	void _initializeImplementation();
@@ -112,6 +114,7 @@ protected:
 	int writeObjectMembers(ObjectOutputStream* stream);
 
 	friend class LairGroup;
+	friend class TransactionalObjectHandle<LairGroupImplementation*>;
 };
 
 class LairGroupAdapter : public AiGroupAdapter {

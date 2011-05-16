@@ -54,11 +54,13 @@ void Zone::run() {
 		clientThread->start();
 
 		if (client->connect()) {
-			client->getClient()->info("connected", true);
+			client->getClient()->info("connected");
 		} else {
 			client->getClient()->error("could not connect");
 			return;
 		}
+
+		startTime.updateToCurrentTime();
 
 		BaseMessage* acc = new ClientIDMessage(accountID, sessionID);
 		client->sendMessage(acc);
@@ -120,6 +122,10 @@ void Zone::disconnect() {
 	if (client != NULL) {
 		client->disconnect();
 	}
+}
+
+void Zone::sceneStarted() {
+	client->getClient()->info("zone started in " + String::valueOf(startTime.miliDifference()) + "ms", true);
 }
 
 void Zone::follow(const String& name) {

@@ -329,26 +329,30 @@ public:
 		values->setPercentage(value);
 	}
 
-	void toString(){
+	String toString() {
 		Values* tempValues;
+
+		StringBuffer str;
 
 		for (int i = 0;i < valueList.size(); ++i) {
 
 			tempValues = valueList.get(i);
 
-			System::out << "Property Name: " << tempValues->getName();
+			str << "Property Name: " << tempValues->getName();
 
 			if(tempValues->isFiller()) {
-				System::out << " HIDDEN" << endl;
+				str << " HIDDEN" << endl;
 			} else {
-				System::out << endl;
+				str << endl;
 			}
 
-			System::out << "Max % " << tempValues->getMaxPercentage() << endl;
-			System::out << "Current % " << tempValues->getPercentage() << endl;
-			System::out << "Current Value " << tempValues->getValue() << endl;
-			System::out << "Min " << tempValues->getMinValue() << " max " << tempValues->getMaxValue() << endl;
+			str << "Max % " << tempValues->getMaxPercentage() << endl;
+			str << "Current % " << tempValues->getPercentage() << endl;
+			str << "Current Value " << tempValues->getValue() << endl;
+			str << "Min " << tempValues->getMinValue() << " max " << tempValues->getMaxValue() << endl;
 		}
+
+		return str.toString();
 	}
 };
 

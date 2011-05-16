@@ -162,6 +162,8 @@ public:
 protected:
 	virtual ~PowerBoostBuffImplementation();
 
+	Object* clone();
+
 	void finalize();
 
 	void _initializeImplementation();
@@ -187,6 +189,7 @@ protected:
 	int writeObjectMembers(ObjectOutputStream* stream);
 
 	friend class PowerBoostBuff;
+	friend class TransactionalObjectHandle<PowerBoostBuffImplementation*>;
 };
 
 class PowerBoostBuffAdapter : public BuffAdapter {

@@ -167,6 +167,8 @@ public:
 protected:
 	virtual ~ContainerImplementation();
 
+	Object* clone();
+
 	void finalize();
 
 	void _initializeImplementation();
@@ -192,6 +194,7 @@ protected:
 	int writeObjectMembers(ObjectOutputStream* stream);
 
 	friend class Container;
+	friend class TransactionalObjectHandle<ContainerImplementation*>;
 };
 
 class ContainerAdapter : public TangibleObjectAdapter {

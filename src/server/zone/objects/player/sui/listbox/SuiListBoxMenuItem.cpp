@@ -6,6 +6,21 @@
 
 #include "server/zone/objects/player/sui/listbox/SuiListBox.h"
 
+
+// Imported class dependencies
+
+#include "engine/core/ManagedObject.h"
+
+#include "server/zone/objects/player/sui/listbox/SuiListBoxMenuItem.h"
+
+#include "engine/core/ObjectUpdateToDatabaseTask.h"
+
+#include "system/io/ObjectOutputStream.h"
+
+#include "system/io/ObjectInputStream.h"
+
+#include "system/util/Vector.h"
+
 /*
  *	SuiListBoxMenuItemStub
  */
@@ -14,8 +29,8 @@ enum {RPC_GETOBJECTID__ = 6,RPC_GETOPTIONNAME__};
 
 SuiListBoxMenuItem::SuiListBoxMenuItem(const String& name, unsigned long long oid) : ManagedObject(DummyConstructorParameter::instance()) {
 	SuiListBoxMenuItemImplementation* _implementation = new SuiListBoxMenuItemImplementation(name, oid);
-	_impl = _implementation;
-	_impl->_setStub(this);
+	ManagedObject::_setImplementation(_implementation);
+	_implementation->_setStub(this);
 }
 
 SuiListBoxMenuItem::SuiListBoxMenuItem(DummyConstructorParameter* param) : ManagedObject(param) {
@@ -55,11 +70,10 @@ String SuiListBoxMenuItem::getOptionName() {
 DistributedObjectServant* SuiListBoxMenuItem::_getImplementation() {
 
 	_updated = true;
-	return _impl;
-}
+	return dynamic_cast<DistributedObjectServant*>(getForUpdate());}
 
 void SuiListBoxMenuItem::_setImplementation(DistributedObjectServant* servant) {
-	_impl = servant;
+	setObject(dynamic_cast<SuiListBoxMenuItemImplementation*>(servant));
 }
 
 /*
@@ -98,32 +112,30 @@ SuiListBoxMenuItemImplementation::operator const SuiListBoxMenuItem*() {
 	return _this;
 }
 
+Object* SuiListBoxMenuItemImplementation::clone() {
+	return dynamic_cast<Object*>(new SuiListBoxMenuItemImplementation(*this));
+}
+
+
 void SuiListBoxMenuItemImplementation::lock(bool doLock) {
-	_this->lock(doLock);
 }
 
 void SuiListBoxMenuItemImplementation::lock(ManagedObject* obj) {
-	_this->lock(obj);
 }
 
 void SuiListBoxMenuItemImplementation::rlock(bool doLock) {
-	_this->rlock(doLock);
 }
 
 void SuiListBoxMenuItemImplementation::wlock(bool doLock) {
-	_this->wlock(doLock);
 }
 
 void SuiListBoxMenuItemImplementation::wlock(ManagedObject* obj) {
-	_this->wlock(obj);
 }
 
 void SuiListBoxMenuItemImplementation::unlock(bool doLock) {
-	_this->unlock(doLock);
 }
 
 void SuiListBoxMenuItemImplementation::runlock(bool doLock) {
-	_this->runlock(doLock);
 }
 
 void SuiListBoxMenuItemImplementation::_serializationHelperMethod() {

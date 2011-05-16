@@ -178,6 +178,8 @@ public:
 protected:
 	virtual ~LairObjectImplementation();
 
+	Object* clone();
+
 	void finalize();
 
 	void _initializeImplementation();
@@ -203,6 +205,7 @@ protected:
 	int writeObjectMembers(ObjectOutputStream* stream);
 
 	friend class LairObject;
+	friend class TransactionalObjectHandle<LairObjectImplementation*>;
 };
 
 class LairObjectAdapter : public TangibleObjectAdapter {

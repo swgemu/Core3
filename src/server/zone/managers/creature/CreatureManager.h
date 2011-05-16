@@ -269,6 +269,8 @@ public:
 protected:
 	virtual ~CreatureManagerImplementation();
 
+	Object* clone();
+
 	void finalize();
 
 	void _initializeImplementation();
@@ -294,6 +296,7 @@ protected:
 	int writeObjectMembers(ObjectOutputStream* stream);
 
 	friend class CreatureManager;
+	friend class TransactionalObjectHandle<CreatureManagerImplementation*>;
 };
 
 class CreatureManagerAdapter : public ZoneManagerAdapter {

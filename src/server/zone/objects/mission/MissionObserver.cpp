@@ -10,6 +10,169 @@
 
 #include "server/zone/objects/scene/SceneObject.h"
 
+
+// Imported class dependencies
+
+#include "server/zone/objects/cell/CellObject.h"
+
+#include "engine/service/proto/BasePacket.h"
+
+#include "server/zone/managers/object/ObjectManager.h"
+
+#include "system/io/ObjectOutputStream.h"
+
+#include "server/zone/ZonePacketHandler.h"
+
+#include "engine/service/DatagramServiceThread.h"
+
+#include "server/zone/managers/planet/HeightMap.h"
+
+#include "server/zone/managers/mission/MissionManager.h"
+
+#include "server/zone/objects/mission/MissionObserver.h"
+
+#include "engine/util/u3d/Coordinate.h"
+
+#include "engine/util/Facade.h"
+
+#include "server/zone/managers/player/PlayerManager.h"
+
+#include "system/thread/atomic/AtomicInteger.h"
+
+#include "server/zone/managers/object/ObjectMap.h"
+
+#include "engine/util/Observable.h"
+
+#include "engine/util/u3d/Quaternion.h"
+
+#include "server/zone/managers/radial/RadialManager.h"
+
+#include "engine/service/Message.h"
+
+#include "server/login/account/Account.h"
+
+#include "server/zone/managers/creature/CreatureManager.h"
+
+#include "server/zone/objects/waypoint/WaypointObject.h"
+
+#include "server/chat/ChatManager.h"
+
+#include "server/zone/managers/minigames/ForageManager.h"
+
+#include "server/zone/objects/building/BuildingObject.h"
+
+#include "server/zone/objects/tangible/sign/SignObject.h"
+
+#include "server/zone/objects/scene/SceneObject.h"
+
+#include "system/io/ObjectInputStream.h"
+
+#include "engine/util/ObserverEventMap.h"
+
+#include "server/zone/managers/planet/MapLocationTable.h"
+
+#include "server/zone/managers/resource/ResourceManager.h"
+
+#include "server/zone/templates/TemplateReference.h"
+
+#include "server/zone/managers/objectcontroller/ObjectController.h"
+
+#include "server/zone/objects/creature/CreatureObject.h"
+
+#include "engine/core/Task.h"
+
+#include "server/zone/managers/guild/GuildManager.h"
+
+#include "engine/core/ObjectUpdateToDatabaseTask.h"
+
+#include "server/zone/managers/city/CityManager.h"
+
+#include "server/zone/objects/area/ActiveArea.h"
+
+#include "engine/util/Observer.h"
+
+#include "engine/service/proto/BaseMessage.h"
+
+#include "server/zone/templates/SharedObjectTemplate.h"
+
+#include "server/zone/ZoneHandler.h"
+
+#include "server/zone/Zone.h"
+
+#include "engine/core/ManagedObject.h"
+
+#include "engine/service/proto/BasePacketHandler.h"
+
+#include "server/zone/ZoneProcessServer.h"
+
+#include "server/zone/objects/player/PlayerCreature.h"
+
+#include "server/zone/managers/minigames/GamblingManager.h"
+
+#include "server/zone/packets/scene/AttributeListMessage.h"
+
+#include "server/zone/managers/creature/CreatureTemplateManager.h"
+
+#include "engine/util/u3d/QuadTreeEntry.h"
+
+#include "server/zone/managers/minigames/FishingManager.h"
+
+#include "system/lang/Exception.h"
+
+#include "server/zone/objects/scene/variables/PendingTasksMap.h"
+
+#include "system/lang/Time.h"
+
+#include "server/zone/ZoneClientSession.h"
+
+#include "engine/util/u3d/QuadTree.h"
+
+#include "server/zone/managers/vendor/VendorManager.h"
+
+#include "system/net/Packet.h"
+
+#include "engine/stm/TransactionalReference.h"
+
+#include "system/net/SocketAddress.h"
+
+#include "server/zone/managers/holocron/HolocronManager.h"
+
+#include "server/zone/managers/auction/AuctionManager.h"
+
+#include "server/zone/managers/loot/LootManager.h"
+
+#include "server/zone/ZoneServer.h"
+
+#include "server/zone/managers/professions/ProfessionManager.h"
+
+#include "system/util/VectorMap.h"
+
+#include "server/zone/objects/mission/MissionObjective.h"
+
+#include "system/util/SortedVector.h"
+
+#include "server/zone/objects/scene/variables/StringId.h"
+
+#include "server/zone/managers/name/NameManager.h"
+
+#include "server/zone/managers/planet/PlanetManager.h"
+
+#include "server/zone/managers/stringid/StringIdManager.h"
+
+#include "server/zone/managers/sui/SuiManager.h"
+
+#include "server/zone/managers/crafting/CraftingManager.h"
+
+#include "server/zone/packets/object/ObjectMenuResponse.h"
+
+#include "engine/service/proto/BaseClientProxy.h"
+
+#include "system/net/Socket.h"
+
+#include "server/zone/objects/mission/MissionObject.h"
+
+#include "system/util/Vector.h"
+
 /*
  *	MissionObserverStub
  */

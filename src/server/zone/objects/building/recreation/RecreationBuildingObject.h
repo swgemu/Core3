@@ -92,6 +92,8 @@ public:
 protected:
 	virtual ~RecreationBuildingObjectImplementation();
 
+	Object* clone();
+
 	void finalize();
 
 	void _initializeImplementation();
@@ -117,6 +119,7 @@ protected:
 	int writeObjectMembers(ObjectOutputStream* stream);
 
 	friend class RecreationBuildingObject;
+	friend class TransactionalObjectHandle<RecreationBuildingObjectImplementation*>;
 };
 
 class RecreationBuildingObjectAdapter : public BuildingObjectAdapter {

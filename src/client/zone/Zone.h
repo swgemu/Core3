@@ -81,6 +81,7 @@ class Zone : public Thread, public Mutex, public Logger {
 
 	int instance;
 
+	Time startTime;
 	bool started;
 
 public:
@@ -93,6 +94,8 @@ public:
 	//void initConnection();
 
 	void disconnect();
+
+	void sceneStarted();
 
 	void follow(const String& name);
 	void stopFollow();

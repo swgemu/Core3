@@ -163,6 +163,8 @@ public:
 protected:
 	virtual ~GuildTerminalImplementation();
 
+	Object* clone();
+
 	void finalize();
 
 	void _initializeImplementation();
@@ -188,6 +190,7 @@ protected:
 	int writeObjectMembers(ObjectOutputStream* stream);
 
 	friend class GuildTerminal;
+	friend class TransactionalObjectHandle<GuildTerminalImplementation*>;
 };
 
 class GuildTerminalAdapter : public TerminalAdapter {

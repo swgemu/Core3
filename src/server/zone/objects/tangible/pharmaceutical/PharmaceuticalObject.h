@@ -208,6 +208,8 @@ public:
 protected:
 	virtual ~PharmaceuticalObjectImplementation();
 
+	Object* clone();
+
 	void finalize();
 
 	void _initializeImplementation();
@@ -233,6 +235,7 @@ protected:
 	int writeObjectMembers(ObjectOutputStream* stream);
 
 	friend class PharmaceuticalObject;
+	friend class TransactionalObjectHandle<PharmaceuticalObjectImplementation*>;
 };
 
 class PharmaceuticalObjectAdapter : public TangibleObjectAdapter {

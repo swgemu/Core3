@@ -233,6 +233,8 @@ public:
 protected:
 	virtual ~DynamicSpawnAreaImplementation();
 
+	Object* clone();
+
 	void finalize();
 
 	void _initializeImplementation();
@@ -258,6 +260,7 @@ protected:
 	int writeObjectMembers(ObjectOutputStream* stream);
 
 	friend class DynamicSpawnArea;
+	friend class TransactionalObjectHandle<DynamicSpawnAreaImplementation*>;
 };
 
 class DynamicSpawnAreaAdapter : public SpawnAreaAdapter {

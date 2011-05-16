@@ -219,6 +219,8 @@ public:
 protected:
 	virtual ~CreatureImplementation();
 
+	Object* clone();
+
 	void finalize();
 
 	void _initializeImplementation();
@@ -244,6 +246,7 @@ protected:
 	int writeObjectMembers(ObjectOutputStream* stream);
 
 	friend class Creature;
+	friend class TransactionalObjectHandle<CreatureImplementation*>;
 };
 
 class CreatureAdapter : public AiAgentAdapter {

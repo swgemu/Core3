@@ -422,6 +422,8 @@ public:
 protected:
 	virtual ~CityHallObjectImplementation();
 
+	Object* clone();
+
 	void finalize();
 
 	void _initializeImplementation();
@@ -447,6 +449,7 @@ protected:
 	int writeObjectMembers(ObjectOutputStream* stream);
 
 	friend class CityHallObject;
+	friend class TransactionalObjectHandle<CityHallObjectImplementation*>;
 };
 
 class CityHallObjectAdapter : public BuildingObjectAdapter {

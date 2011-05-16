@@ -239,6 +239,8 @@ public:
 protected:
 	virtual ~ComponentImplementation();
 
+	Object* clone();
+
 	void finalize();
 
 	void _initializeImplementation();
@@ -264,6 +266,7 @@ protected:
 	int writeObjectMembers(ObjectOutputStream* stream);
 
 	friend class Component;
+	friend class TransactionalObjectHandle<ComponentImplementation*>;
 };
 
 class ComponentAdapter : public TangibleObjectAdapter {

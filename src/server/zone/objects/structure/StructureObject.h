@@ -423,6 +423,8 @@ public:
 protected:
 	virtual ~StructureObjectImplementation();
 
+	Object* clone();
+
 	void _initializeImplementation();
 
 	void _setStub(DistributedObjectStub* stub);
@@ -446,6 +448,7 @@ protected:
 	int writeObjectMembers(ObjectOutputStream* stream);
 
 	friend class StructureObject;
+	friend class TransactionalObjectHandle<StructureObjectImplementation*>;
 };
 
 class StructureObjectAdapter : public TangibleObjectAdapter {

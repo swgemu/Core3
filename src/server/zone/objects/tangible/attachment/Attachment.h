@@ -236,6 +236,8 @@ public:
 protected:
 	virtual ~AttachmentImplementation();
 
+	Object* clone();
+
 	void finalize();
 
 	void _initializeImplementation();
@@ -261,6 +263,7 @@ protected:
 	int writeObjectMembers(ObjectOutputStream* stream);
 
 	friend class Attachment;
+	friend class TransactionalObjectHandle<AttachmentImplementation*>;
 };
 
 class AttachmentAdapter : public TangibleObjectAdapter {

@@ -20,6 +20,225 @@
 
 #include "server/zone/templates/SharedObjectTemplate.h"
 
+
+// Imported class dependencies
+
+#include "server/zone/objects/cell/CellObject.h"
+
+#include "server/zone/objects/group/GroupObject.h"
+
+#include "server/zone/objects/manufactureschematic/craftingvalues/CraftingValues.h"
+
+#include "server/zone/ZonePacketHandler.h"
+
+#include "engine/service/DatagramServiceThread.h"
+
+#include "server/zone/objects/creature/professions/SkillBox.h"
+
+#include "engine/util/u3d/Coordinate.h"
+
+#include "engine/util/Facade.h"
+
+#include "server/zone/objects/player/events/PlayerRecoveryEvent.h"
+
+#include "engine/util/u3d/Quaternion.h"
+
+#include "server/zone/managers/radial/RadialManager.h"
+
+#include "server/zone/objects/draftschematic/DraftSchematic.h"
+
+#include "server/zone/managers/creature/CreatureManager.h"
+
+#include "server/zone/objects/building/BuildingObject.h"
+
+#include "server/zone/objects/tangible/sign/SignObject.h"
+
+#include "server/zone/managers/planet/MapLocationTable.h"
+
+#include "server/zone/managers/resource/ResourceManager.h"
+
+#include "server/chat/StringIdChatParameter.h"
+
+#include "engine/util/u3d/QuadTreeNode.h"
+
+#include "server/zone/objects/manufactureschematic/IngredientSlots.h"
+
+#include "engine/core/Task.h"
+
+#include "server/zone/managers/city/CityManager.h"
+
+#include "server/zone/objects/structure/events/StructureMaintenanceTask.h"
+
+#include "server/zone/objects/player/badges/Badges.h"
+
+#include "server/zone/templates/SharedObjectTemplate.h"
+
+#include "server/zone/objects/manufactureschematic/ManufactureSchematic.h"
+
+#include "engine/service/proto/BasePacketHandler.h"
+
+#include "server/zone/ZoneProcessServer.h"
+
+#include "server/zone/objects/tangible/weapon/WeaponObject.h"
+
+#include "server/zone/objects/creature/SpeedMultiplierModChanges.h"
+
+#include "server/zone/objects/tangible/tool/SurveyTool.h"
+
+#include "engine/util/u3d/QuadTreeEntry.h"
+
+#include "server/zone/objects/scene/variables/PendingTasksMap.h"
+
+#include "server/zone/managers/vendor/VendorManager.h"
+
+#include "system/net/Packet.h"
+
+#include "server/zone/objects/player/events/PlayerDisconnectEvent.h"
+
+#include "server/zone/templates/tangible/SharedWeaponObjectTemplate.h"
+
+#include "server/zone/objects/scene/variables/DeltaVector.h"
+
+#include "server/zone/objects/tangible/tool/CraftingTool.h"
+
+#include "system/util/SortedVector.h"
+
+#include "server/zone/managers/name/NameManager.h"
+
+#include "server/zone/managers/planet/PlanetManager.h"
+
+#include "server/zone/objects/scene/variables/CustomizationVariables.h"
+
+#include "server/zone/managers/sui/SuiManager.h"
+
+#include "server/zone/objects/scene/variables/DeltaVectorMap.h"
+
+#include "server/zone/managers/crafting/CraftingManager.h"
+
+#include "server/zone/packets/object/ObjectMenuResponse.h"
+
+#include "server/zone/objects/player/sui/SuiBox.h"
+
+#include "engine/service/proto/BaseClientProxy.h"
+
+#include "server/zone/objects/tangible/TangibleObject.h"
+
+#include "system/net/Socket.h"
+
+#include "system/util/Vector.h"
+
+#include "engine/service/proto/BasePacket.h"
+
+#include "server/zone/managers/object/ObjectManager.h"
+
+#include "server/zone/objects/intangible/ControlDevice.h"
+
+#include "system/io/ObjectOutputStream.h"
+
+#include "server/zone/managers/planet/HeightMap.h"
+
+#include "server/zone/objects/creature/variables/CooldownTimerMap.h"
+
+#include "server/zone/managers/mission/MissionManager.h"
+
+#include "server/zone/managers/player/PlayerManager.h"
+
+#include "system/thread/atomic/AtomicInteger.h"
+
+#include "server/chat/room/ChatRoom.h"
+
+#include "server/zone/managers/object/ObjectMap.h"
+
+#include "engine/util/Observable.h"
+
+#include "engine/service/Message.h"
+
+#include "server/login/account/Account.h"
+
+#include "server/zone/managers/minigames/ForageManager.h"
+
+#include "server/chat/ChatManager.h"
+
+#include "server/zone/objects/structure/StructurePermissionList.h"
+
+#include "server/zone/objects/creature/variables/CommandQueueAction.h"
+
+#include "server/zone/objects/scene/SceneObject.h"
+
+#include "system/io/ObjectInputStream.h"
+
+#include "engine/util/ObserverEventMap.h"
+
+#include "server/zone/managers/objectcontroller/ObjectController.h"
+
+#include "server/zone/managers/guild/GuildManager.h"
+
+#include "server/zone/objects/creature/CreatureObject.h"
+
+#include "engine/core/ObjectUpdateToDatabaseTask.h"
+
+#include "engine/util/Observer.h"
+
+#include "server/zone/objects/area/ActiveArea.h"
+
+#include "server/zone/ZoneHandler.h"
+
+#include "server/zone/Zone.h"
+
+#include "server/zone/objects/creature/variables/SkillBoxList.h"
+
+#include "engine/core/ManagedObject.h"
+
+#include "server/zone/objects/player/PlayerCreature.h"
+
+#include "server/zone/managers/minigames/GamblingManager.h"
+
+#include "server/zone/managers/creature/CreatureTemplateManager.h"
+
+#include "server/zone/packets/scene/AttributeListMessage.h"
+
+#include "server/zone/managers/minigames/FishingManager.h"
+
+#include "system/lang/Exception.h"
+
+#include "server/zone/objects/creature/buffs/BuffList.h"
+
+#include "server/zone/objects/player/ValidatedPosition.h"
+
+#include "server/zone/ZoneClientSession.h"
+
+#include "system/lang/Time.h"
+
+#include "engine/util/u3d/QuadTree.h"
+
+#include "engine/stm/TransactionalReference.h"
+
+#include "server/zone/objects/player/TradeContainer.h"
+
+#include "system/net/SocketAddress.h"
+
+#include "server/zone/managers/holocron/HolocronManager.h"
+
+#include "server/zone/managers/auction/AuctionManager.h"
+
+#include "server/zone/managers/loot/LootManager.h"
+
+#include "server/zone/ZoneServer.h"
+
+#include "server/zone/managers/professions/ProfessionManager.h"
+
+#include "server/zone/objects/guild/GuildObject.h"
+
+#include "system/util/VectorMap.h"
+
+#include "server/zone/objects/scene/variables/StringId.h"
+
+#include "server/zone/managers/stringid/StringIdManager.h"
+
+#include "server/zone/objects/creature/buffs/Buff.h"
+
+#include "server/zone/objects/creature/damageovertime/DamageOverTimeList.h"
+
 /*
  *	BuildingObjectStub
  */
@@ -28,8 +247,8 @@ enum {RPC_CREATECELLOBJECTS__ = 6,RPC_DESTROYOBJECTFROMDATABASE__BOOL_,RPC_INITI
 
 BuildingObject::BuildingObject() : StructureObject(DummyConstructorParameter::instance()) {
 	BuildingObjectImplementation* _implementation = new BuildingObjectImplementation();
-	_impl = _implementation;
-	_impl->_setStub(this);
+	ManagedObject::_setImplementation(_implementation);
+	_implementation->_setStub(this);
 }
 
 BuildingObject::BuildingObject(DummyConstructorParameter* param) : StructureObject(param) {
@@ -496,11 +715,10 @@ unsigned int BuildingObject::getMaximumNumberOfPlayerItems() {
 DistributedObjectServant* BuildingObject::_getImplementation() {
 
 	_updated = true;
-	return _impl;
-}
+	return dynamic_cast<DistributedObjectServant*>(getForUpdate());}
 
 void BuildingObject::_setImplementation(DistributedObjectServant* servant) {
-	_impl = servant;
+	setObject(dynamic_cast<BuildingObjectImplementation*>(servant));
 }
 
 /*
@@ -539,32 +757,30 @@ BuildingObjectImplementation::operator const BuildingObject*() {
 	return _this;
 }
 
+Object* BuildingObjectImplementation::clone() {
+	return dynamic_cast<Object*>(new BuildingObjectImplementation(*this));
+}
+
+
 void BuildingObjectImplementation::lock(bool doLock) {
-	_this->lock(doLock);
 }
 
 void BuildingObjectImplementation::lock(ManagedObject* obj) {
-	_this->lock(obj);
 }
 
 void BuildingObjectImplementation::rlock(bool doLock) {
-	_this->rlock(doLock);
 }
 
 void BuildingObjectImplementation::wlock(bool doLock) {
-	_this->wlock(doLock);
 }
 
 void BuildingObjectImplementation::wlock(ManagedObject* obj) {
-	_this->wlock(obj);
 }
 
 void BuildingObjectImplementation::unlock(bool doLock) {
-	_this->unlock(doLock);
 }
 
 void BuildingObjectImplementation::runlock(bool doLock) {
-	_this->runlock(doLock);
 }
 
 void BuildingObjectImplementation::_serializationHelperMethod() {
@@ -598,7 +814,7 @@ bool BuildingObjectImplementation::readObjectMember(ObjectInputStream* stream, c
 		return true;
 
 	if (_name == "spatialIndexer") {
-		TypeInfo<Reference<QuadTree* > >::parseFromBinaryStream(&spatialIndexer, stream);
+		TypeInfo<TransactionalReference<QuadTree*> >::parseFromBinaryStream(&spatialIndexer, stream);
 		return true;
 	}
 
@@ -651,7 +867,7 @@ int BuildingObjectImplementation::writeObjectMembers(ObjectOutputStream* stream)
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
-	TypeInfo<Reference<QuadTree* > >::toBinaryStream(&spatialIndexer, stream);
+	TypeInfo<TransactionalReference<QuadTree*> >::toBinaryStream(&spatialIndexer, stream);
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
@@ -709,10 +925,11 @@ int BuildingObjectImplementation::writeObjectMembers(ObjectOutputStream* stream)
 
 BuildingObjectImplementation::BuildingObjectImplementation() {
 	_initializeImplementation();
+	Reference<QuadTree*> _ref0;
 	// server/zone/objects/building/BuildingObject.idl():  		Logger.setLoggingName("BuildingObject");
 	Logger::setLoggingName("BuildingObject");
 	// server/zone/objects/building/BuildingObject.idl():  		spatialIndexer = new QuadTree();
-	spatialIndexer = new QuadTree();
+	spatialIndexer = _ref0 = new QuadTree();
 	// server/zone/objects/building/BuildingObject.idl():  		spatialIndexer.setSize(-1024, -1024, 1024, 1024);
 	spatialIndexer->setSize(-1024, -1024, 1024, 1024);
 	// server/zone/objects/building/BuildingObject.idl():  		super.staticObject = false;

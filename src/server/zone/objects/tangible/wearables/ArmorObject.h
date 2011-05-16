@@ -284,6 +284,8 @@ public:
 protected:
 	virtual ~ArmorObjectImplementation();
 
+	Object* clone();
+
 	void finalize();
 
 	void _initializeImplementation();
@@ -309,6 +311,7 @@ protected:
 	int writeObjectMembers(ObjectOutputStream* stream);
 
 	friend class ArmorObject;
+	friend class TransactionalObjectHandle<ArmorObjectImplementation*>;
 };
 
 class ArmorObjectAdapter : public WearableObjectAdapter {

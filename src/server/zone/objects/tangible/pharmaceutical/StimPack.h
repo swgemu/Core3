@@ -210,6 +210,8 @@ public:
 protected:
 	virtual ~StimPackImplementation();
 
+	Object* clone();
+
 	void finalize();
 
 	void _initializeImplementation();
@@ -235,6 +237,7 @@ protected:
 	int writeObjectMembers(ObjectOutputStream* stream);
 
 	friend class StimPack;
+	friend class TransactionalObjectHandle<StimPackImplementation*>;
 };
 
 class StimPackAdapter : public PharmaceuticalObjectAdapter {

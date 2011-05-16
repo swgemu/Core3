@@ -166,6 +166,8 @@ public:
 protected:
 	virtual ~AccountImplementation();
 
+	Object* clone();
+
 	void finalize();
 
 	void _initializeImplementation();
@@ -191,6 +193,7 @@ protected:
 	int writeObjectMembers(ObjectOutputStream* stream);
 
 	friend class Account;
+	friend class TransactionalObjectHandle<AccountImplementation*>;
 };
 
 class AccountAdapter : public ManagedObjectAdapter {

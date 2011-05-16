@@ -451,6 +451,8 @@ public:
 protected:
 	virtual ~GamblingTerminalImplementation();
 
+	Object* clone();
+
 	void finalize();
 
 	void _initializeImplementation();
@@ -476,6 +478,7 @@ protected:
 	int writeObjectMembers(ObjectOutputStream* stream);
 
 	friend class GamblingTerminal;
+	friend class TransactionalObjectHandle<GamblingTerminalImplementation*>;
 };
 
 class GamblingTerminalAdapter : public TerminalAdapter {

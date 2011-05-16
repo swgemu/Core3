@@ -95,6 +95,8 @@ public:
 protected:
 	virtual ~StaticObjectImplementation();
 
+	Object* clone();
+
 	void finalize();
 
 	void _initializeImplementation();
@@ -120,6 +122,7 @@ protected:
 	int writeObjectMembers(ObjectOutputStream* stream);
 
 	friend class StaticObject;
+	friend class TransactionalObjectHandle<StaticObjectImplementation*>;
 };
 
 class StaticObjectAdapter : public SceneObjectAdapter {

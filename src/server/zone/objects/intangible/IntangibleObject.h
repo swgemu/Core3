@@ -115,6 +115,8 @@ public:
 protected:
 	virtual ~IntangibleObjectImplementation();
 
+	Object* clone();
+
 	void _initializeImplementation();
 
 	void _setStub(DistributedObjectStub* stub);
@@ -138,6 +140,7 @@ protected:
 	int writeObjectMembers(ObjectOutputStream* stream);
 
 	friend class IntangibleObject;
+	friend class TransactionalObjectHandle<IntangibleObjectImplementation*>;
 };
 
 class IntangibleObjectAdapter : public SceneObjectAdapter {

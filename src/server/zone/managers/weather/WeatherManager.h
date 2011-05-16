@@ -257,6 +257,8 @@ public:
 protected:
 	virtual ~WeatherManagerImplementation();
 
+	Object* clone();
+
 	void finalize();
 
 	void _initializeImplementation();
@@ -282,6 +284,7 @@ protected:
 	int writeObjectMembers(ObjectOutputStream* stream);
 
 	friend class WeatherManager;
+	friend class TransactionalObjectHandle<WeatherManagerImplementation*>;
 };
 
 class WeatherManagerAdapter : public ManagedServiceAdapter {

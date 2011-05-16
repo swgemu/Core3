@@ -605,6 +605,8 @@ public:
 protected:
 	virtual ~PlayerObjectImplementation();
 
+	Object* clone();
+
 	void _initializeImplementation();
 
 	void _setStub(DistributedObjectStub* stub);
@@ -628,6 +630,7 @@ protected:
 	int writeObjectMembers(ObjectOutputStream* stream);
 
 	friend class PlayerObject;
+	friend class TransactionalObjectHandle<PlayerObjectImplementation*>;
 };
 
 class PlayerObjectAdapter : public IntangibleObjectAdapter {

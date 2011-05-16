@@ -64,8 +64,8 @@ import engine.util.u3d.Vector3;
 include server.zone.objects.cell.CellObject;
 
 class BuildingObject extends StructureObject {
-	protected QuadTree spatialIndexer;
-	//protected TransactionalReference<QuadTree> spatialIndexer;
+	//protected QuadTree spatialIndexer;
+	protected TransactionalReference<QuadTree> spatialIndexer;
 	
 	@dereferenced
 	protected Vector<CellObject> cells;

@@ -279,6 +279,8 @@ public:
 protected:
 	virtual ~ShuttleCreatureImplementation();
 
+	Object* clone();
+
 	void finalize();
 
 	void _initializeImplementation();
@@ -304,6 +306,7 @@ protected:
 	int writeObjectMembers(ObjectOutputStream* stream);
 
 	friend class ShuttleCreature;
+	friend class TransactionalObjectHandle<ShuttleCreatureImplementation*>;
 };
 
 class ShuttleCreatureAdapter : public CreatureObjectAdapter {

@@ -70,6 +70,8 @@ public:
 protected:
 	virtual ~HerdGroupImplementation();
 
+	Object* clone();
+
 	void finalize();
 
 	void _initializeImplementation();
@@ -95,6 +97,7 @@ protected:
 	int writeObjectMembers(ObjectOutputStream* stream);
 
 	friend class HerdGroup;
+	friend class TransactionalObjectHandle<HerdGroupImplementation*>;
 };
 
 class HerdGroupAdapter : public AiGroupAdapter {

@@ -111,6 +111,8 @@ public:
 protected:
 	virtual ~SuiMessageBoxImplementation();
 
+	Object* clone();
+
 	void finalize();
 
 	void _initializeImplementation();
@@ -136,6 +138,7 @@ protected:
 	int writeObjectMembers(ObjectOutputStream* stream);
 
 	friend class SuiMessageBox;
+	friend class TransactionalObjectHandle<SuiMessageBoxImplementation*>;
 };
 
 class SuiMessageBoxAdapter : public SuiBoxAdapter {

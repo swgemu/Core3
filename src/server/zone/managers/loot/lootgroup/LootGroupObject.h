@@ -160,6 +160,8 @@ public:
 protected:
 	virtual ~LootGroupObjectImplementation();
 
+	Object* clone();
+
 	void finalize();
 
 	void _initializeImplementation();
@@ -185,6 +187,7 @@ protected:
 	int writeObjectMembers(ObjectOutputStream* stream);
 
 	friend class LootGroupObject;
+	friend class TransactionalObjectHandle<LootGroupObjectImplementation*>;
 };
 
 class LootGroupObjectAdapter : public ManagedObjectAdapter {

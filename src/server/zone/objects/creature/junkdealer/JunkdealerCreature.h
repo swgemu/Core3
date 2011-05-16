@@ -182,6 +182,8 @@ public:
 protected:
 	virtual ~JunkdealerCreatureImplementation();
 
+	Object* clone();
+
 	void finalize();
 
 	void _initializeImplementation();
@@ -207,6 +209,7 @@ protected:
 	int writeObjectMembers(ObjectOutputStream* stream);
 
 	friend class JunkdealerCreature;
+	friend class TransactionalObjectHandle<JunkdealerCreatureImplementation*>;
 };
 
 class JunkdealerCreatureAdapter : public CreatureObjectAdapter {

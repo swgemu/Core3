@@ -199,6 +199,8 @@ public:
 protected:
 	virtual ~VendorTerminalImplementation();
 
+	Object* clone();
+
 	void finalize();
 
 	void _initializeImplementation();
@@ -224,6 +226,7 @@ protected:
 	int writeObjectMembers(ObjectOutputStream* stream);
 
 	friend class VendorTerminal;
+	friend class TransactionalObjectHandle<VendorTerminalImplementation*>;
 };
 
 class VendorTerminalAdapter : public TerminalAdapter {

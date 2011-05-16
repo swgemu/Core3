@@ -342,6 +342,8 @@ public:
 protected:
 	virtual ~GuildManagerImplementation();
 
+	Object* clone();
+
 	void finalize();
 
 	void _initializeImplementation();
@@ -367,6 +369,7 @@ protected:
 	int writeObjectMembers(ObjectOutputStream* stream);
 
 	friend class GuildManager;
+	friend class TransactionalObjectHandle<GuildManagerImplementation*>;
 };
 
 class GuildManagerAdapter : public ManagedServiceAdapter {

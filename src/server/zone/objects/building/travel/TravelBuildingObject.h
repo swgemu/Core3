@@ -92,6 +92,8 @@ public:
 protected:
 	virtual ~TravelBuildingObjectImplementation();
 
+	Object* clone();
+
 	void finalize();
 
 	void _initializeImplementation();
@@ -117,6 +119,7 @@ protected:
 	int writeObjectMembers(ObjectOutputStream* stream);
 
 	friend class TravelBuildingObject;
+	friend class TransactionalObjectHandle<TravelBuildingObjectImplementation*>;
 };
 
 class TravelBuildingObjectAdapter : public BuildingObjectAdapter {

@@ -155,6 +155,8 @@ public:
 protected:
 	virtual ~TravelTerminalImplementation();
 
+	Object* clone();
+
 	void finalize();
 
 	void _initializeImplementation();
@@ -180,6 +182,7 @@ protected:
 	int writeObjectMembers(ObjectOutputStream* stream);
 
 	friend class TravelTerminal;
+	friend class TransactionalObjectHandle<TravelTerminalImplementation*>;
 };
 
 class TravelTerminalAdapter : public TerminalAdapter {

@@ -205,6 +205,8 @@ public:
 protected:
 	virtual ~SlicingSessionImplementation();
 
+	Object* clone();
+
 	void finalize();
 
 	void _initializeImplementation();
@@ -230,6 +232,7 @@ protected:
 	int writeObjectMembers(ObjectOutputStream* stream);
 
 	friend class SlicingSession;
+	friend class TransactionalObjectHandle<SlicingSessionImplementation*>;
 };
 
 class SlicingSessionAdapter : public FacadeAdapter {

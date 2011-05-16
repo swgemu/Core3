@@ -180,6 +180,8 @@ public:
 protected:
 	virtual ~SuiListBoxImplementation();
 
+	Object* clone();
+
 	void finalize();
 
 	void _initializeImplementation();
@@ -205,6 +207,7 @@ protected:
 	int writeObjectMembers(ObjectOutputStream* stream);
 
 	friend class SuiListBox;
+	friend class TransactionalObjectHandle<SuiListBoxImplementation*>;
 };
 
 class SuiListBoxAdapter : public SuiBoxAdapter {

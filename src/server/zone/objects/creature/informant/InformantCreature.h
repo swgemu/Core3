@@ -136,6 +136,8 @@ public:
 protected:
 	virtual ~InformantCreatureImplementation();
 
+	Object* clone();
+
 	void finalize();
 
 	void _initializeImplementation();
@@ -161,6 +163,7 @@ protected:
 	int writeObjectMembers(ObjectOutputStream* stream);
 
 	friend class InformantCreature;
+	friend class TransactionalObjectHandle<InformantCreatureImplementation*>;
 };
 
 class InformantCreatureAdapter : public AiAgentAdapter {

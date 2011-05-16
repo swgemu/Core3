@@ -200,6 +200,8 @@ public:
 protected:
 	virtual ~ZoneClientSessionImplementation();
 
+	Object* clone();
+
 	void finalize();
 
 	void _initializeImplementation();
@@ -225,6 +227,7 @@ protected:
 	int writeObjectMembers(ObjectOutputStream* stream);
 
 	friend class ZoneClientSession;
+	friend class TransactionalObjectHandle<ZoneClientSessionImplementation*>;
 };
 
 class ZoneClientSessionAdapter : public ManagedObjectAdapter {
