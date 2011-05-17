@@ -12,6 +12,7 @@
 #include "../MessageCallback.h"
 
 #include "server/zone/managers/planet/PlanetManager.h"
+#include "PlanetTravelPointListResponse.h"
 #include "server/zone/Zone.h"
 
 class PlanetTravelPointListRequestCallback : public MessageCallback {
@@ -38,8 +39,17 @@ public:
 
 		Zone* zone = server->getZoneServer()->getZone(zoneName);
 
-		if (zone == NULL)
+		//Handles unknown or disabled zones.
+		if (zone == NULL) {
+			object->info("Attempting to travel to non-existant, or disabled, zone [" + zoneName + "].", true);
+
+			PlanetTravelPointListResponse* ptplr = new PlanetTravelPointListResponse(zoneName);
+			ptplr->addPoint("", 0, 0, 0, 0, 0);
+			ptplr->generateMessage();
+			object->sendMessage(ptplr);
+
 			return;
+		}
 
 		PlanetManager* planetManager = zone->getPlanetManager();
 		planetManager->sendPlanetTravelPointListResponse(object);

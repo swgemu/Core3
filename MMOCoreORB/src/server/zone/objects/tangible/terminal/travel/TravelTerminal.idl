@@ -52,6 +52,8 @@ import server.zone.Zone;
 import server.zone.objects.tangible.ticket.TicketObject;
 
 class TravelTerminal extends Terminal {	
+	protected string travelPointName;
+	
 	public TravelTerminal() {		
 		Logger.setLoggingName("TravelTerminal");
 	}
@@ -62,6 +64,8 @@ class TravelTerminal extends Terminal {
 		Logger.setLoggingName("TravelTerminal");
 	}
 	
+	public native void insertToZone(Zone zone);
+	
 	
 	/**
 	 * Handles the radial selection sent by the client
@@ -70,4 +74,8 @@ class TravelTerminal extends Terminal {
 	 * @returns 0 if successfull
 	 */
 	public native int handleObjectMenuSelect(PlayerCreature player, byte selectedID);
+	
+	public string getTravelPointName() {
+		return travelPointName;
+	}
 }

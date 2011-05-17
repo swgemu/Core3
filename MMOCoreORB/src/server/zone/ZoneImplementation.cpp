@@ -258,7 +258,6 @@ void ZoneImplementation::updateActiveAreas(SceneObject* object) {
 			object->addActiveArea(activeArea);
 			activeArea->enqueueEnterEvent(object);
 		}
-
 	}
 
 }
@@ -373,21 +372,13 @@ SortedVector<ManagedReference<SceneObject*> > ZoneImplementation::getPlanetaryOb
 
 	mapLocations.rlock();
 
-	try {
-		int index = mapLocations.find(mapObjectLocationType);
+	SortedVector<MapLocationEntry>* entryVector = &mapLocations.get(mapObjectLocationType);
 
-		if (index != -1) {
-			SortedVector<MapLocationEntry>* sortedVector = &mapLocations.elementAt(index).getValue();
-
-			for (int i = 0; i < sortedVector->size(); ++i) {
-				SceneObject* vectorObject = sortedVector->get(i).getObject();
-				retVector.put(vectorObject);
-			}
+	if (entryVector != NULL) {
+		for (int i = 0; i < entryVector->size(); ++i) {
+			MapLocationEntry entry = entryVector->get(i);
+			retVector.put(entry.getObject());
 		}
-	} catch (...) {
-		mapLocations.runlock();
-
-		throw;
 	}
 
 	mapLocations.runlock();

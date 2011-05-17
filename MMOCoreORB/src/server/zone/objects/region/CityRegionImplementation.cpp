@@ -1,8 +1,6 @@
 /*
 Copyright (C) 2007 <SWGEmu>
-
 This File is part of Core3.
-
 This program is free software; you can redistribute
 it and/or modify it under the terms of the GNU Lesser
 General Public License as published by the Free Software
@@ -40,46 +38,53 @@ it is their choice whether to do so. The GNU Lesser General Public License
 gives permission to release a modified version without this exception;
 this exception also makes it possible to release a modified version
 which carries forward this exception.
+
 */
 
-#ifndef BOARDSHUTTLECOMMAND_H_
-#define BOARDSHUTTLECOMMAND_H_
+#include "CityRegion.h"
 
-#include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/Zone.h"
+#include "server/zone/ZoneServer.h"
+#include "server/zone/managers/object/ObjectManager.h"
+#include "server/zone/objects/area/ActiveArea.h"
+#include "server/zone/objects/scene/ObserverEventType.h"
 
-class BoardShuttleCommand : public QueueCommand {
-public:
+void CityRegionImplementation::addActiveArea(Zone* zone, float x, float y, float radius) {
+	ManagedReference<ActiveArea*> area = (ActiveArea*) ObjectManager::instance()->createObject(String("object/active_area.iff").hashCode(), 0, "");
+	area->registerObserver(ObserverEventType::ENTEREDAREA, _this);
+	area->registerObserver(ObserverEventType::EXITEDAREA, _this);
+	area->initializePosition(x, 0, y);
+	area->setRadius(radius);
+	area->setClientObject(true);
 
-	BoardShuttleCommand(const String& name, ZoneProcessServer* server)
-		: QueueCommand(name, server) {
+	area->insertToZone(zone);
 
+	activeAreas.put(area);
+}
+
+void CityRegionImplementation::notifyEnter(SceneObject* object) {
+	object->setCityRegion(_this);
+
+	//Check to see if the region already contains the objectid in its region objects
+	if (regionObjects.contains(object->getObjectID()))
+		return;
+
+	Reference<PlanetMapCategory*> category = object->getPlanetMapCategory();
+}
+
+void CityRegionImplementation::notifyExit(SceneObject* object) {
+	object->setCityRegion(NULL);
+}
+
+SortedVector<ManagedReference<SceneObject*> > CityRegionImplementation::getRegionObjectsByPlanetMapCategory(const String& catname) {
+	SortedVector<ManagedReference<SceneObject*> > objects;
+
+	for (int i = 0; i < regionObjects.size(); ++i) {
+		ManagedReference<SceneObject*> object = regionObjects.get(i);
+
+		if (object->getPlanetMapCategory() != NULL && object->getPlanetMapCategory()->getName() == catname)
+			objects.put(object);
 	}
 
-	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
-
-		if (!checkStateMask(creature))
-			return INVALIDSTATE;
-
-		if (!checkInvalidPostures(creature))
-			return INVALIDPOSTURE;
-
-		if (!creature->isPlayerCreature())
-			return INVALIDPARAMETERS;
-
-		ManagedReference<PlayerCreature*> player = (PlayerCreature*) creature;
-
-		//@travel:no_pets You cannot board the shuttle when you are riding on a pet or in a vehicle.
-		//@travel:boarding_too_far You are too far from the shuttle to board.
-		//@travel:shuttle_not_available The shuttle is not available at this time.
-		//@travel:route_not_available This ticket's route is no longer available.
-		//@travel:boarding_what_shuttle What shuttle do you wish to board?
-		//@travel:no_ticket You do not have a ticket to board this shuttle.
-		//@travel:boarding_ticket_selecting You must select a ticket to use before boarding.
-		//@travel:wrong_shuttle This ticket is not valid for the given shuttle.
-
-		return SUCCESS;
-	}
-
-};
-
-#endif //BOARDSHUTTLECOMMAND_H_
+	return objects;
+}

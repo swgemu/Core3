@@ -64,9 +64,7 @@ import server.zone.managers.objectcontroller.ObjectController;
 import system.lang.ref.Reference;
 import engine.core.Task;
 import engine.util.u3d.Vector3;
-include engine.util.Facade;
 import engine.util.Observable;
-include server.zone.objects.scene.ObserverEventType;
 
 import server.zone.ZoneProcessServer;
 import server.zone.ZoneClientSession;
@@ -76,16 +74,18 @@ import server.zone.objects.building.BuildingObject;
 import server.zone.packets.object.ObjectMenuResponse;
 import server.zone.objects.player.PlayerCreature;
 import server.zone.packets.scene.AttributeListMessage;
+import server.zone.templates.SharedObjectTemplate;
+import server.zone.objects.area.ActiveArea;
 
+include server.zone.objects.region.CityRegion;
+include server.zone.managers.templates.PlanetMapCategory;
+include server.zone.managers.templates.TemplateManager;
 include server.zone.objects.scene.variables.StringId;
 include server.zone.objects.scene.TransferErrorCode;
 include server.zone.objects.scene.variables.PendingTasksMap;
 include server.zone.objects.scene.SessionFacadeType;
-import server.zone.templates.SharedObjectTemplate;
-import server.zone.objects.area.ActiveArea;
-
-include server.zone.managers.templates.PlanetMapCategory;
-include server.zone.managers.templates.TemplateManager;
+include engine.util.Facade;
+include server.zone.objects.scene.ObserverEventType;
 
 class SceneObject extends QuadTreeEntry implements Logger {
 	protected transient ZoneProcessServer server;
@@ -139,6 +139,9 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	
 	@dereferenced
 	protected SortedVector<ActiveArea> activeAreas;
+	
+	@weakReference
+	protected transient CityRegion cityRegion;
 	
 	@dereferenced
 	protected VectorMap<unsigned int, Facade> objectActiveSessions;
@@ -404,6 +407,7 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	public static final int DYNAMICSPAWNAREA = 0x2000004;
 	public static final int STATICSPAWNAREA = 0x2000005;
 	public static final int GARAGEAREA = 0x2000006;
+	public static final int ACTIVEAREA = 0x2000007;
 	
 	public static final int AIGROUP = 0x4000000;
 	public static final int HERDGROUP = 0x4000001;
@@ -1498,16 +1502,12 @@ class SceneObject extends QuadTreeEntry implements Logger {
 		return activeAreas;
 	}
 	
-	public ActiveArea getActiveRegion() {
-		for (int i = 0; i < activeAreas.size(); i++) {
-			ActiveArea region = activeAreas.get(i);
-			
-			if (region.isRegion()) {
-				return region;
-			}
-		}
-		
-		return null;
+	public CityRegion getCityRegion() {
+		return cityRegion;
+	}
+	
+	public void setCityRegion(CityRegion region) {
+		cityRegion = region;
 	}
 	
 	public boolean hasActiveArea(ActiveArea area) {
@@ -1524,6 +1524,14 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	public PlanetMapCategory getPlanetMapSubCategory() {
 		TemplateManager templateManager = TemplateManager.instance();
 		return templateManager.getPlanetMapCategoryByCrc(planetMapSubCategory);
+	}
+	
+	public int getPlanetMapCategoryCRC() {
+		return planetMapCategory;
+	}
+	
+	public int getPlanetMapSubCategoryCRC() {
+		return planetMapSubCategory;
 	}
 	
 	@local

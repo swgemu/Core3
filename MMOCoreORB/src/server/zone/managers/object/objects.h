@@ -106,6 +106,7 @@
 #include "server/zone/objects/resource/ResourceSpawn.h"
 #include "server/zone/objects/resource/ResourceContainer.h"
 
+#include "server/zone/objects/area/ActiveArea.h"
 #include "server/zone/objects/area/BadgeActiveArea.h"
 #include "server/zone/objects/area/GarageArea.h"
 #include "server/zone/objects/region/Region.h"

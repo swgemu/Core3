@@ -135,6 +135,8 @@ void SceneObjectImplementation::initializePrivateData() {
 
 	movementCounter = 0;
 
+	cityRegion = NULL;
+
 	staticObject = false;
 
 	setGlobalLogging(true);

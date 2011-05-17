@@ -16,7 +16,7 @@
  *	TravelTerminalStub
  */
 
-enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_};
+enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_INSERTTOZONE__ZONE_,RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_,RPC_GETTRAVELPOINTNAME__};
 
 TravelTerminal::TravelTerminal() : Terminal(DummyConstructorParameter::instance()) {
 	TravelTerminalImplementation* _implementation = new TravelTerminalImplementation();
@@ -44,6 +44,20 @@ void TravelTerminal::initializeTransientMembers() {
 		_implementation->initializeTransientMembers();
 }
 
+void TravelTerminal::insertToZone(Zone* zone) {
+	TravelTerminalImplementation* _implementation = (TravelTerminalImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_INSERTTOZONE__ZONE_);
+		method.addObjectParameter(zone);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->insertToZone(zone);
+}
+
 int TravelTerminal::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
 	TravelTerminalImplementation* _implementation = (TravelTerminalImplementation*) _getImplementation();
 	if (_implementation == NULL) {
@@ -57,6 +71,20 @@ int TravelTerminal::handleObjectMenuSelect(PlayerCreature* player, byte selected
 		return method.executeWithSignedIntReturn();
 	} else
 		return _implementation->handleObjectMenuSelect(player, selectedID);
+}
+
+String TravelTerminal::getTravelPointName() {
+	TravelTerminalImplementation* _implementation = (TravelTerminalImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_GETTRAVELPOINTNAME__);
+
+		method.executeWithAsciiReturn(_return_getTravelPointName);
+		return _return_getTravelPointName;
+	} else
+		return _implementation->getTravelPointName();
 }
 
 DistributedObjectServant* TravelTerminal::_getImplementation() {
@@ -163,6 +191,11 @@ bool TravelTerminalImplementation::readObjectMember(ObjectInputStream* stream, c
 	if (TerminalImplementation::readObjectMember(stream, _name))
 		return true;
 
+	if (_name == "travelPointName") {
+		TypeInfo<String >::parseFromBinaryStream(&travelPointName, stream);
+		return true;
+	}
+
 
 	return false;
 }
@@ -178,8 +211,16 @@ int TravelTerminalImplementation::writeObjectMembers(ObjectOutputStream* stream)
 	String _name;
 	int _offset;
 	uint16 _totalSize;
+	_name = "travelPointName";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<String >::toBinaryStream(&travelPointName, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
 
-	return 0 + TerminalImplementation::writeObjectMembers(stream);
+
+	return 1 + TerminalImplementation::writeObjectMembers(stream);
 }
 
 TravelTerminalImplementation::TravelTerminalImplementation() {
@@ -193,6 +234,11 @@ void TravelTerminalImplementation::initializeTransientMembers() {
 	TerminalImplementation::initializeTransientMembers();
 	// server/zone/objects/tangible/terminal/travel/TravelTerminal.idl():  		Logger.setLoggingName("TravelTerminal");
 	Logger::setLoggingName("TravelTerminal");
+}
+
+String TravelTerminalImplementation::getTravelPointName() {
+	// server/zone/objects/tangible/terminal/travel/TravelTerminal.idl():  		return travelPointName;
+	return travelPointName;
 }
 
 /*
@@ -209,8 +255,14 @@ Packet* TravelTerminalAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 	case RPC_INITIALIZETRANSIENTMEMBERS__:
 		initializeTransientMembers();
 		break;
+	case RPC_INSERTTOZONE__ZONE_:
+		insertToZone((Zone*) inv->getObjectParameter());
+		break;
 	case RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_:
 		resp->insertSignedInt(handleObjectMenuSelect((PlayerCreature*) inv->getObjectParameter(), inv->getByteParameter()));
+		break;
+	case RPC_GETTRAVELPOINTNAME__:
+		resp->insertAscii(getTravelPointName());
 		break;
 	default:
 		return NULL;
@@ -223,8 +275,16 @@ void TravelTerminalAdapter::initializeTransientMembers() {
 	((TravelTerminalImplementation*) impl)->initializeTransientMembers();
 }
 
+void TravelTerminalAdapter::insertToZone(Zone* zone) {
+	((TravelTerminalImplementation*) impl)->insertToZone(zone);
+}
+
 int TravelTerminalAdapter::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
 	return ((TravelTerminalImplementation*) impl)->handleObjectMenuSelect(player, selectedID);
+}
+
+String TravelTerminalAdapter::getTravelPointName() {
+	return ((TravelTerminalImplementation*) impl)->getTravelPointName();
 }
 
 /*

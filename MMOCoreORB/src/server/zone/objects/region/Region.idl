@@ -55,7 +55,6 @@ import server.zone.objects.creature.CreatureObject;
 include server.zone.objects.scene.variables.StringId;
 include server.zone.objects.region.RegionCenterPoint;
 include server.zone.objects.region.RegionCenterPointList;
-import server.zone.objects.installation.shuttle.ShuttleInstallation;
 import server.zone.Zone;
 import server.zone.objects.scene.SceneObject;
 
@@ -63,8 +62,8 @@ class Region extends ActiveArea {
 	@dereferenced
 	protected VectorMap<unsigned long, BazaarTerminal> bazaars;
 	
-//	@weakReference
-	protected ShuttleInstallation shuttleInstallation;
+	@dereferenced
+	protected SortedVector<SceneObject> shuttlePorts;
 	
 //	@weakReference
 	protected CityHallObject cityHall;
@@ -74,7 +73,6 @@ class Region extends ActiveArea {
 		
 		bazaars.setNoDuplicateInsertPlan();
 		bazaars.setNullValue(null);
-
 	}
 	
 	public void notifyEnter(SceneObject object) {
@@ -88,9 +86,8 @@ class Region extends ActiveArea {
 			sendGreetingMessage((PlayerCreature) object);
 		}
 		
-		if (object.isShuttleInstallation()) {
-			shuttleInstallation = (ShuttleInstallation) object;
-		}
+		//object planetmapcat is shuttleport, then add to shuttleports vector.
+		//otherwise, die
 	}
 	
 	public native void sendGreetingMessage(PlayerCreature player);
@@ -106,10 +103,6 @@ class Region extends ActiveArea {
 		
 		if (object.isPlayerCreature()) {
 			sendDepartingMessage((PlayerCreature) object);
-		}
-		
-		if (object == shuttleInstallation) {
-			shuttleInstallation = null;
 		}
 	}
 	
@@ -137,10 +130,6 @@ class Region extends ActiveArea {
 
 	public BazaarTerminal getBazaar(int idx) {
 		return bazaars.get(idx);
-	}
-	
-	public ShuttleInstallation getShuttle() {
-		return shuttleInstallation;
 	}
 
 	public int getBazaarCount() {

@@ -75,6 +75,7 @@ public:
 
 		PlayerCreature* targetPlayer = (PlayerCreature*) targetObject.get();
 
+		/*
 		ManagedReference<ActiveArea*> activeRegion = player->getActiveRegion();
 
 		if (activeRegion == NULL || !activeRegion->isRegion())
@@ -107,6 +108,7 @@ public:
 		params.setStringId("@city/city:city_pardon_done");
 		params.setTT(targetPlayer);
 		player->sendSystemMessage(params); //%TT has been pardoned and is now able to use city services.
+		*/
 
 		return SUCCESS;
 	}

@@ -39,6 +39,7 @@ public:
 		Locker _lock(vehicle, player);
 
 		//Need to check if they are city banned.
+		/*
 		ManagedReference<ActiveArea*> activeArea = vehicle->getActiveRegion();
 
 		if (activeArea != NULL && activeArea->isRegion() && !player->getPlayerObject()->isPrivileged()) {
@@ -50,7 +51,7 @@ public:
 				player->sendSystemMessage("@city/city:garage_banned"); //You are city banned and cannot use this garage.
 				return;
 			}
-		}
+		}*/
 
 		int repairCost = vehicle->calculateRepairCost(player);
 		int totalFunds = player->getBankCredits();

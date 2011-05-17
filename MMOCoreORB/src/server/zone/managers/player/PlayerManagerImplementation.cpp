@@ -63,6 +63,8 @@
 #include "server/zone/packets/player/PlayerObjectDeltaMessage6.h"
 #include "server/zone/packets/object/StartingLocationListMessage.h"
 
+#include "server/zone/objects/region/CityRegion.h"
+
 #include "server/zone/Zone.h"
 
 PlayerManagerImplementation::PlayerManagerImplementation(ZoneServer* zoneServer, ZoneProcessServer* impl) :
@@ -985,29 +987,7 @@ void PlayerManagerImplementation::sendActivateCloneRequest(PlayerCreature* playe
 	if (closestCloning == NULL)
 		return;
 
-	UnicodeString name;
-	StringId* objectName = closestCloning->getObjectName();
-
-	ActiveArea* area = closestCloning->getActiveRegion();
-
-	if (area != NULL) {
-		objectName = area->getObjectName();
-
-		//info("area found", true);
-	} else {
-		//info("area not found, true");
-	}
-
-	name = objectName->getCustomString();
-
-	if (name.length() < 2) {
-		String fullPath;
-		objectName->getFullPath(fullPath);
-
-		name = fullPath;
-	}
-
-	String closestName = name.toString(); //"Not Working Yet";
+	String closestName = closestCloning->getObjectName()->getDisplayedName();
 	String predesignatedName = (preDesignatedFacility != NULL) ? "Not Working Yet" : "None";
 
 	//TODO: Integrate this menu with cloning system.

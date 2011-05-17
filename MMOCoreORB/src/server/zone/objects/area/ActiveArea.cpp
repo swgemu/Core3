@@ -368,12 +368,6 @@ ActiveAreaImplementation::ActiveAreaImplementation() {
 void ActiveAreaImplementation::sendTo(SceneObject* player, bool doClose) {
 }
 
-void ActiveAreaImplementation::notifyEnter(SceneObject* object) {
-}
-
-void ActiveAreaImplementation::notifyExit(SceneObject* object) {
-}
-
 bool ActiveAreaImplementation::isActiveArea() {
 	// server/zone/objects/area/ActiveArea.idl():  		return true;
 	return true;

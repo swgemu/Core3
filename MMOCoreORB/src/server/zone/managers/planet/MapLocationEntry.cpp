@@ -35,10 +35,7 @@ MapLocationEntry& MapLocationEntry::operator=(const MapLocationEntry& entry) {
 void MapLocationEntry::insertToMessage(BaseMessage* message) const {
 	message->insertLong(object->getObjectID());
 
-	if (object->isBuildingObject() && object->getActiveRegion() != NULL)
-		message->insertUnicode(object->getActiveRegion()->getObjectName()->getDisplayedName());
-	else
-		message->insertUnicode(object->getObjectName()->getDisplayedName());
+	message->insertUnicode(object->getObjectName()->getDisplayedName());
 
 	message->insertFloat(object->getWorldPositionX());
 	message->insertFloat(object->getWorldPositionY());

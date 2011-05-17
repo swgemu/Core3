@@ -28,7 +28,6 @@
 #include "server/zone/objects/tangible/terminal/city/CityVoteTerminal.h"
 
 void CityHallObjectImplementation::destroyObjectFromDatabase(bool destroyContainedObjects) {
-	//TODO: Destroy all civic structures.
 	BuildingObjectImplementation::destroyObjectFromDatabase(destroyContainedObjects);
 }
 
@@ -149,10 +148,12 @@ void CityHallObjectImplementation::sendStatusTo(PlayerCreature* player) {
 	listBox->addMenuItem("@city/city:specialization_prompt "); //TODO: Specialization
 	listBox->addMenuItem("@city/city:income_tax_prompt " + String::valueOf(incomeTax) + " @city/city:promperty_tax_prompt " + String::valueOf(propertyTax) + " @city/city:sales_tax_prompt " + String::valueOf(salesTax));
 
+	/**
 	if (cityRegion->getShuttle() == NULL)
 		listBox->addMenuItem("@city/city:travel_cost_prompt_none");
 	else
 		listBox->addMenuItem("@city/city:travel_cost_prompt "); //TODO: Shuttle costs
+	**/
 
 	player->sendMessage(listBox->generateMessage());
 }

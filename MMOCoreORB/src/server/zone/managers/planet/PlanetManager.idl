@@ -45,7 +45,6 @@ which carries forward this exception.
 package server.zone.managers.planet;
 
 import engine.core.ManagedService;
-
 import server.zone.Zone;
 import server.zone.ZoneProcessServer;
 import engine.log.Logger;
@@ -53,6 +52,9 @@ import server.zone.objects.building.BuildingObject;
 import system.thread.Thread;
 import system.util.SortedVector;
 import system.util.VectorMap;
+import system.util.HashTable;
+import system.util.Vector;
+import server.zone.objects.region.CityRegion;
 import server.zone.objects.scene.variables.StringId;
 import server.zone.managers.structure.StructureManager;
 import server.zone.managers.weather.WeatherManager;
@@ -66,11 +68,10 @@ include server.zone.managers.planet.NoBuildAreaMap;
 include server.zone.managers.planet.MissionTargetMap;
 include server.zone.managers.planet.HuntingTargetMap;
 include server.zone.managers.planet.HuntingTargetEntry;
-import system.util.Vector;
-
-include server.zone.managers.planet.events.ShuttleDestinationReachedEvent;
 include server.zone.templates.snapshot.WorldSnapshotNode;
 include server.zone.templates.snapshot.WorldSnapshotIff;
+include server.zone.managers.planet.PlanetTravelPointList;
+include server.zone.managers.planet.PlanetTravelPoint;
 
 class PlanetManager extends ManagedService implements Logger {
 	@weakReference
@@ -80,10 +81,17 @@ class PlanetManager extends ManagedService implements Logger {
 	protected RegionMap regionMap;
 	
 	@dereferenced
+	protected HashTable<string, CityRegion> cityRegionMap;
+	
+	@dereferenced
 	protected VectorMap<string, int> travelFares;
 	
 	@dereferenced
-	protected VectorMap<unsigned long, ShuttleDestinationReachedEvent> shuttleRoutes;
+	protected PlanetTravelPointList planetTravelPointList;
+	
+	//In miliseconds.
+	protected int shuttleLandingDelay;
+	protected int shuttleTakeoffDelay;
 	
 	protected StructureManager structureManager;
 
@@ -125,6 +133,9 @@ class PlanetManager extends ManagedService implements Logger {
 		
 		numberOfCities = 0;
 		
+		shuttleLandingDelay = 300000;
+		shuttleTakeoffDelay = 90000;
+		
 		structureManager = null;
 
 		weatherManager = null;
@@ -137,9 +148,8 @@ class PlanetManager extends ManagedService implements Logger {
 	private native void loadSnapshotObject(WorldSnapshotNode node, WorldSnapshotIff wsiff, @dereferenced int totalObjects);
 	private native void loadSnapshotObjects();
 	private native void loadTravelFares();
-	private native void startTravelRoutes();
 	
-	public native void scheduleShuttleRoute(SceneObject obj);
+	public native void scheduleShuttles();
 
 	private native void loadLuaConfig();
 	
@@ -156,6 +166,14 @@ class PlanetManager extends ManagedService implements Logger {
 	public native void loadHuntingTargets();
 	public native void loadReconLocations();
 	protected native void loadStaticTangibleObjects();
+	
+	/**
+	 * Gets the name of the nearest Planet Travel Point to the objects location.
+	 * If no points exist on the planet, then the name of the zone is returned.
+	 * @param object The object to use as reference.
+	 * @return Returns a string of the name of the closest PlanetTravelPoint.
+	 */
+	public native string getNearestPlanetTravelPointName(SceneObject object);
 
 	@local
 	public native boolean isNoBuildArea(float x, float y, @dereferenced StringId fullAreaName);
@@ -272,6 +290,31 @@ class PlanetManager extends ManagedService implements Logger {
 	public MissionTargetMap getInformants() {
 		return informants;
 	}
+	
+	/**
+	 * Checks to see if the point is an existing planet travel point.
+	 * @param pointName The name of the point to check for.
+	 * @return Returns true if the point exists.
+	 */
+	public boolean isExistingPlanetTravelPoint(final string pointName) {
+		return (planetTravelPointList.find(pointName) != -1);
+	}
+	
+	/**
+	 * Checks to see if interplanetary travel is allowed to the specified point.
+	 * @param pointName The point name representing a travel point belonging to this planet.
+	 * @return Returns true if interplanetary travel is allowed.
+	 */
+	public native boolean isInterplanetaryTravelAllowed(final string pointName);
+	
+	/**
+	 * Checks to see the travel between the points is allowed based on their settings.
+	 * @param destinationPoint The point from which is being traveled.
+	 * @param arrivalPlanet The planet to which is being traveled.
+	 * @param arrivalPoint The point to which is being traveled.
+	 * @return Returns true if travel is permitted between the two points.
+	 */
+	public native boolean isTravelToLocationPermitted(final string destinationPoint, final string arrivalPlanet, final string arrivalPoint);
 	
 	/*public Region getRegion(final string regionName) {
 		return regionMap.getRegion(regionName);

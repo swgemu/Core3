@@ -82,6 +82,8 @@ void ObjectManager::registerObjectTypes() {
 	objectFactory.registerObject<TangibleObject>(6);
 	objectFactory.registerObject<TangibleObject>(SceneObject::GENERALTANGIBLEOBJECT);
 	objectFactory.registerObject<StaticObject>(SceneObject::FLORA);
+
+	objectFactory.registerObject<ActiveArea>(SceneObject::ACTIVEAREA);
 	objectFactory.registerObject<BadgeActiveArea>(SceneObject::BADGEAREA);
 	objectFactory.registerObject<GarageArea>(SceneObject::GARAGEAREA);
 	objectFactory.registerObject<MissionSpawnActiveArea>(SceneObject::MISSIONSPAWNAREA);

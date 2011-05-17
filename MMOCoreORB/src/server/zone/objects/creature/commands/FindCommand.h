@@ -59,6 +59,8 @@
 #include "server/zone/managers/stringid/StringIdManager.h"
 #include "server/zone/objects/creature/commands/QueueCommand.h"
 
+#include "server/zone/objects/region/CityRegion.h"
+
 #include "server/zone/objects/creature/commands/sui/FindCommandSuiCallback.h"
 
 class FindCommand: public QueueCommand {
@@ -118,16 +120,11 @@ public:
 			return GENERALERROR;
 		}
 
-		ActiveArea* region = object->getActiveRegion();
+		ManagedReference<CityRegion*> region = object->getCityRegion();
 		String regFullName = "";
 
 		if (region != NULL) {
-			StringId* regionName = region->getObjectName();
-			regFullName = region->getCustomObjectName().toString();
-
-			if (regFullName.isEmpty())
-				regionName->getFullPath(regFullName);
-
+			regFullName = region->getRegionName();
 		}
 
 		String objFullName = "@map_loc_cat_n:" + maplocationtype;

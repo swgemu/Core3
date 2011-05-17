@@ -54,19 +54,20 @@ class EnterTicketPurchaseModeMessage : public BaseMessage {
 public:
 
     EnterTicketPurchaseModeMessage(const String& planet, const String& city) : BaseMessage() {
-		insertShort(0x03);
+		insertShort(0x04);
 		insertInt(0x904DAE1A);  // CRC
         insertAscii(planet);
         insertAscii(city);
-        
+        insertByte(0);
 	}
 
     EnterTicketPurchaseModeMessage(SceneObject* port) : BaseMessage() {
-		insertShort(0x03);
+		insertShort(0x04);
 		insertInt(0x904DAE1A);  //EnterTicketPurchaseModeMessage
 
         insertAscii(port->getZone()->getZoneName());
-        insertAscii(((Region*) port->getActiveRegion())->getObjectName()->getDisplayedName());
+        insertAscii(port->getObjectName()->getDisplayedName());
+        insertByte(0);
 	}
 	
 };

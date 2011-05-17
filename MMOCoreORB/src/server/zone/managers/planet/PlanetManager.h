@@ -48,6 +48,20 @@ using namespace server::zone::objects::building;
 namespace server {
 namespace zone {
 namespace objects {
+namespace region {
+
+class CityRegion;
+
+} // namespace region
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::region;
+
+namespace server {
+namespace zone {
+namespace objects {
 namespace scene {
 namespace variables {
 
@@ -145,11 +159,13 @@ using namespace server::zone::objects::scene;
 
 #include "server/zone/managers/planet/HuntingTargetEntry.h"
 
-#include "server/zone/managers/planet/events/ShuttleDestinationReachedEvent.h"
-
 #include "server/zone/templates/snapshot/WorldSnapshotNode.h"
 
 #include "server/zone/templates/snapshot/WorldSnapshotIff.h"
+
+#include "server/zone/managers/planet/PlanetTravelPointList.h"
+
+#include "server/zone/managers/planet/PlanetTravelPoint.h"
 
 #include "engine/core/ManagedService.h"
 
@@ -160,6 +176,8 @@ using namespace server::zone::objects::scene;
 #include "system/util/SortedVector.h"
 
 #include "system/util/VectorMap.h"
+
+#include "system/util/HashTable.h"
 
 #include "system/util/Vector.h"
 
@@ -172,7 +190,7 @@ class PlanetManager : public ManagedService {
 public:
 	PlanetManager(Zone* planet, ZoneProcessServer* srv);
 
-	void scheduleShuttleRoute(SceneObject* obj);
+	void scheduleShuttles();
 
 	void initializeTransientMembers();
 
@@ -191,6 +209,8 @@ public:
 	void loadHuntingTargets();
 
 	void loadReconLocations();
+
+	String getNearestPlanetTravelPointName(SceneObject* object);
 
 	bool isNoBuildArea(float x, float y, StringId& fullAreaName);
 
@@ -242,6 +262,12 @@ public:
 
 	MissionTargetMap* getInformants();
 
+	bool isExistingPlanetTravelPoint(const String& pointName);
+
+	bool isInterplanetaryTravelAllowed(const String& pointName);
+
+	bool isTravelToLocationPermitted(const String& destinationPoint, const String& arrivalPlanet, const String& arrivalPoint);
+
 	DistributedObjectServant* _getImplementation();
 
 	void _setImplementation(DistributedObjectServant* servant);
@@ -250,6 +276,8 @@ protected:
 	PlanetManager(DummyConstructorParameter* param);
 
 	virtual ~PlanetManager();
+
+	String _return_getNearestPlanetTravelPointName;
 
 	friend class PlanetManagerHelper;
 };
@@ -272,9 +300,15 @@ protected:
 
 	RegionMap regionMap;
 
+	HashTable<String, ManagedReference<CityRegion* > > cityRegionMap;
+
 	VectorMap<String, int> travelFares;
 
-	VectorMap<unsigned long long, ShuttleDestinationReachedEvent*> shuttleRoutes;
+	PlanetTravelPointList planetTravelPointList;
+
+	int shuttleLandingDelay;
+
+	int shuttleTakeoffDelay;
 
 	ManagedReference<StructureManager* > structureManager;
 
@@ -310,10 +344,8 @@ private:
 
 	void loadTravelFares();
 
-	void startTravelRoutes();
-
 public:
-	void scheduleShuttleRoute(SceneObject* obj);
+	void scheduleShuttles();
 
 private:
 	void loadLuaConfig();
@@ -343,6 +375,8 @@ protected:
 	void loadStaticTangibleObjects();
 
 public:
+	String getNearestPlanetTravelPointName(SceneObject* object);
+
 	bool isNoBuildArea(float x, float y, StringId& fullAreaName);
 
 	int getTravelFare(const String& destinationPlanet);
@@ -392,6 +426,12 @@ public:
 	void addInformant(SceneObject* obj);
 
 	MissionTargetMap* getInformants();
+
+	bool isExistingPlanetTravelPoint(const String& pointName);
+
+	bool isInterplanetaryTravelAllowed(const String& pointName);
+
+	bool isTravelToLocationPermitted(const String& destinationPoint, const String& arrivalPlanet, const String& arrivalPoint);
 
 	PlanetManager* _this;
 
@@ -434,7 +474,7 @@ public:
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
-	void scheduleShuttleRoute(SceneObject* obj);
+	void scheduleShuttles();
 
 	void initializeTransientMembers();
 
@@ -455,6 +495,8 @@ public:
 	void loadHuntingTargets();
 
 	void loadReconLocations();
+
+	String getNearestPlanetTravelPointName(SceneObject* object);
 
 	int getTravelFare(const String& destinationPlanet);
 
@@ -490,11 +532,22 @@ public:
 
 	void addInformant(SceneObject* obj);
 
+	bool isExistingPlanetTravelPoint(const String& pointName);
+
+	bool isInterplanetaryTravelAllowed(const String& pointName);
+
+	bool isTravelToLocationPermitted(const String& destinationPoint, const String& arrivalPlanet, const String& arrivalPoint);
+
 protected:
 	String _param0_getTravelFare__String_;
 	String _param0_hasRegion__String_;
 	String _param0_addHuntingTargetTemplate__String_String_int_;
 	String _param1_addHuntingTargetTemplate__String_String_int_;
+	String _param0_isExistingPlanetTravelPoint__String_;
+	String _param0_isInterplanetaryTravelAllowed__String_;
+	String _param0_isTravelToLocationPermitted__String_String_String_;
+	String _param1_isTravelToLocationPermitted__String_String_String_;
+	String _param2_isTravelToLocationPermitted__String_String_String_;
 };
 
 class PlanetManagerHelper : public DistributedObjectClassHelper, public Singleton<PlanetManagerHelper> {

@@ -78,10 +78,10 @@ public:
 			return GENERALERROR;
 
 		String departurePlanet;
-		String departureCity;
+		String departurePoint;
 
 		String arrivalPlanet;
-		String arrivalCity;
+		String arrivalPoint;
 
 		bool roundTrip;
 
@@ -89,15 +89,51 @@ public:
 
 		try {
 			tokenizer.getStringToken(departurePlanet);
-			tokenizer.getStringToken(departureCity);
+			tokenizer.getStringToken(departurePoint);
 			tokenizer.getStringToken(arrivalPlanet);
-			tokenizer.getStringToken(arrivalCity);
+			tokenizer.getStringToken(arrivalPoint);
 			roundTrip = (bool) tokenizer.getIntToken();
 		} catch(Exception& e) {
 			return INVALIDPARAMETERS;
 		}
 
-		//TODO: Create the ticket object.
+		departurePlanet = departurePlanet.replaceAll("_", " ");
+		departurePoint = departurePoint.replaceAll("_", " ");
+		arrivalPlanet = arrivalPlanet.replaceAll("_", " ");
+		arrivalPoint = arrivalPoint.replaceAll("_", " ");
+
+		ManagedReference<Zone*> zone = player->getZone();
+
+		//TODO:
+		//@travel:no_location_found No location was found for your destination.
+
+		//Check to see if the departure planet is the same planet the player is on.
+		if (zone == NULL || zone->getZoneName() != departurePlanet)
+			return GENERALERROR;
+
+		//Check to see if this point can be reached from this location.
+		if (!zone->getPlanetManager()->isTravelToLocationPermitted(departurePoint, arrivalPlanet, arrivalPoint))
+			return GENERALERROR;
+
+		//TODO: All checks are passed. Create the ticket object.
+		ManagedReference<SceneObject*> obj = server->getZoneServer()->createObject(String("object/tangible/travel/travel_ticket/base/base_travel_ticket.iff").hashCode(), 1);
+
+		if (obj == NULL || !obj->isTangibleObject())
+			return GENERALERROR;
+
+		TangibleObject* tano = (TangibleObject*) obj.get();
+
+		if (!tano->isTicketObject())
+			return GENERALERROR;
+
+		TicketObject* ticket = (TicketObject*) tano;
+		ticket->setDeparturePlanet(departurePlanet);
+		ticket->setDeparturePoint(departurePoint);
+		ticket->setArrivalPlanet(arrivalPlanet);
+		ticket->setArrivalPoint(arrivalPoint);
+
+		inventory->addObject(ticket, -1);
+		ticket->sendTo(player, true);
 
 		return SUCCESS;
 	}

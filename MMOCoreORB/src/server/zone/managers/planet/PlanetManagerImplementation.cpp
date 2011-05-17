@@ -29,6 +29,10 @@
 #include "server/zone/packets/player/PlanetTravelPointListResponse.h"
 #include "server/zone/objects/area/BadgeActiveArea.h"
 
+#include "server/zone/objects/region/CityRegion.h"
+
+#include "PlanetTravelPoint.h"
+
 void PlanetManagerImplementation::initialize() {
 	terrainManager = new TerrainManager(zone);
 
@@ -56,6 +60,8 @@ void PlanetManagerImplementation::initialize() {
 
 	loadStaticTangibleObjects();
 
+	scheduleShuttles();
+
 	structureManager = new StructureManager(zone, server);
 	structureManager->loadStructures();
 
@@ -75,6 +81,11 @@ void PlanetManagerImplementation::loadLuaConfig() {
 	LuaObject luaObject = lua->getGlobalObject(planetName);
 
 	if (luaObject.isValidTable()) {
+		//Have to load the planetTravelPoints first.
+		LuaObject planetTravelPointsTable = luaObject.getObjectField("planetTravelPoints");
+		planetTravelPointList.readLuaObject(&planetTravelPointsTable);
+		planetTravelPointsTable.pop();
+
 		if (luaObject.getIntField("loadClientObjects") > 0)
 			loadSnapshotObjects();
 		else
@@ -190,42 +201,92 @@ void PlanetManagerImplementation::loadSnapshotObjects() {
 		loadSnapshotObject(node, &wsiff, totalObjects);
 	}
 
-	info("Loaded " + String::valueOf(totalObjects) + " client objects from world snapshot.", true);
+	HashTableIterator<String, ManagedReference<CityRegion*> > iterator = cityRegionMap.iterator();
 
-	startTravelRoutes();
-}
+	while (iterator.hasNext()) {
+		ManagedReference<CityRegion*> cityRegion = iterator.getNextValue();
 
-void PlanetManagerImplementation::startTravelRoutes() {
-	info ("Starting travel routes.", true);
-	//Load shuttleports first.
-	SortedVector<ManagedReference<SceneObject*> > objs = zone->getPlanetaryObjectList("shuttleport");
+		SortedVector<ManagedReference<SceneObject*> > objs = cityRegion->getRegionObjectsByPlanetMapCategory("shuttleport");
 
-	for (int i = 0; i < objs.size(); ++i)
-		scheduleShuttleRoute(objs.get(i));
+		for (int i = 0; i < objs.size(); ++i) {
+			ManagedReference<SceneObject*> obj = objs.get(i);
 
-	//Now do the starports.
-
-	objs = zone->getPlanetaryObjectList("starport");
-
-	for (int i = 0; i < objs.size(); ++i)
-		scheduleShuttleRoute(objs.get(i));
-}
-
-void PlanetManagerImplementation::scheduleShuttleRoute(SceneObject* starport) {
-	//All starports have their shuttles outdoors, for obvious reasons, except for Theed...
-	SortedVector<ManagedReference<SceneObject*> >* outdoorObjects = starport->getOutdoorChildObjects();
-
-	for (int i = 0; i < outdoorObjects->size(); ++i) {
-		SceneObject* obj = outdoorObjects->get(i);
-
-		/*
-		//Need to find a better way to do this. Why don't shuttle creatures have a slot descriptor for ghost?
-		if (obj->isCreatureObject() && obj->getObjectTemplate()->getFullTemplateString().indexOf("creature/theme_park/") != -1) {
-			Reference<PlanetTravelLocation*> ptl = new PlanetTravelLocation(obj, starport);
-			planetTravelLocationMap.put(ptl);
+			info(obj->getCustomObjectName().toString(), true);
 		}
-		*/
 	}
+
+	info("Loaded " + String::valueOf(totalObjects) + " client objects from world snapshot.", true);
+}
+
+void PlanetManagerImplementation::scheduleShuttles() {
+}
+
+bool PlanetManagerImplementation::isTravelToLocationPermitted(const String& departurePoint, const String& arrivalPlanet, const String& arrivalPoint) {
+	//Check to see that the departure point exists.
+	if (!isExistingPlanetTravelPoint(departurePoint))
+		return false;
+
+	//Check to see that the arrival planet exists.
+	ManagedReference<Zone*> arrivalZone = zone->getZoneServer()->getZone(arrivalPlanet);
+
+	if (arrivalZone == NULL)
+		return false;
+
+	PlanetManager* arrivalPlanetManager = arrivalZone->getPlanetManager();
+
+	//Check to see that the arrival point exists.
+	if (!arrivalPlanetManager->isExistingPlanetTravelPoint(arrivalPoint))
+		return false;
+
+	//If both zones are the same, then intraplanetary travel is allowed.
+	if (arrivalZone == zone)
+			return true;
+
+	//Check to see if interplanetary travel is allowed between both points.
+	if (!isInterplanetaryTravelAllowed(departurePoint) || !arrivalPlanetManager->isInterplanetaryTravelAllowed(arrivalPoint))
+		return false;
+
+	return true;
+}
+
+bool PlanetManagerImplementation::isInterplanetaryTravelAllowed(const String& pointName) {
+	int idx = planetTravelPointList.find(pointName);
+
+	if (idx == -1)
+		return false;
+
+	return planetTravelPointList.get(idx).isInterplanetary();
+}
+
+void PlanetManagerImplementation::sendPlanetTravelPointListResponse(PlayerCreature* player) {
+	PlanetTravelPointListResponse* ptplr = new PlanetTravelPointListResponse(zone->getZoneName());
+	planetTravelPointList.insertToMessage(ptplr);
+
+	if (zone->getZoneName() == "naboo")
+		info(ptplr->toStringData(), true);
+
+	player->sendMessage(ptplr);
+}
+
+String PlanetManagerImplementation::getNearestPlanetTravelPointName(SceneObject* object) {
+	String pointName = zone->getZoneName(); //Initialize it to the zone name, incase there are no points.
+	float nearestDistance = 16000.f;
+
+	for (int i = 0; i < planetTravelPointList.size(); ++i) {
+		PlanetTravelPoint ptp = planetTravelPointList.get(i);
+
+		Coordinate coord;
+		coord.setPosition(ptp.getX(), ptp.getZ(), ptp.getY());
+
+		float dist = object->getDistanceTo(&coord);
+
+		if (dist < nearestDistance) {
+			nearestDistance = dist;
+			pointName = ptp.getPointName();
+		}
+	}
+
+	return pointName;
 }
 
 void PlanetManagerImplementation::loadStaticTangibleObjects() {
@@ -246,7 +307,7 @@ void PlanetManagerImplementation::loadRegions() {
 	IffStream* iffStream = templateManager->openIffFile("datatables/clientregion/" + zone->getZoneName() + ".iff");
 
 	if (iffStream == NULL) {
-		info("No client regions found.", true);
+		info("No client regions found.");
 		return;
 	}
 
@@ -258,15 +319,25 @@ void PlanetManagerImplementation::loadRegions() {
 		float x, y, radius;
 
 		DataTableRow* row = dtiff.getRow(i);
-		row->getCell(0)->getValue(regionName);
-		row->getCell(1)->getValue(x);
-		row->getCell(2)->getValue(y);
-		row->getCell(3)->getValue(radius);
+		row->getValue(0, regionName);
+		row->getValue(1, x);
+		row->getValue(2, y);
+		row->getValue(3, radius);
 
-		regionMap.addRegion(zone, regionName, x, y, radius);
+		ManagedReference<CityRegion*> cityRegion = cityRegionMap.get(regionName);
+
+		//If the cityRegion hasn't already been created, then create it.
+		if (cityRegion == NULL) {
+			cityRegion = new CityRegion(regionName);
+			cityRegionMap.put(regionName, cityRegion);
+		}
+
+		cityRegion->addActiveArea(zone, x, y, radius);
+
+		//regionMap.addRegion(zone, regionName, x, y, radius);
 	}
 
-	info("Added " + String::valueOf(regionMap.size()) + " client regions.", true);
+	info("Added " + String::valueOf(cityRegionMap.size()) + " client regions.");
 }
 
 void PlanetManagerImplementation::loadPlayerRegions() {
@@ -281,7 +352,7 @@ void PlanetManagerImplementation::loadPlayerRegions() {
 	if (cityRegionsDatabase == NULL)
 		error("PlanetManagerImplementation::loadPlayerRegions(): There was an error loading the 'cityregions' database.");
 
-	info("loading player regions", true);
+	info("Loading player regions");
 
 	int i = 0;
 
@@ -329,7 +400,7 @@ void PlanetManagerImplementation::loadPlayerRegions() {
 
 	numberOfCities += i;
 
-	info(String("loaded " + String::valueOf(i)) + " player regions", true);
+	info(String("Loaded " + String::valueOf(i)) + " player regions", true);
 }
 
 void PlanetManagerImplementation::initializeTransientMembers() {
@@ -343,11 +414,6 @@ void PlanetManagerImplementation::finalize() {
 	delete terrainManager;
 	terrainManager = NULL;
 }
-
-void PlanetManagerImplementation::sendPlanetTravelPointListResponse(PlayerCreature* player) {
-
-}
-
 
 void PlanetManagerImplementation::loadBadgeAreas() {
 }

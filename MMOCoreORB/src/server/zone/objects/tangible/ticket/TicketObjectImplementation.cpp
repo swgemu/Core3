@@ -20,58 +20,10 @@ void TicketObjectImplementation::fillAttributeList(AttributeListMessage* alm, Pl
 
 
 int TicketObjectImplementation::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
-	//Pre player wlocked
-
 	if (selectedID != 20)
 		return 0;
 
-	Zone* zone = player->getZone();
-	if (zone == NULL)
-		return 0;
-
-	try {
-		zone->rlock();
-
-		int size = player->inRangeObjectCount();
-
-		for (int i = 0; i < size; ++i) {
-			SceneObject* object = (SceneObject*) player->getInRangeObject(i);
-
-			if (object->isTangibleObject()) {
-				TangibleObject* tano = (TangibleObject*) object;
-
-				if (tano->isTicketCollector() && player->isInRange(tano, 5)) {
-					zone->runlock();
-
-					try {
-						TicketCollector* col = (TicketCollector*) tano;
-						col->useTicket(player, _this);
-					} catch (Exception& e) {
-						error(e.getMessage());
-						e.printStackTrace();
-					}
-
-					return 1;
-				}
-			}
-		}
-
-		zone->runlock();
-	} catch (Exception& e) {
-		error(e.getMessage());
-		e.printStackTrace();
-
-		zone->runlock();
-	} catch (...) {
-		zone->runlock();
-
-		error("unreported exception in int TicketImplementation::useObject(Player* player)");
-
-		throw;
-	}
-
-	player->sendSystemMessage("travel", "boarding_too_far");
+	player->executeObjectControllerAction(0x5DCD41A2, getObjectID(), ""); //boardShuttle
 
 	return 0;
 }
-

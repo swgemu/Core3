@@ -125,6 +125,7 @@ public:
 		//@player_structure:building_has_no_trade The object %TT may not be traded and must be put in your inventory or destroyed before the building can be transferred.
 		//@player_structure:faction_base You cannot transfer your factional base access and allotment responsibility to anyone else.
 
+		/**
 		ManagedReference<Region*> region = (Region*) structureObject->getActiveRegion();
 
 		if (region != NULL) {
@@ -135,6 +136,7 @@ public:
 				return GENERALERROR;
 			}
 		}
+		*/
 
 		if (structureObject->isOnBanList(targetPlayer)) {
 			player->sendSystemMessage("@player_structure:no_banned_player"); //You cannot transfer ownership to a banned player

@@ -43,6 +43,7 @@
 
 object_building_corellia_starport_corellia = object_building_corellia_shared_starport_corellia:new {
 	gameObjectType = 521,
+	objectName = "Starport",
 	planetMapCategory = "starport",
 	childObjects = {
 		{templateFile = "object/tangible/terminal/terminal_travel.iff", x = -2.7419, z = 0.639421, y = 48.1677, ox = 0, oy = 0, oz = 0, ow = 1, cellid = 3, containmentType = -1},

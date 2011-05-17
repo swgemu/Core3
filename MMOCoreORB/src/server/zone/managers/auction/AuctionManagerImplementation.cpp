@@ -26,6 +26,7 @@
 #include "server/zone/objects/player/PlayerCreature.h"
 #include "server/zone/objects/region/Region.h"
 #include "server/zone/objects/area/BadgeActiveArea.h"
+#include "server/zone/objects/region/CityRegion.h"
 
 #include "server/zone/objects/scene/SceneObject.h"
 #include "server/zone/objects/waypoint/WaypointObject.h"
@@ -649,13 +650,13 @@ int AuctionManagerImplementation::checkRetrieve(PlayerCreature* player, uint64 o
 	// Only BazaarTerminals use regions
 	if (vendor->isBazaarTerminal()) {
 		ManagedReference<SceneObject*> strongRef = vendor->getVendor();
-		ManagedReference<ActiveArea*> area = strongRef->getActiveRegion();
+		ManagedReference<CityRegion*> region = strongRef->getCityRegion();
 
-		if (area != NULL) {
-			String region = area->getObjectName()->getStringID();
+		if (region != NULL) {
+			String regionName = region->getRegionName();
 			//String region = terminal->getBazaarRegion();
 
-			if (item->getLocation().indexOf(region) == -1) {
+			if (item->getLocation().indexOf(regionName) == -1) {
 				return RetrieveAuctionItemResponseMessage::NOTALLOWED;
 			}
 		} else {
@@ -801,11 +802,11 @@ AuctionItem* AuctionManagerImplementation::createVendorItem(PlayerCreature* play
 
 	item->setPlanet(planetStr);
 
-	ActiveArea* area = terminal->getActiveRegion();
+	ManagedReference<CityRegion*> cityRegion = terminal->getCityRegion();
 	String region = "";
 
-	if (area != NULL)
-		region = area->getObjectName()->getStringID();
+	if (cityRegion != NULL)
+		region = cityRegion->getRegionName();
 
 	StringId* objectName = objectToSell->getObjectName();
 
@@ -1146,17 +1147,16 @@ void AuctionManagerImplementation::getRegionData(PlayerCreature* player, Vendor*
 		return;
 
 
-	ActiveArea* area = vendorRef->getActiveRegion();
+	ManagedReference<CityRegion*> cityRegion = vendorRef->getCityRegion();
 
-	if (area == NULL || !area->isRegion()) {
-		StringId* name = area->getObjectName();
-		info("area wtf " + name->getStringID(), true);
+	if (cityRegion == NULL) {
 		error("null region in getRegionData()");
 		return;
 	}
 
-	String region = area->getObjectName()->getStringID();
+	String region = cityRegion->getRegionName();
 
+	/* TODO: This needs to be refactored with the new city region code.
 	StringId* name = area->getObjectName();
 
 	PlanetManager* planetManager = zone->getPlanetManager();
@@ -1185,6 +1185,7 @@ void AuctionManagerImplementation::getRegionData(PlayerCreature* player, Vendor*
 
 	AuctionQueryHeadersResponseMessage* msg = fillAuctionQueryHeadersResponseMessage(player, vendor, &items, screen, category, count, offset);
 	player->sendMessage(msg);
+	*/
 }
 
 void AuctionManagerImplementation::getItemAttributes(PlayerCreature* player, uint64 objectid) {

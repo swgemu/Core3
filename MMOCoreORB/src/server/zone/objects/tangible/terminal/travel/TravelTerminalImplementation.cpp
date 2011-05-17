@@ -12,6 +12,7 @@
 #include "server/zone/objects/area/ActiveArea.h"
 #include "server/zone/objects/region/Region.h"
 #include "server/zone/objects/building/city/CityHallObject.h"
+#include "server/zone/managers/planet/PlanetManager.h"
 
 int TravelTerminalImplementation::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
 	if (selectedID != 20)
@@ -20,10 +21,18 @@ int TravelTerminalImplementation::handleObjectMenuSelect(PlayerCreature* player,
 	if (controlledObject == NULL)
 		return 0;
 
-	//Make sure the controlled object is in a region, or the region name will fail.
-
-	//EnterTicketPurchaseModeMessage* etpm = new EnterTicketPurchaseModeMessage(controlledObject);
-	//player->sendMessage(etpm);
+	EnterTicketPurchaseModeMessage* etpm = new EnterTicketPurchaseModeMessage(zone->getZoneName(), travelPointName);
+	player->sendMessage(etpm);
 
 	return 0;
+}
+
+void TravelTerminalImplementation::insertToZone(Zone* zone) {
+	TerminalImplementation::insertToZone(zone);
+
+	//Set the travel point name to which this travel terminal is bound.
+	PlanetManager* planetManager = zone->getPlanetManager();
+	String pointName = planetManager->getNearestPlanetTravelPointName(controlledObject);
+
+	travelPointName = pointName;
 }

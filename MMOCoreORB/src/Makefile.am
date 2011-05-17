@@ -61,7 +61,8 @@ LIBS =	$(SYSTEM_LIBS)  \
 
 bin_PROGRAMS = core3
 
-core3_IDLS =	server/zone/objects/ship/SpaceStationObject.cpp \
+core3_IDLS =	server/zone/objects/region/CityRegion.cpp \
+				server/zone/objects/ship/SpaceStationObject.cpp \
 				server/zone/objects/ship/FighterShipObject.cpp \
 				server/zone/objects/ship/ShipObject.cpp \
 				server/zone/objects/intangible/ShipControlDevice.cpp \
@@ -256,6 +257,7 @@ core3_IDLS =	server/zone/objects/ship/SpaceStationObject.cpp \
 				server/zone/objects/tangible/terminal/characterbuilder/CharacterBuilderTerminal.cpp
 				
 core3_SOURCES =	$(core3_IDLS) \
+		server/zone/objects/region/CityRegionImplementation.cpp \
 		server/zone/objects/ship/SpaceStationObjectImplementation.cpp \
 		server/zone/objects/ship/FighterShipObjectImplementation.cpp \
 		server/zone/objects/ship/ShipObjectImplementation.cpp \

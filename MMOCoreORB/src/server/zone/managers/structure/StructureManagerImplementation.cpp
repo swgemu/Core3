@@ -622,13 +622,12 @@ int StructureManagerImplementation::declareResidence(PlayerCreature* player, Str
 
 
 	//If in a city, add to the cities citizens
-	ManagedReference<ActiveArea*> activeArea = buildingObject->getActiveRegion();
+	ManagedReference<CityRegion*> cityRegion = buildingObject->getCityRegion();
 
-	if (activeArea == NULL || !activeArea->isRegion())
+	if (cityRegion == NULL)
 		return 0; //Not in a city.
 
-	Region* region = (Region*) activeArea.get();
-
+	/* TODO: Reimplement
 	ManagedReference<CityHallObject*> cityHall = region->getCityHall();
 
 	ManagedReference<CityManager*> cityManager = zone->getCityManager();
@@ -638,6 +637,7 @@ int StructureManagerImplementation::declareResidence(PlayerCreature* player, Str
 
 	//Just need to save the players declared residence
 	player->updateToDatabaseWithoutChildren();
+	*/
 
 	return 0;
 }

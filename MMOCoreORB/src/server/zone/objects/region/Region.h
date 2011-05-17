@@ -93,22 +93,6 @@ using namespace server::zone::objects::creature;
 
 namespace server {
 namespace zone {
-namespace objects {
-namespace installation {
-namespace shuttle {
-
-class ShuttleInstallation;
-
-} // namespace shuttle
-} // namespace installation
-} // namespace objects
-} // namespace zone
-} // namespace server
-
-using namespace server::zone::objects::installation::shuttle;
-
-namespace server {
-namespace zone {
 
 class Zone;
 
@@ -170,8 +154,6 @@ public:
 
 	BazaarTerminal* getBazaar(int idx);
 
-	ShuttleInstallation* getShuttle();
-
 	int getBazaarCount();
 
 	bool isRegion();
@@ -208,7 +190,7 @@ class RegionImplementation : public ActiveAreaImplementation {
 protected:
 	VectorMap<unsigned long long, ManagedReference<BazaarTerminal* > > bazaars;
 
-	ManagedReference<ShuttleInstallation* > shuttleInstallation;
+	SortedVector<ManagedReference<SceneObject* > > shuttlePorts;
 
 	ManagedReference<CityHallObject* > cityHall;
 
@@ -234,8 +216,6 @@ public:
 	void addBazaar(BazaarTerminal* ter);
 
 	BazaarTerminal* getBazaar(int idx);
-
-	ShuttleInstallation* getShuttle();
 
 	int getBazaarCount();
 
@@ -305,8 +285,6 @@ public:
 	void addBazaar(BazaarTerminal* ter);
 
 	BazaarTerminal* getBazaar(int idx);
-
-	ShuttleInstallation* getShuttle();
 
 	int getBazaarCount();
 

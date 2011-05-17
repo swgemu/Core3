@@ -10,6 +10,8 @@
 
 #include "server/zone/objects/building/BuildingObject.h"
 
+#include "server/zone/objects/region/CityRegion.h"
+
 #include "server/zone/objects/scene/variables/StringId.h"
 
 #include "server/zone/managers/structure/StructureManager.h"
@@ -26,7 +28,7 @@
  *	PlanetManagerStub
  */
 
-enum {RPC_SCHEDULESHUTTLEROUTE__SCENEOBJECT_,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_FINALIZE__,RPC_INITIALIZE__,RPC_LOADREGIONS__,RPC_LOADPLAYERREGIONS__,RPC_LOADNOBUILDAREAS__,RPC_LOADBADGEAREAS__,RPC_LOADPERFORMANCELOCATIONS__,RPC_LOADHUNTINGTARGETS__,RPC_LOADRECONLOCATIONS__,RPC_GETTRAVELFARE__STRING_,RPC_SENDPLANETTRAVELPOINTLISTRESPONSE__PLAYERCREATURE_,RPC_GETSTRUCTUREMANAGER__,RPC_GETWEATHERMANAGER__,RPC_GETREGION__FLOAT_FLOAT_,RPC_GETREGIONCOUNT__,RPC_GETNUMBEROFCITIES__,RPC_INCREASENUMBEROFCITIES__,RPC_GETREGION__INT_,RPC_ADDREGION__REGION_,RPC_DROPREGION__REGION_,RPC_HASREGION__STRING_,RPC_ADDPERFORMANCELOCATION__SCENEOBJECT_,RPC_ADDMISSIONNPC__SCENEOBJECT_,RPC_ADDHUNTINGTARGETTEMPLATE__STRING_STRING_INT_,RPC_ADDRECONLOC__SCENEOBJECT_,RPC_ADDINFORMANT__SCENEOBJECT_,};
+enum {RPC_SCHEDULESHUTTLES__,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_FINALIZE__,RPC_INITIALIZE__,RPC_LOADREGIONS__,RPC_LOADPLAYERREGIONS__,RPC_LOADNOBUILDAREAS__,RPC_LOADBADGEAREAS__,RPC_LOADPERFORMANCELOCATIONS__,RPC_LOADHUNTINGTARGETS__,RPC_LOADRECONLOCATIONS__,RPC_GETNEARESTPLANETTRAVELPOINTNAME__SCENEOBJECT_,RPC_GETTRAVELFARE__STRING_,RPC_SENDPLANETTRAVELPOINTLISTRESPONSE__PLAYERCREATURE_,RPC_GETSTRUCTUREMANAGER__,RPC_GETWEATHERMANAGER__,RPC_GETREGION__FLOAT_FLOAT_,RPC_GETREGIONCOUNT__,RPC_GETNUMBEROFCITIES__,RPC_INCREASENUMBEROFCITIES__,RPC_GETREGION__INT_,RPC_ADDREGION__REGION_,RPC_DROPREGION__REGION_,RPC_HASREGION__STRING_,RPC_ADDPERFORMANCELOCATION__SCENEOBJECT_,RPC_ADDMISSIONNPC__SCENEOBJECT_,RPC_ADDHUNTINGTARGETTEMPLATE__STRING_STRING_INT_,RPC_ADDRECONLOC__SCENEOBJECT_,RPC_ADDINFORMANT__SCENEOBJECT_,RPC_ISEXISTINGPLANETTRAVELPOINT__STRING_,RPC_ISINTERPLANETARYTRAVELALLOWED__STRING_,RPC_ISTRAVELTOLOCATIONPERMITTED__STRING_STRING_STRING_};
 
 PlanetManager::PlanetManager(Zone* planet, ZoneProcessServer* srv) : ManagedService(DummyConstructorParameter::instance()) {
 	PlanetManagerImplementation* _implementation = new PlanetManagerImplementation(planet, srv);
@@ -41,18 +43,17 @@ PlanetManager::~PlanetManager() {
 }
 
 
-void PlanetManager::scheduleShuttleRoute(SceneObject* obj) {
+void PlanetManager::scheduleShuttles() {
 	PlanetManagerImplementation* _implementation = (PlanetManagerImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_SCHEDULESHUTTLEROUTE__SCENEOBJECT_);
-		method.addObjectParameter(obj);
+		DistributedMethod method(this, RPC_SCHEDULESHUTTLES__);
 
 		method.executeWithVoidReturn();
 	} else
-		_implementation->scheduleShuttleRoute(obj);
+		_implementation->scheduleShuttles();
 }
 
 void PlanetManager::initializeTransientMembers() {
@@ -170,6 +171,21 @@ void PlanetManager::loadReconLocations() {
 		method.executeWithVoidReturn();
 	} else
 		_implementation->loadReconLocations();
+}
+
+String PlanetManager::getNearestPlanetTravelPointName(SceneObject* object) {
+	PlanetManagerImplementation* _implementation = (PlanetManagerImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_GETNEARESTPLANETTRAVELPOINTNAME__SCENEOBJECT_);
+		method.addObjectParameter(object);
+
+		method.executeWithAsciiReturn(_return_getNearestPlanetTravelPointName);
+		return _return_getNearestPlanetTravelPointName;
+	} else
+		return _implementation->getNearestPlanetTravelPointName(object);
 }
 
 bool PlanetManager::isNoBuildArea(float x, float y, StringId& fullAreaName) {
@@ -480,6 +496,50 @@ MissionTargetMap* PlanetManager::getInformants() {
 		return _implementation->getInformants();
 }
 
+bool PlanetManager::isExistingPlanetTravelPoint(const String& pointName) {
+	PlanetManagerImplementation* _implementation = (PlanetManagerImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_ISEXISTINGPLANETTRAVELPOINT__STRING_);
+		method.addAsciiParameter(pointName);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return _implementation->isExistingPlanetTravelPoint(pointName);
+}
+
+bool PlanetManager::isInterplanetaryTravelAllowed(const String& pointName) {
+	PlanetManagerImplementation* _implementation = (PlanetManagerImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_ISINTERPLANETARYTRAVELALLOWED__STRING_);
+		method.addAsciiParameter(pointName);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return _implementation->isInterplanetaryTravelAllowed(pointName);
+}
+
+bool PlanetManager::isTravelToLocationPermitted(const String& destinationPoint, const String& arrivalPlanet, const String& arrivalPoint) {
+	PlanetManagerImplementation* _implementation = (PlanetManagerImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_ISTRAVELTOLOCATIONPERMITTED__STRING_STRING_STRING_);
+		method.addAsciiParameter(destinationPoint);
+		method.addAsciiParameter(arrivalPlanet);
+		method.addAsciiParameter(arrivalPoint);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return _implementation->isTravelToLocationPermitted(destinationPoint, arrivalPlanet, arrivalPoint);
+}
+
 DistributedObjectServant* PlanetManager::_getImplementation() {
 
 	_updated = true;
@@ -592,13 +652,28 @@ bool PlanetManagerImplementation::readObjectMember(ObjectInputStream* stream, co
 		return true;
 	}
 
+	if (_name == "cityRegionMap") {
+		TypeInfo<HashTable<String, ManagedReference<CityRegion* > > >::parseFromBinaryStream(&cityRegionMap, stream);
+		return true;
+	}
+
 	if (_name == "travelFares") {
 		TypeInfo<VectorMap<String, int> >::parseFromBinaryStream(&travelFares, stream);
 		return true;
 	}
 
-	if (_name == "shuttleRoutes") {
-		TypeInfo<VectorMap<unsigned long long, ShuttleDestinationReachedEvent*> >::parseFromBinaryStream(&shuttleRoutes, stream);
+	if (_name == "planetTravelPointList") {
+		TypeInfo<PlanetTravelPointList >::parseFromBinaryStream(&planetTravelPointList, stream);
+		return true;
+	}
+
+	if (_name == "shuttleLandingDelay") {
+		TypeInfo<int >::parseFromBinaryStream(&shuttleLandingDelay, stream);
+		return true;
+	}
+
+	if (_name == "shuttleTakeoffDelay") {
+		TypeInfo<int >::parseFromBinaryStream(&shuttleTakeoffDelay, stream);
 		return true;
 	}
 
@@ -648,6 +723,14 @@ int PlanetManagerImplementation::writeObjectMembers(ObjectOutputStream* stream) 
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
+	_name = "cityRegionMap";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<HashTable<String, ManagedReference<CityRegion* > > >::toBinaryStream(&cityRegionMap, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
 	_name = "travelFares";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
@@ -656,11 +739,27 @@ int PlanetManagerImplementation::writeObjectMembers(ObjectOutputStream* stream) 
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "shuttleRoutes";
+	_name = "planetTravelPointList";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
-	TypeInfo<VectorMap<unsigned long long, ShuttleDestinationReachedEvent*> >::toBinaryStream(&shuttleRoutes, stream);
+	TypeInfo<PlanetTravelPointList >::toBinaryStream(&planetTravelPointList, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "shuttleLandingDelay";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<int >::toBinaryStream(&shuttleLandingDelay, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "shuttleTakeoffDelay";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<int >::toBinaryStream(&shuttleTakeoffDelay, stream);
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
@@ -689,7 +788,7 @@ int PlanetManagerImplementation::writeObjectMembers(ObjectOutputStream* stream) 
 	stream->writeShort(_offset, _totalSize);
 
 
-	return 7 + ManagedServiceImplementation::writeObjectMembers(stream);
+	return 10 + ManagedServiceImplementation::writeObjectMembers(stream);
 }
 
 PlanetManagerImplementation::PlanetManagerImplementation(Zone* planet, ZoneProcessServer* srv) {
@@ -708,6 +807,10 @@ PlanetManagerImplementation::PlanetManagerImplementation(Zone* planet, ZoneProce
 	terrainManager = NULL;
 	// server/zone/managers/planet/PlanetManager.idl():  		numberOfCities = 0;
 	numberOfCities = 0;
+	// server/zone/managers/planet/PlanetManager.idl():  		shuttleLandingDelay = 300000;
+	shuttleLandingDelay = 300000;
+	// server/zone/managers/planet/PlanetManager.idl():  		shuttleTakeoffDelay = 90000;
+	shuttleTakeoffDelay = 90000;
 	// server/zone/managers/planet/PlanetManager.idl():  		structureManager = null;
 	structureManager = NULL;
 	// server/zone/managers/planet/PlanetManager.idl():  		weatherManager = null;
@@ -833,6 +936,11 @@ MissionTargetMap* PlanetManagerImplementation::getInformants() {
 	return (&informants);
 }
 
+bool PlanetManagerImplementation::isExistingPlanetTravelPoint(const String& pointName) {
+	// server/zone/managers/planet/PlanetManager.idl():  		return (planetTravelPointList.find(pointName) != -1);
+	return ((&planetTravelPointList)->find(pointName) != -1);
+}
+
 /*
  *	PlanetManagerAdapter
  */
@@ -844,8 +952,8 @@ Packet* PlanetManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
-	case RPC_SCHEDULESHUTTLEROUTE__SCENEOBJECT_:
-		scheduleShuttleRoute((SceneObject*) inv->getObjectParameter());
+	case RPC_SCHEDULESHUTTLES__:
+		scheduleShuttles();
 		break;
 	case RPC_INITIALIZETRANSIENTMEMBERS__:
 		initializeTransientMembers();
@@ -876,6 +984,9 @@ Packet* PlanetManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv
 		break;
 	case RPC_LOADRECONLOCATIONS__:
 		loadReconLocations();
+		break;
+	case RPC_GETNEARESTPLANETTRAVELPOINTNAME__SCENEOBJECT_:
+		resp->insertAscii(getNearestPlanetTravelPointName((SceneObject*) inv->getObjectParameter()));
 		break;
 	case RPC_GETTRAVELFARE__STRING_:
 		resp->insertSignedInt(getTravelFare(inv->getAsciiParameter(_param0_getTravelFare__String_)));
@@ -928,6 +1039,15 @@ Packet* PlanetManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv
 	case RPC_ADDINFORMANT__SCENEOBJECT_:
 		addInformant((SceneObject*) inv->getObjectParameter());
 		break;
+	case RPC_ISEXISTINGPLANETTRAVELPOINT__STRING_:
+		resp->insertBoolean(isExistingPlanetTravelPoint(inv->getAsciiParameter(_param0_isExistingPlanetTravelPoint__String_)));
+		break;
+	case RPC_ISINTERPLANETARYTRAVELALLOWED__STRING_:
+		resp->insertBoolean(isInterplanetaryTravelAllowed(inv->getAsciiParameter(_param0_isInterplanetaryTravelAllowed__String_)));
+		break;
+	case RPC_ISTRAVELTOLOCATIONPERMITTED__STRING_STRING_STRING_:
+		resp->insertBoolean(isTravelToLocationPermitted(inv->getAsciiParameter(_param0_isTravelToLocationPermitted__String_String_String_), inv->getAsciiParameter(_param1_isTravelToLocationPermitted__String_String_String_), inv->getAsciiParameter(_param2_isTravelToLocationPermitted__String_String_String_)));
+		break;
 	default:
 		return NULL;
 	}
@@ -935,8 +1055,8 @@ Packet* PlanetManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv
 	return resp;
 }
 
-void PlanetManagerAdapter::scheduleShuttleRoute(SceneObject* obj) {
-	((PlanetManagerImplementation*) impl)->scheduleShuttleRoute(obj);
+void PlanetManagerAdapter::scheduleShuttles() {
+	((PlanetManagerImplementation*) impl)->scheduleShuttles();
 }
 
 void PlanetManagerAdapter::initializeTransientMembers() {
@@ -977,6 +1097,10 @@ void PlanetManagerAdapter::loadHuntingTargets() {
 
 void PlanetManagerAdapter::loadReconLocations() {
 	((PlanetManagerImplementation*) impl)->loadReconLocations();
+}
+
+String PlanetManagerAdapter::getNearestPlanetTravelPointName(SceneObject* object) {
+	return ((PlanetManagerImplementation*) impl)->getNearestPlanetTravelPointName(object);
 }
 
 int PlanetManagerAdapter::getTravelFare(const String& destinationPlanet) {
@@ -1045,6 +1169,18 @@ void PlanetManagerAdapter::addReconLoc(SceneObject* obj) {
 
 void PlanetManagerAdapter::addInformant(SceneObject* obj) {
 	((PlanetManagerImplementation*) impl)->addInformant(obj);
+}
+
+bool PlanetManagerAdapter::isExistingPlanetTravelPoint(const String& pointName) {
+	return ((PlanetManagerImplementation*) impl)->isExistingPlanetTravelPoint(pointName);
+}
+
+bool PlanetManagerAdapter::isInterplanetaryTravelAllowed(const String& pointName) {
+	return ((PlanetManagerImplementation*) impl)->isInterplanetaryTravelAllowed(pointName);
+}
+
+bool PlanetManagerAdapter::isTravelToLocationPermitted(const String& destinationPoint, const String& arrivalPlanet, const String& arrivalPoint) {
+	return ((PlanetManagerImplementation*) impl)->isTravelToLocationPermitted(destinationPoint, arrivalPlanet, arrivalPoint);
 }
 
 /*

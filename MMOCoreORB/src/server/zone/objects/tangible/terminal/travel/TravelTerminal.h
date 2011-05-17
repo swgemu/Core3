@@ -82,7 +82,11 @@ public:
 
 	void initializeTransientMembers();
 
+	void insertToZone(Zone* zone);
+
 	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
+
+	String getTravelPointName();
 
 	DistributedObjectServant* _getImplementation();
 
@@ -92,6 +96,8 @@ protected:
 	TravelTerminal(DummyConstructorParameter* param);
 
 	virtual ~TravelTerminal();
+
+	String _return_getTravelPointName;
 
 	friend class TravelTerminalHelper;
 };
@@ -113,6 +119,8 @@ namespace terminal {
 namespace travel {
 
 class TravelTerminalImplementation : public TerminalImplementation {
+protected:
+	String travelPointName;
 
 public:
 	TravelTerminalImplementation();
@@ -121,7 +129,11 @@ public:
 
 	void initializeTransientMembers();
 
+	void insertToZone(Zone* zone);
+
 	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
+
+	String getTravelPointName();
 
 	TravelTerminal* _this;
 
@@ -168,7 +180,11 @@ public:
 
 	void initializeTransientMembers();
 
+	void insertToZone(Zone* zone);
+
 	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
+
+	String getTravelPointName();
 
 };
 

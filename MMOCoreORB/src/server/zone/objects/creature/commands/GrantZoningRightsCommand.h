@@ -76,6 +76,7 @@ public:
 
 		PlayerCreature* targetPlayer = (PlayerCreature*) targetObject.get();
 
+		/*
 		ManagedReference<ActiveArea*> activeRegion = player->getActiveRegion();
 
 		if (activeRegion == NULL || !activeRegion->isRegion()) {
@@ -113,7 +114,7 @@ public:
 			params.setStringId("@city/city:rights_granted_self"); //You have granted %TO zoning rights for 24 hours.
 			params.setTO(targetPlayer);
 			player->sendSystemMessage(params);
-		}
+		}*/
 
 		return SUCCESS;
 	}

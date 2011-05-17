@@ -109,3 +109,11 @@ void ActiveAreaImplementation::enqueueExitEvent(SceneObject* obj) {
 
 	Core::getTaskManager()->executeTask(task);
 }
+
+void ActiveAreaImplementation::notifyEnter(SceneObject* obj) {
+	notifyObservers(ObserverEventType::ENTEREDAREA, obj);
+}
+
+void ActiveAreaImplementation::notifyExit(SceneObject* obj) {
+	notifyObservers(ObserverEventType::EXITEDAREA, obj);
+}

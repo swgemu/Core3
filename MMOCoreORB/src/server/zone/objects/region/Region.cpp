@@ -14,8 +14,6 @@
 
 #include "server/zone/objects/creature/CreatureObject.h"
 
-#include "server/zone/objects/installation/shuttle/ShuttleInstallation.h"
-
 #include "server/zone/Zone.h"
 
 #include "server/zone/objects/scene/SceneObject.h"
@@ -24,7 +22,7 @@
  *	RegionStub
  */
 
-enum {RPC_NOTIFYENTER__SCENEOBJECT_ = 6,RPC_SENDGREETINGMESSAGE__PLAYERCREATURE_,RPC_SENDDEPARTINGMESSAGE__PLAYERCREATURE_,RPC_NOTIFYEXIT__SCENEOBJECT_,RPC_INSERTTOZONE__ZONE_,RPC_REMOVEFROMZONE__,RPC_DESPAWNCITYOBJECTS__,RPC_ADDBAZAAR__BAZAARTERMINAL_,RPC_GETBAZAAR__INT_,RPC_GETSHUTTLE__,RPC_GETBAZAARCOUNT__,RPC_ISREGION__,RPC_GETCITYHALL__,RPC_SETCITYHALL__CITYHALLOBJECT_};
+enum {RPC_NOTIFYENTER__SCENEOBJECT_ = 6,RPC_SENDGREETINGMESSAGE__PLAYERCREATURE_,RPC_SENDDEPARTINGMESSAGE__PLAYERCREATURE_,RPC_NOTIFYEXIT__SCENEOBJECT_,RPC_INSERTTOZONE__ZONE_,RPC_REMOVEFROMZONE__,RPC_DESPAWNCITYOBJECTS__,RPC_ADDBAZAAR__BAZAARTERMINAL_,RPC_GETBAZAAR__INT_,RPC_GETBAZAARCOUNT__,RPC_ISREGION__,RPC_GETCITYHALL__,RPC_SETCITYHALL__CITYHALLOBJECT_};
 
 Region::Region() : ActiveArea(DummyConstructorParameter::instance()) {
 	RegionImplementation* _implementation = new RegionImplementation();
@@ -161,19 +159,6 @@ BazaarTerminal* Region::getBazaar(int idx) {
 		return (BazaarTerminal*) method.executeWithObjectReturn();
 	} else
 		return _implementation->getBazaar(idx);
-}
-
-ShuttleInstallation* Region::getShuttle() {
-	RegionImplementation* _implementation = (RegionImplementation*) _getImplementation();
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, RPC_GETSHUTTLE__);
-
-		return (ShuttleInstallation*) method.executeWithObjectReturn();
-	} else
-		return _implementation->getShuttle();
 }
 
 int Region::getBazaarCount() {
@@ -338,8 +323,8 @@ bool RegionImplementation::readObjectMember(ObjectInputStream* stream, const Str
 		return true;
 	}
 
-	if (_name == "shuttleInstallation") {
-		TypeInfo<ManagedReference<ShuttleInstallation* > >::parseFromBinaryStream(&shuttleInstallation, stream);
+	if (_name == "shuttlePorts") {
+		TypeInfo<SortedVector<ManagedReference<SceneObject* > > >::parseFromBinaryStream(&shuttlePorts, stream);
 		return true;
 	}
 
@@ -371,11 +356,11 @@ int RegionImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "shuttleInstallation";
+	_name = "shuttlePorts";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
-	TypeInfo<ManagedReference<ShuttleInstallation* > >::toBinaryStream(&shuttleInstallation, stream);
+	TypeInfo<SortedVector<ManagedReference<SceneObject* > > >::toBinaryStream(&shuttlePorts, stream);
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
@@ -408,15 +393,10 @@ void RegionImplementation::notifyEnter(SceneObject* object) {
 	if (term->isBazaarTerminal())	// server/zone/objects/region/Region.idl():  				bazaars.put(object.getObjectID(), (BazaarTerminal)object);
 	(&bazaars)->put(object->getObjectID(), (BazaarTerminal*) object);
 }
-	// server/zone/objects/region/Region.idl():  		if 
+	// server/zone/objects/region/Region.idl():  	}
 	if (object->isPlayerCreature()){
 	// server/zone/objects/region/Region.idl():  			sendGreetingMessage((PlayerCreature) object);
 	sendGreetingMessage((PlayerCreature*) object);
-}
-	// server/zone/objects/region/Region.idl():  	}
-	if (object->isShuttleInstallation()){
-	// server/zone/objects/region/Region.idl():  			shuttleInstallation = (ShuttleInstallation) object;
-	shuttleInstallation = (ShuttleInstallation*) object;
 }
 }
 
@@ -429,15 +409,10 @@ void RegionImplementation::notifyExit(SceneObject* object) {
 	if (term->isBazaarTerminal())	// server/zone/objects/region/Region.idl():  				bazaars.drop(object.getObjectID());
 	(&bazaars)->drop(object->getObjectID());
 }
-	// server/zone/objects/region/Region.idl():  		if 
+	// server/zone/objects/region/Region.idl():  	}
 	if (object->isPlayerCreature()){
 	// server/zone/objects/region/Region.idl():  			sendDepartingMessage((PlayerCreature) object);
 	sendDepartingMessage((PlayerCreature*) object);
-}
-	// server/zone/objects/region/Region.idl():  	}
-	if (object == shuttleInstallation){
-	// server/zone/objects/region/Region.idl():  			shuttleInstallation = null;
-	shuttleInstallation = NULL;
 }
 }
 
@@ -458,11 +433,6 @@ void RegionImplementation::addBazaar(BazaarTerminal* ter) {
 BazaarTerminal* RegionImplementation::getBazaar(int idx) {
 	// server/zone/objects/region/Region.idl():  		return bazaars.get(idx);
 	return (&bazaars)->get(idx);
-}
-
-ShuttleInstallation* RegionImplementation::getShuttle() {
-	// server/zone/objects/region/Region.idl():  		return shuttleInstallation;
-	return shuttleInstallation;
 }
 
 int RegionImplementation::getBazaarCount() {
@@ -523,9 +493,6 @@ Packet* RegionAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	case RPC_GETBAZAAR__INT_:
 		resp->insertLong(getBazaar(inv->getSignedIntParameter())->_getObjectID());
 		break;
-	case RPC_GETSHUTTLE__:
-		resp->insertLong(getShuttle()->_getObjectID());
-		break;
 	case RPC_GETBAZAARCOUNT__:
 		resp->insertSignedInt(getBazaarCount());
 		break;
@@ -579,10 +546,6 @@ void RegionAdapter::addBazaar(BazaarTerminal* ter) {
 
 BazaarTerminal* RegionAdapter::getBazaar(int idx) {
 	return ((RegionImplementation*) impl)->getBazaar(idx);
-}
-
-ShuttleInstallation* RegionAdapter::getShuttle() {
-	return ((RegionImplementation*) impl)->getShuttle();
 }
 
 int RegionAdapter::getBazaarCount() {

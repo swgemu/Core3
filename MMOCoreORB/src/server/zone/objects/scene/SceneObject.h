@@ -149,9 +149,11 @@ using namespace server::zone::objects::area;
 
 #include "engine/core/ManagedObject.h"
 
-#include "engine/util/Facade.h"
+#include "server/zone/objects/region/CityRegion.h"
 
-#include "server/zone/objects/scene/ObserverEventType.h"
+#include "server/zone/managers/templates/PlanetMapCategory.h"
+
+#include "server/zone/managers/templates/TemplateManager.h"
 
 #include "server/zone/objects/scene/variables/StringId.h"
 
@@ -161,9 +163,9 @@ using namespace server::zone::objects::area;
 
 #include "server/zone/objects/scene/SessionFacadeType.h"
 
-#include "server/zone/managers/templates/PlanetMapCategory.h"
+#include "engine/util/Facade.h"
 
-#include "server/zone/managers/templates/TemplateManager.h"
+#include "server/zone/objects/scene/ObserverEventType.h"
 
 #include "engine/log/Logger.h"
 
@@ -676,6 +678,8 @@ public:
 
 	static const int GARAGEAREA = 0x2000006;
 
+	static const int ACTIVEAREA = 0x2000007;
+
 	static const int AIGROUP = 0x4000000;
 
 	static const int HERDGROUP = 0x4000001;
@@ -1100,13 +1104,19 @@ public:
 
 	Vector<ManagedReference<ActiveArea* > >* getActiveAreas();
 
-	ActiveArea* getActiveRegion();
+	CityRegion* getCityRegion();
+
+	void setCityRegion(CityRegion* region);
 
 	bool hasActiveArea(ActiveArea* area);
 
 	PlanetMapCategory* getPlanetMapCategory();
 
 	PlanetMapCategory* getPlanetMapSubCategory();
+
+	int getPlanetMapCategoryCRC();
+
+	int getPlanetMapSubCategoryCRC();
 
 	SharedObjectTemplate* getObjectTemplate();
 
@@ -1182,6 +1192,8 @@ protected:
 	bool staticObject;
 
 	SortedVector<ManagedReference<ActiveArea* > > activeAreas;
+
+	ManagedWeakReference<CityRegion* > cityRegion;
 
 	VectorMap<unsigned int, ManagedReference<Facade* > > objectActiveSessions;
 
@@ -1666,6 +1678,8 @@ public:
 
 	static const int GARAGEAREA = 0x2000006;
 
+	static const int ACTIVEAREA = 0x2000007;
+
 	static const int AIGROUP = 0x4000000;
 
 	static const int HERDGROUP = 0x4000001;
@@ -2094,13 +2108,19 @@ public:
 
 	Vector<ManagedReference<ActiveArea* > >* getActiveAreas();
 
-	ActiveArea* getActiveRegion();
+	CityRegion* getCityRegion();
+
+	void setCityRegion(CityRegion* region);
 
 	bool hasActiveArea(ActiveArea* area);
 
 	PlanetMapCategory* getPlanetMapCategory();
 
 	PlanetMapCategory* getPlanetMapSubCategory();
+
+	int getPlanetMapCategoryCRC();
+
+	int getPlanetMapSubCategoryCRC();
 
 	SharedObjectTemplate* getObjectTemplate();
 
@@ -2485,9 +2505,15 @@ public:
 
 	bool isMissionObject();
 
-	ActiveArea* getActiveRegion();
+	CityRegion* getCityRegion();
+
+	void setCityRegion(CityRegion* region);
 
 	bool hasActiveArea(ActiveArea* area);
+
+	int getPlanetMapCategoryCRC();
+
+	int getPlanetMapSubCategoryCRC();
 
 	void createChildObjects();
 

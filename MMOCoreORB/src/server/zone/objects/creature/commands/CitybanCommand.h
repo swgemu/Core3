@@ -78,13 +78,12 @@ public:
 
 		PlayerCreature* targetPlayer = (PlayerCreature*) targetObject.get();
 
-		ManagedReference<ActiveArea*> activeRegion = player->getActiveRegion();
+		ManagedReference<CityRegion*> cityRegion = player->getCityRegion();
 
-		if (activeRegion == NULL || !activeRegion->isRegion())
+		if (cityRegion == NULL)
 			return GENERALERROR;
 
-		Region* region = (Region*) activeRegion.get();
-
+		/* TODO: Reimplement
 		ManagedReference<CityHallObject*> cityHall = region->getCityHall();
 
 		if (cityHall == NULL)
@@ -126,6 +125,8 @@ public:
 		params.setStringId("@city/city:city_ban_done");
 		params.setTT(targetPlayer);
 		player->sendSystemMessage(params); //%TT has been banned from the city and is no longer able to access city services.
+
+		*/
 
 		return SUCCESS;
 	}

@@ -11,7 +11,7 @@
 #include "../MessageCallback.h"
 
 #include "IsVendorOwnerResponseMessage.h"
-
+#include "server/zone/objects/region/CityRegion.h"
 
 #include "server/zone/Zone.h"
 
@@ -50,14 +50,14 @@ public:
 
 		//TODO: Relook at this! - POLONEL
 		if (sceno->isTerminal() && ((Terminal*)sceno.get())->isBazaarTerminal()) {
-			ActiveArea* area = sceno->getActiveRegion();
+			ManagedReference<CityRegion*> cityRegion = sceno->getCityRegion();
 
-			if (area == NULL) {
+			if (cityRegion == NULL) {
 				sceno->error("NULL AREA FOR THIS TERMINAL");
 				return;
 			}
 
-			vendorRegion = area->getObjectName()->getStringID();
+			vendorRegion = cityRegion->getRegionName();
 
 		}
 

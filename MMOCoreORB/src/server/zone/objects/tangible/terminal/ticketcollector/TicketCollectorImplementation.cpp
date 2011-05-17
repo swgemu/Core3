@@ -20,7 +20,7 @@ int TicketCollectorImplementation::handleObjectMenuSelect(PlayerCreature* player
 	if (selectedID != 20)
 		return 0;
 
-	player->sendSystemMessage("Travel is currently disabled.");
+	player->executeObjectControllerAction(0x5DCD41A2); //boardShuttle
 
 	return 0;
 }

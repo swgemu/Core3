@@ -73,6 +73,7 @@ includeFile("waypoint/serverobjects.lua")
 includeFile("weapon/serverobjects.lua")
 
 -- Server Objects
+includeFile("active_area.lua")
 includeFile("garage_area.lua")
 includeFile("badge_area.lua")
 includeFile("region_area.lua")

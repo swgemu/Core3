@@ -151,20 +151,15 @@ public:
 			return GENERALERROR;
 		}
 
+		ManagedReference<CityRegion*> cityRegion = player->getCityRegion();
+
 		Vector<ManagedReference<ActiveArea*> >* areas = player->getActiveAreas();
 
-		if (areas->size() != 0) {
-			ManagedReference<ActiveArea*> region = player->getActiveRegion();
+		if (cityRegion != NULL) {
+			//Check if it's a player region, or a static region.
 
-			if (region != NULL) {
-				if (region->isStaticObject()) {
-					player->sendSystemMessage("You cant place a structure here");
-					return GENERALERROR;
-				}
-			} else {
-				player->sendSystemMessage("You cant place a structure here");
-				return GENERALERROR;
-			}
+			player->sendSystemMessage("You cant place a structure here");
+			return GENERALERROR;
 		}
 
 		int clientObjectCRC = structureTemplate->getClientObjectCRC();
