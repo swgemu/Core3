@@ -90,7 +90,8 @@ object_tangible_lair_nuna_shared_lair_nuna = SharedTangibleObjectTemplate:new {
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1870027501
+	clientObjectCRC = 1870027501,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_nuna_shared_lair_nuna, "object/tangible/lair/nuna/shared_lair_nuna.iff")
@@ -144,7 +145,8 @@ object_tangible_lair_nuna_shared_lair_nuna_forest = SharedTangibleObjectTemplate
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3366083630
+	clientObjectCRC = 3366083630,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_nuna_shared_lair_nuna_forest, "object/tangible/lair/nuna/shared_lair_nuna_forest.iff")
@@ -198,7 +200,8 @@ object_tangible_lair_nuna_shared_lair_nuna_grassland = SharedTangibleObjectTempl
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2100068580
+	clientObjectCRC = 2100068580,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_nuna_shared_lair_nuna_grassland, "object/tangible/lair/nuna/shared_lair_nuna_grassland.iff")
@@ -252,7 +255,8 @@ object_tangible_lair_nuna_shared_lair_nuna_swamp = SharedTangibleObjectTemplate:
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 222503390
+	clientObjectCRC = 222503390,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_nuna_shared_lair_nuna_swamp, "object/tangible/lair/nuna/shared_lair_nuna_swamp.iff")

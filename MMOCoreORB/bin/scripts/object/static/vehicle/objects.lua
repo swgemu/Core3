@@ -80,7 +80,8 @@ object_static_vehicle_shared_player_shuttle = SharedStaticObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3753376188
+	clientObjectCRC = 3753376188,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_vehicle_shared_player_shuttle, "object/static/vehicle/shared_player_shuttle.iff")
@@ -124,7 +125,8 @@ object_static_vehicle_shared_static_lambda_shuttle = SharedStaticObjectTemplate:
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 520035504
+	clientObjectCRC = 520035504,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_vehicle_shared_static_lambda_shuttle, "object/static/vehicle/shared_static_lambda_shuttle.iff")
@@ -168,7 +170,8 @@ object_static_vehicle_shared_static_sandcrawler = SharedStaticObjectTemplate:new
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1560527030
+	clientObjectCRC = 1560527030,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_vehicle_shared_static_sandcrawler, "object/static/vehicle/shared_static_sandcrawler.iff")
@@ -212,7 +215,8 @@ object_static_vehicle_shared_static_speeder_bike = SharedStaticObjectTemplate:ne
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1319374106
+	clientObjectCRC = 1319374106,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_vehicle_shared_static_speeder_bike, "object/static/vehicle/shared_static_speeder_bike.iff")
@@ -256,7 +260,8 @@ object_static_vehicle_shared_static_swoop_bike = SharedStaticObjectTemplate:new 
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1844639584
+	clientObjectCRC = 1844639584,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_vehicle_shared_static_swoop_bike, "object/static/vehicle/shared_static_swoop_bike.iff")
@@ -300,7 +305,8 @@ object_static_vehicle_shared_static_tie_bomber = SharedStaticObjectTemplate:new 
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 4082501071
+	clientObjectCRC = 4082501071,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_vehicle_shared_static_tie_bomber, "object/static/vehicle/shared_static_tie_bomber.iff")
@@ -344,7 +350,8 @@ object_static_vehicle_shared_static_tie_fighter = SharedStaticObjectTemplate:new
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1095801974
+	clientObjectCRC = 1095801974,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_vehicle_shared_static_tie_fighter, "object/static/vehicle/shared_static_tie_fighter.iff")

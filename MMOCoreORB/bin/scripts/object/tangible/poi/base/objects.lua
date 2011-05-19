@@ -90,7 +90,8 @@ object_tangible_poi_base_shared_poi_base = SharedTangibleObjectTemplate:new {
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2572869140
+	clientObjectCRC = 2572869140,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_poi_base_shared_poi_base, "object/tangible/poi/base/shared_poi_base.iff")
@@ -144,7 +145,8 @@ object_tangible_poi_base_shared_poi_base_nosnap = SharedTangibleObjectTemplate:n
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 165055566
+	clientObjectCRC = 165055566,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/poi/base/shared_poi_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_poi_base_shared_poi_base_nosnap, "object/tangible/poi/base/shared_poi_base_nosnap.iff")

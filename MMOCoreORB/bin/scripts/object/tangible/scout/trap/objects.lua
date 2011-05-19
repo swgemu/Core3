@@ -90,7 +90,8 @@ object_tangible_scout_trap_shared_trap_drowsy_dart = SharedTangibleObjectTemplat
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 705221769
+	clientObjectCRC = 705221769,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_scout_trap_shared_trap_drowsy_dart, "object/tangible/scout/trap/shared_trap_drowsy_dart.iff")
@@ -144,7 +145,8 @@ object_tangible_scout_trap_shared_trap_enraging_spur = SharedTangibleObjectTempl
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3897339231
+	clientObjectCRC = 3897339231,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_scout_trap_shared_trap_enraging_spur, "object/tangible/scout/trap/shared_trap_enraging_spur.iff")
@@ -198,7 +200,8 @@ object_tangible_scout_trap_shared_trap_flash_bomb = SharedTangibleObjectTemplate
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 708754512
+	clientObjectCRC = 708754512,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_scout_trap_shared_trap_flash_bomb, "object/tangible/scout/trap/shared_trap_flash_bomb.iff")
@@ -252,7 +255,8 @@ object_tangible_scout_trap_shared_trap_melee_def_1 = SharedTangibleObjectTemplat
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3084221929
+	clientObjectCRC = 3084221929,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_scout_trap_shared_trap_melee_def_1, "object/tangible/scout/trap/shared_trap_melee_def_1.iff")
@@ -306,7 +310,8 @@ object_tangible_scout_trap_shared_trap_melee_ranged_def_1 = SharedTangibleObject
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3453088617
+	clientObjectCRC = 3453088617,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_scout_trap_shared_trap_melee_ranged_def_1, "object/tangible/scout/trap/shared_trap_melee_ranged_def_1.iff")
@@ -360,7 +365,8 @@ object_tangible_scout_trap_shared_trap_noise_maker = SharedTangibleObjectTemplat
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3133223247
+	clientObjectCRC = 3133223247,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_scout_trap_shared_trap_noise_maker, "object/tangible/scout/trap/shared_trap_noise_maker.iff")
@@ -414,7 +420,8 @@ object_tangible_scout_trap_shared_trap_ranged_def_1 = SharedTangibleObjectTempla
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 46866220
+	clientObjectCRC = 46866220,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_scout_trap_shared_trap_ranged_def_1, "object/tangible/scout/trap/shared_trap_ranged_def_1.iff")
@@ -468,7 +475,8 @@ object_tangible_scout_trap_shared_trap_ranged_speed_1 = SharedTangibleObjectTemp
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2460580704
+	clientObjectCRC = 2460580704,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_scout_trap_shared_trap_ranged_speed_1, "object/tangible/scout/trap/shared_trap_ranged_speed_1.iff")
@@ -522,7 +530,8 @@ object_tangible_scout_trap_shared_trap_sonic_pulse = SharedTangibleObjectTemplat
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3605514682
+	clientObjectCRC = 3605514682,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_scout_trap_shared_trap_sonic_pulse, "object/tangible/scout/trap/shared_trap_sonic_pulse.iff")
@@ -576,7 +585,8 @@ object_tangible_scout_trap_shared_trap_state_def_1 = SharedTangibleObjectTemplat
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 750361076
+	clientObjectCRC = 750361076,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_scout_trap_shared_trap_state_def_1, "object/tangible/scout/trap/shared_trap_state_def_1.iff")
@@ -630,7 +640,8 @@ object_tangible_scout_trap_shared_trap_tranq_dart = SharedTangibleObjectTemplate
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2472376515
+	clientObjectCRC = 2472376515,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_scout_trap_shared_trap_tranq_dart, "object/tangible/scout/trap/shared_trap_tranq_dart.iff")
@@ -684,7 +695,8 @@ object_tangible_scout_trap_shared_trap_webber = SharedTangibleObjectTemplate:new
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3441092972
+	clientObjectCRC = 3441092972,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_scout_trap_shared_trap_webber, "object/tangible/scout/trap/shared_trap_webber.iff")

@@ -90,7 +90,8 @@ object_tangible_trophy_shared_picture_handheld_s01 = SharedTangibleObjectTemplat
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2296040317
+	clientObjectCRC = 2296040317,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_trophy_shared_picture_handheld_s01, "object/tangible/trophy/shared_picture_handheld_s01.iff")
@@ -144,7 +145,8 @@ object_tangible_trophy_shared_picture_handheld_s02 = SharedTangibleObjectTemplat
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1405969386
+	clientObjectCRC = 1405969386,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_trophy_shared_picture_handheld_s02, "object/tangible/trophy/shared_picture_handheld_s02.iff")
@@ -198,7 +200,8 @@ object_tangible_trophy_shared_shisa_decorative_s01 = SharedTangibleObjectTemplat
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3842630349
+	clientObjectCRC = 3842630349,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_trophy_shared_shisa_decorative_s01, "object/tangible/trophy/shared_shisa_decorative_s01.iff")

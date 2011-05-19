@@ -90,7 +90,8 @@ object_tangible_powerup_base_shared_armor_base = SharedTangibleObjectTemplate:ne
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2900653287
+	clientObjectCRC = 2900653287,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/powerup/base/shared_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_powerup_base_shared_armor_base, "object/tangible/powerup/base/shared_armor_base.iff")
@@ -144,7 +145,8 @@ object_tangible_powerup_base_shared_base = SharedTangibleObjectTemplate:new {
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 486380582
+	clientObjectCRC = 486380582,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_powerup_base_shared_base, "object/tangible/powerup/base/shared_base.iff")
@@ -198,7 +200,8 @@ object_tangible_powerup_base_shared_weapon_base = SharedTangibleObjectTemplate:n
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1015299597
+	clientObjectCRC = 1015299597,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/powerup/base/shared_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_powerup_base_shared_weapon_base, "object/tangible/powerup/base/shared_weapon_base.iff")

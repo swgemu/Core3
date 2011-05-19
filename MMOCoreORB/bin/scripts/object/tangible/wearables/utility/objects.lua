@@ -90,7 +90,8 @@ object_tangible_wearables_utility_shared_utility_belt_tusken_raider = SharedTang
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 34828875
+	clientObjectCRC = 34828875,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_utility_shared_utility_belt_tusken_raider, "object/tangible/wearables/utility/shared_utility_belt_tusken_raider.iff")

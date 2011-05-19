@@ -90,7 +90,8 @@ object_tangible_lair_mamien_shared_lair_mamien = SharedTangibleObjectTemplate:ne
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1262287323
+	clientObjectCRC = 1262287323,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_mamien_shared_lair_mamien, "object/tangible/lair/mamien/shared_lair_mamien.iff")
@@ -144,7 +145,8 @@ object_tangible_lair_mamien_shared_lair_mamien_jungle = SharedTangibleObjectTemp
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 222781865
+	clientObjectCRC = 222781865,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_mamien_shared_lair_mamien_jungle, "object/tangible/lair/mamien/shared_lair_mamien_jungle.iff")

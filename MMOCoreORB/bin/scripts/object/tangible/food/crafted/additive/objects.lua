@@ -90,7 +90,8 @@ object_tangible_food_crafted_additive_shared_additive_base = SharedTangibleObjec
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4284585922
+	clientObjectCRC = 4284585922,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/base/shared_base_crafted_food.iff", "object/tangible/food/base/shared_dish_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_crafted_additive_shared_additive_base, "object/tangible/food/crafted/additive/shared_additive_base.iff")
@@ -144,7 +145,8 @@ object_tangible_food_crafted_additive_shared_additive_heavy = SharedTangibleObje
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2284977295
+	clientObjectCRC = 2284977295,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/base/shared_base_crafted_food.iff", "object/tangible/food/base/shared_dish_base.iff", "object/tangible/food/crafted/additive/shared_additive_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_crafted_additive_shared_additive_heavy, "object/tangible/food/crafted/additive/shared_additive_heavy.iff")
@@ -198,7 +200,8 @@ object_tangible_food_crafted_additive_shared_additive_light = SharedTangibleObje
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1231667281
+	clientObjectCRC = 1231667281,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/base/shared_base_crafted_food.iff", "object/tangible/food/base/shared_dish_base.iff", "object/tangible/food/crafted/additive/shared_additive_base.iff", "object/tangible/food/crafted/additive/shared_additive_heavy.iff", "object/tangible/food/crafted/additive/shared_additive_medium.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_crafted_additive_shared_additive_light, "object/tangible/food/crafted/additive/shared_additive_light.iff")
@@ -252,7 +255,8 @@ object_tangible_food_crafted_additive_shared_additive_medium = SharedTangibleObj
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 282579048
+	clientObjectCRC = 282579048,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/base/shared_base_crafted_food.iff", "object/tangible/food/base/shared_dish_base.iff", "object/tangible/food/crafted/additive/shared_additive_base.iff", "object/tangible/food/crafted/additive/shared_additive_heavy.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_crafted_additive_shared_additive_medium, "object/tangible/food/crafted/additive/shared_additive_medium.iff")

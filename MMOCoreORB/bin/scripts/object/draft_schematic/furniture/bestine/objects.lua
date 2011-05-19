@@ -80,7 +80,8 @@ object_draft_schematic_furniture_bestine_shared_painting_bestine_blueleaf_temple
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3554417607
+	clientObjectCRC = 3554417607,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_furniture_bestine_shared_painting_bestine_blueleaf_temple, "object/draft_schematic/furniture/bestine/shared_painting_bestine_blueleaf_temple.iff")
@@ -124,7 +125,8 @@ object_draft_schematic_furniture_bestine_shared_painting_bestine_blumbush = Shar
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3868739773
+	clientObjectCRC = 3868739773,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_furniture_bestine_shared_painting_bestine_blumbush, "object/draft_schematic/furniture/bestine/shared_painting_bestine_blumbush.iff")
@@ -168,7 +170,8 @@ object_draft_schematic_furniture_bestine_shared_painting_bestine_boffa = SharedD
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3812766941
+	clientObjectCRC = 3812766941,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_furniture_bestine_shared_painting_bestine_boffa, "object/draft_schematic/furniture/bestine/shared_painting_bestine_boffa.iff")
@@ -212,7 +215,8 @@ object_draft_schematic_furniture_bestine_shared_painting_bestine_golden_flower_0
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2798774405
+	clientObjectCRC = 2798774405,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_furniture_bestine_shared_painting_bestine_golden_flower_01, "object/draft_schematic/furniture/bestine/shared_painting_bestine_golden_flower_01.iff")
@@ -256,7 +260,8 @@ object_draft_schematic_furniture_bestine_shared_painting_bestine_golden_flower_0
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2110144530
+	clientObjectCRC = 2110144530,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_furniture_bestine_shared_painting_bestine_golden_flower_02, "object/draft_schematic/furniture/bestine/shared_painting_bestine_golden_flower_02.iff")
@@ -300,7 +305,8 @@ object_draft_schematic_furniture_bestine_shared_painting_bestine_golden_flower_0
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 885729183
+	clientObjectCRC = 885729183,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_furniture_bestine_shared_painting_bestine_golden_flower_03, "object/draft_schematic/furniture/bestine/shared_painting_bestine_golden_flower_03.iff")
@@ -344,7 +350,8 @@ object_draft_schematic_furniture_bestine_shared_painting_bestine_house = SharedD
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1534476352
+	clientObjectCRC = 1534476352,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_furniture_bestine_shared_painting_bestine_house, "object/draft_schematic/furniture/bestine/shared_painting_bestine_house.iff")
@@ -388,7 +395,8 @@ object_draft_schematic_furniture_bestine_shared_painting_bestine_krayt_skeleton 
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3028784545
+	clientObjectCRC = 3028784545,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_furniture_bestine_shared_painting_bestine_krayt_skeleton, "object/draft_schematic/furniture/bestine/shared_painting_bestine_krayt_skeleton.iff")
@@ -432,7 +440,8 @@ object_draft_schematic_furniture_bestine_shared_painting_bestine_lucky_despot = 
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1610627862
+	clientObjectCRC = 1610627862,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_furniture_bestine_shared_painting_bestine_lucky_despot, "object/draft_schematic/furniture/bestine/shared_painting_bestine_lucky_despot.iff")
@@ -476,7 +485,8 @@ object_draft_schematic_furniture_bestine_shared_painting_bestine_mattberry = Sha
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3967202686
+	clientObjectCRC = 3967202686,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_furniture_bestine_shared_painting_bestine_mattberry, "object/draft_schematic/furniture/bestine/shared_painting_bestine_mattberry.iff")
@@ -520,7 +530,8 @@ object_draft_schematic_furniture_bestine_shared_painting_bestine_moncal_eye_01 =
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3453343183
+	clientObjectCRC = 3453343183,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_furniture_bestine_shared_painting_bestine_moncal_eye_01, "object/draft_schematic/furniture/bestine/shared_painting_bestine_moncal_eye_01.iff")
@@ -564,7 +575,8 @@ object_draft_schematic_furniture_bestine_shared_painting_bestine_moncal_eye_02 =
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 381844824
+	clientObjectCRC = 381844824,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_furniture_bestine_shared_painting_bestine_moncal_eye_02, "object/draft_schematic/furniture/bestine/shared_painting_bestine_moncal_eye_02.iff")
@@ -608,7 +620,8 @@ object_draft_schematic_furniture_bestine_shared_painting_bestine_rainbow_berry_b
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 33582333
+	clientObjectCRC = 33582333,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_furniture_bestine_shared_painting_bestine_rainbow_berry_bush, "object/draft_schematic/furniture/bestine/shared_painting_bestine_rainbow_berry_bush.iff")
@@ -652,7 +665,8 @@ object_draft_schematic_furniture_bestine_shared_painting_bestine_raventhorn = Sh
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3011444247
+	clientObjectCRC = 3011444247,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_furniture_bestine_shared_painting_bestine_raventhorn, "object/draft_schematic/furniture/bestine/shared_painting_bestine_raventhorn.iff")
@@ -696,7 +710,8 @@ object_draft_schematic_furniture_bestine_shared_painting_bestine_ronka = SharedD
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 653658046
+	clientObjectCRC = 653658046,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_furniture_bestine_shared_painting_bestine_ronka, "object/draft_schematic/furniture/bestine/shared_painting_bestine_ronka.iff")

@@ -80,7 +80,8 @@ object_draft_schematic_vehicle_military_shared_military_a = SharedDraftSchematic
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2402380717
+	clientObjectCRC = 2402380717,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_vehicle_military_shared_military_a, "object/draft_schematic/vehicle/military/shared_military_a.iff")
@@ -124,7 +125,8 @@ object_draft_schematic_vehicle_military_shared_military_b = SharedDraftSchematic
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1411826490
+	clientObjectCRC = 1411826490,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_vehicle_military_shared_military_b, "object/draft_schematic/vehicle/military/shared_military_b.iff")
@@ -168,7 +170,8 @@ object_draft_schematic_vehicle_military_shared_military_c = SharedDraftSchematic
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 489399479
+	clientObjectCRC = 489399479,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_vehicle_military_shared_military_c, "object/draft_schematic/vehicle/military/shared_military_c.iff")
@@ -212,7 +215,8 @@ object_draft_schematic_vehicle_military_shared_military_d = SharedDraftSchematic
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3871903651
+	clientObjectCRC = 3871903651,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_vehicle_military_shared_military_d, "object/draft_schematic/vehicle/military/shared_military_d.iff")
@@ -256,7 +260,8 @@ object_draft_schematic_vehicle_military_shared_military_e = SharedDraftSchematic
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2948982830
+	clientObjectCRC = 2948982830,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_vehicle_military_shared_military_e, "object/draft_schematic/vehicle/military/shared_military_e.iff")
@@ -300,7 +305,8 @@ object_draft_schematic_vehicle_military_shared_starship_impl_tie_a = SharedDraft
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 4100515758
+	clientObjectCRC = 4100515758,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_vehicle_military_shared_starship_impl_tie_a, "object/draft_schematic/vehicle/military/shared_starship_impl_tie_a.iff")
@@ -344,7 +350,8 @@ object_draft_schematic_vehicle_military_shared_starship_impl_tie_b = SharedDraft
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 796872505
+	clientObjectCRC = 796872505,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_vehicle_military_shared_starship_impl_tie_b, "object/draft_schematic/vehicle/military/shared_starship_impl_tie_b.iff")
@@ -388,7 +395,8 @@ object_draft_schematic_vehicle_military_shared_starship_rebel_xwing_a = SharedDr
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1330578969
+	clientObjectCRC = 1330578969,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_vehicle_military_shared_starship_rebel_xwing_a, "object/draft_schematic/vehicle/military/shared_starship_rebel_xwing_a.iff")
@@ -432,7 +440,8 @@ object_draft_schematic_vehicle_military_shared_starship_rebel_xwing_b = SharedDr
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2488839822
+	clientObjectCRC = 2488839822,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_vehicle_military_shared_starship_rebel_xwing_b, "object/draft_schematic/vehicle/military/shared_starship_rebel_xwing_b.iff")

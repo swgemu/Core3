@@ -90,7 +90,8 @@ object_tangible_furniture_decorative_shared_bacta_tank = SharedTangibleObjectTem
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 778917674
+	clientObjectCRC = 778917674,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_furniture_decorative_shared_bacta_tank, "object/tangible/furniture/decorative/shared_bacta_tank.iff")
@@ -144,7 +145,8 @@ object_tangible_furniture_decorative_shared_basket_closed = SharedTangibleObject
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1552726710
+	clientObjectCRC = 1552726710,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_furniture_decorative_shared_basket_closed, "object/tangible/furniture/decorative/shared_basket_closed.iff")
@@ -198,7 +200,8 @@ object_tangible_furniture_decorative_shared_bottle_fat = SharedTangibleObjectTem
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2472176746
+	clientObjectCRC = 2472176746,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_furniture_decorative_shared_bottle_fat, "object/tangible/furniture/decorative/shared_bottle_fat.iff")
@@ -252,7 +255,8 @@ object_tangible_furniture_decorative_shared_bottle_pear = SharedTangibleObjectTe
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3744745457
+	clientObjectCRC = 3744745457,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_furniture_decorative_shared_bottle_pear, "object/tangible/furniture/decorative/shared_bottle_pear.iff")
@@ -306,7 +310,8 @@ object_tangible_furniture_decorative_shared_bottle_tall = SharedTangibleObjectTe
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1391690326
+	clientObjectCRC = 1391690326,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_furniture_decorative_shared_bottle_tall, "object/tangible/furniture/decorative/shared_bottle_tall.iff")
@@ -360,7 +365,8 @@ object_tangible_furniture_decorative_shared_bubble_tank = SharedTangibleObjectTe
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3911421124
+	clientObjectCRC = 3911421124,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_furniture_decorative_shared_bubble_tank, "object/tangible/furniture/decorative/shared_bubble_tank.iff")
@@ -414,7 +420,8 @@ object_tangible_furniture_decorative_shared_cafe_chair = SharedTangibleObjectTem
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4161463527
+	clientObjectCRC = 4161463527,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_furniture_decorative_shared_cafe_chair, "object/tangible/furniture/decorative/shared_cafe_chair.iff")
@@ -468,7 +475,8 @@ object_tangible_furniture_decorative_shared_campfire = SharedTangibleObjectTempl
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2302774503
+	clientObjectCRC = 2302774503,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_furniture_decorative_shared_campfire, "object/tangible/furniture/decorative/shared_campfire.iff")
@@ -522,7 +530,8 @@ object_tangible_furniture_decorative_shared_carved_bowl = SharedTangibleObjectTe
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 339149947
+	clientObjectCRC = 339149947,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_furniture_decorative_shared_carved_bowl, "object/tangible/furniture/decorative/shared_carved_bowl.iff")
@@ -576,7 +585,8 @@ object_tangible_furniture_decorative_shared_corellian_flagpole = SharedTangibleO
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1081449691
+	clientObjectCRC = 1081449691,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_furniture_decorative_shared_corellian_flagpole, "object/tangible/furniture/decorative/shared_corellian_flagpole.iff")
@@ -630,7 +640,8 @@ object_tangible_furniture_decorative_shared_diagnostic_screen = SharedTangibleOb
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2673191290
+	clientObjectCRC = 2673191290,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_furniture_decorative_shared_diagnostic_screen, "object/tangible/furniture/decorative/shared_diagnostic_screen.iff")
@@ -684,7 +695,8 @@ object_tangible_furniture_decorative_shared_foodcart = SharedTangibleObjectTempl
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 247713361
+	clientObjectCRC = 247713361,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_furniture_decorative_shared_foodcart, "object/tangible/furniture/decorative/shared_foodcart.iff")
@@ -738,7 +750,8 @@ object_tangible_furniture_decorative_shared_fruit_assorted = SharedTangibleObjec
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2967222212
+	clientObjectCRC = 2967222212,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_furniture_decorative_shared_fruit_assorted, "object/tangible/furniture/decorative/shared_fruit_assorted.iff")
@@ -792,7 +805,8 @@ object_tangible_furniture_decorative_shared_hanging_planter = SharedTangibleObje
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3845808441
+	clientObjectCRC = 3845808441,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_furniture_decorative_shared_hanging_planter, "object/tangible/furniture/decorative/shared_hanging_planter.iff")
@@ -846,7 +860,8 @@ object_tangible_furniture_decorative_shared_kitchen_utensils = SharedTangibleObj
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2914356187
+	clientObjectCRC = 2914356187,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_furniture_decorative_shared_kitchen_utensils, "object/tangible/furniture/decorative/shared_kitchen_utensils.iff")
@@ -900,7 +915,8 @@ object_tangible_furniture_decorative_shared_microphone_s01 = SharedTangibleObjec
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1371805603
+	clientObjectCRC = 1371805603,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_furniture_decorative_shared_microphone_s01, "object/tangible/furniture/decorative/shared_microphone_s01.iff")
@@ -954,7 +970,8 @@ object_tangible_furniture_decorative_shared_microphone_s02 = SharedTangibleObjec
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2329132852
+	clientObjectCRC = 2329132852,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_furniture_decorative_shared_microphone_s02, "object/tangible/furniture/decorative/shared_microphone_s02.iff")
@@ -1008,7 +1025,8 @@ object_tangible_furniture_decorative_shared_park_bench = SharedTangibleObjectTem
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3230914916
+	clientObjectCRC = 3230914916,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_furniture_decorative_shared_park_bench, "object/tangible/furniture/decorative/shared_park_bench.iff")
@@ -1062,7 +1080,8 @@ object_tangible_furniture_decorative_shared_pitcher_full = SharedTangibleObjectT
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3027440534
+	clientObjectCRC = 3027440534,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_furniture_decorative_shared_pitcher_full, "object/tangible/furniture/decorative/shared_pitcher_full.iff")
@@ -1116,7 +1135,8 @@ object_tangible_furniture_decorative_shared_plain_bowl = SharedTangibleObjectTem
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 265330510
+	clientObjectCRC = 265330510,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_furniture_decorative_shared_plain_bowl, "object/tangible/furniture/decorative/shared_plain_bowl.iff")
@@ -1170,7 +1190,8 @@ object_tangible_furniture_decorative_shared_portable_stove = SharedTangibleObjec
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1276845581
+	clientObjectCRC = 1276845581,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_furniture_decorative_shared_portable_stove, "object/tangible/furniture/decorative/shared_portable_stove.iff")
@@ -1224,7 +1245,8 @@ object_tangible_furniture_decorative_shared_professor_desk = SharedTangibleObjec
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3449846247
+	clientObjectCRC = 3449846247,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_furniture_decorative_shared_professor_desk, "object/tangible/furniture/decorative/shared_professor_desk.iff")
@@ -1278,7 +1300,8 @@ object_tangible_furniture_decorative_shared_radio = SharedTangibleObjectTemplate
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1925051927
+	clientObjectCRC = 1925051927,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_furniture_decorative_shared_radio, "object/tangible/furniture/decorative/shared_radio.iff")
@@ -1332,7 +1355,8 @@ object_tangible_furniture_decorative_shared_shisa = SharedTangibleObjectTemplate
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2687763225
+	clientObjectCRC = 2687763225,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_furniture_decorative_shared_shisa, "object/tangible/furniture/decorative/shared_shisa.iff")
@@ -1386,7 +1410,8 @@ object_tangible_furniture_decorative_shared_slave_brazier = SharedTangibleObject
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3637045167
+	clientObjectCRC = 3637045167,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_furniture_decorative_shared_slave_brazier, "object/tangible/furniture/decorative/shared_slave_brazier.iff")
@@ -1440,7 +1465,8 @@ object_tangible_furniture_decorative_shared_spear_rack = SharedTangibleObjectTem
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 584986683
+	clientObjectCRC = 584986683,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_furniture_decorative_shared_spear_rack, "object/tangible/furniture/decorative/shared_spear_rack.iff")
@@ -1494,7 +1520,8 @@ object_tangible_furniture_decorative_shared_streetlamp = SharedTangibleObjectTem
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1025826272
+	clientObjectCRC = 1025826272,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_furniture_decorative_shared_streetlamp, "object/tangible/furniture/decorative/shared_streetlamp.iff")
@@ -1548,7 +1575,8 @@ object_tangible_furniture_decorative_shared_stuffed_fish = SharedTangibleObjectT
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3754610369
+	clientObjectCRC = 3754610369,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_furniture_decorative_shared_stuffed_fish, "object/tangible/furniture/decorative/shared_stuffed_fish.iff")
@@ -1602,7 +1630,8 @@ object_tangible_furniture_decorative_shared_tanning_hide_s01 = SharedTangibleObj
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 92142046
+	clientObjectCRC = 92142046,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_furniture_decorative_shared_tanning_hide_s01, "object/tangible/furniture/decorative/shared_tanning_hide_s01.iff")
@@ -1656,7 +1685,8 @@ object_tangible_furniture_decorative_shared_tanning_hide_s02 = SharedTangibleObj
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3731509577
+	clientObjectCRC = 3731509577,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_furniture_decorative_shared_tanning_hide_s02, "object/tangible/furniture/decorative/shared_tanning_hide_s02.iff")
@@ -1710,7 +1740,8 @@ object_tangible_furniture_decorative_shared_tatooine_tapestry = SharedTangibleOb
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2550512766
+	clientObjectCRC = 2550512766,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_furniture_decorative_shared_tatooine_tapestry, "object/tangible/furniture/decorative/shared_tatooine_tapestry.iff")

@@ -90,7 +90,8 @@ object_tangible_lair_dewback_shared_lair_dewback = SharedTangibleObjectTemplate:
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 62836419
+	clientObjectCRC = 62836419,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff", "object/tangible/lair/base/shared_lair_base_rancor_light.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_dewback_shared_lair_dewback, "object/tangible/lair/dewback/shared_lair_dewback.iff")
@@ -144,7 +145,8 @@ object_tangible_lair_dewback_shared_lair_dewback_desert = SharedTangibleObjectTe
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 605037773
+	clientObjectCRC = 605037773,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff", "object/tangible/lair/base/shared_lair_base_rancor_light.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_dewback_shared_lair_dewback_desert, "object/tangible/lair/dewback/shared_lair_dewback_desert.iff")

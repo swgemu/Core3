@@ -80,7 +80,8 @@ object_draft_schematic_weapon_lightsaber_shared_lightsaber_one_hand_gen1 = Share
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2209371727
+	clientObjectCRC = 2209371727,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_weapon_lightsaber_shared_lightsaber_one_hand_gen1, "object/draft_schematic/weapon/lightsaber/shared_lightsaber_one_hand_gen1.iff")
@@ -124,7 +125,8 @@ object_draft_schematic_weapon_lightsaber_shared_lightsaber_one_hand_gen2 = Share
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1487404760
+	clientObjectCRC = 1487404760,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_weapon_lightsaber_shared_lightsaber_one_hand_gen2, "object/draft_schematic/weapon/lightsaber/shared_lightsaber_one_hand_gen2.iff")
@@ -168,7 +170,8 @@ object_draft_schematic_weapon_lightsaber_shared_lightsaber_one_hand_gen3 = Share
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 296393045
+	clientObjectCRC = 296393045,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_weapon_lightsaber_shared_lightsaber_one_hand_gen3, "object/draft_schematic/weapon/lightsaber/shared_lightsaber_one_hand_gen3.iff")
@@ -212,7 +215,8 @@ object_draft_schematic_weapon_lightsaber_shared_lightsaber_one_hand_gen4 = Share
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3930698305
+	clientObjectCRC = 3930698305,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_weapon_lightsaber_shared_lightsaber_one_hand_gen4, "object/draft_schematic/weapon/lightsaber/shared_lightsaber_one_hand_gen4.iff")
@@ -256,7 +260,8 @@ object_draft_schematic_weapon_lightsaber_shared_lightsaber_one_hand_gen5 = Share
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2739197388
+	clientObjectCRC = 2739197388,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_weapon_lightsaber_shared_lightsaber_one_hand_gen5, "object/draft_schematic/weapon/lightsaber/shared_lightsaber_one_hand_gen5.iff")
@@ -300,7 +305,8 @@ object_draft_schematic_weapon_lightsaber_shared_lightsaber_polearm_gen1 = Shared
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2055057421
+	clientObjectCRC = 2055057421,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_weapon_lightsaber_shared_lightsaber_polearm_gen1, "object/draft_schematic/weapon/lightsaber/shared_lightsaber_polearm_gen1.iff")
@@ -344,7 +350,8 @@ object_draft_schematic_weapon_lightsaber_shared_lightsaber_polearm_gen2 = Shared
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2708084890
+	clientObjectCRC = 2708084890,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_weapon_lightsaber_shared_lightsaber_polearm_gen2, "object/draft_schematic/weapon/lightsaber/shared_lightsaber_polearm_gen2.iff")
@@ -388,7 +395,8 @@ object_draft_schematic_weapon_lightsaber_shared_lightsaber_polearm_gen3 = Shared
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3899096855
+	clientObjectCRC = 3899096855,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_weapon_lightsaber_shared_lightsaber_polearm_gen3, "object/draft_schematic/weapon/lightsaber/shared_lightsaber_polearm_gen3.iff")
@@ -432,7 +440,8 @@ object_draft_schematic_weapon_lightsaber_shared_lightsaber_polearm_gen4 = Shared
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 327439363
+	clientObjectCRC = 327439363,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_weapon_lightsaber_shared_lightsaber_polearm_gen4, "object/draft_schematic/weapon/lightsaber/shared_lightsaber_polearm_gen4.iff")
@@ -476,7 +485,8 @@ object_draft_schematic_weapon_lightsaber_shared_lightsaber_polearm_gen5 = Shared
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1518941070
+	clientObjectCRC = 1518941070,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_weapon_lightsaber_shared_lightsaber_polearm_gen5, "object/draft_schematic/weapon/lightsaber/shared_lightsaber_polearm_gen5.iff")
@@ -520,7 +530,8 @@ object_draft_schematic_weapon_lightsaber_shared_lightsaber_refined_crystal_pack 
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2234584747
+	clientObjectCRC = 2234584747,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_weapon_lightsaber_shared_lightsaber_refined_crystal_pack, "object/draft_schematic/weapon/lightsaber/shared_lightsaber_refined_crystal_pack.iff")
@@ -564,7 +575,8 @@ object_draft_schematic_weapon_lightsaber_shared_lightsaber_training = SharedDraf
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3899605882
+	clientObjectCRC = 3899605882,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_weapon_lightsaber_shared_lightsaber_training, "object/draft_schematic/weapon/lightsaber/shared_lightsaber_training.iff")
@@ -608,7 +620,8 @@ object_draft_schematic_weapon_lightsaber_shared_lightsaber_two_hand_gen1 = Share
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2495319493
+	clientObjectCRC = 2495319493,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_weapon_lightsaber_shared_lightsaber_two_hand_gen1, "object/draft_schematic/weapon/lightsaber/shared_lightsaber_two_hand_gen1.iff")
@@ -652,7 +665,8 @@ object_draft_schematic_weapon_lightsaber_shared_lightsaber_two_hand_gen2 = Share
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1336681810
+	clientObjectCRC = 1336681810,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_weapon_lightsaber_shared_lightsaber_two_hand_gen2, "object/draft_schematic/weapon/lightsaber/shared_lightsaber_two_hand_gen2.iff")
@@ -696,7 +710,8 @@ object_draft_schematic_weapon_lightsaber_shared_lightsaber_two_hand_gen3 = Share
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 111231711
+	clientObjectCRC = 111231711,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_weapon_lightsaber_shared_lightsaber_two_hand_gen3, "object/draft_schematic/weapon/lightsaber/shared_lightsaber_two_hand_gen3.iff")
@@ -740,7 +755,8 @@ object_draft_schematic_weapon_lightsaber_shared_lightsaber_two_hand_gen4 = Share
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 4248988107
+	clientObjectCRC = 4248988107,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_weapon_lightsaber_shared_lightsaber_two_hand_gen4, "object/draft_schematic/weapon/lightsaber/shared_lightsaber_two_hand_gen4.iff")
@@ -784,7 +800,8 @@ object_draft_schematic_weapon_lightsaber_shared_lightsaber_two_hand_gen5 = Share
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3025079878
+	clientObjectCRC = 3025079878,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_weapon_lightsaber_shared_lightsaber_two_hand_gen5, "object/draft_schematic/weapon/lightsaber/shared_lightsaber_two_hand_gen5.iff")

@@ -90,7 +90,8 @@ object_tangible_beta_shared_beta_terminal_food = SharedTangibleObjectTemplate:ne
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3480787913
+	clientObjectCRC = 3480787913,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/terminal/base/shared_base_terminal.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_beta_shared_beta_terminal_food, "object/tangible/beta/shared_beta_terminal_food.iff")
@@ -144,7 +145,8 @@ object_tangible_beta_shared_beta_terminal_medicine = SharedTangibleObjectTemplat
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 600604858
+	clientObjectCRC = 600604858,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/terminal/base/shared_base_terminal.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_beta_shared_beta_terminal_medicine, "object/tangible/beta/shared_beta_terminal_medicine.iff")
@@ -198,7 +200,8 @@ object_tangible_beta_shared_beta_terminal_money = SharedTangibleObjectTemplate:n
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1792262622
+	clientObjectCRC = 1792262622,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/terminal/base/shared_base_terminal.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_beta_shared_beta_terminal_money, "object/tangible/beta/shared_beta_terminal_money.iff")
@@ -252,7 +255,8 @@ object_tangible_beta_shared_beta_terminal_resource = SharedTangibleObjectTemplat
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1782676583
+	clientObjectCRC = 1782676583,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/terminal/base/shared_base_terminal.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_beta_shared_beta_terminal_resource, "object/tangible/beta/shared_beta_terminal_resource.iff")
@@ -306,7 +310,8 @@ object_tangible_beta_shared_beta_terminal_warp = SharedTangibleObjectTemplate:ne
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1453711903
+	clientObjectCRC = 1453711903,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/terminal/base/shared_base_terminal.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_beta_shared_beta_terminal_warp, "object/tangible/beta/shared_beta_terminal_warp.iff")
@@ -360,7 +365,8 @@ object_tangible_beta_shared_beta_terminal_wound = SharedTangibleObjectTemplate:n
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 123483416
+	clientObjectCRC = 123483416,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/terminal/base/shared_base_terminal.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_beta_shared_beta_terminal_wound, "object/tangible/beta/shared_beta_terminal_wound.iff")
@@ -414,7 +420,8 @@ object_tangible_beta_shared_beta_terminal_xp = SharedTangibleObjectTemplate:new 
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3440875324
+	clientObjectCRC = 3440875324,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/terminal/base/shared_base_terminal.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_beta_shared_beta_terminal_xp, "object/tangible/beta/shared_beta_terminal_xp.iff")
@@ -468,7 +475,8 @@ object_tangible_beta_shared_donham_terminal = SharedTangibleObjectTemplate:new {
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3977978094
+	clientObjectCRC = 3977978094,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/terminal/base/shared_base_terminal.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_beta_shared_donham_terminal, "object/tangible/beta/shared_donham_terminal.iff")

@@ -90,7 +90,8 @@ object_installation_mining_liquid_shared_mining_liquid_harvester_style_1 = Share
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2015682736
+	clientObjectCRC = 2015682736,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff", "object/installation/mining_liquid/base/shared_mining_liquid_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_installation_mining_liquid_shared_mining_liquid_harvester_style_1, "object/installation/mining_liquid/shared_mining_liquid_harvester_style_1.iff")
@@ -144,7 +145,8 @@ object_installation_mining_liquid_shared_mining_liquid_harvester_style_2 = Share
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2738047015
+	clientObjectCRC = 2738047015,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff", "object/installation/mining_liquid/base/shared_mining_liquid_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_installation_mining_liquid_shared_mining_liquid_harvester_style_2, "object/installation/mining_liquid/shared_mining_liquid_harvester_style_2.iff")
@@ -198,7 +200,8 @@ object_installation_mining_liquid_shared_mining_liquid_harvester_style_3 = Share
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3929943978
+	clientObjectCRC = 3929943978,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff", "object/installation/mining_liquid/base/shared_mining_liquid_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_installation_mining_liquid_shared_mining_liquid_harvester_style_3, "object/installation/mining_liquid/shared_mining_liquid_harvester_style_3.iff")
@@ -252,7 +255,8 @@ object_installation_mining_liquid_shared_mining_liquid_moisture_harvester = Shar
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2235626870
+	clientObjectCRC = 2235626870,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff", "object/installation/mining_liquid/base/shared_mining_liquid_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_installation_mining_liquid_shared_mining_liquid_moisture_harvester, "object/installation/mining_liquid/shared_mining_liquid_moisture_harvester.iff")
@@ -306,7 +310,8 @@ object_installation_mining_liquid_shared_mining_liquid_moisture_harvester_heavy 
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1305511934
+	clientObjectCRC = 1305511934,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff", "object/installation/mining_liquid/base/shared_mining_liquid_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_installation_mining_liquid_shared_mining_liquid_moisture_harvester_heavy, "object/installation/mining_liquid/shared_mining_liquid_moisture_harvester_heavy.iff")
@@ -360,7 +365,8 @@ object_installation_mining_liquid_shared_mining_liquid_moisture_harvester_medium
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3152239258
+	clientObjectCRC = 3152239258,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff", "object/installation/mining_liquid/base/shared_mining_liquid_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_installation_mining_liquid_shared_mining_liquid_moisture_harvester_medium, "object/installation/mining_liquid/shared_mining_liquid_moisture_harvester_medium.iff")
@@ -414,7 +420,8 @@ object_installation_mining_liquid_shared_resource_harvester = SharedInstallation
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 860426391
+	clientObjectCRC = 860426391,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_installation_mining_liquid_shared_resource_harvester, "object/installation/mining_liquid/shared_resource_harvester.iff")

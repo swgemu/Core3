@@ -90,7 +90,8 @@ object_tangible_lair_peko_peko_shared_lair_peko_peko = SharedTangibleObjectTempl
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2543663822
+	clientObjectCRC = 2543663822,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_peko_peko_shared_lair_peko_peko, "object/tangible/lair/peko_peko/shared_lair_peko_peko.iff")
@@ -144,7 +145,8 @@ object_tangible_lair_peko_peko_shared_lair_peko_peko_forest = SharedTangibleObje
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1250959161
+	clientObjectCRC = 1250959161,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_peko_peko_shared_lair_peko_peko_forest, "object/tangible/lair/peko_peko/shared_lair_peko_peko_forest.iff")
@@ -198,7 +200,8 @@ object_tangible_lair_peko_peko_shared_lair_peko_peko_grassland = SharedTangibleO
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 739180542
+	clientObjectCRC = 739180542,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_peko_peko_shared_lair_peko_peko_grassland, "object/tangible/lair/peko_peko/shared_lair_peko_peko_grassland.iff")
@@ -252,7 +255,8 @@ object_tangible_lair_peko_peko_shared_lair_peko_peko_swamp = SharedTangibleObjec
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4010621056
+	clientObjectCRC = 4010621056,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_peko_peko_shared_lair_peko_peko_swamp, "object/tangible/lair/peko_peko/shared_lair_peko_peko_swamp.iff")

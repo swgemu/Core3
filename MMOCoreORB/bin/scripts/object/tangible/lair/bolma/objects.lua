@@ -90,7 +90,8 @@ object_tangible_lair_bolma_shared_lair_bolma = SharedTangibleObjectTemplate:new 
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3974943996
+	clientObjectCRC = 3974943996,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_bolma_shared_lair_bolma, "object/tangible/lair/bolma/shared_lair_bolma.iff")
@@ -144,7 +145,8 @@ object_tangible_lair_bolma_shared_lair_bolma_desert = SharedTangibleObjectTempla
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 907065118
+	clientObjectCRC = 907065118,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_bolma_shared_lair_bolma_desert, "object/tangible/lair/bolma/shared_lair_bolma_desert.iff")
@@ -198,7 +200,8 @@ object_tangible_lair_bolma_shared_lair_bolma_dune = SharedTangibleObjectTemplate
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 184119716
+	clientObjectCRC = 184119716,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_bolma_shared_lair_bolma_dune, "object/tangible/lair/bolma/shared_lair_bolma_dune.iff")
@@ -252,7 +255,8 @@ object_tangible_lair_bolma_shared_lair_bolma_mountain = SharedTangibleObjectTemp
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1763604762
+	clientObjectCRC = 1763604762,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_bolma_shared_lair_bolma_mountain, "object/tangible/lair/bolma/shared_lair_bolma_mountain.iff")

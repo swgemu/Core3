@@ -90,7 +90,8 @@ object_tangible_travel_travel_ticket_shared_dungeon_ticket = SharedTangibleObjec
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1400905177
+	clientObjectCRC = 1400905177,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_travel_travel_ticket_shared_dungeon_ticket, "object/tangible/travel/travel_ticket/shared_dungeon_ticket.iff")

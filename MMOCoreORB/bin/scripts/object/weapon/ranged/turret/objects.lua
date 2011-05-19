@@ -94,7 +94,8 @@ object_weapon_ranged_turret_shared_turret_block_large = SharedWeaponObjectTempla
 	weaponEffect = "bolt_turret",
 	weaponEffectIndex = 0,
 
-	clientObjectCRC = 4214506567
+	clientObjectCRC = 4214506567,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/weapon/base/shared_base_weapon.iff", "object/weapon/ranged/turret/base/shared_turret_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_weapon_ranged_turret_shared_turret_block_large, "object/weapon/ranged/turret/shared_turret_block_large.iff")

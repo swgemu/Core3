@@ -90,7 +90,8 @@ object_tangible_deed_faction_perk_covert_detector_shared_detector_32m_deed = Sha
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3347458445
+	clientObjectCRC = 3347458445,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/deed/base/shared_deed_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_deed_faction_perk_covert_detector_shared_detector_32m_deed, "object/tangible/deed/faction_perk/covert_detector/shared_detector_32m_deed.iff")

@@ -90,7 +90,8 @@ object_tangible_terminal_shared_terminal_ballot_box = SharedTangibleObjectTempla
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 909741262
+	clientObjectCRC = 909741262,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/terminal/base/shared_base_terminal.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_terminal_shared_terminal_ballot_box, "object/tangible/terminal/shared_terminal_ballot_box.iff")
@@ -144,7 +145,8 @@ object_tangible_terminal_shared_terminal_bank = SharedTangibleObjectTemplate:new
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1989986645
+	clientObjectCRC = 1989986645,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/terminal/base/shared_base_terminal.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_terminal_shared_terminal_bank, "object/tangible/terminal/shared_terminal_bank.iff")
@@ -198,7 +200,8 @@ object_tangible_terminal_shared_terminal_bazaar = SharedTangibleObjectTemplate:n
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3631323563
+	clientObjectCRC = 3631323563,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/terminal/base/shared_base_terminal.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_terminal_shared_terminal_bazaar, "object/tangible/terminal/shared_terminal_bazaar.iff")
@@ -252,7 +255,8 @@ object_tangible_terminal_shared_terminal_bestine_quests_01 = SharedTangibleObjec
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 234637781
+	clientObjectCRC = 234637781,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/terminal/base/shared_base_terminal.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_terminal_shared_terminal_bestine_quests_01, "object/tangible/terminal/shared_terminal_bestine_quests_01.iff")
@@ -306,7 +310,8 @@ object_tangible_terminal_shared_terminal_bestine_quests_02 = SharedTangibleObjec
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3605782850
+	clientObjectCRC = 3605782850,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/terminal/base/shared_base_terminal.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_terminal_shared_terminal_bestine_quests_02, "object/tangible/terminal/shared_terminal_bestine_quests_02.iff")
@@ -360,7 +365,8 @@ object_tangible_terminal_shared_terminal_bestine_quests_03 = SharedTangibleObjec
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2682685135
+	clientObjectCRC = 2682685135,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/terminal/base/shared_base_terminal.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_terminal_shared_terminal_bestine_quests_03, "object/tangible/terminal/shared_terminal_bestine_quests_03.iff")
@@ -414,7 +420,8 @@ object_tangible_terminal_shared_terminal_bounty_droid = SharedTangibleObjectTemp
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4023071175
+	clientObjectCRC = 4023071175,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/terminal/base/shared_base_terminal.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_terminal_shared_terminal_bounty_droid, "object/tangible/terminal/shared_terminal_bounty_droid.iff")
@@ -468,7 +475,8 @@ object_tangible_terminal_shared_terminal_character_builder = SharedTangibleObjec
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1444012427
+	clientObjectCRC = 1444012427,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/terminal/base/shared_base_terminal.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_terminal_shared_terminal_character_builder, "object/tangible/terminal/shared_terminal_character_builder.iff")
@@ -522,7 +530,8 @@ object_tangible_terminal_shared_terminal_city = SharedTangibleObjectTemplate:new
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 379393128
+	clientObjectCRC = 379393128,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/terminal/base/shared_base_terminal.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_terminal_shared_terminal_city, "object/tangible/terminal/shared_terminal_city.iff")
@@ -576,7 +585,8 @@ object_tangible_terminal_shared_terminal_city_vote = SharedTangibleObjectTemplat
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1204497275
+	clientObjectCRC = 1204497275,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/terminal/base/shared_base_terminal.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_terminal_shared_terminal_city_vote, "object/tangible/terminal/shared_terminal_city_vote.iff")
@@ -630,7 +640,8 @@ object_tangible_terminal_shared_terminal_cloning = SharedTangibleObjectTemplate:
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3781560082
+	clientObjectCRC = 3781560082,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/terminal/base/shared_base_terminal.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_terminal_shared_terminal_cloning, "object/tangible/terminal/shared_terminal_cloning.iff")
@@ -684,7 +695,8 @@ object_tangible_terminal_shared_terminal_command_console = SharedTangibleObjectT
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 245813721
+	clientObjectCRC = 245813721,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/terminal/base/shared_base_terminal.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_terminal_shared_terminal_command_console, "object/tangible/terminal/shared_terminal_command_console.iff")
@@ -738,7 +750,8 @@ object_tangible_terminal_shared_terminal_dark_enclave_challenge = SharedTangible
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1992103782
+	clientObjectCRC = 1992103782,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/terminal/base/shared_base_terminal.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_terminal_shared_terminal_dark_enclave_challenge, "object/tangible/terminal/shared_terminal_dark_enclave_challenge.iff")
@@ -792,7 +805,8 @@ object_tangible_terminal_shared_terminal_dark_enclave_voting = SharedTangibleObj
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2329382269
+	clientObjectCRC = 2329382269,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/terminal/base/shared_base_terminal.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_terminal_shared_terminal_dark_enclave_voting, "object/tangible/terminal/shared_terminal_dark_enclave_voting.iff")
@@ -846,7 +860,8 @@ object_tangible_terminal_shared_terminal_elevator = SharedTangibleObjectTemplate
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 278443635
+	clientObjectCRC = 278443635,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/terminal/base/shared_base_terminal.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_terminal_shared_terminal_elevator, "object/tangible/terminal/shared_terminal_elevator.iff")
@@ -900,7 +915,8 @@ object_tangible_terminal_shared_terminal_elevator_down = SharedTangibleObjectTem
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3298826986
+	clientObjectCRC = 3298826986,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/terminal/base/shared_base_terminal.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_terminal_shared_terminal_elevator_down, "object/tangible/terminal/shared_terminal_elevator_down.iff")
@@ -954,7 +970,8 @@ object_tangible_terminal_shared_terminal_elevator_up = SharedTangibleObjectTempl
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 115529514
+	clientObjectCRC = 115529514,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/terminal/base/shared_base_terminal.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_terminal_shared_terminal_elevator_up, "object/tangible/terminal/shared_terminal_elevator_up.iff")
@@ -1008,7 +1025,8 @@ object_tangible_terminal_shared_terminal_geo_bunker = SharedTangibleObjectTempla
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3878794306
+	clientObjectCRC = 3878794306,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/terminal/base/shared_base_terminal.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_terminal_shared_terminal_geo_bunker, "object/tangible/terminal/shared_terminal_geo_bunker.iff")
@@ -1062,7 +1080,8 @@ object_tangible_terminal_shared_terminal_guild = SharedTangibleObjectTemplate:ne
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 724271921
+	clientObjectCRC = 724271921,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/terminal/base/shared_base_terminal.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_terminal_shared_terminal_guild, "object/tangible/terminal/shared_terminal_guild.iff")
@@ -1116,7 +1135,8 @@ object_tangible_terminal_shared_terminal_hq = SharedTangibleObjectTemplate:new {
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 489350492
+	clientObjectCRC = 489350492,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/terminal/base/shared_base_terminal.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_terminal_shared_terminal_hq, "object/tangible/terminal/shared_terminal_hq.iff")
@@ -1170,7 +1190,8 @@ object_tangible_terminal_shared_terminal_hq_imperial = SharedTangibleObjectTempl
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3161971452
+	clientObjectCRC = 3161971452,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/terminal/base/shared_base_terminal.iff", "object/tangible/terminal/shared_terminal_hq.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_terminal_shared_terminal_hq_imperial, "object/tangible/terminal/shared_terminal_hq_imperial.iff")
@@ -1224,7 +1245,8 @@ object_tangible_terminal_shared_terminal_hq_rebel = SharedTangibleObjectTemplate
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1176471647
+	clientObjectCRC = 1176471647,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/terminal/base/shared_base_terminal.iff", "object/tangible/terminal/shared_terminal_hq.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_terminal_shared_terminal_hq_rebel, "object/tangible/terminal/shared_terminal_hq_rebel.iff")
@@ -1278,7 +1300,8 @@ object_tangible_terminal_shared_terminal_hq_turret_control = SharedTangibleObjec
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2229698005
+	clientObjectCRC = 2229698005,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/terminal/base/shared_base_terminal.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_terminal_shared_terminal_hq_turret_control, "object/tangible/terminal/shared_terminal_hq_turret_control.iff")
@@ -1332,7 +1355,8 @@ object_tangible_terminal_shared_terminal_imagedesign = SharedTangibleObjectTempl
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2511005752
+	clientObjectCRC = 2511005752,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/terminal/base/shared_base_terminal.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_terminal_shared_terminal_imagedesign, "object/tangible/terminal/shared_terminal_imagedesign.iff")
@@ -1386,7 +1410,8 @@ object_tangible_terminal_shared_terminal_insurance = SharedTangibleObjectTemplat
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1029213671
+	clientObjectCRC = 1029213671,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/terminal/base/shared_base_terminal.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_terminal_shared_terminal_insurance, "object/tangible/terminal/shared_terminal_insurance.iff")
@@ -1440,7 +1465,8 @@ object_tangible_terminal_shared_terminal_jukebox = SharedTangibleObjectTemplate:
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 249891408
+	clientObjectCRC = 249891408,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/terminal/base/shared_base_terminal.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_terminal_shared_terminal_jukebox, "object/tangible/terminal/shared_terminal_jukebox.iff")
@@ -1494,7 +1520,8 @@ object_tangible_terminal_shared_terminal_light_enclave_challenge = SharedTangibl
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2945424908
+	clientObjectCRC = 2945424908,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/terminal/base/shared_base_terminal.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_terminal_shared_terminal_light_enclave_challenge, "object/tangible/terminal/shared_terminal_light_enclave_challenge.iff")
@@ -1548,7 +1575,8 @@ object_tangible_terminal_shared_terminal_light_enclave_voting = SharedTangibleOb
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1384984494
+	clientObjectCRC = 1384984494,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/terminal/base/shared_base_terminal.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_terminal_shared_terminal_light_enclave_voting, "object/tangible/terminal/shared_terminal_light_enclave_voting.iff")
@@ -1602,7 +1630,8 @@ object_tangible_terminal_shared_terminal_mission = SharedTangibleObjectTemplate:
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2907007746
+	clientObjectCRC = 2907007746,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/terminal/base/shared_base_terminal.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_terminal_shared_terminal_mission, "object/tangible/terminal/shared_terminal_mission.iff")
@@ -1656,7 +1685,8 @@ object_tangible_terminal_shared_terminal_mission_artisan = SharedTangibleObjectT
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3927829015
+	clientObjectCRC = 3927829015,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/terminal/base/shared_base_terminal.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_terminal_shared_terminal_mission_artisan, "object/tangible/terminal/shared_terminal_mission_artisan.iff")
@@ -1710,7 +1740,8 @@ object_tangible_terminal_shared_terminal_mission_bounty = SharedTangibleObjectTe
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3951925654
+	clientObjectCRC = 3951925654,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/terminal/base/shared_base_terminal.iff", "object/tangible/terminal/shared_terminal_mission.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_terminal_shared_terminal_mission_bounty, "object/tangible/terminal/shared_terminal_mission_bounty.iff")
@@ -1764,7 +1795,8 @@ object_tangible_terminal_shared_terminal_mission_entertainer = SharedTangibleObj
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2410700040
+	clientObjectCRC = 2410700040,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/terminal/base/shared_base_terminal.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_terminal_shared_terminal_mission_entertainer, "object/tangible/terminal/shared_terminal_mission_entertainer.iff")
@@ -1818,7 +1850,8 @@ object_tangible_terminal_shared_terminal_mission_imperial = SharedTangibleObject
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4186402280
+	clientObjectCRC = 4186402280,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/terminal/base/shared_base_terminal.iff", "object/tangible/terminal/shared_terminal_mission.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_terminal_shared_terminal_mission_imperial, "object/tangible/terminal/shared_terminal_mission_imperial.iff")
@@ -1872,7 +1905,8 @@ object_tangible_terminal_shared_terminal_mission_newbie = SharedTangibleObjectTe
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2666426537
+	clientObjectCRC = 2666426537,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/terminal/base/shared_base_terminal.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_terminal_shared_terminal_mission_newbie, "object/tangible/terminal/shared_terminal_mission_newbie.iff")
@@ -1926,7 +1960,8 @@ object_tangible_terminal_shared_terminal_mission_rebel = SharedTangibleObjectTem
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2082896080
+	clientObjectCRC = 2082896080,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/terminal/base/shared_base_terminal.iff", "object/tangible/terminal/shared_terminal_mission.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_terminal_shared_terminal_mission_rebel, "object/tangible/terminal/shared_terminal_mission_rebel.iff")
@@ -1980,7 +2015,8 @@ object_tangible_terminal_shared_terminal_mission_scout = SharedTangibleObjectTem
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 581658756
+	clientObjectCRC = 581658756,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/terminal/base/shared_base_terminal.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_terminal_shared_terminal_mission_scout, "object/tangible/terminal/shared_terminal_mission_scout.iff")
@@ -2034,7 +2070,8 @@ object_tangible_terminal_shared_terminal_mission_statue = SharedTangibleObjectTe
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4114889569
+	clientObjectCRC = 4114889569,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/terminal/base/shared_base_terminal.iff", "object/tangible/terminal/shared_terminal_mission.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_terminal_shared_terminal_mission_statue, "object/tangible/terminal/shared_terminal_mission_statue.iff")
@@ -2088,7 +2125,8 @@ object_tangible_terminal_shared_terminal_newbie_clothing = SharedTangibleObjectT
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4290085920
+	clientObjectCRC = 4290085920,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/terminal/base/shared_base_terminal.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_terminal_shared_terminal_newbie_clothing, "object/tangible/terminal/shared_terminal_newbie_clothing.iff")
@@ -2142,7 +2180,8 @@ object_tangible_terminal_shared_terminal_newbie_food = SharedTangibleObjectTempl
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2721518483
+	clientObjectCRC = 2721518483,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/terminal/base/shared_base_terminal.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_terminal_shared_terminal_newbie_food, "object/tangible/terminal/shared_terminal_newbie_food.iff")
@@ -2196,7 +2235,8 @@ object_tangible_terminal_shared_terminal_newbie_instrument = SharedTangibleObjec
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3665675874
+	clientObjectCRC = 3665675874,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/terminal/base/shared_base_terminal.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_terminal_shared_terminal_newbie_instrument, "object/tangible/terminal/shared_terminal_newbie_instrument.iff")
@@ -2250,7 +2290,8 @@ object_tangible_terminal_shared_terminal_newbie_medicine = SharedTangibleObjectT
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1668873424
+	clientObjectCRC = 1668873424,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/terminal/base/shared_base_terminal.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_terminal_shared_terminal_newbie_medicine, "object/tangible/terminal/shared_terminal_newbie_medicine.iff")
@@ -2304,7 +2345,8 @@ object_tangible_terminal_shared_terminal_newbie_tool = SharedTangibleObjectTempl
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4182051530
+	clientObjectCRC = 4182051530,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/terminal/base/shared_base_terminal.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_terminal_shared_terminal_newbie_tool, "object/tangible/terminal/shared_terminal_newbie_tool.iff")
@@ -2358,7 +2400,8 @@ object_tangible_terminal_shared_terminal_newsnet = SharedTangibleObjectTemplate:
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 757402672
+	clientObjectCRC = 757402672,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/terminal/base/shared_base_terminal.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_terminal_shared_terminal_newsnet, "object/tangible/terminal/shared_terminal_newsnet.iff")
@@ -2412,7 +2455,8 @@ object_tangible_terminal_shared_terminal_nym_cave = SharedTangibleObjectTemplate
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3880062907
+	clientObjectCRC = 3880062907,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/terminal/base/shared_base_terminal.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_terminal_shared_terminal_nym_cave, "object/tangible/terminal/shared_terminal_nym_cave.iff")
@@ -2466,7 +2510,8 @@ object_tangible_terminal_shared_terminal_player_structure = SharedTangibleObject
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4023332994
+	clientObjectCRC = 4023332994,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/terminal/base/shared_base_terminal.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_terminal_shared_terminal_player_structure, "object/tangible/terminal/shared_terminal_player_structure.iff")
@@ -2520,7 +2565,8 @@ object_tangible_terminal_shared_terminal_player_structure_nosnap = SharedTangibl
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 437907033
+	clientObjectCRC = 437907033,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/terminal/base/shared_base_terminal.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_terminal_shared_terminal_player_structure_nosnap, "object/tangible/terminal/shared_terminal_player_structure_nosnap.iff")
@@ -2574,7 +2620,8 @@ object_tangible_terminal_shared_terminal_player_structure_nosnap_mini = SharedTa
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2775644177
+	clientObjectCRC = 2775644177,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/terminal/base/shared_base_terminal.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_terminal_shared_terminal_player_structure_nosnap_mini, "object/tangible/terminal/shared_terminal_player_structure_nosnap_mini.iff")
@@ -2628,7 +2675,8 @@ object_tangible_terminal_shared_terminal_pm_register = SharedTangibleObjectTempl
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1004751674
+	clientObjectCRC = 1004751674,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/terminal/base/shared_base_terminal.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_terminal_shared_terminal_pm_register, "object/tangible/terminal/shared_terminal_pm_register.iff")
@@ -2682,7 +2730,8 @@ object_tangible_terminal_shared_terminal_pob_ship = SharedTangibleObjectTemplate
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3308349953
+	clientObjectCRC = 3308349953,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/terminal/base/shared_base_terminal.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_terminal_shared_terminal_pob_ship, "object/tangible/terminal/shared_terminal_pob_ship.iff")
@@ -2736,7 +2785,8 @@ object_tangible_terminal_shared_terminal_ship_interior_security_1 = SharedTangib
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 965433242
+	clientObjectCRC = 965433242,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/terminal/base/shared_base_terminal.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_terminal_shared_terminal_ship_interior_security_1, "object/tangible/terminal/shared_terminal_ship_interior_security_1.iff")
@@ -2790,7 +2840,8 @@ object_tangible_terminal_shared_terminal_shipping = SharedTangibleObjectTemplate
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1225472505
+	clientObjectCRC = 1225472505,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/terminal/base/shared_base_terminal.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_terminal_shared_terminal_shipping, "object/tangible/terminal/shared_terminal_shipping.iff")
@@ -2844,7 +2895,8 @@ object_tangible_terminal_shared_terminal_skill = SharedTangibleObjectTemplate:ne
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 328711509
+	clientObjectCRC = 328711509,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/terminal/base/shared_base_terminal.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_terminal_shared_terminal_skill, "object/tangible/terminal/shared_terminal_skill.iff")
@@ -2898,7 +2950,8 @@ object_tangible_terminal_shared_terminal_space = SharedTangibleObjectTemplate:ne
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1701113915
+	clientObjectCRC = 1701113915,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/terminal/base/shared_base_terminal.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_terminal_shared_terminal_space, "object/tangible/terminal/shared_terminal_space.iff")
@@ -2952,7 +3005,8 @@ object_tangible_terminal_shared_terminal_travel = SharedTangibleObjectTemplate:n
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1946349820
+	clientObjectCRC = 1946349820,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/terminal/base/shared_base_terminal.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_terminal_shared_terminal_travel, "object/tangible/terminal/shared_terminal_travel.iff")
@@ -3006,7 +3060,8 @@ object_tangible_terminal_shared_terminal_water_pressure = SharedTangibleObjectTe
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4062337637
+	clientObjectCRC = 4062337637,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/terminal/base/shared_base_terminal.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_terminal_shared_terminal_water_pressure, "object/tangible/terminal/shared_terminal_water_pressure.iff")
@@ -3060,7 +3115,8 @@ object_tangible_terminal_shared_test = SharedTangibleObjectTemplate:new {
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3876933537
+	clientObjectCRC = 3876933537,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/terminal/base/shared_base_terminal.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_terminal_shared_test, "object/tangible/terminal/shared_test.iff")

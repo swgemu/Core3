@@ -80,7 +80,8 @@ object_intangible_data_item_shared_data_geiger_counter = SharedIntangibleObjectT
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1638993826
+	clientObjectCRC = 1638993826,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/intangible/data_item/shared_data_item.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_data_item_shared_data_geiger_counter, "object/intangible/data_item/shared_data_geiger_counter.iff")
@@ -124,7 +125,8 @@ object_intangible_data_item_shared_data_imperial = SharedIntangibleObjectTemplat
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 228023073
+	clientObjectCRC = 228023073,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/intangible/data_item/shared_data_item.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_data_item_shared_data_imperial, "object/intangible/data_item/shared_data_imperial.iff")
@@ -168,7 +170,8 @@ object_intangible_data_item_shared_data_item = SharedIntangibleObjectTemplate:ne
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 4189484016
+	clientObjectCRC = 4189484016,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_data_item_shared_data_item, "object/intangible/data_item/shared_data_item.iff")
@@ -212,7 +215,8 @@ object_intangible_data_item_shared_data_rebel = SharedIntangibleObjectTemplate:n
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 197286219
+	clientObjectCRC = 197286219,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/intangible/data_item/shared_data_item.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_data_item_shared_data_rebel, "object/intangible/data_item/shared_data_rebel.iff")
@@ -256,7 +260,8 @@ object_intangible_data_item_shared_droid_command = SharedIntangibleObjectTemplat
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1128492217
+	clientObjectCRC = 1128492217,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_data_item_shared_droid_command, "object/intangible/data_item/shared_droid_command.iff")
@@ -300,7 +305,8 @@ object_intangible_data_item_shared_warren_encryption_key = SharedIntangibleObjec
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 994574621
+	clientObjectCRC = 994574621,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_data_item_shared_warren_encryption_key, "object/intangible/data_item/shared_warren_encryption_key.iff")
@@ -344,7 +350,8 @@ object_intangible_data_item_shared_warren_evidence_01 = SharedIntangibleObjectTe
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3760892474
+	clientObjectCRC = 3760892474,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_data_item_shared_warren_evidence_01, "object/intangible/data_item/shared_warren_evidence_01.iff")
@@ -388,7 +395,8 @@ object_intangible_data_item_shared_warren_evidence_02 = SharedIntangibleObjectTe
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 993854125
+	clientObjectCRC = 993854125,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_data_item_shared_warren_evidence_02, "object/intangible/data_item/shared_warren_evidence_02.iff")
@@ -432,7 +440,8 @@ object_intangible_data_item_shared_warren_evidence_03 = SharedIntangibleObjectTe
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1915774240
+	clientObjectCRC = 1915774240,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_data_item_shared_warren_evidence_03, "object/intangible/data_item/shared_warren_evidence_03.iff")
@@ -476,7 +485,8 @@ object_intangible_data_item_shared_warren_evidence_04 = SharedIntangibleObjectTe
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2312326708
+	clientObjectCRC = 2312326708,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_data_item_shared_warren_evidence_04, "object/intangible/data_item/shared_warren_evidence_04.iff")

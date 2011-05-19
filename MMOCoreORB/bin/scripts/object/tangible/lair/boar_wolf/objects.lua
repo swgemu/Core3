@@ -90,7 +90,8 @@ object_tangible_lair_boar_wolf_shared_lair_boar_wolf = SharedTangibleObjectTempl
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2734437911
+	clientObjectCRC = 2734437911,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_boar_wolf_shared_lair_boar_wolf, "object/tangible/lair/boar_wolf/shared_lair_boar_wolf.iff")
@@ -144,7 +145,8 @@ object_tangible_lair_boar_wolf_shared_lair_boar_wolf_mountain = SharedTangibleOb
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 150445531
+	clientObjectCRC = 150445531,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_boar_wolf_shared_lair_boar_wolf_mountain, "object/tangible/lair/boar_wolf/shared_lair_boar_wolf_mountain.iff")

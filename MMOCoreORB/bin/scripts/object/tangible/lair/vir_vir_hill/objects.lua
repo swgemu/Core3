@@ -90,7 +90,8 @@ object_tangible_lair_vir_vir_hill_shared_lair_vir_vir_hill = SharedTangibleObjec
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2229387137
+	clientObjectCRC = 2229387137,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_vir_vir_hill_shared_lair_vir_vir_hill, "object/tangible/lair/vir_vir_hill/shared_lair_vir_vir_hill.iff")

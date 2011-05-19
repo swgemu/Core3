@@ -90,7 +90,8 @@ object_tangible_food_crafted_shared_dessert_air_cake = SharedTangibleObjectTempl
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4020591662
+	clientObjectCRC = 4020591662,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/base/shared_base_crafted_food.iff", "object/tangible/food/base/shared_dish_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_dessert_air_cake, "object/tangible/food/crafted/shared_dessert_air_cake.iff")
@@ -144,7 +145,8 @@ object_tangible_food_crafted_shared_dessert_almond_kwevvu_crisp_munchies = Share
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2785624477
+	clientObjectCRC = 2785624477,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/base/shared_base_crafted_food.iff", "object/tangible/food/base/shared_dish_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_dessert_almond_kwevvu_crisp_munchies, "object/tangible/food/crafted/shared_dessert_almond_kwevvu_crisp_munchies.iff")
@@ -198,7 +200,8 @@ object_tangible_food_crafted_shared_dessert_bantha_butter = SharedTangibleObject
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1764032352
+	clientObjectCRC = 1764032352,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/base/shared_base_crafted_food.iff", "object/tangible/food/base/shared_dish_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_dessert_bantha_butter, "object/tangible/food/crafted/shared_dessert_bantha_butter.iff")
@@ -252,7 +255,8 @@ object_tangible_food_crafted_shared_dessert_blap_biscuit = SharedTangibleObjectT
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 834290076
+	clientObjectCRC = 834290076,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/base/shared_base_crafted_food.iff", "object/tangible/food/base/shared_dish_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_dessert_blap_biscuit, "object/tangible/food/crafted/shared_dessert_blap_biscuit.iff")
@@ -306,7 +310,8 @@ object_tangible_food_crafted_shared_dessert_blob_candy = SharedTangibleObjectTem
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 254187661
+	clientObjectCRC = 254187661,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/base/shared_base_crafted_food.iff", "object/tangible/food/base/shared_dish_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_dessert_blob_candy, "object/tangible/food/crafted/shared_dessert_blob_candy.iff")
@@ -360,7 +365,8 @@ object_tangible_food_crafted_shared_dessert_bofa_treat = SharedTangibleObjectTem
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2010692823
+	clientObjectCRC = 2010692823,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/base/shared_base_crafted_food.iff", "object/tangible/food/base/shared_dish_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_dessert_bofa_treat, "object/tangible/food/crafted/shared_dessert_bofa_treat.iff")
@@ -414,7 +420,8 @@ object_tangible_food_crafted_shared_dessert_cavaellin_creams = SharedTangibleObj
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1999279141
+	clientObjectCRC = 1999279141,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/base/shared_base_crafted_food.iff", "object/tangible/food/base/shared_dish_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_dessert_cavaellin_creams, "object/tangible/food/crafted/shared_dessert_cavaellin_creams.iff")
@@ -468,7 +475,8 @@ object_tangible_food_crafted_shared_dessert_chandad = SharedTangibleObjectTempla
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3279557459
+	clientObjectCRC = 3279557459,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/base/shared_base_crafted_food.iff", "object/tangible/food/base/shared_dish_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_dessert_chandad, "object/tangible/food/crafted/shared_dessert_chandad.iff")
@@ -522,7 +530,8 @@ object_tangible_food_crafted_shared_dessert_citros_snow_cake = SharedTangibleObj
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4084605779
+	clientObjectCRC = 4084605779,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/base/shared_base_crafted_food.iff", "object/tangible/food/base/shared_dish_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_dessert_citros_snow_cake, "object/tangible/food/crafted/shared_dessert_citros_snow_cake.iff")
@@ -576,7 +585,8 @@ object_tangible_food_crafted_shared_dessert_corellian_fried_icecream = SharedTan
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 998986934
+	clientObjectCRC = 998986934,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/base/shared_base_crafted_food.iff", "object/tangible/food/base/shared_dish_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_dessert_corellian_fried_icecream, "object/tangible/food/crafted/shared_dessert_corellian_fried_icecream.iff")
@@ -630,7 +640,8 @@ object_tangible_food_crafted_shared_dessert_deneelian_fizz_pudding = SharedTangi
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2123466191
+	clientObjectCRC = 2123466191,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/base/shared_base_crafted_food.iff", "object/tangible/food/base/shared_dish_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_dessert_deneelian_fizz_pudding, "object/tangible/food/crafted/shared_dessert_deneelian_fizz_pudding.iff")
@@ -684,7 +695,8 @@ object_tangible_food_crafted_shared_dessert_dweezel = SharedTangibleObjectTempla
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1922269771
+	clientObjectCRC = 1922269771,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/base/shared_base_crafted_food.iff", "object/tangible/food/base/shared_dish_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_dessert_dweezel, "object/tangible/food/crafted/shared_dessert_dweezel.iff")
@@ -738,7 +750,8 @@ object_tangible_food_crafted_shared_dessert_felbar = SharedTangibleObjectTemplat
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1695031231
+	clientObjectCRC = 1695031231,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/base/shared_base_crafted_food.iff", "object/tangible/food/base/shared_dish_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_dessert_felbar, "object/tangible/food/crafted/shared_dessert_felbar.iff")
@@ -792,7 +805,8 @@ object_tangible_food_crafted_shared_dessert_glazed_glucose_pate = SharedTangible
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2513718406
+	clientObjectCRC = 2513718406,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/base/shared_base_crafted_food.iff", "object/tangible/food/base/shared_dish_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_dessert_glazed_glucose_pate, "object/tangible/food/crafted/shared_dessert_glazed_glucose_pate.iff")
@@ -846,7 +860,8 @@ object_tangible_food_crafted_shared_dessert_gorrnar = SharedTangibleObjectTempla
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1661429797
+	clientObjectCRC = 1661429797,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/base/shared_base_crafted_food.iff", "object/tangible/food/base/shared_dish_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_dessert_gorrnar, "object/tangible/food/crafted/shared_dessert_gorrnar.iff")
@@ -900,7 +915,8 @@ object_tangible_food_crafted_shared_dessert_kiwik_clusjo_swirl = SharedTangibleO
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1507202736
+	clientObjectCRC = 1507202736,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/base/shared_base_crafted_food.iff", "object/tangible/food/base/shared_dish_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_dessert_kiwik_clusjo_swirl, "object/tangible/food/crafted/shared_dessert_kiwik_clusjo_swirl.iff")
@@ -954,7 +970,8 @@ object_tangible_food_crafted_shared_dessert_nanana_twist = SharedTangibleObjectT
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 151593405
+	clientObjectCRC = 151593405,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/base/shared_base_crafted_food.iff", "object/tangible/food/base/shared_dish_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_dessert_nanana_twist, "object/tangible/food/crafted/shared_dessert_nanana_twist.iff")
@@ -1008,7 +1025,8 @@ object_tangible_food_crafted_shared_dessert_para_roll = SharedTangibleObjectTemp
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3718080232
+	clientObjectCRC = 3718080232,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/base/shared_base_crafted_food.iff", "object/tangible/food/base/shared_dish_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_dessert_para_roll, "object/tangible/food/crafted/shared_dessert_para_roll.iff")
@@ -1062,7 +1080,8 @@ object_tangible_food_crafted_shared_dessert_parwan_nutricake = SharedTangibleObj
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3299488351
+	clientObjectCRC = 3299488351,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/base/shared_base_crafted_food.iff", "object/tangible/food/base/shared_dish_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_dessert_parwan_nutricake, "object/tangible/food/crafted/shared_dessert_parwan_nutricake.iff")
@@ -1116,7 +1135,8 @@ object_tangible_food_crafted_shared_dessert_pastebread = SharedTangibleObjectTem
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3214438726
+	clientObjectCRC = 3214438726,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/base/shared_base_crafted_food.iff", "object/tangible/food/base/shared_dish_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_dessert_pastebread, "object/tangible/food/crafted/shared_dessert_pastebread.iff")
@@ -1170,7 +1190,8 @@ object_tangible_food_crafted_shared_dessert_pikatta_pie = SharedTangibleObjectTe
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 443057003
+	clientObjectCRC = 443057003,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/base/shared_base_crafted_food.iff", "object/tangible/food/base/shared_dish_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_dessert_pikatta_pie, "object/tangible/food/crafted/shared_dessert_pikatta_pie.iff")
@@ -1224,7 +1245,8 @@ object_tangible_food_crafted_shared_dessert_pkneb = SharedTangibleObjectTemplate
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 128351778
+	clientObjectCRC = 128351778,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/base/shared_base_crafted_food.iff", "object/tangible/food/base/shared_dish_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_dessert_pkneb, "object/tangible/food/crafted/shared_dessert_pkneb.iff")
@@ -1278,7 +1300,8 @@ object_tangible_food_crafted_shared_dessert_puffcake = SharedTangibleObjectTempl
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2099760655
+	clientObjectCRC = 2099760655,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/base/shared_base_crafted_food.iff", "object/tangible/food/base/shared_dish_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_dessert_puffcake, "object/tangible/food/crafted/shared_dessert_puffcake.iff")
@@ -1332,7 +1355,8 @@ object_tangible_food_crafted_shared_dessert_pyollian_cake = SharedTangibleObject
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2379589648
+	clientObjectCRC = 2379589648,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/base/shared_base_crafted_food.iff", "object/tangible/food/base/shared_dish_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_dessert_pyollian_cake, "object/tangible/food/crafted/shared_dessert_pyollian_cake.iff")
@@ -1386,7 +1410,8 @@ object_tangible_food_crafted_shared_dessert_ryshcate = SharedTangibleObjectTempl
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1800464858
+	clientObjectCRC = 1800464858,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/base/shared_base_crafted_food.iff", "object/tangible/food/base/shared_dish_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_dessert_ryshcate, "object/tangible/food/crafted/shared_dessert_ryshcate.iff")
@@ -1440,7 +1465,8 @@ object_tangible_food_crafted_shared_dessert_smugglers_delight = SharedTangibleOb
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 921981708
+	clientObjectCRC = 921981708,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/base/shared_base_crafted_food.iff", "object/tangible/food/base/shared_dish_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_dessert_smugglers_delight, "object/tangible/food/crafted/shared_dessert_smugglers_delight.iff")
@@ -1494,7 +1520,8 @@ object_tangible_food_crafted_shared_dessert_sweesonberry_rolls = SharedTangibleO
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3216510743
+	clientObjectCRC = 3216510743,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/base/shared_base_crafted_food.iff", "object/tangible/food/base/shared_dish_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_dessert_sweesonberry_rolls, "object/tangible/food/crafted/shared_dessert_sweesonberry_rolls.iff")
@@ -1548,7 +1575,8 @@ object_tangible_food_crafted_shared_dessert_sweet_cake_mix = SharedTangibleObjec
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1272384230
+	clientObjectCRC = 1272384230,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/base/shared_base_crafted_food.iff", "object/tangible/food/base/shared_dish_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_dessert_sweet_cake_mix, "object/tangible/food/crafted/shared_dessert_sweet_cake_mix.iff")
@@ -1602,7 +1630,8 @@ object_tangible_food_crafted_shared_dessert_tranna_nougat_cream = SharedTangible
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1498097624
+	clientObjectCRC = 1498097624,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/base/shared_base_crafted_food.iff", "object/tangible/food/base/shared_dish_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_dessert_tranna_nougat_cream, "object/tangible/food/crafted/shared_dessert_tranna_nougat_cream.iff")
@@ -1656,7 +1685,8 @@ object_tangible_food_crafted_shared_dessert_vagnerian_canape = SharedTangibleObj
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2118223714
+	clientObjectCRC = 2118223714,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/base/shared_base_crafted_food.iff", "object/tangible/food/base/shared_dish_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_dessert_vagnerian_canape, "object/tangible/food/crafted/shared_dessert_vagnerian_canape.iff")
@@ -1710,7 +1740,8 @@ object_tangible_food_crafted_shared_dessert_wedding_cake = SharedTangibleObjectT
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3493029754
+	clientObjectCRC = 3493029754,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/base/shared_base_crafted_food.iff", "object/tangible/food/base/shared_dish_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_dessert_wedding_cake, "object/tangible/food/crafted/shared_dessert_wedding_cake.iff")
@@ -1764,7 +1795,8 @@ object_tangible_food_crafted_shared_dessert_won_won = SharedTangibleObjectTempla
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2478713849
+	clientObjectCRC = 2478713849,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/base/shared_base_crafted_food.iff", "object/tangible/food/base/shared_dish_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_dessert_won_won, "object/tangible/food/crafted/shared_dessert_won_won.iff")
@@ -1818,7 +1850,8 @@ object_tangible_food_crafted_shared_dish_ahrisa = SharedTangibleObjectTemplate:n
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 407534571
+	clientObjectCRC = 407534571,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/base/shared_base_crafted_food.iff", "object/tangible/food/base/shared_dish_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_dish_ahrisa, "object/tangible/food/crafted/shared_dish_ahrisa.iff")
@@ -1872,7 +1905,8 @@ object_tangible_food_crafted_shared_dish_bivoli_tempari = SharedTangibleObjectTe
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 166570214
+	clientObjectCRC = 166570214,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/base/shared_base_crafted_food.iff", "object/tangible/food/base/shared_dish_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_dish_bivoli_tempari, "object/tangible/food/crafted/shared_dish_bivoli_tempari.iff")
@@ -1926,7 +1960,8 @@ object_tangible_food_crafted_shared_dish_blood_chowder = SharedTangibleObjectTem
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3058470690
+	clientObjectCRC = 3058470690,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/base/shared_base_crafted_food.iff", "object/tangible/food/base/shared_dish_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_dish_blood_chowder, "object/tangible/food/crafted/shared_dish_blood_chowder.iff")
@@ -1980,7 +2015,8 @@ object_tangible_food_crafted_shared_dish_braised_canron = SharedTangibleObjectTe
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1863318524
+	clientObjectCRC = 1863318524,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/base/shared_base_crafted_food.iff", "object/tangible/food/base/shared_dish_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_dish_braised_canron, "object/tangible/food/crafted/shared_dish_braised_canron.iff")
@@ -2034,7 +2070,8 @@ object_tangible_food_crafted_shared_dish_cho_nor_hoola = SharedTangibleObjectTem
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2528298667
+	clientObjectCRC = 2528298667,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/base/shared_base_crafted_food.iff", "object/tangible/food/base/shared_dish_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_dish_cho_nor_hoola, "object/tangible/food/crafted/shared_dish_cho_nor_hoola.iff")
@@ -2088,7 +2125,8 @@ object_tangible_food_crafted_shared_dish_crispic = SharedTangibleObjectTemplate:
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1201766714
+	clientObjectCRC = 1201766714,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/base/shared_base_crafted_food.iff", "object/tangible/food/base/shared_dish_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_dish_crispic, "object/tangible/food/crafted/shared_dish_crispic.iff")
@@ -2142,7 +2180,8 @@ object_tangible_food_crafted_shared_dish_dustcrepe = SharedTangibleObjectTemplat
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3723091380
+	clientObjectCRC = 3723091380,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/base/shared_base_crafted_food.iff", "object/tangible/food/base/shared_dish_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_dish_dustcrepe, "object/tangible/food/crafted/shared_dish_dustcrepe.iff")
@@ -2196,7 +2235,8 @@ object_tangible_food_crafted_shared_dish_exo_protein_wafers = SharedTangibleObje
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2915488362
+	clientObjectCRC = 2915488362,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/base/shared_base_crafted_food.iff", "object/tangible/food/base/shared_dish_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_dish_exo_protein_wafers, "object/tangible/food/crafted/shared_dish_exo_protein_wafers.iff")
@@ -2250,7 +2290,8 @@ object_tangible_food_crafted_shared_dish_fire_stew = SharedTangibleObjectTemplat
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1075172541
+	clientObjectCRC = 1075172541,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/base/shared_base_crafted_food.iff", "object/tangible/food/base/shared_dish_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_dish_fire_stew, "object/tangible/food/crafted/shared_dish_fire_stew.iff")
@@ -2304,7 +2345,8 @@ object_tangible_food_crafted_shared_dish_fried_endwa = SharedTangibleObjectTempl
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 509609425
+	clientObjectCRC = 509609425,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/base/shared_base_crafted_food.iff", "object/tangible/food/base/shared_dish_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_dish_fried_endwa, "object/tangible/food/crafted/shared_dish_fried_endwa.iff")
@@ -2358,7 +2400,8 @@ object_tangible_food_crafted_shared_dish_gruuvan_shaal = SharedTangibleObjectTem
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3655863733
+	clientObjectCRC = 3655863733,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/base/shared_base_crafted_food.iff", "object/tangible/food/base/shared_dish_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_dish_gruuvan_shaal, "object/tangible/food/crafted/shared_dish_gruuvan_shaal.iff")
@@ -2412,7 +2455,8 @@ object_tangible_food_crafted_shared_dish_havla = SharedTangibleObjectTemplate:ne
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3540915880
+	clientObjectCRC = 3540915880,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/base/shared_base_crafted_food.iff", "object/tangible/food/base/shared_dish_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_dish_havla, "object/tangible/food/crafted/shared_dish_havla.iff")
@@ -2466,7 +2510,8 @@ object_tangible_food_crafted_shared_dish_kanali_wafers = SharedTangibleObjectTem
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2212622551
+	clientObjectCRC = 2212622551,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/base/shared_base_crafted_food.iff", "object/tangible/food/base/shared_dish_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_dish_kanali_wafers, "object/tangible/food/crafted/shared_dish_kanali_wafers.iff")
@@ -2520,7 +2565,8 @@ object_tangible_food_crafted_shared_dish_karkan_ribenes = SharedTangibleObjectTe
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3901856789
+	clientObjectCRC = 3901856789,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/base/shared_base_crafted_food.iff", "object/tangible/food/base/shared_dish_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_dish_karkan_ribenes, "object/tangible/food/crafted/shared_dish_karkan_ribenes.iff")
@@ -2574,7 +2620,8 @@ object_tangible_food_crafted_shared_dish_meatlump = SharedTangibleObjectTemplate
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2825035524
+	clientObjectCRC = 2825035524,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/base/shared_base_crafted_food.iff", "object/tangible/food/base/shared_dish_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_dish_meatlump, "object/tangible/food/crafted/shared_dish_meatlump.iff")
@@ -2628,7 +2675,8 @@ object_tangible_food_crafted_shared_dish_ormachek = SharedTangibleObjectTemplate
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2722923063
+	clientObjectCRC = 2722923063,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/base/shared_base_crafted_food.iff", "object/tangible/food/base/shared_dish_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_dish_ormachek, "object/tangible/food/crafted/shared_dish_ormachek.iff")
@@ -2682,7 +2730,8 @@ object_tangible_food_crafted_shared_dish_patot_panak = SharedTangibleObjectTempl
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 191716043
+	clientObjectCRC = 191716043,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/base/shared_base_crafted_food.iff", "object/tangible/food/base/shared_dish_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_dish_patot_panak, "object/tangible/food/crafted/shared_dish_patot_panak.iff")
@@ -2736,7 +2785,8 @@ object_tangible_food_crafted_shared_dish_protato = SharedTangibleObjectTemplate:
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2558957614
+	clientObjectCRC = 2558957614,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/base/shared_base_crafted_food.iff", "object/tangible/food/base/shared_dish_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_dish_protato, "object/tangible/food/crafted/shared_dish_protato.iff")
@@ -2790,7 +2840,8 @@ object_tangible_food_crafted_shared_dish_puk = SharedTangibleObjectTemplate:new 
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2037089871
+	clientObjectCRC = 2037089871,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/base/shared_base_crafted_food.iff", "object/tangible/food/base/shared_dish_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_dish_puk, "object/tangible/food/crafted/shared_dish_puk.iff")
@@ -2844,7 +2895,8 @@ object_tangible_food_crafted_shared_dish_rakririan_burnout_sauce = SharedTangibl
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1023909182
+	clientObjectCRC = 1023909182,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/base/shared_base_crafted_food.iff", "object/tangible/food/base/shared_dish_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_dish_rakririan_burnout_sauce, "object/tangible/food/crafted/shared_dish_rakririan_burnout_sauce.iff")
@@ -2898,7 +2950,8 @@ object_tangible_food_crafted_shared_dish_ramorrean_capanata = SharedTangibleObje
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1904202530
+	clientObjectCRC = 1904202530,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/base/shared_base_crafted_food.iff", "object/tangible/food/base/shared_dish_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_dish_ramorrean_capanata, "object/tangible/food/crafted/shared_dish_ramorrean_capanata.iff")
@@ -2952,7 +3005,8 @@ object_tangible_food_crafted_shared_dish_rations = SharedTangibleObjectTemplate:
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1720551551
+	clientObjectCRC = 1720551551,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/base/shared_base_crafted_food.iff", "object/tangible/food/base/shared_dish_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_dish_rations, "object/tangible/food/crafted/shared_dish_rations.iff")
@@ -3006,7 +3060,8 @@ object_tangible_food_crafted_shared_dish_scrimpi = SharedTangibleObjectTemplate:
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1144916999
+	clientObjectCRC = 1144916999,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/base/shared_base_crafted_food.iff", "object/tangible/food/base/shared_dish_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_dish_scrimpi, "object/tangible/food/crafted/shared_dish_scrimpi.iff")
@@ -3060,7 +3115,8 @@ object_tangible_food_crafted_shared_dish_soypro = SharedTangibleObjectTemplate:n
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4017404858
+	clientObjectCRC = 4017404858,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/base/shared_base_crafted_food.iff", "object/tangible/food/base/shared_dish_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_dish_soypro, "object/tangible/food/crafted/shared_dish_soypro.iff")
@@ -3114,7 +3170,8 @@ object_tangible_food_crafted_shared_dish_stewed_gwouch = SharedTangibleObjectTem
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 356304761
+	clientObjectCRC = 356304761,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/base/shared_base_crafted_food.iff", "object/tangible/food/base/shared_dish_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_dish_stewed_gwouch, "object/tangible/food/crafted/shared_dish_stewed_gwouch.iff")
@@ -3168,7 +3225,8 @@ object_tangible_food_crafted_shared_dish_synthsteak = SharedTangibleObjectTempla
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 513761366
+	clientObjectCRC = 513761366,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/base/shared_base_crafted_food.iff", "object/tangible/food/base/shared_dish_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_dish_synthsteak, "object/tangible/food/crafted/shared_dish_synthsteak.iff")
@@ -3222,7 +3280,8 @@ object_tangible_food_crafted_shared_dish_teltier_noodles = SharedTangibleObjectT
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 601858027
+	clientObjectCRC = 601858027,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/base/shared_base_crafted_food.iff", "object/tangible/food/base/shared_dish_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_dish_teltier_noodles, "object/tangible/food/crafted/shared_dish_teltier_noodles.iff")
@@ -3276,7 +3335,8 @@ object_tangible_food_crafted_shared_dish_terratta = SharedTangibleObjectTemplate
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1953777354
+	clientObjectCRC = 1953777354,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/base/shared_base_crafted_food.iff", "object/tangible/food/base/shared_dish_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_dish_terratta, "object/tangible/food/crafted/shared_dish_terratta.iff")
@@ -3330,7 +3390,8 @@ object_tangible_food_crafted_shared_dish_thakitillo = SharedTangibleObjectTempla
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2182149536
+	clientObjectCRC = 2182149536,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/base/shared_base_crafted_food.iff", "object/tangible/food/base/shared_dish_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_dish_thakitillo, "object/tangible/food/crafted/shared_dish_thakitillo.iff")
@@ -3384,7 +3445,8 @@ object_tangible_food_crafted_shared_dish_travel_biscuits = SharedTangibleObjectT
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2831837498
+	clientObjectCRC = 2831837498,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/base/shared_base_crafted_food.iff", "object/tangible/food/base/shared_dish_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_dish_travel_biscuits, "object/tangible/food/crafted/shared_dish_travel_biscuits.iff")
@@ -3438,7 +3500,8 @@ object_tangible_food_crafted_shared_dish_trimpian = SharedTangibleObjectTemplate
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2709111425
+	clientObjectCRC = 2709111425,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/base/shared_base_crafted_food.iff", "object/tangible/food/base/shared_dish_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_dish_trimpian, "object/tangible/food/crafted/shared_dish_trimpian.iff")
@@ -3492,7 +3555,8 @@ object_tangible_food_crafted_shared_dish_vegeparsine = SharedTangibleObjectTempl
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2526756449
+	clientObjectCRC = 2526756449,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/base/shared_base_crafted_food.iff", "object/tangible/food/base/shared_dish_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_dish_vegeparsine, "object/tangible/food/crafted/shared_dish_vegeparsine.iff")
@@ -3546,7 +3610,8 @@ object_tangible_food_crafted_shared_dish_veghash = SharedTangibleObjectTemplate:
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 37093667
+	clientObjectCRC = 37093667,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/base/shared_base_crafted_food.iff", "object/tangible/food/base/shared_dish_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_dish_veghash, "object/tangible/food/crafted/shared_dish_veghash.iff")
@@ -3600,7 +3665,8 @@ object_tangible_food_crafted_shared_dish_vercupti_of_agazza_boleruuee = SharedTa
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3271121360
+	clientObjectCRC = 3271121360,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/base/shared_base_crafted_food.iff", "object/tangible/food/base/shared_dish_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_dish_vercupti_of_agazza_boleruuee, "object/tangible/food/crafted/shared_dish_vercupti_of_agazza_boleruuee.iff")
@@ -3654,7 +3720,8 @@ object_tangible_food_crafted_shared_dish_wastril_bread = SharedTangibleObjectTem
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2578711144
+	clientObjectCRC = 2578711144,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/base/shared_base_crafted_food.iff", "object/tangible/food/base/shared_dish_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_dish_wastril_bread, "object/tangible/food/crafted/shared_dish_wastril_bread.iff")
@@ -3708,7 +3775,8 @@ object_tangible_food_crafted_shared_dish_xermaauc = SharedTangibleObjectTemplate
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 202720794
+	clientObjectCRC = 202720794,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/base/shared_base_crafted_food.iff", "object/tangible/food/base/shared_dish_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_dish_xermaauc, "object/tangible/food/crafted/shared_dish_xermaauc.iff")
@@ -3762,7 +3830,8 @@ object_tangible_food_crafted_shared_drink_accarragm = SharedTangibleObjectTempla
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4146017985
+	clientObjectCRC = 4146017985,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/base/shared_base_crafted_food.iff", "object/tangible/food/base/shared_drink_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_drink_accarragm, "object/tangible/food/crafted/shared_drink_accarragm.iff")
@@ -3816,7 +3885,8 @@ object_tangible_food_crafted_shared_drink_aitha = SharedTangibleObjectTemplate:n
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2316612245
+	clientObjectCRC = 2316612245,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/base/shared_base_crafted_food.iff", "object/tangible/food/base/shared_drink_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_drink_aitha, "object/tangible/food/crafted/shared_drink_aitha.iff")
@@ -3870,7 +3940,8 @@ object_tangible_food_crafted_shared_drink_alcohol = SharedTangibleObjectTemplate
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4157864214
+	clientObjectCRC = 4157864214,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/base/shared_base_crafted_food.iff", "object/tangible/food/base/shared_drink_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_drink_alcohol, "object/tangible/food/crafted/shared_drink_alcohol.iff")
@@ -3924,7 +3995,8 @@ object_tangible_food_crafted_shared_drink_aludium_pu36 = SharedTangibleObjectTem
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3758052832
+	clientObjectCRC = 3758052832,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/base/shared_base_crafted_food.iff", "object/tangible/food/base/shared_drink_base.iff", "object/tangible/food/crafted/shared_drink_alcohol.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_drink_aludium_pu36, "object/tangible/food/crafted/shared_drink_aludium_pu36.iff")
@@ -3978,7 +4050,8 @@ object_tangible_food_crafted_shared_drink_angerian_fishak_surprise = SharedTangi
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3229633223
+	clientObjectCRC = 3229633223,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/base/shared_base_crafted_food.iff", "object/tangible/food/base/shared_drink_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_drink_angerian_fishak_surprise, "object/tangible/food/crafted/shared_drink_angerian_fishak_surprise.iff")
@@ -4032,7 +4105,8 @@ object_tangible_food_crafted_shared_drink_antakarian_fire_dancer = SharedTangibl
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2154164402
+	clientObjectCRC = 2154164402,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/base/shared_base_crafted_food.iff", "object/tangible/food/base/shared_drink_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_drink_antakarian_fire_dancer, "object/tangible/food/crafted/shared_drink_antakarian_fire_dancer.iff")
@@ -4086,7 +4160,8 @@ object_tangible_food_crafted_shared_drink_bantha_blaster = SharedTangibleObjectT
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2599646659
+	clientObjectCRC = 2599646659,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/base/shared_base_crafted_food.iff", "object/tangible/food/base/shared_drink_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_drink_bantha_blaster, "object/tangible/food/crafted/shared_drink_bantha_blaster.iff")
@@ -4140,7 +4215,8 @@ object_tangible_food_crafted_shared_drink_bespin_port = SharedTangibleObjectTemp
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1402973041
+	clientObjectCRC = 1402973041,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/base/shared_base_crafted_food.iff", "object/tangible/food/base/shared_drink_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_drink_bespin_port, "object/tangible/food/crafted/shared_drink_bespin_port.iff")
@@ -4194,7 +4270,8 @@ object_tangible_food_crafted_shared_drink_blue_milk = SharedTangibleObjectTempla
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 352131413
+	clientObjectCRC = 352131413,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/base/shared_base_crafted_food.iff", "object/tangible/food/base/shared_drink_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_drink_blue_milk, "object/tangible/food/crafted/shared_drink_blue_milk.iff")
@@ -4248,7 +4325,8 @@ object_tangible_food_crafted_shared_drink_breath_of_heaven = SharedTangibleObjec
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2001723418
+	clientObjectCRC = 2001723418,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/base/shared_base_crafted_food.iff", "object/tangible/food/base/shared_drink_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_drink_breath_of_heaven, "object/tangible/food/crafted/shared_drink_breath_of_heaven.iff")
@@ -4302,7 +4380,8 @@ object_tangible_food_crafted_shared_drink_caf = SharedTangibleObjectTemplate:new
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2701899786
+	clientObjectCRC = 2701899786,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/base/shared_base_crafted_food.iff", "object/tangible/food/base/shared_drink_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_drink_caf, "object/tangible/food/crafted/shared_drink_caf.iff")
@@ -4356,7 +4435,8 @@ object_tangible_food_crafted_shared_drink_charde = SharedTangibleObjectTemplate:
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 406392603
+	clientObjectCRC = 406392603,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/base/shared_base_crafted_food.iff", "object/tangible/food/base/shared_drink_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_drink_charde, "object/tangible/food/crafted/shared_drink_charde.iff")
@@ -4410,7 +4490,8 @@ object_tangible_food_crafted_shared_drink_corellian_ale = SharedTangibleObjectTe
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3769443904
+	clientObjectCRC = 3769443904,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/base/shared_base_crafted_food.iff", "object/tangible/food/base/shared_drink_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_drink_corellian_ale, "object/tangible/food/crafted/shared_drink_corellian_ale.iff")
@@ -4464,7 +4545,8 @@ object_tangible_food_crafted_shared_drink_corellian_brandy = SharedTangibleObjec
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2481855553
+	clientObjectCRC = 2481855553,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/base/shared_base_crafted_food.iff", "object/tangible/food/base/shared_drink_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_drink_corellian_brandy, "object/tangible/food/crafted/shared_drink_corellian_brandy.iff")
@@ -4518,7 +4600,8 @@ object_tangible_food_crafted_shared_drink_cortyg = SharedTangibleObjectTemplate:
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2737019510
+	clientObjectCRC = 2737019510,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/base/shared_base_crafted_food.iff", "object/tangible/food/base/shared_drink_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_drink_cortyg, "object/tangible/food/crafted/shared_drink_cortyg.iff")
@@ -4572,7 +4655,8 @@ object_tangible_food_crafted_shared_drink_deuterium_pyro = SharedTangibleObjectT
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3050569282
+	clientObjectCRC = 3050569282,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/base/shared_base_crafted_food.iff", "object/tangible/food/base/shared_drink_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_drink_deuterium_pyro, "object/tangible/food/crafted/shared_drink_deuterium_pyro.iff")
@@ -4626,7 +4710,8 @@ object_tangible_food_crafted_shared_drink_double_dip_outer_rim_rumdrop = SharedT
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2758987936
+	clientObjectCRC = 2758987936,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/base/shared_base_crafted_food.iff", "object/tangible/food/base/shared_drink_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_drink_double_dip_outer_rim_rumdrop, "object/tangible/food/crafted/shared_drink_double_dip_outer_rim_rumdrop.iff")
@@ -4680,7 +4765,8 @@ object_tangible_food_crafted_shared_drink_durindfire = SharedTangibleObjectTempl
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2621798949
+	clientObjectCRC = 2621798949,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/base/shared_base_crafted_food.iff", "object/tangible/food/base/shared_drink_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_drink_durindfire, "object/tangible/food/crafted/shared_drink_durindfire.iff")
@@ -4734,7 +4820,8 @@ object_tangible_food_crafted_shared_drink_elshandruu_pica_thundercloud = SharedT
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3434180885
+	clientObjectCRC = 3434180885,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/base/shared_base_crafted_food.iff", "object/tangible/food/base/shared_drink_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_drink_elshandruu_pica_thundercloud, "object/tangible/food/crafted/shared_drink_elshandruu_pica_thundercloud.iff")
@@ -4788,7 +4875,8 @@ object_tangible_food_crafted_shared_drink_flameout = SharedTangibleObjectTemplat
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2965669451
+	clientObjectCRC = 2965669451,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/base/shared_base_crafted_food.iff", "object/tangible/food/base/shared_drink_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_drink_flameout, "object/tangible/food/crafted/shared_drink_flameout.iff")
@@ -4842,7 +4930,8 @@ object_tangible_food_crafted_shared_drink_garrmorl = SharedTangibleObjectTemplat
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3403096201
+	clientObjectCRC = 3403096201,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/base/shared_base_crafted_food.iff", "object/tangible/food/base/shared_drink_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_drink_garrmorl, "object/tangible/food/crafted/shared_drink_garrmorl.iff")
@@ -4896,7 +4985,8 @@ object_tangible_food_crafted_shared_drink_gralinyn_juice = SharedTangibleObjectT
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3730504288
+	clientObjectCRC = 3730504288,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/base/shared_base_crafted_food.iff", "object/tangible/food/base/shared_drink_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_drink_gralinyn_juice, "object/tangible/food/crafted/shared_drink_gralinyn_juice.iff")
@@ -4950,7 +5040,8 @@ object_tangible_food_crafted_shared_drink_ice_blaster = SharedTangibleObjectTemp
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4204858859
+	clientObjectCRC = 4204858859,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/base/shared_base_crafted_food.iff", "object/tangible/food/base/shared_drink_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_drink_ice_blaster, "object/tangible/food/crafted/shared_drink_ice_blaster.iff")
@@ -5004,7 +5095,8 @@ object_tangible_food_crafted_shared_drink_ithorian_mist = SharedTangibleObjectTe
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1406762352
+	clientObjectCRC = 1406762352,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/base/shared_base_crafted_food.iff", "object/tangible/food/base/shared_drink_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_drink_ithorian_mist, "object/tangible/food/crafted/shared_drink_ithorian_mist.iff")
@@ -5058,7 +5150,8 @@ object_tangible_food_crafted_shared_drink_jaar = SharedTangibleObjectTemplate:ne
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 355298575
+	clientObjectCRC = 355298575,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/base/shared_base_crafted_food.iff", "object/tangible/food/base/shared_drink_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_drink_jaar, "object/tangible/food/crafted/shared_drink_jaar.iff")
@@ -5112,7 +5205,8 @@ object_tangible_food_crafted_shared_drink_jawa_beer = SharedTangibleObjectTempla
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3314105882
+	clientObjectCRC = 3314105882,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/base/shared_base_crafted_food.iff", "object/tangible/food/base/shared_drink_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_drink_jawa_beer, "object/tangible/food/crafted/shared_drink_jawa_beer.iff")
@@ -5166,7 +5260,8 @@ object_tangible_food_crafted_shared_drink_kylessian_fruit_distillate = SharedTan
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3748723548
+	clientObjectCRC = 3748723548,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/base/shared_base_crafted_food.iff", "object/tangible/food/base/shared_drink_base.iff", "object/tangible/food/crafted/shared_drink_alcohol.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_drink_kylessian_fruit_distillate, "object/tangible/food/crafted/shared_drink_kylessian_fruit_distillate.iff")
@@ -5220,7 +5315,8 @@ object_tangible_food_crafted_shared_drink_mandalorian_wine = SharedTangibleObjec
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 475983499
+	clientObjectCRC = 475983499,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/base/shared_base_crafted_food.iff", "object/tangible/food/base/shared_drink_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_drink_mandalorian_wine, "object/tangible/food/crafted/shared_drink_mandalorian_wine.iff")
@@ -5274,7 +5370,8 @@ object_tangible_food_crafted_shared_drink_ruby_bliel = SharedTangibleObjectTempl
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4051771038
+	clientObjectCRC = 4051771038,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/base/shared_base_crafted_food.iff", "object/tangible/food/base/shared_drink_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_drink_ruby_bliel, "object/tangible/food/crafted/shared_drink_ruby_bliel.iff")
@@ -5328,7 +5425,8 @@ object_tangible_food_crafted_shared_drink_skannbult_likker = SharedTangibleObjec
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3068541916
+	clientObjectCRC = 3068541916,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/base/shared_base_crafted_food.iff", "object/tangible/food/base/shared_drink_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_drink_skannbult_likker, "object/tangible/food/crafted/shared_drink_skannbult_likker.iff")
@@ -5382,7 +5480,8 @@ object_tangible_food_crafted_shared_drink_spiced_tea = SharedTangibleObjectTempl
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3551363941
+	clientObjectCRC = 3551363941,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/base/shared_base_crafted_food.iff", "object/tangible/food/base/shared_drink_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_drink_spiced_tea, "object/tangible/food/crafted/shared_drink_spiced_tea.iff")
@@ -5436,7 +5535,8 @@ object_tangible_food_crafted_shared_drink_starshine_surprise = SharedTangibleObj
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 789489529
+	clientObjectCRC = 789489529,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/base/shared_base_crafted_food.iff", "object/tangible/food/base/shared_drink_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_drink_starshine_surprise, "object/tangible/food/crafted/shared_drink_starshine_surprise.iff")
@@ -5490,7 +5590,8 @@ object_tangible_food_crafted_shared_drink_sullustan_gin = SharedTangibleObjectTe
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2478328705
+	clientObjectCRC = 2478328705,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/base/shared_base_crafted_food.iff", "object/tangible/food/base/shared_drink_base.iff", "object/tangible/food/crafted/shared_drink_alcohol.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_drink_sullustan_gin, "object/tangible/food/crafted/shared_drink_sullustan_gin.iff")
@@ -5544,7 +5645,8 @@ object_tangible_food_crafted_shared_drink_tatooine_sunburn = SharedTangibleObjec
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1008892971
+	clientObjectCRC = 1008892971,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/base/shared_base_crafted_food.iff", "object/tangible/food/base/shared_drink_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_drink_tatooine_sunburn, "object/tangible/food/crafted/shared_drink_tatooine_sunburn.iff")
@@ -5598,7 +5700,8 @@ object_tangible_food_crafted_shared_drink_tilla_tiil = SharedTangibleObjectTempl
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2374587508
+	clientObjectCRC = 2374587508,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/base/shared_base_crafted_food.iff", "object/tangible/food/base/shared_drink_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_drink_tilla_tiil, "object/tangible/food/crafted/shared_drink_tilla_tiil.iff")
@@ -5652,7 +5755,8 @@ object_tangible_food_crafted_shared_drink_tssolok = SharedTangibleObjectTemplate
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 721473598
+	clientObjectCRC = 721473598,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/base/shared_base_crafted_food.iff", "object/tangible/food/base/shared_drink_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_drink_tssolok, "object/tangible/food/crafted/shared_drink_tssolok.iff")
@@ -5706,7 +5810,8 @@ object_tangible_food_crafted_shared_drink_vasarian_brandy = SharedTangibleObject
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 780459444
+	clientObjectCRC = 780459444,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/base/shared_base_crafted_food.iff", "object/tangible/food/base/shared_drink_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_drink_vasarian_brandy, "object/tangible/food/crafted/shared_drink_vasarian_brandy.iff")
@@ -5760,7 +5865,8 @@ object_tangible_food_crafted_shared_drink_vayerbok = SharedTangibleObjectTemplat
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4128399839
+	clientObjectCRC = 4128399839,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/base/shared_base_crafted_food.iff", "object/tangible/food/base/shared_drink_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_drink_vayerbok, "object/tangible/food/crafted/shared_drink_vayerbok.iff")
@@ -5814,7 +5920,8 @@ object_tangible_food_crafted_shared_drink_veronian_berry_wine = SharedTangibleOb
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4052111265
+	clientObjectCRC = 4052111265,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/base/shared_base_crafted_food.iff", "object/tangible/food/base/shared_drink_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_drink_veronian_berry_wine, "object/tangible/food/crafted/shared_drink_veronian_berry_wine.iff")

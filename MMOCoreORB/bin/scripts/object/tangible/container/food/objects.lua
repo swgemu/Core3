@@ -90,7 +90,8 @@ object_tangible_container_food_shared_lunchbox_base = SharedTangibleObjectTempla
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1773382797
+	clientObjectCRC = 1773382797,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/container/base/shared_base_container.iff", "object/tangible/container/base/shared_base_container_volume.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_container_food_shared_lunchbox_base, "object/tangible/container/food/shared_lunchbox_base.iff")

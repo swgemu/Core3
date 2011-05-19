@@ -90,7 +90,8 @@ object_tangible_lair_condor_dragon_shared_lair_condor_dragon = SharedTangibleObj
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1027555264
+	clientObjectCRC = 1027555264,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_condor_dragon_shared_lair_condor_dragon, "object/tangible/lair/condor_dragon/shared_lair_condor_dragon.iff")
@@ -144,7 +145,8 @@ object_tangible_lair_condor_dragon_shared_lair_condor_dragon_forest = SharedTang
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3923122581
+	clientObjectCRC = 3923122581,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_condor_dragon_shared_lair_condor_dragon_forest, "object/tangible/lair/condor_dragon/shared_lair_condor_dragon_forest.iff")
@@ -198,7 +200,8 @@ object_tangible_lair_condor_dragon_shared_lair_condor_dragon_mountain = SharedTa
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 518156641
+	clientObjectCRC = 518156641,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_condor_dragon_shared_lair_condor_dragon_mountain, "object/tangible/lair/condor_dragon/shared_lair_condor_dragon_mountain.iff")

@@ -90,7 +90,8 @@ object_tangible_furniture_plain_shared_plain_armoire_s01 = SharedTangibleObjectT
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3086235549
+	clientObjectCRC = 3086235549,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_furniture_plain_shared_plain_armoire_s01, "object/tangible/furniture/plain/shared_plain_armoire_s01.iff")
@@ -144,7 +145,8 @@ object_tangible_furniture_plain_shared_plain_bookcase_s01 = SharedTangibleObject
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 203693191
+	clientObjectCRC = 203693191,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_furniture_plain_shared_plain_bookcase_s01, "object/tangible/furniture/plain/shared_plain_bookcase_s01.iff")
@@ -198,7 +200,8 @@ object_tangible_furniture_plain_shared_plain_cabinet_s01 = SharedTangibleObjectT
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3671368566
+	clientObjectCRC = 3671368566,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_furniture_plain_shared_plain_cabinet_s01, "object/tangible/furniture/plain/shared_plain_cabinet_s01.iff")
@@ -252,7 +255,8 @@ object_tangible_furniture_plain_shared_plain_chair_s01 = SharedTangibleObjectTem
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1997607130
+	clientObjectCRC = 1997607130,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_furniture_plain_shared_plain_chair_s01, "object/tangible/furniture/plain/shared_plain_chair_s01.iff")
@@ -306,7 +310,8 @@ object_tangible_furniture_plain_shared_plain_chest_s01 = SharedTangibleObjectTem
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2214735060
+	clientObjectCRC = 2214735060,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_furniture_plain_shared_plain_chest_s01, "object/tangible/furniture/plain/shared_plain_chest_s01.iff")
@@ -360,7 +365,8 @@ object_tangible_furniture_plain_shared_plain_coffee_table_s01 = SharedTangibleOb
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2056326196
+	clientObjectCRC = 2056326196,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_furniture_plain_shared_plain_coffee_table_s01, "object/tangible/furniture/plain/shared_plain_coffee_table_s01.iff")
@@ -414,7 +420,8 @@ object_tangible_furniture_plain_shared_plain_couch_s01 = SharedTangibleObjectTem
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1291926266
+	clientObjectCRC = 1291926266,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_furniture_plain_shared_plain_couch_s01, "object/tangible/furniture/plain/shared_plain_couch_s01.iff")
@@ -468,7 +475,8 @@ object_tangible_furniture_plain_shared_plain_end_table_s01 = SharedTangibleObjec
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2396152798
+	clientObjectCRC = 2396152798,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_furniture_plain_shared_plain_end_table_s01, "object/tangible/furniture/plain/shared_plain_end_table_s01.iff")
@@ -522,7 +530,8 @@ object_tangible_furniture_plain_shared_plain_love_seat_s01 = SharedTangibleObjec
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3058976917
+	clientObjectCRC = 3058976917,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_furniture_plain_shared_plain_love_seat_s01, "object/tangible/furniture/plain/shared_plain_love_seat_s01.iff")

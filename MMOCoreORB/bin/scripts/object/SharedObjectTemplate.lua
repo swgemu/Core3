@@ -81,6 +81,8 @@ SharedObjectTemplate = Object:new {
 
 	 clientObjectCRC = 0,
 	 
+	 zoneComponent = "ZoneComponent",
+	 
 	 childObjects = { }, -- { { templateFile = "", x = 0, z = 0, y = 0, ox = 0, oy = 0, oz = 0, ow = 0, cellid = 0, containmentType = 0 } }
 	 
 	 templateType = SHOT

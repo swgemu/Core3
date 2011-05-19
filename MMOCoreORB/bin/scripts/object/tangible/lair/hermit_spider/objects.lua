@@ -90,7 +90,8 @@ object_tangible_lair_hermit_spider_shared_lair_hermit_spider = SharedTangibleObj
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3720772749
+	clientObjectCRC = 3720772749,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_hermit_spider_shared_lair_hermit_spider, "object/tangible/lair/hermit_spider/shared_lair_hermit_spider.iff")
@@ -144,7 +145,8 @@ object_tangible_lair_hermit_spider_shared_lair_hermit_spider_mountain = SharedTa
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 202240792
+	clientObjectCRC = 202240792,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_hermit_spider_shared_lair_hermit_spider_mountain, "object/tangible/lair/hermit_spider/shared_lair_hermit_spider_mountain.iff")
@@ -198,7 +200,8 @@ object_tangible_lair_hermit_spider_shared_lair_hermit_spider_wasteland = SharedT
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1727414364
+	clientObjectCRC = 1727414364,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_hermit_spider_shared_lair_hermit_spider_wasteland, "object/tangible/lair/hermit_spider/shared_lair_hermit_spider_wasteland.iff")

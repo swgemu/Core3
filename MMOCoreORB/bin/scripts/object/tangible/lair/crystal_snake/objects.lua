@@ -90,7 +90,8 @@ object_tangible_lair_crystal_snake_shared_lair_crystal_snake = SharedTangibleObj
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 890345407
+	clientObjectCRC = 890345407,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_crystal_snake_shared_lair_crystal_snake, "object/tangible/lair/crystal_snake/shared_lair_crystal_snake.iff")
@@ -144,7 +145,8 @@ object_tangible_lair_crystal_snake_shared_lair_crystal_snake_jungle = SharedTang
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 348095194
+	clientObjectCRC = 348095194,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_crystal_snake_shared_lair_crystal_snake_jungle, "object/tangible/lair/crystal_snake/shared_lair_crystal_snake_jungle.iff")
@@ -198,7 +200,8 @@ object_tangible_lair_crystal_snake_shared_lair_crystal_snake_swamp = SharedTangi
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1011676096
+	clientObjectCRC = 1011676096,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_crystal_snake_shared_lair_crystal_snake_swamp, "object/tangible/lair/crystal_snake/shared_lair_crystal_snake_swamp.iff")
@@ -252,7 +255,8 @@ object_tangible_lair_crystal_snake_shared_lair_crystal_snake_underwater = Shared
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 480132823
+	clientObjectCRC = 480132823,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_crystal_snake_shared_lair_crystal_snake_underwater, "object/tangible/lair/crystal_snake/shared_lair_crystal_snake_underwater.iff")

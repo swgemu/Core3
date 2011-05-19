@@ -80,7 +80,8 @@ object_static_structure_corellia_shared_corl_banner_govt_angled_s01 = SharedStat
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3488732557
+	clientObjectCRC = 3488732557,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_corellia_shared_corl_banner_govt_angled_s01, "object/static/structure/corellia/shared_corl_banner_govt_angled_s01.iff")
@@ -124,7 +125,8 @@ object_static_structure_corellia_shared_corl_banner_govt_tall_s01 = SharedStatic
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 662555920
+	clientObjectCRC = 662555920,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_corellia_shared_corl_banner_govt_tall_s01, "object/static/structure/corellia/shared_corl_banner_govt_tall_s01.iff")
@@ -168,7 +170,8 @@ object_static_structure_corellia_shared_corl_fountain_brazier_round_s01 = Shared
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3994724911
+	clientObjectCRC = 3994724911,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_corellia_shared_corl_fountain_brazier_round_s01, "object/static/structure/corellia/shared_corl_fountain_brazier_round_s01.iff")
@@ -212,7 +215,8 @@ object_static_structure_corellia_shared_corl_fountain_brazier_square_s01 = Share
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 632694927
+	clientObjectCRC = 632694927,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_corellia_shared_corl_fountain_brazier_square_s01, "object/static/structure/corellia/shared_corl_fountain_brazier_square_s01.iff")
@@ -256,7 +260,8 @@ object_static_structure_corellia_shared_corl_fountain_circle_s01 = SharedStaticO
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2676149866
+	clientObjectCRC = 2676149866,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_corellia_shared_corl_fountain_circle_s01, "object/static/structure/corellia/shared_corl_fountain_circle_s01.iff")
@@ -300,7 +305,8 @@ object_static_structure_corellia_shared_corl_fountain_rectangle_s01 = SharedStat
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1330147903
+	clientObjectCRC = 1330147903,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_corellia_shared_corl_fountain_rectangle_s01, "object/static/structure/corellia/shared_corl_fountain_rectangle_s01.iff")
@@ -344,7 +350,8 @@ object_static_structure_corellia_shared_corl_fountain_statue_contemplate_s01 = S
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2625105516
+	clientObjectCRC = 2625105516,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_corellia_shared_corl_fountain_statue_contemplate_s01, "object/static/structure/corellia/shared_corl_fountain_statue_contemplate_s01.iff")
@@ -388,7 +395,8 @@ object_static_structure_corellia_shared_corl_fountain_statue_heroic_s01 = Shared
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 593244797
+	clientObjectCRC = 593244797,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_corellia_shared_corl_fountain_statue_heroic_s01, "object/static/structure/corellia/shared_corl_fountain_statue_heroic_s01.iff")
@@ -432,7 +440,8 @@ object_static_structure_corellia_shared_corl_imprv_arch_lg_s01 = SharedStaticObj
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3523876965
+	clientObjectCRC = 3523876965,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_corellia_shared_corl_imprv_arch_lg_s01, "object/static/structure/corellia/shared_corl_imprv_arch_lg_s01.iff")
@@ -476,7 +485,8 @@ object_static_structure_corellia_shared_corl_imprv_arch_lg_s02 = SharedStaticObj
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 152940786
+	clientObjectCRC = 152940786,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_corellia_shared_corl_imprv_arch_lg_s02, "object/static/structure/corellia/shared_corl_imprv_arch_lg_s02.iff")
@@ -520,7 +530,8 @@ object_static_structure_corellia_shared_corl_imprv_arch_sm_s01 = SharedStaticObj
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 180063211
+	clientObjectCRC = 180063211,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_corellia_shared_corl_imprv_arch_sm_s01, "object/static/structure/corellia/shared_corl_imprv_arch_sm_s01.iff")
@@ -564,7 +575,8 @@ object_static_structure_corellia_shared_corl_imprv_arch_sm_s02 = SharedStaticObj
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3517719420
+	clientObjectCRC = 3517719420,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_corellia_shared_corl_imprv_arch_sm_s02, "object/static/structure/corellia/shared_corl_imprv_arch_sm_s02.iff")
@@ -608,7 +620,8 @@ object_static_structure_corellia_shared_corl_imprv_arch_sm_s03 = SharedStaticObj
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2560705777
+	clientObjectCRC = 2560705777,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_corellia_shared_corl_imprv_arch_sm_s03, "object/static/structure/corellia/shared_corl_imprv_arch_sm_s03.iff")
@@ -651,7 +664,8 @@ object_static_structure_corellia_shared_corl_imprv_bannerpole_s01 = SharedStatic
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 4106256117
+	clientObjectCRC = 4106256117,
+	derivedFromTemplates = {}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_corellia_shared_corl_imprv_bannerpole_s01, "object/static/structure/corellia/shared_corl_imprv_bannerpole_s01.iff")
@@ -695,7 +709,8 @@ object_static_structure_corellia_shared_corl_imprv_bridge_insert_s01 = SharedSta
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3451992127
+	clientObjectCRC = 3451992127,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_corellia_shared_corl_imprv_bridge_insert_s01, "object/static/structure/corellia/shared_corl_imprv_bridge_insert_s01.iff")
@@ -739,7 +754,8 @@ object_static_structure_corellia_shared_corl_imprv_bridge_insert_s02 = SharedSta
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 383160488
+	clientObjectCRC = 383160488,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_corellia_shared_corl_imprv_bridge_insert_s02, "object/static/structure/corellia/shared_corl_imprv_bridge_insert_s02.iff")
@@ -783,7 +799,8 @@ object_static_structure_corellia_shared_corl_imprv_bridge_lg_s01 = SharedStaticO
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 514306461
+	clientObjectCRC = 514306461,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_corellia_shared_corl_imprv_bridge_lg_s01, "object/static/structure/corellia/shared_corl_imprv_bridge_lg_s01.iff")
@@ -827,7 +844,8 @@ object_static_structure_corellia_shared_corl_imprv_bridge_lg_s02 = SharedStaticO
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3316652298
+	clientObjectCRC = 3316652298,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_corellia_shared_corl_imprv_bridge_lg_s02, "object/static/structure/corellia/shared_corl_imprv_bridge_lg_s02.iff")
@@ -871,7 +889,8 @@ object_static_structure_corellia_shared_corl_imprv_bridge_sm_s01 = SharedStaticO
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3323339283
+	clientObjectCRC = 3323339283,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_corellia_shared_corl_imprv_bridge_sm_s01, "object/static/structure/corellia/shared_corl_imprv_bridge_sm_s01.iff")
@@ -915,7 +934,8 @@ object_static_structure_corellia_shared_corl_imprv_bridge_sm_s02 = SharedStaticO
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 486640260
+	clientObjectCRC = 486640260,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_corellia_shared_corl_imprv_bridge_sm_s02, "object/static/structure/corellia/shared_corl_imprv_bridge_sm_s02.iff")
@@ -959,7 +979,8 @@ object_static_structure_corellia_shared_corl_imprv_column_s01 = SharedStaticObje
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2435499985
+	clientObjectCRC = 2435499985,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_corellia_shared_corl_imprv_column_s01, "object/static/structure/corellia/shared_corl_imprv_column_s01.iff")
@@ -1003,7 +1024,8 @@ object_static_structure_corellia_shared_corl_imprv_column_s02 = SharedStaticObje
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1245540166
+	clientObjectCRC = 1245540166,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_corellia_shared_corl_imprv_column_s02, "object/static/structure/corellia/shared_corl_imprv_column_s02.iff")
@@ -1047,7 +1069,8 @@ object_static_structure_corellia_shared_corl_imprv_column_s03 = SharedStaticObje
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 53479627
+	clientObjectCRC = 53479627,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_corellia_shared_corl_imprv_column_s03, "object/static/structure/corellia/shared_corl_imprv_column_s03.iff")
@@ -1091,7 +1114,8 @@ object_static_structure_corellia_shared_corl_imprv_column_s04 = SharedStaticObje
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 4174586847
+	clientObjectCRC = 4174586847,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_corellia_shared_corl_imprv_column_s04, "object/static/structure/corellia/shared_corl_imprv_column_s04.iff")
@@ -1134,7 +1158,8 @@ object_static_structure_corellia_shared_corl_imprv_flagpole_s01 = SharedStaticOb
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 92914717
+	clientObjectCRC = 92914717,
+	derivedFromTemplates = {}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_corellia_shared_corl_imprv_flagpole_s01, "object/static/structure/corellia/shared_corl_imprv_flagpole_s01.iff")
@@ -1178,7 +1203,8 @@ object_static_structure_corellia_shared_corl_imprv_gate_sm_s01 = SharedStaticObj
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1792479271
+	clientObjectCRC = 1792479271,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_corellia_shared_corl_imprv_gate_sm_s01, "object/static/structure/corellia/shared_corl_imprv_gate_sm_s01.iff")
@@ -1222,7 +1248,8 @@ object_static_structure_corellia_shared_corl_imprv_gate_sm_s02 = SharedStaticObj
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2982197424
+	clientObjectCRC = 2982197424,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_corellia_shared_corl_imprv_gate_sm_s02, "object/static/structure/corellia/shared_corl_imprv_gate_sm_s02.iff")
@@ -1266,7 +1293,8 @@ object_static_structure_corellia_shared_corl_imprv_gate_sm_s03 = SharedStaticObj
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 4174241597
+	clientObjectCRC = 4174241597,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_corellia_shared_corl_imprv_gate_sm_s03, "object/static/structure/corellia/shared_corl_imprv_gate_sm_s03.iff")
@@ -1310,7 +1338,8 @@ object_static_structure_corellia_shared_corl_imprv_wall_4x16_s01 = SharedStaticO
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 440351692
+	clientObjectCRC = 440351692,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_corellia_shared_corl_imprv_wall_4x16_s01, "object/static/structure/corellia/shared_corl_imprv_wall_4x16_s01.iff")
@@ -1354,7 +1383,8 @@ object_static_structure_corellia_shared_corl_imprv_wall_4x16_s02 = SharedStaticO
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3240661851
+	clientObjectCRC = 3240661851,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_corellia_shared_corl_imprv_wall_4x16_s02, "object/static/structure/corellia/shared_corl_imprv_wall_4x16_s02.iff")
@@ -1398,7 +1428,8 @@ object_static_structure_corellia_shared_corl_imprv_wall_4x16_s03 = SharedStaticO
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2284188886
+	clientObjectCRC = 2284188886,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_corellia_shared_corl_imprv_wall_4x16_s03, "object/static/structure/corellia/shared_corl_imprv_wall_4x16_s03.iff")
@@ -1442,7 +1473,8 @@ object_static_structure_corellia_shared_corl_imprv_wall_4x16_s04 = SharedStaticO
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1942413250
+	clientObjectCRC = 1942413250,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_corellia_shared_corl_imprv_wall_4x16_s04, "object/static/structure/corellia/shared_corl_imprv_wall_4x16_s04.iff")
@@ -1486,7 +1518,8 @@ object_static_structure_corellia_shared_corl_imprv_wall_4x32_s01 = SharedStaticO
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3667847668
+	clientObjectCRC = 3667847668,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_corellia_shared_corl_imprv_wall_4x32_s01, "object/static/structure/corellia/shared_corl_imprv_wall_4x32_s01.iff")
@@ -1530,7 +1563,8 @@ object_static_structure_corellia_shared_corl_imprv_wall_4x32_s02 = SharedStaticO
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 25772387
+	clientObjectCRC = 25772387,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_corellia_shared_corl_imprv_wall_4x32_s02, "object/static/structure/corellia/shared_corl_imprv_wall_4x32_s02.iff")
@@ -1574,7 +1608,8 @@ object_static_structure_corellia_shared_corl_imprv_wall_4x32_s03 = SharedStaticO
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1216620270
+	clientObjectCRC = 1216620270,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_corellia_shared_corl_imprv_wall_4x32_s03, "object/static/structure/corellia/shared_corl_imprv_wall_4x32_s03.iff")
@@ -1618,7 +1653,8 @@ object_static_structure_corellia_shared_corl_imprv_wall_4x32_s04 = SharedStaticO
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3009875450
+	clientObjectCRC = 3009875450,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_corellia_shared_corl_imprv_wall_4x32_s04, "object/static/structure/corellia/shared_corl_imprv_wall_4x32_s04.iff")
@@ -1662,7 +1698,8 @@ object_static_structure_corellia_shared_corl_power_arial_prime = SharedStaticObj
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1209853320
+	clientObjectCRC = 1209853320,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_corellia_shared_corl_power_arial_prime, "object/static/structure/corellia/shared_corl_power_arial_prime.iff")
@@ -1706,7 +1743,8 @@ object_static_structure_corellia_shared_corl_power_arial_thin = SharedStaticObje
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3856785881
+	clientObjectCRC = 3856785881,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_corellia_shared_corl_power_arial_thin, "object/static/structure/corellia/shared_corl_power_arial_thin.iff")
@@ -1750,7 +1788,8 @@ object_static_structure_corellia_shared_corl_power_box_node = SharedStaticObject
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 4203234536
+	clientObjectCRC = 4203234536,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_corellia_shared_corl_power_box_node, "object/static/structure/corellia/shared_corl_power_box_node.iff")
@@ -1794,7 +1833,8 @@ object_static_structure_corellia_shared_corl_power_bubble_node = SharedStaticObj
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3942637523
+	clientObjectCRC = 3942637523,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_corellia_shared_corl_power_bubble_node, "object/static/structure/corellia/shared_corl_power_bubble_node.iff")
@@ -1838,7 +1878,8 @@ object_static_structure_corellia_shared_corl_power_connector = SharedStaticObjec
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2265922541
+	clientObjectCRC = 2265922541,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_corellia_shared_corl_power_connector, "object/static/structure/corellia/shared_corl_power_connector.iff")
@@ -1882,7 +1923,8 @@ object_static_structure_corellia_shared_corl_power_transformer_s01 = SharedStati
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3364711462
+	clientObjectCRC = 3364711462,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_corellia_shared_corl_power_transformer_s01, "object/static/structure/corellia/shared_corl_power_transformer_s01.iff")
@@ -1926,7 +1968,8 @@ object_static_structure_corellia_shared_corl_power_transformer_s02 = SharedStati
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 328910001
+	clientObjectCRC = 328910001,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_corellia_shared_corl_power_transformer_s02, "object/static/structure/corellia/shared_corl_power_transformer_s02.iff")
@@ -1970,7 +2013,8 @@ object_static_structure_corellia_shared_corl_stair_large_s01 = SharedStaticObjec
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2489724749
+	clientObjectCRC = 2489724749,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_corellia_shared_corl_stair_large_s01, "object/static/structure/corellia/shared_corl_stair_large_s01.iff")
@@ -2014,7 +2058,8 @@ object_static_structure_corellia_shared_corl_stair_medium_s01 = SharedStaticObje
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3099330896
+	clientObjectCRC = 3099330896,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_corellia_shared_corl_stair_medium_s01, "object/static/structure/corellia/shared_corl_stair_medium_s01.iff")
@@ -2058,7 +2103,8 @@ object_static_structure_corellia_shared_corl_stair_small_s01 = SharedStaticObjec
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2304472342
+	clientObjectCRC = 2304472342,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_corellia_shared_corl_stair_small_s01, "object/static/structure/corellia/shared_corl_stair_small_s01.iff")
@@ -2102,7 +2148,8 @@ object_static_structure_corellia_shared_corl_tent_hut_s01 = SharedStaticObjectTe
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1857626571
+	clientObjectCRC = 1857626571,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff", "object/static/structure/tatooine/jawa/base/shared_tent_jawa_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_corellia_shared_corl_tent_hut_s01, "object/static/structure/corellia/shared_corl_tent_hut_s01.iff")
@@ -2146,7 +2193,8 @@ object_static_structure_corellia_shared_corl_tent_large = SharedStaticObjectTemp
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2517417479
+	clientObjectCRC = 2517417479,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff", "object/static/structure/tatooine/jawa/base/shared_tent_jawa_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_corellia_shared_corl_tent_large, "object/static/structure/corellia/shared_corl_tent_large.iff")
@@ -2190,7 +2238,8 @@ object_static_structure_corellia_shared_corl_tent_med = SharedStaticObjectTempla
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 962796496
+	clientObjectCRC = 962796496,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff", "object/static/structure/tatooine/jawa/base/shared_tent_jawa_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_corellia_shared_corl_tent_med, "object/static/structure/corellia/shared_corl_tent_med.iff")
@@ -2234,7 +2283,8 @@ object_static_structure_corellia_shared_corl_tent_small = SharedStaticObjectTemp
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2719427118
+	clientObjectCRC = 2719427118,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff", "object/static/structure/tatooine/jawa/base/shared_tent_jawa_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_corellia_shared_corl_tent_small, "object/static/structure/corellia/shared_corl_tent_small.iff")

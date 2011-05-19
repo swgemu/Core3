@@ -90,7 +90,8 @@ object_tangible_sign_player_base_shared_player_sign_base = SharedTangibleObjectT
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1607004274
+	clientObjectCRC = 1607004274,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/sign/base/shared_base_sign.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_sign_player_base_shared_player_sign_base, "object/tangible/sign/player/base/shared_player_sign_base.iff")
@@ -144,7 +145,8 @@ object_tangible_sign_player_base_shared_shop_sign_base = SharedTangibleObjectTem
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1431689328
+	clientObjectCRC = 1431689328,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/sign/base/shared_base_sign.iff", "object/tangible/sign/player/base/shared_player_sign_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_sign_player_base_shared_shop_sign_base, "object/tangible/sign/player/base/shared_shop_sign_base.iff")

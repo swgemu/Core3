@@ -90,7 +90,8 @@ object_tangible_lair_kwi_shared_lair_kwi = SharedTangibleObjectTemplate:new {
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2075620240
+	clientObjectCRC = 2075620240,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_kwi_shared_lair_kwi, "object/tangible/lair/kwi/shared_lair_kwi.iff")
@@ -144,7 +145,8 @@ object_tangible_lair_kwi_shared_lair_kwi_desert = SharedTangibleObjectTemplate:n
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3436978198
+	clientObjectCRC = 3436978198,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_kwi_shared_lair_kwi_desert, "object/tangible/lair/kwi/shared_lair_kwi_desert.iff")
@@ -198,7 +200,8 @@ object_tangible_lair_kwi_shared_lair_kwi_forest = SharedTangibleObjectTemplate:n
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3879200403
+	clientObjectCRC = 3879200403,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_kwi_shared_lair_kwi_forest, "object/tangible/lair/kwi/shared_lair_kwi_forest.iff")
@@ -252,7 +255,8 @@ object_tangible_lair_kwi_shared_lair_kwi_mountain = SharedTangibleObjectTemplate
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1326626395
+	clientObjectCRC = 1326626395,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_kwi_shared_lair_kwi_mountain, "object/tangible/lair/kwi/shared_lair_kwi_mountain.iff")

@@ -80,7 +80,8 @@ object_draft_schematic_armor_shared_armor_module_heavy = SharedDraftSchematicObj
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 908240485
+	clientObjectCRC = 908240485,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_armor_shared_armor_module_heavy, "object/draft_schematic/armor/shared_armor_module_heavy.iff")
@@ -124,7 +125,8 @@ object_draft_schematic_armor_shared_armor_module_light = SharedDraftSchematicObj
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 4152007355
+	clientObjectCRC = 4152007355,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_armor_shared_armor_module_light, "object/draft_schematic/armor/shared_armor_module_light.iff")
@@ -168,7 +170,8 @@ object_draft_schematic_armor_shared_armor_segment = SharedDraftSchematicObjectTe
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1286868407
+	clientObjectCRC = 1286868407,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_armor_shared_armor_segment, "object/draft_schematic/armor/shared_armor_segment.iff")
@@ -212,7 +215,8 @@ object_draft_schematic_armor_shared_armor_segment_advanced = SharedDraftSchemati
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 211004258
+	clientObjectCRC = 211004258,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_armor_shared_armor_segment_advanced, "object/draft_schematic/armor/shared_armor_segment_advanced.iff")
@@ -256,7 +260,8 @@ object_draft_schematic_armor_shared_armor_segment_bone = SharedDraftSchematicObj
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1007340042
+	clientObjectCRC = 1007340042,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_armor_shared_armor_segment_bone, "object/draft_schematic/armor/shared_armor_segment_bone.iff")
@@ -300,7 +305,8 @@ object_draft_schematic_armor_shared_armor_segment_bone_acklay = SharedDraftSchem
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2889266361
+	clientObjectCRC = 2889266361,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_armor_shared_armor_segment_bone_acklay, "object/draft_schematic/armor/shared_armor_segment_bone_acklay.iff")
@@ -344,7 +350,8 @@ object_draft_schematic_armor_shared_armor_segment_bone_advanced = SharedDraftSch
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1129609908
+	clientObjectCRC = 1129609908,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_armor_shared_armor_segment_bone_advanced, "object/draft_schematic/armor/shared_armor_segment_bone_advanced.iff")
@@ -388,7 +395,8 @@ object_draft_schematic_armor_shared_armor_segment_chitin = SharedDraftSchematicO
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3865019752
+	clientObjectCRC = 3865019752,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_armor_shared_armor_segment_chitin, "object/draft_schematic/armor/shared_armor_segment_chitin.iff")
@@ -432,7 +440,8 @@ object_draft_schematic_armor_shared_armor_segment_chitin_advanced = SharedDraftS
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 892546099
+	clientObjectCRC = 892546099,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_armor_shared_armor_segment_chitin_advanced, "object/draft_schematic/armor/shared_armor_segment_chitin_advanced.iff")
@@ -476,7 +485,8 @@ object_draft_schematic_armor_shared_armor_segment_composite = SharedDraftSchemat
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1778592860
+	clientObjectCRC = 1778592860,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_armor_shared_armor_segment_composite, "object/draft_schematic/armor/shared_armor_segment_composite.iff")
@@ -520,7 +530,8 @@ object_draft_schematic_armor_shared_armor_segment_composite_advanced = SharedDra
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2060695348
+	clientObjectCRC = 2060695348,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_armor_shared_armor_segment_composite_advanced, "object/draft_schematic/armor/shared_armor_segment_composite_advanced.iff")
@@ -564,7 +575,8 @@ object_draft_schematic_armor_shared_armor_segment_kashyyykian_black_mtn = Shared
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 168895200
+	clientObjectCRC = 168895200,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_armor_shared_armor_segment_kashyyykian_black_mtn, "object/draft_schematic/armor/shared_armor_segment_kashyyykian_black_mtn.iff")
@@ -608,7 +620,8 @@ object_draft_schematic_armor_shared_armor_segment_kashyyykian_black_mtn_advanced
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 737525903
+	clientObjectCRC = 737525903,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_armor_shared_armor_segment_kashyyykian_black_mtn_advanced, "object/draft_schematic/armor/shared_armor_segment_kashyyykian_black_mtn_advanced.iff")
@@ -652,7 +665,8 @@ object_draft_schematic_armor_shared_armor_segment_kashyyykian_ceremonial = Share
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1171031092
+	clientObjectCRC = 1171031092,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_armor_shared_armor_segment_kashyyykian_ceremonial, "object/draft_schematic/armor/shared_armor_segment_kashyyykian_ceremonial.iff")
@@ -696,7 +710,8 @@ object_draft_schematic_armor_shared_armor_segment_kashyyykian_ceremonial_advance
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1897422446
+	clientObjectCRC = 1897422446,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_armor_shared_armor_segment_kashyyykian_ceremonial_advanced, "object/draft_schematic/armor/shared_armor_segment_kashyyykian_ceremonial_advanced.iff")
@@ -740,7 +755,8 @@ object_draft_schematic_armor_shared_armor_segment_kashyyykian_hunting = SharedDr
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 4257597570
+	clientObjectCRC = 4257597570,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_armor_shared_armor_segment_kashyyykian_hunting, "object/draft_schematic/armor/shared_armor_segment_kashyyykian_hunting.iff")
@@ -784,7 +800,8 @@ object_draft_schematic_armor_shared_armor_segment_kashyyykian_hunting_advanced =
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1703266289
+	clientObjectCRC = 1703266289,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_armor_shared_armor_segment_kashyyykian_hunting_advanced, "object/draft_schematic/armor/shared_armor_segment_kashyyykian_hunting_advanced.iff")
@@ -828,7 +845,8 @@ object_draft_schematic_armor_shared_armor_segment_padded = SharedDraftSchematicO
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1432695926
+	clientObjectCRC = 1432695926,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_armor_shared_armor_segment_padded, "object/draft_schematic/armor/shared_armor_segment_padded.iff")
@@ -872,7 +890,8 @@ object_draft_schematic_armor_shared_armor_segment_padded_advanced = SharedDraftS
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 626237841
+	clientObjectCRC = 626237841,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_armor_shared_armor_segment_padded_advanced, "object/draft_schematic/armor/shared_armor_segment_padded_advanced.iff")
@@ -916,7 +935,8 @@ object_draft_schematic_armor_shared_armor_segment_ris = SharedDraftSchematicObje
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2640774670
+	clientObjectCRC = 2640774670,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_armor_shared_armor_segment_ris, "object/draft_schematic/armor/shared_armor_segment_ris.iff")
@@ -960,7 +980,8 @@ object_draft_schematic_armor_shared_armor_segment_ris_acklay = SharedDraftSchema
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 103597235
+	clientObjectCRC = 103597235,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_armor_shared_armor_segment_ris_acklay, "object/draft_schematic/armor/shared_armor_segment_ris_acklay.iff")
@@ -1004,7 +1025,8 @@ object_draft_schematic_armor_shared_armor_segment_ubese = SharedDraftSchematicOb
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3533039838
+	clientObjectCRC = 3533039838,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_armor_shared_armor_segment_ubese, "object/draft_schematic/armor/shared_armor_segment_ubese.iff")
@@ -1048,7 +1070,8 @@ object_draft_schematic_armor_shared_armor_segment_ubese_advanced = SharedDraftSc
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 83159329
+	clientObjectCRC = 83159329,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_armor_shared_armor_segment_ubese_advanced, "object/draft_schematic/armor/shared_armor_segment_ubese_advanced.iff")
@@ -1092,7 +1115,8 @@ object_draft_schematic_armor_shared_armor_segment_zam = SharedDraftSchematicObje
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1204507579
+	clientObjectCRC = 1204507579,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_armor_shared_armor_segment_zam, "object/draft_schematic/armor/shared_armor_segment_zam.iff")
@@ -1136,7 +1160,8 @@ object_draft_schematic_armor_shared_armor_segment_zam_advanced = SharedDraftSche
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2640349743
+	clientObjectCRC = 2640349743,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_armor_shared_armor_segment_zam_advanced, "object/draft_schematic/armor/shared_armor_segment_zam_advanced.iff")
@@ -1180,7 +1205,8 @@ object_draft_schematic_armor_shared_shield_generator_facility = SharedDraftSchem
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1522717131
+	clientObjectCRC = 1522717131,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_armor_shared_shield_generator_facility, "object/draft_schematic/armor/shared_shield_generator_facility.iff")
@@ -1224,7 +1250,8 @@ object_draft_schematic_armor_shared_shield_generator_personal = SharedDraftSchem
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 677114065
+	clientObjectCRC = 677114065,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_armor_shared_shield_generator_personal, "object/draft_schematic/armor/shared_shield_generator_personal.iff")
@@ -1268,7 +1295,8 @@ object_draft_schematic_armor_shared_shield_generator_personal_b = SharedDraftSch
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1759066430
+	clientObjectCRC = 1759066430,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_armor_shared_shield_generator_personal_b, "object/draft_schematic/armor/shared_shield_generator_personal_b.iff")
@@ -1312,7 +1340,8 @@ object_draft_schematic_armor_shared_shield_generator_personal_c = SharedDraftSch
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 567566003
+	clientObjectCRC = 567566003,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_armor_shared_shield_generator_personal_c, "object/draft_schematic/armor/shared_shield_generator_personal_c.iff")
@@ -1356,7 +1385,8 @@ object_draft_schematic_armor_shared_shield_generator_personal_imperial_test = Sh
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2086068372
+	clientObjectCRC = 2086068372,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_armor_shared_shield_generator_personal_imperial_test, "object/draft_schematic/armor/shared_shield_generator_personal_imperial_test.iff")
@@ -1400,7 +1430,8 @@ object_draft_schematic_armor_shared_shield_generator_vehicular = SharedDraftSche
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1960728983
+	clientObjectCRC = 1960728983,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_armor_shared_shield_generator_vehicular, "object/draft_schematic/armor/shared_shield_generator_vehicular.iff")

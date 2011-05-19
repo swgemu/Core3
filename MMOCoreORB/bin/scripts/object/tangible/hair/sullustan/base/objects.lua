@@ -90,7 +90,8 @@ object_tangible_hair_sullustan_base_shared_hair_sullustan_base = SharedTangibleO
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 801531223
+	clientObjectCRC = 801531223,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/hair/base/shared_hair_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_hair_sullustan_base_shared_hair_sullustan_base, "object/tangible/hair/sullustan/base/shared_hair_sullustan_base.iff")
@@ -144,7 +145,8 @@ object_tangible_hair_sullustan_base_shared_hair_sullustan_female_base = SharedTa
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 396464255
+	clientObjectCRC = 396464255,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/hair/base/shared_hair_base.iff", "object/tangible/hair/sullustan/base/shared_hair_sullustan_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_hair_sullustan_base_shared_hair_sullustan_female_base, "object/tangible/hair/sullustan/base/shared_hair_sullustan_female_base.iff")
@@ -198,7 +200,8 @@ object_tangible_hair_sullustan_base_shared_hair_sullustan_male_base = SharedTang
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2746028692
+	clientObjectCRC = 2746028692,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/hair/base/shared_hair_base.iff", "object/tangible/hair/sullustan/base/shared_hair_sullustan_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_hair_sullustan_base_shared_hair_sullustan_male_base, "object/tangible/hair/sullustan/base/shared_hair_sullustan_male_base.iff")

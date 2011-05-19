@@ -90,7 +90,8 @@ object_installation_manufacture_base_shared_manufacture_base = SharedInstallatio
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3460199396
+	clientObjectCRC = 3460199396,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_installation_manufacture_base_shared_manufacture_base, "object/installation/manufacture/base/shared_manufacture_base.iff")

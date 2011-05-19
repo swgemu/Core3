@@ -80,7 +80,8 @@ object_draft_schematic_structure_city_shared_bank_corellia = SharedDraftSchemati
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1957527431
+	clientObjectCRC = 1957527431,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_structure_city_shared_bank_corellia, "object/draft_schematic/structure/city/shared_bank_corellia.iff")
@@ -124,7 +125,8 @@ object_draft_schematic_structure_city_shared_bank_naboo = SharedDraftSchematicOb
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1356737706
+	clientObjectCRC = 1356737706,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_structure_city_shared_bank_naboo, "object/draft_schematic/structure/city/shared_bank_naboo.iff")
@@ -168,7 +170,8 @@ object_draft_schematic_structure_city_shared_bank_tatooine = SharedDraftSchemati
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1223564824
+	clientObjectCRC = 1223564824,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_structure_city_shared_bank_tatooine, "object/draft_schematic/structure/city/shared_bank_tatooine.iff")
@@ -212,7 +215,8 @@ object_draft_schematic_structure_city_shared_cantina_corellia = SharedDraftSchem
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 922879724
+	clientObjectCRC = 922879724,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_structure_city_shared_cantina_corellia, "object/draft_schematic/structure/city/shared_cantina_corellia.iff")
@@ -256,7 +260,8 @@ object_draft_schematic_structure_city_shared_cantina_naboo = SharedDraftSchemati
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1642793186
+	clientObjectCRC = 1642793186,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_structure_city_shared_cantina_naboo, "object/draft_schematic/structure/city/shared_cantina_naboo.iff")
@@ -300,7 +305,8 @@ object_draft_schematic_structure_city_shared_cantina_tatooine = SharedDraftSchem
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 188835699
+	clientObjectCRC = 188835699,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_structure_city_shared_cantina_tatooine, "object/draft_schematic/structure/city/shared_cantina_tatooine.iff")
@@ -344,7 +350,8 @@ object_draft_schematic_structure_city_shared_cityhall_corellia = SharedDraftSche
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 4052243419
+	clientObjectCRC = 4052243419,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_structure_city_shared_cityhall_corellia, "object/draft_schematic/structure/city/shared_cityhall_corellia.iff")
@@ -388,7 +395,8 @@ object_draft_schematic_structure_city_shared_cityhall_naboo = SharedDraftSchemat
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 4095160852
+	clientObjectCRC = 4095160852,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_structure_city_shared_cityhall_naboo, "object/draft_schematic/structure/city/shared_cityhall_naboo.iff")
@@ -432,7 +440,8 @@ object_draft_schematic_structure_city_shared_cityhall_tatooine = SharedDraftSche
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3452645956
+	clientObjectCRC = 3452645956,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_structure_city_shared_cityhall_tatooine, "object/draft_schematic/structure/city/shared_cityhall_tatooine.iff")
@@ -476,7 +485,8 @@ object_draft_schematic_structure_city_shared_cloning_corellia = SharedDraftSchem
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3102761064
+	clientObjectCRC = 3102761064,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_structure_city_shared_cloning_corellia, "object/draft_schematic/structure/city/shared_cloning_corellia.iff")
@@ -520,7 +530,8 @@ object_draft_schematic_structure_city_shared_cloning_naboo = SharedDraftSchemati
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2637377287
+	clientObjectCRC = 2637377287,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_structure_city_shared_cloning_naboo, "object/draft_schematic/structure/city/shared_cloning_naboo.iff")
@@ -564,7 +575,8 @@ object_draft_schematic_structure_city_shared_cloning_tatooine = SharedDraftSchem
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2226323959
+	clientObjectCRC = 2226323959,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_structure_city_shared_cloning_tatooine, "object/draft_schematic/structure/city/shared_cloning_tatooine.iff")
@@ -608,7 +620,8 @@ object_draft_schematic_structure_city_shared_garage_corellia = SharedDraftSchema
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2511913384
+	clientObjectCRC = 2511913384,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_structure_city_shared_garage_corellia, "object/draft_schematic/structure/city/shared_garage_corellia.iff")
@@ -652,7 +665,8 @@ object_draft_schematic_structure_city_shared_garage_naboo = SharedDraftSchematic
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3583461183
+	clientObjectCRC = 3583461183,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_structure_city_shared_garage_naboo, "object/draft_schematic/structure/city/shared_garage_naboo.iff")
@@ -696,7 +710,8 @@ object_draft_schematic_structure_city_shared_garage_tatooine = SharedDraftSchema
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2851840055
+	clientObjectCRC = 2851840055,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_structure_city_shared_garage_tatooine, "object/draft_schematic/structure/city/shared_garage_tatooine.iff")
@@ -740,7 +755,8 @@ object_draft_schematic_structure_city_shared_garden_exotic_dantooine = SharedDra
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 191116922
+	clientObjectCRC = 191116922,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_structure_city_shared_garden_exotic_dantooine, "object/draft_schematic/structure/city/shared_garden_exotic_dantooine.iff")
@@ -784,7 +800,8 @@ object_draft_schematic_structure_city_shared_garden_exotic_dathomir = SharedDraf
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2283291302
+	clientObjectCRC = 2283291302,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_structure_city_shared_garden_exotic_dathomir, "object/draft_schematic/structure/city/shared_garden_exotic_dathomir.iff")
@@ -828,7 +845,8 @@ object_draft_schematic_structure_city_shared_garden_exotic_endor = SharedDraftSc
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 197575835
+	clientObjectCRC = 197575835,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_structure_city_shared_garden_exotic_endor, "object/draft_schematic/structure/city/shared_garden_exotic_endor.iff")
@@ -872,7 +890,8 @@ object_draft_schematic_structure_city_shared_garden_large = SharedDraftSchematic
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1276792416
+	clientObjectCRC = 1276792416,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_structure_city_shared_garden_large, "object/draft_schematic/structure/city/shared_garden_large.iff")
@@ -916,7 +935,8 @@ object_draft_schematic_structure_city_shared_garden_medium = SharedDraftSchemati
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1356080577
+	clientObjectCRC = 1356080577,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_structure_city_shared_garden_medium, "object/draft_schematic/structure/city/shared_garden_medium.iff")
@@ -960,7 +980,8 @@ object_draft_schematic_structure_city_shared_garden_small = SharedDraftSchematic
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2013387337
+	clientObjectCRC = 2013387337,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_structure_city_shared_garden_small, "object/draft_schematic/structure/city/shared_garden_small.iff")
@@ -1004,7 +1025,8 @@ object_draft_schematic_structure_city_shared_hospital_corellia = SharedDraftSche
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3104967184
+	clientObjectCRC = 3104967184,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_structure_city_shared_hospital_corellia, "object/draft_schematic/structure/city/shared_hospital_corellia.iff")
@@ -1048,7 +1070,8 @@ object_draft_schematic_structure_city_shared_hospital_naboo = SharedDraftSchemat
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1804532749
+	clientObjectCRC = 1804532749,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_structure_city_shared_hospital_naboo, "object/draft_schematic/structure/city/shared_hospital_naboo.iff")
@@ -1092,7 +1115,8 @@ object_draft_schematic_structure_city_shared_hospital_tatooine = SharedDraftSche
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2236705679
+	clientObjectCRC = 2236705679,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_structure_city_shared_hospital_tatooine, "object/draft_schematic/structure/city/shared_hospital_tatooine.iff")
@@ -1136,7 +1160,8 @@ object_draft_schematic_structure_city_shared_shuttleport_corellia = SharedDraftS
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2673430783
+	clientObjectCRC = 2673430783,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_structure_city_shared_shuttleport_corellia, "object/draft_schematic/structure/city/shared_shuttleport_corellia.iff")
@@ -1180,7 +1205,8 @@ object_draft_schematic_structure_city_shared_shuttleport_naboo = SharedDraftSche
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 881536708
+	clientObjectCRC = 881536708,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_structure_city_shared_shuttleport_naboo, "object/draft_schematic/structure/city/shared_shuttleport_naboo.iff")
@@ -1224,7 +1250,8 @@ object_draft_schematic_structure_city_shared_shuttleport_tatooine = SharedDraftS
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2736402784
+	clientObjectCRC = 2736402784,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_structure_city_shared_shuttleport_tatooine, "object/draft_schematic/structure/city/shared_shuttleport_tatooine.iff")
@@ -1268,7 +1295,8 @@ object_draft_schematic_structure_city_shared_theater_corellia = SharedDraftSchem
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 758724611
+	clientObjectCRC = 758724611,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_structure_city_shared_theater_corellia, "object/draft_schematic/structure/city/shared_theater_corellia.iff")
@@ -1312,7 +1340,8 @@ object_draft_schematic_structure_city_shared_theater_naboo = SharedDraftSchemati
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3113591979
+	clientObjectCRC = 3113591979,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_structure_city_shared_theater_naboo, "object/draft_schematic/structure/city/shared_theater_naboo.iff")
@@ -1356,7 +1385,8 @@ object_draft_schematic_structure_city_shared_theater_tatooine = SharedDraftSchem
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 293231004
+	clientObjectCRC = 293231004,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_structure_city_shared_theater_tatooine, "object/draft_schematic/structure/city/shared_theater_tatooine.iff")

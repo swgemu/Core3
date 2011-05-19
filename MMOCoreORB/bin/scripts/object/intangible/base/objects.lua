@@ -80,7 +80,8 @@ object_intangible_base_shared_base_intangible = SharedIntangibleObjectTemplate:n
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3949582877
+	clientObjectCRC = 3949582877,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_base_shared_base_intangible, "object/intangible/base/shared_base_intangible.iff")
@@ -124,7 +125,8 @@ object_intangible_base_shared_intangible_default = SharedIntangibleObjectTemplat
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1331018210
+	clientObjectCRC = 1331018210,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_base_shared_intangible_default, "object/intangible/base/shared_intangible_default.iff")

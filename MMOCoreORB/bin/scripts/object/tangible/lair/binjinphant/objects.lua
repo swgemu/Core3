@@ -90,7 +90,8 @@ object_tangible_lair_binjinphant_shared_lair_binjinphant = SharedTangibleObjectT
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 40317031
+	clientObjectCRC = 40317031,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_binjinphant_shared_lair_binjinphant, "object/tangible/lair/binjinphant/shared_lair_binjinphant.iff")
@@ -144,7 +145,8 @@ object_tangible_lair_binjinphant_shared_lair_binjinphant_forest = SharedTangible
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 165640576
+	clientObjectCRC = 165640576,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_binjinphant_shared_lair_binjinphant_forest, "object/tangible/lair/binjinphant/shared_lair_binjinphant_forest.iff")

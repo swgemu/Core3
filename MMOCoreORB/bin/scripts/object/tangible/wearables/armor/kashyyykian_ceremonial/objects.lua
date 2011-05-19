@@ -90,7 +90,8 @@ object_tangible_wearables_armor_kashyyykian_ceremonial_shared_armor_kashyyykian_
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 107997252
+	clientObjectCRC = 107997252,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_armor_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_kashyyykian_ceremonial_shared_armor_kashyyykian_ceremonial_bracer_l, "object/tangible/wearables/armor/kashyyykian_ceremonial/shared_armor_kashyyykian_ceremonial_bracer_l.iff")
@@ -144,7 +145,8 @@ object_tangible_wearables_armor_kashyyykian_ceremonial_shared_armor_kashyyykian_
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1991945687
+	clientObjectCRC = 1991945687,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_armor_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_kashyyykian_ceremonial_shared_armor_kashyyykian_ceremonial_bracer_r, "object/tangible/wearables/armor/kashyyykian_ceremonial/shared_armor_kashyyykian_ceremonial_bracer_r.iff")
@@ -198,7 +200,8 @@ object_tangible_wearables_armor_kashyyykian_ceremonial_shared_armor_kashyyykian_
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2342857990
+	clientObjectCRC = 2342857990,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_armor_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_kashyyykian_ceremonial_shared_armor_kashyyykian_ceremonial_chest_plate, "object/tangible/wearables/armor/kashyyykian_ceremonial/shared_armor_kashyyykian_ceremonial_chest_plate.iff")
@@ -252,7 +255,8 @@ object_tangible_wearables_armor_kashyyykian_ceremonial_shared_armor_kashyyykian_
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2303407451
+	clientObjectCRC = 2303407451,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_armor_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_kashyyykian_ceremonial_shared_armor_kashyyykian_ceremonial_leggings, "object/tangible/wearables/armor/kashyyykian_ceremonial/shared_armor_kashyyykian_ceremonial_leggings.iff")

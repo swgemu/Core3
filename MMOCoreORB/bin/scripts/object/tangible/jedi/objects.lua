@@ -90,7 +90,8 @@ object_tangible_jedi_shared_force_shrine_stone = SharedTangibleObjectTemplate:ne
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3757784174
+	clientObjectCRC = 3757784174,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_jedi_shared_force_shrine_stone, "object/tangible/jedi/shared_force_shrine_stone.iff")
@@ -144,7 +145,8 @@ object_tangible_jedi_shared_jedi_holocron_dark = SharedTangibleObjectTemplate:ne
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2292501440
+	clientObjectCRC = 2292501440,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_jedi_shared_jedi_holocron_dark, "object/tangible/jedi/shared_jedi_holocron_dark.iff")
@@ -198,7 +200,8 @@ object_tangible_jedi_shared_jedi_holocron_light = SharedTangibleObjectTemplate:n
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2610980168
+	clientObjectCRC = 2610980168,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_jedi_shared_jedi_holocron_light, "object/tangible/jedi/shared_jedi_holocron_light.iff")
@@ -252,7 +255,8 @@ object_tangible_jedi_shared_no_drop_jedi_holocron_dark = SharedTangibleObjectTem
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2325658238
+	clientObjectCRC = 2325658238,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_jedi_shared_no_drop_jedi_holocron_dark, "object/tangible/jedi/shared_no_drop_jedi_holocron_dark.iff")
@@ -306,7 +310,8 @@ object_tangible_jedi_shared_no_drop_jedi_holocron_light = SharedTangibleObjectTe
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2824069158
+	clientObjectCRC = 2824069158,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_jedi_shared_no_drop_jedi_holocron_light, "object/tangible/jedi/shared_no_drop_jedi_holocron_light.iff")
@@ -360,7 +365,8 @@ object_tangible_jedi_shared_padawan_trials_skeleton = SharedTangibleObjectTempla
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3447451409
+	clientObjectCRC = 3447451409,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_jedi_shared_padawan_trials_skeleton, "object/tangible/jedi/shared_padawan_trials_skeleton.iff")
@@ -414,7 +420,8 @@ object_tangible_jedi_shared_power_shrine = SharedTangibleObjectTemplate:new {
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2994720477
+	clientObjectCRC = 2994720477,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_jedi_shared_power_shrine, "object/tangible/jedi/shared_power_shrine.iff")
@@ -468,7 +475,8 @@ object_tangible_jedi_shared_power_shrine_red = SharedTangibleObjectTemplate:new 
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2808368973
+	clientObjectCRC = 2808368973,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_jedi_shared_power_shrine_red, "object/tangible/jedi/shared_power_shrine_red.iff")

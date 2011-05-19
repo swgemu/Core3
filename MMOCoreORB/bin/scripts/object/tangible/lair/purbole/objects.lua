@@ -90,7 +90,8 @@ object_tangible_lair_purbole_shared_lair_purbole = SharedTangibleObjectTemplate:
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1874608603
+	clientObjectCRC = 1874608603,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_purbole_shared_lair_purbole, "object/tangible/lair/purbole/shared_lair_purbole.iff")
@@ -144,7 +145,8 @@ object_tangible_lair_purbole_shared_lair_purbole_forest = SharedTangibleObjectTe
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2529340012
+	clientObjectCRC = 2529340012,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_purbole_shared_lair_purbole_forest, "object/tangible/lair/purbole/shared_lair_purbole_forest.iff")

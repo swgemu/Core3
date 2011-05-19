@@ -90,7 +90,8 @@ object_tangible_wearables_armor_ris_shared_armor_ris_bicep_l = SharedTangibleObj
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1200831709
+	clientObjectCRC = 1200831709,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_armor_base.iff", "object/tangible/wearables/base/shared_base_bicep_l.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_ris_shared_armor_ris_bicep_l, "object/tangible/wearables/armor/ris/shared_armor_ris_bicep_l.iff")
@@ -144,7 +145,8 @@ object_tangible_wearables_armor_ris_shared_armor_ris_bicep_r = SharedTangibleObj
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 927365454
+	clientObjectCRC = 927365454,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_armor_base.iff", "object/tangible/wearables/base/shared_base_bicep_r.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_ris_shared_armor_ris_bicep_r, "object/tangible/wearables/armor/ris/shared_armor_ris_bicep_r.iff")
@@ -198,7 +200,8 @@ object_tangible_wearables_armor_ris_shared_armor_ris_boots = SharedTangibleObjec
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1126436738
+	clientObjectCRC = 1126436738,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_shoes.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_ris_shared_armor_ris_boots, "object/tangible/wearables/armor/ris/shared_armor_ris_boots.iff")
@@ -252,7 +255,8 @@ object_tangible_wearables_armor_ris_shared_armor_ris_bracer_l = SharedTangibleOb
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 298125558
+	clientObjectCRC = 298125558,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_armor_base.iff", "object/tangible/wearables/base/shared_base_bracer_upper_l.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_ris_shared_armor_ris_bracer_l, "object/tangible/wearables/armor/ris/shared_armor_ris_bracer_l.iff")
@@ -306,7 +310,8 @@ object_tangible_wearables_armor_ris_shared_armor_ris_bracer_r = SharedTangibleOb
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1628458341
+	clientObjectCRC = 1628458341,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_armor_base.iff", "object/tangible/wearables/base/shared_base_bracer_upper_r.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_ris_shared_armor_ris_bracer_r, "object/tangible/wearables/armor/ris/shared_armor_ris_bracer_r.iff")
@@ -360,7 +365,8 @@ object_tangible_wearables_armor_ris_shared_armor_ris_chest_plate = SharedTangibl
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1813559161
+	clientObjectCRC = 1813559161,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_vest.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_ris_shared_armor_ris_chest_plate, "object/tangible/wearables/armor/ris/shared_armor_ris_chest_plate.iff")
@@ -414,7 +420,8 @@ object_tangible_wearables_armor_ris_shared_armor_ris_gloves = SharedTangibleObje
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2596696196
+	clientObjectCRC = 2596696196,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_gauntlets_long.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_ris_shared_armor_ris_gloves, "object/tangible/wearables/armor/ris/shared_armor_ris_gloves.iff")
@@ -468,7 +475,8 @@ object_tangible_wearables_armor_ris_shared_armor_ris_helmet = SharedTangibleObje
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 738627980
+	clientObjectCRC = 738627980,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_armor_base.iff", "object/tangible/wearables/base/shared_base_helmet_closed_full.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_ris_shared_armor_ris_helmet, "object/tangible/wearables/armor/ris/shared_armor_ris_helmet.iff")
@@ -522,7 +530,8 @@ object_tangible_wearables_armor_ris_shared_armor_ris_leggings = SharedTangibleOb
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2665600489
+	clientObjectCRC = 2665600489,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_skirt.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_ris_shared_armor_ris_leggings, "object/tangible/wearables/armor/ris/shared_armor_ris_leggings.iff")

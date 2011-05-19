@@ -90,7 +90,8 @@ object_tangible_ship_crafted_chassis_shared_awing_deed = SharedTangibleObjectTem
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 195949306
+	clientObjectCRC = 195949306,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/crafted/chassis/shared_base_deed.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_chassis_shared_awing_deed, "object/tangible/ship/crafted/chassis/shared_awing_deed.iff")
@@ -144,7 +145,8 @@ object_tangible_ship_crafted_chassis_shared_base_deed = SharedTangibleObjectTemp
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3908589416
+	clientObjectCRC = 3908589416,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_chassis_shared_base_deed, "object/tangible/ship/crafted/chassis/shared_base_deed.iff")
@@ -198,7 +200,8 @@ object_tangible_ship_crafted_chassis_shared_blacksun_heavy_s01_deed = SharedTang
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2022853613
+	clientObjectCRC = 2022853613,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/crafted/chassis/shared_base_deed.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_chassis_shared_blacksun_heavy_s01_deed, "object/tangible/ship/crafted/chassis/shared_blacksun_heavy_s01_deed.iff")
@@ -252,7 +255,8 @@ object_tangible_ship_crafted_chassis_shared_blacksun_heavy_s02_deed = SharedTang
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4259493619
+	clientObjectCRC = 4259493619,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/crafted/chassis/shared_base_deed.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_chassis_shared_blacksun_heavy_s02_deed, "object/tangible/ship/crafted/chassis/shared_blacksun_heavy_s02_deed.iff")
@@ -306,7 +310,8 @@ object_tangible_ship_crafted_chassis_shared_blacksun_heavy_s03_deed = SharedTang
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2104628884
+	clientObjectCRC = 2104628884,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/crafted/chassis/shared_base_deed.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_chassis_shared_blacksun_heavy_s03_deed, "object/tangible/ship/crafted/chassis/shared_blacksun_heavy_s03_deed.iff")
@@ -360,7 +365,8 @@ object_tangible_ship_crafted_chassis_shared_blacksun_heavy_s04_deed = SharedTang
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4089598328
+	clientObjectCRC = 4089598328,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/crafted/chassis/shared_base_deed.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_chassis_shared_blacksun_heavy_s04_deed, "object/tangible/ship/crafted/chassis/shared_blacksun_heavy_s04_deed.iff")
@@ -414,7 +420,8 @@ object_tangible_ship_crafted_chassis_shared_blacksun_light_s01_deed = SharedTang
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3394693840
+	clientObjectCRC = 3394693840,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/crafted/chassis/shared_base_deed.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_chassis_shared_blacksun_light_s01_deed, "object/tangible/ship/crafted/chassis/shared_blacksun_light_s01_deed.iff")
@@ -468,7 +475,8 @@ object_tangible_ship_crafted_chassis_shared_blacksun_light_s02_deed = SharedTang
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1327896526
+	clientObjectCRC = 1327896526,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/crafted/chassis/shared_base_deed.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_chassis_shared_blacksun_light_s02_deed, "object/tangible/ship/crafted/chassis/shared_blacksun_light_s02_deed.iff")
@@ -522,7 +530,8 @@ object_tangible_ship_crafted_chassis_shared_blacksun_light_s03_deed = SharedTang
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3484858281
+	clientObjectCRC = 3484858281,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/crafted/chassis/shared_base_deed.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_chassis_shared_blacksun_light_s03_deed, "object/tangible/ship/crafted/chassis/shared_blacksun_light_s03_deed.iff")
@@ -576,7 +585,8 @@ object_tangible_ship_crafted_chassis_shared_blacksun_light_s04_deed = SharedTang
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1090973765
+	clientObjectCRC = 1090973765,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/crafted/chassis/shared_base_deed.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_chassis_shared_blacksun_light_s04_deed, "object/tangible/ship/crafted/chassis/shared_blacksun_light_s04_deed.iff")
@@ -630,7 +640,8 @@ object_tangible_ship_crafted_chassis_shared_blacksun_medium_s01_deed = SharedTan
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1166754060
+	clientObjectCRC = 1166754060,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/crafted/chassis/shared_base_deed.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_chassis_shared_blacksun_medium_s01_deed, "object/tangible/ship/crafted/chassis/shared_blacksun_medium_s01_deed.iff")
@@ -684,7 +695,8 @@ object_tangible_ship_crafted_chassis_shared_blacksun_medium_s02_deed = SharedTan
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3237723154
+	clientObjectCRC = 3237723154,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/crafted/chassis/shared_base_deed.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_chassis_shared_blacksun_medium_s02_deed, "object/tangible/ship/crafted/chassis/shared_blacksun_medium_s02_deed.iff")
@@ -738,7 +750,8 @@ object_tangible_ship_crafted_chassis_shared_blacksun_medium_s03_deed = SharedTan
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1080761461
+	clientObjectCRC = 1080761461,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/crafted/chassis/shared_base_deed.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_chassis_shared_blacksun_medium_s03_deed, "object/tangible/ship/crafted/chassis/shared_blacksun_medium_s03_deed.iff")
@@ -792,7 +805,8 @@ object_tangible_ship_crafted_chassis_shared_blacksun_medium_s04_deed = SharedTan
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3470482329
+	clientObjectCRC = 3470482329,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/crafted/chassis/shared_base_deed.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_chassis_shared_blacksun_medium_s04_deed, "object/tangible/ship/crafted/chassis/shared_blacksun_medium_s04_deed.iff")
@@ -846,7 +860,8 @@ object_tangible_ship_crafted_chassis_shared_bwing_deed = SharedTangibleObjectTem
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3283460537
+	clientObjectCRC = 3283460537,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/crafted/chassis/shared_base_deed.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_chassis_shared_bwing_deed, "object/tangible/ship/crafted/chassis/shared_bwing_deed.iff")
@@ -900,7 +915,8 @@ object_tangible_ship_crafted_chassis_shared_chassis_hutt_light_body = SharedTang
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1060557321
+	clientObjectCRC = 1060557321,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_chassis_shared_chassis_hutt_light_body, "object/tangible/ship/crafted/chassis/shared_chassis_hutt_light_body.iff")
@@ -954,7 +970,8 @@ object_tangible_ship_crafted_chassis_shared_chassis_hutt_light_wing_base = Share
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 357847559
+	clientObjectCRC = 357847559,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_chassis_shared_chassis_hutt_light_wing_base, "object/tangible/ship/crafted/chassis/shared_chassis_hutt_light_wing_base.iff")
@@ -1008,7 +1025,8 @@ object_tangible_ship_crafted_chassis_shared_chassis_hutt_light_wing_s01 = Shared
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2488529697
+	clientObjectCRC = 2488529697,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/crafted/chassis/shared_chassis_hutt_light_wing_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_chassis_shared_chassis_hutt_light_wing_s01, "object/tangible/ship/crafted/chassis/shared_chassis_hutt_light_wing_s01.iff")
@@ -1062,7 +1080,8 @@ object_tangible_ship_crafted_chassis_shared_chassis_hutt_light_wing_s02 = Shared
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1329879990
+	clientObjectCRC = 1329879990,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/crafted/chassis/shared_chassis_hutt_light_wing_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_chassis_shared_chassis_hutt_light_wing_s02, "object/tangible/ship/crafted/chassis/shared_chassis_hutt_light_wing_s02.iff")
@@ -1116,7 +1135,8 @@ object_tangible_ship_crafted_chassis_shared_chassis_tiefighter_body = SharedTang
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1329933896
+	clientObjectCRC = 1329933896,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_chassis_shared_chassis_tiefighter_body, "object/tangible/ship/crafted/chassis/shared_chassis_tiefighter_body.iff")
@@ -1170,7 +1190,8 @@ object_tangible_ship_crafted_chassis_shared_chassis_xwing_body = SharedTangibleO
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3155334906
+	clientObjectCRC = 3155334906,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_chassis_shared_chassis_xwing_body, "object/tangible/ship/crafted/chassis/shared_chassis_xwing_body.iff")
@@ -1224,7 +1245,8 @@ object_tangible_ship_crafted_chassis_shared_chassis_xwing_cockpit = SharedTangib
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 629673787
+	clientObjectCRC = 629673787,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_chassis_shared_chassis_xwing_cockpit, "object/tangible/ship/crafted/chassis/shared_chassis_xwing_cockpit.iff")
@@ -1278,7 +1300,8 @@ object_tangible_ship_crafted_chassis_shared_chassis_xwing_wing_l = SharedTangibl
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3961922253
+	clientObjectCRC = 3961922253,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_chassis_shared_chassis_xwing_wing_l, "object/tangible/ship/crafted/chassis/shared_chassis_xwing_wing_l.iff")
@@ -1332,7 +1355,8 @@ object_tangible_ship_crafted_chassis_shared_chassis_xwing_wing_r = SharedTangibl
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2633197406
+	clientObjectCRC = 2633197406,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_chassis_shared_chassis_xwing_wing_r, "object/tangible/ship/crafted/chassis/shared_chassis_xwing_wing_r.iff")
@@ -1386,7 +1410,8 @@ object_tangible_ship_crafted_chassis_shared_chassis_z95_body = SharedTangibleObj
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2732841781
+	clientObjectCRC = 2732841781,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_chassis_shared_chassis_z95_body, "object/tangible/ship/crafted/chassis/shared_chassis_z95_body.iff")
@@ -1440,7 +1465,8 @@ object_tangible_ship_crafted_chassis_shared_chassis_z95_cockpit = SharedTangible
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3648939768
+	clientObjectCRC = 3648939768,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_chassis_shared_chassis_z95_cockpit, "object/tangible/ship/crafted/chassis/shared_chassis_z95_cockpit.iff")
@@ -1494,7 +1520,8 @@ object_tangible_ship_crafted_chassis_shared_chassis_z95_wing_l = SharedTangibleO
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1398777236
+	clientObjectCRC = 1398777236,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_chassis_shared_chassis_z95_wing_l, "object/tangible/ship/crafted/chassis/shared_chassis_z95_wing_l.iff")
@@ -1548,7 +1575,8 @@ object_tangible_ship_crafted_chassis_shared_chassis_z95_wing_r = SharedTangibleO
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 596303879
+	clientObjectCRC = 596303879,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_chassis_shared_chassis_z95_wing_r, "object/tangible/ship/crafted/chassis/shared_chassis_z95_wing_r.iff")
@@ -1602,7 +1630,8 @@ object_tangible_ship_crafted_chassis_shared_decimator_deed = SharedTangibleObjec
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3999213800
+	clientObjectCRC = 3999213800,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/crafted/chassis/shared_base_deed.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_chassis_shared_decimator_deed, "object/tangible/ship/crafted/chassis/shared_decimator_deed.iff")
@@ -1656,7 +1685,8 @@ object_tangible_ship_crafted_chassis_shared_firespray_deed = SharedTangibleObjec
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2182625467
+	clientObjectCRC = 2182625467,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/crafted/chassis/shared_base_deed.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_chassis_shared_firespray_deed, "object/tangible/ship/crafted/chassis/shared_firespray_deed.iff")
@@ -1710,7 +1740,8 @@ object_tangible_ship_crafted_chassis_shared_hutt_heavy_s01_deed = SharedTangible
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3022324315
+	clientObjectCRC = 3022324315,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/crafted/chassis/shared_base_deed.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_chassis_shared_hutt_heavy_s01_deed, "object/tangible/ship/crafted/chassis/shared_hutt_heavy_s01_deed.iff")
@@ -1764,7 +1795,8 @@ object_tangible_ship_crafted_chassis_shared_hutt_heavy_s02_deed = SharedTangible
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 827719493
+	clientObjectCRC = 827719493,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/crafted/chassis/shared_base_deed.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_chassis_shared_hutt_heavy_s02_deed, "object/tangible/ship/crafted/chassis/shared_hutt_heavy_s02_deed.iff")
@@ -1818,7 +1850,8 @@ object_tangible_ship_crafted_chassis_shared_hutt_light_s01_deed = SharedTangible
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 115450726
+	clientObjectCRC = 115450726,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/crafted/chassis/shared_base_deed.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_chassis_shared_hutt_light_s01_deed, "object/tangible/ship/crafted/chassis/shared_hutt_light_s01_deed.iff")
@@ -1872,7 +1905,8 @@ object_tangible_ship_crafted_chassis_shared_hutt_light_s02_deed = SharedTangible
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2207342200
+	clientObjectCRC = 2207342200,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/crafted/chassis/shared_base_deed.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_chassis_shared_hutt_light_s02_deed, "object/tangible/ship/crafted/chassis/shared_hutt_light_s02_deed.iff")
@@ -1926,7 +1960,8 @@ object_tangible_ship_crafted_chassis_shared_hutt_medium_s01_deed = SharedTangibl
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2588212465
+	clientObjectCRC = 2588212465,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/crafted/chassis/shared_base_deed.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_chassis_shared_hutt_medium_s01_deed, "object/tangible/ship/crafted/chassis/shared_hutt_medium_s01_deed.iff")
@@ -1980,7 +2015,8 @@ object_tangible_ship_crafted_chassis_shared_hutt_medium_s02_deed = SharedTangibl
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 523502063
+	clientObjectCRC = 523502063,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/crafted/chassis/shared_base_deed.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_chassis_shared_hutt_medium_s02_deed, "object/tangible/ship/crafted/chassis/shared_hutt_medium_s02_deed.iff")
@@ -2034,7 +2070,8 @@ object_tangible_ship_crafted_chassis_shared_hutt_turret_ship_deed = SharedTangib
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2817524533
+	clientObjectCRC = 2817524533,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/crafted/chassis/shared_base_deed.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_chassis_shared_hutt_turret_ship_deed, "object/tangible/ship/crafted/chassis/shared_hutt_turret_ship_deed.iff")
@@ -2088,7 +2125,8 @@ object_tangible_ship_crafted_chassis_shared_texture_kit_s01 = SharedTangibleObje
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1195910466
+	clientObjectCRC = 1195910466,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_chassis_shared_texture_kit_s01, "object/tangible/ship/crafted/chassis/shared_texture_kit_s01.iff")
@@ -2142,7 +2180,8 @@ object_tangible_ship_crafted_chassis_shared_texture_kit_s02 = SharedTangibleObje
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2623507925
+	clientObjectCRC = 2623507925,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_chassis_shared_texture_kit_s02, "object/tangible/ship/crafted/chassis/shared_texture_kit_s02.iff")
@@ -2196,7 +2235,8 @@ object_tangible_ship_crafted_chassis_shared_texture_kit_s03 = SharedTangibleObje
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3578980952
+	clientObjectCRC = 3578980952,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_chassis_shared_texture_kit_s03, "object/tangible/ship/crafted/chassis/shared_texture_kit_s03.iff")
@@ -2250,7 +2290,8 @@ object_tangible_ship_crafted_chassis_shared_texture_kit_s04 = SharedTangibleObje
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 783401292
+	clientObjectCRC = 783401292,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_chassis_shared_texture_kit_s04, "object/tangible/ship/crafted/chassis/shared_texture_kit_s04.iff")
@@ -2304,7 +2345,8 @@ object_tangible_ship_crafted_chassis_shared_texture_kit_s05 = SharedTangibleObje
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1740416705
+	clientObjectCRC = 1740416705,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_chassis_shared_texture_kit_s05, "object/tangible/ship/crafted/chassis/shared_texture_kit_s05.iff")
@@ -2358,7 +2400,8 @@ object_tangible_ship_crafted_chassis_shared_texture_kit_s06 = SharedTangibleObje
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3165326934
+	clientObjectCRC = 3165326934,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_chassis_shared_texture_kit_s06, "object/tangible/ship/crafted/chassis/shared_texture_kit_s06.iff")
@@ -2412,7 +2455,8 @@ object_tangible_ship_crafted_chassis_shared_tie_in_deed = SharedTangibleObjectTe
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2702453550
+	clientObjectCRC = 2702453550,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/crafted/chassis/shared_base_deed.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_chassis_shared_tie_in_deed, "object/tangible/ship/crafted/chassis/shared_tie_in_deed.iff")
@@ -2466,7 +2510,8 @@ object_tangible_ship_crafted_chassis_shared_tie_light_duty_deed = SharedTangible
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3943699590
+	clientObjectCRC = 3943699590,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/crafted/chassis/shared_base_deed.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_chassis_shared_tie_light_duty_deed, "object/tangible/ship/crafted/chassis/shared_tie_light_duty_deed.iff")
@@ -2520,7 +2565,8 @@ object_tangible_ship_crafted_chassis_shared_tieadvanced_deed = SharedTangibleObj
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 535268402
+	clientObjectCRC = 535268402,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/crafted/chassis/shared_base_deed.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_chassis_shared_tieadvanced_deed, "object/tangible/ship/crafted/chassis/shared_tieadvanced_deed.iff")
@@ -2574,7 +2620,8 @@ object_tangible_ship_crafted_chassis_shared_tieaggressor_deed = SharedTangibleOb
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 738814292
+	clientObjectCRC = 738814292,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/crafted/chassis/shared_base_deed.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_chassis_shared_tieaggressor_deed, "object/tangible/ship/crafted/chassis/shared_tieaggressor_deed.iff")
@@ -2628,7 +2675,8 @@ object_tangible_ship_crafted_chassis_shared_tiebomber_deed = SharedTangibleObjec
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2145194763
+	clientObjectCRC = 2145194763,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/crafted/chassis/shared_base_deed.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_chassis_shared_tiebomber_deed, "object/tangible/ship/crafted/chassis/shared_tiebomber_deed.iff")
@@ -2682,7 +2730,8 @@ object_tangible_ship_crafted_chassis_shared_tiefighter_deed = SharedTangibleObje
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1456733944
+	clientObjectCRC = 1456733944,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/crafted/chassis/shared_base_deed.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_chassis_shared_tiefighter_deed, "object/tangible/ship/crafted/chassis/shared_tiefighter_deed.iff")
@@ -2736,7 +2785,8 @@ object_tangible_ship_crafted_chassis_shared_tieinterceptor_deed = SharedTangible
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3416726666
+	clientObjectCRC = 3416726666,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/crafted/chassis/shared_base_deed.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_chassis_shared_tieinterceptor_deed, "object/tangible/ship/crafted/chassis/shared_tieinterceptor_deed.iff")
@@ -2790,7 +2840,8 @@ object_tangible_ship_crafted_chassis_shared_tieoppressor_deed = SharedTangibleOb
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 471077979
+	clientObjectCRC = 471077979,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/crafted/chassis/shared_base_deed.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_chassis_shared_tieoppressor_deed, "object/tangible/ship/crafted/chassis/shared_tieoppressor_deed.iff")
@@ -2844,7 +2895,8 @@ object_tangible_ship_crafted_chassis_shared_xwing_customization_kit = SharedTang
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3720915529
+	clientObjectCRC = 3720915529,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_chassis_shared_xwing_customization_kit, "object/tangible/ship/crafted/chassis/shared_xwing_customization_kit.iff")
@@ -2898,7 +2950,8 @@ object_tangible_ship_crafted_chassis_shared_xwing_deed = SharedTangibleObjectTem
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 371125137
+	clientObjectCRC = 371125137,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/crafted/chassis/shared_base_deed.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_chassis_shared_xwing_deed, "object/tangible/ship/crafted/chassis/shared_xwing_deed.iff")
@@ -2952,7 +3005,8 @@ object_tangible_ship_crafted_chassis_shared_ykl37r_deed = SharedTangibleObjectTe
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 829078012
+	clientObjectCRC = 829078012,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/crafted/chassis/shared_base_deed.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_chassis_shared_ykl37r_deed, "object/tangible/ship/crafted/chassis/shared_ykl37r_deed.iff")
@@ -3006,7 +3060,8 @@ object_tangible_ship_crafted_chassis_shared_yt1300_deed = SharedTangibleObjectTe
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2624812962
+	clientObjectCRC = 2624812962,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/crafted/chassis/shared_base_deed.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_chassis_shared_yt1300_deed, "object/tangible/ship/crafted/chassis/shared_yt1300_deed.iff")
@@ -3060,7 +3115,8 @@ object_tangible_ship_crafted_chassis_shared_ywing_deed = SharedTangibleObjectTem
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1374233936
+	clientObjectCRC = 1374233936,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/crafted/chassis/shared_base_deed.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_chassis_shared_ywing_deed, "object/tangible/ship/crafted/chassis/shared_ywing_deed.iff")
@@ -3114,7 +3170,8 @@ object_tangible_ship_crafted_chassis_shared_ywing_longprobe_deed = SharedTangibl
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3027627051
+	clientObjectCRC = 3027627051,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/crafted/chassis/shared_base_deed.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_chassis_shared_ywing_longprobe_deed, "object/tangible/ship/crafted/chassis/shared_ywing_longprobe_deed.iff")
@@ -3168,7 +3225,8 @@ object_tangible_ship_crafted_chassis_shared_z95_deed = SharedTangibleObjectTempl
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 689633436
+	clientObjectCRC = 689633436,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/crafted/chassis/shared_base_deed.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_chassis_shared_z95_deed, "object/tangible/ship/crafted/chassis/shared_z95_deed.iff")

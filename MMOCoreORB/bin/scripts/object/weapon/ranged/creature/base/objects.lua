@@ -94,7 +94,8 @@ object_weapon_ranged_creature_base_shared_creature_base = SharedWeaponObjectTemp
 	weaponEffect = "spit",
 	weaponEffectIndex = 0,
 
-	clientObjectCRC = 2748406341
+	clientObjectCRC = 2748406341,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/weapon/base/shared_base_weapon.iff", "object/weapon/ranged/base/shared_base_ranged_weapon.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_weapon_ranged_creature_base_shared_creature_base, "object/weapon/ranged/creature/base/shared_creature_base.iff")

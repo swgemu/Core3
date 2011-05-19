@@ -90,7 +90,8 @@ object_tangible_ship_crafted_repair_shared_repair_kit_armor = SharedTangibleObje
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4170937873
+	clientObjectCRC = 4170937873,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/crafted/repair/shared_repair_kit_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_repair_shared_repair_kit_armor, "object/tangible/ship/crafted/repair/shared_repair_kit_armor.iff")
@@ -144,7 +145,8 @@ object_tangible_ship_crafted_repair_shared_repair_kit_base = SharedTangibleObjec
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1229310280
+	clientObjectCRC = 1229310280,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_repair_shared_repair_kit_base, "object/tangible/ship/crafted/repair/shared_repair_kit_base.iff")
@@ -198,7 +200,8 @@ object_tangible_ship_crafted_repair_shared_repair_kit_booster = SharedTangibleOb
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1003395918
+	clientObjectCRC = 1003395918,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/crafted/repair/shared_repair_kit_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_repair_shared_repair_kit_booster, "object/tangible/ship/crafted/repair/shared_repair_kit_booster.iff")
@@ -252,7 +255,8 @@ object_tangible_ship_crafted_repair_shared_repair_kit_chassis = SharedTangibleOb
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4086932014
+	clientObjectCRC = 4086932014,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/crafted/repair/shared_repair_kit_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_repair_shared_repair_kit_chassis, "object/tangible/ship/crafted/repair/shared_repair_kit_chassis.iff")
@@ -306,7 +310,8 @@ object_tangible_ship_crafted_repair_shared_repair_kit_droid_interface = SharedTa
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3855703758
+	clientObjectCRC = 3855703758,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/crafted/repair/shared_repair_kit_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_repair_shared_repair_kit_droid_interface, "object/tangible/ship/crafted/repair/shared_repair_kit_droid_interface.iff")
@@ -360,7 +365,8 @@ object_tangible_ship_crafted_repair_shared_repair_kit_engine = SharedTangibleObj
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4137917364
+	clientObjectCRC = 4137917364,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/crafted/repair/shared_repair_kit_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_repair_shared_repair_kit_engine, "object/tangible/ship/crafted/repair/shared_repair_kit_engine.iff")
@@ -414,7 +420,8 @@ object_tangible_ship_crafted_repair_shared_repair_kit_hull = SharedTangibleObjec
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3545826505
+	clientObjectCRC = 3545826505,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/crafted/repair/shared_repair_kit_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_repair_shared_repair_kit_hull, "object/tangible/ship/crafted/repair/shared_repair_kit_hull.iff")
@@ -468,7 +475,8 @@ object_tangible_ship_crafted_repair_shared_repair_kit_plasma_conduit = SharedTan
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3287770531
+	clientObjectCRC = 3287770531,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/crafted/repair/shared_repair_kit_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_repair_shared_repair_kit_plasma_conduit, "object/tangible/ship/crafted/repair/shared_repair_kit_plasma_conduit.iff")
@@ -522,7 +530,8 @@ object_tangible_ship_crafted_repair_shared_repair_kit_reactor = SharedTangibleOb
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1646486394
+	clientObjectCRC = 1646486394,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/crafted/repair/shared_repair_kit_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_repair_shared_repair_kit_reactor, "object/tangible/ship/crafted/repair/shared_repair_kit_reactor.iff")
@@ -576,7 +585,8 @@ object_tangible_ship_crafted_repair_shared_repair_kit_shield_generator = SharedT
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2366222507
+	clientObjectCRC = 2366222507,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/crafted/repair/shared_repair_kit_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_repair_shared_repair_kit_shield_generator, "object/tangible/ship/crafted/repair/shared_repair_kit_shield_generator.iff")
@@ -630,7 +640,8 @@ object_tangible_ship_crafted_repair_shared_repair_kit_ship = SharedTangibleObjec
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 807989435
+	clientObjectCRC = 807989435,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/crafted/repair/shared_repair_kit_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_repair_shared_repair_kit_ship, "object/tangible/ship/crafted/repair/shared_repair_kit_ship.iff")
@@ -684,7 +695,8 @@ object_tangible_ship_crafted_repair_shared_repair_kit_weapon = SharedTangibleObj
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3322698996
+	clientObjectCRC = 3322698996,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/crafted/repair/shared_repair_kit_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_repair_shared_repair_kit_weapon, "object/tangible/ship/crafted/repair/shared_repair_kit_weapon.iff")
@@ -738,7 +750,8 @@ object_tangible_ship_crafted_repair_shared_repair_kit_weapon_capacitor = SharedT
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3536823939
+	clientObjectCRC = 3536823939,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/crafted/repair/shared_repair_kit_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_repair_shared_repair_kit_weapon_capacitor, "object/tangible/ship/crafted/repair/shared_repair_kit_weapon_capacitor.iff")

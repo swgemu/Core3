@@ -90,7 +90,8 @@ object_tangible_lair_eopie_shared_lair_eopie = SharedTangibleObjectTemplate:new 
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 390824199
+	clientObjectCRC = 390824199,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff", "object/tangible/lair/base/shared_lair_base_mound_insect_light.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_eopie_shared_lair_eopie, "object/tangible/lair/eopie/shared_lair_eopie.iff")
@@ -144,7 +145,8 @@ object_tangible_lair_eopie_shared_lair_eopie_desert = SharedTangibleObjectTempla
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2432430820
+	clientObjectCRC = 2432430820,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff", "object/tangible/lair/base/shared_lair_base_mound_insect_light.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_eopie_shared_lair_eopie_desert, "object/tangible/lair/eopie/shared_lair_eopie_desert.iff")
@@ -198,7 +200,8 @@ object_tangible_lair_eopie_shared_lair_eopie_dune = SharedTangibleObjectTemplate
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 769893304
+	clientObjectCRC = 769893304,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff", "object/tangible/lair/base/shared_lair_base_mound_insect_light.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_eopie_shared_lair_eopie_dune, "object/tangible/lair/eopie/shared_lair_eopie_dune.iff")
@@ -252,7 +255,8 @@ object_tangible_lair_eopie_shared_lair_eopie_mountain = SharedTangibleObjectTemp
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2248131866
+	clientObjectCRC = 2248131866,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff", "object/tangible/lair/base/shared_lair_base_mound_insect_light.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_eopie_shared_lair_eopie_mountain, "object/tangible/lair/eopie/shared_lair_eopie_mountain.iff")
@@ -306,7 +310,8 @@ object_tangible_lair_eopie_shared_lair_eopie_wasteland = SharedTangibleObjectTem
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3741668029
+	clientObjectCRC = 3741668029,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff", "object/tangible/lair/base/shared_lair_base_mound_insect_light.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_eopie_shared_lair_eopie_wasteland, "object/tangible/lair/eopie/shared_lair_eopie_wasteland.iff")

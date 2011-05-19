@@ -90,7 +90,8 @@ object_tangible_lair_flite_rasp_shared_lair_flite_rasp = SharedTangibleObjectTem
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3680958140
+	clientObjectCRC = 3680958140,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_flite_rasp_shared_lair_flite_rasp, "object/tangible/lair/flite_rasp/shared_lair_flite_rasp.iff")
@@ -144,7 +145,8 @@ object_tangible_lair_flite_rasp_shared_lair_flite_rasp_grassland = SharedTangibl
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3329199331
+	clientObjectCRC = 3329199331,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_flite_rasp_shared_lair_flite_rasp_grassland, "object/tangible/lair/flite_rasp/shared_lair_flite_rasp_grassland.iff")

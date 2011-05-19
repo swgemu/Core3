@@ -80,7 +80,8 @@ object_waypoint_shared_path_waypoint = SharedWaypointObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 4195736526
+	clientObjectCRC = 4195736526,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/waypoint/base/shared_base_waypoint.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_waypoint_shared_path_waypoint, "object/waypoint/shared_path_waypoint.iff")
@@ -124,7 +125,8 @@ object_waypoint_shared_waypoint = SharedWaypointObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 4251347533
+	clientObjectCRC = 4251347533,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/waypoint/base/shared_base_waypoint.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_waypoint_shared_waypoint, "object/waypoint/shared_waypoint.iff")
@@ -168,7 +170,8 @@ object_waypoint_shared_world_waypoint = SharedWaypointObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 629636525
+	clientObjectCRC = 629636525,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/waypoint/base/shared_base_waypoint.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_waypoint_shared_world_waypoint, "object/waypoint/shared_world_waypoint.iff")
@@ -212,7 +215,8 @@ object_waypoint_shared_world_waypoint_blue = SharedWaypointObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3038003230
+	clientObjectCRC = 3038003230,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/waypoint/base/shared_base_waypoint.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_waypoint_shared_world_waypoint_blue, "object/waypoint/shared_world_waypoint_blue.iff")
@@ -256,7 +260,8 @@ object_waypoint_shared_world_waypoint_green = SharedWaypointObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 211288739
+	clientObjectCRC = 211288739,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/waypoint/base/shared_base_waypoint.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_waypoint_shared_world_waypoint_green, "object/waypoint/shared_world_waypoint_green.iff")
@@ -300,7 +305,8 @@ object_waypoint_shared_world_waypoint_orange = SharedWaypointObjectTemplate:new 
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3990793280
+	clientObjectCRC = 3990793280,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/waypoint/base/shared_base_waypoint.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_waypoint_shared_world_waypoint_orange, "object/waypoint/shared_world_waypoint_orange.iff")
@@ -344,7 +350,8 @@ object_waypoint_shared_world_waypoint_purple = SharedWaypointObjectTemplate:new 
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 186074874
+	clientObjectCRC = 186074874,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/waypoint/base/shared_base_waypoint.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_waypoint_shared_world_waypoint_purple, "object/waypoint/shared_world_waypoint_purple.iff")
@@ -388,7 +395,8 @@ object_waypoint_shared_world_waypoint_space = SharedWaypointObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2672628441
+	clientObjectCRC = 2672628441,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/waypoint/base/shared_base_waypoint.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_waypoint_shared_world_waypoint_space, "object/waypoint/shared_world_waypoint_space.iff")
@@ -432,7 +440,8 @@ object_waypoint_shared_world_waypoint_white = SharedWaypointObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2818077908
+	clientObjectCRC = 2818077908,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/waypoint/base/shared_base_waypoint.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_waypoint_shared_world_waypoint_white, "object/waypoint/shared_world_waypoint_white.iff")
@@ -476,7 +485,8 @@ object_waypoint_shared_world_waypoint_yellow = SharedWaypointObjectTemplate:new 
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2960507421
+	clientObjectCRC = 2960507421,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/waypoint/base/shared_base_waypoint.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_waypoint_shared_world_waypoint_yellow, "object/waypoint/shared_world_waypoint_yellow.iff")

@@ -94,7 +94,8 @@ object_weapon_melee_baton_shared_baton_gaderiffi = SharedWeaponObjectTemplate:ne
 	weaponEffect = "bolt",
 	weaponEffectIndex = 0,
 
-	clientObjectCRC = 1521219232
+	clientObjectCRC = 1521219232,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/weapon/base/shared_base_weapon.iff", "object/weapon/melee/base/shared_base_melee.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_weapon_melee_baton_shared_baton_gaderiffi, "object/weapon/melee/baton/shared_baton_gaderiffi.iff")
@@ -152,7 +153,8 @@ object_weapon_melee_baton_shared_baton_stun = SharedWeaponObjectTemplate:new {
 	weaponEffect = "bolt",
 	weaponEffectIndex = 0,
 
-	clientObjectCRC = 2740869510
+	clientObjectCRC = 2740869510,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/weapon/base/shared_base_weapon.iff", "object/weapon/melee/base/shared_base_melee.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_weapon_melee_baton_shared_baton_stun, "object/weapon/melee/baton/shared_baton_stun.iff")
@@ -210,7 +212,8 @@ object_weapon_melee_baton_shared_victor_baton_gaderiffi = SharedWeaponObjectTemp
 	weaponEffect = "bolt",
 	weaponEffectIndex = 0,
 
-	clientObjectCRC = 926540761
+	clientObjectCRC = 926540761,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/weapon/base/shared_base_weapon.iff", "object/weapon/melee/base/shared_base_melee.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_weapon_melee_baton_shared_victor_baton_gaderiffi, "object/weapon/melee/baton/shared_victor_baton_gaderiffi.iff")

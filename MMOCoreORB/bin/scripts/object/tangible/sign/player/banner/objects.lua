@@ -90,7 +90,8 @@ object_tangible_sign_player_banner_shared_banner_base = SharedTangibleObjectTemp
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2165019612
+	clientObjectCRC = 2165019612,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/sign/base/shared_base_sign.iff", "object/tangible/sign/player/base/shared_player_sign_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_sign_player_banner_shared_banner_base, "object/tangible/sign/player/banner/shared_banner_base.iff")
@@ -144,7 +145,8 @@ object_tangible_sign_player_banner_shared_pa_hall = SharedTangibleObjectTemplate
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1294986677
+	clientObjectCRC = 1294986677,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/sign/base/shared_base_sign.iff", "object/tangible/sign/player/base/shared_player_sign_base.iff", "object/tangible/sign/player/banner/shared_banner_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_sign_player_banner_shared_pa_hall, "object/tangible/sign/player/banner/shared_pa_hall.iff")

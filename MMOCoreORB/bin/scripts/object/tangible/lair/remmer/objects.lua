@@ -90,7 +90,8 @@ object_tangible_lair_remmer_shared_lair_remmer = SharedTangibleObjectTemplate:ne
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1568679889
+	clientObjectCRC = 1568679889,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_remmer_shared_lair_remmer, "object/tangible/lair/remmer/shared_lair_remmer.iff")
@@ -144,7 +145,8 @@ object_tangible_lair_remmer_shared_lair_remmer_grassland = SharedTangibleObjectT
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1785284401
+	clientObjectCRC = 1785284401,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_remmer_shared_lair_remmer_grassland, "object/tangible/lair/remmer/shared_lair_remmer_grassland.iff")
@@ -198,7 +200,8 @@ object_tangible_lair_remmer_shared_lair_remmer_jungle = SharedTangibleObjectTemp
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3159632907
+	clientObjectCRC = 3159632907,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_remmer_shared_lair_remmer_jungle, "object/tangible/lair/remmer/shared_lair_remmer_jungle.iff")

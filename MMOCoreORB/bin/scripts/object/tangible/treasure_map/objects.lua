@@ -90,7 +90,8 @@ object_tangible_treasure_map_shared_treasure_map_base = SharedTangibleObjectTemp
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2463455571
+	clientObjectCRC = 2463455571,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_treasure_map_shared_treasure_map_base, "object/tangible/treasure_map/shared_treasure_map_base.iff")
@@ -144,7 +145,8 @@ object_tangible_treasure_map_shared_treasure_map_quest = SharedTangibleObjectTem
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 239886061
+	clientObjectCRC = 239886061,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_treasure_map_shared_treasure_map_quest, "object/tangible/treasure_map/shared_treasure_map_quest.iff")

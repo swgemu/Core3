@@ -80,7 +80,8 @@ object_draft_schematic_item_theme_park_alderaan_act3_shared_dead_eye_prototype =
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3578248809
+	clientObjectCRC = 3578248809,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_item_theme_park_alderaan_act3_shared_dead_eye_prototype, "object/draft_schematic/item/theme_park/alderaan/act3/shared_dead_eye_prototype.iff")

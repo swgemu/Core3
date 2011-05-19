@@ -90,7 +90,8 @@ object_tangible_lair_demo_shared_lair_demo = SharedTangibleObjectTemplate:new {
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 146696119
+	clientObjectCRC = 146696119,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_demo_shared_lair_demo, "object/tangible/lair/demo/shared_lair_demo.iff")

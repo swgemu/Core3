@@ -80,7 +80,8 @@ object_static_vehicle_e3_shared_landspeeder = SharedStaticObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2401779536
+	clientObjectCRC = 2401779536,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_vehicle_e3_shared_landspeeder, "object/static/vehicle/e3/shared_landspeeder.iff")

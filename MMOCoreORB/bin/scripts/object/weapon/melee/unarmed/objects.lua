@@ -94,7 +94,8 @@ object_weapon_melee_unarmed_shared_unarmed_default = SharedWeaponObjectTemplate:
 	weaponEffect = "bolt",
 	weaponEffectIndex = 0,
 
-	clientObjectCRC = 1334573707
+	clientObjectCRC = 1334573707,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/weapon/base/shared_base_weapon.iff", "object/weapon/creature/shared_creature_default_weapon.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_weapon_melee_unarmed_shared_unarmed_default, "object/weapon/melee/unarmed/shared_unarmed_default.iff")
@@ -152,7 +153,8 @@ object_weapon_melee_unarmed_shared_unarmed_default_player = SharedWeaponObjectTe
 	weaponEffect = "bolt",
 	weaponEffectIndex = 0,
 
-	clientObjectCRC = 1891079953
+	clientObjectCRC = 1891079953,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/weapon/base/shared_base_weapon.iff", "object/weapon/creature/shared_creature_default_weapon.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_weapon_melee_unarmed_shared_unarmed_default_player, "object/weapon/melee/unarmed/shared_unarmed_default_player.iff")

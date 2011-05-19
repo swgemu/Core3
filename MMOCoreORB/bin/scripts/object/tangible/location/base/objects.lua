@@ -90,7 +90,8 @@ object_tangible_location_base_shared_location_base = SharedTangibleObjectTemplat
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2015057562
+	clientObjectCRC = 2015057562,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_location_base_shared_location_base, "object/tangible/location/base/shared_location_base.iff")

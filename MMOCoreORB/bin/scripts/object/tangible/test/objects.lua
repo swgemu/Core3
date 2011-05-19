@@ -90,7 +90,8 @@ object_tangible_test_shared_inventory_filler = SharedTangibleObjectTemplate:new 
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2308658089
+	clientObjectCRC = 2308658089,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_test_shared_inventory_filler, "object/tangible/test/shared_inventory_filler.iff")
@@ -144,7 +145,8 @@ object_tangible_test_shared_test_barrel_a = SharedTangibleObjectTemplate:new {
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3742060699
+	clientObjectCRC = 3742060699,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_test_shared_test_barrel_a, "object/tangible/test/shared_test_barrel_a.iff")
@@ -198,7 +200,8 @@ object_tangible_test_shared_test_barrel_b = SharedTangibleObjectTemplate:new {
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 69007372
+	clientObjectCRC = 69007372,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_test_shared_test_barrel_b, "object/tangible/test/shared_test_barrel_b.iff")
@@ -252,7 +255,8 @@ object_tangible_test_shared_test_jwatson = SharedTangibleObjectTemplate:new {
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4013228996
+	clientObjectCRC = 4013228996,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_belt.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_test_shared_test_jwatson, "object/tangible/test/shared_test_jwatson.iff")
@@ -306,7 +310,8 @@ object_tangible_test_shared_test_pastry_01 = SharedTangibleObjectTemplate:new {
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1611558615
+	clientObjectCRC = 1611558615,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_test_shared_test_pastry_01, "object/tangible/test/shared_test_pastry_01.iff")
@@ -360,7 +365,8 @@ object_tangible_test_shared_test_terminal = SharedTangibleObjectTemplate:new {
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1340334223
+	clientObjectCRC = 1340334223,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_test_shared_test_terminal, "object/tangible/test/shared_test_terminal.iff")

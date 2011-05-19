@@ -90,7 +90,8 @@ object_tangible_container_general_shared_cargo_pocket = SharedTangibleObjectTemp
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3378300955
+	clientObjectCRC = 3378300955,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/container/base/shared_base_container.iff", "object/tangible/container/base/shared_base_container_volume.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_container_general_shared_cargo_pocket, "object/tangible/container/general/shared_cargo_pocket.iff")
@@ -144,7 +145,8 @@ object_tangible_container_general_shared_satchel = SharedTangibleObjectTemplate:
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2917538
+	clientObjectCRC = 2917538,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/container/base/shared_base_container.iff", "object/tangible/container/base/shared_base_container_volume.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_container_general_shared_satchel, "object/tangible/container/general/shared_satchel.iff")
@@ -198,7 +200,8 @@ object_tangible_container_general_shared_tech_armoire = SharedTangibleObjectTemp
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 997788135
+	clientObjectCRC = 997788135,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/container/base/shared_base_container.iff", "object/tangible/container/base/shared_base_container_volume.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_container_general_shared_tech_armoire, "object/tangible/container/general/shared_tech_armoire.iff")
@@ -252,7 +255,8 @@ object_tangible_container_general_shared_tech_bookcase = SharedTangibleObjectTem
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3363389476
+	clientObjectCRC = 3363389476,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/container/base/shared_base_container.iff", "object/tangible/container/base/shared_base_container_volume.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_container_general_shared_tech_bookcase, "object/tangible/container/general/shared_tech_bookcase.iff")
@@ -306,7 +310,8 @@ object_tangible_container_general_shared_tech_chest = SharedTangibleObjectTempla
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 542811322
+	clientObjectCRC = 542811322,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/container/base/shared_base_container.iff", "object/tangible/container/base/shared_base_container_volume.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_container_general_shared_tech_chest, "object/tangible/container/general/shared_tech_chest.iff")

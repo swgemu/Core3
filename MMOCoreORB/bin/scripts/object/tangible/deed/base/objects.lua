@@ -90,7 +90,8 @@ object_tangible_deed_base_shared_deed_base = SharedTangibleObjectTemplate:new {
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3216787509
+	clientObjectCRC = 3216787509,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_deed_base_shared_deed_base, "object/tangible/deed/base/shared_deed_base.iff")
@@ -144,7 +145,8 @@ object_tangible_deed_base_shared_deed_building_base = SharedTangibleObjectTempla
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2878588829
+	clientObjectCRC = 2878588829,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/deed/base/shared_deed_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_deed_base_shared_deed_building_base, "object/tangible/deed/base/shared_deed_building_base.iff")
@@ -198,7 +200,8 @@ object_tangible_deed_base_shared_deed_installation_base = SharedTangibleObjectTe
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3225611811
+	clientObjectCRC = 3225611811,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/deed/base/shared_deed_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_deed_base_shared_deed_installation_base, "object/tangible/deed/base/shared_deed_installation_base.iff")
@@ -252,7 +255,8 @@ object_tangible_deed_base_shared_pet_deed_base = SharedTangibleObjectTemplate:ne
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2503565638
+	clientObjectCRC = 2503565638,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_deed_base_shared_pet_deed_base, "object/tangible/deed/base/shared_pet_deed_base.iff")
@@ -306,7 +310,8 @@ object_tangible_deed_base_shared_pet_droid_deed_base = SharedTangibleObjectTempl
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4079953693
+	clientObjectCRC = 4079953693,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/deed/base/shared_pet_deed_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_deed_base_shared_pet_droid_deed_base, "object/tangible/deed/base/shared_pet_droid_deed_base.iff")

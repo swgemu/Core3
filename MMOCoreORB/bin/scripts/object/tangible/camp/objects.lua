@@ -90,7 +90,8 @@ object_tangible_camp_shared_camp_chair_s1 = SharedTangibleObjectTemplate:new {
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3093106291
+	clientObjectCRC = 3093106291,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_camp_shared_camp_chair_s1, "object/tangible/camp/shared_camp_chair_s1.iff")
@@ -144,7 +145,8 @@ object_tangible_camp_shared_camp_chair_s2 = SharedTangibleObjectTemplate:new {
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1665836772
+	clientObjectCRC = 1665836772,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_camp_shared_camp_chair_s2, "object/tangible/camp/shared_camp_chair_s2.iff")
@@ -198,7 +200,8 @@ object_tangible_camp_shared_camp_chair_s3 = SharedTangibleObjectTemplate:new {
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 709345641
+	clientObjectCRC = 709345641,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_camp_shared_camp_chair_s3, "object/tangible/camp/shared_camp_chair_s3.iff")
@@ -252,7 +255,8 @@ object_tangible_camp_shared_camp_control_panel = SharedTangibleObjectTemplate:ne
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1403576504
+	clientObjectCRC = 1403576504,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_camp_shared_camp_control_panel, "object/tangible/camp/shared_camp_control_panel.iff")
@@ -306,7 +310,8 @@ object_tangible_camp_shared_camp_cot = SharedTangibleObjectTemplate:new {
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1118144576
+	clientObjectCRC = 1118144576,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_camp_shared_camp_cot, "object/tangible/camp/shared_camp_cot.iff")
@@ -360,7 +365,8 @@ object_tangible_camp_shared_camp_cot_s1 = SharedTangibleObjectTemplate:new {
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2382295007
+	clientObjectCRC = 2382295007,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_camp_shared_camp_cot_s1, "object/tangible/camp/shared_camp_cot_s1.iff")
@@ -414,7 +420,8 @@ object_tangible_camp_shared_camp_cot_s2 = SharedTangibleObjectTemplate:new {
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1458128712
+	clientObjectCRC = 1458128712,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_camp_shared_camp_cot_s2, "object/tangible/camp/shared_camp_cot_s2.iff")
@@ -468,7 +475,8 @@ object_tangible_camp_shared_camp_cot_s3 = SharedTangibleObjectTemplate:new {
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 535044293
+	clientObjectCRC = 535044293,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_camp_shared_camp_cot_s3, "object/tangible/camp/shared_camp_cot_s3.iff")
@@ -522,7 +530,8 @@ object_tangible_camp_shared_camp_crate_s1 = SharedTangibleObjectTemplate:new {
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3025871349
+	clientObjectCRC = 3025871349,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_camp_shared_camp_crate_s1, "object/tangible/camp/shared_camp_crate_s1.iff")
@@ -576,7 +585,8 @@ object_tangible_camp_shared_camp_lantern_s1 = SharedTangibleObjectTemplate:new {
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1758920925
+	clientObjectCRC = 1758920925,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_camp_shared_camp_lantern_s1, "object/tangible/camp/shared_camp_lantern_s1.iff")
@@ -630,7 +640,8 @@ object_tangible_camp_shared_camp_lantern_s2 = SharedTangibleObjectTemplate:new {
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3015747658
+	clientObjectCRC = 3015747658,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_camp_shared_camp_lantern_s2, "object/tangible/camp/shared_camp_lantern_s2.iff")
@@ -684,7 +695,8 @@ object_tangible_camp_shared_camp_lantern_s3 = SharedTangibleObjectTemplate:new {
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4207792071
+	clientObjectCRC = 4207792071,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_camp_shared_camp_lantern_s3, "object/tangible/camp/shared_camp_lantern_s3.iff")
@@ -738,7 +750,8 @@ object_tangible_camp_shared_camp_lawn_chair = SharedTangibleObjectTemplate:new {
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2201158823
+	clientObjectCRC = 2201158823,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_camp_shared_camp_lawn_chair, "object/tangible/camp/shared_camp_lawn_chair.iff")
@@ -792,7 +805,8 @@ object_tangible_camp_shared_camp_light_s1 = SharedTangibleObjectTemplate:new {
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1218683481
+	clientObjectCRC = 1218683481,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_camp_shared_camp_light_s1, "object/tangible/camp/shared_camp_light_s1.iff")
@@ -846,7 +860,8 @@ object_tangible_camp_shared_camp_light_s2 = SharedTangibleObjectTemplate:new {
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2478049998
+	clientObjectCRC = 2478049998,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_camp_shared_camp_light_s2, "object/tangible/camp/shared_camp_light_s2.iff")
@@ -900,7 +915,8 @@ object_tangible_camp_shared_camp_light_s3 = SharedTangibleObjectTemplate:new {
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3669585219
+	clientObjectCRC = 3669585219,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_camp_shared_camp_light_s3, "object/tangible/camp/shared_camp_light_s3.iff")
@@ -954,7 +970,8 @@ object_tangible_camp_shared_camp_pavilion_s1 = SharedTangibleObjectTemplate:new 
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3526587554
+	clientObjectCRC = 3526587554,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_camp_shared_camp_pavilion_s1, "object/tangible/camp/shared_camp_pavilion_s1.iff")
@@ -1008,7 +1025,8 @@ object_tangible_camp_shared_camp_pavilion_s2 = SharedTangibleObjectTemplate:new 
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 153410613
+	clientObjectCRC = 153410613,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_camp_shared_camp_pavilion_s2, "object/tangible/camp/shared_camp_pavilion_s2.iff")
@@ -1062,7 +1080,8 @@ object_tangible_camp_shared_camp_spit = SharedTangibleObjectTemplate:new {
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3348365284
+	clientObjectCRC = 3348365284,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_camp_shared_camp_spit, "object/tangible/camp/shared_camp_spit.iff")
@@ -1116,7 +1135,8 @@ object_tangible_camp_shared_camp_spit_s1 = SharedTangibleObjectTemplate:new {
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3905285557
+	clientObjectCRC = 3905285557,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_camp_shared_camp_spit_s1, "object/tangible/camp/shared_camp_spit_s1.iff")
@@ -1170,7 +1190,8 @@ object_tangible_camp_shared_camp_spit_s2 = SharedTangibleObjectTemplate:new {
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 869418274
+	clientObjectCRC = 869418274,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_camp_shared_camp_spit_s2, "object/tangible/camp/shared_camp_spit_s2.iff")
@@ -1224,7 +1245,8 @@ object_tangible_camp_shared_camp_spit_s3 = SharedTangibleObjectTemplate:new {
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2061443759
+	clientObjectCRC = 2061443759,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_camp_shared_camp_spit_s3, "object/tangible/camp/shared_camp_spit_s3.iff")
@@ -1278,7 +1300,8 @@ object_tangible_camp_shared_camp_stool_short = SharedTangibleObjectTemplate:new 
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1063678177
+	clientObjectCRC = 1063678177,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_camp_shared_camp_stool_short, "object/tangible/camp/shared_camp_stool_short.iff")
@@ -1332,7 +1355,8 @@ object_tangible_camp_shared_camp_stool_tall = SharedTangibleObjectTemplate:new {
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3243108837
+	clientObjectCRC = 3243108837,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_camp_shared_camp_stool_tall, "object/tangible/camp/shared_camp_stool_tall.iff")
@@ -1386,7 +1410,8 @@ object_tangible_camp_shared_camp_tent_s1 = SharedTangibleObjectTemplate:new {
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2127813712
+	clientObjectCRC = 2127813712,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_camp_shared_camp_tent_s1, "object/tangible/camp/shared_camp_tent_s1.iff")
@@ -1440,7 +1465,8 @@ object_tangible_camp_shared_camp_tent_s2 = SharedTangibleObjectTemplate:new {
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2781115591
+	clientObjectCRC = 2781115591,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_camp_shared_camp_tent_s2, "object/tangible/camp/shared_camp_tent_s2.iff")
@@ -1494,7 +1520,8 @@ object_tangible_camp_shared_camp_tent_s3 = SharedTangibleObjectTemplate:new {
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3972600650
+	clientObjectCRC = 3972600650,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_camp_shared_camp_tent_s3, "object/tangible/camp/shared_camp_tent_s3.iff")
@@ -1548,7 +1575,8 @@ object_tangible_camp_shared_camp_tent_s4 = SharedTangibleObjectTemplate:new {
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 388642910
+	clientObjectCRC = 388642910,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_camp_shared_camp_tent_s4, "object/tangible/camp/shared_camp_tent_s4.iff")
@@ -1602,7 +1630,8 @@ object_tangible_camp_shared_camp_tent_s5 = SharedTangibleObjectTemplate:new {
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1579638739
+	clientObjectCRC = 1579638739,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_camp_shared_camp_tent_s5, "object/tangible/camp/shared_camp_tent_s5.iff")
@@ -1656,7 +1685,8 @@ object_tangible_camp_shared_camp_tent_s6 = SharedTangibleObjectTemplate:new {
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2234578756
+	clientObjectCRC = 2234578756,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_camp_shared_camp_tent_s6, "object/tangible/camp/shared_camp_tent_s6.iff")
@@ -1710,7 +1740,8 @@ object_tangible_camp_shared_campfire_logs_ash = SharedTangibleObjectTemplate:new
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1850708683
+	clientObjectCRC = 1850708683,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_camp_shared_campfire_logs_ash, "object/tangible/camp/shared_campfire_logs_ash.iff")
@@ -1764,7 +1795,8 @@ object_tangible_camp_shared_campfire_logs_burnt = SharedTangibleObjectTemplate:n
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3245417317
+	clientObjectCRC = 3245417317,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_camp_shared_campfire_logs_burnt, "object/tangible/camp/shared_campfire_logs_burnt.iff")
@@ -1818,7 +1850,8 @@ object_tangible_camp_shared_campfire_logs_fresh = SharedTangibleObjectTemplate:n
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1992640015
+	clientObjectCRC = 1992640015,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_camp_shared_campfire_logs_fresh, "object/tangible/camp/shared_campfire_logs_fresh.iff")
@@ -1872,7 +1905,8 @@ object_tangible_camp_shared_campfire_logs_smoldering = SharedTangibleObjectTempl
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 343626744
+	clientObjectCRC = 343626744,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_camp_shared_campfire_logs_smoldering, "object/tangible/camp/shared_campfire_logs_smoldering.iff")

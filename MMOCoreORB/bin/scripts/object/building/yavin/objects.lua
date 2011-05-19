@@ -93,7 +93,8 @@ object_building_yavin_shared_dark_enclave = SharedBuildingObjectTemplate:new {
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2882030964
+	clientObjectCRC = 2882030964,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_yavin_shared_dark_enclave, "object/building/yavin/shared_dark_enclave.iff")
@@ -150,7 +151,8 @@ object_building_yavin_shared_light_enclave = SharedBuildingObjectTemplate:new {
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3550315323
+	clientObjectCRC = 3550315323,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_yavin_shared_light_enclave, "object/building/yavin/shared_light_enclave.iff")
@@ -207,7 +209,8 @@ object_building_yavin_shared_temple_blueleaf = SharedBuildingObjectTemplate:new 
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1060389087
+	clientObjectCRC = 1060389087,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_palace.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_yavin_shared_temple_blueleaf, "object/building/yavin/shared_temple_blueleaf.iff")
@@ -264,7 +267,8 @@ object_building_yavin_shared_temple_exar_kun = SharedBuildingObjectTemplate:new 
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3687664408
+	clientObjectCRC = 3687664408,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_palace.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_yavin_shared_temple_exar_kun, "object/building/yavin/shared_temple_exar_kun.iff")
@@ -321,7 +325,8 @@ object_building_yavin_shared_temple_massassi = SharedBuildingObjectTemplate:new 
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2078872520
+	clientObjectCRC = 2078872520,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_palace.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_yavin_shared_temple_massassi, "object/building/yavin/shared_temple_massassi.iff")
@@ -378,7 +383,8 @@ object_building_yavin_shared_temple_woolamander = SharedBuildingObjectTemplate:n
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1136920717
+	clientObjectCRC = 1136920717,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_palace.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_yavin_shared_temple_woolamander, "object/building/yavin/shared_temple_woolamander.iff")

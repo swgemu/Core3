@@ -90,7 +90,8 @@ object_tangible_loot_loot_schematic_shared_agitator_motor_schematic = SharedTang
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3973368814
+	clientObjectCRC = 3973368814,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_loot_schematic_shared_agitator_motor_schematic, "object/tangible/loot/loot_schematic/shared_agitator_motor_schematic.iff")
@@ -144,7 +145,8 @@ object_tangible_loot_loot_schematic_shared_assorted_fruit_schematic = SharedTang
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 33357504
+	clientObjectCRC = 33357504,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_loot_schematic_shared_assorted_fruit_schematic, "object/tangible/loot/loot_schematic/shared_assorted_fruit_schematic.iff")
@@ -198,7 +200,8 @@ object_tangible_loot_loot_schematic_shared_bacta_tank_schematic = SharedTangible
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2176567440
+	clientObjectCRC = 2176567440,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_loot_schematic_shared_bacta_tank_schematic, "object/tangible/loot/loot_schematic/shared_bacta_tank_schematic.iff")
@@ -252,7 +255,8 @@ object_tangible_loot_loot_schematic_shared_basket_closed_schematic = SharedTangi
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 275009907
+	clientObjectCRC = 275009907,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_loot_schematic_shared_basket_closed_schematic, "object/tangible/loot/loot_schematic/shared_basket_closed_schematic.iff")
@@ -306,7 +310,8 @@ object_tangible_loot_loot_schematic_shared_bottle_fat_schematic = SharedTangible
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2981833750
+	clientObjectCRC = 2981833750,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_loot_schematic_shared_bottle_fat_schematic, "object/tangible/loot/loot_schematic/shared_bottle_fat_schematic.iff")
@@ -360,7 +365,8 @@ object_tangible_loot_loot_schematic_shared_bottle_pear_schematic = SharedTangibl
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 49511220
+	clientObjectCRC = 49511220,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_loot_schematic_shared_bottle_pear_schematic, "object/tangible/loot/loot_schematic/shared_bottle_pear_schematic.iff")
@@ -414,7 +420,8 @@ object_tangible_loot_loot_schematic_shared_bottle_tall_schematic = SharedTangibl
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1843384540
+	clientObjectCRC = 1843384540,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_loot_schematic_shared_bottle_tall_schematic, "object/tangible/loot/loot_schematic/shared_bottle_tall_schematic.iff")
@@ -468,7 +475,8 @@ object_tangible_loot_loot_schematic_shared_bowl_carved_schematic = SharedTangibl
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2666433962
+	clientObjectCRC = 2666433962,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_loot_schematic_shared_bowl_carved_schematic, "object/tangible/loot/loot_schematic/shared_bowl_carved_schematic.iff")
@@ -522,7 +530,8 @@ object_tangible_loot_loot_schematic_shared_bowl_plain_schematic = SharedTangible
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2499138491
+	clientObjectCRC = 2499138491,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_loot_schematic_shared_bowl_plain_schematic, "object/tangible/loot/loot_schematic/shared_bowl_plain_schematic.iff")
@@ -576,7 +585,8 @@ object_tangible_loot_loot_schematic_shared_bubble_tank_schematic = SharedTangibl
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 352538230
+	clientObjectCRC = 352538230,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_loot_schematic_shared_bubble_tank_schematic, "object/tangible/loot/loot_schematic/shared_bubble_tank_schematic.iff")
@@ -630,7 +640,8 @@ object_tangible_loot_loot_schematic_shared_campfire_schematic = SharedTangibleOb
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2177174238
+	clientObjectCRC = 2177174238,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_loot_schematic_shared_campfire_schematic, "object/tangible/loot/loot_schematic/shared_campfire_schematic.iff")
@@ -684,7 +695,8 @@ object_tangible_loot_loot_schematic_shared_cantina_chair_schematic = SharedTangi
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1817381441
+	clientObjectCRC = 1817381441,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_loot_schematic_shared_cantina_chair_schematic, "object/tangible/loot/loot_schematic/shared_cantina_chair_schematic.iff")
@@ -738,7 +750,8 @@ object_tangible_loot_loot_schematic_shared_chair_cafe_schematic = SharedTangible
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1634921548
+	clientObjectCRC = 1634921548,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_loot_schematic_shared_chair_cafe_schematic, "object/tangible/loot/loot_schematic/shared_chair_cafe_schematic.iff")
@@ -792,7 +805,8 @@ object_tangible_loot_loot_schematic_shared_chemical_recycler_schematic = SharedT
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3816949248
+	clientObjectCRC = 3816949248,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_loot_schematic_shared_chemical_recycler_schematic, "object/tangible/loot/loot_schematic/shared_chemical_recycler_schematic.iff")
@@ -846,7 +860,8 @@ object_tangible_loot_loot_schematic_shared_command_console_schematic = SharedTan
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1441840530
+	clientObjectCRC = 1441840530,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_loot_schematic_shared_command_console_schematic, "object/tangible/loot/loot_schematic/shared_command_console_schematic.iff")
@@ -900,7 +915,8 @@ object_tangible_loot_loot_schematic_shared_corellian_corvette_landspeeder_av21_s
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2788504736
+	clientObjectCRC = 2788504736,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_loot_schematic_shared_corellian_corvette_landspeeder_av21_schematic, "object/tangible/loot/loot_schematic/shared_corellian_corvette_landspeeder_av21_schematic.iff")
@@ -954,7 +970,8 @@ object_tangible_loot_loot_schematic_shared_corellian_corvette_rifle_berserker_sc
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2378673848
+	clientObjectCRC = 2378673848,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_loot_schematic_shared_corellian_corvette_rifle_berserker_schematic, "object/tangible/loot/loot_schematic/shared_corellian_corvette_rifle_berserker_schematic.iff")
@@ -1008,7 +1025,8 @@ object_tangible_loot_loot_schematic_shared_corellian_flagpole_schematic = Shared
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3464694105
+	clientObjectCRC = 3464694105,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_loot_schematic_shared_corellian_flagpole_schematic, "object/tangible/loot/loot_schematic/shared_corellian_flagpole_schematic.iff")
@@ -1062,7 +1080,8 @@ object_tangible_loot_loot_schematic_shared_couch_blue_schematic = SharedTangible
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2109385771
+	clientObjectCRC = 2109385771,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_loot_schematic_shared_couch_blue_schematic, "object/tangible/loot/loot_schematic/shared_couch_blue_schematic.iff")
@@ -1116,7 +1135,8 @@ object_tangible_loot_loot_schematic_shared_creature_recycler_schematic = SharedT
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3869986987
+	clientObjectCRC = 3869986987,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_loot_schematic_shared_creature_recycler_schematic, "object/tangible/loot/loot_schematic/shared_creature_recycler_schematic.iff")
@@ -1170,7 +1190,8 @@ object_tangible_loot_loot_schematic_shared_death_watch_bounty_hunter_belt_schema
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3186214418
+	clientObjectCRC = 3186214418,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_loot_schematic_shared_death_watch_bounty_hunter_belt_schematic, "object/tangible/loot/loot_schematic/shared_death_watch_bounty_hunter_belt_schematic.iff")
@@ -1224,7 +1245,8 @@ object_tangible_loot_loot_schematic_shared_death_watch_bounty_hunter_bicep_l_sch
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4262840848
+	clientObjectCRC = 4262840848,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_loot_schematic_shared_death_watch_bounty_hunter_bicep_l_schematic, "object/tangible/loot/loot_schematic/shared_death_watch_bounty_hunter_bicep_l_schematic.iff")
@@ -1278,7 +1300,8 @@ object_tangible_loot_loot_schematic_shared_death_watch_bounty_hunter_bicep_r_sch
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 712860035
+	clientObjectCRC = 712860035,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_loot_schematic_shared_death_watch_bounty_hunter_bicep_r_schematic, "object/tangible/loot/loot_schematic/shared_death_watch_bounty_hunter_bicep_r_schematic.iff")
@@ -1332,7 +1355,8 @@ object_tangible_loot_loot_schematic_shared_death_watch_bounty_hunter_boots_schem
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2564896139
+	clientObjectCRC = 2564896139,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_loot_schematic_shared_death_watch_bounty_hunter_boots_schematic, "object/tangible/loot/loot_schematic/shared_death_watch_bounty_hunter_boots_schematic.iff")
@@ -1386,7 +1410,8 @@ object_tangible_loot_loot_schematic_shared_death_watch_bounty_hunter_bracer_l_sc
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4001355238
+	clientObjectCRC = 4001355238,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_loot_schematic_shared_death_watch_bounty_hunter_bracer_l_schematic, "object/tangible/loot/loot_schematic/shared_death_watch_bounty_hunter_bracer_l_schematic.iff")
@@ -1440,7 +1465,8 @@ object_tangible_loot_loot_schematic_shared_death_watch_bounty_hunter_bracer_r_sc
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 974618229
+	clientObjectCRC = 974618229,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_loot_schematic_shared_death_watch_bounty_hunter_bracer_r_schematic, "object/tangible/loot/loot_schematic/shared_death_watch_bounty_hunter_bracer_r_schematic.iff")
@@ -1494,7 +1520,8 @@ object_tangible_loot_loot_schematic_shared_death_watch_bounty_hunter_chest_plate
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3084811322
+	clientObjectCRC = 3084811322,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_loot_schematic_shared_death_watch_bounty_hunter_chest_plate_schematic, "object/tangible/loot/loot_schematic/shared_death_watch_bounty_hunter_chest_plate_schematic.iff")
@@ -1548,7 +1575,8 @@ object_tangible_loot_loot_schematic_shared_death_watch_bounty_hunter_gloves_sche
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4286535235
+	clientObjectCRC = 4286535235,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_loot_schematic_shared_death_watch_bounty_hunter_gloves_schematic, "object/tangible/loot/loot_schematic/shared_death_watch_bounty_hunter_gloves_schematic.iff")
@@ -1602,7 +1630,8 @@ object_tangible_loot_loot_schematic_shared_death_watch_bounty_hunter_helmet_sche
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4021975943
+	clientObjectCRC = 4021975943,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_loot_schematic_shared_death_watch_bounty_hunter_helmet_schematic, "object/tangible/loot/loot_schematic/shared_death_watch_bounty_hunter_helmet_schematic.iff")
@@ -1656,7 +1685,8 @@ object_tangible_loot_loot_schematic_shared_death_watch_bounty_hunter_leggings_sc
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 204385497
+	clientObjectCRC = 204385497,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_loot_schematic_shared_death_watch_bounty_hunter_leggings_schematic, "object/tangible/loot/loot_schematic/shared_death_watch_bounty_hunter_leggings_schematic.iff")
@@ -1710,7 +1740,8 @@ object_tangible_loot_loot_schematic_shared_death_watch_drink_mandalorian_wine_sc
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 818256163
+	clientObjectCRC = 818256163,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_loot_schematic_shared_death_watch_drink_mandalorian_wine_schematic, "object/tangible/loot/loot_schematic/shared_death_watch_drink_mandalorian_wine_schematic.iff")
@@ -1764,7 +1795,8 @@ object_tangible_loot_loot_schematic_shared_death_watch_executioners_hack_schemat
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2390933673
+	clientObjectCRC = 2390933673,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_loot_schematic_shared_death_watch_executioners_hack_schematic, "object/tangible/loot/loot_schematic/shared_death_watch_executioners_hack_schematic.iff")
@@ -1818,7 +1850,8 @@ object_tangible_loot_loot_schematic_shared_death_watch_mandalorian_belt_schemati
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3163168550
+	clientObjectCRC = 3163168550,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_loot_schematic_shared_death_watch_mandalorian_belt_schematic, "object/tangible/loot/loot_schematic/shared_death_watch_mandalorian_belt_schematic.iff")
@@ -1872,7 +1905,8 @@ object_tangible_loot_loot_schematic_shared_death_watch_mandalorian_bicep_l_schem
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3952203976
+	clientObjectCRC = 3952203976,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_loot_schematic_shared_death_watch_mandalorian_bicep_l_schematic, "object/tangible/loot/loot_schematic/shared_death_watch_mandalorian_bicep_l_schematic.iff")
@@ -1926,7 +1960,8 @@ object_tangible_loot_loot_schematic_shared_death_watch_mandalorian_bicep_r_schem
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1073312603
+	clientObjectCRC = 1073312603,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_loot_schematic_shared_death_watch_mandalorian_bicep_r_schematic, "object/tangible/loot/loot_schematic/shared_death_watch_mandalorian_bicep_r_schematic.iff")
@@ -1980,7 +2015,8 @@ object_tangible_loot_loot_schematic_shared_death_watch_mandalorian_boots_schemat
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4294515772
+	clientObjectCRC = 4294515772,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_loot_schematic_shared_death_watch_mandalorian_boots_schematic, "object/tangible/loot/loot_schematic/shared_death_watch_mandalorian_boots_schematic.iff")
@@ -2034,7 +2070,8 @@ object_tangible_loot_loot_schematic_shared_death_watch_mandalorian_bracer_l_sche
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 834256381
+	clientObjectCRC = 834256381,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_loot_schematic_shared_death_watch_mandalorian_bracer_l_schematic, "object/tangible/loot/loot_schematic/shared_death_watch_mandalorian_bracer_l_schematic.iff")
@@ -2088,7 +2125,8 @@ object_tangible_loot_loot_schematic_shared_death_watch_mandalorian_bracer_r_sche
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3855685230
+	clientObjectCRC = 3855685230,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_loot_schematic_shared_death_watch_mandalorian_bracer_r_schematic, "object/tangible/loot/loot_schematic/shared_death_watch_mandalorian_bracer_r_schematic.iff")
@@ -2142,7 +2180,8 @@ object_tangible_loot_loot_schematic_shared_death_watch_mandalorian_chest_plate_s
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2354501114
+	clientObjectCRC = 2354501114,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_loot_schematic_shared_death_watch_mandalorian_chest_plate_schematic, "object/tangible/loot/loot_schematic/shared_death_watch_mandalorian_chest_plate_schematic.iff")
@@ -2196,7 +2235,8 @@ object_tangible_loot_loot_schematic_shared_death_watch_mandalorian_gloves_schema
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1437890513
+	clientObjectCRC = 1437890513,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_loot_schematic_shared_death_watch_mandalorian_gloves_schematic, "object/tangible/loot/loot_schematic/shared_death_watch_mandalorian_gloves_schematic.iff")
@@ -2250,7 +2290,8 @@ object_tangible_loot_loot_schematic_shared_death_watch_mandalorian_helmet_schema
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1165056533
+	clientObjectCRC = 1165056533,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_loot_schematic_shared_death_watch_mandalorian_helmet_schematic, "object/tangible/loot/loot_schematic/shared_death_watch_mandalorian_helmet_schematic.iff")
@@ -2304,7 +2345,8 @@ object_tangible_loot_loot_schematic_shared_death_watch_mandalorian_jetpack_schem
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 571889949
+	clientObjectCRC = 571889949,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_loot_schematic_shared_death_watch_mandalorian_jetpack_schematic, "object/tangible/loot/loot_schematic/shared_death_watch_mandalorian_jetpack_schematic.iff")
@@ -2358,7 +2400,8 @@ object_tangible_loot_loot_schematic_shared_death_watch_mandalorian_leggings_sche
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3555247298
+	clientObjectCRC = 3555247298,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_loot_schematic_shared_death_watch_mandalorian_leggings_schematic, "object/tangible/loot/loot_schematic/shared_death_watch_mandalorian_leggings_schematic.iff")
@@ -2412,7 +2455,8 @@ object_tangible_loot_loot_schematic_shared_death_watch_pistol_de10_schematic = S
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 44057344
+	clientObjectCRC = 44057344,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_loot_schematic_shared_death_watch_pistol_de10_schematic, "object/tangible/loot/loot_schematic/shared_death_watch_pistol_de10_schematic.iff")
@@ -2466,7 +2510,8 @@ object_tangible_loot_loot_schematic_shared_death_watch_razor_knuckler_schematic 
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 56986758
+	clientObjectCRC = 56986758,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_loot_schematic_shared_death_watch_razor_knuckler_schematic, "object/tangible/loot/loot_schematic/shared_death_watch_razor_knuckler_schematic.iff")
@@ -2520,7 +2565,8 @@ object_tangible_loot_loot_schematic_shared_diagnostic_screen_schematic = SharedT
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 74183997
+	clientObjectCRC = 74183997,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_loot_schematic_shared_diagnostic_screen_schematic, "object/tangible/loot/loot_schematic/shared_diagnostic_screen_schematic.iff")
@@ -2574,7 +2620,8 @@ object_tangible_loot_loot_schematic_shared_droid_body_schematic = SharedTangible
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3014709176
+	clientObjectCRC = 3014709176,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_loot_schematic_shared_droid_body_schematic, "object/tangible/loot/loot_schematic/shared_droid_body_schematic.iff")
@@ -2628,7 +2675,8 @@ object_tangible_loot_loot_schematic_shared_droid_head_schematic = SharedTangible
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 443254179
+	clientObjectCRC = 443254179,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_loot_schematic_shared_droid_head_schematic, "object/tangible/loot/loot_schematic/shared_droid_head_schematic.iff")
@@ -2682,7 +2730,8 @@ object_tangible_loot_loot_schematic_shared_elegant_cabinet_schematic = SharedTan
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1275187305
+	clientObjectCRC = 1275187305,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_loot_schematic_shared_elegant_cabinet_schematic, "object/tangible/loot/loot_schematic/shared_elegant_cabinet_schematic.iff")
@@ -2736,7 +2785,8 @@ object_tangible_loot_loot_schematic_shared_flora_recycler_schematic = SharedTang
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1892700204
+	clientObjectCRC = 1892700204,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_loot_schematic_shared_flora_recycler_schematic, "object/tangible/loot/loot_schematic/shared_flora_recycler_schematic.iff")
@@ -2790,7 +2840,8 @@ object_tangible_loot_loot_schematic_shared_foodcart_schematic = SharedTangibleOb
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4233888471
+	clientObjectCRC = 4233888471,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_loot_schematic_shared_foodcart_schematic, "object/tangible/loot/loot_schematic/shared_foodcart_schematic.iff")
@@ -2844,7 +2895,8 @@ object_tangible_loot_loot_schematic_shared_gambling_table_schematic = SharedTang
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 131416383
+	clientObjectCRC = 131416383,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_loot_schematic_shared_gambling_table_schematic, "object/tangible/loot/loot_schematic/shared_gambling_table_schematic.iff")
@@ -2898,7 +2950,8 @@ object_tangible_loot_loot_schematic_shared_geonosian_acklay_bone_armor_schematic
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3869697913
+	clientObjectCRC = 3869697913,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_loot_schematic_shared_geonosian_acklay_bone_armor_schematic, "object/tangible/loot/loot_schematic/shared_geonosian_acklay_bone_armor_schematic.iff")
@@ -2952,7 +3005,8 @@ object_tangible_loot_loot_schematic_shared_geonosian_acklay_muscle_armor_schemat
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1435106538
+	clientObjectCRC = 1435106538,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_loot_schematic_shared_geonosian_acklay_muscle_armor_schematic, "object/tangible/loot/loot_schematic/shared_geonosian_acklay_muscle_armor_schematic.iff")
@@ -3006,7 +3060,8 @@ object_tangible_loot_loot_schematic_shared_geonosian_reinforcement_core_schemati
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2842219763
+	clientObjectCRC = 2842219763,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_loot_schematic_shared_geonosian_reinforcement_core_schematic, "object/tangible/loot/loot_schematic/shared_geonosian_reinforcement_core_schematic.iff")
@@ -3060,7 +3115,8 @@ object_tangible_loot_loot_schematic_shared_geonosian_sonic_blaster_schematic = S
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3191519467
+	clientObjectCRC = 3191519467,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_loot_schematic_shared_geonosian_sonic_blaster_schematic, "object/tangible/loot/loot_schematic/shared_geonosian_sonic_blaster_schematic.iff")
@@ -3114,7 +3170,8 @@ object_tangible_loot_loot_schematic_shared_geonosian_sword_core_schematic = Shar
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2133560437
+	clientObjectCRC = 2133560437,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_loot_schematic_shared_geonosian_sword_core_schematic, "object/tangible/loot/loot_schematic/shared_geonosian_sword_core_schematic.iff")
@@ -3168,7 +3225,8 @@ object_tangible_loot_loot_schematic_shared_geonosian_tenloss_dxr6_schematic = Sh
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 910955791
+	clientObjectCRC = 910955791,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_loot_schematic_shared_geonosian_tenloss_dxr6_schematic, "object/tangible/loot/loot_schematic/shared_geonosian_tenloss_dxr6_schematic.iff")
@@ -3222,7 +3280,8 @@ object_tangible_loot_loot_schematic_shared_hanging_planter_schematic = SharedTan
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1451271511
+	clientObjectCRC = 1451271511,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_loot_schematic_shared_hanging_planter_schematic, "object/tangible/loot/loot_schematic/shared_hanging_planter_schematic.iff")
@@ -3276,7 +3335,8 @@ object_tangible_loot_loot_schematic_shared_metal_recycler_schematic = SharedTang
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 138305507
+	clientObjectCRC = 138305507,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_loot_schematic_shared_metal_recycler_schematic, "object/tangible/loot/loot_schematic/shared_metal_recycler_schematic.iff")
@@ -3330,7 +3390,8 @@ object_tangible_loot_loot_schematic_shared_microphone_s01_schematic = SharedTang
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 620571036
+	clientObjectCRC = 620571036,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_loot_schematic_shared_microphone_s01_schematic, "object/tangible/loot/loot_schematic/shared_microphone_s01_schematic.iff")
@@ -3384,7 +3445,8 @@ object_tangible_loot_loot_schematic_shared_microphone_s02_schematic = SharedTang
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1194071997
+	clientObjectCRC = 1194071997,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_loot_schematic_shared_microphone_s02_schematic, "object/tangible/loot/loot_schematic/shared_microphone_s02_schematic.iff")
@@ -3438,7 +3500,8 @@ object_tangible_loot_loot_schematic_shared_ore_recycler_schematic = SharedTangib
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2736953476
+	clientObjectCRC = 2736953476,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_loot_schematic_shared_ore_recycler_schematic, "object/tangible/loot/loot_schematic/shared_ore_recycler_schematic.iff")
@@ -3492,7 +3555,8 @@ object_tangible_loot_loot_schematic_shared_park_bench_schematic = SharedTangible
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 385386900
+	clientObjectCRC = 385386900,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_loot_schematic_shared_park_bench_schematic, "object/tangible/loot/loot_schematic/shared_park_bench_schematic.iff")
@@ -3546,7 +3610,8 @@ object_tangible_loot_loot_schematic_shared_pitcher_full_schematic = SharedTangib
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4049237306
+	clientObjectCRC = 4049237306,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_loot_schematic_shared_pitcher_full_schematic, "object/tangible/loot/loot_schematic/shared_pitcher_full_schematic.iff")
@@ -3600,7 +3665,8 @@ object_tangible_loot_loot_schematic_shared_professors_desk_schematic = SharedTan
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2780825325
+	clientObjectCRC = 2780825325,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_loot_schematic_shared_professors_desk_schematic, "object/tangible/loot/loot_schematic/shared_professors_desk_schematic.iff")
@@ -3654,7 +3720,8 @@ object_tangible_loot_loot_schematic_shared_radar_screen_schematic = SharedTangib
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1601376740
+	clientObjectCRC = 1601376740,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_loot_schematic_shared_radar_screen_schematic, "object/tangible/loot/loot_schematic/shared_radar_screen_schematic.iff")
@@ -3708,7 +3775,8 @@ object_tangible_loot_loot_schematic_shared_radio_schematic = SharedTangibleObjec
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4283977315
+	clientObjectCRC = 4283977315,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_loot_schematic_shared_radio_schematic, "object/tangible/loot/loot_schematic/shared_radio_schematic.iff")
@@ -3762,7 +3830,8 @@ object_tangible_loot_loot_schematic_shared_shisa_schematic = SharedTangibleObjec
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2074723143
+	clientObjectCRC = 2074723143,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_loot_schematic_shared_shisa_schematic, "object/tangible/loot/loot_schematic/shared_shisa_schematic.iff")
@@ -3816,7 +3885,8 @@ object_tangible_loot_loot_schematic_shared_slave_brazier_schematic = SharedTangi
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4016619674
+	clientObjectCRC = 4016619674,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_loot_schematic_shared_slave_brazier_schematic, "object/tangible/loot/loot_schematic/shared_slave_brazier_schematic.iff")
@@ -3870,7 +3940,8 @@ object_tangible_loot_loot_schematic_shared_spear_rack_schematic = SharedTangible
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2882303083
+	clientObjectCRC = 2882303083,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_loot_schematic_shared_spear_rack_schematic, "object/tangible/loot/loot_schematic/shared_spear_rack_schematic.iff")
@@ -3924,7 +3995,8 @@ object_tangible_loot_loot_schematic_shared_stove_schematic = SharedTangibleObjec
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3338971500
+	clientObjectCRC = 3338971500,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_loot_schematic_shared_stove_schematic, "object/tangible/loot/loot_schematic/shared_stove_schematic.iff")
@@ -3978,7 +4050,8 @@ object_tangible_loot_loot_schematic_shared_streetlamp_schematic = SharedTangible
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2023724464
+	clientObjectCRC = 2023724464,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_loot_schematic_shared_streetlamp_schematic, "object/tangible/loot/loot_schematic/shared_streetlamp_schematic.iff")
@@ -4032,7 +4105,8 @@ object_tangible_loot_loot_schematic_shared_stuffed_fish_schematic = SharedTangib
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 46984344
+	clientObjectCRC = 46984344,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_loot_schematic_shared_stuffed_fish_schematic, "object/tangible/loot/loot_schematic/shared_stuffed_fish_schematic.iff")
@@ -4086,7 +4160,8 @@ object_tangible_loot_loot_schematic_shared_table_coffee_modern_schematic = Share
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1657163664
+	clientObjectCRC = 1657163664,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_loot_schematic_shared_table_coffee_modern_schematic, "object/tangible/loot/loot_schematic/shared_table_coffee_modern_schematic.iff")
@@ -4140,7 +4215,8 @@ object_tangible_loot_loot_schematic_shared_tanning_hide_s01_schematic = SharedTa
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 189791805
+	clientObjectCRC = 189791805,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_loot_schematic_shared_tanning_hide_s01_schematic, "object/tangible/loot/loot_schematic/shared_tanning_hide_s01_schematic.iff")
@@ -4194,7 +4270,8 @@ object_tangible_loot_loot_schematic_shared_tanning_hide_s02_schematic = SharedTa
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1755234332
+	clientObjectCRC = 1755234332,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_loot_schematic_shared_tanning_hide_s02_schematic, "object/tangible/loot/loot_schematic/shared_tanning_hide_s02_schematic.iff")
@@ -4248,7 +4325,8 @@ object_tangible_loot_loot_schematic_shared_tatooine_tapestry_schematic = SharedT
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1445555733
+	clientObjectCRC = 1445555733,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_loot_schematic_shared_tatooine_tapestry_schematic, "object/tangible/loot/loot_schematic/shared_tatooine_tapestry_schematic.iff")
@@ -4302,7 +4380,8 @@ object_tangible_loot_loot_schematic_shared_technical_console_s01_schematic = Sha
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 911123298
+	clientObjectCRC = 911123298,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_loot_schematic_shared_technical_console_s01_schematic, "object/tangible/loot/loot_schematic/shared_technical_console_s01_schematic.iff")
@@ -4356,7 +4435,8 @@ object_tangible_loot_loot_schematic_shared_technical_console_s02_schematic = Sha
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1436523843
+	clientObjectCRC = 1436523843,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_loot_schematic_shared_technical_console_s02_schematic, "object/tangible/loot/loot_schematic/shared_technical_console_s02_schematic.iff")
@@ -4410,7 +4490,8 @@ object_tangible_loot_loot_schematic_shared_throwpillow_schematic = SharedTangibl
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3095520200
+	clientObjectCRC = 3095520200,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_loot_schematic_shared_throwpillow_schematic, "object/tangible/loot/loot_schematic/shared_throwpillow_schematic.iff")
@@ -4464,7 +4545,8 @@ object_tangible_loot_loot_schematic_shared_tumble_blender_schematic = SharedTang
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2145052130
+	clientObjectCRC = 2145052130,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_loot_schematic_shared_tumble_blender_schematic, "object/tangible/loot/loot_schematic/shared_tumble_blender_schematic.iff")
@@ -4518,7 +4600,8 @@ object_tangible_loot_loot_schematic_shared_utensils_schematic = SharedTangibleOb
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2313370154
+	clientObjectCRC = 2313370154,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_loot_schematic_shared_utensils_schematic, "object/tangible/loot/loot_schematic/shared_utensils_schematic.iff")

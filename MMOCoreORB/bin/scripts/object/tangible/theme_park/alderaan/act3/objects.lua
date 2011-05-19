@@ -90,7 +90,8 @@ object_tangible_theme_park_alderaan_act3_shared_alderaan_flora = SharedTangibleO
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4208054945
+	clientObjectCRC = 4208054945,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_theme_park_alderaan_act3_shared_alderaan_flora, "object/tangible/theme_park/alderaan/act3/shared_alderaan_flora.iff")
@@ -144,7 +145,8 @@ object_tangible_theme_park_alderaan_act3_shared_broken_grav_unit = SharedTangibl
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1332386213
+	clientObjectCRC = 1332386213,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_theme_park_alderaan_act3_shared_broken_grav_unit, "object/tangible/theme_park/alderaan/act3/shared_broken_grav_unit.iff")
@@ -198,7 +200,8 @@ object_tangible_theme_park_alderaan_act3_shared_dead_eye_prototype = SharedTangi
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2963865200
+	clientObjectCRC = 2963865200,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_theme_park_alderaan_act3_shared_dead_eye_prototype, "object/tangible/theme_park/alderaan/act3/shared_dead_eye_prototype.iff")
@@ -252,7 +255,8 @@ object_tangible_theme_park_alderaan_act3_shared_encoded_data_disk = SharedTangib
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3516039098
+	clientObjectCRC = 3516039098,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_theme_park_alderaan_act3_shared_encoded_data_disk, "object/tangible/theme_park/alderaan/act3/shared_encoded_data_disk.iff")
@@ -306,7 +310,8 @@ object_tangible_theme_park_alderaan_act3_shared_grav_unit_repair_kit = SharedTan
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3076162697
+	clientObjectCRC = 3076162697,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_theme_park_alderaan_act3_shared_grav_unit_repair_kit, "object/tangible/theme_park/alderaan/act3/shared_grav_unit_repair_kit.iff")
@@ -360,7 +365,8 @@ object_tangible_theme_park_alderaan_act3_shared_repaired_grav_unit = SharedTangi
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1247686243
+	clientObjectCRC = 1247686243,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_theme_park_alderaan_act3_shared_repaired_grav_unit, "object/tangible/theme_park/alderaan/act3/shared_repaired_grav_unit.iff")
@@ -404,7 +410,8 @@ object_tangible_theme_park_alderaan_act3_shared_research_facility = SharedStatic
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 843852525
+	clientObjectCRC = 843852525,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_theme_park_alderaan_act3_shared_research_facility, "object/tangible/theme_park/alderaan/act3/shared_research_facility.iff")

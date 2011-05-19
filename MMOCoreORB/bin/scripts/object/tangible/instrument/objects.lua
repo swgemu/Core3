@@ -90,7 +90,8 @@ object_tangible_instrument_shared_bandfill = SharedTangibleObjectTemplate:new {
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 838757271
+	clientObjectCRC = 838757271,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/instrument/base/shared_instrument_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_instrument_shared_bandfill, "object/tangible/instrument/shared_bandfill.iff")
@@ -144,7 +145,8 @@ object_tangible_instrument_shared_fanfar = SharedTangibleObjectTemplate:new {
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2024043623
+	clientObjectCRC = 2024043623,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/instrument/base/shared_instrument_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_instrument_shared_fanfar, "object/tangible/instrument/shared_fanfar.iff")
@@ -198,7 +200,8 @@ object_tangible_instrument_shared_fizz = SharedTangibleObjectTemplate:new {
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 197364379
+	clientObjectCRC = 197364379,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/instrument/base/shared_instrument_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_instrument_shared_fizz, "object/tangible/instrument/shared_fizz.iff")
@@ -252,7 +255,8 @@ object_tangible_instrument_shared_flute_droopy = SharedTangibleObjectTemplate:ne
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1186559398
+	clientObjectCRC = 1186559398,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/instrument/base/shared_instrument_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_instrument_shared_flute_droopy, "object/tangible/instrument/shared_flute_droopy.iff")
@@ -306,7 +310,8 @@ object_tangible_instrument_shared_instrument_organ_figrin_dan = SharedTangibleOb
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2221793724
+	clientObjectCRC = 2221793724,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/instrument/base/shared_instrument_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_instrument_shared_instrument_organ_figrin_dan, "object/tangible/instrument/shared_instrument_organ_figrin_dan.iff")
@@ -360,7 +365,8 @@ object_tangible_instrument_shared_instrument_organ_max_rebo = SharedTangibleObje
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3369165758
+	clientObjectCRC = 3369165758,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/instrument/base/shared_instrument_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_instrument_shared_instrument_organ_max_rebo, "object/tangible/instrument/shared_instrument_organ_max_rebo.iff")
@@ -414,7 +420,8 @@ object_tangible_instrument_shared_kloo_horn = SharedTangibleObjectTemplate:new {
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4261135292
+	clientObjectCRC = 4261135292,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/instrument/base/shared_instrument_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_instrument_shared_kloo_horn, "object/tangible/instrument/shared_kloo_horn.iff")
@@ -468,7 +475,8 @@ object_tangible_instrument_shared_mandoviol = SharedTangibleObjectTemplate:new {
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1784205003
+	clientObjectCRC = 1784205003,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/instrument/base/shared_instrument_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_instrument_shared_mandoviol, "object/tangible/instrument/shared_mandoviol.iff")
@@ -522,7 +530,8 @@ object_tangible_instrument_shared_nalargon = SharedTangibleObjectTemplate:new {
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2412019728
+	clientObjectCRC = 2412019728,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/instrument/base/shared_instrument_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_instrument_shared_nalargon, "object/tangible/instrument/shared_nalargon.iff")
@@ -576,7 +585,8 @@ object_tangible_instrument_shared_ommni_box = SharedTangibleObjectTemplate:new {
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2010287603
+	clientObjectCRC = 2010287603,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/instrument/base/shared_instrument_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_instrument_shared_ommni_box, "object/tangible/instrument/shared_ommni_box.iff")
@@ -630,7 +640,8 @@ object_tangible_instrument_shared_organ_max_rebo = SharedTangibleObjectTemplate:
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1225824678
+	clientObjectCRC = 1225824678,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/instrument/base/shared_instrument_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_instrument_shared_organ_max_rebo, "object/tangible/instrument/shared_organ_max_rebo.iff")
@@ -684,7 +695,8 @@ object_tangible_instrument_shared_slitherhorn = SharedTangibleObjectTemplate:new
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3533891079
+	clientObjectCRC = 3533891079,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/instrument/base/shared_instrument_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_instrument_shared_slitherhorn, "object/tangible/instrument/shared_slitherhorn.iff")
@@ -738,7 +750,8 @@ object_tangible_instrument_shared_traz = SharedTangibleObjectTemplate:new {
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 395515554
+	clientObjectCRC = 395515554,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/instrument/base/shared_instrument_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_instrument_shared_traz, "object/tangible/instrument/shared_traz.iff")

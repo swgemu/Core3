@@ -90,7 +90,8 @@ object_tangible_lair_woolamander_shared_lair_woolamander = SharedTangibleObjectT
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2207514475
+	clientObjectCRC = 2207514475,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_woolamander_shared_lair_woolamander, "object/tangible/lair/woolamander/shared_lair_woolamander.iff")
@@ -144,7 +145,8 @@ object_tangible_lair_woolamander_shared_lair_woolamander_jungle = SharedTangible
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2613243319
+	clientObjectCRC = 2613243319,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_woolamander_shared_lair_woolamander_jungle, "object/tangible/lair/woolamander/shared_lair_woolamander_jungle.iff")

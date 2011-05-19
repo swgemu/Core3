@@ -90,7 +90,8 @@ object_tangible_lair_kittle_shared_lair_kittle = SharedTangibleObjectTemplate:ne
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4291838693
+	clientObjectCRC = 4291838693,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_kittle_shared_lair_kittle, "object/tangible/lair/kittle/shared_lair_kittle.iff")
@@ -144,7 +145,8 @@ object_tangible_lair_kittle_shared_lair_kittle_forest = SharedTangibleObjectTemp
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2947041437
+	clientObjectCRC = 2947041437,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_kittle_shared_lair_kittle_forest, "object/tangible/lair/kittle/shared_lair_kittle_forest.iff")
@@ -198,7 +200,8 @@ object_tangible_lair_kittle_shared_lair_kittle_grassland = SharedTangibleObjectT
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4088792736
+	clientObjectCRC = 4088792736,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_kittle_shared_lair_kittle_grassland, "object/tangible/lair/kittle/shared_lair_kittle_grassland.iff")

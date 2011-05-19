@@ -90,7 +90,8 @@ object_tangible_wearables_armor_stormtrooper_shared_armor_stormtrooper_bicep_l =
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1002440220
+	clientObjectCRC = 1002440220,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_armor_base.iff", "object/tangible/wearables/base/shared_base_bicep_l.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_stormtrooper_shared_armor_stormtrooper_bicep_l, "object/tangible/wearables/armor/stormtrooper/shared_armor_stormtrooper_bicep_l.iff")
@@ -144,7 +145,8 @@ object_tangible_wearables_armor_stormtrooper_shared_armor_stormtrooper_bicep_r =
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1259684751
+	clientObjectCRC = 1259684751,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_armor_base.iff", "object/tangible/wearables/base/shared_base_bicep_r.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_stormtrooper_shared_armor_stormtrooper_bicep_r, "object/tangible/wearables/armor/stormtrooper/shared_armor_stormtrooper_bicep_r.iff")
@@ -198,7 +200,8 @@ object_tangible_wearables_armor_stormtrooper_shared_armor_stormtrooper_boots = S
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2016668118
+	clientObjectCRC = 2016668118,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_shoes.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_stormtrooper_shared_armor_stormtrooper_boots, "object/tangible/wearables/armor/stormtrooper/shared_armor_stormtrooper_boots.iff")
@@ -252,7 +255,8 @@ object_tangible_wearables_armor_stormtrooper_shared_armor_stormtrooper_bracer_l 
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2538033013
+	clientObjectCRC = 2538033013,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_armor_base.iff", "object/tangible/wearables/base/shared_base_bracer_l.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_stormtrooper_shared_armor_stormtrooper_bracer_l, "object/tangible/wearables/armor/stormtrooper/shared_armor_stormtrooper_bracer_l.iff")
@@ -306,7 +310,8 @@ object_tangible_wearables_armor_stormtrooper_shared_armor_stormtrooper_bracer_r 
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3885107942
+	clientObjectCRC = 3885107942,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_armor_base.iff", "object/tangible/wearables/base/shared_base_bracer_r.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_stormtrooper_shared_armor_stormtrooper_bracer_r, "object/tangible/wearables/armor/stormtrooper/shared_armor_stormtrooper_bracer_r.iff")
@@ -360,7 +365,8 @@ object_tangible_wearables_armor_stormtrooper_shared_armor_stormtrooper_chest_pla
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 253917454
+	clientObjectCRC = 253917454,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_vest.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_stormtrooper_shared_armor_stormtrooper_chest_plate, "object/tangible/wearables/armor/stormtrooper/shared_armor_stormtrooper_chest_plate.iff")
@@ -414,7 +420,8 @@ object_tangible_wearables_armor_stormtrooper_shared_armor_stormtrooper_chest_pla
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1122862762
+	clientObjectCRC = 1122862762,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_vest.iff", "object/tangible/wearables/armor/stormtrooper/shared_armor_stormtrooper_chest_plate.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_stormtrooper_shared_armor_stormtrooper_chest_plate_quest, "object/tangible/wearables/armor/stormtrooper/shared_armor_stormtrooper_chest_plate_quest.iff")
@@ -468,7 +475,8 @@ object_tangible_wearables_armor_stormtrooper_shared_armor_stormtrooper_gloves = 
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1918468725
+	clientObjectCRC = 1918468725,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_armor_base.iff", "object/tangible/wearables/base/shared_base_gauntlets.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_stormtrooper_shared_armor_stormtrooper_gloves, "object/tangible/wearables/armor/stormtrooper/shared_armor_stormtrooper_gloves.iff")
@@ -522,7 +530,8 @@ object_tangible_wearables_armor_stormtrooper_shared_armor_stormtrooper_helmet = 
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3298386813
+	clientObjectCRC = 3298386813,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_armor_base.iff", "object/tangible/wearables/base/shared_base_helmet_closed_full.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_stormtrooper_shared_armor_stormtrooper_helmet, "object/tangible/wearables/armor/stormtrooper/shared_armor_stormtrooper_helmet.iff")
@@ -576,7 +585,8 @@ object_tangible_wearables_armor_stormtrooper_shared_armor_stormtrooper_helmet_qu
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 880764068
+	clientObjectCRC = 880764068,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_armor_base.iff", "object/tangible/wearables/base/shared_base_helmet_closed_full.iff", "object/tangible/wearables/armor/stormtrooper/shared_armor_stormtrooper_helmet.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_stormtrooper_shared_armor_stormtrooper_helmet_quest, "object/tangible/wearables/armor/stormtrooper/shared_armor_stormtrooper_helmet_quest.iff")
@@ -630,7 +640,8 @@ object_tangible_wearables_armor_stormtrooper_shared_armor_stormtrooper_leggings 
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 409178730
+	clientObjectCRC = 409178730,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_skirt.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_stormtrooper_shared_armor_stormtrooper_leggings, "object/tangible/wearables/armor/stormtrooper/shared_armor_stormtrooper_leggings.iff")
@@ -684,7 +695,8 @@ object_tangible_wearables_armor_stormtrooper_shared_armor_stormtrooper_leggings_
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3027159239
+	clientObjectCRC = 3027159239,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_skirt.iff", "object/tangible/wearables/armor/stormtrooper/shared_armor_stormtrooper_leggings.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_stormtrooper_shared_armor_stormtrooper_leggings_quest, "object/tangible/wearables/armor/stormtrooper/shared_armor_stormtrooper_leggings_quest.iff")
@@ -738,7 +750,8 @@ object_tangible_wearables_armor_stormtrooper_shared_armor_stormtrooper_utility_b
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1212660794
+	clientObjectCRC = 1212660794,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_belt.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_stormtrooper_shared_armor_stormtrooper_utility_belt, "object/tangible/wearables/armor/stormtrooper/shared_armor_stormtrooper_utility_belt.iff")

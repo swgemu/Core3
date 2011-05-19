@@ -90,7 +90,8 @@ object_tangible_space_mission_objects_shared_palace_access_doc = SharedTangibleO
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1578605257
+	clientObjectCRC = 1578605257,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_space_mission_objects_shared_palace_access_doc, "object/tangible/space/mission_objects/shared_palace_access_doc.iff")
@@ -144,7 +145,8 @@ object_tangible_space_mission_objects_shared_transfer_auth = SharedTangibleObjec
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1004695364
+	clientObjectCRC = 1004695364,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_space_mission_objects_shared_transfer_auth, "object/tangible/space/mission_objects/shared_transfer_auth.iff")

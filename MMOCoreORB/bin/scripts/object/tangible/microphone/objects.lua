@@ -90,7 +90,8 @@ object_tangible_microphone_shared_microphone = SharedTangibleObjectTemplate:new 
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1744278717
+	clientObjectCRC = 1744278717,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_microphone_shared_microphone, "object/tangible/microphone/shared_microphone.iff")

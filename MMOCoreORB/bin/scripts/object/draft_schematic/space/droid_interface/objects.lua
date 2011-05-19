@@ -80,7 +80,8 @@ object_draft_schematic_space_droid_interface_shared_basic_droid_interface = Shar
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3067045132
+	clientObjectCRC = 3067045132,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_droid_interface_shared_basic_droid_interface, "object/draft_schematic/space/droid_interface/shared_basic_droid_interface.iff")
@@ -124,7 +125,8 @@ object_draft_schematic_space_droid_interface_shared_ddi_mk1 = SharedDraftSchemat
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3260211482
+	clientObjectCRC = 3260211482,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_droid_interface_shared_ddi_mk1, "object/draft_schematic/space/droid_interface/shared_ddi_mk1.iff")
@@ -168,7 +170,8 @@ object_draft_schematic_space_droid_interface_shared_ddi_mk2 = SharedDraftSchemat
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 423971213
+	clientObjectCRC = 423971213,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_droid_interface_shared_ddi_mk2, "object/draft_schematic/space/droid_interface/shared_ddi_mk2.iff")
@@ -212,7 +215,8 @@ object_draft_schematic_space_droid_interface_shared_ddi_mk3 = SharedDraftSchemat
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1346907648
+	clientObjectCRC = 1346907648,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_droid_interface_shared_ddi_mk3, "object/draft_schematic/space/droid_interface/shared_ddi_mk3.iff")
@@ -256,7 +260,8 @@ object_draft_schematic_space_droid_interface_shared_ddi_mk4 = SharedDraftSchemat
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2880111892
+	clientObjectCRC = 2880111892,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_droid_interface_shared_ddi_mk4, "object/draft_schematic/space/droid_interface/shared_ddi_mk4.iff")
@@ -300,7 +305,8 @@ object_draft_schematic_space_droid_interface_shared_ddi_mk5 = SharedDraftSchemat
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3802555033
+	clientObjectCRC = 3802555033,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_droid_interface_shared_ddi_mk5, "object/draft_schematic/space/droid_interface/shared_ddi_mk5.iff")
@@ -344,7 +350,8 @@ object_draft_schematic_space_droid_interface_shared_droid_brain_upgrade_mk1 = Sh
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 4028213100
+	clientObjectCRC = 4028213100,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_droid_interface_shared_droid_brain_upgrade_mk1, "object/draft_schematic/space/droid_interface/shared_droid_brain_upgrade_mk1.iff")
@@ -388,7 +395,8 @@ object_draft_schematic_space_droid_interface_shared_droid_brain_upgrade_mk2 = Sh
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 722341883
+	clientObjectCRC = 722341883,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_droid_interface_shared_droid_brain_upgrade_mk2, "object/draft_schematic/space/droid_interface/shared_droid_brain_upgrade_mk2.iff")
@@ -432,7 +440,8 @@ object_draft_schematic_space_droid_interface_shared_droid_brain_upgrade_mk3 = Sh
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1644390518
+	clientObjectCRC = 1644390518,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_droid_interface_shared_droid_brain_upgrade_mk3, "object/draft_schematic/space/droid_interface/shared_droid_brain_upgrade_mk3.iff")
@@ -476,7 +485,8 @@ object_draft_schematic_space_droid_interface_shared_droid_brain_upgrade_mk4 = Sh
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2581611362
+	clientObjectCRC = 2581611362,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_droid_interface_shared_droid_brain_upgrade_mk4, "object/draft_schematic/space/droid_interface/shared_droid_brain_upgrade_mk4.iff")
@@ -520,7 +530,8 @@ object_draft_schematic_space_droid_interface_shared_droid_brain_upgrade_mk5 = Sh
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3505202415
+	clientObjectCRC = 3505202415,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_droid_interface_shared_droid_brain_upgrade_mk5, "object/draft_schematic/space/droid_interface/shared_droid_brain_upgrade_mk5.iff")
@@ -564,7 +575,8 @@ object_draft_schematic_space_droid_interface_shared_maintenance_reduction_kit_mk
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3536617726
+	clientObjectCRC = 3536617726,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_droid_interface_shared_maintenance_reduction_kit_mk1, "object/draft_schematic/space/droid_interface/shared_maintenance_reduction_kit_mk1.iff")
@@ -608,7 +620,8 @@ object_draft_schematic_space_droid_interface_shared_maintenance_reduction_kit_mk
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 165357673
+	clientObjectCRC = 165357673,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_droid_interface_shared_maintenance_reduction_kit_mk2, "object/draft_schematic/space/droid_interface/shared_maintenance_reduction_kit_mk2.iff")
@@ -652,7 +665,8 @@ object_draft_schematic_space_droid_interface_shared_maintenance_reduction_kit_mk
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1087786980
+	clientObjectCRC = 1087786980,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_droid_interface_shared_maintenance_reduction_kit_mk3, "object/draft_schematic/space/droid_interface/shared_maintenance_reduction_kit_mk3.iff")
@@ -696,7 +710,8 @@ object_draft_schematic_space_droid_interface_shared_maintenance_reduction_kit_mk
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3140838640
+	clientObjectCRC = 3140838640,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_droid_interface_shared_maintenance_reduction_kit_mk4, "object/draft_schematic/space/droid_interface/shared_maintenance_reduction_kit_mk4.iff")
@@ -740,7 +755,8 @@ object_draft_schematic_space_droid_interface_shared_maintenance_reduction_kit_mk
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 4063757181
+	clientObjectCRC = 4063757181,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_droid_interface_shared_maintenance_reduction_kit_mk5, "object/draft_schematic/space/droid_interface/shared_maintenance_reduction_kit_mk5.iff")

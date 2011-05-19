@@ -90,7 +90,8 @@ object_installation_mining_gas_shared_mining_gas_harvester_style_1 = SharedInsta
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3446200775
+	clientObjectCRC = 3446200775,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff", "object/installation/mining_gas/base/shared_mining_gas_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_installation_mining_gas_shared_mining_gas_harvester_style_1, "object/installation/mining_gas/shared_mining_gas_harvester_style_1.iff")
@@ -144,7 +145,8 @@ object_installation_mining_gas_shared_mining_gas_harvester_style_2 = SharedInsta
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 377450832
+	clientObjectCRC = 377450832,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff", "object/installation/mining_gas/base/shared_mining_gas_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_installation_mining_gas_shared_mining_gas_harvester_style_2, "object/installation/mining_gas/shared_mining_gas_harvester_style_2.iff")
@@ -198,7 +200,8 @@ object_installation_mining_gas_shared_mining_gas_harvester_style_3 = SharedInsta
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1601312477
+	clientObjectCRC = 1601312477,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff", "object/installation/mining_gas/base/shared_mining_gas_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_installation_mining_gas_shared_mining_gas_harvester_style_3, "object/installation/mining_gas/shared_mining_gas_harvester_style_3.iff")

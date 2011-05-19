@@ -90,7 +90,8 @@ object_tangible_scout_camokit_shared_camokit_corellia = SharedTangibleObjectTemp
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2196629790
+	clientObjectCRC = 2196629790,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_scout_camokit_shared_camokit_corellia, "object/tangible/scout/camokit/shared_camokit_corellia.iff")
@@ -144,7 +145,8 @@ object_tangible_scout_camokit_shared_camokit_dantooine = SharedTangibleObjectTem
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1054553582
+	clientObjectCRC = 1054553582,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_scout_camokit_shared_camokit_dantooine, "object/tangible/scout/camokit/shared_camokit_dantooine.iff")
@@ -198,7 +200,8 @@ object_tangible_scout_camokit_shared_camokit_dathomir = SharedTangibleObjectTemp
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 372534846
+	clientObjectCRC = 372534846,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_scout_camokit_shared_camokit_dathomir, "object/tangible/scout/camokit/shared_camokit_dathomir.iff")
@@ -252,7 +255,8 @@ object_tangible_scout_camokit_shared_camokit_endor = SharedTangibleObjectTemplat
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2201297332
+	clientObjectCRC = 2201297332,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_scout_camokit_shared_camokit_endor, "object/tangible/scout/camokit/shared_camokit_endor.iff")
@@ -306,7 +310,8 @@ object_tangible_scout_camokit_shared_camokit_lok = SharedTangibleObjectTemplate:
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3919662514
+	clientObjectCRC = 3919662514,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_scout_camokit_shared_camokit_lok, "object/tangible/scout/camokit/shared_camokit_lok.iff")
@@ -360,7 +365,8 @@ object_tangible_scout_camokit_shared_camokit_naboo = SharedTangibleObjectTemplat
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1097832374
+	clientObjectCRC = 1097832374,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_scout_camokit_shared_camokit_naboo, "object/tangible/scout/camokit/shared_camokit_naboo.iff")
@@ -414,7 +420,8 @@ object_tangible_scout_camokit_shared_camokit_rori = SharedTangibleObjectTemplate
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2868366256
+	clientObjectCRC = 2868366256,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_scout_camokit_shared_camokit_rori, "object/tangible/scout/camokit/shared_camokit_rori.iff")
@@ -468,7 +475,8 @@ object_tangible_scout_camokit_shared_camokit_talus = SharedTangibleObjectTemplat
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1480450460
+	clientObjectCRC = 1480450460,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_scout_camokit_shared_camokit_talus, "object/tangible/scout/camokit/shared_camokit_talus.iff")
@@ -522,7 +530,8 @@ object_tangible_scout_camokit_shared_camokit_tatooine = SharedTangibleObjectTemp
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3199109249
+	clientObjectCRC = 3199109249,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_scout_camokit_shared_camokit_tatooine, "object/tangible/scout/camokit/shared_camokit_tatooine.iff")
@@ -576,7 +585,8 @@ object_tangible_scout_camokit_shared_camokit_yavin = SharedTangibleObjectTemplat
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1119412885
+	clientObjectCRC = 1119412885,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_scout_camokit_shared_camokit_yavin, "object/tangible/scout/camokit/shared_camokit_yavin.iff")

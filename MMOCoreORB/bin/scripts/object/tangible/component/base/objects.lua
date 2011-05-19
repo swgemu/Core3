@@ -90,7 +90,8 @@ object_tangible_component_base_shared_base_barrel = SharedTangibleObjectTemplate
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2531878022
+	clientObjectCRC = 2531878022,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_base_shared_base_barrel, "object/tangible/component/base/shared_base_barrel.iff")
@@ -144,7 +145,8 @@ object_tangible_component_base_shared_base_component = SharedTangibleObjectTempl
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2398764559
+	clientObjectCRC = 2398764559,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_base_shared_base_component, "object/tangible/component/base/shared_base_component.iff")
@@ -198,7 +200,8 @@ object_tangible_component_base_shared_base_dna_sample = SharedTangibleObjectTemp
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2106678290
+	clientObjectCRC = 2106678290,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_base_shared_base_dna_sample, "object/tangible/component/base/shared_base_dna_sample.iff")
@@ -252,7 +255,8 @@ object_tangible_component_base_shared_base_electronic_component = SharedTangible
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 77505063
+	clientObjectCRC = 77505063,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_base_shared_base_electronic_component, "object/tangible/component/base/shared_base_electronic_component.iff")
@@ -306,7 +310,8 @@ object_tangible_component_base_shared_base_food = SharedTangibleObjectTemplate:n
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3167521190
+	clientObjectCRC = 3167521190,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_base_shared_base_food, "object/tangible/component/base/shared_base_food.iff")

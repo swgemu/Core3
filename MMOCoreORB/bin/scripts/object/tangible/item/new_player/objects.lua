@@ -90,7 +90,8 @@ object_tangible_item_new_player_shared_new_player_cloning_coupon = SharedTangibl
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2459202861
+	clientObjectCRC = 2459202861,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_item_new_player_shared_new_player_cloning_coupon, "object/tangible/item/new_player/shared_new_player_cloning_coupon.iff")
@@ -144,7 +145,8 @@ object_tangible_item_new_player_shared_new_player_travel_coupon = SharedTangible
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 190401300
+	clientObjectCRC = 190401300,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_item_new_player_shared_new_player_travel_coupon, "object/tangible/item/new_player/shared_new_player_travel_coupon.iff")
@@ -198,7 +200,8 @@ object_tangible_item_new_player_shared_new_player_vehicle_coupon = SharedTangibl
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 835581820
+	clientObjectCRC = 835581820,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_item_new_player_shared_new_player_vehicle_coupon, "object/tangible/item/new_player/shared_new_player_vehicle_coupon.iff")

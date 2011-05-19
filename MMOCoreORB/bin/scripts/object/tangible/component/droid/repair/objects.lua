@@ -90,7 +90,8 @@ object_tangible_component_droid_repair_shared_capacitor_high_discharge = SharedT
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 475400384
+	clientObjectCRC = 475400384,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/droid/repair/shared_capacitor_low_discharge.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_droid_repair_shared_capacitor_high_discharge, "object/tangible/component/droid/repair/shared_capacitor_high_discharge.iff")
@@ -144,7 +145,8 @@ object_tangible_component_droid_repair_shared_capacitor_low_discharge = SharedTa
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3184279961
+	clientObjectCRC = 3184279961,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_droid_repair_shared_capacitor_low_discharge, "object/tangible/component/droid/repair/shared_capacitor_low_discharge.iff")
@@ -198,7 +200,8 @@ object_tangible_component_droid_repair_shared_diagnostic_circuit = SharedTangibl
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1770332803
+	clientObjectCRC = 1770332803,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_droid_repair_shared_diagnostic_circuit, "object/tangible/component/droid/repair/shared_diagnostic_circuit.iff")
@@ -252,7 +255,8 @@ object_tangible_component_droid_repair_shared_diagnostic_circuit_advanced = Shar
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1133144792
+	clientObjectCRC = 1133144792,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/droid/repair/shared_diagnostic_circuit.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_droid_repair_shared_diagnostic_circuit_advanced, "object/tangible/component/droid/repair/shared_diagnostic_circuit_advanced.iff")
@@ -306,7 +310,8 @@ object_tangible_component_droid_repair_shared_power_supply_redundant = SharedTan
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2336135433
+	clientObjectCRC = 2336135433,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_droid_repair_shared_power_supply_redundant, "object/tangible/component/droid/repair/shared_power_supply_redundant.iff")
@@ -360,7 +365,8 @@ object_tangible_component_droid_repair_shared_power_supply_redundant_advanced = 
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1755831948
+	clientObjectCRC = 1755831948,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/droid/repair/shared_power_supply_redundant.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_droid_repair_shared_power_supply_redundant_advanced, "object/tangible/component/droid/repair/shared_power_supply_redundant_advanced.iff")
@@ -414,7 +420,8 @@ object_tangible_component_droid_repair_shared_repair_unit_casing = SharedTangibl
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2421721438
+	clientObjectCRC = 2421721438,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_droid_repair_shared_repair_unit_casing, "object/tangible/component/droid/repair/shared_repair_unit_casing.iff")
@@ -468,7 +475,8 @@ object_tangible_component_droid_repair_shared_repair_unit_casing_advanced = Shar
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 295372848
+	clientObjectCRC = 295372848,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/droid/repair/shared_repair_unit_casing.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_droid_repair_shared_repair_unit_casing_advanced, "object/tangible/component/droid/repair/shared_repair_unit_casing_advanced.iff")
@@ -522,7 +530,8 @@ object_tangible_component_droid_repair_shared_unit_delivery_cartridge = SharedTa
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3230177189
+	clientObjectCRC = 3230177189,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_droid_repair_shared_unit_delivery_cartridge, "object/tangible/component/droid/repair/shared_unit_delivery_cartridge.iff")
@@ -576,7 +585,8 @@ object_tangible_component_droid_repair_shared_unit_delivery_cartridge_advanced =
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1878973727
+	clientObjectCRC = 1878973727,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/droid/repair/shared_unit_delivery_cartridge.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_droid_repair_shared_unit_delivery_cartridge_advanced, "object/tangible/component/droid/repair/shared_unit_delivery_cartridge_advanced.iff")

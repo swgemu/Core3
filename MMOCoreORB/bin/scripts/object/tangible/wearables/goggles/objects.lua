@@ -90,7 +90,8 @@ object_tangible_wearables_goggles_shared_goggles_s01 = SharedTangibleObjectTempl
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 970341305
+	clientObjectCRC = 970341305,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_eyes.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_goggles_shared_goggles_s01, "object/tangible/wearables/goggles/shared_goggles_s01.iff")
@@ -144,7 +145,8 @@ object_tangible_wearables_goggles_shared_goggles_s02 = SharedTangibleObjectTempl
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3804336942
+	clientObjectCRC = 3804336942,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_eyes.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_goggles_shared_goggles_s02, "object/tangible/wearables/goggles/shared_goggles_s02.iff")
@@ -198,7 +200,8 @@ object_tangible_wearables_goggles_shared_goggles_s03 = SharedTangibleObjectTempl
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2882335907
+	clientObjectCRC = 2882335907,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_eyes.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_goggles_shared_goggles_s03, "object/tangible/wearables/goggles/shared_goggles_s03.iff")
@@ -252,7 +255,8 @@ object_tangible_wearables_goggles_shared_goggles_s04 = SharedTangibleObjectTempl
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1345314743
+	clientObjectCRC = 1345314743,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_eyes.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_goggles_shared_goggles_s04, "object/tangible/wearables/goggles/shared_goggles_s04.iff")
@@ -306,7 +310,8 @@ object_tangible_wearables_goggles_shared_goggles_s05 = SharedTangibleObjectTempl
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 421705786
+	clientObjectCRC = 421705786,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_eyes.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_goggles_shared_goggles_s05, "object/tangible/wearables/goggles/shared_goggles_s05.iff")
@@ -360,7 +365,8 @@ object_tangible_wearables_goggles_shared_goggles_s06 = SharedTangibleObjectTempl
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3258257581
+	clientObjectCRC = 3258257581,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_eyes.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_goggles_shared_goggles_s06, "object/tangible/wearables/goggles/shared_goggles_s06.iff")
@@ -414,7 +420,8 @@ object_tangible_wearables_goggles_shared_rebreather = SharedTangibleObjectTempla
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 53819294
+	clientObjectCRC = 53819294,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_eyes.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_goggles_shared_rebreather, "object/tangible/wearables/goggles/shared_rebreather.iff")

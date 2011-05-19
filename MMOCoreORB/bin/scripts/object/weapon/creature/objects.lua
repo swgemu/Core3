@@ -94,7 +94,8 @@ object_weapon_creature_shared_creature_default_weapon = SharedWeaponObjectTempla
 	weaponEffect = "bolt",
 	weaponEffectIndex = 0,
 
-	clientObjectCRC = 2110842690
+	clientObjectCRC = 2110842690,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/weapon/base/shared_base_weapon.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_weapon_creature_shared_creature_default_weapon, "object/weapon/creature/shared_creature_default_weapon.iff")

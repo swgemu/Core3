@@ -90,7 +90,8 @@ object_tangible_lair_piket_shared_lair_piket = SharedTangibleObjectTemplate:new 
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 206631052
+	clientObjectCRC = 206631052,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_piket_shared_lair_piket, "object/tangible/lair/piket/shared_lair_piket.iff")
@@ -144,7 +145,8 @@ object_tangible_lair_piket_shared_lair_piket_grassland = SharedTangibleObjectTem
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1495135397
+	clientObjectCRC = 1495135397,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_piket_shared_lair_piket_grassland, "object/tangible/lair/piket/shared_lair_piket_grassland.iff")

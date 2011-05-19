@@ -90,7 +90,8 @@ object_tangible_gcw_shared_flip_banner_imperial = SharedTangibleObjectTemplate:n
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 310211091
+	clientObjectCRC = 310211091,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_gcw_shared_flip_banner_imperial, "object/tangible/gcw/shared_flip_banner_imperial.iff")
@@ -144,7 +145,8 @@ object_tangible_gcw_shared_flip_banner_onpole_imperial = SharedTangibleObjectTem
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1127107666
+	clientObjectCRC = 1127107666,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_gcw_shared_flip_banner_onpole_imperial, "object/tangible/gcw/shared_flip_banner_onpole_imperial.iff")
@@ -198,7 +200,8 @@ object_tangible_gcw_shared_flip_banner_onpole_rebel = SharedTangibleObjectTempla
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2107736696
+	clientObjectCRC = 2107736696,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_gcw_shared_flip_banner_onpole_rebel, "object/tangible/gcw/shared_flip_banner_onpole_rebel.iff")
@@ -252,7 +255,8 @@ object_tangible_gcw_shared_flip_banner_onpole_spawner = SharedTangibleObjectTemp
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 60973770
+	clientObjectCRC = 60973770,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/poi/base/shared_poi_base.iff", "object/tangible/poi/base/shared_poi_base_nosnap.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_gcw_shared_flip_banner_onpole_spawner, "object/tangible/gcw/shared_flip_banner_onpole_spawner.iff")
@@ -306,7 +310,8 @@ object_tangible_gcw_shared_flip_banner_rebel = SharedTangibleObjectTemplate:new 
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1184876615
+	clientObjectCRC = 1184876615,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_gcw_shared_flip_banner_rebel, "object/tangible/gcw/shared_flip_banner_rebel.iff")
@@ -360,7 +365,8 @@ object_tangible_gcw_shared_flip_banner_spawner = SharedTangibleObjectTemplate:ne
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1768955620
+	clientObjectCRC = 1768955620,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/poi/base/shared_poi_base.iff", "object/tangible/poi/base/shared_poi_base_nosnap.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_gcw_shared_flip_banner_spawner, "object/tangible/gcw/shared_flip_banner_spawner.iff")
@@ -414,7 +420,8 @@ object_tangible_gcw_shared_gcw_city_spawner = SharedTangibleObjectTemplate:new {
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 757466723
+	clientObjectCRC = 757466723,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/poi/base/shared_poi_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_gcw_shared_gcw_city_spawner, "object/tangible/gcw/shared_gcw_city_spawner.iff")

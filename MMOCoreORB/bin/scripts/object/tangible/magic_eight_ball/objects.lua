@@ -90,7 +90,8 @@ object_tangible_magic_eight_ball_shared_magic_eight_ball = SharedTangibleObjectT
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3259696709
+	clientObjectCRC = 3259696709,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_magic_eight_ball_shared_magic_eight_ball, "object/tangible/magic_eight_ball/shared_magic_eight_ball.iff")

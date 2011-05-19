@@ -90,7 +90,8 @@ object_tangible_lair_gubbur_shared_lair_gubbur = SharedTangibleObjectTemplate:ne
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2954623268
+	clientObjectCRC = 2954623268,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_gubbur_shared_lair_gubbur, "object/tangible/lair/gubbur/shared_lair_gubbur.iff")
@@ -144,7 +145,8 @@ object_tangible_lair_gubbur_shared_lair_gubbur_underwater = SharedTangibleObject
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 162663967
+	clientObjectCRC = 162663967,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_gubbur_shared_lair_gubbur_underwater, "object/tangible/lair/gubbur/shared_lair_gubbur_underwater.iff")

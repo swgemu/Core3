@@ -80,7 +80,8 @@ object_intangible_faction_perk_shared_shuttle_extract = SharedIntangibleObjectTe
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2608329477
+	clientObjectCRC = 2608329477,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_faction_perk_shared_shuttle_extract, "object/intangible/faction_perk/shared_shuttle_extract.iff")

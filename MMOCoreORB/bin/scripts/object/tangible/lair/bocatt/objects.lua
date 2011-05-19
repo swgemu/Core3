@@ -90,7 +90,8 @@ object_tangible_lair_bocatt_shared_lair_bocatt = SharedTangibleObjectTemplate:ne
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 465155974
+	clientObjectCRC = 465155974,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff", "object/tangible/lair/base/shared_lair_base_cave_lion_light.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_bocatt_shared_lair_bocatt, "object/tangible/lair/bocatt/shared_lair_bocatt.iff")
@@ -144,7 +145,8 @@ object_tangible_lair_bocatt_shared_lair_bocatt_grassland = SharedTangibleObjectT
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3263722419
+	clientObjectCRC = 3263722419,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff", "object/tangible/lair/base/shared_lair_base_cave_lion_light.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_bocatt_shared_lair_bocatt_grassland, "object/tangible/lair/bocatt/shared_lair_bocatt_grassland.iff")
@@ -198,7 +200,8 @@ object_tangible_lair_bocatt_shared_lair_bocatt_hills = SharedTangibleObjectTempl
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3197548002
+	clientObjectCRC = 3197548002,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff", "object/tangible/lair/base/shared_lair_base_cave_lion_light.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_bocatt_shared_lair_bocatt_hills, "object/tangible/lair/bocatt/shared_lair_bocatt_hills.iff")

@@ -90,7 +90,8 @@ object_tangible_lair_gackle_bat_shared_lair_gackle_bat = SharedTangibleObjectTem
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3668255923
+	clientObjectCRC = 3668255923,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_gackle_bat_shared_lair_gackle_bat, "object/tangible/lair/gackle_bat/shared_lair_gackle_bat.iff")
@@ -144,7 +145,8 @@ object_tangible_lair_gackle_bat_shared_lair_gackle_bat_jungle = SharedTangibleOb
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 987504645
+	clientObjectCRC = 987504645,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_gackle_bat_shared_lair_gackle_bat_jungle, "object/tangible/lair/gackle_bat/shared_lair_gackle_bat_jungle.iff")
@@ -198,7 +200,8 @@ object_tangible_lair_gackle_bat_shared_lair_gackle_bat_swamp = SharedTangibleObj
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3334775369
+	clientObjectCRC = 3334775369,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_gackle_bat_shared_lair_gackle_bat_swamp, "object/tangible/lair/gackle_bat/shared_lair_gackle_bat_swamp.iff")

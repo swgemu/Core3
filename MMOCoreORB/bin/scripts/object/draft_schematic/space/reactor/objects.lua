@@ -80,7 +80,8 @@ object_draft_schematic_space_reactor_shared_basic_reactor = SharedDraftSchematic
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 366234772
+	clientObjectCRC = 366234772,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_reactor_shared_basic_reactor, "object/draft_schematic/space/reactor/shared_basic_reactor.iff")
@@ -124,7 +125,8 @@ object_draft_schematic_space_reactor_shared_fusion_reactor_mk1 = SharedDraftSche
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3664496596
+	clientObjectCRC = 3664496596,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_reactor_shared_fusion_reactor_mk1, "object/draft_schematic/space/reactor/shared_fusion_reactor_mk1.iff")
@@ -168,7 +170,8 @@ object_draft_schematic_space_reactor_shared_fusion_reactor_mk2 = SharedDraftSche
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 24932163
+	clientObjectCRC = 24932163,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_reactor_shared_fusion_reactor_mk2, "object/draft_schematic/space/reactor/shared_fusion_reactor_mk2.iff")
@@ -212,7 +215,8 @@ object_draft_schematic_space_reactor_shared_fusion_reactor_mk3 = SharedDraftSche
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1215367374
+	clientObjectCRC = 1215367374,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_reactor_shared_fusion_reactor_mk3, "object/draft_schematic/space/reactor/shared_fusion_reactor_mk3.iff")
@@ -256,7 +260,8 @@ object_draft_schematic_space_reactor_shared_fusion_reactor_mk4 = SharedDraftSche
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3012699098
+	clientObjectCRC = 3012699098,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_reactor_shared_fusion_reactor_mk4, "object/draft_schematic/space/reactor/shared_fusion_reactor_mk4.iff")
@@ -300,7 +305,8 @@ object_draft_schematic_space_reactor_shared_fusion_reactor_mk5 = SharedDraftSche
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 4204741719
+	clientObjectCRC = 4204741719,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_reactor_shared_fusion_reactor_mk5, "object/draft_schematic/space/reactor/shared_fusion_reactor_mk5.iff")
@@ -344,7 +350,8 @@ object_draft_schematic_space_reactor_shared_reactor_limiter_mk1 = SharedDraftSch
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3282952808
+	clientObjectCRC = 3282952808,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_reactor_shared_reactor_limiter_mk1, "object/draft_schematic/space/reactor/shared_reactor_limiter_mk1.iff")
@@ -388,7 +395,8 @@ object_draft_schematic_space_reactor_shared_reactor_limiter_mk2 = SharedDraftSch
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 414862079
+	clientObjectCRC = 414862079,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_reactor_shared_reactor_limiter_mk2, "object/draft_schematic/space/reactor/shared_reactor_limiter_mk2.iff")
@@ -432,7 +440,8 @@ object_draft_schematic_space_reactor_shared_reactor_limiter_mk3 = SharedDraftSch
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1370959218
+	clientObjectCRC = 1370959218,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_reactor_shared_reactor_limiter_mk3, "object/draft_schematic/space/reactor/shared_reactor_limiter_mk3.iff")
@@ -476,7 +485,8 @@ object_draft_schematic_space_reactor_shared_reactor_limiter_mk4 = SharedDraftSch
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2857633382
+	clientObjectCRC = 2857633382,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_reactor_shared_reactor_limiter_mk4, "object/draft_schematic/space/reactor/shared_reactor_limiter_mk4.iff")
@@ -520,7 +530,8 @@ object_draft_schematic_space_reactor_shared_reactor_limiter_mk5 = SharedDraftSch
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3814285803
+	clientObjectCRC = 3814285803,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_reactor_shared_reactor_limiter_mk5, "object/draft_schematic/space/reactor/shared_reactor_limiter_mk5.iff")
@@ -564,7 +575,8 @@ object_draft_schematic_space_reactor_shared_reactor_overcharger_mk1 = SharedDraf
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 287048772
+	clientObjectCRC = 287048772,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_reactor_shared_reactor_overcharger_mk1, "object/draft_schematic/space/reactor/shared_reactor_overcharger_mk1.iff")
@@ -608,7 +620,8 @@ object_draft_schematic_space_reactor_shared_reactor_overcharger_mk2 = SharedDraf
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3389762771
+	clientObjectCRC = 3389762771,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_reactor_shared_reactor_overcharger_mk2, "object/draft_schematic/space/reactor/shared_reactor_overcharger_mk2.iff")
@@ -652,7 +665,8 @@ object_draft_schematic_space_reactor_shared_reactor_overcharger_mk3 = SharedDraf
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2198260574
+	clientObjectCRC = 2198260574,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_reactor_shared_reactor_overcharger_mk3, "object/draft_schematic/space/reactor/shared_reactor_overcharger_mk3.iff")
@@ -696,7 +710,8 @@ object_draft_schematic_space_reactor_shared_reactor_overcharger_mk4 = SharedDraf
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2028331082
+	clientObjectCRC = 2028331082,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_reactor_shared_reactor_overcharger_mk4, "object/draft_schematic/space/reactor/shared_reactor_overcharger_mk4.iff")
@@ -740,7 +755,8 @@ object_draft_schematic_space_reactor_shared_reactor_overcharger_mk5 = SharedDraf
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 837322695
+	clientObjectCRC = 837322695,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_reactor_shared_reactor_overcharger_mk5, "object/draft_schematic/space/reactor/shared_reactor_overcharger_mk5.iff")

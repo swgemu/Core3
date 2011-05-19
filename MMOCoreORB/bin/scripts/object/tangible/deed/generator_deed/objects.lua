@@ -90,7 +90,8 @@ object_tangible_deed_generator_deed_shared_generator_fusion_deed = SharedTangibl
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3852530581
+	clientObjectCRC = 3852530581,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/deed/base/shared_deed_base.iff", "object/tangible/deed/base/shared_deed_installation_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_deed_generator_deed_shared_generator_fusion_deed, "object/tangible/deed/generator_deed/shared_generator_fusion_deed.iff")
@@ -144,7 +145,8 @@ object_tangible_deed_generator_deed_shared_generator_photo_bio_deed = SharedTang
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 651572803
+	clientObjectCRC = 651572803,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/deed/base/shared_deed_base.iff", "object/tangible/deed/base/shared_deed_installation_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_deed_generator_deed_shared_generator_photo_bio_deed, "object/tangible/deed/generator_deed/shared_generator_photo_bio_deed.iff")
@@ -198,7 +200,8 @@ object_tangible_deed_generator_deed_shared_generator_solar_deed = SharedTangible
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1181332776
+	clientObjectCRC = 1181332776,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/deed/base/shared_deed_base.iff", "object/tangible/deed/base/shared_deed_installation_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_deed_generator_deed_shared_generator_solar_deed, "object/tangible/deed/generator_deed/shared_generator_solar_deed.iff")
@@ -252,7 +255,8 @@ object_tangible_deed_generator_deed_shared_generator_wind_deed = SharedTangibleO
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3871805863
+	clientObjectCRC = 3871805863,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/deed/base/shared_deed_base.iff", "object/tangible/deed/base/shared_deed_installation_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_deed_generator_deed_shared_generator_wind_deed, "object/tangible/deed/generator_deed/shared_generator_wind_deed.iff")

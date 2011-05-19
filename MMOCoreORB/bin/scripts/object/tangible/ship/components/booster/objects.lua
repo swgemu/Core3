@@ -90,7 +90,8 @@ object_tangible_ship_components_booster_shared_booster_test = SharedTangibleObje
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1784141535
+	clientObjectCRC = 1784141535,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_booster_test, "object/tangible/ship/components/booster/shared_booster_test.iff")
@@ -144,7 +145,8 @@ object_tangible_ship_components_booster_shared_bst_corellian_advanced_thrust_enh
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 95367825
+	clientObjectCRC = 95367825,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_corellian_advanced_thrust_enhancer, "object/tangible/ship/components/booster/shared_bst_corellian_advanced_thrust_enhancer.iff")
@@ -198,7 +200,8 @@ object_tangible_ship_components_booster_shared_bst_corellian_elite_thrust_enhanc
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4019311987
+	clientObjectCRC = 4019311987,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_corellian_elite_thrust_enhancer, "object/tangible/ship/components/booster/shared_bst_corellian_elite_thrust_enhancer.iff")
@@ -252,7 +255,8 @@ object_tangible_ship_components_booster_shared_bst_corellian_experimental_tjh3 =
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 788395141
+	clientObjectCRC = 788395141,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_corellian_experimental_tjh3, "object/tangible/ship/components/booster/shared_bst_corellian_experimental_tjh3.iff")
@@ -306,7 +310,8 @@ object_tangible_ship_components_booster_shared_bst_corellian_heavy_thrust_enhanc
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 369299921
+	clientObjectCRC = 369299921,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_corellian_heavy_thrust_enhancer, "object/tangible/ship/components/booster/shared_bst_corellian_heavy_thrust_enhancer.iff")
@@ -360,7 +365,8 @@ object_tangible_ship_components_booster_shared_bst_corellian_highly_modified_eli
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 307950030
+	clientObjectCRC = 307950030,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_corellian_highly_modified_elite_thrust_enhancer, "object/tangible/ship/components/booster/shared_bst_corellian_highly_modified_elite_thrust_enhancer.iff")
@@ -414,7 +420,8 @@ object_tangible_ship_components_booster_shared_bst_corellian_performance_advance
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2687766710
+	clientObjectCRC = 2687766710,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_corellian_performance_advanced_thrust_enhancer, "object/tangible/ship/components/booster/shared_bst_corellian_performance_advanced_thrust_enhancer.iff")
@@ -468,7 +475,8 @@ object_tangible_ship_components_booster_shared_bst_corellian_promotional_standar
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 679723055
+	clientObjectCRC = 679723055,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_corellian_promotional_standard_thrust_enhancer, "object/tangible/ship/components/booster/shared_bst_corellian_promotional_standard_thrust_enhancer.iff")
@@ -522,7 +530,8 @@ object_tangible_ship_components_booster_shared_bst_corellian_standard_thrust_enh
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 82609038
+	clientObjectCRC = 82609038,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_corellian_standard_thrust_enhancer, "object/tangible/ship/components/booster/shared_bst_corellian_standard_thrust_enhancer.iff")
@@ -576,7 +585,8 @@ object_tangible_ship_components_booster_shared_bst_corellian_tjh3 = SharedTangib
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3342663764
+	clientObjectCRC = 3342663764,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_corellian_tjh3, "object/tangible/ship/components/booster/shared_bst_corellian_tjh3.iff")
@@ -630,7 +640,8 @@ object_tangible_ship_components_booster_shared_bst_corellian_tuned_heavy_thrust_
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3003301835
+	clientObjectCRC = 3003301835,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_corellian_tuned_heavy_thrust_enhancer, "object/tangible/ship/components/booster/shared_bst_corellian_tuned_heavy_thrust_enhancer.iff")
@@ -684,7 +695,8 @@ object_tangible_ship_components_booster_shared_bst_cygnus_flashboost3 = SharedTa
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2062222960
+	clientObjectCRC = 2062222960,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_cygnus_flashboost3, "object/tangible/ship/components/booster/shared_bst_cygnus_flashboost3.iff")
@@ -738,7 +750,8 @@ object_tangible_ship_components_booster_shared_bst_cygnus_flashboost4 = SharedTa
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2164796772
+	clientObjectCRC = 2164796772,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_cygnus_flashboost4, "object/tangible/ship/components/booster/shared_bst_cygnus_flashboost4.iff")
@@ -792,7 +805,8 @@ object_tangible_ship_components_booster_shared_bst_freitek_outrunner_x1 = Shared
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 367538652
+	clientObjectCRC = 367538652,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_freitek_outrunner_x1, "object/tangible/ship/components/booster/shared_bst_freitek_outrunner_x1.iff")
@@ -846,7 +860,8 @@ object_tangible_ship_components_booster_shared_bst_gallofree_light = SharedTangi
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2309515131
+	clientObjectCRC = 2309515131,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_gallofree_light, "object/tangible/ship/components/booster/shared_bst_gallofree_light.iff")
@@ -900,7 +915,8 @@ object_tangible_ship_components_booster_shared_bst_generic = SharedTangibleObjec
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3848915623
+	clientObjectCRC = 3848915623,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_generic, "object/tangible/ship/components/booster/shared_bst_generic.iff")
@@ -954,7 +970,8 @@ object_tangible_ship_components_booster_shared_bst_incom_deluxe_fynock = SharedT
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1705883702
+	clientObjectCRC = 1705883702,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_incom_deluxe_fynock, "object/tangible/ship/components/booster/shared_bst_incom_deluxe_fynock.iff")
@@ -1008,7 +1025,8 @@ object_tangible_ship_components_booster_shared_bst_incom_elite_sls_1 = SharedTan
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3900405472
+	clientObjectCRC = 3900405472,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_incom_elite_sls_1, "object/tangible/ship/components/booster/shared_bst_incom_elite_sls_1.iff")
@@ -1062,7 +1080,8 @@ object_tangible_ship_components_booster_shared_bst_incom_enhanced_mynock = Share
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3742318303
+	clientObjectCRC = 3742318303,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_incom_enhanced_mynock, "object/tangible/ship/components/booster/shared_bst_incom_enhanced_mynock.iff")
@@ -1116,7 +1135,8 @@ object_tangible_ship_components_booster_shared_bst_incom_fynock = SharedTangible
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1410368784
+	clientObjectCRC = 1410368784,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_incom_fynock, "object/tangible/ship/components/booster/shared_bst_incom_fynock.iff")
@@ -1170,7 +1190,8 @@ object_tangible_ship_components_booster_shared_bst_incom_intimidator_mk1 = Share
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3520766481
+	clientObjectCRC = 3520766481,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_incom_intimidator_mk1, "object/tangible/ship/components/booster/shared_bst_incom_intimidator_mk1.iff")
@@ -1224,7 +1245,8 @@ object_tangible_ship_components_booster_shared_bst_incom_intimidator_mk2 = Share
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 181209734
+	clientObjectCRC = 181209734,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_incom_intimidator_mk2, "object/tangible/ship/components/booster/shared_bst_incom_intimidator_mk2.iff")
@@ -1278,7 +1300,8 @@ object_tangible_ship_components_booster_shared_bst_incom_intimidator_mk3 = Share
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1136684299
+	clientObjectCRC = 1136684299,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_incom_intimidator_mk3, "object/tangible/ship/components/booster/shared_bst_incom_intimidator_mk3.iff")
@@ -1332,7 +1355,8 @@ object_tangible_ship_components_booster_shared_bst_incom_intimidator_mk4 = Share
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3089319455
+	clientObjectCRC = 3089319455,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_incom_intimidator_mk4, "object/tangible/ship/components/booster/shared_bst_incom_intimidator_mk4.iff")
@@ -1386,7 +1410,8 @@ object_tangible_ship_components_booster_shared_bst_incom_mynock = SharedTangible
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3336637930
+	clientObjectCRC = 3336637930,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_incom_mynock, "object/tangible/ship/components/booster/shared_bst_incom_mynock.iff")
@@ -1440,7 +1465,8 @@ object_tangible_ship_components_booster_shared_bst_incom_nkj31 = SharedTangibleO
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1721827885
+	clientObjectCRC = 1721827885,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_incom_nkj31, "object/tangible/ship/components/booster/shared_bst_incom_nkj31.iff")
@@ -1494,7 +1520,8 @@ object_tangible_ship_components_booster_shared_bst_incom_performance_nkj31 = Sha
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 47183178
+	clientObjectCRC = 47183178,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_incom_performance_nkj31, "object/tangible/ship/components/booster/shared_bst_incom_performance_nkj31.iff")
@@ -1548,7 +1575,8 @@ object_tangible_ship_components_booster_shared_bst_incom_sls_1 = SharedTangibleO
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2524451923
+	clientObjectCRC = 2524451923,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_incom_sls_1, "object/tangible/ship/components/booster/shared_bst_incom_sls_1.iff")
@@ -1602,7 +1630,8 @@ object_tangible_ship_components_booster_shared_bst_incom_supercharged_vynock = S
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4118504437
+	clientObjectCRC = 4118504437,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_incom_supercharged_vynock, "object/tangible/ship/components/booster/shared_bst_incom_supercharged_vynock.iff")
@@ -1656,7 +1685,8 @@ object_tangible_ship_components_booster_shared_bst_incom_vynock = SharedTangible
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2064805592
+	clientObjectCRC = 2064805592,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_incom_vynock, "object/tangible/ship/components/booster/shared_bst_incom_vynock.iff")
@@ -1710,7 +1740,8 @@ object_tangible_ship_components_booster_shared_bst_kde_br12 = SharedTangibleObje
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 744508372
+	clientObjectCRC = 744508372,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_kde_br12, "object/tangible/ship/components/booster/shared_bst_kde_br12.iff")
@@ -1764,7 +1795,8 @@ object_tangible_ship_components_booster_shared_bst_kessel_imperial_cygnus_hypert
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 793081046
+	clientObjectCRC = 793081046,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_kessel_imperial_cygnus_hyperthrust, "object/tangible/ship/components/booster/shared_bst_kessel_imperial_cygnus_hyperthrust.iff")
@@ -1818,7 +1850,8 @@ object_tangible_ship_components_booster_shared_bst_kessel_imperial_sds_experimen
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1606808856
+	clientObjectCRC = 1606808856,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_kessel_imperial_sds_experimental_b7, "object/tangible/ship/components/booster/shared_bst_kessel_imperial_sds_experimental_b7.iff")
@@ -1872,7 +1905,8 @@ object_tangible_ship_components_booster_shared_bst_kessel_imperial_sfs_ultra_thr
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 53752884
+	clientObjectCRC = 53752884,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_kessel_imperial_sfs_ultra_thrust, "object/tangible/ship/components/booster/shared_bst_kessel_imperial_sfs_ultra_thrust.iff")
@@ -1926,7 +1960,8 @@ object_tangible_ship_components_booster_shared_bst_kessel_rebel_incom_quicksilve
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 419026085
+	clientObjectCRC = 419026085,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_kessel_rebel_incom_quicksilver, "object/tangible/ship/components/booster/shared_bst_kessel_rebel_incom_quicksilver.iff")
@@ -1980,7 +2015,8 @@ object_tangible_ship_components_booster_shared_bst_kessel_rebel_incom_windrunner
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3378973624
+	clientObjectCRC = 3378973624,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_kessel_rebel_incom_windrunner, "object/tangible/ship/components/booster/shared_bst_kessel_rebel_incom_windrunner.iff")
@@ -2034,7 +2070,8 @@ object_tangible_ship_components_booster_shared_bst_kessel_rebel_mandal_lightning
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3998248231
+	clientObjectCRC = 3998248231,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_kessel_rebel_mandal_lightning_m1, "object/tangible/ship/components/booster/shared_bst_kessel_rebel_mandal_lightning_m1.iff")
@@ -2088,7 +2125,8 @@ object_tangible_ship_components_booster_shared_bst_koensayr_advanced = SharedTan
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4027189608
+	clientObjectCRC = 4027189608,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_koensayr_advanced, "object/tangible/ship/components/booster/shared_bst_koensayr_advanced.iff")
@@ -2142,7 +2180,8 @@ object_tangible_ship_components_booster_shared_bst_koensayr_charged_advanced = S
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2298767702
+	clientObjectCRC = 2298767702,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_koensayr_charged_advanced, "object/tangible/ship/components/booster/shared_bst_koensayr_charged_advanced.iff")
@@ -2196,7 +2235,8 @@ object_tangible_ship_components_booster_shared_bst_koensayr_deluxe_elite = Share
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 511836444
+	clientObjectCRC = 511836444,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_koensayr_deluxe_elite, "object/tangible/ship/components/booster/shared_bst_koensayr_deluxe_elite.iff")
@@ -2250,7 +2290,8 @@ object_tangible_ship_components_booster_shared_bst_koensayr_elite = SharedTangib
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 528263488
+	clientObjectCRC = 528263488,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_koensayr_elite, "object/tangible/ship/components/booster/shared_bst_koensayr_elite.iff")
@@ -2304,7 +2345,8 @@ object_tangible_ship_components_booster_shared_bst_koensayr_evh12 = SharedTangib
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1204424540
+	clientObjectCRC = 1204424540,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_koensayr_evh12, "object/tangible/ship/components/booster/shared_bst_koensayr_evh12.iff")
@@ -2358,7 +2400,8 @@ object_tangible_ship_components_booster_shared_bst_koensayr_heavy = SharedTangib
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2398381369
+	clientObjectCRC = 2398381369,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_koensayr_heavy, "object/tangible/ship/components/booster/shared_bst_koensayr_heavy.iff")
@@ -2412,7 +2455,8 @@ object_tangible_ship_components_booster_shared_bst_koensayr_improved_standard = 
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 894005127
+	clientObjectCRC = 894005127,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_koensayr_improved_standard, "object/tangible/ship/components/booster/shared_bst_koensayr_improved_standard.iff")
@@ -2466,7 +2510,8 @@ object_tangible_ship_components_booster_shared_bst_koensayr_modified_heavy = Sha
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1813570456
+	clientObjectCRC = 1813570456,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_koensayr_modified_heavy, "object/tangible/ship/components/booster/shared_bst_koensayr_modified_heavy.iff")
@@ -2520,7 +2565,8 @@ object_tangible_ship_components_booster_shared_bst_koensayr_racer_mk1 = SharedTa
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2813746586
+	clientObjectCRC = 2813746586,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_koensayr_racer_mk1, "object/tangible/ship/components/booster/shared_bst_koensayr_racer_mk1.iff")
@@ -2574,7 +2620,8 @@ object_tangible_ship_components_booster_shared_bst_koensayr_racer_mk2 = SharedTa
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2090988813
+	clientObjectCRC = 2090988813,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_koensayr_racer_mk2, "object/tangible/ship/components/booster/shared_bst_koensayr_racer_mk2.iff")
@@ -2628,7 +2675,8 @@ object_tangible_ship_components_booster_shared_bst_koensayr_racer_mk3 = SharedTa
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 900502144
+	clientObjectCRC = 900502144,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_koensayr_racer_mk3, "object/tangible/ship/components/booster/shared_bst_koensayr_racer_mk3.iff")
@@ -2682,7 +2730,8 @@ object_tangible_ship_components_booster_shared_bst_koensayr_racer_mk4 = SharedTa
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3461331348
+	clientObjectCRC = 3461331348,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_koensayr_racer_mk4, "object/tangible/ship/components/booster/shared_bst_koensayr_racer_mk4.iff")
@@ -2736,7 +2785,8 @@ object_tangible_ship_components_booster_shared_bst_koensayr_special_evh12 = Shar
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2437955271
+	clientObjectCRC = 2437955271,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_koensayr_special_evh12, "object/tangible/ship/components/booster/shared_bst_koensayr_special_evh12.iff")
@@ -2790,7 +2840,8 @@ object_tangible_ship_components_booster_shared_bst_koensayr_standard = SharedTan
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3498550211
+	clientObjectCRC = 3498550211,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_koensayr_standard, "object/tangible/ship/components/booster/shared_bst_koensayr_standard.iff")
@@ -2844,7 +2895,8 @@ object_tangible_ship_components_booster_shared_bst_kse_als_1 = SharedTangibleObj
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4146162190
+	clientObjectCRC = 4146162190,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_kse_als_1, "object/tangible/ship/components/booster/shared_bst_kse_als_1.iff")
@@ -2898,7 +2950,8 @@ object_tangible_ship_components_booster_shared_bst_kse_bti1 = SharedTangibleObje
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2827178862
+	clientObjectCRC = 2827178862,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_kse_bti1, "object/tangible/ship/components/booster/shared_bst_kse_bti1.iff")
@@ -2952,7 +3005,8 @@ object_tangible_ship_components_booster_shared_bst_kse_bti2 = SharedTangibleObje
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1939143673
+	clientObjectCRC = 1939143673,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_kse_bti2, "object/tangible/ship/components/booster/shared_bst_kse_bti2.iff")
@@ -3006,7 +3060,8 @@ object_tangible_ship_components_booster_shared_bst_kse_bti3 = SharedTangibleObje
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 983145588
+	clientObjectCRC = 983145588,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_kse_bti3, "object/tangible/ship/components/booster/shared_bst_kse_bti3.iff")
@@ -3060,7 +3115,8 @@ object_tangible_ship_components_booster_shared_bst_kse_cb6 = SharedTangibleObjec
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1082190673
+	clientObjectCRC = 1082190673,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_kse_cb6, "object/tangible/ship/components/booster/shared_bst_kse_cb6.iff")
@@ -3114,7 +3170,8 @@ object_tangible_ship_components_booster_shared_bst_kse_deluxe_bti3 = SharedTangi
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1877470958
+	clientObjectCRC = 1877470958,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_kse_deluxe_bti3, "object/tangible/ship/components/booster/shared_bst_kse_deluxe_bti3.iff")
@@ -3168,7 +3225,8 @@ object_tangible_ship_components_booster_shared_bst_kse_elite_als_1 = SharedTangi
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4147447022
+	clientObjectCRC = 4147447022,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_kse_elite_als_1, "object/tangible/ship/components/booster/shared_bst_kse_elite_als_1.iff")
@@ -3222,7 +3280,8 @@ object_tangible_ship_components_booster_shared_bst_kse_enhanced_bti2 = SharedTan
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1680098180
+	clientObjectCRC = 1680098180,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_kse_enhanced_bti2, "object/tangible/ship/components/booster/shared_bst_kse_enhanced_bti2.iff")
@@ -3276,7 +3335,8 @@ object_tangible_ship_components_booster_shared_bst_kse_performance_bti1 = Shared
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1644149004
+	clientObjectCRC = 1644149004,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_kse_performance_bti1, "object/tangible/ship/components/booster/shared_bst_kse_performance_bti1.iff")
@@ -3330,7 +3390,8 @@ object_tangible_ship_components_booster_shared_bst_kse_performance_cb6 = SharedT
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3050826285
+	clientObjectCRC = 3050826285,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_kse_performance_cb6, "object/tangible/ship/components/booster/shared_bst_kse_performance_cb6.iff")
@@ -3384,7 +3445,8 @@ object_tangible_ship_components_booster_shared_bst_kuat_military_mk1 = SharedTan
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3536291891
+	clientObjectCRC = 3536291891,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_kuat_military_mk1, "object/tangible/ship/components/booster/shared_bst_kuat_military_mk1.iff")
@@ -3438,7 +3500,8 @@ object_tangible_ship_components_booster_shared_bst_kuat_military_mk2 = SharedTan
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 164634788
+	clientObjectCRC = 164634788,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_kuat_military_mk2, "object/tangible/ship/components/booster/shared_bst_kuat_military_mk2.iff")
@@ -3492,7 +3555,8 @@ object_tangible_ship_components_booster_shared_bst_kuat_military_mk3 = SharedTan
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1088243497
+	clientObjectCRC = 1088243497,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_kuat_military_mk3, "object/tangible/ship/components/booster/shared_bst_kuat_military_mk3.iff")
@@ -3546,7 +3610,8 @@ object_tangible_ship_components_booster_shared_bst_kuat_military_mk4 = SharedTan
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3141430333
+	clientObjectCRC = 3141430333,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_kuat_military_mk4, "object/tangible/ship/components/booster/shared_bst_kuat_military_mk4.iff")
@@ -3600,7 +3665,8 @@ object_tangible_ship_components_booster_shared_bst_mandal_deluxe_jbj_mk4 = Share
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2694479901
+	clientObjectCRC = 2694479901,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_mandal_deluxe_jbj_mk4, "object/tangible/ship/components/booster/shared_bst_mandal_deluxe_jbj_mk4.iff")
@@ -3654,7 +3720,8 @@ object_tangible_ship_components_booster_shared_bst_mandal_enhanced_jbj_mk1 = Sha
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1206714092
+	clientObjectCRC = 1206714092,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_mandal_enhanced_jbj_mk1, "object/tangible/ship/components/booster/shared_bst_mandal_enhanced_jbj_mk1.iff")
@@ -3708,7 +3775,8 @@ object_tangible_ship_components_booster_shared_bst_mandal_improved_jbj_mk3 = Sha
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3157954036
+	clientObjectCRC = 3157954036,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_mandal_improved_jbj_mk3, "object/tangible/ship/components/booster/shared_bst_mandal_improved_jbj_mk3.iff")
@@ -3762,7 +3830,8 @@ object_tangible_ship_components_booster_shared_bst_mandal_jbj_mk1 = SharedTangib
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3869490887
+	clientObjectCRC = 3869490887,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_mandal_jbj_mk1, "object/tangible/ship/components/booster/shared_bst_mandal_jbj_mk1.iff")
@@ -3816,7 +3885,8 @@ object_tangible_ship_components_booster_shared_bst_mandal_jbj_mk2 = SharedTangib
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1035212368
+	clientObjectCRC = 1035212368,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_mandal_jbj_mk2, "object/tangible/ship/components/booster/shared_bst_mandal_jbj_mk2.iff")
@@ -3870,7 +3940,8 @@ object_tangible_ship_components_booster_shared_bst_mandal_jbj_mk3 = SharedTangib
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1958310365
+	clientObjectCRC = 1958310365,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_mandal_jbj_mk3, "object/tangible/ship/components/booster/shared_bst_mandal_jbj_mk3.iff")
@@ -3924,7 +3995,8 @@ object_tangible_ship_components_booster_shared_bst_mandal_jbj_mk4 = SharedTangib
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2405063369
+	clientObjectCRC = 2405063369,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_mandal_jbj_mk4, "object/tangible/ship/components/booster/shared_bst_mandal_jbj_mk4.iff")
@@ -3978,7 +4050,8 @@ object_tangible_ship_components_booster_shared_bst_mandal_jbj_mk5 = SharedTangib
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3327606084
+	clientObjectCRC = 3327606084,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_mandal_jbj_mk5, "object/tangible/ship/components/booster/shared_bst_mandal_jbj_mk5.iff")
@@ -4032,7 +4105,8 @@ object_tangible_ship_components_booster_shared_bst_mandal_limited_jbj_mk5 = Shar
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3105704550
+	clientObjectCRC = 3105704550,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_mandal_limited_jbj_mk5, "object/tangible/ship/components/booster/shared_bst_mandal_limited_jbj_mk5.iff")
@@ -4086,7 +4160,8 @@ object_tangible_ship_components_booster_shared_bst_mandal_modified_jbj_mk2 = Sha
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2916150549
+	clientObjectCRC = 2916150549,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_mandal_modified_jbj_mk2, "object/tangible/ship/components/booster/shared_bst_mandal_modified_jbj_mk2.iff")
@@ -4140,7 +4215,8 @@ object_tangible_ship_components_booster_shared_bst_mission_reward_imperial_rss_i
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2616547998
+	clientObjectCRC = 2616547998,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_mission_reward_imperial_rss_ion_booster, "object/tangible/ship/components/booster/shared_bst_mission_reward_imperial_rss_ion_booster.iff")
@@ -4194,7 +4270,8 @@ object_tangible_ship_components_booster_shared_bst_mission_reward_neutral_mandal
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2251024280
+	clientObjectCRC = 2251024280,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_mission_reward_neutral_mandal_m_series, "object/tangible/ship/components/booster/shared_bst_mission_reward_neutral_mandal_m_series.iff")
@@ -4248,7 +4325,8 @@ object_tangible_ship_components_booster_shared_bst_mission_reward_neutral_mandal
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3643360208
+	clientObjectCRC = 3643360208,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_mission_reward_neutral_mandal_q_series, "object/tangible/ship/components/booster/shared_bst_mission_reward_neutral_mandal_q_series.iff")
@@ -4302,7 +4380,8 @@ object_tangible_ship_components_booster_shared_bst_mission_reward_rebel_novaldex
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1314651324
+	clientObjectCRC = 1314651324,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_mission_reward_rebel_novaldex_hypernova, "object/tangible/ship/components/booster/shared_bst_mission_reward_rebel_novaldex_hypernova.iff")
@@ -4356,7 +4435,8 @@ object_tangible_ship_components_booster_shared_bst_mission_reward_rebel_qualdex_
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2730673872
+	clientObjectCRC = 2730673872,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_mission_reward_rebel_qualdex_halcyon, "object/tangible/ship/components/booster/shared_bst_mission_reward_rebel_qualdex_halcyon.iff")
@@ -4410,7 +4490,8 @@ object_tangible_ship_components_booster_shared_bst_moncal_advanced = SharedTangi
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3124355866
+	clientObjectCRC = 3124355866,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_moncal_advanced, "object/tangible/ship/components/booster/shared_bst_moncal_advanced.iff")
@@ -4464,7 +4545,8 @@ object_tangible_ship_components_booster_shared_bst_moncal_charged_heavy = Shared
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3234187742
+	clientObjectCRC = 3234187742,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_moncal_charged_heavy, "object/tangible/ship/components/booster/shared_bst_moncal_charged_heavy.iff")
@@ -4518,7 +4600,8 @@ object_tangible_ship_components_booster_shared_bst_moncal_deluxe_standard = Shar
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3884337187
+	clientObjectCRC = 3884337187,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_moncal_deluxe_standard, "object/tangible/ship/components/booster/shared_bst_moncal_deluxe_standard.iff")
@@ -4572,7 +4655,8 @@ object_tangible_ship_components_booster_shared_bst_moncal_elite = SharedTangible
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3306025844
+	clientObjectCRC = 3306025844,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_moncal_elite, "object/tangible/ship/components/booster/shared_bst_moncal_elite.iff")
@@ -4626,7 +4710,8 @@ object_tangible_ship_components_booster_shared_bst_moncal_enhanced_elite = Share
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2418943761
+	clientObjectCRC = 2418943761,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_moncal_enhanced_elite, "object/tangible/ship/components/booster/shared_bst_moncal_enhanced_elite.iff")
@@ -4680,7 +4765,8 @@ object_tangible_ship_components_booster_shared_bst_moncal_heavy = SharedTangible
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1418018573
+	clientObjectCRC = 1418018573,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_moncal_heavy, "object/tangible/ship/components/booster/shared_bst_moncal_heavy.iff")
@@ -4734,7 +4820,8 @@ object_tangible_ship_components_booster_shared_bst_moncal_jlc37 = SharedTangible
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4144415819
+	clientObjectCRC = 4144415819,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_moncal_jlc37, "object/tangible/ship/components/booster/shared_bst_moncal_jlc37.iff")
@@ -4788,7 +4875,8 @@ object_tangible_ship_components_booster_shared_bst_moncal_limited_jlc37 = Shared
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 124704737
+	clientObjectCRC = 124704737,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_moncal_limited_jlc37, "object/tangible/ship/components/booster/shared_bst_moncal_limited_jlc37.iff")
@@ -4842,7 +4930,8 @@ object_tangible_ship_components_booster_shared_bst_moncal_rare_advanced = Shared
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2113743234
+	clientObjectCRC = 2113743234,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_moncal_rare_advanced, "object/tangible/ship/components/booster/shared_bst_moncal_rare_advanced.iff")
@@ -4896,7 +4985,8 @@ object_tangible_ship_components_booster_shared_bst_moncal_standard = SharedTangi
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2595506609
+	clientObjectCRC = 2595506609,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_moncal_standard, "object/tangible/ship/components/booster/shared_bst_moncal_standard.iff")
@@ -4950,7 +5040,8 @@ object_tangible_ship_components_booster_shared_bst_novaldex_pulsar = SharedTangi
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2871976232
+	clientObjectCRC = 2871976232,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_novaldex_pulsar, "object/tangible/ship/components/booster/shared_bst_novaldex_pulsar.iff")
@@ -5004,7 +5095,8 @@ object_tangible_ship_components_booster_shared_bst_novaldex_pulsar_advanced = Sh
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1333284272
+	clientObjectCRC = 1333284272,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_novaldex_pulsar_advanced, "object/tangible/ship/components/booster/shared_bst_novaldex_pulsar_advanced.iff")
@@ -5058,7 +5150,8 @@ object_tangible_ship_components_booster_shared_bst_novaldex_quasar = SharedTangi
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3470077476
+	clientObjectCRC = 3470077476,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_novaldex_quasar, "object/tangible/ship/components/booster/shared_bst_novaldex_quasar.iff")
@@ -5112,7 +5205,8 @@ object_tangible_ship_components_booster_shared_bst_novaldex_quasar_advanced = Sh
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3009788712
+	clientObjectCRC = 3009788712,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_novaldex_quasar_advanced, "object/tangible/ship/components/booster/shared_bst_novaldex_quasar_advanced.iff")
@@ -5166,7 +5260,8 @@ object_tangible_ship_components_booster_shared_bst_qualdex_xboost_mk1 = SharedTa
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 554255149
+	clientObjectCRC = 554255149,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_qualdex_xboost_mk1, "object/tangible/ship/components/booster/shared_bst_qualdex_xboost_mk1.iff")
@@ -5220,7 +5315,8 @@ object_tangible_ship_components_booster_shared_bst_qualdex_xboost_mk2 = SharedTa
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4196330426
+	clientObjectCRC = 4196330426,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_qualdex_xboost_mk2, "object/tangible/ship/components/booster/shared_bst_qualdex_xboost_mk2.iff")
@@ -5274,7 +5370,8 @@ object_tangible_ship_components_booster_shared_bst_qualdex_xboost_mk3 = SharedTa
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3004402743
+	clientObjectCRC = 3004402743,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_qualdex_xboost_mk3, "object/tangible/ship/components/booster/shared_bst_qualdex_xboost_mk3.iff")
@@ -5328,7 +5425,8 @@ object_tangible_ship_components_booster_shared_bst_qualdex_xboost_mk4 = SharedTa
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1223730979
+	clientObjectCRC = 1223730979,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_qualdex_xboost_mk4, "object/tangible/ship/components/booster/shared_bst_qualdex_xboost_mk4.iff")
@@ -5382,7 +5480,8 @@ object_tangible_ship_components_booster_shared_bst_reward_incom_elite = SharedTa
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3656597256
+	clientObjectCRC = 3656597256,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_reward_incom_elite, "object/tangible/ship/components/booster/shared_bst_reward_incom_elite.iff")
@@ -5436,7 +5535,8 @@ object_tangible_ship_components_booster_shared_bst_reward_koensayr_elite = Share
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2006126864
+	clientObjectCRC = 2006126864,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_reward_koensayr_elite, "object/tangible/ship/components/booster/shared_bst_reward_koensayr_elite.iff")
@@ -5490,7 +5590,8 @@ object_tangible_ship_components_booster_shared_bst_reward_kuat_elite = SharedTan
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3954154692
+	clientObjectCRC = 3954154692,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_reward_kuat_elite, "object/tangible/ship/components/booster/shared_bst_reward_kuat_elite.iff")
@@ -5544,7 +5645,8 @@ object_tangible_ship_components_booster_shared_bst_reward_novaldex_elite = Share
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 621880457
+	clientObjectCRC = 621880457,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_reward_novaldex_elite, "object/tangible/ship/components/booster/shared_bst_reward_novaldex_elite.iff")
@@ -5598,7 +5700,8 @@ object_tangible_ship_components_booster_shared_bst_reward_qualdex_elite = Shared
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2436545673
+	clientObjectCRC = 2436545673,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_reward_qualdex_elite, "object/tangible/ship/components/booster/shared_bst_reward_qualdex_elite.iff")
@@ -5652,7 +5755,8 @@ object_tangible_ship_components_booster_shared_bst_rss_special = SharedTangibleO
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3925642831
+	clientObjectCRC = 3925642831,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_rss_special, "object/tangible/ship/components/booster/shared_bst_rss_special.iff")
@@ -5706,7 +5810,8 @@ object_tangible_ship_components_booster_shared_bst_sap_imperial_1 = SharedTangib
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 498383661
+	clientObjectCRC = 498383661,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_sap_imperial_1, "object/tangible/ship/components/booster/shared_bst_sap_imperial_1.iff")
@@ -5760,7 +5865,8 @@ object_tangible_ship_components_booster_shared_bst_sap_imperial_2 = SharedTangib
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3332576186
+	clientObjectCRC = 3332576186,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_sap_imperial_2, "object/tangible/ship/components/booster/shared_bst_sap_imperial_2.iff")
@@ -5814,7 +5920,8 @@ object_tangible_ship_components_booster_shared_bst_sds_enhanced_imperial_2 = Sha
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2637703678
+	clientObjectCRC = 2637703678,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_sds_enhanced_imperial_2, "object/tangible/ship/components/booster/shared_bst_sds_enhanced_imperial_2.iff")
@@ -5868,7 +5975,8 @@ object_tangible_ship_components_booster_shared_bst_sfs_imperial_1 = SharedTangib
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 173403376
+	clientObjectCRC = 173403376,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_sfs_imperial_1, "object/tangible/ship/components/booster/shared_bst_sfs_imperial_1.iff")
@@ -5922,7 +6030,8 @@ object_tangible_ship_components_booster_shared_bst_sfs_imperial_2 = SharedTangib
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3510781031
+	clientObjectCRC = 3510781031,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_sfs_imperial_2, "object/tangible/ship/components/booster/shared_bst_sfs_imperial_2.iff")
@@ -5976,7 +6085,8 @@ object_tangible_ship_components_booster_shared_bst_slayn_ion_booster_mk1 = Share
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4258532580
+	clientObjectCRC = 4258532580,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_slayn_ion_booster_mk1, "object/tangible/ship/components/booster/shared_bst_slayn_ion_booster_mk1.iff")
@@ -6030,7 +6140,8 @@ object_tangible_ship_components_booster_shared_bst_sorosuub_enhanced_liberator_m
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1866927528
+	clientObjectCRC = 1866927528,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_sorosuub_enhanced_liberator_mk4, "object/tangible/ship/components/booster/shared_bst_sorosuub_enhanced_liberator_mk4.iff")
@@ -6084,7 +6195,8 @@ object_tangible_ship_components_booster_shared_bst_sorosuub_improved_liberator_m
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4042319819
+	clientObjectCRC = 4042319819,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_sorosuub_improved_liberator_mk2, "object/tangible/ship/components/booster/shared_bst_sorosuub_improved_liberator_mk2.iff")
@@ -6138,7 +6250,8 @@ object_tangible_ship_components_booster_shared_bst_sorosuub_liberator_mk1 = Shar
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2904503853
+	clientObjectCRC = 2904503853,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_sorosuub_liberator_mk1, "object/tangible/ship/components/booster/shared_bst_sorosuub_liberator_mk1.iff")
@@ -6192,7 +6305,8 @@ object_tangible_ship_components_booster_shared_bst_sorosuub_liberator_mk2 = Shar
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1980276410
+	clientObjectCRC = 1980276410,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_sorosuub_liberator_mk2, "object/tangible/ship/components/booster/shared_bst_sorosuub_liberator_mk2.iff")
@@ -6246,7 +6360,8 @@ object_tangible_ship_components_booster_shared_bst_sorosuub_liberator_mk3 = Shar
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1057356087
+	clientObjectCRC = 1057356087,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_sorosuub_liberator_mk3, "object/tangible/ship/components/booster/shared_bst_sorosuub_liberator_mk3.iff")
@@ -6300,7 +6415,8 @@ object_tangible_ship_components_booster_shared_bst_sorosuub_liberator_mk4 = Shar
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3303461411
+	clientObjectCRC = 3303461411,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_sorosuub_liberator_mk4, "object/tangible/ship/components/booster/shared_bst_sorosuub_liberator_mk4.iff")
@@ -6354,7 +6470,8 @@ object_tangible_ship_components_booster_shared_bst_sorosuub_liberator_mk5 = Shar
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2381034926
+	clientObjectCRC = 2381034926,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_sorosuub_liberator_mk5, "object/tangible/ship/components/booster/shared_bst_sorosuub_liberator_mk5.iff")
@@ -6408,7 +6525,8 @@ object_tangible_ship_components_booster_shared_bst_sorosuub_prized_liberator_mk1
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2805387949
+	clientObjectCRC = 2805387949,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_sorosuub_prized_liberator_mk1, "object/tangible/ship/components/booster/shared_bst_sorosuub_prized_liberator_mk1.iff")
@@ -6462,7 +6580,8 @@ object_tangible_ship_components_booster_shared_bst_sorosuub_supercharged_liberat
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1684575263
+	clientObjectCRC = 1684575263,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_sorosuub_supercharged_liberator_mk3, "object/tangible/ship/components/booster/shared_bst_sorosuub_supercharged_liberator_mk3.iff")
@@ -6516,7 +6635,8 @@ object_tangible_ship_components_booster_shared_bst_sorosuub_well_tuned_liberator
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3378470899
+	clientObjectCRC = 3378470899,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_sorosuub_well_tuned_liberator_mk5, "object/tangible/ship/components/booster/shared_bst_sorosuub_well_tuned_liberator_mk5.iff")
@@ -6570,7 +6690,8 @@ object_tangible_ship_components_booster_shared_bst_subpro_accelatron_mk1 = Share
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3614410827
+	clientObjectCRC = 3614410827,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_subpro_accelatron_mk1, "object/tangible/ship/components/booster/shared_bst_subpro_accelatron_mk1.iff")
@@ -6624,7 +6745,8 @@ object_tangible_ship_components_booster_shared_bst_subpro_accelatron_mk2 = Share
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 209199324
+	clientObjectCRC = 209199324,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_subpro_accelatron_mk2, "object/tangible/ship/components/booster/shared_bst_subpro_accelatron_mk2.iff")
@@ -6678,7 +6800,8 @@ object_tangible_ship_components_booster_shared_bst_subpro_accelatron_mk3 = Share
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1165313873
+	clientObjectCRC = 1165313873,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_subpro_accelatron_mk3, "object/tangible/ship/components/booster/shared_bst_subpro_accelatron_mk3.iff")
@@ -6732,7 +6855,8 @@ object_tangible_ship_components_booster_shared_bst_subpro_accelatron_mk4 = Share
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3197529157
+	clientObjectCRC = 3197529157,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_subpro_accelatron_mk4, "object/tangible/ship/components/booster/shared_bst_subpro_accelatron_mk4.iff")
@@ -6786,7 +6910,8 @@ object_tangible_ship_components_booster_shared_bst_subpro_accelatron_mk5 = Share
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4154133448
+	clientObjectCRC = 4154133448,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_subpro_accelatron_mk5, "object/tangible/ship/components/booster/shared_bst_subpro_accelatron_mk5.iff")
@@ -6840,7 +6965,8 @@ object_tangible_ship_components_booster_shared_bst_subpro_deluxe_accelatron_mk3 
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2441728107
+	clientObjectCRC = 2441728107,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_subpro_deluxe_accelatron_mk3, "object/tangible/ship/components/booster/shared_bst_subpro_deluxe_accelatron_mk3.iff")
@@ -6894,7 +7020,8 @@ object_tangible_ship_components_booster_shared_bst_subpro_elite_accelatron_mk5 =
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2539684267
+	clientObjectCRC = 2539684267,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_subpro_elite_accelatron_mk5, "object/tangible/ship/components/booster/shared_bst_subpro_elite_accelatron_mk5.iff")
@@ -6948,7 +7075,8 @@ object_tangible_ship_components_booster_shared_bst_subpro_enhanced_accelatron_mk
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3219799574
+	clientObjectCRC = 3219799574,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_subpro_enhanced_accelatron_mk2, "object/tangible/ship/components/booster/shared_bst_subpro_enhanced_accelatron_mk2.iff")
@@ -7002,7 +7130,8 @@ object_tangible_ship_components_booster_shared_bst_subpro_modified_accelatron_mk
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3848103440
+	clientObjectCRC = 3848103440,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_subpro_modified_accelatron_mk4, "object/tangible/ship/components/booster/shared_bst_subpro_modified_accelatron_mk4.iff")
@@ -7056,7 +7185,8 @@ object_tangible_ship_components_booster_shared_bst_subpro_tuned_accelatron_mk1 =
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2160911375
+	clientObjectCRC = 2160911375,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_subpro_tuned_accelatron_mk1, "object/tangible/ship/components/booster/shared_bst_subpro_tuned_accelatron_mk1.iff")
@@ -7110,7 +7240,8 @@ object_tangible_ship_components_booster_shared_bst_surronian_accelerator_mk1 = S
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3438333204
+	clientObjectCRC = 3438333204,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_surronian_accelerator_mk1, "object/tangible/ship/components/booster/shared_bst_surronian_accelerator_mk1.iff")
@@ -7164,7 +7295,8 @@ object_tangible_ship_components_booster_shared_bst_surronian_accelerator_mk2 = S
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 401040771
+	clientObjectCRC = 401040771,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_surronian_accelerator_mk2, "object/tangible/ship/components/booster/shared_bst_surronian_accelerator_mk2.iff")
@@ -7218,7 +7350,8 @@ object_tangible_ship_components_booster_shared_bst_surronian_nomad_x4 = SharedTa
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1695261878
+	clientObjectCRC = 1695261878,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_surronian_nomad_x4, "object/tangible/ship/components/booster/shared_bst_surronian_nomad_x4.iff")
@@ -7272,7 +7405,8 @@ object_tangible_ship_components_booster_shared_bst_surronian_nomad_x8 = SharedTa
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 68558899
+	clientObjectCRC = 68558899,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_surronian_nomad_x8, "object/tangible/ship/components/booster/shared_bst_surronian_nomad_x8.iff")
@@ -7326,7 +7460,8 @@ object_tangible_ship_components_booster_shared_bst_tiefighter_basic = SharedTang
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2602586479
+	clientObjectCRC = 2602586479,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_tiefighter_basic, "object/tangible/ship/components/booster/shared_bst_tiefighter_basic.iff")
@@ -7380,7 +7515,8 @@ object_tangible_ship_components_booster_shared_bst_z95_basic = SharedTangibleObj
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 623716829
+	clientObjectCRC = 623716829,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_z95_basic, "object/tangible/ship/components/booster/shared_bst_z95_basic.iff")
@@ -7434,7 +7570,8 @@ object_tangible_ship_components_booster_shared_xwing_booster_test = SharedTangib
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1998070919
+	clientObjectCRC = 1998070919,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_xwing_booster_test, "object/tangible/ship/components/booster/shared_xwing_booster_test.iff")

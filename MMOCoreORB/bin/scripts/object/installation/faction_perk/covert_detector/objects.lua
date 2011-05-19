@@ -90,7 +90,8 @@ object_installation_faction_perk_covert_detector_shared_detector_base = SharedIn
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2218940295
+	clientObjectCRC = 2218940295,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_installation_faction_perk_covert_detector_shared_detector_base, "object/installation/faction_perk/covert_detector/shared_detector_base.iff")

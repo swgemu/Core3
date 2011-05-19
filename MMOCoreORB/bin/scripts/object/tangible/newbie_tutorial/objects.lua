@@ -90,7 +90,8 @@ object_tangible_newbie_tutorial_shared_debris = SharedTangibleObjectTemplate:new
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4070737588
+	clientObjectCRC = 4070737588,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_newbie_tutorial_shared_debris, "object/tangible/newbie_tutorial/shared_debris.iff")

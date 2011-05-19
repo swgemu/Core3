@@ -90,7 +90,8 @@ object_counting_base_shared_base_counting = SharedCountingObjectTemplate:new {
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2904726131
+	clientObjectCRC = 2904726131,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_counting_base_shared_base_counting, "object/counting/base/shared_base_counting.iff")
@@ -144,7 +145,8 @@ object_counting_base_shared_counting_default = SharedCountingObjectTemplate:new 
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3211286444
+	clientObjectCRC = 3211286444,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/counting/base/shared_base_counting.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_counting_base_shared_counting_default, "object/counting/base/shared_counting_default.iff")

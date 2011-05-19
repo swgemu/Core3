@@ -90,7 +90,8 @@ object_tangible_component_vehicle_shared_adv_hvy_blaster_power_handler = SharedT
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3865021906
+	clientObjectCRC = 3865021906,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_vehicle_shared_adv_hvy_blaster_power_handler, "object/tangible/component/vehicle/shared_adv_hvy_blaster_power_handler.iff")
@@ -144,7 +145,8 @@ object_tangible_component_vehicle_shared_adv_hvy_projectile_feed_mech = SharedTa
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1510776729
+	clientObjectCRC = 1510776729,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_vehicle_shared_adv_hvy_projectile_feed_mech, "object/tangible/component/vehicle/shared_adv_hvy_projectile_feed_mech.iff")
@@ -198,7 +200,8 @@ object_tangible_component_vehicle_shared_adv_vehicle_module = SharedTangibleObje
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1581441816
+	clientObjectCRC = 1581441816,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_vehicle_shared_adv_vehicle_module, "object/tangible/component/vehicle/shared_adv_vehicle_module.iff")
@@ -252,7 +255,8 @@ object_tangible_component_vehicle_shared_adv_vehicle_structure_frame = SharedTan
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 786572723
+	clientObjectCRC = 786572723,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_vehicle_shared_adv_vehicle_structure_frame, "object/tangible/component/vehicle/shared_adv_vehicle_structure_frame.iff")
@@ -306,7 +310,8 @@ object_tangible_component_vehicle_shared_adv_warhead_launcher = SharedTangibleOb
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1382684326
+	clientObjectCRC = 1382684326,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_vehicle_shared_adv_warhead_launcher, "object/tangible/component/vehicle/shared_adv_warhead_launcher.iff")
@@ -360,7 +365,8 @@ object_tangible_component_vehicle_shared_armor_panel_acid = SharedTangibleObject
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3241531623
+	clientObjectCRC = 3241531623,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/vehicle/base/shared_base_armor_panel.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_vehicle_shared_armor_panel_acid, "object/tangible/component/vehicle/shared_armor_panel_acid.iff")
@@ -414,7 +420,8 @@ object_tangible_component_vehicle_shared_armor_panel_blast = SharedTangibleObjec
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1069256646
+	clientObjectCRC = 1069256646,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/vehicle/base/shared_base_armor_panel.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_vehicle_shared_armor_panel_blast, "object/tangible/component/vehicle/shared_armor_panel_blast.iff")
@@ -468,7 +475,8 @@ object_tangible_component_vehicle_shared_armor_panel_cold = SharedTangibleObject
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1264295934
+	clientObjectCRC = 1264295934,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/vehicle/base/shared_base_armor_panel.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_vehicle_shared_armor_panel_cold, "object/tangible/component/vehicle/shared_armor_panel_cold.iff")
@@ -522,7 +530,8 @@ object_tangible_component_vehicle_shared_armor_panel_electrical = SharedTangible
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3441847905
+	clientObjectCRC = 3441847905,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/vehicle/base/shared_base_armor_panel.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_vehicle_shared_armor_panel_electrical, "object/tangible/component/vehicle/shared_armor_panel_electrical.iff")
@@ -576,7 +585,8 @@ object_tangible_component_vehicle_shared_armor_panel_energy = SharedTangibleObje
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 953836336
+	clientObjectCRC = 953836336,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/vehicle/base/shared_base_armor_panel.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_vehicle_shared_armor_panel_energy, "object/tangible/component/vehicle/shared_armor_panel_energy.iff")
@@ -630,7 +640,8 @@ object_tangible_component_vehicle_shared_armor_panel_heat = SharedTangibleObject
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3015233806
+	clientObjectCRC = 3015233806,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/vehicle/base/shared_base_armor_panel.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_vehicle_shared_armor_panel_heat, "object/tangible/component/vehicle/shared_armor_panel_heat.iff")
@@ -684,7 +695,8 @@ object_tangible_component_vehicle_shared_armor_panel_kinetic = SharedTangibleObj
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2965773562
+	clientObjectCRC = 2965773562,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/vehicle/base/shared_base_armor_panel.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_vehicle_shared_armor_panel_kinetic, "object/tangible/component/vehicle/shared_armor_panel_kinetic.iff")
@@ -738,7 +750,8 @@ object_tangible_component_vehicle_shared_armor_plating_mk1 = SharedTangibleObjec
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1681561469
+	clientObjectCRC = 1681561469,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/vehicle/base/shared_base_veh_hull.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_vehicle_shared_armor_plating_mk1, "object/tangible/component/vehicle/shared_armor_plating_mk1.iff")
@@ -792,7 +805,8 @@ object_tangible_component_vehicle_shared_armor_plating_mk2 = SharedTangibleObjec
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3207413738
+	clientObjectCRC = 3207413738,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/vehicle/base/shared_base_veh_hull.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_vehicle_shared_armor_plating_mk2, "object/tangible/component/vehicle/shared_armor_plating_mk2.iff")
@@ -846,7 +860,8 @@ object_tangible_component_vehicle_shared_armor_plating_mk3 = SharedTangibleObjec
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4129314919
+	clientObjectCRC = 4129314919,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/vehicle/base/shared_base_veh_hull_hvy.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_vehicle_shared_armor_plating_mk3, "object/tangible/component/vehicle/shared_armor_plating_mk3.iff")
@@ -900,7 +915,8 @@ object_tangible_component_vehicle_shared_auto_blaster_cannon = SharedTangibleObj
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1669906342
+	clientObjectCRC = 1669906342,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/vehicle/base/shared_base_veh_weapon.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_vehicle_shared_auto_blaster_cannon, "object/tangible/component/vehicle/shared_auto_blaster_cannon.iff")
@@ -954,7 +970,8 @@ object_tangible_component_vehicle_shared_blaster_cannon = SharedTangibleObjectTe
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3207704663
+	clientObjectCRC = 3207704663,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/vehicle/base/shared_base_veh_weapon.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_vehicle_shared_blaster_cannon, "object/tangible/component/vehicle/shared_blaster_cannon.iff")
@@ -1005,7 +1022,8 @@ object_tangible_component_vehicle_shared_civilian_a = SharedTangibleObjectTempla
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4196904136
+	clientObjectCRC = 4196904136,
+	derivedFromTemplates = {}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_vehicle_shared_civilian_a, "object/tangible/component/vehicle/shared_civilian_a.iff")
@@ -1056,7 +1074,8 @@ object_tangible_component_vehicle_shared_civilian_aa = SharedTangibleObjectTempl
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4241836654
+	clientObjectCRC = 4241836654,
+	derivedFromTemplates = {}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_vehicle_shared_civilian_aa, "object/tangible/component/vehicle/shared_civilian_aa.iff")
@@ -1107,7 +1126,8 @@ object_tangible_component_vehicle_shared_civilian_b = SharedTangibleObjectTempla
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 556794975
+	clientObjectCRC = 556794975,
+	derivedFromTemplates = {}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_vehicle_shared_civilian_b, "object/tangible/component/vehicle/shared_civilian_b.iff")
@@ -1158,7 +1178,8 @@ object_tangible_component_vehicle_shared_civilian_c = SharedTangibleObjectTempla
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1748853714
+	clientObjectCRC = 1748853714,
+	derivedFromTemplates = {}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_vehicle_shared_civilian_c, "object/tangible/component/vehicle/shared_civilian_c.iff")
@@ -1209,7 +1230,8 @@ object_tangible_component_vehicle_shared_civilian_d = SharedTangibleObjectTempla
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2480818374
+	clientObjectCRC = 2480818374,
+	derivedFromTemplates = {}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_vehicle_shared_civilian_d, "object/tangible/component/vehicle/shared_civilian_d.iff")
@@ -1260,7 +1282,8 @@ object_tangible_component_vehicle_shared_civilian_e = SharedTangibleObjectTempla
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3671273291
+	clientObjectCRC = 3671273291,
+	derivedFromTemplates = {}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_vehicle_shared_civilian_e, "object/tangible/component/vehicle/shared_civilian_e.iff")
@@ -1314,7 +1337,8 @@ object_tangible_component_vehicle_shared_command_center = SharedTangibleObjectTe
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4011041142
+	clientObjectCRC = 4011041142,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/vehicle/base/shared_base_veh_hull_hvy.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_vehicle_shared_command_center, "object/tangible/component/vehicle/shared_command_center.iff")
@@ -1368,7 +1392,8 @@ object_tangible_component_vehicle_shared_disperser = SharedTangibleObjectTemplat
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2526466923
+	clientObjectCRC = 2526466923,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/vehicle/base/shared_base_veh_weapon_hvy.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_vehicle_shared_disperser, "object/tangible/component/vehicle/shared_disperser.iff")
@@ -1422,7 +1447,8 @@ object_tangible_component_vehicle_shared_dx_disruptor_array = SharedTangibleObje
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1758294677
+	clientObjectCRC = 1758294677,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/vehicle/base/shared_base_veh_weapon_hvy.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_vehicle_shared_dx_disruptor_array, "object/tangible/component/vehicle/shared_dx_disruptor_array.iff")
@@ -1476,7 +1502,8 @@ object_tangible_component_vehicle_shared_extended_fuel_tanks = SharedTangibleObj
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2423684763
+	clientObjectCRC = 2423684763,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/vehicle/base/shared_base_veh_hull.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_vehicle_shared_extended_fuel_tanks, "object/tangible/component/vehicle/shared_extended_fuel_tanks.iff")
@@ -1530,7 +1557,8 @@ object_tangible_component_vehicle_shared_extended_fuel_tanks_hvy = SharedTangibl
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1508560129
+	clientObjectCRC = 1508560129,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/vehicle/base/shared_base_veh_hull_hvy.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_vehicle_shared_extended_fuel_tanks_hvy, "object/tangible/component/vehicle/shared_extended_fuel_tanks_hvy.iff")
@@ -1584,7 +1612,8 @@ object_tangible_component_vehicle_shared_fuel_a = SharedTangibleObjectTemplate:n
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 875276992
+	clientObjectCRC = 875276992,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_vehicle_shared_fuel_a, "object/tangible/component/vehicle/shared_fuel_a.iff")
@@ -1638,7 +1667,8 @@ object_tangible_component_vehicle_shared_fuel_b = SharedTangibleObjectTemplate:n
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4013687383
+	clientObjectCRC = 4013687383,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_vehicle_shared_fuel_b, "object/tangible/component/vehicle/shared_fuel_b.iff")
@@ -1692,7 +1722,8 @@ object_tangible_component_vehicle_shared_fuel_c = SharedTangibleObjectTemplate:n
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2788255194
+	clientObjectCRC = 2788255194,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_vehicle_shared_fuel_c, "object/tangible/component/vehicle/shared_fuel_c.iff")
@@ -1746,7 +1777,8 @@ object_tangible_component_vehicle_shared_fuel_cell_a = SharedTangibleObjectTempl
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2771769499
+	clientObjectCRC = 2771769499,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_vehicle_shared_fuel_cell_a, "object/tangible/component/vehicle/shared_fuel_cell_a.iff")
@@ -1800,7 +1832,8 @@ object_tangible_component_vehicle_shared_fuel_cell_b = SharedTangibleObjectTempl
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2116186124
+	clientObjectCRC = 2116186124,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_vehicle_shared_fuel_cell_b, "object/tangible/component/vehicle/shared_fuel_cell_b.iff")
@@ -1854,7 +1887,8 @@ object_tangible_component_vehicle_shared_fuel_cell_c = SharedTangibleObjectTempl
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 925833089
+	clientObjectCRC = 925833089,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_vehicle_shared_fuel_cell_c, "object/tangible/component/vehicle/shared_fuel_cell_c.iff")
@@ -1908,7 +1942,8 @@ object_tangible_component_vehicle_shared_hvy_blaster_power_handler = SharedTangi
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1799983183
+	clientObjectCRC = 1799983183,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_vehicle_shared_hvy_blaster_power_handler, "object/tangible/component/vehicle/shared_hvy_blaster_power_handler.iff")
@@ -1962,7 +1997,8 @@ object_tangible_component_vehicle_shared_hvy_projectile_feed_mech = SharedTangib
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 873571042
+	clientObjectCRC = 873571042,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_vehicle_shared_hvy_projectile_feed_mech, "object/tangible/component/vehicle/shared_hvy_projectile_feed_mech.iff")
@@ -2016,7 +2052,8 @@ object_tangible_component_vehicle_shared_laser_cannon = SharedTangibleObjectTemp
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 23811175
+	clientObjectCRC = 23811175,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/vehicle/base/shared_base_veh_weapon.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_vehicle_shared_laser_cannon, "object/tangible/component/vehicle/shared_laser_cannon.iff")
@@ -2070,7 +2107,8 @@ object_tangible_component_vehicle_shared_launcher = SharedTangibleObjectTemplate
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2036478700
+	clientObjectCRC = 2036478700,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/vehicle/base/shared_base_veh_weapon_hvy.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_vehicle_shared_launcher, "object/tangible/component/vehicle/shared_launcher.iff")
@@ -2124,7 +2162,8 @@ object_tangible_component_vehicle_shared_launcher_pod = SharedTangibleObjectTemp
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3252736157
+	clientObjectCRC = 3252736157,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/vehicle/base/shared_base_veh_weapon_hvy.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_vehicle_shared_launcher_pod, "object/tangible/component/vehicle/shared_launcher_pod.iff")
@@ -2178,7 +2217,8 @@ object_tangible_component_vehicle_shared_mass_driver = SharedTangibleObjectTempl
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3394427130
+	clientObjectCRC = 3394427130,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/vehicle/base/shared_base_veh_weapon.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_vehicle_shared_mass_driver, "object/tangible/component/vehicle/shared_mass_driver.iff")
@@ -2229,7 +2269,8 @@ object_tangible_component_vehicle_shared_military_a = SharedTangibleObjectTempla
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3996260675
+	clientObjectCRC = 3996260675,
+	derivedFromTemplates = {}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_vehicle_shared_military_a, "object/tangible/component/vehicle/shared_military_a.iff")
@@ -2280,7 +2321,8 @@ object_tangible_component_vehicle_shared_military_b = SharedTangibleObjectTempla
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 891662804
+	clientObjectCRC = 891662804,
+	derivedFromTemplates = {}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_vehicle_shared_military_b, "object/tangible/component/vehicle/shared_military_b.iff")
@@ -2331,7 +2373,8 @@ object_tangible_component_vehicle_shared_military_c = SharedTangibleObjectTempla
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2083051097
+	clientObjectCRC = 2083051097,
+	derivedFromTemplates = {}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_vehicle_shared_military_c, "object/tangible/component/vehicle/shared_military_c.iff")
@@ -2382,7 +2425,8 @@ object_tangible_component_vehicle_shared_military_d = SharedTangibleObjectTempla
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2278292813
+	clientObjectCRC = 2278292813,
+	derivedFromTemplates = {}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_vehicle_shared_military_d, "object/tangible/component/vehicle/shared_military_d.iff")
@@ -2433,7 +2477,8 @@ object_tangible_component_vehicle_shared_military_e = SharedTangibleObjectTempla
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3469122240
+	clientObjectCRC = 3469122240,
+	derivedFromTemplates = {}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_vehicle_shared_military_e, "object/tangible/component/vehicle/shared_military_e.iff")
@@ -2487,7 +2532,8 @@ object_tangible_component_vehicle_shared_mini_launcher_pod = SharedTangibleObjec
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 679614064
+	clientObjectCRC = 679614064,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/vehicle/base/shared_base_veh_weapon.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_vehicle_shared_mini_launcher_pod, "object/tangible/component/vehicle/shared_mini_launcher_pod.iff")
@@ -2541,7 +2587,8 @@ object_tangible_component_vehicle_shared_proton_torpedo_array = SharedTangibleOb
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1469492977
+	clientObjectCRC = 1469492977,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/vehicle/base/shared_base_veh_weapon_hvy.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_vehicle_shared_proton_torpedo_array, "object/tangible/component/vehicle/shared_proton_torpedo_array.iff")
@@ -2595,7 +2642,8 @@ object_tangible_component_vehicle_shared_reactor_unit = SharedTangibleObjectTemp
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3412711253
+	clientObjectCRC = 3412711253,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_vehicle_shared_reactor_unit, "object/tangible/component/vehicle/shared_reactor_unit.iff")
@@ -2649,7 +2697,8 @@ object_tangible_component_vehicle_shared_storage_bay = SharedTangibleObjectTempl
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 193714292
+	clientObjectCRC = 193714292,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/vehicle/base/shared_base_veh_hull.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_vehicle_shared_storage_bay, "object/tangible/component/vehicle/shared_storage_bay.iff")
@@ -2703,7 +2752,8 @@ object_tangible_component_vehicle_shared_structural_reinforcements = SharedTangi
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1158767213
+	clientObjectCRC = 1158767213,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/vehicle/base/shared_base_veh_hull.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_vehicle_shared_structural_reinforcements, "object/tangible/component/vehicle/shared_structural_reinforcements.iff")
@@ -2757,7 +2807,8 @@ object_tangible_component_vehicle_shared_structural_reinforcements_hvy = SharedT
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2107974846
+	clientObjectCRC = 2107974846,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/vehicle/base/shared_base_veh_hull_hvy.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_vehicle_shared_structural_reinforcements_hvy, "object/tangible/component/vehicle/shared_structural_reinforcements_hvy.iff")
@@ -2811,7 +2862,8 @@ object_tangible_component_vehicle_shared_veh_power_plant_av21 = SharedTangibleOb
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 988089930
+	clientObjectCRC = 988089930,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/vehicle/base/shared_base_veh_hull.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_vehicle_shared_veh_power_plant_av21, "object/tangible/component/vehicle/shared_veh_power_plant_av21.iff")
@@ -2865,7 +2917,8 @@ object_tangible_component_vehicle_shared_veh_power_plant_mk1 = SharedTangibleObj
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2595754938
+	clientObjectCRC = 2595754938,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/vehicle/base/shared_base_veh_hull.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_vehicle_shared_veh_power_plant_mk1, "object/tangible/component/vehicle/shared_veh_power_plant_mk1.iff")
@@ -2919,7 +2972,8 @@ object_tangible_component_vehicle_shared_veh_power_plant_mk2 = SharedTangibleObj
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1102035757
+	clientObjectCRC = 1102035757,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/vehicle/base/shared_base_veh_hull.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_vehicle_shared_veh_power_plant_mk2, "object/tangible/component/vehicle/shared_veh_power_plant_mk2.iff")
@@ -2973,7 +3027,8 @@ object_tangible_component_vehicle_shared_veh_power_plant_mk3 = SharedTangibleObj
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 144891040
+	clientObjectCRC = 144891040,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/vehicle/base/shared_base_veh_hull_hvy.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_vehicle_shared_veh_power_plant_mk3, "object/tangible/component/vehicle/shared_veh_power_plant_mk3.iff")
@@ -3027,7 +3082,8 @@ object_tangible_component_vehicle_shared_veh_shield_generator_mk1 = SharedTangib
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1124134870
+	clientObjectCRC = 1124134870,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/vehicle/base/shared_base_veh_hull.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_vehicle_shared_veh_shield_generator_mk1, "object/tangible/component/vehicle/shared_veh_shield_generator_mk1.iff")
@@ -3081,7 +3137,8 @@ object_tangible_component_vehicle_shared_veh_shield_generator_mk2 = SharedTangib
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2551662401
+	clientObjectCRC = 2551662401,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/vehicle/base/shared_base_veh_hull.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_vehicle_shared_veh_shield_generator_mk2, "object/tangible/component/vehicle/shared_veh_shield_generator_mk2.iff")
@@ -3135,7 +3192,8 @@ object_tangible_component_vehicle_shared_veh_shield_generator_mk3 = SharedTangib
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3508150476
+	clientObjectCRC = 3508150476,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/vehicle/base/shared_base_veh_hull_hvy.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_vehicle_shared_veh_shield_generator_mk3, "object/tangible/component/vehicle/shared_veh_shield_generator_mk3.iff")
@@ -3189,7 +3247,8 @@ object_tangible_component_vehicle_shared_vehicle_module = SharedTangibleObjectTe
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2537869251
+	clientObjectCRC = 2537869251,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_vehicle_shared_vehicle_module, "object/tangible/component/vehicle/shared_vehicle_module.iff")
@@ -3243,7 +3302,8 @@ object_tangible_component_vehicle_shared_vehicle_structure_frame = SharedTangibl
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2570010963
+	clientObjectCRC = 2570010963,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_vehicle_shared_vehicle_structure_frame, "object/tangible/component/vehicle/shared_vehicle_structure_frame.iff")
@@ -3297,7 +3357,8 @@ object_tangible_component_vehicle_shared_warhead_launcher = SharedTangibleObject
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4289490254
+	clientObjectCRC = 4289490254,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_vehicle_shared_warhead_launcher, "object/tangible/component/vehicle/shared_warhead_launcher.iff")
@@ -3351,7 +3412,8 @@ object_tangible_component_vehicle_shared_weapon_array = SharedTangibleObjectTemp
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4201896584
+	clientObjectCRC = 4201896584,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/vehicle/base/shared_base_veh_weapon_hvy.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_vehicle_shared_weapon_array, "object/tangible/component/vehicle/shared_weapon_array.iff")
@@ -3405,7 +3467,8 @@ object_tangible_component_vehicle_shared_weapon_link = SharedTangibleObjectTempl
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1550314035
+	clientObjectCRC = 1550314035,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/vehicle/base/shared_base_veh_weapon_hvy.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_vehicle_shared_weapon_link, "object/tangible/component/vehicle/shared_weapon_link.iff")

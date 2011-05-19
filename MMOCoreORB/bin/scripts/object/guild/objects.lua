@@ -80,7 +80,8 @@ object_guild_shared_guild_object = SharedGuildObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2101404390
+	clientObjectCRC = 2101404390,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/universe/base/shared_base_universe.iff", "object/guild/base/shared_base_guild.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_guild_shared_guild_object, "object/guild/shared_guild_object.iff")

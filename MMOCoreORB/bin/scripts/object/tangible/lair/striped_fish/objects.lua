@@ -90,7 +90,8 @@ object_tangible_lair_striped_fish_shared_lair_striped_fish = SharedTangibleObjec
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 348164560
+	clientObjectCRC = 348164560,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_striped_fish_shared_lair_striped_fish, "object/tangible/lair/striped_fish/shared_lair_striped_fish.iff")
@@ -144,7 +145,8 @@ object_tangible_lair_striped_fish_shared_lair_striped_fish_underwater = SharedTa
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1569350634
+	clientObjectCRC = 1569350634,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_striped_fish_shared_lair_striped_fish_underwater, "object/tangible/lair/striped_fish/shared_lair_striped_fish_underwater.iff")

@@ -80,7 +80,8 @@ object_draft_schematic_weapon_shared_2h_sword_scythe = SharedDraftSchematicObjec
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 326162791
+	clientObjectCRC = 326162791,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_weapon_shared_2h_sword_scythe, "object/draft_schematic/weapon/shared_2h_sword_scythe.iff")
@@ -124,7 +125,8 @@ object_draft_schematic_weapon_shared_axe = SharedDraftSchematicObjectTemplate:ne
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 234370130
+	clientObjectCRC = 234370130,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_weapon_shared_axe, "object/draft_schematic/weapon/shared_axe.iff")
@@ -168,7 +170,8 @@ object_draft_schematic_weapon_shared_axe_vibro = SharedDraftSchematicObjectTempl
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3948376002
+	clientObjectCRC = 3948376002,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_weapon_shared_axe_vibro, "object/draft_schematic/weapon/shared_axe_vibro.iff")
@@ -212,7 +215,8 @@ object_draft_schematic_weapon_shared_baton_gaderiffi = SharedDraftSchematicObjec
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3052026379
+	clientObjectCRC = 3052026379,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_weapon_shared_baton_gaderiffi, "object/draft_schematic/weapon/shared_baton_gaderiffi.iff")
@@ -256,7 +260,8 @@ object_draft_schematic_weapon_shared_baton_stun = SharedDraftSchematicObjectTemp
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 366533914
+	clientObjectCRC = 366533914,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_weapon_shared_baton_stun, "object/draft_schematic/weapon/shared_baton_stun.iff")
@@ -300,7 +305,8 @@ object_draft_schematic_weapon_shared_battleaxe = SharedDraftSchematicObjectTempl
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 597539800
+	clientObjectCRC = 597539800,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_weapon_shared_battleaxe, "object/draft_schematic/weapon/shared_battleaxe.iff")
@@ -344,7 +350,8 @@ object_draft_schematic_weapon_shared_blaster_cannon = SharedDraftSchematicObject
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2782911899
+	clientObjectCRC = 2782911899,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_weapon_shared_blaster_cannon, "object/draft_schematic/weapon/shared_blaster_cannon.iff")
@@ -388,7 +395,8 @@ object_draft_schematic_weapon_shared_carbine_blaster_cdef = SharedDraftSchematic
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 76251144
+	clientObjectCRC = 76251144,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_weapon_shared_carbine_blaster_cdef, "object/draft_schematic/weapon/shared_carbine_blaster_cdef.iff")
@@ -432,7 +440,8 @@ object_draft_schematic_weapon_shared_carbine_quest_smuggler_underslung = SharedD
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1906569024
+	clientObjectCRC = 1906569024,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_weapon_shared_carbine_quest_smuggler_underslung, "object/draft_schematic/weapon/shared_carbine_quest_smuggler_underslung.iff")
@@ -476,7 +485,8 @@ object_draft_schematic_weapon_shared_cleaver = SharedDraftSchematicObjectTemplat
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3092291953
+	clientObjectCRC = 3092291953,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_weapon_shared_cleaver, "object/draft_schematic/weapon/shared_cleaver.iff")
@@ -520,7 +530,8 @@ object_draft_schematic_weapon_shared_executioners_hack = SharedDraftSchematicObj
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3647480452
+	clientObjectCRC = 3647480452,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_weapon_shared_executioners_hack, "object/draft_schematic/weapon/shared_executioners_hack.iff")
@@ -564,7 +575,8 @@ object_draft_schematic_weapon_shared_heavy_acid_beam = SharedDraftSchematicObjec
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2797052196
+	clientObjectCRC = 2797052196,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_weapon_shared_heavy_acid_beam, "object/draft_schematic/weapon/shared_heavy_acid_beam.iff")
@@ -608,7 +620,8 @@ object_draft_schematic_weapon_shared_heavy_lightning_beam = SharedDraftSchematic
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1279236123
+	clientObjectCRC = 1279236123,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_weapon_shared_heavy_lightning_beam, "object/draft_schematic/weapon/shared_heavy_lightning_beam.iff")
@@ -652,7 +665,8 @@ object_draft_schematic_weapon_shared_heavy_particle_beam = SharedDraftSchematicO
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3571649817
+	clientObjectCRC = 3571649817,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_weapon_shared_heavy_particle_beam, "object/draft_schematic/weapon/shared_heavy_particle_beam.iff")
@@ -696,7 +710,8 @@ object_draft_schematic_weapon_shared_heavy_rocket_launcher = SharedDraftSchemati
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2478786473
+	clientObjectCRC = 2478786473,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_weapon_shared_heavy_rocket_launcher, "object/draft_schematic/weapon/shared_heavy_rocket_launcher.iff")
@@ -740,7 +755,8 @@ object_draft_schematic_weapon_shared_ion_cannon = SharedDraftSchematicObjectTemp
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1667625944
+	clientObjectCRC = 1667625944,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_weapon_shared_ion_cannon, "object/draft_schematic/weapon/shared_ion_cannon.iff")
@@ -784,7 +800,8 @@ object_draft_schematic_weapon_shared_katana = SharedDraftSchematicObjectTemplate
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3248015659
+	clientObjectCRC = 3248015659,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_weapon_shared_katana, "object/draft_schematic/weapon/shared_katana.iff")
@@ -828,7 +845,8 @@ object_draft_schematic_weapon_shared_knife_stone = SharedDraftSchematicObjectTem
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1343310494
+	clientObjectCRC = 1343310494,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_weapon_shared_knife_stone, "object/draft_schematic/weapon/shared_knife_stone.iff")
@@ -872,7 +890,8 @@ object_draft_schematic_weapon_shared_knife_survival = SharedDraftSchematicObject
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1433859593
+	clientObjectCRC = 1433859593,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_weapon_shared_knife_survival, "object/draft_schematic/weapon/shared_knife_survival.iff")
@@ -916,7 +935,8 @@ object_draft_schematic_weapon_shared_knife_twilek_dagger = SharedDraftSchematicO
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1451327989
+	clientObjectCRC = 1451327989,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_weapon_shared_knife_twilek_dagger, "object/draft_schematic/weapon/shared_knife_twilek_dagger.iff")
@@ -960,7 +980,8 @@ object_draft_schematic_weapon_shared_knife_vibroblade = SharedDraftSchematicObje
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3275846224
+	clientObjectCRC = 3275846224,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_weapon_shared_knife_vibroblade, "object/draft_schematic/weapon/shared_knife_vibroblade.iff")
@@ -1004,7 +1025,8 @@ object_draft_schematic_weapon_shared_knuckler_vibro = SharedDraftSchematicObject
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1403681275
+	clientObjectCRC = 1403681275,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_weapon_shared_knuckler_vibro, "object/draft_schematic/weapon/shared_knuckler_vibro.iff")
@@ -1048,7 +1070,8 @@ object_draft_schematic_weapon_shared_lance_nightsister = SharedDraftSchematicObj
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 4133019254
+	clientObjectCRC = 4133019254,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_weapon_shared_lance_nightsister, "object/draft_schematic/weapon/shared_lance_nightsister.iff")
@@ -1092,7 +1115,8 @@ object_draft_schematic_weapon_shared_lance_vibro = SharedDraftSchematicObjectTem
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2399536859
+	clientObjectCRC = 2399536859,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_weapon_shared_lance_vibro, "object/draft_schematic/weapon/shared_lance_vibro.iff")
@@ -1136,7 +1160,8 @@ object_draft_schematic_weapon_shared_lance_vibro_controller_fp = SharedDraftSche
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2188173511
+	clientObjectCRC = 2188173511,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_weapon_shared_lance_vibro_controller_fp, "object/draft_schematic/weapon/shared_lance_vibro_controller_fp.iff")
@@ -1180,7 +1205,8 @@ object_draft_schematic_weapon_shared_laser_cannon = SharedDraftSchematicObjectTe
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3159431738
+	clientObjectCRC = 3159431738,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_weapon_shared_laser_cannon, "object/draft_schematic/weapon/shared_laser_cannon.iff")
@@ -1224,7 +1250,8 @@ object_draft_schematic_weapon_shared_lightsaber_basic = SharedDraftSchematicObje
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 190437753
+	clientObjectCRC = 190437753,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_weapon_shared_lightsaber_basic, "object/draft_schematic/weapon/shared_lightsaber_basic.iff")
@@ -1268,7 +1295,8 @@ object_draft_schematic_weapon_shared_maul = SharedDraftSchematicObjectTemplate:n
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1312097223
+	clientObjectCRC = 1312097223,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_weapon_shared_maul, "object/draft_schematic/weapon/shared_maul.iff")
@@ -1312,7 +1340,8 @@ object_draft_schematic_weapon_shared_pistol_blaster_cdef = SharedDraftSchematicO
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2266178839
+	clientObjectCRC = 2266178839,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_weapon_shared_pistol_blaster_cdef, "object/draft_schematic/weapon/shared_pistol_blaster_cdef.iff")
@@ -1356,7 +1385,8 @@ object_draft_schematic_weapon_shared_pistol_blaster_d18 = SharedDraftSchematicOb
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1379546989
+	clientObjectCRC = 1379546989,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_weapon_shared_pistol_blaster_d18, "object/draft_schematic/weapon/shared_pistol_blaster_d18.iff")
@@ -1400,7 +1430,8 @@ object_draft_schematic_weapon_shared_pistol_blaster_dh17 = SharedDraftSchematicO
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2372103801
+	clientObjectCRC = 2372103801,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_weapon_shared_pistol_blaster_dh17, "object/draft_schematic/weapon/shared_pistol_blaster_dh17.iff")
@@ -1444,7 +1475,8 @@ object_draft_schematic_weapon_shared_pistol_blaster_dl44 = SharedDraftSchematicO
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 408961925
+	clientObjectCRC = 408961925,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_weapon_shared_pistol_blaster_dl44, "object/draft_schematic/weapon/shared_pistol_blaster_dl44.iff")
@@ -1488,7 +1520,8 @@ object_draft_schematic_weapon_shared_pistol_blaster_dl44_metal = SharedDraftSche
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2361580915
+	clientObjectCRC = 2361580915,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_weapon_shared_pistol_blaster_dl44_metal, "object/draft_schematic/weapon/shared_pistol_blaster_dl44_metal.iff")
@@ -1532,7 +1565,8 @@ object_draft_schematic_weapon_shared_pistol_blaster_power5 = SharedDraftSchemati
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 4124760882
+	clientObjectCRC = 4124760882,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_weapon_shared_pistol_blaster_power5, "object/draft_schematic/weapon/shared_pistol_blaster_power5.iff")
@@ -1576,7 +1610,8 @@ object_draft_schematic_weapon_shared_pistol_blaster_scout_trooper = SharedDraftS
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1147231467
+	clientObjectCRC = 1147231467,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_weapon_shared_pistol_blaster_scout_trooper, "object/draft_schematic/weapon/shared_pistol_blaster_scout_trooper.iff")
@@ -1620,7 +1655,8 @@ object_draft_schematic_weapon_shared_pistol_blaster_short_range_combat = SharedD
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3207190896
+	clientObjectCRC = 3207190896,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_weapon_shared_pistol_blaster_short_range_combat, "object/draft_schematic/weapon/shared_pistol_blaster_short_range_combat.iff")
@@ -1664,7 +1700,8 @@ object_draft_schematic_weapon_shared_pistol_de_10 = SharedDraftSchematicObjectTe
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1460478
+	clientObjectCRC = 1460478,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_weapon_shared_pistol_de_10, "object/draft_schematic/weapon/shared_pistol_de_10.iff")
@@ -1708,7 +1745,8 @@ object_draft_schematic_weapon_shared_pistol_disrupter_dx2 = SharedDraftSchematic
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 343860113
+	clientObjectCRC = 343860113,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_weapon_shared_pistol_disrupter_dx2, "object/draft_schematic/weapon/shared_pistol_disrupter_dx2.iff")
@@ -1752,7 +1790,8 @@ object_draft_schematic_weapon_shared_pistol_flechette_fwg5 = SharedDraftSchemati
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2825813273
+	clientObjectCRC = 2825813273,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_weapon_shared_pistol_flechette_fwg5, "object/draft_schematic/weapon/shared_pistol_flechette_fwg5.iff")
@@ -1796,7 +1835,8 @@ object_draft_schematic_weapon_shared_pistol_flechette_fwg5_quest = SharedDraftSc
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3441382387
+	clientObjectCRC = 3441382387,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_weapon_shared_pistol_flechette_fwg5_quest, "object/draft_schematic/weapon/shared_pistol_flechette_fwg5_quest.iff")
@@ -1840,7 +1880,8 @@ object_draft_schematic_weapon_shared_pistol_geo_sonic_blaster = SharedDraftSchem
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3419108874
+	clientObjectCRC = 3419108874,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_weapon_shared_pistol_geo_sonic_blaster, "object/draft_schematic/weapon/shared_pistol_geo_sonic_blaster.iff")
@@ -1884,7 +1925,8 @@ object_draft_schematic_weapon_shared_pistol_launcher = SharedDraftSchematicObjec
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1800323184
+	clientObjectCRC = 1800323184,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_weapon_shared_pistol_launcher, "object/draft_schematic/weapon/shared_pistol_launcher.iff")
@@ -1928,7 +1970,8 @@ object_draft_schematic_weapon_shared_pistol_projectile_striker = SharedDraftSche
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 70825547
+	clientObjectCRC = 70825547,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_weapon_shared_pistol_projectile_striker, "object/draft_schematic/weapon/shared_pistol_projectile_striker.iff")
@@ -1972,7 +2015,8 @@ object_draft_schematic_weapon_shared_pistol_quest_imperial_navy_formal = SharedD
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 222927716
+	clientObjectCRC = 222927716,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_weapon_shared_pistol_quest_imperial_navy_formal, "object/draft_schematic/weapon/shared_pistol_quest_imperial_navy_formal.iff")
@@ -2016,7 +2060,8 @@ object_draft_schematic_weapon_shared_pistol_republic_blaster = SharedDraftSchema
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3999110437
+	clientObjectCRC = 3999110437,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_weapon_shared_pistol_republic_blaster, "object/draft_schematic/weapon/shared_pistol_republic_blaster.iff")
@@ -2060,7 +2105,8 @@ object_draft_schematic_weapon_shared_pistol_republic_blaster_quest = SharedDraft
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1459893602
+	clientObjectCRC = 1459893602,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_weapon_shared_pistol_republic_blaster_quest, "object/draft_schematic/weapon/shared_pistol_republic_blaster_quest.iff")
@@ -2104,7 +2150,8 @@ object_draft_schematic_weapon_shared_pistol_scatter = SharedDraftSchematicObject
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 636138859
+	clientObjectCRC = 636138859,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_weapon_shared_pistol_scatter, "object/draft_schematic/weapon/shared_pistol_scatter.iff")
@@ -2148,7 +2195,8 @@ object_draft_schematic_weapon_shared_poleaxe_vibro = SharedDraftSchematicObjectT
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1580001250
+	clientObjectCRC = 1580001250,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_weapon_shared_poleaxe_vibro, "object/draft_schematic/weapon/shared_poleaxe_vibro.iff")
@@ -2192,7 +2240,8 @@ object_draft_schematic_weapon_shared_razor_knuckler = SharedDraftSchematicObject
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 158977907
+	clientObjectCRC = 158977907,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_weapon_shared_razor_knuckler, "object/draft_schematic/weapon/shared_razor_knuckler.iff")
@@ -2236,7 +2285,8 @@ object_draft_schematic_weapon_shared_rifle_acid_beam = SharedDraftSchematicObjec
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2393268622
+	clientObjectCRC = 2393268622,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_weapon_shared_rifle_acid_beam, "object/draft_schematic/weapon/shared_rifle_acid_beam.iff")
@@ -2280,7 +2330,8 @@ object_draft_schematic_weapon_shared_rifle_beam = SharedDraftSchematicObjectTemp
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2418671476
+	clientObjectCRC = 2418671476,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_weapon_shared_rifle_beam, "object/draft_schematic/weapon/shared_rifle_beam.iff")
@@ -2324,7 +2375,8 @@ object_draft_schematic_weapon_shared_rifle_berserker = SharedDraftSchematicObjec
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 393845120
+	clientObjectCRC = 393845120,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_weapon_shared_rifle_berserker, "object/draft_schematic/weapon/shared_rifle_berserker.iff")
@@ -2368,7 +2420,8 @@ object_draft_schematic_weapon_shared_rifle_blaster_cdef = SharedDraftSchematicOb
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3598018363
+	clientObjectCRC = 3598018363,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_weapon_shared_rifle_blaster_cdef, "object/draft_schematic/weapon/shared_rifle_blaster_cdef.iff")
@@ -2412,7 +2465,8 @@ object_draft_schematic_weapon_shared_rifle_blaster_dlt20 = SharedDraftSchematicO
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1869102319
+	clientObjectCRC = 1869102319,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_weapon_shared_rifle_blaster_dlt20, "object/draft_schematic/weapon/shared_rifle_blaster_dlt20.iff")
@@ -2456,7 +2510,8 @@ object_draft_schematic_weapon_shared_rifle_blaster_dlt20a = SharedDraftSchematic
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2174565787
+	clientObjectCRC = 2174565787,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_weapon_shared_rifle_blaster_dlt20a, "object/draft_schematic/weapon/shared_rifle_blaster_dlt20a.iff")
@@ -2500,7 +2555,8 @@ object_draft_schematic_weapon_shared_rifle_blaster_e11 = SharedDraftSchematicObj
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2213003971
+	clientObjectCRC = 2213003971,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_weapon_shared_rifle_blaster_e11, "object/draft_schematic/weapon/shared_rifle_blaster_e11.iff")
@@ -2544,7 +2600,8 @@ object_draft_schematic_weapon_shared_rifle_blaster_ionization_jawa = SharedDraft
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2607432911
+	clientObjectCRC = 2607432911,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_weapon_shared_rifle_blaster_ionization_jawa, "object/draft_schematic/weapon/shared_rifle_blaster_ionization_jawa.iff")
@@ -2588,7 +2645,8 @@ object_draft_schematic_weapon_shared_rifle_blaster_laser_rifle = SharedDraftSche
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 621048174
+	clientObjectCRC = 621048174,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_weapon_shared_rifle_blaster_laser_rifle, "object/draft_schematic/weapon/shared_rifle_blaster_laser_rifle.iff")
@@ -2632,7 +2690,8 @@ object_draft_schematic_weapon_shared_rifle_bowcaster = SharedDraftSchematicObjec
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 4189243546
+	clientObjectCRC = 4189243546,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_weapon_shared_rifle_bowcaster, "object/draft_schematic/weapon/shared_rifle_bowcaster.iff")
@@ -2676,7 +2735,8 @@ object_draft_schematic_weapon_shared_rifle_disrupter_dxr6 = SharedDraftSchematic
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2244091215
+	clientObjectCRC = 2244091215,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_weapon_shared_rifle_disrupter_dxr6, "object/draft_schematic/weapon/shared_rifle_disrupter_dxr6.iff")
@@ -2720,7 +2780,8 @@ object_draft_schematic_weapon_shared_rifle_flame_thrower = SharedDraftSchematicO
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1104931422
+	clientObjectCRC = 1104931422,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_weapon_shared_rifle_flame_thrower, "object/draft_schematic/weapon/shared_rifle_flame_thrower.iff")
@@ -2764,7 +2825,8 @@ object_draft_schematic_weapon_shared_rifle_light_blaster_dh17_carbine = SharedDr
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1774809121
+	clientObjectCRC = 1774809121,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_weapon_shared_rifle_light_blaster_dh17_carbine, "object/draft_schematic/weapon/shared_rifle_light_blaster_dh17_carbine.iff")
@@ -2808,7 +2870,8 @@ object_draft_schematic_weapon_shared_rifle_light_blaster_dh17_carbine_snubnose =
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2025642760
+	clientObjectCRC = 2025642760,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_weapon_shared_rifle_light_blaster_dh17_carbine_snubnose, "object/draft_schematic/weapon/shared_rifle_light_blaster_dh17_carbine_snubnose.iff")
@@ -2852,7 +2915,8 @@ object_draft_schematic_weapon_shared_rifle_light_blaster_e11_carbine = SharedDra
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 24679666
+	clientObjectCRC = 24679666,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_weapon_shared_rifle_light_blaster_e11_carbine, "object/draft_schematic/weapon/shared_rifle_light_blaster_e11_carbine.iff")
@@ -2896,7 +2960,8 @@ object_draft_schematic_weapon_shared_rifle_light_blaster_e11_carbine_quest = Sha
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3869068993
+	clientObjectCRC = 3869068993,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_weapon_shared_rifle_light_blaster_e11_carbine_quest, "object/draft_schematic/weapon/shared_rifle_light_blaster_e11_carbine_quest.iff")
@@ -2940,7 +3005,8 @@ object_draft_schematic_weapon_shared_rifle_light_blaster_ee3 = SharedDraftSchema
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1756442314
+	clientObjectCRC = 1756442314,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_weapon_shared_rifle_light_blaster_ee3, "object/draft_schematic/weapon/shared_rifle_light_blaster_ee3.iff")
@@ -2984,7 +3050,8 @@ object_draft_schematic_weapon_shared_rifle_light_blaster_imperial_scout_carbine 
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2997753388
+	clientObjectCRC = 2997753388,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_weapon_shared_rifle_light_blaster_imperial_scout_carbine, "object/draft_schematic/weapon/shared_rifle_light_blaster_imperial_scout_carbine.iff")
@@ -3028,7 +3095,8 @@ object_draft_schematic_weapon_shared_rifle_light_blaster_laser_carbine = SharedD
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 638676086
+	clientObjectCRC = 638676086,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_weapon_shared_rifle_light_blaster_laser_carbine, "object/draft_schematic/weapon/shared_rifle_light_blaster_laser_carbine.iff")
@@ -3072,7 +3140,8 @@ object_draft_schematic_weapon_shared_rifle_lightning = SharedDraftSchematicObjec
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1659428780
+	clientObjectCRC = 1659428780,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_weapon_shared_rifle_lightning, "object/draft_schematic/weapon/shared_rifle_lightning.iff")
@@ -3116,7 +3185,8 @@ object_draft_schematic_weapon_shared_rifle_projectile_tusken = SharedDraftSchema
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 112067557
+	clientObjectCRC = 112067557,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_weapon_shared_rifle_projectile_tusken, "object/draft_schematic/weapon/shared_rifle_projectile_tusken.iff")
@@ -3160,7 +3230,8 @@ object_draft_schematic_weapon_shared_rifle_quest_rebel_longrifle = SharedDraftSc
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 74294879
+	clientObjectCRC = 74294879,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_weapon_shared_rifle_quest_rebel_longrifle, "object/draft_schematic/weapon/shared_rifle_quest_rebel_longrifle.iff")
@@ -3204,7 +3275,8 @@ object_draft_schematic_weapon_shared_rifle_sonic_sg82 = SharedDraftSchematicObje
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 722478817
+	clientObjectCRC = 722478817,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_weapon_shared_rifle_sonic_sg82, "object/draft_schematic/weapon/shared_rifle_sonic_sg82.iff")
@@ -3248,7 +3320,8 @@ object_draft_schematic_weapon_shared_rifle_spray_stick_stohli = SharedDraftSchem
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3338440548
+	clientObjectCRC = 3338440548,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_weapon_shared_rifle_spray_stick_stohli, "object/draft_schematic/weapon/shared_rifle_spray_stick_stohli.iff")
@@ -3292,7 +3365,8 @@ object_draft_schematic_weapon_shared_rifle_t21 = SharedDraftSchematicObjectTempl
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 546888390
+	clientObjectCRC = 546888390,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_weapon_shared_rifle_t21, "object/draft_schematic/weapon/shared_rifle_t21.iff")
@@ -3336,7 +3410,8 @@ object_draft_schematic_weapon_shared_rifle_tangle_gun7 = SharedDraftSchematicObj
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 306573674
+	clientObjectCRC = 306573674,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_weapon_shared_rifle_tangle_gun7, "object/draft_schematic/weapon/shared_rifle_tangle_gun7.iff")
@@ -3380,7 +3455,8 @@ object_draft_schematic_weapon_shared_rifle_tenloss_disrupter = SharedDraftSchema
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 4198608458
+	clientObjectCRC = 4198608458,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_weapon_shared_rifle_tenloss_disrupter, "object/draft_schematic/weapon/shared_rifle_tenloss_disrupter.iff")
@@ -3424,7 +3500,8 @@ object_draft_schematic_weapon_shared_staff = SharedDraftSchematicObjectTemplate:
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2766431643
+	clientObjectCRC = 2766431643,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_weapon_shared_staff, "object/draft_schematic/weapon/shared_staff.iff")
@@ -3468,7 +3545,8 @@ object_draft_schematic_weapon_shared_staff_metal = SharedDraftSchematicObjectTem
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1376786982
+	clientObjectCRC = 1376786982,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_weapon_shared_staff_metal, "object/draft_schematic/weapon/shared_staff_metal.iff")
@@ -3512,7 +3590,8 @@ object_draft_schematic_weapon_shared_staff_reinforced = SharedDraftSchematicObje
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2748771750
+	clientObjectCRC = 2748771750,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_weapon_shared_staff_reinforced, "object/draft_schematic/weapon/shared_staff_reinforced.iff")
@@ -3556,7 +3635,8 @@ object_draft_schematic_weapon_shared_sword = SharedDraftSchematicObjectTemplate:
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3572901439
+	clientObjectCRC = 3572901439,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_weapon_shared_sword, "object/draft_schematic/weapon/shared_sword.iff")
@@ -3600,7 +3680,8 @@ object_draft_schematic_weapon_shared_sword_curved = SharedDraftSchematicObjectTe
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2999681334
+	clientObjectCRC = 2999681334,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_weapon_shared_sword_curved, "object/draft_schematic/weapon/shared_sword_curved.iff")
@@ -3644,7 +3725,8 @@ object_draft_schematic_weapon_shared_sword_ryyk_blade = SharedDraftSchematicObje
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3464681484
+	clientObjectCRC = 3464681484,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_weapon_shared_sword_ryyk_blade, "object/draft_schematic/weapon/shared_sword_ryyk_blade.iff")
@@ -3688,7 +3770,8 @@ object_draft_schematic_weapon_shared_turbo_laser = SharedDraftSchematicObjectTem
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3719216124
+	clientObjectCRC = 3719216124,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_weapon_shared_turbo_laser, "object/draft_schematic/weapon/shared_turbo_laser.iff")

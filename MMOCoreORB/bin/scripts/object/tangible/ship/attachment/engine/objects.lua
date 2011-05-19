@@ -90,7 +90,8 @@ object_tangible_ship_attachment_engine_shared_awing_engine_s01 = SharedTangibleO
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4185031918
+	clientObjectCRC = 4185031918,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/attachment/base/shared_base_ship_attachment.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_engine_shared_awing_engine_s01, "object/tangible/ship/attachment/engine/shared_awing_engine_s01.iff")
@@ -144,7 +145,8 @@ object_tangible_ship_attachment_engine_shared_awing_engine_s02 = SharedTangibleO
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 577055865
+	clientObjectCRC = 577055865,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/attachment/base/shared_base_ship_attachment.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_engine_shared_awing_engine_s02, "object/tangible/ship/attachment/engine/shared_awing_engine_s02.iff")
@@ -198,7 +200,8 @@ object_tangible_ship_attachment_engine_shared_blacksun_heavy_engine_s01 = Shared
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1430717714
+	clientObjectCRC = 1430717714,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/attachment/base/shared_base_ship_attachment.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_engine_shared_blacksun_heavy_engine_s01, "object/tangible/ship/attachment/engine/shared_blacksun_heavy_engine_s01.iff")
@@ -252,7 +255,8 @@ object_tangible_ship_attachment_engine_shared_blacksun_heavy_engine_s02 = Shared
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2387651973
+	clientObjectCRC = 2387651973,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/attachment/base/shared_base_ship_attachment.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_engine_shared_blacksun_heavy_engine_s02, "object/tangible/ship/attachment/engine/shared_blacksun_heavy_engine_s02.iff")
@@ -306,7 +310,8 @@ object_tangible_ship_attachment_engine_shared_blacksun_light_engine_s01 = Shared
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2826438901
+	clientObjectCRC = 2826438901,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/attachment/base/shared_base_ship_attachment.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_engine_shared_blacksun_light_engine_s01, "object/tangible/ship/attachment/engine/shared_blacksun_light_engine_s01.iff")
@@ -360,7 +365,8 @@ object_tangible_ship_attachment_engine_shared_blacksun_light_engine_s02 = Shared
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1936695394
+	clientObjectCRC = 1936695394,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/attachment/base/shared_base_ship_attachment.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_engine_shared_blacksun_light_engine_s02, "object/tangible/ship/attachment/engine/shared_blacksun_light_engine_s02.iff")
@@ -414,7 +420,8 @@ object_tangible_ship_attachment_engine_shared_blacksun_medium_engine_s01 = Share
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2775195131
+	clientObjectCRC = 2775195131,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/attachment/base/shared_base_ship_attachment.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_engine_shared_blacksun_medium_engine_s01, "object/tangible/ship/attachment/engine/shared_blacksun_medium_engine_s01.iff")
@@ -468,7 +475,8 @@ object_tangible_ship_attachment_engine_shared_blacksun_medium_engine_s02 = Share
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2122167660
+	clientObjectCRC = 2122167660,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/attachment/base/shared_base_ship_attachment.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_engine_shared_blacksun_medium_engine_s02, "object/tangible/ship/attachment/engine/shared_blacksun_medium_engine_s02.iff")
@@ -522,7 +530,8 @@ object_tangible_ship_attachment_engine_shared_bwing_engine_s01 = SharedTangibleO
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2775913620
+	clientObjectCRC = 2775913620,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/attachment/base/shared_base_ship_attachment.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_engine_shared_bwing_engine_s01, "object/tangible/ship/attachment/engine/shared_bwing_engine_s01.iff")
@@ -576,7 +585,8 @@ object_tangible_ship_attachment_engine_shared_bwing_engine_s02 = SharedTangibleO
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2120399875
+	clientObjectCRC = 2120399875,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/attachment/base/shared_base_ship_attachment.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_engine_shared_bwing_engine_s02, "object/tangible/ship/attachment/engine/shared_bwing_engine_s02.iff")
@@ -630,7 +640,8 @@ object_tangible_ship_attachment_engine_shared_decimator_engine_s01 = SharedTangi
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1116177012
+	clientObjectCRC = 1116177012,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/attachment/base/shared_base_ship_attachment.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_engine_shared_decimator_engine_s01, "object/tangible/ship/attachment/engine/shared_decimator_engine_s01.iff")
@@ -684,7 +695,8 @@ object_tangible_ship_attachment_engine_shared_decimator_engine_s02 = SharedTangi
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2576362211
+	clientObjectCRC = 2576362211,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/attachment/base/shared_base_ship_attachment.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_engine_shared_decimator_engine_s02, "object/tangible/ship/attachment/engine/shared_decimator_engine_s02.iff")
@@ -738,7 +750,8 @@ object_tangible_ship_attachment_engine_shared_eng_tiefighter_basic = SharedTangi
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1064155476
+	clientObjectCRC = 1064155476,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/attachment/base/shared_base_ship_attachment.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_engine_shared_eng_tiefighter_basic, "object/tangible/ship/attachment/engine/shared_eng_tiefighter_basic.iff")
@@ -792,7 +805,8 @@ object_tangible_ship_attachment_engine_shared_hutt_heavy_engine_s01 = SharedTang
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2054741017
+	clientObjectCRC = 2054741017,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/attachment/base/shared_base_ship_attachment.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_engine_shared_hutt_heavy_engine_s01, "object/tangible/ship/attachment/engine/shared_hutt_heavy_engine_s01.iff")
@@ -846,7 +860,8 @@ object_tangible_ship_attachment_engine_shared_hutt_heavy_engine_s02 = SharedTang
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2708436110
+	clientObjectCRC = 2708436110,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/attachment/base/shared_base_ship_attachment.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_engine_shared_hutt_heavy_engine_s02, "object/tangible/ship/attachment/engine/shared_hutt_heavy_engine_s02.iff")
@@ -900,7 +915,8 @@ object_tangible_ship_attachment_engine_shared_hutt_light_engine_s01 = SharedTang
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2269630974
+	clientObjectCRC = 2269630974,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/attachment/base/shared_base_ship_attachment.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_engine_shared_hutt_light_engine_s01, "object/tangible/ship/attachment/engine/shared_hutt_light_engine_s01.iff")
@@ -954,7 +970,8 @@ object_tangible_ship_attachment_engine_shared_hutt_light_engine_s02 = SharedTang
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1548777833
+	clientObjectCRC = 1548777833,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/attachment/base/shared_base_ship_attachment.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_engine_shared_hutt_light_engine_s02, "object/tangible/ship/attachment/engine/shared_hutt_light_engine_s02.iff")
@@ -1008,7 +1025,8 @@ object_tangible_ship_attachment_engine_shared_hutt_medium_engine_s01 = SharedTan
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 987700646
+	clientObjectCRC = 987700646,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/attachment/base/shared_base_ship_attachment.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_engine_shared_hutt_medium_engine_s01, "object/tangible/ship/attachment/engine/shared_hutt_medium_engine_s01.iff")
@@ -1062,7 +1080,8 @@ object_tangible_ship_attachment_engine_shared_hutt_medium_engine_s02 = SharedTan
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3788027185
+	clientObjectCRC = 3788027185,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/attachment/base/shared_base_ship_attachment.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_engine_shared_hutt_medium_engine_s02, "object/tangible/ship/attachment/engine/shared_hutt_medium_engine_s02.iff")
@@ -1116,7 +1135,8 @@ object_tangible_ship_attachment_engine_shared_kse_firespray_engine_s01 = SharedT
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1758759963
+	clientObjectCRC = 1758759963,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/attachment/base/shared_base_ship_attachment.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_engine_shared_kse_firespray_engine_s01, "object/tangible/ship/attachment/engine/shared_kse_firespray_engine_s01.iff")
@@ -1170,7 +1190,8 @@ object_tangible_ship_attachment_engine_shared_kse_firespray_engine_s02 = SharedT
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3015910540
+	clientObjectCRC = 3015910540,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/attachment/base/shared_base_ship_attachment.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_engine_shared_kse_firespray_engine_s02, "object/tangible/ship/attachment/engine/shared_kse_firespray_engine_s02.iff")
@@ -1224,7 +1245,8 @@ object_tangible_ship_attachment_engine_shared_tie_engine_s01 = SharedTangibleObj
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 557699423
+	clientObjectCRC = 557699423,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/attachment/base/shared_base_ship_attachment.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_engine_shared_tie_engine_s01, "object/tangible/ship/attachment/engine/shared_tie_engine_s01.iff")
@@ -1278,7 +1300,8 @@ object_tangible_ship_attachment_engine_shared_tieadvanced_engine_s01 = SharedTan
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1078468437
+	clientObjectCRC = 1078468437,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/attachment/base/shared_base_ship_attachment.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_engine_shared_tieadvanced_engine_s01, "object/tangible/ship/attachment/engine/shared_tieadvanced_engine_s01.iff")
@@ -1332,7 +1355,8 @@ object_tangible_ship_attachment_engine_shared_tiebomber_engine_s01 = SharedTangi
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4073386065
+	clientObjectCRC = 4073386065,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/attachment/base/shared_base_ship_attachment.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_engine_shared_tiebomber_engine_s01, "object/tangible/ship/attachment/engine/shared_tiebomber_engine_s01.iff")
@@ -1386,7 +1410,8 @@ object_tangible_ship_attachment_engine_shared_tieinterceptor_engine_s01 = Shared
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3973162809
+	clientObjectCRC = 3973162809,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/attachment/base/shared_base_ship_attachment.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_engine_shared_tieinterceptor_engine_s01, "object/tangible/ship/attachment/engine/shared_tieinterceptor_engine_s01.iff")
@@ -1440,7 +1465,8 @@ object_tangible_ship_attachment_engine_shared_tieoppressor_engine_s01 = SharedTa
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3648736552
+	clientObjectCRC = 3648736552,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/attachment/base/shared_base_ship_attachment.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_engine_shared_tieoppressor_engine_s01, "object/tangible/ship/attachment/engine/shared_tieoppressor_engine_s01.iff")
@@ -1494,7 +1520,8 @@ object_tangible_ship_attachment_engine_shared_xwing_engine_neg_s01 = SharedTangi
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1476333721
+	clientObjectCRC = 1476333721,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/attachment/base/shared_base_ship_attachment.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_engine_shared_xwing_engine_neg_s01, "object/tangible/ship/attachment/engine/shared_xwing_engine_neg_s01.iff")
@@ -1548,7 +1575,8 @@ object_tangible_ship_attachment_engine_shared_xwing_engine_neg_s02 = SharedTangi
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2364061710
+	clientObjectCRC = 2364061710,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/attachment/base/shared_base_ship_attachment.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_engine_shared_xwing_engine_neg_s02, "object/tangible/ship/attachment/engine/shared_xwing_engine_neg_s02.iff")
@@ -1602,7 +1630,8 @@ object_tangible_ship_attachment_engine_shared_xwing_engine_neg_s03 = SharedTangi
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3320176515
+	clientObjectCRC = 3320176515,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/attachment/base/shared_base_ship_attachment.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_engine_shared_xwing_engine_neg_s03, "object/tangible/ship/attachment/engine/shared_xwing_engine_neg_s03.iff")
@@ -1656,7 +1685,8 @@ object_tangible_ship_attachment_engine_shared_xwing_engine_pos_s01 = SharedTangi
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4116130746
+	clientObjectCRC = 4116130746,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/attachment/base/shared_base_ship_attachment.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_engine_shared_xwing_engine_pos_s01, "object/tangible/ship/attachment/engine/shared_xwing_engine_pos_s01.iff")
@@ -1710,7 +1740,8 @@ object_tangible_ship_attachment_engine_shared_xwing_engine_pos_s02 = SharedTangi
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 775979821
+	clientObjectCRC = 775979821,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/attachment/base/shared_base_ship_attachment.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_engine_shared_xwing_engine_pos_s02, "object/tangible/ship/attachment/engine/shared_xwing_engine_pos_s02.iff")
@@ -1764,7 +1795,8 @@ object_tangible_ship_attachment_engine_shared_xwing_engine_pos_s03 = SharedTangi
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1733158048
+	clientObjectCRC = 1733158048,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/attachment/base/shared_base_ship_attachment.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_engine_shared_xwing_engine_pos_s03, "object/tangible/ship/attachment/engine/shared_xwing_engine_pos_s03.iff")
@@ -1818,7 +1850,8 @@ object_tangible_ship_attachment_engine_shared_ykl37r_engine_s01 = SharedTangible
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 332197254
+	clientObjectCRC = 332197254,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/attachment/base/shared_base_ship_attachment.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_engine_shared_ykl37r_engine_s01, "object/tangible/ship/attachment/engine/shared_ykl37r_engine_s01.iff")
@@ -1872,7 +1905,8 @@ object_tangible_ship_attachment_engine_shared_ykl37r_engine_s02 = SharedTangible
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3369813265
+	clientObjectCRC = 3369813265,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/attachment/base/shared_base_ship_attachment.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_engine_shared_ykl37r_engine_s02, "object/tangible/ship/attachment/engine/shared_ykl37r_engine_s02.iff")
@@ -1926,7 +1960,8 @@ object_tangible_ship_attachment_engine_shared_yt1300_engine_s01 = SharedTangible
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3573306455
+	clientObjectCRC = 3573306455,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/attachment/base/shared_base_ship_attachment.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_engine_shared_yt1300_engine_s01, "object/tangible/ship/attachment/engine/shared_yt1300_engine_s01.iff")
@@ -1980,7 +2015,8 @@ object_tangible_ship_attachment_engine_shared_yt1300_engine_s02 = SharedTangible
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 267123904
+	clientObjectCRC = 267123904,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/attachment/base/shared_base_ship_attachment.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_engine_shared_yt1300_engine_s02, "object/tangible/ship/attachment/engine/shared_yt1300_engine_s02.iff")
@@ -2034,7 +2070,8 @@ object_tangible_ship_attachment_engine_shared_ywing_engine_s01 = SharedTangibleO
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 281820240
+	clientObjectCRC = 281820240,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/attachment/base/shared_base_ship_attachment.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_engine_shared_ywing_engine_s01, "object/tangible/ship/attachment/engine/shared_ywing_engine_s01.iff")
@@ -2088,7 +2125,8 @@ object_tangible_ship_attachment_engine_shared_ywing_engine_s02 = SharedTangibleO
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3420165319
+	clientObjectCRC = 3420165319,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/attachment/base/shared_base_ship_attachment.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_engine_shared_ywing_engine_s02, "object/tangible/ship/attachment/engine/shared_ywing_engine_s02.iff")
@@ -2142,7 +2180,8 @@ object_tangible_ship_attachment_engine_shared_z95_engine_s01 = SharedTangibleObj
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2645704367
+	clientObjectCRC = 2645704367,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/attachment/base/shared_base_ship_attachment.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_engine_shared_z95_engine_s01, "object/tangible/ship/attachment/engine/shared_z95_engine_s01.iff")
@@ -2196,7 +2235,8 @@ object_tangible_ship_attachment_engine_shared_z95_engine_s02 = SharedTangibleObj
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1185257016
+	clientObjectCRC = 1185257016,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/attachment/base/shared_base_ship_attachment.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_engine_shared_z95_engine_s02, "object/tangible/ship/attachment/engine/shared_z95_engine_s02.iff")

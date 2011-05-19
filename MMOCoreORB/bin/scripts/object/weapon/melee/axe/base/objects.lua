@@ -94,7 +94,8 @@ object_weapon_melee_axe_base_shared_axe_base = SharedWeaponObjectTemplate:new {
 	weaponEffect = "bolt",
 	weaponEffectIndex = 0,
 
-	clientObjectCRC = 2307905353
+	clientObjectCRC = 2307905353,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/weapon/base/shared_base_weapon.iff", "object/weapon/melee/base/shared_base_melee.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_weapon_melee_axe_base_shared_axe_base, "object/weapon/melee/axe/base/shared_axe_base.iff")

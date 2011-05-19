@@ -114,7 +114,8 @@ object_mobile_vendor_shared_aqualish_female = SharedCreatureObjectTemplate:new {
 	warpTolerance = 17,
 	waterModPercent = 0.5,
 
-	clientObjectCRC = 3405269957
+	clientObjectCRC = 3405269957,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/mobile/shared_mobile.iff", "object/mobile/skeleton/shared_humanoid.iff", "object/mobile/shared_aqualish_male.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_mobile_vendor_shared_aqualish_female, "object/mobile/vendor/shared_aqualish_female.iff")
@@ -192,7 +193,8 @@ object_mobile_vendor_shared_aqualish_male = SharedCreatureObjectTemplate:new {
 	warpTolerance = 17,
 	waterModPercent = 0.5,
 
-	clientObjectCRC = 3560977643
+	clientObjectCRC = 3560977643,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/mobile/shared_mobile.iff", "object/mobile/skeleton/shared_humanoid.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_mobile_vendor_shared_aqualish_male, "object/mobile/vendor/shared_aqualish_male.iff")
@@ -270,7 +272,8 @@ object_mobile_vendor_shared_bith_female = SharedCreatureObjectTemplate:new {
 	warpTolerance = 17,
 	waterModPercent = 0.5,
 
-	clientObjectCRC = 2071723635
+	clientObjectCRC = 2071723635,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/mobile/shared_mobile.iff", "object/mobile/skeleton/shared_humanoid.iff", "object/mobile/shared_bith_male.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_mobile_vendor_shared_bith_female, "object/mobile/vendor/shared_bith_female.iff")
@@ -348,7 +351,8 @@ object_mobile_vendor_shared_bith_male = SharedCreatureObjectTemplate:new {
 	warpTolerance = 17,
 	waterModPercent = 0.5,
 
-	clientObjectCRC = 1947827481
+	clientObjectCRC = 1947827481,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/mobile/shared_mobile.iff", "object/mobile/skeleton/shared_humanoid.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_mobile_vendor_shared_bith_male, "object/mobile/vendor/shared_bith_male.iff")
@@ -426,7 +430,8 @@ object_mobile_vendor_shared_bothan_female = SharedCreatureObjectTemplate:new {
 	warpTolerance = 17,
 	waterModPercent = 0.5,
 
-	clientObjectCRC = 132576068
+	clientObjectCRC = 132576068,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/mobile/shared_mobile.iff", "object/mobile/skeleton/shared_humanoid.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_mobile_vendor_shared_bothan_female, "object/mobile/vendor/shared_bothan_female.iff")
@@ -504,7 +509,8 @@ object_mobile_vendor_shared_bothan_male = SharedCreatureObjectTemplate:new {
 	warpTolerance = 17,
 	waterModPercent = 0.5,
 
-	clientObjectCRC = 2454014624
+	clientObjectCRC = 2454014624,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/mobile/shared_mobile.iff", "object/mobile/skeleton/shared_humanoid.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_mobile_vendor_shared_bothan_male, "object/mobile/vendor/shared_bothan_male.iff")
@@ -582,7 +588,8 @@ object_mobile_vendor_shared_devaronian_male = SharedCreatureObjectTemplate:new {
 	warpTolerance = 17,
 	waterModPercent = 0.5,
 
-	clientObjectCRC = 2095623604
+	clientObjectCRC = 2095623604,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/mobile/shared_mobile.iff", "object/mobile/skeleton/shared_humanoid.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_mobile_vendor_shared_devaronian_male, "object/mobile/vendor/shared_devaronian_male.iff")
@@ -660,7 +667,8 @@ object_mobile_vendor_shared_gran_male = SharedCreatureObjectTemplate:new {
 	warpTolerance = 17,
 	waterModPercent = 0.5,
 
-	clientObjectCRC = 3310863058
+	clientObjectCRC = 3310863058,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/mobile/shared_mobile.iff", "object/mobile/skeleton/shared_humanoid.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_mobile_vendor_shared_gran_male, "object/mobile/vendor/shared_gran_male.iff")
@@ -738,7 +746,8 @@ object_mobile_vendor_shared_human_female = SharedCreatureObjectTemplate:new {
 	warpTolerance = 17,
 	waterModPercent = 0.5,
 
-	clientObjectCRC = 847857791
+	clientObjectCRC = 847857791,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/mobile/shared_mobile.iff", "object/mobile/skeleton/shared_humanoid.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_mobile_vendor_shared_human_female, "object/mobile/vendor/shared_human_female.iff")
@@ -816,7 +825,8 @@ object_mobile_vendor_shared_human_male = SharedCreatureObjectTemplate:new {
 	warpTolerance = 17,
 	waterModPercent = 0.5,
 
-	clientObjectCRC = 1639282596
+	clientObjectCRC = 1639282596,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/mobile/shared_mobile.iff", "object/mobile/skeleton/shared_humanoid.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_mobile_vendor_shared_human_male, "object/mobile/vendor/shared_human_male.iff")
@@ -894,7 +904,8 @@ object_mobile_vendor_shared_ishi_tib_male = SharedCreatureObjectTemplate:new {
 	warpTolerance = 17,
 	waterModPercent = 0.5,
 
-	clientObjectCRC = 2586473426
+	clientObjectCRC = 2586473426,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/mobile/shared_mobile.iff", "object/mobile/skeleton/shared_humanoid.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_mobile_vendor_shared_ishi_tib_male, "object/mobile/vendor/shared_ishi_tib_male.iff")
@@ -972,7 +983,8 @@ object_mobile_vendor_shared_ithorian_female = SharedCreatureObjectTemplate:new {
 	warpTolerance = 17,
 	waterModPercent = 0.5,
 
-	clientObjectCRC = 2809871871
+	clientObjectCRC = 2809871871,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/mobile/shared_mobile.iff", "object/mobile/skeleton/shared_humanoid.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_mobile_vendor_shared_ithorian_female, "object/mobile/vendor/shared_ithorian_female.iff")
@@ -1050,7 +1062,8 @@ object_mobile_vendor_shared_ithorian_male = SharedCreatureObjectTemplate:new {
 	warpTolerance = 17,
 	waterModPercent = 0.5,
 
-	clientObjectCRC = 571361166
+	clientObjectCRC = 571361166,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/mobile/shared_mobile.iff", "object/mobile/skeleton/shared_humanoid.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_mobile_vendor_shared_ithorian_male, "object/mobile/vendor/shared_ithorian_male.iff")
@@ -1128,7 +1141,8 @@ object_mobile_vendor_shared_moncal_female = SharedCreatureObjectTemplate:new {
 	warpTolerance = 17,
 	waterModPercent = 0.5,
 
-	clientObjectCRC = 2191212436
+	clientObjectCRC = 2191212436,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/mobile/shared_mobile.iff", "object/mobile/skeleton/shared_humanoid.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_mobile_vendor_shared_moncal_female, "object/mobile/vendor/shared_moncal_female.iff")
@@ -1206,7 +1220,8 @@ object_mobile_vendor_shared_moncal_male = SharedCreatureObjectTemplate:new {
 	warpTolerance = 17,
 	waterModPercent = 0.5,
 
-	clientObjectCRC = 1887068219
+	clientObjectCRC = 1887068219,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/mobile/shared_mobile.iff", "object/mobile/skeleton/shared_humanoid.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_mobile_vendor_shared_moncal_male, "object/mobile/vendor/shared_moncal_male.iff")
@@ -1284,7 +1299,8 @@ object_mobile_vendor_shared_nikto_male = SharedCreatureObjectTemplate:new {
 	warpTolerance = 17,
 	waterModPercent = 0.5,
 
-	clientObjectCRC = 2537817486
+	clientObjectCRC = 2537817486,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/mobile/shared_mobile.iff", "object/mobile/skeleton/shared_humanoid.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_mobile_vendor_shared_nikto_male, "object/mobile/vendor/shared_nikto_male.iff")
@@ -1362,7 +1378,8 @@ object_mobile_vendor_shared_quarren_male = SharedCreatureObjectTemplate:new {
 	warpTolerance = 17,
 	waterModPercent = 0.5,
 
-	clientObjectCRC = 4181918992
+	clientObjectCRC = 4181918992,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/mobile/shared_mobile.iff", "object/mobile/skeleton/shared_humanoid.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_mobile_vendor_shared_quarren_male, "object/mobile/vendor/shared_quarren_male.iff")
@@ -1440,7 +1457,8 @@ object_mobile_vendor_shared_rodian_female = SharedCreatureObjectTemplate:new {
 	warpTolerance = 17,
 	waterModPercent = 0.5,
 
-	clientObjectCRC = 3637552145
+	clientObjectCRC = 3637552145,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/mobile/shared_mobile.iff", "object/mobile/skeleton/shared_humanoid.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_mobile_vendor_shared_rodian_female, "object/mobile/vendor/shared_rodian_female.iff")
@@ -1518,7 +1536,8 @@ object_mobile_vendor_shared_rodian_male = SharedCreatureObjectTemplate:new {
 	warpTolerance = 17,
 	waterModPercent = 0.5,
 
-	clientObjectCRC = 3259758607
+	clientObjectCRC = 3259758607,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/mobile/shared_mobile.iff", "object/mobile/skeleton/shared_humanoid.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_mobile_vendor_shared_rodian_male, "object/mobile/vendor/shared_rodian_male.iff")
@@ -1596,7 +1615,8 @@ object_mobile_vendor_shared_sullustan_female = SharedCreatureObjectTemplate:new 
 	warpTolerance = 17,
 	waterModPercent = 0.5,
 
-	clientObjectCRC = 3520820662
+	clientObjectCRC = 3520820662,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/mobile/shared_mobile.iff", "object/mobile/skeleton/shared_humanoid.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_mobile_vendor_shared_sullustan_female, "object/mobile/vendor/shared_sullustan_female.iff")
@@ -1674,7 +1694,8 @@ object_mobile_vendor_shared_sullustan_male = SharedCreatureObjectTemplate:new {
 	warpTolerance = 17,
 	waterModPercent = 0.5,
 
-	clientObjectCRC = 3699957250
+	clientObjectCRC = 3699957250,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/mobile/shared_mobile.iff", "object/mobile/skeleton/shared_humanoid.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_mobile_vendor_shared_sullustan_male, "object/mobile/vendor/shared_sullustan_male.iff")
@@ -1752,7 +1773,8 @@ object_mobile_vendor_shared_trandoshan_female = SharedCreatureObjectTemplate:new
 	warpTolerance = 17,
 	waterModPercent = 0.5,
 
-	clientObjectCRC = 4277366403
+	clientObjectCRC = 4277366403,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/mobile/shared_mobile.iff", "object/mobile/skeleton/shared_humanoid.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_mobile_vendor_shared_trandoshan_female, "object/mobile/vendor/shared_trandoshan_female.iff")
@@ -1830,7 +1852,8 @@ object_mobile_vendor_shared_trandoshan_male = SharedCreatureObjectTemplate:new {
 	warpTolerance = 17,
 	waterModPercent = 0.5,
 
-	clientObjectCRC = 1147135587
+	clientObjectCRC = 1147135587,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/mobile/shared_mobile.iff", "object/mobile/skeleton/shared_humanoid.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_mobile_vendor_shared_trandoshan_male, "object/mobile/vendor/shared_trandoshan_male.iff")
@@ -1908,7 +1931,8 @@ object_mobile_vendor_shared_twilek_female = SharedCreatureObjectTemplate:new {
 	warpTolerance = 17,
 	waterModPercent = 0.5,
 
-	clientObjectCRC = 2653147798
+	clientObjectCRC = 2653147798,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/mobile/shared_mobile.iff", "object/mobile/skeleton/shared_humanoid.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_mobile_vendor_shared_twilek_female, "object/mobile/vendor/shared_twilek_female.iff")
@@ -1986,7 +2010,8 @@ object_mobile_vendor_shared_twilek_male = SharedCreatureObjectTemplate:new {
 	warpTolerance = 17,
 	waterModPercent = 0.5,
 
-	clientObjectCRC = 993187816
+	clientObjectCRC = 993187816,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/mobile/shared_mobile.iff", "object/mobile/skeleton/shared_humanoid.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_mobile_vendor_shared_twilek_male, "object/mobile/vendor/shared_twilek_male.iff")
@@ -2064,7 +2089,8 @@ object_mobile_vendor_shared_weequay_male = SharedCreatureObjectTemplate:new {
 	warpTolerance = 17,
 	waterModPercent = 0.5,
 
-	clientObjectCRC = 2188503843
+	clientObjectCRC = 2188503843,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/mobile/shared_mobile.iff", "object/mobile/skeleton/shared_humanoid.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_mobile_vendor_shared_weequay_male, "object/mobile/vendor/shared_weequay_male.iff")
@@ -2142,7 +2168,8 @@ object_mobile_vendor_shared_wookiee_female = SharedCreatureObjectTemplate:new {
 	warpTolerance = 17,
 	waterModPercent = 0.5,
 
-	clientObjectCRC = 3668976196
+	clientObjectCRC = 3668976196,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/mobile/shared_mobile.iff", "object/mobile/skeleton/shared_humanoid.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_mobile_vendor_shared_wookiee_female, "object/mobile/vendor/shared_wookiee_female.iff")
@@ -2220,7 +2247,8 @@ object_mobile_vendor_shared_wookiee_male = SharedCreatureObjectTemplate:new {
 	warpTolerance = 17,
 	waterModPercent = 0.5,
 
-	clientObjectCRC = 3356658315
+	clientObjectCRC = 3356658315,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/mobile/shared_mobile.iff", "object/mobile/skeleton/shared_humanoid.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_mobile_vendor_shared_wookiee_male, "object/mobile/vendor/shared_wookiee_male.iff")
@@ -2298,7 +2326,8 @@ object_mobile_vendor_shared_zabrak_female = SharedCreatureObjectTemplate:new {
 	warpTolerance = 17,
 	waterModPercent = 0.5,
 
-	clientObjectCRC = 3008880567
+	clientObjectCRC = 3008880567,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/mobile/shared_mobile.iff", "object/mobile/skeleton/shared_humanoid.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_mobile_vendor_shared_zabrak_female, "object/mobile/vendor/shared_zabrak_female.iff")
@@ -2376,7 +2405,8 @@ object_mobile_vendor_shared_zabrak_male = SharedCreatureObjectTemplate:new {
 	warpTolerance = 17,
 	waterModPercent = 0.5,
 
-	clientObjectCRC = 733384901
+	clientObjectCRC = 733384901,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/mobile/shared_mobile.iff", "object/mobile/skeleton/shared_humanoid.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_mobile_vendor_shared_zabrak_male, "object/mobile/vendor/shared_zabrak_male.iff")

@@ -90,7 +90,8 @@ object_tangible_faction_perk_faction_base_item_shared_alarm_destruct = SharedTan
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1099269046
+	clientObjectCRC = 1099269046,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_faction_perk_faction_base_item_shared_alarm_destruct, "object/tangible/faction_perk/faction_base_item/shared_alarm_destruct.iff")
@@ -144,7 +145,8 @@ object_tangible_faction_perk_faction_base_item_shared_alarm_destruct_no_sound = 
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3561123970
+	clientObjectCRC = 3561123970,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_faction_perk_faction_base_item_shared_alarm_destruct_no_sound, "object/tangible/faction_perk/faction_base_item/shared_alarm_destruct_no_sound.iff")
@@ -198,7 +200,8 @@ object_tangible_faction_perk_faction_base_item_shared_alarm_hack = SharedTangibl
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3749452237
+	clientObjectCRC = 3749452237,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_faction_perk_faction_base_item_shared_alarm_hack, "object/tangible/faction_perk/faction_base_item/shared_alarm_hack.iff")
@@ -252,7 +255,8 @@ object_tangible_faction_perk_faction_base_item_shared_alarm_hack_no_sound = Shar
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3271748526
+	clientObjectCRC = 3271748526,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_faction_perk_faction_base_item_shared_alarm_hack_no_sound, "object/tangible/faction_perk/faction_base_item/shared_alarm_hack_no_sound.iff")

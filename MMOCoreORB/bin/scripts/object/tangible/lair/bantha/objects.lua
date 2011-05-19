@@ -90,7 +90,8 @@ object_tangible_lair_bantha_shared_lair_bantha = SharedTangibleObjectTemplate:ne
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2351102801
+	clientObjectCRC = 2351102801,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff", "object/tangible/lair/base/shared_lair_base_rancor_light.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_bantha_shared_lair_bantha, "object/tangible/lair/bantha/shared_lair_bantha.iff")
@@ -144,7 +145,8 @@ object_tangible_lair_bantha_shared_lair_bantha_desert = SharedTangibleObjectTemp
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 810600832
+	clientObjectCRC = 810600832,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff", "object/tangible/lair/base/shared_lair_base_rancor_light.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_bantha_shared_lair_bantha_desert, "object/tangible/lair/bantha/shared_lair_bantha_desert.iff")
@@ -198,7 +200,8 @@ object_tangible_lair_bantha_shared_lair_bantha_dune = SharedTangibleObjectTempla
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3458718751
+	clientObjectCRC = 3458718751,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff", "object/tangible/lair/base/shared_lair_base_rancor_light.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_bantha_shared_lair_bantha_dune, "object/tangible/lair/bantha/shared_lair_bantha_dune.iff")
@@ -252,7 +255,8 @@ object_tangible_lair_bantha_shared_lair_bantha_wasteland = SharedTangibleObjectT
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3384005907
+	clientObjectCRC = 3384005907,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff", "object/tangible/lair/base/shared_lair_base_rancor_light.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_bantha_shared_lair_bantha_wasteland, "object/tangible/lair/bantha/shared_lair_bantha_wasteland.iff")

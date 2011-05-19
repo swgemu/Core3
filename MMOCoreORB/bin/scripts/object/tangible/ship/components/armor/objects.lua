@@ -90,7 +90,8 @@ object_tangible_ship_components_armor_shared_arm_corellian_advanced_durasteel = 
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3014828629
+	clientObjectCRC = 3014828629,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_armor_shared_arm_corellian_advanced_durasteel, "object/tangible/ship/components/armor/shared_arm_corellian_advanced_durasteel.iff")
@@ -144,7 +145,8 @@ object_tangible_ship_components_armor_shared_arm_corellian_cheap_durasteel = Sha
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2711392870
+	clientObjectCRC = 2711392870,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_armor_shared_arm_corellian_cheap_durasteel, "object/tangible/ship/components/armor/shared_arm_corellian_cheap_durasteel.iff")
@@ -198,7 +200,8 @@ object_tangible_ship_components_armor_shared_arm_corellian_elite_durasteel = Sha
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1457378842
+	clientObjectCRC = 1457378842,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_armor_shared_arm_corellian_elite_durasteel, "object/tangible/ship/components/armor/shared_arm_corellian_elite_durasteel.iff")
@@ -252,7 +255,8 @@ object_tangible_ship_components_armor_shared_arm_corellian_enhanced_elite_plasti
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4170685241
+	clientObjectCRC = 4170685241,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_armor_shared_arm_corellian_enhanced_elite_plastisteel, "object/tangible/ship/components/armor/shared_arm_corellian_enhanced_elite_plastisteel.iff")
@@ -306,7 +310,8 @@ object_tangible_ship_components_armor_shared_arm_corellian_heavy_durasteel = Sha
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 912895666
+	clientObjectCRC = 912895666,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_armor_shared_arm_corellian_heavy_durasteel, "object/tangible/ship/components/armor/shared_arm_corellian_heavy_durasteel.iff")
@@ -360,7 +365,8 @@ object_tangible_ship_components_armor_shared_arm_corellian_improved_advanced_dur
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3145007708
+	clientObjectCRC = 3145007708,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_armor_shared_arm_corellian_improved_advanced_durasteel, "object/tangible/ship/components/armor/shared_arm_corellian_improved_advanced_durasteel.iff")
@@ -414,7 +420,8 @@ object_tangible_ship_components_armor_shared_arm_corellian_light_durasteel = Sha
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1182016930
+	clientObjectCRC = 1182016930,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_armor_shared_arm_corellian_light_durasteel, "object/tangible/ship/components/armor/shared_arm_corellian_light_durasteel.iff")
@@ -468,7 +475,8 @@ object_tangible_ship_components_armor_shared_arm_corellian_modified_heavy_durast
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4076917946
+	clientObjectCRC = 4076917946,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_armor_shared_arm_corellian_modified_heavy_durasteel, "object/tangible/ship/components/armor/shared_arm_corellian_modified_heavy_durasteel.iff")
@@ -522,7 +530,8 @@ object_tangible_ship_components_armor_shared_arm_corellian_reinforced_light_dura
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2793909249
+	clientObjectCRC = 2793909249,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_armor_shared_arm_corellian_reinforced_light_durasteel, "object/tangible/ship/components/armor/shared_arm_corellian_reinforced_light_durasteel.iff")
@@ -576,7 +585,8 @@ object_tangible_ship_components_armor_shared_arm_corellian_reinforced_supreme_du
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 792770319
+	clientObjectCRC = 792770319,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_armor_shared_arm_corellian_reinforced_supreme_durasteel, "object/tangible/ship/components/armor/shared_arm_corellian_reinforced_supreme_durasteel.iff")
@@ -630,7 +640,8 @@ object_tangible_ship_components_armor_shared_arm_corellian_special_standard_dura
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3131875437
+	clientObjectCRC = 3131875437,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_armor_shared_arm_corellian_special_standard_durasteel, "object/tangible/ship/components/armor/shared_arm_corellian_special_standard_durasteel.iff")
@@ -684,7 +695,8 @@ object_tangible_ship_components_armor_shared_arm_corellian_standard_durasteel = 
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2484547864
+	clientObjectCRC = 2484547864,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_armor_shared_arm_corellian_standard_durasteel, "object/tangible/ship/components/armor/shared_arm_corellian_standard_durasteel.iff")
@@ -738,7 +750,8 @@ object_tangible_ship_components_armor_shared_arm_corellian_supreme_durasteel = S
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3245469229
+	clientObjectCRC = 3245469229,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_armor_shared_arm_corellian_supreme_durasteel, "object/tangible/ship/components/armor/shared_arm_corellian_supreme_durasteel.iff")
@@ -792,7 +805,8 @@ object_tangible_ship_components_armor_shared_arm_cygnus_light_weave = SharedTang
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2417515644
+	clientObjectCRC = 2417515644,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_armor_shared_arm_cygnus_light_weave, "object/tangible/ship/components/armor/shared_arm_cygnus_light_weave.iff")
@@ -846,7 +860,8 @@ object_tangible_ship_components_armor_shared_arm_cygnus_standard_weave = SharedT
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1396020444
+	clientObjectCRC = 1396020444,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_armor_shared_arm_cygnus_standard_weave, "object/tangible/ship/components/armor/shared_arm_cygnus_standard_weave.iff")
@@ -900,7 +915,8 @@ object_tangible_ship_components_armor_shared_arm_freitek_deluxe_light = SharedTa
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 203726257
+	clientObjectCRC = 203726257,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_armor_shared_arm_freitek_deluxe_light, "object/tangible/ship/components/armor/shared_arm_freitek_deluxe_light.iff")
@@ -954,7 +970,8 @@ object_tangible_ship_components_armor_shared_arm_freitek_standard = SharedTangib
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1109511404
+	clientObjectCRC = 1109511404,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_armor_shared_arm_freitek_standard, "object/tangible/ship/components/armor/shared_arm_freitek_standard.iff")
@@ -1008,7 +1025,8 @@ object_tangible_ship_components_armor_shared_arm_gallofree_mk1 = SharedTangibleO
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 39221168
+	clientObjectCRC = 39221168,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_armor_shared_arm_gallofree_mk1, "object/tangible/ship/components/armor/shared_arm_gallofree_mk1.iff")
@@ -1062,7 +1080,8 @@ object_tangible_ship_components_armor_shared_arm_gallofree_mk2 = SharedTangibleO
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3644972839
+	clientObjectCRC = 3644972839,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_armor_shared_arm_gallofree_mk2, "object/tangible/ship/components/armor/shared_arm_gallofree_mk2.iff")
@@ -1116,7 +1135,8 @@ object_tangible_ship_components_armor_shared_arm_generic = SharedTangibleObjectT
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1622491618
+	clientObjectCRC = 1622491618,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_armor_shared_arm_generic, "object/tangible/ship/components/armor/shared_arm_generic.iff")
@@ -1170,7 +1190,8 @@ object_tangible_ship_components_armor_shared_arm_incom_light_plate = SharedTangi
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1227421656
+	clientObjectCRC = 1227421656,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_armor_shared_arm_incom_light_plate, "object/tangible/ship/components/armor/shared_arm_incom_light_plate.iff")
@@ -1224,7 +1245,8 @@ object_tangible_ship_components_armor_shared_arm_incom_modified_standard_plate =
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2366385613
+	clientObjectCRC = 2366385613,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_armor_shared_arm_incom_modified_standard_plate, "object/tangible/ship/components/armor/shared_arm_incom_modified_standard_plate.iff")
@@ -1278,7 +1300,8 @@ object_tangible_ship_components_armor_shared_arm_incom_standard_plate = SharedTa
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 641382819
+	clientObjectCRC = 641382819,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_armor_shared_arm_incom_standard_plate, "object/tangible/ship/components/armor/shared_arm_incom_standard_plate.iff")
@@ -1332,7 +1355,8 @@ object_tangible_ship_components_armor_shared_arm_kessel_imperial_rendili_crystal
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1625601979
+	clientObjectCRC = 1625601979,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_armor_shared_arm_kessel_imperial_rendili_crystalline_durasteel, "object/tangible/ship/components/armor/shared_arm_kessel_imperial_rendili_crystalline_durasteel.iff")
@@ -1386,7 +1410,8 @@ object_tangible_ship_components_armor_shared_arm_kessel_imperial_sds_imperial_im
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3348661069
+	clientObjectCRC = 3348661069,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_armor_shared_arm_kessel_imperial_sds_imperial_impervious, "object/tangible/ship/components/armor/shared_arm_kessel_imperial_sds_imperial_impervious.iff")
@@ -1440,7 +1465,8 @@ object_tangible_ship_components_armor_shared_arm_kessel_imperial_sfs_imperial_fi
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1099045901
+	clientObjectCRC = 1099045901,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_armor_shared_arm_kessel_imperial_sfs_imperial_finest, "object/tangible/ship/components/armor/shared_arm_kessel_imperial_sfs_imperial_finest.iff")
@@ -1494,7 +1520,8 @@ object_tangible_ship_components_armor_shared_arm_kessel_rebel_mandal_corrugated_
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4176245510
+	clientObjectCRC = 4176245510,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_armor_shared_arm_kessel_rebel_mandal_corrugated_plastisteel, "object/tangible/ship/components/armor/shared_arm_kessel_rebel_mandal_corrugated_plastisteel.iff")
@@ -1548,7 +1575,8 @@ object_tangible_ship_components_armor_shared_arm_kessel_rebel_slayn_flexsteel_mu
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3545922834
+	clientObjectCRC = 3545922834,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_armor_shared_arm_kessel_rebel_slayn_flexsteel_multilayer, "object/tangible/ship/components/armor/shared_arm_kessel_rebel_slayn_flexsteel_multilayer.iff")
@@ -1602,7 +1630,8 @@ object_tangible_ship_components_armor_shared_arm_kessel_rebel_sorosuub_spidershe
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1672663550
+	clientObjectCRC = 1672663550,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_armor_shared_arm_kessel_rebel_sorosuub_spidershell_plating, "object/tangible/ship/components/armor/shared_arm_kessel_rebel_sorosuub_spidershell_plating.iff")
@@ -1656,7 +1685,8 @@ object_tangible_ship_components_armor_shared_arm_koensayr_advanced_durasteel = S
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 828530711
+	clientObjectCRC = 828530711,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_armor_shared_arm_koensayr_advanced_durasteel, "object/tangible/ship/components/armor/shared_arm_koensayr_advanced_durasteel.iff")
@@ -1710,7 +1740,8 @@ object_tangible_ship_components_armor_shared_arm_koensayr_b5_durasteel = SharedT
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1171221751
+	clientObjectCRC = 1171221751,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_armor_shared_arm_koensayr_b5_durasteel, "object/tangible/ship/components/armor/shared_arm_koensayr_b5_durasteel.iff")
@@ -1764,7 +1795,8 @@ object_tangible_ship_components_armor_shared_arm_koensayr_b9_durasteel = SharedT
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3460991428
+	clientObjectCRC = 3460991428,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_armor_shared_arm_koensayr_b9_durasteel, "object/tangible/ship/components/armor/shared_arm_koensayr_b9_durasteel.iff")
@@ -1818,7 +1850,8 @@ object_tangible_ship_components_armor_shared_arm_koensayr_elite_plastisteel = Sh
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2857270890
+	clientObjectCRC = 2857270890,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_armor_shared_arm_koensayr_elite_plastisteel, "object/tangible/ship/components/armor/shared_arm_koensayr_elite_plastisteel.iff")
@@ -1872,7 +1905,8 @@ object_tangible_ship_components_armor_shared_arm_koensayr_enhanced_heavy_duraste
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3973535465
+	clientObjectCRC = 3973535465,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_armor_shared_arm_koensayr_enhanced_heavy_durasteel, "object/tangible/ship/components/armor/shared_arm_koensayr_enhanced_heavy_durasteel.iff")
@@ -1926,7 +1960,8 @@ object_tangible_ship_components_armor_shared_arm_koensayr_enhanced_standard_dura
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 935608310
+	clientObjectCRC = 935608310,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_armor_shared_arm_koensayr_enhanced_standard_durasteel, "object/tangible/ship/components/armor/shared_arm_koensayr_enhanced_standard_durasteel.iff")
@@ -1980,7 +2015,8 @@ object_tangible_ship_components_armor_shared_arm_koensayr_heavy_durasteel = Shar
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1092389644
+	clientObjectCRC = 1092389644,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_armor_shared_arm_koensayr_heavy_durasteel, "object/tangible/ship/components/armor/shared_arm_koensayr_heavy_durasteel.iff")
@@ -2034,7 +2070,8 @@ object_tangible_ship_components_armor_shared_arm_koensayr_improved_elite_plastis
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2296134538
+	clientObjectCRC = 2296134538,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_armor_shared_arm_koensayr_improved_elite_plastisteel, "object/tangible/ship/components/armor/shared_arm_koensayr_improved_elite_plastisteel.iff")
@@ -2088,7 +2125,8 @@ object_tangible_ship_components_armor_shared_arm_koensayr_light_advanced_duraste
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1035628527
+	clientObjectCRC = 1035628527,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_armor_shared_arm_koensayr_light_advanced_durasteel, "object/tangible/ship/components/armor/shared_arm_koensayr_light_advanced_durasteel.iff")
@@ -2142,7 +2180,8 @@ object_tangible_ship_components_armor_shared_arm_koensayr_limited_heavy_durastee
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2917985380
+	clientObjectCRC = 2917985380,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_armor_shared_arm_koensayr_limited_heavy_durasteel, "object/tangible/ship/components/armor/shared_arm_koensayr_limited_heavy_durasteel.iff")
@@ -2196,7 +2235,8 @@ object_tangible_ship_components_armor_shared_arm_koensayr_limited_supreme_durast
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2534423202
+	clientObjectCRC = 2534423202,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_armor_shared_arm_koensayr_limited_supreme_durasteel, "object/tangible/ship/components/armor/shared_arm_koensayr_limited_supreme_durasteel.iff")
@@ -2250,7 +2290,8 @@ object_tangible_ship_components_armor_shared_arm_koensayr_promotional_b9_duraste
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 167045731
+	clientObjectCRC = 167045731,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_armor_shared_arm_koensayr_promotional_b9_durasteel, "object/tangible/ship/components/armor/shared_arm_koensayr_promotional_b9_durasteel.iff")
@@ -2304,7 +2345,8 @@ object_tangible_ship_components_armor_shared_arm_koensayr_reinforced_b5_durastee
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 258640314
+	clientObjectCRC = 258640314,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_armor_shared_arm_koensayr_reinforced_b5_durasteel, "object/tangible/ship/components/armor/shared_arm_koensayr_reinforced_b5_durasteel.iff")
@@ -2358,7 +2400,8 @@ object_tangible_ship_components_armor_shared_arm_koensayr_special_supreme_durast
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1378987090
+	clientObjectCRC = 1378987090,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_armor_shared_arm_koensayr_special_supreme_durasteel, "object/tangible/ship/components/armor/shared_arm_koensayr_special_supreme_durasteel.iff")
@@ -2412,7 +2455,8 @@ object_tangible_ship_components_armor_shared_arm_koensayr_standard_durasteel = S
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 382202714
+	clientObjectCRC = 382202714,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_armor_shared_arm_koensayr_standard_durasteel, "object/tangible/ship/components/armor/shared_arm_koensayr_standard_durasteel.iff")
@@ -2466,7 +2510,8 @@ object_tangible_ship_components_armor_shared_arm_koensayr_supreme_durasteel = Sh
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1438984098
+	clientObjectCRC = 1438984098,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_armor_shared_arm_koensayr_supreme_durasteel, "object/tangible/ship/components/armor/shared_arm_koensayr_supreme_durasteel.iff")
@@ -2520,7 +2565,8 @@ object_tangible_ship_components_armor_shared_arm_koensayr_thick_advanced_duraste
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3772847383
+	clientObjectCRC = 3772847383,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_armor_shared_arm_koensayr_thick_advanced_durasteel, "object/tangible/ship/components/armor/shared_arm_koensayr_thick_advanced_durasteel.iff")
@@ -2574,7 +2620,8 @@ object_tangible_ship_components_armor_shared_arm_kse_advanced_durasteel = Shared
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 987276877
+	clientObjectCRC = 987276877,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_armor_shared_arm_kse_advanced_durasteel, "object/tangible/ship/components/armor/shared_arm_kse_advanced_durasteel.iff")
@@ -2628,7 +2675,8 @@ object_tangible_ship_components_armor_shared_arm_kse_customized_advanced_duraste
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2637845243
+	clientObjectCRC = 2637845243,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_armor_shared_arm_kse_customized_advanced_durasteel, "object/tangible/ship/components/armor/shared_arm_kse_customized_advanced_durasteel.iff")
@@ -2682,7 +2730,8 @@ object_tangible_ship_components_armor_shared_arm_kse_elite_durasteel = SharedTan
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3918028246
+	clientObjectCRC = 3918028246,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_armor_shared_arm_kse_elite_durasteel, "object/tangible/ship/components/armor/shared_arm_kse_elite_durasteel.iff")
@@ -2736,7 +2785,8 @@ object_tangible_ship_components_armor_shared_arm_kse_heavy_durasteel = SharedTan
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2302420350
+	clientObjectCRC = 2302420350,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_armor_shared_arm_kse_heavy_durasteel, "object/tangible/ship/components/armor/shared_arm_kse_heavy_durasteel.iff")
@@ -2790,7 +2840,8 @@ object_tangible_ship_components_armor_shared_arm_kse_intermediate_durasteel = Sh
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2472601379
+	clientObjectCRC = 2472601379,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_armor_shared_arm_kse_intermediate_durasteel, "object/tangible/ship/components/armor/shared_arm_kse_intermediate_durasteel.iff")
@@ -2844,7 +2895,8 @@ object_tangible_ship_components_armor_shared_arm_kse_limited_heavy_durasteel = S
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 754583097
+	clientObjectCRC = 754583097,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_armor_shared_arm_kse_limited_heavy_durasteel, "object/tangible/ship/components/armor/shared_arm_kse_limited_heavy_durasteel.iff")
@@ -2898,7 +2950,8 @@ object_tangible_ship_components_armor_shared_arm_kse_modified_heavy_durasteel = 
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 759538289
+	clientObjectCRC = 759538289,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_armor_shared_arm_kse_modified_heavy_durasteel, "object/tangible/ship/components/armor/shared_arm_kse_modified_heavy_durasteel.iff")
@@ -2952,7 +3005,8 @@ object_tangible_ship_components_armor_shared_arm_kse_modified_light_durasteel = 
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1566058849
+	clientObjectCRC = 1566058849,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_armor_shared_arm_kse_modified_light_durasteel, "object/tangible/ship/components/armor/shared_arm_kse_modified_light_durasteel.iff")
@@ -3006,7 +3060,8 @@ object_tangible_ship_components_armor_shared_arm_kse_modified_supreme_durasteel 
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2288993339
+	clientObjectCRC = 2288993339,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_armor_shared_arm_kse_modified_supreme_durasteel, "object/tangible/ship/components/armor/shared_arm_kse_modified_supreme_durasteel.iff")
@@ -3060,7 +3115,8 @@ object_tangible_ship_components_armor_shared_arm_kse_standard_durasteel = Shared
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 494744832
+	clientObjectCRC = 494744832,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_armor_shared_arm_kse_standard_durasteel, "object/tangible/ship/components/armor/shared_arm_kse_standard_durasteel.iff")
@@ -3114,7 +3170,8 @@ object_tangible_ship_components_armor_shared_arm_kse_supreme_durasteel = SharedT
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 706111172
+	clientObjectCRC = 706111172,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_armor_shared_arm_kse_supreme_durasteel, "object/tangible/ship/components/armor/shared_arm_kse_supreme_durasteel.iff")
@@ -3168,7 +3225,8 @@ object_tangible_ship_components_armor_shared_arm_mandal_advanced_composite = Sha
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1688248880
+	clientObjectCRC = 1688248880,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_armor_shared_arm_mandal_advanced_composite, "object/tangible/ship/components/armor/shared_arm_mandal_advanced_composite.iff")
@@ -3222,7 +3280,8 @@ object_tangible_ship_components_armor_shared_arm_mandal_composite_j5 = SharedTan
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2614891769
+	clientObjectCRC = 2614891769,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_armor_shared_arm_mandal_composite_j5, "object/tangible/ship/components/armor/shared_arm_mandal_composite_j5.iff")
@@ -3276,7 +3335,8 @@ object_tangible_ship_components_armor_shared_arm_mandal_composite_j7 = SharedTan
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 164027363
+	clientObjectCRC = 164027363,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_armor_shared_arm_mandal_composite_j7, "object/tangible/ship/components/armor/shared_arm_mandal_composite_j7.iff")
@@ -3330,7 +3390,8 @@ object_tangible_ship_components_armor_shared_arm_mandal_custom_heavy_composite =
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2443269363
+	clientObjectCRC = 2443269363,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_armor_shared_arm_mandal_custom_heavy_composite, "object/tangible/ship/components/armor/shared_arm_mandal_custom_heavy_composite.iff")
@@ -3384,7 +3445,8 @@ object_tangible_ship_components_armor_shared_arm_mandal_double_insulated_i5 = Sh
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4187492746
+	clientObjectCRC = 4187492746,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_armor_shared_arm_mandal_double_insulated_i5, "object/tangible/ship/components/armor/shared_arm_mandal_double_insulated_i5.iff")
@@ -3438,7 +3500,8 @@ object_tangible_ship_components_armor_shared_arm_mandal_double_insulated_i7 = Sh
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1803738768
+	clientObjectCRC = 1803738768,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_armor_shared_arm_mandal_double_insulated_i7, "object/tangible/ship/components/armor/shared_arm_mandal_double_insulated_i7.iff")
@@ -3492,7 +3555,8 @@ object_tangible_ship_components_armor_shared_arm_mandal_double_plated_composite_
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2556935456
+	clientObjectCRC = 2556935456,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_armor_shared_arm_mandal_double_plated_composite_j7, "object/tangible/ship/components/armor/shared_arm_mandal_double_plated_composite_j7.iff")
@@ -3546,7 +3610,8 @@ object_tangible_ship_components_armor_shared_arm_mandal_elite_composite = Shared
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2373681857
+	clientObjectCRC = 2373681857,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_armor_shared_arm_mandal_elite_composite, "object/tangible/ship/components/armor/shared_arm_mandal_elite_composite.iff")
@@ -3600,7 +3665,8 @@ object_tangible_ship_components_armor_shared_arm_mandal_enhanced_elite_composite
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1466373688
+	clientObjectCRC = 1466373688,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_armor_shared_arm_mandal_enhanced_elite_composite, "object/tangible/ship/components/armor/shared_arm_mandal_enhanced_elite_composite.iff")
@@ -3654,7 +3720,8 @@ object_tangible_ship_components_armor_shared_arm_mandal_enhanced_heavy_composite
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 936603280
+	clientObjectCRC = 936603280,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_armor_shared_arm_mandal_enhanced_heavy_composite, "object/tangible/ship/components/armor/shared_arm_mandal_enhanced_heavy_composite.iff")
@@ -3708,7 +3775,8 @@ object_tangible_ship_components_armor_shared_arm_mandal_heavy_composite = Shared
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3989830249
+	clientObjectCRC = 3989830249,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_armor_shared_arm_mandal_heavy_composite, "object/tangible/ship/components/armor/shared_arm_mandal_heavy_composite.iff")
@@ -3762,7 +3830,8 @@ object_tangible_ship_components_armor_shared_arm_mandal_insulated_i7 = SharedTan
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 156429997
+	clientObjectCRC = 156429997,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_armor_shared_arm_mandal_insulated_i7, "object/tangible/ship/components/armor/shared_arm_mandal_insulated_i7.iff")
@@ -3816,7 +3885,8 @@ object_tangible_ship_components_armor_shared_arm_mandal_modified_supreme_composi
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2798415892
+	clientObjectCRC = 2798415892,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_armor_shared_arm_mandal_modified_supreme_composite, "object/tangible/ship/components/armor/shared_arm_mandal_modified_supreme_composite.iff")
@@ -3870,7 +3940,8 @@ object_tangible_ship_components_armor_shared_arm_mandal_modifier_composite_j5 = 
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2535453726
+	clientObjectCRC = 2535453726,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_armor_shared_arm_mandal_modifier_composite_j5, "object/tangible/ship/components/armor/shared_arm_mandal_modifier_composite_j5.iff")
@@ -3924,7 +3995,8 @@ object_tangible_ship_components_armor_shared_arm_mandal_reinforced_advanced_comp
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3155179627
+	clientObjectCRC = 3155179627,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_armor_shared_arm_mandal_reinforced_advanced_composite, "object/tangible/ship/components/armor/shared_arm_mandal_reinforced_advanced_composite.iff")
@@ -3978,7 +4050,8 @@ object_tangible_ship_components_armor_shared_arm_mandal_supreme_composite = Shar
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3572993151
+	clientObjectCRC = 3572993151,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_armor_shared_arm_mandal_supreme_composite, "object/tangible/ship/components/armor/shared_arm_mandal_supreme_composite.iff")
@@ -4032,7 +4105,8 @@ object_tangible_ship_components_armor_shared_arm_mission_reward_imperial_rss_spe
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 8094392
+	clientObjectCRC = 8094392,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_armor_shared_arm_mission_reward_imperial_rss_special_durasteel, "object/tangible/ship/components/armor/shared_arm_mission_reward_imperial_rss_special_durasteel.iff")
@@ -4086,7 +4160,8 @@ object_tangible_ship_components_armor_shared_arm_mission_reward_imperial_sfs_lig
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3133915377
+	clientObjectCRC = 3133915377,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_armor_shared_arm_mission_reward_imperial_sfs_light_military, "object/tangible/ship/components/armor/shared_arm_mission_reward_imperial_sfs_light_military.iff")
@@ -4140,7 +4215,8 @@ object_tangible_ship_components_armor_shared_arm_mission_reward_neutral_kse_hand
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 250102310
+	clientObjectCRC = 250102310,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_armor_shared_arm_mission_reward_neutral_kse_handcrafted, "object/tangible/ship/components/armor/shared_arm_mission_reward_neutral_kse_handcrafted.iff")
@@ -4194,7 +4270,8 @@ object_tangible_ship_components_armor_shared_arm_mission_reward_rebel_corellian_
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 935409503
+	clientObjectCRC = 935409503,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_armor_shared_arm_mission_reward_rebel_corellian_triplate, "object/tangible/ship/components/armor/shared_arm_mission_reward_rebel_corellian_triplate.iff")
@@ -4248,7 +4325,8 @@ object_tangible_ship_components_armor_shared_arm_mission_reward_rebel_incom_ultr
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2559663629
+	clientObjectCRC = 2559663629,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_armor_shared_arm_mission_reward_rebel_incom_ultralight, "object/tangible/ship/components/armor/shared_arm_mission_reward_rebel_incom_ultralight.iff")
@@ -4302,7 +4380,8 @@ object_tangible_ship_components_armor_shared_arm_moncal_advanced_weave = SharedT
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 109261874
+	clientObjectCRC = 109261874,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_armor_shared_arm_moncal_advanced_weave, "object/tangible/ship/components/armor/shared_arm_moncal_advanced_weave.iff")
@@ -4356,7 +4435,8 @@ object_tangible_ship_components_armor_shared_arm_moncal_elite_weave = SharedTang
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3758987303
+	clientObjectCRC = 3758987303,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_armor_shared_arm_moncal_elite_weave, "object/tangible/ship/components/armor/shared_arm_moncal_elite_weave.iff")
@@ -4410,7 +4490,8 @@ object_tangible_ship_components_armor_shared_arm_moncal_improved_light_weave = S
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2065607228
+	clientObjectCRC = 2065607228,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_armor_shared_arm_moncal_improved_light_weave, "object/tangible/ship/components/armor/shared_arm_moncal_improved_light_weave.iff")
@@ -4464,7 +4545,8 @@ object_tangible_ship_components_armor_shared_arm_moncal_light_weave = SharedTang
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3053787299
+	clientObjectCRC = 3053787299,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_armor_shared_arm_moncal_light_weave, "object/tangible/ship/components/armor/shared_arm_moncal_light_weave.iff")
@@ -4518,7 +4600,8 @@ object_tangible_ship_components_armor_shared_arm_moncal_supreme_weave = SharedTa
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1882172430
+	clientObjectCRC = 1882172430,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_armor_shared_arm_moncal_supreme_weave, "object/tangible/ship/components/armor/shared_arm_moncal_supreme_weave.iff")
@@ -4572,7 +4655,8 @@ object_tangible_ship_components_armor_shared_arm_prototype_armor = SharedTangibl
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2845706811
+	clientObjectCRC = 2845706811,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_armor_shared_arm_prototype_armor, "object/tangible/ship/components/armor/shared_arm_prototype_armor.iff")
@@ -4626,7 +4710,8 @@ object_tangible_ship_components_armor_shared_arm_rendili_tough_plate = SharedTan
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3837917885
+	clientObjectCRC = 3837917885,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_armor_shared_arm_rendili_tough_plate, "object/tangible/ship/components/armor/shared_arm_rendili_tough_plate.iff")
@@ -4680,7 +4765,8 @@ object_tangible_ship_components_armor_shared_arm_reward_alderaan_elite = SharedT
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 558663557
+	clientObjectCRC = 558663557,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_armor_shared_arm_reward_alderaan_elite, "object/tangible/ship/components/armor/shared_arm_reward_alderaan_elite.iff")
@@ -4734,7 +4820,8 @@ object_tangible_ship_components_armor_shared_arm_reward_baktoid_elite = SharedTa
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 161167635
+	clientObjectCRC = 161167635,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_armor_shared_arm_reward_baktoid_elite, "object/tangible/ship/components/armor/shared_arm_reward_baktoid_elite.iff")
@@ -4788,7 +4875,8 @@ object_tangible_ship_components_armor_shared_arm_reward_freitek_elite = SharedTa
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 554262569
+	clientObjectCRC = 554262569,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_armor_shared_arm_reward_freitek_elite, "object/tangible/ship/components/armor/shared_arm_reward_freitek_elite.iff")
@@ -4842,7 +4930,8 @@ object_tangible_ship_components_armor_shared_arm_reward_mandal_elite = SharedTan
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 648039775
+	clientObjectCRC = 648039775,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_armor_shared_arm_reward_mandal_elite, "object/tangible/ship/components/armor/shared_arm_reward_mandal_elite.iff")
@@ -4896,7 +4985,8 @@ object_tangible_ship_components_armor_shared_arm_reward_subpro_elite = SharedTan
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2577499173
+	clientObjectCRC = 2577499173,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_armor_shared_arm_reward_subpro_elite, "object/tangible/ship/components/armor/shared_arm_reward_subpro_elite.iff")
@@ -4950,7 +5040,8 @@ object_tangible_ship_components_armor_shared_arm_rss_light_plastisteel = SharedT
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3260614501
+	clientObjectCRC = 3260614501,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_armor_shared_arm_rss_light_plastisteel, "object/tangible/ship/components/armor/shared_arm_rss_light_plastisteel.iff")
@@ -5004,7 +5095,8 @@ object_tangible_ship_components_armor_shared_arm_sds_triplate_system = SharedTan
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4088171955
+	clientObjectCRC = 4088171955,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_armor_shared_arm_sds_triplate_system, "object/tangible/ship/components/armor/shared_arm_sds_triplate_system.iff")
@@ -5058,7 +5150,8 @@ object_tangible_ship_components_armor_shared_arm_sfs_enhanced_standard_durasteel
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3164042253
+	clientObjectCRC = 3164042253,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_armor_shared_arm_sfs_enhanced_standard_durasteel, "object/tangible/ship/components/armor/shared_arm_sfs_enhanced_standard_durasteel.iff")
@@ -5112,7 +5205,8 @@ object_tangible_ship_components_armor_shared_arm_sfs_light_durasteel = SharedTan
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1705716466
+	clientObjectCRC = 1705716466,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_armor_shared_arm_sfs_light_durasteel, "object/tangible/ship/components/armor/shared_arm_sfs_light_durasteel.iff")
@@ -5166,7 +5260,8 @@ object_tangible_ship_components_armor_shared_arm_sfs_standard_durasteel = Shared
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2872638243
+	clientObjectCRC = 2872638243,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_armor_shared_arm_sfs_standard_durasteel, "object/tangible/ship/components/armor/shared_arm_sfs_standard_durasteel.iff")
@@ -5220,7 +5315,8 @@ object_tangible_ship_components_armor_shared_arm_slayn_tech_weave = SharedTangib
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2741880354
+	clientObjectCRC = 2741880354,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_armor_shared_arm_slayn_tech_weave, "object/tangible/ship/components/armor/shared_arm_slayn_tech_weave.iff")
@@ -5274,7 +5370,8 @@ object_tangible_ship_components_armor_shared_arm_sorosuub_advanced_plastisteel =
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3788237472
+	clientObjectCRC = 3788237472,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_armor_shared_arm_sorosuub_advanced_plastisteel, "object/tangible/ship/components/armor/shared_arm_sorosuub_advanced_plastisteel.iff")
@@ -5328,7 +5425,8 @@ object_tangible_ship_components_armor_shared_arm_sorosuub_elite_plastisteel = Sh
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4256777864
+	clientObjectCRC = 4256777864,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_armor_shared_arm_sorosuub_elite_plastisteel, "object/tangible/ship/components/armor/shared_arm_sorosuub_elite_plastisteel.iff")
@@ -5382,7 +5480,8 @@ object_tangible_ship_components_armor_shared_arm_sorosuub_enhanced_advanced_plas
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1781793436
+	clientObjectCRC = 1781793436,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_armor_shared_arm_sorosuub_enhanced_advanced_plastisteel, "object/tangible/ship/components/armor/shared_arm_sorosuub_enhanced_advanced_plastisteel.iff")
@@ -5436,7 +5535,8 @@ object_tangible_ship_components_armor_shared_arm_sorosuub_heavy_plastisteel = Sh
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1255073600
+	clientObjectCRC = 1255073600,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_armor_shared_arm_sorosuub_heavy_plastisteel, "object/tangible/ship/components/armor/shared_arm_sorosuub_heavy_plastisteel.iff")
@@ -5490,7 +5590,8 @@ object_tangible_ship_components_armor_shared_arm_sorosuub_improved_light_plastis
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3554465146
+	clientObjectCRC = 3554465146,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_armor_shared_arm_sorosuub_improved_light_plastisteel, "object/tangible/ship/components/armor/shared_arm_sorosuub_improved_light_plastisteel.iff")
@@ -5544,7 +5645,8 @@ object_tangible_ship_components_armor_shared_arm_sorosuub_intemediate_plastistee
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 293552888
+	clientObjectCRC = 293552888,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_armor_shared_arm_sorosuub_intemediate_plastisteel, "object/tangible/ship/components/armor/shared_arm_sorosuub_intemediate_plastisteel.iff")
@@ -5598,7 +5700,8 @@ object_tangible_ship_components_armor_shared_arm_sorosuub_modified_elite_plastis
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3015832844
+	clientObjectCRC = 3015832844,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_armor_shared_arm_sorosuub_modified_elite_plastisteel, "object/tangible/ship/components/armor/shared_arm_sorosuub_modified_elite_plastisteel.iff")
@@ -5652,7 +5755,8 @@ object_tangible_ship_components_armor_shared_arm_sorosuub_special_intermediate_d
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2255439223
+	clientObjectCRC = 2255439223,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_armor_shared_arm_sorosuub_special_intermediate_durasteel, "object/tangible/ship/components/armor/shared_arm_sorosuub_special_intermediate_durasteel.iff")
@@ -5706,7 +5810,8 @@ object_tangible_ship_components_armor_shared_arm_subpro_advanced_plasisteel = Sh
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3054433644
+	clientObjectCRC = 3054433644,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_armor_shared_arm_subpro_advanced_plasisteel, "object/tangible/ship/components/armor/shared_arm_subpro_advanced_plasisteel.iff")
@@ -5760,7 +5865,8 @@ object_tangible_ship_components_armor_shared_arm_subpro_bargain_plastisteel = Sh
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 762200952
+	clientObjectCRC = 762200952,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_armor_shared_arm_subpro_bargain_plastisteel, "object/tangible/ship/components/armor/shared_arm_subpro_bargain_plastisteel.iff")
@@ -5814,7 +5920,8 @@ object_tangible_ship_components_armor_shared_arm_subpro_elite_plastisteel = Shar
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 557901816
+	clientObjectCRC = 557901816,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_armor_shared_arm_subpro_elite_plastisteel, "object/tangible/ship/components/armor/shared_arm_subpro_elite_plastisteel.iff")
@@ -5868,7 +5975,8 @@ object_tangible_ship_components_armor_shared_arm_subpro_enhanced_supreme_plastis
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1248323519
+	clientObjectCRC = 1248323519,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_armor_shared_arm_subpro_enhanced_supreme_plastisteel, "object/tangible/ship/components/armor/shared_arm_subpro_enhanced_supreme_plastisteel.iff")
@@ -5922,7 +6030,8 @@ object_tangible_ship_components_armor_shared_arm_subpro_experimental_advanced_pl
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2166232467
+	clientObjectCRC = 2166232467,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_armor_shared_arm_subpro_experimental_advanced_plastisteel, "object/tangible/ship/components/armor/shared_arm_subpro_experimental_advanced_plastisteel.iff")
@@ -5976,7 +6085,8 @@ object_tangible_ship_components_armor_shared_arm_subpro_heavy_plastisteel = Shar
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2520204848
+	clientObjectCRC = 2520204848,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_armor_shared_arm_subpro_heavy_plastisteel, "object/tangible/ship/components/armor/shared_arm_subpro_heavy_plastisteel.iff")
@@ -6030,7 +6140,8 @@ object_tangible_ship_components_armor_shared_arm_subpro_improved_light_plastiste
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1038537255
+	clientObjectCRC = 1038537255,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_armor_shared_arm_subpro_improved_light_plastisteel, "object/tangible/ship/components/armor/shared_arm_subpro_improved_light_plastisteel.iff")
@@ -6084,7 +6195,8 @@ object_tangible_ship_components_armor_shared_arm_subpro_improved_standard_durast
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1581165137
+	clientObjectCRC = 1581165137,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_armor_shared_arm_subpro_improved_standard_durasteel, "object/tangible/ship/components/armor/shared_arm_subpro_improved_standard_durasteel.iff")
@@ -6138,7 +6250,8 @@ object_tangible_ship_components_armor_shared_arm_subpro_limited_heavy_plastistee
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2268555312
+	clientObjectCRC = 2268555312,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_armor_shared_arm_subpro_limited_heavy_plastisteel, "object/tangible/ship/components/armor/shared_arm_subpro_limited_heavy_plastisteel.iff")
@@ -6192,7 +6305,8 @@ object_tangible_ship_components_armor_shared_arm_subpro_special_elite_plastistee
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4116799240
+	clientObjectCRC = 4116799240,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_armor_shared_arm_subpro_special_elite_plastisteel, "object/tangible/ship/components/armor/shared_arm_subpro_special_elite_plastisteel.iff")
@@ -6246,7 +6360,8 @@ object_tangible_ship_components_armor_shared_arm_subpro_standard_plastisteel = S
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 601305947
+	clientObjectCRC = 601305947,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_armor_shared_arm_subpro_standard_plastisteel, "object/tangible/ship/components/armor/shared_arm_subpro_standard_plastisteel.iff")
@@ -6300,7 +6415,8 @@ object_tangible_ship_components_armor_shared_arm_subpro_supreme_plastisteel = Sh
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 142850797
+	clientObjectCRC = 142850797,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_armor_shared_arm_subpro_supreme_plastisteel, "object/tangible/ship/components/armor/shared_arm_subpro_supreme_plastisteel.iff")
@@ -6354,7 +6470,8 @@ object_tangible_ship_components_armor_shared_armor_alderaan_royal_plate = Shared
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3192065844
+	clientObjectCRC = 3192065844,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_armor_shared_armor_alderaan_royal_plate, "object/tangible/ship/components/armor/shared_armor_alderaan_royal_plate.iff")
@@ -6408,7 +6525,8 @@ object_tangible_ship_components_armor_shared_armor_alderaan_royal_weave = Shared
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3502209132
+	clientObjectCRC = 3502209132,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_armor_shared_armor_alderaan_royal_weave, "object/tangible/ship/components/armor/shared_armor_alderaan_royal_weave.iff")
@@ -6462,7 +6580,8 @@ object_tangible_ship_components_armor_shared_armor_baktoid_mtt_prototype = Share
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2941453089
+	clientObjectCRC = 2941453089,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_armor_shared_armor_baktoid_mtt_prototype, "object/tangible/ship/components/armor/shared_armor_baktoid_mtt_prototype.iff")
@@ -6516,7 +6635,8 @@ object_tangible_ship_components_armor_shared_armor_baktoid_shock_armor = SharedT
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2893359892
+	clientObjectCRC = 2893359892,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_armor_shared_armor_baktoid_shock_armor, "object/tangible/ship/components/armor/shared_armor_baktoid_shock_armor.iff")
@@ -6570,7 +6690,8 @@ object_tangible_ship_components_armor_shared_armor_baktoid_spider_shell_g2 = Sha
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3860828257
+	clientObjectCRC = 3860828257,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_armor_shared_armor_baktoid_spider_shell_g2, "object/tangible/ship/components/armor/shared_armor_baktoid_spider_shell_g2.iff")
@@ -6624,7 +6745,8 @@ object_tangible_ship_components_armor_shared_armor_freitek_es4_durasteel = Share
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2157390663
+	clientObjectCRC = 2157390663,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_armor_shared_armor_freitek_es4_durasteel, "object/tangible/ship/components/armor/shared_armor_freitek_es4_durasteel.iff")
@@ -6678,7 +6800,8 @@ object_tangible_ship_components_armor_shared_armor_freitek_ew6_prototype = Share
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2136590551
+	clientObjectCRC = 2136590551,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_armor_shared_armor_freitek_ew6_prototype, "object/tangible/ship/components/armor/shared_armor_freitek_ew6_prototype.iff")
@@ -6732,7 +6855,8 @@ object_tangible_ship_components_armor_shared_armor_mandal_composite_j14 = Shared
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 189197792
+	clientObjectCRC = 189197792,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_armor_shared_armor_mandal_composite_j14, "object/tangible/ship/components/armor/shared_armor_mandal_composite_j14.iff")
@@ -6786,7 +6910,8 @@ object_tangible_ship_components_armor_shared_armor_mandal_insulated_i5 = SharedT
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2126398315
+	clientObjectCRC = 2126398315,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_armor_shared_armor_mandal_insulated_i5, "object/tangible/ship/components/armor/shared_armor_mandal_insulated_i5.iff")
@@ -6840,7 +6965,8 @@ object_tangible_ship_components_armor_shared_armor_seinar_coated_plasteel = Shar
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 502029625
+	clientObjectCRC = 502029625,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_armor_shared_armor_seinar_coated_plasteel, "object/tangible/ship/components/armor/shared_armor_seinar_coated_plasteel.iff")
@@ -6894,7 +7020,8 @@ object_tangible_ship_components_armor_shared_armor_seinar_enhanced_plasteel = Sh
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1304001760
+	clientObjectCRC = 1304001760,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_armor_shared_armor_seinar_enhanced_plasteel, "object/tangible/ship/components/armor/shared_armor_seinar_enhanced_plasteel.iff")
@@ -6948,7 +7075,8 @@ object_tangible_ship_components_armor_shared_armor_subpro_corrugated_durasteel =
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2835323687
+	clientObjectCRC = 2835323687,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_armor_shared_armor_subpro_corrugated_durasteel, "object/tangible/ship/components/armor/shared_armor_subpro_corrugated_durasteel.iff")
@@ -7002,7 +7130,8 @@ object_tangible_ship_components_armor_shared_armor_subpro_light_plasteel = Share
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3103851668
+	clientObjectCRC = 3103851668,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_armor_shared_armor_subpro_light_plasteel, "object/tangible/ship/components/armor/shared_armor_subpro_light_plasteel.iff")
@@ -7056,7 +7185,8 @@ object_tangible_ship_components_armor_shared_armor_subpro_reinforced_plasteel = 
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4267599025
+	clientObjectCRC = 4267599025,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_armor_shared_armor_subpro_reinforced_plasteel, "object/tangible/ship/components/armor/shared_armor_subpro_reinforced_plasteel.iff")
@@ -7110,7 +7240,8 @@ object_tangible_ship_components_armor_shared_armor_test = SharedTangibleObjectTe
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1291680085
+	clientObjectCRC = 1291680085,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_armor_shared_armor_test, "object/tangible/ship/components/armor/shared_armor_test.iff")
@@ -7164,7 +7295,8 @@ object_tangible_ship_components_armor_shared_armor_tiefighter_basic = SharedTang
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2493559431
+	clientObjectCRC = 2493559431,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_armor_shared_armor_tiefighter_basic, "object/tangible/ship/components/armor/shared_armor_tiefighter_basic.iff")
@@ -7218,7 +7350,8 @@ object_tangible_ship_components_armor_shared_armor_trilon_custom = SharedTangibl
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1331552040
+	clientObjectCRC = 1331552040,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_armor_shared_armor_trilon_custom, "object/tangible/ship/components/armor/shared_armor_trilon_custom.iff")
@@ -7272,7 +7405,8 @@ object_tangible_ship_components_armor_shared_armor_trilon_unknown = SharedTangib
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2483784578
+	clientObjectCRC = 2483784578,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_armor_shared_armor_trilon_unknown, "object/tangible/ship/components/armor/shared_armor_trilon_unknown.iff")
@@ -7326,7 +7460,8 @@ object_tangible_ship_components_armor_shared_armor_z95_basic = SharedTangibleObj
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 710519304
+	clientObjectCRC = 710519304,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_armor_shared_armor_z95_basic, "object/tangible/ship/components/armor/shared_armor_z95_basic.iff")

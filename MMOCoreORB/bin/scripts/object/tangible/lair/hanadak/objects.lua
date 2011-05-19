@@ -90,7 +90,8 @@ object_tangible_lair_hanadak_shared_lair_hanadak = SharedTangibleObjectTemplate:
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2197561822
+	clientObjectCRC = 2197561822,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_hanadak_shared_lair_hanadak, "object/tangible/lair/hanadak/shared_lair_hanadak.iff")
@@ -144,7 +145,8 @@ object_tangible_lair_hanadak_shared_lair_hanadak_mountain = SharedTangibleObject
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2169247668
+	clientObjectCRC = 2169247668,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_hanadak_shared_lair_hanadak_mountain, "object/tangible/lair/hanadak/shared_lair_hanadak_mountain.iff")

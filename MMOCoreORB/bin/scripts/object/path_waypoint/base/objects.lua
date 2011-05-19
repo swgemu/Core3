@@ -90,7 +90,8 @@ object_path_waypoint_base_shared_path_waypoint_base = SharedTangibleObjectTempla
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3574077008
+	clientObjectCRC = 3574077008,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_path_waypoint_base_shared_path_waypoint_base, "object/path_waypoint/base/shared_path_waypoint_base.iff")

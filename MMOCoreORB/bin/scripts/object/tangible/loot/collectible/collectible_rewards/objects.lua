@@ -90,7 +90,8 @@ object_tangible_loot_collectible_collectible_rewards_shared_blue_rug = SharedTan
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2581547421
+	clientObjectCRC = 2581547421,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_collectible_collectible_rewards_shared_blue_rug, "object/tangible/loot/collectible/collectible_rewards/shared_blue_rug.iff")
@@ -144,7 +145,8 @@ object_tangible_loot_collectible_collectible_rewards_shared_collectible_sculptur
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1595043156
+	clientObjectCRC = 1595043156,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_collectible_collectible_rewards_shared_collectible_sculpture_s01, "object/tangible/loot/collectible/collectible_rewards/shared_collectible_sculpture_s01.iff")
@@ -198,7 +200,8 @@ object_tangible_loot_collectible_collectible_rewards_shared_collectible_table = 
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1553506726
+	clientObjectCRC = 1553506726,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_collectible_collectible_rewards_shared_collectible_table, "object/tangible/loot/collectible/collectible_rewards/shared_collectible_table.iff")
@@ -252,7 +255,8 @@ object_tangible_loot_collectible_collectible_rewards_shared_fs_tracking_device =
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3016575876
+	clientObjectCRC = 3016575876,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_collectible_collectible_rewards_shared_fs_tracking_device, "object/tangible/loot/collectible/collectible_rewards/shared_fs_tracking_device.iff")
@@ -306,7 +310,8 @@ object_tangible_loot_collectible_collectible_rewards_shared_gong = SharedTangibl
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1260578344
+	clientObjectCRC = 1260578344,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_collectible_collectible_rewards_shared_gong, "object/tangible/loot/collectible/collectible_rewards/shared_gong.iff")
@@ -360,7 +365,8 @@ object_tangible_loot_collectible_collectible_rewards_shared_orange_rug = SharedT
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1620517273
+	clientObjectCRC = 1620517273,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_collectible_collectible_rewards_shared_orange_rug, "object/tangible/loot/collectible/collectible_rewards/shared_orange_rug.iff")

@@ -90,7 +90,8 @@ object_tangible_lair_structure_interior_shared_lair_cave_giant_interior_graul = 
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2016356298
+	clientObjectCRC = 2016356298,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_structure_interior_shared_lair_cave_giant_interior_graul, "object/tangible/lair/structure/interior/shared_lair_cave_giant_interior_graul.iff")
@@ -144,7 +145,8 @@ object_tangible_lair_structure_interior_shared_lair_cave_giant_interior_kimogila
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1660029328
+	clientObjectCRC = 1660029328,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_structure_interior_shared_lair_cave_giant_interior_kimogila, "object/tangible/lair/structure/interior/shared_lair_cave_giant_interior_kimogila.iff")
@@ -198,7 +200,8 @@ object_tangible_lair_structure_interior_shared_lair_cave_giant_interior_krayt_dr
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1633798217
+	clientObjectCRC = 1633798217,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_structure_interior_shared_lair_cave_giant_interior_krayt_dragon, "object/tangible/lair/structure/interior/shared_lair_cave_giant_interior_krayt_dragon.iff")
@@ -252,7 +255,8 @@ object_tangible_lair_structure_interior_shared_lair_cave_giant_interior_rancor =
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1557292930
+	clientObjectCRC = 1557292930,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_structure_interior_shared_lair_cave_giant_interior_rancor, "object/tangible/lair/structure/interior/shared_lair_cave_giant_interior_rancor.iff")
@@ -306,7 +310,8 @@ object_tangible_lair_structure_interior_shared_lair_cave_large_interior_with_nes
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2312630242
+	clientObjectCRC = 2312630242,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_structure_interior_shared_lair_cave_large_interior_with_nest_condor_dragon, "object/tangible/lair/structure/interior/shared_lair_cave_large_interior_with_nest_condor_dragon.iff")
@@ -360,7 +365,8 @@ object_tangible_lair_structure_interior_shared_lair_cave_large_interior_with_nes
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2074553503
+	clientObjectCRC = 2074553503,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_structure_interior_shared_lair_cave_large_interior_with_nest_gulginaw, "object/tangible/lair/structure/interior/shared_lair_cave_large_interior_with_nest_gulginaw.iff")
@@ -414,7 +420,8 @@ object_tangible_lair_structure_interior_shared_lair_cave_large_interior_with_nes
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 729911354
+	clientObjectCRC = 729911354,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_structure_interior_shared_lair_cave_large_interior_with_nest_kai_tok, "object/tangible/lair/structure/interior/shared_lair_cave_large_interior_with_nest_kai-tok.iff")
@@ -468,7 +475,8 @@ object_tangible_lair_structure_interior_shared_lair_cave_large_interior_with_nes
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3681532635
+	clientObjectCRC = 3681532635,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_structure_interior_shared_lair_cave_large_interior_with_nest_perlek, "object/tangible/lair/structure/interior/shared_lair_cave_large_interior_with_nest_perlek.iff")
@@ -522,7 +530,8 @@ object_tangible_lair_structure_interior_shared_lair_cave_medium_interior_gurk = 
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2976215460
+	clientObjectCRC = 2976215460,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_structure_interior_shared_lair_cave_medium_interior_gurk, "object/tangible/lair/structure/interior/shared_lair_cave_medium_interior_gurk.iff")
@@ -576,7 +585,8 @@ object_tangible_lair_structure_interior_shared_lair_cave_medium_interior_hanadak
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3339660099
+	clientObjectCRC = 3339660099,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_structure_interior_shared_lair_cave_medium_interior_hanadak, "object/tangible/lair/structure/interior/shared_lair_cave_medium_interior_hanadak.iff")
@@ -630,7 +640,8 @@ object_tangible_lair_structure_interior_shared_lair_cave_medium_interior_mamien 
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 900308717
+	clientObjectCRC = 900308717,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_structure_interior_shared_lair_cave_medium_interior_mamien, "object/tangible/lair/structure/interior/shared_lair_cave_medium_interior_mamien.iff")
@@ -684,7 +695,8 @@ object_tangible_lair_structure_interior_shared_lair_cave_medium_interior_veermok
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3278136073
+	clientObjectCRC = 3278136073,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_structure_interior_shared_lair_cave_medium_interior_veermok, "object/tangible/lair/structure/interior/shared_lair_cave_medium_interior_veermok.iff")
@@ -738,7 +750,8 @@ object_tangible_lair_structure_interior_shared_lair_hive_medium_interior_dalyrak
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4055467361
+	clientObjectCRC = 4055467361,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_structure_interior_shared_lair_hive_medium_interior_dalyrake, "object/tangible/lair/structure/interior/shared_lair_hive_medium_interior_dalyrake.iff")
@@ -792,7 +805,8 @@ object_tangible_lair_structure_interior_shared_lair_hive_medium_interior_kliknik
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2106034291
+	clientObjectCRC = 2106034291,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_structure_interior_shared_lair_hive_medium_interior_kliknik, "object/tangible/lair/structure/interior/shared_lair_hive_medium_interior_kliknik.iff")
@@ -846,7 +860,8 @@ object_tangible_lair_structure_interior_shared_lair_hive_medium_interior_merek =
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 151624394
+	clientObjectCRC = 151624394,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_structure_interior_shared_lair_hive_medium_interior_merek, "object/tangible/lair/structure/interior/shared_lair_hive_medium_interior_merek.iff")

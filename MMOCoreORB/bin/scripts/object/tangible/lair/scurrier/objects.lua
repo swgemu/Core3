@@ -90,7 +90,8 @@ object_tangible_lair_scurrier_shared_lair_scurrier = SharedTangibleObjectTemplat
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3654226862
+	clientObjectCRC = 3654226862,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_scurrier_shared_lair_scurrier, "object/tangible/lair/scurrier/shared_lair_scurrier.iff")
@@ -144,7 +145,8 @@ object_tangible_lair_scurrier_shared_lair_scurrier_desert = SharedTangibleObject
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1092043415
+	clientObjectCRC = 1092043415,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_scurrier_shared_lair_scurrier_desert, "object/tangible/lair/scurrier/shared_lair_scurrier_desert.iff")
@@ -198,7 +200,8 @@ object_tangible_lair_scurrier_shared_lair_scurrier_dune = SharedTangibleObjectTe
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 129638931
+	clientObjectCRC = 129638931,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_scurrier_shared_lair_scurrier_dune, "object/tangible/lair/scurrier/shared_lair_scurrier_dune.iff")
@@ -252,7 +255,8 @@ object_tangible_lair_scurrier_shared_lair_scurrier_mountain = SharedTangibleObje
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3299579420
+	clientObjectCRC = 3299579420,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_scurrier_shared_lair_scurrier_mountain, "object/tangible/lair/scurrier/shared_lair_scurrier_mountain.iff")
@@ -306,7 +310,8 @@ object_tangible_lair_scurrier_shared_lair_scurrier_wasteland = SharedTangibleObj
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3138468221
+	clientObjectCRC = 3138468221,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_scurrier_shared_lair_scurrier_wasteland, "object/tangible/lair/scurrier/shared_lair_scurrier_wasteland.iff")

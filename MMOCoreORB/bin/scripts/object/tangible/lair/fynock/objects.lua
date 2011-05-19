@@ -90,7 +90,8 @@ object_tangible_lair_fynock_shared_lair_fynock = SharedTangibleObjectTemplate:ne
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2394100347
+	clientObjectCRC = 2394100347,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_fynock_shared_lair_fynock, "object/tangible/lair/fynock/shared_lair_fynock.iff")
@@ -144,7 +145,8 @@ object_tangible_lair_fynock_shared_lair_fynock_forest = SharedTangibleObjectTemp
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 577876063
+	clientObjectCRC = 577876063,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_fynock_shared_lair_fynock_forest, "object/tangible/lair/fynock/shared_lair_fynock_forest.iff")

@@ -90,7 +90,8 @@ object_tangible_furniture_imperial_shared_bunker_table_giant_style_01 = SharedTa
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 396719577
+	clientObjectCRC = 396719577,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_furniture_imperial_shared_bunker_table_giant_style_01, "object/tangible/furniture/imperial/shared_bunker_table_giant_style_01.iff")
@@ -144,7 +145,8 @@ object_tangible_furniture_imperial_shared_data_terminal_s1 = SharedTangibleObjec
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2690468155
+	clientObjectCRC = 2690468155,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_furniture_imperial_shared_data_terminal_s1, "object/tangible/furniture/imperial/shared_data_terminal_s1.iff")
@@ -198,7 +200,8 @@ object_tangible_furniture_imperial_shared_data_terminal_s2 = SharedTangibleObjec
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2068505004
+	clientObjectCRC = 2068505004,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_furniture_imperial_shared_data_terminal_s2, "object/tangible/furniture/imperial/shared_data_terminal_s2.iff")
@@ -252,7 +255,8 @@ object_tangible_furniture_imperial_shared_data_terminal_s3 = SharedTangibleObjec
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 843548193
+	clientObjectCRC = 843548193,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_furniture_imperial_shared_data_terminal_s3, "object/tangible/furniture/imperial/shared_data_terminal_s3.iff")
@@ -306,7 +310,8 @@ object_tangible_furniture_imperial_shared_data_terminal_s4 = SharedTangibleObjec
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3383012661
+	clientObjectCRC = 3383012661,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_furniture_imperial_shared_data_terminal_s4, "object/tangible/furniture/imperial/shared_data_terminal_s4.iff")
@@ -360,7 +365,8 @@ object_tangible_furniture_imperial_shared_table_s1 = SharedTangibleObjectTemplat
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1484080816
+	clientObjectCRC = 1484080816,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_furniture_imperial_shared_table_s1, "object/tangible/furniture/imperial/shared_table_s1.iff")
@@ -414,7 +420,8 @@ object_tangible_furniture_imperial_shared_warren_computer_terminal = SharedTangi
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3872577518
+	clientObjectCRC = 3872577518,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_furniture_imperial_shared_warren_computer_terminal, "object/tangible/furniture/imperial/shared_warren_computer_terminal.iff")
@@ -468,7 +475,8 @@ object_tangible_furniture_imperial_shared_warren_evidence_terminal_s01 = SharedT
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2156516600
+	clientObjectCRC = 2156516600,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_furniture_imperial_shared_warren_evidence_terminal_s01, "object/tangible/furniture/imperial/shared_warren_evidence_terminal_s01.iff")
@@ -522,7 +530,8 @@ object_tangible_furniture_imperial_shared_warren_evidence_terminal_s02 = SharedT
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1537113199
+	clientObjectCRC = 1537113199,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_furniture_imperial_shared_warren_evidence_terminal_s02, "object/tangible/furniture/imperial/shared_warren_evidence_terminal_s02.iff")
@@ -576,7 +585,8 @@ object_tangible_furniture_imperial_shared_warren_evidence_terminal_s03 = SharedT
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 311630818
+	clientObjectCRC = 311630818,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_furniture_imperial_shared_warren_evidence_terminal_s03, "object/tangible/furniture/imperial/shared_warren_evidence_terminal_s03.iff")
@@ -630,7 +640,8 @@ object_tangible_furniture_imperial_shared_warren_evidence_terminal_s04 = SharedT
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3916443894
+	clientObjectCRC = 3916443894,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_furniture_imperial_shared_warren_evidence_terminal_s04, "object/tangible/furniture/imperial/shared_warren_evidence_terminal_s04.iff")
@@ -684,7 +695,8 @@ object_tangible_furniture_imperial_shared_warren_experiment_terminal = SharedTan
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1918381408
+	clientObjectCRC = 1918381408,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_furniture_imperial_shared_warren_experiment_terminal, "object/tangible/furniture/imperial/shared_warren_experiment_terminal.iff")
@@ -738,7 +750,8 @@ object_tangible_furniture_imperial_shared_warren_warning_sign = SharedTangibleOb
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 811537804
+	clientObjectCRC = 811537804,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_furniture_imperial_shared_warren_warning_sign, "object/tangible/furniture/imperial/shared_warren_warning_sign.iff")

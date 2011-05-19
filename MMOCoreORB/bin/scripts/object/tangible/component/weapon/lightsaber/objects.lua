@@ -90,7 +90,8 @@ object_tangible_component_weapon_lightsaber_shared_base_lightsaber_lance_module 
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3404051263
+	clientObjectCRC = 3404051263,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/base/shared_base_barrel.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_weapon_lightsaber_shared_base_lightsaber_lance_module, "object/tangible/component/weapon/lightsaber/shared_base_lightsaber_lance_module.iff")
@@ -144,7 +145,8 @@ object_tangible_component_weapon_lightsaber_shared_base_lightsaber_module = Shar
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2816851382
+	clientObjectCRC = 2816851382,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/base/shared_base_barrel.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_weapon_lightsaber_shared_base_lightsaber_module, "object/tangible/component/weapon/lightsaber/shared_base_lightsaber_module.iff")
@@ -198,7 +200,8 @@ object_tangible_component_weapon_lightsaber_shared_lightsaber_lance_module_force
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1896638798
+	clientObjectCRC = 1896638798,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/base/shared_base_barrel.iff", "object/tangible/component/weapon/lightsaber/shared_base_lightsaber_lance_module.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_weapon_lightsaber_shared_lightsaber_lance_module_force_crystal, "object/tangible/component/weapon/lightsaber/shared_lightsaber_lance_module_force_crystal.iff")
@@ -252,7 +255,8 @@ object_tangible_component_weapon_lightsaber_shared_lightsaber_module_attackspeed
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 384190732
+	clientObjectCRC = 384190732,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/base/shared_base_barrel.iff", "object/tangible/component/weapon/lightsaber/shared_base_lightsaber_module.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_weapon_lightsaber_shared_lightsaber_module_attackspeed, "object/tangible/component/weapon/lightsaber/shared_lightsaber_module_attackspeed.iff")
@@ -306,7 +310,8 @@ object_tangible_component_weapon_lightsaber_shared_lightsaber_module_color = Sha
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2224509400
+	clientObjectCRC = 2224509400,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/base/shared_base_barrel.iff", "object/tangible/component/weapon/lightsaber/shared_base_lightsaber_module.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_weapon_lightsaber_shared_lightsaber_module_color, "object/tangible/component/weapon/lightsaber/shared_lightsaber_module_color.iff")
@@ -360,7 +365,8 @@ object_tangible_component_weapon_lightsaber_shared_lightsaber_module_damage = Sh
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3690389169
+	clientObjectCRC = 3690389169,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/base/shared_base_barrel.iff", "object/tangible/component/weapon/lightsaber/shared_base_lightsaber_module.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_weapon_lightsaber_shared_lightsaber_module_damage, "object/tangible/component/weapon/lightsaber/shared_lightsaber_module_damage.iff")
@@ -414,7 +420,8 @@ object_tangible_component_weapon_lightsaber_shared_lightsaber_module_force_cryst
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4273612814
+	clientObjectCRC = 4273612814,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/base/shared_base_barrel.iff", "object/tangible/component/weapon/lightsaber/shared_base_lightsaber_module.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_weapon_lightsaber_shared_lightsaber_module_force_crystal, "object/tangible/component/weapon/lightsaber/shared_lightsaber_module_force_crystal.iff")
@@ -468,7 +475,8 @@ object_tangible_component_weapon_lightsaber_shared_lightsaber_module_forcecost =
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3573227590
+	clientObjectCRC = 3573227590,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/base/shared_base_barrel.iff", "object/tangible/component/weapon/lightsaber/shared_base_lightsaber_module.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_weapon_lightsaber_shared_lightsaber_module_forcecost, "object/tangible/component/weapon/lightsaber/shared_lightsaber_module_forcecost.iff")
@@ -522,7 +530,8 @@ object_tangible_component_weapon_lightsaber_shared_lightsaber_module_krayt_drago
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2322379839
+	clientObjectCRC = 2322379839,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/base/shared_base_barrel.iff", "object/tangible/component/weapon/lightsaber/shared_base_lightsaber_module.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_weapon_lightsaber_shared_lightsaber_module_krayt_dragon_pearl, "object/tangible/component/weapon/lightsaber/shared_lightsaber_module_krayt_dragon_pearl.iff")
@@ -576,7 +585,8 @@ object_tangible_component_weapon_lightsaber_shared_lightsaber_module_woundchance
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1396643279
+	clientObjectCRC = 1396643279,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/base/shared_base_barrel.iff", "object/tangible/component/weapon/lightsaber/shared_base_lightsaber_module.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_weapon_lightsaber_shared_lightsaber_module_woundchance, "object/tangible/component/weapon/lightsaber/shared_lightsaber_module_woundchance.iff")
@@ -630,7 +640,8 @@ object_tangible_component_weapon_lightsaber_shared_lightsaber_refined_crystal_pa
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4078172805
+	clientObjectCRC = 4078172805,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_weapon_lightsaber_shared_lightsaber_refined_crystal_pack, "object/tangible/component/weapon/lightsaber/shared_lightsaber_refined_crystal_pack.iff")

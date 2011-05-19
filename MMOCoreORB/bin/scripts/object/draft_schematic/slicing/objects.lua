@@ -80,7 +80,8 @@ object_draft_schematic_slicing_shared_slicing_armor_upgrade_kit = SharedDraftSch
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1225468655
+	clientObjectCRC = 1225468655,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_slicing_shared_slicing_armor_upgrade_kit, "object/draft_schematic/slicing/shared_slicing_armor_upgrade_kit.iff")
@@ -124,7 +125,8 @@ object_draft_schematic_slicing_shared_slicing_flow_analyzer = SharedDraftSchemat
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 425747428
+	clientObjectCRC = 425747428,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_slicing_shared_slicing_flow_analyzer, "object/draft_schematic/slicing/shared_slicing_flow_analyzer.iff")
@@ -168,7 +170,8 @@ object_draft_schematic_slicing_shared_slicing_laser_knife = SharedDraftSchematic
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1575116633
+	clientObjectCRC = 1575116633,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_slicing_shared_slicing_laser_knife, "object/draft_schematic/slicing/shared_slicing_laser_knife.iff")
@@ -212,7 +215,8 @@ object_draft_schematic_slicing_shared_slicing_molecular_clamp = SharedDraftSchem
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2888384407
+	clientObjectCRC = 2888384407,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_slicing_shared_slicing_molecular_clamp, "object/draft_schematic/slicing/shared_slicing_molecular_clamp.iff")
@@ -256,7 +260,8 @@ object_draft_schematic_slicing_shared_slicing_weapon_upgrade_kit = SharedDraftSc
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2390191987
+	clientObjectCRC = 2390191987,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_slicing_shared_slicing_weapon_upgrade_kit, "object/draft_schematic/slicing/shared_slicing_weapon_upgrade_kit.iff")

@@ -90,7 +90,8 @@ object_tangible_location_shared_location_32 = SharedTangibleObjectTemplate:new {
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 742219640
+	clientObjectCRC = 742219640,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/location/base/shared_location_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_location_shared_location_32, "object/tangible/location/shared_location_32.iff")
@@ -144,7 +145,8 @@ object_tangible_location_shared_location_48 = SharedTangibleObjectTemplate:new {
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3189159180
+	clientObjectCRC = 3189159180,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/location/base/shared_location_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_location_shared_location_48, "object/tangible/location/shared_location_48.iff")
@@ -198,7 +200,8 @@ object_tangible_location_shared_location_64 = SharedTangibleObjectTemplate:new {
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3915066233
+	clientObjectCRC = 3915066233,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/location/base/shared_location_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_location_shared_location_64, "object/tangible/location/shared_location_64.iff")
@@ -252,7 +255,8 @@ object_tangible_location_shared_location_80 = SharedTangibleObjectTemplate:new {
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1243606058
+	clientObjectCRC = 1243606058,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/location/base/shared_location_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_location_shared_location_80, "object/tangible/location/shared_location_80.iff")
@@ -306,7 +310,8 @@ object_tangible_location_shared_location_96 = SharedTangibleObjectTemplate:new {
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3822693835
+	clientObjectCRC = 3822693835,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/location/base/shared_location_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_location_shared_location_96, "object/tangible/location/shared_location_96.iff")

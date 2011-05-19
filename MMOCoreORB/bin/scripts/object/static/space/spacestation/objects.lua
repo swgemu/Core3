@@ -80,7 +80,8 @@ object_static_space_spacestation_shared_corsec_outpost_01 = SharedStaticObjectTe
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2081400463
+	clientObjectCRC = 2081400463,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_space_spacestation_shared_corsec_outpost_01, "object/static/space/spacestation/shared_corsec_outpost_01.iff")
@@ -124,7 +125,8 @@ object_static_space_spacestation_shared_destroyed_imperial_spacestation_01 = Sha
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 51631832
+	clientObjectCRC = 51631832,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_space_spacestation_shared_destroyed_imperial_spacestation_01, "object/static/space/spacestation/shared_destroyed_imperial_spacestation_01.iff")
@@ -168,7 +170,8 @@ object_static_space_spacestation_shared_destroyed_neutral_spacestation_01 = Shar
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1249810321
+	clientObjectCRC = 1249810321,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_space_spacestation_shared_destroyed_neutral_spacestation_01, "object/static/space/spacestation/shared_destroyed_neutral_spacestation_01.iff")
@@ -212,7 +215,8 @@ object_static_space_spacestation_shared_destroyed_rebel_spacestation_01 = Shared
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2680136017
+	clientObjectCRC = 2680136017,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_space_spacestation_shared_destroyed_rebel_spacestation_01, "object/static/space/spacestation/shared_destroyed_rebel_spacestation_01.iff")
@@ -256,7 +260,8 @@ object_static_space_spacestation_shared_imperial_outpost_01 = SharedStaticObject
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2798221309
+	clientObjectCRC = 2798221309,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_space_spacestation_shared_imperial_outpost_01, "object/static/space/spacestation/shared_imperial_outpost_01.iff")
@@ -300,7 +305,8 @@ object_static_space_spacestation_shared_imperial_spacestation_01 = SharedStaticO
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1432735117
+	clientObjectCRC = 1432735117,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_space_spacestation_shared_imperial_spacestation_01, "object/static/space/spacestation/shared_imperial_spacestation_01.iff")
@@ -344,7 +350,8 @@ object_static_space_spacestation_shared_mining_outpost_01 = SharedStaticObjectTe
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2821130357
+	clientObjectCRC = 2821130357,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_space_spacestation_shared_mining_outpost_01, "object/static/space/spacestation/shared_mining_outpost_01.iff")
@@ -388,7 +395,8 @@ object_static_space_spacestation_shared_neutral_spacestation_01 = SharedStaticOb
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1020449754
+	clientObjectCRC = 1020449754,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_space_spacestation_shared_neutral_spacestation_01, "object/static/space/spacestation/shared_neutral_spacestation_01.iff")
@@ -432,7 +440,8 @@ object_static_space_spacestation_shared_pirate_outpost_01 = SharedStaticObjectTe
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1500513199
+	clientObjectCRC = 1500513199,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_space_spacestation_shared_pirate_outpost_01, "object/static/space/spacestation/shared_pirate_outpost_01.iff")
@@ -476,7 +485,8 @@ object_static_space_spacestation_shared_pirate_outpost_asteroid = SharedStaticOb
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1677357980
+	clientObjectCRC = 1677357980,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_space_spacestation_shared_pirate_outpost_asteroid, "object/static/space/spacestation/shared_pirate_outpost_asteroid.iff")
@@ -520,7 +530,8 @@ object_static_space_spacestation_shared_rebel_outpost_01 = SharedStaticObjectTem
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2870024383
+	clientObjectCRC = 2870024383,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_space_spacestation_shared_rebel_outpost_01, "object/static/space/spacestation/shared_rebel_outpost_01.iff")
@@ -564,7 +575,8 @@ object_static_space_spacestation_shared_rebel_spacestation_01 = SharedStaticObje
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2738509482
+	clientObjectCRC = 2738509482,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_space_spacestation_shared_rebel_spacestation_01, "object/static/space/spacestation/shared_rebel_spacestation_01.iff")
@@ -608,7 +620,8 @@ object_static_space_spacestation_shared_rsf_spacestation = SharedStaticObjectTem
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1595448737
+	clientObjectCRC = 1595448737,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_space_spacestation_shared_rsf_spacestation, "object/static/space/spacestation/shared_rsf_spacestation.iff")
@@ -652,7 +665,8 @@ object_static_space_spacestation_shared_tradefed_destroyed_hulk = SharedStaticOb
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 4274432492
+	clientObjectCRC = 4274432492,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_space_spacestation_shared_tradefed_destroyed_hulk, "object/static/space/spacestation/shared_tradefed_destroyed_hulk.iff")
@@ -696,7 +710,8 @@ object_static_space_spacestation_shared_tradefed_outpost_01 = SharedStaticObject
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 58780545
+	clientObjectCRC = 58780545,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_space_spacestation_shared_tradefed_outpost_01, "object/static/space/spacestation/shared_tradefed_outpost_01.iff")

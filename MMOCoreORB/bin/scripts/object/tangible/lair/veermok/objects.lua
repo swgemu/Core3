@@ -90,7 +90,8 @@ object_tangible_lair_veermok_shared_lair_veermok = SharedTangibleObjectTemplate:
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2070384123
+	clientObjectCRC = 2070384123,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_veermok_shared_lair_veermok, "object/tangible/lair/veermok/shared_lair_veermok.iff")
@@ -144,7 +145,8 @@ object_tangible_lair_veermok_shared_lair_veermok_forest = SharedTangibleObjectTe
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4273060059
+	clientObjectCRC = 4273060059,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_veermok_shared_lair_veermok_forest, "object/tangible/lair/veermok/shared_lair_veermok_forest.iff")
@@ -198,7 +200,8 @@ object_tangible_lair_veermok_shared_lair_veermok_swamp = SharedTangibleObjectTem
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2554849898
+	clientObjectCRC = 2554849898,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_veermok_shared_lair_veermok_swamp, "object/tangible/lair/veermok/shared_lair_veermok_swamp.iff")

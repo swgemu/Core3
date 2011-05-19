@@ -90,7 +90,8 @@ object_tangible_lair_brackaset_shared_lair_brackaset = SharedTangibleObjectTempl
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2129819322
+	clientObjectCRC = 2129819322,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_brackaset_shared_lair_brackaset, "object/tangible/lair/brackaset/shared_lair_brackaset.iff")
@@ -144,7 +145,8 @@ object_tangible_lair_brackaset_shared_lair_brackaset_desert = SharedTangibleObje
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3690646770
+	clientObjectCRC = 3690646770,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_brackaset_shared_lair_brackaset_desert, "object/tangible/lair/brackaset/shared_lair_brackaset_desert.iff")

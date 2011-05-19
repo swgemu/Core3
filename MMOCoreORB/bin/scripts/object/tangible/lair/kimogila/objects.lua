@@ -90,7 +90,8 @@ object_tangible_lair_kimogila_shared_lair_kimogila = SharedTangibleObjectTemplat
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1897213420
+	clientObjectCRC = 1897213420,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_kimogila_shared_lair_kimogila, "object/tangible/lair/kimogila/shared_lair_kimogila.iff")
@@ -144,7 +145,8 @@ object_tangible_lair_kimogila_shared_lair_kimogila_grassland = SharedTangibleObj
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2372563176
+	clientObjectCRC = 2372563176,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_kimogila_shared_lair_kimogila_grassland, "object/tangible/lair/kimogila/shared_lair_kimogila_grassland.iff")
@@ -198,7 +200,8 @@ object_tangible_lair_kimogila_shared_lair_kimogila_mountain = SharedTangibleObje
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2905887997
+	clientObjectCRC = 2905887997,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_kimogila_shared_lair_kimogila_mountain, "object/tangible/lair/kimogila/shared_lair_kimogila_mountain.iff")

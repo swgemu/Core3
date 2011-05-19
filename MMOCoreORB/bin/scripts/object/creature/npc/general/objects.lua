@@ -114,7 +114,8 @@ object_creature_npc_general_shared_skill_trainer = SharedCreatureObjectTemplate:
 	warpTolerance = 17,
 	waterModPercent = 0.5,
 
-	clientObjectCRC = 2389040637
+	clientObjectCRC = 2389040637,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/creature/npc/base/shared_base_npc.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_creature_npc_general_shared_skill_trainer, "object/creature/npc/general/shared_skill_trainer.iff")

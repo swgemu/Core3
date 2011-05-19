@@ -80,7 +80,8 @@ object_draft_schematic_item_quest_item_shared_attunement_grid = SharedDraftSchem
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 4038906353
+	clientObjectCRC = 4038906353,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_item_quest_item_shared_attunement_grid, "object/draft_schematic/item/quest_item/shared_attunement_grid.iff")
@@ -124,7 +125,8 @@ object_draft_schematic_item_quest_item_shared_current_alternator = SharedDraftSc
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 4250243198
+	clientObjectCRC = 4250243198,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_item_quest_item_shared_current_alternator, "object/draft_schematic/item/quest_item/shared_current_alternator.iff")
@@ -168,7 +170,8 @@ object_draft_schematic_item_quest_item_shared_feedback_controller = SharedDraftS
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3237757933
+	clientObjectCRC = 3237757933,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_item_quest_item_shared_feedback_controller, "object/draft_schematic/item/quest_item/shared_feedback_controller.iff")
@@ -212,7 +215,8 @@ object_draft_schematic_item_quest_item_shared_fs_craft_puzzle_config_processor =
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 4025902927
+	clientObjectCRC = 4025902927,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_item_quest_item_shared_fs_craft_puzzle_config_processor, "object/draft_schematic/item/quest_item/shared_fs_craft_puzzle_config_processor.iff")
@@ -256,7 +260,8 @@ object_draft_schematic_item_quest_item_shared_fs_craft_puzzle_decryption_chip = 
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1486639811
+	clientObjectCRC = 1486639811,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_item_quest_item_shared_fs_craft_puzzle_decryption_chip, "object/draft_schematic/item/quest_item/shared_fs_craft_puzzle_decryption_chip.iff")
@@ -300,7 +305,8 @@ object_draft_schematic_item_quest_item_shared_fs_craft_puzzle_gyro_receiver = Sh
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1039066742
+	clientObjectCRC = 1039066742,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_item_quest_item_shared_fs_craft_puzzle_gyro_receiver, "object/draft_schematic/item/quest_item/shared_fs_craft_puzzle_gyro_receiver.iff")
@@ -344,7 +350,8 @@ object_draft_schematic_item_quest_item_shared_fs_craft_puzzle_signal_amp = Share
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2171554059
+	clientObjectCRC = 2171554059,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_item_quest_item_shared_fs_craft_puzzle_signal_amp, "object/draft_schematic/item/quest_item/shared_fs_craft_puzzle_signal_amp.iff")
@@ -388,7 +395,8 @@ object_draft_schematic_item_quest_item_shared_fs_craft_puzzle_solid_state_array 
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 4028815217
+	clientObjectCRC = 4028815217,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_item_quest_item_shared_fs_craft_puzzle_solid_state_array, "object/draft_schematic/item/quest_item/shared_fs_craft_puzzle_solid_state_array.iff")
@@ -432,7 +440,8 @@ object_draft_schematic_item_quest_item_shared_fs_medic_puzzle_heal_pack = Shared
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1522512719
+	clientObjectCRC = 1522512719,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_item_quest_item_shared_fs_medic_puzzle_heal_pack, "object/draft_schematic/item/quest_item/shared_fs_medic_puzzle_heal_pack.iff")
@@ -476,7 +485,8 @@ object_draft_schematic_item_quest_item_shared_output_governor = SharedDraftSchem
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 863982881
+	clientObjectCRC = 863982881,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_item_quest_item_shared_output_governor, "object/draft_schematic/item/quest_item/shared_output_governor.iff")
@@ -520,7 +530,8 @@ object_draft_schematic_item_quest_item_shared_power_regulator = SharedDraftSchem
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2816707854
+	clientObjectCRC = 2816707854,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_item_quest_item_shared_power_regulator, "object/draft_schematic/item/quest_item/shared_power_regulator.iff")

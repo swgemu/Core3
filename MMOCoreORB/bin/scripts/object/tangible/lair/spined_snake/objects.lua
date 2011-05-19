@@ -90,7 +90,8 @@ object_tangible_lair_spined_snake_shared_lair_spined_snake = SharedTangibleObjec
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2281325742
+	clientObjectCRC = 2281325742,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_spined_snake_shared_lair_spined_snake, "object/tangible/lair/spined_snake/shared_lair_spined_snake.iff")
@@ -144,7 +145,8 @@ object_tangible_lair_spined_snake_shared_lair_spined_snake_mountain = SharedTang
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1340697568
+	clientObjectCRC = 1340697568,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_spined_snake_shared_lair_spined_snake_mountain, "object/tangible/lair/spined_snake/shared_lair_spined_snake_mountain.iff")
@@ -198,7 +200,8 @@ object_tangible_lair_spined_snake_shared_lair_spined_snake_wasteland = SharedTan
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3148607218
+	clientObjectCRC = 3148607218,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_spined_snake_shared_lair_spined_snake_wasteland, "object/tangible/lair/spined_snake/shared_lair_spined_snake_wasteland.iff")

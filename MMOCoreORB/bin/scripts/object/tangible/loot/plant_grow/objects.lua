@@ -90,7 +90,8 @@ object_tangible_loot_plant_grow_shared_plant_stage_1 = SharedTangibleObjectTempl
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3550223157
+	clientObjectCRC = 3550223157,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_plant_grow_shared_plant_stage_1, "object/tangible/loot/plant_grow/shared_plant_stage_1.iff")
@@ -144,7 +145,8 @@ object_tangible_loot_plant_grow_shared_plant_stage_2 = SharedTangibleObjectTempl
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 143373218
+	clientObjectCRC = 143373218,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_plant_grow_shared_plant_stage_2, "object/tangible/loot/plant_grow/shared_plant_stage_2.iff")
@@ -198,7 +200,8 @@ object_tangible_loot_plant_grow_shared_plant_stage_3 = SharedTangibleObjectTempl
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1099355183
+	clientObjectCRC = 1099355183,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_plant_grow_shared_plant_stage_3, "object/tangible/loot/plant_grow/shared_plant_stage_3.iff")
@@ -252,7 +255,8 @@ object_tangible_loot_plant_grow_shared_plant_stage_dead = SharedTangibleObjectTe
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3320437812
+	clientObjectCRC = 3320437812,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_plant_grow_shared_plant_stage_dead, "object/tangible/loot/plant_grow/shared_plant_stage_dead.iff")

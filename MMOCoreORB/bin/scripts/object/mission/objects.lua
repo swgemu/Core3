@@ -80,7 +80,8 @@ object_mission_shared_mission_data_object = SharedMissionDataObjectTemplate:new 
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3205608574
+	clientObjectCRC = 3205608574,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_mission_shared_mission_data_object, "object/mission/shared_mission_data_object.iff")
@@ -124,7 +125,8 @@ object_mission_shared_mission_list_entry_object = SharedMissionListEntryObjectTe
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2729425872
+	clientObjectCRC = 2729425872,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_mission_shared_mission_list_entry_object, "object/mission/shared_mission_list_entry_object.iff")
@@ -168,7 +170,8 @@ object_mission_shared_mission_object = SharedMissionObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3741732474
+	clientObjectCRC = 3741732474,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/mission/base/shared_base_mission.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_mission_shared_mission_object, "object/mission/shared_mission_object.iff")

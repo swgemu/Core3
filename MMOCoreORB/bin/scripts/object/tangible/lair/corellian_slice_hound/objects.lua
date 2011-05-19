@@ -90,7 +90,8 @@ object_tangible_lair_corellian_slice_hound_shared_lair_corellian_slice_hound = S
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 866782264
+	clientObjectCRC = 866782264,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_corellian_slice_hound_shared_lair_corellian_slice_hound, "object/tangible/lair/corellian_slice_hound/shared_lair_corellian_slice_hound.iff")
@@ -144,7 +145,8 @@ object_tangible_lair_corellian_slice_hound_shared_lair_corellian_slice_hound_for
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2443001594
+	clientObjectCRC = 2443001594,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_corellian_slice_hound_shared_lair_corellian_slice_hound_forest, "object/tangible/lair/corellian_slice_hound/shared_lair_corellian_slice_hound_forest.iff")
@@ -198,7 +200,8 @@ object_tangible_lair_corellian_slice_hound_shared_lair_corellian_slice_hound_gra
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3854748687
+	clientObjectCRC = 3854748687,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_corellian_slice_hound_shared_lair_corellian_slice_hound_grassland, "object/tangible/lair/corellian_slice_hound/shared_lair_corellian_slice_hound_grassland.iff")

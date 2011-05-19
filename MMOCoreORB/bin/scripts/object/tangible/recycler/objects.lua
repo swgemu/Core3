@@ -90,7 +90,8 @@ object_tangible_recycler_shared_chemical_recycler = SharedTangibleObjectTemplate
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1627417847
+	clientObjectCRC = 1627417847,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/container/base/shared_base_container.iff", "object/tangible/container/base/shared_base_container_volume.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_recycler_shared_chemical_recycler, "object/tangible/recycler/shared_chemical_recycler.iff")
@@ -144,7 +145,8 @@ object_tangible_recycler_shared_creature_recycler = SharedTangibleObjectTemplate
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2601090218
+	clientObjectCRC = 2601090218,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/container/base/shared_base_container.iff", "object/tangible/container/base/shared_base_container_volume.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_recycler_shared_creature_recycler, "object/tangible/recycler/shared_creature_recycler.iff")
@@ -198,7 +200,8 @@ object_tangible_recycler_shared_flora_recycler = SharedTangibleObjectTemplate:ne
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 372626307
+	clientObjectCRC = 372626307,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/container/base/shared_base_container.iff", "object/tangible/container/base/shared_base_container_volume.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_recycler_shared_flora_recycler, "object/tangible/recycler/shared_flora_recycler.iff")
@@ -252,7 +255,8 @@ object_tangible_recycler_shared_metal_recycler = SharedTangibleObjectTemplate:ne
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 860237131
+	clientObjectCRC = 860237131,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/container/base/shared_base_container.iff", "object/tangible/container/base/shared_base_container_volume.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_recycler_shared_metal_recycler, "object/tangible/recycler/shared_metal_recycler.iff")
@@ -306,7 +310,8 @@ object_tangible_recycler_shared_ore_recycler = SharedTangibleObjectTemplate:new 
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4105541227
+	clientObjectCRC = 4105541227,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/container/base/shared_base_container.iff", "object/tangible/container/base/shared_base_container_volume.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_recycler_shared_ore_recycler, "object/tangible/recycler/shared_ore_recycler.iff")

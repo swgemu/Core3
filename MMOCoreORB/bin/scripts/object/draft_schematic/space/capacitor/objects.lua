@@ -80,7 +80,8 @@ object_draft_schematic_space_capacitor_shared_basic_capacitor = SharedDraftSchem
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1279300072
+	clientObjectCRC = 1279300072,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_capacitor_shared_basic_capacitor, "object/draft_schematic/space/capacitor/shared_basic_capacitor.iff")
@@ -124,7 +125,8 @@ object_draft_schematic_space_capacitor_shared_capacitor_mk1 = SharedDraftSchemat
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2202770982
+	clientObjectCRC = 2202770982,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_capacitor_shared_capacitor_mk1, "object/draft_schematic/space/capacitor/shared_capacitor_mk1.iff")
@@ -168,7 +170,8 @@ object_draft_schematic_space_capacitor_shared_capacitor_mk2 = SharedDraftSchemat
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1482438321
+	clientObjectCRC = 1482438321,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_capacitor_shared_capacitor_mk2, "object/draft_schematic/space/capacitor/shared_capacitor_mk2.iff")
@@ -212,7 +215,8 @@ object_draft_schematic_space_capacitor_shared_capacitor_mk3 = SharedDraftSchemat
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 290541884
+	clientObjectCRC = 290541884,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_capacitor_shared_capacitor_mk3, "object/draft_schematic/space/capacitor/shared_capacitor_mk3.iff")
@@ -256,7 +260,8 @@ object_draft_schematic_space_capacitor_shared_capacitor_mk4 = SharedDraftSchemat
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3937565224
+	clientObjectCRC = 3937565224,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_capacitor_shared_capacitor_mk4, "object/draft_schematic/space/capacitor/shared_capacitor_mk4.iff")
@@ -300,7 +305,8 @@ object_draft_schematic_space_capacitor_shared_capacitor_mk5 = SharedDraftSchemat
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2747211173
+	clientObjectCRC = 2747211173,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_capacitor_shared_capacitor_mk5, "object/draft_schematic/space/capacitor/shared_capacitor_mk5.iff")
@@ -344,7 +350,8 @@ object_draft_schematic_space_capacitor_shared_energy_saver_battery_mk1 = SharedD
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 731258544
+	clientObjectCRC = 731258544,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_capacitor_shared_energy_saver_battery_mk1, "object/draft_schematic/space/capacitor/shared_energy_saver_battery_mk1.iff")
@@ -388,7 +395,8 @@ object_draft_schematic_space_capacitor_shared_energy_saver_battery_mk2 = SharedD
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 4035032615
+	clientObjectCRC = 4035032615,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_capacitor_shared_energy_saver_battery_mk2, "object/draft_schematic/space/capacitor/shared_energy_saver_battery_mk2.iff")
@@ -432,7 +440,8 @@ object_draft_schematic_space_capacitor_shared_energy_saver_battery_mk3 = SharedD
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3113013674
+	clientObjectCRC = 3113013674,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_capacitor_shared_energy_saver_battery_mk3, "object/draft_schematic/space/capacitor/shared_energy_saver_battery_mk3.iff")
@@ -476,7 +485,8 @@ object_draft_schematic_space_capacitor_shared_energy_saver_battery_mk4 = SharedD
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1114634942
+	clientObjectCRC = 1114634942,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_capacitor_shared_energy_saver_battery_mk4, "object/draft_schematic/space/capacitor/shared_energy_saver_battery_mk4.iff")
@@ -520,7 +530,8 @@ object_draft_schematic_space_capacitor_shared_energy_saver_battery_mk5 = SharedD
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 191012147
+	clientObjectCRC = 191012147,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_capacitor_shared_energy_saver_battery_mk5, "object/draft_schematic/space/capacitor/shared_energy_saver_battery_mk5.iff")
@@ -564,7 +575,8 @@ object_draft_schematic_space_capacitor_shared_extended_life_battery_mk1 = Shared
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1501708613
+	clientObjectCRC = 1501708613,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_capacitor_shared_extended_life_battery_mk1, "object/draft_schematic/space/capacitor/shared_extended_life_battery_mk1.iff")
@@ -608,7 +620,8 @@ object_draft_schematic_space_capacitor_shared_extended_life_battery_mk2 = Shared
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2190862802
+	clientObjectCRC = 2190862802,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_capacitor_shared_extended_life_battery_mk2, "object/draft_schematic/space/capacitor/shared_extended_life_battery_mk2.iff")
@@ -652,7 +665,8 @@ object_draft_schematic_space_capacitor_shared_extended_life_battery_mk3 = Shared
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3415772767
+	clientObjectCRC = 3415772767,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_capacitor_shared_extended_life_battery_mk3, "object/draft_schematic/space/capacitor/shared_extended_life_battery_mk3.iff")
@@ -696,7 +710,8 @@ object_draft_schematic_space_capacitor_shared_extended_life_battery_mk4 = Shared
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 813409611
+	clientObjectCRC = 813409611,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_capacitor_shared_extended_life_battery_mk4, "object/draft_schematic/space/capacitor/shared_extended_life_battery_mk4.iff")
@@ -740,7 +755,8 @@ object_draft_schematic_space_capacitor_shared_extended_life_battery_mk5 = Shared
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2037826246
+	clientObjectCRC = 2037826246,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_capacitor_shared_extended_life_battery_mk5, "object/draft_schematic/space/capacitor/shared_extended_life_battery_mk5.iff")
@@ -784,7 +800,8 @@ object_draft_schematic_space_capacitor_shared_heavy_battery_mk1 = SharedDraftSch
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3001021296
+	clientObjectCRC = 3001021296,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_capacitor_shared_heavy_battery_mk1, "object/draft_schematic/space/capacitor/shared_heavy_battery_mk1.iff")
@@ -828,7 +845,8 @@ object_draft_schematic_space_capacitor_shared_heavy_battery_mk2 = SharedDraftSch
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1774738407
+	clientObjectCRC = 1774738407,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_capacitor_shared_heavy_battery_mk2, "object/draft_schematic/space/capacitor/shared_heavy_battery_mk2.iff")
@@ -872,7 +890,8 @@ object_draft_schematic_space_capacitor_shared_heavy_battery_mk3 = SharedDraftSch
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 549796970
+	clientObjectCRC = 549796970,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_capacitor_shared_heavy_battery_mk3, "object/draft_schematic/space/capacitor/shared_heavy_battery_mk3.iff")
@@ -916,7 +935,8 @@ object_draft_schematic_space_capacitor_shared_heavy_battery_mk4 = SharedDraftSch
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3676706686
+	clientObjectCRC = 3676706686,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_capacitor_shared_heavy_battery_mk4, "object/draft_schematic/space/capacitor/shared_heavy_battery_mk4.iff")
@@ -960,7 +980,8 @@ object_draft_schematic_space_capacitor_shared_heavy_battery_mk5 = SharedDraftSch
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2452320499
+	clientObjectCRC = 2452320499,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_capacitor_shared_heavy_battery_mk5, "object/draft_schematic/space/capacitor/shared_heavy_battery_mk5.iff")
@@ -1004,7 +1025,8 @@ object_draft_schematic_space_capacitor_shared_quick_recharge_battery_mk1 = Share
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3603192853
+	clientObjectCRC = 3603192853,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_capacitor_shared_quick_recharge_battery_mk1, "object/draft_schematic/space/capacitor/shared_quick_recharge_battery_mk1.iff")
@@ -1048,7 +1070,8 @@ object_draft_schematic_space_capacitor_shared_quick_recharge_battery_mk2 = Share
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 231994498
+	clientObjectCRC = 231994498,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_capacitor_shared_quick_recharge_battery_mk2, "object/draft_schematic/space/capacitor/shared_quick_recharge_battery_mk2.iff")
@@ -1092,7 +1115,8 @@ object_draft_schematic_space_capacitor_shared_quick_recharge_battery_mk3 = Share
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1155437327
+	clientObjectCRC = 1155437327,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_capacitor_shared_quick_recharge_battery_mk3, "object/draft_schematic/space/capacitor/shared_quick_recharge_battery_mk3.iff")
@@ -1136,7 +1160,8 @@ object_draft_schematic_space_capacitor_shared_quick_recharge_battery_mk4 = Share
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3208493083
+	clientObjectCRC = 3208493083,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_capacitor_shared_quick_recharge_battery_mk4, "object/draft_schematic/space/capacitor/shared_quick_recharge_battery_mk4.iff")
@@ -1180,7 +1205,8 @@ object_draft_schematic_space_capacitor_shared_quick_recharge_battery_mk5 = Share
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 4130398102
+	clientObjectCRC = 4130398102,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_capacitor_shared_quick_recharge_battery_mk5, "object/draft_schematic/space/capacitor/shared_quick_recharge_battery_mk5.iff")

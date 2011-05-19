@@ -90,7 +90,8 @@ object_tangible_lair_npc_shared_lair_npc_general = SharedTangibleObjectTemplate:
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1642238246
+	clientObjectCRC = 1642238246,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_npc_shared_lair_npc_general, "object/tangible/lair/npc/shared_lair_npc_general.iff")

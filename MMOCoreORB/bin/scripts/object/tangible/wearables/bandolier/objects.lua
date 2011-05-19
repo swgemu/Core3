@@ -90,7 +90,8 @@ object_tangible_wearables_bandolier_shared_bandolier_s01 = SharedTangibleObjectT
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2100666153
+	clientObjectCRC = 2100666153,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_bandolier.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_bandolier_shared_bandolier_s01, "object/tangible/wearables/bandolier/shared_bandolier_s01.iff")
@@ -144,7 +145,8 @@ object_tangible_wearables_bandolier_shared_bandolier_s02 = SharedTangibleObjectT
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2787260350
+	clientObjectCRC = 2787260350,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_bandolier.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_bandolier_shared_bandolier_s02, "object/tangible/wearables/bandolier/shared_bandolier_s02.iff")
@@ -198,7 +200,8 @@ object_tangible_wearables_bandolier_shared_bandolier_s02_quest = SharedTangibleO
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1876108427
+	clientObjectCRC = 1876108427,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_bandolier.iff", "object/tangible/wearables/bandolier/shared_bandolier_s02.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_bandolier_shared_bandolier_s02_quest, "object/tangible/wearables/bandolier/shared_bandolier_s02_quest.iff")
@@ -252,7 +255,8 @@ object_tangible_wearables_bandolier_shared_bandolier_s03 = SharedTangibleObjectT
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4012855347
+	clientObjectCRC = 4012855347,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_bandolier.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_bandolier_shared_bandolier_s03, "object/tangible/wearables/bandolier/shared_bandolier_s03.iff")
@@ -306,7 +310,8 @@ object_tangible_wearables_bandolier_shared_bandolier_s04 = SharedTangibleObjectT
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 348945191
+	clientObjectCRC = 348945191,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_bandolier.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_bandolier_shared_bandolier_s04, "object/tangible/wearables/bandolier/shared_bandolier_s04.iff")
@@ -360,7 +365,8 @@ object_tangible_wearables_bandolier_shared_bandolier_s04_quest = SharedTangibleO
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1941573505
+	clientObjectCRC = 1941573505,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_bandolier.iff", "object/tangible/wearables/bandolier/shared_bandolier_s04.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_bandolier_shared_bandolier_s04_quest, "object/tangible/wearables/bandolier/shared_bandolier_s04_quest.iff")
@@ -414,7 +420,8 @@ object_tangible_wearables_bandolier_shared_bandolier_s05 = SharedTangibleObjectT
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1572936874
+	clientObjectCRC = 1572936874,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_bandolier.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_bandolier_shared_bandolier_s05, "object/tangible/wearables/bandolier/shared_bandolier_s05.iff")
@@ -468,7 +475,8 @@ object_tangible_wearables_bandolier_shared_bandolier_s06 = SharedTangibleObjectT
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2262217789
+	clientObjectCRC = 2262217789,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_bandolier.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_bandolier_shared_bandolier_s06, "object/tangible/wearables/bandolier/shared_bandolier_s06.iff")
@@ -522,7 +530,8 @@ object_tangible_wearables_bandolier_shared_bandolier_s07 = SharedTangibleObjectT
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3487290288
+	clientObjectCRC = 3487290288,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_bandolier.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_bandolier_shared_bandolier_s07, "object/tangible/wearables/bandolier/shared_bandolier_s07.iff")
@@ -576,7 +585,8 @@ object_tangible_wearables_bandolier_shared_bandolier_s08 = SharedTangibleObjectT
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1976696738
+	clientObjectCRC = 1976696738,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_bandolier.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_bandolier_shared_bandolier_s08, "object/tangible/wearables/bandolier/shared_bandolier_s08.iff")
@@ -630,7 +640,8 @@ object_tangible_wearables_bandolier_shared_bandolier_s09 = SharedTangibleObjectT
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1021089839
+	clientObjectCRC = 1021089839,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_bandolier.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_bandolier_shared_bandolier_s09, "object/tangible/wearables/bandolier/shared_bandolier_s09.iff")
@@ -684,7 +695,8 @@ object_tangible_wearables_bandolier_shared_bandolier_tusken_raider_s01 = SharedT
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2362441992
+	clientObjectCRC = 2362441992,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_bandolier.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_bandolier_shared_bandolier_tusken_raider_s01, "object/tangible/wearables/bandolier/shared_bandolier_tusken_raider_s01.iff")
@@ -738,7 +750,8 @@ object_tangible_wearables_bandolier_shared_bandolier_tusken_raider_s02 = SharedT
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1472702879
+	clientObjectCRC = 1472702879,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_bandolier.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_bandolier_shared_bandolier_tusken_raider_s02, "object/tangible/wearables/bandolier/shared_bandolier_tusken_raider_s02.iff")
@@ -792,7 +805,8 @@ object_tangible_wearables_bandolier_shared_bandolier_tusken_raider_s03 = SharedT
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 516607506
+	clientObjectCRC = 516607506,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_bandolier.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_bandolier_shared_bandolier_tusken_raider_s03, "object/tangible/wearables/bandolier/shared_bandolier_tusken_raider_s03.iff")
@@ -846,7 +860,8 @@ object_tangible_wearables_bandolier_shared_double_bandolier = SharedTangibleObje
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1293966476
+	clientObjectCRC = 1293966476,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/container/base/shared_base_container.iff", "object/tangible/container/base/shared_base_container_volume.iff", "object/tangible/wearables/base/shared_base_backpack.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_bandolier_shared_double_bandolier, "object/tangible/wearables/bandolier/shared_double_bandolier.iff")
@@ -900,7 +915,8 @@ object_tangible_wearables_bandolier_shared_ith_double_bandolier = SharedTangible
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1065147216
+	clientObjectCRC = 1065147216,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/container/base/shared_base_container.iff", "object/tangible/container/base/shared_base_container_volume.iff", "object/tangible/wearables/base/shared_base_backpack.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_bandolier_shared_ith_double_bandolier, "object/tangible/wearables/bandolier/shared_ith_double_bandolier.iff")
@@ -954,7 +970,8 @@ object_tangible_wearables_bandolier_shared_ith_mercenary_bandolier = SharedTangi
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3570000539
+	clientObjectCRC = 3570000539,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/container/base/shared_base_container.iff", "object/tangible/container/base/shared_base_container_volume.iff", "object/tangible/wearables/base/shared_base_backpack.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_bandolier_shared_ith_mercenary_bandolier, "object/tangible/wearables/bandolier/shared_ith_mercenary_bandolier.iff")
@@ -1008,7 +1025,8 @@ object_tangible_wearables_bandolier_shared_ith_multipocket_bandolier = SharedTan
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 721380424
+	clientObjectCRC = 721380424,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/container/base/shared_base_container.iff", "object/tangible/container/base/shared_base_container_volume.iff", "object/tangible/wearables/base/shared_base_backpack.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_bandolier_shared_ith_multipocket_bandolier, "object/tangible/wearables/bandolier/shared_ith_multipocket_bandolier.iff")
@@ -1062,7 +1080,8 @@ object_tangible_wearables_bandolier_shared_mercenary_bandolier = SharedTangibleO
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3002918794
+	clientObjectCRC = 3002918794,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/container/base/shared_base_container.iff", "object/tangible/container/base/shared_base_container_volume.iff", "object/tangible/wearables/base/shared_base_backpack.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_bandolier_shared_mercenary_bandolier, "object/tangible/wearables/bandolier/shared_mercenary_bandolier.iff")
@@ -1116,7 +1135,8 @@ object_tangible_wearables_bandolier_shared_multipocket_bandolier = SharedTangibl
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1747617663
+	clientObjectCRC = 1747617663,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/container/base/shared_base_container.iff", "object/tangible/container/base/shared_base_container_volume.iff", "object/tangible/wearables/base/shared_base_backpack.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_bandolier_shared_multipocket_bandolier, "object/tangible/wearables/bandolier/shared_multipocket_bandolier.iff")

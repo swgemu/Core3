@@ -90,7 +90,8 @@ object_tangible_gambling_base_shared_gambling_station = SharedTangibleObjectTemp
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3509750456
+	clientObjectCRC = 3509750456,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_gambling_base_shared_gambling_station, "object/tangible/gambling/base/shared_gambling_station.iff")

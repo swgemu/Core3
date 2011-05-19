@@ -80,7 +80,8 @@ object_draft_schematic_munition_component_shared_ammo_projectile = SharedDraftSc
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 4036740128
+	clientObjectCRC = 4036740128,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff", "object/draft_schematic/munition/shared_base_munition.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_munition_component_shared_ammo_projectile, "object/draft_schematic/munition/component/shared_ammo_projectile.iff")
@@ -124,7 +125,8 @@ object_draft_schematic_munition_component_shared_ammo_projectile_entanglement = 
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 443220500
+	clientObjectCRC = 443220500,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff", "object/draft_schematic/munition/shared_base_munition.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_munition_component_shared_ammo_projectile_entanglement, "object/draft_schematic/munition/component/shared_ammo_projectile_entanglement.iff")
@@ -168,7 +170,8 @@ object_draft_schematic_munition_component_shared_base_munition_enhancer = Shared
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3506113789
+	clientObjectCRC = 3506113789,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_munition_component_shared_base_munition_enhancer, "object/draft_schematic/munition/component/shared_base_munition_enhancer.iff")
@@ -212,7 +215,8 @@ object_draft_schematic_munition_component_shared_enhanced_charge_composition = S
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3153150043
+	clientObjectCRC = 3153150043,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff", "object/draft_schematic/munition/shared_base_munition.iff", "object/draft_schematic/munition/shared_base_munition_enhancer.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_munition_component_shared_enhanced_charge_composition, "object/draft_schematic/munition/component/shared_enhanced_charge_composition.iff")
@@ -256,7 +260,8 @@ object_draft_schematic_munition_component_shared_enhanced_charge_shaping = Share
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3158528693
+	clientObjectCRC = 3158528693,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff", "object/draft_schematic/munition/shared_base_munition.iff", "object/draft_schematic/munition/shared_base_munition_enhancer.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_munition_component_shared_enhanced_charge_shaping, "object/draft_schematic/munition/component/shared_enhanced_charge_shaping.iff")
@@ -300,7 +305,8 @@ object_draft_schematic_munition_component_shared_enhanced_destructive_pulse_chan
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2401022295
+	clientObjectCRC = 2401022295,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff", "object/draft_schematic/munition/shared_base_munition.iff", "object/draft_schematic/munition/shared_base_munition_enhancer.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_munition_component_shared_enhanced_destructive_pulse_channeling, "object/draft_schematic/munition/component/shared_enhanced_destructive_pulse_channeling.iff")
@@ -344,7 +350,8 @@ object_draft_schematic_munition_component_shared_enhanced_fragmentation_sleeve =
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3256653222
+	clientObjectCRC = 3256653222,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff", "object/draft_schematic/munition/shared_base_munition.iff", "object/draft_schematic/munition/shared_base_munition_enhancer.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_munition_component_shared_enhanced_fragmentation_sleeve, "object/draft_schematic/munition/component/shared_enhanced_fragmentation_sleeve.iff")
@@ -388,7 +395,8 @@ object_draft_schematic_munition_component_shared_warhead_chemical = SharedDraftS
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1156003088
+	clientObjectCRC = 1156003088,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff", "object/draft_schematic/munition/shared_base_munition.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_munition_component_shared_warhead_chemical, "object/draft_schematic/munition/component/shared_warhead_chemical.iff")
@@ -432,7 +440,8 @@ object_draft_schematic_munition_component_shared_warhead_fusing_mechanism = Shar
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3955180920
+	clientObjectCRC = 3955180920,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff", "object/draft_schematic/munition/shared_base_munition.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_munition_component_shared_warhead_fusing_mechanism, "object/draft_schematic/munition/component/shared_warhead_fusing_mechanism.iff")
@@ -476,7 +485,8 @@ object_draft_schematic_munition_component_shared_warhead_heavy = SharedDraftSche
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2232358950
+	clientObjectCRC = 2232358950,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff", "object/draft_schematic/munition/shared_base_munition.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_munition_component_shared_warhead_heavy, "object/draft_schematic/munition/component/shared_warhead_heavy.iff")
@@ -520,7 +530,8 @@ object_draft_schematic_munition_component_shared_warhead_light = SharedDraftSche
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1146561784
+	clientObjectCRC = 1146561784,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff", "object/draft_schematic/munition/shared_base_munition.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_munition_component_shared_warhead_light, "object/draft_schematic/munition/component/shared_warhead_light.iff")
@@ -564,7 +575,8 @@ object_draft_schematic_munition_component_shared_warhead_medium = SharedDraftSch
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 536805307
+	clientObjectCRC = 536805307,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff", "object/draft_schematic/munition/shared_base_munition.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_munition_component_shared_warhead_medium, "object/draft_schematic/munition/component/shared_warhead_medium.iff")
@@ -608,7 +620,8 @@ object_draft_schematic_munition_component_shared_warhead_stabilizer = SharedDraf
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 4065626322
+	clientObjectCRC = 4065626322,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff", "object/draft_schematic/munition/shared_base_munition.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_munition_component_shared_warhead_stabilizer, "object/draft_schematic/munition/component/shared_warhead_stabilizer.iff")

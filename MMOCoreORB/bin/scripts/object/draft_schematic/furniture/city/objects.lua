@@ -80,7 +80,8 @@ object_draft_schematic_furniture_city_shared_furniture_fountain = SharedDraftSch
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1279874804
+	clientObjectCRC = 1279874804,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_furniture_city_shared_furniture_fountain, "object/draft_schematic/furniture/city/shared_furniture_fountain.iff")
@@ -124,7 +125,8 @@ object_draft_schematic_furniture_city_shared_furniture_statue = SharedDraftSchem
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2671586006
+	clientObjectCRC = 2671586006,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_furniture_city_shared_furniture_statue, "object/draft_schematic/furniture/city/shared_furniture_statue.iff")
@@ -168,7 +170,8 @@ object_draft_schematic_furniture_city_shared_furniture_streetlamp = SharedDraftS
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1457349982
+	clientObjectCRC = 1457349982,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_furniture_city_shared_furniture_streetlamp, "object/draft_schematic/furniture/city/shared_furniture_streetlamp.iff")

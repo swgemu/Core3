@@ -90,7 +90,8 @@ object_tangible_survey_tool_base_shared_survey_tool_base = SharedTangibleObjectT
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2568376858
+	clientObjectCRC = 2568376858,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_survey_tool_base_shared_survey_tool_base, "object/tangible/survey_tool/base/shared_survey_tool_base.iff")

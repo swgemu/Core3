@@ -80,7 +80,8 @@ object_static_terrain_tatooine_shared_pinnacle_sacred_tatooine = SharedStaticObj
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2387521344
+	clientObjectCRC = 2387521344,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/terrain/base/shared_static_terrain_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_terrain_tatooine_shared_pinnacle_sacred_tatooine, "object/static/terrain/tatooine/shared_pinnacle_sacred_tatooine.iff")
@@ -124,7 +125,8 @@ object_static_terrain_tatooine_shared_poi_sarlacc_collision_floor = SharedStatic
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3940129403
+	clientObjectCRC = 3940129403,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/terrain/base/shared_static_terrain_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_terrain_tatooine_shared_poi_sarlacc_collision_floor, "object/static/terrain/tatooine/shared_poi_sarlacc_collision_floor.iff")
@@ -168,7 +170,8 @@ object_static_terrain_tatooine_shared_rock_arch_large_tatooine_style_1 = SharedS
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3663567208
+	clientObjectCRC = 3663567208,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/terrain/base/shared_static_terrain_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_terrain_tatooine_shared_rock_arch_large_tatooine_style_1, "object/static/terrain/tatooine/shared_rock_arch_large_tatooine_style_1.iff")
@@ -212,7 +215,8 @@ object_static_terrain_tatooine_shared_rock_arch_medium_tatooine_style_1 = Shared
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3478274265
+	clientObjectCRC = 3478274265,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/terrain/base/shared_static_terrain_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_terrain_tatooine_shared_rock_arch_medium_tatooine_style_1, "object/static/terrain/tatooine/shared_rock_arch_medium_tatooine_style_1.iff")
@@ -256,7 +260,8 @@ object_static_terrain_tatooine_shared_rock_arch_small_tatooine_style_1 = SharedS
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3539268114
+	clientObjectCRC = 3539268114,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/terrain/base/shared_static_terrain_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_terrain_tatooine_shared_rock_arch_small_tatooine_style_1, "object/static/terrain/tatooine/shared_rock_arch_small_tatooine_style_1.iff")
@@ -300,7 +305,8 @@ object_static_terrain_tatooine_shared_rock_mushroom_tatooine_style_1 = SharedSta
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 611566460
+	clientObjectCRC = 611566460,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/terrain/base/shared_static_terrain_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_terrain_tatooine_shared_rock_mushroom_tatooine_style_1, "object/static/terrain/tatooine/shared_rock_mushroom_tatooine_style_1.iff")
@@ -344,7 +350,8 @@ object_static_terrain_tatooine_shared_rock_spire_fin_tatooine = SharedStaticObje
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1526101729
+	clientObjectCRC = 1526101729,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/terrain/base/shared_static_terrain_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_terrain_tatooine_shared_rock_spire_fin_tatooine, "object/static/terrain/tatooine/shared_rock_spire_fin_tatooine.iff")
@@ -388,7 +395,8 @@ object_static_terrain_tatooine_shared_rock_spire_lumpy_tatooine = SharedStaticOb
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3421956208
+	clientObjectCRC = 3421956208,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/terrain/base/shared_static_terrain_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_terrain_tatooine_shared_rock_spire_lumpy_tatooine, "object/static/terrain/tatooine/shared_rock_spire_lumpy_tatooine.iff")
@@ -432,7 +440,8 @@ object_static_terrain_tatooine_shared_rock_spire_lumpy_tatooine_style_1 = Shared
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1746495727
+	clientObjectCRC = 1746495727,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/terrain/base/shared_static_terrain_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_terrain_tatooine_shared_rock_spire_lumpy_tatooine_style_1, "object/static/terrain/tatooine/shared_rock_spire_lumpy_tatooine_style_1.iff")
@@ -476,7 +485,8 @@ object_static_terrain_tatooine_shared_rock_spire_lumpy_tatooine_style_2 = Shared
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3004088440
+	clientObjectCRC = 3004088440,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/terrain/base/shared_static_terrain_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_terrain_tatooine_shared_rock_spire_lumpy_tatooine_style_2, "object/static/terrain/tatooine/shared_rock_spire_lumpy_tatooine_style_2.iff")
@@ -520,7 +530,8 @@ object_static_terrain_tatooine_shared_rock_spire_skinny_tatooine = SharedStaticO
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 505839558
+	clientObjectCRC = 505839558,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/terrain/base/shared_static_terrain_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_terrain_tatooine_shared_rock_spire_skinny_tatooine, "object/static/terrain/tatooine/shared_rock_spire_skinny_tatooine.iff")
@@ -564,7 +575,8 @@ object_static_terrain_tatooine_shared_rock_spire_skinny_tatooine_style_1 = Share
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 24378186
+	clientObjectCRC = 24378186,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/terrain/base/shared_static_terrain_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_terrain_tatooine_shared_rock_spire_skinny_tatooine_style_1, "object/static/terrain/tatooine/shared_rock_spire_skinny_tatooine_style_1.iff")
@@ -608,7 +620,8 @@ object_static_terrain_tatooine_shared_rock_spire_skinny_tatooine_style_2 = Share
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3664008157
+	clientObjectCRC = 3664008157,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/terrain/base/shared_static_terrain_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_terrain_tatooine_shared_rock_spire_skinny_tatooine_style_2, "object/static/terrain/tatooine/shared_rock_spire_skinny_tatooine_style_2.iff")
@@ -652,7 +665,8 @@ object_static_terrain_tatooine_shared_rock_spire_smooth_tatooine = SharedStaticO
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3455314010
+	clientObjectCRC = 3455314010,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/terrain/base/shared_static_terrain_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_terrain_tatooine_shared_rock_spire_smooth_tatooine, "object/static/terrain/tatooine/shared_rock_spire_smooth_tatooine.iff")
@@ -696,7 +710,8 @@ object_static_terrain_tatooine_shared_rock_spire_smooth_tatooine_style_1 = Share
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 323068853
+	clientObjectCRC = 323068853,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/terrain/base/shared_static_terrain_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_terrain_tatooine_shared_rock_spire_smooth_tatooine_style_1, "object/static/terrain/tatooine/shared_rock_spire_smooth_tatooine_style_1.iff")
@@ -740,7 +755,8 @@ object_static_terrain_tatooine_shared_rock_spire_smooth_tatooine_style_2 = Share
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3361082146
+	clientObjectCRC = 3361082146,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/terrain/base/shared_static_terrain_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_terrain_tatooine_shared_rock_spire_smooth_tatooine_style_2, "object/static/terrain/tatooine/shared_rock_spire_smooth_tatooine_style_2.iff")

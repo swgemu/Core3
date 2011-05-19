@@ -90,7 +90,8 @@ object_tangible_lair_tanc_mite_shared_lair_tanc_mite = SharedTangibleObjectTempl
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3444207030
+	clientObjectCRC = 3444207030,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_tanc_mite_shared_lair_tanc_mite, "object/tangible/lair/tanc_mite/shared_lair_tanc_mite.iff")
@@ -144,7 +145,8 @@ object_tangible_lair_tanc_mite_shared_lair_tanc_mite_mountain = SharedTangibleOb
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1352445484
+	clientObjectCRC = 1352445484,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_tanc_mite_shared_lair_tanc_mite_mountain, "object/tangible/lair/tanc_mite/shared_lair_tanc_mite_mountain.iff")

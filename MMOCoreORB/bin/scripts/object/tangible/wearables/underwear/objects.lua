@@ -90,7 +90,8 @@ object_tangible_wearables_underwear_shared_underwear_bottom = SharedTangibleObje
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3623370478
+	clientObjectCRC = 3623370478,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_underwear_shared_underwear_bottom, "object/tangible/wearables/underwear/shared_underwear_bottom.iff")
@@ -144,7 +145,8 @@ object_tangible_wearables_underwear_shared_underwear_top = SharedTangibleObjectT
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 467062673
+	clientObjectCRC = 467062673,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_underwear_shared_underwear_top, "object/tangible/wearables/underwear/shared_underwear_top.iff")

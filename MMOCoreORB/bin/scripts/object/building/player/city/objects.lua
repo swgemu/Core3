@@ -90,7 +90,8 @@ object_building_player_city_shared_bank_corellia = SharedInstallationObjectTempl
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1845141471
+	clientObjectCRC = 1845141471,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_player_city_shared_bank_corellia, "object/building/player/city/shared_bank_corellia.iff")
@@ -144,7 +145,8 @@ object_building_player_city_shared_bank_naboo = SharedInstallationObjectTemplate
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3868143603
+	clientObjectCRC = 3868143603,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_player_city_shared_bank_naboo, "object/building/player/city/shared_bank_naboo.iff")
@@ -198,7 +200,8 @@ object_building_player_city_shared_bank_tatooine = SharedInstallationObjectTempl
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1371143744
+	clientObjectCRC = 1371143744,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_player_city_shared_bank_tatooine, "object/building/player/city/shared_bank_tatooine.iff")
@@ -255,7 +258,8 @@ object_building_player_city_shared_cantina_corellia = SharedBuildingObjectTempla
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3739527551
+	clientObjectCRC = 3739527551,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_player_building.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_player_city_shared_cantina_corellia, "object/building/player/city/shared_cantina_corellia.iff")
@@ -312,7 +316,8 @@ object_building_player_city_shared_cantina_naboo = SharedBuildingObjectTemplate:
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2025646266
+	clientObjectCRC = 2025646266,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_player_building.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_player_city_shared_cantina_naboo, "object/building/player/city/shared_cantina_naboo.iff")
@@ -369,7 +374,8 @@ object_building_player_city_shared_cantina_tatooine = SharedBuildingObjectTempla
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3802646752
+	clientObjectCRC = 3802646752,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_player_building.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_player_city_shared_cantina_tatooine, "object/building/player/city/shared_cantina_tatooine.iff")
@@ -426,7 +432,8 @@ object_building_player_city_shared_cityhall_corellia = SharedBuildingObjectTempl
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4031190701
+	clientObjectCRC = 4031190701,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_player_building.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_player_city_shared_cityhall_corellia, "object/building/player/city/shared_cityhall_corellia.iff")
@@ -483,7 +490,8 @@ object_building_player_city_shared_cityhall_naboo = SharedBuildingObjectTemplate
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3442426219
+	clientObjectCRC = 3442426219,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_player_building.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_player_city_shared_cityhall_naboo, "object/building/player/city/shared_cityhall_naboo.iff")
@@ -540,7 +548,8 @@ object_building_player_city_shared_cityhall_tatooine = SharedBuildingObjectTempl
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3422844722
+	clientObjectCRC = 3422844722,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_player_building.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_player_city_shared_cityhall_tatooine, "object/building/player/city/shared_cityhall_tatooine.iff")
@@ -597,7 +606,8 @@ object_building_player_city_shared_cloning_corellia = SharedBuildingObjectTempla
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1360449531
+	clientObjectCRC = 1360449531,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_player_building.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_player_city_shared_cloning_corellia, "object/building/player/city/shared_cloning_corellia.iff")
@@ -654,7 +664,8 @@ object_building_player_city_shared_cloning_naboo = SharedBuildingObjectTemplate:
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2221199199
+	clientObjectCRC = 2221199199,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_player_building.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_player_city_shared_cloning_naboo, "object/building/player/city/shared_cloning_naboo.iff")
@@ -711,7 +722,8 @@ object_building_player_city_shared_cloning_tatooine = SharedBuildingObjectTempla
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1834331748
+	clientObjectCRC = 1834331748,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_player_building.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_player_city_shared_cloning_tatooine, "object/building/player/city/shared_cloning_tatooine.iff")
@@ -765,7 +777,8 @@ object_building_player_city_shared_garden_corellia_lrg_01 = SharedInstallationOb
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3782826017
+	clientObjectCRC = 3782826017,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_player_city_shared_garden_corellia_lrg_01, "object/building/player/city/shared_garden_corellia_lrg_01.iff")
@@ -819,7 +832,8 @@ object_building_player_city_shared_garden_corellia_lrg_02 = SharedInstallationOb
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 980349110
+	clientObjectCRC = 980349110,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_player_city_shared_garden_corellia_lrg_02, "object/building/player/city/shared_garden_corellia_lrg_02.iff")
@@ -873,7 +887,8 @@ object_building_player_city_shared_garden_corellia_lrg_03 = SharedInstallationOb
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1935906619
+	clientObjectCRC = 1935906619,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_player_city_shared_garden_corellia_lrg_03, "object/building/player/city/shared_garden_corellia_lrg_03.iff")
@@ -927,7 +942,8 @@ object_building_player_city_shared_garden_corellia_lrg_04 = SharedInstallationOb
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2290138159
+	clientObjectCRC = 2290138159,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_player_city_shared_garden_corellia_lrg_04, "object/building/player/city/shared_garden_corellia_lrg_04.iff")
@@ -981,7 +997,8 @@ object_building_player_city_shared_garden_corellia_lrg_05 = SharedInstallationOb
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3247299490
+	clientObjectCRC = 3247299490,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_player_city_shared_garden_corellia_lrg_05, "object/building/player/city/shared_garden_corellia_lrg_05.iff")
@@ -1035,7 +1052,8 @@ object_building_player_city_shared_garden_corellia_med_01 = SharedInstallationOb
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1120922265
+	clientObjectCRC = 1120922265,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_player_city_shared_garden_corellia_med_01, "object/building/player/city/shared_garden_corellia_med_01.iff")
@@ -1089,7 +1107,8 @@ object_building_player_city_shared_garden_corellia_med_02 = SharedInstallationOb
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2581086734
+	clientObjectCRC = 2581086734,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_player_city_shared_garden_corellia_med_02, "object/building/player/city/shared_garden_corellia_med_02.iff")
@@ -1143,7 +1162,8 @@ object_building_player_city_shared_garden_corellia_med_03 = SharedInstallationOb
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3503629699
+	clientObjectCRC = 3503629699,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_player_city_shared_garden_corellia_med_03, "object/building/player/city/shared_garden_corellia_med_03.iff")
@@ -1197,7 +1217,8 @@ object_building_player_city_shared_garden_corellia_med_04 = SharedInstallationOb
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 724962967
+	clientObjectCRC = 724962967,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_player_city_shared_garden_corellia_med_04, "object/building/player/city/shared_garden_corellia_med_04.iff")
@@ -1251,7 +1272,8 @@ object_building_player_city_shared_garden_corellia_med_05 = SharedInstallationOb
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1648060698
+	clientObjectCRC = 1648060698,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_player_city_shared_garden_corellia_med_05, "object/building/player/city/shared_garden_corellia_med_05.iff")
@@ -1305,7 +1327,8 @@ object_building_player_city_shared_garden_corellia_sml_01 = SharedInstallationOb
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 782388533
+	clientObjectCRC = 782388533,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_player_city_shared_garden_corellia_sml_01, "object/building/player/city/shared_garden_corellia_sml_01.iff")
@@ -1359,7 +1382,8 @@ object_building_player_city_shared_garden_corellia_sml_02 = SharedInstallationOb
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4122338722
+	clientObjectCRC = 4122338722,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_player_city_shared_garden_corellia_sml_02, "object/building/player/city/shared_garden_corellia_sml_02.iff")
@@ -1413,7 +1437,8 @@ object_building_player_city_shared_garden_corellia_sml_03 = SharedInstallationOb
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3166208559
+	clientObjectCRC = 3166208559,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_player_city_shared_garden_corellia_sml_03, "object/building/player/city/shared_garden_corellia_sml_03.iff")
@@ -1467,7 +1492,8 @@ object_building_player_city_shared_garden_corellia_sml_04 = SharedInstallationOb
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1197189435
+	clientObjectCRC = 1197189435,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_player_city_shared_garden_corellia_sml_04, "object/building/player/city/shared_garden_corellia_sml_04.iff")
@@ -1521,7 +1547,8 @@ object_building_player_city_shared_garden_corellia_sml_05 = SharedInstallationOb
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 240570038
+	clientObjectCRC = 240570038,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_player_city_shared_garden_corellia_sml_05, "object/building/player/city/shared_garden_corellia_sml_05.iff")
@@ -1575,7 +1602,8 @@ object_building_player_city_shared_garden_dantooine_lrg_01 = SharedInstallationO
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2412094562
+	clientObjectCRC = 2412094562,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_player_city_shared_garden_dantooine_lrg_01, "object/building/player/city/shared_garden_dantooine_lrg_01.iff")
@@ -1629,7 +1657,8 @@ object_building_player_city_shared_garden_dantooine_med_01 = SharedInstallationO
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 745739994
+	clientObjectCRC = 745739994,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_player_city_shared_garden_dantooine_med_01, "object/building/player/city/shared_garden_dantooine_med_01.iff")
@@ -1683,7 +1712,8 @@ object_building_player_city_shared_garden_dantooine_sml_01 = SharedInstallationO
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1075753334
+	clientObjectCRC = 1075753334,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_player_city_shared_garden_dantooine_sml_01, "object/building/player/city/shared_garden_dantooine_sml_01.iff")
@@ -1737,7 +1767,8 @@ object_building_player_city_shared_garden_dathomir_lrg_01 = SharedInstallationOb
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 247337676
+	clientObjectCRC = 247337676,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_player_city_shared_garden_dathomir_lrg_01, "object/building/player/city/shared_garden_dathomir_lrg_01.iff")
@@ -1791,7 +1822,8 @@ object_building_player_city_shared_garden_dathomir_med_01 = SharedInstallationOb
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2903023732
+	clientObjectCRC = 2903023732,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_player_city_shared_garden_dathomir_med_01, "object/building/player/city/shared_garden_dathomir_med_01.iff")
@@ -1845,7 +1877,8 @@ object_building_player_city_shared_garden_dathomir_sml_01 = SharedInstallationOb
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3244623832
+	clientObjectCRC = 3244623832,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_player_city_shared_garden_dathomir_sml_01, "object/building/player/city/shared_garden_dathomir_sml_01.iff")
@@ -1899,7 +1932,8 @@ object_building_player_city_shared_garden_endor_lrg_01 = SharedInstallationObjec
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2039109063
+	clientObjectCRC = 2039109063,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_player_city_shared_garden_endor_lrg_01, "object/building/player/city/shared_garden_endor_lrg_01.iff")
@@ -1953,7 +1987,8 @@ object_building_player_city_shared_garden_endor_med_01 = SharedInstallationObjec
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3661424511
+	clientObjectCRC = 3661424511,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_player_city_shared_garden_endor_med_01, "object/building/player/city/shared_garden_endor_med_01.iff")
@@ -2007,7 +2042,8 @@ object_building_player_city_shared_garden_endor_sml_01 = SharedInstallationObjec
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3058778323
+	clientObjectCRC = 3058778323,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_player_city_shared_garden_endor_sml_01, "object/building/player/city/shared_garden_endor_sml_01.iff")
@@ -2061,7 +2097,8 @@ object_building_player_city_shared_garden_naboo_large = SharedInstallationObject
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2557845591
+	clientObjectCRC = 2557845591,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_player_city_shared_garden_naboo_large, "object/building/player/city/shared_garden_naboo_large.iff")
@@ -2115,7 +2152,8 @@ object_building_player_city_shared_garden_naboo_lrg_01 = SharedInstallationObjec
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1417631619
+	clientObjectCRC = 1417631619,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_player_city_shared_garden_naboo_lrg_01, "object/building/player/city/shared_garden_naboo_lrg_01.iff")
@@ -2169,7 +2207,8 @@ object_building_player_city_shared_garden_naboo_lrg_02 = SharedInstallationObjec
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2406022932
+	clientObjectCRC = 2406022932,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_player_city_shared_garden_naboo_lrg_02, "object/building/player/city/shared_garden_naboo_lrg_02.iff")
@@ -2223,7 +2262,8 @@ object_building_player_city_shared_garden_naboo_lrg_03 = SharedInstallationObjec
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3328546969
+	clientObjectCRC = 3328546969,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_player_city_shared_garden_naboo_lrg_03, "object/building/player/city/shared_garden_naboo_lrg_03.iff")
@@ -2277,7 +2317,8 @@ object_building_player_city_shared_garden_naboo_lrg_04 = SharedInstallationObjec
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1032237965
+	clientObjectCRC = 1032237965,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_player_city_shared_garden_naboo_lrg_04, "object/building/player/city/shared_garden_naboo_lrg_04.iff")
@@ -2331,7 +2372,8 @@ object_building_player_city_shared_garden_naboo_lrg_05 = SharedInstallationObjec
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1955320832
+	clientObjectCRC = 1955320832,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_player_city_shared_garden_naboo_lrg_05, "object/building/player/city/shared_garden_naboo_lrg_05.iff")
@@ -2385,7 +2427,8 @@ object_building_player_city_shared_garden_naboo_med_01 = SharedInstallationObjec
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4157203771
+	clientObjectCRC = 4157203771,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_player_city_shared_garden_naboo_med_01, "object/building/player/city/shared_garden_naboo_med_01.iff")
@@ -2439,7 +2482,8 @@ object_building_player_city_shared_garden_naboo_med_02 = SharedInstallationObjec
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 752766380
+	clientObjectCRC = 752766380,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_player_city_shared_garden_naboo_med_02, "object/building/player/city/shared_garden_naboo_med_02.iff")
@@ -2493,7 +2537,8 @@ object_building_player_city_shared_garden_naboo_med_03 = SharedInstallationObjec
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1708337697
+	clientObjectCRC = 1708337697,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_player_city_shared_garden_naboo_med_03, "object/building/player/city/shared_garden_naboo_med_03.iff")
@@ -2547,7 +2592,8 @@ object_building_player_city_shared_garden_naboo_med_04 = SharedInstallationObjec
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2653946165
+	clientObjectCRC = 2653946165,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_player_city_shared_garden_naboo_med_04, "object/building/player/city/shared_garden_naboo_med_04.iff")
@@ -2601,7 +2647,8 @@ object_building_player_city_shared_garden_naboo_med_05 = SharedInstallationObjec
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3611125432
+	clientObjectCRC = 3611125432,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_player_city_shared_garden_naboo_med_05, "object/building/player/city/shared_garden_naboo_med_05.iff")
@@ -2655,7 +2702,8 @@ object_building_player_city_shared_garden_naboo_sml_01 = SharedInstallationObjec
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2611233431
+	clientObjectCRC = 2611233431,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_player_city_shared_garden_naboo_sml_01, "object/building/player/city/shared_garden_naboo_sml_01.iff")
@@ -2709,7 +2757,8 @@ object_building_player_city_shared_garden_naboo_sml_02 = SharedInstallationObjec
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1085532672
+	clientObjectCRC = 1085532672,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_player_city_shared_garden_naboo_sml_02, "object/building/player/city/shared_garden_naboo_sml_02.iff")
@@ -2763,7 +2812,8 @@ object_building_player_city_shared_garden_naboo_sml_03 = SharedInstallationObjec
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 163483021
+	clientObjectCRC = 163483021,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_player_city_shared_garden_naboo_sml_03, "object/building/player/city/shared_garden_naboo_sml_03.iff")
@@ -2817,7 +2867,8 @@ object_building_player_city_shared_garden_naboo_sml_04 = SharedInstallationObjec
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4066223769
+	clientObjectCRC = 4066223769,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_player_city_shared_garden_naboo_sml_04, "object/building/player/city/shared_garden_naboo_sml_04.iff")
@@ -2871,7 +2922,8 @@ object_building_player_city_shared_garden_naboo_sml_05 = SharedInstallationObjec
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3142631700
+	clientObjectCRC = 3142631700,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_player_city_shared_garden_naboo_sml_05, "object/building/player/city/shared_garden_naboo_sml_05.iff")
@@ -2925,7 +2977,8 @@ object_building_player_city_shared_garden_tatooine_lrg_01 = SharedInstallationOb
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2152696910
+	clientObjectCRC = 2152696910,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_player_city_shared_garden_tatooine_lrg_01, "object/building/player/city/shared_garden_tatooine_lrg_01.iff")
@@ -2979,7 +3032,8 @@ object_building_player_city_shared_garden_tatooine_lrg_02 = SharedInstallationOb
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1532503257
+	clientObjectCRC = 1532503257,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_player_city_shared_garden_tatooine_lrg_02, "object/building/player/city/shared_garden_tatooine_lrg_02.iff")
@@ -3033,7 +3087,8 @@ object_building_player_city_shared_garden_tatooine_lrg_03 = SharedInstallationOb
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 307577684
+	clientObjectCRC = 307577684,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_player_city_shared_garden_tatooine_lrg_03, "object/building/player/city/shared_garden_tatooine_lrg_03.iff")
@@ -3087,7 +3142,8 @@ object_building_player_city_shared_garden_tatooine_lrg_04 = SharedInstallationOb
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3921045568
+	clientObjectCRC = 3921045568,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_player_city_shared_garden_tatooine_lrg_04, "object/building/player/city/shared_garden_tatooine_lrg_04.iff")
@@ -3141,7 +3197,8 @@ object_building_player_city_shared_garden_tatooine_lrg_05 = SharedInstallationOb
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2696613837
+	clientObjectCRC = 2696613837,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_player_city_shared_garden_tatooine_lrg_05, "object/building/player/city/shared_garden_tatooine_lrg_05.iff")
@@ -3195,7 +3252,8 @@ object_building_player_city_shared_garden_tatooine_med_01 = SharedInstallationOb
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 603537142
+	clientObjectCRC = 603537142,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_player_city_shared_garden_tatooine_med_01, "object/building/player/city/shared_garden_tatooine_med_01.iff")
@@ -3249,7 +3307,8 @@ object_building_player_city_shared_garden_tatooine_med_02 = SharedInstallationOb
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4176385633
+	clientObjectCRC = 4176385633,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_player_city_shared_garden_tatooine_med_02, "object/building/player/city/shared_garden_tatooine_med_02.iff")
@@ -3303,7 +3362,8 @@ object_building_player_city_shared_garden_tatooine_med_03 = SharedInstallationOb
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2984505836
+	clientObjectCRC = 2984505836,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_player_city_shared_garden_tatooine_med_03, "object/building/player/city/shared_garden_tatooine_med_03.iff")
@@ -3357,7 +3417,8 @@ object_building_player_city_shared_garden_tatooine_med_04 = SharedInstallationOb
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1241570040
+	clientObjectCRC = 1241570040,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_player_city_shared_garden_tatooine_med_04, "object/building/player/city/shared_garden_tatooine_med_04.iff")
@@ -3411,7 +3472,8 @@ object_building_player_city_shared_garden_tatooine_med_05 = SharedInstallationOb
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 51232117
+	clientObjectCRC = 51232117,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_player_city_shared_garden_tatooine_med_05, "object/building/player/city/shared_garden_tatooine_med_05.iff")
@@ -3465,7 +3527,8 @@ object_building_player_city_shared_garden_tatooine_sml_01 = SharedInstallationOb
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1335138650
+	clientObjectCRC = 1335138650,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_player_city_shared_garden_tatooine_sml_01, "object/building/player/city/shared_garden_tatooine_sml_01.iff")
@@ -3519,7 +3582,8 @@ object_building_player_city_shared_garden_tatooine_sml_02 = SharedInstallationOb
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2491625933
+	clientObjectCRC = 2491625933,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_player_city_shared_garden_tatooine_sml_02, "object/building/player/city/shared_garden_tatooine_sml_02.iff")
@@ -3573,7 +3637,8 @@ object_building_player_city_shared_garden_tatooine_sml_03 = SharedInstallationOb
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3717092928
+	clientObjectCRC = 3717092928,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_player_city_shared_garden_tatooine_sml_03, "object/building/player/city/shared_garden_tatooine_sml_03.iff")
@@ -3627,7 +3692,8 @@ object_building_player_city_shared_garden_tatooine_sml_04 = SharedInstallationOb
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 644709716
+	clientObjectCRC = 644709716,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_player_city_shared_garden_tatooine_sml_04, "object/building/player/city/shared_garden_tatooine_sml_04.iff")
@@ -3681,7 +3747,8 @@ object_building_player_city_shared_garden_tatooine_sml_05 = SharedInstallationOb
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1868569305
+	clientObjectCRC = 1868569305,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_player_city_shared_garden_tatooine_sml_05, "object/building/player/city/shared_garden_tatooine_sml_05.iff")
@@ -3738,7 +3805,8 @@ object_building_player_city_shared_hospital_corellia = SharedBuildingObjectTempl
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3101511526
+	clientObjectCRC = 3101511526,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_player_building.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_player_city_shared_hospital_corellia, "object/building/player/city/shared_hospital_corellia.iff")
@@ -3795,7 +3863,8 @@ object_building_player_city_shared_hospital_naboo = SharedBuildingObjectTemplate
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1387695986
+	clientObjectCRC = 1387695986,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_player_building.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_player_city_shared_hospital_naboo, "object/building/player/city/shared_hospital_naboo.iff")
@@ -3852,7 +3921,8 @@ object_building_player_city_shared_hospital_tatooine = SharedBuildingObjectTempl
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2224959225
+	clientObjectCRC = 2224959225,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_player_building.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_player_city_shared_hospital_tatooine, "object/building/player/city/shared_hospital_tatooine.iff")
@@ -3906,7 +3976,8 @@ object_building_player_city_shared_shuttleport_corellia = SharedInstallationObje
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3046076056
+	clientObjectCRC = 3046076056,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_player_city_shared_shuttleport_corellia, "object/building/player/city/shared_shuttleport_corellia.iff")
@@ -3960,7 +4031,8 @@ object_building_player_city_shared_shuttleport_naboo = SharedInstallationObjectT
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 893676466
+	clientObjectCRC = 893676466,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_player_city_shared_shuttleport_naboo, "object/building/player/city/shared_shuttleport_naboo.iff")
@@ -4014,7 +4086,8 @@ object_building_player_city_shared_shuttleport_tatooine = SharedInstallationObje
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2311851783
+	clientObjectCRC = 2311851783,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_player_city_shared_shuttleport_tatooine, "object/building/player/city/shared_shuttleport_tatooine.iff")
@@ -4071,7 +4144,8 @@ object_building_player_city_shared_theater_corellia = SharedBuildingObjectTempla
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3302987664
+	clientObjectCRC = 3302987664,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_player_building.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_player_city_shared_theater_corellia, "object/building/player/city/shared_theater_corellia.iff")
@@ -4128,7 +4202,8 @@ object_building_player_city_shared_theater_naboo = SharedBuildingObjectTemplate:
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2697086195
+	clientObjectCRC = 2697086195,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_player_building.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_player_city_shared_theater_naboo, "object/building/player/city/shared_theater_naboo.iff")
@@ -4185,7 +4260,8 @@ object_building_player_city_shared_theater_tatooine = SharedBuildingObjectTempla
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4171036175
+	clientObjectCRC = 4171036175,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_player_building.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_player_city_shared_theater_tatooine, "object/building/player/city/shared_theater_tatooine.iff")

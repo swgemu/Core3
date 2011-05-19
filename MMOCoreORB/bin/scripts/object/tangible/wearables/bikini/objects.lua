@@ -90,7 +90,8 @@ object_tangible_wearables_bikini_shared_bikini_leggings_s01 = SharedTangibleObje
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 389872487
+	clientObjectCRC = 389872487,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_pants.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_bikini_shared_bikini_leggings_s01, "object/tangible/wearables/bikini/shared_bikini_leggings_s01.iff")
@@ -144,7 +145,8 @@ object_tangible_wearables_bikini_shared_bikini_s01 = SharedTangibleObjectTemplat
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 798815144
+	clientObjectCRC = 798815144,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_shirt.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_bikini_shared_bikini_s01, "object/tangible/wearables/bikini/shared_bikini_s01.iff")
@@ -198,7 +200,8 @@ object_tangible_wearables_bikini_shared_bikini_s02 = SharedTangibleObjectTemplat
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4102773567
+	clientObjectCRC = 4102773567,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_shirt.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_bikini_shared_bikini_s02, "object/tangible/wearables/bikini/shared_bikini_s02.iff")
@@ -252,7 +255,8 @@ object_tangible_wearables_bikini_shared_bikini_s03 = SharedTangibleObjectTemplat
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3179691186
+	clientObjectCRC = 3179691186,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_shirt.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_bikini_shared_bikini_s03, "object/tangible/wearables/bikini/shared_bikini_s03.iff")
@@ -306,7 +310,8 @@ object_tangible_wearables_bikini_shared_bikini_s04 = SharedTangibleObjectTemplat
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1181030310
+	clientObjectCRC = 1181030310,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_shirt.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_bikini_shared_bikini_s04, "object/tangible/wearables/bikini/shared_bikini_s04.iff")

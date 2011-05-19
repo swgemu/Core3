@@ -80,7 +80,8 @@ object_intangible_holocron_shared_newbie_mission = SharedIntangibleObjectTemplat
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1789110379
+	clientObjectCRC = 1789110379,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_holocron_shared_newbie_mission, "object/intangible/holocron/shared_newbie_mission.iff")

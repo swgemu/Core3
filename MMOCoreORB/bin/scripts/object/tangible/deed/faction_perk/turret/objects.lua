@@ -90,7 +90,8 @@ object_tangible_deed_faction_perk_turret_shared_block_lg_deed = SharedTangibleOb
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 629647552
+	clientObjectCRC = 629647552,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/deed/base/shared_deed_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_deed_faction_perk_turret_shared_block_lg_deed, "object/tangible/deed/faction_perk/turret/shared_block_lg_deed.iff")
@@ -144,7 +145,8 @@ object_tangible_deed_faction_perk_turret_shared_block_med_deed = SharedTangibleO
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4221569030
+	clientObjectCRC = 4221569030,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/deed/base/shared_deed_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_deed_faction_perk_turret_shared_block_med_deed, "object/tangible/deed/faction_perk/turret/shared_block_med_deed.iff")
@@ -198,7 +200,8 @@ object_tangible_deed_faction_perk_turret_shared_block_sm_deed = SharedTangibleOb
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2743566481
+	clientObjectCRC = 2743566481,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/deed/base/shared_deed_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_deed_faction_perk_turret_shared_block_sm_deed, "object/tangible/deed/faction_perk/turret/shared_block_sm_deed.iff")
@@ -252,7 +255,8 @@ object_tangible_deed_faction_perk_turret_shared_dish_lg_deed = SharedTangibleObj
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4034604910
+	clientObjectCRC = 4034604910,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/deed/base/shared_deed_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_deed_faction_perk_turret_shared_dish_lg_deed, "object/tangible/deed/faction_perk/turret/shared_dish_lg_deed.iff")
@@ -306,7 +310,8 @@ object_tangible_deed_faction_perk_turret_shared_dish_sm_deed = SharedTangibleObj
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1987774271
+	clientObjectCRC = 1987774271,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/deed/base/shared_deed_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_deed_faction_perk_turret_shared_dish_sm_deed, "object/tangible/deed/faction_perk/turret/shared_dish_sm_deed.iff")
@@ -360,7 +365,8 @@ object_tangible_deed_faction_perk_turret_shared_tower_lg_deed = SharedTangibleOb
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3732331701
+	clientObjectCRC = 3732331701,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/deed/base/shared_deed_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_deed_faction_perk_turret_shared_tower_lg_deed, "object/tangible/deed/faction_perk/turret/shared_tower_lg_deed.iff")
@@ -414,7 +420,8 @@ object_tangible_deed_faction_perk_turret_shared_tower_med_deed = SharedTangibleO
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2821147502
+	clientObjectCRC = 2821147502,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/deed/base/shared_deed_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_deed_faction_perk_turret_shared_tower_med_deed, "object/tangible/deed/faction_perk/turret/shared_tower_med_deed.iff")
@@ -468,7 +475,8 @@ object_tangible_deed_faction_perk_turret_shared_tower_sm_deed = SharedTangibleOb
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1484190948
+	clientObjectCRC = 1484190948,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/deed/base/shared_deed_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_deed_faction_perk_turret_shared_tower_sm_deed, "object/tangible/deed/faction_perk/turret/shared_tower_sm_deed.iff")

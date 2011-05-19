@@ -90,7 +90,8 @@ object_tangible_lair_bageraset_shared_lair_bageraset = SharedTangibleObjectTempl
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4218860200
+	clientObjectCRC = 4218860200,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_bageraset_shared_lair_bageraset, "object/tangible/lair/bageraset/shared_lair_bageraset.iff")
@@ -144,7 +145,8 @@ object_tangible_lair_bageraset_shared_lair_bageraset_forest = SharedTangibleObje
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 46513624
+	clientObjectCRC = 46513624,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_bageraset_shared_lair_bageraset_forest, "object/tangible/lair/bageraset/shared_lair_bageraset_forest.iff")

@@ -90,7 +90,8 @@ object_tangible_battery_shared_battery = SharedTangibleObjectTemplate:new {
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2246798191
+	clientObjectCRC = 2246798191,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_battery_shared_battery, "object/tangible/battery/shared_battery.iff")

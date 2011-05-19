@@ -90,7 +90,8 @@ object_tangible_mission_bag_shared_mission_bag = SharedTangibleObjectTemplate:ne
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1031761823
+	clientObjectCRC = 1031761823,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_bag_shared_mission_bag, "object/tangible/mission_bag/shared_mission_bag.iff")

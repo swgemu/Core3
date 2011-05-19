@@ -93,7 +93,8 @@ object_building_naboo_shared_association_hall_civilian_naboo = SharedBuildingObj
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4161211751
+	clientObjectCRC = 4161211751,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_association_hall.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_naboo_shared_association_hall_civilian_naboo, "object/building/naboo/shared_association_hall_civilian_naboo.iff")
@@ -150,7 +151,8 @@ object_building_naboo_shared_bank_naboo = SharedBuildingObjectTemplate:new {
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3658850000
+	clientObjectCRC = 3658850000,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_bank.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_naboo_shared_bank_naboo, "object/building/naboo/shared_bank_naboo.iff")
@@ -207,7 +209,8 @@ object_building_naboo_shared_bubble_naboo_large_style_1 = SharedBuildingObjectTe
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4092578549
+	clientObjectCRC = 4092578549,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_bubble_naboo.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_naboo_shared_bubble_naboo_large_style_1, "object/building/naboo/shared_bubble_naboo_large_style_1.iff")
@@ -264,7 +267,8 @@ object_building_naboo_shared_bubble_naboo_medium_style_1 = SharedBuildingObjectT
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4060997575
+	clientObjectCRC = 4060997575,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_bubble_naboo.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_naboo_shared_bubble_naboo_medium_style_1, "object/building/naboo/shared_bubble_naboo_medium_style_1.iff")
@@ -321,7 +325,8 @@ object_building_naboo_shared_bubble_naboo_medium_style_2 = SharedBuildingObjectT
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 689590096
+	clientObjectCRC = 689590096,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_bubble_naboo.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_naboo_shared_bubble_naboo_medium_style_2, "object/building/naboo/shared_bubble_naboo_medium_style_2.iff")
@@ -378,7 +383,8 @@ object_building_naboo_shared_bubble_naboo_small_style_1 = SharedBuildingObjectTe
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1528349113
+	clientObjectCRC = 1528349113,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_bubble_naboo.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_naboo_shared_bubble_naboo_small_style_1, "object/building/naboo/shared_bubble_naboo_small_style_1.iff")
@@ -435,7 +441,8 @@ object_building_naboo_shared_cantina_naboo = SharedBuildingObjectTemplate:new {
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1964795921
+	clientObjectCRC = 1964795921,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_cantina.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_naboo_shared_cantina_naboo, "object/building/naboo/shared_cantina_naboo.iff")
@@ -492,7 +499,8 @@ object_building_naboo_shared_capitol_naboo_theed = SharedBuildingObjectTemplate:
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2574224334
+	clientObjectCRC = 2574224334,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_palace.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_naboo_shared_capitol_naboo_theed, "object/building/naboo/shared_capitol_naboo_theed.iff")
@@ -549,7 +557,8 @@ object_building_naboo_shared_cloning_facility_naboo = SharedBuildingObjectTempla
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1114686474
+	clientObjectCRC = 1114686474,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_cloning_facility.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_naboo_shared_cloning_facility_naboo, "object/building/naboo/shared_cloning_facility_naboo.iff")
@@ -606,7 +615,8 @@ object_building_naboo_shared_emperors_retreat = SharedBuildingObjectTemplate:new
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 120523031
+	clientObjectCRC = 120523031,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_palace.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_naboo_shared_emperors_retreat, "object/building/naboo/shared_emperors_retreat.iff")
@@ -663,7 +673,8 @@ object_building_naboo_shared_filler_building_naboo_style_10 = SharedBuildingObje
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3073450826
+	clientObjectCRC = 3073450826,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_filler_building.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_naboo_shared_filler_building_naboo_style_10, "object/building/naboo/shared_filler_building_naboo_style_10.iff")
@@ -720,7 +731,8 @@ object_building_naboo_shared_filler_building_naboo_style_11 = SharedBuildingObje
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4265362631
+	clientObjectCRC = 4265362631,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_filler_building.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_naboo_shared_filler_building_naboo_style_11, "object/building/naboo/shared_filler_building_naboo_style_11.iff")
@@ -777,7 +789,8 @@ object_building_naboo_shared_filler_building_naboo_style_2 = SharedBuildingObjec
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 343147098
+	clientObjectCRC = 343147098,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_filler_building.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_naboo_shared_filler_building_naboo_style_2, "object/building/naboo/shared_filler_building_naboo_style_2.iff")
@@ -834,7 +847,8 @@ object_building_naboo_shared_filler_building_naboo_style_3 = SharedBuildingObjec
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1568237015
+	clientObjectCRC = 1568237015,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_filler_building.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_naboo_shared_filler_building_naboo_style_3, "object/building/naboo/shared_filler_building_naboo_style_3.iff")
@@ -891,7 +905,8 @@ object_building_naboo_shared_filler_building_naboo_style_4 = SharedBuildingObjec
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2795130563
+	clientObjectCRC = 2795130563,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_filler_building.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_naboo_shared_filler_building_naboo_style_4, "object/building/naboo/shared_filler_building_naboo_style_4.iff")
@@ -948,7 +963,8 @@ object_building_naboo_shared_filler_building_naboo_style_5 = SharedBuildingObjec
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4019661134
+	clientObjectCRC = 4019661134,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_filler_building.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_naboo_shared_filler_building_naboo_style_5, "object/building/naboo/shared_filler_building_naboo_style_5.iff")
@@ -1005,7 +1021,8 @@ object_building_naboo_shared_filler_building_naboo_style_6 = SharedBuildingObjec
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 880837081
+	clientObjectCRC = 880837081,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_filler_building.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_naboo_shared_filler_building_naboo_style_6, "object/building/naboo/shared_filler_building_naboo_style_6.iff")
@@ -1062,7 +1079,8 @@ object_building_naboo_shared_filler_building_naboo_style_8 = SharedBuildingObjec
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3347565126
+	clientObjectCRC = 3347565126,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_filler_building.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_naboo_shared_filler_building_naboo_style_8, "object/building/naboo/shared_filler_building_naboo_style_8.iff")
@@ -1119,7 +1137,8 @@ object_building_naboo_shared_filler_building_naboo_style_9 = SharedBuildingObjec
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2391453131
+	clientObjectCRC = 2391453131,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_filler_building.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_naboo_shared_filler_building_naboo_style_9, "object/building/naboo/shared_filler_building_naboo_style_9.iff")
@@ -1176,7 +1195,8 @@ object_building_naboo_shared_filler_nboo_bldg_32x16_style_01 = SharedBuildingObj
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1370920904
+	clientObjectCRC = 1370920904,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_filler_building.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_naboo_shared_filler_nboo_bldg_32x16_style_01, "object/building/naboo/shared_filler_nboo_bldg_32x16_style_01.iff")
@@ -1233,7 +1253,8 @@ object_building_naboo_shared_filler_nboo_bldg_32x16_style_02 = SharedBuildingObj
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2325823327
+	clientObjectCRC = 2325823327,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_filler_building.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_naboo_shared_filler_nboo_bldg_32x16_style_02, "object/building/naboo/shared_filler_nboo_bldg_32x16_style_02.iff")
@@ -1290,7 +1311,8 @@ object_building_naboo_shared_filler_nboo_bldg_64x32_s02 = SharedBuildingObjectTe
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2522453461
+	clientObjectCRC = 2522453461,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_filler_building.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_naboo_shared_filler_nboo_bldg_64x32_s02, "object/building/naboo/shared_filler_nboo_bldg_64x32_s02.iff")
@@ -1347,7 +1369,8 @@ object_building_naboo_shared_filler_nboo_bldg_64x32_style_01 = SharedBuildingObj
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 166100265
+	clientObjectCRC = 166100265,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_filler_building.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_naboo_shared_filler_nboo_bldg_64x32_style_01, "object/building/naboo/shared_filler_nboo_bldg_64x32_style_01.iff")
@@ -1404,7 +1427,8 @@ object_building_naboo_shared_guild_combat_naboo_style_01 = SharedBuildingObjectT
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2162092176
+	clientObjectCRC = 2162092176,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_guild.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_naboo_shared_guild_combat_naboo_style_01, "object/building/naboo/shared_guild_combat_naboo_style_01.iff")
@@ -1461,7 +1485,8 @@ object_building_naboo_shared_guild_commerce_naboo_style_01 = SharedBuildingObjec
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 754152794
+	clientObjectCRC = 754152794,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_guild.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_naboo_shared_guild_commerce_naboo_style_01, "object/building/naboo/shared_guild_commerce_naboo_style_01.iff")
@@ -1518,7 +1543,8 @@ object_building_naboo_shared_guild_theater_naboo_s01 = SharedBuildingObjectTempl
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2364526054
+	clientObjectCRC = 2364526054,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_theater.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_naboo_shared_guild_theater_naboo_s01, "object/building/naboo/shared_guild_theater_naboo_s01.iff")
@@ -1575,7 +1601,8 @@ object_building_naboo_shared_guild_university_naboo_style_01 = SharedBuildingObj
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1500355509
+	clientObjectCRC = 1500355509,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_guild.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_naboo_shared_guild_university_naboo_style_01, "object/building/naboo/shared_guild_university_naboo_style_01.iff")
@@ -1632,7 +1659,8 @@ object_building_naboo_shared_hangar_naboo_theed = SharedBuildingObjectTemplate:n
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3224368648
+	clientObjectCRC = 3224368648,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_hangar.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_naboo_shared_hangar_naboo_theed, "object/building/naboo/shared_hangar_naboo_theed.iff")
@@ -1689,7 +1717,8 @@ object_building_naboo_shared_hospital_naboo = SharedBuildingObjectTemplate:new {
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3288048289
+	clientObjectCRC = 3288048289,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_palace.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_naboo_shared_hospital_naboo, "object/building/naboo/shared_hospital_naboo.iff")
@@ -1746,7 +1775,8 @@ object_building_naboo_shared_hospital_naboo_s02 = SharedBuildingObjectTemplate:n
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1309649332
+	clientObjectCRC = 1309649332,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_palace.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_naboo_shared_hospital_naboo_s02, "object/building/naboo/shared_hospital_naboo_s02.iff")
@@ -1803,7 +1833,8 @@ object_building_naboo_shared_hotel_naboo_theed = SharedBuildingObjectTemplate:ne
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2256796740
+	clientObjectCRC = 2256796740,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_hotel.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_naboo_shared_hotel_naboo_theed, "object/building/naboo/shared_hotel_naboo_theed.iff")
@@ -1860,7 +1891,8 @@ object_building_naboo_shared_housing_naboo_style_1 = SharedBuildingObjectTemplat
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1207237066
+	clientObjectCRC = 1207237066,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_housing.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_naboo_shared_housing_naboo_style_1, "object/building/naboo/shared_housing_naboo_style_1.iff")
@@ -1917,7 +1949,8 @@ object_building_naboo_shared_housing_naboo_style_3 = SharedBuildingObjectTemplat
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3589158608
+	clientObjectCRC = 3589158608,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_housing.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_naboo_shared_housing_naboo_style_3, "object/building/naboo/shared_housing_naboo_style_3.iff")
@@ -1974,7 +2007,8 @@ object_building_naboo_shared_merchant_tent_naboo_s01 = SharedBuildingObjectTempl
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3127135334
+	clientObjectCRC = 3127135334,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_housing.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_naboo_shared_merchant_tent_naboo_s01, "object/building/naboo/shared_merchant_tent_naboo_s01.iff")
@@ -2031,7 +2065,8 @@ object_building_naboo_shared_palace_naboo_theed = SharedBuildingObjectTemplate:n
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 243325651
+	clientObjectCRC = 243325651,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_palace.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_naboo_shared_palace_naboo_theed, "object/building/naboo/shared_palace_naboo_theed.iff")
@@ -2088,7 +2123,8 @@ object_building_naboo_shared_parking_garage_naboo_style_1 = SharedBuildingObject
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4129354478
+	clientObjectCRC = 4129354478,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_parking_garage.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_naboo_shared_parking_garage_naboo_style_1, "object/building/naboo/shared_parking_garage_naboo_style_1.iff")
@@ -2145,7 +2181,8 @@ object_building_naboo_shared_ply_nboo_house_lg_s01_fp1 = SharedBuildingObjectTem
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3110745453
+	clientObjectCRC = 3110745453,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_housing.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_naboo_shared_ply_nboo_house_lg_s01_fp1, "object/building/naboo/shared_ply_nboo_house_lg_s01_fp1.iff")
@@ -2202,7 +2239,8 @@ object_building_naboo_shared_ply_nboo_house_m_s01_fp1 = SharedBuildingObjectTemp
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2671892606
+	clientObjectCRC = 2671892606,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_housing.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_naboo_shared_ply_nboo_house_m_s01_fp1, "object/building/naboo/shared_ply_nboo_house_m_s01_fp1.iff")
@@ -2259,7 +2297,8 @@ object_building_naboo_shared_ply_nboo_house_m_s02_fp1 = SharedBuildingObjectTemp
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2374056803
+	clientObjectCRC = 2374056803,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_housing.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_naboo_shared_ply_nboo_house_m_s02_fp1, "object/building/naboo/shared_ply_nboo_house_m_s02_fp1.iff")
@@ -2316,7 +2355,8 @@ object_building_naboo_shared_ply_nboo_house_s_s01_fp1 = SharedBuildingObjectTemp
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 146028409
+	clientObjectCRC = 146028409,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_housing.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_naboo_shared_ply_nboo_house_s_s01_fp1, "object/building/naboo/shared_ply_nboo_house_s_s01_fp1.iff")
@@ -2373,7 +2413,8 @@ object_building_naboo_shared_ply_nboo_house_s_s02_fp1 = SharedBuildingObjectTemp
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 443864164
+	clientObjectCRC = 443864164,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_housing.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_naboo_shared_ply_nboo_house_s_s02_fp1, "object/building/naboo/shared_ply_nboo_house_s_s02_fp1.iff")
@@ -2430,7 +2471,8 @@ object_building_naboo_shared_power_generator_naboo_theed = SharedBuildingObjectT
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2419077761
+	clientObjectCRC = 2419077761,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_power_generator.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_naboo_shared_power_generator_naboo_theed, "object/building/naboo/shared_power_generator_naboo_theed.iff")
@@ -2487,7 +2529,8 @@ object_building_naboo_shared_salon_corellia = SharedBuildingObjectTemplate:new {
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4115268904
+	clientObjectCRC = 4115268904,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_cave.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_naboo_shared_salon_corellia, "object/building/naboo/shared_salon_corellia.iff")
@@ -2544,7 +2587,8 @@ object_building_naboo_shared_salon_naboo = SharedBuildingObjectTemplate:new {
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 135005575
+	clientObjectCRC = 135005575,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_salon.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_naboo_shared_salon_naboo, "object/building/naboo/shared_salon_naboo.iff")
@@ -2601,7 +2645,8 @@ object_building_naboo_shared_shuttleport_naboo = SharedBuildingObjectTemplate:ne
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3818763165
+	clientObjectCRC = 3818763165,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_starport.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_naboo_shared_shuttleport_naboo, "object/building/naboo/shared_shuttleport_naboo.iff")
@@ -2658,7 +2703,8 @@ object_building_naboo_shared_starport_naboo = SharedBuildingObjectTemplate:new {
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1265259890
+	clientObjectCRC = 1265259890,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_starport.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_naboo_shared_starport_naboo, "object/building/naboo/shared_starport_naboo.iff")

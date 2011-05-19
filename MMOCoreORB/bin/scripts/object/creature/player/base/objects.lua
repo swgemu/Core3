@@ -114,7 +114,8 @@ object_creature_player_base_shared_base_player = SharedCreatureObjectTemplate:ne
 	warpTolerance = 17,
 	waterModPercent = 0.75,
 
-	clientObjectCRC = 957124474
+	clientObjectCRC = 957124474,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_creature_player_base_shared_base_player, "object/creature/player/base/shared_base_player.iff")

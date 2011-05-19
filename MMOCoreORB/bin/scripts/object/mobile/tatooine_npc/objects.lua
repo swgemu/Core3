@@ -114,7 +114,8 @@ object_mobile_tatooine_npc_shared_aaph_koden = SharedCreatureObjectTemplate:new 
 	warpTolerance = 17,
 	waterModPercent = 0.5,
 
-	clientObjectCRC = 2210665097
+	clientObjectCRC = 2210665097,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/mobile/shared_mobile.iff", "object/mobile/skeleton/shared_humanoid.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_mobile_tatooine_npc_shared_aaph_koden, "object/mobile/tatooine_npc/shared_aaph_koden.iff")
@@ -192,7 +193,8 @@ object_mobile_tatooine_npc_shared_binna_jode = SharedCreatureObjectTemplate:new 
 	warpTolerance = 17,
 	waterModPercent = 0.5,
 
-	clientObjectCRC = 3420862161
+	clientObjectCRC = 3420862161,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/mobile/shared_mobile.iff", "object/mobile/skeleton/shared_humanoid.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_mobile_tatooine_npc_shared_binna_jode, "object/mobile/tatooine_npc/shared_binna_jode.iff")
@@ -270,7 +272,8 @@ object_mobile_tatooine_npc_shared_blerx_tango = SharedCreatureObjectTemplate:new
 	warpTolerance = 17,
 	waterModPercent = 0.5,
 
-	clientObjectCRC = 2463657324
+	clientObjectCRC = 2463657324,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/mobile/shared_mobile.iff", "object/mobile/skeleton/shared_humanoid.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_mobile_tatooine_npc_shared_blerx_tango, "object/mobile/tatooine_npc/shared_blerx_tango.iff")
@@ -348,7 +351,8 @@ object_mobile_tatooine_npc_shared_boshek = SharedCreatureObjectTemplate:new {
 	warpTolerance = 17,
 	waterModPercent = 0.5,
 
-	clientObjectCRC = 1226761307
+	clientObjectCRC = 1226761307,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/mobile/shared_mobile.iff", "object/mobile/skeleton/shared_humanoid.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_mobile_tatooine_npc_shared_boshek, "object/mobile/tatooine_npc/shared_boshek.iff")
@@ -426,7 +430,8 @@ object_mobile_tatooine_npc_shared_brea_tonnika = SharedCreatureObjectTemplate:ne
 	warpTolerance = 17,
 	waterModPercent = 0.5,
 
-	clientObjectCRC = 4285124243
+	clientObjectCRC = 4285124243,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/mobile/shared_mobile.iff", "object/mobile/skeleton/shared_humanoid.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_mobile_tatooine_npc_shared_brea_tonnika, "object/mobile/tatooine_npc/shared_brea_tonnika.iff")
@@ -504,7 +509,8 @@ object_mobile_tatooine_npc_shared_capt_loftus = SharedCreatureObjectTemplate:new
 	warpTolerance = 17,
 	waterModPercent = 0.5,
 
-	clientObjectCRC = 4289563473
+	clientObjectCRC = 4289563473,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/mobile/shared_mobile.iff", "object/mobile/skeleton/shared_humanoid.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_mobile_tatooine_npc_shared_capt_loftus, "object/mobile/tatooine_npc/shared_capt_loftus.iff")
@@ -582,7 +588,8 @@ object_mobile_tatooine_npc_shared_farious_gletch = SharedCreatureObjectTemplate:
 	warpTolerance = 17,
 	waterModPercent = 0.5,
 
-	clientObjectCRC = 1952005063
+	clientObjectCRC = 1952005063,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/mobile/shared_mobile.iff", "object/mobile/skeleton/shared_humanoid.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_mobile_tatooine_npc_shared_farious_gletch, "object/mobile/tatooine_npc/shared_farious_gletch.iff")
@@ -660,7 +667,8 @@ object_mobile_tatooine_npc_shared_figrin_dan = SharedCreatureObjectTemplate:new 
 	warpTolerance = 17,
 	waterModPercent = 0.5,
 
-	clientObjectCRC = 861642395
+	clientObjectCRC = 861642395,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/mobile/shared_mobile.iff", "object/mobile/skeleton/shared_humanoid.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_mobile_tatooine_npc_shared_figrin_dan, "object/mobile/tatooine_npc/shared_figrin_dan.iff")
@@ -738,7 +746,8 @@ object_mobile_tatooine_npc_shared_fixer = SharedCreatureObjectTemplate:new {
 	warpTolerance = 17,
 	waterModPercent = 0.5,
 
-	clientObjectCRC = 119383383
+	clientObjectCRC = 119383383,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/mobile/shared_mobile.iff", "object/mobile/skeleton/shared_humanoid.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_mobile_tatooine_npc_shared_fixer, "object/mobile/tatooine_npc/shared_fixer.iff")
@@ -816,7 +825,8 @@ object_mobile_tatooine_npc_shared_hedon_istee = SharedCreatureObjectTemplate:new
 	warpTolerance = 17,
 	waterModPercent = 0.5,
 
-	clientObjectCRC = 4094763986
+	clientObjectCRC = 4094763986,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/mobile/shared_mobile.iff", "object/mobile/skeleton/shared_humanoid.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_mobile_tatooine_npc_shared_hedon_istee, "object/mobile/tatooine_npc/shared_hedon_istee.iff")
@@ -894,7 +904,8 @@ object_mobile_tatooine_npc_shared_ikka_gesul = SharedCreatureObjectTemplate:new 
 	warpTolerance = 17,
 	waterModPercent = 0.5,
 
-	clientObjectCRC = 1541010497
+	clientObjectCRC = 1541010497,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/mobile/shared_mobile.iff", "object/mobile/skeleton/shared_humanoid.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_mobile_tatooine_npc_shared_ikka_gesul, "object/mobile/tatooine_npc/shared_ikka_gesul.iff")
@@ -972,7 +983,8 @@ object_mobile_tatooine_npc_shared_jilljoo_jab = SharedCreatureObjectTemplate:new
 	warpTolerance = 17,
 	waterModPercent = 0.5,
 
-	clientObjectCRC = 3479474175
+	clientObjectCRC = 3479474175,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/mobile/shared_mobile.iff", "object/mobile/skeleton/shared_humanoid.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_mobile_tatooine_npc_shared_jilljoo_jab, "object/mobile/tatooine_npc/shared_jilljoo_jab.iff")
@@ -1050,7 +1062,8 @@ object_mobile_tatooine_npc_shared_kaeline_ungasan = SharedCreatureObjectTemplate
 	warpTolerance = 17,
 	waterModPercent = 0.5,
 
-	clientObjectCRC = 28682516
+	clientObjectCRC = 28682516,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/mobile/shared_mobile.iff", "object/mobile/skeleton/shared_humanoid.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_mobile_tatooine_npc_shared_kaeline_ungasan, "object/mobile/tatooine_npc/shared_kaeline_ungasan.iff")
@@ -1128,7 +1141,8 @@ object_mobile_tatooine_npc_shared_kitster_banai = SharedCreatureObjectTemplate:n
 	warpTolerance = 17,
 	waterModPercent = 0.5,
 
-	clientObjectCRC = 1703616350
+	clientObjectCRC = 1703616350,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/mobile/shared_mobile.iff", "object/mobile/skeleton/shared_humanoid.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_mobile_tatooine_npc_shared_kitster_banai, "object/mobile/tatooine_npc/shared_kitster_banai.iff")
@@ -1206,7 +1220,8 @@ object_mobile_tatooine_npc_shared_kormund_thrylle = SharedCreatureObjectTemplate
 	warpTolerance = 17,
 	waterModPercent = 0.5,
 
-	clientObjectCRC = 1211559365
+	clientObjectCRC = 1211559365,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/mobile/shared_mobile.iff", "object/mobile/skeleton/shared_humanoid.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_mobile_tatooine_npc_shared_kormund_thrylle, "object/mobile/tatooine_npc/shared_kormund_thrylle.iff")
@@ -1284,7 +1299,8 @@ object_mobile_tatooine_npc_shared_lilas_dinhint = SharedCreatureObjectTemplate:n
 	warpTolerance = 17,
 	waterModPercent = 0.5,
 
-	clientObjectCRC = 253776339
+	clientObjectCRC = 253776339,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/mobile/shared_mobile.iff", "object/mobile/skeleton/shared_humanoid.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_mobile_tatooine_npc_shared_lilas_dinhint, "object/mobile/tatooine_npc/shared_lilas_dinhint.iff")
@@ -1362,7 +1378,8 @@ object_mobile_tatooine_npc_shared_lt_harburik = SharedCreatureObjectTemplate:new
 	warpTolerance = 17,
 	waterModPercent = 0.5,
 
-	clientObjectCRC = 1553404717
+	clientObjectCRC = 1553404717,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/mobile/shared_mobile.iff", "object/mobile/skeleton/shared_humanoid.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_mobile_tatooine_npc_shared_lt_harburik, "object/mobile/tatooine_npc/shared_lt_harburik.iff")
@@ -1440,7 +1457,8 @@ object_mobile_tatooine_npc_shared_mat_rags = SharedCreatureObjectTemplate:new {
 	warpTolerance = 17,
 	waterModPercent = 0.5,
 
-	clientObjectCRC = 1901596031
+	clientObjectCRC = 1901596031,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/mobile/shared_mobile.iff", "object/mobile/skeleton/shared_humanoid.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_mobile_tatooine_npc_shared_mat_rags, "object/mobile/tatooine_npc/shared_mat_rags.iff")
@@ -1518,7 +1536,8 @@ object_mobile_tatooine_npc_shared_melios_purl = SharedCreatureObjectTemplate:new
 	warpTolerance = 17,
 	waterModPercent = 0.5,
 
-	clientObjectCRC = 4049550118
+	clientObjectCRC = 4049550118,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/mobile/shared_mobile.iff", "object/mobile/skeleton/shared_humanoid.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_mobile_tatooine_npc_shared_melios_purl, "object/mobile/tatooine_npc/shared_melios_purl.iff")
@@ -1596,7 +1615,8 @@ object_mobile_tatooine_npc_shared_mikos_denari = SharedCreatureObjectTemplate:ne
 	warpTolerance = 17,
 	waterModPercent = 0.5,
 
-	clientObjectCRC = 2971142656
+	clientObjectCRC = 2971142656,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/mobile/shared_mobile.iff", "object/mobile/skeleton/shared_humanoid.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_mobile_tatooine_npc_shared_mikos_denari, "object/mobile/tatooine_npc/shared_mikos_denari.iff")
@@ -1674,7 +1694,8 @@ object_mobile_tatooine_npc_shared_nitra_vendallan = SharedCreatureObjectTemplate
 	warpTolerance = 17,
 	waterModPercent = 0.5,
 
-	clientObjectCRC = 3562269968
+	clientObjectCRC = 3562269968,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/mobile/shared_mobile.iff", "object/mobile/skeleton/shared_humanoid.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_mobile_tatooine_npc_shared_nitra_vendallan, "object/mobile/tatooine_npc/shared_nitra_vendallan.iff")
@@ -1752,7 +1773,8 @@ object_mobile_tatooine_npc_shared_om_aynat = SharedCreatureObjectTemplate:new {
 	warpTolerance = 17,
 	waterModPercent = 0.5,
 
-	clientObjectCRC = 197060903
+	clientObjectCRC = 197060903,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/mobile/shared_mobile.iff", "object/mobile/skeleton/shared_humanoid.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_mobile_tatooine_npc_shared_om_aynat, "object/mobile/tatooine_npc/shared_om_aynat.iff")
@@ -1830,7 +1852,8 @@ object_mobile_tatooine_npc_shared_pfilbee_jhorn = SharedCreatureObjectTemplate:n
 	warpTolerance = 17,
 	waterModPercent = 0.5,
 
-	clientObjectCRC = 3055869175
+	clientObjectCRC = 3055869175,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/mobile/shared_mobile.iff", "object/mobile/skeleton/shared_humanoid.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_mobile_tatooine_npc_shared_pfilbee_jhorn, "object/mobile/tatooine_npc/shared_pfilbee_jhorn.iff")
@@ -1908,7 +1931,8 @@ object_mobile_tatooine_npc_shared_phinea_shantee = SharedCreatureObjectTemplate:
 	warpTolerance = 17,
 	waterModPercent = 0.5,
 
-	clientObjectCRC = 1801428554
+	clientObjectCRC = 1801428554,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/mobile/shared_mobile.iff", "object/mobile/skeleton/shared_humanoid.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_mobile_tatooine_npc_shared_phinea_shantee, "object/mobile/tatooine_npc/shared_phinea_shantee.iff")
@@ -1986,7 +2010,8 @@ object_mobile_tatooine_npc_shared_rakir_banai = SharedCreatureObjectTemplate:new
 	warpTolerance = 17,
 	waterModPercent = 0.5,
 
-	clientObjectCRC = 2174990588
+	clientObjectCRC = 2174990588,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/mobile/shared_mobile.iff", "object/mobile/skeleton/shared_humanoid.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_mobile_tatooine_npc_shared_rakir_banai, "object/mobile/tatooine_npc/shared_rakir_banai.iff")
@@ -2064,7 +2089,8 @@ object_mobile_tatooine_npc_shared_senni_tonnika = SharedCreatureObjectTemplate:n
 	warpTolerance = 17,
 	waterModPercent = 0.5,
 
-	clientObjectCRC = 3876719112
+	clientObjectCRC = 3876719112,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/mobile/shared_mobile.iff", "object/mobile/skeleton/shared_humanoid.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_mobile_tatooine_npc_shared_senni_tonnika, "object/mobile/tatooine_npc/shared_senni_tonnika.iff")
@@ -2142,7 +2168,8 @@ object_mobile_tatooine_npc_shared_tekil_barje = SharedCreatureObjectTemplate:new
 	warpTolerance = 17,
 	waterModPercent = 0.5,
 
-	clientObjectCRC = 153136187
+	clientObjectCRC = 153136187,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/mobile/shared_mobile.iff", "object/mobile/skeleton/shared_humanoid.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_mobile_tatooine_npc_shared_tekil_barje, "object/mobile/tatooine_npc/shared_tekil_barje.iff")
@@ -2220,7 +2247,8 @@ object_mobile_tatooine_npc_shared_tour_aryon = SharedCreatureObjectTemplate:new 
 	warpTolerance = 17,
 	waterModPercent = 0.5,
 
-	clientObjectCRC = 651899937
+	clientObjectCRC = 651899937,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/mobile/shared_mobile.iff", "object/mobile/skeleton/shared_humanoid.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_mobile_tatooine_npc_shared_tour_aryon, "object/mobile/tatooine_npc/shared_tour_aryon.iff")
@@ -2298,7 +2326,8 @@ object_mobile_tatooine_npc_shared_vardias_tyne = SharedCreatureObjectTemplate:ne
 	warpTolerance = 17,
 	waterModPercent = 0.5,
 
-	clientObjectCRC = 2121259164
+	clientObjectCRC = 2121259164,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/mobile/shared_mobile.iff", "object/mobile/skeleton/shared_humanoid.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_mobile_tatooine_npc_shared_vardias_tyne, "object/mobile/tatooine_npc/shared_vardias_tyne.iff")
@@ -2376,7 +2405,8 @@ object_mobile_tatooine_npc_shared_wilhalm_skrim = SharedCreatureObjectTemplate:n
 	warpTolerance = 17,
 	waterModPercent = 0.5,
 
-	clientObjectCRC = 4249752702
+	clientObjectCRC = 4249752702,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/mobile/shared_mobile.iff", "object/mobile/skeleton/shared_humanoid.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_mobile_tatooine_npc_shared_wilhalm_skrim, "object/mobile/tatooine_npc/shared_wilhalm_skrim.iff")
@@ -2454,7 +2484,8 @@ object_mobile_tatooine_npc_shared_windom_starkiller = SharedCreatureObjectTempla
 	warpTolerance = 17,
 	waterModPercent = 0.5,
 
-	clientObjectCRC = 1129472596
+	clientObjectCRC = 1129472596,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/mobile/shared_mobile.iff", "object/mobile/skeleton/shared_humanoid.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_mobile_tatooine_npc_shared_windom_starkiller, "object/mobile/tatooine_npc/shared_windom_starkiller.iff")

@@ -90,7 +90,8 @@ object_installation_mining_gas_base_shared_mining_gas_base = SharedInstallationO
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1518209965
+	clientObjectCRC = 1518209965,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_installation_mining_gas_base_shared_mining_gas_base, "object/installation/mining_gas/base/shared_mining_gas_base.iff")

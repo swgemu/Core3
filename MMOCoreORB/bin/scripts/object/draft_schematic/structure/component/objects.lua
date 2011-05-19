@@ -80,7 +80,8 @@ object_draft_schematic_structure_component_shared_structural_module = SharedDraf
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3736246245
+	clientObjectCRC = 3736246245,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_structure_component_shared_structural_module, "object/draft_schematic/structure/component/shared_structural_module.iff")
@@ -124,7 +125,8 @@ object_draft_schematic_structure_component_shared_structure_fluidic_drilling_pum
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 188700507
+	clientObjectCRC = 188700507,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_structure_component_shared_structure_fluidic_drilling_pumping_unit, "object/draft_schematic/structure/component/shared_structure_fluidic_drilling_pumping_unit.iff")
@@ -168,7 +170,8 @@ object_draft_schematic_structure_component_shared_structure_generator_turbine = 
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 890068144
+	clientObjectCRC = 890068144,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_structure_component_shared_structure_generator_turbine, "object/draft_schematic/structure/component/shared_structure_generator_turbine.iff")
@@ -212,7 +215,8 @@ object_draft_schematic_structure_component_shared_structure_harvesting_mechanism
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1426968673
+	clientObjectCRC = 1426968673,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_structure_component_shared_structure_harvesting_mechanism, "object/draft_schematic/structure/component/shared_structure_harvesting_mechanism.iff")
@@ -256,7 +260,8 @@ object_draft_schematic_structure_component_shared_structure_heavy_harvesting_mec
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2142863561
+	clientObjectCRC = 2142863561,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_structure_component_shared_structure_heavy_harvesting_mechanism, "object/draft_schematic/structure/component/shared_structure_heavy_harvesting_mechanism.iff")
@@ -300,7 +305,8 @@ object_draft_schematic_structure_component_shared_structure_light_ore_mining_uni
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3263967120
+	clientObjectCRC = 3263967120,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_structure_component_shared_structure_light_ore_mining_unit, "object/draft_schematic/structure/component/shared_structure_light_ore_mining_unit.iff")
@@ -344,7 +350,8 @@ object_draft_schematic_structure_component_shared_structure_light_power_core_uni
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2040269434
+	clientObjectCRC = 2040269434,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_structure_component_shared_structure_light_power_core_unit, "object/draft_schematic/structure/component/shared_structure_light_power_core_unit.iff")
@@ -388,7 +395,8 @@ object_draft_schematic_structure_component_shared_structure_manufacturing_mechan
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1592150343
+	clientObjectCRC = 1592150343,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_structure_component_shared_structure_manufacturing_mechanism, "object/draft_schematic/structure/component/shared_structure_manufacturing_mechanism.iff")
@@ -432,7 +440,8 @@ object_draft_schematic_structure_component_shared_structure_ore_mining_unit = Sh
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2037730009
+	clientObjectCRC = 2037730009,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_structure_component_shared_structure_ore_mining_unit, "object/draft_schematic/structure/component/shared_structure_ore_mining_unit.iff")
@@ -476,7 +485,8 @@ object_draft_schematic_structure_component_shared_structure_power_core_unit = Sh
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3261427507
+	clientObjectCRC = 3261427507,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_structure_component_shared_structure_power_core_unit, "object/draft_schematic/structure/component/shared_structure_power_core_unit.iff")
@@ -520,7 +530,8 @@ object_draft_schematic_structure_component_shared_structure_small_storage_sectio
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3364203190
+	clientObjectCRC = 3364203190,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_structure_component_shared_structure_small_storage_section, "object/draft_schematic/structure/component/shared_structure_small_storage_section.iff")
@@ -564,7 +575,8 @@ object_draft_schematic_structure_component_shared_structure_storage_section = Sh
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1345350988
+	clientObjectCRC = 1345350988,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_structure_component_shared_structure_storage_section, "object/draft_schematic/structure/component/shared_structure_storage_section.iff")
@@ -608,7 +620,8 @@ object_draft_schematic_structure_component_shared_structure_turbo_fluidic_drilli
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 661556822
+	clientObjectCRC = 661556822,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_structure_component_shared_structure_turbo_fluidic_drilling_pumping_unit, "object/draft_schematic/structure/component/shared_structure_turbo_fluidic_drilling_pumping_unit.iff")
@@ -652,7 +665,8 @@ object_draft_schematic_structure_component_shared_wall_module = SharedDraftSchem
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 686217066
+	clientObjectCRC = 686217066,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_structure_component_shared_wall_module, "object/draft_schematic/structure/component/shared_wall_module.iff")
@@ -696,7 +710,8 @@ object_draft_schematic_structure_component_shared_weapon_mount_heavy_stabilizati
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2433532742
+	clientObjectCRC = 2433532742,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_structure_component_shared_weapon_mount_heavy_stabilization_unit, "object/draft_schematic/structure/component/shared_weapon_mount_heavy_stabilization_unit.iff")

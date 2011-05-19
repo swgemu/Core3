@@ -90,7 +90,8 @@ object_tangible_lair_bluefish_shared_lair_bluefish = SharedTangibleObjectTemplat
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1606267256
+	clientObjectCRC = 1606267256,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_bluefish_shared_lair_bluefish, "object/tangible/lair/bluefish/shared_lair_bluefish.iff")
@@ -144,7 +145,8 @@ object_tangible_lair_bluefish_shared_lair_bluefish_underwater = SharedTangibleOb
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2427174559
+	clientObjectCRC = 2427174559,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_bluefish_shared_lair_bluefish_underwater, "object/tangible/lair/bluefish/shared_lair_bluefish_underwater.iff")

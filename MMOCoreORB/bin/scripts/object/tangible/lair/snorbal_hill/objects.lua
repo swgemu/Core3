@@ -90,7 +90,8 @@ object_tangible_lair_snorbal_hill_shared_lair_snorbal_hill = SharedTangibleObjec
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 80246849
+	clientObjectCRC = 80246849,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_snorbal_hill_shared_lair_snorbal_hill, "object/tangible/lair/snorbal_hill/shared_lair_snorbal_hill.iff")

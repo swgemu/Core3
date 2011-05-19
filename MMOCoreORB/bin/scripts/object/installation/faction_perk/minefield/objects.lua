@@ -90,7 +90,8 @@ object_installation_faction_perk_minefield_shared_field_1x1 = SharedInstallation
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1970833898
+	clientObjectCRC = 1970833898,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff", "object/installation/faction_perk/minefield/base/shared_minefield_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_installation_faction_perk_minefield_shared_field_1x1, "object/installation/faction_perk/minefield/shared_field_1x1.iff")

@@ -90,7 +90,8 @@ object_tangible_lair_corellian_sand_panther_shared_lair_corellian_sand_panther =
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1294781391
+	clientObjectCRC = 1294781391,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_corellian_sand_panther_shared_lair_corellian_sand_panther, "object/tangible/lair/corellian_sand_panther/shared_lair_corellian_sand_panther.iff")
@@ -144,7 +145,8 @@ object_tangible_lair_corellian_sand_panther_shared_lair_corellian_sand_panther_g
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3907598549
+	clientObjectCRC = 3907598549,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_corellian_sand_panther_shared_lair_corellian_sand_panther_grassland, "object/tangible/lair/corellian_sand_panther/shared_lair_corellian_sand_panther_grassland.iff")

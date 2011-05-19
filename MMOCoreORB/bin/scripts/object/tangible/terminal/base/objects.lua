@@ -90,7 +90,8 @@ object_tangible_terminal_base_shared_base_terminal = SharedTangibleObjectTemplat
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 88218105
+	clientObjectCRC = 88218105,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_terminal_base_shared_base_terminal, "object/tangible/terminal/base/shared_base_terminal.iff")

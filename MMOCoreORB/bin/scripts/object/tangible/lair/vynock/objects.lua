@@ -90,7 +90,8 @@ object_tangible_lair_vynock_shared_lair_vynock = SharedTangibleObjectTemplate:ne
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3826434758
+	clientObjectCRC = 3826434758,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_vynock_shared_lair_vynock, "object/tangible/lair/vynock/shared_lair_vynock.iff")
@@ -144,7 +145,8 @@ object_tangible_lair_vynock_shared_lair_vynock_dune = SharedTangibleObjectTempla
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 453779300
+	clientObjectCRC = 453779300,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_vynock_shared_lair_vynock_dune, "object/tangible/lair/vynock/shared_lair_vynock_dune.iff")
@@ -198,7 +200,8 @@ object_tangible_lair_vynock_shared_lair_vynock_mountain = SharedTangibleObjectTe
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2882460738
+	clientObjectCRC = 2882460738,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_vynock_shared_lair_vynock_mountain, "object/tangible/lair/vynock/shared_lair_vynock_mountain.iff")
@@ -252,7 +255,8 @@ object_tangible_lair_vynock_shared_lair_vynock_wasteland = SharedTangibleObjectT
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1253121111
+	clientObjectCRC = 1253121111,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_vynock_shared_lair_vynock_wasteland, "object/tangible/lair/vynock/shared_lair_vynock_wasteland.iff")

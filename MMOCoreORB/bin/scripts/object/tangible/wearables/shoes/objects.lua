@@ -90,7 +90,8 @@ object_tangible_wearables_shoes_shared_shoes_s01 = SharedTangibleObjectTemplate:
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3549441025
+	clientObjectCRC = 3549441025,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_shoes.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_shoes_shared_shoes_s01, "object/tangible/wearables/shoes/shared_shoes_s01.iff")
@@ -144,7 +145,8 @@ object_tangible_wearables_shoes_shared_shoes_s02 = SharedTangibleObjectTemplate:
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 143099030
+	clientObjectCRC = 143099030,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_shoes.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_shoes_shared_shoes_s02, "object/tangible/wearables/shoes/shared_shoes_s02.iff")
@@ -198,7 +200,8 @@ object_tangible_wearables_shoes_shared_shoes_s03 = SharedTangibleObjectTemplate:
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1099621147
+	clientObjectCRC = 1099621147,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_shoes.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_shoes_shared_shoes_s03, "object/tangible/wearables/shoes/shared_shoes_s03.iff")
@@ -252,7 +255,8 @@ object_tangible_wearables_shoes_shared_shoes_s07 = SharedTangibleObjectTemplate:
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1635672216
+	clientObjectCRC = 1635672216,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_shoes.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_shoes_shared_shoes_s07, "object/tangible/wearables/shoes/shared_shoes_s07.iff")
@@ -306,7 +310,8 @@ object_tangible_wearables_shoes_shared_shoes_s08 = SharedTangibleObjectTemplate:
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3681832074
+	clientObjectCRC = 3681832074,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_shoes.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_shoes_shared_shoes_s08, "object/tangible/wearables/shoes/shared_shoes_s08.iff")
@@ -360,7 +365,8 @@ object_tangible_wearables_shoes_shared_shoes_s09 = SharedTangibleObjectTemplate:
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2457414407
+	clientObjectCRC = 2457414407,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_shoes.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_shoes_shared_shoes_s09, "object/tangible/wearables/shoes/shared_shoes_s09.iff")

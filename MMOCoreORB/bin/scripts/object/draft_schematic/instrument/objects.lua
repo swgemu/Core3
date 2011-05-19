@@ -80,7 +80,8 @@ object_draft_schematic_instrument_shared_instrument_bandfill = SharedDraftSchema
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1069929316
+	clientObjectCRC = 1069929316,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff", "object/draft_schematic/instrument/shared_instrument_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_instrument_shared_instrument_bandfill, "object/draft_schematic/instrument/shared_instrument_bandfill.iff")
@@ -124,7 +125,8 @@ object_draft_schematic_instrument_shared_instrument_base = SharedDraftSchematicO
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3133647251
+	clientObjectCRC = 3133647251,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_instrument_shared_instrument_base, "object/draft_schematic/instrument/shared_instrument_base.iff")
@@ -168,7 +170,8 @@ object_draft_schematic_instrument_shared_instrument_drums = SharedDraftSchematic
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 592945841
+	clientObjectCRC = 592945841,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff", "object/draft_schematic/instrument/shared_instrument_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_instrument_shared_instrument_drums, "object/draft_schematic/instrument/shared_instrument_drums.iff")
@@ -212,7 +215,8 @@ object_draft_schematic_instrument_shared_instrument_fanfar = SharedDraftSchemati
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1598981907
+	clientObjectCRC = 1598981907,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff", "object/draft_schematic/instrument/shared_instrument_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_instrument_shared_instrument_fanfar, "object/draft_schematic/instrument/shared_instrument_fanfar.iff")
@@ -256,7 +260,8 @@ object_draft_schematic_instrument_shared_instrument_fizz = SharedDraftSchematicO
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1476982860
+	clientObjectCRC = 1476982860,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff", "object/draft_schematic/instrument/shared_instrument_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_instrument_shared_instrument_fizz, "object/draft_schematic/instrument/shared_instrument_fizz.iff")
@@ -300,7 +305,8 @@ object_draft_schematic_instrument_shared_instrument_flute_droopy = SharedDraftSc
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3913461118
+	clientObjectCRC = 3913461118,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff", "object/draft_schematic/instrument/shared_instrument_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_instrument_shared_instrument_flute_droopy, "object/draft_schematic/instrument/shared_instrument_flute_droopy.iff")
@@ -344,7 +350,8 @@ object_draft_schematic_instrument_shared_instrument_kloo_horn = SharedDraftSchem
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 4207775926
+	clientObjectCRC = 4207775926,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff", "object/draft_schematic/instrument/shared_instrument_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_instrument_shared_instrument_kloo_horn, "object/draft_schematic/instrument/shared_instrument_kloo_horn.iff")
@@ -388,7 +395,8 @@ object_draft_schematic_instrument_shared_instrument_mandoviol = SharedDraftSchem
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1835965889
+	clientObjectCRC = 1835965889,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff", "object/draft_schematic/instrument/shared_instrument_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_instrument_shared_instrument_mandoviol, "object/draft_schematic/instrument/shared_instrument_mandoviol.iff")
@@ -432,7 +440,8 @@ object_draft_schematic_instrument_shared_instrument_nalargon = SharedDraftSchema
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2180987107
+	clientObjectCRC = 2180987107,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff", "object/draft_schematic/instrument/shared_instrument_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_instrument_shared_instrument_nalargon, "object/draft_schematic/instrument/shared_instrument_nalargon.iff")
@@ -476,7 +485,8 @@ object_draft_schematic_instrument_shared_instrument_omni_box = SharedDraftSchema
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3365239168
+	clientObjectCRC = 3365239168,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff", "object/draft_schematic/instrument/shared_instrument_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_instrument_shared_instrument_omni_box, "object/draft_schematic/instrument/shared_instrument_omni_box.iff")
@@ -520,7 +530,8 @@ object_draft_schematic_instrument_shared_instrument_organ_figrin_dan = SharedDra
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 12716542
+	clientObjectCRC = 12716542,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff", "object/draft_schematic/instrument/shared_instrument_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_instrument_shared_instrument_organ_figrin_dan, "object/draft_schematic/instrument/shared_instrument_organ_figrin_dan.iff")
@@ -564,7 +575,8 @@ object_draft_schematic_instrument_shared_instrument_organ_max_rebo = SharedDraft
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 747863128
+	clientObjectCRC = 747863128,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff", "object/draft_schematic/instrument/shared_instrument_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_instrument_shared_instrument_organ_max_rebo, "object/draft_schematic/instrument/shared_instrument_organ_max_rebo.iff")
@@ -608,7 +620,8 @@ object_draft_schematic_instrument_shared_instrument_slitherhorn = SharedDraftSch
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2027141215
+	clientObjectCRC = 2027141215,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff", "object/draft_schematic/instrument/shared_instrument_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_instrument_shared_instrument_slitherhorn, "object/draft_schematic/instrument/shared_instrument_slitherhorn.iff")
@@ -652,7 +665,8 @@ object_draft_schematic_instrument_shared_instrument_traz = SharedDraftSchematicO
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1146643573
+	clientObjectCRC = 1146643573,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff", "object/draft_schematic/instrument/shared_instrument_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_instrument_shared_instrument_traz, "object/draft_schematic/instrument/shared_instrument_traz.iff")

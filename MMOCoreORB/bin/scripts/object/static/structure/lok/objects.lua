@@ -79,7 +79,8 @@ object_static_structure_lok_shared_lok_imprv_bannerpole_s01 = SharedStaticObject
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3199681465
+	clientObjectCRC = 3199681465,
+	derivedFromTemplates = {}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_lok_shared_lok_imprv_bannerpole_s01, "object/static/structure/lok/shared_lok_imprv_bannerpole_s01.iff")
@@ -122,7 +123,8 @@ object_static_structure_lok_shared_lok_imprv_flagpole_s01 = SharedStaticObjectTe
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2646498442
+	clientObjectCRC = 2646498442,
+	derivedFromTemplates = {}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_lok_shared_lok_imprv_flagpole_s01, "object/static/structure/lok/shared_lok_imprv_flagpole_s01.iff")

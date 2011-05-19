@@ -90,7 +90,8 @@ object_tangible_loot_simple_kit_shared_battery_cheap_copper = SharedTangibleObje
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1558538770
+	clientObjectCRC = 1558538770,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_simple_kit_shared_battery_cheap_copper, "object/tangible/loot/simple_kit/shared_battery_cheap_copper.iff")
@@ -144,7 +145,8 @@ object_tangible_loot_simple_kit_shared_datadisk = SharedTangibleObjectTemplate:n
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4025688379
+	clientObjectCRC = 4025688379,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_simple_kit_shared_datadisk, "object/tangible/loot/simple_kit/shared_datadisk.iff")
@@ -198,7 +200,8 @@ object_tangible_loot_simple_kit_shared_datadisk_repair_kit = SharedTangibleObjec
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1751481295
+	clientObjectCRC = 1751481295,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/container/base/shared_base_container.iff", "object/tangible/container/base/shared_base_container_volume.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_simple_kit_shared_datadisk_repair_kit, "object/tangible/loot/simple_kit/shared_datadisk_repair_kit.iff")
@@ -252,7 +255,8 @@ object_tangible_loot_simple_kit_shared_datapad_backlight = SharedTangibleObjectT
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4084040354
+	clientObjectCRC = 4084040354,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_simple_kit_shared_datapad_backlight, "object/tangible/loot/simple_kit/shared_datapad_backlight.iff")
@@ -306,7 +310,8 @@ object_tangible_loot_simple_kit_shared_datapad_battery = SharedTangibleObjectTem
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3119448448
+	clientObjectCRC = 3119448448,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_simple_kit_shared_datapad_battery, "object/tangible/loot/simple_kit/shared_datapad_battery.iff")
@@ -360,7 +365,8 @@ object_tangible_loot_simple_kit_shared_datapad_casing = SharedTangibleObjectTemp
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2404535278
+	clientObjectCRC = 2404535278,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/container/base/shared_base_container.iff", "object/tangible/container/base/shared_base_container_volume.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_simple_kit_shared_datapad_casing, "object/tangible/loot/simple_kit/shared_datapad_casing.iff")
@@ -414,7 +420,8 @@ object_tangible_loot_simple_kit_shared_datapad_connectors = SharedTangibleObject
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3704114882
+	clientObjectCRC = 3704114882,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_simple_kit_shared_datapad_connectors, "object/tangible/loot/simple_kit/shared_datapad_connectors.iff")
@@ -468,7 +475,8 @@ object_tangible_loot_simple_kit_shared_empty_datapad = SharedTangibleObjectTempl
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1084051270
+	clientObjectCRC = 1084051270,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/container/base/shared_base_container.iff", "object/tangible/container/base/shared_base_container_volume.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_simple_kit_shared_empty_datapad, "object/tangible/loot/simple_kit/shared_empty_datapad.iff")
@@ -522,7 +530,8 @@ object_tangible_loot_simple_kit_shared_feed_tubes = SharedTangibleObjectTemplate
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2298400846
+	clientObjectCRC = 2298400846,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_simple_kit_shared_feed_tubes, "object/tangible/loot/simple_kit/shared_feed_tubes.iff")
@@ -576,7 +585,8 @@ object_tangible_loot_simple_kit_shared_firework_casing = SharedTangibleObjectTem
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 652853740
+	clientObjectCRC = 652853740,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_simple_kit_shared_firework_casing, "object/tangible/loot/simple_kit/shared_firework_casing.iff")
@@ -630,7 +640,8 @@ object_tangible_loot_simple_kit_shared_firework_fixer = SharedTangibleObjectTemp
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4181083610
+	clientObjectCRC = 4181083610,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/container/base/shared_base_container.iff", "object/tangible/container/base/shared_base_container_volume.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_simple_kit_shared_firework_fixer, "object/tangible/loot/simple_kit/shared_firework_fixer.iff")
@@ -684,7 +695,8 @@ object_tangible_loot_simple_kit_shared_flat_canvas = SharedTangibleObjectTemplat
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 164033242
+	clientObjectCRC = 164033242,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_simple_kit_shared_flat_canvas, "object/tangible/loot/simple_kit/shared_flat_canvas.iff")
@@ -738,7 +750,8 @@ object_tangible_loot_simple_kit_shared_heating_element = SharedTangibleObjectTem
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 326778183
+	clientObjectCRC = 326778183,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_simple_kit_shared_heating_element, "object/tangible/loot/simple_kit/shared_heating_element.iff")
@@ -792,7 +805,8 @@ object_tangible_loot_simple_kit_shared_magnetic_burner = SharedTangibleObjectTem
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2586601937
+	clientObjectCRC = 2586601937,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_simple_kit_shared_magnetic_burner, "object/tangible/loot/simple_kit/shared_magnetic_burner.iff")
@@ -846,7 +860,8 @@ object_tangible_loot_simple_kit_shared_magnetic_reader = SharedTangibleObjectTem
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 29814933
+	clientObjectCRC = 29814933,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_simple_kit_shared_magnetic_reader, "object/tangible/loot/simple_kit/shared_magnetic_reader.iff")
@@ -900,7 +915,8 @@ object_tangible_loot_simple_kit_shared_motor_small_blue = SharedTangibleObjectTe
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3144713360
+	clientObjectCRC = 3144713360,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_simple_kit_shared_motor_small_blue, "object/tangible/loot/simple_kit/shared_motor_small_blue.iff")
@@ -954,7 +970,8 @@ object_tangible_loot_simple_kit_shared_motor_small_red = SharedTangibleObjectTem
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1519193504
+	clientObjectCRC = 1519193504,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_simple_kit_shared_motor_small_red, "object/tangible/loot/simple_kit/shared_motor_small_red.iff")
@@ -1008,7 +1025,8 @@ object_tangible_loot_simple_kit_shared_paint_cartridge = SharedTangibleObjectTem
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1559578461
+	clientObjectCRC = 1559578461,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_simple_kit_shared_paint_cartridge, "object/tangible/loot/simple_kit/shared_paint_cartridge.iff")
@@ -1062,7 +1080,8 @@ object_tangible_loot_simple_kit_shared_paint_disperser = SharedTangibleObjectTem
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 433413834
+	clientObjectCRC = 433413834,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_simple_kit_shared_paint_disperser, "object/tangible/loot/simple_kit/shared_paint_disperser.iff")
@@ -1116,7 +1135,8 @@ object_tangible_loot_simple_kit_shared_picture_printer = SharedTangibleObjectTem
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3918612828
+	clientObjectCRC = 3918612828,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/container/base/shared_base_container.iff", "object/tangible/container/base/shared_base_container_volume.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_simple_kit_shared_picture_printer, "object/tangible/loot/simple_kit/shared_picture_printer.iff")
@@ -1170,7 +1190,8 @@ object_tangible_loot_simple_kit_shared_powder_pack = SharedTangibleObjectTemplat
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3790649571
+	clientObjectCRC = 3790649571,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_simple_kit_shared_powder_pack, "object/tangible/loot/simple_kit/shared_powder_pack.iff")
@@ -1224,7 +1245,8 @@ object_tangible_loot_simple_kit_shared_processor_attachments = SharedTangibleObj
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 802964254
+	clientObjectCRC = 802964254,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_simple_kit_shared_processor_attachments, "object/tangible/loot/simple_kit/shared_processor_attachments.iff")
@@ -1278,7 +1300,8 @@ object_tangible_loot_simple_kit_shared_pulverizer = SharedTangibleObjectTemplate
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 575747803
+	clientObjectCRC = 575747803,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_simple_kit_shared_pulverizer, "object/tangible/loot/simple_kit/shared_pulverizer.iff")
@@ -1332,7 +1355,8 @@ object_tangible_loot_simple_kit_shared_recovery_software = SharedTangibleObjectT
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3916637406
+	clientObjectCRC = 3916637406,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_simple_kit_shared_recovery_software, "object/tangible/loot/simple_kit/shared_recovery_software.iff")
@@ -1386,7 +1410,8 @@ object_tangible_loot_simple_kit_shared_spinning_blade = SharedTangibleObjectTemp
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3010431171
+	clientObjectCRC = 3010431171,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_simple_kit_shared_spinning_blade, "object/tangible/loot/simple_kit/shared_spinning_blade.iff")
@@ -1440,7 +1465,8 @@ object_tangible_loot_simple_kit_shared_tumble_blender = SharedTangibleObjectTemp
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 737773540
+	clientObjectCRC = 737773540,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_simple_kit_shared_tumble_blender, "object/tangible/loot/simple_kit/shared_tumble_blender.iff")
@@ -1494,7 +1520,8 @@ object_tangible_loot_simple_kit_shared_viewscreen_printer = SharedTangibleObject
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1346373524
+	clientObjectCRC = 1346373524,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/container/base/shared_base_container.iff", "object/tangible/container/base/shared_base_container_volume.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_simple_kit_shared_viewscreen_printer, "object/tangible/loot/simple_kit/shared_viewscreen_printer.iff")
@@ -1548,7 +1575,8 @@ object_tangible_loot_simple_kit_shared_viewscreen_reader = SharedTangibleObjectT
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3617524157
+	clientObjectCRC = 3617524157,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_simple_kit_shared_viewscreen_reader, "object/tangible/loot/simple_kit/shared_viewscreen_reader.iff")
@@ -1602,7 +1630,8 @@ object_tangible_loot_simple_kit_shared_wiring = SharedTangibleObjectTemplate:new
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1151739825
+	clientObjectCRC = 1151739825,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_simple_kit_shared_wiring, "object/tangible/loot/simple_kit/shared_wiring.iff")
@@ -1656,7 +1685,8 @@ object_tangible_loot_simple_kit_shared_wiring_blue = SharedTangibleObjectTemplat
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1994052682
+	clientObjectCRC = 1994052682,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_simple_kit_shared_wiring_blue, "object/tangible/loot/simple_kit/shared_wiring_blue.iff")
@@ -1710,7 +1740,8 @@ object_tangible_loot_simple_kit_shared_wiring_red = SharedTangibleObjectTemplate
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2818101899
+	clientObjectCRC = 2818101899,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_simple_kit_shared_wiring_red, "object/tangible/loot/simple_kit/shared_wiring_red.iff")

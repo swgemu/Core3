@@ -80,7 +80,8 @@ object_soundobject_base_shared_soundobject_base = SharedStaticObjectTemplate:new
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1100063237
+	clientObjectCRC = 1100063237,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_soundobject_base_shared_soundobject_base, "object/soundobject/base/shared_soundobject_base.iff")

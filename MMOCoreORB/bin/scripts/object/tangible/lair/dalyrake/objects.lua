@@ -90,7 +90,8 @@ object_tangible_lair_dalyrake_shared_lair_dalyrake = SharedTangibleObjectTemplat
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1654178930
+	clientObjectCRC = 1654178930,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_dalyrake_shared_lair_dalyrake, "object/tangible/lair/dalyrake/shared_lair_dalyrake.iff")
@@ -144,7 +145,8 @@ object_tangible_lair_dalyrake_shared_lair_dalyrake_forest = SharedTangibleObject
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2587304882
+	clientObjectCRC = 2587304882,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_dalyrake_shared_lair_dalyrake_forest, "object/tangible/lair/dalyrake/shared_lair_dalyrake_forest.iff")

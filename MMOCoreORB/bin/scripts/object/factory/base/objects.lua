@@ -90,7 +90,8 @@ object_factory_base_shared_base_factory = SharedFactoryObjectTemplate:new {
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2878298230
+	clientObjectCRC = 2878298230,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_factory_base_shared_base_factory, "object/factory/base/shared_base_factory.iff")
@@ -144,7 +145,8 @@ object_factory_base_shared_factory_default = SharedFactoryObjectTemplate:new {
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4005028874
+	clientObjectCRC = 4005028874,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/factory/base/shared_base_factory.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_factory_base_shared_factory_default, "object/factory/base/shared_factory_default.iff")

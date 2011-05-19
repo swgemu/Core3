@@ -80,7 +80,8 @@ object_draft_schematic_test_shared_dan_test_component = SharedDraftSchematicObje
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 945497402
+	clientObjectCRC = 945497402,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_test_shared_dan_test_component, "object/draft_schematic/test/shared_dan_test_component.iff")
@@ -124,7 +125,8 @@ object_draft_schematic_test_shared_dan_test_pistol = SharedDraftSchematicObjectT
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1485880165
+	clientObjectCRC = 1485880165,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_test_shared_dan_test_pistol, "object/draft_schematic/test/shared_dan_test_pistol.iff")

@@ -80,7 +80,8 @@ object_static_flora_shared_flora_base = SharedStaticObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3282656608
+	clientObjectCRC = 3282656608,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_flora_shared_flora_base, "object/static/flora/shared_flora_base.iff")
@@ -124,7 +125,8 @@ object_static_flora_shared_flora_bush_dathomir_hwotha = SharedStaticObjectTempla
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3380635776
+	clientObjectCRC = 3380635776,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/flora/shared_flora_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_flora_shared_flora_bush_dathomir_hwotha, "object/static/flora/shared_flora_bush_dathomir_hwotha.iff")
@@ -168,7 +170,8 @@ object_static_flora_shared_flora_bush_endor_rainbowbush = SharedStaticObjectTemp
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2385797177
+	clientObjectCRC = 2385797177,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/flora/shared_flora_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_flora_shared_flora_bush_endor_rainbowbush, "object/static/flora/shared_flora_bush_endor_rainbowbush.iff")
@@ -212,7 +215,8 @@ object_static_flora_shared_flora_bush_talus_razorcoil = SharedStaticObjectTempla
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1622915798
+	clientObjectCRC = 1622915798,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/flora/shared_flora_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_flora_shared_flora_bush_talus_razorcoil, "object/static/flora/shared_flora_bush_talus_razorcoil.iff")
@@ -256,7 +260,8 @@ object_static_flora_shared_flora_bush_yavin_blueleaf = SharedStaticObjectTemplat
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 4112833826
+	clientObjectCRC = 4112833826,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/flora/shared_flora_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_flora_shared_flora_bush_yavin_blueleaf, "object/static/flora/shared_flora_bush_yavin_blueleaf.iff")
@@ -300,7 +305,8 @@ object_static_flora_shared_flora_decd_dath_azerontree = SharedStaticObjectTempla
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1303000302
+	clientObjectCRC = 1303000302,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/flora/shared_flora_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_flora_shared_flora_decd_dath_azerontree, "object/static/flora/shared_flora_decd_dath_azerontree.iff")
@@ -344,7 +350,8 @@ object_static_flora_shared_flora_decd_dath_blacktree = SharedStaticObjectTemplat
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1239955396
+	clientObjectCRC = 1239955396,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/flora/shared_flora_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_flora_shared_flora_decd_dath_blacktree, "object/static/flora/shared_flora_decd_dath_blacktree.iff")
@@ -388,7 +395,8 @@ object_static_flora_shared_flora_decd_endr_destree_dead = SharedStaticObjectTemp
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3087503053
+	clientObjectCRC = 3087503053,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/flora/shared_flora_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_flora_shared_flora_decd_endr_destree_dead, "object/static/flora/shared_flora_decd_endr_destree_dead.iff")
@@ -432,7 +440,8 @@ object_static_flora_shared_flora_decd_scorched_massassi = SharedStaticObjectTemp
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1850241596
+	clientObjectCRC = 1850241596,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/flora/shared_flora_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_flora_shared_flora_decd_scorched_massassi, "object/static/flora/shared_flora_decd_scorched_massassi.iff")
@@ -476,7 +485,8 @@ object_static_flora_shared_flora_decd_scorched_massassi_broke = SharedStaticObje
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1334140957
+	clientObjectCRC = 1334140957,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/flora/shared_flora_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_flora_shared_flora_decd_scorched_massassi_broke, "object/static/flora/shared_flora_decd_scorched_massassi_broke.iff")
@@ -520,7 +530,8 @@ object_static_flora_shared_flora_decd_scorched_tallbirch = SharedStaticObjectTem
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 4131259780
+	clientObjectCRC = 4131259780,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/flora/shared_flora_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_flora_shared_flora_decd_scorched_tallbirch, "object/static/flora/shared_flora_decd_scorched_tallbirch.iff")
@@ -564,7 +575,8 @@ object_static_flora_shared_flora_decd_scorched_tallbirch_broke = SharedStaticObj
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2780610841
+	clientObjectCRC = 2780610841,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/flora/shared_flora_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_flora_shared_flora_decd_scorched_tallbirch_broke, "object/static/flora/shared_flora_decd_scorched_tallbirch_broke.iff")
@@ -608,7 +620,8 @@ object_static_flora_shared_flora_flower_all_bauhin = SharedStaticObjectTemplate:
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2323835715
+	clientObjectCRC = 2323835715,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/flora/shared_flora_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_flora_shared_flora_flower_all_bauhin, "object/static/flora/shared_flora_flower_all_bauhin.iff")
@@ -652,7 +665,8 @@ object_static_flora_shared_flora_flower_endor_scrubwort = SharedStaticObjectTemp
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1951625577
+	clientObjectCRC = 1951625577,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/flora/shared_flora_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_flora_shared_flora_flower_endor_scrubwort, "object/static/flora/shared_flora_flower_endor_scrubwort.iff")
@@ -696,7 +710,8 @@ object_static_flora_shared_flora_flower_tato_funnel = SharedStaticObjectTemplate
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3210762519
+	clientObjectCRC = 3210762519,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/flora/shared_flora_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_flora_shared_flora_flower_tato_funnel, "object/static/flora/shared_flora_flower_tato_funnel.iff")
@@ -740,7 +755,8 @@ object_static_flora_shared_flora_flower_tato_funnel_med = SharedStaticObjectTemp
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1114511484
+	clientObjectCRC = 1114511484,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/flora/shared_flora_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_flora_shared_flora_flower_tato_funnel_med, "object/static/flora/shared_flora_flower_tato_funnel_med.iff")
@@ -784,7 +800,8 @@ object_static_flora_shared_flora_flower_tato_funnel_sm = SharedStaticObjectTempl
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3419088004
+	clientObjectCRC = 3419088004,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/flora/shared_flora_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_flora_shared_flora_flower_tato_funnel_sm, "object/static/flora/shared_flora_flower_tato_funnel_sm.iff")
@@ -828,7 +845,8 @@ object_static_flora_shared_flora_plant_tato_falotil = SharedStaticObjectTemplate
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3330222752
+	clientObjectCRC = 3330222752,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/flora/shared_flora_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_flora_shared_flora_plant_tato_falotil, "object/static/flora/shared_flora_plant_tato_falotil.iff")
@@ -872,7 +890,8 @@ object_static_flora_shared_flora_plant_tato_falotil_bare = SharedStaticObjectTem
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3257873338
+	clientObjectCRC = 3257873338,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/flora/shared_flora_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_flora_shared_flora_plant_tato_falotil_bare, "object/static/flora/shared_flora_plant_tato_falotil_bare.iff")
@@ -916,7 +935,8 @@ object_static_flora_shared_flora_plant_tato_hubba = SharedStaticObjectTemplate:n
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 998793848
+	clientObjectCRC = 998793848,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/flora/shared_flora_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_flora_shared_flora_plant_tato_hubba, "object/static/flora/shared_flora_plant_tato_hubba.iff")
@@ -960,7 +980,8 @@ object_static_flora_shared_flora_plant_tato_pika = SharedStaticObjectTemplate:ne
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2097396056
+	clientObjectCRC = 2097396056,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/flora/shared_flora_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_flora_shared_flora_plant_tato_pika, "object/static/flora/shared_flora_plant_tato_pika.iff")
@@ -1004,7 +1025,8 @@ object_static_flora_shared_flora_plant_tato_pika_tri = SharedStaticObjectTemplat
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 753105168
+	clientObjectCRC = 753105168,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/flora/shared_flora_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_flora_shared_flora_plant_tato_pika_tri, "object/static/flora/shared_flora_plant_tato_pika_tri.iff")
@@ -1048,7 +1070,8 @@ object_static_flora_shared_flora_shrb_dath_glingi = SharedStaticObjectTemplate:n
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 4134879921
+	clientObjectCRC = 4134879921,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/flora/shared_flora_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_flora_shared_flora_shrb_dath_glingi, "object/static/flora/shared_flora_shrb_dath_glingi.iff")
@@ -1092,7 +1115,8 @@ object_static_flora_shared_flora_tree_lok_mkpud = SharedStaticObjectTemplate:new
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3776365618
+	clientObjectCRC = 3776365618,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/flora/shared_flora_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_flora_shared_flora_tree_lok_mkpud, "object/static/flora/shared_flora_tree_lok_mkpud.iff")
@@ -1136,7 +1160,8 @@ object_static_flora_shared_flora_tree_palm_fngi = SharedStaticObjectTemplate:new
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2866142506
+	clientObjectCRC = 2866142506,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/flora/shared_flora_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_flora_shared_flora_tree_palm_fngi, "object/static/flora/shared_flora_tree_palm_fngi.iff")
@@ -1180,7 +1205,8 @@ object_static_flora_shared_flora_tree_palm_sm = SharedStaticObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2535930087
+	clientObjectCRC = 2535930087,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/flora/shared_flora_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_flora_shared_flora_tree_palm_sm, "object/static/flora/shared_flora_tree_palm_sm.iff")
@@ -1224,7 +1250,8 @@ object_static_flora_shared_flora_tree_palm_thk = SharedStaticObjectTemplate:new 
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 758632558
+	clientObjectCRC = 758632558,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/flora/shared_flora_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_flora_shared_flora_tree_palm_thk, "object/static/flora/shared_flora_tree_palm_thk.iff")
@@ -1268,7 +1295,8 @@ object_static_flora_shared_flora_tree_rori_mkpodtree = SharedStaticObjectTemplat
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1443720376
+	clientObjectCRC = 1443720376,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/flora/shared_flora_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_flora_shared_flora_tree_rori_mkpodtree, "object/static/flora/shared_flora_tree_rori_mkpodtree.iff")
@@ -1312,7 +1340,8 @@ object_static_flora_shared_flora_tree_rori_windswept_s00 = SharedStaticObjectTem
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 4015418034
+	clientObjectCRC = 4015418034,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/flora/shared_flora_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_flora_shared_flora_tree_rori_windswept_s00, "object/static/flora/shared_flora_tree_rori_windswept_s00.iff")
@@ -1356,7 +1385,8 @@ object_static_flora_shared_flora_tree_rori_windswept_s01 = SharedStaticObjectTem
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2790985023
+	clientObjectCRC = 2790985023,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/flora/shared_flora_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_flora_shared_flora_tree_rori_windswept_s01, "object/static/flora/shared_flora_tree_rori_windswept_s01.iff")
@@ -1400,7 +1430,8 @@ object_static_flora_shared_flora_tree_rori_windswept_s02 = SharedStaticObjectTem
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2102175144
+	clientObjectCRC = 2102175144,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/flora/shared_flora_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_flora_shared_flora_tree_rori_windswept_s02, "object/static/flora/shared_flora_tree_rori_windswept_s02.iff")
@@ -1444,7 +1475,8 @@ object_static_flora_shared_flora_tree_rori_windswept_s03 = SharedStaticObjectTem
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 876724773
+	clientObjectCRC = 876724773,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/flora/shared_flora_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_flora_shared_flora_tree_rori_windswept_s03, "object/static/flora/shared_flora_tree_rori_windswept_s03.iff")
@@ -1488,7 +1520,8 @@ object_static_flora_shared_flora_tree_tato_touchnot = SharedStaticObjectTemplate
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1020776426
+	clientObjectCRC = 1020776426,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/flora/shared_flora_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_flora_shared_flora_tree_tato_touchnot, "object/static/flora/shared_flora_tree_tato_touchnot.iff")
@@ -1532,7 +1565,8 @@ object_static_flora_shared_potted_plant_flowers_orange = SharedStaticObjectTempl
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 248082179
+	clientObjectCRC = 248082179,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/flora/shared_flora_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_flora_shared_potted_plant_flowers_orange, "object/static/flora/shared_potted_plant_flowers_orange.iff")
@@ -1576,7 +1610,8 @@ object_static_flora_shared_potted_plant_flowers_purple = SharedStaticObjectTempl
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3892348345
+	clientObjectCRC = 3892348345,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/flora/shared_flora_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_flora_shared_potted_plant_flowers_purple, "object/static/flora/shared_potted_plant_flowers_purple.iff")
@@ -1620,7 +1655,8 @@ object_static_flora_shared_potted_plant_leaves_fern = SharedStaticObjectTemplate
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 877469590
+	clientObjectCRC = 877469590,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/flora/shared_flora_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_flora_shared_potted_plant_leaves_fern, "object/static/flora/shared_potted_plant_leaves_fern.iff")
@@ -1664,7 +1700,8 @@ object_static_flora_shared_potted_plant_leaves_ivy = SharedStaticObjectTemplate:
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1315610543
+	clientObjectCRC = 1315610543,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/flora/shared_flora_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_flora_shared_potted_plant_leaves_ivy, "object/static/flora/shared_potted_plant_leaves_ivy.iff")
@@ -1708,7 +1745,8 @@ object_static_flora_shared_potted_plant_leaves_small = SharedStaticObjectTemplat
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 622948670
+	clientObjectCRC = 622948670,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/flora/shared_flora_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_flora_shared_potted_plant_leaves_small, "object/static/flora/shared_potted_plant_leaves_small.iff")

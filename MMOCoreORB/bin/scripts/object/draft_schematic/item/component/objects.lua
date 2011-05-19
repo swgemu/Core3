@@ -80,7 +80,8 @@ object_draft_schematic_item_component_shared_item_electronic_control_unit = Shar
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 989624055
+	clientObjectCRC = 989624055,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_item_component_shared_item_electronic_control_unit, "object/draft_schematic/item/component/shared_item_electronic_control_unit.iff")
@@ -124,7 +125,8 @@ object_draft_schematic_item_component_shared_item_electronic_energy_distributor 
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1152098080
+	clientObjectCRC = 1152098080,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_item_component_shared_item_electronic_energy_distributor, "object/draft_schematic/item/component/shared_item_electronic_energy_distributor.iff")
@@ -168,7 +170,8 @@ object_draft_schematic_item_component_shared_item_electronic_power_conditioner =
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3615264224
+	clientObjectCRC = 3615264224,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_item_component_shared_item_electronic_power_conditioner, "object/draft_schematic/item/component/shared_item_electronic_power_conditioner.iff")
@@ -212,7 +215,8 @@ object_draft_schematic_item_component_shared_item_electronics_gp_module = Shared
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 4228360112
+	clientObjectCRC = 4228360112,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_item_component_shared_item_electronics_gp_module, "object/draft_schematic/item/component/shared_item_electronics_gp_module.iff")
@@ -256,7 +260,8 @@ object_draft_schematic_item_component_shared_item_electronics_memory_module = Sh
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2170102415
+	clientObjectCRC = 2170102415,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_item_component_shared_item_electronics_memory_module, "object/draft_schematic/item/component/shared_item_electronics_memory_module.iff")
@@ -300,7 +305,8 @@ object_draft_schematic_item_component_shared_item_micro_sensor_suite = SharedDra
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 622519855
+	clientObjectCRC = 622519855,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_item_component_shared_item_micro_sensor_suite, "object/draft_schematic/item/component/shared_item_micro_sensor_suite.iff")

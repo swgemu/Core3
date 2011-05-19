@@ -90,7 +90,8 @@ object_tangible_container_corpse_shared_player_corpse = SharedTangibleObjectTemp
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3090831505
+	clientObjectCRC = 3090831505,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/container/base/shared_base_container.iff", "object/tangible/container/base/shared_base_container_volume.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_container_corpse_shared_player_corpse, "object/tangible/container/corpse/shared_player_corpse.iff")

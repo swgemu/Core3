@@ -90,7 +90,8 @@ object_tangible_bank_shared_character_bank = SharedTangibleObjectTemplate:new {
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1895633812
+	clientObjectCRC = 1895633812,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_bank_shared_character_bank, "object/tangible/bank/shared_character_bank.iff")

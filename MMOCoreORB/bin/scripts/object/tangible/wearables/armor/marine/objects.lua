@@ -90,7 +90,8 @@ object_tangible_wearables_armor_marine_shared_armor_marine_backpack = SharedTang
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1616221801
+	clientObjectCRC = 1616221801,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/container/base/shared_base_container.iff", "object/tangible/container/base/shared_base_container_volume.iff", "object/tangible/wearables/base/shared_base_backpack.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_marine_shared_armor_marine_backpack, "object/tangible/wearables/armor/marine/shared_armor_marine_backpack.iff")
@@ -144,7 +145,8 @@ object_tangible_wearables_armor_marine_shared_armor_marine_bicep_l = SharedTangi
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 377642897
+	clientObjectCRC = 377642897,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_armor_base.iff", "object/tangible/wearables/base/shared_base_bicep_l.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_marine_shared_armor_marine_bicep_l, "object/tangible/wearables/armor/marine/shared_armor_marine_bicep_l.iff")
@@ -198,7 +200,8 @@ object_tangible_wearables_armor_marine_shared_armor_marine_bicep_r = SharedTangi
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1716984322
+	clientObjectCRC = 1716984322,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_armor_base.iff", "object/tangible/wearables/base/shared_base_bicep_r.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_marine_shared_armor_marine_bicep_r, "object/tangible/wearables/armor/marine/shared_armor_marine_bicep_r.iff")
@@ -252,7 +255,8 @@ object_tangible_wearables_armor_marine_shared_armor_marine_boots = SharedTangibl
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 168220197
+	clientObjectCRC = 168220197,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_shoes.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_marine_shared_armor_marine_boots, "object/tangible/wearables/armor/marine/shared_armor_marine_boots.iff")
@@ -306,7 +310,8 @@ object_tangible_wearables_armor_marine_shared_armor_marine_chest_plate = SharedT
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2560891493
+	clientObjectCRC = 2560891493,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_vest.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_marine_shared_armor_marine_chest_plate, "object/tangible/wearables/armor/marine/shared_armor_marine_chest_plate.iff")
@@ -360,7 +365,8 @@ object_tangible_wearables_armor_marine_shared_armor_marine_chest_plate_rebel = S
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3425564515
+	clientObjectCRC = 3425564515,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_vest.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_marine_shared_armor_marine_chest_plate_rebel, "object/tangible/wearables/armor/marine/shared_armor_marine_chest_plate_rebel.iff")
@@ -414,7 +420,8 @@ object_tangible_wearables_armor_marine_shared_armor_marine_helmet = SharedTangib
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 412137204
+	clientObjectCRC = 412137204,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_armor_base.iff", "object/tangible/wearables/base/shared_base_helmet_closed_full.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_marine_shared_armor_marine_helmet, "object/tangible/wearables/armor/marine/shared_armor_marine_helmet.iff")
@@ -468,7 +475,8 @@ object_tangible_wearables_armor_marine_shared_armor_marine_leggings = SharedTang
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4090769241
+	clientObjectCRC = 4090769241,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_skirt.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_marine_shared_armor_marine_leggings, "object/tangible/wearables/armor/marine/shared_armor_marine_leggings.iff")

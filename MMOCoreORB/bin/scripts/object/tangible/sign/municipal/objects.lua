@@ -90,7 +90,8 @@ object_tangible_sign_municipal_shared_municipal_sign_hanging_bank = SharedTangib
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3236011689
+	clientObjectCRC = 3236011689,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/sign/base/shared_base_sign.iff", "object/tangible/sign/municipal/base/shared_municipal_sign_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_sign_municipal_shared_municipal_sign_hanging_bank, "object/tangible/sign/municipal/shared_municipal_sign_hanging_bank.iff")
@@ -144,7 +145,8 @@ object_tangible_sign_municipal_shared_municipal_sign_hanging_cantina = SharedTan
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3410306211
+	clientObjectCRC = 3410306211,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/sign/base/shared_base_sign.iff", "object/tangible/sign/municipal/base/shared_municipal_sign_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_sign_municipal_shared_municipal_sign_hanging_cantina, "object/tangible/sign/municipal/shared_municipal_sign_hanging_cantina.iff")
@@ -198,7 +200,8 @@ object_tangible_sign_municipal_shared_municipal_sign_hanging_capitol = SharedTan
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3771237737
+	clientObjectCRC = 3771237737,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/sign/base/shared_base_sign.iff", "object/tangible/sign/municipal/base/shared_municipal_sign_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_sign_municipal_shared_municipal_sign_hanging_capitol, "object/tangible/sign/municipal/shared_municipal_sign_hanging_capitol.iff")
@@ -252,7 +255,8 @@ object_tangible_sign_municipal_shared_municipal_sign_hanging_cloning = SharedTan
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3647827532
+	clientObjectCRC = 3647827532,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/sign/base/shared_base_sign.iff", "object/tangible/sign/municipal/base/shared_municipal_sign_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_sign_municipal_shared_municipal_sign_hanging_cloning, "object/tangible/sign/municipal/shared_municipal_sign_hanging_cloning.iff")
@@ -306,7 +310,8 @@ object_tangible_sign_municipal_shared_municipal_sign_hanging_combat = SharedTang
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1785001308
+	clientObjectCRC = 1785001308,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/sign/base/shared_base_sign.iff", "object/tangible/sign/municipal/base/shared_municipal_sign_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_sign_municipal_shared_municipal_sign_hanging_combat, "object/tangible/sign/municipal/shared_municipal_sign_hanging_combat.iff")
@@ -360,7 +365,8 @@ object_tangible_sign_municipal_shared_municipal_sign_hanging_commerce = SharedTa
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1680490925
+	clientObjectCRC = 1680490925,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/sign/base/shared_base_sign.iff", "object/tangible/sign/municipal/base/shared_municipal_sign_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_sign_municipal_shared_municipal_sign_hanging_commerce, "object/tangible/sign/municipal/shared_municipal_sign_hanging_commerce.iff")
@@ -414,7 +420,8 @@ object_tangible_sign_municipal_shared_municipal_sign_hanging_hospital = SharedTa
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3811548404
+	clientObjectCRC = 3811548404,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/sign/base/shared_base_sign.iff", "object/tangible/sign/municipal/base/shared_municipal_sign_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_sign_municipal_shared_municipal_sign_hanging_hospital, "object/tangible/sign/municipal/shared_municipal_sign_hanging_hospital.iff")
@@ -468,7 +475,8 @@ object_tangible_sign_municipal_shared_municipal_sign_hanging_hotel = SharedTangi
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 101788547
+	clientObjectCRC = 101788547,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/sign/base/shared_base_sign.iff", "object/tangible/sign/municipal/base/shared_municipal_sign_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_sign_municipal_shared_municipal_sign_hanging_hotel, "object/tangible/sign/municipal/shared_municipal_sign_hanging_hotel.iff")
@@ -522,7 +530,8 @@ object_tangible_sign_municipal_shared_municipal_sign_hanging_parking = SharedTan
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2041501823
+	clientObjectCRC = 2041501823,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/sign/base/shared_base_sign.iff", "object/tangible/sign/municipal/base/shared_municipal_sign_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_sign_municipal_shared_municipal_sign_hanging_parking, "object/tangible/sign/municipal/shared_municipal_sign_hanging_parking.iff")
@@ -576,7 +585,8 @@ object_tangible_sign_municipal_shared_municipal_sign_hanging_shuttle = SharedTan
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2402289971
+	clientObjectCRC = 2402289971,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/sign/base/shared_base_sign.iff", "object/tangible/sign/municipal/base/shared_municipal_sign_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_sign_municipal_shared_municipal_sign_hanging_shuttle, "object/tangible/sign/municipal/shared_municipal_sign_hanging_shuttle.iff")
@@ -630,7 +640,8 @@ object_tangible_sign_municipal_shared_municipal_sign_hanging_starport = SharedTa
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 555356506
+	clientObjectCRC = 555356506,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/sign/base/shared_base_sign.iff", "object/tangible/sign/municipal/base/shared_municipal_sign_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_sign_municipal_shared_municipal_sign_hanging_starport, "object/tangible/sign/municipal/shared_municipal_sign_hanging_starport.iff")
@@ -684,7 +695,8 @@ object_tangible_sign_municipal_shared_municipal_sign_hanging_theater = SharedTan
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1423370292
+	clientObjectCRC = 1423370292,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/sign/base/shared_base_sign.iff", "object/tangible/sign/municipal/base/shared_municipal_sign_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_sign_municipal_shared_municipal_sign_hanging_theater, "object/tangible/sign/municipal/shared_municipal_sign_hanging_theater.iff")
@@ -738,7 +750,8 @@ object_tangible_sign_municipal_shared_municipal_sign_hanging_university = Shared
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2713174086
+	clientObjectCRC = 2713174086,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/sign/base/shared_base_sign.iff", "object/tangible/sign/municipal/base/shared_municipal_sign_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_sign_municipal_shared_municipal_sign_hanging_university, "object/tangible/sign/municipal/shared_municipal_sign_hanging_university.iff")

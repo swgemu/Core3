@@ -90,7 +90,8 @@ object_tangible_food_foraged_shared_edible_jar_berries = SharedTangibleObjectTem
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1405655823
+	clientObjectCRC = 1405655823,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/base/shared_base_food.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_foraged_shared_edible_jar_berries, "object/tangible/food/foraged/shared_edible_jar_berries.iff")
@@ -144,7 +145,8 @@ object_tangible_food_foraged_shared_edible_jar_bugs = SharedTangibleObjectTempla
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2220813342
+	clientObjectCRC = 2220813342,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/base/shared_base_food.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_foraged_shared_edible_jar_bugs, "object/tangible/food/foraged/shared_edible_jar_bugs.iff")
@@ -198,7 +200,8 @@ object_tangible_food_foraged_shared_edible_jar_fungus = SharedTangibleObjectTemp
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 404667969
+	clientObjectCRC = 404667969,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/base/shared_base_food.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_foraged_shared_edible_jar_fungus, "object/tangible/food/foraged/shared_edible_jar_fungus.iff")
@@ -252,7 +255,8 @@ object_tangible_food_foraged_shared_edible_jar_funk = SharedTangibleObjectTempla
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3997953331
+	clientObjectCRC = 3997953331,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/base/shared_base_food.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_foraged_shared_edible_jar_funk, "object/tangible/food/foraged/shared_edible_jar_funk.iff")
@@ -306,7 +310,8 @@ object_tangible_food_foraged_shared_edible_jar_livers = SharedTangibleObjectTemp
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4279994826
+	clientObjectCRC = 4279994826,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/base/shared_base_food.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_foraged_shared_edible_jar_livers, "object/tangible/food/foraged/shared_edible_jar_livers.iff")
@@ -360,7 +365,8 @@ object_tangible_food_foraged_shared_foraged_fruit_s1 = SharedTangibleObjectTempl
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1125771498
+	clientObjectCRC = 1125771498,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/base/shared_base_food.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_foraged_shared_foraged_fruit_s1, "object/tangible/food/foraged/shared_foraged_fruit_s1.iff")
@@ -414,7 +420,8 @@ object_tangible_food_foraged_shared_foraged_fruit_s2 = SharedTangibleObjectTempl
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2551070845
+	clientObjectCRC = 2551070845,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/base/shared_base_food.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_foraged_shared_foraged_fruit_s2, "object/tangible/food/foraged/shared_foraged_fruit_s2.iff")
@@ -468,7 +475,8 @@ object_tangible_food_foraged_shared_foraged_fruit_s3 = SharedTangibleObjectTempl
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3506644976
+	clientObjectCRC = 3506644976,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/base/shared_base_food.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_foraged_shared_foraged_fruit_s3, "object/tangible/food/foraged/shared_foraged_fruit_s3.iff")
@@ -522,7 +530,8 @@ object_tangible_food_foraged_shared_foraged_fruit_s4 = SharedTangibleObjectTempl
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 719326436
+	clientObjectCRC = 719326436,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/base/shared_base_food.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_foraged_shared_foraged_fruit_s4, "object/tangible/food/foraged/shared_foraged_fruit_s4.iff")
@@ -576,7 +585,8 @@ object_tangible_food_foraged_shared_foraged_fruit_s5 = SharedTangibleObjectTempl
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1676503913
+	clientObjectCRC = 1676503913,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/base/shared_base_food.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_foraged_shared_foraged_fruit_s5, "object/tangible/food/foraged/shared_foraged_fruit_s5.iff")
@@ -630,7 +640,8 @@ object_tangible_food_foraged_shared_foraged_vegetable_s2 = SharedTangibleObjectT
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2375994584
+	clientObjectCRC = 2375994584,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/base/shared_base_food.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_foraged_shared_foraged_vegetable_s2, "object/tangible/food/foraged/shared_foraged_vegetable_s2.iff")
@@ -684,7 +695,8 @@ object_tangible_food_foraged_shared_foraged_vegetable_s3 = SharedTangibleObjectT
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3298011989
+	clientObjectCRC = 3298011989,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/base/shared_base_food.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_foraged_shared_foraged_vegetable_s3, "object/tangible/food/foraged/shared_foraged_vegetable_s3.iff")
@@ -738,7 +750,8 @@ object_tangible_food_foraged_shared_foraged_vegetable_s4 = SharedTangibleObjectT
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1064337473
+	clientObjectCRC = 1064337473,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/base/shared_base_food.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_foraged_shared_foraged_vegetable_s4, "object/tangible/food/foraged/shared_foraged_vegetable_s4.iff")
@@ -792,7 +805,8 @@ object_tangible_food_foraged_shared_foraged_vegetable_s5 = SharedTangibleObjectT
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1987962828
+	clientObjectCRC = 1987962828,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/base/shared_base_food.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_foraged_shared_foraged_vegetable_s5, "object/tangible/food/foraged/shared_foraged_vegetable_s5.iff")

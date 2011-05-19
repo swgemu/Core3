@@ -90,7 +90,8 @@ object_tangible_component_item_quest_item_shared_corrective_inducer = SharedTang
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2184126369
+	clientObjectCRC = 2184126369,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_item_quest_item_shared_corrective_inducer, "object/tangible/component/item/quest_item/shared_corrective_inducer.iff")
@@ -144,7 +145,8 @@ object_tangible_component_item_quest_item_shared_current_motivator = SharedTangi
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 899191445
+	clientObjectCRC = 899191445,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_item_quest_item_shared_current_motivator, "object/tangible/component/item/quest_item/shared_current_motivator.iff")
@@ -198,7 +200,8 @@ object_tangible_component_item_quest_item_shared_cycle_control = SharedTangibleO
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 361454355
+	clientObjectCRC = 361454355,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_item_quest_item_shared_cycle_control, "object/tangible/component/item/quest_item/shared_cycle_control.iff")
@@ -252,7 +255,8 @@ object_tangible_component_item_quest_item_shared_decoherence_sensor = SharedTang
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2146196136
+	clientObjectCRC = 2146196136,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_item_quest_item_shared_decoherence_sensor, "object/tangible/component/item/quest_item/shared_decoherence_sensor.iff")
@@ -306,7 +310,8 @@ object_tangible_component_item_quest_item_shared_directional_sensor = SharedTang
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3309489661
+	clientObjectCRC = 3309489661,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_item_quest_item_shared_directional_sensor, "object/tangible/component/item/quest_item/shared_directional_sensor.iff")
@@ -360,7 +365,8 @@ object_tangible_component_item_quest_item_shared_loop_auditor = SharedTangibleOb
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 111523036
+	clientObjectCRC = 111523036,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_item_quest_item_shared_loop_auditor, "object/tangible/component/item/quest_item/shared_loop_auditor.iff")
@@ -414,7 +420,8 @@ object_tangible_component_item_quest_item_shared_momentum_compensator = SharedTa
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2600965554
+	clientObjectCRC = 2600965554,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_item_quest_item_shared_momentum_compensator, "object/tangible/component/item/quest_item/shared_momentum_compensator.iff")
@@ -468,7 +475,8 @@ object_tangible_component_item_quest_item_shared_particle_sensor = SharedTangibl
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1180256886
+	clientObjectCRC = 1180256886,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_item_quest_item_shared_particle_sensor, "object/tangible/component/item/quest_item/shared_particle_sensor.iff")
@@ -522,7 +530,8 @@ object_tangible_component_item_quest_item_shared_signal_cleanup_unit = SharedTan
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 754272347
+	clientObjectCRC = 754272347,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_item_quest_item_shared_signal_cleanup_unit, "object/tangible/component/item/quest_item/shared_signal_cleanup_unit.iff")
@@ -576,7 +585,8 @@ object_tangible_component_item_quest_item_shared_signal_rerouter = SharedTangibl
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2201370721
+	clientObjectCRC = 2201370721,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_item_quest_item_shared_signal_rerouter, "object/tangible/component/item/quest_item/shared_signal_rerouter.iff")
@@ -630,7 +640,8 @@ object_tangible_component_item_quest_item_shared_spin_alignment_inducer = Shared
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 529542099
+	clientObjectCRC = 529542099,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_item_quest_item_shared_spin_alignment_inducer, "object/tangible/component/item/quest_item/shared_spin_alignment_inducer.iff")
@@ -684,7 +695,8 @@ object_tangible_component_item_quest_item_shared_transductive_shunt = SharedTang
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3561575461
+	clientObjectCRC = 3561575461,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_item_quest_item_shared_transductive_shunt, "object/tangible/component/item/quest_item/shared_transductive_shunt.iff")
@@ -738,7 +750,8 @@ object_tangible_component_item_quest_item_shared_tuning_cell = SharedTangibleObj
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 815023209
+	clientObjectCRC = 815023209,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_item_quest_item_shared_tuning_cell, "object/tangible/component/item/quest_item/shared_tuning_cell.iff")
@@ -792,7 +805,8 @@ object_tangible_component_item_quest_item_shared_variance_throttle = SharedTangi
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3604740995
+	clientObjectCRC = 3604740995,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_item_quest_item_shared_variance_throttle, "object/tangible/component/item/quest_item/shared_variance_throttle.iff")
@@ -846,7 +860,8 @@ object_tangible_component_item_quest_item_shared_voltage_inducer = SharedTangibl
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 373412997
+	clientObjectCRC = 373412997,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_item_quest_item_shared_voltage_inducer, "object/tangible/component/item/quest_item/shared_voltage_inducer.iff")

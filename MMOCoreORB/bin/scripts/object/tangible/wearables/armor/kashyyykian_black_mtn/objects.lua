@@ -90,7 +90,8 @@ object_tangible_wearables_armor_kashyyykian_black_mtn_shared_armor_kashyyykian_b
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2400154328
+	clientObjectCRC = 2400154328,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_armor_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_kashyyykian_black_mtn_shared_armor_kashyyykian_black_mtn_bracer_l, "object/tangible/wearables/armor/kashyyykian_black_mtn/shared_armor_kashyyykian_black_mtn_bracer_l.iff")
@@ -144,7 +145,8 @@ object_tangible_wearables_armor_kashyyykian_black_mtn_shared_armor_kashyyykian_b
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4292491083
+	clientObjectCRC = 4292491083,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_armor_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_kashyyykian_black_mtn_shared_armor_kashyyykian_black_mtn_bracer_r, "object/tangible/wearables/armor/kashyyykian_black_mtn/shared_armor_kashyyykian_black_mtn_bracer_r.iff")
@@ -198,7 +200,8 @@ object_tangible_wearables_armor_kashyyykian_black_mtn_shared_armor_kashyyykian_b
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2677805339
+	clientObjectCRC = 2677805339,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_armor_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_kashyyykian_black_mtn_shared_armor_kashyyykian_black_mtn_chest_plate, "object/tangible/wearables/armor/kashyyykian_black_mtn/shared_armor_kashyyykian_black_mtn_chest_plate.iff")
@@ -252,7 +255,8 @@ object_tangible_wearables_armor_kashyyykian_black_mtn_shared_armor_kashyyykian_b
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2863047
+	clientObjectCRC = 2863047,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_armor_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_kashyyykian_black_mtn_shared_armor_kashyyykian_black_mtn_leggings, "object/tangible/wearables/armor/kashyyykian_black_mtn/shared_armor_kashyyykian_black_mtn_leggings.iff")

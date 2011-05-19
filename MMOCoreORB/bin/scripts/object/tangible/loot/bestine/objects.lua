@@ -90,7 +90,8 @@ object_tangible_loot_bestine_shared_bestine_painting_schematic_blueleaf_temple =
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 23318879
+	clientObjectCRC = 23318879,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_bestine_shared_bestine_painting_schematic_blueleaf_temple, "object/tangible/loot/bestine/shared_bestine_painting_schematic_blueleaf_temple.iff")
@@ -144,7 +145,8 @@ object_tangible_loot_bestine_shared_bestine_painting_schematic_blumbrush = Share
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 392989916
+	clientObjectCRC = 392989916,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_bestine_shared_bestine_painting_schematic_blumbrush, "object/tangible/loot/bestine/shared_bestine_painting_schematic_blumbrush.iff")
@@ -198,7 +200,8 @@ object_tangible_loot_bestine_shared_bestine_painting_schematic_boffa = SharedTan
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4037872612
+	clientObjectCRC = 4037872612,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_bestine_shared_bestine_painting_schematic_boffa, "object/tangible/loot/bestine/shared_bestine_painting_schematic_boffa.iff")
@@ -252,7 +255,8 @@ object_tangible_loot_bestine_shared_bestine_painting_schematic_golden_flower_01 
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 16908290
+	clientObjectCRC = 16908290,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_bestine_shared_bestine_painting_schematic_golden_flower_01, "object/tangible/loot/bestine/shared_bestine_painting_schematic_golden_flower_01.iff")
@@ -306,7 +310,8 @@ object_tangible_loot_bestine_shared_bestine_painting_schematic_golden_flower_02 
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3658852501
+	clientObjectCRC = 3658852501,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_bestine_shared_bestine_painting_schematic_golden_flower_02, "object/tangible/loot/bestine/shared_bestine_painting_schematic_golden_flower_02.iff")
@@ -360,7 +365,8 @@ object_tangible_loot_bestine_shared_bestine_painting_schematic_golden_flower_03 
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2467876632
+	clientObjectCRC = 2467876632,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_bestine_shared_bestine_painting_schematic_golden_flower_03, "object/tangible/loot/bestine/shared_bestine_painting_schematic_golden_flower_03.iff")
@@ -414,7 +420,8 @@ object_tangible_loot_bestine_shared_bestine_painting_schematic_house = SharedTan
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1218019193
+	clientObjectCRC = 1218019193,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_bestine_shared_bestine_painting_schematic_house, "object/tangible/loot/bestine/shared_bestine_painting_schematic_house.iff")
@@ -468,7 +475,8 @@ object_tangible_loot_bestine_shared_bestine_painting_schematic_krayt_skeleton = 
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3722135133
+	clientObjectCRC = 3722135133,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_bestine_shared_bestine_painting_schematic_krayt_skeleton, "object/tangible/loot/bestine/shared_bestine_painting_schematic_krayt_skeleton.iff")
@@ -522,7 +530,8 @@ object_tangible_loot_bestine_shared_bestine_painting_schematic_lucky_despot = Sh
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3503871911
+	clientObjectCRC = 3503871911,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_bestine_shared_bestine_painting_schematic_lucky_despot, "object/tangible/loot/bestine/shared_bestine_painting_schematic_lucky_despot.iff")
@@ -576,7 +585,8 @@ object_tangible_loot_bestine_shared_bestine_painting_schematic_mattberry = Share
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2856187452
+	clientObjectCRC = 2856187452,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_bestine_shared_bestine_painting_schematic_mattberry, "object/tangible/loot/bestine/shared_bestine_painting_schematic_mattberry.iff")
@@ -630,7 +640,8 @@ object_tangible_loot_bestine_shared_bestine_painting_schematic_moncal_eye_01 = S
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2819090865
+	clientObjectCRC = 2819090865,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_bestine_shared_bestine_painting_schematic_moncal_eye_01, "object/tangible/loot/bestine/shared_bestine_painting_schematic_moncal_eye_01.iff")
@@ -684,7 +695,8 @@ object_tangible_loot_bestine_shared_bestine_painting_schematic_moncal_eye_02 = S
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1930445094
+	clientObjectCRC = 1930445094,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_bestine_shared_bestine_painting_schematic_moncal_eye_02, "object/tangible/loot/bestine/shared_bestine_painting_schematic_moncal_eye_02.iff")
@@ -738,7 +750,8 @@ object_tangible_loot_bestine_shared_bestine_painting_schematic_rainbow_berry_bus
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1673498889
+	clientObjectCRC = 1673498889,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_bestine_shared_bestine_painting_schematic_rainbow_berry_bush, "object/tangible/loot/bestine/shared_bestine_painting_schematic_rainbow_berry_bush.iff")
@@ -792,7 +805,8 @@ object_tangible_loot_bestine_shared_bestine_painting_schematic_raventhorn = Shar
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3594355154
+	clientObjectCRC = 3594355154,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_bestine_shared_bestine_painting_schematic_raventhorn, "object/tangible/loot/bestine/shared_bestine_painting_schematic_raventhorn.iff")
@@ -846,7 +860,8 @@ object_tangible_loot_bestine_shared_bestine_painting_schematic_ronka = SharedTan
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 890845319
+	clientObjectCRC = 890845319,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_bestine_shared_bestine_painting_schematic_ronka, "object/tangible/loot/bestine/shared_bestine_painting_schematic_ronka.iff")

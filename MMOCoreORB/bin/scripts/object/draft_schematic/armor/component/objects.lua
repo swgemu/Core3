@@ -80,7 +80,8 @@ object_draft_schematic_armor_component_shared_armor_layer_acid = SharedDraftSche
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1792719503
+	clientObjectCRC = 1792719503,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_armor_component_shared_armor_layer_acid, "object/draft_schematic/armor/component/shared_armor_layer_acid.iff")
@@ -124,7 +125,8 @@ object_draft_schematic_armor_component_shared_armor_layer_blast = SharedDraftSch
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 180189865
+	clientObjectCRC = 180189865,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_armor_component_shared_armor_layer_blast, "object/draft_schematic/armor/component/shared_armor_layer_blast.iff")
@@ -168,7 +170,8 @@ object_draft_schematic_armor_component_shared_armor_layer_cold = SharedDraftSche
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3769957782
+	clientObjectCRC = 3769957782,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_armor_component_shared_armor_layer_cold, "object/draft_schematic/armor/component/shared_armor_layer_cold.iff")
@@ -212,7 +215,8 @@ object_draft_schematic_armor_component_shared_armor_layer_electrical = SharedDra
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2193465881
+	clientObjectCRC = 2193465881,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_armor_component_shared_armor_layer_electrical, "object/draft_schematic/armor/component/shared_armor_layer_electrical.iff")
@@ -256,7 +260,8 @@ object_draft_schematic_armor_component_shared_armor_layer_energy = SharedDraftSc
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 4258794187
+	clientObjectCRC = 4258794187,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_armor_component_shared_armor_layer_energy, "object/draft_schematic/armor/component/shared_armor_layer_energy.iff")
@@ -300,7 +305,8 @@ object_draft_schematic_armor_component_shared_armor_layer_environmental = Shared
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3965303725
+	clientObjectCRC = 3965303725,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_armor_component_shared_armor_layer_environmental, "object/draft_schematic/armor/component/shared_armor_layer_environmental.iff")
@@ -344,7 +350,8 @@ object_draft_schematic_armor_component_shared_armor_layer_heat = SharedDraftSche
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 408400742
+	clientObjectCRC = 408400742,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_armor_component_shared_armor_layer_heat, "object/draft_schematic/armor/component/shared_armor_layer_heat.iff")
@@ -388,7 +395,8 @@ object_draft_schematic_armor_component_shared_armor_layer_kinetic = SharedDraftS
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 4175436808
+	clientObjectCRC = 4175436808,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_armor_component_shared_armor_layer_kinetic, "object/draft_schematic/armor/component/shared_armor_layer_kinetic.iff")
@@ -432,7 +440,8 @@ object_draft_schematic_armor_component_shared_armor_layer_restraint = SharedDraf
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3228456823
+	clientObjectCRC = 3228456823,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_armor_component_shared_armor_layer_restraint, "object/draft_schematic/armor/component/shared_armor_layer_restraint.iff")
@@ -476,7 +485,8 @@ object_draft_schematic_armor_component_shared_armor_layer_ris = SharedDraftSchem
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1540900933
+	clientObjectCRC = 1540900933,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_armor_component_shared_armor_layer_ris, "object/draft_schematic/armor/component/shared_armor_layer_ris.iff")
@@ -520,7 +530,8 @@ object_draft_schematic_armor_component_shared_armor_layer_stun = SharedDraftSche
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2919500503
+	clientObjectCRC = 2919500503,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_armor_component_shared_armor_layer_stun, "object/draft_schematic/armor/component/shared_armor_layer_stun.iff")
@@ -564,7 +575,8 @@ object_draft_schematic_armor_component_shared_deflector_shield_emitter_assembly 
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3177230385
+	clientObjectCRC = 3177230385,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_armor_component_shared_deflector_shield_emitter_assembly, "object/draft_schematic/armor/component/shared_deflector_shield_emitter_assembly.iff")
@@ -608,7 +620,8 @@ object_draft_schematic_armor_component_shared_deflector_shield_generator_energy_
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3571137786
+	clientObjectCRC = 3571137786,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_armor_component_shared_deflector_shield_generator_energy_ray, "object/draft_schematic/armor/component/shared_deflector_shield_generator_energy_ray.iff")
@@ -652,7 +665,8 @@ object_draft_schematic_armor_component_shared_deflector_shield_generator_particl
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3523195897
+	clientObjectCRC = 3523195897,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_armor_component_shared_deflector_shield_generator_particle, "object/draft_schematic/armor/component/shared_deflector_shield_generator_particle.iff")
@@ -696,7 +710,8 @@ object_draft_schematic_armor_component_shared_deflector_shield_ion_feed_unit = S
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1075484439
+	clientObjectCRC = 1075484439,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_armor_component_shared_deflector_shield_ion_feed_unit, "object/draft_schematic/armor/component/shared_deflector_shield_ion_feed_unit.iff")
@@ -740,7 +755,8 @@ object_draft_schematic_armor_component_shared_deflector_shield_overload_discharg
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 831687516
+	clientObjectCRC = 831687516,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_armor_component_shared_deflector_shield_overload_discharge_unit, "object/draft_schematic/armor/component/shared_deflector_shield_overload_discharge_unit.iff")
@@ -784,7 +800,8 @@ object_draft_schematic_armor_component_shared_deflector_shield_projector_plate =
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 951632989
+	clientObjectCRC = 951632989,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_armor_component_shared_deflector_shield_projector_plate, "object/draft_schematic/armor/component/shared_deflector_shield_projector_plate.iff")
@@ -828,7 +845,8 @@ object_draft_schematic_armor_component_shared_heavy_armor_layer_acid = SharedDra
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1874931611
+	clientObjectCRC = 1874931611,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_armor_component_shared_heavy_armor_layer_acid, "object/draft_schematic/armor/component/shared_heavy_armor_layer_acid.iff")
@@ -872,7 +890,8 @@ object_draft_schematic_armor_component_shared_heavy_armor_layer_blast = SharedDr
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 116196802
+	clientObjectCRC = 116196802,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_armor_component_shared_heavy_armor_layer_blast, "object/draft_schematic/armor/component/shared_heavy_armor_layer_blast.iff")
@@ -916,7 +935,8 @@ object_draft_schematic_armor_component_shared_heavy_armor_layer_cold = SharedDra
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3853478018
+	clientObjectCRC = 3853478018,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_armor_component_shared_heavy_armor_layer_cold, "object/draft_schematic/armor/component/shared_heavy_armor_layer_cold.iff")
@@ -960,7 +980,8 @@ object_draft_schematic_armor_component_shared_heavy_armor_layer_electrical = Sha
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 127633276
+	clientObjectCRC = 127633276,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_armor_component_shared_heavy_armor_layer_electrical, "object/draft_schematic/armor/component/shared_heavy_armor_layer_electrical.iff")
@@ -1004,7 +1025,8 @@ object_draft_schematic_armor_component_shared_heavy_armor_layer_energy = SharedD
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2561407663
+	clientObjectCRC = 2561407663,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_armor_component_shared_heavy_armor_layer_energy, "object/draft_schematic/armor/component/shared_heavy_armor_layer_energy.iff")
@@ -1048,7 +1070,8 @@ object_draft_schematic_armor_component_shared_heavy_armor_layer_environmental = 
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 690401981
+	clientObjectCRC = 690401981,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_armor_component_shared_heavy_armor_layer_environmental, "object/draft_schematic/armor/component/shared_heavy_armor_layer_environmental.iff")
@@ -1092,7 +1115,8 @@ object_draft_schematic_armor_component_shared_heavy_armor_layer_heat = SharedDra
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 491529842
+	clientObjectCRC = 491529842,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_armor_component_shared_heavy_armor_layer_heat, "object/draft_schematic/armor/component/shared_heavy_armor_layer_heat.iff")
@@ -1136,7 +1160,8 @@ object_draft_schematic_armor_component_shared_heavy_armor_layer_kinetic = Shared
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 812701172
+	clientObjectCRC = 812701172,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_armor_component_shared_heavy_armor_layer_kinetic, "object/draft_schematic/armor/component/shared_heavy_armor_layer_kinetic.iff")
@@ -1180,7 +1205,8 @@ object_draft_schematic_armor_component_shared_heavy_armor_layer_restraint = Shar
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1695390575
+	clientObjectCRC = 1695390575,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_armor_component_shared_heavy_armor_layer_restraint, "object/draft_schematic/armor/component/shared_heavy_armor_layer_restraint.iff")
@@ -1224,7 +1250,8 @@ object_draft_schematic_armor_component_shared_heavy_armor_layer_stun = SharedDra
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2870976451
+	clientObjectCRC = 2870976451,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_armor_component_shared_heavy_armor_layer_stun, "object/draft_schematic/armor/component/shared_heavy_armor_layer_stun.iff")

@@ -90,7 +90,8 @@ object_installation_manufacture_shared_clothing_factory = SharedInstallationObje
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2037216595
+	clientObjectCRC = 2037216595,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff", "object/installation/manufacture/base/shared_manufacture_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_installation_manufacture_shared_clothing_factory, "object/installation/manufacture/shared_clothing_factory.iff")
@@ -144,7 +145,8 @@ object_installation_manufacture_shared_food_factory = SharedInstallationObjectTe
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2484565682
+	clientObjectCRC = 2484565682,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff", "object/installation/manufacture/base/shared_manufacture_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_installation_manufacture_shared_food_factory, "object/installation/manufacture/shared_food_factory.iff")
@@ -198,7 +200,8 @@ object_installation_manufacture_shared_structure_factory = SharedInstallationObj
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1556571915
+	clientObjectCRC = 1556571915,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff", "object/installation/manufacture/base/shared_manufacture_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_installation_manufacture_shared_structure_factory, "object/installation/manufacture/shared_structure_factory.iff")
@@ -252,7 +255,8 @@ object_installation_manufacture_shared_weapon_factory = SharedInstallationObject
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1304272380
+	clientObjectCRC = 1304272380,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff", "object/installation/manufacture/base/shared_manufacture_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_installation_manufacture_shared_weapon_factory, "object/installation/manufacture/shared_weapon_factory.iff")
@@ -306,7 +310,8 @@ object_installation_manufacture_shared_weapon_installation = SharedInstallationO
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 415547091
+	clientObjectCRC = 415547091,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff", "object/installation/manufacture/base/shared_manufacture_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_installation_manufacture_shared_weapon_installation, "object/installation/manufacture/shared_weapon_installation.iff")

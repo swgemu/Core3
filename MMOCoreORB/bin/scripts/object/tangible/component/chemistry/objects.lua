@@ -90,7 +90,8 @@ object_tangible_component_chemistry_shared_biologic_effect_controller = SharedTa
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3704098001
+	clientObjectCRC = 3704098001,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_chemistry_shared_biologic_effect_controller, "object/tangible/component/chemistry/shared_biologic_effect_controller.iff")
@@ -144,7 +145,8 @@ object_tangible_component_chemistry_shared_biologic_effect_controller_advanced =
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2300334388
+	clientObjectCRC = 2300334388,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/chemistry/shared_biologic_effect_controller.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_chemistry_shared_biologic_effect_controller_advanced, "object/tangible/component/chemistry/shared_biologic_effect_controller_advanced.iff")
@@ -198,7 +200,8 @@ object_tangible_component_chemistry_shared_chemistry_component = SharedTangibleO
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1107717367
+	clientObjectCRC = 1107717367,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_chemistry_shared_chemistry_component, "object/tangible/component/chemistry/shared_chemistry_component.iff")
@@ -252,7 +255,8 @@ object_tangible_component_chemistry_shared_dispersal_mechanism = SharedTangibleO
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2561274877
+	clientObjectCRC = 2561274877,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_chemistry_shared_dispersal_mechanism, "object/tangible/component/chemistry/shared_dispersal_mechanism.iff")
@@ -306,7 +310,8 @@ object_tangible_component_chemistry_shared_dispersal_mechanism_advanced = Shared
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1183326232
+	clientObjectCRC = 1183326232,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/chemistry/shared_dispersal_mechanism.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_chemistry_shared_dispersal_mechanism_advanced, "object/tangible/component/chemistry/shared_dispersal_mechanism_advanced.iff")
@@ -360,7 +365,8 @@ object_tangible_component_chemistry_shared_dispersal_mechanism_quest = SharedTan
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3662200732
+	clientObjectCRC = 3662200732,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/chemistry/shared_dispersal_mechanism.iff", "object/tangible/component/chemistry/shared_dispersal_mechanism_advanced.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_chemistry_shared_dispersal_mechanism_quest, "object/tangible/component/chemistry/shared_dispersal_mechanism_quest.iff")
@@ -414,7 +420,8 @@ object_tangible_component_chemistry_shared_endrost = SharedTangibleObjectTemplat
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1566810278
+	clientObjectCRC = 1566810278,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_chemistry_shared_endrost, "object/tangible/component/chemistry/shared_endrost.iff")
@@ -468,7 +475,8 @@ object_tangible_component_chemistry_shared_infection_amplifier = SharedTangibleO
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1679113487
+	clientObjectCRC = 1679113487,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_chemistry_shared_infection_amplifier, "object/tangible/component/chemistry/shared_infection_amplifier.iff")
@@ -522,7 +530,8 @@ object_tangible_component_chemistry_shared_infection_amplifier_advanced = Shared
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1129599787
+	clientObjectCRC = 1129599787,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/chemistry/shared_infection_amplifier.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_chemistry_shared_infection_amplifier_advanced, "object/tangible/component/chemistry/shared_infection_amplifier_advanced.iff")
@@ -576,7 +585,8 @@ object_tangible_component_chemistry_shared_infection_amplifier_donkuwah = Shared
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2542466646
+	clientObjectCRC = 2542466646,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/chemistry/shared_infection_amplifier.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_chemistry_shared_infection_amplifier_donkuwah, "object/tangible/component/chemistry/shared_infection_amplifier_donkuwah.iff")
@@ -630,7 +640,8 @@ object_tangible_component_chemistry_shared_janta_blood = SharedTangibleObjectTem
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1058893195
+	clientObjectCRC = 1058893195,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/chemistry/shared_biologic_effect_controller.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_chemistry_shared_janta_blood, "object/tangible/component/chemistry/shared_janta_blood.iff")
@@ -684,7 +695,8 @@ object_tangible_component_chemistry_shared_liquid_delivery_suspension = SharedTa
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3358009919
+	clientObjectCRC = 3358009919,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_chemistry_shared_liquid_delivery_suspension, "object/tangible/component/chemistry/shared_liquid_delivery_suspension.iff")
@@ -738,7 +750,8 @@ object_tangible_component_chemistry_shared_liquid_delivery_suspension_advanced =
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1862978449
+	clientObjectCRC = 1862978449,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/chemistry/shared_liquid_delivery_suspension.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_chemistry_shared_liquid_delivery_suspension_advanced, "object/tangible/component/chemistry/shared_liquid_delivery_suspension_advanced.iff")
@@ -792,7 +805,8 @@ object_tangible_component_chemistry_shared_liquid_delivery_suspension_quest = Sh
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2125828642
+	clientObjectCRC = 2125828642,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/chemistry/shared_liquid_delivery_suspension.iff", "object/tangible/component/chemistry/shared_liquid_delivery_suspension_advanced.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_chemistry_shared_liquid_delivery_suspension_quest, "object/tangible/component/chemistry/shared_liquid_delivery_suspension_quest.iff")
@@ -846,7 +860,8 @@ object_tangible_component_chemistry_shared_quest_stimpack_a = SharedTangibleObje
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 478044743
+	clientObjectCRC = 478044743,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/medicine/base/shared_base_medicine.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_chemistry_shared_quest_stimpack_a, "object/tangible/component/chemistry/shared_quest_stimpack_a.iff")
@@ -900,7 +915,8 @@ object_tangible_component_chemistry_shared_rancor_bile = SharedTangibleObjectTem
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 317047330
+	clientObjectCRC = 317047330,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/chemistry/shared_dispersal_mechanism.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_chemistry_shared_rancor_bile, "object/tangible/component/chemistry/shared_rancor_bile.iff")
@@ -954,7 +970,8 @@ object_tangible_component_chemistry_shared_release_mechanism_duration = SharedTa
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1870489005
+	clientObjectCRC = 1870489005,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_chemistry_shared_release_mechanism_duration, "object/tangible/component/chemistry/shared_release_mechanism_duration.iff")
@@ -1008,7 +1025,8 @@ object_tangible_component_chemistry_shared_release_mechanism_duration_advanced =
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 282084455
+	clientObjectCRC = 282084455,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/chemistry/shared_release_mechanism_duration.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_chemistry_shared_release_mechanism_duration_advanced, "object/tangible/component/chemistry/shared_release_mechanism_duration_advanced.iff")
@@ -1062,7 +1080,8 @@ object_tangible_component_chemistry_shared_resilience_compound = SharedTangibleO
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2132263971
+	clientObjectCRC = 2132263971,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_chemistry_shared_resilience_compound, "object/tangible/component/chemistry/shared_resilience_compound.iff")
@@ -1116,7 +1135,8 @@ object_tangible_component_chemistry_shared_resilience_compound_advanced = Shared
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 101893931
+	clientObjectCRC = 101893931,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/chemistry/shared_resilience_compound.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_chemistry_shared_resilience_compound_advanced, "object/tangible/component/chemistry/shared_resilience_compound_advanced.iff")
@@ -1170,7 +1190,8 @@ object_tangible_component_chemistry_shared_solid_delivery_shell = SharedTangible
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2203679790
+	clientObjectCRC = 2203679790,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_chemistry_shared_solid_delivery_shell, "object/tangible/component/chemistry/shared_solid_delivery_shell.iff")
@@ -1224,7 +1245,8 @@ object_tangible_component_chemistry_shared_solid_delivery_shell_advanced = Share
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2952575979
+	clientObjectCRC = 2952575979,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/chemistry/shared_solid_delivery_shell.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_chemistry_shared_solid_delivery_shell_advanced, "object/tangible/component/chemistry/shared_solid_delivery_shell_advanced.iff")
@@ -1278,7 +1300,8 @@ object_tangible_component_chemistry_shared_spider_venom = SharedTangibleObjectTe
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3428815879
+	clientObjectCRC = 3428815879,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/chemistry/shared_infection_amplifier.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_chemistry_shared_spider_venom, "object/tangible/component/chemistry/shared_spider_venom.iff")

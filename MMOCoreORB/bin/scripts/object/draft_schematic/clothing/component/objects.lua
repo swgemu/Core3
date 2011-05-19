@@ -80,7 +80,8 @@ object_draft_schematic_clothing_component_shared_clothing_cargo_pocket = SharedD
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 217803170
+	clientObjectCRC = 217803170,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_component_shared_clothing_cargo_pocket, "object/draft_schematic/clothing/component/shared_clothing_cargo_pocket.iff")
@@ -124,7 +125,8 @@ object_draft_schematic_clothing_component_shared_clothing_component = SharedDraf
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2902252643
+	clientObjectCRC = 2902252643,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_component_shared_clothing_component, "object/draft_schematic/clothing/component/shared_clothing_component.iff")
@@ -168,7 +170,8 @@ object_draft_schematic_clothing_component_shared_clothing_component_base = Share
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3235529113
+	clientObjectCRC = 3235529113,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_component_shared_clothing_component_base, "object/draft_schematic/clothing/component/shared_clothing_component_base.iff")
@@ -212,7 +215,8 @@ object_draft_schematic_clothing_component_shared_clothing_fiberplast_panel = Sha
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 656345238
+	clientObjectCRC = 656345238,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_component_shared_clothing_fiberplast_panel, "object/draft_schematic/clothing/component/shared_clothing_fiberplast_panel.iff")
@@ -256,7 +260,8 @@ object_draft_schematic_clothing_component_shared_clothing_jewelry_setting = Shar
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3119926044
+	clientObjectCRC = 3119926044,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_component_shared_clothing_jewelry_setting, "object/draft_schematic/clothing/component/shared_clothing_jewelry_setting.iff")
@@ -300,7 +305,8 @@ object_draft_schematic_clothing_component_shared_clothing_metal_fasteners = Shar
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 196841582
+	clientObjectCRC = 196841582,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_component_shared_clothing_metal_fasteners, "object/draft_schematic/clothing/component/shared_clothing_metal_fasteners.iff")
@@ -344,7 +350,8 @@ object_draft_schematic_clothing_component_shared_clothing_padding_segment = Shar
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1984198906
+	clientObjectCRC = 1984198906,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_component_shared_clothing_padding_segment, "object/draft_schematic/clothing/component/shared_clothing_padding_segment.iff")
@@ -388,7 +395,8 @@ object_draft_schematic_clothing_component_shared_clothing_reinforced_fiber_panel
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 394655839
+	clientObjectCRC = 394655839,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_component_shared_clothing_reinforced_fiber_panels, "object/draft_schematic/clothing/component/shared_clothing_reinforced_fiber_panels.iff")
@@ -432,7 +440,8 @@ object_draft_schematic_clothing_component_shared_clothing_shoe_sole = SharedDraf
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 794389103
+	clientObjectCRC = 794389103,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_component_shared_clothing_shoe_sole, "object/draft_schematic/clothing/component/shared_clothing_shoe_sole.iff")
@@ -476,7 +485,8 @@ object_draft_schematic_clothing_component_shared_clothing_synthetic_cloth = Shar
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 329274185
+	clientObjectCRC = 329274185,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_component_shared_clothing_synthetic_cloth, "object/draft_schematic/clothing/component/shared_clothing_synthetic_cloth.iff")
@@ -520,7 +530,8 @@ object_draft_schematic_clothing_component_shared_clothing_trim = SharedDraftSche
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3996452682
+	clientObjectCRC = 3996452682,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_component_shared_clothing_trim, "object/draft_schematic/clothing/component/shared_clothing_trim.iff")

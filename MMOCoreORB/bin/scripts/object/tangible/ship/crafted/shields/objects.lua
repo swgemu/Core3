@@ -90,7 +90,8 @@ object_tangible_ship_crafted_shields_shared_adv_deflector_shields = SharedTangib
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 512254018
+	clientObjectCRC = 512254018,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_shields_shared_adv_deflector_shields, "object/tangible/ship/crafted/shields/shared_adv_deflector_shields.iff")
@@ -144,7 +145,8 @@ object_tangible_ship_crafted_shields_shared_advanced_projector_unit = SharedTang
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3156847701
+	clientObjectCRC = 3156847701,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_subcomponent_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_shields_shared_advanced_projector_unit, "object/tangible/ship/crafted/shields/shared_advanced_projector_unit.iff")
@@ -198,7 +200,8 @@ object_tangible_ship_crafted_shields_shared_base_shields = SharedTangibleObjectT
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1334075435
+	clientObjectCRC = 1334075435,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_shields_shared_base_shields, "object/tangible/ship/crafted/shields/shared_base_shields.iff")
@@ -252,7 +255,8 @@ object_tangible_ship_crafted_shields_shared_base_shields_subcomponent = SharedTa
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 501625805
+	clientObjectCRC = 501625805,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_subcomponent_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_shields_shared_base_shields_subcomponent, "object/tangible/ship/crafted/shields/shared_base_shields_subcomponent.iff")
@@ -306,7 +310,8 @@ object_tangible_ship_crafted_shields_shared_base_shields_subcomponent_mk1 = Shar
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1088509023
+	clientObjectCRC = 1088509023,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_subcomponent_base.iff", "object/tangible/ship/crafted/shields/shared_base_shields_subcomponent.iff", "object/tangible/ship/crafted/shields/shared_base_shields_subcomponent_mk5.iff", "object/tangible/ship/crafted/shields/shared_base_shields_subcomponent_mk4.iff", "object/tangible/ship/crafted/shields/shared_base_shields_subcomponent_mk3.iff", "object/tangible/ship/crafted/shields/shared_base_shields_subcomponent_mk2.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_shields_shared_base_shields_subcomponent_mk1, "object/tangible/ship/crafted/shields/shared_base_shields_subcomponent_mk1.iff")
@@ -360,7 +365,8 @@ object_tangible_ship_crafted_shields_shared_base_shields_subcomponent_mk2 = Shar
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2616655048
+	clientObjectCRC = 2616655048,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_subcomponent_base.iff", "object/tangible/ship/crafted/shields/shared_base_shields_subcomponent.iff", "object/tangible/ship/crafted/shields/shared_base_shields_subcomponent_mk5.iff", "object/tangible/ship/crafted/shields/shared_base_shields_subcomponent_mk4.iff", "object/tangible/ship/crafted/shields/shared_base_shields_subcomponent_mk3.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_shields_shared_base_shields_subcomponent_mk2, "object/tangible/ship/crafted/shields/shared_base_shields_subcomponent_mk2.iff")
@@ -414,7 +420,8 @@ object_tangible_ship_crafted_shields_shared_base_shields_subcomponent_mk3 = Shar
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3539704645
+	clientObjectCRC = 3539704645,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_subcomponent_base.iff", "object/tangible/ship/crafted/shields/shared_base_shields_subcomponent.iff", "object/tangible/ship/crafted/shields/shared_base_shields_subcomponent_mk5.iff", "object/tangible/ship/crafted/shields/shared_base_shields_subcomponent_mk4.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_shields_shared_base_shields_subcomponent_mk3, "object/tangible/ship/crafted/shields/shared_base_shields_subcomponent_mk3.iff")
@@ -468,7 +475,8 @@ object_tangible_ship_crafted_shields_shared_base_shields_subcomponent_mk4 = Shar
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 689483857
+	clientObjectCRC = 689483857,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_subcomponent_base.iff", "object/tangible/ship/crafted/shields/shared_base_shields_subcomponent.iff", "object/tangible/ship/crafted/shields/shared_base_shields_subcomponent_mk5.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_shields_shared_base_shields_subcomponent_mk4, "object/tangible/ship/crafted/shields/shared_base_shields_subcomponent_mk4.iff")
@@ -522,7 +530,8 @@ object_tangible_ship_crafted_shields_shared_base_shields_subcomponent_mk5 = Shar
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1612044252
+	clientObjectCRC = 1612044252,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_subcomponent_base.iff", "object/tangible/ship/crafted/shields/shared_base_shields_subcomponent.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_shields_shared_base_shields_subcomponent_mk5, "object/tangible/ship/crafted/shields/shared_base_shields_subcomponent_mk5.iff")
@@ -576,7 +585,8 @@ object_tangible_ship_crafted_shields_shared_basic_shields = SharedTangibleObject
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2199672090
+	clientObjectCRC = 2199672090,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_shields_shared_basic_shields, "object/tangible/ship/crafted/shields/shared_basic_shields.iff")
@@ -630,7 +640,8 @@ object_tangible_ship_crafted_shields_shared_deflector_shields = SharedTangibleOb
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2014890702
+	clientObjectCRC = 2014890702,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_shields_shared_deflector_shields, "object/tangible/ship/crafted/shields/shared_deflector_shields.iff")
@@ -684,7 +695,8 @@ object_tangible_ship_crafted_shields_shared_exp_deflector_shields = SharedTangib
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2951736677
+	clientObjectCRC = 2951736677,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_shields_shared_exp_deflector_shields, "object/tangible/ship/crafted/shields/shared_exp_deflector_shields.iff")
@@ -738,7 +750,8 @@ object_tangible_ship_crafted_shields_shared_heavy_deflector_shields = SharedTang
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3437680347
+	clientObjectCRC = 3437680347,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_shields_shared_heavy_deflector_shields, "object/tangible/ship/crafted/shields/shared_heavy_deflector_shields.iff")
@@ -792,7 +805,8 @@ object_tangible_ship_crafted_shields_shared_light_deflector_shields = SharedTang
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2970588716
+	clientObjectCRC = 2970588716,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_shields_shared_light_deflector_shields, "object/tangible/ship/crafted/shields/shared_light_deflector_shields.iff")
@@ -846,7 +860,8 @@ object_tangible_ship_crafted_shields_shared_shield_energy_saver_kit_mk1 = Shared
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1931620288
+	clientObjectCRC = 1931620288,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_subcomponent_base.iff", "object/tangible/ship/crafted/shields/shared_base_shields_subcomponent.iff", "object/tangible/ship/crafted/shields/shared_base_shields_subcomponent_mk5.iff", "object/tangible/ship/crafted/shields/shared_base_shields_subcomponent_mk4.iff", "object/tangible/ship/crafted/shields/shared_base_shields_subcomponent_mk3.iff", "object/tangible/ship/crafted/shields/shared_base_shields_subcomponent_mk2.iff", "object/tangible/ship/crafted/shields/shared_base_shields_subcomponent_mk1.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_shields_shared_shield_energy_saver_kit_mk1, "object/tangible/ship/crafted/shields/shared_shield_energy_saver_kit_mk1.iff")
@@ -900,7 +915,8 @@ object_tangible_ship_crafted_shields_shared_shield_energy_saver_kit_mk2 = Shared
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2822080343
+	clientObjectCRC = 2822080343,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_subcomponent_base.iff", "object/tangible/ship/crafted/shields/shared_base_shields_subcomponent.iff", "object/tangible/ship/crafted/shields/shared_base_shields_subcomponent_mk5.iff", "object/tangible/ship/crafted/shields/shared_base_shields_subcomponent_mk4.iff", "object/tangible/ship/crafted/shields/shared_base_shields_subcomponent_mk3.iff", "object/tangible/ship/crafted/shields/shared_base_shields_subcomponent_mk2.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_shields_shared_shield_energy_saver_kit_mk2, "object/tangible/ship/crafted/shields/shared_shield_energy_saver_kit_mk2.iff")
@@ -954,7 +970,8 @@ object_tangible_ship_crafted_shields_shared_shield_energy_saver_kit_mk3 = Shared
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3778601178
+	clientObjectCRC = 3778601178,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_subcomponent_base.iff", "object/tangible/ship/crafted/shields/shared_base_shields_subcomponent.iff", "object/tangible/ship/crafted/shields/shared_base_shields_subcomponent_mk5.iff", "object/tangible/ship/crafted/shields/shared_base_shields_subcomponent_mk4.iff", "object/tangible/ship/crafted/shields/shared_base_shields_subcomponent_mk3.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_shields_shared_shield_energy_saver_kit_mk3, "object/tangible/ship/crafted/shields/shared_shield_energy_saver_kit_mk3.iff")
@@ -1008,7 +1025,8 @@ object_tangible_ship_crafted_shields_shared_shield_energy_saver_kit_mk4 = Shared
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 450612174
+	clientObjectCRC = 450612174,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_subcomponent_base.iff", "object/tangible/ship/crafted/shields/shared_base_shields_subcomponent.iff", "object/tangible/ship/crafted/shields/shared_base_shields_subcomponent_mk5.iff", "object/tangible/ship/crafted/shields/shared_base_shields_subcomponent_mk4.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_shields_shared_shield_energy_saver_kit_mk4, "object/tangible/ship/crafted/shields/shared_shield_energy_saver_kit_mk4.iff")
@@ -1062,7 +1080,8 @@ object_tangible_ship_crafted_shields_shared_shield_energy_saver_kit_mk5 = Shared
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1406577731
+	clientObjectCRC = 1406577731,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_subcomponent_base.iff", "object/tangible/ship/crafted/shields/shared_base_shields_subcomponent.iff", "object/tangible/ship/crafted/shields/shared_base_shields_subcomponent_mk5.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_shields_shared_shield_energy_saver_kit_mk5, "object/tangible/ship/crafted/shields/shared_shield_energy_saver_kit_mk5.iff")
@@ -1116,7 +1135,8 @@ object_tangible_ship_crafted_shields_shared_shield_intensifier_mk1 = SharedTangi
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 46751920
+	clientObjectCRC = 46751920,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_subcomponent_base.iff", "object/tangible/ship/crafted/shields/shared_base_shields_subcomponent.iff", "object/tangible/ship/crafted/shields/shared_base_shields_subcomponent_mk5.iff", "object/tangible/ship/crafted/shields/shared_base_shields_subcomponent_mk4.iff", "object/tangible/ship/crafted/shields/shared_base_shields_subcomponent_mk3.iff", "object/tangible/ship/crafted/shields/shared_base_shields_subcomponent_mk2.iff", "object/tangible/ship/crafted/shields/shared_base_shields_subcomponent_mk1.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_shields_shared_shield_intensifier_mk1, "object/tangible/ship/crafted/shields/shared_shield_intensifier_mk1.iff")
@@ -1170,7 +1190,8 @@ object_tangible_ship_crafted_shields_shared_shield_intensifier_mk2 = SharedTangi
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3655256103
+	clientObjectCRC = 3655256103,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_subcomponent_base.iff", "object/tangible/ship/crafted/shields/shared_base_shields_subcomponent.iff", "object/tangible/ship/crafted/shields/shared_base_shields_subcomponent_mk5.iff", "object/tangible/ship/crafted/shields/shared_base_shields_subcomponent_mk4.iff", "object/tangible/ship/crafted/shields/shared_base_shields_subcomponent_mk3.iff", "object/tangible/ship/crafted/shields/shared_base_shields_subcomponent_mk2.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_shields_shared_shield_intensifier_mk2, "object/tangible/ship/crafted/shields/shared_shield_intensifier_mk2.iff")
@@ -1224,7 +1245,8 @@ object_tangible_ship_crafted_shields_shared_shield_intensifier_mk3 = SharedTangi
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2429792170
+	clientObjectCRC = 2429792170,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_subcomponent_base.iff", "object/tangible/ship/crafted/shields/shared_base_shields_subcomponent.iff", "object/tangible/ship/crafted/shields/shared_base_shields_subcomponent_mk5.iff", "object/tangible/ship/crafted/shields/shared_base_shields_subcomponent_mk4.iff", "object/tangible/ship/crafted/shields/shared_base_shields_subcomponent_mk3.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_shields_shared_shield_intensifier_mk3, "object/tangible/ship/crafted/shields/shared_shield_intensifier_mk3.iff")
@@ -1278,7 +1300,8 @@ object_tangible_ship_crafted_shields_shared_shield_intensifier_mk4 = SharedTangi
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1798341822
+	clientObjectCRC = 1798341822,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_subcomponent_base.iff", "object/tangible/ship/crafted/shields/shared_base_shields_subcomponent.iff", "object/tangible/ship/crafted/shields/shared_base_shields_subcomponent_mk5.iff", "object/tangible/ship/crafted/shields/shared_base_shields_subcomponent_mk4.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_shields_shared_shield_intensifier_mk4, "object/tangible/ship/crafted/shields/shared_shield_intensifier_mk4.iff")
@@ -1332,7 +1355,8 @@ object_tangible_ship_crafted_shields_shared_shield_intensifier_mk5 = SharedTangi
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 574481203
+	clientObjectCRC = 574481203,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_subcomponent_base.iff", "object/tangible/ship/crafted/shields/shared_base_shields_subcomponent.iff", "object/tangible/ship/crafted/shields/shared_base_shields_subcomponent_mk5.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_shields_shared_shield_intensifier_mk5, "object/tangible/ship/crafted/shields/shared_shield_intensifier_mk5.iff")
@@ -1386,7 +1410,8 @@ object_tangible_ship_crafted_shields_shared_shield_limiter_mk1 = SharedTangibleO
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3366846680
+	clientObjectCRC = 3366846680,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_subcomponent_base.iff", "object/tangible/ship/crafted/shields/shared_base_shields_subcomponent.iff", "object/tangible/ship/crafted/shields/shared_base_shields_subcomponent_mk5.iff", "object/tangible/ship/crafted/shields/shared_base_shields_subcomponent_mk4.iff", "object/tangible/ship/crafted/shields/shared_base_shields_subcomponent_mk3.iff", "object/tangible/ship/crafted/shields/shared_base_shields_subcomponent_mk2.iff", "object/tangible/ship/crafted/shields/shared_base_shields_subcomponent_mk1.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_shields_shared_shield_limiter_mk1, "object/tangible/ship/crafted/shields/shared_shield_limiter_mk1.iff")
@@ -1440,7 +1465,8 @@ object_tangible_ship_crafted_shields_shared_shield_limiter_mk2 = SharedTangibleO
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 330934351
+	clientObjectCRC = 330934351,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_subcomponent_base.iff", "object/tangible/ship/crafted/shields/shared_base_shields_subcomponent.iff", "object/tangible/ship/crafted/shields/shared_base_shields_subcomponent_mk5.iff", "object/tangible/ship/crafted/shields/shared_base_shields_subcomponent_mk4.iff", "object/tangible/ship/crafted/shields/shared_base_shields_subcomponent_mk3.iff", "object/tangible/ship/crafted/shields/shared_base_shields_subcomponent_mk2.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_shields_shared_shield_limiter_mk2, "object/tangible/ship/crafted/shields/shared_shield_limiter_mk2.iff")
@@ -1494,7 +1520,8 @@ object_tangible_ship_crafted_shields_shared_shield_limiter_mk3 = SharedTangibleO
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1521799106
+	clientObjectCRC = 1521799106,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_subcomponent_base.iff", "object/tangible/ship/crafted/shields/shared_base_shields_subcomponent.iff", "object/tangible/ship/crafted/shields/shared_base_shields_subcomponent_mk5.iff", "object/tangible/ship/crafted/shields/shared_base_shields_subcomponent_mk4.iff", "object/tangible/ship/crafted/shields/shared_base_shields_subcomponent_mk3.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_shields_shared_shield_limiter_mk3, "object/tangible/ship/crafted/shields/shared_shield_limiter_mk3.iff")
@@ -1548,7 +1575,8 @@ object_tangible_ship_crafted_shields_shared_shield_limiter_mk4 = SharedTangibleO
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2706891990
+	clientObjectCRC = 2706891990,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_subcomponent_base.iff", "object/tangible/ship/crafted/shields/shared_base_shields_subcomponent.iff", "object/tangible/ship/crafted/shields/shared_base_shields_subcomponent_mk5.iff", "object/tangible/ship/crafted/shields/shared_base_shields_subcomponent_mk4.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_shields_shared_shield_limiter_mk4, "object/tangible/ship/crafted/shields/shared_shield_limiter_mk4.iff")
@@ -1602,7 +1630,8 @@ object_tangible_ship_crafted_shields_shared_shield_limiter_mk5 = SharedTangibleO
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3898245979
+	clientObjectCRC = 3898245979,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_subcomponent_base.iff", "object/tangible/ship/crafted/shields/shared_base_shields_subcomponent.iff", "object/tangible/ship/crafted/shields/shared_base_shields_subcomponent_mk5.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_shields_shared_shield_limiter_mk5, "object/tangible/ship/crafted/shields/shared_shield_limiter_mk5.iff")
@@ -1656,7 +1685,8 @@ object_tangible_ship_crafted_shields_shared_shield_overcharger_mk1 = SharedTangi
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1951222314
+	clientObjectCRC = 1951222314,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_subcomponent_base.iff", "object/tangible/ship/crafted/shields/shared_base_shields_subcomponent.iff", "object/tangible/ship/crafted/shields/shared_base_shields_subcomponent_mk5.iff", "object/tangible/ship/crafted/shields/shared_base_shields_subcomponent_mk4.iff", "object/tangible/ship/crafted/shields/shared_base_shields_subcomponent_mk3.iff", "object/tangible/ship/crafted/shields/shared_base_shields_subcomponent_mk2.iff", "object/tangible/ship/crafted/shields/shared_base_shields_subcomponent_mk1.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_shields_shared_shield_overcharger_mk1, "object/tangible/ship/crafted/shields/shared_shield_overcharger_mk1.iff")
@@ -1710,7 +1740,8 @@ object_tangible_ship_crafted_shields_shared_shield_overcharger_mk2 = SharedTangi
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2941969085
+	clientObjectCRC = 2941969085,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_subcomponent_base.iff", "object/tangible/ship/crafted/shields/shared_base_shields_subcomponent.iff", "object/tangible/ship/crafted/shields/shared_base_shields_subcomponent_mk5.iff", "object/tangible/ship/crafted/shields/shared_base_shields_subcomponent_mk4.iff", "object/tangible/ship/crafted/shields/shared_base_shields_subcomponent_mk3.iff", "object/tangible/ship/crafted/shields/shared_base_shields_subcomponent_mk2.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_shields_shared_shield_overcharger_mk2, "object/tangible/ship/crafted/shields/shared_shield_overcharger_mk2.iff")
@@ -1764,7 +1795,8 @@ object_tangible_ship_crafted_shields_shared_shield_overcharger_mk3 = SharedTangi
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3864495408
+	clientObjectCRC = 3864495408,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_subcomponent_base.iff", "object/tangible/ship/crafted/shields/shared_base_shields_subcomponent.iff", "object/tangible/ship/crafted/shields/shared_base_shields_subcomponent_mk5.iff", "object/tangible/ship/crafted/shields/shared_base_shields_subcomponent_mk4.iff", "object/tangible/ship/crafted/shields/shared_base_shields_subcomponent_mk3.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_shields_shared_shield_overcharger_mk3, "object/tangible/ship/crafted/shields/shared_shield_overcharger_mk3.iff")
@@ -1818,7 +1850,8 @@ object_tangible_ship_crafted_shields_shared_shield_overcharger_mk4 = SharedTangi
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 498380324
+	clientObjectCRC = 498380324,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_subcomponent_base.iff", "object/tangible/ship/crafted/shields/shared_base_shields_subcomponent.iff", "object/tangible/ship/crafted/shields/shared_base_shields_subcomponent_mk5.iff", "object/tangible/ship/crafted/shields/shared_base_shields_subcomponent_mk4.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_shields_shared_shield_overcharger_mk4, "object/tangible/ship/crafted/shields/shared_shield_overcharger_mk4.iff")
@@ -1872,7 +1905,8 @@ object_tangible_ship_crafted_shields_shared_shield_overcharger_mk5 = SharedTangi
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1421461929
+	clientObjectCRC = 1421461929,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_subcomponent_base.iff", "object/tangible/ship/crafted/shields/shared_base_shields_subcomponent.iff", "object/tangible/ship/crafted/shields/shared_base_shields_subcomponent_mk5.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_shields_shared_shield_overcharger_mk5, "object/tangible/ship/crafted/shields/shared_shield_overcharger_mk5.iff")
@@ -1926,7 +1960,8 @@ object_tangible_ship_crafted_shields_shared_standard_projector_unit = SharedTang
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 129931938
+	clientObjectCRC = 129931938,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_subcomponent_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_shields_shared_standard_projector_unit, "object/tangible/ship/crafted/shields/shared_standard_projector_unit.iff")

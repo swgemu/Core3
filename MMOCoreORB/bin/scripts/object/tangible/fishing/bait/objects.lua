@@ -90,7 +90,8 @@ object_tangible_fishing_bait_shared_bait_chum = SharedTangibleObjectTemplate:new
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1907354318
+	clientObjectCRC = 1907354318,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/fishing/bait/base/shared_bait_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_fishing_bait_shared_bait_chum, "object/tangible/fishing/bait/shared_bait_chum.iff")
@@ -144,7 +145,8 @@ object_tangible_fishing_bait_shared_bait_grub = SharedTangibleObjectTemplate:new
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2852582475
+	clientObjectCRC = 2852582475,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/fishing/bait/base/shared_bait_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_fishing_bait_shared_bait_grub, "object/tangible/fishing/bait/shared_bait_grub.iff")
@@ -198,7 +200,8 @@ object_tangible_fishing_bait_shared_bait_insect = SharedTangibleObjectTemplate:n
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 574609963
+	clientObjectCRC = 574609963,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/fishing/bait/base/shared_bait_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_fishing_bait_shared_bait_insect, "object/tangible/fishing/bait/shared_bait_insect.iff")
@@ -252,7 +255,8 @@ object_tangible_fishing_bait_shared_bait_worm = SharedTangibleObjectTemplate:new
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 529269810
+	clientObjectCRC = 529269810,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/fishing/bait/base/shared_bait_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_fishing_bait_shared_bait_worm, "object/tangible/fishing/bait/shared_bait_worm.iff")

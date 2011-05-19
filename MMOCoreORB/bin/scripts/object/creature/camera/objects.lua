@@ -114,7 +114,8 @@ object_creature_camera_shared_intro_camera = SharedCreatureObjectTemplate:new {
 	warpTolerance = 17,
 	waterModPercent = 0.5,
 
-	clientObjectCRC = 2217042692
+	clientObjectCRC = 2217042692,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/creature/npc/base/shared_base_npc.iff", "object/creature/npc/base/shared_base_npc_theme_park.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_creature_camera_shared_intro_camera, "object/creature/camera/shared_intro_camera.iff")
@@ -192,7 +193,8 @@ object_creature_camera_shared_intro_controller = SharedCreatureObjectTemplate:ne
 	warpTolerance = 17,
 	waterModPercent = 0.5,
 
-	clientObjectCRC = 1416223243
+	clientObjectCRC = 1416223243,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/creature/npc/base/shared_base_npc.iff", "object/creature/npc/base/shared_base_npc_theme_park.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_creature_camera_shared_intro_controller, "object/creature/camera/shared_intro_controller.iff")

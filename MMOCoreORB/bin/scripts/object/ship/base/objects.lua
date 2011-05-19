@@ -90,7 +90,8 @@ object_ship_base_shared_ship_base = SharedShipObjectTemplate:new {
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3840320293
+	clientObjectCRC = 3840320293,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_ship_base_shared_ship_base, "object/ship/base/shared_ship_base.iff")
@@ -144,7 +145,8 @@ object_ship_base_shared_ship_capital_base = SharedShipObjectTemplate:new {
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2714493516
+	clientObjectCRC = 2714493516,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_ship_base_shared_ship_capital_base, "object/ship/base/shared_ship_capital_base.iff")
@@ -198,7 +200,8 @@ object_ship_base_shared_ship_fighter_base = SharedShipObjectTemplate:new {
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1221795395
+	clientObjectCRC = 1221795395,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_ship_base_shared_ship_fighter_base, "object/ship/base/shared_ship_fighter_base.iff")
@@ -252,7 +255,8 @@ object_ship_base_shared_ship_station_base = SharedShipObjectTemplate:new {
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 92011496
+	clientObjectCRC = 92011496,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_ship_base_shared_ship_station_base, "object/ship/base/shared_ship_station_base.iff")
@@ -306,7 +310,8 @@ object_ship_base_shared_ship_transport_base = SharedShipObjectTemplate:new {
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4138284526
+	clientObjectCRC = 4138284526,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_ship_base_shared_ship_transport_base, "object/ship/base/shared_ship_transport_base.iff")

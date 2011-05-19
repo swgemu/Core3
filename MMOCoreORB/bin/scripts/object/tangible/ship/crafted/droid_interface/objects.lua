@@ -90,7 +90,8 @@ object_tangible_ship_crafted_droid_interface_shared_advanced_droid_harness = Sha
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2841202755
+	clientObjectCRC = 2841202755,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_subcomponent_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_droid_interface_shared_advanced_droid_harness, "object/tangible/ship/crafted/droid_interface/shared_advanced_droid_harness.iff")
@@ -144,7 +145,8 @@ object_tangible_ship_crafted_droid_interface_shared_advanced_ship_circuitry = Sh
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3849212575
+	clientObjectCRC = 3849212575,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_subcomponent_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_droid_interface_shared_advanced_ship_circuitry, "object/tangible/ship/crafted/droid_interface/shared_advanced_ship_circuitry.iff")
@@ -198,7 +200,8 @@ object_tangible_ship_crafted_droid_interface_shared_base_droid_interface = Share
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1488124234
+	clientObjectCRC = 1488124234,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_droid_interface_shared_base_droid_interface, "object/tangible/ship/crafted/droid_interface/shared_base_droid_interface.iff")
@@ -252,7 +255,8 @@ object_tangible_ship_crafted_droid_interface_shared_base_droid_interface_subcomp
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1094447812
+	clientObjectCRC = 1094447812,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_subcomponent_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_droid_interface_shared_base_droid_interface_subcomponent, "object/tangible/ship/crafted/droid_interface/shared_base_droid_interface_subcomponent.iff")
@@ -306,7 +310,8 @@ object_tangible_ship_crafted_droid_interface_shared_base_droid_interface_subcomp
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1600874546
+	clientObjectCRC = 1600874546,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_subcomponent_base.iff", "object/tangible/ship/crafted/droid_interface/shared_base_droid_interface_subcomponent.iff", "object/tangible/ship/crafted/droid_interface/shared_base_droid_interface_subcomponent_mk5.iff", "object/tangible/ship/crafted/droid_interface/shared_base_droid_interface_subcomponent_mk4.iff", "object/tangible/ship/crafted/droid_interface/shared_base_droid_interface_subcomponent_mk3.iff", "object/tangible/ship/crafted/droid_interface/shared_base_droid_interface_subcomponent_mk2.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_droid_interface_shared_base_droid_interface_subcomponent_mk1, "object/tangible/ship/crafted/droid_interface/shared_base_droid_interface_subcomponent_mk1.iff")
@@ -360,7 +365,8 @@ object_tangible_ship_crafted_droid_interface_shared_base_droid_interface_subcomp
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2222768293
+	clientObjectCRC = 2222768293,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_subcomponent_base.iff", "object/tangible/ship/crafted/droid_interface/shared_base_droid_interface_subcomponent.iff", "object/tangible/ship/crafted/droid_interface/shared_base_droid_interface_subcomponent_mk5.iff", "object/tangible/ship/crafted/droid_interface/shared_base_droid_interface_subcomponent_mk4.iff", "object/tangible/ship/crafted/droid_interface/shared_base_droid_interface_subcomponent_mk3.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_droid_interface_shared_base_droid_interface_subcomponent_mk2, "object/tangible/ship/crafted/droid_interface/shared_base_droid_interface_subcomponent_mk2.iff")
@@ -414,7 +420,8 @@ object_tangible_ship_crafted_droid_interface_shared_base_droid_interface_subcomp
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3446777640
+	clientObjectCRC = 3446777640,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_subcomponent_base.iff", "object/tangible/ship/crafted/droid_interface/shared_base_droid_interface_subcomponent.iff", "object/tangible/ship/crafted/droid_interface/shared_base_droid_interface_subcomponent_mk5.iff", "object/tangible/ship/crafted/droid_interface/shared_base_droid_interface_subcomponent_mk4.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_droid_interface_shared_base_droid_interface_subcomponent_mk3, "object/tangible/ship/crafted/droid_interface/shared_base_droid_interface_subcomponent_mk3.iff")
@@ -468,7 +475,8 @@ object_tangible_ship_crafted_droid_interface_shared_base_droid_interface_subcomp
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 915573820
+	clientObjectCRC = 915573820,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_subcomponent_base.iff", "object/tangible/ship/crafted/droid_interface/shared_base_droid_interface_subcomponent.iff", "object/tangible/ship/crafted/droid_interface/shared_base_droid_interface_subcomponent_mk5.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_droid_interface_shared_base_droid_interface_subcomponent_mk4, "object/tangible/ship/crafted/droid_interface/shared_base_droid_interface_subcomponent_mk4.iff")
@@ -522,7 +530,8 @@ object_tangible_ship_crafted_droid_interface_shared_base_droid_interface_subcomp
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2141186993
+	clientObjectCRC = 2141186993,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_subcomponent_base.iff", "object/tangible/ship/crafted/droid_interface/shared_base_droid_interface_subcomponent.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_droid_interface_shared_base_droid_interface_subcomponent_mk5, "object/tangible/ship/crafted/droid_interface/shared_base_droid_interface_subcomponent_mk5.iff")
@@ -576,7 +585,8 @@ object_tangible_ship_crafted_droid_interface_shared_basic_droid_interface = Shar
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3467786259
+	clientObjectCRC = 3467786259,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_droid_interface_shared_basic_droid_interface, "object/tangible/ship/crafted/droid_interface/shared_basic_droid_interface.iff")
@@ -630,7 +640,8 @@ object_tangible_ship_crafted_droid_interface_shared_ddi_mk1 = SharedTangibleObje
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1368476927
+	clientObjectCRC = 1368476927,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_droid_interface_shared_ddi_mk1, "object/tangible/ship/crafted/droid_interface/shared_ddi_mk1.iff")
@@ -684,7 +695,8 @@ object_tangible_ship_crafted_droid_interface_shared_ddi_mk2 = SharedTangibleObje
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2324096104
+	clientObjectCRC = 2324096104,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_droid_interface_shared_ddi_mk2, "object/tangible/ship/crafted/droid_interface/shared_ddi_mk2.iff")
@@ -738,7 +750,8 @@ object_tangible_ship_crafted_droid_interface_shared_ddi_mk3 = SharedTangibleObje
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3280700389
+	clientObjectCRC = 3280700389,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_droid_interface_shared_ddi_mk3, "object/tangible/ship/crafted/droid_interface/shared_ddi_mk3.iff")
@@ -792,7 +805,8 @@ object_tangible_ship_crafted_droid_interface_shared_ddi_mk4 = SharedTangibleObje
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 946383089
+	clientObjectCRC = 946383089,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_droid_interface_shared_ddi_mk4, "object/tangible/ship/crafted/droid_interface/shared_ddi_mk4.iff")
@@ -846,7 +860,8 @@ object_tangible_ship_crafted_droid_interface_shared_ddi_mk5 = SharedTangibleObje
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1902497660
+	clientObjectCRC = 1902497660,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_droid_interface_shared_ddi_mk5, "object/tangible/ship/crafted/droid_interface/shared_ddi_mk5.iff")
@@ -900,7 +915,8 @@ object_tangible_ship_crafted_droid_interface_shared_droid_brain_interface = Shar
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1290028693
+	clientObjectCRC = 1290028693,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_subcomponent_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_droid_interface_shared_droid_brain_interface, "object/tangible/ship/crafted/droid_interface/shared_droid_brain_interface.iff")
@@ -954,7 +970,8 @@ object_tangible_ship_crafted_droid_interface_shared_droid_brain_upgrade_mk1 = Sh
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2273558131
+	clientObjectCRC = 2273558131,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_subcomponent_base.iff", "object/tangible/ship/crafted/droid_interface/shared_base_droid_interface_subcomponent.iff", "object/tangible/ship/crafted/droid_interface/shared_base_droid_interface_subcomponent_mk5.iff", "object/tangible/ship/crafted/droid_interface/shared_base_droid_interface_subcomponent_mk4.iff", "object/tangible/ship/crafted/droid_interface/shared_base_droid_interface_subcomponent_mk3.iff", "object/tangible/ship/crafted/droid_interface/shared_base_droid_interface_subcomponent_mk2.iff", "object/tangible/ship/crafted/droid_interface/shared_base_droid_interface_subcomponent_mk1.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_droid_interface_shared_droid_brain_upgrade_mk1, "object/tangible/ship/crafted/droid_interface/shared_droid_brain_upgrade_mk1.iff")
@@ -1008,7 +1025,8 @@ object_tangible_ship_crafted_droid_interface_shared_droid_brain_upgrade_mk2 = Sh
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1553209060
+	clientObjectCRC = 1553209060,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_subcomponent_base.iff", "object/tangible/ship/crafted/droid_interface/shared_base_droid_interface_subcomponent.iff", "object/tangible/ship/crafted/droid_interface/shared_base_droid_interface_subcomponent_mk5.iff", "object/tangible/ship/crafted/droid_interface/shared_base_droid_interface_subcomponent_mk4.iff", "object/tangible/ship/crafted/droid_interface/shared_base_droid_interface_subcomponent_mk3.iff", "object/tangible/ship/crafted/droid_interface/shared_base_droid_interface_subcomponent_mk2.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_droid_interface_shared_droid_brain_upgrade_mk2, "object/tangible/ship/crafted/droid_interface/shared_droid_brain_upgrade_mk2.iff")
@@ -1062,7 +1080,8 @@ object_tangible_ship_crafted_droid_interface_shared_droid_brain_upgrade_mk3 = Sh
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 362377577
+	clientObjectCRC = 362377577,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_subcomponent_base.iff", "object/tangible/ship/crafted/droid_interface/shared_base_droid_interface_subcomponent.iff", "object/tangible/ship/crafted/droid_interface/shared_base_droid_interface_subcomponent_mk5.iff", "object/tangible/ship/crafted/droid_interface/shared_base_droid_interface_subcomponent_mk4.iff", "object/tangible/ship/crafted/droid_interface/shared_base_droid_interface_subcomponent_mk3.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_droid_interface_shared_droid_brain_upgrade_mk3, "object/tangible/ship/crafted/droid_interface/shared_droid_brain_upgrade_mk3.iff")
@@ -1116,7 +1135,8 @@ object_tangible_ship_crafted_droid_interface_shared_droid_brain_upgrade_mk4 = Sh
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4000995965
+	clientObjectCRC = 4000995965,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_subcomponent_base.iff", "object/tangible/ship/crafted/droid_interface/shared_base_droid_interface_subcomponent.iff", "object/tangible/ship/crafted/droid_interface/shared_base_droid_interface_subcomponent_mk5.iff", "object/tangible/ship/crafted/droid_interface/shared_base_droid_interface_subcomponent_mk4.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_droid_interface_shared_droid_brain_upgrade_mk4, "object/tangible/ship/crafted/droid_interface/shared_droid_brain_upgrade_mk4.iff")
@@ -1170,7 +1190,8 @@ object_tangible_ship_crafted_droid_interface_shared_droid_brain_upgrade_mk5 = Sh
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2809609712
+	clientObjectCRC = 2809609712,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_subcomponent_base.iff", "object/tangible/ship/crafted/droid_interface/shared_base_droid_interface_subcomponent.iff", "object/tangible/ship/crafted/droid_interface/shared_base_droid_interface_subcomponent_mk5.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_droid_interface_shared_droid_brain_upgrade_mk5, "object/tangible/ship/crafted/droid_interface/shared_droid_brain_upgrade_mk5.iff")
@@ -1224,7 +1245,8 @@ object_tangible_ship_crafted_droid_interface_shared_droid_harness = SharedTangib
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 930004332
+	clientObjectCRC = 930004332,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_subcomponent_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_droid_interface_shared_droid_harness, "object/tangible/ship/crafted/droid_interface/shared_droid_harness.iff")
@@ -1278,7 +1300,8 @@ object_tangible_ship_crafted_droid_interface_shared_maintenance_reduction_kit_mk
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 82900645
+	clientObjectCRC = 82900645,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_subcomponent_base.iff", "object/tangible/ship/crafted/droid_interface/shared_base_droid_interface_subcomponent.iff", "object/tangible/ship/crafted/droid_interface/shared_base_droid_interface_subcomponent_mk5.iff", "object/tangible/ship/crafted/droid_interface/shared_base_droid_interface_subcomponent_mk4.iff", "object/tangible/ship/crafted/droid_interface/shared_base_droid_interface_subcomponent_mk3.iff", "object/tangible/ship/crafted/droid_interface/shared_base_droid_interface_subcomponent_mk2.iff", "object/tangible/ship/crafted/droid_interface/shared_base_droid_interface_subcomponent_mk1.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_droid_interface_shared_maintenance_reduction_kit_mk1, "object/tangible/ship/crafted/droid_interface/shared_maintenance_reduction_kit_mk1.iff")
@@ -1332,7 +1355,8 @@ object_tangible_ship_crafted_droid_interface_shared_maintenance_reduction_kit_mk
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3756482098
+	clientObjectCRC = 3756482098,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_subcomponent_base.iff", "object/tangible/ship/crafted/droid_interface/shared_base_droid_interface_subcomponent.iff", "object/tangible/ship/crafted/droid_interface/shared_base_droid_interface_subcomponent_mk5.iff", "object/tangible/ship/crafted/droid_interface/shared_base_droid_interface_subcomponent_mk4.iff", "object/tangible/ship/crafted/droid_interface/shared_base_droid_interface_subcomponent_mk3.iff", "object/tangible/ship/crafted/droid_interface/shared_base_droid_interface_subcomponent_mk2.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_droid_interface_shared_maintenance_reduction_kit_mk2, "object/tangible/ship/crafted/droid_interface/shared_maintenance_reduction_kit_mk2.iff")
@@ -1386,7 +1410,8 @@ object_tangible_ship_crafted_droid_interface_shared_maintenance_reduction_kit_mk
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2531932607
+	clientObjectCRC = 2531932607,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_subcomponent_base.iff", "object/tangible/ship/crafted/droid_interface/shared_base_droid_interface_subcomponent.iff", "object/tangible/ship/crafted/droid_interface/shared_base_droid_interface_subcomponent_mk5.iff", "object/tangible/ship/crafted/droid_interface/shared_base_droid_interface_subcomponent_mk4.iff", "object/tangible/ship/crafted/droid_interface/shared_base_droid_interface_subcomponent_mk3.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_droid_interface_shared_maintenance_reduction_kit_mk3, "object/tangible/ship/crafted/droid_interface/shared_maintenance_reduction_kit_mk3.iff")
@@ -1440,7 +1465,8 @@ object_tangible_ship_crafted_droid_interface_shared_maintenance_reduction_kit_mk
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1829311147
+	clientObjectCRC = 1829311147,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_subcomponent_base.iff", "object/tangible/ship/crafted/droid_interface/shared_base_droid_interface_subcomponent.iff", "object/tangible/ship/crafted/droid_interface/shared_base_droid_interface_subcomponent_mk5.iff", "object/tangible/ship/crafted/droid_interface/shared_base_droid_interface_subcomponent_mk4.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_droid_interface_shared_maintenance_reduction_kit_mk4, "object/tangible/ship/crafted/droid_interface/shared_maintenance_reduction_kit_mk4.iff")
@@ -1494,7 +1520,8 @@ object_tangible_ship_crafted_droid_interface_shared_maintenance_reduction_kit_mk
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 604271910
+	clientObjectCRC = 604271910,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_subcomponent_base.iff", "object/tangible/ship/crafted/droid_interface/shared_base_droid_interface_subcomponent.iff", "object/tangible/ship/crafted/droid_interface/shared_base_droid_interface_subcomponent_mk5.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_droid_interface_shared_maintenance_reduction_kit_mk5, "object/tangible/ship/crafted/droid_interface/shared_maintenance_reduction_kit_mk5.iff")

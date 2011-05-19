@@ -90,7 +90,8 @@ object_factory_shared_factory_crate_armor = SharedFactoryObjectTemplate:new {
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1598099833
+	clientObjectCRC = 1598099833,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/factory/base/shared_base_factory.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_factory_shared_factory_crate_armor, "object/factory/shared_factory_crate_armor.iff")
@@ -144,7 +145,8 @@ object_factory_shared_factory_crate_chemicals = SharedFactoryObjectTemplate:new 
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3401438151
+	clientObjectCRC = 3401438151,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/factory/base/shared_base_factory.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_factory_shared_factory_crate_chemicals, "object/factory/shared_factory_crate_chemicals.iff")
@@ -198,7 +200,8 @@ object_factory_shared_factory_crate_clothing = SharedFactoryObjectTemplate:new {
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2342101395
+	clientObjectCRC = 2342101395,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/factory/base/shared_base_factory.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_factory_shared_factory_crate_clothing, "object/factory/shared_factory_crate_clothing.iff")
@@ -252,7 +255,8 @@ object_factory_shared_factory_crate_electronics = SharedFactoryObjectTemplate:ne
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1584679689
+	clientObjectCRC = 1584679689,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/factory/base/shared_base_factory.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_factory_shared_factory_crate_electronics, "object/factory/shared_factory_crate_electronics.iff")
@@ -306,7 +310,8 @@ object_factory_shared_factory_crate_food = SharedFactoryObjectTemplate:new {
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1184983851
+	clientObjectCRC = 1184983851,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/factory/base/shared_base_factory.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_factory_shared_factory_crate_food, "object/factory/shared_factory_crate_food.iff")
@@ -360,7 +365,8 @@ object_factory_shared_factory_crate_furniture = SharedFactoryObjectTemplate:new 
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3880912033
+	clientObjectCRC = 3880912033,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/factory/base/shared_base_factory.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_factory_shared_factory_crate_furniture, "object/factory/shared_factory_crate_furniture.iff")
@@ -414,7 +420,8 @@ object_factory_shared_factory_crate_generic_items = SharedFactoryObjectTemplate:
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 685226208
+	clientObjectCRC = 685226208,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/factory/base/shared_base_factory.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_factory_shared_factory_crate_generic_items, "object/factory/shared_factory_crate_generic_items.iff")
@@ -468,7 +475,8 @@ object_factory_shared_factory_crate_installation = SharedFactoryObjectTemplate:n
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 577406456
+	clientObjectCRC = 577406456,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/factory/base/shared_base_factory.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_factory_shared_factory_crate_installation, "object/factory/shared_factory_crate_installation.iff")
@@ -522,7 +530,8 @@ object_factory_shared_factory_crate_weapon = SharedFactoryObjectTemplate:new {
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4077073151
+	clientObjectCRC = 4077073151,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/factory/base/shared_base_factory.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_factory_shared_factory_crate_weapon, "object/factory/shared_factory_crate_weapon.iff")

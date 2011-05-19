@@ -90,7 +90,8 @@ object_tangible_lair_tusk_cat_shared_lair_tusk_cat = SharedTangibleObjectTemplat
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1593900791
+	clientObjectCRC = 1593900791,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_tusk_cat_shared_lair_tusk_cat, "object/tangible/lair/tusk_cat/shared_lair_tusk_cat.iff")
@@ -144,7 +145,8 @@ object_tangible_lair_tusk_cat_shared_lair_tusk_cat_grassland = SharedTangibleObj
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 664931344
+	clientObjectCRC = 664931344,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_tusk_cat_shared_lair_tusk_cat_grassland, "object/tangible/lair/tusk_cat/shared_lair_tusk_cat_grassland.iff")

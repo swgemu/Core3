@@ -90,7 +90,8 @@ object_weapon_trap_shared_eqp_weapon_auto_laser_trap = SharedTangibleObjectTempl
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1619506188
+	clientObjectCRC = 1619506188,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_weapon_trap_shared_eqp_weapon_auto_laser_trap, "object/weapon/trap/shared_eqp_weapon_auto_laser_trap.iff")

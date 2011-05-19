@@ -93,7 +93,8 @@ object_building_tatooine_shared_association_hall_civilian_tatooine = SharedBuild
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3483054122
+	clientObjectCRC = 3483054122,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_association_hall.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_tatooine_shared_association_hall_civilian_tatooine, "object/building/tatooine/shared_association_hall_civilian_tatooine.iff")
@@ -150,7 +151,8 @@ object_building_tatooine_shared_association_hall_civilian_tatooine_02 = SharedBu
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3781643094
+	clientObjectCRC = 3781643094,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_association_hall.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_tatooine_shared_association_hall_civilian_tatooine_02, "object/building/tatooine/shared_association_hall_civilian_tatooine_02.iff")
@@ -207,7 +209,8 @@ object_building_tatooine_shared_bank_tatooine = SharedBuildingObjectTemplate:new
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 533531985
+	clientObjectCRC = 533531985,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_bank.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_tatooine_shared_bank_tatooine, "object/building/tatooine/shared_bank_tatooine.iff")
@@ -264,7 +267,8 @@ object_building_tatooine_shared_cantina_tatooine = SharedBuildingObjectTemplate:
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1072782602
+	clientObjectCRC = 1072782602,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_cantina.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_tatooine_shared_cantina_tatooine, "object/building/tatooine/shared_cantina_tatooine.iff")
@@ -321,7 +325,8 @@ object_building_tatooine_shared_capitol_tatooine = SharedBuildingObjectTemplate:
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1064279242
+	clientObjectCRC = 1064279242,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_palace.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_tatooine_shared_capitol_tatooine, "object/building/tatooine/shared_capitol_tatooine.iff")
@@ -378,7 +383,8 @@ object_building_tatooine_shared_cave_tatooine_style_01 = SharedBuildingObjectTem
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3062222401
+	clientObjectCRC = 3062222401,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_cave.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_tatooine_shared_cave_tatooine_style_01, "object/building/tatooine/shared_cave_tatooine_style_01.iff")
@@ -435,7 +441,8 @@ object_building_tatooine_shared_cave_tatooine_style_02 = SharedBuildingObjectTem
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1838311126
+	clientObjectCRC = 1838311126,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_cave.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_tatooine_shared_cave_tatooine_style_02, "object/building/tatooine/shared_cave_tatooine_style_02.iff")
@@ -492,7 +499,8 @@ object_building_tatooine_shared_cloning_facility_tatooine = SharedBuildingObject
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 749651154
+	clientObjectCRC = 749651154,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_cloning_facility.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_tatooine_shared_cloning_facility_tatooine, "object/building/tatooine/shared_cloning_facility_tatooine.iff")
@@ -549,7 +557,8 @@ object_building_tatooine_shared_cloning_facility_tatooine_small = SharedBuilding
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1267595977
+	clientObjectCRC = 1267595977,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_cloning_facility.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_tatooine_shared_cloning_facility_tatooine_small, "object/building/tatooine/shared_cloning_facility_tatooine_small.iff")
@@ -606,7 +615,8 @@ object_building_tatooine_shared_filler_building_block_64x16_style_01 = SharedBui
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1977133003
+	clientObjectCRC = 1977133003,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_filler_building.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_tatooine_shared_filler_building_block_64x16_style_01, "object/building/tatooine/shared_filler_building_block_64x16_style_01.iff")
@@ -663,7 +673,8 @@ object_building_tatooine_shared_filler_building_block_64x16_style_02 = SharedBui
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2932805468
+	clientObjectCRC = 2932805468,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_filler_building.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_tatooine_shared_filler_building_block_64x16_style_02, "object/building/tatooine/shared_filler_building_block_64x16_style_02.iff")
@@ -720,7 +731,8 @@ object_building_tatooine_shared_filler_building_block_64x32_style_01 = SharedBui
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3491257899
+	clientObjectCRC = 3491257899,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_filler_building.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_tatooine_shared_filler_building_block_64x32_style_01, "object/building/tatooine/shared_filler_building_block_64x32_style_01.iff")
@@ -777,7 +789,8 @@ object_building_tatooine_shared_filler_building_block_64x32_style_02 = SharedBui
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 185595580
+	clientObjectCRC = 185595580,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_filler_building.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_tatooine_shared_filler_building_block_64x32_style_02, "object/building/tatooine/shared_filler_building_block_64x32_style_02.iff")
@@ -834,7 +847,8 @@ object_building_tatooine_shared_filler_building_slave_quarters_style_01 = Shared
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3086665699
+	clientObjectCRC = 3086665699,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_filler_building.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_tatooine_shared_filler_building_slave_quarters_style_01, "object/building/tatooine/shared_filler_building_slave_quarters_style_01.iff")
@@ -891,7 +905,8 @@ object_building_tatooine_shared_filler_building_tatt_style01_01 = SharedBuilding
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2338066597
+	clientObjectCRC = 2338066597,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_filler_building.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_tatooine_shared_filler_building_tatt_style01_01, "object/building/tatooine/shared_filler_building_tatt_style01_01.iff")
@@ -948,7 +963,8 @@ object_building_tatooine_shared_filler_building_tatt_style01_02 = SharedBuilding
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1347139634
+	clientObjectCRC = 1347139634,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_filler_building.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_tatooine_shared_filler_building_tatt_style01_02, "object/building/tatooine/shared_filler_building_tatt_style01_02.iff")
@@ -1005,7 +1021,8 @@ object_building_tatooine_shared_filler_building_tatt_style01_03 = SharedBuilding
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 424075199
+	clientObjectCRC = 424075199,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_filler_building.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_tatooine_shared_filler_building_tatt_style01_03, "object/building/tatooine/shared_filler_building_tatt_style01_03.iff")
@@ -1062,7 +1079,8 @@ object_building_tatooine_shared_filler_building_tatt_style01_04 = SharedBuilding
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3802526891
+	clientObjectCRC = 3802526891,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_filler_building.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_tatooine_shared_filler_building_tatt_style01_04, "object/building/tatooine/shared_filler_building_tatt_style01_04.iff")
@@ -1119,7 +1137,8 @@ object_building_tatooine_shared_filler_building_tatt_style01_05 = SharedBuilding
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2879951654
+	clientObjectCRC = 2879951654,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_filler_building.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_tatooine_shared_filler_building_tatt_style01_05, "object/building/tatooine/shared_filler_building_tatt_style01_05.iff")
@@ -1176,7 +1195,8 @@ object_building_tatooine_shared_filler_building_tatt_style01_06 = SharedBuilding
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1891580849
+	clientObjectCRC = 1891580849,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_filler_building.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_tatooine_shared_filler_building_tatt_style01_06, "object/building/tatooine/shared_filler_building_tatt_style01_06.iff")
@@ -1233,7 +1253,8 @@ object_building_tatooine_shared_filler_building_tatt_style01_07 = SharedBuilding
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 967990332
+	clientObjectCRC = 967990332,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_filler_building.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_tatooine_shared_filler_building_tatt_style01_07, "object/building/tatooine/shared_filler_building_tatt_style01_07.iff")
@@ -1290,7 +1311,8 @@ object_building_tatooine_shared_filler_building_tatt_style01_08 = SharedBuilding
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2209902638
+	clientObjectCRC = 2209902638,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_filler_building.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_tatooine_shared_filler_building_tatt_style01_08, "object/building/tatooine/shared_filler_building_tatt_style01_08.iff")
@@ -1347,7 +1369,8 @@ object_building_tatooine_shared_filler_building_tatt_style01_09 = SharedBuilding
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3400865699
+	clientObjectCRC = 3400865699,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_filler_building.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_tatooine_shared_filler_building_tatt_style01_09, "object/building/tatooine/shared_filler_building_tatt_style01_09.iff")
@@ -1404,7 +1427,8 @@ object_building_tatooine_shared_filler_building_tatt_style01_10 = SharedBuilding
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3648617040
+	clientObjectCRC = 3648617040,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_filler_building.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_tatooine_shared_filler_building_tatt_style01_10, "object/building/tatooine/shared_filler_building_tatt_style01_10.iff")
@@ -1461,7 +1485,8 @@ object_building_tatooine_shared_filler_building_tatt_style01_11 = SharedBuilding
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2423528925
+	clientObjectCRC = 2423528925,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_filler_building.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_tatooine_shared_filler_building_tatt_style01_11, "object/building/tatooine/shared_filler_building_tatt_style01_11.iff")
@@ -1518,7 +1543,8 @@ object_building_tatooine_shared_fort_tusken = SharedBuildingObjectTemplate:new {
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1194412824
+	clientObjectCRC = 1194412824,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_palace.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_tatooine_shared_fort_tusken, "object/building/tatooine/shared_fort_tusken.iff")
@@ -1575,7 +1601,8 @@ object_building_tatooine_shared_guild_combat_tatooine_style_01 = SharedBuildingO
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1273926318
+	clientObjectCRC = 1273926318,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_guild.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_tatooine_shared_guild_combat_tatooine_style_01, "object/building/tatooine/shared_guild_combat_tatooine_style_01.iff")
@@ -1632,7 +1659,8 @@ object_building_tatooine_shared_guild_commerce_tatooine_style_01 = SharedBuildin
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 113904481
+	clientObjectCRC = 113904481,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_guild.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_tatooine_shared_guild_commerce_tatooine_style_01, "object/building/tatooine/shared_guild_commerce_tatooine_style_01.iff")
@@ -1689,7 +1717,8 @@ object_building_tatooine_shared_guild_theater_tatooine_style_01 = SharedBuilding
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3289028168
+	clientObjectCRC = 3289028168,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_theater.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_tatooine_shared_guild_theater_tatooine_style_01, "object/building/tatooine/shared_guild_theater_tatooine_style_01.iff")
@@ -1746,7 +1775,8 @@ object_building_tatooine_shared_guild_university_tatooine_style_01 = SharedBuild
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 970934772
+	clientObjectCRC = 970934772,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_guild.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_tatooine_shared_guild_university_tatooine_style_01, "object/building/tatooine/shared_guild_university_tatooine_style_01.iff")
@@ -1803,7 +1833,8 @@ object_building_tatooine_shared_guild_university_tatooine_style_02 = SharedBuild
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3804815715
+	clientObjectCRC = 3804815715,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_guild.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_tatooine_shared_guild_university_tatooine_style_02, "object/building/tatooine/shared_guild_university_tatooine_style_02.iff")
@@ -1860,7 +1891,8 @@ object_building_tatooine_shared_hospital_tatooine = SharedBuildingObjectTemplate
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4066183619
+	clientObjectCRC = 4066183619,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_palace.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_tatooine_shared_hospital_tatooine, "object/building/tatooine/shared_hospital_tatooine.iff")
@@ -1917,7 +1949,8 @@ object_building_tatooine_shared_hospital_tatooine_s02 = SharedBuildingObjectTemp
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2745462757
+	clientObjectCRC = 2745462757,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_palace.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_tatooine_shared_hospital_tatooine_s02, "object/building/tatooine/shared_hospital_tatooine_s02.iff")
@@ -1974,7 +2007,8 @@ object_building_tatooine_shared_hotel_tatooine_general = SharedBuildingObjectTem
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 776066139
+	clientObjectCRC = 776066139,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_hotel.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_tatooine_shared_hotel_tatooine_general, "object/building/tatooine/shared_hotel_tatooine_general.iff")
@@ -2031,7 +2065,8 @@ object_building_tatooine_shared_hotel_tatooine_style_01 = SharedBuildingObjectTe
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4181798094
+	clientObjectCRC = 4181798094,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_hotel.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_tatooine_shared_hotel_tatooine_style_01, "object/building/tatooine/shared_hotel_tatooine_style_01.iff")
@@ -2088,7 +2123,8 @@ object_building_tatooine_shared_housing_tatt_style01_large = SharedBuildingObjec
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3970726045
+	clientObjectCRC = 3970726045,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_housing.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_tatooine_shared_housing_tatt_style01_large, "object/building/tatooine/shared_housing_tatt_style01_large.iff")
@@ -2145,7 +2181,8 @@ object_building_tatooine_shared_housing_tatt_style01_med = SharedBuildingObjectT
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2662523338
+	clientObjectCRC = 2662523338,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_housing.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_tatooine_shared_housing_tatt_style01_med, "object/building/tatooine/shared_housing_tatt_style01_med.iff")
@@ -2202,7 +2239,8 @@ object_building_tatooine_shared_housing_tatt_style01_small = SharedBuildingObjec
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3635932340
+	clientObjectCRC = 3635932340,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_housing.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_tatooine_shared_housing_tatt_style01_small, "object/building/tatooine/shared_housing_tatt_style01_small.iff")
@@ -2259,7 +2297,8 @@ object_building_tatooine_shared_housing_tatt_style02_large = SharedBuildingObjec
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3801672984
+	clientObjectCRC = 3801672984,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_housing.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_tatooine_shared_housing_tatt_style02_large, "object/building/tatooine/shared_housing_tatt_style02_large.iff")
@@ -2316,7 +2355,8 @@ object_building_tatooine_shared_housing_tatt_style02_med = SharedBuildingObjectT
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2356282071
+	clientObjectCRC = 2356282071,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_housing.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_tatooine_shared_housing_tatt_style02_med, "object/building/tatooine/shared_housing_tatt_style02_med.iff")
@@ -2373,7 +2413,8 @@ object_building_tatooine_shared_housing_tatt_style02_small = SharedBuildingObjec
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3598940465
+	clientObjectCRC = 3598940465,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_housing.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_tatooine_shared_housing_tatt_style02_small, "object/building/tatooine/shared_housing_tatt_style02_small.iff")
@@ -2430,7 +2471,8 @@ object_building_tatooine_shared_housing_tatt_style03_large = SharedBuildingObjec
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 456420086
+	clientObjectCRC = 456420086,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_housing.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_tatooine_shared_housing_tatt_style03_large, "object/building/tatooine/shared_housing_tatt_style03_large.iff")
@@ -2487,7 +2529,8 @@ object_building_tatooine_shared_housing_tatt_style03_med = SharedBuildingObjectT
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2121443505
+	clientObjectCRC = 2121443505,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_housing.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_tatooine_shared_housing_tatt_style03_med, "object/building/tatooine/shared_housing_tatt_style03_med.iff")
@@ -2544,7 +2587,8 @@ object_building_tatooine_shared_housing_tatt_style03_small = SharedBuildingObjec
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 791674591
+	clientObjectCRC = 791674591,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_housing.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_tatooine_shared_housing_tatt_style03_small, "object/building/tatooine/shared_housing_tatt_style03_small.iff")
@@ -2601,7 +2645,8 @@ object_building_tatooine_shared_junkshop_watto = SharedBuildingObjectTemplate:ne
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4014265599
+	clientObjectCRC = 4014265599,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_palace.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_tatooine_shared_junkshop_watto, "object/building/tatooine/shared_junkshop_watto.iff")
@@ -2658,7 +2703,8 @@ object_building_tatooine_shared_lair_environment_tatooine = SharedBuildingObject
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2616325223
+	clientObjectCRC = 2616325223,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_filler_building.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_tatooine_shared_lair_environment_tatooine, "object/building/tatooine/shared_lair_environment_tatooine.iff")
@@ -2715,7 +2761,8 @@ object_building_tatooine_shared_lucky_despot = SharedBuildingObjectTemplate:new 
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1100188829
+	clientObjectCRC = 1100188829,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_hotel.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_tatooine_shared_lucky_despot, "object/building/tatooine/shared_lucky_despot.iff")
@@ -2772,7 +2819,8 @@ object_building_tatooine_shared_merchant_tent_tato_s01 = SharedBuildingObjectTem
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2745583203
+	clientObjectCRC = 2745583203,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_housing.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_tatooine_shared_merchant_tent_tato_s01, "object/building/tatooine/shared_merchant_tent_tato_s01.iff")
@@ -2829,7 +2877,8 @@ object_building_tatooine_shared_palace_tatooine_jabba = SharedBuildingObjectTemp
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4034000230
+	clientObjectCRC = 4034000230,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_palace.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_tatooine_shared_palace_tatooine_jabba, "object/building/tatooine/shared_palace_tatooine_jabba.iff")
@@ -2886,7 +2935,8 @@ object_building_tatooine_shared_parking_garage_tatooine_style_1 = SharedBuilding
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2278884651
+	clientObjectCRC = 2278884651,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_parking_garage.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_tatooine_shared_parking_garage_tatooine_style_1, "object/building/tatooine/shared_parking_garage_tatooine_style_1.iff")
@@ -2943,7 +2993,8 @@ object_building_tatooine_shared_poi_tato_farm_32x32_s01 = SharedBuildingObjectTe
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1014253665
+	clientObjectCRC = 1014253665,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_filler_building.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_tatooine_shared_poi_tato_farm_32x32_s01, "object/building/tatooine/shared_poi_tato_farm_32x32_s01.iff")
@@ -3000,7 +3051,8 @@ object_building_tatooine_shared_salon_tatooine = SharedBuildingObjectTemplate:ne
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 616531993
+	clientObjectCRC = 616531993,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_salon.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_tatooine_shared_salon_tatooine, "object/building/tatooine/shared_salon_tatooine.iff")
@@ -3057,7 +3109,8 @@ object_building_tatooine_shared_shuttleport_tatooine = SharedBuildingObjectTempl
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3505295527
+	clientObjectCRC = 3505295527,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_starport.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_tatooine_shared_shuttleport_tatooine, "object/building/tatooine/shared_shuttleport_tatooine.iff")
@@ -3114,7 +3167,8 @@ object_building_tatooine_shared_starport_tatooine = SharedBuildingObjectTemplate
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 351600928
+	clientObjectCRC = 351600928,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_starport.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_tatooine_shared_starport_tatooine, "object/building/tatooine/shared_starport_tatooine.iff")
@@ -3171,7 +3225,8 @@ object_building_tatooine_shared_tower_jabbas_palace = SharedBuildingObjectTempla
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2860552089
+	clientObjectCRC = 2860552089,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_filler_building.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_tatooine_shared_tower_jabbas_palace, "object/building/tatooine/shared_tower_jabbas_palace.iff")

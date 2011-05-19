@@ -90,7 +90,8 @@ object_installation_generators_base_shared_power_generator_base = SharedInstalla
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3676361903
+	clientObjectCRC = 3676361903,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_installation_generators_base_shared_power_generator_base, "object/installation/generators/base/shared_power_generator_base.iff")

@@ -90,7 +90,8 @@ object_tangible_space_content_infrastructure_shared_basic_corridor_point = Share
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1336476935
+	clientObjectCRC = 1336476935,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_space_content_infrastructure_shared_basic_corridor_point, "object/tangible/space/content_infrastructure/shared_basic_corridor_point.iff")
@@ -144,7 +145,8 @@ object_tangible_space_content_infrastructure_shared_basic_generic_point = Shared
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2123564231
+	clientObjectCRC = 2123564231,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_space_content_infrastructure_shared_basic_generic_point, "object/tangible/space/content_infrastructure/shared_basic_generic_point.iff")
@@ -198,7 +200,8 @@ object_tangible_space_content_infrastructure_shared_basic_patrol_point = SharedT
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 233417941
+	clientObjectCRC = 233417941,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_space_content_infrastructure_shared_basic_patrol_point, "object/tangible/space/content_infrastructure/shared_basic_patrol_point.iff")
@@ -252,7 +255,8 @@ object_tangible_space_content_infrastructure_shared_basic_spawner = SharedTangib
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 283550594
+	clientObjectCRC = 283550594,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_space_content_infrastructure_shared_basic_spawner, "object/tangible/space/content_infrastructure/shared_basic_spawner.iff")
@@ -306,7 +310,8 @@ object_tangible_space_content_infrastructure_shared_content_manager = SharedTang
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2712609943
+	clientObjectCRC = 2712609943,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_space_content_infrastructure_shared_content_manager, "object/tangible/space/content_infrastructure/shared_content_manager.iff")
@@ -360,7 +365,8 @@ object_tangible_space_content_infrastructure_shared_corridor_end_spawner = Share
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2186464753
+	clientObjectCRC = 2186464753,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_space_content_infrastructure_shared_corridor_end_spawner, "object/tangible/space/content_infrastructure/shared_corridor_end_spawner.iff")
@@ -414,7 +420,8 @@ object_tangible_space_content_infrastructure_shared_corridor_start_spawner = Sha
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4139087673
+	clientObjectCRC = 4139087673,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_space_content_infrastructure_shared_corridor_start_spawner, "object/tangible/space/content_infrastructure/shared_corridor_start_spawner.iff")
@@ -468,7 +475,8 @@ object_tangible_space_content_infrastructure_shared_generic_egg_small = SharedTa
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2261680514
+	clientObjectCRC = 2261680514,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_space_content_infrastructure_shared_generic_egg_small, "object/tangible/space/content_infrastructure/shared_generic_egg_small.iff")
@@ -522,7 +530,8 @@ object_tangible_space_content_infrastructure_shared_patrol_spawner = SharedTangi
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4256567837
+	clientObjectCRC = 4256567837,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_space_content_infrastructure_shared_patrol_spawner, "object/tangible/space/content_infrastructure/shared_patrol_spawner.iff")
@@ -576,7 +585,8 @@ object_tangible_space_content_infrastructure_shared_quest_manager = SharedTangib
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 493351489
+	clientObjectCRC = 493351489,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_space_content_infrastructure_shared_quest_manager, "object/tangible/space/content_infrastructure/shared_quest_manager.iff")
@@ -630,7 +640,8 @@ object_tangible_space_content_infrastructure_shared_quest_nav_point = SharedTang
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 339299356
+	clientObjectCRC = 339299356,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_space_content_infrastructure_shared_quest_nav_point, "object/tangible/space/content_infrastructure/shared_quest_nav_point.iff")
@@ -684,7 +695,8 @@ object_tangible_space_content_infrastructure_shared_wave_spawner = SharedTangibl
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3763775974
+	clientObjectCRC = 3763775974,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_space_content_infrastructure_shared_wave_spawner, "object/tangible/space/content_infrastructure/shared_wave_spawner.iff")

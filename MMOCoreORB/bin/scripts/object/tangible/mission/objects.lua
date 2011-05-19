@@ -90,7 +90,8 @@ object_tangible_mission_shared_assassin_missions_device = SharedTangibleObjectTe
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2808148877
+	clientObjectCRC = 2808148877,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_shared_assassin_missions_device, "object/tangible/mission/shared_assassin_missions_device.iff")
@@ -144,7 +145,8 @@ object_tangible_mission_shared_mission_bounty_droid_probot = SharedTangibleObjec
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 492694456
+	clientObjectCRC = 492694456,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_shared_mission_bounty_droid_probot, "object/tangible/mission/shared_mission_bounty_droid_probot.iff")
@@ -198,7 +200,8 @@ object_tangible_mission_shared_mission_bounty_droid_seeker = SharedTangibleObjec
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1438002131
+	clientObjectCRC = 1438002131,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_shared_mission_bounty_droid_seeker, "object/tangible/mission/shared_mission_bounty_droid_seeker.iff")
@@ -252,7 +255,8 @@ object_tangible_mission_shared_mission_bounty_target = SharedTangibleObjectTempl
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3104954918
+	clientObjectCRC = 3104954918,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_shared_mission_bounty_target, "object/tangible/mission/shared_mission_bounty_target.iff")
@@ -306,7 +310,8 @@ object_tangible_mission_shared_mission_datadisk = SharedTangibleObjectTemplate:n
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3784432555
+	clientObjectCRC = 3784432555,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_shared_mission_datadisk, "object/tangible/mission/shared_mission_datadisk.iff")
@@ -360,7 +365,8 @@ object_tangible_mission_shared_mission_informant_spawner_easy = SharedTangibleOb
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 528020933
+	clientObjectCRC = 528020933,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_shared_mission_informant_spawner_easy, "object/tangible/mission/shared_mission_informant_spawner_easy.iff")
@@ -414,7 +420,8 @@ object_tangible_mission_shared_mission_informant_spawner_hard = SharedTangibleOb
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1257863890
+	clientObjectCRC = 1257863890,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_shared_mission_informant_spawner_hard, "object/tangible/mission/shared_mission_informant_spawner_hard.iff")
@@ -468,7 +475,8 @@ object_tangible_mission_shared_mission_informant_spawner_medium = SharedTangible
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3708162000
+	clientObjectCRC = 3708162000,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_shared_mission_informant_spawner_medium, "object/tangible/mission/shared_mission_informant_spawner_medium.iff")
@@ -522,7 +530,8 @@ object_tangible_mission_shared_mission_recon_target = SharedTangibleObjectTempla
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1165528802
+	clientObjectCRC = 1165528802,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_shared_mission_recon_target, "object/tangible/mission/shared_mission_recon_target.iff")
@@ -576,7 +585,8 @@ object_tangible_mission_shared_mission_terminal = SharedTangibleObjectTemplate:n
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1188112429
+	clientObjectCRC = 1188112429,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_shared_mission_terminal, "object/tangible/mission/shared_mission_terminal.iff")

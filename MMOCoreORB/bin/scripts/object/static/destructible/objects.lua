@@ -90,7 +90,8 @@ object_static_destructible_shared_destructible_cave_wall_damprock = SharedTangib
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 918998876
+	clientObjectCRC = 918998876,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_destructible_shared_destructible_cave_wall_damprock, "object/static/destructible/shared_destructible_cave_wall_damprock.iff")
@@ -144,7 +145,8 @@ object_static_destructible_shared_destructible_item_barrel = SharedTangibleObjec
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4179770460
+	clientObjectCRC = 4179770460,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_destructible_shared_destructible_item_barrel, "object/static/destructible/shared_destructible_item_barrel.iff")
@@ -198,7 +200,8 @@ object_static_destructible_shared_destructible_tato_cave_rock_lg = SharedTangibl
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2104939815
+	clientObjectCRC = 2104939815,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_destructible_shared_destructible_tato_cave_rock_lg, "object/static/destructible/shared_destructible_tato_cave_rock_lg.iff")
@@ -252,7 +255,8 @@ object_static_destructible_shared_destructible_tato_cave_rock_med = SharedTangib
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3390669674
+	clientObjectCRC = 3390669674,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_destructible_shared_destructible_tato_cave_rock_med, "object/static/destructible/shared_destructible_tato_cave_rock_med.iff")
@@ -306,7 +310,8 @@ object_static_destructible_shared_destructible_tato_crate1 = SharedTangibleObjec
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4003304122
+	clientObjectCRC = 4003304122,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_destructible_shared_destructible_tato_crate1, "object/static/destructible/shared_destructible_tato_crate1.iff")
@@ -360,7 +365,8 @@ object_static_destructible_shared_destructible_tato_drum_dented = SharedTangible
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 316155043
+	clientObjectCRC = 316155043,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_destructible_shared_destructible_tato_drum_dented, "object/static/destructible/shared_destructible_tato_drum_dented.iff")
@@ -414,7 +420,8 @@ object_static_destructible_shared_destructible_tato_drum_storage1 = SharedTangib
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2157671754
+	clientObjectCRC = 2157671754,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_destructible_shared_destructible_tato_drum_storage1, "object/static/destructible/shared_destructible_tato_drum_storage1.iff")
@@ -468,7 +475,8 @@ object_static_destructible_shared_gungan_sacred_head = SharedInstallationObjectT
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 196750544
+	clientObjectCRC = 196750544,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff", "object/installation/battlefield/destructible/base/shared_base_destructible_building.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_destructible_shared_gungan_sacred_head, "object/static/destructible/shared_gungan_sacred_head.iff")

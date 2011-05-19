@@ -90,7 +90,8 @@ object_tangible_food_shared_bread_loaf_full_s1 = SharedTangibleObjectTemplate:ne
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 636907490
+	clientObjectCRC = 636907490,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/base/shared_base_food.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_shared_bread_loaf_full_s1, "object/tangible/food/shared_bread_loaf_full_s1.iff")
@@ -144,7 +145,8 @@ object_tangible_food_shared_fruit_melon = SharedTangibleObjectTemplate:new {
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1805453686
+	clientObjectCRC = 1805453686,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/base/shared_base_food.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_shared_fruit_melon, "object/tangible/food/shared_fruit_melon.iff")
@@ -198,7 +200,8 @@ object_tangible_food_shared_meat_kabob = SharedTangibleObjectTemplate:new {
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1607939967
+	clientObjectCRC = 1607939967,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/base/shared_base_food.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_shared_meat_kabob, "object/tangible/food/shared_meat_kabob.iff")
@@ -252,7 +255,8 @@ object_tangible_food_shared_meat_object = SharedTangibleObjectTemplate:new {
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1002178660
+	clientObjectCRC = 1002178660,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_shared_meat_object, "object/tangible/food/shared_meat_object.iff")
@@ -306,7 +310,8 @@ object_tangible_food_shared_nectar = SharedTangibleObjectTemplate:new {
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2221635461
+	clientObjectCRC = 2221635461,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/base/shared_base_crafted_food.iff", "object/tangible/food/base/shared_drink_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_shared_nectar, "object/tangible/food/shared_nectar.iff")

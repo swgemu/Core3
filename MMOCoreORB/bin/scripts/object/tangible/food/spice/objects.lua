@@ -90,7 +90,8 @@ object_tangible_food_spice_shared_spice_base = SharedTangibleObjectTemplate:new 
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2073269551
+	clientObjectCRC = 2073269551,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_spice_shared_spice_base, "object/tangible/food/spice/shared_spice_base.iff")
@@ -144,7 +145,8 @@ object_tangible_food_spice_shared_spice_booster_blue = SharedTangibleObjectTempl
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2516008025
+	clientObjectCRC = 2516008025,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/spice/shared_spice_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_spice_shared_spice_booster_blue, "object/tangible/food/spice/shared_spice_booster_blue.iff")
@@ -198,7 +200,8 @@ object_tangible_food_spice_shared_spice_crash_n_burn = SharedTangibleObjectTempl
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 96283804
+	clientObjectCRC = 96283804,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/spice/shared_spice_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_spice_shared_spice_crash_n_burn, "object/tangible/food/spice/shared_spice_crash_n_burn.iff")
@@ -252,7 +255,8 @@ object_tangible_food_spice_shared_spice_droid_lube = SharedTangibleObjectTemplat
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1700944368
+	clientObjectCRC = 1700944368,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/spice/shared_spice_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_spice_shared_spice_droid_lube, "object/tangible/food/spice/shared_spice_droid_lube.iff")
@@ -306,7 +310,8 @@ object_tangible_food_spice_shared_spice_giggledust = SharedTangibleObjectTemplat
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1878192398
+	clientObjectCRC = 1878192398,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/spice/shared_spice_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_spice_shared_spice_giggledust, "object/tangible/food/spice/shared_spice_giggledust.iff")
@@ -360,7 +365,8 @@ object_tangible_food_spice_shared_spice_grey_gabaki = SharedTangibleObjectTempla
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4012257661
+	clientObjectCRC = 4012257661,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/spice/shared_spice_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_spice_shared_spice_grey_gabaki, "object/tangible/food/spice/shared_spice_grey_gabaki.iff")
@@ -414,7 +420,8 @@ object_tangible_food_spice_shared_spice_gunjack = SharedTangibleObjectTemplate:n
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3162646760
+	clientObjectCRC = 3162646760,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/spice/shared_spice_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_spice_shared_spice_gunjack, "object/tangible/food/spice/shared_spice_gunjack.iff")
@@ -468,7 +475,8 @@ object_tangible_food_spice_shared_spice_kliknik_boost = SharedTangibleObjectTemp
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2365942016
+	clientObjectCRC = 2365942016,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/spice/shared_spice_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_spice_shared_spice_kliknik_boost, "object/tangible/food/spice/shared_spice_kliknik_boost.iff")
@@ -522,7 +530,8 @@ object_tangible_food_spice_shared_spice_kwi_boost = SharedTangibleObjectTemplate
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3381348892
+	clientObjectCRC = 3381348892,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/spice/shared_spice_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_spice_shared_spice_kwi_boost, "object/tangible/food/spice/shared_spice_kwi_boost.iff")
@@ -576,7 +585,8 @@ object_tangible_food_spice_shared_spice_muon_gold = SharedTangibleObjectTemplate
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3112742541
+	clientObjectCRC = 3112742541,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/spice/shared_spice_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_spice_shared_spice_muon_gold, "object/tangible/food/spice/shared_spice_muon_gold.iff")
@@ -630,7 +640,8 @@ object_tangible_food_spice_shared_spice_neutron_pixey = SharedTangibleObjectTemp
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3750021953
+	clientObjectCRC = 3750021953,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/spice/shared_spice_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_spice_shared_spice_neutron_pixey, "object/tangible/food/spice/shared_spice_neutron_pixey.iff")
@@ -684,7 +695,8 @@ object_tangible_food_spice_shared_spice_pyrepenol = SharedTangibleObjectTemplate
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1073230239
+	clientObjectCRC = 1073230239,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/spice/shared_spice_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_spice_shared_spice_pyrepenol, "object/tangible/food/spice/shared_spice_pyrepenol.iff")
@@ -738,7 +750,8 @@ object_tangible_food_spice_shared_spice_scramjet = SharedTangibleObjectTemplate:
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3992242678
+	clientObjectCRC = 3992242678,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/spice/shared_spice_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_spice_shared_spice_scramjet, "object/tangible/food/spice/shared_spice_scramjet.iff")
@@ -792,7 +805,8 @@ object_tangible_food_spice_shared_spice_sedative_h4b = SharedTangibleObjectTempl
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4072023421
+	clientObjectCRC = 4072023421,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/spice/shared_spice_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_spice_shared_spice_sedative_h4b, "object/tangible/food/spice/shared_spice_sedative_h4b.iff")
@@ -846,7 +860,8 @@ object_tangible_food_spice_shared_spice_shadowpaw = SharedTangibleObjectTemplate
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2778111395
+	clientObjectCRC = 2778111395,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/spice/shared_spice_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_spice_shared_spice_shadowpaw, "object/tangible/food/spice/shared_spice_shadowpaw.iff")
@@ -900,7 +915,8 @@ object_tangible_food_spice_shared_spice_sweetblossom = SharedTangibleObjectTempl
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1182200956
+	clientObjectCRC = 1182200956,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/spice/shared_spice_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_spice_shared_spice_sweetblossom, "object/tangible/food/spice/shared_spice_sweetblossom.iff")
@@ -954,7 +970,8 @@ object_tangible_food_spice_shared_spice_thruster_head = SharedTangibleObjectTemp
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 732545867
+	clientObjectCRC = 732545867,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/spice/shared_spice_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_spice_shared_spice_thruster_head, "object/tangible/food/spice/shared_spice_thruster_head.iff")
@@ -1008,7 +1025,8 @@ object_tangible_food_spice_shared_spice_yarrock = SharedTangibleObjectTemplate:n
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 194250139
+	clientObjectCRC = 194250139,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/spice/shared_spice_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_spice_shared_spice_yarrock, "object/tangible/food/spice/shared_spice_yarrock.iff")

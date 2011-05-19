@@ -90,7 +90,8 @@ object_tangible_lair_ray_shared_lair_ray = SharedTangibleObjectTemplate:new {
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3495854251
+	clientObjectCRC = 3495854251,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_ray_shared_lair_ray, "object/tangible/lair/ray/shared_lair_ray.iff")
@@ -144,7 +145,8 @@ object_tangible_lair_ray_shared_lair_ray_underwater = SharedTangibleObjectTempla
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3792404273
+	clientObjectCRC = 3792404273,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_ray_shared_lair_ray_underwater, "object/tangible/lair/ray/shared_lair_ray_underwater.iff")

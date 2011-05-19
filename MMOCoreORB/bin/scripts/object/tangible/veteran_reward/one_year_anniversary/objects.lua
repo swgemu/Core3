@@ -90,7 +90,8 @@ object_tangible_veteran_reward_one_year_anniversary_shared_painting_01 = SharedT
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3479300551
+	clientObjectCRC = 3479300551,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_veteran_reward_one_year_anniversary_shared_painting_01, "object/tangible/veteran_reward/one_year_anniversary/shared_painting_01.iff")
@@ -144,7 +145,8 @@ object_tangible_veteran_reward_one_year_anniversary_shared_painting_02 = SharedT
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 343294288
+	clientObjectCRC = 343294288,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_veteran_reward_one_year_anniversary_shared_painting_02, "object/tangible/veteran_reward/one_year_anniversary/shared_painting_02.iff")
@@ -198,7 +200,8 @@ object_tangible_veteran_reward_one_year_anniversary_shared_painting_03 = SharedT
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1568351965
+	clientObjectCRC = 1568351965,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_veteran_reward_one_year_anniversary_shared_painting_03, "object/tangible/veteran_reward/one_year_anniversary/shared_painting_03.iff")
@@ -252,7 +255,8 @@ object_tangible_veteran_reward_one_year_anniversary_shared_painting_04 = SharedT
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2794982857
+	clientObjectCRC = 2794982857,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_veteran_reward_one_year_anniversary_shared_painting_04, "object/tangible/veteran_reward/one_year_anniversary/shared_painting_04.iff")
@@ -306,7 +310,8 @@ object_tangible_veteran_reward_one_year_anniversary_shared_painting_05 = SharedT
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4019546692
+	clientObjectCRC = 4019546692,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_veteran_reward_one_year_anniversary_shared_painting_05, "object/tangible/veteran_reward/one_year_anniversary/shared_painting_05.iff")
@@ -360,7 +365,8 @@ object_tangible_veteran_reward_one_year_anniversary_shared_painting_06 = SharedT
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 880984787
+	clientObjectCRC = 880984787,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_veteran_reward_one_year_anniversary_shared_painting_06, "object/tangible/veteran_reward/one_year_anniversary/shared_painting_06.iff")
@@ -414,7 +420,8 @@ object_tangible_veteran_reward_one_year_anniversary_shared_painting_07 = SharedT
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2106565982
+	clientObjectCRC = 2106565982,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_veteran_reward_one_year_anniversary_shared_painting_07, "object/tangible/veteran_reward/one_year_anniversary/shared_painting_07.iff")
@@ -468,7 +475,8 @@ object_tangible_veteran_reward_one_year_anniversary_shared_painting_08 = SharedT
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3347417420
+	clientObjectCRC = 3347417420,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_veteran_reward_one_year_anniversary_shared_painting_08, "object/tangible/veteran_reward/one_year_anniversary/shared_painting_08.iff")
@@ -522,7 +530,8 @@ object_tangible_veteran_reward_one_year_anniversary_shared_painting_09 = SharedT
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2391338689
+	clientObjectCRC = 2391338689,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_veteran_reward_one_year_anniversary_shared_painting_09, "object/tangible/veteran_reward/one_year_anniversary/shared_painting_09.iff")

@@ -90,7 +90,8 @@ object_tangible_ship_crafted_weapon_missile_shared_base_countermeasure = SharedT
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3245525817
+	clientObjectCRC = 3245525817,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_weapon_missile_shared_base_countermeasure, "object/tangible/ship/crafted/weapon/missile/shared_base_countermeasure.iff")
@@ -144,7 +145,8 @@ object_tangible_ship_crafted_weapon_missile_shared_base_pack = SharedTangibleObj
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1672702928
+	clientObjectCRC = 1672702928,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_weapon_missile_shared_base_pack, "object/tangible/ship/crafted/weapon/missile/shared_base_pack.iff")
@@ -198,7 +200,8 @@ object_tangible_ship_crafted_weapon_missile_shared_countermeasure_chaff_launcher
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3047216132
+	clientObjectCRC = 3047216132,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_weapon_missile_shared_countermeasure_chaff_launcher, "object/tangible/ship/crafted/weapon/missile/shared_countermeasure_chaff_launcher.iff")
@@ -252,7 +255,8 @@ object_tangible_ship_crafted_weapon_missile_shared_countermeasure_chaff_pack = S
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1564710260
+	clientObjectCRC = 1564710260,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/crafted/weapon/missile/shared_base_countermeasure.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_weapon_missile_shared_countermeasure_chaff_pack, "object/tangible/ship/crafted/weapon/missile/shared_countermeasure_chaff_pack.iff")
@@ -306,7 +310,8 @@ object_tangible_ship_crafted_weapon_missile_shared_countermeasure_confuser_launc
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2635857595
+	clientObjectCRC = 2635857595,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_weapon_missile_shared_countermeasure_confuser_launcher, "object/tangible/ship/crafted/weapon/missile/shared_countermeasure_confuser_launcher.iff")
@@ -360,7 +365,8 @@ object_tangible_ship_crafted_weapon_missile_shared_countermeasure_confuser_pack 
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1375246682
+	clientObjectCRC = 1375246682,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/crafted/weapon/missile/shared_base_countermeasure.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_weapon_missile_shared_countermeasure_confuser_pack, "object/tangible/ship/crafted/weapon/missile/shared_countermeasure_confuser_pack.iff")
@@ -414,7 +420,8 @@ object_tangible_ship_crafted_weapon_missile_shared_countermeasure_decoy_launcher
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 822727721
+	clientObjectCRC = 822727721,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_weapon_missile_shared_countermeasure_decoy_launcher, "object/tangible/ship/crafted/weapon/missile/shared_countermeasure_decoy_launcher.iff")
@@ -468,7 +475,8 @@ object_tangible_ship_crafted_weapon_missile_shared_countermeasure_decoy_pack = S
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 17293110
+	clientObjectCRC = 17293110,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/crafted/weapon/missile/shared_base_countermeasure.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_weapon_missile_shared_countermeasure_decoy_pack, "object/tangible/ship/crafted/weapon/missile/shared_countermeasure_decoy_pack.iff")
@@ -522,7 +530,8 @@ object_tangible_ship_crafted_weapon_missile_shared_countermeasure_em_launcher = 
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4142390620
+	clientObjectCRC = 4142390620,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_weapon_missile_shared_countermeasure_em_launcher, "object/tangible/ship/crafted/weapon/missile/shared_countermeasure_em_launcher.iff")
@@ -576,7 +585,8 @@ object_tangible_ship_crafted_weapon_missile_shared_countermeasure_em_pack = Shar
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3439723072
+	clientObjectCRC = 3439723072,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/crafted/weapon/missile/shared_base_countermeasure.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_weapon_missile_shared_countermeasure_em_pack, "object/tangible/ship/crafted/weapon/missile/shared_countermeasure_em_pack.iff")
@@ -630,7 +640,8 @@ object_tangible_ship_crafted_weapon_missile_shared_countermeasure_microchaff_lau
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4217308443
+	clientObjectCRC = 4217308443,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_weapon_missile_shared_countermeasure_microchaff_launcher, "object/tangible/ship/crafted/weapon/missile/shared_countermeasure_microchaff_launcher.iff")
@@ -684,7 +695,8 @@ object_tangible_ship_crafted_weapon_missile_shared_countermeasure_microchaff_pac
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 103083573
+	clientObjectCRC = 103083573,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/crafted/weapon/missile/shared_base_countermeasure.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_weapon_missile_shared_countermeasure_microchaff_pack, "object/tangible/ship/crafted/weapon/missile/shared_countermeasure_microchaff_pack.iff")
@@ -738,7 +750,8 @@ object_tangible_ship_crafted_weapon_missile_shared_weapon_basic_launcher = Share
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2943273728
+	clientObjectCRC = 2943273728,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_weapon_missile_shared_weapon_basic_launcher, "object/tangible/ship/crafted/weapon/missile/shared_weapon_basic_launcher.iff")
@@ -792,7 +805,8 @@ object_tangible_ship_crafted_weapon_missile_shared_weapon_basic_pack = SharedTan
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1453812677
+	clientObjectCRC = 1453812677,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_weapon_missile_shared_weapon_basic_pack, "object/tangible/ship/crafted/weapon/missile/shared_weapon_basic_pack.iff")
@@ -846,7 +860,8 @@ object_tangible_ship_crafted_weapon_missile_shared_weapon_chaff_launcher = Share
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2657624858
+	clientObjectCRC = 2657624858,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_weapon_missile_shared_weapon_chaff_launcher, "object/tangible/ship/crafted/weapon/missile/shared_weapon_chaff_launcher.iff")
@@ -900,7 +915,8 @@ object_tangible_ship_crafted_weapon_missile_shared_weapon_chaff_pack = SharedTan
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1873034308
+	clientObjectCRC = 1873034308,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_weapon_missile_shared_weapon_chaff_pack, "object/tangible/ship/crafted/weapon/missile/shared_weapon_chaff_pack.iff")
@@ -954,7 +970,8 @@ object_tangible_ship_crafted_weapon_missile_shared_wpn_concussion_missile_mk1 = 
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2871566567
+	clientObjectCRC = 2871566567,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/crafted/weapon/missile/shared_base_pack.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_weapon_missile_shared_wpn_concussion_missile_mk1, "object/tangible/ship/crafted/weapon/missile/shared_wpn_concussion_missile_mk1.iff")
@@ -1008,7 +1025,8 @@ object_tangible_ship_crafted_weapon_missile_shared_wpn_concussion_missile_mk2 = 
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1883179120
+	clientObjectCRC = 1883179120,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/crafted/weapon/missile/shared_base_pack.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_weapon_missile_shared_wpn_concussion_missile_mk2, "object/tangible/ship/crafted/weapon/missile/shared_wpn_concussion_missile_mk2.iff")
@@ -1062,7 +1080,8 @@ object_tangible_ship_crafted_weapon_missile_shared_wpn_concussion_missile_mk3 = 
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 959606781
+	clientObjectCRC = 959606781,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/crafted/weapon/missile/shared_base_pack.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_weapon_missile_shared_wpn_concussion_missile_mk3, "object/tangible/ship/crafted/weapon/missile/shared_wpn_concussion_missile_mk3.iff")
@@ -1116,7 +1135,8 @@ object_tangible_ship_crafted_weapon_missile_shared_wpn_imagerec_missile_mk1 = Sh
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 190158470
+	clientObjectCRC = 190158470,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/crafted/weapon/missile/shared_base_pack.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_weapon_missile_shared_wpn_imagerec_missile_mk1, "object/tangible/ship/crafted/weapon/missile/shared_wpn_imagerec_missile_mk1.iff")
@@ -1170,7 +1190,8 @@ object_tangible_ship_crafted_weapon_missile_shared_wpn_imagerec_missile_mk2 = Sh
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3494002193
+	clientObjectCRC = 3494002193,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/crafted/weapon/missile/shared_base_pack.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_weapon_missile_shared_wpn_imagerec_missile_mk2, "object/tangible/ship/crafted/weapon/missile/shared_wpn_imagerec_missile_mk2.iff")
@@ -1224,7 +1245,8 @@ object_tangible_ship_crafted_weapon_missile_shared_wpn_launcher_concussion_mk1 =
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2721026212
+	clientObjectCRC = 2721026212,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_weapon_missile_shared_wpn_launcher_concussion_mk1, "object/tangible/ship/crafted/weapon/missile/shared_wpn_launcher_concussion_mk1.iff")
@@ -1278,7 +1300,8 @@ object_tangible_ship_crafted_weapon_missile_shared_wpn_launcher_concussion_mk2 =
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2033727539
+	clientObjectCRC = 2033727539,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_weapon_missile_shared_wpn_launcher_concussion_mk2, "object/tangible/ship/crafted/weapon/missile/shared_wpn_launcher_concussion_mk2.iff")
@@ -1332,7 +1355,8 @@ object_tangible_ship_crafted_weapon_missile_shared_wpn_launcher_concussion_mk3 =
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 808804286
+	clientObjectCRC = 808804286,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_weapon_missile_shared_wpn_launcher_concussion_mk3, "object/tangible/ship/crafted/weapon/missile/shared_wpn_launcher_concussion_mk3.iff")
@@ -1386,7 +1410,8 @@ object_tangible_ship_crafted_weapon_missile_shared_wpn_launcher_imagerec_mk1 = S
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1109435894
+	clientObjectCRC = 1109435894,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_weapon_missile_shared_wpn_launcher_imagerec_mk1, "object/tangible/ship/crafted/weapon/missile/shared_wpn_launcher_imagerec_mk1.iff")
@@ -1440,7 +1465,8 @@ object_tangible_ship_crafted_weapon_missile_shared_wpn_launcher_imagerec_mk2 = S
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2570521953
+	clientObjectCRC = 2570521953,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_weapon_missile_shared_wpn_launcher_imagerec_mk2, "object/tangible/ship/crafted/weapon/missile/shared_wpn_launcher_imagerec_mk2.iff")
@@ -1494,7 +1520,8 @@ object_tangible_ship_crafted_weapon_missile_shared_wpn_launcher_proton_mk1 = Sha
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2118814960
+	clientObjectCRC = 2118814960,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_weapon_missile_shared_wpn_launcher_proton_mk1, "object/tangible/ship/crafted/weapon/missile/shared_wpn_launcher_proton_mk1.iff")
@@ -1548,7 +1575,8 @@ object_tangible_ship_crafted_weapon_missile_shared_wpn_launcher_proton_mk2 = Sha
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2774344807
+	clientObjectCRC = 2774344807,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_weapon_missile_shared_wpn_launcher_proton_mk2, "object/tangible/ship/crafted/weapon/missile/shared_wpn_launcher_proton_mk2.iff")
@@ -1602,7 +1630,8 @@ object_tangible_ship_crafted_weapon_missile_shared_wpn_launcher_proton_mk3 = Sha
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3964683242
+	clientObjectCRC = 3964683242,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_weapon_missile_shared_wpn_launcher_proton_mk3, "object/tangible/ship/crafted/weapon/missile/shared_wpn_launcher_proton_mk3.iff")
@@ -1656,7 +1685,8 @@ object_tangible_ship_crafted_weapon_missile_shared_wpn_launcher_proton_mk4 = Sha
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 397633790
+	clientObjectCRC = 397633790,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_weapon_missile_shared_wpn_launcher_proton_mk4, "object/tangible/ship/crafted/weapon/missile/shared_wpn_launcher_proton_mk4.iff")
@@ -1710,7 +1740,8 @@ object_tangible_ship_crafted_weapon_missile_shared_wpn_launcher_seismic_mk1 = Sh
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2922914559
+	clientObjectCRC = 2922914559,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_weapon_missile_shared_wpn_launcher_seismic_mk1, "object/tangible/ship/crafted/weapon/missile/shared_wpn_launcher_seismic_mk1.iff")
@@ -1764,7 +1795,8 @@ object_tangible_ship_crafted_weapon_missile_shared_wpn_launcher_seismic_mk2 = Sh
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1966049896
+	clientObjectCRC = 1966049896,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_weapon_missile_shared_wpn_launcher_seismic_mk2, "object/tangible/ship/crafted/weapon/missile/shared_wpn_launcher_seismic_mk2.iff")
@@ -1818,7 +1850,8 @@ object_tangible_ship_crafted_weapon_missile_shared_wpn_launcher_seismic_mk3 = Sh
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1008922085
+	clientObjectCRC = 1008922085,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_weapon_missile_shared_wpn_launcher_seismic_mk3, "object/tangible/ship/crafted/weapon/missile/shared_wpn_launcher_seismic_mk3.iff")
@@ -1872,7 +1905,8 @@ object_tangible_ship_crafted_weapon_missile_shared_wpn_launcher_spacebomb_mk1 = 
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3027823737
+	clientObjectCRC = 3027823737,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_weapon_missile_shared_wpn_launcher_spacebomb_mk1, "object/tangible/ship/crafted/weapon/missile/shared_wpn_launcher_spacebomb_mk1.iff")
@@ -1926,7 +1960,8 @@ object_tangible_ship_crafted_weapon_missile_shared_wpn_launcher_spacebomb_mk2 = 
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1869563118
+	clientObjectCRC = 1869563118,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_weapon_missile_shared_wpn_launcher_spacebomb_mk2, "object/tangible/ship/crafted/weapon/missile/shared_wpn_launcher_spacebomb_mk2.iff")
@@ -1980,7 +2015,8 @@ object_tangible_ship_crafted_weapon_missile_shared_wpn_proton_missile_mk1 = Shar
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1356357630
+	clientObjectCRC = 1356357630,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/crafted/weapon/missile/shared_base_pack.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_weapon_missile_shared_wpn_proton_missile_mk1, "object/tangible/ship/crafted/weapon/missile/shared_wpn_proton_missile_mk1.iff")
@@ -2034,7 +2070,8 @@ object_tangible_ship_crafted_weapon_missile_shared_wpn_proton_missile_mk2 = Shar
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2345662313
+	clientObjectCRC = 2345662313,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/crafted/weapon/missile/shared_base_pack.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_weapon_missile_shared_wpn_proton_missile_mk2, "object/tangible/ship/crafted/weapon/missile/shared_wpn_proton_missile_mk2.iff")
@@ -2088,7 +2125,8 @@ object_tangible_ship_crafted_weapon_missile_shared_wpn_proton_missile_mk3 = Shar
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3267530980
+	clientObjectCRC = 3267530980,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/crafted/weapon/missile/shared_base_pack.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_weapon_missile_shared_wpn_proton_missile_mk3, "object/tangible/ship/crafted/weapon/missile/shared_wpn_proton_missile_mk3.iff")
@@ -2142,7 +2180,8 @@ object_tangible_ship_crafted_weapon_missile_shared_wpn_proton_missile_mk4 = Shar
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 958512112
+	clientObjectCRC = 958512112,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/crafted/weapon/missile/shared_base_pack.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_weapon_missile_shared_wpn_proton_missile_mk4, "object/tangible/ship/crafted/weapon/missile/shared_wpn_proton_missile_mk4.iff")
@@ -2196,7 +2235,8 @@ object_tangible_ship_crafted_weapon_missile_shared_wpn_seismic_missile_mk1 = Sha
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1794422147
+	clientObjectCRC = 1794422147,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/crafted/weapon/missile/shared_base_pack.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_weapon_missile_shared_wpn_seismic_missile_mk1, "object/tangible/ship/crafted/weapon/missile/shared_wpn_seismic_missile_mk1.iff")
@@ -2250,7 +2290,8 @@ object_tangible_ship_crafted_weapon_missile_shared_wpn_seismic_missile_mk2 = Sha
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2984451348
+	clientObjectCRC = 2984451348,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/crafted/weapon/missile/shared_base_pack.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_weapon_missile_shared_wpn_seismic_missile_mk2, "object/tangible/ship/crafted/weapon/missile/shared_wpn_seismic_missile_mk2.iff")
@@ -2304,7 +2345,8 @@ object_tangible_ship_crafted_weapon_missile_shared_wpn_seismic_missile_mk3 = Sha
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4176378521
+	clientObjectCRC = 4176378521,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/crafted/weapon/missile/shared_base_pack.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_weapon_missile_shared_wpn_seismic_missile_mk3, "object/tangible/ship/crafted/weapon/missile/shared_wpn_seismic_missile_mk3.iff")
@@ -2358,7 +2400,8 @@ object_tangible_ship_crafted_weapon_missile_shared_wpn_spacebomb_missile_mk1 = S
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3906161899
+	clientObjectCRC = 3906161899,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/crafted/weapon/missile/shared_base_pack.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_weapon_missile_shared_wpn_spacebomb_missile_mk1, "object/tangible/ship/crafted/weapon/missile/shared_wpn_spacebomb_missile_mk1.iff")
@@ -2412,7 +2455,8 @@ object_tangible_ship_crafted_weapon_missile_shared_wpn_spacebomb_missile_mk2 = S
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 868541564
+	clientObjectCRC = 868541564,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/crafted/weapon/missile/shared_base_pack.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_weapon_missile_shared_wpn_spacebomb_missile_mk2, "object/tangible/ship/crafted/weapon/missile/shared_wpn_spacebomb_missile_mk2.iff")

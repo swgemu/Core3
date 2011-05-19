@@ -90,7 +90,8 @@ object_tangible_spawning_shared_fs_village_npc_spawner = SharedTangibleObjectTem
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2009793095
+	clientObjectCRC = 2009793095,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_spawning_shared_fs_village_npc_spawner, "object/tangible/spawning/shared_fs_village_npc_spawner.iff")
@@ -144,7 +145,8 @@ object_tangible_spawning_shared_quest_spawner = SharedTangibleObjectTemplate:new
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3065118291
+	clientObjectCRC = 3065118291,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_spawning_shared_quest_spawner, "object/tangible/spawning/shared_quest_spawner.iff")
@@ -198,7 +200,8 @@ object_tangible_spawning_shared_remote_theater_spawner = SharedTangibleObjectTem
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1732078563
+	clientObjectCRC = 1732078563,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_spawning_shared_remote_theater_spawner, "object/tangible/spawning/shared_remote_theater_spawner.iff")
@@ -252,7 +255,8 @@ object_tangible_spawning_shared_spawn_egg = SharedTangibleObjectTemplate:new {
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 85728691
+	clientObjectCRC = 85728691,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_spawning_shared_spawn_egg, "object/tangible/spawning/shared_spawn_egg.iff")

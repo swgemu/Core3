@@ -90,7 +90,8 @@ object_tangible_component_droid_shared_advanced_droid_frame = SharedTangibleObje
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3744416781
+	clientObjectCRC = 3744416781,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_droid_shared_advanced_droid_frame, "object/tangible/component/droid/shared_advanced_droid_frame.iff")
@@ -144,7 +145,8 @@ object_tangible_component_droid_shared_armor_module_1 = SharedTangibleObjectTemp
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1402137071
+	clientObjectCRC = 1402137071,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/droid/shared_defensive_module_base.iff", "object/tangible/component/droid/shared_armor_module_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_droid_shared_armor_module_1, "object/tangible/component/droid/shared_armor_module_1.iff")
@@ -198,7 +200,8 @@ object_tangible_component_droid_shared_armor_module_2 = SharedTangibleObjectTemp
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2290434424
+	clientObjectCRC = 2290434424,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/droid/shared_defensive_module_base.iff", "object/tangible/component/droid/shared_armor_module_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_droid_shared_armor_module_2, "object/tangible/component/droid/shared_armor_module_2.iff")
@@ -252,7 +255,8 @@ object_tangible_component_droid_shared_armor_module_3 = SharedTangibleObjectTemp
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3246925557
+	clientObjectCRC = 3246925557,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/droid/shared_defensive_module_base.iff", "object/tangible/component/droid/shared_armor_module_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_droid_shared_armor_module_3, "object/tangible/component/droid/shared_armor_module_3.iff")
@@ -306,7 +310,8 @@ object_tangible_component_droid_shared_armor_module_4 = SharedTangibleObjectTemp
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 980094433
+	clientObjectCRC = 980094433,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/droid/shared_defensive_module_base.iff", "object/tangible/component/droid/shared_armor_module_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_droid_shared_armor_module_4, "object/tangible/component/droid/shared_armor_module_4.iff")
@@ -360,7 +365,8 @@ object_tangible_component_droid_shared_armor_module_5 = SharedTangibleObjectTemp
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1936091756
+	clientObjectCRC = 1936091756,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/droid/shared_defensive_module_base.iff", "object/tangible/component/droid/shared_armor_module_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_droid_shared_armor_module_5, "object/tangible/component/droid/shared_armor_module_5.iff")
@@ -414,7 +420,8 @@ object_tangible_component_droid_shared_armor_module_6 = SharedTangibleObjectTemp
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2826027771
+	clientObjectCRC = 2826027771,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/droid/shared_defensive_module_base.iff", "object/tangible/component/droid/shared_armor_module_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_droid_shared_armor_module_6, "object/tangible/component/droid/shared_armor_module_6.iff")
@@ -468,7 +475,8 @@ object_tangible_component_droid_shared_armor_module_base = SharedTangibleObjectT
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 832469141
+	clientObjectCRC = 832469141,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/droid/shared_defensive_module_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_droid_shared_armor_module_base, "object/tangible/component/droid/shared_armor_module_base.iff")
@@ -522,7 +530,8 @@ object_tangible_component_droid_shared_auto_repair_module = SharedTangibleObject
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 262408920
+	clientObjectCRC = 262408920,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/droid/shared_droid_combat_service_module_base.iff", "object/tangible/component/droid/shared_droid_service_module_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_droid_shared_auto_repair_module, "object/tangible/component/droid/shared_auto_repair_module.iff")
@@ -576,7 +585,8 @@ object_tangible_component_droid_shared_binary_load_lifter_droid_chassis = Shared
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3300613134
+	clientObjectCRC = 3300613134,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_droid_shared_binary_load_lifter_droid_chassis, "object/tangible/component/droid/shared_binary_load_lifter_droid_chassis.iff")
@@ -630,7 +640,8 @@ object_tangible_component_droid_shared_combat_module = SharedTangibleObjectTempl
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3671008634
+	clientObjectCRC = 3671008634,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/droid/shared_droid_combat_service_module_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_droid_shared_combat_module, "object/tangible/component/droid/shared_combat_module.iff")
@@ -684,7 +695,8 @@ object_tangible_component_droid_shared_combat_socket_bank = SharedTangibleObject
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 181867093
+	clientObjectCRC = 181867093,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_droid_shared_combat_socket_bank, "object/tangible/component/droid/shared_combat_socket_bank.iff")
@@ -738,7 +750,8 @@ object_tangible_component_droid_shared_crafting_module_base = SharedTangibleObje
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2404931840
+	clientObjectCRC = 2404931840,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/droid/shared_droid_combat_service_module_base.iff", "object/tangible/component/droid/shared_droid_service_module_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_droid_shared_crafting_module_base, "object/tangible/component/droid/shared_crafting_module_base.iff")
@@ -792,7 +805,8 @@ object_tangible_component_droid_shared_crafting_module_clothing = SharedTangible
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1487860845
+	clientObjectCRC = 1487860845,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/droid/shared_droid_combat_service_module_base.iff", "object/tangible/component/droid/shared_droid_service_module_base.iff", "object/tangible/component/droid/shared_crafting_module_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_droid_shared_crafting_module_clothing, "object/tangible/component/droid/shared_crafting_module_clothing.iff")
@@ -846,7 +860,8 @@ object_tangible_component_droid_shared_crafting_module_food = SharedTangibleObje
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2075775538
+	clientObjectCRC = 2075775538,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/droid/shared_droid_combat_service_module_base.iff", "object/tangible/component/droid/shared_droid_service_module_base.iff", "object/tangible/component/droid/shared_crafting_module_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_droid_shared_crafting_module_food, "object/tangible/component/droid/shared_crafting_module_food.iff")
@@ -900,7 +915,8 @@ object_tangible_component_droid_shared_crafting_module_space = SharedTangibleObj
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1790293285
+	clientObjectCRC = 1790293285,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/droid/shared_droid_combat_service_module_base.iff", "object/tangible/component/droid/shared_droid_service_module_base.iff", "object/tangible/component/droid/shared_crafting_module_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_droid_shared_crafting_module_space, "object/tangible/component/droid/shared_crafting_module_space.iff")
@@ -954,7 +970,8 @@ object_tangible_component_droid_shared_crafting_module_structure = SharedTangibl
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3924145529
+	clientObjectCRC = 3924145529,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/droid/shared_droid_combat_service_module_base.iff", "object/tangible/component/droid/shared_droid_service_module_base.iff", "object/tangible/component/droid/shared_crafting_module_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_droid_shared_crafting_module_structure, "object/tangible/component/droid/shared_crafting_module_structure.iff")
@@ -1008,7 +1025,8 @@ object_tangible_component_droid_shared_crafting_module_weapon = SharedTangibleOb
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 226757157
+	clientObjectCRC = 226757157,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/droid/shared_droid_combat_service_module_base.iff", "object/tangible/component/droid/shared_droid_service_module_base.iff", "object/tangible/component/droid/shared_crafting_module_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_droid_shared_crafting_module_weapon, "object/tangible/component/droid/shared_crafting_module_weapon.iff")
@@ -1062,7 +1080,8 @@ object_tangible_component_droid_shared_data_storage_module_1 = SharedTangibleObj
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1611774846
+	clientObjectCRC = 1611774846,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/droid/shared_droid_combat_service_module_base.iff", "object/tangible/component/droid/shared_droid_service_module_base.iff", "object/tangible/component/droid/shared_data_storage_module_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_droid_shared_data_storage_module_1, "object/tangible/component/droid/shared_data_storage_module_1.iff")
@@ -1116,7 +1135,8 @@ object_tangible_component_droid_shared_data_storage_module_2 = SharedTangibleObj
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3137737705
+	clientObjectCRC = 3137737705,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/droid/shared_droid_combat_service_module_base.iff", "object/tangible/component/droid/shared_droid_service_module_base.iff", "object/tangible/component/droid/shared_data_storage_module_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_droid_shared_data_storage_module_2, "object/tangible/component/droid/shared_data_storage_module_2.iff")
@@ -1170,7 +1190,8 @@ object_tangible_component_droid_shared_data_storage_module_3 = SharedTangibleObj
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4060836964
+	clientObjectCRC = 4060836964,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/droid/shared_droid_combat_service_module_base.iff", "object/tangible/component/droid/shared_droid_service_module_base.iff", "object/tangible/component/droid/shared_data_storage_module_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_droid_shared_data_storage_module_3, "object/tangible/component/droid/shared_data_storage_module_3.iff")
@@ -1224,7 +1245,8 @@ object_tangible_component_droid_shared_data_storage_module_4 = SharedTangibleObj
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 166223728
+	clientObjectCRC = 166223728,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/droid/shared_droid_combat_service_module_base.iff", "object/tangible/component/droid/shared_droid_service_module_base.iff", "object/tangible/component/droid/shared_data_storage_module_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_droid_shared_data_storage_module_4, "object/tangible/component/droid/shared_data_storage_module_4.iff")
@@ -1278,7 +1300,8 @@ object_tangible_component_droid_shared_data_storage_module_5 = SharedTangibleObj
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1088764157
+	clientObjectCRC = 1088764157,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/droid/shared_droid_combat_service_module_base.iff", "object/tangible/component/droid/shared_droid_service_module_base.iff", "object/tangible/component/droid/shared_data_storage_module_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_droid_shared_data_storage_module_5, "object/tangible/component/droid/shared_data_storage_module_5.iff")
@@ -1332,7 +1355,8 @@ object_tangible_component_droid_shared_data_storage_module_6 = SharedTangibleObj
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2616365162
+	clientObjectCRC = 2616365162,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/droid/shared_droid_combat_service_module_base.iff", "object/tangible/component/droid/shared_droid_service_module_base.iff", "object/tangible/component/droid/shared_item_storage_module_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_droid_shared_data_storage_module_6, "object/tangible/component/droid/shared_data_storage_module_6.iff")
@@ -1386,7 +1410,8 @@ object_tangible_component_droid_shared_data_storage_module_base = SharedTangible
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 85639854
+	clientObjectCRC = 85639854,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/droid/shared_droid_combat_service_module_base.iff", "object/tangible/component/droid/shared_droid_service_module_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_droid_shared_data_storage_module_base, "object/tangible/component/droid/shared_data_storage_module_base.iff")
@@ -1440,7 +1465,8 @@ object_tangible_component_droid_shared_defensive_module_base = SharedTangibleObj
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2559519879
+	clientObjectCRC = 2559519879,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_droid_shared_defensive_module_base, "object/tangible/component/droid/shared_defensive_module_base.iff")
@@ -1494,7 +1520,8 @@ object_tangible_component_droid_shared_detonation_module = SharedTangibleObjectT
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1275393519
+	clientObjectCRC = 1275393519,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/droid/shared_droid_combat_service_module_base.iff", "object/tangible/component/droid/shared_droid_service_module_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_droid_shared_detonation_module, "object/tangible/component/droid/shared_detonation_module.iff")
@@ -1548,7 +1575,8 @@ object_tangible_component_droid_shared_droid_brain = SharedTangibleObjectTemplat
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4221279122
+	clientObjectCRC = 4221279122,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_droid_shared_droid_brain, "object/tangible/component/droid/shared_droid_brain.iff")
@@ -1602,7 +1630,8 @@ object_tangible_component_droid_shared_droid_brain_advanced = SharedTangibleObje
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1341617238
+	clientObjectCRC = 1341617238,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_droid_shared_droid_brain_advanced, "object/tangible/component/droid/shared_droid_brain_advanced.iff")
@@ -1656,7 +1685,8 @@ object_tangible_component_droid_shared_droid_combat_service_module_base = Shared
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3225311396
+	clientObjectCRC = 3225311396,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_droid_shared_droid_combat_service_module_base, "object/tangible/component/droid/shared_droid_combat_service_module_base.iff")
@@ -1710,7 +1740,8 @@ object_tangible_component_droid_shared_droid_interplanetary_survey = SharedTangi
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3837390071
+	clientObjectCRC = 3837390071,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_droid_shared_droid_interplanetary_survey, "object/tangible/component/droid/shared_droid_interplanetary_survey.iff")
@@ -1764,7 +1795,8 @@ object_tangible_component_droid_shared_droid_motive_system = SharedTangibleObjec
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3558171946
+	clientObjectCRC = 3558171946,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_droid_shared_droid_motive_system, "object/tangible/component/droid/shared_droid_motive_system.iff")
@@ -1818,7 +1850,8 @@ object_tangible_component_droid_shared_droid_motive_system_advanced = SharedTang
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3082446118
+	clientObjectCRC = 3082446118,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_droid_shared_droid_motive_system_advanced, "object/tangible/component/droid/shared_droid_motive_system_advanced.iff")
@@ -1872,7 +1905,8 @@ object_tangible_component_droid_shared_droid_service_module_base = SharedTangibl
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2856991975
+	clientObjectCRC = 2856991975,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/droid/shared_droid_combat_service_module_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_droid_shared_droid_service_module_base, "object/tangible/component/droid/shared_droid_service_module_base.iff")
@@ -1926,7 +1960,8 @@ object_tangible_component_droid_shared_droid_storage_compartment = SharedTangibl
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3107140233
+	clientObjectCRC = 3107140233,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_droid_shared_droid_storage_compartment, "object/tangible/component/droid/shared_droid_storage_compartment.iff")
@@ -1980,7 +2015,8 @@ object_tangible_component_droid_shared_harvest_module = SharedTangibleObjectTemp
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 55086414
+	clientObjectCRC = 55086414,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/droid/shared_droid_combat_service_module_base.iff", "object/tangible/component/droid/shared_droid_service_module_base.iff", "object/tangible/component/droid/shared_harvest_module_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_droid_shared_harvest_module, "object/tangible/component/droid/shared_harvest_module.iff")
@@ -2034,7 +2070,8 @@ object_tangible_component_droid_shared_harvest_module_base = SharedTangibleObjec
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3831537892
+	clientObjectCRC = 3831537892,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/droid/shared_droid_combat_service_module_base.iff", "object/tangible/component/droid/shared_droid_service_module_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_droid_shared_harvest_module_base, "object/tangible/component/droid/shared_harvest_module_base.iff")
@@ -2088,7 +2125,8 @@ object_tangible_component_droid_shared_item_storage_module_1 = SharedTangibleObj
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3060963086
+	clientObjectCRC = 3060963086,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/droid/shared_droid_combat_service_module_base.iff", "object/tangible/component/droid/shared_droid_service_module_base.iff", "object/tangible/component/droid/shared_item_storage_module_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_droid_shared_item_storage_module_1, "object/tangible/component/droid/shared_item_storage_module_1.iff")
@@ -2142,7 +2180,8 @@ object_tangible_component_droid_shared_item_storage_module_2 = SharedTangibleObj
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1835351961
+	clientObjectCRC = 1835351961,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/droid/shared_droid_combat_service_module_base.iff", "object/tangible/component/droid/shared_droid_service_module_base.iff", "object/tangible/component/droid/shared_item_storage_module_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_droid_shared_item_storage_module_2, "object/tangible/component/droid/shared_item_storage_module_2.iff")
@@ -2196,7 +2235,8 @@ object_tangible_component_droid_shared_item_storage_module_3 = SharedTangibleObj
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 610818068
+	clientObjectCRC = 610818068,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/droid/shared_droid_combat_service_module_base.iff", "object/tangible/component/droid/shared_droid_service_module_base.iff", "object/tangible/component/droid/shared_item_storage_module_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_droid_shared_item_storage_module_3, "object/tangible/component/droid/shared_item_storage_module_3.iff")
@@ -2250,7 +2290,8 @@ object_tangible_component_droid_shared_item_storage_module_4 = SharedTangibleObj
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3750458112
+	clientObjectCRC = 3750458112,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/droid/shared_droid_combat_service_module_base.iff", "object/tangible/component/droid/shared_droid_service_module_base.iff", "object/tangible/component/droid/shared_item_storage_module_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_droid_shared_item_storage_module_4, "object/tangible/component/droid/shared_item_storage_module_4.iff")
@@ -2304,7 +2345,8 @@ object_tangible_component_droid_shared_item_storage_module_5 = SharedTangibleObj
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2525369485
+	clientObjectCRC = 2525369485,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/droid/shared_droid_combat_service_module_base.iff", "object/tangible/component/droid/shared_droid_service_module_base.iff", "object/tangible/component/droid/shared_item_storage_module_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_droid_shared_item_storage_module_5, "object/tangible/component/droid/shared_item_storage_module_5.iff")
@@ -2358,7 +2400,8 @@ object_tangible_component_droid_shared_item_storage_module_6 = SharedTangibleObj
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1301396506
+	clientObjectCRC = 1301396506,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/droid/shared_droid_combat_service_module_base.iff", "object/tangible/component/droid/shared_droid_service_module_base.iff", "object/tangible/component/droid/shared_item_storage_module_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_droid_shared_item_storage_module_6, "object/tangible/component/droid/shared_item_storage_module_6.iff")
@@ -2412,7 +2455,8 @@ object_tangible_component_droid_shared_item_storage_module_base = SharedTangible
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1210035121
+	clientObjectCRC = 1210035121,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/droid/shared_droid_combat_service_module_base.iff", "object/tangible/component/droid/shared_droid_service_module_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_droid_shared_item_storage_module_base, "object/tangible/component/droid/shared_item_storage_module_base.iff")
@@ -2466,7 +2510,8 @@ object_tangible_component_droid_shared_le_repair_droid_chassis = SharedTangibleO
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1573291172
+	clientObjectCRC = 1573291172,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_droid_shared_le_repair_droid_chassis, "object/tangible/component/droid/shared_le_repair_droid_chassis.iff")
@@ -2520,7 +2565,8 @@ object_tangible_component_droid_shared_manipulator_arm = SharedTangibleObjectTem
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1333622407
+	clientObjectCRC = 1333622407,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_droid_shared_manipulator_arm, "object/tangible/component/droid/shared_manipulator_arm.iff")
@@ -2574,7 +2620,8 @@ object_tangible_component_droid_shared_manipulator_arm_package_set = SharedTangi
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 295096971
+	clientObjectCRC = 295096971,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_droid_shared_manipulator_arm_package_set, "object/tangible/component/droid/shared_manipulator_arm_package_set.iff")
@@ -2628,7 +2675,8 @@ object_tangible_component_droid_shared_medic_module_1 = SharedTangibleObjectTemp
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3818431431
+	clientObjectCRC = 3818431431,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/droid/shared_droid_combat_service_module_base.iff", "object/tangible/component/droid/shared_droid_service_module_base.iff", "object/tangible/component/droid/shared_medic_module_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_droid_shared_medic_module_1, "object/tangible/component/droid/shared_medic_module_1.iff")
@@ -2682,7 +2730,8 @@ object_tangible_component_droid_shared_medic_module_2 = SharedTangibleObjectTemp
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 948898640
+	clientObjectCRC = 948898640,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/droid/shared_droid_combat_service_module_base.iff", "object/tangible/component/droid/shared_droid_service_module_base.iff", "object/tangible/component/droid/shared_medic_module_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_droid_shared_medic_module_2, "object/tangible/component/droid/shared_medic_module_2.iff")
@@ -2736,7 +2785,8 @@ object_tangible_component_droid_shared_medic_module_3 = SharedTangibleObjectTemp
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1904372957
+	clientObjectCRC = 1904372957,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/droid/shared_droid_combat_service_module_base.iff", "object/tangible/component/droid/shared_droid_service_module_base.iff", "object/tangible/component/droid/shared_medic_module_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_droid_shared_medic_module_3, "object/tangible/component/droid/shared_medic_module_3.iff")
@@ -2790,7 +2840,8 @@ object_tangible_component_droid_shared_medic_module_4 = SharedTangibleObjectTemp
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2321631177
+	clientObjectCRC = 2321631177,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/droid/shared_droid_combat_service_module_base.iff", "object/tangible/component/droid/shared_droid_service_module_base.iff", "object/tangible/component/droid/shared_medic_module_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_droid_shared_medic_module_4, "object/tangible/component/droid/shared_medic_module_4.iff")
@@ -2844,7 +2895,8 @@ object_tangible_component_droid_shared_medic_module_5 = SharedTangibleObjectTemp
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3278643268
+	clientObjectCRC = 3278643268,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/droid/shared_droid_combat_service_module_base.iff", "object/tangible/component/droid/shared_droid_service_module_base.iff", "object/tangible/component/droid/shared_medic_module_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_droid_shared_medic_module_5, "object/tangible/component/droid/shared_medic_module_5.iff")
@@ -2898,7 +2950,8 @@ object_tangible_component_droid_shared_medic_module_6 = SharedTangibleObjectTemp
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 410749139
+	clientObjectCRC = 410749139,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/droid/shared_droid_combat_service_module_base.iff", "object/tangible/component/droid/shared_droid_service_module_base.iff", "object/tangible/component/droid/shared_medic_module_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_droid_shared_medic_module_6, "object/tangible/component/droid/shared_medic_module_6.iff")
@@ -2952,7 +3005,8 @@ object_tangible_component_droid_shared_medic_module_base = SharedTangibleObjectT
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3806402681
+	clientObjectCRC = 3806402681,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/droid/shared_droid_combat_service_module_base.iff", "object/tangible/component/droid/shared_droid_service_module_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_droid_shared_medic_module_base, "object/tangible/component/droid/shared_medic_module_base.iff")
@@ -3006,7 +3060,8 @@ object_tangible_component_droid_shared_merchant_barker = SharedTangibleObjectTem
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3094537787
+	clientObjectCRC = 3094537787,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/droid/shared_droid_combat_service_module_base.iff", "object/tangible/component/droid/shared_droid_service_module_base.iff", "object/tangible/component/droid/shared_merchant_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_droid_shared_merchant_barker, "object/tangible/component/droid/shared_merchant_barker.iff")
@@ -3060,7 +3115,8 @@ object_tangible_component_droid_shared_merchant_base = SharedTangibleObjectTempl
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 246819840
+	clientObjectCRC = 246819840,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/droid/shared_droid_combat_service_module_base.iff", "object/tangible/component/droid/shared_droid_service_module_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_droid_shared_merchant_base, "object/tangible/component/droid/shared_merchant_base.iff")
@@ -3114,7 +3170,8 @@ object_tangible_component_droid_shared_p0_droid_chassis = SharedTangibleObjectTe
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2364795143
+	clientObjectCRC = 2364795143,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_droid_shared_p0_droid_chassis, "object/tangible/component/droid/shared_p0_droid_chassis.iff")
@@ -3168,7 +3225,8 @@ object_tangible_component_droid_shared_performer_effects_a = SharedTangibleObjec
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2350039140
+	clientObjectCRC = 2350039140,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/droid/shared_droid_combat_service_module_base.iff", "object/tangible/component/droid/shared_droid_service_module_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_droid_shared_performer_effects_a, "object/tangible/component/droid/shared_performer_effects_a.iff")
@@ -3222,7 +3280,8 @@ object_tangible_component_droid_shared_performer_effects_aa = SharedTangibleObje
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 864794171
+	clientObjectCRC = 864794171,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/droid/shared_droid_combat_service_module_base.iff", "object/tangible/component/droid/shared_droid_service_module_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_droid_shared_performer_effects_aa, "object/tangible/component/droid/shared_performer_effects_aa.iff")
@@ -3276,7 +3335,8 @@ object_tangible_component_droid_shared_performer_effects_b = SharedTangibleObjec
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1459972339
+	clientObjectCRC = 1459972339,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/droid/shared_droid_combat_service_module_base.iff", "object/tangible/component/droid/shared_droid_service_module_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_droid_shared_performer_effects_b, "object/tangible/component/droid/shared_performer_effects_b.iff")
@@ -3330,7 +3390,8 @@ object_tangible_component_droid_shared_performer_effects_c = SharedTangibleObjec
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 503844734
+	clientObjectCRC = 503844734,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/droid/shared_droid_combat_service_module_base.iff", "object/tangible/component/droid/shared_droid_service_module_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_droid_shared_performer_effects_c, "object/tangible/component/droid/shared_performer_effects_c.iff")
@@ -3384,7 +3445,8 @@ object_tangible_component_droid_shared_performer_effects_d = SharedTangibleObjec
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3857392746
+	clientObjectCRC = 3857392746,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/droid/shared_droid_combat_service_module_base.iff", "object/tangible/component/droid/shared_droid_service_module_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_droid_shared_performer_effects_d, "object/tangible/component/droid/shared_performer_effects_d.iff")
@@ -3438,7 +3500,8 @@ object_tangible_component_droid_shared_performer_effects_e = SharedTangibleObjec
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2900771815
+	clientObjectCRC = 2900771815,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/droid/shared_droid_combat_service_module_base.iff", "object/tangible/component/droid/shared_droid_service_module_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_droid_shared_performer_effects_e, "object/tangible/component/droid/shared_performer_effects_e.iff")
@@ -3492,7 +3555,8 @@ object_tangible_component_droid_shared_personality_module_base = SharedTangibleO
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1069945063
+	clientObjectCRC = 1069945063,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_droid_shared_personality_module_base, "object/tangible/component/droid/shared_personality_module_base.iff")
@@ -3546,7 +3610,8 @@ object_tangible_component_droid_shared_personality_module_geek = SharedTangibleO
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 671855097
+	clientObjectCRC = 671855097,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/droid/shared_personality_module_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_droid_shared_personality_module_geek, "object/tangible/component/droid/shared_personality_module_geek.iff")
@@ -3600,7 +3665,8 @@ object_tangible_component_droid_shared_personality_module_prissy = SharedTangibl
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3491692659
+	clientObjectCRC = 3491692659,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/droid/shared_personality_module_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_droid_shared_personality_module_prissy, "object/tangible/component/droid/shared_personality_module_prissy.iff")
@@ -3654,7 +3720,8 @@ object_tangible_component_droid_shared_personality_module_sarcastic = SharedTang
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1046791817
+	clientObjectCRC = 1046791817,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/droid/shared_personality_module_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_droid_shared_personality_module_sarcastic, "object/tangible/component/droid/shared_personality_module_sarcastic.iff")
@@ -3708,7 +3775,8 @@ object_tangible_component_droid_shared_personality_module_slang = SharedTangible
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1711429491
+	clientObjectCRC = 1711429491,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/droid/shared_personality_module_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_droid_shared_personality_module_slang, "object/tangible/component/droid/shared_personality_module_slang.iff")
@@ -3762,7 +3830,8 @@ object_tangible_component_droid_shared_personality_module_stupid = SharedTangibl
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1083621645
+	clientObjectCRC = 1083621645,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/droid/shared_personality_module_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_droid_shared_personality_module_stupid, "object/tangible/component/droid/shared_personality_module_stupid.iff")
@@ -3816,7 +3885,8 @@ object_tangible_component_droid_shared_personality_module_worshipful = SharedTan
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3187389726
+	clientObjectCRC = 3187389726,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/droid/shared_personality_module_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_droid_shared_personality_module_worshipful, "object/tangible/component/droid/shared_personality_module_worshipful.iff")
@@ -3870,7 +3940,8 @@ object_tangible_component_droid_shared_playback_module = SharedTangibleObjectTem
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2859558728
+	clientObjectCRC = 2859558728,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/droid/shared_droid_combat_service_module_base.iff", "object/tangible/component/droid/shared_droid_service_module_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_droid_shared_playback_module, "object/tangible/component/droid/shared_playback_module.iff")
@@ -3924,7 +3995,8 @@ object_tangible_component_droid_shared_probot_droid_chassis = SharedTangibleObje
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 498496861
+	clientObjectCRC = 498496861,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_droid_shared_probot_droid_chassis, "object/tangible/component/droid/shared_probot_droid_chassis.iff")
@@ -3978,7 +4050,8 @@ object_tangible_component_droid_shared_r2_droid_chassis = SharedTangibleObjectTe
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4039239193
+	clientObjectCRC = 4039239193,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_droid_shared_r2_droid_chassis, "object/tangible/component/droid/shared_r2_droid_chassis.iff")
@@ -4032,7 +4105,8 @@ object_tangible_component_droid_shared_r3_droid_chassis = SharedTangibleObjectTe
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4208619072
+	clientObjectCRC = 4208619072,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_droid_shared_r3_droid_chassis, "object/tangible/component/droid/shared_r3_droid_chassis.iff")
@@ -4086,7 +4160,8 @@ object_tangible_component_droid_shared_r4_droid_chassis = SharedTangibleObjectTe
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3432568783
+	clientObjectCRC = 3432568783,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_droid_shared_r4_droid_chassis, "object/tangible/component/droid/shared_r4_droid_chassis.iff")
@@ -4140,7 +4215,8 @@ object_tangible_component_droid_shared_repair_module = SharedTangibleObjectTempl
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2786060955
+	clientObjectCRC = 2786060955,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/droid/shared_droid_combat_service_module_base.iff", "object/tangible/component/droid/shared_droid_service_module_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_droid_shared_repair_module, "object/tangible/component/droid/shared_repair_module.iff")
@@ -4194,7 +4270,8 @@ object_tangible_component_droid_shared_sensor_package_droid = SharedTangibleObje
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4157404831
+	clientObjectCRC = 4157404831,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_droid_shared_sensor_package_droid, "object/tangible/component/droid/shared_sensor_package_droid.iff")
@@ -4248,7 +4325,8 @@ object_tangible_component_droid_shared_socket_bank = SharedTangibleObjectTemplat
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3701424953
+	clientObjectCRC = 3701424953,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_droid_shared_socket_bank, "object/tangible/component/droid/shared_socket_bank.iff")
@@ -4302,7 +4380,8 @@ object_tangible_component_droid_shared_stimpack_dispensor = SharedTangibleObject
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1691889339
+	clientObjectCRC = 1691889339,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/droid/shared_droid_combat_service_module_base.iff", "object/tangible/component/droid/shared_droid_service_module_base.iff", "object/tangible/component/droid/shared_medic_module_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_droid_shared_stimpack_dispensor, "object/tangible/component/droid/shared_stimpack_dispensor.iff")
@@ -4356,7 +4435,8 @@ object_tangible_component_droid_shared_struct_maint_module_1 = SharedTangibleObj
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1728777315
+	clientObjectCRC = 1728777315,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/droid/shared_droid_combat_service_module_base.iff", "object/tangible/component/droid/shared_droid_service_module_base.iff", "object/tangible/component/droid/shared_struct_maint_module_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_droid_shared_struct_maint_module_1, "object/tangible/component/droid/shared_struct_maint_module_1.iff")
@@ -4410,7 +4490,8 @@ object_tangible_component_droid_shared_struct_maint_module_2 = SharedTangibleObj
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3155993844
+	clientObjectCRC = 3155993844,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/droid/shared_droid_combat_service_module_base.iff", "object/tangible/component/droid/shared_droid_service_module_base.iff", "object/tangible/component/droid/shared_struct_maint_module_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_droid_shared_struct_maint_module_2, "object/tangible/component/droid/shared_struct_maint_module_2.iff")
@@ -4464,7 +4545,8 @@ object_tangible_component_droid_shared_struct_maint_module_3 = SharedTangibleObj
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4111582073
+	clientObjectCRC = 4111582073,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/droid/shared_droid_combat_service_module_base.iff", "object/tangible/component/droid/shared_droid_service_module_base.iff", "object/tangible/component/droid/shared_struct_maint_module_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_droid_shared_struct_maint_module_3, "object/tangible/component/droid/shared_struct_maint_module_3.iff")
@@ -4518,7 +4600,8 @@ object_tangible_component_droid_shared_struct_maint_module_base = SharedTangible
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2223185422
+	clientObjectCRC = 2223185422,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/droid/shared_droid_combat_service_module_base.iff", "object/tangible/component/droid/shared_droid_service_module_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_droid_shared_struct_maint_module_base, "object/tangible/component/droid/shared_struct_maint_module_base.iff")
@@ -4572,7 +4655,8 @@ object_tangible_component_droid_shared_surgical_droid_chassis = SharedTangibleOb
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2925064047
+	clientObjectCRC = 2925064047,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_droid_shared_surgical_droid_chassis, "object/tangible/component/droid/shared_surgical_droid_chassis.iff")
@@ -4626,7 +4710,8 @@ object_tangible_component_droid_shared_trap_module = SharedTangibleObjectTemplat
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3443959311
+	clientObjectCRC = 3443959311,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/droid/shared_droid_combat_service_module_base.iff", "object/tangible/component/droid/shared_droid_service_module_base.iff", "object/tangible/component/droid/shared_trap_module_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_droid_shared_trap_module, "object/tangible/component/droid/shared_trap_module.iff")
@@ -4680,7 +4765,8 @@ object_tangible_component_droid_shared_trap_module_base = SharedTangibleObjectTe
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2178596494
+	clientObjectCRC = 2178596494,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/droid/shared_droid_combat_service_module_base.iff", "object/tangible/component/droid/shared_droid_service_module_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_droid_shared_trap_module_base, "object/tangible/component/droid/shared_trap_module_base.iff")

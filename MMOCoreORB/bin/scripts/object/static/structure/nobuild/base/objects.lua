@@ -80,7 +80,8 @@ object_static_structure_nobuild_base_shared_nobuild_base = SharedStaticObjectTem
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2977184644
+	clientObjectCRC = 2977184644,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_nobuild_base_shared_nobuild_base, "object/static/structure/nobuild/base/shared_nobuild_base.iff")

@@ -90,7 +90,8 @@ object_tangible_bug_jar_shared_craftable_bug_habitat = SharedTangibleObjectTempl
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3865262015
+	clientObjectCRC = 3865262015,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_bug_jar_shared_craftable_bug_habitat, "object/tangible/bug_jar/shared_craftable_bug_habitat.iff")
@@ -144,7 +145,8 @@ object_tangible_bug_jar_shared_sample_bats = SharedTangibleObjectTemplate:new {
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 649283460
+	clientObjectCRC = 649283460,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/bug_jar/shared_sample_bugs.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_bug_jar_shared_sample_bats, "object/tangible/bug_jar/shared_sample_bats.iff")
@@ -198,7 +200,8 @@ object_tangible_bug_jar_shared_sample_bees = SharedTangibleObjectTemplate:new {
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2990947640
+	clientObjectCRC = 2990947640,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/bug_jar/shared_sample_bugs.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_bug_jar_shared_sample_bees, "object/tangible/bug_jar/shared_sample_bees.iff")
@@ -252,7 +255,8 @@ object_tangible_bug_jar_shared_sample_bugs = SharedTangibleObjectTemplate:new {
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1650774020
+	clientObjectCRC = 1650774020,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_bug_jar_shared_sample_bugs, "object/tangible/bug_jar/shared_sample_bugs.iff")
@@ -306,7 +310,8 @@ object_tangible_bug_jar_shared_sample_butterflies = SharedTangibleObjectTemplate
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3511677766
+	clientObjectCRC = 3511677766,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/bug_jar/shared_sample_bugs.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_bug_jar_shared_sample_butterflies, "object/tangible/bug_jar/shared_sample_butterflies.iff")
@@ -360,7 +365,8 @@ object_tangible_bug_jar_shared_sample_flies = SharedTangibleObjectTemplate:new {
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1920617264
+	clientObjectCRC = 1920617264,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/bug_jar/shared_sample_bugs.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_bug_jar_shared_sample_flies, "object/tangible/bug_jar/shared_sample_flies.iff")
@@ -414,7 +420,8 @@ object_tangible_bug_jar_shared_sample_glowzees = SharedTangibleObjectTemplate:ne
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 543867771
+	clientObjectCRC = 543867771,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/bug_jar/shared_sample_bugs.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_bug_jar_shared_sample_glowzees, "object/tangible/bug_jar/shared_sample_glowzees.iff")
@@ -468,7 +475,8 @@ object_tangible_bug_jar_shared_sample_moths = SharedTangibleObjectTemplate:new {
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1330824406
+	clientObjectCRC = 1330824406,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/bug_jar/shared_sample_bugs.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_bug_jar_shared_sample_moths, "object/tangible/bug_jar/shared_sample_moths.iff")

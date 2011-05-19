@@ -80,7 +80,8 @@ object_draft_schematic_vehicle_shared_vehicle_customization_kit = SharedDraftSch
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 4170918716
+	clientObjectCRC = 4170918716,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff", "object/draft_schematic/item/shared_item_base_tool.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_vehicle_shared_vehicle_customization_kit, "object/draft_schematic/vehicle/shared_vehicle_customization_kit.iff")

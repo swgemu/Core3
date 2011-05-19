@@ -90,7 +90,8 @@ object_tangible_transport_shared_door = SharedTangibleObjectTemplate:new {
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2330152069
+	clientObjectCRC = 2330152069,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/transport/base/shared_transport_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_transport_shared_door, "object/tangible/transport/shared_door.iff")
@@ -144,7 +145,8 @@ object_tangible_transport_shared_strut_a = SharedTangibleObjectTemplate:new {
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3646229980
+	clientObjectCRC = 3646229980,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/transport/base/shared_transport_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_transport_shared_strut_a, "object/tangible/transport/shared_strut_a.iff")
@@ -198,7 +200,8 @@ object_tangible_transport_shared_strut_b = SharedTangibleObjectTemplate:new {
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 37922123
+	clientObjectCRC = 37922123,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/transport/base/shared_transport_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_transport_shared_strut_b, "object/tangible/transport/shared_strut_b.iff")
@@ -252,7 +255,8 @@ object_tangible_transport_shared_strut_c = SharedTangibleObjectTemplate:new {
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1263518406
+	clientObjectCRC = 1263518406,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/transport/base/shared_transport_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_transport_shared_strut_c, "object/tangible/transport/shared_strut_c.iff")
@@ -306,7 +310,8 @@ object_tangible_transport_shared_transport = SharedTangibleObjectTemplate:new {
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3801530659
+	clientObjectCRC = 3801530659,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/transport/base/shared_transport_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_transport_shared_transport, "object/tangible/transport/shared_transport.iff")

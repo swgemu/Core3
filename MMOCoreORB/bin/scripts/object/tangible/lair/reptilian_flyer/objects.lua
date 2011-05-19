@@ -90,7 +90,8 @@ object_tangible_lair_reptilian_flyer_shared_lair_reptilian_flyer = SharedTangibl
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1767218829
+	clientObjectCRC = 1767218829,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_reptilian_flyer_shared_lair_reptilian_flyer, "object/tangible/lair/reptilian_flyer/shared_lair_reptilian_flyer.iff")
@@ -144,7 +145,8 @@ object_tangible_lair_reptilian_flyer_shared_lair_reptilian_flyer_forest = Shared
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 989527915
+	clientObjectCRC = 989527915,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_reptilian_flyer_shared_lair_reptilian_flyer_forest, "object/tangible/lair/reptilian_flyer/shared_lair_reptilian_flyer_forest.iff")
@@ -198,7 +200,8 @@ object_tangible_lair_reptilian_flyer_shared_lair_reptilian_flyer_mountain = Shar
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4098043121
+	clientObjectCRC = 4098043121,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_reptilian_flyer_shared_lair_reptilian_flyer_mountain, "object/tangible/lair/reptilian_flyer/shared_lair_reptilian_flyer_mountain.iff")

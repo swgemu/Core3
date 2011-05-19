@@ -90,7 +90,8 @@ object_tangible_shipcontrol_shared_pilot_chair = SharedTangibleObjectTemplate:ne
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3541722217
+	clientObjectCRC = 3541722217,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_shipcontrol_shared_pilot_chair, "object/tangible/shipcontrol/shared_pilot_chair.iff")
@@ -144,7 +145,8 @@ object_tangible_shipcontrol_shared_shipcontrol_corvette = SharedTangibleObjectTe
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 543526931
+	clientObjectCRC = 543526931,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_shipcontrol_shared_shipcontrol_corvette, "object/tangible/shipcontrol/shared_shipcontrol_corvette.iff")
@@ -198,7 +200,8 @@ object_tangible_shipcontrol_shared_shipcontrol_falcon = SharedTangibleObjectTemp
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 362033500
+	clientObjectCRC = 362033500,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_shipcontrol_shared_shipcontrol_falcon, "object/tangible/shipcontrol/shared_shipcontrol_falcon.iff")
@@ -252,7 +255,8 @@ object_tangible_shipcontrol_shared_shipoperations_falcon = SharedTangibleObjectT
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 752872042
+	clientObjectCRC = 752872042,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_shipcontrol_shared_shipoperations_falcon, "object/tangible/shipcontrol/shared_shipoperations_falcon.iff")
@@ -306,7 +310,8 @@ object_tangible_shipcontrol_shared_turretcontrol_falcon = SharedTangibleObjectTe
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3238239508
+	clientObjectCRC = 3238239508,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_shipcontrol_shared_turretcontrol_falcon, "object/tangible/shipcontrol/shared_turretcontrol_falcon.iff")
@@ -360,7 +365,8 @@ object_tangible_shipcontrol_shared_turretcontrol_vt49 = SharedTangibleObjectTemp
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 315011154
+	clientObjectCRC = 315011154,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_shipcontrol_shared_turretcontrol_vt49, "object/tangible/shipcontrol/shared_turretcontrol_vt49.iff")

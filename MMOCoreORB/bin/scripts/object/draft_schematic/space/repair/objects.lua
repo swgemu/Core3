@@ -80,7 +80,8 @@ object_draft_schematic_space_repair_shared_armor_repair_kit = SharedDraftSchemat
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 159626494
+	clientObjectCRC = 159626494,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_repair_shared_armor_repair_kit, "object/draft_schematic/space/repair/shared_armor_repair_kit.iff")
@@ -124,7 +125,8 @@ object_draft_schematic_space_repair_shared_booster_repair_kit = SharedDraftSchem
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2182505796
+	clientObjectCRC = 2182505796,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_repair_shared_booster_repair_kit, "object/draft_schematic/space/repair/shared_booster_repair_kit.iff")
@@ -168,7 +170,8 @@ object_draft_schematic_space_repair_shared_capacitor_repair_kit = SharedDraftSch
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3561061070
+	clientObjectCRC = 3561061070,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_repair_shared_capacitor_repair_kit, "object/draft_schematic/space/repair/shared_capacitor_repair_kit.iff")
@@ -212,7 +215,8 @@ object_draft_schematic_space_repair_shared_chassis_repair_kit = SharedDraftSchem
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2046246395
+	clientObjectCRC = 2046246395,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_repair_shared_chassis_repair_kit, "object/draft_schematic/space/repair/shared_chassis_repair_kit.iff")
@@ -256,7 +260,8 @@ object_draft_schematic_space_repair_shared_droid_interface_repair_kit = SharedDr
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1979319803
+	clientObjectCRC = 1979319803,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_repair_shared_droid_interface_repair_kit, "object/draft_schematic/space/repair/shared_droid_interface_repair_kit.iff")
@@ -300,7 +305,8 @@ object_draft_schematic_space_repair_shared_engine_repair_kit = SharedDraftSchema
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2834161708
+	clientObjectCRC = 2834161708,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_repair_shared_engine_repair_kit, "object/draft_schematic/space/repair/shared_engine_repair_kit.iff")
@@ -344,7 +350,8 @@ object_draft_schematic_space_repair_shared_generic_repair_kit = SharedDraftSchem
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2504809285
+	clientObjectCRC = 2504809285,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_repair_shared_generic_repair_kit, "object/draft_schematic/space/repair/shared_generic_repair_kit.iff")
@@ -388,7 +395,8 @@ object_draft_schematic_space_repair_shared_plasma_conduit_repair_kit = SharedDra
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 4277810100
+	clientObjectCRC = 4277810100,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_repair_shared_plasma_conduit_repair_kit, "object/draft_schematic/space/repair/shared_plasma_conduit_repair_kit.iff")
@@ -432,7 +440,8 @@ object_draft_schematic_space_repair_shared_reactor_repair_kit = SharedDraftSchem
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 383068437
+	clientObjectCRC = 383068437,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_repair_shared_reactor_repair_kit, "object/draft_schematic/space/repair/shared_reactor_repair_kit.iff")
@@ -476,7 +485,8 @@ object_draft_schematic_space_repair_shared_shield_repair_kit = SharedDraftSchema
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2463568618
+	clientObjectCRC = 2463568618,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_repair_shared_shield_repair_kit, "object/draft_schematic/space/repair/shared_shield_repair_kit.iff")
@@ -520,7 +530,8 @@ object_draft_schematic_space_repair_shared_weapon_repair_kit = SharedDraftSchema
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 974874513
+	clientObjectCRC = 974874513,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_repair_shared_weapon_repair_kit, "object/draft_schematic/space/repair/shared_weapon_repair_kit.iff")

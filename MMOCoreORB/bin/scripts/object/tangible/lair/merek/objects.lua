@@ -90,7 +90,8 @@ object_tangible_lair_merek_shared_lair_merek = SharedTangibleObjectTemplate:new 
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 150449973
+	clientObjectCRC = 150449973,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_merek_shared_lair_merek, "object/tangible/lair/merek/shared_lair_merek.iff")
@@ -144,7 +145,8 @@ object_tangible_lair_merek_shared_lair_merek_jungle = SharedTangibleObjectTempla
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1521427454
+	clientObjectCRC = 1521427454,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_merek_shared_lair_merek_jungle, "object/tangible/lair/merek/shared_lair_merek_jungle.iff")
@@ -198,7 +200,8 @@ object_tangible_lair_merek_shared_lair_merek_swamp = SharedTangibleObjectTemplat
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4083623500
+	clientObjectCRC = 4083623500,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_merek_shared_lair_merek_swamp, "object/tangible/lair/merek/shared_lair_merek_swamp.iff")

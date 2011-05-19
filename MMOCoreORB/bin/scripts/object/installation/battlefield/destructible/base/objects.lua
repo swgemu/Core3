@@ -90,7 +90,8 @@ object_installation_battlefield_destructible_base_shared_base_destructible_build
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3062251189
+	clientObjectCRC = 3062251189,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_installation_battlefield_destructible_base_shared_base_destructible_building, "object/installation/battlefield/destructible/base/shared_base_destructible_building.iff")
@@ -144,7 +145,8 @@ object_installation_battlefield_destructible_base_shared_construction_base_destr
 
 	useStructureFootprintOutline = 1,
 
-	clientObjectCRC = 2258056519
+	clientObjectCRC = 2258056519,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_installation_battlefield_destructible_base_shared_construction_base_destructible_building, "object/installation/battlefield/destructible/base/shared_construction_base_destructible_building.iff")

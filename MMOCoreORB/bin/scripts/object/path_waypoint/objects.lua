@@ -90,7 +90,8 @@ object_path_waypoint_shared_path_waypoint = SharedTangibleObjectTemplate:new {
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2053891523
+	clientObjectCRC = 2053891523,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/path_waypoint/base/shared_path_waypoint_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_path_waypoint_shared_path_waypoint, "object/path_waypoint/shared_path_waypoint.iff")
@@ -144,7 +145,8 @@ object_path_waypoint_shared_path_waypoint_auto_spawn = SharedTangibleObjectTempl
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3534396119
+	clientObjectCRC = 3534396119,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/path_waypoint/base/shared_path_waypoint_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_path_waypoint_shared_path_waypoint_auto_spawn, "object/path_waypoint/shared_path_waypoint_auto_spawn.iff")
@@ -198,7 +200,8 @@ object_path_waypoint_shared_path_waypoint_city = SharedTangibleObjectTemplate:ne
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3085605223
+	clientObjectCRC = 3085605223,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/path_waypoint/base/shared_path_waypoint_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_path_waypoint_shared_path_waypoint_city, "object/path_waypoint/shared_path_waypoint_city.iff")
@@ -252,7 +255,8 @@ object_path_waypoint_shared_path_waypoint_droid = SharedTangibleObjectTemplate:n
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3986061853
+	clientObjectCRC = 3986061853,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/path_waypoint/base/shared_path_waypoint_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_path_waypoint_shared_path_waypoint_droid, "object/path_waypoint/shared_path_waypoint_droid.iff")
@@ -306,7 +310,8 @@ object_path_waypoint_shared_path_waypoint_patrol = SharedTangibleObjectTemplate:
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1010698515
+	clientObjectCRC = 1010698515,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/path_waypoint/base/shared_path_waypoint_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_path_waypoint_shared_path_waypoint_patrol, "object/path_waypoint/shared_path_waypoint_patrol.iff")

@@ -90,7 +90,8 @@ object_tangible_crafting_shared_crafting_components_container = SharedTangibleOb
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4203992702
+	clientObjectCRC = 4203992702,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_crafting_shared_crafting_components_container, "object/tangible/crafting/shared_crafting_components_container.iff")
@@ -144,7 +145,8 @@ object_tangible_crafting_shared_default_draft_not_found = SharedTangibleObjectTe
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 13064699
+	clientObjectCRC = 13064699,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_crafting_shared_default_draft_not_found, "object/tangible/crafting/shared_default_draft_not_found.iff")
@@ -198,7 +200,8 @@ object_tangible_crafting_shared_missing_schematic_substitute = SharedTangibleObj
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1186484366
+	clientObjectCRC = 1186484366,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_crafting_shared_missing_schematic_substitute, "object/tangible/crafting/shared_missing_schematic_substitute.iff")

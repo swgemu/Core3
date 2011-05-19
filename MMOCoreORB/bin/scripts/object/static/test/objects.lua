@@ -80,7 +80,8 @@ object_static_test_shared_test_blast = SharedStaticObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 956566051
+	clientObjectCRC = 956566051,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_test_shared_test_blast, "object/static/test/shared_test_blast.iff")
@@ -124,7 +125,8 @@ object_static_test_shared_test_blaster_bolt = SharedStaticObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1262353977
+	clientObjectCRC = 1262353977,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_test_shared_test_blaster_bolt, "object/static/test/shared_test_blaster_bolt.iff")
@@ -168,7 +170,8 @@ object_static_test_shared_test_sound_obelisk_1 = SharedStaticObjectTemplate:new 
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 4068306658
+	clientObjectCRC = 4068306658,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_test_shared_test_sound_obelisk_1, "object/static/test/shared_test_sound_obelisk_1.iff")
@@ -212,7 +215,8 @@ object_static_test_shared_test_sound_obelisk_2 = SharedStaticObjectTemplate:new 
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 694863477
+	clientObjectCRC = 694863477,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_test_shared_test_sound_obelisk_2, "object/static/test/shared_test_sound_obelisk_2.iff")
@@ -256,7 +260,8 @@ object_static_test_shared_test_static_sandcrawler = SharedStaticObjectTemplate:n
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 82674764
+	clientObjectCRC = 82674764,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_test_shared_test_static_sandcrawler, "object/static/test/shared_test_static_sandcrawler.iff")

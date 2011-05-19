@@ -90,7 +90,8 @@ object_tangible_wearables_apron_shared_apron_chef_s01 = SharedTangibleObjectTemp
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1238323119
+	clientObjectCRC = 1238323119,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_jacket_longsleeve.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_apron_shared_apron_chef_s01, "object/tangible/wearables/apron/shared_apron_chef_s01.iff")
@@ -144,7 +145,8 @@ object_tangible_wearables_apron_shared_apron_porcellus = SharedTangibleObjectTem
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3631236476
+	clientObjectCRC = 3631236476,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_vest.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_apron_shared_apron_porcellus, "object/tangible/wearables/apron/shared_apron_porcellus.iff")
@@ -198,7 +200,8 @@ object_tangible_wearables_apron_shared_apron_s01 = SharedTangibleObjectTemplate:
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 129788759
+	clientObjectCRC = 129788759,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_vest.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_apron_shared_apron_s01, "object/tangible/wearables/apron/shared_apron_s01.iff")
@@ -252,7 +255,8 @@ object_tangible_wearables_apron_shared_apron_s01_quest = SharedTangibleObjectTem
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3378416176
+	clientObjectCRC = 3378416176,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_vest.iff", "object/tangible/wearables/apron/shared_apron_s01.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_apron_shared_apron_s01_quest, "object/tangible/wearables/apron/shared_apron_s01_quest.iff")

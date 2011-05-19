@@ -80,7 +80,8 @@ object_draft_schematic_instrument_component_shared_dual_wave_synthesizer = Share
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 658217892
+	clientObjectCRC = 658217892,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff", "object/draft_schematic/instrument/shared_instrument_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_instrument_component_shared_dual_wave_synthesizer, "object/draft_schematic/instrument/component/shared_dual_wave_synthesizer.iff")

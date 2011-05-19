@@ -90,7 +90,8 @@ object_tangible_lair_rock_mite_shared_lair_rock_mite = SharedTangibleObjectTempl
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3536993046
+	clientObjectCRC = 3536993046,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff", "object/tangible/lair/base/shared_lair_base_mound_insect_light.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_rock_mite_shared_lair_rock_mite, "object/tangible/lair/rock_mite/shared_lair_rock_mite.iff")
@@ -144,7 +145,8 @@ object_tangible_lair_rock_mite_shared_lair_rock_mite_desert = SharedTangibleObje
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4213428417
+	clientObjectCRC = 4213428417,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff", "object/tangible/lair/base/shared_lair_base_mound_insect_light.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_rock_mite_shared_lair_rock_mite_desert, "object/tangible/lair/rock_mite/shared_lair_rock_mite_desert.iff")
@@ -198,7 +200,8 @@ object_tangible_lair_rock_mite_shared_lair_rock_mite_mountain = SharedTangibleOb
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 151987616
+	clientObjectCRC = 151987616,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff", "object/tangible/lair/base/shared_lair_base_mound_insect_dark.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_rock_mite_shared_lair_rock_mite_mountain, "object/tangible/lair/rock_mite/shared_lair_rock_mite_mountain.iff")
@@ -252,7 +255,8 @@ object_tangible_lair_rock_mite_shared_lair_rock_mite_wasteland = SharedTangibleO
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1944425271
+	clientObjectCRC = 1944425271,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff", "object/tangible/lair/base/shared_lair_base_mound_insect_light.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_rock_mite_shared_lair_rock_mite_wasteland, "object/tangible/lair/rock_mite/shared_lair_rock_mite_wasteland.iff")

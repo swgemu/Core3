@@ -90,7 +90,8 @@ object_tangible_loot_quest_hero_of_tatooine_shared_mark_altruism = SharedTangibl
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2895321218
+	clientObjectCRC = 2895321218,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_quest_hero_of_tatooine_shared_mark_altruism, "object/tangible/loot/quest/hero_of_tatooine/shared_mark_altruism.iff")
@@ -144,7 +145,8 @@ object_tangible_loot_quest_hero_of_tatooine_shared_mark_courage = SharedTangible
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1173220327
+	clientObjectCRC = 1173220327,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_quest_hero_of_tatooine_shared_mark_courage, "object/tangible/loot/quest/hero_of_tatooine/shared_mark_courage.iff")
@@ -198,7 +200,8 @@ object_tangible_loot_quest_hero_of_tatooine_shared_mark_honor = SharedTangibleOb
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1842983256
+	clientObjectCRC = 1842983256,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_quest_hero_of_tatooine_shared_mark_honor, "object/tangible/loot/quest/hero_of_tatooine/shared_mark_honor.iff")
@@ -252,7 +255,8 @@ object_tangible_loot_quest_hero_of_tatooine_shared_mark_intellect = SharedTangib
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2725337290
+	clientObjectCRC = 2725337290,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_quest_hero_of_tatooine_shared_mark_intellect, "object/tangible/loot/quest/hero_of_tatooine/shared_mark_intellect.iff")
@@ -306,7 +310,8 @@ object_tangible_loot_quest_hero_of_tatooine_shared_squill_skull = SharedTangible
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 577481974
+	clientObjectCRC = 577481974,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_quest_hero_of_tatooine_shared_squill_skull, "object/tangible/loot/quest/hero_of_tatooine/shared_squill_skull.iff")

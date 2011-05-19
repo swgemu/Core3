@@ -90,7 +90,8 @@ object_tangible_lair_voritor_lizard_shared_lair_voritor_lizard = SharedTangibleO
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 908714854
+	clientObjectCRC = 908714854,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_voritor_lizard_shared_lair_voritor_lizard, "object/tangible/lair/voritor_lizard/shared_lair_voritor_lizard.iff")
@@ -144,7 +145,8 @@ object_tangible_lair_voritor_lizard_shared_lair_voritor_lizard_grassland = Share
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3526592210
+	clientObjectCRC = 3526592210,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_voritor_lizard_shared_lair_voritor_lizard_grassland, "object/tangible/lair/voritor_lizard/shared_lair_voritor_lizard_grassland.iff")
@@ -198,7 +200,8 @@ object_tangible_lair_voritor_lizard_shared_lair_voritor_lizard_mountain = Shared
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1883986886
+	clientObjectCRC = 1883986886,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_voritor_lizard_shared_lair_voritor_lizard_mountain, "object/tangible/lair/voritor_lizard/shared_lair_voritor_lizard_mountain.iff")

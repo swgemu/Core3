@@ -90,7 +90,8 @@ object_installation_mining_ore_shared_mining_ore_harvester_heavy = SharedInstall
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1077924017
+	clientObjectCRC = 1077924017,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff", "object/installation/mining_ore/base/shared_mining_ore_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_installation_mining_ore_shared_mining_ore_harvester_heavy, "object/installation/mining_ore/shared_mining_ore_harvester_heavy.iff")
@@ -144,7 +145,8 @@ object_installation_mining_ore_shared_mining_ore_harvester_style_1 = SharedInsta
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1719643610
+	clientObjectCRC = 1719643610,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff", "object/installation/mining_ore/base/shared_mining_ore_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_installation_mining_ore_shared_mining_ore_harvester_style_1, "object/installation/mining_ore/shared_mining_ore_harvester_style_1.iff")
@@ -198,7 +200,8 @@ object_installation_mining_ore_shared_mining_ore_harvester_style_2 = SharedInsta
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3177710925
+	clientObjectCRC = 3177710925,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff", "object/installation/mining_ore/base/shared_mining_ore_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_installation_mining_ore_shared_mining_ore_harvester_style_2, "object/installation/mining_ore/shared_mining_ore_harvester_style_2.iff")

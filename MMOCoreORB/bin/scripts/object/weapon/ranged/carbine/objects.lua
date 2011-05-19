@@ -94,7 +94,8 @@ object_weapon_ranged_carbine_shared_carbine_cdef = SharedWeaponObjectTemplate:ne
 	weaponEffect = "bolt",
 	weaponEffectIndex = 8,
 
-	clientObjectCRC = 583942574
+	clientObjectCRC = 583942574,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/weapon/base/shared_base_weapon.iff", "object/weapon/ranged/base/shared_base_ranged_weapon.iff", "object/weapon/ranged/carbine/base/shared_carbine_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_weapon_ranged_carbine_shared_carbine_cdef, "object/weapon/ranged/carbine/shared_carbine_cdef.iff")
@@ -152,7 +153,8 @@ object_weapon_ranged_carbine_shared_carbine_cdef_corsec = SharedWeaponObjectTemp
 	weaponEffect = "bolt",
 	weaponEffectIndex = 8,
 
-	clientObjectCRC = 227072559
+	clientObjectCRC = 227072559,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/weapon/base/shared_base_weapon.iff", "object/weapon/ranged/base/shared_base_ranged_weapon.iff", "object/weapon/ranged/carbine/base/shared_carbine_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_weapon_ranged_carbine_shared_carbine_cdef_corsec, "object/weapon/ranged/carbine/shared_carbine_cdef_corsec.iff")
@@ -210,7 +212,8 @@ object_weapon_ranged_carbine_shared_carbine_dh17 = SharedWeaponObjectTemplate:ne
 	weaponEffect = "bolt",
 	weaponEffectIndex = 8,
 
-	clientObjectCRC = 683543232
+	clientObjectCRC = 683543232,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/weapon/base/shared_base_weapon.iff", "object/weapon/ranged/base/shared_base_ranged_weapon.iff", "object/weapon/ranged/carbine/base/shared_carbine_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_weapon_ranged_carbine_shared_carbine_dh17, "object/weapon/ranged/carbine/shared_carbine_dh17.iff")
@@ -268,7 +271,8 @@ object_weapon_ranged_carbine_shared_carbine_dh17_black = SharedWeaponObjectTempl
 	weaponEffect = "bolt",
 	weaponEffectIndex = 8,
 
-	clientObjectCRC = 648744456
+	clientObjectCRC = 648744456,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/weapon/base/shared_base_weapon.iff", "object/weapon/ranged/base/shared_base_ranged_weapon.iff", "object/weapon/ranged/carbine/base/shared_carbine_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_weapon_ranged_carbine_shared_carbine_dh17_black, "object/weapon/ranged/carbine/shared_carbine_dh17_black.iff")
@@ -326,7 +330,8 @@ object_weapon_ranged_carbine_shared_carbine_dh17_snubnose = SharedWeaponObjectTe
 	weaponEffect = "bolt",
 	weaponEffectIndex = 8,
 
-	clientObjectCRC = 1881783933
+	clientObjectCRC = 1881783933,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/weapon/base/shared_base_weapon.iff", "object/weapon/ranged/base/shared_base_ranged_weapon.iff", "object/weapon/ranged/carbine/base/shared_carbine_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_weapon_ranged_carbine_shared_carbine_dh17_snubnose, "object/weapon/ranged/carbine/shared_carbine_dh17_snubnose.iff")
@@ -384,7 +389,8 @@ object_weapon_ranged_carbine_shared_carbine_dxr6 = SharedWeaponObjectTemplate:ne
 	weaponEffect = "bolt",
 	weaponEffectIndex = 10,
 
-	clientObjectCRC = 2050793147
+	clientObjectCRC = 2050793147,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/weapon/base/shared_base_weapon.iff", "object/weapon/ranged/base/shared_base_ranged_weapon.iff", "object/weapon/ranged/carbine/base/shared_carbine_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_weapon_ranged_carbine_shared_carbine_dxr6, "object/weapon/ranged/carbine/shared_carbine_dxr6.iff")
@@ -442,7 +448,8 @@ object_weapon_ranged_carbine_shared_carbine_e11 = SharedWeaponObjectTemplate:new
 	weaponEffect = "bolt",
 	weaponEffectIndex = 9,
 
-	clientObjectCRC = 3034123480
+	clientObjectCRC = 3034123480,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/weapon/base/shared_base_weapon.iff", "object/weapon/ranged/base/shared_base_ranged_weapon.iff", "object/weapon/ranged/carbine/base/shared_carbine_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_weapon_ranged_carbine_shared_carbine_e11, "object/weapon/ranged/carbine/shared_carbine_e11.iff")
@@ -500,7 +507,8 @@ object_weapon_ranged_carbine_shared_carbine_e11_quest = SharedWeaponObjectTempla
 	weaponEffect = "bolt",
 	weaponEffectIndex = 9,
 
-	clientObjectCRC = 861424280
+	clientObjectCRC = 861424280,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/weapon/base/shared_base_weapon.iff", "object/weapon/ranged/base/shared_base_ranged_weapon.iff", "object/weapon/ranged/carbine/base/shared_carbine_base.iff", "object/weapon/ranged/carbine/shared_carbine_e11.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_weapon_ranged_carbine_shared_carbine_e11_quest, "object/weapon/ranged/carbine/shared_carbine_e11_quest.iff")
@@ -558,7 +566,8 @@ object_weapon_ranged_carbine_shared_carbine_e11_victor_quest = SharedWeaponObjec
 	weaponEffect = "bolt",
 	weaponEffectIndex = 28,
 
-	clientObjectCRC = 1297312489
+	clientObjectCRC = 1297312489,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/weapon/base/shared_base_weapon.iff", "object/weapon/ranged/base/shared_base_ranged_weapon.iff", "object/weapon/ranged/carbine/base/shared_carbine_base.iff", "object/weapon/ranged/carbine/shared_carbine_e11.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_weapon_ranged_carbine_shared_carbine_e11_victor_quest, "object/weapon/ranged/carbine/shared_carbine_e11_victor_quest.iff")
@@ -616,7 +625,8 @@ object_weapon_ranged_carbine_shared_carbine_ee3 = SharedWeaponObjectTemplate:new
 	weaponEffect = "bolt",
 	weaponEffectIndex = 9,
 
-	clientObjectCRC = 749154215
+	clientObjectCRC = 749154215,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/weapon/base/shared_base_weapon.iff", "object/weapon/ranged/base/shared_base_ranged_weapon.iff", "object/weapon/ranged/carbine/base/shared_carbine_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_weapon_ranged_carbine_shared_carbine_ee3, "object/weapon/ranged/carbine/shared_carbine_ee3.iff")
@@ -674,7 +684,8 @@ object_weapon_ranged_carbine_shared_carbine_elite = SharedWeaponObjectTemplate:n
 	weaponEffect = "bolt",
 	weaponEffectIndex = 5,
 
-	clientObjectCRC = 971375722
+	clientObjectCRC = 971375722,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/weapon/base/shared_base_weapon.iff", "object/weapon/ranged/base/shared_base_ranged_weapon.iff", "object/weapon/ranged/carbine/base/shared_carbine_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_weapon_ranged_carbine_shared_carbine_elite, "object/weapon/ranged/carbine/shared_carbine_elite.iff")
@@ -732,7 +743,8 @@ object_weapon_ranged_carbine_shared_carbine_laser = SharedWeaponObjectTemplate:n
 	weaponEffect = "bolt",
 	weaponEffectIndex = 5,
 
-	clientObjectCRC = 2121432077
+	clientObjectCRC = 2121432077,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/weapon/base/shared_base_weapon.iff", "object/weapon/ranged/base/shared_base_ranged_weapon.iff", "object/weapon/ranged/carbine/base/shared_carbine_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_weapon_ranged_carbine_shared_carbine_laser, "object/weapon/ranged/carbine/shared_carbine_laser.iff")
@@ -790,7 +802,8 @@ object_weapon_ranged_carbine_shared_carbine_nym_slugthrower = SharedWeaponObject
 	weaponEffect = "projectile_rifle",
 	weaponEffectIndex = 1,
 
-	clientObjectCRC = 1757923070
+	clientObjectCRC = 1757923070,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/weapon/base/shared_base_weapon.iff", "object/weapon/ranged/base/shared_base_ranged_weapon.iff", "object/weapon/ranged/carbine/base/shared_carbine_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_weapon_ranged_carbine_shared_carbine_nym_slugthrower, "object/weapon/ranged/carbine/shared_carbine_nym_slugthrower.iff")

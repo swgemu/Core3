@@ -90,7 +90,8 @@ object_installation_base_shared_construction_installation_base = SharedInstallat
 
 	useStructureFootprintOutline = 1,
 
-	clientObjectCRC = 544424204
+	clientObjectCRC = 544424204,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_installation_base_shared_construction_installation_base, "object/installation/base/shared_construction_installation_base.iff")
@@ -144,7 +145,8 @@ object_installation_base_shared_installation_base = SharedInstallationObjectTemp
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1610526259
+	clientObjectCRC = 1610526259,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_installation_base_shared_installation_base, "object/installation/base/shared_installation_base.iff")
@@ -198,7 +200,8 @@ object_installation_base_shared_installation_default = SharedInstallationObjectT
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4138250553
+	clientObjectCRC = 4138250553,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_installation_base_shared_installation_default, "object/installation/base/shared_installation_default.iff")

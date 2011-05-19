@@ -90,7 +90,8 @@ object_tangible_furniture_space_shared_frn_chair_falcon_passenger_s01 = SharedTa
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2521145726
+	clientObjectCRC = 2521145726,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_furniture_space_shared_frn_chair_falcon_passenger_s01, "object/tangible/furniture/space/shared_frn_chair_falcon_passenger_s01.iff")
@@ -144,7 +145,8 @@ object_tangible_furniture_space_shared_frn_chair_falcon_passenger_s02 = SharedTa
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1297222121
+	clientObjectCRC = 1297222121,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_furniture_space_shared_frn_chair_falcon_passenger_s02, "object/tangible/furniture/space/shared_frn_chair_falcon_passenger_s02.iff")
@@ -198,7 +200,8 @@ object_tangible_furniture_space_shared_frn_couch_falcon_corner_s01 = SharedTangi
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3613873422
+	clientObjectCRC = 3613873422,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_furniture_space_shared_frn_couch_falcon_corner_s01, "object/tangible/furniture/space/shared_frn_couch_falcon_corner_s01.iff")
@@ -252,7 +255,8 @@ object_tangible_furniture_space_shared_frn_couch_falcon_section_s01 = SharedTang
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 927756693
+	clientObjectCRC = 927756693,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_furniture_space_shared_frn_couch_falcon_section_s01, "object/tangible/furniture/space/shared_frn_couch_falcon_section_s01.iff")

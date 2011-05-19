@@ -90,7 +90,8 @@ object_installation_faction_perk_turret_base_shared_faction_turret_base = Shared
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1860325711
+	clientObjectCRC = 1860325711,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff", "object/installation/turret/base/shared_turret_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_installation_faction_perk_turret_base_shared_faction_turret_base, "object/installation/faction_perk/turret/base/shared_faction_turret_base.iff")

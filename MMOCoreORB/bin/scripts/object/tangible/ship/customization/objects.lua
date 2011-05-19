@@ -90,7 +90,8 @@ object_tangible_ship_customization_shared_xwing_cowl_neg_s01 = SharedTangibleObj
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2278316907
+	clientObjectCRC = 2278316907,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/gem/base/shared_gem_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_customization_shared_xwing_cowl_neg_s01, "object/tangible/ship/customization/shared_xwing_cowl_neg_s01.iff")
@@ -144,7 +145,8 @@ object_tangible_ship_customization_shared_xwing_cowl_neg_s02 = SharedTangibleObj
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1557918716
+	clientObjectCRC = 1557918716,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/gem/base/shared_gem_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_customization_shared_xwing_cowl_neg_s02, "object/tangible/ship/customization/shared_xwing_cowl_neg_s02.iff")
@@ -198,7 +200,8 @@ object_tangible_ship_customization_shared_xwing_gun_neg_s01 = SharedTangibleObje
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2209400056
+	clientObjectCRC = 2209400056,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/gem/base/shared_gem_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_customization_shared_xwing_gun_neg_s01, "object/tangible/ship/customization/shared_xwing_gun_neg_s01.iff")
@@ -252,7 +255,8 @@ object_tangible_ship_customization_shared_xwing_gun_neg_s02 = SharedTangibleObje
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1487367279
+	clientObjectCRC = 1487367279,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/gem/base/shared_gem_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_customization_shared_xwing_gun_neg_s02, "object/tangible/ship/customization/shared_xwing_gun_neg_s02.iff")
@@ -306,7 +310,8 @@ object_tangible_ship_customization_shared_xwing_thruster_neg_s01 = SharedTangibl
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 900489122
+	clientObjectCRC = 900489122,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/gem/base/shared_gem_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_customization_shared_xwing_thruster_neg_s01, "object/tangible/ship/customization/shared_xwing_thruster_neg_s01.iff")
@@ -360,7 +365,8 @@ object_tangible_ship_customization_shared_xwing_thruster_neg_s02 = SharedTangibl
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4005295925
+	clientObjectCRC = 4005295925,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/gem/base/shared_gem_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_customization_shared_xwing_thruster_neg_s02, "object/tangible/ship/customization/shared_xwing_thruster_neg_s02.iff")

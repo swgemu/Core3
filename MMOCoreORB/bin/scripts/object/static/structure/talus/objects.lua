@@ -79,7 +79,8 @@ object_static_structure_talus_shared_talus_imprv_bannerpole_s01 = SharedStaticOb
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 181836729
+	clientObjectCRC = 181836729,
+	derivedFromTemplates = {}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_talus_shared_talus_imprv_bannerpole_s01, "object/static/structure/talus/shared_talus_imprv_bannerpole_s01.iff")
@@ -122,7 +123,8 @@ object_static_structure_talus_shared_talus_imprv_flagpole_s01 = SharedStaticObje
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 929058155
+	clientObjectCRC = 929058155,
+	derivedFromTemplates = {}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_talus_shared_talus_imprv_flagpole_s01, "object/static/structure/talus/shared_talus_imprv_flagpole_s01.iff")

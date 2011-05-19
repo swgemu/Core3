@@ -93,7 +93,8 @@ object_building_poi_base_shared_base_poi_building = SharedBuildingObjectTemplate
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3227957177
+	clientObjectCRC = 3227957177,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_military_building.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_poi_base_shared_base_poi_building, "object/building/poi/base/shared_base_poi_building.iff")
@@ -150,7 +151,8 @@ object_building_poi_base_shared_base_poi_large = SharedBuildingObjectTemplate:ne
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3975774939
+	clientObjectCRC = 3975774939,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_military_building.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_poi_base_shared_base_poi_large, "object/building/poi/base/shared_base_poi_large.iff")
@@ -207,7 +209,8 @@ object_building_poi_base_shared_base_poi_medium = SharedBuildingObjectTemplate:n
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1110952143
+	clientObjectCRC = 1110952143,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_military_building.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_poi_base_shared_base_poi_medium, "object/building/poi/base/shared_base_poi_medium.iff")
@@ -264,7 +267,8 @@ object_building_poi_base_shared_base_poi_small = SharedBuildingObjectTemplate:ne
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3638695666
+	clientObjectCRC = 3638695666,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_military_building.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_poi_base_shared_base_poi_small, "object/building/poi/base/shared_base_poi_small.iff")

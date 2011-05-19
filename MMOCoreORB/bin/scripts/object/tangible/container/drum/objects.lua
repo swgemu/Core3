@@ -90,7 +90,8 @@ object_tangible_container_drum_shared_large_plain_crate_s01 = SharedTangibleObje
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1685311950
+	clientObjectCRC = 1685311950,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/container/base/shared_base_container.iff", "object/tangible/container/base/shared_base_container_volume.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_container_drum_shared_large_plain_crate_s01, "object/tangible/container/drum/shared_large_plain_crate_s01.iff")
@@ -144,7 +145,8 @@ object_tangible_container_drum_shared_large_plain_crate_s02 = SharedTangibleObje
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3211032921
+	clientObjectCRC = 3211032921,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/container/base/shared_base_container.iff", "object/tangible/container/base/shared_base_container_volume.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_container_drum_shared_large_plain_crate_s02, "object/tangible/container/drum/shared_large_plain_crate_s02.iff")
@@ -198,7 +200,8 @@ object_tangible_container_drum_shared_large_plain_crate_s03 = SharedTangibleObje
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4134084308
+	clientObjectCRC = 4134084308,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/container/base/shared_base_container.iff", "object/tangible/container/base/shared_base_container_volume.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_container_drum_shared_large_plain_crate_s03, "object/tangible/container/drum/shared_large_plain_crate_s03.iff")
@@ -252,7 +255,8 @@ object_tangible_container_drum_shared_large_plain_crate_s04 = SharedTangibleObje
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 227161536
+	clientObjectCRC = 227161536,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/container/base/shared_base_container.iff", "object/tangible/container/base/shared_base_container_volume.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_container_drum_shared_large_plain_crate_s04, "object/tangible/container/drum/shared_large_plain_crate_s04.iff")
@@ -306,7 +310,8 @@ object_tangible_container_drum_shared_pob_ship_loot_box = SharedTangibleObjectTe
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1962311443
+	clientObjectCRC = 1962311443,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/container/base/shared_base_container.iff", "object/tangible/container/base/shared_base_container_volume.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_container_drum_shared_pob_ship_loot_box, "object/tangible/container/drum/shared_pob_ship_loot_box.iff")
@@ -360,7 +365,8 @@ object_tangible_container_drum_shared_poi_prize_box_off = SharedTangibleObjectTe
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2325798188
+	clientObjectCRC = 2325798188,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/container/base/shared_base_container.iff", "object/tangible/container/base/shared_base_container_volume.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_container_drum_shared_poi_prize_box_off, "object/tangible/container/drum/shared_poi_prize_box_off.iff")
@@ -414,7 +420,8 @@ object_tangible_container_drum_shared_poi_prize_box_on = SharedTangibleObjectTem
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 856439167
+	clientObjectCRC = 856439167,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/container/base/shared_base_container.iff", "object/tangible/container/base/shared_base_container_volume.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_container_drum_shared_poi_prize_box_on, "object/tangible/container/drum/shared_poi_prize_box_on.iff")
@@ -468,7 +475,8 @@ object_tangible_container_drum_shared_tatt_drum_1 = SharedTangibleObjectTemplate
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3342593323
+	clientObjectCRC = 3342593323,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/container/base/shared_base_container.iff", "object/tangible/container/base/shared_base_container_volume.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_container_drum_shared_tatt_drum_1, "object/tangible/container/drum/shared_tatt_drum_1.iff")
@@ -522,7 +530,8 @@ object_tangible_container_drum_shared_treasure_drum = SharedTangibleObjectTempla
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3112160566
+	clientObjectCRC = 3112160566,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/container/base/shared_base_container.iff", "object/tangible/container/base/shared_base_container_volume.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_container_drum_shared_treasure_drum, "object/tangible/container/drum/shared_treasure_drum.iff")
@@ -576,7 +585,8 @@ object_tangible_container_drum_shared_warren_core_rod_storage = SharedTangibleOb
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3188177313
+	clientObjectCRC = 3188177313,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/container/base/shared_base_container.iff", "object/tangible/container/base/shared_base_container_volume.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_container_drum_shared_warren_core_rod_storage, "object/tangible/container/drum/shared_warren_core_rod_storage.iff")
@@ -630,7 +640,8 @@ object_tangible_container_drum_shared_warren_drum_loot = SharedTangibleObjectTem
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3257388271
+	clientObjectCRC = 3257388271,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/container/base/shared_base_container.iff", "object/tangible/container/base/shared_base_container_volume.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_container_drum_shared_warren_drum_loot, "object/tangible/container/drum/shared_warren_drum_loot.iff")
@@ -684,7 +695,8 @@ object_tangible_container_drum_shared_warren_drum_skeleton = SharedTangibleObjec
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1100233944
+	clientObjectCRC = 1100233944,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/container/base/shared_base_container.iff", "object/tangible/container/base/shared_base_container_volume.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_container_drum_shared_warren_drum_skeleton, "object/tangible/container/drum/shared_warren_drum_skeleton.iff")
@@ -738,7 +750,8 @@ object_tangible_container_drum_shared_warren_drum_tech_armoire = SharedTangibleO
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 738307164
+	clientObjectCRC = 738307164,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/container/base/shared_base_container.iff", "object/tangible/container/base/shared_base_container_volume.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_container_drum_shared_warren_drum_tech_armoire, "object/tangible/container/drum/shared_warren_drum_tech_armoire.iff")
@@ -792,7 +805,8 @@ object_tangible_container_drum_shared_warren_drum_tech_chest = SharedTangibleObj
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2500254490
+	clientObjectCRC = 2500254490,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/container/base/shared_base_container.iff", "object/tangible/container/base/shared_base_container_volume.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_container_drum_shared_warren_drum_tech_chest, "object/tangible/container/drum/shared_warren_drum_tech_chest.iff")
@@ -846,7 +860,8 @@ object_tangible_container_drum_shared_warren_reactor_core = SharedTangibleObject
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2456580913
+	clientObjectCRC = 2456580913,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/container/base/shared_base_container.iff", "object/tangible/container/base/shared_base_container_volume.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_container_drum_shared_warren_reactor_core, "object/tangible/container/drum/shared_warren_reactor_core.iff")

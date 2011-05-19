@@ -93,7 +93,8 @@ object_building_lok_shared_cave_03_nym_pirates = SharedBuildingObjectTemplate:ne
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1658229769
+	clientObjectCRC = 1658229769,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_cave.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_lok_shared_cave_03_nym_pirates, "object/building/lok/shared_cave_03_nym_pirates.iff")
@@ -150,7 +151,8 @@ object_building_lok_shared_mining_cave_01 = SharedBuildingObjectTemplate:new {
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 223465819
+	clientObjectCRC = 223465819,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_cave.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_lok_shared_mining_cave_01, "object/building/lok/shared_mining_cave_01.iff")
@@ -207,7 +209,8 @@ object_building_lok_shared_nym_stronghold = SharedBuildingObjectTemplate:new {
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2289463992
+	clientObjectCRC = 2289463992,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_palace.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_lok_shared_nym_stronghold, "object/building/lok/shared_nym_stronghold.iff")

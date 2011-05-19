@@ -90,7 +90,8 @@ object_tangible_gem_base_shared_gem_base = SharedTangibleObjectTemplate:new {
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1086540149
+	clientObjectCRC = 1086540149,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_gem_base_shared_gem_base, "object/tangible/gem/base/shared_gem_base.iff")

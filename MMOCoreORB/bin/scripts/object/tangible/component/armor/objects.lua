@@ -90,7 +90,8 @@ object_tangible_component_armor_shared_armor_layer = SharedTangibleObjectTemplat
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3871435906
+	clientObjectCRC = 3871435906,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_armor_shared_armor_layer, "object/tangible/component/armor/shared_armor_layer.iff")
@@ -144,7 +145,8 @@ object_tangible_component_armor_shared_armor_layer_acid = SharedTangibleObjectTe
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3368394489
+	clientObjectCRC = 3368394489,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/armor/shared_armor_layer.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_armor_shared_armor_layer_acid, "object/tangible/component/armor/shared_armor_layer_acid.iff")
@@ -198,7 +200,8 @@ object_tangible_component_armor_shared_armor_layer_blast = SharedTangibleObjectT
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3979633097
+	clientObjectCRC = 3979633097,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/armor/shared_armor_layer.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_armor_shared_armor_layer_blast, "object/tangible/component/armor/shared_armor_layer_blast.iff")
@@ -252,7 +255,8 @@ object_tangible_component_armor_shared_armor_layer_cold = SharedTangibleObjectTe
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1118558688
+	clientObjectCRC = 1118558688,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/armor/shared_armor_layer.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_armor_shared_armor_layer_cold, "object/tangible/component/armor/shared_armor_layer_cold.iff")
@@ -306,7 +310,8 @@ object_tangible_component_armor_shared_armor_layer_electrical = SharedTangibleOb
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2194125131
+	clientObjectCRC = 2194125131,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/armor/shared_armor_layer.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_armor_shared_armor_layer_electrical, "object/tangible/component/armor/shared_armor_layer_electrical.iff")
@@ -360,7 +365,8 @@ object_tangible_component_armor_shared_armor_layer_energy = SharedTangibleObject
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2938969271
+	clientObjectCRC = 2938969271,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/armor/shared_armor_layer.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_armor_shared_armor_layer_energy, "object/tangible/component/armor/shared_armor_layer_energy.iff")
@@ -414,7 +420,8 @@ object_tangible_component_armor_shared_armor_layer_environmental = SharedTangibl
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2751814176
+	clientObjectCRC = 2751814176,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/armor/shared_armor_layer.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_armor_shared_armor_layer_environmental, "object/tangible/component/armor/shared_armor_layer_environmental.iff")
@@ -468,7 +475,8 @@ object_tangible_component_armor_shared_armor_layer_heat = SharedTangibleObjectTe
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3125319440
+	clientObjectCRC = 3125319440,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/armor/shared_armor_layer.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_armor_shared_armor_layer_heat, "object/tangible/component/armor/shared_armor_layer_heat.iff")
@@ -522,7 +530,8 @@ object_tangible_component_armor_shared_armor_layer_kinetic = SharedTangibleObjec
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2095312993
+	clientObjectCRC = 2095312993,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/armor/shared_armor_layer.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_armor_shared_armor_layer_kinetic, "object/tangible/component/armor/shared_armor_layer_kinetic.iff")
@@ -576,7 +585,8 @@ object_tangible_component_armor_shared_armor_layer_nightsister = SharedTangibleO
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3536633958
+	clientObjectCRC = 3536633958,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/armor/shared_armor_layer.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_armor_shared_armor_layer_nightsister, "object/tangible/component/armor/shared_armor_layer_nightsister.iff")
@@ -630,7 +640,8 @@ object_tangible_component_armor_shared_armor_layer_restraint = SharedTangibleObj
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3874261151
+	clientObjectCRC = 3874261151,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/armor/shared_armor_layer.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_armor_shared_armor_layer_restraint, "object/tangible/component/armor/shared_armor_layer_restraint.iff")
@@ -684,7 +695,8 @@ object_tangible_component_armor_shared_armor_layer_ris = SharedTangibleObjectTem
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2996647863
+	clientObjectCRC = 2996647863,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/armor/shared_armor_layer.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_armor_shared_armor_layer_ris, "object/tangible/component/armor/shared_armor_layer_ris.iff")
@@ -738,7 +750,8 @@ object_tangible_component_armor_shared_armor_layer_stun = SharedTangibleObjectTe
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 203108001
+	clientObjectCRC = 203108001,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/armor/shared_armor_layer.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_armor_shared_armor_layer_stun, "object/tangible/component/armor/shared_armor_layer_stun.iff")
@@ -792,7 +805,8 @@ object_tangible_component_armor_shared_armor_module_heavy = SharedTangibleObject
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1321171754
+	clientObjectCRC = 1321171754,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/base/shared_base_barrel.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_armor_shared_armor_module_heavy, "object/tangible/component/armor/shared_armor_module_heavy.iff")
@@ -846,7 +860,8 @@ object_tangible_component_armor_shared_armor_module_light = SharedTangibleObject
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2414299124
+	clientObjectCRC = 2414299124,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/base/shared_base_barrel.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_armor_shared_armor_module_light, "object/tangible/component/armor/shared_armor_module_light.iff")
@@ -900,7 +915,8 @@ object_tangible_component_armor_shared_armor_segment = SharedTangibleObjectTempl
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1357044619
+	clientObjectCRC = 1357044619,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_armor_shared_armor_segment, "object/tangible/component/armor/shared_armor_segment.iff")
@@ -954,7 +970,8 @@ object_tangible_component_armor_shared_armor_segment_advanced = SharedTangibleOb
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 34830358
+	clientObjectCRC = 34830358,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/armor/shared_armor_segment.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_armor_shared_armor_segment_advanced, "object/tangible/component/armor/shared_armor_segment_advanced.iff")
@@ -1008,7 +1025,8 @@ object_tangible_component_armor_shared_armor_segment_bone = SharedTangibleObject
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1150752581
+	clientObjectCRC = 1150752581,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_armor_shared_armor_segment_bone, "object/tangible/component/armor/shared_armor_segment_bone.iff")
@@ -1062,7 +1080,8 @@ object_tangible_component_armor_shared_armor_segment_bone_acklay = SharedTangibl
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1282707003
+	clientObjectCRC = 1282707003,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/armor/shared_armor_segment_bone.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_armor_shared_armor_segment_bone_acklay, "object/tangible/component/armor/shared_armor_segment_bone_acklay.iff")
@@ -1116,7 +1135,8 @@ object_tangible_component_armor_shared_armor_segment_bone_advanced = SharedTangi
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2814096223
+	clientObjectCRC = 2814096223,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/armor/shared_armor_segment_bone.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_armor_shared_armor_segment_bone_advanced, "object/tangible/component/armor/shared_armor_segment_bone_advanced.iff")
@@ -1170,7 +1190,8 @@ object_tangible_component_armor_shared_armor_segment_bone_donkuwah = SharedTangi
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1936004642
+	clientObjectCRC = 1936004642,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/armor/shared_armor_segment_bone.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_armor_shared_armor_segment_bone_donkuwah, "object/tangible/component/armor/shared_armor_segment_bone_donkuwah.iff")
@@ -1224,7 +1245,8 @@ object_tangible_component_armor_shared_armor_segment_bone_kimogila = SharedTangi
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2307142178
+	clientObjectCRC = 2307142178,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/armor/shared_armor_segment_bone.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_armor_shared_armor_segment_bone_kimogila, "object/tangible/component/armor/shared_armor_segment_bone_kimogila.iff")
@@ -1278,7 +1300,8 @@ object_tangible_component_armor_shared_armor_segment_bone_voritor_lizard = Share
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 534961284
+	clientObjectCRC = 534961284,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/armor/shared_armor_segment_bone.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_armor_shared_armor_segment_bone_voritor_lizard, "object/tangible/component/armor/shared_armor_segment_bone_voritor_lizard.iff")
@@ -1332,7 +1355,8 @@ object_tangible_component_armor_shared_armor_segment_chitin = SharedTangibleObje
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3560749582
+	clientObjectCRC = 3560749582,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_armor_shared_armor_segment_chitin, "object/tangible/component/armor/shared_armor_segment_chitin.iff")
@@ -1386,7 +1410,8 @@ object_tangible_component_armor_shared_armor_segment_chitin_advanced = SharedTan
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2809337004
+	clientObjectCRC = 2809337004,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/armor/shared_armor_segment_chitin.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_armor_shared_armor_segment_chitin_advanced, "object/tangible/component/armor/shared_armor_segment_chitin_advanced.iff")
@@ -1440,7 +1465,8 @@ object_tangible_component_armor_shared_armor_segment_chitin_brackaset = SharedTa
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3248573794
+	clientObjectCRC = 3248573794,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/armor/shared_armor_segment_chitin.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_armor_shared_armor_segment_chitin_brackaset, "object/tangible/component/armor/shared_armor_segment_chitin_brackaset.iff")
@@ -1494,7 +1520,8 @@ object_tangible_component_armor_shared_armor_segment_chitin_kliknick = SharedTan
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2446761645
+	clientObjectCRC = 2446761645,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/armor/shared_armor_segment_chitin.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_armor_shared_armor_segment_chitin_kliknick, "object/tangible/component/armor/shared_armor_segment_chitin_kliknick.iff")
@@ -1548,7 +1575,8 @@ object_tangible_component_armor_shared_armor_segment_chitin_kliknick_adv = Share
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2037172516
+	clientObjectCRC = 2037172516,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/armor/shared_armor_segment_chitin.iff", "object/tangible/component/armor/shared_armor_segment_chitin_kliknick.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_armor_shared_armor_segment_chitin_kliknick_adv, "object/tangible/component/armor/shared_armor_segment_chitin_kliknick_adv.iff")
@@ -1602,7 +1630,8 @@ object_tangible_component_armor_shared_armor_segment_chitin_sharnaff = SharedTan
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1708779648
+	clientObjectCRC = 1708779648,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/armor/shared_armor_segment_chitin.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_armor_shared_armor_segment_chitin_sharnaff, "object/tangible/component/armor/shared_armor_segment_chitin_sharnaff.iff")
@@ -1656,7 +1685,8 @@ object_tangible_component_armor_shared_armor_segment_composite = SharedTangibleO
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3596548182
+	clientObjectCRC = 3596548182,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_armor_shared_armor_segment_composite, "object/tangible/component/armor/shared_armor_segment_composite.iff")
@@ -1710,7 +1740,8 @@ object_tangible_component_armor_shared_armor_segment_composite_advanced = Shared
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2764212654
+	clientObjectCRC = 2764212654,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/armor/shared_armor_segment_composite.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_armor_shared_armor_segment_composite_advanced, "object/tangible/component/armor/shared_armor_segment_composite_advanced.iff")
@@ -1764,7 +1795,8 @@ object_tangible_component_armor_shared_armor_segment_composite_krayt = SharedTan
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2649372559
+	clientObjectCRC = 2649372559,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/armor/shared_armor_segment_composite.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_armor_shared_armor_segment_composite_krayt, "object/tangible/component/armor/shared_armor_segment_composite_krayt.iff")
@@ -1818,7 +1850,8 @@ object_tangible_component_armor_shared_armor_segment_enhancement_brackaset = Sha
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 591672738
+	clientObjectCRC = 591672738,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/armor/shared_base_armor_segment_enhancement.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_armor_shared_armor_segment_enhancement_brackaset, "object/tangible/component/armor/shared_armor_segment_enhancement_brackaset.iff")
@@ -1872,7 +1905,8 @@ object_tangible_component_armor_shared_armor_segment_enhancement_dragonet = Shar
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 433071916
+	clientObjectCRC = 433071916,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/armor/shared_base_armor_segment_enhancement.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_armor_shared_armor_segment_enhancement_dragonet, "object/tangible/component/armor/shared_armor_segment_enhancement_dragonet.iff")
@@ -1926,7 +1960,8 @@ object_tangible_component_armor_shared_armor_segment_enhancement_fambaa = Shared
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 409289522
+	clientObjectCRC = 409289522,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/armor/shared_base_armor_segment_enhancement.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_armor_shared_armor_segment_enhancement_fambaa, "object/tangible/component/armor/shared_armor_segment_enhancement_fambaa.iff")
@@ -1980,7 +2015,8 @@ object_tangible_component_armor_shared_armor_segment_enhancement_janta = SharedT
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 184239884
+	clientObjectCRC = 184239884,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/armor/shared_base_armor_segment_enhancement.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_armor_shared_armor_segment_enhancement_janta, "object/tangible/component/armor/shared_armor_segment_enhancement_janta.iff")
@@ -2034,7 +2070,8 @@ object_tangible_component_armor_shared_armor_segment_enhancement_kimogila = Shar
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3365812164
+	clientObjectCRC = 3365812164,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/armor/shared_base_armor_segment_enhancement.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_armor_shared_armor_segment_enhancement_kimogila, "object/tangible/component/armor/shared_armor_segment_enhancement_kimogila.iff")
@@ -2088,7 +2125,8 @@ object_tangible_component_armor_shared_armor_segment_enhancement_krayt = SharedT
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1719593091
+	clientObjectCRC = 1719593091,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/armor/shared_base_armor_segment_enhancement.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_armor_shared_armor_segment_enhancement_krayt, "object/tangible/component/armor/shared_armor_segment_enhancement_krayt.iff")
@@ -2142,7 +2180,8 @@ object_tangible_component_armor_shared_armor_segment_enhancement_nightsister = S
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2132900638
+	clientObjectCRC = 2132900638,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/armor/shared_base_armor_segment_enhancement.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_armor_shared_armor_segment_enhancement_nightsister, "object/tangible/component/armor/shared_armor_segment_enhancement_nightsister.iff")
@@ -2196,7 +2235,8 @@ object_tangible_component_armor_shared_armor_segment_enhancement_rancor = Shared
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1147665676
+	clientObjectCRC = 1147665676,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/armor/shared_base_armor_segment_enhancement.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_armor_shared_armor_segment_enhancement_rancor, "object/tangible/component/armor/shared_armor_segment_enhancement_rancor.iff")
@@ -2250,7 +2290,8 @@ object_tangible_component_armor_shared_armor_segment_enhancement_sharnaff = Shar
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 604719765
+	clientObjectCRC = 604719765,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/armor/shared_base_armor_segment_enhancement.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_armor_shared_armor_segment_enhancement_sharnaff, "object/tangible/component/armor/shared_armor_segment_enhancement_sharnaff.iff")
@@ -2304,7 +2345,8 @@ object_tangible_component_armor_shared_armor_segment_enhancement_voritor_lizard 
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2169359198
+	clientObjectCRC = 2169359198,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/armor/shared_base_armor_segment_enhancement.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_armor_shared_armor_segment_enhancement_voritor_lizard, "object/tangible/component/armor/shared_armor_segment_enhancement_voritor_lizard.iff")
@@ -2358,7 +2400,8 @@ object_tangible_component_armor_shared_armor_segment_kashyyykian_black_mtn = Sha
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 923046063
+	clientObjectCRC = 923046063,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_armor_shared_armor_segment_kashyyykian_black_mtn, "object/tangible/component/armor/shared_armor_segment_kashyyykian_black_mtn.iff")
@@ -2412,7 +2455,8 @@ object_tangible_component_armor_shared_armor_segment_kashyyykian_black_mtn_advan
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4080254682
+	clientObjectCRC = 4080254682,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/armor/shared_armor_segment_kashyyykian_black_mtn.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_armor_shared_armor_segment_kashyyykian_black_mtn_advanced, "object/tangible/component/armor/shared_armor_segment_kashyyykian_black_mtn_advanced.iff")
@@ -2466,7 +2510,8 @@ object_tangible_component_armor_shared_armor_segment_kashyyykian_ceremonial = Sh
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3045138551
+	clientObjectCRC = 3045138551,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_armor_shared_armor_segment_kashyyykian_ceremonial, "object/tangible/component/armor/shared_armor_segment_kashyyykian_ceremonial.iff")
@@ -2520,7 +2565,8 @@ object_tangible_component_armor_shared_armor_segment_kashyyykian_ceremonial_adva
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2163584319
+	clientObjectCRC = 2163584319,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/armor/shared_armor_segment_kashyyykian_ceremonial.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_armor_shared_armor_segment_kashyyykian_ceremonial_advanced, "object/tangible/component/armor/shared_armor_segment_kashyyykian_ceremonial_advanced.iff")
@@ -2574,7 +2620,8 @@ object_tangible_component_armor_shared_armor_segment_kashyyykian_hunting = Share
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3253647713
+	clientObjectCRC = 3253647713,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_armor_shared_armor_segment_kashyyykian_hunting, "object/tangible/component/armor/shared_armor_segment_kashyyykian_hunting.iff")
@@ -2628,7 +2675,8 @@ object_tangible_component_armor_shared_armor_segment_kashyyykian_hunting_advance
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2762649224
+	clientObjectCRC = 2762649224,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/armor/shared_armor_segment_kashyyykian_hunting.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_armor_shared_armor_segment_kashyyykian_hunting_advanced, "object/tangible/component/armor/shared_armor_segment_kashyyykian_hunting_advanced.iff")
@@ -2682,7 +2730,8 @@ object_tangible_component_armor_shared_armor_segment_padded = SharedTangibleObje
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1728449296
+	clientObjectCRC = 1728449296,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_armor_shared_armor_segment_padded, "object/tangible/component/armor/shared_armor_segment_padded.iff")
@@ -2736,7 +2785,8 @@ object_tangible_component_armor_shared_armor_segment_padded_acklay = SharedTangi
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 962320502
+	clientObjectCRC = 962320502,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/armor/shared_armor_segment_padded.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_armor_shared_armor_segment_padded_acklay, "object/tangible/component/armor/shared_armor_segment_padded_acklay.iff")
@@ -2790,7 +2840,8 @@ object_tangible_component_armor_shared_armor_segment_padded_advanced = SharedTan
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3071514894
+	clientObjectCRC = 3071514894,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/armor/shared_armor_segment_padded.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_armor_shared_armor_segment_padded_advanced, "object/tangible/component/armor/shared_armor_segment_padded_advanced.iff")
@@ -2844,7 +2895,8 @@ object_tangible_component_armor_shared_armor_segment_padded_dune_lizard = Shared
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2051360405
+	clientObjectCRC = 2051360405,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/armor/shared_armor_segment_padded.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_armor_shared_armor_segment_padded_dune_lizard, "object/tangible/component/armor/shared_armor_segment_padded_dune_lizard.iff")
@@ -2898,7 +2950,8 @@ object_tangible_component_armor_shared_armor_segment_padded_fambaa = SharedTangi
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2619219671
+	clientObjectCRC = 2619219671,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/armor/shared_armor_segment_padded.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_armor_shared_armor_segment_padded_fambaa, "object/tangible/component/armor/shared_armor_segment_padded_fambaa.iff")
@@ -2952,7 +3005,8 @@ object_tangible_component_armor_shared_armor_segment_padded_rancor = SharedTangi
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3223101673
+	clientObjectCRC = 3223101673,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/armor/shared_armor_segment_padded.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_armor_shared_armor_segment_padded_rancor, "object/tangible/component/armor/shared_armor_segment_padded_rancor.iff")
@@ -3006,7 +3060,8 @@ object_tangible_component_armor_shared_armor_segment_ris = SharedTangibleObjectT
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1466801045
+	clientObjectCRC = 1466801045,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_armor_shared_armor_segment_ris, "object/tangible/component/armor/shared_armor_segment_ris.iff")
@@ -3060,7 +3115,8 @@ object_tangible_component_armor_shared_armor_segment_ris_acklay = SharedTangible
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3553286313
+	clientObjectCRC = 3553286313,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/armor/shared_armor_segment_ris.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_armor_shared_armor_segment_ris_acklay, "object/tangible/component/armor/shared_armor_segment_ris_acklay.iff")
@@ -3114,7 +3170,8 @@ object_tangible_component_armor_shared_armor_segment_ubese = SharedTangibleObjec
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2314491777
+	clientObjectCRC = 2314491777,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_armor_shared_armor_segment_ubese, "object/tangible/component/armor/shared_armor_segment_ubese.iff")
@@ -3168,7 +3225,8 @@ object_tangible_component_armor_shared_armor_segment_ubese_advanced = SharedTang
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1032868484
+	clientObjectCRC = 1032868484,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/armor/shared_armor_segment_ubese.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_armor_shared_armor_segment_ubese_advanced, "object/tangible/component/armor/shared_armor_segment_ubese_advanced.iff")
@@ -3222,7 +3280,8 @@ object_tangible_component_armor_shared_armor_segment_zam = SharedTangibleObjectT
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2378288672
+	clientObjectCRC = 2378288672,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_armor_shared_armor_segment_zam, "object/tangible/component/armor/shared_armor_segment_zam.iff")
@@ -3276,7 +3335,8 @@ object_tangible_component_armor_shared_armor_segment_zam_advanced = SharedTangib
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 452144726
+	clientObjectCRC = 452144726,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/armor/shared_armor_segment_zam.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_armor_shared_armor_segment_zam_advanced, "object/tangible/component/armor/shared_armor_segment_zam_advanced.iff")
@@ -3330,7 +3390,8 @@ object_tangible_component_armor_shared_base_armor_segment_enhancement = SharedTa
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 524566894
+	clientObjectCRC = 524566894,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_armor_shared_base_armor_segment_enhancement, "object/tangible/component/armor/shared_base_armor_segment_enhancement.iff")
@@ -3384,7 +3445,8 @@ object_tangible_component_armor_shared_bone_fragment_woolamander_harrower = Shar
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4007249575
+	clientObjectCRC = 4007249575,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_armor_shared_bone_fragment_woolamander_harrower, "object/tangible/component/armor/shared_bone_fragment_woolamander_harrower.iff")
@@ -3438,7 +3500,8 @@ object_tangible_component_armor_shared_deflector_shield_emitter_assembly = Share
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3438496009
+	clientObjectCRC = 3438496009,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_armor_shared_deflector_shield_emitter_assembly, "object/tangible/component/armor/shared_deflector_shield_emitter_assembly.iff")
@@ -3492,7 +3555,8 @@ object_tangible_component_armor_shared_deflector_shield_generator_energy_ray = S
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1857960052
+	clientObjectCRC = 1857960052,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_armor_shared_deflector_shield_generator_energy_ray, "object/tangible/component/armor/shared_deflector_shield_generator_energy_ray.iff")
@@ -3546,7 +3610,8 @@ object_tangible_component_armor_shared_deflector_shield_generator_particle = Sha
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2738138651
+	clientObjectCRC = 2738138651,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_armor_shared_deflector_shield_generator_particle, "object/tangible/component/armor/shared_deflector_shield_generator_particle.iff")
@@ -3600,7 +3665,8 @@ object_tangible_component_armor_shared_deflector_shield_ion_feed_unit = SharedTa
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2607341358
+	clientObjectCRC = 2607341358,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/base/shared_base_barrel.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_armor_shared_deflector_shield_ion_feed_unit, "object/tangible/component/armor/shared_deflector_shield_ion_feed_unit.iff")
@@ -3654,7 +3720,8 @@ object_tangible_component_armor_shared_deflector_shield_overload_discharge_unit 
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2649973177
+	clientObjectCRC = 2649973177,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/base/shared_base_barrel.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_armor_shared_deflector_shield_overload_discharge_unit, "object/tangible/component/armor/shared_deflector_shield_overload_discharge_unit.iff")
@@ -3708,7 +3775,8 @@ object_tangible_component_armor_shared_deflector_shield_projector_plate = Shared
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2995769746
+	clientObjectCRC = 2995769746,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_armor_shared_deflector_shield_projector_plate, "object/tangible/component/armor/shared_deflector_shield_projector_plate.iff")
@@ -3762,7 +3830,8 @@ object_tangible_component_armor_shared_feather_peko_albatross = SharedTangibleOb
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2381585751
+	clientObjectCRC = 2381585751,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_armor_shared_feather_peko_albatross, "object/tangible/component/armor/shared_feather_peko_albatross.iff")
@@ -3816,7 +3885,8 @@ object_tangible_component_armor_shared_heavy_armor_layer = SharedTangibleObjectT
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3619749395
+	clientObjectCRC = 3619749395,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_armor_shared_heavy_armor_layer, "object/tangible/component/armor/shared_heavy_armor_layer.iff")
@@ -3870,7 +3940,8 @@ object_tangible_component_armor_shared_heavy_armor_layer_acid = SharedTangibleOb
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1874541769
+	clientObjectCRC = 1874541769,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/armor/shared_heavy_armor_layer.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_armor_shared_heavy_armor_layer_acid, "object/tangible/component/armor/shared_heavy_armor_layer_acid.iff")
@@ -3924,7 +3995,8 @@ object_tangible_component_armor_shared_heavy_armor_layer_blast = SharedTangibleO
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2097043394
+	clientObjectCRC = 2097043394,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/armor/shared_heavy_armor_layer.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_armor_shared_heavy_armor_layer_blast, "object/tangible/component/armor/shared_heavy_armor_layer_blast.iff")
@@ -3978,7 +4050,8 @@ object_tangible_component_armor_shared_heavy_armor_layer_cold = SharedTangibleOb
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3855973328
+	clientObjectCRC = 3855973328,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/armor/shared_heavy_armor_layer.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_armor_shared_heavy_armor_layer_cold, "object/tangible/component/armor/shared_heavy_armor_layer_cold.iff")
@@ -4032,7 +4105,8 @@ object_tangible_component_armor_shared_heavy_armor_layer_electrical = SharedTang
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2909170926
+	clientObjectCRC = 2909170926,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/armor/shared_heavy_armor_layer.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_armor_shared_heavy_armor_layer_electrical, "object/tangible/component/armor/shared_heavy_armor_layer_electrical.iff")
@@ -4086,7 +4160,8 @@ object_tangible_component_armor_shared_heavy_armor_layer_energy = SharedTangible
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1153905054
+	clientObjectCRC = 1153905054,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/armor/shared_heavy_armor_layer.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_armor_shared_heavy_armor_layer_energy, "object/tangible/component/armor/shared_heavy_armor_layer_energy.iff")
@@ -4140,7 +4215,8 @@ object_tangible_component_armor_shared_heavy_armor_layer_environmental = SharedT
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1639844661
+	clientObjectCRC = 1639844661,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/armor/shared_heavy_armor_layer.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_armor_shared_heavy_armor_layer_environmental, "object/tangible/component/armor/shared_heavy_armor_layer_environmental.iff")
@@ -4194,7 +4270,8 @@ object_tangible_component_armor_shared_heavy_armor_layer_heat = SharedTangibleOb
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 490091808
+	clientObjectCRC = 490091808,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/armor/shared_heavy_armor_layer.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_armor_shared_heavy_armor_layer_heat, "object/tangible/component/armor/shared_heavy_armor_layer_heat.iff")
@@ -4248,7 +4325,8 @@ object_tangible_component_armor_shared_heavy_armor_layer_kinetic = SharedTangibl
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2016162937
+	clientObjectCRC = 2016162937,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/armor/shared_heavy_armor_layer.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_armor_shared_heavy_armor_layer_kinetic, "object/tangible/component/armor/shared_heavy_armor_layer_kinetic.iff")
@@ -4302,7 +4380,8 @@ object_tangible_component_armor_shared_heavy_armor_layer_restraint = SharedTangi
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 34964498
+	clientObjectCRC = 34964498,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/armor/shared_heavy_armor_layer.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_armor_shared_heavy_armor_layer_restraint, "object/tangible/component/armor/shared_heavy_armor_layer_restraint.iff")
@@ -4356,7 +4435,8 @@ object_tangible_component_armor_shared_heavy_armor_layer_stun = SharedTangibleOb
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2875559057
+	clientObjectCRC = 2875559057,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/armor/shared_heavy_armor_layer.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_armor_shared_heavy_armor_layer_stun, "object/tangible/component/armor/shared_heavy_armor_layer_stun.iff")
@@ -4410,7 +4490,8 @@ object_tangible_component_armor_shared_hide_gurk_king = SharedTangibleObjectTemp
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 605934535
+	clientObjectCRC = 605934535,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_armor_shared_hide_gurk_king, "object/tangible/component/armor/shared_hide_gurk_king.iff")
@@ -4464,7 +4545,8 @@ object_tangible_component_armor_shared_scale_giant_dune_kimogila = SharedTangibl
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3177620881
+	clientObjectCRC = 3177620881,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_armor_shared_scale_giant_dune_kimogila, "object/tangible/component/armor/shared_scale_giant_dune_kimogila.iff")
@@ -4518,7 +4600,8 @@ object_tangible_component_armor_shared_shield_generator_facility = SharedTangibl
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3129011017
+	clientObjectCRC = 3129011017,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/base/shared_base_barrel.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_armor_shared_shield_generator_facility, "object/tangible/component/armor/shared_shield_generator_facility.iff")
@@ -4572,7 +4655,8 @@ object_tangible_component_armor_shared_shield_generator_personal = SharedTangibl
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3357133395
+	clientObjectCRC = 3357133395,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_belt.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_armor_shared_shield_generator_personal, "object/tangible/component/armor/shared_shield_generator_personal.iff")
@@ -4626,7 +4710,8 @@ object_tangible_component_armor_shared_shield_generator_personal_b = SharedTangi
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2352410837
+	clientObjectCRC = 2352410837,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_belt.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_armor_shared_shield_generator_personal_b, "object/tangible/component/armor/shared_shield_generator_personal_b.iff")
@@ -4680,7 +4765,8 @@ object_tangible_component_armor_shared_shield_generator_personal_c = SharedTangi
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3309016920
+	clientObjectCRC = 3309016920,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_belt.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_armor_shared_shield_generator_personal_c, "object/tangible/component/armor/shared_shield_generator_personal_c.iff")
@@ -4734,7 +4820,8 @@ object_tangible_component_armor_shared_shield_generator_personal_imperial_test =
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1034696189
+	clientObjectCRC = 1034696189,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_belt.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_armor_shared_shield_generator_personal_imperial_test, "object/tangible/component/armor/shared_shield_generator_personal_imperial_test.iff")
@@ -4788,7 +4875,8 @@ object_tangible_component_armor_shared_shield_generator_vehicular = SharedTangib
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4081974766
+	clientObjectCRC = 4081974766,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/base/shared_base_barrel.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_armor_shared_shield_generator_vehicular, "object/tangible/component/armor/shared_shield_generator_vehicular.iff")

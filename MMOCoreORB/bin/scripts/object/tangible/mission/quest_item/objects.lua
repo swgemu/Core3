@@ -90,7 +90,8 @@ object_tangible_mission_quest_item_shared_aaph_koden_q1_needed = SharedTangibleO
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3951173790
+	clientObjectCRC = 3951173790,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_aaph_koden_q1_needed, "object/tangible/mission/quest_item/shared_aaph_koden_q1_needed.iff")
@@ -144,7 +145,8 @@ object_tangible_mission_quest_item_shared_ajuva_vamasterin_q1_needed = SharedTan
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 378433158
+	clientObjectCRC = 378433158,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_ajuva_vamasterin_q1_needed, "object/tangible/mission/quest_item/shared_ajuva_vamasterin_q1_needed.iff")
@@ -198,7 +200,8 @@ object_tangible_mission_quest_item_shared_ajuva_vamasterin_q2_needed = SharedTan
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 513100684
+	clientObjectCRC = 513100684,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_ajuva_vamasterin_q2_needed, "object/tangible/mission/quest_item/shared_ajuva_vamasterin_q2_needed.iff")
@@ -252,7 +255,8 @@ object_tangible_mission_quest_item_shared_arrek_vonsarko_q1_needed = SharedTangi
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 910173292
+	clientObjectCRC = 910173292,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_arrek_vonsarko_q1_needed, "object/tangible/mission/quest_item/shared_arrek_vonsarko_q1_needed.iff")
@@ -306,7 +310,8 @@ object_tangible_mission_quest_item_shared_arven_wendik_q1_needed = SharedTangibl
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3207687484
+	clientObjectCRC = 3207687484,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_arven_wendik_q1_needed, "object/tangible/mission/quest_item/shared_arven_wendik_q1_needed.iff")
@@ -360,7 +365,8 @@ object_tangible_mission_quest_item_shared_athok_dinvar_q2_needed = SharedTangibl
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2808249853
+	clientObjectCRC = 2808249853,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_athok_dinvar_q2_needed, "object/tangible/mission/quest_item/shared_athok_dinvar_q2_needed.iff")
@@ -414,7 +420,8 @@ object_tangible_mission_quest_item_shared_attunement_grid = SharedTangibleObject
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1378666230
+	clientObjectCRC = 1378666230,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_attunement_grid, "object/tangible/mission/quest_item/shared_attunement_grid.iff")
@@ -468,7 +475,8 @@ object_tangible_mission_quest_item_shared_aujante_klee_q2_needed = SharedTangibl
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3195313536
+	clientObjectCRC = 3195313536,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_aujante_klee_q2_needed, "object/tangible/mission/quest_item/shared_aujante_klee_q2_needed.iff")
@@ -522,7 +530,8 @@ object_tangible_mission_quest_item_shared_ayn_eckener_q3_needed = SharedTangible
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 947591589
+	clientObjectCRC = 947591589,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_ayn_eckener_q3_needed, "object/tangible/mission/quest_item/shared_ayn_eckener_q3_needed.iff")
@@ -576,7 +585,8 @@ object_tangible_mission_quest_item_shared_bab_esrus_q1_needed = SharedTangibleOb
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3109370215
+	clientObjectCRC = 3109370215,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_bab_esrus_q1_needed, "object/tangible/mission/quest_item/shared_bab_esrus_q1_needed.iff")
@@ -630,7 +640,8 @@ object_tangible_mission_quest_item_shared_bab_esrus_q3_needed = SharedTangibleOb
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3065577323
+	clientObjectCRC = 3065577323,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_bab_esrus_q3_needed, "object/tangible/mission/quest_item/shared_bab_esrus_q3_needed.iff")
@@ -684,7 +695,8 @@ object_tangible_mission_quest_item_shared_bardo_klinj_q1_needed = SharedTangible
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2260248356
+	clientObjectCRC = 2260248356,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_bardo_klinj_q1_needed, "object/tangible/mission/quest_item/shared_bardo_klinj_q1_needed.iff")
@@ -738,7 +750,8 @@ object_tangible_mission_quest_item_shared_bardo_klinj_q2_needed = SharedTangible
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2393080366
+	clientObjectCRC = 2393080366,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_bardo_klinj_q2_needed, "object/tangible/mission/quest_item/shared_bardo_klinj_q2_needed.iff")
@@ -792,7 +805,8 @@ object_tangible_mission_quest_item_shared_bardo_klinj_q3_needed = SharedTangible
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2304074024
+	clientObjectCRC = 2304074024,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_bardo_klinj_q3_needed, "object/tangible/mission/quest_item/shared_bardo_klinj_q3_needed.iff")
@@ -846,7 +860,8 @@ object_tangible_mission_quest_item_shared_binna_jode_q1_needed = SharedTangibleO
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2763509222
+	clientObjectCRC = 2763509222,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_binna_jode_q1_needed, "object/tangible/mission/quest_item/shared_binna_jode_q1_needed.iff")
@@ -900,7 +915,8 @@ object_tangible_mission_quest_item_shared_binna_jode_q2_needed = SharedTangibleO
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2897012972
+	clientObjectCRC = 2897012972,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_binna_jode_q2_needed, "object/tangible/mission/quest_item/shared_binna_jode_q2_needed.iff")
@@ -954,7 +970,8 @@ object_tangible_mission_quest_item_shared_binna_jode_q3_needed = SharedTangibleO
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2874805226
+	clientObjectCRC = 2874805226,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_binna_jode_q3_needed, "object/tangible/mission/quest_item/shared_binna_jode_q3_needed.iff")
@@ -1008,7 +1025,8 @@ object_tangible_mission_quest_item_shared_binna_jode_q4_needed = SharedTangibleO
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3164250872
+	clientObjectCRC = 3164250872,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_binna_jode_q4_needed, "object/tangible/mission/quest_item/shared_binna_jode_q4_needed.iff")
@@ -1062,7 +1080,8 @@ object_tangible_mission_quest_item_shared_biribas_tarun_q1_needed = SharedTangib
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2299815222
+	clientObjectCRC = 2299815222,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_biribas_tarun_q1_needed, "object/tangible/mission/quest_item/shared_biribas_tarun_q1_needed.iff")
@@ -1116,7 +1135,8 @@ object_tangible_mission_quest_item_shared_booto_lubble_q1_needed = SharedTangibl
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 612933888
+	clientObjectCRC = 612933888,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_booto_lubble_q1_needed, "object/tangible/mission/quest_item/shared_booto_lubble_q1_needed.iff")
@@ -1170,7 +1190,8 @@ object_tangible_mission_quest_item_shared_booto_lubble_q2_needed = SharedTangibl
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 747865098
+	clientObjectCRC = 747865098,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_booto_lubble_q2_needed, "object/tangible/mission/quest_item/shared_booto_lubble_q2_needed.iff")
@@ -1224,7 +1245,8 @@ object_tangible_mission_quest_item_shared_borvo_q1_needed = SharedTangibleObject
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3403265909
+	clientObjectCRC = 3403265909,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_borvo_q1_needed, "object/tangible/mission/quest_item/shared_borvo_q1_needed.iff")
@@ -1278,7 +1300,8 @@ object_tangible_mission_quest_item_shared_borvo_q6_needed = SharedTangibleObject
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3709410919
+	clientObjectCRC = 3709410919,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_borvo_q6_needed, "object/tangible/mission/quest_item/shared_borvo_q6_needed.iff")
@@ -1332,7 +1355,8 @@ object_tangible_mission_quest_item_shared_boshek_q1_needed = SharedTangibleObjec
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4133937817
+	clientObjectCRC = 4133937817,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_boshek_q1_needed, "object/tangible/mission/quest_item/shared_boshek_q1_needed.iff")
@@ -1386,7 +1410,8 @@ object_tangible_mission_quest_item_shared_boshek_q2_needed = SharedTangibleObjec
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4269655955
+	clientObjectCRC = 4269655955,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_boshek_q2_needed, "object/tangible/mission/quest_item/shared_boshek_q2_needed.iff")
@@ -1440,7 +1465,8 @@ object_tangible_mission_quest_item_shared_brantlee_spondoon_q1_needed = SharedTa
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3753479454
+	clientObjectCRC = 3753479454,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_brantlee_spondoon_q1_needed, "object/tangible/mission/quest_item/shared_brantlee_spondoon_q1_needed.iff")
@@ -1494,7 +1520,8 @@ object_tangible_mission_quest_item_shared_brantlee_spondoon_q2_needed = SharedTa
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3617761300
+	clientObjectCRC = 3617761300,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_brantlee_spondoon_q2_needed, "object/tangible/mission/quest_item/shared_brantlee_spondoon_q2_needed.iff")
@@ -1548,7 +1575,8 @@ object_tangible_mission_quest_item_shared_brass_marshoo_q1_needed = SharedTangib
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1892692988
+	clientObjectCRC = 1892692988,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_brass_marshoo_q1_needed, "object/tangible/mission/quest_item/shared_brass_marshoo_q1_needed.iff")
@@ -1602,7 +1630,8 @@ object_tangible_mission_quest_item_shared_brass_marshoo_q2_needed = SharedTangib
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2026575606
+	clientObjectCRC = 2026575606,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_brass_marshoo_q2_needed, "object/tangible/mission/quest_item/shared_brass_marshoo_q2_needed.iff")
@@ -1656,7 +1685,8 @@ object_tangible_mission_quest_item_shared_brea_tonnika_q1_needed = SharedTangibl
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 359980413
+	clientObjectCRC = 359980413,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_brea_tonnika_q1_needed, "object/tangible/mission/quest_item/shared_brea_tonnika_q1_needed.iff")
@@ -1710,7 +1740,8 @@ object_tangible_mission_quest_item_shared_bren_kingal_q1_needed = SharedTangible
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 240174714
+	clientObjectCRC = 240174714,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_bren_kingal_q1_needed, "object/tangible/mission/quest_item/shared_bren_kingal_q1_needed.iff")
@@ -1764,7 +1795,8 @@ object_tangible_mission_quest_item_shared_bren_kingal_q1_reward = SharedTangible
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2799354182
+	clientObjectCRC = 2799354182,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_bren_kingal_q1_reward, "object/tangible/mission/quest_item/shared_bren_kingal_q1_reward.iff")
@@ -1818,7 +1850,8 @@ object_tangible_mission_quest_item_shared_bren_kingal_q2_needed = SharedTangible
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 105636720
+	clientObjectCRC = 105636720,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_bren_kingal_q2_needed, "object/tangible/mission/quest_item/shared_bren_kingal_q2_needed.iff")
@@ -1872,7 +1905,8 @@ object_tangible_mission_quest_item_shared_bren_kingal_q2_reward = SharedTangible
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2931942476
+	clientObjectCRC = 2931942476,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_bren_kingal_q2_reward, "object/tangible/mission/quest_item/shared_bren_kingal_q2_reward.iff")
@@ -1926,7 +1960,8 @@ object_tangible_mission_quest_item_shared_bren_kingal_q3_needed = SharedTangible
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 29163638
+	clientObjectCRC = 29163638,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_bren_kingal_q3_needed, "object/tangible/mission/quest_item/shared_bren_kingal_q3_needed.iff")
@@ -1980,7 +2015,8 @@ object_tangible_mission_quest_item_shared_bren_kingal_q3_reward = SharedTangible
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2838955850
+	clientObjectCRC = 2838955850,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_bren_kingal_q3_reward, "object/tangible/mission/quest_item/shared_bren_kingal_q3_reward.iff")
@@ -2034,7 +2070,8 @@ object_tangible_mission_quest_item_shared_bren_kingal_q4_needed = SharedTangible
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 377334116
+	clientObjectCRC = 377334116,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_bren_kingal_q4_needed, "object/tangible/mission/quest_item/shared_bren_kingal_q4_needed.iff")
@@ -2088,7 +2125,8 @@ object_tangible_mission_quest_item_shared_bren_kingal_q4_reward = SharedTangible
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3203903064
+	clientObjectCRC = 3203903064,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_bren_kingal_q4_reward, "object/tangible/mission/quest_item/shared_bren_kingal_q4_reward.iff")
@@ -2142,7 +2180,8 @@ object_tangible_mission_quest_item_shared_brennis_doore_q1_needed = SharedTangib
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1705405453
+	clientObjectCRC = 1705405453,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_brennis_doore_q1_needed, "object/tangible/mission/quest_item/shared_brennis_doore_q1_needed.iff")
@@ -2196,7 +2235,8 @@ object_tangible_mission_quest_item_shared_brennis_doore_q2_needed = SharedTangib
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1841121543
+	clientObjectCRC = 1841121543,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_brennis_doore_q2_needed, "object/tangible/mission/quest_item/shared_brennis_doore_q2_needed.iff")
@@ -2250,7 +2290,8 @@ object_tangible_mission_quest_item_shared_brennis_doore_q3_needed = SharedTangib
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1783343617
+	clientObjectCRC = 1783343617,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_brennis_doore_q3_needed, "object/tangible/mission/quest_item/shared_brennis_doore_q3_needed.iff")
@@ -2304,7 +2345,8 @@ object_tangible_mission_quest_item_shared_champhra_biahin_q1_needed = SharedTang
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3264370995
+	clientObjectCRC = 3264370995,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_champhra_biahin_q1_needed, "object/tangible/mission/quest_item/shared_champhra_biahin_q1_needed.iff")
@@ -2358,7 +2400,8 @@ object_tangible_mission_quest_item_shared_champhra_biahin_q2_needed = SharedTang
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3398007865
+	clientObjectCRC = 3398007865,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_champhra_biahin_q2_needed, "object/tangible/mission/quest_item/shared_champhra_biahin_q2_needed.iff")
@@ -2412,7 +2455,8 @@ object_tangible_mission_quest_item_shared_charal_q1_needed = SharedTangibleObjec
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2397269656
+	clientObjectCRC = 2397269656,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_charal_q1_needed, "object/tangible/mission/quest_item/shared_charal_q1_needed.iff")
@@ -2466,7 +2510,8 @@ object_tangible_mission_quest_item_shared_charal_q4_needed = SharedTangibleObjec
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2530083206
+	clientObjectCRC = 2530083206,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_charal_q4_needed, "object/tangible/mission/quest_item/shared_charal_q4_needed.iff")
@@ -2520,7 +2565,8 @@ object_tangible_mission_quest_item_shared_chertyl_ruruwoor_q1_needed = SharedTan
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3359396583
+	clientObjectCRC = 3359396583,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_chertyl_ruruwoor_q1_needed, "object/tangible/mission/quest_item/shared_chertyl_ruruwoor_q1_needed.iff")
@@ -2574,7 +2620,8 @@ object_tangible_mission_quest_item_shared_crev_bombaasa_q1_needed = SharedTangib
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 8182933
+	clientObjectCRC = 8182933,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_crev_bombaasa_q1_needed, "object/tangible/mission/quest_item/shared_crev_bombaasa_q1_needed.iff")
@@ -2628,7 +2675,8 @@ object_tangible_mission_quest_item_shared_crev_bombaasa_q2_needed = SharedTangib
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 141031839
+	clientObjectCRC = 141031839,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_crev_bombaasa_q2_needed, "object/tangible/mission/quest_item/shared_crev_bombaasa_q2_needed.iff")
@@ -2682,7 +2730,8 @@ object_tangible_mission_quest_item_shared_crider_trant_q1_needed = SharedTangibl
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2176487212
+	clientObjectCRC = 2176487212,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_crider_trant_q1_needed, "object/tangible/mission/quest_item/shared_crider_trant_q1_needed.iff")
@@ -2736,7 +2785,8 @@ object_tangible_mission_quest_item_shared_current_alternator = SharedTangibleObj
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3995914990
+	clientObjectCRC = 3995914990,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_current_alternator, "object/tangible/mission/quest_item/shared_current_alternator.iff")
@@ -2790,7 +2840,8 @@ object_tangible_mission_quest_item_shared_daclif_gallamby_q1_needed = SharedTang
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2245704148
+	clientObjectCRC = 2245704148,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_daclif_gallamby_q1_needed, "object/tangible/mission/quest_item/shared_daclif_gallamby_q1_needed.iff")
@@ -2844,7 +2895,8 @@ object_tangible_mission_quest_item_shared_daclif_gallamby_q2_needed = SharedTang
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2378276062
+	clientObjectCRC = 2378276062,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_daclif_gallamby_q2_needed, "object/tangible/mission/quest_item/shared_daclif_gallamby_q2_needed.iff")
@@ -2898,7 +2950,8 @@ object_tangible_mission_quest_item_shared_daclif_gallamby_q3_needed = SharedTang
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2318893016
+	clientObjectCRC = 2318893016,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_daclif_gallamby_q3_needed, "object/tangible/mission/quest_item/shared_daclif_gallamby_q3_needed.iff")
@@ -2952,7 +3005,8 @@ object_tangible_mission_quest_item_shared_daclif_gallamby_q4_needed = SharedTang
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2650265290
+	clientObjectCRC = 2650265290,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_daclif_gallamby_q4_needed, "object/tangible/mission/quest_item/shared_daclif_gallamby_q4_needed.iff")
@@ -3006,7 +3060,8 @@ object_tangible_mission_quest_item_shared_daclif_gallamby_q6_needed = SharedTang
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2451181766
+	clientObjectCRC = 2451181766,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_daclif_gallamby_q6_needed, "object/tangible/mission/quest_item/shared_daclif_gallamby_q6_needed.iff")
@@ -3060,7 +3115,8 @@ object_tangible_mission_quest_item_shared_damalia_korde_q1_needed = SharedTangib
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4183162211
+	clientObjectCRC = 4183162211,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_damalia_korde_q1_needed, "object/tangible/mission/quest_item/shared_damalia_korde_q1_needed.iff")
@@ -3114,7 +3170,8 @@ object_tangible_mission_quest_item_shared_dannik_malaan_q1_needed = SharedTangib
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1675280131
+	clientObjectCRC = 1675280131,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_dannik_malaan_q1_needed, "object/tangible/mission/quest_item/shared_dannik_malaan_q1_needed.iff")
@@ -3168,7 +3225,8 @@ object_tangible_mission_quest_item_shared_dea_tore_q2_needed = SharedTangibleObj
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 888947205
+	clientObjectCRC = 888947205,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_dea_tore_q2_needed, "object/tangible/mission/quest_item/shared_dea_tore_q2_needed.iff")
@@ -3222,7 +3280,8 @@ object_tangible_mission_quest_item_shared_dea_tore_q3_needed = SharedTangibleObj
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 856334595
+	clientObjectCRC = 856334595,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_dea_tore_q3_needed, "object/tangible/mission/quest_item/shared_dea_tore_q3_needed.iff")
@@ -3276,7 +3335,8 @@ object_tangible_mission_quest_item_shared_dea_tore_q4_needed = SharedTangibleObj
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 617220113
+	clientObjectCRC = 617220113,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_dea_tore_q4_needed, "object/tangible/mission/quest_item/shared_dea_tore_q4_needed.iff")
@@ -3330,7 +3390,8 @@ object_tangible_mission_quest_item_shared_denell_kelvannon_q1_needed = SharedTan
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1955273161
+	clientObjectCRC = 1955273161,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_denell_kelvannon_q1_needed, "object/tangible/mission/quest_item/shared_denell_kelvannon_q1_needed.iff")
@@ -3384,7 +3445,8 @@ object_tangible_mission_quest_item_shared_diax_q2_needed = SharedTangibleObjectT
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4071396946
+	clientObjectCRC = 4071396946,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_diax_q2_needed, "object/tangible/mission/quest_item/shared_diax_q2_needed.iff")
@@ -3438,7 +3500,8 @@ object_tangible_mission_quest_item_shared_didina_lippinoss_q1_needed = SharedTan
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3645474258
+	clientObjectCRC = 3645474258,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_didina_lippinoss_q1_needed, "object/tangible/mission/quest_item/shared_didina_lippinoss_q1_needed.iff")
@@ -3492,7 +3555,8 @@ object_tangible_mission_quest_item_shared_dilvin_lormurojo_q2_needed = SharedTan
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 767298763
+	clientObjectCRC = 767298763,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_dilvin_lormurojo_q2_needed, "object/tangible/mission/quest_item/shared_dilvin_lormurojo_q2_needed.iff")
@@ -3546,7 +3610,8 @@ object_tangible_mission_quest_item_shared_dolac_legasi_q2_needed = SharedTangibl
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2124169630
+	clientObjectCRC = 2124169630,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_dolac_legasi_q2_needed, "object/tangible/mission/quest_item/shared_dolac_legasi_q2_needed.iff")
@@ -3600,7 +3665,8 @@ object_tangible_mission_quest_item_shared_draya_korbinari_q3_needed = SharedTang
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 813496257
+	clientObjectCRC = 813496257,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_draya_korbinari_q3_needed, "object/tangible/mission/quest_item/shared_draya_korbinari_q3_needed.iff")
@@ -3654,7 +3720,8 @@ object_tangible_mission_quest_item_shared_drenn_zebber_q1_needed = SharedTangibl
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1092729423
+	clientObjectCRC = 1092729423,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_drenn_zebber_q1_needed, "object/tangible/mission/quest_item/shared_drenn_zebber_q1_needed.iff")
@@ -3708,7 +3775,8 @@ object_tangible_mission_quest_item_shared_ebenn_baobab_q2_needed = SharedTangibl
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1335716161
+	clientObjectCRC = 1335716161,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_ebenn_baobab_q2_needed, "object/tangible/mission/quest_item/shared_ebenn_baobab_q2_needed.iff")
@@ -3762,7 +3830,8 @@ object_tangible_mission_quest_item_shared_ebenn_baobab_q3_needed = SharedTangibl
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1215007303
+	clientObjectCRC = 1215007303,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_ebenn_baobab_q3_needed, "object/tangible/mission/quest_item/shared_ebenn_baobab_q3_needed.iff")
@@ -3816,7 +3885,8 @@ object_tangible_mission_quest_item_shared_feedback_controller = SharedTangibleOb
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4176227908
+	clientObjectCRC = 4176227908,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_feedback_controller, "object/tangible/mission/quest_item/shared_feedback_controller.iff")
@@ -3870,7 +3940,8 @@ object_tangible_mission_quest_item_shared_figrindan_q1_needed = SharedTangibleOb
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 153181486
+	clientObjectCRC = 153181486,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_figrindan_q1_needed, "object/tangible/mission/quest_item/shared_figrindan_q1_needed.iff")
@@ -3924,7 +3995,8 @@ object_tangible_mission_quest_item_shared_figrindan_q2_needed = SharedTangibleOb
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 20609060
+	clientObjectCRC = 20609060,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_figrindan_q2_needed, "object/tangible/mission/quest_item/shared_figrindan_q2_needed.iff")
@@ -3978,7 +4050,8 @@ object_tangible_mission_quest_item_shared_figrindan_q3_needed = SharedTangibleOb
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 114072354
+	clientObjectCRC = 114072354,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_figrindan_q3_needed, "object/tangible/mission/quest_item/shared_figrindan_q3_needed.iff")
@@ -4032,7 +4105,8 @@ object_tangible_mission_quest_item_shared_fixer_q1_needed = SharedTangibleObject
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1275277718
+	clientObjectCRC = 1275277718,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_fixer_q1_needed, "object/tangible/mission/quest_item/shared_fixer_q1_needed.iff")
@@ -4086,7 +4160,8 @@ object_tangible_mission_quest_item_shared_fixer_q3_needed = SharedTangibleObject
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1139734426
+	clientObjectCRC = 1139734426,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_fixer_q3_needed, "object/tangible/mission/quest_item/shared_fixer_q3_needed.iff")
@@ -4140,7 +4215,8 @@ object_tangible_mission_quest_item_shared_garm_beliblis_q2_needed = SharedTangib
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3270538959
+	clientObjectCRC = 3270538959,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_garm_beliblis_q2_needed, "object/tangible/mission/quest_item/shared_garm_beliblis_q2_needed.iff")
@@ -4194,7 +4270,8 @@ object_tangible_mission_quest_item_shared_gilad_pellaeon_q1_needed = SharedTangi
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3066980718
+	clientObjectCRC = 3066980718,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_gilad_pellaeon_q1_needed, "object/tangible/mission/quest_item/shared_gilad_pellaeon_q1_needed.iff")
@@ -4248,7 +4325,8 @@ object_tangible_mission_quest_item_shared_gilad_pellaeon_q2_needed = SharedTangi
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3201649764
+	clientObjectCRC = 3201649764,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_gilad_pellaeon_q2_needed, "object/tangible/mission/quest_item/shared_gilad_pellaeon_q2_needed.iff")
@@ -4302,7 +4380,8 @@ object_tangible_mission_quest_item_shared_gilker_budz_q1_needed = SharedTangible
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1062635978
+	clientObjectCRC = 1062635978,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_gilker_budz_q1_needed, "object/tangible/mission/quest_item/shared_gilker_budz_q1_needed.iff")
@@ -4356,7 +4435,8 @@ object_tangible_mission_quest_item_shared_ging_darjeek_q1_needed = SharedTangibl
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1909895567
+	clientObjectCRC = 1909895567,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_ging_darjeek_q1_needed, "object/tangible/mission/quest_item/shared_ging_darjeek_q1_needed.iff")
@@ -4410,7 +4490,8 @@ object_tangible_mission_quest_item_shared_gins_darone_q1_needed = SharedTangible
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 848766472
+	clientObjectCRC = 848766472,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_gins_darone_q1_needed, "object/tangible/mission/quest_item/shared_gins_darone_q1_needed.iff")
@@ -4464,7 +4545,8 @@ object_tangible_mission_quest_item_shared_gins_darone_q2_needed = SharedTangible
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 982254338
+	clientObjectCRC = 982254338,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_gins_darone_q2_needed, "object/tangible/mission/quest_item/shared_gins_darone_q2_needed.iff")
@@ -4518,7 +4600,8 @@ object_tangible_mission_quest_item_shared_graf_zapalo_q2_needed = SharedTangible
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2601533339
+	clientObjectCRC = 2601533339,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_graf_zapalo_q2_needed, "object/tangible/mission/quest_item/shared_graf_zapalo_q2_needed.iff")
@@ -4572,7 +4655,8 @@ object_tangible_mission_quest_item_shared_graf_zapalo_q3_needed = SharedTangible
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2632375453
+	clientObjectCRC = 2632375453,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_graf_zapalo_q3_needed, "object/tangible/mission/quest_item/shared_graf_zapalo_q3_needed.iff")
@@ -4626,7 +4710,8 @@ object_tangible_mission_quest_item_shared_gravin_attal_q1_needed = SharedTangibl
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3346488460
+	clientObjectCRC = 3346488460,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_gravin_attal_q1_needed, "object/tangible/mission/quest_item/shared_gravin_attal_q1_needed.iff")
@@ -4680,7 +4765,8 @@ object_tangible_mission_quest_item_shared_gravin_attal_q2_needed = SharedTangibl
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3479992710
+	clientObjectCRC = 3479992710,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_gravin_attal_q2_needed, "object/tangible/mission/quest_item/shared_gravin_attal_q2_needed.iff")
@@ -4734,7 +4820,8 @@ object_tangible_mission_quest_item_shared_green_laser_q1_needed = SharedTangible
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3862327670
+	clientObjectCRC = 3862327670,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_green_laser_q1_needed, "object/tangible/mission/quest_item/shared_green_laser_q1_needed.iff")
@@ -4788,7 +4875,8 @@ object_tangible_mission_quest_item_shared_grondorn_muse_q2_needed = SharedTangib
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1444934081
+	clientObjectCRC = 1444934081,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_grondorn_muse_q2_needed, "object/tangible/mission/quest_item/shared_grondorn_muse_q2_needed.iff")
@@ -4842,7 +4930,8 @@ object_tangible_mission_quest_item_shared_hagrin_zeed_q1_needed = SharedTangible
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1783655886
+	clientObjectCRC = 1783655886,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_hagrin_zeed_q1_needed, "object/tangible/mission/quest_item/shared_hagrin_zeed_q1_needed.iff")
@@ -4896,7 +4985,8 @@ object_tangible_mission_quest_item_shared_hagrin_zeed_q2_needed = SharedTangible
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1649100996
+	clientObjectCRC = 1649100996,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_hagrin_zeed_q2_needed, "object/tangible/mission/quest_item/shared_hagrin_zeed_q2_needed.iff")
@@ -4950,7 +5040,8 @@ object_tangible_mission_quest_item_shared_hal_horn_q1_needed = SharedTangibleObj
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2483021006
+	clientObjectCRC = 2483021006,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_hal_horn_q1_needed, "object/tangible/mission/quest_item/shared_hal_horn_q1_needed.iff")
@@ -5004,7 +5095,8 @@ object_tangible_mission_quest_item_shared_haleen_snowline_q1_needed = SharedTang
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 135220430
+	clientObjectCRC = 135220430,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_haleen_snowline_q1_needed, "object/tangible/mission/quest_item/shared_haleen_snowline_q1_needed.iff")
@@ -5058,7 +5150,8 @@ object_tangible_mission_quest_item_shared_haleen_snowline_q2_needed = SharedTang
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1337796
+	clientObjectCRC = 1337796,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_haleen_snowline_q2_needed, "object/tangible/mission/quest_item/shared_haleen_snowline_q2_needed.iff")
@@ -5112,7 +5205,8 @@ object_tangible_mission_quest_item_shared_hedon_istee_q3_needed = SharedTangible
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3252161065
+	clientObjectCRC = 3252161065,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_hedon_istee_q3_needed, "object/tangible/mission/quest_item/shared_hedon_istee_q3_needed.iff")
@@ -5166,7 +5260,8 @@ object_tangible_mission_quest_item_shared_hefsen_zindalai_q1_needed = SharedTang
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 828118213
+	clientObjectCRC = 828118213,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_hefsen_zindalai_q1_needed, "object/tangible/mission/quest_item/shared_hefsen_zindalai_q1_needed.iff")
@@ -5220,7 +5315,8 @@ object_tangible_mission_quest_item_shared_ian_logo_q1_needed = SharedTangibleObj
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3136963652
+	clientObjectCRC = 3136963652,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_ian_logo_q1_needed, "object/tangible/mission/quest_item/shared_ian_logo_q1_needed.iff")
@@ -5274,7 +5370,8 @@ object_tangible_mission_quest_item_shared_ian_logo_q3_needed = SharedTangibleObj
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3038216776
+	clientObjectCRC = 3038216776,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_ian_logo_q3_needed, "object/tangible/mission/quest_item/shared_ian_logo_q3_needed.iff")
@@ -5328,7 +5425,8 @@ object_tangible_mission_quest_item_shared_igbi_freemo_q2_needed = SharedTangible
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 753804918
+	clientObjectCRC = 753804918,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_igbi_freemo_q2_needed, "object/tangible/mission/quest_item/shared_igbi_freemo_q2_needed.iff")
@@ -5382,7 +5480,8 @@ object_tangible_mission_quest_item_shared_ikka_gesul_q2_needed = SharedTangibleO
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 896881297
+	clientObjectCRC = 896881297,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_ikka_gesul_q2_needed, "object/tangible/mission/quest_item/shared_ikka_gesul_q2_needed.iff")
@@ -5436,7 +5535,8 @@ object_tangible_mission_quest_item_shared_indintra_imbru_yerevan_q1_needed = Sha
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 104299049
+	clientObjectCRC = 104299049,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_indintra_imbru_yerevan_q1_needed, "object/tangible/mission/quest_item/shared_indintra_imbru_yerevan_q1_needed.iff")
@@ -5490,7 +5590,8 @@ object_tangible_mission_quest_item_shared_indintra_imbru_yerevan_q2_needed = Sha
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 237788963
+	clientObjectCRC = 237788963,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_indintra_imbru_yerevan_q2_needed, "object/tangible/mission/quest_item/shared_indintra_imbru_yerevan_q2_needed.iff")
@@ -5544,7 +5645,8 @@ object_tangible_mission_quest_item_shared_jadam_questrel_q1_needed = SharedTangi
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 373666081
+	clientObjectCRC = 373666081,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_jadam_questrel_q1_needed, "object/tangible/mission/quest_item/shared_jadam_questrel_q1_needed.iff")
@@ -5598,7 +5700,8 @@ object_tangible_mission_quest_item_shared_jaleela_bindoo_q1_needed = SharedTangi
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1190917197
+	clientObjectCRC = 1190917197,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_jaleela_bindoo_q1_needed, "object/tangible/mission/quest_item/shared_jaleela_bindoo_q1_needed.iff")
@@ -5652,7 +5755,8 @@ object_tangible_mission_quest_item_shared_jaleela_bindoo_q3_needed = SharedTangi
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1226191425
+	clientObjectCRC = 1226191425,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_jaleela_bindoo_q3_needed, "object/tangible/mission/quest_item/shared_jaleela_bindoo_q3_needed.iff")
@@ -5706,7 +5810,8 @@ object_tangible_mission_quest_item_shared_jaleela_bindoo_q4_needed = SharedTangi
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1591122771
+	clientObjectCRC = 1591122771,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_jaleela_bindoo_q4_needed, "object/tangible/mission/quest_item/shared_jaleela_bindoo_q4_needed.iff")
@@ -5760,7 +5865,8 @@ object_tangible_mission_quest_item_shared_jatrian_lytus_q3_needed = SharedTangib
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 224919357
+	clientObjectCRC = 224919357,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_jatrian_lytus_q3_needed, "object/tangible/mission/quest_item/shared_jatrian_lytus_q3_needed.iff")
@@ -5814,7 +5920,8 @@ object_tangible_mission_quest_item_shared_jazeen_thurmm_q1_needed = SharedTangib
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1966647565
+	clientObjectCRC = 1966647565,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_jazeen_thurmm_q1_needed, "object/tangible/mission/quest_item/shared_jazeen_thurmm_q1_needed.iff")
@@ -5868,7 +5975,8 @@ object_tangible_mission_quest_item_shared_junelle_astor_q1_needed = SharedTangib
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3685390687
+	clientObjectCRC = 3685390687,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_junelle_astor_q1_needed, "object/tangible/mission/quest_item/shared_junelle_astor_q1_needed.iff")
@@ -5922,7 +6030,8 @@ object_tangible_mission_quest_item_shared_junelle_astor_q3_needed = SharedTangib
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3561447251
+	clientObjectCRC = 3561447251,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_junelle_astor_q3_needed, "object/tangible/mission/quest_item/shared_junelle_astor_q3_needed.iff")
@@ -5976,7 +6085,8 @@ object_tangible_mission_quest_item_shared_jusani_zhord_q1_needed = SharedTangibl
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3165505661
+	clientObjectCRC = 3165505661,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_jusani_zhord_q1_needed, "object/tangible/mission/quest_item/shared_jusani_zhord_q1_needed.iff")
@@ -6030,7 +6140,8 @@ object_tangible_mission_quest_item_shared_jyr_koble_q1_needed = SharedTangibleOb
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3558096182
+	clientObjectCRC = 3558096182,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_jyr_koble_q1_needed, "object/tangible/mission/quest_item/shared_jyr_koble_q1_needed.iff")
@@ -6084,7 +6195,8 @@ object_tangible_mission_quest_item_shared_jyr_koble_q3_needed = SharedTangibleOb
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3690593082
+	clientObjectCRC = 3690593082,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_jyr_koble_q3_needed, "object/tangible/mission/quest_item/shared_jyr_koble_q3_needed.iff")
@@ -6138,7 +6250,8 @@ object_tangible_mission_quest_item_shared_jyr_koble_q4_needed = SharedTangibleOb
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3426308648
+	clientObjectCRC = 3426308648,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_jyr_koble_q4_needed, "object/tangible/mission/quest_item/shared_jyr_koble_q4_needed.iff")
@@ -6192,7 +6305,8 @@ object_tangible_mission_quest_item_shared_kadil_nurugen_q1_needed = SharedTangib
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 900691098
+	clientObjectCRC = 900691098,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_kadil_nurugen_q1_needed, "object/tangible/mission/quest_item/shared_kadil_nurugen_q1_needed.iff")
@@ -6246,7 +6360,8 @@ object_tangible_mission_quest_item_shared_kaeline_ungasan_q1_needed = SharedTang
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1452769693
+	clientObjectCRC = 1452769693,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_kaeline_ungasan_q1_needed, "object/tangible/mission/quest_item/shared_kaeline_ungasan_q1_needed.iff")
@@ -6300,7 +6415,8 @@ object_tangible_mission_quest_item_shared_kaeline_ungasan_q2_needed = SharedTang
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1586275479
+	clientObjectCRC = 1586275479,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_kaeline_ungasan_q2_needed, "object/tangible/mission/quest_item/shared_kaeline_ungasan_q2_needed.iff")
@@ -6354,7 +6470,8 @@ object_tangible_mission_quest_item_shared_kais_q1_needed = SharedTangibleObjectT
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1060398386
+	clientObjectCRC = 1060398386,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_kais_q1_needed, "object/tangible/mission/quest_item/shared_kais_q1_needed.iff")
@@ -6408,7 +6525,8 @@ object_tangible_mission_quest_item_shared_kais_q2_needed = SharedTangibleObjectT
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 925843512
+	clientObjectCRC = 925843512,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_kais_q2_needed, "object/tangible/mission/quest_item/shared_kais_q2_needed.iff")
@@ -6462,7 +6580,8 @@ object_tangible_mission_quest_item_shared_kais_q3_needed = SharedTangibleObjectT
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 819569470
+	clientObjectCRC = 819569470,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_kais_q3_needed, "object/tangible/mission/quest_item/shared_kais_q3_needed.iff")
@@ -6516,7 +6635,8 @@ object_tangible_mission_quest_item_shared_karena_keer_q1_needed = SharedTangible
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2116306072
+	clientObjectCRC = 2116306072,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_karena_keer_q1_needed, "object/tangible/mission/quest_item/shared_karena_keer_q1_needed.iff")
@@ -6570,7 +6690,8 @@ object_tangible_mission_quest_item_shared_karena_keer_q2_needed = SharedTangible
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1983865234
+	clientObjectCRC = 1983865234,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_karena_keer_q2_needed, "object/tangible/mission/quest_item/shared_karena_keer_q2_needed.iff")
@@ -6624,7 +6745,8 @@ object_tangible_mission_quest_item_shared_karrek_film_q1_needed = SharedTangible
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 937788468
+	clientObjectCRC = 937788468,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_karrek_film_q1_needed, "object/tangible/mission/quest_item/shared_karrek_film_q1_needed.iff")
@@ -6678,7 +6800,8 @@ object_tangible_mission_quest_item_shared_karrek_film_q2_needed = SharedTangible
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1073652030
+	clientObjectCRC = 1073652030,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_karrek_film_q2_needed, "object/tangible/mission/quest_item/shared_karrek_film_q2_needed.iff")
@@ -6732,7 +6855,8 @@ object_tangible_mission_quest_item_shared_karrek_film_q3_needed = SharedTangible
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 940065336
+	clientObjectCRC = 940065336,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_karrek_film_q3_needed, "object/tangible/mission/quest_item/shared_karrek_film_q3_needed.iff")
@@ -6786,7 +6910,8 @@ object_tangible_mission_quest_item_shared_kelvus_naria_q1_needed = SharedTangibl
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 643250440
+	clientObjectCRC = 643250440,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_kelvus_naria_q1_needed, "object/tangible/mission/quest_item/shared_kelvus_naria_q1_needed.iff")
@@ -6840,7 +6965,8 @@ object_tangible_mission_quest_item_shared_kirkin_liawoon_q2_needed = SharedTangi
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2996552062
+	clientObjectCRC = 2996552062,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_kirkin_liawoon_q2_needed, "object/tangible/mission/quest_item/shared_kirkin_liawoon_q2_needed.iff")
@@ -6894,7 +7020,8 @@ object_tangible_mission_quest_item_shared_kitster_banai_q5_needed = SharedTangib
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 116404538
+	clientObjectCRC = 116404538,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_kitster_banai_q5_needed, "object/tangible/mission/quest_item/shared_kitster_banai_q5_needed.iff")
@@ -6948,7 +7075,8 @@ object_tangible_mission_quest_item_shared_kormund_thrylle_q1_needed = SharedTang
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1774093383
+	clientObjectCRC = 1774093383,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_kormund_thrylle_q1_needed, "object/tangible/mission/quest_item/shared_kormund_thrylle_q1_needed.iff")
@@ -7002,7 +7130,8 @@ object_tangible_mission_quest_item_shared_kritus_morven_q1_needed = SharedTangib
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3710443198
+	clientObjectCRC = 3710443198,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_kritus_morven_q1_needed, "object/tangible/mission/quest_item/shared_kritus_morven_q1_needed.iff")
@@ -7056,7 +7185,8 @@ object_tangible_mission_quest_item_shared_kritus_morven_q2_needed = SharedTangib
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3576953780
+	clientObjectCRC = 3576953780,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_kritus_morven_q2_needed, "object/tangible/mission/quest_item/shared_kritus_morven_q2_needed.iff")
@@ -7110,7 +7240,8 @@ object_tangible_mission_quest_item_shared_kritus_morven_q3_needed = SharedTangib
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3536132274
+	clientObjectCRC = 3536132274,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_kritus_morven_q3_needed, "object/tangible/mission/quest_item/shared_kritus_morven_q3_needed.iff")
@@ -7164,7 +7295,8 @@ object_tangible_mission_quest_item_shared_kritus_morven_q5_needed = SharedTangib
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3270726310
+	clientObjectCRC = 3270726310,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_kritus_morven_q5_needed, "object/tangible/mission/quest_item/shared_kritus_morven_q5_needed.iff")
@@ -7218,7 +7350,8 @@ object_tangible_mission_quest_item_shared_kylantha_q1_needed = SharedTangibleObj
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2573148736
+	clientObjectCRC = 2573148736,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_kylantha_q1_needed, "object/tangible/mission/quest_item/shared_kylantha_q1_needed.iff")
@@ -7272,7 +7405,8 @@ object_tangible_mission_quest_item_shared_kylantha_q2_needed = SharedTangibleObj
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2437154634
+	clientObjectCRC = 2437154634,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_kylantha_q2_needed, "object/tangible/mission/quest_item/shared_kylantha_q2_needed.iff")
@@ -7326,7 +7460,8 @@ object_tangible_mission_quest_item_shared_lasha_bindari_q1_needed = SharedTangib
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3401487746
+	clientObjectCRC = 3401487746,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_lasha_bindari_q1_needed, "object/tangible/mission/quest_item/shared_lasha_bindari_q1_needed.iff")
@@ -7380,7 +7515,8 @@ object_tangible_mission_quest_item_shared_leb_slesher_q1_needed = SharedTangible
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4147603865
+	clientObjectCRC = 4147603865,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_leb_slesher_q1_needed, "object/tangible/mission/quest_item/shared_leb_slesher_q1_needed.iff")
@@ -7434,7 +7570,8 @@ object_tangible_mission_quest_item_shared_leb_slesher_q2_needed = SharedTangible
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4281093267
+	clientObjectCRC = 4281093267,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_leb_slesher_q2_needed, "object/tangible/mission/quest_item/shared_leb_slesher_q2_needed.iff")
@@ -7488,7 +7625,8 @@ object_tangible_mission_quest_item_shared_leb_slesher_q3_needed = SharedTangible
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4175081365
+	clientObjectCRC = 4175081365,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_leb_slesher_q3_needed, "object/tangible/mission/quest_item/shared_leb_slesher_q3_needed.iff")
@@ -7542,7 +7680,8 @@ object_tangible_mission_quest_item_shared_lergo_brazee_q1_needed = SharedTangibl
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 30504142
+	clientObjectCRC = 30504142,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_lergo_brazee_q1_needed, "object/tangible/mission/quest_item/shared_lergo_brazee_q1_needed.iff")
@@ -7596,7 +7735,8 @@ object_tangible_mission_quest_item_shared_lian_byrne_q1_needed = SharedTangibleO
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4211658393
+	clientObjectCRC = 4211658393,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_lian_byrne_q1_needed, "object/tangible/mission/quest_item/shared_lian_byrne_q1_needed.iff")
@@ -7650,7 +7790,8 @@ object_tangible_mission_quest_item_shared_lian_byrne_q3_needed = SharedTangibleO
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4108650645
+	clientObjectCRC = 4108650645,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_lian_byrne_q3_needed, "object/tangible/mission/quest_item/shared_lian_byrne_q3_needed.iff")
@@ -7704,7 +7845,8 @@ object_tangible_mission_quest_item_shared_liane_q1_needed = SharedTangibleObject
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 711653844
+	clientObjectCRC = 711653844,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_liane_q1_needed, "object/tangible/mission/quest_item/shared_liane_q1_needed.iff")
@@ -7758,7 +7900,8 @@ object_tangible_mission_quest_item_shared_liane_q2_needed = SharedTangibleObject
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 577887454
+	clientObjectCRC = 577887454,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_liane_q2_needed, "object/tangible/mission/quest_item/shared_liane_q2_needed.iff")
@@ -7812,7 +7955,8 @@ object_tangible_mission_quest_item_shared_liane_q3_needed = SharedTangibleObject
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 629620696
+	clientObjectCRC = 629620696,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_liane_q3_needed, "object/tangible/mission/quest_item/shared_liane_q3_needed.iff")
@@ -7866,7 +8010,8 @@ object_tangible_mission_quest_item_shared_lilas_dinhint_q1_needed = SharedTangib
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 405736035
+	clientObjectCRC = 405736035,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_lilas_dinhint_q1_needed, "object/tangible/mission/quest_item/shared_lilas_dinhint_q1_needed.iff")
@@ -7920,7 +8065,8 @@ object_tangible_mission_quest_item_shared_lilas_dinhint_q2_needed = SharedTangib
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 271855465
+	clientObjectCRC = 271855465,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_lilas_dinhint_q2_needed, "object/tangible/mission/quest_item/shared_lilas_dinhint_q2_needed.iff")
@@ -7974,7 +8120,8 @@ object_tangible_mission_quest_item_shared_lilas_dinhint_q3_needed = SharedTangib
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 398642287
+	clientObjectCRC = 398642287,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_lilas_dinhint_q3_needed, "object/tangible/mission/quest_item/shared_lilas_dinhint_q3_needed.iff")
@@ -8028,7 +8175,8 @@ object_tangible_mission_quest_item_shared_lilas_dinhint_q4_needed = SharedTangib
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 157053
+	clientObjectCRC = 157053,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_lilas_dinhint_q4_needed, "object/tangible/mission/quest_item/shared_lilas_dinhint_q4_needed.iff")
@@ -8082,7 +8230,8 @@ object_tangible_mission_quest_item_shared_lob_dizz_q3_needed = SharedTangibleObj
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1696726449
+	clientObjectCRC = 1696726449,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_lob_dizz_q3_needed, "object/tangible/mission/quest_item/shared_lob_dizz_q3_needed.iff")
@@ -8136,7 +8285,8 @@ object_tangible_mission_quest_item_shared_luthik_uwyr_q2_needed = SharedTangible
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1195800723
+	clientObjectCRC = 1195800723,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_luthik_uwyr_q2_needed, "object/tangible/mission/quest_item/shared_luthik_uwyr_q2_needed.iff")
@@ -8190,7 +8340,8 @@ object_tangible_mission_quest_item_shared_luthik_uwyr_q3_needed = SharedTangible
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1085315989
+	clientObjectCRC = 1085315989,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_luthik_uwyr_q3_needed, "object/tangible/mission/quest_item/shared_luthik_uwyr_q3_needed.iff")
@@ -8244,7 +8395,8 @@ object_tangible_mission_quest_item_shared_luthin_dlunar_q1_needed = SharedTangib
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1189726815
+	clientObjectCRC = 1189726815,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_luthin_dlunar_q1_needed, "object/tangible/mission/quest_item/shared_luthin_dlunar_q1_needed.iff")
@@ -8298,7 +8450,8 @@ object_tangible_mission_quest_item_shared_luthin_dlunar_q2_needed = SharedTangib
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1324543829
+	clientObjectCRC = 1324543829,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_luthin_dlunar_q2_needed, "object/tangible/mission/quest_item/shared_luthin_dlunar_q2_needed.iff")
@@ -8352,7 +8505,8 @@ object_tangible_mission_quest_item_shared_lx466_q2_needed = SharedTangibleObject
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 122267561
+	clientObjectCRC = 122267561,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_lx466_q2_needed, "object/tangible/mission/quest_item/shared_lx466_q2_needed.iff")
@@ -8406,7 +8560,8 @@ object_tangible_mission_quest_item_shared_lx466_q3_needed = SharedTangibleObject
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 12534959
+	clientObjectCRC = 12534959,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_lx466_q3_needed, "object/tangible/mission/quest_item/shared_lx466_q3_needed.iff")
@@ -8460,7 +8615,8 @@ object_tangible_mission_quest_item_shared_mal_sikander_q1_needed = SharedTangibl
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3787453530
+	clientObjectCRC = 3787453530,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_mal_sikander_q1_needed, "object/tangible/mission/quest_item/shared_mal_sikander_q1_needed.iff")
@@ -8514,7 +8670,8 @@ object_tangible_mission_quest_item_shared_mal_sikander_q5_needed = SharedTangibl
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4267997250
+	clientObjectCRC = 4267997250,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_mal_sikander_q5_needed, "object/tangible/mission/quest_item/shared_mal_sikander_q5_needed.iff")
@@ -8568,7 +8725,8 @@ object_tangible_mission_quest_item_shared_mat_rags_q1_needed = SharedTangibleObj
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2123489242
+	clientObjectCRC = 2123489242,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_mat_rags_q1_needed, "object/tangible/mission/quest_item/shared_mat_rags_q1_needed.iff")
@@ -8622,7 +8780,8 @@ object_tangible_mission_quest_item_shared_mat_rags_q2_needed = SharedTangibleObj
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1988819664
+	clientObjectCRC = 1988819664,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_mat_rags_q2_needed, "object/tangible/mission/quest_item/shared_mat_rags_q2_needed.iff")
@@ -8676,7 +8835,8 @@ object_tangible_mission_quest_item_shared_mat_rags_q3_needed = SharedTangibleObj
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1903958486
+	clientObjectCRC = 1903958486,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_mat_rags_q3_needed, "object/tangible/mission/quest_item/shared_mat_rags_q3_needed.iff")
@@ -8730,7 +8890,8 @@ object_tangible_mission_quest_item_shared_mat_rags_q4_needed = SharedTangibleObj
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1723642052
+	clientObjectCRC = 1723642052,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_mat_rags_q4_needed, "object/tangible/mission/quest_item/shared_mat_rags_q4_needed.iff")
@@ -8784,7 +8945,8 @@ object_tangible_mission_quest_item_shared_megan_drlar_q2_needed = SharedTangible
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3913193492
+	clientObjectCRC = 3913193492,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_megan_drlar_q2_needed, "object/tangible/mission/quest_item/shared_megan_drlar_q2_needed.iff")
@@ -8838,7 +9000,8 @@ object_tangible_mission_quest_item_shared_melios_purl_q2_needed = SharedTangible
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1349487784
+	clientObjectCRC = 1349487784,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_melios_purl_q2_needed, "object/tangible/mission/quest_item/shared_melios_purl_q2_needed.iff")
@@ -8892,7 +9055,8 @@ object_tangible_mission_quest_item_shared_melios_purl_q3_needed = SharedTangible
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1469673390
+	clientObjectCRC = 1469673390,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_melios_purl_q3_needed, "object/tangible/mission/quest_item/shared_melios_purl_q3_needed.iff")
@@ -8946,7 +9110,8 @@ object_tangible_mission_quest_item_shared_morag_q2_needed = SharedTangibleObject
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1784339058
+	clientObjectCRC = 1784339058,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_morag_q2_needed, "object/tangible/mission/quest_item/shared_morag_q2_needed.iff")
@@ -9000,7 +9165,8 @@ object_tangible_mission_quest_item_shared_mozo_bondog_q2_needed = SharedTangible
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4215350829
+	clientObjectCRC = 4215350829,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_mozo_bondog_q2_needed, "object/tangible/mission/quest_item/shared_mozo_bondog_q2_needed.iff")
@@ -9054,7 +9220,8 @@ object_tangible_mission_quest_item_shared_mullud_bombo_q1_needed = SharedTangibl
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 289927562
+	clientObjectCRC = 289927562,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_mullud_bombo_q1_needed, "object/tangible/mission/quest_item/shared_mullud_bombo_q1_needed.iff")
@@ -9108,7 +9275,8 @@ object_tangible_mission_quest_item_shared_mullud_bombo_q2_needed = SharedTangibl
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 425514112
+	clientObjectCRC = 425514112,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_mullud_bombo_q2_needed, "object/tangible/mission/quest_item/shared_mullud_bombo_q2_needed.iff")
@@ -9162,7 +9330,8 @@ object_tangible_mission_quest_item_shared_nass_q1_needed = SharedTangibleObjectT
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1722057504
+	clientObjectCRC = 1722057504,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_nass_q1_needed, "object/tangible/mission/quest_item/shared_nass_q1_needed.iff")
@@ -9216,7 +9385,8 @@ object_tangible_mission_quest_item_shared_noren_krast_q1_needed = SharedTangible
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3767145747
+	clientObjectCRC = 3767145747,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_noren_krast_q1_needed, "object/tangible/mission/quest_item/shared_noren_krast_q1_needed.iff")
@@ -9270,7 +9440,8 @@ object_tangible_mission_quest_item_shared_noren_krast_q2_needed = SharedTangible
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3901829145
+	clientObjectCRC = 3901829145,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_noren_krast_q2_needed, "object/tangible/mission/quest_item/shared_noren_krast_q2_needed.iff")
@@ -9324,7 +9495,8 @@ object_tangible_mission_quest_item_shared_noren_krast_q3_needed = SharedTangible
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4016558879
+	clientObjectCRC = 4016558879,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_noren_krast_q3_needed, "object/tangible/mission/quest_item/shared_noren_krast_q3_needed.iff")
@@ -9378,7 +9550,8 @@ object_tangible_mission_quest_item_shared_nurla_slinthiss_q1_needed = SharedTang
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3385151380
+	clientObjectCRC = 3385151380,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_nurla_slinthiss_q1_needed, "object/tangible/mission/quest_item/shared_nurla_slinthiss_q1_needed.iff")
@@ -9432,7 +9605,8 @@ object_tangible_mission_quest_item_shared_nurla_slinthiss_q3_needed = SharedTang
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3324545432
+	clientObjectCRC = 3324545432,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_nurla_slinthiss_q3_needed, "object/tangible/mission/quest_item/shared_nurla_slinthiss_q3_needed.iff")
@@ -9486,7 +9660,8 @@ object_tangible_mission_quest_item_shared_oron_wintree_q1_needed = SharedTangibl
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2491310445
+	clientObjectCRC = 2491310445,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_oron_wintree_q1_needed, "object/tangible/mission/quest_item/shared_oron_wintree_q1_needed.iff")
@@ -9540,7 +9715,8 @@ object_tangible_mission_quest_item_shared_output_governor = SharedTangibleObject
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2448376358
+	clientObjectCRC = 2448376358,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_output_governor, "object/tangible/mission/quest_item/shared_output_governor.iff")
@@ -9594,7 +9770,8 @@ object_tangible_mission_quest_item_shared_oxil_sarban_q1_needed = SharedTangible
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1007650043
+	clientObjectCRC = 1007650043,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_oxil_sarban_q1_needed, "object/tangible/mission/quest_item/shared_oxil_sarban_q1_needed.iff")
@@ -9648,7 +9825,8 @@ object_tangible_mission_quest_item_shared_oxil_sarban_q2_needed = SharedTangible
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 873767409
+	clientObjectCRC = 873767409,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_oxil_sarban_q2_needed, "object/tangible/mission/quest_item/shared_oxil_sarban_q2_needed.iff")
@@ -9702,7 +9880,8 @@ object_tangible_mission_quest_item_shared_pooja_naberrie_q1_needed = SharedTangi
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1961361819
+	clientObjectCRC = 1961361819,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_pooja_naberrie_q1_needed, "object/tangible/mission/quest_item/shared_pooja_naberrie_q1_needed.iff")
@@ -9756,7 +9935,8 @@ object_tangible_mission_quest_item_shared_pooja_naberrie_q2_needed = SharedTangi
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2096309393
+	clientObjectCRC = 2096309393,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_pooja_naberrie_q2_needed, "object/tangible/mission/quest_item/shared_pooja_naberrie_q2_needed.iff")
@@ -9810,7 +9990,8 @@ object_tangible_mission_quest_item_shared_pooja_naberrie_q5_needed = SharedTangi
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1798540675
+	clientObjectCRC = 1798540675,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_pooja_naberrie_q5_needed, "object/tangible/mission/quest_item/shared_pooja_naberrie_q5_needed.iff")
@@ -9864,7 +10045,8 @@ object_tangible_mission_quest_item_shared_power_regulator = SharedTangibleObject
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 91462153
+	clientObjectCRC = 91462153,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_power_regulator, "object/tangible/mission/quest_item/shared_power_regulator.iff")
@@ -9918,7 +10100,8 @@ object_tangible_mission_quest_item_shared_radanthus_mandelatara_q2_needed = Shar
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 269215799
+	clientObjectCRC = 269215799,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_radanthus_mandelatara_q2_needed, "object/tangible/mission/quest_item/shared_radanthus_mandelatara_q2_needed.iff")
@@ -9972,7 +10155,8 @@ object_tangible_mission_quest_item_shared_radanthus_mandelatara_q3_needed = Shar
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 402459441
+	clientObjectCRC = 402459441,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_radanthus_mandelatara_q3_needed, "object/tangible/mission/quest_item/shared_radanthus_mandelatara_q3_needed.iff")
@@ -10026,7 +10210,8 @@ object_tangible_mission_quest_item_shared_radlee_mathiss_q1_needed = SharedTangi
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2036787588
+	clientObjectCRC = 2036787588,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_radlee_mathiss_q1_needed, "object/tangible/mission/quest_item/shared_radlee_mathiss_q1_needed.iff")
@@ -10080,7 +10265,8 @@ object_tangible_mission_quest_item_shared_raglith_q3_needed = SharedTangibleObje
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2266234349
+	clientObjectCRC = 2266234349,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_raglith_q3_needed, "object/tangible/mission/quest_item/shared_raglith_q3_needed.iff")
@@ -10134,7 +10320,8 @@ object_tangible_mission_quest_item_shared_rakir_banai_q2_needed = SharedTangible
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2060219830
+	clientObjectCRC = 2060219830,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_rakir_banai_q2_needed, "object/tangible/mission/quest_item/shared_rakir_banai_q2_needed.iff")
@@ -10188,7 +10375,8 @@ object_tangible_mission_quest_item_shared_rakir_banai_q4_needed = SharedTangible
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1794785186
+	clientObjectCRC = 1794785186,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_rakir_banai_q4_needed, "object/tangible/mission/quest_item/shared_rakir_banai_q4_needed.iff")
@@ -10242,7 +10430,8 @@ object_tangible_mission_quest_item_shared_rep_been_q1_needed = SharedTangibleObj
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1676232329
+	clientObjectCRC = 1676232329,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_rep_been_q1_needed, "object/tangible/mission/quest_item/shared_rep_been_q1_needed.iff")
@@ -10296,7 +10485,8 @@ object_tangible_mission_quest_item_shared_ric_olie_q1_needed = SharedTangibleObj
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 887722995
+	clientObjectCRC = 887722995,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_ric_olie_q1_needed, "object/tangible/mission/quest_item/shared_ric_olie_q1_needed.iff")
@@ -10350,7 +10540,8 @@ object_tangible_mission_quest_item_shared_rovim_minnoni_q1_needed = SharedTangib
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2473963928
+	clientObjectCRC = 2473963928,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_rovim_minnoni_q1_needed, "object/tangible/mission/quest_item/shared_rovim_minnoni_q1_needed.iff")
@@ -10404,7 +10595,8 @@ object_tangible_mission_quest_item_shared_ruwan_tokai_q1_needed = SharedTangible
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 427703742
+	clientObjectCRC = 427703742,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_ruwan_tokai_q1_needed, "object/tangible/mission/quest_item/shared_ruwan_tokai_q1_needed.iff")
@@ -10458,7 +10650,8 @@ object_tangible_mission_quest_item_shared_ruwan_tokai_q2_needed = SharedTangible
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 291838132
+	clientObjectCRC = 291838132,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_ruwan_tokai_q2_needed, "object/tangible/mission/quest_item/shared_ruwan_tokai_q2_needed.iff")
@@ -10512,7 +10705,8 @@ object_tangible_mission_quest_item_shared_sango_rond_q1_needed = SharedTangibleO
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2151494415
+	clientObjectCRC = 2151494415,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_sango_rond_q1_needed, "object/tangible/mission/quest_item/shared_sango_rond_q1_needed.iff")
@@ -10566,7 +10760,8 @@ object_tangible_mission_quest_item_shared_sayama_edosun_q1_needed = SharedTangib
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3884406312
+	clientObjectCRC = 3884406312,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_sayama_edosun_q1_needed, "object/tangible/mission/quest_item/shared_sayama_edosun_q1_needed.iff")
@@ -10620,7 +10815,8 @@ object_tangible_mission_quest_item_shared_sayama_edosun_q2_needed = SharedTangib
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4020007714
+	clientObjectCRC = 4020007714,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_sayama_edosun_q2_needed, "object/tangible/mission/quest_item/shared_sayama_edosun_q2_needed.iff")
@@ -10674,7 +10870,8 @@ object_tangible_mission_quest_item_shared_sayama_edosun_q3_needed = SharedTangib
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3899297828
+	clientObjectCRC = 3899297828,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_sayama_edosun_q3_needed, "object/tangible/mission/quest_item/shared_sayama_edosun_q3_needed.iff")
@@ -10728,7 +10925,8 @@ object_tangible_mission_quest_item_shared_senni_tonnika_q1_needed = SharedTangib
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2412100000
+	clientObjectCRC = 2412100000,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_senni_tonnika_q1_needed, "object/tangible/mission/quest_item/shared_senni_tonnika_q1_needed.iff")
@@ -10782,7 +10980,8 @@ object_tangible_mission_quest_item_shared_senni_tonnika_q2_needed = SharedTangib
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2279513258
+	clientObjectCRC = 2279513258,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_senni_tonnika_q2_needed, "object/tangible/mission/quest_item/shared_senni_tonnika_q2_needed.iff")
@@ -10836,7 +11035,8 @@ object_tangible_mission_quest_item_shared_senni_tonnika_q3_needed = SharedTangib
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2150137772
+	clientObjectCRC = 2150137772,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_senni_tonnika_q3_needed, "object/tangible/mission/quest_item/shared_senni_tonnika_q3_needed.iff")
@@ -10890,7 +11090,8 @@ object_tangible_mission_quest_item_shared_serena_fenner_q1_needed = SharedTangib
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3662733402
+	clientObjectCRC = 3662733402,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_serena_fenner_q1_needed, "object/tangible/mission/quest_item/shared_serena_fenner_q1_needed.iff")
@@ -10944,7 +11145,8 @@ object_tangible_mission_quest_item_shared_serena_fenner_q3_needed = SharedTangib
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3585943126
+	clientObjectCRC = 3585943126,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_serena_fenner_q3_needed, "object/tangible/mission/quest_item/shared_serena_fenner_q3_needed.iff")
@@ -10998,7 +11200,8 @@ object_tangible_mission_quest_item_shared_serjix_arrogantus_q1_needed = SharedTa
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1479422018
+	clientObjectCRC = 1479422018,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_serjix_arrogantus_q1_needed, "object/tangible/mission/quest_item/shared_serjix_arrogantus_q1_needed.iff")
@@ -11052,7 +11255,8 @@ object_tangible_mission_quest_item_shared_shaki_hamachil_q1_needed = SharedTangi
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 748682048
+	clientObjectCRC = 748682048,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_shaki_hamachil_q1_needed, "object/tangible/mission/quest_item/shared_shaki_hamachil_q1_needed.iff")
@@ -11106,7 +11310,8 @@ object_tangible_mission_quest_item_shared_shaki_hamachil_q2_needed = SharedTangi
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 612687434
+	clientObjectCRC = 612687434,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_shaki_hamachil_q2_needed, "object/tangible/mission/quest_item/shared_shaki_hamachil_q2_needed.iff")
@@ -11160,7 +11365,8 @@ object_tangible_mission_quest_item_shared_shalera_q1_needed = SharedTangibleObje
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3462087162
+	clientObjectCRC = 3462087162,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_shalera_q1_needed, "object/tangible/mission/quest_item/shared_shalera_q1_needed.iff")
@@ -11214,7 +11420,8 @@ object_tangible_mission_quest_item_shared_shalera_q6_needed = SharedTangibleObje
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3650873576
+	clientObjectCRC = 3650873576,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_shalera_q6_needed, "object/tangible/mission/quest_item/shared_shalera_q6_needed.iff")
@@ -11268,7 +11475,8 @@ object_tangible_mission_quest_item_shared_sidoras_bey_q1_needed = SharedTangible
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2665956312
+	clientObjectCRC = 2665956312,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_sidoras_bey_q1_needed, "object/tangible/mission/quest_item/shared_sidoras_bey_q1_needed.iff")
@@ -11322,7 +11530,8 @@ object_tangible_mission_quest_item_shared_sigrix_slix_q1_needed = SharedTangible
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2008112320
+	clientObjectCRC = 2008112320,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_sigrix_slix_q1_needed, "object/tangible/mission/quest_item/shared_sigrix_slix_q1_needed.iff")
@@ -11376,7 +11585,8 @@ object_tangible_mission_quest_item_shared_sigrix_slix_q2_needed = SharedTangible
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2141878730
+	clientObjectCRC = 2141878730,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_sigrix_slix_q2_needed, "object/tangible/mission/quest_item/shared_sigrix_slix_q2_needed.iff")
@@ -11430,7 +11640,8 @@ object_tangible_mission_quest_item_shared_sindra_lintikoor_q1_needed = SharedTan
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1411534999
+	clientObjectCRC = 1411534999,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_sindra_lintikoor_q1_needed, "object/tangible/mission/quest_item/shared_sindra_lintikoor_q1_needed.iff")
@@ -11484,7 +11695,8 @@ object_tangible_mission_quest_item_shared_sindra_lintikoor_q2_needed = SharedTan
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1547269533
+	clientObjectCRC = 1547269533,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_sindra_lintikoor_q2_needed, "object/tangible/mission/quest_item/shared_sindra_lintikoor_q2_needed.iff")
@@ -11538,7 +11750,8 @@ object_tangible_mission_quest_item_shared_singular_nak_q1_needed = SharedTangibl
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1924055018
+	clientObjectCRC = 1924055018,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_singular_nak_q1_needed, "object/tangible/mission/quest_item/shared_singular_nak_q1_needed.iff")
@@ -11592,7 +11805,8 @@ object_tangible_mission_quest_item_shared_singular_nak_q2_needed = SharedTangibl
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2058722016
+	clientObjectCRC = 2058722016,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_singular_nak_q2_needed, "object/tangible/mission/quest_item/shared_singular_nak_q2_needed.iff")
@@ -11646,7 +11860,8 @@ object_tangible_mission_quest_item_shared_slooni_jong_q1_needed = SharedTangible
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2164733898
+	clientObjectCRC = 2164733898,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_slooni_jong_q1_needed, "object/tangible/mission/quest_item/shared_slooni_jong_q1_needed.iff")
@@ -11700,7 +11915,8 @@ object_tangible_mission_quest_item_shared_stella_q1_needed = SharedTangibleObjec
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 528594706
+	clientObjectCRC = 528594706,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_stella_q1_needed, "object/tangible/mission/quest_item/shared_stella_q1_needed.iff")
@@ -11754,7 +11970,8 @@ object_tangible_mission_quest_item_shared_stella_q2_needed = SharedTangibleObjec
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 396005912
+	clientObjectCRC = 396005912,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_stella_q2_needed, "object/tangible/mission/quest_item/shared_stella_q2_needed.iff")
@@ -11808,7 +12025,8 @@ object_tangible_mission_quest_item_shared_stella_q3_needed = SharedTangibleObjec
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 275542302
+	clientObjectCRC = 275542302,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_stella_q3_needed, "object/tangible/mission/quest_item/shared_stella_q3_needed.iff")
@@ -11862,7 +12080,8 @@ object_tangible_mission_quest_item_shared_stoos_olko_q1_needed = SharedTangibleO
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2617025596
+	clientObjectCRC = 2617025596,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_stoos_olko_q1_needed, "object/tangible/mission/quest_item/shared_stoos_olko_q1_needed.iff")
@@ -11916,7 +12135,8 @@ object_tangible_mission_quest_item_shared_stoos_olko_q2_needed = SharedTangibleO
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2481422646
+	clientObjectCRC = 2481422646,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_stoos_olko_q2_needed, "object/tangible/mission/quest_item/shared_stoos_olko_q2_needed.iff")
@@ -11970,7 +12190,8 @@ object_tangible_mission_quest_item_shared_stoos_olko_q3_needed = SharedTangibleO
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2484167216
+	clientObjectCRC = 2484167216,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_stoos_olko_q3_needed, "object/tangible/mission/quest_item/shared_stoos_olko_q3_needed.iff")
@@ -12024,7 +12245,8 @@ object_tangible_mission_quest_item_shared_surlin_rolei_q1_recruitment_disk = Sha
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3849796149
+	clientObjectCRC = 3849796149,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_surlin_rolei_q1_recruitment_disk, "object/tangible/mission/quest_item/shared_surlin_rolei_q1_recruitment_disk.iff")
@@ -12078,7 +12300,8 @@ object_tangible_mission_quest_item_shared_surlin_rolei_q2_camera = SharedTangibl
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1532630144
+	clientObjectCRC = 1532630144,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_surlin_rolei_q2_camera, "object/tangible/mission/quest_item/shared_surlin_rolei_q2_camera.iff")
@@ -12132,7 +12355,8 @@ object_tangible_mission_quest_item_shared_surlin_rolei_q6_spy_report = SharedTan
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3866569269
+	clientObjectCRC = 3866569269,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_surlin_rolei_q6_spy_report, "object/tangible/mission/quest_item/shared_surlin_rolei_q6_spy_report.iff")
@@ -12186,7 +12410,8 @@ object_tangible_mission_quest_item_shared_surlin_rolei_q6_stolen_info = SharedTa
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 894921043
+	clientObjectCRC = 894921043,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_surlin_rolei_q6_stolen_info, "object/tangible/mission/quest_item/shared_surlin_rolei_q6_stolen_info.iff")
@@ -12240,7 +12465,8 @@ object_tangible_mission_quest_item_shared_syren1_locked_data = SharedTangibleObj
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1506127405
+	clientObjectCRC = 1506127405,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_syren1_locked_data, "object/tangible/mission/quest_item/shared_syren1_locked_data.iff")
@@ -12294,7 +12520,8 @@ object_tangible_mission_quest_item_shared_syren1_spice = SharedTangibleObjectTem
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4059627158
+	clientObjectCRC = 4059627158,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_syren1_spice, "object/tangible/mission/quest_item/shared_syren1_spice.iff")
@@ -12348,7 +12575,8 @@ object_tangible_mission_quest_item_shared_syren1_warning = SharedTangibleObjectT
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3531632253
+	clientObjectCRC = 3531632253,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_syren1_warning, "object/tangible/mission/quest_item/shared_syren1_warning.iff")
@@ -12402,7 +12630,8 @@ object_tangible_mission_quest_item_shared_syren2_blacksun_base = SharedTangibleO
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1332369757
+	clientObjectCRC = 1332369757,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_syren2_blacksun_base, "object/tangible/mission/quest_item/shared_syren2_blacksun_base.iff")
@@ -12456,7 +12685,8 @@ object_tangible_mission_quest_item_shared_szingo_q1_needed = SharedTangibleObjec
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1954160177
+	clientObjectCRC = 1954160177,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_szingo_q1_needed, "object/tangible/mission/quest_item/shared_szingo_q1_needed.iff")
@@ -12510,7 +12740,8 @@ object_tangible_mission_quest_item_shared_talon_karrde_q1_needed = SharedTangibl
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3820828760
+	clientObjectCRC = 3820828760,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_talon_karrde_q1_needed, "object/tangible/mission/quest_item/shared_talon_karrde_q1_needed.iff")
@@ -12564,7 +12795,8 @@ object_tangible_mission_quest_item_shared_talon_karrde_q3_needed = SharedTangibl
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3964730964
+	clientObjectCRC = 3964730964,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_talon_karrde_q3_needed, "object/tangible/mission/quest_item/shared_talon_karrde_q3_needed.iff")
@@ -12618,7 +12850,8 @@ object_tangible_mission_quest_item_shared_talon_karrde_q4_needed = SharedTangibl
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4220540742
+	clientObjectCRC = 4220540742,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_talon_karrde_q4_needed, "object/tangible/mission/quest_item/shared_talon_karrde_q4_needed.iff")
@@ -12672,7 +12905,8 @@ object_tangible_mission_quest_item_shared_tekil_barje_q1_needed = SharedTangible
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1607172162
+	clientObjectCRC = 1607172162,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_tekil_barje_q1_needed, "object/tangible/mission/quest_item/shared_tekil_barje_q1_needed.iff")
@@ -12726,7 +12960,8 @@ object_tangible_mission_quest_item_shared_tekil_barje_q3_needed = SharedTangible
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1344685646
+	clientObjectCRC = 1344685646,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_tekil_barje_q3_needed, "object/tangible/mission/quest_item/shared_tekil_barje_q3_needed.iff")
@@ -12780,7 +13015,8 @@ object_tangible_mission_quest_item_shared_terak_q1_needed = SharedTangibleObject
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 210706787
+	clientObjectCRC = 210706787,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_terak_q1_needed, "object/tangible/mission/quest_item/shared_terak_q1_needed.iff")
@@ -12834,7 +13070,8 @@ object_tangible_mission_quest_item_shared_terak_q3_needed = SharedTangibleObject
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 56813423
+	clientObjectCRC = 56813423,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_terak_q3_needed, "object/tangible/mission/quest_item/shared_terak_q3_needed.iff")
@@ -12888,7 +13125,8 @@ object_tangible_mission_quest_item_shared_thrackan_salsolo_q3_needed = SharedTan
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2085244316
+	clientObjectCRC = 2085244316,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_thrackan_salsolo_q3_needed, "object/tangible/mission/quest_item/shared_thrackan_salsolo_q3_needed.iff")
@@ -12942,7 +13180,8 @@ object_tangible_mission_quest_item_shared_throme_gormengal_q1_needed = SharedTan
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 643932349
+	clientObjectCRC = 643932349,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_throme_gormengal_q1_needed, "object/tangible/mission/quest_item/shared_throme_gormengal_q1_needed.iff")
@@ -12996,7 +13235,8 @@ object_tangible_mission_quest_item_shared_throme_gormengal_q3_needed = SharedTan
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 697067185
+	clientObjectCRC = 697067185,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_throme_gormengal_q3_needed, "object/tangible/mission/quest_item/shared_throme_gormengal_q3_needed.iff")
@@ -13050,7 +13290,8 @@ object_tangible_mission_quest_item_shared_vana_sage_q1_needed = SharedTangibleOb
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1263458770
+	clientObjectCRC = 1263458770,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_vana_sage_q1_needed, "object/tangible/mission/quest_item/shared_vana_sage_q1_needed.iff")
@@ -13104,7 +13345,8 @@ object_tangible_mission_quest_item_shared_vardias_tyne_q2_needed = SharedTangibl
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 791270203
+	clientObjectCRC = 791270203,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_vardias_tyne_q2_needed, "object/tangible/mission/quest_item/shared_vardias_tyne_q2_needed.iff")
@@ -13158,7 +13400,8 @@ object_tangible_mission_quest_item_shared_vhaunda_q1_needed = SharedTangibleObje
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 751474155
+	clientObjectCRC = 751474155,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_vhaunda_q1_needed, "object/tangible/mission/quest_item/shared_vhaunda_q1_needed.iff")
@@ -13212,7 +13455,8 @@ object_tangible_mission_quest_item_shared_village_defenses = SharedTangibleObjec
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3678523510
+	clientObjectCRC = 3678523510,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_village_defenses, "object/tangible/mission/quest_item/shared_village_defenses.iff")
@@ -13266,7 +13510,8 @@ object_tangible_mission_quest_item_shared_village_shields = SharedTangibleObject
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2159790732
+	clientObjectCRC = 2159790732,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_village_shields, "object/tangible/mission/quest_item/shared_village_shields.iff")
@@ -13320,7 +13565,8 @@ object_tangible_mission_quest_item_shared_vinya_maysor_q1_needed = SharedTangibl
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 509776095
+	clientObjectCRC = 509776095,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_vinya_maysor_q1_needed, "object/tangible/mission/quest_item/shared_vinya_maysor_q1_needed.iff")
@@ -13374,7 +13620,8 @@ object_tangible_mission_quest_item_shared_vordin_sildor_q3_needed = SharedTangib
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4161049668
+	clientObjectCRC = 4161049668,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_vordin_sildor_q3_needed, "object/tangible/mission/quest_item/shared_vordin_sildor_q3_needed.iff")
@@ -13428,7 +13675,8 @@ object_tangible_mission_quest_item_shared_vrir_unglan_q1_needed = SharedTangible
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1952017154
+	clientObjectCRC = 1952017154,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_vrir_unglan_q1_needed, "object/tangible/mission/quest_item/shared_vrir_unglan_q1_needed.iff")
@@ -13482,7 +13730,8 @@ object_tangible_mission_quest_item_shared_vrir_unglan_q2_needed = SharedTangible
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2084720136
+	clientObjectCRC = 2084720136,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_vrir_unglan_q2_needed, "object/tangible/mission/quest_item/shared_vrir_unglan_q2_needed.iff")
@@ -13536,7 +13785,8 @@ object_tangible_mission_quest_item_shared_vurlene_q1_needed = SharedTangibleObje
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3997432132
+	clientObjectCRC = 3997432132,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_vurlene_q1_needed, "object/tangible/mission/quest_item/shared_vurlene_q1_needed.iff")
@@ -13590,7 +13840,8 @@ object_tangible_mission_quest_item_shared_vurlene_q2_needed = SharedTangibleObje
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3864583246
+	clientObjectCRC = 3864583246,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_vurlene_q2_needed, "object/tangible/mission/quest_item/shared_vurlene_q2_needed.iff")
@@ -13644,7 +13895,8 @@ object_tangible_mission_quest_item_shared_vurlene_q3_needed = SharedTangibleObje
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3786293064
+	clientObjectCRC = 3786293064,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_vurlene_q3_needed, "object/tangible/mission/quest_item/shared_vurlene_q3_needed.iff")
@@ -13698,7 +13950,8 @@ object_tangible_mission_quest_item_shared_wald_q1_needed = SharedTangibleObjectT
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1905329925
+	clientObjectCRC = 1905329925,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_wald_q1_needed, "object/tangible/mission/quest_item/shared_wald_q1_needed.iff")
@@ -13752,7 +14005,8 @@ object_tangible_mission_quest_item_shared_wald_q2_needed = SharedTangibleObjectT
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2039095823
+	clientObjectCRC = 2039095823,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_wald_q2_needed, "object/tangible/mission/quest_item/shared_wald_q2_needed.iff")
@@ -13806,7 +14060,8 @@ object_tangible_mission_quest_item_shared_wald_q3_needed = SharedTangibleObjectT
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2122105097
+	clientObjectCRC = 2122105097,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_wald_q3_needed, "object/tangible/mission/quest_item/shared_wald_q3_needed.iff")
@@ -13860,7 +14115,8 @@ object_tangible_mission_quest_item_shared_wald_q4_needed = SharedTangibleObjectT
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1773955099
+	clientObjectCRC = 1773955099,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_wald_q4_needed, "object/tangible/mission/quest_item/shared_wald_q4_needed.iff")
@@ -13914,7 +14170,8 @@ object_tangible_mission_quest_item_shared_warren_core_control_rod_s01 = SharedTa
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1875516238
+	clientObjectCRC = 1875516238,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_warren_core_control_rod_s01, "object/tangible/mission/quest_item/shared_warren_core_control_rod_s01.iff")
@@ -13968,7 +14225,8 @@ object_tangible_mission_quest_item_shared_warren_core_control_rod_s02 = SharedTa
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3034428377
+	clientObjectCRC = 3034428377,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_warren_core_control_rod_s02, "object/tangible/mission/quest_item/shared_warren_core_control_rod_s02.iff")
@@ -14022,7 +14280,8 @@ object_tangible_mission_quest_item_shared_warren_device_encryption_key = SharedT
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4073100212
+	clientObjectCRC = 4073100212,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_warren_device_encryption_key, "object/tangible/mission/quest_item/shared_warren_device_encryption_key.iff")
@@ -14076,7 +14335,8 @@ object_tangible_mission_quest_item_shared_warren_evidence_s01 = SharedTangibleOb
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 751589667
+	clientObjectCRC = 751589667,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_warren_evidence_s01, "object/tangible/mission/quest_item/shared_warren_evidence_s01.iff")
@@ -14130,7 +14390,8 @@ object_tangible_mission_quest_item_shared_warren_evidence_s02 = SharedTangibleOb
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4158386612
+	clientObjectCRC = 4158386612,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_warren_evidence_s02, "object/tangible/mission/quest_item/shared_warren_evidence_s02.iff")
@@ -14184,7 +14445,8 @@ object_tangible_mission_quest_item_shared_warren_evidence_s03 = SharedTangibleOb
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3201734201
+	clientObjectCRC = 3201734201,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_warren_evidence_s03, "object/tangible/mission/quest_item/shared_warren_evidence_s03.iff")
@@ -14238,7 +14500,8 @@ object_tangible_mission_quest_item_shared_warren_evidence_s04 = SharedTangibleOb
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1161149741
+	clientObjectCRC = 1161149741,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_warren_evidence_s04, "object/tangible/mission/quest_item/shared_warren_evidence_s04.iff")
@@ -14292,7 +14555,8 @@ object_tangible_mission_quest_item_shared_warren_farewell_letter = SharedTangibl
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2348946698
+	clientObjectCRC = 2348946698,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_warren_farewell_letter, "object/tangible/mission/quest_item/shared_warren_farewell_letter.iff")
@@ -14346,7 +14610,8 @@ object_tangible_mission_quest_item_shared_warren_inquisitor_letter = SharedTangi
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1929635907
+	clientObjectCRC = 1929635907,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_warren_inquisitor_letter, "object/tangible/mission/quest_item/shared_warren_inquisitor_letter.iff")
@@ -14400,7 +14665,8 @@ object_tangible_mission_quest_item_shared_warren_passkey_s01 = SharedTangibleObj
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1731835743
+	clientObjectCRC = 1731835743,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_warren_passkey_s01, "object/tangible/mission/quest_item/shared_warren_passkey_s01.iff")
@@ -14454,7 +14720,8 @@ object_tangible_mission_quest_item_shared_warren_passkey_s02 = SharedTangibleObj
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3157139400
+	clientObjectCRC = 3157139400,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_warren_passkey_s02, "object/tangible/mission/quest_item/shared_warren_passkey_s02.iff")
@@ -14508,7 +14775,8 @@ object_tangible_mission_quest_item_shared_warren_passkey_s03 = SharedTangibleObj
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4112742469
+	clientObjectCRC = 4112742469,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_warren_passkey_s03, "object/tangible/mission/quest_item/shared_warren_passkey_s03.iff")
@@ -14562,7 +14830,8 @@ object_tangible_mission_quest_item_shared_warren_passkey_s04 = SharedTangibleObj
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 247485265
+	clientObjectCRC = 247485265,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_warren_passkey_s04, "object/tangible/mission/quest_item/shared_warren_passkey_s04.iff")
@@ -14616,7 +14885,8 @@ object_tangible_mission_quest_item_shared_warren_turret_sequence = SharedTangibl
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1273506615
+	clientObjectCRC = 1273506615,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_warren_turret_sequence, "object/tangible/mission/quest_item/shared_warren_turret_sequence.iff")
@@ -14670,7 +14940,8 @@ object_tangible_mission_quest_item_shared_wilhalm_skrim_q1_needed = SharedTangib
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 961134093
+	clientObjectCRC = 961134093,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_wilhalm_skrim_q1_needed, "object/tangible/mission/quest_item/shared_wilhalm_skrim_q1_needed.iff")
@@ -14724,7 +14995,8 @@ object_tangible_mission_quest_item_shared_wilhalm_skrim_q2_needed = SharedTangib
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 827497223
+	clientObjectCRC = 827497223,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_wilhalm_skrim_q2_needed, "object/tangible/mission/quest_item/shared_wilhalm_skrim_q2_needed.iff")
@@ -14778,7 +15050,8 @@ object_tangible_mission_quest_item_shared_windom_starkiller_q2_needed = SharedTa
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3087063788
+	clientObjectCRC = 3087063788,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_windom_starkiller_q2_needed, "object/tangible/mission/quest_item/shared_windom_starkiller_q2_needed.iff")
@@ -14832,7 +15105,8 @@ object_tangible_mission_quest_item_shared_wuher_q1_needed = SharedTangibleObject
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3120568606
+	clientObjectCRC = 3120568606,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_wuher_q1_needed, "object/tangible/mission/quest_item/shared_wuher_q1_needed.iff")
@@ -14886,7 +15160,8 @@ object_tangible_mission_quest_item_shared_wuher_q2_needed = SharedTangibleObject
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2988129300
+	clientObjectCRC = 2988129300,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_wuher_q2_needed, "object/tangible/mission/quest_item/shared_wuher_q2_needed.iff")
@@ -14940,7 +15215,8 @@ object_tangible_mission_quest_item_shared_wuher_q3_needed = SharedTangibleObject
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3052265234
+	clientObjectCRC = 3052265234,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_wuher_q3_needed, "object/tangible/mission/quest_item/shared_wuher_q3_needed.iff")
@@ -14994,7 +15270,8 @@ object_tangible_mission_quest_item_shared_wuher_q4_needed = SharedTangibleObject
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2720888320
+	clientObjectCRC = 2720888320,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_wuher_q4_needed, "object/tangible/mission/quest_item/shared_wuher_q4_needed.iff")
@@ -15048,7 +15325,8 @@ object_tangible_mission_quest_item_shared_xaan_talmaron_q1_needed = SharedTangib
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 726645346
+	clientObjectCRC = 726645346,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_xaan_talmaron_q1_needed, "object/tangible/mission/quest_item/shared_xaan_talmaron_q1_needed.iff")
@@ -15102,7 +15380,8 @@ object_tangible_mission_quest_item_shared_xaan_talmaron_q3_needed = SharedTangib
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 614628462
+	clientObjectCRC = 614628462,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_xaan_talmaron_q3_needed, "object/tangible/mission/quest_item/shared_xaan_talmaron_q3_needed.iff")
@@ -15156,7 +15435,8 @@ object_tangible_mission_quest_item_shared_xalox_guul_q2_needed = SharedTangibleO
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2258907872
+	clientObjectCRC = 2258907872,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_xalox_guul_q2_needed, "object/tangible/mission/quest_item/shared_xalox_guul_q2_needed.iff")
@@ -15210,7 +15490,8 @@ object_tangible_mission_quest_item_shared_xarot_korlin_q1_needed = SharedTangibl
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2168666592
+	clientObjectCRC = 2168666592,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_xarot_korlin_q1_needed, "object/tangible/mission/quest_item/shared_xarot_korlin_q1_needed.iff")
@@ -15264,7 +15545,8 @@ object_tangible_mission_quest_item_shared_xarot_korlin_q2_needed = SharedTangibl
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2304253162
+	clientObjectCRC = 2304253162,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_xarot_korlin_q2_needed, "object/tangible/mission/quest_item/shared_xarot_korlin_q2_needed.iff")
@@ -15318,7 +15600,8 @@ object_tangible_mission_quest_item_shared_yith_seenath_q1_needed = SharedTangibl
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3276450481
+	clientObjectCRC = 3276450481,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_yith_seenath_q1_needed, "object/tangible/mission/quest_item/shared_yith_seenath_q1_needed.iff")
@@ -15372,7 +15655,8 @@ object_tangible_mission_quest_item_shared_zekka_thyne_q1_needed = SharedTangible
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3147538700
+	clientObjectCRC = 3147538700,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_zekka_thyne_q1_needed, "object/tangible/mission/quest_item/shared_zekka_thyne_q1_needed.iff")
@@ -15426,7 +15710,8 @@ object_tangible_mission_quest_item_shared_zogor_sturm_q3_needed = SharedTangible
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1563677402
+	clientObjectCRC = 1563677402,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_quest_item_shared_zogor_sturm_q3_needed, "object/tangible/mission/quest_item/shared_zogor_sturm_q3_needed.iff")

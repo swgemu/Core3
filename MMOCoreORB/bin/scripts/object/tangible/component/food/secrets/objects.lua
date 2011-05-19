@@ -90,7 +90,8 @@ object_tangible_component_food_secrets_shared_secret_base = SharedTangibleObject
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4005001840
+	clientObjectCRC = 4005001840,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_food_secrets_shared_secret_base, "object/tangible/component/food/secrets/shared_secret_base.iff")
@@ -144,7 +145,8 @@ object_tangible_component_food_secrets_shared_secret_imperial_biochem = SharedTa
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2542399223
+	clientObjectCRC = 2542399223,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/food/secrets/shared_secret_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_food_secrets_shared_secret_imperial_biochem, "object/tangible/component/food/secrets/shared_secret_imperial_biochem.iff")
@@ -198,7 +200,8 @@ object_tangible_component_food_secrets_shared_secret_rebel_biochem = SharedTangi
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1836800845
+	clientObjectCRC = 1836800845,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/food/secrets/shared_secret_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_food_secrets_shared_secret_rebel_biochem, "object/tangible/component/food/secrets/shared_secret_rebel_biochem.iff")

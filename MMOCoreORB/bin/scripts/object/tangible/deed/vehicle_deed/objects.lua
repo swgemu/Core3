@@ -90,7 +90,8 @@ object_tangible_deed_vehicle_deed_shared_jetpack_deed = SharedTangibleObjectTemp
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2560190060
+	clientObjectCRC = 2560190060,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/deed/vehicle_deed/shared_vehicle_deed_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_deed_vehicle_deed_shared_jetpack_deed, "object/tangible/deed/vehicle_deed/shared_jetpack_deed.iff")
@@ -144,7 +145,8 @@ object_tangible_deed_vehicle_deed_shared_landspeeder_av21_deed = SharedTangibleO
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3746524983
+	clientObjectCRC = 3746524983,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/deed/vehicle_deed/shared_vehicle_deed_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_deed_vehicle_deed_shared_landspeeder_av21_deed, "object/tangible/deed/vehicle_deed/shared_landspeeder_av21_deed.iff")
@@ -198,7 +200,8 @@ object_tangible_deed_vehicle_deed_shared_landspeeder_x31_deed = SharedTangibleOb
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3199159464
+	clientObjectCRC = 3199159464,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/deed/vehicle_deed/shared_vehicle_deed_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_deed_vehicle_deed_shared_landspeeder_x31_deed, "object/tangible/deed/vehicle_deed/shared_landspeeder_x31_deed.iff")
@@ -252,7 +255,8 @@ object_tangible_deed_vehicle_deed_shared_landspeeder_x34_deed = SharedTangibleOb
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 905926205
+	clientObjectCRC = 905926205,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/deed/vehicle_deed/shared_vehicle_deed_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_deed_vehicle_deed_shared_landspeeder_x34_deed, "object/tangible/deed/vehicle_deed/shared_landspeeder_x34_deed.iff")
@@ -306,7 +310,8 @@ object_tangible_deed_vehicle_deed_shared_speederbike_deed = SharedTangibleObject
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4075476273
+	clientObjectCRC = 4075476273,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/deed/vehicle_deed/shared_vehicle_deed_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_deed_vehicle_deed_shared_speederbike_deed, "object/tangible/deed/vehicle_deed/shared_speederbike_deed.iff")
@@ -360,7 +365,8 @@ object_tangible_deed_vehicle_deed_shared_speederbike_flash_deed = SharedTangible
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1892530279
+	clientObjectCRC = 1892530279,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/deed/vehicle_deed/shared_vehicle_deed_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_deed_vehicle_deed_shared_speederbike_flash_deed, "object/tangible/deed/vehicle_deed/shared_speederbike_flash_deed.iff")
@@ -414,7 +420,8 @@ object_tangible_deed_vehicle_deed_shared_speederbike_swoop_deed = SharedTangible
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 495473751
+	clientObjectCRC = 495473751,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/deed/vehicle_deed/shared_vehicle_deed_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_deed_vehicle_deed_shared_speederbike_swoop_deed, "object/tangible/deed/vehicle_deed/shared_speederbike_swoop_deed.iff")
@@ -468,7 +475,8 @@ object_tangible_deed_vehicle_deed_shared_vehicle_deed_base = SharedTangibleObjec
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 504910832
+	clientObjectCRC = 504910832,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_deed_vehicle_deed_shared_vehicle_deed_base, "object/tangible/deed/vehicle_deed/shared_vehicle_deed_base.iff")
@@ -522,7 +530,8 @@ object_tangible_deed_vehicle_deed_shared_vehicular_prototype_bike_deed = SharedT
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1262265566
+	clientObjectCRC = 1262265566,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_deed_vehicle_deed_shared_vehicular_prototype_bike_deed, "object/tangible/deed/vehicle_deed/shared_vehicular_prototype_bike_deed.iff")
@@ -576,7 +585,8 @@ object_tangible_deed_vehicle_deed_shared_vehicular_prototype_deed = SharedTangib
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3990622047
+	clientObjectCRC = 3990622047,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_deed_vehicle_deed_shared_vehicular_prototype_deed, "object/tangible/deed/vehicle_deed/shared_vehicular_prototype_deed.iff")

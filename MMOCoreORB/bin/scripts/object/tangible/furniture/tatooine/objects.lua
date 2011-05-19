@@ -90,7 +90,8 @@ object_tangible_furniture_tatooine_shared_frn_tato_cafe_parasol = SharedTangible
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1908855481
+	clientObjectCRC = 1908855481,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_furniture_tatooine_shared_frn_tato_cafe_parasol, "object/tangible/furniture/tatooine/shared_frn_tato_cafe_parasol.iff")
@@ -144,7 +145,8 @@ object_tangible_furniture_tatooine_shared_frn_tato_chair_cafe_style_01 = SharedT
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2164191436
+	clientObjectCRC = 2164191436,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_furniture_tatooine_shared_frn_tato_chair_cafe_style_01, "object/tangible/furniture/tatooine/shared_frn_tato_chair_cafe_style_01.iff")
@@ -198,7 +200,8 @@ object_tangible_furniture_tatooine_shared_frn_tato_chair_cafe_style_02 = SharedT
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1542019163
+	clientObjectCRC = 1542019163,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_furniture_tatooine_shared_frn_tato_chair_cafe_style_02, "object/tangible/furniture/tatooine/shared_frn_tato_chair_cafe_style_02.iff")
@@ -252,7 +255,8 @@ object_tangible_furniture_tatooine_shared_frn_tato_fruit_stand_large_style_01 = 
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3245057821
+	clientObjectCRC = 3245057821,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_furniture_tatooine_shared_frn_tato_fruit_stand_large_style_01, "object/tangible/furniture/tatooine/shared_frn_tato_fruit_stand_large_style_01.iff")
@@ -306,7 +310,8 @@ object_tangible_furniture_tatooine_shared_frn_tato_fruit_stand_small_style_01 = 
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3779547307
+	clientObjectCRC = 3779547307,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_furniture_tatooine_shared_frn_tato_fruit_stand_small_style_01, "object/tangible/furniture/tatooine/shared_frn_tato_fruit_stand_small_style_01.iff")
@@ -360,7 +365,8 @@ object_tangible_furniture_tatooine_shared_frn_tato_meat_rack = SharedTangibleObj
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3789730782
+	clientObjectCRC = 3789730782,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_furniture_tatooine_shared_frn_tato_meat_rack, "object/tangible/furniture/tatooine/shared_frn_tato_meat_rack.iff")
@@ -414,7 +420,8 @@ object_tangible_furniture_tatooine_shared_frn_tato_table_small_style_01 = Shared
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 507352168
+	clientObjectCRC = 507352168,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_furniture_tatooine_shared_frn_tato_table_small_style_01, "object/tangible/furniture/tatooine/shared_frn_tato_table_small_style_01.iff")
@@ -468,7 +475,8 @@ object_tangible_furniture_tatooine_shared_frn_tato_table_small_style_02 = Shared
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3307879679
+	clientObjectCRC = 3307879679,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_furniture_tatooine_shared_frn_tato_table_small_style_02, "object/tangible/furniture/tatooine/shared_frn_tato_table_small_style_02.iff")
@@ -522,7 +530,8 @@ object_tangible_furniture_tatooine_shared_frn_tato_table_small_style_03 = Shared
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2351389554
+	clientObjectCRC = 2351389554,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_furniture_tatooine_shared_frn_tato_table_small_style_03, "object/tangible/furniture/tatooine/shared_frn_tato_table_small_style_03.iff")
@@ -576,7 +585,8 @@ object_tangible_furniture_tatooine_shared_frn_tato_tbl_cafe_table_style_01 = Sha
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4223928616
+	clientObjectCRC = 4223928616,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_furniture_tatooine_shared_frn_tato_tbl_cafe_table_style_01, "object/tangible/furniture/tatooine/shared_frn_tato_tbl_cafe_table_style_01.iff")
@@ -630,7 +640,8 @@ object_tangible_furniture_tatooine_shared_frn_tato_vase_style_01 = SharedTangibl
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2957326043
+	clientObjectCRC = 2957326043,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_furniture_tatooine_shared_frn_tato_vase_style_01, "object/tangible/furniture/tatooine/shared_frn_tato_vase_style_01.iff")
@@ -684,7 +695,8 @@ object_tangible_furniture_tatooine_shared_frn_tato_vase_style_02 = SharedTangibl
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1800576588
+	clientObjectCRC = 1800576588,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_furniture_tatooine_shared_frn_tato_vase_style_02, "object/tangible/furniture/tatooine/shared_frn_tato_vase_style_02.iff")
@@ -738,7 +750,8 @@ object_tangible_furniture_tatooine_shared_frn_tatt_cantina_droid_detector = Shar
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1910356061
+	clientObjectCRC = 1910356061,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_furniture_tatooine_shared_frn_tatt_cantina_droid_detector, "object/tangible/furniture/tatooine/shared_frn_tatt_cantina_droid_detector.iff")
@@ -792,7 +805,8 @@ object_tangible_furniture_tatooine_shared_frn_tatt_chair_cantina_seat = SharedTa
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4257932604
+	clientObjectCRC = 4257932604,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_furniture_tatooine_shared_frn_tatt_chair_cantina_seat, "object/tangible/furniture/tatooine/shared_frn_tatt_chair_cantina_seat.iff")
@@ -846,7 +860,8 @@ object_tangible_furniture_tatooine_shared_frn_tatt_chair_cantina_seat_2 = Shared
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2639715831
+	clientObjectCRC = 2639715831,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_furniture_tatooine_shared_frn_tatt_chair_cantina_seat_2, "object/tangible/furniture/tatooine/shared_frn_tatt_chair_cantina_seat_2.iff")
@@ -900,7 +915,8 @@ object_tangible_furniture_tatooine_shared_frn_tatt_chair_cantina_seat_3 = Shared
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3562781306
+	clientObjectCRC = 3562781306,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_furniture_tatooine_shared_frn_tatt_chair_cantina_seat_3, "object/tangible/furniture/tatooine/shared_frn_tatt_chair_cantina_seat_3.iff")
@@ -954,7 +970,8 @@ object_tangible_furniture_tatooine_shared_frn_tatt_table_cantina_table_1 = Share
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2174626788
+	clientObjectCRC = 2174626788,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_furniture_tatooine_shared_frn_tatt_table_cantina_table_1, "object/tangible/furniture/tatooine/shared_frn_tatt_table_cantina_table_1.iff")
@@ -1008,7 +1025,8 @@ object_tangible_furniture_tatooine_shared_frn_tatt_table_cantina_table_2 = Share
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1518961523
+	clientObjectCRC = 1518961523,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_furniture_tatooine_shared_frn_tatt_table_cantina_table_2, "object/tangible/furniture/tatooine/shared_frn_tatt_table_cantina_table_2.iff")
@@ -1062,7 +1080,8 @@ object_tangible_furniture_tatooine_shared_frn_tatt_table_cantina_table_3 = Share
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 327476478
+	clientObjectCRC = 327476478,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_furniture_tatooine_shared_frn_tatt_table_cantina_table_3, "object/tangible/furniture/tatooine/shared_frn_tatt_table_cantina_table_3.iff")

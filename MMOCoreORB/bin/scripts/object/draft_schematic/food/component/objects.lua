@@ -80,7 +80,8 @@ object_draft_schematic_food_component_shared_container_barrel = SharedDraftSchem
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1809601710
+	clientObjectCRC = 1809601710,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_food_component_shared_container_barrel, "object/draft_schematic/food/component/shared_container_barrel.iff")
@@ -124,7 +125,8 @@ object_draft_schematic_food_component_shared_container_cask = SharedDraftSchemat
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2983185528
+	clientObjectCRC = 2983185528,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_food_component_shared_container_cask, "object/draft_schematic/food/component/shared_container_cask.iff")
@@ -168,7 +170,8 @@ object_draft_schematic_food_component_shared_container_large_glass = SharedDraft
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3740654207
+	clientObjectCRC = 3740654207,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_food_component_shared_container_large_glass, "object/draft_schematic/food/component/shared_container_large_glass.iff")
@@ -212,7 +215,8 @@ object_draft_schematic_food_component_shared_container_small_glass = SharedDraft
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1819609352
+	clientObjectCRC = 1819609352,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_food_component_shared_container_small_glass, "object/draft_schematic/food/component/shared_container_small_glass.iff")
@@ -256,7 +260,8 @@ object_draft_schematic_food_component_shared_ingredient_ball_of_dough = SharedDr
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 797799084
+	clientObjectCRC = 797799084,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_food_component_shared_ingredient_ball_of_dough, "object/draft_schematic/food/component/shared_ingredient_ball_of_dough.iff")
@@ -300,7 +305,8 @@ object_draft_schematic_food_component_shared_ingredient_carbosyrup = SharedDraft
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 752274773
+	clientObjectCRC = 752274773,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_food_component_shared_ingredient_carbosyrup, "object/draft_schematic/food/component/shared_ingredient_carbosyrup.iff")

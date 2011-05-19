@@ -90,7 +90,8 @@ object_tangible_inventory_shared_character_inventory = SharedTangibleObjectTempl
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 963242043
+	clientObjectCRC = 963242043,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_inventory_shared_character_inventory, "object/tangible/inventory/shared_character_inventory.iff")
@@ -144,7 +145,8 @@ object_tangible_inventory_shared_creature_inventory = SharedTangibleObjectTempla
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 554727708
+	clientObjectCRC = 554727708,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_inventory_shared_creature_inventory, "object/tangible/inventory/shared_creature_inventory.iff")
@@ -198,7 +200,8 @@ object_tangible_inventory_shared_creature_inventory_1 = SharedTangibleObjectTemp
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4169639267
+	clientObjectCRC = 4169639267,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/inventory/shared_creature_inventory.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_inventory_shared_creature_inventory_1, "object/tangible/inventory/shared_creature_inventory_1.iff")
@@ -252,7 +255,8 @@ object_tangible_inventory_shared_creature_inventory_2 = SharedTangibleObjectTemp
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 596643316
+	clientObjectCRC = 596643316,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/inventory/shared_creature_inventory.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_inventory_shared_creature_inventory_2, "object/tangible/inventory/shared_creature_inventory_2.iff")
@@ -306,7 +310,8 @@ object_tangible_inventory_shared_creature_inventory_3 = SharedTangibleObjectTemp
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1788701305
+	clientObjectCRC = 1788701305,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/inventory/shared_creature_inventory.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_inventory_shared_creature_inventory_3, "object/tangible/inventory/shared_creature_inventory_3.iff")
@@ -360,7 +365,8 @@ object_tangible_inventory_shared_creature_inventory_4 = SharedTangibleObjectTemp
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2440970605
+	clientObjectCRC = 2440970605,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/inventory/shared_creature_inventory.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_inventory_shared_creature_inventory_4, "object/tangible/inventory/shared_creature_inventory_4.iff")
@@ -414,7 +420,8 @@ object_tangible_inventory_shared_creature_inventory_5 = SharedTangibleObjectTemp
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3631425248
+	clientObjectCRC = 3631425248,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/inventory/shared_creature_inventory.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_inventory_shared_creature_inventory_5, "object/tangible/inventory/shared_creature_inventory_5.iff")
@@ -468,7 +475,8 @@ object_tangible_inventory_shared_creature_inventory_6 = SharedTangibleObjectTemp
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 56921719
+	clientObjectCRC = 56921719,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/inventory/shared_creature_inventory.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_inventory_shared_creature_inventory_6, "object/tangible/inventory/shared_creature_inventory_6.iff")
@@ -522,7 +530,8 @@ object_tangible_inventory_shared_lightsaber_inventory_1 = SharedTangibleObjectTe
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3089628208
+	clientObjectCRC = 3089628208,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/inventory/shared_lightsaber_inventory_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_inventory_shared_lightsaber_inventory_1, "object/tangible/inventory/shared_lightsaber_inventory_1.iff")
@@ -576,7 +585,8 @@ object_tangible_inventory_shared_lightsaber_inventory_2 = SharedTangibleObjectTe
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1664111783
+	clientObjectCRC = 1664111783,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/inventory/shared_lightsaber_inventory_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_inventory_shared_lightsaber_inventory_2, "object/tangible/inventory/shared_lightsaber_inventory_2.iff")
@@ -630,7 +640,8 @@ object_tangible_inventory_shared_lightsaber_inventory_3 = SharedTangibleObjectTe
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 708653866
+	clientObjectCRC = 708653866,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/inventory/shared_lightsaber_inventory_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_inventory_shared_lightsaber_inventory_3, "object/tangible/inventory/shared_lightsaber_inventory_3.iff")
@@ -684,7 +695,8 @@ object_tangible_inventory_shared_lightsaber_inventory_4 = SharedTangibleObjectTe
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3520993342
+	clientObjectCRC = 3520993342,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/inventory/shared_lightsaber_inventory_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_inventory_shared_lightsaber_inventory_4, "object/tangible/inventory/shared_lightsaber_inventory_4.iff")
@@ -738,7 +750,8 @@ object_tangible_inventory_shared_lightsaber_inventory_base = SharedTangibleObjec
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1036860999
+	clientObjectCRC = 1036860999,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_inventory_shared_lightsaber_inventory_base, "object/tangible/inventory/shared_lightsaber_inventory_base.iff")
@@ -792,7 +805,8 @@ object_tangible_inventory_shared_lightsaber_inventory_training = SharedTangibleO
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3030613257
+	clientObjectCRC = 3030613257,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/inventory/shared_lightsaber_inventory_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_inventory_shared_lightsaber_inventory_training, "object/tangible/inventory/shared_lightsaber_inventory_training.iff")
@@ -846,7 +860,8 @@ object_tangible_inventory_shared_vendor_inventory = SharedTangibleObjectTemplate
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2721032514
+	clientObjectCRC = 2721032514,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_inventory_shared_vendor_inventory, "object/tangible/inventory/shared_vendor_inventory.iff")

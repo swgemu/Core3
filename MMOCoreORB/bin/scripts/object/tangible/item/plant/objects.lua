@@ -90,7 +90,8 @@ object_tangible_item_plant_shared_force_melon = SharedTangibleObjectTemplate:new
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3800711792
+	clientObjectCRC = 3800711792,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/base/shared_base_food.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_item_plant_shared_force_melon, "object/tangible/item/plant/shared_force_melon.iff")

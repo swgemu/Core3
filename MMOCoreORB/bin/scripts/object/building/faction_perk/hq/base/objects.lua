@@ -93,7 +93,8 @@ object_building_faction_perk_hq_base_shared_factional_hq_base = SharedBuildingOb
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2342412562
+	clientObjectCRC = 2342412562,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/faction_perk/base/shared_factional_building_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_faction_perk_hq_base_shared_factional_hq_base, "object/building/faction_perk/hq/base/shared_factional_hq_base.iff")
@@ -150,7 +151,8 @@ object_building_faction_perk_hq_base_shared_factional_hq_fp = SharedBuildingObje
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 622259850
+	clientObjectCRC = 622259850,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/faction_perk/base/shared_factional_building_base.iff", "object/building/faction_perk/hq/base/shared_factional_hq_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_faction_perk_hq_base_shared_factional_hq_fp, "object/building/faction_perk/hq/base/shared_factional_hq_fp.iff")

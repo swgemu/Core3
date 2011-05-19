@@ -90,7 +90,8 @@ object_tangible_survey_tool_shared_survey_tool_all = SharedTangibleObjectTemplat
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 255686868
+	clientObjectCRC = 255686868,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/survey_tool/base/shared_survey_tool_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_survey_tool_shared_survey_tool_all, "object/tangible/survey_tool/shared_survey_tool_all.iff")
@@ -144,7 +145,8 @@ object_tangible_survey_tool_shared_survey_tool_gas = SharedTangibleObjectTemplat
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1059021891
+	clientObjectCRC = 1059021891,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/survey_tool/base/shared_survey_tool_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_survey_tool_shared_survey_tool_gas, "object/tangible/survey_tool/shared_survey_tool_gas.iff")
@@ -198,7 +200,8 @@ object_tangible_survey_tool_shared_survey_tool_inorganic = SharedTangibleObjectT
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3427396409
+	clientObjectCRC = 3427396409,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/survey_tool/base/shared_survey_tool_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_survey_tool_shared_survey_tool_inorganic, "object/tangible/survey_tool/shared_survey_tool_inorganic.iff")
@@ -252,7 +255,8 @@ object_tangible_survey_tool_shared_survey_tool_liquid = SharedTangibleObjectTemp
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2242363434
+	clientObjectCRC = 2242363434,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/survey_tool/base/shared_survey_tool_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_survey_tool_shared_survey_tool_liquid, "object/tangible/survey_tool/shared_survey_tool_liquid.iff")
@@ -306,7 +310,8 @@ object_tangible_survey_tool_shared_survey_tool_lumber = SharedTangibleObjectTemp
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1329114448
+	clientObjectCRC = 1329114448,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/survey_tool/base/shared_survey_tool_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_survey_tool_shared_survey_tool_lumber, "object/tangible/survey_tool/shared_survey_tool_lumber.iff")
@@ -360,7 +365,8 @@ object_tangible_survey_tool_shared_survey_tool_mineral = SharedTangibleObjectTem
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2862265132
+	clientObjectCRC = 2862265132,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/survey_tool/base/shared_survey_tool_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_survey_tool_shared_survey_tool_mineral, "object/tangible/survey_tool/shared_survey_tool_mineral.iff")
@@ -414,7 +420,8 @@ object_tangible_survey_tool_shared_survey_tool_moisture = SharedTangibleObjectTe
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2175673400
+	clientObjectCRC = 2175673400,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/survey_tool/base/shared_survey_tool_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_survey_tool_shared_survey_tool_moisture, "object/tangible/survey_tool/shared_survey_tool_moisture.iff")
@@ -468,7 +475,8 @@ object_tangible_survey_tool_shared_survey_tool_organic = SharedTangibleObjectTem
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 963146674
+	clientObjectCRC = 963146674,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/survey_tool/base/shared_survey_tool_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_survey_tool_shared_survey_tool_organic, "object/tangible/survey_tool/shared_survey_tool_organic.iff")
@@ -522,7 +530,8 @@ object_tangible_survey_tool_shared_survey_tool_solar = SharedTangibleObjectTempl
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2341848205
+	clientObjectCRC = 2341848205,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/survey_tool/base/shared_survey_tool_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_survey_tool_shared_survey_tool_solar, "object/tangible/survey_tool/shared_survey_tool_solar.iff")
@@ -576,7 +585,8 @@ object_tangible_survey_tool_shared_survey_tool_wind = SharedTangibleObjectTempla
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 566467536
+	clientObjectCRC = 566467536,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/survey_tool/base/shared_survey_tool_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_survey_tool_shared_survey_tool_wind, "object/tangible/survey_tool/shared_survey_tool_wind.iff")

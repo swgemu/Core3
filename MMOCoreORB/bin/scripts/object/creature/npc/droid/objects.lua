@@ -114,7 +114,8 @@ object_creature_npc_droid_shared_2_1b_surgical_droid_base = SharedCreatureObject
 	warpTolerance = 17,
 	waterModPercent = 0.5,
 
-	clientObjectCRC = 1605343560
+	clientObjectCRC = 1605343560,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/creature/npc/base/shared_base_npc.iff", "object/creature/npc/base/shared_base_droid.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_creature_npc_droid_shared_2_1b_surgical_droid_base, "object/creature/npc/droid/shared_2_1b_surgical_droid_base.iff")
@@ -192,7 +193,8 @@ object_creature_npc_droid_shared_3po_base = SharedCreatureObjectTemplate:new {
 	warpTolerance = 17,
 	waterModPercent = 0.5,
 
-	clientObjectCRC = 2915624318
+	clientObjectCRC = 2915624318,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/creature/npc/base/shared_base_npc.iff", "object/creature/npc/base/shared_base_droid.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_creature_npc_droid_shared_3po_base, "object/creature/npc/droid/shared_3po_base.iff")
@@ -270,7 +272,8 @@ object_creature_npc_droid_shared_bomarr_monk_spider_droid = SharedCreatureObject
 	warpTolerance = 17,
 	waterModPercent = 0.5,
 
-	clientObjectCRC = 3197073485
+	clientObjectCRC = 3197073485,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/creature/npc/base/shared_base_npc.iff", "object/creature/npc/base/shared_base_droid.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_creature_npc_droid_shared_bomarr_monk_spider_droid, "object/creature/npc/droid/shared_bomarr_monk_spider_droid.iff")
@@ -348,7 +351,8 @@ object_creature_npc_droid_shared_cll_8_binary_load_lifter_base = SharedCreatureO
 	warpTolerance = 17,
 	waterModPercent = 0.5,
 
-	clientObjectCRC = 2746759604
+	clientObjectCRC = 2746759604,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/creature/npc/base/shared_base_npc.iff", "object/creature/npc/base/shared_base_droid.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_creature_npc_droid_shared_cll_8_binary_load_lifter_base, "object/creature/npc/droid/shared_cll_8_binary_load_lifter_base.iff")
@@ -426,7 +430,8 @@ object_creature_npc_droid_shared_dark_trooper_phase_ii_base = SharedCreatureObje
 	warpTolerance = 17,
 	waterModPercent = 0.5,
 
-	clientObjectCRC = 3007882000
+	clientObjectCRC = 3007882000,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/creature/npc/base/shared_base_npc.iff", "object/creature/npc/base/shared_base_droid.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_creature_npc_droid_shared_dark_trooper_phase_ii_base, "object/creature/npc/droid/shared_dark_trooper_phase_ii_base.iff")
@@ -504,7 +509,8 @@ object_creature_npc_droid_shared_droideka_base = SharedCreatureObjectTemplate:ne
 	warpTolerance = 17,
 	waterModPercent = 0.5,
 
-	clientObjectCRC = 1363686436
+	clientObjectCRC = 1363686436,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/creature/npc/base/shared_base_npc.iff", "object/creature/npc/base/shared_base_droid.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_creature_npc_droid_shared_droideka_base, "object/creature/npc/droid/shared_droideka_base.iff")
@@ -582,7 +588,8 @@ object_creature_npc_droid_shared_dz_70_fugitive_tracker_base = SharedCreatureObj
 	warpTolerance = 17,
 	waterModPercent = 0.5,
 
-	clientObjectCRC = 1822521972
+	clientObjectCRC = 1822521972,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/creature/npc/base/shared_base_npc.iff", "object/creature/npc/base/shared_base_droid.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_creature_npc_droid_shared_dz_70_fugitive_tracker_base, "object/creature/npc/droid/shared_dz_70_fugitive_tracker_base.iff")
@@ -660,7 +667,8 @@ object_creature_npc_droid_shared_eg_6_power_droid_base = SharedCreatureObjectTem
 	warpTolerance = 17,
 	waterModPercent = 0.5,
 
-	clientObjectCRC = 4263326196
+	clientObjectCRC = 4263326196,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/creature/npc/base/shared_base_npc.iff", "object/creature/npc/base/shared_base_droid.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_creature_npc_droid_shared_eg_6_power_droid_base, "object/creature/npc/droid/shared_eg_6_power_droid_base.iff")
@@ -738,7 +746,8 @@ object_creature_npc_droid_shared_ig_assassin_droid_base = SharedCreatureObjectTe
 	warpTolerance = 17,
 	waterModPercent = 0.5,
 
-	clientObjectCRC = 2147155885
+	clientObjectCRC = 2147155885,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/creature/npc/base/shared_base_npc.iff", "object/creature/npc/base/shared_base_droid.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_creature_npc_droid_shared_ig_assassin_droid_base, "object/creature/npc/droid/shared_ig_assassin_droid_base.iff")
@@ -816,7 +825,8 @@ object_creature_npc_droid_shared_imperial_probot_base = SharedCreatureObjectTemp
 	warpTolerance = 17,
 	waterModPercent = 0.5,
 
-	clientObjectCRC = 855701230
+	clientObjectCRC = 855701230,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/creature/npc/base/shared_base_npc.iff", "object/creature/npc/base/shared_base_droid.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_creature_npc_droid_shared_imperial_probot_base, "object/creature/npc/droid/shared_imperial_probot_base.iff")
@@ -894,7 +904,8 @@ object_creature_npc_droid_shared_it_o_interrogator_base = SharedCreatureObjectTe
 	warpTolerance = 17,
 	waterModPercent = 0.5,
 
-	clientObjectCRC = 2404177386
+	clientObjectCRC = 2404177386,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/creature/npc/base/shared_base_npc.iff", "object/creature/npc/base/shared_base_droid.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_creature_npc_droid_shared_it_o_interrogator_base, "object/creature/npc/droid/shared_it_o_interrogator_base.iff")
@@ -972,7 +983,8 @@ object_creature_npc_droid_shared_jedi_training_droid_base = SharedCreatureObject
 	warpTolerance = 17,
 	waterModPercent = 0.5,
 
-	clientObjectCRC = 1824587153
+	clientObjectCRC = 1824587153,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/creature/npc/base/shared_base_npc.iff", "object/creature/npc/base/shared_base_droid.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_creature_npc_droid_shared_jedi_training_droid_base, "object/creature/npc/droid/shared_jedi_training_droid_base.iff")
@@ -1050,7 +1062,8 @@ object_creature_npc_droid_shared_le_repair_droid = SharedCreatureObjectTemplate:
 	warpTolerance = 17,
 	waterModPercent = 0.5,
 
-	clientObjectCRC = 3636727392
+	clientObjectCRC = 3636727392,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/creature/npc/base/shared_base_npc.iff", "object/creature/npc/base/shared_base_droid.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_creature_npc_droid_shared_le_repair_droid, "object/creature/npc/droid/shared_le_repair_droid.iff")
@@ -1128,7 +1141,8 @@ object_creature_npc_droid_shared_lin_demolitionmech_base = SharedCreatureObjectT
 	warpTolerance = 17,
 	waterModPercent = 0.5,
 
-	clientObjectCRC = 3586538841
+	clientObjectCRC = 3586538841,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/creature/npc/base/shared_base_npc.iff", "object/creature/npc/base/shared_base_droid.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_creature_npc_droid_shared_lin_demolitionmech_base, "object/creature/npc/droid/shared_lin_demolitionmech_base.iff")
@@ -1206,7 +1220,8 @@ object_creature_npc_droid_shared_maul_probe_droid_base = SharedCreatureObjectTem
 	warpTolerance = 17,
 	waterModPercent = 0.5,
 
-	clientObjectCRC = 1281145336
+	clientObjectCRC = 1281145336,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/creature/npc/base/shared_base_npc.iff", "object/creature/npc/base/shared_base_droid.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_creature_npc_droid_shared_maul_probe_droid_base, "object/creature/npc/droid/shared_maul_probe_droid_base.iff")
@@ -1284,7 +1299,8 @@ object_creature_npc_droid_shared_mse_6_base = SharedCreatureObjectTemplate:new {
 	warpTolerance = 17,
 	waterModPercent = 0.5,
 
-	clientObjectCRC = 3289977441
+	clientObjectCRC = 3289977441,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/creature/npc/base/shared_base_npc.iff", "object/creature/npc/base/shared_base_droid.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_creature_npc_droid_shared_mse_6_base, "object/creature/npc/droid/shared_mse_6_base.iff")
@@ -1362,7 +1378,8 @@ object_creature_npc_droid_shared_r2_base = SharedCreatureObjectTemplate:new {
 	warpTolerance = 17,
 	waterModPercent = 0.5,
 
-	clientObjectCRC = 2822086398
+	clientObjectCRC = 2822086398,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/creature/npc/base/shared_base_npc.iff", "object/creature/npc/base/shared_base_droid.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_creature_npc_droid_shared_r2_base, "object/creature/npc/droid/shared_r2_base.iff")
@@ -1440,7 +1457,8 @@ object_creature_npc_droid_shared_r3_base = SharedCreatureObjectTemplate:new {
 	warpTolerance = 17,
 	waterModPercent = 0.5,
 
-	clientObjectCRC = 681918105
+	clientObjectCRC = 681918105,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/creature/npc/base/shared_base_npc.iff", "object/creature/npc/base/shared_base_droid.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_creature_npc_droid_shared_r3_base, "object/creature/npc/droid/shared_r3_base.iff")
@@ -1518,7 +1536,8 @@ object_creature_npc_droid_shared_r4_base = SharedCreatureObjectTemplate:new {
 	warpTolerance = 17,
 	waterModPercent = 0.5,
 
-	clientObjectCRC = 2786425205
+	clientObjectCRC = 2786425205,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/creature/npc/base/shared_base_npc.iff", "object/creature/npc/base/shared_base_droid.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_creature_npc_droid_shared_r4_base, "object/creature/npc/droid/shared_r4_base.iff")
@@ -1596,7 +1615,8 @@ object_creature_npc_droid_shared_r5_base = SharedCreatureObjectTemplate:new {
 	warpTolerance = 17,
 	waterModPercent = 0.5,
 
-	clientObjectCRC = 646306066
+	clientObjectCRC = 646306066,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/creature/npc/base/shared_base_npc.iff", "object/creature/npc/base/shared_base_droid.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_creature_npc_droid_shared_r5_base, "object/creature/npc/droid/shared_r5_base.iff")
@@ -1674,7 +1694,8 @@ object_creature_npc_droid_shared_ra7_bug_droid_base = SharedCreatureObjectTempla
 	warpTolerance = 17,
 	waterModPercent = 0.5,
 
-	clientObjectCRC = 148666614
+	clientObjectCRC = 148666614,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/creature/npc/base/shared_base_npc.iff", "object/creature/npc/base/shared_base_droid.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_creature_npc_droid_shared_ra7_bug_droid_base, "object/creature/npc/droid/shared_ra7_bug_droid_base.iff")
@@ -1752,7 +1773,8 @@ object_creature_npc_droid_shared_red_protocol_base = SharedCreatureObjectTemplat
 	warpTolerance = 17,
 	waterModPercent = 0.5,
 
-	clientObjectCRC = 368181993
+	clientObjectCRC = 368181993,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/creature/npc/base/shared_base_npc.iff", "object/creature/npc/base/shared_base_droid.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_creature_npc_droid_shared_red_protocol_base, "object/creature/npc/droid/shared_red_protocol_base.iff")
@@ -1830,7 +1852,8 @@ object_creature_npc_droid_shared_robo_bartender_base = SharedCreatureObjectTempl
 	warpTolerance = 17,
 	waterModPercent = 0.5,
 
-	clientObjectCRC = 3380886881
+	clientObjectCRC = 3380886881,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/creature/npc/base/shared_base_npc.iff", "object/creature/npc/base/shared_base_droid.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_creature_npc_droid_shared_robo_bartender_base, "object/creature/npc/droid/shared_robo_bartender_base.iff")
@@ -1908,7 +1931,8 @@ object_creature_npc_droid_shared_silver_protocol_base = SharedCreatureObjectTemp
 	warpTolerance = 17,
 	waterModPercent = 0.5,
 
-	clientObjectCRC = 2083758013
+	clientObjectCRC = 2083758013,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/creature/npc/base/shared_base_npc.iff", "object/creature/npc/base/shared_base_droid.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_creature_npc_droid_shared_silver_protocol_base, "object/creature/npc/droid/shared_silver_protocol_base.iff")
@@ -1986,7 +2010,8 @@ object_creature_npc_droid_shared_tt_8l_base = SharedCreatureObjectTemplate:new {
 	warpTolerance = 17,
 	waterModPercent = 0.5,
 
-	clientObjectCRC = 1547923813
+	clientObjectCRC = 1547923813,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/creature/npc/base/shared_base_npc.iff", "object/creature/npc/base/shared_base_droid.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_creature_npc_droid_shared_tt_8l_base, "object/creature/npc/droid/shared_tt_8l_base.iff")
@@ -2064,7 +2089,8 @@ object_creature_npc_droid_shared_tt_8l_y7_base = SharedCreatureObjectTemplate:ne
 	warpTolerance = 17,
 	waterModPercent = 0.5,
 
-	clientObjectCRC = 1384722195
+	clientObjectCRC = 1384722195,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/creature/npc/base/shared_base_npc.iff", "object/creature/npc/base/shared_base_droid.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_creature_npc_droid_shared_tt_8l_y7_base, "object/creature/npc/droid/shared_tt_8l_y7_base.iff")
@@ -2142,7 +2168,8 @@ object_creature_npc_droid_shared_wed_treadwell_base = SharedCreatureObjectTempla
 	warpTolerance = 17,
 	waterModPercent = 0.5,
 
-	clientObjectCRC = 1639908569
+	clientObjectCRC = 1639908569,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/creature/npc/base/shared_base_npc.iff", "object/creature/npc/base/shared_base_droid.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_creature_npc_droid_shared_wed_treadwell_base, "object/creature/npc/droid/shared_wed_treadwell_base.iff")

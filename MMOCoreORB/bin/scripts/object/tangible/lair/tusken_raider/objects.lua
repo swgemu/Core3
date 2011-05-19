@@ -90,7 +90,8 @@ object_tangible_lair_tusken_raider_shared_lair_tusken_raider_npc = SharedTangibl
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2693069296
+	clientObjectCRC = 2693069296,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff", "object/tangible/lair/base/shared_lair_base_hovel.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_tusken_raider_shared_lair_tusken_raider_npc, "object/tangible/lair/tusken_raider/shared_lair_tusken_raider_npc.iff")

@@ -80,7 +80,8 @@ object_static_naboo_shared_waterfall_200m = SharedStaticObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2421347186
+	clientObjectCRC = 2421347186,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/terrain/base/shared_static_terrain_base.iff", "object/static/naboo/shared_waterfall_naboo_theed_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_naboo_shared_waterfall_200m, "object/static/naboo/shared_waterfall_200m.iff")
@@ -124,7 +125,8 @@ object_static_naboo_shared_waterfall_all_thin_forked = SharedStaticObjectTemplat
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2586864352
+	clientObjectCRC = 2586864352,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/terrain/base/shared_static_terrain_base.iff", "object/static/naboo/shared_waterfall_naboo_theed_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_naboo_shared_waterfall_all_thin_forked, "object/static/naboo/shared_waterfall_all_thin_forked.iff")
@@ -168,7 +170,8 @@ object_static_naboo_shared_waterfall_all_wide_short = SharedStaticObjectTemplate
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1454317490
+	clientObjectCRC = 1454317490,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/terrain/base/shared_static_terrain_base.iff", "object/static/naboo/shared_waterfall_naboo_theed_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_naboo_shared_waterfall_all_wide_short, "object/static/naboo/shared_waterfall_all_wide_short.iff")
@@ -212,7 +215,8 @@ object_static_naboo_shared_waterfall_mist_lg = SharedStaticObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 4151923875
+	clientObjectCRC = 4151923875,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/terrain/base/shared_static_terrain_base.iff", "object/static/naboo/shared_waterfall_naboo_theed_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_naboo_shared_waterfall_mist_lg, "object/static/naboo/shared_waterfall_mist_lg.iff")
@@ -256,7 +260,8 @@ object_static_naboo_shared_waterfall_mist_small = SharedStaticObjectTemplate:new
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3240630762
+	clientObjectCRC = 3240630762,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/terrain/base/shared_static_terrain_base.iff", "object/static/naboo/shared_waterfall_naboo_theed_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_naboo_shared_waterfall_mist_small, "object/static/naboo/shared_waterfall_mist_small.iff")
@@ -300,7 +305,8 @@ object_static_naboo_shared_waterfall_naboo_crest_01 = SharedStaticObjectTemplate
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 4101701818
+	clientObjectCRC = 4101701818,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/terrain/base/shared_static_terrain_base.iff", "object/static/naboo/shared_waterfall_naboo_theed_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_naboo_shared_waterfall_naboo_crest_01, "object/static/naboo/shared_waterfall_naboo_crest_01.iff")
@@ -344,7 +350,8 @@ object_static_naboo_shared_waterfall_naboo_falls_01 = SharedStaticObjectTemplate
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 282497930
+	clientObjectCRC = 282497930,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/terrain/base/shared_static_terrain_base.iff", "object/static/naboo/shared_waterfall_naboo_theed_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_naboo_shared_waterfall_naboo_falls_01, "object/static/naboo/shared_waterfall_naboo_falls_01.iff")
@@ -388,7 +395,8 @@ object_static_naboo_shared_waterfall_naboo_hangar = SharedStaticObjectTemplate:n
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 370991757
+	clientObjectCRC = 370991757,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/terrain/base/shared_static_terrain_base.iff", "object/static/naboo/shared_waterfall_naboo_theed_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_naboo_shared_waterfall_naboo_hangar, "object/static/naboo/shared_waterfall_naboo_hangar.iff")
@@ -432,7 +440,8 @@ object_static_naboo_shared_waterfall_naboo_keren = SharedStaticObjectTemplate:ne
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3951584767
+	clientObjectCRC = 3951584767,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/terrain/base/shared_static_terrain_base.iff", "object/static/naboo/shared_waterfall_naboo_theed_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_naboo_shared_waterfall_naboo_keren, "object/static/naboo/shared_waterfall_naboo_keren.iff")
@@ -476,7 +485,8 @@ object_static_naboo_shared_waterfall_naboo_theed_base = SharedStaticObjectTempla
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 4195612510
+	clientObjectCRC = 4195612510,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/terrain/base/shared_static_terrain_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_naboo_shared_waterfall_naboo_theed_base, "object/static/naboo/shared_waterfall_naboo_theed_base.iff")
@@ -520,7 +530,8 @@ object_static_naboo_shared_waterfall_naboo_theed_style_1 = SharedStaticObjectTem
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3625221420
+	clientObjectCRC = 3625221420,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/terrain/base/shared_static_terrain_base.iff", "object/static/naboo/shared_waterfall_naboo_theed_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_naboo_shared_waterfall_naboo_theed_style_1, "object/static/naboo/shared_waterfall_naboo_theed_style_1.iff")
@@ -564,7 +575,8 @@ object_static_naboo_shared_whitewater_6meter = SharedStaticObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 4015665582
+	clientObjectCRC = 4015665582,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/terrain/base/shared_static_terrain_base.iff", "object/static/naboo/shared_waterfall_naboo_theed_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_naboo_shared_whitewater_6meter, "object/static/naboo/shared_whitewater_6meter.iff")

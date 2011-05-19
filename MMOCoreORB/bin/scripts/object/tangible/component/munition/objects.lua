@@ -90,7 +90,8 @@ object_tangible_component_munition_shared_acklay_venom = SharedTangibleObjectTem
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3684259216
+	clientObjectCRC = 3684259216,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/munition/shared_base_munition_enhancer.iff", "object/tangible/component/munition/shared_enhanced_charge_composition.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_munition_shared_acklay_venom, "object/tangible/component/munition/shared_acklay_venom.iff")
@@ -144,7 +145,8 @@ object_tangible_component_munition_shared_ammo_projectile = SharedTangibleObject
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4029895422
+	clientObjectCRC = 4029895422,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_munition_shared_ammo_projectile, "object/tangible/component/munition/shared_ammo_projectile.iff")
@@ -198,7 +200,8 @@ object_tangible_component_munition_shared_ammo_projectile_entanglement = SharedT
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1717162905
+	clientObjectCRC = 1717162905,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_munition_shared_ammo_projectile_entanglement, "object/tangible/component/munition/shared_ammo_projectile_entanglement.iff")
@@ -252,7 +255,8 @@ object_tangible_component_munition_shared_base_munition_enhancer = SharedTangibl
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1098837027
+	clientObjectCRC = 1098837027,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_munition_shared_base_munition_enhancer, "object/tangible/component/munition/shared_base_munition_enhancer.iff")
@@ -306,7 +310,8 @@ object_tangible_component_munition_shared_enhanced_charge_composition = SharedTa
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1739187546
+	clientObjectCRC = 1739187546,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/munition/shared_base_munition_enhancer.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_munition_shared_enhanced_charge_composition, "object/tangible/component/munition/shared_enhanced_charge_composition.iff")
@@ -360,7 +365,8 @@ object_tangible_component_munition_shared_enhanced_charge_shaping = SharedTangib
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 411019932
+	clientObjectCRC = 411019932,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/munition/shared_base_munition_enhancer.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_munition_shared_enhanced_charge_shaping, "object/tangible/component/munition/shared_enhanced_charge_shaping.iff")
@@ -414,7 +420,8 @@ object_tangible_component_munition_shared_enhanced_destructive_pulse_channeling 
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3545355156
+	clientObjectCRC = 3545355156,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/munition/shared_base_munition_enhancer.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_munition_shared_enhanced_destructive_pulse_channeling, "object/tangible/component/munition/shared_enhanced_destructive_pulse_channeling.iff")
@@ -468,7 +475,8 @@ object_tangible_component_munition_shared_enhanced_fragmentation_sleeve = Shared
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 628465189
+	clientObjectCRC = 628465189,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/munition/shared_base_munition_enhancer.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_munition_shared_enhanced_fragmentation_sleeve, "object/tangible/component/munition/shared_enhanced_fragmentation_sleeve.iff")
@@ -522,7 +530,8 @@ object_tangible_component_munition_shared_kliknick_gland = SharedTangibleObjectT
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3311758812
+	clientObjectCRC = 3311758812,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/munition/shared_base_munition_enhancer.iff", "object/tangible/component/munition/shared_enhanced_charge_composition.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_munition_shared_kliknick_gland, "object/tangible/component/munition/shared_kliknick_gland.iff")
@@ -576,7 +585,8 @@ object_tangible_component_munition_shared_warhead_chemical = SharedTangibleObjec
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3966888720
+	clientObjectCRC = 3966888720,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_munition_shared_warhead_chemical, "object/tangible/component/munition/shared_warhead_chemical.iff")
@@ -630,7 +640,8 @@ object_tangible_component_munition_shared_warhead_fusing_mechanism = SharedTangi
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 896289962
+	clientObjectCRC = 896289962,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_munition_shared_warhead_fusing_mechanism, "object/tangible/component/munition/shared_warhead_fusing_mechanism.iff")
@@ -684,7 +695,8 @@ object_tangible_component_munition_shared_warhead_heavy = SharedTangibleObjectTe
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2416425450
+	clientObjectCRC = 2416425450,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_munition_shared_warhead_heavy, "object/tangible/component/munition/shared_warhead_heavy.iff")
@@ -738,7 +750,8 @@ object_tangible_component_munition_shared_warhead_light = SharedTangibleObjectTe
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1365214516
+	clientObjectCRC = 1365214516,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_munition_shared_warhead_light, "object/tangible/component/munition/shared_warhead_light.iff")
@@ -792,7 +805,8 @@ object_tangible_component_munition_shared_warhead_medium = SharedTangibleObjectT
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1284211616
+	clientObjectCRC = 1284211616,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_munition_shared_warhead_medium, "object/tangible/component/munition/shared_warhead_medium.iff")
@@ -846,7 +860,8 @@ object_tangible_component_munition_shared_warhead_stabilizer = SharedTangibleObj
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1000887058
+	clientObjectCRC = 1000887058,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_munition_shared_warhead_stabilizer, "object/tangible/component/munition/shared_warhead_stabilizer.iff")

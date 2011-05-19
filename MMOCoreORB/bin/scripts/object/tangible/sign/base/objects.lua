@@ -90,7 +90,8 @@ object_tangible_sign_base_shared_base_sign = SharedTangibleObjectTemplate:new {
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 675816768
+	clientObjectCRC = 675816768,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_sign_base_shared_base_sign, "object/tangible/sign/base/shared_base_sign.iff")

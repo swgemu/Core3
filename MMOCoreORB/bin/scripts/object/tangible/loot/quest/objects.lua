@@ -90,7 +90,8 @@ object_tangible_loot_quest_shared_2h_sword_scythe_schematic = SharedTangibleObje
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1779384495
+	clientObjectCRC = 1779384495,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_quest_shared_2h_sword_scythe_schematic, "object/tangible/loot/quest/shared_2h_sword_scythe_schematic.iff")
@@ -144,7 +145,8 @@ object_tangible_loot_quest_shared_anakin_helmet = SharedTangibleObjectTemplate:n
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 619337831
+	clientObjectCRC = 619337831,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_hat.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_quest_shared_anakin_helmet, "object/tangible/loot/quest/shared_anakin_helmet.iff")
@@ -198,7 +200,8 @@ object_tangible_loot_quest_shared_ardanium_ii = SharedTangibleObjectTemplate:new
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 144495220
+	clientObjectCRC = 144495220,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_quest_shared_ardanium_ii, "object/tangible/loot/quest/shared_ardanium_ii.iff")
@@ -252,7 +255,8 @@ object_tangible_loot_quest_shared_bantha_doll = SharedTangibleObjectTemplate:new
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3429421231
+	clientObjectCRC = 3429421231,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_quest_shared_bantha_doll, "object/tangible/loot/quest/shared_bantha_doll.iff")
@@ -306,7 +310,8 @@ object_tangible_loot_quest_shared_carved_stone = SharedTangibleObjectTemplate:ne
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1855025689
+	clientObjectCRC = 1855025689,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_quest_shared_carved_stone, "object/tangible/loot/quest/shared_carved_stone.iff")
@@ -360,7 +365,8 @@ object_tangible_loot_quest_shared_crude_stone = SharedTangibleObjectTemplate:new
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1540822606
+	clientObjectCRC = 1540822606,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_quest_shared_crude_stone, "object/tangible/loot/quest/shared_crude_stone.iff")
@@ -414,7 +420,8 @@ object_tangible_loot_quest_shared_droid_brain_anakin = SharedTangibleObjectTempl
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 513781670
+	clientObjectCRC = 513781670,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_quest_shared_droid_brain_anakin, "object/tangible/loot/quest/shared_droid_brain_anakin.iff")
@@ -468,7 +475,8 @@ object_tangible_loot_quest_shared_edb_quest_heirloom_bowl = SharedTangibleObject
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2926434751
+	clientObjectCRC = 2926434751,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_quest_shared_edb_quest_heirloom_bowl, "object/tangible/loot/quest/shared_edb_quest_heirloom_bowl.iff")
@@ -522,7 +530,8 @@ object_tangible_loot_quest_shared_endrine = SharedTangibleObjectTemplate:new {
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 561758267
+	clientObjectCRC = 561758267,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_quest_shared_endrine, "object/tangible/loot/quest/shared_endrine.iff")
@@ -576,7 +585,8 @@ object_tangible_loot_quest_shared_frn_quest_dant_skull_bol_01 = SharedTangibleOb
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3113427386
+	clientObjectCRC = 3113427386,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_quest_shared_frn_quest_dant_skull_bol_01, "object/tangible/loot/quest/shared_frn_quest_dant_skull_bol_01.iff")
@@ -630,7 +640,8 @@ object_tangible_loot_quest_shared_frn_quest_krayt_skull_01 = SharedTangibleObjec
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2961420204
+	clientObjectCRC = 2961420204,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_quest_shared_frn_quest_krayt_skull_01, "object/tangible/loot/quest/shared_frn_quest_krayt_skull_01.iff")
@@ -684,7 +695,8 @@ object_tangible_loot_quest_shared_huff_quest_borvos_money = SharedTangibleObject
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1225123257
+	clientObjectCRC = 1225123257,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_quest_shared_huff_quest_borvos_money, "object/tangible/loot/quest/shared_huff_quest_borvos_money.iff")
@@ -738,7 +750,8 @@ object_tangible_loot_quest_shared_huff_quest_corsec_badge = SharedTangibleObject
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3663409611
+	clientObjectCRC = 3663409611,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_quest_shared_huff_quest_corsec_badge, "object/tangible/loot/quest/shared_huff_quest_corsec_badge.iff")
@@ -792,7 +805,8 @@ object_tangible_loot_quest_shared_huff_quest_top_secret_documents = SharedTangib
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 940267990
+	clientObjectCRC = 940267990,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_quest_shared_huff_quest_top_secret_documents, "object/tangible/loot/quest/shared_huff_quest_top_secret_documents.iff")
@@ -846,7 +860,8 @@ object_tangible_loot_quest_shared_hvy_disruptor_cannon_broken = SharedTangibleOb
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2337201287
+	clientObjectCRC = 2337201287,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_quest_shared_hvy_disruptor_cannon_broken, "object/tangible/loot/quest/shared_hvy_disruptor_cannon_broken.iff")
@@ -900,7 +915,8 @@ object_tangible_loot_quest_shared_lance_nightsister_schematic = SharedTangibleOb
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4063290190
+	clientObjectCRC = 4063290190,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_quest_shared_lance_nightsister_schematic, "object/tangible/loot/quest/shared_lance_nightsister_schematic.iff")
@@ -954,7 +970,8 @@ object_tangible_loot_quest_shared_lifeday_orb = SharedTangibleObjectTemplate:new
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3441146756
+	clientObjectCRC = 3441146756,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_quest_shared_lifeday_orb, "object/tangible/loot/quest/shared_lifeday_orb.iff")
@@ -1008,7 +1025,8 @@ object_tangible_loot_quest_shared_nym_droid_memory_chip = SharedTangibleObjectTe
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2300896857
+	clientObjectCRC = 2300896857,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_quest_shared_nym_droid_memory_chip, "object/tangible/loot/quest/shared_nym_droid_memory_chip.iff")
@@ -1062,7 +1080,8 @@ object_tangible_loot_quest_shared_nym_filtered_gas = SharedTangibleObjectTemplat
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1171264370
+	clientObjectCRC = 1171264370,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_quest_shared_nym_filtered_gas, "object/tangible/loot/quest/shared_nym_filtered_gas.iff")
@@ -1116,7 +1135,8 @@ object_tangible_loot_quest_shared_nym_hard_drive = SharedTangibleObjectTemplate:
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 701926242
+	clientObjectCRC = 701926242,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_quest_shared_nym_hard_drive, "object/tangible/loot/quest/shared_nym_hard_drive.iff")
@@ -1170,7 +1190,8 @@ object_tangible_loot_quest_shared_nym_imggc = SharedTangibleObjectTemplate:new {
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1123957010
+	clientObjectCRC = 1123957010,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_quest_shared_nym_imggc, "object/tangible/loot/quest/shared_nym_imggc.iff")
@@ -1224,7 +1245,8 @@ object_tangible_loot_quest_shared_ostrine = SharedTangibleObjectTemplate:new {
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2924880449
+	clientObjectCRC = 2924880449,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_quest_shared_ostrine, "object/tangible/loot/quest/shared_ostrine.iff")
@@ -1278,7 +1300,8 @@ object_tangible_loot_quest_shared_quest_item_goru_calling_card = SharedTangibleO
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2547815080
+	clientObjectCRC = 2547815080,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_quest_shared_quest_item_goru_calling_card, "object/tangible/loot/quest/shared_quest_item_goru_calling_card.iff")
@@ -1332,7 +1355,8 @@ object_tangible_loot_quest_shared_quest_item_sarlacc_bile_jar = SharedTangibleOb
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3548721475
+	clientObjectCRC = 3548721475,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_quest_shared_quest_item_sarlacc_bile_jar, "object/tangible/loot/quest/shared_quest_item_sarlacc_bile_jar.iff")
@@ -1386,7 +1410,8 @@ object_tangible_loot_quest_shared_quest_item_spice_jar = SharedTangibleObjectTem
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2368845489
+	clientObjectCRC = 2368845489,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_quest_shared_quest_item_spice_jar, "object/tangible/loot/quest/shared_quest_item_spice_jar.iff")
@@ -1440,7 +1465,8 @@ object_tangible_loot_quest_shared_quest_item_zicx_bug_jar = SharedTangibleObject
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2624714198
+	clientObjectCRC = 2624714198,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_quest_shared_quest_item_zicx_bug_jar, "object/tangible/loot/quest/shared_quest_item_zicx_bug_jar.iff")
@@ -1494,7 +1520,8 @@ object_tangible_loot_quest_shared_quest_satchel_charge = SharedTangibleObjectTem
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2224923865
+	clientObjectCRC = 2224923865,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_quest_shared_quest_satchel_charge, "object/tangible/loot/quest/shared_quest_satchel_charge.iff")
@@ -1548,7 +1575,8 @@ object_tangible_loot_quest_shared_quest_stimpack_a_schematic = SharedTangibleObj
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 916480864
+	clientObjectCRC = 916480864,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_quest_shared_quest_stimpack_a_schematic, "object/tangible/loot/quest/shared_quest_stimpack_a_schematic.iff")
@@ -1606,7 +1634,8 @@ object_tangible_loot_quest_shared_rifle_quest_tusken = SharedWeaponObjectTemplat
 	weaponEffect = "projectile_rifle",
 	weaponEffectIndex = 1,
 
-	clientObjectCRC = 1695535287
+	clientObjectCRC = 1695535287,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/weapon/base/shared_base_weapon.iff", "object/weapon/ranged/base/shared_base_ranged_weapon.iff", "object/weapon/ranged/rifle/base/shared_rifle_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_quest_shared_rifle_quest_tusken, "object/tangible/loot/quest/shared_rifle_quest_tusken.iff")
@@ -1660,7 +1689,8 @@ object_tangible_loot_quest_shared_rudic = SharedTangibleObjectTemplate:new {
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 880694768
+	clientObjectCRC = 880694768,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_quest_shared_rudic, "object/tangible/loot/quest/shared_rudic.iff")
@@ -1714,7 +1744,8 @@ object_tangible_loot_quest_shared_schematic_apron_s01_quest = SharedTangibleObje
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1815099947
+	clientObjectCRC = 1815099947,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_quest_shared_schematic_apron_s01_quest, "object/tangible/loot/quest/shared_schematic_apron_s01_quest.iff")
@@ -1768,7 +1799,8 @@ object_tangible_loot_quest_shared_schematic_backpack_s03_quest = SharedTangibleO
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2800706287
+	clientObjectCRC = 2800706287,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_quest_shared_schematic_backpack_s03_quest, "object/tangible/loot/quest/shared_schematic_backpack_s03_quest.iff")
@@ -1822,7 +1854,8 @@ object_tangible_loot_quest_shared_schematic_backpack_s06_quest = SharedTangibleO
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3031620704
+	clientObjectCRC = 3031620704,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_quest_shared_schematic_backpack_s06_quest, "object/tangible/loot/quest/shared_schematic_backpack_s06_quest.iff")
@@ -1876,7 +1909,8 @@ object_tangible_loot_quest_shared_schematic_bandolier_s02_quest = SharedTangible
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2807969436
+	clientObjectCRC = 2807969436,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_quest_shared_schematic_bandolier_s02_quest, "object/tangible/loot/quest/shared_schematic_bandolier_s02_quest.iff")
@@ -1930,7 +1964,8 @@ object_tangible_loot_quest_shared_schematic_bandolier_s04_quest = SharedTangible
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3140951446
+	clientObjectCRC = 3140951446,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_quest_shared_schematic_bandolier_s04_quest, "object/tangible/loot/quest/shared_schematic_bandolier_s04_quest.iff")
@@ -1984,7 +2019,8 @@ object_tangible_loot_quest_shared_schematic_belt_s05_quest = SharedTangibleObjec
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3011414562
+	clientObjectCRC = 3011414562,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_quest_shared_schematic_belt_s05_quest, "object/tangible/loot/quest/shared_schematic_belt_s05_quest.iff")
@@ -2038,7 +2074,8 @@ object_tangible_loot_quest_shared_schematic_carbine_e11_quest = SharedTangibleOb
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3738946257
+	clientObjectCRC = 3738946257,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_quest_shared_schematic_carbine_e11_quest, "object/tangible/loot/quest/shared_schematic_carbine_e11_quest.iff")
@@ -2092,7 +2129,8 @@ object_tangible_loot_quest_shared_schematic_dress_s08_quest = SharedTangibleObje
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4276949463
+	clientObjectCRC = 4276949463,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_quest_shared_schematic_dress_s08_quest, "object/tangible/loot/quest/shared_schematic_dress_s08_quest.iff")
@@ -2146,7 +2184,8 @@ object_tangible_loot_quest_shared_schematic_pistol_fwg5_quest = SharedTangibleOb
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4044312600
+	clientObjectCRC = 4044312600,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_quest_shared_schematic_pistol_fwg5_quest, "object/tangible/loot/quest/shared_schematic_pistol_fwg5_quest.iff")
@@ -2200,7 +2239,8 @@ object_tangible_loot_quest_shared_schematic_republic_blaster_quest = SharedTangi
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3517653342
+	clientObjectCRC = 3517653342,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_quest_shared_schematic_republic_blaster_quest, "object/tangible/loot/quest/shared_schematic_republic_blaster_quest.iff")
@@ -2254,7 +2294,8 @@ object_tangible_loot_quest_shared_sean_campaign_disk = SharedTangibleObjectTempl
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2394816327
+	clientObjectCRC = 2394816327,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_quest_shared_sean_campaign_disk, "object/tangible/loot/quest/shared_sean_campaign_disk.iff")
@@ -2308,7 +2349,8 @@ object_tangible_loot_quest_shared_sean_history_disk = SharedTangibleObjectTempla
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1553800313
+	clientObjectCRC = 1553800313,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_quest_shared_sean_history_disk, "object/tangible/loot/quest/shared_sean_history_disk.iff")
@@ -2362,7 +2404,8 @@ object_tangible_loot_quest_shared_sean_questn_alog = SharedTangibleObjectTemplat
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 560125063
+	clientObjectCRC = 560125063,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_quest_shared_sean_questn_alog, "object/tangible/loot/quest/shared_sean_questn_alog.iff")
@@ -2416,7 +2459,8 @@ object_tangible_loot_quest_shared_sean_questn_gpapers = SharedTangibleObjectTemp
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1604016241
+	clientObjectCRC = 1604016241,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_quest_shared_sean_questn_gpapers, "object/tangible/loot/quest/shared_sean_questn_gpapers.iff")
@@ -2470,7 +2514,8 @@ object_tangible_loot_quest_shared_sean_questn_tdisk = SharedTangibleObjectTempla
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3604298808
+	clientObjectCRC = 3604298808,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_quest_shared_sean_questn_tdisk, "object/tangible/loot/quest/shared_sean_questn_tdisk.iff")
@@ -2524,7 +2569,8 @@ object_tangible_loot_quest_shared_sean_questp_ctestimony = SharedTangibleObjectT
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3591581058
+	clientObjectCRC = 3591581058,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_quest_shared_sean_questp_ctestimony, "object/tangible/loot/quest/shared_sean_questp_ctestimony.iff")
@@ -2578,7 +2624,8 @@ object_tangible_loot_quest_shared_sean_questp_htestimony = SharedTangibleObjectT
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 674706343
+	clientObjectCRC = 674706343,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_quest_shared_sean_questp_htestimony, "object/tangible/loot/quest/shared_sean_questp_htestimony.iff")
@@ -2632,7 +2679,8 @@ object_tangible_loot_quest_shared_sean_questp_mdisk = SharedTangibleObjectTempla
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3743353236
+	clientObjectCRC = 3743353236,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_quest_shared_sean_questp_mdisk, "object/tangible/loot/quest/shared_sean_questp_mdisk.iff")
@@ -2686,7 +2734,8 @@ object_tangible_loot_quest_shared_shellfish_harvester_schematic = SharedTangible
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2894170579
+	clientObjectCRC = 2894170579,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_quest_shared_shellfish_harvester_schematic, "object/tangible/loot/quest/shared_shellfish_harvester_schematic.iff")
@@ -2740,7 +2789,8 @@ object_tangible_loot_quest_shared_shield_generator_personal_imperial_test_schema
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 856720284
+	clientObjectCRC = 856720284,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_quest_shared_shield_generator_personal_imperial_test_schematic, "object/tangible/loot/quest/shared_shield_generator_personal_imperial_test_schematic.iff")
@@ -2794,7 +2844,8 @@ object_tangible_loot_quest_shared_smooth_stone = SharedTangibleObjectTemplate:ne
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1409323836
+	clientObjectCRC = 1409323836,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_quest_shared_smooth_stone, "object/tangible/loot/quest/shared_smooth_stone.iff")
@@ -2848,7 +2899,8 @@ object_tangible_loot_quest_shared_treasure_map_hedon = SharedTangibleObjectTempl
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1380874599
+	clientObjectCRC = 1380874599,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_quest_shared_treasure_map_hedon, "object/tangible/loot/quest/shared_treasure_map_hedon.iff")
@@ -2902,7 +2954,8 @@ object_tangible_loot_quest_shared_tusken_head = SharedTangibleObjectTemplate:new
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2221778773
+	clientObjectCRC = 2221778773,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_quest_shared_tusken_head, "object/tangible/loot/quest/shared_tusken_head.iff")
@@ -2956,7 +3009,8 @@ object_tangible_loot_quest_shared_valarian_dagger = SharedTangibleObjectTemplate
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2259444048
+	clientObjectCRC = 2259444048,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_quest_shared_valarian_dagger, "object/tangible/loot/quest/shared_valarian_dagger.iff")
@@ -3010,7 +3064,8 @@ object_tangible_loot_quest_shared_victor_campaign_disk = SharedTangibleObjectTem
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1885312788
+	clientObjectCRC = 1885312788,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_quest_shared_victor_campaign_disk, "object/tangible/loot/quest/shared_victor_campaign_disk.iff")
@@ -3064,7 +3119,8 @@ object_tangible_loot_quest_shared_victor_questn_dseal = SharedTangibleObjectTemp
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1528043292
+	clientObjectCRC = 1528043292,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_quest_shared_victor_questn_dseal, "object/tangible/loot/quest/shared_victor_questn_dseal.iff")
@@ -3118,7 +3174,8 @@ object_tangible_loot_quest_shared_victor_questn_hlist = SharedTangibleObjectTemp
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3882415492
+	clientObjectCRC = 3882415492,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_quest_shared_victor_questn_hlist, "object/tangible/loot/quest/shared_victor_questn_hlist.iff")
@@ -3172,7 +3229,8 @@ object_tangible_loot_quest_shared_victor_questn_journal = SharedTangibleObjectTe
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 367939380
+	clientObjectCRC = 367939380,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_quest_shared_victor_questn_journal, "object/tangible/loot/quest/shared_victor_questn_journal.iff")
@@ -3226,7 +3284,8 @@ object_tangible_loot_quest_shared_victor_questp_jregistry = SharedTangibleObject
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1576962769
+	clientObjectCRC = 1576962769,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_quest_shared_victor_questp_jregistry, "object/tangible/loot/quest/shared_victor_questp_jregistry.iff")
@@ -3280,7 +3339,8 @@ object_tangible_loot_quest_shared_victor_questp_receipt = SharedTangibleObjectTe
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1884397294
+	clientObjectCRC = 1884397294,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_quest_shared_victor_questp_receipt, "object/tangible/loot/quest/shared_victor_questp_receipt.iff")
@@ -3334,7 +3394,8 @@ object_tangible_loot_quest_shared_victor_questp_testimony = SharedTangibleObject
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1434128341
+	clientObjectCRC = 1434128341,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_quest_shared_victor_questp_testimony, "object/tangible/loot/quest/shared_victor_questp_testimony.iff")
@@ -3388,7 +3449,8 @@ object_tangible_loot_quest_shared_wind_crystal = SharedTangibleObjectTemplate:ne
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1481000655
+	clientObjectCRC = 1481000655,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_quest_shared_wind_crystal, "object/tangible/loot/quest/shared_wind_crystal.iff")

@@ -80,7 +80,8 @@ object_group_base_shared_base_group = SharedGroupObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2283159762
+	clientObjectCRC = 2283159762,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/universe/base/shared_base_universe.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_group_base_shared_base_group, "object/group/base/shared_base_group.iff")
@@ -124,7 +125,8 @@ object_group_base_shared_group_default = SharedGroupObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3581093559
+	clientObjectCRC = 3581093559,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/universe/base/shared_base_universe.iff", "object/group/base/shared_base_group.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_group_base_shared_group_default, "object/group/base/shared_group_default.iff")

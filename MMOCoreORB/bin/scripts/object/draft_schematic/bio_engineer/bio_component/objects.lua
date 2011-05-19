@@ -80,7 +80,8 @@ object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2925842
+	clientObjectCRC = 2925842,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_casual_charisma, "object/draft_schematic/bio_engineer/bio_component/shared_bio_component_clothing_casual_charisma.iff")
@@ -124,7 +125,8 @@ object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3961130234
+	clientObjectCRC = 3961130234,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_casual_charisma_2, "object/draft_schematic/bio_engineer/bio_component/shared_bio_component_clothing_casual_charisma_2.iff")
@@ -168,7 +170,8 @@ object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 768952240
+	clientObjectCRC = 768952240,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_casual_entertainer, "object/draft_schematic/bio_engineer/bio_component/shared_bio_component_clothing_casual_entertainer.iff")
@@ -212,7 +215,8 @@ object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2552206589
+	clientObjectCRC = 2552206589,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_casual_entertainer_2, "object/draft_schematic/bio_engineer/bio_component/shared_bio_component_clothing_casual_entertainer_2.iff")
@@ -256,7 +260,8 @@ object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1589090972
+	clientObjectCRC = 1589090972,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_casual_medic, "object/draft_schematic/bio_engineer/bio_component/shared_bio_component_clothing_casual_medic.iff")
@@ -300,7 +305,8 @@ object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3813406638
+	clientObjectCRC = 3813406638,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_casual_medic_2, "object/draft_schematic/bio_engineer/bio_component/shared_bio_component_clothing_casual_medic_2.iff")
@@ -344,7 +350,8 @@ object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1620152707
+	clientObjectCRC = 1620152707,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_casual_taming, "object/draft_schematic/bio_engineer/bio_component/shared_bio_component_clothing_casual_taming.iff")
@@ -388,7 +395,8 @@ object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 899505469
+	clientObjectCRC = 899505469,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_casual_taming_2, "object/draft_schematic/bio_engineer/bio_component/shared_bio_component_clothing_casual_taming_2.iff")
@@ -432,7 +440,8 @@ object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2024699150
+	clientObjectCRC = 2024699150,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_casual_training, "object/draft_schematic/bio_engineer/bio_component/shared_bio_component_clothing_casual_training.iff")
@@ -476,7 +485,8 @@ object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2809419089
+	clientObjectCRC = 2809419089,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_casual_training_2, "object/draft_schematic/bio_engineer/bio_component/shared_bio_component_clothing_casual_training_2.iff")
@@ -520,7 +530,8 @@ object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2665358309
+	clientObjectCRC = 2665358309,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_field_armor, "object/draft_schematic/bio_engineer/bio_component/shared_bio_component_clothing_field_armor.iff")
@@ -564,7 +575,8 @@ object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 395605474
+	clientObjectCRC = 395605474,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_field_armor_2, "object/draft_schematic/bio_engineer/bio_component/shared_bio_component_clothing_field_armor_2.iff")
@@ -608,7 +620,8 @@ object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1070501512
+	clientObjectCRC = 1070501512,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_field_bleeding, "object/draft_schematic/bio_engineer/bio_component/shared_bio_component_clothing_field_bleeding.iff")
@@ -652,7 +665,8 @@ object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2262729200
+	clientObjectCRC = 2262729200,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_field_bleeding_2, "object/draft_schematic/bio_engineer/bio_component/shared_bio_component_clothing_field_bleeding_2.iff")
@@ -696,7 +710,8 @@ object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3361810650
+	clientObjectCRC = 3361810650,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_field_camo, "object/draft_schematic/bio_engineer/bio_component/shared_bio_component_clothing_field_camo.iff")
@@ -740,7 +755,8 @@ object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 756747736
+	clientObjectCRC = 756747736,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_field_camo_2, "object/draft_schematic/bio_engineer/bio_component/shared_bio_component_clothing_field_camo_2.iff")
@@ -784,7 +800,8 @@ object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2635065111
+	clientObjectCRC = 2635065111,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_field_cover, "object/draft_schematic/bio_engineer/bio_component/shared_bio_component_clothing_field_cover.iff")
@@ -828,7 +845,8 @@ object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3034020975
+	clientObjectCRC = 3034020975,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_field_cover_2, "object/draft_schematic/bio_engineer/bio_component/shared_bio_component_clothing_field_cover_2.iff")
@@ -872,7 +890,8 @@ object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1421353901
+	clientObjectCRC = 1421353901,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_field_defense, "object/draft_schematic/bio_engineer/bio_component/shared_bio_component_clothing_field_defense.iff")
@@ -916,7 +935,8 @@ object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1217369934
+	clientObjectCRC = 1217369934,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_field_defense_2, "object/draft_schematic/bio_engineer/bio_component/shared_bio_component_clothing_field_defense_2.iff")
@@ -960,7 +980,8 @@ object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1549050933
+	clientObjectCRC = 1549050933,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_field_intimidate, "object/draft_schematic/bio_engineer/bio_component/shared_bio_component_clothing_field_intimidate.iff")
@@ -1004,7 +1025,8 @@ object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3053086977
+	clientObjectCRC = 3053086977,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_field_intimidate_2, "object/draft_schematic/bio_engineer/bio_component/shared_bio_component_clothing_field_intimidate_2.iff")
@@ -1048,7 +1070,8 @@ object_draft_schematic_bio_engineer_bio_component_shared_bio_component_food_heav
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 295650264
+	clientObjectCRC = 295650264,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_bio_component_shared_bio_component_food_heavy_filling, "object/draft_schematic/bio_engineer/bio_component/shared_bio_component_food_heavy_filling.iff")
@@ -1092,7 +1115,8 @@ object_draft_schematic_bio_engineer_bio_component_shared_bio_component_food_heav
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 4077000315
+	clientObjectCRC = 4077000315,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_bio_component_shared_bio_component_food_heavy_flavor, "object/draft_schematic/bio_engineer/bio_component/shared_bio_component_food_heavy_flavor.iff")
@@ -1136,7 +1160,8 @@ object_draft_schematic_bio_engineer_bio_component_shared_bio_component_food_heav
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 463434519
+	clientObjectCRC = 463434519,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_bio_component_shared_bio_component_food_heavy_nutrition, "object/draft_schematic/bio_engineer/bio_component/shared_bio_component_food_heavy_nutrition.iff")
@@ -1180,7 +1205,8 @@ object_draft_schematic_bio_engineer_bio_component_shared_bio_component_food_heav
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3722871954
+	clientObjectCRC = 3722871954,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_bio_component_shared_bio_component_food_heavy_quantity, "object/draft_schematic/bio_engineer/bio_component/shared_bio_component_food_heavy_quantity.iff")
@@ -1224,7 +1250,8 @@ object_draft_schematic_bio_engineer_bio_component_shared_bio_component_food_ligh
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2624931359
+	clientObjectCRC = 2624931359,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_bio_component_shared_bio_component_food_light_filling, "object/draft_schematic/bio_engineer/bio_component/shared_bio_component_food_light_filling.iff")
@@ -1268,7 +1295,8 @@ object_draft_schematic_bio_engineer_bio_component_shared_bio_component_food_ligh
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3804703928
+	clientObjectCRC = 3804703928,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_bio_component_shared_bio_component_food_light_flavor, "object/draft_schematic/bio_engineer/bio_component/shared_bio_component_food_light_flavor.iff")
@@ -1312,7 +1340,8 @@ object_draft_schematic_bio_engineer_bio_component_shared_bio_component_food_ligh
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1803745287
+	clientObjectCRC = 1803745287,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_bio_component_shared_bio_component_food_light_nutrition, "object/draft_schematic/bio_engineer/bio_component/shared_bio_component_food_light_nutrition.iff")
@@ -1356,7 +1385,8 @@ object_draft_schematic_bio_engineer_bio_component_shared_bio_component_food_ligh
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1864508847
+	clientObjectCRC = 1864508847,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_bio_component_shared_bio_component_food_light_quantity, "object/draft_schematic/bio_engineer/bio_component/shared_bio_component_food_light_quantity.iff")
@@ -1400,7 +1430,8 @@ object_draft_schematic_bio_engineer_bio_component_shared_bio_component_food_medi
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 903570077
+	clientObjectCRC = 903570077,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_bio_component_shared_bio_component_food_medium_filling, "object/draft_schematic/bio_engineer/bio_component/shared_bio_component_food_medium_filling.iff")
@@ -1444,7 +1475,8 @@ object_draft_schematic_bio_engineer_bio_component_shared_bio_component_food_medi
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 929619132
+	clientObjectCRC = 929619132,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_bio_component_shared_bio_component_food_medium_flavor, "object/draft_schematic/bio_engineer/bio_component/shared_bio_component_food_medium_flavor.iff")
@@ -1488,7 +1520,8 @@ object_draft_schematic_bio_engineer_bio_component_shared_bio_component_food_medi
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2027905587
+	clientObjectCRC = 2027905587,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_bio_component_shared_bio_component_food_medium_nutrition, "object/draft_schematic/bio_engineer/bio_component/shared_bio_component_food_medium_nutrition.iff")
@@ -1532,7 +1565,8 @@ object_draft_schematic_bio_engineer_bio_component_shared_bio_component_food_medi
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 316670382
+	clientObjectCRC = 316670382,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_bio_component_shared_bio_component_food_medium_quantity, "object/draft_schematic/bio_engineer/bio_component/shared_bio_component_food_medium_quantity.iff")

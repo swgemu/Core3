@@ -114,7 +114,8 @@ object_creature_player_shared_bothan_female = SharedCreatureObjectTemplate:new {
 	warpTolerance = 17,
 	waterModPercent = 0.75,
 
-	clientObjectCRC = 491942670
+	clientObjectCRC = 491942670,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/creature/player/base/shared_base_player.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_creature_player_shared_bothan_female, "object/creature/player/shared_bothan_female.iff")
@@ -192,7 +193,8 @@ object_creature_player_shared_bothan_male = SharedCreatureObjectTemplate:new {
 	warpTolerance = 17,
 	waterModPercent = 0.75,
 
-	clientObjectCRC = 1542946611
+	clientObjectCRC = 1542946611,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/creature/player/base/shared_base_player.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_creature_player_shared_bothan_male, "object/creature/player/shared_bothan_male.iff")
@@ -270,7 +272,8 @@ object_creature_player_shared_human_female = SharedCreatureObjectTemplate:new {
 	warpTolerance = 17,
 	waterModPercent = 0.75,
 
-	clientObjectCRC = 4294949865
+	clientObjectCRC = 4294949865,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/creature/player/base/shared_base_player.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_creature_player_shared_human_female, "object/creature/player/shared_human_female.iff")
@@ -348,7 +351,8 @@ object_creature_player_shared_human_male = SharedCreatureObjectTemplate:new {
 	warpTolerance = 17,
 	waterModPercent = 0.75,
 
-	clientObjectCRC = 2937962913
+	clientObjectCRC = 2937962913,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/creature/player/base/shared_base_player.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_creature_player_shared_human_male, "object/creature/player/shared_human_male.iff")
@@ -426,7 +430,8 @@ object_creature_player_shared_ithorian_female = SharedCreatureObjectTemplate:new
 	warpTolerance = 17,
 	waterModPercent = 0.75,
 
-	clientObjectCRC = 3017834515
+	clientObjectCRC = 3017834515,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/creature/player/base/shared_base_player.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_creature_player_shared_ithorian_female, "object/creature/player/shared_ithorian_female.iff")
@@ -504,7 +509,8 @@ object_creature_player_shared_ithorian_male = SharedCreatureObjectTemplate:new {
 	warpTolerance = 17,
 	waterModPercent = 0.75,
 
-	clientObjectCRC = 951764932
+	clientObjectCRC = 951764932,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/creature/player/base/shared_base_player.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_creature_player_shared_ithorian_male, "object/creature/player/shared_ithorian_male.iff")
@@ -582,7 +588,8 @@ object_creature_player_shared_moncal_female = SharedCreatureObjectTemplate:new {
 	warpTolerance = 17,
 	waterModPercent = 0.75,
 
-	clientObjectCRC = 2553266142
+	clientObjectCRC = 2553266142,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/creature/player/base/shared_base_player.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_creature_player_shared_moncal_female, "object/creature/player/shared_moncal_female.iff")
@@ -660,7 +667,8 @@ object_creature_player_shared_moncal_male = SharedCreatureObjectTemplate:new {
 	warpTolerance = 17,
 	waterModPercent = 0.75,
 
-	clientObjectCRC = 3116914088
+	clientObjectCRC = 3116914088,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/creature/player/base/shared_base_player.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_creature_player_shared_moncal_male, "object/creature/player/shared_moncal_male.iff")
@@ -738,7 +746,8 @@ object_creature_player_shared_rodian_female = SharedCreatureObjectTemplate:new {
 	warpTolerance = 17,
 	waterModPercent = 0.75,
 
-	clientObjectCRC = 3261342811
+	clientObjectCRC = 3261342811,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/creature/player/base/shared_base_player.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_creature_player_shared_rodian_female, "object/creature/player/shared_rodian_female.iff")
@@ -816,7 +825,8 @@ object_creature_player_shared_rodian_male = SharedCreatureObjectTemplate:new {
 	warpTolerance = 17,
 	waterModPercent = 0.75,
 
-	clientObjectCRC = 200920476
+	clientObjectCRC = 200920476,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/creature/player/base/shared_base_player.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_creature_player_shared_rodian_male, "object/creature/player/shared_rodian_male.iff")
@@ -894,7 +904,8 @@ object_creature_player_shared_sullustan_female = SharedCreatureObjectTemplate:ne
 	warpTolerance = 17,
 	waterModPercent = 0.75,
 
-	clientObjectCRC = 359871514
+	clientObjectCRC = 359871514,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/creature/player/base/shared_base_player.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_creature_player_shared_sullustan_female, "object/creature/player/shared_sullustan_female.iff")
@@ -972,7 +983,8 @@ object_creature_player_shared_sullustan_male = SharedCreatureObjectTemplate:new 
 	warpTolerance = 17,
 	waterModPercent = 0.75,
 
-	clientObjectCRC = 194222500
+	clientObjectCRC = 194222500,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/creature/player/base/shared_base_player.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_creature_player_shared_sullustan_male, "object/creature/player/shared_sullustan_male.iff")
@@ -1050,7 +1062,8 @@ object_creature_player_shared_trandoshan_female = SharedCreatureObjectTemplate:n
 	warpTolerance = 17,
 	waterModPercent = 0.75,
 
-	clientObjectCRC = 406594758
+	clientObjectCRC = 406594758,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/creature/player/base/shared_base_player.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_creature_player_shared_trandoshan_female, "object/creature/player/shared_trandoshan_female.iff")
@@ -1128,7 +1141,8 @@ object_creature_player_shared_trandoshan_male = SharedCreatureObjectTemplate:new
 	warpTolerance = 17,
 	waterModPercent = 0.75,
 
-	clientObjectCRC = 1355045775
+	clientObjectCRC = 1355045775,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/creature/player/base/shared_base_player.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_creature_player_shared_trandoshan_male, "object/creature/player/shared_trandoshan_male.iff")
@@ -1206,7 +1220,8 @@ object_creature_player_shared_twilek_female = SharedCreatureObjectTemplate:new {
 	warpTolerance = 17,
 	waterModPercent = 0.75,
 
-	clientObjectCRC = 2224509660
+	clientObjectCRC = 2224509660,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/creature/player/base/shared_base_player.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_creature_player_shared_twilek_female, "object/creature/player/shared_twilek_female.iff")
@@ -1284,7 +1299,8 @@ object_creature_player_shared_twilek_male = SharedCreatureObjectTemplate:new {
 	warpTolerance = 17,
 	waterModPercent = 0.75,
 
-	clientObjectCRC = 4068532859
+	clientObjectCRC = 4068532859,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/creature/player/base/shared_base_player.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_creature_player_shared_twilek_male, "object/creature/player/shared_twilek_male.iff")
@@ -1362,7 +1378,8 @@ object_creature_player_shared_wookiee_female = SharedCreatureObjectTemplate:new 
 	warpTolerance = 17,
 	waterModPercent = 0.75,
 
-	clientObjectCRC = 229336546
+	clientObjectCRC = 229336546,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/creature/player/base/shared_base_player.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_creature_player_shared_wookiee_female, "object/creature/player/shared_wookiee_female.iff")
@@ -1440,7 +1457,8 @@ object_creature_player_shared_wookiee_male = SharedCreatureObjectTemplate:new {
 	warpTolerance = 17,
 	waterModPercent = 0.75,
 
-	clientObjectCRC = 90470685
+	clientObjectCRC = 90470685,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/creature/player/base/shared_base_player.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_creature_player_shared_wookiee_male, "object/creature/player/shared_wookiee_male.iff")
@@ -1518,7 +1536,8 @@ object_creature_player_shared_zabrak_female = SharedCreatureObjectTemplate:new {
 	warpTolerance = 17,
 	waterModPercent = 0.75,
 
-	clientObjectCRC = 2850250749
+	clientObjectCRC = 2850250749,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/creature/player/base/shared_base_player.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_creature_player_shared_zabrak_female, "object/creature/player/shared_zabrak_female.iff")
@@ -1596,7 +1615,8 @@ object_creature_player_shared_zabrak_male = SharedCreatureObjectTemplate:new {
 	warpTolerance = 17,
 	waterModPercent = 0.75,
 
-	clientObjectCRC = 3791955286
+	clientObjectCRC = 3791955286,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/creature/player/base/shared_base_player.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_creature_player_shared_zabrak_male, "object/creature/player/shared_zabrak_male.iff")

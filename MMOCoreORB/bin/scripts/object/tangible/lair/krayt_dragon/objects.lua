@@ -90,7 +90,8 @@ object_tangible_lair_krayt_dragon_shared_lair_krayt_dragon = SharedTangibleObjec
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 131974925
+	clientObjectCRC = 131974925,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff", "object/tangible/lair/base/shared_lair_base_rancor_light.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_krayt_dragon_shared_lair_krayt_dragon, "object/tangible/lair/krayt_dragon/shared_lair_krayt_dragon.iff")
@@ -144,7 +145,8 @@ object_tangible_lair_krayt_dragon_shared_lair_krayt_dragon_desert = SharedTangib
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3458672072
+	clientObjectCRC = 3458672072,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff", "object/tangible/lair/base/shared_lair_base_rancor_light.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_krayt_dragon_shared_lair_krayt_dragon_desert, "object/tangible/lair/krayt_dragon/shared_lair_krayt_dragon_desert.iff")
@@ -198,7 +200,8 @@ object_tangible_lair_krayt_dragon_shared_lair_krayt_dragon_wasteland = SharedTan
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2174313207
+	clientObjectCRC = 2174313207,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff", "object/tangible/lair/base/shared_lair_base_rancor_light.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_krayt_dragon_shared_lair_krayt_dragon_wasteland, "object/tangible/lair/krayt_dragon/shared_lair_krayt_dragon_wasteland.iff")

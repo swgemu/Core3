@@ -114,7 +114,8 @@ object_creature_base_shared_base_creature = SharedCreatureObjectTemplate:new {
 	warpTolerance = 17,
 	waterModPercent = 0.75,
 
-	clientObjectCRC = 697154328
+	clientObjectCRC = 697154328,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_creature_base_shared_base_creature, "object/creature/base/shared_base_creature.iff")
@@ -192,7 +193,8 @@ object_creature_base_shared_creature_default = SharedCreatureObjectTemplate:new 
 	warpTolerance = 17,
 	waterModPercent = 0.75,
 
-	clientObjectCRC = 937448992
+	clientObjectCRC = 937448992,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_creature_base_shared_creature_default, "object/creature/base/shared_creature_default.iff")

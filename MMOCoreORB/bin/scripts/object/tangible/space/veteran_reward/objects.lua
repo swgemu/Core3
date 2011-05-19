@@ -90,7 +90,8 @@ object_tangible_space_veteran_reward_shared_sorosuub_space_yacht_deed = SharedTa
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2280159140
+	clientObjectCRC = 2280159140,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_space_veteran_reward_shared_sorosuub_space_yacht_deed, "object/tangible/space/veteran_reward/shared_sorosuub_space_yacht_deed.iff")

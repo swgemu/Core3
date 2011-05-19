@@ -90,7 +90,8 @@ object_tangible_lair_thune_shared_lair_thune = SharedTangibleObjectTemplate:new 
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 827416388
+	clientObjectCRC = 827416388,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_thune_shared_lair_thune, "object/tangible/lair/thune/shared_lair_thune.iff")
@@ -144,7 +145,8 @@ object_tangible_lair_thune_shared_lair_thune_grassland = SharedTangibleObjectTem
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4176654445
+	clientObjectCRC = 4176654445,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_thune_shared_lair_thune_grassland, "object/tangible/lair/thune/shared_lair_thune_grassland.iff")

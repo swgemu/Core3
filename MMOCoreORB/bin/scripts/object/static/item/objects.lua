@@ -80,7 +80,8 @@ object_static_item_shared_armor_bone_bicep_left = SharedStaticObjectTemplate:new
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1899025413
+	clientObjectCRC = 1899025413,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_armor_bone_bicep_left, "object/static/item/shared_armor_bone_bicep_left.iff")
@@ -124,7 +125,8 @@ object_static_item_shared_armor_bone_bicep_right = SharedStaticObjectTemplate:ne
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 41670550
+	clientObjectCRC = 41670550,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_armor_bone_bicep_right, "object/static/item/shared_armor_bone_bicep_right.iff")
@@ -168,7 +170,8 @@ object_static_item_shared_armor_bone_boots = SharedStaticObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 382834978
+	clientObjectCRC = 382834978,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_armor_bone_boots, "object/static/item/shared_armor_bone_boots.iff")
@@ -212,7 +215,8 @@ object_static_item_shared_armor_bone_bracer_left = SharedStaticObjectTemplate:ne
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2196134634
+	clientObjectCRC = 2196134634,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_armor_bone_bracer_left, "object/static/item/shared_armor_bone_bracer_left.iff")
@@ -256,7 +260,8 @@ object_static_item_shared_armor_bone_bracer_right = SharedStaticObjectTemplate:n
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1343152966
+	clientObjectCRC = 1343152966,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_armor_bone_bracer_right, "object/static/item/shared_armor_bone_bracer_right.iff")
@@ -300,7 +305,8 @@ object_static_item_shared_armor_bone_chestplate = SharedStaticObjectTemplate:new
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1633683478
+	clientObjectCRC = 1633683478,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_armor_bone_chestplate, "object/static/item/shared_armor_bone_chestplate.iff")
@@ -344,7 +350,8 @@ object_static_item_shared_armor_bone_helmet = SharedStaticObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3066229216
+	clientObjectCRC = 3066229216,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_armor_bone_helmet, "object/static/item/shared_armor_bone_helmet.iff")
@@ -388,7 +395,8 @@ object_static_item_shared_armor_bone_leggings = SharedStaticObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 140815738
+	clientObjectCRC = 140815738,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_armor_bone_leggings, "object/static/item/shared_armor_bone_leggings.iff")
@@ -432,7 +440,8 @@ object_static_item_shared_armor_chitin_chestplate = SharedStaticObjectTemplate:n
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1343017016
+	clientObjectCRC = 1343017016,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_armor_chitin_chestplate, "object/static/item/shared_armor_chitin_chestplate.iff")
@@ -476,7 +485,8 @@ object_static_item_shared_armor_chitin_helmet = SharedStaticObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3642120486
+	clientObjectCRC = 3642120486,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_armor_chitin_helmet, "object/static/item/shared_armor_chitin_helmet.iff")
@@ -520,7 +530,8 @@ object_static_item_shared_armor_composite_chestplate = SharedStaticObjectTemplat
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 94582139
+	clientObjectCRC = 94582139,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_armor_composite_chestplate, "object/static/item/shared_armor_composite_chestplate.iff")
@@ -564,7 +575,8 @@ object_static_item_shared_armor_composite_helmet = SharedStaticObjectTemplate:ne
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3193810957
+	clientObjectCRC = 3193810957,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_armor_composite_helmet, "object/static/item/shared_armor_composite_helmet.iff")
@@ -608,7 +620,8 @@ object_static_item_shared_armor_imp_chestplate = SharedStaticObjectTemplate:new 
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1320875919
+	clientObjectCRC = 1320875919,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_armor_imp_chestplate, "object/static/item/shared_armor_imp_chestplate.iff")
@@ -652,7 +665,8 @@ object_static_item_shared_armor_imp_helmet = SharedStaticObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2794536831
+	clientObjectCRC = 2794536831,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_armor_imp_helmet, "object/static/item/shared_armor_imp_helmet.iff")
@@ -696,7 +710,8 @@ object_static_item_shared_armor_imp_leggings = SharedStaticObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2742991799
+	clientObjectCRC = 2742991799,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_armor_imp_leggings, "object/static/item/shared_armor_imp_leggings.iff")
@@ -740,7 +755,8 @@ object_static_item_shared_armor_padded_chestplate = SharedStaticObjectTemplate:n
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1633324476
+	clientObjectCRC = 1633324476,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_armor_padded_chestplate, "object/static/item/shared_armor_padded_chestplate.iff")
@@ -784,7 +800,8 @@ object_static_item_shared_armor_padded_helmet = SharedStaticObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 809863082
+	clientObjectCRC = 809863082,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_armor_padded_helmet, "object/static/item/shared_armor_padded_helmet.iff")
@@ -828,7 +845,8 @@ object_static_item_shared_item_ammo_rocket = SharedStaticObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 4170506744
+	clientObjectCRC = 4170506744,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_item_ammo_rocket, "object/static/item/shared_item_ammo_rocket.iff")
@@ -872,7 +890,8 @@ object_static_item_shared_item_atat_lifesupport_pack = SharedStaticObjectTemplat
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 570042739
+	clientObjectCRC = 570042739,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_item_atat_lifesupport_pack, "object/static/item/shared_item_atat_lifesupport_pack.iff")
@@ -916,7 +935,8 @@ object_static_item_shared_item_axe = SharedStaticObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 109834402
+	clientObjectCRC = 109834402,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_item_axe, "object/static/item/shared_item_axe.iff")
@@ -960,7 +980,8 @@ object_static_item_shared_item_bacta_ampules = SharedStaticObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 568915597
+	clientObjectCRC = 568915597,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_item_bacta_ampules, "object/static/item/shared_item_bacta_ampules.iff")
@@ -1004,7 +1025,8 @@ object_static_item_shared_item_base = SharedStaticObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 377921986
+	clientObjectCRC = 377921986,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_item_base, "object/static/item/shared_item_base.iff")
@@ -1048,7 +1070,8 @@ object_static_item_shared_item_basket_closed = SharedStaticObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2195165289
+	clientObjectCRC = 2195165289,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_item_basket_closed, "object/static/item/shared_item_basket_closed.iff")
@@ -1092,7 +1115,8 @@ object_static_item_shared_item_basket_frame = SharedStaticObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2018770690
+	clientObjectCRC = 2018770690,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_item_basket_frame, "object/static/item/shared_item_basket_frame.iff")
@@ -1136,7 +1160,8 @@ object_static_item_shared_item_basket_shallow = SharedStaticObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3461086095
+	clientObjectCRC = 3461086095,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_item_basket_shallow, "object/static/item/shared_item_basket_shallow.iff")
@@ -1180,7 +1205,8 @@ object_static_item_shared_item_binoculars = SharedStaticObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2258606562
+	clientObjectCRC = 2258606562,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_item_binoculars, "object/static/item/shared_item_binoculars.iff")
@@ -1224,7 +1250,8 @@ object_static_item_shared_item_bottle_fat = SharedStaticObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3689007977
+	clientObjectCRC = 3689007977,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_item_bottle_fat, "object/static/item/shared_item_bottle_fat.iff")
@@ -1268,7 +1295,8 @@ object_static_item_shared_item_bottle_pear = SharedStaticObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1981667646
+	clientObjectCRC = 1981667646,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_item_bottle_pear, "object/static/item/shared_item_bottle_pear.iff")
@@ -1312,7 +1340,8 @@ object_static_item_shared_item_bottle_tall = SharedStaticObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 4225375385
+	clientObjectCRC = 4225375385,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_item_bottle_tall, "object/static/item/shared_item_bottle_tall.iff")
@@ -1356,7 +1385,8 @@ object_static_item_shared_item_bowl_carved = SharedStaticObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3068941566
+	clientObjectCRC = 3068941566,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_item_bowl_carved, "object/static/item/shared_item_bowl_carved.iff")
@@ -1400,7 +1430,8 @@ object_static_item_shared_item_bowl_plain = SharedStaticObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 107185491
+	clientObjectCRC = 107185491,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_item_bowl_plain, "object/static/item/shared_item_bowl_plain.iff")
@@ -1444,7 +1475,8 @@ object_static_item_shared_item_bowl_shallow = SharedStaticObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1053398824
+	clientObjectCRC = 1053398824,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_item_bowl_shallow, "object/static/item/shared_item_bowl_shallow.iff")
@@ -1488,7 +1520,8 @@ object_static_item_shared_item_bread_loaf = SharedStaticObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3680189690
+	clientObjectCRC = 3680189690,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_item_bread_loaf, "object/static/item/shared_item_bread_loaf.iff")
@@ -1532,7 +1565,8 @@ object_static_item_shared_item_briefcase = SharedStaticObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3247183112
+	clientObjectCRC = 3247183112,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_item_briefcase, "object/static/item/shared_item_briefcase.iff")
@@ -1576,7 +1610,8 @@ object_static_item_shared_item_cage_bamboo = SharedStaticObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2462334330
+	clientObjectCRC = 2462334330,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_item_cage_bamboo, "object/static/item/shared_item_cage_bamboo.iff")
@@ -1620,7 +1655,8 @@ object_static_item_shared_item_camera = SharedStaticObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2142034506
+	clientObjectCRC = 2142034506,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_item_camera, "object/static/item/shared_item_camera.iff")
@@ -1664,7 +1700,8 @@ object_static_item_shared_item_carbine_dh17 = SharedStaticObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3137119633
+	clientObjectCRC = 3137119633,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_item_carbine_dh17, "object/static/item/shared_item_carbine_dh17.iff")
@@ -1708,7 +1745,8 @@ object_static_item_shared_item_carbine_elite = SharedStaticObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1473664410
+	clientObjectCRC = 1473664410,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_item_carbine_elite, "object/static/item/shared_item_carbine_elite.iff")
@@ -1752,7 +1790,8 @@ object_static_item_shared_item_carbine_imperial_e11 = SharedStaticObjectTemplate
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1397773079
+	clientObjectCRC = 1397773079,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_item_carbine_imperial_e11, "object/static/item/shared_item_carbine_imperial_e11.iff")
@@ -1796,7 +1835,8 @@ object_static_item_shared_item_carbine_laser = SharedStaticObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 272772605
+	clientObjectCRC = 272772605,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_item_carbine_laser, "object/static/item/shared_item_carbine_laser.iff")
@@ -1840,7 +1880,8 @@ object_static_item_shared_item_chair_cafe_s01 = SharedStaticObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1148404776
+	clientObjectCRC = 1148404776,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_item_chair_cafe_s01, "object/static/item/shared_item_chair_cafe_s01.iff")
@@ -1884,7 +1925,8 @@ object_static_item_shared_item_chair_cafe_s02 = SharedStaticObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2674191551
+	clientObjectCRC = 2674191551,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_item_chair_cafe_s02, "object/static/item/shared_item_chair_cafe_s02.iff")
@@ -1928,7 +1970,8 @@ object_static_item_shared_item_chair_futon_s1 = SharedStaticObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2268935381
+	clientObjectCRC = 2268935381,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_item_chair_futon_s1, "object/static/item/shared_item_chair_futon_s1.iff")
@@ -1972,7 +2015,8 @@ object_static_item_shared_item_chair_metal_s1 = SharedStaticObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 244758057
+	clientObjectCRC = 244758057,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_item_chair_metal_s1, "object/static/item/shared_item_chair_metal_s1.iff")
@@ -2016,7 +2060,8 @@ object_static_item_shared_item_chair_metal_wheeled_01 = SharedStaticObjectTempla
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 894596562
+	clientObjectCRC = 894596562,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_item_chair_metal_wheeled_01, "object/static/item/shared_item_chair_metal_wheeled_01.iff")
@@ -2060,7 +2105,8 @@ object_static_item_shared_item_chair_modern_loveseat_s01 = SharedStaticObjectTem
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2420924532
+	clientObjectCRC = 2420924532,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_item_chair_modern_loveseat_s01, "object/static/item/shared_item_chair_modern_loveseat_s01.iff")
@@ -2104,7 +2150,8 @@ object_static_item_shared_item_chair_recliner_s1 = SharedStaticObjectTemplate:ne
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3071442412
+	clientObjectCRC = 3071442412,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_item_chair_recliner_s1, "object/static/item/shared_item_chair_recliner_s1.iff")
@@ -2148,7 +2195,8 @@ object_static_item_shared_item_chair_tato_cafe_s01 = SharedStaticObjectTemplate:
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3215824507
+	clientObjectCRC = 3215824507,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_item_chair_tato_cafe_s01, "object/static/item/shared_item_chair_tato_cafe_s01.iff")
@@ -2192,7 +2240,8 @@ object_static_item_shared_item_chair_tato_cafe_s02 = SharedStaticObjectTemplate:
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1689927404
+	clientObjectCRC = 1689927404,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_item_chair_tato_cafe_s02, "object/static/item/shared_item_chair_tato_cafe_s02.iff")
@@ -2236,7 +2285,8 @@ object_static_item_shared_item_cheap_cabinet_01 = SharedStaticObjectTemplate:new
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3898799663
+	clientObjectCRC = 3898799663,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_item_cheap_cabinet_01, "object/static/item/shared_item_cheap_cabinet_01.iff")
@@ -2280,7 +2330,8 @@ object_static_item_shared_item_cheese_wheel_s1_partial = SharedStaticObjectTempl
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1128245228
+	clientObjectCRC = 1128245228,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_item_cheese_wheel_s1_partial, "object/static/item/shared_item_cheese_wheel_s1_partial.iff")
@@ -2324,7 +2375,8 @@ object_static_item_shared_item_chemical_container_lg = SharedStaticObjectTemplat
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2995492937
+	clientObjectCRC = 2995492937,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_item_chemical_container_lg, "object/static/item/shared_item_chemical_container_lg.iff")
@@ -2368,7 +2420,8 @@ object_static_item_shared_item_chemical_container_sm = SharedStaticObjectTemplat
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1336005578
+	clientObjectCRC = 1336005578,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_item_chemical_container_sm, "object/static/item/shared_item_chemical_container_sm.iff")
@@ -2412,7 +2465,8 @@ object_static_item_shared_item_cloth_patches = SharedStaticObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 755038889
+	clientObjectCRC = 755038889,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_item_cloth_patches, "object/static/item/shared_item_cloth_patches.iff")
@@ -2456,7 +2510,8 @@ object_static_item_shared_item_comp_blaster_cannon = SharedStaticObjectTemplate:
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3801331454
+	clientObjectCRC = 3801331454,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_item_comp_blaster_cannon, "object/static/item/shared_item_comp_blaster_cannon.iff")
@@ -2500,7 +2555,8 @@ object_static_item_shared_item_comp_ion_cannon = SharedStaticObjectTemplate:new 
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2119991533
+	clientObjectCRC = 2119991533,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_item_comp_ion_cannon, "object/static/item/shared_item_comp_ion_cannon.iff")
@@ -2544,7 +2600,8 @@ object_static_item_shared_item_comp_stabilization_unit = SharedStaticObjectTempl
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3210817338
+	clientObjectCRC = 3210817338,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_item_comp_stabilization_unit, "object/static/item/shared_item_comp_stabilization_unit.iff")
@@ -2588,7 +2645,8 @@ object_static_item_shared_item_comp_turret_base = SharedStaticObjectTemplate:new
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 881953982
+	clientObjectCRC = 881953982,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_item_comp_turret_base, "object/static/item/shared_item_comp_turret_base.iff")
@@ -2632,7 +2690,8 @@ object_static_item_shared_item_con_bag_ingredients_lg_s1 = SharedStaticObjectTem
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3696942882
+	clientObjectCRC = 3696942882,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_item_con_bag_ingredients_lg_s1, "object/static/item/shared_item_con_bag_ingredients_lg_s1.iff")
@@ -2676,7 +2735,8 @@ object_static_item_shared_item_con_bag_sm = SharedStaticObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2887784359
+	clientObjectCRC = 2887784359,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_item_con_bag_sm, "object/static/item/shared_item_con_bag_sm.iff")
@@ -2720,7 +2780,8 @@ object_static_item_shared_item_con_barrel_lg_s1 = SharedStaticObjectTemplate:new
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 782789818
+	clientObjectCRC = 782789818,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_item_con_barrel_lg_s1, "object/static/item/shared_item_con_barrel_lg_s1.iff")
@@ -2764,7 +2825,8 @@ object_static_item_shared_item_con_basket = SharedStaticObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 468970819
+	clientObjectCRC = 468970819,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_item_con_basket, "object/static/item/shared_item_con_basket.iff")
@@ -2808,7 +2870,8 @@ object_static_item_shared_item_con_bowl_full = SharedStaticObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1435978532
+	clientObjectCRC = 1435978532,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_item_con_bowl_full, "object/static/item/shared_item_con_bowl_full.iff")
@@ -2852,7 +2915,8 @@ object_static_item_shared_item_con_bowl_serving_full = SharedStaticObjectTemplat
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 22411271
+	clientObjectCRC = 22411271,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_item_con_bowl_serving_full, "object/static/item/shared_item_con_bowl_serving_full.iff")
@@ -2896,7 +2960,8 @@ object_static_item_shared_item_con_drink_flask = SharedStaticObjectTemplate:new 
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3135460176
+	clientObjectCRC = 3135460176,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_item_con_drink_flask, "object/static/item/shared_item_con_drink_flask.iff")
@@ -2940,7 +3005,8 @@ object_static_item_shared_item_con_glass_beaker = SharedStaticObjectTemplate:new
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1302190221
+	clientObjectCRC = 1302190221,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_item_con_glass_beaker, "object/static/item/shared_item_con_glass_beaker.iff")
@@ -2984,7 +3050,8 @@ object_static_item_shared_item_con_glass_full_s2 = SharedStaticObjectTemplate:ne
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2557094901
+	clientObjectCRC = 2557094901,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_item_con_glass_full_s2, "object/static/item/shared_item_con_glass_full_s2.iff")
@@ -3028,7 +3095,8 @@ object_static_item_shared_item_con_pitcher_full = SharedStaticObjectTemplate:new
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3008672134
+	clientObjectCRC = 3008672134,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_item_con_pitcher_full, "object/static/item/shared_item_con_pitcher_full.iff")
@@ -3072,7 +3140,8 @@ object_static_item_shared_item_con_plate_casserole = SharedStaticObjectTemplate:
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3388012720
+	clientObjectCRC = 3388012720,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_item_con_plate_casserole, "object/static/item/shared_item_con_plate_casserole.iff")
@@ -3116,7 +3185,8 @@ object_static_item_shared_item_con_plate_s1_full = SharedStaticObjectTemplate:ne
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3130233010
+	clientObjectCRC = 3130233010,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_item_con_plate_s1_full, "object/static/item/shared_item_con_plate_s1_full.iff")
@@ -3160,7 +3230,8 @@ object_static_item_shared_item_con_ration_kit_lg = SharedStaticObjectTemplate:ne
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1720318167
+	clientObjectCRC = 1720318167,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_item_con_ration_kit_lg, "object/static/item/shared_item_con_ration_kit_lg.iff")
@@ -3204,7 +3275,8 @@ object_static_item_shared_item_con_ration_kit_m = SharedStaticObjectTemplate:new
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3534364000
+	clientObjectCRC = 3534364000,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_item_con_ration_kit_m, "object/static/item/shared_item_con_ration_kit_m.iff")
@@ -3248,7 +3320,8 @@ object_static_item_shared_item_con_tankard_full = SharedStaticObjectTemplate:new
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 798767493
+	clientObjectCRC = 798767493,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_item_con_tankard_full, "object/static/item/shared_item_con_tankard_full.iff")
@@ -3292,7 +3365,8 @@ object_static_item_shared_item_con_tato_bowl_full_s01 = SharedStaticObjectTempla
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2519863183
+	clientObjectCRC = 2519863183,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_item_con_tato_bowl_full_s01, "object/static/item/shared_item_con_tato_bowl_full_s01.iff")
@@ -3336,7 +3410,8 @@ object_static_item_shared_item_con_tato_bowl_full_s02 = SharedStaticObjectTempla
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1294313240
+	clientObjectCRC = 1294313240,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_item_con_tato_bowl_full_s02, "object/static/item/shared_item_con_tato_bowl_full_s02.iff")
@@ -3380,7 +3455,8 @@ object_static_item_shared_item_con_tato_cup_s2 = SharedStaticObjectTemplate:new 
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1498865741
+	clientObjectCRC = 1498865741,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_item_con_tato_cup_s2, "object/static/item/shared_item_con_tato_cup_s2.iff")
@@ -3424,7 +3500,8 @@ object_static_item_shared_item_con_tato_cup_s3 = SharedStaticObjectTemplate:new 
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 274433984
+	clientObjectCRC = 274433984,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_item_con_tato_cup_s3, "object/static/item/shared_item_con_tato_cup_s3.iff")
@@ -3468,7 +3545,8 @@ object_static_item_shared_item_con_water = SharedStaticObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2923451996
+	clientObjectCRC = 2923451996,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_item_con_water, "object/static/item/shared_item_con_water.iff")
@@ -3512,7 +3590,8 @@ object_static_item_shared_item_con_winebottle_01 = SharedStaticObjectTemplate:ne
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3283714136
+	clientObjectCRC = 3283714136,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_item_con_winebottle_01, "object/static/item/shared_item_con_winebottle_01.iff")
@@ -3556,7 +3635,8 @@ object_static_item_shared_item_con_winebottle_02 = SharedStaticObjectTemplate:ne
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 414066895
+	clientObjectCRC = 414066895,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_item_con_winebottle_02, "object/static/item/shared_item_con_winebottle_02.iff")
@@ -3600,7 +3680,8 @@ object_static_item_shared_item_con_winebottle_03 = SharedStaticObjectTemplate:ne
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1369657154
+	clientObjectCRC = 1369657154,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_item_con_winebottle_03, "object/static/item/shared_item_con_winebottle_03.iff")
@@ -3644,7 +3725,8 @@ object_static_item_shared_item_con_winebottle_04 = SharedStaticObjectTemplate:ne
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2856346710
+	clientObjectCRC = 2856346710,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_item_con_winebottle_04, "object/static/item/shared_item_con_winebottle_04.iff")
@@ -3688,7 +3770,8 @@ object_static_item_shared_item_con_winebottle_05 = SharedStaticObjectTemplate:ne
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3813475291
+	clientObjectCRC = 3813475291,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_item_con_winebottle_05, "object/static/item/shared_item_con_winebottle_05.iff")
@@ -3732,7 +3815,8 @@ object_static_item_shared_item_container_armor = SharedStaticObjectTemplate:new 
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 4175646326
+	clientObjectCRC = 4175646326,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_item_container_armor, "object/static/item/shared_item_container_armor.iff")
@@ -3776,7 +3860,8 @@ object_static_item_shared_item_container_electronics = SharedStaticObjectTemplat
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2255481432
+	clientObjectCRC = 2255481432,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_item_container_electronics, "object/static/item/shared_item_container_electronics.iff")
@@ -3820,7 +3905,8 @@ object_static_item_shared_item_container_energy_gas = SharedStaticObjectTemplate
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3085056595
+	clientObjectCRC = 3085056595,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_item_container_energy_gas, "object/static/item/shared_item_container_energy_gas.iff")
@@ -3864,7 +3950,8 @@ object_static_item_shared_item_container_energy_liquid = SharedStaticObjectTempl
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3714078297
+	clientObjectCRC = 3714078297,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_item_container_energy_liquid, "object/static/item/shared_item_container_energy_liquid.iff")
@@ -3908,7 +3995,8 @@ object_static_item_shared_item_container_energy_radioactive = SharedStaticObject
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3965708443
+	clientObjectCRC = 3965708443,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_item_container_energy_radioactive, "object/static/item/shared_item_container_energy_radioactive.iff")
@@ -3952,7 +4040,8 @@ object_static_item_shared_item_container_energy_solid = SharedStaticObjectTempla
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2370309576
+	clientObjectCRC = 2370309576,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_item_container_energy_solid, "object/static/item/shared_item_container_energy_solid.iff")
@@ -3996,7 +4085,8 @@ object_static_item_shared_item_container_inorganic_chemicals = SharedStaticObjec
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2404088951
+	clientObjectCRC = 2404088951,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_item_container_inorganic_chemicals, "object/static/item/shared_item_container_inorganic_chemicals.iff")
@@ -4040,7 +4130,8 @@ object_static_item_shared_item_container_inorganic_gas = SharedStaticObjectTempl
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1076369059
+	clientObjectCRC = 1076369059,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_item_container_inorganic_gas, "object/static/item/shared_item_container_inorganic_gas.iff")
@@ -4084,7 +4175,8 @@ object_static_item_shared_item_container_inorganic_minerals = SharedStaticObject
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2784088837
+	clientObjectCRC = 2784088837,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_item_container_inorganic_minerals, "object/static/item/shared_item_container_inorganic_minerals.iff")
@@ -4128,7 +4220,8 @@ object_static_item_shared_item_container_inorganic_water = SharedStaticObjectTem
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3390061047
+	clientObjectCRC = 3390061047,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_item_container_inorganic_water, "object/static/item/shared_item_container_inorganic_water.iff")
@@ -4172,7 +4265,8 @@ object_static_item_shared_item_container_installation = SharedStaticObjectTempla
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 240677545
+	clientObjectCRC = 240677545,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_item_container_installation, "object/static/item/shared_item_container_installation.iff")
@@ -4216,7 +4310,8 @@ object_static_item_shared_item_container_organic_food = SharedStaticObjectTempla
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1305067335
+	clientObjectCRC = 1305067335,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_item_container_organic_food, "object/static/item/shared_item_container_organic_food.iff")
@@ -4260,7 +4355,8 @@ object_static_item_shared_item_container_organic_hide = SharedStaticObjectTempla
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1581761382
+	clientObjectCRC = 1581761382,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_item_container_organic_hide, "object/static/item/shared_item_container_organic_hide.iff")
@@ -4304,7 +4400,8 @@ object_static_item_shared_item_container_organic_structure = SharedStaticObjectT
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3030050763
+	clientObjectCRC = 3030050763,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_item_container_organic_structure, "object/static/item/shared_item_container_organic_structure.iff")
@@ -4348,7 +4445,8 @@ object_static_item_shared_item_container_plain_s01 = SharedStaticObjectTemplate:
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1255851413
+	clientObjectCRC = 1255851413,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_item_container_plain_s01, "object/static/item/shared_item_container_plain_s01.iff")
@@ -4392,7 +4490,8 @@ object_static_item_shared_item_container_plain_s02 = SharedStaticObjectTemplate:
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2446159106
+	clientObjectCRC = 2446159106,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_item_container_plain_s02, "object/static/item/shared_item_container_plain_s02.iff")
@@ -4436,7 +4535,8 @@ object_static_item_shared_item_container_plain_s03 = SharedStaticObjectTemplate:
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3636464271
+	clientObjectCRC = 3636464271,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_item_container_plain_s03, "object/static/item/shared_item_container_plain_s03.iff")
@@ -4480,7 +4580,8 @@ object_static_item_shared_item_container_plain_s04 = SharedStaticObjectTemplate:
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 589504923
+	clientObjectCRC = 589504923,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_item_container_plain_s04, "object/static/item/shared_item_container_plain_s04.iff")
@@ -4524,7 +4625,8 @@ object_static_item_shared_item_container_weapons = SharedStaticObjectTemplate:ne
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3641225683
+	clientObjectCRC = 3641225683,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_item_container_weapons, "object/static/item/shared_item_container_weapons.iff")
@@ -4568,7 +4670,8 @@ object_static_item_shared_item_cook_frying_pan = SharedStaticObjectTemplate:new 
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3546018033
+	clientObjectCRC = 3546018033,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_item_cook_frying_pan, "object/static/item/shared_item_cook_frying_pan.iff")
@@ -4612,7 +4715,8 @@ object_static_item_shared_item_cook_pot_lg = SharedStaticObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2685147084
+	clientObjectCRC = 2685147084,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_item_cook_pot_lg, "object/static/item/shared_item_cook_pot_lg.iff")
@@ -4656,7 +4760,8 @@ object_static_item_shared_item_cook_pot_sm = SharedStaticObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1562795087
+	clientObjectCRC = 1562795087,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_item_cook_pot_sm, "object/static/item/shared_item_cook_pot_sm.iff")
@@ -4700,7 +4805,8 @@ object_static_item_shared_item_crate_clothing_small = SharedStaticObjectTemplate
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3603096922
+	clientObjectCRC = 3603096922,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_item_crate_clothing_small, "object/static/item/shared_item_crate_clothing_small.iff")
@@ -4744,7 +4850,8 @@ object_static_item_shared_item_crate_spice = SharedStaticObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1789284715
+	clientObjectCRC = 1789284715,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_item_crate_spice, "object/static/item/shared_item_crate_spice.iff")
@@ -4788,7 +4895,8 @@ object_static_item_shared_item_data_disk = SharedStaticObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 4136425931
+	clientObjectCRC = 4136425931,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_item_data_disk, "object/static/item/shared_item_data_disk.iff")
@@ -4832,7 +4940,8 @@ object_static_item_shared_item_datapad_s1 = SharedStaticObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 522904897
+	clientObjectCRC = 522904897,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_item_datapad_s1, "object/static/item/shared_item_datapad_s1.iff")
@@ -4876,7 +4985,8 @@ object_static_item_shared_item_datapad_s2 = SharedStaticObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3292351958
+	clientObjectCRC = 3292351958,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_item_datapad_s2, "object/static/item/shared_item_datapad_s2.iff")
@@ -4920,7 +5030,8 @@ object_static_item_shared_item_decryptor_imperial = SharedStaticObjectTemplate:n
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 980291180
+	clientObjectCRC = 980291180,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_item_decryptor_imperial, "object/static/item/shared_item_decryptor_imperial.iff")
@@ -4964,7 +5075,8 @@ object_static_item_shared_item_diagnostic_screen = SharedStaticObjectTemplate:ne
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1651617897
+	clientObjectCRC = 1651617897,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_item_diagnostic_screen, "object/static/item/shared_item_diagnostic_screen.iff")
@@ -5008,7 +5120,8 @@ object_static_item_shared_item_document = SharedStaticObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1483782412
+	clientObjectCRC = 1483782412,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_item_document, "object/static/item/shared_item_document.iff")
@@ -5052,7 +5165,8 @@ object_static_item_shared_item_door_impl_s01 = SharedStaticObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2782320182
+	clientObjectCRC = 2782320182,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_item_door_impl_s01, "object/static/item/shared_item_door_impl_s01.iff")
@@ -5096,7 +5210,8 @@ object_static_item_shared_item_drall_medicine = SharedStaticObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3229629688
+	clientObjectCRC = 3229629688,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_item_drall_medicine, "object/static/item/shared_item_drall_medicine.iff")
@@ -5140,7 +5255,8 @@ object_static_item_shared_item_droid_magnet = SharedStaticObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2741400727
+	clientObjectCRC = 2741400727,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_item_droid_magnet, "object/static/item/shared_item_droid_magnet.iff")
@@ -5184,7 +5300,8 @@ object_static_item_shared_item_dye_kit = SharedStaticObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 578717359
+	clientObjectCRC = 578717359,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_item_dye_kit, "object/static/item/shared_item_dye_kit.iff")
@@ -5228,7 +5345,8 @@ object_static_item_shared_item_edb_con_tato_cup_s2 = SharedStaticObjectTemplate:
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3452623710
+	clientObjectCRC = 3452623710,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_item_edb_con_tato_cup_s2, "object/static/item/shared_item_edb_con_tato_cup_s2.iff")
@@ -5272,7 +5390,8 @@ object_static_item_shared_item_edb_con_tato_cup_s3 = SharedStaticObjectTemplate:
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2227682515
+	clientObjectCRC = 2227682515,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_item_edb_con_tato_cup_s3, "object/static/item/shared_item_edb_con_tato_cup_s3.iff")
@@ -5316,7 +5435,8 @@ object_static_item_shared_item_eyes_of_mesra = SharedStaticObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2686619843
+	clientObjectCRC = 2686619843,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_item_eyes_of_mesra, "object/static/item/shared_item_eyes_of_mesra.iff")
@@ -5360,7 +5480,8 @@ object_static_item_shared_item_food_assorted_fruit = SharedStaticObjectTemplate:
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1962912307
+	clientObjectCRC = 1962912307,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_item_food_assorted_fruit, "object/static/item/shared_item_food_assorted_fruit.iff")
@@ -5404,7 +5525,8 @@ object_static_item_shared_item_food_cake = SharedStaticObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2447344421
+	clientObjectCRC = 2447344421,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_item_food_cake, "object/static/item/shared_item_food_cake.iff")
@@ -5448,7 +5570,8 @@ object_static_item_shared_item_food_dish_01 = SharedStaticObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1643171226
+	clientObjectCRC = 1643171226,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_item_food_dish_01, "object/static/item/shared_item_food_dish_01.iff")
@@ -5492,7 +5615,8 @@ object_static_item_shared_item_food_dish_02 = SharedStaticObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3135726861
+	clientObjectCRC = 3135726861,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_item_food_dish_02, "object/static/item/shared_item_food_dish_02.iff")
@@ -5536,7 +5660,8 @@ object_static_item_shared_item_food_dish_03 = SharedStaticObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 4092199552
+	clientObjectCRC = 4092199552,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_item_food_dish_03, "object/static/item/shared_item_food_dish_03.iff")
@@ -5580,7 +5705,8 @@ object_static_item_shared_item_food_dish_04 = SharedStaticObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 134818196
+	clientObjectCRC = 134818196,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_item_food_dish_04, "object/static/item/shared_item_food_dish_04.iff")
@@ -5624,7 +5750,8 @@ object_static_item_shared_item_food_dish_05 = SharedStaticObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1090801177
+	clientObjectCRC = 1090801177,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_item_food_dish_05, "object/static/item/shared_item_food_dish_05.iff")
@@ -5668,7 +5795,8 @@ object_static_item_shared_item_food_dish_06 = SharedStaticObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2584995470
+	clientObjectCRC = 2584995470,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_item_food_dish_06, "object/static/item/shared_item_food_dish_06.iff")
@@ -5712,7 +5840,8 @@ object_static_item_shared_item_food_fish = SharedStaticObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2484078697
+	clientObjectCRC = 2484078697,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_item_food_fish, "object/static/item/shared_item_food_fish.iff")
@@ -5756,7 +5885,8 @@ object_static_item_shared_item_food_fruit_s01 = SharedStaticObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 4237678042
+	clientObjectCRC = 4237678042,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_item_food_fruit_s01, "object/static/item/shared_item_food_fruit_s01.iff")
@@ -5800,7 +5930,8 @@ object_static_item_shared_item_food_fruit_s02 = SharedStaticObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 662863181
+	clientObjectCRC = 662863181,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_item_food_fruit_s02, "object/static/item/shared_item_food_fruit_s02.iff")
@@ -5844,7 +5975,8 @@ object_static_item_shared_item_food_fruit_s03 = SharedStaticObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1854872256
+	clientObjectCRC = 1854872256,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_item_food_fruit_s03, "object/static/item/shared_item_food_fruit_s03.iff")
@@ -5888,7 +6020,8 @@ object_static_item_shared_item_food_links = SharedStaticObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3941091563
+	clientObjectCRC = 3941091563,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_item_food_links, "object/static/item/shared_item_food_links.iff")
@@ -5932,7 +6065,8 @@ object_static_item_shared_item_food_meat_loaf = SharedStaticObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 357872124
+	clientObjectCRC = 357872124,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_item_food_meat_loaf, "object/static/item/shared_item_food_meat_loaf.iff")
@@ -5976,7 +6110,8 @@ object_static_item_shared_item_food_meat_roast = SharedStaticObjectTemplate:new 
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3930727381
+	clientObjectCRC = 3930727381,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_item_food_meat_roast, "object/static/item/shared_item_food_meat_roast.iff")
@@ -6020,7 +6155,8 @@ object_static_item_shared_item_food_muffins = SharedStaticObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2792426547
+	clientObjectCRC = 2792426547,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_item_food_muffins, "object/static/item/shared_item_food_muffins.iff")
@@ -6064,7 +6200,8 @@ object_static_item_shared_item_food_nutricake = SharedStaticObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1451691855
+	clientObjectCRC = 1451691855,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_item_food_nutricake, "object/static/item/shared_item_food_nutricake.iff")
@@ -6108,7 +6245,8 @@ object_static_item_shared_item_food_pie = SharedStaticObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 4291568660
+	clientObjectCRC = 4291568660,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_item_food_pie, "object/static/item/shared_item_food_pie.iff")
@@ -6152,7 +6290,8 @@ object_static_item_shared_item_food_pie_02 = SharedStaticObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3224713039
+	clientObjectCRC = 3224713039,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_item_food_pie_02, "object/static/item/shared_item_food_pie_02.iff")
@@ -6196,7 +6335,8 @@ object_static_item_shared_item_food_sandwich = SharedStaticObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 4222035816
+	clientObjectCRC = 4222035816,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_item_food_sandwich, "object/static/item/shared_item_food_sandwich.iff")
@@ -6240,7 +6380,8 @@ object_static_item_shared_item_food_sausage = SharedStaticObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 4188629182
+	clientObjectCRC = 4188629182,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_item_food_sausage, "object/static/item/shared_item_food_sausage.iff")
@@ -6284,7 +6425,8 @@ object_static_item_shared_item_food_skewer = SharedStaticObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 153020576
+	clientObjectCRC = 153020576,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_item_food_skewer, "object/static/item/shared_item_food_skewer.iff")
@@ -6328,7 +6470,8 @@ object_static_item_shared_item_food_spices = SharedStaticObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2784005446
+	clientObjectCRC = 2784005446,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_item_food_spices, "object/static/item/shared_item_food_spices.iff")
@@ -6372,7 +6515,8 @@ object_static_item_shared_item_food_vegetable_s01 = SharedStaticObjectTemplate:n
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1453569476
+	clientObjectCRC = 1453569476,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_item_food_vegetable_s01, "object/static/item/shared_item_food_vegetable_s01.iff")
@@ -6416,7 +6560,8 @@ object_static_item_shared_item_food_vegetable_s02 = SharedStaticObjectTemplate:n
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2377391443
+	clientObjectCRC = 2377391443,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_item_food_vegetable_s02, "object/static/item/shared_item_food_vegetable_s02.iff")
@@ -6460,7 +6605,8 @@ object_static_item_shared_item_food_vegetable_s03 = SharedStaticObjectTemplate:n
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3300489950
+	clientObjectCRC = 3300489950,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_item_food_vegetable_s03, "object/static/item/shared_item_food_vegetable_s03.iff")
@@ -6504,7 +6650,8 @@ object_static_item_shared_item_fruit_melon = SharedStaticObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2726248829
+	clientObjectCRC = 2726248829,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_item_fruit_melon, "object/static/item/shared_item_fruit_melon.iff")
@@ -6548,7 +6695,8 @@ object_static_item_shared_item_game_dejarik_gameboard = SharedStaticObjectTempla
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 608112100
+	clientObjectCRC = 608112100,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_item_game_dejarik_gameboard, "object/static/item/shared_item_game_dejarik_gameboard.iff")
@@ -6592,7 +6740,8 @@ object_static_item_shared_item_glass_bluemilk = SharedStaticObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1526354706
+	clientObjectCRC = 1526354706,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_item_glass_bluemilk, "object/static/item/shared_item_glass_bluemilk.iff")
@@ -6636,7 +6785,8 @@ object_static_item_shared_item_glass_empty = SharedStaticObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3464252430
+	clientObjectCRC = 3464252430,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_item_glass_empty, "object/static/item/shared_item_glass_empty.iff")
@@ -6680,7 +6830,8 @@ object_static_item_shared_item_glass_full = SharedStaticObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3995101539
+	clientObjectCRC = 3995101539,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_item_glass_full, "object/static/item/shared_item_glass_full.iff")
@@ -6724,7 +6875,8 @@ object_static_item_shared_item_glass_metal = SharedStaticObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2261530459
+	clientObjectCRC = 2261530459,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_item_glass_metal, "object/static/item/shared_item_glass_metal.iff")
@@ -6768,7 +6920,8 @@ object_static_item_shared_item_glass_white = SharedStaticObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1070449231
+	clientObjectCRC = 1070449231,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_item_glass_white, "object/static/item/shared_item_glass_white.iff")
@@ -6812,7 +6965,8 @@ object_static_item_shared_item_hair_dye_kit = SharedStaticObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 781716835
+	clientObjectCRC = 781716835,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_item_hair_dye_kit, "object/static/item/shared_item_hair_dye_kit.iff")
@@ -6856,7 +7010,8 @@ object_static_item_shared_item_imperial_lifesupport_pack = SharedStaticObjectTem
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3281791142
+	clientObjectCRC = 3281791142,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_item_imperial_lifesupport_pack, "object/static/item/shared_item_imperial_lifesupport_pack.iff")
@@ -6900,7 +7055,8 @@ object_static_item_shared_item_items_container_lg = SharedStaticObjectTemplate:n
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1166760359
+	clientObjectCRC = 1166760359,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_item_items_container_lg, "object/static/item/shared_item_items_container_lg.iff")
@@ -6944,7 +7100,8 @@ object_static_item_shared_item_items_container_sm = SharedStaticObjectTemplate:n
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3097563684
+	clientObjectCRC = 3097563684,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_item_items_container_sm, "object/static/item/shared_item_items_container_sm.iff")
@@ -6988,7 +7145,8 @@ object_static_item_shared_item_jacket_01 = SharedStaticObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1266080022
+	clientObjectCRC = 1266080022,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_item_jacket_01, "object/static/item/shared_item_jacket_01.iff")
@@ -7032,7 +7190,8 @@ object_static_item_shared_item_jar_berries = SharedStaticObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 193627130
+	clientObjectCRC = 193627130,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_item_jar_berries, "object/static/item/shared_item_jar_berries.iff")
@@ -7076,7 +7235,8 @@ object_static_item_shared_item_jar_bugs = SharedStaticObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3304125843
+	clientObjectCRC = 3304125843,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_item_jar_bugs, "object/static/item/shared_item_jar_bugs.iff")
@@ -7120,7 +7280,8 @@ object_static_item_shared_item_jar_empty = SharedStaticObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3759215411
+	clientObjectCRC = 3759215411,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_item_jar_empty, "object/static/item/shared_item_jar_empty.iff")
@@ -7164,7 +7325,8 @@ object_static_item_shared_item_jar_funk = SharedStaticObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2934305982
+	clientObjectCRC = 2934305982,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_item_jar_funk, "object/static/item/shared_item_jar_funk.iff")
@@ -7208,7 +7370,8 @@ object_static_item_shared_item_jar_guts = SharedStaticObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1848547961
+	clientObjectCRC = 1848547961,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_item_jar_guts, "object/static/item/shared_item_jar_guts.iff")
@@ -7252,7 +7415,8 @@ object_static_item_shared_item_jar_spice_blue = SharedStaticObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2646277526
+	clientObjectCRC = 2646277526,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_item_jar_spice_blue, "object/static/item/shared_item_jar_spice_blue.iff")
@@ -7296,7 +7460,8 @@ object_static_item_shared_item_jar_spice_red = SharedStaticObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2734733012
+	clientObjectCRC = 2734733012,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_item_jar_spice_red, "object/static/item/shared_item_jar_spice_red.iff")
@@ -7340,7 +7505,8 @@ object_static_item_shared_item_jar_spice_white = SharedStaticObjectTemplate:new 
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3077482380
+	clientObjectCRC = 3077482380,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_item_jar_spice_white, "object/static/item/shared_item_jar_spice_white.iff")
@@ -7384,7 +7550,8 @@ object_static_item_shared_item_katana = SharedStaticObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1894064245
+	clientObjectCRC = 1894064245,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_item_katana, "object/static/item/shared_item_katana.iff")
@@ -7428,7 +7595,8 @@ object_static_item_shared_item_keepsakes = SharedStaticObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 775820803
+	clientObjectCRC = 775820803,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_item_keepsakes, "object/static/item/shared_item_keepsakes.iff")
@@ -7472,7 +7640,8 @@ object_static_item_shared_item_key_electronic = SharedStaticObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1010638097
+	clientObjectCRC = 1010638097,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_item_key_electronic, "object/static/item/shared_item_key_electronic.iff")
@@ -7516,7 +7685,8 @@ object_static_item_shared_item_kiosk_statue = SharedStaticObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3347975078
+	clientObjectCRC = 3347975078,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_item_kiosk_statue, "object/static/item/shared_item_kiosk_statue.iff")
@@ -7560,7 +7730,8 @@ object_static_item_shared_item_kitchen_chair_01 = SharedStaticObjectTemplate:new
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1563747235
+	clientObjectCRC = 1563747235,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_item_kitchen_chair_01, "object/static/item/shared_item_kitchen_chair_01.iff")
@@ -7604,7 +7775,8 @@ object_static_item_shared_item_kitchen_cook_set_lg_s1 = SharedStaticObjectTempla
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2655114123
+	clientObjectCRC = 2655114123,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_item_kitchen_cook_set_lg_s1, "object/static/item/shared_item_kitchen_cook_set_lg_s1.iff")
@@ -7648,7 +7820,8 @@ object_static_item_shared_item_kitchen_portable_stove_sm_s1 = SharedStaticObject
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1226902722
+	clientObjectCRC = 1226902722,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_item_kitchen_portable_stove_sm_s1, "object/static/item/shared_item_kitchen_portable_stove_sm_s1.iff")
@@ -7692,7 +7865,8 @@ object_static_item_shared_item_kitchen_pot_style_01 = SharedStaticObjectTemplate
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2564506086
+	clientObjectCRC = 2564506086,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_item_kitchen_pot_style_01, "object/static/item/shared_item_kitchen_pot_style_01.iff")
@@ -7736,7 +7910,8 @@ object_static_item_shared_item_kitchen_pot_style_02 = SharedStaticObjectTemplate
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1137502577
+	clientObjectCRC = 1137502577,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_item_kitchen_pot_style_02, "object/static/item/shared_item_kitchen_pot_style_02.iff")
@@ -7780,7 +7955,8 @@ object_static_item_shared_item_kitchen_pot_style_03 = SharedStaticObjectTemplate
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 180457212
+	clientObjectCRC = 180457212,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_item_kitchen_pot_style_03, "object/static/item/shared_item_kitchen_pot_style_03.iff")
@@ -7824,7 +8000,8 @@ object_static_item_shared_item_makeup = SharedStaticObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 806343879
+	clientObjectCRC = 806343879,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_item_makeup, "object/static/item/shared_item_makeup.iff")
@@ -7868,7 +8045,8 @@ object_static_item_shared_item_meat_hunk = SharedStaticObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1149924451
+	clientObjectCRC = 1149924451,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_item_meat_hunk, "object/static/item/shared_item_meat_hunk.iff")
@@ -7912,7 +8090,8 @@ object_static_item_shared_item_meat_kabob = SharedStaticObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 4176592177
+	clientObjectCRC = 4176592177,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_item_meat_kabob, "object/static/item/shared_item_meat_kabob.iff")
@@ -7956,7 +8135,8 @@ object_static_item_shared_item_medic_bacta_tank = SharedStaticObjectTemplate:new
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2391288762
+	clientObjectCRC = 2391288762,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_item_medic_bacta_tank, "object/static/item/shared_item_medic_bacta_tank.iff")
@@ -8000,7 +8180,8 @@ object_static_item_shared_item_medic_bacta_tank_advanced = SharedStaticObjectTem
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3268663656
+	clientObjectCRC = 3268663656,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_item_medic_bacta_tank_advanced, "object/static/item/shared_item_medic_bacta_tank_advanced.iff")
@@ -8044,7 +8225,8 @@ object_static_item_shared_item_medic_bacta_tank_large = SharedStaticObjectTempla
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 239850220
+	clientObjectCRC = 239850220,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_item_medic_bacta_tank_large, "object/static/item/shared_item_medic_bacta_tank_large.iff")
@@ -8088,7 +8270,8 @@ object_static_item_shared_item_medic_bag = SharedStaticObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 89534284
+	clientObjectCRC = 89534284,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_item_medic_bag, "object/static/item/shared_item_medic_bag.iff")
@@ -8132,7 +8315,8 @@ object_static_item_shared_item_medic_hormone_enhancements = SharedStaticObjectTe
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 761234502
+	clientObjectCRC = 761234502,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_item_medic_hormone_enhancements, "object/static/item/shared_item_medic_hormone_enhancements.iff")
@@ -8176,7 +8360,8 @@ object_static_item_shared_item_medic_medpack_lg = SharedStaticObjectTemplate:new
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 159228180
+	clientObjectCRC = 159228180,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_item_medic_medpack_lg, "object/static/item/shared_item_medic_medpack_lg.iff")
@@ -8220,7 +8405,8 @@ object_static_item_shared_item_medic_radical_enhancements = SharedStaticObjectTe
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3596258776
+	clientObjectCRC = 3596258776,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_item_medic_radical_enhancements, "object/static/item/shared_item_medic_radical_enhancements.iff")
@@ -8264,7 +8450,8 @@ object_static_item_shared_item_medic_stimpack = SharedStaticObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2863591257
+	clientObjectCRC = 2863591257,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_item_medic_stimpack, "object/static/item/shared_item_medic_stimpack.iff")
@@ -8308,7 +8495,8 @@ object_static_item_shared_item_medical_console = SharedStaticObjectTemplate:new 
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 246106758
+	clientObjectCRC = 246106758,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_item_medical_console, "object/static/item/shared_item_medical_console.iff")
@@ -8352,7 +8540,8 @@ object_static_item_shared_item_metal_armor_layer = SharedStaticObjectTemplate:ne
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2170258452
+	clientObjectCRC = 2170258452,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_item_metal_armor_layer, "object/static/item/shared_item_metal_armor_layer.iff")
@@ -8396,7 +8585,8 @@ object_static_item_shared_item_metal_armor_module = SharedStaticObjectTemplate:n
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3683981192
+	clientObjectCRC = 3683981192,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_item_metal_armor_module, "object/static/item/shared_item_metal_armor_module.iff")
@@ -8440,7 +8630,8 @@ object_static_item_shared_item_metal_armor_segment = SharedStaticObjectTemplate:
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3838382803
+	clientObjectCRC = 3838382803,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_item_metal_armor_segment, "object/static/item/shared_item_metal_armor_segment.iff")
@@ -8484,7 +8675,8 @@ object_static_item_shared_item_metal_staff = SharedStaticObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3910295094
+	clientObjectCRC = 3910295094,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_item_metal_staff, "object/static/item/shared_item_metal_staff.iff")
@@ -8528,7 +8720,8 @@ object_static_item_shared_item_mockup_bank_terminal = SharedStaticObjectTemplate
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 332671055
+	clientObjectCRC = 332671055,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_item_mockup_bank_terminal, "object/static/item/shared_item_mockup_bank_terminal.iff")
@@ -8572,7 +8765,8 @@ object_static_item_shared_item_mun_ballot_box = SharedStaticObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3509759537
+	clientObjectCRC = 3509759537,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_item_mun_ballot_box, "object/static/item/shared_item_mun_ballot_box.iff")
@@ -8616,7 +8810,8 @@ object_static_item_shared_item_music_drum = SharedStaticObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3913685828
+	clientObjectCRC = 3913685828,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_item_music_drum, "object/static/item/shared_item_music_drum.iff")
@@ -8660,7 +8855,8 @@ object_static_item_shared_item_music_gong_stick = SharedStaticObjectTemplate:new
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2886859470
+	clientObjectCRC = 2886859470,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_item_music_gong_stick, "object/static/item/shared_item_music_gong_stick.iff")
@@ -8704,7 +8900,8 @@ object_static_item_shared_item_music_microphone_s1 = SharedStaticObjectTemplate:
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1392564831
+	clientObjectCRC = 1392564831,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_item_music_microphone_s1, "object/static/item/shared_item_music_microphone_s1.iff")
@@ -8748,7 +8945,8 @@ object_static_item_shared_item_music_microphone_s2 = SharedStaticObjectTemplate:
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2283238088
+	clientObjectCRC = 2283238088,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_item_music_microphone_s2, "object/static/item/shared_item_music_microphone_s2.iff")
@@ -8792,7 +8990,8 @@ object_static_item_shared_item_music_omni_box = SharedStaticObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1121751331
+	clientObjectCRC = 1121751331,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_item_music_omni_box, "object/static/item/shared_item_music_omni_box.iff")
@@ -8836,7 +9035,8 @@ object_static_item_shared_item_music_red_ball_jet_organ = SharedStaticObjectTemp
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2858477001
+	clientObjectCRC = 2858477001,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_item_music_red_ball_jet_organ, "object/static/item/shared_item_music_red_ball_jet_organ.iff")
@@ -8880,7 +9080,8 @@ object_static_item_shared_item_nemodian_bird_cage = SharedStaticObjectTemplate:n
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 254927168
+	clientObjectCRC = 254927168,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_item_nemodian_bird_cage, "object/static/item/shared_item_nemodian_bird_cage.iff")
@@ -8924,7 +9125,8 @@ object_static_item_shared_item_newbie_crate = SharedStaticObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1451068724
+	clientObjectCRC = 1451068724,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_item_newbie_crate, "object/static/item/shared_item_newbie_crate.iff")
@@ -8968,7 +9170,8 @@ object_static_item_shared_item_organic_container = SharedStaticObjectTemplate:ne
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3040505241
+	clientObjectCRC = 3040505241,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_item_organic_container, "object/static/item/shared_item_organic_container.iff")
@@ -9012,7 +9215,8 @@ object_static_item_shared_item_organichem_stores = SharedStaticObjectTemplate:ne
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 613259702
+	clientObjectCRC = 613259702,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_item_organichem_stores, "object/static/item/shared_item_organichem_stores.iff")
@@ -9056,7 +9260,8 @@ object_static_item_shared_item_painting_agrilat_swamp_style_01 = SharedStaticObj
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3722569308
+	clientObjectCRC = 3722569308,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_item_painting_agrilat_swamp_style_01, "object/static/item/shared_item_painting_agrilat_swamp_style_01.iff")
@@ -9100,7 +9305,8 @@ object_static_item_shared_item_painting_agrilat_swamp_style_02 = SharedStaticObj
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 116805323
+	clientObjectCRC = 116805323,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_item_painting_agrilat_swamp_style_02, "object/static/item/shared_item_painting_agrilat_swamp_style_02.iff")
@@ -9144,7 +9350,8 @@ object_static_item_shared_item_painting_bothan_style_01 = SharedStaticObjectTemp
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 319085241
+	clientObjectCRC = 319085241,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_item_painting_bothan_style_01, "object/static/item/shared_item_painting_bothan_style_01.iff")
@@ -9188,7 +9395,8 @@ object_static_item_shared_item_painting_corellia_style_01 = SharedStaticObjectTe
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2681544199
+	clientObjectCRC = 2681544199,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_item_painting_corellia_style_01, "object/static/item/shared_item_painting_corellia_style_01.iff")
@@ -9232,7 +9440,8 @@ object_static_item_shared_item_painting_corellia_style_02 = SharedStaticObjectTe
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1153611408
+	clientObjectCRC = 1153611408,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_item_painting_corellia_style_02, "object/static/item/shared_item_painting_corellia_style_02.iff")
@@ -9276,7 +9485,8 @@ object_static_item_shared_item_painting_endor_style_01 = SharedStaticObjectTempl
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 898047270
+	clientObjectCRC = 898047270,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_item_painting_endor_style_01, "object/static/item/shared_item_painting_endor_style_01.iff")
@@ -9320,7 +9530,8 @@ object_static_item_shared_item_painting_naboo_style_01 = SharedStaticObjectTempl
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2489851461
+	clientObjectCRC = 2489851461,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_item_painting_naboo_style_01, "object/static/item/shared_item_painting_naboo_style_01.iff")
@@ -9364,7 +9575,8 @@ object_static_item_shared_item_painting_tatooine_style_01 = SharedStaticObjectTe
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 921871763
+	clientObjectCRC = 921871763,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_item_painting_tatooine_style_01, "object/static/item/shared_item_painting_tatooine_style_01.iff")
@@ -9408,7 +9620,8 @@ object_static_item_shared_item_painting_tatooine_style_02 = SharedStaticObjectTe
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3991211268
+	clientObjectCRC = 3991211268,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_item_painting_tatooine_style_02, "object/static/item/shared_item_painting_tatooine_style_02.iff")
@@ -9452,7 +9665,8 @@ object_static_item_shared_item_pistol = SharedStaticObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1718716397
+	clientObjectCRC = 1718716397,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_item_pistol, "object/static/item/shared_item_pistol.iff")
@@ -9496,7 +9710,8 @@ object_static_item_shared_item_pistol_imperial_scout = SharedStaticObjectTemplat
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1252414061
+	clientObjectCRC = 1252414061,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_item_pistol_imperial_scout, "object/static/item/shared_item_pistol_imperial_scout.iff")
@@ -9540,7 +9755,8 @@ object_static_item_shared_item_place_setting_01 = SharedStaticObjectTemplate:new
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 222887447
+	clientObjectCRC = 222887447,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_item_place_setting_01, "object/static/item/shared_item_place_setting_01.iff")
@@ -9584,7 +9800,8 @@ object_static_item_shared_item_raw_cloth = SharedStaticObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3593697104
+	clientObjectCRC = 3593697104,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_item_raw_cloth, "object/static/item/shared_item_raw_cloth.iff")
@@ -9628,7 +9845,8 @@ object_static_item_shared_item_repair_melee_kit = SharedStaticObjectTemplate:new
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 730337579
+	clientObjectCRC = 730337579,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_item_repair_melee_kit, "object/static/item/shared_item_repair_melee_kit.iff")
@@ -9672,7 +9890,8 @@ object_static_item_shared_item_ribbon = SharedStaticObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1186133138
+	clientObjectCRC = 1186133138,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_item_ribbon, "object/static/item/shared_item_ribbon.iff")
@@ -9716,7 +9935,8 @@ object_static_item_shared_item_rifle = SharedStaticObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 328334469
+	clientObjectCRC = 328334469,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_item_rifle, "object/static/item/shared_item_rifle.iff")
@@ -9760,7 +9980,8 @@ object_static_item_shared_item_rifle_t21 = SharedStaticObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1042864505
+	clientObjectCRC = 1042864505,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_item_rifle_t21, "object/static/item/shared_item_rifle_t21.iff")
@@ -9804,7 +10025,8 @@ object_static_item_shared_item_rocket_launcher = SharedStaticObjectTemplate:new 
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1188714941
+	clientObjectCRC = 1188714941,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_item_rocket_launcher, "object/static/item/shared_item_rocket_launcher.iff")
@@ -9848,7 +10070,8 @@ object_static_item_shared_item_ryyk_blade = SharedStaticObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2692497434
+	clientObjectCRC = 2692497434,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_item_ryyk_blade, "object/static/item/shared_item_ryyk_blade.iff")
@@ -9892,7 +10115,8 @@ object_static_item_shared_item_sclpt_stuffed_bantha = SharedStaticObjectTemplate
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 516883090
+	clientObjectCRC = 516883090,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_item_sclpt_stuffed_bantha, "object/static/item/shared_item_sclpt_stuffed_bantha.iff")
@@ -9936,7 +10160,8 @@ object_static_item_shared_item_scrolling_screen = SharedStaticObjectTemplate:new
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3726137889
+	clientObjectCRC = 3726137889,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_item_scrolling_screen, "object/static/item/shared_item_scrolling_screen.iff")
@@ -9980,7 +10205,8 @@ object_static_item_shared_item_security_scanner = SharedStaticObjectTemplate:new
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 210118642
+	clientObjectCRC = 210118642,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_item_security_scanner, "object/static/item/shared_item_security_scanner.iff")
@@ -10024,7 +10250,8 @@ object_static_item_shared_item_sewing_utensils = SharedStaticObjectTemplate:new 
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2943431813
+	clientObjectCRC = 2943431813,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_item_sewing_utensils, "object/static/item/shared_item_sewing_utensils.iff")
@@ -10068,7 +10295,8 @@ object_static_item_shared_item_sewing_utensils_lg_01 = SharedStaticObjectTemplat
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1394799204
+	clientObjectCRC = 1394799204,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_item_sewing_utensils_lg_01, "object/static/item/shared_item_sewing_utensils_lg_01.iff")
@@ -10112,7 +10340,8 @@ object_static_item_shared_item_sewing_utensils_lg_02 = SharedStaticObjectTemplat
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2285198067
+	clientObjectCRC = 2285198067,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_item_sewing_utensils_lg_02, "object/static/item/shared_item_sewing_utensils_lg_02.iff")
@@ -10156,7 +10385,8 @@ object_static_item_shared_item_shisha = SharedStaticObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1589368660
+	clientObjectCRC = 1589368660,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_item_shisha, "object/static/item/shared_item_shisha.iff")
@@ -10200,7 +10430,8 @@ object_static_item_shared_item_slave_brazier = SharedStaticObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 110349680
+	clientObjectCRC = 110349680,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_item_slave_brazier, "object/static/item/shared_item_slave_brazier.iff")
@@ -10244,7 +10475,8 @@ object_static_item_shared_item_speaker = SharedStaticObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 235065843
+	clientObjectCRC = 235065843,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_item_speaker, "object/static/item/shared_item_speaker.iff")
@@ -10288,7 +10520,8 @@ object_static_item_shared_item_storage_cabinet_01 = SharedStaticObjectTemplate:n
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1107032483
+	clientObjectCRC = 1107032483,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_item_storage_cabinet_01, "object/static/item/shared_item_storage_cabinet_01.iff")
@@ -10332,7 +10565,8 @@ object_static_item_shared_item_structure_module = SharedStaticObjectTemplate:new
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3134020162
+	clientObjectCRC = 3134020162,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_item_structure_module, "object/static/item/shared_item_structure_module.iff")
@@ -10376,7 +10610,8 @@ object_static_item_shared_item_substance_analyzer = SharedStaticObjectTemplate:n
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1396654236
+	clientObjectCRC = 1396654236,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_item_substance_analyzer, "object/static/item/shared_item_substance_analyzer.iff")
@@ -10420,7 +10655,8 @@ object_static_item_shared_item_tank_bubble = SharedStaticObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2226997314
+	clientObjectCRC = 2226997314,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_item_tank_bubble, "object/static/item/shared_item_tank_bubble.iff")
@@ -10464,7 +10700,8 @@ object_static_item_shared_item_tank_gas = SharedStaticObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2134737488
+	clientObjectCRC = 2134737488,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_item_tank_gas, "object/static/item/shared_item_tank_gas.iff")
@@ -10508,7 +10745,8 @@ object_static_item_shared_item_tapestry_imperial = SharedStaticObjectTemplate:ne
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1397358236
+	clientObjectCRC = 1397358236,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_item_tapestry_imperial, "object/static/item/shared_item_tapestry_imperial.iff")
@@ -10552,7 +10790,8 @@ object_static_item_shared_item_tapestry_rebel = SharedStaticObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3975304889
+	clientObjectCRC = 3975304889,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_item_tapestry_rebel, "object/static/item/shared_item_tapestry_rebel.iff")
@@ -10596,7 +10835,8 @@ object_static_item_shared_item_tapestry_tatooine = SharedStaticObjectTemplate:ne
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2397241081
+	clientObjectCRC = 2397241081,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_item_tapestry_tatooine, "object/static/item/shared_item_tapestry_tatooine.iff")
@@ -10640,7 +10880,8 @@ object_static_item_shared_item_tech_console_sectional_a = SharedStaticObjectTemp
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 410220122
+	clientObjectCRC = 410220122,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_item_tech_console_sectional_a, "object/static/item/shared_item_tech_console_sectional_a.iff")
@@ -10684,7 +10925,8 @@ object_static_item_shared_item_tech_console_sectional_b = SharedStaticObjectTemp
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3278167757
+	clientObjectCRC = 3278167757,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_item_tech_console_sectional_b, "object/static/item/shared_item_tech_console_sectional_b.iff")
@@ -10728,7 +10970,8 @@ object_static_item_shared_item_tech_console_sectional_c = SharedStaticObjectTemp
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2322184512
+	clientObjectCRC = 2322184512,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_item_tech_console_sectional_c, "object/static/item/shared_item_tech_console_sectional_c.iff")
@@ -10772,7 +11015,8 @@ object_static_item_shared_item_tech_console_sectional_d = SharedStaticObjectTemp
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1904906836
+	clientObjectCRC = 1904906836,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_item_tech_console_sectional_d, "object/static/item/shared_item_tech_console_sectional_d.iff")
@@ -10816,7 +11060,8 @@ object_static_item_shared_item_tool_aeromagnifier = SharedStaticObjectTemplate:n
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3837927792
+	clientObjectCRC = 3837927792,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_item_tool_aeromagnifier, "object/static/item/shared_item_tool_aeromagnifier.iff")
@@ -10860,7 +11105,8 @@ object_static_item_shared_item_tool_computer_toolkit = SharedStaticObjectTemplat
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3870512519
+	clientObjectCRC = 3870512519,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_item_tool_computer_toolkit, "object/static/item/shared_item_tool_computer_toolkit.iff")
@@ -10904,7 +11150,8 @@ object_static_item_shared_item_tool_demagnetizer = SharedStaticObjectTemplate:ne
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1385243389
+	clientObjectCRC = 1385243389,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_item_tool_demagnetizer, "object/static/item/shared_item_tool_demagnetizer.iff")
@@ -10948,7 +11195,8 @@ object_static_item_shared_item_tool_droid_toolkit = SharedStaticObjectTemplate:n
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1574251690
+	clientObjectCRC = 1574251690,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_item_tool_droid_toolkit, "object/static/item/shared_item_tool_droid_toolkit.iff")
@@ -10992,7 +11240,8 @@ object_static_item_shared_item_tool_engineering_datapad = SharedStaticObjectTemp
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3200271339
+	clientObjectCRC = 3200271339,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_item_tool_engineering_datapad, "object/static/item/shared_item_tool_engineering_datapad.iff")
@@ -11036,7 +11285,8 @@ object_static_item_shared_item_tool_handheld_viewscreen_s1 = SharedStaticObjectT
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 4196956120
+	clientObjectCRC = 4196956120,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_item_tool_handheld_viewscreen_s1, "object/static/item/shared_item_tool_handheld_viewscreen_s1.iff")
@@ -11080,7 +11330,8 @@ object_static_item_shared_item_tool_handheld_viewscreen_s2 = SharedStaticObjectT
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 557834063
+	clientObjectCRC = 557834063,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_item_tool_handheld_viewscreen_s2, "object/static/item/shared_item_tool_handheld_viewscreen_s2.iff")
@@ -11124,7 +11375,8 @@ object_static_item_shared_item_tool_hydrospanner = SharedStaticObjectTemplate:ne
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2348445241
+	clientObjectCRC = 2348445241,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_item_tool_hydrospanner, "object/static/item/shared_item_tool_hydrospanner.iff")
@@ -11168,7 +11420,8 @@ object_static_item_shared_item_tool_instrument_calibrator = SharedStaticObjectTe
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3875485569
+	clientObjectCRC = 3875485569,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_item_tool_instrument_calibrator, "object/static/item/shared_item_tool_instrument_calibrator.iff")
@@ -11212,7 +11465,8 @@ object_static_item_shared_item_tool_magnetite_cleaner = SharedStaticObjectTempla
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2304998957
+	clientObjectCRC = 2304998957,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_item_tool_magnetite_cleaner, "object/static/item/shared_item_tool_magnetite_cleaner.iff")
@@ -11256,7 +11510,8 @@ object_static_item_shared_item_tool_meson_taloscope = SharedStaticObjectTemplate
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3445151914
+	clientObjectCRC = 3445151914,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_item_tool_meson_taloscope, "object/static/item/shared_item_tool_meson_taloscope.iff")
@@ -11300,7 +11555,8 @@ object_static_item_shared_item_tool_ore_mining_unit = SharedStaticObjectTemplate
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 644353550
+	clientObjectCRC = 644353550,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_item_tool_ore_mining_unit, "object/static/item/shared_item_tool_ore_mining_unit.iff")
@@ -11344,7 +11600,8 @@ object_static_item_shared_item_tool_power_output_analyzer = SharedStaticObjectTe
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1439401525
+	clientObjectCRC = 1439401525,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_item_tool_power_output_analyzer, "object/static/item/shared_item_tool_power_output_analyzer.iff")
@@ -11388,7 +11645,8 @@ object_static_item_shared_item_tool_radio = SharedStaticObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2220759169
+	clientObjectCRC = 2220759169,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_item_tool_radio, "object/static/item/shared_item_tool_radio.iff")
@@ -11432,7 +11690,8 @@ object_static_item_shared_item_tool_ranged_wp_repair = SharedStaticObjectTemplat
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3897755824
+	clientObjectCRC = 3897755824,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_item_tool_ranged_wp_repair, "object/static/item/shared_item_tool_ranged_wp_repair.iff")
@@ -11476,7 +11735,8 @@ object_static_item_shared_item_tool_recording_rod = SharedStaticObjectTemplate:n
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2107092671
+	clientObjectCRC = 2107092671,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_item_tool_recording_rod, "object/static/item/shared_item_tool_recording_rod.iff")
@@ -11520,7 +11780,8 @@ object_static_item_shared_item_tool_sandstat = SharedStaticObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3331762173
+	clientObjectCRC = 3331762173,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_item_tool_sandstat, "object/static/item/shared_item_tool_sandstat.iff")
@@ -11564,7 +11825,8 @@ object_static_item_shared_item_tool_sensor_beacon = SharedStaticObjectTemplate:n
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 977421656
+	clientObjectCRC = 977421656,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_item_tool_sensor_beacon, "object/static/item/shared_item_tool_sensor_beacon.iff")
@@ -11608,7 +11870,8 @@ object_static_item_shared_item_tool_sensor_frequency_jammer_s2 = SharedStaticObj
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3660166964
+	clientObjectCRC = 3660166964,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_item_tool_sensor_frequency_jammer_s2, "object/static/item/shared_item_tool_sensor_frequency_jammer_s2.iff")
@@ -11652,7 +11915,8 @@ object_static_item_shared_item_tool_stasis_field = SharedStaticObjectTemplate:ne
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1171461633
+	clientObjectCRC = 1171461633,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_item_tool_stasis_field, "object/static/item/shared_item_tool_stasis_field.iff")
@@ -11696,7 +11960,8 @@ object_static_item_shared_item_tool_tools = SharedStaticObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2681316682
+	clientObjectCRC = 2681316682,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_item_tool_tools, "object/static/item/shared_item_tool_tools.iff")
@@ -11740,7 +12005,8 @@ object_static_item_shared_item_tool_turbine_generator = SharedStaticObjectTempla
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2665023163
+	clientObjectCRC = 2665023163,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_item_tool_turbine_generator, "object/static/item/shared_item_tool_turbine_generator.iff")
@@ -11784,7 +12050,8 @@ object_static_item_shared_item_tool_worklight = SharedStaticObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1750773218
+	clientObjectCRC = 1750773218,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_item_tool_worklight, "object/static/item/shared_item_tool_worklight.iff")
@@ -11828,7 +12095,8 @@ object_static_item_shared_item_turbine_generator = SharedStaticObjectTemplate:ne
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1245421508
+	clientObjectCRC = 1245421508,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_item_turbine_generator, "object/static/item/shared_item_turbine_generator.iff")
@@ -11872,7 +12140,8 @@ object_static_item_shared_item_vibroaxe = SharedStaticObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3409584272
+	clientObjectCRC = 3409584272,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_item_vibroaxe, "object/static/item/shared_item_vibroaxe.iff")
@@ -11916,7 +12185,8 @@ object_static_item_shared_item_vibroknuckles = SharedStaticObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 674397916
+	clientObjectCRC = 674397916,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_item_vibroknuckles, "object/static/item/shared_item_vibroknuckles.iff")
@@ -11960,7 +12230,8 @@ object_static_item_shared_item_vibrolance = SharedStaticObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 675826205
+	clientObjectCRC = 675826205,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_item_vibrolance, "object/static/item/shared_item_vibrolance.iff")
@@ -12004,7 +12275,8 @@ object_static_item_shared_item_wood_staff = SharedStaticObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 401434510
+	clientObjectCRC = 401434510,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_item_wood_staff, "object/static/item/shared_item_wood_staff.iff")
@@ -12048,7 +12320,8 @@ object_static_item_shared_wp_carbine_dh17_combined = SharedStaticObjectTemplate:
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 250888359
+	clientObjectCRC = 250888359,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_wp_carbine_dh17_combined, "object/static/item/shared_wp_carbine_dh17_combined.iff")
@@ -12092,7 +12365,8 @@ object_static_item_shared_wp_carbine_e11_combined = SharedStaticObjectTemplate:n
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3414429101
+	clientObjectCRC = 3414429101,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_wp_carbine_e11_combined, "object/static/item/shared_wp_carbine_e11_combined.iff")
@@ -12136,7 +12410,8 @@ object_static_item_shared_wp_carbine_ee3_combined = SharedStaticObjectTemplate:n
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1437189080
+	clientObjectCRC = 1437189080,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_wp_carbine_ee3_combined, "object/static/item/shared_wp_carbine_ee3_combined.iff")
@@ -12180,7 +12455,8 @@ object_static_item_shared_wp_carbine_elite_combined = SharedStaticObjectTemplate
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1850802894
+	clientObjectCRC = 1850802894,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_wp_carbine_elite_combined, "object/static/item/shared_wp_carbine_elite_combined.iff")
@@ -12224,7 +12500,8 @@ object_static_item_shared_wp_carbine_laser_combined = SharedStaticObjectTemplate
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1453498990
+	clientObjectCRC = 1453498990,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_wp_carbine_laser_combined, "object/static/item/shared_wp_carbine_laser_combined.iff")
@@ -12268,7 +12545,8 @@ object_static_item_shared_wp_mle_2h_sword_axe_s01 = SharedStaticObjectTemplate:n
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3699781446
+	clientObjectCRC = 3699781446,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_wp_mle_2h_sword_axe_s01, "object/static/item/shared_wp_mle_2h_sword_axe_s01.iff")
@@ -12312,7 +12590,8 @@ object_static_item_shared_wp_mle_2h_sword_lightsaber_luke = SharedStaticObjectTe
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1065633828
+	clientObjectCRC = 1065633828,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_wp_mle_2h_sword_lightsaber_luke, "object/static/item/shared_wp_mle_2h_sword_lightsaber_luke.iff")
@@ -12356,7 +12635,8 @@ object_static_item_shared_wp_mle_2h_sword_lightsaber_s01 = SharedStaticObjectTem
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3350565207
+	clientObjectCRC = 3350565207,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_wp_mle_2h_sword_lightsaber_s01, "object/static/item/shared_wp_mle_2h_sword_lightsaber_s01.iff")
@@ -12400,7 +12680,8 @@ object_static_item_shared_wp_mle_2h_sword_maul_s01 = SharedStaticObjectTemplate:
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1482753040
+	clientObjectCRC = 1482753040,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_wp_mle_2h_sword_maul_s01, "object/static/item/shared_wp_mle_2h_sword_maul_s01.iff")
@@ -12444,7 +12725,8 @@ object_static_item_shared_wp_mle_2h_sword_s01 = SharedStaticObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 521257310
+	clientObjectCRC = 521257310,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_wp_mle_2h_sword_s01, "object/static/item/shared_wp_mle_2h_sword_s01.iff")
@@ -12488,7 +12770,8 @@ object_static_item_shared_wp_mle_2h_sword_s02 = SharedStaticObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3288754633
+	clientObjectCRC = 3288754633,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_wp_mle_2h_sword_s02, "object/static/item/shared_wp_mle_2h_sword_s02.iff")
@@ -12532,7 +12815,8 @@ object_static_item_shared_wp_mle_2h_sword_s03 = SharedStaticObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2366312004
+	clientObjectCRC = 2366312004,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_wp_mle_2h_sword_s03, "object/static/item/shared_wp_mle_2h_sword_s03.iff")
@@ -12576,7 +12860,8 @@ object_static_item_shared_wp_mle_axe_heavy_duty = SharedStaticObjectTemplate:new
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1844463104
+	clientObjectCRC = 1844463104,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_wp_mle_axe_heavy_duty, "object/static/item/shared_wp_mle_axe_heavy_duty.iff")
@@ -12620,7 +12905,8 @@ object_static_item_shared_wp_mle_axe_vibroax = SharedStaticObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2440657910
+	clientObjectCRC = 2440657910,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_wp_mle_axe_vibroax, "object/static/item/shared_wp_mle_axe_vibroax.iff")
@@ -12664,7 +12950,8 @@ object_static_item_shared_wp_mle_baton_gaderiffi = SharedStaticObjectTemplate:ne
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 992193600
+	clientObjectCRC = 992193600,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_wp_mle_baton_gaderiffi, "object/static/item/shared_wp_mle_baton_gaderiffi.iff")
@@ -12708,7 +12995,8 @@ object_static_item_shared_wp_mle_baton_stun = SharedStaticObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2420709474
+	clientObjectCRC = 2420709474,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_wp_mle_baton_stun, "object/static/item/shared_wp_mle_baton_stun.iff")
@@ -12752,7 +13040,8 @@ object_static_item_shared_wp_mle_battleaxe = SharedStaticObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1779328413
+	clientObjectCRC = 1779328413,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_wp_mle_battleaxe, "object/static/item/shared_wp_mle_battleaxe.iff")
@@ -12796,7 +13085,8 @@ object_static_item_shared_wp_mle_blacksun_hack = SharedStaticObjectTemplate:new 
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2212584107
+	clientObjectCRC = 2212584107,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_wp_mle_blacksun_hack, "object/static/item/shared_wp_mle_blacksun_hack.iff")
@@ -12840,7 +13130,8 @@ object_static_item_shared_wp_mle_blacksun_razor = SharedStaticObjectTemplate:new
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1625350741
+	clientObjectCRC = 1625350741,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_wp_mle_blacksun_razor, "object/static/item/shared_wp_mle_blacksun_razor.iff")
@@ -12884,7 +13175,8 @@ object_static_item_shared_wp_mle_knife_dagger = SharedStaticObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3675420926
+	clientObjectCRC = 3675420926,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_wp_mle_knife_dagger, "object/static/item/shared_wp_mle_knife_dagger.iff")
@@ -12928,7 +13220,8 @@ object_static_item_shared_wp_mle_knife_stone = SharedStaticObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3206396187
+	clientObjectCRC = 3206396187,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_wp_mle_knife_stone, "object/static/item/shared_wp_mle_knife_stone.iff")
@@ -12972,7 +13265,8 @@ object_static_item_shared_wp_mle_knife_survival = SharedStaticObjectTemplate:new
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 826777135
+	clientObjectCRC = 826777135,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_wp_mle_knife_survival, "object/static/item/shared_wp_mle_knife_survival.iff")
@@ -13016,7 +13310,8 @@ object_static_item_shared_wp_mle_knife_vibroblade = SharedStaticObjectTemplate:n
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1599437236
+	clientObjectCRC = 1599437236,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_wp_mle_knife_vibroblade, "object/static/item/shared_wp_mle_knife_vibroblade.iff")
@@ -13060,7 +13355,8 @@ object_static_item_shared_wp_mle_lance_controller = SharedStaticObjectTemplate:n
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1826224713
+	clientObjectCRC = 1826224713,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_wp_mle_lance_controller, "object/static/item/shared_wp_mle_lance_controller.iff")
@@ -13104,7 +13400,8 @@ object_static_item_shared_wp_mle_lance_lightsaber_s01 = SharedStaticObjectTempla
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3718329571
+	clientObjectCRC = 3718329571,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_wp_mle_lance_lightsaber_s01, "object/static/item/shared_wp_mle_lance_lightsaber_s01.iff")
@@ -13148,7 +13445,8 @@ object_static_item_shared_wp_mle_lance_lightsaber_s02 = SharedStaticObjectTempla
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 112630900
+	clientObjectCRC = 112630900,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_wp_mle_lance_lightsaber_s02, "object/static/item/shared_wp_mle_lance_lightsaber_s02.iff")
@@ -13192,7 +13490,8 @@ object_static_item_shared_wp_mle_lance_s01 = SharedStaticObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1433317881
+	clientObjectCRC = 1433317881,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_wp_mle_lance_s01, "object/static/item/shared_wp_mle_lance_s01.iff")
@@ -13236,7 +13535,8 @@ object_static_item_shared_wp_mle_lance_staff_metal_s01 = SharedStaticObjectTempl
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3472480586
+	clientObjectCRC = 3472480586,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_wp_mle_lance_staff_metal_s01, "object/static/item/shared_wp_mle_lance_staff_metal_s01.iff")
@@ -13280,7 +13580,8 @@ object_static_item_shared_wp_mle_lance_staff_wood_s01 = SharedStaticObjectTempla
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3664898798
+	clientObjectCRC = 3664898798,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_wp_mle_lance_staff_wood_s01, "object/static/item/shared_wp_mle_lance_staff_wood_s01.iff")
@@ -13324,7 +13625,8 @@ object_static_item_shared_wp_mle_lance_staff_wood_s02 = SharedStaticObjectTempla
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 23478905
+	clientObjectCRC = 23478905,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_wp_mle_lance_staff_wood_s02, "object/static/item/shared_wp_mle_lance_staff_wood_s02.iff")
@@ -13368,7 +13670,8 @@ object_static_item_shared_wp_mle_lance_vibroaxe = SharedStaticObjectTemplate:new
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3456274398
+	clientObjectCRC = 3456274398,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_wp_mle_lance_vibroaxe, "object/static/item/shared_wp_mle_lance_vibroaxe.iff")
@@ -13412,7 +13715,8 @@ object_static_item_shared_wp_mle_lance_vibrolance = SharedStaticObjectTemplate:n
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3791727168
+	clientObjectCRC = 3791727168,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_wp_mle_lance_vibrolance, "object/static/item/shared_wp_mle_lance_vibrolance.iff")
@@ -13456,7 +13760,8 @@ object_static_item_shared_wp_mle_nightsister_lance = SharedStaticObjectTemplate:
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1839817431
+	clientObjectCRC = 1839817431,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_wp_mle_nightsister_lance, "object/static/item/shared_wp_mle_nightsister_lance.iff")
@@ -13500,7 +13805,8 @@ object_static_item_shared_wp_mle_scythe = SharedStaticObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3502273014
+	clientObjectCRC = 3502273014,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_wp_mle_scythe, "object/static/item/shared_wp_mle_scythe.iff")
@@ -13544,7 +13850,8 @@ object_static_item_shared_wp_mle_sword_lightsaber_anakin = SharedStaticObjectTem
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3342611236
+	clientObjectCRC = 3342611236,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_wp_mle_sword_lightsaber_anakin, "object/static/item/shared_wp_mle_sword_lightsaber_anakin.iff")
@@ -13588,7 +13895,8 @@ object_static_item_shared_wp_mle_sword_lightsaber_andael = SharedStaticObjectTem
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1018608527
+	clientObjectCRC = 1018608527,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_wp_mle_sword_lightsaber_andael, "object/static/item/shared_wp_mle_sword_lightsaber_andael.iff")
@@ -13632,7 +13940,8 @@ object_static_item_shared_wp_mle_sword_lightsaber_ben = SharedStaticObjectTempla
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 592712531
+	clientObjectCRC = 592712531,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_wp_mle_sword_lightsaber_ben, "object/static/item/shared_wp_mle_sword_lightsaber_ben.iff")
@@ -13676,7 +13985,8 @@ object_static_item_shared_wp_mle_sword_lightsaber_dugald = SharedStaticObjectTem
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1547853327
+	clientObjectCRC = 1547853327,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_wp_mle_sword_lightsaber_dugald, "object/static/item/shared_wp_mle_sword_lightsaber_dugald.iff")
@@ -13720,7 +14030,8 @@ object_static_item_shared_wp_mle_sword_lightsaber_leather = SharedStaticObjectTe
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1298192347
+	clientObjectCRC = 1298192347,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_wp_mle_sword_lightsaber_leather, "object/static/item/shared_wp_mle_sword_lightsaber_leather.iff")
@@ -13764,7 +14075,8 @@ object_static_item_shared_wp_mle_sword_lightsaber_luke = SharedStaticObjectTempl
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 79637610
+	clientObjectCRC = 79637610,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_wp_mle_sword_lightsaber_luke, "object/static/item/shared_wp_mle_sword_lightsaber_luke.iff")
@@ -13808,7 +14120,8 @@ object_static_item_shared_wp_mle_sword_lightsaber_luke_2h = SharedStaticObjectTe
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1268199554
+	clientObjectCRC = 1268199554,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_wp_mle_sword_lightsaber_luke_2h, "object/static/item/shared_wp_mle_sword_lightsaber_luke_2h.iff")
@@ -13852,7 +14165,8 @@ object_static_item_shared_wp_mle_sword_lightsaber_mace = SharedStaticObjectTempl
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1504760159
+	clientObjectCRC = 1504760159,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_wp_mle_sword_lightsaber_mace, "object/static/item/shared_wp_mle_sword_lightsaber_mace.iff")
@@ -13896,7 +14210,8 @@ object_static_item_shared_wp_mle_sword_lightsaber_nebu = SharedStaticObjectTempl
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 338954886
+	clientObjectCRC = 338954886,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_wp_mle_sword_lightsaber_nebu, "object/static/item/shared_wp_mle_sword_lightsaber_nebu.iff")
@@ -13940,7 +14255,8 @@ object_static_item_shared_wp_mle_sword_lightsaber_obi = SharedStaticObjectTempla
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2627580971
+	clientObjectCRC = 2627580971,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_wp_mle_sword_lightsaber_obi, "object/static/item/shared_wp_mle_sword_lightsaber_obi.iff")
@@ -13984,7 +14300,8 @@ object_static_item_shared_wp_mle_sword_lightsaber_quigon = SharedStaticObjectTem
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2820675362
+	clientObjectCRC = 2820675362,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_wp_mle_sword_lightsaber_quigon, "object/static/item/shared_wp_mle_sword_lightsaber_quigon.iff")
@@ -14028,7 +14345,8 @@ object_static_item_shared_wp_mle_sword_lightsaber_sleekblack = SharedStaticObjec
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2604364449
+	clientObjectCRC = 2604364449,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_wp_mle_sword_lightsaber_sleekblack, "object/static/item/shared_wp_mle_sword_lightsaber_sleekblack.iff")
@@ -14072,7 +14390,8 @@ object_static_item_shared_wp_mle_sword_lightsaber_sleeksilver = SharedStaticObje
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2115713480
+	clientObjectCRC = 2115713480,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_wp_mle_sword_lightsaber_sleeksilver, "object/static/item/shared_wp_mle_sword_lightsaber_sleeksilver.iff")
@@ -14116,7 +14435,8 @@ object_static_item_shared_wp_mle_sword_lightsaber_vader = SharedStaticObjectTemp
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2745431319
+	clientObjectCRC = 2745431319,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_wp_mle_sword_lightsaber_vader, "object/static/item/shared_wp_mle_sword_lightsaber_vader.iff")
@@ -14160,7 +14480,8 @@ object_static_item_shared_wp_mle_sword_rantok = SharedStaticObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3924744619
+	clientObjectCRC = 3924744619,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_wp_mle_sword_rantok, "object/static/item/shared_wp_mle_sword_rantok.iff")
@@ -14204,7 +14525,8 @@ object_static_item_shared_wp_mle_sword_ryyk_blade = SharedStaticObjectTemplate:n
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1385616360
+	clientObjectCRC = 1385616360,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_wp_mle_sword_ryyk_blade, "object/static/item/shared_wp_mle_sword_ryyk_blade.iff")
@@ -14248,7 +14570,8 @@ object_static_item_shared_wp_mle_sword_s01 = SharedStaticObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3780711592
+	clientObjectCRC = 3780711592,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_wp_mle_sword_s01, "object/static/item/shared_wp_mle_sword_s01.iff")
@@ -14292,7 +14615,8 @@ object_static_item_shared_wp_mle_sword_s02 = SharedStaticObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 978238527
+	clientObjectCRC = 978238527,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_wp_mle_sword_s02, "object/static/item/shared_wp_mle_sword_s02.iff")
@@ -14336,7 +14660,8 @@ object_static_item_shared_wp_mle_sword_vibroblade = SharedStaticObjectTemplate:n
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1317941189
+	clientObjectCRC = 1317941189,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_wp_mle_sword_vibroblade, "object/static/item/shared_wp_mle_sword_vibroblade.iff")
@@ -14380,7 +14705,8 @@ object_static_item_shared_wp_pistol_cdef_combined = SharedStaticObjectTemplate:n
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3411329076
+	clientObjectCRC = 3411329076,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_wp_pistol_cdef_combined, "object/static/item/shared_wp_pistol_cdef_combined.iff")
@@ -14424,7 +14750,8 @@ object_static_item_shared_wp_pistol_d18_combined = SharedStaticObjectTemplate:ne
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1347955636
+	clientObjectCRC = 1347955636,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_wp_pistol_d18_combined, "object/static/item/shared_wp_pistol_d18_combined.iff")
@@ -14468,7 +14795,8 @@ object_static_item_shared_wp_pistol_dl44_combined = SharedStaticObjectTemplate:n
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 907334301
+	clientObjectCRC = 907334301,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_wp_pistol_dl44_combined, "object/static/item/shared_wp_pistol_dl44_combined.iff")
@@ -14512,7 +14840,8 @@ object_static_item_shared_wp_pistol_dl44_metal_combined = SharedStaticObjectTemp
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 137325307
+	clientObjectCRC = 137325307,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_wp_pistol_dl44_metal_combined, "object/static/item/shared_wp_pistol_dl44_metal_combined.iff")
@@ -14556,7 +14885,8 @@ object_static_item_shared_wp_pistol_scout_combined = SharedStaticObjectTemplate:
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 637170422
+	clientObjectCRC = 637170422,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_wp_pistol_scout_combined, "object/static/item/shared_wp_pistol_scout_combined.iff")
@@ -14600,7 +14930,8 @@ object_static_item_shared_wp_pistol_srcombat_combined = SharedStaticObjectTempla
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3596059056
+	clientObjectCRC = 3596059056,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_wp_pistol_srcombat_combined, "object/static/item/shared_wp_pistol_srcombat_combined.iff")
@@ -14644,7 +14975,8 @@ object_static_item_shared_wp_rifle_bowcaster_combined = SharedStaticObjectTempla
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3861751731
+	clientObjectCRC = 3861751731,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_wp_rifle_bowcaster_combined, "object/static/item/shared_wp_rifle_bowcaster_combined.iff")
@@ -14688,7 +15020,8 @@ object_static_item_shared_wp_rifle_laser_combined = SharedStaticObjectTemplate:n
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2285943714
+	clientObjectCRC = 2285943714,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_wp_rifle_laser_combined, "object/static/item/shared_wp_rifle_laser_combined.iff")
@@ -14732,7 +15065,8 @@ object_static_item_shared_wp_rifle_t21_combined = SharedStaticObjectTemplate:new
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1990229508
+	clientObjectCRC = 1990229508,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_wp_rifle_t21_combined, "object/static/item/shared_wp_rifle_t21_combined.iff")
@@ -14776,7 +15110,8 @@ object_static_item_shared_wp_rifle_tusken_combined = SharedStaticObjectTemplate:
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2148373752
+	clientObjectCRC = 2148373752,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_item_shared_wp_rifle_tusken_combined, "object/static/item/shared_wp_rifle_tusken_combined.iff")

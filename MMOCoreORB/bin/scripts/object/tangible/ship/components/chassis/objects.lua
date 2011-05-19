@@ -90,7 +90,8 @@ object_tangible_ship_components_chassis_shared_awing_chassis_token = SharedTangi
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 90429842
+	clientObjectCRC = 90429842,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/chassis/shared_base_chassis_token.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_chassis_shared_awing_chassis_token, "object/tangible/ship/components/chassis/shared_awing_chassis_token.iff")
@@ -144,7 +145,8 @@ object_tangible_ship_components_chassis_shared_base_chassis_token = SharedTangib
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 721690937
+	clientObjectCRC = 721690937,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_chassis_shared_base_chassis_token, "object/tangible/ship/components/chassis/shared_base_chassis_token.iff")
@@ -198,7 +200,8 @@ object_tangible_ship_components_chassis_shared_blacksun_heavy_s01_chassis_token 
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 467101545
+	clientObjectCRC = 467101545,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/chassis/shared_base_chassis_token.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_chassis_shared_blacksun_heavy_s01_chassis_token, "object/tangible/ship/components/chassis/shared_blacksun_heavy_s01_chassis_token.iff")
@@ -252,7 +255,8 @@ object_tangible_ship_components_chassis_shared_blacksun_heavy_s02_chassis_token 
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 100401026
+	clientObjectCRC = 100401026,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/chassis/shared_base_chassis_token.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_chassis_shared_blacksun_heavy_s02_chassis_token, "object/tangible/ship/components/chassis/shared_blacksun_heavy_s02_chassis_token.iff")
@@ -306,7 +310,8 @@ object_tangible_ship_components_chassis_shared_blacksun_heavy_s03_chassis_token 
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 266368987
+	clientObjectCRC = 266368987,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/chassis/shared_base_chassis_token.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_chassis_shared_blacksun_heavy_s03_chassis_token, "object/tangible/ship/components/chassis/shared_blacksun_heavy_s03_chassis_token.iff")
@@ -360,7 +365,8 @@ object_tangible_ship_components_chassis_shared_blacksun_heavy_s04_chassis_token 
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 966970964
+	clientObjectCRC = 966970964,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/chassis/shared_base_chassis_token.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_chassis_shared_blacksun_heavy_s04_chassis_token, "object/tangible/ship/components/chassis/shared_blacksun_heavy_s04_chassis_token.iff")
@@ -414,7 +420,8 @@ object_tangible_ship_components_chassis_shared_blacksun_light_s01_chassis_token 
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1715349406
+	clientObjectCRC = 1715349406,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/chassis/shared_base_chassis_token.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_chassis_shared_blacksun_light_s01_chassis_token, "object/tangible/ship/components/chassis/shared_blacksun_light_s01_chassis_token.iff")
@@ -468,7 +475,8 @@ object_tangible_ship_components_chassis_shared_blacksun_light_s02_chassis_token 
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2014494581
+	clientObjectCRC = 2014494581,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/chassis/shared_base_chassis_token.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_chassis_shared_blacksun_light_s02_chassis_token, "object/tangible/ship/components/chassis/shared_blacksun_light_s02_chassis_token.iff")
@@ -522,7 +530,8 @@ object_tangible_ship_components_chassis_shared_blacksun_light_s03_chassis_token 
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1913206572
+	clientObjectCRC = 1913206572,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/chassis/shared_base_chassis_token.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_chassis_shared_blacksun_light_s03_chassis_token, "object/tangible/ship/components/chassis/shared_blacksun_light_s03_chassis_token.iff")
@@ -576,7 +585,8 @@ object_tangible_ship_components_chassis_shared_blacksun_light_s04_chassis_token 
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1145802403
+	clientObjectCRC = 1145802403,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/chassis/shared_base_chassis_token.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_chassis_shared_blacksun_light_s04_chassis_token, "object/tangible/ship/components/chassis/shared_blacksun_light_s04_chassis_token.iff")
@@ -630,7 +640,8 @@ object_tangible_ship_components_chassis_shared_blacksun_medium_s01_chassis_token
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1303791659
+	clientObjectCRC = 1303791659,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/chassis/shared_base_chassis_token.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_chassis_shared_blacksun_medium_s01_chassis_token, "object/tangible/ship/components/chassis/shared_blacksun_medium_s01_chassis_token.iff")
@@ -684,7 +695,8 @@ object_tangible_ship_components_chassis_shared_blacksun_medium_s02_chassis_token
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1402654912
+	clientObjectCRC = 1402654912,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/chassis/shared_base_chassis_token.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_chassis_shared_blacksun_medium_s02_chassis_token, "object/tangible/ship/components/chassis/shared_blacksun_medium_s02_chassis_token.iff")
@@ -738,7 +750,8 @@ object_tangible_ship_components_chassis_shared_blacksun_medium_s03_chassis_token
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1501649049
+	clientObjectCRC = 1501649049,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/chassis/shared_base_chassis_token.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_chassis_shared_blacksun_medium_s03_chassis_token, "object/tangible/ship/components/chassis/shared_blacksun_medium_s03_chassis_token.iff")
@@ -792,7 +805,8 @@ object_tangible_ship_components_chassis_shared_blacksun_medium_s04_chassis_token
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1875108118
+	clientObjectCRC = 1875108118,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/chassis/shared_base_chassis_token.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_chassis_shared_blacksun_medium_s04_chassis_token, "object/tangible/ship/components/chassis/shared_blacksun_medium_s04_chassis_token.iff")
@@ -846,7 +860,8 @@ object_tangible_ship_components_chassis_shared_bwing_chassis_token = SharedTangi
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 263693282
+	clientObjectCRC = 263693282,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/chassis/shared_base_chassis_token.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_chassis_shared_bwing_chassis_token, "object/tangible/ship/components/chassis/shared_bwing_chassis_token.iff")
@@ -900,7 +915,8 @@ object_tangible_ship_components_chassis_shared_decimator_chassis_token = SharedT
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 202774630
+	clientObjectCRC = 202774630,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/chassis/shared_base_chassis_token.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_chassis_shared_decimator_chassis_token, "object/tangible/ship/components/chassis/shared_decimator_chassis_token.iff")
@@ -954,7 +970,8 @@ object_tangible_ship_components_chassis_shared_firespray_chassis_token = SharedT
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2197904030
+	clientObjectCRC = 2197904030,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/chassis/shared_base_chassis_token.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_chassis_shared_firespray_chassis_token, "object/tangible/ship/components/chassis/shared_firespray_chassis_token.iff")
@@ -1008,7 +1025,8 @@ object_tangible_ship_components_chassis_shared_hutt_heavy_s01_chassis_token = Sh
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2891959182
+	clientObjectCRC = 2891959182,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/chassis/shared_base_chassis_token.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_chassis_shared_hutt_heavy_s01_chassis_token, "object/tangible/ship/components/chassis/shared_hutt_heavy_s01_chassis_token.iff")
@@ -1062,7 +1080,8 @@ object_tangible_ship_components_chassis_shared_hutt_heavy_s02_chassis_token = Sh
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2993902437
+	clientObjectCRC = 2993902437,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/chassis/shared_base_chassis_token.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_chassis_shared_hutt_heavy_s02_chassis_token, "object/tangible/ship/components/chassis/shared_hutt_heavy_s02_chassis_token.iff")
@@ -1116,7 +1135,8 @@ object_tangible_ship_components_chassis_shared_hutt_light_chassis_token = Shared
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2409366358
+	clientObjectCRC = 2409366358,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/chassis/shared_base_chassis_token.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_chassis_shared_hutt_light_chassis_token, "object/tangible/ship/components/chassis/shared_hutt_light_chassis_token.iff")
@@ -1170,7 +1190,8 @@ object_tangible_ship_components_chassis_shared_hutt_light_s02_chassis_token = Sh
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3482981266
+	clientObjectCRC = 3482981266,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/chassis/shared_base_chassis_token.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_chassis_shared_hutt_light_s02_chassis_token, "object/tangible/ship/components/chassis/shared_hutt_light_s02_chassis_token.iff")
@@ -1224,7 +1245,8 @@ object_tangible_ship_components_chassis_shared_hutt_medium_s01_chassis_token = S
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1717793360
+	clientObjectCRC = 1717793360,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/chassis/shared_base_chassis_token.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_chassis_shared_hutt_medium_s01_chassis_token, "object/tangible/ship/components/chassis/shared_hutt_medium_s01_chassis_token.iff")
@@ -1278,7 +1300,8 @@ object_tangible_ship_components_chassis_shared_hutt_medium_s02_chassis_token = S
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2018503355
+	clientObjectCRC = 2018503355,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/chassis/shared_base_chassis_token.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_chassis_shared_hutt_medium_s02_chassis_token, "object/tangible/ship/components/chassis/shared_hutt_medium_s02_chassis_token.iff")
@@ -1332,7 +1355,8 @@ object_tangible_ship_components_chassis_shared_hutt_turret_ship_chassis_token = 
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2648461459
+	clientObjectCRC = 2648461459,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/chassis/shared_base_chassis_token.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_chassis_shared_hutt_turret_ship_chassis_token, "object/tangible/ship/components/chassis/shared_hutt_turret_ship_chassis_token.iff")
@@ -1386,7 +1410,8 @@ object_tangible_ship_components_chassis_shared_tie_in_chassis_token = SharedTang
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2237376595
+	clientObjectCRC = 2237376595,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/chassis/shared_base_chassis_token.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_chassis_shared_tie_in_chassis_token, "object/tangible/ship/components/chassis/shared_tie_in_chassis_token.iff")
@@ -1440,7 +1465,8 @@ object_tangible_ship_components_chassis_shared_tie_light_duty_chassis_token = Sh
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1661320674
+	clientObjectCRC = 1661320674,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/chassis/shared_base_chassis_token.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_chassis_shared_tie_light_duty_chassis_token, "object/tangible/ship/components/chassis/shared_tie_light_duty_chassis_token.iff")
@@ -1494,7 +1520,8 @@ object_tangible_ship_components_chassis_shared_tieadvanced_chassis_token = Share
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2706856449
+	clientObjectCRC = 2706856449,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/chassis/shared_base_chassis_token.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_chassis_shared_tieadvanced_chassis_token, "object/tangible/ship/components/chassis/shared_tieadvanced_chassis_token.iff")
@@ -1548,7 +1575,8 @@ object_tangible_ship_components_chassis_shared_tieaggressor_chassis_token = Shar
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 791634059
+	clientObjectCRC = 791634059,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/chassis/shared_base_chassis_token.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_chassis_shared_tieaggressor_chassis_token, "object/tangible/ship/components/chassis/shared_tieaggressor_chassis_token.iff")
@@ -1602,7 +1630,8 @@ object_tangible_ship_components_chassis_shared_tiebomber_chassis_token = SharedT
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1457187476
+	clientObjectCRC = 1457187476,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/chassis/shared_base_chassis_token.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_chassis_shared_tiebomber_chassis_token, "object/tangible/ship/components/chassis/shared_tiebomber_chassis_token.iff")
@@ -1656,7 +1685,8 @@ object_tangible_ship_components_chassis_shared_tiefighter_chassis_token = Shared
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1894497795
+	clientObjectCRC = 1894497795,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/chassis/shared_base_chassis_token.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_chassis_shared_tiefighter_chassis_token, "object/tangible/ship/components/chassis/shared_tiefighter_chassis_token.iff")
@@ -1710,7 +1740,8 @@ object_tangible_ship_components_chassis_shared_tieinterceptor_chassis_token = Sh
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2556036230
+	clientObjectCRC = 2556036230,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/chassis/shared_base_chassis_token.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_chassis_shared_tieinterceptor_chassis_token, "object/tangible/ship/components/chassis/shared_tieinterceptor_chassis_token.iff")
@@ -1764,7 +1795,8 @@ object_tangible_ship_components_chassis_shared_tieoppressor_chassis_token = Shar
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1760010218
+	clientObjectCRC = 1760010218,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/chassis/shared_base_chassis_token.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_chassis_shared_tieoppressor_chassis_token, "object/tangible/ship/components/chassis/shared_tieoppressor_chassis_token.iff")
@@ -1818,7 +1850,8 @@ object_tangible_ship_components_chassis_shared_xwing_chassis_token = SharedTangi
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1435247554
+	clientObjectCRC = 1435247554,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/chassis/shared_base_chassis_token.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_chassis_shared_xwing_chassis_token, "object/tangible/ship/components/chassis/shared_xwing_chassis_token.iff")
@@ -1872,7 +1905,8 @@ object_tangible_ship_components_chassis_shared_ykl37r_chassis_token = SharedTang
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3131311830
+	clientObjectCRC = 3131311830,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/chassis/shared_base_chassis_token.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_chassis_shared_ykl37r_chassis_token, "object/tangible/ship/components/chassis/shared_ykl37r_chassis_token.iff")
@@ -1926,7 +1960,8 @@ object_tangible_ship_components_chassis_shared_yt1300_chassis_token = SharedTang
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1540879175
+	clientObjectCRC = 1540879175,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/chassis/shared_base_chassis_token.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_chassis_shared_yt1300_chassis_token, "object/tangible/ship/components/chassis/shared_yt1300_chassis_token.iff")
@@ -1980,7 +2015,8 @@ object_tangible_ship_components_chassis_shared_ywing_chassis_token = SharedTangi
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1405094418
+	clientObjectCRC = 1405094418,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/chassis/shared_base_chassis_token.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_chassis_shared_ywing_chassis_token, "object/tangible/ship/components/chassis/shared_ywing_chassis_token.iff")
@@ -2034,7 +2070,8 @@ object_tangible_ship_components_chassis_shared_ywing_longprobe_chassis_token = S
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2655964271
+	clientObjectCRC = 2655964271,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/chassis/shared_base_chassis_token.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_chassis_shared_ywing_longprobe_chassis_token, "object/tangible/ship/components/chassis/shared_ywing_longprobe_chassis_token.iff")
@@ -2088,7 +2125,8 @@ object_tangible_ship_components_chassis_shared_z95_chassis_token = SharedTangibl
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2126096651
+	clientObjectCRC = 2126096651,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/chassis/shared_base_chassis_token.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_chassis_shared_z95_chassis_token, "object/tangible/ship/components/chassis/shared_z95_chassis_token.iff")

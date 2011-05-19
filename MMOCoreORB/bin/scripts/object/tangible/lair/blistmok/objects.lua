@@ -90,7 +90,8 @@ object_tangible_lair_blistmok_shared_lair_blistmok = SharedTangibleObjectTemplat
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 642963853
+	clientObjectCRC = 642963853,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_blistmok_shared_lair_blistmok, "object/tangible/lair/blistmok/shared_lair_blistmok.iff")
@@ -144,7 +145,8 @@ object_tangible_lair_blistmok_shared_lair_blistmok_mountain = SharedTangibleObje
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 920509188
+	clientObjectCRC = 920509188,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_blistmok_shared_lair_blistmok_mountain, "object/tangible/lair/blistmok/shared_lair_blistmok_mountain.iff")
@@ -198,7 +200,8 @@ object_tangible_lair_blistmok_shared_lair_blistmok_wasteland = SharedTangibleObj
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1298589466
+	clientObjectCRC = 1298589466,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_blistmok_shared_lair_blistmok_wasteland, "object/tangible/lair/blistmok/shared_lair_blistmok_wasteland.iff")

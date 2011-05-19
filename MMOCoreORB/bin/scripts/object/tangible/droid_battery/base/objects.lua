@@ -90,7 +90,8 @@ object_tangible_droid_battery_base_shared_base_battery = SharedTangibleObjectTem
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4005418239
+	clientObjectCRC = 4005418239,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_droid_battery_base_shared_base_battery, "object/tangible/droid_battery/base/shared_base_battery.iff")

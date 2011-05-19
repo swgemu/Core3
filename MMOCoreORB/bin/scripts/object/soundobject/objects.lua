@@ -80,7 +80,8 @@ object_soundobject_shared_soundobject_cantina_large = SharedStaticObjectTemplate
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1113312589
+	clientObjectCRC = 1113312589,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/soundobject/base/shared_soundobject_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_soundobject_shared_soundobject_cantina_large, "object/soundobject/shared_soundobject_cantina_large.iff")
@@ -124,7 +125,8 @@ object_soundobject_shared_soundobject_cantina_medium = SharedStaticObjectTemplat
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 769239243
+	clientObjectCRC = 769239243,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/soundobject/base/shared_soundobject_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_soundobject_shared_soundobject_cantina_medium, "object/soundobject/shared_soundobject_cantina_medium.iff")
@@ -168,7 +170,8 @@ object_soundobject_shared_soundobject_cantina_small = SharedStaticObjectTemplate
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1983928676
+	clientObjectCRC = 1983928676,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/soundobject/base/shared_soundobject_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_soundobject_shared_soundobject_cantina_small, "object/soundobject/shared_soundobject_cantina_small.iff")
@@ -212,7 +215,8 @@ object_soundobject_shared_soundobject_cave_drip = SharedStaticObjectTemplate:new
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 526901089
+	clientObjectCRC = 526901089,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/soundobject/base/shared_soundobject_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_soundobject_shared_soundobject_cave_drip, "object/soundobject/shared_soundobject_cave_drip.iff")
@@ -256,7 +260,8 @@ object_soundobject_shared_soundobject_chamber_music = SharedStaticObjectTemplate
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1471626100
+	clientObjectCRC = 1471626100,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/soundobject/base/shared_soundobject_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_soundobject_shared_soundobject_chamber_music, "object/soundobject/shared_soundobject_chamber_music.iff")
@@ -300,7 +305,8 @@ object_soundobject_shared_soundobject_city_crowd_booing = SharedStaticObjectTemp
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1649456437
+	clientObjectCRC = 1649456437,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/soundobject/base/shared_soundobject_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_soundobject_shared_soundobject_city_crowd_booing, "object/soundobject/shared_soundobject_city_crowd_booing.iff")
@@ -344,7 +350,8 @@ object_soundobject_shared_soundobject_city_crowd_cheering = SharedStaticObjectTe
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3171942528
+	clientObjectCRC = 3171942528,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/soundobject/base/shared_soundobject_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_soundobject_shared_soundobject_city_crowd_cheering, "object/soundobject/shared_soundobject_city_crowd_cheering.iff")
@@ -388,7 +395,8 @@ object_soundobject_shared_soundobject_city_crowd_medium = SharedStaticObjectTemp
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1007094640
+	clientObjectCRC = 1007094640,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/soundobject/base/shared_soundobject_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_soundobject_shared_soundobject_city_crowd_medium, "object/soundobject/shared_soundobject_city_crowd_medium.iff")
@@ -432,7 +440,8 @@ object_soundobject_shared_soundobject_city_crowd_sentients = SharedStaticObjectT
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2995810506
+	clientObjectCRC = 2995810506,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/soundobject/base/shared_soundobject_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_soundobject_shared_soundobject_city_crowd_sentients, "object/soundobject/shared_soundobject_city_crowd_sentients.iff")
@@ -476,7 +485,8 @@ object_soundobject_shared_soundobject_city_crowd_sentients_large = SharedStaticO
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1220356330
+	clientObjectCRC = 1220356330,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/soundobject/base/shared_soundobject_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_soundobject_shared_soundobject_city_crowd_sentients_large, "object/soundobject/shared_soundobject_city_crowd_sentients_large.iff")
@@ -520,7 +530,8 @@ object_soundobject_shared_soundobject_city_crowd_small = SharedStaticObjectTempl
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2160245111
+	clientObjectCRC = 2160245111,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/soundobject/base/shared_soundobject_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_soundobject_shared_soundobject_city_crowd_small, "object/soundobject/shared_soundobject_city_crowd_small.iff")
@@ -564,7 +575,8 @@ object_soundobject_shared_soundobject_cloning_facility = SharedStaticObjectTempl
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2219862072
+	clientObjectCRC = 2219862072,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/soundobject/base/shared_soundobject_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_soundobject_shared_soundobject_cloning_facility, "object/soundobject/shared_soundobject_cloning_facility.iff")
@@ -608,7 +620,8 @@ object_soundobject_shared_soundobject_elevator_music = SharedStaticObjectTemplat
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 805544317
+	clientObjectCRC = 805544317,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/soundobject/base/shared_soundobject_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_soundobject_shared_soundobject_elevator_music, "object/soundobject/shared_soundobject_elevator_music.iff")
@@ -652,7 +665,8 @@ object_soundobject_shared_soundobject_factory_exterior = SharedStaticObjectTempl
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3185407219
+	clientObjectCRC = 3185407219,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/soundobject/base/shared_soundobject_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_soundobject_shared_soundobject_factory_exterior, "object/soundobject/shared_soundobject_factory_exterior.iff")
@@ -696,7 +710,8 @@ object_soundobject_shared_soundobject_figrin_dan_band = SharedStaticObjectTempla
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2322270980
+	clientObjectCRC = 2322270980,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/soundobject/base/shared_soundobject_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_soundobject_shared_soundobject_figrin_dan_band, "object/soundobject/shared_soundobject_figrin_dan_band.iff")
@@ -740,7 +755,8 @@ object_soundobject_shared_soundobject_fire_roaring = SharedStaticObjectTemplate:
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 543287439
+	clientObjectCRC = 543287439,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/soundobject/base/shared_soundobject_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_soundobject_shared_soundobject_fire_roaring, "object/soundobject/shared_soundobject_fire_roaring.iff")
@@ -784,7 +800,8 @@ object_soundobject_shared_soundobject_fort_tusken = SharedStaticObjectTemplate:n
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1387709357
+	clientObjectCRC = 1387709357,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/soundobject/base/shared_soundobject_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_soundobject_shared_soundobject_fort_tusken, "object/soundobject/shared_soundobject_fort_tusken.iff")
@@ -828,7 +845,8 @@ object_soundobject_shared_soundobject_fusion_power_generator = SharedStaticObjec
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 111680330
+	clientObjectCRC = 111680330,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/soundobject/base/shared_soundobject_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_soundobject_shared_soundobject_fusion_power_generator, "object/soundobject/shared_soundobject_fusion_power_generator.iff")
@@ -872,7 +890,8 @@ object_soundobject_shared_soundobject_hovering = SharedStaticObjectTemplate:new 
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1865831738
+	clientObjectCRC = 1865831738,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/soundobject/base/shared_soundobject_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_soundobject_shared_soundobject_hovering, "object/soundobject/shared_soundobject_hovering.iff")
@@ -916,7 +935,8 @@ object_soundobject_shared_soundobject_hydro_power_generator = SharedStaticObject
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 111189793
+	clientObjectCRC = 111189793,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/soundobject/base/shared_soundobject_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_soundobject_shared_soundobject_hydro_power_generator, "object/soundobject/shared_soundobject_hydro_power_generator.iff")
@@ -960,7 +980,8 @@ object_soundobject_shared_soundobject_installation_hydro = SharedStaticObjectTem
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 995137663
+	clientObjectCRC = 995137663,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/soundobject/base/shared_soundobject_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_soundobject_shared_soundobject_installation_hydro, "object/soundobject/shared_soundobject_installation_hydro.iff")
@@ -1004,7 +1025,8 @@ object_soundobject_shared_soundobject_installation_photo_bio = SharedStaticObjec
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3621719598
+	clientObjectCRC = 3621719598,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/soundobject/base/shared_soundobject_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_soundobject_shared_soundobject_installation_photo_bio, "object/soundobject/shared_soundobject_installation_photo_bio.iff")
@@ -1048,7 +1070,8 @@ object_soundobject_shared_soundobject_installation_wind = SharedStaticObjectTemp
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 522992257
+	clientObjectCRC = 522992257,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/soundobject/base/shared_soundobject_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_soundobject_shared_soundobject_installation_wind, "object/soundobject/shared_soundobject_installation_wind.iff")
@@ -1092,7 +1115,8 @@ object_soundobject_shared_soundobject_jabba_audience_chamber = SharedStaticObjec
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2503585302
+	clientObjectCRC = 2503585302,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/soundobject/base/shared_soundobject_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_soundobject_shared_soundobject_jabba_audience_chamber, "object/soundobject/shared_soundobject_jabba_audience_chamber.iff")
@@ -1136,7 +1160,8 @@ object_soundobject_shared_soundobject_jabba_max_rebo_band = SharedStaticObjectTe
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1106794
+	clientObjectCRC = 1106794,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/soundobject/base/shared_soundobject_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_soundobject_shared_soundobject_jabba_max_rebo_band, "object/soundobject/shared_soundobject_jabba_max_rebo_band.iff")
@@ -1180,7 +1205,8 @@ object_soundobject_shared_soundobject_jabba_monk_hideaway = SharedStaticObjectTe
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3562507459
+	clientObjectCRC = 3562507459,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/soundobject/base/shared_soundobject_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_soundobject_shared_soundobject_jabba_monk_hideaway, "object/soundobject/shared_soundobject_jabba_monk_hideaway.iff")
@@ -1224,7 +1250,8 @@ object_soundobject_shared_soundobject_jabba_palace_entrance = SharedStaticObject
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1643654633
+	clientObjectCRC = 1643654633,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/soundobject/base/shared_soundobject_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_soundobject_shared_soundobject_jabba_palace_entrance, "object/soundobject/shared_soundobject_jabba_palace_entrance.iff")
@@ -1268,7 +1295,8 @@ object_soundobject_shared_soundobject_jungle_music_a = SharedStaticObjectTemplat
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2070906203
+	clientObjectCRC = 2070906203,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/soundobject/base/shared_soundobject_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_soundobject_shared_soundobject_jungle_music_a, "object/soundobject/shared_soundobject_jungle_music_a.iff")
@@ -1312,7 +1340,8 @@ object_soundobject_shared_soundobject_jungle_music_b = SharedStaticObjectTemplat
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2692230604
+	clientObjectCRC = 2692230604,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/soundobject/base/shared_soundobject_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_soundobject_shared_soundobject_jungle_music_b, "object/soundobject/shared_soundobject_jungle_music_b.iff")
@@ -1356,7 +1385,8 @@ object_soundobject_shared_soundobject_lakeshore = SharedStaticObjectTemplate:new
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 999668036
+	clientObjectCRC = 999668036,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/soundobject/base/shared_soundobject_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_soundobject_shared_soundobject_lakeshore, "object/soundobject/shared_soundobject_lakeshore.iff")
@@ -1400,7 +1430,8 @@ object_soundobject_shared_soundobject_lava = SharedStaticObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3854588989
+	clientObjectCRC = 3854588989,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/soundobject/base/shared_soundobject_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_soundobject_shared_soundobject_lava, "object/soundobject/shared_soundobject_lava.iff")
@@ -1444,7 +1475,8 @@ object_soundobject_shared_soundobject_loud_steam = SharedStaticObjectTemplate:ne
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3479780870
+	clientObjectCRC = 3479780870,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/soundobject/base/shared_soundobject_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_soundobject_shared_soundobject_loud_steam, "object/soundobject/shared_soundobject_loud_steam.iff")
@@ -1488,7 +1520,8 @@ object_soundobject_shared_soundobject_marketplace_large = SharedStaticObjectTemp
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3222553098
+	clientObjectCRC = 3222553098,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/soundobject/base/shared_soundobject_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_soundobject_shared_soundobject_marketplace_large, "object/soundobject/shared_soundobject_marketplace_large.iff")
@@ -1532,7 +1565,8 @@ object_soundobject_shared_soundobject_marketplace_small = SharedStaticObjectTemp
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 4094678563
+	clientObjectCRC = 4094678563,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/soundobject/base/shared_soundobject_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_soundobject_shared_soundobject_marketplace_small, "object/soundobject/shared_soundobject_marketplace_small.iff")
@@ -1576,7 +1610,8 @@ object_soundobject_shared_soundobject_mountain_winds = SharedStaticObjectTemplat
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 293547237
+	clientObjectCRC = 293547237,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/soundobject/base/shared_soundobject_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_soundobject_shared_soundobject_mountain_winds, "object/soundobject/shared_soundobject_mountain_winds.iff")
@@ -1620,7 +1655,8 @@ object_soundobject_shared_soundobject_nightsisters_stronghold = SharedStaticObje
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1031338094
+	clientObjectCRC = 1031338094,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/soundobject/base/shared_soundobject_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_soundobject_shared_soundobject_nightsisters_stronghold, "object/soundobject/shared_soundobject_nightsisters_stronghold.iff")
@@ -1664,7 +1700,8 @@ object_soundobject_shared_soundobject_power_generator = SharedStaticObjectTempla
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 590222819
+	clientObjectCRC = 590222819,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/soundobject/base/shared_soundobject_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_soundobject_shared_soundobject_power_generator, "object/soundobject/shared_soundobject_power_generator.iff")
@@ -1708,7 +1745,8 @@ object_soundobject_shared_soundobject_quiet_steam = SharedStaticObjectTemplate:n
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1143794115
+	clientObjectCRC = 1143794115,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/soundobject/base/shared_soundobject_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_soundobject_shared_soundobject_quiet_steam, "object/soundobject/shared_soundobject_quiet_steam.iff")
@@ -1752,7 +1790,8 @@ object_soundobject_shared_soundobject_rebel_hideout = SharedStaticObjectTemplate
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3950943395
+	clientObjectCRC = 3950943395,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/soundobject/base/shared_soundobject_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_soundobject_shared_soundobject_rebel_hideout, "object/soundobject/shared_soundobject_rebel_hideout.iff")
@@ -1796,7 +1835,8 @@ object_soundobject_shared_soundobject_refrigeration_unit = SharedStaticObjectTem
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2124729098
+	clientObjectCRC = 2124729098,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/soundobject/base/shared_soundobject_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_soundobject_shared_soundobject_refrigeration_unit, "object/soundobject/shared_soundobject_refrigeration_unit.iff")
@@ -1840,7 +1880,8 @@ object_soundobject_shared_soundobject_river_indoors = SharedStaticObjectTemplate
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2374956061
+	clientObjectCRC = 2374956061,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/soundobject/base/shared_soundobject_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_soundobject_shared_soundobject_river_indoors, "object/soundobject/shared_soundobject_river_indoors.iff")
@@ -1884,7 +1925,8 @@ object_soundobject_shared_soundobject_river_large = SharedStaticObjectTemplate:n
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3441954755
+	clientObjectCRC = 3441954755,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/soundobject/base/shared_soundobject_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_soundobject_shared_soundobject_river_large, "object/soundobject/shared_soundobject_river_large.iff")
@@ -1928,7 +1970,8 @@ object_soundobject_shared_soundobject_river_small = SharedStaticObjectTemplate:n
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 4180909034
+	clientObjectCRC = 4180909034,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/soundobject/base/shared_soundobject_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_soundobject_shared_soundobject_river_small, "object/soundobject/shared_soundobject_river_small.iff")
@@ -1972,7 +2015,8 @@ object_soundobject_shared_soundobject_sailbarge_lower = SharedStaticObjectTempla
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 4258394168
+	clientObjectCRC = 4258394168,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/soundobject/base/shared_soundobject_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_soundobject_shared_soundobject_sailbarge_lower, "object/soundobject/shared_soundobject_sailbarge_lower.iff")
@@ -2016,7 +2060,8 @@ object_soundobject_shared_soundobject_sailbarge_upper = SharedStaticObjectTempla
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2386769474
+	clientObjectCRC = 2386769474,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/soundobject/base/shared_soundobject_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_soundobject_shared_soundobject_sailbarge_upper, "object/soundobject/shared_soundobject_sailbarge_upper.iff")
@@ -2060,7 +2105,8 @@ object_soundobject_shared_soundobject_seashore_indoors = SharedStaticObjectTempl
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 279468825
+	clientObjectCRC = 279468825,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/soundobject/base/shared_soundobject_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_soundobject_shared_soundobject_seashore_indoors, "object/soundobject/shared_soundobject_seashore_indoors.iff")
@@ -2104,7 +2150,8 @@ object_soundobject_shared_soundobject_seashore_outdoors = SharedStaticObjectTemp
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2890368574
+	clientObjectCRC = 2890368574,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/soundobject/base/shared_soundobject_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_soundobject_shared_soundobject_seashore_outdoors, "object/soundobject/shared_soundobject_seashore_outdoors.iff")
@@ -2148,7 +2195,8 @@ object_soundobject_shared_soundobject_shield_generator = SharedStaticObjectTempl
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3705653312
+	clientObjectCRC = 3705653312,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/soundobject/base/shared_soundobject_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_soundobject_shared_soundobject_shield_generator, "object/soundobject/shared_soundobject_shield_generator.iff")
@@ -2192,7 +2240,8 @@ object_soundobject_shared_soundobject_snow_outside = SharedStaticObjectTemplate:
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1803959668
+	clientObjectCRC = 1803959668,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/soundobject/base/shared_soundobject_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_soundobject_shared_soundobject_snow_outside, "object/soundobject/shared_soundobject_snow_outside.iff")
@@ -2236,7 +2285,8 @@ object_soundobject_shared_soundobject_space_yacht = SharedStaticObjectTemplate:n
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2863794774
+	clientObjectCRC = 2863794774,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/soundobject/base/shared_soundobject_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_soundobject_shared_soundobject_space_yacht, "object/soundobject/shared_soundobject_space_yacht.iff")
@@ -2280,7 +2330,8 @@ object_soundobject_shared_soundobject_sparks = SharedStaticObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 740379187
+	clientObjectCRC = 740379187,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/soundobject/base/shared_soundobject_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_soundobject_shared_soundobject_sparks, "object/soundobject/shared_soundobject_sparks.iff")
@@ -2324,7 +2375,8 @@ object_soundobject_shared_soundobject_starport_announcer = SharedStaticObjectTem
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 111749873
+	clientObjectCRC = 111749873,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/soundobject/base/shared_soundobject_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_soundobject_shared_soundobject_starport_announcer, "object/soundobject/shared_soundobject_starport_announcer.iff")
@@ -2368,7 +2420,8 @@ object_soundobject_shared_soundobject_starport_exterior = SharedStaticObjectTemp
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 93072533
+	clientObjectCRC = 93072533,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/soundobject/base/shared_soundobject_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_soundobject_shared_soundobject_starport_exterior, "object/soundobject/shared_soundobject_starport_exterior.iff")
@@ -2412,7 +2465,8 @@ object_soundobject_shared_soundobject_starport_interior = SharedStaticObjectTemp
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2601406698
+	clientObjectCRC = 2601406698,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/soundobject/base/shared_soundobject_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_soundobject_shared_soundobject_starport_interior, "object/soundobject/shared_soundobject_starport_interior.iff")
@@ -2456,7 +2510,8 @@ object_soundobject_shared_soundobject_theed_fountain = SharedStaticObjectTemplat
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 20514831
+	clientObjectCRC = 20514831,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/soundobject/base/shared_soundobject_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_soundobject_shared_soundobject_theed_fountain, "object/soundobject/shared_soundobject_theed_fountain.iff")
@@ -2500,7 +2555,8 @@ object_soundobject_shared_soundobject_transport_interior = SharedStaticObjectTem
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 425345644
+	clientObjectCRC = 425345644,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/soundobject/base/shared_soundobject_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_soundobject_shared_soundobject_transport_interior, "object/soundobject/shared_soundobject_transport_interior.iff")
@@ -2544,7 +2600,8 @@ object_soundobject_shared_soundobject_underground_music_a = SharedStaticObjectTe
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1630317945
+	clientObjectCRC = 1630317945,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/soundobject/base/shared_soundobject_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_soundobject_shared_soundobject_underground_music_a, "object/soundobject/shared_soundobject_underground_music_a.iff")
@@ -2588,7 +2645,8 @@ object_soundobject_shared_soundobject_underground_music_b = SharedStaticObjectTe
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3124430318
+	clientObjectCRC = 3124430318,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/soundobject/base/shared_soundobject_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_soundobject_shared_soundobject_underground_music_b, "object/soundobject/shared_soundobject_underground_music_b.iff")
@@ -2632,7 +2690,8 @@ object_soundobject_shared_soundobject_water_gurgle = SharedStaticObjectTemplate:
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2014649812
+	clientObjectCRC = 2014649812,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/soundobject/base/shared_soundobject_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_soundobject_shared_soundobject_water_gurgle, "object/soundobject/shared_soundobject_water_gurgle.iff")
@@ -2676,7 +2735,8 @@ object_soundobject_shared_soundobject_water_gurgle_small = SharedStaticObjectTem
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 4152482150
+	clientObjectCRC = 4152482150,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/soundobject/base/shared_soundobject_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_soundobject_shared_soundobject_water_gurgle_small, "object/soundobject/shared_soundobject_water_gurgle_small.iff")
@@ -2720,7 +2780,8 @@ object_soundobject_shared_soundobject_waterfall_indoors = SharedStaticObjectTemp
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1465513069
+	clientObjectCRC = 1465513069,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/soundobject/base/shared_soundobject_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_soundobject_shared_soundobject_waterfall_indoors, "object/soundobject/shared_soundobject_waterfall_indoors.iff")
@@ -2764,7 +2825,8 @@ object_soundobject_shared_soundobject_waterfall_large = SharedStaticObjectTempla
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2572356312
+	clientObjectCRC = 2572356312,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/soundobject/base/shared_soundobject_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_soundobject_shared_soundobject_waterfall_large, "object/soundobject/shared_soundobject_waterfall_large.iff")
@@ -2808,7 +2870,8 @@ object_soundobject_shared_soundobject_waterfall_outdoors = SharedStaticObjectTem
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1999229516
+	clientObjectCRC = 1999229516,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/soundobject/base/shared_soundobject_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_soundobject_shared_soundobject_waterfall_outdoors, "object/soundobject/shared_soundobject_waterfall_outdoors.iff")
@@ -2852,7 +2915,8 @@ object_soundobject_shared_soundobject_waterfall_small = SharedStaticObjectTempla
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2907217649
+	clientObjectCRC = 2907217649,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/soundobject/base/shared_soundobject_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_soundobject_shared_soundobject_waterfall_small, "object/soundobject/shared_soundobject_waterfall_small.iff")
@@ -2896,7 +2960,8 @@ object_soundobject_shared_soundobject_wind_power_generator = SharedStaticObjectT
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2041745522
+	clientObjectCRC = 2041745522,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/soundobject/base/shared_soundobject_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_soundobject_shared_soundobject_wind_power_generator, "object/soundobject/shared_soundobject_wind_power_generator.iff")

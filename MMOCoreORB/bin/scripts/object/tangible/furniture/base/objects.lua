@@ -90,7 +90,8 @@ object_tangible_furniture_base_shared_furniture_base = SharedTangibleObjectTempl
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3515230028
+	clientObjectCRC = 3515230028,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_furniture_base_shared_furniture_base, "object/tangible/furniture/base/shared_furniture_base.iff")

@@ -90,7 +90,8 @@ object_tangible_deed_guild_deed_shared_corellia_guild_deed = SharedTangibleObjec
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4111019383
+	clientObjectCRC = 4111019383,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/deed/base/shared_deed_base.iff", "object/tangible/deed/base/shared_deed_building_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_deed_guild_deed_shared_corellia_guild_deed, "object/tangible/deed/guild_deed/shared_corellia_guild_deed.iff")
@@ -144,7 +145,8 @@ object_tangible_deed_guild_deed_shared_generic_guild_deed = SharedTangibleObject
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3345639792
+	clientObjectCRC = 3345639792,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/deed/base/shared_deed_base.iff", "object/tangible/deed/base/shared_deed_building_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_deed_guild_deed_shared_generic_guild_deed, "object/tangible/deed/guild_deed/shared_generic_guild_deed.iff")
@@ -198,7 +200,8 @@ object_tangible_deed_guild_deed_shared_naboo_guild_deed = SharedTangibleObjectTe
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2398572808
+	clientObjectCRC = 2398572808,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/deed/base/shared_deed_base.iff", "object/tangible/deed/base/shared_deed_building_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_deed_guild_deed_shared_naboo_guild_deed, "object/tangible/deed/guild_deed/shared_naboo_guild_deed.iff")
@@ -252,7 +255,8 @@ object_tangible_deed_guild_deed_shared_tatooine_guild_deed = SharedTangibleObjec
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 847751074
+	clientObjectCRC = 847751074,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/deed/base/shared_deed_base.iff", "object/tangible/deed/base/shared_deed_building_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_deed_guild_deed_shared_tatooine_guild_deed, "object/tangible/deed/guild_deed/shared_tatooine_guild_deed.iff")
@@ -306,7 +310,8 @@ object_tangible_deed_guild_deed_shared_tatooine_guild_style_02_deed = SharedTang
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1677139943
+	clientObjectCRC = 1677139943,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/deed/base/shared_deed_base.iff", "object/tangible/deed/base/shared_deed_building_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_deed_guild_deed_shared_tatooine_guild_style_02_deed, "object/tangible/deed/guild_deed/shared_tatooine_guild_style_02_deed.iff")

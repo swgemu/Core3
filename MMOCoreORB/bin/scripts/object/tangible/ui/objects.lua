@@ -90,7 +90,8 @@ object_tangible_ui_shared_ui_char_cust_pedestal = SharedTangibleObjectTemplate:n
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 580259338
+	clientObjectCRC = 580259338,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ui_shared_ui_char_cust_pedestal, "object/tangible/ui/shared_ui_char_cust_pedestal.iff")
@@ -144,7 +145,8 @@ object_tangible_ui_shared_ui_planet_corellia = SharedTangibleObjectTemplate:new 
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 565167488
+	clientObjectCRC = 565167488,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ui_shared_ui_planet_corellia, "object/tangible/ui/shared_ui_planet_corellia.iff")
@@ -198,7 +200,8 @@ object_tangible_ui_shared_ui_planet_imperial = SharedTangibleObjectTemplate:new 
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3225920634
+	clientObjectCRC = 3225920634,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ui_shared_ui_planet_imperial, "object/tangible/ui/shared_ui_planet_imperial.iff")
@@ -252,7 +255,8 @@ object_tangible_ui_shared_ui_planet_naboo = SharedTangibleObjectTemplate:new {
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3585856086
+	clientObjectCRC = 3585856086,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ui_shared_ui_planet_naboo, "object/tangible/ui/shared_ui_planet_naboo.iff")
@@ -306,7 +310,8 @@ object_tangible_ui_shared_ui_planet_privateer = SharedTangibleObjectTemplate:new
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4127966392
+	clientObjectCRC = 4127966392,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ui_shared_ui_planet_privateer, "object/tangible/ui/shared_ui_planet_privateer.iff")
@@ -360,7 +365,8 @@ object_tangible_ui_shared_ui_planet_rebel = SharedTangibleObjectTemplate:new {
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3636261575
+	clientObjectCRC = 3636261575,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ui_shared_ui_planet_rebel, "object/tangible/ui/shared_ui_planet_rebel.iff")
@@ -414,7 +420,8 @@ object_tangible_ui_shared_ui_planet_rori = SharedTangibleObjectTemplate:new {
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2331720771
+	clientObjectCRC = 2331720771,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ui_shared_ui_planet_rori, "object/tangible/ui/shared_ui_planet_rori.iff")
@@ -468,7 +475,8 @@ object_tangible_ui_shared_ui_planet_talus = SharedTangibleObjectTemplate:new {
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3437864060
+	clientObjectCRC = 3437864060,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ui_shared_ui_planet_talus, "object/tangible/ui/shared_ui_planet_talus.iff")
@@ -522,7 +530,8 @@ object_tangible_ui_shared_ui_planet_tatooine = SharedTangibleObjectTemplate:new 
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 502047775
+	clientObjectCRC = 502047775,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ui_shared_ui_planet_tatooine, "object/tangible/ui/shared_ui_planet_tatooine.iff")

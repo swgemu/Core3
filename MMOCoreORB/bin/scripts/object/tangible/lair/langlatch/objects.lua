@@ -90,7 +90,8 @@ object_tangible_lair_langlatch_shared_lair_langlatch = SharedTangibleObjectTempl
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3783483774
+	clientObjectCRC = 3783483774,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_langlatch_shared_lair_langlatch, "object/tangible/lair/langlatch/shared_lair_langlatch.iff")
@@ -144,7 +145,8 @@ object_tangible_lair_langlatch_shared_lair_langlatch_forest = SharedTangibleObje
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3329291401
+	clientObjectCRC = 3329291401,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_langlatch_shared_lair_langlatch_forest, "object/tangible/lair/langlatch/shared_lair_langlatch_forest.iff")
@@ -198,7 +200,8 @@ object_tangible_lair_langlatch_shared_lair_langlatch_mountain = SharedTangibleOb
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2238931411
+	clientObjectCRC = 2238931411,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_langlatch_shared_lair_langlatch_mountain, "object/tangible/lair/langlatch/shared_lair_langlatch_mountain.iff")
@@ -252,7 +255,8 @@ object_tangible_lair_langlatch_shared_lair_langlatch_wasteland = SharedTangibleO
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1403100093
+	clientObjectCRC = 1403100093,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_langlatch_shared_lair_langlatch_wasteland, "object/tangible/lair/langlatch/shared_lair_langlatch_wasteland.iff")

@@ -90,7 +90,8 @@ object_tangible_space_spacestations_shared_spacestation_imperial_01 = SharedShip
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3055118687
+	clientObjectCRC = 3055118687,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_station_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_space_spacestations_shared_spacestation_imperial_01, "object/tangible/space/spacestations/shared_spacestation_imperial_01.iff")
@@ -144,7 +145,8 @@ object_tangible_space_spacestations_shared_spacestation_imperial_battlefield_con
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2372198483
+	clientObjectCRC = 2372198483,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_space_spacestations_shared_spacestation_imperial_battlefield_control, "object/tangible/space/spacestations/shared_spacestation_imperial_battlefield_control.iff")
@@ -198,7 +200,8 @@ object_tangible_space_spacestations_shared_spacestation_imperial_battlefield_ent
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3537441951
+	clientObjectCRC = 3537441951,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_space_spacestations_shared_spacestation_imperial_battlefield_entry, "object/tangible/space/spacestations/shared_spacestation_imperial_battlefield_entry.iff")
@@ -252,7 +255,8 @@ object_tangible_space_spacestations_shared_spacestation_neutral_01 = SharedShipO
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2417244262
+	clientObjectCRC = 2417244262,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_station_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_space_spacestations_shared_spacestation_neutral_01, "object/tangible/space/spacestations/shared_spacestation_neutral_01.iff")
@@ -306,7 +310,8 @@ object_tangible_space_spacestations_shared_spacestation_rebel_01 = SharedShipObj
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2407802973
+	clientObjectCRC = 2407802973,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_station_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_space_spacestations_shared_spacestation_rebel_01, "object/tangible/space/spacestations/shared_spacestation_rebel_01.iff")
@@ -360,7 +365,8 @@ object_tangible_space_spacestations_shared_spacestation_rebel_battlefield_contro
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3861915556
+	clientObjectCRC = 3861915556,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_space_spacestations_shared_spacestation_rebel_battlefield_control, "object/tangible/space/spacestations/shared_spacestation_rebel_battlefield_control.iff")
@@ -414,7 +420,8 @@ object_tangible_space_spacestations_shared_spacestation_rebel_battlefield_entry 
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2272557315
+	clientObjectCRC = 2272557315,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_space_spacestations_shared_spacestation_rebel_battlefield_entry, "object/tangible/space/spacestations/shared_spacestation_rebel_battlefield_entry.iff")

@@ -90,7 +90,8 @@ object_tangible_sign_municipal_base_shared_municipal_sign_base = SharedTangibleO
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 354971311
+	clientObjectCRC = 354971311,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/sign/base/shared_base_sign.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_sign_municipal_base_shared_municipal_sign_base, "object/tangible/sign/municipal/base/shared_municipal_sign_base.iff")

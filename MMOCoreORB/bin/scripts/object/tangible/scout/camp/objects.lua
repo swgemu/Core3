@@ -90,7 +90,8 @@ object_tangible_scout_camp_shared_camp_basic = SharedTangibleObjectTemplate:new 
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1292354861
+	clientObjectCRC = 1292354861,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_scout_camp_shared_camp_basic, "object/tangible/scout/camp/shared_camp_basic.iff")
@@ -144,7 +145,8 @@ object_tangible_scout_camp_shared_camp_elite = SharedTangibleObjectTemplate:new 
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3731836900
+	clientObjectCRC = 3731836900,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_scout_camp_shared_camp_elite, "object/tangible/scout/camp/shared_camp_elite.iff")
@@ -198,7 +200,8 @@ object_tangible_scout_camp_shared_camp_improved = SharedTangibleObjectTemplate:n
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2831120800
+	clientObjectCRC = 2831120800,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_scout_camp_shared_camp_improved, "object/tangible/scout/camp/shared_camp_improved.iff")
@@ -252,7 +255,8 @@ object_tangible_scout_camp_shared_camp_luxury = SharedTangibleObjectTemplate:new
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1082864410
+	clientObjectCRC = 1082864410,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_scout_camp_shared_camp_luxury, "object/tangible/scout/camp/shared_camp_luxury.iff")
@@ -306,7 +310,8 @@ object_tangible_scout_camp_shared_camp_multi = SharedTangibleObjectTemplate:new 
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1695464329
+	clientObjectCRC = 1695464329,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_scout_camp_shared_camp_multi, "object/tangible/scout/camp/shared_camp_multi.iff")
@@ -360,7 +365,8 @@ object_tangible_scout_camp_shared_camp_quality = SharedTangibleObjectTemplate:ne
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3484724123
+	clientObjectCRC = 3484724123,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_scout_camp_shared_camp_quality, "object/tangible/scout/camp/shared_camp_quality.iff")

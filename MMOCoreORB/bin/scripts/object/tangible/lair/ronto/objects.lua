@@ -90,7 +90,8 @@ object_tangible_lair_ronto_shared_lair_ronto = SharedTangibleObjectTemplate:new 
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2470399210
+	clientObjectCRC = 2470399210,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff", "object/tangible/lair/base/shared_lair_base_rancor_light.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_ronto_shared_lair_ronto, "object/tangible/lair/ronto/shared_lair_ronto.iff")
@@ -144,7 +145,8 @@ object_tangible_lair_ronto_shared_lair_ronto_desert = SharedTangibleObjectTempla
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 28411685
+	clientObjectCRC = 28411685,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff", "object/tangible/lair/base/shared_lair_base_rancor_light.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_ronto_shared_lair_ronto_desert, "object/tangible/lair/ronto/shared_lair_ronto_desert.iff")
@@ -198,7 +200,8 @@ object_tangible_lair_ronto_shared_lair_ronto_dune = SharedTangibleObjectTemplate
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3699812531
+	clientObjectCRC = 3699812531,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff", "object/tangible/lair/base/shared_lair_base_rancor_light.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_ronto_shared_lair_ronto_dune, "object/tangible/lair/ronto/shared_lair_ronto_dune.iff")

@@ -90,7 +90,8 @@ object_tangible_deed_player_house_deed_shared_corellia_house_large_deed = Shared
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2929915649
+	clientObjectCRC = 2929915649,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/deed/base/shared_deed_base.iff", "object/tangible/deed/base/shared_deed_building_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_deed_player_house_deed_shared_corellia_house_large_deed, "object/tangible/deed/player_house_deed/shared_corellia_house_large_deed.iff")
@@ -144,7 +145,8 @@ object_tangible_deed_player_house_deed_shared_corellia_house_large_style_02_deed
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 235215989
+	clientObjectCRC = 235215989,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/deed/base/shared_deed_base.iff", "object/tangible/deed/base/shared_deed_building_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_deed_player_house_deed_shared_corellia_house_large_style_02_deed, "object/tangible/deed/player_house_deed/shared_corellia_house_large_style_02_deed.iff")
@@ -198,7 +200,8 @@ object_tangible_deed_player_house_deed_shared_corellia_house_medium_deed = Share
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2084610037
+	clientObjectCRC = 2084610037,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/deed/base/shared_deed_base.iff", "object/tangible/deed/base/shared_deed_building_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_deed_player_house_deed_shared_corellia_house_medium_deed, "object/tangible/deed/player_house_deed/shared_corellia_house_medium_deed.iff")
@@ -252,7 +255,8 @@ object_tangible_deed_player_house_deed_shared_corellia_house_medium_style_02_dee
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2451032772
+	clientObjectCRC = 2451032772,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/deed/base/shared_deed_base.iff", "object/tangible/deed/base/shared_deed_building_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_deed_player_house_deed_shared_corellia_house_medium_style_02_deed, "object/tangible/deed/player_house_deed/shared_corellia_house_medium_style_02_deed.iff")
@@ -306,7 +310,8 @@ object_tangible_deed_player_house_deed_shared_corellia_house_small_deed = Shared
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3995398562
+	clientObjectCRC = 3995398562,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/deed/base/shared_deed_base.iff", "object/tangible/deed/base/shared_deed_building_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_deed_player_house_deed_shared_corellia_house_small_deed, "object/tangible/deed/player_house_deed/shared_corellia_house_small_deed.iff")
@@ -360,7 +365,8 @@ object_tangible_deed_player_house_deed_shared_corellia_house_small_floor_02_deed
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4236382032
+	clientObjectCRC = 4236382032,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/deed/base/shared_deed_base.iff", "object/tangible/deed/base/shared_deed_building_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_deed_player_house_deed_shared_corellia_house_small_floor_02_deed, "object/tangible/deed/player_house_deed/shared_corellia_house_small_floor_02_deed.iff")
@@ -414,7 +420,8 @@ object_tangible_deed_player_house_deed_shared_corellia_house_small_style_02_deed
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2362914922
+	clientObjectCRC = 2362914922,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/deed/base/shared_deed_base.iff", "object/tangible/deed/base/shared_deed_building_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_deed_player_house_deed_shared_corellia_house_small_style_02_deed, "object/tangible/deed/player_house_deed/shared_corellia_house_small_style_02_deed.iff")
@@ -468,7 +475,8 @@ object_tangible_deed_player_house_deed_shared_corellia_house_small_style_02_floo
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3176020474
+	clientObjectCRC = 3176020474,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/deed/base/shared_deed_base.iff", "object/tangible/deed/base/shared_deed_building_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_deed_player_house_deed_shared_corellia_house_small_style_02_floor_02_deed, "object/tangible/deed/player_house_deed/shared_corellia_house_small_style_02_floor_02_deed.iff")
@@ -522,7 +530,8 @@ object_tangible_deed_player_house_deed_shared_generic_house_large_deed = SharedT
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1741240035
+	clientObjectCRC = 1741240035,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/deed/base/shared_deed_base.iff", "object/tangible/deed/base/shared_deed_building_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_deed_player_house_deed_shared_generic_house_large_deed, "object/tangible/deed/player_house_deed/shared_generic_house_large_deed.iff")
@@ -576,7 +585,8 @@ object_tangible_deed_player_house_deed_shared_generic_house_large_style_02_deed 
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3587608428
+	clientObjectCRC = 3587608428,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/deed/base/shared_deed_base.iff", "object/tangible/deed/base/shared_deed_building_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_deed_player_house_deed_shared_generic_house_large_style_02_deed, "object/tangible/deed/player_house_deed/shared_generic_house_large_style_02_deed.iff")
@@ -630,7 +640,8 @@ object_tangible_deed_player_house_deed_shared_generic_house_medium_deed = Shared
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1757551971
+	clientObjectCRC = 1757551971,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/deed/base/shared_deed_base.iff", "object/tangible/deed/base/shared_deed_building_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_deed_player_house_deed_shared_generic_house_medium_deed, "object/tangible/deed/player_house_deed/shared_generic_house_medium_deed.iff")
@@ -684,7 +695,8 @@ object_tangible_deed_player_house_deed_shared_generic_house_medium_style_02_deed
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2069123916
+	clientObjectCRC = 2069123916,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/deed/base/shared_deed_base.iff", "object/tangible/deed/base/shared_deed_building_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_deed_player_house_deed_shared_generic_house_medium_style_02_deed, "object/tangible/deed/player_house_deed/shared_generic_house_medium_style_02_deed.iff")
@@ -738,7 +750,8 @@ object_tangible_deed_player_house_deed_shared_generic_house_small_deed = SharedT
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 659501120
+	clientObjectCRC = 659501120,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/deed/base/shared_deed_base.iff", "object/tangible/deed/base/shared_deed_building_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_deed_player_house_deed_shared_generic_house_small_deed, "object/tangible/deed/player_house_deed/shared_generic_house_small_deed.iff")
@@ -792,7 +805,8 @@ object_tangible_deed_player_house_deed_shared_generic_house_small_floor_02_deed 
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 659659849
+	clientObjectCRC = 659659849,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/deed/base/shared_deed_base.iff", "object/tangible/deed/base/shared_deed_building_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_deed_player_house_deed_shared_generic_house_small_floor_02_deed, "object/tangible/deed/player_house_deed/shared_generic_house_small_floor_02_deed.iff")
@@ -846,7 +860,8 @@ object_tangible_deed_player_house_deed_shared_generic_house_small_style_02_deed 
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1459923827
+	clientObjectCRC = 1459923827,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/deed/base/shared_deed_base.iff", "object/tangible/deed/base/shared_deed_building_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_deed_player_house_deed_shared_generic_house_small_style_02_deed, "object/tangible/deed/player_house_deed/shared_generic_house_small_style_02_deed.iff")
@@ -900,7 +915,8 @@ object_tangible_deed_player_house_deed_shared_generic_house_small_style_02_floor
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1914522978
+	clientObjectCRC = 1914522978,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/deed/base/shared_deed_base.iff", "object/tangible/deed/base/shared_deed_building_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_deed_player_house_deed_shared_generic_house_small_style_02_floor_02_deed, "object/tangible/deed/player_house_deed/shared_generic_house_small_style_02_floor_02_deed.iff")
@@ -954,7 +970,8 @@ object_tangible_deed_player_house_deed_shared_merchant_tent_style_01_deed = Shar
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2826097149
+	clientObjectCRC = 2826097149,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/deed/base/shared_deed_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_deed_player_house_deed_shared_merchant_tent_style_01_deed, "object/tangible/deed/player_house_deed/shared_merchant_tent_style_01_deed.iff")
@@ -1008,7 +1025,8 @@ object_tangible_deed_player_house_deed_shared_merchant_tent_style_02_deed = Shar
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 755117283
+	clientObjectCRC = 755117283,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/deed/base/shared_deed_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_deed_player_house_deed_shared_merchant_tent_style_02_deed, "object/tangible/deed/player_house_deed/shared_merchant_tent_style_02_deed.iff")
@@ -1062,7 +1080,8 @@ object_tangible_deed_player_house_deed_shared_merchant_tent_style_03_deed = Shar
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2912062596
+	clientObjectCRC = 2912062596,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/deed/base/shared_deed_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_deed_player_house_deed_shared_merchant_tent_style_03_deed, "object/tangible/deed/player_house_deed/shared_merchant_tent_style_03_deed.iff")
@@ -1116,7 +1135,8 @@ object_tangible_deed_player_house_deed_shared_naboo_house_large_deed = SharedTan
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2425408276
+	clientObjectCRC = 2425408276,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/deed/base/shared_deed_base.iff", "object/tangible/deed/base/shared_deed_building_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_deed_player_house_deed_shared_naboo_house_large_deed, "object/tangible/deed/player_house_deed/shared_naboo_house_large_deed.iff")
@@ -1170,7 +1190,8 @@ object_tangible_deed_player_house_deed_shared_naboo_house_medium_deed = SharedTa
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2797619055
+	clientObjectCRC = 2797619055,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/deed/base/shared_deed_base.iff", "object/tangible/deed/base/shared_deed_building_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_deed_player_house_deed_shared_naboo_house_medium_deed, "object/tangible/deed/player_house_deed/shared_naboo_house_medium_deed.iff")
@@ -1224,7 +1245,8 @@ object_tangible_deed_player_house_deed_shared_naboo_house_medium_style_02_deed =
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3999622538
+	clientObjectCRC = 3999622538,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/deed/base/shared_deed_base.iff", "object/tangible/deed/base/shared_deed_building_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_deed_player_house_deed_shared_naboo_house_medium_style_02_deed, "object/tangible/deed/player_house_deed/shared_naboo_house_medium_style_02_deed.iff")
@@ -1278,7 +1300,8 @@ object_tangible_deed_player_house_deed_shared_naboo_house_small_deed = SharedTan
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3491155383
+	clientObjectCRC = 3491155383,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/deed/base/shared_deed_base.iff", "object/tangible/deed/base/shared_deed_building_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_deed_player_house_deed_shared_naboo_house_small_deed, "object/tangible/deed/player_house_deed/shared_naboo_house_small_deed.iff")
@@ -1332,7 +1355,8 @@ object_tangible_deed_player_house_deed_shared_naboo_house_small_style_02_deed = 
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4010454053
+	clientObjectCRC = 4010454053,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/deed/base/shared_deed_base.iff", "object/tangible/deed/base/shared_deed_building_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_deed_player_house_deed_shared_naboo_house_small_style_02_deed, "object/tangible/deed/player_house_deed/shared_naboo_house_small_style_02_deed.iff")
@@ -1386,7 +1410,8 @@ object_tangible_deed_player_house_deed_shared_tatooine_house_large_deed = Shared
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 117213262
+	clientObjectCRC = 117213262,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/deed/base/shared_deed_base.iff", "object/tangible/deed/base/shared_deed_building_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_deed_player_house_deed_shared_tatooine_house_large_deed, "object/tangible/deed/player_house_deed/shared_tatooine_house_large_deed.iff")
@@ -1440,7 +1465,8 @@ object_tangible_deed_player_house_deed_shared_tatooine_house_medium_deed = Share
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4112018243
+	clientObjectCRC = 4112018243,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/deed/base/shared_deed_base.iff", "object/tangible/deed/base/shared_deed_building_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_deed_player_house_deed_shared_tatooine_house_medium_deed, "object/tangible/deed/player_house_deed/shared_tatooine_house_medium_deed.iff")
@@ -1494,7 +1520,8 @@ object_tangible_deed_player_house_deed_shared_tatooine_house_small_deed = Shared
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1182437101
+	clientObjectCRC = 1182437101,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/deed/base/shared_deed_base.iff", "object/tangible/deed/base/shared_deed_building_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_deed_player_house_deed_shared_tatooine_house_small_deed, "object/tangible/deed/player_house_deed/shared_tatooine_house_small_deed.iff")
@@ -1548,7 +1575,8 @@ object_tangible_deed_player_house_deed_shared_tatooine_house_small_style_02_deed
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2199454599
+	clientObjectCRC = 2199454599,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/deed/base/shared_deed_base.iff", "object/tangible/deed/base/shared_deed_building_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_deed_player_house_deed_shared_tatooine_house_small_style_02_deed, "object/tangible/deed/player_house_deed/shared_tatooine_house_small_style_02_deed.iff")

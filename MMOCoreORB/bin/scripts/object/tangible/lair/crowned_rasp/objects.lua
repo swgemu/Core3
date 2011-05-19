@@ -90,7 +90,8 @@ object_tangible_lair_crowned_rasp_shared_lair_crowned_rasp = SharedTangibleObjec
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4155092607
+	clientObjectCRC = 4155092607,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_crowned_rasp_shared_lair_crowned_rasp, "object/tangible/lair/crowned_rasp/shared_lair_crowned_rasp.iff")
@@ -144,7 +145,8 @@ object_tangible_lair_crowned_rasp_shared_lair_crowned_rasp_grassland = SharedTan
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3519101848
+	clientObjectCRC = 3519101848,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_crowned_rasp_shared_lair_crowned_rasp_grassland, "object/tangible/lair/crowned_rasp/shared_lair_crowned_rasp_grassland.iff")
@@ -198,7 +200,8 @@ object_tangible_lair_crowned_rasp_shared_lair_crowned_rasp_mountain = SharedTang
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3173314157
+	clientObjectCRC = 3173314157,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_crowned_rasp_shared_lair_crowned_rasp_mountain, "object/tangible/lair/crowned_rasp/shared_lair_crowned_rasp_mountain.iff")

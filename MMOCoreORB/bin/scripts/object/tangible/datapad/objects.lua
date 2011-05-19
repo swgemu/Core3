@@ -90,7 +90,8 @@ object_tangible_datapad_shared_character_datapad = SharedTangibleObjectTemplate:
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1941590017
+	clientObjectCRC = 1941590017,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_datapad_shared_character_datapad, "object/tangible/datapad/shared_character_datapad.iff")
@@ -144,7 +145,8 @@ object_tangible_datapad_shared_droid_datapad_1 = SharedTangibleObjectTemplate:ne
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3496173420
+	clientObjectCRC = 3496173420,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_datapad_shared_droid_datapad_1, "object/tangible/datapad/shared_droid_datapad_1.iff")
@@ -198,7 +200,8 @@ object_tangible_datapad_shared_droid_datapad_2 = SharedTangibleObjectTemplate:ne
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 192215035
+	clientObjectCRC = 192215035,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_datapad_shared_droid_datapad_2, "object/tangible/datapad/shared_droid_datapad_2.iff")
@@ -252,7 +255,8 @@ object_tangible_datapad_shared_droid_datapad_3 = SharedTangibleObjectTemplate:ne
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1115263094
+	clientObjectCRC = 1115263094,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_datapad_shared_droid_datapad_3, "object/tangible/datapad/shared_droid_datapad_3.iff")
@@ -306,7 +310,8 @@ object_tangible_datapad_shared_droid_datapad_4 = SharedTangibleObjectTemplate:ne
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3113925474
+	clientObjectCRC = 3113925474,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_datapad_shared_droid_datapad_4, "object/tangible/datapad/shared_droid_datapad_4.iff")
@@ -360,7 +365,8 @@ object_tangible_datapad_shared_droid_datapad_5 = SharedTangibleObjectTemplate:ne
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4036484335
+	clientObjectCRC = 4036484335,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_datapad_shared_droid_datapad_5, "object/tangible/datapad/shared_droid_datapad_5.iff")
@@ -414,7 +420,8 @@ object_tangible_datapad_shared_droid_datapad_6 = SharedTangibleObjectTemplate:ne
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 729838712
+	clientObjectCRC = 729838712,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_datapad_shared_droid_datapad_6, "object/tangible/datapad/shared_droid_datapad_6.iff")

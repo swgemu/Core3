@@ -93,7 +93,8 @@ object_building_endor_shared_endor_catwalk = SharedStaticObjectTemplate:new {
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1092202767
+	clientObjectCRC = 1092202767,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_filler_building.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_endor_shared_endor_catwalk, "object/building/endor/shared_endor_catwalk.iff")
@@ -150,7 +151,8 @@ object_building_endor_shared_endor_catwalk_cap = SharedStaticObjectTemplate:new 
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1451215471
+	clientObjectCRC = 1451215471,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_filler_building.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_endor_shared_endor_catwalk_cap, "object/building/endor/shared_endor_catwalk_cap.iff")
@@ -207,7 +209,8 @@ object_building_endor_shared_endor_forest_hut = SharedBuildingObjectTemplate:new
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2759537117
+	clientObjectCRC = 2759537117,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_filler_building.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_endor_shared_endor_forest_hut, "object/building/endor/shared_endor_forest_hut.iff")
@@ -264,7 +267,8 @@ object_building_endor_shared_endor_giant_catwalk = SharedStaticObjectTemplate:ne
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2543574892
+	clientObjectCRC = 2543574892,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_filler_building.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_endor_shared_endor_giant_catwalk, "object/building/endor/shared_endor_giant_catwalk.iff")
@@ -321,7 +325,8 @@ object_building_endor_shared_endor_giant_village_tree_s01 = SharedBuildingObject
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3384806373
+	clientObjectCRC = 3384806373,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_filler_building.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_endor_shared_endor_giant_village_tree_s01, "object/building/endor/shared_endor_giant_village_tree_s01.iff")
@@ -378,7 +383,8 @@ object_building_endor_shared_endor_lake_hut = SharedBuildingObjectTemplate:new {
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 790353916
+	clientObjectCRC = 790353916,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_filler_building.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_endor_shared_endor_lake_hut, "object/building/endor/shared_endor_lake_hut.iff")
@@ -435,7 +441,8 @@ object_building_endor_shared_endor_lake_hut_s02 = SharedBuildingObjectTemplate:n
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1488414842
+	clientObjectCRC = 1488414842,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_filler_building.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_endor_shared_endor_lake_hut_s02, "object/building/endor/shared_endor_lake_hut_s02.iff")
@@ -492,7 +499,8 @@ object_building_endor_shared_endor_lake_platform = SharedBuildingObjectTemplate:
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2419475197
+	clientObjectCRC = 2419475197,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_filler_building.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_endor_shared_endor_lake_platform, "object/building/endor/shared_endor_lake_platform.iff")
@@ -549,7 +557,8 @@ object_building_endor_shared_endor_lake_platform_cap = SharedBuildingObjectTempl
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1002562347
+	clientObjectCRC = 1002562347,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_filler_building.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_endor_shared_endor_lake_platform_cap, "object/building/endor/shared_endor_lake_platform_cap.iff")
@@ -606,7 +615,8 @@ object_building_endor_shared_endor_lake_walkway_square = SharedBuildingObjectTem
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1339123676
+	clientObjectCRC = 1339123676,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_filler_building.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_endor_shared_endor_lake_walkway_square, "object/building/endor/shared_endor_lake_walkway_square.iff")
@@ -663,7 +673,8 @@ object_building_endor_shared_endor_lake_walkway_straight = SharedBuildingObjectT
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3597287151
+	clientObjectCRC = 3597287151,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_filler_building.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_endor_shared_endor_lake_walkway_straight, "object/building/endor/shared_endor_lake_walkway_straight.iff")
@@ -720,7 +731,8 @@ object_building_endor_shared_endor_tiki_torch = SharedBuildingObjectTemplate:new
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4148017771
+	clientObjectCRC = 4148017771,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_filler_building.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_endor_shared_endor_tiki_torch, "object/building/endor/shared_endor_tiki_torch.iff")
@@ -777,7 +789,8 @@ object_building_endor_shared_endor_village_tree = SharedBuildingObjectTemplate:n
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1111623449
+	clientObjectCRC = 1111623449,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_filler_building.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_endor_shared_endor_village_tree, "object/building/endor/shared_endor_village_tree.iff")
@@ -834,7 +847,8 @@ object_building_endor_shared_endor_village_tree_viewpoint = SharedBuildingObject
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4074943330
+	clientObjectCRC = 4074943330,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_filler_building.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_endor_shared_endor_village_tree_viewpoint, "object/building/endor/shared_endor_village_tree_viewpoint.iff")
@@ -878,7 +892,8 @@ object_building_endor_shared_endr_lake_rail16m = SharedStaticObjectTemplate:new 
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2748322568
+	clientObjectCRC = 2748322568,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_endor_shared_endr_lake_rail16m, "object/building/endor/shared_endr_lake_rail16m.iff")
@@ -922,7 +937,8 @@ object_building_endor_shared_endr_lake_rail2m = SharedStaticObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 380245173
+	clientObjectCRC = 380245173,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_endor_shared_endr_lake_rail2m, "object/building/endor/shared_endr_lake_rail2m.iff")
@@ -966,7 +982,8 @@ object_building_endor_shared_endr_lake_rail4m = SharedStaticObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1280981925
+	clientObjectCRC = 1280981925,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_endor_shared_endr_lake_rail4m, "object/building/endor/shared_endr_lake_rail4m.iff")
@@ -1010,7 +1027,8 @@ object_building_endor_shared_endr_lake_rail8m = SharedStaticObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 4189742469
+	clientObjectCRC = 4189742469,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_endor_shared_endr_lake_rail8m, "object/building/endor/shared_endr_lake_rail8m.iff")

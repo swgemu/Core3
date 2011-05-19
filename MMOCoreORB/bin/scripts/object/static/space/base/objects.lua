@@ -80,7 +80,8 @@ object_static_space_base_shared_static_space_base = SharedStaticObjectTemplate:n
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 4149044600
+	clientObjectCRC = 4149044600,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_space_base_shared_static_space_base, "object/static/space/base/shared_static_space_base.iff")

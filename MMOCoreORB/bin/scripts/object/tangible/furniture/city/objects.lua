@@ -90,7 +90,8 @@ object_tangible_furniture_city_shared_city_furniture = SharedTangibleObjectTempl
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4151196909
+	clientObjectCRC = 4151196909,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_furniture_city_shared_city_furniture, "object/tangible/furniture/city/shared_city_furniture.iff")
@@ -144,7 +145,8 @@ object_tangible_furniture_city_shared_fountain_brazier_round = SharedTangibleObj
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2313257856
+	clientObjectCRC = 2313257856,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff", "object/tangible/furniture/city/shared_city_furniture.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_furniture_city_shared_fountain_brazier_round, "object/tangible/furniture/city/shared_fountain_brazier_round.iff")
@@ -198,7 +200,8 @@ object_tangible_furniture_city_shared_fountain_brazier_square = SharedTangibleOb
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3003277159
+	clientObjectCRC = 3003277159,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff", "object/tangible/furniture/city/shared_city_furniture.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_furniture_city_shared_fountain_brazier_square, "object/tangible/furniture/city/shared_fountain_brazier_square.iff")
@@ -252,7 +255,8 @@ object_tangible_furniture_city_shared_fountain_circle = SharedTangibleObjectTemp
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2062230985
+	clientObjectCRC = 2062230985,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff", "object/tangible/furniture/city/shared_city_furniture.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_furniture_city_shared_fountain_circle, "object/tangible/furniture/city/shared_fountain_circle.iff")
@@ -306,7 +310,8 @@ object_tangible_furniture_city_shared_fountain_contemplate = SharedTangibleObjec
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2289141154
+	clientObjectCRC = 2289141154,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff", "object/tangible/furniture/city/shared_city_furniture.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_furniture_city_shared_fountain_contemplate, "object/tangible/furniture/city/shared_fountain_contemplate.iff")
@@ -360,7 +365,8 @@ object_tangible_furniture_city_shared_fountain_generic = SharedTangibleObjectTem
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 891317652
+	clientObjectCRC = 891317652,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff", "object/tangible/furniture/city/shared_city_furniture.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_furniture_city_shared_fountain_generic, "object/tangible/furniture/city/shared_fountain_generic.iff")
@@ -414,7 +420,8 @@ object_tangible_furniture_city_shared_fountain_heroic = SharedTangibleObjectTemp
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 752522067
+	clientObjectCRC = 752522067,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff", "object/tangible/furniture/city/shared_city_furniture.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_furniture_city_shared_fountain_heroic, "object/tangible/furniture/city/shared_fountain_heroic.iff")
@@ -468,7 +475,8 @@ object_tangible_furniture_city_shared_fountain_rectangle = SharedTangibleObjectT
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 288593099
+	clientObjectCRC = 288593099,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff", "object/tangible/furniture/city/shared_city_furniture.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_furniture_city_shared_fountain_rectangle, "object/tangible/furniture/city/shared_fountain_rectangle.iff")
@@ -522,7 +530,8 @@ object_tangible_furniture_city_shared_statue_gungan_head = SharedTangibleObjectT
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2297433571
+	clientObjectCRC = 2297433571,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff", "object/tangible/furniture/city/shared_city_furniture.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_furniture_city_shared_statue_gungan_head, "object/tangible/furniture/city/shared_statue_gungan_head.iff")
@@ -576,7 +585,8 @@ object_tangible_furniture_city_shared_statue_sentinel_01 = SharedTangibleObjectT
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2790671586
+	clientObjectCRC = 2790671586,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff", "object/tangible/furniture/city/shared_city_furniture.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_furniture_city_shared_statue_sentinel_01, "object/tangible/furniture/city/shared_statue_sentinel_01.iff")
@@ -630,7 +640,8 @@ object_tangible_furniture_city_shared_statue_sentinel_02 = SharedTangibleObjectT
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2101472373
+	clientObjectCRC = 2101472373,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff", "object/tangible/furniture/city/shared_city_furniture.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_furniture_city_shared_statue_sentinel_02, "object/tangible/furniture/city/shared_statue_sentinel_02.iff")
@@ -684,7 +695,8 @@ object_tangible_furniture_city_shared_statue_tatooine_sunball = SharedTangibleOb
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2953802016
+	clientObjectCRC = 2953802016,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff", "object/tangible/furniture/city/shared_city_furniture.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_furniture_city_shared_statue_tatooine_sunball, "object/tangible/furniture/city/shared_statue_tatooine_sunball.iff")
@@ -738,7 +750,8 @@ object_tangible_furniture_city_shared_statue_weird_01 = SharedTangibleObjectTemp
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3005115588
+	clientObjectCRC = 3005115588,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff", "object/tangible/furniture/city/shared_city_furniture.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_furniture_city_shared_statue_weird_01, "object/tangible/furniture/city/shared_statue_weird_01.iff")
@@ -792,7 +805,8 @@ object_tangible_furniture_city_shared_statue_weird_02 = SharedTangibleObjectTemp
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1745470547
+	clientObjectCRC = 1745470547,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff", "object/tangible/furniture/city/shared_city_furniture.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_furniture_city_shared_statue_weird_02, "object/tangible/furniture/city/shared_statue_weird_02.iff")
@@ -846,7 +860,8 @@ object_tangible_furniture_city_shared_streetlamp_large_01 = SharedTangibleObject
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2047185274
+	clientObjectCRC = 2047185274,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff", "object/tangible/furniture/city/shared_city_furniture.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_furniture_city_shared_streetlamp_large_01, "object/tangible/furniture/city/shared_streetlamp_large_01.iff")
@@ -900,7 +915,8 @@ object_tangible_furniture_city_shared_streetlamp_large_02 = SharedTangibleObject
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2702326253
+	clientObjectCRC = 2702326253,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff", "object/tangible/furniture/city/shared_city_furniture.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_furniture_city_shared_streetlamp_large_02, "object/tangible/furniture/city/shared_streetlamp_large_02.iff")
@@ -954,7 +970,8 @@ object_tangible_furniture_city_shared_streetlamp_large_blue_01 = SharedTangibleO
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 551133960
+	clientObjectCRC = 551133960,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff", "object/tangible/furniture/city/shared_city_furniture.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_furniture_city_shared_streetlamp_large_blue_01, "object/tangible/furniture/city/shared_streetlamp_large_blue_01.iff")
@@ -1008,7 +1025,8 @@ object_tangible_furniture_city_shared_streetlamp_large_blue_02 = SharedTangibleO
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4224584607
+	clientObjectCRC = 4224584607,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff", "object/tangible/furniture/city/shared_city_furniture.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_furniture_city_shared_streetlamp_large_blue_02, "object/tangible/furniture/city/shared_streetlamp_large_blue_02.iff")
@@ -1062,7 +1080,8 @@ object_tangible_furniture_city_shared_streetlamp_large_green_01 = SharedTangible
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2531280975
+	clientObjectCRC = 2531280975,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff", "object/tangible/furniture/city/shared_city_furniture.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_furniture_city_shared_streetlamp_large_green_01, "object/tangible/furniture/city/shared_streetlamp_large_green_01.iff")
@@ -1116,7 +1135,8 @@ object_tangible_furniture_city_shared_streetlamp_large_green_02 = SharedTangible
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1308090584
+	clientObjectCRC = 1308090584,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff", "object/tangible/furniture/city/shared_city_furniture.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_furniture_city_shared_streetlamp_large_green_02, "object/tangible/furniture/city/shared_streetlamp_large_green_02.iff")
@@ -1170,7 +1190,8 @@ object_tangible_furniture_city_shared_streetlamp_large_red_01 = SharedTangibleOb
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2282086980
+	clientObjectCRC = 2282086980,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff", "object/tangible/furniture/city/shared_city_furniture.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_furniture_city_shared_streetlamp_large_red_01, "object/tangible/furniture/city/shared_streetlamp_large_red_01.iff")
@@ -1224,7 +1245,8 @@ object_tangible_furniture_city_shared_streetlamp_large_red_02 = SharedTangibleOb
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1393707731
+	clientObjectCRC = 1393707731,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff", "object/tangible/furniture/city/shared_city_furniture.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_furniture_city_shared_streetlamp_large_red_02, "object/tangible/furniture/city/shared_streetlamp_large_red_02.iff")
@@ -1278,7 +1300,8 @@ object_tangible_furniture_city_shared_streetlamp_med_01 = SharedTangibleObjectTe
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1764304868
+	clientObjectCRC = 1764304868,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff", "object/tangible/furniture/city/shared_city_furniture.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_furniture_city_shared_streetlamp_med_01, "object/tangible/furniture/city/shared_streetlamp_med_01.iff")
@@ -1332,7 +1355,8 @@ object_tangible_furniture_city_shared_streetlamp_med_02 = SharedTangibleObjectTe
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2990444403
+	clientObjectCRC = 2990444403,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff", "object/tangible/furniture/city/shared_city_furniture.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_furniture_city_shared_streetlamp_med_02, "object/tangible/furniture/city/shared_streetlamp_med_02.iff")
@@ -1386,7 +1410,8 @@ object_tangible_furniture_city_shared_streetlamp_med_blue_01 = SharedTangibleObj
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 615766032
+	clientObjectCRC = 615766032,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff", "object/tangible/furniture/city/shared_city_furniture.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_furniture_city_shared_streetlamp_med_blue_01, "object/tangible/furniture/city/shared_streetlamp_med_blue_01.iff")
@@ -1440,7 +1465,8 @@ object_tangible_furniture_city_shared_streetlamp_med_blue_02 = SharedTangibleObj
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4288966791
+	clientObjectCRC = 4288966791,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff", "object/tangible/furniture/city/shared_city_furniture.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_furniture_city_shared_streetlamp_med_blue_02, "object/tangible/furniture/city/shared_streetlamp_med_blue_02.iff")
@@ -1494,7 +1520,8 @@ object_tangible_furniture_city_shared_streetlamp_med_green_01 = SharedTangibleOb
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4020184723
+	clientObjectCRC = 4020184723,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff", "object/tangible/furniture/city/shared_city_furniture.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_furniture_city_shared_streetlamp_med_green_01, "object/tangible/furniture/city/shared_streetlamp_med_green_01.iff")
@@ -1548,7 +1575,8 @@ object_tangible_furniture_city_shared_streetlamp_med_green_02 = SharedTangibleOb
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 881364484
+	clientObjectCRC = 881364484,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff", "object/tangible/furniture/city/shared_city_furniture.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_furniture_city_shared_streetlamp_med_green_02, "object/tangible/furniture/city/shared_streetlamp_med_green_02.iff")
@@ -1602,7 +1630,8 @@ object_tangible_furniture_city_shared_streetlamp_med_red_01 = SharedTangibleObje
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1676634834
+	clientObjectCRC = 1676634834,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff", "object/tangible/furniture/city/shared_city_furniture.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_furniture_city_shared_streetlamp_med_red_01, "object/tangible/furniture/city/shared_streetlamp_med_red_01.iff")
@@ -1656,7 +1685,8 @@ object_tangible_furniture_city_shared_streetlamp_med_red_02 = SharedTangibleObje
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3103310405
+	clientObjectCRC = 3103310405,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff", "object/tangible/furniture/city/shared_city_furniture.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_furniture_city_shared_streetlamp_med_red_02, "object/tangible/furniture/city/shared_streetlamp_med_red_02.iff")

@@ -80,7 +80,8 @@ object_static_space_debris_shared_cargo_destroyed_large_a = SharedStaticObjectTe
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2590979892
+	clientObjectCRC = 2590979892,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_space_debris_shared_cargo_destroyed_large_a, "object/static/space/debris/shared_cargo_destroyed_large_a.iff")
@@ -124,7 +125,8 @@ object_static_space_debris_shared_cargo_destroyed_small_a = SharedStaticObjectTe
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 483044281
+	clientObjectCRC = 483044281,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_space_debris_shared_cargo_destroyed_small_a, "object/static/space/debris/shared_cargo_destroyed_small_a.iff")
@@ -168,7 +170,8 @@ object_static_space_debris_shared_cargo_pristine_large_a = SharedStaticObjectTem
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3524446459
+	clientObjectCRC = 3524446459,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_space_debris_shared_cargo_pristine_large_a, "object/static/space/debris/shared_cargo_pristine_large_a.iff")
@@ -212,7 +215,8 @@ object_static_space_debris_shared_death_star_debris_a = SharedStaticObjectTempla
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2077093717
+	clientObjectCRC = 2077093717,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_space_debris_shared_death_star_debris_a, "object/static/space/debris/shared_death_star_debris_a.iff")
@@ -256,7 +260,8 @@ object_static_space_debris_shared_death_star_debris_b = SharedStaticObjectTempla
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2698659778
+	clientObjectCRC = 2698659778,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_space_debris_shared_death_star_debris_b, "object/static/space/debris/shared_death_star_debris_b.iff")
@@ -300,7 +305,8 @@ object_static_space_debris_shared_death_star_debris_c = SharedStaticObjectTempla
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3923189839
+	clientObjectCRC = 3923189839,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_space_debris_shared_death_star_debris_c, "object/static/space/debris/shared_death_star_debris_c.iff")
@@ -344,7 +350,8 @@ object_static_space_debris_shared_death_star_debris_d = SharedStaticObjectTempla
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 305400667
+	clientObjectCRC = 305400667,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_space_debris_shared_death_star_debris_d, "object/static/space/debris/shared_death_star_debris_d.iff")
@@ -388,7 +395,8 @@ object_static_space_debris_shared_death_star_debris_e = SharedStaticObjectTempla
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1530490070
+	clientObjectCRC = 1530490070,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_space_debris_shared_death_star_debris_e, "object/static/space/debris/shared_death_star_debris_e.iff")
@@ -432,7 +440,8 @@ object_static_space_debris_shared_death_star_debris_f = SharedStaticObjectTempla
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2150548545
+	clientObjectCRC = 2150548545,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_space_debris_shared_death_star_debris_f, "object/static/space/debris/shared_death_star_debris_f.iff")
@@ -476,7 +485,8 @@ object_static_space_debris_shared_death_star_debris_g = SharedStaticObjectTempla
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3374556108
+	clientObjectCRC = 3374556108,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_space_debris_shared_death_star_debris_g, "object/static/space/debris/shared_death_star_debris_g.iff")
@@ -520,7 +530,8 @@ object_static_space_debris_shared_death_star_debris_h = SharedStaticObjectTempla
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1932103646
+	clientObjectCRC = 1932103646,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_space_debris_shared_death_star_debris_h, "object/static/space/debris/shared_death_star_debris_h.iff")
@@ -564,7 +575,8 @@ object_static_space_debris_shared_death_star_debris_i = SharedStaticObjectTempla
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 975497299
+	clientObjectCRC = 975497299,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_space_debris_shared_death_star_debris_i, "object/static/space/debris/shared_death_star_debris_i.iff")
@@ -608,7 +620,8 @@ object_static_space_debris_shared_droid_fighter_debris_s01 = SharedStaticObjectT
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3253175573
+	clientObjectCRC = 3253175573,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_space_debris_shared_droid_fighter_debris_s01, "object/static/space/debris/shared_droid_fighter_debris_s01.iff")
@@ -652,7 +665,8 @@ object_static_space_debris_shared_droid_fighter_debris_s02 = SharedStaticObjectT
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 451947906
+	clientObjectCRC = 451947906,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_space_debris_shared_droid_fighter_debris_s02, "object/static/space/debris/shared_droid_fighter_debris_s02.iff")
@@ -696,7 +710,8 @@ object_static_space_debris_shared_droid_fighter_debris_s03 = SharedStaticObjectT
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1409108495
+	clientObjectCRC = 1409108495,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_space_debris_shared_droid_fighter_debris_s03, "object/static/space/debris/shared_droid_fighter_debris_s03.iff")
@@ -740,7 +755,8 @@ object_static_space_debris_shared_droid_fighter_debris_s04 = SharedStaticObjectT
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2820563227
+	clientObjectCRC = 2820563227,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_space_debris_shared_droid_fighter_debris_s04, "object/static/space/debris/shared_droid_fighter_debris_s04.iff")
@@ -784,7 +800,8 @@ object_static_space_debris_shared_tie_fighter_debris_a = SharedStaticObjectTempl
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3891582202
+	clientObjectCRC = 3891582202,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_space_debris_shared_tie_fighter_debris_a, "object/static/space/debris/shared_tie_fighter_debris_a.iff")
@@ -828,7 +845,8 @@ object_static_space_debris_shared_tie_fighter_debris_b = SharedStaticObjectTempl
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1021541485
+	clientObjectCRC = 1021541485,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_space_debris_shared_tie_fighter_debris_b, "object/static/space/debris/shared_tie_fighter_debris_b.iff")
@@ -872,7 +890,8 @@ object_static_space_debris_shared_tie_fighter_debris_c = SharedStaticObjectTempl
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1978538976
+	clientObjectCRC = 1978538976,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_space_debris_shared_tie_fighter_debris_c, "object/static/space/debris/shared_tie_fighter_debris_c.iff")
@@ -916,7 +935,8 @@ object_static_space_debris_shared_tie_fighter_debris_d = SharedStaticObjectTempl
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2383229172
+	clientObjectCRC = 2383229172,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_space_debris_shared_tie_fighter_debris_d, "object/static/space/debris/shared_tie_fighter_debris_d.iff")
@@ -960,7 +980,8 @@ object_static_space_debris_shared_tie_fighter_debris_e = SharedStaticObjectTempl
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3338688377
+	clientObjectCRC = 3338688377,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_space_debris_shared_tie_fighter_debris_e, "object/static/space/debris/shared_tie_fighter_debris_e.iff")
@@ -1004,7 +1025,8 @@ object_static_space_debris_shared_tie_fighter_debris_f = SharedStaticObjectTempl
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 471334894
+	clientObjectCRC = 471334894,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_space_debris_shared_tie_fighter_debris_f, "object/static/space/debris/shared_tie_fighter_debris_f.iff")
@@ -1048,7 +1070,8 @@ object_static_space_debris_shared_tie_fighter_debris_g = SharedStaticObjectTempl
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1427806307
+	clientObjectCRC = 1427806307,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_space_debris_shared_tie_fighter_debris_g, "object/static/space/debris/shared_tie_fighter_debris_g.iff")
@@ -1092,7 +1115,8 @@ object_static_space_debris_shared_tradefed_hulk_debris_s01 = SharedStaticObjectT
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3363541547
+	clientObjectCRC = 3363541547,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_space_debris_shared_tradefed_hulk_debris_s01, "object/static/space/debris/shared_tradefed_hulk_debris_s01.iff")
@@ -1136,7 +1160,8 @@ object_static_space_debris_shared_tradefed_hulk_debris_s02 = SharedStaticObjectT
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 325860028
+	clientObjectCRC = 325860028,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_space_debris_shared_tradefed_hulk_debris_s02, "object/static/space/debris/shared_tradefed_hulk_debris_s02.iff")
@@ -1180,7 +1205,8 @@ object_static_space_debris_shared_tradefed_hulk_debris_s03 = SharedStaticObjectT
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1516330289
+	clientObjectCRC = 1516330289,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_space_debris_shared_tradefed_hulk_debris_s03, "object/static/space/debris/shared_tradefed_hulk_debris_s03.iff")
@@ -1224,7 +1250,8 @@ object_static_space_debris_shared_tradefed_hulk_debris_s04 = SharedStaticObjectT
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2709681701
+	clientObjectCRC = 2709681701,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_space_debris_shared_tradefed_hulk_debris_s04, "object/static/space/debris/shared_tradefed_hulk_debris_s04.iff")
@@ -1268,7 +1295,8 @@ object_static_space_debris_shared_xwing_debris_a = SharedStaticObjectTemplate:ne
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3548707546
+	clientObjectCRC = 3548707546,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_space_debris_shared_xwing_debris_a, "object/static/space/debris/shared_xwing_debris_a.iff")
@@ -1312,7 +1340,8 @@ object_static_space_debris_shared_xwing_debris_b = SharedStaticObjectTemplate:ne
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 143872589
+	clientObjectCRC = 143872589,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_space_debris_shared_xwing_debris_b, "object/static/space/debris/shared_xwing_debris_b.iff")
@@ -1356,7 +1385,8 @@ object_static_space_debris_shared_xwing_debris_c = SharedStaticObjectTemplate:ne
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1100887488
+	clientObjectCRC = 1100887488,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_space_debris_shared_xwing_debris_c, "object/static/space/debris/shared_xwing_debris_c.iff")
@@ -1400,7 +1430,8 @@ object_static_space_debris_shared_xwing_debris_d = SharedStaticObjectTemplate:ne
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3128762068
+	clientObjectCRC = 3128762068,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_space_debris_shared_xwing_debris_d, "object/static/space/debris/shared_xwing_debris_d.iff")
@@ -1444,7 +1475,8 @@ object_static_space_debris_shared_xwing_debris_e = SharedStaticObjectTemplate:ne
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 4084234585
+	clientObjectCRC = 4084234585,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_space_debris_shared_xwing_debris_e, "object/static/space/debris/shared_xwing_debris_e.iff")
@@ -1488,7 +1520,8 @@ object_static_space_debris_shared_xwing_debris_f = SharedStaticObjectTemplate:ne
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 677892558
+	clientObjectCRC = 677892558,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_space_debris_shared_xwing_debris_f, "object/static/space/debris/shared_xwing_debris_f.iff")
@@ -1532,7 +1565,8 @@ object_static_space_debris_shared_xwing_debris_g = SharedStaticObjectTemplate:ne
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1634383427
+	clientObjectCRC = 1634383427,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_space_debris_shared_xwing_debris_g, "object/static/space/debris/shared_xwing_debris_g.iff")

@@ -90,7 +90,8 @@ object_tangible_lair_shaupaut_shared_lair_shaupaut = SharedTangibleObjectTemplat
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 56634783
+	clientObjectCRC = 56634783,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_shaupaut_shared_lair_shaupaut, "object/tangible/lair/shaupaut/shared_lair_shaupaut.iff")
@@ -144,7 +145,8 @@ object_tangible_lair_shaupaut_shared_lair_shaupaut_forest = SharedTangibleObject
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1064337645
+	clientObjectCRC = 1064337645,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_shaupaut_shared_lair_shaupaut_forest, "object/tangible/lair/shaupaut/shared_lair_shaupaut_forest.iff")
@@ -198,7 +200,8 @@ object_tangible_lair_shaupaut_shared_lair_shaupaut_swamp = SharedTangibleObjectT
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2989589042
+	clientObjectCRC = 2989589042,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_shaupaut_shared_lair_shaupaut_swamp, "object/tangible/lair/shaupaut/shared_lair_shaupaut_swamp.iff")

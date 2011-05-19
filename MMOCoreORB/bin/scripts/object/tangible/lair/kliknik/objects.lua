@@ -90,7 +90,8 @@ object_tangible_lair_kliknik_shared_lair_kliknik = SharedTangibleObjectTemplate:
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2186183651
+	clientObjectCRC = 2186183651,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_kliknik_shared_lair_kliknik, "object/tangible/lair/kliknik/shared_lair_kliknik.iff")
@@ -144,7 +145,8 @@ object_tangible_lair_kliknik_shared_lair_kliknik_forest = SharedTangibleObjectTe
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 33728532
+	clientObjectCRC = 33728532,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_kliknik_shared_lair_kliknik_forest, "object/tangible/lair/kliknik/shared_lair_kliknik_forest.iff")

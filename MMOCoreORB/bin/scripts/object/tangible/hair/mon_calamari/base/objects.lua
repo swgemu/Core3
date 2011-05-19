@@ -90,7 +90,8 @@ object_tangible_hair_mon_calamari_base_shared_hair_mon_calamari_base = SharedTan
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2992922029
+	clientObjectCRC = 2992922029,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/hair/base/shared_hair_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_hair_mon_calamari_base_shared_hair_mon_calamari_base, "object/tangible/hair/mon_calamari/base/shared_hair_mon_calamari_base.iff")
@@ -144,7 +145,8 @@ object_tangible_hair_mon_calamari_base_shared_hair_mon_calamari_female_base = Sh
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3431919684
+	clientObjectCRC = 3431919684,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/hair/base/shared_hair_base.iff", "object/tangible/hair/mon_calamari/base/shared_hair_mon_calamari_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_hair_mon_calamari_base_shared_hair_mon_calamari_female_base, "object/tangible/hair/mon_calamari/base/shared_hair_mon_calamari_female_base.iff")
@@ -198,7 +200,8 @@ object_tangible_hair_mon_calamari_base_shared_hair_mon_calamari_male_base = Shar
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 70668813
+	clientObjectCRC = 70668813,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/hair/base/shared_hair_base.iff", "object/tangible/hair/mon_calamari/base/shared_hair_mon_calamari_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_hair_mon_calamari_base_shared_hair_mon_calamari_male_base, "object/tangible/hair/mon_calamari/base/shared_hair_mon_calamari_male_base.iff")

@@ -90,7 +90,8 @@ object_tangible_medicine_base_shared_base_medicine = SharedTangibleObjectTemplat
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 832067310
+	clientObjectCRC = 832067310,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_medicine_base_shared_base_medicine, "object/tangible/medicine/base/shared_base_medicine.iff")

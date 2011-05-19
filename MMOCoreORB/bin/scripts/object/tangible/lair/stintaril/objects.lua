@@ -90,7 +90,8 @@ object_tangible_lair_stintaril_shared_lair_stintaril = SharedTangibleObjectTempl
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3535581753
+	clientObjectCRC = 3535581753,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_stintaril_shared_lair_stintaril, "object/tangible/lair/stintaril/shared_lair_stintaril.iff")
@@ -144,7 +145,8 @@ object_tangible_lair_stintaril_shared_lair_stintaril_jungle = SharedTangibleObje
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3799137931
+	clientObjectCRC = 3799137931,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_stintaril_shared_lair_stintaril_jungle, "object/tangible/lair/stintaril/shared_lair_stintaril_jungle.iff")
@@ -198,7 +200,8 @@ object_tangible_lair_stintaril_shared_lair_stintaril_swamp = SharedTangibleObjec
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3834490330
+	clientObjectCRC = 3834490330,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_stintaril_shared_lair_stintaril_swamp, "object/tangible/lair/stintaril/shared_lair_stintaril_swamp.iff")

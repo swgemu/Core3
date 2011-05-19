@@ -90,7 +90,8 @@ object_installation_mining_ore_construction_shared_construction_mining_ore_harve
 
 	useStructureFootprintOutline = 1,
 
-	clientObjectCRC = 2242761962
+	clientObjectCRC = 2242761962,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_installation_mining_ore_construction_shared_construction_mining_ore_harvester_style_1, "object/installation/mining_ore/construction/shared_construction_mining_ore_harvester_style_1.iff")
@@ -144,7 +145,8 @@ object_installation_mining_ore_construction_shared_construction_mining_ore_harve
 
 	useStructureFootprintOutline = 1,
 
-	clientObjectCRC = 1589279869
+	clientObjectCRC = 1589279869,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_installation_mining_ore_construction_shared_construction_mining_ore_harvester_style_2, "object/installation/mining_ore/construction/shared_construction_mining_ore_harvester_style_2.iff")
@@ -198,7 +200,8 @@ object_installation_mining_ore_construction_shared_construction_mining_ore_harve
 
 	useStructureFootprintOutline = 1,
 
-	clientObjectCRC = 1103585647
+	clientObjectCRC = 1103585647,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_installation_mining_ore_construction_shared_construction_mining_ore_harvester_style_heavy, "object/installation/mining_ore/construction/shared_construction_mining_ore_harvester_style_heavy.iff")

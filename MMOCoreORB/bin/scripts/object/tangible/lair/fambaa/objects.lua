@@ -90,7 +90,8 @@ object_tangible_lair_fambaa_shared_lair_fambaa = SharedTangibleObjectTemplate:ne
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2348330712
+	clientObjectCRC = 2348330712,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_fambaa_shared_lair_fambaa, "object/tangible/lair/fambaa/shared_lair_fambaa.iff")
@@ -144,7 +145,8 @@ object_tangible_lair_fambaa_shared_lair_fambaa_swamp = SharedTangibleObjectTempl
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3030660529
+	clientObjectCRC = 3030660529,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_fambaa_shared_lair_fambaa_swamp, "object/tangible/lair/fambaa/shared_lair_fambaa_swamp.iff")

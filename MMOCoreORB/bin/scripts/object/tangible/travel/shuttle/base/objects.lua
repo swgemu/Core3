@@ -90,7 +90,8 @@ object_tangible_travel_shuttle_base_shared_base_travel_shuttle = SharedTangibleO
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1622629631
+	clientObjectCRC = 1622629631,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_travel_shuttle_base_shared_base_travel_shuttle, "object/tangible/travel/shuttle/base/shared_base_travel_shuttle.iff")

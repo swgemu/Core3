@@ -94,7 +94,8 @@ object_weapon_mine_shared_wp_mine_anti_vehicle = SharedWeaponObjectTemplate:new 
 	weaponEffect = "bolt",
 	weaponEffectIndex = 0,
 
-	clientObjectCRC = 1109205423
+	clientObjectCRC = 1109205423,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/weapon/base/shared_base_weapon.iff", "object/weapon/ranged/base/shared_base_ranged_weapon.iff", "object/weapon/mine/base/shared_mine_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_weapon_mine_shared_wp_mine_anti_vehicle, "object/weapon/mine/shared_wp_mine_anti_vehicle.iff")
@@ -152,7 +153,8 @@ object_weapon_mine_shared_wp_mine_drx55 = SharedWeaponObjectTemplate:new {
 	weaponEffect = "bolt",
 	weaponEffectIndex = 0,
 
-	clientObjectCRC = 1308699589
+	clientObjectCRC = 1308699589,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/weapon/base/shared_base_weapon.iff", "object/weapon/ranged/base/shared_base_ranged_weapon.iff", "object/weapon/mine/base/shared_mine_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_weapon_mine_shared_wp_mine_drx55, "object/weapon/mine/shared_wp_mine_drx55.iff")
@@ -210,7 +212,8 @@ object_weapon_mine_shared_wp_mine_xg = SharedWeaponObjectTemplate:new {
 	weaponEffect = "bolt",
 	weaponEffectIndex = 0,
 
-	clientObjectCRC = 350273897
+	clientObjectCRC = 350273897,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/weapon/base/shared_base_weapon.iff", "object/weapon/ranged/base/shared_base_ranged_weapon.iff", "object/weapon/mine/base/shared_mine_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_weapon_mine_shared_wp_mine_xg, "object/weapon/mine/shared_wp_mine_xg.iff")

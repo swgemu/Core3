@@ -90,7 +90,8 @@ object_tangible_deed_turret_deed_shared_turret_block_large_deed = SharedTangible
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 662025863
+	clientObjectCRC = 662025863,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/deed/base/shared_deed_base.iff", "object/tangible/deed/base/shared_deed_installation_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_deed_turret_deed_shared_turret_block_large_deed, "object/tangible/deed/turret_deed/shared_turret_block_large_deed.iff")
@@ -144,7 +145,8 @@ object_tangible_deed_turret_deed_shared_turret_block_medium_deed = SharedTangibl
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3770943764
+	clientObjectCRC = 3770943764,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/deed/base/shared_deed_base.iff", "object/tangible/deed/base/shared_deed_installation_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_deed_turret_deed_shared_turret_block_medium_deed, "object/tangible/deed/turret_deed/shared_turret_block_medium_deed.iff")
@@ -198,7 +200,8 @@ object_tangible_deed_turret_deed_shared_turret_block_small_deed = SharedTangible
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1744023588
+	clientObjectCRC = 1744023588,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/deed/base/shared_deed_base.iff", "object/tangible/deed/base/shared_deed_installation_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_deed_turret_deed_shared_turret_block_small_deed, "object/tangible/deed/turret_deed/shared_turret_block_small_deed.iff")

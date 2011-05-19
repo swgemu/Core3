@@ -90,7 +90,8 @@ object_tangible_ship_attachment_bridge_shared_star_destroyer_bridge = SharedTang
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1389700188
+	clientObjectCRC = 1389700188,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/attachment/base/shared_base_ship_attachment.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_bridge_shared_star_destroyer_bridge, "object/tangible/ship/attachment/bridge/shared_star_destroyer_bridge.iff")

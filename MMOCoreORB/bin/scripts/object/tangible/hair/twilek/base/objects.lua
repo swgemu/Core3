@@ -90,7 +90,8 @@ object_tangible_hair_twilek_base_shared_hair_twilek_base = SharedTangibleObjectT
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3565672678
+	clientObjectCRC = 3565672678,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/hair/base/shared_hair_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_hair_twilek_base_shared_hair_twilek_base, "object/tangible/hair/twilek/base/shared_hair_twilek_base.iff")
@@ -144,7 +145,8 @@ object_tangible_hair_twilek_base_shared_hair_twilek_female_base = SharedTangible
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 730298848
+	clientObjectCRC = 730298848,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/hair/base/shared_hair_base.iff", "object/tangible/hair/twilek/base/shared_hair_twilek_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_hair_twilek_base_shared_hair_twilek_female_base, "object/tangible/hair/twilek/base/shared_hair_twilek_female_base.iff")
@@ -198,7 +200,8 @@ object_tangible_hair_twilek_base_shared_hair_twilek_male_base = SharedTangibleOb
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 487942244
+	clientObjectCRC = 487942244,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/hair/base/shared_hair_base.iff", "object/tangible/hair/twilek/base/shared_hair_twilek_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_hair_twilek_base_shared_hair_twilek_male_base, "object/tangible/hair/twilek/base/shared_hair_twilek_male_base.iff")

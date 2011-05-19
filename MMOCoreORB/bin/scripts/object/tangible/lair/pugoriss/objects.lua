@@ -90,7 +90,8 @@ object_tangible_lair_pugoriss_shared_lair_pugoriss = SharedTangibleObjectTemplat
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1270614001
+	clientObjectCRC = 1270614001,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_pugoriss_shared_lair_pugoriss, "object/tangible/lair/pugoriss/shared_lair_pugoriss.iff")
@@ -144,7 +145,8 @@ object_tangible_lair_pugoriss_shared_lair_pugoriss_grassland = SharedTangibleObj
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3218295663
+	clientObjectCRC = 3218295663,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_pugoriss_shared_lair_pugoriss_grassland, "object/tangible/lair/pugoriss/shared_lair_pugoriss_grassland.iff")

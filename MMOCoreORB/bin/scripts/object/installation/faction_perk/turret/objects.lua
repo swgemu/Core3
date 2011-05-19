@@ -90,7 +90,8 @@ object_installation_faction_perk_turret_shared_block_lg = SharedInstallationObje
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2286796965
+	clientObjectCRC = 2286796965,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff", "object/installation/turret/base/shared_turret_base.iff", "object/installation/faction_perk/turret/base/shared_faction_turret_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_installation_faction_perk_turret_shared_block_lg, "object/installation/faction_perk/turret/shared_block_lg.iff")
@@ -144,7 +145,8 @@ object_installation_faction_perk_turret_shared_block_med = SharedInstallationObj
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1869715208
+	clientObjectCRC = 1869715208,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff", "object/installation/turret/base/shared_turret_base.iff", "object/installation/faction_perk/turret/base/shared_faction_turret_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_installation_faction_perk_turret_shared_block_med, "object/installation/faction_perk/turret/shared_block_med.iff")
@@ -198,7 +200,8 @@ object_installation_faction_perk_turret_shared_block_sm = SharedInstallationObje
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1969720102
+	clientObjectCRC = 1969720102,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff", "object/installation/turret/base/shared_turret_base.iff", "object/installation/faction_perk/turret/base/shared_faction_turret_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_installation_faction_perk_turret_shared_block_sm, "object/installation/faction_perk/turret/shared_block_sm.iff")
@@ -252,7 +255,8 @@ object_installation_faction_perk_turret_shared_dish_lg = SharedInstallationObjec
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1581064772
+	clientObjectCRC = 1581064772,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff", "object/installation/turret/base/shared_turret_base.iff", "object/installation/faction_perk/turret/base/shared_faction_turret_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_installation_faction_perk_turret_shared_dish_lg, "object/installation/faction_perk/turret/shared_dish_lg.iff")
@@ -306,7 +310,8 @@ object_installation_faction_perk_turret_shared_dish_sm = SharedInstallationObjec
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2736220615
+	clientObjectCRC = 2736220615,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff", "object/installation/turret/base/shared_turret_base.iff", "object/installation/faction_perk/turret/base/shared_faction_turret_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_installation_faction_perk_turret_shared_dish_sm, "object/installation/faction_perk/turret/shared_dish_sm.iff")
@@ -360,7 +365,8 @@ object_installation_faction_perk_turret_shared_tower_lg = SharedInstallationObje
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3604402557
+	clientObjectCRC = 3604402557,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff", "object/installation/turret/base/shared_turret_base.iff", "object/installation/faction_perk/turret/base/shared_faction_turret_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_installation_faction_perk_turret_shared_tower_lg, "object/installation/faction_perk/turret/shared_tower_lg.iff")
@@ -414,7 +420,8 @@ object_installation_faction_perk_turret_shared_tower_med = SharedInstallationObj
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2960737285
+	clientObjectCRC = 2960737285,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff", "object/installation/turret/base/shared_turret_base.iff", "object/installation/faction_perk/turret/base/shared_faction_turret_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_installation_faction_perk_turret_shared_tower_med, "object/installation/faction_perk/turret/shared_tower_med.iff")
@@ -468,7 +475,8 @@ object_installation_faction_perk_turret_shared_tower_sm = SharedInstallationObje
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 737975038
+	clientObjectCRC = 737975038,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff", "object/installation/turret/base/shared_turret_base.iff", "object/installation/faction_perk/turret/base/shared_faction_turret_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_installation_faction_perk_turret_shared_tower_sm, "object/installation/faction_perk/turret/shared_tower_sm.iff")

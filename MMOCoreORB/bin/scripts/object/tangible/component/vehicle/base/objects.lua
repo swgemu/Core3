@@ -90,7 +90,8 @@ object_tangible_component_vehicle_base_shared_base_armor_panel = SharedTangibleO
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3466579247
+	clientObjectCRC = 3466579247,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_vehicle_base_shared_base_armor_panel, "object/tangible/component/vehicle/base/shared_base_armor_panel.iff")
@@ -144,7 +145,8 @@ object_tangible_component_vehicle_base_shared_base_veh_hull = SharedTangibleObje
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3375082309
+	clientObjectCRC = 3375082309,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_vehicle_base_shared_base_veh_hull, "object/tangible/component/vehicle/base/shared_base_veh_hull.iff")
@@ -198,7 +200,8 @@ object_tangible_component_vehicle_base_shared_base_veh_hull_hvy = SharedTangible
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1342686472
+	clientObjectCRC = 1342686472,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_vehicle_base_shared_base_veh_hull_hvy, "object/tangible/component/vehicle/base/shared_base_veh_hull_hvy.iff")
@@ -252,7 +255,8 @@ object_tangible_component_vehicle_base_shared_base_veh_weapon = SharedTangibleOb
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3126672435
+	clientObjectCRC = 3126672435,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_vehicle_base_shared_base_veh_weapon, "object/tangible/component/vehicle/base/shared_base_veh_weapon.iff")
@@ -306,7 +310,8 @@ object_tangible_component_vehicle_base_shared_base_veh_weapon_hvy = SharedTangib
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4158223239
+	clientObjectCRC = 4158223239,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_vehicle_base_shared_base_veh_weapon_hvy, "object/tangible/component/vehicle/base/shared_base_veh_weapon_hvy.iff")

@@ -90,7 +90,8 @@ object_tangible_skill_buff_base_shared_skill_buff_base = SharedTangibleObjectTem
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 150738371
+	clientObjectCRC = 150738371,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_skill_buff_base_shared_skill_buff_base, "object/tangible/skill_buff/base/shared_skill_buff_base.iff")

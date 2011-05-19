@@ -90,7 +90,8 @@ object_tangible_lair_winged_ornith_shared_lair_winged_ornith = SharedTangibleObj
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2324552203
+	clientObjectCRC = 2324552203,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_winged_ornith_shared_lair_winged_ornith, "object/tangible/lair/winged_ornith/shared_lair_winged_ornith.iff")
@@ -144,7 +145,8 @@ object_tangible_lair_winged_ornith_shared_lair_winged_ornith_grassland = SharedT
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3499819428
+	clientObjectCRC = 3499819428,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_winged_ornith_shared_lair_winged_ornith_grassland, "object/tangible/lair/winged_ornith/shared_lair_winged_ornith_grassland.iff")
@@ -198,7 +200,8 @@ object_tangible_lair_winged_ornith_shared_lair_winged_ornith_jungle = SharedTang
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3275441058
+	clientObjectCRC = 3275441058,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_winged_ornith_shared_lair_winged_ornith_jungle, "object/tangible/lair/winged_ornith/shared_lair_winged_ornith_jungle.iff")

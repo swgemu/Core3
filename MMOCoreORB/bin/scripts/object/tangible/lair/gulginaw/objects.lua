@@ -90,7 +90,8 @@ object_tangible_lair_gulginaw_shared_lair_gulginaw = SharedTangibleObjectTemplat
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 129775004
+	clientObjectCRC = 129775004,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_gulginaw_shared_lair_gulginaw, "object/tangible/lair/gulginaw/shared_lair_gulginaw.iff")
@@ -144,7 +145,8 @@ object_tangible_lair_gulginaw_shared_lair_gulginaw_forest = SharedTangibleObject
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3528407820
+	clientObjectCRC = 3528407820,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_gulginaw_shared_lair_gulginaw_forest, "object/tangible/lair/gulginaw/shared_lair_gulginaw_forest.iff")

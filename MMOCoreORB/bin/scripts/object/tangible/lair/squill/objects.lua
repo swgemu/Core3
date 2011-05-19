@@ -90,7 +90,8 @@ object_tangible_lair_squill_shared_lair_squill = SharedTangibleObjectTemplate:ne
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1781856165
+	clientObjectCRC = 1781856165,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff", "object/tangible/lair/base/shared_lair_base_mound_bramble_dark.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_squill_shared_lair_squill, "object/tangible/lair/squill/shared_lair_squill.iff")
@@ -144,7 +145,8 @@ object_tangible_lair_squill_shared_lair_squill_desert = SharedTangibleObjectTemp
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2102372943
+	clientObjectCRC = 2102372943,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff", "object/tangible/lair/base/shared_lair_base_mound_bramble_dark.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_squill_shared_lair_squill_desert, "object/tangible/lair/squill/shared_lair_squill_desert.iff")

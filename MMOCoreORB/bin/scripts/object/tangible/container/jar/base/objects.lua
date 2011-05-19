@@ -90,7 +90,8 @@ object_tangible_container_jar_base_shared_jar_base = SharedTangibleObjectTemplat
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3203126472
+	clientObjectCRC = 3203126472,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_container_jar_base_shared_jar_base, "object/tangible/container/jar/base/shared_jar_base.iff")

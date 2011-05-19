@@ -80,7 +80,8 @@ object_intangible_pet_shared_21b_surgical_droid = SharedIntangibleObjectTemplate
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1339278002
+	clientObjectCRC = 1339278002,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/intangible/pet/shared_droid_pet.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_pet_shared_21b_surgical_droid, "object/intangible/pet/shared_21b_surgical_droid.iff")
@@ -124,7 +125,8 @@ object_intangible_pet_shared_3po_protocol_droid = SharedIntangibleObjectTemplate
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1151045797
+	clientObjectCRC = 1151045797,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/intangible/pet/shared_droid_pet.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_pet_shared_3po_protocol_droid, "object/intangible/pet/shared_3po_protocol_droid.iff")
@@ -168,7 +170,8 @@ object_intangible_pet_shared_3po_protocol_droid_crafted = SharedIntangibleObject
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 23365206
+	clientObjectCRC = 23365206,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/intangible/pet/shared_droid_pet.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_pet_shared_3po_protocol_droid_crafted, "object/intangible/pet/shared_3po_protocol_droid_crafted.iff")
@@ -212,7 +215,8 @@ object_intangible_pet_shared_3po_protocol_droid_red = SharedIntangibleObjectTemp
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1404851907
+	clientObjectCRC = 1404851907,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/intangible/pet/shared_droid_pet.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_pet_shared_3po_protocol_droid_red, "object/intangible/pet/shared_3po_protocol_droid_red.iff")
@@ -256,7 +260,8 @@ object_intangible_pet_shared_3po_protocol_droid_silver = SharedIntangibleObjectT
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2910857037
+	clientObjectCRC = 2910857037,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/intangible/pet/shared_droid_pet.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_pet_shared_3po_protocol_droid_silver, "object/intangible/pet/shared_3po_protocol_droid_silver.iff")
@@ -300,7 +305,8 @@ object_intangible_pet_shared_angler_hue = SharedIntangibleObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 589316378
+	clientObjectCRC = 589316378,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_pet_shared_angler_hue, "object/intangible/pet/shared_angler_hue.iff")
@@ -344,7 +350,8 @@ object_intangible_pet_shared_astromech_waiter = SharedIntangibleObjectTemplate:n
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1324343534
+	clientObjectCRC = 1324343534,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/intangible/pet/shared_droid_pet.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_pet_shared_astromech_waiter, "object/intangible/pet/shared_astromech_waiter.iff")
@@ -388,7 +395,8 @@ object_intangible_pet_shared_bageraset_hue = SharedIntangibleObjectTemplate:new 
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3823818603
+	clientObjectCRC = 3823818603,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_pet_shared_bageraset_hue, "object/intangible/pet/shared_bageraset_hue.iff")
@@ -432,7 +440,8 @@ object_intangible_pet_shared_bantha_hue = SharedIntangibleObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 4245924782
+	clientObjectCRC = 4245924782,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_pet_shared_bantha_hue, "object/intangible/pet/shared_bantha_hue.iff")
@@ -476,7 +485,8 @@ object_intangible_pet_shared_bark_mite_hue = SharedIntangibleObjectTemplate:new 
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2460317493
+	clientObjectCRC = 2460317493,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_pet_shared_bark_mite_hue, "object/intangible/pet/shared_bark_mite_hue.iff")
@@ -520,7 +530,8 @@ object_intangible_pet_shared_bearded_jax_hue = SharedIntangibleObjectTemplate:ne
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2105300149
+	clientObjectCRC = 2105300149,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_pet_shared_bearded_jax_hue, "object/intangible/pet/shared_bearded_jax_hue.iff")
@@ -564,7 +575,8 @@ object_intangible_pet_shared_blurrg_hue = SharedIntangibleObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2907258996
+	clientObjectCRC = 2907258996,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_pet_shared_blurrg_hue, "object/intangible/pet/shared_blurrg_hue.iff")
@@ -608,7 +620,8 @@ object_intangible_pet_shared_boar_wolf_hue = SharedIntangibleObjectTemplate:new 
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3961986832
+	clientObjectCRC = 3961986832,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_pet_shared_boar_wolf_hue, "object/intangible/pet/shared_boar_wolf_hue.iff")
@@ -652,7 +665,8 @@ object_intangible_pet_shared_bocatt_hue = SharedIntangibleObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1462408235
+	clientObjectCRC = 1462408235,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_pet_shared_bocatt_hue, "object/intangible/pet/shared_bocatt_hue.iff")
@@ -696,7 +710,8 @@ object_intangible_pet_shared_bol_hue = SharedIntangibleObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3365864788
+	clientObjectCRC = 3365864788,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_pet_shared_bol_hue, "object/intangible/pet/shared_bol_hue.iff")
@@ -740,7 +755,8 @@ object_intangible_pet_shared_bolle_bol_hue = SharedIntangibleObjectTemplate:new 
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3465438553
+	clientObjectCRC = 3465438553,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_pet_shared_bolle_bol_hue, "object/intangible/pet/shared_bolle_bol_hue.iff")
@@ -784,7 +800,8 @@ object_intangible_pet_shared_bolma_hue = SharedIntangibleObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2112020105
+	clientObjectCRC = 2112020105,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_pet_shared_bolma_hue, "object/intangible/pet/shared_bolma_hue.iff")
@@ -828,7 +845,8 @@ object_intangible_pet_shared_bomarr_monk_spider_droid = SharedIntangibleObjectTe
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2304397641
+	clientObjectCRC = 2304397641,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/intangible/pet/shared_droid_pet.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_pet_shared_bomarr_monk_spider_droid, "object/intangible/pet/shared_bomarr_monk_spider_droid.iff")
@@ -872,7 +890,8 @@ object_intangible_pet_shared_bordok_hue = SharedIntangibleObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3248156228
+	clientObjectCRC = 3248156228,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_pet_shared_bordok_hue, "object/intangible/pet/shared_bordok_hue.iff")
@@ -916,7 +935,8 @@ object_intangible_pet_shared_borgle_hue = SharedIntangibleObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3776791504
+	clientObjectCRC = 3776791504,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_pet_shared_borgle_hue, "object/intangible/pet/shared_borgle_hue.iff")
@@ -960,7 +980,8 @@ object_intangible_pet_shared_brackaset_hue = SharedIntangibleObjectTemplate:new 
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 932343786
+	clientObjectCRC = 932343786,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_pet_shared_brackaset_hue, "object/intangible/pet/shared_brackaset_hue.iff")
@@ -1004,7 +1025,8 @@ object_intangible_pet_shared_capper_spineflap_hue = SharedIntangibleObjectTempla
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 85637661
+	clientObjectCRC = 85637661,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_pet_shared_capper_spineflap_hue, "object/intangible/pet/shared_capper_spineflap_hue.iff")
@@ -1048,7 +1070,8 @@ object_intangible_pet_shared_carrion_spat_hue = SharedIntangibleObjectTemplate:n
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1876009660
+	clientObjectCRC = 1876009660,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_pet_shared_carrion_spat_hue, "object/intangible/pet/shared_carrion_spat_hue.iff")
@@ -1092,7 +1115,8 @@ object_intangible_pet_shared_choku_hue = SharedIntangibleObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1603716876
+	clientObjectCRC = 1603716876,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_pet_shared_choku_hue, "object/intangible/pet/shared_choku_hue.iff")
@@ -1136,7 +1160,8 @@ object_intangible_pet_shared_chuba_hue = SharedIntangibleObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2478782544
+	clientObjectCRC = 2478782544,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_pet_shared_chuba_hue, "object/intangible/pet/shared_chuba_hue.iff")
@@ -1180,7 +1205,8 @@ object_intangible_pet_shared_cll8_binary_load_lifter = SharedIntangibleObjectTem
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1945863130
+	clientObjectCRC = 1945863130,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/intangible/pet/shared_droid_pet.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_pet_shared_cll8_binary_load_lifter, "object/intangible/pet/shared_cll8_binary_load_lifter.iff")
@@ -1224,7 +1250,8 @@ object_intangible_pet_shared_condor_dragon_hue = SharedIntangibleObjectTemplate:
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 4157866050
+	clientObjectCRC = 4157866050,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_pet_shared_condor_dragon_hue, "object/intangible/pet/shared_condor_dragon_hue.iff")
@@ -1268,7 +1295,8 @@ object_intangible_pet_shared_corellian_butterfly_hue = SharedIntangibleObjectTem
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1485452335
+	clientObjectCRC = 1485452335,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_pet_shared_corellian_butterfly_hue, "object/intangible/pet/shared_corellian_butterfly_hue.iff")
@@ -1312,7 +1340,8 @@ object_intangible_pet_shared_corellian_sand_panther_hue = SharedIntangibleObject
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 261977165
+	clientObjectCRC = 261977165,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_pet_shared_corellian_sand_panther_hue, "object/intangible/pet/shared_corellian_sand_panther_hue.iff")
@@ -1356,7 +1385,8 @@ object_intangible_pet_shared_corellian_slice_hound_hue = SharedIntangibleObjectT
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 636628481
+	clientObjectCRC = 636628481,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_pet_shared_corellian_slice_hound_hue, "object/intangible/pet/shared_corellian_slice_hound_hue.iff")
@@ -1400,7 +1430,8 @@ object_intangible_pet_shared_crystal_snake = SharedIntangibleObjectTemplate:new 
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2696046285
+	clientObjectCRC = 2696046285,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_pet_shared_crystal_snake, "object/intangible/pet/shared_crystal_snake.iff")
@@ -1444,7 +1475,8 @@ object_intangible_pet_shared_cu_pa_hue = SharedIntangibleObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2229022652
+	clientObjectCRC = 2229022652,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_pet_shared_cu_pa_hue, "object/intangible/pet/shared_cu_pa_hue.iff")
@@ -1488,7 +1520,8 @@ object_intangible_pet_shared_dalyrake_hue = SharedIntangibleObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3738155310
+	clientObjectCRC = 3738155310,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_pet_shared_dalyrake_hue, "object/intangible/pet/shared_dalyrake_hue.iff")
@@ -1532,7 +1565,8 @@ object_intangible_pet_shared_darth_maul_probe_droid = SharedIntangibleObjectTemp
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3870771439
+	clientObjectCRC = 3870771439,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/intangible/pet/shared_droid_pet.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_pet_shared_darth_maul_probe_droid, "object/intangible/pet/shared_darth_maul_probe_droid.iff")
@@ -1576,7 +1610,8 @@ object_intangible_pet_shared_dewback_hue = SharedIntangibleObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2745422351
+	clientObjectCRC = 2745422351,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_pet_shared_dewback_hue, "object/intangible/pet/shared_dewback_hue.iff")
@@ -1620,7 +1655,8 @@ object_intangible_pet_shared_droid_pet = SharedIntangibleObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2217571195
+	clientObjectCRC = 2217571195,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_pet_shared_droid_pet, "object/intangible/pet/shared_droid_pet.iff")
@@ -1664,7 +1700,8 @@ object_intangible_pet_shared_droideka = SharedIntangibleObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3107311581
+	clientObjectCRC = 3107311581,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/intangible/pet/shared_droid_pet.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_pet_shared_droideka, "object/intangible/pet/shared_droideka.iff")
@@ -1708,7 +1745,8 @@ object_intangible_pet_shared_dune_lizard_hue = SharedIntangibleObjectTemplate:ne
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2377707050
+	clientObjectCRC = 2377707050,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_pet_shared_dune_lizard_hue, "object/intangible/pet/shared_dune_lizard_hue.iff")
@@ -1752,7 +1790,8 @@ object_intangible_pet_shared_durni_hue = SharedIntangibleObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 779257516
+	clientObjectCRC = 779257516,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_pet_shared_durni_hue, "object/intangible/pet/shared_durni_hue.iff")
@@ -1796,7 +1835,8 @@ object_intangible_pet_shared_dwarf_nuna_hue = SharedIntangibleObjectTemplate:new
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2326969858
+	clientObjectCRC = 2326969858,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_pet_shared_dwarf_nuna_hue, "object/intangible/pet/shared_dwarf_nuna_hue.iff")
@@ -1840,7 +1880,8 @@ object_intangible_pet_shared_dz70_fugitive_tracker_droid = SharedIntangibleObjec
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 215765850
+	clientObjectCRC = 215765850,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/intangible/pet/shared_droid_pet.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_pet_shared_dz70_fugitive_tracker_droid, "object/intangible/pet/shared_dz70_fugitive_tracker_droid.iff")
@@ -1884,7 +1925,8 @@ object_intangible_pet_shared_eg6_power_droid = SharedIntangibleObjectTemplate:ne
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 4040278264
+	clientObjectCRC = 4040278264,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/intangible/pet/shared_droid_pet.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_pet_shared_eg6_power_droid, "object/intangible/pet/shared_eg6_power_droid.iff")
@@ -1928,7 +1970,8 @@ object_intangible_pet_shared_eg6_power_droid_crafted = SharedIntangibleObjectTem
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1381576162
+	clientObjectCRC = 1381576162,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/intangible/pet/shared_droid_pet.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_pet_shared_eg6_power_droid_crafted, "object/intangible/pet/shared_eg6_power_droid_crafted.iff")
@@ -1972,7 +2015,8 @@ object_intangible_pet_shared_eopie_hue = SharedIntangibleObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3150571270
+	clientObjectCRC = 3150571270,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_pet_shared_eopie_hue, "object/intangible/pet/shared_eopie_hue.iff")
@@ -2016,7 +2060,8 @@ object_intangible_pet_shared_ev_9d9 = SharedIntangibleObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2257725045
+	clientObjectCRC = 2257725045,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/intangible/pet/shared_droid_pet.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_pet_shared_ev_9d9, "object/intangible/pet/shared_ev_9d9.iff")
@@ -2060,7 +2105,8 @@ object_intangible_pet_shared_falumpaset_hue = SharedIntangibleObjectTemplate:new
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2686405669
+	clientObjectCRC = 2686405669,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_pet_shared_falumpaset_hue, "object/intangible/pet/shared_falumpaset_hue.iff")
@@ -2104,7 +2150,8 @@ object_intangible_pet_shared_fambaa_hue = SharedIntangibleObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3353974211
+	clientObjectCRC = 3353974211,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_pet_shared_fambaa_hue, "object/intangible/pet/shared_fambaa_hue.iff")
@@ -2148,7 +2195,8 @@ object_intangible_pet_shared_fanned_rawl_hue = SharedIntangibleObjectTemplate:ne
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1856953327
+	clientObjectCRC = 1856953327,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_pet_shared_fanned_rawl_hue, "object/intangible/pet/shared_fanned_rawl_hue.iff")
@@ -2192,7 +2240,8 @@ object_intangible_pet_shared_flewt_hue = SharedIntangibleObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3804467322
+	clientObjectCRC = 3804467322,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_pet_shared_flewt_hue, "object/intangible/pet/shared_flewt_hue.iff")
@@ -2236,7 +2285,8 @@ object_intangible_pet_shared_flit_hue = SharedIntangibleObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2923608669
+	clientObjectCRC = 2923608669,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_pet_shared_flit_hue, "object/intangible/pet/shared_flit_hue.iff")
@@ -2280,7 +2330,8 @@ object_intangible_pet_shared_fynock_hue = SharedIntangibleObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2285917811
+	clientObjectCRC = 2285917811,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_pet_shared_fynock_hue, "object/intangible/pet/shared_fynock_hue.iff")
@@ -2324,7 +2375,8 @@ object_intangible_pet_shared_gackle_bat_hue = SharedIntangibleObjectTemplate:new
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 184038036
+	clientObjectCRC = 184038036,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_pet_shared_gackle_bat_hue, "object/intangible/pet/shared_gackle_bat_hue.iff")
@@ -2368,7 +2420,8 @@ object_intangible_pet_shared_gaping_spider_hue = SharedIntangibleObjectTemplate:
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3334930732
+	clientObjectCRC = 3334930732,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_pet_shared_gaping_spider_hue, "object/intangible/pet/shared_gaping_spider_hue.iff")
@@ -2412,7 +2465,8 @@ object_intangible_pet_shared_gnort_hue = SharedIntangibleObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2858510328
+	clientObjectCRC = 2858510328,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_pet_shared_gnort_hue, "object/intangible/pet/shared_gnort_hue.iff")
@@ -2456,7 +2510,8 @@ object_intangible_pet_shared_graul_hue = SharedIntangibleObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 580835531
+	clientObjectCRC = 580835531,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_pet_shared_graul_hue, "object/intangible/pet/shared_graul_hue.iff")
@@ -2500,7 +2555,8 @@ object_intangible_pet_shared_gronda_hue = SharedIntangibleObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3080189549
+	clientObjectCRC = 3080189549,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_pet_shared_gronda_hue, "object/intangible/pet/shared_gronda_hue.iff")
@@ -2544,7 +2600,8 @@ object_intangible_pet_shared_gualama_hue = SharedIntangibleObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 943256525
+	clientObjectCRC = 943256525,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_pet_shared_gualama_hue, "object/intangible/pet/shared_gualama_hue.iff")
@@ -2588,7 +2645,8 @@ object_intangible_pet_shared_gubbur_hue = SharedIntangibleObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2671246669
+	clientObjectCRC = 2671246669,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_pet_shared_gubbur_hue, "object/intangible/pet/shared_gubbur_hue.iff")
@@ -2632,7 +2690,8 @@ object_intangible_pet_shared_guf_drolg_hue = SharedIntangibleObjectTemplate:new 
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2334338028
+	clientObjectCRC = 2334338028,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_pet_shared_guf_drolg_hue, "object/intangible/pet/shared_guf_drolg_hue.iff")
@@ -2676,7 +2735,8 @@ object_intangible_pet_shared_gulginaw_hue = SharedIntangibleObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 896340341
+	clientObjectCRC = 896340341,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_pet_shared_gulginaw_hue, "object/intangible/pet/shared_gulginaw_hue.iff")
@@ -2720,7 +2780,8 @@ object_intangible_pet_shared_gurk_hue = SharedIntangibleObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3720963355
+	clientObjectCRC = 3720963355,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_pet_shared_gurk_hue, "object/intangible/pet/shared_gurk_hue.iff")
@@ -2764,7 +2825,8 @@ object_intangible_pet_shared_gurnaset_hue = SharedIntangibleObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 223844542
+	clientObjectCRC = 223844542,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_pet_shared_gurnaset_hue, "object/intangible/pet/shared_gurnaset_hue.iff")
@@ -2808,7 +2870,8 @@ object_intangible_pet_shared_gurreck_hue = SharedIntangibleObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2145605419
+	clientObjectCRC = 2145605419,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_pet_shared_gurreck_hue, "object/intangible/pet/shared_gurreck_hue.iff")
@@ -2852,7 +2915,8 @@ object_intangible_pet_shared_hanadak_hue = SharedIntangibleObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 697606401
+	clientObjectCRC = 697606401,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_pet_shared_hanadak_hue, "object/intangible/pet/shared_hanadak_hue.iff")
@@ -2896,7 +2960,8 @@ object_intangible_pet_shared_hermit_spider_hue = SharedIntangibleObjectTemplate:
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2367204663
+	clientObjectCRC = 2367204663,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_pet_shared_hermit_spider_hue, "object/intangible/pet/shared_hermit_spider_hue.iff")
@@ -2940,7 +3005,8 @@ object_intangible_pet_shared_horned_krevol_hue = SharedIntangibleObjectTemplate:
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2396316832
+	clientObjectCRC = 2396316832,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_pet_shared_horned_krevol_hue, "object/intangible/pet/shared_horned_krevol_hue.iff")
@@ -2984,7 +3050,8 @@ object_intangible_pet_shared_horned_rasp_hue = SharedIntangibleObjectTemplate:ne
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3500397762
+	clientObjectCRC = 3500397762,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_pet_shared_horned_rasp_hue, "object/intangible/pet/shared_horned_rasp_hue.iff")
@@ -3028,7 +3095,8 @@ object_intangible_pet_shared_huf_dun_hue = SharedIntangibleObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3089599434
+	clientObjectCRC = 3089599434,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_pet_shared_huf_dun_hue, "object/intangible/pet/shared_huf_dun_hue.iff")
@@ -3072,7 +3140,8 @@ object_intangible_pet_shared_huurton_hue = SharedIntangibleObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1969470414
+	clientObjectCRC = 1969470414,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_pet_shared_huurton_hue, "object/intangible/pet/shared_huurton_hue.iff")
@@ -3116,7 +3185,8 @@ object_intangible_pet_shared_ig_assassin_droid = SharedIntangibleObjectTemplate:
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1786377662
+	clientObjectCRC = 1786377662,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/intangible/pet/shared_droid_pet.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_pet_shared_ig_assassin_droid, "object/intangible/pet/shared_ig_assassin_droid.iff")
@@ -3160,7 +3230,8 @@ object_intangible_pet_shared_ikopi_hue = SharedIntangibleObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 936658701
+	clientObjectCRC = 936658701,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_pet_shared_ikopi_hue, "object/intangible/pet/shared_ikopi_hue.iff")
@@ -3204,7 +3275,8 @@ object_intangible_pet_shared_ito_interrogator = SharedIntangibleObjectTemplate:n
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1276251054
+	clientObjectCRC = 1276251054,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/intangible/pet/shared_droid_pet.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_pet_shared_ito_interrogator, "object/intangible/pet/shared_ito_interrogator.iff")
@@ -3248,7 +3320,8 @@ object_intangible_pet_shared_kaadu_hue = SharedIntangibleObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1791601248
+	clientObjectCRC = 1791601248,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_pet_shared_kaadu_hue, "object/intangible/pet/shared_kaadu_hue.iff")
@@ -3292,7 +3365,8 @@ object_intangible_pet_shared_kai_tok_hue = SharedIntangibleObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3450820067
+	clientObjectCRC = 3450820067,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_pet_shared_kai_tok_hue, "object/intangible/pet/shared_kai_tok_hue.iff")
@@ -3336,7 +3410,8 @@ object_intangible_pet_shared_kima_hue = SharedIntangibleObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3208771572
+	clientObjectCRC = 3208771572,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_pet_shared_kima_hue, "object/intangible/pet/shared_kima_hue.iff")
@@ -3380,7 +3455,8 @@ object_intangible_pet_shared_kimogila_hue = SharedIntangibleObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 4021952384
+	clientObjectCRC = 4021952384,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_pet_shared_kimogila_hue, "object/intangible/pet/shared_kimogila_hue.iff")
@@ -3424,7 +3500,8 @@ object_intangible_pet_shared_kliknik_hue = SharedIntangibleObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2970580359
+	clientObjectCRC = 2970580359,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_pet_shared_kliknik_hue, "object/intangible/pet/shared_kliknik_hue.iff")
@@ -3468,7 +3545,8 @@ object_intangible_pet_shared_krahbu_hue = SharedIntangibleObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2054788993
+	clientObjectCRC = 2054788993,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_pet_shared_krahbu_hue, "object/intangible/pet/shared_krahbu_hue.iff")
@@ -3512,7 +3590,8 @@ object_intangible_pet_shared_kusak_hue = SharedIntangibleObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1739916137
+	clientObjectCRC = 1739916137,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_pet_shared_kusak_hue, "object/intangible/pet/shared_kusak_hue.iff")
@@ -3556,7 +3635,8 @@ object_intangible_pet_shared_kwi_hue = SharedIntangibleObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3989984964
+	clientObjectCRC = 3989984964,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_pet_shared_kwi_hue, "object/intangible/pet/shared_kwi_hue.iff")
@@ -3600,7 +3680,8 @@ object_intangible_pet_shared_langlatch_hue = SharedIntangibleObjectTemplate:new 
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2731995998
+	clientObjectCRC = 2731995998,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_pet_shared_langlatch_hue, "object/intangible/pet/shared_langlatch_hue.iff")
@@ -3644,7 +3725,8 @@ object_intangible_pet_shared_lantern_bird_hue = SharedIntangibleObjectTemplate:n
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 554540263
+	clientObjectCRC = 554540263,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_pet_shared_lantern_bird_hue, "object/intangible/pet/shared_lantern_bird_hue.iff")
@@ -3688,7 +3770,8 @@ object_intangible_pet_shared_le_repair_droid = SharedIntangibleObjectTemplate:ne
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1013378354
+	clientObjectCRC = 1013378354,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/intangible/pet/shared_droid_pet.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_pet_shared_le_repair_droid, "object/intangible/pet/shared_le_repair_droid.iff")
@@ -3732,7 +3815,8 @@ object_intangible_pet_shared_lin_demolitionmech = SharedIntangibleObjectTemplate
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 771860722
+	clientObjectCRC = 771860722,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/intangible/pet/shared_droid_pet.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_pet_shared_lin_demolitionmech, "object/intangible/pet/shared_lin_demolitionmech.iff")
@@ -3776,7 +3860,8 @@ object_intangible_pet_shared_malkloc_hue = SharedIntangibleObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 754217676
+	clientObjectCRC = 754217676,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_pet_shared_malkloc_hue, "object/intangible/pet/shared_malkloc_hue.iff")
@@ -3820,7 +3905,8 @@ object_intangible_pet_shared_mamien_hue = SharedIntangibleObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3067716749
+	clientObjectCRC = 3067716749,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_pet_shared_mamien_hue, "object/intangible/pet/shared_mamien_hue.iff")
@@ -3864,7 +3950,8 @@ object_intangible_pet_shared_mawgax_hue = SharedIntangibleObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 10709435
+	clientObjectCRC = 10709435,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_pet_shared_mawgax_hue, "object/intangible/pet/shared_mawgax_hue.iff")
@@ -3908,7 +3995,8 @@ object_intangible_pet_shared_merek_hue = SharedIntangibleObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2431435109
+	clientObjectCRC = 2431435109,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_pet_shared_merek_hue, "object/intangible/pet/shared_merek_hue.iff")
@@ -3952,7 +4040,8 @@ object_intangible_pet_shared_mott_hue = SharedIntangibleObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 604608091
+	clientObjectCRC = 604608091,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_pet_shared_mott_hue, "object/intangible/pet/shared_mott_hue.iff")
@@ -3996,7 +4085,8 @@ object_intangible_pet_shared_mouse_droid = SharedIntangibleObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1597090102
+	clientObjectCRC = 1597090102,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/intangible/pet/shared_droid_pet.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_pet_shared_mouse_droid, "object/intangible/pet/shared_mouse_droid.iff")
@@ -4040,7 +4130,8 @@ object_intangible_pet_shared_mouse_droid_crafted = SharedIntangibleObjectTemplat
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3582700290
+	clientObjectCRC = 3582700290,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/intangible/pet/shared_droid_pet.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_pet_shared_mouse_droid_crafted, "object/intangible/pet/shared_mouse_droid_crafted.iff")
@@ -4084,7 +4175,8 @@ object_intangible_pet_shared_murra_hue = SharedIntangibleObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 548542319
+	clientObjectCRC = 548542319,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_pet_shared_murra_hue, "object/intangible/pet/shared_murra_hue.iff")
@@ -4128,7 +4220,8 @@ object_intangible_pet_shared_mynock_hue = SharedIntangibleObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1986283606
+	clientObjectCRC = 1986283606,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_pet_shared_mynock_hue, "object/intangible/pet/shared_mynock_hue.iff")
@@ -4172,7 +4265,8 @@ object_intangible_pet_shared_narglatch_hue = SharedIntangibleObjectTemplate:new 
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3888571684
+	clientObjectCRC = 3888571684,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_pet_shared_narglatch_hue, "object/intangible/pet/shared_narglatch_hue.iff")
@@ -4216,7 +4310,8 @@ object_intangible_pet_shared_nhelper_droid = SharedIntangibleObjectTemplate:new 
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3421430045
+	clientObjectCRC = 3421430045,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/intangible/pet/shared_droid_pet.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_pet_shared_nhelper_droid, "object/intangible/pet/shared_nhelper_droid.iff")
@@ -4260,7 +4355,8 @@ object_intangible_pet_shared_nuna_hue = SharedIntangibleObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3091853501
+	clientObjectCRC = 3091853501,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_pet_shared_nuna_hue, "object/intangible/pet/shared_nuna_hue.iff")
@@ -4304,7 +4400,8 @@ object_intangible_pet_shared_peko_peko_hue = SharedIntangibleObjectTemplate:new 
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 392393668
+	clientObjectCRC = 392393668,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_pet_shared_peko_peko_hue, "object/intangible/pet/shared_peko_peko_hue.iff")
@@ -4348,7 +4445,8 @@ object_intangible_pet_shared_perlek_hue = SharedIntangibleObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1839464306
+	clientObjectCRC = 1839464306,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_pet_shared_perlek_hue, "object/intangible/pet/shared_perlek_hue.iff")
@@ -4392,7 +4490,8 @@ object_intangible_pet_shared_pet_control = SharedIntangibleObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1094694212
+	clientObjectCRC = 1094694212,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_pet_shared_pet_control, "object/intangible/pet/shared_pet_control.iff")
@@ -4436,7 +4535,8 @@ object_intangible_pet_shared_pet_deed = SharedIntangibleObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3291887021
+	clientObjectCRC = 3291887021,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_pet_shared_pet_deed, "object/intangible/pet/shared_pet_deed.iff")
@@ -4480,7 +4580,8 @@ object_intangible_pet_shared_piket_hue = SharedIntangibleObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3554017920
+	clientObjectCRC = 3554017920,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_pet_shared_piket_hue, "object/intangible/pet/shared_piket_hue.iff")
@@ -4524,7 +4625,8 @@ object_intangible_pet_shared_plumed_rasp_hue = SharedIntangibleObjectTemplate:ne
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2974753647
+	clientObjectCRC = 2974753647,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_pet_shared_plumed_rasp_hue, "object/intangible/pet/shared_plumed_rasp_hue.iff")
@@ -4568,7 +4670,8 @@ object_intangible_pet_shared_probot = SharedIntangibleObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 535952493
+	clientObjectCRC = 535952493,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/intangible/pet/shared_droid_pet.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_pet_shared_probot, "object/intangible/pet/shared_probot.iff")
@@ -4612,7 +4715,8 @@ object_intangible_pet_shared_pugoriss_hue = SharedIntangibleObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 4000809563
+	clientObjectCRC = 4000809563,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_pet_shared_pugoriss_hue, "object/intangible/pet/shared_pugoriss_hue.iff")
@@ -4656,7 +4760,8 @@ object_intangible_pet_shared_purbole_hue = SharedIntangibleObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3982156177
+	clientObjectCRC = 3982156177,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_pet_shared_purbole_hue, "object/intangible/pet/shared_purbole_hue.iff")
@@ -4700,7 +4805,8 @@ object_intangible_pet_shared_quenker_hue = SharedIntangibleObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2267633287
+	clientObjectCRC = 2267633287,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_pet_shared_quenker_hue, "object/intangible/pet/shared_quenker_hue.iff")
@@ -4744,7 +4850,8 @@ object_intangible_pet_shared_r2 = SharedIntangibleObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2191450852
+	clientObjectCRC = 2191450852,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/intangible/pet/shared_droid_pet.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_pet_shared_r2, "object/intangible/pet/shared_r2.iff")
@@ -4788,7 +4895,8 @@ object_intangible_pet_shared_r2_crafted = SharedIntangibleObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 442194865
+	clientObjectCRC = 442194865,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/intangible/pet/shared_droid_pet.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_pet_shared_r2_crafted, "object/intangible/pet/shared_r2_crafted.iff")
@@ -4832,7 +4940,8 @@ object_intangible_pet_shared_r2d2 = SharedIntangibleObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 387302363
+	clientObjectCRC = 387302363,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/intangible/pet/shared_droid_pet.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_pet_shared_r2d2, "object/intangible/pet/shared_r2d2.iff")
@@ -4876,7 +4985,8 @@ object_intangible_pet_shared_r3 = SharedIntangibleObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3415442793
+	clientObjectCRC = 3415442793,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/intangible/pet/shared_droid_pet.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_pet_shared_r3, "object/intangible/pet/shared_r3.iff")
@@ -4920,7 +5030,8 @@ object_intangible_pet_shared_r3_crafted = SharedIntangibleObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 4076801460
+	clientObjectCRC = 4076801460,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/intangible/pet/shared_droid_pet.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_pet_shared_r3_crafted, "object/intangible/pet/shared_r3_crafted.iff")
@@ -4964,7 +5075,8 @@ object_intangible_pet_shared_r4 = SharedIntangibleObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 812691069
+	clientObjectCRC = 812691069,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/intangible/pet/shared_droid_pet.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_pet_shared_r4, "object/intangible/pet/shared_r4.iff")
@@ -5008,7 +5120,8 @@ object_intangible_pet_shared_r4_crafted = SharedIntangibleObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1610650817
+	clientObjectCRC = 1610650817,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/intangible/pet/shared_droid_pet.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_pet_shared_r4_crafted, "object/intangible/pet/shared_r4_crafted.iff")
@@ -5052,7 +5165,8 @@ object_intangible_pet_shared_r5 = SharedIntangibleObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2038286832
+	clientObjectCRC = 2038286832,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/intangible/pet/shared_droid_pet.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_pet_shared_r5, "object/intangible/pet/shared_r5.iff")
@@ -5096,7 +5210,8 @@ object_intangible_pet_shared_r5_crafted = SharedIntangibleObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2292499140
+	clientObjectCRC = 2292499140,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/intangible/pet/shared_droid_pet.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_pet_shared_r5_crafted, "object/intangible/pet/shared_r5_crafted.iff")
@@ -5140,7 +5255,8 @@ object_intangible_pet_shared_ra7_bug_droid = SharedIntangibleObjectTemplate:new 
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 50664012
+	clientObjectCRC = 50664012,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/intangible/pet/shared_droid_pet.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_pet_shared_ra7_bug_droid, "object/intangible/pet/shared_ra7_bug_droid.iff")
@@ -5184,7 +5300,8 @@ object_intangible_pet_shared_rancor_hue = SharedIntangibleObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1377624567
+	clientObjectCRC = 1377624567,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_pet_shared_rancor_hue, "object/intangible/pet/shared_rancor_hue.iff")
@@ -5228,7 +5345,8 @@ object_intangible_pet_shared_reptilian_flier_hue = SharedIntangibleObjectTemplat
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2028852617
+	clientObjectCRC = 2028852617,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_pet_shared_reptilian_flier_hue, "object/intangible/pet/shared_reptilian_flier_hue.iff")
@@ -5272,7 +5390,8 @@ object_intangible_pet_shared_roba_hue = SharedIntangibleObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2100700576
+	clientObjectCRC = 2100700576,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_pet_shared_roba_hue, "object/intangible/pet/shared_roba_hue.iff")
@@ -5316,7 +5435,8 @@ object_intangible_pet_shared_robo_bartender = SharedIntangibleObjectTemplate:new
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2925451769
+	clientObjectCRC = 2925451769,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/intangible/pet/shared_droid_pet.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_pet_shared_robo_bartender, "object/intangible/pet/shared_robo_bartender.iff")
@@ -5360,7 +5480,8 @@ object_intangible_pet_shared_rock_mite_hue = SharedIntangibleObjectTemplate:new 
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1336305960
+	clientObjectCRC = 1336305960,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_pet_shared_rock_mite_hue, "object/intangible/pet/shared_rock_mite_hue.iff")
@@ -5404,7 +5525,8 @@ object_intangible_pet_shared_ronto_hue = SharedIntangibleObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 794949628
+	clientObjectCRC = 794949628,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_pet_shared_ronto_hue, "object/intangible/pet/shared_ronto_hue.iff")
@@ -5448,7 +5570,8 @@ object_intangible_pet_shared_salt_mynock_hue = SharedIntangibleObjectTemplate:ne
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2085682547
+	clientObjectCRC = 2085682547,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_pet_shared_salt_mynock_hue, "object/intangible/pet/shared_salt_mynock_hue.iff")
@@ -5492,7 +5615,8 @@ object_intangible_pet_shared_sharnaff_hue = SharedIntangibleObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 273179059
+	clientObjectCRC = 273179059,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_pet_shared_sharnaff_hue, "object/intangible/pet/shared_sharnaff_hue.iff")
@@ -5536,7 +5660,8 @@ object_intangible_pet_shared_shaupaut_hue = SharedIntangibleObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2159009522
+	clientObjectCRC = 2159009522,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_pet_shared_shaupaut_hue, "object/intangible/pet/shared_shaupaut_hue.iff")
@@ -5580,7 +5705,8 @@ object_intangible_pet_shared_shear_mite_hue = SharedIntangibleObjectTemplate:new
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2966894198
+	clientObjectCRC = 2966894198,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_pet_shared_shear_mite_hue, "object/intangible/pet/shared_shear_mite_hue.iff")
@@ -5624,7 +5750,8 @@ object_intangible_pet_shared_skreeg_hue = SharedIntangibleObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3842631555
+	clientObjectCRC = 3842631555,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_pet_shared_skreeg_hue, "object/intangible/pet/shared_skreeg_hue.iff")
@@ -5668,7 +5795,8 @@ object_intangible_pet_shared_snorbal_hue = SharedIntangibleObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3901518942
+	clientObjectCRC = 3901518942,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_pet_shared_snorbal_hue, "object/intangible/pet/shared_snorbal_hue.iff")
@@ -5712,7 +5840,8 @@ object_intangible_pet_shared_spined_puc_hue = SharedIntangibleObjectTemplate:new
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 4255586723
+	clientObjectCRC = 4255586723,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_pet_shared_spined_puc_hue, "object/intangible/pet/shared_spined_puc_hue.iff")
@@ -5756,7 +5885,8 @@ object_intangible_pet_shared_spined_snake_hue = SharedIntangibleObjectTemplate:n
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2113307554
+	clientObjectCRC = 2113307554,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_pet_shared_spined_snake_hue, "object/intangible/pet/shared_spined_snake_hue.iff")
@@ -5800,7 +5930,8 @@ object_intangible_pet_shared_squall_hue = SharedIntangibleObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 713872273
+	clientObjectCRC = 713872273,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_pet_shared_squall_hue, "object/intangible/pet/shared_squall_hue.iff")
@@ -5844,7 +5975,8 @@ object_intangible_pet_shared_squill_hue = SharedIntangibleObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 4189043940
+	clientObjectCRC = 4189043940,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_pet_shared_squill_hue, "object/intangible/pet/shared_squill_hue.iff")
@@ -5888,7 +6020,8 @@ object_intangible_pet_shared_stintaril_hue = SharedIntangibleObjectTemplate:new 
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 748019304
+	clientObjectCRC = 748019304,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_pet_shared_stintaril_hue, "object/intangible/pet/shared_stintaril_hue.iff")
@@ -5932,7 +6065,8 @@ object_intangible_pet_shared_swirl_prong_hue = SharedIntangibleObjectTemplate:ne
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2871755001
+	clientObjectCRC = 2871755001,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_pet_shared_swirl_prong_hue, "object/intangible/pet/shared_swirl_prong_hue.iff")
@@ -5976,7 +6110,8 @@ object_intangible_pet_shared_tanc_mite_hue = SharedIntangibleObjectTemplate:new 
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3342328122
+	clientObjectCRC = 3342328122,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_pet_shared_tanc_mite_hue, "object/intangible/pet/shared_tanc_mite_hue.iff")
@@ -6020,7 +6155,8 @@ object_intangible_pet_shared_thune_hue = SharedIntangibleObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1854611752
+	clientObjectCRC = 1854611752,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_pet_shared_thune_hue, "object/intangible/pet/shared_thune_hue.iff")
@@ -6064,7 +6200,8 @@ object_intangible_pet_shared_tip_solicitor_droid = SharedIntangibleObjectTemplat
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 969518136
+	clientObjectCRC = 969518136,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/intangible/pet/shared_droid_pet.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_pet_shared_tip_solicitor_droid, "object/intangible/pet/shared_tip_solicitor_droid.iff")
@@ -6108,7 +6245,8 @@ object_intangible_pet_shared_torton_hue = SharedIntangibleObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2899651011
+	clientObjectCRC = 2899651011,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_pet_shared_torton_hue, "object/intangible/pet/shared_torton_hue.iff")
@@ -6152,7 +6290,8 @@ object_intangible_pet_shared_training_remote = SharedIntangibleObjectTemplate:ne
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3182158026
+	clientObjectCRC = 3182158026,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/intangible/pet/shared_droid_pet.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_pet_shared_training_remote, "object/intangible/pet/shared_training_remote.iff")
@@ -6196,7 +6335,8 @@ object_intangible_pet_shared_tt8l = SharedIntangibleObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1553023360
+	clientObjectCRC = 1553023360,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/intangible/pet/shared_droid_pet.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_pet_shared_tt8l, "object/intangible/pet/shared_tt8l.iff")
@@ -6240,7 +6380,8 @@ object_intangible_pet_shared_tt8l_y7 = SharedIntangibleObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 218724646
+	clientObjectCRC = 218724646,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/intangible/pet/shared_droid_pet.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_pet_shared_tt8l_y7, "object/intangible/pet/shared_tt8l_y7.iff")
@@ -6284,7 +6425,8 @@ object_intangible_pet_shared_tusk_cat_hue = SharedIntangibleObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2290289692
+	clientObjectCRC = 2290289692,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_pet_shared_tusk_cat_hue, "object/intangible/pet/shared_tusk_cat_hue.iff")
@@ -6328,7 +6470,8 @@ object_intangible_pet_shared_tybis_hue = SharedIntangibleObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3794077692
+	clientObjectCRC = 3794077692,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_pet_shared_tybis_hue, "object/intangible/pet/shared_tybis_hue.iff")
@@ -6372,7 +6515,8 @@ object_intangible_pet_shared_veermok_hue = SharedIntangibleObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3304145962
+	clientObjectCRC = 3304145962,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_pet_shared_veermok_hue, "object/intangible/pet/shared_veermok_hue.iff")
@@ -6416,7 +6560,8 @@ object_intangible_pet_shared_vehicular_prototype = SharedIntangibleObjectTemplat
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3441960181
+	clientObjectCRC = 3441960181,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_pet_shared_vehicular_prototype, "object/intangible/pet/shared_vehicular_prototype.iff")
@@ -6460,7 +6605,8 @@ object_intangible_pet_shared_vehicular_prototype_bike = SharedIntangibleObjectTe
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2843250911
+	clientObjectCRC = 2843250911,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_pet_shared_vehicular_prototype_bike, "object/intangible/pet/shared_vehicular_prototype_bike.iff")
@@ -6504,7 +6650,8 @@ object_intangible_pet_shared_verne_hue = SharedIntangibleObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2036157279
+	clientObjectCRC = 2036157279,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_pet_shared_verne_hue, "object/intangible/pet/shared_verne_hue.iff")
@@ -6548,7 +6695,8 @@ object_intangible_pet_shared_vesp_hue = SharedIntangibleObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 58797746
+	clientObjectCRC = 58797746,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_pet_shared_vesp_hue, "object/intangible/pet/shared_vesp_hue.iff")
@@ -6592,7 +6740,8 @@ object_intangible_pet_shared_vir_vur_hue = SharedIntangibleObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 844441928
+	clientObjectCRC = 844441928,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_pet_shared_vir_vur_hue, "object/intangible/pet/shared_vir_vur_hue.iff")
@@ -6636,7 +6785,8 @@ object_intangible_pet_shared_voritor_lizard_hue = SharedIntangibleObjectTemplate
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1578601916
+	clientObjectCRC = 1578601916,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_pet_shared_voritor_lizard_hue, "object/intangible/pet/shared_voritor_lizard_hue.iff")
@@ -6680,7 +6830,8 @@ object_intangible_pet_shared_vynock_hue = SharedIntangibleObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3828927679
+	clientObjectCRC = 3828927679,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_pet_shared_vynock_hue, "object/intangible/pet/shared_vynock_hue.iff")
@@ -6724,7 +6875,8 @@ object_intangible_pet_shared_wed_treadwell = SharedIntangibleObjectTemplate:new 
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1347741729
+	clientObjectCRC = 1347741729,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/intangible/pet/shared_droid_pet.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_pet_shared_wed_treadwell, "object/intangible/pet/shared_wed_treadwell.iff")
@@ -6768,7 +6920,8 @@ object_intangible_pet_shared_womp_rat_hue = SharedIntangibleObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 273820215
+	clientObjectCRC = 273820215,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_pet_shared_womp_rat_hue, "object/intangible/pet/shared_womp_rat_hue.iff")
@@ -6812,7 +6965,8 @@ object_intangible_pet_shared_woolamander_hue = SharedIntangibleObjectTemplate:ne
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3182931850
+	clientObjectCRC = 3182931850,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_pet_shared_woolamander_hue, "object/intangible/pet/shared_woolamander_hue.iff")
@@ -6856,7 +7010,8 @@ object_intangible_pet_shared_worrt_hue = SharedIntangibleObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2024101379
+	clientObjectCRC = 2024101379,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_pet_shared_worrt_hue, "object/intangible/pet/shared_worrt_hue.iff")
@@ -6900,7 +7055,8 @@ object_intangible_pet_shared_zucca_boar_hue = SharedIntangibleObjectTemplate:new
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 49929061
+	clientObjectCRC = 49929061,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_pet_shared_zucca_boar_hue, "object/intangible/pet/shared_zucca_boar_hue.iff")

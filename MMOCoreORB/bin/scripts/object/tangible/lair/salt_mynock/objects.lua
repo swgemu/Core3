@@ -90,7 +90,8 @@ object_tangible_lair_salt_mynock_shared_lair_salt_mynock = SharedTangibleObjectT
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2598164093
+	clientObjectCRC = 2598164093,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_salt_mynock_shared_lair_salt_mynock, "object/tangible/lair/salt_mynock/shared_lair_salt_mynock.iff")
@@ -144,7 +145,8 @@ object_tangible_lair_salt_mynock_shared_lair_salt_mynock_mountain = SharedTangib
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3617713744
+	clientObjectCRC = 3617713744,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_salt_mynock_shared_lair_salt_mynock_mountain, "object/tangible/lair/salt_mynock/shared_lair_salt_mynock_mountain.iff")
@@ -198,7 +200,8 @@ object_tangible_lair_salt_mynock_shared_lair_salt_mynock_wasteland = SharedTangi
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4030433492
+	clientObjectCRC = 4030433492,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_salt_mynock_shared_lair_salt_mynock_wasteland, "object/tangible/lair/salt_mynock/shared_lair_salt_mynock_wasteland.iff")

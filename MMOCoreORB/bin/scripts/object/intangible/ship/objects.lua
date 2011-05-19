@@ -80,7 +80,8 @@ object_intangible_ship_shared_awing_pcd = SharedIntangibleObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3231609067
+	clientObjectCRC = 3231609067,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/intangible/ship/base/shared_ship_control_device_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_ship_shared_awing_pcd, "object/intangible/ship/shared_awing_pcd.iff")
@@ -124,7 +125,8 @@ object_intangible_ship_shared_basic_hutt_light_pcd = SharedIntangibleObjectTempl
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3117731697
+	clientObjectCRC = 3117731697,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/intangible/ship/base/shared_ship_control_device_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_ship_shared_basic_hutt_light_pcd, "object/intangible/ship/shared_basic_hutt_light_pcd.iff")
@@ -168,7 +170,8 @@ object_intangible_ship_shared_basic_tiefighter_pcd = SharedIntangibleObjectTempl
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3542586269
+	clientObjectCRC = 3542586269,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/intangible/ship/base/shared_ship_control_device_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_ship_shared_basic_tiefighter_pcd, "object/intangible/ship/shared_basic_tiefighter_pcd.iff")
@@ -212,7 +215,8 @@ object_intangible_ship_shared_basic_z95_pcd = SharedIntangibleObjectTemplate:new
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1951744339
+	clientObjectCRC = 1951744339,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/intangible/ship/base/shared_ship_control_device_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_ship_shared_basic_z95_pcd, "object/intangible/ship/shared_basic_z95_pcd.iff")
@@ -256,7 +260,8 @@ object_intangible_ship_shared_blacksun_heavy_s01_pcd = SharedIntangibleObjectTem
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1920551856
+	clientObjectCRC = 1920551856,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/intangible/ship/base/shared_ship_control_device_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_ship_shared_blacksun_heavy_s01_pcd, "object/intangible/ship/shared_blacksun_heavy_s01_pcd.iff")
@@ -300,7 +305,8 @@ object_intangible_ship_shared_blacksun_heavy_s02_pcd = SharedIntangibleObjectTem
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1622780077
+	clientObjectCRC = 1622780077,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/intangible/ship/base/shared_ship_control_device_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_ship_shared_blacksun_heavy_s02_pcd, "object/intangible/ship/shared_blacksun_heavy_s02_pcd.iff")
@@ -344,7 +350,8 @@ object_intangible_ship_shared_blacksun_heavy_s03_pcd = SharedIntangibleObjectTem
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2461598411
+	clientObjectCRC = 2461598411,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/intangible/ship/base/shared_ship_control_device_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_ship_shared_blacksun_heavy_s03_pcd, "object/intangible/ship/shared_blacksun_heavy_s03_pcd.iff")
@@ -388,7 +395,8 @@ object_intangible_ship_shared_blacksun_heavy_s04_pcd = SharedIntangibleObjectTem
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1161326231
+	clientObjectCRC = 1161326231,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/intangible/ship/base/shared_ship_control_device_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_ship_shared_blacksun_heavy_s04_pcd, "object/intangible/ship/shared_blacksun_heavy_s04_pcd.iff")
@@ -432,7 +440,8 @@ object_intangible_ship_shared_blacksun_light_s01_pcd = SharedIntangibleObjectTem
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 4287843959
+	clientObjectCRC = 4287843959,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/intangible/ship/base/shared_ship_control_device_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_ship_shared_blacksun_light_s01_pcd, "object/intangible/ship/shared_blacksun_light_s01_pcd.iff")
@@ -476,7 +485,8 @@ object_intangible_ship_shared_blacksun_light_s02_pcd = SharedIntangibleObjectTem
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3981684074
+	clientObjectCRC = 3981684074,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/intangible/ship/base/shared_ship_control_device_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_ship_shared_blacksun_light_s02_pcd, "object/intangible/ship/shared_blacksun_light_s02_pcd.iff")
@@ -520,7 +530,8 @@ object_intangible_ship_shared_blacksun_light_s03_pcd = SharedIntangibleObjectTem
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 525534988
+	clientObjectCRC = 525534988,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/intangible/ship/base/shared_ship_control_device_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_ship_shared_blacksun_light_s03_pcd, "object/intangible/ship/shared_blacksun_light_s03_pcd.iff")
@@ -564,7 +575,8 @@ object_intangible_ship_shared_blacksun_light_s04_pcd = SharedIntangibleObjectTem
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3369233232
+	clientObjectCRC = 3369233232,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/intangible/ship/base/shared_ship_control_device_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_ship_shared_blacksun_light_s04_pcd, "object/intangible/ship/shared_blacksun_light_s04_pcd.iff")
@@ -608,7 +620,8 @@ object_intangible_ship_shared_blacksun_medium_s01_pcd = SharedIntangibleObjectTe
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3830604387
+	clientObjectCRC = 3830604387,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/intangible/ship/base/shared_ship_control_device_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_ship_shared_blacksun_medium_s01_pcd, "object/intangible/ship/shared_blacksun_medium_s01_pcd.iff")
@@ -652,7 +665,8 @@ object_intangible_ship_shared_blacksun_medium_s02_pcd = SharedIntangibleObjectTe
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 4136796542
+	clientObjectCRC = 4136796542,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/intangible/ship/base/shared_ship_control_device_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_ship_shared_blacksun_medium_s02_pcd, "object/intangible/ship/shared_blacksun_medium_s02_pcd.iff")
@@ -696,7 +710,8 @@ object_intangible_ship_shared_blacksun_medium_s03_pcd = SharedIntangibleObjectTe
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 76688152
+	clientObjectCRC = 76688152,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/intangible/ship/base/shared_ship_control_device_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_ship_shared_blacksun_medium_s03_pcd, "object/intangible/ship/shared_blacksun_medium_s03_pcd.iff")
@@ -740,7 +755,8 @@ object_intangible_ship_shared_blacksun_medium_s04_pcd = SharedIntangibleObjectTe
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3541256004
+	clientObjectCRC = 3541256004,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/intangible/ship/base/shared_ship_control_device_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_ship_shared_blacksun_medium_s04_pcd, "object/intangible/ship/shared_blacksun_medium_s04_pcd.iff")
@@ -784,7 +800,8 @@ object_intangible_ship_shared_bwing_pcd = SharedIntangibleObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 4256405331
+	clientObjectCRC = 4256405331,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/intangible/ship/base/shared_ship_control_device_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_ship_shared_bwing_pcd, "object/intangible/ship/shared_bwing_pcd.iff")
@@ -828,7 +845,8 @@ object_intangible_ship_shared_decimator_pcd = SharedIntangibleObjectTemplate:new
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 816398955
+	clientObjectCRC = 816398955,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/intangible/ship/base/shared_ship_control_device_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_ship_shared_decimator_pcd, "object/intangible/ship/shared_decimator_pcd.iff")
@@ -872,7 +890,8 @@ object_intangible_ship_shared_firespray_pcd = SharedIntangibleObjectTemplate:new
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3214165542
+	clientObjectCRC = 3214165542,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/intangible/ship/base/shared_ship_control_device_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_ship_shared_firespray_pcd, "object/intangible/ship/shared_firespray_pcd.iff")
@@ -916,7 +935,8 @@ object_intangible_ship_shared_hutt_heavy_s01_pcd = SharedIntangibleObjectTemplat
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2913916856
+	clientObjectCRC = 2913916856,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/intangible/ship/base/shared_ship_control_device_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_ship_shared_hutt_heavy_s01_pcd, "object/intangible/ship/shared_hutt_heavy_s01_pcd.iff")
@@ -960,7 +980,8 @@ object_intangible_ship_shared_hutt_heavy_s02_pcd = SharedIntangibleObjectTemplat
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3211670693
+	clientObjectCRC = 3211670693,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/intangible/ship/base/shared_ship_control_device_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_ship_shared_hutt_heavy_s02_pcd, "object/intangible/ship/shared_hutt_heavy_s02_pcd.iff")
@@ -1004,7 +1025,8 @@ object_intangible_ship_shared_hutt_light_s01_pcd = SharedIntangibleObjectTemplat
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 541381247
+	clientObjectCRC = 541381247,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/intangible/ship/base/shared_ship_control_device_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_ship_shared_hutt_light_s01_pcd, "object/intangible/ship/shared_hutt_light_s01_pcd.iff")
@@ -1048,7 +1070,8 @@ object_intangible_ship_shared_hutt_light_s02_pcd = SharedIntangibleObjectTemplat
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 847524194
+	clientObjectCRC = 847524194,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/intangible/ship/base/shared_ship_control_device_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_ship_shared_hutt_light_s02_pcd, "object/intangible/ship/shared_hutt_light_s02_pcd.iff")
@@ -1092,7 +1115,8 @@ object_intangible_ship_shared_hutt_medium_s01_pcd = SharedIntangibleObjectTempla
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 437951543
+	clientObjectCRC = 437951543,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/intangible/ship/base/shared_ship_control_device_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_ship_shared_hutt_medium_s01_pcd, "object/intangible/ship/shared_hutt_medium_s01_pcd.iff")
@@ -1136,7 +1160,8 @@ object_intangible_ship_shared_hutt_medium_s02_pcd = SharedIntangibleObjectTempla
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 148537130
+	clientObjectCRC = 148537130,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/intangible/ship/base/shared_ship_control_device_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_ship_shared_hutt_medium_s02_pcd, "object/intangible/ship/shared_hutt_medium_s02_pcd.iff")
@@ -1180,7 +1205,8 @@ object_intangible_ship_shared_hutt_turret_ship_pcd = SharedIntangibleObjectTempl
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3431555714
+	clientObjectCRC = 3431555714,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/intangible/ship/base/shared_ship_control_device_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_ship_shared_hutt_turret_ship_pcd, "object/intangible/ship/shared_hutt_turret_ship_pcd.iff")
@@ -1224,7 +1250,8 @@ object_intangible_ship_shared_navicomputer_1 = SharedIntangibleObjectTemplate:ne
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3404705593
+	clientObjectCRC = 3404705593,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/intangible/ship/shared_navicomputer_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_ship_shared_navicomputer_1, "object/intangible/ship/shared_navicomputer_1.iff")
@@ -1268,7 +1295,8 @@ object_intangible_ship_shared_navicomputer_2 = SharedIntangibleObjectTemplate:ne
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 301467566
+	clientObjectCRC = 301467566,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/intangible/ship/shared_navicomputer_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_ship_shared_navicomputer_2, "object/intangible/ship/shared_navicomputer_2.iff")
@@ -1312,7 +1340,8 @@ object_intangible_ship_shared_navicomputer_3 = SharedIntangibleObjectTemplate:ne
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1492475939
+	clientObjectCRC = 1492475939,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/intangible/ship/shared_navicomputer_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_ship_shared_navicomputer_3, "object/intangible/ship/shared_navicomputer_3.iff")
@@ -1356,7 +1385,8 @@ object_intangible_ship_shared_navicomputer_4 = SharedIntangibleObjectTemplate:ne
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2736147255
+	clientObjectCRC = 2736147255,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/intangible/ship/shared_navicomputer_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_ship_shared_navicomputer_4, "object/intangible/ship/shared_navicomputer_4.iff")
@@ -1400,7 +1430,8 @@ object_intangible_ship_shared_navicomputer_5 = SharedIntangibleObjectTemplate:ne
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3927649466
+	clientObjectCRC = 3927649466,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/intangible/ship/shared_navicomputer_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_ship_shared_navicomputer_5, "object/intangible/ship/shared_navicomputer_5.iff")
@@ -1444,7 +1475,8 @@ object_intangible_ship_shared_navicomputer_6 = SharedIntangibleObjectTemplate:ne
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 822903853
+	clientObjectCRC = 822903853,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/intangible/ship/shared_navicomputer_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_ship_shared_navicomputer_6, "object/intangible/ship/shared_navicomputer_6.iff")
@@ -1488,7 +1520,8 @@ object_intangible_ship_shared_navicomputer_base = SharedIntangibleObjectTemplate
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1537107009
+	clientObjectCRC = 1537107009,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_ship_shared_navicomputer_base, "object/intangible/ship/shared_navicomputer_base.iff")
@@ -1532,7 +1565,8 @@ object_intangible_ship_shared_prototype_hutt_light_pcd = SharedIntangibleObjectT
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3320786901
+	clientObjectCRC = 3320786901,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/intangible/ship/base/shared_ship_control_device_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_ship_shared_prototype_hutt_light_pcd, "object/intangible/ship/shared_prototype_hutt_light_pcd.iff")
@@ -1576,7 +1610,8 @@ object_intangible_ship_shared_prototype_tiefighter_pcd = SharedIntangibleObjectT
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2937877305
+	clientObjectCRC = 2937877305,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/intangible/ship/base/shared_ship_control_device_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_ship_shared_prototype_tiefighter_pcd, "object/intangible/ship/shared_prototype_tiefighter_pcd.iff")
@@ -1620,7 +1655,8 @@ object_intangible_ship_shared_prototype_z95_pcd = SharedIntangibleObjectTemplate
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3760715561
+	clientObjectCRC = 3760715561,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/intangible/ship/base/shared_ship_control_device_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_ship_shared_prototype_z95_pcd, "object/intangible/ship/shared_prototype_z95_pcd.iff")
@@ -1664,7 +1700,8 @@ object_intangible_ship_shared_sorosuub_space_yacht_pcd = SharedIntangibleObjectT
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 264594860
+	clientObjectCRC = 264594860,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/intangible/ship/base/shared_ship_control_device_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_ship_shared_sorosuub_space_yacht_pcd, "object/intangible/ship/shared_sorosuub_space_yacht_pcd.iff")
@@ -1708,7 +1745,8 @@ object_intangible_ship_shared_tie_in_pcd = SharedIntangibleObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 4072676654
+	clientObjectCRC = 4072676654,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/intangible/ship/base/shared_ship_control_device_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_ship_shared_tie_in_pcd, "object/intangible/ship/shared_tie_in_pcd.iff")
@@ -1752,7 +1790,8 @@ object_intangible_ship_shared_tie_light_duty_pcd = SharedIntangibleObjectTemplat
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3211390
+	clientObjectCRC = 3211390,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/intangible/ship/base/shared_ship_control_device_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_ship_shared_tie_light_duty_pcd, "object/intangible/ship/shared_tie_light_duty_pcd.iff")
@@ -1796,7 +1835,8 @@ object_intangible_ship_shared_tieadvanced_pcd = SharedIntangibleObjectTemplate:n
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3041041630
+	clientObjectCRC = 3041041630,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/intangible/ship/base/shared_ship_control_device_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_ship_shared_tieadvanced_pcd, "object/intangible/ship/shared_tieadvanced_pcd.iff")
@@ -1840,7 +1880,8 @@ object_intangible_ship_shared_tieaggressor_pcd = SharedIntangibleObjectTemplate:
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3555369555
+	clientObjectCRC = 3555369555,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/intangible/ship/base/shared_ship_control_device_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_ship_shared_tieaggressor_pcd, "object/intangible/ship/shared_tieaggressor_pcd.iff")
@@ -1884,7 +1925,8 @@ object_intangible_ship_shared_tiebomber_pcd = SharedIntangibleObjectTemplate:new
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3994408379
+	clientObjectCRC = 3994408379,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/intangible/ship/base/shared_ship_control_device_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_ship_shared_tiebomber_pcd, "object/intangible/ship/shared_tiebomber_pcd.iff")
@@ -1928,7 +1970,8 @@ object_intangible_ship_shared_tiefighter_pcd = SharedIntangibleObjectTemplate:ne
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2741040950
+	clientObjectCRC = 2741040950,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/intangible/ship/base/shared_ship_control_device_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_ship_shared_tiefighter_pcd, "object/intangible/ship/shared_tiefighter_pcd.iff")
@@ -1972,7 +2015,8 @@ object_intangible_ship_shared_tieinterceptor_pcd = SharedIntangibleObjectTemplat
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 4152772827
+	clientObjectCRC = 4152772827,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/intangible/ship/base/shared_ship_control_device_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_ship_shared_tieinterceptor_pcd, "object/intangible/ship/shared_tieinterceptor_pcd.iff")
@@ -2016,7 +2060,8 @@ object_intangible_ship_shared_tieoppressor_pcd = SharedIntangibleObjectTemplate:
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3673716446
+	clientObjectCRC = 3673716446,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/intangible/ship/base/shared_ship_control_device_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_ship_shared_tieoppressor_pcd, "object/intangible/ship/shared_tieoppressor_pcd.iff")
@@ -2060,7 +2105,8 @@ object_intangible_ship_shared_xwing_pcd = SharedIntangibleObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3314812569
+	clientObjectCRC = 3314812569,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/intangible/ship/base/shared_ship_control_device_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_ship_shared_xwing_pcd, "object/intangible/ship/shared_xwing_pcd.iff")
@@ -2104,7 +2150,8 @@ object_intangible_ship_shared_ykl37r_pcd = SharedIntangibleObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1454524572
+	clientObjectCRC = 1454524572,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/intangible/ship/base/shared_ship_control_device_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_ship_shared_ykl37r_pcd, "object/intangible/ship/shared_ykl37r_pcd.iff")
@@ -2148,7 +2195,8 @@ object_intangible_ship_shared_yt1300_pcd = SharedIntangibleObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2265582340
+	clientObjectCRC = 2265582340,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/intangible/ship/base/shared_ship_control_device_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_ship_shared_yt1300_pcd, "object/intangible/ship/shared_yt1300_pcd.iff")
@@ -2192,7 +2240,8 @@ object_intangible_ship_shared_ywing_longprobe_pcd = SharedIntangibleObjectTempla
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3884767324
+	clientObjectCRC = 3884767324,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/intangible/ship/base/shared_ship_control_device_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_ship_shared_ywing_longprobe_pcd, "object/intangible/ship/shared_ywing_longprobe_pcd.iff")
@@ -2236,7 +2285,8 @@ object_intangible_ship_shared_ywing_pcd = SharedIntangibleObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 758141084
+	clientObjectCRC = 758141084,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/intangible/ship/base/shared_ship_control_device_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_ship_shared_ywing_pcd, "object/intangible/ship/shared_ywing_pcd.iff")
@@ -2280,7 +2330,8 @@ object_intangible_ship_shared_z95_pcd = SharedIntangibleObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 628864673
+	clientObjectCRC = 628864673,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/intangible/ship/base/shared_ship_control_device_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_ship_shared_z95_pcd, "object/intangible/ship/shared_z95_pcd.iff")

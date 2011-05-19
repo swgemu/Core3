@@ -90,7 +90,8 @@ object_tangible_lair_nerf_shared_lair_nerf = SharedTangibleObjectTemplate:new {
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2431052313
+	clientObjectCRC = 2431052313,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_nerf_shared_lair_nerf, "object/tangible/lair/nerf/shared_lair_nerf.iff")
@@ -144,7 +145,8 @@ object_tangible_lair_nerf_shared_lair_nerf_grassland = SharedTangibleObjectTempl
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2861606931
+	clientObjectCRC = 2861606931,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_nerf_shared_lair_nerf_grassland, "object/tangible/lair/nerf/shared_lair_nerf_grassland.iff")

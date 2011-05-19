@@ -90,7 +90,8 @@ object_tangible_lair_gronda_shared_lair_gronda = SharedTangibleObjectTemplate:ne
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 658868181
+	clientObjectCRC = 658868181,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_gronda_shared_lair_gronda, "object/tangible/lair/gronda/shared_lair_gronda.iff")
@@ -144,7 +145,8 @@ object_tangible_lair_gronda_shared_lair_gronda_grassland = SharedTangibleObjectT
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1050006158
+	clientObjectCRC = 1050006158,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_gronda_shared_lair_gronda_grassland, "object/tangible/lair/gronda/shared_lair_gronda_grassland.iff")

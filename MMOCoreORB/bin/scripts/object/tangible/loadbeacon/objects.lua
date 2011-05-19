@@ -90,7 +90,8 @@ object_tangible_loadbeacon_shared_loadbeacon_base = SharedTangibleObjectTemplate
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1191572337
+	clientObjectCRC = 1191572337,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loadbeacon_shared_loadbeacon_base, "object/tangible/loadbeacon/shared_loadbeacon_base.iff")

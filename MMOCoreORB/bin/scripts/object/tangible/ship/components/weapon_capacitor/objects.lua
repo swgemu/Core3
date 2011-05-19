@@ -90,7 +90,8 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_corellian_cruiser_gr
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1410960531
+	clientObjectCRC = 1410960531,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_corellian_cruiser_grade_cap1, "object/tangible/ship/components/weapon_capacitor/shared_cap_corellian_cruiser_grade_cap1.iff")
@@ -144,7 +145,8 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_corellian_cruiser_gr
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3275853237
+	clientObjectCRC = 3275853237,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_corellian_cruiser_grade_cap10, "object/tangible/ship/components/weapon_capacitor/shared_cap_corellian_cruiser_grade_cap10.iff")
@@ -198,7 +200,8 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_corellian_cruiser_gr
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2400068612
+	clientObjectCRC = 2400068612,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_corellian_cruiser_grade_cap2, "object/tangible/ship/components/weapon_capacitor/shared_cap_corellian_cruiser_grade_cap2.iff")
@@ -252,7 +255,8 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_corellian_cruiser_gr
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3322102665
+	clientObjectCRC = 3322102665,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_corellian_cruiser_grade_cap3, "object/tangible/ship/components/weapon_capacitor/shared_cap_corellian_cruiser_grade_cap3.iff")
@@ -306,7 +310,8 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_corellian_cruiser_gr
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1961692944
+	clientObjectCRC = 1961692944,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_corellian_cruiser_grade_cap5, "object/tangible/ship/components/weapon_capacitor/shared_cap_corellian_cruiser_grade_cap5.iff")
@@ -360,7 +365,8 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_corellian_cruiser_gr
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 368085909
+	clientObjectCRC = 368085909,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_corellian_cruiser_grade_cap9, "object/tangible/ship/components/weapon_capacitor/shared_cap_corellian_cruiser_grade_cap9.iff")
@@ -414,7 +420,8 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_corellian_deluxe_cru
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2219573456
+	clientObjectCRC = 2219573456,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_corellian_deluxe_cruiser_grade_cap2, "object/tangible/ship/components/weapon_capacitor/shared_cap_corellian_deluxe_cruiser_grade_cap2.iff")
@@ -468,7 +475,8 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_corellian_elite = Sh
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 266518392
+	clientObjectCRC = 266518392,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_corellian_elite, "object/tangible/ship/components/weapon_capacitor/shared_cap_corellian_elite.iff")
@@ -522,7 +530,8 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_corellian_standard =
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1591296526
+	clientObjectCRC = 1591296526,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_corellian_standard, "object/tangible/ship/components/weapon_capacitor/shared_cap_corellian_standard.iff")
@@ -576,7 +585,8 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_corellian_tuned_crui
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4202667471
+	clientObjectCRC = 4202667471,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_corellian_tuned_cruiser_grade_cap1, "object/tangible/ship/components/weapon_capacitor/shared_cap_corellian_tuned_cruiser_grade_cap1.iff")
@@ -630,7 +640,8 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_cygnus_cygcap_a = Sh
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1734206129
+	clientObjectCRC = 1734206129,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_cygnus_cygcap_a, "object/tangible/ship/components/weapon_capacitor/shared_cap_cygnus_cygcap_a.iff")
@@ -684,7 +695,8 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_cygnus_cygcap_b = Sh
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3158985254
+	clientObjectCRC = 3158985254,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_cygnus_cygcap_b, "object/tangible/ship/components/weapon_capacitor/shared_cap_cygnus_cygcap_b.iff")
@@ -738,7 +750,8 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_freitek_xd2 = Shared
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2897720901
+	clientObjectCRC = 2897720901,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_freitek_xd2, "object/tangible/ship/components/weapon_capacitor/shared_cap_freitek_xd2.iff")
@@ -792,7 +805,8 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_gallofree_lt22 = Sha
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 18515388
+	clientObjectCRC = 18515388,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_gallofree_lt22, "object/tangible/ship/components/weapon_capacitor/shared_cap_gallofree_lt22.iff")
@@ -846,7 +860,8 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_generic = SharedTang
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 700417052
+	clientObjectCRC = 700417052,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_generic, "object/tangible/ship/components/weapon_capacitor/shared_cap_generic.iff")
@@ -900,7 +915,8 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_haor_chall_old_capac
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 345339930
+	clientObjectCRC = 345339930,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_haor_chall_old_capacitor, "object/tangible/ship/components/weapon_capacitor/shared_cap_haor_chall_old_capacitor.iff")
@@ -954,7 +970,8 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_huppla_pasa_tisc_old
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 928393821
+	clientObjectCRC = 928393821,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_huppla_pasa_tisc_old_capacitor, "object/tangible/ship/components/weapon_capacitor/shared_cap_huppla_pasa_tisc_old_capacitor.iff")
@@ -1008,7 +1025,8 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_incom_bjn825 = Share
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3633642593
+	clientObjectCRC = 3633642593,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_incom_bjn825, "object/tangible/ship/components/weapon_capacitor/shared_cap_incom_bjn825.iff")
@@ -1062,7 +1080,8 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_incom_improved_rebel
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 971147390
+	clientObjectCRC = 971147390,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_incom_improved_rebel_mk1, "object/tangible/ship/components/weapon_capacitor/shared_cap_incom_improved_rebel_mk1.iff")
@@ -1116,7 +1135,8 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_incom_rebel_mk1 = Sh
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1737426279
+	clientObjectCRC = 1737426279,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_incom_rebel_mk1, "object/tangible/ship/components/weapon_capacitor/shared_cap_incom_rebel_mk1.iff")
@@ -1170,7 +1190,8 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_incom_special_bjn825
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2476449638
+	clientObjectCRC = 2476449638,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_incom_special_bjn825, "object/tangible/ship/components/weapon_capacitor/shared_cap_incom_special_bjn825.iff")
@@ -1224,7 +1245,8 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_kessel_imperial_rend
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 105866207
+	clientObjectCRC = 105866207,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_kessel_imperial_rendili_hyperbattery, "object/tangible/ship/components/weapon_capacitor/shared_cap_kessel_imperial_rendili_hyperbattery.iff")
@@ -1278,7 +1300,8 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_kessel_imperial_sds_
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2935211611
+	clientObjectCRC = 2935211611,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_kessel_imperial_sds_imperial_finest, "object/tangible/ship/components/weapon_capacitor/shared_cap_kessel_imperial_sds_imperial_finest.iff")
@@ -1332,7 +1355,8 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_kessel_imperial_sfs_
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3196333805
+	clientObjectCRC = 3196333805,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_kessel_imperial_sfs_array, "object/tangible/ship/components/weapon_capacitor/shared_cap_kessel_imperial_sfs_array.iff")
@@ -1386,7 +1410,8 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_kessel_rebel_armek_a
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2093681588
+	clientObjectCRC = 2093681588,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_kessel_rebel_armek_array, "object/tangible/ship/components/weapon_capacitor/shared_cap_kessel_rebel_armek_array.iff")
@@ -1440,7 +1465,8 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_kessel_rebel_deepwel
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1308361117
+	clientObjectCRC = 1308361117,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_kessel_rebel_deepwell_k33_prototype, "object/tangible/ship/components/weapon_capacitor/shared_cap_kessel_rebel_deepwell_k33_prototype.iff")
@@ -1494,7 +1520,8 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_kessel_rebel_taim_hy
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2807586925
+	clientObjectCRC = 2807586925,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_kessel_rebel_taim_hypercharger, "object/tangible/ship/components/weapon_capacitor/shared_cap_kessel_rebel_taim_hypercharger.iff")
@@ -1548,7 +1575,8 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_koensayr_custom_ligh
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 426882042
+	clientObjectCRC = 426882042,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_koensayr_custom_light, "object/tangible/ship/components/weapon_capacitor/shared_cap_koensayr_custom_light.iff")
@@ -1602,7 +1630,8 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_koensayr_deluxe_mk4 
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3900005351
+	clientObjectCRC = 3900005351,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_koensayr_deluxe_mk4, "object/tangible/ship/components/weapon_capacitor/shared_cap_koensayr_deluxe_mk4.iff")
@@ -1656,7 +1685,8 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_koensayr_elite_mk5 =
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3764122355
+	clientObjectCRC = 3764122355,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_koensayr_elite_mk5, "object/tangible/ship/components/weapon_capacitor/shared_cap_koensayr_elite_mk5.iff")
@@ -1710,7 +1740,8 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_koensayr_improved_li
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2209731504
+	clientObjectCRC = 2209731504,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_koensayr_improved_light, "object/tangible/ship/components/weapon_capacitor/shared_cap_koensayr_improved_light.iff")
@@ -1764,7 +1795,8 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_koensayr_light = Sha
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4075122898
+	clientObjectCRC = 4075122898,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_koensayr_light, "object/tangible/ship/components/weapon_capacitor/shared_cap_koensayr_light.iff")
@@ -1818,7 +1850,8 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_koensayr_mk3 = Share
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3401812641
+	clientObjectCRC = 3401812641,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_koensayr_mk3, "object/tangible/ship/components/weapon_capacitor/shared_cap_koensayr_mk3.iff")
@@ -1872,7 +1905,8 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_koensayr_mk4 = Share
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 824222133
+	clientObjectCRC = 824222133,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_koensayr_mk4, "object/tangible/ship/components/weapon_capacitor/shared_cap_koensayr_mk4.iff")
@@ -1926,7 +1960,8 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_koensayr_mk5 = Share
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2016265784
+	clientObjectCRC = 2016265784,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_koensayr_mk5, "object/tangible/ship/components/weapon_capacitor/shared_cap_koensayr_mk5.iff")
@@ -1980,7 +2015,8 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_koensayr_rare_mk2 = 
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3333186732
+	clientObjectCRC = 3333186732,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_koensayr_rare_mk2, "object/tangible/ship/components/weapon_capacitor/shared_cap_koensayr_rare_mk2.iff")
@@ -2034,7 +2070,8 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_koensayr_tuned_mk3 =
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4087524942
+	clientObjectCRC = 4087524942,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_koensayr_tuned_mk3, "object/tangible/ship/components/weapon_capacitor/shared_cap_koensayr_tuned_mk3.iff")
@@ -2088,7 +2125,8 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_kse_elite_mk5 = Shar
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4088781034
+	clientObjectCRC = 4088781034,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_kse_elite_mk5, "object/tangible/ship/components/weapon_capacitor/shared_cap_kse_elite_mk5.iff")
@@ -2142,7 +2180,8 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_kse_limited_mk1 = Sh
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 659177202
+	clientObjectCRC = 659177202,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_kse_limited_mk1, "object/tangible/ship/components/weapon_capacitor/shared_cap_kse_limited_mk1.iff")
@@ -2196,7 +2235,8 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_kse_limited_mk4 = Sh
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1320409852
+	clientObjectCRC = 1320409852,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_kse_limited_mk4, "object/tangible/ship/components/weapon_capacitor/shared_cap_kse_limited_mk4.iff")
@@ -2250,7 +2290,8 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_kse_mk1 = SharedTang
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1641479793
+	clientObjectCRC = 1641479793,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_kse_mk1, "object/tangible/ship/components/weapon_capacitor/shared_cap_kse_mk1.iff")
@@ -2304,7 +2345,8 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_kse_mk2 = SharedTang
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3133232870
+	clientObjectCRC = 3133232870,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_kse_mk2, "object/tangible/ship/components/weapon_capacitor/shared_cap_kse_mk2.iff")
@@ -2358,7 +2400,8 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_kse_mk3 = SharedTang
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4090245483
+	clientObjectCRC = 4090245483,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_kse_mk3, "object/tangible/ship/components/weapon_capacitor/shared_cap_kse_mk3.iff")
@@ -2412,7 +2455,8 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_kse_mk4 = SharedTang
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 137304703
+	clientObjectCRC = 137304703,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_kse_mk4, "object/tangible/ship/components/weapon_capacitor/shared_cap_kse_mk4.iff")
@@ -2466,7 +2510,8 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_kse_mk5 = SharedTang
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1092779506
+	clientObjectCRC = 1092779506,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_kse_mk5, "object/tangible/ship/components/weapon_capacitor/shared_cap_kse_mk5.iff")
@@ -2520,7 +2565,8 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_kse_performance_mk2 
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1092646081
+	clientObjectCRC = 1092646081,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_kse_performance_mk2, "object/tangible/ship/components/weapon_capacitor/shared_cap_kse_performance_mk2.iff")
@@ -2574,7 +2620,8 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_kse_supercharged_mk3
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2236352533
+	clientObjectCRC = 2236352533,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_kse_supercharged_mk3, "object/tangible/ship/components/weapon_capacitor/shared_cap_kse_supercharged_mk3.iff")
@@ -2628,7 +2675,8 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_mandal_improved_powe
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1062359612
+	clientObjectCRC = 1062359612,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_mandal_improved_powermaster_mk3, "object/tangible/ship/components/weapon_capacitor/shared_cap_mandal_improved_powermaster_mk3.iff")
@@ -2682,7 +2730,8 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_mandal_powermaster_m
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4261155014
+	clientObjectCRC = 4261155014,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_mandal_powermaster_mk1, "object/tangible/ship/components/weapon_capacitor/shared_cap_mandal_powermaster_mk1.iff")
@@ -2736,7 +2785,8 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_mandal_powermaster_m
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 652982353
+	clientObjectCRC = 652982353,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_mandal_powermaster_mk2, "object/tangible/ship/components/weapon_capacitor/shared_cap_mandal_powermaster_mk2.iff")
@@ -2790,7 +2840,8 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_mandal_powermaster_m
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1877401564
+	clientObjectCRC = 1877401564,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_mandal_powermaster_mk3, "object/tangible/ship/components/weapon_capacitor/shared_cap_mandal_powermaster_mk3.iff")
@@ -2844,7 +2895,8 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_mandal_powermaster_m
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2483418312
+	clientObjectCRC = 2483418312,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_mandal_powermaster_mk4, "object/tangible/ship/components/weapon_capacitor/shared_cap_mandal_powermaster_mk4.iff")
@@ -2898,7 +2950,8 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_mandal_powermaster_m
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3708326725
+	clientObjectCRC = 3708326725,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_mandal_powermaster_mk5, "object/tangible/ship/components/weapon_capacitor/shared_cap_mandal_powermaster_mk5.iff")
@@ -2952,7 +3005,8 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_mandal_powersoak = S
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1628218941
+	clientObjectCRC = 1628218941,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_mandal_powersoak, "object/tangible/ship/components/weapon_capacitor/shared_cap_mandal_powersoak.iff")
@@ -3006,7 +3060,8 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_mandal_provider_p1 =
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2499929805
+	clientObjectCRC = 2499929805,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_mandal_provider_p1, "object/tangible/ship/components/weapon_capacitor/shared_cap_mandal_provider_p1.iff")
@@ -3060,7 +3115,8 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_mandal_rare_powermas
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 782841496
+	clientObjectCRC = 782841496,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_mandal_rare_powermaster_mk4, "object/tangible/ship/components/weapon_capacitor/shared_cap_mandal_rare_powermaster_mk4.iff")
@@ -3114,7 +3170,8 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_mandal_special_power
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3992126029
+	clientObjectCRC = 3992126029,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_mandal_special_powermaster_mk1, "object/tangible/ship/components/weapon_capacitor/shared_cap_mandal_special_powermaster_mk1.iff")
@@ -3168,7 +3225,8 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_mandal_tuned_powerma
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 549991474
+	clientObjectCRC = 549991474,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_mandal_tuned_powermaster_mk2, "object/tangible/ship/components/weapon_capacitor/shared_cap_mandal_tuned_powermaster_mk2.iff")
@@ -3222,7 +3280,8 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_mission_reward_imper
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2713051365
+	clientObjectCRC = 2713051365,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_mission_reward_imperial_rendili_k_class, "object/tangible/ship/components/weapon_capacitor/shared_cap_mission_reward_imperial_rendili_k_class.iff")
@@ -3276,7 +3335,8 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_mission_reward_neutr
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2617588856
+	clientObjectCRC = 2617588856,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_mission_reward_neutral_sorosuub_v1, "object/tangible/ship/components/weapon_capacitor/shared_cap_mission_reward_neutral_sorosuub_v1.iff")
@@ -3330,7 +3390,8 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_mission_reward_rebel
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1350376627
+	clientObjectCRC = 1350376627,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_mission_reward_rebel_qualdex_battery_array, "object/tangible/ship/components/weapon_capacitor/shared_cap_mission_reward_rebel_qualdex_battery_array.iff")
@@ -3384,7 +3445,8 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_moncal_advanced = Sh
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2145639863
+	clientObjectCRC = 2145639863,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_moncal_advanced, "object/tangible/ship/components/weapon_capacitor/shared_cap_moncal_advanced.iff")
@@ -3438,7 +3500,8 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_moncal_charged_light
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 905494263
+	clientObjectCRC = 905494263,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_moncal_charged_light, "object/tangible/ship/components/weapon_capacitor/shared_cap_moncal_charged_light.iff")
@@ -3492,7 +3555,8 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_moncal_deluxe_elite 
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1276287045
+	clientObjectCRC = 1276287045,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_moncal_deluxe_elite, "object/tangible/ship/components/weapon_capacitor/shared_cap_moncal_deluxe_elite.iff")
@@ -3546,7 +3610,8 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_moncal_elite = Share
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3651162594
+	clientObjectCRC = 3651162594,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_moncal_elite, "object/tangible/ship/components/weapon_capacitor/shared_cap_moncal_elite.iff")
@@ -3600,7 +3665,8 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_moncal_enhanced_adva
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3865253340
+	clientObjectCRC = 3865253340,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_moncal_enhanced_advanced, "object/tangible/ship/components/weapon_capacitor/shared_cap_moncal_enhanced_advanced.iff")
@@ -3654,7 +3720,8 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_moncal_heavy = Share
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1210621339
+	clientObjectCRC = 1210621339,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_moncal_heavy, "object/tangible/ship/components/weapon_capacitor/shared_cap_moncal_heavy.iff")
@@ -3708,7 +3775,8 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_moncal_light = Share
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2305859909
+	clientObjectCRC = 2305859909,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_moncal_light, "object/tangible/ship/components/weapon_capacitor/shared_cap_moncal_light.iff")
@@ -3762,7 +3830,8 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_moncal_modified_heav
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 565817686
+	clientObjectCRC = 565817686,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_moncal_modified_heavy, "object/tangible/ship/components/weapon_capacitor/shared_cap_moncal_modified_heavy.iff")
@@ -3816,7 +3885,8 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_moncal_modified_stan
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1034330448
+	clientObjectCRC = 1034330448,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_moncal_modified_standard, "object/tangible/ship/components/weapon_capacitor/shared_cap_moncal_modified_standard.iff")
@@ -3870,7 +3940,8 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_moncal_standard = Sh
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1601074972
+	clientObjectCRC = 1601074972,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_moncal_standard, "object/tangible/ship/components/weapon_capacitor/shared_cap_moncal_standard.iff")
@@ -3924,7 +3995,8 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_novaldex_deluxe_wamp
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2122277506
+	clientObjectCRC = 2122277506,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_novaldex_deluxe_wampa_s1, "object/tangible/ship/components/weapon_capacitor/shared_cap_novaldex_deluxe_wampa_s1.iff")
@@ -3978,7 +4050,8 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_novaldex_experimenta
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3491064416
+	clientObjectCRC = 3491064416,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_novaldex_experimental, "object/tangible/ship/components/weapon_capacitor/shared_cap_novaldex_experimental.iff")
@@ -4032,7 +4105,8 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_novaldex_experimenta
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1296746974
+	clientObjectCRC = 1296746974,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_novaldex_experimental_sarlacc_s1, "object/tangible/ship/components/weapon_capacitor/shared_cap_novaldex_experimental_sarlacc_s1.iff")
@@ -4086,7 +4160,8 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_novaldex_sarlacc_s1 
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2694446356
+	clientObjectCRC = 2694446356,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_novaldex_sarlacc_s1, "object/tangible/ship/components/weapon_capacitor/shared_cap_novaldex_sarlacc_s1.iff")
@@ -4140,7 +4215,8 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_novaldex_sarlacc_s2 
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2072925571
+	clientObjectCRC = 2072925571,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_novaldex_sarlacc_s2, "object/tangible/ship/components/weapon_capacitor/shared_cap_novaldex_sarlacc_s2.iff")
@@ -4194,7 +4270,8 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_novaldex_sarlacc_s3 
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 847458830
+	clientObjectCRC = 847458830,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_novaldex_sarlacc_s3, "object/tangible/ship/components/weapon_capacitor/shared_cap_novaldex_sarlacc_s3.iff")
@@ -4248,7 +4325,8 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_novaldex_small_capac
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1595351643
+	clientObjectCRC = 1595351643,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_novaldex_small_capacitor, "object/tangible/ship/components/weapon_capacitor/shared_cap_novaldex_small_capacitor.iff")
@@ -4302,7 +4380,8 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_novaldex_wampa_s1 = 
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2833268516
+	clientObjectCRC = 2833268516,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_novaldex_wampa_s1, "object/tangible/ship/components/weapon_capacitor/shared_cap_novaldex_wampa_s1.iff")
@@ -4356,7 +4435,8 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_novaldex_wampa_s2 = 
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1945606067
+	clientObjectCRC = 1945606067,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_novaldex_wampa_s2, "object/tangible/ship/components/weapon_capacitor/shared_cap_novaldex_wampa_s2.iff")
@@ -4410,7 +4490,8 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_novaldex_wampa_s3 = 
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 989524030
+	clientObjectCRC = 989524030,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_novaldex_wampa_s3, "object/tangible/ship/components/weapon_capacitor/shared_cap_novaldex_wampa_s3.iff")
@@ -4464,7 +4545,8 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_prototype_capacitor 
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3673224579
+	clientObjectCRC = 3673224579,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_prototype_capacitor, "object/tangible/ship/components/weapon_capacitor/shared_cap_prototype_capacitor.iff")
@@ -4518,7 +4600,8 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_qualdex_conservator_
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2253174399
+	clientObjectCRC = 2253174399,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_qualdex_conservator_q3, "object/tangible/ship/components/weapon_capacitor/shared_cap_qualdex_conservator_q3.iff")
@@ -4572,7 +4655,8 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_qualdex_conservator_
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2797090300
+	clientObjectCRC = 2797090300,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_qualdex_conservator_q7, "object/tangible/ship/components/weapon_capacitor/shared_cap_qualdex_conservator_q7.iff")
@@ -4626,7 +4710,8 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_qualdex_conservator_
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3822197061
+	clientObjectCRC = 3822197061,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_qualdex_conservator_qx1, "object/tangible/ship/components/weapon_capacitor/shared_cap_qualdex_conservator_qx1.iff")
@@ -4680,7 +4765,8 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_qualdex_conservator_
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 952480210
+	clientObjectCRC = 952480210,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_qualdex_conservator_qx2, "object/tangible/ship/components/weapon_capacitor/shared_cap_qualdex_conservator_qx2.iff")
@@ -4734,7 +4820,8 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_qualdex_conservator_
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1908987487
+	clientObjectCRC = 1908987487,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_qualdex_conservator_qx3, "object/tangible/ship/components/weapon_capacitor/shared_cap_qualdex_conservator_qx3.iff")
@@ -4788,7 +4875,8 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_qualdex_conservator_
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2318138699
+	clientObjectCRC = 2318138699,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_qualdex_conservator_qx4, "object/tangible/ship/components/weapon_capacitor/shared_cap_qualdex_conservator_qx4.iff")
@@ -4842,7 +4930,8 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_qualdex_conservator_
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3274087110
+	clientObjectCRC = 3274087110,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_qualdex_conservator_qx5, "object/tangible/ship/components/weapon_capacitor/shared_cap_qualdex_conservator_qx5.iff")
@@ -4896,7 +4985,8 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_qualdex_experimental
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2515055959
+	clientObjectCRC = 2515055959,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_qualdex_experimental, "object/tangible/ship/components/weapon_capacitor/shared_cap_qualdex_experimental.iff")
@@ -4950,7 +5040,8 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_qualdex_miser_elite 
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3526039001
+	clientObjectCRC = 3526039001,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_qualdex_miser_elite, "object/tangible/ship/components/weapon_capacitor/shared_cap_qualdex_miser_elite.iff")
@@ -5004,7 +5095,8 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_qualdex_miser_light 
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2197546366
+	clientObjectCRC = 2197546366,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_qualdex_miser_light, "object/tangible/ship/components/weapon_capacitor/shared_cap_qualdex_miser_light.iff")
@@ -5058,7 +5150,8 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_qualdex_miser_standa
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 896476191
+	clientObjectCRC = 896476191,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_qualdex_miser_standard, "object/tangible/ship/components/weapon_capacitor/shared_cap_qualdex_miser_standard.iff")
@@ -5112,7 +5205,8 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_rendili_overseer_j7 
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2580709564
+	clientObjectCRC = 2580709564,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_rendili_overseer_j7, "object/tangible/ship/components/weapon_capacitor/shared_cap_rendili_overseer_j7.iff")
@@ -5166,7 +5260,8 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_rendili_overseer_j8 
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 601402542
+	clientObjectCRC = 601402542,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_rendili_overseer_j8, "object/tangible/ship/components/weapon_capacitor/shared_cap_rendili_overseer_j8.iff")
@@ -5220,7 +5315,8 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_reward_mandal_elite 
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2828974582
+	clientObjectCRC = 2828974582,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_reward_mandal_elite, "object/tangible/ship/components/weapon_capacitor/shared_cap_reward_mandal_elite.iff")
@@ -5274,7 +5370,8 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_reward_novaldex_elit
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2272053445
+	clientObjectCRC = 2272053445,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_reward_novaldex_elite, "object/tangible/ship/components/weapon_capacitor/shared_cap_reward_novaldex_elite.iff")
@@ -5328,7 +5425,8 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_reward_qualdex_elite
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2774529918
+	clientObjectCRC = 2774529918,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_reward_qualdex_elite, "object/tangible/ship/components/weapon_capacitor/shared_cap_reward_qualdex_elite.iff")
@@ -5382,7 +5480,8 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_reward_sorosuub_elit
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2275626808
+	clientObjectCRC = 2275626808,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_reward_sorosuub_elite, "object/tangible/ship/components/weapon_capacitor/shared_cap_reward_sorosuub_elite.iff")
@@ -5436,7 +5535,8 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_reward_subpro_elite 
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 396325004
+	clientObjectCRC = 396325004,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_reward_subpro_elite, "object/tangible/ship/components/weapon_capacitor/shared_cap_reward_subpro_elite.iff")
@@ -5490,7 +5590,8 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_rss_imperial_1 = Sha
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 118943742
+	clientObjectCRC = 118943742,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_rss_imperial_1, "object/tangible/ship/components/weapon_capacitor/shared_cap_rss_imperial_1.iff")
@@ -5544,7 +5645,8 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_sds_imperial_1 = Sha
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2562369407
+	clientObjectCRC = 2562369407,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_sds_imperial_1, "object/tangible/ship/components/weapon_capacitor/shared_cap_sds_imperial_1.iff")
@@ -5598,7 +5700,8 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_sds_imperial_2 = Sha
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1135415272
+	clientObjectCRC = 1135415272,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_sds_imperial_2, "object/tangible/ship/components/weapon_capacitor/shared_cap_sds_imperial_2.iff")
@@ -5652,7 +5755,8 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_sds_special_imperial
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3112239614
+	clientObjectCRC = 3112239614,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_sds_special_imperial_2, "object/tangible/ship/components/weapon_capacitor/shared_cap_sds_special_imperial_2.iff")
@@ -5706,7 +5810,8 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_sfs_imperial_1 = Sha
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3072116165
+	clientObjectCRC = 3072116165,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_sfs_imperial_1, "object/tangible/ship/components/weapon_capacitor/shared_cap_sfs_imperial_1.iff")
@@ -5760,7 +5865,8 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_sorosuub_dynamo_mk1 
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1029784328
+	clientObjectCRC = 1029784328,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_sorosuub_dynamo_mk1, "object/tangible/ship/components/weapon_capacitor/shared_cap_sorosuub_dynamo_mk1.iff")
@@ -5814,7 +5920,8 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_sorosuub_dynamo_mk2 
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3866553247
+	clientObjectCRC = 3866553247,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_sorosuub_dynamo_mk2, "object/tangible/ship/components/weapon_capacitor/shared_cap_sorosuub_dynamo_mk2.iff")
@@ -5868,7 +5975,8 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_sorosuub_dynamo_mk3 
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2944109586
+	clientObjectCRC = 2944109586,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_sorosuub_dynamo_mk3, "object/tangible/ship/components/weapon_capacitor/shared_cap_sorosuub_dynamo_mk3.iff")
@@ -5922,7 +6030,8 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_sorosuub_dynamo_mk4 
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1419290374
+	clientObjectCRC = 1419290374,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_sorosuub_dynamo_mk4, "object/tangible/ship/components/weapon_capacitor/shared_cap_sorosuub_dynamo_mk4.iff")
@@ -5976,7 +6085,8 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_sorosuub_enhanced_dy
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3213086713
+	clientObjectCRC = 3213086713,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_sorosuub_enhanced_dynamo_mk1, "object/tangible/ship/components/weapon_capacitor/shared_cap_sorosuub_enhanced_dynamo_mk1.iff")
@@ -6030,7 +6140,8 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_sorosuub_flash = Sha
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4165561226
+	clientObjectCRC = 4165561226,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_sorosuub_flash, "object/tangible/ship/components/weapon_capacitor/shared_cap_sorosuub_flash.iff")
@@ -6084,7 +6195,8 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_sorosuub_premium_dyn
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1816017894
+	clientObjectCRC = 1816017894,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_sorosuub_premium_dynamo_mk2, "object/tangible/ship/components/weapon_capacitor/shared_cap_sorosuub_premium_dynamo_mk2.iff")
@@ -6138,7 +6250,8 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_sorosuub_supercharge
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2228066878
+	clientObjectCRC = 2228066878,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_sorosuub_supercharged_dynamo_mk4, "object/tangible/ship/components/weapon_capacitor/shared_cap_sorosuub_supercharged_dynamo_mk4.iff")
@@ -6192,7 +6305,8 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_sorosuub_tuned_dynam
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1077552108
+	clientObjectCRC = 1077552108,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_sorosuub_tuned_dynamo_mk3, "object/tangible/ship/components/weapon_capacitor/shared_cap_sorosuub_tuned_dynamo_mk3.iff")
@@ -6246,7 +6360,8 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_sorosuub_turbo = Sha
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1127759031
+	clientObjectCRC = 1127759031,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_sorosuub_turbo, "object/tangible/ship/components/weapon_capacitor/shared_cap_sorosuub_turbo.iff")
@@ -6300,7 +6415,8 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_subpro_dauntless_z3 
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1229533676
+	clientObjectCRC = 1229533676,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_subpro_dauntless_z3, "object/tangible/ship/components/weapon_capacitor/shared_cap_subpro_dauntless_z3.iff")
@@ -6354,7 +6470,8 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_subpro_dauntless_z5 
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4222057845
+	clientObjectCRC = 4222057845,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_subpro_dauntless_z5, "object/tangible/ship/components/weapon_capacitor/shared_cap_subpro_dauntless_z5.iff")
@@ -6408,7 +6525,8 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_subpro_defiant_c1 = 
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2112122777
+	clientObjectCRC = 2112122777,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_subpro_defiant_c1, "object/tangible/ship/components/weapon_capacitor/shared_cap_subpro_defiant_c1.iff")
@@ -6462,7 +6580,8 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_subpro_defiant_c2 = 
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2800994062
+	clientObjectCRC = 2800994062,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_subpro_defiant_c2, "object/tangible/ship/components/weapon_capacitor/shared_cap_subpro_defiant_c2.iff")
@@ -6516,7 +6635,8 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_subpro_defiant_c3 = 
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4026441859
+	clientObjectCRC = 4026441859,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_subpro_defiant_c3, "object/tangible/ship/components/weapon_capacitor/shared_cap_subpro_defiant_c3.iff")
@@ -6570,7 +6690,8 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_subpro_experimental 
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3850921327
+	clientObjectCRC = 3850921327,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_subpro_experimental, "object/tangible/ship/components/weapon_capacitor/shared_cap_subpro_experimental.iff")
@@ -6624,7 +6745,8 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_subpro_gallant_a1 = 
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 242825300
+	clientObjectCRC = 242825300,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_subpro_gallant_a1, "object/tangible/ship/components/weapon_capacitor/shared_cap_subpro_gallant_a1.iff")
@@ -6678,7 +6800,8 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_subpro_improved_vali
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2126492799
+	clientObjectCRC = 2126492799,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_subpro_improved_valiant_z1, "object/tangible/ship/components/weapon_capacitor/shared_cap_subpro_improved_valiant_z1.iff")
@@ -6732,7 +6855,8 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_subpro_modified_defi
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3037503050
+	clientObjectCRC = 3037503050,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_subpro_modified_defiant_c1, "object/tangible/ship/components/weapon_capacitor/shared_cap_subpro_modified_defiant_c1.iff")
@@ -6786,7 +6910,8 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_subpro_valiant_z1 = 
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1976722601
+	clientObjectCRC = 1976722601,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_subpro_valiant_z1, "object/tangible/ship/components/weapon_capacitor/shared_cap_subpro_valiant_z1.iff")
@@ -6840,7 +6965,8 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_subpro_valiant_z2 = 
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2932198462
+	clientObjectCRC = 2932198462,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_subpro_valiant_z2, "object/tangible/ship/components/weapon_capacitor/shared_cap_subpro_valiant_z2.iff")
@@ -6894,7 +7020,8 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_tiefighter_basic = S
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 189859741
+	clientObjectCRC = 189859741,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_tiefighter_basic, "object/tangible/ship/components/weapon_capacitor/shared_cap_tiefighter_basic.iff")
@@ -6948,7 +7075,8 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_tiefighter_elite_mk1
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 278033573
+	clientObjectCRC = 278033573,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_tiefighter_elite_mk1, "object/tangible/ship/components/weapon_capacitor/shared_cap_tiefighter_elite_mk1.iff")
@@ -7002,7 +7130,8 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_tiefighter_elite_mk2
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3414547506
+	clientObjectCRC = 3414547506,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_tiefighter_elite_mk2, "object/tangible/ship/components/weapon_capacitor/shared_cap_tiefighter_elite_mk2.iff")
@@ -7056,7 +7185,8 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_tiefighter_elite_mk3
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2189999039
+	clientObjectCRC = 2189999039,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_tiefighter_elite_mk3, "object/tangible/ship/components/weapon_capacitor/shared_cap_tiefighter_elite_mk3.iff")
@@ -7110,7 +7240,8 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_tiefighter_experimen
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1515496099
+	clientObjectCRC = 1515496099,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_tiefighter_experimental, "object/tangible/ship/components/weapon_capacitor/shared_cap_tiefighter_experimental.iff")
@@ -7164,7 +7295,8 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_unknown_experimental
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 251613793
+	clientObjectCRC = 251613793,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_unknown_experimental, "object/tangible/ship/components/weapon_capacitor/shared_cap_unknown_experimental.iff")
@@ -7218,7 +7350,8 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_z95_basic = SharedTa
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1814952361
+	clientObjectCRC = 1814952361,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_z95_basic, "object/tangible/ship/components/weapon_capacitor/shared_cap_z95_basic.iff")
@@ -7272,7 +7405,8 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_z95_deepwell_experim
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2040861908
+	clientObjectCRC = 2040861908,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_z95_deepwell_experimental, "object/tangible/ship/components/weapon_capacitor/shared_cap_z95_deepwell_experimental.iff")
@@ -7326,7 +7460,8 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_z95_deepwell_k3 = Sh
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3065987757
+	clientObjectCRC = 3065987757,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_z95_deepwell_k3, "object/tangible/ship/components/weapon_capacitor/shared_cap_z95_deepwell_k3.iff")
@@ -7380,7 +7515,8 @@ object_tangible_ship_components_weapon_capacitor_shared_cap_z95_deepwell_k5 = Sh
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 72420916
+	clientObjectCRC = 72420916,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_cap_z95_deepwell_k5, "object/tangible/ship/components/weapon_capacitor/shared_cap_z95_deepwell_k5.iff")
@@ -7434,7 +7570,8 @@ object_tangible_ship_components_weapon_capacitor_shared_weapon_capacitor_test = 
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 635272917
+	clientObjectCRC = 635272917,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_capacitor_shared_weapon_capacitor_test, "object/tangible/ship/components/weapon_capacitor/shared_weapon_capacitor_test.iff")

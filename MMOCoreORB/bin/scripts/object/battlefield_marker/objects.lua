@@ -90,7 +90,8 @@ object_battlefield_marker_shared_battlefield_marker = SharedBattlefieldMarkerObj
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 400647243
+	clientObjectCRC = 400647243,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_battlefield_marker_shared_battlefield_marker, "object/battlefield_marker/shared_battlefield_marker.iff")
@@ -144,7 +145,8 @@ object_battlefield_marker_shared_battlefield_marker_128m = SharedBattlefieldMark
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 772486765
+	clientObjectCRC = 772486765,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_battlefield_marker_shared_battlefield_marker_128m, "object/battlefield_marker/shared_battlefield_marker_128m.iff")
@@ -198,7 +200,8 @@ object_battlefield_marker_shared_battlefield_marker_192m = SharedBattlefieldMark
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1675330696
+	clientObjectCRC = 1675330696,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_battlefield_marker_shared_battlefield_marker_192m, "object/battlefield_marker/shared_battlefield_marker_192m.iff")
@@ -252,7 +255,8 @@ object_battlefield_marker_shared_battlefield_marker_256m = SharedBattlefieldMark
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2839286307
+	clientObjectCRC = 2839286307,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_battlefield_marker_shared_battlefield_marker_256m, "object/battlefield_marker/shared_battlefield_marker_256m.iff")
@@ -306,7 +310,8 @@ object_battlefield_marker_shared_battlefield_marker_384m = SharedBattlefieldMark
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3242162717
+	clientObjectCRC = 3242162717,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_battlefield_marker_shared_battlefield_marker_384m, "object/battlefield_marker/shared_battlefield_marker_384m.iff")
@@ -360,7 +365,8 @@ object_battlefield_marker_shared_battlefield_marker_512m = SharedBattlefieldMark
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2057605617
+	clientObjectCRC = 2057605617,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_battlefield_marker_shared_battlefield_marker_512m, "object/battlefield_marker/shared_battlefield_marker_512m.iff")

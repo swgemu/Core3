@@ -93,7 +93,8 @@ object_building_faction_perk_hq_shared_hq_s01 = SharedBuildingObjectTemplate:new
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4204337141
+	clientObjectCRC = 4204337141,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/faction_perk/base/shared_factional_building_base.iff", "object/building/faction_perk/hq/base/shared_factional_hq_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_faction_perk_hq_shared_hq_s01, "object/building/faction_perk/hq/shared_hq_s01.iff")
@@ -150,7 +151,8 @@ object_building_faction_perk_hq_shared_hq_s01_fp = SharedBuildingObjectTemplate:
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2419085158
+	clientObjectCRC = 2419085158,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/faction_perk/base/shared_factional_building_base.iff", "object/building/faction_perk/hq/base/shared_factional_hq_base.iff", "object/building/faction_perk/hq/shared_hq_s01.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_faction_perk_hq_shared_hq_s01_fp, "object/building/faction_perk/hq/shared_hq_s01_fp.iff")
@@ -207,7 +209,8 @@ object_building_faction_perk_hq_shared_hq_s01_imp = SharedBuildingObjectTemplate
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 554924775
+	clientObjectCRC = 554924775,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/faction_perk/base/shared_factional_building_base.iff", "object/building/faction_perk/hq/base/shared_factional_hq_base.iff", "object/building/faction_perk/hq/shared_hq_s01.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_faction_perk_hq_shared_hq_s01_imp, "object/building/faction_perk/hq/shared_hq_s01_imp.iff")
@@ -264,7 +267,8 @@ object_building_faction_perk_hq_shared_hq_s01_imp_pvp = SharedBuildingObjectTemp
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2016142793
+	clientObjectCRC = 2016142793,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/faction_perk/base/shared_factional_building_base.iff", "object/building/faction_perk/hq/base/shared_factional_hq_base.iff", "object/building/faction_perk/hq/shared_hq_s01.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_faction_perk_hq_shared_hq_s01_imp_pvp, "object/building/faction_perk/hq/shared_hq_s01_imp_pvp.iff")
@@ -321,7 +325,8 @@ object_building_faction_perk_hq_shared_hq_s01_rebel = SharedBuildingObjectTempla
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1119051291
+	clientObjectCRC = 1119051291,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/faction_perk/base/shared_factional_building_base.iff", "object/building/faction_perk/hq/base/shared_factional_hq_base.iff", "object/building/faction_perk/hq/shared_hq_s01.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_faction_perk_hq_shared_hq_s01_rebel, "object/building/faction_perk/hq/shared_hq_s01_rebel.iff")
@@ -378,7 +383,8 @@ object_building_faction_perk_hq_shared_hq_s01_rebel_pvp = SharedBuildingObjectTe
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 769008513
+	clientObjectCRC = 769008513,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/faction_perk/base/shared_factional_building_base.iff", "object/building/faction_perk/hq/base/shared_factional_hq_base.iff", "object/building/faction_perk/hq/shared_hq_s01.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_faction_perk_hq_shared_hq_s01_rebel_pvp, "object/building/faction_perk/hq/shared_hq_s01_rebel_pvp.iff")
@@ -435,7 +441,8 @@ object_building_faction_perk_hq_shared_hq_s02 = SharedBuildingObjectTemplate:new
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 563003234
+	clientObjectCRC = 563003234,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/faction_perk/base/shared_factional_building_base.iff", "object/building/faction_perk/hq/base/shared_factional_hq_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_faction_perk_hq_shared_hq_s02, "object/building/faction_perk/hq/shared_hq_s02.iff")
@@ -492,7 +499,8 @@ object_building_faction_perk_hq_shared_hq_s02_fp = SharedBuildingObjectTemplate:
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2094148152
+	clientObjectCRC = 2094148152,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/faction_perk/base/shared_factional_building_base.iff", "object/building/faction_perk/hq/base/shared_factional_hq_base.iff", "object/building/faction_perk/hq/shared_hq_s02.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_faction_perk_hq_shared_hq_s02_fp, "object/building/faction_perk/hq/shared_hq_s02_fp.iff")
@@ -549,7 +557,8 @@ object_building_faction_perk_hq_shared_hq_s02_imp = SharedBuildingObjectTemplate
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 869505530
+	clientObjectCRC = 869505530,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/faction_perk/base/shared_factional_building_base.iff", "object/building/faction_perk/hq/base/shared_factional_hq_base.iff", "object/building/faction_perk/hq/shared_hq_s02.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_faction_perk_hq_shared_hq_s02_imp, "object/building/faction_perk/hq/shared_hq_s02_imp.iff")
@@ -606,7 +615,8 @@ object_building_faction_perk_hq_shared_hq_s02_imp_pvp = SharedBuildingObjectTemp
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1158021745
+	clientObjectCRC = 1158021745,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/faction_perk/base/shared_factional_building_base.iff", "object/building/faction_perk/hq/base/shared_factional_hq_base.iff", "object/building/faction_perk/hq/shared_hq_s02.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_faction_perk_hq_shared_hq_s02_imp_pvp, "object/building/faction_perk/hq/shared_hq_s02_imp_pvp.iff")
@@ -663,7 +673,8 @@ object_building_faction_perk_hq_shared_hq_s02_rebel = SharedBuildingObjectTempla
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1283967902
+	clientObjectCRC = 1283967902,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/faction_perk/base/shared_factional_building_base.iff", "object/building/faction_perk/hq/base/shared_factional_hq_base.iff", "object/building/faction_perk/hq/shared_hq_s02.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_faction_perk_hq_shared_hq_s02_rebel, "object/building/faction_perk/hq/shared_hq_s02_rebel.iff")
@@ -720,7 +731,8 @@ object_building_faction_perk_hq_shared_hq_s02_rebel_pvp = SharedBuildingObjectTe
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1309089184
+	clientObjectCRC = 1309089184,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/faction_perk/base/shared_factional_building_base.iff", "object/building/faction_perk/hq/base/shared_factional_hq_base.iff", "object/building/faction_perk/hq/shared_hq_s02.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_faction_perk_hq_shared_hq_s02_rebel_pvp, "object/building/faction_perk/hq/shared_hq_s02_rebel_pvp.iff")
@@ -777,7 +789,8 @@ object_building_faction_perk_hq_shared_hq_s03 = SharedBuildingObjectTemplate:new
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1753471215
+	clientObjectCRC = 1753471215,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/faction_perk/base/shared_factional_building_base.iff", "object/building/faction_perk/hq/base/shared_factional_hq_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_faction_perk_hq_shared_hq_s03, "object/building/faction_perk/hq/shared_hq_s03.iff")
@@ -834,7 +847,8 @@ object_building_faction_perk_hq_shared_hq_s03_fp = SharedBuildingObjectTemplate:
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 661911282
+	clientObjectCRC = 661911282,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/faction_perk/base/shared_factional_building_base.iff", "object/building/faction_perk/hq/base/shared_factional_hq_base.iff", "object/building/faction_perk/hq/shared_hq_s03.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_faction_perk_hq_shared_hq_s03_fp, "object/building/faction_perk/hq/shared_hq_s03_fp.iff")
@@ -891,7 +905,8 @@ object_building_faction_perk_hq_shared_hq_s03_imp = SharedBuildingObjectTemplate
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3251843996
+	clientObjectCRC = 3251843996,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/faction_perk/base/shared_factional_building_base.iff", "object/building/faction_perk/hq/base/shared_factional_hq_base.iff", "object/building/faction_perk/hq/shared_hq_s03.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_faction_perk_hq_shared_hq_s03_imp, "object/building/faction_perk/hq/shared_hq_s03_imp.iff")
@@ -948,7 +963,8 @@ object_building_faction_perk_hq_shared_hq_s03_imp_pvp = SharedBuildingObjectTemp
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2913096820
+	clientObjectCRC = 2913096820,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/faction_perk/base/shared_factional_building_base.iff", "object/building/faction_perk/hq/base/shared_factional_hq_base.iff", "object/building/faction_perk/hq/shared_hq_s03.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_faction_perk_hq_shared_hq_s03_imp_pvp, "object/building/faction_perk/hq/shared_hq_s03_imp_pvp.iff")
@@ -1005,7 +1021,8 @@ object_building_faction_perk_hq_shared_hq_s03_rebel = SharedBuildingObjectTempla
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3039513712
+	clientObjectCRC = 3039513712,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/faction_perk/base/shared_factional_building_base.iff", "object/building/faction_perk/hq/base/shared_factional_hq_base.iff", "object/building/faction_perk/hq/shared_hq_s03.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_faction_perk_hq_shared_hq_s03_rebel, "object/building/faction_perk/hq/shared_hq_s03_rebel.iff")
@@ -1062,7 +1079,8 @@ object_building_faction_perk_hq_shared_hq_s03_rebel_pvp = SharedBuildingObjectTe
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2466839762
+	clientObjectCRC = 2466839762,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/faction_perk/base/shared_factional_building_base.iff", "object/building/faction_perk/hq/base/shared_factional_hq_base.iff", "object/building/faction_perk/hq/shared_hq_s03.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_faction_perk_hq_shared_hq_s03_rebel_pvp, "object/building/faction_perk/hq/shared_hq_s03_rebel_pvp.iff")
@@ -1119,7 +1137,8 @@ object_building_faction_perk_hq_shared_hq_s04 = SharedBuildingObjectTemplate:new
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2472604667
+	clientObjectCRC = 2472604667,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/faction_perk/base/shared_factional_building_base.iff", "object/building/faction_perk/hq/base/shared_factional_hq_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_faction_perk_hq_shared_hq_s04, "object/building/faction_perk/hq/shared_hq_s04.iff")
@@ -1176,7 +1195,8 @@ object_building_faction_perk_hq_shared_hq_s04_fp = SharedBuildingObjectTemplate:
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2715286835
+	clientObjectCRC = 2715286835,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/faction_perk/base/shared_factional_building_base.iff", "object/building/faction_perk/hq/base/shared_factional_hq_base.iff", "object/building/faction_perk/hq/shared_hq_s04.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_faction_perk_hq_shared_hq_s04_fp, "object/building/faction_perk/hq/shared_hq_s04_fp.iff")
@@ -1233,7 +1253,8 @@ object_building_faction_perk_hq_shared_hq_s04_imp = SharedBuildingObjectTemplate
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 374497216
+	clientObjectCRC = 374497216,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/faction_perk/base/shared_factional_building_base.iff", "object/building/faction_perk/hq/base/shared_factional_hq_base.iff", "object/building/faction_perk/hq/shared_hq_s04.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_faction_perk_hq_shared_hq_s04_imp, "object/building/faction_perk/hq/shared_hq_s04_imp.iff")
@@ -1290,7 +1311,8 @@ object_building_faction_perk_hq_shared_hq_s04_imp_pvp = SharedBuildingObjectTemp
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1063111937
+	clientObjectCRC = 1063111937,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/faction_perk/base/shared_factional_building_base.iff", "object/building/faction_perk/hq/base/shared_factional_hq_base.iff", "object/building/faction_perk/hq/shared_hq_s04.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_faction_perk_hq_shared_hq_s04_imp_pvp, "object/building/faction_perk/hq/shared_hq_s04_imp_pvp.iff")
@@ -1347,7 +1369,8 @@ object_building_faction_perk_hq_shared_hq_s04_rebel = SharedBuildingObjectTempla
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1357832340
+	clientObjectCRC = 1357832340,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/faction_perk/base/shared_factional_building_base.iff", "object/building/faction_perk/hq/base/shared_factional_hq_base.iff", "object/building/faction_perk/hq/shared_hq_s04.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_faction_perk_hq_shared_hq_s04_rebel, "object/building/faction_perk/hq/shared_hq_s04_rebel.iff")
@@ -1404,7 +1427,8 @@ object_building_faction_perk_hq_shared_hq_s04_rebel_pvp = SharedBuildingObjectTe
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2309317090
+	clientObjectCRC = 2309317090,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/faction_perk/base/shared_factional_building_base.iff", "object/building/faction_perk/hq/base/shared_factional_hq_base.iff", "object/building/faction_perk/hq/shared_hq_s04.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_faction_perk_hq_shared_hq_s04_rebel_pvp, "object/building/faction_perk/hq/shared_hq_s04_rebel_pvp.iff")
@@ -1461,7 +1485,8 @@ object_building_faction_perk_hq_shared_hq_s05 = SharedBuildingObjectTemplate:new
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3664614518
+	clientObjectCRC = 3664614518,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/faction_perk/base/shared_factional_building_base.iff", "object/building/faction_perk/hq/base/shared_factional_hq_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_faction_perk_hq_shared_hq_s05, "object/building/faction_perk/hq/shared_hq_s05.iff")
@@ -1518,7 +1543,8 @@ object_building_faction_perk_hq_shared_hq_s05_fp = SharedBuildingObjectTemplate:
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4202045945
+	clientObjectCRC = 4202045945,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/faction_perk/base/shared_factional_building_base.iff", "object/building/faction_perk/hq/base/shared_factional_hq_base.iff", "object/building/faction_perk/hq/shared_hq_s05.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_faction_perk_hq_shared_hq_s05_fp, "object/building/faction_perk/hq/shared_hq_s05_fp.iff")
@@ -1575,7 +1601,8 @@ object_building_faction_perk_hq_shared_hq_s05_imp = SharedBuildingObjectTemplate
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3830642086
+	clientObjectCRC = 3830642086,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/faction_perk/base/shared_factional_building_base.iff", "object/building/faction_perk/hq/base/shared_factional_hq_base.iff", "object/building/faction_perk/hq/shared_hq_s05.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_faction_perk_hq_shared_hq_s05_imp, "object/building/faction_perk/hq/shared_hq_s05_imp.iff")
@@ -1632,7 +1659,8 @@ object_building_faction_perk_hq_shared_hq_s05_imp_pvp = SharedBuildingObjectTemp
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3623459588
+	clientObjectCRC = 3623459588,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/faction_perk/base/shared_factional_building_base.iff", "object/building/faction_perk/hq/base/shared_factional_hq_base.iff", "object/building/faction_perk/hq/shared_hq_s05.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_faction_perk_hq_shared_hq_s05_imp_pvp, "object/building/faction_perk/hq/shared_hq_s05_imp_pvp.iff")
@@ -1689,7 +1717,8 @@ object_building_faction_perk_hq_shared_hq_s05_rebel = SharedBuildingObjectTempla
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2839701370
+	clientObjectCRC = 2839701370,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/faction_perk/base/shared_factional_building_base.iff", "object/building/faction_perk/hq/base/shared_factional_hq_base.iff", "object/building/faction_perk/hq/shared_hq_s05.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_faction_perk_hq_shared_hq_s05_rebel, "object/building/faction_perk/hq/shared_hq_s05_rebel.iff")
@@ -1746,7 +1775,8 @@ object_building_faction_perk_hq_shared_hq_s05_rebel_pvp = SharedBuildingObjectTe
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1420460176
+	clientObjectCRC = 1420460176,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/faction_perk/base/shared_factional_building_base.iff", "object/building/faction_perk/hq/base/shared_factional_hq_base.iff", "object/building/faction_perk/hq/shared_hq_s05.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_faction_perk_hq_shared_hq_s05_rebel_pvp, "object/building/faction_perk/hq/shared_hq_s05_rebel_pvp.iff")

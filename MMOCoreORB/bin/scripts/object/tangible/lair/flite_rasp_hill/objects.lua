@@ -90,7 +90,8 @@ object_tangible_lair_flite_rasp_hill_shared_lair_flite_rasp_hill = SharedTangibl
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 182559338
+	clientObjectCRC = 182559338,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_flite_rasp_hill_shared_lair_flite_rasp_hill, "object/tangible/lair/flite_rasp_hill/shared_lair_flite_rasp_hill.iff")

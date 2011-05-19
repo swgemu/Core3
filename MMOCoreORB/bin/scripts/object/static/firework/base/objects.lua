@@ -80,7 +80,8 @@ object_static_firework_base_shared_firework_fx_base = SharedStaticObjectTemplate
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2524579942
+	clientObjectCRC = 2524579942,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/particle/base/shared_static_particle_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_firework_base_shared_firework_fx_base, "object/static/firework/base/shared_firework_fx_base.iff")

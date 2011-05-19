@@ -90,7 +90,8 @@ object_tangible_lair_sharnaff_shared_lair_sharnaff = SharedTangibleObjectTemplat
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 196553824
+	clientObjectCRC = 196553824,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_sharnaff_shared_lair_sharnaff, "object/tangible/lair/sharnaff/shared_lair_sharnaff.iff")
@@ -144,7 +145,8 @@ object_tangible_lair_sharnaff_shared_lair_sharnaff_forest = SharedTangibleObject
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 150207939
+	clientObjectCRC = 150207939,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_sharnaff_shared_lair_sharnaff_forest, "object/tangible/lair/sharnaff/shared_lair_sharnaff_forest.iff")
@@ -198,7 +200,8 @@ object_tangible_lair_sharnaff_shared_lair_sharnaff_grassland = SharedTangibleObj
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2092015518
+	clientObjectCRC = 2092015518,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_sharnaff_shared_lair_sharnaff_grassland, "object/tangible/lair/sharnaff/shared_lair_sharnaff_grassland.iff")

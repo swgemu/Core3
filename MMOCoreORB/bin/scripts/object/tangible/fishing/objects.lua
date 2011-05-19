@@ -90,7 +90,8 @@ object_tangible_fishing_shared_fishing_pole = SharedTangibleObjectTemplate:new {
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1813029717
+	clientObjectCRC = 1813029717,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/container/base/shared_base_container.iff", "object/tangible/container/base/shared_base_container_volume.iff", "object/tangible/wearables/base/shared_base_backpack.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_fishing_shared_fishing_pole, "object/tangible/fishing/shared_fishing_pole.iff")
@@ -144,7 +145,8 @@ object_tangible_fishing_shared_marker = SharedTangibleObjectTemplate:new {
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1763394438
+	clientObjectCRC = 1763394438,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/container/base/shared_base_container.iff", "object/tangible/container/base/shared_base_container_volume.iff", "object/tangible/wearables/base/shared_base_backpack.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_fishing_shared_marker, "object/tangible/fishing/shared_marker.iff")
@@ -188,7 +190,8 @@ object_tangible_fishing_shared_splash = SharedStaticObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1084993175
+	clientObjectCRC = 1084993175,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/particle/base/shared_static_particle_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_fishing_shared_splash, "object/tangible/fishing/shared_splash.iff")

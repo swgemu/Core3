@@ -80,7 +80,8 @@ object_static_firework_shared_fx_01 = SharedStaticObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 4015660279
+	clientObjectCRC = 4015660279,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/particle/base/shared_static_particle_base.iff", "object/static/firework/base/shared_firework_fx_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_firework_shared_fx_01, "object/static/firework/shared_fx_01.iff")
@@ -124,7 +125,8 @@ object_static_firework_shared_fx_02 = SharedStaticObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 877507680
+	clientObjectCRC = 877507680,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/particle/base/shared_static_particle_base.iff", "object/static/firework/base/shared_firework_fx_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_firework_shared_fx_02, "object/static/firework/shared_fx_02.iff")
@@ -168,7 +170,8 @@ object_static_firework_shared_fx_03 = SharedStaticObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2101400557
+	clientObjectCRC = 2101400557,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/particle/base/shared_static_particle_base.iff", "object/static/firework/base/shared_firework_fx_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_firework_shared_fx_03, "object/static/firework/shared_fx_03.iff")
@@ -212,7 +215,8 @@ object_static_firework_shared_fx_04 = SharedStaticObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2258893049
+	clientObjectCRC = 2258893049,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/particle/base/shared_static_particle_base.iff", "object/static/firework/base/shared_firework_fx_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_firework_shared_fx_04, "object/static/firework/shared_fx_04.iff")
@@ -256,7 +260,8 @@ object_static_firework_shared_fx_05 = SharedStaticObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3484327796
+	clientObjectCRC = 3484327796,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/particle/base/shared_static_particle_base.iff", "object/static/firework/base/shared_firework_fx_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_firework_shared_fx_05, "object/static/firework/shared_fx_05.iff")
@@ -300,7 +305,8 @@ object_static_firework_shared_fx_10 = SharedStaticObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3179247106
+	clientObjectCRC = 3179247106,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/particle/base/shared_static_particle_base.iff", "object/static/firework/base/shared_firework_fx_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_firework_shared_fx_10, "object/static/firework/shared_fx_10.iff")
@@ -344,7 +350,8 @@ object_static_firework_shared_fx_11 = SharedStaticObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 4101116303
+	clientObjectCRC = 4101116303,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/particle/base/shared_static_particle_base.iff", "object/static/firework/base/shared_firework_fx_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_firework_shared_fx_11, "object/static/firework/shared_fx_11.iff")
@@ -388,7 +395,8 @@ object_static_firework_shared_fx_18 = SharedStaticObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 4237717764
+	clientObjectCRC = 4237717764,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/particle/base/shared_static_particle_base.iff", "object/static/firework/base/shared_firework_fx_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_firework_shared_fx_18, "object/static/firework/shared_fx_18.iff")
@@ -432,7 +440,8 @@ object_static_firework_shared_show_launcher = SharedStaticObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 4092821074
+	clientObjectCRC = 4092821074,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_firework_shared_show_launcher, "object/static/firework/shared_show_launcher.iff")

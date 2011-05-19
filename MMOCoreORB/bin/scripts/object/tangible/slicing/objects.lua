@@ -90,7 +90,8 @@ object_tangible_slicing_shared_slicing_armor_upgrade_kit = SharedTangibleObjectT
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2423629000
+	clientObjectCRC = 2423629000,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_slicing_shared_slicing_armor_upgrade_kit, "object/tangible/slicing/shared_slicing_armor_upgrade_kit.iff")
@@ -144,7 +145,8 @@ object_tangible_slicing_shared_slicing_flow_analyzer = SharedTangibleObjectTempl
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 352400896
+	clientObjectCRC = 352400896,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_slicing_shared_slicing_flow_analyzer, "object/tangible/slicing/shared_slicing_flow_analyzer.iff")
@@ -198,7 +200,8 @@ object_tangible_slicing_shared_slicing_laser_knife = SharedTangibleObjectTemplat
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3905355100
+	clientObjectCRC = 3905355100,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_slicing_shared_slicing_laser_knife, "object/tangible/slicing/shared_slicing_laser_knife.iff")
@@ -252,7 +255,8 @@ object_tangible_slicing_shared_slicing_molecular_clamp = SharedTangibleObjectTem
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2663745100
+	clientObjectCRC = 2663745100,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_slicing_shared_slicing_molecular_clamp, "object/tangible/slicing/shared_slicing_molecular_clamp.iff")
@@ -306,7 +310,8 @@ object_tangible_slicing_shared_slicing_weapon_upgrade_kit = SharedTangibleObject
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3282826133
+	clientObjectCRC = 3282826133,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_slicing_shared_slicing_weapon_upgrade_kit, "object/tangible/slicing/shared_slicing_weapon_upgrade_kit.iff")

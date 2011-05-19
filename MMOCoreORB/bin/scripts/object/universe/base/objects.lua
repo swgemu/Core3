@@ -80,7 +80,8 @@ object_universe_base_shared_base_universe = SharedUniverseObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2428076790
+	clientObjectCRC = 2428076790,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_universe_base_shared_base_universe, "object/universe/base/shared_base_universe.iff")
@@ -124,7 +125,8 @@ object_universe_base_shared_universe_default = SharedUniverseObjectTemplate:new 
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3854968513
+	clientObjectCRC = 3854968513,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/universe/base/shared_base_universe.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_universe_base_shared_universe_default, "object/universe/base/shared_universe_default.iff")

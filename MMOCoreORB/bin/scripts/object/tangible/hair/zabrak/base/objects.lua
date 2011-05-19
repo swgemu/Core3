@@ -90,7 +90,8 @@ object_tangible_hair_zabrak_base_shared_hair_zabrak_base = SharedTangibleObjectT
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1840322274
+	clientObjectCRC = 1840322274,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/hair/base/shared_hair_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_hair_zabrak_base_shared_hair_zabrak_base, "object/tangible/hair/zabrak/base/shared_hair_zabrak_base.iff")
@@ -144,7 +145,8 @@ object_tangible_hair_zabrak_base_shared_hair_zabrak_female_base = SharedTangible
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 338751255
+	clientObjectCRC = 338751255,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/hair/base/shared_hair_base.iff", "object/tangible/hair/zabrak/base/shared_hair_zabrak_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_hair_zabrak_base_shared_hair_zabrak_female_base, "object/tangible/hair/zabrak/base/shared_hair_zabrak_female_base.iff")
@@ -198,7 +200,8 @@ object_tangible_hair_zabrak_base_shared_hair_zabrak_male_base = SharedTangibleOb
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2425340605
+	clientObjectCRC = 2425340605,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/hair/base/shared_hair_base.iff", "object/tangible/hair/zabrak/base/shared_hair_zabrak_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_hair_zabrak_base_shared_hair_zabrak_male_base, "object/tangible/hair/zabrak/base/shared_hair_zabrak_male_base.iff")

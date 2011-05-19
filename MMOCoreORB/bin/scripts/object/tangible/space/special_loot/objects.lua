@@ -90,7 +90,8 @@ object_tangible_space_special_loot_shared_encoded_document = SharedTangibleObjec
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1384769825
+	clientObjectCRC = 1384769825,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_space_special_loot_shared_encoded_document, "object/tangible/space/special_loot/shared_encoded_document.iff")
@@ -144,7 +145,8 @@ object_tangible_space_special_loot_shared_firespray_schematic = SharedTangibleOb
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3265273647
+	clientObjectCRC = 3265273647,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_space_special_loot_shared_firespray_schematic, "object/tangible/space/special_loot/shared_firespray_schematic.iff")
@@ -198,7 +200,8 @@ object_tangible_space_special_loot_shared_firespray_schematic_part1 = SharedTang
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3529502508
+	clientObjectCRC = 3529502508,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_space_special_loot_shared_firespray_schematic_part1, "object/tangible/space/special_loot/shared_firespray_schematic_part1.iff")
@@ -252,7 +255,8 @@ object_tangible_space_special_loot_shared_firespray_schematic_part2 = SharedTang
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 155731899
+	clientObjectCRC = 155731899,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_space_special_loot_shared_firespray_schematic_part2, "object/tangible/space/special_loot/shared_firespray_schematic_part2.iff")
@@ -306,7 +310,8 @@ object_tangible_space_special_loot_shared_firespray_schematic_part3 = SharedTang
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1078272054
+	clientObjectCRC = 1078272054,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_space_special_loot_shared_firespray_schematic_part3, "object/tangible/space/special_loot/shared_firespray_schematic_part3.iff")
@@ -360,7 +365,8 @@ object_tangible_space_special_loot_shared_firespray_schematic_part4 = SharedTang
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3148221218
+	clientObjectCRC = 3148221218,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_space_special_loot_shared_firespray_schematic_part4, "object/tangible/space/special_loot/shared_firespray_schematic_part4.iff")
@@ -414,7 +420,8 @@ object_tangible_space_special_loot_shared_firespray_schematic_part5 = SharedTang
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4071320751
+	clientObjectCRC = 4071320751,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_space_special_loot_shared_firespray_schematic_part5, "object/tangible/space/special_loot/shared_firespray_schematic_part5.iff")
@@ -468,7 +475,8 @@ object_tangible_space_special_loot_shared_firespray_schematic_part6 = SharedTang
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 700236856
+	clientObjectCRC = 700236856,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_space_special_loot_shared_firespray_schematic_part6, "object/tangible/space/special_loot/shared_firespray_schematic_part6.iff")
@@ -522,7 +530,8 @@ object_tangible_space_special_loot_shared_firespray_schematic_part7 = SharedTang
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1622254517
+	clientObjectCRC = 1622254517,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_space_special_loot_shared_firespray_schematic_part7, "object/tangible/space/special_loot/shared_firespray_schematic_part7.iff")
@@ -576,7 +585,8 @@ object_tangible_space_special_loot_shared_firespray_schematic_part8 = SharedTang
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3669725095
+	clientObjectCRC = 3669725095,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_space_special_loot_shared_firespray_schematic_part8, "object/tangible/space/special_loot/shared_firespray_schematic_part8.iff")

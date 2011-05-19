@@ -90,7 +90,8 @@ object_tangible_region_shared_battlefield_marker = SharedTangibleObjectTemplate:
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3641759801
+	clientObjectCRC = 3641759801,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_region_shared_battlefield_marker, "object/tangible/region/shared_battlefield_marker.iff")
@@ -144,7 +145,8 @@ object_tangible_region_shared_deliver_region_10 = SharedTangibleObjectTemplate:n
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2066164498
+	clientObjectCRC = 2066164498,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_region_shared_deliver_region_10, "object/tangible/region/shared_deliver_region_10.iff")
@@ -198,7 +200,8 @@ object_tangible_region_shared_deliver_region_15 = SharedTangibleObjectTemplate:n
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 316591900
+	clientObjectCRC = 316591900,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_region_shared_deliver_region_15, "object/tangible/region/shared_deliver_region_15.iff")
@@ -252,7 +255,8 @@ object_tangible_region_shared_deliver_region_20 = SharedTangibleObjectTemplate:n
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1449082010
+	clientObjectCRC = 1449082010,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_region_shared_deliver_region_20, "object/tangible/region/shared_deliver_region_20.iff")
@@ -306,7 +310,8 @@ object_tangible_region_shared_deliver_region_25 = SharedTangibleObjectTemplate:n
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1067899028
+	clientObjectCRC = 1067899028,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_region_shared_deliver_region_25, "object/tangible/region/shared_deliver_region_25.iff")
@@ -360,7 +365,8 @@ object_tangible_region_shared_deliver_region_30 = SharedTangibleObjectTemplate:n
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1299657186
+	clientObjectCRC = 1299657186,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_region_shared_deliver_region_30, "object/tangible/region/shared_deliver_region_30.iff")
@@ -414,7 +420,8 @@ object_tangible_region_shared_deliver_region_5 = SharedTangibleObjectTemplate:ne
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3353678877
+	clientObjectCRC = 3353678877,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_region_shared_deliver_region_5, "object/tangible/region/shared_deliver_region_5.iff")

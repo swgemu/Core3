@@ -80,7 +80,8 @@ object_draft_schematic_space_weapon_shared_armor_effectiveness_intensifier_mk1 =
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 357549043
+	clientObjectCRC = 357549043,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_weapon_shared_armor_effectiveness_intensifier_mk1, "object/draft_schematic/space/weapon/shared_armor_effectiveness_intensifier_mk1.iff")
@@ -124,7 +125,8 @@ object_draft_schematic_space_weapon_shared_armor_effectiveness_intensifier_mk2 =
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3461901156
+	clientObjectCRC = 3461901156,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_weapon_shared_armor_effectiveness_intensifier_mk2, "object/draft_schematic/space/weapon/shared_armor_effectiveness_intensifier_mk2.iff")
@@ -168,7 +170,8 @@ object_draft_schematic_space_weapon_shared_armor_effectiveness_intensifier_mk3 =
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2270498025
+	clientObjectCRC = 2270498025,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_weapon_shared_armor_effectiveness_intensifier_mk3, "object/draft_schematic/space/weapon/shared_armor_effectiveness_intensifier_mk3.iff")
@@ -212,7 +215,8 @@ object_draft_schematic_space_weapon_shared_armor_effectiveness_intensifier_mk4 =
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2092312573
+	clientObjectCRC = 2092312573,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_weapon_shared_armor_effectiveness_intensifier_mk4, "object/draft_schematic/space/weapon/shared_armor_effectiveness_intensifier_mk4.iff")
@@ -256,7 +260,8 @@ object_draft_schematic_space_weapon_shared_armor_effectiveness_intensifier_mk5 =
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 901464176
+	clientObjectCRC = 901464176,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_weapon_shared_armor_effectiveness_intensifier_mk5, "object/draft_schematic/space/weapon/shared_armor_effectiveness_intensifier_mk5.iff")
@@ -300,7 +305,8 @@ object_draft_schematic_space_weapon_shared_basic_weapon = SharedDraftSchematicOb
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3535680224
+	clientObjectCRC = 3535680224,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_weapon_shared_basic_weapon, "object/draft_schematic/space/weapon/shared_basic_weapon.iff")
@@ -344,7 +350,8 @@ object_draft_schematic_space_weapon_shared_max_damage_intensifier_mk1 = SharedDr
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 925393883
+	clientObjectCRC = 925393883,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_weapon_shared_max_damage_intensifier_mk1, "object/draft_schematic/space/weapon/shared_max_damage_intensifier_mk1.iff")
@@ -388,7 +395,8 @@ object_draft_schematic_space_weapon_shared_max_damage_intensifier_mk2 = SharedDr
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3963603788
+	clientObjectCRC = 3963603788,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_weapon_shared_max_damage_intensifier_mk2, "object/draft_schematic/space/weapon/shared_max_damage_intensifier_mk2.iff")
@@ -432,7 +440,8 @@ object_draft_schematic_space_weapon_shared_max_damage_intensifier_mk3 = SharedDr
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2771561665
+	clientObjectCRC = 2771561665,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_weapon_shared_max_damage_intensifier_mk3, "object/draft_schematic/space/weapon/shared_max_damage_intensifier_mk3.iff")
@@ -476,7 +485,8 @@ object_draft_schematic_space_weapon_shared_max_damage_intensifier_mk4 = SharedDr
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1590790101
+	clientObjectCRC = 1590790101,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_weapon_shared_max_damage_intensifier_mk4, "object/draft_schematic/space/weapon/shared_max_damage_intensifier_mk4.iff")
@@ -520,7 +530,8 @@ object_draft_schematic_space_weapon_shared_max_damage_intensifier_mk5 = SharedDr
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 400351320
+	clientObjectCRC = 400351320,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_weapon_shared_max_damage_intensifier_mk5, "object/draft_schematic/space/weapon/shared_max_damage_intensifier_mk5.iff")
@@ -564,7 +575,8 @@ object_draft_schematic_space_weapon_shared_min_damage_intensifier_mk1 = SharedDr
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2276034256
+	clientObjectCRC = 2276034256,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_weapon_shared_min_damage_intensifier_mk1, "object/draft_schematic/space/weapon/shared_min_damage_intensifier_mk1.iff")
@@ -608,7 +620,8 @@ object_draft_schematic_space_weapon_shared_min_damage_intensifier_mk2 = SharedDr
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1555967559
+	clientObjectCRC = 1555967559,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_weapon_shared_min_damage_intensifier_mk2, "object/draft_schematic/space/weapon/shared_min_damage_intensifier_mk2.iff")
@@ -652,7 +665,8 @@ object_draft_schematic_space_weapon_shared_min_damage_intensifier_mk3 = SharedDr
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 364071370
+	clientObjectCRC = 364071370,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_weapon_shared_min_damage_intensifier_mk3, "object/draft_schematic/space/weapon/shared_min_damage_intensifier_mk3.iff")
@@ -696,7 +710,8 @@ object_draft_schematic_space_weapon_shared_min_damage_intensifier_mk4 = SharedDr
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3998245598
+	clientObjectCRC = 3998245598,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_weapon_shared_min_damage_intensifier_mk4, "object/draft_schematic/space/weapon/shared_min_damage_intensifier_mk4.iff")
@@ -740,7 +755,8 @@ object_draft_schematic_space_weapon_shared_min_damage_intensifier_mk5 = SharedDr
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2807891283
+	clientObjectCRC = 2807891283,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_weapon_shared_min_damage_intensifier_mk5, "object/draft_schematic/space/weapon/shared_min_damage_intensifier_mk5.iff")
@@ -784,7 +800,8 @@ object_draft_schematic_space_weapon_shared_quick_shot_upgrade_mk1 = SharedDraftS
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 207458723
+	clientObjectCRC = 207458723,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_weapon_shared_quick_shot_upgrade_mk1, "object/draft_schematic/space/weapon/shared_quick_shot_upgrade_mk1.iff")
@@ -828,7 +845,8 @@ object_draft_schematic_space_weapon_shared_quick_shot_upgrade_mk2 = SharedDraftS
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3611965748
+	clientObjectCRC = 3611965748,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_weapon_shared_quick_shot_upgrade_mk2, "object/draft_schematic/space/weapon/shared_quick_shot_upgrade_mk2.iff")
@@ -872,7 +890,8 @@ object_draft_schematic_space_weapon_shared_quick_shot_upgrade_mk3 = SharedDraftS
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2655477433
+	clientObjectCRC = 2655477433,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_weapon_shared_quick_shot_upgrade_mk3, "object/draft_schematic/space/weapon/shared_quick_shot_upgrade_mk3.iff")
@@ -916,7 +935,8 @@ object_draft_schematic_space_weapon_shared_quick_shot_upgrade_mk4 = SharedDraftS
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1705276845
+	clientObjectCRC = 1705276845,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_weapon_shared_quick_shot_upgrade_mk4, "object/draft_schematic/space/weapon/shared_quick_shot_upgrade_mk4.iff")
@@ -960,7 +980,8 @@ object_draft_schematic_space_weapon_shared_quick_shot_upgrade_mk5 = SharedDraftS
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 749277728
+	clientObjectCRC = 749277728,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_weapon_shared_quick_shot_upgrade_mk5, "object/draft_schematic/space/weapon/shared_quick_shot_upgrade_mk5.iff")
@@ -1004,7 +1025,8 @@ object_draft_schematic_space_weapon_shared_shield_effectiveness_intensifier_mk1 
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2068760823
+	clientObjectCRC = 2068760823,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_weapon_shared_shield_effectiveness_intensifier_mk1, "object/draft_schematic/space/weapon/shared_shield_effectiveness_intensifier_mk1.iff")
@@ -1048,7 +1070,8 @@ object_draft_schematic_space_weapon_shared_shield_effectiveness_intensifier_mk2 
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2690211936
+	clientObjectCRC = 2690211936,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_weapon_shared_shield_effectiveness_intensifier_mk2, "object/draft_schematic/space/weapon/shared_shield_effectiveness_intensifier_mk2.iff")
@@ -1092,7 +1115,8 @@ object_draft_schematic_space_weapon_shared_shield_effectiveness_intensifier_mk3 
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3914598381
+	clientObjectCRC = 3914598381,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_weapon_shared_shield_effectiveness_intensifier_mk3, "object/draft_schematic/space/weapon/shared_shield_effectiveness_intensifier_mk3.iff")
@@ -1136,7 +1160,8 @@ object_draft_schematic_space_weapon_shared_shield_effectiveness_intensifier_mk4 
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 313994489
+	clientObjectCRC = 313994489,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_weapon_shared_shield_effectiveness_intensifier_mk4, "object/draft_schematic/space/weapon/shared_shield_effectiveness_intensifier_mk4.iff")
@@ -1180,7 +1205,8 @@ object_draft_schematic_space_weapon_shared_shield_effectiveness_intensifier_mk5 
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1538935668
+	clientObjectCRC = 1538935668,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_weapon_shared_shield_effectiveness_intensifier_mk5, "object/draft_schematic/space/weapon/shared_shield_effectiveness_intensifier_mk5.iff")
@@ -1224,7 +1250,8 @@ object_draft_schematic_space_weapon_shared_speed_limiter_upgrade_mk1 = SharedDra
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1212255047
+	clientObjectCRC = 1212255047,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_weapon_shared_speed_limiter_upgrade_mk1, "object/draft_schematic/space/weapon/shared_speed_limiter_upgrade_mk1.iff")
@@ -1268,7 +1295,8 @@ object_draft_schematic_space_weapon_shared_speed_limiter_upgrade_mk2 = SharedDra
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2471896016
+	clientObjectCRC = 2471896016,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_weapon_shared_speed_limiter_upgrade_mk2, "object/draft_schematic/space/weapon/shared_speed_limiter_upgrade_mk2.iff")
@@ -1312,7 +1340,8 @@ object_draft_schematic_space_weapon_shared_speed_limiter_upgrade_mk3 = SharedDra
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3663414365
+	clientObjectCRC = 3663414365,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_weapon_shared_speed_limiter_upgrade_mk3, "object/draft_schematic/space/weapon/shared_speed_limiter_upgrade_mk3.iff")
@@ -1356,7 +1385,8 @@ object_draft_schematic_space_weapon_shared_speed_limiter_upgrade_mk4 = SharedDra
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 565735241
+	clientObjectCRC = 565735241,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_weapon_shared_speed_limiter_upgrade_mk4, "object/draft_schematic/space/weapon/shared_speed_limiter_upgrade_mk4.iff")
@@ -1400,7 +1430,8 @@ object_draft_schematic_space_weapon_shared_speed_limiter_upgrade_mk5 = SharedDra
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1756694724
+	clientObjectCRC = 1756694724,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_weapon_shared_speed_limiter_upgrade_mk5, "object/draft_schematic/space/weapon/shared_speed_limiter_upgrade_mk5.iff")
@@ -1444,7 +1475,8 @@ object_draft_schematic_space_weapon_shared_wpn_advanced_blaster = SharedDraftSch
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3740796153
+	clientObjectCRC = 3740796153,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_weapon_shared_wpn_advanced_blaster, "object/draft_schematic/space/weapon/shared_wpn_advanced_blaster.iff")
@@ -1488,7 +1520,8 @@ object_draft_schematic_space_weapon_shared_wpn_advanced_blaster_green = SharedDr
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3929052829
+	clientObjectCRC = 3929052829,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_weapon_shared_wpn_advanced_blaster_green, "object/draft_schematic/space/weapon/shared_wpn_advanced_blaster_green.iff")
@@ -1532,7 +1565,8 @@ object_draft_schematic_space_weapon_shared_wpn_advanced_disruptor = SharedDraftS
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1431740762
+	clientObjectCRC = 1431740762,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_weapon_shared_wpn_advanced_disruptor, "object/draft_schematic/space/weapon/shared_wpn_advanced_disruptor.iff")
@@ -1576,7 +1610,8 @@ object_draft_schematic_space_weapon_shared_wpn_advanced_ioncannon = SharedDraftS
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 90674496
+	clientObjectCRC = 90674496,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_weapon_shared_wpn_advanced_ioncannon, "object/draft_schematic/space/weapon/shared_wpn_advanced_ioncannon.iff")
@@ -1620,7 +1655,8 @@ object_draft_schematic_space_weapon_shared_wpn_experimental_blaster = SharedDraf
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 749584960
+	clientObjectCRC = 749584960,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_weapon_shared_wpn_experimental_blaster, "object/draft_schematic/space/weapon/shared_wpn_experimental_blaster.iff")
@@ -1664,7 +1700,8 @@ object_draft_schematic_space_weapon_shared_wpn_experimental_blaster_green = Shar
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3909227909
+	clientObjectCRC = 3909227909,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_weapon_shared_wpn_experimental_blaster_green, "object/draft_schematic/space/weapon/shared_wpn_experimental_blaster_green.iff")
@@ -1708,7 +1745,8 @@ object_draft_schematic_space_weapon_shared_wpn_experimental_disruptor = SharedDr
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2943870680
+	clientObjectCRC = 2943870680,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_weapon_shared_wpn_experimental_disruptor, "object/draft_schematic/space/weapon/shared_wpn_experimental_disruptor.iff")
@@ -1752,7 +1790,8 @@ object_draft_schematic_space_weapon_shared_wpn_experimental_ioncannon = SharedDr
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 4282831554
+	clientObjectCRC = 4282831554,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_weapon_shared_wpn_experimental_ioncannon, "object/draft_schematic/space/weapon/shared_wpn_experimental_ioncannon.iff")
@@ -1796,7 +1835,8 @@ object_draft_schematic_space_weapon_shared_wpn_heavy_blaster = SharedDraftSchema
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2094697931
+	clientObjectCRC = 2094697931,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_weapon_shared_wpn_heavy_blaster, "object/draft_schematic/space/weapon/shared_wpn_heavy_blaster.iff")
@@ -1840,7 +1880,8 @@ object_draft_schematic_space_weapon_shared_wpn_heavy_blaster_green = SharedDraft
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 651808748
+	clientObjectCRC = 651808748,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_weapon_shared_wpn_heavy_blaster_green, "object/draft_schematic/space/weapon/shared_wpn_heavy_blaster_green.iff")
@@ -1884,7 +1925,8 @@ object_draft_schematic_space_weapon_shared_wpn_heavy_disruptor = SharedDraftSche
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1326996581
+	clientObjectCRC = 1326996581,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_weapon_shared_wpn_heavy_disruptor, "object/draft_schematic/space/weapon/shared_wpn_heavy_disruptor.iff")
@@ -1928,7 +1970,8 @@ object_draft_schematic_space_weapon_shared_wpn_heavy_ioncannon = SharedDraftSche
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 522807423
+	clientObjectCRC = 522807423,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_weapon_shared_wpn_heavy_ioncannon, "object/draft_schematic/space/weapon/shared_wpn_heavy_ioncannon.iff")
@@ -1972,7 +2015,8 @@ object_draft_schematic_space_weapon_shared_wpn_light_blaster = SharedDraftSchema
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 4046489612
+	clientObjectCRC = 4046489612,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_weapon_shared_wpn_light_blaster, "object/draft_schematic/space/weapon/shared_wpn_light_blaster.iff")
@@ -2016,7 +2060,8 @@ object_draft_schematic_space_weapon_shared_wpn_light_blaster_green = SharedDraft
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3388774737
+	clientObjectCRC = 3388774737,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_weapon_shared_wpn_light_blaster_green, "object/draft_schematic/space/weapon/shared_wpn_light_blaster_green.iff")
@@ -2060,7 +2105,8 @@ object_draft_schematic_space_weapon_shared_wpn_light_disruptor = SharedDraftSche
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1057347445
+	clientObjectCRC = 1057347445,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_weapon_shared_wpn_light_disruptor, "object/draft_schematic/space/weapon/shared_wpn_light_disruptor.iff")
@@ -2104,7 +2150,8 @@ object_draft_schematic_space_weapon_shared_wpn_light_ioncannon = SharedDraftSche
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1865737071
+	clientObjectCRC = 1865737071,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_weapon_shared_wpn_light_ioncannon, "object/draft_schematic/space/weapon/shared_wpn_light_ioncannon.iff")
@@ -2148,7 +2195,8 @@ object_draft_schematic_space_weapon_shared_wpn_medium_blaster = SharedDraftSchem
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3453442561
+	clientObjectCRC = 3453442561,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_weapon_shared_wpn_medium_blaster, "object/draft_schematic/space/weapon/shared_wpn_medium_blaster.iff")
@@ -2192,7 +2240,8 @@ object_draft_schematic_space_weapon_shared_wpn_medium_blaster_green = SharedDraf
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1698920791
+	clientObjectCRC = 1698920791,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_weapon_shared_wpn_medium_blaster_green, "object/draft_schematic/space/weapon/shared_wpn_medium_blaster_green.iff")
@@ -2236,7 +2285,8 @@ object_draft_schematic_space_weapon_shared_wpn_medium_disruptor = SharedDraftSch
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3380113095
+	clientObjectCRC = 3380113095,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_weapon_shared_wpn_medium_disruptor, "object/draft_schematic/space/weapon/shared_wpn_medium_disruptor.iff")
@@ -2280,7 +2330,8 @@ object_draft_schematic_space_weapon_shared_wpn_medium_ioncannon = SharedDraftSch
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2571721437
+	clientObjectCRC = 2571721437,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_weapon_shared_wpn_medium_ioncannon, "object/draft_schematic/space/weapon/shared_wpn_medium_ioncannon.iff")

@@ -90,7 +90,8 @@ object_tangible_lair_falumpaset_shared_lair_falumpaset = SharedTangibleObjectTem
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4013916432
+	clientObjectCRC = 4013916432,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_falumpaset_shared_lair_falumpaset, "object/tangible/lair/falumpaset/shared_lair_falumpaset.iff")
@@ -144,7 +145,8 @@ object_tangible_lair_falumpaset_shared_lair_falumpaset_forest = SharedTangibleOb
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3600280476
+	clientObjectCRC = 3600280476,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_falumpaset_shared_lair_falumpaset_forest, "object/tangible/lair/falumpaset/shared_lair_falumpaset_forest.iff")
@@ -198,7 +200,8 @@ object_tangible_lair_falumpaset_shared_lair_falumpaset_grassland = SharedTangibl
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3691403141
+	clientObjectCRC = 3691403141,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_falumpaset_shared_lair_falumpaset_grassland, "object/tangible/lair/falumpaset/shared_lair_falumpaset_grassland.iff")
@@ -252,7 +255,8 @@ object_tangible_lair_falumpaset_shared_lair_falumpaset_swamp = SharedTangibleObj
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 189239844
+	clientObjectCRC = 189239844,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_falumpaset_shared_lair_falumpaset_swamp, "object/tangible/lair/falumpaset/shared_lair_falumpaset_swamp.iff")

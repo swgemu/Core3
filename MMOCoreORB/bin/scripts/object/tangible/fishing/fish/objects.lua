@@ -90,7 +90,8 @@ object_tangible_fishing_fish_shared_blackfish = SharedTangibleObjectTemplate:new
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 408623623
+	clientObjectCRC = 408623623,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/fishing/fish/base/shared_fish_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_fishing_fish_shared_blackfish, "object/tangible/fishing/fish/shared_blackfish.iff")
@@ -144,7 +145,8 @@ object_tangible_fishing_fish_shared_blowfish = SharedTangibleObjectTemplate:new 
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2010790033
+	clientObjectCRC = 2010790033,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/fishing/fish/base/shared_fish_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_fishing_fish_shared_blowfish, "object/tangible/fishing/fish/shared_blowfish.iff")
@@ -198,7 +200,8 @@ object_tangible_fishing_fish_shared_bluefish = SharedTangibleObjectTemplate:new 
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2990319970
+	clientObjectCRC = 2990319970,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/fishing/fish/base/shared_fish_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_fishing_fish_shared_bluefish, "object/tangible/fishing/fish/shared_bluefish.iff")
@@ -252,7 +255,8 @@ object_tangible_fishing_fish_shared_faa = SharedTangibleObjectTemplate:new {
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2004254750
+	clientObjectCRC = 2004254750,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/fishing/fish/base/shared_fish_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_fishing_fish_shared_faa, "object/tangible/fishing/fish/shared_faa.iff")
@@ -306,7 +310,8 @@ object_tangible_fishing_fish_shared_fish_generic = SharedTangibleObjectTemplate:
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1061978988
+	clientObjectCRC = 1061978988,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/fishing/fish/base/shared_fish_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_fishing_fish_shared_fish_generic, "object/tangible/fishing/fish/shared_fish_generic.iff")
@@ -360,7 +365,8 @@ object_tangible_fishing_fish_shared_laa = SharedTangibleObjectTemplate:new {
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2598448090
+	clientObjectCRC = 2598448090,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/fishing/fish/base/shared_fish_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_fishing_fish_shared_laa, "object/tangible/fishing/fish/shared_laa.iff")
@@ -414,7 +420,8 @@ object_tangible_fishing_fish_shared_ray = SharedTangibleObjectTemplate:new {
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1789117227
+	clientObjectCRC = 1789117227,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/fishing/fish/base/shared_fish_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_fishing_fish_shared_ray, "object/tangible/fishing/fish/shared_ray.iff")
@@ -468,7 +475,8 @@ object_tangible_fishing_fish_shared_striped = SharedTangibleObjectTemplate:new {
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2919980156
+	clientObjectCRC = 2919980156,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/fishing/fish/base/shared_fish_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_fishing_fish_shared_striped, "object/tangible/fishing/fish/shared_striped.iff")

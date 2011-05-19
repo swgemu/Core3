@@ -90,7 +90,8 @@ object_tangible_lair_opee_sea_killer_shared_lair_opee_sea_killer = SharedTangibl
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 486155425
+	clientObjectCRC = 486155425,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_opee_sea_killer_shared_lair_opee_sea_killer, "object/tangible/lair/opee_sea_killer/shared_lair_opee_sea_killer.iff")
@@ -144,7 +145,8 @@ object_tangible_lair_opee_sea_killer_shared_lair_opee_sea_killer_underwater = Sh
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 662717072
+	clientObjectCRC = 662717072,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_opee_sea_killer_shared_lair_opee_sea_killer_underwater, "object/tangible/lair/opee_sea_killer/shared_lair_opee_sea_killer_underwater.iff")

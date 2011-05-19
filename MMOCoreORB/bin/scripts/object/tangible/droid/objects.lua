@@ -90,7 +90,8 @@ object_tangible_droid_shared_droid_space_memory_module_1 = SharedTangibleObjectT
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 240821599
+	clientObjectCRC = 240821599,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/droid/shared_droid_space_memory_module_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_droid_shared_droid_space_memory_module_1, "object/tangible/droid/shared_droid_space_memory_module_1.iff")
@@ -144,7 +145,8 @@ object_tangible_droid_shared_droid_space_memory_module_base = SharedTangibleObje
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2856908563
+	clientObjectCRC = 2856908563,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_droid_shared_droid_space_memory_module_base, "object/tangible/droid/shared_droid_space_memory_module_base.iff")
@@ -198,7 +200,8 @@ object_tangible_droid_shared_navicomputer_1 = SharedTangibleObjectTemplate:new {
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1883811803
+	clientObjectCRC = 1883811803,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/droid/shared_navicomputer_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_droid_shared_navicomputer_1, "object/tangible/droid/shared_navicomputer_1.iff")
@@ -252,7 +255,8 @@ object_tangible_droid_shared_navicomputer_2 = SharedTangibleObjectTemplate:new {
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2875131724
+	clientObjectCRC = 2875131724,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/droid/shared_navicomputer_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_droid_shared_navicomputer_2, "object/tangible/droid/shared_navicomputer_2.iff")
@@ -306,7 +310,8 @@ object_tangible_droid_shared_navicomputer_3 = SharedTangibleObjectTemplate:new {
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3797049537
+	clientObjectCRC = 3797049537,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/droid/shared_navicomputer_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_droid_shared_navicomputer_3, "object/tangible/droid/shared_navicomputer_3.iff")
@@ -360,7 +365,8 @@ object_tangible_droid_shared_navicomputer_4 = SharedTangibleObjectTemplate:new {
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 431049685
+	clientObjectCRC = 431049685,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/droid/shared_navicomputer_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_droid_shared_navicomputer_4, "object/tangible/droid/shared_navicomputer_4.iff")
@@ -414,7 +420,8 @@ object_tangible_droid_shared_navicomputer_5 = SharedTangibleObjectTemplate:new {
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1354509400
+	clientObjectCRC = 1354509400,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/droid/shared_navicomputer_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_droid_shared_navicomputer_5, "object/tangible/droid/shared_navicomputer_5.iff")
@@ -468,7 +475,8 @@ object_tangible_droid_shared_navicomputer_6 = SharedTangibleObjectTemplate:new {
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2343273679
+	clientObjectCRC = 2343273679,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/droid/shared_navicomputer_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_droid_shared_navicomputer_6, "object/tangible/droid/shared_navicomputer_6.iff")
@@ -522,7 +530,8 @@ object_tangible_droid_shared_navicomputer_base = SharedTangibleObjectTemplate:ne
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3955479203
+	clientObjectCRC = 3955479203,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_droid_shared_navicomputer_base, "object/tangible/droid/shared_navicomputer_base.iff")

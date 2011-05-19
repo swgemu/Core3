@@ -94,7 +94,8 @@ object_weapon_melee_knife_shared_knife_dagger = SharedWeaponObjectTemplate:new {
 	weaponEffect = "bolt",
 	weaponEffectIndex = 0,
 
-	clientObjectCRC = 4040009714
+	clientObjectCRC = 4040009714,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/weapon/base/shared_base_weapon.iff", "object/weapon/melee/base/shared_base_melee.iff", "object/weapon/melee/sword/base/shared_sword_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_weapon_melee_knife_shared_knife_dagger, "object/weapon/melee/knife/shared_knife_dagger.iff")
@@ -152,7 +153,8 @@ object_weapon_melee_knife_shared_knife_donkuwah = SharedWeaponObjectTemplate:new
 	weaponEffect = "bolt",
 	weaponEffectIndex = 0,
 
-	clientObjectCRC = 532251396
+	clientObjectCRC = 532251396,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/weapon/base/shared_base_weapon.iff", "object/weapon/melee/base/shared_base_melee.iff", "object/weapon/melee/sword/base/shared_sword_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_weapon_melee_knife_shared_knife_donkuwah, "object/weapon/melee/knife/shared_knife_donkuwah.iff")
@@ -210,7 +212,8 @@ object_weapon_melee_knife_shared_knife_janta = SharedWeaponObjectTemplate:new {
 	weaponEffect = "bolt",
 	weaponEffectIndex = 0,
 
-	clientObjectCRC = 2255187692
+	clientObjectCRC = 2255187692,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/weapon/base/shared_base_weapon.iff", "object/weapon/melee/base/shared_base_melee.iff", "object/weapon/melee/sword/base/shared_sword_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_weapon_melee_knife_shared_knife_janta, "object/weapon/melee/knife/shared_knife_janta.iff")
@@ -268,7 +271,8 @@ object_weapon_melee_knife_shared_knife_stone = SharedWeaponObjectTemplate:new {
 	weaponEffect = "bolt",
 	weaponEffectIndex = 0,
 
-	clientObjectCRC = 1218550121
+	clientObjectCRC = 1218550121,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/weapon/base/shared_base_weapon.iff", "object/weapon/melee/base/shared_base_melee.iff", "object/weapon/melee/sword/base/shared_sword_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_weapon_melee_knife_shared_knife_stone, "object/weapon/melee/knife/shared_knife_stone.iff")
@@ -326,7 +330,8 @@ object_weapon_melee_knife_shared_knife_stone_noob = SharedWeaponObjectTemplate:n
 	weaponEffect = "bolt",
 	weaponEffectIndex = 0,
 
-	clientObjectCRC = 1606995338
+	clientObjectCRC = 1606995338,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/weapon/base/shared_base_weapon.iff", "object/weapon/melee/base/shared_base_melee.iff", "object/weapon/melee/sword/base/shared_sword_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_weapon_melee_knife_shared_knife_stone_noob, "object/weapon/melee/knife/shared_knife_stone_noob.iff")
@@ -384,7 +389,8 @@ object_weapon_melee_knife_shared_knife_survival = SharedWeaponObjectTemplate:new
 	weaponEffect = "bolt",
 	weaponEffectIndex = 0,
 
-	clientObjectCRC = 530531036
+	clientObjectCRC = 530531036,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/weapon/base/shared_base_weapon.iff", "object/weapon/melee/base/shared_base_melee.iff", "object/weapon/melee/sword/base/shared_sword_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_weapon_melee_knife_shared_knife_survival, "object/weapon/melee/knife/shared_knife_survival.iff")
@@ -442,7 +448,8 @@ object_weapon_melee_knife_shared_knife_vibroblade = SharedWeaponObjectTemplate:n
 	weaponEffect = "bolt",
 	weaponEffectIndex = 0,
 
-	clientObjectCRC = 4211610935
+	clientObjectCRC = 4211610935,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/weapon/base/shared_base_weapon.iff", "object/weapon/melee/base/shared_base_melee.iff", "object/weapon/melee/sword/base/shared_sword_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_weapon_melee_knife_shared_knife_vibroblade, "object/weapon/melee/knife/shared_knife_vibroblade.iff")
@@ -500,7 +507,8 @@ object_weapon_melee_knife_shared_knife_vibroblade_quest = SharedWeaponObjectTemp
 	weaponEffect = "bolt",
 	weaponEffectIndex = 0,
 
-	clientObjectCRC = 3270607602
+	clientObjectCRC = 3270607602,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/weapon/base/shared_base_weapon.iff", "object/weapon/melee/base/shared_base_melee.iff", "object/weapon/melee/sword/base/shared_sword_base.iff", "object/weapon/melee/knife/shared_knife_vibroblade.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_weapon_melee_knife_shared_knife_vibroblade_quest, "object/weapon/melee/knife/shared_knife_vibroblade_quest.iff")

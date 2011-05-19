@@ -90,7 +90,8 @@ object_tangible_quest_quest_start_shared_ep3_clone_relics_jedi_starfighter = Sha
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 186615068
+	clientObjectCRC = 186615068,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_quest_quest_start_shared_ep3_clone_relics_jedi_starfighter, "object/tangible/quest/quest_start/shared_ep3_clone_relics_jedi_starfighter.iff")
@@ -144,7 +145,8 @@ object_tangible_quest_quest_start_shared_ep3_clone_relics_jedi_starfighter_conta
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2168280310
+	clientObjectCRC = 2168280310,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/container/base/shared_base_container.iff", "object/tangible/container/base/shared_base_container_volume.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_quest_quest_start_shared_ep3_clone_relics_jedi_starfighter_container, "object/tangible/quest/quest_start/shared_ep3_clone_relics_jedi_starfighter_container.iff")
@@ -198,7 +200,8 @@ object_tangible_quest_quest_start_shared_ep3_clone_relics_nym_starmap = SharedTa
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3381934181
+	clientObjectCRC = 3381934181,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_quest_quest_start_shared_ep3_clone_relics_nym_starmap, "object/tangible/quest/quest_start/shared_ep3_clone_relics_nym_starmap.iff")
@@ -252,7 +255,8 @@ object_tangible_quest_quest_start_shared_ep3_clone_relics_nym_starmap_container 
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4074372055
+	clientObjectCRC = 4074372055,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/container/base/shared_base_container.iff", "object/tangible/container/base/shared_base_container_volume.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_quest_quest_start_shared_ep3_clone_relics_nym_starmap_container, "object/tangible/quest/quest_start/shared_ep3_clone_relics_nym_starmap_container.iff")

@@ -90,7 +90,8 @@ object_tangible_lair_torton_shared_lair_torton = SharedTangibleObjectTemplate:ne
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1086986057
+	clientObjectCRC = 1086986057,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_torton_shared_lair_torton, "object/tangible/lair/torton/shared_lair_torton.iff")
@@ -144,7 +145,8 @@ object_tangible_lair_torton_shared_lair_torton_grassland = SharedTangibleObjectT
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2619306263
+	clientObjectCRC = 2619306263,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_torton_shared_lair_torton_grassland, "object/tangible/lair/torton/shared_lair_torton_grassland.iff")

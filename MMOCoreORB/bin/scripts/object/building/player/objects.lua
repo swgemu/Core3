@@ -90,7 +90,8 @@ object_building_player_shared_construction_structure = SharedTangibleObjectTempl
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4003827328
+	clientObjectCRC = 4003827328,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_player_shared_construction_structure, "object/building/player/shared_construction_structure.iff")
@@ -144,7 +145,8 @@ object_building_player_shared_player_garage_corellia_style_01 = SharedInstallati
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3533693421
+	clientObjectCRC = 3533693421,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_player_shared_player_garage_corellia_style_01, "object/building/player/shared_player_garage_corellia_style_01.iff")
@@ -198,7 +200,8 @@ object_building_player_shared_player_garage_naboo_style_01 = SharedInstallationO
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2162635930
+	clientObjectCRC = 2162635930,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_player_shared_player_garage_naboo_style_01, "object/building/player/shared_player_garage_naboo_style_01.iff")
@@ -252,7 +255,8 @@ object_building_player_shared_player_garage_tatooine_style_01 = SharedInstallati
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2075679353
+	clientObjectCRC = 2075679353,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_player_shared_player_garage_tatooine_style_01, "object/building/player/shared_player_garage_tatooine_style_01.iff")
@@ -309,7 +313,8 @@ object_building_player_shared_player_guildhall_corellia_style_01 = SharedBuildin
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1038468412
+	clientObjectCRC = 1038468412,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_player_building.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_player_shared_player_guildhall_corellia_style_01, "object/building/player/shared_player_guildhall_corellia_style_01.iff")
@@ -366,7 +371,8 @@ object_building_player_shared_player_guildhall_generic_style_01 = SharedBuilding
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1861851362
+	clientObjectCRC = 1861851362,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_player_building.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_player_shared_player_guildhall_generic_style_01, "object/building/player/shared_player_guildhall_generic_style_01.iff")
@@ -423,7 +429,8 @@ object_building_player_shared_player_guildhall_naboo_style_01 = SharedBuildingOb
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3197026082
+	clientObjectCRC = 3197026082,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_player_building.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_player_shared_player_guildhall_naboo_style_01, "object/building/player/shared_player_guildhall_naboo_style_01.iff")
@@ -480,7 +487,8 @@ object_building_player_shared_player_guildhall_tatooine_style_01 = SharedBuildin
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2495774376
+	clientObjectCRC = 2495774376,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_player_building.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_player_shared_player_guildhall_tatooine_style_01, "object/building/player/shared_player_guildhall_tatooine_style_01.iff")
@@ -537,7 +545,8 @@ object_building_player_shared_player_guildhall_tatooine_style_02 = SharedBuildin
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1339414079
+	clientObjectCRC = 1339414079,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_player_building.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_player_shared_player_guildhall_tatooine_style_02, "object/building/player/shared_player_guildhall_tatooine_style_02.iff")
@@ -594,7 +603,8 @@ object_building_player_shared_player_house_corellia_large_style_01 = SharedBuild
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2427663942
+	clientObjectCRC = 2427663942,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_player_building.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_player_shared_player_house_corellia_large_style_01, "object/building/player/shared_player_house_corellia_large_style_01.iff")
@@ -651,7 +661,8 @@ object_building_player_shared_player_house_corellia_large_style_02 = SharedBuild
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1269079761
+	clientObjectCRC = 1269079761,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_player_building.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_player_shared_player_house_corellia_large_style_02, "object/building/player/shared_player_house_corellia_large_style_02.iff")
@@ -708,7 +719,8 @@ object_building_player_shared_player_house_corellia_medium_style_01 = SharedBuil
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4245590836
+	clientObjectCRC = 4245590836,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_player_building.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_player_shared_player_house_corellia_medium_style_01, "object/building/player/shared_player_house_corellia_medium_style_01.iff")
@@ -765,7 +777,8 @@ object_building_player_shared_player_house_corellia_medium_style_02 = SharedBuil
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 639187875
+	clientObjectCRC = 639187875,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_player_building.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_player_shared_player_house_corellia_medium_style_02, "object/building/player/shared_player_house_corellia_medium_style_02.iff")
@@ -822,7 +835,8 @@ object_building_player_shared_player_house_corellia_small_style_01 = SharedBuild
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2963259888
+	clientObjectCRC = 2963259888,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_player_building.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_player_shared_player_house_corellia_small_style_01, "object/building/player/shared_player_house_corellia_small_style_01.iff")
@@ -879,7 +893,8 @@ object_building_player_shared_player_house_corellia_small_style_01_floorplan_02 
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4102677864
+	clientObjectCRC = 4102677864,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_player_building.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_player_shared_player_house_corellia_small_style_01_floorplan_02, "object/building/player/shared_player_house_corellia_small_style_01_floorplan_02.iff")
@@ -936,7 +951,8 @@ object_building_player_shared_player_house_corellia_small_style_02 = SharedBuild
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1804101991
+	clientObjectCRC = 1804101991,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_player_building.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_player_shared_player_house_corellia_small_style_02, "object/building/player/shared_player_house_corellia_small_style_02.iff")
@@ -993,7 +1009,8 @@ object_building_player_shared_player_house_corellia_small_style_02_floorplan_02 
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1944093248
+	clientObjectCRC = 1944093248,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_player_building.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_player_shared_player_house_corellia_small_style_02_floorplan_02, "object/building/player/shared_player_house_corellia_small_style_02_floorplan_02.iff")
@@ -1050,7 +1067,8 @@ object_building_player_shared_player_house_generic_large_style_01 = SharedBuildi
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2966981875
+	clientObjectCRC = 2966981875,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_player_building.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_player_shared_player_house_generic_large_style_01, "object/building/player/shared_player_house_generic_large_style_01.iff")
@@ -1107,7 +1125,8 @@ object_building_player_shared_player_house_generic_large_style_02 = SharedBuildi
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1808737380
+	clientObjectCRC = 1808737380,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_player_building.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_player_shared_player_house_generic_large_style_02, "object/building/player/shared_player_house_generic_large_style_02.iff")
@@ -1164,7 +1183,8 @@ object_building_player_shared_player_house_generic_medium_style_01 = SharedBuild
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 244814036
+	clientObjectCRC = 244814036,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_player_building.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_player_shared_player_house_generic_medium_style_01, "object/building/player/shared_player_house_generic_medium_style_01.iff")
@@ -1221,7 +1241,8 @@ object_building_player_shared_player_house_generic_medium_style_02 = SharedBuild
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3581950019
+	clientObjectCRC = 3581950019,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_player_building.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_player_shared_player_house_generic_medium_style_02, "object/building/player/shared_player_house_generic_medium_style_02.iff")
@@ -1278,7 +1299,8 @@ object_building_player_shared_player_house_generic_small_style_01 = SharedBuildi
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2431941445
+	clientObjectCRC = 2431941445,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_player_building.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_player_shared_player_house_generic_small_style_01, "object/building/player/shared_player_house_generic_small_style_01.iff")
@@ -1335,7 +1357,8 @@ object_building_player_shared_player_house_generic_small_style_01_floorplan_02 =
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4015966289
+	clientObjectCRC = 4015966289,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_player_building.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_player_shared_player_house_generic_small_style_01_floorplan_02, "object/building/player/shared_player_house_generic_small_style_01_floorplan_02.iff")
@@ -1392,7 +1415,8 @@ object_building_player_shared_player_house_generic_small_style_02 = SharedBuildi
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1273222098
+	clientObjectCRC = 1273222098,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_player_building.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_player_shared_player_house_generic_small_style_02, "object/building/player/shared_player_house_generic_small_style_02.iff")
@@ -1449,7 +1473,8 @@ object_building_player_shared_player_house_generic_small_style_02_floorplan_02 =
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1748479865
+	clientObjectCRC = 1748479865,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_player_building.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_player_shared_player_house_generic_small_style_02_floorplan_02, "object/building/player/shared_player_house_generic_small_style_02_floorplan_02.iff")
@@ -1506,7 +1531,8 @@ object_building_player_shared_player_house_naboo_large_style_01 = SharedBuilding
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1926074883
+	clientObjectCRC = 1926074883,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_player_building.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_player_shared_player_house_naboo_large_style_01, "object/building/player/shared_player_house_naboo_large_style_01.iff")
@@ -1563,7 +1589,8 @@ object_building_player_shared_player_house_naboo_medium_style_01 = SharedBuildin
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1333906211
+	clientObjectCRC = 1333906211,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_player_building.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_player_shared_player_house_naboo_medium_style_01, "object/building/player/shared_player_house_naboo_medium_style_01.iff")
@@ -1620,7 +1647,8 @@ object_building_player_shared_player_house_naboo_small_style_01 = SharedBuilding
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1390503349
+	clientObjectCRC = 1390503349,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_player_building.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_player_shared_player_house_naboo_small_style_01, "object/building/player/shared_player_house_naboo_small_style_01.iff")
@@ -1677,7 +1705,8 @@ object_building_player_shared_player_house_naboo_small_style_02 = SharedBuilding
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2314652962
+	clientObjectCRC = 2314652962,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_player_building.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_player_shared_player_house_naboo_small_style_02, "object/building/player/shared_player_house_naboo_small_style_02.iff")
@@ -1734,7 +1763,8 @@ object_building_player_shared_player_house_tatooine_large_style_01 = SharedBuild
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3018624136
+	clientObjectCRC = 3018624136,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_player_building.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_player_shared_player_house_tatooine_large_style_01, "object/building/player/shared_player_house_tatooine_large_style_01.iff")
@@ -1791,7 +1821,8 @@ object_building_player_shared_player_house_tatooine_medium_style_01 = SharedBuil
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 936693005
+	clientObjectCRC = 936693005,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_player_building.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_player_shared_player_house_tatooine_medium_style_01, "object/building/player/shared_player_house_tatooine_medium_style_01.iff")
@@ -1848,7 +1879,8 @@ object_building_player_shared_player_house_tatooine_small_style_01 = SharedBuild
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2478865214
+	clientObjectCRC = 2478865214,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_player_building.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_player_shared_player_house_tatooine_small_style_01, "object/building/player/shared_player_house_tatooine_small_style_01.iff")
@@ -1905,7 +1937,8 @@ object_building_player_shared_player_house_tatooine_small_style_02 = SharedBuild
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1222103977
+	clientObjectCRC = 1222103977,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_player_building.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_player_shared_player_house_tatooine_small_style_02, "object/building/player/shared_player_house_tatooine_small_style_02.iff")
@@ -1962,7 +1995,8 @@ object_building_player_shared_player_merchant_tent_style_01 = SharedBuildingObje
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2671747310
+	clientObjectCRC = 2671747310,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_player_building.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_player_shared_player_merchant_tent_style_01, "object/building/player/shared_player_merchant_tent_style_01.iff")
@@ -2019,7 +2053,8 @@ object_building_player_shared_player_merchant_tent_style_02 = SharedBuildingObje
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1143474297
+	clientObjectCRC = 1143474297,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_player_building.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_player_shared_player_merchant_tent_style_02, "object/building/player/shared_player_merchant_tent_style_02.iff")
@@ -2076,7 +2111,8 @@ object_building_player_shared_player_merchant_tent_style_03 = SharedBuildingObje
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 220557300
+	clientObjectCRC = 220557300,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_player_building.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_player_shared_player_merchant_tent_style_03, "object/building/player/shared_player_merchant_tent_style_03.iff")

@@ -94,7 +94,8 @@ object_weapon_ranged_droid_shared_droid_astromech_ranged = SharedWeaponObjectTem
 	weaponEffect = "rocket",
 	weaponEffectIndex = 3,
 
-	clientObjectCRC = 1112246409
+	clientObjectCRC = 1112246409,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/weapon/base/shared_base_weapon.iff", "object/weapon/ranged/base/shared_base_ranged_weapon.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_weapon_ranged_droid_shared_droid_astromech_ranged, "object/weapon/ranged/droid/shared_droid_astromech_ranged.iff")
@@ -152,7 +153,8 @@ object_weapon_ranged_droid_shared_droid_droideka_ranged = SharedWeaponObjectTemp
 	weaponEffect = "bolt",
 	weaponEffectIndex = 0,
 
-	clientObjectCRC = 3685860278
+	clientObjectCRC = 3685860278,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/weapon/base/shared_base_weapon.iff", "object/weapon/ranged/base/shared_base_ranged_weapon.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_weapon_ranged_droid_shared_droid_droideka_ranged, "object/weapon/ranged/droid/shared_droid_droideka_ranged.iff")
@@ -210,7 +212,8 @@ object_weapon_ranged_droid_shared_droid_probot_ranged = SharedWeaponObjectTempla
 	weaponEffect = "spit",
 	weaponEffectIndex = 12,
 
-	clientObjectCRC = 380494511
+	clientObjectCRC = 380494511,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/weapon/base/shared_base_weapon.iff", "object/weapon/ranged/base/shared_base_ranged_weapon.iff", "object/weapon/ranged/creature/base/shared_creature_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_weapon_ranged_droid_shared_droid_probot_ranged, "object/weapon/ranged/droid/shared_droid_probot_ranged.iff")

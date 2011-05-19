@@ -90,7 +90,8 @@ object_tangible_planet_map_location_shared_map_location_base = SharedTangibleObj
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 60452333
+	clientObjectCRC = 60452333,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_planet_map_location_shared_map_location_base, "object/tangible/planet_map_location/shared_map_location_base.iff")

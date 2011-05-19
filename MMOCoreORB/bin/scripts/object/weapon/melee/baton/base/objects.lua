@@ -94,7 +94,8 @@ object_weapon_melee_baton_base_shared_baton_base = SharedWeaponObjectTemplate:ne
 	weaponEffect = "bolt",
 	weaponEffectIndex = 0,
 
-	clientObjectCRC = 3732005131
+	clientObjectCRC = 3732005131,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/weapon/base/shared_base_weapon.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_weapon_melee_baton_base_shared_baton_base, "object/weapon/melee/baton/base/shared_baton_base.iff")

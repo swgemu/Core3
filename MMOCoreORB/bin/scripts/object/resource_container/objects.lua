@@ -90,7 +90,8 @@ object_resource_container_shared_resource_container_energy_gas = SharedResourceC
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2640304325
+	clientObjectCRC = 2640304325,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/resource_container/base/shared_base_resource_container.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_resource_container_shared_resource_container_energy_gas, "object/resource_container/shared_resource_container_energy_gas.iff")
@@ -144,7 +145,8 @@ object_resource_container_shared_resource_container_energy_gas_lg = SharedResour
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1023265709
+	clientObjectCRC = 1023265709,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/resource_container/base/shared_base_resource_container.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_resource_container_shared_resource_container_energy_gas_lg, "object/resource_container/shared_resource_container_energy_gas_lg.iff")
@@ -198,7 +200,8 @@ object_resource_container_shared_resource_container_energy_liquid = SharedResour
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 505491474
+	clientObjectCRC = 505491474,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/resource_container/base/shared_base_resource_container.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_resource_container_shared_resource_container_energy_liquid, "object/resource_container/shared_resource_container_energy_liquid.iff")
@@ -252,7 +255,8 @@ object_resource_container_shared_resource_container_energy_liquid_lg = SharedRes
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4165569512
+	clientObjectCRC = 4165569512,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/resource_container/base/shared_base_resource_container.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_resource_container_shared_resource_container_energy_liquid_lg, "object/resource_container/shared_resource_container_energy_liquid_lg.iff")
@@ -306,7 +310,8 @@ object_resource_container_shared_resource_container_energy_radioactive = SharedR
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3244320243
+	clientObjectCRC = 3244320243,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/resource_container/base/shared_base_resource_container.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_resource_container_shared_resource_container_energy_radioactive, "object/resource_container/shared_resource_container_energy_radioactive.iff")
@@ -360,7 +365,8 @@ object_resource_container_shared_resource_container_energy_radioactive_lg = Shar
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1769828233
+	clientObjectCRC = 1769828233,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/resource_container/base/shared_base_resource_container.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_resource_container_shared_resource_container_energy_radioactive_lg, "object/resource_container/shared_resource_container_energy_radioactive_lg.iff")
@@ -414,7 +420,8 @@ object_resource_container_shared_resource_container_energy_solid = SharedResourc
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3912559902
+	clientObjectCRC = 3912559902,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/resource_container/base/shared_base_resource_container.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_resource_container_shared_resource_container_energy_solid, "object/resource_container/shared_resource_container_energy_solid.iff")
@@ -468,7 +475,8 @@ object_resource_container_shared_resource_container_energy_solid_lg = SharedReso
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3935977713
+	clientObjectCRC = 3935977713,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/resource_container/base/shared_base_resource_container.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_resource_container_shared_resource_container_energy_solid_lg, "object/resource_container/shared_resource_container_energy_solid_lg.iff")
@@ -522,7 +530,8 @@ object_resource_container_shared_resource_container_inorganic_bottle_water = Sha
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 125850083
+	clientObjectCRC = 125850083,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/resource_container/base/shared_base_resource_container.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_resource_container_shared_resource_container_inorganic_bottle_water, "object/resource_container/shared_resource_container_inorganic_bottle_water.iff")
@@ -576,7 +585,8 @@ object_resource_container_shared_resource_container_inorganic_chemicals = Shared
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 422061124
+	clientObjectCRC = 422061124,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/resource_container/base/shared_base_resource_container.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_resource_container_shared_resource_container_inorganic_chemicals, "object/resource_container/shared_resource_container_inorganic_chemicals.iff")
@@ -630,7 +640,8 @@ object_resource_container_shared_resource_container_inorganic_chemicals_lg = Sha
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2886132575
+	clientObjectCRC = 2886132575,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/resource_container/base/shared_base_resource_container.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_resource_container_shared_resource_container_inorganic_chemicals_lg, "object/resource_container/shared_resource_container_inorganic_chemicals_lg.iff")
@@ -684,7 +695,8 @@ object_resource_container_shared_resource_container_inorganic_gas = SharedResour
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2204725480
+	clientObjectCRC = 2204725480,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/resource_container/base/shared_base_resource_container.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_resource_container_shared_resource_container_inorganic_gas, "object/resource_container/shared_resource_container_inorganic_gas.iff")
@@ -738,7 +750,8 @@ object_resource_container_shared_resource_container_inorganic_gas_lg = SharedRes
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 73541074
+	clientObjectCRC = 73541074,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/resource_container/base/shared_base_resource_container.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_resource_container_shared_resource_container_inorganic_gas_lg, "object/resource_container/shared_resource_container_inorganic_gas_lg.iff")
@@ -792,7 +805,8 @@ object_resource_container_shared_resource_container_inorganic_minerals = SharedR
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2295225965
+	clientObjectCRC = 2295225965,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/resource_container/base/shared_base_resource_container.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_resource_container_shared_resource_container_inorganic_minerals, "object/resource_container/shared_resource_container_inorganic_minerals.iff")
@@ -846,7 +860,8 @@ object_resource_container_shared_resource_container_inorganic_minerals_lg = Shar
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3162714701
+	clientObjectCRC = 3162714701,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/resource_container/base/shared_base_resource_container.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_resource_container_shared_resource_container_inorganic_minerals_lg, "object/resource_container/shared_resource_container_inorganic_minerals_lg.iff")
@@ -900,7 +915,8 @@ object_resource_container_shared_resource_container_inorganic_petrochem_liquid =
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3404372557
+	clientObjectCRC = 3404372557,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/resource_container/base/shared_base_resource_container.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_resource_container_shared_resource_container_inorganic_petrochem_liquid, "object/resource_container/shared_resource_container_inorganic_petrochem_liquid.iff")
@@ -954,7 +970,8 @@ object_resource_container_shared_resource_container_inorganic_water = SharedReso
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 759021360
+	clientObjectCRC = 759021360,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/resource_container/base/shared_base_resource_container.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_resource_container_shared_resource_container_inorganic_water, "object/resource_container/shared_resource_container_inorganic_water.iff")
@@ -1008,7 +1025,8 @@ object_resource_container_shared_resource_container_inorganic_water_lg = SharedR
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1891729994
+	clientObjectCRC = 1891729994,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/resource_container/base/shared_base_resource_container.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_resource_container_shared_resource_container_inorganic_water_lg, "object/resource_container/shared_resource_container_inorganic_water_lg.iff")
@@ -1062,7 +1080,8 @@ object_resource_container_shared_resource_container_organic_bean = SharedResourc
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4263974406
+	clientObjectCRC = 4263974406,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/resource_container/base/shared_base_resource_container.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_resource_container_shared_resource_container_organic_bean, "object/resource_container/shared_resource_container_organic_bean.iff")
@@ -1116,7 +1135,8 @@ object_resource_container_shared_resource_container_organic_bottle_milk = Shared
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3072418635
+	clientObjectCRC = 3072418635,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/resource_container/base/shared_base_resource_container.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_resource_container_shared_resource_container_organic_bottle_milk, "object/resource_container/shared_resource_container_organic_bottle_milk.iff")
@@ -1170,7 +1190,8 @@ object_resource_container_shared_resource_container_organic_bristley_hide = Shar
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2077617394
+	clientObjectCRC = 2077617394,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/resource_container/base/shared_base_resource_container.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_resource_container_shared_resource_container_organic_bristley_hide, "object/resource_container/shared_resource_container_organic_bristley_hide.iff")
@@ -1224,7 +1245,8 @@ object_resource_container_shared_resource_container_organic_corn = SharedResourc
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3542662327
+	clientObjectCRC = 3542662327,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/resource_container/base/shared_base_resource_container.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_resource_container_shared_resource_container_organic_corn, "object/resource_container/shared_resource_container_organic_corn.iff")
@@ -1278,7 +1300,8 @@ object_resource_container_shared_resource_container_organic_food = SharedResourc
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 699752337
+	clientObjectCRC = 699752337,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/resource_container/base/shared_base_resource_container.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_resource_container_shared_resource_container_organic_food, "object/resource_container/shared_resource_container_organic_food.iff")
@@ -1332,7 +1355,8 @@ object_resource_container_shared_resource_container_organic_food_lg = SharedReso
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 466521573
+	clientObjectCRC = 466521573,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/resource_container/base/shared_base_resource_container.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_resource_container_shared_resource_container_organic_food_lg, "object/resource_container/shared_resource_container_organic_food_lg.iff")
@@ -1386,7 +1410,8 @@ object_resource_container_shared_resource_container_organic_fruit = SharedResour
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1967870892
+	clientObjectCRC = 1967870892,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/resource_container/base/shared_base_resource_container.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_resource_container_shared_resource_container_organic_fruit, "object/resource_container/shared_resource_container_organic_fruit.iff")
@@ -1440,7 +1465,8 @@ object_resource_container_shared_resource_container_organic_fungi = SharedResour
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2670708128
+	clientObjectCRC = 2670708128,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/resource_container/base/shared_base_resource_container.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_resource_container_shared_resource_container_organic_fungi, "object/resource_container/shared_resource_container_organic_fungi.iff")
@@ -1494,7 +1520,8 @@ object_resource_container_shared_resource_container_organic_green_vegetables = S
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2909750726
+	clientObjectCRC = 2909750726,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/resource_container/base/shared_base_resource_container.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_resource_container_shared_resource_container_organic_green_vegetables, "object/resource_container/shared_resource_container_organic_green_vegetables.iff")
@@ -1548,7 +1575,8 @@ object_resource_container_shared_resource_container_organic_hide = SharedResourc
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 976954288
+	clientObjectCRC = 976954288,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/resource_container/base/shared_base_resource_container.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_resource_container_shared_resource_container_organic_hide, "object/resource_container/shared_resource_container_organic_hide.iff")
@@ -1602,7 +1630,8 @@ object_resource_container_shared_resource_container_organic_hide_lg = SharedReso
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 495391475
+	clientObjectCRC = 495391475,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/resource_container/base/shared_base_resource_container.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_resource_container_shared_resource_container_organic_hide_lg, "object/resource_container/shared_resource_container_organic_hide_lg.iff")
@@ -1656,7 +1685,8 @@ object_resource_container_shared_resource_container_organic_leathery_hide = Shar
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2514079067
+	clientObjectCRC = 2514079067,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/resource_container/base/shared_base_resource_container.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_resource_container_shared_resource_container_organic_leathery_hide, "object/resource_container/shared_resource_container_organic_leathery_hide.iff")
@@ -1710,7 +1740,8 @@ object_resource_container_shared_resource_container_organic_oats = SharedResourc
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1222368053
+	clientObjectCRC = 1222368053,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/resource_container/base/shared_base_resource_container.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_resource_container_shared_resource_container_organic_oats, "object/resource_container/shared_resource_container_organic_oats.iff")
@@ -1764,7 +1795,8 @@ object_resource_container_shared_resource_container_organic_rice = SharedResourc
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3052716729
+	clientObjectCRC = 3052716729,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/resource_container/base/shared_base_resource_container.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_resource_container_shared_resource_container_organic_rice, "object/resource_container/shared_resource_container_organic_rice.iff")
@@ -1818,7 +1850,8 @@ object_resource_container_shared_resource_container_organic_scaley_hide = Shared
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 355985042
+	clientObjectCRC = 355985042,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/resource_container/base/shared_base_resource_container.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_resource_container_shared_resource_container_organic_scaley_hide, "object/resource_container/shared_resource_container_organic_scaley_hide.iff")
@@ -1872,7 +1905,8 @@ object_resource_container_shared_resource_container_organic_structure = SharedRe
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1326787440
+	clientObjectCRC = 1326787440,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/resource_container/base/shared_base_resource_container.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_resource_container_shared_resource_container_organic_structure, "object/resource_container/shared_resource_container_organic_structure.iff")
@@ -1926,7 +1960,8 @@ object_resource_container_shared_resource_container_organic_structure_lg = Share
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3803992658
+	clientObjectCRC = 3803992658,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/resource_container/base/shared_base_resource_container.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_resource_container_shared_resource_container_organic_structure_lg, "object/resource_container/shared_resource_container_organic_structure_lg.iff")
@@ -1980,7 +2015,8 @@ object_resource_container_shared_resource_container_organic_tuber = SharedResour
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 41151102
+	clientObjectCRC = 41151102,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/resource_container/base/shared_base_resource_container.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_resource_container_shared_resource_container_organic_tuber, "object/resource_container/shared_resource_container_organic_tuber.iff")
@@ -2034,7 +2070,8 @@ object_resource_container_shared_resource_container_organic_wheat = SharedResour
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1848360314
+	clientObjectCRC = 1848360314,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/resource_container/base/shared_base_resource_container.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_resource_container_shared_resource_container_organic_wheat, "object/resource_container/shared_resource_container_organic_wheat.iff")
@@ -2088,7 +2125,8 @@ object_resource_container_shared_resource_container_organic_wooly_hide = SharedR
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3648978698
+	clientObjectCRC = 3648978698,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/resource_container/base/shared_base_resource_container.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_resource_container_shared_resource_container_organic_wooly_hide, "object/resource_container/shared_resource_container_organic_wooly_hide.iff")
@@ -2142,7 +2180,8 @@ object_resource_container_shared_simple = SharedResourceContainerObjectTemplate:
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4049825392
+	clientObjectCRC = 4049825392,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/resource_container/base/shared_base_resource_container.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_resource_container_shared_simple, "object/resource_container/shared_simple.iff")

@@ -80,7 +80,8 @@ object_token_shared_token = SharedTokenObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 4231471595
+	clientObjectCRC = 4231471595,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/token/base/shared_base_token.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_token_shared_token, "object/token/shared_token.iff")

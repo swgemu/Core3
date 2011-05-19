@@ -80,7 +80,8 @@ object_draft_schematic_structure_shared_corellia_house_guild_hall = SharedDraftS
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3665444927
+	clientObjectCRC = 3665444927,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_structure_shared_corellia_house_guild_hall, "object/draft_schematic/structure/shared_corellia_house_guild_hall.iff")
@@ -124,7 +125,8 @@ object_draft_schematic_structure_shared_corellia_house_player_large = SharedDraf
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3370388037
+	clientObjectCRC = 3370388037,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_structure_shared_corellia_house_player_large, "object/draft_schematic/structure/shared_corellia_house_player_large.iff")
@@ -168,7 +170,8 @@ object_draft_schematic_structure_shared_corellia_house_player_large_style_02 = S
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3853219478
+	clientObjectCRC = 3853219478,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_structure_shared_corellia_house_player_large_style_02, "object/draft_schematic/structure/shared_corellia_house_player_large_style_02.iff")
@@ -212,7 +215,8 @@ object_draft_schematic_structure_shared_corellia_house_player_medium = SharedDra
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3566769907
+	clientObjectCRC = 3566769907,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_structure_shared_corellia_house_player_medium, "object/draft_schematic/structure/shared_corellia_house_player_medium.iff")
@@ -256,7 +260,8 @@ object_draft_schematic_structure_shared_corellia_house_player_medium_style_02 = 
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3830483623
+	clientObjectCRC = 3830483623,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_structure_shared_corellia_house_player_medium_style_02, "object/draft_schematic/structure/shared_corellia_house_player_medium_style_02.iff")
@@ -300,7 +305,8 @@ object_draft_schematic_structure_shared_corellia_house_player_small = SharedDraf
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 4244610668
+	clientObjectCRC = 4244610668,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_structure_shared_corellia_house_player_small, "object/draft_schematic/structure/shared_corellia_house_player_small.iff")
@@ -344,7 +350,8 @@ object_draft_schematic_structure_shared_corellia_house_player_small_floorplan_02
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2371857542
+	clientObjectCRC = 2371857542,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_structure_shared_corellia_house_player_small_floorplan_02, "object/draft_schematic/structure/shared_corellia_house_player_small_floorplan_02.iff")
@@ -388,7 +395,8 @@ object_draft_schematic_structure_shared_corellia_house_player_small_style_02 = S
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3313991968
+	clientObjectCRC = 3313991968,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_structure_shared_corellia_house_player_small_style_02, "object/draft_schematic/structure/shared_corellia_house_player_small_style_02.iff")
@@ -432,7 +440,8 @@ object_draft_schematic_structure_shared_corellia_house_player_small_style_02_flo
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2455024554
+	clientObjectCRC = 2455024554,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_structure_shared_corellia_house_player_small_style_02_floorplan_02, "object/draft_schematic/structure/shared_corellia_house_player_small_style_02_floorplan_02.iff")
@@ -476,7 +485,8 @@ object_draft_schematic_structure_shared_generic_house_guild_hall = SharedDraftSc
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 745024084
+	clientObjectCRC = 745024084,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_structure_shared_generic_house_guild_hall, "object/draft_schematic/structure/shared_generic_house_guild_hall.iff")
@@ -520,7 +530,8 @@ object_draft_schematic_structure_shared_generic_house_player_large = SharedDraft
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 4059188252
+	clientObjectCRC = 4059188252,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_structure_shared_generic_house_player_large, "object/draft_schematic/structure/shared_generic_house_player_large.iff")
@@ -564,7 +575,8 @@ object_draft_schematic_structure_shared_generic_house_player_large_style_02 = Sh
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1458415719
+	clientObjectCRC = 1458415719,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_structure_shared_generic_house_player_large_style_02, "object/draft_schematic/structure/shared_generic_house_player_large_style_02.iff")
@@ -608,7 +620,8 @@ object_draft_schematic_structure_shared_generic_house_player_medium = SharedDraf
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 874861164
+	clientObjectCRC = 874861164,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_structure_shared_generic_house_player_medium, "object/draft_schematic/structure/shared_generic_house_player_medium.iff")
@@ -652,7 +665,8 @@ object_draft_schematic_structure_shared_generic_house_player_medium_style_02 = S
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 317968384
+	clientObjectCRC = 317968384,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_structure_shared_generic_house_player_medium_style_02, "object/draft_schematic/structure/shared_generic_house_player_medium_style_02.iff")
@@ -696,7 +710,8 @@ object_draft_schematic_structure_shared_generic_house_player_small = SharedDraft
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3320436789
+	clientObjectCRC = 3320436789,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_structure_shared_generic_house_player_small, "object/draft_schematic/structure/shared_generic_house_player_small.iff")
@@ -740,7 +755,8 @@ object_draft_schematic_structure_shared_generic_house_player_small_floorplan_02 
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 364360184
+	clientObjectCRC = 364360184,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_structure_shared_generic_house_player_small_floorplan_02, "object/draft_schematic/structure/shared_generic_house_player_small_floorplan_02.iff")
@@ -784,7 +800,8 @@ object_draft_schematic_structure_shared_generic_house_player_small_style_02 = Sh
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1992384465
+	clientObjectCRC = 1992384465,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_structure_shared_generic_house_player_small_style_02, "object/draft_schematic/structure/shared_generic_house_player_small_style_02.iff")
@@ -828,7 +845,8 @@ object_draft_schematic_structure_shared_generic_house_player_small_style_02_floo
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3838920320
+	clientObjectCRC = 3838920320,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_structure_shared_generic_house_player_small_style_02_floorplan_02, "object/draft_schematic/structure/shared_generic_house_player_small_style_02_floorplan_02.iff")
@@ -872,7 +890,8 @@ object_draft_schematic_structure_shared_house_guild_hall = SharedDraftSchematicO
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 40573621
+	clientObjectCRC = 40573621,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_structure_shared_house_guild_hall, "object/draft_schematic/structure/shared_house_guild_hall.iff")
@@ -916,7 +935,8 @@ object_draft_schematic_structure_shared_house_player_large = SharedDraftSchemati
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2204999703
+	clientObjectCRC = 2204999703,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_structure_shared_house_player_large, "object/draft_schematic/structure/shared_house_player_large.iff")
@@ -960,7 +980,8 @@ object_draft_schematic_structure_shared_house_player_medium = SharedDraftSchemat
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1124040677
+	clientObjectCRC = 1124040677,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_structure_shared_house_player_medium, "object/draft_schematic/structure/shared_house_player_medium.iff")
@@ -1004,7 +1025,8 @@ object_draft_schematic_structure_shared_house_player_small = SharedDraftSchemati
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3077977150
+	clientObjectCRC = 3077977150,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_structure_shared_house_player_small, "object/draft_schematic/structure/shared_house_player_small.iff")
@@ -1048,7 +1070,8 @@ object_draft_schematic_structure_shared_house_player_small_style_02 = SharedDraf
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2529898048
+	clientObjectCRC = 2529898048,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_structure_shared_house_player_small_style_02, "object/draft_schematic/structure/shared_house_player_small_style_02.iff")
@@ -1092,7 +1115,8 @@ object_draft_schematic_structure_shared_installation_factory_clothing = SharedDr
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3925546520
+	clientObjectCRC = 3925546520,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_structure_shared_installation_factory_clothing, "object/draft_schematic/structure/shared_installation_factory_clothing.iff")
@@ -1136,7 +1160,8 @@ object_draft_schematic_structure_shared_installation_factory_food = SharedDraftS
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3287078704
+	clientObjectCRC = 3287078704,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_structure_shared_installation_factory_food, "object/draft_schematic/structure/shared_installation_factory_food.iff")
@@ -1180,7 +1205,8 @@ object_draft_schematic_structure_shared_installation_factory_structure = SharedD
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 100159664
+	clientObjectCRC = 100159664,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_structure_shared_installation_factory_structure, "object/draft_schematic/structure/shared_installation_factory_structure.iff")
@@ -1224,7 +1250,8 @@ object_draft_schematic_structure_shared_installation_factory_weapon = SharedDraf
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1608711350
+	clientObjectCRC = 1608711350,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_structure_shared_installation_factory_weapon, "object/draft_schematic/structure/shared_installation_factory_weapon.iff")
@@ -1268,7 +1295,8 @@ object_draft_schematic_structure_shared_installation_generator_fusion = SharedDr
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1430182849
+	clientObjectCRC = 1430182849,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_structure_shared_installation_generator_fusion, "object/draft_schematic/structure/shared_installation_generator_fusion.iff")
@@ -1312,7 +1340,8 @@ object_draft_schematic_structure_shared_installation_generator_solar = SharedDra
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 464777341
+	clientObjectCRC = 464777341,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_structure_shared_installation_generator_solar, "object/draft_schematic/structure/shared_installation_generator_solar.iff")
@@ -1356,7 +1385,8 @@ object_draft_schematic_structure_shared_installation_generator_wind = SharedDraf
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3011453668
+	clientObjectCRC = 3011453668,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_structure_shared_installation_generator_wind, "object/draft_schematic/structure/shared_installation_generator_wind.iff")
@@ -1400,7 +1430,8 @@ object_draft_schematic_structure_shared_installation_mining_gas = SharedDraftSch
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 189297844
+	clientObjectCRC = 189297844,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_structure_shared_installation_mining_gas, "object/draft_schematic/structure/shared_installation_mining_gas.iff")
@@ -1444,7 +1475,8 @@ object_draft_schematic_structure_shared_installation_mining_gas_heavy = SharedDr
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3372573215
+	clientObjectCRC = 3372573215,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_structure_shared_installation_mining_gas_heavy, "object/draft_schematic/structure/shared_installation_mining_gas_heavy.iff")
@@ -1488,7 +1520,8 @@ object_draft_schematic_structure_shared_installation_mining_gas_light = SharedDr
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 140336833
+	clientObjectCRC = 140336833,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_structure_shared_installation_mining_gas_light, "object/draft_schematic/structure/shared_installation_mining_gas_light.iff")
@@ -1532,7 +1565,8 @@ object_draft_schematic_structure_shared_installation_mining_liquid = SharedDraft
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2039707891
+	clientObjectCRC = 2039707891,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_structure_shared_installation_mining_liquid, "object/draft_schematic/structure/shared_installation_mining_liquid.iff")
@@ -1576,7 +1610,8 @@ object_draft_schematic_structure_shared_installation_mining_liquid_heavy = Share
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 362692246
+	clientObjectCRC = 362692246,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_structure_shared_installation_mining_liquid_heavy, "object/draft_schematic/structure/shared_installation_mining_liquid_heavy.iff")
@@ -1620,7 +1655,8 @@ object_draft_schematic_structure_shared_installation_mining_liquid_light = Share
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3569746504
+	clientObjectCRC = 3569746504,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_structure_shared_installation_mining_liquid_light, "object/draft_schematic/structure/shared_installation_mining_liquid_light.iff")
@@ -1664,7 +1700,8 @@ object_draft_schematic_structure_shared_installation_mining_liquid_vapor = Share
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2343309848
+	clientObjectCRC = 2343309848,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_structure_shared_installation_mining_liquid_vapor, "object/draft_schematic/structure/shared_installation_mining_liquid_vapor.iff")
@@ -1708,7 +1745,8 @@ object_draft_schematic_structure_shared_installation_mining_liquid_vapor_heavy =
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1643145278
+	clientObjectCRC = 1643145278,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_structure_shared_installation_mining_liquid_vapor_heavy, "object/draft_schematic/structure/shared_installation_mining_liquid_vapor_heavy.iff")
@@ -1752,7 +1790,8 @@ object_draft_schematic_structure_shared_installation_mining_liquid_vapor_light =
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2695386336
+	clientObjectCRC = 2695386336,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_structure_shared_installation_mining_liquid_vapor_light, "object/draft_schematic/structure/shared_installation_mining_liquid_vapor_light.iff")
@@ -1796,7 +1835,8 @@ object_draft_schematic_structure_shared_installation_mining_ore = SharedDraftSch
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3530854520
+	clientObjectCRC = 3530854520,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_structure_shared_installation_mining_ore, "object/draft_schematic/structure/shared_installation_mining_ore.iff")
@@ -1840,7 +1880,8 @@ object_draft_schematic_structure_shared_installation_mining_ore_heavy = SharedDr
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1543208719
+	clientObjectCRC = 1543208719,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_structure_shared_installation_mining_ore_heavy, "object/draft_schematic/structure/shared_installation_mining_ore_heavy.iff")
@@ -1884,7 +1925,8 @@ object_draft_schematic_structure_shared_installation_mining_ore_light = SharedDr
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2594390993
+	clientObjectCRC = 2594390993,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_structure_shared_installation_mining_ore_light, "object/draft_schematic/structure/shared_installation_mining_ore_light.iff")
@@ -1928,7 +1970,8 @@ object_draft_schematic_structure_shared_installation_mining_organic_creature = S
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3915458084
+	clientObjectCRC = 3915458084,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_structure_shared_installation_mining_organic_creature, "object/draft_schematic/structure/shared_installation_mining_organic_creature.iff")
@@ -1972,7 +2015,8 @@ object_draft_schematic_structure_shared_installation_mining_organic_flora = Shar
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1656287178
+	clientObjectCRC = 1656287178,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_structure_shared_installation_mining_organic_flora, "object/draft_schematic/structure/shared_installation_mining_organic_flora.iff")
@@ -2016,7 +2060,8 @@ object_draft_schematic_structure_shared_installation_mining_organic_flora_heavy 
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2861455405
+	clientObjectCRC = 2861455405,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_structure_shared_installation_mining_organic_flora_heavy, "object/draft_schematic/structure/shared_installation_mining_organic_flora_heavy.iff")
@@ -2060,7 +2105,8 @@ object_draft_schematic_structure_shared_installation_mining_organic_flora_light 
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1809212659
+	clientObjectCRC = 1809212659,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_structure_shared_installation_mining_organic_flora_light, "object/draft_schematic/structure/shared_installation_mining_organic_flora_light.iff")
@@ -2104,7 +2150,8 @@ object_draft_schematic_structure_shared_merchant_tent = SharedDraftSchematicObje
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2724074378
+	clientObjectCRC = 2724074378,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_structure_shared_merchant_tent, "object/draft_schematic/structure/shared_merchant_tent.iff")
@@ -2148,7 +2195,8 @@ object_draft_schematic_structure_shared_naboo_house_guild_hall = SharedDraftSche
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1974589873
+	clientObjectCRC = 1974589873,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_structure_shared_naboo_house_guild_hall, "object/draft_schematic/structure/shared_naboo_house_guild_hall.iff")
@@ -2192,7 +2240,8 @@ object_draft_schematic_structure_shared_naboo_house_player_large = SharedDraftSc
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 939754027
+	clientObjectCRC = 939754027,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_structure_shared_naboo_house_player_large, "object/draft_schematic/structure/shared_naboo_house_player_large.iff")
@@ -2236,7 +2285,8 @@ object_draft_schematic_structure_shared_naboo_house_player_medium = SharedDraftS
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3131573754
+	clientObjectCRC = 3131573754,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_structure_shared_naboo_house_player_medium, "object/draft_schematic/structure/shared_naboo_house_player_medium.iff")
@@ -2280,7 +2330,8 @@ object_draft_schematic_structure_shared_naboo_house_player_small = SharedDraftSc
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 202905090
+	clientObjectCRC = 202905090,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_structure_shared_naboo_house_player_small, "object/draft_schematic/structure/shared_naboo_house_player_small.iff")
@@ -2324,7 +2375,8 @@ object_draft_schematic_structure_shared_naboo_house_player_small_style_02 = Shar
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 903806834
+	clientObjectCRC = 903806834,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_structure_shared_naboo_house_player_small_style_02, "object/draft_schematic/structure/shared_naboo_house_player_small_style_02.iff")
@@ -2368,7 +2420,8 @@ object_draft_schematic_structure_shared_tatooine_house_guild_hall_style_02 = Sha
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1463325777
+	clientObjectCRC = 1463325777,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_structure_shared_tatooine_house_guild_hall_style_02, "object/draft_schematic/structure/shared_tatooine_house_guild_hall_style_02.iff")

@@ -90,7 +90,8 @@ object_tangible_wearables_bracelet_shared_bracelet_l = SharedTangibleObjectTempl
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1474382637
+	clientObjectCRC = 1474382637,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_wrist_l.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_bracelet_shared_bracelet_l, "object/tangible/wearables/bracelet/shared_bracelet_l.iff")
@@ -144,7 +145,8 @@ object_tangible_wearables_bracelet_shared_bracelet_r = SharedTangibleObjectTempl
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 657723070
+	clientObjectCRC = 657723070,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_wrist_r.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_bracelet_shared_bracelet_r, "object/tangible/wearables/bracelet/shared_bracelet_r.iff")
@@ -198,7 +200,8 @@ object_tangible_wearables_bracelet_shared_bracelet_s02_l = SharedTangibleObjectT
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3949931361
+	clientObjectCRC = 3949931361,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_wrist_l.iff", "object/tangible/wearables/bracelet/shared_bracelet_l.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_bracelet_shared_bracelet_s02_l, "object/tangible/wearables/bracelet/shared_bracelet_s02_l.iff")
@@ -252,7 +255,8 @@ object_tangible_wearables_bracelet_shared_bracelet_s02_r = SharedTangibleObjectT
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2612686578
+	clientObjectCRC = 2612686578,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_wrist_r.iff", "object/tangible/wearables/bracelet/shared_bracelet_r.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_bracelet_shared_bracelet_s02_r, "object/tangible/wearables/bracelet/shared_bracelet_s02_r.iff")
@@ -306,7 +310,8 @@ object_tangible_wearables_bracelet_shared_bracelet_s03_l = SharedTangibleObjectT
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2755150704
+	clientObjectCRC = 2755150704,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_wrist_l.iff", "object/tangible/wearables/bracelet/shared_bracelet_l.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_bracelet_shared_bracelet_s03_l, "object/tangible/wearables/bracelet/shared_bracelet_s03_l.iff")
@@ -360,7 +365,8 @@ object_tangible_wearables_bracelet_shared_bracelet_s03_r = SharedTangibleObjectT
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3572303587
+	clientObjectCRC = 3572303587,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_wrist_r.iff", "object/tangible/wearables/bracelet/shared_bracelet_r.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_bracelet_shared_bracelet_s03_r, "object/tangible/wearables/bracelet/shared_bracelet_s03_r.iff")
@@ -414,7 +420,8 @@ object_tangible_wearables_bracelet_shared_bracelet_s04_l = SharedTangibleObjectT
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1281181360
+	clientObjectCRC = 1281181360,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_wrist_l.iff", "object/tangible/wearables/bracelet/shared_bracelet_l.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_bracelet_shared_bracelet_s04_l, "object/tangible/wearables/bracelet/shared_bracelet_s04_l.iff")
@@ -468,7 +475,8 @@ object_tangible_wearables_bracelet_shared_bracelet_s04_r = SharedTangibleObjectT
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1015546659
+	clientObjectCRC = 1015546659,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_wrist_r.iff", "object/tangible/wearables/bracelet/shared_bracelet_r.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_bracelet_shared_bracelet_s04_r, "object/tangible/wearables/bracelet/shared_bracelet_s04_r.iff")
@@ -522,7 +530,8 @@ object_tangible_wearables_bracelet_shared_bracelet_s05_l = SharedTangibleObjectT
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 50998945
+	clientObjectCRC = 50998945,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_wrist_l.iff", "object/tangible/wearables/bracelet/shared_bracelet_l.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_bracelet_shared_bracelet_s05_l, "object/tangible/wearables/bracelet/shared_bracelet_s05_l.iff")
@@ -576,7 +585,8 @@ object_tangible_wearables_bracelet_shared_bracelet_s05_r = SharedTangibleObjectT
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1944021810
+	clientObjectCRC = 1944021810,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_wrist_r.iff", "object/tangible/wearables/bracelet/shared_bracelet_r.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_bracelet_shared_bracelet_s05_r, "object/tangible/wearables/bracelet/shared_bracelet_s05_r.iff")
@@ -630,7 +640,8 @@ object_tangible_wearables_bracelet_shared_bracelet_s06_l = SharedTangibleObjectT
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3539179154
+	clientObjectCRC = 3539179154,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_wrist_l.iff", "object/tangible/wearables/bracelet/shared_bracelet_l.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_bracelet_shared_bracelet_s06_l, "object/tangible/wearables/bracelet/shared_bracelet_s06_l.iff")
@@ -684,7 +695,8 @@ object_tangible_wearables_bracelet_shared_bracelet_s06_r = SharedTangibleObjectT
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2720453377
+	clientObjectCRC = 2720453377,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_wrist_r.iff", "object/tangible/wearables/bracelet/shared_bracelet_r.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_bracelet_shared_bracelet_s06_r, "object/tangible/wearables/bracelet/shared_bracelet_s06_r.iff")

@@ -90,7 +90,8 @@ object_tangible_lair_angler_shared_lair_angler = SharedTangibleObjectTemplate:ne
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1988238968
+	clientObjectCRC = 1988238968,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_angler_shared_lair_angler, "object/tangible/lair/angler/shared_lair_angler.iff")
@@ -144,7 +145,8 @@ object_tangible_lair_angler_shared_lair_angler_jungle = SharedTangibleObjectTemp
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 20648312
+	clientObjectCRC = 20648312,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_angler_shared_lair_angler_jungle, "object/tangible/lair/angler/shared_lair_angler_jungle.iff")
@@ -198,7 +200,8 @@ object_tangible_lair_angler_shared_lair_angler_swamp = SharedTangibleObjectTempl
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2297908648
+	clientObjectCRC = 2297908648,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_angler_shared_lair_angler_swamp, "object/tangible/lair/angler/shared_lair_angler_swamp.iff")
@@ -252,7 +255,8 @@ object_tangible_lair_angler_shared_lair_angler_underwater = SharedTangibleObject
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3099411810
+	clientObjectCRC = 3099411810,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_angler_shared_lair_angler_underwater, "object/tangible/lair/angler/shared_lair_angler_underwater.iff")

@@ -90,7 +90,8 @@ object_tangible_hair_bothan_base_shared_hair_bothan_base = SharedTangibleObjectT
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2550508164
+	clientObjectCRC = 2550508164,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/hair/base/shared_hair_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_hair_bothan_base_shared_hair_bothan_base, "object/tangible/hair/bothan/base/shared_hair_bothan_base.iff")
@@ -144,7 +145,8 @@ object_tangible_hair_bothan_base_shared_hair_bothan_female_base = SharedTangible
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4122368933
+	clientObjectCRC = 4122368933,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/hair/base/shared_hair_base.iff", "object/tangible/hair/bothan/base/shared_hair_bothan_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_hair_bothan_base_shared_hair_bothan_female_base, "object/tangible/hair/bothan/base/shared_hair_bothan_female_base.iff")
@@ -198,7 +200,8 @@ object_tangible_hair_bothan_base_shared_hair_bothan_male_base = SharedTangibleOb
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4062977600
+	clientObjectCRC = 4062977600,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/hair/base/shared_hair_base.iff", "object/tangible/hair/bothan/base/shared_hair_bothan_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_hair_bothan_base_shared_hair_bothan_male_base, "object/tangible/hair/bothan/base/shared_hair_bothan_male_base.iff")

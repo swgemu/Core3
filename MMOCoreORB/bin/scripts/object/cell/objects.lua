@@ -80,7 +80,8 @@ object_cell_shared_cell = SharedCellObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 206832110
+	clientObjectCRC = 206832110,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/cell/base/shared_base_cell.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_cell_shared_cell, "object/cell/shared_cell.iff")

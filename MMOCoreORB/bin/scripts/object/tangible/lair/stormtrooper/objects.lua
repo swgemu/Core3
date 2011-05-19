@@ -90,7 +90,8 @@ object_tangible_lair_stormtrooper_shared_lair_stormtrooper_npc = SharedTangibleO
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2371032814
+	clientObjectCRC = 2371032814,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff", "object/tangible/lair/base/shared_lair_base_imperial_guard.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_stormtrooper_shared_lair_stormtrooper_npc, "object/tangible/lair/stormtrooper/shared_lair_stormtrooper_npc.iff")

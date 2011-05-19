@@ -90,7 +90,8 @@ object_tangible_lair_verne_shared_lair_verne = SharedTangibleObjectTemplate:new 
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1856597850
+	clientObjectCRC = 1856597850,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_verne_shared_lair_verne, "object/tangible/lair/verne/shared_lair_verne.iff")
@@ -144,7 +145,8 @@ object_tangible_lair_verne_shared_lair_verne_forest = SharedTangibleObjectTempla
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2461392200
+	clientObjectCRC = 2461392200,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_verne_shared_lair_verne_forest, "object/tangible/lair/verne/shared_lair_verne_forest.iff")

@@ -90,7 +90,8 @@ object_tangible_lair_choku_shared_lair_choku = SharedTangibleObjectTemplate:new 
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 320002597
+	clientObjectCRC = 320002597,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_choku_shared_lair_choku, "object/tangible/lair/choku/shared_lair_choku.iff")
@@ -144,7 +145,8 @@ object_tangible_lair_choku_shared_lair_choku_jungle = SharedTangibleObjectTempla
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1812548247
+	clientObjectCRC = 1812548247,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_choku_shared_lair_choku_jungle, "object/tangible/lair/choku/shared_lair_choku_jungle.iff")

@@ -79,7 +79,8 @@ object_static_structure_yavin_shared_yavn_imprv_bannerpole_s01 = SharedStaticObj
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2504717915
+	clientObjectCRC = 2504717915,
+	derivedFromTemplates = {}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_yavin_shared_yavn_imprv_bannerpole_s01, "object/static/structure/yavin/shared_yavn_imprv_bannerpole_s01.iff")
@@ -122,7 +123,8 @@ object_static_structure_yavin_shared_yavn_imprv_flagpole_s01 = SharedStaticObjec
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1455376607
+	clientObjectCRC = 1455376607,
+	derivedFromTemplates = {}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_yavin_shared_yavn_imprv_flagpole_s01, "object/static/structure/yavin/shared_yavn_imprv_flagpole_s01.iff")

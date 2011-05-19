@@ -90,7 +90,8 @@ object_tangible_wearables_armor_chitin_shared_armor_chitin_s01_bicep_l = SharedT
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1049353985
+	clientObjectCRC = 1049353985,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_armor_base.iff", "object/tangible/wearables/base/shared_base_bicep_l.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_chitin_shared_armor_chitin_s01_bicep_l, "object/tangible/wearables/armor/chitin/shared_armor_chitin_s01_bicep_l.iff")
@@ -144,7 +145,8 @@ object_tangible_wearables_armor_chitin_shared_armor_chitin_s01_bicep_r = SharedT
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1314822802
+	clientObjectCRC = 1314822802,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_armor_base.iff", "object/tangible/wearables/base/shared_base_bicep_r.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_chitin_shared_armor_chitin_s01_bicep_r, "object/tangible/wearables/armor/chitin/shared_armor_chitin_s01_bicep_r.iff")
@@ -198,7 +200,8 @@ object_tangible_wearables_armor_chitin_shared_armor_chitin_s01_boots = SharedTan
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1961496739
+	clientObjectCRC = 1961496739,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_shoes.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_chitin_shared_armor_chitin_s01_boots, "object/tangible/wearables/armor/chitin/shared_armor_chitin_s01_boots.iff")
@@ -252,7 +255,8 @@ object_tangible_wearables_armor_chitin_shared_armor_chitin_s01_bracer_l = Shared
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3411753246
+	clientObjectCRC = 3411753246,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_armor_base.iff", "object/tangible/wearables/base/shared_base_bracer_upper_l.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_chitin_shared_armor_chitin_s01_bracer_l, "object/tangible/wearables/armor/chitin/shared_armor_chitin_s01_bracer_l.iff")
@@ -306,7 +310,8 @@ object_tangible_wearables_armor_chitin_shared_armor_chitin_s01_bracer_r = Shared
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3146677389
+	clientObjectCRC = 3146677389,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_armor_base.iff", "object/tangible/wearables/base/shared_base_bracer_upper_r.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_chitin_shared_armor_chitin_s01_bracer_r, "object/tangible/wearables/armor/chitin/shared_armor_chitin_s01_bracer_r.iff")
@@ -360,7 +365,8 @@ object_tangible_wearables_armor_chitin_shared_armor_chitin_s01_chest_plate = Sha
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 590081831
+	clientObjectCRC = 590081831,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_vest.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_chitin_shared_armor_chitin_s01_chest_plate, "object/tangible/wearables/armor/chitin/shared_armor_chitin_s01_chest_plate.iff")
@@ -414,7 +420,8 @@ object_tangible_wearables_armor_chitin_shared_armor_chitin_s01_gloves = SharedTa
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2662099985
+	clientObjectCRC = 2662099985,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_gauntlets_long.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_chitin_shared_armor_chitin_s01_gloves, "object/tangible/wearables/armor/chitin/shared_armor_chitin_s01_gloves.iff")
@@ -468,7 +475,8 @@ object_tangible_wearables_armor_chitin_shared_armor_chitin_s01_helmet = SharedTa
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 678202649
+	clientObjectCRC = 678202649,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_armor_base.iff", "object/tangible/wearables/base/shared_base_helmet_closed_full.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_chitin_shared_armor_chitin_s01_helmet, "object/tangible/wearables/armor/chitin/shared_armor_chitin_s01_helmet.iff")
@@ -522,7 +530,8 @@ object_tangible_wearables_armor_chitin_shared_armor_chitin_s01_leggings = Shared
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1149232129
+	clientObjectCRC = 1149232129,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_skirt.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_chitin_shared_armor_chitin_s01_leggings, "object/tangible/wearables/armor/chitin/shared_armor_chitin_s01_leggings.iff")

@@ -90,7 +90,8 @@ object_tangible_lair_ikopi_shared_lair_ikopi = SharedTangibleObjectTemplate:new 
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1653632566
+	clientObjectCRC = 1653632566,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_ikopi_shared_lair_ikopi, "object/tangible/lair/ikopi/shared_lair_ikopi.iff")
@@ -144,7 +145,8 @@ object_tangible_lair_ikopi_shared_lair_ikopi_grassland = SharedTangibleObjectTem
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 852367209
+	clientObjectCRC = 852367209,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_ikopi_shared_lair_ikopi_grassland, "object/tangible/lair/ikopi/shared_lair_ikopi_grassland.iff")

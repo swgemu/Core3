@@ -90,7 +90,8 @@ object_tangible_item_quest_force_sensitive_shared_bacta_tank = SharedTangibleObj
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 910140533
+	clientObjectCRC = 910140533,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_item_quest_force_sensitive_shared_bacta_tank, "object/tangible/item/quest/force_sensitive/shared_bacta_tank.iff")
@@ -144,7 +145,8 @@ object_tangible_item_quest_force_sensitive_shared_fs_buff_item = SharedTangibleO
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 940923132
+	clientObjectCRC = 940923132,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_item_quest_force_sensitive_shared_fs_buff_item, "object/tangible/item/quest/force_sensitive/shared_fs_buff_item.iff")
@@ -198,7 +200,8 @@ object_tangible_item_quest_force_sensitive_shared_fs_craft_puzzle_analyzer = Sha
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 486918968
+	clientObjectCRC = 486918968,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_item_quest_force_sensitive_shared_fs_craft_puzzle_analyzer, "object/tangible/item/quest/force_sensitive/shared_fs_craft_puzzle_analyzer.iff")
@@ -252,7 +255,8 @@ object_tangible_item_quest_force_sensitive_shared_fs_craft_puzzle_calibrator = S
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1614838947
+	clientObjectCRC = 1614838947,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_item_quest_force_sensitive_shared_fs_craft_puzzle_calibrator, "object/tangible/item/quest/force_sensitive/shared_fs_craft_puzzle_calibrator.iff")
@@ -306,7 +310,8 @@ object_tangible_item_quest_force_sensitive_shared_fs_craft_puzzle_config_process
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1790922527
+	clientObjectCRC = 1790922527,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_item_quest_force_sensitive_shared_fs_craft_puzzle_config_processor, "object/tangible/item/quest/force_sensitive/shared_fs_craft_puzzle_config_processor.iff")
@@ -360,7 +365,8 @@ object_tangible_item_quest_force_sensitive_shared_fs_craft_puzzle_decryption_chi
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 704474859
+	clientObjectCRC = 704474859,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_item_quest_force_sensitive_shared_fs_craft_puzzle_decryption_chip, "object/tangible/item/quest/force_sensitive/shared_fs_craft_puzzle_decryption_chip.iff")
@@ -414,7 +420,8 @@ object_tangible_item_quest_force_sensitive_shared_fs_craft_puzzle_gyro_receiver 
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2604518454
+	clientObjectCRC = 2604518454,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_item_quest_force_sensitive_shared_fs_craft_puzzle_gyro_receiver, "object/tangible/item/quest/force_sensitive/shared_fs_craft_puzzle_gyro_receiver.iff")
@@ -468,7 +475,8 @@ object_tangible_item_quest_force_sensitive_shared_fs_craft_puzzle_signal_amp = S
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2081471563
+	clientObjectCRC = 2081471563,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_item_quest_force_sensitive_shared_fs_craft_puzzle_signal_amp, "object/tangible/item/quest/force_sensitive/shared_fs_craft_puzzle_signal_amp.iff")
@@ -522,7 +530,8 @@ object_tangible_item_quest_force_sensitive_shared_fs_craft_puzzle_solid_state_ar
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3351448820
+	clientObjectCRC = 3351448820,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_item_quest_force_sensitive_shared_fs_craft_puzzle_solid_state_array, "object/tangible/item/quest/force_sensitive/shared_fs_craft_puzzle_solid_state_array.iff")
@@ -576,7 +585,8 @@ object_tangible_item_quest_force_sensitive_shared_fs_craft_puzzle_terminal = Sha
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2439008129
+	clientObjectCRC = 2439008129,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_item_quest_force_sensitive_shared_fs_craft_puzzle_terminal, "object/tangible/item/quest/force_sensitive/shared_fs_craft_puzzle_terminal.iff")
@@ -630,7 +640,8 @@ object_tangible_item_quest_force_sensitive_shared_fs_crafting4_computer_core = S
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 821838739
+	clientObjectCRC = 821838739,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_item_quest_force_sensitive_shared_fs_crafting4_computer_core, "object/tangible/item/quest/force_sensitive/shared_fs_crafting4_computer_core.iff")
@@ -684,7 +695,8 @@ object_tangible_item_quest_force_sensitive_shared_fs_crafting4_downed_satellite 
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 997112719
+	clientObjectCRC = 997112719,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_item_quest_force_sensitive_shared_fs_crafting4_downed_satellite, "object/tangible/item/quest/force_sensitive/shared_fs_crafting4_downed_satellite.iff")
@@ -738,7 +750,8 @@ object_tangible_item_quest_force_sensitive_shared_fs_medic_puzzle_heal_pack = Sh
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2568094988
+	clientObjectCRC = 2568094988,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_item_quest_force_sensitive_shared_fs_medic_puzzle_heal_pack, "object/tangible/item/quest/force_sensitive/shared_fs_medic_puzzle_heal_pack.iff")
@@ -792,7 +805,8 @@ object_tangible_item_quest_force_sensitive_shared_fs_mellichae_cyborg_arm = Shar
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2794758303
+	clientObjectCRC = 2794758303,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_item_quest_force_sensitive_shared_fs_mellichae_cyborg_arm, "object/tangible/item/quest/force_sensitive/shared_fs_mellichae_cyborg_arm.iff")
@@ -846,7 +860,8 @@ object_tangible_item_quest_force_sensitive_shared_fs_reflex_supply_crate = Share
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 622337164
+	clientObjectCRC = 622337164,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_item_quest_force_sensitive_shared_fs_reflex_supply_crate, "object/tangible/item/quest/force_sensitive/shared_fs_reflex_supply_crate.iff")
@@ -900,7 +915,8 @@ object_tangible_item_quest_force_sensitive_shared_fs_sculpture_1 = SharedTangibl
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2534792856
+	clientObjectCRC = 2534792856,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_item_quest_force_sensitive_shared_fs_sculpture_1, "object/tangible/item/quest/force_sensitive/shared_fs_sculpture_1.iff")
@@ -954,7 +970,8 @@ object_tangible_item_quest_force_sensitive_shared_fs_sculpture_2 = SharedTangibl
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1275229711
+	clientObjectCRC = 1275229711,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_item_quest_force_sensitive_shared_fs_sculpture_2, "object/tangible/item/quest/force_sensitive/shared_fs_sculpture_2.iff")
@@ -1008,7 +1025,8 @@ object_tangible_item_quest_force_sensitive_shared_fs_sculpture_3 = SharedTangibl
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 84873602
+	clientObjectCRC = 84873602,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_item_quest_force_sensitive_shared_fs_sculpture_3, "object/tangible/item/quest/force_sensitive/shared_fs_sculpture_3.iff")
@@ -1062,7 +1080,8 @@ object_tangible_item_quest_force_sensitive_shared_fs_sculpture_4 = SharedTangibl
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4276894358
+	clientObjectCRC = 4276894358,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_item_quest_force_sensitive_shared_fs_sculpture_4, "object/tangible/item/quest/force_sensitive/shared_fs_sculpture_4.iff")
@@ -1116,7 +1135,8 @@ object_tangible_item_quest_force_sensitive_shared_fs_village_bannerpole_s01 = Sh
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 392556278
+	clientObjectCRC = 392556278,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_item_quest_force_sensitive_shared_fs_village_bannerpole_s01, "object/tangible/item/quest/force_sensitive/shared_fs_village_bannerpole_s01.iff")

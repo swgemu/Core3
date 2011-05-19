@@ -94,7 +94,8 @@ object_weapon_ranged_creature_shared_creature_spit_heavy_flame = SharedWeaponObj
 	weaponEffect = "bolt",
 	weaponEffectIndex = 21,
 
-	clientObjectCRC = 3638052260
+	clientObjectCRC = 3638052260,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/weapon/base/shared_base_weapon.iff", "object/weapon/ranged/base/shared_base_ranged_weapon.iff", "object/weapon/ranged/creature/base/shared_creature_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_weapon_ranged_creature_shared_creature_spit_heavy_flame, "object/weapon/ranged/creature/shared_creature_spit_heavy_flame.iff")
@@ -152,7 +153,8 @@ object_weapon_ranged_creature_shared_creature_spit_large_green = SharedWeaponObj
 	weaponEffect = "spit",
 	weaponEffectIndex = 0,
 
-	clientObjectCRC = 4293058545
+	clientObjectCRC = 4293058545,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/weapon/base/shared_base_weapon.iff", "object/weapon/ranged/base/shared_base_ranged_weapon.iff", "object/weapon/ranged/creature/base/shared_creature_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_weapon_ranged_creature_shared_creature_spit_large_green, "object/weapon/ranged/creature/shared_creature_spit_large_green.iff")
@@ -210,7 +212,8 @@ object_weapon_ranged_creature_shared_creature_spit_large_red = SharedWeaponObjec
 	weaponEffect = "spit",
 	weaponEffectIndex = 3,
 
-	clientObjectCRC = 3761745120
+	clientObjectCRC = 3761745120,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/weapon/base/shared_base_weapon.iff", "object/weapon/ranged/base/shared_base_ranged_weapon.iff", "object/weapon/ranged/creature/base/shared_creature_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_weapon_ranged_creature_shared_creature_spit_large_red, "object/weapon/ranged/creature/shared_creature_spit_large_red.iff")
@@ -268,7 +271,8 @@ object_weapon_ranged_creature_shared_creature_spit_large_toxicgreen = SharedWeap
 	weaponEffect = "spit",
 	weaponEffectIndex = 6,
 
-	clientObjectCRC = 3595296227
+	clientObjectCRC = 3595296227,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/weapon/base/shared_base_weapon.iff", "object/weapon/ranged/base/shared_base_ranged_weapon.iff", "object/weapon/ranged/creature/base/shared_creature_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_weapon_ranged_creature_shared_creature_spit_large_toxicgreen, "object/weapon/ranged/creature/shared_creature_spit_large_toxicgreen.iff")
@@ -326,7 +330,8 @@ object_weapon_ranged_creature_shared_creature_spit_large_yellow = SharedWeaponOb
 	weaponEffect = "spit",
 	weaponEffectIndex = 9,
 
-	clientObjectCRC = 1314081741
+	clientObjectCRC = 1314081741,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/weapon/base/shared_base_weapon.iff", "object/weapon/ranged/base/shared_base_ranged_weapon.iff", "object/weapon/ranged/creature/base/shared_creature_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_weapon_ranged_creature_shared_creature_spit_large_yellow, "object/weapon/ranged/creature/shared_creature_spit_large_yellow.iff")
@@ -384,7 +389,8 @@ object_weapon_ranged_creature_shared_creature_spit_lightning_ball = SharedWeapon
 	weaponEffect = "bolt",
 	weaponEffectIndex = 20,
 
-	clientObjectCRC = 4140159842
+	clientObjectCRC = 4140159842,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/weapon/base/shared_base_weapon.iff", "object/weapon/ranged/base/shared_base_ranged_weapon.iff", "object/weapon/ranged/creature/base/shared_creature_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_weapon_ranged_creature_shared_creature_spit_lightning_ball, "object/weapon/ranged/creature/shared_creature_spit_lightning_ball.iff")
@@ -442,7 +448,8 @@ object_weapon_ranged_creature_shared_creature_spit_particle_beam = SharedWeaponO
 	weaponEffect = "rocket",
 	weaponEffectIndex = 1,
 
-	clientObjectCRC = 2889945643
+	clientObjectCRC = 2889945643,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/weapon/base/shared_base_weapon.iff", "object/weapon/ranged/base/shared_base_ranged_weapon.iff", "object/weapon/ranged/creature/base/shared_creature_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_weapon_ranged_creature_shared_creature_spit_particle_beam, "object/weapon/ranged/creature/shared_creature_spit_particle_beam.iff")
@@ -500,7 +507,8 @@ object_weapon_ranged_creature_shared_creature_spit_small_green = SharedWeaponObj
 	weaponEffect = "spit",
 	weaponEffectIndex = 1,
 
-	clientObjectCRC = 1298271366
+	clientObjectCRC = 1298271366,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/weapon/base/shared_base_weapon.iff", "object/weapon/ranged/base/shared_base_ranged_weapon.iff", "object/weapon/ranged/creature/base/shared_creature_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_weapon_ranged_creature_shared_creature_spit_small_green, "object/weapon/ranged/creature/shared_creature_spit_small_green.iff")
@@ -558,7 +566,8 @@ object_weapon_ranged_creature_shared_creature_spit_small_red = SharedWeaponObjec
 	weaponEffect = "spit",
 	weaponEffectIndex = 4,
 
-	clientObjectCRC = 4245354171
+	clientObjectCRC = 4245354171,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/weapon/base/shared_base_weapon.iff", "object/weapon/ranged/base/shared_base_ranged_weapon.iff", "object/weapon/ranged/creature/base/shared_creature_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_weapon_ranged_creature_shared_creature_spit_small_red, "object/weapon/ranged/creature/shared_creature_spit_small_red.iff")
@@ -616,7 +625,8 @@ object_weapon_ranged_creature_shared_creature_spit_small_toxicgreen = SharedWeap
 	weaponEffect = "spit",
 	weaponEffectIndex = 7,
 
-	clientObjectCRC = 2893137473
+	clientObjectCRC = 2893137473,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/weapon/base/shared_base_weapon.iff", "object/weapon/ranged/base/shared_base_ranged_weapon.iff", "object/weapon/ranged/creature/base/shared_creature_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_weapon_ranged_creature_shared_creature_spit_small_toxicgreen, "object/weapon/ranged/creature/shared_creature_spit_small_toxicgreen.iff")
@@ -674,7 +684,8 @@ object_weapon_ranged_creature_shared_creature_spit_small_yellow = SharedWeaponOb
 	weaponEffect = "spit",
 	weaponEffectIndex = 10,
 
-	clientObjectCRC = 2050788061
+	clientObjectCRC = 2050788061,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/weapon/base/shared_base_weapon.iff", "object/weapon/ranged/base/shared_base_ranged_weapon.iff", "object/weapon/ranged/creature/base/shared_creature_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_weapon_ranged_creature_shared_creature_spit_small_yellow, "object/weapon/ranged/creature/shared_creature_spit_small_yellow.iff")
@@ -732,7 +743,8 @@ object_weapon_ranged_creature_shared_creature_spit_spray_green = SharedWeaponObj
 	weaponEffect = "spit",
 	weaponEffectIndex = 2,
 
-	clientObjectCRC = 1466506816
+	clientObjectCRC = 1466506816,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/weapon/base/shared_base_weapon.iff", "object/weapon/ranged/base/shared_base_ranged_weapon.iff", "object/weapon/ranged/creature/base/shared_creature_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_weapon_ranged_creature_shared_creature_spit_spray_green, "object/weapon/ranged/creature/shared_creature_spit_spray_green.iff")
@@ -790,7 +802,8 @@ object_weapon_ranged_creature_shared_creature_spit_spray_red = SharedWeaponObjec
 	weaponEffect = "spit",
 	weaponEffectIndex = 5,
 
-	clientObjectCRC = 3130570406
+	clientObjectCRC = 3130570406,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/weapon/base/shared_base_weapon.iff", "object/weapon/ranged/base/shared_base_ranged_weapon.iff", "object/weapon/ranged/creature/base/shared_creature_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_weapon_ranged_creature_shared_creature_spit_spray_red, "object/weapon/ranged/creature/shared_creature_spit_spray_red.iff")
@@ -848,7 +861,8 @@ object_weapon_ranged_creature_shared_creature_spit_spray_toxicgreen = SharedWeap
 	weaponEffect = "spit",
 	weaponEffectIndex = 8,
 
-	clientObjectCRC = 1575661625
+	clientObjectCRC = 1575661625,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/weapon/base/shared_base_weapon.iff", "object/weapon/ranged/base/shared_base_ranged_weapon.iff", "object/weapon/ranged/creature/base/shared_creature_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_weapon_ranged_creature_shared_creature_spit_spray_toxicgreen, "object/weapon/ranged/creature/shared_creature_spit_spray_toxicgreen.iff")
@@ -906,7 +920,8 @@ object_weapon_ranged_creature_shared_creature_spit_spray_yellow = SharedWeaponOb
 	weaponEffect = "spit",
 	weaponEffectIndex = 11,
 
-	clientObjectCRC = 313868667
+	clientObjectCRC = 313868667,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/weapon/base/shared_base_weapon.iff", "object/weapon/ranged/base/shared_base_ranged_weapon.iff", "object/weapon/ranged/creature/base/shared_creature_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_weapon_ranged_creature_shared_creature_spit_spray_yellow, "object/weapon/ranged/creature/shared_creature_spit_spray_yellow.iff")

@@ -90,7 +90,8 @@ object_tangible_wearables_earring_shared_earring_base = SharedTangibleObjectTemp
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 901601080
+	clientObjectCRC = 901601080,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_ear_either.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_earring_shared_earring_base, "object/tangible/wearables/earring/shared_earring_base.iff")
@@ -144,7 +145,8 @@ object_tangible_wearables_earring_shared_earring_s01 = SharedTangibleObjectTempl
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1313672121
+	clientObjectCRC = 1313672121,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_ear_either.iff", "object/tangible/wearables/earring/shared_earring_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_earring_shared_earring_s01, "object/tangible/wearables/earring/shared_earring_s01.iff")
@@ -198,7 +200,8 @@ object_tangible_wearables_earring_shared_earring_s02 = SharedTangibleObjectTempl
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2505745198
+	clientObjectCRC = 2505745198,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_ear_either.iff", "object/tangible/wearables/earring/shared_earring_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_earring_shared_earring_s02, "object/tangible/wearables/earring/shared_earring_s02.iff")
@@ -252,7 +255,8 @@ object_tangible_wearables_earring_shared_earring_s03 = SharedTangibleObjectTempl
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3696739491
+	clientObjectCRC = 3696739491,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_ear_either.iff", "object/tangible/wearables/earring/shared_earring_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_earring_shared_earring_s03, "object/tangible/wearables/earring/shared_earring_s03.iff")
@@ -306,7 +310,8 @@ object_tangible_wearables_earring_shared_earring_s04 = SharedTangibleObjectTempl
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 666169271
+	clientObjectCRC = 666169271,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_ear_either.iff", "object/tangible/wearables/earring/shared_earring_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_earring_shared_earring_s04, "object/tangible/wearables/earring/shared_earring_s04.iff")
@@ -360,7 +365,8 @@ object_tangible_wearables_earring_shared_earring_s05 = SharedTangibleObjectTempl
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1857652794
+	clientObjectCRC = 1857652794,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_ear_either.iff", "object/tangible/wearables/earring/shared_earring_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_earring_shared_earring_s05, "object/tangible/wearables/earring/shared_earring_s05.iff")
@@ -414,7 +420,8 @@ object_tangible_wearables_earring_shared_earring_s06 = SharedTangibleObjectTempl
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3048087725
+	clientObjectCRC = 3048087725,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_ear_either.iff", "object/tangible/wearables/earring/shared_earring_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_earring_shared_earring_s06, "object/tangible/wearables/earring/shared_earring_s06.iff")
@@ -468,7 +475,8 @@ object_tangible_wearables_earring_shared_earring_s07 = SharedTangibleObjectTempl
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4238559008
+	clientObjectCRC = 4238559008,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_ear_either.iff", "object/tangible/wearables/earring/shared_earring_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_earring_shared_earring_s07, "object/tangible/wearables/earring/shared_earring_s07.iff")
@@ -522,7 +530,8 @@ object_tangible_wearables_earring_shared_earring_s08 = SharedTangibleObjectTempl
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1185508146
+	clientObjectCRC = 1185508146,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_ear_either.iff", "object/tangible/wearables/earring/shared_earring_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_earring_shared_earring_s08, "object/tangible/wearables/earring/shared_earring_s08.iff")
@@ -576,7 +585,8 @@ object_tangible_wearables_earring_shared_earring_s09 = SharedTangibleObjectTempl
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 262409407
+	clientObjectCRC = 262409407,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_ear_either.iff", "object/tangible/wearables/earring/shared_earring_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_earring_shared_earring_s09, "object/tangible/wearables/earring/shared_earring_s09.iff")
@@ -630,7 +640,8 @@ object_tangible_wearables_earring_shared_earring_s10 = SharedTangibleObjectTempl
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 476602700
+	clientObjectCRC = 476602700,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_ear_either.iff", "object/tangible/wearables/earring/shared_earring_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_earring_shared_earring_s10, "object/tangible/wearables/earring/shared_earring_s10.iff")
@@ -684,7 +695,8 @@ object_tangible_wearables_earring_shared_earring_s11 = SharedTangibleObjectTempl
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1432684225
+	clientObjectCRC = 1432684225,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_ear_either.iff", "object/tangible/wearables/earring/shared_earring_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_earring_shared_earring_s11, "object/tangible/wearables/earring/shared_earring_s11.iff")
@@ -738,7 +750,8 @@ object_tangible_wearables_earring_shared_earring_s12 = SharedTangibleObjectTempl
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2389880406
+	clientObjectCRC = 2389880406,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_ear_either.iff", "object/tangible/wearables/earring/shared_earring_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_earring_shared_earring_s12, "object/tangible/wearables/earring/shared_earring_s12.iff")
@@ -792,7 +805,8 @@ object_tangible_wearables_earring_shared_earring_s13 = SharedTangibleObjectTempl
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3347040731
+	clientObjectCRC = 3347040731,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_ear_either.iff", "object/tangible/wearables/earring/shared_earring_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_earring_shared_earring_s13, "object/tangible/wearables/earring/shared_earring_s13.iff")
@@ -846,7 +860,8 @@ object_tangible_wearables_earring_shared_earring_s14 = SharedTangibleObjectTempl
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1016914639
+	clientObjectCRC = 1016914639,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_ear_either.iff", "object/tangible/wearables/earring/shared_earring_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_earring_shared_earring_s14, "object/tangible/wearables/earring/shared_earring_s14.iff")
@@ -900,7 +915,8 @@ object_tangible_wearables_earring_shared_earring_s15 = SharedTangibleObjectTempl
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1972471106
+	clientObjectCRC = 1972471106,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_ear_either.iff", "object/tangible/wearables/earring/shared_earring_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_earring_shared_earring_s15, "object/tangible/wearables/earring/shared_earring_s15.iff")

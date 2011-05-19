@@ -94,7 +94,8 @@ object_weapon_melee_2h_sword_base_shared_2h_sword_base = SharedWeaponObjectTempl
 	weaponEffect = "bolt",
 	weaponEffectIndex = 0,
 
-	clientObjectCRC = 3231039364
+	clientObjectCRC = 3231039364,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/weapon/base/shared_base_weapon.iff", "object/weapon/melee/base/shared_base_melee.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_weapon_melee_2h_sword_base_shared_2h_sword_base, "object/weapon/melee/2h_sword/base/shared_2h_sword_base.iff")
@@ -152,7 +153,8 @@ object_weapon_melee_2h_sword_base_shared_crafted_lightsaber_base = SharedWeaponO
 	weaponEffect = "bolt",
 	weaponEffectIndex = 0,
 
-	clientObjectCRC = 3974479430
+	clientObjectCRC = 3974479430,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/weapon/base/shared_base_weapon.iff", "object/weapon/melee/base/shared_base_melee.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_weapon_melee_2h_sword_base_shared_crafted_lightsaber_base, "object/weapon/melee/2h_sword/base/shared_crafted_lightsaber_base.iff")

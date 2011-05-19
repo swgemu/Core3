@@ -90,7 +90,8 @@ object_tangible_deed_corellia_player_house_deed_shared_corellia_house_large_deed
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 100121621
+	clientObjectCRC = 100121621,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/deed/base/shared_deed_base.iff", "object/tangible/deed/base/shared_deed_building_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_deed_corellia_player_house_deed_shared_corellia_house_large_deed, "object/tangible/deed/corellia/player_house_deed/shared_corellia_house_large_deed.iff")
@@ -144,7 +145,8 @@ object_tangible_deed_corellia_player_house_deed_shared_corellia_house_medium_dee
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4084143770
+	clientObjectCRC = 4084143770,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/deed/base/shared_deed_base.iff", "object/tangible/deed/base/shared_deed_building_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_deed_corellia_player_house_deed_shared_corellia_house_medium_deed, "object/tangible/deed/corellia/player_house_deed/shared_corellia_house_medium_deed.iff")
@@ -198,7 +200,8 @@ object_tangible_deed_corellia_player_house_deed_shared_corellia_house_small_deed
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1165081270
+	clientObjectCRC = 1165081270,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/deed/base/shared_deed_base.iff", "object/tangible/deed/base/shared_deed_building_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_deed_corellia_player_house_deed_shared_corellia_house_small_deed, "object/tangible/deed/corellia/player_house_deed/shared_corellia_house_small_deed.iff")

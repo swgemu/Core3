@@ -80,7 +80,8 @@ object_static_space_beacon_shared_hyperspace_generator_01 = SharedStaticObjectTe
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2175205203
+	clientObjectCRC = 2175205203,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_space_beacon_shared_hyperspace_generator_01, "object/static/space/beacon/shared_hyperspace_generator_01.iff")
@@ -124,7 +125,8 @@ object_static_space_beacon_shared_hyperspace_route_beacon_01 = SharedStaticObjec
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2042724339
+	clientObjectCRC = 2042724339,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_space_beacon_shared_hyperspace_route_beacon_01, "object/static/space/beacon/shared_hyperspace_route_beacon_01.iff")

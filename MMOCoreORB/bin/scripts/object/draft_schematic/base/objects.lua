@@ -80,7 +80,8 @@ object_draft_schematic_base_shared_base_draft_schematic = SharedDraftSchematicOb
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1315482063
+	clientObjectCRC = 1315482063,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_base_shared_base_draft_schematic, "object/draft_schematic/base/shared_base_draft_schematic.iff")
@@ -124,7 +125,8 @@ object_draft_schematic_base_shared_draft_schematic_default = SharedDraftSchemati
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1088794197
+	clientObjectCRC = 1088794197,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_base_shared_draft_schematic_default, "object/draft_schematic/base/shared_draft_schematic_default.iff")
@@ -168,7 +170,8 @@ object_draft_schematic_base_shared_missing_schematic_substitute = SharedDraftSch
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1521547401
+	clientObjectCRC = 1521547401,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_base_shared_missing_schematic_substitute, "object/draft_schematic/base/shared_missing_schematic_substitute.iff")

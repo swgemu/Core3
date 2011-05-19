@@ -90,7 +90,8 @@ object_tangible_lair_carrion_spat_shared_lair_carrion_spat = SharedTangibleObjec
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2989290041
+	clientObjectCRC = 2989290041,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_carrion_spat_shared_lair_carrion_spat, "object/tangible/lair/carrion_spat/shared_lair_carrion_spat.iff")
@@ -144,7 +145,8 @@ object_tangible_lair_carrion_spat_shared_lair_carrion_spat_grassland = SharedTan
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2377863666
+	clientObjectCRC = 2377863666,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_carrion_spat_shared_lair_carrion_spat_grassland, "object/tangible/lair/carrion_spat/shared_lair_carrion_spat_grassland.iff")

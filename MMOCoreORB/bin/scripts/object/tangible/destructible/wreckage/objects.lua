@@ -90,7 +90,8 @@ object_tangible_destructible_wreckage_shared_wreck_starship_small_01 = SharedTan
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 551874414
+	clientObjectCRC = 551874414,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_destructible_wreckage_shared_wreck_starship_small_01, "object/tangible/destructible/wreckage/shared_wreck_starship_small_01.iff")

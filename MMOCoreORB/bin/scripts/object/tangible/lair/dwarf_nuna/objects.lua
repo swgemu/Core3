@@ -90,7 +90,8 @@ object_tangible_lair_dwarf_nuna_shared_lair_dwarf_nuna = SharedTangibleObjectTem
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2758659354
+	clientObjectCRC = 2758659354,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_dwarf_nuna_shared_lair_dwarf_nuna, "object/tangible/lair/dwarf_nuna/shared_lair_dwarf_nuna.iff")
@@ -144,7 +145,8 @@ object_tangible_lair_dwarf_nuna_shared_lair_dwarf_nuna_forest = SharedTangibleOb
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2456561117
+	clientObjectCRC = 2456561117,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_dwarf_nuna_shared_lair_dwarf_nuna_forest, "object/tangible/lair/dwarf_nuna/shared_lair_dwarf_nuna_forest.iff")
@@ -198,7 +200,8 @@ object_tangible_lair_dwarf_nuna_shared_lair_dwarf_nuna_swamp = SharedTangibleObj
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1635796730
+	clientObjectCRC = 1635796730,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_dwarf_nuna_shared_lair_dwarf_nuna_swamp, "object/tangible/lair/dwarf_nuna/shared_lair_dwarf_nuna_swamp.iff")

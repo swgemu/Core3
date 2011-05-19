@@ -94,7 +94,8 @@ object_weapon_ranged_rifle_base_shared_rifle_base = SharedWeaponObjectTemplate:n
 	weaponEffect = "bolt",
 	weaponEffectIndex = 2,
 
-	clientObjectCRC = 2730158915
+	clientObjectCRC = 2730158915,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/weapon/base/shared_base_weapon.iff", "object/weapon/ranged/base/shared_base_ranged_weapon.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_weapon_ranged_rifle_base_shared_rifle_base, "object/weapon/ranged/rifle/base/shared_rifle_base.iff")

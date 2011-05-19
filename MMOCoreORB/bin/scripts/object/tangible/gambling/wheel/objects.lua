@@ -90,7 +90,8 @@ object_tangible_gambling_wheel_shared_roulette = SharedTangibleObjectTemplate:ne
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2596039133
+	clientObjectCRC = 2596039133,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff", "object/tangible/gambling/base/shared_gambling_station.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_gambling_wheel_shared_roulette, "object/tangible/gambling/wheel/shared_roulette.iff")

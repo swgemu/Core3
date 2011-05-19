@@ -90,7 +90,8 @@ object_tangible_gravestone_shared_gravestone01 = SharedTangibleObjectTemplate:ne
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 479064205
+	clientObjectCRC = 479064205,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_gravestone_shared_gravestone01, "object/tangible/gravestone/shared_gravestone01.iff")
@@ -144,7 +145,8 @@ object_tangible_gravestone_shared_gravestone02 = SharedTangibleObjectTemplate:ne
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3348781082
+	clientObjectCRC = 3348781082,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_gravestone_shared_gravestone02, "object/tangible/gravestone/shared_gravestone02.iff")
@@ -198,7 +200,8 @@ object_tangible_gravestone_shared_gravestone03 = SharedTangibleObjectTemplate:ne
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2392276887
+	clientObjectCRC = 2392276887,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_gravestone_shared_gravestone03, "object/tangible/gravestone/shared_gravestone03.iff")
@@ -252,7 +255,8 @@ object_tangible_gravestone_shared_gravestone04 = SharedTangibleObjectTemplate:ne
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1970541699
+	clientObjectCRC = 1970541699,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_gravestone_shared_gravestone04, "object/tangible/gravestone/shared_gravestone04.iff")
@@ -306,7 +310,8 @@ object_tangible_gravestone_shared_gravestone05 = SharedTangibleObjectTemplate:ne
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1014592270
+	clientObjectCRC = 1014592270,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_gravestone_shared_gravestone05, "object/tangible/gravestone/shared_gravestone05.iff")

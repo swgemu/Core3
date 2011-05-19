@@ -90,7 +90,8 @@ object_tangible_wearables_armor_zam_shared_armor_zam_wesell_belt = SharedTangibl
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1255925428
+	clientObjectCRC = 1255925428,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_belt.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_zam_shared_armor_zam_wesell_belt, "object/tangible/wearables/armor/zam/shared_armor_zam_wesell_belt.iff")
@@ -144,7 +145,8 @@ object_tangible_wearables_armor_zam_shared_armor_zam_wesell_boots = SharedTangib
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 509585055
+	clientObjectCRC = 509585055,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_shoes.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_zam_shared_armor_zam_wesell_boots, "object/tangible/wearables/armor/zam/shared_armor_zam_wesell_boots.iff")
@@ -198,7 +200,8 @@ object_tangible_wearables_armor_zam_shared_armor_zam_wesell_chest_plate = Shared
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3303691594
+	clientObjectCRC = 3303691594,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_vest.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_zam_shared_armor_zam_wesell_chest_plate, "object/tangible/wearables/armor/zam/shared_armor_zam_wesell_chest_plate.iff")
@@ -252,7 +255,8 @@ object_tangible_wearables_armor_zam_shared_armor_zam_wesell_chest_plate_quest = 
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2543046725
+	clientObjectCRC = 2543046725,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_vest.iff", "object/tangible/wearables/armor/zam/shared_armor_zam_wesell_chest_plate.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_zam_shared_armor_zam_wesell_chest_plate_quest, "object/tangible/wearables/armor/zam/shared_armor_zam_wesell_chest_plate_quest.iff")
@@ -306,7 +310,8 @@ object_tangible_wearables_armor_zam_shared_armor_zam_wesell_gloves = SharedTangi
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2822062160
+	clientObjectCRC = 2822062160,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_gauntlets_long.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_zam_shared_armor_zam_wesell_gloves, "object/tangible/wearables/armor/zam/shared_armor_zam_wesell_gloves.iff")
@@ -360,7 +365,8 @@ object_tangible_wearables_armor_zam_shared_armor_zam_wesell_helmet = SharedTangi
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 519414104
+	clientObjectCRC = 519414104,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_armor_base.iff", "object/tangible/wearables/base/shared_base_helmet_closed_full.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_zam_shared_armor_zam_wesell_helmet, "object/tangible/wearables/armor/zam/shared_armor_zam_wesell_helmet.iff")
@@ -414,7 +420,8 @@ object_tangible_wearables_armor_zam_shared_armor_zam_wesell_helmet_quest = Share
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2324855644
+	clientObjectCRC = 2324855644,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_armor_base.iff", "object/tangible/wearables/base/shared_base_helmet_closed_full.iff", "object/tangible/wearables/armor/zam/shared_armor_zam_wesell_helmet.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_zam_shared_armor_zam_wesell_helmet_quest, "object/tangible/wearables/armor/zam/shared_armor_zam_wesell_helmet_quest.iff")
@@ -468,7 +475,8 @@ object_tangible_wearables_armor_zam_shared_armor_zam_wesell_pants = SharedTangib
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2684655133
+	clientObjectCRC = 2684655133,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_skirt.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_zam_shared_armor_zam_wesell_pants, "object/tangible/wearables/armor/zam/shared_armor_zam_wesell_pants.iff")
@@ -522,7 +530,8 @@ object_tangible_wearables_armor_zam_shared_armor_zam_wesell_pants_quest = Shared
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3252715807
+	clientObjectCRC = 3252715807,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_skirt.iff", "object/tangible/wearables/armor/zam/shared_armor_zam_wesell_pants.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_zam_shared_armor_zam_wesell_pants_quest, "object/tangible/wearables/armor/zam/shared_armor_zam_wesell_pants_quest.iff")

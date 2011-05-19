@@ -114,7 +114,8 @@ object_creature_npc_base_shared_aqualish_base_female = SharedCreatureObjectTempl
 	warpTolerance = 17,
 	waterModPercent = 0.5,
 
-	clientObjectCRC = 2762844902
+	clientObjectCRC = 2762844902,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/creature/npc/base/shared_base_npc.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_creature_npc_base_shared_aqualish_base_female, "object/creature/npc/base/shared_aqualish_base_female.iff")
@@ -192,7 +193,8 @@ object_creature_npc_base_shared_aqualish_base_male = SharedCreatureObjectTemplat
 	warpTolerance = 17,
 	waterModPercent = 0.5,
 
-	clientObjectCRC = 643792170
+	clientObjectCRC = 643792170,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/creature/npc/base/shared_base_npc.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_creature_npc_base_shared_aqualish_base_male, "object/creature/npc/base/shared_aqualish_base_male.iff")
@@ -270,7 +272,8 @@ object_creature_npc_base_shared_aqualish_s02_base_female = SharedCreatureObjectT
 	warpTolerance = 17,
 	waterModPercent = 0.5,
 
-	clientObjectCRC = 1130200645
+	clientObjectCRC = 1130200645,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/creature/npc/base/shared_base_npc.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_creature_npc_base_shared_aqualish_s02_base_female, "object/creature/npc/base/shared_aqualish_s02_base_female.iff")
@@ -348,7 +351,8 @@ object_creature_npc_base_shared_aqualish_s02_base_male = SharedCreatureObjectTem
 	warpTolerance = 17,
 	waterModPercent = 0.5,
 
-	clientObjectCRC = 1420546336
+	clientObjectCRC = 1420546336,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/creature/npc/base/shared_base_npc.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_creature_npc_base_shared_aqualish_s02_base_male, "object/creature/npc/base/shared_aqualish_s02_base_male.iff")
@@ -426,7 +430,8 @@ object_creature_npc_base_shared_aqualish_s03_base_female = SharedCreatureObjectT
 	warpTolerance = 17,
 	waterModPercent = 0.5,
 
-	clientObjectCRC = 1418612504
+	clientObjectCRC = 1418612504,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/creature/npc/base/shared_base_npc.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_creature_npc_base_shared_aqualish_s03_base_female, "object/creature/npc/base/shared_aqualish_s03_base_female.iff")
@@ -504,7 +509,8 @@ object_creature_npc_base_shared_aqualish_s03_base_male = SharedCreatureObjectTem
 	warpTolerance = 17,
 	waterModPercent = 0.5,
 
-	clientObjectCRC = 2309238866
+	clientObjectCRC = 2309238866,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/creature/npc/base/shared_base_npc.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_creature_npc_base_shared_aqualish_s03_base_male, "object/creature/npc/base/shared_aqualish_s03_base_male.iff")
@@ -582,7 +588,8 @@ object_creature_npc_base_shared_base_droid = SharedCreatureObjectTemplate:new {
 	warpTolerance = 17,
 	waterModPercent = 0.5,
 
-	clientObjectCRC = 3496555527
+	clientObjectCRC = 3496555527,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/creature/npc/base/shared_base_npc.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_creature_npc_base_shared_base_droid, "object/creature/npc/base/shared_base_droid.iff")
@@ -660,7 +667,8 @@ object_creature_npc_base_shared_base_npc = SharedCreatureObjectTemplate:new {
 	warpTolerance = 17,
 	waterModPercent = 0.5,
 
-	clientObjectCRC = 636692298
+	clientObjectCRC = 636692298,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_creature_npc_base_shared_base_npc, "object/creature/npc/base/shared_base_npc.iff")
@@ -738,7 +746,8 @@ object_creature_npc_base_shared_base_npc_theme_park = SharedCreatureObjectTempla
 	warpTolerance = 17,
 	waterModPercent = 0.5,
 
-	clientObjectCRC = 654644587
+	clientObjectCRC = 654644587,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/creature/npc/base/shared_base_npc.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_creature_npc_base_shared_base_npc_theme_park, "object/creature/npc/base/shared_base_npc_theme_park.iff")
@@ -816,7 +825,8 @@ object_creature_npc_base_shared_bith_base_female = SharedCreatureObjectTemplate:
 	warpTolerance = 17,
 	waterModPercent = 0.5,
 
-	clientObjectCRC = 2412520178
+	clientObjectCRC = 2412520178,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/creature/npc/base/shared_base_npc.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_creature_npc_base_shared_bith_base_female, "object/creature/npc/base/shared_bith_base_female.iff")
@@ -894,7 +904,8 @@ object_creature_npc_base_shared_bith_base_male = SharedCreatureObjectTemplate:ne
 	warpTolerance = 17,
 	waterModPercent = 0.5,
 
-	clientObjectCRC = 1042888288
+	clientObjectCRC = 1042888288,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/creature/npc/base/shared_base_npc.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_creature_npc_base_shared_bith_base_male, "object/creature/npc/base/shared_bith_base_male.iff")
@@ -972,7 +983,8 @@ object_creature_npc_base_shared_bothan_base_female = SharedCreatureObjectTemplat
 	warpTolerance = 17,
 	waterModPercent = 0.5,
 
-	clientObjectCRC = 3759013611
+	clientObjectCRC = 3759013611,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/creature/npc/base/shared_base_npc.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_creature_npc_base_shared_bothan_base_female, "object/creature/npc/base/shared_bothan_base_female.iff")
@@ -1050,7 +1062,8 @@ object_creature_npc_base_shared_bothan_base_male = SharedCreatureObjectTemplate:
 	warpTolerance = 17,
 	waterModPercent = 0.5,
 
-	clientObjectCRC = 1590149475
+	clientObjectCRC = 1590149475,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/creature/npc/base/shared_base_npc.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_creature_npc_base_shared_bothan_base_male, "object/creature/npc/base/shared_bothan_base_male.iff")
@@ -1128,7 +1141,8 @@ object_creature_npc_base_shared_chadra_fan_base_female = SharedCreatureObjectTem
 	warpTolerance = 17,
 	waterModPercent = 0.5,
 
-	clientObjectCRC = 896393245
+	clientObjectCRC = 896393245,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/creature/npc/base/shared_base_npc.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_creature_npc_base_shared_chadra_fan_base_female, "object/creature/npc/base/shared_chadra_fan_base_female.iff")
@@ -1206,7 +1220,8 @@ object_creature_npc_base_shared_chadra_fan_base_male = SharedCreatureObjectTempl
 	warpTolerance = 17,
 	waterModPercent = 0.5,
 
-	clientObjectCRC = 313334022
+	clientObjectCRC = 313334022,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/creature/npc/base/shared_base_npc.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_creature_npc_base_shared_chadra_fan_base_male, "object/creature/npc/base/shared_chadra_fan_base_male.iff")
@@ -1284,7 +1299,8 @@ object_creature_npc_base_shared_dantari_base_male = SharedCreatureObjectTemplate
 	warpTolerance = 17,
 	waterModPercent = 0.5,
 
-	clientObjectCRC = 3185808736
+	clientObjectCRC = 3185808736,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/creature/npc/base/shared_base_npc.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_creature_npc_base_shared_dantari_base_male, "object/creature/npc/base/shared_dantari_base_male.iff")
@@ -1362,7 +1378,8 @@ object_creature_npc_base_shared_devaronian_base_male = SharedCreatureObjectTempl
 	warpTolerance = 17,
 	waterModPercent = 0.5,
 
-	clientObjectCRC = 4086632991
+	clientObjectCRC = 4086632991,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/creature/npc/base/shared_base_npc.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_creature_npc_base_shared_devaronian_base_male, "object/creature/npc/base/shared_devaronian_base_male.iff")
@@ -1440,7 +1457,8 @@ object_creature_npc_base_shared_drall_base_female = SharedCreatureObjectTemplate
 	warpTolerance = 17,
 	waterModPercent = 0.5,
 
-	clientObjectCRC = 1636192846
+	clientObjectCRC = 1636192846,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/creature/npc/base/shared_base_npc.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_creature_npc_base_shared_drall_base_female, "object/creature/npc/base/shared_drall_base_female.iff")
@@ -1518,7 +1536,8 @@ object_creature_npc_base_shared_drall_base_male = SharedCreatureObjectTemplate:n
 	warpTolerance = 17,
 	waterModPercent = 0.5,
 
-	clientObjectCRC = 999880424
+	clientObjectCRC = 999880424,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/creature/npc/base/shared_base_npc.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_creature_npc_base_shared_drall_base_male, "object/creature/npc/base/shared_drall_base_male.iff")
@@ -1596,7 +1615,8 @@ object_creature_npc_base_shared_dulok_base_female = SharedCreatureObjectTemplate
 	warpTolerance = 17,
 	waterModPercent = 0.5,
 
-	clientObjectCRC = 2138236706
+	clientObjectCRC = 2138236706,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/creature/npc/base/shared_base_npc.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_creature_npc_base_shared_dulok_base_female, "object/creature/npc/base/shared_dulok_base_female.iff")
@@ -1674,7 +1694,8 @@ object_creature_npc_base_shared_dulok_base_male = SharedCreatureObjectTemplate:n
 	warpTolerance = 17,
 	waterModPercent = 0.5,
 
-	clientObjectCRC = 748671429
+	clientObjectCRC = 748671429,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/creature/npc/base/shared_base_npc.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_creature_npc_base_shared_dulok_base_male, "object/creature/npc/base/shared_dulok_base_male.iff")
@@ -1752,7 +1773,8 @@ object_creature_npc_base_shared_ewok_base_female = SharedCreatureObjectTemplate:
 	warpTolerance = 17,
 	waterModPercent = 0.5,
 
-	clientObjectCRC = 1504641037
+	clientObjectCRC = 1504641037,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/creature/npc/base/shared_base_npc.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_creature_npc_base_shared_ewok_base_female, "object/creature/npc/base/shared_ewok_base_female.iff")
@@ -1830,7 +1852,8 @@ object_creature_npc_base_shared_ewok_base_male = SharedCreatureObjectTemplate:ne
 	warpTolerance = 17,
 	waterModPercent = 0.5,
 
-	clientObjectCRC = 2588984693
+	clientObjectCRC = 2588984693,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/creature/npc/base/shared_base_npc.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_creature_npc_base_shared_ewok_base_male, "object/creature/npc/base/shared_ewok_base_male.iff")
@@ -1908,7 +1931,8 @@ object_creature_npc_base_shared_gamorrean_base_male = SharedCreatureObjectTempla
 	warpTolerance = 17,
 	waterModPercent = 0.5,
 
-	clientObjectCRC = 3906894721
+	clientObjectCRC = 3906894721,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/creature/npc/base/shared_base_npc.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_creature_npc_base_shared_gamorrean_base_male, "object/creature/npc/base/shared_gamorrean_base_male.iff")
@@ -1986,7 +2010,8 @@ object_creature_npc_base_shared_geonosian_base_male = SharedCreatureObjectTempla
 	warpTolerance = 17,
 	waterModPercent = 0.5,
 
-	clientObjectCRC = 595885541
+	clientObjectCRC = 595885541,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/creature/npc/base/shared_base_npc.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_creature_npc_base_shared_geonosian_base_male, "object/creature/npc/base/shared_geonosian_base_male.iff")
@@ -2064,7 +2089,8 @@ object_creature_npc_base_shared_gorax_base_male = SharedCreatureObjectTemplate:n
 	warpTolerance = 17,
 	waterModPercent = 0.5,
 
-	clientObjectCRC = 2975619975
+	clientObjectCRC = 2975619975,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/creature/npc/base/shared_base_npc.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_creature_npc_base_shared_gorax_base_male, "object/creature/npc/base/shared_gorax_base_male.iff")
@@ -2142,7 +2168,8 @@ object_creature_npc_base_shared_gran_base_male = SharedCreatureObjectTemplate:ne
 	warpTolerance = 17,
 	waterModPercent = 0.5,
 
-	clientObjectCRC = 3900679321
+	clientObjectCRC = 3900679321,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/creature/npc/base/shared_base_npc.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_creature_npc_base_shared_gran_base_male, "object/creature/npc/base/shared_gran_base_male.iff")
@@ -2220,7 +2247,8 @@ object_creature_npc_base_shared_gungan_base_male = SharedCreatureObjectTemplate:
 	warpTolerance = 17,
 	waterModPercent = 0.5,
 
-	clientObjectCRC = 2826781885
+	clientObjectCRC = 2826781885,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/creature/npc/base/shared_base_npc.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_creature_npc_base_shared_gungan_base_male, "object/creature/npc/base/shared_gungan_base_male.iff")
@@ -2298,7 +2326,8 @@ object_creature_npc_base_shared_human_base_female = SharedCreatureObjectTemplate
 	warpTolerance = 17,
 	waterModPercent = 0.5,
 
-	clientObjectCRC = 53721594
+	clientObjectCRC = 53721594,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/creature/npc/base/shared_base_npc.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_creature_npc_base_shared_human_base_female, "object/creature/npc/base/shared_human_base_female.iff")
@@ -2376,7 +2405,8 @@ object_creature_npc_base_shared_human_base_male = SharedCreatureObjectTemplate:n
 	warpTolerance = 17,
 	waterModPercent = 0.5,
 
-	clientObjectCRC = 2134943660
+	clientObjectCRC = 2134943660,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/creature/npc/base/shared_base_npc.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_creature_npc_base_shared_human_base_male, "object/creature/npc/base/shared_human_base_male.iff")
@@ -2454,7 +2484,8 @@ object_creature_npc_base_shared_hutt_base_female = SharedCreatureObjectTemplate:
 	warpTolerance = 17,
 	waterModPercent = 0.5,
 
-	clientObjectCRC = 36831134
+	clientObjectCRC = 36831134,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/creature/npc/base/shared_base_npc.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_creature_npc_base_shared_hutt_base_female, "object/creature/npc/base/shared_hutt_base_female.iff")
@@ -2532,7 +2563,8 @@ object_creature_npc_base_shared_hutt_base_male = SharedCreatureObjectTemplate:ne
 	warpTolerance = 17,
 	waterModPercent = 0.5,
 
-	clientObjectCRC = 3532419442
+	clientObjectCRC = 3532419442,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/creature/npc/base/shared_base_npc.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_creature_npc_base_shared_hutt_base_male, "object/creature/npc/base/shared_hutt_base_male.iff")
@@ -2610,7 +2642,8 @@ object_creature_npc_base_shared_ishi_tib_base_male = SharedCreatureObjectTemplat
 	warpTolerance = 17,
 	waterModPercent = 0.5,
 
-	clientObjectCRC = 3055229554
+	clientObjectCRC = 3055229554,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/creature/npc/base/shared_base_npc.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_creature_npc_base_shared_ishi_tib_base_male, "object/creature/npc/base/shared_ishi_tib_base_male.iff")
@@ -2688,7 +2721,8 @@ object_creature_npc_base_shared_ithorian_base_male = SharedCreatureObjectTemplat
 	warpTolerance = 17,
 	waterModPercent = 0.5,
 
-	clientObjectCRC = 1397449143
+	clientObjectCRC = 1397449143,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/creature/npc/base/shared_base_npc.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_creature_npc_base_shared_ithorian_base_male, "object/creature/npc/base/shared_ithorian_base_male.iff")
@@ -2766,7 +2800,8 @@ object_creature_npc_base_shared_jawa_base_male = SharedCreatureObjectTemplate:ne
 	warpTolerance = 17,
 	waterModPercent = 0.5,
 
-	clientObjectCRC = 3349422050
+	clientObjectCRC = 3349422050,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/creature/npc/base/shared_base_npc.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_creature_npc_base_shared_jawa_base_male, "object/creature/npc/base/shared_jawa_base_male.iff")
@@ -2844,7 +2879,8 @@ object_creature_npc_base_shared_jinda_base_female = SharedCreatureObjectTemplate
 	warpTolerance = 17,
 	waterModPercent = 0.5,
 
-	clientObjectCRC = 4291004780
+	clientObjectCRC = 4291004780,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/creature/npc/base/shared_base_npc.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_creature_npc_base_shared_jinda_base_female, "object/creature/npc/base/shared_jinda_base_female.iff")
@@ -2922,7 +2958,8 @@ object_creature_npc_base_shared_jinda_base_male = SharedCreatureObjectTemplate:n
 	warpTolerance = 17,
 	waterModPercent = 0.5,
 
-	clientObjectCRC = 242045215
+	clientObjectCRC = 242045215,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/creature/npc/base/shared_base_npc.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_creature_npc_base_shared_jinda_base_male, "object/creature/npc/base/shared_jinda_base_male.iff")
@@ -3000,7 +3037,8 @@ object_creature_npc_base_shared_klatooinian_base_male = SharedCreatureObjectTemp
 	warpTolerance = 17,
 	waterModPercent = 0.5,
 
-	clientObjectCRC = 3370318767
+	clientObjectCRC = 3370318767,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/creature/npc/base/shared_base_npc.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_creature_npc_base_shared_klatooinian_base_male, "object/creature/npc/base/shared_klatooinian_base_male.iff")
@@ -3078,7 +3116,8 @@ object_creature_npc_base_shared_marauder_base_female = SharedCreatureObjectTempl
 	warpTolerance = 17,
 	waterModPercent = 0.5,
 
-	clientObjectCRC = 2355090288
+	clientObjectCRC = 2355090288,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/creature/npc/base/shared_base_npc.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_creature_npc_base_shared_marauder_base_female, "object/creature/npc/base/shared_marauder_base_female.iff")
@@ -3156,7 +3195,8 @@ object_creature_npc_base_shared_marauder_base_male = SharedCreatureObjectTemplat
 	warpTolerance = 17,
 	waterModPercent = 0.5,
 
-	clientObjectCRC = 1688940240
+	clientObjectCRC = 1688940240,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/creature/npc/base/shared_base_npc.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_creature_npc_base_shared_marauder_base_male, "object/creature/npc/base/shared_marauder_base_male.iff")
@@ -3234,7 +3274,8 @@ object_creature_npc_base_shared_moncal_base_female = SharedCreatureObjectTemplat
 	warpTolerance = 17,
 	waterModPercent = 0.5,
 
-	clientObjectCRC = 1371353669
+	clientObjectCRC = 1371353669,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/creature/npc/base/shared_base_npc.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_creature_npc_base_shared_moncal_base_female, "object/creature/npc/base/shared_moncal_base_female.iff")
@@ -3312,7 +3353,8 @@ object_creature_npc_base_shared_moncal_base_male = SharedCreatureObjectTemplate:
 	warpTolerance = 17,
 	waterModPercent = 0.5,
 
-	clientObjectCRC = 1617753563
+	clientObjectCRC = 1617753563,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/creature/npc/base/shared_base_npc.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_creature_npc_base_shared_moncal_base_male, "object/creature/npc/base/shared_moncal_base_male.iff")
@@ -3390,7 +3432,8 @@ object_creature_npc_base_shared_nikto_base_male = SharedCreatureObjectTemplate:n
 	warpTolerance = 17,
 	waterModPercent = 0.5,
 
-	clientObjectCRC = 2839443196
+	clientObjectCRC = 2839443196,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/creature/npc/base/shared_base_npc.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_creature_npc_base_shared_nikto_base_male, "object/creature/npc/base/shared_nikto_base_male.iff")
@@ -3468,7 +3511,8 @@ object_creature_npc_base_shared_quarren_base_male = SharedCreatureObjectTemplate
 	warpTolerance = 17,
 	waterModPercent = 0.5,
 
-	clientObjectCRC = 2606234616
+	clientObjectCRC = 2606234616,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/creature/npc/base/shared_base_npc.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_creature_npc_base_shared_quarren_base_male, "object/creature/npc/base/shared_quarren_base_male.iff")
@@ -3546,7 +3590,8 @@ object_creature_npc_base_shared_rodian_base_female = SharedCreatureObjectTemplat
 	warpTolerance = 17,
 	waterModPercent = 0.5,
 
-	clientObjectCRC = 2803462038
+	clientObjectCRC = 2803462038,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/creature/npc/base/shared_base_npc.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_creature_npc_base_shared_rodian_base_female, "object/creature/npc/base/shared_rodian_base_female.iff")
@@ -3624,7 +3669,8 @@ object_creature_npc_base_shared_rodian_base_male = SharedCreatureObjectTemplate:
 	warpTolerance = 17,
 	waterModPercent = 0.5,
 
-	clientObjectCRC = 873111919
+	clientObjectCRC = 873111919,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/creature/npc/base/shared_base_npc.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_creature_npc_base_shared_rodian_base_male, "object/creature/npc/base/shared_rodian_base_male.iff")
@@ -3702,7 +3748,8 @@ object_creature_npc_base_shared_selonian_base_female = SharedCreatureObjectTempl
 	warpTolerance = 17,
 	waterModPercent = 0.5,
 
-	clientObjectCRC = 4114788784
+	clientObjectCRC = 4114788784,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/creature/npc/base/shared_base_npc.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_creature_npc_base_shared_selonian_base_female, "object/creature/npc/base/shared_selonian_base_female.iff")
@@ -3780,7 +3827,8 @@ object_creature_npc_base_shared_selonian_base_male = SharedCreatureObjectTemplat
 	warpTolerance = 17,
 	waterModPercent = 0.5,
 
-	clientObjectCRC = 1841868410
+	clientObjectCRC = 1841868410,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/creature/npc/base/shared_base_npc.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_creature_npc_base_shared_selonian_base_male, "object/creature/npc/base/shared_selonian_base_male.iff")
@@ -3858,7 +3906,8 @@ object_creature_npc_base_shared_sullustan_base_male = SharedCreatureObjectTempla
 	warpTolerance = 17,
 	waterModPercent = 0.5,
 
-	clientObjectCRC = 381383099
+	clientObjectCRC = 381383099,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/creature/npc/base/shared_base_npc.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_creature_npc_base_shared_sullustan_base_male, "object/creature/npc/base/shared_sullustan_base_male.iff")
@@ -3936,7 +3985,8 @@ object_creature_npc_base_shared_trandoshan_base_female = SharedCreatureObjectTem
 	warpTolerance = 17,
 	waterModPercent = 0.5,
 
-	clientObjectCRC = 2585187332
+	clientObjectCRC = 2585187332,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/creature/npc/base/shared_base_npc.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_creature_npc_base_shared_trandoshan_base_female, "object/creature/npc/base/shared_trandoshan_base_female.iff")
@@ -4014,7 +4064,8 @@ object_creature_npc_base_shared_trandoshan_base_male = SharedCreatureObjectTempl
 	warpTolerance = 17,
 	waterModPercent = 0.5,
 
-	clientObjectCRC = 193024850
+	clientObjectCRC = 193024850,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/creature/npc/base/shared_base_npc.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_creature_npc_base_shared_trandoshan_base_male, "object/creature/npc/base/shared_trandoshan_base_male.iff")
@@ -4092,7 +4143,8 @@ object_creature_npc_base_shared_tusken_raider_base_male = SharedCreatureObjectTe
 	warpTolerance = 17,
 	waterModPercent = 0.5,
 
-	clientObjectCRC = 344809642
+	clientObjectCRC = 344809642,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/creature/npc/base/shared_base_npc.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_creature_npc_base_shared_tusken_raider_base_male, "object/creature/npc/base/shared_tusken_raider_base_male.iff")
@@ -4170,7 +4222,8 @@ object_creature_npc_base_shared_twilek_base_female = SharedCreatureObjectTemplat
 	warpTolerance = 17,
 	waterModPercent = 0.5,
 
-	clientObjectCRC = 4167458949
+	clientObjectCRC = 4167458949,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/creature/npc/base/shared_base_npc.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_creature_npc_base_shared_twilek_base_female, "object/creature/npc/base/shared_twilek_base_female.iff")
@@ -4248,7 +4301,8 @@ object_creature_npc_base_shared_twilek_base_male = SharedCreatureObjectTemplate:
 	warpTolerance = 17,
 	waterModPercent = 0.5,
 
-	clientObjectCRC = 3121839578
+	clientObjectCRC = 3121839578,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/creature/npc/base/shared_base_npc.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_creature_npc_base_shared_twilek_base_male, "object/creature/npc/base/shared_twilek_base_male.iff")
@@ -4326,7 +4380,8 @@ object_creature_npc_base_shared_weequay_base_male = SharedCreatureObjectTemplate
 	warpTolerance = 17,
 	waterModPercent = 0.5,
 
-	clientObjectCRC = 3478426739
+	clientObjectCRC = 3478426739,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/creature/npc/base/shared_base_npc.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_creature_npc_base_shared_weequay_base_male, "object/creature/npc/base/shared_weequay_base_male.iff")
@@ -4404,7 +4459,8 @@ object_creature_npc_base_shared_whiphid_base_female = SharedCreatureObjectTempla
 	warpTolerance = 17,
 	waterModPercent = 0.5,
 
-	clientObjectCRC = 858760919
+	clientObjectCRC = 858760919,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/creature/npc/base/shared_base_npc.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_creature_npc_base_shared_whiphid_base_female, "object/creature/npc/base/shared_whiphid_base_female.iff")
@@ -4482,7 +4538,8 @@ object_creature_npc_base_shared_whiphid_base_male = SharedCreatureObjectTemplate
 	warpTolerance = 17,
 	waterModPercent = 0.5,
 
-	clientObjectCRC = 929953104
+	clientObjectCRC = 929953104,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/creature/npc/base/shared_base_npc.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_creature_npc_base_shared_whiphid_base_male, "object/creature/npc/base/shared_whiphid_base_male.iff")
@@ -4560,7 +4617,8 @@ object_creature_npc_base_shared_wookiee_base_female = SharedCreatureObjectTempla
 	warpTolerance = 17,
 	waterModPercent = 0.5,
 
-	clientObjectCRC = 3361749167
+	clientObjectCRC = 3361749167,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/creature/npc/base/shared_base_npc.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_creature_npc_base_shared_wookiee_base_female, "object/creature/npc/base/shared_wookiee_base_female.iff")
@@ -4638,7 +4696,8 @@ object_creature_npc_base_shared_wookiee_base_male = SharedCreatureObjectTemplate
 	warpTolerance = 17,
 	waterModPercent = 0.5,
 
-	clientObjectCRC = 627149744
+	clientObjectCRC = 627149744,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/creature/npc/base/shared_base_npc.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_creature_npc_base_shared_wookiee_base_male, "object/creature/npc/base/shared_wookiee_base_male.iff")
@@ -4716,7 +4775,8 @@ object_creature_npc_base_shared_zabrak_base_female = SharedCreatureObjectTemplat
 	warpTolerance = 17,
 	waterModPercent = 0.5,
 
-	clientObjectCRC = 2580396153
+	clientObjectCRC = 2580396153,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/creature/npc/base/shared_base_npc.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_creature_npc_base_shared_zabrak_base_female, "object/creature/npc/base/shared_zabrak_base_female.iff")
@@ -4794,7 +4854,8 @@ object_creature_npc_base_shared_zabrak_base_male = SharedCreatureObjectTemplate:
 	warpTolerance = 17,
 	waterModPercent = 0.5,
 
-	clientObjectCRC = 2904879514
+	clientObjectCRC = 2904879514,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/creature/npc/base/shared_base_npc.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_creature_npc_base_shared_zabrak_base_male, "object/creature/npc/base/shared_zabrak_base_male.iff")

@@ -90,7 +90,8 @@ object_tangible_component_food_base_shared_drink_container_base = SharedTangible
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1975147691
+	clientObjectCRC = 1975147691,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_food_base_shared_drink_container_base, "object/tangible/component/food/base/shared_drink_container_base.iff")

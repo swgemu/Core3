@@ -80,7 +80,8 @@ object_static_terrain_corellia_shared_rock_bowl_agrilat_double = SharedStaticObj
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2001053430
+	clientObjectCRC = 2001053430,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/terrain/base/shared_static_terrain_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_terrain_corellia_shared_rock_bowl_agrilat_double, "object/static/terrain/corellia/shared_rock_bowl_agrilat_double.iff")
@@ -124,7 +125,8 @@ object_static_terrain_corellia_shared_rock_bowl_agrilat_single = SharedStaticObj
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 269158049
+	clientObjectCRC = 269158049,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/terrain/base/shared_static_terrain_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_terrain_corellia_shared_rock_bowl_agrilat_single, "object/static/terrain/corellia/shared_rock_bowl_agrilat_single.iff")
@@ -168,7 +170,8 @@ object_static_terrain_corellia_shared_rock_crystal_agrilat_arch_small = SharedSt
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 443205623
+	clientObjectCRC = 443205623,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/terrain/base/shared_static_terrain_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_terrain_corellia_shared_rock_crystal_agrilat_arch_small, "object/static/terrain/corellia/shared_rock_crystal_agrilat_arch_small.iff")
@@ -212,7 +215,8 @@ object_static_terrain_corellia_shared_rock_crystal_arch_agrilat_half_medium = Sh
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3222394313
+	clientObjectCRC = 3222394313,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/terrain/base/shared_static_terrain_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_terrain_corellia_shared_rock_crystal_arch_agrilat_half_medium, "object/static/terrain/corellia/shared_rock_crystal_arch_agrilat_half_medium.iff")
@@ -256,7 +260,8 @@ object_static_terrain_corellia_shared_rock_crystal_arch_agrilat_medium = SharedS
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 925475782
+	clientObjectCRC = 925475782,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/terrain/base/shared_static_terrain_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_terrain_corellia_shared_rock_crystal_arch_agrilat_medium, "object/static/terrain/corellia/shared_rock_crystal_arch_agrilat_medium.iff")
@@ -300,7 +305,8 @@ object_static_terrain_corellia_shared_rock_crystal_geyser_agrilat_large = Shared
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1782875920
+	clientObjectCRC = 1782875920,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/terrain/base/shared_static_terrain_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_terrain_corellia_shared_rock_crystal_geyser_agrilat_large, "object/static/terrain/corellia/shared_rock_crystal_geyser_agrilat_large.iff")
@@ -344,7 +350,8 @@ object_static_terrain_corellia_shared_rock_crystal_geyser_agrilat_main = SharedS
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 667239859
+	clientObjectCRC = 667239859,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/terrain/base/shared_static_terrain_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_terrain_corellia_shared_rock_crystal_geyser_agrilat_main, "object/static/terrain/corellia/shared_rock_crystal_geyser_agrilat_main.iff")
@@ -388,7 +395,8 @@ object_static_terrain_corellia_shared_rock_crystal_geyser_agrilat_medium = Share
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2360913555
+	clientObjectCRC = 2360913555,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/terrain/base/shared_static_terrain_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_terrain_corellia_shared_rock_crystal_geyser_agrilat_medium, "object/static/terrain/corellia/shared_rock_crystal_geyser_agrilat_medium.iff")
@@ -432,7 +440,8 @@ object_static_terrain_corellia_shared_rock_crystal_geyser_agrilat_small = Shared
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1583289145
+	clientObjectCRC = 1583289145,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/terrain/base/shared_static_terrain_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_terrain_corellia_shared_rock_crystal_geyser_agrilat_small, "object/static/terrain/corellia/shared_rock_crystal_geyser_agrilat_small.iff")
@@ -476,7 +485,8 @@ object_static_terrain_corellia_shared_rock_crystal_mound_agrilat_large = SharedS
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1649037373
+	clientObjectCRC = 1649037373,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/terrain/base/shared_static_terrain_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_terrain_corellia_shared_rock_crystal_mound_agrilat_large, "object/static/terrain/corellia/shared_rock_crystal_mound_agrilat_large.iff")
@@ -520,7 +530,8 @@ object_static_terrain_corellia_shared_rock_crystal_mound_agrilat_medium = Shared
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2758241835
+	clientObjectCRC = 2758241835,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/terrain/base/shared_static_terrain_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_terrain_corellia_shared_rock_crystal_mound_agrilat_medium, "object/static/terrain/corellia/shared_rock_crystal_mound_agrilat_medium.iff")
@@ -564,7 +575,8 @@ object_static_terrain_corellia_shared_rock_crystl_shrpbush_main = SharedStaticOb
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 563211563
+	clientObjectCRC = 563211563,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/terrain/base/shared_static_terrain_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_terrain_corellia_shared_rock_crystl_shrpbush_main, "object/static/terrain/corellia/shared_rock_crystl_shrpbush_main.iff")
@@ -608,7 +620,8 @@ object_static_terrain_corellia_shared_rock_crystl_shrpbush_med = SharedStaticObj
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2674710016
+	clientObjectCRC = 2674710016,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/terrain/base/shared_static_terrain_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_terrain_corellia_shared_rock_crystl_shrpbush_med, "object/static/terrain/corellia/shared_rock_crystl_shrpbush_med.iff")
@@ -652,7 +665,8 @@ object_static_terrain_corellia_shared_rock_crystl_shrpbush_sm = SharedStaticObje
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 751683644
+	clientObjectCRC = 751683644,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/terrain/base/shared_static_terrain_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_terrain_corellia_shared_rock_crystl_shrpbush_sm, "object/static/terrain/corellia/shared_rock_crystl_shrpbush_sm.iff")

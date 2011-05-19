@@ -90,7 +90,8 @@ object_installation_turret_base_shared_turret_base = SharedInstallationObjectTem
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 646823895
+	clientObjectCRC = 646823895,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_installation_turret_base_shared_turret_base, "object/installation/turret/base/shared_turret_base.iff")

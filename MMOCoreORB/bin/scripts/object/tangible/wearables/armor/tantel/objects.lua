@@ -90,7 +90,8 @@ object_tangible_wearables_armor_tantel_shared_armor_tantel_skreej_boots = Shared
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 917083893
+	clientObjectCRC = 917083893,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_shoes.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_tantel_shared_armor_tantel_skreej_boots, "object/tangible/wearables/armor/tantel/shared_armor_tantel_skreej_boots.iff")
@@ -144,7 +145,8 @@ object_tangible_wearables_armor_tantel_shared_armor_tantel_skreej_boots_quest = 
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 30813288
+	clientObjectCRC = 30813288,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_shoes.iff", "object/tangible/wearables/armor/tantel/shared_armor_tantel_skreej_boots.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_tantel_shared_armor_tantel_skreej_boots_quest, "object/tangible/wearables/armor/tantel/shared_armor_tantel_skreej_boots_quest.iff")
@@ -198,7 +200,8 @@ object_tangible_wearables_armor_tantel_shared_armor_tantel_skreej_chest_plate = 
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 290985679
+	clientObjectCRC = 290985679,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_vest.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_tantel_shared_armor_tantel_skreej_chest_plate, "object/tangible/wearables/armor/tantel/shared_armor_tantel_skreej_chest_plate.iff")
@@ -252,7 +255,8 @@ object_tangible_wearables_armor_tantel_shared_armor_tantel_skreej_chest_plate_qu
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1738912430
+	clientObjectCRC = 1738912430,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_vest.iff", "object/tangible/wearables/armor/tantel/shared_armor_tantel_skreej_chest_plate.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_tantel_shared_armor_tantel_skreej_chest_plate_quest, "object/tangible/wearables/armor/tantel/shared_armor_tantel_skreej_chest_plate_quest.iff")
@@ -306,7 +310,8 @@ object_tangible_wearables_armor_tantel_shared_armor_tantel_skreej_helmet = Share
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1458475008
+	clientObjectCRC = 1458475008,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_armor_base.iff", "object/tangible/wearables/base/shared_base_helmet_closed_full.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_tantel_shared_armor_tantel_skreej_helmet, "object/tangible/wearables/armor/tantel/shared_armor_tantel_skreej_helmet.iff")
@@ -360,7 +365,8 @@ object_tangible_wearables_armor_tantel_shared_armor_tantel_skreej_helmet_quest =
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1049616094
+	clientObjectCRC = 1049616094,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_armor_base.iff", "object/tangible/wearables/base/shared_base_helmet_closed_full.iff", "object/tangible/wearables/armor/tantel/shared_armor_tantel_skreej_helmet.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_tantel_shared_armor_tantel_skreej_helmet_quest, "object/tangible/wearables/armor/tantel/shared_armor_tantel_skreej_helmet_quest.iff")

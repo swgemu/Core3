@@ -90,7 +90,8 @@ object_tangible_lair_zucca_boar_shared_lair_zucca_boar = SharedTangibleObjectTem
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3052352906
+	clientObjectCRC = 3052352906,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff", "object/tangible/lair/base/shared_lair_base_cave_lion_light.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_zucca_boar_shared_lair_zucca_boar, "object/tangible/lair/zucca_boar/shared_lair_zucca_boar.iff")
@@ -144,7 +145,8 @@ object_tangible_lair_zucca_boar_shared_lair_zucca_boar_desert = SharedTangibleOb
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 415973727
+	clientObjectCRC = 415973727,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff", "object/tangible/lair/base/shared_lair_base_cave_lion_light.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_zucca_boar_shared_lair_zucca_boar_desert, "object/tangible/lair/zucca_boar/shared_lair_zucca_boar_desert.iff")
@@ -198,7 +200,8 @@ object_tangible_lair_zucca_boar_shared_lair_zucca_boar_dune = SharedTangibleObje
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3550514923
+	clientObjectCRC = 3550514923,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff", "object/tangible/lair/base/shared_lair_base_cave_lion_light.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_zucca_boar_shared_lair_zucca_boar_dune, "object/tangible/lair/zucca_boar/shared_lair_zucca_boar_dune.iff")
@@ -252,7 +255,8 @@ object_tangible_lair_zucca_boar_shared_lair_zucca_boar_wasteland = SharedTangibl
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 102331287
+	clientObjectCRC = 102331287,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff", "object/tangible/lair/base/shared_lair_base_cave_lion_light.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_zucca_boar_shared_lair_zucca_boar_wasteland, "object/tangible/lair/zucca_boar/shared_lair_zucca_boar_wasteland.iff")

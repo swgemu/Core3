@@ -93,7 +93,8 @@ object_building_general_shared_aircar_general = SharedBuildingObjectTemplate:new
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 929068141
+	clientObjectCRC = 929068141,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_aircar.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_general_shared_aircar_general, "object/building/general/shared_aircar_general.iff")
@@ -150,7 +151,8 @@ object_building_general_shared_arena_general = SharedBuildingObjectTemplate:new 
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3257125986
+	clientObjectCRC = 3257125986,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_arena.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_general_shared_arena_general, "object/building/general/shared_arena_general.iff")
@@ -207,7 +209,8 @@ object_building_general_shared_arena_large_general = SharedBuildingObjectTemplat
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3322084706
+	clientObjectCRC = 3322084706,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_arena_large.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_general_shared_arena_large_general, "object/building/general/shared_arena_large_general.iff")
@@ -264,7 +267,8 @@ object_building_general_shared_association_hall_civilian_general = SharedBuildin
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3632219938
+	clientObjectCRC = 3632219938,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_association_hall.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_general_shared_association_hall_civilian_general, "object/building/general/shared_association_hall_civilian_general.iff")
@@ -321,7 +325,8 @@ object_building_general_shared_association_hall_general = SharedBuildingObjectTe
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3960949370
+	clientObjectCRC = 3960949370,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_association_hall.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_general_shared_association_hall_general, "object/building/general/shared_association_hall_general.iff")
@@ -378,7 +383,8 @@ object_building_general_shared_bank_general = SharedBuildingObjectTemplate:new {
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2650754817
+	clientObjectCRC = 2650754817,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_bank.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_general_shared_bank_general, "object/building/general/shared_bank_general.iff")
@@ -435,7 +441,8 @@ object_building_general_shared_bunker_allum_mine = SharedBuildingObjectTemplate:
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 599067335
+	clientObjectCRC = 599067335,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_cave.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_general_shared_bunker_allum_mine, "object/building/general/shared_bunker_allum_mine.iff")
@@ -492,7 +499,8 @@ object_building_general_shared_bunker_blacksun_outpost_01 = SharedBuildingObject
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1938342630
+	clientObjectCRC = 1938342630,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_cave.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_general_shared_bunker_blacksun_outpost_01, "object/building/general/shared_bunker_blacksun_outpost_01.iff")
@@ -549,7 +557,8 @@ object_building_general_shared_bunker_crimelord_retreat_01 = SharedBuildingObjec
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3171223694
+	clientObjectCRC = 3171223694,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_cave.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_general_shared_bunker_crimelord_retreat_01, "object/building/general/shared_bunker_crimelord_retreat_01.iff")
@@ -606,7 +615,8 @@ object_building_general_shared_bunker_imperial_01 = SharedBuildingObjectTemplate
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2982837298
+	clientObjectCRC = 2982837298,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_cave.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_general_shared_bunker_imperial_01, "object/building/general/shared_bunker_imperial_01.iff")
@@ -663,7 +673,8 @@ object_building_general_shared_bunker_imperial_02 = SharedBuildingObjectTemplate
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1792922789
+	clientObjectCRC = 1792922789,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_cave.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_general_shared_bunker_imperial_02, "object/building/general/shared_bunker_imperial_02.iff")
@@ -720,7 +731,8 @@ object_building_general_shared_bunker_imperial_03 = SharedBuildingObjectTemplate
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 600879912
+	clientObjectCRC = 600879912,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_cave.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_general_shared_bunker_imperial_03, "object/building/general/shared_bunker_imperial_03.iff")
@@ -777,7 +789,8 @@ object_building_general_shared_bunker_imperial_bunker_abandoned = SharedBuilding
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 990897798
+	clientObjectCRC = 990897798,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_cave.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_general_shared_bunker_imperial_bunker_abandoned, "object/building/general/shared_bunker_imperial_bunker_abandoned.iff")
@@ -834,7 +847,8 @@ object_building_general_shared_bunker_imperial_deep_chasm = SharedBuildingObject
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2935243152
+	clientObjectCRC = 2935243152,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_cave.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_general_shared_bunker_imperial_deep_chasm, "object/building/general/shared_bunker_imperial_deep_chasm.iff")
@@ -891,7 +905,8 @@ object_building_general_shared_bunker_imperial_detainment_center_01 = SharedBuil
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1672354378
+	clientObjectCRC = 1672354378,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_cave.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_general_shared_bunker_imperial_detainment_center_01, "object/building/general/shared_bunker_imperial_detainment_center_01.iff")
@@ -948,7 +963,8 @@ object_building_general_shared_bunker_imperial_prison_01 = SharedBuildingObjectT
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1661550307
+	clientObjectCRC = 1661550307,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_cave.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_general_shared_bunker_imperial_prison_01, "object/building/general/shared_bunker_imperial_prison_01.iff")
@@ -1005,7 +1021,8 @@ object_building_general_shared_bunker_imperial_weapons_research_facility_01 = Sh
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 357299427
+	clientObjectCRC = 357299427,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_cave.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_general_shared_bunker_imperial_weapons_research_facility_01, "object/building/general/shared_bunker_imperial_weapons_research_facility_01.iff")
@@ -1062,7 +1079,8 @@ object_building_general_shared_bunker_mad_bio = SharedBuildingObjectTemplate:new
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3223964695
+	clientObjectCRC = 3223964695,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_cave.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_general_shared_bunker_mad_bio, "object/building/general/shared_bunker_mad_bio.iff")
@@ -1119,7 +1137,8 @@ object_building_general_shared_bunker_rebel_01 = SharedBuildingObjectTemplate:ne
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 102885585
+	clientObjectCRC = 102885585,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_cave.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_general_shared_bunker_rebel_01, "object/building/general/shared_bunker_rebel_01.iff")
@@ -1176,7 +1195,8 @@ object_building_general_shared_bunker_rebel_deep_chasm = SharedBuildingObjectTem
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3695355168
+	clientObjectCRC = 3695355168,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_cave.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_general_shared_bunker_rebel_deep_chasm, "object/building/general/shared_bunker_rebel_deep_chasm.iff")
@@ -1233,7 +1253,8 @@ object_building_general_shared_bunker_rebel_spynet = SharedBuildingObjectTemplat
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4133162154
+	clientObjectCRC = 4133162154,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_cave.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_general_shared_bunker_rebel_spynet, "object/building/general/shared_bunker_rebel_spynet.iff")
@@ -1290,7 +1311,8 @@ object_building_general_shared_bunker_rebel_weapons_depot = SharedBuildingObject
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2551461683
+	clientObjectCRC = 2551461683,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_cave.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_general_shared_bunker_rebel_weapons_depot, "object/building/general/shared_bunker_rebel_weapons_depot.iff")
@@ -1347,7 +1369,8 @@ object_building_general_shared_bunker_research_facility_01 = SharedBuildingObjec
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2046272201
+	clientObjectCRC = 2046272201,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_cave.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_general_shared_bunker_research_facility_01, "object/building/general/shared_bunker_research_facility_01.iff")
@@ -1404,7 +1427,8 @@ object_building_general_shared_bunker_small_outpost_01 = SharedBuildingObjectTem
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1060967532
+	clientObjectCRC = 1060967532,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_cave.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_general_shared_bunker_small_outpost_01, "object/building/general/shared_bunker_small_outpost_01.iff")
@@ -1461,7 +1485,8 @@ object_building_general_shared_bunker_small_outpost_02 = SharedBuildingObjectTem
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3828006139
+	clientObjectCRC = 3828006139,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_cave.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_general_shared_bunker_small_outpost_02, "object/building/general/shared_bunker_small_outpost_02.iff")
@@ -1518,7 +1543,8 @@ object_building_general_shared_bunker_talus_chunker_bunker = SharedBuildingObjec
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2130756010
+	clientObjectCRC = 2130756010,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_cave.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_general_shared_bunker_talus_chunker_bunker, "object/building/general/shared_bunker_talus_chunker_bunker.iff")
@@ -1575,7 +1601,8 @@ object_building_general_shared_bunker_tok_retreat_01 = SharedBuildingObjectTempl
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2032341079
+	clientObjectCRC = 2032341079,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_cave.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_general_shared_bunker_tok_retreat_01, "object/building/general/shared_bunker_tok_retreat_01.iff")
@@ -1632,7 +1659,8 @@ object_building_general_shared_bunker_warren_01 = SharedBuildingObjectTemplate:n
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2436238099
+	clientObjectCRC = 2436238099,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_cave.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_general_shared_bunker_warren_01, "object/building/general/shared_bunker_warren_01.iff")
@@ -1689,7 +1717,8 @@ object_building_general_shared_cantina_general = SharedBuildingObjectTemplate:ne
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4015930050
+	clientObjectCRC = 4015930050,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_cantina.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_general_shared_cantina_general, "object/building/general/shared_cantina_general.iff")
@@ -1746,7 +1775,8 @@ object_building_general_shared_capitol_general = SharedBuildingObjectTemplate:ne
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2926502766
+	clientObjectCRC = 2926502766,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_palace.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_general_shared_capitol_general, "object/building/general/shared_capitol_general.iff")
@@ -1803,7 +1833,8 @@ object_building_general_shared_cave_01 = SharedBuildingObjectTemplate:new {
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3160184163
+	clientObjectCRC = 3160184163,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_cave.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_general_shared_cave_01, "object/building/general/shared_cave_01.iff")
@@ -1860,7 +1891,8 @@ object_building_general_shared_cave_01_damprock = SharedBuildingObjectTemplate:n
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 952315499
+	clientObjectCRC = 952315499,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_cave.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_general_shared_cave_01_damprock, "object/building/general/shared_cave_01_damprock.iff")
@@ -1917,7 +1949,8 @@ object_building_general_shared_cave_01_damprock_mirror = SharedBuildingObjectTem
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2530583699
+	clientObjectCRC = 2530583699,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_cave.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_general_shared_cave_01_damprock_mirror, "object/building/general/shared_cave_01_damprock_mirror.iff")
@@ -1974,7 +2007,8 @@ object_building_general_shared_cave_01_ice = SharedBuildingObjectTemplate:new {
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3629542620
+	clientObjectCRC = 3629542620,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_cave.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_general_shared_cave_01_ice, "object/building/general/shared_cave_01_ice.iff")
@@ -2031,7 +2065,8 @@ object_building_general_shared_cave_01_mirror = SharedBuildingObjectTemplate:new
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3887886541
+	clientObjectCRC = 3887886541,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_cave.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_general_shared_cave_01_mirror, "object/building/general/shared_cave_01_mirror.iff")
@@ -2088,7 +2123,8 @@ object_building_general_shared_cave_02 = SharedBuildingObjectTemplate:new {
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1732984308
+	clientObjectCRC = 1732984308,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_cave.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_general_shared_cave_02, "object/building/general/shared_cave_02.iff")
@@ -2145,7 +2181,8 @@ object_building_general_shared_cave_02_damprock = SharedBuildingObjectTemplate:n
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4040916264
+	clientObjectCRC = 4040916264,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_cave.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_general_shared_cave_02_damprock, "object/building/general/shared_cave_02_damprock.iff")
@@ -2202,7 +2239,8 @@ object_building_general_shared_cave_02_damprock_mirror = SharedBuildingObjectTem
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3705597680
+	clientObjectCRC = 3705597680,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_cave.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_general_shared_cave_02_damprock_mirror, "object/building/general/shared_cave_02_damprock_mirror.iff")
@@ -2259,7 +2297,8 @@ object_building_general_shared_cave_02_ice = SharedBuildingObjectTemplate:new {
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3398864833
+	clientObjectCRC = 3398864833,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_cave.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_general_shared_cave_02_ice, "object/building/general/shared_cave_02_ice.iff")
@@ -2316,7 +2355,8 @@ object_building_general_shared_cave_02_mirror = SharedBuildingObjectTemplate:new
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4020721095
+	clientObjectCRC = 4020721095,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_cave.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_general_shared_cave_02_mirror, "object/building/general/shared_cave_02_mirror.iff")
@@ -2373,7 +2413,8 @@ object_building_general_shared_cave_03 = SharedBuildingObjectTemplate:new {
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 776362617
+	clientObjectCRC = 776362617,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_cave.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_general_shared_cave_03, "object/building/general/shared_cave_03.iff")
@@ -2430,7 +2471,8 @@ object_building_general_shared_cave_03_damprock = SharedBuildingObjectTemplate:n
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3073160169
+	clientObjectCRC = 3073160169,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_cave.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_general_shared_cave_03_damprock, "object/building/general/shared_cave_03_damprock.iff")
@@ -2487,7 +2529,8 @@ object_building_general_shared_cave_03_damprock_mirror = SharedBuildingObjectTem
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 426189756
+	clientObjectCRC = 426189756,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_cave.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_general_shared_cave_03_damprock_mirror, "object/building/general/shared_cave_03_damprock_mirror.iff")
@@ -2544,7 +2587,8 @@ object_building_general_shared_cave_03_ice = SharedBuildingObjectTemplate:new {
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 949364135
+	clientObjectCRC = 949364135,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_cave.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_general_shared_cave_03_ice, "object/building/general/shared_cave_03_ice.iff")
@@ -2601,7 +2645,8 @@ object_building_general_shared_cave_03_mirror = SharedBuildingObjectTemplate:new
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3897669313
+	clientObjectCRC = 3897669313,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_cave.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_general_shared_cave_03_mirror, "object/building/general/shared_cave_03_mirror.iff")
@@ -2658,7 +2703,8 @@ object_building_general_shared_cave_04_ice_s01 = SharedBuildingObjectTemplate:ne
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 519460091
+	clientObjectCRC = 519460091,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_cave.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_general_shared_cave_04_ice_s01, "object/building/general/shared_cave_04_ice_s01.iff")
@@ -2715,7 +2761,8 @@ object_building_general_shared_cave_05_ice_s02 = SharedBuildingObjectTemplate:ne
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 759540329
+	clientObjectCRC = 759540329,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_cave.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_general_shared_cave_05_ice_s02, "object/building/general/shared_cave_05_ice_s02.iff")
@@ -2772,7 +2819,8 @@ object_building_general_shared_cave_06_flatland_s01 = SharedBuildingObjectTempla
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 736190789
+	clientObjectCRC = 736190789,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_cave.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_general_shared_cave_06_flatland_s01, "object/building/general/shared_cave_06_flatland_s01.iff")
@@ -2829,7 +2877,8 @@ object_building_general_shared_cave_06_flatland_s01_damprock = SharedBuildingObj
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3352052197
+	clientObjectCRC = 3352052197,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_cave.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_general_shared_cave_06_flatland_s01_damprock, "object/building/general/shared_cave_06_flatland_s01_damprock.iff")
@@ -2886,7 +2935,8 @@ object_building_general_shared_cave_06_flatland_s01_ice = SharedBuildingObjectTe
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1663639712
+	clientObjectCRC = 1663639712,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_cave.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_general_shared_cave_06_flatland_s01_ice, "object/building/general/shared_cave_06_flatland_s01_ice.iff")
@@ -2943,7 +2993,8 @@ object_building_general_shared_cave_07_flatland_s02 = SharedBuildingObjectTempla
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1905336231
+	clientObjectCRC = 1905336231,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_cave.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_general_shared_cave_07_flatland_s02, "object/building/general/shared_cave_07_flatland_s02.iff")
@@ -3000,7 +3051,8 @@ object_building_general_shared_cave_07_flatland_s02_damprock = SharedBuildingObj
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3655237343
+	clientObjectCRC = 3655237343,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_cave.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_general_shared_cave_07_flatland_s02_damprock, "object/building/general/shared_cave_07_flatland_s02_damprock.iff")
@@ -3057,7 +3109,8 @@ object_building_general_shared_cave_07_flatland_s02_ice = SharedBuildingObjectTe
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2188080207
+	clientObjectCRC = 2188080207,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_cave.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_general_shared_cave_07_flatland_s02_ice, "object/building/general/shared_cave_07_flatland_s02_ice.iff")
@@ -3114,7 +3167,8 @@ object_building_general_shared_cave_08_flatland_s03 = SharedBuildingObjectTempla
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2882713804
+	clientObjectCRC = 2882713804,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_cave.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_general_shared_cave_08_flatland_s03, "object/building/general/shared_cave_08_flatland_s03.iff")
@@ -3171,7 +3225,8 @@ object_building_general_shared_cave_08_flatland_s03_damprock = SharedBuildingObj
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 524918885
+	clientObjectCRC = 524918885,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_cave.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_general_shared_cave_08_flatland_s03_damprock, "object/building/general/shared_cave_08_flatland_s03_damprock.iff")
@@ -3228,7 +3283,8 @@ object_building_general_shared_cave_08_flatland_s03_ice = SharedBuildingObjectTe
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 557190412
+	clientObjectCRC = 557190412,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_cave.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_general_shared_cave_08_flatland_s03_ice, "object/building/general/shared_cave_08_flatland_s03_ice.iff")
@@ -3285,7 +3341,8 @@ object_building_general_shared_cave_lok_pirate_cave = SharedBuildingObjectTempla
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 153465138
+	clientObjectCRC = 153465138,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_cave.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_general_shared_cave_lok_pirate_cave, "object/building/general/shared_cave_lok_pirate_cave.iff")
@@ -3342,7 +3399,8 @@ object_building_general_shared_cave_morag = SharedBuildingObjectTemplate:new {
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1852639945
+	clientObjectCRC = 1852639945,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_cave.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_general_shared_cave_morag, "object/building/general/shared_cave_morag.iff")
@@ -3399,7 +3457,8 @@ object_building_general_shared_cloning_facility_general = SharedBuildingObjectTe
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 327514443
+	clientObjectCRC = 327514443,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_cloning_facility.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_general_shared_cloning_facility_general, "object/building/general/shared_cloning_facility_general.iff")
@@ -3456,7 +3515,8 @@ object_building_general_shared_corellia_afarathu_cave = SharedBuildingObjectTemp
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1102119105
+	clientObjectCRC = 1102119105,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_cave.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_general_shared_corellia_afarathu_cave, "object/building/general/shared_corellia_afarathu_cave.iff")
@@ -3513,7 +3573,8 @@ object_building_general_shared_corellia_drall_cave = SharedBuildingObjectTemplat
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 88228892
+	clientObjectCRC = 88228892,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_cave.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_general_shared_corellia_drall_cave, "object/building/general/shared_corellia_drall_cave.iff")
@@ -3570,7 +3631,8 @@ object_building_general_shared_corellia_nyax_bunker = SharedBuildingObjectTempla
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 780046145
+	clientObjectCRC = 780046145,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_cave.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_general_shared_corellia_nyax_bunker, "object/building/general/shared_corellia_nyax_bunker.iff")
@@ -3627,7 +3689,8 @@ object_building_general_shared_dantooine_force_crystal_hunter_sd_cave = SharedBu
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1263547301
+	clientObjectCRC = 1263547301,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_cave.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_general_shared_dantooine_force_crystal_hunter_sd_cave, "object/building/general/shared_dantooine_force_crystal_hunter_sd_cave.iff")
@@ -3684,7 +3747,8 @@ object_building_general_shared_dantooine_janta_cave = SharedBuildingObjectTempla
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1976190033
+	clientObjectCRC = 1976190033,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_cave.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_general_shared_dantooine_janta_cave, "object/building/general/shared_dantooine_janta_cave.iff")
@@ -3741,7 +3805,8 @@ object_building_general_shared_dantooine_kunga_cave = SharedBuildingObjectTempla
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2274845407
+	clientObjectCRC = 2274845407,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_cave.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_general_shared_dantooine_kunga_cave, "object/building/general/shared_dantooine_kunga_cave.iff")
@@ -3798,7 +3863,8 @@ object_building_general_shared_dathomir_nsister_cave = SharedBuildingObjectTempl
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 711566567
+	clientObjectCRC = 711566567,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_cave.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_general_shared_dathomir_nsister_cave, "object/building/general/shared_dathomir_nsister_cave.iff")
@@ -3855,7 +3921,8 @@ object_building_general_shared_dathomir_nsister_rancor_cave = SharedBuildingObje
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1702144691
+	clientObjectCRC = 1702144691,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_cave.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_general_shared_dathomir_nsister_rancor_cave, "object/building/general/shared_dathomir_nsister_rancor_cave.iff")
@@ -3912,7 +3979,8 @@ object_building_general_shared_endor_jinda_cave = SharedBuildingObjectTemplate:n
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 709151424
+	clientObjectCRC = 709151424,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_cave.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_general_shared_endor_jinda_cave, "object/building/general/shared_endor_jinda_cave.iff")
@@ -3969,7 +4037,8 @@ object_building_general_shared_endor_korga_cave = SharedBuildingObjectTemplate:n
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1189018300
+	clientObjectCRC = 1189018300,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_cave.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_general_shared_endor_korga_cave, "object/building/general/shared_endor_korga_cave.iff")
@@ -4026,7 +4095,8 @@ object_building_general_shared_endor_marauder_orphans_cave = SharedBuildingObjec
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3233389758
+	clientObjectCRC = 3233389758,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_cave.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_general_shared_endor_marauder_orphans_cave, "object/building/general/shared_endor_marauder_orphans_cave.iff")
@@ -4083,7 +4153,8 @@ object_building_general_shared_guild_combat_general_style_01 = SharedBuildingObj
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1394323186
+	clientObjectCRC = 1394323186,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_guild.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_general_shared_guild_combat_general_style_01, "object/building/general/shared_guild_combat_general_style_01.iff")
@@ -4140,7 +4211,8 @@ object_building_general_shared_guild_commerce_general_style_01 = SharedBuildingO
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 326541771
+	clientObjectCRC = 326541771,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_guild.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_general_shared_guild_commerce_general_style_01, "object/building/general/shared_guild_commerce_general_style_01.iff")
@@ -4197,7 +4269,8 @@ object_building_general_shared_guild_university_general_style_01 = SharedBuildin
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3594966040
+	clientObjectCRC = 3594966040,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_guild.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_general_shared_guild_university_general_style_01, "object/building/general/shared_guild_university_general_style_01.iff")
@@ -4254,7 +4327,8 @@ object_building_general_shared_hotel_general_style_1 = SharedBuildingObjectTempl
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2957667026
+	clientObjectCRC = 2957667026,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_hotel.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_general_shared_hotel_general_style_1, "object/building/general/shared_hotel_general_style_1.iff")
@@ -4311,7 +4385,8 @@ object_building_general_shared_hotel_general_style_2 = SharedBuildingObjectTempl
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1801306693
+	clientObjectCRC = 1801306693,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_hotel.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_general_shared_hotel_general_style_2, "object/building/general/shared_hotel_general_style_2.iff")
@@ -4368,7 +4443,8 @@ object_building_general_shared_housing_general_style_1 = SharedBuildingObjectTem
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1516155062
+	clientObjectCRC = 1516155062,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_housing.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_general_shared_housing_general_style_1, "object/building/general/shared_housing_general_style_1.iff")
@@ -4425,7 +4501,8 @@ object_building_general_shared_landing_pad_s01 = SharedBuildingObjectTemplate:ne
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 766941896
+	clientObjectCRC = 766941896,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_filler_building.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_general_shared_landing_pad_s01, "object/building/general/shared_landing_pad_s01.iff")
@@ -4482,7 +4559,8 @@ object_building_general_shared_lok_evil_droid_engineer_cave = SharedBuildingObje
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1736894341
+	clientObjectCRC = 1736894341,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_cave.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_general_shared_lok_evil_droid_engineer_cave, "object/building/general/shared_lok_evil_droid_engineer_cave.iff")
@@ -4539,7 +4617,8 @@ object_building_general_shared_lok_kimogila_cult_bunker = SharedBuildingObjectTe
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2736597128
+	clientObjectCRC = 2736597128,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_cave.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_general_shared_lok_kimogila_cult_bunker, "object/building/general/shared_lok_kimogila_cult_bunker.iff")
@@ -4596,7 +4675,8 @@ object_building_general_shared_lok_mercenary_cave_01 = SharedBuildingObjectTempl
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2476588024
+	clientObjectCRC = 2476588024,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_cave.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_general_shared_lok_mercenary_cave_01, "object/building/general/shared_lok_mercenary_cave_01.iff")
@@ -4653,7 +4733,8 @@ object_building_general_shared_lok_nymstheme_mercenary_bunker = SharedBuildingOb
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 526484590
+	clientObjectCRC = 526484590,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_cave.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_general_shared_lok_nymstheme_mercenary_bunker, "object/building/general/shared_lok_nymstheme_mercenary_bunker.iff")
@@ -4710,7 +4791,8 @@ object_building_general_shared_lok_nymstheme_pirate_cave = SharedBuildingObjectT
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 18770566
+	clientObjectCRC = 18770566,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_cave.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_general_shared_lok_nymstheme_pirate_cave, "object/building/general/shared_lok_nymstheme_pirate_cave.iff")
@@ -4767,7 +4849,8 @@ object_building_general_shared_merchant_tent_all_s01 = SharedBuildingObjectTempl
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3614150695
+	clientObjectCRC = 3614150695,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_housing.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_general_shared_merchant_tent_all_s01, "object/building/general/shared_merchant_tent_all_s01.iff")
@@ -4824,7 +4907,8 @@ object_building_general_shared_mun_all_capitol_s01 = SharedBuildingObjectTemplat
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1684189678
+	clientObjectCRC = 1684189678,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_palace.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_general_shared_mun_all_capitol_s01, "object/building/general/shared_mun_all_capitol_s01.iff")
@@ -4881,7 +4965,8 @@ object_building_general_shared_mun_all_cloning_s01 = SharedBuildingObjectTemplat
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 432887298
+	clientObjectCRC = 432887298,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_cloning_facility.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_general_shared_mun_all_cloning_s01, "object/building/general/shared_mun_all_cloning_s01.iff")
@@ -4938,7 +5023,8 @@ object_building_general_shared_mun_all_guild_combat_s01 = SharedBuildingObjectTe
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3789605488
+	clientObjectCRC = 3789605488,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_guild.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_general_shared_mun_all_guild_combat_s01, "object/building/general/shared_mun_all_guild_combat_s01.iff")
@@ -4995,7 +5081,8 @@ object_building_general_shared_mun_all_guild_commerce_s01 = SharedBuildingObject
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 49465033
+	clientObjectCRC = 49465033,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_guild.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_general_shared_mun_all_guild_commerce_s01, "object/building/general/shared_mun_all_guild_commerce_s01.iff")
@@ -5052,7 +5139,8 @@ object_building_general_shared_mun_all_guild_theater_s01 = SharedBuildingObjectT
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2335562190
+	clientObjectCRC = 2335562190,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_theater.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_general_shared_mun_all_guild_theater_s01, "object/building/general/shared_mun_all_guild_theater_s01.iff")
@@ -5109,7 +5197,8 @@ object_building_general_shared_mun_all_guild_university_s01 = SharedBuildingObje
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1179256079
+	clientObjectCRC = 1179256079,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_guild.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_general_shared_mun_all_guild_university_s01, "object/building/general/shared_mun_all_guild_university_s01.iff")
@@ -5166,7 +5255,8 @@ object_building_general_shared_mun_all_hospital_s01 = SharedBuildingObjectTempla
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3942101786
+	clientObjectCRC = 3942101786,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_palace.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_general_shared_mun_all_hospital_s01, "object/building/general/shared_mun_all_hospital_s01.iff")
@@ -5223,7 +5313,8 @@ object_building_general_shared_mun_all_hospital_s02 = SharedBuildingObjectTempla
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 836770701
+	clientObjectCRC = 836770701,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_palace.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_general_shared_mun_all_hospital_s02, "object/building/general/shared_mun_all_hospital_s02.iff")
@@ -5280,7 +5371,8 @@ object_building_general_shared_mun_all_hotel_s01 = SharedBuildingObjectTemplate:
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 64245657
+	clientObjectCRC = 64245657,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_hotel.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_general_shared_mun_all_hotel_s01, "object/building/general/shared_mun_all_hotel_s01.iff")
@@ -5337,7 +5429,8 @@ object_building_general_shared_mun_all_landing_pad_s01 = SharedBuildingObjectTem
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2845231920
+	clientObjectCRC = 2845231920,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_starport.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_general_shared_mun_all_landing_pad_s01, "object/building/general/shared_mun_all_landing_pad_s01.iff")
@@ -5394,7 +5487,8 @@ object_building_general_shared_mun_all_starport_s01 = SharedBuildingObjectTempla
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1399192891
+	clientObjectCRC = 1399192891,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_starport.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_general_shared_mun_all_starport_s01, "object/building/general/shared_mun_all_starport_s01.iff")
@@ -5451,7 +5545,8 @@ object_building_general_shared_naboo_narglatch_cave = SharedBuildingObjectTempla
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1618666507
+	clientObjectCRC = 1618666507,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_cave.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_general_shared_naboo_narglatch_cave, "object/building/general/shared_naboo_narglatch_cave.iff")
@@ -5508,7 +5603,8 @@ object_building_general_shared_naboo_pirate_bunker = SharedBuildingObjectTemplat
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2696571862
+	clientObjectCRC = 2696571862,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_cave.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_general_shared_naboo_pirate_bunker, "object/building/general/shared_naboo_pirate_bunker.iff")
@@ -5565,7 +5661,8 @@ object_building_general_shared_naboo_veermok_cave = SharedBuildingObjectTemplate
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1074091686
+	clientObjectCRC = 1074091686,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_cave.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_general_shared_naboo_veermok_cave, "object/building/general/shared_naboo_veermok_cave.iff")
@@ -5618,11 +5715,12 @@ object_building_general_shared_newbie_hall = SharedBuildingObjectTemplate:new {
 
 	targetable = 0,
 	terrainModificationFileName = "",
-	totalCellNumber = 14,
+	totalCellNumber = 12,
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3771444529
+	clientObjectCRC = 3771444529,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_association_hall.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_general_shared_newbie_hall, "object/building/general/shared_newbie_hall.iff")
@@ -5679,7 +5777,8 @@ object_building_general_shared_newbie_hall_skipped = SharedBuildingObjectTemplat
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1011239275
+	clientObjectCRC = 1011239275,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_association_hall.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_general_shared_newbie_hall_skipped, "object/building/general/shared_newbie_hall_skipped.iff")
@@ -5736,7 +5835,8 @@ object_building_general_shared_nightsister_slave_mine_sd_cave = SharedBuildingOb
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2054952898
+	clientObjectCRC = 2054952898,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_cave.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_general_shared_nightsister_slave_mine_sd_cave, "object/building/general/shared_nightsister_slave_mine_sd_cave.iff")
@@ -5793,7 +5893,8 @@ object_building_general_shared_parking_garage_general = SharedBuildingObjectTemp
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3151125
+	clientObjectCRC = 3151125,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_parking_garage.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_general_shared_parking_garage_general, "object/building/general/shared_parking_garage_general.iff")
@@ -5850,7 +5951,8 @@ object_building_general_shared_ranchers_house_tatooine = SharedBuildingObjectTem
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2779359080
+	clientObjectCRC = 2779359080,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_player_building.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_general_shared_ranchers_house_tatooine, "object/building/general/shared_ranchers_house_tatooine.iff")
@@ -5907,7 +6009,8 @@ object_building_general_shared_rebel_fuel_depot = SharedBuildingObjectTemplate:n
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3374741880
+	clientObjectCRC = 3374741880,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_cave.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_general_shared_rebel_fuel_depot, "object/building/general/shared_rebel_fuel_depot.iff")
@@ -5964,7 +6067,8 @@ object_building_general_shared_rori_bark_mite_cave = SharedBuildingObjectTemplat
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2008111071
+	clientObjectCRC = 2008111071,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_cave.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_general_shared_rori_bark_mite_cave, "object/building/general/shared_rori_bark_mite_cave.iff")
@@ -6021,7 +6125,8 @@ object_building_general_shared_rori_bat_cave = SharedBuildingObjectTemplate:new 
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2510037668
+	clientObjectCRC = 2510037668,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_cave.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_general_shared_rori_bat_cave, "object/building/general/shared_rori_bat_cave.iff")
@@ -6078,7 +6183,8 @@ object_building_general_shared_rori_cobral_bunker = SharedBuildingObjectTemplate
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2753493661
+	clientObjectCRC = 2753493661,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_cave.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_general_shared_rori_cobral_bunker, "object/building/general/shared_rori_cobral_bunker.iff")
@@ -6135,7 +6241,8 @@ object_building_general_shared_rori_garyn_bunker = SharedBuildingObjectTemplate:
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2144664039
+	clientObjectCRC = 2144664039,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_cave.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_general_shared_rori_garyn_bunker, "object/building/general/shared_rori_garyn_bunker.iff")
@@ -6192,7 +6299,8 @@ object_building_general_shared_rori_hyperdrive_research_facility = SharedBuildin
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2711352465
+	clientObjectCRC = 2711352465,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_cave.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_general_shared_rori_hyperdrive_research_facility, "object/building/general/shared_rori_hyperdrive_research_facility.iff")
@@ -6249,7 +6357,8 @@ object_building_general_shared_rori_kobola_cave = SharedBuildingObjectTemplate:n
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 303008890
+	clientObjectCRC = 303008890,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_cave.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_general_shared_rori_kobola_cave, "object/building/general/shared_rori_kobola_cave.iff")
@@ -6306,7 +6415,8 @@ object_building_general_shared_rori_torton_cave = SharedBuildingObjectTemplate:n
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1919200278
+	clientObjectCRC = 1919200278,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_cave.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_general_shared_rori_torton_cave, "object/building/general/shared_rori_torton_cave.iff")
@@ -6363,7 +6473,8 @@ object_building_general_shared_shuttleport_general = SharedBuildingObjectTemplat
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3656969600
+	clientObjectCRC = 3656969600,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_starport.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_general_shared_shuttleport_general, "object/building/general/shared_shuttleport_general.iff")
@@ -6416,11 +6527,12 @@ object_building_general_shared_space_dungeon_corellian_corvette = SharedBuilding
 
 	targetable = 0,
 	terrainModificationFileName = "",
-	totalCellNumber = 66,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2945204994
+	clientObjectCRC = 2945204994,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_cave.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_general_shared_space_dungeon_corellian_corvette, "object/building/general/shared_space_dungeon_corellian_corvette.iff")
@@ -6473,11 +6585,12 @@ object_building_general_shared_space_dungeon_corellian_corvette_imperial = Share
 
 	targetable = 0,
 	terrainModificationFileName = "",
-	totalCellNumber = 66,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3935788511
+	clientObjectCRC = 3935788511,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_cave.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_general_shared_space_dungeon_corellian_corvette_imperial, "object/building/general/shared_space_dungeon_corellian_corvette_imperial.iff")
@@ -6530,11 +6643,12 @@ object_building_general_shared_space_dungeon_corellian_corvette_rebel = SharedBu
 
 	targetable = 0,
 	terrainModificationFileName = "",
-	totalCellNumber = 66,
+	totalCellNumber = 0,
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1523571122
+	clientObjectCRC = 1523571122,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_cave.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_general_shared_space_dungeon_corellian_corvette_rebel, "object/building/general/shared_space_dungeon_corellian_corvette_rebel.iff")
@@ -6591,7 +6705,8 @@ object_building_general_shared_space_dungeon_hutt_asteroid = SharedBuildingObjec
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 692704019
+	clientObjectCRC = 692704019,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_cave.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_general_shared_space_dungeon_hutt_asteroid, "object/building/general/shared_space_dungeon_hutt_asteroid.iff")
@@ -6648,7 +6763,8 @@ object_building_general_shared_space_dungeon_star_destroyer = SharedBuildingObje
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1431567153
+	clientObjectCRC = 1431567153,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_cave.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_general_shared_space_dungeon_star_destroyer, "object/building/general/shared_space_dungeon_star_destroyer.iff")
@@ -6705,7 +6821,8 @@ object_building_general_shared_starport_general = SharedBuildingObjectTemplate:n
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4229374013
+	clientObjectCRC = 4229374013,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_starport.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_general_shared_starport_general, "object/building/general/shared_starport_general.iff")
@@ -6762,7 +6879,8 @@ object_building_general_shared_starport_general_style_1 = SharedBuildingObjectTe
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2699737473
+	clientObjectCRC = 2699737473,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_starport.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_general_shared_starport_general_style_1, "object/building/general/shared_starport_general_style_1.iff")
@@ -6819,7 +6937,8 @@ object_building_general_shared_starport_general_style_2 = SharedBuildingObjectTe
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2080182550
+	clientObjectCRC = 2080182550,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_starport.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_general_shared_starport_general_style_2, "object/building/general/shared_starport_general_style_2.iff")
@@ -6876,7 +6995,8 @@ object_building_general_shared_talus_aakuan_cave = SharedBuildingObjectTemplate:
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1823419741
+	clientObjectCRC = 1823419741,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_cave.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_general_shared_talus_aakuan_cave, "object/building/general/shared_talus_aakuan_cave.iff")
@@ -6933,7 +7053,8 @@ object_building_general_shared_talus_aqualish_cave = SharedBuildingObjectTemplat
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3978592584
+	clientObjectCRC = 3978592584,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_cave.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_general_shared_talus_aqualish_cave, "object/building/general/shared_talus_aqualish_cave.iff")
@@ -6990,7 +7111,8 @@ object_building_general_shared_talus_binyare_bunker = SharedBuildingObjectTempla
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4022785523
+	clientObjectCRC = 4022785523,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_cave.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_general_shared_talus_binyare_bunker, "object/building/general/shared_talus_binyare_bunker.iff")
@@ -7047,7 +7169,8 @@ object_building_general_shared_talus_giant_decay_mite_cave = SharedBuildingObjec
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2459804029
+	clientObjectCRC = 2459804029,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_cave.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_general_shared_talus_giant_decay_mite_cave, "object/building/general/shared_talus_giant_decay_mite_cave.iff")
@@ -7104,7 +7227,8 @@ object_building_general_shared_talus_giant_fynock_cave = SharedBuildingObjectTem
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1300216386
+	clientObjectCRC = 1300216386,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_cave.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_general_shared_talus_giant_fynock_cave, "object/building/general/shared_talus_giant_fynock_cave.iff")
@@ -7161,7 +7285,8 @@ object_building_general_shared_talus_kahmurra_bunker = SharedBuildingObjectTempl
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1743913196
+	clientObjectCRC = 1743913196,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_cave.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_general_shared_talus_kahmurra_bunker, "object/building/general/shared_talus_kahmurra_bunker.iff")
@@ -7218,7 +7343,8 @@ object_building_general_shared_talus_traitor_erran = SharedBuildingObjectTemplat
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 330907884
+	clientObjectCRC = 330907884,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_cave.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_general_shared_talus_traitor_erran, "object/building/general/shared_talus_traitor_erran.iff")
@@ -7275,7 +7401,8 @@ object_building_general_shared_tatooine_beetle_cave = SharedBuildingObjectTempla
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1885974487
+	clientObjectCRC = 1885974487,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_cave.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_general_shared_tatooine_beetle_cave, "object/building/general/shared_tatooine_beetle_cave.iff")
@@ -7332,7 +7459,8 @@ object_building_general_shared_tatooine_hutt_cave = SharedBuildingObjectTemplate
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 434980665
+	clientObjectCRC = 434980665,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_cave.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_general_shared_tatooine_hutt_cave, "object/building/general/shared_tatooine_hutt_cave.iff")
@@ -7389,7 +7517,8 @@ object_building_general_shared_tatooine_squill_cave = SharedBuildingObjectTempla
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1109209534
+	clientObjectCRC = 1109209534,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_cave.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_general_shared_tatooine_squill_cave, "object/building/general/shared_tatooine_squill_cave.iff")
@@ -7446,7 +7575,8 @@ object_building_general_shared_tatooine_tusken_bunker = SharedBuildingObjectTemp
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2741312696
+	clientObjectCRC = 2741312696,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_cave.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_general_shared_tatooine_tusken_bunker, "object/building/general/shared_tatooine_tusken_bunker.iff")

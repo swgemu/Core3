@@ -90,7 +90,8 @@ object_tangible_lair_tybis_shared_lair_tybis = SharedTangibleObjectTemplate:new 
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 880238924
+	clientObjectCRC = 880238924,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_tybis_shared_lair_tybis, "object/tangible/lair/tybis/shared_lair_tybis.iff")
@@ -144,7 +145,8 @@ object_tangible_lair_tybis_shared_lair_tybis_grassland = SharedTangibleObjectTem
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4004634433
+	clientObjectCRC = 4004634433,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_tybis_shared_lair_tybis_grassland, "object/tangible/lair/tybis/shared_lair_tybis_grassland.iff")

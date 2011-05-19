@@ -94,7 +94,8 @@ object_weapon_melee_axe_shared_axe_heavy_duty = SharedWeaponObjectTemplate:new {
 	weaponEffect = "bolt",
 	weaponEffectIndex = 0,
 
-	clientObjectCRC = 3808952162
+	clientObjectCRC = 3808952162,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/weapon/base/shared_base_weapon.iff", "object/weapon/melee/base/shared_base_melee.iff", "object/weapon/melee/axe/base/shared_axe_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_weapon_melee_axe_shared_axe_heavy_duty, "object/weapon/melee/axe/shared_axe_heavy_duty.iff")
@@ -152,7 +153,8 @@ object_weapon_melee_axe_shared_axe_vibroaxe = SharedWeaponObjectTemplate:new {
 	weaponEffect = "bolt",
 	weaponEffectIndex = 0,
 
-	clientObjectCRC = 1835485114
+	clientObjectCRC = 1835485114,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/weapon/base/shared_base_weapon.iff", "object/weapon/melee/base/shared_base_melee.iff", "object/weapon/melee/axe/base/shared_axe_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_weapon_melee_axe_shared_axe_vibroaxe, "object/weapon/melee/axe/shared_axe_vibroaxe.iff")

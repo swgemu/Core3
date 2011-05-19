@@ -94,7 +94,8 @@ object_weapon_ranged_rifle_shared_rifle_acid_beam = SharedWeaponObjectTemplate:n
 	weaponEffect = "bolt",
 	weaponEffectIndex = 39,
 
-	clientObjectCRC = 3329701535
+	clientObjectCRC = 3329701535,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/weapon/base/shared_base_weapon.iff", "object/weapon/ranged/base/shared_base_ranged_weapon.iff", "object/weapon/ranged/rifle/base/shared_rifle_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_weapon_ranged_rifle_shared_rifle_acid_beam, "object/weapon/ranged/rifle/shared_rifle_acid_beam.iff")
@@ -152,7 +153,8 @@ object_weapon_ranged_rifle_shared_rifle_beam = SharedWeaponObjectTemplate:new {
 	weaponEffect = "bolt",
 	weaponEffectIndex = 7,
 
-	clientObjectCRC = 852163759
+	clientObjectCRC = 852163759,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/weapon/base/shared_base_weapon.iff", "object/weapon/ranged/base/shared_base_ranged_weapon.iff", "object/weapon/ranged/rifle/base/shared_rifle_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_weapon_ranged_rifle_shared_rifle_beam, "object/weapon/ranged/rifle/shared_rifle_beam.iff")
@@ -210,7 +212,8 @@ object_weapon_ranged_rifle_shared_rifle_berserker = SharedWeaponObjectTemplate:n
 	weaponEffect = "bolt",
 	weaponEffectIndex = 35,
 
-	clientObjectCRC = 1604898449
+	clientObjectCRC = 1604898449,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/weapon/base/shared_base_weapon.iff", "object/weapon/ranged/base/shared_base_ranged_weapon.iff", "object/weapon/ranged/rifle/base/shared_rifle_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_weapon_ranged_rifle_shared_rifle_berserker, "object/weapon/ranged/rifle/shared_rifle_berserker.iff")
@@ -268,7 +271,8 @@ object_weapon_ranged_rifle_shared_rifle_bowcaster = SharedWeaponObjectTemplate:n
 	weaponEffect = "bolt",
 	weaponEffectIndex = 15,
 
-	clientObjectCRC = 2976096139
+	clientObjectCRC = 2976096139,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/weapon/base/shared_base_weapon.iff", "object/weapon/ranged/base/shared_base_ranged_weapon.iff", "object/weapon/ranged/rifle/base/shared_rifle_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_weapon_ranged_rifle_shared_rifle_bowcaster, "object/weapon/ranged/rifle/shared_rifle_bowcaster.iff")
@@ -326,7 +330,8 @@ object_weapon_ranged_rifle_shared_rifle_cdef = SharedWeaponObjectTemplate:new {
 	weaponEffect = "bolt",
 	weaponEffectIndex = 7,
 
-	clientObjectCRC = 3496137221
+	clientObjectCRC = 3496137221,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/weapon/base/shared_base_weapon.iff", "object/weapon/ranged/base/shared_base_ranged_weapon.iff", "object/weapon/ranged/rifle/base/shared_rifle_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_weapon_ranged_rifle_shared_rifle_cdef, "object/weapon/ranged/rifle/shared_rifle_cdef.iff")
@@ -384,7 +389,8 @@ object_weapon_ranged_rifle_shared_rifle_dlt20 = SharedWeaponObjectTemplate:new {
 	weaponEffect = "bolt",
 	weaponEffectIndex = 7,
 
-	clientObjectCRC = 1650151261
+	clientObjectCRC = 1650151261,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/weapon/base/shared_base_weapon.iff", "object/weapon/ranged/base/shared_base_ranged_weapon.iff", "object/weapon/ranged/rifle/base/shared_rifle_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_weapon_ranged_rifle_shared_rifle_dlt20, "object/weapon/ranged/rifle/shared_rifle_dlt20.iff")
@@ -442,7 +448,8 @@ object_weapon_ranged_rifle_shared_rifle_dlt20a = SharedWeaponObjectTemplate:new 
 	weaponEffect = "bolt",
 	weaponEffectIndex = 7,
 
-	clientObjectCRC = 2200111432
+	clientObjectCRC = 2200111432,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/weapon/base/shared_base_weapon.iff", "object/weapon/ranged/base/shared_base_ranged_weapon.iff", "object/weapon/ranged/rifle/base/shared_rifle_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_weapon_ranged_rifle_shared_rifle_dlt20a, "object/weapon/ranged/rifle/shared_rifle_dlt20a.iff")
@@ -500,7 +507,8 @@ object_weapon_ranged_rifle_shared_rifle_e11 = SharedWeaponObjectTemplate:new {
 	weaponEffect = "bolt",
 	weaponEffectIndex = 9,
 
-	clientObjectCRC = 4027327053
+	clientObjectCRC = 4027327053,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/weapon/base/shared_base_weapon.iff", "object/weapon/ranged/base/shared_base_ranged_weapon.iff", "object/weapon/ranged/rifle/base/shared_rifle_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_weapon_ranged_rifle_shared_rifle_e11, "object/weapon/ranged/rifle/shared_rifle_e11.iff")
@@ -558,7 +566,8 @@ object_weapon_ranged_rifle_shared_rifle_ewok_crossbow = SharedWeaponObjectTempla
 	weaponEffect = "bolt",
 	weaponEffectIndex = 22,
 
-	clientObjectCRC = 917715390
+	clientObjectCRC = 917715390,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/weapon/base/shared_base_weapon.iff", "object/weapon/ranged/base/shared_base_ranged_weapon.iff", "object/weapon/ranged/rifle/base/shared_rifle_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_weapon_ranged_rifle_shared_rifle_ewok_crossbow, "object/weapon/ranged/rifle/shared_rifle_ewok_crossbow.iff")
@@ -616,7 +625,8 @@ object_weapon_ranged_rifle_shared_rifle_flame_thrower = SharedWeaponObjectTempla
 	weaponEffect = "bolt",
 	weaponEffectIndex = 21,
 
-	clientObjectCRC = 3238374228
+	clientObjectCRC = 3238374228,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/weapon/base/shared_base_weapon.iff", "object/weapon/ranged/base/shared_base_ranged_weapon.iff", "object/weapon/ranged/rifle/base/shared_rifle_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_weapon_ranged_rifle_shared_rifle_flame_thrower, "object/weapon/ranged/rifle/shared_rifle_flame_thrower.iff")
@@ -674,7 +684,8 @@ object_weapon_ranged_rifle_shared_rifle_jawa_ion = SharedWeaponObjectTemplate:ne
 	weaponEffect = "bolt",
 	weaponEffectIndex = 12,
 
-	clientObjectCRC = 1928416827
+	clientObjectCRC = 1928416827,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/weapon/base/shared_base_weapon.iff", "object/weapon/ranged/base/shared_base_ranged_weapon.iff", "object/weapon/ranged/rifle/base/shared_rifle_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_weapon_ranged_rifle_shared_rifle_jawa_ion, "object/weapon/ranged/rifle/shared_rifle_jawa_ion.iff")
@@ -732,7 +743,8 @@ object_weapon_ranged_rifle_shared_rifle_laser = SharedWeaponObjectTemplate:new {
 	weaponEffect = "bolt",
 	weaponEffectIndex = 7,
 
-	clientObjectCRC = 1390088554
+	clientObjectCRC = 1390088554,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/weapon/base/shared_base_weapon.iff", "object/weapon/ranged/base/shared_base_ranged_weapon.iff", "object/weapon/ranged/rifle/base/shared_rifle_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_weapon_ranged_rifle_shared_rifle_laser, "object/weapon/ranged/rifle/shared_rifle_laser.iff")
@@ -790,7 +802,8 @@ object_weapon_ranged_rifle_shared_rifle_laser_noob = SharedWeaponObjectTemplate:
 	weaponEffect = "bolt",
 	weaponEffectIndex = 7,
 
-	clientObjectCRC = 378484773
+	clientObjectCRC = 378484773,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/weapon/base/shared_base_weapon.iff", "object/weapon/ranged/base/shared_base_ranged_weapon.iff", "object/weapon/ranged/rifle/base/shared_rifle_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_weapon_ranged_rifle_shared_rifle_laser_noob, "object/weapon/ranged/rifle/shared_rifle_laser_noob.iff")
@@ -848,7 +861,8 @@ object_weapon_ranged_rifle_shared_rifle_lightning = SharedWeaponObjectTemplate:n
 	weaponEffect = "rocket",
 	weaponEffectIndex = 3,
 
-	clientObjectCRC = 708413629
+	clientObjectCRC = 708413629,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/weapon/base/shared_base_weapon.iff", "object/weapon/ranged/base/shared_base_ranged_weapon.iff", "object/weapon/ranged/rifle/base/shared_rifle_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_weapon_ranged_rifle_shared_rifle_lightning, "object/weapon/ranged/rifle/shared_rifle_lightning.iff")
@@ -906,7 +920,8 @@ object_weapon_ranged_rifle_shared_rifle_sg82 = SharedWeaponObjectTemplate:new {
 	weaponEffect = "bolt",
 	weaponEffectIndex = 13,
 
-	clientObjectCRC = 3248736753
+	clientObjectCRC = 3248736753,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/weapon/base/shared_base_weapon.iff", "object/weapon/ranged/base/shared_base_ranged_weapon.iff", "object/weapon/ranged/rifle/base/shared_rifle_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_weapon_ranged_rifle_shared_rifle_sg82, "object/weapon/ranged/rifle/shared_rifle_sg82.iff")
@@ -964,7 +979,8 @@ object_weapon_ranged_rifle_shared_rifle_spraystick = SharedWeaponObjectTemplate:
 	weaponEffect = "bolt",
 	weaponEffectIndex = 16,
 
-	clientObjectCRC = 284980584
+	clientObjectCRC = 284980584,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/weapon/base/shared_base_weapon.iff", "object/weapon/ranged/base/shared_base_ranged_weapon.iff", "object/weapon/ranged/rifle/base/shared_rifle_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_weapon_ranged_rifle_shared_rifle_spraystick, "object/weapon/ranged/rifle/shared_rifle_spraystick.iff")
@@ -1022,7 +1038,8 @@ object_weapon_ranged_rifle_shared_rifle_t21 = SharedWeaponObjectTemplate:new {
 	weaponEffect = "bolt",
 	weaponEffectIndex = 7,
 
-	clientObjectCRC = 1951509016
+	clientObjectCRC = 1951509016,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/weapon/base/shared_base_weapon.iff", "object/weapon/ranged/base/shared_base_ranged_weapon.iff", "object/weapon/ranged/rifle/base/shared_rifle_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_weapon_ranged_rifle_shared_rifle_t21, "object/weapon/ranged/rifle/shared_rifle_t21.iff")
@@ -1080,7 +1097,8 @@ object_weapon_ranged_rifle_shared_rifle_tenloss_dxr6_disruptor_loot = SharedWeap
 	weaponEffect = "bolt",
 	weaponEffectIndex = 34,
 
-	clientObjectCRC = 20961126
+	clientObjectCRC = 20961126,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/weapon/base/shared_base_weapon.iff", "object/weapon/ranged/base/shared_base_ranged_weapon.iff", "object/weapon/ranged/rifle/base/shared_rifle_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_weapon_ranged_rifle_shared_rifle_tenloss_dxr6_disruptor_loot, "object/weapon/ranged/rifle/shared_rifle_tenloss_dxr6_disruptor_loot.iff")
@@ -1138,7 +1156,8 @@ object_weapon_ranged_rifle_shared_rifle_tusken = SharedWeaponObjectTemplate:new 
 	weaponEffect = "projectile_rifle",
 	weaponEffectIndex = 1,
 
-	clientObjectCRC = 2874182418
+	clientObjectCRC = 2874182418,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/weapon/base/shared_base_weapon.iff", "object/weapon/ranged/base/shared_base_ranged_weapon.iff", "object/weapon/ranged/rifle/base/shared_rifle_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_weapon_ranged_rifle_shared_rifle_tusken, "object/weapon/ranged/rifle/shared_rifle_tusken.iff")
@@ -1196,7 +1215,8 @@ object_weapon_ranged_rifle_shared_rifle_victor_tusken = SharedWeaponObjectTempla
 	weaponEffect = "projectile_rifle",
 	weaponEffectIndex = 1,
 
-	clientObjectCRC = 4165527266
+	clientObjectCRC = 4165527266,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/weapon/base/shared_base_weapon.iff", "object/weapon/ranged/base/shared_base_ranged_weapon.iff", "object/weapon/ranged/rifle/base/shared_rifle_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_weapon_ranged_rifle_shared_rifle_victor_tusken, "object/weapon/ranged/rifle/shared_rifle_victor_tusken.iff")

@@ -90,7 +90,8 @@ object_tangible_hair_wookiee_base_shared_hair_wookiee_base = SharedTangibleObjec
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2505702624
+	clientObjectCRC = 2505702624,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/hair/base/shared_hair_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_hair_wookiee_base_shared_hair_wookiee_base, "object/tangible/hair/wookiee/base/shared_hair_wookiee_base.iff")
@@ -144,7 +145,8 @@ object_tangible_hair_wookiee_base_shared_hair_wookiee_female_base = SharedTangib
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1402579310
+	clientObjectCRC = 1402579310,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/hair/base/shared_hair_base.iff", "object/tangible/hair/wookiee/base/shared_hair_wookiee_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_hair_wookiee_base_shared_hair_wookiee_female_base, "object/tangible/hair/wookiee/base/shared_hair_wookiee_female_base.iff")
@@ -198,7 +200,8 @@ object_tangible_hair_wookiee_base_shared_hair_wookiee_male_base = SharedTangible
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 848817616
+	clientObjectCRC = 848817616,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/hair/base/shared_hair_base.iff", "object/tangible/hair/wookiee/base/shared_hair_wookiee_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_hair_wookiee_base_shared_hair_wookiee_male_base, "object/tangible/hair/wookiee/base/shared_hair_wookiee_male_base.iff")

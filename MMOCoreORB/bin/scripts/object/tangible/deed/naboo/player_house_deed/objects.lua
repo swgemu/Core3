@@ -90,7 +90,8 @@ object_tangible_deed_naboo_player_house_deed_shared_naboo_house_large_deed = Sha
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 63835392
+	clientObjectCRC = 63835392,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/deed/base/shared_deed_base.iff", "object/tangible/deed/base/shared_deed_building_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_deed_naboo_player_house_deed_shared_naboo_house_large_deed, "object/tangible/deed/naboo/player_house_deed/shared_naboo_house_large_deed.iff")
@@ -144,7 +145,8 @@ object_tangible_deed_naboo_player_house_deed_shared_naboo_house_medium_deed = Sh
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3495448104
+	clientObjectCRC = 3495448104,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/deed/base/shared_deed_base.iff", "object/tangible/deed/base/shared_deed_building_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_deed_naboo_player_house_deed_shared_naboo_house_medium_deed, "object/tangible/deed/naboo/player_house_deed/shared_naboo_house_medium_deed.iff")
@@ -198,7 +200,8 @@ object_tangible_deed_naboo_player_house_deed_shared_naboo_house_small_deed = Sha
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1128795043
+	clientObjectCRC = 1128795043,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/deed/base/shared_deed_base.iff", "object/tangible/deed/base/shared_deed_building_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_deed_naboo_player_house_deed_shared_naboo_house_small_deed, "object/tangible/deed/naboo/player_house_deed/shared_naboo_house_small_deed.iff")

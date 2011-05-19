@@ -90,7 +90,8 @@ object_tangible_wearables_armor_nightsister_shared_armor_nightsister_bicep_r_s01
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 781466578
+	clientObjectCRC = 781466578,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_armor_base.iff", "object/tangible/wearables/base/shared_base_bicep_r.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_nightsister_shared_armor_nightsister_bicep_r_s01, "object/tangible/wearables/armor/nightsister/shared_armor_nightsister_bicep_r_s01.iff")

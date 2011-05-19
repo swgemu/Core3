@@ -90,7 +90,8 @@ object_tangible_wearables_ring_shared_aakuan_ring = SharedTangibleObjectTemplate
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 923373873
+	clientObjectCRC = 923373873,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_ring_either.iff", "object/tangible/wearables/ring/shared_ring_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_ring_shared_aakuan_ring, "object/tangible/wearables/ring/shared_aakuan_ring.iff")
@@ -144,7 +145,8 @@ object_tangible_wearables_ring_shared_ring_base = SharedTangibleObjectTemplate:n
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4136025825
+	clientObjectCRC = 4136025825,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_ring_either.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_ring_shared_ring_base, "object/tangible/wearables/ring/shared_ring_base.iff")
@@ -198,7 +200,8 @@ object_tangible_wearables_ring_shared_ring_mark_hero = SharedTangibleObjectTempl
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3368096094
+	clientObjectCRC = 3368096094,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_ring_either.iff", "object/tangible/wearables/ring/shared_ring_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_ring_shared_ring_mark_hero, "object/tangible/wearables/ring/shared_ring_mark_hero.iff")
@@ -252,7 +255,8 @@ object_tangible_wearables_ring_shared_ring_nightsister = SharedTangibleObjectTem
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 186168033
+	clientObjectCRC = 186168033,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_ring_either.iff", "object/tangible/wearables/ring/shared_ring_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_ring_shared_ring_nightsister, "object/tangible/wearables/ring/shared_ring_nightsister.iff")
@@ -306,7 +310,8 @@ object_tangible_wearables_ring_shared_ring_s01 = SharedTangibleObjectTemplate:ne
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1300460406
+	clientObjectCRC = 1300460406,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_ring_either.iff", "object/tangible/wearables/ring/shared_ring_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_ring_shared_ring_s01, "object/tangible/wearables/ring/shared_ring_s01.iff")
@@ -360,7 +365,8 @@ object_tangible_wearables_ring_shared_ring_s02 = SharedTangibleObjectTemplate:ne
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2526338017
+	clientObjectCRC = 2526338017,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_ring_either.iff", "object/tangible/wearables/ring/shared_ring_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_ring_shared_ring_s02, "object/tangible/wearables/ring/shared_ring_s02.iff")
@@ -414,7 +420,8 @@ object_tangible_wearables_ring_shared_ring_s03 = SharedTangibleObjectTemplate:ne
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3751394412
+	clientObjectCRC = 3751394412,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_ring_either.iff", "object/tangible/wearables/ring/shared_ring_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_ring_shared_ring_s03, "object/tangible/wearables/ring/shared_ring_s03.iff")
@@ -468,7 +475,8 @@ object_tangible_wearables_ring_shared_ring_s03_quest = SharedTangibleObjectTempl
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 266162342
+	clientObjectCRC = 266162342,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_ring_either.iff", "object/tangible/wearables/ring/shared_ring_base.iff", "object/tangible/wearables/ring/shared_ring_s03.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_ring_shared_ring_s03_quest, "object/tangible/wearables/ring/shared_ring_s03_quest.iff")
@@ -522,7 +530,8 @@ object_tangible_wearables_ring_shared_ring_s04 = SharedTangibleObjectTemplate:ne
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 612013944
+	clientObjectCRC = 612013944,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_ring_either.iff", "object/tangible/wearables/ring/shared_ring_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_ring_shared_ring_s04, "object/tangible/wearables/ring/shared_ring_s04.iff")

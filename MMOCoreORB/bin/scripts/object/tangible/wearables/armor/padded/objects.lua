@@ -90,7 +90,8 @@ object_tangible_wearables_armor_padded_shared_armor_padded_s01_belt = SharedTang
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4150080953
+	clientObjectCRC = 4150080953,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_belt.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_padded_shared_armor_padded_s01_belt, "object/tangible/wearables/armor/padded/shared_armor_padded_s01_belt.iff")
@@ -144,7 +145,8 @@ object_tangible_wearables_armor_padded_shared_armor_padded_s01_bicep_l = SharedT
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3710375326
+	clientObjectCRC = 3710375326,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_armor_base.iff", "object/tangible/wearables/base/shared_base_bicep_l.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_padded_shared_armor_padded_s01_bicep_l, "object/tangible/wearables/armor/padded/shared_armor_padded_s01_bicep_l.iff")
@@ -198,7 +200,8 @@ object_tangible_wearables_armor_padded_shared_armor_padded_s01_bicep_r = SharedT
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2918354957
+	clientObjectCRC = 2918354957,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_armor_base.iff", "object/tangible/wearables/base/shared_base_bicep_r.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_padded_shared_armor_padded_s01_bicep_r, "object/tangible/wearables/armor/padded/shared_armor_padded_s01_bicep_r.iff")
@@ -252,7 +255,8 @@ object_tangible_wearables_armor_padded_shared_armor_padded_s01_boots = SharedTan
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 343908402
+	clientObjectCRC = 343908402,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_shoes.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_padded_shared_armor_padded_s01_boots, "object/tangible/wearables/armor/padded/shared_armor_padded_s01_boots.iff")
@@ -306,7 +310,8 @@ object_tangible_wearables_armor_padded_shared_armor_padded_s01_bracer_l = Shared
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2948310718
+	clientObjectCRC = 2948310718,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_armor_base.iff", "object/tangible/wearables/base/shared_base_bracer_l.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_padded_shared_armor_padded_s01_bracer_l, "object/tangible/wearables/armor/padded/shared_armor_padded_s01_bracer_l.iff")
@@ -360,7 +365,8 @@ object_tangible_wearables_armor_padded_shared_armor_padded_s01_bracer_r = Shared
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3748586285
+	clientObjectCRC = 3748586285,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_armor_base.iff", "object/tangible/wearables/base/shared_base_bracer_r.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_padded_shared_armor_padded_s01_bracer_r, "object/tangible/wearables/armor/padded/shared_armor_padded_s01_bracer_r.iff")
@@ -414,7 +420,8 @@ object_tangible_wearables_armor_padded_shared_armor_padded_s01_chest_plate = Sha
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 927787210
+	clientObjectCRC = 927787210,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_vest.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_padded_shared_armor_padded_s01_chest_plate, "object/tangible/wearables/armor/padded/shared_armor_padded_s01_chest_plate.iff")
@@ -468,7 +475,8 @@ object_tangible_wearables_armor_padded_shared_armor_padded_s01_gloves = SharedTa
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2813934470
+	clientObjectCRC = 2813934470,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_armor_base.iff", "object/tangible/wearables/base/shared_base_gauntlets.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_padded_shared_armor_padded_s01_gloves, "object/tangible/wearables/armor/padded/shared_armor_padded_s01_gloves.iff")
@@ -522,7 +530,8 @@ object_tangible_wearables_armor_padded_shared_armor_padded_s01_helmet = SharedTa
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 293198478
+	clientObjectCRC = 293198478,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_armor_base.iff", "object/tangible/wearables/base/shared_base_helmet_closed_full.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_padded_shared_armor_padded_s01_helmet, "object/tangible/wearables/armor/padded/shared_armor_padded_s01_helmet.iff")
@@ -576,7 +585,8 @@ object_tangible_wearables_armor_padded_shared_armor_padded_s01_leggings = Shared
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 547322785
+	clientObjectCRC = 547322785,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_skirt.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_padded_shared_armor_padded_s01_leggings, "object/tangible/wearables/armor/padded/shared_armor_padded_s01_leggings.iff")

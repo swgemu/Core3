@@ -90,7 +90,8 @@ object_tangible_container_medical_shared_medbag_base = SharedTangibleObjectTempl
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1834451270
+	clientObjectCRC = 1834451270,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/container/base/shared_base_container.iff", "object/tangible/container/base/shared_base_container_volume.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_container_medical_shared_medbag_base, "object/tangible/container/medical/shared_medbag_base.iff")

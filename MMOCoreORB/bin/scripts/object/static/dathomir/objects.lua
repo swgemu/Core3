@@ -80,7 +80,8 @@ object_static_dathomir_shared_dath_mistyfalls_waterfall1 = SharedStaticObjectTem
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2786092096
+	clientObjectCRC = 2786092096,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/terrain/base/shared_static_terrain_base.iff", "object/static/naboo/shared_waterfall_naboo_theed_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_dathomir_shared_dath_mistyfalls_waterfall1, "object/static/dathomir/shared_dath_mistyfalls_waterfall1.iff")
@@ -124,7 +125,8 @@ object_static_dathomir_shared_dath_mistyfalls_waterfall2 = SharedStaticObjectTem
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2097663191
+	clientObjectCRC = 2097663191,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/terrain/base/shared_static_terrain_base.iff", "object/static/naboo/shared_waterfall_naboo_theed_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_dathomir_shared_dath_mistyfalls_waterfall2, "object/static/dathomir/shared_dath_mistyfalls_waterfall2.iff")

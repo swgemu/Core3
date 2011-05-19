@@ -90,7 +90,8 @@ object_tangible_lair_bark_mite_shared_lair_bark_mite = SharedTangibleObjectTempl
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 382017471
+	clientObjectCRC = 382017471,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_bark_mite_shared_lair_bark_mite, "object/tangible/lair/bark_mite/shared_lair_bark_mite.iff")
@@ -144,7 +145,8 @@ object_tangible_lair_bark_mite_shared_lair_bark_mite_grassland = SharedTangibleO
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3158646685
+	clientObjectCRC = 3158646685,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_bark_mite_shared_lair_bark_mite_grassland, "object/tangible/lair/bark_mite/shared_lair_bark_mite_grassland.iff")
@@ -198,7 +200,8 @@ object_tangible_lair_bark_mite_shared_lair_bark_mite_hills = SharedTangibleObjec
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1801002251
+	clientObjectCRC = 1801002251,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_bark_mite_shared_lair_bark_mite_hills, "object/tangible/lair/bark_mite/shared_lair_bark_mite_hills.iff")

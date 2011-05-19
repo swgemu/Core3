@@ -90,7 +90,8 @@ object_tangible_sign_shared_all_sign_city_s01 = SharedTangibleObjectTemplate:new
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 533444800
+	clientObjectCRC = 533444800,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/sign/base/shared_base_sign.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_sign_shared_all_sign_city_s01, "object/tangible/sign/shared_all_sign_city_s01.iff")
@@ -144,7 +145,8 @@ object_tangible_sign_shared_all_sign_city_s02 = SharedTangibleObjectTemplate:new
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3302756439
+	clientObjectCRC = 3302756439,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/sign/base/shared_base_sign.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_sign_shared_all_sign_city_s02, "object/tangible/sign/shared_all_sign_city_s02.iff")
@@ -198,7 +200,8 @@ object_tangible_sign_shared_all_sign_city_s03 = SharedTangibleObjectTemplate:new
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2379315162
+	clientObjectCRC = 2379315162,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/sign/base/shared_base_sign.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_sign_shared_all_sign_city_s03, "object/tangible/sign/shared_all_sign_city_s03.iff")
@@ -252,7 +255,8 @@ object_tangible_sign_shared_all_sign_street_s01 = SharedTangibleObjectTemplate:n
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1023580937
+	clientObjectCRC = 1023580937,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/sign/base/shared_base_sign.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_sign_shared_all_sign_street_s01, "object/tangible/sign/shared_all_sign_street_s01.iff")
@@ -306,7 +310,8 @@ object_tangible_sign_shared_streetsign_upright_style_01 = SharedTangibleObjectTe
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 281440325
+	clientObjectCRC = 281440325,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/sign/base/shared_base_sign.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_sign_shared_streetsign_upright_style_01, "object/tangible/sign/shared_streetsign_upright_style_01.iff")
@@ -360,7 +365,8 @@ object_tangible_sign_shared_streetsign_wall_style_01 = SharedTangibleObjectTempl
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1744336727
+	clientObjectCRC = 1744336727,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/sign/base/shared_base_sign.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_sign_shared_streetsign_wall_style_01, "object/tangible/sign/shared_streetsign_wall_style_01.iff")
@@ -414,7 +420,8 @@ object_tangible_sign_shared_tatooine_moraj_marker = SharedTangibleObjectTemplate
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 166858799
+	clientObjectCRC = 166858799,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_sign_shared_tatooine_moraj_marker, "object/tangible/sign/shared_tatooine_moraj_marker.iff")

@@ -90,7 +90,8 @@ object_tangible_ship_crafted_reverse_engineering_shared_analysis_tool = SharedTa
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1581832074
+	clientObjectCRC = 1581832074,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/container/base/shared_base_container.iff", "object/tangible/container/base/shared_base_container_volume.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_reverse_engineering_shared_analysis_tool, "object/tangible/ship/crafted/reverse_engineering/shared_analysis_tool.iff")
@@ -144,7 +145,8 @@ object_tangible_ship_crafted_reverse_engineering_shared_armor_analysis_tool = Sh
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3210363983
+	clientObjectCRC = 3210363983,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/container/base/shared_base_container.iff", "object/tangible/container/base/shared_base_container_volume.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_reverse_engineering_shared_armor_analysis_tool, "object/tangible/ship/crafted/reverse_engineering/shared_armor_analysis_tool.iff")
@@ -198,7 +200,8 @@ object_tangible_ship_crafted_reverse_engineering_shared_booster_analysis_tool = 
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 152781532
+	clientObjectCRC = 152781532,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/container/base/shared_base_container.iff", "object/tangible/container/base/shared_base_container_volume.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_reverse_engineering_shared_booster_analysis_tool, "object/tangible/ship/crafted/reverse_engineering/shared_booster_analysis_tool.iff")
@@ -252,7 +255,8 @@ object_tangible_ship_crafted_reverse_engineering_shared_capacitor_analysis_tool 
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3883452731
+	clientObjectCRC = 3883452731,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/container/base/shared_base_container.iff", "object/tangible/container/base/shared_base_container_volume.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_reverse_engineering_shared_capacitor_analysis_tool, "object/tangible/ship/crafted/reverse_engineering/shared_capacitor_analysis_tool.iff")
@@ -306,7 +310,8 @@ object_tangible_ship_crafted_reverse_engineering_shared_droid_interface_analysis
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3288485718
+	clientObjectCRC = 3288485718,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/container/base/shared_base_container.iff", "object/tangible/container/base/shared_base_container_volume.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_reverse_engineering_shared_droid_interface_analysis_tool, "object/tangible/ship/crafted/reverse_engineering/shared_droid_interface_analysis_tool.iff")
@@ -360,7 +365,8 @@ object_tangible_ship_crafted_reverse_engineering_shared_engine_analysis_tool = S
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2923796744
+	clientObjectCRC = 2923796744,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/container/base/shared_base_container.iff", "object/tangible/container/base/shared_base_container_volume.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_reverse_engineering_shared_engine_analysis_tool, "object/tangible/ship/crafted/reverse_engineering/shared_engine_analysis_tool.iff")
@@ -414,7 +420,8 @@ object_tangible_ship_crafted_reverse_engineering_shared_reactor_analysis_tool = 
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 504265508
+	clientObjectCRC = 504265508,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/container/base/shared_base_container.iff", "object/tangible/container/base/shared_base_container_volume.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_reverse_engineering_shared_reactor_analysis_tool, "object/tangible/ship/crafted/reverse_engineering/shared_reactor_analysis_tool.iff")
@@ -468,7 +475,8 @@ object_tangible_ship_crafted_reverse_engineering_shared_retrofit_kit = SharedTan
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2940108042
+	clientObjectCRC = 2940108042,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_reverse_engineering_shared_retrofit_kit, "object/tangible/ship/crafted/reverse_engineering/shared_retrofit_kit.iff")
@@ -522,7 +530,8 @@ object_tangible_ship_crafted_reverse_engineering_shared_shields_analysis_tool = 
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3729905970
+	clientObjectCRC = 3729905970,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/container/base/shared_base_container.iff", "object/tangible/container/base/shared_base_container_volume.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_reverse_engineering_shared_shields_analysis_tool, "object/tangible/ship/crafted/reverse_engineering/shared_shields_analysis_tool.iff")
@@ -576,7 +585,8 @@ object_tangible_ship_crafted_reverse_engineering_shared_weapon_analysis_tool = S
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2156748122
+	clientObjectCRC = 2156748122,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/container/base/shared_base_container.iff", "object/tangible/container/base/shared_base_container_volume.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_reverse_engineering_shared_weapon_analysis_tool, "object/tangible/ship/crafted/reverse_engineering/shared_weapon_analysis_tool.iff")

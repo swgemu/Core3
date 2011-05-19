@@ -90,7 +90,8 @@ object_tangible_lair_bordok_shared_lair_bordok = SharedTangibleObjectTemplate:ne
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2816531423
+	clientObjectCRC = 2816531423,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_bordok_shared_lair_bordok, "object/tangible/lair/bordok/shared_lair_bordok.iff")
@@ -144,7 +145,8 @@ object_tangible_lair_bordok_shared_lair_bordok_mountain = SharedTangibleObjectTe
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4096042384
+	clientObjectCRC = 4096042384,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_bordok_shared_lair_bordok_mountain, "object/tangible/lair/bordok/shared_lair_bordok_mountain.iff")

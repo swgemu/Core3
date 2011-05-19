@@ -90,7 +90,8 @@ object_tangible_base_shared_tangible_base = SharedTangibleObjectTemplate:new {
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3825894482
+	clientObjectCRC = 3825894482,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_base_shared_tangible_base, "object/tangible/base/shared_tangible_base.iff")
@@ -144,7 +145,8 @@ object_tangible_base_shared_tangible_craftable = SharedTangibleObjectTemplate:ne
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1525014593
+	clientObjectCRC = 1525014593,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_base_shared_tangible_craftable, "object/tangible/base/shared_tangible_craftable.iff")
@@ -198,7 +200,8 @@ object_tangible_base_shared_tangible_default = SharedTangibleObjectTemplate:new 
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1350067174
+	clientObjectCRC = 1350067174,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_base_shared_tangible_default, "object/tangible/base/shared_tangible_default.iff")

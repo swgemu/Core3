@@ -90,7 +90,8 @@ object_tangible_wearables_bodysuit_shared_bodysuit_atat = SharedTangibleObjectTe
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2562125101
+	clientObjectCRC = 2562125101,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_jumpsuit_longsleeve.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_bodysuit_shared_bodysuit_atat, "object/tangible/wearables/bodysuit/shared_bodysuit_atat.iff")
@@ -144,7 +145,8 @@ object_tangible_wearables_bodysuit_shared_bodysuit_atat_quest = SharedTangibleOb
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2859919047
+	clientObjectCRC = 2859919047,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_jumpsuit_longsleeve.iff", "object/tangible/wearables/bodysuit/shared_bodysuit_atat.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_bodysuit_shared_bodysuit_atat_quest, "object/tangible/wearables/bodysuit/shared_bodysuit_atat_quest.iff")
@@ -198,7 +200,8 @@ object_tangible_wearables_bodysuit_shared_bodysuit_bwing = SharedTangibleObjectT
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2920765612
+	clientObjectCRC = 2920765612,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_jumpsuit_longsleeve.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_bodysuit_shared_bodysuit_bwing, "object/tangible/wearables/bodysuit/shared_bodysuit_bwing.iff")
@@ -252,7 +255,8 @@ object_tangible_wearables_bodysuit_shared_bodysuit_bwing_quest = SharedTangibleO
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2675213661
+	clientObjectCRC = 2675213661,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_jumpsuit_longsleeve.iff", "object/tangible/wearables/bodysuit/shared_bodysuit_bwing.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_bodysuit_shared_bodysuit_bwing_quest, "object/tangible/wearables/bodysuit/shared_bodysuit_bwing_quest.iff")
@@ -306,7 +310,8 @@ object_tangible_wearables_bodysuit_shared_bodysuit_s01 = SharedTangibleObjectTem
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3519793019
+	clientObjectCRC = 3519793019,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_jumpsuit_longsleeve.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_bodysuit_shared_bodysuit_s01, "object/tangible/wearables/bodysuit/shared_bodysuit_s01.iff")
@@ -360,7 +365,8 @@ object_tangible_wearables_bodysuit_shared_bodysuit_s06 = SharedTangibleObjectTem
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 707325039
+	clientObjectCRC = 707325039,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_jumpsuit_longsleeve.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_bodysuit_shared_bodysuit_s06, "object/tangible/wearables/bodysuit/shared_bodysuit_s06.iff")
@@ -414,7 +420,8 @@ object_tangible_wearables_bodysuit_shared_bodysuit_s07 = SharedTangibleObjectTem
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1663405026
+	clientObjectCRC = 1663405026,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_jumpsuit_longsleeve.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_bodysuit_shared_bodysuit_s07, "object/tangible/wearables/bodysuit/shared_bodysuit_s07.iff")
@@ -468,7 +475,8 @@ object_tangible_wearables_bodysuit_shared_bodysuit_s08 = SharedTangibleObjectTem
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3643779056
+	clientObjectCRC = 3643779056,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_jumpsuit_longsleeve.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_bodysuit_shared_bodysuit_s08, "object/tangible/wearables/bodysuit/shared_bodysuit_s08.iff")
@@ -522,7 +530,8 @@ object_tangible_wearables_bodysuit_shared_bodysuit_s12 = SharedTangibleObjectTem
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 301228692
+	clientObjectCRC = 301228692,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_jumpsuit_longsleeve.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_bodysuit_shared_bodysuit_s12, "object/tangible/wearables/bodysuit/shared_bodysuit_s12.iff")
@@ -576,7 +585,8 @@ object_tangible_wearables_bodysuit_shared_bodysuit_s13 = SharedTangibleObjectTem
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1492714777
+	clientObjectCRC = 1492714777,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_jumpsuit_longsleeve.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_bodysuit_shared_bodysuit_s13, "object/tangible/wearables/bodysuit/shared_bodysuit_s13.iff")
@@ -630,7 +640,8 @@ object_tangible_wearables_bodysuit_shared_bodysuit_s14 = SharedTangibleObjectTem
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2736401933
+	clientObjectCRC = 2736401933,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_jumpsuit_longsleeve.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_bodysuit_shared_bodysuit_s14, "object/tangible/wearables/bodysuit/shared_bodysuit_s14.iff")
@@ -684,7 +695,8 @@ object_tangible_wearables_bodysuit_shared_bodysuit_s15 = SharedTangibleObjectTem
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3927394688
+	clientObjectCRC = 3927394688,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_jumpsuit_longsleeve.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_bodysuit_shared_bodysuit_s15, "object/tangible/wearables/bodysuit/shared_bodysuit_s15.iff")
@@ -738,7 +750,8 @@ object_tangible_wearables_bodysuit_shared_bodysuit_s16 = SharedTangibleObjectTem
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 822141207
+	clientObjectCRC = 822141207,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_jumpsuit_longsleeve.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_bodysuit_shared_bodysuit_s16, "object/tangible/wearables/bodysuit/shared_bodysuit_s16.iff")
@@ -792,7 +805,8 @@ object_tangible_wearables_bodysuit_shared_bodysuit_sarlacc_coverall = SharedTang
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2416523857
+	clientObjectCRC = 2416523857,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_jumpsuit_longsleeve.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_bodysuit_shared_bodysuit_sarlacc_coverall, "object/tangible/wearables/bodysuit/shared_bodysuit_sarlacc_coverall.iff")
@@ -846,7 +860,8 @@ object_tangible_wearables_bodysuit_shared_bodysuit_tie_fighter = SharedTangibleO
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 19224104
+	clientObjectCRC = 19224104,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_jumpsuit_longsleeve.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_bodysuit_shared_bodysuit_tie_fighter, "object/tangible/wearables/bodysuit/shared_bodysuit_tie_fighter.iff")
@@ -900,7 +915,8 @@ object_tangible_wearables_bodysuit_shared_bodysuit_tie_fighter_quest = SharedTan
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 184136204
+	clientObjectCRC = 184136204,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_jumpsuit_longsleeve.iff", "object/tangible/wearables/bodysuit/shared_bodysuit_tie_fighter.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_bodysuit_shared_bodysuit_tie_fighter_quest, "object/tangible/wearables/bodysuit/shared_bodysuit_tie_fighter_quest.iff")

@@ -90,7 +90,8 @@ object_tangible_component_item_shared_electronic_control_unit = SharedTangibleOb
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 814846904
+	clientObjectCRC = 814846904,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/base/shared_base_electronic_component.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_item_shared_electronic_control_unit, "object/tangible/component/item/shared_electronic_control_unit.iff")
@@ -144,7 +145,8 @@ object_tangible_component_item_shared_electronic_energy_distributor = SharedTang
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3328520335
+	clientObjectCRC = 3328520335,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/base/shared_base_electronic_component.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_item_shared_electronic_energy_distributor, "object/tangible/component/item/shared_electronic_energy_distributor.iff")
@@ -198,7 +200,8 @@ object_tangible_component_item_shared_electronic_power_conditioner = SharedTangi
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1024745663
+	clientObjectCRC = 1024745663,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/base/shared_base_electronic_component.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_item_shared_electronic_power_conditioner, "object/tangible/component/item/shared_electronic_power_conditioner.iff")
@@ -252,7 +255,8 @@ object_tangible_component_item_shared_electronics_gp_module = SharedTangibleObje
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3786408832
+	clientObjectCRC = 3786408832,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/base/shared_base_electronic_component.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_item_shared_electronics_gp_module, "object/tangible/component/item/shared_electronics_gp_module.iff")
@@ -306,7 +310,8 @@ object_tangible_component_item_shared_electronics_memory_module = SharedTangible
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3552886678
+	clientObjectCRC = 3552886678,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/base/shared_base_electronic_component.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_item_shared_electronics_memory_module, "object/tangible/component/item/shared_electronics_memory_module.iff")
@@ -360,7 +365,8 @@ object_tangible_component_item_shared_large_sensor_package = SharedTangibleObjec
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 366580459
+	clientObjectCRC = 366580459,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/base/shared_base_electronic_component.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_item_shared_large_sensor_package, "object/tangible/component/item/shared_large_sensor_package.iff")
@@ -414,7 +420,8 @@ object_tangible_component_item_shared_micro_sensor_suite = SharedTangibleObjectT
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3198540321
+	clientObjectCRC = 3198540321,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/base/shared_base_electronic_component.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_item_shared_micro_sensor_suite, "object/tangible/component/item/shared_micro_sensor_suite.iff")

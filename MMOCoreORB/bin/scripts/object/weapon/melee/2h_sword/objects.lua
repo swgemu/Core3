@@ -94,7 +94,8 @@ object_weapon_melee_2h_sword_shared_2h_sword_battleaxe = SharedWeaponObjectTempl
 	weaponEffect = "bolt",
 	weaponEffectIndex = 0,
 
-	clientObjectCRC = 3488117788
+	clientObjectCRC = 3488117788,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/weapon/base/shared_base_weapon.iff", "object/weapon/melee/base/shared_base_melee.iff", "object/weapon/melee/2h_sword/base/shared_2h_sword_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_weapon_melee_2h_sword_shared_2h_sword_battleaxe, "object/weapon/melee/2h_sword/shared_2h_sword_battleaxe.iff")
@@ -152,7 +153,8 @@ object_weapon_melee_2h_sword_shared_2h_sword_battleaxe_quest = SharedWeaponObjec
 	weaponEffect = "bolt",
 	weaponEffectIndex = 0,
 
-	clientObjectCRC = 2823273971
+	clientObjectCRC = 2823273971,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/weapon/base/shared_base_weapon.iff", "object/weapon/melee/base/shared_base_melee.iff", "object/weapon/melee/2h_sword/base/shared_2h_sword_base.iff", "object/weapon/melee/2h_sword/shared_2h_sword_battleaxe.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_weapon_melee_2h_sword_shared_2h_sword_battleaxe_quest, "object/weapon/melee/2h_sword/shared_2h_sword_battleaxe_quest.iff")
@@ -210,7 +212,8 @@ object_weapon_melee_2h_sword_shared_2h_sword_blacksun_hack = SharedWeaponObjectT
 	weaponEffect = "bolt",
 	weaponEffectIndex = 0,
 
-	clientObjectCRC = 1699236305
+	clientObjectCRC = 1699236305,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/weapon/base/shared_base_weapon.iff", "object/weapon/melee/base/shared_base_melee.iff", "object/weapon/melee/2h_sword/base/shared_2h_sword_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_weapon_melee_2h_sword_shared_2h_sword_blacksun_hack, "object/weapon/melee/2h_sword/shared_2h_sword_blacksun_hack.iff")
@@ -268,7 +271,8 @@ object_weapon_melee_2h_sword_shared_2h_sword_cleaver = SharedWeaponObjectTemplat
 	weaponEffect = "bolt",
 	weaponEffectIndex = 0,
 
-	clientObjectCRC = 1737909268
+	clientObjectCRC = 1737909268,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/weapon/base/shared_base_weapon.iff", "object/weapon/melee/base/shared_base_melee.iff", "object/weapon/melee/2h_sword/base/shared_2h_sword_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_weapon_melee_2h_sword_shared_2h_sword_cleaver, "object/weapon/melee/2h_sword/shared_2h_sword_cleaver.iff")
@@ -326,7 +330,8 @@ object_weapon_melee_2h_sword_shared_2h_sword_katana = SharedWeaponObjectTemplate
 	weaponEffect = "bolt",
 	weaponEffectIndex = 0,
 
-	clientObjectCRC = 1688331731
+	clientObjectCRC = 1688331731,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/weapon/base/shared_base_weapon.iff", "object/weapon/melee/base/shared_base_melee.iff", "object/weapon/melee/2h_sword/base/shared_2h_sword_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_weapon_melee_2h_sword_shared_2h_sword_katana, "object/weapon/melee/2h_sword/shared_2h_sword_katana.iff")
@@ -384,7 +389,8 @@ object_weapon_melee_2h_sword_shared_2h_sword_katana_quest = SharedWeaponObjectTe
 	weaponEffect = "bolt",
 	weaponEffectIndex = 0,
 
-	clientObjectCRC = 2213862016
+	clientObjectCRC = 2213862016,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/weapon/base/shared_base_weapon.iff", "object/weapon/melee/base/shared_base_melee.iff", "object/weapon/melee/2h_sword/base/shared_2h_sword_base.iff", "object/weapon/melee/2h_sword/shared_2h_sword_katana.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_weapon_melee_2h_sword_shared_2h_sword_katana_quest, "object/weapon/melee/2h_sword/shared_2h_sword_katana_quest.iff")
@@ -442,7 +448,8 @@ object_weapon_melee_2h_sword_shared_2h_sword_maul = SharedWeaponObjectTemplate:n
 	weaponEffect = "bolt",
 	weaponEffectIndex = 0,
 
-	clientObjectCRC = 248141391
+	clientObjectCRC = 248141391,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/weapon/base/shared_base_weapon.iff", "object/weapon/melee/base/shared_base_melee.iff", "object/weapon/melee/2h_sword/base/shared_2h_sword_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_weapon_melee_2h_sword_shared_2h_sword_maul, "object/weapon/melee/2h_sword/shared_2h_sword_maul.iff")
@@ -500,7 +507,8 @@ object_weapon_melee_2h_sword_shared_2h_sword_scythe = SharedWeaponObjectTemplate
 	weaponEffect = "bolt",
 	weaponEffectIndex = 0,
 
-	clientObjectCRC = 3006583634
+	clientObjectCRC = 3006583634,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/weapon/base/shared_base_weapon.iff", "object/weapon/melee/base/shared_base_melee.iff", "object/weapon/melee/2h_sword/base/shared_2h_sword_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_weapon_melee_2h_sword_shared_2h_sword_scythe, "object/weapon/melee/2h_sword/shared_2h_sword_scythe.iff")

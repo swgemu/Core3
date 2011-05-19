@@ -90,7 +90,8 @@ object_tangible_hopper_crafting_station_hopper_shared_crafting_station_ingredien
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1942668017
+	clientObjectCRC = 1942668017,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_hopper_crafting_station_hopper_shared_crafting_station_ingredient_hopper_large, "object/tangible/hopper/crafting_station_hopper/shared_crafting_station_ingredient_hopper_large.iff")
@@ -144,7 +145,8 @@ object_tangible_hopper_crafting_station_hopper_shared_crafting_station_ingredien
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1814389996
+	clientObjectCRC = 1814389996,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_hopper_crafting_station_hopper_shared_crafting_station_ingredient_hopper_medium, "object/tangible/hopper/crafting_station_hopper/shared_crafting_station_ingredient_hopper_medium.iff")
@@ -198,7 +200,8 @@ object_tangible_hopper_crafting_station_hopper_shared_crafting_station_ingredien
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1204901592
+	clientObjectCRC = 1204901592,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_hopper_crafting_station_hopper_shared_crafting_station_ingredient_hopper_small, "object/tangible/hopper/crafting_station_hopper/shared_crafting_station_ingredient_hopper_small.iff")
@@ -252,7 +255,8 @@ object_tangible_hopper_crafting_station_hopper_shared_crafting_station_ingredien
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2805227646
+	clientObjectCRC = 2805227646,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_hopper_crafting_station_hopper_shared_crafting_station_ingredient_hopper_structure_large, "object/tangible/hopper/crafting_station_hopper/shared_crafting_station_ingredient_hopper_structure_large.iff")
@@ -306,7 +310,8 @@ object_tangible_hopper_crafting_station_hopper_shared_crafting_station_ingredien
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2417546969
+	clientObjectCRC = 2417546969,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_hopper_crafting_station_hopper_shared_crafting_station_ingredient_hopper_structure_medium, "object/tangible/hopper/crafting_station_hopper/shared_crafting_station_ingredient_hopper_structure_medium.iff")
@@ -360,7 +365,8 @@ object_tangible_hopper_crafting_station_hopper_shared_crafting_station_ingredien
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2469393495
+	clientObjectCRC = 2469393495,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_hopper_crafting_station_hopper_shared_crafting_station_ingredient_hopper_structure_small, "object/tangible/hopper/crafting_station_hopper/shared_crafting_station_ingredient_hopper_structure_small.iff")

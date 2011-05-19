@@ -90,7 +90,8 @@ object_tangible_wearables_armor_mandalorian_shared_armor_mandalorian_belt = Shar
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1505873604
+	clientObjectCRC = 1505873604,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_belt.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_mandalorian_shared_armor_mandalorian_belt, "object/tangible/wearables/armor/mandalorian/shared_armor_mandalorian_belt.iff")
@@ -144,7 +145,8 @@ object_tangible_wearables_armor_mandalorian_shared_armor_mandalorian_bicep_l = S
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2184224460
+	clientObjectCRC = 2184224460,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_armor_base.iff", "object/tangible/wearables/base/shared_base_bicep_l.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_mandalorian_shared_armor_mandalorian_bicep_l, "object/tangible/wearables/armor/mandalorian/shared_armor_mandalorian_bicep_l.iff")
@@ -198,7 +200,8 @@ object_tangible_wearables_armor_mandalorian_shared_armor_mandalorian_bicep_r = S
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4075150175
+	clientObjectCRC = 4075150175,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_armor_base.iff", "object/tangible/wearables/base/shared_base_bicep_r.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_mandalorian_shared_armor_mandalorian_bicep_r, "object/tangible/wearables/armor/mandalorian/shared_armor_mandalorian_bicep_r.iff")
@@ -252,7 +255,8 @@ object_tangible_wearables_armor_mandalorian_shared_armor_mandalorian_bracer_l = 
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4163428868
+	clientObjectCRC = 4163428868,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_armor_base.iff", "object/tangible/wearables/base/shared_base_bracer_l.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_mandalorian_shared_armor_mandalorian_bracer_l, "object/tangible/wearables/armor/mandalorian/shared_armor_mandalorian_bracer_l.iff")
@@ -306,7 +310,8 @@ object_tangible_wearables_armor_mandalorian_shared_armor_mandalorian_bracer_r = 
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2298324887
+	clientObjectCRC = 2298324887,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_armor_base.iff", "object/tangible/wearables/base/shared_base_bracer_r.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_mandalorian_shared_armor_mandalorian_bracer_r, "object/tangible/wearables/armor/mandalorian/shared_armor_mandalorian_bracer_r.iff")
@@ -360,7 +365,8 @@ object_tangible_wearables_armor_mandalorian_shared_armor_mandalorian_chest_plate
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 609377308
+	clientObjectCRC = 609377308,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_vest.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_mandalorian_shared_armor_mandalorian_chest_plate, "object/tangible/wearables/armor/mandalorian/shared_armor_mandalorian_chest_plate.iff")
@@ -414,7 +420,8 @@ object_tangible_wearables_armor_mandalorian_shared_armor_mandalorian_gloves = Sh
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2170849590
+	clientObjectCRC = 2170849590,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_armor_base.iff", "object/tangible/wearables/base/shared_base_gauntlets.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_mandalorian_shared_armor_mandalorian_gloves, "object/tangible/wearables/armor/mandalorian/shared_armor_mandalorian_gloves.iff")
@@ -468,7 +475,8 @@ object_tangible_wearables_armor_mandalorian_shared_armor_mandalorian_helmet = Sh
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 933521470
+	clientObjectCRC = 933521470,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_armor_base.iff", "object/tangible/wearables/base/shared_base_helmet_closed_full.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_mandalorian_shared_armor_mandalorian_helmet, "object/tangible/wearables/armor/mandalorian/shared_armor_mandalorian_helmet.iff")
@@ -522,7 +530,8 @@ object_tangible_wearables_armor_mandalorian_shared_armor_mandalorian_leggings = 
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1997291291
+	clientObjectCRC = 1997291291,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_skirt.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_mandalorian_shared_armor_mandalorian_leggings, "object/tangible/wearables/armor/mandalorian/shared_armor_mandalorian_leggings.iff")
@@ -576,7 +585,8 @@ object_tangible_wearables_armor_mandalorian_shared_armor_mandalorian_shoes = Sha
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2225952259
+	clientObjectCRC = 2225952259,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_shoes.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_mandalorian_shared_armor_mandalorian_shoes, "object/tangible/wearables/armor/mandalorian/shared_armor_mandalorian_shoes.iff")

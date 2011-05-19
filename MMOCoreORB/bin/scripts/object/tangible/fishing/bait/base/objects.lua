@@ -90,7 +90,8 @@ object_tangible_fishing_bait_base_shared_bait_base = SharedTangibleObjectTemplat
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3482306960
+	clientObjectCRC = 3482306960,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_fishing_bait_base_shared_bait_base, "object/tangible/fishing/bait/base/shared_bait_base.iff")

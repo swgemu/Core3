@@ -90,7 +90,8 @@ object_tangible_deed_harvester_deed_shared_harvester_creature_deed = SharedTangi
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3801540743
+	clientObjectCRC = 3801540743,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/deed/base/shared_deed_base.iff", "object/tangible/deed/base/shared_deed_installation_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_deed_harvester_deed_shared_harvester_creature_deed, "object/tangible/deed/harvester_deed/shared_harvester_creature_deed.iff")
@@ -144,7 +145,8 @@ object_tangible_deed_harvester_deed_shared_harvester_flora_deed = SharedTangible
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2840949012
+	clientObjectCRC = 2840949012,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/deed/base/shared_deed_base.iff", "object/tangible/deed/base/shared_deed_installation_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_deed_harvester_deed_shared_harvester_flora_deed, "object/tangible/deed/harvester_deed/shared_harvester_flora_deed.iff")
@@ -198,7 +200,8 @@ object_tangible_deed_harvester_deed_shared_harvester_flora_deed_heavy = SharedTa
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4005897011
+	clientObjectCRC = 4005897011,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/deed/base/shared_deed_base.iff", "object/tangible/deed/base/shared_deed_installation_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_deed_harvester_deed_shared_harvester_flora_deed_heavy, "object/tangible/deed/harvester_deed/shared_harvester_flora_deed_heavy.iff")
@@ -252,7 +255,8 @@ object_tangible_deed_harvester_deed_shared_harvester_flora_deed_medium = SharedT
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1378608973
+	clientObjectCRC = 1378608973,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/deed/base/shared_deed_base.iff", "object/tangible/deed/base/shared_deed_installation_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_deed_harvester_deed_shared_harvester_flora_deed_medium, "object/tangible/deed/harvester_deed/shared_harvester_flora_deed_medium.iff")
@@ -306,7 +310,8 @@ object_tangible_deed_harvester_deed_shared_harvester_gas_deed = SharedTangibleOb
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2231503385
+	clientObjectCRC = 2231503385,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/deed/base/shared_deed_base.iff", "object/tangible/deed/base/shared_deed_installation_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_deed_harvester_deed_shared_harvester_gas_deed, "object/tangible/deed/harvester_deed/shared_harvester_gas_deed.iff")
@@ -360,7 +365,8 @@ object_tangible_deed_harvester_deed_shared_harvester_gas_deed_heavy = SharedTang
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 277903692
+	clientObjectCRC = 277903692,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/deed/base/shared_deed_base.iff", "object/tangible/deed/base/shared_deed_installation_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_deed_harvester_deed_shared_harvester_gas_deed_heavy, "object/tangible/deed/harvester_deed/shared_harvester_gas_deed_heavy.iff")
@@ -414,7 +420,8 @@ object_tangible_deed_harvester_deed_shared_harvester_gas_deed_medium = SharedTan
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2991048014
+	clientObjectCRC = 2991048014,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/deed/base/shared_deed_base.iff", "object/tangible/deed/base/shared_deed_installation_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_deed_harvester_deed_shared_harvester_gas_deed_medium, "object/tangible/deed/harvester_deed/shared_harvester_gas_deed_medium.iff")
@@ -468,7 +475,8 @@ object_tangible_deed_harvester_deed_shared_harvester_liquid_deed = SharedTangibl
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3335458434
+	clientObjectCRC = 3335458434,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/deed/base/shared_deed_base.iff", "object/tangible/deed/base/shared_deed_installation_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_deed_harvester_deed_shared_harvester_liquid_deed, "object/tangible/deed/harvester_deed/shared_harvester_liquid_deed.iff")
@@ -522,7 +530,8 @@ object_tangible_deed_harvester_deed_shared_harvester_liquid_deed_heavy = SharedT
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1336331736
+	clientObjectCRC = 1336331736,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/deed/base/shared_deed_base.iff", "object/tangible/deed/base/shared_deed_installation_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_deed_harvester_deed_shared_harvester_liquid_deed_heavy, "object/tangible/deed/harvester_deed/shared_harvester_liquid_deed_heavy.iff")
@@ -576,7 +585,8 @@ object_tangible_deed_harvester_deed_shared_harvester_liquid_deed_medium = Shared
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3291170804
+	clientObjectCRC = 3291170804,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/deed/base/shared_deed_base.iff", "object/tangible/deed/base/shared_deed_installation_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_deed_harvester_deed_shared_harvester_liquid_deed_medium, "object/tangible/deed/harvester_deed/shared_harvester_liquid_deed_medium.iff")
@@ -630,7 +640,8 @@ object_tangible_deed_harvester_deed_shared_harvester_moisture_deed = SharedTangi
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1578846375
+	clientObjectCRC = 1578846375,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/deed/base/shared_deed_base.iff", "object/tangible/deed/base/shared_deed_installation_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_deed_harvester_deed_shared_harvester_moisture_deed, "object/tangible/deed/harvester_deed/shared_harvester_moisture_deed.iff")
@@ -684,7 +695,8 @@ object_tangible_deed_harvester_deed_shared_harvester_moisture_deed_heavy = Share
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 21472355
+	clientObjectCRC = 21472355,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/deed/base/shared_deed_base.iff", "object/tangible/deed/base/shared_deed_installation_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_deed_harvester_deed_shared_harvester_moisture_deed_heavy, "object/tangible/deed/harvester_deed/shared_harvester_moisture_deed_heavy.iff")
@@ -738,7 +750,8 @@ object_tangible_deed_harvester_deed_shared_harvester_moisture_deed_medium = Shar
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 759835785
+	clientObjectCRC = 759835785,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/deed/base/shared_deed_base.iff", "object/tangible/deed/base/shared_deed_installation_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_deed_harvester_deed_shared_harvester_moisture_deed_medium, "object/tangible/deed/harvester_deed/shared_harvester_moisture_deed_medium.iff")
@@ -792,7 +805,8 @@ object_tangible_deed_harvester_deed_shared_harvester_ore_heavy_deed = SharedTang
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3224287923
+	clientObjectCRC = 3224287923,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/deed/base/shared_deed_base.iff", "object/tangible/deed/base/shared_deed_installation_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_deed_harvester_deed_shared_harvester_ore_heavy_deed, "object/tangible/deed/harvester_deed/shared_harvester_ore_heavy_deed.iff")
@@ -846,7 +860,8 @@ object_tangible_deed_harvester_deed_shared_harvester_ore_s1_deed = SharedTangibl
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2126009375
+	clientObjectCRC = 2126009375,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/deed/base/shared_deed_base.iff", "object/tangible/deed/base/shared_deed_installation_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_deed_harvester_deed_shared_harvester_ore_s1_deed, "object/tangible/deed/harvester_deed/shared_harvester_ore_s1_deed.iff")
@@ -900,7 +915,8 @@ object_tangible_deed_harvester_deed_shared_harvester_ore_s2_deed = SharedTangibl
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4224231681
+	clientObjectCRC = 4224231681,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/deed/base/shared_deed_base.iff", "object/tangible/deed/base/shared_deed_installation_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_deed_harvester_deed_shared_harvester_ore_s2_deed, "object/tangible/deed/harvester_deed/shared_harvester_ore_s2_deed.iff")

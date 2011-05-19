@@ -90,7 +90,8 @@ object_tangible_lair_kusak_shared_lair_kusak = SharedTangibleObjectTemplate:new 
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4037110317
+	clientObjectCRC = 4037110317,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_kusak_shared_lair_kusak, "object/tangible/lair/kusak/shared_lair_kusak.iff")
@@ -144,7 +145,8 @@ object_tangible_lair_kusak_shared_lair_kusak_wasteland = SharedTangibleObjectTem
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3071582373
+	clientObjectCRC = 3071582373,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_kusak_shared_lair_kusak_wasteland, "object/tangible/lair/kusak/shared_lair_kusak_wasteland.iff")

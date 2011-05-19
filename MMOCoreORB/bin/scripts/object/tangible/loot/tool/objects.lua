@@ -90,7 +90,8 @@ object_tangible_loot_tool_shared_binoculars_broken_s1 = SharedTangibleObjectTemp
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 511989855
+	clientObjectCRC = 511989855,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_tool_shared_binoculars_broken_s1, "object/tangible/loot/tool/shared_binoculars_broken_s1.iff")
@@ -144,7 +145,8 @@ object_tangible_loot_tool_shared_binoculars_broken_s2 = SharedTangibleObjectTemp
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3314806984
+	clientObjectCRC = 3314806984,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_tool_shared_binoculars_broken_s2, "object/tangible/loot/tool/shared_binoculars_broken_s2.iff")
@@ -198,7 +200,8 @@ object_tangible_loot_tool_shared_calibrator_broken = SharedTangibleObjectTemplat
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1384767705
+	clientObjectCRC = 1384767705,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_tool_shared_calibrator_broken, "object/tangible/loot/tool/shared_calibrator_broken.iff")
@@ -252,7 +255,8 @@ object_tangible_loot_tool_shared_comlink_naboo_broken = SharedTangibleObjectTemp
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1058991151
+	clientObjectCRC = 1058991151,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_tool_shared_comlink_naboo_broken, "object/tangible/loot/tool/shared_comlink_naboo_broken.iff")
@@ -306,7 +310,8 @@ object_tangible_loot_tool_shared_datapad_broken = SharedTangibleObjectTemplate:n
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3897890885
+	clientObjectCRC = 3897890885,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_tool_shared_datapad_broken, "object/tangible/loot/tool/shared_datapad_broken.iff")
@@ -360,7 +365,8 @@ object_tangible_loot_tool_shared_impulse_detector_broken_s1 = SharedTangibleObje
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3205052430
+	clientObjectCRC = 3205052430,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_tool_shared_impulse_detector_broken_s1, "object/tangible/loot/tool/shared_impulse_detector_broken_s1.iff")
@@ -414,7 +420,8 @@ object_tangible_loot_tool_shared_impulse_detector_broken_s2 = SharedTangibleObje
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1679724697
+	clientObjectCRC = 1679724697,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_tool_shared_impulse_detector_broken_s2, "object/tangible/loot/tool/shared_impulse_detector_broken_s2.iff")
@@ -468,7 +475,8 @@ object_tangible_loot_tool_shared_impulse_detector_broken_s3 = SharedTangibleObje
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 756283156
+	clientObjectCRC = 756283156,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_tool_shared_impulse_detector_broken_s3, "object/tangible/loot/tool/shared_impulse_detector_broken_s3.iff")
@@ -522,7 +530,8 @@ object_tangible_loot_tool_shared_recording_rod_broken = SharedTangibleObjectTemp
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3085465916
+	clientObjectCRC = 3085465916,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_tool_shared_recording_rod_broken, "object/tangible/loot/tool/shared_recording_rod_broken.iff")
@@ -576,7 +585,8 @@ object_tangible_loot_tool_shared_sandstat_broken = SharedTangibleObjectTemplate:
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2766599802
+	clientObjectCRC = 2766599802,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_tool_shared_sandstat_broken, "object/tangible/loot/tool/shared_sandstat_broken.iff")
@@ -630,7 +640,8 @@ object_tangible_loot_tool_shared_taloscope_broken = SharedTangibleObjectTemplate
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1847347593
+	clientObjectCRC = 1847347593,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_tool_shared_taloscope_broken, "object/tangible/loot/tool/shared_taloscope_broken.iff")
@@ -684,7 +695,8 @@ object_tangible_loot_tool_shared_usable_datapad = SharedTangibleObjectTemplate:n
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 990061346
+	clientObjectCRC = 990061346,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_tool_shared_usable_datapad, "object/tangible/loot/tool/shared_usable_datapad.iff")
@@ -738,7 +750,8 @@ object_tangible_loot_tool_shared_viewscreen_broken_s1 = SharedTangibleObjectTemp
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3503789827
+	clientObjectCRC = 3503789827,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_tool_shared_viewscreen_broken_s1, "object/tangible/loot/tool/shared_viewscreen_broken_s1.iff")
@@ -792,7 +805,8 @@ object_tangible_loot_tool_shared_viewscreen_broken_s2 = SharedTangibleObjectTemp
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 197148564
+	clientObjectCRC = 197148564,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_tool_shared_viewscreen_broken_s2, "object/tangible/loot/tool/shared_viewscreen_broken_s2.iff")

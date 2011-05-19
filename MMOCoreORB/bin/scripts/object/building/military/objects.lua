@@ -93,7 +93,8 @@ object_building_military_shared_military_abandoned_police_station_rebel = Shared
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 61695795
+	clientObjectCRC = 61695795,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_military_building.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_military_shared_military_abandoned_police_station_rebel, "object/building/military/shared_military_abandoned_police_station_rebel.iff")
@@ -150,7 +151,8 @@ object_building_military_shared_military_base_gate_house_imperial = SharedBuildi
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3485179638
+	clientObjectCRC = 3485179638,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_military_building.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_military_shared_military_base_gate_house_imperial, "object/building/military/shared_military_base_gate_house_imperial.iff")
@@ -207,7 +209,8 @@ object_building_military_shared_military_base_gate_house_rebel = SharedBuildingO
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 301400937
+	clientObjectCRC = 301400937,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_military_building.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_military_shared_military_base_gate_house_rebel, "object/building/military/shared_military_base_gate_house_rebel.iff")
@@ -264,7 +267,8 @@ object_building_military_shared_military_base_police_station_imperial_lok_otto =
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 603572205
+	clientObjectCRC = 603572205,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_military_building.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_military_shared_military_base_police_station_imperial_lok_otto, "object/building/military/shared_military_base_police_station_imperial_lok_otto.iff")
@@ -321,7 +325,8 @@ object_building_military_shared_military_base_police_station_imperial_style_01 =
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3633066758
+	clientObjectCRC = 3633066758,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_military_building.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_military_shared_military_base_police_station_imperial_style_01, "object/building/military/shared_military_base_police_station_imperial_style_01.iff")
@@ -378,7 +383,8 @@ object_building_military_shared_military_base_police_station_rebel_style_01 = Sh
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2265285311
+	clientObjectCRC = 2265285311,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_military_building.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_military_shared_military_base_police_station_rebel_style_01, "object/building/military/shared_military_base_police_station_rebel_style_01.iff")
@@ -435,7 +441,8 @@ object_building_military_shared_military_base_shed_imperial_barracks_s01 = Share
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4255048531
+	clientObjectCRC = 4255048531,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_military_building.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_military_shared_military_base_shed_imperial_barracks_s01, "object/building/military/shared_military_base_shed_imperial_barracks_s01.iff")
@@ -492,7 +499,8 @@ object_building_military_shared_military_base_shed_imperial_style_01 = SharedBui
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 196947849
+	clientObjectCRC = 196947849,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_military_building.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_military_shared_military_base_shed_imperial_style_01, "object/building/military/shared_military_base_shed_imperial_style_01.iff")
@@ -549,7 +557,8 @@ object_building_military_shared_military_base_shed_imperial_style_bank_s01 = Sha
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3577026459
+	clientObjectCRC = 3577026459,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_military_building.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_military_shared_military_base_shed_imperial_style_bank_s01, "object/building/military/shared_military_base_shed_imperial_style_bank_s01.iff")
@@ -606,7 +615,8 @@ object_building_military_shared_military_base_shed_imperial_style_cantina_s01 = 
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4151796568
+	clientObjectCRC = 4151796568,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_military_building.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_military_shared_military_base_shed_imperial_style_cantina_s01, "object/building/military/shared_military_base_shed_imperial_style_cantina_s01.iff")
@@ -663,7 +673,8 @@ object_building_military_shared_military_base_shed_imperial_style_hospital_01 = 
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3493400176
+	clientObjectCRC = 3493400176,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_military_building.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_military_shared_military_base_shed_imperial_style_hospital_01, "object/building/military/shared_military_base_shed_imperial_style_hospital_01.iff")
@@ -720,7 +731,8 @@ object_building_military_shared_military_base_shed_imperial_style_officer_s01 = 
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 279599580
+	clientObjectCRC = 279599580,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_military_building.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_military_shared_military_base_shed_imperial_style_officer_s01, "object/building/military/shared_military_base_shed_imperial_style_officer_s01.iff")
@@ -777,7 +789,8 @@ object_building_military_shared_military_base_shed_imperial_style_prison_01 = Sh
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3201291643
+	clientObjectCRC = 3201291643,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_military_building.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_military_shared_military_base_shed_imperial_style_prison_01, "object/building/military/shared_military_base_shed_imperial_style_prison_01.iff")
@@ -834,7 +847,8 @@ object_building_military_shared_military_base_shed_rebel_abandoned_01 = SharedBu
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1836586352
+	clientObjectCRC = 1836586352,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_military_building.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_military_shared_military_base_shed_rebel_abandoned_01, "object/building/military/shared_military_base_shed_rebel_abandoned_01.iff")
@@ -891,7 +905,8 @@ object_building_military_shared_military_base_shed_rebel_style_01 = SharedBuildi
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3606723543
+	clientObjectCRC = 3606723543,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_military_building.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_military_shared_military_base_shed_rebel_style_01, "object/building/military/shared_military_base_shed_rebel_style_01.iff")
@@ -948,7 +963,8 @@ object_building_military_shared_military_imperial_detachment_hq = SharedBuilding
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3881652814
+	clientObjectCRC = 3881652814,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_cave.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_military_shared_military_imperial_detachment_hq, "object/building/military/shared_military_imperial_detachment_hq.iff")
@@ -1005,7 +1021,8 @@ object_building_military_shared_military_imperial_field_hospital = SharedBuildin
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1587777178
+	clientObjectCRC = 1587777178,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_cave.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_military_shared_military_imperial_field_hospital, "object/building/military/shared_military_imperial_field_hospital.iff")
@@ -1062,7 +1079,8 @@ object_building_military_shared_military_imperial_forward_outpost = SharedBuildi
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3707185089
+	clientObjectCRC = 3707185089,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_military_building.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_military_shared_military_imperial_forward_outpost, "object/building/military/shared_military_imperial_forward_outpost.iff")
@@ -1119,7 +1137,8 @@ object_building_military_shared_military_imperial_strategic_base = SharedBuildin
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1767088646
+	clientObjectCRC = 1767088646,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_military_building.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_military_shared_military_imperial_strategic_base, "object/building/military/shared_military_imperial_strategic_base.iff")
@@ -1176,7 +1195,8 @@ object_building_military_shared_military_imperial_tactical_center = SharedBuildi
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3834889912
+	clientObjectCRC = 3834889912,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_cave.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_military_shared_military_imperial_tactical_center, "object/building/military/shared_military_imperial_tactical_center.iff")
@@ -1233,7 +1253,8 @@ object_building_military_shared_military_outpost_guard_house_imperial = SharedBu
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1294596356
+	clientObjectCRC = 1294596356,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_military_building.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_military_shared_military_outpost_guard_house_imperial, "object/building/military/shared_military_outpost_guard_house_imperial.iff")
@@ -1290,7 +1311,8 @@ object_building_military_shared_military_outpost_guard_house_rebel = SharedBuild
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4257226961
+	clientObjectCRC = 4257226961,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_military_building.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_military_shared_military_outpost_guard_house_rebel, "object/building/military/shared_military_outpost_guard_house_rebel.iff")
@@ -1347,7 +1369,8 @@ object_building_military_shared_military_outpost_guard_tower_1 = SharedBuildingO
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3846575780
+	clientObjectCRC = 3846575780,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_military_building.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_military_shared_military_outpost_guard_tower_1, "object/building/military/shared_military_outpost_guard_tower_1.iff")
@@ -1404,7 +1427,8 @@ object_building_military_shared_military_rebel_detachment_hq = SharedBuildingObj
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 27534614
+	clientObjectCRC = 27534614,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_cave.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_military_shared_military_rebel_detachment_hq, "object/building/military/shared_military_rebel_detachment_hq.iff")
@@ -1461,7 +1485,8 @@ object_building_military_shared_military_rebel_field_hospital = SharedBuildingOb
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2029763921
+	clientObjectCRC = 2029763921,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_cave.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_military_shared_military_rebel_field_hospital, "object/building/military/shared_military_rebel_field_hospital.iff")
@@ -1518,7 +1543,8 @@ object_building_military_shared_military_rebel_forward_outpost = SharedBuildingO
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 107026323
+	clientObjectCRC = 107026323,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_military_building.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_military_shared_military_rebel_forward_outpost, "object/building/military/shared_military_rebel_forward_outpost.iff")
@@ -1575,7 +1601,8 @@ object_building_military_shared_military_rebel_strategic_base = SharedBuildingOb
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1326158285
+	clientObjectCRC = 1326158285,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_military_building.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_military_shared_military_rebel_strategic_base, "object/building/military/shared_military_rebel_strategic_base.iff")
@@ -1632,7 +1659,8 @@ object_building_military_shared_military_rebel_tactical_center = SharedBuildingO
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1040578282
+	clientObjectCRC = 1040578282,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_cave.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_military_shared_military_rebel_tactical_center, "object/building/military/shared_military_rebel_tactical_center.iff")
@@ -1689,7 +1717,8 @@ object_building_military_shared_mun_all_military_tower_impl_guard_s01 = SharedBu
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4049657385
+	clientObjectCRC = 4049657385,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_military_building.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_military_shared_mun_all_military_tower_impl_guard_s01, "object/building/military/shared_mun_all_military_tower_impl_guard_s01.iff")
@@ -1746,7 +1775,8 @@ object_building_military_shared_outpost_cloning_facility = SharedBuildingObjectT
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1152524774
+	clientObjectCRC = 1152524774,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_cloning_facility.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_military_shared_outpost_cloning_facility, "object/building/military/shared_outpost_cloning_facility.iff")
@@ -1803,7 +1833,8 @@ object_building_military_shared_outpost_cloning_facility_s02 = SharedBuildingObj
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1476076676
+	clientObjectCRC = 1476076676,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_cloning_facility.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_military_shared_outpost_cloning_facility_s02, "object/building/military/shared_outpost_cloning_facility_s02.iff")
@@ -1860,7 +1891,8 @@ object_building_military_shared_outpost_cloning_facility_s03 = SharedBuildingObj
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 519455497
+	clientObjectCRC = 519455497,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_cloning_facility.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_military_shared_outpost_cloning_facility_s03, "object/building/military/shared_outpost_cloning_facility_s03.iff")
@@ -1917,7 +1949,8 @@ object_building_military_shared_outpost_shed = SharedBuildingObjectTemplate:new 
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1037564192
+	clientObjectCRC = 1037564192,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_military_building.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_military_shared_outpost_shed, "object/building/military/shared_outpost_shed.iff")
@@ -1974,7 +2007,8 @@ object_building_military_shared_outpost_shed_s02 = SharedBuildingObjectTemplate:
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3955868475
+	clientObjectCRC = 3955868475,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_military_building.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_military_shared_outpost_shed_s02, "object/building/military/shared_outpost_shed_s02.iff")
@@ -2031,7 +2065,8 @@ object_building_military_shared_outpost_shed_s03 = SharedBuildingObjectTemplate:
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2730796214
+	clientObjectCRC = 2730796214,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_military_building.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_military_shared_outpost_shed_s03, "object/building/military/shared_outpost_shed_s03.iff")
@@ -2088,7 +2123,8 @@ object_building_military_shared_outpost_shed_s04 = SharedBuildingObjectTemplate:
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1495764898
+	clientObjectCRC = 1495764898,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_military_building.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_military_shared_outpost_shed_s04, "object/building/military/shared_outpost_shed_s04.iff")
@@ -2145,7 +2181,8 @@ object_building_military_shared_outpost_shed_s05 = SharedBuildingObjectTemplate:
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 271247407
+	clientObjectCRC = 271247407,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_military_building.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_military_shared_outpost_shed_s05, "object/building/military/shared_outpost_shed_s05.iff")
@@ -2202,7 +2239,8 @@ object_building_military_shared_outpost_starport = SharedBuildingObjectTemplate:
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3035022053
+	clientObjectCRC = 3035022053,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_starport.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_military_shared_outpost_starport, "object/building/military/shared_outpost_starport.iff")
@@ -2259,7 +2297,8 @@ object_building_military_shared_pirate_outpost = SharedBuildingObjectTemplate:ne
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2804382550
+	clientObjectCRC = 2804382550,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_military_building.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_military_shared_pirate_outpost, "object/building/military/shared_pirate_outpost.iff")
@@ -2316,7 +2355,8 @@ object_building_military_shared_pirate_warehouse = SharedBuildingObjectTemplate:
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2437476511
+	clientObjectCRC = 2437476511,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_military_building.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_military_shared_pirate_warehouse, "object/building/military/shared_pirate_warehouse.iff")
@@ -2373,7 +2413,8 @@ object_building_military_shared_poi_all_alum_mine_s01 = SharedBuildingObjectTemp
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 568013580
+	clientObjectCRC = 568013580,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_military_building.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_military_shared_poi_all_alum_mine_s01, "object/building/military/shared_poi_all_alum_mine_s01.iff")
@@ -2430,7 +2471,8 @@ object_building_military_shared_poi_all_impl_bunker_recon_outpost = SharedBuildi
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 339089158
+	clientObjectCRC = 339089158,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_military_building.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_military_shared_poi_all_impl_bunker_recon_outpost, "object/building/military/shared_poi_all_impl_bunker_recon_outpost.iff")
@@ -2487,7 +2529,8 @@ object_building_military_shared_poi_all_jedi_temple_ruined = SharedBuildingObjec
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 149503406
+	clientObjectCRC = 149503406,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_military_building.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_military_shared_poi_all_jedi_temple_ruined, "object/building/military/shared_poi_all_jedi_temple_ruined.iff")
@@ -2544,7 +2587,8 @@ object_building_military_shared_poi_all_mad_bio_mine_s01 = SharedBuildingObjectT
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2675557351
+	clientObjectCRC = 2675557351,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_military_building.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_military_shared_poi_all_mad_bio_mine_s01, "object/building/military/shared_poi_all_mad_bio_mine_s01.iff")
@@ -2601,7 +2645,8 @@ object_building_military_shared_rebel_hideout_themepark = SharedBuildingObjectTe
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1446333372
+	clientObjectCRC = 1446333372,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_military_building.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_military_shared_rebel_hideout_themepark, "object/building/military/shared_rebel_hideout_themepark.iff")
@@ -2658,7 +2703,8 @@ object_building_military_shared_small_imperial_cloning_facility = SharedBuilding
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2082976950
+	clientObjectCRC = 2082976950,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_cloning_facility.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_military_shared_small_imperial_cloning_facility, "object/building/military/shared_small_imperial_cloning_facility.iff")
@@ -2715,7 +2761,8 @@ object_building_military_shared_small_imperial_cloning_facility_s02 = SharedBuil
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 972900942
+	clientObjectCRC = 972900942,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_cloning_facility.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_military_shared_small_imperial_cloning_facility_s02, "object/building/military/shared_small_imperial_cloning_facility_s02.iff")

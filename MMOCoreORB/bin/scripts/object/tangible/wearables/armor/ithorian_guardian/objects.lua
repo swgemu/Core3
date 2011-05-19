@@ -90,7 +90,8 @@ object_tangible_wearables_armor_ithorian_guardian_shared_ith_armor_s02_bicep_l =
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1211170670
+	clientObjectCRC = 1211170670,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_armor_base.iff", "object/tangible/wearables/base/shared_base_bicep_l.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_ithorian_guardian_shared_ith_armor_s02_bicep_l, "object/tangible/wearables/armor/ithorian_guardian/shared_ith_armor_s02_bicep_l.iff")
@@ -144,7 +145,8 @@ object_tangible_wearables_armor_ithorian_guardian_shared_ith_armor_s02_bicep_r =
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 954579709
+	clientObjectCRC = 954579709,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_armor_base.iff", "object/tangible/wearables/base/shared_base_bicep_r.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_ithorian_guardian_shared_ith_armor_s02_bicep_r, "object/tangible/wearables/armor/ithorian_guardian/shared_ith_armor_s02_bicep_r.iff")
@@ -198,7 +200,8 @@ object_tangible_wearables_armor_ithorian_guardian_shared_ith_armor_s02_boots = S
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2071589825
+	clientObjectCRC = 2071589825,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_shoes.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_ithorian_guardian_shared_ith_armor_s02_boots, "object/tangible/wearables/armor/ithorian_guardian/shared_ith_armor_s02_boots.iff")
@@ -252,7 +255,8 @@ object_tangible_wearables_armor_ithorian_guardian_shared_ith_armor_s02_bracer_l 
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2320041547
+	clientObjectCRC = 2320041547,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_armor_base.iff", "object/tangible/wearables/base/shared_base_bracer_l.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_ithorian_guardian_shared_ith_armor_s02_bracer_l, "object/tangible/wearables/armor/ithorian_guardian/shared_ith_armor_s02_bracer_l.iff")
@@ -306,7 +310,8 @@ object_tangible_wearables_armor_ithorian_guardian_shared_ith_armor_s02_bracer_r 
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4204544984
+	clientObjectCRC = 4204544984,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_armor_base.iff", "object/tangible/wearables/base/shared_base_bracer_r.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_ithorian_guardian_shared_ith_armor_s02_bracer_r, "object/tangible/wearables/armor/ithorian_guardian/shared_ith_armor_s02_bracer_r.iff")
@@ -360,7 +365,8 @@ object_tangible_wearables_armor_ithorian_guardian_shared_ith_armor_s02_chest_pla
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1560721233
+	clientObjectCRC = 1560721233,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_vest.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_ithorian_guardian_shared_ith_armor_s02_chest_plate, "object/tangible/wearables/armor/ithorian_guardian/shared_ith_armor_s02_chest_plate.iff")
@@ -414,7 +420,8 @@ object_tangible_wearables_armor_ithorian_guardian_shared_ith_armor_s02_gloves = 
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 889238444
+	clientObjectCRC = 889238444,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_gloves.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_ithorian_guardian_shared_ith_armor_s02_gloves, "object/tangible/wearables/armor/ithorian_guardian/shared_ith_armor_s02_gloves.iff")
@@ -468,7 +475,8 @@ object_tangible_wearables_armor_ithorian_guardian_shared_ith_armor_s02_helmet = 
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2210419364
+	clientObjectCRC = 2210419364,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_armor_base.iff", "object/tangible/wearables/base/shared_base_helmet_closed_full.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_ithorian_guardian_shared_ith_armor_s02_helmet, "object/tangible/wearables/armor/ithorian_guardian/shared_ith_armor_s02_helmet.iff")
@@ -522,7 +530,8 @@ object_tangible_wearables_armor_ithorian_guardian_shared_ith_armor_s02_leggings 
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 91085652
+	clientObjectCRC = 91085652,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_pants.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_ithorian_guardian_shared_ith_armor_s02_leggings, "object/tangible/wearables/armor/ithorian_guardian/shared_ith_armor_s02_leggings.iff")

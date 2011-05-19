@@ -90,7 +90,8 @@ object_tangible_hq_destructible_shared_base_destructible = SharedTangibleObjectT
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 730285201
+	clientObjectCRC = 730285201,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_hq_destructible_shared_base_destructible, "object/tangible/hq_destructible/shared_base_destructible.iff")
@@ -144,7 +145,8 @@ object_tangible_hq_destructible_shared_override_terminal = SharedTangibleObjectT
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2006377548
+	clientObjectCRC = 2006377548,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/hq_destructible/shared_base_destructible.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_hq_destructible_shared_override_terminal, "object/tangible/hq_destructible/shared_override_terminal.iff")
@@ -198,7 +200,8 @@ object_tangible_hq_destructible_shared_power_regulator = SharedTangibleObjectTem
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3447096600
+	clientObjectCRC = 3447096600,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/hq_destructible/shared_base_destructible.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_hq_destructible_shared_power_regulator, "object/tangible/hq_destructible/shared_power_regulator.iff")
@@ -252,7 +255,8 @@ object_tangible_hq_destructible_shared_security_terminal = SharedTangibleObjectT
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 868384958
+	clientObjectCRC = 868384958,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/hq_destructible/shared_base_destructible.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_hq_destructible_shared_security_terminal, "object/tangible/hq_destructible/shared_security_terminal.iff")
@@ -306,7 +310,8 @@ object_tangible_hq_destructible_shared_uplink_terminal = SharedTangibleObjectTem
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 459058175
+	clientObjectCRC = 459058175,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/hq_destructible/shared_base_destructible.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_hq_destructible_shared_uplink_terminal, "object/tangible/hq_destructible/shared_uplink_terminal.iff")

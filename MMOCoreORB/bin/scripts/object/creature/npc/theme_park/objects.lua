@@ -114,7 +114,8 @@ object_creature_npc_theme_park_shared_event_transport = SharedCreatureObjectTemp
 	warpTolerance = 17,
 	waterModPercent = 0.5,
 
-	clientObjectCRC = 1686537229
+	clientObjectCRC = 1686537229,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/creature/npc/base/shared_base_npc.iff", "object/creature/npc/base/shared_base_npc_theme_park.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_creature_npc_theme_park_shared_event_transport, "object/creature/npc/theme_park/shared_event_transport.iff")
@@ -192,7 +193,8 @@ object_creature_npc_theme_park_shared_event_transport_theed_hangar = SharedCreat
 	warpTolerance = 17,
 	waterModPercent = 0.5,
 
-	clientObjectCRC = 3010351388
+	clientObjectCRC = 3010351388,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/creature/npc/base/shared_base_npc.iff", "object/creature/npc/base/shared_base_npc_theme_park.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_creature_npc_theme_park_shared_event_transport_theed_hangar, "object/creature/npc/theme_park/shared_event_transport_theed_hangar.iff")
@@ -270,7 +272,8 @@ object_creature_npc_theme_park_shared_lambda_shuttle = SharedCreatureObjectTempl
 	warpTolerance = 17,
 	waterModPercent = 0.5,
 
-	clientObjectCRC = 3752954766
+	clientObjectCRC = 3752954766,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/creature/npc/base/shared_base_npc.iff", "object/creature/npc/base/shared_base_npc_theme_park.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_creature_npc_theme_park_shared_lambda_shuttle, "object/creature/npc/theme_park/shared_lambda_shuttle.iff")
@@ -348,7 +351,8 @@ object_creature_npc_theme_park_shared_lambda_shuttle_faction_perk = SharedCreatu
 	warpTolerance = 17,
 	waterModPercent = 0.5,
 
-	clientObjectCRC = 3655546204
+	clientObjectCRC = 3655546204,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/creature/npc/base/shared_base_npc.iff", "object/creature/npc/base/shared_base_npc_theme_park.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_creature_npc_theme_park_shared_lambda_shuttle_faction_perk, "object/creature/npc/theme_park/shared_lambda_shuttle_faction_perk.iff")
@@ -426,7 +430,8 @@ object_creature_npc_theme_park_shared_player_shuttle = SharedCreatureObjectTempl
 	warpTolerance = 17,
 	waterModPercent = 0.5,
 
-	clientObjectCRC = 1984806965
+	clientObjectCRC = 1984806965,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/creature/npc/base/shared_base_npc.iff", "object/creature/npc/base/shared_base_npc_theme_park.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_creature_npc_theme_park_shared_player_shuttle, "object/creature/npc/theme_park/shared_player_shuttle.iff")
@@ -504,7 +509,8 @@ object_creature_npc_theme_park_shared_player_transport = SharedCreatureObjectTem
 	warpTolerance = 17,
 	waterModPercent = 0.5,
 
-	clientObjectCRC = 1196401137
+	clientObjectCRC = 1196401137,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/creature/npc/base/shared_base_npc.iff", "object/creature/npc/base/shared_base_npc_theme_park.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_creature_npc_theme_park_shared_player_transport, "object/creature/npc/theme_park/shared_player_transport.iff")
@@ -582,7 +588,8 @@ object_creature_npc_theme_park_shared_player_transport_theed_hangar = SharedCrea
 	warpTolerance = 17,
 	waterModPercent = 0.5,
 
-	clientObjectCRC = 773296996
+	clientObjectCRC = 773296996,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/creature/npc/base/shared_base_npc.iff", "object/creature/npc/base/shared_base_npc_theme_park.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_creature_npc_theme_park_shared_player_transport_theed_hangar, "object/creature/npc/theme_park/shared_player_transport_theed_hangar.iff")

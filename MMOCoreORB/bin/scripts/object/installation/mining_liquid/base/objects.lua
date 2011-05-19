@@ -90,7 +90,8 @@ object_installation_mining_liquid_base_shared_mining_liquid_base = SharedInstall
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2659189194
+	clientObjectCRC = 2659189194,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_installation_mining_liquid_base_shared_mining_liquid_base, "object/installation/mining_liquid/base/shared_mining_liquid_base.iff")

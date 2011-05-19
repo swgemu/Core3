@@ -90,7 +90,8 @@ object_tangible_lair_colo_claw_fish_shared_lair_colo_claw_fish = SharedTangibleO
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 52528931
+	clientObjectCRC = 52528931,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_colo_claw_fish_shared_lair_colo_claw_fish, "object/tangible/lair/colo_claw_fish/shared_lair_colo_claw_fish.iff")
@@ -144,7 +145,8 @@ object_tangible_lair_colo_claw_fish_shared_lair_colo_claw_fish_underwater = Shar
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3773705041
+	clientObjectCRC = 3773705041,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_colo_claw_fish_shared_lair_colo_claw_fish_underwater, "object/tangible/lair/colo_claw_fish/shared_lair_colo_claw_fish_underwater.iff")

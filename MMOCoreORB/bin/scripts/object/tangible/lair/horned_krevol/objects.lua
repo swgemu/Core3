@@ -90,7 +90,8 @@ object_tangible_lair_horned_krevol_shared_lair_horned_krevol = SharedTangibleObj
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3995926996
+	clientObjectCRC = 3995926996,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_horned_krevol_shared_lair_horned_krevol, "object/tangible/lair/horned_krevol/shared_lair_horned_krevol.iff")
@@ -144,7 +145,8 @@ object_tangible_lair_horned_krevol_shared_lair_horned_krevol_desert = SharedTang
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 883847742
+	clientObjectCRC = 883847742,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_horned_krevol_shared_lair_horned_krevol_desert, "object/tangible/lair/horned_krevol/shared_lair_horned_krevol_desert.iff")
@@ -198,7 +200,8 @@ object_tangible_lair_horned_krevol_shared_lair_horned_krevol_forest = SharedTang
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 524661947
+	clientObjectCRC = 524661947,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_horned_krevol_shared_lair_horned_krevol_forest, "object/tangible/lair/horned_krevol/shared_lair_horned_krevol_forest.iff")
@@ -252,7 +255,8 @@ object_tangible_lair_horned_krevol_shared_lair_horned_krevol_mountain = SharedTa
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2373765729
+	clientObjectCRC = 2373765729,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_horned_krevol_shared_lair_horned_krevol_mountain, "object/tangible/lair/horned_krevol/shared_lair_horned_krevol_mountain.iff")

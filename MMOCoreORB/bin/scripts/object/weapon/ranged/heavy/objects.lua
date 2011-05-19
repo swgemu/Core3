@@ -94,7 +94,8 @@ object_weapon_ranged_heavy_shared_heavy_acid_beam = SharedWeaponObjectTemplate:n
 	weaponEffect = "rocket",
 	weaponEffectIndex = 2,
 
-	clientObjectCRC = 337224478
+	clientObjectCRC = 337224478,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/weapon/base/shared_base_weapon.iff", "object/weapon/ranged/heavy/base/shared_heavy_weapon_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_weapon_ranged_heavy_shared_heavy_acid_beam, "object/weapon/ranged/heavy/shared_heavy_acid_beam.iff")
@@ -152,7 +153,8 @@ object_weapon_ranged_heavy_shared_heavy_lightning_beam = SharedWeaponObjectTempl
 	weaponEffect = "bolt",
 	weaponEffectIndex = 20,
 
-	clientObjectCRC = 1073082434
+	clientObjectCRC = 1073082434,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/weapon/base/shared_base_weapon.iff", "object/weapon/ranged/heavy/base/shared_heavy_weapon_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_weapon_ranged_heavy_shared_heavy_lightning_beam, "object/weapon/ranged/heavy/shared_heavy_lightning_beam.iff")
@@ -210,7 +212,8 @@ object_weapon_ranged_heavy_shared_heavy_particle_beam = SharedWeaponObjectTempla
 	weaponEffect = "rocket",
 	weaponEffectIndex = 1,
 
-	clientObjectCRC = 1442646668
+	clientObjectCRC = 1442646668,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/weapon/base/shared_base_weapon.iff", "object/weapon/ranged/heavy/base/shared_heavy_weapon_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_weapon_ranged_heavy_shared_heavy_particle_beam, "object/weapon/ranged/heavy/shared_heavy_particle_beam.iff")
@@ -268,7 +271,8 @@ object_weapon_ranged_heavy_shared_heavy_rocket_launcher = SharedWeaponObjectTemp
 	weaponEffect = "rocket",
 	weaponEffectIndex = 0,
 
-	clientObjectCRC = 3022005655
+	clientObjectCRC = 3022005655,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/weapon/base/shared_base_weapon.iff", "object/weapon/ranged/heavy/base/shared_heavy_weapon_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_weapon_ranged_heavy_shared_heavy_rocket_launcher, "object/weapon/ranged/heavy/shared_heavy_rocket_launcher.iff")
@@ -326,7 +330,8 @@ object_weapon_ranged_heavy_shared_launcher = SharedWeaponObjectTemplate:new {
 	weaponEffect = "bolt",
 	weaponEffectIndex = 0,
 
-	clientObjectCRC = 2595978283
+	clientObjectCRC = 2595978283,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/weapon/base/shared_base_weapon.iff", "object/weapon/ranged/heavy/base/shared_heavy_weapon_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_weapon_ranged_heavy_shared_launcher, "object/weapon/ranged/heavy/shared_launcher.iff")

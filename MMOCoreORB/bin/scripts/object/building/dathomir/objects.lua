@@ -93,7 +93,8 @@ object_building_dathomir_shared_mtn_clan_stronghold = SharedBuildingObjectTempla
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3733495054
+	clientObjectCRC = 3733495054,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_filler_building.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_dathomir_shared_mtn_clan_stronghold, "object/building/dathomir/shared_mtn_clan_stronghold.iff")
@@ -150,7 +151,8 @@ object_building_dathomir_shared_night_sister_stronghold = SharedBuildingObjectTe
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1104863563
+	clientObjectCRC = 1104863563,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_filler_building.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_building_dathomir_shared_night_sister_stronghold, "object/building/dathomir/shared_night_sister_stronghold.iff")

@@ -80,7 +80,8 @@ object_construction_contract_base_shared_base_construction_contract = SharedCons
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 645732506
+	clientObjectCRC = 645732506,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_construction_contract_base_shared_base_construction_contract, "object/construction_contract/base/shared_base_construction_contract.iff")

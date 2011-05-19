@@ -90,7 +90,8 @@ object_tangible_lair_malkloc_shared_lair_malkloc = SharedTangibleObjectTemplate:
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1819099855
+	clientObjectCRC = 1819099855,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_malkloc_shared_lair_malkloc, "object/tangible/lair/malkloc/shared_lair_malkloc.iff")
@@ -144,7 +145,8 @@ object_tangible_lair_malkloc_shared_lair_malkloc_desert = SharedTangibleObjectTe
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3825333189
+	clientObjectCRC = 3825333189,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_malkloc_shared_lair_malkloc_desert, "object/tangible/lair/malkloc/shared_lair_malkloc_desert.iff")
@@ -198,7 +200,8 @@ object_tangible_lair_malkloc_shared_lair_malkloc_forest = SharedTangibleObjectTe
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3488232768
+	clientObjectCRC = 3488232768,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_malkloc_shared_lair_malkloc_forest, "object/tangible/lair/malkloc/shared_lair_malkloc_forest.iff")
@@ -252,7 +255,8 @@ object_tangible_lair_malkloc_shared_lair_malkloc_mountain = SharedTangibleObject
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 377228821
+	clientObjectCRC = 377228821,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_malkloc_shared_lair_malkloc_mountain, "object/tangible/lair/malkloc/shared_lair_malkloc_mountain.iff")

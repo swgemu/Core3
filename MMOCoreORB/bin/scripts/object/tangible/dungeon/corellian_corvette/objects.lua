@@ -90,7 +90,8 @@ object_tangible_dungeon_corellian_corvette_shared_corvette_search_imperial_assas
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1407650214
+	clientObjectCRC = 1407650214,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_dungeon_corellian_corvette_shared_corvette_search_imperial_assassination_01, "object/tangible/dungeon/corellian_corvette/shared_corvette_search_imperial_assassination_01.iff")
@@ -144,7 +145,8 @@ object_tangible_dungeon_corellian_corvette_shared_corvette_search_imperial_assas
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2297471281
+	clientObjectCRC = 2297471281,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_dungeon_corellian_corvette_shared_corvette_search_imperial_assassination_02, "object/tangible/dungeon/corellian_corvette/shared_corvette_search_imperial_assassination_02.iff")
@@ -198,7 +200,8 @@ object_tangible_dungeon_corellian_corvette_shared_corvette_search_imperial_assas
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3254634172
+	clientObjectCRC = 3254634172,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_dungeon_corellian_corvette_shared_corvette_search_imperial_assassination_03, "object/tangible/dungeon/corellian_corvette/shared_corvette_search_imperial_assassination_03.iff")
@@ -252,7 +255,8 @@ object_tangible_dungeon_corellian_corvette_shared_corvette_search_imperial_destr
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1492422801
+	clientObjectCRC = 1492422801,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_dungeon_corellian_corvette_shared_corvette_search_imperial_destroy_01, "object/tangible/dungeon/corellian_corvette/shared_corvette_search_imperial_destroy_01.iff")
@@ -306,7 +310,8 @@ object_tangible_dungeon_corellian_corvette_shared_corvette_search_imperial_destr
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2212706310
+	clientObjectCRC = 2212706310,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_dungeon_corellian_corvette_shared_corvette_search_imperial_destroy_02, "object/tangible/dungeon/corellian_corvette/shared_corvette_search_imperial_destroy_02.iff")
@@ -360,7 +365,8 @@ object_tangible_dungeon_corellian_corvette_shared_corvette_search_imperial_destr
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3404619659
+	clientObjectCRC = 3404619659,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_dungeon_corellian_corvette_shared_corvette_search_imperial_destroy_03, "object/tangible/dungeon/corellian_corvette/shared_corvette_search_imperial_destroy_03.iff")
@@ -414,7 +420,8 @@ object_tangible_dungeon_corellian_corvette_shared_corvette_search_imperial_rescu
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2560812636
+	clientObjectCRC = 2560812636,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_dungeon_corellian_corvette_shared_corvette_search_imperial_rescue_01, "object/tangible/dungeon/corellian_corvette/shared_corvette_search_imperial_rescue_01.iff")
@@ -468,7 +475,8 @@ object_tangible_dungeon_corellian_corvette_shared_corvette_search_imperial_rescu
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1135955659
+	clientObjectCRC = 1135955659,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_dungeon_corellian_corvette_shared_corvette_search_imperial_rescue_02, "object/tangible/dungeon/corellian_corvette/shared_corvette_search_imperial_rescue_02.iff")
@@ -522,7 +530,8 @@ object_tangible_dungeon_corellian_corvette_shared_corvette_search_imperial_rescu
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 179841350
+	clientObjectCRC = 179841350,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_dungeon_corellian_corvette_shared_corvette_search_imperial_rescue_03, "object/tangible/dungeon/corellian_corvette/shared_corvette_search_imperial_rescue_03.iff")
@@ -576,7 +585,8 @@ object_tangible_dungeon_corellian_corvette_shared_corvette_search_neutral_assass
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3272388566
+	clientObjectCRC = 3272388566,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_dungeon_corellian_corvette_shared_corvette_search_neutral_assassination_01, "object/tangible/dungeon/corellian_corvette/shared_corvette_search_neutral_assassination_01.iff")
@@ -630,7 +640,8 @@ object_tangible_dungeon_corellian_corvette_shared_corvette_search_neutral_assass
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 404424513
+	clientObjectCRC = 404424513,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_dungeon_corellian_corvette_shared_corvette_search_neutral_assassination_02, "object/tangible/dungeon/corellian_corvette/shared_corvette_search_neutral_assassination_02.iff")
@@ -684,7 +695,8 @@ object_tangible_dungeon_corellian_corvette_shared_corvette_search_neutral_assass
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1360421068
+	clientObjectCRC = 1360421068,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_dungeon_corellian_corvette_shared_corvette_search_neutral_assassination_03, "object/tangible/dungeon/corellian_corvette/shared_corvette_search_neutral_assassination_03.iff")
@@ -738,7 +750,8 @@ object_tangible_dungeon_corellian_corvette_shared_corvette_search_neutral_destro
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 264621119
+	clientObjectCRC = 264621119,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_dungeon_corellian_corvette_shared_corvette_search_neutral_destroy_01, "object/tangible/dungeon/corellian_corvette/shared_corvette_search_neutral_destroy_01.iff")
@@ -792,7 +805,8 @@ object_tangible_dungeon_corellian_corvette_shared_corvette_search_neutral_destro
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3570558120
+	clientObjectCRC = 3570558120,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_dungeon_corellian_corvette_shared_corvette_search_neutral_destroy_02, "object/tangible/dungeon/corellian_corvette/shared_corvette_search_neutral_destroy_02.iff")
@@ -846,7 +860,8 @@ object_tangible_dungeon_corellian_corvette_shared_corvette_search_neutral_destro
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2648638245
+	clientObjectCRC = 2648638245,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_dungeon_corellian_corvette_shared_corvette_search_neutral_destroy_03, "object/tangible/dungeon/corellian_corvette/shared_corvette_search_neutral_destroy_03.iff")
@@ -900,7 +915,8 @@ object_tangible_dungeon_corellian_corvette_shared_corvette_search_neutral_rescue
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3687584342
+	clientObjectCRC = 3687584342,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_dungeon_corellian_corvette_shared_corvette_search_neutral_rescue_01, "object/tangible/dungeon/corellian_corvette/shared_corvette_search_neutral_rescue_01.iff")
@@ -954,7 +970,8 @@ object_tangible_dungeon_corellian_corvette_shared_corvette_search_neutral_rescue
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 14400193
+	clientObjectCRC = 14400193,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_dungeon_corellian_corvette_shared_corvette_search_neutral_rescue_02, "object/tangible/dungeon/corellian_corvette/shared_corvette_search_neutral_rescue_02.iff")
@@ -1008,7 +1025,8 @@ object_tangible_dungeon_corellian_corvette_shared_corvette_search_neutral_rescue
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1238818124
+	clientObjectCRC = 1238818124,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_dungeon_corellian_corvette_shared_corvette_search_neutral_rescue_03, "object/tangible/dungeon/corellian_corvette/shared_corvette_search_neutral_rescue_03.iff")
@@ -1062,7 +1080,8 @@ object_tangible_dungeon_corellian_corvette_shared_corvette_search_rebel_assassin
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 542981184
+	clientObjectCRC = 542981184,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_dungeon_corellian_corvette_shared_corvette_search_rebel_assassination_01, "object/tangible/dungeon/corellian_corvette/shared_corvette_search_rebel_assassination_01.iff")
@@ -1116,7 +1135,8 @@ object_tangible_dungeon_corellian_corvette_shared_corvette_search_rebel_assassin
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4215968983
+	clientObjectCRC = 4215968983,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_dungeon_corellian_corvette_shared_corvette_search_rebel_assassination_02, "object/tangible/dungeon/corellian_corvette/shared_corvette_search_rebel_assassination_02.iff")
@@ -1170,7 +1190,8 @@ object_tangible_dungeon_corellian_corvette_shared_corvette_search_rebel_assassin
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2991059802
+	clientObjectCRC = 2991059802,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_dungeon_corellian_corvette_shared_corvette_search_rebel_assassination_03, "object/tangible/dungeon/corellian_corvette/shared_corvette_search_rebel_assassination_03.iff")
@@ -1224,7 +1245,8 @@ object_tangible_dungeon_corellian_corvette_shared_corvette_search_rebel_destroy_
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 645261248
+	clientObjectCRC = 645261248,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_dungeon_corellian_corvette_shared_corvette_search_rebel_destroy_01, "object/tangible/dungeon/corellian_corvette/shared_corvette_search_rebel_destroy_01.iff")
@@ -1278,7 +1300,8 @@ object_tangible_dungeon_corellian_corvette_shared_corvette_search_rebel_destroy_
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4251078487
+	clientObjectCRC = 4251078487,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_dungeon_corellian_corvette_shared_corvette_search_rebel_destroy_02, "object/tangible/dungeon/corellian_corvette/shared_corvette_search_rebel_destroy_02.iff")
@@ -1332,7 +1355,8 @@ object_tangible_dungeon_corellian_corvette_shared_corvette_search_rebel_destroy_
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3027183834
+	clientObjectCRC = 3027183834,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_dungeon_corellian_corvette_shared_corvette_search_rebel_destroy_03, "object/tangible/dungeon/corellian_corvette/shared_corvette_search_rebel_destroy_03.iff")
@@ -1386,7 +1410,8 @@ object_tangible_dungeon_corellian_corvette_shared_corvette_search_rebel_rescue_0
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1089205389
+	clientObjectCRC = 1089205389,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_dungeon_corellian_corvette_shared_corvette_search_rebel_rescue_01, "object/tangible/dungeon/corellian_corvette/shared_corvette_search_rebel_rescue_01.iff")
@@ -1440,7 +1465,8 @@ object_tangible_dungeon_corellian_corvette_shared_corvette_search_rebel_rescue_0
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2617007130
+	clientObjectCRC = 2617007130,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_dungeon_corellian_corvette_shared_corvette_search_rebel_rescue_02, "object/tangible/dungeon/corellian_corvette/shared_corvette_search_rebel_rescue_02.iff")
@@ -1494,7 +1520,8 @@ object_tangible_dungeon_corellian_corvette_shared_corvette_search_rebel_rescue_0
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3539024791
+	clientObjectCRC = 3539024791,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_dungeon_corellian_corvette_shared_corvette_search_rebel_rescue_03, "object/tangible/dungeon/corellian_corvette/shared_corvette_search_rebel_rescue_03.iff")

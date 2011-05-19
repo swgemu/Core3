@@ -90,7 +90,8 @@ object_tangible_item_quest_crowd_pleaser_shared_dance_reward = SharedTangibleObj
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 972371039
+	clientObjectCRC = 972371039,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_item_quest_crowd_pleaser_shared_dance_reward, "object/tangible/item/quest/crowd_pleaser/shared_dance_reward.iff")
@@ -144,7 +145,8 @@ object_tangible_item_quest_crowd_pleaser_shared_music_reward = SharedTangibleObj
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1862695356
+	clientObjectCRC = 1862695356,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_item_quest_crowd_pleaser_shared_music_reward, "object/tangible/item/quest/crowd_pleaser/shared_music_reward.iff")

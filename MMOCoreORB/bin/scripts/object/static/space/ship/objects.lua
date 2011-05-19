@@ -80,7 +80,8 @@ object_static_space_ship_shared_cargo_freighter = SharedStaticObjectTemplate:new
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 141305204
+	clientObjectCRC = 141305204,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_space_ship_shared_cargo_freighter, "object/static/space/ship/shared_cargo_freighter.iff")
@@ -124,7 +125,8 @@ object_static_space_ship_shared_corellian_corvette = SharedStaticObjectTemplate:
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 785804943
+	clientObjectCRC = 785804943,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_space_ship_shared_corellian_corvette, "object/static/space/ship/shared_corellian_corvette.iff")
@@ -168,7 +170,8 @@ object_static_space_ship_shared_nebulon_frigate = SharedStaticObjectTemplate:new
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 4161425774
+	clientObjectCRC = 4161425774,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_space_ship_shared_nebulon_frigate, "object/static/space/ship/shared_nebulon_frigate.iff")

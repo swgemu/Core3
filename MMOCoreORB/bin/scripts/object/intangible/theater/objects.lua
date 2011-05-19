@@ -80,7 +80,8 @@ object_intangible_theater_shared_base_theater = SharedIntangibleObjectTemplate:n
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2322781790
+	clientObjectCRC = 2322781790,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_theater_shared_base_theater, "object/intangible/theater/shared_base_theater.iff")

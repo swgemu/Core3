@@ -90,7 +90,8 @@ object_tangible_food_creature_bio_effects_shared_bio_kliknik_fortitude_boost = S
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2415963091
+	clientObjectCRC = 2415963091,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/spice/shared_spice_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_creature_bio_effects_shared_bio_kliknik_fortitude_boost, "object/tangible/food/creature_bio_effects/shared_bio_kliknik_fortitude_boost.iff")
@@ -144,7 +145,8 @@ object_tangible_food_creature_bio_effects_shared_bio_kwi_adrenal_boost = SharedT
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1615742669
+	clientObjectCRC = 1615742669,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/spice/shared_spice_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_creature_bio_effects_shared_bio_kwi_adrenal_boost, "object/tangible/food/creature_bio_effects/shared_bio_kwi_adrenal_boost.iff")

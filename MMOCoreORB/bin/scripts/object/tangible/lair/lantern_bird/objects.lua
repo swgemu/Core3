@@ -90,7 +90,8 @@ object_tangible_lair_lantern_bird_shared_lair_lantern_bird = SharedTangibleObjec
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3672751802
+	clientObjectCRC = 3672751802,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_lantern_bird_shared_lair_lantern_bird, "object/tangible/lair/lantern_bird/shared_lair_lantern_bird.iff")
@@ -144,7 +145,8 @@ object_tangible_lair_lantern_bird_shared_lair_lantern_bird_forest = SharedTangib
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 615980885
+	clientObjectCRC = 615980885,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_lantern_bird_shared_lair_lantern_bird_forest, "object/tangible/lair/lantern_bird/shared_lair_lantern_bird_forest.iff")

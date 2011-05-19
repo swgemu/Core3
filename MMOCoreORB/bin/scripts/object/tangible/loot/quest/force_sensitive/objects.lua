@@ -90,7 +90,8 @@ object_tangible_loot_quest_force_sensitive_shared_camp_frequency_datapad = Share
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 535228363
+	clientObjectCRC = 535228363,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_quest_force_sensitive_shared_camp_frequency_datapad, "object/tangible/loot/quest/force_sensitive/shared_camp_frequency_datapad.iff")
@@ -144,7 +145,8 @@ object_tangible_loot_quest_force_sensitive_shared_camp_remote = SharedTangibleOb
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2972904337
+	clientObjectCRC = 2972904337,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_quest_force_sensitive_shared_camp_remote, "object/tangible/loot/quest/force_sensitive/shared_camp_remote.iff")
@@ -198,7 +200,8 @@ object_tangible_loot_quest_force_sensitive_shared_camp_waypoint_datapad = Shared
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3049740856
+	clientObjectCRC = 3049740856,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_quest_force_sensitive_shared_camp_waypoint_datapad, "object/tangible/loot/quest/force_sensitive/shared_camp_waypoint_datapad.iff")
@@ -252,7 +255,8 @@ object_tangible_loot_quest_force_sensitive_shared_theater_datapad = SharedTangib
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3130494948
+	clientObjectCRC = 3130494948,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_quest_force_sensitive_shared_theater_datapad, "object/tangible/loot/quest/force_sensitive/shared_theater_datapad.iff")
@@ -306,7 +310,8 @@ object_tangible_loot_quest_force_sensitive_sharred_force_crystal = SharedTangibl
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2042144998
+	clientObjectCRC = 2042144998,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_quest_force_sensitive_sharred_force_crystal, "object/tangible/loot/quest/force_sensitive/sharred_force_crystal.iff")
@@ -360,7 +365,8 @@ object_tangible_loot_quest_force_sensitive_sharred_waypoint_datapad = SharedTang
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1900348707
+	clientObjectCRC = 1900348707,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_quest_force_sensitive_sharred_waypoint_datapad, "object/tangible/loot/quest/force_sensitive/sharred_waypoint_datapad.iff")

@@ -90,7 +90,8 @@ object_tangible_dice_shared_eqp_chance_cube = SharedTangibleObjectTemplate:new {
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 572459271
+	clientObjectCRC = 572459271,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_dice_shared_eqp_chance_cube, "object/tangible/dice/shared_eqp_chance_cube.iff")
@@ -144,7 +145,8 @@ object_tangible_dice_shared_eqp_configurable_group_dice = SharedTangibleObjectTe
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1212860070
+	clientObjectCRC = 1212860070,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_dice_shared_eqp_configurable_group_dice, "object/tangible/dice/shared_eqp_configurable_group_dice.iff")
@@ -198,7 +200,8 @@ object_tangible_dice_shared_eqp_one_hundred_sided_dice_set = SharedTangibleObjec
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2182985448
+	clientObjectCRC = 2182985448,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_dice_shared_eqp_one_hundred_sided_dice_set, "object/tangible/dice/shared_eqp_one_hundred_sided_dice_set.iff")
@@ -252,7 +255,8 @@ object_tangible_dice_shared_eqp_six_sided_dice_set = SharedTangibleObjectTemplat
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3211047396
+	clientObjectCRC = 3211047396,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_dice_shared_eqp_six_sided_dice_set, "object/tangible/dice/shared_eqp_six_sided_dice_set.iff")
@@ -306,7 +310,8 @@ object_tangible_dice_shared_eqp_ten_sided_dice_set = SharedTangibleObjectTemplat
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3051569698
+	clientObjectCRC = 3051569698,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_dice_shared_eqp_ten_sided_dice_set, "object/tangible/dice/shared_eqp_ten_sided_dice_set.iff")
@@ -360,7 +365,8 @@ object_tangible_dice_shared_eqp_twelve_sided_dice_set = SharedTangibleObjectTemp
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2176227197
+	clientObjectCRC = 2176227197,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_dice_shared_eqp_twelve_sided_dice_set, "object/tangible/dice/shared_eqp_twelve_sided_dice_set.iff")
@@ -414,7 +420,8 @@ object_tangible_dice_shared_eqp_twenty_sided_dice_set = SharedTangibleObjectTemp
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3564430823
+	clientObjectCRC = 3564430823,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_dice_shared_eqp_twenty_sided_dice_set, "object/tangible/dice/shared_eqp_twenty_sided_dice_set.iff")

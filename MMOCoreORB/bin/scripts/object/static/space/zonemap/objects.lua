@@ -80,7 +80,8 @@ object_static_space_zonemap_shared_ui_hyperspace = SharedStaticObjectTemplate:ne
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1636783685
+	clientObjectCRC = 1636783685,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/space/base/shared_static_space_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_space_zonemap_shared_ui_hyperspace, "object/static/space/zonemap/shared_ui_hyperspace.iff")
@@ -124,7 +125,8 @@ object_static_space_zonemap_shared_ui_mission_critical = SharedStaticObjectTempl
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3111086071
+	clientObjectCRC = 3111086071,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/space/base/shared_static_space_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_space_zonemap_shared_ui_mission_critical, "object/static/space/zonemap/shared_ui_mission_critical.iff")
@@ -168,7 +170,8 @@ object_static_space_zonemap_shared_ui_poi_waypoint = SharedStaticObjectTemplate:
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 68001236
+	clientObjectCRC = 68001236,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/space/base/shared_static_space_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_space_zonemap_shared_ui_poi_waypoint, "object/static/space/zonemap/shared_ui_poi_waypoint.iff")
@@ -212,7 +215,8 @@ object_static_space_zonemap_shared_ui_spacestation = SharedStaticObjectTemplate:
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3977491959
+	clientObjectCRC = 3977491959,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/space/base/shared_static_space_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_space_zonemap_shared_ui_spacestation, "object/static/space/zonemap/shared_ui_spacestation.iff")
@@ -256,7 +260,8 @@ object_static_space_zonemap_shared_ui_waypoint = SharedStaticObjectTemplate:new 
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2973438501
+	clientObjectCRC = 2973438501,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/space/base/shared_static_space_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_space_zonemap_shared_ui_waypoint, "object/static/space/zonemap/shared_ui_waypoint.iff")
@@ -300,7 +305,8 @@ object_static_space_zonemap_shared_ui_waypoint_active = SharedStaticObjectTempla
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 464932918
+	clientObjectCRC = 464932918,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/space/base/shared_static_space_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_space_zonemap_shared_ui_waypoint_active, "object/static/space/zonemap/shared_ui_waypoint_active.iff")

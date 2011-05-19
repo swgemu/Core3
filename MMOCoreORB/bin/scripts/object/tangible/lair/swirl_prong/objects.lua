@@ -90,7 +90,8 @@ object_tangible_lair_swirl_prong_shared_lair_swirl_prong = SharedTangibleObjectT
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4003634872
+	clientObjectCRC = 4003634872,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_swirl_prong_shared_lair_swirl_prong, "object/tangible/lair/swirl_prong/shared_lair_swirl_prong.iff")
@@ -144,7 +145,8 @@ object_tangible_lair_swirl_prong_shared_lair_swirl_prong_grassland = SharedTangi
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1455751773
+	clientObjectCRC = 1455751773,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_swirl_prong_shared_lair_swirl_prong_grassland, "object/tangible/lair/swirl_prong/shared_lair_swirl_prong_grassland.iff")

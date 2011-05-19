@@ -90,7 +90,8 @@ object_counting_shared_default_battery = SharedCountingObjectTemplate:new {
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3842659589
+	clientObjectCRC = 3842659589,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/counting/base/shared_base_counting.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_counting_shared_default_battery, "object/counting/shared_default_battery.iff")

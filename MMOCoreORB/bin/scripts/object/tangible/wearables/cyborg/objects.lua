@@ -90,7 +90,8 @@ object_tangible_wearables_cyborg_shared_arm_l_s01 = SharedTangibleObjectTemplate
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3312405691
+	clientObjectCRC = 3312405691,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_armor_base.iff", "object/tangible/wearables/base/shared_base_bicep_l.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_cyborg_shared_arm_l_s01, "object/tangible/wearables/cyborg/shared_arm_l_s01.iff")
@@ -144,7 +145,8 @@ object_tangible_wearables_cyborg_shared_arm_r_s01 = SharedTangibleObjectTemplate
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1995018857
+	clientObjectCRC = 1995018857,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_armor_base.iff", "object/tangible/wearables/base/shared_base_bicep_r.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_cyborg_shared_arm_r_s01, "object/tangible/wearables/cyborg/shared_arm_r_s01.iff")
@@ -198,7 +200,8 @@ object_tangible_wearables_cyborg_shared_forearm_l_s01 = SharedTangibleObjectTemp
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 641245984
+	clientObjectCRC = 641245984,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_armor_base.iff", "object/tangible/wearables/base/shared_base_bracer_l.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_cyborg_shared_forearm_l_s01, "object/tangible/wearables/cyborg/shared_forearm_l_s01.iff")
@@ -252,7 +255,8 @@ object_tangible_wearables_cyborg_shared_forearm_r_s01 = SharedTangibleObjectTemp
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2512289266
+	clientObjectCRC = 2512289266,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_armor_base.iff", "object/tangible/wearables/base/shared_base_bracer_r.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_cyborg_shared_forearm_r_s01, "object/tangible/wearables/cyborg/shared_forearm_r_s01.iff")
@@ -306,7 +310,8 @@ object_tangible_wearables_cyborg_shared_hand_l_s01 = SharedTangibleObjectTemplat
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1621320928
+	clientObjectCRC = 1621320928,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_armor_base.iff", "object/tangible/wearables/base/shared_base_gauntlets.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_cyborg_shared_hand_l_s01, "object/tangible/wearables/cyborg/shared_hand_l_s01.iff")
@@ -360,7 +365,8 @@ object_tangible_wearables_cyborg_shared_hand_r_s01 = SharedTangibleObjectTemplat
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3542465074
+	clientObjectCRC = 3542465074,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_armor_base.iff", "object/tangible/wearables/base/shared_base_gauntlets.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_cyborg_shared_hand_r_s01, "object/tangible/wearables/cyborg/shared_hand_r_s01.iff")

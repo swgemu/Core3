@@ -90,7 +90,8 @@ object_tangible_lair_huurton_shared_lair_huurton = SharedTangibleObjectTemplate:
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1349396449
+	clientObjectCRC = 1349396449,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_huurton_shared_lair_huurton, "object/tangible/lair/huurton/shared_lair_huurton.iff")
@@ -144,7 +145,8 @@ object_tangible_lair_huurton_shared_lair_huurton_grassland = SharedTangibleObjec
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3768282762
+	clientObjectCRC = 3768282762,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_huurton_shared_lair_huurton_grassland, "object/tangible/lair/huurton/shared_lair_huurton_grassland.iff")

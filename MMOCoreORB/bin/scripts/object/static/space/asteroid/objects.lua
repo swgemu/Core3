@@ -80,7 +80,8 @@ object_static_space_asteroid_shared_asteroid_acid_large_01 = SharedStaticObjectT
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2146976297
+	clientObjectCRC = 2146976297,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_space_asteroid_shared_asteroid_acid_large_01, "object/static/space/asteroid/shared_asteroid_acid_large_01.iff")
@@ -124,7 +125,8 @@ object_static_space_asteroid_shared_asteroid_acid_large_02 = SharedStaticObjectT
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2767186622
+	clientObjectCRC = 2767186622,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_space_asteroid_shared_asteroid_acid_large_02, "object/static/space/asteroid/shared_asteroid_acid_large_02.iff")
@@ -168,7 +170,8 @@ object_static_space_asteroid_shared_asteroid_acid_medium_01 = SharedStaticObject
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 162308775
+	clientObjectCRC = 162308775,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_space_asteroid_shared_asteroid_acid_medium_01, "object/static/space/asteroid/shared_asteroid_acid_medium_01.iff")
@@ -212,7 +215,8 @@ object_static_space_asteroid_shared_asteroid_acid_medium_02 = SharedStaticObject
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3535473200
+	clientObjectCRC = 3535473200,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_space_asteroid_shared_asteroid_acid_medium_02, "object/static/space/asteroid/shared_asteroid_acid_medium_02.iff")
@@ -256,7 +260,8 @@ object_static_space_asteroid_shared_asteroid_acid_small_01 = SharedStaticObjectT
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2850972277
+	clientObjectCRC = 2850972277,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_space_asteroid_shared_asteroid_acid_small_01, "object/static/space/asteroid/shared_asteroid_acid_small_01.iff")
@@ -300,7 +305,8 @@ object_static_space_asteroid_shared_asteroid_acid_small_02 = SharedStaticObjectT
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1928973026
+	clientObjectCRC = 1928973026,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_space_asteroid_shared_asteroid_acid_small_02, "object/static/space/asteroid/shared_asteroid_acid_small_02.iff")
@@ -344,7 +350,8 @@ object_static_space_asteroid_shared_asteroid_ice_large_01 = SharedStaticObjectTe
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1920047316
+	clientObjectCRC = 1920047316,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_space_asteroid_shared_asteroid_ice_large_01, "object/static/space/asteroid/shared_asteroid_ice_large_01.iff")
@@ -388,7 +395,8 @@ object_static_space_asteroid_shared_asteroid_ice_large_02 = SharedStaticObjectTe
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2842046531
+	clientObjectCRC = 2842046531,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_space_asteroid_shared_asteroid_ice_large_02, "object/static/space/asteroid/shared_asteroid_ice_large_02.iff")
@@ -432,7 +440,8 @@ object_static_space_asteroid_shared_asteroid_ice_medium_01 = SharedStaticObjectT
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2981878132
+	clientObjectCRC = 2981878132,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_space_asteroid_shared_asteroid_ice_medium_01, "object/static/space/asteroid/shared_asteroid_ice_medium_01.iff")
@@ -476,7 +485,8 @@ object_static_space_asteroid_shared_asteroid_ice_medium_02 = SharedStaticObjectT
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1789686243
+	clientObjectCRC = 1789686243,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_space_asteroid_shared_asteroid_ice_medium_02, "object/static/space/asteroid/shared_asteroid_ice_medium_02.iff")
@@ -520,7 +530,8 @@ object_static_space_asteroid_shared_asteroid_ice_small_01 = SharedStaticObjectTe
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2758260872
+	clientObjectCRC = 2758260872,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_space_asteroid_shared_asteroid_ice_small_01, "object/static/space/asteroid/shared_asteroid_ice_small_01.iff")
@@ -564,7 +575,8 @@ object_static_space_asteroid_shared_asteroid_ice_small_02 = SharedStaticObjectTe
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2138050591
+	clientObjectCRC = 2138050591,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_space_asteroid_shared_asteroid_ice_small_02, "object/static/space/asteroid/shared_asteroid_ice_small_02.iff")
@@ -608,7 +620,8 @@ object_static_space_asteroid_shared_asteroid_iron_large_01 = SharedStaticObjectT
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1650332563
+	clientObjectCRC = 1650332563,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_space_asteroid_shared_asteroid_iron_large_01, "object/static/space/asteroid/shared_asteroid_iron_large_01.iff")
@@ -652,7 +665,8 @@ object_static_space_asteroid_shared_asteroid_iron_large_02 = SharedStaticObjectT
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3108616964
+	clientObjectCRC = 3108616964,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_space_asteroid_shared_asteroid_iron_large_02, "object/static/space/asteroid/shared_asteroid_iron_large_02.iff")
@@ -696,7 +710,8 @@ object_static_space_asteroid_shared_asteroid_iron_medium_01 = SharedStaticObject
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3525395716
+	clientObjectCRC = 3525395716,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_space_asteroid_shared_asteroid_iron_medium_01, "object/static/space/asteroid/shared_asteroid_iron_medium_01.iff")
@@ -740,7 +755,8 @@ object_static_space_asteroid_shared_asteroid_iron_medium_02 = SharedStaticObject
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 154594707
+	clientObjectCRC = 154594707,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_space_asteroid_shared_asteroid_iron_medium_02, "object/static/space/asteroid/shared_asteroid_iron_medium_02.iff")
@@ -784,7 +800,8 @@ object_static_space_asteroid_shared_asteroid_iron_medium_03 = SharedStaticObject
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1077643806
+	clientObjectCRC = 1077643806,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_space_asteroid_shared_asteroid_iron_medium_03, "object/static/space/asteroid/shared_asteroid_iron_medium_03.iff")
@@ -828,7 +845,8 @@ object_static_space_asteroid_shared_asteroid_iron_small_01 = SharedStaticObjectT
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3024630735
+	clientObjectCRC = 3024630735,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_space_asteroid_shared_asteroid_iron_small_01, "object/static/space/asteroid/shared_asteroid_iron_small_01.iff")
@@ -872,7 +890,8 @@ object_static_space_asteroid_shared_asteroid_iron_small_02 = SharedStaticObjectT
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1868536664
+	clientObjectCRC = 1868536664,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_space_asteroid_shared_asteroid_iron_small_02, "object/static/space/asteroid/shared_asteroid_iron_small_02.iff")
@@ -916,7 +935,8 @@ object_static_space_asteroid_shared_asteroid_large_01 = SharedStaticObjectTempla
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1475082056
+	clientObjectCRC = 1475082056,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_space_asteroid_shared_asteroid_large_01, "object/static/space/asteroid/shared_asteroid_large_01.iff")
@@ -960,7 +980,8 @@ object_static_space_asteroid_shared_asteroid_large_02 = SharedStaticObjectTempla
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2365349855
+	clientObjectCRC = 2365349855,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_space_asteroid_shared_asteroid_large_02, "object/static/space/asteroid/shared_asteroid_large_02.iff")
@@ -1004,7 +1025,8 @@ object_static_space_asteroid_shared_asteroid_mammoth_01 = SharedStaticObjectTemp
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2771529923
+	clientObjectCRC = 2771529923,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_space_asteroid_shared_asteroid_mammoth_01, "object/static/space/asteroid/shared_asteroid_mammoth_01.iff")
@@ -1048,7 +1070,8 @@ object_static_space_asteroid_shared_asteroid_mammoth_02 = SharedStaticObjectTemp
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2116393044
+	clientObjectCRC = 2116393044,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_space_asteroid_shared_asteroid_mammoth_02, "object/static/space/asteroid/shared_asteroid_mammoth_02.iff")
@@ -1092,7 +1115,8 @@ object_static_space_asteroid_shared_asteroid_medium_01 = SharedStaticObjectTempl
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2754779391
+	clientObjectCRC = 2754779391,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_space_asteroid_shared_asteroid_medium_01, "object/static/space/asteroid/shared_asteroid_medium_01.iff")
@@ -1136,7 +1160,8 @@ object_static_space_asteroid_shared_asteroid_medium_02 = SharedStaticObjectTempl
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2133143656
+	clientObjectCRC = 2133143656,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_space_asteroid_shared_asteroid_medium_02, "object/static/space/asteroid/shared_asteroid_medium_02.iff")
@@ -1180,7 +1205,8 @@ object_static_space_asteroid_shared_asteroid_metal_large_01 = SharedStaticObject
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 513619551
+	clientObjectCRC = 513619551,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_space_asteroid_shared_asteroid_metal_large_01, "object/static/space/asteroid/shared_asteroid_metal_large_01.iff")
@@ -1224,7 +1250,8 @@ object_static_space_asteroid_shared_asteroid_metal_large_02 = SharedStaticObject
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3314196168
+	clientObjectCRC = 3314196168,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_space_asteroid_shared_asteroid_metal_large_02, "object/static/space/asteroid/shared_asteroid_metal_large_02.iff")
@@ -1268,7 +1295,8 @@ object_static_space_asteroid_shared_asteroid_metal_medium_01 = SharedStaticObjec
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3300659079
+	clientObjectCRC = 3300659079,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_space_asteroid_shared_asteroid_metal_medium_01, "object/static/space/asteroid/shared_asteroid_metal_medium_01.iff")
@@ -1312,7 +1340,8 @@ object_static_space_asteroid_shared_asteroid_metal_medium_02 = SharedStaticObjec
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 531343120
+	clientObjectCRC = 531343120,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_space_asteroid_shared_asteroid_metal_medium_02, "object/static/space/asteroid/shared_asteroid_metal_medium_02.iff")
@@ -1356,7 +1385,8 @@ object_static_space_asteroid_shared_asteroid_metal_small_01 = SharedStaticObject
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3364558339
+	clientObjectCRC = 3364558339,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_space_asteroid_shared_asteroid_metal_small_01, "object/static/space/asteroid/shared_asteroid_metal_small_01.iff")
@@ -1400,7 +1430,8 @@ object_static_space_asteroid_shared_asteroid_metal_small_02 = SharedStaticObject
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 329039508
+	clientObjectCRC = 329039508,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_space_asteroid_shared_asteroid_metal_small_02, "object/static/space/asteroid/shared_asteroid_metal_small_02.iff")
@@ -1444,7 +1475,8 @@ object_static_space_asteroid_shared_asteroid_molten_large_01 = SharedStaticObjec
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 319418639
+	clientObjectCRC = 319418639,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_space_asteroid_shared_asteroid_molten_large_01, "object/static/space/asteroid/shared_asteroid_molten_large_01.iff")
@@ -1488,7 +1520,8 @@ object_static_space_asteroid_shared_asteroid_molten_large_02 = SharedStaticObjec
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3357432216
+	clientObjectCRC = 3357432216,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_space_asteroid_shared_asteroid_molten_large_02, "object/static/space/asteroid/shared_asteroid_molten_large_02.iff")
@@ -1532,7 +1565,8 @@ object_static_space_asteroid_shared_asteroid_molten_medium_01 = SharedStaticObje
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1639373140
+	clientObjectCRC = 1639373140,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_space_asteroid_shared_asteroid_molten_medium_01, "object/static/space/asteroid/shared_asteroid_molten_medium_01.iff")
@@ -1576,7 +1610,8 @@ object_static_space_asteroid_shared_asteroid_molten_medium_02 = SharedStaticObje
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3131142595
+	clientObjectCRC = 3131142595,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_space_asteroid_shared_asteroid_molten_medium_02, "object/static/space/asteroid/shared_asteroid_molten_medium_02.iff")
@@ -1620,7 +1655,8 @@ object_static_space_asteroid_shared_asteroid_molten_small_01 = SharedStaticObjec
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3307196755
+	clientObjectCRC = 3307196755,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_space_asteroid_shared_asteroid_molten_small_01, "object/static/space/asteroid/shared_asteroid_molten_small_01.iff")
@@ -1664,7 +1700,8 @@ object_static_space_asteroid_shared_asteroid_molten_small_02 = SharedStaticObjec
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 503871940
+	clientObjectCRC = 503871940,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_space_asteroid_shared_asteroid_molten_small_02, "object/static/space/asteroid/shared_asteroid_molten_small_02.iff")
@@ -1708,7 +1745,8 @@ object_static_space_asteroid_shared_asteroid_obsidian_large_01 = SharedStaticObj
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1492758381
+	clientObjectCRC = 1492758381,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_space_asteroid_shared_asteroid_obsidian_large_01, "object/static/space/asteroid/shared_asteroid_obsidian_large_01.iff")
@@ -1752,7 +1790,8 @@ object_static_space_asteroid_shared_asteroid_obsidian_large_02 = SharedStaticObj
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2213414906
+	clientObjectCRC = 2213414906,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_space_asteroid_shared_asteroid_obsidian_large_02, "object/static/space/asteroid/shared_asteroid_obsidian_large_02.iff")
@@ -1796,7 +1835,8 @@ object_static_space_asteroid_shared_asteroid_obsidian_medium_01 = SharedStaticOb
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2384789570
+	clientObjectCRC = 2384789570,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_space_asteroid_shared_asteroid_obsidian_medium_01, "object/static/space/asteroid/shared_asteroid_obsidian_medium_01.iff")
@@ -1840,7 +1880,8 @@ object_static_space_asteroid_shared_asteroid_obsidian_medium_02 = SharedStaticOb
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1429383381
+	clientObjectCRC = 1429383381,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_space_asteroid_shared_asteroid_obsidian_medium_02, "object/static/space/asteroid/shared_asteroid_obsidian_medium_02.iff")
@@ -1884,7 +1925,8 @@ object_static_space_asteroid_shared_asteroid_obsidian_small_01 = SharedStaticObj
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2398064433
+	clientObjectCRC = 2398064433,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_space_asteroid_shared_asteroid_obsidian_small_01, "object/static/space/asteroid/shared_asteroid_obsidian_small_01.iff")
@@ -1928,7 +1970,8 @@ object_static_space_asteroid_shared_asteroid_obsidian_small_02 = SharedStaticObj
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1442326438
+	clientObjectCRC = 1442326438,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_space_asteroid_shared_asteroid_obsidian_small_02, "object/static/space/asteroid/shared_asteroid_obsidian_small_02.iff")
@@ -1972,7 +2015,8 @@ object_static_space_asteroid_shared_asteroid_small_01 = SharedStaticObjectTempla
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2180896532
+	clientObjectCRC = 2180896532,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_space_asteroid_shared_asteroid_small_01, "object/static/space/asteroid/shared_asteroid_small_01.iff")
@@ -2016,7 +2060,8 @@ object_static_space_asteroid_shared_asteroid_small_02 = SharedStaticObjectTempla
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1525317507
+	clientObjectCRC = 1525317507,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_space_asteroid_shared_asteroid_small_02, "object/static/space/asteroid/shared_asteroid_small_02.iff")
@@ -2060,7 +2105,8 @@ object_static_space_asteroid_shared_planetoid_ice_01 = SharedStaticObjectTemplat
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3193266020
+	clientObjectCRC = 3193266020,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_space_asteroid_shared_planetoid_ice_01, "object/static/space/asteroid/shared_planetoid_ice_01.iff")
@@ -2104,7 +2150,8 @@ object_static_space_asteroid_shared_planetoid_iron_01 = SharedStaticObjectTempla
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2558377422
+	clientObjectCRC = 2558377422,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_space_asteroid_shared_planetoid_iron_01, "object/static/space/asteroid/shared_planetoid_iron_01.iff")
@@ -2148,7 +2195,8 @@ object_static_space_asteroid_shared_planetoid_molten_01 = SharedStaticObjectTemp
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2070404336
+	clientObjectCRC = 2070404336,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_space_asteroid_shared_planetoid_molten_01, "object/static/space/asteroid/shared_planetoid_molten_01.iff")

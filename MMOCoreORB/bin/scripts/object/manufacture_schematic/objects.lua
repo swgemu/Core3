@@ -80,7 +80,8 @@ object_manufacture_schematic_shared_generic_schematic = SharedManufactureSchemat
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 941212681
+	clientObjectCRC = 941212681,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/manufacture_schematic/base/shared_base_manufacture_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_manufacture_schematic_shared_generic_schematic, "object/manufacture_schematic/shared_generic_schematic.iff")

@@ -90,7 +90,8 @@ object_tangible_lair_krahbu_shared_lair_krahbu = SharedTangibleObjectTemplate:ne
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2273906310
+	clientObjectCRC = 2273906310,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_krahbu_shared_lair_krahbu, "object/tangible/lair/krahbu/shared_lair_krahbu.iff")
@@ -144,7 +145,8 @@ object_tangible_lair_krahbu_shared_lair_krahbu_grassland = SharedTangibleObjectT
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2706872784
+	clientObjectCRC = 2706872784,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_krahbu_shared_lair_krahbu_grassland, "object/tangible/lair/krahbu/shared_lair_krahbu_grassland.iff")

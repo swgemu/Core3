@@ -90,7 +90,8 @@ object_tangible_container_quest_hero_of_tatooine_shared_rock_crevice = SharedTan
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3357840333
+	clientObjectCRC = 3357840333,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/container/base/shared_base_container.iff", "object/tangible/container/base/shared_base_container_volume.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_container_quest_hero_of_tatooine_shared_rock_crevice, "object/tangible/container/quest/hero_of_tatooine/shared_rock_crevice.iff")

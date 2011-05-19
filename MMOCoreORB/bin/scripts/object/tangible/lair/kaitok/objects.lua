@@ -90,7 +90,8 @@ object_tangible_lair_kaitok_shared_lair_kaitok = SharedTangibleObjectTemplate:ne
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2306923855
+	clientObjectCRC = 2306923855,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_kaitok_shared_lair_kaitok, "object/tangible/lair/kaitok/shared_lair_kaitok.iff")
@@ -144,7 +145,8 @@ object_tangible_lair_kaitok_shared_lair_kaitok_mountain = SharedTangibleObjectTe
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 977615987
+	clientObjectCRC = 977615987,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_kaitok_shared_lair_kaitok_mountain, "object/tangible/lair/kaitok/shared_lair_kaitok_mountain.iff")
@@ -198,7 +200,8 @@ object_tangible_lair_kaitok_shared_lair_kaitok_wasteland = SharedTangibleObjectT
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3767339902
+	clientObjectCRC = 3767339902,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_kaitok_shared_lair_kaitok_wasteland, "object/tangible/lair/kaitok/shared_lair_kaitok_wasteland.iff")

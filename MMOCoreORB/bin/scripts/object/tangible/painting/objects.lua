@@ -90,7 +90,8 @@ object_tangible_painting_shared_bestine_history_quest_painting = SharedTangibleO
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3716079022
+	clientObjectCRC = 3716079022,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_painting_shared_bestine_history_quest_painting, "object/tangible/painting/shared_bestine_history_quest_painting.iff")
@@ -144,7 +145,8 @@ object_tangible_painting_shared_bestine_quest_painting = SharedTangibleObjectTem
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 550655936
+	clientObjectCRC = 550655936,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_painting_shared_bestine_quest_painting, "object/tangible/painting/shared_bestine_quest_painting.iff")
@@ -198,7 +200,8 @@ object_tangible_painting_shared_painting_agrilat_s01 = SharedTangibleObjectTempl
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2365303481
+	clientObjectCRC = 2365303481,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_painting_shared_painting_agrilat_s01, "object/tangible/painting/shared_painting_agrilat_s01.iff")
@@ -252,7 +255,8 @@ object_tangible_painting_shared_painting_armor_blueprint = SharedTangibleObjectT
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2522220824
+	clientObjectCRC = 2522220824,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_painting_shared_painting_armor_blueprint, "object/tangible/painting/shared_painting_armor_blueprint.iff")
@@ -306,7 +310,8 @@ object_tangible_painting_shared_painting_bestine_blueleaf_temple = SharedTangibl
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2092717443
+	clientObjectCRC = 2092717443,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_painting_shared_painting_bestine_blueleaf_temple, "object/tangible/painting/shared_painting_bestine_blueleaf_temple.iff")
@@ -360,7 +365,8 @@ object_tangible_painting_shared_painting_bestine_blumbush = SharedTangibleObject
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2399181727
+	clientObjectCRC = 2399181727,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_painting_shared_painting_bestine_blumbush, "object/tangible/painting/shared_painting_bestine_blumbush.iff")
@@ -414,7 +420,8 @@ object_tangible_painting_shared_painting_bestine_boffa = SharedTangibleObjectTem
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1521577134
+	clientObjectCRC = 1521577134,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_painting_shared_painting_bestine_boffa, "object/tangible/painting/shared_painting_bestine_boffa.iff")
@@ -468,7 +475,8 @@ object_tangible_painting_shared_painting_bestine_golden_flower_01 = SharedTangib
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 268388150
+	clientObjectCRC = 268388150,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_painting_shared_painting_bestine_golden_flower_01, "object/tangible/painting/shared_painting_bestine_golden_flower_01.iff")
@@ -522,7 +530,8 @@ object_tangible_painting_shared_painting_bestine_golden_flower_02 = SharedTangib
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3572035489
+	clientObjectCRC = 3572035489,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_painting_shared_painting_bestine_golden_flower_02, "object/tangible/painting/shared_painting_bestine_golden_flower_02.iff")
@@ -576,7 +585,8 @@ object_tangible_painting_shared_painting_bestine_golden_flower_03 = SharedTangib
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2649065516
+	clientObjectCRC = 2649065516,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_painting_shared_painting_bestine_golden_flower_03, "object/tangible/painting/shared_painting_bestine_golden_flower_03.iff")
@@ -630,7 +640,8 @@ object_tangible_painting_shared_painting_bestine_house = SharedTangibleObjectTem
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3800373299
+	clientObjectCRC = 3800373299,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_painting_shared_painting_bestine_house, "object/tangible/painting/shared_painting_bestine_house.iff")
@@ -684,7 +695,8 @@ object_tangible_painting_shared_painting_bestine_krayt_skeleton = SharedTangible
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3652558255
+	clientObjectCRC = 3652558255,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_painting_shared_painting_bestine_krayt_skeleton, "object/tangible/painting/shared_painting_bestine_krayt_skeleton.iff")
@@ -738,7 +750,8 @@ object_tangible_painting_shared_painting_bestine_lucky_despot = SharedTangibleOb
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2981494109
+	clientObjectCRC = 2981494109,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_painting_shared_painting_bestine_lucky_despot, "object/tangible/painting/shared_painting_bestine_lucky_despot.iff")
@@ -792,7 +805,8 @@ object_tangible_painting_shared_painting_bestine_mattberry = SharedTangibleObjec
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4207518182
+	clientObjectCRC = 4207518182,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_painting_shared_painting_bestine_mattberry, "object/tangible/painting/shared_painting_bestine_mattberry.iff")
@@ -846,7 +860,8 @@ object_tangible_painting_shared_painting_bestine_moncal_eye_01 = SharedTangibleO
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1833552017
+	clientObjectCRC = 1833552017,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_painting_shared_painting_bestine_moncal_eye_01, "object/tangible/painting/shared_painting_bestine_moncal_eye_01.iff")
@@ -900,7 +915,8 @@ object_tangible_painting_shared_painting_bestine_moncal_eye_02 = SharedTangibleO
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3059638278
+	clientObjectCRC = 3059638278,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_painting_shared_painting_bestine_moncal_eye_02, "object/tangible/painting/shared_painting_bestine_moncal_eye_02.iff")
@@ -954,7 +970,8 @@ object_tangible_painting_shared_painting_bestine_rainbow_berry_bush = SharedTang
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4083160615
+	clientObjectCRC = 4083160615,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_painting_shared_painting_bestine_rainbow_berry_bush, "object/tangible/painting/shared_painting_bestine_rainbow_berry_bush.iff")
@@ -1008,7 +1025,8 @@ object_tangible_painting_shared_painting_bestine_raventhorn = SharedTangibleObje
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1526591701
+	clientObjectCRC = 1526591701,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_painting_shared_painting_bestine_raventhorn, "object/tangible/painting/shared_painting_bestine_raventhorn.iff")
@@ -1062,7 +1080,8 @@ object_tangible_painting_shared_painting_bestine_ronka = SharedTangibleObjectTem
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2667929549
+	clientObjectCRC = 2667929549,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_painting_shared_painting_bestine_ronka, "object/tangible/painting/shared_painting_bestine_ronka.iff")
@@ -1116,7 +1135,8 @@ object_tangible_painting_shared_painting_bioengineer_orange = SharedTangibleObje
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 232377496
+	clientObjectCRC = 232377496,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_painting_shared_painting_bioengineer_orange, "object/tangible/painting/shared_painting_bioengineer_orange.iff")
@@ -1170,7 +1190,8 @@ object_tangible_painting_shared_painting_bothan_f = SharedTangibleObjectTemplate
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 854788635
+	clientObjectCRC = 854788635,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_painting_shared_painting_bothan_f, "object/tangible/painting/shared_painting_bothan_f.iff")
@@ -1224,7 +1245,8 @@ object_tangible_painting_shared_painting_bothan_m = SharedTangibleObjectTemplate
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2819466634
+	clientObjectCRC = 2819466634,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_painting_shared_painting_bothan_m, "object/tangible/painting/shared_painting_bothan_m.iff")
@@ -1278,7 +1300,8 @@ object_tangible_painting_shared_painting_bw_stormtrooper = SharedTangibleObjectT
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2585541648
+	clientObjectCRC = 2585541648,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_painting_shared_painting_bw_stormtrooper, "object/tangible/painting/shared_painting_bw_stormtrooper.iff")
@@ -1332,7 +1355,8 @@ object_tangible_painting_shared_painting_cargoport = SharedTangibleObjectTemplat
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 8552875
+	clientObjectCRC = 8552875,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_painting_shared_painting_cargoport, "object/tangible/painting/shared_painting_cargoport.iff")
@@ -1386,7 +1410,8 @@ object_tangible_painting_shared_painting_dance_party = SharedTangibleObjectTempl
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 105361220
+	clientObjectCRC = 105361220,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_painting_shared_painting_dance_party, "object/tangible/painting/shared_painting_dance_party.iff")
@@ -1440,7 +1465,8 @@ object_tangible_painting_shared_painting_double_helix = SharedTangibleObjectTemp
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2823052972
+	clientObjectCRC = 2823052972,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_painting_shared_painting_double_helix, "object/tangible/painting/shared_painting_double_helix.iff")
@@ -1494,7 +1520,8 @@ object_tangible_painting_shared_painting_droid_bright = SharedTangibleObjectTemp
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2843033838
+	clientObjectCRC = 2843033838,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_painting_shared_painting_droid_bright, "object/tangible/painting/shared_painting_droid_bright.iff")
@@ -1548,7 +1575,8 @@ object_tangible_painting_shared_painting_endor_style_01 = SharedTangibleObjectTe
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 633275539
+	clientObjectCRC = 633275539,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_painting_shared_painting_endor_style_01, "object/tangible/painting/shared_painting_endor_style_01.iff")
@@ -1602,7 +1630,8 @@ object_tangible_painting_shared_painting_fighter_pilot_human_01 = SharedTangible
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4258475485
+	clientObjectCRC = 4258475485,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_painting_shared_painting_fighter_pilot_human_01, "object/tangible/painting/shared_painting_fighter_pilot_human_01.iff")
@@ -1656,7 +1685,8 @@ object_tangible_painting_shared_painting_food_baking_s01 = SharedTangibleObjectT
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3144090584
+	clientObjectCRC = 3144090584,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_painting_shared_painting_food_baking_s01, "object/tangible/painting/shared_painting_food_baking_s01.iff")
@@ -1710,7 +1740,8 @@ object_tangible_painting_shared_painting_food_baking_s02 = SharedTangibleObjectT
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1617996623
+	clientObjectCRC = 1617996623,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_painting_shared_painting_food_baking_s02, "object/tangible/painting/shared_painting_food_baking_s02.iff")
@@ -1764,7 +1795,8 @@ object_tangible_painting_shared_painting_freedom = SharedTangibleObjectTemplate:
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3648739651
+	clientObjectCRC = 3648739651,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_painting_shared_painting_freedom, "object/tangible/painting/shared_painting_freedom.iff")
@@ -1818,7 +1850,8 @@ object_tangible_painting_shared_painting_han_wanted = SharedTangibleObjectTempla
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2218996276
+	clientObjectCRC = 2218996276,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_painting_shared_painting_han_wanted, "object/tangible/painting/shared_painting_han_wanted.iff")
@@ -1872,7 +1905,8 @@ object_tangible_painting_shared_painting_human_f = SharedTangibleObjectTemplate:
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3589238977
+	clientObjectCRC = 3589238977,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_painting_shared_painting_human_f, "object/tangible/painting/shared_painting_human_f.iff")
@@ -1926,7 +1960,8 @@ object_tangible_painting_shared_painting_kite_plant = SharedTangibleObjectTempla
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1814671481
+	clientObjectCRC = 1814671481,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_painting_shared_painting_kite_plant, "object/tangible/painting/shared_painting_kite_plant.iff")
@@ -1980,7 +2015,8 @@ object_tangible_painting_shared_painting_leia_wanted = SharedTangibleObjectTempl
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3845142344
+	clientObjectCRC = 3845142344,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_painting_shared_painting_leia_wanted, "object/tangible/painting/shared_painting_leia_wanted.iff")
@@ -2034,7 +2070,8 @@ object_tangible_painting_shared_painting_luke_wanted = SharedTangibleObjectTempl
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1125814305
+	clientObjectCRC = 1125814305,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_painting_shared_painting_luke_wanted, "object/tangible/painting/shared_painting_luke_wanted.iff")
@@ -2088,7 +2125,8 @@ object_tangible_painting_shared_painting_nebula_flower = SharedTangibleObjectTem
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4178650060
+	clientObjectCRC = 4178650060,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_painting_shared_painting_nebula_flower, "object/tangible/painting/shared_painting_nebula_flower.iff")
@@ -2142,7 +2180,8 @@ object_tangible_painting_shared_painting_palowick_ad_s01 = SharedTangibleObjectT
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1851630183
+	clientObjectCRC = 1851630183,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_painting_shared_painting_palowick_ad_s01, "object/tangible/painting/shared_painting_palowick_ad_s01.iff")
@@ -2196,7 +2235,8 @@ object_tangible_painting_shared_painting_palowick_ad_s02 = SharedTangibleObjectT
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3041528560
+	clientObjectCRC = 3041528560,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_painting_shared_painting_palowick_ad_s02, "object/tangible/painting/shared_painting_palowick_ad_s02.iff")
@@ -2250,7 +2290,8 @@ object_tangible_painting_shared_painting_palowick_ad_s03 = SharedTangibleObjectT
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4232539517
+	clientObjectCRC = 4232539517,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_painting_shared_painting_palowick_ad_s03, "object/tangible/painting/shared_painting_palowick_ad_s03.iff")
@@ -2304,7 +2345,8 @@ object_tangible_painting_shared_painting_palowick_ad_s04 = SharedTangibleObjectT
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 128206441
+	clientObjectCRC = 128206441,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_painting_shared_painting_palowick_ad_s04, "object/tangible/painting/shared_painting_palowick_ad_s04.iff")
@@ -2358,7 +2400,8 @@ object_tangible_painting_shared_painting_planet_s01 = SharedTangibleObjectTempla
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1235349261
+	clientObjectCRC = 1235349261,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_painting_shared_painting_planet_s01, "object/tangible/painting/shared_painting_planet_s01.iff")
@@ -2412,7 +2455,8 @@ object_tangible_painting_shared_painting_rodian_f = SharedTangibleObjectTemplate
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2426371029
+	clientObjectCRC = 2426371029,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_painting_shared_painting_rodian_f, "object/tangible/painting/shared_painting_rodian_f.iff")
@@ -2466,7 +2510,8 @@ object_tangible_painting_shared_painting_rodian_f_ad_01 = SharedTangibleObjectTe
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3837717304
+	clientObjectCRC = 3837717304,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_painting_shared_painting_rodian_f_ad_01, "object/tangible/painting/shared_painting_rodian_f_ad_01.iff")
@@ -2520,7 +2565,8 @@ object_tangible_painting_shared_painting_rodian_m = SharedTangibleObjectTemplate
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 174183492
+	clientObjectCRC = 174183492,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_painting_shared_painting_rodian_m, "object/tangible/painting/shared_painting_rodian_m.iff")
@@ -2574,7 +2620,8 @@ object_tangible_painting_shared_painting_schematic_droid = SharedTangibleObjectT
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1382937840
+	clientObjectCRC = 1382937840,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_painting_shared_painting_schematic_droid, "object/tangible/painting/shared_painting_schematic_droid.iff")
@@ -2628,7 +2675,8 @@ object_tangible_painting_shared_painting_schematic_transport_ship = SharedTangib
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 648855104
+	clientObjectCRC = 648855104,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_painting_shared_painting_schematic_transport_ship, "object/tangible/painting/shared_painting_schematic_transport_ship.iff")
@@ -2682,7 +2730,8 @@ object_tangible_painting_shared_painting_schematic_weapon = SharedTangibleObject
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2579175131
+	clientObjectCRC = 2579175131,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_painting_shared_painting_schematic_weapon, "object/tangible/painting/shared_painting_schematic_weapon.iff")
@@ -2736,7 +2785,8 @@ object_tangible_painting_shared_painting_schematic_weapon_s03 = SharedTangibleOb
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 716865001
+	clientObjectCRC = 716865001,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_painting_shared_painting_schematic_weapon_s03, "object/tangible/painting/shared_painting_schematic_weapon_s03.iff")
@@ -2790,7 +2840,8 @@ object_tangible_painting_shared_painting_skyscraper = SharedTangibleObjectTempla
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4253954885
+	clientObjectCRC = 4253954885,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_painting_shared_painting_skyscraper, "object/tangible/painting/shared_painting_skyscraper.iff")
@@ -2844,7 +2895,8 @@ object_tangible_painting_shared_painting_smoking_ad = SharedTangibleObjectTempla
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 200259882
+	clientObjectCRC = 200259882,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_painting_shared_painting_smoking_ad, "object/tangible/painting/shared_painting_smoking_ad.iff")
@@ -2898,7 +2950,8 @@ object_tangible_painting_shared_painting_starmap = SharedTangibleObjectTemplate:
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2644531826
+	clientObjectCRC = 2644531826,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_painting_shared_painting_starmap, "object/tangible/painting/shared_painting_starmap.iff")
@@ -2952,7 +3005,8 @@ object_tangible_painting_shared_painting_tato_s03 = SharedTangibleObjectTemplate
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2441069764
+	clientObjectCRC = 2441069764,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_painting_shared_painting_tato_s03, "object/tangible/painting/shared_painting_tato_s03.iff")
@@ -3006,7 +3060,8 @@ object_tangible_painting_shared_painting_tato_s04 = SharedTangibleObjectTemplate
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1788669904
+	clientObjectCRC = 1788669904,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_painting_shared_painting_tato_s04, "object/tangible/painting/shared_painting_tato_s04.iff")
@@ -3060,7 +3115,8 @@ object_tangible_painting_shared_painting_teras_kasi = SharedTangibleObjectTempla
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4110008393
+	clientObjectCRC = 4110008393,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_painting_shared_painting_teras_kasi, "object/tangible/painting/shared_painting_teras_kasi.iff")
@@ -3114,7 +3170,8 @@ object_tangible_painting_shared_painting_teras_kasi_2 = SharedTangibleObjectTemp
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 956503088
+	clientObjectCRC = 956503088,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_painting_shared_painting_teras_kasi_2, "object/tangible/painting/shared_painting_teras_kasi_2.iff")
@@ -3168,7 +3225,8 @@ object_tangible_painting_shared_painting_trandoshan_m = SharedTangibleObjectTemp
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2913821862
+	clientObjectCRC = 2913821862,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_painting_shared_painting_trandoshan_m, "object/tangible/painting/shared_painting_trandoshan_m.iff")
@@ -3222,7 +3280,8 @@ object_tangible_painting_shared_painting_trandoshan_m_01 = SharedTangibleObjectT
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1179174055
+	clientObjectCRC = 1179174055,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_painting_shared_painting_trandoshan_m_01, "object/tangible/painting/shared_painting_trandoshan_m_01.iff")
@@ -3276,7 +3335,8 @@ object_tangible_painting_shared_painting_trandoshan_wanted = SharedTangibleObjec
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3605402564
+	clientObjectCRC = 3605402564,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_painting_shared_painting_trandoshan_wanted, "object/tangible/painting/shared_painting_trandoshan_wanted.iff")
@@ -3330,7 +3390,8 @@ object_tangible_painting_shared_painting_tree = SharedTangibleObjectTemplate:new
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3334758805
+	clientObjectCRC = 3334758805,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_painting_shared_painting_tree, "object/tangible/painting/shared_painting_tree.iff")
@@ -3384,7 +3445,8 @@ object_tangible_painting_shared_painting_trees_s01 = SharedTangibleObjectTemplat
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1783509906
+	clientObjectCRC = 1783509906,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_painting_shared_painting_trees_s01, "object/tangible/painting/shared_painting_trees_s01.iff")
@@ -3438,7 +3500,8 @@ object_tangible_painting_shared_painting_twilek_f = SharedTangibleObjectTemplate
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1175481538
+	clientObjectCRC = 1175481538,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_painting_shared_painting_twilek_f, "object/tangible/painting/shared_painting_twilek_f.iff")
@@ -3492,7 +3555,8 @@ object_tangible_painting_shared_painting_twilek_f_lg_s01 = SharedTangibleObjectT
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 380699826
+	clientObjectCRC = 380699826,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_painting_shared_painting_twilek_f_lg_s01, "object/tangible/painting/shared_painting_twilek_f_lg_s01.iff")
@@ -3546,7 +3610,8 @@ object_tangible_painting_shared_painting_twilek_f_lg_s02 = SharedTangibleObjectT
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3450252325
+	clientObjectCRC = 3450252325,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_painting_shared_painting_twilek_f_lg_s02, "object/tangible/painting/shared_painting_twilek_f_lg_s02.iff")
@@ -3600,7 +3665,8 @@ object_tangible_painting_shared_painting_twilek_f_lg_s03 = SharedTangibleObjectT
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2225851304
+	clientObjectCRC = 2225851304,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_painting_shared_painting_twilek_f_lg_s03, "object/tangible/painting/shared_painting_twilek_f_lg_s03.iff")
@@ -3654,7 +3720,8 @@ object_tangible_painting_shared_painting_twilek_f_lg_s04 = SharedTangibleObjectT
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2135482556
+	clientObjectCRC = 2135482556,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_painting_shared_painting_twilek_f_lg_s04, "object/tangible/painting/shared_painting_twilek_f_lg_s04.iff")
@@ -3708,7 +3775,8 @@ object_tangible_painting_shared_painting_twilek_f_sm_s01 = SharedTangibleObjectT
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3456145212
+	clientObjectCRC = 3456145212,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_painting_shared_painting_twilek_f_sm_s01, "object/tangible/painting/shared_painting_twilek_f_sm_s01.iff")
@@ -3762,7 +3830,8 @@ object_tangible_painting_shared_painting_twilek_f_sm_s02 = SharedTangibleObjectT
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 353845163
+	clientObjectCRC = 353845163,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_painting_shared_painting_twilek_f_sm_s02, "object/tangible/painting/shared_painting_twilek_f_sm_s02.iff")
@@ -3816,7 +3885,8 @@ object_tangible_painting_shared_painting_twilek_f_sm_s03 = SharedTangibleObjectT
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1545230374
+	clientObjectCRC = 1545230374,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_painting_shared_painting_twilek_f_sm_s03, "object/tangible/painting/shared_painting_twilek_f_sm_s03.iff")
@@ -3870,7 +3940,8 @@ object_tangible_painting_shared_painting_twilek_f_sm_s04 = SharedTangibleObjectT
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2818143026
+	clientObjectCRC = 2818143026,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_painting_shared_painting_twilek_f_sm_s04, "object/tangible/painting/shared_painting_twilek_f_sm_s04.iff")
@@ -3924,7 +3995,8 @@ object_tangible_painting_shared_painting_twilek_m = SharedTangibleObjectTemplate
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3706635091
+	clientObjectCRC = 3706635091,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_painting_shared_painting_twilek_m, "object/tangible/painting/shared_painting_twilek_m.iff")
@@ -3978,7 +4050,8 @@ object_tangible_painting_shared_painting_vader_victory = SharedTangibleObjectTem
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3566316574
+	clientObjectCRC = 3566316574,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_painting_shared_painting_vader_victory, "object/tangible/painting/shared_painting_vader_victory.iff")
@@ -4032,7 +4105,8 @@ object_tangible_painting_shared_painting_valley_view = SharedTangibleObjectTempl
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2895682928
+	clientObjectCRC = 2895682928,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_painting_shared_painting_valley_view, "object/tangible/painting/shared_painting_valley_view.iff")
@@ -4086,7 +4160,8 @@ object_tangible_painting_shared_painting_victorious_reign = SharedTangibleObject
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2421149115
+	clientObjectCRC = 2421149115,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_painting_shared_painting_victorious_reign, "object/tangible/painting/shared_painting_victorious_reign.iff")
@@ -4140,7 +4215,8 @@ object_tangible_painting_shared_painting_waterfall = SharedTangibleObjectTemplat
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4064843162
+	clientObjectCRC = 4064843162,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_painting_shared_painting_waterfall, "object/tangible/painting/shared_painting_waterfall.iff")
@@ -4194,7 +4270,8 @@ object_tangible_painting_shared_painting_wookiee_f = SharedTangibleObjectTemplat
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3402224478
+	clientObjectCRC = 3402224478,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_painting_shared_painting_wookiee_f, "object/tangible/painting/shared_painting_wookiee_f.iff")
@@ -4248,7 +4325,8 @@ object_tangible_painting_shared_painting_wookiee_m = SharedTangibleObjectTemplat
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1345813711
+	clientObjectCRC = 1345813711,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_painting_shared_painting_wookiee_m, "object/tangible/painting/shared_painting_wookiee_m.iff")
@@ -4302,7 +4380,8 @@ object_tangible_painting_shared_painting_zabrak_f = SharedTangibleObjectTemplate
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2622418438
+	clientObjectCRC = 2622418438,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_painting_shared_painting_zabrak_f, "object/tangible/painting/shared_painting_zabrak_f.iff")
@@ -4356,7 +4435,8 @@ object_tangible_painting_shared_painting_zabrak_m = SharedTangibleObjectTemplate
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 112214423
+	clientObjectCRC = 112214423,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_painting_shared_painting_zabrak_m, "object/tangible/painting/shared_painting_zabrak_m.iff")

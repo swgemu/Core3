@@ -80,7 +80,8 @@ object_static_structure_tatooine_shared_antenna_tatt_style_1 = SharedStaticObjec
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1093255506
+	clientObjectCRC = 1093255506,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_tatooine_shared_antenna_tatt_style_1, "object/static/structure/tatooine/shared_antenna_tatt_style_1.iff")
@@ -124,7 +125,8 @@ object_static_structure_tatooine_shared_antenna_tatt_style_2 = SharedStaticObjec
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2587781573
+	clientObjectCRC = 2587781573,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_tatooine_shared_antenna_tatt_style_2, "object/static/structure/tatooine/shared_antenna_tatt_style_2.iff")
@@ -168,7 +170,8 @@ object_static_structure_tatooine_shared_beam_tatooine_overhead_style_01 = Shared
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 4012796711
+	clientObjectCRC = 4012796711,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_tatooine_shared_beam_tatooine_overhead_style_01, "object/static/structure/tatooine/shared_beam_tatooine_overhead_style_01.iff")
@@ -212,7 +215,8 @@ object_static_structure_tatooine_shared_beam_tatooine_overhead_style_02 = Shared
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 876200880
+	clientObjectCRC = 876200880,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_tatooine_shared_beam_tatooine_overhead_style_02, "object/static/structure/tatooine/shared_beam_tatooine_overhead_style_02.iff")
@@ -256,7 +260,8 @@ object_static_structure_tatooine_shared_bridge_tatooine_small_style_01 = SharedS
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1188632964
+	clientObjectCRC = 1188632964,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_tatooine_shared_bridge_tatooine_small_style_01, "object/static/structure/tatooine/shared_bridge_tatooine_small_style_01.iff")
@@ -300,7 +305,8 @@ object_static_structure_tatooine_shared_bridge_tatooine_small_style_02 = SharedS
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2647568659
+	clientObjectCRC = 2647568659,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_tatooine_shared_bridge_tatooine_small_style_02, "object/static/structure/tatooine/shared_bridge_tatooine_small_style_02.iff")
@@ -344,7 +350,8 @@ object_static_structure_tatooine_shared_bridge_tatooine_small_style_03 = SharedS
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3569604254
+	clientObjectCRC = 3569604254,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_tatooine_shared_bridge_tatooine_small_style_03, "object/static/structure/tatooine/shared_bridge_tatooine_small_style_03.iff")
@@ -388,7 +395,8 @@ object_static_structure_tatooine_shared_concrete_slab_tatooine_16x8 = SharedStat
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3926077524
+	clientObjectCRC = 3926077524,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_tatooine_shared_concrete_slab_tatooine_16x8, "object/static/structure/tatooine/shared_concrete_slab_tatooine_16x8.iff")
@@ -432,7 +440,8 @@ object_static_structure_tatooine_shared_debris_tatt_crate_1 = SharedStaticObject
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2802480216
+	clientObjectCRC = 2802480216,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_tatooine_shared_debris_tatt_crate_1, "object/static/structure/tatooine/shared_debris_tatt_crate_1.iff")
@@ -476,7 +485,8 @@ object_static_structure_tatooine_shared_debris_tatt_crate_metal_1 = SharedStatic
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 640052328
+	clientObjectCRC = 640052328,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_tatooine_shared_debris_tatt_crate_metal_1, "object/static/structure/tatooine/shared_debris_tatt_crate_metal_1.iff")
@@ -520,7 +530,8 @@ object_static_structure_tatooine_shared_debris_tatt_drum_dented_1 = SharedStatic
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2065777367
+	clientObjectCRC = 2065777367,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_tatooine_shared_debris_tatt_drum_dented_1, "object/static/structure/tatooine/shared_debris_tatt_drum_dented_1.iff")
@@ -564,7 +575,8 @@ object_static_structure_tatooine_shared_debris_tatt_drum_storage_1 = SharedStati
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1759237578
+	clientObjectCRC = 1759237578,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_tatooine_shared_debris_tatt_drum_storage_1, "object/static/structure/tatooine/shared_debris_tatt_drum_storage_1.iff")
@@ -608,7 +620,8 @@ object_static_structure_tatooine_shared_debris_tatt_drum_storage_2 = SharedStati
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3016523101
+	clientObjectCRC = 3016523101,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_tatooine_shared_debris_tatt_drum_storage_2, "object/static/structure/tatooine/shared_debris_tatt_drum_storage_2.iff")
@@ -652,7 +665,8 @@ object_static_structure_tatooine_shared_debris_tatt_pipe_dual_unconnected = Shar
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3869966709
+	clientObjectCRC = 3869966709,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_tatooine_shared_debris_tatt_pipe_dual_unconnected, "object/static/structure/tatooine/shared_debris_tatt_pipe_dual_unconnected.iff")
@@ -696,7 +710,8 @@ object_static_structure_tatooine_shared_debris_tatt_pipe_narrow_1 = SharedStatic
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2912961482
+	clientObjectCRC = 2912961482,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_tatooine_shared_debris_tatt_pipe_narrow_1, "object/static/structure/tatooine/shared_debris_tatt_pipe_narrow_1.iff")
@@ -740,7 +755,8 @@ object_static_structure_tatooine_shared_debris_tatt_pipe_narrow_2 = SharedStatic
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1991764829
+	clientObjectCRC = 1991764829,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_tatooine_shared_debris_tatt_pipe_narrow_2, "object/static/structure/tatooine/shared_debris_tatt_pipe_narrow_2.iff")
@@ -784,7 +800,8 @@ object_static_structure_tatooine_shared_debris_tatt_pipe_widemouth = SharedStati
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 734378137
+	clientObjectCRC = 734378137,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_tatooine_shared_debris_tatt_pipe_widemouth, "object/static/structure/tatooine/shared_debris_tatt_pipe_widemouth.iff")
@@ -828,7 +845,8 @@ object_static_structure_tatooine_shared_debris_tatt_radar_dish = SharedStaticObj
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 509333295
+	clientObjectCRC = 509333295,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_tatooine_shared_debris_tatt_radar_dish, "object/static/structure/tatooine/shared_debris_tatt_radar_dish.iff")
@@ -872,7 +890,8 @@ object_static_structure_tatooine_shared_guild_ball_free_style_01 = SharedStaticO
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 4217839607
+	clientObjectCRC = 4217839607,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_tatooine_shared_guild_ball_free_style_01, "object/static/structure/tatooine/shared_guild_ball_free_style_01.iff")
@@ -916,7 +935,8 @@ object_static_structure_tatooine_shared_guild_banner_free_style_01 = SharedStati
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3370382065
+	clientObjectCRC = 3370382065,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_tatooine_shared_guild_banner_free_style_01, "object/static/structure/tatooine/shared_guild_banner_free_style_01.iff")
@@ -960,7 +980,8 @@ object_static_structure_tatooine_shared_guild_statue_free_style_01 = SharedStati
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3311933250
+	clientObjectCRC = 3311933250,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_tatooine_shared_guild_statue_free_style_01, "object/static/structure/tatooine/shared_guild_statue_free_style_01.iff")
@@ -1004,7 +1025,8 @@ object_static_structure_tatooine_shared_luke_farm_dome = SharedStaticObjectTempl
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 833921892
+	clientObjectCRC = 833921892,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_tatooine_shared_luke_farm_dome, "object/static/structure/tatooine/shared_luke_farm_dome.iff")
@@ -1048,7 +1070,8 @@ object_static_structure_tatooine_shared_luke_farm_garage = SharedStaticObjectTem
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2599767179
+	clientObjectCRC = 2599767179,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_tatooine_shared_luke_farm_garage, "object/static/structure/tatooine/shared_luke_farm_garage.iff")
@@ -1092,7 +1115,8 @@ object_static_structure_tatooine_shared_orchard_tatooine_style_01 = SharedStatic
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2565487141
+	clientObjectCRC = 2565487141,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_tatooine_shared_orchard_tatooine_style_01, "object/static/structure/tatooine/shared_orchard_tatooine_style_01.iff")
@@ -1136,7 +1160,8 @@ object_static_structure_tatooine_shared_orchard_tatooine_style_02 = SharedStatic
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1140691634
+	clientObjectCRC = 1140691634,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_tatooine_shared_orchard_tatooine_style_02, "object/static/structure/tatooine/shared_orchard_tatooine_style_02.iff")
@@ -1180,7 +1205,8 @@ object_static_structure_tatooine_shared_palette_tatooine_style_01 = SharedStatic
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 964260108
+	clientObjectCRC = 964260108,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_tatooine_shared_palette_tatooine_style_01, "object/static/structure/tatooine/shared_palette_tatooine_style_01.iff")
@@ -1224,7 +1250,8 @@ object_static_structure_tatooine_shared_pillar_damaged_large_style_01 = SharedSt
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 241421707
+	clientObjectCRC = 241421707,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_tatooine_shared_pillar_damaged_large_style_01, "object/static/structure/tatooine/shared_pillar_damaged_large_style_01.iff")
@@ -1268,7 +1295,8 @@ object_static_structure_tatooine_shared_pillar_pristine_large_style_01 = SharedS
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 4292692970
+	clientObjectCRC = 4292692970,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_tatooine_shared_pillar_pristine_large_style_01, "object/static/structure/tatooine/shared_pillar_pristine_large_style_01.iff")
@@ -1312,7 +1340,8 @@ object_static_structure_tatooine_shared_pillar_pristine_small_style_01 = SharedS
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3757161564
+	clientObjectCRC = 3757161564,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_tatooine_shared_pillar_pristine_small_style_01, "object/static/structure/tatooine/shared_pillar_pristine_small_style_01.iff")
@@ -1356,7 +1385,8 @@ object_static_structure_tatooine_shared_pillar_pristine_tall_style_01 = SharedSt
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3787857912
+	clientObjectCRC = 3787857912,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_tatooine_shared_pillar_pristine_tall_style_01, "object/static/structure/tatooine/shared_pillar_pristine_tall_style_01.iff")
@@ -1400,7 +1430,8 @@ object_static_structure_tatooine_shared_pillar_ruined_large_style_01 = SharedSta
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1598087847
+	clientObjectCRC = 1598087847,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_tatooine_shared_pillar_ruined_large_style_01, "object/static/structure/tatooine/shared_pillar_ruined_large_style_01.iff")
@@ -1444,7 +1475,8 @@ object_static_structure_tatooine_shared_pillar_ruined_small_style_01 = SharedSta
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2137789713
+	clientObjectCRC = 2137789713,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_tatooine_shared_pillar_ruined_small_style_01, "object/static/structure/tatooine/shared_pillar_ruined_small_style_01.iff")
@@ -1488,7 +1520,8 @@ object_static_structure_tatooine_shared_pillar_watto_junkshop = SharedStaticObje
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 4197410545
+	clientObjectCRC = 4197410545,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_tatooine_shared_pillar_watto_junkshop, "object/static/structure/tatooine/shared_pillar_watto_junkshop.iff")
@@ -1532,7 +1565,8 @@ object_static_structure_tatooine_shared_planter_hanging_style_01 = SharedStaticO
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 965371099
+	clientObjectCRC = 965371099,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_tatooine_shared_planter_hanging_style_01, "object/static/structure/tatooine/shared_planter_hanging_style_01.iff")
@@ -1576,7 +1610,8 @@ object_static_structure_tatooine_shared_planter_window_style_01 = SharedStaticOb
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3602181980
+	clientObjectCRC = 3602181980,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_tatooine_shared_planter_window_style_01, "object/static/structure/tatooine/shared_planter_window_style_01.iff")
@@ -1620,7 +1655,8 @@ object_static_structure_tatooine_shared_shed_junkshop_watto = SharedStaticObject
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3540340474
+	clientObjectCRC = 3540340474,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_tatooine_shared_shed_junkshop_watto, "object/static/structure/tatooine/shared_shed_junkshop_watto.iff")
@@ -1664,7 +1700,8 @@ object_static_structure_tatooine_shared_skeleton_greater_krayt_head = SharedStat
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2360757218
+	clientObjectCRC = 2360757218,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_tatooine_shared_skeleton_greater_krayt_head, "object/static/structure/tatooine/shared_skeleton_greater_krayt_head.iff")
@@ -1708,7 +1745,8 @@ object_static_structure_tatooine_shared_skeleton_greater_krayt_spine_large = Sha
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1968966439
+	clientObjectCRC = 1968966439,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_tatooine_shared_skeleton_greater_krayt_spine_large, "object/static/structure/tatooine/shared_skeleton_greater_krayt_spine_large.iff")
@@ -1752,7 +1790,8 @@ object_static_structure_tatooine_shared_skeleton_greater_krayt_spine_medium = Sh
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3765108574
+	clientObjectCRC = 3765108574,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_tatooine_shared_skeleton_greater_krayt_spine_medium, "object/static/structure/tatooine/shared_skeleton_greater_krayt_spine_medium.iff")
@@ -1796,7 +1835,8 @@ object_static_structure_tatooine_shared_skeleton_greater_krayt_spine_small = Sha
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1095212814
+	clientObjectCRC = 1095212814,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_tatooine_shared_skeleton_greater_krayt_spine_small, "object/static/structure/tatooine/shared_skeleton_greater_krayt_spine_small.iff")
@@ -1840,7 +1880,8 @@ object_static_structure_tatooine_shared_skeleton_krayt_arm_style_01 = SharedStat
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2765616042
+	clientObjectCRC = 2765616042,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_tatooine_shared_skeleton_krayt_arm_style_01, "object/static/structure/tatooine/shared_skeleton_krayt_arm_style_01.iff")
@@ -1884,7 +1925,8 @@ object_static_structure_tatooine_shared_skeleton_krayt_arm_style_02 = SharedStat
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2143312701
+	clientObjectCRC = 2143312701,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_tatooine_shared_skeleton_krayt_arm_style_02, "object/static/structure/tatooine/shared_skeleton_krayt_arm_style_02.iff")
@@ -1928,7 +1970,8 @@ object_static_structure_tatooine_shared_skeleton_krayt_foot = SharedStaticObject
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3709855452
+	clientObjectCRC = 3709855452,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_tatooine_shared_skeleton_krayt_foot, "object/static/structure/tatooine/shared_skeleton_krayt_foot.iff")
@@ -1972,7 +2015,8 @@ object_static_structure_tatooine_shared_skeleton_krayt_head_style_01 = SharedSta
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1206320755
+	clientObjectCRC = 1206320755,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_tatooine_shared_skeleton_krayt_head_style_01, "object/static/structure/tatooine/shared_skeleton_krayt_head_style_01.iff")
@@ -2016,7 +2060,8 @@ object_static_structure_tatooine_shared_skeleton_krayt_head_style_02 = SharedSta
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2633062116
+	clientObjectCRC = 2633062116,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_tatooine_shared_skeleton_krayt_head_style_02, "object/static/structure/tatooine/shared_skeleton_krayt_head_style_02.iff")
@@ -2060,7 +2105,8 @@ object_static_structure_tatooine_shared_skeleton_krayt_leg_style_01 = SharedStat
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 244287544
+	clientObjectCRC = 244287544,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_tatooine_shared_skeleton_krayt_leg_style_01, "object/static/structure/tatooine/shared_skeleton_krayt_leg_style_01.iff")
@@ -2104,7 +2150,8 @@ object_static_structure_tatooine_shared_skeleton_krayt_leg_style_02 = SharedStat
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3583516847
+	clientObjectCRC = 3583516847,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_tatooine_shared_skeleton_krayt_leg_style_02, "object/static/structure/tatooine/shared_skeleton_krayt_leg_style_02.iff")
@@ -2148,7 +2195,8 @@ object_static_structure_tatooine_shared_skeleton_krayt_ribcage = SharedStaticObj
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3011148946
+	clientObjectCRC = 3011148946,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_tatooine_shared_skeleton_krayt_ribcage, "object/static/structure/tatooine/shared_skeleton_krayt_ribcage.iff")
@@ -2192,7 +2240,8 @@ object_static_structure_tatooine_shared_skeleton_krayt_tail = SharedStaticObject
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2336540846
+	clientObjectCRC = 2336540846,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_tatooine_shared_skeleton_krayt_tail, "object/static/structure/tatooine/shared_skeleton_krayt_tail.iff")
@@ -2236,7 +2285,8 @@ object_static_structure_tatooine_shared_stair_tatooine_large_style_01 = SharedSt
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1322132974
+	clientObjectCRC = 1322132974,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_tatooine_shared_stair_tatooine_large_style_01, "object/static/structure/tatooine/shared_stair_tatooine_large_style_01.iff")
@@ -2280,7 +2330,8 @@ object_static_structure_tatooine_shared_stair_tatooine_large_style_02 = SharedSt
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2514062713
+	clientObjectCRC = 2514062713,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_tatooine_shared_stair_tatooine_large_style_02, "object/static/structure/tatooine/shared_stair_tatooine_large_style_02.iff")
@@ -2324,7 +2375,8 @@ object_static_structure_tatooine_shared_stair_tatooine_small_style_01 = SharedSt
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1860358744
+	clientObjectCRC = 1860358744,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_tatooine_shared_stair_tatooine_small_style_01, "object/static/structure/tatooine/shared_stair_tatooine_small_style_01.iff")
@@ -2368,7 +2420,8 @@ object_static_structure_tatooine_shared_stair_tatooine_small_style_02 = SharedSt
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3052763855
+	clientObjectCRC = 3052763855,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_tatooine_shared_stair_tatooine_small_style_02, "object/static/structure/tatooine/shared_stair_tatooine_small_style_02.iff")
@@ -2412,7 +2465,8 @@ object_static_structure_tatooine_shared_stone_hovel_tatooine_style_01 = SharedSt
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3200019712
+	clientObjectCRC = 3200019712,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_tatooine_shared_stone_hovel_tatooine_style_01, "object/static/structure/tatooine/shared_stone_hovel_tatooine_style_01.iff")
@@ -2456,7 +2510,8 @@ object_static_structure_tatooine_shared_streetsign_upright_style_01 = SharedStat
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1684082876
+	clientObjectCRC = 1684082876,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_tatooine_shared_streetsign_upright_style_01, "object/static/structure/tatooine/shared_streetsign_upright_style_01.iff")
@@ -2500,7 +2555,8 @@ object_static_structure_tatooine_shared_streetsign_wall_style_01 = SharedStaticO
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3198539542
+	clientObjectCRC = 3198539542,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_tatooine_shared_streetsign_wall_style_01, "object/static/structure/tatooine/shared_streetsign_wall_style_01.iff")
@@ -2543,7 +2599,8 @@ object_static_structure_tatooine_shared_tato_imprv_bannerpole_s01 = SharedStatic
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2616904837
+	clientObjectCRC = 2616904837,
+	derivedFromTemplates = {}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_tatooine_shared_tato_imprv_bannerpole_s01, "object/static/structure/tatooine/shared_tato_imprv_bannerpole_s01.iff")
@@ -2586,7 +2643,8 @@ object_static_structure_tatooine_shared_tato_imprv_flagpole_s01 = SharedStaticOb
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1474884262
+	clientObjectCRC = 1474884262,
+	derivedFromTemplates = {}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_tatooine_shared_tato_imprv_flagpole_s01, "object/static/structure/tatooine/shared_tato_imprv_flagpole_s01.iff")
@@ -2630,7 +2688,8 @@ object_static_structure_tatooine_shared_tent_house_tatooine_style_01 = SharedSta
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1417975984
+	clientObjectCRC = 1417975984,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_tatooine_shared_tent_house_tatooine_style_01, "object/static/structure/tatooine/shared_tent_house_tatooine_style_01.iff")
@@ -2674,7 +2733,8 @@ object_static_structure_tatooine_shared_wall_archway_tatooine_large_style_01 = S
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 380331488
+	clientObjectCRC = 380331488,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_tatooine_shared_wall_archway_tatooine_large_style_01, "object/static/structure/tatooine/shared_wall_archway_tatooine_large_style_01.iff")
@@ -2718,7 +2778,8 @@ object_static_structure_tatooine_shared_wall_archway_tatooine_wide_style_01 = Sh
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 757634419
+	clientObjectCRC = 757634419,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_tatooine_shared_wall_archway_tatooine_wide_style_01, "object/static/structure/tatooine/shared_wall_archway_tatooine_wide_style_01.iff")
@@ -2762,7 +2823,8 @@ object_static_structure_tatooine_shared_wall_cleft_tatooine_large_style_01 = Sha
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3117988515
+	clientObjectCRC = 3117988515,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_tatooine_shared_wall_cleft_tatooine_large_style_01, "object/static/structure/tatooine/shared_wall_cleft_tatooine_large_style_01.iff")
@@ -2806,7 +2868,8 @@ object_static_structure_tatooine_shared_wall_damaged_tatooine_large_style_01 = S
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3482982112
+	clientObjectCRC = 3482982112,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_tatooine_shared_wall_damaged_tatooine_large_style_01, "object/static/structure/tatooine/shared_wall_damaged_tatooine_large_style_01.iff")
@@ -2850,7 +2913,8 @@ object_static_structure_tatooine_shared_wall_gate_tatooine_style_01 = SharedStat
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3317597393
+	clientObjectCRC = 3317597393,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_tatooine_shared_wall_gate_tatooine_style_01, "object/static/structure/tatooine/shared_wall_gate_tatooine_style_01.iff")
@@ -2894,7 +2958,8 @@ object_static_structure_tatooine_shared_wall_gate_tatooine_style_02 = SharedStat
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 514403398
+	clientObjectCRC = 514403398,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_tatooine_shared_wall_gate_tatooine_style_02, "object/static/structure/tatooine/shared_wall_gate_tatooine_style_02.iff")
@@ -2938,7 +3003,8 @@ object_static_structure_tatooine_shared_wall_gate_tatooine_style_03 = SharedStat
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1470385099
+	clientObjectCRC = 1470385099,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_tatooine_shared_wall_gate_tatooine_style_03, "object/static/structure/tatooine/shared_wall_gate_tatooine_style_03.iff")
@@ -2982,7 +3048,8 @@ object_static_structure_tatooine_shared_wall_gate_tatooine_wide_style_01 = Share
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 107098437
+	clientObjectCRC = 107098437,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_tatooine_shared_wall_gate_tatooine_wide_style_01, "object/static/structure/tatooine/shared_wall_gate_tatooine_wide_style_01.iff")
@@ -3026,7 +3093,8 @@ object_static_structure_tatooine_shared_wall_junkshop_watto = SharedStaticObject
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3988863044
+	clientObjectCRC = 3988863044,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_tatooine_shared_wall_junkshop_watto, "object/static/structure/tatooine/shared_wall_junkshop_watto.iff")
@@ -3070,7 +3138,8 @@ object_static_structure_tatooine_shared_wall_pristine_tatooine_large_style_01 = 
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2746619484
+	clientObjectCRC = 2746619484,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_tatooine_shared_wall_pristine_tatooine_large_style_01, "object/static/structure/tatooine/shared_wall_pristine_tatooine_large_style_01.iff")
@@ -3114,7 +3183,8 @@ object_static_structure_tatooine_shared_wall_pristine_tatooine_large_style_02 = 
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2023866059
+	clientObjectCRC = 2023866059,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_tatooine_shared_wall_pristine_tatooine_large_style_02, "object/static/structure/tatooine/shared_wall_pristine_tatooine_large_style_02.iff")
@@ -3158,7 +3228,8 @@ object_static_structure_tatooine_shared_wall_pristine_tatooine_small_style_01 = 
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2207965674
+	clientObjectCRC = 2207965674,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_tatooine_shared_wall_pristine_tatooine_small_style_01, "object/static/structure/tatooine/shared_wall_pristine_tatooine_small_style_01.iff")
@@ -3202,7 +3273,8 @@ object_static_structure_tatooine_shared_wall_pristine_tatooine_tall_style_01 = S
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1229804318
+	clientObjectCRC = 1229804318,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_tatooine_shared_wall_pristine_tatooine_tall_style_01, "object/static/structure/tatooine/shared_wall_pristine_tatooine_tall_style_01.iff")
@@ -3246,7 +3318,8 @@ object_static_structure_tatooine_shared_wall_ruined_tatooine_large_style_01 = Sh
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3589895396
+	clientObjectCRC = 3589895396,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_tatooine_shared_wall_ruined_tatooine_large_style_01, "object/static/structure/tatooine/shared_wall_ruined_tatooine_large_style_01.iff")
@@ -3290,7 +3363,8 @@ object_static_structure_tatooine_shared_wall_ruined_tatooine_large_style_02 = Sh
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 250535027
+	clientObjectCRC = 250535027,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_tatooine_shared_wall_ruined_tatooine_large_style_02, "object/static/structure/tatooine/shared_wall_ruined_tatooine_large_style_02.iff")
@@ -3334,7 +3408,8 @@ object_static_structure_tatooine_shared_wall_ruined_tatooine_small_style_01 = Sh
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 4124410706
+	clientObjectCRC = 4124410706,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_tatooine_shared_wall_ruined_tatooine_small_style_01, "object/static/structure/tatooine/shared_wall_ruined_tatooine_small_style_01.iff")

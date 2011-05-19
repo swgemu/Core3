@@ -80,7 +80,8 @@ object_static_structure_general_shared_all_banner_generic_s01 = SharedStaticObje
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2896788724
+	clientObjectCRC = 2896788724,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_all_banner_generic_s01, "object/static/structure/general/shared_all_banner_generic_s01.iff")
@@ -124,7 +125,8 @@ object_static_structure_general_shared_all_banner_generic_s02 = SharedStaticObje
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2008994915
+	clientObjectCRC = 2008994915,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_all_banner_generic_s02, "object/static/structure/general/shared_all_banner_generic_s02.iff")
@@ -168,7 +170,8 @@ object_static_structure_general_shared_all_foodcart_s01 = SharedStaticObjectTemp
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1165822108
+	clientObjectCRC = 1165822108,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_all_foodcart_s01, "object/static/structure/general/shared_all_foodcart_s01.iff")
@@ -212,7 +215,8 @@ object_static_structure_general_shared_all_sign_shop_s01 = SharedStaticObjectTem
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2334316222
+	clientObjectCRC = 2334316222,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_all_sign_shop_s01, "object/static/structure/general/shared_all_sign_shop_s01.iff")
@@ -256,7 +260,8 @@ object_static_structure_general_shared_all_sign_shop_s02 = SharedStaticObjectTem
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1345682985
+	clientObjectCRC = 1345682985,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_all_sign_shop_s02, "object/static/structure/general/shared_all_sign_shop_s02.iff")
@@ -300,7 +305,8 @@ object_static_structure_general_shared_all_sign_shop_s03 = SharedStaticObjectTem
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 423106980
+	clientObjectCRC = 423106980,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_all_sign_shop_s03, "object/static/structure/general/shared_all_sign_shop_s03.iff")
@@ -344,7 +350,8 @@ object_static_structure_general_shared_all_sign_shop_s04 = SharedStaticObjectTem
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3806016176
+	clientObjectCRC = 3806016176,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_all_sign_shop_s04, "object/static/structure/general/shared_all_sign_shop_s04.iff")
@@ -388,7 +395,8 @@ object_static_structure_general_shared_all_sign_street_s01 = SharedStaticObjectT
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2238973525
+	clientObjectCRC = 2238973525,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_all_sign_street_s01, "object/static/structure/general/shared_all_sign_street_s01.iff")
@@ -432,7 +440,8 @@ object_static_structure_general_shared_allum_mine_bucket_s01 = SharedStaticObjec
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2031661587
+	clientObjectCRC = 2031661587,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_allum_mine_bucket_s01, "object/static/structure/general/shared_allum_mine_bucket_s01.iff")
@@ -476,7 +485,8 @@ object_static_structure_general_shared_allum_mine_car_s01 = SharedStaticObjectTe
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1999726466
+	clientObjectCRC = 1999726466,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_allum_mine_car_s01, "object/static/structure/general/shared_allum_mine_car_s01.iff")
@@ -520,7 +530,8 @@ object_static_structure_general_shared_allum_mine_console_s01 = SharedStaticObje
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2472819165
+	clientObjectCRC = 2472819165,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_allum_mine_console_s01, "object/static/structure/general/shared_allum_mine_console_s01.iff")
@@ -564,7 +575,8 @@ object_static_structure_general_shared_allum_mine_device_s01 = SharedStaticObjec
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 798806621
+	clientObjectCRC = 798806621,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_allum_mine_device_s01, "object/static/structure/general/shared_allum_mine_device_s01.iff")
@@ -608,7 +620,8 @@ object_static_structure_general_shared_allum_mine_device_s02 = SharedStaticObjec
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 4102781642
+	clientObjectCRC = 4102781642,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_allum_mine_device_s02, "object/static/structure/general/shared_allum_mine_device_s02.iff")
@@ -652,7 +665,8 @@ object_static_structure_general_shared_allum_mine_pipes_s01 = SharedStaticObject
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2002036005
+	clientObjectCRC = 2002036005,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_allum_mine_pipes_s01, "object/static/structure/general/shared_allum_mine_pipes_s01.iff")
@@ -696,7 +710,8 @@ object_static_structure_general_shared_allum_mine_pipes_s02 = SharedStaticObject
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2890075570
+	clientObjectCRC = 2890075570,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_allum_mine_pipes_s02, "object/static/structure/general/shared_allum_mine_pipes_s02.iff")
@@ -740,7 +755,8 @@ object_static_structure_general_shared_allum_mine_support_piston_s01 = SharedSta
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3698833758
+	clientObjectCRC = 3698833758,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_allum_mine_support_piston_s01, "object/static/structure/general/shared_allum_mine_support_piston_s01.iff")
@@ -784,7 +800,8 @@ object_static_structure_general_shared_allum_mine_support_s01 = SharedStaticObje
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3841253399
+	clientObjectCRC = 3841253399,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_allum_mine_support_s01, "object/static/structure/general/shared_allum_mine_support_s01.iff")
@@ -828,7 +845,8 @@ object_static_structure_general_shared_allum_mine_wall_lamp_s01 = SharedStaticOb
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 455069579
+	clientObjectCRC = 455069579,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_allum_mine_wall_lamp_s01, "object/static/structure/general/shared_allum_mine_wall_lamp_s01.iff")
@@ -872,7 +890,8 @@ object_static_structure_general_shared_atat_debris_01 = SharedStaticObjectTempla
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2204766571
+	clientObjectCRC = 2204766571,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_atat_debris_01, "object/static/structure/general/shared_atat_debris_01.iff")
@@ -916,7 +935,8 @@ object_static_structure_general_shared_atat_debris_02 = SharedStaticObjectTempla
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1484634620
+	clientObjectCRC = 1484634620,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_atat_debris_02, "object/static/structure/general/shared_atat_debris_02.iff")
@@ -960,7 +980,8 @@ object_static_structure_general_shared_atat_destroyed = SharedStaticObjectTempla
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3541027443
+	clientObjectCRC = 3541027443,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_atat_destroyed, "object/static/structure/general/shared_atat_destroyed.iff")
@@ -1004,7 +1025,8 @@ object_static_structure_general_shared_atst_debris_01 = SharedStaticObjectTempla
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 788309969
+	clientObjectCRC = 788309969,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_atst_debris_01, "object/static/structure/general/shared_atst_debris_01.iff")
@@ -1048,7 +1070,8 @@ object_static_structure_general_shared_atst_destroyed = SharedStaticObjectTempla
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2123988169
+	clientObjectCRC = 2123988169,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_atst_destroyed, "object/static/structure/general/shared_atst_destroyed.iff")
@@ -1092,7 +1115,8 @@ object_static_structure_general_shared_banner_imperial_style_01 = SharedStaticOb
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 4060142999
+	clientObjectCRC = 4060142999,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_banner_imperial_style_01, "object/static/structure/general/shared_banner_imperial_style_01.iff")
@@ -1136,7 +1160,8 @@ object_static_structure_general_shared_banner_rebel_style_01 = SharedStaticObjec
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2320654391
+	clientObjectCRC = 2320654391,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_banner_rebel_style_01, "object/static/structure/general/shared_banner_rebel_style_01.iff")
@@ -1180,7 +1205,8 @@ object_static_structure_general_shared_banner_tatooine_style_01 = SharedStaticOb
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 556485701
+	clientObjectCRC = 556485701,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_banner_tatooine_style_01, "object/static/structure/general/shared_banner_tatooine_style_01.iff")
@@ -1224,7 +1250,8 @@ object_static_structure_general_shared_bench_generic_style_1 = SharedStaticObjec
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2023415601
+	clientObjectCRC = 2023415601,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_bench_generic_style_1, "object/static/structure/general/shared_bench_generic_style_1.iff")
@@ -1268,7 +1295,8 @@ object_static_structure_general_shared_camp_campfire_logs_fresh_s01 = SharedStat
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3833265874
+	clientObjectCRC = 3833265874,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_camp_campfire_logs_fresh_s01, "object/static/structure/general/shared_camp_campfire_logs_fresh_s01.iff")
@@ -1312,7 +1340,8 @@ object_static_structure_general_shared_camp_campfire_logs_smoldering_s01 = Share
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1620143270
+	clientObjectCRC = 1620143270,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_camp_campfire_logs_smoldering_s01, "object/static/structure/general/shared_camp_campfire_logs_smoldering_s01.iff")
@@ -1356,7 +1385,8 @@ object_static_structure_general_shared_camp_cot_s01 = SharedStaticObjectTemplate
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1047908184
+	clientObjectCRC = 1047908184,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_camp_cot_s01, "object/static/structure/general/shared_camp_cot_s01.iff")
@@ -1400,7 +1430,8 @@ object_static_structure_general_shared_camp_lawn_chair_s01 = SharedStaticObjectT
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2619023506
+	clientObjectCRC = 2619023506,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_camp_lawn_chair_s01, "object/static/structure/general/shared_camp_lawn_chair_s01.iff")
@@ -1444,7 +1475,8 @@ object_static_structure_general_shared_camp_spit_s01 = SharedStaticObjectTemplat
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 773324764
+	clientObjectCRC = 773324764,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_camp_spit_s01, "object/static/structure/general/shared_camp_spit_s01.iff")
@@ -1488,7 +1520,8 @@ object_static_structure_general_shared_camp_stool_short_s01 = SharedStaticObject
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1530450717
+	clientObjectCRC = 1530450717,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_camp_stool_short_s01, "object/static/structure/general/shared_camp_stool_short_s01.iff")
@@ -1532,7 +1565,8 @@ object_static_structure_general_shared_camp_stool_tall_s01 = SharedStaticObjectT
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1755841704
+	clientObjectCRC = 1755841704,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_camp_stool_tall_s01, "object/static/structure/general/shared_camp_stool_tall_s01.iff")
@@ -1576,7 +1610,8 @@ object_static_structure_general_shared_camp_tent_s01 = SharedStaticObjectTemplat
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 129854704
+	clientObjectCRC = 129854704,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_camp_tent_s01, "object/static/structure/general/shared_camp_tent_s01.iff")
@@ -1620,7 +1655,8 @@ object_static_structure_general_shared_campfire_ash = SharedStaticObjectTemplate
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 4067844831
+	clientObjectCRC = 4067844831,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_campfire_ash, "object/static/structure/general/shared_campfire_ash.iff")
@@ -1664,7 +1700,8 @@ object_static_structure_general_shared_campfire_burnt = SharedStaticObjectTempla
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2586812298
+	clientObjectCRC = 2586812298,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_campfire_burnt, "object/static/structure/general/shared_campfire_burnt.iff")
@@ -1708,7 +1745,8 @@ object_static_structure_general_shared_campfire_fresh = SharedStaticObjectTempla
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 765197024
+	clientObjectCRC = 765197024,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_campfire_fresh, "object/static/structure/general/shared_campfire_fresh.iff")
@@ -1752,7 +1790,8 @@ object_static_structure_general_shared_campfire_smoldering = SharedStaticObjectT
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2300560117
+	clientObjectCRC = 2300560117,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_campfire_smoldering, "object/static/structure/general/shared_campfire_smoldering.iff")
@@ -1796,7 +1835,8 @@ object_static_structure_general_shared_cave_column_damprock_style_01 = SharedSta
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3261177526
+	clientObjectCRC = 3261177526,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_cave_column_damprock_style_01, "object/static/structure/general/shared_cave_column_damprock_style_01.iff")
@@ -1840,7 +1880,8 @@ object_static_structure_general_shared_cave_column_damprock_style_02 = SharedSta
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 427177505
+	clientObjectCRC = 427177505,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_cave_column_damprock_style_02, "object/static/structure/general/shared_cave_column_damprock_style_02.iff")
@@ -1884,7 +1925,8 @@ object_static_structure_general_shared_cave_column_damprock_style_03 = SharedSta
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1350259116
+	clientObjectCRC = 1350259116,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_cave_column_damprock_style_03, "object/static/structure/general/shared_cave_column_damprock_style_03.iff")
@@ -1928,7 +1970,8 @@ object_static_structure_general_shared_cave_column_ice_style_01 = SharedStaticOb
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2977899176
+	clientObjectCRC = 2977899176,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_cave_column_ice_style_01, "object/static/structure/general/shared_cave_column_ice_style_01.iff")
@@ -1972,7 +2015,8 @@ object_static_structure_general_shared_cave_column_ice_style_02 = SharedStaticOb
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1785236031
+	clientObjectCRC = 1785236031,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_cave_column_ice_style_02, "object/static/structure/general/shared_cave_column_ice_style_02.iff")
@@ -2016,7 +2060,8 @@ object_static_structure_general_shared_cave_column_ice_style_03 = SharedStaticOb
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 593882546
+	clientObjectCRC = 593882546,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_cave_column_ice_style_03, "object/static/structure/general/shared_cave_column_ice_style_03.iff")
@@ -2060,7 +2105,8 @@ object_static_structure_general_shared_cave_column_tato_style_01 = SharedStaticO
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3092283888
+	clientObjectCRC = 3092283888,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_cave_column_tato_style_01, "object/static/structure/general/shared_cave_column_tato_style_01.iff")
@@ -2104,7 +2150,8 @@ object_static_structure_general_shared_cave_column_tato_style_02 = SharedStaticO
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1665608039
+	clientObjectCRC = 1665608039,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_cave_column_tato_style_02, "object/static/structure/general/shared_cave_column_tato_style_02.iff")
@@ -2148,7 +2195,8 @@ object_static_structure_general_shared_cave_column_tato_style_03 = SharedStaticO
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 709512938
+	clientObjectCRC = 709512938,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_cave_column_tato_style_03, "object/static/structure/general/shared_cave_column_tato_style_03.iff")
@@ -2192,7 +2240,8 @@ object_static_structure_general_shared_cave_stalactite_damprock_s01_large = Shar
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3621325123
+	clientObjectCRC = 3621325123,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_cave_stalactite_damprock_s01_large, "object/static/structure/general/shared_cave_stalactite_damprock_s01_large.iff")
@@ -2236,7 +2285,8 @@ object_static_structure_general_shared_cave_stalactite_damprock_s01_med = Shared
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 4217032646
+	clientObjectCRC = 4217032646,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_cave_stalactite_damprock_s01_med, "object/static/structure/general/shared_cave_stalactite_damprock_s01_med.iff")
@@ -2280,7 +2330,8 @@ object_static_structure_general_shared_cave_stalactite_damprock_s01_small = Shar
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3821182314
+	clientObjectCRC = 3821182314,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_cave_stalactite_damprock_s01_small, "object/static/structure/general/shared_cave_stalactite_damprock_s01_small.iff")
@@ -2324,7 +2375,8 @@ object_static_structure_general_shared_cave_stalactite_damprock_s02_large = Shar
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3656228038
+	clientObjectCRC = 3656228038,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_cave_stalactite_damprock_s02_large, "object/static/structure/general/shared_cave_stalactite_damprock_s02_large.iff")
@@ -2368,7 +2420,8 @@ object_static_structure_general_shared_cave_stalactite_damprock_s02_med = Shared
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3919195355
+	clientObjectCRC = 3919195355,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_cave_stalactite_damprock_s02_med, "object/static/structure/general/shared_cave_stalactite_damprock_s02_med.iff")
@@ -2412,7 +2465,8 @@ object_static_structure_general_shared_cave_stalactite_damprock_s02_small = Shar
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3992324335
+	clientObjectCRC = 3992324335,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_cave_stalactite_damprock_s02_small, "object/static/structure/general/shared_cave_stalactite_damprock_s02_small.iff")
@@ -2456,7 +2510,8 @@ object_static_structure_general_shared_cave_stalactite_damprock_s03_large = Shar
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 541137704
+	clientObjectCRC = 541137704,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_cave_stalactite_damprock_s03_large, "object/static/structure/general/shared_cave_stalactite_damprock_s03_large.iff")
@@ -2500,7 +2555,8 @@ object_static_structure_general_shared_cave_stalactite_damprock_s03_med = Shared
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 463111869
+	clientObjectCRC = 463111869,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_cave_stalactite_damprock_s03_med, "object/static/structure/general/shared_cave_stalactite_damprock_s03_med.iff")
@@ -2544,7 +2600,8 @@ object_static_structure_general_shared_cave_stalactite_damprock_s03_small = Shar
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 341479169
+	clientObjectCRC = 341479169,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_cave_stalactite_damprock_s03_small, "object/static/structure/general/shared_cave_stalactite_damprock_s03_small.iff")
@@ -2588,7 +2645,8 @@ object_static_structure_general_shared_cave_stalactite_ice_style_01 = SharedStat
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3338296027
+	clientObjectCRC = 3338296027,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_cave_stalactite_ice_style_01, "object/static/structure/general/shared_cave_stalactite_ice_style_01.iff")
@@ -2632,7 +2690,8 @@ object_static_structure_general_shared_cave_stalactite_ice_style_02 = SharedStat
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 502133324
+	clientObjectCRC = 502133324,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_cave_stalactite_ice_style_02, "object/static/structure/general/shared_cave_stalactite_ice_style_02.iff")
@@ -2676,7 +2735,8 @@ object_static_structure_general_shared_cave_stalactite_ice_style_03 = SharedStat
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1424004545
+	clientObjectCRC = 1424004545,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_cave_stalactite_ice_style_03, "object/static/structure/general/shared_cave_stalactite_ice_style_03.iff")
@@ -2720,7 +2780,8 @@ object_static_structure_general_shared_cave_stalactite_ice_style_04 = SharedStat
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2936258261
+	clientObjectCRC = 2936258261,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_cave_stalactite_ice_style_04, "object/static/structure/general/shared_cave_stalactite_ice_style_04.iff")
@@ -2764,7 +2825,8 @@ object_static_structure_general_shared_cave_stalactite_ice_style_05 = SharedStat
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3859732824
+	clientObjectCRC = 3859732824,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_cave_stalactite_ice_style_05, "object/static/structure/general/shared_cave_stalactite_ice_style_05.iff")
@@ -2808,7 +2870,8 @@ object_static_structure_general_shared_cave_stalactite_ice_style_06 = SharedStat
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1025077711
+	clientObjectCRC = 1025077711,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_cave_stalactite_ice_style_06, "object/static/structure/general/shared_cave_stalactite_ice_style_06.iff")
@@ -2852,7 +2915,8 @@ object_static_structure_general_shared_cave_stalactite_tato_s01_large = SharedSt
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 634638246
+	clientObjectCRC = 634638246,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_cave_stalactite_tato_s01_large, "object/static/structure/general/shared_cave_stalactite_tato_s01_large.iff")
@@ -2896,7 +2960,8 @@ object_static_structure_general_shared_cave_stalactite_tato_s01_med = SharedStat
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2597707635
+	clientObjectCRC = 2597707635,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_cave_stalactite_tato_s01_med, "object/static/structure/general/shared_cave_stalactite_tato_s01_med.iff")
@@ -2940,7 +3005,8 @@ object_static_structure_general_shared_cave_stalactite_tato_s01_small = SharedSt
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 298343311
+	clientObjectCRC = 298343311,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_cave_stalactite_tato_s01_small, "object/static/structure/general/shared_cave_stalactite_tato_s01_small.iff")
@@ -2984,7 +3050,8 @@ object_static_structure_general_shared_cave_stalactite_tato_s02_large = SharedSt
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 736582179
+	clientObjectCRC = 736582179,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_cave_stalactite_tato_s02_large, "object/static/structure/general/shared_cave_stalactite_tato_s02_large.iff")
@@ -3028,7 +3095,8 @@ object_static_structure_general_shared_cave_stalactite_tato_s02_med = SharedStat
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2283093102
+	clientObjectCRC = 2283093102,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_cave_stalactite_tato_s02_med, "object/static/structure/general/shared_cave_stalactite_tato_s02_med.iff")
@@ -3072,7 +3140,8 @@ object_static_structure_general_shared_cave_stalactite_tato_s02_small = SharedSt
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 536661514
+	clientObjectCRC = 536661514,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_cave_stalactite_tato_s02_small, "object/static/structure/general/shared_cave_stalactite_tato_s02_small.iff")
@@ -3116,7 +3185,8 @@ object_static_structure_general_shared_cave_stalactite_tato_s03_large = SharedSt
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3528187341
+	clientObjectCRC = 3528187341,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_cave_stalactite_tato_s03_large, "object/static/structure/general/shared_cave_stalactite_tato_s03_large.iff")
@@ -3160,7 +3230,8 @@ object_static_structure_general_shared_cave_stalactite_tato_s03_med = SharedStat
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2048235016
+	clientObjectCRC = 2048235016,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_cave_stalactite_tato_s03_med, "object/static/structure/general/shared_cave_stalactite_tato_s03_med.iff")
@@ -3204,7 +3275,8 @@ object_static_structure_general_shared_cave_stalactite_tato_s03_small = SharedSt
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3864021476
+	clientObjectCRC = 3864021476,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_cave_stalactite_tato_s03_small, "object/static/structure/general/shared_cave_stalactite_tato_s03_small.iff")
@@ -3248,7 +3320,8 @@ object_static_structure_general_shared_cave_stalagmite_damprock_s01_large = Shar
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 4289263471
+	clientObjectCRC = 4289263471,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_cave_stalagmite_damprock_s01_large, "object/static/structure/general/shared_cave_stalagmite_damprock_s01_large.iff")
@@ -3292,7 +3365,8 @@ object_static_structure_general_shared_cave_stalagmite_damprock_s01_med = Shared
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 552994988
+	clientObjectCRC = 552994988,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_cave_stalagmite_damprock_s01_med, "object/static/structure/general/shared_cave_stalagmite_damprock_s01_med.iff")
@@ -3336,7 +3410,8 @@ object_static_structure_general_shared_cave_stalagmite_damprock_s01_small = Shar
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3417531206
+	clientObjectCRC = 3417531206,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_cave_stalagmite_damprock_s01_small, "object/static/structure/general/shared_cave_stalagmite_damprock_s01_small.iff")
@@ -3380,7 +3455,8 @@ object_static_structure_general_shared_cave_stalagmite_damprock_s02_large = Shar
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 4053557994
+	clientObjectCRC = 4053557994,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_cave_stalagmite_damprock_s02_large, "object/static/structure/general/shared_cave_stalagmite_damprock_s02_large.iff")
@@ -3424,7 +3500,8 @@ object_static_structure_general_shared_cave_stalagmite_damprock_s02_med = Shared
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 842460081
+	clientObjectCRC = 842460081,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_cave_stalagmite_damprock_s02_med, "object/static/structure/general/shared_cave_stalagmite_damprock_s02_med.iff")
@@ -3468,7 +3545,8 @@ object_static_structure_general_shared_cave_stalagmite_damprock_s02_small = Shar
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3314022083
+	clientObjectCRC = 3314022083,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_cave_stalagmite_damprock_s02_small, "object/static/structure/general/shared_cave_stalagmite_damprock_s02_small.iff")
@@ -3512,7 +3590,8 @@ object_static_structure_general_shared_cave_stalagmite_damprock_s03_large = Shar
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 137422084
+	clientObjectCRC = 137422084,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_cave_stalagmite_damprock_s03_large, "object/static/structure/general/shared_cave_stalagmite_damprock_s03_large.iff")
@@ -3556,7 +3635,8 @@ object_static_structure_general_shared_cave_stalagmite_damprock_s03_med = Shared
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3224781271
+	clientObjectCRC = 3224781271,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_cave_stalagmite_damprock_s03_med, "object/static/structure/general/shared_cave_stalagmite_damprock_s03_med.iff")
@@ -3600,7 +3680,8 @@ object_static_structure_general_shared_cave_stalagmite_damprock_s03_small = Shar
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1009479981
+	clientObjectCRC = 1009479981,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_cave_stalagmite_damprock_s03_small, "object/static/structure/general/shared_cave_stalagmite_damprock_s03_small.iff")
@@ -3644,7 +3725,8 @@ object_static_structure_general_shared_cave_stalagmite_ice_style_01 = SharedStat
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2580678384
+	clientObjectCRC = 2580678384,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_cave_stalagmite_ice_style_01, "object/static/structure/general/shared_cave_stalagmite_ice_style_01.iff")
@@ -3688,7 +3770,8 @@ object_static_structure_general_shared_cave_stalagmite_ice_style_02 = SharedStat
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1120251495
+	clientObjectCRC = 1120251495,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_cave_stalagmite_ice_style_02, "object/static/structure/general/shared_cave_stalagmite_ice_style_02.iff")
@@ -3732,7 +3815,8 @@ object_static_structure_general_shared_cave_stalagmite_ice_style_03 = SharedStat
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 197708266
+	clientObjectCRC = 197708266,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_cave_stalagmite_ice_style_03, "object/static/structure/general/shared_cave_stalagmite_ice_style_03.iff")
@@ -3776,7 +3860,8 @@ object_static_structure_general_shared_cave_stalagmite_ice_style_04 = SharedStat
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 4029407998
+	clientObjectCRC = 4029407998,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_cave_stalagmite_ice_style_04, "object/static/structure/general/shared_cave_stalagmite_ice_style_04.iff")
@@ -3820,7 +3905,8 @@ object_static_structure_general_shared_cave_stalagmite_ice_style_05 = SharedStat
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3106309491
+	clientObjectCRC = 3106309491,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_cave_stalagmite_ice_style_05, "object/static/structure/general/shared_cave_stalagmite_ice_style_05.iff")
@@ -3864,7 +3950,8 @@ object_static_structure_general_shared_cave_stalagmite_ice_style_06 = SharedStat
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1647390180
+	clientObjectCRC = 1647390180,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_cave_stalagmite_ice_style_06, "object/static/structure/general/shared_cave_stalagmite_ice_style_06.iff")
@@ -3908,7 +3995,8 @@ object_static_structure_general_shared_cave_stalagmite_ice_style_07 = SharedStat
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 725371497
+	clientObjectCRC = 725371497,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_cave_stalagmite_ice_style_07, "object/static/structure/general/shared_cave_stalagmite_ice_style_07.iff")
@@ -3952,7 +4040,8 @@ object_static_structure_general_shared_cave_stalagmite_ice_style_08 = SharedStat
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2436261499
+	clientObjectCRC = 2436261499,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_cave_stalagmite_ice_style_08, "object/static/structure/general/shared_cave_stalagmite_ice_style_08.iff")
@@ -3996,7 +4085,8 @@ object_static_structure_general_shared_cave_stalagmite_ice_style_09 = SharedStat
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3627745782
+	clientObjectCRC = 3627745782,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_cave_stalagmite_ice_style_09, "object/static/structure/general/shared_cave_stalagmite_ice_style_09.iff")
@@ -4040,7 +4130,8 @@ object_static_structure_general_shared_cave_stalagmite_tato_s01_large = SharedSt
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 725835401
+	clientObjectCRC = 725835401,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_cave_stalagmite_tato_s01_large, "object/static/structure/general/shared_cave_stalagmite_tato_s01_large.iff")
@@ -4084,7 +4175,8 @@ object_static_structure_general_shared_cave_stalagmite_tato_s01_med = SharedStat
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3321725784
+	clientObjectCRC = 3321725784,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_cave_stalagmite_tato_s01_med, "object/static/structure/general/shared_cave_stalagmite_tato_s01_med.iff")
@@ -4128,7 +4220,8 @@ object_static_structure_general_shared_cave_stalagmite_tato_s01_small = SharedSt
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 525912736
+	clientObjectCRC = 525912736,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_cave_stalagmite_tato_s01_small, "object/static/structure/general/shared_cave_stalagmite_tato_s01_small.iff")
@@ -4172,7 +4265,8 @@ object_static_structure_general_shared_cave_stalagmite_tato_s02_large = SharedSt
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 628607756
+	clientObjectCRC = 628607756,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_cave_stalagmite_tato_s02_large, "object/static/structure/general/shared_cave_stalagmite_tato_s02_large.iff")
@@ -4216,7 +4310,8 @@ object_static_structure_general_shared_cave_stalagmite_tato_s02_med = SharedStat
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3611123781
+	clientObjectCRC = 3611123781,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_cave_stalagmite_tato_s02_med, "object/static/structure/general/shared_cave_stalagmite_tato_s02_med.iff")
@@ -4260,7 +4355,8 @@ object_static_structure_general_shared_cave_stalagmite_tato_s02_small = SharedSt
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 292314917
+	clientObjectCRC = 292314917,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_cave_stalagmite_tato_s02_small, "object/static/structure/general/shared_cave_stalagmite_tato_s02_small.iff")
@@ -4304,7 +4400,8 @@ object_static_structure_general_shared_cave_stalagmite_tato_s03_large = SharedSt
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3705359586
+	clientObjectCRC = 3705359586,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_cave_stalagmite_tato_s03_large, "object/static/structure/general/shared_cave_stalagmite_tato_s03_large.iff")
@@ -4348,7 +4445,8 @@ object_static_structure_general_shared_cave_stalagmite_tato_s03_med = SharedStat
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 624806435
+	clientObjectCRC = 624806435,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_cave_stalagmite_tato_s03_med, "object/static/structure/general/shared_cave_stalagmite_tato_s03_med.iff")
@@ -4392,7 +4490,8 @@ object_static_structure_general_shared_cave_stalagmite_tato_s03_small = SharedSt
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3904952523
+	clientObjectCRC = 3904952523,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_cave_stalagmite_tato_s03_small, "object/static/structure/general/shared_cave_stalagmite_tato_s03_small.iff")
@@ -4436,7 +4535,8 @@ object_static_structure_general_shared_cave_wall_damprock_style_01 = SharedStati
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1574245952
+	clientObjectCRC = 1574245952,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_cave_wall_damprock_style_01, "object/static/structure/general/shared_cave_wall_damprock_style_01.iff")
@@ -4480,7 +4580,8 @@ object_static_structure_general_shared_cave_wall_ice_style_01 = SharedStaticObje
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1438485055
+	clientObjectCRC = 1438485055,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_cave_wall_ice_style_01, "object/static/structure/general/shared_cave_wall_ice_style_01.iff")
@@ -4524,7 +4625,8 @@ object_static_structure_general_shared_cave_wall_tato_style_01 = SharedStaticObj
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2891269717
+	clientObjectCRC = 2891269717,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_cave_wall_tato_style_01, "object/static/structure/general/shared_cave_wall_tato_style_01.iff")
@@ -4568,7 +4670,8 @@ object_static_structure_general_shared_cloning_tube = SharedStaticObjectTemplate
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2931956368
+	clientObjectCRC = 2931956368,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_cloning_tube, "object/static/structure/general/shared_cloning_tube.iff")
@@ -4612,7 +4715,8 @@ object_static_structure_general_shared_corellia_garden_base_lrg_01 = SharedStati
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 427922071
+	clientObjectCRC = 427922071,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_corellia_garden_base_lrg_01, "object/static/structure/general/shared_corellia_garden_base_lrg_01.iff")
@@ -4656,7 +4760,8 @@ object_static_structure_general_shared_corellia_garden_base_med_01 = SharedStati
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3124174895
+	clientObjectCRC = 3124174895,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_corellia_garden_base_med_01, "object/static/structure/general/shared_corellia_garden_base_med_01.iff")
@@ -4700,7 +4805,8 @@ object_static_structure_general_shared_corellia_garden_base_sml_01 = SharedStati
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3596257155
+	clientObjectCRC = 3596257155,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_corellia_garden_base_sml_01, "object/static/structure/general/shared_corellia_garden_base_sml_01.iff")
@@ -4744,7 +4850,8 @@ object_static_structure_general_shared_data_terminal_free_s1 = SharedStaticObjec
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 44608000
+	clientObjectCRC = 44608000,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_data_terminal_free_s1, "object/static/structure/general/shared_data_terminal_free_s1.iff")
@@ -4788,7 +4895,8 @@ object_static_structure_general_shared_data_terminal_free_s2 = SharedStaticObjec
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3653173911
+	clientObjectCRC = 3653173911,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_data_terminal_free_s2, "object/static/structure/general/shared_data_terminal_free_s2.iff")
@@ -4832,7 +4940,8 @@ object_static_structure_general_shared_data_terminal_s1 = SharedStaticObjectTemp
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2122155955
+	clientObjectCRC = 2122155955,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_data_terminal_s1, "object/static/structure/general/shared_data_terminal_s1.iff")
@@ -4876,7 +4985,8 @@ object_static_structure_general_shared_data_terminal_s2 = SharedStaticObjectTemp
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2775199524
+	clientObjectCRC = 2775199524,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_data_terminal_s2, "object/static/structure/general/shared_data_terminal_s2.iff")
@@ -4920,7 +5030,8 @@ object_static_structure_general_shared_data_terminal_s3 = SharedStaticObjectTemp
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3966191785
+	clientObjectCRC = 3966191785,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_data_terminal_s3, "object/static/structure/general/shared_data_terminal_s3.iff")
@@ -4964,7 +5075,8 @@ object_static_structure_general_shared_data_terminal_s4 = SharedStaticObjectTemp
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 394552253
+	clientObjectCRC = 394552253,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_data_terminal_s4, "object/static/structure/general/shared_data_terminal_s4.iff")
@@ -5008,7 +5120,8 @@ object_static_structure_general_shared_data_terminal_wall_s1 = SharedStaticObjec
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 10375362
+	clientObjectCRC = 10375362,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_data_terminal_wall_s1, "object/static/structure/general/shared_data_terminal_wall_s1.iff")
@@ -5052,7 +5165,8 @@ object_static_structure_general_shared_data_terminal_wall_s2 = SharedStaticObjec
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3683252309
+	clientObjectCRC = 3683252309,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_data_terminal_wall_s2, "object/static/structure/general/shared_data_terminal_wall_s2.iff")
@@ -5096,7 +5210,8 @@ object_static_structure_general_shared_data_terminal_wall_s3 = SharedStaticObjec
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2458165208
+	clientObjectCRC = 2458165208,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_data_terminal_wall_s3, "object/static/structure/general/shared_data_terminal_wall_s3.iff")
@@ -5140,7 +5255,8 @@ object_static_structure_general_shared_debris_deathstar_conduit = SharedStaticOb
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2874353965
+	clientObjectCRC = 2874353965,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_debris_deathstar_conduit, "object/static/structure/general/shared_debris_deathstar_conduit.iff")
@@ -5184,7 +5300,8 @@ object_static_structure_general_shared_debris_deathstar_large_tube = SharedStati
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 935530456
+	clientObjectCRC = 935530456,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_debris_deathstar_large_tube, "object/static/structure/general/shared_debris_deathstar_large_tube.iff")
@@ -5228,7 +5345,8 @@ object_static_structure_general_shared_debris_deathstar_small_chunk = SharedStat
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1746560554
+	clientObjectCRC = 1746560554,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_debris_deathstar_small_chunk, "object/static/structure/general/shared_debris_deathstar_small_chunk.iff")
@@ -5272,7 +5390,8 @@ object_static_structure_general_shared_debris_deathstar_small_tube = SharedStati
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2001013115
+	clientObjectCRC = 2001013115,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_debris_deathstar_small_tube, "object/static/structure/general/shared_debris_deathstar_small_tube.iff")
@@ -5316,7 +5435,8 @@ object_static_structure_general_shared_debris_deathstar_storage = SharedStaticOb
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2692428938
+	clientObjectCRC = 2692428938,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_debris_deathstar_storage, "object/static/structure/general/shared_debris_deathstar_storage.iff")
@@ -5360,7 +5480,8 @@ object_static_structure_general_shared_debris_deathstar_tractorbeam = SharedStat
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2528075774
+	clientObjectCRC = 2528075774,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_debris_deathstar_tractorbeam, "object/static/structure/general/shared_debris_deathstar_tractorbeam.iff")
@@ -5404,7 +5525,8 @@ object_static_structure_general_shared_debris_deathstar_turbolaser = SharedStati
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1279869106
+	clientObjectCRC = 1279869106,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_debris_deathstar_turbolaser, "object/static/structure/general/shared_debris_deathstar_turbolaser.iff")
@@ -5448,7 +5570,8 @@ object_static_structure_general_shared_distant_ship_controller2 = SharedStaticOb
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3264546069
+	clientObjectCRC = 3264546069,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_distant_ship_controller2, "object/static/structure/general/shared_distant_ship_controller2.iff")
@@ -5492,7 +5615,8 @@ object_static_structure_general_shared_distant_ship_controller_general = SharedS
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3024357967
+	clientObjectCRC = 3024357967,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_distant_ship_controller_general, "object/static/structure/general/shared_distant_ship_controller_general.iff")
@@ -5536,7 +5660,8 @@ object_static_structure_general_shared_distant_ship_controller_imperial = Shared
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2828767827
+	clientObjectCRC = 2828767827,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_distant_ship_controller_imperial, "object/static/structure/general/shared_distant_ship_controller_imperial.iff")
@@ -5580,7 +5705,8 @@ object_static_structure_general_shared_distant_ship_controller_rebel = SharedSta
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1893331081
+	clientObjectCRC = 1893331081,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_distant_ship_controller_rebel, "object/static/structure/general/shared_distant_ship_controller_rebel.iff")
@@ -5624,7 +5750,8 @@ object_static_structure_general_shared_droid_21bmedical_powerdown = SharedStatic
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1757386432
+	clientObjectCRC = 1757386432,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_droid_21bmedical_powerdown, "object/static/structure/general/shared_droid_21bmedical_powerdown.iff")
@@ -5668,7 +5795,8 @@ object_static_structure_general_shared_droid_4lom_powerdown = SharedStaticObject
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3437279552
+	clientObjectCRC = 3437279552,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_droid_4lom_powerdown, "object/static/structure/general/shared_droid_4lom_powerdown.iff")
@@ -5712,7 +5840,8 @@ object_static_structure_general_shared_droid_droideka_powerdown = SharedStaticOb
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3847574879
+	clientObjectCRC = 3847574879,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_droid_droideka_powerdown, "object/static/structure/general/shared_droid_droideka_powerdown.iff")
@@ -5756,7 +5885,8 @@ object_static_structure_general_shared_droid_lemedical_powerdown = SharedStaticO
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2797855909
+	clientObjectCRC = 2797855909,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_droid_lemedical_powerdown, "object/static/structure/general/shared_droid_lemedical_powerdown.iff")
@@ -5800,7 +5930,8 @@ object_static_structure_general_shared_droid_probedroid_powerdown = SharedStatic
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3116660923
+	clientObjectCRC = 3116660923,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_droid_probedroid_powerdown, "object/static/structure/general/shared_droid_probedroid_powerdown.iff")
@@ -5844,7 +5975,8 @@ object_static_structure_general_shared_droid_r2_powerdown = SharedStaticObjectTe
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 602463452
+	clientObjectCRC = 602463452,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_droid_r2_powerdown, "object/static/structure/general/shared_droid_r2_powerdown.iff")
@@ -5888,7 +6020,8 @@ object_static_structure_general_shared_droid_r3_powerdown = SharedStaticObjectTe
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 4276567470
+	clientObjectCRC = 4276567470,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_droid_r3_powerdown, "object/static/structure/general/shared_droid_r3_powerdown.iff")
@@ -5932,7 +6065,8 @@ object_static_structure_general_shared_droid_r4_powerdown = SharedStaticObjectTe
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3830096030
+	clientObjectCRC = 3830096030,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_droid_r4_powerdown, "object/static/structure/general/shared_droid_r4_powerdown.iff")
@@ -5976,7 +6110,8 @@ object_static_structure_general_shared_droid_r5_powerdown = SharedStaticObjectTe
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 960840172
+	clientObjectCRC = 960840172,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_droid_r5_powerdown, "object/static/structure/general/shared_droid_r5_powerdown.iff")
@@ -6020,7 +6155,8 @@ object_static_structure_general_shared_droid_ra7_powerdown = SharedStaticObjectT
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1368160497
+	clientObjectCRC = 1368160497,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_droid_ra7_powerdown, "object/static/structure/general/shared_droid_ra7_powerdown.iff")
@@ -6064,7 +6200,8 @@ object_static_structure_general_shared_escape_pod = SharedStaticObjectTemplate:n
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1519373105
+	clientObjectCRC = 1519373105,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_escape_pod, "object/static/structure/general/shared_escape_pod.iff")
@@ -6108,7 +6245,8 @@ object_static_structure_general_shared_escape_pod_door = SharedStaticObjectTempl
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3468613806
+	clientObjectCRC = 3468613806,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_escape_pod_door, "object/static/structure/general/shared_escape_pod_door.iff")
@@ -6152,7 +6290,8 @@ object_static_structure_general_shared_flag_corellia_s01 = SharedStaticObjectTem
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1862118957
+	clientObjectCRC = 1862118957,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_flag_corellia_s01, "object/static/structure/general/shared_flag_corellia_s01.iff")
@@ -6196,7 +6335,8 @@ object_static_structure_general_shared_fountain_generic_style_1 = SharedStaticOb
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 4123706379
+	clientObjectCRC = 4123706379,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_fountain_generic_style_1, "object/static/structure/general/shared_fountain_generic_style_1.iff")
@@ -6240,7 +6380,8 @@ object_static_structure_general_shared_fs_village_bannerpole_s01 = SharedStaticO
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3451198859
+	clientObjectCRC = 3451198859,
+	derivedFromTemplates = {}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_fs_village_bannerpole_s01, "object/static/structure/general/shared_fs_village_bannerpole_s01.iff")
@@ -6284,7 +6425,8 @@ object_static_structure_general_shared_fs_village_drum = SharedStaticObjectTempl
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1915892056
+	clientObjectCRC = 1915892056,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_fs_village_drum, "object/static/structure/general/shared_fs_village_drum.iff")
@@ -6328,7 +6470,8 @@ object_static_structure_general_shared_fs_village_fire_pit_p1 = SharedStaticObje
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3392378715
+	clientObjectCRC = 3392378715,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_fs_village_fire_pit_p1, "object/static/structure/general/shared_fs_village_fire_pit_p1.iff")
@@ -6372,7 +6515,8 @@ object_static_structure_general_shared_fs_village_fire_pit_p1_test = SharedStati
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2795847292
+	clientObjectCRC = 2795847292,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_fs_village_fire_pit_p1_test, "object/static/structure/general/shared_fs_village_fire_pit_p1_test.iff")
@@ -6416,7 +6560,8 @@ object_static_structure_general_shared_fs_village_fire_pit_p2 = SharedStaticObje
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 287588300
+	clientObjectCRC = 287588300,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_fs_village_fire_pit_p2, "object/static/structure/general/shared_fs_village_fire_pit_p2.iff")
@@ -6460,7 +6605,8 @@ object_static_structure_general_shared_fs_village_nobuild_768m = SharedStaticObj
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3328842763
+	clientObjectCRC = 3328842763,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff", "object/static/structure/nobuild/base/shared_nobuild_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_fs_village_nobuild_768m, "object/static/structure/general/shared_fs_village_nobuild_768m.iff")
@@ -6504,7 +6650,8 @@ object_static_structure_general_shared_gravestone_generic_style_01 = SharedStati
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 377795232
+	clientObjectCRC = 377795232,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_gravestone_generic_style_01, "object/static/structure/general/shared_gravestone_generic_style_01.iff")
@@ -6548,7 +6695,8 @@ object_static_structure_general_shared_gravestone_generic_style_02 = SharedStati
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3448969783
+	clientObjectCRC = 3448969783,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_gravestone_generic_style_02, "object/static/structure/general/shared_gravestone_generic_style_02.iff")
@@ -6592,7 +6740,8 @@ object_static_structure_general_shared_gravestone_generic_style_03 = SharedStati
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2224979386
+	clientObjectCRC = 2224979386,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_gravestone_generic_style_03, "object/static/structure/general/shared_gravestone_generic_style_03.iff")
@@ -6636,7 +6785,8 @@ object_static_structure_general_shared_gravestone_generic_style_04 = SharedStati
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2138920622
+	clientObjectCRC = 2138920622,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_gravestone_generic_style_04, "object/static/structure/general/shared_gravestone_generic_style_04.iff")
@@ -6680,7 +6830,8 @@ object_static_structure_general_shared_gravestone_generic_style_05 = SharedStati
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 913322275
+	clientObjectCRC = 913322275,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_gravestone_generic_style_05, "object/static/structure/general/shared_gravestone_generic_style_05.iff")
@@ -6724,7 +6875,8 @@ object_static_structure_general_shared_ins_shield_generator = SharedStaticObject
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3067227948
+	clientObjectCRC = 3067227948,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_ins_shield_generator, "object/static/structure/general/shared_ins_shield_generator.iff")
@@ -6768,7 +6920,8 @@ object_static_structure_general_shared_ins_shield_generator_stage1 = SharedStati
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 844164119
+	clientObjectCRC = 844164119,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_ins_shield_generator_stage1, "object/static/structure/general/shared_ins_shield_generator_stage1.iff")
@@ -6812,7 +6965,8 @@ object_static_structure_general_shared_ins_shield_generator_stage2 = SharedStati
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3913761920
+	clientObjectCRC = 3913761920,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_ins_shield_generator_stage2, "object/static/structure/general/shared_ins_shield_generator_stage2.iff")
@@ -6856,7 +7010,8 @@ object_static_structure_general_shared_ins_shield_generator_stage3 = SharedStati
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2689213197
+	clientObjectCRC = 2689213197,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_ins_shield_generator_stage3, "object/static/structure/general/shared_ins_shield_generator_stage3.iff")
@@ -6900,7 +7055,8 @@ object_static_structure_general_shared_landing_pad_shuttle = SharedStaticObjectT
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1662232577
+	clientObjectCRC = 1662232577,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_landing_pad_shuttle, "object/static/structure/general/shared_landing_pad_shuttle.iff")
@@ -6944,7 +7100,8 @@ object_static_structure_general_shared_landing_pad_transport = SharedStaticObjec
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3960394138
+	clientObjectCRC = 3960394138,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_landing_pad_transport, "object/static/structure/general/shared_landing_pad_transport.iff")
@@ -6988,7 +7145,8 @@ object_static_structure_general_shared_lucky_despot_debris_aft_hull = SharedStat
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1071317165
+	clientObjectCRC = 1071317165,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_lucky_despot_debris_aft_hull, "object/static/structure/general/shared_lucky_despot_debris_aft_hull.iff")
@@ -7032,7 +7190,8 @@ object_static_structure_general_shared_lucky_despot_debris_forward_hull = Shared
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1826694051
+	clientObjectCRC = 1826694051,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_lucky_despot_debris_forward_hull, "object/static/structure/general/shared_lucky_despot_debris_forward_hull.iff")
@@ -7076,7 +7235,8 @@ object_static_structure_general_shared_lucky_despot_debris_lg_engine_s01 = Share
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2930187854
+	clientObjectCRC = 2930187854,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_lucky_despot_debris_lg_engine_s01, "object/static/structure/general/shared_lucky_despot_debris_lg_engine_s01.iff")
@@ -7120,7 +7280,8 @@ object_static_structure_general_shared_lucky_despot_debris_lg_engine_s02 = Share
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1974515417
+	clientObjectCRC = 1974515417,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_lucky_despot_debris_lg_engine_s02, "object/static/structure/general/shared_lucky_despot_debris_lg_engine_s02.iff")
@@ -7164,7 +7325,8 @@ object_static_structure_general_shared_lucky_despot_debris_md_engine = SharedSta
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 296119740
+	clientObjectCRC = 296119740,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_lucky_despot_debris_md_engine, "object/static/structure/general/shared_lucky_despot_debris_md_engine.iff")
@@ -7208,7 +7370,8 @@ object_static_structure_general_shared_lucky_despot_debris_nose_cone = SharedSta
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1971388264
+	clientObjectCRC = 1971388264,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_lucky_despot_debris_nose_cone, "object/static/structure/general/shared_lucky_despot_debris_nose_cone.iff")
@@ -7252,7 +7415,8 @@ object_static_structure_general_shared_lucky_despot_debris_sm_engine = SharedSta
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3188881805
+	clientObjectCRC = 3188881805,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_lucky_despot_debris_sm_engine, "object/static/structure/general/shared_lucky_despot_debris_sm_engine.iff")
@@ -7296,7 +7460,8 @@ object_static_structure_general_shared_naboo_garden_base_lrg_01 = SharedStaticOb
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2739982582
+	clientObjectCRC = 2739982582,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_naboo_garden_base_lrg_01, "object/static/structure/general/shared_naboo_garden_base_lrg_01.iff")
@@ -7340,7 +7505,8 @@ object_static_structure_general_shared_naboo_garden_base_med_01 = SharedStaticOb
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 15098446
+	clientObjectCRC = 15098446,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_naboo_garden_base_med_01, "object/static/structure/general/shared_naboo_garden_base_med_01.iff")
@@ -7384,7 +7550,8 @@ object_static_structure_general_shared_naboo_garden_base_sml_01 = SharedStaticOb
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1821099490
+	clientObjectCRC = 1821099490,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_naboo_garden_base_sml_01, "object/static/structure/general/shared_naboo_garden_base_sml_01.iff")
@@ -7428,7 +7595,8 @@ object_static_structure_general_shared_nboo_imprv_flower_urn_s01 = SharedStaticO
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1624671286
+	clientObjectCRC = 1624671286,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/item/shared_item_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_nboo_imprv_flower_urn_s01, "object/static/structure/general/shared_nboo_imprv_flower_urn_s01.iff")
@@ -7472,7 +7640,8 @@ object_static_structure_general_shared_palette_supply_01 = SharedStaticObjectTem
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 133902662
+	clientObjectCRC = 133902662,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_palette_supply_01, "object/static/structure/general/shared_palette_supply_01.iff")
@@ -7516,7 +7685,8 @@ object_static_structure_general_shared_palette_supply_02 = SharedStaticObjectTem
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3706493393
+	clientObjectCRC = 3706493393,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_palette_supply_02, "object/static/structure/general/shared_palette_supply_02.iff")
@@ -7560,7 +7730,8 @@ object_static_structure_general_shared_palette_supply_03 = SharedStaticObjectTem
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2514615900
+	clientObjectCRC = 2514615900,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_palette_supply_03, "object/static/structure/general/shared_palette_supply_03.iff")
@@ -7604,7 +7775,8 @@ object_static_structure_general_shared_palette_supply_04 = SharedStaticObjectTem
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1845679432
+	clientObjectCRC = 1845679432,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_palette_supply_04, "object/static/structure/general/shared_palette_supply_04.iff")
@@ -7648,7 +7820,8 @@ object_static_structure_general_shared_palette_supply_05 = SharedStaticObjectTem
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 655340229
+	clientObjectCRC = 655340229,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_palette_supply_05, "object/static/structure/general/shared_palette_supply_05.iff")
@@ -7692,7 +7865,8 @@ object_static_structure_general_shared_planter_generic_style_1 = SharedStaticObj
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1146536775
+	clientObjectCRC = 1146536775,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_planter_generic_style_1, "object/static/structure/general/shared_planter_generic_style_1.iff")
@@ -7736,7 +7910,8 @@ object_static_structure_general_shared_planter_generic_style_2 = SharedStaticObj
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2671864784
+	clientObjectCRC = 2671864784,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_planter_generic_style_2, "object/static/structure/general/shared_planter_generic_style_2.iff")
@@ -7780,7 +7955,8 @@ object_static_structure_general_shared_planter_generic_style_3 = SharedStaticObj
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3595308125
+	clientObjectCRC = 3595308125,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_planter_generic_style_3, "object/static/structure/general/shared_planter_generic_style_3.iff")
@@ -7824,7 +8000,8 @@ object_static_structure_general_shared_planter_generic_style_4 = SharedStaticObj
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 766453577
+	clientObjectCRC = 766453577,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_planter_generic_style_4, "object/static/structure/general/shared_planter_generic_style_4.iff")
@@ -7868,7 +8045,8 @@ object_static_structure_general_shared_poi_all_construction_metal_pile = SharedS
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2539469744
+	clientObjectCRC = 2539469744,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_poi_all_construction_metal_pile, "object/static/structure/general/shared_poi_all_construction_metal_pile.iff")
@@ -7912,7 +8090,8 @@ object_static_structure_general_shared_poi_all_construction_stone_pile = SharedS
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 4004698684
+	clientObjectCRC = 4004698684,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_poi_all_construction_stone_pile, "object/static/structure/general/shared_poi_all_construction_stone_pile.iff")
@@ -7956,7 +8135,8 @@ object_static_structure_general_shared_poi_all_corral_half_32x32_s01 = SharedSta
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 894674624
+	clientObjectCRC = 894674624,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_poi_all_corral_half_32x32_s01, "object/static/structure/general/shared_poi_all_corral_half_32x32_s01.iff")
@@ -8000,7 +8180,8 @@ object_static_structure_general_shared_poi_all_corral_half_32x32_s02 = SharedSta
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3997437527
+	clientObjectCRC = 3997437527,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_poi_all_corral_half_32x32_s02, "object/static/structure/general/shared_poi_all_corral_half_32x32_s02.iff")
@@ -8044,7 +8225,8 @@ object_static_structure_general_shared_poi_all_corral_half_32x32_s03 = SharedSta
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2806606298
+	clientObjectCRC = 2806606298,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_poi_all_corral_half_32x32_s03, "object/static/structure/general/shared_poi_all_corral_half_32x32_s03.iff")
@@ -8088,7 +8270,8 @@ object_static_structure_general_shared_poi_all_corral_half_32x32_s04 = SharedSta
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1554662094
+	clientObjectCRC = 1554662094,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_poi_all_corral_half_32x32_s04, "object/static/structure/general/shared_poi_all_corral_half_32x32_s04.iff")
@@ -8132,7 +8315,8 @@ object_static_structure_general_shared_poi_all_corral_half_32x32_s05 = SharedSta
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 363275587
+	clientObjectCRC = 363275587,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_poi_all_corral_half_32x32_s05, "object/static/structure/general/shared_poi_all_corral_half_32x32_s05.iff")
@@ -8176,7 +8360,8 @@ object_static_structure_general_shared_poi_all_corral_half_64x64_s01 = SharedSta
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3435272371
+	clientObjectCRC = 3435272371,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_poi_all_corral_half_64x64_s01, "object/static/structure/general/shared_poi_all_corral_half_64x64_s01.iff")
@@ -8220,7 +8405,8 @@ object_static_structure_general_shared_poi_all_corral_half_64x64_s02 = SharedSta
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 399880228
+	clientObjectCRC = 399880228,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_poi_all_corral_half_64x64_s02, "object/static/structure/general/shared_poi_all_corral_half_64x64_s02.iff")
@@ -8264,7 +8450,8 @@ object_static_structure_general_shared_poi_all_corral_half_64x64_s03 = SharedSta
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1591269289
+	clientObjectCRC = 1591269289,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_poi_all_corral_half_64x64_s03, "object/static/structure/general/shared_poi_all_corral_half_64x64_s03.iff")
@@ -8308,7 +8495,8 @@ object_static_structure_general_shared_poi_all_corral_half_64x64_s04 = SharedSta
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2772171965
+	clientObjectCRC = 2772171965,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_poi_all_corral_half_64x64_s04, "object/static/structure/general/shared_poi_all_corral_half_64x64_s04.iff")
@@ -8352,7 +8540,8 @@ object_static_structure_general_shared_poi_all_corral_pen_16x8_s01 = SharedStati
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 4207782372
+	clientObjectCRC = 4207782372,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_poi_all_corral_pen_16x8_s01, "object/static/structure/general/shared_poi_all_corral_pen_16x8_s01.iff")
@@ -8396,7 +8585,8 @@ object_static_structure_general_shared_poi_all_corral_pen_8x16_s01 = SharedStati
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 243441435
+	clientObjectCRC = 243441435,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_poi_all_corral_pen_8x16_s01, "object/static/structure/general/shared_poi_all_corral_pen_8x16_s01.iff")
@@ -8440,7 +8630,8 @@ object_static_structure_general_shared_poi_all_farm_32x32_s01 = SharedStaticObje
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 521808954
+	clientObjectCRC = 521808954,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_poi_all_farm_32x32_s01, "object/static/structure/general/shared_poi_all_farm_32x32_s01.iff")
@@ -8484,7 +8675,8 @@ object_static_structure_general_shared_poi_all_farm_32x32_s02 = SharedStaticObje
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3289220269
+	clientObjectCRC = 3289220269,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_poi_all_farm_32x32_s02, "object/static/structure/general/shared_poi_all_farm_32x32_s02.iff")
@@ -8528,7 +8720,8 @@ object_static_structure_general_shared_poi_all_impl_corral_32x32_s01 = SharedSta
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3403191254
+	clientObjectCRC = 3403191254,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_poi_all_impl_corral_32x32_s01, "object/static/structure/general/shared_poi_all_impl_corral_32x32_s01.iff")
@@ -8572,7 +8765,8 @@ object_static_structure_general_shared_poi_all_impl_corral_64x64_s01 = SharedSta
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 860433829
+	clientObjectCRC = 860433829,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_poi_all_impl_corral_64x64_s01, "object/static/structure/general/shared_poi_all_impl_corral_64x64_s01.iff")
@@ -8616,7 +8810,8 @@ object_static_structure_general_shared_poi_all_impl_corral_64x64_s02 = SharedSta
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3898508594
+	clientObjectCRC = 3898508594,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_poi_all_impl_corral_64x64_s02, "object/static/structure/general/shared_poi_all_impl_corral_64x64_s02.iff")
@@ -8660,7 +8855,8 @@ object_static_structure_general_shared_poi_all_monolith_s01 = SharedStaticObject
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 4290955633
+	clientObjectCRC = 4290955633,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_poi_all_monolith_s01, "object/static/structure/general/shared_poi_all_monolith_s01.iff")
@@ -8704,7 +8900,8 @@ object_static_structure_general_shared_poi_all_obelisk_s01 = SharedStaticObjectT
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 4045966315
+	clientObjectCRC = 4045966315,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_poi_all_obelisk_s01, "object/static/structure/general/shared_poi_all_obelisk_s01.iff")
@@ -8748,7 +8945,8 @@ object_static_structure_general_shared_poi_all_rebl_corral_32x32_s01 = SharedSta
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3607385038
+	clientObjectCRC = 3607385038,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_poi_all_rebl_corral_32x32_s01, "object/static/structure/general/shared_poi_all_rebl_corral_32x32_s01.iff")
@@ -8792,7 +8990,8 @@ object_static_structure_general_shared_poi_all_rebl_corral_64x64_s01 = SharedSta
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 781577661
+	clientObjectCRC = 781577661,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_poi_all_rebl_corral_64x64_s01, "object/static/structure/general/shared_poi_all_rebl_corral_64x64_s01.iff")
@@ -8836,7 +9035,8 @@ object_static_structure_general_shared_poi_all_rebl_corral_64x64_s02 = SharedSta
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 4118955306
+	clientObjectCRC = 4118955306,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_poi_all_rebl_corral_64x64_s02, "object/static/structure/general/shared_poi_all_rebl_corral_64x64_s02.iff")
@@ -8880,7 +9080,8 @@ object_static_structure_general_shared_poi_corl_corral_half_32x32_s01 = SharedSt
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2823161923
+	clientObjectCRC = 2823161923,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_poi_corl_corral_half_32x32_s01, "object/static/structure/general/shared_poi_corl_corral_half_32x32_s01.iff")
@@ -8924,7 +9125,8 @@ object_static_structure_general_shared_poi_corl_corral_half_32x32_s02 = SharedSt
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1934729428
+	clientObjectCRC = 1934729428,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_poi_corl_corral_half_32x32_s02, "object/static/structure/general/shared_poi_corl_corral_half_32x32_s02.iff")
@@ -8968,7 +9170,8 @@ object_static_structure_general_shared_poi_corl_corral_half_32x32_s03 = SharedSt
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 979158873
+	clientObjectCRC = 979158873,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_poi_corl_corral_half_32x32_s03, "object/static/structure/general/shared_poi_corl_corral_half_32x32_s03.iff")
@@ -9012,7 +9215,8 @@ object_static_structure_general_shared_poi_corl_corral_half_32x32_s04 = SharedSt
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3250580557
+	clientObjectCRC = 3250580557,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_poi_corl_corral_half_32x32_s04, "object/static/structure/general/shared_poi_corl_corral_half_32x32_s04.iff")
@@ -9056,7 +9260,8 @@ object_static_structure_general_shared_poi_corl_corral_half_64x64_s01 = SharedSt
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1373091376
+	clientObjectCRC = 1373091376,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_poi_corl_corral_half_64x64_s01, "object/static/structure/general/shared_poi_corl_corral_half_64x64_s01.iff")
@@ -9100,7 +9305,8 @@ object_static_structure_general_shared_poi_corl_corral_half_64x64_s02 = SharedSt
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2327846567
+	clientObjectCRC = 2327846567,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_poi_corl_corral_half_64x64_s02, "object/static/structure/general/shared_poi_corl_corral_half_64x64_s02.iff")
@@ -9144,7 +9350,8 @@ object_static_structure_general_shared_poi_corl_corral_half_64x64_s03 = SharedSt
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3285023018
+	clientObjectCRC = 3285023018,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_poi_corl_corral_half_64x64_s03, "object/static/structure/general/shared_poi_corl_corral_half_64x64_s03.iff")
@@ -9188,7 +9395,8 @@ object_static_structure_general_shared_poi_corl_corral_half_64x64_s04 = SharedSt
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 942559806
+	clientObjectCRC = 942559806,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_poi_corl_corral_half_64x64_s04, "object/static/structure/general/shared_poi_corl_corral_half_64x64_s04.iff")
@@ -9232,7 +9440,8 @@ object_static_structure_general_shared_poi_ev9d9head = SharedStaticObjectTemplat
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3005460078
+	clientObjectCRC = 3005460078,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_poi_ev9d9head, "object/static/structure/general/shared_poi_ev9d9head.iff")
@@ -9276,7 +9485,8 @@ object_static_structure_general_shared_poi_nboo_corral_32x32_s01 = SharedStaticO
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 765433917
+	clientObjectCRC = 765433917,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_poi_nboo_corral_32x32_s01, "object/static/structure/general/shared_poi_nboo_corral_32x32_s01.iff")
@@ -9320,7 +9530,8 @@ object_static_structure_general_shared_poi_nboo_corral_32x32_s02 = SharedStaticO
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 4136120490
+	clientObjectCRC = 4136120490,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_poi_nboo_corral_32x32_s02, "object/static/structure/general/shared_poi_nboo_corral_32x32_s02.iff")
@@ -9364,7 +9575,8 @@ object_static_structure_general_shared_poi_nboo_corral_32x32_s03 = SharedStaticO
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3213186855
+	clientObjectCRC = 3213186855,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_poi_nboo_corral_32x32_s03, "object/static/structure/general/shared_poi_nboo_corral_32x32_s03.iff")
@@ -9408,7 +9620,8 @@ object_static_structure_general_shared_poi_nboo_corral_64x64_s01 = SharedStaticO
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3557697102
+	clientObjectCRC = 3557697102,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_poi_nboo_corral_64x64_s01, "object/static/structure/general/shared_poi_nboo_corral_64x64_s01.iff")
@@ -9452,7 +9665,8 @@ object_static_structure_general_shared_poi_nboo_corral_64x64_s02 = SharedStaticO
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 253333209
+	clientObjectCRC = 253333209,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_poi_nboo_corral_64x64_s02, "object/static/structure/general/shared_poi_nboo_corral_64x64_s02.iff")
@@ -9496,7 +9710,8 @@ object_static_structure_general_shared_poi_nboo_corral_half_32x32_s01 = SharedSt
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3767767960
+	clientObjectCRC = 3767767960,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_poi_nboo_corral_half_32x32_s01, "object/static/structure/general/shared_poi_nboo_corral_half_32x32_s01.iff")
@@ -9540,7 +9755,8 @@ object_static_structure_general_shared_poi_nboo_corral_half_32x32_s02 = SharedSt
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 998521615
+	clientObjectCRC = 998521615,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_poi_nboo_corral_half_32x32_s02, "object/static/structure/general/shared_poi_nboo_corral_half_32x32_s02.iff")
@@ -9584,7 +9800,8 @@ object_static_structure_general_shared_poi_nboo_corral_half_32x32_s03 = SharedSt
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1921604738
+	clientObjectCRC = 1921604738,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_poi_nboo_corral_half_32x32_s03, "object/static/structure/general/shared_poi_nboo_corral_half_32x32_s03.iff")
@@ -9628,7 +9845,8 @@ object_static_structure_general_shared_poi_nboo_corral_half_32x32_s04 = SharedSt
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2305456022
+	clientObjectCRC = 2305456022,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_poi_nboo_corral_half_32x32_s04, "object/static/structure/general/shared_poi_nboo_corral_half_32x32_s04.iff")
@@ -9672,7 +9890,8 @@ object_static_structure_general_shared_poi_nboo_corral_half_64x64_s01 = SharedSt
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 419573227
+	clientObjectCRC = 419573227,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_poi_nboo_corral_half_64x64_s01, "object/static/structure/general/shared_poi_nboo_corral_half_64x64_s01.iff")
@@ -9716,7 +9935,8 @@ object_static_structure_general_shared_poi_nboo_corral_half_64x64_s02 = SharedSt
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3256190332
+	clientObjectCRC = 3256190332,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_poi_nboo_corral_half_64x64_s02, "object/static/structure/general/shared_poi_nboo_corral_half_64x64_s02.iff")
@@ -9760,7 +9980,8 @@ object_static_structure_general_shared_poi_nboo_corral_half_64x64_s03 = SharedSt
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2333663985
+	clientObjectCRC = 2333663985,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_poi_nboo_corral_half_64x64_s03, "object/static/structure/general/shared_poi_nboo_corral_half_64x64_s03.iff")
@@ -9804,7 +10025,8 @@ object_static_structure_general_shared_poi_nboo_corral_half_64x64_s04 = SharedSt
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1895549413
+	clientObjectCRC = 1895549413,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_poi_nboo_corral_half_64x64_s04, "object/static/structure/general/shared_poi_nboo_corral_half_64x64_s04.iff")
@@ -9848,7 +10070,8 @@ object_static_structure_general_shared_poi_powerdroid_powerdown = SharedStaticOb
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3737229246
+	clientObjectCRC = 3737229246,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_poi_powerdroid_powerdown, "object/static/structure/general/shared_poi_powerdroid_powerdown.iff")
@@ -9892,7 +10115,8 @@ object_static_structure_general_shared_poi_powerdroidbody = SharedStaticObjectTe
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3451909497
+	clientObjectCRC = 3451909497,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_poi_powerdroidbody, "object/static/structure/general/shared_poi_powerdroidbody.iff")
@@ -9936,7 +10160,8 @@ object_static_structure_general_shared_poi_powerdroidleg = SharedStaticObjectTem
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 4129855315
+	clientObjectCRC = 4129855315,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_poi_powerdroidleg, "object/static/structure/general/shared_poi_powerdroidleg.iff")
@@ -9980,7 +10205,8 @@ object_static_structure_general_shared_poi_protocolarm = SharedStaticObjectTempl
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2341025511
+	clientObjectCRC = 2341025511,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_poi_protocolarm, "object/static/structure/general/shared_poi_protocolarm.iff")
@@ -10024,7 +10250,8 @@ object_static_structure_general_shared_poi_protocolleg = SharedStaticObjectTempl
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2853288096
+	clientObjectCRC = 2853288096,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_poi_protocolleg, "object/static/structure/general/shared_poi_protocolleg.iff")
@@ -10068,7 +10295,8 @@ object_static_structure_general_shared_poi_tato_corral_half_32x32_s01 = SharedSt
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 863309006
+	clientObjectCRC = 863309006,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_poi_tato_corral_half_32x32_s01, "object/static/structure/general/shared_poi_tato_corral_half_32x32_s01.iff")
@@ -10112,7 +10340,8 @@ object_static_structure_general_shared_poi_tato_corral_half_32x32_s02 = SharedSt
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3898778713
+	clientObjectCRC = 3898778713,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_poi_tato_corral_half_32x32_s02, "object/static/structure/general/shared_poi_tato_corral_half_32x32_s02.iff")
@@ -10156,7 +10385,8 @@ object_static_structure_general_shared_poi_tato_corral_half_32x32_s03 = SharedSt
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2708456404
+	clientObjectCRC = 2708456404,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_poi_tato_corral_half_32x32_s03, "object/static/structure/general/shared_poi_tato_corral_half_32x32_s03.iff")
@@ -10200,7 +10430,8 @@ object_static_structure_general_shared_poi_tato_corral_half_32x32_s04 = SharedSt
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1519184064
+	clientObjectCRC = 1519184064,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_poi_tato_corral_half_32x32_s04, "object/static/structure/general/shared_poi_tato_corral_half_32x32_s04.iff")
@@ -10244,7 +10475,8 @@ object_static_structure_general_shared_poi_tato_corral_half_64x64_s01 = SharedSt
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3403985597
+	clientObjectCRC = 3403985597,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_poi_tato_corral_half_64x64_s01, "object/static/structure/general/shared_poi_tato_corral_half_64x64_s01.iff")
@@ -10288,7 +10520,8 @@ object_static_structure_general_shared_poi_tato_corral_half_64x64_s02 = SharedSt
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 301144618
+	clientObjectCRC = 301144618,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_poi_tato_corral_half_64x64_s02, "object/static/structure/general/shared_poi_tato_corral_half_64x64_s02.iff")
@@ -10332,7 +10565,8 @@ object_static_structure_general_shared_poi_tato_corral_half_64x64_s03 = SharedSt
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1493073319
+	clientObjectCRC = 1493073319,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_poi_tato_corral_half_64x64_s03, "object/static/structure/general/shared_poi_tato_corral_half_64x64_s03.iff")
@@ -10376,7 +10610,8 @@ object_static_structure_general_shared_poi_tato_corral_half_64x64_s04 = SharedSt
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2736608947
+	clientObjectCRC = 2736608947,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_poi_tato_corral_half_64x64_s04, "object/static/structure/general/shared_poi_tato_corral_half_64x64_s04.iff")
@@ -10420,7 +10655,8 @@ object_static_structure_general_shared_poi_tato_corral_pen_16x8_s01 = SharedStat
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2681617984
+	clientObjectCRC = 2681617984,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_poi_tato_corral_pen_16x8_s01, "object/static/structure/general/shared_poi_tato_corral_pen_16x8_s01.iff")
@@ -10464,7 +10700,8 @@ object_static_structure_general_shared_poi_tato_farm_32x32_s01 = SharedStaticObj
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2475027384
+	clientObjectCRC = 2475027384,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_poi_tato_farm_32x32_s01, "object/static/structure/general/shared_poi_tato_farm_32x32_s01.iff")
@@ -10508,7 +10745,8 @@ object_static_structure_general_shared_poi_tato_farm_32x32_s02 = SharedStaticObj
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1217545007
+	clientObjectCRC = 1217545007,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_poi_tato_farm_32x32_s02, "object/static/structure/general/shared_poi_tato_farm_32x32_s02.iff")
@@ -10552,7 +10790,8 @@ object_static_structure_general_shared_poi_tato_farm_64x64_s01 = SharedStaticObj
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1779717579
+	clientObjectCRC = 1779717579,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_poi_tato_farm_64x64_s01, "object/static/structure/general/shared_poi_tato_farm_64x64_s01.iff")
@@ -10596,7 +10835,8 @@ object_static_structure_general_shared_poi_tato_farm_64x64_s02 = SharedStaticObj
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2969828700
+	clientObjectCRC = 2969828700,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_poi_tato_farm_64x64_s02, "object/static/structure/general/shared_poi_tato_farm_64x64_s02.iff")
@@ -10640,7 +10880,8 @@ object_static_structure_general_shared_poi_tato_tent_s01 = SharedStaticObjectTem
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 373696824
+	clientObjectCRC = 373696824,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_poi_tato_tent_s01, "object/static/structure/general/shared_poi_tato_tent_s01.iff")
@@ -10684,7 +10925,8 @@ object_static_structure_general_shared_poi_temple_ancient_ruined = SharedStaticO
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 557561835
+	clientObjectCRC = 557561835,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_poi_temple_ancient_ruined, "object/static/structure/general/shared_poi_temple_ancient_ruined.iff")
@@ -10728,7 +10970,8 @@ object_static_structure_general_shared_prp_engine = SharedStaticObjectTemplate:n
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1325486496
+	clientObjectCRC = 1325486496,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_prp_engine, "object/static/structure/general/shared_prp_engine.iff")
@@ -10772,7 +11015,8 @@ object_static_structure_general_shared_prp_engine_component = SharedStaticObject
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 11049213
+	clientObjectCRC = 11049213,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_prp_engine_component, "object/static/structure/general/shared_prp_engine_component.iff")
@@ -10816,7 +11060,8 @@ object_static_structure_general_shared_prp_junk_s1 = SharedStaticObjectTemplate:
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 946860440
+	clientObjectCRC = 946860440,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_prp_junk_s1, "object/static/structure/general/shared_prp_junk_s1.iff")
@@ -10860,7 +11105,8 @@ object_static_structure_general_shared_prp_junk_s2 = SharedStaticObjectTemplate:
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3816315151
+	clientObjectCRC = 3816315151,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_prp_junk_s2, "object/static/structure/general/shared_prp_junk_s2.iff")
@@ -10904,7 +11150,8 @@ object_static_structure_general_shared_prp_junk_s3 = SharedStaticObjectTemplate:
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2859810434
+	clientObjectCRC = 2859810434,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_prp_junk_s3, "object/static/structure/general/shared_prp_junk_s3.iff")
@@ -10948,7 +11195,8 @@ object_static_structure_general_shared_prp_junk_s4 = SharedStaticObjectTemplate:
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1368790422
+	clientObjectCRC = 1368790422,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_prp_junk_s4, "object/static/structure/general/shared_prp_junk_s4.iff")
@@ -10992,7 +11240,8 @@ object_static_structure_general_shared_prp_junk_s5 = SharedStaticObjectTemplate:
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 412840475
+	clientObjectCRC = 412840475,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_prp_junk_s5, "object/static/structure/general/shared_prp_junk_s5.iff")
@@ -11036,7 +11285,8 @@ object_static_structure_general_shared_prp_junk_s6 = SharedStaticObjectTemplate:
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3280788108
+	clientObjectCRC = 3280788108,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_prp_junk_s6, "object/static/structure/general/shared_prp_junk_s6.iff")
@@ -11080,7 +11330,8 @@ object_static_structure_general_shared_prp_junk_s7 = SharedStaticObjectTemplate:
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2323758337
+	clientObjectCRC = 2323758337,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_prp_junk_s7, "object/static/structure/general/shared_prp_junk_s7.iff")
@@ -11124,7 +11375,8 @@ object_static_structure_general_shared_prp_junk_s8 = SharedStaticObjectTemplate:
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 814453011
+	clientObjectCRC = 814453011,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_prp_junk_s8, "object/static/structure/general/shared_prp_junk_s8.iff")
@@ -11168,7 +11420,8 @@ object_static_structure_general_shared_r2_head = SharedStaticObjectTemplate:new 
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 932706472
+	clientObjectCRC = 932706472,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_r2_head, "object/static/structure/general/shared_r2_head.iff")
@@ -11212,7 +11465,8 @@ object_static_structure_general_shared_r2_leg = SharedStaticObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1771962306
+	clientObjectCRC = 1771962306,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_r2_leg, "object/static/structure/general/shared_r2_leg.iff")
@@ -11256,7 +11510,8 @@ object_static_structure_general_shared_r2_torso = SharedStaticObjectTemplate:new
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 593109784
+	clientObjectCRC = 593109784,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_r2_torso, "object/static/structure/general/shared_r2_torso.iff")
@@ -11300,7 +11555,8 @@ object_static_structure_general_shared_r3_head = SharedStaticObjectTemplate:new 
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3070712015
+	clientObjectCRC = 3070712015,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_r3_head, "object/static/structure/general/shared_r3_head.iff")
@@ -11344,7 +11600,8 @@ object_static_structure_general_shared_r3_leg = SharedStaticObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2610779556
+	clientObjectCRC = 2610779556,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_r3_leg, "object/static/structure/general/shared_r3_leg.iff")
@@ -11388,7 +11645,8 @@ object_static_structure_general_shared_r3_torso = SharedStaticObjectTemplate:new
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3673597174
+	clientObjectCRC = 3673597174,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_r3_torso, "object/static/structure/general/shared_r3_torso.iff")
@@ -11432,7 +11690,8 @@ object_static_structure_general_shared_r4_head = SharedStaticObjectTemplate:new 
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 968302371
+	clientObjectCRC = 968302371,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_r4_head, "object/static/structure/general/shared_r4_head.iff")
@@ -11476,7 +11735,8 @@ object_static_structure_general_shared_r4_leg = SharedStaticObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1276918264
+	clientObjectCRC = 1276918264,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_r4_leg, "object/static/structure/general/shared_r4_leg.iff")
@@ -11520,7 +11780,8 @@ object_static_structure_general_shared_r4_torso = SharedStaticObjectTemplate:new
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1060309010
+	clientObjectCRC = 1060309010,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_r4_torso, "object/static/structure/general/shared_r4_torso.iff")
@@ -11564,7 +11825,8 @@ object_static_structure_general_shared_r5_head = SharedStaticObjectTemplate:new 
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3106389828
+	clientObjectCRC = 3106389828,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_r5_head, "object/static/structure/general/shared_r5_head.iff")
@@ -11608,7 +11870,8 @@ object_static_structure_general_shared_r5_leg = SharedStaticObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3189543838
+	clientObjectCRC = 3189543838,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_r5_leg, "object/static/structure/general/shared_r5_leg.iff")
@@ -11652,7 +11915,8 @@ object_static_structure_general_shared_r5_torso = SharedStaticObjectTemplate:new
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3332345852
+	clientObjectCRC = 3332345852,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_r5_torso, "object/static/structure/general/shared_r5_torso.iff")
@@ -11696,7 +11960,8 @@ object_static_structure_general_shared_repairdroidhead = SharedStaticObjectTempl
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 745217663
+	clientObjectCRC = 745217663,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_repairdroidhead, "object/static/structure/general/shared_repairdroidhead.iff")
@@ -11740,7 +12005,8 @@ object_static_structure_general_shared_repairdroidtorso = SharedStaticObjectTemp
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3102139401
+	clientObjectCRC = 3102139401,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_repairdroidtorso, "object/static/structure/general/shared_repairdroidtorso.iff")
@@ -11784,7 +12050,8 @@ object_static_structure_general_shared_rock_beach_dark_lg = SharedStaticObjectTe
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 71717386
+	clientObjectCRC = 71717386,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_rock_beach_dark_lg, "object/static/structure/general/shared_rock_beach_dark_lg.iff")
@@ -11828,7 +12095,8 @@ object_static_structure_general_shared_rock_beach_dark_md = SharedStaticObjectTe
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3296327653
+	clientObjectCRC = 3296327653,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_rock_beach_dark_md, "object/static/structure/general/shared_rock_beach_dark_md.iff")
@@ -11872,7 +12140,8 @@ object_static_structure_general_shared_rock_forestriverrock_lg = SharedStaticObj
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 4036063186
+	clientObjectCRC = 4036063186,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_rock_forestriverrock_lg, "object/static/structure/general/shared_rock_forestriverrock_lg.iff")
@@ -11916,7 +12185,8 @@ object_static_structure_general_shared_rock_mossy_big = SharedStaticObjectTempla
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2218867418
+	clientObjectCRC = 2218867418,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_rock_mossy_big, "object/static/structure/general/shared_rock_mossy_big.iff")
@@ -11960,7 +12230,8 @@ object_static_structure_general_shared_rock_mossy_big_a1 = SharedStaticObjectTem
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 464560897
+	clientObjectCRC = 464560897,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_rock_mossy_big_a1, "object/static/structure/general/shared_rock_mossy_big_a1.iff")
@@ -12004,7 +12275,8 @@ object_static_structure_general_shared_sandcrawler_debris_01 = SharedStaticObjec
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 86891093
+	clientObjectCRC = 86891093,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_sandcrawler_debris_01, "object/static/structure/general/shared_sandcrawler_debris_01.iff")
@@ -12048,7 +12320,8 @@ object_static_structure_general_shared_sandcrawler_debris_02 = SharedStaticObjec
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3728372418
+	clientObjectCRC = 3728372418,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_sandcrawler_debris_02, "object/static/structure/general/shared_sandcrawler_debris_02.iff")
@@ -12092,7 +12365,8 @@ object_static_structure_general_shared_sandcrawler_destroyed = SharedStaticObjec
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1430782285
+	clientObjectCRC = 1430782285,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_sandcrawler_destroyed, "object/static/structure/general/shared_sandcrawler_destroyed.iff")
@@ -12136,7 +12410,8 @@ object_static_structure_general_shared_skeleton_ancient_s01 = SharedStaticObject
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1576141271
+	clientObjectCRC = 1576141271,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_skeleton_ancient_s01, "object/static/structure/general/shared_skeleton_ancient_s01.iff")
@@ -12180,7 +12455,8 @@ object_static_structure_general_shared_skeleton_ancient_s01_with_floor = SharedS
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 435082443
+	clientObjectCRC = 435082443,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_skeleton_ancient_s01_with_floor, "object/static/structure/general/shared_skeleton_ancient_s01_with_floor.iff")
@@ -12224,7 +12500,8 @@ object_static_structure_general_shared_skeleton_bith_head = SharedStaticObjectTe
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2348339894
+	clientObjectCRC = 2348339894,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_skeleton_bith_head, "object/static/structure/general/shared_skeleton_bith_head.iff")
@@ -12268,7 +12545,8 @@ object_static_structure_general_shared_skeleton_bith_headandbody = SharedStaticO
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1830314734
+	clientObjectCRC = 1830314734,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_skeleton_bith_headandbody, "object/static/structure/general/shared_skeleton_bith_headandbody.iff")
@@ -12312,7 +12590,8 @@ object_static_structure_general_shared_skeleton_human_body = SharedStaticObjectT
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3483128149
+	clientObjectCRC = 3483128149,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_skeleton_human_body, "object/static/structure/general/shared_skeleton_human_body.iff")
@@ -12356,7 +12635,8 @@ object_static_structure_general_shared_skeleton_human_head = SharedStaticObjectT
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2643348391
+	clientObjectCRC = 2643348391,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_skeleton_human_head, "object/static/structure/general/shared_skeleton_human_head.iff")
@@ -12400,7 +12680,8 @@ object_static_structure_general_shared_skeleton_human_headandbody = SharedStatic
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3589626000
+	clientObjectCRC = 3589626000,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_skeleton_human_headandbody, "object/static/structure/general/shared_skeleton_human_headandbody.iff")
@@ -12444,7 +12725,8 @@ object_static_structure_general_shared_skeleton_ithorian_head = SharedStaticObje
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2846173676
+	clientObjectCRC = 2846173676,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_skeleton_ithorian_head, "object/static/structure/general/shared_skeleton_ithorian_head.iff")
@@ -12488,7 +12770,8 @@ object_static_structure_general_shared_skeleton_ithorian_headandbody = SharedSta
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2172543691
+	clientObjectCRC = 2172543691,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_skeleton_ithorian_headandbody, "object/static/structure/general/shared_skeleton_ithorian_headandbody.iff")
@@ -12532,7 +12815,8 @@ object_static_structure_general_shared_space_station = SharedStaticObjectTemplat
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 366574640
+	clientObjectCRC = 366574640,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_space_station, "object/static/structure/general/shared_space_station.iff")
@@ -12576,7 +12860,8 @@ object_static_structure_general_shared_streetlamp_large_blue_style_01 = SharedSt
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 943189465
+	clientObjectCRC = 943189465,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_streetlamp_large_blue_style_01, "object/static/structure/general/shared_streetlamp_large_blue_style_01.iff")
@@ -12620,7 +12905,8 @@ object_static_structure_general_shared_streetlamp_large_blue_style_01_on = Share
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 4240600726
+	clientObjectCRC = 4240600726,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_streetlamp_large_blue_style_01_on, "object/static/structure/general/shared_streetlamp_large_blue_style_01_on.iff")
@@ -12664,7 +12950,8 @@ object_static_structure_general_shared_streetlamp_large_blue_style_02 = SharedSt
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3810542926
+	clientObjectCRC = 3810542926,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_streetlamp_large_blue_style_02, "object/static/structure/general/shared_streetlamp_large_blue_style_02.iff")
@@ -12708,7 +12995,8 @@ object_static_structure_general_shared_streetlamp_large_blue_style_02_on = Share
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 270535624
+	clientObjectCRC = 270535624,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_streetlamp_large_blue_style_02_on, "object/static/structure/general/shared_streetlamp_large_blue_style_02_on.iff")
@@ -12752,7 +13040,8 @@ object_static_structure_general_shared_streetlamp_large_green_style_01 = SharedS
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3624406979
+	clientObjectCRC = 3624406979,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_streetlamp_large_green_style_01, "object/static/structure/general/shared_streetlamp_large_green_style_01.iff")
@@ -12796,7 +13085,8 @@ object_static_structure_general_shared_streetlamp_large_green_style_01_on = Shar
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 116658492
+	clientObjectCRC = 116658492,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_streetlamp_large_green_style_01_on, "object/static/structure/general/shared_streetlamp_large_green_style_01_on.iff")
@@ -12840,7 +13130,8 @@ object_static_structure_general_shared_streetlamp_large_green_style_02 = SharedS
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 52406100
+	clientObjectCRC = 52406100,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_streetlamp_large_green_style_02, "object/static/structure/general/shared_streetlamp_large_green_style_02.iff")
@@ -12884,7 +13175,8 @@ object_static_structure_general_shared_streetlamp_large_green_style_02_on = Shar
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3927340130
+	clientObjectCRC = 3927340130,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_streetlamp_large_green_style_02_on, "object/static/structure/general/shared_streetlamp_large_green_style_02_on.iff")
@@ -12928,7 +13220,8 @@ object_static_structure_general_shared_streetlamp_large_red_style_01 = SharedSta
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3608090564
+	clientObjectCRC = 3608090564,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_streetlamp_large_red_style_01, "object/static/structure/general/shared_streetlamp_large_red_style_01.iff")
@@ -12972,7 +13265,8 @@ object_static_structure_general_shared_streetlamp_large_red_style_01_on = Shared
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1475115555
+	clientObjectCRC = 1475115555,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_streetlamp_large_red_style_01_on, "object/static/structure/general/shared_streetlamp_large_red_style_01_on.iff")
@@ -13016,7 +13310,8 @@ object_static_structure_general_shared_streetlamp_large_red_style_02 = SharedSta
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 202948435
+	clientObjectCRC = 202948435,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_streetlamp_large_red_style_02, "object/static/structure/general/shared_streetlamp_large_red_style_02.iff")
@@ -13060,7 +13355,8 @@ object_static_structure_general_shared_streetlamp_large_red_style_02_on = Shared
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3138264957
+	clientObjectCRC = 3138264957,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_streetlamp_large_red_style_02_on, "object/static/structure/general/shared_streetlamp_large_red_style_02_on.iff")
@@ -13104,7 +13400,8 @@ object_static_structure_general_shared_streetlamp_large_style_01 = SharedStaticO
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3885351943
+	clientObjectCRC = 3885351943,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_streetlamp_large_style_01, "object/static/structure/general/shared_streetlamp_large_style_01.iff")
@@ -13148,7 +13445,8 @@ object_static_structure_general_shared_streetlamp_large_style_01_off = SharedSta
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3316525735
+	clientObjectCRC = 3316525735,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_streetlamp_large_style_01_off, "object/static/structure/general/shared_streetlamp_large_style_01_off.iff")
@@ -13192,7 +13490,8 @@ object_static_structure_general_shared_streetlamp_large_style_01_on = SharedStat
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 382521685
+	clientObjectCRC = 382521685,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_streetlamp_large_style_01_on, "object/static/structure/general/shared_streetlamp_large_style_01_on.iff")
@@ -13236,7 +13535,8 @@ object_static_structure_general_shared_streetlamp_large_style_02 = SharedStaticO
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1015180432
+	clientObjectCRC = 1015180432,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_streetlamp_large_style_02, "object/static/structure/general/shared_streetlamp_large_style_02.iff")
@@ -13280,7 +13580,8 @@ object_static_structure_general_shared_streetlamp_large_style_02_on = SharedStat
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 4197364747
+	clientObjectCRC = 4197364747,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_streetlamp_large_style_02_on, "object/static/structure/general/shared_streetlamp_large_style_02_on.iff")
@@ -13324,7 +13625,8 @@ object_static_structure_general_shared_streetlamp_medium_blue_style_01 = SharedS
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3556643158
+	clientObjectCRC = 3556643158,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_streetlamp_medium_blue_style_01, "object/static/structure/general/shared_streetlamp_medium_blue_style_01.iff")
@@ -13368,7 +13670,8 @@ object_static_structure_general_shared_streetlamp_medium_blue_style_01_on = Shar
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 4180237744
+	clientObjectCRC = 4180237744,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_streetlamp_medium_blue_style_01_on, "object/static/structure/general/shared_streetlamp_medium_blue_style_01_on.iff")
@@ -13412,7 +13715,8 @@ object_static_structure_general_shared_streetlamp_medium_blue_style_02 = SharedS
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 149535169
+	clientObjectCRC = 149535169,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_streetlamp_medium_blue_style_02, "object/static/structure/general/shared_streetlamp_medium_blue_style_02.iff")
@@ -13456,7 +13760,8 @@ object_static_structure_general_shared_streetlamp_medium_blue_style_02_on = Shar
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 365639918
+	clientObjectCRC = 365639918,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_streetlamp_medium_blue_style_02_on, "object/static/structure/general/shared_streetlamp_medium_blue_style_02_on.iff")
@@ -13500,7 +13805,8 @@ object_static_structure_general_shared_streetlamp_medium_green_style_01 = Shared
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 4279659995
+	clientObjectCRC = 4279659995,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_streetlamp_medium_green_style_01, "object/static/structure/general/shared_streetlamp_medium_green_style_01.iff")
@@ -13544,7 +13850,8 @@ object_static_structure_general_shared_streetlamp_medium_green_style_01_on = Sha
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 4194458711
+	clientObjectCRC = 4194458711,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_streetlamp_medium_green_style_01_on, "object/static/structure/general/shared_streetlamp_medium_green_style_01_on.iff")
@@ -13588,7 +13895,8 @@ object_static_structure_general_shared_streetlamp_medium_green_style_02 = Shared
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 604095820
+	clientObjectCRC = 604095820,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_streetlamp_medium_green_style_02, "object/static/structure/general/shared_streetlamp_medium_green_style_02.iff")
@@ -13632,7 +13940,8 @@ object_static_structure_general_shared_streetlamp_medium_green_style_02_on = Sha
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 383793417
+	clientObjectCRC = 383793417,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_streetlamp_medium_green_style_02_on, "object/static/structure/general/shared_streetlamp_medium_green_style_02_on.iff")
@@ -13676,7 +13985,8 @@ object_static_structure_general_shared_streetlamp_medium_red_style_01 = SharedSt
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1554422035
+	clientObjectCRC = 1554422035,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_streetlamp_medium_red_style_01, "object/static/structure/general/shared_streetlamp_medium_red_style_01.iff")
@@ -13720,7 +14030,8 @@ object_static_structure_general_shared_streetlamp_medium_red_style_01_on = Share
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3488253126
+	clientObjectCRC = 3488253126,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_streetlamp_medium_red_style_01_on, "object/static/structure/general/shared_streetlamp_medium_red_style_01_on.iff")
@@ -13764,7 +14075,8 @@ object_static_structure_general_shared_streetlamp_medium_red_style_02 = SharedSt
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2276536708
+	clientObjectCRC = 2276536708,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_streetlamp_medium_red_style_02, "object/static/structure/general/shared_streetlamp_medium_red_style_02.iff")
@@ -13808,7 +14120,8 @@ object_static_structure_general_shared_streetlamp_medium_red_style_02_on = Share
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 587784600
+	clientObjectCRC = 587784600,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_streetlamp_medium_red_style_02_on, "object/static/structure/general/shared_streetlamp_medium_red_style_02_on.iff")
@@ -13852,7 +14165,8 @@ object_static_structure_general_shared_streetlamp_medium_style_01 = SharedStatic
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 621780950
+	clientObjectCRC = 621780950,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_streetlamp_medium_style_01, "object/static/structure/general/shared_streetlamp_medium_style_01.iff")
@@ -13896,7 +14210,8 @@ object_static_structure_general_shared_streetlamp_medium_style_01_on = SharedSta
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3048936619
+	clientObjectCRC = 3048936619,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_streetlamp_medium_style_01_on, "object/static/structure/general/shared_streetlamp_medium_style_01_on.iff")
@@ -13940,7 +14255,8 @@ object_static_structure_general_shared_streetlamp_medium_style_02 = SharedStatic
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 4262999873
+	clientObjectCRC = 4262999873,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_streetlamp_medium_style_02, "object/static/structure/general/shared_streetlamp_medium_style_02.iff")
@@ -13984,7 +14300,8 @@ object_static_structure_general_shared_streetlamp_medium_style_02_on = SharedSta
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1499034101
+	clientObjectCRC = 1499034101,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_streetlamp_medium_style_02_on, "object/static/structure/general/shared_streetlamp_medium_style_02_on.iff")
@@ -14028,7 +14345,8 @@ object_static_structure_general_shared_streetlamp_small_blue_style_01 = SharedSt
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3135621574
+	clientObjectCRC = 3135621574,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_streetlamp_small_blue_style_01, "object/static/structure/general/shared_streetlamp_small_blue_style_01.iff")
@@ -14072,7 +14390,8 @@ object_static_structure_general_shared_streetlamp_small_blue_style_01_on = Share
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 4100654572
+	clientObjectCRC = 4100654572,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_streetlamp_small_blue_style_01_on, "object/static/structure/general/shared_streetlamp_small_blue_style_01_on.iff")
@@ -14116,7 +14435,8 @@ object_static_structure_general_shared_streetlamp_small_blue_style_02 = SharedSt
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1643274577
+	clientObjectCRC = 1643274577,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_streetlamp_small_blue_style_02, "object/static/structure/general/shared_streetlamp_small_blue_style_02.iff")
@@ -14160,7 +14480,8 @@ object_static_structure_general_shared_streetlamp_small_blue_style_02_on = Share
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 411656370
+	clientObjectCRC = 411656370,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_streetlamp_small_blue_style_02_on, "object/static/structure/general/shared_streetlamp_small_blue_style_02_on.iff")
@@ -14204,7 +14525,8 @@ object_static_structure_general_shared_streetlamp_small_green_style_01 = SharedS
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1789053763
+	clientObjectCRC = 1789053763,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_streetlamp_small_green_style_01, "object/static/structure/general/shared_streetlamp_small_green_style_01.iff")
@@ -14248,7 +14570,8 @@ object_static_structure_general_shared_streetlamp_small_green_style_01_on = Shar
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2308408964
+	clientObjectCRC = 2308408964,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_streetlamp_small_green_style_01_on, "object/static/structure/general/shared_streetlamp_small_green_style_01_on.iff")
@@ -14292,7 +14615,8 @@ object_static_structure_general_shared_streetlamp_small_green_style_02 = SharedS
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2981454804
+	clientObjectCRC = 2981454804,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_streetlamp_small_green_style_02, "object/static/structure/general/shared_streetlamp_small_green_style_02.iff")
@@ -14336,7 +14660,8 @@ object_static_structure_general_shared_streetlamp_small_green_style_02_on = Shar
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1702224858
+	clientObjectCRC = 1702224858,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_streetlamp_small_green_style_02_on, "object/static/structure/general/shared_streetlamp_small_green_style_02_on.iff")
@@ -14380,7 +14705,8 @@ object_static_structure_general_shared_streetlamp_small_red_style_01 = SharedSta
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1813754022
+	clientObjectCRC = 1813754022,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_streetlamp_small_red_style_01, "object/static/structure/general/shared_streetlamp_small_red_style_01.iff")
@@ -14424,7 +14750,8 @@ object_static_structure_general_shared_streetlamp_small_red_style_01_on = Shared
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1234455603
+	clientObjectCRC = 1234455603,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_streetlamp_small_red_style_01_on, "object/static/structure/general/shared_streetlamp_small_red_style_01_on.iff")
@@ -14468,7 +14795,8 @@ object_static_structure_general_shared_streetlamp_small_red_style_02 = SharedSta
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3071023153
+	clientObjectCRC = 3071023153,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_streetlamp_small_red_style_02, "object/static/structure/general/shared_streetlamp_small_red_style_02.iff")
@@ -14512,7 +14840,8 @@ object_static_structure_general_shared_streetlamp_small_red_style_02_on = Shared
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2775984493
+	clientObjectCRC = 2775984493,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_streetlamp_small_red_style_02_on, "object/static/structure/general/shared_streetlamp_small_red_style_02_on.iff")
@@ -14556,7 +14885,8 @@ object_static_structure_general_shared_streetlamp_small_style_01 = SharedStaticO
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3350803377
+	clientObjectCRC = 3350803377,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_streetlamp_small_style_01, "object/static/structure/general/shared_streetlamp_small_style_01.iff")
@@ -14600,7 +14930,8 @@ object_static_structure_general_shared_streetlamp_small_style_01_on = SharedStat
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3823745124
+	clientObjectCRC = 3823745124,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_streetlamp_small_style_01_on, "object/static/structure/general/shared_streetlamp_small_style_01_on.iff")
@@ -14644,7 +14975,8 @@ object_static_structure_general_shared_streetlamp_small_style_02 = SharedStaticO
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 481205030
+	clientObjectCRC = 481205030,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_streetlamp_small_style_02, "object/static/structure/general/shared_streetlamp_small_style_02.iff")
@@ -14688,7 +15020,8 @@ object_static_structure_general_shared_streetlamp_small_style_02_on = SharedStat
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 252435770
+	clientObjectCRC = 252435770,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_streetlamp_small_style_02_on, "object/static/structure/general/shared_streetlamp_small_style_02_on.iff")
@@ -14732,7 +15065,8 @@ object_static_structure_general_shared_tankfarm_s01 = SharedStaticObjectTemplate
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2209227126
+	clientObjectCRC = 2209227126,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_tankfarm_s01, "object/static/structure/general/shared_tankfarm_s01.iff")
@@ -14776,7 +15110,8 @@ object_static_structure_general_shared_tato_cave_rock_large = SharedStaticObject
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 440438426
+	clientObjectCRC = 440438426,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_tato_cave_rock_large, "object/static/structure/general/shared_tato_cave_rock_large.iff")
@@ -14820,7 +15155,8 @@ object_static_structure_general_shared_tato_cave_rock_med = SharedStaticObjectTe
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2973893562
+	clientObjectCRC = 2973893562,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_tato_cave_rock_med, "object/static/structure/general/shared_tato_cave_rock_med.iff")
@@ -14864,7 +15200,8 @@ object_static_structure_general_shared_tato_cave_stalactite_large = SharedStatic
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2719778318
+	clientObjectCRC = 2719778318,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_tato_cave_stalactite_large, "object/static/structure/general/shared_tato_cave_stalactite_large.iff")
@@ -14908,7 +15245,8 @@ object_static_structure_general_shared_tato_cave_stalactite_med = SharedStaticOb
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2143135301
+	clientObjectCRC = 2143135301,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_tato_cave_stalactite_med, "object/static/structure/general/shared_tato_cave_stalactite_med.iff")
@@ -14952,7 +15290,8 @@ object_static_structure_general_shared_tato_cave_stalactite_small = SharedStatic
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2517045799
+	clientObjectCRC = 2517045799,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_tato_cave_stalactite_small, "object/static/structure/general/shared_tato_cave_stalactite_small.iff")
@@ -14996,7 +15335,8 @@ object_static_structure_general_shared_tato_cave_stalactite_tiny = SharedStaticO
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1567446267
+	clientObjectCRC = 1567446267,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_tato_cave_stalactite_tiny, "object/static/structure/general/shared_tato_cave_stalactite_tiny.iff")
@@ -15040,7 +15380,8 @@ object_static_structure_general_shared_tato_cave_stalagmite_large = SharedStatic
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3335732340
+	clientObjectCRC = 3335732340,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_tato_cave_stalagmite_large, "object/static/structure/general/shared_tato_cave_stalagmite_large.iff")
@@ -15084,7 +15425,8 @@ object_static_structure_general_shared_tato_cave_stalagmite_med = SharedStaticOb
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2537559006
+	clientObjectCRC = 2537559006,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_tato_cave_stalagmite_med, "object/static/structure/general/shared_tato_cave_stalagmite_med.iff")
@@ -15128,7 +15470,8 @@ object_static_structure_general_shared_tato_cave_stalagmite_small = SharedStatic
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 4073236573
+	clientObjectCRC = 4073236573,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_tato_cave_stalagmite_small, "object/static/structure/general/shared_tato_cave_stalagmite_small.iff")
@@ -15172,7 +15515,8 @@ object_static_structure_general_shared_tato_cave_stalagmite_tiny = SharedStaticO
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1132004410
+	clientObjectCRC = 1132004410,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_tato_cave_stalagmite_tiny, "object/static/structure/general/shared_tato_cave_stalagmite_tiny.iff")
@@ -15216,7 +15560,8 @@ object_static_structure_general_shared_tatooine_garden_base_lrg_01 = SharedStati
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 179319926
+	clientObjectCRC = 179319926,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_tatooine_garden_base_lrg_01, "object/static/structure/general/shared_tatooine_garden_base_lrg_01.iff")
@@ -15260,7 +15605,8 @@ object_static_structure_general_shared_tatooine_garden_base_med_01 = SharedStati
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2835777230
+	clientObjectCRC = 2835777230,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_tatooine_garden_base_med_01, "object/static/structure/general/shared_tatooine_garden_base_med_01.iff")
@@ -15304,7 +15650,8 @@ object_static_structure_general_shared_tatooine_garden_base_sml_01 = SharedStati
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3312132450
+	clientObjectCRC = 3312132450,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_tatooine_garden_base_sml_01, "object/static/structure/general/shared_tatooine_garden_base_sml_01.iff")
@@ -15348,7 +15695,8 @@ object_static_structure_general_shared_tie_bomber_debris_01 = SharedStaticObject
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1810658978
+	clientObjectCRC = 1810658978,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_tie_bomber_debris_01, "object/static/structure/general/shared_tie_bomber_debris_01.iff")
@@ -15392,7 +15740,8 @@ object_static_structure_general_shared_transport_debris_01 = SharedStaticObjectT
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2386740007
+	clientObjectCRC = 2386740007,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_transport_debris_01, "object/static/structure/general/shared_transport_debris_01.iff")
@@ -15436,7 +15785,8 @@ object_static_structure_general_shared_transport_debris_02 = SharedStaticObjectT
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1431661488
+	clientObjectCRC = 1431661488,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_transport_debris_02, "object/static/structure/general/shared_transport_debris_02.iff")
@@ -15480,7 +15830,8 @@ object_static_structure_general_shared_trash_pile_s01 = SharedStaticObjectTempla
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 783749181
+	clientObjectCRC = 783749181,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_trash_pile_s01, "object/static/structure/general/shared_trash_pile_s01.iff")
@@ -15524,7 +15875,8 @@ object_static_structure_general_shared_tutorial_waypoint = SharedStaticObjectTem
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2131444493
+	clientObjectCRC = 2131444493,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_tutorial_waypoint, "object/static/structure/general/shared_tutorial_waypoint.iff")
@@ -15568,7 +15920,8 @@ object_static_structure_general_shared_web_01 = SharedStaticObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2194373157
+	clientObjectCRC = 2194373157,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_web_01, "object/static/structure/general/shared_web_01.iff")
@@ -15612,7 +15965,8 @@ object_static_structure_general_shared_web_02 = SharedStaticObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1507644082
+	clientObjectCRC = 1507644082,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_web_02, "object/static/structure/general/shared_web_02.iff")
@@ -15656,7 +16010,8 @@ object_static_structure_general_shared_web_03 = SharedStaticObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 282178879
+	clientObjectCRC = 282178879,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_web_03, "object/static/structure/general/shared_web_03.iff")
@@ -15700,7 +16055,8 @@ object_static_structure_general_shared_web_04 = SharedStaticObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3945963051
+	clientObjectCRC = 3945963051,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_web_04, "object/static/structure/general/shared_web_04.iff")
@@ -15744,7 +16100,8 @@ object_static_structure_general_shared_web_05 = SharedStaticObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2722101670
+	clientObjectCRC = 2722101670,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_web_05, "object/static/structure/general/shared_web_05.iff")
@@ -15788,7 +16145,8 @@ object_static_structure_general_shared_web_06 = SharedStaticObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2032685361
+	clientObjectCRC = 2032685361,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_web_06, "object/static/structure/general/shared_web_06.iff")
@@ -15832,7 +16190,8 @@ object_static_structure_general_shared_web_07 = SharedStaticObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 807745212
+	clientObjectCRC = 807745212,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_web_07, "object/static/structure/general/shared_web_07.iff")
@@ -15876,7 +16235,8 @@ object_static_structure_general_shared_xwing = SharedStaticObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3802756237
+	clientObjectCRC = 3802756237,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_general_shared_xwing, "object/static/structure/general/shared_xwing.iff")

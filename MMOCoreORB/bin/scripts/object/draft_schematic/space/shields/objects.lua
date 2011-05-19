@@ -80,7 +80,8 @@ object_draft_schematic_space_shields_shared_adv_deflector_shields = SharedDraftS
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1117582132
+	clientObjectCRC = 1117582132,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_shields_shared_adv_deflector_shields, "object/draft_schematic/space/shields/shared_adv_deflector_shields.iff")
@@ -124,7 +125,8 @@ object_draft_schematic_space_shields_shared_basic_shields = SharedDraftSchematic
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3884245261
+	clientObjectCRC = 3884245261,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_shields_shared_basic_shields, "object/draft_schematic/space/shields/shared_basic_shields.iff")
@@ -168,7 +170,8 @@ object_draft_schematic_space_shields_shared_deflector_shields = SharedDraftSchem
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1694654678
+	clientObjectCRC = 1694654678,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_shields_shared_deflector_shields, "object/draft_schematic/space/shields/shared_deflector_shields.iff")
@@ -212,7 +215,8 @@ object_draft_schematic_space_shields_shared_exp_deflector_shields = SharedDraftS
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 4093345299
+	clientObjectCRC = 4093345299,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_shields_shared_exp_deflector_shields, "object/draft_schematic/space/shields/shared_exp_deflector_shields.iff")
@@ -256,7 +260,8 @@ object_draft_schematic_space_shields_shared_heavy_deflector_shields = SharedDraf
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2667507411
+	clientObjectCRC = 2667507411,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_shields_shared_heavy_deflector_shields, "object/draft_schematic/space/shields/shared_heavy_deflector_shields.iff")
@@ -300,7 +305,8 @@ object_draft_schematic_space_shields_shared_light_deflector_shields = SharedDraf
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3809979940
+	clientObjectCRC = 3809979940,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_shields_shared_light_deflector_shields, "object/draft_schematic/space/shields/shared_light_deflector_shields.iff")
@@ -344,7 +350,8 @@ object_draft_schematic_space_shields_shared_shield_energy_saver_kit_mk1 = Shared
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1723995512
+	clientObjectCRC = 1723995512,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_shields_shared_shield_energy_saver_kit_mk1, "object/draft_schematic/space/shields/shared_shield_energy_saver_kit_mk1.iff")
@@ -388,7 +395,8 @@ object_draft_schematic_space_shields_shared_shield_energy_saver_kit_mk2 = Shared
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3184901615
+	clientObjectCRC = 3184901615,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_shields_shared_shield_energy_saver_kit_mk2, "object/draft_schematic/space/shields/shared_shield_energy_saver_kit_mk2.iff")
@@ -432,7 +440,8 @@ object_draft_schematic_space_shields_shared_shield_energy_saver_kit_mk3 = Shared
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 4107852386
+	clientObjectCRC = 4107852386,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_shields_shared_shield_energy_saver_kit_mk3, "object/draft_schematic/space/shields/shared_shield_energy_saver_kit_mk3.iff")
@@ -476,7 +485,8 @@ object_draft_schematic_space_shields_shared_shield_energy_saver_kit_mk4 = Shared
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 255586678
+	clientObjectCRC = 255586678,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_shields_shared_shield_energy_saver_kit_mk4, "object/draft_schematic/space/shields/shared_shield_energy_saver_kit_mk4.iff")
@@ -520,7 +530,8 @@ object_draft_schematic_space_shields_shared_shield_energy_saver_kit_mk5 = Shared
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1177982715
+	clientObjectCRC = 1177982715,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_shields_shared_shield_energy_saver_kit_mk5, "object/draft_schematic/space/shields/shared_shield_energy_saver_kit_mk5.iff")
@@ -564,7 +575,8 @@ object_draft_schematic_space_shields_shared_shield_intensifier_mk1 = SharedDraft
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1539385043
+	clientObjectCRC = 1539385043,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_shields_shared_shield_intensifier_mk1, "object/draft_schematic/space/shields/shared_shield_intensifier_mk1.iff")
@@ -608,7 +620,8 @@ object_draft_schematic_space_shields_shared_shield_intensifier_mk2 = SharedDraft
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2161544772
+	clientObjectCRC = 2161544772,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_shields_shared_shield_intensifier_mk2, "object/draft_schematic/space/shields/shared_shield_intensifier_mk2.iff")
@@ -652,7 +665,8 @@ object_draft_schematic_space_shields_shared_shield_intensifier_mk3 = SharedDraft
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3386632649
+	clientObjectCRC = 3386632649,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_shields_shared_shield_intensifier_mk3, "object/draft_schematic/space/shields/shared_shield_intensifier_mk3.iff")
@@ -696,7 +710,8 @@ object_draft_schematic_space_shields_shared_shield_intensifier_mk4 = SharedDraft
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 842580701
+	clientObjectCRC = 842580701,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_shields_shared_shield_intensifier_mk4, "object/draft_schematic/space/shields/shared_shield_intensifier_mk4.iff")
@@ -740,7 +755,8 @@ object_draft_schematic_space_shields_shared_shield_intensifier_mk5 = SharedDraft
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2067113296
+	clientObjectCRC = 2067113296,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_shields_shared_shield_intensifier_mk5, "object/draft_schematic/space/shields/shared_shield_intensifier_mk5.iff")
@@ -784,7 +800,8 @@ object_draft_schematic_space_shields_shared_shield_limiter_mk1 = SharedDraftSche
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2950186363
+	clientObjectCRC = 2950186363,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_shields_shared_shield_limiter_mk1, "object/draft_schematic/space/shields/shared_shield_limiter_mk1.iff")
@@ -828,7 +845,8 @@ object_draft_schematic_space_shields_shared_shield_limiter_mk2 = SharedDraftSche
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1959783916
+	clientObjectCRC = 1959783916,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_shields_shared_shield_limiter_mk2, "object/draft_schematic/space/shields/shared_shield_limiter_mk2.iff")
@@ -872,7 +890,8 @@ object_draft_schematic_space_shields_shared_shield_limiter_mk3 = SharedDraftSche
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1036159585
+	clientObjectCRC = 1036159585,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_shields_shared_shield_limiter_mk3, "object/draft_schematic/space/shields/shared_shield_limiter_mk3.iff")
@@ -916,7 +935,8 @@ object_draft_schematic_space_shields_shared_shield_limiter_mk4 = SharedDraftSche
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3324092789
+	clientObjectCRC = 3324092789,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_shields_shared_shield_limiter_mk4, "object/draft_schematic/space/shields/shared_shield_limiter_mk4.iff")
@@ -960,7 +980,8 @@ object_draft_schematic_space_shields_shared_shield_limiter_mk5 = SharedDraftSche
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2402076408
+	clientObjectCRC = 2402076408,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_shields_shared_shield_limiter_mk5, "object/draft_schematic/space/shields/shared_shield_limiter_mk5.iff")
@@ -1004,7 +1025,8 @@ object_draft_schematic_space_shields_shared_shield_overcharger_mk1 = SharedDraft
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 759499849
+	clientObjectCRC = 759499849,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_shields_shared_shield_overcharger_mk1, "object/draft_schematic/space/shields/shared_shield_overcharger_mk1.iff")
@@ -1048,7 +1070,8 @@ object_draft_schematic_space_shields_shared_shield_overcharger_mk2 = SharedDraft
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 4132611294
+	clientObjectCRC = 4132611294,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_shields_shared_shield_overcharger_mk2, "object/draft_schematic/space/shields/shared_shield_overcharger_mk2.iff")
@@ -1092,7 +1115,8 @@ object_draft_schematic_space_shields_shared_shield_overcharger_mk3 = SharedDraft
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3210724179
+	clientObjectCRC = 3210724179,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_shields_shared_shield_overcharger_mk3, "object/draft_schematic/space/shields/shared_shield_overcharger_mk3.iff")
@@ -1136,7 +1160,8 @@ object_draft_schematic_space_shields_shared_shield_overcharger_mk4 = SharedDraft
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1153230919
+	clientObjectCRC = 1153230919,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_shields_shared_shield_overcharger_mk4, "object/draft_schematic/space/shields/shared_shield_overcharger_mk4.iff")
@@ -1180,7 +1205,8 @@ object_draft_schematic_space_shields_shared_shield_overcharger_mk5 = SharedDraft
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 229740490
+	clientObjectCRC = 229740490,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_shields_shared_shield_overcharger_mk5, "object/draft_schematic/space/shields/shared_shield_overcharger_mk5.iff")

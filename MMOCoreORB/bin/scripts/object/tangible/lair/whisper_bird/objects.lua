@@ -90,7 +90,8 @@ object_tangible_lair_whisper_bird_shared_lair_whisper_bird = SharedTangibleObjec
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3979491544
+	clientObjectCRC = 3979491544,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_whisper_bird_shared_lair_whisper_bird, "object/tangible/lair/whisper_bird/shared_lair_whisper_bird.iff")
@@ -144,7 +145,8 @@ object_tangible_lair_whisper_bird_shared_lair_whisper_bird_jungle = SharedTangib
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3994387683
+	clientObjectCRC = 3994387683,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_whisper_bird_shared_lair_whisper_bird_jungle, "object/tangible/lair/whisper_bird/shared_lair_whisper_bird_jungle.iff")
@@ -198,7 +200,8 @@ object_tangible_lair_whisper_bird_shared_lair_whisper_bird_swamp = SharedTangibl
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 522402134
+	clientObjectCRC = 522402134,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_whisper_bird_shared_lair_whisper_bird_swamp, "object/tangible/lair/whisper_bird/shared_lair_whisper_bird_swamp.iff")

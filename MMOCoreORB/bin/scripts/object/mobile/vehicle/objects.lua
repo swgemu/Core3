@@ -114,7 +114,8 @@ object_mobile_vehicle_shared_jetpack = SharedCreatureObjectTemplate:new {
 	warpTolerance = 20,
 	waterModPercent = 0.75,
 
-	clientObjectCRC = 1613040434
+	clientObjectCRC = 1613040434,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/mobile/shared_mobile.iff", "object/mobile/vehicle/shared_vehicle_base.iff", "object/mobile/vehicle/shared_landspeeder_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_mobile_vehicle_shared_jetpack, "object/mobile/vehicle/shared_jetpack.iff")
@@ -192,7 +193,8 @@ object_mobile_vehicle_shared_landspeeder_av21 = SharedCreatureObjectTemplate:new
 	warpTolerance = 20,
 	waterModPercent = 0.75,
 
-	clientObjectCRC = 2842025402
+	clientObjectCRC = 2842025402,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/mobile/shared_mobile.iff", "object/mobile/vehicle/shared_vehicle_base.iff", "object/mobile/vehicle/shared_landspeeder_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_mobile_vehicle_shared_landspeeder_av21, "object/mobile/vehicle/shared_landspeeder_av21.iff")
@@ -270,7 +272,8 @@ object_mobile_vehicle_shared_landspeeder_base = SharedCreatureObjectTemplate:new
 	warpTolerance = 17,
 	waterModPercent = 0.75,
 
-	clientObjectCRC = 634510067
+	clientObjectCRC = 634510067,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/mobile/shared_mobile.iff", "object/mobile/vehicle/shared_vehicle_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_mobile_vehicle_shared_landspeeder_base, "object/mobile/vehicle/shared_landspeeder_base.iff")
@@ -348,7 +351,8 @@ object_mobile_vehicle_shared_landspeeder_x31 = SharedCreatureObjectTemplate:new 
 	warpTolerance = 20,
 	waterModPercent = 0.75,
 
-	clientObjectCRC = 658152450
+	clientObjectCRC = 658152450,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/mobile/shared_mobile.iff", "object/mobile/vehicle/shared_vehicle_base.iff", "object/mobile/vehicle/shared_landspeeder_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_mobile_vehicle_shared_landspeeder_x31, "object/mobile/vehicle/shared_landspeeder_x31.iff")
@@ -426,7 +430,8 @@ object_mobile_vehicle_shared_landspeeder_x34 = SharedCreatureObjectTemplate:new 
 	warpTolerance = 20,
 	waterModPercent = 0.75,
 
-	clientObjectCRC = 1321433100
+	clientObjectCRC = 1321433100,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/mobile/shared_mobile.iff", "object/mobile/vehicle/shared_vehicle_base.iff", "object/mobile/vehicle/shared_landspeeder_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_mobile_vehicle_shared_landspeeder_x34, "object/mobile/vehicle/shared_landspeeder_x34.iff")
@@ -504,7 +509,8 @@ object_mobile_vehicle_shared_landspeeder_xp38 = SharedCreatureObjectTemplate:new
 	warpTolerance = 17,
 	waterModPercent = 0.75,
 
-	clientObjectCRC = 1064205223
+	clientObjectCRC = 1064205223,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/mobile/shared_mobile.iff", "object/mobile/vehicle/shared_vehicle_base.iff", "object/mobile/vehicle/shared_landspeeder_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_mobile_vehicle_shared_landspeeder_xp38, "object/mobile/vehicle/shared_landspeeder_xp38.iff")
@@ -582,7 +588,8 @@ object_mobile_vehicle_shared_speederbike = SharedCreatureObjectTemplate:new {
 	warpTolerance = 17,
 	waterModPercent = 0.75,
 
-	clientObjectCRC = 1922373615
+	clientObjectCRC = 1922373615,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/mobile/shared_mobile.iff", "object/mobile/vehicle/shared_vehicle_base.iff", "object/mobile/vehicle/shared_landspeeder_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_mobile_vehicle_shared_speederbike, "object/mobile/vehicle/shared_speederbike.iff")
@@ -660,7 +667,8 @@ object_mobile_vehicle_shared_speederbike_base = SharedCreatureObjectTemplate:new
 	warpTolerance = 17,
 	waterModPercent = 0.75,
 
-	clientObjectCRC = 2115869795
+	clientObjectCRC = 2115869795,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/mobile/shared_mobile.iff", "object/mobile/vehicle/shared_vehicle_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_mobile_vehicle_shared_speederbike_base, "object/mobile/vehicle/shared_speederbike_base.iff")
@@ -738,7 +746,8 @@ object_mobile_vehicle_shared_speederbike_flash = SharedCreatureObjectTemplate:ne
 	warpTolerance = 17,
 	waterModPercent = 0.75,
 
-	clientObjectCRC = 5125428
+	clientObjectCRC = 5125428,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/mobile/shared_mobile.iff", "object/mobile/vehicle/shared_vehicle_base.iff", "object/mobile/vehicle/shared_landspeeder_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_mobile_vehicle_shared_speederbike_flash, "object/mobile/vehicle/shared_speederbike_flash.iff")
@@ -816,7 +825,8 @@ object_mobile_vehicle_shared_speederbike_swoop = SharedCreatureObjectTemplate:ne
 	warpTolerance = 17,
 	waterModPercent = 0.75,
 
-	clientObjectCRC = 2943197007
+	clientObjectCRC = 2943197007,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/mobile/shared_mobile.iff", "object/mobile/vehicle/shared_vehicle_base.iff", "object/mobile/vehicle/shared_landspeeder_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_mobile_vehicle_shared_speederbike_swoop, "object/mobile/vehicle/shared_speederbike_swoop.iff")
@@ -894,7 +904,8 @@ object_mobile_vehicle_shared_vehicle_base = SharedCreatureObjectTemplate:new {
 	warpTolerance = 17,
 	waterModPercent = 0.75,
 
-	clientObjectCRC = 1605130582
+	clientObjectCRC = 1605130582,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/mobile/shared_mobile.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_mobile_vehicle_shared_vehicle_base, "object/mobile/vehicle/shared_vehicle_base.iff")

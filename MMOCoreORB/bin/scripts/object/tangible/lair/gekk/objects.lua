@@ -90,7 +90,8 @@ object_tangible_lair_gekk_shared_lair_gekk = SharedTangibleObjectTemplate:new {
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 451691491
+	clientObjectCRC = 451691491,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_gekk_shared_lair_gekk, "object/tangible/lair/gekk/shared_lair_gekk.iff")
@@ -144,7 +145,8 @@ object_tangible_lair_gekk_shared_lair_gekk_forest = SharedTangibleObjectTemplate
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1243506243
+	clientObjectCRC = 1243506243,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_gekk_shared_lair_gekk_forest, "object/tangible/lair/gekk/shared_lair_gekk_forest.iff")

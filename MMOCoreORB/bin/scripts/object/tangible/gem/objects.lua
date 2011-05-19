@@ -90,7 +90,8 @@ object_tangible_gem_shared_armor = SharedTangibleObjectTemplate:new {
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3742650204
+	clientObjectCRC = 3742650204,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/gem/base/shared_gem_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_gem_shared_armor, "object/tangible/gem/shared_armor.iff")
@@ -144,7 +145,8 @@ object_tangible_gem_shared_clothing = SharedTangibleObjectTemplate:new {
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3237805620
+	clientObjectCRC = 3237805620,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/gem/base/shared_gem_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_gem_shared_clothing, "object/tangible/gem/shared_clothing.iff")
@@ -198,7 +200,8 @@ object_tangible_gem_shared_default = SharedTangibleObjectTemplate:new {
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 330070250
+	clientObjectCRC = 330070250,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/gem/base/shared_gem_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_gem_shared_default, "object/tangible/gem/shared_default.iff")

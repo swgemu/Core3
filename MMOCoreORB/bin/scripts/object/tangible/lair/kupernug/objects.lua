@@ -90,7 +90,8 @@ object_tangible_lair_kupernug_shared_lair_kupernug = SharedTangibleObjectTemplat
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2658633620
+	clientObjectCRC = 2658633620,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_kupernug_shared_lair_kupernug, "object/tangible/lair/kupernug/shared_lair_kupernug.iff")
@@ -144,7 +145,8 @@ object_tangible_lair_kupernug_shared_lair_kupernug_mountain = SharedTangibleObje
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3996614231
+	clientObjectCRC = 3996614231,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_kupernug_shared_lair_kupernug_mountain, "object/tangible/lair/kupernug/shared_lair_kupernug_mountain.iff")
@@ -198,7 +200,8 @@ object_tangible_lair_kupernug_shared_lair_kupernug_wasteland = SharedTangibleObj
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2421166667
+	clientObjectCRC = 2421166667,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_kupernug_shared_lair_kupernug_wasteland, "object/tangible/lair/kupernug/shared_lair_kupernug_wasteland.iff")

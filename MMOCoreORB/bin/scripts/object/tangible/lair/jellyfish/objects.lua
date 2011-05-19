@@ -90,7 +90,8 @@ object_tangible_lair_jellyfish_shared_lair_jellyfish = SharedTangibleObjectTempl
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1244300952
+	clientObjectCRC = 1244300952,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_jellyfish_shared_lair_jellyfish, "object/tangible/lair/jellyfish/shared_lair_jellyfish.iff")
@@ -144,7 +145,8 @@ object_tangible_lair_jellyfish_shared_lair_jellyfish_underwater = SharedTangible
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2597048309
+	clientObjectCRC = 2597048309,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_jellyfish_shared_lair_jellyfish_underwater, "object/tangible/lair/jellyfish/shared_lair_jellyfish_underwater.iff")

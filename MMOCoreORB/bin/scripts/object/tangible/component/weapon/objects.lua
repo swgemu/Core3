@@ -90,7 +90,8 @@ object_tangible_component_weapon_shared_acklay_bone_reinforcement_core = SharedT
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4088226280
+	clientObjectCRC = 4088226280,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/base/shared_base_barrel.iff", "object/tangible/component/weapon/shared_reinforcement_core.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_acklay_bone_reinforcement_core, "object/tangible/component/weapon/shared_acklay_bone_reinforcement_core.iff")
@@ -144,7 +145,8 @@ object_tangible_component_weapon_shared_base_blaster_power_handler_enhancement =
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3003199598
+	clientObjectCRC = 3003199598,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/base/shared_base_barrel.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_base_blaster_power_handler_enhancement, "object/tangible/component/weapon/shared_base_blaster_power_handler_enhancement.iff")
@@ -198,7 +200,8 @@ object_tangible_component_weapon_shared_base_projectile_feed_mechanism_enhanceme
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2928380904
+	clientObjectCRC = 2928380904,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/base/shared_base_barrel.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_base_projectile_feed_mechanism_enhancement, "object/tangible/component/weapon/shared_base_projectile_feed_mechanism_enhancement.iff")
@@ -252,7 +255,8 @@ object_tangible_component_weapon_shared_base_vibro_unit_enhancement = SharedTang
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1563728747
+	clientObjectCRC = 1563728747,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/base/shared_base_barrel.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_base_vibro_unit_enhancement, "object/tangible/component/weapon/shared_base_vibro_unit_enhancement.iff")
@@ -306,7 +310,8 @@ object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_lg_s01 = Shared
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1710329756
+	clientObjectCRC = 1710329756,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/base/shared_base_barrel.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_lg_s01, "object/tangible/component/weapon/shared_blaster_barrel_wp_muzzle_lg_s01.iff")
@@ -360,7 +365,8 @@ object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_lg_s01_lg = Sha
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2092661773
+	clientObjectCRC = 2092661773,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/base/shared_base_barrel.iff", "object/tangible/component/weapon/shared_blaster_rifle_barrel.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_lg_s01_lg, "object/tangible/component/weapon/shared_blaster_barrel_wp_muzzle_lg_s01_lg.iff")
@@ -414,7 +420,8 @@ object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_lg_s02 = Shared
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3202754315
+	clientObjectCRC = 3202754315,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/base/shared_base_barrel.iff", "object/tangible/component/weapon/shared_blaster_pistol_barrel.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_lg_s02, "object/tangible/component/weapon/shared_blaster_barrel_wp_muzzle_lg_s02.iff")
@@ -468,7 +475,8 @@ object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_lg_s02_lg = Sha
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2421758291
+	clientObjectCRC = 2421758291,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/base/shared_base_barrel.iff", "object/tangible/component/weapon/shared_blaster_rifle_barrel.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_lg_s02_lg, "object/tangible/component/weapon/shared_blaster_barrel_wp_muzzle_lg_s02_lg.iff")
@@ -522,7 +530,8 @@ object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_lg_s03 = Shared
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4159389830
+	clientObjectCRC = 4159389830,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/base/shared_base_barrel.iff", "object/tangible/component/weapon/shared_blaster_pistol_barrel.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_lg_s03, "object/tangible/component/weapon/shared_blaster_barrel_wp_muzzle_lg_s03.iff")
@@ -576,7 +585,8 @@ object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_lg_s03_lg = Sha
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3422078361
+	clientObjectCRC = 3422078361,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/base/shared_base_barrel.iff", "object/tangible/component/weapon/shared_blaster_rifle_barrel.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_lg_s03_lg, "object/tangible/component/weapon/shared_blaster_barrel_wp_muzzle_lg_s03_lg.iff")
@@ -630,7 +640,8 @@ object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_lg_s04 = Shared
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 201878418
+	clientObjectCRC = 201878418,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/base/shared_base_barrel.iff", "object/tangible/component/weapon/shared_blaster_pistol_barrel.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_lg_s04, "object/tangible/component/weapon/shared_blaster_barrel_wp_muzzle_lg_s04.iff")
@@ -684,7 +695,8 @@ object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_lg_s04_lg = Sha
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1297927768
+	clientObjectCRC = 1297927768,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/base/shared_base_barrel.iff", "object/tangible/component/weapon/shared_blaster_rifle_barrel.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_lg_s04_lg, "object/tangible/component/weapon/shared_blaster_barrel_wp_muzzle_lg_s04_lg.iff")
@@ -738,7 +750,8 @@ object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_lg_s05 = Shared
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1157958687
+	clientObjectCRC = 1157958687,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/base/shared_base_barrel.iff", "object/tangible/component/weapon/shared_blaster_pistol_barrel.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_lg_s05, "object/tangible/component/weapon/shared_blaster_barrel_wp_muzzle_lg_s05.iff")
@@ -792,7 +805,8 @@ object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_lg_s05_lg = Sha
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 385684114
+	clientObjectCRC = 385684114,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/base/shared_base_barrel.iff", "object/tangible/component/weapon/shared_blaster_rifle_barrel.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_lg_s05_lg, "object/tangible/component/weapon/shared_blaster_barrel_wp_muzzle_lg_s05_lg.iff")
@@ -846,7 +860,8 @@ object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_lg_s06 = Shared
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2652021896
+	clientObjectCRC = 2652021896,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/base/shared_base_barrel.iff", "object/tangible/component/weapon/shared_blaster_pistol_barrel.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_lg_s06, "object/tangible/component/weapon/shared_blaster_barrel_wp_muzzle_lg_s06.iff")
@@ -900,7 +915,8 @@ object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_lg_s06_lg = Sha
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4196366284
+	clientObjectCRC = 4196366284,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/base/shared_base_barrel.iff", "object/tangible/component/weapon/shared_blaster_rifle_barrel.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_lg_s06_lg, "object/tangible/component/weapon/shared_blaster_barrel_wp_muzzle_lg_s06_lg.iff")
@@ -954,7 +970,8 @@ object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_lg_s07 = Shared
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3609182981
+	clientObjectCRC = 3609182981,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/base/shared_base_barrel.iff", "object/tangible/component/weapon/shared_blaster_pistol_barrel.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_lg_s07, "object/tangible/component/weapon/shared_blaster_barrel_wp_muzzle_lg_s07.iff")
@@ -1008,7 +1025,8 @@ object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_lg_s07_lg = Sha
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2713627398
+	clientObjectCRC = 2713627398,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/base/shared_base_barrel.iff", "object/tangible/component/weapon/shared_blaster_rifle_barrel.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_lg_s07_lg, "object/tangible/component/weapon/shared_blaster_barrel_wp_muzzle_lg_s07_lg.iff")
@@ -1062,7 +1080,8 @@ object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_m_s01 = SharedT
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4222005055
+	clientObjectCRC = 4222005055,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/base/shared_base_barrel.iff", "object/tangible/component/weapon/shared_blaster_pistol_barrel.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_m_s01, "object/tangible/component/weapon/shared_blaster_barrel_wp_muzzle_m_s01.iff")
@@ -1116,7 +1135,8 @@ object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_m_s01_lg = Shar
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3666495250
+	clientObjectCRC = 3666495250,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/base/shared_base_barrel.iff", "object/tangible/component/weapon/shared_blaster_rifle_barrel.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_m_s01_lg, "object/tangible/component/weapon/shared_blaster_barrel_wp_muzzle_m_s01_lg.iff")
@@ -1170,7 +1190,8 @@ object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_m_s02 = SharedT
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 548472744
+	clientObjectCRC = 548472744,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/base/shared_base_barrel.iff", "object/tangible/component/weapon/shared_blaster_pistol_barrel.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_m_s02, "object/tangible/component/weapon/shared_blaster_barrel_wp_muzzle_m_s02.iff")
@@ -1224,7 +1245,8 @@ object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_m_s02_lg = Shar
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 912794188
+	clientObjectCRC = 912794188,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/base/shared_base_barrel.iff", "object/tangible/component/weapon/shared_blaster_rifle_barrel.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_m_s02_lg, "object/tangible/component/weapon/shared_blaster_barrel_wp_muzzle_m_s02_lg.iff")
@@ -1278,7 +1300,8 @@ object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_m_s03 = SharedT
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1773953061
+	clientObjectCRC = 1773953061,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/base/shared_base_barrel.iff", "object/tangible/component/weapon/shared_blaster_pistol_barrel.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_m_s03, "object/tangible/component/weapon/shared_blaster_barrel_wp_muzzle_m_s03.iff")
@@ -1332,7 +1355,8 @@ object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_m_s03_lg = Shar
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1841954438
+	clientObjectCRC = 1841954438,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/base/shared_base_barrel.iff", "object/tangible/component/weapon/shared_blaster_rifle_barrel.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_m_s03_lg, "object/tangible/component/weapon/shared_blaster_barrel_wp_muzzle_m_s03_lg.iff")
@@ -1386,7 +1410,8 @@ object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_m_s04 = SharedT
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2455718705
+	clientObjectCRC = 2455718705,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/base/shared_base_barrel.iff", "object/tangible/component/weapon/shared_blaster_pistol_barrel.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_m_s04, "object/tangible/component/weapon/shared_blaster_barrel_wp_muzzle_m_s04.iff")
@@ -1440,7 +1465,8 @@ object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_m_s04_lg = Shar
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3949851975
+	clientObjectCRC = 3949851975,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/base/shared_base_barrel.iff", "object/tangible/component/weapon/shared_blaster_rifle_barrel.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_m_s04_lg, "object/tangible/component/weapon/shared_blaster_barrel_wp_muzzle_m_s04_lg.iff")
@@ -1494,7 +1520,8 @@ object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_m_s05 = SharedT
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3679595708
+	clientObjectCRC = 3679595708,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/base/shared_base_barrel.iff", "object/tangible/component/weapon/shared_blaster_pistol_barrel.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_m_s05, "object/tangible/component/weapon/shared_blaster_barrel_wp_muzzle_m_s05.iff")
@@ -1548,7 +1575,8 @@ object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_m_s05_lg = Shar
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2966169997
+	clientObjectCRC = 2966169997,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/base/shared_base_barrel.iff", "object/tangible/component/weapon/shared_blaster_rifle_barrel.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_m_s05_lg, "object/tangible/component/weapon/shared_blaster_barrel_wp_muzzle_m_s05_lg.iff")
@@ -1602,7 +1630,8 @@ object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_m_s06 = SharedT
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4555819
+	clientObjectCRC = 4555819,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/base/shared_base_barrel.iff", "object/tangible/component/weapon/shared_blaster_pistol_barrel.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_m_s06, "object/tangible/component/weapon/shared_blaster_barrel_wp_muzzle_m_s06.iff")
@@ -1656,7 +1685,8 @@ object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_m_s06_lg = Shar
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1546538195
+	clientObjectCRC = 1546538195,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/base/shared_base_barrel.iff", "object/tangible/component/weapon/shared_blaster_rifle_barrel.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_m_s06_lg, "object/tangible/component/weapon/shared_blaster_barrel_wp_muzzle_m_s06_lg.iff")
@@ -1710,7 +1740,8 @@ object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_m_s07 = SharedT
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1229513638
+	clientObjectCRC = 1229513638,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/base/shared_base_barrel.iff", "object/tangible/component/weapon/shared_blaster_pistol_barrel.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_m_s07, "object/tangible/component/weapon/shared_blaster_barrel_wp_muzzle_m_s07.iff")
@@ -1764,7 +1795,8 @@ object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_m_s07_lg = Shar
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 126849049
+	clientObjectCRC = 126849049,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/base/shared_base_barrel.iff", "object/tangible/component/weapon/shared_blaster_rifle_barrel.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_m_s07_lg, "object/tangible/component/weapon/shared_blaster_barrel_wp_muzzle_m_s07_lg.iff")
@@ -1818,7 +1850,8 @@ object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_sm_s01 = Shared
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3175095314
+	clientObjectCRC = 3175095314,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/base/shared_base_barrel.iff", "object/tangible/component/weapon/shared_blaster_pistol_barrel.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_sm_s01, "object/tangible/component/weapon/shared_blaster_barrel_wp_muzzle_sm_s01.iff")
@@ -1872,7 +1905,8 @@ object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_sm_s01_lg = Sha
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 867179315
+	clientObjectCRC = 867179315,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/base/shared_base_barrel.iff", "object/tangible/component/weapon/shared_blaster_rifle_barrel.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_sm_s01_lg, "object/tangible/component/weapon/shared_blaster_barrel_wp_muzzle_sm_s01_lg.iff")
@@ -1926,7 +1960,8 @@ object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_sm_s02 = Shared
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1717023877
+	clientObjectCRC = 1717023877,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/base/shared_base_barrel.iff", "object/tangible/component/weapon/shared_blaster_pistol_barrel.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_sm_s02, "object/tangible/component/weapon/shared_blaster_barrel_wp_muzzle_sm_s02.iff")
@@ -1980,7 +2015,8 @@ object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_sm_s02_lg = Sha
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3746725485
+	clientObjectCRC = 3746725485,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/base/shared_base_barrel.iff", "object/tangible/component/weapon/shared_blaster_rifle_barrel.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_sm_s02_lg, "object/tangible/component/weapon/shared_blaster_barrel_wp_muzzle_sm_s02_lg.iff")
@@ -2034,7 +2070,8 @@ object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_sm_s03 = Shared
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 794481416
+	clientObjectCRC = 794481416,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/base/shared_base_barrel.iff", "object/tangible/component/weapon/shared_blaster_pistol_barrel.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_sm_s03, "object/tangible/component/weapon/shared_blaster_barrel_wp_muzzle_sm_s03.iff")
@@ -2088,7 +2125,8 @@ object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_sm_s03_lg = Sha
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2230559399
+	clientObjectCRC = 2230559399,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/base/shared_base_barrel.iff", "object/tangible/component/weapon/shared_blaster_rifle_barrel.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_sm_s03_lg, "object/tangible/component/weapon/shared_blaster_barrel_wp_muzzle_sm_s03_lg.iff")
@@ -2142,7 +2180,8 @@ object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_sm_s04 = Shared
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3568957468
+	clientObjectCRC = 3568957468,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/base/shared_base_barrel.iff", "object/tangible/component/weapon/shared_blaster_pistol_barrel.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_sm_s04, "object/tangible/component/weapon/shared_blaster_barrel_wp_muzzle_sm_s04.iff")
@@ -2196,7 +2235,8 @@ object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_sm_s04_lg = Sha
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 39299430
+	clientObjectCRC = 39299430,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/base/shared_base_barrel.iff", "object/tangible/component/weapon/shared_blaster_rifle_barrel.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_sm_s04_lg, "object/tangible/component/weapon/shared_blaster_barrel_wp_muzzle_sm_s04_lg.iff")
@@ -2250,7 +2290,8 @@ object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_sm_s05 = Shared
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2645860241
+	clientObjectCRC = 2645860241,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/base/shared_base_barrel.iff", "object/tangible/component/weapon/shared_blaster_pistol_barrel.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_sm_s05, "object/tangible/component/weapon/shared_blaster_barrel_wp_muzzle_sm_s05.iff")
@@ -2304,7 +2345,8 @@ object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_sm_s05_lg = Sha
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1509324204
+	clientObjectCRC = 1509324204,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/base/shared_base_barrel.iff", "object/tangible/component/weapon/shared_blaster_rifle_barrel.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_sm_s05_lg, "object/tangible/component/weapon/shared_blaster_barrel_wp_muzzle_sm_s05_lg.iff")
@@ -2358,7 +2400,8 @@ object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_sm_s06 = Shared
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1185101574
+	clientObjectCRC = 1185101574,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/base/shared_base_barrel.iff", "object/tangible/component/weapon/shared_blaster_pistol_barrel.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_sm_s06, "object/tangible/component/weapon/shared_blaster_barrel_wp_muzzle_sm_s06.iff")
@@ -2412,7 +2455,8 @@ object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_sm_s06_lg = Sha
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3037991154
+	clientObjectCRC = 3037991154,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/base/shared_base_barrel.iff", "object/tangible/component/weapon/shared_blaster_rifle_barrel.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_sm_s06_lg, "object/tangible/component/weapon/shared_blaster_barrel_wp_muzzle_sm_s06_lg.iff")
@@ -2466,7 +2510,8 @@ object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_sm_s07 = Shared
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 263082123
+	clientObjectCRC = 263082123,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/base/shared_base_barrel.iff", "object/tangible/component/weapon/shared_blaster_pistol_barrel.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_sm_s07, "object/tangible/component/weapon/shared_blaster_barrel_wp_muzzle_sm_s07.iff")
@@ -2520,7 +2565,8 @@ object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_sm_s07_lg = Sha
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4004891704
+	clientObjectCRC = 4004891704,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/base/shared_base_barrel.iff", "object/tangible/component/weapon/shared_blaster_rifle_barrel.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_blaster_barrel_wp_muzzle_sm_s07_lg, "object/tangible/component/weapon/shared_blaster_barrel_wp_muzzle_sm_s07_lg.iff")
@@ -2574,7 +2620,8 @@ object_tangible_component_weapon_shared_blaster_pistol_barrel = SharedTangibleOb
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3001062270
+	clientObjectCRC = 3001062270,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/base/shared_base_barrel.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_blaster_pistol_barrel, "object/tangible/component/weapon/shared_blaster_pistol_barrel.iff")
@@ -2628,7 +2675,8 @@ object_tangible_component_weapon_shared_blaster_pistol_barrel_advanced = SharedT
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4250066631
+	clientObjectCRC = 4250066631,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/base/shared_base_barrel.iff", "object/tangible/component/weapon/shared_blaster_pistol_barrel.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_blaster_pistol_barrel_advanced, "object/tangible/component/weapon/shared_blaster_pistol_barrel_advanced.iff")
@@ -2682,7 +2730,8 @@ object_tangible_component_weapon_shared_blaster_pistol_barrel_quest = SharedTang
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2263958541
+	clientObjectCRC = 2263958541,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/base/shared_base_barrel.iff", "object/tangible/component/weapon/shared_blaster_pistol_barrel.iff", "object/tangible/component/weapon/shared_blaster_pistol_barrel_advanced.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_blaster_pistol_barrel_quest, "object/tangible/component/weapon/shared_blaster_pistol_barrel_quest.iff")
@@ -2736,7 +2785,8 @@ object_tangible_component_weapon_shared_blaster_power_handler = SharedTangibleOb
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3399297408
+	clientObjectCRC = 3399297408,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/base/shared_base_barrel.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_blaster_power_handler, "object/tangible/component/weapon/shared_blaster_power_handler.iff")
@@ -2790,7 +2840,8 @@ object_tangible_component_weapon_shared_blaster_power_handler_advanced = SharedT
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1426378303
+	clientObjectCRC = 1426378303,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/base/shared_base_barrel.iff", "object/tangible/component/weapon/shared_blaster_power_handler.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_blaster_power_handler_advanced, "object/tangible/component/weapon/shared_blaster_power_handler_advanced.iff")
@@ -2844,7 +2895,8 @@ object_tangible_component_weapon_shared_blaster_power_handler_enhancement_durabi
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1717492287
+	clientObjectCRC = 1717492287,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/base/shared_base_barrel.iff", "object/tangible/component/weapon/shared_base_blaster_power_handler_enhancement.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_blaster_power_handler_enhancement_durability, "object/tangible/component/weapon/shared_blaster_power_handler_enhancement_durability.iff")
@@ -2898,7 +2950,8 @@ object_tangible_component_weapon_shared_blaster_power_handler_enhancement_krayt 
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3981194570
+	clientObjectCRC = 3981194570,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/base/shared_base_barrel.iff", "object/tangible/component/weapon/shared_base_blaster_power_handler_enhancement.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_blaster_power_handler_enhancement_krayt, "object/tangible/component/weapon/shared_blaster_power_handler_enhancement_krayt.iff")
@@ -2952,7 +3005,8 @@ object_tangible_component_weapon_shared_blaster_power_handler_enhancement_max_da
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3285791160
+	clientObjectCRC = 3285791160,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/base/shared_base_barrel.iff", "object/tangible/component/weapon/shared_base_blaster_power_handler_enhancement.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_blaster_power_handler_enhancement_max_damage, "object/tangible/component/weapon/shared_blaster_power_handler_enhancement_max_damage.iff")
@@ -3006,7 +3060,8 @@ object_tangible_component_weapon_shared_blaster_power_handler_enhancement_min_da
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4158958561
+	clientObjectCRC = 4158958561,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/base/shared_base_barrel.iff", "object/tangible/component/weapon/shared_base_blaster_power_handler_enhancement.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_blaster_power_handler_enhancement_min_damage, "object/tangible/component/weapon/shared_blaster_power_handler_enhancement_min_damage.iff")
@@ -3060,7 +3115,8 @@ object_tangible_component_weapon_shared_blaster_power_handler_quest = SharedTang
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3074802434
+	clientObjectCRC = 3074802434,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/base/shared_base_barrel.iff", "object/tangible/component/weapon/shared_blaster_power_handler.iff", "object/tangible/component/weapon/shared_blaster_power_handler_advanced.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_blaster_power_handler_quest, "object/tangible/component/weapon/shared_blaster_power_handler_quest.iff")
@@ -3114,7 +3170,8 @@ object_tangible_component_weapon_shared_blaster_rifle_barrel = SharedTangibleObj
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 260681278
+	clientObjectCRC = 260681278,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/base/shared_base_barrel.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_blaster_rifle_barrel, "object/tangible/component/weapon/shared_blaster_rifle_barrel.iff")
@@ -3168,7 +3225,8 @@ object_tangible_component_weapon_shared_blaster_rifle_barrel_advanced = SharedTa
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 992626072
+	clientObjectCRC = 992626072,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/base/shared_base_barrel.iff", "object/tangible/component/weapon/shared_blaster_rifle_barrel.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_blaster_rifle_barrel_advanced, "object/tangible/component/weapon/shared_blaster_rifle_barrel_advanced.iff")
@@ -3222,7 +3280,8 @@ object_tangible_component_weapon_shared_chemical_dispersion_mechanism = SharedTa
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1194049951
+	clientObjectCRC = 1194049951,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/base/shared_base_barrel.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_chemical_dispersion_mechanism, "object/tangible/component/weapon/shared_chemical_dispersion_mechanism.iff")
@@ -3276,7 +3335,8 @@ object_tangible_component_weapon_shared_chemical_dispersion_mechanism_advanced =
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1411275981
+	clientObjectCRC = 1411275981,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/base/shared_base_barrel.iff", "object/tangible/component/weapon/shared_chemical_dispersion_mechanism.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_chemical_dispersion_mechanism_advanced, "object/tangible/component/weapon/shared_chemical_dispersion_mechanism_advanced.iff")
@@ -3330,7 +3390,8 @@ object_tangible_component_weapon_shared_corvette_rifle_barrel = SharedTangibleOb
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3758372574
+	clientObjectCRC = 3758372574,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/base/shared_base_barrel.iff", "object/tangible/component/weapon/shared_blaster_rifle_barrel.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_corvette_rifle_barrel, "object/tangible/component/weapon/shared_corvette_rifle_barrel.iff")
@@ -3384,7 +3445,8 @@ object_tangible_component_weapon_shared_energization_crystals = SharedTangibleOb
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 491130592
+	clientObjectCRC = 491130592,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/base/shared_base_barrel.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_energization_crystals, "object/tangible/component/weapon/shared_energization_crystals.iff")
@@ -3438,7 +3500,8 @@ object_tangible_component_weapon_shared_galven_tube_circuits = SharedTangibleObj
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4061079973
+	clientObjectCRC = 4061079973,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/base/shared_base_barrel.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_galven_tube_circuits, "object/tangible/component/weapon/shared_galven_tube_circuits.iff")
@@ -3492,7 +3555,8 @@ object_tangible_component_weapon_shared_geonosian_power_cube = SharedTangibleObj
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2313307226
+	clientObjectCRC = 2313307226,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/weapon/shared_geonosian_power_cube_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_geonosian_power_cube, "object/tangible/component/weapon/shared_geonosian_power_cube.iff")
@@ -3546,7 +3610,8 @@ object_tangible_component_weapon_shared_geonosian_power_cube_base = SharedTangib
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4092441918
+	clientObjectCRC = 4092441918,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_geonosian_power_cube_base, "object/tangible/component/weapon/shared_geonosian_power_cube_base.iff")
@@ -3600,7 +3665,8 @@ object_tangible_component_weapon_shared_geonosian_power_cube_green = SharedTangi
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2570329564
+	clientObjectCRC = 2570329564,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/weapon/shared_geonosian_power_cube_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_geonosian_power_cube_green, "object/tangible/component/weapon/shared_geonosian_power_cube_green.iff")
@@ -3654,7 +3720,8 @@ object_tangible_component_weapon_shared_geonosian_power_cube_red = SharedTangibl
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 98191878
+	clientObjectCRC = 98191878,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/weapon/shared_geonosian_power_cube_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_geonosian_power_cube_red, "object/tangible/component/weapon/shared_geonosian_power_cube_red.iff")
@@ -3708,7 +3775,8 @@ object_tangible_component_weapon_shared_geonosian_power_cube_yellow = SharedTang
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 783478248
+	clientObjectCRC = 783478248,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/weapon/shared_geonosian_power_cube_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_geonosian_power_cube_yellow, "object/tangible/component/weapon/shared_geonosian_power_cube_yellow.iff")
@@ -3762,7 +3830,8 @@ object_tangible_component_weapon_shared_geonosian_reinforcement_core = SharedTan
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2362781931
+	clientObjectCRC = 2362781931,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/base/shared_base_barrel.iff", "object/tangible/component/weapon/shared_reinforcement_core.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_geonosian_reinforcement_core, "object/tangible/component/weapon/shared_geonosian_reinforcement_core.iff")
@@ -3816,7 +3885,8 @@ object_tangible_component_weapon_shared_geonosian_solidifying_agent = SharedTang
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3710952248
+	clientObjectCRC = 3710952248,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/weapon/shared_melee_core_enhancement.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_geonosian_solidifying_agent, "object/tangible/component/weapon/shared_geonosian_solidifying_agent.iff")
@@ -3870,7 +3940,8 @@ object_tangible_component_weapon_shared_geonosian_sword_core = SharedTangibleObj
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 927591163
+	clientObjectCRC = 927591163,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/base/shared_base_barrel.iff", "object/tangible/component/weapon/shared_sword_core.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_geonosian_sword_core, "object/tangible/component/weapon/shared_geonosian_sword_core.iff")
@@ -3924,7 +3995,8 @@ object_tangible_component_weapon_shared_laser_cannon_cooling_sleeve = SharedTang
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2251276199
+	clientObjectCRC = 2251276199,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/base/shared_base_barrel.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_laser_cannon_cooling_sleeve, "object/tangible/component/weapon/shared_laser_cannon_cooling_sleeve.iff")
@@ -3978,7 +4050,8 @@ object_tangible_component_weapon_shared_laser_cannon_gun_tube = SharedTangibleOb
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1385368085
+	clientObjectCRC = 1385368085,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/base/shared_base_barrel.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_laser_cannon_gun_tube, "object/tangible/component/weapon/shared_laser_cannon_gun_tube.iff")
@@ -4032,7 +4105,8 @@ object_tangible_component_weapon_shared_laser_generator = SharedTangibleObjectTe
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 695643472
+	clientObjectCRC = 695643472,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/base/shared_base_barrel.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_laser_generator, "object/tangible/component/weapon/shared_laser_generator.iff")
@@ -4086,7 +4160,8 @@ object_tangible_component_weapon_shared_laser_magnetic_flashback_supressor = Sha
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 741674762
+	clientObjectCRC = 741674762,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/base/shared_base_barrel.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_laser_magnetic_flashback_supressor, "object/tangible/component/weapon/shared_laser_magnetic_flashback_supressor.iff")
@@ -4140,7 +4215,8 @@ object_tangible_component_weapon_shared_melee_core_enhancement = SharedTangibleO
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3988462144
+	clientObjectCRC = 3988462144,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_melee_core_enhancement, "object/tangible/component/weapon/shared_melee_core_enhancement.iff")
@@ -4194,7 +4270,8 @@ object_tangible_component_weapon_shared_parallel_weapon_targeting_computer = Sha
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 466802862
+	clientObjectCRC = 466802862,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/base/shared_base_barrel.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_parallel_weapon_targeting_computer, "object/tangible/component/weapon/shared_parallel_weapon_targeting_computer.iff")
@@ -4248,7 +4325,8 @@ object_tangible_component_weapon_shared_projectile_feed_mechanism = SharedTangib
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1361510729
+	clientObjectCRC = 1361510729,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/base/shared_base_barrel.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_projectile_feed_mechanism, "object/tangible/component/weapon/shared_projectile_feed_mechanism.iff")
@@ -4302,7 +4380,8 @@ object_tangible_component_weapon_shared_projectile_feed_mechanism_advanced = Sha
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4156025153
+	clientObjectCRC = 4156025153,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/base/shared_base_barrel.iff", "object/tangible/component/weapon/shared_projectile_feed_mechanism.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_projectile_feed_mechanism_advanced, "object/tangible/component/weapon/shared_projectile_feed_mechanism_advanced.iff")
@@ -4356,7 +4435,8 @@ object_tangible_component_weapon_shared_projectile_feed_mechanism_enhancement_du
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1517204001
+	clientObjectCRC = 1517204001,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/base/shared_base_barrel.iff", "object/tangible/component/weapon/shared_base_projectile_feed_mechanism_enhancement.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_projectile_feed_mechanism_enhancement_durability, "object/tangible/component/weapon/shared_projectile_feed_mechanism_enhancement_durability.iff")
@@ -4410,7 +4490,8 @@ object_tangible_component_weapon_shared_projectile_feed_mechanism_enhancement_go
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 255106526
+	clientObjectCRC = 255106526,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/base/shared_base_barrel.iff", "object/tangible/component/weapon/shared_base_projectile_feed_mechanism_enhancement.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_projectile_feed_mechanism_enhancement_gorax, "object/tangible/component/weapon/shared_projectile_feed_mechanism_enhancement_gorax.iff")
@@ -4464,7 +4545,8 @@ object_tangible_component_weapon_shared_projectile_feed_mechanism_enhancement_ma
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4293482918
+	clientObjectCRC = 4293482918,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/base/shared_base_barrel.iff", "object/tangible/component/weapon/shared_base_projectile_feed_mechanism_enhancement.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_projectile_feed_mechanism_enhancement_max_damage, "object/tangible/component/weapon/shared_projectile_feed_mechanism_enhancement_max_damage.iff")
@@ -4518,7 +4600,8 @@ object_tangible_component_weapon_shared_projectile_feed_mechanism_enhancement_mi
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3419718655
+	clientObjectCRC = 3419718655,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/base/shared_base_barrel.iff", "object/tangible/component/weapon/shared_base_projectile_feed_mechanism_enhancement.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_projectile_feed_mechanism_enhancement_min_damage, "object/tangible/component/weapon/shared_projectile_feed_mechanism_enhancement_min_damage.iff")
@@ -4572,7 +4655,8 @@ object_tangible_component_weapon_shared_projectile_pistol_barrel = SharedTangibl
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1216914672
+	clientObjectCRC = 1216914672,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/base/shared_base_barrel.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_projectile_pistol_barrel, "object/tangible/component/weapon/shared_projectile_pistol_barrel.iff")
@@ -4626,7 +4710,8 @@ object_tangible_component_weapon_shared_projectile_pistol_barrel_advanced = Shar
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3447151631
+	clientObjectCRC = 3447151631,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/base/shared_base_barrel.iff", "object/tangible/component/weapon/shared_projectile_pistol_barrel.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_projectile_pistol_barrel_advanced, "object/tangible/component/weapon/shared_projectile_pistol_barrel_advanced.iff")
@@ -4680,7 +4765,8 @@ object_tangible_component_weapon_shared_projectile_pistol_barrel_quest = SharedT
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1641350102
+	clientObjectCRC = 1641350102,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/base/shared_base_barrel.iff", "object/tangible/component/weapon/shared_projectile_pistol_barrel.iff", "object/tangible/component/weapon/shared_projectile_pistol_barrel_advanced.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_projectile_pistol_barrel_quest, "object/tangible/component/weapon/shared_projectile_pistol_barrel_quest.iff")
@@ -4734,7 +4820,8 @@ object_tangible_component_weapon_shared_projectile_rifle_barrel = SharedTangible
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 769812356
+	clientObjectCRC = 769812356,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/base/shared_base_barrel.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_projectile_rifle_barrel, "object/tangible/component/weapon/shared_projectile_rifle_barrel.iff")
@@ -4788,7 +4875,8 @@ object_tangible_component_weapon_shared_projectile_rifle_barrel_advanced = Share
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 594573612
+	clientObjectCRC = 594573612,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/base/shared_base_barrel.iff", "object/tangible/component/weapon/shared_projectile_rifle_barrel.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_projectile_rifle_barrel_advanced, "object/tangible/component/weapon/shared_projectile_rifle_barrel_advanced.iff")
@@ -4842,7 +4930,8 @@ object_tangible_component_weapon_shared_projectile_rifle_barrel_advanced_quest =
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2968083189
+	clientObjectCRC = 2968083189,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/base/shared_base_barrel.iff", "object/tangible/component/weapon/shared_projectile_rifle_barrel.iff", "object/tangible/component/weapon/shared_projectile_rifle_barrel_advanced.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_projectile_rifle_barrel_advanced_quest, "object/tangible/component/weapon/shared_projectile_rifle_barrel_advanced_quest.iff")
@@ -4896,7 +4985,8 @@ object_tangible_component_weapon_shared_rancor_tooth = SharedTangibleObjectTempl
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3366067371
+	clientObjectCRC = 3366067371,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/base/shared_base_barrel.iff", "object/tangible/component/weapon/shared_sword_core.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_rancor_tooth, "object/tangible/component/weapon/shared_rancor_tooth.iff")
@@ -4950,7 +5040,8 @@ object_tangible_component_weapon_shared_rancor_tooth_quest = SharedTangibleObjec
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 829703922
+	clientObjectCRC = 829703922,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/base/shared_base_barrel.iff", "object/tangible/component/weapon/shared_sword_core.iff", "object/tangible/component/weapon/shared_rancor_tooth.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_rancor_tooth_quest, "object/tangible/component/weapon/shared_rancor_tooth_quest.iff")
@@ -5004,7 +5095,8 @@ object_tangible_component_weapon_shared_reinforcement_core = SharedTangibleObjec
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 600823841
+	clientObjectCRC = 600823841,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/base/shared_base_barrel.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_reinforcement_core, "object/tangible/component/weapon/shared_reinforcement_core.iff")
@@ -5058,7 +5150,8 @@ object_tangible_component_weapon_shared_reinforcement_core_advanced = SharedTang
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 276012891
+	clientObjectCRC = 276012891,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/base/shared_base_barrel.iff", "object/tangible/component/weapon/shared_reinforcement_core.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_reinforcement_core_advanced, "object/tangible/component/weapon/shared_reinforcement_core_advanced.iff")
@@ -5112,7 +5205,8 @@ object_tangible_component_weapon_shared_scope_weapon = SharedTangibleObjectTempl
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 46230492
+	clientObjectCRC = 46230492,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/base/shared_base_barrel.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_scope_weapon, "object/tangible/component/weapon/shared_scope_weapon.iff")
@@ -5166,7 +5260,8 @@ object_tangible_component_weapon_shared_scope_weapon_advanced = SharedTangibleOb
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 210395856
+	clientObjectCRC = 210395856,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/base/shared_base_barrel.iff", "object/tangible/component/weapon/shared_scope_weapon.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_scope_weapon_advanced, "object/tangible/component/weapon/shared_scope_weapon_advanced.iff")
@@ -5220,7 +5315,8 @@ object_tangible_component_weapon_shared_scope_weapon_advanced_quest = SharedTang
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3286610922
+	clientObjectCRC = 3286610922,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/base/shared_base_barrel.iff", "object/tangible/component/weapon/shared_scope_weapon.iff", "object/tangible/component/weapon/shared_scope_weapon_advanced.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_scope_weapon_advanced_quest, "object/tangible/component/weapon/shared_scope_weapon_advanced_quest.iff")
@@ -5274,7 +5370,8 @@ object_tangible_component_weapon_shared_scope_weapon_lg_s01 = SharedTangibleObje
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1450202343
+	clientObjectCRC = 1450202343,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/base/shared_base_barrel.iff", "object/tangible/component/weapon/shared_scope_weapon.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_scope_weapon_lg_s01, "object/tangible/component/weapon/shared_scope_weapon_lg_s01.iff")
@@ -5328,7 +5425,8 @@ object_tangible_component_weapon_shared_scope_weapon_lg_s02 = SharedTangibleObje
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2372402288
+	clientObjectCRC = 2372402288,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/base/shared_base_barrel.iff", "object/tangible/component/weapon/shared_scope_weapon.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_scope_weapon_lg_s02, "object/tangible/component/weapon/shared_scope_weapon_lg_s02.iff")
@@ -5382,7 +5480,8 @@ object_tangible_component_weapon_shared_scope_weapon_lg_s03 = SharedTangibleObje
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3295321085
+	clientObjectCRC = 3295321085,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/base/shared_base_barrel.iff", "object/tangible/component/weapon/shared_scope_weapon.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_scope_weapon_lg_s03, "object/tangible/component/weapon/shared_scope_weapon_lg_s03.iff")
@@ -5436,7 +5535,8 @@ object_tangible_component_weapon_shared_scope_weapon_sm_s01 = SharedTangibleObje
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2395064169
+	clientObjectCRC = 2395064169,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/base/shared_base_barrel.iff", "object/tangible/component/weapon/shared_scope_weapon.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_scope_weapon_sm_s01, "object/tangible/component/weapon/shared_scope_weapon_sm_s01.iff")
@@ -5490,7 +5590,8 @@ object_tangible_component_weapon_shared_scope_weapon_sm_s02 = SharedTangibleObje
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1440116734
+	clientObjectCRC = 1440116734,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/base/shared_base_barrel.iff", "object/tangible/component/weapon/shared_scope_weapon.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_scope_weapon_sm_s02, "object/tangible/component/weapon/shared_scope_weapon_sm_s02.iff")
@@ -5544,7 +5645,8 @@ object_tangible_component_weapon_shared_scope_weapon_sm_s03 = SharedTangibleObje
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 484116595
+	clientObjectCRC = 484116595,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/base/shared_base_barrel.iff", "object/tangible/component/weapon/shared_scope_weapon.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_scope_weapon_sm_s03, "object/tangible/component/weapon/shared_scope_weapon_sm_s03.iff")
@@ -5598,7 +5700,8 @@ object_tangible_component_weapon_shared_scope_weapon_sm_s04 = SharedTangibleObje
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3879215975
+	clientObjectCRC = 3879215975,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/base/shared_base_barrel.iff", "object/tangible/component/weapon/shared_scope_weapon.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_scope_weapon_sm_s04, "object/tangible/component/weapon/shared_scope_weapon_sm_s04.iff")
@@ -5652,7 +5755,8 @@ object_tangible_component_weapon_shared_scope_weapon_sm_s05 = SharedTangibleObje
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2922726634
+	clientObjectCRC = 2922726634,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/base/shared_base_barrel.iff", "object/tangible/component/weapon/shared_scope_weapon.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_scope_weapon_sm_s05, "object/tangible/component/weapon/shared_scope_weapon_sm_s05.iff")
@@ -5706,7 +5810,8 @@ object_tangible_component_weapon_shared_scope_weapon_sm_s06 = SharedTangibleObje
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1965223037
+	clientObjectCRC = 1965223037,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/base/shared_base_barrel.iff", "object/tangible/component/weapon/shared_scope_weapon.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_scope_weapon_sm_s06, "object/tangible/component/weapon/shared_scope_weapon_sm_s06.iff")
@@ -5760,7 +5865,8 @@ object_tangible_component_weapon_shared_spider_spine = SharedTangibleObjectTempl
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1418250527
+	clientObjectCRC = 1418250527,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/base/shared_base_barrel.iff", "object/tangible/component/weapon/shared_base_projectile_feed_mechanism_enhancement.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_spider_spine, "object/tangible/component/weapon/shared_spider_spine.iff")
@@ -5814,7 +5920,8 @@ object_tangible_component_weapon_shared_stock = SharedTangibleObjectTemplate:new
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2306652479
+	clientObjectCRC = 2306652479,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/base/shared_base_barrel.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_stock, "object/tangible/component/weapon/shared_stock.iff")
@@ -5868,7 +5975,8 @@ object_tangible_component_weapon_shared_stock_advanced = SharedTangibleObjectTem
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3440579824
+	clientObjectCRC = 3440579824,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/base/shared_base_barrel.iff", "object/tangible/component/weapon/shared_stock.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_stock_advanced, "object/tangible/component/weapon/shared_stock_advanced.iff")
@@ -5922,7 +6030,8 @@ object_tangible_component_weapon_shared_stock_advanced_quest = SharedTangibleObj
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 473297139
+	clientObjectCRC = 473297139,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/base/shared_base_barrel.iff", "object/tangible/component/weapon/shared_stock.iff", "object/tangible/component/weapon/shared_stock_advanced.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_stock_advanced_quest, "object/tangible/component/weapon/shared_stock_advanced_quest.iff")
@@ -5976,7 +6085,8 @@ object_tangible_component_weapon_shared_sword_core = SharedTangibleObjectTemplat
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3001742780
+	clientObjectCRC = 3001742780,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/base/shared_base_barrel.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_sword_core, "object/tangible/component/weapon/shared_sword_core.iff")
@@ -6030,7 +6140,8 @@ object_tangible_component_weapon_shared_sword_core_advanced = SharedTangibleObje
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 639496171
+	clientObjectCRC = 639496171,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/base/shared_base_barrel.iff", "object/tangible/component/weapon/shared_sword_core.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_sword_core_advanced, "object/tangible/component/weapon/shared_sword_core_advanced.iff")
@@ -6084,7 +6195,8 @@ object_tangible_component_weapon_shared_sword_core_quest = SharedTangibleObjectT
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 937100583
+	clientObjectCRC = 937100583,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/base/shared_base_barrel.iff", "object/tangible/component/weapon/shared_sword_core.iff", "object/tangible/component/weapon/shared_sword_core_advanced.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_sword_core_quest, "object/tangible/component/weapon/shared_sword_core_quest.iff")
@@ -6138,7 +6250,8 @@ object_tangible_component_weapon_shared_turbo_laser_gun_tube = SharedTangibleObj
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2743057273
+	clientObjectCRC = 2743057273,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/base/shared_base_barrel.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_turbo_laser_gun_tube, "object/tangible/component/weapon/shared_turbo_laser_gun_tube.iff")
@@ -6192,7 +6305,8 @@ object_tangible_component_weapon_shared_vibro_unit = SharedTangibleObjectTemplat
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2075249202
+	clientObjectCRC = 2075249202,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/base/shared_base_barrel.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_vibro_unit, "object/tangible/component/weapon/shared_vibro_unit.iff")
@@ -6246,7 +6360,8 @@ object_tangible_component_weapon_shared_vibro_unit_advanced = SharedTangibleObje
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1094994187
+	clientObjectCRC = 1094994187,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/base/shared_base_barrel.iff", "object/tangible/component/weapon/shared_vibro_unit.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_vibro_unit_advanced, "object/tangible/component/weapon/shared_vibro_unit_advanced.iff")
@@ -6300,7 +6415,8 @@ object_tangible_component_weapon_shared_vibro_unit_enhancement_durability = Shar
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 719270332
+	clientObjectCRC = 719270332,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/base/shared_base_barrel.iff", "object/tangible/component/weapon/shared_base_vibro_unit_enhancement.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_vibro_unit_enhancement_durability, "object/tangible/component/weapon/shared_vibro_unit_enhancement_durability.iff")
@@ -6354,7 +6470,8 @@ object_tangible_component_weapon_shared_vibro_unit_enhancement_max_damage = Shar
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2404964923
+	clientObjectCRC = 2404964923,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/base/shared_base_barrel.iff", "object/tangible/component/weapon/shared_base_vibro_unit_enhancement.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_vibro_unit_enhancement_max_damage, "object/tangible/component/weapon/shared_vibro_unit_enhancement_max_damage.iff")
@@ -6408,7 +6525,8 @@ object_tangible_component_weapon_shared_vibro_unit_enhancement_min_damage = Shar
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3143975010
+	clientObjectCRC = 3143975010,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/base/shared_base_barrel.iff", "object/tangible/component/weapon/shared_base_vibro_unit_enhancement.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_vibro_unit_enhancement_min_damage, "object/tangible/component/weapon/shared_vibro_unit_enhancement_min_damage.iff")
@@ -6462,7 +6580,8 @@ object_tangible_component_weapon_shared_vibro_unit_enhancement_wounding = Shared
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1279704725
+	clientObjectCRC = 1279704725,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/base/shared_base_barrel.iff", "object/tangible/component/weapon/shared_base_vibro_unit_enhancement.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_vibro_unit_enhancement_wounding, "object/tangible/component/weapon/shared_vibro_unit_enhancement_wounding.iff")
@@ -6516,7 +6635,8 @@ object_tangible_component_weapon_shared_vibro_unit_nightsister = SharedTangibleO
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3670724056
+	clientObjectCRC = 3670724056,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/base/shared_base_barrel.iff", "object/tangible/component/weapon/shared_vibro_unit.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_vibro_unit_nightsister, "object/tangible/component/weapon/shared_vibro_unit_nightsister.iff")
@@ -6570,7 +6690,8 @@ object_tangible_component_weapon_shared_vibro_unit_quest = SharedTangibleObjectT
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2177771940
+	clientObjectCRC = 2177771940,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/base/shared_base_barrel.iff", "object/tangible/component/weapon/shared_vibro_unit.iff", "object/tangible/component/weapon/shared_vibro_unit_advanced.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_vibro_unit_quest, "object/tangible/component/weapon/shared_vibro_unit_quest.iff")
@@ -6624,7 +6745,8 @@ object_tangible_component_weapon_shared_weapon_carbine_laser_stock = SharedTangi
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3845302346
+	clientObjectCRC = 3845302346,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_weapon_carbine_laser_stock, "object/tangible/component/weapon/shared_weapon_carbine_laser_stock.iff")
@@ -6678,7 +6800,8 @@ object_tangible_component_weapon_shared_weapon_dlt20_stock = SharedTangibleObjec
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 784421487
+	clientObjectCRC = 784421487,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_weapon_dlt20_stock, "object/tangible/component/weapon/shared_weapon_dlt20_stock.iff")
@@ -6732,7 +6855,8 @@ object_tangible_component_weapon_shared_weapon_dxr6_stock = SharedTangibleObject
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3265377487
+	clientObjectCRC = 3265377487,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_weapon_dxr6_stock, "object/tangible/component/weapon/shared_weapon_dxr6_stock.iff")
@@ -6786,7 +6910,8 @@ object_tangible_component_weapon_shared_weapon_e11_stock_closed = SharedTangible
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2778389108
+	clientObjectCRC = 2778389108,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_weapon_e11_stock_closed, "object/tangible/component/weapon/shared_weapon_e11_stock_closed.iff")
@@ -6840,7 +6965,8 @@ object_tangible_component_weapon_shared_weapon_e11_stock_open = SharedTangibleOb
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3082135386
+	clientObjectCRC = 3082135386,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_weapon_e11_stock_open, "object/tangible/component/weapon/shared_weapon_e11_stock_open.iff")
@@ -6894,7 +7020,8 @@ object_tangible_component_weapon_shared_weapon_ee3_stock = SharedTangibleObjectT
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 119190783
+	clientObjectCRC = 119190783,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_weapon_ee3_stock, "object/tangible/component/weapon/shared_weapon_ee3_stock.iff")
@@ -6948,7 +7075,8 @@ object_tangible_component_weapon_shared_weapon_elite_stock = SharedTangibleObjec
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2199807561
+	clientObjectCRC = 2199807561,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_weapon_elite_stock, "object/tangible/component/weapon/shared_weapon_elite_stock.iff")
@@ -7002,7 +7130,8 @@ object_tangible_component_weapon_shared_weapon_mount = SharedTangibleObjectTempl
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4368733
+	clientObjectCRC = 4368733,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/base/shared_base_barrel.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_weapon_mount, "object/tangible/component/weapon/shared_weapon_mount.iff")
@@ -7056,7 +7185,8 @@ object_tangible_component_weapon_shared_weapon_mount_light = SharedTangibleObjec
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1483742937
+	clientObjectCRC = 1483742937,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/base/shared_base_barrel.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_weapon_mount_light, "object/tangible/component/weapon/shared_weapon_mount_light.iff")
@@ -7110,7 +7240,8 @@ object_tangible_component_weapon_shared_weapon_rifle_laser_stock = SharedTangibl
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2098038776
+	clientObjectCRC = 2098038776,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_weapon_rifle_laser_stock, "object/tangible/component/weapon/shared_weapon_rifle_laser_stock.iff")
@@ -7164,7 +7295,8 @@ object_tangible_component_weapon_shared_weapon_t21_stock = SharedTangibleObjectT
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1060795790
+	clientObjectCRC = 1060795790,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_weapon_t21_stock, "object/tangible/component/weapon/shared_weapon_t21_stock.iff")
@@ -7218,7 +7350,8 @@ object_tangible_component_weapon_shared_weapon_targeting_computer = SharedTangib
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1015355286
+	clientObjectCRC = 1015355286,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/base/shared_base_barrel.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_weapon_targeting_computer, "object/tangible/component/weapon/shared_weapon_targeting_computer.iff")
@@ -7272,7 +7405,8 @@ object_tangible_component_weapon_shared_weapon_trajectory_computer = SharedTangi
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1519446623
+	clientObjectCRC = 1519446623,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/base/shared_base_barrel.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_weapon_trajectory_computer, "object/tangible/component/weapon/shared_weapon_trajectory_computer.iff")

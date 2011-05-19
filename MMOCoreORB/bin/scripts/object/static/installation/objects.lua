@@ -80,7 +80,8 @@ object_static_installation_shared_mockup_factory_clothing_style_1 = SharedStatic
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1376116358
+	clientObjectCRC = 1376116358,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_installation_shared_mockup_factory_clothing_style_1, "object/static/installation/shared_mockup_factory_clothing_style_1.iff")
@@ -124,7 +125,8 @@ object_static_installation_shared_mockup_factory_item_style_1 = SharedStaticObje
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1702691941
+	clientObjectCRC = 1702691941,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_installation_shared_mockup_factory_item_style_1, "object/static/installation/shared_mockup_factory_item_style_1.iff")
@@ -168,7 +170,8 @@ object_static_installation_shared_mockup_factory_machine_style_1 = SharedStaticO
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1996893062
+	clientObjectCRC = 1996893062,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_installation_shared_mockup_factory_machine_style_1, "object/static/installation/shared_mockup_factory_machine_style_1.iff")
@@ -212,7 +215,8 @@ object_static_installation_shared_mockup_factory_organic_style_1 = SharedStaticO
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1851420525
+	clientObjectCRC = 1851420525,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_installation_shared_mockup_factory_organic_style_1, "object/static/installation/shared_mockup_factory_organic_style_1.iff")
@@ -256,7 +260,8 @@ object_static_installation_shared_mockup_farm_creature_style_1 = SharedStaticObj
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2670476003
+	clientObjectCRC = 2670476003,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_installation_shared_mockup_farm_creature_style_1, "object/static/installation/shared_mockup_farm_creature_style_1.iff")
@@ -300,7 +305,8 @@ object_static_installation_shared_mockup_farm_flora_style_1 = SharedStaticObject
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 455333563
+	clientObjectCRC = 455333563,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_installation_shared_mockup_farm_flora_style_1, "object/static/installation/shared_mockup_farm_flora_style_1.iff")
@@ -344,7 +350,8 @@ object_static_installation_shared_mockup_mining_gas_harvester_style_1 = SharedSt
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 952651135
+	clientObjectCRC = 952651135,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_installation_shared_mockup_mining_gas_harvester_style_1, "object/static/installation/shared_mockup_mining_gas_harvester_style_1.iff")
@@ -388,7 +395,8 @@ object_static_installation_shared_mockup_mining_liquid_harvester_style_1 = Share
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2973636894
+	clientObjectCRC = 2973636894,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_installation_shared_mockup_mining_liquid_harvester_style_1, "object/static/installation/shared_mockup_mining_liquid_harvester_style_1.iff")
@@ -432,7 +440,8 @@ object_static_installation_shared_mockup_mining_liquid_moisture_harvester = Shar
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3774495712
+	clientObjectCRC = 3774495712,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_installation_shared_mockup_mining_liquid_moisture_harvester, "object/static/installation/shared_mockup_mining_liquid_moisture_harvester.iff")
@@ -476,7 +485,8 @@ object_static_installation_shared_mockup_mining_ore_harvester_style_1 = SharedSt
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3112884760
+	clientObjectCRC = 3112884760,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_installation_shared_mockup_mining_ore_harvester_style_1, "object/static/installation/shared_mockup_mining_ore_harvester_style_1.iff")
@@ -520,7 +530,8 @@ object_static_installation_shared_mockup_mining_ore_harvester_style_2 = SharedSt
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1654485647
+	clientObjectCRC = 1654485647,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_installation_shared_mockup_mining_ore_harvester_style_2, "object/static/installation/shared_mockup_mining_ore_harvester_style_2.iff")
@@ -564,7 +575,8 @@ object_static_installation_shared_mockup_power_generator_fusion_style_1 = Shared
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2278647849
+	clientObjectCRC = 2278647849,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_installation_shared_mockup_power_generator_fusion_style_1, "object/static/installation/shared_mockup_power_generator_fusion_style_1.iff")
@@ -608,7 +620,8 @@ object_static_installation_shared_mockup_power_generator_photo_bio_style_1 = Sha
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1650901824
+	clientObjectCRC = 1650901824,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_installation_shared_mockup_power_generator_photo_bio_style_1, "object/static/installation/shared_mockup_power_generator_photo_bio_style_1.iff")
@@ -652,7 +665,8 @@ object_static_installation_shared_mockup_power_generator_solar_style_1 = SharedS
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2423687218
+	clientObjectCRC = 2423687218,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_installation_shared_mockup_power_generator_solar_style_1, "object/static/installation/shared_mockup_power_generator_solar_style_1.iff")
@@ -696,7 +710,8 @@ object_static_installation_shared_mockup_power_generator_wind_style_1 = SharedSt
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 467258209
+	clientObjectCRC = 467258209,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_installation_shared_mockup_power_generator_wind_style_1, "object/static/installation/shared_mockup_power_generator_wind_style_1.iff")

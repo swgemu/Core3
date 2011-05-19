@@ -80,7 +80,8 @@ object_token_base_shared_base_token = SharedTokenObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3897855130
+	clientObjectCRC = 3897855130,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_token_base_shared_base_token, "object/token/base/shared_base_token.iff")
@@ -124,7 +125,8 @@ object_token_base_shared_token_default = SharedTokenObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 599623444
+	clientObjectCRC = 599623444,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/token/base/shared_base_token.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_token_base_shared_token_default, "object/token/base/shared_token_default.iff")

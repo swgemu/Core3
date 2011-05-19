@@ -90,7 +90,8 @@ object_tangible_lair_gualama_shared_lair_gualama = SharedTangibleObjectTemplate:
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1781219126
+	clientObjectCRC = 1781219126,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_gualama_shared_lair_gualama, "object/tangible/lair/gualama/shared_lair_gualama.iff")
@@ -144,7 +145,8 @@ object_tangible_lair_gualama_shared_lair_gualama_grassland = SharedTangibleObjec
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 464760681
+	clientObjectCRC = 464760681,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_gualama_shared_lair_gualama_grassland, "object/tangible/lair/gualama/shared_lair_gualama_grassland.iff")

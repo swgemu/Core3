@@ -90,7 +90,8 @@ object_tangible_skill_buff_shared_skill_buff_carbine_accuracy = SharedTangibleOb
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3070103050
+	clientObjectCRC = 3070103050,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/skill_buff/base/shared_skill_buff_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_skill_buff_shared_skill_buff_carbine_accuracy, "object/tangible/skill_buff/shared_skill_buff_carbine_accuracy.iff")
@@ -144,7 +145,8 @@ object_tangible_skill_buff_shared_skill_buff_carbine_speed = SharedTangibleObjec
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2417642005
+	clientObjectCRC = 2417642005,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/skill_buff/base/shared_skill_buff_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_skill_buff_shared_skill_buff_carbine_speed, "object/tangible/skill_buff/shared_skill_buff_carbine_speed.iff")
@@ -198,7 +200,8 @@ object_tangible_skill_buff_shared_skill_buff_heavy_weapon_accuracy = SharedTangi
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1148030361
+	clientObjectCRC = 1148030361,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/skill_buff/base/shared_skill_buff_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_skill_buff_shared_skill_buff_heavy_weapon_accuracy, "object/tangible/skill_buff/shared_skill_buff_heavy_weapon_accuracy.iff")
@@ -252,7 +255,8 @@ object_tangible_skill_buff_shared_skill_buff_heavy_weapon_speed = SharedTangible
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2003739536
+	clientObjectCRC = 2003739536,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/skill_buff/base/shared_skill_buff_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_skill_buff_shared_skill_buff_heavy_weapon_speed, "object/tangible/skill_buff/shared_skill_buff_heavy_weapon_speed.iff")
@@ -306,7 +310,8 @@ object_tangible_skill_buff_shared_skill_buff_mask_scent = SharedTangibleObjectTe
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2803312333
+	clientObjectCRC = 2803312333,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/skill_buff/base/shared_skill_buff_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_skill_buff_shared_skill_buff_mask_scent, "object/tangible/skill_buff/shared_skill_buff_mask_scent.iff")
@@ -360,7 +365,8 @@ object_tangible_skill_buff_shared_skill_buff_melee_accuracy = SharedTangibleObje
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 687567212
+	clientObjectCRC = 687567212,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/skill_buff/base/shared_skill_buff_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_skill_buff_shared_skill_buff_melee_accuracy, "object/tangible/skill_buff/shared_skill_buff_melee_accuracy.iff")
@@ -414,7 +420,8 @@ object_tangible_skill_buff_shared_skill_buff_melee_defense = SharedTangibleObjec
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3148321230
+	clientObjectCRC = 3148321230,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/skill_buff/base/shared_skill_buff_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_skill_buff_shared_skill_buff_melee_defense, "object/tangible/skill_buff/shared_skill_buff_melee_defense.iff")
@@ -468,7 +475,8 @@ object_tangible_skill_buff_shared_skill_buff_onehandmelee_accuracy = SharedTangi
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 336832987
+	clientObjectCRC = 336832987,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/skill_buff/base/shared_skill_buff_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_skill_buff_shared_skill_buff_onehandmelee_accuracy, "object/tangible/skill_buff/shared_skill_buff_onehandmelee_accuracy.iff")
@@ -522,7 +530,8 @@ object_tangible_skill_buff_shared_skill_buff_onehandmelee_speed = SharedTangible
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3043511880
+	clientObjectCRC = 3043511880,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/skill_buff/base/shared_skill_buff_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_skill_buff_shared_skill_buff_onehandmelee_speed, "object/tangible/skill_buff/shared_skill_buff_onehandmelee_speed.iff")
@@ -576,7 +585,8 @@ object_tangible_skill_buff_shared_skill_buff_pistol_accuracy = SharedTangibleObj
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4053673313
+	clientObjectCRC = 4053673313,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/skill_buff/base/shared_skill_buff_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_skill_buff_shared_skill_buff_pistol_accuracy, "object/tangible/skill_buff/shared_skill_buff_pistol_accuracy.iff")
@@ -630,7 +640,8 @@ object_tangible_skill_buff_shared_skill_buff_pistol_speed = SharedTangibleObject
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3705181543
+	clientObjectCRC = 3705181543,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/skill_buff/base/shared_skill_buff_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_skill_buff_shared_skill_buff_pistol_speed, "object/tangible/skill_buff/shared_skill_buff_pistol_speed.iff")
@@ -684,7 +695,8 @@ object_tangible_skill_buff_shared_skill_buff_polearm_accuracy = SharedTangibleOb
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2877612542
+	clientObjectCRC = 2877612542,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/skill_buff/base/shared_skill_buff_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_skill_buff_shared_skill_buff_polearm_accuracy, "object/tangible/skill_buff/shared_skill_buff_polearm_accuracy.iff")
@@ -738,7 +750,8 @@ object_tangible_skill_buff_shared_skill_buff_polearm_speed = SharedTangibleObjec
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2574942749
+	clientObjectCRC = 2574942749,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/skill_buff/base/shared_skill_buff_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_skill_buff_shared_skill_buff_polearm_speed, "object/tangible/skill_buff/shared_skill_buff_polearm_speed.iff")
@@ -792,7 +805,8 @@ object_tangible_skill_buff_shared_skill_buff_ranged_accuracy = SharedTangibleObj
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2321374102
+	clientObjectCRC = 2321374102,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/skill_buff/base/shared_skill_buff_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_skill_buff_shared_skill_buff_ranged_accuracy, "object/tangible/skill_buff/shared_skill_buff_ranged_accuracy.iff")
@@ -846,7 +860,8 @@ object_tangible_skill_buff_shared_skill_buff_ranged_defense = SharedTangibleObje
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 655697476
+	clientObjectCRC = 655697476,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/skill_buff/base/shared_skill_buff_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_skill_buff_shared_skill_buff_ranged_defense, "object/tangible/skill_buff/shared_skill_buff_ranged_defense.iff")
@@ -900,7 +915,8 @@ object_tangible_skill_buff_shared_skill_buff_rifle_accuracy = SharedTangibleObje
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1676691901
+	clientObjectCRC = 1676691901,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/skill_buff/base/shared_skill_buff_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_skill_buff_shared_skill_buff_rifle_accuracy, "object/tangible/skill_buff/shared_skill_buff_rifle_accuracy.iff")
@@ -954,7 +970,8 @@ object_tangible_skill_buff_shared_skill_buff_rifle_speed = SharedTangibleObjectT
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1002436514
+	clientObjectCRC = 1002436514,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/skill_buff/base/shared_skill_buff_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_skill_buff_shared_skill_buff_rifle_speed, "object/tangible/skill_buff/shared_skill_buff_rifle_speed.iff")
@@ -1008,7 +1025,8 @@ object_tangible_skill_buff_shared_skill_buff_thrown_accuracy = SharedTangibleObj
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 675038361
+	clientObjectCRC = 675038361,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/skill_buff/base/shared_skill_buff_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_skill_buff_shared_skill_buff_thrown_accuracy, "object/tangible/skill_buff/shared_skill_buff_thrown_accuracy.iff")
@@ -1062,7 +1080,8 @@ object_tangible_skill_buff_shared_skill_buff_thrown_speed = SharedTangibleObject
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2671557576
+	clientObjectCRC = 2671557576,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/skill_buff/base/shared_skill_buff_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_skill_buff_shared_skill_buff_thrown_speed, "object/tangible/skill_buff/shared_skill_buff_thrown_speed.iff")
@@ -1116,7 +1135,8 @@ object_tangible_skill_buff_shared_skill_buff_twohandmelee_accuracy = SharedTangi
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1962907578
+	clientObjectCRC = 1962907578,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/skill_buff/base/shared_skill_buff_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_skill_buff_shared_skill_buff_twohandmelee_accuracy, "object/tangible/skill_buff/shared_skill_buff_twohandmelee_accuracy.iff")
@@ -1170,7 +1190,8 @@ object_tangible_skill_buff_shared_skill_buff_twohandmelee_speed = SharedTangible
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2007596912
+	clientObjectCRC = 2007596912,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/skill_buff/base/shared_skill_buff_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_skill_buff_shared_skill_buff_twohandmelee_speed, "object/tangible/skill_buff/shared_skill_buff_twohandmelee_speed.iff")
@@ -1224,7 +1245,8 @@ object_tangible_skill_buff_shared_skill_buff_unarmed_accuracy = SharedTangibleOb
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2213257613
+	clientObjectCRC = 2213257613,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/skill_buff/base/shared_skill_buff_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_skill_buff_shared_skill_buff_unarmed_accuracy, "object/tangible/skill_buff/shared_skill_buff_unarmed_accuracy.iff")
@@ -1278,7 +1300,8 @@ object_tangible_skill_buff_shared_skill_buff_unarmed_speed = SharedTangibleObjec
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2704330106
+	clientObjectCRC = 2704330106,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/skill_buff/base/shared_skill_buff_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_skill_buff_shared_skill_buff_unarmed_speed, "object/tangible/skill_buff/shared_skill_buff_unarmed_speed.iff")

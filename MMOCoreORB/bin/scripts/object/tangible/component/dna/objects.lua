@@ -90,7 +90,8 @@ object_tangible_component_dna_shared_dna_sample_above_average = SharedTangibleOb
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3272908463
+	clientObjectCRC = 3272908463,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_dna_sample.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_dna_shared_dna_sample_above_average, "object/tangible/component/dna/shared_dna_sample_above_average.iff")
@@ -144,7 +145,8 @@ object_tangible_component_dna_shared_dna_sample_average = SharedTangibleObjectTe
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2524715920
+	clientObjectCRC = 2524715920,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_dna_sample.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_dna_shared_dna_sample_average, "object/tangible/component/dna/shared_dna_sample_average.iff")
@@ -198,7 +200,8 @@ object_tangible_component_dna_shared_dna_sample_below_average = SharedTangibleOb
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 675784259
+	clientObjectCRC = 675784259,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_dna_sample.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_dna_shared_dna_sample_below_average, "object/tangible/component/dna/shared_dna_sample_below_average.iff")
@@ -252,7 +255,8 @@ object_tangible_component_dna_shared_dna_sample_high = SharedTangibleObjectTempl
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3034626514
+	clientObjectCRC = 3034626514,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_dna_sample.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_dna_shared_dna_sample_high, "object/tangible/component/dna/shared_dna_sample_high.iff")
@@ -306,7 +310,8 @@ object_tangible_component_dna_shared_dna_sample_low = SharedTangibleObjectTempla
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2579345010
+	clientObjectCRC = 2579345010,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_dna_sample.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_dna_shared_dna_sample_low, "object/tangible/component/dna/shared_dna_sample_low.iff")
@@ -360,7 +365,8 @@ object_tangible_component_dna_shared_dna_sample_very_high = SharedTangibleObject
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 299885620
+	clientObjectCRC = 299885620,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_dna_sample.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_dna_shared_dna_sample_very_high, "object/tangible/component/dna/shared_dna_sample_very_high.iff")
@@ -414,7 +420,8 @@ object_tangible_component_dna_shared_dna_sample_very_low = SharedTangibleObjectT
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1076609940
+	clientObjectCRC = 1076609940,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_dna_sample.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_dna_shared_dna_sample_very_low, "object/tangible/component/dna/shared_dna_sample_very_low.iff")
@@ -468,7 +475,8 @@ object_tangible_component_dna_shared_dna_template_angler = SharedTangibleObjectT
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 461916189
+	clientObjectCRC = 461916189,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_dna_shared_dna_template_angler, "object/tangible/component/dna/shared_dna_template_angler.iff")
@@ -522,7 +530,8 @@ object_tangible_component_dna_shared_dna_template_bantha = SharedTangibleObjectT
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 726704759
+	clientObjectCRC = 726704759,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_dna_shared_dna_template_bantha, "object/tangible/component/dna/shared_dna_template_bantha.iff")
@@ -576,7 +585,8 @@ object_tangible_component_dna_shared_dna_template_bearded_jax = SharedTangibleOb
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 727178963
+	clientObjectCRC = 727178963,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_dna_shared_dna_template_bearded_jax, "object/tangible/component/dna/shared_dna_template_bearded_jax.iff")
@@ -630,7 +640,8 @@ object_tangible_component_dna_shared_dna_template_blurrg = SharedTangibleObjectT
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1265107329
+	clientObjectCRC = 1265107329,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_dna_shared_dna_template_blurrg, "object/tangible/component/dna/shared_dna_template_blurrg.iff")
@@ -684,7 +695,8 @@ object_tangible_component_dna_shared_dna_template_bol = SharedTangibleObjectTemp
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 706373854
+	clientObjectCRC = 706373854,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_dna_shared_dna_template_bol, "object/tangible/component/dna/shared_dna_template_bol.iff")
@@ -738,7 +750,8 @@ object_tangible_component_dna_shared_dna_template_bolle_bol = SharedTangibleObje
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 214227430
+	clientObjectCRC = 214227430,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_dna_shared_dna_template_bolle_bol, "object/tangible/component/dna/shared_dna_template_bolle_bol.iff")
@@ -792,7 +805,8 @@ object_tangible_component_dna_shared_dna_template_bolma = SharedTangibleObjectTe
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1395080056
+	clientObjectCRC = 1395080056,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_dna_shared_dna_template_bolma, "object/tangible/component/dna/shared_dna_template_bolma.iff")
@@ -846,7 +860,8 @@ object_tangible_component_dna_shared_dna_template_brackaset = SharedTangibleObje
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3633553517
+	clientObjectCRC = 3633553517,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_dna_shared_dna_template_brackaset, "object/tangible/component/dna/shared_dna_template_brackaset.iff")
@@ -900,7 +915,8 @@ object_tangible_component_dna_shared_dna_template_carrion_spat = SharedTangibleO
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1875152726
+	clientObjectCRC = 1875152726,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_dna_shared_dna_template_carrion_spat, "object/tangible/component/dna/shared_dna_template_carrion_spat.iff")
@@ -954,7 +970,8 @@ object_tangible_component_dna_shared_dna_template_choku = SharedTangibleObjectTe
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 262963315
+	clientObjectCRC = 262963315,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_dna_shared_dna_template_choku, "object/tangible/component/dna/shared_dna_template_choku.iff")
@@ -1008,7 +1025,8 @@ object_tangible_component_dna_shared_dna_template_dalyrake = SharedTangibleObjec
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1214055048
+	clientObjectCRC = 1214055048,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_dna_shared_dna_template_dalyrake, "object/tangible/component/dna/shared_dna_template_dalyrake.iff")
@@ -1062,7 +1080,8 @@ object_tangible_component_dna_shared_dna_template_dewback = SharedTangibleObject
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1144992157
+	clientObjectCRC = 1144992157,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_dna_shared_dna_template_dewback, "object/tangible/component/dna/shared_dna_template_dewback.iff")
@@ -1116,7 +1135,8 @@ object_tangible_component_dna_shared_dna_template_eopie = SharedTangibleObjectTe
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1680199838
+	clientObjectCRC = 1680199838,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_dna_shared_dna_template_eopie, "object/tangible/component/dna/shared_dna_template_eopie.iff")
@@ -1170,7 +1190,8 @@ object_tangible_component_dna_shared_dna_template_falumpaset = SharedTangibleObj
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 671613943
+	clientObjectCRC = 671613943,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_dna_shared_dna_template_falumpaset, "object/tangible/component/dna/shared_dna_template_falumpaset.iff")
@@ -1224,7 +1245,8 @@ object_tangible_component_dna_shared_dna_template_fambaa = SharedTangibleObjectT
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1331331454
+	clientObjectCRC = 1331331454,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_dna_shared_dna_template_fambaa, "object/tangible/component/dna/shared_dna_template_fambaa.iff")
@@ -1278,7 +1300,8 @@ object_tangible_component_dna_shared_dna_template_generic = SharedTangibleObject
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 836379806
+	clientObjectCRC = 836379806,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_dna_shared_dna_template_generic, "object/tangible/component/dna/shared_dna_template_generic.iff")
@@ -1332,7 +1355,8 @@ object_tangible_component_dna_shared_dna_template_gualama = SharedTangibleObject
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 17241294
+	clientObjectCRC = 17241294,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_dna_shared_dna_template_gualama, "object/tangible/component/dna/shared_dna_template_gualama.iff")
@@ -1386,7 +1410,8 @@ object_tangible_component_dna_shared_dna_template_guf_drolg = SharedTangibleObje
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 774185499
+	clientObjectCRC = 774185499,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_dna_shared_dna_template_guf_drolg, "object/tangible/component/dna/shared_dna_template_guf_drolg.iff")
@@ -1440,7 +1465,8 @@ object_tangible_component_dna_shared_dna_template_gurrcat = SharedTangibleObject
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1857431024
+	clientObjectCRC = 1857431024,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_dna_shared_dna_template_gurrcat, "object/tangible/component/dna/shared_dna_template_gurrcat.iff")
@@ -1494,7 +1520,8 @@ object_tangible_component_dna_shared_dna_template_gurreck = SharedTangibleObject
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3322704079
+	clientObjectCRC = 3322704079,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_dna_shared_dna_template_gurreck, "object/tangible/component/dna/shared_dna_template_gurreck.iff")
@@ -1548,7 +1575,8 @@ object_tangible_component_dna_shared_dna_template_kaadu = SharedTangibleObjectTe
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1112595757
+	clientObjectCRC = 1112595757,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_dna_shared_dna_template_kaadu, "object/tangible/component/dna/shared_dna_template_kaadu.iff")
@@ -1602,7 +1630,8 @@ object_tangible_component_dna_shared_dna_template_kahmurra = SharedTangibleObjec
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1394407158
+	clientObjectCRC = 1394407158,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_dna_shared_dna_template_kahmurra, "object/tangible/component/dna/shared_dna_template_kahmurra.iff")
@@ -1656,7 +1685,8 @@ object_tangible_component_dna_shared_dna_template_kimogila = SharedTangibleObjec
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2155310796
+	clientObjectCRC = 2155310796,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_dna_shared_dna_template_kimogila, "object/tangible/component/dna/shared_dna_template_kimogila.iff")
@@ -1710,7 +1740,8 @@ object_tangible_component_dna_shared_dna_template_krahbu = SharedTangibleObjectT
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 67998893
+	clientObjectCRC = 67998893,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_dna_shared_dna_template_krahbu, "object/tangible/component/dna/shared_dna_template_krahbu.iff")
@@ -1764,7 +1795,8 @@ object_tangible_component_dna_shared_dna_template_kusak = SharedTangibleObjectTe
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4199501468
+	clientObjectCRC = 4199501468,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_dna_shared_dna_template_kusak, "object/tangible/component/dna/shared_dna_template_kusak.iff")
@@ -1818,7 +1850,8 @@ object_tangible_component_dna_shared_dna_template_narglatch = SharedTangibleObje
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2079919048
+	clientObjectCRC = 2079919048,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_dna_shared_dna_template_narglatch, "object/tangible/component/dna/shared_dna_template_narglatch.iff")
@@ -1872,7 +1905,8 @@ object_tangible_component_dna_shared_dna_template_pugoriss = SharedTangibleObjec
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3819931989
+	clientObjectCRC = 3819931989,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_dna_shared_dna_template_pugoriss, "object/tangible/component/dna/shared_dna_template_pugoriss.iff")
@@ -1926,7 +1960,8 @@ object_tangible_component_dna_shared_dna_template_rancor = SharedTangibleObjectT
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 324550464
+	clientObjectCRC = 324550464,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_dna_shared_dna_template_rancor, "object/tangible/component/dna/shared_dna_template_rancor.iff")
@@ -1980,7 +2015,8 @@ object_tangible_component_dna_shared_dna_template_ronto = SharedTangibleObjectTe
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1390548887
+	clientObjectCRC = 1390548887,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_dna_shared_dna_template_ronto, "object/tangible/component/dna/shared_dna_template_ronto.iff")
@@ -2034,7 +2070,8 @@ object_tangible_component_dna_shared_dna_template_sand_panther = SharedTangibleO
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2605574472
+	clientObjectCRC = 2605574472,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_dna_shared_dna_template_sand_panther, "object/tangible/component/dna/shared_dna_template_sand_panther.iff")
@@ -2088,7 +2125,8 @@ object_tangible_component_dna_shared_dna_template_snorbal = SharedTangibleObject
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3055149098
+	clientObjectCRC = 3055149098,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_dna_shared_dna_template_snorbal, "object/tangible/component/dna/shared_dna_template_snorbal.iff")
@@ -2142,7 +2180,8 @@ object_tangible_component_dna_shared_dna_template_torton = SharedTangibleObjectT
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1232171307
+	clientObjectCRC = 1232171307,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_dna_shared_dna_template_torton, "object/tangible/component/dna/shared_dna_template_torton.iff")
@@ -2196,7 +2235,8 @@ object_tangible_component_dna_shared_dna_template_tybis = SharedTangibleObjectTe
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3076355230
+	clientObjectCRC = 3076355230,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_dna_shared_dna_template_tybis, "object/tangible/component/dna/shared_dna_template_tybis.iff")
@@ -2250,7 +2290,8 @@ object_tangible_component_dna_shared_dna_template_veermok = SharedTangibleObject
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3141045747
+	clientObjectCRC = 3141045747,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_dna_shared_dna_template_veermok, "object/tangible/component/dna/shared_dna_template_veermok.iff")
@@ -2304,7 +2345,8 @@ object_tangible_component_dna_shared_dna_template_zucca_boar = SharedTangibleObj
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 228699959
+	clientObjectCRC = 228699959,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_dna_shared_dna_template_zucca_boar, "object/tangible/component/dna/shared_dna_template_zucca_boar.iff")

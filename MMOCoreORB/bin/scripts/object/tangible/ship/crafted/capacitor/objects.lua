@@ -90,7 +90,8 @@ object_tangible_ship_crafted_capacitor_shared_advanced_capacitor_battery = Share
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3843288645
+	clientObjectCRC = 3843288645,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_subcomponent_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_capacitor_shared_advanced_capacitor_battery, "object/tangible/ship/crafted/capacitor/shared_advanced_capacitor_battery.iff")
@@ -144,7 +145,8 @@ object_tangible_ship_crafted_capacitor_shared_advanced_recharge_module = SharedT
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4282694391
+	clientObjectCRC = 4282694391,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_subcomponent_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_capacitor_shared_advanced_recharge_module, "object/tangible/ship/crafted/capacitor/shared_advanced_recharge_module.iff")
@@ -198,7 +200,8 @@ object_tangible_ship_crafted_capacitor_shared_base_capacitor = SharedTangibleObj
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3064505654
+	clientObjectCRC = 3064505654,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_capacitor_shared_base_capacitor, "object/tangible/ship/crafted/capacitor/shared_base_capacitor.iff")
@@ -252,7 +255,8 @@ object_tangible_ship_crafted_capacitor_shared_base_capacitor_subcomponent = Shar
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4258529862
+	clientObjectCRC = 4258529862,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_subcomponent_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_capacitor_shared_base_capacitor_subcomponent, "object/tangible/ship/crafted/capacitor/shared_base_capacitor_subcomponent.iff")
@@ -306,7 +310,8 @@ object_tangible_ship_crafted_capacitor_shared_base_capacitor_subcomponent_mk1 = 
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1484781854
+	clientObjectCRC = 1484781854,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_subcomponent_base.iff", "object/tangible/ship/crafted/capacitor/shared_base_capacitor_subcomponent.iff", "object/tangible/ship/crafted/capacitor/shared_base_capacitor_subcomponent_mk5.iff", "object/tangible/ship/crafted/capacitor/shared_base_capacitor_subcomponent_mk4.iff", "object/tangible/ship/crafted/capacitor/shared_base_capacitor_subcomponent_mk3.iff", "object/tangible/ship/crafted/capacitor/shared_base_capacitor_subcomponent_mk2.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_capacitor_shared_base_capacitor_subcomponent_mk1, "object/tangible/ship/crafted/capacitor/shared_base_capacitor_subcomponent_mk1.iff")
@@ -360,7 +365,8 @@ object_tangible_ship_crafted_capacitor_shared_base_capacitor_subcomponent_mk2 = 
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2204651913
+	clientObjectCRC = 2204651913,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_subcomponent_base.iff", "object/tangible/ship/crafted/capacitor/shared_base_capacitor_subcomponent.iff", "object/tangible/ship/crafted/capacitor/shared_base_capacitor_subcomponent_mk5.iff", "object/tangible/ship/crafted/capacitor/shared_base_capacitor_subcomponent_mk4.iff", "object/tangible/ship/crafted/capacitor/shared_base_capacitor_subcomponent_mk3.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_capacitor_shared_base_capacitor_subcomponent_mk2, "object/tangible/ship/crafted/capacitor/shared_base_capacitor_subcomponent_mk2.iff")
@@ -414,7 +420,8 @@ object_tangible_ship_crafted_capacitor_shared_base_capacitor_subcomponent_mk3 = 
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3395630596
+	clientObjectCRC = 3395630596,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_subcomponent_base.iff", "object/tangible/ship/crafted/capacitor/shared_base_capacitor_subcomponent.iff", "object/tangible/ship/crafted/capacitor/shared_base_capacitor_subcomponent_mk5.iff", "object/tangible/ship/crafted/capacitor/shared_base_capacitor_subcomponent_mk4.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_capacitor_shared_base_capacitor_subcomponent_mk3, "object/tangible/ship/crafted/capacitor/shared_base_capacitor_subcomponent_mk3.iff")
@@ -468,7 +475,8 @@ object_tangible_ship_crafted_capacitor_shared_base_capacitor_subcomponent_mk4 = 
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 830872848
+	clientObjectCRC = 830872848,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_subcomponent_base.iff", "object/tangible/ship/crafted/capacitor/shared_base_capacitor_subcomponent.iff", "object/tangible/ship/crafted/capacitor/shared_base_capacitor_subcomponent_mk5.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_capacitor_shared_base_capacitor_subcomponent_mk4, "object/tangible/ship/crafted/capacitor/shared_base_capacitor_subcomponent_mk4.iff")
@@ -522,7 +530,8 @@ object_tangible_ship_crafted_capacitor_shared_base_capacitor_subcomponent_mk5 = 
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2022406813
+	clientObjectCRC = 2022406813,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_subcomponent_base.iff", "object/tangible/ship/crafted/capacitor/shared_base_capacitor_subcomponent.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_capacitor_shared_base_capacitor_subcomponent_mk5, "object/tangible/ship/crafted/capacitor/shared_base_capacitor_subcomponent_mk5.iff")
@@ -576,7 +585,8 @@ object_tangible_ship_crafted_capacitor_shared_basic_capacitor = SharedTangibleOb
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1364868080
+	clientObjectCRC = 1364868080,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_capacitor_shared_basic_capacitor, "object/tangible/ship/crafted/capacitor/shared_basic_capacitor.iff")
@@ -630,7 +640,8 @@ object_tangible_ship_crafted_capacitor_shared_capacitor_mk1 = SharedTangibleObje
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 277361603
+	clientObjectCRC = 277361603,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_capacitor_shared_capacitor_mk1, "object/tangible/ship/crafted/capacitor/shared_capacitor_mk1.iff")
@@ -684,7 +695,8 @@ object_tangible_ship_crafted_capacitor_shared_capacitor_mk2 = SharedTangibleObje
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3416234836
+	clientObjectCRC = 3416234836,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_capacitor_shared_capacitor_mk2, "object/tangible/ship/crafted/capacitor/shared_capacitor_mk2.iff")
@@ -738,7 +750,8 @@ object_tangible_ship_crafted_capacitor_shared_capacitor_mk3 = SharedTangibleObje
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2190671065
+	clientObjectCRC = 2190671065,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_capacitor_shared_capacitor_mk3, "object/tangible/ship/crafted/capacitor/shared_capacitor_mk3.iff")
@@ -792,7 +805,8 @@ object_tangible_ship_crafted_capacitor_shared_capacitor_mk4 = SharedTangibleObje
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2037503949
+	clientObjectCRC = 2037503949,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_capacitor_shared_capacitor_mk4, "object/tangible/ship/crafted/capacitor/shared_capacitor_mk4.iff")
@@ -846,7 +860,8 @@ object_tangible_ship_crafted_capacitor_shared_capacitor_mk5 = SharedTangibleObje
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 813477952
+	clientObjectCRC = 813477952,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_capacitor_shared_capacitor_mk5, "object/tangible/ship/crafted/capacitor/shared_capacitor_mk5.iff")
@@ -900,7 +915,8 @@ object_tangible_ship_crafted_capacitor_shared_energy_saver_battery_mk1 = SharedT
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 598079079
+	clientObjectCRC = 598079079,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_subcomponent_base.iff", "object/tangible/ship/crafted/capacitor/shared_base_capacitor_subcomponent.iff", "object/tangible/ship/crafted/capacitor/shared_base_capacitor_subcomponent_mk5.iff", "object/tangible/ship/crafted/capacitor/shared_base_capacitor_subcomponent_mk4.iff", "object/tangible/ship/crafted/capacitor/shared_base_capacitor_subcomponent_mk3.iff", "object/tangible/ship/crafted/capacitor/shared_base_capacitor_subcomponent_mk2.iff", "object/tangible/ship/crafted/capacitor/shared_base_capacitor_subcomponent_mk1.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_capacitor_shared_energy_saver_battery_mk1, "object/tangible/ship/crafted/capacitor/shared_energy_saver_battery_mk1.iff")
@@ -954,7 +970,8 @@ object_tangible_ship_crafted_capacitor_shared_energy_saver_battery_mk2 = SharedT
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4172439280
+	clientObjectCRC = 4172439280,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_subcomponent_base.iff", "object/tangible/ship/crafted/capacitor/shared_base_capacitor_subcomponent.iff", "object/tangible/ship/crafted/capacitor/shared_base_capacitor_subcomponent_mk5.iff", "object/tangible/ship/crafted/capacitor/shared_base_capacitor_subcomponent_mk4.iff", "object/tangible/ship/crafted/capacitor/shared_base_capacitor_subcomponent_mk3.iff", "object/tangible/ship/crafted/capacitor/shared_base_capacitor_subcomponent_mk2.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_capacitor_shared_energy_saver_battery_mk2, "object/tangible/ship/crafted/capacitor/shared_energy_saver_battery_mk2.iff")
@@ -1008,7 +1025,8 @@ object_tangible_ship_crafted_capacitor_shared_energy_saver_battery_mk3 = SharedT
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2982099325
+	clientObjectCRC = 2982099325,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_subcomponent_base.iff", "object/tangible/ship/crafted/capacitor/shared_base_capacitor_subcomponent.iff", "object/tangible/ship/crafted/capacitor/shared_base_capacitor_subcomponent_mk5.iff", "object/tangible/ship/crafted/capacitor/shared_base_capacitor_subcomponent_mk4.iff", "object/tangible/ship/crafted/capacitor/shared_base_capacitor_subcomponent_mk3.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_capacitor_shared_energy_saver_battery_mk3, "object/tangible/ship/crafted/capacitor/shared_energy_saver_battery_mk3.iff")
@@ -1062,7 +1080,8 @@ object_tangible_ship_crafted_capacitor_shared_energy_saver_battery_mk4 = SharedT
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1247548009
+	clientObjectCRC = 1247548009,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_subcomponent_base.iff", "object/tangible/ship/crafted/capacitor/shared_base_capacitor_subcomponent.iff", "object/tangible/ship/crafted/capacitor/shared_base_capacitor_subcomponent_mk5.iff", "object/tangible/ship/crafted/capacitor/shared_base_capacitor_subcomponent_mk4.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_capacitor_shared_energy_saver_battery_mk4, "object/tangible/ship/crafted/capacitor/shared_energy_saver_battery_mk4.iff")
@@ -1116,7 +1135,8 @@ object_tangible_ship_crafted_capacitor_shared_energy_saver_battery_mk5 = SharedT
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 55670244
+	clientObjectCRC = 55670244,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_subcomponent_base.iff", "object/tangible/ship/crafted/capacitor/shared_base_capacitor_subcomponent.iff", "object/tangible/ship/crafted/capacitor/shared_base_capacitor_subcomponent_mk5.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_capacitor_shared_energy_saver_battery_mk5, "object/tangible/ship/crafted/capacitor/shared_energy_saver_battery_mk5.iff")
@@ -1170,7 +1190,8 @@ object_tangible_ship_crafted_capacitor_shared_extended_life_battery_mk1 = Shared
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1281522685
+	clientObjectCRC = 1281522685,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_subcomponent_base.iff", "object/tangible/ship/crafted/capacitor/shared_base_capacitor_subcomponent.iff", "object/tangible/ship/crafted/capacitor/shared_base_capacitor_subcomponent_mk5.iff", "object/tangible/ship/crafted/capacitor/shared_base_capacitor_subcomponent_mk4.iff", "object/tangible/ship/crafted/capacitor/shared_base_capacitor_subcomponent_mk3.iff", "object/tangible/ship/crafted/capacitor/shared_base_capacitor_subcomponent_mk2.iff", "object/tangible/ship/crafted/capacitor/shared_base_capacitor_subcomponent_mk1.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_capacitor_shared_extended_life_battery_mk1, "object/tangible/ship/crafted/capacitor/shared_extended_life_battery_mk1.iff")
@@ -1224,7 +1245,8 @@ object_tangible_ship_crafted_capacitor_shared_extended_life_battery_mk2 = Shared
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2541081450
+	clientObjectCRC = 2541081450,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_subcomponent_base.iff", "object/tangible/ship/crafted/capacitor/shared_base_capacitor_subcomponent.iff", "object/tangible/ship/crafted/capacitor/shared_base_capacitor_subcomponent_mk5.iff", "object/tangible/ship/crafted/capacitor/shared_base_capacitor_subcomponent_mk4.iff", "object/tangible/ship/crafted/capacitor/shared_base_capacitor_subcomponent_mk3.iff", "object/tangible/ship/crafted/capacitor/shared_base_capacitor_subcomponent_mk2.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_capacitor_shared_extended_life_battery_mk2, "object/tangible/ship/crafted/capacitor/shared_extended_life_battery_mk2.iff")
@@ -1278,7 +1300,8 @@ object_tangible_ship_crafted_capacitor_shared_extended_life_battery_mk3 = Shared
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3732452583
+	clientObjectCRC = 3732452583,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_subcomponent_base.iff", "object/tangible/ship/crafted/capacitor/shared_base_capacitor_subcomponent.iff", "object/tangible/ship/crafted/capacitor/shared_base_capacitor_subcomponent_mk5.iff", "object/tangible/ship/crafted/capacitor/shared_base_capacitor_subcomponent_mk4.iff", "object/tangible/ship/crafted/capacitor/shared_base_capacitor_subcomponent_mk3.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_capacitor_shared_extended_life_battery_mk3, "object/tangible/ship/crafted/capacitor/shared_extended_life_battery_mk3.iff")
@@ -1332,7 +1355,8 @@ object_tangible_ship_crafted_capacitor_shared_extended_life_battery_mk4 = Shared
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 630956019
+	clientObjectCRC = 630956019,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_subcomponent_base.iff", "object/tangible/ship/crafted/capacitor/shared_base_capacitor_subcomponent.iff", "object/tangible/ship/crafted/capacitor/shared_base_capacitor_subcomponent_mk5.iff", "object/tangible/ship/crafted/capacitor/shared_base_capacitor_subcomponent_mk4.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_capacitor_shared_extended_life_battery_mk4, "object/tangible/ship/crafted/capacitor/shared_extended_life_battery_mk4.iff")
@@ -1386,7 +1410,8 @@ object_tangible_ship_crafted_capacitor_shared_extended_life_battery_mk5 = Shared
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1821833342
+	clientObjectCRC = 1821833342,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_subcomponent_base.iff", "object/tangible/ship/crafted/capacitor/shared_base_capacitor_subcomponent.iff", "object/tangible/ship/crafted/capacitor/shared_base_capacitor_subcomponent_mk5.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_capacitor_shared_extended_life_battery_mk5, "object/tangible/ship/crafted/capacitor/shared_extended_life_battery_mk5.iff")
@@ -1440,7 +1465,8 @@ object_tangible_ship_crafted_capacitor_shared_heavy_battery_mk1 = SharedTangible
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1987626722
+	clientObjectCRC = 1987626722,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_subcomponent_base.iff", "object/tangible/ship/crafted/capacitor/shared_base_capacitor_subcomponent.iff", "object/tangible/ship/crafted/capacitor/shared_base_capacitor_subcomponent_mk5.iff", "object/tangible/ship/crafted/capacitor/shared_base_capacitor_subcomponent_mk4.iff", "object/tangible/ship/crafted/capacitor/shared_base_capacitor_subcomponent_mk3.iff", "object/tangible/ship/crafted/capacitor/shared_base_capacitor_subcomponent_mk2.iff", "object/tangible/ship/crafted/capacitor/shared_base_capacitor_subcomponent_mk1.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_capacitor_shared_heavy_battery_mk1, "object/tangible/ship/crafted/capacitor/shared_heavy_battery_mk1.iff")
@@ -1494,7 +1520,8 @@ object_tangible_ship_crafted_capacitor_shared_heavy_battery_mk2 = SharedTangible
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2909761141
+	clientObjectCRC = 2909761141,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_subcomponent_base.iff", "object/tangible/ship/crafted/capacitor/shared_base_capacitor_subcomponent.iff", "object/tangible/ship/crafted/capacitor/shared_base_capacitor_subcomponent_mk5.iff", "object/tangible/ship/crafted/capacitor/shared_base_capacitor_subcomponent_mk4.iff", "object/tangible/ship/crafted/capacitor/shared_base_capacitor_subcomponent_mk3.iff", "object/tangible/ship/crafted/capacitor/shared_base_capacitor_subcomponent_mk2.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_capacitor_shared_heavy_battery_mk2, "object/tangible/ship/crafted/capacitor/shared_heavy_battery_mk2.iff")
@@ -1548,7 +1575,8 @@ object_tangible_ship_crafted_capacitor_shared_heavy_battery_mk3 = SharedTangible
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3831630328
+	clientObjectCRC = 3831630328,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_subcomponent_base.iff", "object/tangible/ship/crafted/capacitor/shared_base_capacitor_subcomponent.iff", "object/tangible/ship/crafted/capacitor/shared_base_capacitor_subcomponent_mk5.iff", "object/tangible/ship/crafted/capacitor/shared_base_capacitor_subcomponent_mk4.iff", "object/tangible/ship/crafted/capacitor/shared_base_capacitor_subcomponent_mk3.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_capacitor_shared_heavy_battery_mk3, "object/tangible/ship/crafted/capacitor/shared_heavy_battery_mk3.iff")
@@ -1602,7 +1630,8 @@ object_tangible_ship_crafted_capacitor_shared_heavy_battery_mk4 = SharedTangible
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 528556780
+	clientObjectCRC = 528556780,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_subcomponent_base.iff", "object/tangible/ship/crafted/capacitor/shared_base_capacitor_subcomponent.iff", "object/tangible/ship/crafted/capacitor/shared_base_capacitor_subcomponent_mk5.iff", "object/tangible/ship/crafted/capacitor/shared_base_capacitor_subcomponent_mk4.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_capacitor_shared_heavy_battery_mk4, "object/tangible/ship/crafted/capacitor/shared_heavy_battery_mk4.iff")
@@ -1656,7 +1685,8 @@ object_tangible_ship_crafted_capacitor_shared_heavy_battery_mk5 = SharedTangible
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1452033377
+	clientObjectCRC = 1452033377,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_subcomponent_base.iff", "object/tangible/ship/crafted/capacitor/shared_base_capacitor_subcomponent.iff", "object/tangible/ship/crafted/capacitor/shared_base_capacitor_subcomponent_mk5.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_capacitor_shared_heavy_battery_mk5, "object/tangible/ship/crafted/capacitor/shared_heavy_battery_mk5.iff")
@@ -1710,7 +1740,8 @@ object_tangible_ship_crafted_capacitor_shared_quick_recharge_battery_mk1 = Share
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1831490574
+	clientObjectCRC = 1831490574,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_subcomponent_base.iff", "object/tangible/ship/crafted/capacitor/shared_base_capacitor_subcomponent.iff", "object/tangible/ship/crafted/capacitor/shared_base_capacitor_subcomponent_mk5.iff", "object/tangible/ship/crafted/capacitor/shared_base_capacitor_subcomponent_mk4.iff", "object/tangible/ship/crafted/capacitor/shared_base_capacitor_subcomponent_mk3.iff", "object/tangible/ship/crafted/capacitor/shared_base_capacitor_subcomponent_mk2.iff", "object/tangible/ship/crafted/capacitor/shared_base_capacitor_subcomponent_mk1.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_capacitor_shared_quick_recharge_battery_mk1, "object/tangible/ship/crafted/capacitor/shared_quick_recharge_battery_mk1.iff")
@@ -1764,7 +1795,8 @@ object_tangible_ship_crafted_capacitor_shared_quick_recharge_battery_mk2 = Share
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3057515673
+	clientObjectCRC = 3057515673,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_subcomponent_base.iff", "object/tangible/ship/crafted/capacitor/shared_base_capacitor_subcomponent.iff", "object/tangible/ship/crafted/capacitor/shared_base_capacitor_subcomponent_mk5.iff", "object/tangible/ship/crafted/capacitor/shared_base_capacitor_subcomponent_mk4.iff", "object/tangible/ship/crafted/capacitor/shared_base_capacitor_subcomponent_mk3.iff", "object/tangible/ship/crafted/capacitor/shared_base_capacitor_subcomponent_mk2.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_capacitor_shared_quick_recharge_battery_mk2, "object/tangible/ship/crafted/capacitor/shared_quick_recharge_battery_mk2.iff")
@@ -1818,7 +1850,8 @@ object_tangible_ship_crafted_capacitor_shared_quick_recharge_battery_mk3 = Share
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4281375508
+	clientObjectCRC = 4281375508,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_subcomponent_base.iff", "object/tangible/ship/crafted/capacitor/shared_base_capacitor_subcomponent.iff", "object/tangible/ship/crafted/capacitor/shared_base_capacitor_subcomponent_mk5.iff", "object/tangible/ship/crafted/capacitor/shared_base_capacitor_subcomponent_mk4.iff", "object/tangible/ship/crafted/capacitor/shared_base_capacitor_subcomponent_mk3.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_capacitor_shared_quick_recharge_battery_mk3, "object/tangible/ship/crafted/capacitor/shared_quick_recharge_battery_mk3.iff")
@@ -1872,7 +1905,8 @@ object_tangible_ship_crafted_capacitor_shared_quick_recharge_battery_mk4 = Share
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 80982016
+	clientObjectCRC = 80982016,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_subcomponent_base.iff", "object/tangible/ship/crafted/capacitor/shared_base_capacitor_subcomponent.iff", "object/tangible/ship/crafted/capacitor/shared_base_capacitor_subcomponent_mk5.iff", "object/tangible/ship/crafted/capacitor/shared_base_capacitor_subcomponent_mk4.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_capacitor_shared_quick_recharge_battery_mk4, "object/tangible/ship/crafted/capacitor/shared_quick_recharge_battery_mk4.iff")
@@ -1926,7 +1960,8 @@ object_tangible_ship_crafted_capacitor_shared_quick_recharge_battery_mk5 = Share
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1306449805
+	clientObjectCRC = 1306449805,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_subcomponent_base.iff", "object/tangible/ship/crafted/capacitor/shared_base_capacitor_subcomponent.iff", "object/tangible/ship/crafted/capacitor/shared_base_capacitor_subcomponent_mk5.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_capacitor_shared_quick_recharge_battery_mk5, "object/tangible/ship/crafted/capacitor/shared_quick_recharge_battery_mk5.iff")
@@ -1980,7 +2015,8 @@ object_tangible_ship_crafted_capacitor_shared_standard_capacitor_battery = Share
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3218110775
+	clientObjectCRC = 3218110775,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_subcomponent_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_capacitor_shared_standard_capacitor_battery, "object/tangible/ship/crafted/capacitor/shared_standard_capacitor_battery.iff")
@@ -2034,7 +2070,8 @@ object_tangible_ship_crafted_capacitor_shared_standard_recharge_module = SharedT
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4261874664
+	clientObjectCRC = 4261874664,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_subcomponent_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_capacitor_shared_standard_recharge_module, "object/tangible/ship/crafted/capacitor/shared_standard_recharge_module.iff")

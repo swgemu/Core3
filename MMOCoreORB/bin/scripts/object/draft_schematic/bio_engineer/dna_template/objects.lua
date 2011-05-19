@@ -80,7 +80,8 @@ object_draft_schematic_bio_engineer_dna_template_shared_dna_template_angler = Sh
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 4075558247
+	clientObjectCRC = 4075558247,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_dna_template_shared_dna_template_angler, "object/draft_schematic/bio_engineer/dna_template/shared_dna_template_angler.iff")
@@ -124,7 +125,8 @@ object_draft_schematic_bio_engineer_dna_template_shared_dna_template_bantha = Sh
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3258253069
+	clientObjectCRC = 3258253069,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_dna_template_shared_dna_template_bantha, "object/draft_schematic/bio_engineer/dna_template/shared_dna_template_bantha.iff")
@@ -168,7 +170,8 @@ object_draft_schematic_bio_engineer_dna_template_shared_dna_template_bearded_jax
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1415032707
+	clientObjectCRC = 1415032707,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_dna_template_shared_dna_template_bearded_jax, "object/draft_schematic/bio_engineer/dna_template/shared_dna_template_bearded_jax.iff")
@@ -212,7 +215,8 @@ object_draft_schematic_bio_engineer_dna_template_shared_dna_template_blurrg = Sh
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2718719227
+	clientObjectCRC = 2718719227,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_dna_template_shared_dna_template_blurrg, "object/draft_schematic/bio_engineer/dna_template/shared_dna_template_blurrg.iff")
@@ -256,7 +260,8 @@ object_draft_schematic_bio_engineer_dna_template_shared_dna_template_bol = Share
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 359532674
+	clientObjectCRC = 359532674,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_dna_template_shared_dna_template_bol, "object/draft_schematic/bio_engineer/dna_template/shared_dna_template_bol.iff")
@@ -300,7 +305,8 @@ object_draft_schematic_bio_engineer_dna_template_shared_dna_template_bolle_bol =
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3039475182
+	clientObjectCRC = 3039475182,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_dna_template_shared_dna_template_bolle_bol, "object/draft_schematic/bio_engineer/dna_template/shared_dna_template_bolle_bol.iff")
@@ -344,7 +350,8 @@ object_draft_schematic_bio_engineer_dna_template_shared_dna_template_bolma = Sha
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1304346718
+	clientObjectCRC = 1304346718,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_dna_template_shared_dna_template_bolma, "object/draft_schematic/bio_engineer/dna_template/shared_dna_template_bolma.iff")
@@ -388,7 +395,8 @@ object_draft_schematic_bio_engineer_dna_template_shared_dna_template_brackaset =
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1635634277
+	clientObjectCRC = 1635634277,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_dna_template_shared_dna_template_brackaset, "object/draft_schematic/bio_engineer/dna_template/shared_dna_template_brackaset.iff")
@@ -432,7 +440,8 @@ object_draft_schematic_bio_engineer_dna_template_shared_dna_template_carrion_spa
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3075374860
+	clientObjectCRC = 3075374860,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_dna_template_shared_dna_template_carrion_spat, "object/draft_schematic/bio_engineer/dna_template/shared_dna_template_carrion_spat.iff")
@@ -476,7 +485,8 @@ object_draft_schematic_bio_engineer_dna_template_shared_dna_template_choku = Sha
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 288717653
+	clientObjectCRC = 288717653,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_dna_template_shared_dna_template_choku, "object/draft_schematic/bio_engineer/dna_template/shared_dna_template_choku.iff")
@@ -520,7 +530,8 @@ object_draft_schematic_bio_engineer_dna_template_shared_dna_template_dalyrake = 
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 297710271
+	clientObjectCRC = 297710271,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_dna_template_shared_dna_template_dalyrake, "object/draft_schematic/bio_engineer/dna_template/shared_dna_template_dalyrake.iff")
@@ -564,7 +575,8 @@ object_draft_schematic_bio_engineer_dna_template_shared_dna_template_dewback = S
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3338837483
+	clientObjectCRC = 3338837483,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_dna_template_shared_dna_template_dewback, "object/draft_schematic/bio_engineer/dna_template/shared_dna_template_dewback.iff")
@@ -608,7 +620,8 @@ object_draft_schematic_bio_engineer_dna_template_shared_dna_template_eopie = Sha
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2059152312
+	clientObjectCRC = 2059152312,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_dna_template_shared_dna_template_eopie, "object/draft_schematic/bio_engineer/dna_template/shared_dna_template_eopie.iff")
@@ -652,7 +665,8 @@ object_draft_schematic_bio_engineer_dna_template_shared_dna_template_falumpaset 
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1502836358
+	clientObjectCRC = 1502836358,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_dna_template_shared_dna_template_falumpaset, "object/draft_schematic/bio_engineer/dna_template/shared_dna_template_falumpaset.iff")
@@ -696,7 +710,8 @@ object_draft_schematic_bio_engineer_dna_template_shared_dna_template_fambaa = Sh
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2789137412
+	clientObjectCRC = 2789137412,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_dna_template_shared_dna_template_fambaa, "object/draft_schematic/bio_engineer/dna_template/shared_dna_template_fambaa.iff")
@@ -740,7 +755,8 @@ object_draft_schematic_bio_engineer_dna_template_shared_dna_template_generic = S
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3001518312
+	clientObjectCRC = 3001518312,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_dna_template_shared_dna_template_generic, "object/draft_schematic/bio_engineer/dna_template/shared_dna_template_generic.iff")
@@ -784,7 +800,8 @@ object_draft_schematic_bio_engineer_dna_template_shared_dna_template_gualama = S
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2184886456
+	clientObjectCRC = 2184886456,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_dna_template_shared_dna_template_gualama, "object/draft_schematic/bio_engineer/dna_template/shared_dna_template_gualama.iff")
@@ -828,7 +845,8 @@ object_draft_schematic_bio_engineer_dna_template_shared_dna_template_guf_drolg =
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2546683411
+	clientObjectCRC = 2546683411,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_dna_template_shared_dna_template_guf_drolg, "object/draft_schematic/bio_engineer/dna_template/shared_dna_template_guf_drolg.iff")
@@ -872,7 +890,8 @@ object_draft_schematic_bio_engineer_dna_template_shared_dna_template_gurrcat = S
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3985344902
+	clientObjectCRC = 3985344902,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_dna_template_shared_dna_template_gurrcat, "object/draft_schematic/bio_engineer/dna_template/shared_dna_template_gurrcat.iff")
@@ -916,7 +935,8 @@ object_draft_schematic_bio_engineer_dna_template_shared_dna_template_gurreck = S
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1160895673
+	clientObjectCRC = 1160895673,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_dna_template_shared_dna_template_gurreck, "object/draft_schematic/bio_engineer/dna_template/shared_dna_template_gurreck.iff")
@@ -960,7 +980,8 @@ object_draft_schematic_bio_engineer_dna_template_shared_dna_template_kaadu = Sha
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1556686347
+	clientObjectCRC = 1556686347,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_dna_template_shared_dna_template_kaadu, "object/draft_schematic/bio_engineer/dna_template/shared_dna_template_kaadu.iff")
@@ -1004,7 +1025,8 @@ object_draft_schematic_bio_engineer_dna_template_shared_dna_template_kahmurra = 
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 184501953
+	clientObjectCRC = 184501953,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_dna_template_shared_dna_template_kahmurra, "object/draft_schematic/bio_engineer/dna_template/shared_dna_template_kahmurra.iff")
@@ -1048,7 +1070,8 @@ object_draft_schematic_bio_engineer_dna_template_shared_dna_template_kimogila = 
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3650412283
+	clientObjectCRC = 3650412283,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_dna_template_shared_dna_template_kimogila, "object/draft_schematic/bio_engineer/dna_template/shared_dna_template_kimogila.iff")
@@ -1092,7 +1115,8 @@ object_draft_schematic_bio_engineer_dna_template_shared_dna_template_krahbu = Sh
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3983133143
+	clientObjectCRC = 3983133143,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_dna_template_shared_dna_template_krahbu, "object/draft_schematic/bio_engineer/dna_template/shared_dna_template_krahbu.iff")
@@ -1136,7 +1160,8 @@ object_draft_schematic_bio_engineer_dna_template_shared_dna_template_kusak = Sha
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3839276474
+	clientObjectCRC = 3839276474,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_dna_template_shared_dna_template_kusak, "object/draft_schematic/bio_engineer/dna_template/shared_dna_template_kusak.iff")
@@ -1180,7 +1205,8 @@ object_draft_schematic_bio_engineer_dna_template_shared_dna_template_narglatch =
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3256313792
+	clientObjectCRC = 3256313792,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_dna_template_shared_dna_template_narglatch, "object/draft_schematic/bio_engineer/dna_template/shared_dna_template_narglatch.iff")
@@ -1224,7 +1250,8 @@ object_draft_schematic_bio_engineer_dna_template_shared_dna_template_pugoriss = 
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3125557602
+	clientObjectCRC = 3125557602,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_dna_template_shared_dna_template_pugoriss, "object/draft_schematic/bio_engineer/dna_template/shared_dna_template_pugoriss.iff")
@@ -1268,7 +1295,8 @@ object_draft_schematic_bio_engineer_dna_template_shared_dna_template_rancor = Sh
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 4198261306
+	clientObjectCRC = 4198261306,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_dna_template_shared_dna_template_rancor, "object/draft_schematic/bio_engineer/dna_template/shared_dna_template_rancor.iff")
@@ -1312,7 +1340,8 @@ object_draft_schematic_bio_engineer_dna_template_shared_dna_template_ronto = Sha
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1283189937
+	clientObjectCRC = 1283189937,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_dna_template_shared_dna_template_ronto, "object/draft_schematic/bio_engineer/dna_template/shared_dna_template_ronto.iff")
@@ -1356,7 +1385,8 @@ object_draft_schematic_bio_engineer_dna_template_shared_dna_template_sand_panthe
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1137121554
+	clientObjectCRC = 1137121554,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_dna_template_shared_dna_template_sand_panther, "object/draft_schematic/bio_engineer/dna_template/shared_dna_template_sand_panther.iff")
@@ -1400,7 +1430,8 @@ object_draft_schematic_bio_engineer_dna_template_shared_dna_template_snorbal = S
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 891571292
+	clientObjectCRC = 891571292,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_dna_template_shared_dna_template_snorbal, "object/draft_schematic/bio_engineer/dna_template/shared_dna_template_snorbal.iff")
@@ -1444,7 +1475,8 @@ object_draft_schematic_bio_engineer_dna_template_shared_dna_template_torton = Sh
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2685742161
+	clientObjectCRC = 2685742161,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_dna_template_shared_dna_template_torton, "object/draft_schematic/bio_engineer/dna_template/shared_dna_template_torton.iff")
@@ -1488,7 +1520,8 @@ object_draft_schematic_bio_engineer_dna_template_shared_dna_template_tybis = Sha
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2848231352
+	clientObjectCRC = 2848231352,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_dna_template_shared_dna_template_tybis, "object/draft_schematic/bio_engineer/dna_template/shared_dna_template_tybis.iff")
@@ -1532,7 +1565,8 @@ object_draft_schematic_bio_engineer_dna_template_shared_dna_template_veermok = S
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 939860357
+	clientObjectCRC = 939860357,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_dna_template_shared_dna_template_veermok, "object/draft_schematic/bio_engineer/dna_template/shared_dna_template_veermok.iff")
@@ -1576,7 +1610,8 @@ object_draft_schematic_bio_engineer_dna_template_shared_dna_template_zucca_boar 
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2084231750
+	clientObjectCRC = 2084231750,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_dna_template_shared_dna_template_zucca_boar, "object/draft_schematic/bio_engineer/dna_template/shared_dna_template_zucca_boar.iff")

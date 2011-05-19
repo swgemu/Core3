@@ -90,7 +90,8 @@ object_tangible_wearables_skirt_shared_singing_mountain_clan_skirt_s01 = SharedT
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2970859087
+	clientObjectCRC = 2970859087,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_skirt.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_skirt_shared_singing_mountain_clan_skirt_s01, "object/tangible/wearables/skirt/shared_singing_mountain_clan_skirt_s01.iff")
@@ -144,7 +145,8 @@ object_tangible_wearables_skirt_shared_singing_mountain_clan_skirt_s02 = SharedT
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1778654936
+	clientObjectCRC = 1778654936,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_skirt.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_skirt_shared_singing_mountain_clan_skirt_s02, "object/tangible/wearables/skirt/shared_singing_mountain_clan_skirt_s02.iff")
@@ -198,7 +200,8 @@ object_tangible_wearables_skirt_shared_singing_mountain_clan_skirt_s03 = SharedT
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 587823445
+	clientObjectCRC = 587823445,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_skirt.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_skirt_shared_singing_mountain_clan_skirt_s03, "object/tangible/wearables/skirt/shared_singing_mountain_clan_skirt_s03.iff")
@@ -252,7 +255,8 @@ object_tangible_wearables_skirt_shared_skirt_s03 = SharedTangibleObjectTemplate:
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 647487888
+	clientObjectCRC = 647487888,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_skirt.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_skirt_shared_skirt_s03, "object/tangible/wearables/skirt/shared_skirt_s03.iff")
@@ -306,7 +310,8 @@ object_tangible_wearables_skirt_shared_skirt_s04 = SharedTangibleObjectTemplate:
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3715418756
+	clientObjectCRC = 3715418756,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_skirt.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_skirt_shared_skirt_s04, "object/tangible/wearables/skirt/shared_skirt_s04.iff")
@@ -360,7 +365,8 @@ object_tangible_wearables_skirt_shared_skirt_s05 = SharedTangibleObjectTemplate:
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2491002121
+	clientObjectCRC = 2491002121,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_skirt.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_skirt_shared_skirt_s05, "object/tangible/wearables/skirt/shared_skirt_s05.iff")
@@ -414,7 +420,8 @@ object_tangible_wearables_skirt_shared_skirt_s06 = SharedTangibleObjectTemplate:
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1332610462
+	clientObjectCRC = 1332610462,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_skirt.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_skirt_shared_skirt_s06, "object/tangible/wearables/skirt/shared_skirt_s06.iff")
@@ -468,7 +475,8 @@ object_tangible_wearables_skirt_shared_skirt_s07 = SharedTangibleObjectTemplate:
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 107176467
+	clientObjectCRC = 107176467,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_skirt.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_skirt_shared_skirt_s07, "object/tangible/wearables/skirt/shared_skirt_s07.iff")
@@ -522,7 +530,8 @@ object_tangible_wearables_skirt_shared_skirt_s08 = SharedTangibleObjectTemplate:
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3161017857
+	clientObjectCRC = 3161017857,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_skirt.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_skirt_shared_skirt_s08, "object/tangible/wearables/skirt/shared_skirt_s08.iff")
@@ -576,7 +585,8 @@ object_tangible_wearables_skirt_shared_skirt_s09 = SharedTangibleObjectTemplate:
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4116982156
+	clientObjectCRC = 4116982156,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_skirt.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_skirt_shared_skirt_s09, "object/tangible/wearables/skirt/shared_skirt_s09.iff")
@@ -630,7 +640,8 @@ object_tangible_wearables_skirt_shared_skirt_s10 = SharedTangibleObjectTemplate:
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3869787263
+	clientObjectCRC = 3869787263,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_skirt.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_skirt_shared_skirt_s10, "object/tangible/wearables/skirt/shared_skirt_s10.iff")
@@ -684,7 +695,8 @@ object_tangible_wearables_skirt_shared_skirt_s11 = SharedTangibleObjectTemplate:
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2946835442
+	clientObjectCRC = 2946835442,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_skirt.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_skirt_shared_skirt_s11, "object/tangible/wearables/skirt/shared_skirt_s11.iff")
@@ -738,7 +750,8 @@ object_tangible_wearables_skirt_shared_skirt_s12 = SharedTangibleObjectTemplate:
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1957858149
+	clientObjectCRC = 1957858149,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_skirt.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_skirt_shared_skirt_s12, "object/tangible/wearables/skirt/shared_skirt_s12.iff")
@@ -792,7 +805,8 @@ object_tangible_wearables_skirt_shared_skirt_s13 = SharedTangibleObjectTemplate:
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1035988200
+	clientObjectCRC = 1035988200,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_skirt.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_skirt_shared_skirt_s13, "object/tangible/wearables/skirt/shared_skirt_s13.iff")
@@ -846,7 +860,8 @@ object_tangible_wearables_skirt_shared_skirt_s14 = SharedTangibleObjectTemplate:
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3327969276
+	clientObjectCRC = 3327969276,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_skirt.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_skirt_shared_skirt_s14, "object/tangible/wearables/skirt/shared_skirt_s14.iff")

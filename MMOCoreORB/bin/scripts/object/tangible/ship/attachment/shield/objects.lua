@@ -90,7 +90,8 @@ object_tangible_ship_attachment_shield_shared_star_destroyer_shieldtower_1 = Sha
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2069937842
+	clientObjectCRC = 2069937842,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/attachment/base/shared_base_ship_attachment.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_shield_shared_star_destroyer_shieldtower_1, "object/tangible/ship/attachment/shield/shared_star_destroyer_shieldtower_1.iff")
@@ -144,7 +145,8 @@ object_tangible_ship_attachment_shield_shared_star_destroyer_shieldtower_2 = Sha
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2692159013
+	clientObjectCRC = 2692159013,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/attachment/base/shared_base_ship_attachment.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_shield_shared_star_destroyer_shieldtower_2, "object/tangible/ship/attachment/shield/shared_star_destroyer_shieldtower_2.iff")

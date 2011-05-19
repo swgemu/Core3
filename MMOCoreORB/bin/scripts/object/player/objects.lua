@@ -80,7 +80,8 @@ object_player_shared_player = SharedPlayerObjectTemplate:new {
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1637592609
+	clientObjectCRC = 1637592609,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/player/base/shared_base_player.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_player_shared_player, "object/player/shared_player.iff")

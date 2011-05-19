@@ -90,7 +90,8 @@ object_tangible_vendor_shared_vendor_droid_bartender = SharedTangibleObjectTempl
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 887599030
+	clientObjectCRC = 887599030,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/vendor/base/shared_base_vendor.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_vendor_shared_vendor_droid_bartender, "object/tangible/vendor/shared_vendor_droid_bartender.iff")
@@ -144,7 +145,8 @@ object_tangible_vendor_shared_vendor_droid_power = SharedTangibleObjectTemplate:
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1459672491
+	clientObjectCRC = 1459672491,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/vendor/base/shared_base_vendor.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_vendor_shared_vendor_droid_power, "object/tangible/vendor/shared_vendor_droid_power.iff")
@@ -198,7 +200,8 @@ object_tangible_vendor_shared_vendor_droid_protocol = SharedTangibleObjectTempla
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 844125696
+	clientObjectCRC = 844125696,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/vendor/base/shared_base_vendor.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_vendor_shared_vendor_droid_protocol, "object/tangible/vendor/shared_vendor_droid_protocol.iff")
@@ -252,7 +255,8 @@ object_tangible_vendor_shared_vendor_droid_surgical = SharedTangibleObjectTempla
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 946679884
+	clientObjectCRC = 946679884,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/vendor/base/shared_base_vendor.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_vendor_shared_vendor_droid_surgical, "object/tangible/vendor/shared_vendor_droid_surgical.iff")
@@ -306,7 +310,8 @@ object_tangible_vendor_shared_vendor_droid_wed = SharedTangibleObjectTemplate:ne
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1745672602
+	clientObjectCRC = 1745672602,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/vendor/base/shared_base_vendor.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_vendor_shared_vendor_droid_wed, "object/tangible/vendor/shared_vendor_droid_wed.iff")
@@ -360,7 +365,8 @@ object_tangible_vendor_shared_vendor_terminal_basic = SharedTangibleObjectTempla
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1946512190
+	clientObjectCRC = 1946512190,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/vendor/base/shared_base_vendor.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_vendor_shared_vendor_terminal_basic, "object/tangible/vendor/shared_vendor_terminal_basic.iff")
@@ -414,7 +420,8 @@ object_tangible_vendor_shared_vendor_terminal_bulky = SharedTangibleObjectTempla
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2831480672
+	clientObjectCRC = 2831480672,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/vendor/base/shared_base_vendor.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_vendor_shared_vendor_terminal_bulky, "object/tangible/vendor/shared_vendor_terminal_bulky.iff")
@@ -468,7 +475,8 @@ object_tangible_vendor_shared_vendor_terminal_fancy = SharedTangibleObjectTempla
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3992259223
+	clientObjectCRC = 3992259223,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/vendor/base/shared_base_vendor.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_vendor_shared_vendor_terminal_fancy, "object/tangible/vendor/shared_vendor_terminal_fancy.iff")
@@ -522,7 +530,8 @@ object_tangible_vendor_shared_vendor_terminal_slim = SharedTangibleObjectTemplat
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3179269297
+	clientObjectCRC = 3179269297,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/vendor/base/shared_base_vendor.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_vendor_shared_vendor_terminal_slim, "object/tangible/vendor/shared_vendor_terminal_slim.iff")
@@ -576,7 +585,8 @@ object_tangible_vendor_shared_vendor_terminal_small = SharedTangibleObjectTempla
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2513721920
+	clientObjectCRC = 2513721920,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/vendor/base/shared_base_vendor.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_vendor_shared_vendor_terminal_small, "object/tangible/vendor/shared_vendor_terminal_small.iff")
@@ -630,7 +640,8 @@ object_tangible_vendor_shared_vendor_terminal_standard = SharedTangibleObjectTem
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 90585643
+	clientObjectCRC = 90585643,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/vendor/base/shared_base_vendor.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_vendor_shared_vendor_terminal_standard, "object/tangible/vendor/shared_vendor_terminal_standard.iff")

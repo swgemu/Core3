@@ -90,7 +90,8 @@ object_tangible_lair_guf_drolg_shared_lair_guf_drolg = SharedTangibleObjectTempl
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2875084691
+	clientObjectCRC = 2875084691,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_guf_drolg_shared_lair_guf_drolg, "object/tangible/lair/guf_drolg/shared_lair_guf_drolg.iff")
@@ -144,7 +145,8 @@ object_tangible_lair_guf_drolg_shared_lair_guf_drolg_grassland = SharedTangibleO
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4195556845
+	clientObjectCRC = 4195556845,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_guf_drolg_shared_lair_guf_drolg_grassland, "object/tangible/lair/guf_drolg/shared_lair_guf_drolg_grassland.iff")
@@ -198,7 +200,8 @@ object_tangible_lair_guf_drolg_shared_lair_guf_drolg_jungle = SharedTangibleObje
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3851962696
+	clientObjectCRC = 3851962696,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_guf_drolg_shared_lair_guf_drolg_jungle, "object/tangible/lair/guf_drolg/shared_lair_guf_drolg_jungle.iff")

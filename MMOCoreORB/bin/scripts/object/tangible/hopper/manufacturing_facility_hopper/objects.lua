@@ -90,7 +90,8 @@ object_tangible_hopper_manufacturing_facility_hopper_shared_manufacture_installa
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1304408300
+	clientObjectCRC = 1304408300,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_hopper_manufacturing_facility_hopper_shared_manufacture_installation_ingredient_hopper_large, "object/tangible/hopper/manufacturing_facility_hopper/shared_manufacture_installation_ingredient_hopper_large.iff")
@@ -144,7 +145,8 @@ object_tangible_hopper_manufacturing_facility_hopper_shared_manufacture_installa
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4058756214
+	clientObjectCRC = 4058756214,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_hopper_manufacturing_facility_hopper_shared_manufacture_installation_ingredient_hopper_medium, "object/tangible/hopper/manufacturing_facility_hopper/shared_manufacture_installation_ingredient_hopper_medium.iff")
@@ -198,7 +200,8 @@ object_tangible_hopper_manufacturing_facility_hopper_shared_manufacture_installa
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2040800453
+	clientObjectCRC = 2040800453,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_hopper_manufacturing_facility_hopper_shared_manufacture_installation_ingredient_hopper_small, "object/tangible/hopper/manufacturing_facility_hopper/shared_manufacture_installation_ingredient_hopper_small.iff")
@@ -252,7 +255,8 @@ object_tangible_hopper_manufacturing_facility_hopper_shared_manufacture_installa
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2843941257
+	clientObjectCRC = 2843941257,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_hopper_manufacturing_facility_hopper_shared_manufacture_installation_ingredient_hopper_structure_large, "object/tangible/hopper/manufacturing_facility_hopper/shared_manufacture_installation_ingredient_hopper_structure_large.iff")
@@ -306,7 +310,8 @@ object_tangible_hopper_manufacturing_facility_hopper_shared_manufacture_installa
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 468681171
+	clientObjectCRC = 468681171,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_hopper_manufacturing_facility_hopper_shared_manufacture_installation_ingredient_hopper_structure_medium, "object/tangible/hopper/manufacturing_facility_hopper/shared_manufacture_installation_ingredient_hopper_structure_medium.iff")
@@ -360,7 +365,8 @@ object_tangible_hopper_manufacturing_facility_hopper_shared_manufacture_installa
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2644020640
+	clientObjectCRC = 2644020640,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_hopper_manufacturing_facility_hopper_shared_manufacture_installation_ingredient_hopper_structure_small, "object/tangible/hopper/manufacturing_facility_hopper/shared_manufacture_installation_ingredient_hopper_structure_small.iff")

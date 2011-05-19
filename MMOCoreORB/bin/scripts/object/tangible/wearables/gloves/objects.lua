@@ -90,7 +90,8 @@ object_tangible_wearables_gloves_shared_gloves_corsec = SharedTangibleObjectTemp
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2451059154
+	clientObjectCRC = 2451059154,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_gloves.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_gloves_shared_gloves_corsec, "object/tangible/wearables/gloves/shared_gloves_corsec.iff")
@@ -144,7 +145,8 @@ object_tangible_wearables_gloves_shared_gloves_s02 = SharedTangibleObjectTemplat
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1702772985
+	clientObjectCRC = 1702772985,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_gloves.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_gloves_shared_gloves_s02, "object/tangible/wearables/gloves/shared_gloves_s02.iff")
@@ -198,7 +200,8 @@ object_tangible_wearables_gloves_shared_gloves_s03 = SharedTangibleObjectTemplat
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 745744244
+	clientObjectCRC = 745744244,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_gloves_long.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_gloves_shared_gloves_s03, "object/tangible/wearables/gloves/shared_gloves_s03.iff")
@@ -252,7 +255,8 @@ object_tangible_wearables_gloves_shared_gloves_s06 = SharedTangibleObjectTemplat
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1166721914
+	clientObjectCRC = 1166721914,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_gloves.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_gloves_shared_gloves_s06, "object/tangible/wearables/gloves/shared_gloves_s06.iff")
@@ -306,7 +310,8 @@ object_tangible_wearables_gloves_shared_gloves_s07 = SharedTangibleObjectTemplat
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 210216183
+	clientObjectCRC = 210216183,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_gloves_long.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_gloves_shared_gloves_s07, "object/tangible/wearables/gloves/shared_gloves_s07.iff")
@@ -360,7 +365,8 @@ object_tangible_wearables_gloves_shared_gloves_s10 = SharedTangibleObjectTemplat
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3964437147
+	clientObjectCRC = 3964437147,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_gloves_long.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_gloves_shared_gloves_s10, "object/tangible/wearables/gloves/shared_gloves_s10.iff")
@@ -414,7 +420,8 @@ object_tangible_wearables_gloves_shared_gloves_s11 = SharedTangibleObjectTemplat
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2772559126
+	clientObjectCRC = 2772559126,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_gloves_long.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_gloves_shared_gloves_s11, "object/tangible/wearables/gloves/shared_gloves_s11.iff")
@@ -468,7 +475,8 @@ object_tangible_wearables_gloves_shared_gloves_s12 = SharedTangibleObjectTemplat
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2119585153
+	clientObjectCRC = 2119585153,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_gloves.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_gloves_shared_gloves_s12, "object/tangible/wearables/gloves/shared_gloves_s12.iff")
@@ -522,7 +530,8 @@ object_tangible_wearables_gloves_shared_gloves_s13 = SharedTangibleObjectTemplat
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 928721420
+	clientObjectCRC = 928721420,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_gloves_long.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_gloves_shared_gloves_s13, "object/tangible/wearables/gloves/shared_gloves_s13.iff")
@@ -576,7 +585,8 @@ object_tangible_wearables_gloves_shared_gloves_s14 = SharedTangibleObjectTemplat
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3434610968
+	clientObjectCRC = 3434610968,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_gloves.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_gloves_shared_gloves_s14, "object/tangible/wearables/gloves/shared_gloves_s14.iff")
@@ -630,7 +640,8 @@ object_tangible_wearables_gloves_shared_gloves_tusken_raider = SharedTangibleObj
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1738692931
+	clientObjectCRC = 1738692931,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_gloves.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_gloves_shared_gloves_tusken_raider, "object/tangible/wearables/gloves/shared_gloves_tusken_raider.iff")

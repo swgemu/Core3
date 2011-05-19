@@ -90,7 +90,8 @@ object_tangible_crafting_station_shared_armor_repair = SharedTangibleObjectTempl
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3769226262
+	clientObjectCRC = 3769226262,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/crafting/base/shared_base_repair.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_crafting_station_shared_armor_repair, "object/tangible/crafting/station/shared_armor_repair.iff")
@@ -144,7 +145,8 @@ object_tangible_crafting_station_shared_clothing_repair = SharedTangibleObjectTe
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4032677980
+	clientObjectCRC = 4032677980,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/crafting/base/shared_base_repair.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_crafting_station_shared_clothing_repair, "object/tangible/crafting/station/shared_clothing_repair.iff")
@@ -198,7 +200,8 @@ object_tangible_crafting_station_shared_clothing_station = SharedTangibleObjectT
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 737990049
+	clientObjectCRC = 737990049,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/crafting/base/shared_base_station.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_crafting_station_shared_clothing_station, "object/tangible/crafting/station/shared_clothing_station.iff")
@@ -252,7 +255,8 @@ object_tangible_crafting_station_shared_clothing_tool = SharedTangibleObjectTemp
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 753735496
+	clientObjectCRC = 753735496,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/crafting/base/shared_base_tool.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_crafting_station_shared_clothing_tool, "object/tangible/crafting/station/shared_clothing_tool.iff")
@@ -306,7 +310,8 @@ object_tangible_crafting_station_shared_droid_repair = SharedTangibleObjectTempl
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3945578306
+	clientObjectCRC = 3945578306,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/crafting/base/shared_base_repair.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_crafting_station_shared_droid_repair, "object/tangible/crafting/station/shared_droid_repair.iff")
@@ -360,7 +365,8 @@ object_tangible_crafting_station_shared_food_station = SharedTangibleObjectTempl
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3133859016
+	clientObjectCRC = 3133859016,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/crafting/base/shared_base_station.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_crafting_station_shared_food_station, "object/tangible/crafting/station/shared_food_station.iff")
@@ -414,7 +420,8 @@ object_tangible_crafting_station_shared_food_tool = SharedTangibleObjectTemplate
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2849609519
+	clientObjectCRC = 2849609519,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/crafting/base/shared_base_tool.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_crafting_station_shared_food_tool, "object/tangible/crafting/station/shared_food_tool.iff")
@@ -468,7 +475,8 @@ object_tangible_crafting_station_shared_generic_tool = SharedTangibleObjectTempl
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1055200365
+	clientObjectCRC = 1055200365,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/crafting/base/shared_base_tool.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_crafting_station_shared_generic_tool, "object/tangible/crafting/station/shared_generic_tool.iff")
@@ -522,7 +530,8 @@ object_tangible_crafting_station_shared_jedi_tool = SharedTangibleObjectTemplate
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 754074226
+	clientObjectCRC = 754074226,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/crafting/base/shared_base_tool.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_crafting_station_shared_jedi_tool, "object/tangible/crafting/station/shared_jedi_tool.iff")
@@ -576,7 +585,8 @@ object_tangible_crafting_station_shared_public_clothing_station = SharedTangible
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2936644592
+	clientObjectCRC = 2936644592,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/crafting/base/shared_base_public_station.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_crafting_station_shared_public_clothing_station, "object/tangible/crafting/station/shared_public_clothing_station.iff")
@@ -630,7 +640,8 @@ object_tangible_crafting_station_shared_public_food_station = SharedTangibleObje
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 804779915
+	clientObjectCRC = 804779915,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/crafting/base/shared_base_public_station.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_crafting_station_shared_public_food_station, "object/tangible/crafting/station/shared_public_food_station.iff")
@@ -684,7 +695,8 @@ object_tangible_crafting_station_shared_public_space_station = SharedTangibleObj
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 395482180
+	clientObjectCRC = 395482180,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/crafting/base/shared_base_public_station.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_crafting_station_shared_public_space_station, "object/tangible/crafting/station/shared_public_space_station.iff")
@@ -738,7 +750,8 @@ object_tangible_crafting_station_shared_public_structure_station = SharedTangibl
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 464244555
+	clientObjectCRC = 464244555,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/crafting/base/shared_base_public_station.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_crafting_station_shared_public_structure_station, "object/tangible/crafting/station/shared_public_structure_station.iff")
@@ -792,7 +805,8 @@ object_tangible_crafting_station_shared_public_weapon_station = SharedTangibleOb
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1920049130
+	clientObjectCRC = 1920049130,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/crafting/base/shared_base_public_station.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_crafting_station_shared_public_weapon_station, "object/tangible/crafting/station/shared_public_weapon_station.iff")
@@ -846,7 +860,8 @@ object_tangible_crafting_station_shared_space_station = SharedTangibleObjectTemp
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 408520625
+	clientObjectCRC = 408520625,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/crafting/base/shared_base_station.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_crafting_station_shared_space_station, "object/tangible/crafting/station/shared_space_station.iff")
@@ -900,7 +915,8 @@ object_tangible_crafting_station_shared_space_tool = SharedTangibleObjectTemplat
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2903391664
+	clientObjectCRC = 2903391664,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/crafting/base/shared_base_tool.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_crafting_station_shared_space_tool, "object/tangible/crafting/station/shared_space_tool.iff")
@@ -954,7 +970,8 @@ object_tangible_crafting_station_shared_structure_repair = SharedTangibleObjectT
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1513899009
+	clientObjectCRC = 1513899009,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/crafting/base/shared_base_repair.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_crafting_station_shared_structure_repair, "object/tangible/crafting/station/shared_structure_repair.iff")
@@ -1008,7 +1025,8 @@ object_tangible_crafting_station_shared_structure_station = SharedTangibleObject
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2496989305
+	clientObjectCRC = 2496989305,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/crafting/base/shared_base_station.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_crafting_station_shared_structure_station, "object/tangible/crafting/station/shared_structure_station.iff")
@@ -1062,7 +1080,8 @@ object_tangible_crafting_station_shared_structure_tool = SharedTangibleObjectTem
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4275700789
+	clientObjectCRC = 4275700789,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/crafting/base/shared_base_tool.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_crafting_station_shared_structure_tool, "object/tangible/crafting/station/shared_structure_tool.iff")
@@ -1116,7 +1135,8 @@ object_tangible_crafting_station_shared_weapon_repair = SharedTangibleObjectTemp
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2607871827
+	clientObjectCRC = 2607871827,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/crafting/base/shared_base_repair.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_crafting_station_shared_weapon_repair, "object/tangible/crafting/station/shared_weapon_repair.iff")
@@ -1170,7 +1190,8 @@ object_tangible_crafting_station_shared_weapon_station = SharedTangibleObjectTem
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2167265111
+	clientObjectCRC = 2167265111,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/crafting/base/shared_base_station.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_crafting_station_shared_weapon_station, "object/tangible/crafting/station/shared_weapon_station.iff")
@@ -1224,7 +1245,8 @@ object_tangible_crafting_station_shared_weapon_tool = SharedTangibleObjectTempla
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1693896753
+	clientObjectCRC = 1693896753,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/crafting/base/shared_base_tool.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_crafting_station_shared_weapon_tool, "object/tangible/crafting/station/shared_weapon_tool.iff")

@@ -90,7 +90,8 @@ object_tangible_hair_base_shared_hair_base = SharedTangibleObjectTemplate:new {
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1570783223
+	clientObjectCRC = 1570783223,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_hair_base_shared_hair_base, "object/tangible/hair/base/shared_hair_base.iff")

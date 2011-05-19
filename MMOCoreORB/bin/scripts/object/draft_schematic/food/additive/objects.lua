@@ -80,7 +80,8 @@ object_draft_schematic_food_additive_shared_additive_heavy = SharedDraftSchemati
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3572109934
+	clientObjectCRC = 3572109934,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff", "object/draft_schematic/food/shared_base_food_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_food_additive_shared_additive_heavy, "object/draft_schematic/food/additive/shared_additive_heavy.iff")
@@ -124,7 +125,8 @@ object_draft_schematic_food_additive_shared_additive_light = SharedDraftSchemati
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 363998896
+	clientObjectCRC = 363998896,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff", "object/draft_schematic/food/shared_base_food_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_food_additive_shared_additive_light, "object/draft_schematic/food/additive/shared_additive_light.iff")
@@ -168,7 +170,8 @@ object_draft_schematic_food_additive_shared_additive_medium = SharedDraftSchemat
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2258764043
+	clientObjectCRC = 2258764043,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff", "object/draft_schematic/food/shared_base_food_schematic.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_food_additive_shared_additive_medium, "object/draft_schematic/food/additive/shared_additive_medium.iff")

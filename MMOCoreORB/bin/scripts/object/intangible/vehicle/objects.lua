@@ -80,7 +80,8 @@ object_intangible_vehicle_shared_jetpack_pcd = SharedIntangibleObjectTemplate:ne
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2096609656
+	clientObjectCRC = 2096609656,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/intangible/vehicle/shared_vehicle_pcd_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_vehicle_shared_jetpack_pcd, "object/intangible/vehicle/shared_jetpack_pcd.iff")
@@ -124,7 +125,8 @@ object_intangible_vehicle_shared_landspeeder_av21_pcd = SharedIntangibleObjectTe
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3762629621
+	clientObjectCRC = 3762629621,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/intangible/vehicle/shared_vehicle_pcd_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_vehicle_shared_landspeeder_av21_pcd, "object/intangible/vehicle/shared_landspeeder_av21_pcd.iff")
@@ -168,7 +170,8 @@ object_intangible_vehicle_shared_landspeeder_x31_pcd = SharedIntangibleObjectTem
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3148893162
+	clientObjectCRC = 3148893162,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/intangible/vehicle/shared_vehicle_pcd_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_vehicle_shared_landspeeder_x31_pcd, "object/intangible/vehicle/shared_landspeeder_x31_pcd.iff")
@@ -212,7 +215,8 @@ object_intangible_vehicle_shared_landspeeder_x34_pcd = SharedIntangibleObjectTem
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2364632781
+	clientObjectCRC = 2364632781,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/intangible/vehicle/shared_vehicle_pcd_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_vehicle_shared_landspeeder_x34_pcd, "object/intangible/vehicle/shared_landspeeder_x34_pcd.iff")
@@ -256,7 +260,8 @@ object_intangible_vehicle_shared_speederbike_flash_pcd = SharedIntangibleObjectT
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1448247515
+	clientObjectCRC = 1448247515,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/intangible/vehicle/shared_vehicle_pcd_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_vehicle_shared_speederbike_flash_pcd, "object/intangible/vehicle/shared_speederbike_flash_pcd.iff")
@@ -300,7 +305,8 @@ object_intangible_vehicle_shared_speederbike_pcd = SharedIntangibleObjectTemplat
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3659586517
+	clientObjectCRC = 3659586517,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/intangible/vehicle/shared_vehicle_pcd_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_vehicle_shared_speederbike_pcd, "object/intangible/vehicle/shared_speederbike_pcd.iff")
@@ -344,7 +350,8 @@ object_intangible_vehicle_shared_speederbike_swoop_pcd = SharedIntangibleObjectT
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2233671002
+	clientObjectCRC = 2233671002,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/intangible/vehicle/shared_vehicle_pcd_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_vehicle_shared_speederbike_swoop_pcd, "object/intangible/vehicle/shared_speederbike_swoop_pcd.iff")
@@ -388,7 +395,8 @@ object_intangible_vehicle_shared_vehicle_pcd_base = SharedIntangibleObjectTempla
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2853503513
+	clientObjectCRC = 2853503513,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_vehicle_shared_vehicle_pcd_base, "object/intangible/vehicle/shared_vehicle_pcd_base.iff")

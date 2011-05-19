@@ -80,7 +80,8 @@ object_static_structure_tatooine_jawa_shared_tent_jawa_01_large = SharedStaticOb
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1450417289
+	clientObjectCRC = 1450417289,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff", "object/static/structure/tatooine/jawa/base/shared_tent_jawa_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_tatooine_jawa_shared_tent_jawa_01_large, "object/static/structure/tatooine/jawa/shared_tent_jawa_01_large.iff")
@@ -124,7 +125,8 @@ object_static_structure_tatooine_jawa_shared_tent_jawa_01_med = SharedStaticObje
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3551226366
+	clientObjectCRC = 3551226366,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff", "object/static/structure/tatooine/jawa/base/shared_tent_jawa_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_tatooine_jawa_shared_tent_jawa_01_med, "object/static/structure/tatooine/jawa/shared_tent_jawa_01_med.iff")
@@ -168,7 +170,8 @@ object_static_structure_tatooine_jawa_shared_tent_jawa_01_small = SharedStaticOb
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1650985120
+	clientObjectCRC = 1650985120,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff", "object/static/structure/tatooine/jawa/base/shared_tent_jawa_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_tatooine_jawa_shared_tent_jawa_01_small, "object/static/structure/tatooine/jawa/shared_tent_jawa_01_small.iff")

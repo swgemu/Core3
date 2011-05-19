@@ -90,7 +90,8 @@ object_tangible_container_loot_shared_astromech_container = SharedTangibleObject
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 84456311
+	clientObjectCRC = 84456311,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/container/base/shared_base_container.iff", "object/tangible/container/base/shared_base_container_volume.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_container_loot_shared_astromech_container, "object/tangible/container/loot/shared_astromech_container.iff")
@@ -144,7 +145,8 @@ object_tangible_container_loot_shared_computer_container = SharedTangibleObjectT
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2996080617
+	clientObjectCRC = 2996080617,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/container/base/shared_base_container.iff", "object/tangible/container/base/shared_base_container_volume.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_container_loot_shared_computer_container, "object/tangible/container/loot/shared_computer_container.iff")
@@ -198,7 +200,8 @@ object_tangible_container_loot_shared_gas_filter_container = SharedTangibleObjec
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 349560727
+	clientObjectCRC = 349560727,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/container/base/shared_base_container.iff", "object/tangible/container/base/shared_base_container_volume.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_container_loot_shared_gas_filter_container, "object/tangible/container/loot/shared_gas_filter_container.iff")
@@ -252,7 +255,8 @@ object_tangible_container_loot_shared_loot_crate = SharedTangibleObjectTemplate:
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1268006083
+	clientObjectCRC = 1268006083,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/container/base/shared_base_container.iff", "object/tangible/container/base/shared_base_container_volume.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_container_loot_shared_loot_crate, "object/tangible/container/loot/shared_loot_crate.iff")
@@ -306,7 +310,8 @@ object_tangible_container_loot_shared_placable_loot_crate = SharedTangibleObject
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2362384973
+	clientObjectCRC = 2362384973,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/container/base/shared_base_container.iff", "object/tangible/container/base/shared_base_container_volume.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_container_loot_shared_placable_loot_crate, "object/tangible/container/loot/shared_placable_loot_crate.iff")
@@ -360,7 +365,8 @@ object_tangible_container_loot_shared_placable_loot_crate_skeleton_bith = Shared
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2636682415
+	clientObjectCRC = 2636682415,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/container/base/shared_base_container.iff", "object/tangible/container/base/shared_base_container_volume.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_container_loot_shared_placable_loot_crate_skeleton_bith, "object/tangible/container/loot/shared_placable_loot_crate_skeleton_bith.iff")
@@ -414,7 +420,8 @@ object_tangible_container_loot_shared_placable_loot_crate_skeleton_human = Share
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2665565001
+	clientObjectCRC = 2665565001,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/container/base/shared_base_container.iff", "object/tangible/container/base/shared_base_container_volume.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_container_loot_shared_placable_loot_crate_skeleton_human, "object/tangible/container/loot/shared_placable_loot_crate_skeleton_human.iff")
@@ -468,7 +475,8 @@ object_tangible_container_loot_shared_placable_loot_crate_skeleton_ithorian = Sh
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2780389059
+	clientObjectCRC = 2780389059,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/container/base/shared_base_container.iff", "object/tangible/container/base/shared_base_container_volume.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_container_loot_shared_placable_loot_crate_skeleton_ithorian, "object/tangible/container/loot/shared_placable_loot_crate_skeleton_ithorian.iff")
@@ -522,7 +530,8 @@ object_tangible_container_loot_shared_placable_loot_crate_tech_armoire = SharedT
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2410892657
+	clientObjectCRC = 2410892657,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/container/base/shared_base_container.iff", "object/tangible/container/base/shared_base_container_volume.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_container_loot_shared_placable_loot_crate_tech_armoire, "object/tangible/container/loot/shared_placable_loot_crate_tech_armoire.iff")
@@ -576,7 +585,8 @@ object_tangible_container_loot_shared_placable_loot_crate_tech_chest = SharedTan
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4025920030
+	clientObjectCRC = 4025920030,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/container/base/shared_base_container.iff", "object/tangible/container/base/shared_base_container_volume.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_container_loot_shared_placable_loot_crate_tech_chest, "object/tangible/container/loot/shared_placable_loot_crate_tech_chest.iff")
@@ -630,7 +640,8 @@ object_tangible_container_loot_shared_placable_loot_crate_trashpile = SharedTang
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2638627675
+	clientObjectCRC = 2638627675,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/container/base/shared_base_container.iff", "object/tangible/container/base/shared_base_container_volume.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_container_loot_shared_placable_loot_crate_trashpile, "object/tangible/container/loot/shared_placable_loot_crate_trashpile.iff")
@@ -684,7 +695,8 @@ object_tangible_container_loot_shared_player_loot_crate = SharedTangibleObjectTe
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3460646661
+	clientObjectCRC = 3460646661,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_container_loot_shared_player_loot_crate, "object/tangible/container/loot/shared_player_loot_crate.iff")

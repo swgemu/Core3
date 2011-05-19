@@ -90,7 +90,8 @@ object_tangible_lair_dune_lizard_shared_lair_dune_lizard = SharedTangibleObjectT
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2444927445
+	clientObjectCRC = 2444927445,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff", "object/tangible/lair/base/shared_lair_base_nest_ground_lg_light.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_dune_lizard_shared_lair_dune_lizard, "object/tangible/lair/dune_lizard/shared_lair_dune_lizard.iff")
@@ -144,7 +145,8 @@ object_tangible_lair_dune_lizard_shared_lair_dune_lizard_desert = SharedTangible
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2514665274
+	clientObjectCRC = 2514665274,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff", "object/tangible/lair/base/shared_lair_base_nest_ground_lg_light.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_dune_lizard_shared_lair_dune_lizard_desert, "object/tangible/lair/dune_lizard/shared_lair_dune_lizard_desert.iff")

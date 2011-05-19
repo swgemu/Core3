@@ -90,7 +90,8 @@ object_tangible_item_quest_hero_of_tatooine_shared_explosives = SharedTangibleOb
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2331373945
+	clientObjectCRC = 2331373945,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_item_quest_hero_of_tatooine_shared_explosives, "object/tangible/item/quest/hero_of_tatooine/shared_explosives.iff")
@@ -144,7 +145,8 @@ object_tangible_item_quest_hero_of_tatooine_shared_explosives_crate = SharedTang
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 633901236
+	clientObjectCRC = 633901236,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_item_quest_hero_of_tatooine_shared_explosives_crate, "object/tangible/item/quest/hero_of_tatooine/shared_explosives_crate.iff")

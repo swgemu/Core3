@@ -90,7 +90,8 @@ object_tangible_hopper_shared_crafting_station_ingredient_hopper_1 = SharedTangi
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2116612555
+	clientObjectCRC = 2116612555,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_hopper_shared_crafting_station_ingredient_hopper_1, "object/tangible/hopper/shared_crafting_station_ingredient_hopper_1.iff")
@@ -144,7 +145,8 @@ object_tangible_hopper_shared_manufacture_installation_ingredient_hopper_1 = Sha
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4266502475
+	clientObjectCRC = 4266502475,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_hopper_shared_manufacture_installation_ingredient_hopper_1, "object/tangible/hopper/shared_manufacture_installation_ingredient_hopper_1.iff")
@@ -198,7 +200,8 @@ object_tangible_hopper_shared_manufacture_installation_output_hopper_1 = SharedT
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3765113149
+	clientObjectCRC = 3765113149,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_hopper_shared_manufacture_installation_output_hopper_1, "object/tangible/hopper/shared_manufacture_installation_output_hopper_1.iff")

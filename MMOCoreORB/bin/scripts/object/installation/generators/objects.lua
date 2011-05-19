@@ -90,7 +90,8 @@ object_installation_generators_shared_power_generator_fusion_style_1 = SharedIns
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1283788286
+	clientObjectCRC = 1283788286,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff", "object/installation/generators/base/shared_power_generator_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_installation_generators_shared_power_generator_fusion_style_1, "object/installation/generators/shared_power_generator_fusion_style_1.iff")
@@ -144,7 +145,8 @@ object_installation_generators_shared_power_generator_photo_bio_style_1 = Shared
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2363771835
+	clientObjectCRC = 2363771835,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff", "object/installation/generators/base/shared_power_generator_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_installation_generators_shared_power_generator_photo_bio_style_1, "object/installation/generators/shared_power_generator_photo_bio_style_1.iff")
@@ -198,7 +200,8 @@ object_installation_generators_shared_power_generator_solar_style_1 = SharedInst
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 859942951
+	clientObjectCRC = 859942951,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff", "object/installation/generators/base/shared_power_generator_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_installation_generators_shared_power_generator_solar_style_1, "object/installation/generators/shared_power_generator_solar_style_1.iff")
@@ -252,7 +255,8 @@ object_installation_generators_shared_power_generator_wind_style_1 = SharedInsta
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2932869055
+	clientObjectCRC = 2932869055,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff", "object/installation/generators/base/shared_power_generator_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_installation_generators_shared_power_generator_wind_style_1, "object/installation/generators/shared_power_generator_wind_style_1.iff")

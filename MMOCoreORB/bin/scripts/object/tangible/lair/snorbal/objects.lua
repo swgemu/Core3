@@ -90,7 +90,8 @@ object_tangible_lair_snorbal_shared_lair_snorbal = SharedTangibleObjectTemplate:
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3190753462
+	clientObjectCRC = 3190753462,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_snorbal_shared_lair_snorbal, "object/tangible/lair/snorbal/shared_lair_snorbal.iff")
@@ -144,7 +145,8 @@ object_tangible_lair_snorbal_shared_lair_snorbal_grassland = SharedTangibleObjec
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1664191883
+	clientObjectCRC = 1664191883,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_snorbal_shared_lair_snorbal_grassland, "object/tangible/lair/snorbal/shared_lair_snorbal_grassland.iff")

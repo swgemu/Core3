@@ -90,7 +90,8 @@ object_tangible_encoded_disk_shared_dead_eye_decoder = SharedTangibleObjectTempl
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2852692407
+	clientObjectCRC = 2852692407,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_encoded_disk_shared_dead_eye_decoder, "object/tangible/encoded_disk/shared_dead_eye_decoder.iff")
@@ -144,7 +145,8 @@ object_tangible_encoded_disk_shared_encoded_disk_base = SharedTangibleObjectTemp
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1811104039
+	clientObjectCRC = 1811104039,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_encoded_disk_shared_encoded_disk_base, "object/tangible/encoded_disk/shared_encoded_disk_base.iff")
@@ -198,7 +200,8 @@ object_tangible_encoded_disk_shared_message_assembled_base = SharedTangibleObjec
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3642693212
+	clientObjectCRC = 3642693212,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_encoded_disk_shared_message_assembled_base, "object/tangible/encoded_disk/shared_message_assembled_base.iff")
@@ -252,7 +255,8 @@ object_tangible_encoded_disk_shared_message_fragment_base = SharedTangibleObject
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 378623221
+	clientObjectCRC = 378623221,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_encoded_disk_shared_message_fragment_base, "object/tangible/encoded_disk/shared_message_fragment_base.iff")

@@ -90,7 +90,8 @@ object_tangible_wearables_helmet_shared_helmet_atat = SharedTangibleObjectTempla
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4140396271
+	clientObjectCRC = 4140396271,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_armor_base.iff", "object/tangible/wearables/base/shared_base_helmet_closed_full.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_helmet_shared_helmet_atat, "object/tangible/wearables/helmet/shared_helmet_atat.iff")
@@ -144,7 +145,8 @@ object_tangible_wearables_helmet_shared_helmet_fighter_blacksun_ace = SharedTang
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 430117123
+	clientObjectCRC = 430117123,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_armor_base.iff", "object/tangible/wearables/base/shared_base_helmet_closed_full.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_helmet_shared_helmet_fighter_blacksun_ace, "object/tangible/wearables/helmet/shared_helmet_fighter_blacksun_ace.iff")
@@ -198,7 +200,8 @@ object_tangible_wearables_helmet_shared_helmet_fighter_imperial_ace = SharedTang
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2580358001
+	clientObjectCRC = 2580358001,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_armor_base.iff", "object/tangible/wearables/base/shared_base_helmet_closed_full.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_helmet_shared_helmet_fighter_imperial_ace, "object/tangible/wearables/helmet/shared_helmet_fighter_imperial_ace.iff")
@@ -252,7 +255,8 @@ object_tangible_wearables_helmet_shared_helmet_fighter_privateer_ace = SharedTan
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1909608537
+	clientObjectCRC = 1909608537,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_armor_base.iff", "object/tangible/wearables/base/shared_base_helmet_closed_full.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_helmet_shared_helmet_fighter_privateer_ace, "object/tangible/wearables/helmet/shared_helmet_fighter_privateer_ace.iff")
@@ -306,7 +310,8 @@ object_tangible_wearables_helmet_shared_helmet_fighter_rebel_ace = SharedTangibl
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4143277653
+	clientObjectCRC = 4143277653,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_armor_base.iff", "object/tangible/wearables/base/shared_base_helmet_closed_full.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_helmet_shared_helmet_fighter_rebel_ace, "object/tangible/wearables/helmet/shared_helmet_fighter_rebel_ace.iff")
@@ -360,7 +365,8 @@ object_tangible_wearables_helmet_shared_helmet_s06 = SharedTangibleObjectTemplat
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1007682682
+	clientObjectCRC = 1007682682,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_armor_base.iff", "object/tangible/wearables/base/shared_base_helmet_closed_full.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_helmet_shared_helmet_s06, "object/tangible/wearables/helmet/shared_helmet_s06.iff")
@@ -414,7 +420,8 @@ object_tangible_wearables_helmet_shared_helmet_tie_fighter = SharedTangibleObjec
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 49314199
+	clientObjectCRC = 49314199,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_armor_base.iff", "object/tangible/wearables/base/shared_base_helmet_closed_full.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_helmet_shared_helmet_tie_fighter, "object/tangible/wearables/helmet/shared_helmet_tie_fighter.iff")
@@ -468,7 +475,8 @@ object_tangible_wearables_helmet_shared_helmet_tusken_raider_s01 = SharedTangibl
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4156063051
+	clientObjectCRC = 4156063051,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_armor_base.iff", "object/tangible/wearables/base/shared_base_helmet_closed_full.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_helmet_shared_helmet_tusken_raider_s01, "object/tangible/wearables/helmet/shared_helmet_tusken_raider_s01.iff")
@@ -522,7 +530,8 @@ object_tangible_wearables_helmet_shared_helmet_tusken_raider_s02 = SharedTangibl
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 749721052
+	clientObjectCRC = 749721052,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_armor_base.iff", "object/tangible/wearables/base/shared_base_helmet_closed_full.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_helmet_shared_helmet_tusken_raider_s02, "object/tangible/wearables/helmet/shared_helmet_tusken_raider_s02.iff")

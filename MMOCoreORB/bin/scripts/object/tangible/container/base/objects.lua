@@ -90,7 +90,8 @@ object_tangible_container_base_shared_base_container = SharedTangibleObjectTempl
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1607613666
+	clientObjectCRC = 1607613666,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_container_base_shared_base_container, "object/tangible/container/base/shared_base_container.iff")
@@ -144,7 +145,8 @@ object_tangible_container_base_shared_base_container_slotted = SharedTangibleObj
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2617825065
+	clientObjectCRC = 2617825065,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/container/base/shared_base_container.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_container_base_shared_base_container_slotted, "object/tangible/container/base/shared_base_container_slotted.iff")
@@ -198,7 +200,8 @@ object_tangible_container_base_shared_base_container_volume = SharedTangibleObje
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2281415090
+	clientObjectCRC = 2281415090,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/container/base/shared_base_container.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_container_base_shared_base_container_volume, "object/tangible/container/base/shared_base_container_volume.iff")

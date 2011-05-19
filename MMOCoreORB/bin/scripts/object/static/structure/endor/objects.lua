@@ -80,7 +80,8 @@ object_static_structure_endor_shared_endor_cap = SharedStaticObjectTemplate:new 
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1412682900
+	clientObjectCRC = 1412682900,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_endor_shared_endor_cap, "object/static/structure/endor/shared_endor_cap.iff")
@@ -124,7 +125,8 @@ object_static_structure_endor_shared_endor_catwalk = SharedStaticObjectTemplate:
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2834035953
+	clientObjectCRC = 2834035953,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_endor_shared_endor_catwalk, "object/static/structure/endor/shared_endor_catwalk.iff")
@@ -167,7 +169,8 @@ object_static_structure_endor_shared_endr_imprv_bannerpole_s01 = SharedStaticObj
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2166795982
+	clientObjectCRC = 2166795982,
+	derivedFromTemplates = {}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_endor_shared_endr_imprv_bannerpole_s01, "object/static/structure/endor/shared_endr_imprv_bannerpole_s01.iff")
@@ -210,7 +213,8 @@ object_static_structure_endor_shared_endr_imprv_flagpole_s01 = SharedStaticObjec
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 4084104443
+	clientObjectCRC = 4084104443,
+	derivedFromTemplates = {}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_endor_shared_endr_imprv_flagpole_s01, "object/static/structure/endor/shared_endr_imprv_flagpole_s01.iff")

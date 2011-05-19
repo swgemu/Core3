@@ -90,7 +90,8 @@ object_tangible_lair_huf_dun_hill_shared_lair_huf_dun_hill = SharedTangibleObjec
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1260954181
+	clientObjectCRC = 1260954181,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_huf_dun_hill_shared_lair_huf_dun_hill, "object/tangible/lair/huf_dun_hill/shared_lair_huf_dun_hill.iff")

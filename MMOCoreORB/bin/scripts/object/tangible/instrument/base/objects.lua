@@ -90,7 +90,8 @@ object_tangible_instrument_base_shared_instrument_base = SharedTangibleObjectTem
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2963077221
+	clientObjectCRC = 2963077221,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_instrument_base_shared_instrument_base, "object/tangible/instrument/base/shared_instrument_base.iff")

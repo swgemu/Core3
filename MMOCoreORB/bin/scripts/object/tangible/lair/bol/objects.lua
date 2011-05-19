@@ -90,7 +90,8 @@ object_tangible_lair_bol_shared_lair_bol = SharedTangibleObjectTemplate:new {
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 690467171
+	clientObjectCRC = 690467171,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_bol_shared_lair_bol, "object/tangible/lair/bol/shared_lair_bol.iff")
@@ -144,7 +145,8 @@ object_tangible_lair_bol_shared_lair_bol_grassland = SharedTangibleObjectTemplat
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 494138850
+	clientObjectCRC = 494138850,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_bol_shared_lair_bol_grassland, "object/tangible/lair/bol/shared_lair_bol_grassland.iff")

@@ -90,7 +90,8 @@ object_tangible_lair_worrt_shared_lair_worrt = SharedTangibleObjectTemplate:new 
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3340605461
+	clientObjectCRC = 3340605461,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff", "object/tangible/lair/base/shared_lair_base_trash_dark.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_worrt_shared_lair_worrt, "object/tangible/lair/worrt/shared_lair_worrt.iff")
@@ -144,7 +145,8 @@ object_tangible_lair_worrt_shared_lair_worrt_desert = SharedTangibleObjectTempla
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 870158284
+	clientObjectCRC = 870158284,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff", "object/tangible/lair/base/shared_lair_base_trash_dark.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_worrt_shared_lair_worrt_desert, "object/tangible/lair/worrt/shared_lair_worrt_desert.iff")

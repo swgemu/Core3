@@ -90,7 +90,8 @@ object_installation_mining_organic_base_shared_mining_organic_base = SharedInsta
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1780958356
+	clientObjectCRC = 1780958356,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_installation_mining_organic_base_shared_mining_organic_base, "object/installation/mining_organic/base/shared_mining_organic_base.iff")

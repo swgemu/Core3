@@ -90,7 +90,8 @@ object_tangible_lair_rancor_shared_lair_rancor = SharedTangibleObjectTemplate:ne
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2318276825
+	clientObjectCRC = 2318276825,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff", "object/tangible/lair/base/shared_lair_base_rancor_light.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_rancor_shared_lair_rancor, "object/tangible/lair/rancor/shared_lair_rancor.iff")
@@ -144,7 +145,8 @@ object_tangible_lair_rancor_shared_lair_rancor_desert = SharedTangibleObjectTemp
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2929914812
+	clientObjectCRC = 2929914812,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_rancor_shared_lair_rancor_desert, "object/tangible/lair/rancor/shared_lair_rancor_desert.iff")
@@ -198,7 +200,8 @@ object_tangible_lair_rancor_shared_lair_rancor_mountain = SharedTangibleObjectTe
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2174078931
+	clientObjectCRC = 2174078931,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_rancor_shared_lair_rancor_mountain, "object/tangible/lair/rancor/shared_lair_rancor_mountain.iff")

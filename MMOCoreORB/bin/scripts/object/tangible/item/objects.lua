@@ -90,7 +90,8 @@ object_tangible_item_shared_con_drinking_glass_01 = SharedTangibleObjectTemplate
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2860245091
+	clientObjectCRC = 2860245091,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_item_shared_con_drinking_glass_01, "object/tangible/item/shared_con_drinking_glass_01.iff")
@@ -144,7 +145,8 @@ object_tangible_item_shared_droid_customization = SharedTangibleObjectTemplate:n
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3401469915
+	clientObjectCRC = 3401469915,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_item_shared_droid_customization, "object/tangible/item/shared_droid_customization.iff")
@@ -198,7 +200,8 @@ object_tangible_item_shared_loot_credit_chip = SharedTangibleObjectTemplate:new 
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4287269962
+	clientObjectCRC = 4287269962,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_item_shared_loot_credit_chip, "object/tangible/item/shared_loot_credit_chip.iff")
@@ -252,7 +255,8 @@ object_tangible_item_shared_lytus_family_artefact = SharedTangibleObjectTemplate
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3055843193
+	clientObjectCRC = 3055843193,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_item_shared_lytus_family_artefact, "object/tangible/item/shared_lytus_family_artefact.iff")
@@ -306,7 +310,8 @@ object_tangible_item_shared_vehicle_customization = SharedTangibleObjectTemplate
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 3528062501
+	clientObjectCRC = 3528062501,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_item_shared_vehicle_customization, "object/tangible/item/shared_vehicle_customization.iff")

@@ -90,7 +90,8 @@ object_tangible_lair_quenker_shared_lair_quenker = SharedTangibleObjectTemplate:
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1829714494
+	clientObjectCRC = 1829714494,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_quenker_shared_lair_quenker, "object/tangible/lair/quenker/shared_lair_quenker.iff")
@@ -144,7 +145,8 @@ object_tangible_lair_quenker_shared_lair_quenker_grassland = SharedTangibleObjec
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 571906509
+	clientObjectCRC = 571906509,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_quenker_shared_lair_quenker_grassland, "object/tangible/lair/quenker/shared_lair_quenker_grassland.iff")

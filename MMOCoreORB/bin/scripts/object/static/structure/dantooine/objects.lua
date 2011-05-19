@@ -80,7 +80,8 @@ object_static_structure_dantooine_shared_dant_boundary_post = SharedStaticObject
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2924198126
+	clientObjectCRC = 2924198126,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_dantooine_shared_dant_boundary_post, "object/static/structure/dantooine/shared_dant_boundary_post.iff")
@@ -124,7 +125,8 @@ object_static_structure_dantooine_shared_dant_cooking_stone = SharedStaticObject
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1600616690
+	clientObjectCRC = 1600616690,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_dantooine_shared_dant_cooking_stone, "object/static/structure/dantooine/shared_dant_cooking_stone.iff")
@@ -168,7 +170,8 @@ object_static_structure_dantooine_shared_dant_fence_4m = SharedStaticObjectTempl
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1600034556
+	clientObjectCRC = 1600034556,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_dantooine_shared_dant_fence_4m, "object/static/structure/dantooine/shared_dant_fence_4m.iff")
@@ -212,7 +215,8 @@ object_static_structure_dantooine_shared_dant_fence_8m = SharedStaticObjectTempl
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3938371804
+	clientObjectCRC = 3938371804,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_dantooine_shared_dant_fence_8m, "object/static/structure/dantooine/shared_dant_fence_8m.iff")
@@ -256,7 +260,8 @@ object_static_structure_dantooine_shared_dant_fire_pit = SharedStaticObjectTempl
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 4033600287
+	clientObjectCRC = 4033600287,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_dantooine_shared_dant_fire_pit, "object/static/structure/dantooine/shared_dant_fire_pit.iff")
@@ -300,7 +305,8 @@ object_static_structure_dantooine_shared_dant_fish_rack = SharedStaticObjectTemp
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 440746262
+	clientObjectCRC = 440746262,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_dantooine_shared_dant_fish_rack, "object/static/structure/dantooine/shared_dant_fish_rack.iff")
@@ -344,7 +350,8 @@ object_static_structure_dantooine_shared_dant_gate = SharedStaticObjectTemplate:
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 7139239
+	clientObjectCRC = 7139239,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_dantooine_shared_dant_gate, "object/static/structure/dantooine/shared_dant_gate.iff")
@@ -388,7 +395,8 @@ object_static_structure_dantooine_shared_dant_hide_tanning_s01 = SharedStaticObj
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2151826436
+	clientObjectCRC = 2151826436,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_dantooine_shared_dant_hide_tanning_s01, "object/static/structure/dantooine/shared_dant_hide_tanning_s01.iff")
@@ -432,7 +440,8 @@ object_static_structure_dantooine_shared_dant_hide_tanning_s02 = SharedStaticObj
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1532357779
+	clientObjectCRC = 1532357779,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_dantooine_shared_dant_hide_tanning_s02, "object/static/structure/dantooine/shared_dant_hide_tanning_s02.iff")
@@ -475,7 +484,8 @@ object_static_structure_dantooine_shared_dant_imprv_bannerpole_s01 = SharedStati
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2238403752
+	clientObjectCRC = 2238403752,
+	derivedFromTemplates = {}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_dantooine_shared_dant_imprv_bannerpole_s01, "object/static/structure/dantooine/shared_dant_imprv_bannerpole_s01.iff")
@@ -518,7 +528,8 @@ object_static_structure_dantooine_shared_dant_imprv_flagpole_s01 = SharedStaticO
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3453851559
+	clientObjectCRC = 3453851559,
+	derivedFromTemplates = {}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_dantooine_shared_dant_imprv_flagpole_s01, "object/static/structure/dantooine/shared_dant_imprv_flagpole_s01.iff")
@@ -562,7 +573,8 @@ object_static_structure_dantooine_shared_dant_jedi_main_structure = SharedStatic
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3200541181
+	clientObjectCRC = 3200541181,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_dantooine_shared_dant_jedi_main_structure, "object/static/structure/dantooine/shared_dant_jedi_main_structure.iff")
@@ -606,7 +618,8 @@ object_static_structure_dantooine_shared_dant_jedi_temple_altar = SharedStaticOb
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3549254078
+	clientObjectCRC = 3549254078,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_dantooine_shared_dant_jedi_temple_altar, "object/static/structure/dantooine/shared_dant_jedi_temple_altar.iff")
@@ -650,7 +663,8 @@ object_static_structure_dantooine_shared_dant_jedi_temple_pillar = SharedStaticO
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3410738140
+	clientObjectCRC = 3410738140,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_dantooine_shared_dant_jedi_temple_pillar, "object/static/structure/dantooine/shared_dant_jedi_temple_pillar.iff")
@@ -694,7 +708,8 @@ object_static_structure_dantooine_shared_dant_jedi_temple_pillar_base = SharedSt
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3737353832
+	clientObjectCRC = 3737353832,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_dantooine_shared_dant_jedi_temple_pillar_base, "object/static/structure/dantooine/shared_dant_jedi_temple_pillar_base.iff")
@@ -738,7 +753,8 @@ object_static_structure_dantooine_shared_dant_jedi_temple_pillar_fallen = Shared
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1808475957
+	clientObjectCRC = 1808475957,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_dantooine_shared_dant_jedi_temple_pillar_fallen, "object/static/structure/dantooine/shared_dant_jedi_temple_pillar_fallen.iff")
@@ -782,7 +798,8 @@ object_static_structure_dantooine_shared_dant_jedi_temple_pillar_med = SharedSta
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 4036421930
+	clientObjectCRC = 4036421930,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_dantooine_shared_dant_jedi_temple_pillar_med, "object/static/structure/dantooine/shared_dant_jedi_temple_pillar_med.iff")
@@ -826,7 +843,8 @@ object_static_structure_dantooine_shared_dant_jedi_temple_pillar_sm = SharedStat
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1127667832
+	clientObjectCRC = 1127667832,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_dantooine_shared_dant_jedi_temple_pillar_sm, "object/static/structure/dantooine/shared_dant_jedi_temple_pillar_sm.iff")
@@ -870,7 +888,8 @@ object_static_structure_dantooine_shared_dant_jedi_wall_1 = SharedStaticObjectTe
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3556125150
+	clientObjectCRC = 3556125150,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_dantooine_shared_dant_jedi_wall_1, "object/static/structure/dantooine/shared_dant_jedi_wall_1.iff")
@@ -914,7 +933,8 @@ object_static_structure_dantooine_shared_dant_jedi_wall_2 = SharedStaticObjectTe
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 148996425
+	clientObjectCRC = 148996425,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_dantooine_shared_dant_jedi_wall_2, "object/static/structure/dantooine/shared_dant_jedi_wall_2.iff")
@@ -958,7 +978,8 @@ object_static_structure_dantooine_shared_dant_large_communal = SharedStaticObjec
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2822062306
+	clientObjectCRC = 2822062306,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_dantooine_shared_dant_large_communal, "object/static/structure/dantooine/shared_dant_large_communal.iff")
@@ -1002,7 +1023,8 @@ object_static_structure_dantooine_shared_dant_large_communal_dest = SharedStatic
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 888416774
+	clientObjectCRC = 888416774,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_dantooine_shared_dant_large_communal_dest, "object/static/structure/dantooine/shared_dant_large_communal_dest.iff")
@@ -1046,7 +1068,8 @@ object_static_structure_dantooine_shared_dant_large_communal_no_flora_10m = Shar
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 5395298
+	clientObjectCRC = 5395298,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_dantooine_shared_dant_large_communal_no_flora_10m, "object/static/structure/dantooine/shared_dant_large_communal_no_flora_10m.iff")
@@ -1090,7 +1113,8 @@ object_static_structure_dantooine_shared_dant_large_hut = SharedStaticObjectTemp
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3738317565
+	clientObjectCRC = 3738317565,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_dantooine_shared_dant_large_hut, "object/static/structure/dantooine/shared_dant_large_hut.iff")
@@ -1134,7 +1158,8 @@ object_static_structure_dantooine_shared_dant_large_hut_no_flora_10m = SharedSta
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2953965200
+	clientObjectCRC = 2953965200,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_dantooine_shared_dant_large_hut_no_flora_10m, "object/static/structure/dantooine/shared_dant_large_hut_no_flora_10m.iff")
@@ -1178,7 +1203,8 @@ object_static_structure_dantooine_shared_dant_large_mudhut = SharedStaticObjectT
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3375506333
+	clientObjectCRC = 3375506333,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_dantooine_shared_dant_large_mudhut, "object/static/structure/dantooine/shared_dant_large_mudhut.iff")
@@ -1222,7 +1248,8 @@ object_static_structure_dantooine_shared_dant_large_mudhut_no_flora_05m = Shared
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3829973531
+	clientObjectCRC = 3829973531,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_dantooine_shared_dant_large_mudhut_no_flora_05m, "object/static/structure/dantooine/shared_dant_large_mudhut_no_flora_05m.iff")
@@ -1266,7 +1293,8 @@ object_static_structure_dantooine_shared_dant_large_rock_hut = SharedStaticObjec
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1876585046
+	clientObjectCRC = 1876585046,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_dantooine_shared_dant_large_rock_hut, "object/static/structure/dantooine/shared_dant_large_rock_hut.iff")
@@ -1310,7 +1338,8 @@ object_static_structure_dantooine_shared_dant_large_rock_hut_dest = SharedStatic
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2097574138
+	clientObjectCRC = 2097574138,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_dantooine_shared_dant_large_rock_hut_dest, "object/static/structure/dantooine/shared_dant_large_rock_hut_dest.iff")
@@ -1354,7 +1383,8 @@ object_static_structure_dantooine_shared_dant_large_rock_hut_dest_01 = SharedSta
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2552639748
+	clientObjectCRC = 2552639748,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_dantooine_shared_dant_large_rock_hut_dest_01, "object/static/structure/dantooine/shared_dant_large_rock_hut_dest_01.iff")
@@ -1398,7 +1428,8 @@ object_static_structure_dantooine_shared_dant_large_rock_hut_dest_02 = SharedSta
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1127324051
+	clientObjectCRC = 1127324051,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_dantooine_shared_dant_large_rock_hut_dest_02, "object/static/structure/dantooine/shared_dant_large_rock_hut_dest_02.iff")
@@ -1442,7 +1473,8 @@ object_static_structure_dantooine_shared_dant_large_rock_hut_dest_03 = SharedSta
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 171769374
+	clientObjectCRC = 171769374,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_dantooine_shared_dant_large_rock_hut_dest_03, "object/static/structure/dantooine/shared_dant_large_rock_hut_dest_03.iff")
@@ -1486,7 +1518,8 @@ object_static_structure_dantooine_shared_dant_large_rock_hut_no_flora_05m = Shar
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 1673544289
+	clientObjectCRC = 1673544289,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_dantooine_shared_dant_large_rock_hut_no_flora_05m, "object/static/structure/dantooine/shared_dant_large_rock_hut_no_flora_05m.iff")
@@ -1530,7 +1563,8 @@ object_static_structure_dantooine_shared_dant_mud_oven = SharedStaticObjectTempl
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2326141197
+	clientObjectCRC = 2326141197,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_dantooine_shared_dant_mud_oven, "object/static/structure/dantooine/shared_dant_mud_oven.iff")
@@ -1574,7 +1608,8 @@ object_static_structure_dantooine_shared_dant_rack_spears = SharedStaticObjectTe
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2133865913
+	clientObjectCRC = 2133865913,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_dantooine_shared_dant_rack_spears, "object/static/structure/dantooine/shared_dant_rack_spears.iff")
@@ -1618,7 +1653,8 @@ object_static_structure_dantooine_shared_dant_skull_bol = SharedStaticObjectTemp
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3964846407
+	clientObjectCRC = 3964846407,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_dantooine_shared_dant_skull_bol, "object/static/structure/dantooine/shared_dant_skull_bol.iff")
@@ -1662,7 +1698,8 @@ object_static_structure_dantooine_shared_dant_skull_lizard = SharedStaticObjectT
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 3296364307
+	clientObjectCRC = 3296364307,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_dantooine_shared_dant_skull_lizard, "object/static/structure/dantooine/shared_dant_skull_lizard.iff")
@@ -1706,7 +1743,8 @@ object_static_structure_dantooine_shared_dant_skull_thune = SharedStaticObjectTe
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 2732329939
+	clientObjectCRC = 2732329939,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_dantooine_shared_dant_skull_thune, "object/static/structure/dantooine/shared_dant_skull_thune.iff")
@@ -1750,7 +1788,8 @@ object_static_structure_dantooine_shared_dant_small_mudhut = SharedStaticObjectT
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 4250788493
+	clientObjectCRC = 4250788493,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_dantooine_shared_dant_small_mudhut, "object/static/structure/dantooine/shared_dant_small_mudhut.iff")
@@ -1794,7 +1833,8 @@ object_static_structure_dantooine_shared_dant_totem_pole = SharedStaticObjectTem
 
 	totalCellNumber = 0,
 
-	clientObjectCRC = 880635575
+	clientObjectCRC = 880635575,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_dantooine_shared_dant_totem_pole, "object/static/structure/dantooine/shared_dant_totem_pole.iff")

@@ -90,7 +90,8 @@ object_tangible_lair_horned_rasp_shared_lair_horned_rasp = SharedTangibleObjectT
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 4201023069
+	clientObjectCRC = 4201023069,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_horned_rasp_shared_lair_horned_rasp, "object/tangible/lair/horned_rasp/shared_lair_horned_rasp.iff")
@@ -144,7 +145,8 @@ object_tangible_lair_horned_rasp_shared_lair_horned_rasp_grassland = SharedTangi
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 1788421902
+	clientObjectCRC = 1788421902,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_horned_rasp_shared_lair_horned_rasp_grassland, "object/tangible/lair/horned_rasp/shared_lair_horned_rasp_grassland.iff")
@@ -198,7 +200,8 @@ object_tangible_lair_horned_rasp_shared_lair_horned_rasp_jungle = SharedTangible
 
 	useStructureFootprintOutline = 0,
 
-	clientObjectCRC = 2453418917
+	clientObjectCRC = 2453418917,
+	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_horned_rasp_shared_lair_horned_rasp_jungle, "object/tangible/lair/horned_rasp/shared_lair_horned_rasp_jungle.iff")
