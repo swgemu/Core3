@@ -11,6 +11,7 @@
 #include "engine/engine.h"
 
 class PlanetTravelPoint : public Object {
+	String pointZone;
 	String pointName;
 	float x;
 	float z;
@@ -18,7 +19,8 @@ class PlanetTravelPoint : public Object {
 	bool interplanetaryTravelAllowed;
 
 public:
-	PlanetTravelPoint() {
+	PlanetTravelPoint(const String& zoneName) {
+		pointZone = zoneName;
 		x = 0.f;
 		z = 0.f;
 		y = 0.f;
@@ -26,6 +28,7 @@ public:
 	}
 
 	PlanetTravelPoint(const PlanetTravelPoint& ptp) : Object() {
+		pointZone = ptp.pointZone;
 		pointName = ptp.pointName;
 		x = ptp.x;
 		z = ptp.z;
@@ -37,6 +40,7 @@ public:
 		if (this == &ptp)
 			return *this;
 
+		pointZone = ptp.pointZone;
 		pointName = ptp.pointName;
 		x = ptp.x;
 		z = ptp.z;
@@ -46,20 +50,16 @@ public:
 		return *this;
 	}
 
-	int compareTo(const PlanetTravelPoint& ptp) const {
-		return pointName.compareTo(ptp.pointName);
-	}
-
-	int compareTo(const String& name) const {
-		return pointName.compareTo(name);
-	}
-
 	void readLuaObject(LuaObject* luaObject) {
 		pointName = luaObject->getStringField("name");
 		x = luaObject->getFloatField("x");
 		z = luaObject->getFloatField("z");
 		y = luaObject->getFloatField("y");
 		interplanetaryTravelAllowed = (bool) luaObject->getByteField("interplanetaryTravelAllowed");
+	}
+
+	inline String& getPointZone() {
+		return pointZone;
 	}
 
 	inline String& getPointName() {
@@ -80,6 +80,24 @@ public:
 
 	inline bool isInterplanetary() {
 		return interplanetaryTravelAllowed;
+	}
+
+	/**
+	 * Returns true if this point is has the same zone and name that is passed in.
+	 */
+	inline bool isPoint(const String& zoneName, const String& name) {
+		return (zoneName == pointZone && name == pointName);
+	}
+
+	/**
+	 * Returns true if travel between this point and the passed in point is permitted.
+	 * @param arrivalPoint The destination point.
+	 */
+	bool canTravelTo(PlanetTravelPoint* arrivalPoint) {
+		if (arrivalPoint->getPointZone() == pointZone)
+			return true;
+
+		return (interplanetaryTravelAllowed && arrivalPoint->isInterplanetary());
 	}
 };
 

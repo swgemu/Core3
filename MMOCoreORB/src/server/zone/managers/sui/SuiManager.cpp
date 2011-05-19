@@ -187,9 +187,6 @@ void SuiManager::handleSuiEventNotification(uint32 boxID, PlayerCreature* player
 	case SuiWindowType::SURVEY_TOOL_CONCENTRATED_MINIGAME2:
 		handleSurveyConcentratedMinigame2(player, suiBox, cancel, args);
 		break;
-	case SuiWindowType::TICKET_COLLECTOR_RESPONSES:
-		handleTicketCollectorResponse(player, suiBox, cancel, args);
-		break;
 	case SuiWindowType::BANK_TRANSFER:
 		handleBankTransfer(player, suiBox, cancel, args);
 		break;

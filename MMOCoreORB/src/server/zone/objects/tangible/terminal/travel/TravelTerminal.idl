@@ -50,18 +50,27 @@ import engine.lua.LuaObject;
 import server.zone.objects.player.PlayerCreature;
 import server.zone.Zone;
 import server.zone.objects.tangible.ticket.TicketObject;
+import server.zone.managers.planet.PlanetManager;
+
+include server.zone.managers.planet.PlanetTravelPoint;
 
 class TravelTerminal extends Terminal {	
-	protected string travelPointName;
+	@local
+	protected transient PlanetTravelPoint planetTravelPoint;
 	
 	public TravelTerminal() {		
 		Logger.setLoggingName("TravelTerminal");
+		
+		planetTravelPoint == null;
 	}
 	
 	public void initializeTransientMembers() {
 		super.initializeTransientMembers();
 		
 		Logger.setLoggingName("TravelTerminal");
+		
+		if (zone != null)
+			planetTravelPoint = zone.getPlanetManager().getNearestPlanetTravelPoint(this);
 	}
 	
 	public native void insertToZone(Zone zone);
@@ -75,7 +84,8 @@ class TravelTerminal extends Terminal {
 	 */
 	public native int handleObjectMenuSelect(PlayerCreature player, byte selectedID);
 	
-	public string getTravelPointName() {
-		return travelPointName;
+	@local
+	public PlanetTravelPoint getPlanetTravelPoint() {
+		return planetTravelPoint;
 	}
 }

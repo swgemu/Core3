@@ -210,7 +210,7 @@ public:
 
 	void loadReconLocations();
 
-	String getNearestPlanetTravelPointName(SceneObject* object);
+	PlanetTravelPoint* getNearestPlanetTravelPoint(SceneObject* object, float range = 16000.0);
 
 	bool isNoBuildArea(float x, float y, StringId& fullAreaName);
 
@@ -266,6 +266,8 @@ public:
 
 	bool isInterplanetaryTravelAllowed(const String& pointName);
 
+	PlanetTravelPoint* getPlanetTravelPoint(const String& pointName);
+
 	bool isTravelToLocationPermitted(const String& destinationPoint, const String& arrivalPlanet, const String& arrivalPoint);
 
 	DistributedObjectServant* _getImplementation();
@@ -276,8 +278,6 @@ protected:
 	PlanetManager(DummyConstructorParameter* param);
 
 	virtual ~PlanetManager();
-
-	String _return_getNearestPlanetTravelPointName;
 
 	friend class PlanetManagerHelper;
 };
@@ -375,7 +375,7 @@ protected:
 	void loadStaticTangibleObjects();
 
 public:
-	String getNearestPlanetTravelPointName(SceneObject* object);
+	PlanetTravelPoint* getNearestPlanetTravelPoint(SceneObject* object, float range = 16000.0);
 
 	bool isNoBuildArea(float x, float y, StringId& fullAreaName);
 
@@ -430,6 +430,8 @@ public:
 	bool isExistingPlanetTravelPoint(const String& pointName);
 
 	bool isInterplanetaryTravelAllowed(const String& pointName);
+
+	PlanetTravelPoint* getPlanetTravelPoint(const String& pointName);
 
 	bool isTravelToLocationPermitted(const String& destinationPoint, const String& arrivalPlanet, const String& arrivalPoint);
 
@@ -495,8 +497,6 @@ public:
 	void loadHuntingTargets();
 
 	void loadReconLocations();
-
-	String getNearestPlanetTravelPointName(SceneObject* object);
 
 	int getTravelFare(const String& destinationPlanet);
 

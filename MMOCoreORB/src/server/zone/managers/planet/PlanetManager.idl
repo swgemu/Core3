@@ -168,12 +168,13 @@ class PlanetManager extends ManagedService implements Logger {
 	protected native void loadStaticTangibleObjects();
 	
 	/**
-	 * Gets the name of the nearest Planet Travel Point to the objects location.
-	 * If no points exist on the planet, then the name of the zone is returned.
+	 * Returns the closest PlanetTravelPoint within the given range.
 	 * @param object The object to use as reference.
+	 * @param range The maximum range to search within.
 	 * @return Returns a string of the name of the closest PlanetTravelPoint.
 	 */
-	public native string getNearestPlanetTravelPointName(SceneObject object);
+	@local
+	public native PlanetTravelPoint getNearestPlanetTravelPoint(SceneObject object, float range = 16000.0);
 
 	@local
 	public native boolean isNoBuildArea(float x, float y, @dereferenced StringId fullAreaName);
@@ -189,11 +190,6 @@ class PlanetManager extends ManagedService implements Logger {
 	}
 	
 	public native void sendPlanetTravelPointListResponse(PlayerCreature player);
-	
-	/*@local
-	public boolean getRegion(@dereferenced StringId name, float x, float y) {
-		return regionMap.getRegion(name, x, y);
-	}*/
 	
 	@local
 	@dereferenced
@@ -297,7 +293,7 @@ class PlanetManager extends ManagedService implements Logger {
 	 * @return Returns true if the point exists.
 	 */
 	public boolean isExistingPlanetTravelPoint(final string pointName) {
-		return (planetTravelPointList.find(pointName) != -1);
+		return planetTravelPointList.contains(pointName);
 	}
 	
 	/**
@@ -305,7 +301,26 @@ class PlanetManager extends ManagedService implements Logger {
 	 * @param pointName The point name representing a travel point belonging to this planet.
 	 * @return Returns true if interplanetary travel is allowed.
 	 */
-	public native boolean isInterplanetaryTravelAllowed(final string pointName);
+	public boolean isInterplanetaryTravelAllowed(final string pointName) {
+		PlanetTravelPoint ptp = planetTravelPointList.get(pointName);
+		
+		if (ptp == null)
+			return false;
+		
+		return ptp.isInterplanetary();
+	}
+	
+	/**
+	 * Gets the PlanetTravelPoint that corresponds to the point name. If the point doesn't exist
+	 * then it will return NULL.
+	 * Don't place it in a reference...
+	 * @param pointName The planet travel point's name.
+	 * @return PlanetTravelPoint for the given point name.
+	 */
+	@local
+	public PlanetTravelPoint getPlanetTravelPoint(final string pointName) {
+		return planetTravelPointList.get(pointName);
+	}
 	
 	/**
 	 * Checks to see the travel between the points is allowed based on their settings.
@@ -315,8 +330,4 @@ class PlanetManager extends ManagedService implements Logger {
 	 * @return Returns true if travel is permitted between the two points.
 	 */
 	public native boolean isTravelToLocationPermitted(final string destinationPoint, final string arrivalPlanet, final string arrivalPoint);
-	
-	/*public Region getRegion(final string regionName) {
-		return regionMap.getRegion(regionName);
-	}*/		
 }

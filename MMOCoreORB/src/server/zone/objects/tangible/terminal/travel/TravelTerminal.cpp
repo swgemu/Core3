@@ -12,11 +12,13 @@
 
 #include "server/zone/objects/tangible/ticket/TicketObject.h"
 
+#include "server/zone/managers/planet/PlanetManager.h"
+
 /*
  *	TravelTerminalStub
  */
 
-enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_INSERTTOZONE__ZONE_,RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_,RPC_GETTRAVELPOINTNAME__};
+enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_INSERTTOZONE__ZONE_,RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_,};
 
 TravelTerminal::TravelTerminal() : Terminal(DummyConstructorParameter::instance()) {
 	TravelTerminalImplementation* _implementation = new TravelTerminalImplementation();
@@ -73,18 +75,13 @@ int TravelTerminal::handleObjectMenuSelect(PlayerCreature* player, byte selected
 		return _implementation->handleObjectMenuSelect(player, selectedID);
 }
 
-String TravelTerminal::getTravelPointName() {
+PlanetTravelPoint* TravelTerminal::getPlanetTravelPoint() {
 	TravelTerminalImplementation* _implementation = (TravelTerminalImplementation*) _getImplementation();
 	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
+		throw ObjectNotLocalException(this);
 
-		DistributedMethod method(this, RPC_GETTRAVELPOINTNAME__);
-
-		method.executeWithAsciiReturn(_return_getTravelPointName);
-		return _return_getTravelPointName;
 	} else
-		return _implementation->getTravelPointName();
+		return _implementation->getPlanetTravelPoint();
 }
 
 DistributedObjectServant* TravelTerminal::_getImplementation() {
@@ -191,11 +188,6 @@ bool TravelTerminalImplementation::readObjectMember(ObjectInputStream* stream, c
 	if (TerminalImplementation::readObjectMember(stream, _name))
 		return true;
 
-	if (_name == "travelPointName") {
-		TypeInfo<String >::parseFromBinaryStream(&travelPointName, stream);
-		return true;
-	}
-
 
 	return false;
 }
@@ -211,22 +203,16 @@ int TravelTerminalImplementation::writeObjectMembers(ObjectOutputStream* stream)
 	String _name;
 	int _offset;
 	uint16 _totalSize;
-	_name = "travelPointName";
-	_name.toBinaryStream(stream);
-	_offset = stream->getOffset();
-	stream->writeShort(0);
-	TypeInfo<String >::toBinaryStream(&travelPointName, stream);
-	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
-	stream->writeShort(_offset, _totalSize);
 
-
-	return 1 + TerminalImplementation::writeObjectMembers(stream);
+	return 0 + TerminalImplementation::writeObjectMembers(stream);
 }
 
 TravelTerminalImplementation::TravelTerminalImplementation() {
 	_initializeImplementation();
 	// server/zone/objects/tangible/terminal/travel/TravelTerminal.idl():  		Logger.setLoggingName("TravelTerminal");
 	Logger::setLoggingName("TravelTerminal");
+	// server/zone/objects/tangible/terminal/travel/TravelTerminal.idl():  		planetTravelPoint == null;
+	planetTravelPoint == NULL;
 }
 
 void TravelTerminalImplementation::initializeTransientMembers() {
@@ -234,11 +220,14 @@ void TravelTerminalImplementation::initializeTransientMembers() {
 	TerminalImplementation::initializeTransientMembers();
 	// server/zone/objects/tangible/terminal/travel/TravelTerminal.idl():  		Logger.setLoggingName("TravelTerminal");
 	Logger::setLoggingName("TravelTerminal");
+	// server/zone/objects/tangible/terminal/travel/TravelTerminal.idl():  	}
+	if (zone != NULL)	// server/zone/objects/tangible/terminal/travel/TravelTerminal.idl():  			planetTravelPoint = zone.getPlanetManager().getNearestPlanetTravelPoint(this);
+	planetTravelPoint = zone->getPlanetManager()->getNearestPlanetTravelPoint(_this);
 }
 
-String TravelTerminalImplementation::getTravelPointName() {
-	// server/zone/objects/tangible/terminal/travel/TravelTerminal.idl():  		return travelPointName;
-	return travelPointName;
+PlanetTravelPoint* TravelTerminalImplementation::getPlanetTravelPoint() {
+	// server/zone/objects/tangible/terminal/travel/TravelTerminal.idl():  		return planetTravelPoint;
+	return planetTravelPoint;
 }
 
 /*
@@ -261,9 +250,6 @@ Packet* TravelTerminalAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 	case RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_:
 		resp->insertSignedInt(handleObjectMenuSelect((PlayerCreature*) inv->getObjectParameter(), inv->getByteParameter()));
 		break;
-	case RPC_GETTRAVELPOINTNAME__:
-		resp->insertAscii(getTravelPointName());
-		break;
 	default:
 		return NULL;
 	}
@@ -281,10 +267,6 @@ void TravelTerminalAdapter::insertToZone(Zone* zone) {
 
 int TravelTerminalAdapter::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
 	return ((TravelTerminalImplementation*) impl)->handleObjectMenuSelect(player, selectedID);
-}
-
-String TravelTerminalAdapter::getTravelPointName() {
-	return ((TravelTerminalImplementation*) impl)->getTravelPointName();
 }
 
 /*

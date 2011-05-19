@@ -80,9 +80,9 @@ public:
 	static const uint16 GUILD_TRANSFER_LEADER = 36;
 	static const uint16 GUILD_TRANSFER_LEADER_CONFIRM = 37;
 
-	//Tickets 51 - 60
+	//Travel 51 - 60
 	static const uint16 TICKET_PURCHASE_MESSAGE = 51;
-	static const uint16 TICKET_COLLECTOR_RESPONSES = 52;
+	static const uint16 TRAVEL_TICKET_SELECTION = 52;
 
 	//Color Pickers 61 - 70
 	static const uint16 COLOR_PICKER1 = 61;

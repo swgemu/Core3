@@ -46,6 +46,12 @@ which carries forward this exception.
 #define BOARDSHUTTLECOMMAND_H_
 
 #include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/objects/tangible/ticket/TicketObject.h"
+#include "server/zone/objects/player/sui/SuiWindowType.h"
+#include "server/zone/objects/player/sui/listbox/SuiListBox.h"
+#include "server/zone/objects/player/sui/callbacks/TicketSelectionSuiCallback.h"
+#include "server/zone/managers/planet/PlanetManager.h"
+#include "server/zone/managers/planet/PlanetTravelPoint.h"
 
 class BoardShuttleCommand : public QueueCommand {
 public:
@@ -56,28 +62,127 @@ public:
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
-
 		if (!checkStateMask(creature))
 			return INVALIDSTATE;
 
 		if (!checkInvalidPostures(creature))
 			return INVALIDPOSTURE;
 
-		if (!creature->isPlayerCreature())
-			return INVALIDPARAMETERS;
+		ManagedReference<Zone*> zone = creature->getZone();
 
-		ManagedReference<PlayerCreature*> player = (PlayerCreature*) creature;
+		if (zone == NULL)
+			return GENERALERROR;
 
-		//@travel:no_pets You cannot board the shuttle when you are riding on a pet or in a vehicle.
-		//@travel:boarding_too_far You are too far from the shuttle to board.
-		//@travel:shuttle_not_available The shuttle is not available at this time.
-		//@travel:route_not_available This ticket's route is no longer available.
-		//@travel:boarding_what_shuttle What shuttle do you wish to board?
-		//@travel:no_ticket You do not have a ticket to board this shuttle.
-		//@travel:boarding_ticket_selecting You must select a ticket to use before boarding.
-		//@travel:wrong_shuttle This ticket is not valid for the given shuttle.
+		Reference<PlanetTravelPoint*> closestPoint = zone->getPlanetManager()->getNearestPlanetTravelPoint(creature, 128.f);
+
+		//Check to make sure the creature is within range of a PlanetTravelPoint
+		if (closestPoint == NULL) {
+			creature->sendSystemMessage("There is no shuttle nearby.");
+			return GENERALERROR;
+		}
+
+		ManagedReference<TicketObject*> ticketObject = dynamic_cast<TicketObject*>(server->getZoneServer()->getObject(target));
+
+		//If no ticket was passed as the target, then send the selection box.
+		//At this point, we already need to have a reference to the shuttle...
+		if (ticketObject == NULL) {
+			sendTicketSelectionBoxTo(creature, closestPoint);
+			return SUCCESS;
+		}
+
+		String departurePlanet = ticketObject->getDeparturePlanet();
+		String departurePoint = ticketObject->getDeparturePoint();
+
+		if (!closestPoint->isPoint(departurePlanet, departurePoint)) {
+			creature->sendSystemMessage("@travel:no_ticket"); //You do not have a ticket to board this shuttle.
+			return GENERALERROR;
+		}
+
+		String arrivalPlanet = ticketObject->getArrivalPlanet();
+		String arrivalPointName = ticketObject->getArrivalPoint();
+
+		ManagedReference<Zone*> arrivalZone = server->getZoneServer()->getZone(arrivalPlanet);
+
+		if (arrivalZone == NULL) {
+			creature->sendSystemMessage("@travel:route_not_available"); //This ticket's route is no longer available.
+			return GENERALERROR;
+		}
+
+		Reference<PlanetTravelPoint*> arrivalPoint = arrivalZone->getPlanetManager()->getPlanetTravelPoint(arrivalPointName);
+
+		if (arrivalPoint == NULL || !closestPoint->canTravelTo(arrivalPoint)) {
+			creature->sendSystemMessage("@travel:wrong_shuttle"); //The ticket is not valid for the given shuttle.
+			return GENERALERROR;
+		}
+
+		creature->switchZone(arrivalZone->getZoneName(), arrivalPoint->getX(), arrivalPoint->getZ(), arrivalPoint->getY(), 0);
+
+		//remove the ticket from inventory and destory it.
+		ManagedReference<SceneObject*> inventory = creature->getSlottedObject("inventory");
+		inventory->removeObject(ticketObject, true);
+		ticketObject->sendDestroyTo(creature);
+
+		ticketObject->destroyObjectFromDatabase(true);
 
 		return SUCCESS;
+	}
+
+private:
+	SortedVector<ManagedReference<TicketObject*> > findTicketsInInventory(CreatureObject* creature, PlanetTravelPoint* departurePoint) {
+		SortedVector<ManagedReference<TicketObject*> > tickets;
+
+		ManagedReference<SceneObject*> inventory = creature->getSlottedObject("inventory");
+
+		int totalObjects = inventory->getContainerObjectsSize();
+
+		if (inventory == NULL || totalObjects <= 0)
+			return tickets;
+
+		for (int i = 0; i < totalObjects; ++i) {
+			ManagedReference<SceneObject*> obj = inventory->getContainerObject(i);
+
+			if (!obj->isTangibleObject() || !((TangibleObject*) obj.get())->isTicketObject())
+				continue;
+
+			TicketObject* ticket = (TicketObject*) obj.get();
+
+			//Check to see if the ticket is for this destination
+			if (!departurePoint->isPoint(ticket->getDeparturePlanet(), ticket->getDeparturePoint()))
+				continue;
+
+			tickets.put(ticket);
+		}
+
+		return tickets;
+	}
+
+	void sendTicketSelectionBoxTo(CreatureObject* creature, PlanetTravelPoint* departurePoint) {
+		SortedVector<ManagedReference<TicketObject*> > tickets = findTicketsInInventory(creature, departurePoint);
+
+		if (tickets.size() == 0) {
+			creature->sendSystemMessage("@travel:no_ticket"); //You do not have a ticket to board this shuttle.
+			return;
+		}
+
+		//Make sure it's a player before sending it a sui box...
+		if (!creature->isPlayerCreature())
+			return;
+
+		PlayerCreature* player = (PlayerCreature*) creature;
+
+		ManagedReference<SuiListBox*> suiListBox = new SuiListBox(player, SuiWindowType::TRAVEL_TICKET_SELECTION);
+		suiListBox->setPromptTitle("Select Destination");
+		suiListBox->setPromptText("Select Destination");
+
+		for (int i = 0; i < tickets.size(); ++i) {
+			ManagedReference<TicketObject*> ticket = tickets.get(i);
+			suiListBox->addMenuItem(ticket->getArrivalPoint(), ticket->getObjectID());
+		}
+
+		suiListBox->setCallback(new TicketSelectionSuiCallback(server->getZoneServer()));
+
+		player->addSuiBox(suiListBox);
+		player->sendMessage(suiListBox->generateMessage());
 	}
 
 };

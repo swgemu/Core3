@@ -28,7 +28,7 @@
  *	PlanetManagerStub
  */
 
-enum {RPC_SCHEDULESHUTTLES__,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_FINALIZE__,RPC_INITIALIZE__,RPC_LOADREGIONS__,RPC_LOADPLAYERREGIONS__,RPC_LOADNOBUILDAREAS__,RPC_LOADBADGEAREAS__,RPC_LOADPERFORMANCELOCATIONS__,RPC_LOADHUNTINGTARGETS__,RPC_LOADRECONLOCATIONS__,RPC_GETNEARESTPLANETTRAVELPOINTNAME__SCENEOBJECT_,RPC_GETTRAVELFARE__STRING_,RPC_SENDPLANETTRAVELPOINTLISTRESPONSE__PLAYERCREATURE_,RPC_GETSTRUCTUREMANAGER__,RPC_GETWEATHERMANAGER__,RPC_GETREGION__FLOAT_FLOAT_,RPC_GETREGIONCOUNT__,RPC_GETNUMBEROFCITIES__,RPC_INCREASENUMBEROFCITIES__,RPC_GETREGION__INT_,RPC_ADDREGION__REGION_,RPC_DROPREGION__REGION_,RPC_HASREGION__STRING_,RPC_ADDPERFORMANCELOCATION__SCENEOBJECT_,RPC_ADDMISSIONNPC__SCENEOBJECT_,RPC_ADDHUNTINGTARGETTEMPLATE__STRING_STRING_INT_,RPC_ADDRECONLOC__SCENEOBJECT_,RPC_ADDINFORMANT__SCENEOBJECT_,RPC_ISEXISTINGPLANETTRAVELPOINT__STRING_,RPC_ISINTERPLANETARYTRAVELALLOWED__STRING_,RPC_ISTRAVELTOLOCATIONPERMITTED__STRING_STRING_STRING_};
+enum {RPC_SCHEDULESHUTTLES__,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_FINALIZE__,RPC_INITIALIZE__,RPC_LOADREGIONS__,RPC_LOADPLAYERREGIONS__,RPC_LOADNOBUILDAREAS__,RPC_LOADBADGEAREAS__,RPC_LOADPERFORMANCELOCATIONS__,RPC_LOADHUNTINGTARGETS__,RPC_LOADRECONLOCATIONS__,RPC_GETTRAVELFARE__STRING_,RPC_SENDPLANETTRAVELPOINTLISTRESPONSE__PLAYERCREATURE_,RPC_GETSTRUCTUREMANAGER__,RPC_GETWEATHERMANAGER__,RPC_GETREGION__FLOAT_FLOAT_,RPC_GETREGIONCOUNT__,RPC_GETNUMBEROFCITIES__,RPC_INCREASENUMBEROFCITIES__,RPC_GETREGION__INT_,RPC_ADDREGION__REGION_,RPC_DROPREGION__REGION_,RPC_HASREGION__STRING_,RPC_ADDPERFORMANCELOCATION__SCENEOBJECT_,RPC_ADDMISSIONNPC__SCENEOBJECT_,RPC_ADDHUNTINGTARGETTEMPLATE__STRING_STRING_INT_,RPC_ADDRECONLOC__SCENEOBJECT_,RPC_ADDINFORMANT__SCENEOBJECT_,RPC_ISEXISTINGPLANETTRAVELPOINT__STRING_,RPC_ISINTERPLANETARYTRAVELALLOWED__STRING_,RPC_ISTRAVELTOLOCATIONPERMITTED__STRING_STRING_STRING_};
 
 PlanetManager::PlanetManager(Zone* planet, ZoneProcessServer* srv) : ManagedService(DummyConstructorParameter::instance()) {
 	PlanetManagerImplementation* _implementation = new PlanetManagerImplementation(planet, srv);
@@ -173,19 +173,13 @@ void PlanetManager::loadReconLocations() {
 		_implementation->loadReconLocations();
 }
 
-String PlanetManager::getNearestPlanetTravelPointName(SceneObject* object) {
+PlanetTravelPoint* PlanetManager::getNearestPlanetTravelPoint(SceneObject* object, float range) {
 	PlanetManagerImplementation* _implementation = (PlanetManagerImplementation*) _getImplementation();
 	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
+		throw ObjectNotLocalException(this);
 
-		DistributedMethod method(this, RPC_GETNEARESTPLANETTRAVELPOINTNAME__SCENEOBJECT_);
-		method.addObjectParameter(object);
-
-		method.executeWithAsciiReturn(_return_getNearestPlanetTravelPointName);
-		return _return_getNearestPlanetTravelPointName;
 	} else
-		return _implementation->getNearestPlanetTravelPointName(object);
+		return _implementation->getNearestPlanetTravelPoint(object, range);
 }
 
 bool PlanetManager::isNoBuildArea(float x, float y, StringId& fullAreaName) {
@@ -522,6 +516,15 @@ bool PlanetManager::isInterplanetaryTravelAllowed(const String& pointName) {
 		return method.executeWithBooleanReturn();
 	} else
 		return _implementation->isInterplanetaryTravelAllowed(pointName);
+}
+
+PlanetTravelPoint* PlanetManager::getPlanetTravelPoint(const String& pointName) {
+	PlanetManagerImplementation* _implementation = (PlanetManagerImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		throw ObjectNotLocalException(this);
+
+	} else
+		return _implementation->getPlanetTravelPoint(pointName);
 }
 
 bool PlanetManager::isTravelToLocationPermitted(const String& destinationPoint, const String& arrivalPlanet, const String& arrivalPoint) {
@@ -937,8 +940,23 @@ MissionTargetMap* PlanetManagerImplementation::getInformants() {
 }
 
 bool PlanetManagerImplementation::isExistingPlanetTravelPoint(const String& pointName) {
-	// server/zone/managers/planet/PlanetManager.idl():  		return (planetTravelPointList.find(pointName) != -1);
-	return ((&planetTravelPointList)->find(pointName) != -1);
+	// server/zone/managers/planet/PlanetManager.idl():  		return planetTravelPointList.contains(pointName);
+	return (&planetTravelPointList)->contains(pointName);
+}
+
+bool PlanetManagerImplementation::isInterplanetaryTravelAllowed(const String& pointName) {
+	// server/zone/managers/planet/PlanetManager.idl():  		PlanetTravelPoint ptp = planetTravelPointList.get(pointName);
+	PlanetTravelPoint* ptp = (&planetTravelPointList)->get(pointName);
+	// server/zone/managers/planet/PlanetManager.idl():  		return 
+	if (ptp == NULL)	// server/zone/managers/planet/PlanetManager.idl():  			return false;
+	return false;
+	// server/zone/managers/planet/PlanetManager.idl():  		return ptp.isInterplanetary();
+	return ptp->isInterplanetary();
+}
+
+PlanetTravelPoint* PlanetManagerImplementation::getPlanetTravelPoint(const String& pointName) {
+	// server/zone/managers/planet/PlanetManager.idl():  		return planetTravelPointList.get(pointName);
+	return (&planetTravelPointList)->get(pointName);
 }
 
 /*
@@ -984,9 +1002,6 @@ Packet* PlanetManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv
 		break;
 	case RPC_LOADRECONLOCATIONS__:
 		loadReconLocations();
-		break;
-	case RPC_GETNEARESTPLANETTRAVELPOINTNAME__SCENEOBJECT_:
-		resp->insertAscii(getNearestPlanetTravelPointName((SceneObject*) inv->getObjectParameter()));
 		break;
 	case RPC_GETTRAVELFARE__STRING_:
 		resp->insertSignedInt(getTravelFare(inv->getAsciiParameter(_param0_getTravelFare__String_)));
@@ -1097,10 +1112,6 @@ void PlanetManagerAdapter::loadHuntingTargets() {
 
 void PlanetManagerAdapter::loadReconLocations() {
 	((PlanetManagerImplementation*) impl)->loadReconLocations();
-}
-
-String PlanetManagerAdapter::getNearestPlanetTravelPointName(SceneObject* object) {
-	return ((PlanetManagerImplementation*) impl)->getNearestPlanetTravelPointName(object);
 }
 
 int PlanetManagerAdapter::getTravelFare(const String& destinationPlanet) {

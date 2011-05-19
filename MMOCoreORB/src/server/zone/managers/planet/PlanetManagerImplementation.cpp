@@ -46,6 +46,8 @@ void PlanetManagerImplementation::initialize() {
 	else
 		error("Failed to load terrain file.");
 
+	planetTravelPointList.setZoneName(zone->getZoneName());
+
 	loadRegions();
 
 	loadLuaConfig();
@@ -201,20 +203,6 @@ void PlanetManagerImplementation::loadSnapshotObjects() {
 		loadSnapshotObject(node, &wsiff, totalObjects);
 	}
 
-	HashTableIterator<String, ManagedReference<CityRegion*> > iterator = cityRegionMap.iterator();
-
-	while (iterator.hasNext()) {
-		ManagedReference<CityRegion*> cityRegion = iterator.getNextValue();
-
-		SortedVector<ManagedReference<SceneObject*> > objs = cityRegion->getRegionObjectsByPlanetMapCategory("shuttleport");
-
-		for (int i = 0; i < objs.size(); ++i) {
-			ManagedReference<SceneObject*> obj = objs.get(i);
-
-			info(obj->getCustomObjectName().toString(), true);
-		}
-	}
-
 	info("Loaded " + String::valueOf(totalObjects) + " client objects from world snapshot.", true);
 }
 
@@ -249,44 +237,31 @@ bool PlanetManagerImplementation::isTravelToLocationPermitted(const String& depa
 	return true;
 }
 
-bool PlanetManagerImplementation::isInterplanetaryTravelAllowed(const String& pointName) {
-	int idx = planetTravelPointList.find(pointName);
-
-	if (idx == -1)
-		return false;
-
-	return planetTravelPointList.get(idx).isInterplanetary();
-}
-
 void PlanetManagerImplementation::sendPlanetTravelPointListResponse(PlayerCreature* player) {
 	PlanetTravelPointListResponse* ptplr = new PlanetTravelPointListResponse(zone->getZoneName());
 	planetTravelPointList.insertToMessage(ptplr);
 
-	if (zone->getZoneName() == "naboo")
-		info(ptplr->toStringData(), true);
-
 	player->sendMessage(ptplr);
 }
 
-String PlanetManagerImplementation::getNearestPlanetTravelPointName(SceneObject* object) {
-	String pointName = zone->getZoneName(); //Initialize it to the zone name, incase there are no points.
-	float nearestDistance = 16000.f;
+PlanetTravelPoint* PlanetManagerImplementation::getNearestPlanetTravelPoint(SceneObject* object, float range) {
+	Reference<PlanetTravelPoint*> planetTravelPoint = NULL;
 
 	for (int i = 0; i < planetTravelPointList.size(); ++i) {
-		PlanetTravelPoint ptp = planetTravelPointList.get(i);
+		Reference<PlanetTravelPoint*> ptp = planetTravelPointList.get(i);
 
 		Coordinate coord;
-		coord.setPosition(ptp.getX(), ptp.getZ(), ptp.getY());
+		coord.setPosition(ptp->getX(), ptp->getZ(), ptp->getY());
 
 		float dist = object->getDistanceTo(&coord);
 
-		if (dist < nearestDistance) {
-			nearestDistance = dist;
-			pointName = ptp.getPointName();
+		if (dist < range) {
+			range = dist;
+			planetTravelPoint = ptp;
 		}
 	}
 
-	return pointName;
+	return planetTravelPoint;
 }
 
 void PlanetManagerImplementation::loadStaticTangibleObjects() {

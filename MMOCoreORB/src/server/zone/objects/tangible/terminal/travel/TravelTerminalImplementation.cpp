@@ -21,7 +21,7 @@ int TravelTerminalImplementation::handleObjectMenuSelect(PlayerCreature* player,
 	if (controlledObject == NULL)
 		return 0;
 
-	EnterTicketPurchaseModeMessage* etpm = new EnterTicketPurchaseModeMessage(zone->getZoneName(), travelPointName);
+	EnterTicketPurchaseModeMessage* etpm = new EnterTicketPurchaseModeMessage(planetTravelPoint);
 	player->sendMessage(etpm);
 
 	return 0;
@@ -32,7 +32,7 @@ void TravelTerminalImplementation::insertToZone(Zone* zone) {
 
 	//Set the travel point name to which this travel terminal is bound.
 	PlanetManager* planetManager = zone->getPlanetManager();
-	String pointName = planetManager->getNearestPlanetTravelPointName(controlledObject);
+	Reference<PlanetTravelPoint*> ptp = planetManager->getNearestPlanetTravelPoint(controlledObject);
 
-	travelPointName = pointName;
+	planetTravelPoint = ptp;
 }

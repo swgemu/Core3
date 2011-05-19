@@ -115,7 +115,6 @@ public:
 		if (!zone->getPlanetManager()->isTravelToLocationPermitted(departurePoint, arrivalPlanet, arrivalPoint))
 			return GENERALERROR;
 
-		//TODO: All checks are passed. Create the ticket object.
 		ManagedReference<SceneObject*> obj = server->getZoneServer()->createObject(String("object/tangible/travel/travel_ticket/base/base_travel_ticket.iff").hashCode(), 1);
 
 		if (obj == NULL || !obj->isTangibleObject())
@@ -134,6 +133,12 @@ public:
 
 		inventory->addObject(ticket, -1);
 		ticket->sendTo(player, true);
+
+		ManagedReference<SuiMessageBox*> suiBox = new SuiMessageBox(player, 0);
+		suiBox->setPromptTitle("");
+		suiBox->setPromptText("@travel:ticket_purchase_complete"); //Ticket purchase complete
+
+		player->sendMessage(suiBox->generateMessage());
 
 		return SUCCESS;
 	}

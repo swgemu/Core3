@@ -65,6 +65,22 @@ class TicketObject;
 
 using namespace server::zone::objects::tangible::ticket;
 
+namespace server {
+namespace zone {
+namespace managers {
+namespace planet {
+
+class PlanetManager;
+
+} // namespace planet
+} // namespace managers
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::managers::planet;
+
+#include "server/zone/managers/planet/PlanetTravelPoint.h"
+
 #include "server/zone/objects/tangible/terminal/Terminal.h"
 
 #include "engine/lua/LuaObject.h"
@@ -86,7 +102,7 @@ public:
 
 	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
 
-	String getTravelPointName();
+	PlanetTravelPoint* getPlanetTravelPoint();
 
 	DistributedObjectServant* _getImplementation();
 
@@ -96,8 +112,6 @@ protected:
 	TravelTerminal(DummyConstructorParameter* param);
 
 	virtual ~TravelTerminal();
-
-	String _return_getTravelPointName;
 
 	friend class TravelTerminalHelper;
 };
@@ -120,7 +134,7 @@ namespace travel {
 
 class TravelTerminalImplementation : public TerminalImplementation {
 protected:
-	String travelPointName;
+	PlanetTravelPoint* planetTravelPoint;
 
 public:
 	TravelTerminalImplementation();
@@ -133,7 +147,7 @@ public:
 
 	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
 
-	String getTravelPointName();
+	PlanetTravelPoint* getPlanetTravelPoint();
 
 	TravelTerminal* _this;
 
@@ -183,8 +197,6 @@ public:
 	void insertToZone(Zone* zone);
 
 	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
-
-	String getTravelPointName();
 
 };
 

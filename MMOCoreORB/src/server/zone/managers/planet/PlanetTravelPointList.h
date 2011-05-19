@@ -11,39 +11,13 @@
 #include "engine/engine.h"
 #include "PlanetTravelPoint.h"
 
-class PlanetTravelPointList : public SortedVector<PlanetTravelPoint>, public ReadWriteLock {
-private:
-	int compare(PlanetTravelPoint& o1, const PlanetTravelPoint& o2) const {
-		return o1.compareTo(o2);
-	}
-
-	int compare(PlanetTravelPoint& o1, const String& name) const {
-		return o1.compareTo(name);
-	}
-
+class PlanetTravelPointList : public VectorMap<String, Reference<PlanetTravelPoint*> >, public ReadWriteLock {
+	String zoneName;
 public:
-	PlanetTravelPointList() : SortedVector<PlanetTravelPoint>() {
-	}
 
-	int find(const String& name) const {
-	    int l = 0, r = Vector<PlanetTravelPoint>::elementCount - 1;
-	    int m = 0, cmp = 0;
-
-	    while (l <= r) {
-        	m = (l + r) / 2;
-
-        	PlanetTravelPoint& obj = Vector<PlanetTravelPoint>::elementData[m];
-        	cmp = compare(obj, name);
-
-        	if (cmp == 0)
-            	return m;
-        	else if (cmp > 0)
-	            l = m + 1;
-        	else
-	            r = m - 1;
-	    }
-
-    	return -1;
+	PlanetTravelPointList() : VectorMap<String, Reference<PlanetTravelPoint*> >() {
+		setNoDuplicateInsertPlan();
+		setNullValue(NULL);
 	}
 
 	void insertToMessage(BaseMessage* message) {
@@ -54,15 +28,15 @@ public:
 		message->insertInt(totalPoints);
 
 		for (int i = 0; i < totalPoints; ++i)
-			message->insertAscii(get(i).getPointName());
+			message->insertAscii(get(i)->getPointName());
 
 		message->insertInt(totalPoints);
 
 		for (int i = 0; i < totalPoints; ++i) {
-			PlanetTravelPoint ptp = get(i);
-			message->insertFloat(ptp.getX());
-			message->insertFloat(ptp.getZ());
-			message->insertFloat(ptp.getY());
+			Reference<PlanetTravelPoint*> ptp = get(i);
+			message->insertFloat(ptp->getX());
+			message->insertFloat(ptp->getZ());
+			message->insertFloat(ptp->getY());
 		}
 
 		message->insertInt(totalPoints);
@@ -73,12 +47,14 @@ public:
 		message->insertInt(totalPoints);
 
 		for (int i = 0; i < totalPoints; ++i)
-			message->insertByte((byte) get(i).isInterplanetary());
+			message->insertByte((byte) get(i)->isInterplanetary());
 
 		runlock();
 	}
 
 	void readLuaObject(LuaObject* luaObject) {
+		wlock();
+
 		if (!luaObject->isValidTable())
 			return;
 
@@ -88,13 +64,19 @@ public:
 
 			LuaObject planetTravelPointEntry(L);
 
-			PlanetTravelPoint ptp;
-			ptp.readLuaObject(&planetTravelPointEntry);
+			PlanetTravelPoint* ptp = new PlanetTravelPoint(zoneName);
+			ptp->readLuaObject(&planetTravelPointEntry);
 
-			put(ptp);
+			put(ptp->getPointName(), ptp);
 
 			planetTravelPointEntry.pop();
 		}
+
+		unlock();
+	}
+
+	inline void setZoneName(const String& name) {
+		zoneName = name;
 	}
 };
 
