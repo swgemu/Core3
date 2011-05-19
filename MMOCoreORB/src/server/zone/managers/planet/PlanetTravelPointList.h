@@ -64,7 +64,7 @@ public:
 
 			LuaObject planetTravelPointEntry(L);
 
-			PlanetTravelPoint* ptp = new PlanetTravelPoint(zoneName);
+			Reference<PlanetTravelPoint*> ptp = new PlanetTravelPoint(zoneName);
 			ptp->readLuaObject(&planetTravelPointEntry);
 
 			put(ptp->getPointName(), ptp);

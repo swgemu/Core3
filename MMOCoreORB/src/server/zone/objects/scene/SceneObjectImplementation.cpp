@@ -70,6 +70,7 @@ which carries forward this exception.
 #include "server/zone/Zone.h"
 #include "server/zone/ZoneServer.h"
 #include "server/zone/ZoneProcessServer.h"
+#include "server/zone/ZoneReference.h"
 
 #include "variables/StringId.h"
 #include "events/ObjectUpdateToDatabaseTask.h"
@@ -1602,4 +1603,8 @@ void SceneObjectImplementation::createChildObjects() {
 
 SortedVector<ManagedReference<SceneObject*> >* SceneObjectImplementation::getOutdoorChildObjects() {
 	return &outdoorChildObjects;
+}
+
+void SceneObjectImplementation::setZone(Zone* zon) {
+	zone = zon;
 }

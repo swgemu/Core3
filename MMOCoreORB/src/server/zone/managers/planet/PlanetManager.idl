@@ -313,7 +313,6 @@ class PlanetManager extends ManagedService implements Logger {
 	/**
 	 * Gets the PlanetTravelPoint that corresponds to the point name. If the point doesn't exist
 	 * then it will return NULL.
-	 * Don't place it in a reference...
 	 * @param pointName The planet travel point's name.
 	 * @return PlanetTravelPoint for the given point name.
 	 */

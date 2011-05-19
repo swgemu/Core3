@@ -2741,7 +2741,7 @@ bool SceneObjectImplementation::readObjectMember(ObjectInputStream* stream, cons
 		return true;
 
 	if (_name == "zone") {
-		TypeInfo<ManagedReference<Zone* > >::parseFromBinaryStream(&zone, stream);
+		TypeInfo<ZoneReference >::parseFromBinaryStream(&zone, stream);
 		return true;
 	}
 
@@ -2859,7 +2859,7 @@ int SceneObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
-	TypeInfo<ManagedReference<Zone* > >::toBinaryStream(&zone, stream);
+	TypeInfo<ZoneReference >::toBinaryStream(&zone, stream);
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
@@ -3286,8 +3286,8 @@ unsigned int SceneObjectImplementation::getContainmentType() {
 }
 
 Zone* SceneObjectImplementation::getZone() {
-	// server/zone/objects/scene/SceneObject.idl():  		return zone;
-	return zone;
+	// server/zone/objects/scene/SceneObject.idl():  		return zone.get();
+	return (&zone)->get();
 }
 
 float SceneObjectImplementation::getDirectionAngle() {
@@ -3548,11 +3548,6 @@ void SceneObjectImplementation::setParent(SceneObject* par) {
 void SceneObjectImplementation::setZoneProcessServer(ZoneProcessServer* srv) {
 	// server/zone/objects/scene/SceneObject.idl():  		server = srv;
 	server = srv;
-}
-
-void SceneObjectImplementation::setZone(Zone* zon) {
-	// server/zone/objects/scene/SceneObject.idl():  		zone = zon;
-	zone = zon;
 }
 
 void SceneObjectImplementation::setDirection(float fw, float fx, float fy, float fz) {

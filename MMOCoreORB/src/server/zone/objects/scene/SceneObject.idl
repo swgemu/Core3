@@ -77,6 +77,7 @@ import server.zone.packets.scene.AttributeListMessage;
 import server.zone.templates.SharedObjectTemplate;
 import server.zone.objects.area.ActiveArea;
 
+include server.zone.ZoneReference;
 include server.zone.objects.region.CityRegion;
 include server.zone.managers.templates.PlanetMapCategory;
 include server.zone.managers.templates.TemplateManager;
@@ -91,7 +92,8 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	protected transient ZoneProcessServer server;
 
 	//@weakReference
-	protected Zone zone;
+	@dereferenced
+	protected ZoneReference zone;
 
 	@weakReference
 	protected SceneObject parent;
@@ -1133,7 +1135,7 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	}
 
 	public Zone getZone() {
-		return zone;
+		return zone.get();
 	}
 
 	public float getDirectionAngle() {
@@ -1387,9 +1389,7 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	@local
 	public native void setObjectName(@dereferenced StringId stringID);
 
-	public void setZone(Zone zon) {
-		zone = zon;
-	}
+	public native void setZone(Zone zon);
 
 	public void setDirection(float fw, float fx, float fy, float fz) {
 		direction.set(fw, fx, fy, fz);

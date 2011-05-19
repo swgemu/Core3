@@ -149,6 +149,8 @@ using namespace server::zone::objects::area;
 
 #include "engine/core/ManagedObject.h"
 
+#include "server/zone/ZoneReference.h"
+
 #include "server/zone/objects/region/CityRegion.h"
 
 #include "server/zone/managers/templates/PlanetMapCategory.h"
@@ -1161,7 +1163,7 @@ class SceneObjectImplementation : public QuadTreeEntryImplementation, public Log
 protected:
 	ManagedReference<ZoneProcessServer* > server;
 
-	ManagedReference<Zone* > zone;
+	ZoneReference zone;
 
 	ManagedWeakReference<SceneObject* > parent;
 
