@@ -5,9 +5,10 @@
  *      Author: theanswer
  */
 
-#include "LoginPacketHandler.h"
-#include "LoginClient.h"
 #include "LoginSession.h"
+#include "LoginClient.h"
+
+#include "LoginPacketHandler.h"
 
 void LoginPacketHandler::handleMessage(Message* pack) {
 	//info("parsing " + pack->toStringData());

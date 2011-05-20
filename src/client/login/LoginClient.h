@@ -19,7 +19,7 @@ class LoginClient : public ServiceHandler {
 	MessageQueue messageQueue;
 
 	BasePacketHandler* basePacketHandler;
-	LoginSession* loginSession;
+	Reference<LoginSession*> loginSession;
 	LoginPacketHandler* loginPacketHandler;
 
 public:

@@ -10,7 +10,7 @@
 
 #include "engine/engine.h"
 
-class LoginSession : public Mutex, public Runnable, public Logger {
+class LoginSession : public Mutex, public Runnable, public Logger, public Object {
 	Condition sessionFinalized;
 
 	uint32 accountID;

@@ -42,14 +42,16 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
+#include "engine/service/proto/packets/SessionIDRequestMessage.h"
 
-#include "LoginClient.h"
+//#include "objects/player/Player.h"
+#include "LoginMessageProcessorTask.h"
+
+#include "LoginSession.h"
 
 #include "LoginPacketHandler.h"
 
-#include "engine/service/proto/packets/SessionIDRequestMessage.h"
-//#include "objects/player/Player.h"
-#include "LoginMessageProcessorTask.h"
+#include "LoginClient.h"
 
 LoginClient::LoginClient(int port, const String& loggingName) {
 	client = new BaseClient("localhost", port);

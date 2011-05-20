@@ -46,6 +46,7 @@ which carries forward this exception.
 #include "zone/managers/object/ObjectManager.h"
 
 #include "ClientCore.h"
+
 #include "login/LoginSession.h"
 
 ClientCore::ClientCore(int instances) : Core("log/core3client.log"), Logger("CoreClient") {
@@ -61,30 +62,26 @@ void ClientCore::run() {
 		zones.add(NULL);
 	}
 
-	int val = 0;
+	info("initialized", true);
 
 	while (true) {
-		int charactersToLogin = 10 + System::random(75);
-		int charactersToLogout = 10 + System::random(40);
+		int index = System::random(instances - 1);
 
-		for (int i = 0; i < charactersToLogin; ++i) {
-			int index = System::random(instances - 1);
-
+		if (System::random(100) > 33)
 			loginCharacter(index);
-
-			Thread::sleep(5 + System::random(35));
-		}
-
-		for (int i = 0; i < charactersToLogout; ++i) {
-			int index = System::random(instances - 1);
-
+		else
 			logoutCharacter(index);
 
-			Thread::sleep(50 + System::random(350));
+	#ifdef WITH_STM
+		try {
+			TransactionalMemoryManager::commitPureTransaction();
+		} catch (const TransactionAbortedException& e) {
 		}
-	}
+	#endif
 
-	info("initialized", true);
+
+		Thread::sleep(1000 + System::random(4000));
+	}
 
 	handleCommands();
 
@@ -98,20 +95,20 @@ void ClientCore::loginCharacter(int index) {
 		if (zone != NULL)
 			return;
 
-		LoginSession loginSession(index);
-		loginSession.run();
+		Reference<LoginSession*> loginSession = new LoginSession(index);
+		loginSession->run();
 
-		uint32 selectedCharacter = loginSession.getSelectedCharacter();
+		uint32 selectedCharacter = loginSession->getSelectedCharacter();
 		uint64 objid = 0;
 
 		if (selectedCharacter != -1) {
-			objid = loginSession.getCharacterObjectID(selectedCharacter);
+			objid = loginSession->getCharacterObjectID(selectedCharacter);
 
 			info("trying to login " + String::valueOf(objid));
 		}
 
-		uint32 acc = loginSession.getAccountID();
-		uint32 session = loginSession.getSessionID();
+		uint32 acc = loginSession->getAccountID();
+		uint32 session = loginSession->getSessionID();
 
 		zone = new Zone(index, objid, acc, session);
 		zone->start();
