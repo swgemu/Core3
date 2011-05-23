@@ -21,62 +21,7 @@
 
 
 void LootManagerImplementation::initialize() {
-	info("Loading loottables...",true);
-
-	int amountGroups = 0;
-	int amountObjects = 0;
-	try {
-		Reference<ResultSet*> result;
-		StringBuffer query;
-
-		query << "SELECT * FROM loottable;";
-		result = ServerDatabase::instance()->executeQuery(query);
-
-		while (result->next()) {
-			uint32 lootGroup = result->getUnsignedInt(0);
-			String name = result->getString(1);
-			uint32 templateCRC = result->getUnsignedInt(2);
-			int chance = result->getInt(8);
-			uint32 lootObjectID = result->getUnsignedInt(15);
-
-			if (lootGroups.contains(lootGroup)) {
-
-				ManagedReference<LootGroupObject*> lootGroupObject = lootGroups.get(lootGroup);
-
-				if (lootGroupObject->contains(lootObjectID)) {
-
-					lootGroupObject->get(lootObjectID)->check(name, templateCRC, chance);
-
-				} else {
-					amountObjects++;
-
-					lootGroupObject->put(lootObjectID, new LootObject(lootObjectID, name, templateCRC, lootGroup, chance));
-				}
-			} else {
-				amountGroups++;
-				// create new lootGroup
-				ManagedReference<LootGroupObject*> lootGroupObject = createLootGroup(lootGroup);
-				if (lootGroupObject != NULL) {
-					lootGroups.put(lootGroup, lootGroupObject);
-				}
-
-				if (lootGroups.contains(lootGroup)) {
-					amountObjects++;
-
-					LootGroupObject* lootGroupObject = lootGroups.get(lootGroup);
-
-					LootObject* lootObject = new LootObject(lootObjectID, name, templateCRC, lootGroup, chance);
-
-					lootGroupObject->put(lootObjectID, lootObject);
-				}
-			}
-		}
-
-	}  catch (Exception& e) {
-		error(e.getMessage());
-	}
-
-	info("Initialized " + String::valueOf(amountGroups) + " Groups and " + String::valueOf(amountObjects) + " Objects",true);
+	info("Currently disabled while being revamped.");
 }
 
 LootGroupObject* LootManagerImplementation::createLootGroup(uint32 lootGroup) {
