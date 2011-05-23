@@ -216,9 +216,10 @@ void ZoneServerImplementation::startZones() {
 		zone->initializePrivateData();
 		zone->_setObjectID(~0 - i);
 		zone->deploy("Zone " + zoneName);
-		zone->startManagers();
 
 		zones.put(zoneName, zone);
+
+		zone->startManagers();
 	}
 }
 
