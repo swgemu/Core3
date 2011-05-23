@@ -16,6 +16,10 @@ ZoneClientThread::ZoneClientThread(ZoneClient* zoneClient) : Thread() {
 
 ZoneClientThread::~ZoneClientThread() {
 	client = NULL;
+
+#ifdef WITH_STM
+	TransactionalMemoryManager::closeThread();
+#endif
 }
 
 void ZoneClientThread::run() {

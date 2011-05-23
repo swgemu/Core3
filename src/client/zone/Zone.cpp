@@ -54,7 +54,7 @@ void Zone::run() {
 		clientThread->start();
 
 		if (client->connect()) {
-			client->getClient()->info("connected");
+			client->getClient()->info("connected", true);
 		} else {
 			client->getClient()->error("could not connect");
 			return;

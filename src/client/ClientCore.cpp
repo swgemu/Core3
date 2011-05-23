@@ -57,6 +57,8 @@ void ClientCore::initialize() {
 	info("starting up client..");
 }
 
+int connectCount = 0, disconnectCount = 0;
+
 void ClientCore::run() {
 	for (int i = 0; i < instances; ++i) {
 		zones.add(NULL);
@@ -64,10 +66,12 @@ void ClientCore::run() {
 
 	info("initialized", true);
 
+	int rounds = 0;
+
 	while (true) {
 		int index = System::random(instances - 1);
 
-		if (System::random(100) > 33)
+		if (System::random(100) < 66)
 			loginCharacter(index);
 		else
 			logoutCharacter(index);
@@ -79,14 +83,21 @@ void ClientCore::run() {
 		}
 	#endif
 
+		info(String::valueOf(connectCount) + " connects, " + String::valueOf(disconnectCount) + " disconnects. " +
+				String::valueOf(++rounds) + " rounds", true);
 
 		Thread::sleep(1000 + System::random(4000));
 	}
 
-	handleCommands();
+	//handleCommands();
 
-	/*delete zone;
-	zone = NULL;*/
+	for (int i = 0; i < instances; ++i) {
+		Zone* zone = zones.get(i);
+		if (zone != NULL)
+			zone->disconnect();
+	}
+
+	Thread::sleep(10000);
 }
 
 void ClientCore::loginCharacter(int index) {
@@ -114,6 +125,8 @@ void ClientCore::loginCharacter(int index) {
 		zone->start();
 
 		zones.set(index, zone);
+
+		connectCount++;
 	} catch (Exception& e) {
 
 	}
@@ -127,6 +140,8 @@ void ClientCore::logoutCharacter(int index) {
 	zones.set(index, NULL);
 
 	zone->disconnect();
+
+	disconnectCount++;
 
 	delete zone;
 }
