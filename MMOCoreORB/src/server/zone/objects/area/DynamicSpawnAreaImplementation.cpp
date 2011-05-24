@@ -140,7 +140,7 @@ void DynamicSpawnAreaImplementation::spawnCreature(uint32 templateCRC, PlayerObj
 		break;
 	}
 
-	ManagedReference<AiGroup*> group = dynamic_cast<AiGroup*>(zone->getZoneServer()->createObject(crc, 0));
+	ManagedReference<AiGroup*> group = dynamic_cast<AiGroup*>(getZone()->getZoneServer()->createObject(crc, 0));
 	if (group == NULL)
 		return;
 
@@ -148,11 +148,11 @@ void DynamicSpawnAreaImplementation::spawnCreature(uint32 templateCRC, PlayerObj
 
 	float x = rOuter.getX() + getPositionX();
 	float y = rOuter.getY() + getPositionY();
-	float z = zone->getHeight(x, y);
+	float z = getZone()->getHeight(x, y);
 
 	group->setPosition(x, z, y);
 
-	group->insertToZone(zone);
+	group->insertToZone(getZone());
 
 	group->setup(templ);
 

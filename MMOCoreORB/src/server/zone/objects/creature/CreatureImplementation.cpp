@@ -45,7 +45,7 @@ void CreatureImplementation::notifyPositionUpdate(QuadTreeEntry* entry) {
 }
 
 void CreatureImplementation::doAwarenessCheck(Coordinate& start, uint64 time, CreatureObject* target) {
-	if (isDead() || zone == NULL || time == 0 || target->isDead())
+	if (isDead() || getZone() == NULL || time == 0 || target->isDead())
 		return;
 
 	// calculate average speed
@@ -106,7 +106,7 @@ void CreatureImplementation::runAway(CreatureObject* target) {
 	runTrajectory += target->getPosition();
 
 	patrolPoints.removeAll();
-	setNextPosition(runTrajectory.getX(), zone->getHeight(runTrajectory.getX(), runTrajectory.getY()), runTrajectory.getY(), getParent());
+	setNextPosition(runTrajectory.getX(), getZone()->getHeight(runTrajectory.getX(), runTrajectory.getY()), runTrajectory.getY(), getParent());
 
 	showFlyText("npc_reaction/flytext", "afraid", 0xFF, 0, 0);
 
@@ -149,11 +149,11 @@ void CreatureImplementation::fillObjectMenuResponse(ObjectMenuResponse* menuResp
 }
 
 int CreatureImplementation::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
-	if (zone == NULL)
+	if (getZone() == NULL)
 		return 0;
 
 	if (selectedID == 112 || selectedID == 234 || selectedID == 235 || selectedID == 236) {
-		zone->getCreatureManager()->harvest(_this, player, selectedID);
+		getZone()->getCreatureManager()->harvest(_this, player, selectedID);
 	}
 
 	return 0;

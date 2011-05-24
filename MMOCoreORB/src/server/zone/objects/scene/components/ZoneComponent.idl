@@ -1,0 +1,228 @@
+/*
+Copyright (C) 2007 <SWGEmu>
+This File is part of Core3.
+This program is free software; you can redistribute
+it and/or modify it under the terms of the GNU Lesser
+General Public License as published by the Free Software
+Foundation; either version 2 of the License,
+or (at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+See the GNU Lesser General Public License for
+more details.
+
+You should have received a copy of the GNU Lesser General
+Public License along with this program; if not, write to
+the Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
+
+Linking Engine3 statically or dynamically with other modules
+is making a combined work based on Engine3.
+Thus, the terms and conditions of the GNU Lesser General Public License
+cover the whole combination.
+
+In addition, as a special exception, the copyright holders of Engine3
+give you permission to combine Engine3 program with free software
+programs or libraries that are released under the GNU LGPL and with
+code included in the standard release of Core3 under the GNU LGPL
+license (or modified versions of such code, with unchanged license).
+You may copy and distribute such a system following the terms of the
+GNU LGPL for Engine3 and the licenses of the other code concerned,
+provided that you include the source code of that other code when
+and as the GNU LGPL requires distribution of source code.
+
+Note that people who make modified versions of Engine3 are not obligated
+to grant this special exception for their modified versions;
+it is their choice whether to do so. The GNU Lesser General Public License
+gives permission to release a modified version without this exception;
+this exception also makes it possible to release a modified version
+which carries forward this exception.
+
+*/
+
+package server.zone.objects.scene.components;
+import engine.core.ManagedObject;
+import server.zone.Zone;
+import server.zone.objects.scene.SceneObject;
+import server.zone.objects.scene.components.SceneObjectComponent;
+import server.zone.objects.building.BuildingObject;
+import engine.log.Logger;
+import server.zone.objects.area.ActiveArea;
+import system.util.SortedVector;
+import system.util.Vector;
+include server.zone.ZoneReference;
+import engine.util.u3d.QuadTreeEntry;
+import server.zone.objects.region.CityRegion;
+
+class ZoneComponent extends SceneObjectComponent implements Logger {
+	//protected Zone zone;
+	@dereferenced
+	protected ZoneReference zone;
+	
+	@weakReference
+	protected transient CityRegion cityRegion;
+	
+	@dereferenced
+	protected SortedVector<ActiveArea> activeAreas;
+	
+	@dereferenced
+	protected transient SortedVector<SceneObject> notifiedSentObjects;
+	
+	
+	public ZoneComponent() {
+		super();
+	}
+	
+	public void initialize(SceneObject obj) {
+		super.initialize(obj);
+		
+		initializeTransientMembers();
+	}
+	
+	public void initializeTransientMembers() {
+		super.initializeTransientMembers();
+		
+		Logger.setGlobalLogging(false);
+		Logger.setLogging(false);
+
+		Logger.setLoggingName("ZoneComponent");
+		
+		notifiedSentObjects.setNoDuplicateInsertPlan();
+		activeAreas.setNoDuplicateInsertPlan();
+	}
+	
+	public abstract void notifyLoadFromDatabase() {
+		
+	}
+	
+	@local
+	public abstract void notifyInsert(QuadTreeEntry entry) {
+		
+	}
+	
+	@local
+	public abstract void notifyDissapear(QuadTreeEntry entry) {
+		
+	}
+	
+	/**
+	 * Inserts this object into zone
+	 * @pre { this object is locked }
+	 * @post { this object is locked and inserted into zone }
+	 * @param zone Zone object where this object will be inserted
+	 */
+	public native abstract void insertToZone(Zone zone);
+
+	/**
+	 * Inserts this object into the building, this method is only to be called from insertToZone
+	 * @pre { this object is locked, zone is locked }
+	 * @post { this object is in the building, this object is locked, zone is locked }
+	 * @param building BuildingObject where this object will be inserted
+	 */
+	public native abstract void insertToBuilding(BuildingObject building);
+
+	/**
+	 * Switches zone and position of this object
+	 * @pre { this object is locked }
+	 * @post { this object is locked, is in the new zone and in the new position }
+	 * @param newZoneID new zone id where the object will be inserted
+	 * @param newPositionX new position X
+	 * @param newPositionZ new position Z
+	 * @param newPositionY new position Y
+	 */
+	public native abstract void switchZone(final string newTerrainName, float newPostionX, float newPositionZ, float newPositionY, unsigned long parentID = 0);
+	
+	public native abstract void teleport(float newPositionX, float newPositionZ, float newPositionY, unsigned long parentID = 0);
+
+	/**
+	 * Removes object from zone
+	 * @pre { this object is locked }
+	 * @post { this object is locked and not in zone}
+	 */
+	public native abstract void removeFromZone();
+
+	/**
+	 * Removes this object from the building, this method is only to be called from removeFromZone
+	 * @pre { this object is locked, zone is locked }
+	 * @post { this object is not in the building, this object is locked, zone is locked }
+	 * @param building BuildingObject from where this object will be removed
+	 */
+	public native abstract void removeFromBuilding(BuildingObject building);
+
+	/**
+	 * Updates position of this object to the rest of in range objects
+	 * @pre { this object is locked}
+	 * @post { this object is locked, in range objects are updated with the new position }
+	 * @param lightUpdate if true a standalone message is sent to the in range objects
+	 */
+	public native abstract void updateZone(boolean lightUpdate, boolean sendPackets = true);
+
+	/**
+	 * Updates position and/or parent of this object and to the rest of in range objects
+	 * @pre { this object is locked, newParent is a CellObject }
+	 * @post {this object is locked, in range objects are updated of the new position and parent }
+	 * @param newParent cellObject where this object is
+	 * @param lightUpdate if true a standalone message is sent to the in range objects
+	 */
+	public native abstract void updateZoneWithParent(SceneObject newParent, boolean lightUpdate, boolean sendPackets = true);
+	
+	public boolean hasNotifiedSentObject(SceneObject object) {
+		return notifiedSentObjects.contains(object);
+	}
+	
+	public int addNotifiedSentObject(SceneObject object) {
+		return notifiedSentObjects.put(object);
+	}
+	
+	public void removeNotifiedSentObject(SceneObject object) {
+		notifiedSentObjects.drop(object);
+	}
+	
+	public void addActiveArea(ActiveArea area) {
+		activeAreas.put(area);
+	}
+	
+	public void dropActiveArea(ActiveArea area) {
+		activeAreas.drop(area);
+	}
+	
+	public boolean hasActiveArea(ActiveArea area) {
+		return activeAreas.contains(area);
+	}
+	
+	@local
+	public Vector<ActiveArea> getActiveAreas() {
+		return activeAreas;
+	}
+	
+	public int getActiveAreasSize() {
+		return activeAreas.size();
+	}
+	
+	public ActiveArea getActiveRegion() {
+		for (int i = 0; i < activeAreas.size(); i++) {
+			ActiveArea region = activeAreas.get(i);
+			
+			if (region.isRegion()) {
+				return region;
+			}
+		}
+		
+		return null;
+	}
+	
+	public CityRegion getCityRegion() {
+		return cityRegion;
+	}
+	
+	public void setCityRegion(CityRegion region) {
+		cityRegion = region;
+	}
+	
+	public Zone getZone() {
+		return zone.get();
+	}
+	
+	public native void setZone(Zone zon);
+}

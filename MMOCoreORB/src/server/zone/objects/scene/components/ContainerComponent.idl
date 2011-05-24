@@ -1,0 +1,214 @@
+/*
+Copyright (C) 2007 <SWGEmu>
+This File is part of Core3.
+This program is free software; you can redistribute
+it and/or modify it under the terms of the GNU Lesser
+General Public License as published by the Free Software
+Foundation; either version 2 of the License,
+or (at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+See the GNU Lesser General Public License for
+more details.
+
+You should have received a copy of the GNU Lesser General
+Public License along with this program; if not, write to
+the Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
+
+Linking Engine3 statically or dynamically with other modules
+is making a combined work based on Engine3.
+Thus, the terms and conditions of the GNU Lesser General Public License
+cover the whole combination.
+
+In addition, as a special exception, the copyright holders of Engine3
+give you permission to combine Engine3 program with free software
+programs or libraries that are released under the GNU LGPL and with
+code included in the standard release of Core3 under the GNU LGPL
+license (or modified versions of such code, with unchanged license).
+You may copy and distribute such a system following the terms of the
+GNU LGPL for Engine3 and the licenses of the other code concerned,
+provided that you include the source code of that other code when
+and as the GNU LGPL requires distribution of source code.
+
+Note that people who make modified versions of Engine3 are not obligated
+to grant this special exception for their modified versions;
+it is their choice whether to do so. The GNU Lesser General Public License
+gives permission to release a modified version without this exception;
+this exception also makes it possible to release a modified version
+which carries forward this exception.
+
+*/
+
+package server.zone.objects.scene.components;
+import engine.core.ManagedObject;
+import server.zone.objects.scene.components.SceneObjectComponent;
+import server.zone.objects.scene.SceneObject;
+import system.util.Vector;
+import system.util.VectorMap;
+
+class ContainerComponent extends SceneObjectComponent {
+	@dereferenced
+	protected VectorMap<string, SceneObject> slottedObjects;
+
+	@dereferenced
+	protected VectorMap<unsigned long, SceneObject> containerObjects;
+	
+	protected unsigned int containerType;
+	protected unsigned int containerVolumeLimit;
+
+	public ContainerComponent() {
+		super();
+		
+		containerType = 0;
+		containerVolumeLimit = 0;
+	}
+	
+	public void initialize(SceneObject obj) {
+		super.initialize(obj);
+		
+		initializeTransientMembers();
+	}
+	
+	public void initializeTransientMembers() {
+		super.initializeTransientMembers();
+				
+		slottedObjects.setNullValue(null);
+		slottedObjects.setNoDuplicateInsertPlan();
+		containerObjects.setNullValue(null);
+		containerObjects.setNoDuplicateInsertPlan();
+	}
+	
+	public abstract native void notifyLoadFromDatabase();
+	
+	/**
+	 * Tries to add/link object
+	 * @pre { this object is locked, object is locked }
+	 * @post {this object is locked, object is locked }
+	 * @param object SceneObject that will be added to the current object
+	 * @param containmentType arrangement type that will be used to add the object
+	 * @param notifyClient if true in range objects will be updated with the change
+	 * @return returns true if the object has been successfully added
+	 */
+	public native abstract boolean addObject(SceneObject object, int containmentType, boolean notifyClient = false);
+
+	/**
+	 * Tries to remove/unlink object
+	 * @pre { this object is locked, object is locked }
+	 * @post {this object is locked, object is locked }
+	 * @param object SceneObject that will be removed from the current object
+	 * @param notifyClient not used currently
+	 * @return returns true if the object has been successfully removed
+	 */
+	public native abstract boolean removeObject(SceneObject object, boolean notifyClient = false);
+
+	/**
+	 * Evaluates if this object has the necessary free slots to be able to add the specified SceneObject
+	 * @pre { this object is locked, object is locked }
+	 * @post {this object is locked, object is locked }
+	 * @param object SceneObject that will be checked
+	 * @param error error string that the player will receive on error
+	 * @return returns 0 on success, or error code
+	 */
+	public native abstract int canAddObject(SceneObject object, int containmentType, string errorDescription);
+	
+	/**
+	 * Fills the specified vector with the containment objects of this object
+	 * @pre { this obejct is locked }
+	 * @post { this object is locked, objects is a vector map with the contained objects and their occupied slots }
+	 * @param objects the vector map that will contain the objects and their occupied slots 
+	 */
+	@local
+	public native void getContainmentObjects(@dereferenced VectorMap<string, SceneObject> objects);
+	
+	public SceneObject getSlottedObject(final string slot) {
+		return slottedObjects.get(slot);
+	}
+	
+	public SceneObject getSlottedObject(int idx) {
+		return slottedObjects.get(idx);
+	}
+	
+	public void dropSlottedObject(final string arrengementDescriptor) {
+		slottedObjects.drop(arrengementDescriptor);
+	}
+	
+	public void removeSlottedObject(int index) {
+		slottedObjects.remove(index);
+	}
+	
+	public int getContainerObjectsSize() {
+		return containerObjects.size();
+	}
+	
+	public int getSlottedObjectsSize() {
+		return slottedObjects.size();
+	}
+	
+	public boolean hasFullContainerObjects() {
+		return containerObjects.size() > containerVolumeLimit || containerObjects.size() == containerVolumeLimit;
+	}
+	
+	public int getContainerVolumeLimit() {
+		return containerVolumeLimit;
+	}
+
+	public SceneObject getContainerObject(int idx) {
+		return containerObjects.get(idx);
+	}
+	
+	@local
+	public VectorMap<unsigned long, SceneObject> getContainerObjects() {
+		return containerObjects;
+	}
+	
+	public boolean hasObjectInContainer(unsigned long objectID) {
+		return containerObjects.contains(objectID);
+	}
+	
+	public boolean hasObjectInSlottedContainer(SceneObject object) {
+		int arrangementSize = object.getArrangementDescriptorSize();
+		
+		if (arrangementSize == 0) {
+			return false;
+		}
+		
+		SceneObject obj = slottedObjects.get(object.getArrangementDescriptor(0));
+		
+		if (object == obj) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+	
+	public SceneObject getContainerObject(unsigned long objectID) {
+		return containerObjects.get(objectID);
+	}
+	
+	public void removeAllContainerObjects() {
+		containerObjects.removeAll();
+	}
+	
+	public void putInContainer(SceneObject obj, unsigned long key) {
+		containerObjects.put(key, obj);
+	}
+	
+	public void removeFromContainerObjects(int index) {
+		containerObjects.removeElementAt(index);
+	}
+	
+	public void setContainerVolumeLimit(int lim) {
+		containerVolumeLimit = lim;
+	}
+	
+	public void setContainerType(int type) {
+		containerType = type;
+	}
+	
+	public unsigned int getContainerType() {
+		return containerType;
+	}
+
+}

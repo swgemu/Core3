@@ -142,8 +142,8 @@ int ContainerImplementation::canAddObject(SceneObject* object, int containmentTy
 //	if (locked)
 	//	return TransferErrorCode::CONTAINERLOCKED;
 
-	if ((object->isIntangibleObject() && containerType != 3)
-			|| (containerType == 3 && !object->isIntangibleObject())) {
+	if ((object->isIntangibleObject() && getContainerType() != 3)
+			|| (getContainerType() == 3 && !object->isIntangibleObject())) {
 		errorDescription = "@container_error_message:container07";
 
 		return TransferErrorCode::INVALIDTYPE;

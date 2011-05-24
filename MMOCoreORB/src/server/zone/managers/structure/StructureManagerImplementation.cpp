@@ -59,6 +59,7 @@
 #include "server/zone/managers/minigames/events/GamblingEvent.h"
 
 #include "server/zone/templates/footprint/StructureFootprint.h"
+#include "server/zone/objects/region/CityRegion.h"
 
 void StructureManagerImplementation::loadPlayerStructures() {
 

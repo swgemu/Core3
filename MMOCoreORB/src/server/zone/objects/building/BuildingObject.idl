@@ -84,11 +84,7 @@ class BuildingObject extends StructureObject implements QuadTree {
 		QuadTree.setSize(-1024, -1024, 1024, 1024);
 
 		super.staticObject = false;
-		
-		super.containerVolumeLimit = 0xFFFFFFFF;
-
-		super.containerType = 2;
-				
+						
 		totalCellNumber = 0;
 		
 		accessFee = 0;
@@ -106,6 +102,8 @@ class BuildingObject extends StructureObject implements QuadTree {
 	public native void loadTemplateData(SharedObjectTemplate templateData);
 		
 	public native void initializeTransientMembers();
+	
+	public native void createContainerComponent();
 	
 	/**
 	 * Sends the contained non slotted objects to the specified player
@@ -146,6 +144,13 @@ class BuildingObject extends StructureObject implements QuadTree {
 		
 		super.removeFromZone();
 	}*/
+	
+	/**
+	 * Gets called when this objects is loaded from database
+	 * @pre { this locked }
+	 * @post { this locked }
+	 */
+	public native void notifyLoadFromDatabase();
 	
 	@local
 	public native void notifyInsert(QuadTreeEntry obj);

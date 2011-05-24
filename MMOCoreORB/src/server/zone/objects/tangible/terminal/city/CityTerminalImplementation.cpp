@@ -59,10 +59,10 @@ void CityTerminalImplementation::fillObjectMenuResponse(ObjectMenuResponse* menu
 }
 
 int CityTerminalImplementation::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
-	if (zone == NULL)
+	if (getZone() == NULL)
 		return 0;
 
-	ManagedReference<CityManager*> cityManager = zone->getCityManager();
+	ManagedReference<CityManager*> cityManager = getZone()->getCityManager();
 
 	if (controlledObject == NULL || !controlledObject->isBuildingObject())
 		return 0;

@@ -48,13 +48,13 @@ int LairObjectImplementation::inflictDamage(TangibleObject* attacker, int damage
 int LairObjectImplementation::notifyObjectDestructionObservers(TangibleObject* attacker, int condition) {
 	int ret = TangibleObjectImplementation::notifyObjectDestructionObservers(attacker, condition);
 
-	if (zone == NULL)
+	if (getZone() == NULL)
 		return ret;
 
 	PlayClientEffectObjectMessage* explode = new PlayClientEffectObjectMessage(_this, "clienteffect/lair_damage_heavy.cef", "");
 	broadcastMessage(explode, false);
 
-	PlayClientEffectLoc* explodeLoc = new PlayClientEffectLoc("clienteffect/lair_damage_heavy.cef", zone->getZoneName(), positionX, positionZ, positionY);
+	PlayClientEffectLoc* explodeLoc = new PlayClientEffectLoc("clienteffect/lair_damage_heavy.cef", getZone()->getZoneName(), positionX, positionZ, positionY);
 	broadcastMessage(explodeLoc, false);
 
 	removeFromZone();
@@ -100,7 +100,7 @@ void LairObjectImplementation::checkForHeal(TangibleObject* attacker, bool force
 }
 
 void LairObjectImplementation::healLair(TangibleObject* attacker) {
-	if (zone == NULL)
+	if (getZone() == NULL)
 		return;
 
 	int damageToHeal = 0;
@@ -132,13 +132,13 @@ void LairObjectImplementation::healLair(TangibleObject* attacker) {
 	broadcastMessage(heal, false);
 
 	PlayClientEffectLoc* healLoc = new PlayClientEffectLoc("clienteffect/healing_healdamage.cef",
-			zone->getZoneName(), getPositionX(),
+			getZone()->getZoneName(), getPositionX(),
 			getPositionZ(), getPositionY());
 	broadcastMessage(healLoc, false);
 }
 
 void LairObjectImplementation::checkForNewSpawns() {
-	if (zone == NULL)
+	if (getZone() == NULL)
 		return;
 
 	if (spawnedCreatures.size() >= getMaxObjectsToSpawn())
@@ -151,11 +151,11 @@ void LairObjectImplementation::checkForNewSpawns() {
 
 	uint32 templateToSpawn = objectsToSpawn->get(System::random(objectsToSpawn->size() - 1));
 
-	CreatureManager* creatureManager = zone->getCreatureManager();
+	CreatureManager* creatureManager = getZone()->getCreatureManager();
 
 	float x = positionX + (20.0f - System::random(400) / 10.0f);
 	float y = positionY + (20.0f - System::random(400) / 10.0f);
-	float z = zone->getHeight(x, y);
+	float z = getZone()->getHeight(x, y);
 
 	ManagedReference<CreatureObject*> creature = creatureManager->spawnCreature(templateToSpawn, 0, x, z, y);
 

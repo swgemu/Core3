@@ -50,10 +50,13 @@ ObjectManager::ObjectManager() : DOBObjectManagerImplementation(), Logger("Objec
 	databaseManager->loadObjectDatabase("spawnareas", true);
 	databaseManager->loadObjectDatabase("spawnobservers", true);
 	databaseManager->loadObjectDatabase("aiobservers", true);
+	databaseManager->loadObjectDatabase("sceneobjectcomponents", true);
 
 	ObjectDatabaseManager::instance()->commitLocalTransaction();
 
 	loadLastUsedObjectID();
+
+	totalUpdatedObjects = 0;
 
 	setLogging(false);
 	setGlobalLogging(true);
@@ -411,10 +414,7 @@ void ObjectManager::loadStaticObjects() {
 }
 
 int ObjectManager::commitUpdatePersistentObjectToDB(DistributedObject* object) {
-	if (!((ManagedObject*)object)->isPersistent()) {
-		object->_setUpdated(false);
-		return 1;
-	}
+	++totalUpdatedObjects;
 
 	try {
 		ManagedObject* managedObject = ((ManagedObject*)object);
@@ -472,6 +472,7 @@ int ObjectManager::commitUpdatePersistentObjectToDB(DistributedObject* object) {
 }
 
 int ObjectManager::updatePersistentObject(DistributedObject* object) {
+	//use a linked list
 	object->_setUpdated(true);
 
 	return 0;
@@ -619,7 +620,7 @@ DistributedObjectStub* ObjectManager::loadPersistentObject(uint64 objectID) {
 
 	try {
 		if (Serializable::getVariable<uint32>("serverObjectCRC", &serverObjectCRC, &objectData)) {
-			object = instantiateSceneObject(serverObjectCRC, objectID);
+			object = instantiateSceneObject(serverObjectCRC, objectID, false);
 
 			if (object == NULL) {
 				error("could not load object from database");
@@ -704,7 +705,7 @@ void ObjectManager::deSerializeObject(SceneObject* object, ObjectInputStream* da
 	}
 }
 
-SceneObject* ObjectManager::instantiateSceneObject(uint32 objectCRC, uint64 oid) {
+SceneObject* ObjectManager::instantiateSceneObject(uint32 objectCRC, uint64 oid, bool createComponents) {
 	SceneObject* object = NULL;
 
 	Locker _locker(this);
@@ -718,6 +719,9 @@ SceneObject* ObjectManager::instantiateSceneObject(uint32 objectCRC, uint64 oid)
 
 	object->_setObjectID(oid);
 
+	if (createComponents)
+		object->createComponents();
+
 	String logName = object->getLoggingName();
 
 	StringBuffer newLogName;
@@ -726,7 +730,7 @@ SceneObject* ObjectManager::instantiateSceneObject(uint32 objectCRC, uint64 oid)
 	object->setLoggingName(newLogName.toString());
 
 	object->deploy(newLogName.toString());
-	info("deploying.." + newLogName.toString());
+	info("deployed.." + newLogName.toString());
 
 	return object;
 }
@@ -740,7 +744,7 @@ SceneObject* ObjectManager::createObject(uint32 objectCRC, int persistenceLevel,
 		oid = getNextObjectID(database);
 	}
 
-	object = instantiateSceneObject(objectCRC, oid);
+	object = instantiateSceneObject(objectCRC, oid, true);
 
 	if (object == NULL) {
 		StringBuffer msg;
@@ -783,10 +787,12 @@ ManagedObject* ObjectManager::createObject(const String& className, int persiste
 		object->_setObjectID(oid);
 		object->_setImplementation(servant);
 
-		((ManagedObjectImplementation*)servant)->setPersistent(persistenceLevel);
 		servant->_setStub(object);
 		servant->_setClassHelper(helper);
 		servant->_serializationHelperMethod();
+		object->initializeTransientMembers();
+
+		object->setPersistent(persistenceLevel);
 
 		object->deploy();
 
@@ -928,9 +934,13 @@ int ObjectManager::deployUpdateThreads(Vector<DistributedObject*>* objectsToUpda
 	if (objectsToUpdate->size() == 0)
 		return 0;
 
+	totalUpdatedObjects = 0;
+
 	Time start;
 
 	int numberOfObjects = objectsToUpdate->size();
+
+	//info("numberOfObjects:" + String::valueOf(numberOfObjects), true);
 
 	int rest = numberOfObjects % MAXOBJECTSTOUPDATEPERTHREAD;
 	int numberOfThreads = numberOfObjects / MAXOBJECTSTOUPDATEPERTHREAD;
@@ -963,7 +973,7 @@ int ObjectManager::deployUpdateThreads(Vector<DistributedObject*>* objectsToUpda
 			end = numberOfObjects - 1;
 			thread->setObjectsToDeleteVector(objectsToDelete);
 		} else
-			end = start +  numberPerThread - 1;
+			end = start + numberPerThread - 1;
 
 		thread->setObjectsToUpdateVector(objectsToUpdate);
 		thread->setStartOffset(start);
@@ -990,6 +1000,8 @@ void ObjectManager::finishObjectUpdate(bool startNew) {
 
 	if (startNew)
 		updateModifiedObjectsTask->schedule(UPDATETODATABASETIME);
+
+	//info("updated objects: " + String::valueOf(totalUpdatedObjects), true);
 }
 
 void ObjectManager::cancelUpdateModifiedObjectsTask() {

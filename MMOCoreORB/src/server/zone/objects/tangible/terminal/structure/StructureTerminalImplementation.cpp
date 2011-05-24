@@ -67,10 +67,10 @@ int StructureTerminalImplementation::handleObjectMenuSelect(PlayerCreature* play
 	if (!structureObject->isOnAdminList(player) && !player->getPlayerObject()->isPrivileged())
 		return 1;
 
-	if (zone == NULL)
+	if (getZone() == NULL)
 		return 1;
 
-	ManagedReference<PlanetManager*> planetManager = zone->getPlanetManager();
+	ManagedReference<PlanetManager*> planetManager = getZone()->getPlanetManager();
 
 	if (planetManager == NULL)
 		return 1;

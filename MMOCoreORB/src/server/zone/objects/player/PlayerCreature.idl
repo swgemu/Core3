@@ -254,12 +254,6 @@ class PlayerCreature extends CreatureObject {
 	 */
 	public native void notifyLoadFromDatabase();
 	
-	@local
-	public native void notifyInsert(QuadTreeEntry entry);
-	
-	@local
-	public native void notifyDissapear(QuadTreeEntry entry);
-	
 	public native void disconnect(boolean closeClient, boolean doLock);
 	
 	public native void unload();
@@ -271,64 +265,6 @@ class PlayerCreature extends CreatureObject {
 	public native void activateRecovery();
 	
 	public native void doRecovery();
-	
-	public native void teleport(float newPositionX, float newPositionZ, float newPositionY, unsigned long parentID = 0);
-	
-	/**
-	 * Updates position of this object to the rest of in range objects
-	 * @pre { this object is locked}
-	 * @post { this object is locked, in range objects are updated with the new position }
-	 * @param lightUpdate if true a standalone message is sent to the in range objects
-	 */
-	public native void updateZone(boolean lightUpdate, boolean sendPackets = true);
-
-	/**
-	 * Updates position and/or parent of this object and to the rest of in range objects
-	 * @pre { this object is locked, newParent is a CellObject }
-	 * @post {this object is locked, in range objects are updated of the new position and parent }
-	 * @param newParent cellObject where this object is
-	 * @param lightUpdate if true a standalone message is sent to the in range objects
-	 */
-	public native void updateZoneWithParent(SceneObject newParent, boolean lightUpdate, boolean sendPackets = true); 
-	
-	/**
-	 * Fills the radial options, needs to be overriden
-	 * @pre { this object is locked }
-	 * @post { this object is locked, menuResponse is complete}
-	 * @param menuResponse ObjectMenuResponse that will be sent to the client
-	 */
-	@local
-	public native void fillObjectMenuResponse(ObjectMenuResponse menuResponse, PlayerCreature player);
-	
-	/**
-	 * Handles the radial selection sent by the client, must be overriden by inherited objects
-	 * @pre { this object is locked, player is locked }
-	 * @post { this object is locked, player is locked }
-	 * @param player PlayerCreature that selected the option
-	 * @param selectedID selected menu id
-	 * @returns 0 if successfull
-	 */
-	public native int handleObjectMenuSelect(PlayerCreature player, byte selectedID);
-	
-	/**
-	 * Inserts this object into the building, this method is only to be called from insertToZone
-	 * Includes a trigger to BuildingObject::onEnter
-	 * @pre { this object is locked, zone is locked }
-	 * @post { this object is in the building, building->onEnter has been triggered,
-	 * 		   this object is locked, zone is locked }
-	 * @param building BuildingObject where this object will be inserted
-	 */
-	public native void insertToBuilding(BuildingObject building);
-	
-	/**
-	 * Removes this object from the building, this method is only to be called from removeFromZone
-	 * Includes a trigger to BuildingObject::onExit
-	 * @pre { this object is locked, zone is locked }
-	 * @post { this object is not in the building, building->onExit has been triggered, 
-	 * 		   this object is locked, zone is locked }
-	 * @param building BuildingObject from where this object will be removed
-	 */
-	public native void removeFromBuilding(BuildingObject building);
 	
 	/**
 	 * Updates this object to database (calls updatesToDatabaseAllObjects())
@@ -394,7 +330,7 @@ class PlayerCreature extends CreatureObject {
 	 */
 	public native boolean isAttackableBy(CreatureObject object);
 	
-	public native int canAddObject(SceneObject object, int containmentType, string errorDescription);
+	
 	
 	/**
 	 * Is called when this object has been inserted with an object
@@ -470,6 +406,11 @@ class PlayerCreature extends CreatureObject {
 	@local
 	public ValidatedPosition getLastValidatedPosition() {
 		return lastValidatedPosition;
+	}
+	
+	public void updateLastValidatedPosition() {
+		lastValidatedPosition.update(this);
+		serverLastMovementStamp.updateToCurrentTime();
 	}
 
 	public string getLastNpcConvMessStr() {

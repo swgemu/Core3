@@ -42,7 +42,10 @@
 
 
 object_cell_cell = object_cell_shared_cell:new {
-	gameObjectType = 11
+	gameObjectType = 11,
+	
+	containerVolumeLimit = -1,
+	containerType = 2
 }
 
 ObjectTemplates:addTemplate(object_cell_cell, "object/cell/cell.iff")

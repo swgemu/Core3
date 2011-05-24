@@ -15,7 +15,7 @@
 #include "CustomizationData.h"
 #include "CustomizationDataMap.h"
 
-class ImageDesignManager {
+class ImageDesignManager : public Singleton<ImageDesignManager> {
 	void loadCustomizationData();
 
 public:

@@ -85,6 +85,8 @@ namespace zone {
 
 		bool objectUpdateInProcess;
 
+		int totalUpdatedObjects;
+
 	public:
 		SceneObjectFactory<SceneObject* (), uint32> objectFactory;
 
@@ -103,7 +105,7 @@ namespace zone {
 		void deSerializeObject(SceneObject* object, ObjectInputStream* data);
 		void deSerializeObject(ManagedObject* object, ObjectInputStream* data);
 
-		SceneObject* instantiateSceneObject(uint32 objectCRC, uint64 oid);
+		SceneObject* instantiateSceneObject(uint32 objectCRC, uint64 oid, bool createComponents);
 
 		UpdateModifiedObjectsThread* createUpdateModifiedObjectsThread();
 

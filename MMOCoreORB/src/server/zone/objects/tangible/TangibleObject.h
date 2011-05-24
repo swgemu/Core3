@@ -216,10 +216,6 @@ public:
 
 	void initializeTransientMembers();
 
-	void fillObjectMenuResponse(ObjectMenuResponse* menuResponse, PlayerCreature* player);
-
-	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
-
 	void setCustomObjectName(const UnicodeString& name, bool notifyClient);
 
 	void sendBaselinesTo(SceneObject* player);
@@ -492,10 +488,6 @@ public:
 
 	void initializeTransientMembers();
 
-	void fillObjectMenuResponse(ObjectMenuResponse* menuResponse, PlayerCreature* player);
-
-	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
-
 	void setCustomObjectName(const UnicodeString& name, bool notifyClient);
 
 	virtual void sendBaselinesTo(SceneObject* player);
@@ -672,8 +664,6 @@ public:
 	void initializeMembers();
 
 	void initializeTransientMembers();
-
-	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
 
 	void setCustomObjectName(const UnicodeString& name, bool notifyClient);
 

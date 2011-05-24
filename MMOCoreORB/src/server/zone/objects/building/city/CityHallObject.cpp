@@ -1206,8 +1206,8 @@ void CityHallObjectImplementation::removeFromZone() {
 void CityHallObjectImplementation::notifyLoadFromDatabase() {
 	// server/zone/objects/building/city/CityHallObject.idl():  		super.notifyLoadFromDatabase();
 	BuildingObjectImplementation::notifyLoadFromDatabase();
-	// server/zone/objects/building/city/CityHallObject.idl():  		CityManager cityManager = super.zone.getCityManager();
-	CityManager* cityManager = BuildingObjectImplementation::zone.getForUpdate()->getCityManager();
+	// server/zone/objects/building/city/CityHallObject.idl():  		CityManager cityManager = super.getZone().getCityManager();
+	CityManager* cityManager = BuildingObjectImplementation::getZone()->getCityManager();
 	// server/zone/objects/building/city/CityHallObject.idl():  		cityManager.addCity(this);
 	cityManager->addCity(_this);
 }

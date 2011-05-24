@@ -70,6 +70,7 @@ protected:
 	PortalLayout* portalLayout;
 	AppearanceTemplate* appearanceTemplate;
 	bool loadedPortalLayout, loadedAppearanceTemplate;
+	String containerComponent, zoneComponent, objectMenuComponent;
 
 public:
 	const static int SHOT = 0x1;
@@ -276,6 +277,18 @@ public:
     inline String getFullTemplateString() {
 		return fullTemplateString;
 	}
+
+    inline String getContainerComponent() {
+    	return containerComponent;
+    }
+
+    inline String getZoneComponent() {
+    	return zoneComponent;
+    }
+
+    inline String getObjectMenuComponent() {
+    	return objectMenuComponent;
+    }
 
 	inline PlanetMapCategory* getPlanetMapCategory() const {
 		return planetMapCategory;

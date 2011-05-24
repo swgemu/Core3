@@ -1,5 +1,5 @@
 /*
- Copyright (C) 2007 <SWGEmu>
+Copyright (C) 2007 <SWGEmu>
 
 This File is part of Core3.
 
@@ -64,7 +64,9 @@ import server.zone.managers.objectcontroller.ObjectController;
 import system.lang.ref.Reference;
 import engine.core.Task;
 import engine.util.u3d.Vector3;
+include engine.util.Facade;
 import engine.util.Observable;
+include server.zone.objects.scene.ObserverEventType;
 
 import server.zone.ZoneProcessServer;
 import server.zone.ZoneClientSession;
@@ -74,35 +76,36 @@ import server.zone.objects.building.BuildingObject;
 import server.zone.packets.object.ObjectMenuResponse;
 import server.zone.objects.player.PlayerCreature;
 import server.zone.packets.scene.AttributeListMessage;
-import server.zone.templates.SharedObjectTemplate;
-import server.zone.objects.area.ActiveArea;
 
-include server.zone.ZoneReference;
-include server.zone.objects.region.CityRegion;
-include server.zone.managers.templates.PlanetMapCategory;
-include server.zone.managers.templates.TemplateManager;
 include server.zone.objects.scene.variables.StringId;
 include server.zone.objects.scene.TransferErrorCode;
 include server.zone.objects.scene.variables.PendingTasksMap;
 include server.zone.objects.scene.SessionFacadeType;
-include engine.util.Facade;
-include server.zone.objects.scene.ObserverEventType;
+include server.zone.managers.templates.PlanetMapCategory;
+include server.zone.managers.templates.TemplateManager;
+import server.zone.templates.SharedObjectTemplate;
+import server.zone.objects.area.ActiveArea;
+import server.zone.objects.scene.components.ZoneComponent;
+import server.zone.objects.scene.components.ObjectMenuComponent;
+import server.zone.objects.scene.components.SceneObjectComponent;
+import server.zone.objects.scene.components.ContainerComponent;
+import server.zone.objects.region.CityRegion;
 
 class SceneObject extends QuadTreeEntry implements Logger {
 	protected transient ZoneProcessServer server;
-
-	//@weakReference
-	@dereferenced
-	protected ZoneReference zone;
+	
+	protected ZoneComponent zoneComponent;
+	protected ObjectMenuComponent objectMenuComponent;
+	protected ContainerComponent containerComponent;
 
 	@weakReference
 	protected SceneObject parent;
 
-	@dereferenced
+	/*@dereferenced
 	protected VectorMap<string, SceneObject> slottedObjects;
 
 	@dereferenced
-	protected VectorMap<unsigned long, SceneObject> containerObjects;
+	protected VectorMap<unsigned long, SceneObject> containerObjects;*/
 	
 	@dereferenced
 	protected SortedVector<SceneObject> outdoorChildObjects;
@@ -115,44 +118,25 @@ class SceneObject extends QuadTreeEntry implements Logger {
 
 	protected unsigned int movementCounter;
 
-/*	@dereferenced
-	protected Vector<string> arrangementDescriptors;
-
-	@dereferenced
-	protected Vector<string> slotDescriptors;
-*/
-	
-	protected int planetMapCategory;
-	protected int planetMapSubCategory;
-
 	@dereferenced
 	protected StringId objectName;
-
-/*	@dereferenced
-	protected StringId detailedDescription;*/
-	
-	@dereferenced
-	protected transient SortedVector<SceneObject> notifiedSentObjects;
-	
+		
 	@dereferenced
 	protected transient PendingTasksMap pendingTasks;
 	
 	protected boolean staticObject;
-	
-	@dereferenced
-	protected SortedVector<ActiveArea> activeAreas;
-	
-	@weakReference
-	protected transient CityRegion cityRegion;
-	
+		
 	@dereferenced
 	protected VectorMap<unsigned int, Facade> objectActiveSessions;
 
-	protected unsigned int containerType;
-	protected unsigned int containerVolumeLimit;
+	/*protected unsigned int containerType;
+	protected unsigned int containerVolumeLimit;*/
 	protected unsigned int gameObjectType;
 	protected unsigned int clientGameObjectType;
 	protected unsigned int containmentType;
+	
+	protected int planetMapCategory;
+	protected int planetMapSubCategory;
 	
 	protected transient SharedObjectTemplate templateObject;
 
@@ -401,7 +385,8 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	public static final int MISCCLOTHING = 0x1000011;
 	public static final int SKIRT = 0x1000012;
 	public static final int ITHOGARB = 0x1000013;
-
+	
+	
 	public static final int BADGEAREA = 0x2000000;
 	public static final int REGIONAREA = 0x2000001;
 	public static final int MISSIONSPAWNAREA = 0x2000002;
@@ -430,13 +415,12 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	public static final int SHIPWEAPON = 0x40000005;
 	public static final int SHIPWEAPONCAPACITOR = 0x40000006;
 	public static final int SHIPBOOSTER = 0x40000007;
-	public static final int SHIPDROIDINTERFACE = 0x40000008;
+	public static final int SHIPDRIODINTERFACE = 0x40000008;
 	public static final int SHIPCHASSIS = 0x4000000C;
-	public static final int SHIPMISSLE = 0x4000000D;
+	public static final int SHIPMISSILE = 0x4000000D;
 	public static final int SHIPCOUNTERMEASURE = 0x4000000E;
 	public static final int SHIPWEAPONLAUNCHER = 0x4000000F;
 	public static final int SHIPCOUNTERMEASURELAUNCHER = 0x40000010;
-
 	
 	/**
 	 * SceneObject constructor, used to initialize the object.
@@ -463,6 +447,9 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	 */
 	@local
 	public abstract native void loadTemplateData(SharedObjectTemplate templateData);
+	
+	public abstract native void createComponents();
+	public abstract native void createContainerComponent();
 
 	/**
 	 * Initializes the transient members of SceneObject, must call the inherited object method first.
@@ -791,6 +778,16 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	public native abstract void switchZone(final string newTerrainName, float newPostionX, float newPositionZ, float newPositionY, unsigned long parentID = 0);
 	
 	public native abstract void teleport(float newPositionX, float newPositionZ, float newPositionY, unsigned long parentID = 0);
+	
+	@local
+	public void notifyInsert(QuadTreeEntry entry) {
+		zoneComponent.notifyInsert(entry);
+	}
+	
+	@local
+	public void notifyDissapear(QuadTreeEntry entry) {
+		zoneComponent.notifyDissapear(entry);
+	}
 
 	/**
 	 * Removes object from zone
@@ -960,6 +957,15 @@ class SceneObject extends QuadTreeEntry implements Logger {
 		return objectActiveSessions.drop(type);
 	}
 	
+	public int getActiveSessionsCount() {
+		return objectActiveSessions.size();
+	}
+	
+	@local	
+	public VectorMap<unsigned int, Facade> getObjectActiveSessions() {
+		return objectActiveSessions;
+	}
+	
 	/**
 	 * Handles the radial selection sent by the client, must be overriden by inherited objects
 	 * @pre { this object is locked, player is locked }
@@ -999,15 +1005,15 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	}
 	
 	public boolean hasNotifiedSentObject(SceneObject object) {
-		return notifiedSentObjects.contains(object);
+		return zoneComponent.hasNotifiedSentObject(object);
 	}
 	
-	public void addNotifiedSentObject(SceneObject object) {
-		notifiedSentObjects.put(object);
+	public int addNotifiedSentObject(SceneObject object) {
+		return zoneComponent.addNotifiedSentObject(object);
 	}
 	
 	public void removeNotifiedSentObject(SceneObject object) {
-		notifiedSentObjects.drop(object);
+		zoneComponent.removeNotifiedSentObject(object);
 	}
 
 	public native unsigned long getObjectID();
@@ -1095,7 +1101,7 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	}
 
 	public SceneObject getSlottedObject(final string slot) {
-		return slottedObjects.get(slot);
+		return containerComponent.getSlottedObject(slot);
 	}
 
 	public int getSlotDescriptorSize() {
@@ -1103,19 +1109,27 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	}
 
 	public int getContainerObjectsSize() {
-		return containerObjects.size();
+		return containerComponent.getContainerObjectsSize();
+	}
+	
+	public int getSlottedObjectsSize() {
+		return containerComponent.getSlottedObjectsSize();
 	}
 	
 	public boolean hasFullContainerObjects() {
-		return containerObjects.size() > containerVolumeLimit || containerObjects.size() == containerVolumeLimit;
+		return containerComponent.hasFullContainerObjects();
 	}
 	
 	public int getContainerVolumeLimit() {
-		return containerVolumeLimit;
+		return containerComponent.getContainerVolumeLimit();
 	}
 
 	public SceneObject getContainerObject(int idx) {
-		return containerObjects.get(idx);
+		return containerComponent.getContainerObject(idx);
+	}
+	
+	public SceneObject getSlottedObject(int idx) {
+		return containerComponent.getSlottedObject(idx);
 	}
 
 	public abstract ZoneClientSession getClient() {
@@ -1135,7 +1149,7 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	}
 
 	public Zone getZone() {
-		return zone.get();
+		return zoneComponent.getZone();
 	}
 
 	public float getDirectionAngle() {
@@ -1144,6 +1158,10 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	
 	public float getSpecialDirectionAngle() {
 		return direction.getSpecialDegrees();
+	}
+	
+	public unsigned int getContainerType() {
+		return containerComponent.getContainerType();
 	}
 	
 	/**
@@ -1362,11 +1380,11 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	}
 	
 	public void addActiveArea(ActiveArea area) {
-		activeAreas.put(area);
+		zoneComponent.addActiveArea(area);
 	}
 	
 	public void dropActiveArea(ActiveArea area) {
-		activeAreas.drop(area);
+		zoneComponent.dropActiveArea(area);
 	}
 
 	public void setClientObjectCRC(unsigned int objCRC) {
@@ -1389,7 +1407,9 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	@local
 	public native void setObjectName(@dereferenced StringId stringID);
 
-	public native void setZone(Zone zon);
+	public void setZone(Zone zon) {
+		zoneComponent.setZone(zon);
+	}
 
 	public void setDirection(float fw, float fx, float fy, float fz) {
 		direction.set(fw, fx, fy, fz);
@@ -1423,44 +1443,20 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	}
 
 	@local
-	public void setPlanetMapCategory(PlanetMapCategory pmc)
-	{
-		planetMapCategory = pmc.getCrc();
-	}
-
-	@local
-	public void setPlanetMapSubCategory(PlanetMapCategory pmc)
-	{
-		planetMapSubCategory = pmc.getCrc();
-	}
-
-	@local
 	public VectorMap<unsigned long, SceneObject> getContainerObjects() {
-		return containerObjects;
+		return containerComponent.getContainerObjects();
 	}
 	
 	public boolean hasObjectInContainer(unsigned long objectID) {
-		return containerObjects.contains(objectID);
+		return containerComponent.hasObjectInContainer(objectID);
 	}
 	
 	public boolean hasObjectInSlottedContainer(SceneObject object) {
-		int arrangementSize = object.getArrangementDescriptorSize();
-		
-		if (arrangementSize == 0) {
-			return false;
-		}
-		
-		SceneObject obj = slottedObjects.get(object.getArrangementDescriptor(0));
-		
-		if (object == obj) {
-			return true;
-		} else {
-			return false;
-		}
+		return containerComponent.hasObjectInSlottedContainer(object);
 	}
 	
 	public SceneObject getContainerObject(unsigned long objectID) {
-		return containerObjects.get(objectID);
+		return containerComponent.getContainerObject(objectID);
 	}
 	
 	public abstract native unsigned int getPlanetCRC();
@@ -1499,21 +1495,45 @@ class SceneObject extends QuadTreeEntry implements Logger {
 
 	@local
 	public Vector<ActiveArea> getActiveAreas() {
-		return activeAreas;
+		return zoneComponent.getActiveAreas();
 	}
 	
-	public CityRegion getCityRegion() {
-		return cityRegion;
-	}
-	
-	public void setCityRegion(CityRegion region) {
-		cityRegion = region;
+	public ActiveArea getActiveRegion() {
+		return zoneComponent.getActiveRegion();
 	}
 	
 	public boolean hasActiveArea(ActiveArea area) {
-		return activeAreas.contains(area);
+		return zoneComponent.hasActiveArea(area);
 	}
-
+	
+	public CityRegion getCityRegion() {
+		return zoneComponent.getCityRegion();
+	}
+	
+	public void setCityRegion(CityRegion region) {
+		return zoneComponent.setCityRegion(region);
+	}
+	
+	public int getPlanetMapCategoryCRC() {
+		return planetMapCategory;
+	}
+	
+	public int getPlanetMapSubCategoryCRC() {
+		return planetMapSubCategory;
+	}
+	
+	@local
+	public void setPlanetMapCategory(PlanetMapCategory pmc) 
+	{
+		planetMapCategory = pmc.getCrc();
+	}
+	
+	@local
+	public void setPlanetMapSubCategory(PlanetMapCategory pmc) 
+	{
+		planetMapSubCategory = pmc.getCrc();
+	}
+	
 	@local
 	public PlanetMapCategory getPlanetMapCategory() {
 		TemplateManager templateManager = TemplateManager.instance();
@@ -1526,12 +1546,9 @@ class SceneObject extends QuadTreeEntry implements Logger {
 		return templateManager.getPlanetMapCategoryByCrc(planetMapSubCategory);
 	}
 	
-	public int getPlanetMapCategoryCRC() {
-		return planetMapCategory;
-	}
-	
-	public int getPlanetMapSubCategoryCRC() {
-		return planetMapSubCategory;
+	@local
+	public SortedVector<SceneObject> getOutdoorChildObjects() {
+		return outdoorChildObjects;
 	}
 	
 	@local
@@ -1540,9 +1557,5 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	}
 	
 	public native abstract void createChildObjects();
-	
-	
-	@local
-	public native SortedVector<SceneObject> getOutdoorChildObjects();
 }
 

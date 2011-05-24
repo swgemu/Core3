@@ -22,7 +22,7 @@ void ActiveAreaImplementation::insertToZone(Zone* newZone) {
 
 	Locker zoneLocker(newZone);
 
-	if (isInQuadTree() && newZone != zone) {
+	if (isInQuadTree() && newZone != getZone()) {
 		error("trying to insert to zone an object that is already in a different quadtree");
 
 		removeFromZone();
@@ -30,9 +30,9 @@ void ActiveAreaImplementation::insertToZone(Zone* newZone) {
 		//StackTrace::printStackTrace();
 	}
 
-	SceneObjectImplementation::zone = newZone;
+	setZone(newZone);
 
-	QuadTree* regionTree = zone->getRegionTree();
+	QuadTree* regionTree = getZone()->getRegionTree();
 
 	regionTree->insert(_this);
 
@@ -41,7 +41,7 @@ void ActiveAreaImplementation::insertToZone(Zone* newZone) {
 	// lets update area to the in range players
 	SortedVector<ManagedReference<SceneObject*> > objects;
 
-	zone->getInRangeObjects(positionX, positionY, 512, &objects);
+	getZone()->getInRangeObjects(positionX, positionY, 512, &objects);
 
 	for (int i = 0; i < objects.size(); ++i) {
 		SceneObject* object = objects.get(i);
@@ -54,18 +54,18 @@ void ActiveAreaImplementation::insertToZone(Zone* newZone) {
 		}
 	}
 
-	zone->addSceneObject(_this);
+	getZone()->addSceneObject(_this);
 }
 
 void ActiveAreaImplementation::removeFromZone() {
-	if (zone == NULL)
+	if (getZone() == NULL)
 		return;
 
 	ManagedReference<SceneObject*> thisLocker = _this;
 
-	Locker zoneLocker(zone);
+	Locker zoneLocker(getZone());
 
-	QuadTree* regionTree = zone->getRegionTree();
+	QuadTree* regionTree = getZone()->getRegionTree();
 
 	regionTree->remove(_this);
 
@@ -81,7 +81,7 @@ void ActiveAreaImplementation::removeFromZone() {
 	// lets remove the in range active areas of players
 	SortedVector<ManagedReference<SceneObject*> > objects;
 
-	zone->getInRangeObjects(positionX, positionY, 512, &objects);
+	getZone()->getInRangeObjects(positionX, positionY, 512, &objects);
 
 	for (int i = 0; i < objects.size(); ++i) {
 		SceneObject* object = objects.get(i);
@@ -92,8 +92,8 @@ void ActiveAreaImplementation::removeFromZone() {
 		}
 	}
 
-	Zone* oldZone = zone;
-	zone = NULL;
+	Zone* oldZone = getZone();
+	setZone(NULL);
 
 	oldZone->dropSceneObject(_this);
 }

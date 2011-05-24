@@ -45,6 +45,10 @@ void SharedObjectTemplate::readObject(LuaObject* templateData) {
 	portalLayoutFilename = templateData->getStringField("portalLayoutFilename");
 	portalLayout = NULL;
 
+	zoneComponent = templateData->getStringField("zoneComponent");
+	objectMenuComponent = templateData->getStringField("objectMenuComponent");
+	containerComponent = templateData->getStringField("containerComponent");
+
 	totalCellNumber = templateData->getIntField("totalCellNumber");
 
 	clientDataFile = templateData->getStringField("clientDataFile");

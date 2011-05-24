@@ -44,6 +44,9 @@
 object_creature_player_human_male = object_creature_player_shared_human_male:new {
 	baseHAM = { 100, 100, 100, 100, 100, 100, 100, 100, 100 },
 	gameObjectType = 1033,
+	zoneComponent = "PlayerZoneComponent",
+	objectMenuComponent = "PlayerObjectMenuComponent",
+	containerComponent = "PlayerContainerComponent",
 	templateType = PLAYERCREATURE
 }
 

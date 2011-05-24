@@ -80,6 +80,7 @@ SharedTangibleObjectTemplate = SharedObjectTemplate:new {
 	
 	optionsBitmask = 256, --Default all objects to not display ham bars.
 	pvpStatusBitmask = 0,
+	objectMenuComponent = "TangibleObjectMenuComponent",
 
 	certificationsRequired = { },
 	customizationVariableMapping = { },

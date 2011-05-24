@@ -116,8 +116,8 @@ void PlayerCreatureImplementation::notifyLoadFromDatabase() {
 	chatRooms.removeAll();
 	setMood(getMoodID());
 
-	if (zone != NULL && !isInQuadTree())
-		zone = NULL;
+	if (getZone() != NULL && !isInQuadTree())
+		setZone(NULL);
 
 	if (owner == NULL)
 		setLinkDead();
@@ -167,7 +167,8 @@ void PlayerCreatureImplementation::sendToOwner(bool doClose) {
 
 		grandParent->sendTo(_this, true);
 
-		notifiedSentObjects.put(grandParent);
+		addNotifiedSentObject(grandParent);
+		//notifiedSentObjects.put(grandParent);
 
 		//info("parent not null", true);
 
@@ -186,76 +187,6 @@ void PlayerCreatureImplementation::sendToOwner(bool doClose) {
 	owner->resetPacketCheckupTime();
 }
 
-void PlayerCreatureImplementation::teleport(float newPositionX, float newPositionZ, float newPositionY, uint64 parentID) {
-	teleporting = true;
-
-	CreatureObjectImplementation::teleport(newPositionX, newPositionZ, newPositionY, parentID);
-
-	lastValidatedPosition.update(_this);
-	serverLastMovementStamp.updateToCurrentTime();
-	movementCounter = 0;
-	clientLastMovementStamp = 0;
-}
-
-void PlayerCreatureImplementation::notifyInsert(QuadTreeEntry* entry) {
-	SceneObject* scno = (SceneObject*) entry;
-
-	if (scno == NULL || scno == _this)
-		return;
-
-	if (scno->isPlayerCreature()) {
-		PlayerCreature* player = (PlayerCreature*) scno;
-
-		if (player->isInvisible())
-			return;
-
-	}
-
-	//TODO: fix cell movement for this to not happen
-	/*SceneObject* grandParent = getRootParent();
-
-	if (parent != NULL) {
-		if (grandParent == scno) { // we already should have sent our grandParent to owner
-
-			if (grandParent->isBuildingObject())
-				((BuildingObject*)grandParent)->addNotifiedSentObject(_this);
-
-			return;
-		}
-	}
-
-	if (scno->getParent() != NULL) {
-		//check the parent if its building
-		//check if the building has me as notified
-		//if it has me than send the object without the buio
-		//if it hasnt me than dont send me and wait for the building to be sent
-		//TODO: check if we need this for every object or only for buildings
-		SceneObject* scnoGrandParent = scno->getRootParent();
-
-		if (scnoGrandParent->isBuildingObject()) {
-			BuildingObject* building = (BuildingObject*)scnoGrandParent;
-
-			if (!building->hasNotifiedSentObject(_this))
-				return;
-		} else // we wait for the Objects parent to get sent
-			return;
-	}
-
-	if (scno->isBuildingObject())
-		((BuildingObject*)scno)->addNotifiedSentObject(_this);*/
-
-	SceneObject* rootParent = scno->getRootParent();
-
-	if (rootParent != NULL && rootParent->isInQuadTree()) {
-		if (notifiedSentObjects.contains(rootParent) && notifiedSentObjects.put(scno) != -1)
-			scno->sendTo(_this, true);
-		else {
-			if (notifiedSentObjects.put(rootParent) != -1)
-				rootParent->sendTo(_this, true);
-		}
-	} else if (notifiedSentObjects.put(scno) != -1)
-		scno->sendTo(_this, true);
-}
 
 bool PlayerCreatureImplementation::isAttackableBy(CreatureObject* object) {
 	if (object == _this)
@@ -275,16 +206,7 @@ bool PlayerCreatureImplementation::isAttackableBy(CreatureObject* object) {
 	return false;
 }
 
-void PlayerCreatureImplementation::notifyDissapear(QuadTreeEntry* entry) {
-	SceneObject* scno =(SceneObject*) entry;
 
-	if (scno == NULL || scno == _this)
-		return;
-
-	scno->sendDestroyTo(_this);
-
-	notifiedSentObjects.drop(scno);
-}
 
 void PlayerCreatureImplementation::logout(bool doLock) {
 	Locker _locker(_this);
@@ -394,24 +316,6 @@ void PlayerCreatureImplementation::updateToDatabase() {
 	CreatureObjectImplementation::updateToDatabase();
 }
 
-/**
-	 * Updates position of this object to the rest of in range objects
-	 * @pre { this object is locked}
-	 * @post { this object is locked, in range objects are updated with the new position }
-	 * @param lightUpdate if true a standalone message is sent to the in range objects
-	 */
-void PlayerCreatureImplementation::updateZone(bool lightUpdate, bool sendPackets) {
-	CreatureObjectImplementation::updateZone(lightUpdate, sendPackets);
-
-	savedParentID = 0;
-}
-
-void PlayerCreatureImplementation::updateZoneWithParent(SceneObject* newParent, bool lightUpdate, bool sendPackets) {
-	CreatureObjectImplementation::updateZoneWithParent(newParent, lightUpdate, sendPackets);
-
-	if (parent != NULL)
-		savedParentID = parent->getObjectID();
-}
 
 void PlayerCreatureImplementation::unload() {
 	info("unloading player");
@@ -431,8 +335,8 @@ void PlayerCreatureImplementation::unload() {
 
 	unloadSpawnedChildren();
 
-	if (zone != NULL) {
-		savedTerrainName = zone->getZoneName();
+	if (getZone() != NULL) {
+		savedTerrainName = getZone()->getZoneName();
 
 		if (isInQuadTree()) {
 			if (parent != NULL) {
@@ -512,7 +416,7 @@ void PlayerCreatureImplementation::reload(ZoneClientSession* client) {
 		clearState(CreatureState::RIDINGMOUNT);
 	}
 
-	insertToZone(zone);
+	insertToZone(getZone());
 }
 
 void PlayerCreatureImplementation::disconnect(bool closeClient, bool doLock) {
@@ -622,80 +526,6 @@ void PlayerCreatureImplementation::sendMessage(BasePacket* msg) {
 	}
 }
 
-void PlayerCreatureImplementation::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, PlayerCreature* player) {
-
-	if (group != NULL) {
-		if (group->hasMember(player))
-			menuResponse->addRadialMenuItem(51, 3, "@sui:teach");
-	}
-
-	if (isPlayingMusic()) {
-		if (!player->isListening())
-			menuResponse->addRadialMenuItem(113, 3, "@radial_performance:listen");
-		else
-			menuResponse->addRadialMenuItem(115, 3, "@radial_performance:listen_stop");
-	}
-
-	if (isDancing()) {
-		if (!player->isWatching())
-			menuResponse->addRadialMenuItem(114, 3, "@radial_performance:watch");
-		else
-			menuResponse->addRadialMenuItem(116, 3, "@radial_performance:watch_stop");
-	}
-
-}
-
-int PlayerCreatureImplementation::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
-
-	switch(selectedID) {
-	case 113:
-		player->executeObjectControllerAction(String("listen").hashCode(), getObjectID(), "");
-		break;
-	case 115:
-		player->executeObjectControllerAction(String("stoplistening").hashCode(), getObjectID(), "");
-		break;
-
-	case 114:
-		player->executeObjectControllerAction(String("watch").hashCode(), getObjectID(), "");
-		break;
-
-	case 116:
-		player->executeObjectControllerAction(String("stopwatching").hashCode(), getObjectID(), "");
-		break;
-
-	case 51:
-
-			if(isTeachingOrLearning() || player->isTeachingOrLearning()) {
-				player->sendSystemMessage("teaching", "teaching_failed");
-				return 1;
-			}
-
-			player->setTeachingOrLearning(true);
-
-			ManagedReference<TeachPlayerListBox*> teachPlayerListBox = new TeachPlayerListBox(player);
-			teachPlayerListBox->setCancelButton(true, "");
-
-			bool completed = teachPlayerListBox->generateSkillList(player, _this);
-
-			if(!completed)
-				player->setTeachingOrLearning(false);
-
-		break;
-	}
-
-	return 0;
-}
-
-void PlayerCreatureImplementation::insertToBuilding(BuildingObject * building) {
-	SceneObjectImplementation::insertToBuilding(building);
-	building->onEnter(_this);
-}
-
-void PlayerCreatureImplementation::removeFromBuilding(BuildingObject * building) {
-	SceneObjectImplementation::removeFromBuilding(building);
-	building->onExit(_this);
-}
-
 uint32 PlayerCreatureImplementation::getNewSuiBoxID(uint32 type) {
 	return (++suiBoxNextID << 16) + (uint16)type;
 }
@@ -787,20 +617,6 @@ int PlayerCreatureImplementation::notifyObjectDestructionObservers(TangibleObjec
 	return CreatureObjectImplementation::notifyObjectDestructionObservers(attacker, condition);
 }
 
-int PlayerCreatureImplementation::canAddObject(SceneObject* object, int containmentType, String& errorDescription) {
-	if (object->isArmorObject() && containmentType == 4) {
-		PlayerManager* playerManager = getZoneServer()->getPlayerManager();
-
-		if (!playerManager->checkEncumbrancies(_this, (ArmorObject*)object)) {
-			errorDescription = "You lack the necessary secondary stats to equip this item";
-
-			return TransferErrorCode::NOTENOUGHENCUMBRANCE;
-		}
-	}
-
-	return CreatureObjectImplementation::canAddObject(object, containmentType, errorDescription);
-}
-
 /**
  * Is called when this object has been inserted with an object
  * @param object object that has been inserted
@@ -880,16 +696,16 @@ WaypointObject* PlayerCreatureImplementation::getSurveyWaypoint() {
 void PlayerCreatureImplementation::notifySelfPositionUpdate() {
 	CreatureObjectImplementation::notifySelfPositionUpdate();
 
-	if (zone == NULL)
+	if (getZone() == NULL)
 		return;
 
 	/*if (activeAreas.size() != 0) {
 		info(String::valueOf(activeAreas.size()) + " areas", true);
 	}*/
 
-	if (activeAreas.size() == 0 && inRangeObjectCount() < 20) {
+	if (getActiveAreas()->size() == 0 && inRangeObjectCount() < 20) {
 		if ((parent != NULL && !parent->isCellObject()) || parent == NULL) {
-			zone->getCreatureManager()->spawnRandomCreaturesAround(_this);
+			getZone()->getCreatureManager()->spawnRandomCreaturesAround(_this);
 		}
 	}
 }

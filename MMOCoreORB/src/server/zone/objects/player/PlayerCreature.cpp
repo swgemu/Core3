@@ -48,7 +48,7 @@
  *	PlayerCreatureStub
  */
 
-enum {RPC_FINALIZE__ = 6,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_NOTIFYLOADFROMDATABASE__,RPC_DISCONNECT__BOOL_BOOL_,RPC_UNLOAD__,RPC_RELOAD__ZONECLIENTSESSION_,RPC_LOGOUT__BOOL_,RPC_ACTIVATERECOVERY__,RPC_DORECOVERY__,RPC_TELEPORT__FLOAT_FLOAT_FLOAT_LONG_,RPC_UPDATEZONE__BOOL_BOOL_,RPC_UPDATEZONEWITHPARENT__SCENEOBJECT_BOOL_BOOL_,RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_,RPC_INSERTTOBUILDING__BUILDINGOBJECT_,RPC_REMOVEFROMBUILDING__BUILDINGOBJECT_,RPC_UPDATETODATABASE__,RPC_SENDMESSAGE__BASEPACKET_,RPC_SENDTOOWNER__BOOL_,RPC_SENDBADGESRESPONSETO__PLAYERCREATURE_,RPC_UNLOADSPAWNEDCHILDREN__,RPC_ISAGGRESSIVETO__PLAYERCREATURE_,RPC_SENDEXECUTECONSOLECOMMAND__STRING_,RPC_ISATTACKABLEBY__CREATUREOBJECT_,RPC_CANADDOBJECT__SCENEOBJECT_INT_STRING_,RPC_NOTIFYOBJECTINSERTED__SCENEOBJECT_,RPC_NOTIFYOBJECTREMOVED__SCENEOBJECT_,RPC_NOTIFYOBJECTDESTRUCTIONOBSERVERS__TANGIBLEOBJECT_INT_,RPC_SETCOMBATSTATE__,RPC_SETBADGE__INT_,RPC_AWARDBADGE__INT_,RPC_GETNUMBADGES__,RPC_GETBADGETYPECOUNT__BYTE_,RPC_ISFIRSTINCAPACITATIONEXPIRED__,RPC_RESETINCAPACITATIONCOUNTER__,RPC_RESETFIRSTINCAPACITATIONTIME__,RPC_UPDATEINCAPACITATIONCOUNTER__,RPC_ISFIRSTINCAPACITATION__,RPC_GETINCAPACITATIONCOUNTER__,RPC_SETLASTNPCCONVSTR__STRING_,RPC_SETLASTNPCCONVMESSSTR__STRING_,RPC_GETLASTNPCCONVSTR__,RPC_GETLASTNPCCONVMESSSTR__,RPC_GETLASTNPCCONVOPTION__INT_,RPC_ADDLASTNPCCONVOPTIONS__STRING_,RPC_COUNTLASTNPCCONVOPTIONS__,RPC_CLEARLASTNPCCONVOPTIONS__,RPC_SETSPAWNEDBLUEFROG__,RPC_HASSPAWNEDBLUEFROG__,RPC_ADDTOCONSENTLIST__STRING_,RPC_HASINCONSENTLIST__STRING_,RPC_REMOVEFROMCONSENTLIST__STRING_,RPC_GETCONSENTNAME__INT_,RPC_GETCONSENTLISTSIZE__,RPC_ADDTODUELLIST__PLAYERCREATURE_,RPC_REMOVEFROMDUELLIST__PLAYERCREATURE_,RPC_GETDUELLISTOBJECT__INT_,RPC_REQUESTEDDUELTO__PLAYERCREATURE_,RPC_ISDUELLISTEMPTY__,RPC_GETDUELLISTSIZE__,RPC_NOTIFYSCENEREADY__,RPC_NOTIFYSELFPOSITIONUPDATE__,RPC_ADDPERSISTENTMESSAGE__LONG_,RPC_DROPPERSISTENTMESSAGE__LONG_,RPC_GETPLAYEROBJECT__,RPC_ISONLINE__,RPC_ISOFFLINE__,RPC_ISLOADING__,RPC_ISLINKDEAD__,RPC_ISLOGGINGIN__,RPC_ISLOGGINGOUT__,RPC_GETACCOUNTID__,RPC_ISTELEPORTING__,RPC_GETCLIENT__,RPC_GETRACEID__,RPC_GETSAVEDPARENTID__,RPC_GETSERVERMOVEMENTTIMEDELTA__,RPC_GETSAVEDTERRAINNAME__,RPC_GETFIRSTNAME__,RPC_GETLASTNAME__,RPC_SETSAVEDPARENTID__LONG_,RPC_SETSAVEDTERRAINNAME__STRING_,RPC_SETSKILLPOINTS__INT_,RPC_SETTELEPORTING__BOOL_,RPC_ADDSKILLPOINTS__INT_,RPC_SETCLIENT__ZONECLIENTSESSION_,RPC_SETBIOGRAPHY__UNICODESTRING_,RPC_SETRACEID__BYTE_,RPC_SETCONVERSATINGCREATURE__CREATUREOBJECT_,RPC_SETCLIENTLASTMOVEMENTSTAMP__INT_,RPC_UPDATESERVERLASTMOVEMENTSTAMP__,RPC_SETOFFLINE__,RPC_SETLINKDEAD__,RPC_SETONLINE__,RPC_SETLOGGINGOUT__,RPC_SETACCOUNTID__INT_,RPC_CLEARDISCONNECTEVENT__,RPC_CLEARRECOVERYEVENT__,RPC_ADDCHATROOM__CHATROOM_,RPC_REMOVECHATROOM__CHATROOM_,RPC_GETSKILLPOINTS__,RPC_GETNEWSUIBOXID__INT_,RPC_HASSUIBOX__INT_,RPC_GETSUIBOX__INT_,RPC_REMOVESUIBOX__INT_BOOL_,RPC_REMOVESUIBOXTYPE__INT_,RPC_HASSUIBOXWINDOWTYPE__INT_,RPC_CLOSESUIWINDOWTYPE__INT_,RPC_GETSUIBOXFROMWINDOWTYPE__INT_,RPC_ADDSUIBOX__SUIBOX_,RPC_GETLOTSREMAINING__,RPC_SETLOTSREMAINING__INT_,RPC_GETFACTIONSTATUS__,RPC_GETBIOGRAPHY__,RPC_GETCLIENTLASTMOVEMENTSTAMP__,RPC_SETSURVEYTOOL__SURVEYTOOL_,RPC_GETSURVEYTOOL__,RPC_SETTEACHINGORLEARNING__BOOL_,RPC_GETSURVEYWAYPOINT__,RPC_GETCONVERSATINGCREATURE__,RPC_GETCENTEREDBONUS__,RPC_SETCENTEREDBONUS__INT_,RPC_HASBADGE__INT_,RPC_GETLASTCRAFTINGTOOLUSED__,RPC_SETLASTCRAFTINGTOOLUSED__CRAFTINGTOOL_,RPC_ISINVISIBLE__,RPC_SETINVISIBLE__BOOL_,RPC_GETDECLAREDRESIDENCE__,RPC_SETDECLAREDRESIDENCE__BUILDINGOBJECT_,RPC_SETCLONINGFACILITY__BUILDINGOBJECT_,RPC_GETCLONINGFACILITY__,RPC_SETHOLOGRINDMASK__INT_,RPC_GETHOLOGRINDMASK__};
+enum {RPC_FINALIZE__ = 6,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_NOTIFYLOADFROMDATABASE__,RPC_DISCONNECT__BOOL_BOOL_,RPC_UNLOAD__,RPC_RELOAD__ZONECLIENTSESSION_,RPC_LOGOUT__BOOL_,RPC_ACTIVATERECOVERY__,RPC_DORECOVERY__,RPC_UPDATETODATABASE__,RPC_SENDMESSAGE__BASEPACKET_,RPC_SENDTOOWNER__BOOL_,RPC_SENDBADGESRESPONSETO__PLAYERCREATURE_,RPC_UNLOADSPAWNEDCHILDREN__,RPC_ISAGGRESSIVETO__PLAYERCREATURE_,RPC_SENDEXECUTECONSOLECOMMAND__STRING_,RPC_ISATTACKABLEBY__CREATUREOBJECT_,RPC_NOTIFYOBJECTINSERTED__SCENEOBJECT_,RPC_NOTIFYOBJECTREMOVED__SCENEOBJECT_,RPC_NOTIFYOBJECTDESTRUCTIONOBSERVERS__TANGIBLEOBJECT_INT_,RPC_SETCOMBATSTATE__,RPC_SETBADGE__INT_,RPC_AWARDBADGE__INT_,RPC_GETNUMBADGES__,RPC_GETBADGETYPECOUNT__BYTE_,RPC_ISFIRSTINCAPACITATIONEXPIRED__,RPC_RESETINCAPACITATIONCOUNTER__,RPC_RESETFIRSTINCAPACITATIONTIME__,RPC_UPDATEINCAPACITATIONCOUNTER__,RPC_ISFIRSTINCAPACITATION__,RPC_GETINCAPACITATIONCOUNTER__,RPC_SETLASTNPCCONVSTR__STRING_,RPC_SETLASTNPCCONVMESSSTR__STRING_,RPC_GETLASTNPCCONVSTR__,RPC_UPDATELASTVALIDATEDPOSITION__,RPC_GETLASTNPCCONVMESSSTR__,RPC_GETLASTNPCCONVOPTION__INT_,RPC_ADDLASTNPCCONVOPTIONS__STRING_,RPC_COUNTLASTNPCCONVOPTIONS__,RPC_CLEARLASTNPCCONVOPTIONS__,RPC_SETSPAWNEDBLUEFROG__,RPC_HASSPAWNEDBLUEFROG__,RPC_ADDTOCONSENTLIST__STRING_,RPC_HASINCONSENTLIST__STRING_,RPC_REMOVEFROMCONSENTLIST__STRING_,RPC_GETCONSENTNAME__INT_,RPC_GETCONSENTLISTSIZE__,RPC_ADDTODUELLIST__PLAYERCREATURE_,RPC_REMOVEFROMDUELLIST__PLAYERCREATURE_,RPC_GETDUELLISTOBJECT__INT_,RPC_REQUESTEDDUELTO__PLAYERCREATURE_,RPC_ISDUELLISTEMPTY__,RPC_GETDUELLISTSIZE__,RPC_NOTIFYSCENEREADY__,RPC_NOTIFYSELFPOSITIONUPDATE__,RPC_ADDPERSISTENTMESSAGE__LONG_,RPC_DROPPERSISTENTMESSAGE__LONG_,RPC_GETPLAYEROBJECT__,RPC_ISONLINE__,RPC_ISOFFLINE__,RPC_ISLOADING__,RPC_ISLINKDEAD__,RPC_ISLOGGINGIN__,RPC_ISLOGGINGOUT__,RPC_GETACCOUNTID__,RPC_ISTELEPORTING__,RPC_GETCLIENT__,RPC_GETRACEID__,RPC_GETSAVEDPARENTID__,RPC_GETSERVERMOVEMENTTIMEDELTA__,RPC_GETSAVEDTERRAINNAME__,RPC_GETFIRSTNAME__,RPC_GETLASTNAME__,RPC_SETSAVEDPARENTID__LONG_,RPC_SETSAVEDTERRAINNAME__STRING_,RPC_SETSKILLPOINTS__INT_,RPC_SETTELEPORTING__BOOL_,RPC_ADDSKILLPOINTS__INT_,RPC_SETCLIENT__ZONECLIENTSESSION_,RPC_SETBIOGRAPHY__UNICODESTRING_,RPC_SETRACEID__BYTE_,RPC_SETCONVERSATINGCREATURE__CREATUREOBJECT_,RPC_SETCLIENTLASTMOVEMENTSTAMP__INT_,RPC_UPDATESERVERLASTMOVEMENTSTAMP__,RPC_SETOFFLINE__,RPC_SETLINKDEAD__,RPC_SETONLINE__,RPC_SETLOGGINGOUT__,RPC_SETACCOUNTID__INT_,RPC_CLEARDISCONNECTEVENT__,RPC_CLEARRECOVERYEVENT__,RPC_ADDCHATROOM__CHATROOM_,RPC_REMOVECHATROOM__CHATROOM_,RPC_GETSKILLPOINTS__,RPC_GETNEWSUIBOXID__INT_,RPC_HASSUIBOX__INT_,RPC_GETSUIBOX__INT_,RPC_REMOVESUIBOX__INT_BOOL_,RPC_REMOVESUIBOXTYPE__INT_,RPC_HASSUIBOXWINDOWTYPE__INT_,RPC_CLOSESUIWINDOWTYPE__INT_,RPC_GETSUIBOXFROMWINDOWTYPE__INT_,RPC_ADDSUIBOX__SUIBOX_,RPC_GETLOTSREMAINING__,RPC_SETLOTSREMAINING__INT_,RPC_GETFACTIONSTATUS__,RPC_GETBIOGRAPHY__,RPC_GETCLIENTLASTMOVEMENTSTAMP__,RPC_SETSURVEYTOOL__SURVEYTOOL_,RPC_GETSURVEYTOOL__,RPC_SETTEACHINGORLEARNING__BOOL_,RPC_GETSURVEYWAYPOINT__,RPC_GETCONVERSATINGCREATURE__,RPC_GETCENTEREDBONUS__,RPC_SETCENTEREDBONUS__INT_,RPC_HASBADGE__INT_,RPC_GETLASTCRAFTINGTOOLUSED__,RPC_SETLASTCRAFTINGTOOLUSED__CRAFTINGTOOL_,RPC_ISINVISIBLE__,RPC_SETINVISIBLE__BOOL_,RPC_GETDECLAREDRESIDENCE__,RPC_SETDECLAREDRESIDENCE__BUILDINGOBJECT_,RPC_SETCLONINGFACILITY__BUILDINGOBJECT_,RPC_GETCLONINGFACILITY__,RPC_SETHOLOGRINDMASK__INT_,RPC_GETHOLOGRINDMASK__};
 
 PlayerCreature::PlayerCreature() : CreatureObject(DummyConstructorParameter::instance()) {
 	PlayerCreatureImplementation* _implementation = new PlayerCreatureImplementation();
@@ -96,24 +96,6 @@ void PlayerCreature::notifyLoadFromDatabase() {
 		method.executeWithVoidReturn();
 	} else
 		_implementation->notifyLoadFromDatabase();
-}
-
-void PlayerCreature::notifyInsert(QuadTreeEntry* entry) {
-	PlayerCreatureImplementation* _implementation = (PlayerCreatureImplementation*) _getImplementation();
-	if (_implementation == NULL) {
-		throw ObjectNotLocalException(this);
-
-	} else
-		_implementation->notifyInsert(entry);
-}
-
-void PlayerCreature::notifyDissapear(QuadTreeEntry* entry) {
-	PlayerCreatureImplementation* _implementation = (PlayerCreatureImplementation*) _getImplementation();
-	if (_implementation == NULL) {
-		throw ObjectNotLocalException(this);
-
-	} else
-		_implementation->notifyDissapear(entry);
 }
 
 void PlayerCreature::disconnect(bool closeClient, bool doLock) {
@@ -196,106 +178,6 @@ void PlayerCreature::doRecovery() {
 		method.executeWithVoidReturn();
 	} else
 		_implementation->doRecovery();
-}
-
-void PlayerCreature::teleport(float newPositionX, float newPositionZ, float newPositionY, unsigned long long parentID) {
-	PlayerCreatureImplementation* _implementation = (PlayerCreatureImplementation*) _getImplementation();
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, RPC_TELEPORT__FLOAT_FLOAT_FLOAT_LONG_);
-		method.addFloatParameter(newPositionX);
-		method.addFloatParameter(newPositionZ);
-		method.addFloatParameter(newPositionY);
-		method.addUnsignedLongParameter(parentID);
-
-		method.executeWithVoidReturn();
-	} else
-		_implementation->teleport(newPositionX, newPositionZ, newPositionY, parentID);
-}
-
-void PlayerCreature::updateZone(bool lightUpdate, bool sendPackets) {
-	PlayerCreatureImplementation* _implementation = (PlayerCreatureImplementation*) _getImplementation();
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, RPC_UPDATEZONE__BOOL_BOOL_);
-		method.addBooleanParameter(lightUpdate);
-		method.addBooleanParameter(sendPackets);
-
-		method.executeWithVoidReturn();
-	} else
-		_implementation->updateZone(lightUpdate, sendPackets);
-}
-
-void PlayerCreature::updateZoneWithParent(SceneObject* newParent, bool lightUpdate, bool sendPackets) {
-	PlayerCreatureImplementation* _implementation = (PlayerCreatureImplementation*) _getImplementation();
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, RPC_UPDATEZONEWITHPARENT__SCENEOBJECT_BOOL_BOOL_);
-		method.addObjectParameter(newParent);
-		method.addBooleanParameter(lightUpdate);
-		method.addBooleanParameter(sendPackets);
-
-		method.executeWithVoidReturn();
-	} else
-		_implementation->updateZoneWithParent(newParent, lightUpdate, sendPackets);
-}
-
-void PlayerCreature::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, PlayerCreature* player) {
-	PlayerCreatureImplementation* _implementation = (PlayerCreatureImplementation*) _getImplementation();
-	if (_implementation == NULL) {
-		throw ObjectNotLocalException(this);
-
-	} else
-		_implementation->fillObjectMenuResponse(menuResponse, player);
-}
-
-int PlayerCreature::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
-	PlayerCreatureImplementation* _implementation = (PlayerCreatureImplementation*) _getImplementation();
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_);
-		method.addObjectParameter(player);
-		method.addByteParameter(selectedID);
-
-		return method.executeWithSignedIntReturn();
-	} else
-		return _implementation->handleObjectMenuSelect(player, selectedID);
-}
-
-void PlayerCreature::insertToBuilding(BuildingObject* building) {
-	PlayerCreatureImplementation* _implementation = (PlayerCreatureImplementation*) _getImplementation();
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, RPC_INSERTTOBUILDING__BUILDINGOBJECT_);
-		method.addObjectParameter(building);
-
-		method.executeWithVoidReturn();
-	} else
-		_implementation->insertToBuilding(building);
-}
-
-void PlayerCreature::removeFromBuilding(BuildingObject* building) {
-	PlayerCreatureImplementation* _implementation = (PlayerCreatureImplementation*) _getImplementation();
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, RPC_REMOVEFROMBUILDING__BUILDINGOBJECT_);
-		method.addObjectParameter(building);
-
-		method.executeWithVoidReturn();
-	} else
-		_implementation->removeFromBuilding(building);
 }
 
 void PlayerCreature::updateToDatabase() {
@@ -406,22 +288,6 @@ bool PlayerCreature::isAttackableBy(CreatureObject* object) {
 		return method.executeWithBooleanReturn();
 	} else
 		return _implementation->isAttackableBy(object);
-}
-
-int PlayerCreature::canAddObject(SceneObject* object, int containmentType, String& errorDescription) {
-	PlayerCreatureImplementation* _implementation = (PlayerCreatureImplementation*) _getImplementation();
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, RPC_CANADDOBJECT__SCENEOBJECT_INT_STRING_);
-		method.addObjectParameter(object);
-		method.addSignedIntParameter(containmentType);
-		method.addAsciiParameter(errorDescription);
-
-		return method.executeWithSignedIntReturn();
-	} else
-		return _implementation->canAddObject(object, containmentType, errorDescription);
 }
 
 int PlayerCreature::notifyObjectInserted(SceneObject* object) {
@@ -662,6 +528,19 @@ ValidatedPosition* PlayerCreature::getLastValidatedPosition() {
 
 	} else
 		return _implementation->getLastValidatedPosition();
+}
+
+void PlayerCreature::updateLastValidatedPosition() {
+	PlayerCreatureImplementation* _implementation = (PlayerCreatureImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_UPDATELASTVALIDATEDPOSITION__);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->updateLastValidatedPosition();
 }
 
 String PlayerCreature::getLastNpcConvMessStr() {
@@ -2684,6 +2563,13 @@ ValidatedPosition* PlayerCreatureImplementation::getLastValidatedPosition() {
 	return (&lastValidatedPosition);
 }
 
+void PlayerCreatureImplementation::updateLastValidatedPosition() {
+	// server/zone/objects/player/PlayerCreature.idl():  		lastValidatedPosition.update(this);
+	(&lastValidatedPosition)->update(_this);
+	// server/zone/objects/player/PlayerCreature.idl():  		serverLastMovementStamp.updateToCurrentTime();
+	(&serverLastMovementStamp)->updateToCurrentTime();
+}
+
 String PlayerCreatureImplementation::getLastNpcConvMessStr() {
 	// server/zone/objects/player/PlayerCreature.idl():  		return lastNpcConvoMessage;
 	return lastNpcConvoMessage;
@@ -3195,24 +3081,6 @@ Packet* PlayerCreatureAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 	case RPC_DORECOVERY__:
 		doRecovery();
 		break;
-	case RPC_TELEPORT__FLOAT_FLOAT_FLOAT_LONG_:
-		teleport(inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getUnsignedLongParameter());
-		break;
-	case RPC_UPDATEZONE__BOOL_BOOL_:
-		updateZone(inv->getBooleanParameter(), inv->getBooleanParameter());
-		break;
-	case RPC_UPDATEZONEWITHPARENT__SCENEOBJECT_BOOL_BOOL_:
-		updateZoneWithParent((SceneObject*) inv->getObjectParameter(), inv->getBooleanParameter(), inv->getBooleanParameter());
-		break;
-	case RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_:
-		resp->insertSignedInt(handleObjectMenuSelect((PlayerCreature*) inv->getObjectParameter(), inv->getByteParameter()));
-		break;
-	case RPC_INSERTTOBUILDING__BUILDINGOBJECT_:
-		insertToBuilding((BuildingObject*) inv->getObjectParameter());
-		break;
-	case RPC_REMOVEFROMBUILDING__BUILDINGOBJECT_:
-		removeFromBuilding((BuildingObject*) inv->getObjectParameter());
-		break;
 	case RPC_UPDATETODATABASE__:
 		updateToDatabase();
 		break;
@@ -3236,9 +3104,6 @@ Packet* PlayerCreatureAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 		break;
 	case RPC_ISATTACKABLEBY__CREATUREOBJECT_:
 		resp->insertBoolean(isAttackableBy((CreatureObject*) inv->getObjectParameter()));
-		break;
-	case RPC_CANADDOBJECT__SCENEOBJECT_INT_STRING_:
-		resp->insertSignedInt(canAddObject((SceneObject*) inv->getObjectParameter(), inv->getSignedIntParameter(), inv->getAsciiParameter(_param2_canAddObject__SceneObject_int_String_)));
 		break;
 	case RPC_NOTIFYOBJECTINSERTED__SCENEOBJECT_:
 		resp->insertSignedInt(notifyObjectInserted((SceneObject*) inv->getObjectParameter()));
@@ -3290,6 +3155,9 @@ Packet* PlayerCreatureAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 		break;
 	case RPC_GETLASTNPCCONVSTR__:
 		resp->insertAscii(getLastNpcConvStr());
+		break;
+	case RPC_UPDATELASTVALIDATEDPOSITION__:
+		updateLastValidatedPosition();
 		break;
 	case RPC_GETLASTNPCCONVMESSSTR__:
 		resp->insertAscii(getLastNpcConvMessStr());
@@ -3607,30 +3475,6 @@ void PlayerCreatureAdapter::doRecovery() {
 	((PlayerCreatureImplementation*) impl)->doRecovery();
 }
 
-void PlayerCreatureAdapter::teleport(float newPositionX, float newPositionZ, float newPositionY, unsigned long long parentID) {
-	((PlayerCreatureImplementation*) impl)->teleport(newPositionX, newPositionZ, newPositionY, parentID);
-}
-
-void PlayerCreatureAdapter::updateZone(bool lightUpdate, bool sendPackets) {
-	((PlayerCreatureImplementation*) impl)->updateZone(lightUpdate, sendPackets);
-}
-
-void PlayerCreatureAdapter::updateZoneWithParent(SceneObject* newParent, bool lightUpdate, bool sendPackets) {
-	((PlayerCreatureImplementation*) impl)->updateZoneWithParent(newParent, lightUpdate, sendPackets);
-}
-
-int PlayerCreatureAdapter::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
-	return ((PlayerCreatureImplementation*) impl)->handleObjectMenuSelect(player, selectedID);
-}
-
-void PlayerCreatureAdapter::insertToBuilding(BuildingObject* building) {
-	((PlayerCreatureImplementation*) impl)->insertToBuilding(building);
-}
-
-void PlayerCreatureAdapter::removeFromBuilding(BuildingObject* building) {
-	((PlayerCreatureImplementation*) impl)->removeFromBuilding(building);
-}
-
 void PlayerCreatureAdapter::updateToDatabase() {
 	((PlayerCreatureImplementation*) impl)->updateToDatabase();
 }
@@ -3661,10 +3505,6 @@ void PlayerCreatureAdapter::sendExecuteConsoleCommand(const String& command) {
 
 bool PlayerCreatureAdapter::isAttackableBy(CreatureObject* object) {
 	return ((PlayerCreatureImplementation*) impl)->isAttackableBy(object);
-}
-
-int PlayerCreatureAdapter::canAddObject(SceneObject* object, int containmentType, String& errorDescription) {
-	return ((PlayerCreatureImplementation*) impl)->canAddObject(object, containmentType, errorDescription);
 }
 
 int PlayerCreatureAdapter::notifyObjectInserted(SceneObject* object) {
@@ -3733,6 +3573,10 @@ void PlayerCreatureAdapter::setLastNpcConvMessStr(const String& mess) {
 
 String PlayerCreatureAdapter::getLastNpcConvStr() {
 	return ((PlayerCreatureImplementation*) impl)->getLastNpcConvStr();
+}
+
+void PlayerCreatureAdapter::updateLastValidatedPosition() {
+	((PlayerCreatureImplementation*) impl)->updateLastValidatedPosition();
 }
 
 String PlayerCreatureAdapter::getLastNpcConvMessStr() {

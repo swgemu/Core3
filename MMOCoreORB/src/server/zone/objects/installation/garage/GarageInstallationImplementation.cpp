@@ -22,7 +22,7 @@ void GarageInstallationImplementation::createChildObjects() {
 
 	activeArea->setRadius(64);
 	activeArea->initializePosition(positionX, positionZ, positionY);
-	activeArea->insertToZone(zone);
+	activeArea->insertToZone(getZone());
 
 	garageArea = activeArea;
 }

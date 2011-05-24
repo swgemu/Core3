@@ -24,7 +24,7 @@
  *	BuildingObjectStub
  */
 
-enum {RPC_CREATECELLOBJECTS__ = 6,RPC_DESTROYOBJECTFROMDATABASE__BOOL_,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_SENDCONTAINEROBJECTSTO__SCENEOBJECT_,RPC_UPDATECELLPERMISSIONSTO__SCENEOBJECT_,RPC_NOTIFYSTRUCTUREPLACED__PLAYERCREATURE_,RPC_REMOVEFROMZONE__,RPC_NOTIFYINSERTTOZONE__SCENEOBJECT_,RPC_SENDTO__SCENEOBJECT_BOOL_,RPC_SENDBASELINESTO__SCENEOBJECT_,RPC_SENDDESTROYTO__SCENEOBJECT_,RPC_ISSTATICBUILDING__,RPC_GETCELL__INT_,RPC_GETTOTALCELLNUMBER__,RPC_ADDOBJECT__SCENEOBJECT_INT_BOOL_,RPC_GETCURRENTNUMEROFPLAYERITEMS__,RPC_ONENTER__PLAYERCREATURE_,RPC_ONEXIT__PLAYERCREATURE_,RPC_ISBUILDINGOBJECT__,RPC_ISMEDICALBUILDINGOBJECT__,RPC_SETSIGNOBJECT__SIGNOBJECT_,RPC_GETSIGNOBJECT__,RPC_ISCITYHALLBUILDING__,RPC_SETACCESSFEE__INT_,RPC_GETACCESSFEE__,RPC_ISPUBLICSTRUCTURE__,RPC_SETPUBLICSTRUCTURE__BOOL_,RPC_GETMAXIMUMNUMBEROFPLAYERITEMS__};
+enum {RPC_CREATECELLOBJECTS__ = 6,RPC_DESTROYOBJECTFROMDATABASE__BOOL_,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_CREATECONTAINERCOMPONENT__,RPC_SENDCONTAINEROBJECTSTO__SCENEOBJECT_,RPC_UPDATECELLPERMISSIONSTO__SCENEOBJECT_,RPC_NOTIFYSTRUCTUREPLACED__PLAYERCREATURE_,RPC_REMOVEFROMZONE__,RPC_NOTIFYLOADFROMDATABASE__,RPC_NOTIFYINSERTTOZONE__SCENEOBJECT_,RPC_SENDTO__SCENEOBJECT_BOOL_,RPC_SENDBASELINESTO__SCENEOBJECT_,RPC_SENDDESTROYTO__SCENEOBJECT_,RPC_ISSTATICBUILDING__,RPC_GETCELL__INT_,RPC_GETTOTALCELLNUMBER__,RPC_ADDOBJECT__SCENEOBJECT_INT_BOOL_,RPC_GETCURRENTNUMEROFPLAYERITEMS__,RPC_ONENTER__PLAYERCREATURE_,RPC_ONEXIT__PLAYERCREATURE_,RPC_ISBUILDINGOBJECT__,RPC_ISMEDICALBUILDINGOBJECT__,RPC_SETSIGNOBJECT__SIGNOBJECT_,RPC_GETSIGNOBJECT__,RPC_ISCITYHALLBUILDING__,RPC_SETACCESSFEE__INT_,RPC_GETACCESSFEE__,RPC_ISPUBLICSTRUCTURE__,RPC_SETPUBLICSTRUCTURE__BOOL_,RPC_GETMAXIMUMNUMBEROFPLAYERITEMS__};
 
 BuildingObject::BuildingObject() : StructureObject(DummyConstructorParameter::instance()) {
 	BuildingObjectImplementation* _implementation = new BuildingObjectImplementation();
@@ -86,6 +86,19 @@ void BuildingObject::initializeTransientMembers() {
 		method.executeWithVoidReturn();
 	} else
 		_implementation->initializeTransientMembers();
+}
+
+void BuildingObject::createContainerComponent() {
+	BuildingObjectImplementation* _implementation = (BuildingObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_CREATECONTAINERCOMPONENT__);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->createContainerComponent();
 }
 
 void BuildingObject::sendContainerObjectsTo(SceneObject* player) {
@@ -150,6 +163,19 @@ void BuildingObject::removeFromZone() {
 		method.executeWithVoidReturn();
 	} else
 		_implementation->removeFromZone();
+}
+
+void BuildingObject::notifyLoadFromDatabase() {
+	BuildingObjectImplementation* _implementation = (BuildingObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_NOTIFYLOADFROMDATABASE__);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->notifyLoadFromDatabase();
 }
 
 void BuildingObject::notifyInsert(QuadTreeEntry* obj) {
@@ -702,10 +728,6 @@ BuildingObjectImplementation::BuildingObjectImplementation() {
 	QuadTree::setSize(-1024, -1024, 1024, 1024);
 	// server/zone/objects/building/BuildingObject.idl():  		super.staticObject = false;
 	StructureObjectImplementation::staticObject = false;
-	// server/zone/objects/building/BuildingObject.idl():  		super.containerVolumeLimit = 0xFFFFFFFF;
-	StructureObjectImplementation::containerVolumeLimit = 0xFFFFFFFF;
-	// server/zone/objects/building/BuildingObject.idl():  		super.containerType = 2;
-	StructureObjectImplementation::containerType = 2;
 	// server/zone/objects/building/BuildingObject.idl():  		totalCellNumber = 0;
 	totalCellNumber = 0;
 	// server/zone/objects/building/BuildingObject.idl():  		accessFee = 0;
@@ -804,6 +826,9 @@ Packet* BuildingObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 	case RPC_INITIALIZETRANSIENTMEMBERS__:
 		initializeTransientMembers();
 		break;
+	case RPC_CREATECONTAINERCOMPONENT__:
+		createContainerComponent();
+		break;
 	case RPC_SENDCONTAINEROBJECTSTO__SCENEOBJECT_:
 		sendContainerObjectsTo((SceneObject*) inv->getObjectParameter());
 		break;
@@ -815,6 +840,9 @@ Packet* BuildingObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 		break;
 	case RPC_REMOVEFROMZONE__:
 		removeFromZone();
+		break;
+	case RPC_NOTIFYLOADFROMDATABASE__:
+		notifyLoadFromDatabase();
 		break;
 	case RPC_NOTIFYINSERTTOZONE__SCENEOBJECT_:
 		notifyInsertToZone((SceneObject*) inv->getObjectParameter());
@@ -898,6 +926,10 @@ void BuildingObjectAdapter::initializeTransientMembers() {
 	((BuildingObjectImplementation*) impl)->initializeTransientMembers();
 }
 
+void BuildingObjectAdapter::createContainerComponent() {
+	((BuildingObjectImplementation*) impl)->createContainerComponent();
+}
+
 void BuildingObjectAdapter::sendContainerObjectsTo(SceneObject* player) {
 	((BuildingObjectImplementation*) impl)->sendContainerObjectsTo(player);
 }
@@ -912,6 +944,10 @@ int BuildingObjectAdapter::notifyStructurePlaced(PlayerCreature* player) {
 
 void BuildingObjectAdapter::removeFromZone() {
 	((BuildingObjectImplementation*) impl)->removeFromZone();
+}
+
+void BuildingObjectAdapter::notifyLoadFromDatabase() {
+	((BuildingObjectImplementation*) impl)->notifyLoadFromDatabase();
 }
 
 void BuildingObjectAdapter::notifyInsertToZone(SceneObject* object) {

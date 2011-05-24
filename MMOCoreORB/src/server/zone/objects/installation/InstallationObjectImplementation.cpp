@@ -128,10 +128,10 @@ int InstallationObjectImplementation::handleObjectMenuSelect(PlayerCreature* pla
 }
 
 void InstallationObjectImplementation::broadcastMessage(BasePacket* message, bool sendSelf) {
-	if (zone == NULL)
+	if (getZone() == NULL)
 		return;
 
-	Locker zoneLocker(zone);
+	Locker zoneLocker(getZone());
 
 	for (int i = 0; i < inRangeObjectCount(); ++i) {
 		SceneObject* scno = (SceneObject*) getInRangeObject(i);
@@ -406,7 +406,7 @@ void InstallationObjectImplementation::updateHopper(Time& workingTime, bool shut
 	float currentQuantity = container->getQuantity();
 
 	if (harvestAmount > 0) {
-		spawn->extractResource(zone->getZoneName(), (int) harvestAmount);
+		spawn->extractResource(getZone()->getZoneName(), (int) harvestAmount);
 
 		updateResourceContainerQuantity(container, (int) (currentQuantity + harvestAmount), true);
 		//container->setQuantity(currentQuantity + harvestAmount);
@@ -675,6 +675,6 @@ float InstallationObjectImplementation::getActualRate() {
 	ResourceContainer* container = resourceHopper.get(0);
 	ResourceSpawn* spawn = container->getSpawnObject();
 
-	return extractionRate * (spawn->getDensityAt(zone->getZoneName(), positionX, positionY));
+	return extractionRate * (spawn->getDensityAt(getZone()->getZoneName(), positionX, positionY));
 }
 

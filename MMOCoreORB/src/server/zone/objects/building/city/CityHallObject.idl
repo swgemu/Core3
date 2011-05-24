@@ -145,7 +145,7 @@ class CityHallObject extends BuildingObject {
 	public void notifyLoadFromDatabase() {
 		super.notifyLoadFromDatabase();
 
-		CityManager cityManager = super.zone.getCityManager();
+		CityManager cityManager = super.getZone().getCityManager();
 
 		cityManager.addCity(this);
 	}

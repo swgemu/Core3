@@ -101,44 +101,6 @@ void TangibleObjectImplementation::sendBaselinesTo(SceneObject* player) {
 		sendPvpStatusTo((PlayerCreature*) player);
 }
 
-void TangibleObjectImplementation::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, PlayerCreature* player) {
-	SceneObjectImplementation::fillObjectMenuResponse(menuResponse, player);
-
-	// Figure out what the object is and if its able to be Sliced.
-	if(!isSliceable())
-		return;
-	else { // Check to see if the player has the correct skill level
-		if ((gameObjectType == SceneObject::PLAYERLOOTCRATE || isContainerObject()) && !player->hasSkillBox("combat_smuggler_novice"))
-			return;
-		else if (isMissionTerminal() && !player->hasSkillBox("combat_smuggler_slicing_01"))
-			return;
-		else if (isWeaponObject() && !player->hasSkillBox("combat_smuggler_slicing_02"))
-			return;
-		else if (isArmorObject() && !player->hasSkillBox("combat_smuggler_slicing_03"))
-			return;
-
-		menuResponse->addRadialMenuItem(69, 3, "@slicing/slicing:slice"); // Slice
-
-	}
-}
-
-int TangibleObjectImplementation::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
-	if (selectedID == 69) { // Slice [PlayerLootCrate]
-		if (player->containsActiveSession(SessionFacadeType::SLICING)) {
-			player->sendSystemMessage("@slicing/slicing:already_slicing");
-			return 0;
-		}
-
-		//Create Session
-		ManagedReference<SlicingSession*> session = new SlicingSession(player);
-		session->initalizeSlicingMenu(player, _this);
-
-		return 0;
-	} else
-		return SceneObjectImplementation::handleObjectMenuSelect(player, selectedID);
-
-}
-
 void TangibleObjectImplementation::sendPvpStatusTo(PlayerCreature* player) {
 	uint32 newPvpStatusBitmask = pvpStatusBitmask;
 

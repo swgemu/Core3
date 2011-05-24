@@ -249,11 +249,11 @@ void CreatureObjectImplementation::sendBaselinesTo(SceneObject* player) {
 }
 
 void CreatureObjectImplementation::sendSlottedObjectsTo(SceneObject* player) {
-	SortedVector<SceneObject*> objects(slottedObjects.size(), slottedObjects.size());
+	SortedVector<SceneObject*> objects(getSlottedObjectsSize(), getSlottedObjectsSize());
 	objects.setNoDuplicateInsertPlan();
 
-	for (int i = 0; i < slottedObjects.size(); ++i) {
-		SceneObject* object = slottedObjects.get(i);
+	for (int i = 0; i < getSlottedObjectsSize(); ++i) {
+		SceneObject* object = getSlottedObject(i);
 
 		int arrangementSize = object->getArrangementDescriptorSize();
 
@@ -1270,27 +1270,6 @@ uint32 CreatureObjectImplementation::getWearableMask() {
 
 }
 
-int CreatureObjectImplementation::canAddObject(SceneObject* object, int containmentType, String& errorDescription) {
-	if (object->isTangibleObject() && containmentType == 4) {
-		TangibleObject* wearable = (TangibleObject*) object;
-
-		uint16 charMask = getWearableMask();
-		uint16 objMask = wearable->getPlayerUseMask();
-
-		uint16 maskRes = ~objMask & charMask;
-
-		if (maskRes != 0) {
-			/*StringBuffer maskResol;
-			maskResol << "returned maskRes :" << maskRes;
-			info(maskResol.toString(), true);*/
-			errorDescription = "You lack the necessary requirements to wear this object";
-			return TransferErrorCode::PLAYERUSEMASKERROR;
-		}
-	}
-
-	return TangibleObjectImplementation::canAddObject(object, containmentType, errorDescription);
-}
-
 int CreatureObjectImplementation::notifyObjectInserted(SceneObject* object) {
 	if (object->isWeaponObject())
 		setWeapon((WeaponObject*)object);
@@ -1583,8 +1562,8 @@ void CreatureObjectImplementation::notifyPostureChange(int newPosture) {
 }
 
 void CreatureObjectImplementation::notifySelfPositionUpdate() {
-	if (zone != NULL) {
-		ManagedReference<PlanetManager*> planetManager = zone->getPlanetManager();
+	if (getZone() != NULL) {
+		ManagedReference<PlanetManager*> planetManager = getZone()->getPlanetManager();
 
 		if (planetManager != NULL) {
 			TerrainManager* terrainManager = planetManager->getTerrainManager();

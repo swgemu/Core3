@@ -36,10 +36,10 @@ void VehicleObjectImplementation::insertToZone(Zone* zone) {
 }
 
 bool VehicleObjectImplementation::checkInRangeGarage() {
-	if (zone == NULL)
+	if (getZone() == NULL)
 		return false;
 
-	ManagedReference<StructureManager*> structureManager = zone->getPlanetManager()->getStructureManager();
+	ManagedReference<StructureManager*> structureManager = getZone()->getPlanetManager()->getStructureManager();
 
 	if (structureManager == NULL)
 		return false;

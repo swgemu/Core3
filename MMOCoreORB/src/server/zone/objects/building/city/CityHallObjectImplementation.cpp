@@ -32,25 +32,25 @@ void CityHallObjectImplementation::destroyObjectFromDatabase(bool destroyContain
 }
 
 void CityHallObjectImplementation::spawnCityHallObjects() {
-	ZoneServer* zoneServer = zone->getZoneServer();
+	ZoneServer* zoneServer = getZone()->getZoneServer();
 
 	//TODO: Deprecate this as well.
 
 	if (cityRegion == NULL)
 		return;
 
-	cityRegion->insertToZone(zone);
-	zone->getPlanetManager()->addRegion(cityRegion);
+	cityRegion->insertToZone(getZone());
+	getZone()->getPlanetManager()->addRegion(cityRegion);
 }
 
 void CityHallObjectImplementation::despawnCityHallObjects() {
-	if (zone == NULL)
+	if (getZone() == NULL)
 		return;
 
 	if (cityRegion != NULL) {
 		cityRegion->removeFromZone();
 
-		zone->getPlanetManager()->dropRegion(cityRegion);
+		getZone()->getPlanetManager()->dropRegion(cityRegion);
 	}
 }
 
@@ -185,10 +185,10 @@ void CityHallObjectImplementation::sendStructureReportTo(PlayerCreature* player)
 }
 
 void CityHallObjectImplementation::sendCityAdvancementTo(PlayerCreature* player) {
-	if (zone == NULL)
+	if (getZone() == NULL)
 		return;
 
-	ManagedReference<StructureManager*> structureManager = zone->getPlanetManager()->getStructureManager();
+	ManagedReference<StructureManager*> structureManager = getZone()->getPlanetManager()->getStructureManager();
 
 	if (structureManager == NULL)
 		return;

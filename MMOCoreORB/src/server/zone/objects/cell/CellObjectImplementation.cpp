@@ -13,6 +13,7 @@
 #include "server/zone/objects/player/PlayerCreature.h"
 #include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/Zone.h"
+#include "server/zone/objects/scene/components/ContainerComponent.h"
 
 void CellObjectImplementation::initializeTransientMembers() {
 	SceneObjectImplementation::initializeTransientMembers();
@@ -23,9 +24,9 @@ void CellObjectImplementation::initializeTransientMembers() {
 void CellObjectImplementation::loadTemplateData(SharedObjectTemplate* templateData) {
 	SceneObjectImplementation::loadTemplateData(templateData);
 
-	containerVolumeLimit = 0xFFFFFFFF;
+	//containerVolumeLimit = 0xFFFFFFFF;
 
-	containerType = 2;
+	//containerType = 2;
 }
 
 void CellObjectImplementation::notifyLoadFromDatabase() {
@@ -33,19 +34,25 @@ void CellObjectImplementation::notifyLoadFromDatabase() {
 
 	//temproary fix
 
-	Vector<ManagedReference<SceneObject*> > tempObjects;
+	//info("CellObjectImplementation::notifyLoadFromDatabase()", true);
 
-	for (int j = 0; j < containerObjects.size(); ++j) {
-		SceneObject* containerObject = containerObjects.get(j);
+	if (containerComponent != NULL) {
+		Vector<ManagedReference<SceneObject*> > tempObjects;
 
-		tempObjects.add(containerObject);
-	}
+		for (int j = 0; j < getContainerObjectsSize(); ++j) {
+			SceneObject* containerObject = getContainerObject(j);
 
-	containerObjects.removeAll();
+			tempObjects.add(containerObject);
+		}
 
-	for (int i = 0; i < tempObjects.size(); ++i) {
-		SceneObject* obj = tempObjects.get(i);
-		containerObjects.put(obj->getObjectID(), obj);
+		containerComponent->removeAllContainerObjects();
+		//containerObjects.removeAll();
+
+		for (int i = 0; i < tempObjects.size(); ++i) {
+			SceneObject* obj = tempObjects.get(i);
+
+			containerComponent->putInContainer(obj, obj->getObjectID());
+		}
 	}
 
 	SceneObjectImplementation::notifyLoadFromDatabase();
@@ -55,8 +62,8 @@ void CellObjectImplementation::sendContainerObjectsTo(SceneObject* player) {
 	//SceneObjectImplementation::sendContainerObjectsTo(player);
 	//info("sending cell containers", true);
 
-	for (int j = 0; j < containerObjects.size(); ++j) {
-		SceneObject* containerObject = containerObjects.get(j);
+	for (int j = 0; j < getContainerObjectsSize(); ++j) {
+		SceneObject* containerObject = getContainerObject(j);
 
 		/*if (containerObject->getParent() == NULL)
 			containerObject->setParent(_this);*/
@@ -147,8 +154,8 @@ bool CellObjectImplementation::removeObject(SceneObject* object, bool notifyClie
 int CellObjectImplementation::getCurrentNumerOfPlayerItems() {
 	int count = 0;
 
-	for (int j = 0; j < containerObjects.size(); ++j) {
-		ManagedReference<SceneObject*> containerObject = containerObjects.get(j);
+	for (int j = 0; j < getContainerObjectsSize(); ++j) {
+		ManagedReference<SceneObject*> containerObject = getContainerObject(j);
 
 		if (!containerObject->isCreatureObject() && !containerObject->isTerminal())
 			++count;

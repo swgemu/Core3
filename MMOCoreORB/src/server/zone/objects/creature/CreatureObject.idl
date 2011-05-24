@@ -950,8 +950,6 @@ class CreatureObject extends TangibleObject {
 		cooldownTimerMap.updateToCurrentAndAddMili(name, miliseconds);
 	}
 	
-	public native int canAddObject(SceneObject object, int containmentType, string errorDescription);
-	
 	public native void doAnimation(final string animation);
 	public native void doCombatAnimation(CreatureObject defender, unsigned int animationCRC, byte hit);
 	

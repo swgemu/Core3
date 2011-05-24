@@ -35,7 +35,7 @@ public:
 		colChunkSize = 0.f;
 	}
 
-	StructureFootprint(const StructureFootprint& sfp) : Object() {
+	StructureFootprint(const StructureFootprint& sfp) : Object(), TemplateData(), IffTemplate() {
 		rowSize = sfp.rowSize;
 		colSize = sfp.colSize;
 

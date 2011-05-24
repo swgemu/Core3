@@ -22,6 +22,8 @@
 #include "server/zone/packets/tangible/TangibleObjectMessage3.h"
 #include "server/zone/packets/tangible/TangibleObjectMessage6.h"
 #include "server/zone/packets/cell/UpdateCellPermissionsMessage.h"
+#include "server/zone/objects/scene/components/ContainerComponent.h"
+#include "server/zone/managers/object/ObjectManager.h"
 
 void BuildingObjectImplementation::initializeTransientMembers() {
 	StructureObjectImplementation::initializeTransientMembers();
@@ -36,13 +38,40 @@ void BuildingObjectImplementation::loadTemplateData(SharedObjectTemplate* templa
 
 	totalCellNumber = buildingData->getTotalCellNumber();
 
-	containerVolumeLimit = 0xFFFFFFFF;
-
-	containerType = 2;
 
 	optionsBitmask = 0x00000100;
 
 	publicStructure = buildingData->isPublicStructure();
+}
+
+void BuildingObjectImplementation::createContainerComponent() {
+	int containerVolumeLimit = 0xFFFFFFFF;
+
+	int containerType = 2;
+
+	/*int containerType = templateObject->getContainerType();
+	int containerVolumeLimit = templateObject->getContainerVolumeLimit();*/
+
+	containerComponent = dynamic_cast<ContainerComponent*>(ObjectManager::instance()->createObject("ContainerComponent", 1, "sceneobjectcomponents"));
+	containerComponent->initialize(_this);
+	containerComponent->setContainerVolumeLimit(containerVolumeLimit);
+	containerComponent->setContainerType(containerType);
+}
+
+void BuildingObjectImplementation::notifyLoadFromDatabase() {
+	SceneObjectImplementation::notifyLoadFromDatabase();
+
+	if (isInQuadTree()) {
+		for (int i = 0; i < cells.size(); ++i) {
+			CellObject* cell = cells.get(i);
+
+			for (int j = 0; j < cell->getContainerObjectsSize(); ++j) {
+				SceneObject* containerObject = cell->getContainerObject(j);
+
+				containerObject->insertToZone(getZone());
+			}
+		}
+	}
 }
 
 int BuildingObjectImplementation::getCurrentNumerOfPlayerItems() {
@@ -320,7 +349,7 @@ void BuildingObjectImplementation::updateCellPermissionsTo(SceneObject* player) 
 	//If they don't have permission to be inside, kick them out.
 	if (!allowEntry && player->getParentRecursively(SceneObject::BUILDING) == _this) {
 		Vector3 ejectionPoint = getEjectionPoint();
-		player->teleport(ejectionPoint.getX(), zone->getHeight(ejectionPoint.getX(), ejectionPoint.getY()), ejectionPoint.getY(), 0);
+		player->teleport(ejectionPoint.getX(), getZone()->getHeight(ejectionPoint.getX(), ejectionPoint.getY()), ejectionPoint.getY(), 0);
 	}
 
 	//Always allow privileged players to enter any structure.
@@ -339,7 +368,7 @@ void BuildingObjectImplementation::updateCellPermissionsTo(SceneObject* player) 
 }
 
 void BuildingObjectImplementation::onEnter(PlayerCreature* player) {
-	if (zone == NULL)
+	if (getZone() == NULL)
 		return;
 
 	if (isStaticObject())
@@ -352,7 +381,7 @@ void BuildingObjectImplementation::onEnter(PlayerCreature* player) {
 	if (isinf(x) || isnan(x) || isinf(y) || isnan(y))
 		return;
 
-	float z = zone->getHeight(x, y);
+	float z = getZone()->getHeight(x, y);
 
 	//Locker _locker(zone);
 

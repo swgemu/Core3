@@ -67,6 +67,14 @@ core3_IDLS =	server/zone/objects/region/CityRegion.cpp \
 				server/zone/objects/ship/ShipObject.cpp \
 				server/zone/objects/intangible/ShipControlDevice.cpp \
 				server/zone/objects/tangible/terminal/spaceship/SpaceshipTerminal.cpp \
+				server/zone/objects/player/components/PlayerContainerComponent.cpp \
+				server/zone/objects/scene/components/ContainerComponent.cpp \
+				server/zone/objects/player/components/PlayerObjectMenuComponent.cpp \
+				server/zone/objects/tangible/components/TangibleObjectMenuComponent.cpp \
+				server/zone/objects/scene/components/ObjectMenuComponent.cpp \
+				server/zone/objects/player/components/PlayerZoneComponent.cpp \
+				server/zone/objects/scene/components/ZoneComponent.cpp \
+				server/zone/objects/scene/components/SceneObjectComponent.cpp \
 				server/login/LoginServer.cpp \
 				server/login/account/Account.cpp \
 				server/zone/ZoneServer.cpp \
@@ -263,6 +271,13 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/ship/ShipObjectImplementation.cpp \
 		server/zone/objects/intangible/ShipControlDeviceImplementation.cpp \
 		server/zone/objects/tangible/terminal/spaceship/SpaceshipTerminalImplementation.cpp \
+		server/zone/objects/player/components/PlayerContainerComponentImplementation.cpp \
+		server/zone/objects/scene/components/ContainerComponentImplementation.cpp \
+		server/zone/objects/player/components/PlayerObjectMenuComponentImplementation.cpp \
+		server/zone/objects/tangible/components/TangibleObjectMenuComponentImplementation.cpp \
+		server/zone/objects/scene/components/ObjectMenuComponentImplementation.cpp \
+		server/zone/objects/player/components/PlayerZoneComponentImplementation.cpp \
+		server/zone/objects/scene/components/ZoneComponentImplementation.cpp \
 		server/zone/managers/skill/SkillManager.cpp \
 		server/zone/managers/player/creation/PlayerCreationManager.cpp \
 		tre3/TreeFile.cpp \

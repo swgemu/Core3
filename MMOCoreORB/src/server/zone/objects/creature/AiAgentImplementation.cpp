@@ -103,7 +103,7 @@ void AiAgentImplementation::initializeTransientMembers() {
 }
 
 void AiAgentImplementation::doRecovery() {
-	if (isDead() || zone == NULL)
+	if (isDead() || getZone() == NULL)
 		return;
 
 	activateHAMRegeneration();
@@ -395,7 +395,7 @@ void AiAgentImplementation::clearDespawnEvent() {
 }
 
 void AiAgentImplementation::respawn(Zone* zone, int level) {
-	if (this->zone != NULL)
+	if (getZone() != NULL)
 		return;
 
 	setLevel(level);
@@ -653,7 +653,7 @@ bool AiAgentImplementation::findNextPosition(float maxDistance, WorldCoordinates
 						}
 
 						if (nextPosition.getCell() == NULL) {
-							newPositionZ = zone->getHeight(newPositionX, newPositionY);
+							newPositionZ = getZone()->getHeight(newPositionX, newPositionY);
 							//newPositionZ = nextPosition.getZ();
 						} else {
 							newPositionZ = nextPosition.getZ();
@@ -687,7 +687,7 @@ bool AiAgentImplementation::findNextPosition(float maxDistance, WorldCoordinates
 
 void AiAgentImplementation::doMovement() {
 	//info("doMovement", true);
-	if (isDead() || zone == NULL)
+	if (isDead() || getZone() == NULL)
 		return;
 
 	if (currentSpeed != 0) {
@@ -830,8 +830,8 @@ void AiAgentImplementation::broadcastNextPositionUpdate(PatrolPoint* point) {
 }
 
 int AiAgentImplementation::notifyObjectDestructionObservers(TangibleObject* attacker, int condition) {
-	if (zone != NULL) {
-		CreatureManager* creatureManager = zone->getCreatureManager();
+	if (getZone() != NULL) {
+		CreatureManager* creatureManager = getZone()->getCreatureManager();
 
 		creatureManager->notifyDestruction(attacker, _this, condition);
 	}

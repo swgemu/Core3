@@ -348,10 +348,6 @@ public:
 
 	void notifyLoadFromDatabase();
 
-	void notifyInsert(QuadTreeEntry* entry);
-
-	void notifyDissapear(QuadTreeEntry* entry);
-
 	void disconnect(bool closeClient, bool doLock);
 
 	void unload();
@@ -363,20 +359,6 @@ public:
 	void activateRecovery();
 
 	void doRecovery();
-
-	void teleport(float newPositionX, float newPositionZ, float newPositionY, unsigned long long parentID = 0);
-
-	void updateZone(bool lightUpdate, bool sendPackets = true);
-
-	void updateZoneWithParent(SceneObject* newParent, bool lightUpdate, bool sendPackets = true);
-
-	void fillObjectMenuResponse(ObjectMenuResponse* menuResponse, PlayerCreature* player);
-
-	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
-
-	void insertToBuilding(BuildingObject* building);
-
-	void removeFromBuilding(BuildingObject* building);
 
 	void updateToDatabase();
 
@@ -393,8 +375,6 @@ public:
 	void sendExecuteConsoleCommand(const String& command);
 
 	bool isAttackableBy(CreatureObject* object);
-
-	int canAddObject(SceneObject* object, int containmentType, String& errorDescription);
 
 	int notifyObjectInserted(SceneObject* object);
 
@@ -431,6 +411,8 @@ public:
 	String getLastNpcConvStr();
 
 	ValidatedPosition* getLastValidatedPosition();
+
+	void updateLastValidatedPosition();
 
 	String getLastNpcConvMessStr();
 
@@ -771,10 +753,6 @@ public:
 
 	void notifyLoadFromDatabase();
 
-	void notifyInsert(QuadTreeEntry* entry);
-
-	void notifyDissapear(QuadTreeEntry* entry);
-
 	void disconnect(bool closeClient, bool doLock);
 
 	void unload();
@@ -786,20 +764,6 @@ public:
 	void activateRecovery();
 
 	void doRecovery();
-
-	void teleport(float newPositionX, float newPositionZ, float newPositionY, unsigned long long parentID = 0);
-
-	void updateZone(bool lightUpdate, bool sendPackets = true);
-
-	void updateZoneWithParent(SceneObject* newParent, bool lightUpdate, bool sendPackets = true);
-
-	void fillObjectMenuResponse(ObjectMenuResponse* menuResponse, PlayerCreature* player);
-
-	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
-
-	void insertToBuilding(BuildingObject* building);
-
-	void removeFromBuilding(BuildingObject* building);
 
 	void updateToDatabase();
 
@@ -816,8 +780,6 @@ public:
 	void sendExecuteConsoleCommand(const String& command);
 
 	bool isAttackableBy(CreatureObject* object);
-
-	int canAddObject(SceneObject* object, int containmentType, String& errorDescription);
 
 	int notifyObjectInserted(SceneObject* object);
 
@@ -854,6 +816,8 @@ public:
 	String getLastNpcConvStr();
 
 	ValidatedPosition* getLastValidatedPosition();
+
+	void updateLastValidatedPosition();
 
 	String getLastNpcConvMessStr();
 
@@ -1106,18 +1070,6 @@ public:
 
 	void doRecovery();
 
-	void teleport(float newPositionX, float newPositionZ, float newPositionY, unsigned long long parentID);
-
-	void updateZone(bool lightUpdate, bool sendPackets);
-
-	void updateZoneWithParent(SceneObject* newParent, bool lightUpdate, bool sendPackets);
-
-	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
-
-	void insertToBuilding(BuildingObject* building);
-
-	void removeFromBuilding(BuildingObject* building);
-
 	void updateToDatabase();
 
 	void sendMessage(BasePacket* msg);
@@ -1133,8 +1085,6 @@ public:
 	void sendExecuteConsoleCommand(const String& command);
 
 	bool isAttackableBy(CreatureObject* object);
-
-	int canAddObject(SceneObject* object, int containmentType, String& errorDescription);
 
 	int notifyObjectInserted(SceneObject* object);
 
@@ -1169,6 +1119,8 @@ public:
 	void setLastNpcConvMessStr(const String& mess);
 
 	String getLastNpcConvStr();
+
+	void updateLastValidatedPosition();
 
 	String getLastNpcConvMessStr();
 
@@ -1354,7 +1306,6 @@ public:
 
 protected:
 	String _param0_sendExecuteConsoleCommand__String_;
-	String _param2_canAddObject__SceneObject_int_String_;
 	String _param0_setLastNpcConvStr__String_;
 	String _param0_setLastNpcConvMessStr__String_;
 	String _param0_addLastNpcConvOptions__String_;

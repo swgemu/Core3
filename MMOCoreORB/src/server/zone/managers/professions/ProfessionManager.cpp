@@ -83,7 +83,7 @@ ProfessionManager::ProfessionManager()
 	certificationMap.setNullValue(NULL);
 
 	performanceManager = new PerformanceManager();
-	imageDesignManager = new ImageDesignManager();
+	imageDesignManager = ImageDesignManager::instance();
 
 	setGlobalLogging(true);
 	setLogging(false);
@@ -92,9 +92,6 @@ ProfessionManager::ProfessionManager()
 ProfessionManager::~ProfessionManager() {
 	delete performanceManager;
 	performanceManager = NULL;
-
-	delete imageDesignManager;
-	imageDesignManager = NULL;
 }
 /*
 void ProfessionManager::loadDefaultSkills(PlayerImplementation* player) {

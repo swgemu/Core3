@@ -38,7 +38,7 @@ void StaticSpawnAreaImplementation::spawnCreatures() {
 			break;
 		}
 
-		ManagedReference<AiGroup*> group = dynamic_cast<AiGroup*>(zone->getZoneServer()->createObject(crc, 0));
+		ManagedReference<AiGroup*> group = dynamic_cast<AiGroup*>(getZone()->getZoneServer()->createObject(crc, 0));
 		if (group == NULL)
 			continue;
 
@@ -48,7 +48,7 @@ void StaticSpawnAreaImplementation::spawnCreatures() {
 
 		group->setPosition(x, z, y);
 
-		group->insertToZone(zone);
+		group->insertToZone(getZone());
 
 		group->setup(templ);
 

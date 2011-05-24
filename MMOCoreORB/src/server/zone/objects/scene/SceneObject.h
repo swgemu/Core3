@@ -147,15 +147,89 @@ class ActiveArea;
 
 using namespace server::zone::objects::area;
 
+namespace server {
+namespace zone {
+namespace objects {
+namespace scene {
+namespace components {
+
+class ZoneComponent;
+
+} // namespace components
+} // namespace scene
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::scene::components;
+
+namespace server {
+namespace zone {
+namespace objects {
+namespace scene {
+namespace components {
+
+class ObjectMenuComponent;
+
+} // namespace components
+} // namespace scene
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::scene::components;
+
+namespace server {
+namespace zone {
+namespace objects {
+namespace scene {
+namespace components {
+
+class SceneObjectComponent;
+
+} // namespace components
+} // namespace scene
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::scene::components;
+
+namespace server {
+namespace zone {
+namespace objects {
+namespace scene {
+namespace components {
+
+class ContainerComponent;
+
+} // namespace components
+} // namespace scene
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::scene::components;
+
+namespace server {
+namespace zone {
+namespace objects {
+namespace region {
+
+class CityRegion;
+
+} // namespace region
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::region;
+
 #include "engine/core/ManagedObject.h"
 
-#include "server/zone/ZoneReference.h"
+#include "engine/util/Facade.h"
 
-#include "server/zone/objects/region/CityRegion.h"
-
-#include "server/zone/managers/templates/PlanetMapCategory.h"
-
-#include "server/zone/managers/templates/TemplateManager.h"
+#include "server/zone/objects/scene/ObserverEventType.h"
 
 #include "server/zone/objects/scene/variables/StringId.h"
 
@@ -165,9 +239,9 @@ using namespace server::zone::objects::area;
 
 #include "server/zone/objects/scene/SessionFacadeType.h"
 
-#include "engine/util/Facade.h"
+#include "server/zone/managers/templates/PlanetMapCategory.h"
 
-#include "server/zone/objects/scene/ObserverEventType.h"
+#include "server/zone/managers/templates/TemplateManager.h"
 
 #include "engine/log/Logger.h"
 
@@ -716,11 +790,11 @@ public:
 
 	static const int SHIPBOOSTER = 0x40000007;
 
-	static const int SHIPDROIDINTERFACE = 0x40000008;
+	static const int SHIPDRIODINTERFACE = 0x40000008;
 
 	static const int SHIPCHASSIS = 0x4000000C;
 
-	static const int SHIPMISSLE = 0x4000000D;
+	static const int SHIPMISSILE = 0x4000000D;
 
 	static const int SHIPCOUNTERMEASURE = 0x4000000E;
 
@@ -733,6 +807,10 @@ public:
 	void initializePrivateData();
 
 	void loadTemplateData(SharedObjectTemplate* templateData);
+
+	void createComponents();
+
+	void createContainerComponent();
 
 	void initializeTransientMembers();
 
@@ -812,6 +890,10 @@ public:
 
 	void teleport(float newPositionX, float newPositionZ, float newPositionY, unsigned long long parentID = 0);
 
+	void notifyInsert(QuadTreeEntry* entry);
+
+	void notifyDissapear(QuadTreeEntry* entry);
+
 	void removeFromZone();
 
 	void removeFromBuilding(BuildingObject* building);
@@ -850,6 +932,10 @@ public:
 
 	bool dropActiveSession(unsigned int type);
 
+	int getActiveSessionsCount();
+
+	VectorMap<unsigned int, ManagedReference<Facade* > >* getObjectActiveSessions();
+
 	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
 
 	void notifyAddedToCloseObjects();
@@ -868,7 +954,7 @@ public:
 
 	bool hasNotifiedSentObject(SceneObject* object);
 
-	void addNotifiedSentObject(SceneObject* object);
+	int addNotifiedSentObject(SceneObject* object);
 
 	void removeNotifiedSentObject(SceneObject* object);
 
@@ -922,11 +1008,15 @@ public:
 
 	int getContainerObjectsSize();
 
+	int getSlottedObjectsSize();
+
 	bool hasFullContainerObjects();
 
 	int getContainerVolumeLimit();
 
 	SceneObject* getContainerObject(int idx);
+
+	SceneObject* getSlottedObject(int idx);
 
 	ZoneClientSession* getClient();
 
@@ -941,6 +1031,8 @@ public:
 	float getDirectionAngle();
 
 	float getSpecialDirectionAngle();
+
+	unsigned int getContainerType();
 
 	void rotate(int degrees);
 
@@ -1074,10 +1166,6 @@ public:
 
 	void setClientObject(bool val);
 
-	void setPlanetMapCategory(PlanetMapCategory* pmc);
-
-	void setPlanetMapSubCategory(PlanetMapCategory* pmc);
-
 	VectorMap<unsigned long long, ManagedReference<SceneObject* > >* getContainerObjects();
 
 	bool hasObjectInContainer(unsigned long long objectID);
@@ -1106,25 +1194,31 @@ public:
 
 	Vector<ManagedReference<ActiveArea* > >* getActiveAreas();
 
-	CityRegion* getCityRegion();
-
-	void setCityRegion(CityRegion* region);
+	ActiveArea* getActiveRegion();
 
 	bool hasActiveArea(ActiveArea* area);
 
-	PlanetMapCategory* getPlanetMapCategory();
+	CityRegion* getCityRegion();
 
-	PlanetMapCategory* getPlanetMapSubCategory();
+	void setCityRegion(CityRegion* region);
 
 	int getPlanetMapCategoryCRC();
 
 	int getPlanetMapSubCategoryCRC();
 
+	void setPlanetMapCategory(PlanetMapCategory* pmc);
+
+	void setPlanetMapSubCategory(PlanetMapCategory* pmc);
+
+	PlanetMapCategory* getPlanetMapCategory();
+
+	PlanetMapCategory* getPlanetMapSubCategory();
+
+	SortedVector<ManagedReference<SceneObject* > >* getOutdoorChildObjects();
+
 	SharedObjectTemplate* getObjectTemplate();
 
 	void createChildObjects();
-
-	SortedVector<ManagedReference<SceneObject* > >* getOutdoorChildObjects();
 
 	DistributedObjectServant* _getImplementation();
 
@@ -1163,13 +1257,13 @@ class SceneObjectImplementation : public QuadTreeEntryImplementation, public Log
 protected:
 	ManagedReference<ZoneProcessServer* > server;
 
-	ZoneReference zone;
+	ManagedReference<ZoneComponent* > zoneComponent;
+
+	ManagedReference<ObjectMenuComponent* > objectMenuComponent;
+
+	ManagedReference<ContainerComponent* > containerComponent;
 
 	ManagedWeakReference<SceneObject* > parent;
-
-	VectorMap<String, ManagedReference<SceneObject* > > slottedObjects;
-
-	VectorMap<unsigned long long, ManagedReference<SceneObject* > > containerObjects;
 
 	SortedVector<ManagedReference<SceneObject* > > outdoorChildObjects;
 
@@ -1181,33 +1275,23 @@ protected:
 
 	unsigned int movementCounter;
 
-	int planetMapCategory;
-
-	int planetMapSubCategory;
-
 	StringId objectName;
-
-	SortedVector<ManagedReference<SceneObject* > > notifiedSentObjects;
 
 	PendingTasksMap pendingTasks;
 
 	bool staticObject;
 
-	SortedVector<ManagedReference<ActiveArea* > > activeAreas;
-
-	ManagedWeakReference<CityRegion* > cityRegion;
-
 	VectorMap<unsigned int, ManagedReference<Facade* > > objectActiveSessions;
-
-	unsigned int containerType;
-
-	unsigned int containerVolumeLimit;
 
 	unsigned int gameObjectType;
 
 	unsigned int clientGameObjectType;
 
 	unsigned int containmentType;
+
+	int planetMapCategory;
+
+	int planetMapSubCategory;
 
 	SharedObjectTemplate* templateObject;
 
@@ -1716,11 +1800,11 @@ public:
 
 	static const int SHIPBOOSTER = 0x40000007;
 
-	static const int SHIPDROIDINTERFACE = 0x40000008;
+	static const int SHIPDRIODINTERFACE = 0x40000008;
 
 	static const int SHIPCHASSIS = 0x4000000C;
 
-	static const int SHIPMISSLE = 0x4000000D;
+	static const int SHIPMISSILE = 0x4000000D;
 
 	static const int SHIPCOUNTERMEASURE = 0x4000000E;
 
@@ -1737,6 +1821,10 @@ public:
 	void initializePrivateData();
 
 	virtual void loadTemplateData(SharedObjectTemplate* templateData);
+
+	virtual void createComponents();
+
+	virtual void createContainerComponent();
 
 	void initializeTransientMembers();
 
@@ -1816,6 +1904,10 @@ public:
 
 	virtual void teleport(float newPositionX, float newPositionZ, float newPositionY, unsigned long long parentID = 0);
 
+	void notifyInsert(QuadTreeEntry* entry);
+
+	void notifyDissapear(QuadTreeEntry* entry);
+
 	virtual void removeFromZone();
 
 	virtual void removeFromBuilding(BuildingObject* building);
@@ -1854,6 +1946,10 @@ public:
 
 	bool dropActiveSession(unsigned int type);
 
+	int getActiveSessionsCount();
+
+	VectorMap<unsigned int, ManagedReference<Facade* > >* getObjectActiveSessions();
+
 	virtual int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
 
 	void notifyAddedToCloseObjects();
@@ -1872,7 +1968,7 @@ public:
 
 	bool hasNotifiedSentObject(SceneObject* object);
 
-	void addNotifiedSentObject(SceneObject* object);
+	int addNotifiedSentObject(SceneObject* object);
 
 	void removeNotifiedSentObject(SceneObject* object);
 
@@ -1926,11 +2022,15 @@ public:
 
 	int getContainerObjectsSize();
 
+	int getSlottedObjectsSize();
+
 	bool hasFullContainerObjects();
 
 	int getContainerVolumeLimit();
 
 	SceneObject* getContainerObject(int idx);
+
+	SceneObject* getSlottedObject(int idx);
 
 	virtual ZoneClientSession* getClient();
 
@@ -1945,6 +2045,8 @@ public:
 	float getDirectionAngle();
 
 	float getSpecialDirectionAngle();
+
+	unsigned int getContainerType();
 
 	void rotate(int degrees);
 
@@ -2078,10 +2180,6 @@ public:
 
 	void setClientObject(bool val);
 
-	void setPlanetMapCategory(PlanetMapCategory* pmc);
-
-	void setPlanetMapSubCategory(PlanetMapCategory* pmc);
-
 	VectorMap<unsigned long long, ManagedReference<SceneObject* > >* getContainerObjects();
 
 	bool hasObjectInContainer(unsigned long long objectID);
@@ -2110,25 +2208,31 @@ public:
 
 	Vector<ManagedReference<ActiveArea* > >* getActiveAreas();
 
-	CityRegion* getCityRegion();
-
-	void setCityRegion(CityRegion* region);
+	ActiveArea* getActiveRegion();
 
 	bool hasActiveArea(ActiveArea* area);
 
-	PlanetMapCategory* getPlanetMapCategory();
+	CityRegion* getCityRegion();
 
-	PlanetMapCategory* getPlanetMapSubCategory();
+	void setCityRegion(CityRegion* region);
 
 	int getPlanetMapCategoryCRC();
 
 	int getPlanetMapSubCategoryCRC();
 
+	void setPlanetMapCategory(PlanetMapCategory* pmc);
+
+	void setPlanetMapSubCategory(PlanetMapCategory* pmc);
+
+	PlanetMapCategory* getPlanetMapCategory();
+
+	PlanetMapCategory* getPlanetMapSubCategory();
+
+	SortedVector<ManagedReference<SceneObject* > >* getOutdoorChildObjects();
+
 	SharedObjectTemplate* getObjectTemplate();
 
 	virtual void createChildObjects();
-
-	SortedVector<ManagedReference<SceneObject* > >* getOutdoorChildObjects();
 
 	SceneObject* _this;
 
@@ -2174,6 +2278,10 @@ public:
 	void finalize();
 
 	void initializePrivateData();
+
+	void createComponents();
+
+	void createContainerComponent();
 
 	void initializeTransientMembers();
 
@@ -2277,6 +2385,8 @@ public:
 
 	bool dropActiveSession(unsigned int type);
 
+	int getActiveSessionsCount();
+
 	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
 
 	void notifyAddedToCloseObjects();
@@ -2293,7 +2403,7 @@ public:
 
 	bool hasNotifiedSentObject(SceneObject* object);
 
-	void addNotifiedSentObject(SceneObject* object);
+	int addNotifiedSentObject(SceneObject* object);
 
 	void removeNotifiedSentObject(SceneObject* object);
 
@@ -2337,11 +2447,15 @@ public:
 
 	int getContainerObjectsSize();
 
+	int getSlottedObjectsSize();
+
 	bool hasFullContainerObjects();
 
 	int getContainerVolumeLimit();
 
 	SceneObject* getContainerObject(int idx);
+
+	SceneObject* getSlottedObject(int idx);
 
 	ZoneClientSession* getClient();
 
@@ -2356,6 +2470,8 @@ public:
 	float getDirectionAngle();
 
 	float getSpecialDirectionAngle();
+
+	unsigned int getContainerType();
 
 	void rotate(int degrees);
 
@@ -2507,11 +2623,13 @@ public:
 
 	bool isMissionObject();
 
+	ActiveArea* getActiveRegion();
+
+	bool hasActiveArea(ActiveArea* area);
+
 	CityRegion* getCityRegion();
 
 	void setCityRegion(CityRegion* region);
-
-	bool hasActiveArea(ActiveArea* area);
 
 	int getPlanetMapCategoryCRC();
 

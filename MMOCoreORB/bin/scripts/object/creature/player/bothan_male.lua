@@ -44,6 +44,9 @@
 object_creature_player_bothan_male = object_creature_player_shared_bothan_male:new {
 	baseHAM = { 0, 0, 0, 300, 300, 100, 100, 100, 0 },
 	gameObjectType = 1033,
+	zoneComponent = "PlayerZoneComponent",
+	objectMenuComponent = "PlayerObjectMenuComponent",
+	containerComponent = "PlayerContainerComponent",
 	templateType = PLAYERCREATURE
 }
 

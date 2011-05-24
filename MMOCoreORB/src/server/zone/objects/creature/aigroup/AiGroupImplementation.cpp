@@ -49,7 +49,7 @@ void AiGroupImplementation::setPatrolPoint(AiAgent* member) {
 
 	coord.randomizePosition(radius);
 
-	member->setNextPosition(coord.getPositionX(), zone->getHeight(coord.getPositionX(), coord.getPositionY()), coord.getPositionY(), getParent());
+	member->setNextPosition(coord.getPositionX(), getZone()->getHeight(coord.getPositionX(), coord.getPositionY()), coord.getPositionY(), getParent());
 	member->activateWaitEvent();
 }
 
@@ -58,7 +58,7 @@ void AiGroupImplementation::setup(StaticSpawnGroup* templ) {
 	// designate the first in the template as the leader
 	isStatic = true;
 
-	CreatureManager* cm = zone->getCreatureManager();
+	CreatureManager* cm = getZone()->getCreatureManager();
 	if (cm == NULL)
 		return;
 
@@ -68,7 +68,7 @@ void AiGroupImplementation::setup(StaticSpawnGroup* templ) {
 	uint64 cellID = templ->getCellID();
 
 	if (cellID != 0) {
-		SceneObject* cellParent = zone->getZoneServer()->getObject(cellID);
+		SceneObject* cellParent = getZone()->getZoneServer()->getObject(cellID);
 
 		if (cellParent != NULL) {
 			if (!cellParent->isCellObject())

@@ -44,6 +44,9 @@
 object_creature_player_moncal_female = object_creature_player_shared_moncal_female:new {
 	baseHAM = { 0, 0, 0, 0, 0, 150, 300, 300, 150 },
 	gameObjectType = 1033,
+	zoneComponent = "PlayerZoneComponent",
+	objectMenuComponent = "PlayerObjectMenuComponent",
+	containerComponent = "PlayerContainerComponent",
 	templateType = PLAYERCREATURE
 }
 

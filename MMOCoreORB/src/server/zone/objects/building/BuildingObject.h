@@ -154,6 +154,8 @@ public:
 
 	void initializeTransientMembers();
 
+	void createContainerComponent();
+
 	void sendContainerObjectsTo(SceneObject* player);
 
 	void updateCellPermissionsTo(SceneObject* player);
@@ -163,6 +165,8 @@ public:
 	Vector3 getEjectionPoint();
 
 	void removeFromZone();
+
+	void notifyLoadFromDatabase();
 
 	void notifyInsert(QuadTreeEntry* obj);
 
@@ -271,6 +275,8 @@ public:
 
 	void initializeTransientMembers();
 
+	void createContainerComponent();
+
 	void sendContainerObjectsTo(SceneObject* player);
 
 	void updateCellPermissionsTo(SceneObject* player);
@@ -280,6 +286,8 @@ public:
 	Vector3 getEjectionPoint();
 
 	void removeFromZone();
+
+	void notifyLoadFromDatabase();
 
 	void notifyInsert(QuadTreeEntry* obj);
 
@@ -388,6 +396,8 @@ public:
 
 	void initializeTransientMembers();
 
+	void createContainerComponent();
+
 	void sendContainerObjectsTo(SceneObject* player);
 
 	void updateCellPermissionsTo(SceneObject* player);
@@ -395,6 +405,8 @@ public:
 	int notifyStructurePlaced(PlayerCreature* player);
 
 	void removeFromZone();
+
+	void notifyLoadFromDatabase();
 
 	void notifyInsertToZone(SceneObject* object);
 

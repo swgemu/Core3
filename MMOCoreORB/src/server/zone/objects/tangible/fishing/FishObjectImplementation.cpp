@@ -15,7 +15,7 @@
 
 int FishObjectImplementation::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
 	if (selectedID == 245) {
-		if (containerObjects.size() > 0) {
+		if (getContainerObjectsSize() > 0) {
 			filet(player);
 		} else {
 			player->sendSystemMessage("@fishing:already_fileted");
@@ -27,7 +27,7 @@ int FishObjectImplementation::handleObjectMenuSelect(PlayerCreature* player, byt
 
 void FishObjectImplementation::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, PlayerCreature* player) {
 	TangibleObjectImplementation::fillObjectMenuResponse(menuResponse, player);
-	if (containerObjects.size() > 0) {
+	if (getContainerObjectsSize() > 0) {
 		String text = "@fishing:mnu_filet";
 
 		menuResponse->addRadialMenuItem(245, 3, text);
@@ -35,19 +35,19 @@ void FishObjectImplementation::fillObjectMenuResponse(ObjectMenuResponse* menuRe
 }
 
 void FishObjectImplementation::filet(PlayerCreature* player) {
-	if (containerObjects.size() > 0) {
+	if (getContainerObjectsSize() > 0) {
 		ManagedReference<SceneObject*> inventory = player->getSlottedObject("inventory");
 
-		if ((inventory->hasFullContainerObjects()) || ((inventory->getContainerObjectsSize() + containerObjects.size()) > 80)) {
+		if ((inventory->hasFullContainerObjects()) || ((inventory->getContainerObjectsSize() + getContainerObjectsSize()) > 80)) {
 			StringIdChatParameter body("fishing","units_inventory");
-			body.setDI(containerObjects.size());
+			body.setDI(getContainerObjectsSize());
 			player->sendSystemMessage(body);
 
 		} else {
 			ManagedReference<SceneObject*> item;
 
-			while (containerObjects.size() > 0) {
-				item = containerObjects.get(0);
+			while (getContainerObjectsSize() > 0) {
+				item = getContainerObject((int)0);
 
 				removeObject(item, false);
 
