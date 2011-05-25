@@ -24,7 +24,7 @@ namespace server {
 
 			class Account;
 
-			class AccountManager : public Singleton<AccountManager>, public Logger {
+			class AccountManager : public Singleton<AccountManager>, public Logger, public Object {
 				ManagedReference<LoginServer*> loginServer;
 
 				AccountMap* accountMap;

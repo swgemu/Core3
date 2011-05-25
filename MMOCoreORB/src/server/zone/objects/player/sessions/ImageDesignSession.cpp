@@ -265,7 +265,7 @@ bool ImageDesignSessionImplementation::readObjectMember(ObjectInputStream* strea
 		return true;
 
 	if (_name == "imageDesignManager") {
-		TypeInfo<ImageDesignManager* >::parseFromBinaryStream(&imageDesignManager, stream);
+		TypeInfo<Reference<ImageDesignManager* > >::parseFromBinaryStream(&imageDesignManager, stream);
 		return true;
 	}
 
@@ -303,7 +303,7 @@ int ImageDesignSessionImplementation::writeObjectMembers(ObjectOutputStream* str
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
-	TypeInfo<ImageDesignManager* >::toBinaryStream(&imageDesignManager, stream);
+	TypeInfo<Reference<ImageDesignManager* > >::toBinaryStream(&imageDesignManager, stream);
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 

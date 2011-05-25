@@ -318,7 +318,7 @@ protected:
 
 	ManagedReference<ZoneProcessServer* > server;
 
-	TerrainManager* terrainManager;
+	Reference<TerrainManager* > terrainManager;
 
 	NoBuildAreaMap noBuildAreaMap;
 

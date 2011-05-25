@@ -133,7 +133,7 @@ void SuiManager::handleSuiEventNotification(uint32 boxID, PlayerCreature* player
 	player->removeSuiBox(boxID);
 	suiBox->clearOptions(); //TODO: Eventually SuiBox needs to be cleaned up to not need this.
 
-	SuiCallback* callback = suiBox->getCallback();
+	Reference<SuiCallback*> callback = suiBox->getCallback();
 
 	if (callback != NULL) {
 		callback->run(player, suiBox, cancel, args);

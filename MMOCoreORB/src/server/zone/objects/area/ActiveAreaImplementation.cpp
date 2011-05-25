@@ -11,7 +11,7 @@
 #include "server/zone/Zone.h"
 
 bool ActiveAreaImplementation::containsPoint(float px, float py) {
-	return (((px - positionX) * (px - positionX)) + ((py - positionY) * (py - positionY)) <= radius2 );
+	return (((px - getPositionX()) * (px - getPositionX())) + ((py - getPositionY()) * (py - getPositionY())) <= radius2 );
 }
 
 void ActiveAreaImplementation::insertToZone(Zone* newZone) {
@@ -41,7 +41,7 @@ void ActiveAreaImplementation::insertToZone(Zone* newZone) {
 	// lets update area to the in range players
 	SortedVector<ManagedReference<SceneObject*> > objects;
 
-	getZone()->getInRangeObjects(positionX, positionY, 512, &objects);
+	getZone()->getInRangeObjects(getPositionX(), getPositionY(), 512, &objects);
 
 	for (int i = 0; i < objects.size(); ++i) {
 		SceneObject* object = objects.get(i);
@@ -81,7 +81,7 @@ void ActiveAreaImplementation::removeFromZone() {
 	// lets remove the in range active areas of players
 	SortedVector<ManagedReference<SceneObject*> > objects;
 
-	getZone()->getInRangeObjects(positionX, positionY, 512, &objects);
+	getZone()->getInRangeObjects(getPositionX(), getPositionY(), 512, &objects);
 
 	for (int i = 0; i < objects.size(); ++i) {
 		SceneObject* object = objects.get(i);

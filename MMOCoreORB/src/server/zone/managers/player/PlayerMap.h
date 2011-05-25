@@ -56,10 +56,11 @@ namespace zone {
 namespace managers {
 namespace player {
 
-class PlayerMap : private HashTable<String, ManagedReference<PlayerCreature*> >, private HashTableIterator<String, ManagedReference<PlayerCreature*> >, public Mutex {
+class PlayerMap : private HashTableIterator<String, ManagedReference<PlayerCreature*> >, public Mutex, public Object {
+	HashTable<String, ManagedReference<PlayerCreature*> > hashTable;
 public:
-	PlayerMap(int initsize) : HashTable<String, ManagedReference<PlayerCreature*> >(initsize), HashTableIterator<String, ManagedReference<PlayerCreature*> >(this), Mutex("PlayerMap") {
-		setNullValue(NULL);
+	PlayerMap(int initsize) :  HashTableIterator<String, ManagedReference<PlayerCreature*> >(&hashTable), Mutex("PlayerMap") {
+		hashTable.setNullValue(NULL);
 	}
 
 	PlayerCreature* put(const String& name, PlayerCreature* player, bool doLock = true) {
@@ -69,7 +70,7 @@ public:
 
 		try {
 
-			play = HashTable<String, ManagedReference<PlayerCreature*> >::put(name.toLowerCase(), player);
+			play = hashTable.put(name.toLowerCase(), player);
 
 		} catch (Exception& e) {
 			System::out << e.getMessage();
@@ -94,7 +95,7 @@ public:
 
 		try {
 
-			player = HashTable<String, ManagedReference<PlayerCreature*> >::get(name.toLowerCase());
+			player = hashTable.get(name.toLowerCase());
 
 		} catch (Exception& e) {
 			System::out << e.getMessage();
@@ -119,7 +120,7 @@ public:
 
 		try {
 
-			player = HashTable<String, ManagedReference<PlayerCreature*> >::remove(name.toLowerCase());
+			player = hashTable.remove(name.toLowerCase());
 
 		} catch (Exception& e) {
 			System::out << e.getMessage();
@@ -176,7 +177,7 @@ public:
 	int size(bool doLock = true) {
 		lock(doLock);
 
-		int res = HashTable<String, ManagedReference<PlayerCreature*> >::size();
+		int res = hashTable.size();
 
 		unlock(doLock);
 

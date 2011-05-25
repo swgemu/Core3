@@ -19,46 +19,49 @@ namespace zone {
 namespace managers {
 namespace creature {
 
-class CreatureTemplateManager : public HashTable<uint32, Reference<CreatureTemplate*> >, private Lua, public Singleton<CreatureTemplateManager> {
+class CreatureTemplateManager : public Singleton<CreatureTemplateManager>, public Object, public Logger {
 protected:
 	VectorMap<uint32, Vector<String> > weaponMap;
 	VectorMap<uint32, DynamicSpawnGroup*> dynamicGroupMap;
 	VectorMap<uint32, StaticSpawnGroup*> staticGroupMap;
+	Lua* lua;
+	HashTable<uint32, Reference<CreatureTemplate*> > hashTable;
 
 public:
-	CreatureTemplateManager() : HashTable<uint32,Reference<CreatureTemplate*> >(3000), Lua(), Singleton<CreatureTemplateManager>() {
-		setLogging(false);
-		setGlobalLogging(true);
-		setLoggingName("CreatureTemplateManager");
+	CreatureTemplateManager() : Logger("CreatureTemplateManager") {
+		/*setLogging(false);
+		setGlobalLogging(true);*/
+		//setLoggingName("CreatureTemplateManager");
 
-		Lua::init();
-		setNullValue(NULL);
+		lua = new Lua();
+		lua->init();
+		hashTable.setNullValue(NULL);
 
-		lua_register(getLuaState(), "includeFile", includeFile);
-		lua_register(getLuaState(), "addTemplate", addTemplate);
-		lua_register(getLuaState(), "addWeapon", addWeapon);
-		lua_register(getLuaState(), "addDynamicGroup", addDynamicGroup);
-		lua_register(getLuaState(), "addStaticGroup", addStaticGroup);
+		lua_register(lua->getLuaState(), "includeFile", includeFile);
+		lua_register(lua->getLuaState(), "addTemplate", addTemplate);
+		lua_register(lua->getLuaState(), "addWeapon", addWeapon);
+		lua_register(lua->getLuaState(), "addDynamicGroup", addDynamicGroup);
+		lua_register(lua->getLuaState(), "addStaticGroup", addStaticGroup);
 
-		setGlobalInt("NONE", CreatureFlag::NONE);
-		setGlobalInt("ATTACKABLE", CreatureFlag::ATTACKABLE);
-		setGlobalInt("AGGRESSIVE", CreatureFlag::AGGRESSIVE);
-		setGlobalInt("OVERT", CreatureFlag::OVERT);
-		setGlobalInt("TEF", CreatureFlag::TEF);
-		setGlobalInt("PLAYER", CreatureFlag::PLAYER);
-		setGlobalInt("ENEMY", CreatureFlag::ENEMY);
-		setGlobalInt("CHANGEFACTIONSTATUS", CreatureFlag::CHANGEFACTIONSTATUS);
-		setGlobalInt("BLINK_GREEN", CreatureFlag::BLINK_GREEN);
+		lua->setGlobalInt("NONE", CreatureFlag::NONE);
+		lua->setGlobalInt("ATTACKABLE", CreatureFlag::ATTACKABLE);
+		lua->setGlobalInt("AGGRESSIVE", CreatureFlag::AGGRESSIVE);
+		lua->setGlobalInt("OVERT", CreatureFlag::OVERT);
+		lua->setGlobalInt("TEF", CreatureFlag::TEF);
+		lua->setGlobalInt("PLAYER", CreatureFlag::PLAYER);
+		lua->setGlobalInt("ENEMY", CreatureFlag::ENEMY);
+		lua->setGlobalInt("CHANGEFACTIONSTATUS", CreatureFlag::CHANGEFACTIONSTATUS);
+		lua->setGlobalInt("BLINK_GREEN", CreatureFlag::BLINK_GREEN);
 
-		setGlobalInt("PACK", CreatureFlag::PACK);
-		setGlobalInt("HERD", CreatureFlag::HERD);
-		setGlobalInt("KILLER", CreatureFlag::KILLER);
-		setGlobalInt("STALKER", CreatureFlag::STALKER);
-		setGlobalInt("BABY", CreatureFlag::BABY);
-		setGlobalInt("LAIR", CreatureFlag::LAIR);
+		lua->setGlobalInt("PACK", CreatureFlag::PACK);
+		lua->setGlobalInt("HERD", CreatureFlag::HERD);
+		lua->setGlobalInt("KILLER", CreatureFlag::KILLER);
+		lua->setGlobalInt("STALKER", CreatureFlag::STALKER);
+		lua->setGlobalInt("BABY", CreatureFlag::BABY);
+		lua->setGlobalInt("LAIR", CreatureFlag::LAIR);
 
-		setGlobalInt("CARNIVORE", CreatureFlag::CARNIVORE);
-		setGlobalInt("HERBIVORE", CreatureFlag::HERBIVORE);
+		lua->setGlobalInt("CARNIVORE", CreatureFlag::CARNIVORE);
+		lua->setGlobalInt("HERBIVORE", CreatureFlag::HERBIVORE);
 	}
 
 	virtual ~CreatureTemplateManager() {
@@ -68,7 +71,7 @@ public:
 		info("loading mobile templates...", true);
 
 		try {
-			runFile("scripts/mobile/creatures.lua");
+			lua->runFile("scripts/mobile/creatures.lua");
 		} catch (Exception& e) {
 			error(e.getMessage());
 			e.printStackTrace();
@@ -77,12 +80,20 @@ public:
 		info("done loading mobile templates", true);
 	}
 
+	int size() {
+		return hashTable.size();
+	}
+
+	HashTable<uint32, Reference<CreatureTemplate*> >* getHashTable() {
+		return &hashTable;
+	}
+
 	CreatureTemplate* getTemplate(uint32 crc) {
-		return get(crc);
+		return hashTable.get(crc);
 	}
 
 	CreatureTemplate* getTemplate(String ascii) {
-		return get(ascii.hashCode());
+		return hashTable.get(ascii.hashCode());
 	}
 
 	Vector<String> getWeapons(uint32 crc) {
@@ -126,7 +137,7 @@ public:
 		newTemp->setTemplateName(ascii);
 		newTemp->readObject(&obj);
 
-		CreatureTemplateManager::instance()->put(crc, newTemp);
+		CreatureTemplateManager::instance()->hashTable.put(crc, newTemp);
 
 		return 0;
 	}

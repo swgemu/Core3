@@ -262,7 +262,7 @@ namespace structure {
 
 class StructureObjectImplementation : public TangibleObjectImplementation {
 protected:
-	StructureMaintenanceTask* structureMaintenanceTask;
+	Reference<StructureMaintenanceTask* > structureMaintenanceTask;
 
 	StructurePermissionList structurePermissionList;
 

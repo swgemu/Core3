@@ -49,7 +49,7 @@ namespace zone {
 namespace managers {
 namespace skill {
 
-class SkillManager : public Singleton<SkillManager>, public Logger {
+class SkillManager : public Singleton<SkillManager>, public Logger, public Object {
 	VectorMap<String, Reference<SkillInfo*> > skillMap;
 
 public:

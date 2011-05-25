@@ -12,14 +12,14 @@
 #include "lua.hpp"
 #include "server/zone/managers/templates/TemplateManager.h"
 
-class CharacterBuilderMenuNode {
-	CharacterBuilderMenuNode* parentNode;
+class CharacterBuilderMenuNode : public Object {
+	Reference<CharacterBuilderMenuNode*> parentNode;
 
 	String displayName;
 	String templatePath;
 	uint32 templateCRC;
 
-	SortedVector<CharacterBuilderMenuNode*> childNodes;
+	SortedVector<Reference<CharacterBuilderMenuNode*> > childNodes;
 
 public:
 	CharacterBuilderMenuNode(const String& name) {

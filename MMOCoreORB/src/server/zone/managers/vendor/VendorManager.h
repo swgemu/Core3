@@ -24,7 +24,7 @@ namespace zone {
 namespace managers {
 namespace vendor {
 
-class VendorManager : public Singleton<VendorManager>, public Mutex, public Logger {
+class VendorManager : public Singleton<VendorManager>, public Mutex, public Logger, public Object {
 protected:
 	VendorSelectionNode rootNode;
 	VectorMap<uint64, Vendor*> vendorMap;

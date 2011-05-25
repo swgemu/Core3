@@ -102,7 +102,7 @@ namespace server {
   namespace managers {
    namespace professions {
 
-	class ProfessionManager : public Mutex, public Logger, public Singleton<ProfessionManager> {
+	class ProfessionManager : public Mutex, public Logger, public Singleton<ProfessionManager>, public Object {
 		ObjectController* objectController;
 		PerformanceManager* performanceManager;
 		ImageDesignManager* imageDesignManager;

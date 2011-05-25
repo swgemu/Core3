@@ -7,8 +7,9 @@
 class ZoneClient;
 class Zone;
 
-class SceneObject : public Coordinate, public Mutex, public Logger, public Object {
+class SceneObject : public Mutex, public Logger, public Object {
 protected:
+	Coordinate coordinates;
 	uint64 objectID;
 	uint32 objectCRC;
 
@@ -231,6 +232,10 @@ public:
 
 	bool addObject(SceneObject* object, int containmentType);
 	bool removeObject(SceneObject* object);
+
+	void setPosition(float x, float z, float y) {
+		coordinates.setPosition(x, z, y);
+	}
 
 	StringId& getObjectName() {
 		return objectName;

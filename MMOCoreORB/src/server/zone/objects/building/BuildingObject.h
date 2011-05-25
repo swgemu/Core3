@@ -246,7 +246,7 @@ namespace zone {
 namespace objects {
 namespace building {
 
-class BuildingObjectImplementation : public StructureObjectImplementation, public QuadTree {
+class BuildingObjectImplementation : public StructureObjectImplementation {
 protected:
 	Vector<ManagedReference<CellObject* > > cells;
 
@@ -255,6 +255,8 @@ protected:
 	ManagedReference<SignObject* > signObject;
 
 	unsigned long long deedObjectID;
+
+	Reference<QuadTree* > quadTree;
 
 	int accessFee;
 

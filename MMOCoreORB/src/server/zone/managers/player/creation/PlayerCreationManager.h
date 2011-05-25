@@ -53,7 +53,7 @@ class RacialCreationData;
 class ProfessionInfo;
 class HairStyleInfo;
 
-class PlayerCreationManager : public Singleton<PlayerCreationManager>, public Logger {
+class PlayerCreationManager : public Singleton<PlayerCreationManager>, public Logger, public Object {
 	VectorMap<String, Reference<RacialCreationData*> > racialCreationData;
 	VectorMap<String, Reference<ProfessionInfo*> > professionInfo;
 	VectorMap<String, Reference<HairStyleInfo*> > hairStyleInfo;

@@ -10,7 +10,7 @@
 
 #include "engine/engine.h"
 
-class ObjectVersionUpdateManager : public Singleton<ObjectVersionUpdateManager>, public Logger {
+class ObjectVersionUpdateManager : public Singleton<ObjectVersionUpdateManager>, public Logger, public Object {
 	Lua* luaInstance;
 public:
 	ObjectVersionUpdateManager();

@@ -35,7 +35,7 @@ class PortalLayout;
 class AppearanceTemplate;
 class TreeDirectory;
 
-class TemplateManager : public Singleton<TemplateManager>, public Logger {
+class TemplateManager : public Singleton<TemplateManager>, public Logger, public Object {
 	TemplateCRCMap* templateCRCMap;
 
 	ObjectFactory<SharedObjectTemplate* (), uint32> templateFactory;

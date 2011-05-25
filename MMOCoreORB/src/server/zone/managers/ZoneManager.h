@@ -87,7 +87,7 @@ protected:
 
 	ManagedReference<ZoneProcessServer* > zoneProcessor;
 
-	ObjectManager* objectManager;
+	Reference<ObjectManager* > objectManager;
 
 public:
 	ZoneManagerImplementation(const String& name);

@@ -646,7 +646,7 @@ bool SuiBoxImplementation::readObjectMember(ObjectInputStream* stream, const Str
 	}
 
 	if (_name == "suiCallback") {
-		TypeInfo<SuiCallback* >::parseFromBinaryStream(&suiCallback, stream);
+		TypeInfo<Reference<SuiCallback* > >::parseFromBinaryStream(&suiCallback, stream);
 		return true;
 	}
 
@@ -767,7 +767,7 @@ int SuiBoxImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
-	TypeInfo<SuiCallback* >::toBinaryStream(&suiCallback, stream);
+	TypeInfo<Reference<SuiCallback* > >::toBinaryStream(&suiCallback, stream);
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 

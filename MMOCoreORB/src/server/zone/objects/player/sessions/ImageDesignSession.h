@@ -131,7 +131,7 @@ namespace objects {
 namespace player {
 
 class ImageDesignSessionImplementation : public FacadeImplementation {
-	ImageDesignManager* imageDesignManager;
+	Reference<ImageDesignManager* > imageDesignManager;
 
 protected:
 	ManagedWeakReference<PlayerCreature* > designerCreature;
@@ -140,7 +140,7 @@ protected:
 
 	ImageDesignData imageDesignData;
 
-	Reference<ImageDesignTimeoutEvent*> idTimeoutEvent;
+	Reference<Reference<ImageDesignTimeoutEvent*> > idTimeoutEvent;
 
 public:
 	ImageDesignSessionImplementation(CreatureObject* parent);

@@ -15,7 +15,8 @@
 #include "server/zone/Zone.h"
 #include "server/zone/managers/object/ObjectManager.h"
 
-class SpawnAreaMap : public VectorMap<uint32, ManagedReference<SpawnArea*> >, private Lua {
+class SpawnAreaMap : public VectorMap<uint32, ManagedReference<SpawnArea*> > {
+	Lua* lua;
 protected:
 	Zone* zone;
 
@@ -23,6 +24,7 @@ protected:
 
 public:
 	SpawnAreaMap() {
+		lua = new Lua();
 		setAllowDuplicateInsertPlan();
 	}
 
@@ -32,11 +34,11 @@ public:
 		zone = z;
 		String planetName = zone->getZoneName();
 
-		Lua::init();
+		lua->init();
 
-		runFile("scripts/managers/spawn_manager/" + planetName + ".lua");
+		lua->runFile("scripts/managers/spawn_manager/" + planetName + ".lua");
 
-		LuaObject obj = getGlobalObject(planetName + "_regions");
+		LuaObject obj = lua->getGlobalObject(planetName + "_regions");
 
 		if (obj.isValidTable()) {
 			lua_State* s = obj.getLuaState();
@@ -97,7 +99,7 @@ public:
 			}
 		}
 
-		Lua::deinit();
+		lua->deinit();
 
 		for (int i = 0; i < size(); ++i) {
 			SpawnArea* area = get(i);

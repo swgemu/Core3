@@ -57,7 +57,7 @@ namespace zone {
 	class ZoneProcessServer;
 	class ZoneServer;
 
-	class ZonePacketHandler : public Logger {
+	class ZonePacketHandler : public Logger, public Object {
 		ManagedReference<ZoneProcessServer*> processServer;
 
 		ManagedReference<ZoneServer*> server;

@@ -1060,6 +1060,12 @@ public:
 
 	bool isVendor();
 
+	ContainerComponent* getContainerComponent();
+
+	ZoneComponent* getZoneComponent();
+
+	ObjectMenuComponent* getObjectMenuComponent();
+
 	bool isShuttleInstallation();
 
 	bool isPlayerObject();
@@ -1293,7 +1299,7 @@ protected:
 
 	int planetMapSubCategory;
 
-	SharedObjectTemplate* templateObject;
+	Reference<SharedObjectTemplate* > templateObject;
 
 public:
 	static const int CELLOBJECT = 11;
@@ -2074,6 +2080,12 @@ public:
 
 	virtual bool isVendor();
 
+	ContainerComponent* getContainerComponent();
+
+	ZoneComponent* getZoneComponent();
+
+	ObjectMenuComponent* getObjectMenuComponent();
+
 	bool isShuttleInstallation();
 
 	bool isPlayerObject();
@@ -2498,6 +2510,12 @@ public:
 	bool isPlayerCreature();
 
 	bool isVendor();
+
+	ContainerComponent* getContainerComponent();
+
+	ZoneComponent* getZoneComponent();
+
+	ObjectMenuComponent* getObjectMenuComponent();
 
 	bool isShuttleInstallation();
 

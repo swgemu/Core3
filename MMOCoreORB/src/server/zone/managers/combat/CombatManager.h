@@ -17,7 +17,7 @@
 class CreatureAttackData;
 class CombatQueueCommand;
 
-class CombatManager : public Singleton<CombatManager>, public Logger {
+class CombatManager : public Singleton<CombatManager>, public Logger, public Object {
 
 public:
 	const static int BLOCK = 1;

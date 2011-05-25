@@ -97,7 +97,7 @@ namespace server {
 		namespace managers {
 			namespace name {
 
-class NameManager :  public Logger {
+class NameManager :  public Logger, public Object {
 	ManagedReference<ZoneProcessServer*> server;
 
 	Vector<String>* profaneNames;

@@ -208,7 +208,7 @@ protected:
 
 	SpawnAreaMap spawnAreaMap;
 
-	CreatureTemplateManager* creatureTemplateManager;
+	Reference<CreatureTemplateManager* > creatureTemplateManager;
 
 	SortedVector<ManagedReference<AiAgent* > > reservePool;
 

@@ -202,8 +202,8 @@ CloneSpawnPoint* CloningBuildingObjectImplementation::getRandomSpawnPoint() {
 	CloningBuildingObjectTemplate* cloningTemplate = NULL;
 	// server/zone/objects/building/cloning/CloningBuildingObject.idl():  		}
 	if (BuildingObjectImplementation::templateObject->isCloningBuildingObjectTemplate()){
-	// server/zone/objects/building/cloning/CloningBuildingObject.idl():  			cloningTemplate = (CloningBuildingObjectTemplate) super.templateObject;
-	cloningTemplate = (CloningBuildingObjectTemplate*) BuildingObjectImplementation::templateObject;
+	// server/zone/objects/building/cloning/CloningBuildingObject.idl():  			cloningTemplate = (CloningBuildingObjectTemplate) super.getObjectTemplate();
+	cloningTemplate = (CloningBuildingObjectTemplate*) BuildingObjectImplementation::getObjectTemplate();
 	// server/zone/objects/building/cloning/CloningBuildingObject.idl():  			return cloningTemplate.getRandomSpawnPoint();
 	return cloningTemplate->getRandomSpawnPoint();
 }

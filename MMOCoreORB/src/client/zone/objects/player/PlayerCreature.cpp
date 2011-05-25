@@ -16,7 +16,7 @@ void PlayerCreature::updatePosition(float x, float z, float y) {
 	if (client == NULL)
 		return;
 
-	setPosition(x, z, y);
+	coordinates.setPosition(x, z, y);
 
 	BaseMessage* message = new ObjectControllerMessage(objectID, 0x23, 0x71);
 	message->insertInt(++movementCounter);

@@ -66,8 +66,6 @@ class Attachment extends TangibleObject {
 	@dereferenced
 	protected VectorMap<string, int> skillModMap;
 
-	protected WearableSkillMods wearableSkillMods;
-
 	protected static final int CLOTHINGTYPE = 1;
 	protected static final int ARMORTYPE = 2;
 	

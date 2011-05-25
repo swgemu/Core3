@@ -238,21 +238,21 @@ class ZoneProcessServerImplementation : public ManagedServiceImplementation {
 protected:
 	ManagedReference<ZoneServer* > zoneServer;
 
-	SkillManager* skillManager;
+	Reference<SkillManager* > skillManager;
 
-	PlayerCreationManager* playerCreationManager;
+	Reference<PlayerCreationManager* > playerCreationManager;
 
-	VendorManager* vendorManager;
+	Reference<VendorManager* > vendorManager;
 
-	ZonePacketHandler* zonePacketHandler;
+	Reference<ZonePacketHandler* > zonePacketHandler;
 
-	NameManager* nameManager;
+	Reference<NameManager* > nameManager;
 
-	HolocronManager* holocronManager;
+	Reference<HolocronManager* > holocronManager;
 
-	SuiManager* suiManager;
+	Reference<SuiManager* > suiManager;
 
-	ProfessionManager* professionManager;
+	Reference<ProfessionManager* > professionManager;
 
 	ManagedReference<ObjectController* > objectController;
 

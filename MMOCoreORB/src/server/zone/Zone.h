@@ -270,7 +270,7 @@ using namespace server::zone;
 namespace server {
 namespace zone {
 
-class ZoneImplementation : public ManagedObjectImplementation, public QuadTree {
+class ZoneImplementation : public ManagedObjectImplementation {
 	String zoneName;
 
 	unsigned int zoneCRC;
@@ -287,11 +287,13 @@ class ZoneImplementation : public ManagedObjectImplementation, public QuadTree {
 
 	ManagedWeakReference<ZoneServer* > server;
 
-	QuadTree* regionTree;
+	Reference<QuadTree* > regionTree;
+
+	Reference<QuadTree* > quadTree;
 
 	Time galacticTime;
 
-	HeightMap* heightMap;
+	Reference<HeightMap* > heightMap;
 
 	MapLocationTable mapLocations;
 

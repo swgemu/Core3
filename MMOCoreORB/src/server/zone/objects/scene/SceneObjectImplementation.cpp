@@ -755,7 +755,7 @@ void SceneObjectImplementation::updateVehiclePosition() {
 	Locker locker(parent);
 
 	parent->setDirection(direction.getW(), direction.getX(), direction.getY(), direction.getZ());
-	parent->setPosition(positionX, positionZ, positionY);
+	parent->setPosition(getPositionX(), getPositionZ(), getPositionY());
 
 	parent->incrementMovementCounter();
 
@@ -955,12 +955,12 @@ Vector3 SceneObjectImplementation::getWorldPosition() {
 	if (!root->isBuildingObject())
 		return getPosition();
 
-	float length = Math::sqrt(positionX * positionX + positionY * positionY);
-	float angle = root->getDirection()->getRadians() + atan2(positionX, positionY);
+	float length = Math::sqrt(getPositionX() * getPositionX() + getPositionY() * getPositionY());
+	float angle = root->getDirection()->getRadians() + atan2(getPositionX(), getPositionY());
 
 	float posX = root->getPositionX() + (sin(angle) * length);
 	float posY = root->getPositionY() + (cos(angle) * length);
-	float posZ = root->getPositionZ() + positionZ;
+	float posZ = root->getPositionZ() + getPositionZ();
 
 	Vector3 position(posX, posY, posZ);
 
@@ -971,8 +971,8 @@ Vector3 SceneObjectImplementation::getCoordinate(float distance, float angleDegr
 	float angleRads = angleDegrees * (M_PI / 180.0f);
 	float newAngle = angleRads + direction.getRadians();
 
-	float newX = positionX + (cos(newAngle) * distance); // client has x/y inverted
-	float newY = positionY + (sin(newAngle) * distance);
+	float newX = getPositionX() + (cos(newAngle) * distance); // client has x/y inverted
+	float newY = getPositionY() + (sin(newAngle) * distance);
 	float newZ = getZone()->getHeight(newX, newY);
 
 	return Vector3(newX, newY, newZ);
@@ -980,35 +980,35 @@ Vector3 SceneObjectImplementation::getCoordinate(float distance, float angleDegr
 
 float SceneObjectImplementation::getWorldPositionX() {
 	if (parent == NULL)
-		return positionX;
+		return getPositionX();
 
 	SceneObject* root = getRootParent();
 
-	float length = Math::sqrt(positionX * positionX + positionY * positionY);
-	float angle = root->getDirection()->getRadians() + atan2(positionX, positionY);
+	float length = Math::sqrt(getPositionX() * getPositionX() + getPositionY() * getPositionY());
+	float angle = root->getDirection()->getRadians() + atan2(getPositionX(), getPositionY());
 
 	return root->getPositionX() + (sin(angle) * length);
 }
 
 float SceneObjectImplementation::getWorldPositionY() {
 	if (parent == NULL)
-		return positionY;
+		return getPositionY();
 
 	SceneObject* root = getRootParent();
 
-	float length = Math::sqrt(positionX * positionX + positionY * positionY);
-	float angle = root->getDirection()->getRadians() + atan2(positionX, positionY);
+	float length = Math::sqrt(getPositionX() * getPositionX() + getPositionY() * getPositionY());
+	float angle = root->getDirection()->getRadians() + atan2(getPositionX(), getPositionY());
 
 	return root->getPositionY() + (cos(angle) * length);
 }
 
 float SceneObjectImplementation::getWorldPositionZ() {
 	if (parent == NULL)
-		return positionZ;
+		return getPositionZ();
 
 	SceneObject* root = getRootParent();
 
-	return root->getPositionZ() + positionZ;
+	return root->getPositionZ() + getPositionZ();
 }
 
 uint32 SceneObjectImplementation::getPlanetCRC() {

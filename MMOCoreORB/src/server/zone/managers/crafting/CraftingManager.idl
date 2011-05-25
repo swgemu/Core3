@@ -56,7 +56,7 @@ import system.util.Vector;
 import server.zone.managers.ZoneManager;
 include server.zone.managers.crafting.schematicmap.SchematicMap;
 
-class CraftingManager extends ZoneManager implements Lua {
+class CraftingManager extends ZoneManager {
 	private transient SchematicMap schematicMap;
 	
 	// Ingredient math types

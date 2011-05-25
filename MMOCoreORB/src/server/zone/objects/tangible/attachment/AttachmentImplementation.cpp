@@ -153,7 +153,7 @@ void AttachmentImplementation::generateSkillMods() {
 
 	for(int i = 0; i < maxModifiers; ++i) {
 		int randomLuck = System::random(int(luckRoll / 2)) + int(luckRoll / 2) + luckskill;
-		addSkillMod(wearableSkillMods->getRandomAttachmentMod(attachmentType), getRandomModValue(randomLuck, creatureLevel));
+		addSkillMod(WearableSkillMods::getRandomAttachmentMod(attachmentType), getRandomModValue(randomLuck, creatureLevel));
 	}
 
 }

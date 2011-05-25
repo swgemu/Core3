@@ -63,7 +63,7 @@ public:
 
 	}
 
-	String getRandomAttachmentMod(int type) {
+	static String getRandomAttachmentMod(int type) {
 		// Needs to have "cat_skill_mod_bonus.@stat_n:" before the stat name when sent to the client
 		// Type is 1 = Clothing, 2 = Armor
 		String randomskill = "";

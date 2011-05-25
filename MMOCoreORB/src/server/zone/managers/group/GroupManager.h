@@ -80,7 +80,7 @@ namespace server {
 
 using namespace server::zone::objects::creature;
 
-class GroupManager : public Singleton<GroupManager> {
+class GroupManager : public Singleton<GroupManager>, public Object {
 
 public:
 	GroupManager();

@@ -225,7 +225,7 @@ bool CreateVendorSessionImplementation::readObjectMember(ObjectInputStream* stre
 	}
 
 	if (_name == "currentNode") {
-		TypeInfo<VendorSelectionNode* >::parseFromBinaryStream(&currentNode, stream);
+		TypeInfo<Reference<VendorSelectionNode* > >::parseFromBinaryStream(&currentNode, stream);
 		return true;
 	}
 
@@ -279,7 +279,7 @@ int CreateVendorSessionImplementation::writeObjectMembers(ObjectOutputStream* st
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
-	TypeInfo<VendorSelectionNode* >::toBinaryStream(&currentNode, stream);
+	TypeInfo<Reference<VendorSelectionNode* > >::toBinaryStream(&currentNode, stream);
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 

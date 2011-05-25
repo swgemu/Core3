@@ -62,7 +62,7 @@ which carries forward this exception.
 #include "server/zone/templates/appearance/PathGraph.h"
 
 
-ZoneImplementation::ZoneImplementation(ZoneProcessServer* serv, const String& name) : ManagedObjectImplementation(), QuadTree(-8192, -8192, 8192, 8192) {
+ZoneImplementation::ZoneImplementation(ZoneProcessServer* serv, const String& name) : ManagedObjectImplementation() {
 	processor = serv;
 	server = processor->getZoneServer();
 
@@ -71,6 +71,7 @@ ZoneImplementation::ZoneImplementation(ZoneProcessServer* serv, const String& na
 
 	heightMap = new HeightMap();
 	regionTree = new QuadTree(-8192, -8192, 8192, 8192);
+	quadTree = new QuadTree(-8192, -8192, 8192, 8192);
 
 	mapLocations.setNoDuplicateInsertPlan();
 
@@ -179,25 +180,25 @@ float ZoneImplementation::getHeight(float x, float y) {
 void ZoneImplementation::insert(QuadTreeEntry* entry) {
 	Locker locker(_this);
 
-	QuadTree::insert(entry);
+	quadTree->insert(entry);
 }
 
 void ZoneImplementation::remove(QuadTreeEntry* entry) {
 	Locker locker(_this);
 
-	QuadTree::remove(entry);
+	quadTree->remove(entry);
 }
 
 void ZoneImplementation::update(QuadTreeEntry* entry) {
 	Locker locker(_this);
 
-	QuadTree::update(entry);
+	quadTree->update(entry);
 }
 
 void ZoneImplementation::inRange(QuadTreeEntry* entry, float range) {
 	Locker locker(_this);
 
-	QuadTree::inRange(entry, range);
+	quadTree->inRange(entry, range);
 }
 
 int ZoneImplementation::getInRangeObjects(float x, float y, float range, SortedVector<ManagedReference<SceneObject*> >* objects) {
@@ -205,7 +206,7 @@ int ZoneImplementation::getInRangeObjects(float x, float y, float range, SortedV
 
 	SortedVector<QuadTreeEntry*> entryObjects;
 
-	QuadTree::inRange(x, y, range, entryObjects);
+	quadTree->inRange(x, y, range, entryObjects);
 
 	for (int i = 0; i < entryObjects.size(); ++i) {
 		SceneObject* obj = dynamic_cast<SceneObject*>(entryObjects.get(i));

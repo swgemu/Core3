@@ -52,7 +52,8 @@ which carries forward this exception.
 #include "server/zone/packets/tangible/TangibleObjectDeltaMessage3.h"
 
 void ResourceManagerImplementation::initialize() {
-	Lua::init();
+	lua = new Lua();
+	lua->init();
 
 	info("building resource tree");
 	resourceSpawner = new ResourceSpawner(zoneServer.get(), processor, objectManager);
@@ -72,7 +73,7 @@ void ResourceManagerImplementation::initialize() {
 }
 
 bool ResourceManagerImplementation::loadConfigFile() {
-	return runFile("scripts/managers/resource_manager.lua");
+	return lua->runFile("scripts/managers/resource_manager.lua");
 }
 
 int ResourceManagerImplementation::notifyObserverEvent(uint32 eventType, Observable* observable, ManagedObject* arg1, int64 arg2) {
@@ -103,7 +104,7 @@ bool ResourceManagerImplementation::loadConfigData() {
 	if (!loadConfigFile())
 		return false;
 
-	String zonesString = getGlobalString("activeZones");
+	String zonesString = lua->getGlobalString("activeZones");
 
 	StringTokenizer zonesTokens(zonesString);
 	zonesTokens.setDelimeter(",");
@@ -114,17 +115,17 @@ bool ResourceManagerImplementation::loadConfigData() {
 		resourceSpawner->addPlanet(token);
 	}
 
-	shiftInterval = getGlobalInt("averageShiftTime");
+	shiftInterval = lua->getGlobalInt("averageShiftTime");
 
-	int aveduration = getGlobalInt("aveduration");
-	float spawnThrottling = float(getGlobalInt("spawnThrottling")) / 100.0f;
-	int lowerGateOverride = getGlobalInt("lowerGateOverride");
-	int maxSpawnQuantity = getGlobalInt("maxSpawnQuantity");
+	int aveduration = lua->getGlobalInt("aveduration");
+	float spawnThrottling = float(lua->getGlobalInt("spawnThrottling")) / 100.0f;
+	int lowerGateOverride = lua->getGlobalInt("lowerGateOverride");
+	int maxSpawnQuantity = lua->getGlobalInt("maxSpawnQuantity");
 
 	resourceSpawner->setSpawningParameters(aveduration,
 			spawnThrottling, lowerGateOverride, maxSpawnQuantity);
 
-	String jtlResources = getGlobalString("jtlresources");
+	String jtlResources = lua->getGlobalString("jtlresources");
 
 	StringTokenizer jtlTokens(jtlResources);
 	jtlTokens.setDelimeter(",");
@@ -135,21 +136,21 @@ bool ResourceManagerImplementation::loadConfigData() {
 		resourceSpawner->addJtlResource(token);
 	}
 
-	String minpoolinc = getGlobalString("minimumpoolincludes");
-	String minpoolexc = getGlobalString("minimumpoolexcludes");
+	String minpoolinc = lua->getGlobalString("minimumpoolincludes");
+	String minpoolexc = lua->getGlobalString("minimumpoolexcludes");
 	resourceSpawner->initializeMinimumPool(minpoolinc, minpoolexc);
 
-	String randpoolinc = getGlobalString("randompoolincludes");
-	String randpoolexc = getGlobalString("randompoolexcludes");
-	int randpoolsize = getGlobalInt("randompoolsize");
+	String randpoolinc = lua->getGlobalString("randompoolincludes");
+	String randpoolexc = lua->getGlobalString("randompoolexcludes");
+	int randpoolsize = lua->getGlobalInt("randompoolsize");
 	resourceSpawner->initializeRandomPool(randpoolinc, randpoolexc, randpoolsize);
 
-	String fixedpoolinc = getGlobalString("fixedpoolincludes");
-	String fixedpoolexc = getGlobalString("fixedpoolexcludes");
+	String fixedpoolinc = lua->getGlobalString("fixedpoolincludes");
+	String fixedpoolexc = lua->getGlobalString("fixedpoolexcludes");
 	resourceSpawner->initializeFixedPool(fixedpoolinc, fixedpoolexc);
 
-	String natpoolinc = getGlobalString("nativepoolincludes");
-	String natpoolexc = getGlobalString("nativepoolexcludes");
+	String natpoolinc = lua->getGlobalString("nativepoolincludes");
+	String natpoolexc = lua->getGlobalString("nativepoolexcludes");
 	resourceSpawner->initializeNativePool(natpoolinc, natpoolexc);
 
 	return true;

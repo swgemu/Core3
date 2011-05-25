@@ -78,9 +78,9 @@ namespace characterbuilderbox {
 
 class SuiCharacterBuilderBoxImplementation : public SuiListBoxImplementation {
 protected:
-	CharacterBuilderMenuNode* rootNode;
+	Reference<CharacterBuilderMenuNode* > rootNode;
 
-	CharacterBuilderMenuNode* currentNode;
+	Reference<CharacterBuilderMenuNode* > currentNode;
 
 public:
 	SuiCharacterBuilderBoxImplementation(PlayerCreature* player, CharacterBuilderMenuNode* root);

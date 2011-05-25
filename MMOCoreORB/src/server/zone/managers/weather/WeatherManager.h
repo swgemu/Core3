@@ -144,7 +144,7 @@ namespace zone {
 namespace managers {
 namespace weather {
 
-class WeatherManagerImplementation : public ManagedServiceImplementation, public Lua {
+class WeatherManagerImplementation : public ManagedServiceImplementation, public Logger {
 	ManagedWeakReference<Zone* > zone;
 
 	bool weatherEnabled;

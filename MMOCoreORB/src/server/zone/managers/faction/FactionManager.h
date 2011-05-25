@@ -14,7 +14,7 @@
 
 class FactionMap;
 
-class FactionManager : public Singleton<FactionManager>, public Logger {
+class FactionManager : public Singleton<FactionManager>, public Logger, public Object {
 	FactionMap factionMap;
 
 public:

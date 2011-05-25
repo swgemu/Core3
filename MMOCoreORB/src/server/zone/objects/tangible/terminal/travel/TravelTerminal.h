@@ -134,7 +134,7 @@ namespace travel {
 
 class TravelTerminalImplementation : public TerminalImplementation {
 protected:
-	PlanetTravelPoint* planetTravelPoint;
+	Reference<PlanetTravelPoint* > planetTravelPoint;
 
 public:
 	TravelTerminalImplementation();

@@ -506,10 +506,6 @@ bool ContainerComponentImplementation::readObjectMember(ObjectInputStream* strea
 }
 
 void ContainerComponentImplementation::writeObject(ObjectOutputStream* stream) {
-	if (sceneObject->getObjectID() == 2716060) {
-		sceneObject->info("WRITING MOTHER FUCKING BITCH", true);
-	}
-
 	int _currentOffset = stream->getOffset();
 	stream->writeShort(0);
 	int _varCount = ContainerComponentImplementation::writeObjectMembers(stream);

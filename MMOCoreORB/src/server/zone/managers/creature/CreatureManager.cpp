@@ -458,16 +458,6 @@ CreatureManagerImplementation::CreatureManagerImplementation(Zone* planet) : Zon
 void CreatureManagerImplementation::initialize() {
 	// server/zone/managers/creature/CreatureManager.idl():  		setCreatureTemplateManager();
 	setCreatureTemplateManager();
-	// server/zone/managers/creature/CreatureManager.idl():  		loadSpawnAreas();
-	loadSpawnAreas();
-	// server/zone/managers/creature/CreatureManager.idl():  		loadTrainers();
-	loadTrainers();
-	// server/zone/managers/creature/CreatureManager.idl():  		loadSingleSpawns();
-	loadSingleSpawns();
-	// server/zone/managers/creature/CreatureManager.idl():  		loadMissionSpawns();
-	loadMissionSpawns();
-	// server/zone/managers/creature/CreatureManager.idl():  		loadInformants();
-	loadInformants();
 }
 
 void CreatureManagerImplementation::addToReservePool(AiAgent* agent) {

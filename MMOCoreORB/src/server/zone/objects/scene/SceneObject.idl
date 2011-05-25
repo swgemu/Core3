@@ -1231,6 +1231,18 @@ class SceneObject extends QuadTreeEntry implements Logger {
 		return false;
 	}
 	
+	public ContainerComponent getContainerComponent() {
+		return containerComponent;
+	}
+	
+	public ZoneComponent getZoneComponent() {
+		return zoneComponent;
+	}
+	
+	public ObjectMenuComponent getObjectMenuComponent() {
+		return objectMenuComponent;
+	}
+	
 	public boolean isShuttleInstallation() {
 		return gameObjectType == SHUTTLEINSTALLATION;
 	}

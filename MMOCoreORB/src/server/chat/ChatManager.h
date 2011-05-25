@@ -293,7 +293,7 @@ class ChatManagerImplementation : public ManagedServiceImplementation, public Lo
 
 	ManagedWeakReference<PlayerManager* > playerManager;
 
-	PlayerMap* playerMap;
+	Reference<PlayerMap* > playerMap;
 
 	VectorMap<String, ManagedReference<ChatRoom* > > gameRooms;
 
@@ -301,7 +301,7 @@ class ChatManagerImplementation : public ManagedServiceImplementation, public Lo
 
 	ManagedReference<ChatRoom* > guildRoom;
 
-	ChatRoomMap* roomMap;
+	Reference<ChatRoomMap* > roomMap;
 
 	unsigned int roomID;
 

@@ -22,7 +22,7 @@ namespace server {
 
 using namespace server::zone;
 
-class TerrainManager : public Logger {
+class TerrainManager : public Logger, public Object {
 	ProceduralTerrainAppearance terrainData;
 
 	Zone* zone;

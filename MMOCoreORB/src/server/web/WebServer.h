@@ -55,7 +55,7 @@
 
 //#include "../zone/objects/tangible/attachment/Attachment.h"
 
-class WebServer : public Singleton<WebServer>, public Logger {
+class WebServer : public Singleton<WebServer>, public Logger, public Object {
 
 	ManagedReference<ZoneServer*> zoneServer;
 

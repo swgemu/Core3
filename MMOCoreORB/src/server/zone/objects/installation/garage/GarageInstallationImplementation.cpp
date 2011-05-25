@@ -12,6 +12,10 @@
 #include "server/zone/ZoneServer.h"
 
 void GarageInstallationImplementation::createChildObjects() {
+	float positionX = coordinates.getPositionX();
+	float positionY = coordinates.getPositionY();
+	float positionZ = coordinates.getPositionZ();
+
 	uint32 garageAreaTemplateCRC = String("object/garage_area.iff").hashCode();
 	ManagedReference<SceneObject*> obj = server->getZoneServer()->createObject(garageAreaTemplateCRC, 1);
 

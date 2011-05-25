@@ -109,7 +109,7 @@ class AccountImplementation : public ManagedObjectImplementation, public Logger 
 protected:
 	VectorMap<unsigned int, ManagedReference<ZoneClientSession* > > zoneSessions;
 
-	AccountManager* accountManager;
+	Reference<AccountManager* > accountManager;
 
 	String username;
 

@@ -62,7 +62,7 @@ import engine.util.u3d.Vector3;
 
 include server.zone.objects.cell.CellObject;
 
-class BuildingObject extends StructureObject implements QuadTree {
+class BuildingObject extends StructureObject {
 	@dereferenced
 	protected Vector<CellObject> cells;
 
@@ -71,6 +71,8 @@ class BuildingObject extends StructureObject implements QuadTree {
 	protected SignObject signObject;
 	
 	protected unsigned long deedObjectID;
+	
+	protected transient QuadTree quadTree;
 
 	protected int accessFee;
 	
@@ -81,7 +83,8 @@ class BuildingObject extends StructureObject implements QuadTree {
 	public BuildingObject() {
 		Logger.setLoggingName("BuildingObject");
 
-		QuadTree.setSize(-1024, -1024, 1024, 1024);
+		quadTree = new QuadTree(-1024, -1024, 1024, 1024);
+		//QuadTree.setSize(-1024, -1024, 1024, 1024);
 
 		super.staticObject = false;
 						

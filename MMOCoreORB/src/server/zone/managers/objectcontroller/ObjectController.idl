@@ -55,7 +55,7 @@ import server.zone.ZoneProcessServer;
 import server.zone.objects.scene.SceneObject;
 import server.zone.objects.creature.CreatureObject;
 
-class ObjectController extends ManagedService implements Lua {
+class ObjectController extends ManagedService implements Logger {
 	private transient ZoneProcessServer server;
 	
 	private transient CommandConfigManager configManager;

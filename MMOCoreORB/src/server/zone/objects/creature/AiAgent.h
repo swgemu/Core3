@@ -491,9 +491,9 @@ protected:
 
 	Vector<ManagedReference<WeaponObject* > > weapons;
 
-	CreatureTemplate* npcTemplate;
+	Reference<CreatureTemplate* > npcTemplate;
 
-	SharedObjectTemplate* objectTemplate;
+	Reference<SharedObjectTemplate* > objectTemplate;
 
 	ManagedReference<CreatureObject* > lootOwner;
 

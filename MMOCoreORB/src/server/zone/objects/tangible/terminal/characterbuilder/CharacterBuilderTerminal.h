@@ -122,7 +122,7 @@ namespace characterbuilder {
 
 class CharacterBuilderTerminalImplementation : public TerminalImplementation {
 public:
-	CharacterBuilderMenuNode* rootNode;
+	Reference<CharacterBuilderMenuNode* > rootNode;
 
 	int performanceBuff;
 

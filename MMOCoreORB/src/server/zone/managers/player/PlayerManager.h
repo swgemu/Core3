@@ -305,14 +305,14 @@ class PlayerManagerImplementation : public ObserverImplementation, public Logger
 
 	ManagedWeakReference<ZoneServer* > server;
 
-	PlayerMap* playerMap;
+	Reference<PlayerMap* > playerMap;
 
-	CharacterNameMap* nameMap;
+	Reference<CharacterNameMap* > nameMap;
 
 	float globalExpMultiplier;
 
 public:
-	StartingItemList* startingItemList;
+	Reference<StartingItemList* > startingItemList;
 
 private:
 	StartingLocationList startingLocationList;

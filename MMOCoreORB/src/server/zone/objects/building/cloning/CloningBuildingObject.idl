@@ -73,7 +73,7 @@ class CloningBuildingObject extends BuildingObject {
 		CloningBuildingObjectTemplate cloningTemplate = null;
 		
 		if (super.templateObject.isCloningBuildingObjectTemplate()) {
-			cloningTemplate = (CloningBuildingObjectTemplate) super.templateObject;
+			cloningTemplate = (CloningBuildingObjectTemplate) super.getObjectTemplate();
 			
 			return cloningTemplate.getRandomSpawnPoint();			
 		} else {

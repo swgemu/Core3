@@ -73,7 +73,7 @@ import system.lang.System;
 import server.zone.objects.building.cloning.CloningBuildingObject;
 import server.zone.objects.creature.CreatureObject;
 
-class Zone extends ManagedObject implements QuadTree {
+class Zone extends ManagedObject {
 	private string zoneName;
 	
 	private unsigned int zoneCRC;
@@ -93,6 +93,7 @@ class Zone extends ManagedObject implements QuadTree {
 	private ZoneServer server;
 	
 	private transient QuadTree regionTree;
+	private transient QuadTree quadTree;
 
 	@dereferenced
 	private Time galacticTime;

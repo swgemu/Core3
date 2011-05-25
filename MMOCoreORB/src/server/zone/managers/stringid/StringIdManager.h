@@ -16,7 +16,7 @@ namespace zone {
 namespace managers {
 namespace stringid {
 
-class StringIdManager : public Logger, public Singleton<StringIdManager> {
+class StringIdManager : public Logger, public Singleton<StringIdManager>, public Object {
 	ObjectDatabaseManager* databaseManager;
 
 	LocalDatabase* stringsDatabase;

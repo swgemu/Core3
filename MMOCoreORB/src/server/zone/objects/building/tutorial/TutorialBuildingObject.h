@@ -119,7 +119,7 @@ namespace tutorial {
 
 class TutorialBuildingObjectImplementation : public BuildingObjectImplementation {
 protected:
-	UnloadBuildingTask* unloadTask;
+	Reference<UnloadBuildingTask* > unloadTask;
 
 public:
 	TutorialBuildingObjectImplementation();

@@ -378,11 +378,6 @@ bool AttachmentImplementation::readObjectMember(ObjectInputStream* stream, const
 		return true;
 	}
 
-	if (_name == "wearableSkillMods") {
-		TypeInfo<WearableSkillMods* >::parseFromBinaryStream(&wearableSkillMods, stream);
-		return true;
-	}
-
 
 	return false;
 }
@@ -422,16 +417,8 @@ int AttachmentImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "wearableSkillMods";
-	_name.toBinaryStream(stream);
-	_offset = stream->getOffset();
-	stream->writeShort(0);
-	TypeInfo<WearableSkillMods* >::toBinaryStream(&wearableSkillMods, stream);
-	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
-	stream->writeShort(_offset, _totalSize);
 
-
-	return 4 + TangibleObjectImplementation::writeObjectMembers(stream);
+	return 3 + TangibleObjectImplementation::writeObjectMembers(stream);
 }
 
 AttachmentImplementation::AttachmentImplementation() {

@@ -54,7 +54,7 @@ int LairObjectImplementation::notifyObjectDestructionObservers(TangibleObject* a
 	PlayClientEffectObjectMessage* explode = new PlayClientEffectObjectMessage(_this, "clienteffect/lair_damage_heavy.cef", "");
 	broadcastMessage(explode, false);
 
-	PlayClientEffectLoc* explodeLoc = new PlayClientEffectLoc("clienteffect/lair_damage_heavy.cef", getZone()->getZoneName(), positionX, positionZ, positionY);
+	PlayClientEffectLoc* explodeLoc = new PlayClientEffectLoc("clienteffect/lair_damage_heavy.cef", getZone()->getZoneName(), getPositionX(), getPositionZ(), getPositionY());
 	broadcastMessage(explodeLoc, false);
 
 	removeFromZone();
@@ -153,8 +153,8 @@ void LairObjectImplementation::checkForNewSpawns() {
 
 	CreatureManager* creatureManager = getZone()->getCreatureManager();
 
-	float x = positionX + (20.0f - System::random(400) / 10.0f);
-	float y = positionY + (20.0f - System::random(400) / 10.0f);
+	float x = getPositionX() + (20.0f - System::random(400) / 10.0f);
+	float y = getPositionY() + (20.0f - System::random(400) / 10.0f);
 	float z = getZone()->getHeight(x, y);
 
 	ManagedReference<CreatureObject*> creature = creatureManager->spawnCreature(templateToSpawn, 0, x, z, y);

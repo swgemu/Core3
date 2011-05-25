@@ -530,19 +530,19 @@ namespace server {
 namespace zone {
 
 class ZoneServerImplementation : public ManagedServiceImplementation, public Logger {
-	DatagramServiceThread* datagramService;
+	Reference<DatagramServiceThread* > datagramService;
 
-	BasePacketHandler* phandler;
+	Reference<BasePacketHandler* > phandler;
 
-	ConfigManager* configManager;
+	Reference<ConfigManager* > configManager;
 
-	ZoneHandler* zoneHandler;
+	Reference<ZoneHandler* > zoneHandler;
 
 	ManagedReference<ZoneProcessServer* > processor;
 
 	VectorMap<String, ManagedReference<Zone* > > zones;
 
-	ObjectManager* objectManager;
+	Reference<ObjectManager* > objectManager;
 
 	ManagedReference<PlayerManager* > playerManager;
 
@@ -568,9 +568,9 @@ class ZoneServerImplementation : public ManagedServiceImplementation, public Log
 
 	ManagedReference<ForageManager* > forageManager;
 
-	StringIdManager* stringIdManager;
+	Reference<StringIdManager* > stringIdManager;
 
-	CreatureTemplateManager* creatureTemplateManager;
+	Reference<CreatureTemplateManager* > creatureTemplateManager;
 
 	int totalSentPackets;
 

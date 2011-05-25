@@ -266,7 +266,7 @@ public:
 			return contents.get(0)->getObjectID();
 	}
 
-	void toString() {
+	/*void toString() {
 		if (contents.size() == 0) {
 
 			System::out << "Slot is EMPTY" << endl;
@@ -278,6 +278,6 @@ public:
 				System::out << "Quantity: " << contents.get(i)->getUseCount() << endl;
 			}
 		}
-	}
+	}*/
 };
 #endif /*COMPONENTSLOT_H_*/

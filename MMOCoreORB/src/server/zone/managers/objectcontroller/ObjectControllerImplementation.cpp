@@ -29,8 +29,10 @@ void ObjectControllerImplementation::loadCommands() {
 	info(infoMsg.toString(), true);
 
 	// LUA
-	init();
+	/*init();
 	Luna<LuaCreatureObject>::Register(L);
+
+	runFile("scripts/testscript.lua");*/
 }
 
 void ObjectControllerImplementation::finalize() {
@@ -166,6 +168,20 @@ float ObjectControllerImplementation::activateCommand(CreatureObject* object, un
 
 		queueCommand->onComplete(actionCount, object, durationTime);
 	}
+
+	/*if (actionCRC == String("stand").hashCode()) {
+		Time start;
+
+		for (int i = 0; i < 10000; ++i) {
+			LuaFunction func(L, "runScript", 0);
+			func << object;
+
+			callFunction(&func);
+			//int cred = object->getBankCredits();
+		}
+
+		info("time elapsed " + String::valueOf(start.miliDifference()), true);
+	}*/
 
 	return durationTime;
 }

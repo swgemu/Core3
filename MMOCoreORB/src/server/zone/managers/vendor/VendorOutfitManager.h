@@ -61,7 +61,7 @@ namespace managers {
 namespace vendor {
 
 
-class VendorOutfitManager : public Singleton<VendorOutfitManager>, public Logger {
+class VendorOutfitManager : public Singleton<VendorOutfitManager>, public Logger, public Object {
 	VectorMap<String, Reference<Outfit*> > outfits;
 
 public:

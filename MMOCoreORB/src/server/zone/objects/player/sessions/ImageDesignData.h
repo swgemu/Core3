@@ -109,6 +109,8 @@ public:
 
 		int size = message->parseInt();
 
+		System::out << "body parts " << size << endl;
+
 		for (int i = 0; i < size; ++i) {
 			String attr;
 			message->parseAscii(attr);
@@ -116,9 +118,13 @@ public:
 			float val = message->parseFloat();
 
 			bodyAttributes.put(attr, val);
+
+			System::out << attr << " " << val << endl;
 		}
 
 		size = message->parseInt();
+
+		System::out << "color parts " << size << endl;
 
 		for (int i = 0; i < size; ++i) {
 			String attr;
@@ -126,6 +132,8 @@ public:
 
 			uint32 val = message->parseInt();
 			//System::out << attr + String::valueOf(val) << endl;
+			System::out << attr << " " << val << endl;
+
 			colorAttributes.put(attr, val);
 		}
 

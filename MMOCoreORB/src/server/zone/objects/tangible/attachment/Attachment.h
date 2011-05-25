@@ -181,8 +181,6 @@ protected:
 
 	VectorMap<String, int> skillModMap;
 
-	WearableSkillMods* wearableSkillMods;
-
 	static const int CLOTHINGTYPE = 1;
 
 	static const int ARMORTYPE = 2;

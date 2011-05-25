@@ -26,7 +26,7 @@ using namespace server::zone::objects::creature;
 
 class FloorMesh;
 
-class PathFinderManager : public Singleton<PathFinderManager>, public Logger {
+class PathFinderManager : public Singleton<PathFinderManager>, public Logger, public Object {
 
 public:
 	PathFinderManager() : Logger("PathFinderManager") {
