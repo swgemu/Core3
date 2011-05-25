@@ -43,7 +43,7 @@
 
 object_tangible_lair_durni_shared_lair_durni = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_trash_dark.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -79,7 +79,7 @@ object_tangible_lair_durni_shared_lair_durni = SharedTangibleObjectTemplate:new 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -98,7 +98,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_durni_shared_lair_durni, 
 
 object_tangible_lair_durni_shared_lair_durni_grassland = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_trash_dark.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -134,7 +134,7 @@ object_tangible_lair_durni_shared_lair_durni_grassland = SharedTangibleObjectTem
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -153,7 +153,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_durni_shared_lair_durni_g
 
 object_tangible_lair_durni_shared_lair_durni_mountain = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_trash_dark.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -189,7 +189,7 @@ object_tangible_lair_durni_shared_lair_durni_mountain = SharedTangibleObjectTemp
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",

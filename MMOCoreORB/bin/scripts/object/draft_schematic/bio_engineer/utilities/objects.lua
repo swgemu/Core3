@@ -43,7 +43,7 @@
 
 object_draft_schematic_bio_engineer_utilities_shared_pet_stimpack_a = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {"datapad"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -74,7 +74,7 @@ object_draft_schematic_bio_engineer_utilities_shared_pet_stimpack_a = SharedDraf
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -88,7 +88,7 @@ ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_utilities_
 
 object_draft_schematic_bio_engineer_utilities_shared_pet_stimpack_b = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {"datapad"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -119,7 +119,7 @@ object_draft_schematic_bio_engineer_utilities_shared_pet_stimpack_b = SharedDraf
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -133,7 +133,7 @@ ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_utilities_
 
 object_draft_schematic_bio_engineer_utilities_shared_pet_stimpack_c = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {"datapad"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -164,7 +164,7 @@ object_draft_schematic_bio_engineer_utilities_shared_pet_stimpack_c = SharedDraf
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -178,7 +178,7 @@ ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_utilities_
 
 object_draft_schematic_bio_engineer_utilities_shared_pet_stimpack_d = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {"datapad"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -209,7 +209,7 @@ object_draft_schematic_bio_engineer_utilities_shared_pet_stimpack_d = SharedDraf
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -223,7 +223,7 @@ ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_utilities_
 
 object_draft_schematic_bio_engineer_utilities_shared_pet_vitapack_a = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {"datapad"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -254,7 +254,7 @@ object_draft_schematic_bio_engineer_utilities_shared_pet_vitapack_a = SharedDraf
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -268,7 +268,7 @@ ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_utilities_
 
 object_draft_schematic_bio_engineer_utilities_shared_pet_vitapack_b = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {"datapad"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -299,7 +299,7 @@ object_draft_schematic_bio_engineer_utilities_shared_pet_vitapack_b = SharedDraf
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -313,7 +313,7 @@ ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_utilities_
 
 object_draft_schematic_bio_engineer_utilities_shared_pet_vitapack_c = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {"datapad"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -344,7 +344,7 @@ object_draft_schematic_bio_engineer_utilities_shared_pet_vitapack_c = SharedDraf
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 

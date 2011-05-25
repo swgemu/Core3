@@ -43,7 +43,7 @@
 
 object_tangible_wearables_cyborg_shared_arm_l_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/hum_cyborg_s01_arm_l_m.sat",
-	arrangementDescriptors = {"bicep_l"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/bicep_l.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -79,7 +79,7 @@ object_tangible_wearables_cyborg_shared_arm_l_s01 = SharedTangibleObjectTemplate
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -98,7 +98,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_cyborg_shared_arm_l_
 
 object_tangible_wearables_cyborg_shared_arm_r_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/hum_cyborg_s01_arm_r_m.sat",
-	arrangementDescriptors = {"bicep_r"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/bicep_r.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -134,7 +134,7 @@ object_tangible_wearables_cyborg_shared_arm_r_s01 = SharedTangibleObjectTemplate
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -153,7 +153,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_cyborg_shared_arm_r_
 
 object_tangible_wearables_cyborg_shared_forearm_l_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/hum_cyborg_s01_forearm_l_m.sat",
-	arrangementDescriptors = {"bracer_upper_l", "bracer_lower_l"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/bracer_l.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -189,7 +189,7 @@ object_tangible_wearables_cyborg_shared_forearm_l_s01 = SharedTangibleObjectTemp
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -208,7 +208,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_cyborg_shared_forear
 
 object_tangible_wearables_cyborg_shared_forearm_r_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/hum_cyborg_s01_forearm_r_m.sat",
-	arrangementDescriptors = {"bracer_upper_r", "bracer_lower_r"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/bracer_r.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -244,7 +244,7 @@ object_tangible_wearables_cyborg_shared_forearm_r_s01 = SharedTangibleObjectTemp
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -263,7 +263,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_cyborg_shared_forear
 
 object_tangible_wearables_cyborg_shared_hand_l_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/hum_cyborg_s01_hand_l_m.sat",
-	arrangementDescriptors = {"gloves"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/gauntlets.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -299,7 +299,7 @@ object_tangible_wearables_cyborg_shared_hand_l_s01 = SharedTangibleObjectTemplat
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -318,7 +318,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_cyborg_shared_hand_l
 
 object_tangible_wearables_cyborg_shared_hand_r_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/hum_cyborg_s01_hand_r_m.sat",
-	arrangementDescriptors = {"gloves"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/gauntlets.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -354,7 +354,7 @@ object_tangible_wearables_cyborg_shared_hand_r_s01 = SharedTangibleObjectTemplat
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",

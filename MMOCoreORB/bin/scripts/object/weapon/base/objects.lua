@@ -43,7 +43,7 @@
 
 object_weapon_base_shared_base_weapon = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {"hold_r"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hold_r.iff",
 	attackType = 1,
 
 	certificationsRequired = {},
@@ -80,7 +80,7 @@ object_weapon_base_shared_base_weapon = SharedWeaponObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"default_weapon_ammo_slot", "crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/default_weapon.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -102,7 +102,7 @@ ObjectTemplates:addClientTemplate(object_weapon_base_shared_base_weapon, "object
 
 object_weapon_base_shared_weapon_default = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {"hold_r"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hold_r.iff",
 	attackType = 1,
 
 	certificationsRequired = {},
@@ -139,7 +139,7 @@ object_weapon_base_shared_weapon_default = SharedWeaponObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 0,
-	slotDescriptors = {"default_weapon_ammo_slot", "crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/default_weapon.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",

@@ -43,7 +43,7 @@
 
 object_tangible_ship_crafted_weapon_shared_armor_effectiveness_intensifier_mk1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -79,7 +79,7 @@ object_tangible_ship_crafted_weapon_shared_armor_effectiveness_intensifier_mk1 =
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -98,7 +98,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_weapon_shared_arm
 
 object_tangible_ship_crafted_weapon_shared_armor_effectiveness_intensifier_mk2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -134,7 +134,7 @@ object_tangible_ship_crafted_weapon_shared_armor_effectiveness_intensifier_mk2 =
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -153,7 +153,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_weapon_shared_arm
 
 object_tangible_ship_crafted_weapon_shared_armor_effectiveness_intensifier_mk3 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -189,7 +189,7 @@ object_tangible_ship_crafted_weapon_shared_armor_effectiveness_intensifier_mk3 =
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -208,7 +208,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_weapon_shared_arm
 
 object_tangible_ship_crafted_weapon_shared_armor_effectiveness_intensifier_mk4 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -244,7 +244,7 @@ object_tangible_ship_crafted_weapon_shared_armor_effectiveness_intensifier_mk4 =
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -263,7 +263,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_weapon_shared_arm
 
 object_tangible_ship_crafted_weapon_shared_armor_effectiveness_intensifier_mk5 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -299,7 +299,7 @@ object_tangible_ship_crafted_weapon_shared_armor_effectiveness_intensifier_mk5 =
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -318,7 +318,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_weapon_shared_arm
 
 object_tangible_ship_crafted_weapon_shared_base_weapon = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/xwing_weapon_neg_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_level1"},
 	clearFloraRadius = 0,
@@ -354,7 +354,7 @@ object_tangible_ship_crafted_weapon_shared_base_weapon = SharedTangibleObjectTem
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -373,7 +373,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_weapon_shared_bas
 
 object_tangible_ship_crafted_weapon_shared_base_weapon_subcomponent = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -409,7 +409,7 @@ object_tangible_ship_crafted_weapon_shared_base_weapon_subcomponent = SharedTang
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -428,7 +428,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_weapon_shared_bas
 
 object_tangible_ship_crafted_weapon_shared_base_weapon_subcomponent_mk1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -464,7 +464,7 @@ object_tangible_ship_crafted_weapon_shared_base_weapon_subcomponent_mk1 = Shared
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -483,7 +483,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_weapon_shared_bas
 
 object_tangible_ship_crafted_weapon_shared_base_weapon_subcomponent_mk2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -519,7 +519,7 @@ object_tangible_ship_crafted_weapon_shared_base_weapon_subcomponent_mk2 = Shared
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -538,7 +538,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_weapon_shared_bas
 
 object_tangible_ship_crafted_weapon_shared_base_weapon_subcomponent_mk3 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -574,7 +574,7 @@ object_tangible_ship_crafted_weapon_shared_base_weapon_subcomponent_mk3 = Shared
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -593,7 +593,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_weapon_shared_bas
 
 object_tangible_ship_crafted_weapon_shared_base_weapon_subcomponent_mk4 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -629,7 +629,7 @@ object_tangible_ship_crafted_weapon_shared_base_weapon_subcomponent_mk4 = Shared
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -648,7 +648,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_weapon_shared_bas
 
 object_tangible_ship_crafted_weapon_shared_base_weapon_subcomponent_mk5 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -684,7 +684,7 @@ object_tangible_ship_crafted_weapon_shared_base_weapon_subcomponent_mk5 = Shared
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -703,7 +703,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_weapon_shared_bas
 
 object_tangible_ship_crafted_weapon_shared_basic_weapon = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/xwing_weapon_neg_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_level1"},
 	clearFloraRadius = 0,
@@ -739,7 +739,7 @@ object_tangible_ship_crafted_weapon_shared_basic_weapon = SharedTangibleObjectTe
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -758,7 +758,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_weapon_shared_bas
 
 object_tangible_ship_crafted_weapon_shared_max_damage_intensifier_mk1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -794,7 +794,7 @@ object_tangible_ship_crafted_weapon_shared_max_damage_intensifier_mk1 = SharedTa
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -813,7 +813,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_weapon_shared_max
 
 object_tangible_ship_crafted_weapon_shared_max_damage_intensifier_mk2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -849,7 +849,7 @@ object_tangible_ship_crafted_weapon_shared_max_damage_intensifier_mk2 = SharedTa
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -868,7 +868,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_weapon_shared_max
 
 object_tangible_ship_crafted_weapon_shared_max_damage_intensifier_mk3 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -904,7 +904,7 @@ object_tangible_ship_crafted_weapon_shared_max_damage_intensifier_mk3 = SharedTa
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -923,7 +923,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_weapon_shared_max
 
 object_tangible_ship_crafted_weapon_shared_max_damage_intensifier_mk4 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -959,7 +959,7 @@ object_tangible_ship_crafted_weapon_shared_max_damage_intensifier_mk4 = SharedTa
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -978,7 +978,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_weapon_shared_max
 
 object_tangible_ship_crafted_weapon_shared_max_damage_intensifier_mk5 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1014,7 +1014,7 @@ object_tangible_ship_crafted_weapon_shared_max_damage_intensifier_mk5 = SharedTa
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1033,7 +1033,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_weapon_shared_max
 
 object_tangible_ship_crafted_weapon_shared_min_damage_intensifier_mk1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1069,7 +1069,7 @@ object_tangible_ship_crafted_weapon_shared_min_damage_intensifier_mk1 = SharedTa
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1088,7 +1088,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_weapon_shared_min
 
 object_tangible_ship_crafted_weapon_shared_min_damage_intensifier_mk2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1124,7 +1124,7 @@ object_tangible_ship_crafted_weapon_shared_min_damage_intensifier_mk2 = SharedTa
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1143,7 +1143,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_weapon_shared_min
 
 object_tangible_ship_crafted_weapon_shared_min_damage_intensifier_mk3 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1179,7 +1179,7 @@ object_tangible_ship_crafted_weapon_shared_min_damage_intensifier_mk3 = SharedTa
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1198,7 +1198,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_weapon_shared_min
 
 object_tangible_ship_crafted_weapon_shared_min_damage_intensifier_mk4 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1234,7 +1234,7 @@ object_tangible_ship_crafted_weapon_shared_min_damage_intensifier_mk4 = SharedTa
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1253,7 +1253,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_weapon_shared_min
 
 object_tangible_ship_crafted_weapon_shared_min_damage_intensifier_mk5 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1289,7 +1289,7 @@ object_tangible_ship_crafted_weapon_shared_min_damage_intensifier_mk5 = SharedTa
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1308,7 +1308,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_weapon_shared_min
 
 object_tangible_ship_crafted_weapon_shared_quick_shot_upgrade_mk1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1344,7 +1344,7 @@ object_tangible_ship_crafted_weapon_shared_quick_shot_upgrade_mk1 = SharedTangib
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1363,7 +1363,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_weapon_shared_qui
 
 object_tangible_ship_crafted_weapon_shared_quick_shot_upgrade_mk2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1399,7 +1399,7 @@ object_tangible_ship_crafted_weapon_shared_quick_shot_upgrade_mk2 = SharedTangib
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1418,7 +1418,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_weapon_shared_qui
 
 object_tangible_ship_crafted_weapon_shared_quick_shot_upgrade_mk3 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1454,7 +1454,7 @@ object_tangible_ship_crafted_weapon_shared_quick_shot_upgrade_mk3 = SharedTangib
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1473,7 +1473,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_weapon_shared_qui
 
 object_tangible_ship_crafted_weapon_shared_quick_shot_upgrade_mk4 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1509,7 +1509,7 @@ object_tangible_ship_crafted_weapon_shared_quick_shot_upgrade_mk4 = SharedTangib
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1528,7 +1528,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_weapon_shared_qui
 
 object_tangible_ship_crafted_weapon_shared_quick_shot_upgrade_mk5 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1564,7 +1564,7 @@ object_tangible_ship_crafted_weapon_shared_quick_shot_upgrade_mk5 = SharedTangib
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1583,7 +1583,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_weapon_shared_qui
 
 object_tangible_ship_crafted_weapon_shared_shield_effectiveness_intensifier_mk1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1619,7 +1619,7 @@ object_tangible_ship_crafted_weapon_shared_shield_effectiveness_intensifier_mk1 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1638,7 +1638,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_weapon_shared_shi
 
 object_tangible_ship_crafted_weapon_shared_shield_effectiveness_intensifier_mk2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1674,7 +1674,7 @@ object_tangible_ship_crafted_weapon_shared_shield_effectiveness_intensifier_mk2 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1693,7 +1693,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_weapon_shared_shi
 
 object_tangible_ship_crafted_weapon_shared_shield_effectiveness_intensifier_mk3 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1729,7 +1729,7 @@ object_tangible_ship_crafted_weapon_shared_shield_effectiveness_intensifier_mk3 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1748,7 +1748,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_weapon_shared_shi
 
 object_tangible_ship_crafted_weapon_shared_shield_effectiveness_intensifier_mk4 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1784,7 +1784,7 @@ object_tangible_ship_crafted_weapon_shared_shield_effectiveness_intensifier_mk4 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1803,7 +1803,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_weapon_shared_shi
 
 object_tangible_ship_crafted_weapon_shared_shield_effectiveness_intensifier_mk5 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1839,7 +1839,7 @@ object_tangible_ship_crafted_weapon_shared_shield_effectiveness_intensifier_mk5 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1858,7 +1858,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_weapon_shared_shi
 
 object_tangible_ship_crafted_weapon_shared_speed_limiter_upgrade_mk1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1894,7 +1894,7 @@ object_tangible_ship_crafted_weapon_shared_speed_limiter_upgrade_mk1 = SharedTan
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1913,7 +1913,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_weapon_shared_spe
 
 object_tangible_ship_crafted_weapon_shared_speed_limiter_upgrade_mk2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1949,7 +1949,7 @@ object_tangible_ship_crafted_weapon_shared_speed_limiter_upgrade_mk2 = SharedTan
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1968,7 +1968,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_weapon_shared_spe
 
 object_tangible_ship_crafted_weapon_shared_speed_limiter_upgrade_mk3 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2004,7 +2004,7 @@ object_tangible_ship_crafted_weapon_shared_speed_limiter_upgrade_mk3 = SharedTan
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2023,7 +2023,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_weapon_shared_spe
 
 object_tangible_ship_crafted_weapon_shared_speed_limiter_upgrade_mk4 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2059,7 +2059,7 @@ object_tangible_ship_crafted_weapon_shared_speed_limiter_upgrade_mk4 = SharedTan
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2078,7 +2078,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_weapon_shared_spe
 
 object_tangible_ship_crafted_weapon_shared_speed_limiter_upgrade_mk5 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2114,7 +2114,7 @@ object_tangible_ship_crafted_weapon_shared_speed_limiter_upgrade_mk5 = SharedTan
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2133,7 +2133,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_weapon_shared_spe
 
 object_tangible_ship_crafted_weapon_shared_weapon_incom_disruptor = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_level2"},
 	clearFloraRadius = 0,
@@ -2169,7 +2169,7 @@ object_tangible_ship_crafted_weapon_shared_weapon_incom_disruptor = SharedTangib
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2188,7 +2188,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_weapon_shared_wea
 
 object_tangible_ship_crafted_weapon_shared_weapon_slayn_ioncannon = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_level4"},
 	clearFloraRadius = 0,
@@ -2224,7 +2224,7 @@ object_tangible_ship_crafted_weapon_shared_weapon_slayn_ioncannon = SharedTangib
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2243,7 +2243,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_weapon_shared_wea
 
 object_tangible_ship_crafted_weapon_shared_weapon_subpro_tripleblaster = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_level4"},
 	clearFloraRadius = 0,
@@ -2279,7 +2279,7 @@ object_tangible_ship_crafted_weapon_shared_weapon_subpro_tripleblaster = SharedT
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2298,7 +2298,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_weapon_shared_wea
 
 object_tangible_ship_crafted_weapon_shared_wpn_advanced_blaster = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_level7"},
 	clearFloraRadius = 0,
@@ -2334,7 +2334,7 @@ object_tangible_ship_crafted_weapon_shared_wpn_advanced_blaster = SharedTangible
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2353,7 +2353,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_weapon_shared_wpn
 
 object_tangible_ship_crafted_weapon_shared_wpn_advanced_blaster_green = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_weapon_s02.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_level7"},
 	clearFloraRadius = 0,
@@ -2389,7 +2389,7 @@ object_tangible_ship_crafted_weapon_shared_wpn_advanced_blaster_green = SharedTa
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2408,7 +2408,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_weapon_shared_wpn
 
 object_tangible_ship_crafted_weapon_shared_wpn_advanced_disruptor = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_level7"},
 	clearFloraRadius = 0,
@@ -2444,7 +2444,7 @@ object_tangible_ship_crafted_weapon_shared_wpn_advanced_disruptor = SharedTangib
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2463,7 +2463,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_weapon_shared_wpn
 
 object_tangible_ship_crafted_weapon_shared_wpn_advanced_ioncannon = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_level7"},
 	clearFloraRadius = 0,
@@ -2499,7 +2499,7 @@ object_tangible_ship_crafted_weapon_shared_wpn_advanced_ioncannon = SharedTangib
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2518,7 +2518,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_weapon_shared_wpn
 
 object_tangible_ship_crafted_weapon_shared_wpn_experimental_blaster = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_level9"},
 	clearFloraRadius = 0,
@@ -2554,7 +2554,7 @@ object_tangible_ship_crafted_weapon_shared_wpn_experimental_blaster = SharedTang
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2573,7 +2573,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_weapon_shared_wpn
 
 object_tangible_ship_crafted_weapon_shared_wpn_experimental_blaster_green = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_weapon_s02.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_level9"},
 	clearFloraRadius = 0,
@@ -2609,7 +2609,7 @@ object_tangible_ship_crafted_weapon_shared_wpn_experimental_blaster_green = Shar
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2628,7 +2628,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_weapon_shared_wpn
 
 object_tangible_ship_crafted_weapon_shared_wpn_experimental_disruptor = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_level9"},
 	clearFloraRadius = 0,
@@ -2664,7 +2664,7 @@ object_tangible_ship_crafted_weapon_shared_wpn_experimental_disruptor = SharedTa
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2683,7 +2683,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_weapon_shared_wpn
 
 object_tangible_ship_crafted_weapon_shared_wpn_experimental_ioncannon = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_level9"},
 	clearFloraRadius = 0,
@@ -2719,7 +2719,7 @@ object_tangible_ship_crafted_weapon_shared_wpn_experimental_ioncannon = SharedTa
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2738,7 +2738,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_weapon_shared_wpn
 
 object_tangible_ship_crafted_weapon_shared_wpn_heavy_blaster = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_level5"},
 	clearFloraRadius = 0,
@@ -2774,7 +2774,7 @@ object_tangible_ship_crafted_weapon_shared_wpn_heavy_blaster = SharedTangibleObj
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2793,7 +2793,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_weapon_shared_wpn
 
 object_tangible_ship_crafted_weapon_shared_wpn_heavy_blaster_green = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_weapon_s02.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_level5"},
 	clearFloraRadius = 0,
@@ -2829,7 +2829,7 @@ object_tangible_ship_crafted_weapon_shared_wpn_heavy_blaster_green = SharedTangi
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2848,7 +2848,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_weapon_shared_wpn
 
 object_tangible_ship_crafted_weapon_shared_wpn_heavy_disruptor = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_level5"},
 	clearFloraRadius = 0,
@@ -2884,7 +2884,7 @@ object_tangible_ship_crafted_weapon_shared_wpn_heavy_disruptor = SharedTangibleO
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2903,7 +2903,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_weapon_shared_wpn
 
 object_tangible_ship_crafted_weapon_shared_wpn_heavy_ioncannon = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_level5"},
 	clearFloraRadius = 0,
@@ -2939,7 +2939,7 @@ object_tangible_ship_crafted_weapon_shared_wpn_heavy_ioncannon = SharedTangibleO
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2958,7 +2958,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_weapon_shared_wpn
 
 object_tangible_ship_crafted_weapon_shared_wpn_light_blaster = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_level1"},
 	clearFloraRadius = 0,
@@ -2994,7 +2994,7 @@ object_tangible_ship_crafted_weapon_shared_wpn_light_blaster = SharedTangibleObj
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3013,7 +3013,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_weapon_shared_wpn
 
 object_tangible_ship_crafted_weapon_shared_wpn_light_blaster_green = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_weapon_s02.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_level1"},
 	clearFloraRadius = 0,
@@ -3049,7 +3049,7 @@ object_tangible_ship_crafted_weapon_shared_wpn_light_blaster_green = SharedTangi
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3068,7 +3068,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_weapon_shared_wpn
 
 object_tangible_ship_crafted_weapon_shared_wpn_light_disruptor = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_level1"},
 	clearFloraRadius = 0,
@@ -3104,7 +3104,7 @@ object_tangible_ship_crafted_weapon_shared_wpn_light_disruptor = SharedTangibleO
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3123,7 +3123,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_weapon_shared_wpn
 
 object_tangible_ship_crafted_weapon_shared_wpn_light_ioncannon = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_level1"},
 	clearFloraRadius = 0,
@@ -3159,7 +3159,7 @@ object_tangible_ship_crafted_weapon_shared_wpn_light_ioncannon = SharedTangibleO
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3178,7 +3178,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_weapon_shared_wpn
 
 object_tangible_ship_crafted_weapon_shared_wpn_medium_blaster = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_level3"},
 	clearFloraRadius = 0,
@@ -3214,7 +3214,7 @@ object_tangible_ship_crafted_weapon_shared_wpn_medium_blaster = SharedTangibleOb
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3233,7 +3233,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_weapon_shared_wpn
 
 object_tangible_ship_crafted_weapon_shared_wpn_medium_blaster_green = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_weapon_s02.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_level3"},
 	clearFloraRadius = 0,
@@ -3269,7 +3269,7 @@ object_tangible_ship_crafted_weapon_shared_wpn_medium_blaster_green = SharedTang
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3288,7 +3288,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_weapon_shared_wpn
 
 object_tangible_ship_crafted_weapon_shared_wpn_medium_disruptor = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_level3"},
 	clearFloraRadius = 0,
@@ -3324,7 +3324,7 @@ object_tangible_ship_crafted_weapon_shared_wpn_medium_disruptor = SharedTangible
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3343,7 +3343,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_weapon_shared_wpn
 
 object_tangible_ship_crafted_weapon_shared_wpn_medium_ioncannon = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_level3"},
 	clearFloraRadius = 0,
@@ -3379,7 +3379,7 @@ object_tangible_ship_crafted_weapon_shared_wpn_medium_ioncannon = SharedTangible
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",

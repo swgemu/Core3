@@ -43,7 +43,7 @@
 
 object_building_tatooine_shared_association_hall_civilian_tatooine = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -81,7 +81,7 @@ object_building_tatooine_shared_association_hall_civilian_tatooine = SharedBuild
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -101,7 +101,7 @@ ObjectTemplates:addClientTemplate(object_building_tatooine_shared_association_ha
 
 object_building_tatooine_shared_association_hall_civilian_tatooine_02 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -139,7 +139,7 @@ object_building_tatooine_shared_association_hall_civilian_tatooine_02 = SharedBu
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -159,7 +159,7 @@ ObjectTemplates:addClientTemplate(object_building_tatooine_shared_association_ha
 
 object_building_tatooine_shared_bank_tatooine = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/mun_tato_bank_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -197,7 +197,7 @@ object_building_tatooine_shared_bank_tatooine = SharedBuildingObjectTemplate:new
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -217,7 +217,7 @@ ObjectTemplates:addClientTemplate(object_building_tatooine_shared_bank_tatooine,
 
 object_building_tatooine_shared_cantina_tatooine = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -255,7 +255,7 @@ object_building_tatooine_shared_cantina_tatooine = SharedBuildingObjectTemplate:
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -275,7 +275,7 @@ ObjectTemplates:addClientTemplate(object_building_tatooine_shared_cantina_tatooi
 
 object_building_tatooine_shared_capitol_tatooine = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -313,7 +313,7 @@ object_building_tatooine_shared_capitol_tatooine = SharedBuildingObjectTemplate:
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -333,7 +333,7 @@ ObjectTemplates:addClientTemplate(object_building_tatooine_shared_capitol_tatooi
 
 object_building_tatooine_shared_cave_tatooine_style_01 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -371,7 +371,7 @@ object_building_tatooine_shared_cave_tatooine_style_01 = SharedBuildingObjectTem
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -391,7 +391,7 @@ ObjectTemplates:addClientTemplate(object_building_tatooine_shared_cave_tatooine_
 
 object_building_tatooine_shared_cave_tatooine_style_02 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -429,7 +429,7 @@ object_building_tatooine_shared_cave_tatooine_style_02 = SharedBuildingObjectTem
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -449,7 +449,7 @@ ObjectTemplates:addClientTemplate(object_building_tatooine_shared_cave_tatooine_
 
 object_building_tatooine_shared_cloning_facility_tatooine = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -487,7 +487,7 @@ object_building_tatooine_shared_cloning_facility_tatooine = SharedBuildingObject
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -507,7 +507,7 @@ ObjectTemplates:addClientTemplate(object_building_tatooine_shared_cloning_facili
 
 object_building_tatooine_shared_cloning_facility_tatooine_small = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -545,7 +545,7 @@ object_building_tatooine_shared_cloning_facility_tatooine_small = SharedBuilding
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -565,7 +565,7 @@ ObjectTemplates:addClientTemplate(object_building_tatooine_shared_cloning_facili
 
 object_building_tatooine_shared_filler_building_block_64x16_style_01 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/thm_tato_block_bldg_64x16_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -603,7 +603,7 @@ object_building_tatooine_shared_filler_building_block_64x16_style_01 = SharedBui
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -623,7 +623,7 @@ ObjectTemplates:addClientTemplate(object_building_tatooine_shared_filler_buildin
 
 object_building_tatooine_shared_filler_building_block_64x16_style_02 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/thm_tato_block_bldg_64x16_s02.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -661,7 +661,7 @@ object_building_tatooine_shared_filler_building_block_64x16_style_02 = SharedBui
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -681,7 +681,7 @@ ObjectTemplates:addClientTemplate(object_building_tatooine_shared_filler_buildin
 
 object_building_tatooine_shared_filler_building_block_64x32_style_01 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/thm_tato_block_bldg_64x32_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -719,7 +719,7 @@ object_building_tatooine_shared_filler_building_block_64x32_style_01 = SharedBui
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -739,7 +739,7 @@ ObjectTemplates:addClientTemplate(object_building_tatooine_shared_filler_buildin
 
 object_building_tatooine_shared_filler_building_block_64x32_style_02 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/thm_tato_block_bldg_64x32_s02.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -777,7 +777,7 @@ object_building_tatooine_shared_filler_building_block_64x32_style_02 = SharedBui
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -797,7 +797,7 @@ ObjectTemplates:addClientTemplate(object_building_tatooine_shared_filler_buildin
 
 object_building_tatooine_shared_filler_building_slave_quarters_style_01 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/thm_tato_block_bldg_32x16_s03.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -835,7 +835,7 @@ object_building_tatooine_shared_filler_building_slave_quarters_style_01 = Shared
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -855,7 +855,7 @@ ObjectTemplates:addClientTemplate(object_building_tatooine_shared_filler_buildin
 
 object_building_tatooine_shared_filler_building_tatt_style01_01 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/thm_tato_imprv_building_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -893,7 +893,7 @@ object_building_tatooine_shared_filler_building_tatt_style01_01 = SharedBuilding
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -913,7 +913,7 @@ ObjectTemplates:addClientTemplate(object_building_tatooine_shared_filler_buildin
 
 object_building_tatooine_shared_filler_building_tatt_style01_02 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/thm_tato_imprv_building_s02.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -951,7 +951,7 @@ object_building_tatooine_shared_filler_building_tatt_style01_02 = SharedBuilding
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -971,7 +971,7 @@ ObjectTemplates:addClientTemplate(object_building_tatooine_shared_filler_buildin
 
 object_building_tatooine_shared_filler_building_tatt_style01_03 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/thm_tato_imprv_building_s03.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1009,7 +1009,7 @@ object_building_tatooine_shared_filler_building_tatt_style01_03 = SharedBuilding
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1029,7 +1029,7 @@ ObjectTemplates:addClientTemplate(object_building_tatooine_shared_filler_buildin
 
 object_building_tatooine_shared_filler_building_tatt_style01_04 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/thm_tato_imprv_building_s04.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1067,7 +1067,7 @@ object_building_tatooine_shared_filler_building_tatt_style01_04 = SharedBuilding
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1087,7 +1087,7 @@ ObjectTemplates:addClientTemplate(object_building_tatooine_shared_filler_buildin
 
 object_building_tatooine_shared_filler_building_tatt_style01_05 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/thm_tato_imprv_building_s05.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1125,7 +1125,7 @@ object_building_tatooine_shared_filler_building_tatt_style01_05 = SharedBuilding
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1145,7 +1145,7 @@ ObjectTemplates:addClientTemplate(object_building_tatooine_shared_filler_buildin
 
 object_building_tatooine_shared_filler_building_tatt_style01_06 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/thm_tato_imprv_building_s06.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1183,7 +1183,7 @@ object_building_tatooine_shared_filler_building_tatt_style01_06 = SharedBuilding
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1203,7 +1203,7 @@ ObjectTemplates:addClientTemplate(object_building_tatooine_shared_filler_buildin
 
 object_building_tatooine_shared_filler_building_tatt_style01_07 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/thm_tato_imprv_building_s07.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1241,7 +1241,7 @@ object_building_tatooine_shared_filler_building_tatt_style01_07 = SharedBuilding
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1261,7 +1261,7 @@ ObjectTemplates:addClientTemplate(object_building_tatooine_shared_filler_buildin
 
 object_building_tatooine_shared_filler_building_tatt_style01_08 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/thm_tato_imprv_building_s08.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1299,7 +1299,7 @@ object_building_tatooine_shared_filler_building_tatt_style01_08 = SharedBuilding
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1319,7 +1319,7 @@ ObjectTemplates:addClientTemplate(object_building_tatooine_shared_filler_buildin
 
 object_building_tatooine_shared_filler_building_tatt_style01_09 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/thm_tato_imprv_building_s09.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1357,7 +1357,7 @@ object_building_tatooine_shared_filler_building_tatt_style01_09 = SharedBuilding
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1377,7 +1377,7 @@ ObjectTemplates:addClientTemplate(object_building_tatooine_shared_filler_buildin
 
 object_building_tatooine_shared_filler_building_tatt_style01_10 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/thm_tato_imprv_building_s10.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1415,7 +1415,7 @@ object_building_tatooine_shared_filler_building_tatt_style01_10 = SharedBuilding
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1435,7 +1435,7 @@ ObjectTemplates:addClientTemplate(object_building_tatooine_shared_filler_buildin
 
 object_building_tatooine_shared_filler_building_tatt_style01_11 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/thm_tato_imprv_building_s11.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1473,7 +1473,7 @@ object_building_tatooine_shared_filler_building_tatt_style01_11 = SharedBuilding
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1493,7 +1493,7 @@ ObjectTemplates:addClientTemplate(object_building_tatooine_shared_filler_buildin
 
 object_building_tatooine_shared_fort_tusken = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1531,7 +1531,7 @@ object_building_tatooine_shared_fort_tusken = SharedBuildingObjectTemplate:new {
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1551,7 +1551,7 @@ ObjectTemplates:addClientTemplate(object_building_tatooine_shared_fort_tusken, "
 
 object_building_tatooine_shared_guild_combat_tatooine_style_01 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1589,7 +1589,7 @@ object_building_tatooine_shared_guild_combat_tatooine_style_01 = SharedBuildingO
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1609,7 +1609,7 @@ ObjectTemplates:addClientTemplate(object_building_tatooine_shared_guild_combat_t
 
 object_building_tatooine_shared_guild_commerce_tatooine_style_01 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1647,7 +1647,7 @@ object_building_tatooine_shared_guild_commerce_tatooine_style_01 = SharedBuildin
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1667,7 +1667,7 @@ ObjectTemplates:addClientTemplate(object_building_tatooine_shared_guild_commerce
 
 object_building_tatooine_shared_guild_theater_tatooine_style_01 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1705,7 +1705,7 @@ object_building_tatooine_shared_guild_theater_tatooine_style_01 = SharedBuilding
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1725,7 +1725,7 @@ ObjectTemplates:addClientTemplate(object_building_tatooine_shared_guild_theater_
 
 object_building_tatooine_shared_guild_university_tatooine_style_01 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1763,7 +1763,7 @@ object_building_tatooine_shared_guild_university_tatooine_style_01 = SharedBuild
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1783,7 +1783,7 @@ ObjectTemplates:addClientTemplate(object_building_tatooine_shared_guild_universi
 
 object_building_tatooine_shared_guild_university_tatooine_style_02 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1821,7 +1821,7 @@ object_building_tatooine_shared_guild_university_tatooine_style_02 = SharedBuild
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1841,7 +1841,7 @@ ObjectTemplates:addClientTemplate(object_building_tatooine_shared_guild_universi
 
 object_building_tatooine_shared_hospital_tatooine = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1879,7 +1879,7 @@ object_building_tatooine_shared_hospital_tatooine = SharedBuildingObjectTemplate
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1899,7 +1899,7 @@ ObjectTemplates:addClientTemplate(object_building_tatooine_shared_hospital_tatoo
 
 object_building_tatooine_shared_hospital_tatooine_s02 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 30,
@@ -1937,7 +1937,7 @@ object_building_tatooine_shared_hospital_tatooine_s02 = SharedBuildingObjectTemp
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1957,7 +1957,7 @@ ObjectTemplates:addClientTemplate(object_building_tatooine_shared_hospital_tatoo
 
 object_building_tatooine_shared_hotel_tatooine_general = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1995,7 +1995,7 @@ object_building_tatooine_shared_hotel_tatooine_general = SharedBuildingObjectTem
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2015,7 +2015,7 @@ ObjectTemplates:addClientTemplate(object_building_tatooine_shared_hotel_tatooine
 
 object_building_tatooine_shared_hotel_tatooine_style_01 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2053,7 +2053,7 @@ object_building_tatooine_shared_hotel_tatooine_style_01 = SharedBuildingObjectTe
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2073,7 +2073,7 @@ ObjectTemplates:addClientTemplate(object_building_tatooine_shared_hotel_tatooine
 
 object_building_tatooine_shared_housing_tatt_style01_large = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2111,7 +2111,7 @@ object_building_tatooine_shared_housing_tatt_style01_large = SharedBuildingObjec
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2131,7 +2131,7 @@ ObjectTemplates:addClientTemplate(object_building_tatooine_shared_housing_tatt_s
 
 object_building_tatooine_shared_housing_tatt_style01_med = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2169,7 +2169,7 @@ object_building_tatooine_shared_housing_tatt_style01_med = SharedBuildingObjectT
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2189,7 +2189,7 @@ ObjectTemplates:addClientTemplate(object_building_tatooine_shared_housing_tatt_s
 
 object_building_tatooine_shared_housing_tatt_style01_small = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2227,7 +2227,7 @@ object_building_tatooine_shared_housing_tatt_style01_small = SharedBuildingObjec
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2247,7 +2247,7 @@ ObjectTemplates:addClientTemplate(object_building_tatooine_shared_housing_tatt_s
 
 object_building_tatooine_shared_housing_tatt_style02_large = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2285,7 +2285,7 @@ object_building_tatooine_shared_housing_tatt_style02_large = SharedBuildingObjec
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2305,7 +2305,7 @@ ObjectTemplates:addClientTemplate(object_building_tatooine_shared_housing_tatt_s
 
 object_building_tatooine_shared_housing_tatt_style02_med = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2343,7 +2343,7 @@ object_building_tatooine_shared_housing_tatt_style02_med = SharedBuildingObjectT
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2363,7 +2363,7 @@ ObjectTemplates:addClientTemplate(object_building_tatooine_shared_housing_tatt_s
 
 object_building_tatooine_shared_housing_tatt_style02_small = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2401,7 +2401,7 @@ object_building_tatooine_shared_housing_tatt_style02_small = SharedBuildingObjec
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2421,7 +2421,7 @@ ObjectTemplates:addClientTemplate(object_building_tatooine_shared_housing_tatt_s
 
 object_building_tatooine_shared_housing_tatt_style03_large = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2459,7 +2459,7 @@ object_building_tatooine_shared_housing_tatt_style03_large = SharedBuildingObjec
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2479,7 +2479,7 @@ ObjectTemplates:addClientTemplate(object_building_tatooine_shared_housing_tatt_s
 
 object_building_tatooine_shared_housing_tatt_style03_med = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2517,7 +2517,7 @@ object_building_tatooine_shared_housing_tatt_style03_med = SharedBuildingObjectT
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2537,7 +2537,7 @@ ObjectTemplates:addClientTemplate(object_building_tatooine_shared_housing_tatt_s
 
 object_building_tatooine_shared_housing_tatt_style03_small = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2575,7 +2575,7 @@ object_building_tatooine_shared_housing_tatt_style03_small = SharedBuildingObjec
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2595,7 +2595,7 @@ ObjectTemplates:addClientTemplate(object_building_tatooine_shared_housing_tatt_s
 
 object_building_tatooine_shared_junkshop_watto = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2633,7 +2633,7 @@ object_building_tatooine_shared_junkshop_watto = SharedBuildingObjectTemplate:ne
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2653,7 +2653,7 @@ ObjectTemplates:addClientTemplate(object_building_tatooine_shared_junkshop_watto
 
 object_building_tatooine_shared_lair_environment_tatooine = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/defaultappearance.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2691,7 +2691,7 @@ object_building_tatooine_shared_lair_environment_tatooine = SharedBuildingObject
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2711,7 +2711,7 @@ ObjectTemplates:addClientTemplate(object_building_tatooine_shared_lair_environme
 
 object_building_tatooine_shared_lucky_despot = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2749,7 +2749,7 @@ object_building_tatooine_shared_lucky_despot = SharedBuildingObjectTemplate:new 
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2769,7 +2769,7 @@ ObjectTemplates:addClientTemplate(object_building_tatooine_shared_lucky_despot, 
 
 object_building_tatooine_shared_merchant_tent_tato_s01 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2807,7 +2807,7 @@ object_building_tatooine_shared_merchant_tent_tato_s01 = SharedBuildingObjectTem
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2827,7 +2827,7 @@ ObjectTemplates:addClientTemplate(object_building_tatooine_shared_merchant_tent_
 
 object_building_tatooine_shared_palace_tatooine_jabba = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2865,7 +2865,7 @@ object_building_tatooine_shared_palace_tatooine_jabba = SharedBuildingObjectTemp
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2885,7 +2885,7 @@ ObjectTemplates:addClientTemplate(object_building_tatooine_shared_palace_tatooin
 
 object_building_tatooine_shared_parking_garage_tatooine_style_1 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/mun_tato_garage_s01_u01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2923,7 +2923,7 @@ object_building_tatooine_shared_parking_garage_tatooine_style_1 = SharedBuilding
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2943,7 +2943,7 @@ ObjectTemplates:addClientTemplate(object_building_tatooine_shared_parking_garage
 
 object_building_tatooine_shared_poi_tato_farm_32x32_s01 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/poi_tato_farm_32x32_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2981,7 +2981,7 @@ object_building_tatooine_shared_poi_tato_farm_32x32_s01 = SharedBuildingObjectTe
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3001,7 +3001,7 @@ ObjectTemplates:addClientTemplate(object_building_tatooine_shared_poi_tato_farm_
 
 object_building_tatooine_shared_salon_tatooine = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 40,
@@ -3039,7 +3039,7 @@ object_building_tatooine_shared_salon_tatooine = SharedBuildingObjectTemplate:ne
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3059,7 +3059,7 @@ ObjectTemplates:addClientTemplate(object_building_tatooine_shared_salon_tatooine
 
 object_building_tatooine_shared_shuttleport_tatooine = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/mun_tato_shuttleport_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -3097,7 +3097,7 @@ object_building_tatooine_shared_shuttleport_tatooine = SharedBuildingObjectTempl
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3117,7 +3117,7 @@ ObjectTemplates:addClientTemplate(object_building_tatooine_shared_shuttleport_ta
 
 object_building_tatooine_shared_starport_tatooine = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -3155,7 +3155,7 @@ object_building_tatooine_shared_starport_tatooine = SharedBuildingObjectTemplate
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3175,7 +3175,7 @@ ObjectTemplates:addClientTemplate(object_building_tatooine_shared_starport_tatoo
 
 object_building_tatooine_shared_tower_jabbas_palace = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/thm_tato_jabbas_palace_tower.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 30,
@@ -3213,7 +3213,7 @@ object_building_tatooine_shared_tower_jabbas_palace = SharedBuildingObjectTempla
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",

@@ -43,7 +43,7 @@
 
 object_tangible_lair_mawgax_shared_lair_mawgax = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_nest_tree.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -79,7 +79,7 @@ object_tangible_lair_mawgax_shared_lair_mawgax = SharedTangibleObjectTemplate:ne
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -98,7 +98,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_mawgax_shared_lair_mawgax
 
 object_tangible_lair_mawgax_shared_lair_mawgax_grassland = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_nest_tree.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -134,7 +134,7 @@ object_tangible_lair_mawgax_shared_lair_mawgax_grassland = SharedTangibleObjectT
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -153,7 +153,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_mawgax_shared_lair_mawgax
 
 object_tangible_lair_mawgax_shared_lair_mawgax_mountain = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_nest_tree.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -189,7 +189,7 @@ object_tangible_lair_mawgax_shared_lair_mawgax_mountain = SharedTangibleObjectTe
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",

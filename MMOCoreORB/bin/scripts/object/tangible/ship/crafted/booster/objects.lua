@@ -43,7 +43,7 @@
 
 object_tangible_ship_crafted_booster_shared_base_booster = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/xwing_booster_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_level1"},
 	clearFloraRadius = 0,
@@ -79,7 +79,7 @@ object_tangible_ship_crafted_booster_shared_base_booster = SharedTangibleObjectT
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -98,7 +98,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_booster_shared_ba
 
 object_tangible_ship_crafted_booster_shared_base_booster_subcomponent = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_booster_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -134,7 +134,7 @@ object_tangible_ship_crafted_booster_shared_base_booster_subcomponent = SharedTa
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -153,7 +153,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_booster_shared_ba
 
 object_tangible_ship_crafted_booster_shared_base_booster_subcomponent_mk1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_booster_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -189,7 +189,7 @@ object_tangible_ship_crafted_booster_shared_base_booster_subcomponent_mk1 = Shar
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -208,7 +208,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_booster_shared_ba
 
 object_tangible_ship_crafted_booster_shared_base_booster_subcomponent_mk2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_booster_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -244,7 +244,7 @@ object_tangible_ship_crafted_booster_shared_base_booster_subcomponent_mk2 = Shar
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -263,7 +263,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_booster_shared_ba
 
 object_tangible_ship_crafted_booster_shared_base_booster_subcomponent_mk3 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_booster_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -299,7 +299,7 @@ object_tangible_ship_crafted_booster_shared_base_booster_subcomponent_mk3 = Shar
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -318,7 +318,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_booster_shared_ba
 
 object_tangible_ship_crafted_booster_shared_base_booster_subcomponent_mk4 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_booster_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -354,7 +354,7 @@ object_tangible_ship_crafted_booster_shared_base_booster_subcomponent_mk4 = Shar
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -373,7 +373,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_booster_shared_ba
 
 object_tangible_ship_crafted_booster_shared_base_booster_subcomponent_mk5 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_booster_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -409,7 +409,7 @@ object_tangible_ship_crafted_booster_shared_base_booster_subcomponent_mk5 = Shar
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -428,7 +428,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_booster_shared_ba
 
 object_tangible_ship_crafted_booster_shared_basic_booster = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/xwing_booster_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_level1"},
 	clearFloraRadius = 0,
@@ -464,7 +464,7 @@ object_tangible_ship_crafted_booster_shared_basic_booster = SharedTangibleObject
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -483,7 +483,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_booster_shared_ba
 
 object_tangible_ship_crafted_booster_shared_booster_mk1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_booster_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_level1"},
 	clearFloraRadius = 0,
@@ -519,7 +519,7 @@ object_tangible_ship_crafted_booster_shared_booster_mk1 = SharedTangibleObjectTe
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -538,7 +538,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_booster_shared_bo
 
 object_tangible_ship_crafted_booster_shared_booster_mk2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_booster_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_level3"},
 	clearFloraRadius = 0,
@@ -574,7 +574,7 @@ object_tangible_ship_crafted_booster_shared_booster_mk2 = SharedTangibleObjectTe
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -593,7 +593,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_booster_shared_bo
 
 object_tangible_ship_crafted_booster_shared_booster_mk3 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_booster_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_level5"},
 	clearFloraRadius = 0,
@@ -629,7 +629,7 @@ object_tangible_ship_crafted_booster_shared_booster_mk3 = SharedTangibleObjectTe
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -648,7 +648,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_booster_shared_bo
 
 object_tangible_ship_crafted_booster_shared_booster_mk4 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_booster_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_level7"},
 	clearFloraRadius = 0,
@@ -684,7 +684,7 @@ object_tangible_ship_crafted_booster_shared_booster_mk4 = SharedTangibleObjectTe
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -703,7 +703,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_booster_shared_bo
 
 object_tangible_ship_crafted_booster_shared_booster_mk5 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_booster_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_level9"},
 	clearFloraRadius = 0,
@@ -739,7 +739,7 @@ object_tangible_ship_crafted_booster_shared_booster_mk5 = SharedTangibleObjectTe
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -758,7 +758,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_booster_shared_bo
 
 object_tangible_ship_crafted_booster_shared_booster_overdriver_mk1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_booster_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -794,7 +794,7 @@ object_tangible_ship_crafted_booster_shared_booster_overdriver_mk1 = SharedTangi
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -813,7 +813,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_booster_shared_bo
 
 object_tangible_ship_crafted_booster_shared_booster_overdriver_mk2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_booster_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -849,7 +849,7 @@ object_tangible_ship_crafted_booster_shared_booster_overdriver_mk2 = SharedTangi
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -868,7 +868,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_booster_shared_bo
 
 object_tangible_ship_crafted_booster_shared_booster_overdriver_mk3 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_booster_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -904,7 +904,7 @@ object_tangible_ship_crafted_booster_shared_booster_overdriver_mk3 = SharedTangi
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -923,7 +923,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_booster_shared_bo
 
 object_tangible_ship_crafted_booster_shared_booster_overdriver_mk4 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_booster_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -959,7 +959,7 @@ object_tangible_ship_crafted_booster_shared_booster_overdriver_mk4 = SharedTangi
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -978,7 +978,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_booster_shared_bo
 
 object_tangible_ship_crafted_booster_shared_booster_overdriver_mk5 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_booster_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1014,7 +1014,7 @@ object_tangible_ship_crafted_booster_shared_booster_overdriver_mk5 = SharedTangi
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1033,7 +1033,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_booster_shared_bo
 
 object_tangible_ship_crafted_booster_shared_extended_life_fuel_cell_mk1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_booster_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1069,7 +1069,7 @@ object_tangible_ship_crafted_booster_shared_extended_life_fuel_cell_mk1 = Shared
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1088,7 +1088,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_booster_shared_ex
 
 object_tangible_ship_crafted_booster_shared_extended_life_fuel_cell_mk2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_booster_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1124,7 +1124,7 @@ object_tangible_ship_crafted_booster_shared_extended_life_fuel_cell_mk2 = Shared
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1143,7 +1143,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_booster_shared_ex
 
 object_tangible_ship_crafted_booster_shared_extended_life_fuel_cell_mk3 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_booster_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1179,7 +1179,7 @@ object_tangible_ship_crafted_booster_shared_extended_life_fuel_cell_mk3 = Shared
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1198,7 +1198,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_booster_shared_ex
 
 object_tangible_ship_crafted_booster_shared_extended_life_fuel_cell_mk4 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_booster_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1234,7 +1234,7 @@ object_tangible_ship_crafted_booster_shared_extended_life_fuel_cell_mk4 = Shared
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1253,7 +1253,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_booster_shared_ex
 
 object_tangible_ship_crafted_booster_shared_extended_life_fuel_cell_mk5 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_booster_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1289,7 +1289,7 @@ object_tangible_ship_crafted_booster_shared_extended_life_fuel_cell_mk5 = Shared
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1308,7 +1308,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_booster_shared_ex
 
 object_tangible_ship_crafted_booster_shared_fast_charge_fuel_cell_mk1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_booster_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1344,7 +1344,7 @@ object_tangible_ship_crafted_booster_shared_fast_charge_fuel_cell_mk1 = SharedTa
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1363,7 +1363,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_booster_shared_fa
 
 object_tangible_ship_crafted_booster_shared_fast_charge_fuel_cell_mk2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_booster_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1399,7 +1399,7 @@ object_tangible_ship_crafted_booster_shared_fast_charge_fuel_cell_mk2 = SharedTa
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1418,7 +1418,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_booster_shared_fa
 
 object_tangible_ship_crafted_booster_shared_fast_charge_fuel_cell_mk3 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_booster_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1454,7 +1454,7 @@ object_tangible_ship_crafted_booster_shared_fast_charge_fuel_cell_mk3 = SharedTa
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1473,7 +1473,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_booster_shared_fa
 
 object_tangible_ship_crafted_booster_shared_fast_charge_fuel_cell_mk4 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_booster_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1509,7 +1509,7 @@ object_tangible_ship_crafted_booster_shared_fast_charge_fuel_cell_mk4 = SharedTa
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1528,7 +1528,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_booster_shared_fa
 
 object_tangible_ship_crafted_booster_shared_fast_charge_fuel_cell_mk5 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_booster_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1564,7 +1564,7 @@ object_tangible_ship_crafted_booster_shared_fast_charge_fuel_cell_mk5 = SharedTa
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1583,7 +1583,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_booster_shared_fa
 
 object_tangible_ship_crafted_booster_shared_heavy_fuel_cell_mk1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_booster_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1619,7 +1619,7 @@ object_tangible_ship_crafted_booster_shared_heavy_fuel_cell_mk1 = SharedTangible
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1638,7 +1638,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_booster_shared_he
 
 object_tangible_ship_crafted_booster_shared_heavy_fuel_cell_mk2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_booster_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1674,7 +1674,7 @@ object_tangible_ship_crafted_booster_shared_heavy_fuel_cell_mk2 = SharedTangible
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1693,7 +1693,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_booster_shared_he
 
 object_tangible_ship_crafted_booster_shared_heavy_fuel_cell_mk3 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_booster_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1729,7 +1729,7 @@ object_tangible_ship_crafted_booster_shared_heavy_fuel_cell_mk3 = SharedTangible
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1748,7 +1748,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_booster_shared_he
 
 object_tangible_ship_crafted_booster_shared_heavy_fuel_cell_mk4 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_booster_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1784,7 +1784,7 @@ object_tangible_ship_crafted_booster_shared_heavy_fuel_cell_mk4 = SharedTangible
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1803,7 +1803,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_booster_shared_he
 
 object_tangible_ship_crafted_booster_shared_heavy_fuel_cell_mk5 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_booster_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1839,7 +1839,7 @@ object_tangible_ship_crafted_booster_shared_heavy_fuel_cell_mk5 = SharedTangible
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1858,7 +1858,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_booster_shared_he
 
 object_tangible_ship_crafted_booster_shared_xwing_booster_mk1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/xwing_booster_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_level2"},
 	clearFloraRadius = 0,
@@ -1894,7 +1894,7 @@ object_tangible_ship_crafted_booster_shared_xwing_booster_mk1 = SharedTangibleOb
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1913,7 +1913,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_booster_shared_xw
 
 object_tangible_ship_crafted_booster_shared_xwing_booster_mk2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/xwing_booster_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_level4"},
 	clearFloraRadius = 0,
@@ -1949,7 +1949,7 @@ object_tangible_ship_crafted_booster_shared_xwing_booster_mk2 = SharedTangibleOb
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",

@@ -43,7 +43,7 @@
 
 object_tangible_planet_map_location_shared_map_location_base = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/pt_waypoint_ai_s02_blue.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -79,7 +79,7 @@ object_tangible_planet_map_location_shared_map_location_base = SharedTangibleObj
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",

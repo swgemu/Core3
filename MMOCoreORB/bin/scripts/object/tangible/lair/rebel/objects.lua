@@ -43,7 +43,7 @@
 
 object_tangible_lair_rebel_shared_lair_rebel_npc = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/mun_all_military_base_lookout_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -79,7 +79,7 @@ object_tangible_lair_rebel_shared_lair_rebel_npc = SharedTangibleObjectTemplate:
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",

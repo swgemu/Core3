@@ -43,7 +43,7 @@
 
 object_tangible_wearables_necklace_shared_bestine_quest_badge = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/necklace_s08_f.sat",
-	arrangementDescriptors = {"neck"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/neck.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -79,7 +79,7 @@ object_tangible_wearables_necklace_shared_bestine_quest_badge = SharedTangibleOb
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -98,7 +98,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_necklace_shared_best
 
 object_tangible_wearables_necklace_shared_necklace_adorned_beads = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/necklace_s08_f.sat",
-	arrangementDescriptors = {"neck"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/neck.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -134,7 +134,7 @@ object_tangible_wearables_necklace_shared_necklace_adorned_beads = SharedTangibl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -153,7 +153,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_necklace_shared_neck
 
 object_tangible_wearables_necklace_shared_necklace_base = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {"neck"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/neck.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -189,7 +189,7 @@ object_tangible_wearables_necklace_shared_necklace_base = SharedTangibleObjectTe
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -208,7 +208,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_necklace_shared_neck
 
 object_tangible_wearables_necklace_shared_necklace_blue_gadget = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/necklace_s02_f.sat",
-	arrangementDescriptors = {"neck"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/neck.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -244,7 +244,7 @@ object_tangible_wearables_necklace_shared_necklace_blue_gadget = SharedTangibleO
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -263,7 +263,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_necklace_shared_neck
 
 object_tangible_wearables_necklace_shared_necklace_brass_charm = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/necklace_s08_f.sat",
-	arrangementDescriptors = {"neck"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/neck.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -299,7 +299,7 @@ object_tangible_wearables_necklace_shared_necklace_brass_charm = SharedTangibleO
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -318,7 +318,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_necklace_shared_neck
 
 object_tangible_wearables_necklace_shared_necklace_bright_bauble = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/necklace_s08_f.sat",
-	arrangementDescriptors = {"neck"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/neck.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -354,7 +354,7 @@ object_tangible_wearables_necklace_shared_necklace_bright_bauble = SharedTangibl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -373,7 +373,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_necklace_shared_neck
 
 object_tangible_wearables_necklace_shared_necklace_complex_pattern = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/necklace_s02_f.sat",
-	arrangementDescriptors = {"neck"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/neck.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -409,7 +409,7 @@ object_tangible_wearables_necklace_shared_necklace_complex_pattern = SharedTangi
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -428,7 +428,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_necklace_shared_neck
 
 object_tangible_wearables_necklace_shared_necklace_convoluted_adornment = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/necklace_s02_f.sat",
-	arrangementDescriptors = {"neck"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/neck.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -464,7 +464,7 @@ object_tangible_wearables_necklace_shared_necklace_convoluted_adornment = Shared
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -483,7 +483,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_necklace_shared_neck
 
 object_tangible_wearables_necklace_shared_necklace_crushed_brooch = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/necklace_s02_f.sat",
-	arrangementDescriptors = {"neck"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/neck.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -519,7 +519,7 @@ object_tangible_wearables_necklace_shared_necklace_crushed_brooch = SharedTangib
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -538,7 +538,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_necklace_shared_neck
 
 object_tangible_wearables_necklace_shared_necklace_elaborate_necklet = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/necklace_s02_f.sat",
-	arrangementDescriptors = {"neck"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/neck.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -574,7 +574,7 @@ object_tangible_wearables_necklace_shared_necklace_elaborate_necklet = SharedTan
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -593,7 +593,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_necklace_shared_neck
 
 object_tangible_wearables_necklace_shared_necklace_flashy_choker = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/necklace_s07_f.sat",
-	arrangementDescriptors = {"neck"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/neck.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -629,7 +629,7 @@ object_tangible_wearables_necklace_shared_necklace_flashy_choker = SharedTangibl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -648,7 +648,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_necklace_shared_neck
 
 object_tangible_wearables_necklace_shared_necklace_hologram_locket = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/necklace_s07_f.sat",
-	arrangementDescriptors = {"neck"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/neck.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -684,7 +684,7 @@ object_tangible_wearables_necklace_shared_necklace_hologram_locket = SharedTangi
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -703,7 +703,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_necklace_shared_neck
 
 object_tangible_wearables_necklace_shared_necklace_ice_pendant = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/necklace_s08_f.sat",
-	arrangementDescriptors = {"neck"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/neck.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -739,7 +739,7 @@ object_tangible_wearables_necklace_shared_necklace_ice_pendant = SharedTangibleO
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -758,7 +758,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_necklace_shared_neck
 
 object_tangible_wearables_necklace_shared_necklace_iron_brooch = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/necklace_s02_f.sat",
-	arrangementDescriptors = {"neck"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/neck.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -794,7 +794,7 @@ object_tangible_wearables_necklace_shared_necklace_iron_brooch = SharedTangibleO
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -813,7 +813,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_necklace_shared_neck
 
 object_tangible_wearables_necklace_shared_necklace_iron_choker = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/necklace_s02_f.sat",
-	arrangementDescriptors = {"neck"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/neck.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -849,7 +849,7 @@ object_tangible_wearables_necklace_shared_necklace_iron_choker = SharedTangibleO
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -868,7 +868,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_necklace_shared_neck
 
 object_tangible_wearables_necklace_shared_necklace_jeweled_pendant = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/necklace_s08_f.sat",
-	arrangementDescriptors = {"neck"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/neck.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -904,7 +904,7 @@ object_tangible_wearables_necklace_shared_necklace_jeweled_pendant = SharedTangi
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -923,7 +923,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_necklace_shared_neck
 
 object_tangible_wearables_necklace_shared_necklace_knickknack = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/necklace_s07_f.sat",
-	arrangementDescriptors = {"neck"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/neck.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -959,7 +959,7 @@ object_tangible_wearables_necklace_shared_necklace_knickknack = SharedTangibleOb
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -978,7 +978,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_necklace_shared_neck
 
 object_tangible_wearables_necklace_shared_necklace_living_chains = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/necklace_s03_f.sat",
-	arrangementDescriptors = {"neck"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/neck.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1014,7 +1014,7 @@ object_tangible_wearables_necklace_shared_necklace_living_chains = SharedTangibl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1033,7 +1033,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_necklace_shared_neck
 
 object_tangible_wearables_necklace_shared_necklace_magnificent_lavaliere = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/necklace_s07_f.sat",
-	arrangementDescriptors = {"neck"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/neck.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1069,7 +1069,7 @@ object_tangible_wearables_necklace_shared_necklace_magnificent_lavaliere = Share
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1088,7 +1088,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_necklace_shared_neck
 
 object_tangible_wearables_necklace_shared_necklace_nyax = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/necklace_s02_f.sat",
-	arrangementDescriptors = {"neck"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/neck.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1124,7 +1124,7 @@ object_tangible_wearables_necklace_shared_necklace_nyax = SharedTangibleObjectTe
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1143,7 +1143,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_necklace_shared_neck
 
 object_tangible_wearables_necklace_shared_necklace_opulent_cameo = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/necklace_s07_f.sat",
-	arrangementDescriptors = {"neck"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/neck.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1179,7 +1179,7 @@ object_tangible_wearables_necklace_shared_necklace_opulent_cameo = SharedTangibl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1198,7 +1198,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_necklace_shared_neck
 
 object_tangible_wearables_necklace_shared_necklace_ornamental_ratchet = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/necklace_s02_f.sat",
-	arrangementDescriptors = {"neck"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/neck.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1234,7 +1234,7 @@ object_tangible_wearables_necklace_shared_necklace_ornamental_ratchet = SharedTa
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1253,7 +1253,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_necklace_shared_neck
 
 object_tangible_wearables_necklace_shared_necklace_pawl_chain = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/necklace_s07_f.sat",
-	arrangementDescriptors = {"neck"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/neck.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1289,7 +1289,7 @@ object_tangible_wearables_necklace_shared_necklace_pawl_chain = SharedTangibleOb
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1308,7 +1308,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_necklace_shared_neck
 
 object_tangible_wearables_necklace_shared_necklace_platinum_pin = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/necklace_s07_f.sat",
-	arrangementDescriptors = {"neck"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/neck.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1344,7 +1344,7 @@ object_tangible_wearables_necklace_shared_necklace_platinum_pin = SharedTangible
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1363,7 +1363,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_necklace_shared_neck
 
 object_tangible_wearables_necklace_shared_necklace_reebo_charm = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/necklace_s07_f.sat",
-	arrangementDescriptors = {"neck"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/neck.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1399,7 +1399,7 @@ object_tangible_wearables_necklace_shared_necklace_reebo_charm = SharedTangibleO
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1418,7 +1418,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_necklace_shared_neck
 
 object_tangible_wearables_necklace_shared_necklace_rosy_pearl = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/necklace_s01_f.sat",
-	arrangementDescriptors = {"neck"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/neck.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1454,7 +1454,7 @@ object_tangible_wearables_necklace_shared_necklace_rosy_pearl = SharedTangibleOb
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1473,7 +1473,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_necklace_shared_neck
 
 object_tangible_wearables_necklace_shared_necklace_rusty_beads = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/necklace_s08_f.sat",
-	arrangementDescriptors = {"neck"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/neck.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1509,7 +1509,7 @@ object_tangible_wearables_necklace_shared_necklace_rusty_beads = SharedTangibleO
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1528,7 +1528,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_necklace_shared_neck
 
 object_tangible_wearables_necklace_shared_necklace_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/necklace_s01_f.sat",
-	arrangementDescriptors = {"neck"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/neck.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1564,7 +1564,7 @@ object_tangible_wearables_necklace_shared_necklace_s01 = SharedTangibleObjectTem
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1583,7 +1583,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_necklace_shared_neck
 
 object_tangible_wearables_necklace_shared_necklace_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/necklace_s02_f.sat",
-	arrangementDescriptors = {"neck"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/neck.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1619,7 +1619,7 @@ object_tangible_wearables_necklace_shared_necklace_s02 = SharedTangibleObjectTem
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1638,7 +1638,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_necklace_shared_neck
 
 object_tangible_wearables_necklace_shared_necklace_s03 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/necklace_s03_f.sat",
-	arrangementDescriptors = {"neck"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/neck.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1674,7 +1674,7 @@ object_tangible_wearables_necklace_shared_necklace_s03 = SharedTangibleObjectTem
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1693,7 +1693,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_necklace_shared_neck
 
 object_tangible_wearables_necklace_shared_necklace_s04 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/necklace_s04_f.sat",
-	arrangementDescriptors = {"neck"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/neck.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1729,7 +1729,7 @@ object_tangible_wearables_necklace_shared_necklace_s04 = SharedTangibleObjectTem
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1748,7 +1748,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_necklace_shared_neck
 
 object_tangible_wearables_necklace_shared_necklace_s05 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/necklace_s05_f.sat",
-	arrangementDescriptors = {"neck"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/neck.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1784,7 +1784,7 @@ object_tangible_wearables_necklace_shared_necklace_s05 = SharedTangibleObjectTem
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1803,7 +1803,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_necklace_shared_neck
 
 object_tangible_wearables_necklace_shared_necklace_s06 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/necklace_s06_f.sat",
-	arrangementDescriptors = {"neck"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/neck.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1839,7 +1839,7 @@ object_tangible_wearables_necklace_shared_necklace_s06 = SharedTangibleObjectTem
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1858,7 +1858,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_necklace_shared_neck
 
 object_tangible_wearables_necklace_shared_necklace_s07 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/necklace_s07_f.sat",
-	arrangementDescriptors = {"neck"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/neck.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1894,7 +1894,7 @@ object_tangible_wearables_necklace_shared_necklace_s07 = SharedTangibleObjectTem
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1913,7 +1913,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_necklace_shared_neck
 
 object_tangible_wearables_necklace_shared_necklace_s08 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/necklace_s08_f.sat",
-	arrangementDescriptors = {"neck"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/neck.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1949,7 +1949,7 @@ object_tangible_wearables_necklace_shared_necklace_s08 = SharedTangibleObjectTem
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1968,7 +1968,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_necklace_shared_neck
 
 object_tangible_wearables_necklace_shared_necklace_s09 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/necklace_s09_f.sat",
-	arrangementDescriptors = {"neck"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/neck.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2004,7 +2004,7 @@ object_tangible_wearables_necklace_shared_necklace_s09 = SharedTangibleObjectTem
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2023,7 +2023,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_necklace_shared_neck
 
 object_tangible_wearables_necklace_shared_necklace_s09_quest = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/necklace_s09_f.sat",
-	arrangementDescriptors = {"neck"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/neck.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2059,7 +2059,7 @@ object_tangible_wearables_necklace_shared_necklace_s09_quest = SharedTangibleObj
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2078,7 +2078,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_necklace_shared_neck
 
 object_tangible_wearables_necklace_shared_necklace_s10 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/necklace_s10_f.sat",
-	arrangementDescriptors = {"neck"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/neck.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2114,7 +2114,7 @@ object_tangible_wearables_necklace_shared_necklace_s10 = SharedTangibleObjectTem
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2133,7 +2133,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_necklace_shared_neck
 
 object_tangible_wearables_necklace_shared_necklace_s11 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/necklace_s11_f.sat",
-	arrangementDescriptors = {"neck"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/neck.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2169,7 +2169,7 @@ object_tangible_wearables_necklace_shared_necklace_s11 = SharedTangibleObjectTem
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2188,7 +2188,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_necklace_shared_neck
 
 object_tangible_wearables_necklace_shared_necklace_s12 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/necklace_s12_f.sat",
-	arrangementDescriptors = {"neck"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/neck.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2224,7 +2224,7 @@ object_tangible_wearables_necklace_shared_necklace_s12 = SharedTangibleObjectTem
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2243,7 +2243,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_necklace_shared_neck
 
 object_tangible_wearables_necklace_shared_necklace_sparkling_bijou = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/necklace_s07_f.sat",
-	arrangementDescriptors = {"neck"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/neck.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2279,7 +2279,7 @@ object_tangible_wearables_necklace_shared_necklace_sparkling_bijou = SharedTangi
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2298,7 +2298,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_necklace_shared_neck
 
 object_tangible_wearables_necklace_shared_necklace_wampum = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/necklace_s03_f.sat",
-	arrangementDescriptors = {"neck"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/neck.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2334,7 +2334,7 @@ object_tangible_wearables_necklace_shared_necklace_wampum = SharedTangibleObject
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",

@@ -43,7 +43,7 @@
 
 object_weapon_melee_special_shared_blacksun_razor = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_sp_blacksun_knuckler.apt",
-	arrangementDescriptors = {"hold_r"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hold_r.iff",
 	attackType = 1,
 
 	certificationsRequired = {},
@@ -80,7 +80,7 @@ object_weapon_melee_special_shared_blacksun_razor = SharedWeaponObjectTemplate:n
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"default_weapon_ammo_slot", "crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/default_weapon.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -102,7 +102,7 @@ ObjectTemplates:addClientTemplate(object_weapon_melee_special_shared_blacksun_ra
 
 object_weapon_melee_special_shared_vibroknuckler = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_sp_vibroknuckler.apt",
-	arrangementDescriptors = {"hold_r"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hold_r.iff",
 	attackType = 1,
 
 	certificationsRequired = {},
@@ -139,7 +139,7 @@ object_weapon_melee_special_shared_vibroknuckler = SharedWeaponObjectTemplate:ne
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"default_weapon_ammo_slot", "crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/default_weapon.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",

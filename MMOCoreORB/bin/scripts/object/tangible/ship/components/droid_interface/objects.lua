@@ -43,7 +43,7 @@
 
 object_tangible_ship_components_droid_interface_shared_ddi_armek_military_grade_mk1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s02.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_level7"},
 	clearFloraRadius = 0,
@@ -79,7 +79,7 @@ object_tangible_ship_components_droid_interface_shared_ddi_armek_military_grade_
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -98,7 +98,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_components_droid_interfac
 
 object_tangible_ship_components_droid_interface_shared_ddi_armek_military_grade_mk2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s02.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_levelten"},
 	clearFloraRadius = 0,
@@ -134,7 +134,7 @@ object_tangible_ship_components_droid_interface_shared_ddi_armek_military_grade_
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -153,7 +153,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_components_droid_interfac
 
 object_tangible_ship_components_droid_interface_shared_ddi_cygnus_di6 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_level2"},
 	clearFloraRadius = 0,
@@ -189,7 +189,7 @@ object_tangible_ship_components_droid_interface_shared_ddi_cygnus_di6 = SharedTa
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -208,7 +208,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_components_droid_interfac
 
 object_tangible_ship_components_droid_interface_shared_ddi_cygnus_di8 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_level6"},
 	clearFloraRadius = 0,
@@ -244,7 +244,7 @@ object_tangible_ship_components_droid_interface_shared_ddi_cygnus_di8 = SharedTa
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -263,7 +263,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_components_droid_interfac
 
 object_tangible_ship_components_droid_interface_shared_ddi_freitek_droid_commander_mk1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_level3"},
 	clearFloraRadius = 0,
@@ -299,7 +299,7 @@ object_tangible_ship_components_droid_interface_shared_ddi_freitek_droid_command
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -318,7 +318,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_components_droid_interfac
 
 object_tangible_ship_components_droid_interface_shared_ddi_freitek_droid_commander_mk2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_level6"},
 	clearFloraRadius = 0,
@@ -354,7 +354,7 @@ object_tangible_ship_components_droid_interface_shared_ddi_freitek_droid_command
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -373,7 +373,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_components_droid_interfac
 
 object_tangible_ship_components_droid_interface_shared_ddi_freitek_droid_commander_mk3 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_level8"},
 	clearFloraRadius = 0,
@@ -409,7 +409,7 @@ object_tangible_ship_components_droid_interface_shared_ddi_freitek_droid_command
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -428,7 +428,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_components_droid_interfac
 
 object_tangible_ship_components_droid_interface_shared_ddi_freitek_elite = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_levelten"},
 	clearFloraRadius = 0,
@@ -464,7 +464,7 @@ object_tangible_ship_components_droid_interface_shared_ddi_freitek_elite = Share
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -483,7 +483,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_components_droid_interfac
 
 object_tangible_ship_components_droid_interface_shared_ddi_freitek_modified_droid_commander_mk1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_level4"},
 	clearFloraRadius = 0,
@@ -519,7 +519,7 @@ object_tangible_ship_components_droid_interface_shared_ddi_freitek_modified_droi
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -538,7 +538,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_components_droid_interfac
 
 object_tangible_ship_components_droid_interface_shared_ddi_gallofree_level1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_level5"},
 	clearFloraRadius = 0,
@@ -574,7 +574,7 @@ object_tangible_ship_components_droid_interface_shared_ddi_gallofree_level1 = Sh
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -593,7 +593,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_components_droid_interfac
 
 object_tangible_ship_components_droid_interface_shared_ddi_generic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_level1"},
 	clearFloraRadius = 0,
@@ -629,7 +629,7 @@ object_tangible_ship_components_droid_interface_shared_ddi_generic = SharedTangi
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -648,7 +648,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_components_droid_interfac
 
 object_tangible_ship_components_droid_interface_shared_ddi_haor_chall_old_tech = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_level3"},
 	clearFloraRadius = 0,
@@ -684,7 +684,7 @@ object_tangible_ship_components_droid_interface_shared_ddi_haor_chall_old_tech =
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -703,7 +703,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_components_droid_interfac
 
 object_tangible_ship_components_droid_interface_shared_ddi_haor_chall_vintage_piece = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_level4"},
 	clearFloraRadius = 0,
@@ -739,7 +739,7 @@ object_tangible_ship_components_droid_interface_shared_ddi_haor_chall_vintage_pi
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -758,7 +758,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_components_droid_interfac
 
 object_tangible_ship_components_droid_interface_shared_ddi_hk_advanced = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_level9"},
 	clearFloraRadius = 0,
@@ -794,7 +794,7 @@ object_tangible_ship_components_droid_interface_shared_ddi_hk_advanced = SharedT
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -813,7 +813,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_components_droid_interfac
 
 object_tangible_ship_components_droid_interface_shared_ddi_hk_elite = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_levelten"},
 	clearFloraRadius = 0,
@@ -849,7 +849,7 @@ object_tangible_ship_components_droid_interface_shared_ddi_hk_elite = SharedTang
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -868,7 +868,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_components_droid_interfac
 
 object_tangible_ship_components_droid_interface_shared_ddi_hk_mk1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_level5"},
 	clearFloraRadius = 0,
@@ -904,7 +904,7 @@ object_tangible_ship_components_droid_interface_shared_ddi_hk_mk1 = SharedTangib
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -923,7 +923,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_components_droid_interfac
 
 object_tangible_ship_components_droid_interface_shared_ddi_hk_mk2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_level6"},
 	clearFloraRadius = 0,
@@ -959,7 +959,7 @@ object_tangible_ship_components_droid_interface_shared_ddi_hk_mk2 = SharedTangib
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -978,7 +978,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_components_droid_interfac
 
 object_tangible_ship_components_droid_interface_shared_ddi_hk_mk3 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_level7"},
 	clearFloraRadius = 0,
@@ -1014,7 +1014,7 @@ object_tangible_ship_components_droid_interface_shared_ddi_hk_mk3 = SharedTangib
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1033,7 +1033,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_components_droid_interfac
 
 object_tangible_ship_components_droid_interface_shared_ddi_hk_mk4 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_level8"},
 	clearFloraRadius = 0,
@@ -1069,7 +1069,7 @@ object_tangible_ship_components_droid_interface_shared_ddi_hk_mk4 = SharedTangib
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1088,7 +1088,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_components_droid_interfac
 
 object_tangible_ship_components_droid_interface_shared_ddi_incom_advanced_droid_interface = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_level9"},
 	clearFloraRadius = 0,
@@ -1124,7 +1124,7 @@ object_tangible_ship_components_droid_interface_shared_ddi_incom_advanced_droid_
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1143,7 +1143,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_components_droid_interfac
 
 object_tangible_ship_components_droid_interface_shared_ddi_incom_deluxe_droid_interface_mk1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_level2"},
 	clearFloraRadius = 0,
@@ -1179,7 +1179,7 @@ object_tangible_ship_components_droid_interface_shared_ddi_incom_deluxe_droid_in
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1198,7 +1198,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_components_droid_interfac
 
 object_tangible_ship_components_droid_interface_shared_ddi_incom_droid_interface_mk1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_level1"},
 	clearFloraRadius = 0,
@@ -1234,7 +1234,7 @@ object_tangible_ship_components_droid_interface_shared_ddi_incom_droid_interface
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1253,7 +1253,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_components_droid_interfac
 
 object_tangible_ship_components_droid_interface_shared_ddi_incom_droid_interface_mk2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_level2"},
 	clearFloraRadius = 0,
@@ -1289,7 +1289,7 @@ object_tangible_ship_components_droid_interface_shared_ddi_incom_droid_interface
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1308,7 +1308,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_components_droid_interfac
 
 object_tangible_ship_components_droid_interface_shared_ddi_incom_droid_interface_mk3 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_level4"},
 	clearFloraRadius = 0,
@@ -1344,7 +1344,7 @@ object_tangible_ship_components_droid_interface_shared_ddi_incom_droid_interface
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1363,7 +1363,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_components_droid_interfac
 
 object_tangible_ship_components_droid_interface_shared_ddi_incom_droid_interface_mk4 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_level6"},
 	clearFloraRadius = 0,
@@ -1399,7 +1399,7 @@ object_tangible_ship_components_droid_interface_shared_ddi_incom_droid_interface
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1418,7 +1418,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_components_droid_interfac
 
 object_tangible_ship_components_droid_interface_shared_ddi_incom_elite = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_levelten"},
 	clearFloraRadius = 0,
@@ -1454,7 +1454,7 @@ object_tangible_ship_components_droid_interface_shared_ddi_incom_elite = SharedT
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1473,7 +1473,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_components_droid_interfac
 
 object_tangible_ship_components_droid_interface_shared_ddi_incom_enhanced_droid_interface_mk4 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_level8"},
 	clearFloraRadius = 0,
@@ -1509,7 +1509,7 @@ object_tangible_ship_components_droid_interface_shared_ddi_incom_enhanced_droid_
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1528,7 +1528,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_components_droid_interfac
 
 object_tangible_ship_components_droid_interface_shared_ddi_incom_fast_droid_interface_mk2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_level4"},
 	clearFloraRadius = 0,
@@ -1564,7 +1564,7 @@ object_tangible_ship_components_droid_interface_shared_ddi_incom_fast_droid_inte
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1583,7 +1583,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_components_droid_interfac
 
 object_tangible_ship_components_droid_interface_shared_ddi_kde_governor_mk1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_level2"},
 	clearFloraRadius = 0,
@@ -1619,7 +1619,7 @@ object_tangible_ship_components_droid_interface_shared_ddi_kde_governor_mk1 = Sh
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1638,7 +1638,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_components_droid_interfac
 
 object_tangible_ship_components_droid_interface_shared_ddi_kde_governor_mk2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_level5"},
 	clearFloraRadius = 0,
@@ -1674,7 +1674,7 @@ object_tangible_ship_components_droid_interface_shared_ddi_kde_governor_mk2 = Sh
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1693,7 +1693,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_components_droid_interfac
 
 object_tangible_ship_components_droid_interface_shared_ddi_kessel_imperial_cygnus_dp44 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_level9"},
 	clearFloraRadius = 0,
@@ -1729,7 +1729,7 @@ object_tangible_ship_components_droid_interface_shared_ddi_kessel_imperial_cygnu
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1748,7 +1748,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_components_droid_interfac
 
 object_tangible_ship_components_droid_interface_shared_ddi_kessel_imperial_sds_unknown_prototype = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_levelten"},
 	clearFloraRadius = 0,
@@ -1784,7 +1784,7 @@ object_tangible_ship_components_droid_interface_shared_ddi_kessel_imperial_sds_u
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1803,7 +1803,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_components_droid_interfac
 
 object_tangible_ship_components_droid_interface_shared_ddi_kessel_imperial_sfs_imperial_finest = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_level9"},
 	clearFloraRadius = 0,
@@ -1839,7 +1839,7 @@ object_tangible_ship_components_droid_interface_shared_ddi_kessel_imperial_sfs_i
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1858,7 +1858,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_components_droid_interfac
 
 object_tangible_ship_components_droid_interface_shared_ddi_kessel_rebel_incom_dx61 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_level9"},
 	clearFloraRadius = 0,
@@ -1894,7 +1894,7 @@ object_tangible_ship_components_droid_interface_shared_ddi_kessel_rebel_incom_dx
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1913,7 +1913,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_components_droid_interfac
 
 object_tangible_ship_components_droid_interface_shared_ddi_kessel_rebel_incom_supreme_interface = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_levelten"},
 	clearFloraRadius = 0,
@@ -1949,7 +1949,7 @@ object_tangible_ship_components_droid_interface_shared_ddi_kessel_rebel_incom_su
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1968,7 +1968,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_components_droid_interfac
 
 object_tangible_ship_components_droid_interface_shared_ddi_kessel_rebel_qualdex_integrated_array = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_level9"},
 	clearFloraRadius = 0,
@@ -2004,7 +2004,7 @@ object_tangible_ship_components_droid_interface_shared_ddi_kessel_rebel_qualdex_
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2023,7 +2023,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_components_droid_interfac
 
 object_tangible_ship_components_droid_interface_shared_ddi_koensayr_simple_droid_interface = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_level1"},
 	clearFloraRadius = 0,
@@ -2059,7 +2059,7 @@ object_tangible_ship_components_droid_interface_shared_ddi_koensayr_simple_droid
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2078,7 +2078,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_components_droid_interfac
 
 object_tangible_ship_components_droid_interface_shared_ddi_koensayr_standard_droid_interface = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_level2"},
 	clearFloraRadius = 0,
@@ -2114,7 +2114,7 @@ object_tangible_ship_components_droid_interface_shared_ddi_koensayr_standard_dro
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2133,7 +2133,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_components_droid_interfac
 
 object_tangible_ship_components_droid_interface_shared_ddi_kse_advanced_manager = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_level8"},
 	clearFloraRadius = 0,
@@ -2169,7 +2169,7 @@ object_tangible_ship_components_droid_interface_shared_ddi_kse_advanced_manager 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2188,7 +2188,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_components_droid_interfac
 
 object_tangible_ship_components_droid_interface_shared_ddi_kse_custom_manager_mk2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_level4"},
 	clearFloraRadius = 0,
@@ -2224,7 +2224,7 @@ object_tangible_ship_components_droid_interface_shared_ddi_kse_custom_manager_mk
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2243,7 +2243,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_components_droid_interfac
 
 object_tangible_ship_components_droid_interface_shared_ddi_kse_elite_manager_1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_level9"},
 	clearFloraRadius = 0,
@@ -2279,7 +2279,7 @@ object_tangible_ship_components_droid_interface_shared_ddi_kse_elite_manager_1 =
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2298,7 +2298,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_components_droid_interfac
 
 object_tangible_ship_components_droid_interface_shared_ddi_kse_elite_manager_2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_levelten"},
 	clearFloraRadius = 0,
@@ -2334,7 +2334,7 @@ object_tangible_ship_components_droid_interface_shared_ddi_kse_elite_manager_2 =
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2353,7 +2353,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_components_droid_interfac
 
 object_tangible_ship_components_droid_interface_shared_ddi_kse_enhanced_manager_mk3 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_level7"},
 	clearFloraRadius = 0,
@@ -2389,7 +2389,7 @@ object_tangible_ship_components_droid_interface_shared_ddi_kse_enhanced_manager_
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2408,7 +2408,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_components_droid_interfac
 
 object_tangible_ship_components_droid_interface_shared_ddi_kse_improved_manager_mk1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_level2"},
 	clearFloraRadius = 0,
@@ -2444,7 +2444,7 @@ object_tangible_ship_components_droid_interface_shared_ddi_kse_improved_manager_
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2463,7 +2463,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_components_droid_interfac
 
 object_tangible_ship_components_droid_interface_shared_ddi_kse_manager_mk1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_level1"},
 	clearFloraRadius = 0,
@@ -2499,7 +2499,7 @@ object_tangible_ship_components_droid_interface_shared_ddi_kse_manager_mk1 = Sha
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2518,7 +2518,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_components_droid_interfac
 
 object_tangible_ship_components_droid_interface_shared_ddi_kse_manager_mk2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_level3"},
 	clearFloraRadius = 0,
@@ -2554,7 +2554,7 @@ object_tangible_ship_components_droid_interface_shared_ddi_kse_manager_mk2 = Sha
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2573,7 +2573,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_components_droid_interfac
 
 object_tangible_ship_components_droid_interface_shared_ddi_kse_manager_mk3 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_level6"},
 	clearFloraRadius = 0,
@@ -2609,7 +2609,7 @@ object_tangible_ship_components_droid_interface_shared_ddi_kse_manager_mk3 = Sha
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2628,7 +2628,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_components_droid_interfac
 
 object_tangible_ship_components_droid_interface_shared_ddi_mandal_military_grade_mk1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s02.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_level5"},
 	clearFloraRadius = 0,
@@ -2664,7 +2664,7 @@ object_tangible_ship_components_droid_interface_shared_ddi_mandal_military_grade
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2683,7 +2683,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_components_droid_interfac
 
 object_tangible_ship_components_droid_interface_shared_ddi_mandal_military_grade_mk2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s02.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_levelten"},
 	clearFloraRadius = 0,
@@ -2719,7 +2719,7 @@ object_tangible_ship_components_droid_interface_shared_ddi_mandal_military_grade
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2738,7 +2738,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_components_droid_interfac
 
 object_tangible_ship_components_droid_interface_shared_ddi_mission_reward_imperial_sfs_military_grade = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_level6"},
 	clearFloraRadius = 0,
@@ -2774,7 +2774,7 @@ object_tangible_ship_components_droid_interface_shared_ddi_mission_reward_imperi
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2793,7 +2793,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_components_droid_interfac
 
 object_tangible_ship_components_droid_interface_shared_ddi_mission_reward_neutral_sorosuub_w19 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_level4"},
 	clearFloraRadius = 0,
@@ -2829,7 +2829,7 @@ object_tangible_ship_components_droid_interface_shared_ddi_mission_reward_neutra
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2848,7 +2848,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_components_droid_interfac
 
 object_tangible_ship_components_droid_interface_shared_ddi_mission_reward_rebel_moncal_d22 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_level4"},
 	clearFloraRadius = 0,
@@ -2884,7 +2884,7 @@ object_tangible_ship_components_droid_interface_shared_ddi_mission_reward_rebel_
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2903,7 +2903,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_components_droid_interfac
 
 object_tangible_ship_components_droid_interface_shared_ddi_mission_reward_rebel_novaldex_low_latency = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_level8"},
 	clearFloraRadius = 0,
@@ -2939,7 +2939,7 @@ object_tangible_ship_components_droid_interface_shared_ddi_mission_reward_rebel_
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2958,7 +2958,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_components_droid_interfac
 
 object_tangible_ship_components_droid_interface_shared_ddi_moncal_advanced_interface = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_level9"},
 	clearFloraRadius = 0,
@@ -2994,7 +2994,7 @@ object_tangible_ship_components_droid_interface_shared_ddi_moncal_advanced_inter
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3013,7 +3013,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_components_droid_interfac
 
 object_tangible_ship_components_droid_interface_shared_ddi_moncal_custom_dk2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_level6"},
 	clearFloraRadius = 0,
@@ -3049,7 +3049,7 @@ object_tangible_ship_components_droid_interface_shared_ddi_moncal_custom_dk2 = S
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3068,7 +3068,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_components_droid_interfac
 
 object_tangible_ship_components_droid_interface_shared_ddi_moncal_dk1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_level1"},
 	clearFloraRadius = 0,
@@ -3104,7 +3104,7 @@ object_tangible_ship_components_droid_interface_shared_ddi_moncal_dk1 = SharedTa
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3123,7 +3123,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_components_droid_interfac
 
 object_tangible_ship_components_droid_interface_shared_ddi_moncal_dk2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_level5"},
 	clearFloraRadius = 0,
@@ -3159,7 +3159,7 @@ object_tangible_ship_components_droid_interface_shared_ddi_moncal_dk2 = SharedTa
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3178,7 +3178,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_components_droid_interfac
 
 object_tangible_ship_components_droid_interface_shared_ddi_moncal_dk3 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_level7"},
 	clearFloraRadius = 0,
@@ -3214,7 +3214,7 @@ object_tangible_ship_components_droid_interface_shared_ddi_moncal_dk3 = SharedTa
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3233,7 +3233,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_components_droid_interfac
 
 object_tangible_ship_components_droid_interface_shared_ddi_moncal_dk4 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_level8"},
 	clearFloraRadius = 0,
@@ -3269,7 +3269,7 @@ object_tangible_ship_components_droid_interface_shared_ddi_moncal_dk4 = SharedTa
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3288,7 +3288,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_components_droid_interfac
 
 object_tangible_ship_components_droid_interface_shared_ddi_moncal_elite = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_levelten"},
 	clearFloraRadius = 0,
@@ -3324,7 +3324,7 @@ object_tangible_ship_components_droid_interface_shared_ddi_moncal_elite = Shared
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3343,7 +3343,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_components_droid_interfac
 
 object_tangible_ship_components_droid_interface_shared_ddi_moncal_special_dk1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_level2"},
 	clearFloraRadius = 0,
@@ -3379,7 +3379,7 @@ object_tangible_ship_components_droid_interface_shared_ddi_moncal_special_dk1 = 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3398,7 +3398,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_components_droid_interfac
 
 object_tangible_ship_components_droid_interface_shared_ddi_novaldex_advanced_droid_interface = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_level9"},
 	clearFloraRadius = 0,
@@ -3434,7 +3434,7 @@ object_tangible_ship_components_droid_interface_shared_ddi_novaldex_advanced_dro
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3453,7 +3453,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_components_droid_interfac
 
 object_tangible_ship_components_droid_interface_shared_ddi_novaldex_custom_droid_interface_mk4 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_level8"},
 	clearFloraRadius = 0,
@@ -3489,7 +3489,7 @@ object_tangible_ship_components_droid_interface_shared_ddi_novaldex_custom_droid
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3508,7 +3508,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_components_droid_interfac
 
 object_tangible_ship_components_droid_interface_shared_ddi_novaldex_droid_interface_mk1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s02.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_level3"},
 	clearFloraRadius = 0,
@@ -3544,7 +3544,7 @@ object_tangible_ship_components_droid_interface_shared_ddi_novaldex_droid_interf
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3563,7 +3563,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_components_droid_interfac
 
 object_tangible_ship_components_droid_interface_shared_ddi_novaldex_droid_interface_mk2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s02.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_level5"},
 	clearFloraRadius = 0,
@@ -3599,7 +3599,7 @@ object_tangible_ship_components_droid_interface_shared_ddi_novaldex_droid_interf
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3618,7 +3618,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_components_droid_interfac
 
 object_tangible_ship_components_droid_interface_shared_ddi_novaldex_droid_interface_mk3 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s02.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_level7"},
 	clearFloraRadius = 0,
@@ -3654,7 +3654,7 @@ object_tangible_ship_components_droid_interface_shared_ddi_novaldex_droid_interf
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3673,7 +3673,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_components_droid_interfac
 
 object_tangible_ship_components_droid_interface_shared_ddi_novaldex_droid_interface_mk4 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s02.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_levelten"},
 	clearFloraRadius = 0,
@@ -3709,7 +3709,7 @@ object_tangible_ship_components_droid_interface_shared_ddi_novaldex_droid_interf
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3728,7 +3728,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_components_droid_interfac
 
 object_tangible_ship_components_droid_interface_shared_ddi_novaldex_elite = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_levelten"},
 	clearFloraRadius = 0,
@@ -3764,7 +3764,7 @@ object_tangible_ship_components_droid_interface_shared_ddi_novaldex_elite = Shar
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3783,7 +3783,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_components_droid_interfac
 
 object_tangible_ship_components_droid_interface_shared_ddi_novaldex_special_droid_interface_mk1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_level2"},
 	clearFloraRadius = 0,
@@ -3819,7 +3819,7 @@ object_tangible_ship_components_droid_interface_shared_ddi_novaldex_special_droi
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3838,7 +3838,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_components_droid_interfac
 
 object_tangible_ship_components_droid_interface_shared_ddi_qualdex_droid_interface_mk1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_level2"},
 	clearFloraRadius = 0,
@@ -3874,7 +3874,7 @@ object_tangible_ship_components_droid_interface_shared_ddi_qualdex_droid_interfa
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3893,7 +3893,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_components_droid_interfac
 
 object_tangible_ship_components_droid_interface_shared_ddi_qualdex_droid_interface_mk2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_level4"},
 	clearFloraRadius = 0,
@@ -3929,7 +3929,7 @@ object_tangible_ship_components_droid_interface_shared_ddi_qualdex_droid_interfa
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3948,7 +3948,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_components_droid_interfac
 
 object_tangible_ship_components_droid_interface_shared_ddi_qualdex_droid_interface_mk3 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_level6"},
 	clearFloraRadius = 0,
@@ -3984,7 +3984,7 @@ object_tangible_ship_components_droid_interface_shared_ddi_qualdex_droid_interfa
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -4003,7 +4003,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_components_droid_interfac
 
 object_tangible_ship_components_droid_interface_shared_ddi_qualdex_droid_interface_mk4 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_level8"},
 	clearFloraRadius = 0,
@@ -4039,7 +4039,7 @@ object_tangible_ship_components_droid_interface_shared_ddi_qualdex_droid_interfa
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -4058,7 +4058,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_components_droid_interfac
 
 object_tangible_ship_components_droid_interface_shared_ddi_qualdex_elite = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_levelten"},
 	clearFloraRadius = 0,
@@ -4094,7 +4094,7 @@ object_tangible_ship_components_droid_interface_shared_ddi_qualdex_elite = Share
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -4113,7 +4113,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_components_droid_interfac
 
 object_tangible_ship_components_droid_interface_shared_ddi_qualdex_enhanced_droid_interface_mk5 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_level9"},
 	clearFloraRadius = 0,
@@ -4149,7 +4149,7 @@ object_tangible_ship_components_droid_interface_shared_ddi_qualdex_enhanced_droi
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -4168,7 +4168,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_components_droid_interfac
 
 object_tangible_ship_components_droid_interface_shared_ddi_qualdex_modified_droid_interface_mk3 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_level7"},
 	clearFloraRadius = 0,
@@ -4204,7 +4204,7 @@ object_tangible_ship_components_droid_interface_shared_ddi_qualdex_modified_droi
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -4223,7 +4223,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_components_droid_interfac
 
 object_tangible_ship_components_droid_interface_shared_ddi_rendili_elite_imperator = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_level9"},
 	clearFloraRadius = 0,
@@ -4259,7 +4259,7 @@ object_tangible_ship_components_droid_interface_shared_ddi_rendili_elite_imperat
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -4278,7 +4278,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_components_droid_interfac
 
 object_tangible_ship_components_droid_interface_shared_ddi_rendili_imperator_1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_level5"},
 	clearFloraRadius = 0,
@@ -4314,7 +4314,7 @@ object_tangible_ship_components_droid_interface_shared_ddi_rendili_imperator_1 =
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -4333,7 +4333,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_components_droid_interfac
 
 object_tangible_ship_components_droid_interface_shared_ddi_rendili_imperator_2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_level7"},
 	clearFloraRadius = 0,
@@ -4369,7 +4369,7 @@ object_tangible_ship_components_droid_interface_shared_ddi_rendili_imperator_2 =
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -4388,7 +4388,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_components_droid_interfac
 
 object_tangible_ship_components_droid_interface_shared_ddi_rss_deluxe_imperial_2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_level4"},
 	clearFloraRadius = 0,
@@ -4424,7 +4424,7 @@ object_tangible_ship_components_droid_interface_shared_ddi_rss_deluxe_imperial_2
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -4443,7 +4443,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_components_droid_interfac
 
 object_tangible_ship_components_droid_interface_shared_ddi_rss_enhanced_imperial_1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_level2"},
 	clearFloraRadius = 0,
@@ -4479,7 +4479,7 @@ object_tangible_ship_components_droid_interface_shared_ddi_rss_enhanced_imperial
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -4498,7 +4498,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_components_droid_interfac
 
 object_tangible_ship_components_droid_interface_shared_ddi_rss_imperial_1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_level1"},
 	clearFloraRadius = 0,
@@ -4534,7 +4534,7 @@ object_tangible_ship_components_droid_interface_shared_ddi_rss_imperial_1 = Shar
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -4553,7 +4553,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_components_droid_interfac
 
 object_tangible_ship_components_droid_interface_shared_ddi_rss_imperial_2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_level3"},
 	clearFloraRadius = 0,
@@ -4589,7 +4589,7 @@ object_tangible_ship_components_droid_interface_shared_ddi_rss_imperial_2 = Shar
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -4608,7 +4608,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_components_droid_interfac
 
 object_tangible_ship_components_droid_interface_shared_ddi_sds_elite = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_levelten"},
 	clearFloraRadius = 0,
@@ -4644,7 +4644,7 @@ object_tangible_ship_components_droid_interface_shared_ddi_sds_elite = SharedTan
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -4663,7 +4663,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_components_droid_interfac
 
 object_tangible_ship_components_droid_interface_shared_ddi_sds_enhanced_imperial_2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_level6"},
 	clearFloraRadius = 0,
@@ -4699,7 +4699,7 @@ object_tangible_ship_components_droid_interface_shared_ddi_sds_enhanced_imperial
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -4718,7 +4718,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_components_droid_interfac
 
 object_tangible_ship_components_droid_interface_shared_ddi_sds_imperial_1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_level3"},
 	clearFloraRadius = 0,
@@ -4754,7 +4754,7 @@ object_tangible_ship_components_droid_interface_shared_ddi_sds_imperial_1 = Shar
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -4773,7 +4773,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_components_droid_interfac
 
 object_tangible_ship_components_droid_interface_shared_ddi_sds_imperial_2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_level5"},
 	clearFloraRadius = 0,
@@ -4809,7 +4809,7 @@ object_tangible_ship_components_droid_interface_shared_ddi_sds_imperial_2 = Shar
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -4828,7 +4828,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_components_droid_interfac
 
 object_tangible_ship_components_droid_interface_shared_ddi_sds_imperial_3 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_level7"},
 	clearFloraRadius = 0,
@@ -4864,7 +4864,7 @@ object_tangible_ship_components_droid_interface_shared_ddi_sds_imperial_3 = Shar
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -4883,7 +4883,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_components_droid_interfac
 
 object_tangible_ship_components_droid_interface_shared_ddi_sds_imperial_4 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_level8"},
 	clearFloraRadius = 0,
@@ -4919,7 +4919,7 @@ object_tangible_ship_components_droid_interface_shared_ddi_sds_imperial_4 = Shar
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -4938,7 +4938,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_components_droid_interfac
 
 object_tangible_ship_components_droid_interface_shared_ddi_sds_imperial_5 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_level9"},
 	clearFloraRadius = 0,
@@ -4974,7 +4974,7 @@ object_tangible_ship_components_droid_interface_shared_ddi_sds_imperial_5 = Shar
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -4993,7 +4993,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_components_droid_interfac
 
 object_tangible_ship_components_droid_interface_shared_ddi_sds_special_imperial_1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_level4"},
 	clearFloraRadius = 0,
@@ -5029,7 +5029,7 @@ object_tangible_ship_components_droid_interface_shared_ddi_sds_special_imperial_
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -5048,7 +5048,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_components_droid_interfac
 
 object_tangible_ship_components_droid_interface_shared_ddi_seinar_interface_mk1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_level2"},
 	clearFloraRadius = 0,
@@ -5084,7 +5084,7 @@ object_tangible_ship_components_droid_interface_shared_ddi_seinar_interface_mk1 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -5103,7 +5103,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_components_droid_interfac
 
 object_tangible_ship_components_droid_interface_shared_ddi_seinar_interface_mk2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_level4"},
 	clearFloraRadius = 0,
@@ -5139,7 +5139,7 @@ object_tangible_ship_components_droid_interface_shared_ddi_seinar_interface_mk2 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -5158,7 +5158,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_components_droid_interfac
 
 object_tangible_ship_components_droid_interface_shared_ddi_seinar_interface_mk3 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_level6"},
 	clearFloraRadius = 0,
@@ -5194,7 +5194,7 @@ object_tangible_ship_components_droid_interface_shared_ddi_seinar_interface_mk3 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -5213,7 +5213,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_components_droid_interfac
 
 object_tangible_ship_components_droid_interface_shared_ddi_seinar_interface_mk4 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_level9"},
 	clearFloraRadius = 0,
@@ -5249,7 +5249,7 @@ object_tangible_ship_components_droid_interface_shared_ddi_seinar_interface_mk4 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -5268,7 +5268,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_components_droid_interfac
 
 object_tangible_ship_components_droid_interface_shared_ddi_sfs_elite = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_levelten"},
 	clearFloraRadius = 0,
@@ -5304,7 +5304,7 @@ object_tangible_ship_components_droid_interface_shared_ddi_sfs_elite = SharedTan
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -5323,7 +5323,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_components_droid_interfac
 
 object_tangible_ship_components_droid_interface_shared_ddi_sfs_enhanced_imperial_1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_level2"},
 	clearFloraRadius = 0,
@@ -5359,7 +5359,7 @@ object_tangible_ship_components_droid_interface_shared_ddi_sfs_enhanced_imperial
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -5378,7 +5378,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_components_droid_interfac
 
 object_tangible_ship_components_droid_interface_shared_ddi_sfs_imperial_1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_level1"},
 	clearFloraRadius = 0,
@@ -5414,7 +5414,7 @@ object_tangible_ship_components_droid_interface_shared_ddi_sfs_imperial_1 = Shar
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -5433,7 +5433,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_components_droid_interfac
 
 object_tangible_ship_components_droid_interface_shared_ddi_sfs_imperial_2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_level5"},
 	clearFloraRadius = 0,
@@ -5469,7 +5469,7 @@ object_tangible_ship_components_droid_interface_shared_ddi_sfs_imperial_2 = Shar
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -5488,7 +5488,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_components_droid_interfac
 
 object_tangible_ship_components_droid_interface_shared_ddi_sfs_imperial_3 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_level7"},
 	clearFloraRadius = 0,
@@ -5524,7 +5524,7 @@ object_tangible_ship_components_droid_interface_shared_ddi_sfs_imperial_3 = Shar
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -5543,7 +5543,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_components_droid_interfac
 
 object_tangible_ship_components_droid_interface_shared_ddi_sfs_imperial_mk5 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_level9"},
 	clearFloraRadius = 0,
@@ -5579,7 +5579,7 @@ object_tangible_ship_components_droid_interface_shared_ddi_sfs_imperial_mk5 = Sh
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -5598,7 +5598,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_components_droid_interfac
 
 object_tangible_ship_components_droid_interface_shared_ddi_sorosuub_echelon_1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_level8"},
 	clearFloraRadius = 0,
@@ -5634,7 +5634,7 @@ object_tangible_ship_components_droid_interface_shared_ddi_sorosuub_echelon_1 = 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -5653,7 +5653,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_components_droid_interfac
 
 object_tangible_ship_components_droid_interface_shared_ddi_sorosuub_echelon_2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_level9"},
 	clearFloraRadius = 0,
@@ -5689,7 +5689,7 @@ object_tangible_ship_components_droid_interface_shared_ddi_sorosuub_echelon_2 = 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -5708,7 +5708,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_components_droid_interfac
 
 object_tangible_ship_components_droid_interface_shared_ddi_sorosuub_elite = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_levelten"},
 	clearFloraRadius = 0,
@@ -5744,7 +5744,7 @@ object_tangible_ship_components_droid_interface_shared_ddi_sorosuub_elite = Shar
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -5763,7 +5763,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_components_droid_interfac
 
 object_tangible_ship_components_droid_interface_shared_ddi_sorosuub_enhanced_rad_mk1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_level4"},
 	clearFloraRadius = 0,
@@ -5799,7 +5799,7 @@ object_tangible_ship_components_droid_interface_shared_ddi_sorosuub_enhanced_rad
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -5818,7 +5818,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_components_droid_interfac
 
 object_tangible_ship_components_droid_interface_shared_ddi_sorosuub_modified_rad_mk2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_level6"},
 	clearFloraRadius = 0,
@@ -5854,7 +5854,7 @@ object_tangible_ship_components_droid_interface_shared_ddi_sorosuub_modified_rad
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -5873,7 +5873,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_components_droid_interfac
 
 object_tangible_ship_components_droid_interface_shared_ddi_sorosuub_rad_mk1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_level3"},
 	clearFloraRadius = 0,
@@ -5909,7 +5909,7 @@ object_tangible_ship_components_droid_interface_shared_ddi_sorosuub_rad_mk1 = Sh
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -5928,7 +5928,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_components_droid_interfac
 
 object_tangible_ship_components_droid_interface_shared_ddi_sorosuub_rad_mk2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_level5"},
 	clearFloraRadius = 0,
@@ -5964,7 +5964,7 @@ object_tangible_ship_components_droid_interface_shared_ddi_sorosuub_rad_mk2 = Sh
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -5983,7 +5983,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_components_droid_interfac
 
 object_tangible_ship_components_droid_interface_shared_ddi_sorosuub_rad_mk3 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_level7"},
 	clearFloraRadius = 0,
@@ -6019,7 +6019,7 @@ object_tangible_ship_components_droid_interface_shared_ddi_sorosuub_rad_mk3 = Sh
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -6038,7 +6038,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_components_droid_interfac
 
 object_tangible_ship_components_droid_interface_shared_ddi_subpro_improved_jrd33 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_level4"},
 	clearFloraRadius = 0,
@@ -6074,7 +6074,7 @@ object_tangible_ship_components_droid_interface_shared_ddi_subpro_improved_jrd33
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -6093,7 +6093,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_components_droid_interfac
 
 object_tangible_ship_components_droid_interface_shared_ddi_subpro_jrd33 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_level3"},
 	clearFloraRadius = 0,
@@ -6129,7 +6129,7 @@ object_tangible_ship_components_droid_interface_shared_ddi_subpro_jrd33 = Shared
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -6148,7 +6148,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_components_droid_interfac
 
 object_tangible_ship_components_droid_interface_shared_ddi_tiefighter_basic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_level1"},
 	clearFloraRadius = 0,
@@ -6184,7 +6184,7 @@ object_tangible_ship_components_droid_interface_shared_ddi_tiefighter_basic = Sh
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -6203,7 +6203,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_components_droid_interfac
 
 object_tangible_ship_components_droid_interface_shared_ddi_z95_basic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_level1"},
 	clearFloraRadius = 0,
@@ -6239,7 +6239,7 @@ object_tangible_ship_components_droid_interface_shared_ddi_z95_basic = SharedTan
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -6258,7 +6258,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_components_droid_interfac
 
 object_tangible_ship_components_droid_interface_shared_droid_interface_test = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/astromech_r2.sat",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_level1"},
 	clearFloraRadius = 0,
@@ -6294,7 +6294,7 @@ object_tangible_ship_components_droid_interface_shared_droid_interface_test = Sh
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",

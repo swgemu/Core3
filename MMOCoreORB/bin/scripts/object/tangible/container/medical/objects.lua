@@ -43,7 +43,7 @@
 
 object_tangible_container_medical_shared_medbag_base = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_medbag_s1.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -79,7 +79,7 @@ object_tangible_container_medical_shared_medbag_base = SharedTangibleObjectTempl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",

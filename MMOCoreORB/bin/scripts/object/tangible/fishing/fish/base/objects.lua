@@ -43,7 +43,7 @@
 
 object_tangible_fishing_fish_base_shared_fish_base = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_food_fish_lg_s1.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -79,7 +79,7 @@ object_tangible_fishing_fish_base_shared_fish_base = SharedTangibleObjectTemplat
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",

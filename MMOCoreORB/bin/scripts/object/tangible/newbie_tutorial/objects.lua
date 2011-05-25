@@ -43,7 +43,7 @@
 
 object_tangible_newbie_tutorial_shared_debris = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/dsdebris_conduit.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -79,7 +79,7 @@ object_tangible_newbie_tutorial_shared_debris = SharedTangibleObjectTemplate:new
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",

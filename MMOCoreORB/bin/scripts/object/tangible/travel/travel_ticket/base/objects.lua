@@ -43,7 +43,7 @@
 
 object_tangible_travel_travel_ticket_base_shared_base_travel_ticket = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_ticket_inventory.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -79,7 +79,7 @@ object_tangible_travel_travel_ticket_base_shared_base_travel_ticket = SharedTang
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",

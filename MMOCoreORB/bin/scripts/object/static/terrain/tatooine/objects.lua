@@ -43,7 +43,7 @@
 
 object_static_terrain_tatooine_shared_pinnacle_sacred_tatooine = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/poi_tato_sacred_pinnacle.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -74,7 +74,7 @@ object_static_terrain_tatooine_shared_pinnacle_sacred_tatooine = SharedStaticObj
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -88,7 +88,7 @@ ObjectTemplates:addClientTemplate(object_static_terrain_tatooine_shared_pinnacle
 
 object_static_terrain_tatooine_shared_poi_sarlacc_collision_floor = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/poi_tato_sarlacc_collision.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -119,7 +119,7 @@ object_static_terrain_tatooine_shared_poi_sarlacc_collision_floor = SharedStatic
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -133,7 +133,7 @@ ObjectTemplates:addClientTemplate(object_static_terrain_tatooine_shared_poi_sarl
 
 object_static_terrain_tatooine_shared_rock_arch_large_tatooine_style_1 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/rock_tatt_arch_lrg.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -164,7 +164,7 @@ object_static_terrain_tatooine_shared_rock_arch_large_tatooine_style_1 = SharedS
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -178,7 +178,7 @@ ObjectTemplates:addClientTemplate(object_static_terrain_tatooine_shared_rock_arc
 
 object_static_terrain_tatooine_shared_rock_arch_medium_tatooine_style_1 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/rock_tatt_arch_med.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -209,7 +209,7 @@ object_static_terrain_tatooine_shared_rock_arch_medium_tatooine_style_1 = Shared
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -223,7 +223,7 @@ ObjectTemplates:addClientTemplate(object_static_terrain_tatooine_shared_rock_arc
 
 object_static_terrain_tatooine_shared_rock_arch_small_tatooine_style_1 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/rock_tatt_arch_sm.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -254,7 +254,7 @@ object_static_terrain_tatooine_shared_rock_arch_small_tatooine_style_1 = SharedS
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -268,7 +268,7 @@ ObjectTemplates:addClientTemplate(object_static_terrain_tatooine_shared_rock_arc
 
 object_static_terrain_tatooine_shared_rock_mushroom_tatooine_style_1 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/rock_tatt_mushroom.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -299,7 +299,7 @@ object_static_terrain_tatooine_shared_rock_mushroom_tatooine_style_1 = SharedSta
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -313,7 +313,7 @@ ObjectTemplates:addClientTemplate(object_static_terrain_tatooine_shared_rock_mus
 
 object_static_terrain_tatooine_shared_rock_spire_fin_tatooine = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/rock_tatt_spire_fin.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -344,7 +344,7 @@ object_static_terrain_tatooine_shared_rock_spire_fin_tatooine = SharedStaticObje
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -358,7 +358,7 @@ ObjectTemplates:addClientTemplate(object_static_terrain_tatooine_shared_rock_spi
 
 object_static_terrain_tatooine_shared_rock_spire_lumpy_tatooine = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/rock_tatt_spire_lumpy.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -389,7 +389,7 @@ object_static_terrain_tatooine_shared_rock_spire_lumpy_tatooine = SharedStaticOb
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -403,7 +403,7 @@ ObjectTemplates:addClientTemplate(object_static_terrain_tatooine_shared_rock_spi
 
 object_static_terrain_tatooine_shared_rock_spire_lumpy_tatooine_style_1 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/rock_tatt_spire_lumpy_a1.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -434,7 +434,7 @@ object_static_terrain_tatooine_shared_rock_spire_lumpy_tatooine_style_1 = Shared
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -448,7 +448,7 @@ ObjectTemplates:addClientTemplate(object_static_terrain_tatooine_shared_rock_spi
 
 object_static_terrain_tatooine_shared_rock_spire_lumpy_tatooine_style_2 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/rock_tatt_spire_lumpy_a2.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -479,7 +479,7 @@ object_static_terrain_tatooine_shared_rock_spire_lumpy_tatooine_style_2 = Shared
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -493,7 +493,7 @@ ObjectTemplates:addClientTemplate(object_static_terrain_tatooine_shared_rock_spi
 
 object_static_terrain_tatooine_shared_rock_spire_skinny_tatooine = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/rock_tatt_spire_skinny.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -524,7 +524,7 @@ object_static_terrain_tatooine_shared_rock_spire_skinny_tatooine = SharedStaticO
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -538,7 +538,7 @@ ObjectTemplates:addClientTemplate(object_static_terrain_tatooine_shared_rock_spi
 
 object_static_terrain_tatooine_shared_rock_spire_skinny_tatooine_style_1 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/rock_tatt_spire_skinny_a1.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -569,7 +569,7 @@ object_static_terrain_tatooine_shared_rock_spire_skinny_tatooine_style_1 = Share
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -583,7 +583,7 @@ ObjectTemplates:addClientTemplate(object_static_terrain_tatooine_shared_rock_spi
 
 object_static_terrain_tatooine_shared_rock_spire_skinny_tatooine_style_2 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/rock_tatt_spire_skinny_a2.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -614,7 +614,7 @@ object_static_terrain_tatooine_shared_rock_spire_skinny_tatooine_style_2 = Share
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -628,7 +628,7 @@ ObjectTemplates:addClientTemplate(object_static_terrain_tatooine_shared_rock_spi
 
 object_static_terrain_tatooine_shared_rock_spire_smooth_tatooine = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/rock_tatt_spire_smooth.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -659,7 +659,7 @@ object_static_terrain_tatooine_shared_rock_spire_smooth_tatooine = SharedStaticO
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -673,7 +673,7 @@ ObjectTemplates:addClientTemplate(object_static_terrain_tatooine_shared_rock_spi
 
 object_static_terrain_tatooine_shared_rock_spire_smooth_tatooine_style_1 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/rock_tatt_spire_smooth_a1.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -704,7 +704,7 @@ object_static_terrain_tatooine_shared_rock_spire_smooth_tatooine_style_1 = Share
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -718,7 +718,7 @@ ObjectTemplates:addClientTemplate(object_static_terrain_tatooine_shared_rock_spi
 
 object_static_terrain_tatooine_shared_rock_spire_smooth_tatooine_style_2 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/rock_tatt_spire_smooth_a2.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -749,7 +749,7 @@ object_static_terrain_tatooine_shared_rock_spire_smooth_tatooine_style_2 = Share
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 

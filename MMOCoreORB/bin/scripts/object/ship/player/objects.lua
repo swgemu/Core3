@@ -43,7 +43,7 @@
 
 object_ship_player_shared_player_awing = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/awing_body.apt",
-	arrangementDescriptors = {"ship_control_device"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
 	certificationsRequired = {"cert_starships_awing"},
 	clearFloraRadius = 0,
@@ -79,7 +79,7 @@ object_ship_player_shared_player_awing = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"ship_pilot", "ship_droid"},
+	slotDescriptorFilename = "abstract/slot/descriptor/ship_single_seat.iff",
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -98,7 +98,7 @@ ObjectTemplates:addClientTemplate(object_ship_player_shared_player_awing, "objec
 
 object_ship_player_shared_player_basic_hutt_light = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/hutt_fighter_light_body_s01.apt",
-	arrangementDescriptors = {"ship_control_device"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
 	certificationsRequired = {"cert_starships_lighthuttfighter"},
 	clearFloraRadius = 0,
@@ -134,7 +134,7 @@ object_ship_player_shared_player_basic_hutt_light = SharedShipObjectTemplate:new
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"ship_pilot", "ship_droid"},
+	slotDescriptorFilename = "abstract/slot/descriptor/ship_single_seat.iff",
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -153,7 +153,7 @@ ObjectTemplates:addClientTemplate(object_ship_player_shared_player_basic_hutt_li
 
 object_ship_player_shared_player_basic_tiefighter = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/tie_fighter.apt",
-	arrangementDescriptors = {"ship_control_device"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
 	certificationsRequired = {"cert_starships_tiefighterlight"},
 	clearFloraRadius = 0,
@@ -189,7 +189,7 @@ object_ship_player_shared_player_basic_tiefighter = SharedShipObjectTemplate:new
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"ship_pilot", "ship_droid"},
+	slotDescriptorFilename = "abstract/slot/descriptor/ship_single_seat.iff",
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -208,7 +208,7 @@ ObjectTemplates:addClientTemplate(object_ship_player_shared_player_basic_tiefigh
 
 object_ship_player_shared_player_basic_z95 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/z95_body.apt",
-	arrangementDescriptors = {"ship_control_device"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
 	certificationsRequired = {"cert_starships_z95headhunter"},
 	clearFloraRadius = 0,
@@ -244,7 +244,7 @@ object_ship_player_shared_player_basic_z95 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"ship_pilot", "ship_droid"},
+	slotDescriptorFilename = "abstract/slot/descriptor/ship_single_seat.iff",
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -263,7 +263,7 @@ ObjectTemplates:addClientTemplate(object_ship_player_shared_player_basic_z95, "o
 
 object_ship_player_shared_player_blacksun_heavy_s01 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_heavy_body_s01.apt",
-	arrangementDescriptors = {"ship_control_device"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
 	certificationsRequired = {"cert_starships_heavyblacksunfighter"},
 	clearFloraRadius = 0,
@@ -299,7 +299,7 @@ object_ship_player_shared_player_blacksun_heavy_s01 = SharedShipObjectTemplate:n
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"ship_pilot", "ship_droid"},
+	slotDescriptorFilename = "abstract/slot/descriptor/ship_single_seat.iff",
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -318,7 +318,7 @@ ObjectTemplates:addClientTemplate(object_ship_player_shared_player_blacksun_heav
 
 object_ship_player_shared_player_blacksun_heavy_s02 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_heavy_body_s01.apt",
-	arrangementDescriptors = {"ship_control_device"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
 	certificationsRequired = {"cert_starships_heavyblacksunfighter"},
 	clearFloraRadius = 0,
@@ -354,7 +354,7 @@ object_ship_player_shared_player_blacksun_heavy_s02 = SharedShipObjectTemplate:n
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"ship_pilot", "ship_droid"},
+	slotDescriptorFilename = "abstract/slot/descriptor/ship_single_seat.iff",
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -373,7 +373,7 @@ ObjectTemplates:addClientTemplate(object_ship_player_shared_player_blacksun_heav
 
 object_ship_player_shared_player_blacksun_heavy_s03 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_heavy_body_s02.apt",
-	arrangementDescriptors = {"ship_control_device"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
 	certificationsRequired = {"cert_starships_heavyblacksunfighter"},
 	clearFloraRadius = 0,
@@ -409,7 +409,7 @@ object_ship_player_shared_player_blacksun_heavy_s03 = SharedShipObjectTemplate:n
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"ship_pilot", "ship_droid"},
+	slotDescriptorFilename = "abstract/slot/descriptor/ship_single_seat.iff",
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -428,7 +428,7 @@ ObjectTemplates:addClientTemplate(object_ship_player_shared_player_blacksun_heav
 
 object_ship_player_shared_player_blacksun_heavy_s04 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_heavy_body_s02.apt",
-	arrangementDescriptors = {"ship_control_device"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
 	certificationsRequired = {"cert_starships_heavyblacksunfighter"},
 	clearFloraRadius = 0,
@@ -464,7 +464,7 @@ object_ship_player_shared_player_blacksun_heavy_s04 = SharedShipObjectTemplate:n
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"ship_pilot", "ship_droid"},
+	slotDescriptorFilename = "abstract/slot/descriptor/ship_single_seat.iff",
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -483,7 +483,7 @@ ObjectTemplates:addClientTemplate(object_ship_player_shared_player_blacksun_heav
 
 object_ship_player_shared_player_blacksun_light_s01 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_light_body_s01.apt",
-	arrangementDescriptors = {"ship_control_device"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
 	certificationsRequired = {"cert_starships_lightblacksunfighter"},
 	clearFloraRadius = 0,
@@ -519,7 +519,7 @@ object_ship_player_shared_player_blacksun_light_s01 = SharedShipObjectTemplate:n
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"ship_pilot", "ship_droid"},
+	slotDescriptorFilename = "abstract/slot/descriptor/ship_single_seat.iff",
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -538,7 +538,7 @@ ObjectTemplates:addClientTemplate(object_ship_player_shared_player_blacksun_ligh
 
 object_ship_player_shared_player_blacksun_light_s02 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_light_body_s01.apt",
-	arrangementDescriptors = {"ship_control_device"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
 	certificationsRequired = {"cert_starships_lightblacksunfighter"},
 	clearFloraRadius = 0,
@@ -574,7 +574,7 @@ object_ship_player_shared_player_blacksun_light_s02 = SharedShipObjectTemplate:n
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"ship_pilot", "ship_droid"},
+	slotDescriptorFilename = "abstract/slot/descriptor/ship_single_seat.iff",
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -593,7 +593,7 @@ ObjectTemplates:addClientTemplate(object_ship_player_shared_player_blacksun_ligh
 
 object_ship_player_shared_player_blacksun_light_s03 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_light_body_s02.apt",
-	arrangementDescriptors = {"ship_control_device"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
 	certificationsRequired = {"cert_starships_lightblacksunfighter"},
 	clearFloraRadius = 0,
@@ -629,7 +629,7 @@ object_ship_player_shared_player_blacksun_light_s03 = SharedShipObjectTemplate:n
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"ship_pilot", "ship_droid"},
+	slotDescriptorFilename = "abstract/slot/descriptor/ship_single_seat.iff",
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -648,7 +648,7 @@ ObjectTemplates:addClientTemplate(object_ship_player_shared_player_blacksun_ligh
 
 object_ship_player_shared_player_blacksun_light_s04 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_light_body_s02.apt",
-	arrangementDescriptors = {"ship_control_device"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
 	certificationsRequired = {"cert_starships_lightblacksunfighter"},
 	clearFloraRadius = 0,
@@ -684,7 +684,7 @@ object_ship_player_shared_player_blacksun_light_s04 = SharedShipObjectTemplate:n
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"ship_pilot", "ship_droid"},
+	slotDescriptorFilename = "abstract/slot/descriptor/ship_single_seat.iff",
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -703,7 +703,7 @@ ObjectTemplates:addClientTemplate(object_ship_player_shared_player_blacksun_ligh
 
 object_ship_player_shared_player_blacksun_medium_s01 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_medium_body_s01.apt",
-	arrangementDescriptors = {"ship_control_device"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
 	certificationsRequired = {"cert_starships_mediumblacksunfighter"},
 	clearFloraRadius = 0,
@@ -739,7 +739,7 @@ object_ship_player_shared_player_blacksun_medium_s01 = SharedShipObjectTemplate:
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"ship_pilot", "ship_droid"},
+	slotDescriptorFilename = "abstract/slot/descriptor/ship_single_seat.iff",
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -758,7 +758,7 @@ ObjectTemplates:addClientTemplate(object_ship_player_shared_player_blacksun_medi
 
 object_ship_player_shared_player_blacksun_medium_s02 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_medium_body_s01.apt",
-	arrangementDescriptors = {"ship_control_device"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
 	certificationsRequired = {"cert_starships_mediumblacksunfighter"},
 	clearFloraRadius = 0,
@@ -794,7 +794,7 @@ object_ship_player_shared_player_blacksun_medium_s02 = SharedShipObjectTemplate:
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"ship_pilot", "ship_droid"},
+	slotDescriptorFilename = "abstract/slot/descriptor/ship_single_seat.iff",
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -813,7 +813,7 @@ ObjectTemplates:addClientTemplate(object_ship_player_shared_player_blacksun_medi
 
 object_ship_player_shared_player_blacksun_medium_s03 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_medium_body_s02.apt",
-	arrangementDescriptors = {"ship_control_device"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
 	certificationsRequired = {"cert_starships_mediumblacksunfighter"},
 	clearFloraRadius = 0,
@@ -849,7 +849,7 @@ object_ship_player_shared_player_blacksun_medium_s03 = SharedShipObjectTemplate:
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"ship_pilot", "ship_droid"},
+	slotDescriptorFilename = "abstract/slot/descriptor/ship_single_seat.iff",
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -868,7 +868,7 @@ ObjectTemplates:addClientTemplate(object_ship_player_shared_player_blacksun_medi
 
 object_ship_player_shared_player_blacksun_medium_s04 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_medium_body_s02.apt",
-	arrangementDescriptors = {"ship_control_device"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
 	certificationsRequired = {"cert_starships_mediumblacksunfighter"},
 	clearFloraRadius = 0,
@@ -904,7 +904,7 @@ object_ship_player_shared_player_blacksun_medium_s04 = SharedShipObjectTemplate:
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"ship_pilot", "ship_droid"},
+	slotDescriptorFilename = "abstract/slot/descriptor/ship_single_seat.iff",
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -923,7 +923,7 @@ ObjectTemplates:addClientTemplate(object_ship_player_shared_player_blacksun_medi
 
 object_ship_player_shared_player_bwing = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/bwing_cockpit_pod.apt",
-	arrangementDescriptors = {"ship_control_device"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
 	certificationsRequired = {"cert_starships_bwing"},
 	clearFloraRadius = 0,
@@ -959,7 +959,7 @@ object_ship_player_shared_player_bwing = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"ship_pilot", "ship_droid"},
+	slotDescriptorFilename = "abstract/slot/descriptor/ship_single_seat.iff",
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -978,7 +978,7 @@ ObjectTemplates:addClientTemplate(object_ship_player_shared_player_bwing, "objec
 
 object_ship_player_shared_player_corvette = SharedShipObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {"ship_control_device"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1014,7 +1014,7 @@ object_ship_player_shared_player_corvette = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"ship_pilot", "ship_droid"},
+	slotDescriptorFilename = "abstract/slot/descriptor/ship_single_seat.iff",
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1033,7 +1033,7 @@ ObjectTemplates:addClientTemplate(object_ship_player_shared_player_corvette, "ob
 
 object_ship_player_shared_player_decimator = SharedShipObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {"ship_control_device"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
 	certificationsRequired = {"cert_starships_decimator"},
 	clearFloraRadius = 0,
@@ -1069,7 +1069,7 @@ object_ship_player_shared_player_decimator = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1088,7 +1088,7 @@ ObjectTemplates:addClientTemplate(object_ship_player_shared_player_decimator, "o
 
 object_ship_player_shared_player_firespray = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/kse_firespray_body.apt",
-	arrangementDescriptors = {"ship_control_device"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
 	certificationsRequired = {"cert_starships_firespray"},
 	clearFloraRadius = 0,
@@ -1124,7 +1124,7 @@ object_ship_player_shared_player_firespray = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"ship_pilot", "ship_droid"},
+	slotDescriptorFilename = "abstract/slot/descriptor/ship_single_seat.iff",
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1143,7 +1143,7 @@ ObjectTemplates:addClientTemplate(object_ship_player_shared_player_firespray, "o
 
 object_ship_player_shared_player_hutt_heavy_s01 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/hutt_fighter_heavy_body_s01.apt",
-	arrangementDescriptors = {"ship_control_device"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
 	certificationsRequired = {"cert_starships_heavyhuttfighter"},
 	clearFloraRadius = 0,
@@ -1179,7 +1179,7 @@ object_ship_player_shared_player_hutt_heavy_s01 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"ship_pilot", "ship_droid"},
+	slotDescriptorFilename = "abstract/slot/descriptor/ship_single_seat.iff",
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1198,7 +1198,7 @@ ObjectTemplates:addClientTemplate(object_ship_player_shared_player_hutt_heavy_s0
 
 object_ship_player_shared_player_hutt_heavy_s02 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/hutt_fighter_heavy_body_s02.apt",
-	arrangementDescriptors = {"ship_control_device"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
 	certificationsRequired = {"cert_starships_heavyhuttfighter"},
 	clearFloraRadius = 0,
@@ -1234,7 +1234,7 @@ object_ship_player_shared_player_hutt_heavy_s02 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"ship_pilot", "ship_droid"},
+	slotDescriptorFilename = "abstract/slot/descriptor/ship_single_seat.iff",
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1253,7 +1253,7 @@ ObjectTemplates:addClientTemplate(object_ship_player_shared_player_hutt_heavy_s0
 
 object_ship_player_shared_player_hutt_light_s01 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/hutt_fighter_light_body_s01.apt",
-	arrangementDescriptors = {"ship_control_device"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
 	certificationsRequired = {"cert_starships_lighthuttfighter"},
 	clearFloraRadius = 0,
@@ -1289,7 +1289,7 @@ object_ship_player_shared_player_hutt_light_s01 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"ship_pilot", "ship_droid"},
+	slotDescriptorFilename = "abstract/slot/descriptor/ship_single_seat.iff",
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1308,7 +1308,7 @@ ObjectTemplates:addClientTemplate(object_ship_player_shared_player_hutt_light_s0
 
 object_ship_player_shared_player_hutt_light_s02 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/hutt_fighter_light_body_s02.apt",
-	arrangementDescriptors = {"ship_control_device"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
 	certificationsRequired = {"cert_starships_lighthuttfighter"},
 	clearFloraRadius = 0,
@@ -1344,7 +1344,7 @@ object_ship_player_shared_player_hutt_light_s02 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"ship_pilot", "ship_droid"},
+	slotDescriptorFilename = "abstract/slot/descriptor/ship_single_seat.iff",
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1363,7 +1363,7 @@ ObjectTemplates:addClientTemplate(object_ship_player_shared_player_hutt_light_s0
 
 object_ship_player_shared_player_hutt_medium_s01 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/hutt_fighter_medium_body_s01.apt",
-	arrangementDescriptors = {"ship_control_device"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
 	certificationsRequired = {"cert_starships_mediumhuttfighter"},
 	clearFloraRadius = 0,
@@ -1399,7 +1399,7 @@ object_ship_player_shared_player_hutt_medium_s01 = SharedShipObjectTemplate:new 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"ship_pilot", "ship_droid"},
+	slotDescriptorFilename = "abstract/slot/descriptor/ship_single_seat.iff",
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1418,7 +1418,7 @@ ObjectTemplates:addClientTemplate(object_ship_player_shared_player_hutt_medium_s
 
 object_ship_player_shared_player_hutt_medium_s02 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/hutt_fighter_medium_body_s02.apt",
-	arrangementDescriptors = {"ship_control_device"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
 	certificationsRequired = {"cert_starships_mediumhuttfighter"},
 	clearFloraRadius = 0,
@@ -1454,7 +1454,7 @@ object_ship_player_shared_player_hutt_medium_s02 = SharedShipObjectTemplate:new 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"ship_pilot", "ship_droid"},
+	slotDescriptorFilename = "abstract/slot/descriptor/ship_single_seat.iff",
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1473,7 +1473,7 @@ ObjectTemplates:addClientTemplate(object_ship_player_shared_player_hutt_medium_s
 
 object_ship_player_shared_player_hutt_turret_ship = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/hutt_fighter_heavy_body_s03.apt",
-	arrangementDescriptors = {"ship_control_device"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
 	certificationsRequired = {"cert_starships_hutt_turret_ship"},
 	clearFloraRadius = 0,
@@ -1509,7 +1509,7 @@ object_ship_player_shared_player_hutt_turret_ship = SharedShipObjectTemplate:new
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"ship_pilot", "ship_droid", "ship_gunner1"},
+	slotDescriptorFilename = "abstract/slot/descriptor/ship_hutt_turret_ship.iff",
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1528,7 +1528,7 @@ ObjectTemplates:addClientTemplate(object_ship_player_shared_player_hutt_turret_s
 
 object_ship_player_shared_player_prototype_hutt_light = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/hutt_fighter_light_body_s01.apt",
-	arrangementDescriptors = {"ship_control_device"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
 	certificationsRequired = {"cert_starships_lighthuttfighter"},
 	clearFloraRadius = 0,
@@ -1564,7 +1564,7 @@ object_ship_player_shared_player_prototype_hutt_light = SharedShipObjectTemplate
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"ship_pilot", "ship_droid"},
+	slotDescriptorFilename = "abstract/slot/descriptor/ship_single_seat.iff",
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1583,7 +1583,7 @@ ObjectTemplates:addClientTemplate(object_ship_player_shared_player_prototype_hut
 
 object_ship_player_shared_player_prototype_tiefighter = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/tie_fighter.apt",
-	arrangementDescriptors = {"ship_control_device"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
 	certificationsRequired = {"cert_starships_tiefighterlight"},
 	clearFloraRadius = 0,
@@ -1619,7 +1619,7 @@ object_ship_player_shared_player_prototype_tiefighter = SharedShipObjectTemplate
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"ship_pilot", "ship_droid"},
+	slotDescriptorFilename = "abstract/slot/descriptor/ship_single_seat.iff",
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1638,7 +1638,7 @@ ObjectTemplates:addClientTemplate(object_ship_player_shared_player_prototype_tie
 
 object_ship_player_shared_player_prototype_z95 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/z95_body.apt",
-	arrangementDescriptors = {"ship_control_device"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
 	certificationsRequired = {"cert_starships_z95headhunter"},
 	clearFloraRadius = 0,
@@ -1674,7 +1674,7 @@ object_ship_player_shared_player_prototype_z95 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"ship_pilot", "ship_droid"},
+	slotDescriptorFilename = "abstract/slot/descriptor/ship_single_seat.iff",
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1693,7 +1693,7 @@ ObjectTemplates:addClientTemplate(object_ship_player_shared_player_prototype_z95
 
 object_ship_player_shared_player_sorosuub_space_yacht = SharedShipObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {"ship_control_device"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1729,7 +1729,7 @@ object_ship_player_shared_player_sorosuub_space_yacht = SharedShipObjectTemplate
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1748,7 +1748,7 @@ ObjectTemplates:addClientTemplate(object_ship_player_shared_player_sorosuub_spac
 
 object_ship_player_shared_player_tie_in = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/tie_fighter_in.apt",
-	arrangementDescriptors = {"ship_control_device"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
 	certificationsRequired = {"cert_starships_tiefighterin"},
 	clearFloraRadius = 0,
@@ -1784,7 +1784,7 @@ object_ship_player_shared_player_tie_in = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"ship_pilot", "ship_droid"},
+	slotDescriptorFilename = "abstract/slot/descriptor/ship_single_seat.iff",
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1803,7 +1803,7 @@ ObjectTemplates:addClientTemplate(object_ship_player_shared_player_tie_in, "obje
 
 object_ship_player_shared_player_tie_light_duty = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/tie_fighter.apt",
-	arrangementDescriptors = {"ship_control_device"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
 	certificationsRequired = {"cert_starships_tiefighterlight"},
 	clearFloraRadius = 0,
@@ -1839,7 +1839,7 @@ object_ship_player_shared_player_tie_light_duty = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"ship_pilot", "ship_droid"},
+	slotDescriptorFilename = "abstract/slot/descriptor/ship_single_seat.iff",
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1858,7 +1858,7 @@ ObjectTemplates:addClientTemplate(object_ship_player_shared_player_tie_light_dut
 
 object_ship_player_shared_player_tieadvanced = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/tie_advanced.apt",
-	arrangementDescriptors = {"ship_control_device"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
 	certificationsRequired = {"cert_starships_tieadvanced"},
 	clearFloraRadius = 0,
@@ -1894,7 +1894,7 @@ object_ship_player_shared_player_tieadvanced = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"ship_pilot", "ship_droid"},
+	slotDescriptorFilename = "abstract/slot/descriptor/ship_single_seat.iff",
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1913,7 +1913,7 @@ ObjectTemplates:addClientTemplate(object_ship_player_shared_player_tieadvanced, 
 
 object_ship_player_shared_player_tieaggressor = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/tie_aggressor.apt",
-	arrangementDescriptors = {"ship_control_device"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
 	certificationsRequired = {"cert_starships_tieadvanced"},
 	clearFloraRadius = 0,
@@ -1949,7 +1949,7 @@ object_ship_player_shared_player_tieaggressor = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"ship_pilot", "ship_droid", "ship_gunner1"},
+	slotDescriptorFilename = "abstract/slot/descriptor/ship_tieaggressor.iff",
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1968,7 +1968,7 @@ ObjectTemplates:addClientTemplate(object_ship_player_shared_player_tieaggressor,
 
 object_ship_player_shared_player_tiebomber = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/tie_bomber_b.apt",
-	arrangementDescriptors = {"ship_control_device"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
 	certificationsRequired = {"cert_starships_tiebomber"},
 	clearFloraRadius = 0,
@@ -2004,7 +2004,7 @@ object_ship_player_shared_player_tiebomber = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"ship_pilot", "ship_droid"},
+	slotDescriptorFilename = "abstract/slot/descriptor/ship_single_seat.iff",
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2023,7 +2023,7 @@ ObjectTemplates:addClientTemplate(object_ship_player_shared_player_tiebomber, "o
 
 object_ship_player_shared_player_tiefighter = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/tie_fighter.apt",
-	arrangementDescriptors = {"ship_control_device"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
 	certificationsRequired = {"cert_starships_tiefighter"},
 	clearFloraRadius = 0,
@@ -2059,7 +2059,7 @@ object_ship_player_shared_player_tiefighter = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"ship_pilot", "ship_droid"},
+	slotDescriptorFilename = "abstract/slot/descriptor/ship_single_seat.iff",
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2078,7 +2078,7 @@ ObjectTemplates:addClientTemplate(object_ship_player_shared_player_tiefighter, "
 
 object_ship_player_shared_player_tieinterceptor = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/tie_interceptor.apt",
-	arrangementDescriptors = {"ship_control_device"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
 	certificationsRequired = {"cert_starships_tieinterceptor"},
 	clearFloraRadius = 0,
@@ -2114,7 +2114,7 @@ object_ship_player_shared_player_tieinterceptor = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"ship_pilot", "ship_droid"},
+	slotDescriptorFilename = "abstract/slot/descriptor/ship_single_seat.iff",
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2133,7 +2133,7 @@ ObjectTemplates:addClientTemplate(object_ship_player_shared_player_tieintercepto
 
 object_ship_player_shared_player_tieoppressor = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/tie_oppressor.apt",
-	arrangementDescriptors = {"ship_control_device"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
 	certificationsRequired = {"cert_starships_tieoppressor"},
 	clearFloraRadius = 0,
@@ -2169,7 +2169,7 @@ object_ship_player_shared_player_tieoppressor = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"ship_pilot", "ship_droid"},
+	slotDescriptorFilename = "abstract/slot/descriptor/ship_single_seat.iff",
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2188,7 +2188,7 @@ ObjectTemplates:addClientTemplate(object_ship_player_shared_player_tieoppressor,
 
 object_ship_player_shared_player_xwing = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/xwing_body.apt",
-	arrangementDescriptors = {"ship_control_device"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
 	certificationsRequired = {"cert_starships_xwing"},
 	clearFloraRadius = 0,
@@ -2224,7 +2224,7 @@ object_ship_player_shared_player_xwing = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"ship_pilot", "ship_droid"},
+	slotDescriptorFilename = "abstract/slot/descriptor/ship_single_seat.iff",
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2243,7 +2243,7 @@ ObjectTemplates:addClientTemplate(object_ship_player_shared_player_xwing, "objec
 
 object_ship_player_shared_player_ykl37r = SharedShipObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {"ship_control_device"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
 	certificationsRequired = {"cert_starships_ykl37r"},
 	clearFloraRadius = 0,
@@ -2279,7 +2279,7 @@ object_ship_player_shared_player_ykl37r = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2298,7 +2298,7 @@ ObjectTemplates:addClientTemplate(object_ship_player_shared_player_ykl37r, "obje
 
 object_ship_player_shared_player_yt1300 = SharedShipObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {"ship_control_device"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
 	certificationsRequired = {"cert_starships_yt1300"},
 	clearFloraRadius = 0,
@@ -2334,7 +2334,7 @@ object_ship_player_shared_player_yt1300 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2353,7 +2353,7 @@ ObjectTemplates:addClientTemplate(object_ship_player_shared_player_yt1300, "obje
 
 object_ship_player_shared_player_yt1300_decorated_01 = SharedShipObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {"ship_control_device"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
 	certificationsRequired = {"cert_starships_yt1300"},
 	clearFloraRadius = 0,
@@ -2389,7 +2389,7 @@ object_ship_player_shared_player_yt1300_decorated_01 = SharedShipObjectTemplate:
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"ship_pilot", "ship_droid"},
+	slotDescriptorFilename = "abstract/slot/descriptor/ship_single_seat.iff",
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2408,7 +2408,7 @@ ObjectTemplates:addClientTemplate(object_ship_player_shared_player_yt1300_decora
 
 object_ship_player_shared_player_ywing = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/ywing_body.apt",
-	arrangementDescriptors = {"ship_control_device"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
 	certificationsRequired = {"cert_starships_ywing"},
 	clearFloraRadius = 0,
@@ -2444,7 +2444,7 @@ object_ship_player_shared_player_ywing = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"ship_pilot", "ship_droid", "ship_gunner1"},
+	slotDescriptorFilename = "abstract/slot/descriptor/ship_ywing.iff",
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2463,7 +2463,7 @@ ObjectTemplates:addClientTemplate(object_ship_player_shared_player_ywing, "objec
 
 object_ship_player_shared_player_ywing_longprobe = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/ywing_body.apt",
-	arrangementDescriptors = {"ship_control_device"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
 	certificationsRequired = {"cert_starships_ywinglongprobe"},
 	clearFloraRadius = 0,
@@ -2499,7 +2499,7 @@ object_ship_player_shared_player_ywing_longprobe = SharedShipObjectTemplate:new 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"ship_pilot", "ship_droid"},
+	slotDescriptorFilename = "abstract/slot/descriptor/ship_single_seat.iff",
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2518,7 +2518,7 @@ ObjectTemplates:addClientTemplate(object_ship_player_shared_player_ywing_longpro
 
 object_ship_player_shared_player_z95 = SharedShipObjectTemplate:new {
 	appearanceFilename = "appearance/z95_body.apt",
-	arrangementDescriptors = {"ship_control_device"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
 	certificationsRequired = {"cert_starships_z95headhunter"},
 	clearFloraRadius = 0,
@@ -2554,7 +2554,7 @@ object_ship_player_shared_player_z95 = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"ship_pilot", "ship_droid"},
+	slotDescriptorFilename = "abstract/slot/descriptor/ship_single_seat.iff",
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",

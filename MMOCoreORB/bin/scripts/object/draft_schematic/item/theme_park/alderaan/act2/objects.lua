@@ -43,7 +43,7 @@
 
 object_draft_schematic_item_theme_park_alderaan_act2_shared_dead_eye_decoder = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {"datapad"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -74,7 +74,7 @@ object_draft_schematic_item_theme_park_alderaan_act2_shared_dead_eye_decoder = S
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 

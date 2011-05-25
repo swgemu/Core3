@@ -43,7 +43,7 @@
 
 object_tangible_crafting_base_shared_base_public_station = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -79,7 +79,7 @@ object_tangible_crafting_base_shared_base_public_station = SharedTangibleObjectT
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -98,7 +98,7 @@ ObjectTemplates:addClientTemplate(object_tangible_crafting_base_shared_base_publ
 
 object_tangible_crafting_base_shared_base_repair = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -134,7 +134,7 @@ object_tangible_crafting_base_shared_base_repair = SharedTangibleObjectTemplate:
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -153,7 +153,7 @@ ObjectTemplates:addClientTemplate(object_tangible_crafting_base_shared_base_repa
 
 object_tangible_crafting_base_shared_base_station = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -189,7 +189,7 @@ object_tangible_crafting_base_shared_base_station = SharedTangibleObjectTemplate
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"ingredient_hopper"},
+	slotDescriptorFilename = "abstract/slot/descriptor/crafting_station.iff",
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -208,7 +208,7 @@ ObjectTemplates:addClientTemplate(object_tangible_crafting_base_shared_base_stat
 
 object_tangible_crafting_base_shared_base_tool = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -244,7 +244,7 @@ object_tangible_crafting_base_shared_base_tool = SharedTangibleObjectTemplate:ne
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"anythingNoMod2", "anythingNoMod1", "test_manf_schematic"},
+	slotDescriptorFilename = "abstract/slot/descriptor/crafting_tool.iff",
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",

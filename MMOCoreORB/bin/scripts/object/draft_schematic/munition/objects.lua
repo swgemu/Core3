@@ -43,7 +43,7 @@
 
 object_draft_schematic_munition_shared_base_munition = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {"datapad"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -74,7 +74,7 @@ object_draft_schematic_munition_shared_base_munition = SharedDraftSchematicObjec
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -88,7 +88,7 @@ ObjectTemplates:addClientTemplate(object_draft_schematic_munition_shared_base_mu
 
 object_draft_schematic_munition_shared_base_munition_enhancer = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {"datapad"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -119,7 +119,7 @@ object_draft_schematic_munition_shared_base_munition_enhancer = SharedDraftSchem
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -133,7 +133,7 @@ ObjectTemplates:addClientTemplate(object_draft_schematic_munition_shared_base_mu
 
 object_draft_schematic_munition_shared_bomb_field_antigravity = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {"datapad"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -164,7 +164,7 @@ object_draft_schematic_munition_shared_bomb_field_antigravity = SharedDraftSchem
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -178,7 +178,7 @@ ObjectTemplates:addClientTemplate(object_draft_schematic_munition_shared_bomb_fi
 
 object_draft_schematic_munition_shared_detonator_thermal_class_a = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {"datapad"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -209,7 +209,7 @@ object_draft_schematic_munition_shared_detonator_thermal_class_a = SharedDraftSc
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -223,7 +223,7 @@ ObjectTemplates:addClientTemplate(object_draft_schematic_munition_shared_detonat
 
 object_draft_schematic_munition_shared_detonator_thermal_imperial_issue = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {"datapad"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -254,7 +254,7 @@ object_draft_schematic_munition_shared_detonator_thermal_imperial_issue = Shared
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -268,7 +268,7 @@ ObjectTemplates:addClientTemplate(object_draft_schematic_munition_shared_detonat
 
 object_draft_schematic_munition_shared_grenade_cryoban_ww_41 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {"datapad"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -299,7 +299,7 @@ object_draft_schematic_munition_shared_grenade_cryoban_ww_41 = SharedDraftSchema
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -313,7 +313,7 @@ ObjectTemplates:addClientTemplate(object_draft_schematic_munition_shared_grenade
 
 object_draft_schematic_munition_shared_grenade_fragmentation_c_12 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {"datapad"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -344,7 +344,7 @@ object_draft_schematic_munition_shared_grenade_fragmentation_c_12 = SharedDraftS
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -358,7 +358,7 @@ ObjectTemplates:addClientTemplate(object_draft_schematic_munition_shared_grenade
 
 object_draft_schematic_munition_shared_grenade_fragmentation_c_22 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {"datapad"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -389,7 +389,7 @@ object_draft_schematic_munition_shared_grenade_fragmentation_c_22 = SharedDraftS
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -403,7 +403,7 @@ ObjectTemplates:addClientTemplate(object_draft_schematic_munition_shared_grenade
 
 object_draft_schematic_munition_shared_grenade_glop = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {"datapad"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -434,7 +434,7 @@ object_draft_schematic_munition_shared_grenade_glop = SharedDraftSchematicObject
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -448,7 +448,7 @@ ObjectTemplates:addClientTemplate(object_draft_schematic_munition_shared_grenade
 
 object_draft_schematic_munition_shared_grenade_proton = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {"datapad"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -479,7 +479,7 @@ object_draft_schematic_munition_shared_grenade_proton = SharedDraftSchematicObje
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -493,7 +493,7 @@ ObjectTemplates:addClientTemplate(object_draft_schematic_munition_shared_grenade
 
 object_draft_schematic_munition_shared_mine_anti_vehicle = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {"datapad"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -524,7 +524,7 @@ object_draft_schematic_munition_shared_mine_anti_vehicle = SharedDraftSchematicO
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -538,7 +538,7 @@ ObjectTemplates:addClientTemplate(object_draft_schematic_munition_shared_mine_an
 
 object_draft_schematic_munition_shared_mine_dxr55 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {"datapad"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -569,7 +569,7 @@ object_draft_schematic_munition_shared_mine_dxr55 = SharedDraftSchematicObjectTe
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -583,7 +583,7 @@ ObjectTemplates:addClientTemplate(object_draft_schematic_munition_shared_mine_dx
 
 object_draft_schematic_munition_shared_mine_xg = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {"datapad"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -614,7 +614,7 @@ object_draft_schematic_munition_shared_mine_xg = SharedDraftSchematicObjectTempl
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 

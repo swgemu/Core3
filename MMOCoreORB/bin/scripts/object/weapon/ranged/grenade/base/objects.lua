@@ -43,7 +43,7 @@
 
 object_weapon_ranged_grenade_base_shared_grenade_base = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/mockup_e11.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 	attackType = 1,
 
 	certificationsRequired = {},
@@ -80,7 +80,7 @@ object_weapon_ranged_grenade_base_shared_grenade_base = SharedWeaponObjectTempla
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",

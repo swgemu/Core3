@@ -43,7 +43,7 @@
 
 object_tangible_instrument_shared_bandfill = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_music_bandfill.apt",
-	arrangementDescriptors = {"hold_r"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hold_r.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -79,7 +79,7 @@ object_tangible_instrument_shared_bandfill = SharedTangibleObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"default_weapon_ammo_slot", "crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/default_weapon.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -98,7 +98,7 @@ ObjectTemplates:addClientTemplate(object_tangible_instrument_shared_bandfill, "o
 
 object_tangible_instrument_shared_fanfar = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_music_fanfar.apt",
-	arrangementDescriptors = {"hold_r"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hold_r.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -134,7 +134,7 @@ object_tangible_instrument_shared_fanfar = SharedTangibleObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"default_weapon_ammo_slot", "crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/default_weapon.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -153,7 +153,7 @@ ObjectTemplates:addClientTemplate(object_tangible_instrument_shared_fanfar, "obj
 
 object_tangible_instrument_shared_fizz = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_music_fizz.apt",
-	arrangementDescriptors = {"hold_r"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hold_r.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -189,7 +189,7 @@ object_tangible_instrument_shared_fizz = SharedTangibleObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"default_weapon_ammo_slot", "crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/default_weapon.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -208,7 +208,7 @@ ObjectTemplates:addClientTemplate(object_tangible_instrument_shared_fizz, "objec
 
 object_tangible_instrument_shared_flute_droopy = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_music_flute_droopy.apt",
-	arrangementDescriptors = {"hold_r"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hold_r.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -244,7 +244,7 @@ object_tangible_instrument_shared_flute_droopy = SharedTangibleObjectTemplate:ne
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"default_weapon_ammo_slot", "crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/default_weapon.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -263,7 +263,7 @@ ObjectTemplates:addClientTemplate(object_tangible_instrument_shared_flute_droopy
 
 object_tangible_instrument_shared_instrument_organ_figrin_dan = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/rebos_organ.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -299,7 +299,7 @@ object_tangible_instrument_shared_instrument_organ_figrin_dan = SharedTangibleOb
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -318,7 +318,7 @@ ObjectTemplates:addClientTemplate(object_tangible_instrument_shared_instrument_o
 
 object_tangible_instrument_shared_instrument_organ_max_rebo = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_music_red_ball_jet_organ.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -354,7 +354,7 @@ object_tangible_instrument_shared_instrument_organ_max_rebo = SharedTangibleObje
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -373,7 +373,7 @@ ObjectTemplates:addClientTemplate(object_tangible_instrument_shared_instrument_o
 
 object_tangible_instrument_shared_kloo_horn = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_music_kloo_horn.apt",
-	arrangementDescriptors = {"hold_r"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hold_r.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -409,7 +409,7 @@ object_tangible_instrument_shared_kloo_horn = SharedTangibleObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"default_weapon_ammo_slot", "crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/default_weapon.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -428,7 +428,7 @@ ObjectTemplates:addClientTemplate(object_tangible_instrument_shared_kloo_horn, "
 
 object_tangible_instrument_shared_mandoviol = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_music_mandoviol.apt",
-	arrangementDescriptors = {"hold_r"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hold_r.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -464,7 +464,7 @@ object_tangible_instrument_shared_mandoviol = SharedTangibleObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"default_weapon_ammo_slot", "crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/default_weapon.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -483,7 +483,7 @@ ObjectTemplates:addClientTemplate(object_tangible_instrument_shared_mandoviol, "
 
 object_tangible_instrument_shared_nalargon = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_music_red_ball_jet_organ.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -519,7 +519,7 @@ object_tangible_instrument_shared_nalargon = SharedTangibleObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -538,7 +538,7 @@ ObjectTemplates:addClientTemplate(object_tangible_instrument_shared_nalargon, "o
 
 object_tangible_instrument_shared_ommni_box = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_music_ommni_box.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -574,7 +574,7 @@ object_tangible_instrument_shared_ommni_box = SharedTangibleObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -593,7 +593,7 @@ ObjectTemplates:addClientTemplate(object_tangible_instrument_shared_ommni_box, "
 
 object_tangible_instrument_shared_organ_max_rebo = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_music_red_ball_jet_organ.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -629,7 +629,7 @@ object_tangible_instrument_shared_organ_max_rebo = SharedTangibleObjectTemplate:
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -648,7 +648,7 @@ ObjectTemplates:addClientTemplate(object_tangible_instrument_shared_organ_max_re
 
 object_tangible_instrument_shared_slitherhorn = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_music_slitherhorn.apt",
-	arrangementDescriptors = {"hold_r"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hold_r.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -684,7 +684,7 @@ object_tangible_instrument_shared_slitherhorn = SharedTangibleObjectTemplate:new
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"default_weapon_ammo_slot", "crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/default_weapon.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -703,7 +703,7 @@ ObjectTemplates:addClientTemplate(object_tangible_instrument_shared_slitherhorn,
 
 object_tangible_instrument_shared_traz = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_music_traz.apt",
-	arrangementDescriptors = {"hold_r"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hold_r.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -739,7 +739,7 @@ object_tangible_instrument_shared_traz = SharedTangibleObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"default_weapon_ammo_slot", "crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/default_weapon.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",

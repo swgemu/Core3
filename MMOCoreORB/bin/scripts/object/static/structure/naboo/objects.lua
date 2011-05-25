@@ -43,7 +43,7 @@
 
 object_static_structure_naboo_shared_arbor_corner_45_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_imprv_arbor_corner_45_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -74,7 +74,7 @@ object_static_structure_naboo_shared_arbor_corner_45_s01 = SharedStaticObjectTem
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 1,
 
@@ -88,7 +88,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_naboo_shared_arbor_cor
 
 object_static_structure_naboo_shared_arbor_corner_90_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_imprv_arbor_corner_90_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -119,7 +119,7 @@ object_static_structure_naboo_shared_arbor_corner_90_s01 = SharedStaticObjectTem
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 1,
 
@@ -133,7 +133,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_naboo_shared_arbor_cor
 
 object_static_structure_naboo_shared_arbor_long_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_imprv_arbor_long_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -164,7 +164,7 @@ object_static_structure_naboo_shared_arbor_long_s01 = SharedStaticObjectTemplate
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 1,
 
@@ -178,7 +178,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_naboo_shared_arbor_lon
 
 object_static_structure_naboo_shared_arbor_long_s02 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_imprv_arbor_long_s02.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -209,7 +209,7 @@ object_static_structure_naboo_shared_arbor_long_s02 = SharedStaticObjectTemplate
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 1,
 
@@ -223,7 +223,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_naboo_shared_arbor_lon
 
 object_static_structure_naboo_shared_arbor_pillar_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_imprv_arbor_pillar_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -254,7 +254,7 @@ object_static_structure_naboo_shared_arbor_pillar_s01 = SharedStaticObjectTempla
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 1,
 
@@ -268,7 +268,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_naboo_shared_arbor_pil
 
 object_static_structure_naboo_shared_arbor_short_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_imprv_arbor_short_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -299,7 +299,7 @@ object_static_structure_naboo_shared_arbor_short_s01 = SharedStaticObjectTemplat
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 1,
 
@@ -313,7 +313,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_naboo_shared_arbor_sho
 
 object_static_structure_naboo_shared_arbor_short_s02 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_imprv_arbor_short_s02.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -344,7 +344,7 @@ object_static_structure_naboo_shared_arbor_short_s02 = SharedStaticObjectTemplat
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 1,
 
@@ -358,7 +358,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_naboo_shared_arbor_sho
 
 object_static_structure_naboo_shared_arch_bronze_naboo_theed = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_thed_imprv_bronze_arch.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -389,7 +389,7 @@ object_static_structure_naboo_shared_arch_bronze_naboo_theed = SharedStaticObjec
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 1,
 
@@ -403,7 +403,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_naboo_shared_arch_bron
 
 object_static_structure_naboo_shared_arch_triumph_naboo_theed = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_thed_imprv_triumval_arch.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -434,7 +434,7 @@ object_static_structure_naboo_shared_arch_triumph_naboo_theed = SharedStaticObje
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 1,
 
@@ -448,7 +448,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_naboo_shared_arch_triu
 
 object_static_structure_naboo_shared_archway_narrow_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_imprv_archway_narrow_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 5,
 	clientDataFile = "",
@@ -479,7 +479,7 @@ object_static_structure_naboo_shared_archway_narrow_s01 = SharedStaticObjectTemp
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 1,
 
@@ -493,7 +493,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_naboo_shared_archway_n
 
 object_static_structure_naboo_shared_archway_narrow_s02 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_imprv_archway_narrow_s02.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 5,
 	clientDataFile = "",
@@ -524,7 +524,7 @@ object_static_structure_naboo_shared_archway_narrow_s02 = SharedStaticObjectTemp
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 1,
 
@@ -538,7 +538,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_naboo_shared_archway_n
 
 object_static_structure_naboo_shared_archway_wide_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_imprv_archway_wide_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 5,
 	clientDataFile = "",
@@ -569,7 +569,7 @@ object_static_structure_naboo_shared_archway_wide_s01 = SharedStaticObjectTempla
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 1,
 
@@ -583,7 +583,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_naboo_shared_archway_w
 
 object_static_structure_naboo_shared_archway_wide_s02 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_imprv_archway_wide_s02.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 5,
 	clientDataFile = "",
@@ -614,7 +614,7 @@ object_static_structure_naboo_shared_archway_wide_s02 = SharedStaticObjectTempla
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 1,
 
@@ -628,7 +628,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_naboo_shared_archway_w
 
 object_static_structure_naboo_shared_bridge_naboo_theed_style_1 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_thed_imprv_bridge_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -659,7 +659,7 @@ object_static_structure_naboo_shared_bridge_naboo_theed_style_1 = SharedStaticOb
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 2,
 
@@ -673,7 +673,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_naboo_shared_bridge_na
 
 object_static_structure_naboo_shared_bridge_stairs_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_imprv_bridge_stairs_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -704,7 +704,7 @@ object_static_structure_naboo_shared_bridge_stairs_s01 = SharedStaticObjectTempl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 2,
 
@@ -718,7 +718,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_naboo_shared_bridge_st
 
 object_static_structure_naboo_shared_bridge_stairs_s02 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_imprv_bridge_stairs_s02.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -749,7 +749,7 @@ object_static_structure_naboo_shared_bridge_stairs_s02 = SharedStaticObjectTempl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 2,
 
@@ -763,7 +763,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_naboo_shared_bridge_st
 
 object_static_structure_naboo_shared_bridge_stairs_s03 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_imprv_bridge_stairs_s03.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -794,7 +794,7 @@ object_static_structure_naboo_shared_bridge_stairs_s03 = SharedStaticObjectTempl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 2,
 
@@ -808,7 +808,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_naboo_shared_bridge_st
 
 object_static_structure_naboo_shared_elevated_walkway_cap_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_imprv_elevated_walkway_cap_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -839,7 +839,7 @@ object_static_structure_naboo_shared_elevated_walkway_cap_s01 = SharedStaticObje
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 2,
 
@@ -853,7 +853,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_naboo_shared_elevated_
 
 object_static_structure_naboo_shared_elevated_walkway_corner_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_imprv_elevated_walkway_corner_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -884,7 +884,7 @@ object_static_structure_naboo_shared_elevated_walkway_corner_s01 = SharedStaticO
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 2,
 
@@ -898,7 +898,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_naboo_shared_elevated_
 
 object_static_structure_naboo_shared_elevated_walkway_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_imprv_elevated_walkway_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -929,7 +929,7 @@ object_static_structure_naboo_shared_elevated_walkway_s01 = SharedStaticObjectTe
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 2,
 
@@ -943,7 +943,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_naboo_shared_elevated_
 
 object_static_structure_naboo_shared_elevated_walkway_s02 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_imprv_elevated_walkway_s02.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -974,7 +974,7 @@ object_static_structure_naboo_shared_elevated_walkway_s02 = SharedStaticObjectTe
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 2,
 
@@ -988,7 +988,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_naboo_shared_elevated_
 
 object_static_structure_naboo_shared_elevated_walkway_s03 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_imprv_elevated_walkway_s03.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1019,7 +1019,7 @@ object_static_structure_naboo_shared_elevated_walkway_s03 = SharedStaticObjectTe
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 2,
 
@@ -1033,7 +1033,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_naboo_shared_elevated_
 
 object_static_structure_naboo_shared_enclosed_walkway_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_imprv_enclosed_walkway_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1064,7 +1064,7 @@ object_static_structure_naboo_shared_enclosed_walkway_s01 = SharedStaticObjectTe
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 2,
 
@@ -1078,7 +1078,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_naboo_shared_enclosed_
 
 object_static_structure_naboo_shared_enclosed_walkway_s02 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_imprv_enclosed_walkway_s02.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1109,7 +1109,7 @@ object_static_structure_naboo_shared_enclosed_walkway_s02 = SharedStaticObjectTe
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 2,
 
@@ -1123,7 +1123,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_naboo_shared_enclosed_
 
 object_static_structure_naboo_shared_fountain_naboo_style_1 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/mun_all_imprv_fountain_sm_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/item/client_shared_fountain_nboo_circle_01.cdf",
@@ -1154,7 +1154,7 @@ object_static_structure_naboo_shared_fountain_naboo_style_1 = SharedStaticObject
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 1,
 
@@ -1168,7 +1168,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_naboo_shared_fountain_
 
 object_static_structure_naboo_shared_garden_gazebo_lg_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_imprv_garden_gazebo_lg_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1199,7 +1199,7 @@ object_static_structure_naboo_shared_garden_gazebo_lg_s01 = SharedStaticObjectTe
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 1,
 
@@ -1213,7 +1213,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_naboo_shared_garden_ga
 
 object_static_structure_naboo_shared_garden_gazebo_sml_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_imprv_garden_gazebo_sml_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1244,7 +1244,7 @@ object_static_structure_naboo_shared_garden_gazebo_sml_s01 = SharedStaticObjectT
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 1,
 
@@ -1258,7 +1258,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_naboo_shared_garden_ga
 
 object_static_structure_naboo_shared_gate_narrow_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_imprv_narrow_gate_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 5,
 	clientDataFile = "",
@@ -1289,7 +1289,7 @@ object_static_structure_naboo_shared_gate_narrow_s01 = SharedStaticObjectTemplat
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 1,
 
@@ -1303,7 +1303,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_naboo_shared_gate_narr
 
 object_static_structure_naboo_shared_gate_narrow_s02 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_imprv_narrow_gate_s02.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 5,
 	clientDataFile = "",
@@ -1334,7 +1334,7 @@ object_static_structure_naboo_shared_gate_narrow_s02 = SharedStaticObjectTemplat
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 1,
 
@@ -1348,7 +1348,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_naboo_shared_gate_narr
 
 object_static_structure_naboo_shared_gate_wide_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_imprv_wide_gate_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 7,
 	clientDataFile = "",
@@ -1379,7 +1379,7 @@ object_static_structure_naboo_shared_gate_wide_s01 = SharedStaticObjectTemplate:
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 1,
 
@@ -1393,7 +1393,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_naboo_shared_gate_wide
 
 object_static_structure_naboo_shared_gate_wide_s02 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_imprv_wide_gate_s02.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 7,
 	clientDataFile = "",
@@ -1424,7 +1424,7 @@ object_static_structure_naboo_shared_gate_wide_s02 = SharedStaticObjectTemplate:
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 1,
 
@@ -1438,7 +1438,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_naboo_shared_gate_wide
 
 object_static_structure_naboo_shared_gungan_cleft_wall_lg_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_gungan_cleft_wall_lg_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1469,7 +1469,7 @@ object_static_structure_naboo_shared_gungan_cleft_wall_lg_s01 = SharedStaticObje
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 2,
 
@@ -1483,7 +1483,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_naboo_shared_gungan_cl
 
 object_static_structure_naboo_shared_gungan_damaged_narrow_arch_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_gungan_damaged_narrow_arch_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1514,7 +1514,7 @@ object_static_structure_naboo_shared_gungan_damaged_narrow_arch_s01 = SharedStat
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 2,
 
@@ -1528,7 +1528,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_naboo_shared_gungan_da
 
 object_static_structure_naboo_shared_gungan_damaged_wall_lg_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_gungan_damaged_wall_lg_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1559,7 +1559,7 @@ object_static_structure_naboo_shared_gungan_damaged_wall_lg_s01 = SharedStaticOb
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 2,
 
@@ -1573,7 +1573,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_naboo_shared_gungan_da
 
 object_static_structure_naboo_shared_gungan_damaged_wide_arch_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_gungan_damaged_wide_arch_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1604,7 +1604,7 @@ object_static_structure_naboo_shared_gungan_damaged_wide_arch_s01 = SharedStatic
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 2,
 
@@ -1618,7 +1618,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_naboo_shared_gungan_da
 
 object_static_structure_naboo_shared_gungan_filler_building_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_gungan_imprv_building_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1649,7 +1649,7 @@ object_static_structure_naboo_shared_gungan_filler_building_s01 = SharedStaticOb
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 2,
 
@@ -1663,7 +1663,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_naboo_shared_gungan_fi
 
 object_static_structure_naboo_shared_gungan_filler_building_s02 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_gungan_imprv_building_s02.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1694,7 +1694,7 @@ object_static_structure_naboo_shared_gungan_filler_building_s02 = SharedStaticOb
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 2,
 
@@ -1708,7 +1708,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_naboo_shared_gungan_fi
 
 object_static_structure_naboo_shared_gungan_pillar_damaged_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_gungan_pillar_damaged_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1739,7 +1739,7 @@ object_static_structure_naboo_shared_gungan_pillar_damaged_s01 = SharedStaticObj
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 2,
 
@@ -1753,7 +1753,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_naboo_shared_gungan_pi
 
 object_static_structure_naboo_shared_gungan_pillar_ruined_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_gungan_pillar_ruined_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1784,7 +1784,7 @@ object_static_structure_naboo_shared_gungan_pillar_ruined_s01 = SharedStaticObje
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 2,
 
@@ -1798,7 +1798,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_naboo_shared_gungan_pi
 
 object_static_structure_naboo_shared_gungan_relic_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_gungan_relic_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1829,7 +1829,7 @@ object_static_structure_naboo_shared_gungan_relic_s01 = SharedStaticObjectTempla
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 2,
 
@@ -1843,7 +1843,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_naboo_shared_gungan_re
 
 object_static_structure_naboo_shared_gungan_relic_s02 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_gungan_relic_s02.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1874,7 +1874,7 @@ object_static_structure_naboo_shared_gungan_relic_s02 = SharedStaticObjectTempla
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 2,
 
@@ -1888,7 +1888,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_naboo_shared_gungan_re
 
 object_static_structure_naboo_shared_gungan_sacred_head_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_gungan_sacred_head_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1919,7 +1919,7 @@ object_static_structure_naboo_shared_gungan_sacred_head_s01 = SharedStaticObject
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 2,
 
@@ -1933,7 +1933,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_naboo_shared_gungan_sa
 
 object_static_structure_naboo_shared_gungan_shield_gen_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_gungan_shield_gen_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1964,7 +1964,7 @@ object_static_structure_naboo_shared_gungan_shield_gen_s01 = SharedStaticObjectT
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 1,
 
@@ -1978,7 +1978,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_naboo_shared_gungan_sh
 
 object_static_structure_naboo_shared_gungan_shield_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_gungan_shield_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -2009,7 +2009,7 @@ object_static_structure_naboo_shared_gungan_shield_s01 = SharedStaticObjectTempl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 1,
 
@@ -2023,7 +2023,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_naboo_shared_gungan_sh
 
 object_static_structure_naboo_shared_gungan_statue_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_gungan_statue_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -2054,7 +2054,7 @@ object_static_structure_naboo_shared_gungan_statue_s01 = SharedStaticObjectTempl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 2,
 
@@ -2068,7 +2068,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_naboo_shared_gungan_st
 
 object_static_structure_naboo_shared_gungan_statue_s02 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_gungan_statue_s02.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -2099,7 +2099,7 @@ object_static_structure_naboo_shared_gungan_statue_s02 = SharedStaticObjectTempl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 2,
 
@@ -2113,7 +2113,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_naboo_shared_gungan_st
 
 object_static_structure_naboo_shared_gungan_statue_s03 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_gungan_statue_s03.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -2144,7 +2144,7 @@ object_static_structure_naboo_shared_gungan_statue_s03 = SharedStaticObjectTempl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 2,
 
@@ -2158,7 +2158,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_naboo_shared_gungan_st
 
 object_static_structure_naboo_shared_gungan_statue_s04 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_gungan_statue_s04.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -2189,7 +2189,7 @@ object_static_structure_naboo_shared_gungan_statue_s04 = SharedStaticObjectTempl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 2,
 
@@ -2203,7 +2203,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_naboo_shared_gungan_st
 
 object_static_structure_naboo_shared_gungan_wall_ruined_lg_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_gungan_wall_ruined_lg_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -2234,7 +2234,7 @@ object_static_structure_naboo_shared_gungan_wall_ruined_lg_s01 = SharedStaticObj
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 2,
 
@@ -2248,7 +2248,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_naboo_shared_gungan_wa
 
 object_static_structure_naboo_shared_gungan_wall_ruined_lg_s02 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_gungan_wall_ruined_lg_s02.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -2279,7 +2279,7 @@ object_static_structure_naboo_shared_gungan_wall_ruined_lg_s02 = SharedStaticObj
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 2,
 
@@ -2293,7 +2293,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_naboo_shared_gungan_wa
 
 object_static_structure_naboo_shared_gungan_wall_ruined_sm_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_gungan_wall_ruined_sm_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -2324,7 +2324,7 @@ object_static_structure_naboo_shared_gungan_wall_ruined_sm_s01 = SharedStaticObj
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 2,
 
@@ -2338,7 +2338,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_naboo_shared_gungan_wa
 
 object_static_structure_naboo_shared_gungan_wall_ruined_sm_s02 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_gungan_wall_ruined_sm_s02.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -2369,7 +2369,7 @@ object_static_structure_naboo_shared_gungan_wall_ruined_sm_s02 = SharedStaticObj
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 2,
 
@@ -2383,7 +2383,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_naboo_shared_gungan_wa
 
 object_static_structure_naboo_shared_nboo_imprv_bannerpole_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/mun_corl_imprv_bannerpole_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/structure/nboo_imprv_bannerpole_s01.cdf",
@@ -2413,7 +2413,7 @@ object_static_structure_naboo_shared_nboo_imprv_bannerpole_s01 = SharedStaticObj
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 1,
 
@@ -2427,7 +2427,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_naboo_shared_nboo_impr
 
 object_static_structure_naboo_shared_nboo_imprv_flagpole_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/mun_corl_imprv_flagpole_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/structure/nboo_imprv_flagpole_s01.cdf",
@@ -2457,7 +2457,7 @@ object_static_structure_naboo_shared_nboo_imprv_flagpole_s01 = SharedStaticObjec
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 1,
 
@@ -2471,7 +2471,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_naboo_shared_nboo_impr
 
 object_static_structure_naboo_shared_nboo_imprv_lattice_wall_long_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_imprv_lattice_wall_long_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -2502,7 +2502,7 @@ object_static_structure_naboo_shared_nboo_imprv_lattice_wall_long_s01 = SharedSt
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 1,
 
@@ -2516,7 +2516,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_naboo_shared_nboo_impr
 
 object_static_structure_naboo_shared_nboo_imprv_lattice_wall_short_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_imprv_lattice_wall_short_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -2547,7 +2547,7 @@ object_static_structure_naboo_shared_nboo_imprv_lattice_wall_short_s01 = SharedS
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 1,
 
@@ -2561,7 +2561,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_naboo_shared_nboo_impr
 
 object_static_structure_naboo_shared_nboo_imprv_metal_fence_wall_lg_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_imprv_metal_fence_wall_lg_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -2592,7 +2592,7 @@ object_static_structure_naboo_shared_nboo_imprv_metal_fence_wall_lg_s01 = Shared
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 1,
 
@@ -2606,7 +2606,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_naboo_shared_nboo_impr
 
 object_static_structure_naboo_shared_nboo_imprv_metal_fence_wall_lg_s02 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_imprv_metal_fence_wall_lg_s02.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -2637,7 +2637,7 @@ object_static_structure_naboo_shared_nboo_imprv_metal_fence_wall_lg_s02 = Shared
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 1,
 
@@ -2651,7 +2651,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_naboo_shared_nboo_impr
 
 object_static_structure_naboo_shared_nboo_imprv_metal_fence_wall_sml_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_imprv_metal_fence_wall_sml_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -2682,7 +2682,7 @@ object_static_structure_naboo_shared_nboo_imprv_metal_fence_wall_sml_s01 = Share
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 1,
 
@@ -2696,7 +2696,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_naboo_shared_nboo_impr
 
 object_static_structure_naboo_shared_nboo_imprv_metal_fence_wall_sml_s02 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_imprv_metal_fence_wall_sml_s02.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -2727,7 +2727,7 @@ object_static_structure_naboo_shared_nboo_imprv_metal_fence_wall_sml_s02 = Share
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 1,
 
@@ -2741,7 +2741,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_naboo_shared_nboo_impr
 
 object_static_structure_naboo_shared_nboo_imprv_pillar_lattice_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_imprv_lattice_pillar_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -2772,7 +2772,7 @@ object_static_structure_naboo_shared_nboo_imprv_pillar_lattice_s01 = SharedStati
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 1,
 
@@ -2786,7 +2786,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_naboo_shared_nboo_impr
 
 object_static_structure_naboo_shared_nboo_imprv_pillar_pillar_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_imprv_pillar_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -2817,7 +2817,7 @@ object_static_structure_naboo_shared_nboo_imprv_pillar_pillar_s01 = SharedStatic
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 1,
 
@@ -2831,7 +2831,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_naboo_shared_nboo_impr
 
 object_static_structure_naboo_shared_nboo_imprv_pillar_pillar_s02 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_imprv_pillar_s02.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -2862,7 +2862,7 @@ object_static_structure_naboo_shared_nboo_imprv_pillar_pillar_s02 = SharedStatic
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 1,
 
@@ -2876,7 +2876,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_naboo_shared_nboo_impr
 
 object_static_structure_naboo_shared_nboo_imprv_pillar_pillar_s03 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_imprv_pillar_s03.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -2907,7 +2907,7 @@ object_static_structure_naboo_shared_nboo_imprv_pillar_pillar_s03 = SharedStatic
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 1,
 
@@ -2921,7 +2921,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_naboo_shared_nboo_impr
 
 object_static_structure_naboo_shared_nboo_imprv_pillar_pillar_s07 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_imprv_pillar_s07.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -2952,7 +2952,7 @@ object_static_structure_naboo_shared_nboo_imprv_pillar_pillar_s07 = SharedStatic
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 1,
 
@@ -2966,7 +2966,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_naboo_shared_nboo_impr
 
 object_static_structure_naboo_shared_nboo_imprv_pillar_pillar_s08 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_imprv_pillar_s08.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -2997,7 +2997,7 @@ object_static_structure_naboo_shared_nboo_imprv_pillar_pillar_s08 = SharedStatic
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 1,
 
@@ -3011,7 +3011,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_naboo_shared_nboo_impr
 
 object_static_structure_naboo_shared_nboo_imprv_pillar_wall_large_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_imprv_pillar_wall_large_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -3042,7 +3042,7 @@ object_static_structure_naboo_shared_nboo_imprv_pillar_wall_large_s01 = SharedSt
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 1,
 
@@ -3056,7 +3056,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_naboo_shared_nboo_impr
 
 object_static_structure_naboo_shared_nboo_imprv_pillar_wall_ornate_large_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_imprv_pillar_wall_ornate_large_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -3087,7 +3087,7 @@ object_static_structure_naboo_shared_nboo_imprv_pillar_wall_ornate_large_s01 = S
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 1,
 
@@ -3101,7 +3101,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_naboo_shared_nboo_impr
 
 object_static_structure_naboo_shared_nboo_imprv_pillar_wall_ornate_small_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_imprv_pillar_wall_ornate_small_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -3132,7 +3132,7 @@ object_static_structure_naboo_shared_nboo_imprv_pillar_wall_ornate_small_s01 = S
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 1,
 
@@ -3146,7 +3146,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_naboo_shared_nboo_impr
 
 object_static_structure_naboo_shared_nboo_imprv_pillar_wall_small_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_imprv_pillar_wall_small_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -3177,7 +3177,7 @@ object_static_structure_naboo_shared_nboo_imprv_pillar_wall_small_s01 = SharedSt
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 1,
 
@@ -3191,7 +3191,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_naboo_shared_nboo_impr
 
 object_static_structure_naboo_shared_nboo_imprv_pristine_wall_large_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_imprv_pristine_wall_lg_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -3222,7 +3222,7 @@ object_static_structure_naboo_shared_nboo_imprv_pristine_wall_large_s01 = Shared
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 1,
 
@@ -3236,7 +3236,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_naboo_shared_nboo_impr
 
 object_static_structure_naboo_shared_nboo_imprv_pristine_wall_large_s02 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_imprv_pristine_wall_lg_s02.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -3267,7 +3267,7 @@ object_static_structure_naboo_shared_nboo_imprv_pristine_wall_large_s02 = Shared
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 1,
 
@@ -3281,7 +3281,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_naboo_shared_nboo_impr
 
 object_static_structure_naboo_shared_nboo_imprv_pristine_wall_sml_s03 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_imprv_pristine_wall_sml_s03.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -3312,7 +3312,7 @@ object_static_structure_naboo_shared_nboo_imprv_pristine_wall_sml_s03 = SharedSt
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 1,
 
@@ -3326,7 +3326,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_naboo_shared_nboo_impr
 
 object_static_structure_naboo_shared_nboo_imprv_short_curved_wall_large_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_imprv_short_curved_wall_large_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -3357,7 +3357,7 @@ object_static_structure_naboo_shared_nboo_imprv_short_curved_wall_large_s01 = Sh
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 1,
 
@@ -3371,7 +3371,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_naboo_shared_nboo_impr
 
 object_static_structure_naboo_shared_nboo_imprv_short_curved_wall_small_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_imprv_short_curved_wall_small_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -3402,7 +3402,7 @@ object_static_structure_naboo_shared_nboo_imprv_short_curved_wall_small_s01 = Sh
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 1,
 
@@ -3416,7 +3416,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_naboo_shared_nboo_impr
 
 object_static_structure_naboo_shared_nboo_imprv_spill_gate_cap_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_imprv_spill_gate_cap_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -3447,7 +3447,7 @@ object_static_structure_naboo_shared_nboo_imprv_spill_gate_cap_s01 = SharedStati
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 1,
 
@@ -3461,7 +3461,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_naboo_shared_nboo_impr
 
 object_static_structure_naboo_shared_nboo_imprv_spill_gate_pillar_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_imprv_spill_gate_pillar_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -3492,7 +3492,7 @@ object_static_structure_naboo_shared_nboo_imprv_spill_gate_pillar_s01 = SharedSt
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 1,
 
@@ -3506,7 +3506,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_naboo_shared_nboo_impr
 
 object_static_structure_naboo_shared_nboo_imprv_spill_gate_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_imprv_spill_gate_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -3537,7 +3537,7 @@ object_static_structure_naboo_shared_nboo_imprv_spill_gate_s01 = SharedStaticObj
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 1,
 
@@ -3551,7 +3551,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_naboo_shared_nboo_impr
 
 object_static_structure_naboo_shared_nboo_imprv_tall_curved_wall_large_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_imprv_tall_curved_wall_large_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -3582,7 +3582,7 @@ object_static_structure_naboo_shared_nboo_imprv_tall_curved_wall_large_s01 = Sha
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 1,
 
@@ -3596,7 +3596,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_naboo_shared_nboo_impr
 
 object_static_structure_naboo_shared_nboo_imprv_tall_curved_wall_small_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_imprv_tall_curved_wall_small_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -3627,7 +3627,7 @@ object_static_structure_naboo_shared_nboo_imprv_tall_curved_wall_small_s01 = Sha
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 1,
 
@@ -3641,7 +3641,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_naboo_shared_nboo_impr
 
 object_static_structure_naboo_shared_obelisk_naboo_theed_style_1 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_thed_imprv_obelisk_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -3672,7 +3672,7 @@ object_static_structure_naboo_shared_obelisk_naboo_theed_style_1 = SharedStaticO
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 1,
 
@@ -3686,7 +3686,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_naboo_shared_obelisk_n
 
 object_static_structure_naboo_shared_obelisk_naboo_theed_style_2 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_thed_imprv_obelisk_s02.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -3717,7 +3717,7 @@ object_static_structure_naboo_shared_obelisk_naboo_theed_style_2 = SharedStaticO
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 1,
 
@@ -3731,7 +3731,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_naboo_shared_obelisk_n
 
 object_static_structure_naboo_shared_obelisk_naboo_theed_style_3 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_thed_imprv_obelisk_s03.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -3762,7 +3762,7 @@ object_static_structure_naboo_shared_obelisk_naboo_theed_style_3 = SharedStaticO
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 1,
 
@@ -3776,7 +3776,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_naboo_shared_obelisk_n
 
 object_static_structure_naboo_shared_planter_naboo_theed_style_1 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/mun_all_imprv_planter_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -3807,7 +3807,7 @@ object_static_structure_naboo_shared_planter_naboo_theed_style_1 = SharedStaticO
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 3,
 
@@ -3821,7 +3821,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_naboo_shared_planter_n
 
 object_static_structure_naboo_shared_planter_naboo_theed_style_2 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/mun_all_imprv_planter_s02.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -3852,7 +3852,7 @@ object_static_structure_naboo_shared_planter_naboo_theed_style_2 = SharedStaticO
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 3,
 
@@ -3866,7 +3866,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_naboo_shared_planter_n
 
 object_static_structure_naboo_shared_poi_nboo_tent_hut_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/poi_nboo_tent_hut_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -3897,7 +3897,7 @@ object_static_structure_naboo_shared_poi_nboo_tent_hut_s01 = SharedStaticObjectT
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 1,
 
@@ -3911,7 +3911,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_naboo_shared_poi_nboo_
 
 object_static_structure_naboo_shared_poi_nboo_tent_large = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/poi_nboo_tent_large.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -3942,7 +3942,7 @@ object_static_structure_naboo_shared_poi_nboo_tent_large = SharedStaticObjectTem
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 1,
 
@@ -3956,7 +3956,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_naboo_shared_poi_nboo_
 
 object_static_structure_naboo_shared_poi_nboo_tent_med = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/poi_nboo_tent_med.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -3987,7 +3987,7 @@ object_static_structure_naboo_shared_poi_nboo_tent_med = SharedStaticObjectTempl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 1,
 
@@ -4001,7 +4001,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_naboo_shared_poi_nboo_
 
 object_static_structure_naboo_shared_poi_nboo_tent_small = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/poi_nboo_tent_small.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -4032,7 +4032,7 @@ object_static_structure_naboo_shared_poi_nboo_tent_small = SharedStaticObjectTem
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 1,
 
@@ -4046,7 +4046,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_naboo_shared_poi_nboo_
 
 object_static_structure_naboo_shared_seawall_base_naboo_theed = SharedStaticObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -4077,7 +4077,7 @@ object_static_structure_naboo_shared_seawall_base_naboo_theed = SharedStaticObje
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 2,
 
@@ -4091,7 +4091,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_naboo_shared_seawall_b
 
 object_static_structure_naboo_shared_seawall_block = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_thed_imprv_seawall_block_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -4122,7 +4122,7 @@ object_static_structure_naboo_shared_seawall_block = SharedStaticObjectTemplate:
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 1,
 
@@ -4136,7 +4136,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_naboo_shared_seawall_b
 
 object_static_structure_naboo_shared_seawall_corner = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_thed_imprv_seawall_corner_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -4167,7 +4167,7 @@ object_static_structure_naboo_shared_seawall_corner = SharedStaticObjectTemplate
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 1,
 
@@ -4181,7 +4181,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_naboo_shared_seawall_c
 
 object_static_structure_naboo_shared_seawall_intersect_naboo_theed_style_1 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_thed_imprv_seawall_intersection_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -4212,7 +4212,7 @@ object_static_structure_naboo_shared_seawall_intersect_naboo_theed_style_1 = Sha
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 2,
 
@@ -4226,7 +4226,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_naboo_shared_seawall_i
 
 object_static_structure_naboo_shared_seawall_intersect_naboo_theed_style_2 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_thed_imprv_seawall_intersection_s02.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -4257,7 +4257,7 @@ object_static_structure_naboo_shared_seawall_intersect_naboo_theed_style_2 = Sha
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 2,
 
@@ -4271,7 +4271,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_naboo_shared_seawall_i
 
 object_static_structure_naboo_shared_seawall_rocks_naboo_theed_style_1 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_thed_imprv_seawall_rocks_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -4302,7 +4302,7 @@ object_static_structure_naboo_shared_seawall_rocks_naboo_theed_style_1 = SharedS
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 2,
 
@@ -4316,7 +4316,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_naboo_shared_seawall_r
 
 object_static_structure_naboo_shared_seawall_rocks_naboo_theed_style_2 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_imprv_wall_rocks_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -4347,7 +4347,7 @@ object_static_structure_naboo_shared_seawall_rocks_naboo_theed_style_2 = SharedS
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 2,
 
@@ -4361,7 +4361,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_naboo_shared_seawall_r
 
 object_static_structure_naboo_shared_seawall_stair_naboo_theed_style_1 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_thed_imprv_seawall_stair_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -4392,7 +4392,7 @@ object_static_structure_naboo_shared_seawall_stair_naboo_theed_style_1 = SharedS
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 2,
 
@@ -4406,7 +4406,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_naboo_shared_seawall_s
 
 object_static_structure_naboo_shared_seawall_straight_naboo_theed_style_1 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_thed_imprv_seawall_straight_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -4437,7 +4437,7 @@ object_static_structure_naboo_shared_seawall_straight_naboo_theed_style_1 = Shar
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 2,
 
@@ -4451,7 +4451,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_naboo_shared_seawall_s
 
 object_static_structure_naboo_shared_seawall_straight_naboo_theed_style_2 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_thed_imprv_seawall_straight_s01_2seg.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -4482,7 +4482,7 @@ object_static_structure_naboo_shared_seawall_straight_naboo_theed_style_2 = Shar
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 2,
 
@@ -4496,7 +4496,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_naboo_shared_seawall_s
 
 object_static_structure_naboo_shared_seawall_straight_naboo_theed_style_3 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_thed_imprv_seawall_straight_s01_3seg.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -4527,7 +4527,7 @@ object_static_structure_naboo_shared_seawall_straight_naboo_theed_style_3 = Shar
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 2,
 
@@ -4541,7 +4541,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_naboo_shared_seawall_s
 
 object_static_structure_naboo_shared_seawall_straight_naboo_theed_style_4 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_thed_imprv_seawall_straight_s01_4seg.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -4572,7 +4572,7 @@ object_static_structure_naboo_shared_seawall_straight_naboo_theed_style_4 = Shar
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 2,
 
@@ -4586,7 +4586,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_naboo_shared_seawall_s
 
 object_static_structure_naboo_shared_street_bridge_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_imprv_street_bridge_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -4617,7 +4617,7 @@ object_static_structure_naboo_shared_street_bridge_s01 = SharedStaticObjectTempl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 2,
 
@@ -4631,7 +4631,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_naboo_shared_street_br
 
 object_static_structure_naboo_shared_street_bridge_s02 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_imprv_street_bridge_s02.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -4662,7 +4662,7 @@ object_static_structure_naboo_shared_street_bridge_s02 = SharedStaticObjectTempl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 2,
 
@@ -4676,7 +4676,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_naboo_shared_street_br
 
 object_static_structure_naboo_shared_streetlamp_naboo_theed_style_1 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_thed_imprv_streetlamp_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/client_shared_theed_streetlamp_style_1.cdf",
@@ -4707,7 +4707,7 @@ object_static_structure_naboo_shared_streetlamp_naboo_theed_style_1 = SharedStat
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 1,
 
@@ -4721,7 +4721,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_naboo_shared_streetlam
 
 object_static_structure_naboo_shared_wall_a1_naboo_theed_style_1 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_thed_imprv_wall_s01_a1.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -4752,7 +4752,7 @@ object_static_structure_naboo_shared_wall_a1_naboo_theed_style_1 = SharedStaticO
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 1,
 
@@ -4766,7 +4766,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_naboo_shared_wall_a1_n
 
 object_static_structure_naboo_shared_wall_naboo_theed_style_1 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_thed_imprv_wall_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -4797,7 +4797,7 @@ object_static_structure_naboo_shared_wall_naboo_theed_style_1 = SharedStaticObje
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 1,
 
@@ -4811,7 +4811,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_naboo_shared_wall_nabo
 
 object_static_structure_naboo_shared_wallend_a1_naboo_theed_style_1 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_thed_imprv_wallendpiece_s01_a1.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -4842,7 +4842,7 @@ object_static_structure_naboo_shared_wallend_a1_naboo_theed_style_1 = SharedStat
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 1,
 
@@ -4856,7 +4856,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_naboo_shared_wallend_a
 
 object_static_structure_naboo_shared_wallend_naboo_theed_style_1 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_thed_imprv_wallendpiece_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -4887,7 +4887,7 @@ object_static_structure_naboo_shared_wallend_naboo_theed_style_1 = SharedStaticO
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 1,
 

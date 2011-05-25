@@ -43,7 +43,7 @@
 
 object_intangible_ship_base_shared_ship_control_device_base = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -74,7 +74,7 @@ object_intangible_ship_base_shared_ship_control_device_base = SharedIntangibleOb
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"ship_control_device"},
+	slotDescriptorFilename = "abstract/slot/descriptor/ship_control_device.iff",
 	snapToTerrain = 0,
 	surfaceType = 0,
 

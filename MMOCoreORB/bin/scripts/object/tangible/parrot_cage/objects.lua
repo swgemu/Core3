@@ -43,7 +43,7 @@
 
 object_tangible_parrot_cage_shared_parrot_cage = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_nemoidian_bird_cage.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -79,7 +79,7 @@ object_tangible_parrot_cage_shared_parrot_cage = SharedTangibleObjectTemplate:ne
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",

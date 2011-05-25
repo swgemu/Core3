@@ -43,7 +43,7 @@
 
 object_tangible_instrument_base_shared_instrument_base = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -79,7 +79,7 @@ object_tangible_instrument_base_shared_instrument_base = SharedTangibleObjectTem
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",

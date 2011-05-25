@@ -43,7 +43,7 @@
 
 object_tangible_loot_collectible_kits_shared_blue_rug_kit = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_repair_ranged_weapons_other.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -79,7 +79,7 @@ object_tangible_loot_collectible_kits_shared_blue_rug_kit = SharedTangibleObject
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -98,7 +98,7 @@ ObjectTemplates:addClientTemplate(object_tangible_loot_collectible_kits_shared_b
 
 object_tangible_loot_collectible_kits_shared_fs_tracking_device_kit = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_repair_shields.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -134,7 +134,7 @@ object_tangible_loot_collectible_kits_shared_fs_tracking_device_kit = SharedTang
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -153,7 +153,7 @@ ObjectTemplates:addClientTemplate(object_tangible_loot_collectible_kits_shared_f
 
 object_tangible_loot_collectible_kits_shared_gong_kit = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_repair_installations.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -189,7 +189,7 @@ object_tangible_loot_collectible_kits_shared_gong_kit = SharedTangibleObjectTemp
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -208,7 +208,7 @@ ObjectTemplates:addClientTemplate(object_tangible_loot_collectible_kits_shared_g
 
 object_tangible_loot_collectible_kits_shared_light_table_kit = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_repair_furniture.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -244,7 +244,7 @@ object_tangible_loot_collectible_kits_shared_light_table_kit = SharedTangibleObj
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -263,7 +263,7 @@ ObjectTemplates:addClientTemplate(object_tangible_loot_collectible_kits_shared_l
 
 object_tangible_loot_collectible_kits_shared_orange_rug_kit = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_repair_ranged_weapons_other.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -299,7 +299,7 @@ object_tangible_loot_collectible_kits_shared_orange_rug_kit = SharedTangibleObje
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -318,7 +318,7 @@ ObjectTemplates:addClientTemplate(object_tangible_loot_collectible_kits_shared_o
 
 object_tangible_loot_collectible_kits_shared_sculpture_kit = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_survey_survey_pad_advanced_s1.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -354,7 +354,7 @@ object_tangible_loot_collectible_kits_shared_sculpture_kit = SharedTangibleObjec
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",

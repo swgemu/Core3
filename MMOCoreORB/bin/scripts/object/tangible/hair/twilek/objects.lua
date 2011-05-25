@@ -43,7 +43,7 @@
 
 object_tangible_hair_twilek_shared_hair_twilek_female_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/twk_f_hair_s01.sat",
-	arrangementDescriptors = {"hair"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hair.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -79,7 +79,7 @@ object_tangible_hair_twilek_shared_hair_twilek_female_s01 = SharedTangibleObject
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -98,7 +98,7 @@ ObjectTemplates:addClientTemplate(object_tangible_hair_twilek_shared_hair_twilek
 
 object_tangible_hair_twilek_shared_hair_twilek_female_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/twk_f_hair_s02.sat",
-	arrangementDescriptors = {"hair"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hair.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -134,7 +134,7 @@ object_tangible_hair_twilek_shared_hair_twilek_female_s02 = SharedTangibleObject
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -153,7 +153,7 @@ ObjectTemplates:addClientTemplate(object_tangible_hair_twilek_shared_hair_twilek
 
 object_tangible_hair_twilek_shared_hair_twilek_female_s03 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/twk_f_hair_s03.sat",
-	arrangementDescriptors = {"hair"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hair.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -189,7 +189,7 @@ object_tangible_hair_twilek_shared_hair_twilek_female_s03 = SharedTangibleObject
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -208,7 +208,7 @@ ObjectTemplates:addClientTemplate(object_tangible_hair_twilek_shared_hair_twilek
 
 object_tangible_hair_twilek_shared_hair_twilek_female_s04 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/twk_f_hair_s04.sat",
-	arrangementDescriptors = {"hair"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hair.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -244,7 +244,7 @@ object_tangible_hair_twilek_shared_hair_twilek_female_s04 = SharedTangibleObject
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -263,7 +263,7 @@ ObjectTemplates:addClientTemplate(object_tangible_hair_twilek_shared_hair_twilek
 
 object_tangible_hair_twilek_shared_hair_twilek_female_s05 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/twk_f_hair_s05.sat",
-	arrangementDescriptors = {"hair"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hair.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -299,7 +299,7 @@ object_tangible_hair_twilek_shared_hair_twilek_female_s05 = SharedTangibleObject
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -318,7 +318,7 @@ ObjectTemplates:addClientTemplate(object_tangible_hair_twilek_shared_hair_twilek
 
 object_tangible_hair_twilek_shared_hair_twilek_female_s06 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/twk_f_hair_s06.sat",
-	arrangementDescriptors = {"hair"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hair.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -354,7 +354,7 @@ object_tangible_hair_twilek_shared_hair_twilek_female_s06 = SharedTangibleObject
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -373,7 +373,7 @@ ObjectTemplates:addClientTemplate(object_tangible_hair_twilek_shared_hair_twilek
 
 object_tangible_hair_twilek_shared_hair_twilek_female_s07 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/twk_f_hair_s07.sat",
-	arrangementDescriptors = {"hair"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hair.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -409,7 +409,7 @@ object_tangible_hair_twilek_shared_hair_twilek_female_s07 = SharedTangibleObject
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -428,7 +428,7 @@ ObjectTemplates:addClientTemplate(object_tangible_hair_twilek_shared_hair_twilek
 
 object_tangible_hair_twilek_shared_hair_twilek_female_s08 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/twk_f_hair_s08.sat",
-	arrangementDescriptors = {"hair"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hair.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -464,7 +464,7 @@ object_tangible_hair_twilek_shared_hair_twilek_female_s08 = SharedTangibleObject
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -483,7 +483,7 @@ ObjectTemplates:addClientTemplate(object_tangible_hair_twilek_shared_hair_twilek
 
 object_tangible_hair_twilek_shared_hair_twilek_male_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/twk_m_hair_s01.sat",
-	arrangementDescriptors = {"hair"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hair.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -519,7 +519,7 @@ object_tangible_hair_twilek_shared_hair_twilek_male_s01 = SharedTangibleObjectTe
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -538,7 +538,7 @@ ObjectTemplates:addClientTemplate(object_tangible_hair_twilek_shared_hair_twilek
 
 object_tangible_hair_twilek_shared_hair_twilek_male_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/twk_m_hair_s02.sat",
-	arrangementDescriptors = {"hair"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hair.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -574,7 +574,7 @@ object_tangible_hair_twilek_shared_hair_twilek_male_s02 = SharedTangibleObjectTe
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -593,7 +593,7 @@ ObjectTemplates:addClientTemplate(object_tangible_hair_twilek_shared_hair_twilek
 
 object_tangible_hair_twilek_shared_hair_twilek_male_s03 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/twk_m_hair_s03.sat",
-	arrangementDescriptors = {"hair"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hair.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -629,7 +629,7 @@ object_tangible_hair_twilek_shared_hair_twilek_male_s03 = SharedTangibleObjectTe
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -648,7 +648,7 @@ ObjectTemplates:addClientTemplate(object_tangible_hair_twilek_shared_hair_twilek
 
 object_tangible_hair_twilek_shared_hair_twilek_male_s04 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/twk_m_hair_s04.sat",
-	arrangementDescriptors = {"hair"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hair.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -684,7 +684,7 @@ object_tangible_hair_twilek_shared_hair_twilek_male_s04 = SharedTangibleObjectTe
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -703,7 +703,7 @@ ObjectTemplates:addClientTemplate(object_tangible_hair_twilek_shared_hair_twilek
 
 object_tangible_hair_twilek_shared_hair_twilek_male_s05 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/twk_m_hair_s05.sat",
-	arrangementDescriptors = {"hair"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hair.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -739,7 +739,7 @@ object_tangible_hair_twilek_shared_hair_twilek_male_s05 = SharedTangibleObjectTe
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -758,7 +758,7 @@ ObjectTemplates:addClientTemplate(object_tangible_hair_twilek_shared_hair_twilek
 
 object_tangible_hair_twilek_shared_hair_twilek_male_s06 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/twk_m_hair_s06.sat",
-	arrangementDescriptors = {"hair"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hair.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -794,7 +794,7 @@ object_tangible_hair_twilek_shared_hair_twilek_male_s06 = SharedTangibleObjectTe
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -813,7 +813,7 @@ ObjectTemplates:addClientTemplate(object_tangible_hair_twilek_shared_hair_twilek
 
 object_tangible_hair_twilek_shared_hair_twilek_male_s07 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/twk_m_hair_s07.sat",
-	arrangementDescriptors = {"hair"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hair.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -849,7 +849,7 @@ object_tangible_hair_twilek_shared_hair_twilek_male_s07 = SharedTangibleObjectTe
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -868,7 +868,7 @@ ObjectTemplates:addClientTemplate(object_tangible_hair_twilek_shared_hair_twilek
 
 object_tangible_hair_twilek_shared_hair_twilek_male_s08 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/twk_m_hair_s08.sat",
-	arrangementDescriptors = {"hair"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hair.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -904,7 +904,7 @@ object_tangible_hair_twilek_shared_hair_twilek_male_s08 = SharedTangibleObjectTe
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",

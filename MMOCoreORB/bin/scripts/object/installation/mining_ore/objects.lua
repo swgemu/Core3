@@ -43,7 +43,7 @@
 
 object_installation_mining_ore_shared_mining_ore_harvester_heavy = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/ins_all_min_s02_u1.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 15,
@@ -79,7 +79,7 @@ object_installation_mining_ore_shared_mining_ore_harvester_heavy = SharedInstall
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/installation/mining_ore/shared_mining_ore_harvester_style_2.sfp",
@@ -98,7 +98,7 @@ ObjectTemplates:addClientTemplate(object_installation_mining_ore_shared_mining_o
 
 object_installation_mining_ore_shared_mining_ore_harvester_style_1 = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/ins_all_mobile_ore_refinery.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 15,
@@ -134,7 +134,7 @@ object_installation_mining_ore_shared_mining_ore_harvester_style_1 = SharedInsta
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/installation/mining_ore/shared_mining_ore_harvester_style_1.sfp",
@@ -153,7 +153,7 @@ ObjectTemplates:addClientTemplate(object_installation_mining_ore_shared_mining_o
 
 object_installation_mining_ore_shared_mining_ore_harvester_style_2 = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/ins_all_min_s01_u1.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 15,
@@ -189,7 +189,7 @@ object_installation_mining_ore_shared_mining_ore_harvester_style_2 = SharedInsta
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/installation/mining_ore/shared_mining_ore_harvester_style_2.sfp",

@@ -43,7 +43,7 @@
 
 object_building_poi_farm_shared_tatooine_flora_large = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -81,7 +81,7 @@ object_building_poi_farm_shared_tatooine_flora_large = SharedBuildingObjectTempl
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",

@@ -43,7 +43,7 @@
 
 object_draft_schematic_vehicle_military_shared_military_a = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {"datapad"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -74,7 +74,7 @@ object_draft_schematic_vehicle_military_shared_military_a = SharedDraftSchematic
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -88,7 +88,7 @@ ObjectTemplates:addClientTemplate(object_draft_schematic_vehicle_military_shared
 
 object_draft_schematic_vehicle_military_shared_military_b = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {"datapad"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -119,7 +119,7 @@ object_draft_schematic_vehicle_military_shared_military_b = SharedDraftSchematic
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -133,7 +133,7 @@ ObjectTemplates:addClientTemplate(object_draft_schematic_vehicle_military_shared
 
 object_draft_schematic_vehicle_military_shared_military_c = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {"datapad"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -164,7 +164,7 @@ object_draft_schematic_vehicle_military_shared_military_c = SharedDraftSchematic
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -178,7 +178,7 @@ ObjectTemplates:addClientTemplate(object_draft_schematic_vehicle_military_shared
 
 object_draft_schematic_vehicle_military_shared_military_d = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {"datapad"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -209,7 +209,7 @@ object_draft_schematic_vehicle_military_shared_military_d = SharedDraftSchematic
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -223,7 +223,7 @@ ObjectTemplates:addClientTemplate(object_draft_schematic_vehicle_military_shared
 
 object_draft_schematic_vehicle_military_shared_military_e = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {"datapad"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -254,7 +254,7 @@ object_draft_schematic_vehicle_military_shared_military_e = SharedDraftSchematic
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -268,7 +268,7 @@ ObjectTemplates:addClientTemplate(object_draft_schematic_vehicle_military_shared
 
 object_draft_schematic_vehicle_military_shared_starship_impl_tie_a = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {"datapad"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -299,7 +299,7 @@ object_draft_schematic_vehicle_military_shared_starship_impl_tie_a = SharedDraft
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -313,7 +313,7 @@ ObjectTemplates:addClientTemplate(object_draft_schematic_vehicle_military_shared
 
 object_draft_schematic_vehicle_military_shared_starship_impl_tie_b = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {"datapad"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -344,7 +344,7 @@ object_draft_schematic_vehicle_military_shared_starship_impl_tie_b = SharedDraft
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -358,7 +358,7 @@ ObjectTemplates:addClientTemplate(object_draft_schematic_vehicle_military_shared
 
 object_draft_schematic_vehicle_military_shared_starship_rebel_xwing_a = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {"datapad"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -389,7 +389,7 @@ object_draft_schematic_vehicle_military_shared_starship_rebel_xwing_a = SharedDr
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -403,7 +403,7 @@ ObjectTemplates:addClientTemplate(object_draft_schematic_vehicle_military_shared
 
 object_draft_schematic_vehicle_military_shared_starship_rebel_xwing_b = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {"datapad"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -434,7 +434,7 @@ object_draft_schematic_vehicle_military_shared_starship_rebel_xwing_b = SharedDr
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 

@@ -43,7 +43,7 @@
 
 object_tangible_container_quest_hero_of_tatooine_shared_rock_crevice = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_tato_cave_rock_lrg.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -79,7 +79,7 @@ object_tangible_container_quest_hero_of_tatooine_shared_rock_crevice = SharedTan
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",

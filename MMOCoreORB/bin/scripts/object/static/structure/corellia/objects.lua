@@ -43,7 +43,7 @@
 
 object_static_structure_corellia_shared_corl_banner_govt_angled_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_corl_banner_govt_angled.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -74,7 +74,7 @@ object_static_structure_corellia_shared_corl_banner_govt_angled_s01 = SharedStat
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 1,
 
@@ -88,7 +88,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_corellia_shared_corl_b
 
 object_static_structure_corellia_shared_corl_banner_govt_tall_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_corl_banner_govt_tall.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -119,7 +119,7 @@ object_static_structure_corellia_shared_corl_banner_govt_tall_s01 = SharedStatic
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 1,
 
@@ -133,7 +133,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_corellia_shared_corl_b
 
 object_static_structure_corellia_shared_corl_fountain_brazier_round_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_corl_fountain_brazier_round_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/item/client_shared_fountain_corl_brazier_round_01.cdf",
@@ -164,7 +164,7 @@ object_static_structure_corellia_shared_corl_fountain_brazier_round_s01 = Shared
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	surfaceType = 1,
 
@@ -178,7 +178,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_corellia_shared_corl_f
 
 object_static_structure_corellia_shared_corl_fountain_brazier_square_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_corl_fountain_brazier_square_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/item/client_shared_fountain_corl_brazier_round_01.cdf",
@@ -209,7 +209,7 @@ object_static_structure_corellia_shared_corl_fountain_brazier_square_s01 = Share
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	surfaceType = 1,
 
@@ -223,7 +223,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_corellia_shared_corl_f
 
 object_static_structure_corellia_shared_corl_fountain_circle_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_corl_fountain_circle_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/item/client_shared_fountain_corl_circle_01.cdf",
@@ -254,7 +254,7 @@ object_static_structure_corellia_shared_corl_fountain_circle_s01 = SharedStaticO
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	surfaceType = 1,
 
@@ -268,7 +268,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_corellia_shared_corl_f
 
 object_static_structure_corellia_shared_corl_fountain_rectangle_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_corl_fountain_rectangle_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/item/client_shared_fountain_corl_rectangle_01.cdf",
@@ -299,7 +299,7 @@ object_static_structure_corellia_shared_corl_fountain_rectangle_s01 = SharedStat
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	surfaceType = 1,
 
@@ -313,7 +313,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_corellia_shared_corl_f
 
 object_static_structure_corellia_shared_corl_fountain_statue_contemplate_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_corl_fountain_statue_contemplate_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/item/client_shared_fountain_corl_statue_contemplate_01.cdf",
@@ -344,7 +344,7 @@ object_static_structure_corellia_shared_corl_fountain_statue_contemplate_s01 = S
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	surfaceType = 1,
 
@@ -358,7 +358,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_corellia_shared_corl_f
 
 object_static_structure_corellia_shared_corl_fountain_statue_heroic_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_corl_fountain_statue_heroic_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/item/client_shared_fountain_corl_statue_heroic_01.cdf",
@@ -389,7 +389,7 @@ object_static_structure_corellia_shared_corl_fountain_statue_heroic_s01 = Shared
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	surfaceType = 1,
 
@@ -403,7 +403,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_corellia_shared_corl_f
 
 object_static_structure_corellia_shared_corl_imprv_arch_lg_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_corl_imprv_arch_lg_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -434,7 +434,7 @@ object_static_structure_corellia_shared_corl_imprv_arch_lg_s01 = SharedStaticObj
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	surfaceType = 1,
 
@@ -448,7 +448,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_corellia_shared_corl_i
 
 object_static_structure_corellia_shared_corl_imprv_arch_lg_s02 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_corl_imprv_arch_lg_s02.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -479,7 +479,7 @@ object_static_structure_corellia_shared_corl_imprv_arch_lg_s02 = SharedStaticObj
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	surfaceType = 1,
 
@@ -493,7 +493,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_corellia_shared_corl_i
 
 object_static_structure_corellia_shared_corl_imprv_arch_sm_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_corl_imprv_arch_sm_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -524,7 +524,7 @@ object_static_structure_corellia_shared_corl_imprv_arch_sm_s01 = SharedStaticObj
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	surfaceType = 1,
 
@@ -538,7 +538,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_corellia_shared_corl_i
 
 object_static_structure_corellia_shared_corl_imprv_arch_sm_s02 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_corl_imprv_arch_sm_s02.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -569,7 +569,7 @@ object_static_structure_corellia_shared_corl_imprv_arch_sm_s02 = SharedStaticObj
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	surfaceType = 1,
 
@@ -583,7 +583,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_corellia_shared_corl_i
 
 object_static_structure_corellia_shared_corl_imprv_arch_sm_s03 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_corl_imprv_arch_sm_s03.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -614,7 +614,7 @@ object_static_structure_corellia_shared_corl_imprv_arch_sm_s03 = SharedStaticObj
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	surfaceType = 1,
 
@@ -628,7 +628,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_corellia_shared_corl_i
 
 object_static_structure_corellia_shared_corl_imprv_bannerpole_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/mun_corl_imprv_bannerpole_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/structure/corl_imprv_bannerpole_s01.cdf",
@@ -658,7 +658,7 @@ object_static_structure_corellia_shared_corl_imprv_bannerpole_s01 = SharedStatic
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 1,
 
@@ -672,7 +672,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_corellia_shared_corl_i
 
 object_static_structure_corellia_shared_corl_imprv_bridge_insert_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_corl_imprv_bridge_insert_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -703,7 +703,7 @@ object_static_structure_corellia_shared_corl_imprv_bridge_insert_s01 = SharedSta
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	surfaceType = 2,
 
@@ -717,7 +717,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_corellia_shared_corl_i
 
 object_static_structure_corellia_shared_corl_imprv_bridge_insert_s02 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_corl_imprv_bridge_insert_s02.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -748,7 +748,7 @@ object_static_structure_corellia_shared_corl_imprv_bridge_insert_s02 = SharedSta
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	surfaceType = 2,
 
@@ -762,7 +762,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_corellia_shared_corl_i
 
 object_static_structure_corellia_shared_corl_imprv_bridge_lg_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_corl_imprv_bridge_lg_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -793,7 +793,7 @@ object_static_structure_corellia_shared_corl_imprv_bridge_lg_s01 = SharedStaticO
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	surfaceType = 2,
 
@@ -807,7 +807,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_corellia_shared_corl_i
 
 object_static_structure_corellia_shared_corl_imprv_bridge_lg_s02 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_corl_imprv_bridge_lg_s02.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -838,7 +838,7 @@ object_static_structure_corellia_shared_corl_imprv_bridge_lg_s02 = SharedStaticO
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	surfaceType = 2,
 
@@ -852,7 +852,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_corellia_shared_corl_i
 
 object_static_structure_corellia_shared_corl_imprv_bridge_sm_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_corl_imprv_bridge_sm_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -883,7 +883,7 @@ object_static_structure_corellia_shared_corl_imprv_bridge_sm_s01 = SharedStaticO
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	surfaceType = 2,
 
@@ -897,7 +897,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_corellia_shared_corl_i
 
 object_static_structure_corellia_shared_corl_imprv_bridge_sm_s02 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_corl_imprv_bridge_sm_s02.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -928,7 +928,7 @@ object_static_structure_corellia_shared_corl_imprv_bridge_sm_s02 = SharedStaticO
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	surfaceType = 2,
 
@@ -942,7 +942,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_corellia_shared_corl_i
 
 object_static_structure_corellia_shared_corl_imprv_column_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_corl_imprv_column_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -973,7 +973,7 @@ object_static_structure_corellia_shared_corl_imprv_column_s01 = SharedStaticObje
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	surfaceType = 1,
 
@@ -987,7 +987,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_corellia_shared_corl_i
 
 object_static_structure_corellia_shared_corl_imprv_column_s02 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_corl_imprv_column_s02.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1018,7 +1018,7 @@ object_static_structure_corellia_shared_corl_imprv_column_s02 = SharedStaticObje
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	surfaceType = 1,
 
@@ -1032,7 +1032,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_corellia_shared_corl_i
 
 object_static_structure_corellia_shared_corl_imprv_column_s03 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_corl_imprv_column_s03.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1063,7 +1063,7 @@ object_static_structure_corellia_shared_corl_imprv_column_s03 = SharedStaticObje
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	surfaceType = 1,
 
@@ -1077,7 +1077,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_corellia_shared_corl_i
 
 object_static_structure_corellia_shared_corl_imprv_column_s04 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_corl_imprv_column_s04.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1108,7 +1108,7 @@ object_static_structure_corellia_shared_corl_imprv_column_s04 = SharedStaticObje
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	surfaceType = 1,
 
@@ -1122,7 +1122,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_corellia_shared_corl_i
 
 object_static_structure_corellia_shared_corl_imprv_flagpole_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/mun_corl_imprv_flagpole_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/structure/corl_imprv_flagpole_s01.cdf",
@@ -1152,7 +1152,7 @@ object_static_structure_corellia_shared_corl_imprv_flagpole_s01 = SharedStaticOb
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 1,
 
@@ -1166,7 +1166,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_corellia_shared_corl_i
 
 object_static_structure_corellia_shared_corl_imprv_gate_sm_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_corl_imprv_gate_sm_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1197,7 +1197,7 @@ object_static_structure_corellia_shared_corl_imprv_gate_sm_s01 = SharedStaticObj
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	surfaceType = 1,
 
@@ -1211,7 +1211,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_corellia_shared_corl_i
 
 object_static_structure_corellia_shared_corl_imprv_gate_sm_s02 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_corl_imprv_gate_sm_s02.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1242,7 +1242,7 @@ object_static_structure_corellia_shared_corl_imprv_gate_sm_s02 = SharedStaticObj
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	surfaceType = 1,
 
@@ -1256,7 +1256,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_corellia_shared_corl_i
 
 object_static_structure_corellia_shared_corl_imprv_gate_sm_s03 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_corl_imprv_gate_sm_s03.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1287,7 +1287,7 @@ object_static_structure_corellia_shared_corl_imprv_gate_sm_s03 = SharedStaticObj
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	surfaceType = 1,
 
@@ -1301,7 +1301,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_corellia_shared_corl_i
 
 object_static_structure_corellia_shared_corl_imprv_wall_4x16_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_corl_imprv_wall_4x16_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1332,7 +1332,7 @@ object_static_structure_corellia_shared_corl_imprv_wall_4x16_s01 = SharedStaticO
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	surfaceType = 1,
 
@@ -1346,7 +1346,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_corellia_shared_corl_i
 
 object_static_structure_corellia_shared_corl_imprv_wall_4x16_s02 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_corl_imprv_wall_4x16_s02.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1377,7 +1377,7 @@ object_static_structure_corellia_shared_corl_imprv_wall_4x16_s02 = SharedStaticO
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	surfaceType = 1,
 
@@ -1391,7 +1391,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_corellia_shared_corl_i
 
 object_static_structure_corellia_shared_corl_imprv_wall_4x16_s03 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_corl_imprv_wall_4x16_s03.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1422,7 +1422,7 @@ object_static_structure_corellia_shared_corl_imprv_wall_4x16_s03 = SharedStaticO
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	surfaceType = 1,
 
@@ -1436,7 +1436,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_corellia_shared_corl_i
 
 object_static_structure_corellia_shared_corl_imprv_wall_4x16_s04 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_corl_imprv_wall_4x16_s04.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1467,7 +1467,7 @@ object_static_structure_corellia_shared_corl_imprv_wall_4x16_s04 = SharedStaticO
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	surfaceType = 1,
 
@@ -1481,7 +1481,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_corellia_shared_corl_i
 
 object_static_structure_corellia_shared_corl_imprv_wall_4x32_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_corl_imprv_wall_4x32_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1512,7 +1512,7 @@ object_static_structure_corellia_shared_corl_imprv_wall_4x32_s01 = SharedStaticO
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	surfaceType = 1,
 
@@ -1526,7 +1526,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_corellia_shared_corl_i
 
 object_static_structure_corellia_shared_corl_imprv_wall_4x32_s02 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_corl_imprv_wall_4x32_s02.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1557,7 +1557,7 @@ object_static_structure_corellia_shared_corl_imprv_wall_4x32_s02 = SharedStaticO
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	surfaceType = 1,
 
@@ -1571,7 +1571,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_corellia_shared_corl_i
 
 object_static_structure_corellia_shared_corl_imprv_wall_4x32_s03 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_corl_imprv_wall_4x32_s03.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1602,7 +1602,7 @@ object_static_structure_corellia_shared_corl_imprv_wall_4x32_s03 = SharedStaticO
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	surfaceType = 1,
 
@@ -1616,7 +1616,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_corellia_shared_corl_i
 
 object_static_structure_corellia_shared_corl_imprv_wall_4x32_s04 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_corl_imprv_wall_4x32_s04.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1647,7 +1647,7 @@ object_static_structure_corellia_shared_corl_imprv_wall_4x32_s04 = SharedStaticO
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	surfaceType = 1,
 
@@ -1661,7 +1661,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_corellia_shared_corl_i
 
 object_static_structure_corellia_shared_corl_power_arial_prime = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_corl_power_arial_prime.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1692,7 +1692,7 @@ object_static_structure_corellia_shared_corl_power_arial_prime = SharedStaticObj
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	surfaceType = 1,
 
@@ -1706,7 +1706,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_corellia_shared_corl_p
 
 object_static_structure_corellia_shared_corl_power_arial_thin = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_corl_power_arial_thin.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1737,7 +1737,7 @@ object_static_structure_corellia_shared_corl_power_arial_thin = SharedStaticObje
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	surfaceType = 1,
 
@@ -1751,7 +1751,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_corellia_shared_corl_p
 
 object_static_structure_corellia_shared_corl_power_box_node = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_corl_power_box_node.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/item/client_shared_power_generator.cdf",
@@ -1782,7 +1782,7 @@ object_static_structure_corellia_shared_corl_power_box_node = SharedStaticObject
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	surfaceType = 1,
 
@@ -1796,7 +1796,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_corellia_shared_corl_p
 
 object_static_structure_corellia_shared_corl_power_bubble_node = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_corl_power_bubble_node.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/item/client_shared_power_generator.cdf",
@@ -1827,7 +1827,7 @@ object_static_structure_corellia_shared_corl_power_bubble_node = SharedStaticObj
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	surfaceType = 1,
 
@@ -1841,7 +1841,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_corellia_shared_corl_p
 
 object_static_structure_corellia_shared_corl_power_connector = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_corl_power_connector.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1872,7 +1872,7 @@ object_static_structure_corellia_shared_corl_power_connector = SharedStaticObjec
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	surfaceType = 1,
 
@@ -1886,7 +1886,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_corellia_shared_corl_p
 
 object_static_structure_corellia_shared_corl_power_transformer_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_corl_power_transformer_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/item/client_shared_power_generator.cdf",
@@ -1917,7 +1917,7 @@ object_static_structure_corellia_shared_corl_power_transformer_s01 = SharedStati
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	surfaceType = 1,
 
@@ -1931,7 +1931,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_corellia_shared_corl_p
 
 object_static_structure_corellia_shared_corl_power_transformer_s02 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_corl_power_transformer_s02.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/item/client_shared_power_generator.cdf",
@@ -1962,7 +1962,7 @@ object_static_structure_corellia_shared_corl_power_transformer_s02 = SharedStati
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	surfaceType = 1,
 
@@ -1976,7 +1976,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_corellia_shared_corl_p
 
 object_static_structure_corellia_shared_corl_stair_large_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_corl_imprv_stair_large_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -2007,7 +2007,7 @@ object_static_structure_corellia_shared_corl_stair_large_s01 = SharedStaticObjec
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 2,
 
@@ -2021,7 +2021,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_corellia_shared_corl_s
 
 object_static_structure_corellia_shared_corl_stair_medium_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_corl_imprv_stair_medium_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -2052,7 +2052,7 @@ object_static_structure_corellia_shared_corl_stair_medium_s01 = SharedStaticObje
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 2,
 
@@ -2066,7 +2066,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_corellia_shared_corl_s
 
 object_static_structure_corellia_shared_corl_stair_small_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_corl_imprv_stair_small_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -2097,7 +2097,7 @@ object_static_structure_corellia_shared_corl_stair_small_s01 = SharedStaticObjec
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 2,
 
@@ -2111,7 +2111,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_corellia_shared_corl_s
 
 object_static_structure_corellia_shared_corl_tent_hut_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/poi_corl_tent_hut_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -2142,7 +2142,7 @@ object_static_structure_corellia_shared_corl_tent_hut_s01 = SharedStaticObjectTe
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 1,
 
@@ -2156,7 +2156,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_corellia_shared_corl_t
 
 object_static_structure_corellia_shared_corl_tent_large = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/poi_corl_tent_large.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -2187,7 +2187,7 @@ object_static_structure_corellia_shared_corl_tent_large = SharedStaticObjectTemp
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 1,
 
@@ -2201,7 +2201,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_corellia_shared_corl_t
 
 object_static_structure_corellia_shared_corl_tent_med = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/poi_corl_tent_med.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -2232,7 +2232,7 @@ object_static_structure_corellia_shared_corl_tent_med = SharedStaticObjectTempla
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 1,
 
@@ -2246,7 +2246,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_corellia_shared_corl_t
 
 object_static_structure_corellia_shared_corl_tent_small = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/poi_corl_tent_small.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -2277,7 +2277,7 @@ object_static_structure_corellia_shared_corl_tent_small = SharedStaticObjectTemp
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 1,
 

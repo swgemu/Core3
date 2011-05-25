@@ -43,7 +43,7 @@
 
 object_weapon_ranged_vehicle_shared_vehicle_atst_ranged = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {"default_weapon"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_default_weapon.iff",
 	attackType = 1,
 
 	certificationsRequired = {},
@@ -80,7 +80,7 @@ object_weapon_ranged_vehicle_shared_vehicle_atst_ranged = SharedWeaponObjectTemp
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"default_weapon_ammo_slot", "crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/default_weapon.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",

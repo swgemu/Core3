@@ -43,7 +43,7 @@
 
 object_weapon_melee_2h_sword_shared_2h_sword_battleaxe = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_2h_sword_axe_s01.apt",
-	arrangementDescriptors = {"hold_r"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hold_r.iff",
 	attackType = 1,
 
 	certificationsRequired = {},
@@ -80,7 +80,7 @@ object_weapon_melee_2h_sword_shared_2h_sword_battleaxe = SharedWeaponObjectTempl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"default_weapon_ammo_slot", "crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/default_weapon.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -102,7 +102,7 @@ ObjectTemplates:addClientTemplate(object_weapon_melee_2h_sword_shared_2h_sword_b
 
 object_weapon_melee_2h_sword_shared_2h_sword_battleaxe_quest = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_2h_sword_axe_s01.apt",
-	arrangementDescriptors = {"hold_r"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hold_r.iff",
 	attackType = 1,
 
 	certificationsRequired = {},
@@ -139,7 +139,7 @@ object_weapon_melee_2h_sword_shared_2h_sword_battleaxe_quest = SharedWeaponObjec
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"default_weapon_ammo_slot", "crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/default_weapon.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -161,7 +161,7 @@ ObjectTemplates:addClientTemplate(object_weapon_melee_2h_sword_shared_2h_sword_b
 
 object_weapon_melee_2h_sword_shared_2h_sword_blacksun_hack = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_2h_sword_blacksun_hack.apt",
-	arrangementDescriptors = {"hold_r"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hold_r.iff",
 	attackType = 1,
 
 	certificationsRequired = {},
@@ -198,7 +198,7 @@ object_weapon_melee_2h_sword_shared_2h_sword_blacksun_hack = SharedWeaponObjectT
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"default_weapon_ammo_slot", "crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/default_weapon.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -220,7 +220,7 @@ ObjectTemplates:addClientTemplate(object_weapon_melee_2h_sword_shared_2h_sword_b
 
 object_weapon_melee_2h_sword_shared_2h_sword_cleaver = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_2h_sword_s02.apt",
-	arrangementDescriptors = {"hold_r"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hold_r.iff",
 	attackType = 1,
 
 	certificationsRequired = {},
@@ -257,7 +257,7 @@ object_weapon_melee_2h_sword_shared_2h_sword_cleaver = SharedWeaponObjectTemplat
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"default_weapon_ammo_slot", "crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/default_weapon.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -279,7 +279,7 @@ ObjectTemplates:addClientTemplate(object_weapon_melee_2h_sword_shared_2h_sword_c
 
 object_weapon_melee_2h_sword_shared_2h_sword_katana = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_2h_sword_s01.apt",
-	arrangementDescriptors = {"hold_r"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hold_r.iff",
 	attackType = 1,
 
 	certificationsRequired = {},
@@ -316,7 +316,7 @@ object_weapon_melee_2h_sword_shared_2h_sword_katana = SharedWeaponObjectTemplate
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"default_weapon_ammo_slot", "crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/default_weapon.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -338,7 +338,7 @@ ObjectTemplates:addClientTemplate(object_weapon_melee_2h_sword_shared_2h_sword_k
 
 object_weapon_melee_2h_sword_shared_2h_sword_katana_quest = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_2h_sword_s01.apt",
-	arrangementDescriptors = {"hold_r"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hold_r.iff",
 	attackType = 1,
 
 	certificationsRequired = {},
@@ -375,7 +375,7 @@ object_weapon_melee_2h_sword_shared_2h_sword_katana_quest = SharedWeaponObjectTe
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"default_weapon_ammo_slot", "crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/default_weapon.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -397,7 +397,7 @@ ObjectTemplates:addClientTemplate(object_weapon_melee_2h_sword_shared_2h_sword_k
 
 object_weapon_melee_2h_sword_shared_2h_sword_maul = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_2h_sword_maul_s01.apt",
-	arrangementDescriptors = {"hold_r"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hold_r.iff",
 	attackType = 1,
 
 	certificationsRequired = {},
@@ -434,7 +434,7 @@ object_weapon_melee_2h_sword_shared_2h_sword_maul = SharedWeaponObjectTemplate:n
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"default_weapon_ammo_slot", "crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/default_weapon.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -456,7 +456,7 @@ ObjectTemplates:addClientTemplate(object_weapon_melee_2h_sword_shared_2h_sword_m
 
 object_weapon_melee_2h_sword_shared_2h_sword_scythe = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_2h_sword_s03.apt",
-	arrangementDescriptors = {"hold_r"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hold_r.iff",
 	attackType = 1,
 
 	certificationsRequired = {},
@@ -493,7 +493,7 @@ object_weapon_melee_2h_sword_shared_2h_sword_scythe = SharedWeaponObjectTemplate
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"default_weapon_ammo_slot", "crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/default_weapon.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",

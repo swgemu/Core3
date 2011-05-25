@@ -43,7 +43,7 @@
 
 object_tangible_ship_components_shield_generator_shared_shd_armek_plasma_shell_elite = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_level9"},
 	clearFloraRadius = 0,
@@ -79,7 +79,7 @@ object_tangible_ship_components_shield_generator_shared_shd_armek_plasma_shell_e
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -98,7 +98,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_components_shield_generat
 
 object_tangible_ship_components_shield_generator_shared_shd_armek_plasma_shell_elite_2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_levelten"},
 	clearFloraRadius = 0,
@@ -134,7 +134,7 @@ object_tangible_ship_components_shield_generator_shared_shd_armek_plasma_shell_e
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -153,7 +153,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_components_shield_generat
 
 object_tangible_ship_components_shield_generator_shared_shd_armek_plasma_shell_s1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_level1"},
 	clearFloraRadius = 0,
@@ -189,7 +189,7 @@ object_tangible_ship_components_shield_generator_shared_shd_armek_plasma_shell_s
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -208,7 +208,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_components_shield_generat
 
 object_tangible_ship_components_shield_generator_shared_shd_armek_plasma_shell_s2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_level2"},
 	clearFloraRadius = 0,
@@ -244,7 +244,7 @@ object_tangible_ship_components_shield_generator_shared_shd_armek_plasma_shell_s
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -263,7 +263,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_components_shield_generat
 
 object_tangible_ship_components_shield_generator_shared_shd_armek_plasma_shell_s3 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_level4"},
 	clearFloraRadius = 0,
@@ -299,7 +299,7 @@ object_tangible_ship_components_shield_generator_shared_shd_armek_plasma_shell_s
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -318,7 +318,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_components_shield_generat
 
 object_tangible_ship_components_shield_generator_shared_shd_armek_plasma_shell_s6 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_level6"},
 	clearFloraRadius = 0,
@@ -354,7 +354,7 @@ object_tangible_ship_components_shield_generator_shared_shd_armek_plasma_shell_s
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -373,7 +373,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_components_shield_generat
 
 object_tangible_ship_components_shield_generator_shared_shd_cygnus_elite = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_levelten"},
 	clearFloraRadius = 0,
@@ -409,7 +409,7 @@ object_tangible_ship_components_shield_generator_shared_shd_cygnus_elite = Share
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -428,7 +428,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_components_shield_generat
 
 object_tangible_ship_components_shield_generator_shared_shd_cygnus_improved_mk2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_level5"},
 	clearFloraRadius = 0,
@@ -464,7 +464,7 @@ object_tangible_ship_components_shield_generator_shared_shd_cygnus_improved_mk2 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -483,7 +483,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_components_shield_generat
 
 object_tangible_ship_components_shield_generator_shared_shd_cygnus_mk1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_level1"},
 	clearFloraRadius = 0,
@@ -519,7 +519,7 @@ object_tangible_ship_components_shield_generator_shared_shd_cygnus_mk1 = SharedT
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -538,7 +538,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_components_shield_generat
 
 object_tangible_ship_components_shield_generator_shared_shd_cygnus_mk2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_level4"},
 	clearFloraRadius = 0,
@@ -574,7 +574,7 @@ object_tangible_ship_components_shield_generator_shared_shd_cygnus_mk2 = SharedT
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -593,7 +593,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_components_shield_generat
 
 object_tangible_ship_components_shield_generator_shared_shd_cygnus_mk3 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_level6"},
 	clearFloraRadius = 0,
@@ -629,7 +629,7 @@ object_tangible_ship_components_shield_generator_shared_shd_cygnus_mk3 = SharedT
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -648,7 +648,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_components_shield_generat
 
 object_tangible_ship_components_shield_generator_shared_shd_cygnus_mk4 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_level7"},
 	clearFloraRadius = 0,
@@ -684,7 +684,7 @@ object_tangible_ship_components_shield_generator_shared_shd_cygnus_mk4 = SharedT
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -703,7 +703,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_components_shield_generat
 
 object_tangible_ship_components_shield_generator_shared_shd_cygnus_mk5 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_level9"},
 	clearFloraRadius = 0,
@@ -739,7 +739,7 @@ object_tangible_ship_components_shield_generator_shared_shd_cygnus_mk5 = SharedT
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -758,7 +758,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_components_shield_generat
 
 object_tangible_ship_components_shield_generator_shared_shd_cygnus_special_mk1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_level2"},
 	clearFloraRadius = 0,
@@ -794,7 +794,7 @@ object_tangible_ship_components_shield_generator_shared_shd_cygnus_special_mk1 =
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -813,7 +813,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_components_shield_generat
 
 object_tangible_ship_components_shield_generator_shared_shd_dual_deflector_s1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_level1"},
 	clearFloraRadius = 0,
@@ -849,7 +849,7 @@ object_tangible_ship_components_shield_generator_shared_shd_dual_deflector_s1 = 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -868,7 +868,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_components_shield_generat
 
 object_tangible_ship_components_shield_generator_shared_shd_dual_deflector_s2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_level1"},
 	clearFloraRadius = 0,
@@ -904,7 +904,7 @@ object_tangible_ship_components_shield_generator_shared_shd_dual_deflector_s2 = 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -923,7 +923,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_components_shield_generat
 
 object_tangible_ship_components_shield_generator_shared_shd_gallofree_defender_2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_level8"},
 	clearFloraRadius = 0,
@@ -959,7 +959,7 @@ object_tangible_ship_components_shield_generator_shared_shd_gallofree_defender_2
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -978,7 +978,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_components_shield_generat
 
 object_tangible_ship_components_shield_generator_shared_shd_gallofree_defender_elite = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_levelten"},
 	clearFloraRadius = 0,
@@ -1014,7 +1014,7 @@ object_tangible_ship_components_shield_generator_shared_shd_gallofree_defender_e
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1033,7 +1033,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_components_shield_generat
 
 object_tangible_ship_components_shield_generator_shared_shd_generic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_level1"},
 	clearFloraRadius = 0,
@@ -1069,7 +1069,7 @@ object_tangible_ship_components_shield_generator_shared_shd_generic = SharedTang
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1088,7 +1088,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_components_shield_generat
 
 object_tangible_ship_components_shield_generator_shared_shd_incom_mark2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_level1"},
 	clearFloraRadius = 0,
@@ -1124,7 +1124,7 @@ object_tangible_ship_components_shield_generator_shared_shd_incom_mark2 = Shared
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1143,7 +1143,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_components_shield_generat
 
 object_tangible_ship_components_shield_generator_shared_shd_incom_mark5 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_level1"},
 	clearFloraRadius = 0,
@@ -1179,7 +1179,7 @@ object_tangible_ship_components_shield_generator_shared_shd_incom_mark5 = Shared
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1198,7 +1198,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_components_shield_generat
 
 object_tangible_ship_components_shield_generator_shared_shd_incom_mark9 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_level1"},
 	clearFloraRadius = 0,
@@ -1234,7 +1234,7 @@ object_tangible_ship_components_shield_generator_shared_shd_incom_mark9 = Shared
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1253,7 +1253,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_components_shield_generat
 
 object_tangible_ship_components_shield_generator_shared_shd_incom_rayshield_advanced = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_level7"},
 	clearFloraRadius = 0,
@@ -1289,7 +1289,7 @@ object_tangible_ship_components_shield_generator_shared_shd_incom_rayshield_adva
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1308,7 +1308,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_components_shield_generat
 
 object_tangible_ship_components_shield_generator_shared_shd_incom_rayshield_r4 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_level2"},
 	clearFloraRadius = 0,
@@ -1344,7 +1344,7 @@ object_tangible_ship_components_shield_generator_shared_shd_incom_rayshield_r4 =
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1363,7 +1363,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_components_shield_generat
 
 object_tangible_ship_components_shield_generator_shared_shd_incom_rayshield_r7 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_level2"},
 	clearFloraRadius = 0,
@@ -1399,7 +1399,7 @@ object_tangible_ship_components_shield_generator_shared_shd_incom_rayshield_r7 =
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1418,7 +1418,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_components_shield_generat
 
 object_tangible_ship_components_shield_generator_shared_shd_incom_rayshield_x1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_level3"},
 	clearFloraRadius = 0,
@@ -1454,7 +1454,7 @@ object_tangible_ship_components_shield_generator_shared_shd_incom_rayshield_x1 =
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1473,7 +1473,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_components_shield_generat
 
 object_tangible_ship_components_shield_generator_shared_shd_incom_rayshield_x12 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_level5"},
 	clearFloraRadius = 0,
@@ -1509,7 +1509,7 @@ object_tangible_ship_components_shield_generator_shared_shd_incom_rayshield_x12 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1528,7 +1528,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_components_shield_generat
 
 object_tangible_ship_components_shield_generator_shared_shd_incom_rayshield_x2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_level3"},
 	clearFloraRadius = 0,
@@ -1564,7 +1564,7 @@ object_tangible_ship_components_shield_generator_shared_shd_incom_rayshield_x2 =
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1583,7 +1583,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_components_shield_generat
 
 object_tangible_ship_components_shield_generator_shared_shd_incom_rayshield_x5 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_level3"},
 	clearFloraRadius = 0,
@@ -1619,7 +1619,7 @@ object_tangible_ship_components_shield_generator_shared_shd_incom_rayshield_x5 =
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1638,7 +1638,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_components_shield_generat
 
 object_tangible_ship_components_shield_generator_shared_shd_incom_rayshield_x7 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_level4"},
 	clearFloraRadius = 0,
@@ -1674,7 +1674,7 @@ object_tangible_ship_components_shield_generator_shared_shd_incom_rayshield_x7 =
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1693,7 +1693,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_components_shield_generat
 
 object_tangible_ship_components_shield_generator_shared_shd_incom_rayshield_x9 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_level4"},
 	clearFloraRadius = 0,
@@ -1729,7 +1729,7 @@ object_tangible_ship_components_shield_generator_shared_shd_incom_rayshield_x9 =
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1748,7 +1748,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_components_shield_generat
 
 object_tangible_ship_components_shield_generator_shared_shd_incom_rayshield_z1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_level5"},
 	clearFloraRadius = 0,
@@ -1784,7 +1784,7 @@ object_tangible_ship_components_shield_generator_shared_shd_incom_rayshield_z1 =
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1803,7 +1803,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_components_shield_generat
 
 object_tangible_ship_components_shield_generator_shared_shd_incom_rayshield_z5 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_level6"},
 	clearFloraRadius = 0,
@@ -1839,7 +1839,7 @@ object_tangible_ship_components_shield_generator_shared_shd_incom_rayshield_z5 =
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1858,7 +1858,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_components_shield_generat
 
 object_tangible_ship_components_shield_generator_shared_shd_incom_rayshield_z7 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_level6"},
 	clearFloraRadius = 0,
@@ -1894,7 +1894,7 @@ object_tangible_ship_components_shield_generator_shared_shd_incom_rayshield_z7 =
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1913,7 +1913,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_components_shield_generat
 
 object_tangible_ship_components_shield_generator_shared_shd_incom_techscreen_1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_level8"},
 	clearFloraRadius = 0,
@@ -1949,7 +1949,7 @@ object_tangible_ship_components_shield_generator_shared_shd_incom_techscreen_1 =
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1968,7 +1968,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_components_shield_generat
 
 object_tangible_ship_components_shield_generator_shared_shd_incom_techscreen_2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_level9"},
 	clearFloraRadius = 0,
@@ -2004,7 +2004,7 @@ object_tangible_ship_components_shield_generator_shared_shd_incom_techscreen_2 =
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2023,7 +2023,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_components_shield_generat
 
 object_tangible_ship_components_shield_generator_shared_shd_incom_techscreen_elite = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_levelten"},
 	clearFloraRadius = 0,
@@ -2059,7 +2059,7 @@ object_tangible_ship_components_shield_generator_shared_shd_incom_techscreen_eli
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2078,7 +2078,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_components_shield_generat
 
 object_tangible_ship_components_shield_generator_shared_shd_interlaced_graviton = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_level9"},
 	clearFloraRadius = 0,
@@ -2114,7 +2114,7 @@ object_tangible_ship_components_shield_generator_shared_shd_interlaced_graviton 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2133,7 +2133,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_components_shield_generat
 
 object_tangible_ship_components_shield_generator_shared_shd_kessel_imperial_cygnus_experimental_system = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_level9"},
 	clearFloraRadius = 0,
@@ -2169,7 +2169,7 @@ object_tangible_ship_components_shield_generator_shared_shd_kessel_imperial_cygn
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2188,7 +2188,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_components_shield_generat
 
 object_tangible_ship_components_shield_generator_shared_shd_kessel_imperial_sds_secret_ops = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_levelten"},
 	clearFloraRadius = 0,
@@ -2224,7 +2224,7 @@ object_tangible_ship_components_shield_generator_shared_shd_kessel_imperial_sds_
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2243,7 +2243,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_components_shield_generat
 
 object_tangible_ship_components_shield_generator_shared_shd_kessel_imperial_sfs_megapolyweb = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_level9"},
 	clearFloraRadius = 0,
@@ -2279,7 +2279,7 @@ object_tangible_ship_components_shield_generator_shared_shd_kessel_imperial_sfs_
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2298,7 +2298,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_components_shield_generat
 
 object_tangible_ship_components_shield_generator_shared_shd_kessel_rebel_incom_rayshield_overdriver = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_level9"},
 	clearFloraRadius = 0,
@@ -2334,7 +2334,7 @@ object_tangible_ship_components_shield_generator_shared_shd_kessel_rebel_incom_r
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2353,7 +2353,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_components_shield_generat
 
 object_tangible_ship_components_shield_generator_shared_shd_kessel_rebel_sorosuub_ion_mesh_projection = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_levelten"},
 	clearFloraRadius = 0,
@@ -2389,7 +2389,7 @@ object_tangible_ship_components_shield_generator_shared_shd_kessel_rebel_sorosuu
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2408,7 +2408,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_components_shield_generat
 
 object_tangible_ship_components_shield_generator_shared_shd_kessel_rebel_unknown_proton_interweave_system = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_level9"},
 	clearFloraRadius = 0,
@@ -2444,7 +2444,7 @@ object_tangible_ship_components_shield_generator_shared_shd_kessel_rebel_unknown
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2463,7 +2463,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_components_shield_generat
 
 object_tangible_ship_components_shield_generator_shared_shd_koensayr_deflector_advanced = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_level8"},
 	clearFloraRadius = 0,
@@ -2499,7 +2499,7 @@ object_tangible_ship_components_shield_generator_shared_shd_koensayr_deflector_a
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2518,7 +2518,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_components_shield_generat
 
 object_tangible_ship_components_shield_generator_shared_shd_koensayr_deflector_elite = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_levelten"},
 	clearFloraRadius = 0,
@@ -2554,7 +2554,7 @@ object_tangible_ship_components_shield_generator_shared_shd_koensayr_deflector_e
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2573,7 +2573,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_components_shield_generat
 
 object_tangible_ship_components_shield_generator_shared_shd_koensayr_deflector_m1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_level1"},
 	clearFloraRadius = 0,
@@ -2609,7 +2609,7 @@ object_tangible_ship_components_shield_generator_shared_shd_koensayr_deflector_m
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2628,7 +2628,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_components_shield_generat
 
 object_tangible_ship_components_shield_generator_shared_shd_koensayr_deflector_m2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_level3"},
 	clearFloraRadius = 0,
@@ -2664,7 +2664,7 @@ object_tangible_ship_components_shield_generator_shared_shd_koensayr_deflector_m
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2683,7 +2683,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_components_shield_generat
 
 object_tangible_ship_components_shield_generator_shared_shd_koensayr_deflector_m3 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_level5"},
 	clearFloraRadius = 0,
@@ -2719,7 +2719,7 @@ object_tangible_ship_components_shield_generator_shared_shd_koensayr_deflector_m
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2738,7 +2738,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_components_shield_generat
 
 object_tangible_ship_components_shield_generator_shared_shd_koensayr_deflector_m6 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_level6"},
 	clearFloraRadius = 0,
@@ -2774,7 +2774,7 @@ object_tangible_ship_components_shield_generator_shared_shd_koensayr_deflector_m
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2793,7 +2793,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_components_shield_generat
 
 object_tangible_ship_components_shield_generator_shared_shd_koensayr_deflector_m8 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_level7"},
 	clearFloraRadius = 0,
@@ -2829,7 +2829,7 @@ object_tangible_ship_components_shield_generator_shared_shd_koensayr_deflector_m
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2848,7 +2848,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_components_shield_generat
 
 object_tangible_ship_components_shield_generator_shared_shd_koensayr_improved_deflector_m1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_level2"},
 	clearFloraRadius = 0,
@@ -2884,7 +2884,7 @@ object_tangible_ship_components_shield_generator_shared_shd_koensayr_improved_de
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2903,7 +2903,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_components_shield_generat
 
 object_tangible_ship_components_shield_generator_shared_shd_koensayr_modified_deflector_advanced = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_level9"},
 	clearFloraRadius = 0,
@@ -2939,7 +2939,7 @@ object_tangible_ship_components_shield_generator_shared_shd_koensayr_modified_de
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2958,7 +2958,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_components_shield_generat
 
 object_tangible_ship_components_shield_generator_shared_shd_kse_elite = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_levelten"},
 	clearFloraRadius = 0,
@@ -2994,7 +2994,7 @@ object_tangible_ship_components_shield_generator_shared_shd_kse_elite = SharedTa
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3013,7 +3013,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_components_shield_generat
 
 object_tangible_ship_components_shield_generator_shared_shd_kse_enhanced_military_mk1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_level2"},
 	clearFloraRadius = 0,
@@ -3049,7 +3049,7 @@ object_tangible_ship_components_shield_generator_shared_shd_kse_enhanced_militar
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3068,7 +3068,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_components_shield_generat
 
 object_tangible_ship_components_shield_generator_shared_shd_kse_military_mk1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_level1"},
 	clearFloraRadius = 0,
@@ -3104,7 +3104,7 @@ object_tangible_ship_components_shield_generator_shared_shd_kse_military_mk1 = S
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3123,7 +3123,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_components_shield_generat
 
 object_tangible_ship_components_shield_generator_shared_shd_kse_military_mk2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_level3"},
 	clearFloraRadius = 0,
@@ -3159,7 +3159,7 @@ object_tangible_ship_components_shield_generator_shared_shd_kse_military_mk2 = S
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3178,7 +3178,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_components_shield_generat
 
 object_tangible_ship_components_shield_generator_shared_shd_kse_mk3 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_level5"},
 	clearFloraRadius = 0,
@@ -3214,7 +3214,7 @@ object_tangible_ship_components_shield_generator_shared_shd_kse_mk3 = SharedTang
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3233,7 +3233,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_components_shield_generat
 
 object_tangible_ship_components_shield_generator_shared_shd_kse_mk4 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_level6"},
 	clearFloraRadius = 0,
@@ -3269,7 +3269,7 @@ object_tangible_ship_components_shield_generator_shared_shd_kse_mk4 = SharedTang
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3288,7 +3288,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_components_shield_generat
 
 object_tangible_ship_components_shield_generator_shared_shd_kse_mk5 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_level7"},
 	clearFloraRadius = 0,
@@ -3324,7 +3324,7 @@ object_tangible_ship_components_shield_generator_shared_shd_kse_mk5 = SharedTang
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3343,7 +3343,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_components_shield_generat
 
 object_tangible_ship_components_shield_generator_shared_shd_kse_mk6 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_level8"},
 	clearFloraRadius = 0,
@@ -3379,7 +3379,7 @@ object_tangible_ship_components_shield_generator_shared_shd_kse_mk6 = SharedTang
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3398,7 +3398,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_components_shield_generat
 
 object_tangible_ship_components_shield_generator_shared_shd_kse_mk7 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_level9"},
 	clearFloraRadius = 0,
@@ -3434,7 +3434,7 @@ object_tangible_ship_components_shield_generator_shared_shd_kse_mk7 = SharedTang
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3453,7 +3453,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_components_shield_generat
 
 object_tangible_ship_components_shield_generator_shared_shd_mandal_double_protector_mk1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_level2"},
 	clearFloraRadius = 0,
@@ -3489,7 +3489,7 @@ object_tangible_ship_components_shield_generator_shared_shd_mandal_double_protec
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3508,7 +3508,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_components_shield_generat
 
 object_tangible_ship_components_shield_generator_shared_shd_mandal_flexshield_ks25 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_level6"},
 	clearFloraRadius = 0,
@@ -3544,7 +3544,7 @@ object_tangible_ship_components_shield_generator_shared_shd_mandal_flexshield_ks
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3563,7 +3563,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_components_shield_generat
 
 object_tangible_ship_components_shield_generator_shared_shd_mandal_flexshield_ks5 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_level5"},
 	clearFloraRadius = 0,
@@ -3599,7 +3599,7 @@ object_tangible_ship_components_shield_generator_shared_shd_mandal_flexshield_ks
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3618,7 +3618,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_components_shield_generat
 
 object_tangible_ship_components_shield_generator_shared_shd_mandal_flexshield_ks7 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_level7"},
 	clearFloraRadius = 0,
@@ -3654,7 +3654,7 @@ object_tangible_ship_components_shield_generator_shared_shd_mandal_flexshield_ks
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3673,7 +3673,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_components_shield_generat
 
 object_tangible_ship_components_shield_generator_shared_shd_mandal_flexshield_kx1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_level8"},
 	clearFloraRadius = 0,
@@ -3709,7 +3709,7 @@ object_tangible_ship_components_shield_generator_shared_shd_mandal_flexshield_kx
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3728,7 +3728,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_components_shield_generat
 
 object_tangible_ship_components_shield_generator_shared_shd_mandal_protector_mk1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_level1"},
 	clearFloraRadius = 0,
@@ -3764,7 +3764,7 @@ object_tangible_ship_components_shield_generator_shared_shd_mandal_protector_mk1
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3783,7 +3783,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_components_shield_generat
 
 object_tangible_ship_components_shield_generator_shared_shd_mandalor_flexshield_ks1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_level3"},
 	clearFloraRadius = 0,
@@ -3819,7 +3819,7 @@ object_tangible_ship_components_shield_generator_shared_shd_mandalor_flexshield_
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3838,7 +3838,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_components_shield_generat
 
 object_tangible_ship_components_shield_generator_shared_shd_mandalor_flexshield_ks18 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_level5"},
 	clearFloraRadius = 0,
@@ -3874,7 +3874,7 @@ object_tangible_ship_components_shield_generator_shared_shd_mandalor_flexshield_
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3893,7 +3893,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_components_shield_generat
 
 object_tangible_ship_components_shield_generator_shared_shd_mandalor_flexshield_ks3 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_level4"},
 	clearFloraRadius = 0,
@@ -3929,7 +3929,7 @@ object_tangible_ship_components_shield_generator_shared_shd_mandalor_flexshield_
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3948,7 +3948,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_components_shield_generat
 
 object_tangible_ship_components_shield_generator_shared_shd_mission_reward_imperial_cygnus_holoscreen = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_level8"},
 	clearFloraRadius = 0,
@@ -3984,7 +3984,7 @@ object_tangible_ship_components_shield_generator_shared_shd_mission_reward_imper
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -4003,7 +4003,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_components_shield_generat
 
 object_tangible_ship_components_shield_generator_shared_shd_mission_reward_imperial_rendili_dual_projector = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_level4"},
 	clearFloraRadius = 0,
@@ -4039,7 +4039,7 @@ object_tangible_ship_components_shield_generator_shared_shd_mission_reward_imper
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -4058,7 +4058,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_components_shield_generat
 
 object_tangible_ship_components_shield_generator_shared_shd_mission_reward_neutral_armek_plasma_web = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_level8"},
 	clearFloraRadius = 0,
@@ -4094,7 +4094,7 @@ object_tangible_ship_components_shield_generator_shared_shd_mission_reward_neutr
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -4113,7 +4113,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_components_shield_generat
 
 object_tangible_ship_components_shield_generator_shared_shd_mission_reward_neutral_koensayr_ds23 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_level4"},
 	clearFloraRadius = 0,
@@ -4149,7 +4149,7 @@ object_tangible_ship_components_shield_generator_shared_shd_mission_reward_neutr
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -4168,7 +4168,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_components_shield_generat
 
 object_tangible_ship_components_shield_generator_shared_shd_mission_reward_rebel_incom_k77 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_level4"},
 	clearFloraRadius = 0,
@@ -4204,7 +4204,7 @@ object_tangible_ship_components_shield_generator_shared_shd_mission_reward_rebel
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -4223,7 +4223,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_components_shield_generat
 
 object_tangible_ship_components_shield_generator_shared_shd_mission_reward_rebel_taim_military_grade = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_level8"},
 	clearFloraRadius = 0,
@@ -4259,7 +4259,7 @@ object_tangible_ship_components_shield_generator_shared_shd_mission_reward_rebel
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -4278,7 +4278,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_components_shield_generat
 
 object_tangible_ship_components_shield_generator_shared_shd_moncal = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_level4"},
 	clearFloraRadius = 0,
@@ -4314,7 +4314,7 @@ object_tangible_ship_components_shield_generator_shared_shd_moncal = SharedTangi
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -4333,7 +4333,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_components_shield_generat
 
 object_tangible_ship_components_shield_generator_shared_shd_moncal_deluxe_ionweb_a = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_level2"},
 	clearFloraRadius = 0,
@@ -4369,7 +4369,7 @@ object_tangible_ship_components_shield_generator_shared_shd_moncal_deluxe_ionweb
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -4388,7 +4388,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_components_shield_generat
 
 object_tangible_ship_components_shield_generator_shared_shd_moncal_deluxe_ionweb_b = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_level3"},
 	clearFloraRadius = 0,
@@ -4424,7 +4424,7 @@ object_tangible_ship_components_shield_generator_shared_shd_moncal_deluxe_ionweb
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -4443,7 +4443,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_components_shield_generat
 
 object_tangible_ship_components_shield_generator_shared_shd_moncal_ionweb_a = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_level1"},
 	clearFloraRadius = 0,
@@ -4479,7 +4479,7 @@ object_tangible_ship_components_shield_generator_shared_shd_moncal_ionweb_a = Sh
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -4498,7 +4498,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_components_shield_generat
 
 object_tangible_ship_components_shield_generator_shared_shd_moncal_ionweb_advanced = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_level8"},
 	clearFloraRadius = 0,
@@ -4534,7 +4534,7 @@ object_tangible_ship_components_shield_generator_shared_shd_moncal_ionweb_advanc
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -4553,7 +4553,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_components_shield_generat
 
 object_tangible_ship_components_shield_generator_shared_shd_moncal_ionweb_elite = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_level9"},
 	clearFloraRadius = 0,
@@ -4589,7 +4589,7 @@ object_tangible_ship_components_shield_generator_shared_shd_moncal_ionweb_elite 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -4608,7 +4608,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_components_shield_generat
 
 object_tangible_ship_components_shield_generator_shared_shd_moncal_ionweb_elite_2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_levelten"},
 	clearFloraRadius = 0,
@@ -4644,7 +4644,7 @@ object_tangible_ship_components_shield_generator_shared_shd_moncal_ionweb_elite_
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -4663,7 +4663,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_components_shield_generat
 
 object_tangible_ship_components_shield_generator_shared_shd_moncal_ionweb_heavy = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_level7"},
 	clearFloraRadius = 0,
@@ -4699,7 +4699,7 @@ object_tangible_ship_components_shield_generator_shared_shd_moncal_ionweb_heavy 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -4718,7 +4718,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_components_shield_generat
 
 object_tangible_ship_components_shield_generator_shared_shd_phased_fullerine_fx12 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_level6"},
 	clearFloraRadius = 0,
@@ -4754,7 +4754,7 @@ object_tangible_ship_components_shield_generator_shared_shd_phased_fullerine_fx1
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -4773,7 +4773,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_components_shield_generat
 
 object_tangible_ship_components_shield_generator_shared_shd_phased_fullerine_fx27 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_level7"},
 	clearFloraRadius = 0,
@@ -4809,7 +4809,7 @@ object_tangible_ship_components_shield_generator_shared_shd_phased_fullerine_fx2
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -4828,7 +4828,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_components_shield_generat
 
 object_tangible_ship_components_shield_generator_shared_shd_phased_fullerine_fx92 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_level8"},
 	clearFloraRadius = 0,
@@ -4864,7 +4864,7 @@ object_tangible_ship_components_shield_generator_shared_shd_phased_fullerine_fx9
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -4883,7 +4883,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_components_shield_generat
 
 object_tangible_ship_components_shield_generator_shared_shd_prototype_shield = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_level1"},
 	clearFloraRadius = 0,
@@ -4919,7 +4919,7 @@ object_tangible_ship_components_shield_generator_shared_shd_prototype_shield = S
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -4938,7 +4938,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_components_shield_generat
 
 object_tangible_ship_components_shield_generator_shared_shd_rendili = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_level4"},
 	clearFloraRadius = 0,
@@ -4974,7 +4974,7 @@ object_tangible_ship_components_shield_generator_shared_shd_rendili = SharedTang
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -4993,7 +4993,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_components_shield_generat
 
 object_tangible_ship_components_shield_generator_shared_shd_reward_armek_elite = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_shield_s02.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_levelten"},
 	clearFloraRadius = 0,
@@ -5029,7 +5029,7 @@ object_tangible_ship_components_shield_generator_shared_shd_reward_armek_elite =
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -5048,7 +5048,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_components_shield_generat
 
 object_tangible_ship_components_shield_generator_shared_shd_reward_incom_elite = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_shield_s02.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_levelten"},
 	clearFloraRadius = 0,
@@ -5084,7 +5084,7 @@ object_tangible_ship_components_shield_generator_shared_shd_reward_incom_elite =
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -5103,7 +5103,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_components_shield_generat
 
 object_tangible_ship_components_shield_generator_shared_shd_reward_mandalor_elite = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_shield_s02.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_levelten"},
 	clearFloraRadius = 0,
@@ -5139,7 +5139,7 @@ object_tangible_ship_components_shield_generator_shared_shd_reward_mandalor_elit
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -5158,7 +5158,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_components_shield_generat
 
 object_tangible_ship_components_shield_generator_shared_shd_reward_seinar_elite = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_shield_s02.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_levelten"},
 	clearFloraRadius = 0,
@@ -5194,7 +5194,7 @@ object_tangible_ship_components_shield_generator_shared_shd_reward_seinar_elite 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -5213,7 +5213,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_components_shield_generat
 
 object_tangible_ship_components_shield_generator_shared_shd_reward_taim_elite = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_shield_s02.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_levelten"},
 	clearFloraRadius = 0,
@@ -5249,7 +5249,7 @@ object_tangible_ship_components_shield_generator_shared_shd_reward_taim_elite = 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -5268,7 +5268,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_components_shield_generat
 
 object_tangible_ship_components_shield_generator_shared_shd_seinar_experimental_a1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_level3"},
 	clearFloraRadius = 0,
@@ -5304,7 +5304,7 @@ object_tangible_ship_components_shield_generator_shared_shd_seinar_experimental_
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -5323,7 +5323,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_components_shield_generat
 
 object_tangible_ship_components_shield_generator_shared_shd_seinar_gx3 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_level1"},
 	clearFloraRadius = 0,
@@ -5359,7 +5359,7 @@ object_tangible_ship_components_shield_generator_shared_shd_seinar_gx3 = SharedT
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -5378,7 +5378,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_components_shield_generat
 
 object_tangible_ship_components_shield_generator_shared_shd_seinar_gx7 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_level1"},
 	clearFloraRadius = 0,
@@ -5414,7 +5414,7 @@ object_tangible_ship_components_shield_generator_shared_shd_seinar_gx7 = SharedT
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -5433,7 +5433,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_components_shield_generat
 
 object_tangible_ship_components_shield_generator_shared_shd_seinar_gx_elite = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_level1"},
 	clearFloraRadius = 0,
@@ -5469,7 +5469,7 @@ object_tangible_ship_components_shield_generator_shared_shd_seinar_gx_elite = Sh
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -5488,7 +5488,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_components_shield_generat
 
 object_tangible_ship_components_shield_generator_shared_shd_seinar_proton_screen_p1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_level2"},
 	clearFloraRadius = 0,
@@ -5524,7 +5524,7 @@ object_tangible_ship_components_shield_generator_shared_shd_seinar_proton_screen
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -5543,7 +5543,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_components_shield_generat
 
 object_tangible_ship_components_shield_generator_shared_shd_seinar_proton_screen_p6 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_level2"},
 	clearFloraRadius = 0,
@@ -5579,7 +5579,7 @@ object_tangible_ship_components_shield_generator_shared_shd_seinar_proton_screen
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -5598,7 +5598,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_components_shield_generat
 
 object_tangible_ship_components_shield_generator_shared_shd_seinar_reflector_elite = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_level3"},
 	clearFloraRadius = 0,
@@ -5634,7 +5634,7 @@ object_tangible_ship_components_shield_generator_shared_shd_seinar_reflector_eli
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -5653,7 +5653,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_components_shield_generat
 
 object_tangible_ship_components_shield_generator_shared_shd_seinar_reflector_standard = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_level3"},
 	clearFloraRadius = 0,
@@ -5689,7 +5689,7 @@ object_tangible_ship_components_shield_generator_shared_shd_seinar_reflector_sta
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -5708,7 +5708,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_components_shield_generat
 
 object_tangible_ship_components_shield_generator_shared_shd_sfs_advanced = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_level6"},
 	clearFloraRadius = 0,
@@ -5744,7 +5744,7 @@ object_tangible_ship_components_shield_generator_shared_shd_sfs_advanced = Share
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -5763,7 +5763,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_components_shield_generat
 
 object_tangible_ship_components_shield_generator_shared_shd_sfs_custom_polyweb_elite = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_levelten"},
 	clearFloraRadius = 0,
@@ -5799,7 +5799,7 @@ object_tangible_ship_components_shield_generator_shared_shd_sfs_custom_polyweb_e
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -5818,7 +5818,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_components_shield_generat
 
 object_tangible_ship_components_shield_generator_shared_shd_sfs_imperial_deluxe_standard = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_level4"},
 	clearFloraRadius = 0,
@@ -5854,7 +5854,7 @@ object_tangible_ship_components_shield_generator_shared_shd_sfs_imperial_deluxe_
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -5873,7 +5873,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_components_shield_generat
 
 object_tangible_ship_components_shield_generator_shared_shd_sfs_imperial_heavy = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_level5"},
 	clearFloraRadius = 0,
@@ -5909,7 +5909,7 @@ object_tangible_ship_components_shield_generator_shared_shd_sfs_imperial_heavy =
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -5928,7 +5928,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_components_shield_generat
 
 object_tangible_ship_components_shield_generator_shared_shd_sfs_imperial_special_forces = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_level7"},
 	clearFloraRadius = 0,
@@ -5964,7 +5964,7 @@ object_tangible_ship_components_shield_generator_shared_shd_sfs_imperial_special
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -5983,7 +5983,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_components_shield_generat
 
 object_tangible_ship_components_shield_generator_shared_shd_sfs_imperial_standard = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_level4"},
 	clearFloraRadius = 0,
@@ -6019,7 +6019,7 @@ object_tangible_ship_components_shield_generator_shared_shd_sfs_imperial_standar
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -6038,7 +6038,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_components_shield_generat
 
 object_tangible_ship_components_shield_generator_shared_shd_sfs_limited_advanced = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_level6"},
 	clearFloraRadius = 0,
@@ -6074,7 +6074,7 @@ object_tangible_ship_components_shield_generator_shared_shd_sfs_limited_advanced
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -6093,7 +6093,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_components_shield_generat
 
 object_tangible_ship_components_shield_generator_shared_shd_sfs_modified_imperial_heavy = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_level5"},
 	clearFloraRadius = 0,
@@ -6129,7 +6129,7 @@ object_tangible_ship_components_shield_generator_shared_shd_sfs_modified_imperia
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -6148,7 +6148,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_components_shield_generat
 
 object_tangible_ship_components_shield_generator_shared_shd_sfs_modified_imperial_special_forces = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_level7"},
 	clearFloraRadius = 0,
@@ -6184,7 +6184,7 @@ object_tangible_ship_components_shield_generator_shared_shd_sfs_modified_imperia
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -6203,7 +6203,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_components_shield_generat
 
 object_tangible_ship_components_shield_generator_shared_shd_sfs_modified_polyweb_advanced = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_level9"},
 	clearFloraRadius = 0,
@@ -6239,7 +6239,7 @@ object_tangible_ship_components_shield_generator_shared_shd_sfs_modified_polyweb
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -6258,7 +6258,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_components_shield_generat
 
 object_tangible_ship_components_shield_generator_shared_shd_sfs_polyweb_4 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_level8"},
 	clearFloraRadius = 0,
@@ -6294,7 +6294,7 @@ object_tangible_ship_components_shield_generator_shared_shd_sfs_polyweb_4 = Shar
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -6313,7 +6313,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_components_shield_generat
 
 object_tangible_ship_components_shield_generator_shared_shd_sfs_polyweb_6 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_level8"},
 	clearFloraRadius = 0,
@@ -6349,7 +6349,7 @@ object_tangible_ship_components_shield_generator_shared_shd_sfs_polyweb_6 = Shar
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -6368,7 +6368,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_components_shield_generat
 
 object_tangible_ship_components_shield_generator_shared_shd_sfs_polyweb_advanced = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_level9"},
 	clearFloraRadius = 0,
@@ -6404,7 +6404,7 @@ object_tangible_ship_components_shield_generator_shared_shd_sfs_polyweb_advanced
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -6423,7 +6423,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_components_shield_generat
 
 object_tangible_ship_components_shield_generator_shared_shd_sfs_polyweb_elite = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_levelten"},
 	clearFloraRadius = 0,
@@ -6459,7 +6459,7 @@ object_tangible_ship_components_shield_generator_shared_shd_sfs_polyweb_elite = 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -6478,7 +6478,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_components_shield_generat
 
 object_tangible_ship_components_shield_generator_shared_shd_taim_advanced = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_level8"},
 	clearFloraRadius = 0,
@@ -6514,7 +6514,7 @@ object_tangible_ship_components_shield_generator_shared_shd_taim_advanced = Shar
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -6533,7 +6533,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_components_shield_generat
 
 object_tangible_ship_components_shield_generator_shared_shd_taim_elite = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_levelten"},
 	clearFloraRadius = 0,
@@ -6569,7 +6569,7 @@ object_tangible_ship_components_shield_generator_shared_shd_taim_elite = SharedT
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -6588,7 +6588,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_components_shield_generat
 
 object_tangible_ship_components_shield_generator_shared_shd_taim_enhanced_advanced = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_level9"},
 	clearFloraRadius = 0,
@@ -6624,7 +6624,7 @@ object_tangible_ship_components_shield_generator_shared_shd_taim_enhanced_advanc
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -6643,7 +6643,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_components_shield_generat
 
 object_tangible_ship_components_shield_generator_shared_shd_taim_heavy = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_level7"},
 	clearFloraRadius = 0,
@@ -6679,7 +6679,7 @@ object_tangible_ship_components_shield_generator_shared_shd_taim_heavy = SharedT
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -6698,7 +6698,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_components_shield_generat
 
 object_tangible_ship_components_shield_generator_shared_shd_taim_standard = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_level4"},
 	clearFloraRadius = 0,
@@ -6734,7 +6734,7 @@ object_tangible_ship_components_shield_generator_shared_shd_taim_standard = Shar
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -6753,7 +6753,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_components_shield_generat
 
 object_tangible_ship_components_shield_generator_shared_shd_tiefighter_basic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_level1"},
 	clearFloraRadius = 0,
@@ -6789,7 +6789,7 @@ object_tangible_ship_components_shield_generator_shared_shd_tiefighter_basic = S
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -6808,7 +6808,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_components_shield_generat
 
 object_tangible_ship_components_shield_generator_shared_shd_unknown_holosteel_x1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_level3"},
 	clearFloraRadius = 0,
@@ -6844,7 +6844,7 @@ object_tangible_ship_components_shield_generator_shared_shd_unknown_holosteel_x1
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -6863,7 +6863,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_components_shield_generat
 
 object_tangible_ship_components_shield_generator_shared_shd_unknown_holosteel_x2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_level3"},
 	clearFloraRadius = 0,
@@ -6899,7 +6899,7 @@ object_tangible_ship_components_shield_generator_shared_shd_unknown_holosteel_x2
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -6918,7 +6918,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_components_shield_generat
 
 object_tangible_ship_components_shield_generator_shared_shd_unknown_proton_projector = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_level2"},
 	clearFloraRadius = 0,
@@ -6954,7 +6954,7 @@ object_tangible_ship_components_shield_generator_shared_shd_unknown_proton_proje
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -6973,7 +6973,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_components_shield_generat
 
 object_tangible_ship_components_shield_generator_shared_shd_z95_basic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_level1"},
 	clearFloraRadius = 0,
@@ -7009,7 +7009,7 @@ object_tangible_ship_components_shield_generator_shared_shd_z95_basic = SharedTa
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -7028,7 +7028,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_components_shield_generat
 
 object_tangible_ship_components_shield_generator_shared_shield_generator_test = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ins_all_pow_fusion_ion_u0.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {"cert_ordnance_level1"},
 	clearFloraRadius = 0,
@@ -7064,7 +7064,7 @@ object_tangible_ship_components_shield_generator_shared_shield_generator_test = 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",

@@ -43,7 +43,7 @@
 
 object_draft_schematic_bio_engineer_dna_template_shared_dna_template_angler = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {"datapad"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -74,7 +74,7 @@ object_draft_schematic_bio_engineer_dna_template_shared_dna_template_angler = Sh
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -88,7 +88,7 @@ ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_dna_templa
 
 object_draft_schematic_bio_engineer_dna_template_shared_dna_template_bantha = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {"datapad"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -119,7 +119,7 @@ object_draft_schematic_bio_engineer_dna_template_shared_dna_template_bantha = Sh
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -133,7 +133,7 @@ ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_dna_templa
 
 object_draft_schematic_bio_engineer_dna_template_shared_dna_template_bearded_jax = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {"datapad"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -164,7 +164,7 @@ object_draft_schematic_bio_engineer_dna_template_shared_dna_template_bearded_jax
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -178,7 +178,7 @@ ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_dna_templa
 
 object_draft_schematic_bio_engineer_dna_template_shared_dna_template_blurrg = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {"datapad"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -209,7 +209,7 @@ object_draft_schematic_bio_engineer_dna_template_shared_dna_template_blurrg = Sh
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -223,7 +223,7 @@ ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_dna_templa
 
 object_draft_schematic_bio_engineer_dna_template_shared_dna_template_bol = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {"datapad"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -254,7 +254,7 @@ object_draft_schematic_bio_engineer_dna_template_shared_dna_template_bol = Share
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -268,7 +268,7 @@ ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_dna_templa
 
 object_draft_schematic_bio_engineer_dna_template_shared_dna_template_bolle_bol = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {"datapad"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -299,7 +299,7 @@ object_draft_schematic_bio_engineer_dna_template_shared_dna_template_bolle_bol =
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -313,7 +313,7 @@ ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_dna_templa
 
 object_draft_schematic_bio_engineer_dna_template_shared_dna_template_bolma = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {"datapad"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -344,7 +344,7 @@ object_draft_schematic_bio_engineer_dna_template_shared_dna_template_bolma = Sha
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -358,7 +358,7 @@ ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_dna_templa
 
 object_draft_schematic_bio_engineer_dna_template_shared_dna_template_brackaset = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {"datapad"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -389,7 +389,7 @@ object_draft_schematic_bio_engineer_dna_template_shared_dna_template_brackaset =
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -403,7 +403,7 @@ ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_dna_templa
 
 object_draft_schematic_bio_engineer_dna_template_shared_dna_template_carrion_spat = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {"datapad"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -434,7 +434,7 @@ object_draft_schematic_bio_engineer_dna_template_shared_dna_template_carrion_spa
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -448,7 +448,7 @@ ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_dna_templa
 
 object_draft_schematic_bio_engineer_dna_template_shared_dna_template_choku = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {"datapad"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -479,7 +479,7 @@ object_draft_schematic_bio_engineer_dna_template_shared_dna_template_choku = Sha
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -493,7 +493,7 @@ ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_dna_templa
 
 object_draft_schematic_bio_engineer_dna_template_shared_dna_template_dalyrake = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {"datapad"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -524,7 +524,7 @@ object_draft_schematic_bio_engineer_dna_template_shared_dna_template_dalyrake = 
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -538,7 +538,7 @@ ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_dna_templa
 
 object_draft_schematic_bio_engineer_dna_template_shared_dna_template_dewback = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {"datapad"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -569,7 +569,7 @@ object_draft_schematic_bio_engineer_dna_template_shared_dna_template_dewback = S
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -583,7 +583,7 @@ ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_dna_templa
 
 object_draft_schematic_bio_engineer_dna_template_shared_dna_template_eopie = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {"datapad"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -614,7 +614,7 @@ object_draft_schematic_bio_engineer_dna_template_shared_dna_template_eopie = Sha
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -628,7 +628,7 @@ ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_dna_templa
 
 object_draft_schematic_bio_engineer_dna_template_shared_dna_template_falumpaset = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {"datapad"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -659,7 +659,7 @@ object_draft_schematic_bio_engineer_dna_template_shared_dna_template_falumpaset 
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -673,7 +673,7 @@ ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_dna_templa
 
 object_draft_schematic_bio_engineer_dna_template_shared_dna_template_fambaa = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {"datapad"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -704,7 +704,7 @@ object_draft_schematic_bio_engineer_dna_template_shared_dna_template_fambaa = Sh
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -718,7 +718,7 @@ ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_dna_templa
 
 object_draft_schematic_bio_engineer_dna_template_shared_dna_template_generic = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {"datapad"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -749,7 +749,7 @@ object_draft_schematic_bio_engineer_dna_template_shared_dna_template_generic = S
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -763,7 +763,7 @@ ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_dna_templa
 
 object_draft_schematic_bio_engineer_dna_template_shared_dna_template_gualama = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {"datapad"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -794,7 +794,7 @@ object_draft_schematic_bio_engineer_dna_template_shared_dna_template_gualama = S
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -808,7 +808,7 @@ ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_dna_templa
 
 object_draft_schematic_bio_engineer_dna_template_shared_dna_template_guf_drolg = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {"datapad"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -839,7 +839,7 @@ object_draft_schematic_bio_engineer_dna_template_shared_dna_template_guf_drolg =
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -853,7 +853,7 @@ ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_dna_templa
 
 object_draft_schematic_bio_engineer_dna_template_shared_dna_template_gurrcat = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {"datapad"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -884,7 +884,7 @@ object_draft_schematic_bio_engineer_dna_template_shared_dna_template_gurrcat = S
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -898,7 +898,7 @@ ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_dna_templa
 
 object_draft_schematic_bio_engineer_dna_template_shared_dna_template_gurreck = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {"datapad"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -929,7 +929,7 @@ object_draft_schematic_bio_engineer_dna_template_shared_dna_template_gurreck = S
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -943,7 +943,7 @@ ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_dna_templa
 
 object_draft_schematic_bio_engineer_dna_template_shared_dna_template_kaadu = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {"datapad"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -974,7 +974,7 @@ object_draft_schematic_bio_engineer_dna_template_shared_dna_template_kaadu = Sha
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -988,7 +988,7 @@ ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_dna_templa
 
 object_draft_schematic_bio_engineer_dna_template_shared_dna_template_kahmurra = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {"datapad"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1019,7 +1019,7 @@ object_draft_schematic_bio_engineer_dna_template_shared_dna_template_kahmurra = 
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -1033,7 +1033,7 @@ ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_dna_templa
 
 object_draft_schematic_bio_engineer_dna_template_shared_dna_template_kimogila = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {"datapad"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1064,7 +1064,7 @@ object_draft_schematic_bio_engineer_dna_template_shared_dna_template_kimogila = 
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -1078,7 +1078,7 @@ ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_dna_templa
 
 object_draft_schematic_bio_engineer_dna_template_shared_dna_template_krahbu = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {"datapad"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1109,7 +1109,7 @@ object_draft_schematic_bio_engineer_dna_template_shared_dna_template_krahbu = Sh
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -1123,7 +1123,7 @@ ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_dna_templa
 
 object_draft_schematic_bio_engineer_dna_template_shared_dna_template_kusak = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {"datapad"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1154,7 +1154,7 @@ object_draft_schematic_bio_engineer_dna_template_shared_dna_template_kusak = Sha
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -1168,7 +1168,7 @@ ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_dna_templa
 
 object_draft_schematic_bio_engineer_dna_template_shared_dna_template_narglatch = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {"datapad"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1199,7 +1199,7 @@ object_draft_schematic_bio_engineer_dna_template_shared_dna_template_narglatch =
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -1213,7 +1213,7 @@ ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_dna_templa
 
 object_draft_schematic_bio_engineer_dna_template_shared_dna_template_pugoriss = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {"datapad"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1244,7 +1244,7 @@ object_draft_schematic_bio_engineer_dna_template_shared_dna_template_pugoriss = 
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -1258,7 +1258,7 @@ ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_dna_templa
 
 object_draft_schematic_bio_engineer_dna_template_shared_dna_template_rancor = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {"datapad"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1289,7 +1289,7 @@ object_draft_schematic_bio_engineer_dna_template_shared_dna_template_rancor = Sh
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -1303,7 +1303,7 @@ ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_dna_templa
 
 object_draft_schematic_bio_engineer_dna_template_shared_dna_template_ronto = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {"datapad"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1334,7 +1334,7 @@ object_draft_schematic_bio_engineer_dna_template_shared_dna_template_ronto = Sha
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -1348,7 +1348,7 @@ ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_dna_templa
 
 object_draft_schematic_bio_engineer_dna_template_shared_dna_template_sand_panther = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {"datapad"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1379,7 +1379,7 @@ object_draft_schematic_bio_engineer_dna_template_shared_dna_template_sand_panthe
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -1393,7 +1393,7 @@ ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_dna_templa
 
 object_draft_schematic_bio_engineer_dna_template_shared_dna_template_snorbal = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {"datapad"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1424,7 +1424,7 @@ object_draft_schematic_bio_engineer_dna_template_shared_dna_template_snorbal = S
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -1438,7 +1438,7 @@ ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_dna_templa
 
 object_draft_schematic_bio_engineer_dna_template_shared_dna_template_torton = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {"datapad"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1469,7 +1469,7 @@ object_draft_schematic_bio_engineer_dna_template_shared_dna_template_torton = Sh
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -1483,7 +1483,7 @@ ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_dna_templa
 
 object_draft_schematic_bio_engineer_dna_template_shared_dna_template_tybis = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {"datapad"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1514,7 +1514,7 @@ object_draft_schematic_bio_engineer_dna_template_shared_dna_template_tybis = Sha
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -1528,7 +1528,7 @@ ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_dna_templa
 
 object_draft_schematic_bio_engineer_dna_template_shared_dna_template_veermok = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {"datapad"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1559,7 +1559,7 @@ object_draft_schematic_bio_engineer_dna_template_shared_dna_template_veermok = S
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -1573,7 +1573,7 @@ ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_dna_templa
 
 object_draft_schematic_bio_engineer_dna_template_shared_dna_template_zucca_boar = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {"datapad"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1604,7 +1604,7 @@ object_draft_schematic_bio_engineer_dna_template_shared_dna_template_zucca_boar 
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 

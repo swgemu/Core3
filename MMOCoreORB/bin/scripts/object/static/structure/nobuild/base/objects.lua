@@ -43,7 +43,7 @@
 
 object_static_structure_nobuild_base_shared_nobuild_base = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/godclient_cylinder_15.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -74,7 +74,7 @@ object_static_structure_nobuild_base_shared_nobuild_base = SharedStaticObjectTem
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	surfaceType = 1,
 

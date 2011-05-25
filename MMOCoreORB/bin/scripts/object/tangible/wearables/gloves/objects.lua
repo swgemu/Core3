@@ -43,7 +43,7 @@
 
 object_tangible_wearables_gloves_shared_gloves_corsec = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/gloves_s02_f.sat",
-	arrangementDescriptors = {"gloves"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/gloves.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -79,7 +79,7 @@ object_tangible_wearables_gloves_shared_gloves_corsec = SharedTangibleObjectTemp
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -98,7 +98,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_gloves_shared_gloves
 
 object_tangible_wearables_gloves_shared_gloves_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/gloves_s02_f.sat",
-	arrangementDescriptors = {"gloves"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/gloves.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -134,7 +134,7 @@ object_tangible_wearables_gloves_shared_gloves_s02 = SharedTangibleObjectTemplat
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -153,7 +153,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_gloves_shared_gloves
 
 object_tangible_wearables_gloves_shared_gloves_s03 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/gloves_s03_f.sat",
-	arrangementDescriptors = {"gloves", "bracer_lower_l", "bracer_lower_r"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/gloves_long.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -189,7 +189,7 @@ object_tangible_wearables_gloves_shared_gloves_s03 = SharedTangibleObjectTemplat
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -208,7 +208,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_gloves_shared_gloves
 
 object_tangible_wearables_gloves_shared_gloves_s06 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/gloves_s06_f.sat",
-	arrangementDescriptors = {"gloves"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/gloves.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -244,7 +244,7 @@ object_tangible_wearables_gloves_shared_gloves_s06 = SharedTangibleObjectTemplat
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -263,7 +263,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_gloves_shared_gloves
 
 object_tangible_wearables_gloves_shared_gloves_s07 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/gloves_s07_f.sat",
-	arrangementDescriptors = {"gloves", "bracer_lower_l", "bracer_lower_r"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/gloves_long.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -299,7 +299,7 @@ object_tangible_wearables_gloves_shared_gloves_s07 = SharedTangibleObjectTemplat
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -318,7 +318,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_gloves_shared_gloves
 
 object_tangible_wearables_gloves_shared_gloves_s10 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/gloves_s10_f.sat",
-	arrangementDescriptors = {"gloves", "bracer_lower_l", "bracer_lower_r"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/gloves_long.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -354,7 +354,7 @@ object_tangible_wearables_gloves_shared_gloves_s10 = SharedTangibleObjectTemplat
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -373,7 +373,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_gloves_shared_gloves
 
 object_tangible_wearables_gloves_shared_gloves_s11 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/gloves_s11_f.sat",
-	arrangementDescriptors = {"gloves", "bracer_lower_l", "bracer_lower_r"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/gloves_long.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -409,7 +409,7 @@ object_tangible_wearables_gloves_shared_gloves_s11 = SharedTangibleObjectTemplat
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -428,7 +428,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_gloves_shared_gloves
 
 object_tangible_wearables_gloves_shared_gloves_s12 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/gloves_s12_f.sat",
-	arrangementDescriptors = {"gloves"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/gloves.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -464,7 +464,7 @@ object_tangible_wearables_gloves_shared_gloves_s12 = SharedTangibleObjectTemplat
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -483,7 +483,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_gloves_shared_gloves
 
 object_tangible_wearables_gloves_shared_gloves_s13 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/gloves_s13_f.sat",
-	arrangementDescriptors = {"gloves", "bracer_lower_l", "bracer_lower_r"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/gloves_long.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -519,7 +519,7 @@ object_tangible_wearables_gloves_shared_gloves_s13 = SharedTangibleObjectTemplat
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -538,7 +538,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_gloves_shared_gloves
 
 object_tangible_wearables_gloves_shared_gloves_s14 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/gloves_s14_f.sat",
-	arrangementDescriptors = {"gloves"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/gloves.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -574,7 +574,7 @@ object_tangible_wearables_gloves_shared_gloves_s14 = SharedTangibleObjectTemplat
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -593,7 +593,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_gloves_shared_gloves
 
 object_tangible_wearables_gloves_shared_gloves_tusken_raider = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/gloves_tusken_raider_m.sat",
-	arrangementDescriptors = {"gloves"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/gloves.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -629,7 +629,7 @@ object_tangible_wearables_gloves_shared_gloves_tusken_raider = SharedTangibleObj
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",

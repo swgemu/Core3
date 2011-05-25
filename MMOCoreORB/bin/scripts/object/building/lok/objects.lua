@@ -43,7 +43,7 @@
 
 object_building_lok_shared_cave_03_nym_pirates = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -81,7 +81,7 @@ object_building_lok_shared_cave_03_nym_pirates = SharedBuildingObjectTemplate:ne
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -101,7 +101,7 @@ ObjectTemplates:addClientTemplate(object_building_lok_shared_cave_03_nym_pirates
 
 object_building_lok_shared_mining_cave_01 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -139,7 +139,7 @@ object_building_lok_shared_mining_cave_01 = SharedBuildingObjectTemplate:new {
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -159,7 +159,7 @@ ObjectTemplates:addClientTemplate(object_building_lok_shared_mining_cave_01, "ob
 
 object_building_lok_shared_nym_stronghold = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 65,
@@ -197,7 +197,7 @@ object_building_lok_shared_nym_stronghold = SharedBuildingObjectTemplate:new {
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",

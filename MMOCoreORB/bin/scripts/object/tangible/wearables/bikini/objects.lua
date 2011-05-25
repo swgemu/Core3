@@ -43,7 +43,7 @@
 
 object_tangible_wearables_bikini_shared_bikini_leggings_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/bikini_s01_leggings_f.sat",
-	arrangementDescriptors = {"pants1"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/pants.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -79,7 +79,7 @@ object_tangible_wearables_bikini_shared_bikini_leggings_s01 = SharedTangibleObje
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -98,7 +98,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_bikini_shared_bikini
 
 object_tangible_wearables_bikini_shared_bikini_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/bikini_s01_f.sat",
-	arrangementDescriptors = {"chest1"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/shirt.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -134,7 +134,7 @@ object_tangible_wearables_bikini_shared_bikini_s01 = SharedTangibleObjectTemplat
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -153,7 +153,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_bikini_shared_bikini
 
 object_tangible_wearables_bikini_shared_bikini_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/bikini_s02_f.sat",
-	arrangementDescriptors = {"chest1"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/shirt.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -189,7 +189,7 @@ object_tangible_wearables_bikini_shared_bikini_s02 = SharedTangibleObjectTemplat
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -208,7 +208,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_bikini_shared_bikini
 
 object_tangible_wearables_bikini_shared_bikini_s03 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/bikini_s03_f.sat",
-	arrangementDescriptors = {"chest1"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/shirt.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -244,7 +244,7 @@ object_tangible_wearables_bikini_shared_bikini_s03 = SharedTangibleObjectTemplat
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -263,7 +263,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_bikini_shared_bikini
 
 object_tangible_wearables_bikini_shared_bikini_s04 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/bikini_s04_f.sat",
-	arrangementDescriptors = {"chest1"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/shirt.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -299,7 +299,7 @@ object_tangible_wearables_bikini_shared_bikini_s04 = SharedTangibleObjectTemplat
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",

@@ -43,7 +43,7 @@
 
 object_tangible_shipcontrol_shared_pilot_chair = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_chair_metal_s1.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -79,7 +79,7 @@ object_tangible_shipcontrol_shared_pilot_chair = SharedTangibleObjectTemplate:ne
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "abstract/slot/descriptor/shipcontrol_pob.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -98,7 +98,7 @@ ObjectTemplates:addClientTemplate(object_tangible_shipcontrol_shared_pilot_chair
 
 object_tangible_shipcontrol_shared_shipcontrol_corvette = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_spc_chair_pilot_s02.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -134,7 +134,7 @@ object_tangible_shipcontrol_shared_shipcontrol_corvette = SharedTangibleObjectTe
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"ship_pilot_pob", "ship_droid"},
+	slotDescriptorFilename = "abstract/slot/descriptor/ship_pilot_station.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -153,7 +153,7 @@ ObjectTemplates:addClientTemplate(object_tangible_shipcontrol_shared_shipcontrol
 
 object_tangible_shipcontrol_shared_shipcontrol_falcon = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_spc_chair_pilot_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -189,7 +189,7 @@ object_tangible_shipcontrol_shared_shipcontrol_falcon = SharedTangibleObjectTemp
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"ship_pilot_pob", "ship_droid"},
+	slotDescriptorFilename = "abstract/slot/descriptor/ship_pilot_station.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -208,7 +208,7 @@ ObjectTemplates:addClientTemplate(object_tangible_shipcontrol_shared_shipcontrol
 
 object_tangible_shipcontrol_shared_shipoperations_falcon = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_spc_chair_pilot_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -244,7 +244,7 @@ object_tangible_shipcontrol_shared_shipoperations_falcon = SharedTangibleObjectT
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"ship_operations_pob"},
+	slotDescriptorFilename = "abstract/slot/descriptor/ship_operations_station.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -263,7 +263,7 @@ ObjectTemplates:addClientTemplate(object_tangible_shipcontrol_shared_shipoperati
 
 object_tangible_shipcontrol_shared_turretcontrol_falcon = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/yt1300_ladder.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -299,7 +299,7 @@ object_tangible_shipcontrol_shared_turretcontrol_falcon = SharedTangibleObjectTe
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"ship_gunner0_pob", "ship_gunner1_pob"},
+	slotDescriptorFilename = "abstract/slot/descriptor/turretcontrol_falcon.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -318,7 +318,7 @@ ObjectTemplates:addClientTemplate(object_tangible_shipcontrol_shared_turretcontr
 
 object_tangible_shipcontrol_shared_turretcontrol_vt49 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/vt49_ladder.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -354,7 +354,7 @@ object_tangible_shipcontrol_shared_turretcontrol_vt49 = SharedTangibleObjectTemp
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"ship_gunner0_pob", "ship_gunner1_pob"},
+	slotDescriptorFilename = "abstract/slot/descriptor/turretcontrol_falcon.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",

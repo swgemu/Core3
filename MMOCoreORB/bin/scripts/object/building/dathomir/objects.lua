@@ -43,7 +43,7 @@
 
 object_building_dathomir_shared_mtn_clan_stronghold = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -81,7 +81,7 @@ object_building_dathomir_shared_mtn_clan_stronghold = SharedBuildingObjectTempla
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -101,7 +101,7 @@ ObjectTemplates:addClientTemplate(object_building_dathomir_shared_mtn_clan_stron
 
 object_building_dathomir_shared_night_sister_stronghold = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -139,7 +139,7 @@ object_building_dathomir_shared_night_sister_stronghold = SharedBuildingObjectTe
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",

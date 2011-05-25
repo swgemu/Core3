@@ -43,7 +43,7 @@
 
 object_tangible_ship_attachment_shield_shared_star_destroyer_shieldtower_1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/star_destroyer_shieldtower_1.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -79,7 +79,7 @@ object_tangible_ship_attachment_shield_shared_star_destroyer_shieldtower_1 = Sha
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -98,7 +98,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_shield_shared_
 
 object_tangible_ship_attachment_shield_shared_star_destroyer_shieldtower_2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/star_destroyer_shieldtower_2.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -134,7 +134,7 @@ object_tangible_ship_attachment_shield_shared_star_destroyer_shieldtower_2 = Sha
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",

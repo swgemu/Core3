@@ -43,7 +43,7 @@
 
 object_draft_schematic_structure_shared_corellia_house_guild_hall = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {"datapad"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -74,7 +74,7 @@ object_draft_schematic_structure_shared_corellia_house_guild_hall = SharedDraftS
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -88,7 +88,7 @@ ObjectTemplates:addClientTemplate(object_draft_schematic_structure_shared_corell
 
 object_draft_schematic_structure_shared_corellia_house_player_large = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {"datapad"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -119,7 +119,7 @@ object_draft_schematic_structure_shared_corellia_house_player_large = SharedDraf
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -133,7 +133,7 @@ ObjectTemplates:addClientTemplate(object_draft_schematic_structure_shared_corell
 
 object_draft_schematic_structure_shared_corellia_house_player_large_style_02 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {"datapad"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -164,7 +164,7 @@ object_draft_schematic_structure_shared_corellia_house_player_large_style_02 = S
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -178,7 +178,7 @@ ObjectTemplates:addClientTemplate(object_draft_schematic_structure_shared_corell
 
 object_draft_schematic_structure_shared_corellia_house_player_medium = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {"datapad"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -209,7 +209,7 @@ object_draft_schematic_structure_shared_corellia_house_player_medium = SharedDra
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -223,7 +223,7 @@ ObjectTemplates:addClientTemplate(object_draft_schematic_structure_shared_corell
 
 object_draft_schematic_structure_shared_corellia_house_player_medium_style_02 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {"datapad"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -254,7 +254,7 @@ object_draft_schematic_structure_shared_corellia_house_player_medium_style_02 = 
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -268,7 +268,7 @@ ObjectTemplates:addClientTemplate(object_draft_schematic_structure_shared_corell
 
 object_draft_schematic_structure_shared_corellia_house_player_small = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {"datapad"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -299,7 +299,7 @@ object_draft_schematic_structure_shared_corellia_house_player_small = SharedDraf
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -313,7 +313,7 @@ ObjectTemplates:addClientTemplate(object_draft_schematic_structure_shared_corell
 
 object_draft_schematic_structure_shared_corellia_house_player_small_floorplan_02 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {"datapad"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -344,7 +344,7 @@ object_draft_schematic_structure_shared_corellia_house_player_small_floorplan_02
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -358,7 +358,7 @@ ObjectTemplates:addClientTemplate(object_draft_schematic_structure_shared_corell
 
 object_draft_schematic_structure_shared_corellia_house_player_small_style_02 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {"datapad"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -389,7 +389,7 @@ object_draft_schematic_structure_shared_corellia_house_player_small_style_02 = S
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -403,7 +403,7 @@ ObjectTemplates:addClientTemplate(object_draft_schematic_structure_shared_corell
 
 object_draft_schematic_structure_shared_corellia_house_player_small_style_02_floorplan_02 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {"datapad"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -434,7 +434,7 @@ object_draft_schematic_structure_shared_corellia_house_player_small_style_02_flo
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -448,7 +448,7 @@ ObjectTemplates:addClientTemplate(object_draft_schematic_structure_shared_corell
 
 object_draft_schematic_structure_shared_generic_house_guild_hall = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {"datapad"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -479,7 +479,7 @@ object_draft_schematic_structure_shared_generic_house_guild_hall = SharedDraftSc
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -493,7 +493,7 @@ ObjectTemplates:addClientTemplate(object_draft_schematic_structure_shared_generi
 
 object_draft_schematic_structure_shared_generic_house_player_large = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {"datapad"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -524,7 +524,7 @@ object_draft_schematic_structure_shared_generic_house_player_large = SharedDraft
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -538,7 +538,7 @@ ObjectTemplates:addClientTemplate(object_draft_schematic_structure_shared_generi
 
 object_draft_schematic_structure_shared_generic_house_player_large_style_02 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {"datapad"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -569,7 +569,7 @@ object_draft_schematic_structure_shared_generic_house_player_large_style_02 = Sh
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -583,7 +583,7 @@ ObjectTemplates:addClientTemplate(object_draft_schematic_structure_shared_generi
 
 object_draft_schematic_structure_shared_generic_house_player_medium = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {"datapad"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -614,7 +614,7 @@ object_draft_schematic_structure_shared_generic_house_player_medium = SharedDraf
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -628,7 +628,7 @@ ObjectTemplates:addClientTemplate(object_draft_schematic_structure_shared_generi
 
 object_draft_schematic_structure_shared_generic_house_player_medium_style_02 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {"datapad"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -659,7 +659,7 @@ object_draft_schematic_structure_shared_generic_house_player_medium_style_02 = S
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -673,7 +673,7 @@ ObjectTemplates:addClientTemplate(object_draft_schematic_structure_shared_generi
 
 object_draft_schematic_structure_shared_generic_house_player_small = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {"datapad"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -704,7 +704,7 @@ object_draft_schematic_structure_shared_generic_house_player_small = SharedDraft
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -718,7 +718,7 @@ ObjectTemplates:addClientTemplate(object_draft_schematic_structure_shared_generi
 
 object_draft_schematic_structure_shared_generic_house_player_small_floorplan_02 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {"datapad"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -749,7 +749,7 @@ object_draft_schematic_structure_shared_generic_house_player_small_floorplan_02 
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -763,7 +763,7 @@ ObjectTemplates:addClientTemplate(object_draft_schematic_structure_shared_generi
 
 object_draft_schematic_structure_shared_generic_house_player_small_style_02 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {"datapad"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -794,7 +794,7 @@ object_draft_schematic_structure_shared_generic_house_player_small_style_02 = Sh
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -808,7 +808,7 @@ ObjectTemplates:addClientTemplate(object_draft_schematic_structure_shared_generi
 
 object_draft_schematic_structure_shared_generic_house_player_small_style_02_floorplan_02 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {"datapad"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -839,7 +839,7 @@ object_draft_schematic_structure_shared_generic_house_player_small_style_02_floo
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -853,7 +853,7 @@ ObjectTemplates:addClientTemplate(object_draft_schematic_structure_shared_generi
 
 object_draft_schematic_structure_shared_house_guild_hall = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {"datapad"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -884,7 +884,7 @@ object_draft_schematic_structure_shared_house_guild_hall = SharedDraftSchematicO
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -898,7 +898,7 @@ ObjectTemplates:addClientTemplate(object_draft_schematic_structure_shared_house_
 
 object_draft_schematic_structure_shared_house_player_large = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {"datapad"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -929,7 +929,7 @@ object_draft_schematic_structure_shared_house_player_large = SharedDraftSchemati
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -943,7 +943,7 @@ ObjectTemplates:addClientTemplate(object_draft_schematic_structure_shared_house_
 
 object_draft_schematic_structure_shared_house_player_medium = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {"datapad"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -974,7 +974,7 @@ object_draft_schematic_structure_shared_house_player_medium = SharedDraftSchemat
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -988,7 +988,7 @@ ObjectTemplates:addClientTemplate(object_draft_schematic_structure_shared_house_
 
 object_draft_schematic_structure_shared_house_player_small = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {"datapad"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1019,7 +1019,7 @@ object_draft_schematic_structure_shared_house_player_small = SharedDraftSchemati
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -1033,7 +1033,7 @@ ObjectTemplates:addClientTemplate(object_draft_schematic_structure_shared_house_
 
 object_draft_schematic_structure_shared_house_player_small_style_02 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {"datapad"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1064,7 +1064,7 @@ object_draft_schematic_structure_shared_house_player_small_style_02 = SharedDraf
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -1078,7 +1078,7 @@ ObjectTemplates:addClientTemplate(object_draft_schematic_structure_shared_house_
 
 object_draft_schematic_structure_shared_installation_factory_clothing = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {"datapad"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1109,7 +1109,7 @@ object_draft_schematic_structure_shared_installation_factory_clothing = SharedDr
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -1123,7 +1123,7 @@ ObjectTemplates:addClientTemplate(object_draft_schematic_structure_shared_instal
 
 object_draft_schematic_structure_shared_installation_factory_food = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {"datapad"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1154,7 +1154,7 @@ object_draft_schematic_structure_shared_installation_factory_food = SharedDraftS
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -1168,7 +1168,7 @@ ObjectTemplates:addClientTemplate(object_draft_schematic_structure_shared_instal
 
 object_draft_schematic_structure_shared_installation_factory_structure = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {"datapad"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1199,7 +1199,7 @@ object_draft_schematic_structure_shared_installation_factory_structure = SharedD
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -1213,7 +1213,7 @@ ObjectTemplates:addClientTemplate(object_draft_schematic_structure_shared_instal
 
 object_draft_schematic_structure_shared_installation_factory_weapon = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {"datapad"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1244,7 +1244,7 @@ object_draft_schematic_structure_shared_installation_factory_weapon = SharedDraf
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -1258,7 +1258,7 @@ ObjectTemplates:addClientTemplate(object_draft_schematic_structure_shared_instal
 
 object_draft_schematic_structure_shared_installation_generator_fusion = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {"datapad"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1289,7 +1289,7 @@ object_draft_schematic_structure_shared_installation_generator_fusion = SharedDr
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -1303,7 +1303,7 @@ ObjectTemplates:addClientTemplate(object_draft_schematic_structure_shared_instal
 
 object_draft_schematic_structure_shared_installation_generator_solar = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {"datapad"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1334,7 +1334,7 @@ object_draft_schematic_structure_shared_installation_generator_solar = SharedDra
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -1348,7 +1348,7 @@ ObjectTemplates:addClientTemplate(object_draft_schematic_structure_shared_instal
 
 object_draft_schematic_structure_shared_installation_generator_wind = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {"datapad"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1379,7 +1379,7 @@ object_draft_schematic_structure_shared_installation_generator_wind = SharedDraf
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -1393,7 +1393,7 @@ ObjectTemplates:addClientTemplate(object_draft_schematic_structure_shared_instal
 
 object_draft_schematic_structure_shared_installation_mining_gas = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {"datapad"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1424,7 +1424,7 @@ object_draft_schematic_structure_shared_installation_mining_gas = SharedDraftSch
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -1438,7 +1438,7 @@ ObjectTemplates:addClientTemplate(object_draft_schematic_structure_shared_instal
 
 object_draft_schematic_structure_shared_installation_mining_gas_heavy = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {"datapad"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1469,7 +1469,7 @@ object_draft_schematic_structure_shared_installation_mining_gas_heavy = SharedDr
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -1483,7 +1483,7 @@ ObjectTemplates:addClientTemplate(object_draft_schematic_structure_shared_instal
 
 object_draft_schematic_structure_shared_installation_mining_gas_light = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {"datapad"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1514,7 +1514,7 @@ object_draft_schematic_structure_shared_installation_mining_gas_light = SharedDr
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -1528,7 +1528,7 @@ ObjectTemplates:addClientTemplate(object_draft_schematic_structure_shared_instal
 
 object_draft_schematic_structure_shared_installation_mining_liquid = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {"datapad"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1559,7 +1559,7 @@ object_draft_schematic_structure_shared_installation_mining_liquid = SharedDraft
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -1573,7 +1573,7 @@ ObjectTemplates:addClientTemplate(object_draft_schematic_structure_shared_instal
 
 object_draft_schematic_structure_shared_installation_mining_liquid_heavy = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {"datapad"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1604,7 +1604,7 @@ object_draft_schematic_structure_shared_installation_mining_liquid_heavy = Share
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -1618,7 +1618,7 @@ ObjectTemplates:addClientTemplate(object_draft_schematic_structure_shared_instal
 
 object_draft_schematic_structure_shared_installation_mining_liquid_light = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {"datapad"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1649,7 +1649,7 @@ object_draft_schematic_structure_shared_installation_mining_liquid_light = Share
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -1663,7 +1663,7 @@ ObjectTemplates:addClientTemplate(object_draft_schematic_structure_shared_instal
 
 object_draft_schematic_structure_shared_installation_mining_liquid_vapor = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {"datapad"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1694,7 +1694,7 @@ object_draft_schematic_structure_shared_installation_mining_liquid_vapor = Share
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -1708,7 +1708,7 @@ ObjectTemplates:addClientTemplate(object_draft_schematic_structure_shared_instal
 
 object_draft_schematic_structure_shared_installation_mining_liquid_vapor_heavy = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {"datapad"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1739,7 +1739,7 @@ object_draft_schematic_structure_shared_installation_mining_liquid_vapor_heavy =
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -1753,7 +1753,7 @@ ObjectTemplates:addClientTemplate(object_draft_schematic_structure_shared_instal
 
 object_draft_schematic_structure_shared_installation_mining_liquid_vapor_light = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {"datapad"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1784,7 +1784,7 @@ object_draft_schematic_structure_shared_installation_mining_liquid_vapor_light =
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -1798,7 +1798,7 @@ ObjectTemplates:addClientTemplate(object_draft_schematic_structure_shared_instal
 
 object_draft_schematic_structure_shared_installation_mining_ore = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {"datapad"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1829,7 +1829,7 @@ object_draft_schematic_structure_shared_installation_mining_ore = SharedDraftSch
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -1843,7 +1843,7 @@ ObjectTemplates:addClientTemplate(object_draft_schematic_structure_shared_instal
 
 object_draft_schematic_structure_shared_installation_mining_ore_heavy = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {"datapad"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1874,7 +1874,7 @@ object_draft_schematic_structure_shared_installation_mining_ore_heavy = SharedDr
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -1888,7 +1888,7 @@ ObjectTemplates:addClientTemplate(object_draft_schematic_structure_shared_instal
 
 object_draft_schematic_structure_shared_installation_mining_ore_light = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {"datapad"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1919,7 +1919,7 @@ object_draft_schematic_structure_shared_installation_mining_ore_light = SharedDr
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -1933,7 +1933,7 @@ ObjectTemplates:addClientTemplate(object_draft_schematic_structure_shared_instal
 
 object_draft_schematic_structure_shared_installation_mining_organic_creature = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {"datapad"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1964,7 +1964,7 @@ object_draft_schematic_structure_shared_installation_mining_organic_creature = S
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -1978,7 +1978,7 @@ ObjectTemplates:addClientTemplate(object_draft_schematic_structure_shared_instal
 
 object_draft_schematic_structure_shared_installation_mining_organic_flora = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {"datapad"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -2009,7 +2009,7 @@ object_draft_schematic_structure_shared_installation_mining_organic_flora = Shar
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -2023,7 +2023,7 @@ ObjectTemplates:addClientTemplate(object_draft_schematic_structure_shared_instal
 
 object_draft_schematic_structure_shared_installation_mining_organic_flora_heavy = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {"datapad"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -2054,7 +2054,7 @@ object_draft_schematic_structure_shared_installation_mining_organic_flora_heavy 
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -2068,7 +2068,7 @@ ObjectTemplates:addClientTemplate(object_draft_schematic_structure_shared_instal
 
 object_draft_schematic_structure_shared_installation_mining_organic_flora_light = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {"datapad"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -2099,7 +2099,7 @@ object_draft_schematic_structure_shared_installation_mining_organic_flora_light 
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -2113,7 +2113,7 @@ ObjectTemplates:addClientTemplate(object_draft_schematic_structure_shared_instal
 
 object_draft_schematic_structure_shared_merchant_tent = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {"datapad"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -2144,7 +2144,7 @@ object_draft_schematic_structure_shared_merchant_tent = SharedDraftSchematicObje
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -2158,7 +2158,7 @@ ObjectTemplates:addClientTemplate(object_draft_schematic_structure_shared_mercha
 
 object_draft_schematic_structure_shared_naboo_house_guild_hall = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {"datapad"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -2189,7 +2189,7 @@ object_draft_schematic_structure_shared_naboo_house_guild_hall = SharedDraftSche
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -2203,7 +2203,7 @@ ObjectTemplates:addClientTemplate(object_draft_schematic_structure_shared_naboo_
 
 object_draft_schematic_structure_shared_naboo_house_player_large = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {"datapad"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -2234,7 +2234,7 @@ object_draft_schematic_structure_shared_naboo_house_player_large = SharedDraftSc
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -2248,7 +2248,7 @@ ObjectTemplates:addClientTemplate(object_draft_schematic_structure_shared_naboo_
 
 object_draft_schematic_structure_shared_naboo_house_player_medium = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {"datapad"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -2279,7 +2279,7 @@ object_draft_schematic_structure_shared_naboo_house_player_medium = SharedDraftS
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -2293,7 +2293,7 @@ ObjectTemplates:addClientTemplate(object_draft_schematic_structure_shared_naboo_
 
 object_draft_schematic_structure_shared_naboo_house_player_small = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {"datapad"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -2324,7 +2324,7 @@ object_draft_schematic_structure_shared_naboo_house_player_small = SharedDraftSc
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -2338,7 +2338,7 @@ ObjectTemplates:addClientTemplate(object_draft_schematic_structure_shared_naboo_
 
 object_draft_schematic_structure_shared_naboo_house_player_small_style_02 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {"datapad"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -2369,7 +2369,7 @@ object_draft_schematic_structure_shared_naboo_house_player_small_style_02 = Shar
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -2383,7 +2383,7 @@ ObjectTemplates:addClientTemplate(object_draft_schematic_structure_shared_naboo_
 
 object_draft_schematic_structure_shared_tatooine_house_guild_hall_style_02 = SharedDraftSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {"datapad"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -2414,7 +2414,7 @@ object_draft_schematic_structure_shared_tatooine_house_guild_hall_style_02 = Sha
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 

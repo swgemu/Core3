@@ -43,7 +43,7 @@
 
 object_static_naboo_shared_waterfall_200m = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/eft_whitewater_6m.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/client_shared_whitewater_6meter.cdf",
@@ -74,7 +74,7 @@ object_static_naboo_shared_waterfall_200m = SharedStaticObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -88,7 +88,7 @@ ObjectTemplates:addClientTemplate(object_static_naboo_shared_waterfall_200m, "ob
 
 object_static_naboo_shared_waterfall_all_thin_forked = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/eft_all_waterfall_thin_forked.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/client_shared_whitewater_tall_forked.cdf",
@@ -119,7 +119,7 @@ object_static_naboo_shared_waterfall_all_thin_forked = SharedStaticObjectTemplat
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -133,7 +133,7 @@ ObjectTemplates:addClientTemplate(object_static_naboo_shared_waterfall_all_thin_
 
 object_static_naboo_shared_waterfall_all_wide_short = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/eft_all_waterfall_wide_short.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/client_shared_whitewater_wide_short.cdf",
@@ -164,7 +164,7 @@ object_static_naboo_shared_waterfall_all_wide_short = SharedStaticObjectTemplate
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -178,7 +178,7 @@ ObjectTemplates:addClientTemplate(object_static_naboo_shared_waterfall_all_wide_
 
 object_static_naboo_shared_waterfall_mist_lg = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thed_wter_falls_anim1.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/client_shared_waterfall_mist_lg.cdf",
@@ -209,7 +209,7 @@ object_static_naboo_shared_waterfall_mist_lg = SharedStaticObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -223,7 +223,7 @@ ObjectTemplates:addClientTemplate(object_static_naboo_shared_waterfall_mist_lg, 
 
 object_static_naboo_shared_waterfall_mist_small = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thed_wter_falls_anim1.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/client_shared_waterfall_mist_small.cdf",
@@ -254,7 +254,7 @@ object_static_naboo_shared_waterfall_mist_small = SharedStaticObjectTemplate:new
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -268,7 +268,7 @@ ObjectTemplates:addClientTemplate(object_static_naboo_shared_waterfall_mist_smal
 
 object_static_naboo_shared_waterfall_naboo_crest_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_waterfall_whitewater_s02_l0.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/client_shared_waterfall_naboo_theed.cdf",
@@ -299,7 +299,7 @@ object_static_naboo_shared_waterfall_naboo_crest_01 = SharedStaticObjectTemplate
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -313,7 +313,7 @@ ObjectTemplates:addClientTemplate(object_static_naboo_shared_waterfall_naboo_cre
 
 object_static_naboo_shared_waterfall_naboo_falls_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_waterfall_whitewater_s02_l1.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/client_shared_waterfall_naboo_theed.cdf",
@@ -344,7 +344,7 @@ object_static_naboo_shared_waterfall_naboo_falls_01 = SharedStaticObjectTemplate
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -358,7 +358,7 @@ ObjectTemplates:addClientTemplate(object_static_naboo_shared_waterfall_naboo_fal
 
 object_static_naboo_shared_waterfall_naboo_hangar = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/eft_nboo_thed_waterfall_hangar.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/client_shared_whitewater_6meter.cdf",
@@ -389,7 +389,7 @@ object_static_naboo_shared_waterfall_naboo_hangar = SharedStaticObjectTemplate:n
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -403,7 +403,7 @@ ObjectTemplates:addClientTemplate(object_static_naboo_shared_waterfall_naboo_han
 
 object_static_naboo_shared_waterfall_naboo_keren = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/eft_nboo_waterfall_moenia.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/client_shared_whitewater_keren.cdf",
@@ -434,7 +434,7 @@ object_static_naboo_shared_waterfall_naboo_keren = SharedStaticObjectTemplate:ne
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -448,7 +448,7 @@ ObjectTemplates:addClientTemplate(object_static_naboo_shared_waterfall_naboo_ker
 
 object_static_naboo_shared_waterfall_naboo_theed_base = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thed_wter_falls_anim1.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/client_shared_waterfall_naboo_theed.cdf",
@@ -479,7 +479,7 @@ object_static_naboo_shared_waterfall_naboo_theed_base = SharedStaticObjectTempla
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -493,7 +493,7 @@ ObjectTemplates:addClientTemplate(object_static_naboo_shared_waterfall_naboo_the
 
 object_static_naboo_shared_waterfall_naboo_theed_style_1 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_invisible_particle.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/client_shared_waterfall_naboo_theed.cdf",
@@ -524,7 +524,7 @@ object_static_naboo_shared_waterfall_naboo_theed_style_1 = SharedStaticObjectTem
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -538,7 +538,7 @@ ObjectTemplates:addClientTemplate(object_static_naboo_shared_waterfall_naboo_the
 
 object_static_naboo_shared_whitewater_6meter = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/eft_whitewater_6m.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/client_shared_whitewater_6m.cdf",
@@ -569,7 +569,7 @@ object_static_naboo_shared_whitewater_6meter = SharedStaticObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 

@@ -43,7 +43,7 @@
 
 object_soundobject_base_shared_soundobject_base = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_sound_location.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -74,7 +74,7 @@ object_soundobject_base_shared_soundobject_base = SharedStaticObjectTemplate:new
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 

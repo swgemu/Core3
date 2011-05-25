@@ -43,7 +43,7 @@
 
 object_tangible_wearables_backpack_shared_backpack_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/backpack_s01_m.sat",
-	arrangementDescriptors = {"back"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/back.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -79,7 +79,7 @@ object_tangible_wearables_backpack_shared_backpack_s01 = SharedTangibleObjectTem
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -98,7 +98,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_backpack_shared_back
 
 object_tangible_wearables_backpack_shared_backpack_s03 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/backpack_s03_m.sat",
-	arrangementDescriptors = {"back"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/back.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -134,7 +134,7 @@ object_tangible_wearables_backpack_shared_backpack_s03 = SharedTangibleObjectTem
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -153,7 +153,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_backpack_shared_back
 
 object_tangible_wearables_backpack_shared_backpack_s03_quest = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/backpack_s03_m.sat",
-	arrangementDescriptors = {"back"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/back.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -189,7 +189,7 @@ object_tangible_wearables_backpack_shared_backpack_s03_quest = SharedTangibleObj
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -208,7 +208,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_backpack_shared_back
 
 object_tangible_wearables_backpack_shared_backpack_s04 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/backpack_s04_m.sat",
-	arrangementDescriptors = {"back"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/back.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -244,7 +244,7 @@ object_tangible_wearables_backpack_shared_backpack_s04 = SharedTangibleObjectTem
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -263,7 +263,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_backpack_shared_back
 
 object_tangible_wearables_backpack_shared_backpack_s05 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/backpack_s05_m.sat",
-	arrangementDescriptors = {"back"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/back.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -299,7 +299,7 @@ object_tangible_wearables_backpack_shared_backpack_s05 = SharedTangibleObjectTem
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -318,7 +318,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_backpack_shared_back
 
 object_tangible_wearables_backpack_shared_backpack_s06 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/backpack_s06_m.sat",
-	arrangementDescriptors = {"back"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/back.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -354,7 +354,7 @@ object_tangible_wearables_backpack_shared_backpack_s06 = SharedTangibleObjectTem
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -373,7 +373,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_backpack_shared_back
 
 object_tangible_wearables_backpack_shared_backpack_s06_quest = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/backpack_s06_m.sat",
-	arrangementDescriptors = {"back"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/back.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -409,7 +409,7 @@ object_tangible_wearables_backpack_shared_backpack_s06_quest = SharedTangibleObj
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -428,7 +428,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_backpack_shared_back
 
 object_tangible_wearables_backpack_shared_singing_mountain_clan_backpack = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/sing_mt_clan_backpack_s01.sat",
-	arrangementDescriptors = {"back"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/back.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -464,7 +464,7 @@ object_tangible_wearables_backpack_shared_singing_mountain_clan_backpack = Share
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",

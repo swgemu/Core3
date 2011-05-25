@@ -43,7 +43,7 @@
 
 object_tangible_furniture_space_shared_frn_chair_falcon_passenger_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_spc_chair_pilot_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -79,7 +79,7 @@ object_tangible_furniture_space_shared_frn_chair_falcon_passenger_s01 = SharedTa
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -98,7 +98,7 @@ ObjectTemplates:addClientTemplate(object_tangible_furniture_space_shared_frn_cha
 
 object_tangible_furniture_space_shared_frn_chair_falcon_passenger_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_spc_chair_pilot_s02.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -134,7 +134,7 @@ object_tangible_furniture_space_shared_frn_chair_falcon_passenger_s02 = SharedTa
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -153,7 +153,7 @@ ObjectTemplates:addClientTemplate(object_tangible_furniture_space_shared_frn_cha
 
 object_tangible_furniture_space_shared_frn_couch_falcon_corner_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_spc_couch_section_corner.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -189,7 +189,7 @@ object_tangible_furniture_space_shared_frn_couch_falcon_corner_s01 = SharedTangi
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -208,7 +208,7 @@ ObjectTemplates:addClientTemplate(object_tangible_furniture_space_shared_frn_cou
 
 object_tangible_furniture_space_shared_frn_couch_falcon_section_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_spc_couch_section.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -244,7 +244,7 @@ object_tangible_furniture_space_shared_frn_couch_falcon_section_s01 = SharedTang
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",

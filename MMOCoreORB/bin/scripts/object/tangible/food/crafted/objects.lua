@@ -43,7 +43,7 @@
 
 object_tangible_food_crafted_shared_dessert_air_cake = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_food_cake_slice_s1.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -79,7 +79,7 @@ object_tangible_food_crafted_shared_dessert_air_cake = SharedTangibleObjectTempl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -98,7 +98,7 @@ ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_dessert_ai
 
 object_tangible_food_crafted_shared_dessert_almond_kwevvu_crisp_munchies = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_food_muffin.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -134,7 +134,7 @@ object_tangible_food_crafted_shared_dessert_almond_kwevvu_crisp_munchies = Share
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -153,7 +153,7 @@ ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_dessert_al
 
 object_tangible_food_crafted_shared_dessert_bantha_butter = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_food_bread_loaf_full_s1.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -189,7 +189,7 @@ object_tangible_food_crafted_shared_dessert_bantha_butter = SharedTangibleObject
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -208,7 +208,7 @@ ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_dessert_ba
 
 object_tangible_food_crafted_shared_dessert_blap_biscuit = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_food_muffin.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -244,7 +244,7 @@ object_tangible_food_crafted_shared_dessert_blap_biscuit = SharedTangibleObjectT
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -263,7 +263,7 @@ ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_dessert_bl
 
 object_tangible_food_crafted_shared_dessert_blob_candy = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_food_fruit_melon.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -299,7 +299,7 @@ object_tangible_food_crafted_shared_dessert_blob_candy = SharedTangibleObjectTem
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -318,7 +318,7 @@ ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_dessert_bl
 
 object_tangible_food_crafted_shared_dessert_bofa_treat = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_food_fruit_s4.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -354,7 +354,7 @@ object_tangible_food_crafted_shared_dessert_bofa_treat = SharedTangibleObjectTem
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -373,7 +373,7 @@ ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_dessert_bo
 
 object_tangible_food_crafted_shared_dessert_cavaellin_creams = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_tato_jar_berries_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -409,7 +409,7 @@ object_tangible_food_crafted_shared_dessert_cavaellin_creams = SharedTangibleObj
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -428,7 +428,7 @@ ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_dessert_ca
 
 object_tangible_food_crafted_shared_dessert_chandad = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_filled_pastry.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -464,7 +464,7 @@ object_tangible_food_crafted_shared_dessert_chandad = SharedTangibleObjectTempla
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -483,7 +483,7 @@ ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_dessert_ch
 
 object_tangible_food_crafted_shared_dessert_citros_snow_cake = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_filled_pastry.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -519,7 +519,7 @@ object_tangible_food_crafted_shared_dessert_citros_snow_cake = SharedTangibleObj
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -538,7 +538,7 @@ ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_dessert_ci
 
 object_tangible_food_crafted_shared_dessert_corellian_fried_icecream = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_bowl_full.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -574,7 +574,7 @@ object_tangible_food_crafted_shared_dessert_corellian_fried_icecream = SharedTan
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -593,7 +593,7 @@ ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_dessert_co
 
 object_tangible_food_crafted_shared_dessert_deneelian_fizz_pudding = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_food_fruit_s2.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -629,7 +629,7 @@ object_tangible_food_crafted_shared_dessert_deneelian_fizz_pudding = SharedTangi
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -648,7 +648,7 @@ ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_dessert_de
 
 object_tangible_food_crafted_shared_dessert_dweezel = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_food_muffin.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -684,7 +684,7 @@ object_tangible_food_crafted_shared_dessert_dweezel = SharedTangibleObjectTempla
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -703,7 +703,7 @@ ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_dessert_dw
 
 object_tangible_food_crafted_shared_dessert_felbar = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_filled_pastry.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -739,7 +739,7 @@ object_tangible_food_crafted_shared_dessert_felbar = SharedTangibleObjectTemplat
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -758,7 +758,7 @@ ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_dessert_fe
 
 object_tangible_food_crafted_shared_dessert_glazed_glucose_pate = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_bowl_serving_full.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -794,7 +794,7 @@ object_tangible_food_crafted_shared_dessert_glazed_glucose_pate = SharedTangible
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -813,7 +813,7 @@ ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_dessert_gl
 
 object_tangible_food_crafted_shared_dessert_gorrnar = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_filled_pastry.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -849,7 +849,7 @@ object_tangible_food_crafted_shared_dessert_gorrnar = SharedTangibleObjectTempla
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -868,7 +868,7 @@ ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_dessert_go
 
 object_tangible_food_crafted_shared_dessert_kiwik_clusjo_swirl = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_bowl_serving_full.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -904,7 +904,7 @@ object_tangible_food_crafted_shared_dessert_kiwik_clusjo_swirl = SharedTangibleO
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -923,7 +923,7 @@ ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_dessert_ki
 
 object_tangible_food_crafted_shared_dessert_nanana_twist = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_food_fruit_s4.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -959,7 +959,7 @@ object_tangible_food_crafted_shared_dessert_nanana_twist = SharedTangibleObjectT
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -978,7 +978,7 @@ ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_dessert_na
 
 object_tangible_food_crafted_shared_dessert_para_roll = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_filled_pastry.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1014,7 +1014,7 @@ object_tangible_food_crafted_shared_dessert_para_roll = SharedTangibleObjectTemp
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1033,7 +1033,7 @@ ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_dessert_pa
 
 object_tangible_food_crafted_shared_dessert_parwan_nutricake = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_dessert_parwan_nutricake.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1069,7 +1069,7 @@ object_tangible_food_crafted_shared_dessert_parwan_nutricake = SharedTangibleObj
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1088,7 +1088,7 @@ ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_dessert_pa
 
 object_tangible_food_crafted_shared_dessert_pastebread = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_food_bread_loaf_full_s1.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1124,7 +1124,7 @@ object_tangible_food_crafted_shared_dessert_pastebread = SharedTangibleObjectTem
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1143,7 +1143,7 @@ ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_dessert_pa
 
 object_tangible_food_crafted_shared_dessert_pikatta_pie = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_dessert_pikatta_pie.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1179,7 +1179,7 @@ object_tangible_food_crafted_shared_dessert_pikatta_pie = SharedTangibleObjectTe
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1198,7 +1198,7 @@ ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_dessert_pi
 
 object_tangible_food_crafted_shared_dessert_pkneb = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_filled_pastry.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1234,7 +1234,7 @@ object_tangible_food_crafted_shared_dessert_pkneb = SharedTangibleObjectTemplate
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1253,7 +1253,7 @@ ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_dessert_pk
 
 object_tangible_food_crafted_shared_dessert_puffcake = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_food_cake_slice_s1.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1289,7 +1289,7 @@ object_tangible_food_crafted_shared_dessert_puffcake = SharedTangibleObjectTempl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1308,7 +1308,7 @@ ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_dessert_pu
 
 object_tangible_food_crafted_shared_dessert_pyollian_cake = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_filled_pastry.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1344,7 +1344,7 @@ object_tangible_food_crafted_shared_dessert_pyollian_cake = SharedTangibleObject
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1363,7 +1363,7 @@ ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_dessert_py
 
 object_tangible_food_crafted_shared_dessert_ryshcate = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_food_bread_loaf_full_s1.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1399,7 +1399,7 @@ object_tangible_food_crafted_shared_dessert_ryshcate = SharedTangibleObjectTempl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1418,7 +1418,7 @@ ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_dessert_ry
 
 object_tangible_food_crafted_shared_dessert_smugglers_delight = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_food_pie_full_s1.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1454,7 +1454,7 @@ object_tangible_food_crafted_shared_dessert_smugglers_delight = SharedTangibleOb
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1473,7 +1473,7 @@ ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_dessert_sm
 
 object_tangible_food_crafted_shared_dessert_sweesonberry_rolls = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_food_muffin.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1509,7 +1509,7 @@ object_tangible_food_crafted_shared_dessert_sweesonberry_rolls = SharedTangibleO
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1528,7 +1528,7 @@ ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_dessert_sw
 
 object_tangible_food_crafted_shared_dessert_sweet_cake_mix = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_tato_jar_spice_s02.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1564,7 +1564,7 @@ object_tangible_food_crafted_shared_dessert_sweet_cake_mix = SharedTangibleObjec
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1583,7 +1583,7 @@ ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_dessert_sw
 
 object_tangible_food_crafted_shared_dessert_tranna_nougat_cream = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_bowl_full.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1619,7 +1619,7 @@ object_tangible_food_crafted_shared_dessert_tranna_nougat_cream = SharedTangible
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1638,7 +1638,7 @@ ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_dessert_tr
 
 object_tangible_food_crafted_shared_dessert_vagnerian_canape = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_filled_pastry.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1674,7 +1674,7 @@ object_tangible_food_crafted_shared_dessert_vagnerian_canape = SharedTangibleObj
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1693,7 +1693,7 @@ ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_dessert_va
 
 object_tangible_food_crafted_shared_dessert_wedding_cake = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_food_cake_slice_s1.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1729,7 +1729,7 @@ object_tangible_food_crafted_shared_dessert_wedding_cake = SharedTangibleObjectT
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1748,7 +1748,7 @@ ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_dessert_we
 
 object_tangible_food_crafted_shared_dessert_won_won = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_filled_pastry.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1784,7 +1784,7 @@ object_tangible_food_crafted_shared_dessert_won_won = SharedTangibleObjectTempla
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1803,7 +1803,7 @@ ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_dessert_wo
 
 object_tangible_food_crafted_shared_dish_ahrisa = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_food_muffin.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1839,7 +1839,7 @@ object_tangible_food_crafted_shared_dish_ahrisa = SharedTangibleObjectTemplate:n
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1858,7 +1858,7 @@ ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_dish_ahris
 
 object_tangible_food_crafted_shared_dish_bivoli_tempari = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_dish_bivoli_tempari.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1894,7 +1894,7 @@ object_tangible_food_crafted_shared_dish_bivoli_tempari = SharedTangibleObjectTe
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1913,7 +1913,7 @@ ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_dish_bivol
 
 object_tangible_food_crafted_shared_dish_blood_chowder = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_tato_bowl_full_s02.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1949,7 +1949,7 @@ object_tangible_food_crafted_shared_dish_blood_chowder = SharedTangibleObjectTem
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1968,7 +1968,7 @@ ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_dish_blood
 
 object_tangible_food_crafted_shared_dish_braised_canron = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_food_bread_loaf_full_s1.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2004,7 +2004,7 @@ object_tangible_food_crafted_shared_dish_braised_canron = SharedTangibleObjectTe
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2023,7 +2023,7 @@ ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_dish_brais
 
 object_tangible_food_crafted_shared_dish_cho_nor_hoola = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_tato_bowl_full_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2059,7 +2059,7 @@ object_tangible_food_crafted_shared_dish_cho_nor_hoola = SharedTangibleObjectTem
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2078,7 +2078,7 @@ ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_dish_cho_n
 
 object_tangible_food_crafted_shared_dish_crispic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_dish_crispic.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2114,7 +2114,7 @@ object_tangible_food_crafted_shared_dish_crispic = SharedTangibleObjectTemplate:
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2133,7 +2133,7 @@ ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_dish_crisp
 
 object_tangible_food_crafted_shared_dish_dustcrepe = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_dish_dustcrepe.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2169,7 +2169,7 @@ object_tangible_food_crafted_shared_dish_dustcrepe = SharedTangibleObjectTemplat
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2188,7 +2188,7 @@ ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_dish_dustc
 
 object_tangible_food_crafted_shared_dish_exo_protein_wafers = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_food_muffin.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2224,7 +2224,7 @@ object_tangible_food_crafted_shared_dish_exo_protein_wafers = SharedTangibleObje
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2243,7 +2243,7 @@ ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_dish_exo_p
 
 object_tangible_food_crafted_shared_dish_fire_stew = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_tato_bowl_full_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2279,7 +2279,7 @@ object_tangible_food_crafted_shared_dish_fire_stew = SharedTangibleObjectTemplat
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2298,7 +2298,7 @@ ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_dish_fire_
 
 object_tangible_food_crafted_shared_dish_fried_endwa = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_food_meat_skewer.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2334,7 +2334,7 @@ object_tangible_food_crafted_shared_dish_fried_endwa = SharedTangibleObjectTempl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2353,7 +2353,7 @@ ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_dish_fried
 
 object_tangible_food_crafted_shared_dish_gruuvan_shaal = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_food_meat_kabob.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2389,7 +2389,7 @@ object_tangible_food_crafted_shared_dish_gruuvan_shaal = SharedTangibleObjectTem
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2408,7 +2408,7 @@ ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_dish_gruuv
 
 object_tangible_food_crafted_shared_dish_havla = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_food_muffin.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2444,7 +2444,7 @@ object_tangible_food_crafted_shared_dish_havla = SharedTangibleObjectTemplate:ne
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2463,7 +2463,7 @@ ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_dish_havla
 
 object_tangible_food_crafted_shared_dish_kanali_wafers = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_dish_kanali_wafers.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2499,7 +2499,7 @@ object_tangible_food_crafted_shared_dish_kanali_wafers = SharedTangibleObjectTem
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2518,7 +2518,7 @@ ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_dish_kanal
 
 object_tangible_food_crafted_shared_dish_karkan_ribenes = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_plate_s1_full.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2554,7 +2554,7 @@ object_tangible_food_crafted_shared_dish_karkan_ribenes = SharedTangibleObjectTe
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2573,7 +2573,7 @@ ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_dish_karka
 
 object_tangible_food_crafted_shared_dish_meatlump = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_food_meat_sausage_links.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2609,7 +2609,7 @@ object_tangible_food_crafted_shared_dish_meatlump = SharedTangibleObjectTemplate
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2628,7 +2628,7 @@ ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_dish_meatl
 
 object_tangible_food_crafted_shared_dish_ormachek = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_tato_jar_guts_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2664,7 +2664,7 @@ object_tangible_food_crafted_shared_dish_ormachek = SharedTangibleObjectTemplate
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2683,7 +2683,7 @@ ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_dish_ormac
 
 object_tangible_food_crafted_shared_dish_patot_panak = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_food_bread_loaf_full_s1.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2719,7 +2719,7 @@ object_tangible_food_crafted_shared_dish_patot_panak = SharedTangibleObjectTempl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2738,7 +2738,7 @@ ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_dish_patot
 
 object_tangible_food_crafted_shared_dish_protato = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_dish_casserole_full.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2774,7 +2774,7 @@ object_tangible_food_crafted_shared_dish_protato = SharedTangibleObjectTemplate:
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2793,7 +2793,7 @@ ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_dish_prota
 
 object_tangible_food_crafted_shared_dish_puk = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_food_fruit_s5.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2829,7 +2829,7 @@ object_tangible_food_crafted_shared_dish_puk = SharedTangibleObjectTemplate:new 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2848,7 +2848,7 @@ ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_dish_puk, 
 
 object_tangible_food_crafted_shared_dish_rakririan_burnout_sauce = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_poison_chemical.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2884,7 +2884,7 @@ object_tangible_food_crafted_shared_dish_rakririan_burnout_sauce = SharedTangibl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2903,7 +2903,7 @@ ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_dish_rakri
 
 object_tangible_food_crafted_shared_dish_ramorrean_capanata = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_food_meat_ground.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2939,7 +2939,7 @@ object_tangible_food_crafted_shared_dish_ramorrean_capanata = SharedTangibleObje
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2958,7 +2958,7 @@ ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_dish_ramor
 
 object_tangible_food_crafted_shared_dish_rations = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_food_bread_loaf_full_s1.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2994,7 +2994,7 @@ object_tangible_food_crafted_shared_dish_rations = SharedTangibleObjectTemplate:
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3013,7 +3013,7 @@ ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_dish_ratio
 
 object_tangible_food_crafted_shared_dish_scrimpi = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_food_meat_kabob.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -3049,7 +3049,7 @@ object_tangible_food_crafted_shared_dish_scrimpi = SharedTangibleObjectTemplate:
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3068,7 +3068,7 @@ ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_dish_scrim
 
 object_tangible_food_crafted_shared_dish_soypro = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_food_meat_ground.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -3104,7 +3104,7 @@ object_tangible_food_crafted_shared_dish_soypro = SharedTangibleObjectTemplate:n
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3123,7 +3123,7 @@ ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_dish_soypr
 
 object_tangible_food_crafted_shared_dish_stewed_gwouch = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_food_bread_loaf_full_s1.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -3159,7 +3159,7 @@ object_tangible_food_crafted_shared_dish_stewed_gwouch = SharedTangibleObjectTem
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3178,7 +3178,7 @@ ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_dish_stewe
 
 object_tangible_food_crafted_shared_dish_synthsteak = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_plate_s1_full.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -3214,7 +3214,7 @@ object_tangible_food_crafted_shared_dish_synthsteak = SharedTangibleObjectTempla
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3233,7 +3233,7 @@ ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_dish_synth
 
 object_tangible_food_crafted_shared_dish_teltier_noodles = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_tato_jar_funk_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -3269,7 +3269,7 @@ object_tangible_food_crafted_shared_dish_teltier_noodles = SharedTangibleObjectT
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3288,7 +3288,7 @@ ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_dish_telti
 
 object_tangible_food_crafted_shared_dish_terratta = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_dish_terratta.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -3324,7 +3324,7 @@ object_tangible_food_crafted_shared_dish_terratta = SharedTangibleObjectTemplate
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3343,7 +3343,7 @@ ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_dish_terra
 
 object_tangible_food_crafted_shared_dish_thakitillo = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_food_fruit_s5.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -3379,7 +3379,7 @@ object_tangible_food_crafted_shared_dish_thakitillo = SharedTangibleObjectTempla
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3398,7 +3398,7 @@ ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_dish_thaki
 
 object_tangible_food_crafted_shared_dish_travel_biscuits = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_food_muffin.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -3434,7 +3434,7 @@ object_tangible_food_crafted_shared_dish_travel_biscuits = SharedTangibleObjectT
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3453,7 +3453,7 @@ ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_dish_trave
 
 object_tangible_food_crafted_shared_dish_trimpian = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_dish_trimpian.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -3489,7 +3489,7 @@ object_tangible_food_crafted_shared_dish_trimpian = SharedTangibleObjectTemplate
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3508,7 +3508,7 @@ ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_dish_trimp
 
 object_tangible_food_crafted_shared_dish_vegeparsine = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_fruit_item.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -3544,7 +3544,7 @@ object_tangible_food_crafted_shared_dish_vegeparsine = SharedTangibleObjectTempl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3563,7 +3563,7 @@ ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_dish_vegep
 
 object_tangible_food_crafted_shared_dish_veghash = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_dish_casserole_full.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -3599,7 +3599,7 @@ object_tangible_food_crafted_shared_dish_veghash = SharedTangibleObjectTemplate:
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3618,7 +3618,7 @@ ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_dish_vegha
 
 object_tangible_food_crafted_shared_dish_vercupti_of_agazza_boleruuee = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_food_meat_loaf_s1.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -3654,7 +3654,7 @@ object_tangible_food_crafted_shared_dish_vercupti_of_agazza_boleruuee = SharedTa
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3673,7 +3673,7 @@ ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_dish_vercu
 
 object_tangible_food_crafted_shared_dish_wastril_bread = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_food_bread_loaf_full_s1.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -3709,7 +3709,7 @@ object_tangible_food_crafted_shared_dish_wastril_bread = SharedTangibleObjectTem
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3728,7 +3728,7 @@ ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_dish_wastr
 
 object_tangible_food_crafted_shared_dish_xermaauc = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_food_meat_loaf_s1.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -3764,7 +3764,7 @@ object_tangible_food_crafted_shared_dish_xermaauc = SharedTangibleObjectTemplate
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3783,7 +3783,7 @@ ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_dish_xerma
 
 object_tangible_food_crafted_shared_drink_accarragm = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_drink_alcoholic.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -3819,7 +3819,7 @@ object_tangible_food_crafted_shared_drink_accarragm = SharedTangibleObjectTempla
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3838,7 +3838,7 @@ ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_drink_acca
 
 object_tangible_food_crafted_shared_drink_aitha = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_tato_cup_s2.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -3874,7 +3874,7 @@ object_tangible_food_crafted_shared_drink_aitha = SharedTangibleObjectTemplate:n
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3893,7 +3893,7 @@ ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_drink_aith
 
 object_tangible_food_crafted_shared_drink_alcohol = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_drink.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -3929,7 +3929,7 @@ object_tangible_food_crafted_shared_drink_alcohol = SharedTangibleObjectTemplate
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3948,7 +3948,7 @@ ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_drink_alco
 
 object_tangible_food_crafted_shared_drink_aludium_pu36 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_water.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -3984,7 +3984,7 @@ object_tangible_food_crafted_shared_drink_aludium_pu36 = SharedTangibleObjectTem
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -4003,7 +4003,7 @@ ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_drink_alud
 
 object_tangible_food_crafted_shared_drink_angerian_fishak_surprise = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_drink.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -4039,7 +4039,7 @@ object_tangible_food_crafted_shared_drink_angerian_fishak_surprise = SharedTangi
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -4058,7 +4058,7 @@ ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_drink_ange
 
 object_tangible_food_crafted_shared_drink_antakarian_fire_dancer = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_glass_s1_full.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -4094,7 +4094,7 @@ object_tangible_food_crafted_shared_drink_antakarian_fire_dancer = SharedTangibl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -4113,7 +4113,7 @@ ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_drink_anta
 
 object_tangible_food_crafted_shared_drink_bantha_blaster = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_tato_cup_s4.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -4149,7 +4149,7 @@ object_tangible_food_crafted_shared_drink_bantha_blaster = SharedTangibleObjectT
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -4168,7 +4168,7 @@ ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_drink_bant
 
 object_tangible_food_crafted_shared_drink_bespin_port = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_winebottle_s02.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -4204,7 +4204,7 @@ object_tangible_food_crafted_shared_drink_bespin_port = SharedTangibleObjectTemp
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -4223,7 +4223,7 @@ ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_drink_besp
 
 object_tangible_food_crafted_shared_drink_blue_milk = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_tato_cup_s5.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -4259,7 +4259,7 @@ object_tangible_food_crafted_shared_drink_blue_milk = SharedTangibleObjectTempla
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -4278,7 +4278,7 @@ ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_drink_blue
 
 object_tangible_food_crafted_shared_drink_breath_of_heaven = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_winebottle_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -4314,7 +4314,7 @@ object_tangible_food_crafted_shared_drink_breath_of_heaven = SharedTangibleObjec
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -4333,7 +4333,7 @@ ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_drink_brea
 
 object_tangible_food_crafted_shared_drink_caf = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_tato_cup_s1.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -4369,7 +4369,7 @@ object_tangible_food_crafted_shared_drink_caf = SharedTangibleObjectTemplate:new
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -4388,7 +4388,7 @@ ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_drink_caf,
 
 object_tangible_food_crafted_shared_drink_charde = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_drink.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -4424,7 +4424,7 @@ object_tangible_food_crafted_shared_drink_charde = SharedTangibleObjectTemplate:
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -4443,7 +4443,7 @@ ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_drink_char
 
 object_tangible_food_crafted_shared_drink_corellian_ale = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_drink_alcoholic.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -4479,7 +4479,7 @@ object_tangible_food_crafted_shared_drink_corellian_ale = SharedTangibleObjectTe
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -4498,7 +4498,7 @@ ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_drink_core
 
 object_tangible_food_crafted_shared_drink_corellian_brandy = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_drink_alcoholic.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -4534,7 +4534,7 @@ object_tangible_food_crafted_shared_drink_corellian_brandy = SharedTangibleObjec
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -4553,7 +4553,7 @@ ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_drink_core
 
 object_tangible_food_crafted_shared_drink_cortyg = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_drink_alcoholic.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -4589,7 +4589,7 @@ object_tangible_food_crafted_shared_drink_cortyg = SharedTangibleObjectTemplate:
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -4608,7 +4608,7 @@ ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_drink_cort
 
 object_tangible_food_crafted_shared_drink_deuterium_pyro = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_winebottle_s03.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -4644,7 +4644,7 @@ object_tangible_food_crafted_shared_drink_deuterium_pyro = SharedTangibleObjectT
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -4663,7 +4663,7 @@ ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_drink_deut
 
 object_tangible_food_crafted_shared_drink_double_dip_outer_rim_rumdrop = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_drink_alcoholic.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -4699,7 +4699,7 @@ object_tangible_food_crafted_shared_drink_double_dip_outer_rim_rumdrop = SharedT
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -4718,7 +4718,7 @@ ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_drink_doub
 
 object_tangible_food_crafted_shared_drink_durindfire = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_winebottle_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -4754,7 +4754,7 @@ object_tangible_food_crafted_shared_drink_durindfire = SharedTangibleObjectTempl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -4773,7 +4773,7 @@ ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_drink_duri
 
 object_tangible_food_crafted_shared_drink_elshandruu_pica_thundercloud = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_drink.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -4809,7 +4809,7 @@ object_tangible_food_crafted_shared_drink_elshandruu_pica_thundercloud = SharedT
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -4828,7 +4828,7 @@ ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_drink_elsh
 
 object_tangible_food_crafted_shared_drink_flameout = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_drink.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -4864,7 +4864,7 @@ object_tangible_food_crafted_shared_drink_flameout = SharedTangibleObjectTemplat
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -4883,7 +4883,7 @@ ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_drink_flam
 
 object_tangible_food_crafted_shared_drink_garrmorl = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_tato_cup_s1.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -4919,7 +4919,7 @@ object_tangible_food_crafted_shared_drink_garrmorl = SharedTangibleObjectTemplat
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -4938,7 +4938,7 @@ ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_drink_garr
 
 object_tangible_food_crafted_shared_drink_gralinyn_juice = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_glass_s1_empty.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -4974,7 +4974,7 @@ object_tangible_food_crafted_shared_drink_gralinyn_juice = SharedTangibleObjectT
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -4993,7 +4993,7 @@ ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_drink_gral
 
 object_tangible_food_crafted_shared_drink_ice_blaster = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_winebottle_s04.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -5029,7 +5029,7 @@ object_tangible_food_crafted_shared_drink_ice_blaster = SharedTangibleObjectTemp
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -5048,7 +5048,7 @@ ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_drink_ice_
 
 object_tangible_food_crafted_shared_drink_ithorian_mist = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_drink_alcoholic.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -5084,7 +5084,7 @@ object_tangible_food_crafted_shared_drink_ithorian_mist = SharedTangibleObjectTe
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -5103,7 +5103,7 @@ ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_drink_itho
 
 object_tangible_food_crafted_shared_drink_jaar = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_tato_cup_s4.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -5139,7 +5139,7 @@ object_tangible_food_crafted_shared_drink_jaar = SharedTangibleObjectTemplate:ne
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -5158,7 +5158,7 @@ ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_drink_jaar
 
 object_tangible_food_crafted_shared_drink_jawa_beer = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_glass_s1_full.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -5194,7 +5194,7 @@ object_tangible_food_crafted_shared_drink_jawa_beer = SharedTangibleObjectTempla
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -5213,7 +5213,7 @@ ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_drink_jawa
 
 object_tangible_food_crafted_shared_drink_kylessian_fruit_distillate = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_drink_alcoholic.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -5249,7 +5249,7 @@ object_tangible_food_crafted_shared_drink_kylessian_fruit_distillate = SharedTan
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -5268,7 +5268,7 @@ ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_drink_kyle
 
 object_tangible_food_crafted_shared_drink_mandalorian_wine = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_winebottle_s02.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -5304,7 +5304,7 @@ object_tangible_food_crafted_shared_drink_mandalorian_wine = SharedTangibleObjec
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -5323,7 +5323,7 @@ ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_drink_mand
 
 object_tangible_food_crafted_shared_drink_ruby_bliel = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_drink.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -5359,7 +5359,7 @@ object_tangible_food_crafted_shared_drink_ruby_bliel = SharedTangibleObjectTempl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -5378,7 +5378,7 @@ ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_drink_ruby
 
 object_tangible_food_crafted_shared_drink_skannbult_likker = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_drink_alcoholic.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -5414,7 +5414,7 @@ object_tangible_food_crafted_shared_drink_skannbult_likker = SharedTangibleObjec
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -5433,7 +5433,7 @@ ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_drink_skan
 
 object_tangible_food_crafted_shared_drink_spiced_tea = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_tato_cup_s4.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -5469,7 +5469,7 @@ object_tangible_food_crafted_shared_drink_spiced_tea = SharedTangibleObjectTempl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -5488,7 +5488,7 @@ ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_drink_spic
 
 object_tangible_food_crafted_shared_drink_starshine_surprise = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_drink_alcoholic.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -5524,7 +5524,7 @@ object_tangible_food_crafted_shared_drink_starshine_surprise = SharedTangibleObj
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -5543,7 +5543,7 @@ ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_drink_star
 
 object_tangible_food_crafted_shared_drink_sullustan_gin = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_drink_alcoholic.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -5579,7 +5579,7 @@ object_tangible_food_crafted_shared_drink_sullustan_gin = SharedTangibleObjectTe
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -5598,7 +5598,7 @@ ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_drink_sull
 
 object_tangible_food_crafted_shared_drink_tatooine_sunburn = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_winebottle_s03.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -5634,7 +5634,7 @@ object_tangible_food_crafted_shared_drink_tatooine_sunburn = SharedTangibleObjec
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -5653,7 +5653,7 @@ ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_drink_tato
 
 object_tangible_food_crafted_shared_drink_tilla_tiil = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_winebottle_s02.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -5689,7 +5689,7 @@ object_tangible_food_crafted_shared_drink_tilla_tiil = SharedTangibleObjectTempl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -5708,7 +5708,7 @@ ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_drink_till
 
 object_tangible_food_crafted_shared_drink_tssolok = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_glass_s2_full.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -5744,7 +5744,7 @@ object_tangible_food_crafted_shared_drink_tssolok = SharedTangibleObjectTemplate
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -5763,7 +5763,7 @@ ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_drink_tsso
 
 object_tangible_food_crafted_shared_drink_vasarian_brandy = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_winebottle_s05.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -5799,7 +5799,7 @@ object_tangible_food_crafted_shared_drink_vasarian_brandy = SharedTangibleObject
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -5818,7 +5818,7 @@ ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_drink_vasa
 
 object_tangible_food_crafted_shared_drink_vayerbok = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_drink.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -5854,7 +5854,7 @@ object_tangible_food_crafted_shared_drink_vayerbok = SharedTangibleObjectTemplat
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -5873,7 +5873,7 @@ ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_drink_vaye
 
 object_tangible_food_crafted_shared_drink_veronian_berry_wine = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_drink.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -5909,7 +5909,7 @@ object_tangible_food_crafted_shared_drink_veronian_berry_wine = SharedTangibleOb
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",

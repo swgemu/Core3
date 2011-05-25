@@ -43,7 +43,7 @@
 
 object_installation_battlefield_destructible_shared_antenna_tatt_style_1 = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/thm_imprv_tato_antenna_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 15,
@@ -79,7 +79,7 @@ object_installation_battlefield_destructible_shared_antenna_tatt_style_1 = Share
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/installation/battlefield/shared_column.sfp",
@@ -98,7 +98,7 @@ ObjectTemplates:addClientTemplate(object_installation_battlefield_destructible_s
 
 object_installation_battlefield_destructible_shared_antenna_tatt_style_2 = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/thm_imprv_tato_antenna_s02.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 15,
@@ -134,7 +134,7 @@ object_installation_battlefield_destructible_shared_antenna_tatt_style_2 = Share
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/installation/battlefield/shared_column.sfp",
@@ -153,7 +153,7 @@ ObjectTemplates:addClientTemplate(object_installation_battlefield_destructible_s
 
 object_installation_battlefield_destructible_shared_battlefield_constructor = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/thm_corl_power_bubble_node.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 15,
@@ -189,7 +189,7 @@ object_installation_battlefield_destructible_shared_battlefield_constructor = Sh
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/installation/battlefield/shared_column.sfp",
@@ -208,7 +208,7 @@ ObjectTemplates:addClientTemplate(object_installation_battlefield_destructible_s
 
 object_installation_battlefield_destructible_shared_bfield_banner_freestand_impl = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/thm_all_impl_banner_freestand_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 15,
@@ -244,7 +244,7 @@ object_installation_battlefield_destructible_shared_bfield_banner_freestand_impl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/installation/battlefield/shared_column.sfp",
@@ -263,7 +263,7 @@ ObjectTemplates:addClientTemplate(object_installation_battlefield_destructible_s
 
 object_installation_battlefield_destructible_shared_bfield_banner_freestand_rebl = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/thm_all_rebl_banner_freestand_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 15,
@@ -299,7 +299,7 @@ object_installation_battlefield_destructible_shared_bfield_banner_freestand_rebl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/installation/battlefield/shared_column.sfp",
@@ -318,7 +318,7 @@ ObjectTemplates:addClientTemplate(object_installation_battlefield_destructible_s
 
 object_installation_battlefield_destructible_shared_bfield_base_gate_impl = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/mun_all_military_base_gate_impl_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 15,
@@ -354,7 +354,7 @@ object_installation_battlefield_destructible_shared_bfield_base_gate_impl = Shar
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/battlefield/shared_destructible_base.sfp",
@@ -373,7 +373,7 @@ ObjectTemplates:addClientTemplate(object_installation_battlefield_destructible_s
 
 object_installation_battlefield_destructible_shared_bfield_column_imperial = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/mun_all_military_column_huge_impl_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 15,
@@ -409,7 +409,7 @@ object_installation_battlefield_destructible_shared_bfield_column_imperial = Sha
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/installation/battlefield/shared_column.sfp",
@@ -428,7 +428,7 @@ ObjectTemplates:addClientTemplate(object_installation_battlefield_destructible_s
 
 object_installation_battlefield_destructible_shared_bfield_column_impl_med = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/mun_all_military_column_med_impl_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 15,
@@ -464,7 +464,7 @@ object_installation_battlefield_destructible_shared_bfield_column_impl_med = Sha
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/installation/battlefield/shared_column.sfp",
@@ -483,7 +483,7 @@ ObjectTemplates:addClientTemplate(object_installation_battlefield_destructible_s
 
 object_installation_battlefield_destructible_shared_bfield_column_impl_weak = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/mun_all_military_column_weak_impl_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 15,
@@ -519,7 +519,7 @@ object_installation_battlefield_destructible_shared_bfield_column_impl_weak = Sh
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/installation/battlefield/shared_column.sfp",
@@ -538,7 +538,7 @@ ObjectTemplates:addClientTemplate(object_installation_battlefield_destructible_s
 
 object_installation_battlefield_destructible_shared_bfield_column_rebel = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/mun_all_military_column_huge_rebl_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 15,
@@ -574,7 +574,7 @@ object_installation_battlefield_destructible_shared_bfield_column_rebel = Shared
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/installation/battlefield/shared_column.sfp",
@@ -593,7 +593,7 @@ ObjectTemplates:addClientTemplate(object_installation_battlefield_destructible_s
 
 object_installation_battlefield_destructible_shared_bfield_column_rebl_med = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/mun_all_military_column_med_rebl_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 15,
@@ -629,7 +629,7 @@ object_installation_battlefield_destructible_shared_bfield_column_rebl_med = Sha
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/installation/battlefield/shared_column.sfp",
@@ -648,7 +648,7 @@ ObjectTemplates:addClientTemplate(object_installation_battlefield_destructible_s
 
 object_installation_battlefield_destructible_shared_bfield_column_rebl_strong = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/mun_all_military_column_strong_rebl_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 15,
@@ -684,7 +684,7 @@ object_installation_battlefield_destructible_shared_bfield_column_rebl_strong = 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/installation/battlefield/shared_column.sfp",
@@ -703,7 +703,7 @@ ObjectTemplates:addClientTemplate(object_installation_battlefield_destructible_s
 
 object_installation_battlefield_destructible_shared_bfield_column_rebl_weak = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/mun_all_military_column_weak_rebl_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 15,
@@ -739,7 +739,7 @@ object_installation_battlefield_destructible_shared_bfield_column_rebl_weak = Sh
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/installation/battlefield/shared_column.sfp",
@@ -758,7 +758,7 @@ ObjectTemplates:addClientTemplate(object_installation_battlefield_destructible_s
 
 object_installation_battlefield_destructible_shared_bfield_column_strong = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/mun_all_military_column_strong_impl_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 15,
@@ -794,7 +794,7 @@ object_installation_battlefield_destructible_shared_bfield_column_strong = Share
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/installation/battlefield/shared_column.sfp",
@@ -813,7 +813,7 @@ ObjectTemplates:addClientTemplate(object_installation_battlefield_destructible_s
 
 object_installation_battlefield_destructible_shared_bfield_gungan_cleft_wall_lg = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_gungan_cleft_wall_lg_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 15,
@@ -849,7 +849,7 @@ object_installation_battlefield_destructible_shared_bfield_gungan_cleft_wall_lg 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/installation/battlefield/shared_wall.sfp",
@@ -868,7 +868,7 @@ ObjectTemplates:addClientTemplate(object_installation_battlefield_destructible_s
 
 object_installation_battlefield_destructible_shared_bfield_gungan_damaged_narrow_arch = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_gungan_damaged_narrow_arch_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 15,
@@ -904,7 +904,7 @@ object_installation_battlefield_destructible_shared_bfield_gungan_damaged_narrow
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/installation/battlefield/shared_wall.sfp",
@@ -923,7 +923,7 @@ ObjectTemplates:addClientTemplate(object_installation_battlefield_destructible_s
 
 object_installation_battlefield_destructible_shared_bfield_gungan_damaged_wall_lg = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_gungan_damaged_wall_lg_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 15,
@@ -959,7 +959,7 @@ object_installation_battlefield_destructible_shared_bfield_gungan_damaged_wall_l
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/installation/battlefield/shared_wall.sfp",
@@ -978,7 +978,7 @@ ObjectTemplates:addClientTemplate(object_installation_battlefield_destructible_s
 
 object_installation_battlefield_destructible_shared_bfield_gungan_damaged_wide_arch = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_gungan_damaged_wide_arch_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 15,
@@ -1014,7 +1014,7 @@ object_installation_battlefield_destructible_shared_bfield_gungan_damaged_wide_a
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/installation/battlefield/shared_wall.sfp",
@@ -1033,7 +1033,7 @@ ObjectTemplates:addClientTemplate(object_installation_battlefield_destructible_s
 
 object_installation_battlefield_destructible_shared_bfield_gungan_pillar_damaged = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_gungan_pillar_damaged_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 15,
@@ -1069,7 +1069,7 @@ object_installation_battlefield_destructible_shared_bfield_gungan_pillar_damaged
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/installation/battlefield/shared_column.sfp",
@@ -1088,7 +1088,7 @@ ObjectTemplates:addClientTemplate(object_installation_battlefield_destructible_s
 
 object_installation_battlefield_destructible_shared_bfield_gungan_pillar_ruined = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_gungan_pillar_ruined_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 15,
@@ -1124,7 +1124,7 @@ object_installation_battlefield_destructible_shared_bfield_gungan_pillar_ruined 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/installation/battlefield/shared_column.sfp",
@@ -1143,7 +1143,7 @@ ObjectTemplates:addClientTemplate(object_installation_battlefield_destructible_s
 
 object_installation_battlefield_destructible_shared_bfield_gungan_relic = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_gungan_relic_s02.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 15,
@@ -1179,7 +1179,7 @@ object_installation_battlefield_destructible_shared_bfield_gungan_relic = Shared
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/installation/battlefield/shared_barracks.sfp",
@@ -1198,7 +1198,7 @@ ObjectTemplates:addClientTemplate(object_installation_battlefield_destructible_s
 
 object_installation_battlefield_destructible_shared_bfield_gungan_statue_s01a = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_gungan_statue_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 15,
@@ -1234,7 +1234,7 @@ object_installation_battlefield_destructible_shared_bfield_gungan_statue_s01a = 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/installation/battlefield/shared_column.sfp",
@@ -1253,7 +1253,7 @@ ObjectTemplates:addClientTemplate(object_installation_battlefield_destructible_s
 
 object_installation_battlefield_destructible_shared_bfield_gungan_statue_s01b = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_gungan_statue_s03.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 15,
@@ -1289,7 +1289,7 @@ object_installation_battlefield_destructible_shared_bfield_gungan_statue_s01b = 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/installation/battlefield/shared_column.sfp",
@@ -1308,7 +1308,7 @@ ObjectTemplates:addClientTemplate(object_installation_battlefield_destructible_s
 
 object_installation_battlefield_destructible_shared_bfield_gungan_statue_s02a = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_gungan_statue_s02.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 15,
@@ -1344,7 +1344,7 @@ object_installation_battlefield_destructible_shared_bfield_gungan_statue_s02a = 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/installation/battlefield/shared_column.sfp",
@@ -1363,7 +1363,7 @@ ObjectTemplates:addClientTemplate(object_installation_battlefield_destructible_s
 
 object_installation_battlefield_destructible_shared_bfield_gungan_statue_s02b = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_gungan_statue_s04.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 15,
@@ -1399,7 +1399,7 @@ object_installation_battlefield_destructible_shared_bfield_gungan_statue_s02b = 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/installation/battlefield/shared_column.sfp",
@@ -1418,7 +1418,7 @@ ObjectTemplates:addClientTemplate(object_installation_battlefield_destructible_s
 
 object_installation_battlefield_destructible_shared_bfield_gungan_target_shield_gen = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_gungan_shield_gen_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 15,
@@ -1454,7 +1454,7 @@ object_installation_battlefield_destructible_shared_bfield_gungan_target_shield_
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/installation/battlefield/shared_column.sfp",
@@ -1473,7 +1473,7 @@ ObjectTemplates:addClientTemplate(object_installation_battlefield_destructible_s
 
 object_installation_battlefield_destructible_shared_bfield_gungan_wall_ruined_lg_s01 = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_gungan_wall_ruined_lg_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 15,
@@ -1509,7 +1509,7 @@ object_installation_battlefield_destructible_shared_bfield_gungan_wall_ruined_lg
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/installation/battlefield/shared_wall.sfp",
@@ -1528,7 +1528,7 @@ ObjectTemplates:addClientTemplate(object_installation_battlefield_destructible_s
 
 object_installation_battlefield_destructible_shared_bfield_gungan_wall_ruined_lg_s02 = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_gungan_wall_ruined_lg_s02.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 15,
@@ -1564,7 +1564,7 @@ object_installation_battlefield_destructible_shared_bfield_gungan_wall_ruined_lg
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/installation/battlefield/shared_wall.sfp",
@@ -1583,7 +1583,7 @@ ObjectTemplates:addClientTemplate(object_installation_battlefield_destructible_s
 
 object_installation_battlefield_destructible_shared_bfield_gungan_wall_ruined_sm_s01 = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_gungan_wall_ruined_sm_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 15,
@@ -1619,7 +1619,7 @@ object_installation_battlefield_destructible_shared_bfield_gungan_wall_ruined_sm
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/installation/battlefield/shared_wall.sfp",
@@ -1638,7 +1638,7 @@ ObjectTemplates:addClientTemplate(object_installation_battlefield_destructible_s
 
 object_installation_battlefield_destructible_shared_bfield_gungan_wall_ruined_sm_s02 = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_gungan_wall_ruined_sm_s02.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 15,
@@ -1674,7 +1674,7 @@ object_installation_battlefield_destructible_shared_bfield_gungan_wall_ruined_sm
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/installation/battlefield/shared_wall.sfp",
@@ -1693,7 +1693,7 @@ ObjectTemplates:addClientTemplate(object_installation_battlefield_destructible_s
 
 object_installation_battlefield_destructible_shared_bfield_nightsister_fence = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/thm_dath_night_sister_fence_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 15,
@@ -1729,7 +1729,7 @@ object_installation_battlefield_destructible_shared_bfield_nightsister_fence = S
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/installation/battlefield/shared_wall.sfp",
@@ -1748,7 +1748,7 @@ ObjectTemplates:addClientTemplate(object_installation_battlefield_destructible_s
 
 object_installation_battlefield_destructible_shared_bfield_nightsister_freestand_banner01 = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/thm_dath_night_sister_banner_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 15,
@@ -1784,7 +1784,7 @@ object_installation_battlefield_destructible_shared_bfield_nightsister_freestand
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/installation/battlefield/shared_column.sfp",
@@ -1803,7 +1803,7 @@ ObjectTemplates:addClientTemplate(object_installation_battlefield_destructible_s
 
 object_installation_battlefield_destructible_shared_bfield_nightsister_freestand_banner02 = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/thm_dath_night_sister_banner_s02.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 15,
@@ -1839,7 +1839,7 @@ object_installation_battlefield_destructible_shared_bfield_nightsister_freestand
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/installation/battlefield/shared_column.sfp",
@@ -1858,7 +1858,7 @@ ObjectTemplates:addClientTemplate(object_installation_battlefield_destructible_s
 
 object_installation_battlefield_destructible_shared_bfield_nightsister_freestand_banner03 = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/thm_dath_night_sister_banner_s03.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 15,
@@ -1894,7 +1894,7 @@ object_installation_battlefield_destructible_shared_bfield_nightsister_freestand
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/installation/battlefield/shared_column.sfp",
@@ -1913,7 +1913,7 @@ ObjectTemplates:addClientTemplate(object_installation_battlefield_destructible_s
 
 object_installation_battlefield_destructible_shared_bfield_nightsister_gate = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/thm_dath_night_sister_gate_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 15,
@@ -1949,7 +1949,7 @@ object_installation_battlefield_destructible_shared_bfield_nightsister_gate = Sh
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/installation/battlefield/shared_wall.sfp",
@@ -1968,7 +1968,7 @@ ObjectTemplates:addClientTemplate(object_installation_battlefield_destructible_s
 
 object_installation_battlefield_destructible_shared_bfield_nightsister_hut = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/thm_dath_night_sister_hut_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 15,
@@ -2004,7 +2004,7 @@ object_installation_battlefield_destructible_shared_bfield_nightsister_hut = Sha
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/installation/battlefield/shared_barracks.sfp",
@@ -2023,7 +2023,7 @@ ObjectTemplates:addClientTemplate(object_installation_battlefield_destructible_s
 
 object_installation_battlefield_destructible_shared_bfield_nightsister_target_sith_altar = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/atf_sith_altar.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 15,
@@ -2059,7 +2059,7 @@ object_installation_battlefield_destructible_shared_bfield_nightsister_target_si
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/installation/battlefield/shared_column.sfp",
@@ -2078,7 +2078,7 @@ ObjectTemplates:addClientTemplate(object_installation_battlefield_destructible_s
 
 object_installation_battlefield_destructible_shared_bfield_nightsister_target_sith_crystal = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/atf_sith_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 15,
@@ -2114,7 +2114,7 @@ object_installation_battlefield_destructible_shared_bfield_nightsister_target_si
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/installation/battlefield/shared_barracks.sfp",
@@ -2133,7 +2133,7 @@ ObjectTemplates:addClientTemplate(object_installation_battlefield_destructible_s
 
 object_installation_battlefield_destructible_shared_bfield_nightsister_target_tower = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/thm_dath_night_sister_guard_tower_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 15,
@@ -2169,7 +2169,7 @@ object_installation_battlefield_destructible_shared_bfield_nightsister_target_to
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/installation/battlefield/shared_barracks.sfp",
@@ -2188,7 +2188,7 @@ ObjectTemplates:addClientTemplate(object_installation_battlefield_destructible_s
 
 object_installation_battlefield_destructible_shared_bfield_target_power_generator = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/ins_all_pow_fusion_ion_u0.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 15,
@@ -2224,7 +2224,7 @@ object_installation_battlefield_destructible_shared_bfield_target_power_generato
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/installation/battlefield/shared_barracks.sfp",
@@ -2243,7 +2243,7 @@ ObjectTemplates:addClientTemplate(object_installation_battlefield_destructible_s
 
 object_installation_battlefield_destructible_shared_bfield_target_power_transformer_01 = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/thm_corl_power_transformer_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 15,
@@ -2279,7 +2279,7 @@ object_installation_battlefield_destructible_shared_bfield_target_power_transfor
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/battlefield/shared_destructible_base.sfp",
@@ -2298,7 +2298,7 @@ ObjectTemplates:addClientTemplate(object_installation_battlefield_destructible_s
 
 object_installation_battlefield_destructible_shared_bfield_target_power_transformer_02 = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/thm_corl_power_transformer_s02.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 15,
@@ -2334,7 +2334,7 @@ object_installation_battlefield_destructible_shared_bfield_target_power_transfor
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/battlefield/shared_destructible_base.sfp",
@@ -2353,7 +2353,7 @@ ObjectTemplates:addClientTemplate(object_installation_battlefield_destructible_s
 
 object_installation_battlefield_destructible_shared_bfield_wall_barbed = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/thm_corl_imprv_wall_4x16_s03.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 15,
@@ -2389,7 +2389,7 @@ object_installation_battlefield_destructible_shared_bfield_wall_barbed = SharedI
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/installation/battlefield/shared_wall_barbed.sfp",
@@ -2408,7 +2408,7 @@ ObjectTemplates:addClientTemplate(object_installation_battlefield_destructible_s
 
 object_installation_battlefield_destructible_shared_bfield_wall_connector = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/mun_all_military_column_huge_impl_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 15,
@@ -2444,7 +2444,7 @@ object_installation_battlefield_destructible_shared_bfield_wall_connector = Shar
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/installation/battlefield/shared_column.sfp",
@@ -2463,7 +2463,7 @@ ObjectTemplates:addClientTemplate(object_installation_battlefield_destructible_s
 
 object_installation_battlefield_destructible_shared_bfield_wall_impl_weak = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/mun_all_military_wall_weak_impl_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 15,
@@ -2499,7 +2499,7 @@ object_installation_battlefield_destructible_shared_bfield_wall_impl_weak = Shar
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/installation/battlefield/shared_wall.sfp",
@@ -2518,7 +2518,7 @@ ObjectTemplates:addClientTemplate(object_installation_battlefield_destructible_s
 
 object_installation_battlefield_destructible_shared_bfield_wall_med = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/mun_all_military_wall_med_impl_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 15,
@@ -2554,7 +2554,7 @@ object_installation_battlefield_destructible_shared_bfield_wall_med = SharedInst
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/installation/battlefield/shared_wall.sfp",
@@ -2573,7 +2573,7 @@ ObjectTemplates:addClientTemplate(object_installation_battlefield_destructible_s
 
 object_installation_battlefield_destructible_shared_bfield_wall_rebl_med = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/mun_all_military_wall_med_rebl_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 15,
@@ -2609,7 +2609,7 @@ object_installation_battlefield_destructible_shared_bfield_wall_rebl_med = Share
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/installation/battlefield/shared_wall.sfp",
@@ -2628,7 +2628,7 @@ ObjectTemplates:addClientTemplate(object_installation_battlefield_destructible_s
 
 object_installation_battlefield_destructible_shared_bfield_wall_rebl_strong = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/mun_all_military_wall_strong_rebl_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 15,
@@ -2664,7 +2664,7 @@ object_installation_battlefield_destructible_shared_bfield_wall_rebl_strong = Sh
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/installation/battlefield/shared_wall.sfp",
@@ -2683,7 +2683,7 @@ ObjectTemplates:addClientTemplate(object_installation_battlefield_destructible_s
 
 object_installation_battlefield_destructible_shared_bfield_wall_rebl_weak = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/mun_all_military_wall_weak_rebl_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 15,
@@ -2719,7 +2719,7 @@ object_installation_battlefield_destructible_shared_bfield_wall_rebl_weak = Shar
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/installation/battlefield/shared_wall.sfp",
@@ -2738,7 +2738,7 @@ ObjectTemplates:addClientTemplate(object_installation_battlefield_destructible_s
 
 object_installation_battlefield_destructible_shared_bfield_wall_strong = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/mun_all_military_wall_strong_impl_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 15,
@@ -2774,7 +2774,7 @@ object_installation_battlefield_destructible_shared_bfield_wall_strong = SharedI
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/installation/battlefield/shared_wall.sfp",
@@ -2793,7 +2793,7 @@ ObjectTemplates:addClientTemplate(object_installation_battlefield_destructible_s
 
 object_installation_battlefield_destructible_shared_gungan_sacred_head = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_gungan_sacred_head_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 15,
@@ -2829,7 +2829,7 @@ object_installation_battlefield_destructible_shared_gungan_sacred_head = SharedI
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/installation/battlefield/shared_barracks.sfp",
@@ -2848,7 +2848,7 @@ ObjectTemplates:addClientTemplate(object_installation_battlefield_destructible_s
 
 object_installation_battlefield_destructible_shared_imperial_gate_house = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/mun_all_military_base_gate_house_impl_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 15,
@@ -2884,7 +2884,7 @@ object_installation_battlefield_destructible_shared_imperial_gate_house = Shared
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/battlefield/shared_destructible_base.sfp",
@@ -2903,7 +2903,7 @@ ObjectTemplates:addClientTemplate(object_installation_battlefield_destructible_s
 
 object_installation_battlefield_destructible_shared_rebel_gate_house = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/mun_all_military_base_gate_house_rebl_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 15,
@@ -2939,7 +2939,7 @@ object_installation_battlefield_destructible_shared_rebel_gate_house = SharedIns
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/battlefield/shared_destructible_base.sfp",
@@ -2958,7 +2958,7 @@ ObjectTemplates:addClientTemplate(object_installation_battlefield_destructible_s
 
 object_installation_battlefield_destructible_shared_small_turret = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/ins_all_def_turret_sm_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 15,
@@ -2994,7 +2994,7 @@ object_installation_battlefield_destructible_shared_small_turret = SharedInstall
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/battlefield/shared_destructible_base.sfp",
@@ -3013,7 +3013,7 @@ ObjectTemplates:addClientTemplate(object_installation_battlefield_destructible_s
 
 object_installation_battlefield_destructible_shared_turret_dish_small = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/ins_all_def_turret_sm_s03.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 15,
@@ -3049,7 +3049,7 @@ object_installation_battlefield_destructible_shared_turret_dish_small = SharedIn
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/battlefield/shared_destructible_base.sfp",
@@ -3068,7 +3068,7 @@ ObjectTemplates:addClientTemplate(object_installation_battlefield_destructible_s
 
 object_installation_battlefield_destructible_shared_turret_tower_small = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/ins_all_def_turret_sm_s02.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 15,
@@ -3104,7 +3104,7 @@ object_installation_battlefield_destructible_shared_turret_tower_small = SharedI
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/battlefield/shared_destructible_base.sfp",

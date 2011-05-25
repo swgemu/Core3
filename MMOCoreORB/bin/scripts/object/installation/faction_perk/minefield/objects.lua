@@ -43,7 +43,7 @@
 
 object_installation_faction_perk_minefield_shared_field_1x1 = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_lamp_free_s1.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 15,
@@ -79,7 +79,7 @@ object_installation_faction_perk_minefield_shared_field_1x1 = SharedInstallation
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/faction_perk/minefield/field_1x1.sfp",

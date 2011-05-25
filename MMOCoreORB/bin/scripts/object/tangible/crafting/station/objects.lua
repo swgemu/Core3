@@ -43,7 +43,7 @@
 
 object_tangible_crafting_station_shared_armor_repair = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_repair_armor.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -79,7 +79,7 @@ object_tangible_crafting_station_shared_armor_repair = SharedTangibleObjectTempl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -98,7 +98,7 @@ ObjectTemplates:addClientTemplate(object_tangible_crafting_station_shared_armor_
 
 object_tangible_crafting_station_shared_clothing_repair = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_repair_clothing_plain.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -134,7 +134,7 @@ object_tangible_crafting_station_shared_clothing_repair = SharedTangibleObjectTe
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -153,7 +153,7 @@ ObjectTemplates:addClientTemplate(object_tangible_crafting_station_shared_clothi
 
 object_tangible_crafting_station_shared_clothing_station = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_clothing_mfg_station_m_s1.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -189,7 +189,7 @@ object_tangible_crafting_station_shared_clothing_station = SharedTangibleObjectT
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"ingredient_hopper"},
+	slotDescriptorFilename = "abstract/slot/descriptor/crafting_station.iff",
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -208,7 +208,7 @@ ObjectTemplates:addClientTemplate(object_tangible_crafting_station_shared_clothi
 
 object_tangible_crafting_station_shared_clothing_tool = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_hairdressing_hair_dye_kit.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -244,7 +244,7 @@ object_tangible_crafting_station_shared_clothing_tool = SharedTangibleObjectTemp
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"anythingNoMod2", "anythingNoMod1", "test_manf_schematic"},
+	slotDescriptorFilename = "abstract/slot/descriptor/crafting_tool.iff",
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -263,7 +263,7 @@ ObjectTemplates:addClientTemplate(object_tangible_crafting_station_shared_clothi
 
 object_tangible_crafting_station_shared_droid_repair = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_repair_droids.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -299,7 +299,7 @@ object_tangible_crafting_station_shared_droid_repair = SharedTangibleObjectTempl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -318,7 +318,7 @@ ObjectTemplates:addClientTemplate(object_tangible_crafting_station_shared_droid_
 
 object_tangible_crafting_station_shared_food_station = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_food_mfg_station_m_s1.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -354,7 +354,7 @@ object_tangible_crafting_station_shared_food_station = SharedTangibleObjectTempl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"ingredient_hopper"},
+	slotDescriptorFilename = "abstract/slot/descriptor/crafting_station.iff",
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -373,7 +373,7 @@ ObjectTemplates:addClientTemplate(object_tangible_crafting_station_shared_food_s
 
 object_tangible_crafting_station_shared_food_tool = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_cook_portable_stove_lg_s1.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -409,7 +409,7 @@ object_tangible_crafting_station_shared_food_tool = SharedTangibleObjectTemplate
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"anythingNoMod2", "anythingNoMod1", "test_manf_schematic"},
+	slotDescriptorFilename = "abstract/slot/descriptor/crafting_tool.iff",
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -428,7 +428,7 @@ ObjectTemplates:addClientTemplate(object_tangible_crafting_station_shared_food_t
 
 object_tangible_crafting_station_shared_generic_tool = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_computer_toolkit.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -464,7 +464,7 @@ object_tangible_crafting_station_shared_generic_tool = SharedTangibleObjectTempl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"anythingNoMod2", "anythingNoMod1", "test_manf_schematic"},
+	slotDescriptorFilename = "abstract/slot/descriptor/crafting_tool.iff",
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -483,7 +483,7 @@ ObjectTemplates:addClientTemplate(object_tangible_crafting_station_shared_generi
 
 object_tangible_crafting_station_shared_jedi_tool = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_lightsaber_crafting_kit.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -519,7 +519,7 @@ object_tangible_crafting_station_shared_jedi_tool = SharedTangibleObjectTemplate
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"anythingNoMod2", "anythingNoMod1", "test_manf_schematic"},
+	slotDescriptorFilename = "abstract/slot/descriptor/crafting_tool.iff",
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -538,7 +538,7 @@ ObjectTemplates:addClientTemplate(object_tangible_crafting_station_shared_jedi_t
 
 object_tangible_crafting_station_shared_public_clothing_station = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_clothing_mfg_station_m_s1.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -574,7 +574,7 @@ object_tangible_crafting_station_shared_public_clothing_station = SharedTangible
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -593,7 +593,7 @@ ObjectTemplates:addClientTemplate(object_tangible_crafting_station_shared_public
 
 object_tangible_crafting_station_shared_public_food_station = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_food_mfg_station_m_s1.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -629,7 +629,7 @@ object_tangible_crafting_station_shared_public_food_station = SharedTangibleObje
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -648,7 +648,7 @@ ObjectTemplates:addClientTemplate(object_tangible_crafting_station_shared_public
 
 object_tangible_crafting_station_shared_public_space_station = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_starship_mfg_station_m_s1.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -684,7 +684,7 @@ object_tangible_crafting_station_shared_public_space_station = SharedTangibleObj
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -703,7 +703,7 @@ ObjectTemplates:addClientTemplate(object_tangible_crafting_station_shared_public
 
 object_tangible_crafting_station_shared_public_structure_station = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_structure_mfg_station_m_s1.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -739,7 +739,7 @@ object_tangible_crafting_station_shared_public_structure_station = SharedTangibl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -758,7 +758,7 @@ ObjectTemplates:addClientTemplate(object_tangible_crafting_station_shared_public
 
 object_tangible_crafting_station_shared_public_weapon_station = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_weapon_weapon_mfg_station_m_s1.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -794,7 +794,7 @@ object_tangible_crafting_station_shared_public_weapon_station = SharedTangibleOb
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -813,7 +813,7 @@ ObjectTemplates:addClientTemplate(object_tangible_crafting_station_shared_public
 
 object_tangible_crafting_station_shared_space_station = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_starship_mfg_station_m_s1.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -849,7 +849,7 @@ object_tangible_crafting_station_shared_space_station = SharedTangibleObjectTemp
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"ingredient_hopper"},
+	slotDescriptorFilename = "abstract/slot/descriptor/crafting_station.iff",
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -868,7 +868,7 @@ ObjectTemplates:addClientTemplate(object_tangible_crafting_station_shared_space_
 
 object_tangible_crafting_station_shared_space_tool = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_starship_toolkit.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -904,7 +904,7 @@ object_tangible_crafting_station_shared_space_tool = SharedTangibleObjectTemplat
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"anythingNoMod2", "anythingNoMod1", "test_manf_schematic"},
+	slotDescriptorFilename = "abstract/slot/descriptor/crafting_tool.iff",
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -923,7 +923,7 @@ ObjectTemplates:addClientTemplate(object_tangible_crafting_station_shared_space_
 
 object_tangible_crafting_station_shared_structure_repair = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_repair_installations.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -959,7 +959,7 @@ object_tangible_crafting_station_shared_structure_repair = SharedTangibleObjectT
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -978,7 +978,7 @@ ObjectTemplates:addClientTemplate(object_tangible_crafting_station_shared_struct
 
 object_tangible_crafting_station_shared_structure_station = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_structure_mfg_station_m_s1.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1014,7 +1014,7 @@ object_tangible_crafting_station_shared_structure_station = SharedTangibleObject
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"ingredient_hopper"},
+	slotDescriptorFilename = "abstract/slot/descriptor/crafting_station.iff",
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1033,7 +1033,7 @@ ObjectTemplates:addClientTemplate(object_tangible_crafting_station_shared_struct
 
 object_tangible_crafting_station_shared_structure_tool = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_instrument_calibrator.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1069,7 +1069,7 @@ object_tangible_crafting_station_shared_structure_tool = SharedTangibleObjectTem
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"anythingNoMod2", "anythingNoMod1", "test_manf_schematic"},
+	slotDescriptorFilename = "abstract/slot/descriptor/crafting_tool.iff",
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1088,7 +1088,7 @@ ObjectTemplates:addClientTemplate(object_tangible_crafting_station_shared_struct
 
 object_tangible_crafting_station_shared_weapon_repair = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_repair_ranged_weapons_other.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1124,7 +1124,7 @@ object_tangible_crafting_station_shared_weapon_repair = SharedTangibleObjectTemp
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1143,7 +1143,7 @@ ObjectTemplates:addClientTemplate(object_tangible_crafting_station_shared_weapon
 
 object_tangible_crafting_station_shared_weapon_station = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_weapon_weapon_mfg_station_m_s1.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1179,7 +1179,7 @@ object_tangible_crafting_station_shared_weapon_station = SharedTangibleObjectTem
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"ingredient_hopper"},
+	slotDescriptorFilename = "abstract/slot/descriptor/crafting_station.iff",
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1198,7 +1198,7 @@ ObjectTemplates:addClientTemplate(object_tangible_crafting_station_shared_weapon
 
 object_tangible_crafting_station_shared_weapon_tool = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_weapon_repair_kit_s1.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1234,7 +1234,7 @@ object_tangible_crafting_station_shared_weapon_tool = SharedTangibleObjectTempla
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"anythingNoMod2", "anythingNoMod1", "test_manf_schematic"},
+	slotDescriptorFilename = "abstract/slot/descriptor/crafting_tool.iff",
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",

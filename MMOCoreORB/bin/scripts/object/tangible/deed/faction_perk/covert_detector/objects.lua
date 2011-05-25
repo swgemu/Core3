@@ -43,7 +43,7 @@
 
 object_tangible_deed_faction_perk_covert_detector_shared_detector_32m_deed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_sensor_beacon.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -79,7 +79,7 @@ object_tangible_deed_faction_perk_covert_detector_shared_detector_32m_deed = Sha
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",

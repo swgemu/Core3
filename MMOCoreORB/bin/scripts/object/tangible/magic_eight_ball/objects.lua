@@ -43,7 +43,7 @@
 
 object_tangible_magic_eight_ball_shared_magic_eight_ball = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_eyes_of_mesra.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -79,7 +79,7 @@ object_tangible_magic_eight_ball_shared_magic_eight_ball = SharedTangibleObjectT
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",

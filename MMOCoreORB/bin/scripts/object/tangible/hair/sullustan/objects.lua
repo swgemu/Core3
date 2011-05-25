@@ -43,7 +43,7 @@
 
 object_tangible_hair_sullustan_shared_sul_hair_s01_f = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/sul_hair_s01_f.sat",
-	arrangementDescriptors = {"hair"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hair.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -79,7 +79,7 @@ object_tangible_hair_sullustan_shared_sul_hair_s01_f = SharedTangibleObjectTempl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -98,7 +98,7 @@ ObjectTemplates:addClientTemplate(object_tangible_hair_sullustan_shared_sul_hair
 
 object_tangible_hair_sullustan_shared_sul_hair_s01_m = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/sul_hair_s01_m.sat",
-	arrangementDescriptors = {"hair"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hair.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -134,7 +134,7 @@ object_tangible_hair_sullustan_shared_sul_hair_s01_m = SharedTangibleObjectTempl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -153,7 +153,7 @@ ObjectTemplates:addClientTemplate(object_tangible_hair_sullustan_shared_sul_hair
 
 object_tangible_hair_sullustan_shared_sul_hair_s02_f = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/sul_hair_s02_f.sat",
-	arrangementDescriptors = {"hair"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hair.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -189,7 +189,7 @@ object_tangible_hair_sullustan_shared_sul_hair_s02_f = SharedTangibleObjectTempl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -208,7 +208,7 @@ ObjectTemplates:addClientTemplate(object_tangible_hair_sullustan_shared_sul_hair
 
 object_tangible_hair_sullustan_shared_sul_hair_s02_m = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/sul_hair_s02_m.sat",
-	arrangementDescriptors = {"hair"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hair.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -244,7 +244,7 @@ object_tangible_hair_sullustan_shared_sul_hair_s02_m = SharedTangibleObjectTempl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -263,7 +263,7 @@ ObjectTemplates:addClientTemplate(object_tangible_hair_sullustan_shared_sul_hair
 
 object_tangible_hair_sullustan_shared_sul_hair_s03_f = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/sul_hair_s03_f.sat",
-	arrangementDescriptors = {"hair"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hair.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -299,7 +299,7 @@ object_tangible_hair_sullustan_shared_sul_hair_s03_f = SharedTangibleObjectTempl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -318,7 +318,7 @@ ObjectTemplates:addClientTemplate(object_tangible_hair_sullustan_shared_sul_hair
 
 object_tangible_hair_sullustan_shared_sul_hair_s03_m = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/sul_hair_s03_m.sat",
-	arrangementDescriptors = {"hair"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hair.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -354,7 +354,7 @@ object_tangible_hair_sullustan_shared_sul_hair_s03_m = SharedTangibleObjectTempl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -373,7 +373,7 @@ ObjectTemplates:addClientTemplate(object_tangible_hair_sullustan_shared_sul_hair
 
 object_tangible_hair_sullustan_shared_sul_hair_s04_f = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/sul_hair_s04_f.sat",
-	arrangementDescriptors = {"hair"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hair.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -409,7 +409,7 @@ object_tangible_hair_sullustan_shared_sul_hair_s04_f = SharedTangibleObjectTempl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -428,7 +428,7 @@ ObjectTemplates:addClientTemplate(object_tangible_hair_sullustan_shared_sul_hair
 
 object_tangible_hair_sullustan_shared_sul_hair_s04_m = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/sul_hair_s04_m.sat",
-	arrangementDescriptors = {"hair"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hair.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -464,7 +464,7 @@ object_tangible_hair_sullustan_shared_sul_hair_s04_m = SharedTangibleObjectTempl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -483,7 +483,7 @@ ObjectTemplates:addClientTemplate(object_tangible_hair_sullustan_shared_sul_hair
 
 object_tangible_hair_sullustan_shared_sul_hair_s05_f = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/sul_hair_s05_f.sat",
-	arrangementDescriptors = {"hair"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hair.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -519,7 +519,7 @@ object_tangible_hair_sullustan_shared_sul_hair_s05_f = SharedTangibleObjectTempl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -538,7 +538,7 @@ ObjectTemplates:addClientTemplate(object_tangible_hair_sullustan_shared_sul_hair
 
 object_tangible_hair_sullustan_shared_sul_hair_s05_m = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/sul_hair_s05_m.sat",
-	arrangementDescriptors = {"hair"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hair.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -574,7 +574,7 @@ object_tangible_hair_sullustan_shared_sul_hair_s05_m = SharedTangibleObjectTempl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -593,7 +593,7 @@ ObjectTemplates:addClientTemplate(object_tangible_hair_sullustan_shared_sul_hair
 
 object_tangible_hair_sullustan_shared_sul_hair_s06_f = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/sul_hair_s06_f.sat",
-	arrangementDescriptors = {"hair"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hair.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -629,7 +629,7 @@ object_tangible_hair_sullustan_shared_sul_hair_s06_f = SharedTangibleObjectTempl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -648,7 +648,7 @@ ObjectTemplates:addClientTemplate(object_tangible_hair_sullustan_shared_sul_hair
 
 object_tangible_hair_sullustan_shared_sul_hair_s06_m = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/sul_hair_s06_m.sat",
-	arrangementDescriptors = {"hair"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hair.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -684,7 +684,7 @@ object_tangible_hair_sullustan_shared_sul_hair_s06_m = SharedTangibleObjectTempl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -703,7 +703,7 @@ ObjectTemplates:addClientTemplate(object_tangible_hair_sullustan_shared_sul_hair
 
 object_tangible_hair_sullustan_shared_sul_hair_s07_f = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/sul_hair_s07_f.sat",
-	arrangementDescriptors = {"hair"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hair.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -739,7 +739,7 @@ object_tangible_hair_sullustan_shared_sul_hair_s07_f = SharedTangibleObjectTempl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -758,7 +758,7 @@ ObjectTemplates:addClientTemplate(object_tangible_hair_sullustan_shared_sul_hair
 
 object_tangible_hair_sullustan_shared_sul_hair_s07_m = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/sul_hair_s07_m.sat",
-	arrangementDescriptors = {"hair"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hair.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -794,7 +794,7 @@ object_tangible_hair_sullustan_shared_sul_hair_s07_m = SharedTangibleObjectTempl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -813,7 +813,7 @@ ObjectTemplates:addClientTemplate(object_tangible_hair_sullustan_shared_sul_hair
 
 object_tangible_hair_sullustan_shared_sul_hair_s08_f = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/sul_hair_s08_f.sat",
-	arrangementDescriptors = {"hair"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hair.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -849,7 +849,7 @@ object_tangible_hair_sullustan_shared_sul_hair_s08_f = SharedTangibleObjectTempl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -868,7 +868,7 @@ ObjectTemplates:addClientTemplate(object_tangible_hair_sullustan_shared_sul_hair
 
 object_tangible_hair_sullustan_shared_sul_hair_s08_m = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/sul_hair_s08_m.sat",
-	arrangementDescriptors = {"hair"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hair.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -904,7 +904,7 @@ object_tangible_hair_sullustan_shared_sul_hair_s08_m = SharedTangibleObjectTempl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -923,7 +923,7 @@ ObjectTemplates:addClientTemplate(object_tangible_hair_sullustan_shared_sul_hair
 
 object_tangible_hair_sullustan_shared_sul_hair_s09_f = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/sul_hair_s09_f.sat",
-	arrangementDescriptors = {"hair"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hair.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -959,7 +959,7 @@ object_tangible_hair_sullustan_shared_sul_hair_s09_f = SharedTangibleObjectTempl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -978,7 +978,7 @@ ObjectTemplates:addClientTemplate(object_tangible_hair_sullustan_shared_sul_hair
 
 object_tangible_hair_sullustan_shared_sul_hair_s09_m = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/sul_hair_s09_m.sat",
-	arrangementDescriptors = {"hair"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hair.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1014,7 +1014,7 @@ object_tangible_hair_sullustan_shared_sul_hair_s09_m = SharedTangibleObjectTempl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1033,7 +1033,7 @@ ObjectTemplates:addClientTemplate(object_tangible_hair_sullustan_shared_sul_hair
 
 object_tangible_hair_sullustan_shared_sul_hair_s10_f = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/sul_hair_s10_f.sat",
-	arrangementDescriptors = {"hair"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hair.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1069,7 +1069,7 @@ object_tangible_hair_sullustan_shared_sul_hair_s10_f = SharedTangibleObjectTempl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1088,7 +1088,7 @@ ObjectTemplates:addClientTemplate(object_tangible_hair_sullustan_shared_sul_hair
 
 object_tangible_hair_sullustan_shared_sul_hair_s10_m = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/sul_hair_s10_m.sat",
-	arrangementDescriptors = {"hair"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hair.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1124,7 +1124,7 @@ object_tangible_hair_sullustan_shared_sul_hair_s10_m = SharedTangibleObjectTempl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1143,7 +1143,7 @@ ObjectTemplates:addClientTemplate(object_tangible_hair_sullustan_shared_sul_hair
 
 object_tangible_hair_sullustan_shared_sul_hair_s11_f = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/sul_hair_s11_f.sat",
-	arrangementDescriptors = {"hair"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hair.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1179,7 +1179,7 @@ object_tangible_hair_sullustan_shared_sul_hair_s11_f = SharedTangibleObjectTempl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1198,7 +1198,7 @@ ObjectTemplates:addClientTemplate(object_tangible_hair_sullustan_shared_sul_hair
 
 object_tangible_hair_sullustan_shared_sul_hair_s11_m = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/sul_hair_s11_m.sat",
-	arrangementDescriptors = {"hair"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hair.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1234,7 +1234,7 @@ object_tangible_hair_sullustan_shared_sul_hair_s11_m = SharedTangibleObjectTempl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1253,7 +1253,7 @@ ObjectTemplates:addClientTemplate(object_tangible_hair_sullustan_shared_sul_hair
 
 object_tangible_hair_sullustan_shared_sul_hair_s12_f = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/sul_hair_s12_f.sat",
-	arrangementDescriptors = {"hair"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hair.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1289,7 +1289,7 @@ object_tangible_hair_sullustan_shared_sul_hair_s12_f = SharedTangibleObjectTempl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1308,7 +1308,7 @@ ObjectTemplates:addClientTemplate(object_tangible_hair_sullustan_shared_sul_hair
 
 object_tangible_hair_sullustan_shared_sul_hair_s12_m = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/sul_hair_s12_m.sat",
-	arrangementDescriptors = {"hair"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hair.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1344,7 +1344,7 @@ object_tangible_hair_sullustan_shared_sul_hair_s12_m = SharedTangibleObjectTempl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1363,7 +1363,7 @@ ObjectTemplates:addClientTemplate(object_tangible_hair_sullustan_shared_sul_hair
 
 object_tangible_hair_sullustan_shared_sul_hair_s13_f = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/sul_hair_s13_f.sat",
-	arrangementDescriptors = {"hair"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hair.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1399,7 +1399,7 @@ object_tangible_hair_sullustan_shared_sul_hair_s13_f = SharedTangibleObjectTempl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1418,7 +1418,7 @@ ObjectTemplates:addClientTemplate(object_tangible_hair_sullustan_shared_sul_hair
 
 object_tangible_hair_sullustan_shared_sul_hair_s13_m = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/sul_hair_s13_m.sat",
-	arrangementDescriptors = {"hair"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hair.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1454,7 +1454,7 @@ object_tangible_hair_sullustan_shared_sul_hair_s13_m = SharedTangibleObjectTempl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1473,7 +1473,7 @@ ObjectTemplates:addClientTemplate(object_tangible_hair_sullustan_shared_sul_hair
 
 object_tangible_hair_sullustan_shared_sul_hair_s14_f = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/sul_hair_s14_f.sat",
-	arrangementDescriptors = {"hair"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hair.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1509,7 +1509,7 @@ object_tangible_hair_sullustan_shared_sul_hair_s14_f = SharedTangibleObjectTempl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1528,7 +1528,7 @@ ObjectTemplates:addClientTemplate(object_tangible_hair_sullustan_shared_sul_hair
 
 object_tangible_hair_sullustan_shared_sul_hair_s14_m = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/sul_hair_s14_m.sat",
-	arrangementDescriptors = {"hair"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hair.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1564,7 +1564,7 @@ object_tangible_hair_sullustan_shared_sul_hair_s14_m = SharedTangibleObjectTempl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1583,7 +1583,7 @@ ObjectTemplates:addClientTemplate(object_tangible_hair_sullustan_shared_sul_hair
 
 object_tangible_hair_sullustan_shared_sul_hair_s15_f = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/sul_hair_s15_f.sat",
-	arrangementDescriptors = {"hair"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hair.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1619,7 +1619,7 @@ object_tangible_hair_sullustan_shared_sul_hair_s15_f = SharedTangibleObjectTempl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1638,7 +1638,7 @@ ObjectTemplates:addClientTemplate(object_tangible_hair_sullustan_shared_sul_hair
 
 object_tangible_hair_sullustan_shared_sul_hair_s15_m = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/sul_hair_s15_m.sat",
-	arrangementDescriptors = {"hair"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hair.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1674,7 +1674,7 @@ object_tangible_hair_sullustan_shared_sul_hair_s15_m = SharedTangibleObjectTempl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1693,7 +1693,7 @@ ObjectTemplates:addClientTemplate(object_tangible_hair_sullustan_shared_sul_hair
 
 object_tangible_hair_sullustan_shared_sul_hair_s16_f = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/sul_hair_s16_f.sat",
-	arrangementDescriptors = {"hair"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hair.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1729,7 +1729,7 @@ object_tangible_hair_sullustan_shared_sul_hair_s16_f = SharedTangibleObjectTempl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1748,7 +1748,7 @@ ObjectTemplates:addClientTemplate(object_tangible_hair_sullustan_shared_sul_hair
 
 object_tangible_hair_sullustan_shared_sul_hair_s16_m = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/sul_hair_s16_m.sat",
-	arrangementDescriptors = {"hair"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hair.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1784,7 +1784,7 @@ object_tangible_hair_sullustan_shared_sul_hair_s16_m = SharedTangibleObjectTempl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1803,7 +1803,7 @@ ObjectTemplates:addClientTemplate(object_tangible_hair_sullustan_shared_sul_hair
 
 object_tangible_hair_sullustan_shared_sul_hair_s17_f = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/sul_hair_s17_f.sat",
-	arrangementDescriptors = {"hair"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hair.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1839,7 +1839,7 @@ object_tangible_hair_sullustan_shared_sul_hair_s17_f = SharedTangibleObjectTempl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1858,7 +1858,7 @@ ObjectTemplates:addClientTemplate(object_tangible_hair_sullustan_shared_sul_hair
 
 object_tangible_hair_sullustan_shared_sul_hair_s17_m = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/sul_hair_s17_m.sat",
-	arrangementDescriptors = {"hair"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hair.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1894,7 +1894,7 @@ object_tangible_hair_sullustan_shared_sul_hair_s17_m = SharedTangibleObjectTempl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1913,7 +1913,7 @@ ObjectTemplates:addClientTemplate(object_tangible_hair_sullustan_shared_sul_hair
 
 object_tangible_hair_sullustan_shared_sul_hair_s18_f = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/sul_hair_s18_f.sat",
-	arrangementDescriptors = {"hair"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hair.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1949,7 +1949,7 @@ object_tangible_hair_sullustan_shared_sul_hair_s18_f = SharedTangibleObjectTempl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1968,7 +1968,7 @@ ObjectTemplates:addClientTemplate(object_tangible_hair_sullustan_shared_sul_hair
 
 object_tangible_hair_sullustan_shared_sul_hair_s18_m = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/sul_hair_s18_m.sat",
-	arrangementDescriptors = {"hair"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hair.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2004,7 +2004,7 @@ object_tangible_hair_sullustan_shared_sul_hair_s18_m = SharedTangibleObjectTempl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",

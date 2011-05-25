@@ -43,7 +43,7 @@
 
 object_tangible_quest_quest_start_shared_ep3_clone_relics_jedi_starfighter = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -79,7 +79,7 @@ object_tangible_quest_quest_start_shared_ep3_clone_relics_jedi_starfighter = Sha
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -98,7 +98,7 @@ ObjectTemplates:addClientTemplate(object_tangible_quest_quest_start_shared_ep3_c
 
 object_tangible_quest_quest_start_shared_ep3_clone_relics_jedi_starfighter_container = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_skeleton_bith_headandbody.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -134,7 +134,7 @@ object_tangible_quest_quest_start_shared_ep3_clone_relics_jedi_starfighter_conta
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -153,7 +153,7 @@ ObjectTemplates:addClientTemplate(object_tangible_quest_quest_start_shared_ep3_c
 
 object_tangible_quest_quest_start_shared_ep3_clone_relics_nym_starmap = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_prp_document_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -189,7 +189,7 @@ object_tangible_quest_quest_start_shared_ep3_clone_relics_nym_starmap = SharedTa
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -208,7 +208,7 @@ ObjectTemplates:addClientTemplate(object_tangible_quest_quest_start_shared_ep3_c
 
 object_tangible_quest_quest_start_shared_ep3_clone_relics_nym_starmap_container = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/con_gen_crate_basic_s1.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -244,7 +244,7 @@ object_tangible_quest_quest_start_shared_ep3_clone_relics_nym_starmap_container 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",

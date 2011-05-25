@@ -43,7 +43,7 @@
 
 object_static_destructible_shared_destructible_cave_wall_damprock = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_all_cavewall_damprock_a1.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -79,7 +79,7 @@ object_static_destructible_shared_destructible_cave_wall_damprock = SharedTangib
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -98,7 +98,7 @@ ObjectTemplates:addClientTemplate(object_static_destructible_shared_destructible
 
 object_static_destructible_shared_destructible_item_barrel = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_barrel_lg_s1.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -134,7 +134,7 @@ object_static_destructible_shared_destructible_item_barrel = SharedTangibleObjec
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -153,7 +153,7 @@ ObjectTemplates:addClientTemplate(object_static_destructible_shared_destructible
 
 object_static_destructible_shared_destructible_tato_cave_rock_lg = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_tato_cave_rock_lrg.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -189,7 +189,7 @@ object_static_destructible_shared_destructible_tato_cave_rock_lg = SharedTangibl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -208,7 +208,7 @@ ObjectTemplates:addClientTemplate(object_static_destructible_shared_destructible
 
 object_static_destructible_shared_destructible_tato_cave_rock_med = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_tato_cave_rock_med.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -244,7 +244,7 @@ object_static_destructible_shared_destructible_tato_cave_rock_med = SharedTangib
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -263,7 +263,7 @@ ObjectTemplates:addClientTemplate(object_static_destructible_shared_destructible
 
 object_static_destructible_shared_destructible_tato_crate1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_tato_debris_s07.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -299,7 +299,7 @@ object_static_destructible_shared_destructible_tato_crate1 = SharedTangibleObjec
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -318,7 +318,7 @@ ObjectTemplates:addClientTemplate(object_static_destructible_shared_destructible
 
 object_static_destructible_shared_destructible_tato_drum_dented = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_tato_debris_s09.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -354,7 +354,7 @@ object_static_destructible_shared_destructible_tato_drum_dented = SharedTangible
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -373,7 +373,7 @@ ObjectTemplates:addClientTemplate(object_static_destructible_shared_destructible
 
 object_static_destructible_shared_destructible_tato_drum_storage1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_tato_debris_s05.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -409,7 +409,7 @@ object_static_destructible_shared_destructible_tato_drum_storage1 = SharedTangib
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -428,7 +428,7 @@ ObjectTemplates:addClientTemplate(object_static_destructible_shared_destructible
 
 object_static_destructible_shared_gungan_sacred_head = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_gungan_sacred_head_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 15,
@@ -464,7 +464,7 @@ object_static_destructible_shared_gungan_sacred_head = SharedInstallationObjectT
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/installation/battlefield/shared_barracks.sfp",

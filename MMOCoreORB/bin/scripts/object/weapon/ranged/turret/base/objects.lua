@@ -43,7 +43,7 @@
 
 object_weapon_ranged_turret_base_shared_turret_base = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_rifle_dlt20.apt",
-	arrangementDescriptors = {"hold_r"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hold_r.iff",
 	attackType = 1,
 
 	certificationsRequired = {},
@@ -80,7 +80,7 @@ object_weapon_ranged_turret_base_shared_turret_base = SharedWeaponObjectTemplate
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"default_weapon_ammo_slot", "crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/default_weapon.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",

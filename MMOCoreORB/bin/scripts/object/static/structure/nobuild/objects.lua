@@ -43,7 +43,7 @@
 
 object_static_structure_nobuild_shared_nobuild_128 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/godclient_cylinder_30.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -74,7 +74,7 @@ object_static_structure_nobuild_shared_nobuild_128 = SharedStaticObjectTemplate:
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	surfaceType = 1,
 
@@ -88,7 +88,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_nobuild_shared_nobuild
 
 object_static_structure_nobuild_shared_nobuild_32 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/godclient_cylinder_30.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -119,7 +119,7 @@ object_static_structure_nobuild_shared_nobuild_32 = SharedStaticObjectTemplate:n
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	surfaceType = 1,
 
@@ -133,7 +133,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_nobuild_shared_nobuild
 
 object_static_structure_nobuild_shared_nobuild_4 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/godclient_cylinder_30.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -164,7 +164,7 @@ object_static_structure_nobuild_shared_nobuild_4 = SharedStaticObjectTemplate:ne
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	surfaceType = 1,
 
@@ -178,7 +178,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_nobuild_shared_nobuild
 
 object_static_structure_nobuild_shared_nobuild_64 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/godclient_cylinder_30.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -209,7 +209,7 @@ object_static_structure_nobuild_shared_nobuild_64 = SharedStaticObjectTemplate:n
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	surfaceType = 1,
 

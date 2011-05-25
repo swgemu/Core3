@@ -43,7 +43,7 @@
 
 object_tangible_lair_tusken_raider_shared_lair_tusken_raider_npc = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_tato_sandstone_hovel_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -79,7 +79,7 @@ object_tangible_lair_tusken_raider_shared_lair_tusken_raider_npc = SharedTangibl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",

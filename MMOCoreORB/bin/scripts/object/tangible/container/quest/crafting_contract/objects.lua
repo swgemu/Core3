@@ -43,7 +43,7 @@
 
 object_tangible_container_quest_crafting_contract_shared_armor_crate = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/con_man_armor_sm.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -79,7 +79,7 @@ object_tangible_container_quest_crafting_contract_shared_armor_crate = SharedTan
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -98,7 +98,7 @@ ObjectTemplates:addClientTemplate(object_tangible_container_quest_crafting_contr
 
 object_tangible_container_quest_crafting_contract_shared_clothing_crate = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/con_man_clothing_sm.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -134,7 +134,7 @@ object_tangible_container_quest_crafting_contract_shared_clothing_crate = Shared
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -153,7 +153,7 @@ ObjectTemplates:addClientTemplate(object_tangible_container_quest_crafting_contr
 
 object_tangible_container_quest_crafting_contract_shared_droid_crate = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/con_man_electronics_sm.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -189,7 +189,7 @@ object_tangible_container_quest_crafting_contract_shared_droid_crate = SharedTan
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -208,7 +208,7 @@ ObjectTemplates:addClientTemplate(object_tangible_container_quest_crafting_contr
 
 object_tangible_container_quest_crafting_contract_shared_food_crate = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/con_man_food_sm.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -244,7 +244,7 @@ object_tangible_container_quest_crafting_contract_shared_food_crate = SharedTang
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -263,7 +263,7 @@ ObjectTemplates:addClientTemplate(object_tangible_container_quest_crafting_contr
 
 object_tangible_container_quest_crafting_contract_shared_furniture_crate = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/con_man_furniture_sm.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -299,7 +299,7 @@ object_tangible_container_quest_crafting_contract_shared_furniture_crate = Share
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -318,7 +318,7 @@ ObjectTemplates:addClientTemplate(object_tangible_container_quest_crafting_contr
 
 object_tangible_container_quest_crafting_contract_shared_generic_crate = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/con_man_items_sm.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -354,7 +354,7 @@ object_tangible_container_quest_crafting_contract_shared_generic_crate = SharedT
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -373,7 +373,7 @@ ObjectTemplates:addClientTemplate(object_tangible_container_quest_crafting_contr
 
 object_tangible_container_quest_crafting_contract_shared_weapon_crate = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/con_man_weapons_sm.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -409,7 +409,7 @@ object_tangible_container_quest_crafting_contract_shared_weapon_crate = SharedTa
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",

@@ -43,7 +43,7 @@
 
 object_player_base_shared_base_player = SharedPlayerObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {"ghost"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_player_object.iff",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -74,7 +74,7 @@ object_player_base_shared_base_player = SharedPlayerObjectTemplate:new {
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -88,7 +88,7 @@ ObjectTemplates:addClientTemplate(object_player_base_shared_base_player, "object
 
 object_player_base_shared_player_default = SharedPlayerObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {"ghost"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_player_object.iff",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -119,7 +119,7 @@ object_player_base_shared_player_default = SharedPlayerObjectTemplate:new {
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 0,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 

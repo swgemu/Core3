@@ -43,7 +43,7 @@
 
 object_tangible_wearables_belt_shared_aakuan_belt = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/belt_s05_f.sat",
-	arrangementDescriptors = {"utility_belt"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/belt.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -79,7 +79,7 @@ object_tangible_wearables_belt_shared_aakuan_belt = SharedTangibleObjectTemplate
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -98,7 +98,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_belt_shared_aakuan_b
 
 object_tangible_wearables_belt_shared_belt_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/belt_s01_f.sat",
-	arrangementDescriptors = {"utility_belt"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/belt.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -134,7 +134,7 @@ object_tangible_wearables_belt_shared_belt_s01 = SharedTangibleObjectTemplate:ne
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -153,7 +153,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_belt_shared_belt_s01
 
 object_tangible_wearables_belt_shared_belt_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/belt_s02_f.sat",
-	arrangementDescriptors = {"utility_belt"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/belt.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -189,7 +189,7 @@ object_tangible_wearables_belt_shared_belt_s02 = SharedTangibleObjectTemplate:ne
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -208,7 +208,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_belt_shared_belt_s02
 
 object_tangible_wearables_belt_shared_belt_s03 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/belt_s03_f.sat",
-	arrangementDescriptors = {"utility_belt"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/belt.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -244,7 +244,7 @@ object_tangible_wearables_belt_shared_belt_s03 = SharedTangibleObjectTemplate:ne
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -263,7 +263,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_belt_shared_belt_s03
 
 object_tangible_wearables_belt_shared_belt_s04 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/belt_s04_f.sat",
-	arrangementDescriptors = {"utility_belt"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/belt.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -299,7 +299,7 @@ object_tangible_wearables_belt_shared_belt_s04 = SharedTangibleObjectTemplate:ne
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -318,7 +318,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_belt_shared_belt_s04
 
 object_tangible_wearables_belt_shared_belt_s05 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/belt_s05_f.sat",
-	arrangementDescriptors = {"utility_belt"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/belt.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -354,7 +354,7 @@ object_tangible_wearables_belt_shared_belt_s05 = SharedTangibleObjectTemplate:ne
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -373,7 +373,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_belt_shared_belt_s05
 
 object_tangible_wearables_belt_shared_belt_s05_quest = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/belt_s05_f.sat",
-	arrangementDescriptors = {"utility_belt"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/belt.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -409,7 +409,7 @@ object_tangible_wearables_belt_shared_belt_s05_quest = SharedTangibleObjectTempl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -428,7 +428,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_belt_shared_belt_s05
 
 object_tangible_wearables_belt_shared_belt_s07 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/belt_s07_f.sat",
-	arrangementDescriptors = {"utility_belt"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/belt.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -464,7 +464,7 @@ object_tangible_wearables_belt_shared_belt_s07 = SharedTangibleObjectTemplate:ne
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -483,7 +483,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_belt_shared_belt_s07
 
 object_tangible_wearables_belt_shared_belt_s09 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/belt_s09_f.sat",
-	arrangementDescriptors = {"utility_belt"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/belt.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -519,7 +519,7 @@ object_tangible_wearables_belt_shared_belt_s09 = SharedTangibleObjectTemplate:ne
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -538,7 +538,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_belt_shared_belt_s09
 
 object_tangible_wearables_belt_shared_belt_s11 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/belt_s11_f.sat",
-	arrangementDescriptors = {"utility_belt"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/belt.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -574,7 +574,7 @@ object_tangible_wearables_belt_shared_belt_s11 = SharedTangibleObjectTemplate:ne
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -593,7 +593,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_belt_shared_belt_s11
 
 object_tangible_wearables_belt_shared_belt_s12 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/belt_s12_f.sat",
-	arrangementDescriptors = {"utility_belt"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/belt.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -629,7 +629,7 @@ object_tangible_wearables_belt_shared_belt_s12 = SharedTangibleObjectTemplate:ne
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -648,7 +648,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_belt_shared_belt_s12
 
 object_tangible_wearables_belt_shared_belt_s13 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/belt_s13_f.sat",
-	arrangementDescriptors = {"utility_belt"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/belt.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -684,7 +684,7 @@ object_tangible_wearables_belt_shared_belt_s13 = SharedTangibleObjectTemplate:ne
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -703,7 +703,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_belt_shared_belt_s13
 
 object_tangible_wearables_belt_shared_belt_s14 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/belt_s14_f.sat",
-	arrangementDescriptors = {"utility_belt"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/belt.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -739,7 +739,7 @@ object_tangible_wearables_belt_shared_belt_s14 = SharedTangibleObjectTemplate:ne
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -758,7 +758,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_belt_shared_belt_s14
 
 object_tangible_wearables_belt_shared_belt_s15 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/belt_s15_f.sat",
-	arrangementDescriptors = {"utility_belt"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/belt.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -794,7 +794,7 @@ object_tangible_wearables_belt_shared_belt_s15 = SharedTangibleObjectTemplate:ne
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -813,7 +813,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_belt_shared_belt_s15
 
 object_tangible_wearables_belt_shared_belt_s16 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/belt_s16_f.sat",
-	arrangementDescriptors = {"utility_belt"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/belt.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -849,7 +849,7 @@ object_tangible_wearables_belt_shared_belt_s16 = SharedTangibleObjectTemplate:ne
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -868,7 +868,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_belt_shared_belt_s16
 
 object_tangible_wearables_belt_shared_belt_s17 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/belt_s17_f.sat",
-	arrangementDescriptors = {"utility_belt"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/belt.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -904,7 +904,7 @@ object_tangible_wearables_belt_shared_belt_s17 = SharedTangibleObjectTemplate:ne
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -923,7 +923,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_belt_shared_belt_s17
 
 object_tangible_wearables_belt_shared_belt_s18 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/belt_s18_f.sat",
-	arrangementDescriptors = {"utility_belt"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/belt.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -959,7 +959,7 @@ object_tangible_wearables_belt_shared_belt_s18 = SharedTangibleObjectTemplate:ne
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -978,7 +978,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_belt_shared_belt_s18
 
 object_tangible_wearables_belt_shared_belt_s19 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/belt_s19_f.sat",
-	arrangementDescriptors = {"utility_belt"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/belt.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1014,7 +1014,7 @@ object_tangible_wearables_belt_shared_belt_s19 = SharedTangibleObjectTemplate:ne
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1033,7 +1033,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_belt_shared_belt_s19
 
 object_tangible_wearables_belt_shared_belt_s20 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/belt_s20_f.sat",
-	arrangementDescriptors = {"utility_belt"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/belt.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1069,7 +1069,7 @@ object_tangible_wearables_belt_shared_belt_s20 = SharedTangibleObjectTemplate:ne
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",

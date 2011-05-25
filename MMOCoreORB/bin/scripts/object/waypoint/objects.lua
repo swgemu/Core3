@@ -43,7 +43,7 @@
 
 object_waypoint_shared_path_waypoint = SharedWaypointObjectTemplate:new {
 	appearanceFilename = "appearance/thm_prp_gungan_plasma_sphere.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -74,7 +74,7 @@ object_waypoint_shared_path_waypoint = SharedWaypointObjectTemplate:new {
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -88,7 +88,7 @@ ObjectTemplates:addClientTemplate(object_waypoint_shared_path_waypoint, "object/
 
 object_waypoint_shared_waypoint = SharedWaypointObjectTemplate:new {
 	appearanceFilename = "appearance/ui_planet_sel_default.apt",
-	arrangementDescriptors = {"token_waypoint"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_waypoint.iff",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -119,7 +119,7 @@ object_waypoint_shared_waypoint = SharedWaypointObjectTemplate:new {
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -133,7 +133,7 @@ ObjectTemplates:addClientTemplate(object_waypoint_shared_waypoint, "object/waypo
 
 object_waypoint_shared_world_waypoint = SharedWaypointObjectTemplate:new {
 	appearanceFilename = "appearance/pt_waypoint_blue.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -164,7 +164,7 @@ object_waypoint_shared_world_waypoint = SharedWaypointObjectTemplate:new {
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -178,7 +178,7 @@ ObjectTemplates:addClientTemplate(object_waypoint_shared_world_waypoint, "object
 
 object_waypoint_shared_world_waypoint_blue = SharedWaypointObjectTemplate:new {
 	appearanceFilename = "appearance/pt_waypoint_blue.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -209,7 +209,7 @@ object_waypoint_shared_world_waypoint_blue = SharedWaypointObjectTemplate:new {
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -223,7 +223,7 @@ ObjectTemplates:addClientTemplate(object_waypoint_shared_world_waypoint_blue, "o
 
 object_waypoint_shared_world_waypoint_green = SharedWaypointObjectTemplate:new {
 	appearanceFilename = "appearance/pt_waypoint_green.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -254,7 +254,7 @@ object_waypoint_shared_world_waypoint_green = SharedWaypointObjectTemplate:new {
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -268,7 +268,7 @@ ObjectTemplates:addClientTemplate(object_waypoint_shared_world_waypoint_green, "
 
 object_waypoint_shared_world_waypoint_orange = SharedWaypointObjectTemplate:new {
 	appearanceFilename = "appearance/pt_waypoint_orange.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -299,7 +299,7 @@ object_waypoint_shared_world_waypoint_orange = SharedWaypointObjectTemplate:new 
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -313,7 +313,7 @@ ObjectTemplates:addClientTemplate(object_waypoint_shared_world_waypoint_orange, 
 
 object_waypoint_shared_world_waypoint_purple = SharedWaypointObjectTemplate:new {
 	appearanceFilename = "appearance/pt_waypoint_red.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -344,7 +344,7 @@ object_waypoint_shared_world_waypoint_purple = SharedWaypointObjectTemplate:new 
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -358,7 +358,7 @@ ObjectTemplates:addClientTemplate(object_waypoint_shared_world_waypoint_purple, 
 
 object_waypoint_shared_world_waypoint_space = SharedWaypointObjectTemplate:new {
 	appearanceFilename = "appearance/pt_space_waypoint.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -389,7 +389,7 @@ object_waypoint_shared_world_waypoint_space = SharedWaypointObjectTemplate:new {
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -403,7 +403,7 @@ ObjectTemplates:addClientTemplate(object_waypoint_shared_world_waypoint_space, "
 
 object_waypoint_shared_world_waypoint_white = SharedWaypointObjectTemplate:new {
 	appearanceFilename = "appearance/pt_waypoint_white.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -434,7 +434,7 @@ object_waypoint_shared_world_waypoint_white = SharedWaypointObjectTemplate:new {
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -448,7 +448,7 @@ ObjectTemplates:addClientTemplate(object_waypoint_shared_world_waypoint_white, "
 
 object_waypoint_shared_world_waypoint_yellow = SharedWaypointObjectTemplate:new {
 	appearanceFilename = "appearance/pt_waypoint_yellow.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -479,7 +479,7 @@ object_waypoint_shared_world_waypoint_yellow = SharedWaypointObjectTemplate:new 
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 

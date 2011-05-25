@@ -43,7 +43,7 @@
 
 object_manufacture_schematic_base_shared_base_manufacture_schematic = SharedManufactureSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {"test_manf_schematic"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_manf_schematic.iff",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -74,7 +74,7 @@ object_manufacture_schematic_base_shared_base_manufacture_schematic = SharedManu
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -88,7 +88,7 @@ ObjectTemplates:addClientTemplate(object_manufacture_schematic_base_shared_base_
 
 object_manufacture_schematic_base_shared_manufacture_schematic_default = SharedManufactureSchematicObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {"test_manf_schematic"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_manf_schematic.iff",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -119,7 +119,7 @@ object_manufacture_schematic_base_shared_manufacture_schematic_default = SharedM
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 0,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 

@@ -43,7 +43,7 @@
 
 object_installation_turret_shared_turret_block_large = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/ins_all_def_turret_lg_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 15,
@@ -79,7 +79,7 @@ object_installation_turret_shared_turret_block_large = SharedInstallationObjectT
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/installation/base/shared_installation_base.sfp",
@@ -98,7 +98,7 @@ ObjectTemplates:addClientTemplate(object_installation_turret_shared_turret_block
 
 object_installation_turret_shared_turret_block_med = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/ins_all_def_turret_m_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 15,
@@ -134,7 +134,7 @@ object_installation_turret_shared_turret_block_med = SharedInstallationObjectTem
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/installation/base/shared_installation_base.sfp",
@@ -153,7 +153,7 @@ ObjectTemplates:addClientTemplate(object_installation_turret_shared_turret_block
 
 object_installation_turret_shared_turret_block_sm = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/ins_all_def_turret_sm_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 15,
@@ -189,7 +189,7 @@ object_installation_turret_shared_turret_block_sm = SharedInstallationObjectTemp
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/installation/base/shared_installation_base.sfp",
@@ -208,7 +208,7 @@ ObjectTemplates:addClientTemplate(object_installation_turret_shared_turret_block
 
 object_installation_turret_shared_turret_dish_large = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/ins_all_def_turret_lg_s03.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 15,
@@ -244,7 +244,7 @@ object_installation_turret_shared_turret_dish_large = SharedInstallationObjectTe
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/installation/base/shared_installation_base.sfp",
@@ -263,7 +263,7 @@ ObjectTemplates:addClientTemplate(object_installation_turret_shared_turret_dish_
 
 object_installation_turret_shared_turret_dish_sm = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/ins_all_def_turret_sm_s03.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 15,
@@ -299,7 +299,7 @@ object_installation_turret_shared_turret_dish_sm = SharedInstallationObjectTempl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/installation/base/shared_installation_base.sfp",
@@ -318,7 +318,7 @@ ObjectTemplates:addClientTemplate(object_installation_turret_shared_turret_dish_
 
 object_installation_turret_shared_turret_tower_large = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/ins_all_def_turret_lg_s02.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 15,
@@ -354,7 +354,7 @@ object_installation_turret_shared_turret_tower_large = SharedInstallationObjectT
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/installation/base/shared_installation_base.sfp",
@@ -373,7 +373,7 @@ ObjectTemplates:addClientTemplate(object_installation_turret_shared_turret_tower
 
 object_installation_turret_shared_turret_tower_med = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/ins_all_def_turret_m_s02.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 15,
@@ -409,7 +409,7 @@ object_installation_turret_shared_turret_tower_med = SharedInstallationObjectTem
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/installation/base/shared_installation_base.sfp",
@@ -428,7 +428,7 @@ ObjectTemplates:addClientTemplate(object_installation_turret_shared_turret_tower
 
 object_installation_turret_shared_turret_tower_sm = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/ins_all_def_turret_sm_s02.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 15,
@@ -464,7 +464,7 @@ object_installation_turret_shared_turret_tower_sm = SharedInstallationObjectTemp
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/installation/base/shared_installation_base.sfp",

@@ -43,7 +43,7 @@
 
 object_static_space_zonemap_shared_ui_hyperspace = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/ui_hyperspace.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -74,7 +74,7 @@ object_static_space_zonemap_shared_ui_hyperspace = SharedStaticObjectTemplate:ne
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 2,
 
@@ -88,7 +88,7 @@ ObjectTemplates:addClientTemplate(object_static_space_zonemap_shared_ui_hyperspa
 
 object_static_space_zonemap_shared_ui_mission_critical = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/ui_mission_critical.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -119,7 +119,7 @@ object_static_space_zonemap_shared_ui_mission_critical = SharedStaticObjectTempl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 2,
 
@@ -133,7 +133,7 @@ ObjectTemplates:addClientTemplate(object_static_space_zonemap_shared_ui_mission_
 
 object_static_space_zonemap_shared_ui_poi_waypoint = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/ui_poi_waypoint.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -164,7 +164,7 @@ object_static_space_zonemap_shared_ui_poi_waypoint = SharedStaticObjectTemplate:
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 2,
 
@@ -178,7 +178,7 @@ ObjectTemplates:addClientTemplate(object_static_space_zonemap_shared_ui_poi_wayp
 
 object_static_space_zonemap_shared_ui_spacestation = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/ui_spacestation.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -209,7 +209,7 @@ object_static_space_zonemap_shared_ui_spacestation = SharedStaticObjectTemplate:
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 2,
 
@@ -223,7 +223,7 @@ ObjectTemplates:addClientTemplate(object_static_space_zonemap_shared_ui_spacesta
 
 object_static_space_zonemap_shared_ui_waypoint = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/ui_waypoint.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -254,7 +254,7 @@ object_static_space_zonemap_shared_ui_waypoint = SharedStaticObjectTemplate:new 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 2,
 
@@ -268,7 +268,7 @@ ObjectTemplates:addClientTemplate(object_static_space_zonemap_shared_ui_waypoint
 
 object_static_space_zonemap_shared_ui_waypoint_active = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/ui_waypoint_active.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -299,7 +299,7 @@ object_static_space_zonemap_shared_ui_waypoint_active = SharedStaticObjectTempla
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 2,
 

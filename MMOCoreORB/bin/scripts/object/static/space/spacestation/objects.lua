@@ -43,7 +43,7 @@
 
 object_static_space_spacestation_shared_corsec_outpost_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/spacestation_outpost_corsec.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -74,7 +74,7 @@ object_static_space_spacestation_shared_corsec_outpost_01 = SharedStaticObjectTe
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 1,
 
@@ -88,7 +88,7 @@ ObjectTemplates:addClientTemplate(object_static_space_spacestation_shared_corsec
 
 object_static_space_spacestation_shared_destroyed_imperial_spacestation_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/rebel_station_destroyed.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -119,7 +119,7 @@ object_static_space_spacestation_shared_destroyed_imperial_spacestation_01 = Sha
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 1,
 
@@ -133,7 +133,7 @@ ObjectTemplates:addClientTemplate(object_static_space_spacestation_shared_destro
 
 object_static_space_spacestation_shared_destroyed_neutral_spacestation_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/neutral_station_destroyed.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -164,7 +164,7 @@ object_static_space_spacestation_shared_destroyed_neutral_spacestation_01 = Shar
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 1,
 
@@ -178,7 +178,7 @@ ObjectTemplates:addClientTemplate(object_static_space_spacestation_shared_destro
 
 object_static_space_spacestation_shared_destroyed_rebel_spacestation_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/rebel_station_destroyed.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -209,7 +209,7 @@ object_static_space_spacestation_shared_destroyed_rebel_spacestation_01 = Shared
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 1,
 
@@ -223,7 +223,7 @@ ObjectTemplates:addClientTemplate(object_static_space_spacestation_shared_destro
 
 object_static_space_spacestation_shared_imperial_outpost_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/spacestation_outpost_imperial_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -254,7 +254,7 @@ object_static_space_spacestation_shared_imperial_outpost_01 = SharedStaticObject
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 1,
 
@@ -268,7 +268,7 @@ ObjectTemplates:addClientTemplate(object_static_space_spacestation_shared_imperi
 
 object_static_space_spacestation_shared_imperial_spacestation_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/spacestation_imperial.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -299,7 +299,7 @@ object_static_space_spacestation_shared_imperial_spacestation_01 = SharedStaticO
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 1,
 
@@ -313,7 +313,7 @@ ObjectTemplates:addClientTemplate(object_static_space_spacestation_shared_imperi
 
 object_static_space_spacestation_shared_mining_outpost_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/spacestation_outpost_mining.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -344,7 +344,7 @@ object_static_space_spacestation_shared_mining_outpost_01 = SharedStaticObjectTe
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 1,
 
@@ -358,7 +358,7 @@ ObjectTemplates:addClientTemplate(object_static_space_spacestation_shared_mining
 
 object_static_space_spacestation_shared_neutral_spacestation_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/spacestation_outpost_imperial_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -389,7 +389,7 @@ object_static_space_spacestation_shared_neutral_spacestation_01 = SharedStaticOb
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 1,
 
@@ -403,7 +403,7 @@ ObjectTemplates:addClientTemplate(object_static_space_spacestation_shared_neutra
 
 object_static_space_spacestation_shared_pirate_outpost_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/spacestation_outpost_pirate.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -434,7 +434,7 @@ object_static_space_spacestation_shared_pirate_outpost_01 = SharedStaticObjectTe
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 1,
 
@@ -448,7 +448,7 @@ ObjectTemplates:addClientTemplate(object_static_space_spacestation_shared_pirate
 
 object_static_space_spacestation_shared_pirate_outpost_asteroid = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/spacestation_pirate_asteroid.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -479,7 +479,7 @@ object_static_space_spacestation_shared_pirate_outpost_asteroid = SharedStaticOb
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 1,
 
@@ -493,7 +493,7 @@ ObjectTemplates:addClientTemplate(object_static_space_spacestation_shared_pirate
 
 object_static_space_spacestation_shared_rebel_outpost_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/spacestation_outpost_rebel_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -524,7 +524,7 @@ object_static_space_spacestation_shared_rebel_outpost_01 = SharedStaticObjectTem
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 1,
 
@@ -538,7 +538,7 @@ ObjectTemplates:addClientTemplate(object_static_space_spacestation_shared_rebel_
 
 object_static_space_spacestation_shared_rebel_spacestation_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/spacestation_outpost_imperial_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -569,7 +569,7 @@ object_static_space_spacestation_shared_rebel_spacestation_01 = SharedStaticObje
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 1,
 
@@ -583,7 +583,7 @@ ObjectTemplates:addClientTemplate(object_static_space_spacestation_shared_rebel_
 
 object_static_space_spacestation_shared_rsf_spacestation = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/spacestation_rsf.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -614,7 +614,7 @@ object_static_space_spacestation_shared_rsf_spacestation = SharedStaticObjectTem
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 1,
 
@@ -628,7 +628,7 @@ ObjectTemplates:addClientTemplate(object_static_space_spacestation_shared_rsf_sp
 
 object_static_space_spacestation_shared_tradefed_destroyed_hulk = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/spacestation_tradefed_destroyed_hulk.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -659,7 +659,7 @@ object_static_space_spacestation_shared_tradefed_destroyed_hulk = SharedStaticOb
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 1,
 
@@ -673,7 +673,7 @@ ObjectTemplates:addClientTemplate(object_static_space_spacestation_shared_tradef
 
 object_static_space_spacestation_shared_tradefed_outpost_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/spacestation_outpost_tradefed.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -704,7 +704,7 @@ object_static_space_spacestation_shared_tradefed_outpost_01 = SharedStaticObject
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 1,
 

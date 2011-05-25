@@ -43,7 +43,7 @@
 
 object_static_particle_shared_particle_bactatank_bubbles = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_bacta_tank_lg_bubbles.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -74,7 +74,7 @@ object_static_particle_shared_particle_bactatank_bubbles = SharedStaticObjectTem
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -88,7 +88,7 @@ ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_bactata
 
 object_static_particle_shared_particle_campfire_style_1 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_campfire_s01.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -119,7 +119,7 @@ object_static_particle_shared_particle_campfire_style_1 = SharedStaticObjectTemp
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -133,7 +133,7 @@ ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_campfir
 
 object_static_particle_shared_particle_distant_ships = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_distant_ships.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -164,7 +164,7 @@ object_static_particle_shared_particle_distant_ships = SharedStaticObjectTemplat
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -178,7 +178,7 @@ ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_distant
 
 object_static_particle_shared_particle_distant_ships_dogfight_t_vs_x = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_sky_battle_tie_vs_xwing.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -209,7 +209,7 @@ object_static_particle_shared_particle_distant_ships_dogfight_t_vs_x = SharedSta
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -223,7 +223,7 @@ ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_distant
 
 object_static_particle_shared_particle_distant_ships_dogfight_t_vs_x_2 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_sky_battle_tie_vs_xwing_2.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -254,7 +254,7 @@ object_static_particle_shared_particle_distant_ships_dogfight_t_vs_x_2 = SharedS
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -268,7 +268,7 @@ ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_distant
 
 object_static_particle_shared_particle_distant_ships_dogfight_t_vs_x_3 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_sky_battle_tie_vs_xwing_3.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -299,7 +299,7 @@ object_static_particle_shared_particle_distant_ships_dogfight_t_vs_x_3 = SharedS
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -313,7 +313,7 @@ ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_distant
 
 object_static_particle_shared_particle_distant_ships_dogfight_tb_vs_bw = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_sky_battle_tie_bomber_vs_bwing.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -344,7 +344,7 @@ object_static_particle_shared_particle_distant_ships_dogfight_tb_vs_bw = SharedS
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -358,7 +358,7 @@ ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_distant
 
 object_static_particle_shared_particle_distant_ships_dogfight_tb_vs_bw_2 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_sky_battle_tie_bomber_vs_bwing_2.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -389,7 +389,7 @@ object_static_particle_shared_particle_distant_ships_dogfight_tb_vs_bw_2 = Share
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -403,7 +403,7 @@ ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_distant
 
 object_static_particle_shared_particle_distant_ships_dogfight_tb_vs_bw_3 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_sky_battle_tie_bomber_vs_bwing_3.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -434,7 +434,7 @@ object_static_particle_shared_particle_distant_ships_dogfight_tb_vs_bw_3 = Share
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -448,7 +448,7 @@ ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_distant
 
 object_static_particle_shared_particle_distant_ships_dogfight_ti_vs_aw = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_sky_battle_tie_interceptor_vs_awing.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -479,7 +479,7 @@ object_static_particle_shared_particle_distant_ships_dogfight_ti_vs_aw = SharedS
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -493,7 +493,7 @@ ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_distant
 
 object_static_particle_shared_particle_distant_ships_dogfight_ti_vs_aw_2 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_sky_battle_tie_interceptor_vs_awing_2.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -524,7 +524,7 @@ object_static_particle_shared_particle_distant_ships_dogfight_ti_vs_aw_2 = Share
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -538,7 +538,7 @@ ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_distant
 
 object_static_particle_shared_particle_distant_ships_dogfight_ti_vs_aw_3 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_sky_battle_tie_interceptor_vs_awing_3.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -569,7 +569,7 @@ object_static_particle_shared_particle_distant_ships_dogfight_ti_vs_aw_3 = Share
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -583,7 +583,7 @@ ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_distant
 
 object_static_particle_shared_particle_distant_ships_imperial = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_distant_ships_imperial.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -614,7 +614,7 @@ object_static_particle_shared_particle_distant_ships_imperial = SharedStaticObje
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -628,7 +628,7 @@ ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_distant
 
 object_static_particle_shared_particle_distant_ships_rebel = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_distant_ships_rebel.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -659,7 +659,7 @@ object_static_particle_shared_particle_distant_ships_rebel = SharedStaticObjectT
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -673,7 +673,7 @@ ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_distant
 
 object_static_particle_shared_particle_geyser_01_l0 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_geyser_01_l0.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -704,7 +704,7 @@ object_static_particle_shared_particle_geyser_01_l0 = SharedStaticObjectTemplate
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -718,7 +718,7 @@ ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_geyser_
 
 object_static_particle_shared_particle_geyser_01_l1 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_geyser_01_l1.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -749,7 +749,7 @@ object_static_particle_shared_particle_geyser_01_l1 = SharedStaticObjectTemplate
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -763,7 +763,7 @@ ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_geyser_
 
 object_static_particle_shared_particle_geyser_01_l2 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_geyser_01_l2.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -794,7 +794,7 @@ object_static_particle_shared_particle_geyser_01_l2 = SharedStaticObjectTemplate
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -808,7 +808,7 @@ ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_geyser_
 
 object_static_particle_shared_particle_geyser_01_l3 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_geyser_01_l3.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -839,7 +839,7 @@ object_static_particle_shared_particle_geyser_01_l3 = SharedStaticObjectTemplate
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -853,7 +853,7 @@ ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_geyser_
 
 object_static_particle_shared_particle_geyser_center = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_geyser_center.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -884,7 +884,7 @@ object_static_particle_shared_particle_geyser_center = SharedStaticObjectTemplat
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -898,7 +898,7 @@ ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_geyser_
 
 object_static_particle_shared_particle_lg_explosion = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_lg_explosion.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -929,7 +929,7 @@ object_static_particle_shared_particle_lg_explosion = SharedStaticObjectTemplate
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -943,7 +943,7 @@ ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_lg_expl
 
 object_static_particle_shared_particle_magic_sparks = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_magic_sparks.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -974,7 +974,7 @@ object_static_particle_shared_particle_magic_sparks = SharedStaticObjectTemplate
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -988,7 +988,7 @@ ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_magic_s
 
 object_static_particle_shared_particle_md_explosion = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_md_explosion.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1019,7 +1019,7 @@ object_static_particle_shared_particle_md_explosion = SharedStaticObjectTemplate
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -1033,7 +1033,7 @@ ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_md_expl
 
 object_static_particle_shared_particle_mine_explosion = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_mine_explosion.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1064,7 +1064,7 @@ object_static_particle_shared_particle_mine_explosion = SharedStaticObjectTempla
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -1078,7 +1078,7 @@ ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_mine_ex
 
 object_static_particle_shared_particle_mine_warning = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_mine_warning.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1109,7 +1109,7 @@ object_static_particle_shared_particle_mine_warning = SharedStaticObjectTemplate
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -1123,7 +1123,7 @@ ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_mine_wa
 
 object_static_particle_shared_particle_newbie_airport_sign = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_newbie_airport_sign.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1154,7 +1154,7 @@ object_static_particle_shared_particle_newbie_airport_sign = SharedStaticObjectT
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -1168,7 +1168,7 @@ ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_newbie_
 
 object_static_particle_shared_particle_newbie_arrow = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_newbie_arrow.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1199,7 +1199,7 @@ object_static_particle_shared_particle_newbie_arrow = SharedStaticObjectTemplate
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -1213,7 +1213,7 @@ ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_newbie_
 
 object_static_particle_shared_particle_newbie_bomb_debris = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_newbie_bombed_spot.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1244,7 +1244,7 @@ object_static_particle_shared_particle_newbie_bomb_debris = SharedStaticObjectTe
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -1258,7 +1258,7 @@ ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_newbie_
 
 object_static_particle_shared_particle_newbie_bombed_spot = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_newbie_bombed_spot.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1289,7 +1289,7 @@ object_static_particle_shared_particle_newbie_bombed_spot = SharedStaticObjectTe
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -1303,7 +1303,7 @@ ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_newbie_
 
 object_static_particle_shared_particle_newbie_hanging_smoke = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_newbie_hanging_smoke.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1334,7 +1334,7 @@ object_static_particle_shared_particle_newbie_hanging_smoke = SharedStaticObject
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -1348,7 +1348,7 @@ ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_newbie_
 
 object_static_particle_shared_particle_newbie_refrigerator_steam = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_newbie_refrigerator_steam.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1379,7 +1379,7 @@ object_static_particle_shared_particle_newbie_refrigerator_steam = SharedStaticO
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -1393,7 +1393,7 @@ ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_newbie_
 
 object_static_particle_shared_particle_newbie_siren = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_newbie_siren.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1424,7 +1424,7 @@ object_static_particle_shared_particle_newbie_siren = SharedStaticObjectTemplate
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -1438,7 +1438,7 @@ ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_newbie_
 
 object_static_particle_shared_particle_newbie_spotlight = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_newbie_spotlight.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1469,7 +1469,7 @@ object_static_particle_shared_particle_newbie_spotlight = SharedStaticObjectTemp
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -1483,7 +1483,7 @@ ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_newbie_
 
 object_static_particle_shared_particle_newbie_steam = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_newbie_steam.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1514,7 +1514,7 @@ object_static_particle_shared_particle_newbie_steam = SharedStaticObjectTemplate
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -1528,7 +1528,7 @@ ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_newbie_
 
 object_static_particle_shared_particle_newbie_wall_mech_lights_blue = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_newbie_wall_mech_lights_blue.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1559,7 +1559,7 @@ object_static_particle_shared_particle_newbie_wall_mech_lights_blue = SharedStat
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -1573,7 +1573,7 @@ ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_newbie_
 
 object_static_particle_shared_particle_newbie_wall_mech_lights_red = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_newbie_wall_mech_lights_red.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1604,7 +1604,7 @@ object_static_particle_shared_particle_newbie_wall_mech_lights_red = SharedStati
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -1618,7 +1618,7 @@ ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_newbie_
 
 object_static_particle_shared_particle_newbie_wall_mech_lights_yellow = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_newbie_wall_mech_lights_yellow.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1649,7 +1649,7 @@ object_static_particle_shared_particle_newbie_wall_mech_lights_yellow = SharedSt
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -1663,7 +1663,7 @@ ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_newbie_
 
 object_static_particle_shared_particle_seagulls_flock = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_birds_flock.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1694,7 +1694,7 @@ object_static_particle_shared_particle_seagulls_flock = SharedStaticObjectTempla
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -1708,7 +1708,7 @@ ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_seagull
 
 object_static_particle_shared_particle_sm_explosion = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_sm_explosion.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1739,7 +1739,7 @@ object_static_particle_shared_particle_sm_explosion = SharedStaticObjectTemplate
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -1753,7 +1753,7 @@ ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_sm_expl
 
 object_static_particle_shared_particle_smoke = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_smoke.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1784,7 +1784,7 @@ object_static_particle_shared_particle_smoke = SharedStaticObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -1798,7 +1798,7 @@ ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_smoke, 
 
 object_static_particle_shared_particle_test_1 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/unshaded_geyser_test.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1829,7 +1829,7 @@ object_static_particle_shared_particle_test_1 = SharedStaticObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -1843,7 +1843,7 @@ ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_test_1,
 
 object_static_particle_shared_particle_test_10 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/particle_test_10.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1874,7 +1874,7 @@ object_static_particle_shared_particle_test_10 = SharedStaticObjectTemplate:new 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -1888,7 +1888,7 @@ ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_test_10
 
 object_static_particle_shared_particle_test_100 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/particle_test_100.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1919,7 +1919,7 @@ object_static_particle_shared_particle_test_100 = SharedStaticObjectTemplate:new
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -1933,7 +1933,7 @@ ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_test_10
 
 object_static_particle_shared_particle_test_11 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/particle_test_11.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1964,7 +1964,7 @@ object_static_particle_shared_particle_test_11 = SharedStaticObjectTemplate:new 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -1978,7 +1978,7 @@ ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_test_11
 
 object_static_particle_shared_particle_test_12 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/particle_test_12.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -2009,7 +2009,7 @@ object_static_particle_shared_particle_test_12 = SharedStaticObjectTemplate:new 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -2023,7 +2023,7 @@ ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_test_12
 
 object_static_particle_shared_particle_test_13 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/particle_test_13.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -2054,7 +2054,7 @@ object_static_particle_shared_particle_test_13 = SharedStaticObjectTemplate:new 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -2068,7 +2068,7 @@ ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_test_13
 
 object_static_particle_shared_particle_test_14 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/particle_test_14.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -2099,7 +2099,7 @@ object_static_particle_shared_particle_test_14 = SharedStaticObjectTemplate:new 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -2113,7 +2113,7 @@ ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_test_14
 
 object_static_particle_shared_particle_test_15 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/particle_test_15.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -2144,7 +2144,7 @@ object_static_particle_shared_particle_test_15 = SharedStaticObjectTemplate:new 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -2158,7 +2158,7 @@ ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_test_15
 
 object_static_particle_shared_particle_test_16 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/particle_test_16.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -2189,7 +2189,7 @@ object_static_particle_shared_particle_test_16 = SharedStaticObjectTemplate:new 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -2203,7 +2203,7 @@ ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_test_16
 
 object_static_particle_shared_particle_test_17 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/particle_test_17.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -2234,7 +2234,7 @@ object_static_particle_shared_particle_test_17 = SharedStaticObjectTemplate:new 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -2248,7 +2248,7 @@ ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_test_17
 
 object_static_particle_shared_particle_test_18 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/particle_test_18.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -2279,7 +2279,7 @@ object_static_particle_shared_particle_test_18 = SharedStaticObjectTemplate:new 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -2293,7 +2293,7 @@ ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_test_18
 
 object_static_particle_shared_particle_test_19 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/particle_test_19.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -2324,7 +2324,7 @@ object_static_particle_shared_particle_test_19 = SharedStaticObjectTemplate:new 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -2338,7 +2338,7 @@ ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_test_19
 
 object_static_particle_shared_particle_test_2 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/particle_test_2.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "sample/amb_waterfall_large_lp.sam",
@@ -2369,7 +2369,7 @@ object_static_particle_shared_particle_test_2 = SharedStaticObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -2383,7 +2383,7 @@ ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_test_2,
 
 object_static_particle_shared_particle_test_20 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/particle_test_20.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -2414,7 +2414,7 @@ object_static_particle_shared_particle_test_20 = SharedStaticObjectTemplate:new 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -2428,7 +2428,7 @@ ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_test_20
 
 object_static_particle_shared_particle_test_21 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/particle_test_21.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -2459,7 +2459,7 @@ object_static_particle_shared_particle_test_21 = SharedStaticObjectTemplate:new 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -2473,7 +2473,7 @@ ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_test_21
 
 object_static_particle_shared_particle_test_22 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/particle_test_22.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -2504,7 +2504,7 @@ object_static_particle_shared_particle_test_22 = SharedStaticObjectTemplate:new 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -2518,7 +2518,7 @@ ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_test_22
 
 object_static_particle_shared_particle_test_23 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/particle_test_23.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -2549,7 +2549,7 @@ object_static_particle_shared_particle_test_23 = SharedStaticObjectTemplate:new 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -2563,7 +2563,7 @@ ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_test_23
 
 object_static_particle_shared_particle_test_24 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/particle_test_24.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -2594,7 +2594,7 @@ object_static_particle_shared_particle_test_24 = SharedStaticObjectTemplate:new 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -2608,7 +2608,7 @@ ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_test_24
 
 object_static_particle_shared_particle_test_25 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/particle_test_25.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -2639,7 +2639,7 @@ object_static_particle_shared_particle_test_25 = SharedStaticObjectTemplate:new 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -2653,7 +2653,7 @@ ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_test_25
 
 object_static_particle_shared_particle_test_26 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/particle_test_26.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -2684,7 +2684,7 @@ object_static_particle_shared_particle_test_26 = SharedStaticObjectTemplate:new 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -2698,7 +2698,7 @@ ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_test_26
 
 object_static_particle_shared_particle_test_27 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/particle_test_27.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -2729,7 +2729,7 @@ object_static_particle_shared_particle_test_27 = SharedStaticObjectTemplate:new 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -2743,7 +2743,7 @@ ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_test_27
 
 object_static_particle_shared_particle_test_28 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/particle_test_28.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -2774,7 +2774,7 @@ object_static_particle_shared_particle_test_28 = SharedStaticObjectTemplate:new 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -2788,7 +2788,7 @@ ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_test_28
 
 object_static_particle_shared_particle_test_29 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/particle_test_29.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -2819,7 +2819,7 @@ object_static_particle_shared_particle_test_29 = SharedStaticObjectTemplate:new 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -2833,7 +2833,7 @@ ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_test_29
 
 object_static_particle_shared_particle_test_3 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_invisible_particle.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -2864,7 +2864,7 @@ object_static_particle_shared_particle_test_3 = SharedStaticObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -2878,7 +2878,7 @@ ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_test_3,
 
 object_static_particle_shared_particle_test_30 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/particle_test_30.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -2909,7 +2909,7 @@ object_static_particle_shared_particle_test_30 = SharedStaticObjectTemplate:new 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -2923,7 +2923,7 @@ ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_test_30
 
 object_static_particle_shared_particle_test_31 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/particle_test_31.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -2954,7 +2954,7 @@ object_static_particle_shared_particle_test_31 = SharedStaticObjectTemplate:new 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -2968,7 +2968,7 @@ ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_test_31
 
 object_static_particle_shared_particle_test_32 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/particle_test_32.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -2999,7 +2999,7 @@ object_static_particle_shared_particle_test_32 = SharedStaticObjectTemplate:new 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -3013,7 +3013,7 @@ ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_test_32
 
 object_static_particle_shared_particle_test_33 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/particle_test_33.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -3044,7 +3044,7 @@ object_static_particle_shared_particle_test_33 = SharedStaticObjectTemplate:new 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -3058,7 +3058,7 @@ ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_test_33
 
 object_static_particle_shared_particle_test_34 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/particle_test_34.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -3089,7 +3089,7 @@ object_static_particle_shared_particle_test_34 = SharedStaticObjectTemplate:new 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -3103,7 +3103,7 @@ ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_test_34
 
 object_static_particle_shared_particle_test_35 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/particle_test_35.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -3134,7 +3134,7 @@ object_static_particle_shared_particle_test_35 = SharedStaticObjectTemplate:new 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -3148,7 +3148,7 @@ ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_test_35
 
 object_static_particle_shared_particle_test_36 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/particle_test_36.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -3179,7 +3179,7 @@ object_static_particle_shared_particle_test_36 = SharedStaticObjectTemplate:new 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -3193,7 +3193,7 @@ ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_test_36
 
 object_static_particle_shared_particle_test_37 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/particle_test_37.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -3224,7 +3224,7 @@ object_static_particle_shared_particle_test_37 = SharedStaticObjectTemplate:new 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -3238,7 +3238,7 @@ ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_test_37
 
 object_static_particle_shared_particle_test_38 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/particle_test_38.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -3269,7 +3269,7 @@ object_static_particle_shared_particle_test_38 = SharedStaticObjectTemplate:new 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -3283,7 +3283,7 @@ ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_test_38
 
 object_static_particle_shared_particle_test_39 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/particle_test_39.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -3314,7 +3314,7 @@ object_static_particle_shared_particle_test_39 = SharedStaticObjectTemplate:new 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -3328,7 +3328,7 @@ ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_test_39
 
 object_static_particle_shared_particle_test_4 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_invisible_particle.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -3359,7 +3359,7 @@ object_static_particle_shared_particle_test_4 = SharedStaticObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -3373,7 +3373,7 @@ ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_test_4,
 
 object_static_particle_shared_particle_test_40 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/particle_test_40.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -3404,7 +3404,7 @@ object_static_particle_shared_particle_test_40 = SharedStaticObjectTemplate:new 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -3418,7 +3418,7 @@ ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_test_40
 
 object_static_particle_shared_particle_test_41 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/particle_test_41.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -3449,7 +3449,7 @@ object_static_particle_shared_particle_test_41 = SharedStaticObjectTemplate:new 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -3463,7 +3463,7 @@ ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_test_41
 
 object_static_particle_shared_particle_test_42 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/particle_test_42.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -3494,7 +3494,7 @@ object_static_particle_shared_particle_test_42 = SharedStaticObjectTemplate:new 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -3508,7 +3508,7 @@ ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_test_42
 
 object_static_particle_shared_particle_test_43 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/particle_test_43.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -3539,7 +3539,7 @@ object_static_particle_shared_particle_test_43 = SharedStaticObjectTemplate:new 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -3553,7 +3553,7 @@ ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_test_43
 
 object_static_particle_shared_particle_test_44 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/particle_test_44.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -3584,7 +3584,7 @@ object_static_particle_shared_particle_test_44 = SharedStaticObjectTemplate:new 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -3598,7 +3598,7 @@ ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_test_44
 
 object_static_particle_shared_particle_test_45 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/particle_test_45.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -3629,7 +3629,7 @@ object_static_particle_shared_particle_test_45 = SharedStaticObjectTemplate:new 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -3643,7 +3643,7 @@ ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_test_45
 
 object_static_particle_shared_particle_test_46 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/particle_test_46.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -3674,7 +3674,7 @@ object_static_particle_shared_particle_test_46 = SharedStaticObjectTemplate:new 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -3688,7 +3688,7 @@ ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_test_46
 
 object_static_particle_shared_particle_test_47 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/particle_test_47.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -3719,7 +3719,7 @@ object_static_particle_shared_particle_test_47 = SharedStaticObjectTemplate:new 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -3733,7 +3733,7 @@ ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_test_47
 
 object_static_particle_shared_particle_test_48 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/particle_test_48.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -3764,7 +3764,7 @@ object_static_particle_shared_particle_test_48 = SharedStaticObjectTemplate:new 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -3778,7 +3778,7 @@ ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_test_48
 
 object_static_particle_shared_particle_test_49 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/particle_test_49.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -3809,7 +3809,7 @@ object_static_particle_shared_particle_test_49 = SharedStaticObjectTemplate:new 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -3823,7 +3823,7 @@ ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_test_49
 
 object_static_particle_shared_particle_test_5 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_invisible_particle.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -3854,7 +3854,7 @@ object_static_particle_shared_particle_test_5 = SharedStaticObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -3868,7 +3868,7 @@ ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_test_5,
 
 object_static_particle_shared_particle_test_50 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/particle_test_50.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -3899,7 +3899,7 @@ object_static_particle_shared_particle_test_50 = SharedStaticObjectTemplate:new 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -3913,7 +3913,7 @@ ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_test_50
 
 object_static_particle_shared_particle_test_51 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/particle_test_51.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -3944,7 +3944,7 @@ object_static_particle_shared_particle_test_51 = SharedStaticObjectTemplate:new 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -3958,7 +3958,7 @@ ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_test_51
 
 object_static_particle_shared_particle_test_52 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/particle_test_52.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -3989,7 +3989,7 @@ object_static_particle_shared_particle_test_52 = SharedStaticObjectTemplate:new 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -4003,7 +4003,7 @@ ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_test_52
 
 object_static_particle_shared_particle_test_53 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/particle_test_53.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -4034,7 +4034,7 @@ object_static_particle_shared_particle_test_53 = SharedStaticObjectTemplate:new 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -4048,7 +4048,7 @@ ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_test_53
 
 object_static_particle_shared_particle_test_54 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/particle_test_54.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -4079,7 +4079,7 @@ object_static_particle_shared_particle_test_54 = SharedStaticObjectTemplate:new 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -4093,7 +4093,7 @@ ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_test_54
 
 object_static_particle_shared_particle_test_55 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/particle_test_55.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -4124,7 +4124,7 @@ object_static_particle_shared_particle_test_55 = SharedStaticObjectTemplate:new 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -4138,7 +4138,7 @@ ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_test_55
 
 object_static_particle_shared_particle_test_56 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/particle_test_56.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -4169,7 +4169,7 @@ object_static_particle_shared_particle_test_56 = SharedStaticObjectTemplate:new 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -4183,7 +4183,7 @@ ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_test_56
 
 object_static_particle_shared_particle_test_57 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/particle_test_57.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -4214,7 +4214,7 @@ object_static_particle_shared_particle_test_57 = SharedStaticObjectTemplate:new 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -4228,7 +4228,7 @@ ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_test_57
 
 object_static_particle_shared_particle_test_58 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/particle_test_58.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -4259,7 +4259,7 @@ object_static_particle_shared_particle_test_58 = SharedStaticObjectTemplate:new 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -4273,7 +4273,7 @@ ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_test_58
 
 object_static_particle_shared_particle_test_59 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/particle_test_59.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -4304,7 +4304,7 @@ object_static_particle_shared_particle_test_59 = SharedStaticObjectTemplate:new 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -4318,7 +4318,7 @@ ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_test_59
 
 object_static_particle_shared_particle_test_6 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/particle_test_6.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -4349,7 +4349,7 @@ object_static_particle_shared_particle_test_6 = SharedStaticObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -4363,7 +4363,7 @@ ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_test_6,
 
 object_static_particle_shared_particle_test_60 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/particle_test_60.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -4394,7 +4394,7 @@ object_static_particle_shared_particle_test_60 = SharedStaticObjectTemplate:new 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -4408,7 +4408,7 @@ ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_test_60
 
 object_static_particle_shared_particle_test_61 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/particle_test_61.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -4439,7 +4439,7 @@ object_static_particle_shared_particle_test_61 = SharedStaticObjectTemplate:new 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -4453,7 +4453,7 @@ ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_test_61
 
 object_static_particle_shared_particle_test_62 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/particle_test_62.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -4484,7 +4484,7 @@ object_static_particle_shared_particle_test_62 = SharedStaticObjectTemplate:new 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -4498,7 +4498,7 @@ ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_test_62
 
 object_static_particle_shared_particle_test_63 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/particle_test_63.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -4529,7 +4529,7 @@ object_static_particle_shared_particle_test_63 = SharedStaticObjectTemplate:new 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -4543,7 +4543,7 @@ ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_test_63
 
 object_static_particle_shared_particle_test_64 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/particle_test_64.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -4574,7 +4574,7 @@ object_static_particle_shared_particle_test_64 = SharedStaticObjectTemplate:new 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -4588,7 +4588,7 @@ ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_test_64
 
 object_static_particle_shared_particle_test_65 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/particle_test_65.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -4619,7 +4619,7 @@ object_static_particle_shared_particle_test_65 = SharedStaticObjectTemplate:new 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -4633,7 +4633,7 @@ ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_test_65
 
 object_static_particle_shared_particle_test_66 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/particle_test_66.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -4664,7 +4664,7 @@ object_static_particle_shared_particle_test_66 = SharedStaticObjectTemplate:new 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -4678,7 +4678,7 @@ ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_test_66
 
 object_static_particle_shared_particle_test_67 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/particle_test_67.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -4709,7 +4709,7 @@ object_static_particle_shared_particle_test_67 = SharedStaticObjectTemplate:new 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -4723,7 +4723,7 @@ ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_test_67
 
 object_static_particle_shared_particle_test_68 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/particle_test_68.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -4754,7 +4754,7 @@ object_static_particle_shared_particle_test_68 = SharedStaticObjectTemplate:new 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -4768,7 +4768,7 @@ ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_test_68
 
 object_static_particle_shared_particle_test_69 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/particle_test_69.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -4799,7 +4799,7 @@ object_static_particle_shared_particle_test_69 = SharedStaticObjectTemplate:new 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -4813,7 +4813,7 @@ ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_test_69
 
 object_static_particle_shared_particle_test_7 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/particle_test_7.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -4844,7 +4844,7 @@ object_static_particle_shared_particle_test_7 = SharedStaticObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -4858,7 +4858,7 @@ ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_test_7,
 
 object_static_particle_shared_particle_test_70 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/particle_test_70.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -4889,7 +4889,7 @@ object_static_particle_shared_particle_test_70 = SharedStaticObjectTemplate:new 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -4903,7 +4903,7 @@ ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_test_70
 
 object_static_particle_shared_particle_test_71 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/particle_test_71.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -4934,7 +4934,7 @@ object_static_particle_shared_particle_test_71 = SharedStaticObjectTemplate:new 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -4948,7 +4948,7 @@ ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_test_71
 
 object_static_particle_shared_particle_test_72 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/particle_test_72.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -4979,7 +4979,7 @@ object_static_particle_shared_particle_test_72 = SharedStaticObjectTemplate:new 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -4993,7 +4993,7 @@ ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_test_72
 
 object_static_particle_shared_particle_test_73 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/particle_test_73.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -5024,7 +5024,7 @@ object_static_particle_shared_particle_test_73 = SharedStaticObjectTemplate:new 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -5038,7 +5038,7 @@ ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_test_73
 
 object_static_particle_shared_particle_test_74 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/particle_test_74.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -5069,7 +5069,7 @@ object_static_particle_shared_particle_test_74 = SharedStaticObjectTemplate:new 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -5083,7 +5083,7 @@ ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_test_74
 
 object_static_particle_shared_particle_test_75 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/particle_test_75.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -5114,7 +5114,7 @@ object_static_particle_shared_particle_test_75 = SharedStaticObjectTemplate:new 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -5128,7 +5128,7 @@ ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_test_75
 
 object_static_particle_shared_particle_test_76 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/particle_test_76.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -5159,7 +5159,7 @@ object_static_particle_shared_particle_test_76 = SharedStaticObjectTemplate:new 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -5173,7 +5173,7 @@ ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_test_76
 
 object_static_particle_shared_particle_test_77 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/particle_test_77.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -5204,7 +5204,7 @@ object_static_particle_shared_particle_test_77 = SharedStaticObjectTemplate:new 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -5218,7 +5218,7 @@ ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_test_77
 
 object_static_particle_shared_particle_test_78 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/particle_test_78.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -5249,7 +5249,7 @@ object_static_particle_shared_particle_test_78 = SharedStaticObjectTemplate:new 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -5263,7 +5263,7 @@ ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_test_78
 
 object_static_particle_shared_particle_test_79 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/particle_test_79.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -5294,7 +5294,7 @@ object_static_particle_shared_particle_test_79 = SharedStaticObjectTemplate:new 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -5308,7 +5308,7 @@ ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_test_79
 
 object_static_particle_shared_particle_test_8 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/particle_test_8.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -5339,7 +5339,7 @@ object_static_particle_shared_particle_test_8 = SharedStaticObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -5353,7 +5353,7 @@ ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_test_8,
 
 object_static_particle_shared_particle_test_80 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/particle_test_80.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -5384,7 +5384,7 @@ object_static_particle_shared_particle_test_80 = SharedStaticObjectTemplate:new 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -5398,7 +5398,7 @@ ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_test_80
 
 object_static_particle_shared_particle_test_81 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/particle_test_81.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -5429,7 +5429,7 @@ object_static_particle_shared_particle_test_81 = SharedStaticObjectTemplate:new 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -5443,7 +5443,7 @@ ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_test_81
 
 object_static_particle_shared_particle_test_82 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/particle_test_82.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -5474,7 +5474,7 @@ object_static_particle_shared_particle_test_82 = SharedStaticObjectTemplate:new 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -5488,7 +5488,7 @@ ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_test_82
 
 object_static_particle_shared_particle_test_83 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/particle_test_83.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -5519,7 +5519,7 @@ object_static_particle_shared_particle_test_83 = SharedStaticObjectTemplate:new 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -5533,7 +5533,7 @@ ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_test_83
 
 object_static_particle_shared_particle_test_84 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/particle_test_84.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -5564,7 +5564,7 @@ object_static_particle_shared_particle_test_84 = SharedStaticObjectTemplate:new 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -5578,7 +5578,7 @@ ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_test_84
 
 object_static_particle_shared_particle_test_85 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/particle_test_85.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -5609,7 +5609,7 @@ object_static_particle_shared_particle_test_85 = SharedStaticObjectTemplate:new 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -5623,7 +5623,7 @@ ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_test_85
 
 object_static_particle_shared_particle_test_86 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/particle_test_86.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -5654,7 +5654,7 @@ object_static_particle_shared_particle_test_86 = SharedStaticObjectTemplate:new 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -5668,7 +5668,7 @@ ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_test_86
 
 object_static_particle_shared_particle_test_87 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/particle_test_87.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -5699,7 +5699,7 @@ object_static_particle_shared_particle_test_87 = SharedStaticObjectTemplate:new 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -5713,7 +5713,7 @@ ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_test_87
 
 object_static_particle_shared_particle_test_88 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/particle_test_88.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -5744,7 +5744,7 @@ object_static_particle_shared_particle_test_88 = SharedStaticObjectTemplate:new 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -5758,7 +5758,7 @@ ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_test_88
 
 object_static_particle_shared_particle_test_89 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/particle_test_89.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -5789,7 +5789,7 @@ object_static_particle_shared_particle_test_89 = SharedStaticObjectTemplate:new 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -5803,7 +5803,7 @@ ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_test_89
 
 object_static_particle_shared_particle_test_9 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/particle_test_9.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -5834,7 +5834,7 @@ object_static_particle_shared_particle_test_9 = SharedStaticObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -5848,7 +5848,7 @@ ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_test_9,
 
 object_static_particle_shared_particle_test_90 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/particle_test_90.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -5879,7 +5879,7 @@ object_static_particle_shared_particle_test_90 = SharedStaticObjectTemplate:new 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -5893,7 +5893,7 @@ ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_test_90
 
 object_static_particle_shared_particle_test_91 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/particle_test_91.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -5924,7 +5924,7 @@ object_static_particle_shared_particle_test_91 = SharedStaticObjectTemplate:new 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -5938,7 +5938,7 @@ ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_test_91
 
 object_static_particle_shared_particle_test_92 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/particle_test_92.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -5969,7 +5969,7 @@ object_static_particle_shared_particle_test_92 = SharedStaticObjectTemplate:new 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -5983,7 +5983,7 @@ ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_test_92
 
 object_static_particle_shared_particle_test_93 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/particle_test_93.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -6014,7 +6014,7 @@ object_static_particle_shared_particle_test_93 = SharedStaticObjectTemplate:new 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -6028,7 +6028,7 @@ ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_test_93
 
 object_static_particle_shared_particle_test_94 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/particle_test_94.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -6059,7 +6059,7 @@ object_static_particle_shared_particle_test_94 = SharedStaticObjectTemplate:new 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -6073,7 +6073,7 @@ ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_test_94
 
 object_static_particle_shared_particle_test_95 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/particle_test_95.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -6104,7 +6104,7 @@ object_static_particle_shared_particle_test_95 = SharedStaticObjectTemplate:new 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -6118,7 +6118,7 @@ ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_test_95
 
 object_static_particle_shared_particle_test_96 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/particle_test_96.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -6149,7 +6149,7 @@ object_static_particle_shared_particle_test_96 = SharedStaticObjectTemplate:new 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -6163,7 +6163,7 @@ ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_test_96
 
 object_static_particle_shared_particle_test_97 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/particle_test_97.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -6194,7 +6194,7 @@ object_static_particle_shared_particle_test_97 = SharedStaticObjectTemplate:new 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -6208,7 +6208,7 @@ ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_test_97
 
 object_static_particle_shared_particle_test_98 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/particle_test_98.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -6239,7 +6239,7 @@ object_static_particle_shared_particle_test_98 = SharedStaticObjectTemplate:new 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -6253,7 +6253,7 @@ ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_test_98
 
 object_static_particle_shared_particle_test_99 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/particle_test_99.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -6284,7 +6284,7 @@ object_static_particle_shared_particle_test_99 = SharedStaticObjectTemplate:new 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -6298,7 +6298,7 @@ ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_test_99
 
 object_static_particle_shared_particle_volcano_glow_1 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_lok_lava_bubblingareaprt.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/client_shared_volcano_glow_on.cdf",
@@ -6329,7 +6329,7 @@ object_static_particle_shared_particle_volcano_glow_1 = SharedStaticObjectTempla
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 1,
 
@@ -6343,7 +6343,7 @@ ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_volcano
 
 object_static_particle_shared_particle_waterfall_whitewater_s02_l0 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_waterfall_whitewater_s02_l0.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/client_shared_waterfall_naboo_theed.cdf",
@@ -6374,7 +6374,7 @@ object_static_particle_shared_particle_waterfall_whitewater_s02_l0 = SharedStati
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -6388,7 +6388,7 @@ ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_waterfa
 
 object_static_particle_shared_particle_waterfall_whitewater_s02_l1 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_waterfall_whitewater_s02_l1.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/client_shared_waterfall_naboo_theed.cdf",
@@ -6419,7 +6419,7 @@ object_static_particle_shared_particle_waterfall_whitewater_s02_l1 = SharedStati
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -6433,7 +6433,7 @@ ObjectTemplates:addClientTemplate(object_static_particle_shared_particle_waterfa
 
 object_static_particle_shared_pt_airport_race_light = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_airport_race_light.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -6464,7 +6464,7 @@ object_static_particle_shared_pt_airport_race_light = SharedStaticObjectTemplate
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -6478,7 +6478,7 @@ ObjectTemplates:addClientTemplate(object_static_particle_shared_pt_airport_race_
 
 object_static_particle_shared_pt_airport_race_light_group = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_airport_race_light_group.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -6509,7 +6509,7 @@ object_static_particle_shared_pt_airport_race_light_group = SharedStaticObjectTe
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -6523,7 +6523,7 @@ ObjectTemplates:addClientTemplate(object_static_particle_shared_pt_airport_race_
 
 object_static_particle_shared_pt_birds_flock = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_birds_flock.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -6554,7 +6554,7 @@ object_static_particle_shared_pt_birds_flock = SharedStaticObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -6568,7 +6568,7 @@ ObjectTemplates:addClientTemplate(object_static_particle_shared_pt_birds_flock, 
 
 object_static_particle_shared_pt_birds_flock_02 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_birds_flock_02.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -6599,7 +6599,7 @@ object_static_particle_shared_pt_birds_flock_02 = SharedStaticObjectTemplate:new
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -6613,7 +6613,7 @@ ObjectTemplates:addClientTemplate(object_static_particle_shared_pt_birds_flock_0
 
 object_static_particle_shared_pt_bunker_allum_mine_car_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_bunker_allum_mine_car_01.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -6644,7 +6644,7 @@ object_static_particle_shared_pt_bunker_allum_mine_car_01 = SharedStaticObjectTe
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -6658,7 +6658,7 @@ ObjectTemplates:addClientTemplate(object_static_particle_shared_pt_bunker_allum_
 
 object_static_particle_shared_pt_bunker_allum_mine_hallway_vent_steam = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_bunker_allum_mine_hallway_vent_steam.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -6689,7 +6689,7 @@ object_static_particle_shared_pt_bunker_allum_mine_hallway_vent_steam = SharedSt
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -6703,7 +6703,7 @@ ObjectTemplates:addClientTemplate(object_static_particle_shared_pt_bunker_allum_
 
 object_static_particle_shared_pt_bunker_allum_mine_large_steam_gravity = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_bunker_allum_mine_large_steam_gravity.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -6734,7 +6734,7 @@ object_static_particle_shared_pt_bunker_allum_mine_large_steam_gravity = SharedS
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -6748,7 +6748,7 @@ ObjectTemplates:addClientTemplate(object_static_particle_shared_pt_bunker_allum_
 
 object_static_particle_shared_pt_bunker_allum_mine_lift_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_bunker_allum_mine_lift_01.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -6779,7 +6779,7 @@ object_static_particle_shared_pt_bunker_allum_mine_lift_01 = SharedStaticObjectT
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -6793,7 +6793,7 @@ ObjectTemplates:addClientTemplate(object_static_particle_shared_pt_bunker_allum_
 
 object_static_particle_shared_pt_burning_smokeandembers_large = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_burning_smokeandembers_large.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -6824,7 +6824,7 @@ object_static_particle_shared_pt_burning_smokeandembers_large = SharedStaticObje
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -6838,7 +6838,7 @@ ObjectTemplates:addClientTemplate(object_static_particle_shared_pt_burning_smoke
 
 object_static_particle_shared_pt_burning_smokeandembers_md = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_burning_smokeandembers_md.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -6869,7 +6869,7 @@ object_static_particle_shared_pt_burning_smokeandembers_md = SharedStaticObjectT
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -6883,7 +6883,7 @@ ObjectTemplates:addClientTemplate(object_static_particle_shared_pt_burning_smoke
 
 object_static_particle_shared_pt_buzzing_insects_large = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_buzzing_insects_large.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -6914,7 +6914,7 @@ object_static_particle_shared_pt_buzzing_insects_large = SharedStaticObjectTempl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -6928,7 +6928,7 @@ ObjectTemplates:addClientTemplate(object_static_particle_shared_pt_buzzing_insec
 
 object_static_particle_shared_pt_buzzing_insects_small = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_buzzing_insects_small.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -6959,7 +6959,7 @@ object_static_particle_shared_pt_buzzing_insects_small = SharedStaticObjectTempl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -6973,7 +6973,7 @@ ObjectTemplates:addClientTemplate(object_static_particle_shared_pt_buzzing_insec
 
 object_static_particle_shared_pt_campfire_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_campfire_s01.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -7004,7 +7004,7 @@ object_static_particle_shared_pt_campfire_s01 = SharedStaticObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -7018,7 +7018,7 @@ ObjectTemplates:addClientTemplate(object_static_particle_shared_pt_campfire_s01,
 
 object_static_particle_shared_pt_detector = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_detector.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -7049,7 +7049,7 @@ object_static_particle_shared_pt_detector = SharedStaticObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -7063,7 +7063,7 @@ ObjectTemplates:addClientTemplate(object_static_particle_shared_pt_detector, "ob
 
 object_static_particle_shared_pt_falling_dirt = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_falling_dirt.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -7094,7 +7094,7 @@ object_static_particle_shared_pt_falling_dirt = SharedStaticObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -7108,7 +7108,7 @@ ObjectTemplates:addClientTemplate(object_static_particle_shared_pt_falling_dirt,
 
 object_static_particle_shared_pt_falling_dirt_all = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_falling_dirt_all.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -7139,7 +7139,7 @@ object_static_particle_shared_pt_falling_dirt_all = SharedStaticObjectTemplate:n
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -7153,7 +7153,7 @@ ObjectTemplates:addClientTemplate(object_static_particle_shared_pt_falling_dirt_
 
 object_static_particle_shared_pt_falling_dirt_all_loop = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_falling_dirt_all_loop.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -7184,7 +7184,7 @@ object_static_particle_shared_pt_falling_dirt_all_loop = SharedStaticObjectTempl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -7198,7 +7198,7 @@ ObjectTemplates:addClientTemplate(object_static_particle_shared_pt_falling_dirt_
 
 object_static_particle_shared_pt_falling_dirt_loop = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_falling_dirt_loop.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -7229,7 +7229,7 @@ object_static_particle_shared_pt_falling_dirt_loop = SharedStaticObjectTemplate:
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -7243,7 +7243,7 @@ ObjectTemplates:addClientTemplate(object_static_particle_shared_pt_falling_dirt_
 
 object_static_particle_shared_pt_falling_dust = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_falling_dust.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -7274,7 +7274,7 @@ object_static_particle_shared_pt_falling_dust = SharedStaticObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -7288,7 +7288,7 @@ ObjectTemplates:addClientTemplate(object_static_particle_shared_pt_falling_dust,
 
 object_static_particle_shared_pt_falling_dust_loop = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_falling_dust_loop.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -7319,7 +7319,7 @@ object_static_particle_shared_pt_falling_dust_loop = SharedStaticObjectTemplate:
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -7333,7 +7333,7 @@ ObjectTemplates:addClientTemplate(object_static_particle_shared_pt_falling_dust_
 
 object_static_particle_shared_pt_falling_rock = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_falling_rock.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -7364,7 +7364,7 @@ object_static_particle_shared_pt_falling_rock = SharedStaticObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -7378,7 +7378,7 @@ ObjectTemplates:addClientTemplate(object_static_particle_shared_pt_falling_rock,
 
 object_static_particle_shared_pt_falling_rock_loop = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_falling_rock_loop.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -7409,7 +7409,7 @@ object_static_particle_shared_pt_falling_rock_loop = SharedStaticObjectTemplate:
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -7423,7 +7423,7 @@ ObjectTemplates:addClientTemplate(object_static_particle_shared_pt_falling_rock_
 
 object_static_particle_shared_pt_flocking_bees = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_flocking_bees.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -7454,7 +7454,7 @@ object_static_particle_shared_pt_flocking_bees = SharedStaticObjectTemplate:new 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -7468,7 +7468,7 @@ ObjectTemplates:addClientTemplate(object_static_particle_shared_pt_flocking_bees
 
 object_static_particle_shared_pt_flocking_bluefish = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_flocking_bluefish.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -7499,7 +7499,7 @@ object_static_particle_shared_pt_flocking_bluefish = SharedStaticObjectTemplate:
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -7513,7 +7513,7 @@ ObjectTemplates:addClientTemplate(object_static_particle_shared_pt_flocking_blue
 
 object_static_particle_shared_pt_flocking_butterflies = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_flocking_butterflies.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -7544,7 +7544,7 @@ object_static_particle_shared_pt_flocking_butterflies = SharedStaticObjectTempla
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -7558,7 +7558,7 @@ ObjectTemplates:addClientTemplate(object_static_particle_shared_pt_flocking_butt
 
 object_static_particle_shared_pt_flocking_butterflies_s1 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_flocking_butterflies_s1.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -7589,7 +7589,7 @@ object_static_particle_shared_pt_flocking_butterflies_s1 = SharedStaticObjectTem
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -7603,7 +7603,7 @@ ObjectTemplates:addClientTemplate(object_static_particle_shared_pt_flocking_butt
 
 object_static_particle_shared_pt_flocking_centipede = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_flocking_centipede.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -7634,7 +7634,7 @@ object_static_particle_shared_pt_flocking_centipede = SharedStaticObjectTemplate
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -7648,7 +7648,7 @@ ObjectTemplates:addClientTemplate(object_static_particle_shared_pt_flocking_cent
 
 object_static_particle_shared_pt_flocking_cricket = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_flocking_cricket.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -7679,7 +7679,7 @@ object_static_particle_shared_pt_flocking_cricket = SharedStaticObjectTemplate:n
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -7693,7 +7693,7 @@ ObjectTemplates:addClientTemplate(object_static_particle_shared_pt_flocking_cric
 
 object_static_particle_shared_pt_flocking_frog = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_flocking_frog.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -7724,7 +7724,7 @@ object_static_particle_shared_pt_flocking_frog = SharedStaticObjectTemplate:new 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -7738,7 +7738,7 @@ ObjectTemplates:addClientTemplate(object_static_particle_shared_pt_flocking_frog
 
 object_static_particle_shared_pt_flocking_frog_s1 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_flocking_frog_s1.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -7769,7 +7769,7 @@ object_static_particle_shared_pt_flocking_frog_s1 = SharedStaticObjectTemplate:n
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -7783,7 +7783,7 @@ ObjectTemplates:addClientTemplate(object_static_particle_shared_pt_flocking_frog
 
 object_static_particle_shared_pt_flocking_glowzees = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_flocking_glowzees.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -7814,7 +7814,7 @@ object_static_particle_shared_pt_flocking_glowzees = SharedStaticObjectTemplate:
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -7828,7 +7828,7 @@ ObjectTemplates:addClientTemplate(object_static_particle_shared_pt_flocking_glow
 
 object_static_particle_shared_pt_frn_all_glowing_light_s3 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_frn_all_glowing_light_s3.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -7859,7 +7859,7 @@ object_static_particle_shared_pt_frn_all_glowing_light_s3 = SharedStaticObjectTe
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -7873,7 +7873,7 @@ ObjectTemplates:addClientTemplate(object_static_particle_shared_pt_frn_all_glowi
 
 object_static_particle_shared_pt_geonosian_aquarium_fish = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_flocking_fish_2x4cage.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -7904,7 +7904,7 @@ object_static_particle_shared_pt_geonosian_aquarium_fish = SharedStaticObjectTem
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -7918,7 +7918,7 @@ ObjectTemplates:addClientTemplate(object_static_particle_shared_pt_geonosian_aqu
 
 object_static_particle_shared_pt_green_gunk_spurt = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_green_gunk_spurt.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -7949,7 +7949,7 @@ object_static_particle_shared_pt_green_gunk_spurt = SharedStaticObjectTemplate:n
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -7963,7 +7963,7 @@ ObjectTemplates:addClientTemplate(object_static_particle_shared_pt_green_gunk_sp
 
 object_static_particle_shared_pt_green_hanging_smoke = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_green_hanging_smoke.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -7994,7 +7994,7 @@ object_static_particle_shared_pt_green_hanging_smoke = SharedStaticObjectTemplat
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -8008,7 +8008,7 @@ ObjectTemplates:addClientTemplate(object_static_particle_shared_pt_green_hanging
 
 object_static_particle_shared_pt_green_refrigerator_steam = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_green_refrigerator_steam.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -8039,7 +8039,7 @@ object_static_particle_shared_pt_green_refrigerator_steam = SharedStaticObjectTe
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -8053,7 +8053,7 @@ ObjectTemplates:addClientTemplate(object_static_particle_shared_pt_green_refrige
 
 object_static_particle_shared_pt_green_steam = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_green_steam.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -8084,7 +8084,7 @@ object_static_particle_shared_pt_green_steam = SharedStaticObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -8098,7 +8098,7 @@ ObjectTemplates:addClientTemplate(object_static_particle_shared_pt_green_steam, 
 
 object_static_particle_shared_pt_lair_evil_fire_large_green = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_lair_evil_fire_large_green.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -8129,7 +8129,7 @@ object_static_particle_shared_pt_lair_evil_fire_large_green = SharedStaticObject
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -8143,7 +8143,7 @@ ObjectTemplates:addClientTemplate(object_static_particle_shared_pt_lair_evil_fir
 
 object_static_particle_shared_pt_lair_evil_fire_large_red = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_lair_evil_fire_large_red.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -8174,7 +8174,7 @@ object_static_particle_shared_pt_lair_evil_fire_large_red = SharedStaticObjectTe
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -8188,7 +8188,7 @@ ObjectTemplates:addClientTemplate(object_static_particle_shared_pt_lair_evil_fir
 
 object_static_particle_shared_pt_lair_evil_fire_small = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_lair_evil_fire_small.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -8219,7 +8219,7 @@ object_static_particle_shared_pt_lair_evil_fire_small = SharedStaticObjectTempla
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -8233,7 +8233,7 @@ ObjectTemplates:addClientTemplate(object_static_particle_shared_pt_lair_evil_fir
 
 object_static_particle_shared_pt_lair_med_burn = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_lair_med_burn.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -8264,7 +8264,7 @@ object_static_particle_shared_pt_lair_med_burn = SharedStaticObjectTemplate:new 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -8278,7 +8278,7 @@ ObjectTemplates:addClientTemplate(object_static_particle_shared_pt_lair_med_burn
 
 object_static_particle_shared_pt_lair_med_damage = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_lair_med_damage.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -8309,7 +8309,7 @@ object_static_particle_shared_pt_lair_med_damage = SharedStaticObjectTemplate:ne
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -8323,7 +8323,7 @@ ObjectTemplates:addClientTemplate(object_static_particle_shared_pt_lair_med_dama
 
 object_static_particle_shared_pt_light_blink_blue = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_light_blink_blue.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -8354,7 +8354,7 @@ object_static_particle_shared_pt_light_blink_blue = SharedStaticObjectTemplate:n
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -8368,7 +8368,7 @@ ObjectTemplates:addClientTemplate(object_static_particle_shared_pt_light_blink_b
 
 object_static_particle_shared_pt_light_blink_green = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_light_blink_green.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -8399,7 +8399,7 @@ object_static_particle_shared_pt_light_blink_green = SharedStaticObjectTemplate:
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -8413,7 +8413,7 @@ ObjectTemplates:addClientTemplate(object_static_particle_shared_pt_light_blink_g
 
 object_static_particle_shared_pt_light_blink_orange = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_light_blink_orange.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -8444,7 +8444,7 @@ object_static_particle_shared_pt_light_blink_orange = SharedStaticObjectTemplate
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -8458,7 +8458,7 @@ ObjectTemplates:addClientTemplate(object_static_particle_shared_pt_light_blink_o
 
 object_static_particle_shared_pt_light_constant_blue = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_light_constant_blue.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -8489,7 +8489,7 @@ object_static_particle_shared_pt_light_constant_blue = SharedStaticObjectTemplat
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -8503,7 +8503,7 @@ ObjectTemplates:addClientTemplate(object_static_particle_shared_pt_light_constan
 
 object_static_particle_shared_pt_light_streetlamp_blue = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_light_streetlamp_blue.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -8534,7 +8534,7 @@ object_static_particle_shared_pt_light_streetlamp_blue = SharedStaticObjectTempl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -8548,7 +8548,7 @@ ObjectTemplates:addClientTemplate(object_static_particle_shared_pt_light_streetl
 
 object_static_particle_shared_pt_light_streetlamp_gold = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_light_streetlamp_gold.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -8579,7 +8579,7 @@ object_static_particle_shared_pt_light_streetlamp_gold = SharedStaticObjectTempl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -8593,7 +8593,7 @@ ObjectTemplates:addClientTemplate(object_static_particle_shared_pt_light_streetl
 
 object_static_particle_shared_pt_light_streetlamp_green = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_light_streetlamp_green.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -8624,7 +8624,7 @@ object_static_particle_shared_pt_light_streetlamp_green = SharedStaticObjectTemp
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -8638,7 +8638,7 @@ ObjectTemplates:addClientTemplate(object_static_particle_shared_pt_light_streetl
 
 object_static_particle_shared_pt_light_streetlamp_red = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_light_streetlamp_red.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -8669,7 +8669,7 @@ object_static_particle_shared_pt_light_streetlamp_red = SharedStaticObjectTempla
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -8683,7 +8683,7 @@ ObjectTemplates:addClientTemplate(object_static_particle_shared_pt_light_streetl
 
 object_static_particle_shared_pt_lok_lava_bubblingareaprt = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_lok_lava_bubblingareaprt.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -8714,7 +8714,7 @@ object_static_particle_shared_pt_lok_lava_bubblingareaprt = SharedStaticObjectTe
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -8728,7 +8728,7 @@ ObjectTemplates:addClientTemplate(object_static_particle_shared_pt_lok_lava_bubb
 
 object_static_particle_shared_pt_lok_lava_drop = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_lok_lava_drop.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -8759,7 +8759,7 @@ object_static_particle_shared_pt_lok_lava_drop = SharedStaticObjectTemplate:new 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -8773,7 +8773,7 @@ ObjectTemplates:addClientTemplate(object_static_particle_shared_pt_lok_lava_drop
 
 object_static_particle_shared_pt_lok_lava_spirt = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_lok_lava_spirt.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -8804,7 +8804,7 @@ object_static_particle_shared_pt_lok_lava_spirt = SharedStaticObjectTemplate:new
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -8818,7 +8818,7 @@ ObjectTemplates:addClientTemplate(object_static_particle_shared_pt_lok_lava_spir
 
 object_static_particle_shared_pt_lok_volcano = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_lok_volcano.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -8849,7 +8849,7 @@ object_static_particle_shared_pt_lok_volcano = SharedStaticObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -8863,7 +8863,7 @@ ObjectTemplates:addClientTemplate(object_static_particle_shared_pt_lok_volcano, 
 
 object_static_particle_shared_pt_lok_volcano_smoke = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_lok_volcano_smoke.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -8894,7 +8894,7 @@ object_static_particle_shared_pt_lok_volcano_smoke = SharedStaticObjectTemplate:
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -8908,7 +8908,7 @@ ObjectTemplates:addClientTemplate(object_static_particle_shared_pt_lok_volcano_s
 
 object_static_particle_shared_pt_lok_volcano_smoke_sm = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_lok_volcano_smoke_sm.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -8939,7 +8939,7 @@ object_static_particle_shared_pt_lok_volcano_smoke_sm = SharedStaticObjectTempla
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -8953,7 +8953,7 @@ ObjectTemplates:addClientTemplate(object_static_particle_shared_pt_lok_volcano_s
 
 object_static_particle_shared_pt_magic_sparks = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_magic_sparks.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -8984,7 +8984,7 @@ object_static_particle_shared_pt_magic_sparks = SharedStaticObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -8998,7 +8998,7 @@ ObjectTemplates:addClientTemplate(object_static_particle_shared_pt_magic_sparks,
 
 object_static_particle_shared_pt_miasma_of_fog_gray = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_miasma_of_fog_gray.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -9029,7 +9029,7 @@ object_static_particle_shared_pt_miasma_of_fog_gray = SharedStaticObjectTemplate
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -9043,7 +9043,7 @@ ObjectTemplates:addClientTemplate(object_static_particle_shared_pt_miasma_of_fog
 
 object_static_particle_shared_pt_miasma_of_fog_greenish = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_miasma_of_fog_greenish.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -9074,7 +9074,7 @@ object_static_particle_shared_pt_miasma_of_fog_greenish = SharedStaticObjectTemp
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -9088,7 +9088,7 @@ ObjectTemplates:addClientTemplate(object_static_particle_shared_pt_miasma_of_fog
 
 object_static_particle_shared_pt_miasma_of_fog_mustard = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_miasma_of_fog_mustard.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -9119,7 +9119,7 @@ object_static_particle_shared_pt_miasma_of_fog_mustard = SharedStaticObjectTempl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -9133,7 +9133,7 @@ ObjectTemplates:addClientTemplate(object_static_particle_shared_pt_miasma_of_fog
 
 object_static_particle_shared_pt_miasma_of_fog_orange = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_miasma_of_fog_orange.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -9164,7 +9164,7 @@ object_static_particle_shared_pt_miasma_of_fog_orange = SharedStaticObjectTempla
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -9178,7 +9178,7 @@ ObjectTemplates:addClientTemplate(object_static_particle_shared_pt_miasma_of_fog
 
 object_static_particle_shared_pt_miasma_of_fog_red = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_miasma_of_fog_red.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -9209,7 +9209,7 @@ object_static_particle_shared_pt_miasma_of_fog_red = SharedStaticObjectTemplate:
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -9223,7 +9223,7 @@ ObjectTemplates:addClientTemplate(object_static_particle_shared_pt_miasma_of_fog
 
 object_static_particle_shared_pt_poi_broken_electronics = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_poi_broken_electronics.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -9254,7 +9254,7 @@ object_static_particle_shared_pt_poi_broken_electronics = SharedStaticObjectTemp
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -9268,7 +9268,7 @@ ObjectTemplates:addClientTemplate(object_static_particle_shared_pt_poi_broken_el
 
 object_static_particle_shared_pt_poi_droid_weld_sparks = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_poi_droid_weld_sparks.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -9299,7 +9299,7 @@ object_static_particle_shared_pt_poi_droid_weld_sparks = SharedStaticObjectTempl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -9313,7 +9313,7 @@ ObjectTemplates:addClientTemplate(object_static_particle_shared_pt_poi_droid_wel
 
 object_static_particle_shared_pt_poi_electricity_2x2 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_poi_electricity_2x2.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -9344,7 +9344,7 @@ object_static_particle_shared_pt_poi_electricity_2x2 = SharedStaticObjectTemplat
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -9358,7 +9358,7 @@ ObjectTemplates:addClientTemplate(object_static_particle_shared_pt_poi_electrici
 
 object_static_particle_shared_pt_sm_explosion = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_sm_explosion.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -9389,7 +9389,7 @@ object_static_particle_shared_pt_sm_explosion = SharedStaticObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -9403,7 +9403,7 @@ ObjectTemplates:addClientTemplate(object_static_particle_shared_pt_sm_explosion,
 
 object_static_particle_shared_pt_smoke = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_smoke.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -9434,7 +9434,7 @@ object_static_particle_shared_pt_smoke = SharedStaticObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -9448,7 +9448,7 @@ ObjectTemplates:addClientTemplate(object_static_particle_shared_pt_smoke, "objec
 
 object_static_particle_shared_pt_smoke_large = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_smoke_large.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -9479,7 +9479,7 @@ object_static_particle_shared_pt_smoke_large = SharedStaticObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -9493,7 +9493,7 @@ ObjectTemplates:addClientTemplate(object_static_particle_shared_pt_smoke_large, 
 
 object_static_particle_shared_pt_smoke_small = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_smoke_small.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -9524,7 +9524,7 @@ object_static_particle_shared_pt_smoke_small = SharedStaticObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -9538,7 +9538,7 @@ ObjectTemplates:addClientTemplate(object_static_particle_shared_pt_smoke_small, 
 
 object_static_particle_shared_pt_smoke_tr = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_smoke_tr.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -9569,7 +9569,7 @@ object_static_particle_shared_pt_smoke_tr = SharedStaticObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -9583,7 +9583,7 @@ ObjectTemplates:addClientTemplate(object_static_particle_shared_pt_smoke_tr, "ob
 
 object_static_particle_shared_pt_sonic_pulse = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_sonic_pulse.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -9614,7 +9614,7 @@ object_static_particle_shared_pt_sonic_pulse = SharedStaticObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -9628,7 +9628,7 @@ ObjectTemplates:addClientTemplate(object_static_particle_shared_pt_sonic_pulse, 
 
 object_static_particle_shared_pt_sound_location = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_sound_location.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -9659,7 +9659,7 @@ object_static_particle_shared_pt_sound_location = SharedStaticObjectTemplate:new
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -9673,7 +9673,7 @@ ObjectTemplates:addClientTemplate(object_static_particle_shared_pt_sound_locatio
 
 object_static_particle_shared_pt_sparking_blast_md = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_sparking_blast_md.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -9704,7 +9704,7 @@ object_static_particle_shared_pt_sparking_blast_md = SharedStaticObjectTemplate:
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -9718,7 +9718,7 @@ ObjectTemplates:addClientTemplate(object_static_particle_shared_pt_sparking_blas
 
 object_static_particle_shared_pt_sparks_large = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_sparks_large.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -9749,7 +9749,7 @@ object_static_particle_shared_pt_sparks_large = SharedStaticObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -9763,7 +9763,7 @@ ObjectTemplates:addClientTemplate(object_static_particle_shared_pt_sparks_large,
 
 object_static_particle_shared_pt_sparks_small = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_sparks_small.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -9794,7 +9794,7 @@ object_static_particle_shared_pt_sparks_small = SharedStaticObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -9808,7 +9808,7 @@ ObjectTemplates:addClientTemplate(object_static_particle_shared_pt_sparks_small,
 
 object_static_particle_shared_pt_steam = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_steam.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -9839,7 +9839,7 @@ object_static_particle_shared_pt_steam = SharedStaticObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -9853,7 +9853,7 @@ ObjectTemplates:addClientTemplate(object_static_particle_shared_pt_steam, "objec
 
 object_static_particle_shared_pt_steam_rise = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_steam_rise.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -9884,7 +9884,7 @@ object_static_particle_shared_pt_steam_rise = SharedStaticObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -9898,7 +9898,7 @@ ObjectTemplates:addClientTemplate(object_static_particle_shared_pt_steam_rise, "
 
 object_static_particle_shared_pt_steam_rise_2x2 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_steam_rise_2x2.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -9929,7 +9929,7 @@ object_static_particle_shared_pt_steam_rise_2x2 = SharedStaticObjectTemplate:new
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -9943,7 +9943,7 @@ ObjectTemplates:addClientTemplate(object_static_particle_shared_pt_steam_rise_2x
 
 object_static_particle_shared_pt_stunned_player = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_stunned_player.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -9974,7 +9974,7 @@ object_static_particle_shared_pt_stunned_player = SharedStaticObjectTemplate:new
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -9988,7 +9988,7 @@ ObjectTemplates:addClientTemplate(object_static_particle_shared_pt_stunned_playe
 
 object_static_particle_shared_pt_survey = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_survey.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -10019,7 +10019,7 @@ object_static_particle_shared_pt_survey = SharedStaticObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -10033,7 +10033,7 @@ ObjectTemplates:addClientTemplate(object_static_particle_shared_pt_survey, "obje
 
 object_static_particle_shared_pt_survey_gas_sample = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_survey_gas_sample.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -10064,7 +10064,7 @@ object_static_particle_shared_pt_survey_gas_sample = SharedStaticObjectTemplate:
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -10078,7 +10078,7 @@ ObjectTemplates:addClientTemplate(object_static_particle_shared_pt_survey_gas_sa
 
 object_static_particle_shared_pt_survey_liquid_sample = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_survey_liquid_sample.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -10109,7 +10109,7 @@ object_static_particle_shared_pt_survey_liquid_sample = SharedStaticObjectTempla
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -10123,7 +10123,7 @@ ObjectTemplates:addClientTemplate(object_static_particle_shared_pt_survey_liquid
 
 object_static_particle_shared_pt_survey_lumber_sample = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_survey_lumber_sample.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -10154,7 +10154,7 @@ object_static_particle_shared_pt_survey_lumber_sample = SharedStaticObjectTempla
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -10168,7 +10168,7 @@ ObjectTemplates:addClientTemplate(object_static_particle_shared_pt_survey_lumber
 
 object_static_particle_shared_pt_survey_mineral_sample = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_survey_mineral_sample.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -10199,7 +10199,7 @@ object_static_particle_shared_pt_survey_mineral_sample = SharedStaticObjectTempl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -10213,7 +10213,7 @@ ObjectTemplates:addClientTemplate(object_static_particle_shared_pt_survey_minera
 
 object_static_particle_shared_pt_survey_moisture_sample = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_survey_moisture_sample.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -10244,7 +10244,7 @@ object_static_particle_shared_pt_survey_moisture_sample = SharedStaticObjectTemp
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -10258,7 +10258,7 @@ ObjectTemplates:addClientTemplate(object_static_particle_shared_pt_survey_moistu
 
 object_static_particle_shared_pt_survey_tool_liquid = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_survey_tool_liquid.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -10289,7 +10289,7 @@ object_static_particle_shared_pt_survey_tool_liquid = SharedStaticObjectTemplate
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -10303,7 +10303,7 @@ ObjectTemplates:addClientTemplate(object_static_particle_shared_pt_survey_tool_l
 
 object_static_particle_shared_pt_survey_tool_lumber = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_survey_tool_lumber.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -10334,7 +10334,7 @@ object_static_particle_shared_pt_survey_tool_lumber = SharedStaticObjectTemplate
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -10348,7 +10348,7 @@ ObjectTemplates:addClientTemplate(object_static_particle_shared_pt_survey_tool_l
 
 object_static_particle_shared_pt_survey_tool_mineral = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_survey_tool_mineral.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -10379,7 +10379,7 @@ object_static_particle_shared_pt_survey_tool_mineral = SharedStaticObjectTemplat
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -10393,7 +10393,7 @@ ObjectTemplates:addClientTemplate(object_static_particle_shared_pt_survey_tool_m
 
 object_static_particle_shared_pt_survey_tool_moisture = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_survey_tool_moisture.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -10424,7 +10424,7 @@ object_static_particle_shared_pt_survey_tool_moisture = SharedStaticObjectTempla
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -10438,7 +10438,7 @@ ObjectTemplates:addClientTemplate(object_static_particle_shared_pt_survey_tool_m
 
 object_static_particle_shared_pt_trailing_falling_dust = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_trailing_falling_dust.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -10469,7 +10469,7 @@ object_static_particle_shared_pt_trailing_falling_dust = SharedStaticObjectTempl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -10483,7 +10483,7 @@ ObjectTemplates:addClientTemplate(object_static_particle_shared_pt_trailing_fall
 
 object_static_particle_shared_pt_trailing_falling_dust_2 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_trailing_falling_dust_2.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -10514,7 +10514,7 @@ object_static_particle_shared_pt_trailing_falling_dust_2 = SharedStaticObjectTem
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -10528,7 +10528,7 @@ ObjectTemplates:addClientTemplate(object_static_particle_shared_pt_trailing_fall
 
 object_static_particle_shared_pt_waterfall_crest = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_waterfall_crest.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -10559,7 +10559,7 @@ object_static_particle_shared_pt_waterfall_crest = SharedStaticObjectTemplate:ne
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -10573,7 +10573,7 @@ ObjectTemplates:addClientTemplate(object_static_particle_shared_pt_waterfall_cre
 
 object_static_particle_shared_pt_waterfall_mist = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_waterfall_mist.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -10604,7 +10604,7 @@ object_static_particle_shared_pt_waterfall_mist = SharedStaticObjectTemplate:new
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -10618,7 +10618,7 @@ ObjectTemplates:addClientTemplate(object_static_particle_shared_pt_waterfall_mis
 
 object_static_particle_shared_pt_waterfall_mist_med = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_waterfall_mist_med.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -10649,7 +10649,7 @@ object_static_particle_shared_pt_waterfall_mist_med = SharedStaticObjectTemplate
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -10663,7 +10663,7 @@ ObjectTemplates:addClientTemplate(object_static_particle_shared_pt_waterfall_mis
 
 object_static_particle_shared_pt_waterfall_mist_small = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_waterfall_mist_small.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -10694,7 +10694,7 @@ object_static_particle_shared_pt_waterfall_mist_small = SharedStaticObjectTempla
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -10708,7 +10708,7 @@ ObjectTemplates:addClientTemplate(object_static_particle_shared_pt_waterfall_mis
 
 object_static_particle_shared_pt_waterfall_spray = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_waterfall_spray.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -10739,7 +10739,7 @@ object_static_particle_shared_pt_waterfall_spray = SharedStaticObjectTemplate:ne
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -10753,7 +10753,7 @@ ObjectTemplates:addClientTemplate(object_static_particle_shared_pt_waterfall_spr
 
 object_static_particle_shared_pt_waterfall_spray_small = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_waterfall_spray_small.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -10784,7 +10784,7 @@ object_static_particle_shared_pt_waterfall_spray_small = SharedStaticObjectTempl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -10798,7 +10798,7 @@ ObjectTemplates:addClientTemplate(object_static_particle_shared_pt_waterfall_spr
 
 object_static_particle_shared_pt_waterfall_whitewater_s02_l0 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_waterfall_whitewater_s02_l0.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -10829,7 +10829,7 @@ object_static_particle_shared_pt_waterfall_whitewater_s02_l0 = SharedStaticObjec
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -10843,7 +10843,7 @@ ObjectTemplates:addClientTemplate(object_static_particle_shared_pt_waterfall_whi
 
 object_static_particle_shared_pt_waterfall_whitewater_s02_l1 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_waterfall_whitewater_s02_l1.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -10874,7 +10874,7 @@ object_static_particle_shared_pt_waterfall_whitewater_s02_l1 = SharedStaticObjec
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -10888,7 +10888,7 @@ ObjectTemplates:addClientTemplate(object_static_particle_shared_pt_waterfall_whi
 
 object_static_particle_shared_pt_waterfalling_200m = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_waterfalling_200m.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -10919,7 +10919,7 @@ object_static_particle_shared_pt_waterfalling_200m = SharedStaticObjectTemplate:
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -10933,7 +10933,7 @@ ObjectTemplates:addClientTemplate(object_static_particle_shared_pt_waterfalling_
 
 object_static_particle_shared_pt_waterfalling_slow = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_waterfalling_slow.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -10964,7 +10964,7 @@ object_static_particle_shared_pt_waterfalling_slow = SharedStaticObjectTemplate:
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -10978,7 +10978,7 @@ ObjectTemplates:addClientTemplate(object_static_particle_shared_pt_waterfalling_
 
 object_static_particle_shared_pt_webber = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_webber.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -11009,7 +11009,7 @@ object_static_particle_shared_pt_webber = SharedStaticObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 

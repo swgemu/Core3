@@ -43,7 +43,7 @@
 
 object_tangible_wearables_utility_shared_utility_belt_tusken_raider = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/utility_belt_tusken_raider_m.sat",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -79,7 +79,7 @@ object_tangible_wearables_utility_shared_utility_belt_tusken_raider = SharedTang
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",

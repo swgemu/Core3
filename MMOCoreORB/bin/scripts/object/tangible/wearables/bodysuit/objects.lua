@@ -43,7 +43,7 @@
 
 object_tangible_wearables_bodysuit_shared_bodysuit_atat = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/bodysuit_atat_f.sat",
-	arrangementDescriptors = {"chest1", "pants1", "pants2", "bicep_l", "bicep_r", "bracer_upper_r", "bracer_upper_l"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/jumpsuit_longsleeve.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -79,7 +79,7 @@ object_tangible_wearables_bodysuit_shared_bodysuit_atat = SharedTangibleObjectTe
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -98,7 +98,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_bodysuit_shared_body
 
 object_tangible_wearables_bodysuit_shared_bodysuit_atat_quest = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/bodysuit_atat_f.sat",
-	arrangementDescriptors = {"chest1", "pants1", "pants2", "bicep_l", "bicep_r", "bracer_upper_r", "bracer_upper_l"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/jumpsuit_longsleeve.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -134,7 +134,7 @@ object_tangible_wearables_bodysuit_shared_bodysuit_atat_quest = SharedTangibleOb
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -153,7 +153,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_bodysuit_shared_body
 
 object_tangible_wearables_bodysuit_shared_bodysuit_bwing = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/bodysuit_bwing_f.sat",
-	arrangementDescriptors = {"chest1", "pants1", "pants2", "bicep_l", "bicep_r", "bracer_upper_r", "bracer_upper_l"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/jumpsuit_longsleeve.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -189,7 +189,7 @@ object_tangible_wearables_bodysuit_shared_bodysuit_bwing = SharedTangibleObjectT
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -208,7 +208,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_bodysuit_shared_body
 
 object_tangible_wearables_bodysuit_shared_bodysuit_bwing_quest = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/bodysuit_bwing_f.sat",
-	arrangementDescriptors = {"chest1", "pants1", "pants2", "bicep_l", "bicep_r", "bracer_upper_r", "bracer_upper_l"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/jumpsuit_longsleeve.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -244,7 +244,7 @@ object_tangible_wearables_bodysuit_shared_bodysuit_bwing_quest = SharedTangibleO
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -263,7 +263,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_bodysuit_shared_body
 
 object_tangible_wearables_bodysuit_shared_bodysuit_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/bodysuit_s01_f.sat",
-	arrangementDescriptors = {"chest1", "pants1", "pants2", "bicep_l", "bicep_r", "bracer_upper_r", "bracer_upper_l"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/jumpsuit_longsleeve.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -299,7 +299,7 @@ object_tangible_wearables_bodysuit_shared_bodysuit_s01 = SharedTangibleObjectTem
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -318,7 +318,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_bodysuit_shared_body
 
 object_tangible_wearables_bodysuit_shared_bodysuit_s06 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/bodysuit_s06_f.sat",
-	arrangementDescriptors = {"chest1", "pants1", "pants2", "bicep_l", "bicep_r", "bracer_upper_r", "bracer_upper_l"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/jumpsuit_longsleeve.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -354,7 +354,7 @@ object_tangible_wearables_bodysuit_shared_bodysuit_s06 = SharedTangibleObjectTem
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -373,7 +373,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_bodysuit_shared_body
 
 object_tangible_wearables_bodysuit_shared_bodysuit_s07 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/bodysuit_s07_f.sat",
-	arrangementDescriptors = {"chest1", "pants1", "pants2", "bicep_l", "bicep_r", "bracer_upper_r", "bracer_upper_l"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/jumpsuit_longsleeve.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -409,7 +409,7 @@ object_tangible_wearables_bodysuit_shared_bodysuit_s07 = SharedTangibleObjectTem
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -428,7 +428,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_bodysuit_shared_body
 
 object_tangible_wearables_bodysuit_shared_bodysuit_s08 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/bodysuit_s08_f.sat",
-	arrangementDescriptors = {"chest1", "pants1", "pants2", "bicep_l", "bicep_r", "bracer_upper_r", "bracer_upper_l"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/jumpsuit_longsleeve.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -464,7 +464,7 @@ object_tangible_wearables_bodysuit_shared_bodysuit_s08 = SharedTangibleObjectTem
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -483,7 +483,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_bodysuit_shared_body
 
 object_tangible_wearables_bodysuit_shared_bodysuit_s12 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/bodysuit_s12_f.sat",
-	arrangementDescriptors = {"chest1", "pants1", "pants2", "bicep_l", "bicep_r", "bracer_upper_r", "bracer_upper_l"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/jumpsuit_longsleeve.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -519,7 +519,7 @@ object_tangible_wearables_bodysuit_shared_bodysuit_s12 = SharedTangibleObjectTem
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -538,7 +538,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_bodysuit_shared_body
 
 object_tangible_wearables_bodysuit_shared_bodysuit_s13 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/bodysuit_s13_f.sat",
-	arrangementDescriptors = {"chest1", "pants1", "pants2", "bicep_l", "bicep_r", "bracer_upper_r", "bracer_upper_l"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/jumpsuit_longsleeve.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -574,7 +574,7 @@ object_tangible_wearables_bodysuit_shared_bodysuit_s13 = SharedTangibleObjectTem
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -593,7 +593,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_bodysuit_shared_body
 
 object_tangible_wearables_bodysuit_shared_bodysuit_s14 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/bodysuit_s14_f.sat",
-	arrangementDescriptors = {"chest1", "pants1", "pants2", "bicep_l", "bicep_r", "bracer_upper_r", "bracer_upper_l"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/jumpsuit_longsleeve.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -629,7 +629,7 @@ object_tangible_wearables_bodysuit_shared_bodysuit_s14 = SharedTangibleObjectTem
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -648,7 +648,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_bodysuit_shared_body
 
 object_tangible_wearables_bodysuit_shared_bodysuit_s15 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/bodysuit_s15_f.sat",
-	arrangementDescriptors = {"chest1", "pants1", "pants2", "bicep_l", "bicep_r", "bracer_upper_r", "bracer_upper_l"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/jumpsuit_longsleeve.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -684,7 +684,7 @@ object_tangible_wearables_bodysuit_shared_bodysuit_s15 = SharedTangibleObjectTem
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -703,7 +703,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_bodysuit_shared_body
 
 object_tangible_wearables_bodysuit_shared_bodysuit_s16 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/bodysuit_s16_f.sat",
-	arrangementDescriptors = {"chest1", "pants1", "pants2", "bicep_l", "bicep_r", "bracer_upper_r", "bracer_upper_l"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/jumpsuit_longsleeve.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -739,7 +739,7 @@ object_tangible_wearables_bodysuit_shared_bodysuit_s16 = SharedTangibleObjectTem
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -758,7 +758,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_bodysuit_shared_body
 
 object_tangible_wearables_bodysuit_shared_bodysuit_sarlacc_coverall = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/bodysuit_s13_f.sat",
-	arrangementDescriptors = {"chest1", "pants1", "pants2", "bicep_l", "bicep_r", "bracer_upper_r", "bracer_upper_l"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/jumpsuit_longsleeve.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -794,7 +794,7 @@ object_tangible_wearables_bodysuit_shared_bodysuit_sarlacc_coverall = SharedTang
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -813,7 +813,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_bodysuit_shared_body
 
 object_tangible_wearables_bodysuit_shared_bodysuit_tie_fighter = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/bodysuit_tie_fighter_f.sat",
-	arrangementDescriptors = {"chest1", "pants1", "pants2", "bicep_l", "bicep_r", "bracer_upper_r", "bracer_upper_l"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/jumpsuit_longsleeve.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -849,7 +849,7 @@ object_tangible_wearables_bodysuit_shared_bodysuit_tie_fighter = SharedTangibleO
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -868,7 +868,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_bodysuit_shared_body
 
 object_tangible_wearables_bodysuit_shared_bodysuit_tie_fighter_quest = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/bodysuit_tie_fighter_f.sat",
-	arrangementDescriptors = {"chest1", "pants1", "pants2", "bicep_l", "bicep_r", "bracer_upper_r", "bracer_upper_l"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/jumpsuit_longsleeve.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -904,7 +904,7 @@ object_tangible_wearables_bodysuit_shared_bodysuit_tie_fighter_quest = SharedTan
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",

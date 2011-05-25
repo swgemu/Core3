@@ -43,7 +43,7 @@
 
 object_weapon_melee_polearm_base_shared_crafted_lance_lightsaber_base = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {"hold_r", "hold_l"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hold_both.iff",
 	attackType = 1,
 
 	certificationsRequired = {},
@@ -80,7 +80,7 @@ object_weapon_melee_polearm_base_shared_crafted_lance_lightsaber_base = SharedWe
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"saber_inv", "crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/default_lightsaber.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -102,7 +102,7 @@ ObjectTemplates:addClientTemplate(object_weapon_melee_polearm_base_shared_crafte
 
 object_weapon_melee_polearm_base_shared_lance_lightsaber_base = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {"hold_r", "hold_l"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hold_both.iff",
 	attackType = 1,
 
 	certificationsRequired = {},
@@ -139,7 +139,7 @@ object_weapon_melee_polearm_base_shared_lance_lightsaber_base = SharedWeaponObje
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"default_weapon_ammo_slot", "crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/default_weapon.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -161,7 +161,7 @@ ObjectTemplates:addClientTemplate(object_weapon_melee_polearm_base_shared_lance_
 
 object_weapon_melee_polearm_base_shared_polearm_base = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {"hold_r", "hold_l"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hold_both.iff",
 	attackType = 1,
 
 	certificationsRequired = {},
@@ -198,7 +198,7 @@ object_weapon_melee_polearm_base_shared_polearm_base = SharedWeaponObjectTemplat
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"default_weapon_ammo_slot", "crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/default_weapon.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",

@@ -43,7 +43,7 @@
 
 object_building_general_shared_aircar_general = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -81,7 +81,7 @@ object_building_general_shared_aircar_general = SharedBuildingObjectTemplate:new
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -101,7 +101,7 @@ ObjectTemplates:addClientTemplate(object_building_general_shared_aircar_general,
 
 object_building_general_shared_arena_general = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -139,7 +139,7 @@ object_building_general_shared_arena_general = SharedBuildingObjectTemplate:new 
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -159,7 +159,7 @@ ObjectTemplates:addClientTemplate(object_building_general_shared_arena_general, 
 
 object_building_general_shared_arena_large_general = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -197,7 +197,7 @@ object_building_general_shared_arena_large_general = SharedBuildingObjectTemplat
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -217,7 +217,7 @@ ObjectTemplates:addClientTemplate(object_building_general_shared_arena_large_gen
 
 object_building_general_shared_association_hall_civilian_general = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -255,7 +255,7 @@ object_building_general_shared_association_hall_civilian_general = SharedBuildin
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -275,7 +275,7 @@ ObjectTemplates:addClientTemplate(object_building_general_shared_association_hal
 
 object_building_general_shared_association_hall_general = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -313,7 +313,7 @@ object_building_general_shared_association_hall_general = SharedBuildingObjectTe
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -333,7 +333,7 @@ ObjectTemplates:addClientTemplate(object_building_general_shared_association_hal
 
 object_building_general_shared_bank_general = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -371,7 +371,7 @@ object_building_general_shared_bank_general = SharedBuildingObjectTemplate:new {
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -391,7 +391,7 @@ ObjectTemplates:addClientTemplate(object_building_general_shared_bank_general, "
 
 object_building_general_shared_bunker_allum_mine = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 50,
@@ -429,7 +429,7 @@ object_building_general_shared_bunker_allum_mine = SharedBuildingObjectTemplate:
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -449,7 +449,7 @@ ObjectTemplates:addClientTemplate(object_building_general_shared_bunker_allum_mi
 
 object_building_general_shared_bunker_blacksun_outpost_01 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -487,7 +487,7 @@ object_building_general_shared_bunker_blacksun_outpost_01 = SharedBuildingObject
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -507,7 +507,7 @@ ObjectTemplates:addClientTemplate(object_building_general_shared_bunker_blacksun
 
 object_building_general_shared_bunker_crimelord_retreat_01 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -545,7 +545,7 @@ object_building_general_shared_bunker_crimelord_retreat_01 = SharedBuildingObjec
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -565,7 +565,7 @@ ObjectTemplates:addClientTemplate(object_building_general_shared_bunker_crimelor
 
 object_building_general_shared_bunker_imperial_01 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -603,7 +603,7 @@ object_building_general_shared_bunker_imperial_01 = SharedBuildingObjectTemplate
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -623,7 +623,7 @@ ObjectTemplates:addClientTemplate(object_building_general_shared_bunker_imperial
 
 object_building_general_shared_bunker_imperial_02 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -661,7 +661,7 @@ object_building_general_shared_bunker_imperial_02 = SharedBuildingObjectTemplate
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -681,7 +681,7 @@ ObjectTemplates:addClientTemplate(object_building_general_shared_bunker_imperial
 
 object_building_general_shared_bunker_imperial_03 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -719,7 +719,7 @@ object_building_general_shared_bunker_imperial_03 = SharedBuildingObjectTemplate
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -739,7 +739,7 @@ ObjectTemplates:addClientTemplate(object_building_general_shared_bunker_imperial
 
 object_building_general_shared_bunker_imperial_bunker_abandoned = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -777,7 +777,7 @@ object_building_general_shared_bunker_imperial_bunker_abandoned = SharedBuilding
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -797,7 +797,7 @@ ObjectTemplates:addClientTemplate(object_building_general_shared_bunker_imperial
 
 object_building_general_shared_bunker_imperial_deep_chasm = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -835,7 +835,7 @@ object_building_general_shared_bunker_imperial_deep_chasm = SharedBuildingObject
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -855,7 +855,7 @@ ObjectTemplates:addClientTemplate(object_building_general_shared_bunker_imperial
 
 object_building_general_shared_bunker_imperial_detainment_center_01 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -893,7 +893,7 @@ object_building_general_shared_bunker_imperial_detainment_center_01 = SharedBuil
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -913,7 +913,7 @@ ObjectTemplates:addClientTemplate(object_building_general_shared_bunker_imperial
 
 object_building_general_shared_bunker_imperial_prison_01 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -951,7 +951,7 @@ object_building_general_shared_bunker_imperial_prison_01 = SharedBuildingObjectT
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -971,7 +971,7 @@ ObjectTemplates:addClientTemplate(object_building_general_shared_bunker_imperial
 
 object_building_general_shared_bunker_imperial_weapons_research_facility_01 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1009,7 +1009,7 @@ object_building_general_shared_bunker_imperial_weapons_research_facility_01 = Sh
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1029,7 +1029,7 @@ ObjectTemplates:addClientTemplate(object_building_general_shared_bunker_imperial
 
 object_building_general_shared_bunker_mad_bio = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 43,
@@ -1067,7 +1067,7 @@ object_building_general_shared_bunker_mad_bio = SharedBuildingObjectTemplate:new
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1087,7 +1087,7 @@ ObjectTemplates:addClientTemplate(object_building_general_shared_bunker_mad_bio,
 
 object_building_general_shared_bunker_rebel_01 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1125,7 +1125,7 @@ object_building_general_shared_bunker_rebel_01 = SharedBuildingObjectTemplate:ne
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1145,7 +1145,7 @@ ObjectTemplates:addClientTemplate(object_building_general_shared_bunker_rebel_01
 
 object_building_general_shared_bunker_rebel_deep_chasm = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1183,7 +1183,7 @@ object_building_general_shared_bunker_rebel_deep_chasm = SharedBuildingObjectTem
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1203,7 +1203,7 @@ ObjectTemplates:addClientTemplate(object_building_general_shared_bunker_rebel_de
 
 object_building_general_shared_bunker_rebel_spynet = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1241,7 +1241,7 @@ object_building_general_shared_bunker_rebel_spynet = SharedBuildingObjectTemplat
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1261,7 +1261,7 @@ ObjectTemplates:addClientTemplate(object_building_general_shared_bunker_rebel_sp
 
 object_building_general_shared_bunker_rebel_weapons_depot = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1299,7 +1299,7 @@ object_building_general_shared_bunker_rebel_weapons_depot = SharedBuildingObject
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1319,7 +1319,7 @@ ObjectTemplates:addClientTemplate(object_building_general_shared_bunker_rebel_we
 
 object_building_general_shared_bunker_research_facility_01 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1357,7 +1357,7 @@ object_building_general_shared_bunker_research_facility_01 = SharedBuildingObjec
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1377,7 +1377,7 @@ ObjectTemplates:addClientTemplate(object_building_general_shared_bunker_research
 
 object_building_general_shared_bunker_small_outpost_01 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1415,7 +1415,7 @@ object_building_general_shared_bunker_small_outpost_01 = SharedBuildingObjectTem
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1435,7 +1435,7 @@ ObjectTemplates:addClientTemplate(object_building_general_shared_bunker_small_ou
 
 object_building_general_shared_bunker_small_outpost_02 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1473,7 +1473,7 @@ object_building_general_shared_bunker_small_outpost_02 = SharedBuildingObjectTem
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1493,7 +1493,7 @@ ObjectTemplates:addClientTemplate(object_building_general_shared_bunker_small_ou
 
 object_building_general_shared_bunker_talus_chunker_bunker = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1531,7 +1531,7 @@ object_building_general_shared_bunker_talus_chunker_bunker = SharedBuildingObjec
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1551,7 +1551,7 @@ ObjectTemplates:addClientTemplate(object_building_general_shared_bunker_talus_ch
 
 object_building_general_shared_bunker_tok_retreat_01 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1589,7 +1589,7 @@ object_building_general_shared_bunker_tok_retreat_01 = SharedBuildingObjectTempl
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1609,7 +1609,7 @@ ObjectTemplates:addClientTemplate(object_building_general_shared_bunker_tok_retr
 
 object_building_general_shared_bunker_warren_01 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1647,7 +1647,7 @@ object_building_general_shared_bunker_warren_01 = SharedBuildingObjectTemplate:n
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1667,7 +1667,7 @@ ObjectTemplates:addClientTemplate(object_building_general_shared_bunker_warren_0
 
 object_building_general_shared_cantina_general = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1705,7 +1705,7 @@ object_building_general_shared_cantina_general = SharedBuildingObjectTemplate:ne
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1725,7 +1725,7 @@ ObjectTemplates:addClientTemplate(object_building_general_shared_cantina_general
 
 object_building_general_shared_capitol_general = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1763,7 +1763,7 @@ object_building_general_shared_capitol_general = SharedBuildingObjectTemplate:ne
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1783,7 +1783,7 @@ ObjectTemplates:addClientTemplate(object_building_general_shared_capitol_general
 
 object_building_general_shared_cave_01 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1821,7 +1821,7 @@ object_building_general_shared_cave_01 = SharedBuildingObjectTemplate:new {
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1841,7 +1841,7 @@ ObjectTemplates:addClientTemplate(object_building_general_shared_cave_01, "objec
 
 object_building_general_shared_cave_01_damprock = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1879,7 +1879,7 @@ object_building_general_shared_cave_01_damprock = SharedBuildingObjectTemplate:n
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1899,7 +1899,7 @@ ObjectTemplates:addClientTemplate(object_building_general_shared_cave_01_damproc
 
 object_building_general_shared_cave_01_damprock_mirror = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1937,7 +1937,7 @@ object_building_general_shared_cave_01_damprock_mirror = SharedBuildingObjectTem
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1957,7 +1957,7 @@ ObjectTemplates:addClientTemplate(object_building_general_shared_cave_01_damproc
 
 object_building_general_shared_cave_01_ice = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1995,7 +1995,7 @@ object_building_general_shared_cave_01_ice = SharedBuildingObjectTemplate:new {
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2015,7 +2015,7 @@ ObjectTemplates:addClientTemplate(object_building_general_shared_cave_01_ice, "o
 
 object_building_general_shared_cave_01_mirror = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2053,7 +2053,7 @@ object_building_general_shared_cave_01_mirror = SharedBuildingObjectTemplate:new
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2073,7 +2073,7 @@ ObjectTemplates:addClientTemplate(object_building_general_shared_cave_01_mirror,
 
 object_building_general_shared_cave_02 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2111,7 +2111,7 @@ object_building_general_shared_cave_02 = SharedBuildingObjectTemplate:new {
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2131,7 +2131,7 @@ ObjectTemplates:addClientTemplate(object_building_general_shared_cave_02, "objec
 
 object_building_general_shared_cave_02_damprock = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2169,7 +2169,7 @@ object_building_general_shared_cave_02_damprock = SharedBuildingObjectTemplate:n
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2189,7 +2189,7 @@ ObjectTemplates:addClientTemplate(object_building_general_shared_cave_02_damproc
 
 object_building_general_shared_cave_02_damprock_mirror = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2227,7 +2227,7 @@ object_building_general_shared_cave_02_damprock_mirror = SharedBuildingObjectTem
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2247,7 +2247,7 @@ ObjectTemplates:addClientTemplate(object_building_general_shared_cave_02_damproc
 
 object_building_general_shared_cave_02_ice = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2285,7 +2285,7 @@ object_building_general_shared_cave_02_ice = SharedBuildingObjectTemplate:new {
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2305,7 +2305,7 @@ ObjectTemplates:addClientTemplate(object_building_general_shared_cave_02_ice, "o
 
 object_building_general_shared_cave_02_mirror = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2343,7 +2343,7 @@ object_building_general_shared_cave_02_mirror = SharedBuildingObjectTemplate:new
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2363,7 +2363,7 @@ ObjectTemplates:addClientTemplate(object_building_general_shared_cave_02_mirror,
 
 object_building_general_shared_cave_03 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2401,7 +2401,7 @@ object_building_general_shared_cave_03 = SharedBuildingObjectTemplate:new {
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2421,7 +2421,7 @@ ObjectTemplates:addClientTemplate(object_building_general_shared_cave_03, "objec
 
 object_building_general_shared_cave_03_damprock = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2459,7 +2459,7 @@ object_building_general_shared_cave_03_damprock = SharedBuildingObjectTemplate:n
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2479,7 +2479,7 @@ ObjectTemplates:addClientTemplate(object_building_general_shared_cave_03_damproc
 
 object_building_general_shared_cave_03_damprock_mirror = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2517,7 +2517,7 @@ object_building_general_shared_cave_03_damprock_mirror = SharedBuildingObjectTem
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2537,7 +2537,7 @@ ObjectTemplates:addClientTemplate(object_building_general_shared_cave_03_damproc
 
 object_building_general_shared_cave_03_ice = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2575,7 +2575,7 @@ object_building_general_shared_cave_03_ice = SharedBuildingObjectTemplate:new {
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2595,7 +2595,7 @@ ObjectTemplates:addClientTemplate(object_building_general_shared_cave_03_ice, "o
 
 object_building_general_shared_cave_03_mirror = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2633,7 +2633,7 @@ object_building_general_shared_cave_03_mirror = SharedBuildingObjectTemplate:new
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2653,7 +2653,7 @@ ObjectTemplates:addClientTemplate(object_building_general_shared_cave_03_mirror,
 
 object_building_general_shared_cave_04_ice_s01 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2691,7 +2691,7 @@ object_building_general_shared_cave_04_ice_s01 = SharedBuildingObjectTemplate:ne
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2711,7 +2711,7 @@ ObjectTemplates:addClientTemplate(object_building_general_shared_cave_04_ice_s01
 
 object_building_general_shared_cave_05_ice_s02 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2749,7 +2749,7 @@ object_building_general_shared_cave_05_ice_s02 = SharedBuildingObjectTemplate:ne
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2769,7 +2769,7 @@ ObjectTemplates:addClientTemplate(object_building_general_shared_cave_05_ice_s02
 
 object_building_general_shared_cave_06_flatland_s01 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2807,7 +2807,7 @@ object_building_general_shared_cave_06_flatland_s01 = SharedBuildingObjectTempla
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2827,7 +2827,7 @@ ObjectTemplates:addClientTemplate(object_building_general_shared_cave_06_flatlan
 
 object_building_general_shared_cave_06_flatland_s01_damprock = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2865,7 +2865,7 @@ object_building_general_shared_cave_06_flatland_s01_damprock = SharedBuildingObj
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2885,7 +2885,7 @@ ObjectTemplates:addClientTemplate(object_building_general_shared_cave_06_flatlan
 
 object_building_general_shared_cave_06_flatland_s01_ice = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2923,7 +2923,7 @@ object_building_general_shared_cave_06_flatland_s01_ice = SharedBuildingObjectTe
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2943,7 +2943,7 @@ ObjectTemplates:addClientTemplate(object_building_general_shared_cave_06_flatlan
 
 object_building_general_shared_cave_07_flatland_s02 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2981,7 +2981,7 @@ object_building_general_shared_cave_07_flatland_s02 = SharedBuildingObjectTempla
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3001,7 +3001,7 @@ ObjectTemplates:addClientTemplate(object_building_general_shared_cave_07_flatlan
 
 object_building_general_shared_cave_07_flatland_s02_damprock = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -3039,7 +3039,7 @@ object_building_general_shared_cave_07_flatland_s02_damprock = SharedBuildingObj
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3059,7 +3059,7 @@ ObjectTemplates:addClientTemplate(object_building_general_shared_cave_07_flatlan
 
 object_building_general_shared_cave_07_flatland_s02_ice = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -3097,7 +3097,7 @@ object_building_general_shared_cave_07_flatland_s02_ice = SharedBuildingObjectTe
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3117,7 +3117,7 @@ ObjectTemplates:addClientTemplate(object_building_general_shared_cave_07_flatlan
 
 object_building_general_shared_cave_08_flatland_s03 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -3155,7 +3155,7 @@ object_building_general_shared_cave_08_flatland_s03 = SharedBuildingObjectTempla
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3175,7 +3175,7 @@ ObjectTemplates:addClientTemplate(object_building_general_shared_cave_08_flatlan
 
 object_building_general_shared_cave_08_flatland_s03_damprock = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -3213,7 +3213,7 @@ object_building_general_shared_cave_08_flatland_s03_damprock = SharedBuildingObj
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3233,7 +3233,7 @@ ObjectTemplates:addClientTemplate(object_building_general_shared_cave_08_flatlan
 
 object_building_general_shared_cave_08_flatland_s03_ice = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -3271,7 +3271,7 @@ object_building_general_shared_cave_08_flatland_s03_ice = SharedBuildingObjectTe
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3291,7 +3291,7 @@ ObjectTemplates:addClientTemplate(object_building_general_shared_cave_08_flatlan
 
 object_building_general_shared_cave_lok_pirate_cave = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -3329,7 +3329,7 @@ object_building_general_shared_cave_lok_pirate_cave = SharedBuildingObjectTempla
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3349,7 +3349,7 @@ ObjectTemplates:addClientTemplate(object_building_general_shared_cave_lok_pirate
 
 object_building_general_shared_cave_morag = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -3387,7 +3387,7 @@ object_building_general_shared_cave_morag = SharedBuildingObjectTemplate:new {
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3407,7 +3407,7 @@ ObjectTemplates:addClientTemplate(object_building_general_shared_cave_morag, "ob
 
 object_building_general_shared_cloning_facility_general = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -3445,7 +3445,7 @@ object_building_general_shared_cloning_facility_general = SharedBuildingObjectTe
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3465,7 +3465,7 @@ ObjectTemplates:addClientTemplate(object_building_general_shared_cloning_facilit
 
 object_building_general_shared_corellia_afarathu_cave = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -3503,7 +3503,7 @@ object_building_general_shared_corellia_afarathu_cave = SharedBuildingObjectTemp
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3523,7 +3523,7 @@ ObjectTemplates:addClientTemplate(object_building_general_shared_corellia_afarat
 
 object_building_general_shared_corellia_drall_cave = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -3561,7 +3561,7 @@ object_building_general_shared_corellia_drall_cave = SharedBuildingObjectTemplat
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3581,7 +3581,7 @@ ObjectTemplates:addClientTemplate(object_building_general_shared_corellia_drall_
 
 object_building_general_shared_corellia_nyax_bunker = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -3619,7 +3619,7 @@ object_building_general_shared_corellia_nyax_bunker = SharedBuildingObjectTempla
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3639,7 +3639,7 @@ ObjectTemplates:addClientTemplate(object_building_general_shared_corellia_nyax_b
 
 object_building_general_shared_dantooine_force_crystal_hunter_sd_cave = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -3677,7 +3677,7 @@ object_building_general_shared_dantooine_force_crystal_hunter_sd_cave = SharedBu
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3697,7 +3697,7 @@ ObjectTemplates:addClientTemplate(object_building_general_shared_dantooine_force
 
 object_building_general_shared_dantooine_janta_cave = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -3735,7 +3735,7 @@ object_building_general_shared_dantooine_janta_cave = SharedBuildingObjectTempla
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3755,7 +3755,7 @@ ObjectTemplates:addClientTemplate(object_building_general_shared_dantooine_janta
 
 object_building_general_shared_dantooine_kunga_cave = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -3793,7 +3793,7 @@ object_building_general_shared_dantooine_kunga_cave = SharedBuildingObjectTempla
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3813,7 +3813,7 @@ ObjectTemplates:addClientTemplate(object_building_general_shared_dantooine_kunga
 
 object_building_general_shared_dathomir_nsister_cave = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -3851,7 +3851,7 @@ object_building_general_shared_dathomir_nsister_cave = SharedBuildingObjectTempl
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3871,7 +3871,7 @@ ObjectTemplates:addClientTemplate(object_building_general_shared_dathomir_nsiste
 
 object_building_general_shared_dathomir_nsister_rancor_cave = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -3909,7 +3909,7 @@ object_building_general_shared_dathomir_nsister_rancor_cave = SharedBuildingObje
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3929,7 +3929,7 @@ ObjectTemplates:addClientTemplate(object_building_general_shared_dathomir_nsiste
 
 object_building_general_shared_endor_jinda_cave = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -3967,7 +3967,7 @@ object_building_general_shared_endor_jinda_cave = SharedBuildingObjectTemplate:n
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3987,7 +3987,7 @@ ObjectTemplates:addClientTemplate(object_building_general_shared_endor_jinda_cav
 
 object_building_general_shared_endor_korga_cave = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -4025,7 +4025,7 @@ object_building_general_shared_endor_korga_cave = SharedBuildingObjectTemplate:n
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -4045,7 +4045,7 @@ ObjectTemplates:addClientTemplate(object_building_general_shared_endor_korga_cav
 
 object_building_general_shared_endor_marauder_orphans_cave = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -4083,7 +4083,7 @@ object_building_general_shared_endor_marauder_orphans_cave = SharedBuildingObjec
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -4103,7 +4103,7 @@ ObjectTemplates:addClientTemplate(object_building_general_shared_endor_marauder_
 
 object_building_general_shared_guild_combat_general_style_01 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -4141,7 +4141,7 @@ object_building_general_shared_guild_combat_general_style_01 = SharedBuildingObj
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -4161,7 +4161,7 @@ ObjectTemplates:addClientTemplate(object_building_general_shared_guild_combat_ge
 
 object_building_general_shared_guild_commerce_general_style_01 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -4199,7 +4199,7 @@ object_building_general_shared_guild_commerce_general_style_01 = SharedBuildingO
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -4219,7 +4219,7 @@ ObjectTemplates:addClientTemplate(object_building_general_shared_guild_commerce_
 
 object_building_general_shared_guild_university_general_style_01 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -4257,7 +4257,7 @@ object_building_general_shared_guild_university_general_style_01 = SharedBuildin
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -4277,7 +4277,7 @@ ObjectTemplates:addClientTemplate(object_building_general_shared_guild_universit
 
 object_building_general_shared_hotel_general_style_1 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -4315,7 +4315,7 @@ object_building_general_shared_hotel_general_style_1 = SharedBuildingObjectTempl
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -4335,7 +4335,7 @@ ObjectTemplates:addClientTemplate(object_building_general_shared_hotel_general_s
 
 object_building_general_shared_hotel_general_style_2 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/mockup_hotelb.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -4373,7 +4373,7 @@ object_building_general_shared_hotel_general_style_2 = SharedBuildingObjectTempl
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -4393,7 +4393,7 @@ ObjectTemplates:addClientTemplate(object_building_general_shared_hotel_general_s
 
 object_building_general_shared_housing_general_style_1 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -4431,7 +4431,7 @@ object_building_general_shared_housing_general_style_1 = SharedBuildingObjectTem
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -4451,7 +4451,7 @@ ObjectTemplates:addClientTemplate(object_building_general_shared_housing_general
 
 object_building_general_shared_landing_pad_s01 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -4489,7 +4489,7 @@ object_building_general_shared_landing_pad_s01 = SharedBuildingObjectTemplate:ne
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -4509,7 +4509,7 @@ ObjectTemplates:addClientTemplate(object_building_general_shared_landing_pad_s01
 
 object_building_general_shared_lok_evil_droid_engineer_cave = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -4547,7 +4547,7 @@ object_building_general_shared_lok_evil_droid_engineer_cave = SharedBuildingObje
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -4567,7 +4567,7 @@ ObjectTemplates:addClientTemplate(object_building_general_shared_lok_evil_droid_
 
 object_building_general_shared_lok_kimogila_cult_bunker = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -4605,7 +4605,7 @@ object_building_general_shared_lok_kimogila_cult_bunker = SharedBuildingObjectTe
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -4625,7 +4625,7 @@ ObjectTemplates:addClientTemplate(object_building_general_shared_lok_kimogila_cu
 
 object_building_general_shared_lok_mercenary_cave_01 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -4663,7 +4663,7 @@ object_building_general_shared_lok_mercenary_cave_01 = SharedBuildingObjectTempl
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -4683,7 +4683,7 @@ ObjectTemplates:addClientTemplate(object_building_general_shared_lok_mercenary_c
 
 object_building_general_shared_lok_nymstheme_mercenary_bunker = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -4721,7 +4721,7 @@ object_building_general_shared_lok_nymstheme_mercenary_bunker = SharedBuildingOb
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -4741,7 +4741,7 @@ ObjectTemplates:addClientTemplate(object_building_general_shared_lok_nymstheme_m
 
 object_building_general_shared_lok_nymstheme_pirate_cave = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -4779,7 +4779,7 @@ object_building_general_shared_lok_nymstheme_pirate_cave = SharedBuildingObjectT
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -4799,7 +4799,7 @@ ObjectTemplates:addClientTemplate(object_building_general_shared_lok_nymstheme_p
 
 object_building_general_shared_merchant_tent_all_s01 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -4837,7 +4837,7 @@ object_building_general_shared_merchant_tent_all_s01 = SharedBuildingObjectTempl
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -4857,7 +4857,7 @@ ObjectTemplates:addClientTemplate(object_building_general_shared_merchant_tent_a
 
 object_building_general_shared_mun_all_capitol_s01 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -4895,7 +4895,7 @@ object_building_general_shared_mun_all_capitol_s01 = SharedBuildingObjectTemplat
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -4915,7 +4915,7 @@ ObjectTemplates:addClientTemplate(object_building_general_shared_mun_all_capitol
 
 object_building_general_shared_mun_all_cloning_s01 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -4953,7 +4953,7 @@ object_building_general_shared_mun_all_cloning_s01 = SharedBuildingObjectTemplat
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -4973,7 +4973,7 @@ ObjectTemplates:addClientTemplate(object_building_general_shared_mun_all_cloning
 
 object_building_general_shared_mun_all_guild_combat_s01 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -5011,7 +5011,7 @@ object_building_general_shared_mun_all_guild_combat_s01 = SharedBuildingObjectTe
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -5031,7 +5031,7 @@ ObjectTemplates:addClientTemplate(object_building_general_shared_mun_all_guild_c
 
 object_building_general_shared_mun_all_guild_commerce_s01 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -5069,7 +5069,7 @@ object_building_general_shared_mun_all_guild_commerce_s01 = SharedBuildingObject
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -5089,7 +5089,7 @@ ObjectTemplates:addClientTemplate(object_building_general_shared_mun_all_guild_c
 
 object_building_general_shared_mun_all_guild_theater_s01 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -5127,7 +5127,7 @@ object_building_general_shared_mun_all_guild_theater_s01 = SharedBuildingObjectT
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -5147,7 +5147,7 @@ ObjectTemplates:addClientTemplate(object_building_general_shared_mun_all_guild_t
 
 object_building_general_shared_mun_all_guild_university_s01 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -5185,7 +5185,7 @@ object_building_general_shared_mun_all_guild_university_s01 = SharedBuildingObje
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -5205,7 +5205,7 @@ ObjectTemplates:addClientTemplate(object_building_general_shared_mun_all_guild_u
 
 object_building_general_shared_mun_all_hospital_s01 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -5243,7 +5243,7 @@ object_building_general_shared_mun_all_hospital_s01 = SharedBuildingObjectTempla
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -5263,7 +5263,7 @@ ObjectTemplates:addClientTemplate(object_building_general_shared_mun_all_hospita
 
 object_building_general_shared_mun_all_hospital_s02 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 30,
@@ -5301,7 +5301,7 @@ object_building_general_shared_mun_all_hospital_s02 = SharedBuildingObjectTempla
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -5321,7 +5321,7 @@ ObjectTemplates:addClientTemplate(object_building_general_shared_mun_all_hospita
 
 object_building_general_shared_mun_all_hotel_s01 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -5359,7 +5359,7 @@ object_building_general_shared_mun_all_hotel_s01 = SharedBuildingObjectTemplate:
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -5379,7 +5379,7 @@ ObjectTemplates:addClientTemplate(object_building_general_shared_mun_all_hotel_s
 
 object_building_general_shared_mun_all_landing_pad_s01 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 20,
@@ -5417,7 +5417,7 @@ object_building_general_shared_mun_all_landing_pad_s01 = SharedBuildingObjectTem
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -5437,7 +5437,7 @@ ObjectTemplates:addClientTemplate(object_building_general_shared_mun_all_landing
 
 object_building_general_shared_mun_all_starport_s01 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -5475,7 +5475,7 @@ object_building_general_shared_mun_all_starport_s01 = SharedBuildingObjectTempla
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -5495,7 +5495,7 @@ ObjectTemplates:addClientTemplate(object_building_general_shared_mun_all_starpor
 
 object_building_general_shared_naboo_narglatch_cave = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -5533,7 +5533,7 @@ object_building_general_shared_naboo_narglatch_cave = SharedBuildingObjectTempla
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -5553,7 +5553,7 @@ ObjectTemplates:addClientTemplate(object_building_general_shared_naboo_narglatch
 
 object_building_general_shared_naboo_pirate_bunker = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -5591,7 +5591,7 @@ object_building_general_shared_naboo_pirate_bunker = SharedBuildingObjectTemplat
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -5611,7 +5611,7 @@ ObjectTemplates:addClientTemplate(object_building_general_shared_naboo_pirate_bu
 
 object_building_general_shared_naboo_veermok_cave = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -5649,7 +5649,7 @@ object_building_general_shared_naboo_veermok_cave = SharedBuildingObjectTemplate
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -5669,7 +5669,7 @@ ObjectTemplates:addClientTemplate(object_building_general_shared_naboo_veermok_c
 
 object_building_general_shared_newbie_hall = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 48,
@@ -5707,7 +5707,7 @@ object_building_general_shared_newbie_hall = SharedBuildingObjectTemplate:new {
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -5727,7 +5727,7 @@ ObjectTemplates:addClientTemplate(object_building_general_shared_newbie_hall, "o
 
 object_building_general_shared_newbie_hall_skipped = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 48,
@@ -5765,7 +5765,7 @@ object_building_general_shared_newbie_hall_skipped = SharedBuildingObjectTemplat
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -5785,7 +5785,7 @@ ObjectTemplates:addClientTemplate(object_building_general_shared_newbie_hall_ski
 
 object_building_general_shared_nightsister_slave_mine_sd_cave = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -5823,7 +5823,7 @@ object_building_general_shared_nightsister_slave_mine_sd_cave = SharedBuildingOb
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -5843,7 +5843,7 @@ ObjectTemplates:addClientTemplate(object_building_general_shared_nightsister_sla
 
 object_building_general_shared_parking_garage_general = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -5881,7 +5881,7 @@ object_building_general_shared_parking_garage_general = SharedBuildingObjectTemp
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -5901,7 +5901,7 @@ ObjectTemplates:addClientTemplate(object_building_general_shared_parking_garage_
 
 object_building_general_shared_ranchers_house_tatooine = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -5939,7 +5939,7 @@ object_building_general_shared_ranchers_house_tatooine = SharedBuildingObjectTem
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/building/player/shared_player_house_tatooine_medium_style_01.sfp",
@@ -5959,7 +5959,7 @@ ObjectTemplates:addClientTemplate(object_building_general_shared_ranchers_house_
 
 object_building_general_shared_rebel_fuel_depot = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -5997,7 +5997,7 @@ object_building_general_shared_rebel_fuel_depot = SharedBuildingObjectTemplate:n
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -6017,7 +6017,7 @@ ObjectTemplates:addClientTemplate(object_building_general_shared_rebel_fuel_depo
 
 object_building_general_shared_rori_bark_mite_cave = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -6055,7 +6055,7 @@ object_building_general_shared_rori_bark_mite_cave = SharedBuildingObjectTemplat
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -6075,7 +6075,7 @@ ObjectTemplates:addClientTemplate(object_building_general_shared_rori_bark_mite_
 
 object_building_general_shared_rori_bat_cave = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -6113,7 +6113,7 @@ object_building_general_shared_rori_bat_cave = SharedBuildingObjectTemplate:new 
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -6133,7 +6133,7 @@ ObjectTemplates:addClientTemplate(object_building_general_shared_rori_bat_cave, 
 
 object_building_general_shared_rori_cobral_bunker = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -6171,7 +6171,7 @@ object_building_general_shared_rori_cobral_bunker = SharedBuildingObjectTemplate
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -6191,7 +6191,7 @@ ObjectTemplates:addClientTemplate(object_building_general_shared_rori_cobral_bun
 
 object_building_general_shared_rori_garyn_bunker = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -6229,7 +6229,7 @@ object_building_general_shared_rori_garyn_bunker = SharedBuildingObjectTemplate:
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -6249,7 +6249,7 @@ ObjectTemplates:addClientTemplate(object_building_general_shared_rori_garyn_bunk
 
 object_building_general_shared_rori_hyperdrive_research_facility = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -6287,7 +6287,7 @@ object_building_general_shared_rori_hyperdrive_research_facility = SharedBuildin
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -6307,7 +6307,7 @@ ObjectTemplates:addClientTemplate(object_building_general_shared_rori_hyperdrive
 
 object_building_general_shared_rori_kobola_cave = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -6345,7 +6345,7 @@ object_building_general_shared_rori_kobola_cave = SharedBuildingObjectTemplate:n
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -6365,7 +6365,7 @@ ObjectTemplates:addClientTemplate(object_building_general_shared_rori_kobola_cav
 
 object_building_general_shared_rori_torton_cave = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -6403,7 +6403,7 @@ object_building_general_shared_rori_torton_cave = SharedBuildingObjectTemplate:n
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -6423,7 +6423,7 @@ ObjectTemplates:addClientTemplate(object_building_general_shared_rori_torton_cav
 
 object_building_general_shared_shuttleport_general = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/mun_all_shuttleport_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -6461,7 +6461,7 @@ object_building_general_shared_shuttleport_general = SharedBuildingObjectTemplat
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -6481,7 +6481,7 @@ ObjectTemplates:addClientTemplate(object_building_general_shared_shuttleport_gen
 
 object_building_general_shared_space_dungeon_corellian_corvette = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -6519,7 +6519,7 @@ object_building_general_shared_space_dungeon_corellian_corvette = SharedBuilding
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -6539,7 +6539,7 @@ ObjectTemplates:addClientTemplate(object_building_general_shared_space_dungeon_c
 
 object_building_general_shared_space_dungeon_corellian_corvette_imperial = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -6577,7 +6577,7 @@ object_building_general_shared_space_dungeon_corellian_corvette_imperial = Share
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -6597,7 +6597,7 @@ ObjectTemplates:addClientTemplate(object_building_general_shared_space_dungeon_c
 
 object_building_general_shared_space_dungeon_corellian_corvette_rebel = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -6635,7 +6635,7 @@ object_building_general_shared_space_dungeon_corellian_corvette_rebel = SharedBu
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -6655,7 +6655,7 @@ ObjectTemplates:addClientTemplate(object_building_general_shared_space_dungeon_c
 
 object_building_general_shared_space_dungeon_hutt_asteroid = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -6693,7 +6693,7 @@ object_building_general_shared_space_dungeon_hutt_asteroid = SharedBuildingObjec
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -6713,7 +6713,7 @@ ObjectTemplates:addClientTemplate(object_building_general_shared_space_dungeon_h
 
 object_building_general_shared_space_dungeon_star_destroyer = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -6751,7 +6751,7 @@ object_building_general_shared_space_dungeon_star_destroyer = SharedBuildingObje
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -6771,7 +6771,7 @@ ObjectTemplates:addClientTemplate(object_building_general_shared_space_dungeon_s
 
 object_building_general_shared_starport_general = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -6809,7 +6809,7 @@ object_building_general_shared_starport_general = SharedBuildingObjectTemplate:n
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -6829,7 +6829,7 @@ ObjectTemplates:addClientTemplate(object_building_general_shared_starport_genera
 
 object_building_general_shared_starport_general_style_1 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -6867,7 +6867,7 @@ object_building_general_shared_starport_general_style_1 = SharedBuildingObjectTe
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -6887,7 +6887,7 @@ ObjectTemplates:addClientTemplate(object_building_general_shared_starport_genera
 
 object_building_general_shared_starport_general_style_2 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/mockup_starportb.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -6925,7 +6925,7 @@ object_building_general_shared_starport_general_style_2 = SharedBuildingObjectTe
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -6945,7 +6945,7 @@ ObjectTemplates:addClientTemplate(object_building_general_shared_starport_genera
 
 object_building_general_shared_talus_aakuan_cave = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -6983,7 +6983,7 @@ object_building_general_shared_talus_aakuan_cave = SharedBuildingObjectTemplate:
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -7003,7 +7003,7 @@ ObjectTemplates:addClientTemplate(object_building_general_shared_talus_aakuan_ca
 
 object_building_general_shared_talus_aqualish_cave = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -7041,7 +7041,7 @@ object_building_general_shared_talus_aqualish_cave = SharedBuildingObjectTemplat
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -7061,7 +7061,7 @@ ObjectTemplates:addClientTemplate(object_building_general_shared_talus_aqualish_
 
 object_building_general_shared_talus_binyare_bunker = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -7099,7 +7099,7 @@ object_building_general_shared_talus_binyare_bunker = SharedBuildingObjectTempla
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -7119,7 +7119,7 @@ ObjectTemplates:addClientTemplate(object_building_general_shared_talus_binyare_b
 
 object_building_general_shared_talus_giant_decay_mite_cave = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -7157,7 +7157,7 @@ object_building_general_shared_talus_giant_decay_mite_cave = SharedBuildingObjec
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -7177,7 +7177,7 @@ ObjectTemplates:addClientTemplate(object_building_general_shared_talus_giant_dec
 
 object_building_general_shared_talus_giant_fynock_cave = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -7215,7 +7215,7 @@ object_building_general_shared_talus_giant_fynock_cave = SharedBuildingObjectTem
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -7235,7 +7235,7 @@ ObjectTemplates:addClientTemplate(object_building_general_shared_talus_giant_fyn
 
 object_building_general_shared_talus_kahmurra_bunker = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -7273,7 +7273,7 @@ object_building_general_shared_talus_kahmurra_bunker = SharedBuildingObjectTempl
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -7293,7 +7293,7 @@ ObjectTemplates:addClientTemplate(object_building_general_shared_talus_kahmurra_
 
 object_building_general_shared_talus_traitor_erran = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -7331,7 +7331,7 @@ object_building_general_shared_talus_traitor_erran = SharedBuildingObjectTemplat
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -7351,7 +7351,7 @@ ObjectTemplates:addClientTemplate(object_building_general_shared_talus_traitor_e
 
 object_building_general_shared_tatooine_beetle_cave = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -7389,7 +7389,7 @@ object_building_general_shared_tatooine_beetle_cave = SharedBuildingObjectTempla
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -7409,7 +7409,7 @@ ObjectTemplates:addClientTemplate(object_building_general_shared_tatooine_beetle
 
 object_building_general_shared_tatooine_hutt_cave = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -7447,7 +7447,7 @@ object_building_general_shared_tatooine_hutt_cave = SharedBuildingObjectTemplate
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -7467,7 +7467,7 @@ ObjectTemplates:addClientTemplate(object_building_general_shared_tatooine_hutt_c
 
 object_building_general_shared_tatooine_squill_cave = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -7505,7 +7505,7 @@ object_building_general_shared_tatooine_squill_cave = SharedBuildingObjectTempla
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -7525,7 +7525,7 @@ ObjectTemplates:addClientTemplate(object_building_general_shared_tatooine_squill
 
 object_building_general_shared_tatooine_tusken_bunker = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -7563,7 +7563,7 @@ object_building_general_shared_tatooine_tusken_bunker = SharedBuildingObjectTemp
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",

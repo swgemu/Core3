@@ -43,7 +43,7 @@
 
 object_tangible_space_mission_objects_shared_palace_access_doc = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_prp_document_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -79,7 +79,7 @@ object_tangible_space_mission_objects_shared_palace_access_doc = SharedTangibleO
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -98,7 +98,7 @@ ObjectTemplates:addClientTemplate(object_tangible_space_mission_objects_shared_p
 
 object_tangible_space_mission_objects_shared_transfer_auth = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_droid_program_disk.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -134,7 +134,7 @@ object_tangible_space_mission_objects_shared_transfer_auth = SharedTangibleObjec
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",

@@ -43,7 +43,7 @@
 
 object_tangible_wearables_apron_shared_apron_chef_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/apron_chef_jacket_s01_f.sat",
-	arrangementDescriptors = {"chest2", "bicep_l", "bicep_r", "bracer_upper_l", "bracer_upper_r", "bracer_lower_l", "bracer_lower_r"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/jacket_longsleeve.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -79,7 +79,7 @@ object_tangible_wearables_apron_shared_apron_chef_s01 = SharedTangibleObjectTemp
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -98,7 +98,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_apron_shared_apron_c
 
 object_tangible_wearables_apron_shared_apron_porcellus = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/apron_porcellus_m.sat",
-	arrangementDescriptors = {"chest2"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/vest.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -134,7 +134,7 @@ object_tangible_wearables_apron_shared_apron_porcellus = SharedTangibleObjectTem
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -153,7 +153,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_apron_shared_apron_p
 
 object_tangible_wearables_apron_shared_apron_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/apron_s01_f.sat",
-	arrangementDescriptors = {"chest2"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/vest.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -189,7 +189,7 @@ object_tangible_wearables_apron_shared_apron_s01 = SharedTangibleObjectTemplate:
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -208,7 +208,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_apron_shared_apron_s
 
 object_tangible_wearables_apron_shared_apron_s01_quest = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/apron_s01_f.sat",
-	arrangementDescriptors = {"chest2"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/vest.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -244,7 +244,7 @@ object_tangible_wearables_apron_shared_apron_s01_quest = SharedTangibleObjectTem
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",

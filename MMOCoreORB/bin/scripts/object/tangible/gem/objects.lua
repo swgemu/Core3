@@ -43,7 +43,7 @@
 
 object_tangible_gem_shared_armor = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_armor_segment.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -79,7 +79,7 @@ object_tangible_gem_shared_armor = SharedTangibleObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {256,257,258,259,260,261,262,263},
 	structureFootprintFileName = "",
@@ -98,7 +98,7 @@ ObjectTemplates:addClientTemplate(object_tangible_gem_shared_armor, "object/tang
 
 object_tangible_gem_shared_clothing = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_trim.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -134,7 +134,7 @@ object_tangible_gem_shared_clothing = SharedTangibleObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {16777216,16777217,16777218,16777219,16777220,16777221,16777222,16777223,16777224,16777225,16777226,16777227,16777228,16777229,16777230,16777231,16777232,16777233},
 	structureFootprintFileName = "",
@@ -153,7 +153,7 @@ ObjectTemplates:addClientTemplate(object_tangible_gem_shared_clothing, "object/t
 
 object_tangible_gem_shared_default = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/force_amplification_crystal.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -189,7 +189,7 @@ object_tangible_gem_shared_default = SharedTangibleObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {16777216},
 	structureFootprintFileName = "",

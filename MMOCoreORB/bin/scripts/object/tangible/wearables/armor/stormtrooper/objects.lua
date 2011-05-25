@@ -43,7 +43,7 @@
 
 object_tangible_wearables_armor_stormtrooper_shared_armor_stormtrooper_bicep_l = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_stormtrooper_bicep_l_f.sat",
-	arrangementDescriptors = {"bicep_l"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/bicep_l.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -79,7 +79,7 @@ object_tangible_wearables_armor_stormtrooper_shared_armor_stormtrooper_bicep_l =
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -98,7 +98,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_stormtrooper_s
 
 object_tangible_wearables_armor_stormtrooper_shared_armor_stormtrooper_bicep_r = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_stormtrooper_bicep_r_f.sat",
-	arrangementDescriptors = {"bicep_r"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/bicep_r.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -134,7 +134,7 @@ object_tangible_wearables_armor_stormtrooper_shared_armor_stormtrooper_bicep_r =
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -153,7 +153,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_stormtrooper_s
 
 object_tangible_wearables_armor_stormtrooper_shared_armor_stormtrooper_boots = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_stormtrooper_boots_f.sat",
-	arrangementDescriptors = {"shoes"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/shoe.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -189,7 +189,7 @@ object_tangible_wearables_armor_stormtrooper_shared_armor_stormtrooper_boots = S
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -208,7 +208,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_stormtrooper_s
 
 object_tangible_wearables_armor_stormtrooper_shared_armor_stormtrooper_bracer_l = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_stormtrooper_bracer_l_f.sat",
-	arrangementDescriptors = {"bracer_upper_l", "bracer_lower_l"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/bracer_l.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -244,7 +244,7 @@ object_tangible_wearables_armor_stormtrooper_shared_armor_stormtrooper_bracer_l 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -263,7 +263,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_stormtrooper_s
 
 object_tangible_wearables_armor_stormtrooper_shared_armor_stormtrooper_bracer_r = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_stormtrooper_bracer_r_f.sat",
-	arrangementDescriptors = {"bracer_upper_r", "bracer_lower_r"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/bracer_r.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -299,7 +299,7 @@ object_tangible_wearables_armor_stormtrooper_shared_armor_stormtrooper_bracer_r 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -318,7 +318,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_stormtrooper_s
 
 object_tangible_wearables_armor_stormtrooper_shared_armor_stormtrooper_chest_plate = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_stormtrooper_chest_plate_f.sat",
-	arrangementDescriptors = {"chest2"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/vest.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -354,7 +354,7 @@ object_tangible_wearables_armor_stormtrooper_shared_armor_stormtrooper_chest_pla
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -373,7 +373,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_stormtrooper_s
 
 object_tangible_wearables_armor_stormtrooper_shared_armor_stormtrooper_chest_plate_quest = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_stormtrooper_chest_plate_f.sat",
-	arrangementDescriptors = {"chest2"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/vest.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -409,7 +409,7 @@ object_tangible_wearables_armor_stormtrooper_shared_armor_stormtrooper_chest_pla
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -428,7 +428,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_stormtrooper_s
 
 object_tangible_wearables_armor_stormtrooper_shared_armor_stormtrooper_gloves = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_stormtrooper_gloves_m.sat",
-	arrangementDescriptors = {"gloves"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/gauntlets.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -464,7 +464,7 @@ object_tangible_wearables_armor_stormtrooper_shared_armor_stormtrooper_gloves = 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -483,7 +483,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_stormtrooper_s
 
 object_tangible_wearables_armor_stormtrooper_shared_armor_stormtrooper_helmet = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_stormtrooper_helmet_f.sat",
-	arrangementDescriptors = {"hat", "eyes", "mouth"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/helmet_closed_full.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -519,7 +519,7 @@ object_tangible_wearables_armor_stormtrooper_shared_armor_stormtrooper_helmet = 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -538,7 +538,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_stormtrooper_s
 
 object_tangible_wearables_armor_stormtrooper_shared_armor_stormtrooper_helmet_quest = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_stormtrooper_helmet_f.sat",
-	arrangementDescriptors = {"hat", "eyes", "mouth"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/helmet_closed_full.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -574,7 +574,7 @@ object_tangible_wearables_armor_stormtrooper_shared_armor_stormtrooper_helmet_qu
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -593,7 +593,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_stormtrooper_s
 
 object_tangible_wearables_armor_stormtrooper_shared_armor_stormtrooper_leggings = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_stormtrooper_leggings_f.sat",
-	arrangementDescriptors = {"pants1", "pants2"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/skirt.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -629,7 +629,7 @@ object_tangible_wearables_armor_stormtrooper_shared_armor_stormtrooper_leggings 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -648,7 +648,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_stormtrooper_s
 
 object_tangible_wearables_armor_stormtrooper_shared_armor_stormtrooper_leggings_quest = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_stormtrooper_leggings_f.sat",
-	arrangementDescriptors = {"pants1", "pants2"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/skirt.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -684,7 +684,7 @@ object_tangible_wearables_armor_stormtrooper_shared_armor_stormtrooper_leggings_
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -703,7 +703,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_stormtrooper_s
 
 object_tangible_wearables_armor_stormtrooper_shared_armor_stormtrooper_utility_belt = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_stormtrooper_utility_belt_m.sat",
-	arrangementDescriptors = {"utility_belt"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/belt.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -739,7 +739,7 @@ object_tangible_wearables_armor_stormtrooper_shared_armor_stormtrooper_utility_b
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",

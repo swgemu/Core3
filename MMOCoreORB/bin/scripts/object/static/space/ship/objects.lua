@@ -43,7 +43,7 @@
 
 object_static_space_ship_shared_cargo_freighter = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/cargo_freighter.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -74,7 +74,7 @@ object_static_space_ship_shared_cargo_freighter = SharedStaticObjectTemplate:new
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 1,
 
@@ -88,7 +88,7 @@ ObjectTemplates:addClientTemplate(object_static_space_ship_shared_cargo_freighte
 
 object_static_space_ship_shared_corellian_corvette = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/corellian_corvette.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -119,7 +119,7 @@ object_static_space_ship_shared_corellian_corvette = SharedStaticObjectTemplate:
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 1,
 
@@ -133,7 +133,7 @@ ObjectTemplates:addClientTemplate(object_static_space_ship_shared_corellian_corv
 
 object_static_space_ship_shared_nebulon_frigate = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/nebulon_frigate.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -164,7 +164,7 @@ object_static_space_ship_shared_nebulon_frigate = SharedStaticObjectTemplate:new
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 1,
 

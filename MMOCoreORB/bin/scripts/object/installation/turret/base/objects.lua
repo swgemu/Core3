@@ -43,7 +43,7 @@
 
 object_installation_turret_base_shared_turret_base = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/ins_all_def_turret_lg_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 15,
@@ -79,7 +79,7 @@ object_installation_turret_base_shared_turret_base = SharedInstallationObjectTem
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/installation/base/shared_installation_base.sfp",

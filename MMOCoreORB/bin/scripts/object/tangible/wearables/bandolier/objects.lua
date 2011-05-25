@@ -43,7 +43,7 @@
 
 object_tangible_wearables_bandolier_shared_bandolier_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/bandolier_chewbacca.sat",
-	arrangementDescriptors = {"back"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/bandolier.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -79,7 +79,7 @@ object_tangible_wearables_bandolier_shared_bandolier_s01 = SharedTangibleObjectT
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -98,7 +98,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_bandolier_shared_ban
 
 object_tangible_wearables_bandolier_shared_bandolier_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/bandolier_s02_f.sat",
-	arrangementDescriptors = {"back"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/bandolier.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -134,7 +134,7 @@ object_tangible_wearables_bandolier_shared_bandolier_s02 = SharedTangibleObjectT
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -153,7 +153,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_bandolier_shared_ban
 
 object_tangible_wearables_bandolier_shared_bandolier_s02_quest = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/bandolier_s02_f.sat",
-	arrangementDescriptors = {"back"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/bandolier.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -189,7 +189,7 @@ object_tangible_wearables_bandolier_shared_bandolier_s02_quest = SharedTangibleO
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -208,7 +208,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_bandolier_shared_ban
 
 object_tangible_wearables_bandolier_shared_bandolier_s03 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/bandolier_s03_f.sat",
-	arrangementDescriptors = {"back"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/bandolier.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -244,7 +244,7 @@ object_tangible_wearables_bandolier_shared_bandolier_s03 = SharedTangibleObjectT
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -263,7 +263,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_bandolier_shared_ban
 
 object_tangible_wearables_bandolier_shared_bandolier_s04 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/bandolier_s04_f.sat",
-	arrangementDescriptors = {"back"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/bandolier.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -299,7 +299,7 @@ object_tangible_wearables_bandolier_shared_bandolier_s04 = SharedTangibleObjectT
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -318,7 +318,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_bandolier_shared_ban
 
 object_tangible_wearables_bandolier_shared_bandolier_s04_quest = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/bandolier_s04_f.sat",
-	arrangementDescriptors = {"back"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/bandolier.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -354,7 +354,7 @@ object_tangible_wearables_bandolier_shared_bandolier_s04_quest = SharedTangibleO
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -373,7 +373,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_bandolier_shared_ban
 
 object_tangible_wearables_bandolier_shared_bandolier_s05 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/bandolier_s05_f.sat",
-	arrangementDescriptors = {"back"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/bandolier.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -409,7 +409,7 @@ object_tangible_wearables_bandolier_shared_bandolier_s05 = SharedTangibleObjectT
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -428,7 +428,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_bandolier_shared_ban
 
 object_tangible_wearables_bandolier_shared_bandolier_s06 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/bandolier_s06_f.sat",
-	arrangementDescriptors = {"back"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/bandolier.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -464,7 +464,7 @@ object_tangible_wearables_bandolier_shared_bandolier_s06 = SharedTangibleObjectT
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -483,7 +483,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_bandolier_shared_ban
 
 object_tangible_wearables_bandolier_shared_bandolier_s07 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/bandolier_s07_f.sat",
-	arrangementDescriptors = {"back"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/bandolier.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -519,7 +519,7 @@ object_tangible_wearables_bandolier_shared_bandolier_s07 = SharedTangibleObjectT
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -538,7 +538,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_bandolier_shared_ban
 
 object_tangible_wearables_bandolier_shared_bandolier_s08 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/bandolier_s08_f.sat",
-	arrangementDescriptors = {"back"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/bandolier.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -574,7 +574,7 @@ object_tangible_wearables_bandolier_shared_bandolier_s08 = SharedTangibleObjectT
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -593,7 +593,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_bandolier_shared_ban
 
 object_tangible_wearables_bandolier_shared_bandolier_s09 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/bandolier_s09_wke_f.sat",
-	arrangementDescriptors = {"back"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/bandolier.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -629,7 +629,7 @@ object_tangible_wearables_bandolier_shared_bandolier_s09 = SharedTangibleObjectT
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -648,7 +648,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_bandolier_shared_ban
 
 object_tangible_wearables_bandolier_shared_bandolier_tusken_raider_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/bandolier_tusken_raider_s01_m.sat",
-	arrangementDescriptors = {"back"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/bandolier.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -684,7 +684,7 @@ object_tangible_wearables_bandolier_shared_bandolier_tusken_raider_s01 = SharedT
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -703,7 +703,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_bandolier_shared_ban
 
 object_tangible_wearables_bandolier_shared_bandolier_tusken_raider_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/bandolier_tusken_raider_s02_m.sat",
-	arrangementDescriptors = {"back"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/bandolier.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -739,7 +739,7 @@ object_tangible_wearables_bandolier_shared_bandolier_tusken_raider_s02 = SharedT
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -758,7 +758,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_bandolier_shared_ban
 
 object_tangible_wearables_bandolier_shared_bandolier_tusken_raider_s03 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/bandolier_tusken_raider_s03_m.sat",
-	arrangementDescriptors = {"back"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/bandolier.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -794,7 +794,7 @@ object_tangible_wearables_bandolier_shared_bandolier_tusken_raider_s03 = SharedT
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -813,7 +813,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_bandolier_shared_ban
 
 object_tangible_wearables_bandolier_shared_double_bandolier = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/bandolier_s03_f.sat",
-	arrangementDescriptors = {"back"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/back.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -849,7 +849,7 @@ object_tangible_wearables_bandolier_shared_double_bandolier = SharedTangibleObje
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -868,7 +868,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_bandolier_shared_dou
 
 object_tangible_wearables_bandolier_shared_ith_double_bandolier = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_bandolier_s03_f.sat",
-	arrangementDescriptors = {"back"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/back.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -904,7 +904,7 @@ object_tangible_wearables_bandolier_shared_ith_double_bandolier = SharedTangible
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -923,7 +923,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_bandolier_shared_ith
 
 object_tangible_wearables_bandolier_shared_ith_mercenary_bandolier = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_bandolier_s02_f.sat",
-	arrangementDescriptors = {"back"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/back.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -959,7 +959,7 @@ object_tangible_wearables_bandolier_shared_ith_mercenary_bandolier = SharedTangi
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -978,7 +978,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_bandolier_shared_ith
 
 object_tangible_wearables_bandolier_shared_ith_multipocket_bandolier = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_bandolier_s04_f.sat",
-	arrangementDescriptors = {"back"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/back.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1014,7 +1014,7 @@ object_tangible_wearables_bandolier_shared_ith_multipocket_bandolier = SharedTan
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1033,7 +1033,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_bandolier_shared_ith
 
 object_tangible_wearables_bandolier_shared_mercenary_bandolier = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/bandolier_s02_f.sat",
-	arrangementDescriptors = {"back"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/back.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1069,7 +1069,7 @@ object_tangible_wearables_bandolier_shared_mercenary_bandolier = SharedTangibleO
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1088,7 +1088,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_bandolier_shared_mer
 
 object_tangible_wearables_bandolier_shared_multipocket_bandolier = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/bandolier_s04_f.sat",
-	arrangementDescriptors = {"back"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/back.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1124,7 +1124,7 @@ object_tangible_wearables_bandolier_shared_multipocket_bandolier = SharedTangibl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",

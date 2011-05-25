@@ -43,7 +43,7 @@
 
 object_installation_manufacture_base_shared_manufacture_base = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 15,
@@ -79,7 +79,7 @@ object_installation_manufacture_base_shared_manufacture_base = SharedInstallatio
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"ingredient_hopper", "output_hopper", "manf_schematic", "crafted_components", "anythingNoMod1"},
+	slotDescriptorFilename = "abstract/slot/descriptor/manufacture_installation.iff",
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/installation/mining_ore/shared_mining_ore_harvester_style_2.sfp",

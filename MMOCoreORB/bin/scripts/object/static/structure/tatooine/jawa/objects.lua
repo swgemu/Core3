@@ -43,7 +43,7 @@
 
 object_static_structure_tatooine_jawa_shared_tent_jawa_01_large = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_tato_jawa_tent_large.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -74,7 +74,7 @@ object_static_structure_tatooine_jawa_shared_tent_jawa_01_large = SharedStaticOb
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 1,
 
@@ -88,7 +88,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_tatooine_jawa_shared_t
 
 object_static_structure_tatooine_jawa_shared_tent_jawa_01_med = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_tato_jawa_tent_med.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -119,7 +119,7 @@ object_static_structure_tatooine_jawa_shared_tent_jawa_01_med = SharedStaticObje
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 1,
 
@@ -133,7 +133,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_tatooine_jawa_shared_t
 
 object_static_structure_tatooine_jawa_shared_tent_jawa_01_small = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_tato_jawa_tent_small.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -164,7 +164,7 @@ object_static_structure_tatooine_jawa_shared_tent_jawa_01_small = SharedStaticOb
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 1,
 

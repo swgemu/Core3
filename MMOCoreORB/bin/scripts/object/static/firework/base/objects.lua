@@ -43,7 +43,7 @@
 
 object_static_firework_base_shared_firework_fx_base = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/pt_fireworks_02.prt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -74,7 +74,7 @@ object_static_firework_base_shared_firework_fx_base = SharedStaticObjectTemplate
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	surfaceType = 0,
 

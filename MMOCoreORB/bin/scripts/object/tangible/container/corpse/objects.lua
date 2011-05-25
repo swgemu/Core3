@@ -43,7 +43,7 @@
 
 object_tangible_container_corpse_shared_player_corpse = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/skeleton_human_corpse.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -79,7 +79,7 @@ object_tangible_container_corpse_shared_player_corpse = SharedTangibleObjectTemp
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",

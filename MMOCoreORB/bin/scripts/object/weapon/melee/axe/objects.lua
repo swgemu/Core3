@@ -43,7 +43,7 @@
 
 object_weapon_melee_axe_shared_axe_heavy_duty = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_axe_heavy_duty.apt",
-	arrangementDescriptors = {"hold_r"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hold_r.iff",
 	attackType = 1,
 
 	certificationsRequired = {},
@@ -80,7 +80,7 @@ object_weapon_melee_axe_shared_axe_heavy_duty = SharedWeaponObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"default_weapon_ammo_slot", "crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/default_weapon.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -102,7 +102,7 @@ ObjectTemplates:addClientTemplate(object_weapon_melee_axe_shared_axe_heavy_duty,
 
 object_weapon_melee_axe_shared_axe_vibroaxe = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_axe_vibroax.apt",
-	arrangementDescriptors = {"hold_r"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hold_r.iff",
 	attackType = 1,
 
 	certificationsRequired = {},
@@ -139,7 +139,7 @@ object_weapon_melee_axe_shared_axe_vibroaxe = SharedWeaponObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"default_weapon_ammo_slot", "crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/default_weapon.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",

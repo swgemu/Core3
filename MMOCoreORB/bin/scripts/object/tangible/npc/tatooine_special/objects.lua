@@ -43,7 +43,7 @@
 
 object_tangible_npc_tatooine_special_shared_sarlacc = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/sarlacc.sat",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -79,7 +79,7 @@ object_tangible_npc_tatooine_special_shared_sarlacc = SharedTangibleObjectTempla
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",

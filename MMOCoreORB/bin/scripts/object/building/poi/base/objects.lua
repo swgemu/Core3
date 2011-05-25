@@ -43,7 +43,7 @@
 
 object_building_poi_base_shared_base_poi_building = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -81,7 +81,7 @@ object_building_poi_base_shared_base_poi_building = SharedBuildingObjectTemplate
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -101,7 +101,7 @@ ObjectTemplates:addClientTemplate(object_building_poi_base_shared_base_poi_build
 
 object_building_poi_base_shared_base_poi_large = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -139,7 +139,7 @@ object_building_poi_base_shared_base_poi_large = SharedBuildingObjectTemplate:ne
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -159,7 +159,7 @@ ObjectTemplates:addClientTemplate(object_building_poi_base_shared_base_poi_large
 
 object_building_poi_base_shared_base_poi_medium = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -197,7 +197,7 @@ object_building_poi_base_shared_base_poi_medium = SharedBuildingObjectTemplate:n
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -217,7 +217,7 @@ ObjectTemplates:addClientTemplate(object_building_poi_base_shared_base_poi_mediu
 
 object_building_poi_base_shared_base_poi_small = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -255,7 +255,7 @@ object_building_poi_base_shared_base_poi_small = SharedBuildingObjectTemplate:ne
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",

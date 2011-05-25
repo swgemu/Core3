@@ -43,7 +43,7 @@
 
 object_ship_base_shared_ship_base = SharedShipObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {"ship_control_device"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -79,7 +79,7 @@ object_ship_base_shared_ship_base = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -98,7 +98,7 @@ ObjectTemplates:addClientTemplate(object_ship_base_shared_ship_base, "object/shi
 
 object_ship_base_shared_ship_capital_base = SharedShipObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {"ship_control_device"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -134,7 +134,7 @@ object_ship_base_shared_ship_capital_base = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -153,7 +153,7 @@ ObjectTemplates:addClientTemplate(object_ship_base_shared_ship_capital_base, "ob
 
 object_ship_base_shared_ship_fighter_base = SharedShipObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {"ship_control_device"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -189,7 +189,7 @@ object_ship_base_shared_ship_fighter_base = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -208,7 +208,7 @@ ObjectTemplates:addClientTemplate(object_ship_base_shared_ship_fighter_base, "ob
 
 object_ship_base_shared_ship_station_base = SharedShipObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {"ship_control_device"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -244,7 +244,7 @@ object_ship_base_shared_ship_station_base = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -263,7 +263,7 @@ ObjectTemplates:addClientTemplate(object_ship_base_shared_ship_station_base, "ob
 
 object_ship_base_shared_ship_transport_base = SharedShipObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {"ship_control_device"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -299,7 +299,7 @@ object_ship_base_shared_ship_transport_base = SharedShipObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",

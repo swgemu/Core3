@@ -43,7 +43,7 @@
 
 object_static_structure_tatooine_shared_antenna_tatt_style_1 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_imprv_tato_antenna_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/client_shared_antenna_tatt_style_1.cdf",
@@ -74,7 +74,7 @@ object_static_structure_tatooine_shared_antenna_tatt_style_1 = SharedStaticObjec
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 1,
 
@@ -88,7 +88,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_tatooine_shared_antenn
 
 object_static_structure_tatooine_shared_antenna_tatt_style_2 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_imprv_tato_antenna_s02.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/client_shared_antenna_tatt_style_2.cdf",
@@ -119,7 +119,7 @@ object_static_structure_tatooine_shared_antenna_tatt_style_2 = SharedStaticObjec
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 1,
 
@@ -133,7 +133,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_tatooine_shared_antenn
 
 object_static_structure_tatooine_shared_beam_tatooine_overhead_style_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_tato_imprv_over_beam_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -164,7 +164,7 @@ object_static_structure_tatooine_shared_beam_tatooine_overhead_style_01 = Shared
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	surfaceType = 1,
 
@@ -178,7 +178,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_tatooine_shared_beam_t
 
 object_static_structure_tatooine_shared_beam_tatooine_overhead_style_02 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_tato_imprv_over_beam_s02.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -209,7 +209,7 @@ object_static_structure_tatooine_shared_beam_tatooine_overhead_style_02 = Shared
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	surfaceType = 1,
 
@@ -223,7 +223,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_tatooine_shared_beam_t
 
 object_static_structure_tatooine_shared_bridge_tatooine_small_style_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_tato_imprv_bridge_sml_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -254,7 +254,7 @@ object_static_structure_tatooine_shared_bridge_tatooine_small_style_01 = SharedS
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 2,
 
@@ -268,7 +268,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_tatooine_shared_bridge
 
 object_static_structure_tatooine_shared_bridge_tatooine_small_style_02 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_tato_imprv_bridge_sml_s02.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -299,7 +299,7 @@ object_static_structure_tatooine_shared_bridge_tatooine_small_style_02 = SharedS
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 2,
 
@@ -313,7 +313,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_tatooine_shared_bridge
 
 object_static_structure_tatooine_shared_bridge_tatooine_small_style_03 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_tato_imprv_bridge_sml_s03.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -344,7 +344,7 @@ object_static_structure_tatooine_shared_bridge_tatooine_small_style_03 = SharedS
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 2,
 
@@ -358,7 +358,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_tatooine_shared_bridge
 
 object_static_structure_tatooine_shared_concrete_slab_tatooine_16x8 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_tato_concrete_slab_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -389,7 +389,7 @@ object_static_structure_tatooine_shared_concrete_slab_tatooine_16x8 = SharedStat
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	surfaceType = 2,
 
@@ -403,7 +403,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_tatooine_shared_concre
 
 object_static_structure_tatooine_shared_debris_tatt_crate_1 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_tato_debris_s07.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -434,7 +434,7 @@ object_static_structure_tatooine_shared_debris_tatt_crate_1 = SharedStaticObject
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 1,
 
@@ -448,7 +448,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_tatooine_shared_debris
 
 object_static_structure_tatooine_shared_debris_tatt_crate_metal_1 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_tato_debris_s08.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -479,7 +479,7 @@ object_static_structure_tatooine_shared_debris_tatt_crate_metal_1 = SharedStatic
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 1,
 
@@ -493,7 +493,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_tatooine_shared_debris
 
 object_static_structure_tatooine_shared_debris_tatt_drum_dented_1 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_tato_debris_s09.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -524,7 +524,7 @@ object_static_structure_tatooine_shared_debris_tatt_drum_dented_1 = SharedStatic
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 1,
 
@@ -538,7 +538,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_tatooine_shared_debris
 
 object_static_structure_tatooine_shared_debris_tatt_drum_storage_1 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_tato_debris_s05.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -569,7 +569,7 @@ object_static_structure_tatooine_shared_debris_tatt_drum_storage_1 = SharedStati
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 1,
 
@@ -583,7 +583,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_tatooine_shared_debris
 
 object_static_structure_tatooine_shared_debris_tatt_drum_storage_2 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_tato_debris_s06.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -614,7 +614,7 @@ object_static_structure_tatooine_shared_debris_tatt_drum_storage_2 = SharedStati
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 1,
 
@@ -628,7 +628,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_tatooine_shared_debris
 
 object_static_structure_tatooine_shared_debris_tatt_pipe_dual_unconnected = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_tato_debris_s02.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/client_shared_steam_rise.cdf",
@@ -659,7 +659,7 @@ object_static_structure_tatooine_shared_debris_tatt_pipe_dual_unconnected = Shar
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 1,
 
@@ -673,7 +673,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_tatooine_shared_debris
 
 object_static_structure_tatooine_shared_debris_tatt_pipe_narrow_1 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_tato_debris_s03.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -704,7 +704,7 @@ object_static_structure_tatooine_shared_debris_tatt_pipe_narrow_1 = SharedStatic
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 1,
 
@@ -718,7 +718,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_tatooine_shared_debris
 
 object_static_structure_tatooine_shared_debris_tatt_pipe_narrow_2 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_tato_debris_s04.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/client_shared_steam_rise.cdf",
@@ -749,7 +749,7 @@ object_static_structure_tatooine_shared_debris_tatt_pipe_narrow_2 = SharedStatic
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 1,
 
@@ -763,7 +763,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_tatooine_shared_debris
 
 object_static_structure_tatooine_shared_debris_tatt_pipe_widemouth = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_tato_debris_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -794,7 +794,7 @@ object_static_structure_tatooine_shared_debris_tatt_pipe_widemouth = SharedStati
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 1,
 
@@ -808,7 +808,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_tatooine_shared_debris
 
 object_static_structure_tatooine_shared_debris_tatt_radar_dish = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_tato_debris_s10.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -839,7 +839,7 @@ object_static_structure_tatooine_shared_debris_tatt_radar_dish = SharedStaticObj
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 1,
 
@@ -853,7 +853,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_tatooine_shared_debris
 
 object_static_structure_tatooine_shared_guild_ball_free_style_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_tato_guild_golden_ball_freestand_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -884,7 +884,7 @@ object_static_structure_tatooine_shared_guild_ball_free_style_01 = SharedStaticO
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	surfaceType = 1,
 
@@ -898,7 +898,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_tatooine_shared_guild_
 
 object_static_structure_tatooine_shared_guild_banner_free_style_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_tato_guild_banner_freestand_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -929,7 +929,7 @@ object_static_structure_tatooine_shared_guild_banner_free_style_01 = SharedStati
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	surfaceType = 1,
 
@@ -943,7 +943,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_tatooine_shared_guild_
 
 object_static_structure_tatooine_shared_guild_statue_free_style_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_tato_guild_statue_freestand_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -974,7 +974,7 @@ object_static_structure_tatooine_shared_guild_statue_free_style_01 = SharedStati
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	surfaceType = 1,
 
@@ -988,7 +988,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_tatooine_shared_guild_
 
 object_static_structure_tatooine_shared_luke_farm_dome = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_tato_luke_farm_dome.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1019,7 +1019,7 @@ object_static_structure_tatooine_shared_luke_farm_dome = SharedStaticObjectTempl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 1,
 
@@ -1033,7 +1033,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_tatooine_shared_luke_f
 
 object_static_structure_tatooine_shared_luke_farm_garage = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_tato_luke_farm_garage.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1064,7 +1064,7 @@ object_static_structure_tatooine_shared_luke_farm_garage = SharedStaticObjectTem
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 1,
 
@@ -1078,7 +1078,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_tatooine_shared_luke_f
 
 object_static_structure_tatooine_shared_orchard_tatooine_style_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_tato_orchard_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1109,7 +1109,7 @@ object_static_structure_tatooine_shared_orchard_tatooine_style_01 = SharedStatic
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	surfaceType = 2,
 
@@ -1123,7 +1123,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_tatooine_shared_orchar
 
 object_static_structure_tatooine_shared_orchard_tatooine_style_02 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_tato_orchard_s02.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1154,7 +1154,7 @@ object_static_structure_tatooine_shared_orchard_tatooine_style_02 = SharedStatic
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	surfaceType = 2,
 
@@ -1168,7 +1168,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_tatooine_shared_orchar
 
 object_static_structure_tatooine_shared_palette_tatooine_style_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_tato_imprv_palette_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1199,7 +1199,7 @@ object_static_structure_tatooine_shared_palette_tatooine_style_01 = SharedStatic
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 1,
 
@@ -1213,7 +1213,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_tatooine_shared_palett
 
 object_static_structure_tatooine_shared_pillar_damaged_large_style_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_tato_imprv_pillar_damaged_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1244,7 +1244,7 @@ object_static_structure_tatooine_shared_pillar_damaged_large_style_01 = SharedSt
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	surfaceType = 2,
 
@@ -1258,7 +1258,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_tatooine_shared_pillar
 
 object_static_structure_tatooine_shared_pillar_pristine_large_style_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_tato_imprv_pillar_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1289,7 +1289,7 @@ object_static_structure_tatooine_shared_pillar_pristine_large_style_01 = SharedS
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	surfaceType = 2,
 
@@ -1303,7 +1303,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_tatooine_shared_pillar
 
 object_static_structure_tatooine_shared_pillar_pristine_small_style_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_tato_imprv_pillar_sml_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1334,7 +1334,7 @@ object_static_structure_tatooine_shared_pillar_pristine_small_style_01 = SharedS
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	surfaceType = 2,
 
@@ -1348,7 +1348,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_tatooine_shared_pillar
 
 object_static_structure_tatooine_shared_pillar_pristine_tall_style_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_tato_imprv_pillar_s02.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1379,7 +1379,7 @@ object_static_structure_tatooine_shared_pillar_pristine_tall_style_01 = SharedSt
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	surfaceType = 2,
 
@@ -1393,7 +1393,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_tatooine_shared_pillar
 
 object_static_structure_tatooine_shared_pillar_ruined_large_style_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_tato_imprv_pillar_ruin_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1424,7 +1424,7 @@ object_static_structure_tatooine_shared_pillar_ruined_large_style_01 = SharedSta
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	surfaceType = 2,
 
@@ -1438,7 +1438,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_tatooine_shared_pillar
 
 object_static_structure_tatooine_shared_pillar_ruined_small_style_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_tato_imprv_pillar_ruin_sml_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1469,7 +1469,7 @@ object_static_structure_tatooine_shared_pillar_ruined_small_style_01 = SharedSta
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	surfaceType = 2,
 
@@ -1483,7 +1483,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_tatooine_shared_pillar
 
 object_static_structure_tatooine_shared_pillar_watto_junkshop = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_tato_jnkshp_pillar.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1514,7 +1514,7 @@ object_static_structure_tatooine_shared_pillar_watto_junkshop = SharedStaticObje
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 2,
 
@@ -1528,7 +1528,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_tatooine_shared_pillar
 
 object_static_structure_tatooine_shared_planter_hanging_style_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_tato_imprv_planter_hanging_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1559,7 +1559,7 @@ object_static_structure_tatooine_shared_planter_hanging_style_01 = SharedStaticO
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 1,
 
@@ -1573,7 +1573,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_tatooine_shared_plante
 
 object_static_structure_tatooine_shared_planter_window_style_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_tato_imprv_planter_window_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1604,7 +1604,7 @@ object_static_structure_tatooine_shared_planter_window_style_01 = SharedStaticOb
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 1,
 
@@ -1618,7 +1618,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_tatooine_shared_plante
 
 object_static_structure_tatooine_shared_shed_junkshop_watto = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_tato_jnkshp_bldg.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1649,7 +1649,7 @@ object_static_structure_tatooine_shared_shed_junkshop_watto = SharedStaticObject
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 2,
 
@@ -1663,7 +1663,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_tatooine_shared_shed_j
 
 object_static_structure_tatooine_shared_skeleton_greater_krayt_head = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/poi_tato_skel_grtr_krayt_head_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1694,7 +1694,7 @@ object_static_structure_tatooine_shared_skeleton_greater_krayt_head = SharedStat
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 1,
 
@@ -1708,7 +1708,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_tatooine_shared_skelet
 
 object_static_structure_tatooine_shared_skeleton_greater_krayt_spine_large = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/poi_tato_skel_grtr_krayt_spine_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1739,7 +1739,7 @@ object_static_structure_tatooine_shared_skeleton_greater_krayt_spine_large = Sha
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 1,
 
@@ -1753,7 +1753,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_tatooine_shared_skelet
 
 object_static_structure_tatooine_shared_skeleton_greater_krayt_spine_medium = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/poi_tato_skel_grtr_krayt_spine_s02.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1784,7 +1784,7 @@ object_static_structure_tatooine_shared_skeleton_greater_krayt_spine_medium = Sh
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 1,
 
@@ -1798,7 +1798,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_tatooine_shared_skelet
 
 object_static_structure_tatooine_shared_skeleton_greater_krayt_spine_small = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/poi_tato_skel_grtr_krayt_spine_s03.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1829,7 +1829,7 @@ object_static_structure_tatooine_shared_skeleton_greater_krayt_spine_small = Sha
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 1,
 
@@ -1843,7 +1843,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_tatooine_shared_skelet
 
 object_static_structure_tatooine_shared_skeleton_krayt_arm_style_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/poi_tato_skel_krayt_arm_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1874,7 +1874,7 @@ object_static_structure_tatooine_shared_skeleton_krayt_arm_style_01 = SharedStat
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 1,
 
@@ -1888,7 +1888,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_tatooine_shared_skelet
 
 object_static_structure_tatooine_shared_skeleton_krayt_arm_style_02 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/poi_tato_skel_krayt_arm_s02.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1919,7 +1919,7 @@ object_static_structure_tatooine_shared_skeleton_krayt_arm_style_02 = SharedStat
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 1,
 
@@ -1933,7 +1933,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_tatooine_shared_skelet
 
 object_static_structure_tatooine_shared_skeleton_krayt_foot = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/poi_tato_skel_krayt_foot.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1964,7 +1964,7 @@ object_static_structure_tatooine_shared_skeleton_krayt_foot = SharedStaticObject
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 1,
 
@@ -1978,7 +1978,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_tatooine_shared_skelet
 
 object_static_structure_tatooine_shared_skeleton_krayt_head_style_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/poi_tato_skel_krayt_head_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -2009,7 +2009,7 @@ object_static_structure_tatooine_shared_skeleton_krayt_head_style_01 = SharedSta
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 1,
 
@@ -2023,7 +2023,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_tatooine_shared_skelet
 
 object_static_structure_tatooine_shared_skeleton_krayt_head_style_02 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/poi_tato_skel_krayt_head_s02.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -2054,7 +2054,7 @@ object_static_structure_tatooine_shared_skeleton_krayt_head_style_02 = SharedSta
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 1,
 
@@ -2068,7 +2068,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_tatooine_shared_skelet
 
 object_static_structure_tatooine_shared_skeleton_krayt_leg_style_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/poi_tato_skel_krayt_leg_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -2099,7 +2099,7 @@ object_static_structure_tatooine_shared_skeleton_krayt_leg_style_01 = SharedStat
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 1,
 
@@ -2113,7 +2113,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_tatooine_shared_skelet
 
 object_static_structure_tatooine_shared_skeleton_krayt_leg_style_02 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/poi_tato_skel_krayt_leg_s02.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -2144,7 +2144,7 @@ object_static_structure_tatooine_shared_skeleton_krayt_leg_style_02 = SharedStat
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 1,
 
@@ -2158,7 +2158,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_tatooine_shared_skelet
 
 object_static_structure_tatooine_shared_skeleton_krayt_ribcage = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/poi_tato_skel_krayt_ribcage.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -2189,7 +2189,7 @@ object_static_structure_tatooine_shared_skeleton_krayt_ribcage = SharedStaticObj
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 1,
 
@@ -2203,7 +2203,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_tatooine_shared_skelet
 
 object_static_structure_tatooine_shared_skeleton_krayt_tail = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/poi_tato_skel_krayt_tail.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -2234,7 +2234,7 @@ object_static_structure_tatooine_shared_skeleton_krayt_tail = SharedStaticObject
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 1,
 
@@ -2248,7 +2248,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_tatooine_shared_skelet
 
 object_static_structure_tatooine_shared_stair_tatooine_large_style_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_tato_imprv_stair_large_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -2279,7 +2279,7 @@ object_static_structure_tatooine_shared_stair_tatooine_large_style_01 = SharedSt
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 2,
 
@@ -2293,7 +2293,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_tatooine_shared_stair_
 
 object_static_structure_tatooine_shared_stair_tatooine_large_style_02 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_tato_imprv_stair_large_s02.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -2324,7 +2324,7 @@ object_static_structure_tatooine_shared_stair_tatooine_large_style_02 = SharedSt
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 2,
 
@@ -2338,7 +2338,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_tatooine_shared_stair_
 
 object_static_structure_tatooine_shared_stair_tatooine_small_style_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_tato_imprv_stair_sml_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -2369,7 +2369,7 @@ object_static_structure_tatooine_shared_stair_tatooine_small_style_01 = SharedSt
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 2,
 
@@ -2383,7 +2383,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_tatooine_shared_stair_
 
 object_static_structure_tatooine_shared_stair_tatooine_small_style_02 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_tato_imprv_stair_sml_s02.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -2414,7 +2414,7 @@ object_static_structure_tatooine_shared_stair_tatooine_small_style_02 = SharedSt
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 2,
 
@@ -2428,7 +2428,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_tatooine_shared_stair_
 
 object_static_structure_tatooine_shared_stone_hovel_tatooine_style_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_tato_sandstone_hovel_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -2459,7 +2459,7 @@ object_static_structure_tatooine_shared_stone_hovel_tatooine_style_01 = SharedSt
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 2,
 
@@ -2473,7 +2473,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_tatooine_shared_stone_
 
 object_static_structure_tatooine_shared_streetsign_upright_style_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_tato_imprv_street_sign_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -2504,7 +2504,7 @@ object_static_structure_tatooine_shared_streetsign_upright_style_01 = SharedStat
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	surfaceType = 1,
 
@@ -2518,7 +2518,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_tatooine_shared_street
 
 object_static_structure_tatooine_shared_streetsign_wall_style_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_tato_imprv_street_sign_wall_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -2549,7 +2549,7 @@ object_static_structure_tatooine_shared_streetsign_wall_style_01 = SharedStaticO
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	surfaceType = 1,
 
@@ -2563,7 +2563,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_tatooine_shared_street
 
 object_static_structure_tatooine_shared_tato_imprv_bannerpole_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/mun_corl_imprv_bannerpole_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/structure/tato_imprv_bannerpole_s01.cdf",
@@ -2593,7 +2593,7 @@ object_static_structure_tatooine_shared_tato_imprv_bannerpole_s01 = SharedStatic
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 1,
 
@@ -2607,7 +2607,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_tatooine_shared_tato_i
 
 object_static_structure_tatooine_shared_tato_imprv_flagpole_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/mun_corl_imprv_flagpole_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/structure/tato_imprv_flagpole_s01.cdf",
@@ -2637,7 +2637,7 @@ object_static_structure_tatooine_shared_tato_imprv_flagpole_s01 = SharedStaticOb
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 1,
 
@@ -2651,7 +2651,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_tatooine_shared_tato_i
 
 object_static_structure_tatooine_shared_tent_house_tatooine_style_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_tato_tent_house_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -2682,7 +2682,7 @@ object_static_structure_tatooine_shared_tent_house_tatooine_style_01 = SharedSta
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 2,
 
@@ -2696,7 +2696,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_tatooine_shared_tent_h
 
 object_static_structure_tatooine_shared_wall_archway_tatooine_large_style_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_tato_imprv_archway_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -2727,7 +2727,7 @@ object_static_structure_tatooine_shared_wall_archway_tatooine_large_style_01 = S
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	surfaceType = 2,
 
@@ -2741,7 +2741,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_tatooine_shared_wall_a
 
 object_static_structure_tatooine_shared_wall_archway_tatooine_wide_style_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_tato_imprv_archway_wide_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -2772,7 +2772,7 @@ object_static_structure_tatooine_shared_wall_archway_tatooine_wide_style_01 = Sh
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	surfaceType = 2,
 
@@ -2786,7 +2786,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_tatooine_shared_wall_a
 
 object_static_structure_tatooine_shared_wall_cleft_tatooine_large_style_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_tato_imprv_wall_cleft_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -2817,7 +2817,7 @@ object_static_structure_tatooine_shared_wall_cleft_tatooine_large_style_01 = Sha
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	surfaceType = 2,
 
@@ -2831,7 +2831,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_tatooine_shared_wall_c
 
 object_static_structure_tatooine_shared_wall_damaged_tatooine_large_style_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_tato_imprv_wall_damaged_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -2862,7 +2862,7 @@ object_static_structure_tatooine_shared_wall_damaged_tatooine_large_style_01 = S
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	surfaceType = 2,
 
@@ -2876,7 +2876,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_tatooine_shared_wall_d
 
 object_static_structure_tatooine_shared_wall_gate_tatooine_style_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_tato_imprv_wallgate_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -2907,7 +2907,7 @@ object_static_structure_tatooine_shared_wall_gate_tatooine_style_01 = SharedStat
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	surfaceType = 2,
 
@@ -2921,7 +2921,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_tatooine_shared_wall_g
 
 object_static_structure_tatooine_shared_wall_gate_tatooine_style_02 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_tato_imprv_wallgate_s02.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -2952,7 +2952,7 @@ object_static_structure_tatooine_shared_wall_gate_tatooine_style_02 = SharedStat
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	surfaceType = 2,
 
@@ -2966,7 +2966,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_tatooine_shared_wall_g
 
 object_static_structure_tatooine_shared_wall_gate_tatooine_style_03 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_tato_imprv_wallgate_s03.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -2997,7 +2997,7 @@ object_static_structure_tatooine_shared_wall_gate_tatooine_style_03 = SharedStat
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	surfaceType = 2,
 
@@ -3011,7 +3011,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_tatooine_shared_wall_g
 
 object_static_structure_tatooine_shared_wall_gate_tatooine_wide_style_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_tato_imprv_wallgate_wide_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -3042,7 +3042,7 @@ object_static_structure_tatooine_shared_wall_gate_tatooine_wide_style_01 = Share
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	surfaceType = 2,
 
@@ -3056,7 +3056,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_tatooine_shared_wall_g
 
 object_static_structure_tatooine_shared_wall_junkshop_watto = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_tato_jnkshp_wall.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -3087,7 +3087,7 @@ object_static_structure_tatooine_shared_wall_junkshop_watto = SharedStaticObject
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	surfaceType = 2,
 
@@ -3101,7 +3101,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_tatooine_shared_wall_j
 
 object_static_structure_tatooine_shared_wall_pristine_tatooine_large_style_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_tato_imprv_wall_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -3132,7 +3132,7 @@ object_static_structure_tatooine_shared_wall_pristine_tatooine_large_style_01 = 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	surfaceType = 2,
 
@@ -3146,7 +3146,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_tatooine_shared_wall_p
 
 object_static_structure_tatooine_shared_wall_pristine_tatooine_large_style_02 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_tato_imprv_wall_s02.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -3177,7 +3177,7 @@ object_static_structure_tatooine_shared_wall_pristine_tatooine_large_style_02 = 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	surfaceType = 2,
 
@@ -3191,7 +3191,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_tatooine_shared_wall_p
 
 object_static_structure_tatooine_shared_wall_pristine_tatooine_small_style_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_tato_imprv_wall_sml_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -3222,7 +3222,7 @@ object_static_structure_tatooine_shared_wall_pristine_tatooine_small_style_01 = 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	surfaceType = 2,
 
@@ -3236,7 +3236,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_tatooine_shared_wall_p
 
 object_static_structure_tatooine_shared_wall_pristine_tatooine_tall_style_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_tato_imprv_wall_s03.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -3267,7 +3267,7 @@ object_static_structure_tatooine_shared_wall_pristine_tatooine_tall_style_01 = S
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	surfaceType = 2,
 
@@ -3281,7 +3281,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_tatooine_shared_wall_p
 
 object_static_structure_tatooine_shared_wall_ruined_tatooine_large_style_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_tato_imprv_wall_ruin_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -3312,7 +3312,7 @@ object_static_structure_tatooine_shared_wall_ruined_tatooine_large_style_01 = Sh
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	surfaceType = 2,
 
@@ -3326,7 +3326,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_tatooine_shared_wall_r
 
 object_static_structure_tatooine_shared_wall_ruined_tatooine_large_style_02 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_tato_imprv_wall_ruin_s02.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -3357,7 +3357,7 @@ object_static_structure_tatooine_shared_wall_ruined_tatooine_large_style_02 = Sh
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	surfaceType = 2,
 
@@ -3371,7 +3371,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_tatooine_shared_wall_r
 
 object_static_structure_tatooine_shared_wall_ruined_tatooine_small_style_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_tato_imprv_wall_sml_ruin_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -3402,7 +3402,7 @@ object_static_structure_tatooine_shared_wall_ruined_tatooine_small_style_01 = Sh
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	surfaceType = 2,
 

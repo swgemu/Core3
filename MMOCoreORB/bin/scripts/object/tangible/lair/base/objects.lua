@@ -43,7 +43,7 @@
 
 object_tangible_lair_base_shared_antpile_dark = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_antpile_dark.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -79,7 +79,7 @@ object_tangible_lair_base_shared_antpile_dark = SharedTangibleObjectTemplate:new
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -98,7 +98,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_antpile_dark,
 
 object_tangible_lair_base_shared_antpile_light = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_antpile_light.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -134,7 +134,7 @@ object_tangible_lair_base_shared_antpile_light = SharedTangibleObjectTemplate:ne
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -153,7 +153,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_antpile_light
 
 object_tangible_lair_base_shared_bramble_dark = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_bramble.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -189,7 +189,7 @@ object_tangible_lair_base_shared_bramble_dark = SharedTangibleObjectTemplate:new
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -208,7 +208,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_bramble_dark,
 
 object_tangible_lair_base_shared_bramble_light = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_bramble_light.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -244,7 +244,7 @@ object_tangible_lair_base_shared_bramble_light = SharedTangibleObjectTemplate:ne
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -263,7 +263,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_bramble_light
 
 object_tangible_lair_base_shared_cave_small_dark = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_cave_small.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -299,7 +299,7 @@ object_tangible_lair_base_shared_cave_small_dark = SharedTangibleObjectTemplate:
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -318,7 +318,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_cave_small_da
 
 object_tangible_lair_base_shared_cave_small_light = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_cave_small_light.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -354,7 +354,7 @@ object_tangible_lair_base_shared_cave_small_light = SharedTangibleObjectTemplate
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -373,7 +373,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_cave_small_li
 
 object_tangible_lair_base_shared_earthmound_dark = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_earthmound_dark.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -409,7 +409,7 @@ object_tangible_lair_base_shared_earthmound_dark = SharedTangibleObjectTemplate:
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -428,7 +428,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_earthmound_da
 
 object_tangible_lair_base_shared_earthmound_light = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_earthmound_light.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -464,7 +464,7 @@ object_tangible_lair_base_shared_earthmound_light = SharedTangibleObjectTemplate
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -483,7 +483,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_earthmound_li
 
 object_tangible_lair_base_shared_lair_base = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/defaultappearance.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -519,7 +519,7 @@ object_tangible_lair_base_shared_lair_base = SharedTangibleObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -538,7 +538,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_lair_base, "o
 
 object_tangible_lair_base_shared_lair_base_cave_griffon_dark = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_rancor_dark.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -574,7 +574,7 @@ object_tangible_lair_base_shared_lair_base_cave_griffon_dark = SharedTangibleObj
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -593,7 +593,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_lair_base_cav
 
 object_tangible_lair_base_shared_lair_base_cave_griffon_light = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_rancor_dark.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -629,7 +629,7 @@ object_tangible_lair_base_shared_lair_base_cave_griffon_light = SharedTangibleOb
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -648,7 +648,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_lair_base_cav
 
 object_tangible_lair_base_shared_lair_base_cave_lion_dark = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_rancor_dark.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -684,7 +684,7 @@ object_tangible_lair_base_shared_lair_base_cave_lion_dark = SharedTangibleObject
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -703,7 +703,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_lair_base_cav
 
 object_tangible_lair_base_shared_lair_base_cave_lion_light = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_rancor_dark.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -739,7 +739,7 @@ object_tangible_lair_base_shared_lair_base_cave_lion_light = SharedTangibleObjec
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -758,7 +758,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_lair_base_cav
 
 object_tangible_lair_base_shared_lair_base_crevice_dark = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_rancor_dark.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -794,7 +794,7 @@ object_tangible_lair_base_shared_lair_base_crevice_dark = SharedTangibleObjectTe
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -813,7 +813,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_lair_base_cre
 
 object_tangible_lair_base_shared_lair_base_crevice_light = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_rancor_dark.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -849,7 +849,7 @@ object_tangible_lair_base_shared_lair_base_crevice_light = SharedTangibleObjectT
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -868,7 +868,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_lair_base_cre
 
 object_tangible_lair_base_shared_lair_base_den_earthen_dark = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_earthmound_dark.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -904,7 +904,7 @@ object_tangible_lair_base_shared_lair_base_den_earthen_dark = SharedTangibleObje
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -923,7 +923,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_lair_base_den
 
 object_tangible_lair_base_shared_lair_base_den_earthen_light = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_earthmound_light.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -959,7 +959,7 @@ object_tangible_lair_base_shared_lair_base_den_earthen_light = SharedTangibleObj
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -978,7 +978,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_lair_base_den
 
 object_tangible_lair_base_shared_lair_base_hovel = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_tato_sandstone_hovel_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -1014,7 +1014,7 @@ object_tangible_lair_base_shared_lair_base_hovel = SharedTangibleObjectTemplate:
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1033,7 +1033,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_lair_base_hov
 
 object_tangible_lair_base_shared_lair_base_imperial_guard = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/mun_all_military_base_lookout_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -1069,7 +1069,7 @@ object_tangible_lair_base_shared_lair_base_imperial_guard = SharedTangibleObject
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1088,7 +1088,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_lair_base_imp
 
 object_tangible_lair_base_shared_lair_base_mound_bramble_dark = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_bramble.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -1124,7 +1124,7 @@ object_tangible_lair_base_shared_lair_base_mound_bramble_dark = SharedTangibleOb
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1143,7 +1143,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_lair_base_mou
 
 object_tangible_lair_base_shared_lair_base_mound_bramble_light = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_bramble_tatt.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -1179,7 +1179,7 @@ object_tangible_lair_base_shared_lair_base_mound_bramble_light = SharedTangibleO
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1198,7 +1198,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_lair_base_mou
 
 object_tangible_lair_base_shared_lair_base_mound_insect_dark = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_antpile_dark.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -1234,7 +1234,7 @@ object_tangible_lair_base_shared_lair_base_mound_insect_dark = SharedTangibleObj
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1253,7 +1253,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_lair_base_mou
 
 object_tangible_lair_base_shared_lair_base_mound_insect_light = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_antpile_light.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -1289,7 +1289,7 @@ object_tangible_lair_base_shared_lair_base_mound_insect_light = SharedTangibleOb
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1308,7 +1308,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_lair_base_mou
 
 object_tangible_lair_base_shared_lair_base_nest_ground_lg_dark = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_nest_tree_sm.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -1344,7 +1344,7 @@ object_tangible_lair_base_shared_lair_base_nest_ground_lg_dark = SharedTangibleO
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1363,7 +1363,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_lair_base_nes
 
 object_tangible_lair_base_shared_lair_base_nest_ground_lg_light = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_nest_tree.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -1399,7 +1399,7 @@ object_tangible_lair_base_shared_lair_base_nest_ground_lg_light = SharedTangible
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1418,7 +1418,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_lair_base_nes
 
 object_tangible_lair_base_shared_lair_base_nest_tree_lg_dark = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_nest_tree_sm.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -1454,7 +1454,7 @@ object_tangible_lair_base_shared_lair_base_nest_tree_lg_dark = SharedTangibleObj
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1473,7 +1473,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_lair_base_nes
 
 object_tangible_lair_base_shared_lair_base_nest_tree_lg_light = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_nest_tree_sm.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -1509,7 +1509,7 @@ object_tangible_lair_base_shared_lair_base_nest_tree_lg_light = SharedTangibleOb
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1528,7 +1528,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_lair_base_nes
 
 object_tangible_lair_base_shared_lair_base_rancor_dark = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_rancor_dark.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -1564,7 +1564,7 @@ object_tangible_lair_base_shared_lair_base_rancor_dark = SharedTangibleObjectTem
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1583,7 +1583,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_lair_base_ran
 
 object_tangible_lair_base_shared_lair_base_rancor_light = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_rancor_light.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -1619,7 +1619,7 @@ object_tangible_lair_base_shared_lair_base_rancor_light = SharedTangibleObjectTe
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1638,7 +1638,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_lair_base_ran
 
 object_tangible_lair_base_shared_lair_base_trash_dark = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_trash_dark.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -1674,7 +1674,7 @@ object_tangible_lair_base_shared_lair_base_trash_dark = SharedTangibleObjectTemp
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1693,7 +1693,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_lair_base_tra
 
 object_tangible_lair_base_shared_lair_base_trash_light = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_rancor_dark.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -1729,7 +1729,7 @@ object_tangible_lair_base_shared_lair_base_trash_light = SharedTangibleObjectTem
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1748,7 +1748,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_lair_base_tra
 
 object_tangible_lair_base_shared_nest_tree = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_nest_tree.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -1784,7 +1784,7 @@ object_tangible_lair_base_shared_nest_tree = SharedTangibleObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1803,7 +1803,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_nest_tree, "o
 
 object_tangible_lair_base_shared_objective_banner_corellia = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_corl_banner_govt_tall.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -1839,7 +1839,7 @@ object_tangible_lair_base_shared_objective_banner_corellia = SharedTangibleObjec
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1858,7 +1858,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_objective_ban
 
 object_tangible_lair_base_shared_objective_banner_generic_1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_all_banner_generic_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -1894,7 +1894,7 @@ object_tangible_lair_base_shared_objective_banner_generic_1 = SharedTangibleObje
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1913,7 +1913,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_objective_ban
 
 object_tangible_lair_base_shared_objective_banner_generic_2 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_all_banner_generic_s02.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -1949,7 +1949,7 @@ object_tangible_lair_base_shared_objective_banner_generic_2 = SharedTangibleObje
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1968,7 +1968,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_objective_ban
 
 object_tangible_lair_base_shared_objective_banner_imperial = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_all_impl_banner_freestand_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -2004,7 +2004,7 @@ object_tangible_lair_base_shared_objective_banner_imperial = SharedTangibleObjec
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2023,7 +2023,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_objective_ban
 
 object_tangible_lair_base_shared_objective_banner_rebel = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_all_rebl_banner_freestand_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -2059,7 +2059,7 @@ object_tangible_lair_base_shared_objective_banner_rebel = SharedTangibleObjectTe
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2078,7 +2078,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_objective_ban
 
 object_tangible_lair_base_shared_objective_banner_tatooine = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_all_tato_banner_freestand_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -2114,7 +2114,7 @@ object_tangible_lair_base_shared_objective_banner_tatooine = SharedTangibleObjec
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2133,7 +2133,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_objective_ban
 
 object_tangible_lair_base_shared_objective_dantari_fire_pit = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_dant_fire_pit.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -2169,7 +2169,7 @@ object_tangible_lair_base_shared_objective_dantari_fire_pit = SharedTangibleObje
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2188,7 +2188,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_objective_dan
 
 object_tangible_lair_base_shared_objective_dantari_monolith = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_dant_totem_pole.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -2224,7 +2224,7 @@ object_tangible_lair_base_shared_objective_dantari_monolith = SharedTangibleObje
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2243,7 +2243,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_objective_dan
 
 object_tangible_lair_base_shared_objective_data_terminal = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_data_terminal_free_s1.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -2279,7 +2279,7 @@ object_tangible_lair_base_shared_objective_data_terminal = SharedTangibleObjectT
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2298,7 +2298,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_objective_dat
 
 object_tangible_lair_base_shared_objective_gungan_statue = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_gungan_statue_s03.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -2334,7 +2334,7 @@ object_tangible_lair_base_shared_objective_gungan_statue = SharedTangibleObjectT
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2353,7 +2353,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_objective_gun
 
 object_tangible_lair_base_shared_objective_main_terminal = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_data_terminal_free_s2.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -2389,7 +2389,7 @@ object_tangible_lair_base_shared_objective_main_terminal = SharedTangibleObjectT
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2408,7 +2408,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_objective_mai
 
 object_tangible_lair_base_shared_objective_mts_clan_monolith = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_dath_mtn_clan_pillar_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -2444,7 +2444,7 @@ object_tangible_lair_base_shared_objective_mts_clan_monolith = SharedTangibleObj
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2463,7 +2463,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_objective_mts
 
 object_tangible_lair_base_shared_objective_power_generator = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_corl_power_transformer_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -2499,7 +2499,7 @@ object_tangible_lair_base_shared_objective_power_generator = SharedTangibleObjec
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2518,7 +2518,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_objective_pow
 
 object_tangible_lair_base_shared_objective_power_node = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_corl_power_bubble_node.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -2554,7 +2554,7 @@ object_tangible_lair_base_shared_objective_power_node = SharedTangibleObjectTemp
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2573,7 +2573,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_objective_pow
 
 object_tangible_lair_base_shared_objective_power_transformer = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_corl_power_transformer_s02.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -2609,7 +2609,7 @@ object_tangible_lair_base_shared_objective_power_transformer = SharedTangibleObj
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2628,7 +2628,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_objective_pow
 
 object_tangible_lair_base_shared_poi_all_lair_bones = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_bones.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -2664,7 +2664,7 @@ object_tangible_lair_base_shared_poi_all_lair_bones = SharedTangibleObjectTempla
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2683,7 +2683,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_
 
 object_tangible_lair_base_shared_poi_all_lair_bones_evil_fire_green = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_bones.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -2719,7 +2719,7 @@ object_tangible_lair_base_shared_poi_all_lair_bones_evil_fire_green = SharedTang
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2738,7 +2738,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_
 
 object_tangible_lair_base_shared_poi_all_lair_bones_evil_fire_red = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_bones.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -2774,7 +2774,7 @@ object_tangible_lair_base_shared_poi_all_lair_bones_evil_fire_red = SharedTangib
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2793,7 +2793,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_
 
 object_tangible_lair_base_shared_poi_all_lair_bones_evil_fire_small = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_bones.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -2829,7 +2829,7 @@ object_tangible_lair_base_shared_poi_all_lair_bones_evil_fire_small = SharedTang
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2848,7 +2848,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_
 
 object_tangible_lair_base_shared_poi_all_lair_bones_fog_gray = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_bones.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -2884,7 +2884,7 @@ object_tangible_lair_base_shared_poi_all_lair_bones_fog_gray = SharedTangibleObj
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2903,7 +2903,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_
 
 object_tangible_lair_base_shared_poi_all_lair_bones_fog_green = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_bones.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -2939,7 +2939,7 @@ object_tangible_lair_base_shared_poi_all_lair_bones_fog_green = SharedTangibleOb
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2958,7 +2958,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_
 
 object_tangible_lair_base_shared_poi_all_lair_bones_fog_mustard = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_bones.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -2994,7 +2994,7 @@ object_tangible_lair_base_shared_poi_all_lair_bones_fog_mustard = SharedTangible
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3013,7 +3013,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_
 
 object_tangible_lair_base_shared_poi_all_lair_bones_fog_red = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_bones.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -3049,7 +3049,7 @@ object_tangible_lair_base_shared_poi_all_lair_bones_fog_red = SharedTangibleObje
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3068,7 +3068,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_
 
 object_tangible_lair_base_shared_poi_all_lair_bones_large = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_bones_large.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -3104,7 +3104,7 @@ object_tangible_lair_base_shared_poi_all_lair_bones_large = SharedTangibleObject
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3123,7 +3123,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_
 
 object_tangible_lair_base_shared_poi_all_lair_bones_large_evil_fire_green = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_bones_large.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -3159,7 +3159,7 @@ object_tangible_lair_base_shared_poi_all_lair_bones_large_evil_fire_green = Shar
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3178,7 +3178,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_
 
 object_tangible_lair_base_shared_poi_all_lair_bones_large_evil_fire_red = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_bones_large.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -3214,7 +3214,7 @@ object_tangible_lair_base_shared_poi_all_lair_bones_large_evil_fire_red = Shared
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3233,7 +3233,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_
 
 object_tangible_lair_base_shared_poi_all_lair_bones_large_evil_fire_small = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_bones_large.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -3269,7 +3269,7 @@ object_tangible_lair_base_shared_poi_all_lair_bones_large_evil_fire_small = Shar
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3288,7 +3288,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_
 
 object_tangible_lair_base_shared_poi_all_lair_bones_large_fog_gray = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_bones_large.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -3324,7 +3324,7 @@ object_tangible_lair_base_shared_poi_all_lair_bones_large_fog_gray = SharedTangi
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3343,7 +3343,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_
 
 object_tangible_lair_base_shared_poi_all_lair_bones_large_fog_green = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_bones_large.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -3379,7 +3379,7 @@ object_tangible_lair_base_shared_poi_all_lair_bones_large_fog_green = SharedTang
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3398,7 +3398,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_
 
 object_tangible_lair_base_shared_poi_all_lair_bones_large_fog_mustard = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_bones_large.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -3434,7 +3434,7 @@ object_tangible_lair_base_shared_poi_all_lair_bones_large_fog_mustard = SharedTa
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3453,7 +3453,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_
 
 object_tangible_lair_base_shared_poi_all_lair_bones_large_fog_red = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_bones_large.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -3489,7 +3489,7 @@ object_tangible_lair_base_shared_poi_all_lair_bones_large_fog_red = SharedTangib
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3508,7 +3508,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_
 
 object_tangible_lair_base_shared_poi_all_lair_brambles_large = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_brambles_large.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -3544,7 +3544,7 @@ object_tangible_lair_base_shared_poi_all_lair_brambles_large = SharedTangibleObj
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3563,7 +3563,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_
 
 object_tangible_lair_base_shared_poi_all_lair_brambles_large_evil_fire_green = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_brambles_large.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -3599,7 +3599,7 @@ object_tangible_lair_base_shared_poi_all_lair_brambles_large_evil_fire_green = S
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3618,7 +3618,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_
 
 object_tangible_lair_base_shared_poi_all_lair_brambles_large_evil_fire_red = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_brambles_large.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -3654,7 +3654,7 @@ object_tangible_lair_base_shared_poi_all_lair_brambles_large_evil_fire_red = Sha
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3673,7 +3673,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_
 
 object_tangible_lair_base_shared_poi_all_lair_brambles_large_evil_fire_small = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_brambles_large.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -3709,7 +3709,7 @@ object_tangible_lair_base_shared_poi_all_lair_brambles_large_evil_fire_small = S
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3728,7 +3728,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_
 
 object_tangible_lair_base_shared_poi_all_lair_brambles_large_fog = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_brambles_large.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -3764,7 +3764,7 @@ object_tangible_lair_base_shared_poi_all_lair_brambles_large_fog = SharedTangibl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3783,7 +3783,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_
 
 object_tangible_lair_base_shared_poi_all_lair_brambles_large_fog_gray = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_brambles_large.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -3819,7 +3819,7 @@ object_tangible_lair_base_shared_poi_all_lair_brambles_large_fog_gray = SharedTa
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3838,7 +3838,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_
 
 object_tangible_lair_base_shared_poi_all_lair_brambles_large_fog_green = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_brambles_large.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -3874,7 +3874,7 @@ object_tangible_lair_base_shared_poi_all_lair_brambles_large_fog_green = SharedT
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3893,7 +3893,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_
 
 object_tangible_lair_base_shared_poi_all_lair_brambles_large_fog_mustard = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_brambles_large.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -3929,7 +3929,7 @@ object_tangible_lair_base_shared_poi_all_lair_brambles_large_fog_mustard = Share
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3948,7 +3948,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_
 
 object_tangible_lair_base_shared_poi_all_lair_brambles_large_fog_red = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_brambles_large.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -3984,7 +3984,7 @@ object_tangible_lair_base_shared_poi_all_lair_brambles_large_fog_red = SharedTan
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -4003,7 +4003,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_
 
 object_tangible_lair_base_shared_poi_all_lair_brambles_small = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_brambles_small.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -4039,7 +4039,7 @@ object_tangible_lair_base_shared_poi_all_lair_brambles_small = SharedTangibleObj
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -4058,7 +4058,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_
 
 object_tangible_lair_base_shared_poi_all_lair_brambles_small_evil_fire_green = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_brambles_small.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -4094,7 +4094,7 @@ object_tangible_lair_base_shared_poi_all_lair_brambles_small_evil_fire_green = S
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -4113,7 +4113,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_
 
 object_tangible_lair_base_shared_poi_all_lair_brambles_small_evil_fire_red = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_brambles_small.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -4149,7 +4149,7 @@ object_tangible_lair_base_shared_poi_all_lair_brambles_small_evil_fire_red = Sha
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -4168,7 +4168,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_
 
 object_tangible_lair_base_shared_poi_all_lair_brambles_small_evil_fire_small = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_brambles_small.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -4204,7 +4204,7 @@ object_tangible_lair_base_shared_poi_all_lair_brambles_small_evil_fire_small = S
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -4223,7 +4223,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_
 
 object_tangible_lair_base_shared_poi_all_lair_brambles_small_fog_gray = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_brambles_small.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -4259,7 +4259,7 @@ object_tangible_lair_base_shared_poi_all_lair_brambles_small_fog_gray = SharedTa
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -4278,7 +4278,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_
 
 object_tangible_lair_base_shared_poi_all_lair_brambles_small_fog_green = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_brambles_small.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -4314,7 +4314,7 @@ object_tangible_lair_base_shared_poi_all_lair_brambles_small_fog_green = SharedT
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -4333,7 +4333,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_
 
 object_tangible_lair_base_shared_poi_all_lair_brambles_small_fog_mustard = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_brambles_small.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -4369,7 +4369,7 @@ object_tangible_lair_base_shared_poi_all_lair_brambles_small_fog_mustard = Share
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -4388,7 +4388,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_
 
 object_tangible_lair_base_shared_poi_all_lair_brambles_small_fog_red = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_brambles_small.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -4424,7 +4424,7 @@ object_tangible_lair_base_shared_poi_all_lair_brambles_small_fog_red = SharedTan
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -4443,7 +4443,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_
 
 object_tangible_lair_base_shared_poi_all_lair_dead_log_large = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_dead_log_large.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -4479,7 +4479,7 @@ object_tangible_lair_base_shared_poi_all_lair_dead_log_large = SharedTangibleObj
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -4498,7 +4498,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_
 
 object_tangible_lair_base_shared_poi_all_lair_dead_log_large_evil_fire_green = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_dead_log_large.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -4534,7 +4534,7 @@ object_tangible_lair_base_shared_poi_all_lair_dead_log_large_evil_fire_green = S
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -4553,7 +4553,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_
 
 object_tangible_lair_base_shared_poi_all_lair_dead_log_large_evil_fire_red = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_dead_log_large.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -4589,7 +4589,7 @@ object_tangible_lair_base_shared_poi_all_lair_dead_log_large_evil_fire_red = Sha
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -4608,7 +4608,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_
 
 object_tangible_lair_base_shared_poi_all_lair_dead_log_large_evil_fire_small = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_dead_log_large.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -4644,7 +4644,7 @@ object_tangible_lair_base_shared_poi_all_lair_dead_log_large_evil_fire_small = S
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -4663,7 +4663,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_
 
 object_tangible_lair_base_shared_poi_all_lair_dead_log_large_fog_gray = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_dead_log_large.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -4699,7 +4699,7 @@ object_tangible_lair_base_shared_poi_all_lair_dead_log_large_fog_gray = SharedTa
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -4718,7 +4718,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_
 
 object_tangible_lair_base_shared_poi_all_lair_dead_log_large_fog_green = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_dead_log_large.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -4754,7 +4754,7 @@ object_tangible_lair_base_shared_poi_all_lair_dead_log_large_fog_green = SharedT
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -4773,7 +4773,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_
 
 object_tangible_lair_base_shared_poi_all_lair_dead_log_large_fog_mustard = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_dead_log_large.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -4809,7 +4809,7 @@ object_tangible_lair_base_shared_poi_all_lair_dead_log_large_fog_mustard = Share
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -4828,7 +4828,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_
 
 object_tangible_lair_base_shared_poi_all_lair_dead_log_large_fog_red = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_dead_log_large.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -4864,7 +4864,7 @@ object_tangible_lair_base_shared_poi_all_lair_dead_log_large_fog_red = SharedTan
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -4883,7 +4883,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_
 
 object_tangible_lair_base_shared_poi_all_lair_dead_log_small = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_dead_log_small.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -4919,7 +4919,7 @@ object_tangible_lair_base_shared_poi_all_lair_dead_log_small = SharedTangibleObj
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -4938,7 +4938,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_
 
 object_tangible_lair_base_shared_poi_all_lair_dead_log_small_evil_fire_green = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_dead_log_small.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -4974,7 +4974,7 @@ object_tangible_lair_base_shared_poi_all_lair_dead_log_small_evil_fire_green = S
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -4993,7 +4993,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_
 
 object_tangible_lair_base_shared_poi_all_lair_dead_log_small_evil_fire_red = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_dead_log_small.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -5029,7 +5029,7 @@ object_tangible_lair_base_shared_poi_all_lair_dead_log_small_evil_fire_red = Sha
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -5048,7 +5048,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_
 
 object_tangible_lair_base_shared_poi_all_lair_dead_log_small_evil_fire_small = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_dead_log_small.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -5084,7 +5084,7 @@ object_tangible_lair_base_shared_poi_all_lair_dead_log_small_evil_fire_small = S
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -5103,7 +5103,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_
 
 object_tangible_lair_base_shared_poi_all_lair_dead_log_small_fog_gray = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_dead_log_small.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -5139,7 +5139,7 @@ object_tangible_lair_base_shared_poi_all_lair_dead_log_small_fog_gray = SharedTa
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -5158,7 +5158,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_
 
 object_tangible_lair_base_shared_poi_all_lair_dead_log_small_fog_green = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_dead_log_small.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -5194,7 +5194,7 @@ object_tangible_lair_base_shared_poi_all_lair_dead_log_small_fog_green = SharedT
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -5213,7 +5213,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_
 
 object_tangible_lair_base_shared_poi_all_lair_dead_log_small_fog_mustard = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_dead_log_small.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -5249,7 +5249,7 @@ object_tangible_lair_base_shared_poi_all_lair_dead_log_small_fog_mustard = Share
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -5268,7 +5268,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_
 
 object_tangible_lair_base_shared_poi_all_lair_dead_log_small_fog_red = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_dead_log_small.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -5304,7 +5304,7 @@ object_tangible_lair_base_shared_poi_all_lair_dead_log_small_fog_red = SharedTan
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -5323,7 +5323,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_
 
 object_tangible_lair_base_shared_poi_all_lair_garbage_large = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_garbage_large.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -5359,7 +5359,7 @@ object_tangible_lair_base_shared_poi_all_lair_garbage_large = SharedTangibleObje
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -5378,7 +5378,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_
 
 object_tangible_lair_base_shared_poi_all_lair_garbage_large_evil_fire_green = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_garbage_large.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -5414,7 +5414,7 @@ object_tangible_lair_base_shared_poi_all_lair_garbage_large_evil_fire_green = Sh
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -5433,7 +5433,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_
 
 object_tangible_lair_base_shared_poi_all_lair_garbage_large_evil_fire_red = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_garbage_large.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -5469,7 +5469,7 @@ object_tangible_lair_base_shared_poi_all_lair_garbage_large_evil_fire_red = Shar
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -5488,7 +5488,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_
 
 object_tangible_lair_base_shared_poi_all_lair_garbage_large_evil_fire_small = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_garbage_large.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -5524,7 +5524,7 @@ object_tangible_lair_base_shared_poi_all_lair_garbage_large_evil_fire_small = Sh
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -5543,7 +5543,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_
 
 object_tangible_lair_base_shared_poi_all_lair_garbage_large_fog_gray = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_garbage_large.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -5579,7 +5579,7 @@ object_tangible_lair_base_shared_poi_all_lair_garbage_large_fog_gray = SharedTan
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -5598,7 +5598,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_
 
 object_tangible_lair_base_shared_poi_all_lair_garbage_large_fog_green = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_garbage_large.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -5634,7 +5634,7 @@ object_tangible_lair_base_shared_poi_all_lair_garbage_large_fog_green = SharedTa
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -5653,7 +5653,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_
 
 object_tangible_lair_base_shared_poi_all_lair_garbage_large_fog_mustard = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_garbage_large.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -5689,7 +5689,7 @@ object_tangible_lair_base_shared_poi_all_lair_garbage_large_fog_mustard = Shared
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -5708,7 +5708,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_
 
 object_tangible_lair_base_shared_poi_all_lair_garbage_large_fog_red = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_garbage_large.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -5744,7 +5744,7 @@ object_tangible_lair_base_shared_poi_all_lair_garbage_large_fog_red = SharedTang
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -5763,7 +5763,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_
 
 object_tangible_lair_base_shared_poi_all_lair_garbage_small = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_garbage_small.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -5799,7 +5799,7 @@ object_tangible_lair_base_shared_poi_all_lair_garbage_small = SharedTangibleObje
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -5818,7 +5818,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_
 
 object_tangible_lair_base_shared_poi_all_lair_garbage_small_evil_fire_green = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_garbage_small.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -5854,7 +5854,7 @@ object_tangible_lair_base_shared_poi_all_lair_garbage_small_evil_fire_green = Sh
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -5873,7 +5873,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_
 
 object_tangible_lair_base_shared_poi_all_lair_garbage_small_evil_fire_red = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_garbage_small.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -5909,7 +5909,7 @@ object_tangible_lair_base_shared_poi_all_lair_garbage_small_evil_fire_red = Shar
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -5928,7 +5928,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_
 
 object_tangible_lair_base_shared_poi_all_lair_garbage_small_evil_fire_small = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_garbage_small.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -5964,7 +5964,7 @@ object_tangible_lair_base_shared_poi_all_lair_garbage_small_evil_fire_small = Sh
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -5983,7 +5983,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_
 
 object_tangible_lair_base_shared_poi_all_lair_garbage_small_fog_gray = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_garbage_small.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -6019,7 +6019,7 @@ object_tangible_lair_base_shared_poi_all_lair_garbage_small_fog_gray = SharedTan
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -6038,7 +6038,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_
 
 object_tangible_lair_base_shared_poi_all_lair_garbage_small_fog_green = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_garbage_small.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -6074,7 +6074,7 @@ object_tangible_lair_base_shared_poi_all_lair_garbage_small_fog_green = SharedTa
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -6093,7 +6093,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_
 
 object_tangible_lair_base_shared_poi_all_lair_garbage_small_fog_mustard = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_garbage_small.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -6129,7 +6129,7 @@ object_tangible_lair_base_shared_poi_all_lair_garbage_small_fog_mustard = Shared
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -6148,7 +6148,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_
 
 object_tangible_lair_base_shared_poi_all_lair_garbage_small_fog_red = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_garbage_small.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -6184,7 +6184,7 @@ object_tangible_lair_base_shared_poi_all_lair_garbage_small_fog_red = SharedTang
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -6203,7 +6203,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_
 
 object_tangible_lair_base_shared_poi_all_lair_insecthill_large = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_insecthill_large.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -6239,7 +6239,7 @@ object_tangible_lair_base_shared_poi_all_lair_insecthill_large = SharedTangibleO
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -6258,7 +6258,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_
 
 object_tangible_lair_base_shared_poi_all_lair_insecthill_large_evil_fire_green = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_insecthill_large.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -6294,7 +6294,7 @@ object_tangible_lair_base_shared_poi_all_lair_insecthill_large_evil_fire_green =
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -6313,7 +6313,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_
 
 object_tangible_lair_base_shared_poi_all_lair_insecthill_large_evil_fire_red = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_insecthill_large.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -6349,7 +6349,7 @@ object_tangible_lair_base_shared_poi_all_lair_insecthill_large_evil_fire_red = S
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -6368,7 +6368,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_
 
 object_tangible_lair_base_shared_poi_all_lair_insecthill_large_evil_fire_small = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_insecthill_large.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -6404,7 +6404,7 @@ object_tangible_lair_base_shared_poi_all_lair_insecthill_large_evil_fire_small =
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -6423,7 +6423,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_
 
 object_tangible_lair_base_shared_poi_all_lair_insecthill_large_fog_gray = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_insecthill_large.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -6459,7 +6459,7 @@ object_tangible_lair_base_shared_poi_all_lair_insecthill_large_fog_gray = Shared
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -6478,7 +6478,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_
 
 object_tangible_lair_base_shared_poi_all_lair_insecthill_large_fog_green = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_insecthill_large.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -6514,7 +6514,7 @@ object_tangible_lair_base_shared_poi_all_lair_insecthill_large_fog_green = Share
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -6533,7 +6533,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_
 
 object_tangible_lair_base_shared_poi_all_lair_insecthill_large_fog_mustard = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_insecthill_large.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -6569,7 +6569,7 @@ object_tangible_lair_base_shared_poi_all_lair_insecthill_large_fog_mustard = Sha
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -6588,7 +6588,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_
 
 object_tangible_lair_base_shared_poi_all_lair_insecthill_large_fog_red = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_insecthill_large.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -6624,7 +6624,7 @@ object_tangible_lair_base_shared_poi_all_lair_insecthill_large_fog_red = SharedT
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -6643,7 +6643,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_
 
 object_tangible_lair_base_shared_poi_all_lair_insecthill_small = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_insecthill_small.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -6679,7 +6679,7 @@ object_tangible_lair_base_shared_poi_all_lair_insecthill_small = SharedTangibleO
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -6698,7 +6698,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_
 
 object_tangible_lair_base_shared_poi_all_lair_insecthill_small_evil_fire_green = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_insecthill_small.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -6734,7 +6734,7 @@ object_tangible_lair_base_shared_poi_all_lair_insecthill_small_evil_fire_green =
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -6753,7 +6753,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_
 
 object_tangible_lair_base_shared_poi_all_lair_insecthill_small_evil_fire_red = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_insecthill_small.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -6789,7 +6789,7 @@ object_tangible_lair_base_shared_poi_all_lair_insecthill_small_evil_fire_red = S
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -6808,7 +6808,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_
 
 object_tangible_lair_base_shared_poi_all_lair_insecthill_small_evil_fire_small = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_insecthill_small.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -6844,7 +6844,7 @@ object_tangible_lair_base_shared_poi_all_lair_insecthill_small_evil_fire_small =
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -6863,7 +6863,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_
 
 object_tangible_lair_base_shared_poi_all_lair_insecthill_small_fog_gray = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_insecthill_small.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -6899,7 +6899,7 @@ object_tangible_lair_base_shared_poi_all_lair_insecthill_small_fog_gray = Shared
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -6918,7 +6918,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_
 
 object_tangible_lair_base_shared_poi_all_lair_insecthill_small_fog_green = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_insecthill_small.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -6954,7 +6954,7 @@ object_tangible_lair_base_shared_poi_all_lair_insecthill_small_fog_green = Share
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -6973,7 +6973,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_
 
 object_tangible_lair_base_shared_poi_all_lair_insecthill_small_fog_mustard = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_insecthill_small.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -7009,7 +7009,7 @@ object_tangible_lair_base_shared_poi_all_lair_insecthill_small_fog_mustard = Sha
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -7028,7 +7028,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_
 
 object_tangible_lair_base_shared_poi_all_lair_insecthill_small_fog_red = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_insecthill_small.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -7064,7 +7064,7 @@ object_tangible_lair_base_shared_poi_all_lair_insecthill_small_fog_red = SharedT
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -7083,7 +7083,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_
 
 object_tangible_lair_base_shared_poi_all_lair_leaf_large = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_leaf_large.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -7119,7 +7119,7 @@ object_tangible_lair_base_shared_poi_all_lair_leaf_large = SharedTangibleObjectT
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -7138,7 +7138,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_
 
 object_tangible_lair_base_shared_poi_all_lair_leaf_large_evil_fire_green = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_leaf_large.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -7174,7 +7174,7 @@ object_tangible_lair_base_shared_poi_all_lair_leaf_large_evil_fire_green = Share
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -7193,7 +7193,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_
 
 object_tangible_lair_base_shared_poi_all_lair_leaf_large_evil_fire_red = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_leaf_large.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -7229,7 +7229,7 @@ object_tangible_lair_base_shared_poi_all_lair_leaf_large_evil_fire_red = SharedT
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -7248,7 +7248,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_
 
 object_tangible_lair_base_shared_poi_all_lair_leaf_large_evil_fire_small = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_leaf_large.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -7284,7 +7284,7 @@ object_tangible_lair_base_shared_poi_all_lair_leaf_large_evil_fire_small = Share
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -7303,7 +7303,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_
 
 object_tangible_lair_base_shared_poi_all_lair_leaf_large_fog_gray = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_leaf_large.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -7339,7 +7339,7 @@ object_tangible_lair_base_shared_poi_all_lair_leaf_large_fog_gray = SharedTangib
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -7358,7 +7358,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_
 
 object_tangible_lair_base_shared_poi_all_lair_leaf_large_fog_green = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_leaf_large.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -7394,7 +7394,7 @@ object_tangible_lair_base_shared_poi_all_lair_leaf_large_fog_green = SharedTangi
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -7413,7 +7413,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_
 
 object_tangible_lair_base_shared_poi_all_lair_leaf_large_fog_mustard = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_leaf_large.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -7449,7 +7449,7 @@ object_tangible_lair_base_shared_poi_all_lair_leaf_large_fog_mustard = SharedTan
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -7468,7 +7468,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_
 
 object_tangible_lair_base_shared_poi_all_lair_leaf_large_fog_red = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_leaf_large.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -7504,7 +7504,7 @@ object_tangible_lair_base_shared_poi_all_lair_leaf_large_fog_red = SharedTangibl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -7523,7 +7523,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_
 
 object_tangible_lair_base_shared_poi_all_lair_leaf_medium = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_leaf_small.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -7559,7 +7559,7 @@ object_tangible_lair_base_shared_poi_all_lair_leaf_medium = SharedTangibleObject
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -7578,7 +7578,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_
 
 object_tangible_lair_base_shared_poi_all_lair_leaf_small = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_leaf_small.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -7614,7 +7614,7 @@ object_tangible_lair_base_shared_poi_all_lair_leaf_small = SharedTangibleObjectT
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -7633,7 +7633,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_
 
 object_tangible_lair_base_shared_poi_all_lair_leaf_small_evil_fire_green = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_leaf_small.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -7669,7 +7669,7 @@ object_tangible_lair_base_shared_poi_all_lair_leaf_small_evil_fire_green = Share
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -7688,7 +7688,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_
 
 object_tangible_lair_base_shared_poi_all_lair_leaf_small_evil_fire_red = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_leaf_small.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -7724,7 +7724,7 @@ object_tangible_lair_base_shared_poi_all_lair_leaf_small_evil_fire_red = SharedT
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -7743,7 +7743,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_
 
 object_tangible_lair_base_shared_poi_all_lair_leaf_small_evil_fire_small = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_leaf_small.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -7779,7 +7779,7 @@ object_tangible_lair_base_shared_poi_all_lair_leaf_small_evil_fire_small = Share
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -7798,7 +7798,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_
 
 object_tangible_lair_base_shared_poi_all_lair_leaf_small_fog_gray = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_leaf_small.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -7834,7 +7834,7 @@ object_tangible_lair_base_shared_poi_all_lair_leaf_small_fog_gray = SharedTangib
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -7853,7 +7853,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_
 
 object_tangible_lair_base_shared_poi_all_lair_leaf_small_fog_green = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_leaf_small.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -7889,7 +7889,7 @@ object_tangible_lair_base_shared_poi_all_lair_leaf_small_fog_green = SharedTangi
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -7908,7 +7908,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_
 
 object_tangible_lair_base_shared_poi_all_lair_leaf_small_fog_mustard = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_leaf_small.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -7944,7 +7944,7 @@ object_tangible_lair_base_shared_poi_all_lair_leaf_small_fog_mustard = SharedTan
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -7963,7 +7963,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_
 
 object_tangible_lair_base_shared_poi_all_lair_leaf_small_fog_red = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_leaf_small.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -7999,7 +7999,7 @@ object_tangible_lair_base_shared_poi_all_lair_leaf_small_fog_red = SharedTangibl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -8018,7 +8018,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_
 
 object_tangible_lair_base_shared_poi_all_lair_mound_large = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_mound_large.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -8054,7 +8054,7 @@ object_tangible_lair_base_shared_poi_all_lair_mound_large = SharedTangibleObject
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -8073,7 +8073,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_
 
 object_tangible_lair_base_shared_poi_all_lair_mound_large_evil_fire_green = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_mound_large.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -8109,7 +8109,7 @@ object_tangible_lair_base_shared_poi_all_lair_mound_large_evil_fire_green = Shar
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -8128,7 +8128,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_
 
 object_tangible_lair_base_shared_poi_all_lair_mound_large_evil_fire_red = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_mound_large.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -8164,7 +8164,7 @@ object_tangible_lair_base_shared_poi_all_lair_mound_large_evil_fire_red = Shared
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -8183,7 +8183,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_
 
 object_tangible_lair_base_shared_poi_all_lair_mound_large_evil_fire_small = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_mound_large.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -8219,7 +8219,7 @@ object_tangible_lair_base_shared_poi_all_lair_mound_large_evil_fire_small = Shar
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -8238,7 +8238,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_
 
 object_tangible_lair_base_shared_poi_all_lair_mound_large_fog_gray = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_mound_large.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -8274,7 +8274,7 @@ object_tangible_lair_base_shared_poi_all_lair_mound_large_fog_gray = SharedTangi
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -8293,7 +8293,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_
 
 object_tangible_lair_base_shared_poi_all_lair_mound_large_fog_green = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_mound_large.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -8329,7 +8329,7 @@ object_tangible_lair_base_shared_poi_all_lair_mound_large_fog_green = SharedTang
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -8348,7 +8348,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_
 
 object_tangible_lair_base_shared_poi_all_lair_mound_large_fog_mustard = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_mound_large.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -8384,7 +8384,7 @@ object_tangible_lair_base_shared_poi_all_lair_mound_large_fog_mustard = SharedTa
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -8403,7 +8403,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_
 
 object_tangible_lair_base_shared_poi_all_lair_mound_large_fog_red = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_mound_large.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -8439,7 +8439,7 @@ object_tangible_lair_base_shared_poi_all_lair_mound_large_fog_red = SharedTangib
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -8458,7 +8458,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_
 
 object_tangible_lair_base_shared_poi_all_lair_mound_small = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_mound_small.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -8494,7 +8494,7 @@ object_tangible_lair_base_shared_poi_all_lair_mound_small = SharedTangibleObject
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -8513,7 +8513,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_
 
 object_tangible_lair_base_shared_poi_all_lair_mound_small_evil_fire_green = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_mound_small.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -8549,7 +8549,7 @@ object_tangible_lair_base_shared_poi_all_lair_mound_small_evil_fire_green = Shar
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -8568,7 +8568,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_
 
 object_tangible_lair_base_shared_poi_all_lair_mound_small_evil_fire_red = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_mound_small.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -8604,7 +8604,7 @@ object_tangible_lair_base_shared_poi_all_lair_mound_small_evil_fire_red = Shared
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -8623,7 +8623,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_
 
 object_tangible_lair_base_shared_poi_all_lair_mound_small_evil_fire_small = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_mound_small.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -8659,7 +8659,7 @@ object_tangible_lair_base_shared_poi_all_lair_mound_small_evil_fire_small = Shar
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -8678,7 +8678,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_
 
 object_tangible_lair_base_shared_poi_all_lair_mound_small_fog_gray = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_mound_small.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -8714,7 +8714,7 @@ object_tangible_lair_base_shared_poi_all_lair_mound_small_fog_gray = SharedTangi
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -8733,7 +8733,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_
 
 object_tangible_lair_base_shared_poi_all_lair_mound_small_fog_green = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_mound_small.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -8769,7 +8769,7 @@ object_tangible_lair_base_shared_poi_all_lair_mound_small_fog_green = SharedTang
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -8788,7 +8788,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_
 
 object_tangible_lair_base_shared_poi_all_lair_mound_small_fog_mustard = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_mound_small.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -8824,7 +8824,7 @@ object_tangible_lair_base_shared_poi_all_lair_mound_small_fog_mustard = SharedTa
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -8843,7 +8843,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_
 
 object_tangible_lair_base_shared_poi_all_lair_mound_small_fog_red = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_mound_small.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -8879,7 +8879,7 @@ object_tangible_lair_base_shared_poi_all_lair_mound_small_fog_red = SharedTangib
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -8898,7 +8898,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_
 
 object_tangible_lair_base_shared_poi_all_lair_nest_large = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_nest_large.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -8934,7 +8934,7 @@ object_tangible_lair_base_shared_poi_all_lair_nest_large = SharedTangibleObjectT
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -8953,7 +8953,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_
 
 object_tangible_lair_base_shared_poi_all_lair_nest_large_evil_fire_green = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_nest_large.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -8989,7 +8989,7 @@ object_tangible_lair_base_shared_poi_all_lair_nest_large_evil_fire_green = Share
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -9008,7 +9008,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_
 
 object_tangible_lair_base_shared_poi_all_lair_nest_large_evil_fire_red = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_nest_large.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -9044,7 +9044,7 @@ object_tangible_lair_base_shared_poi_all_lair_nest_large_evil_fire_red = SharedT
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -9063,7 +9063,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_
 
 object_tangible_lair_base_shared_poi_all_lair_nest_large_evil_fire_small = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_nest_large.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -9099,7 +9099,7 @@ object_tangible_lair_base_shared_poi_all_lair_nest_large_evil_fire_small = Share
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -9118,7 +9118,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_
 
 object_tangible_lair_base_shared_poi_all_lair_nest_large_fog_gray = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_nest_large.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -9154,7 +9154,7 @@ object_tangible_lair_base_shared_poi_all_lair_nest_large_fog_gray = SharedTangib
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -9173,7 +9173,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_
 
 object_tangible_lair_base_shared_poi_all_lair_nest_large_fog_green = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_nest_large.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -9209,7 +9209,7 @@ object_tangible_lair_base_shared_poi_all_lair_nest_large_fog_green = SharedTangi
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -9228,7 +9228,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_
 
 object_tangible_lair_base_shared_poi_all_lair_nest_large_fog_mustard = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_nest_large.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -9264,7 +9264,7 @@ object_tangible_lair_base_shared_poi_all_lair_nest_large_fog_mustard = SharedTan
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -9283,7 +9283,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_
 
 object_tangible_lair_base_shared_poi_all_lair_nest_large_fog_red = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_nest_large.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -9319,7 +9319,7 @@ object_tangible_lair_base_shared_poi_all_lair_nest_large_fog_red = SharedTangibl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -9338,7 +9338,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_
 
 object_tangible_lair_base_shared_poi_all_lair_nest_small = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_nest_small.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -9374,7 +9374,7 @@ object_tangible_lair_base_shared_poi_all_lair_nest_small = SharedTangibleObjectT
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -9393,7 +9393,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_
 
 object_tangible_lair_base_shared_poi_all_lair_nest_small_evil_fire_green = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_nest_small.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -9429,7 +9429,7 @@ object_tangible_lair_base_shared_poi_all_lair_nest_small_evil_fire_green = Share
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -9448,7 +9448,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_
 
 object_tangible_lair_base_shared_poi_all_lair_nest_small_evil_fire_red = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_nest_small.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -9484,7 +9484,7 @@ object_tangible_lair_base_shared_poi_all_lair_nest_small_evil_fire_red = SharedT
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -9503,7 +9503,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_
 
 object_tangible_lair_base_shared_poi_all_lair_nest_small_evil_fire_small = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_nest_small.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -9539,7 +9539,7 @@ object_tangible_lair_base_shared_poi_all_lair_nest_small_evil_fire_small = Share
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -9558,7 +9558,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_
 
 object_tangible_lair_base_shared_poi_all_lair_nest_small_fog_gray = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_nest_small.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -9594,7 +9594,7 @@ object_tangible_lair_base_shared_poi_all_lair_nest_small_fog_gray = SharedTangib
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -9613,7 +9613,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_
 
 object_tangible_lair_base_shared_poi_all_lair_nest_small_fog_green = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_nest_small.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -9649,7 +9649,7 @@ object_tangible_lair_base_shared_poi_all_lair_nest_small_fog_green = SharedTangi
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -9668,7 +9668,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_
 
 object_tangible_lair_base_shared_poi_all_lair_nest_small_fog_mustard = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_nest_small.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -9704,7 +9704,7 @@ object_tangible_lair_base_shared_poi_all_lair_nest_small_fog_mustard = SharedTan
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -9723,7 +9723,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_
 
 object_tangible_lair_base_shared_poi_all_lair_nest_small_fog_red = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_nest_small.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -9759,7 +9759,7 @@ object_tangible_lair_base_shared_poi_all_lair_nest_small_fog_red = SharedTangibl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -9778,7 +9778,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_
 
 object_tangible_lair_base_shared_poi_all_lair_rock_shelter_large = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_rock_shelter_large.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -9814,7 +9814,7 @@ object_tangible_lair_base_shared_poi_all_lair_rock_shelter_large = SharedTangibl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -9833,7 +9833,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_
 
 object_tangible_lair_base_shared_poi_all_lair_rock_shelter_large_evil_fire_green = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_rock_shelter_large.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -9869,7 +9869,7 @@ object_tangible_lair_base_shared_poi_all_lair_rock_shelter_large_evil_fire_green
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -9888,7 +9888,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_
 
 object_tangible_lair_base_shared_poi_all_lair_rock_shelter_large_evil_fire_red = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_rock_shelter_large.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -9924,7 +9924,7 @@ object_tangible_lair_base_shared_poi_all_lair_rock_shelter_large_evil_fire_red =
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -9943,7 +9943,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_
 
 object_tangible_lair_base_shared_poi_all_lair_rock_shelter_large_evil_fire_small = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_rock_shelter_large.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -9979,7 +9979,7 @@ object_tangible_lair_base_shared_poi_all_lair_rock_shelter_large_evil_fire_small
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -9998,7 +9998,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_
 
 object_tangible_lair_base_shared_poi_all_lair_rock_shelter_large_fog_gray = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_rock_shelter_large.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -10034,7 +10034,7 @@ object_tangible_lair_base_shared_poi_all_lair_rock_shelter_large_fog_gray = Shar
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -10053,7 +10053,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_
 
 object_tangible_lair_base_shared_poi_all_lair_rock_shelter_large_fog_green = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_rock_shelter_large.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -10089,7 +10089,7 @@ object_tangible_lair_base_shared_poi_all_lair_rock_shelter_large_fog_green = Sha
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -10108,7 +10108,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_
 
 object_tangible_lair_base_shared_poi_all_lair_rock_shelter_large_fog_mustard = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_rock_shelter_large.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -10144,7 +10144,7 @@ object_tangible_lair_base_shared_poi_all_lair_rock_shelter_large_fog_mustard = S
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -10163,7 +10163,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_
 
 object_tangible_lair_base_shared_poi_all_lair_rock_shelter_large_fog_red = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_rock_shelter_large.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -10199,7 +10199,7 @@ object_tangible_lair_base_shared_poi_all_lair_rock_shelter_large_fog_red = Share
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -10218,7 +10218,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_
 
 object_tangible_lair_base_shared_poi_all_lair_rock_shelter_small = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_rock_shelter_small.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -10254,7 +10254,7 @@ object_tangible_lair_base_shared_poi_all_lair_rock_shelter_small = SharedTangibl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -10273,7 +10273,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_
 
 object_tangible_lair_base_shared_poi_all_lair_rock_shelter_small_evil_fire_green = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_rock_shelter_small.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -10309,7 +10309,7 @@ object_tangible_lair_base_shared_poi_all_lair_rock_shelter_small_evil_fire_green
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -10328,7 +10328,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_
 
 object_tangible_lair_base_shared_poi_all_lair_rock_shelter_small_evil_fire_red = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_rock_shelter_small.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -10364,7 +10364,7 @@ object_tangible_lair_base_shared_poi_all_lair_rock_shelter_small_evil_fire_red =
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -10383,7 +10383,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_
 
 object_tangible_lair_base_shared_poi_all_lair_rock_shelter_small_evil_fire_small = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_rock_shelter_small.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -10419,7 +10419,7 @@ object_tangible_lair_base_shared_poi_all_lair_rock_shelter_small_evil_fire_small
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -10438,7 +10438,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_
 
 object_tangible_lair_base_shared_poi_all_lair_rock_shelter_small_fog_gray = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_rock_shelter_small.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -10474,7 +10474,7 @@ object_tangible_lair_base_shared_poi_all_lair_rock_shelter_small_fog_gray = Shar
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -10493,7 +10493,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_
 
 object_tangible_lair_base_shared_poi_all_lair_rock_shelter_small_fog_green = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_rock_shelter_small.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -10529,7 +10529,7 @@ object_tangible_lair_base_shared_poi_all_lair_rock_shelter_small_fog_green = Sha
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -10548,7 +10548,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_
 
 object_tangible_lair_base_shared_poi_all_lair_rock_shelter_small_fog_mustard = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_rock_shelter_small.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -10584,7 +10584,7 @@ object_tangible_lair_base_shared_poi_all_lair_rock_shelter_small_fog_mustard = S
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -10603,7 +10603,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_
 
 object_tangible_lair_base_shared_poi_all_lair_rock_shelter_small_fog_red = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_rock_shelter_small.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -10639,7 +10639,7 @@ object_tangible_lair_base_shared_poi_all_lair_rock_shelter_small_fog_red = Share
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -10658,7 +10658,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_
 
 object_tangible_lair_base_shared_poi_all_lair_rocks_large = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_rocks_large.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -10694,7 +10694,7 @@ object_tangible_lair_base_shared_poi_all_lair_rocks_large = SharedTangibleObject
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -10713,7 +10713,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_
 
 object_tangible_lair_base_shared_poi_all_lair_rocks_large_evil_fire_green = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_rocks_large.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -10749,7 +10749,7 @@ object_tangible_lair_base_shared_poi_all_lair_rocks_large_evil_fire_green = Shar
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -10768,7 +10768,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_
 
 object_tangible_lair_base_shared_poi_all_lair_rocks_large_evil_fire_red = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_rocks_large.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -10804,7 +10804,7 @@ object_tangible_lair_base_shared_poi_all_lair_rocks_large_evil_fire_red = Shared
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -10823,7 +10823,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_
 
 object_tangible_lair_base_shared_poi_all_lair_rocks_large_evil_fire_small = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_rocks_large.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -10859,7 +10859,7 @@ object_tangible_lair_base_shared_poi_all_lair_rocks_large_evil_fire_small = Shar
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -10878,7 +10878,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_
 
 object_tangible_lair_base_shared_poi_all_lair_rocks_large_fog_gray = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_rocks_large.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -10914,7 +10914,7 @@ object_tangible_lair_base_shared_poi_all_lair_rocks_large_fog_gray = SharedTangi
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -10933,7 +10933,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_
 
 object_tangible_lair_base_shared_poi_all_lair_rocks_large_fog_green = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_rocks_large.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -10969,7 +10969,7 @@ object_tangible_lair_base_shared_poi_all_lair_rocks_large_fog_green = SharedTang
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -10988,7 +10988,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_
 
 object_tangible_lair_base_shared_poi_all_lair_rocks_large_fog_mustard = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_rocks_large.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -11024,7 +11024,7 @@ object_tangible_lair_base_shared_poi_all_lair_rocks_large_fog_mustard = SharedTa
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -11043,7 +11043,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_
 
 object_tangible_lair_base_shared_poi_all_lair_rocks_large_fog_red = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_rocks_large.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -11079,7 +11079,7 @@ object_tangible_lair_base_shared_poi_all_lair_rocks_large_fog_red = SharedTangib
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -11098,7 +11098,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_
 
 object_tangible_lair_base_shared_poi_all_lair_rocks_small = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_rocks_small.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -11134,7 +11134,7 @@ object_tangible_lair_base_shared_poi_all_lair_rocks_small = SharedTangibleObject
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -11153,7 +11153,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_
 
 object_tangible_lair_base_shared_poi_all_lair_rocks_small_evil_fire_green = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_rocks_small.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -11189,7 +11189,7 @@ object_tangible_lair_base_shared_poi_all_lair_rocks_small_evil_fire_green = Shar
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -11208,7 +11208,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_
 
 object_tangible_lair_base_shared_poi_all_lair_rocks_small_evil_fire_red = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_rocks_small.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -11244,7 +11244,7 @@ object_tangible_lair_base_shared_poi_all_lair_rocks_small_evil_fire_red = Shared
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -11263,7 +11263,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_
 
 object_tangible_lair_base_shared_poi_all_lair_rocks_small_evil_fire_small = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_rocks_small.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -11299,7 +11299,7 @@ object_tangible_lair_base_shared_poi_all_lair_rocks_small_evil_fire_small = Shar
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -11318,7 +11318,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_
 
 object_tangible_lair_base_shared_poi_all_lair_rocks_small_fog_gray = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_rocks_small.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -11354,7 +11354,7 @@ object_tangible_lair_base_shared_poi_all_lair_rocks_small_fog_gray = SharedTangi
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -11373,7 +11373,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_
 
 object_tangible_lair_base_shared_poi_all_lair_rocks_small_fog_green = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_rocks_small.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -11409,7 +11409,7 @@ object_tangible_lair_base_shared_poi_all_lair_rocks_small_fog_green = SharedTang
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -11428,7 +11428,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_
 
 object_tangible_lair_base_shared_poi_all_lair_rocks_small_fog_mustard = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_rocks_small.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -11464,7 +11464,7 @@ object_tangible_lair_base_shared_poi_all_lair_rocks_small_fog_mustard = SharedTa
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -11483,7 +11483,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_
 
 object_tangible_lair_base_shared_poi_all_lair_rocks_small_fog_red = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_rocks_small.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -11519,7 +11519,7 @@ object_tangible_lair_base_shared_poi_all_lair_rocks_small_fog_red = SharedTangib
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -11538,7 +11538,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_
 
 object_tangible_lair_base_shared_poi_all_lair_thicket_large = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_thicket_large.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -11574,7 +11574,7 @@ object_tangible_lair_base_shared_poi_all_lair_thicket_large = SharedTangibleObje
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -11593,7 +11593,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_
 
 object_tangible_lair_base_shared_poi_all_lair_thicket_large_evil_fire_gray = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_thicket_large.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -11629,7 +11629,7 @@ object_tangible_lair_base_shared_poi_all_lair_thicket_large_evil_fire_gray = Sha
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -11648,7 +11648,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_
 
 object_tangible_lair_base_shared_poi_all_lair_thicket_large_evil_fire_green = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_thicket_large.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -11684,7 +11684,7 @@ object_tangible_lair_base_shared_poi_all_lair_thicket_large_evil_fire_green = Sh
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -11703,7 +11703,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_
 
 object_tangible_lair_base_shared_poi_all_lair_thicket_large_evil_fire_red = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_thicket_large.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -11739,7 +11739,7 @@ object_tangible_lair_base_shared_poi_all_lair_thicket_large_evil_fire_red = Shar
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -11758,7 +11758,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_
 
 object_tangible_lair_base_shared_poi_all_lair_thicket_large_evil_fire_small = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_thicket_large.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -11794,7 +11794,7 @@ object_tangible_lair_base_shared_poi_all_lair_thicket_large_evil_fire_small = Sh
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -11813,7 +11813,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_
 
 object_tangible_lair_base_shared_poi_all_lair_thicket_large_fog_gray = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_thicket_large.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -11849,7 +11849,7 @@ object_tangible_lair_base_shared_poi_all_lair_thicket_large_fog_gray = SharedTan
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -11868,7 +11868,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_
 
 object_tangible_lair_base_shared_poi_all_lair_thicket_large_fog_green = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_thicket_large.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -11904,7 +11904,7 @@ object_tangible_lair_base_shared_poi_all_lair_thicket_large_fog_green = SharedTa
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -11923,7 +11923,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_
 
 object_tangible_lair_base_shared_poi_all_lair_thicket_large_fog_mustard = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_thicket_large.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -11959,7 +11959,7 @@ object_tangible_lair_base_shared_poi_all_lair_thicket_large_fog_mustard = Shared
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -11978,7 +11978,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_
 
 object_tangible_lair_base_shared_poi_all_lair_thicket_large_fog_red = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_thicket_large.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -12014,7 +12014,7 @@ object_tangible_lair_base_shared_poi_all_lair_thicket_large_fog_red = SharedTang
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -12033,7 +12033,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_
 
 object_tangible_lair_base_shared_poi_all_lair_thicket_small = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_thicket_small.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -12069,7 +12069,7 @@ object_tangible_lair_base_shared_poi_all_lair_thicket_small = SharedTangibleObje
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -12088,7 +12088,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_
 
 object_tangible_lair_base_shared_poi_all_lair_thicket_small_evil_fire_green = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_thicket_small.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -12124,7 +12124,7 @@ object_tangible_lair_base_shared_poi_all_lair_thicket_small_evil_fire_green = Sh
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -12143,7 +12143,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_
 
 object_tangible_lair_base_shared_poi_all_lair_thicket_small_evil_fire_red = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_thicket_small.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -12179,7 +12179,7 @@ object_tangible_lair_base_shared_poi_all_lair_thicket_small_evil_fire_red = Shar
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -12198,7 +12198,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_
 
 object_tangible_lair_base_shared_poi_all_lair_thicket_small_evil_fire_small = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_thicket_small.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -12234,7 +12234,7 @@ object_tangible_lair_base_shared_poi_all_lair_thicket_small_evil_fire_small = Sh
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -12253,7 +12253,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_
 
 object_tangible_lair_base_shared_poi_all_lair_thicket_small_fog_gray = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_thicket_small.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -12289,7 +12289,7 @@ object_tangible_lair_base_shared_poi_all_lair_thicket_small_fog_gray = SharedTan
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -12308,7 +12308,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_
 
 object_tangible_lair_base_shared_poi_all_lair_thicket_small_fog_green = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_thicket_small.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -12344,7 +12344,7 @@ object_tangible_lair_base_shared_poi_all_lair_thicket_small_fog_green = SharedTa
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -12363,7 +12363,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_
 
 object_tangible_lair_base_shared_poi_all_lair_thicket_small_fog_mustard = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_thicket_small.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -12399,7 +12399,7 @@ object_tangible_lair_base_shared_poi_all_lair_thicket_small_fog_mustard = Shared
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -12418,7 +12418,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_
 
 object_tangible_lair_base_shared_poi_all_lair_thicket_small_fog_red = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_thicket_small.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -12454,7 +12454,7 @@ object_tangible_lair_base_shared_poi_all_lair_thicket_small_fog_red = SharedTang
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -12473,7 +12473,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_
 
 object_tangible_lair_base_shared_poi_all_lair_warren_large = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_warren_large.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -12509,7 +12509,7 @@ object_tangible_lair_base_shared_poi_all_lair_warren_large = SharedTangibleObjec
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -12528,7 +12528,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_
 
 object_tangible_lair_base_shared_poi_all_lair_warren_large_evil_fire_green = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_warren_large.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -12564,7 +12564,7 @@ object_tangible_lair_base_shared_poi_all_lair_warren_large_evil_fire_green = Sha
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -12583,7 +12583,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_
 
 object_tangible_lair_base_shared_poi_all_lair_warren_large_evil_fire_red = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_warren_large.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -12619,7 +12619,7 @@ object_tangible_lair_base_shared_poi_all_lair_warren_large_evil_fire_red = Share
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -12638,7 +12638,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_
 
 object_tangible_lair_base_shared_poi_all_lair_warren_large_evil_fire_small = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_warren_large.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -12674,7 +12674,7 @@ object_tangible_lair_base_shared_poi_all_lair_warren_large_evil_fire_small = Sha
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -12693,7 +12693,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_
 
 object_tangible_lair_base_shared_poi_all_lair_warren_large_fog_gray = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_warren_large.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -12729,7 +12729,7 @@ object_tangible_lair_base_shared_poi_all_lair_warren_large_fog_gray = SharedTang
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -12748,7 +12748,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_
 
 object_tangible_lair_base_shared_poi_all_lair_warren_large_fog_green = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_warren_large.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -12784,7 +12784,7 @@ object_tangible_lair_base_shared_poi_all_lair_warren_large_fog_green = SharedTan
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -12803,7 +12803,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_
 
 object_tangible_lair_base_shared_poi_all_lair_warren_large_fog_mustard = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_warren_large.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -12839,7 +12839,7 @@ object_tangible_lair_base_shared_poi_all_lair_warren_large_fog_mustard = SharedT
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -12858,7 +12858,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_
 
 object_tangible_lair_base_shared_poi_all_lair_warren_large_fog_red = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_warren_large.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -12894,7 +12894,7 @@ object_tangible_lair_base_shared_poi_all_lair_warren_large_fog_red = SharedTangi
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -12913,7 +12913,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_
 
 object_tangible_lair_base_shared_poi_all_lair_warren_small = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_warren_small.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -12949,7 +12949,7 @@ object_tangible_lair_base_shared_poi_all_lair_warren_small = SharedTangibleObjec
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -12968,7 +12968,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_
 
 object_tangible_lair_base_shared_poi_all_lair_warren_small_evil_fire_green = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_warren_small.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -13004,7 +13004,7 @@ object_tangible_lair_base_shared_poi_all_lair_warren_small_evil_fire_green = Sha
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -13023,7 +13023,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_
 
 object_tangible_lair_base_shared_poi_all_lair_warren_small_evil_fire_red = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_warren_small.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -13059,7 +13059,7 @@ object_tangible_lair_base_shared_poi_all_lair_warren_small_evil_fire_red = Share
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -13078,7 +13078,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_
 
 object_tangible_lair_base_shared_poi_all_lair_warren_small_evil_fire_small = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_warren_small.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -13114,7 +13114,7 @@ object_tangible_lair_base_shared_poi_all_lair_warren_small_evil_fire_small = Sha
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -13133,7 +13133,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_
 
 object_tangible_lair_base_shared_poi_all_lair_warren_small_fog_gray = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_warren_small.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -13169,7 +13169,7 @@ object_tangible_lair_base_shared_poi_all_lair_warren_small_fog_gray = SharedTang
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -13188,7 +13188,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_
 
 object_tangible_lair_base_shared_poi_all_lair_warren_small_fog_green = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_warren_small.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -13224,7 +13224,7 @@ object_tangible_lair_base_shared_poi_all_lair_warren_small_fog_green = SharedTan
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -13243,7 +13243,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_
 
 object_tangible_lair_base_shared_poi_all_lair_warren_small_fog_mustard = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_warren_small.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -13279,7 +13279,7 @@ object_tangible_lair_base_shared_poi_all_lair_warren_small_fog_mustard = SharedT
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -13298,7 +13298,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_
 
 object_tangible_lair_base_shared_poi_all_lair_warren_small_fog_red = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_warren_small.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -13334,7 +13334,7 @@ object_tangible_lair_base_shared_poi_all_lair_warren_small_fog_red = SharedTangi
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -13353,7 +13353,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_
 
 object_tangible_lair_base_shared_poi_all_lair_wooden = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_wooden.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -13389,7 +13389,7 @@ object_tangible_lair_base_shared_poi_all_lair_wooden = SharedTangibleObjectTempl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -13408,7 +13408,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_
 
 object_tangible_lair_base_shared_poi_all_lair_wooden_destroyed = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_wooden_destroyed.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -13444,7 +13444,7 @@ object_tangible_lair_base_shared_poi_all_lair_wooden_destroyed = SharedTangibleO
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -13463,7 +13463,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_
 
 object_tangible_lair_base_shared_poi_all_lair_wooden_destroyed_evil_fire_green = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_wooden_destroyed.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -13499,7 +13499,7 @@ object_tangible_lair_base_shared_poi_all_lair_wooden_destroyed_evil_fire_green =
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -13518,7 +13518,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_
 
 object_tangible_lair_base_shared_poi_all_lair_wooden_destroyed_evil_fire_red = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_wooden_destroyed.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -13554,7 +13554,7 @@ object_tangible_lair_base_shared_poi_all_lair_wooden_destroyed_evil_fire_red = S
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -13573,7 +13573,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_
 
 object_tangible_lair_base_shared_poi_all_lair_wooden_destroyed_evil_fire_small = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_wooden_destroyed.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -13609,7 +13609,7 @@ object_tangible_lair_base_shared_poi_all_lair_wooden_destroyed_evil_fire_small =
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -13628,7 +13628,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_
 
 object_tangible_lair_base_shared_poi_all_lair_wooden_destroyed_fog_gray = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_wooden_destroyed.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -13664,7 +13664,7 @@ object_tangible_lair_base_shared_poi_all_lair_wooden_destroyed_fog_gray = Shared
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -13683,7 +13683,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_
 
 object_tangible_lair_base_shared_poi_all_lair_wooden_destroyed_fog_green = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_wooden_destroyed.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -13719,7 +13719,7 @@ object_tangible_lair_base_shared_poi_all_lair_wooden_destroyed_fog_green = Share
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -13738,7 +13738,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_
 
 object_tangible_lair_base_shared_poi_all_lair_wooden_destroyed_fog_mustard = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_wooden_destroyed.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -13774,7 +13774,7 @@ object_tangible_lair_base_shared_poi_all_lair_wooden_destroyed_fog_mustard = Sha
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -13793,7 +13793,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_
 
 object_tangible_lair_base_shared_poi_all_lair_wooden_destroyed_fog_red = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_wooden_destroyed.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -13829,7 +13829,7 @@ object_tangible_lair_base_shared_poi_all_lair_wooden_destroyed_fog_red = SharedT
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -13848,7 +13848,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_
 
 object_tangible_lair_base_shared_poi_all_lair_wooden_evil_fire_green = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_wooden.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -13884,7 +13884,7 @@ object_tangible_lair_base_shared_poi_all_lair_wooden_evil_fire_green = SharedTan
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -13903,7 +13903,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_
 
 object_tangible_lair_base_shared_poi_all_lair_wooden_evil_fire_red = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_wooden.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -13939,7 +13939,7 @@ object_tangible_lair_base_shared_poi_all_lair_wooden_evil_fire_red = SharedTangi
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -13958,7 +13958,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_
 
 object_tangible_lair_base_shared_poi_all_lair_wooden_evil_fire_small = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_wooden.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -13994,7 +13994,7 @@ object_tangible_lair_base_shared_poi_all_lair_wooden_evil_fire_small = SharedTan
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -14013,7 +14013,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_
 
 object_tangible_lair_base_shared_poi_all_lair_wooden_fog_gray = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_wooden.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -14049,7 +14049,7 @@ object_tangible_lair_base_shared_poi_all_lair_wooden_fog_gray = SharedTangibleOb
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -14068,7 +14068,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_
 
 object_tangible_lair_base_shared_poi_all_lair_wooden_fog_green = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_wooden.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -14104,7 +14104,7 @@ object_tangible_lair_base_shared_poi_all_lair_wooden_fog_green = SharedTangibleO
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -14123,7 +14123,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_
 
 object_tangible_lair_base_shared_poi_all_lair_wooden_fog_mustard = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_wooden.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -14159,7 +14159,7 @@ object_tangible_lair_base_shared_poi_all_lair_wooden_fog_mustard = SharedTangibl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -14178,7 +14178,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_
 
 object_tangible_lair_base_shared_poi_all_lair_wooden_fog_red = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_wooden.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -14214,7 +14214,7 @@ object_tangible_lair_base_shared_poi_all_lair_wooden_fog_red = SharedTangibleObj
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -14233,7 +14233,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_
 
 object_tangible_lair_base_shared_rancor_dark = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_rancor_dark.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -14269,7 +14269,7 @@ object_tangible_lair_base_shared_rancor_dark = SharedTangibleObjectTemplate:new 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -14288,7 +14288,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_rancor_dark, 
 
 object_tangible_lair_base_shared_rancor_light = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_rancor_light.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -14324,7 +14324,7 @@ object_tangible_lair_base_shared_rancor_light = SharedTangibleObjectTemplate:new
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -14343,7 +14343,7 @@ ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_rancor_light,
 
 object_tangible_lair_base_shared_trash_dark = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_lair_trash_dark.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -14379,7 +14379,7 @@ object_tangible_lair_base_shared_trash_dark = SharedTangibleObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",

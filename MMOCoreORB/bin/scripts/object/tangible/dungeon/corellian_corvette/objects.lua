@@ -43,7 +43,7 @@
 
 object_tangible_dungeon_corellian_corvette_shared_corvette_search_imperial_assassination_01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_tato_debris_s09.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -79,7 +79,7 @@ object_tangible_dungeon_corellian_corvette_shared_corvette_search_imperial_assas
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -98,7 +98,7 @@ ObjectTemplates:addClientTemplate(object_tangible_dungeon_corellian_corvette_sha
 
 object_tangible_dungeon_corellian_corvette_shared_corvette_search_imperial_assassination_02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_tato_debris_s07.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -134,7 +134,7 @@ object_tangible_dungeon_corellian_corvette_shared_corvette_search_imperial_assas
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -153,7 +153,7 @@ ObjectTemplates:addClientTemplate(object_tangible_dungeon_corellian_corvette_sha
 
 object_tangible_dungeon_corellian_corvette_shared_corvette_search_imperial_assassination_03 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_tato_debris_s08.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -189,7 +189,7 @@ object_tangible_dungeon_corellian_corvette_shared_corvette_search_imperial_assas
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -208,7 +208,7 @@ ObjectTemplates:addClientTemplate(object_tangible_dungeon_corellian_corvette_sha
 
 object_tangible_dungeon_corellian_corvette_shared_corvette_search_imperial_destroy_01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_imp_tbl_s1.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -244,7 +244,7 @@ object_tangible_dungeon_corellian_corvette_shared_corvette_search_imperial_destr
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -263,7 +263,7 @@ ObjectTemplates:addClientTemplate(object_tangible_dungeon_corellian_corvette_sha
 
 object_tangible_dungeon_corellian_corvette_shared_corvette_search_imperial_destroy_02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_tato_debris_s08.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -299,7 +299,7 @@ object_tangible_dungeon_corellian_corvette_shared_corvette_search_imperial_destr
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -318,7 +318,7 @@ ObjectTemplates:addClientTemplate(object_tangible_dungeon_corellian_corvette_sha
 
 object_tangible_dungeon_corellian_corvette_shared_corvette_search_imperial_destroy_03 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_tato_debris_s09.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -354,7 +354,7 @@ object_tangible_dungeon_corellian_corvette_shared_corvette_search_imperial_destr
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -373,7 +373,7 @@ ObjectTemplates:addClientTemplate(object_tangible_dungeon_corellian_corvette_sha
 
 object_tangible_dungeon_corellian_corvette_shared_corvette_search_imperial_rescue_01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_tato_debris_s06.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -409,7 +409,7 @@ object_tangible_dungeon_corellian_corvette_shared_corvette_search_imperial_rescu
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -428,7 +428,7 @@ ObjectTemplates:addClientTemplate(object_tangible_dungeon_corellian_corvette_sha
 
 object_tangible_dungeon_corellian_corvette_shared_corvette_search_imperial_rescue_02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_tato_debris_s09.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -464,7 +464,7 @@ object_tangible_dungeon_corellian_corvette_shared_corvette_search_imperial_rescu
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -483,7 +483,7 @@ ObjectTemplates:addClientTemplate(object_tangible_dungeon_corellian_corvette_sha
 
 object_tangible_dungeon_corellian_corvette_shared_corvette_search_imperial_rescue_03 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_tato_debris_s07.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -519,7 +519,7 @@ object_tangible_dungeon_corellian_corvette_shared_corvette_search_imperial_rescu
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -538,7 +538,7 @@ ObjectTemplates:addClientTemplate(object_tangible_dungeon_corellian_corvette_sha
 
 object_tangible_dungeon_corellian_corvette_shared_corvette_search_neutral_assassination_01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_prp_professor_desk.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -574,7 +574,7 @@ object_tangible_dungeon_corellian_corvette_shared_corvette_search_neutral_assass
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -593,7 +593,7 @@ ObjectTemplates:addClientTemplate(object_tangible_dungeon_corellian_corvette_sha
 
 object_tangible_dungeon_corellian_corvette_shared_corvette_search_neutral_assassination_02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_tato_debris_s09.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -629,7 +629,7 @@ object_tangible_dungeon_corellian_corvette_shared_corvette_search_neutral_assass
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -648,7 +648,7 @@ ObjectTemplates:addClientTemplate(object_tangible_dungeon_corellian_corvette_sha
 
 object_tangible_dungeon_corellian_corvette_shared_corvette_search_neutral_assassination_03 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_tato_debris_s07.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -684,7 +684,7 @@ object_tangible_dungeon_corellian_corvette_shared_corvette_search_neutral_assass
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -703,7 +703,7 @@ ObjectTemplates:addClientTemplate(object_tangible_dungeon_corellian_corvette_sha
 
 object_tangible_dungeon_corellian_corvette_shared_corvette_search_neutral_destroy_01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_eleg_chest_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -739,7 +739,7 @@ object_tangible_dungeon_corellian_corvette_shared_corvette_search_neutral_destro
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -758,7 +758,7 @@ ObjectTemplates:addClientTemplate(object_tangible_dungeon_corellian_corvette_sha
 
 object_tangible_dungeon_corellian_corvette_shared_corvette_search_neutral_destroy_02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_prp_professor_desk.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -794,7 +794,7 @@ object_tangible_dungeon_corellian_corvette_shared_corvette_search_neutral_destro
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -813,7 +813,7 @@ ObjectTemplates:addClientTemplate(object_tangible_dungeon_corellian_corvette_sha
 
 object_tangible_dungeon_corellian_corvette_shared_corvette_search_neutral_destroy_03 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_tato_debris_s09.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -849,7 +849,7 @@ object_tangible_dungeon_corellian_corvette_shared_corvette_search_neutral_destro
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -868,7 +868,7 @@ ObjectTemplates:addClientTemplate(object_tangible_dungeon_corellian_corvette_sha
 
 object_tangible_dungeon_corellian_corvette_shared_corvette_search_neutral_rescue_01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_tato_debris_s09.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -904,7 +904,7 @@ object_tangible_dungeon_corellian_corvette_shared_corvette_search_neutral_rescue
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -923,7 +923,7 @@ ObjectTemplates:addClientTemplate(object_tangible_dungeon_corellian_corvette_sha
 
 object_tangible_dungeon_corellian_corvette_shared_corvette_search_neutral_rescue_02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_chep_bookcase_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -959,7 +959,7 @@ object_tangible_dungeon_corellian_corvette_shared_corvette_search_neutral_rescue
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -978,7 +978,7 @@ ObjectTemplates:addClientTemplate(object_tangible_dungeon_corellian_corvette_sha
 
 object_tangible_dungeon_corellian_corvette_shared_corvette_search_neutral_rescue_03 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_tato_debris_s09.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1014,7 +1014,7 @@ object_tangible_dungeon_corellian_corvette_shared_corvette_search_neutral_rescue
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1033,7 +1033,7 @@ ObjectTemplates:addClientTemplate(object_tangible_dungeon_corellian_corvette_sha
 
 object_tangible_dungeon_corellian_corvette_shared_corvette_search_rebel_assassination_01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_tato_debris_s08.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1069,7 +1069,7 @@ object_tangible_dungeon_corellian_corvette_shared_corvette_search_rebel_assassin
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1088,7 +1088,7 @@ ObjectTemplates:addClientTemplate(object_tangible_dungeon_corellian_corvette_sha
 
 object_tangible_dungeon_corellian_corvette_shared_corvette_search_rebel_assassination_02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_mdrn_bookcase_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1124,7 +1124,7 @@ object_tangible_dungeon_corellian_corvette_shared_corvette_search_rebel_assassin
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1143,7 +1143,7 @@ ObjectTemplates:addClientTemplate(object_tangible_dungeon_corellian_corvette_sha
 
 object_tangible_dungeon_corellian_corvette_shared_corvette_search_rebel_assassination_03 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_prp_professor_desk.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1179,7 +1179,7 @@ object_tangible_dungeon_corellian_corvette_shared_corvette_search_rebel_assassin
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1198,7 +1198,7 @@ ObjectTemplates:addClientTemplate(object_tangible_dungeon_corellian_corvette_sha
 
 object_tangible_dungeon_corellian_corvette_shared_corvette_search_rebel_destroy_01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_tato_debris_s08.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1234,7 +1234,7 @@ object_tangible_dungeon_corellian_corvette_shared_corvette_search_rebel_destroy_
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1253,7 +1253,7 @@ ObjectTemplates:addClientTemplate(object_tangible_dungeon_corellian_corvette_sha
 
 object_tangible_dungeon_corellian_corvette_shared_corvette_search_rebel_destroy_02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_tato_debris_s07.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1289,7 +1289,7 @@ object_tangible_dungeon_corellian_corvette_shared_corvette_search_rebel_destroy_
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1308,7 +1308,7 @@ ObjectTemplates:addClientTemplate(object_tangible_dungeon_corellian_corvette_sha
 
 object_tangible_dungeon_corellian_corvette_shared_corvette_search_rebel_destroy_03 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_tato_debris_s06.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1344,7 +1344,7 @@ object_tangible_dungeon_corellian_corvette_shared_corvette_search_rebel_destroy_
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1363,7 +1363,7 @@ ObjectTemplates:addClientTemplate(object_tangible_dungeon_corellian_corvette_sha
 
 object_tangible_dungeon_corellian_corvette_shared_corvette_search_rebel_rescue_01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_imp_tbl_s1.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1399,7 +1399,7 @@ object_tangible_dungeon_corellian_corvette_shared_corvette_search_rebel_rescue_0
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1418,7 +1418,7 @@ ObjectTemplates:addClientTemplate(object_tangible_dungeon_corellian_corvette_sha
 
 object_tangible_dungeon_corellian_corvette_shared_corvette_search_rebel_rescue_02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_tato_debris_s07.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1454,7 +1454,7 @@ object_tangible_dungeon_corellian_corvette_shared_corvette_search_rebel_rescue_0
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1473,7 +1473,7 @@ ObjectTemplates:addClientTemplate(object_tangible_dungeon_corellian_corvette_sha
 
 object_tangible_dungeon_corellian_corvette_shared_corvette_search_rebel_rescue_03 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_chep_chest_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1509,7 +1509,7 @@ object_tangible_dungeon_corellian_corvette_shared_corvette_search_rebel_rescue_0
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",

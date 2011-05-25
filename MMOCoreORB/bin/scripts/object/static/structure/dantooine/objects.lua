@@ -43,7 +43,7 @@
 
 object_static_structure_dantooine_shared_dant_boundary_post = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_dant_boundary_post.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -74,7 +74,7 @@ object_static_structure_dantooine_shared_dant_boundary_post = SharedStaticObject
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 1,
 
@@ -88,7 +88,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_dantooine_shared_dant_
 
 object_static_structure_dantooine_shared_dant_cooking_stone = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_dant_cooking_stone.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -119,7 +119,7 @@ object_static_structure_dantooine_shared_dant_cooking_stone = SharedStaticObject
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 1,
 
@@ -133,7 +133,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_dantooine_shared_dant_
 
 object_static_structure_dantooine_shared_dant_fence_4m = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_dant_fence_4m.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -164,7 +164,7 @@ object_static_structure_dantooine_shared_dant_fence_4m = SharedStaticObjectTempl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 3,
 
@@ -178,7 +178,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_dantooine_shared_dant_
 
 object_static_structure_dantooine_shared_dant_fence_8m = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_dant_fence_8m.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -209,7 +209,7 @@ object_static_structure_dantooine_shared_dant_fence_8m = SharedStaticObjectTempl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 3,
 
@@ -223,7 +223,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_dantooine_shared_dant_
 
 object_static_structure_dantooine_shared_dant_fire_pit = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_dant_fire_pit.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -254,7 +254,7 @@ object_static_structure_dantooine_shared_dant_fire_pit = SharedStaticObjectTempl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 1,
 
@@ -268,7 +268,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_dantooine_shared_dant_
 
 object_static_structure_dantooine_shared_dant_fish_rack = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_dant_fish.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -299,7 +299,7 @@ object_static_structure_dantooine_shared_dant_fish_rack = SharedStaticObjectTemp
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 1,
 
@@ -313,7 +313,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_dantooine_shared_dant_
 
 object_static_structure_dantooine_shared_dant_gate = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_dant_gate.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -344,7 +344,7 @@ object_static_structure_dantooine_shared_dant_gate = SharedStaticObjectTemplate:
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 3,
 
@@ -358,7 +358,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_dantooine_shared_dant_
 
 object_static_structure_dantooine_shared_dant_hide_tanning_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_dant_hide_tanning_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -389,7 +389,7 @@ object_static_structure_dantooine_shared_dant_hide_tanning_s01 = SharedStaticObj
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 1,
 
@@ -403,7 +403,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_dantooine_shared_dant_
 
 object_static_structure_dantooine_shared_dant_hide_tanning_s02 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_dant_hide_tanning_s02.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -434,7 +434,7 @@ object_static_structure_dantooine_shared_dant_hide_tanning_s02 = SharedStaticObj
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 1,
 
@@ -448,7 +448,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_dantooine_shared_dant_
 
 object_static_structure_dantooine_shared_dant_imprv_bannerpole_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/mun_corl_imprv_bannerpole_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/structure/dant_imprv_bannerpole_s01.cdf",
@@ -478,7 +478,7 @@ object_static_structure_dantooine_shared_dant_imprv_bannerpole_s01 = SharedStati
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 1,
 
@@ -492,7 +492,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_dantooine_shared_dant_
 
 object_static_structure_dantooine_shared_dant_imprv_flagpole_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/mun_corl_imprv_flagpole_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/structure/dant_imprv_flagpole_s01.cdf",
@@ -522,7 +522,7 @@ object_static_structure_dantooine_shared_dant_imprv_flagpole_s01 = SharedStaticO
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 1,
 
@@ -536,7 +536,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_dantooine_shared_dant_
 
 object_static_structure_dantooine_shared_dant_jedi_main_structure = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_dant_jedi_main.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -567,7 +567,7 @@ object_static_structure_dantooine_shared_dant_jedi_main_structure = SharedStatic
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 2,
 
@@ -581,7 +581,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_dantooine_shared_dant_
 
 object_static_structure_dantooine_shared_dant_jedi_temple_altar = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_dant_jedi_temple_altar.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -612,7 +612,7 @@ object_static_structure_dantooine_shared_dant_jedi_temple_altar = SharedStaticOb
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 2,
 
@@ -626,7 +626,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_dantooine_shared_dant_
 
 object_static_structure_dantooine_shared_dant_jedi_temple_pillar = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_dant_jedi_temple_pillar.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -657,7 +657,7 @@ object_static_structure_dantooine_shared_dant_jedi_temple_pillar = SharedStaticO
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 2,
 
@@ -671,7 +671,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_dantooine_shared_dant_
 
 object_static_structure_dantooine_shared_dant_jedi_temple_pillar_base = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_dant_jedi_temple_pillar_base.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -702,7 +702,7 @@ object_static_structure_dantooine_shared_dant_jedi_temple_pillar_base = SharedSt
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 2,
 
@@ -716,7 +716,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_dantooine_shared_dant_
 
 object_static_structure_dantooine_shared_dant_jedi_temple_pillar_fallen = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_dant_jedi_temple_pillar_fallen.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -747,7 +747,7 @@ object_static_structure_dantooine_shared_dant_jedi_temple_pillar_fallen = Shared
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 2,
 
@@ -761,7 +761,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_dantooine_shared_dant_
 
 object_static_structure_dantooine_shared_dant_jedi_temple_pillar_med = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_dant_jedi_temple_pillar_med.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -792,7 +792,7 @@ object_static_structure_dantooine_shared_dant_jedi_temple_pillar_med = SharedSta
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 2,
 
@@ -806,7 +806,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_dantooine_shared_dant_
 
 object_static_structure_dantooine_shared_dant_jedi_temple_pillar_sm = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_dant_jedi_temple_pillar_sm.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -837,7 +837,7 @@ object_static_structure_dantooine_shared_dant_jedi_temple_pillar_sm = SharedStat
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 2,
 
@@ -851,7 +851,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_dantooine_shared_dant_
 
 object_static_structure_dantooine_shared_dant_jedi_wall_1 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_dant_jedi_wall_1.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -882,7 +882,7 @@ object_static_structure_dantooine_shared_dant_jedi_wall_1 = SharedStaticObjectTe
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 2,
 
@@ -896,7 +896,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_dantooine_shared_dant_
 
 object_static_structure_dantooine_shared_dant_jedi_wall_2 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_dant_jedi_wall_2.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -927,7 +927,7 @@ object_static_structure_dantooine_shared_dant_jedi_wall_2 = SharedStaticObjectTe
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 2,
 
@@ -941,7 +941,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_dantooine_shared_dant_
 
 object_static_structure_dantooine_shared_dant_large_communal = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_dant_large_communal.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -972,7 +972,7 @@ object_static_structure_dantooine_shared_dant_large_communal = SharedStaticObjec
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 2,
 
@@ -986,7 +986,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_dantooine_shared_dant_
 
 object_static_structure_dantooine_shared_dant_large_communal_dest = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_dant_large_rock_communal_dest_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 15,
 	clientDataFile = "clientdata/fs_village/client_shared_fs_village_communal_dest.cdf",
@@ -1017,7 +1017,7 @@ object_static_structure_dantooine_shared_dant_large_communal_dest = SharedStatic
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 2,
 
@@ -1031,7 +1031,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_dantooine_shared_dant_
 
 object_static_structure_dantooine_shared_dant_large_communal_no_flora_10m = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_dant_large_communal.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 15,
 	clientDataFile = "clientdata/building/shared_generic_flora_clearing_15m.cdf",
@@ -1062,7 +1062,7 @@ object_static_structure_dantooine_shared_dant_large_communal_no_flora_10m = Shar
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 2,
 
@@ -1076,7 +1076,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_dantooine_shared_dant_
 
 object_static_structure_dantooine_shared_dant_large_hut = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_dant_large_hut.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1107,7 +1107,7 @@ object_static_structure_dantooine_shared_dant_large_hut = SharedStaticObjectTemp
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 2,
 
@@ -1121,7 +1121,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_dantooine_shared_dant_
 
 object_static_structure_dantooine_shared_dant_large_hut_no_flora_10m = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_dant_large_hut.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 15,
 	clientDataFile = "clientdata/building/shared_generic_flora_clearing_15m.cdf",
@@ -1152,7 +1152,7 @@ object_static_structure_dantooine_shared_dant_large_hut_no_flora_10m = SharedSta
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 2,
 
@@ -1166,7 +1166,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_dantooine_shared_dant_
 
 object_static_structure_dantooine_shared_dant_large_mudhut = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_dant_large_mudhut.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1197,7 +1197,7 @@ object_static_structure_dantooine_shared_dant_large_mudhut = SharedStaticObjectT
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 2,
 
@@ -1211,7 +1211,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_dantooine_shared_dant_
 
 object_static_structure_dantooine_shared_dant_large_mudhut_no_flora_05m = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_dant_large_mudhut.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 10,
 	clientDataFile = "clientdata/building/shared_generic_flora_clearing_10m.cdf",
@@ -1242,7 +1242,7 @@ object_static_structure_dantooine_shared_dant_large_mudhut_no_flora_05m = Shared
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 2,
 
@@ -1256,7 +1256,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_dantooine_shared_dant_
 
 object_static_structure_dantooine_shared_dant_large_rock_hut = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_dant_large_rock_hut.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1287,7 +1287,7 @@ object_static_structure_dantooine_shared_dant_large_rock_hut = SharedStaticObjec
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 2,
 
@@ -1301,7 +1301,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_dantooine_shared_dant_
 
 object_static_structure_dantooine_shared_dant_large_rock_hut_dest = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_dant_large_rock_hut_dest_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 10,
 	clientDataFile = "clientdata/fs_village/client_shared_fs_village_rock_hut_dest.cdf",
@@ -1332,7 +1332,7 @@ object_static_structure_dantooine_shared_dant_large_rock_hut_dest = SharedStatic
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 2,
 
@@ -1346,7 +1346,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_dantooine_shared_dant_
 
 object_static_structure_dantooine_shared_dant_large_rock_hut_dest_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_dant_large_rock_hut_dest_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 10,
 	clientDataFile = "clientdata/fs_village/client_shared_fs_village_rock_hut_dest_01.cdf",
@@ -1377,7 +1377,7 @@ object_static_structure_dantooine_shared_dant_large_rock_hut_dest_01 = SharedSta
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 2,
 
@@ -1391,7 +1391,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_dantooine_shared_dant_
 
 object_static_structure_dantooine_shared_dant_large_rock_hut_dest_02 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_dant_large_rock_hut_dest_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 10,
 	clientDataFile = "clientdata/fs_village/client_shared_fs_village_rock_hut_dest_02.cdf",
@@ -1422,7 +1422,7 @@ object_static_structure_dantooine_shared_dant_large_rock_hut_dest_02 = SharedSta
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 2,
 
@@ -1436,7 +1436,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_dantooine_shared_dant_
 
 object_static_structure_dantooine_shared_dant_large_rock_hut_dest_03 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_dant_large_rock_hut_dest_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 10,
 	clientDataFile = "clientdata/fs_village/client_shared_fs_village_rock_hut_dest_03.cdf",
@@ -1467,7 +1467,7 @@ object_static_structure_dantooine_shared_dant_large_rock_hut_dest_03 = SharedSta
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 2,
 
@@ -1481,7 +1481,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_dantooine_shared_dant_
 
 object_static_structure_dantooine_shared_dant_large_rock_hut_no_flora_05m = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_dant_large_rock_hut.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 10,
 	clientDataFile = "clientdata/building/shared_generic_flora_clearing_10m.cdf",
@@ -1512,7 +1512,7 @@ object_static_structure_dantooine_shared_dant_large_rock_hut_no_flora_05m = Shar
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 2,
 
@@ -1526,7 +1526,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_dantooine_shared_dant_
 
 object_static_structure_dantooine_shared_dant_mud_oven = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_dant_mud_oven.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1557,7 +1557,7 @@ object_static_structure_dantooine_shared_dant_mud_oven = SharedStaticObjectTempl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 2,
 
@@ -1571,7 +1571,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_dantooine_shared_dant_
 
 object_static_structure_dantooine_shared_dant_rack_spears = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_dant_rack_spears.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1602,7 +1602,7 @@ object_static_structure_dantooine_shared_dant_rack_spears = SharedStaticObjectTe
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 3,
 
@@ -1616,7 +1616,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_dantooine_shared_dant_
 
 object_static_structure_dantooine_shared_dant_skull_bol = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_dant_bol_skull.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1647,7 +1647,7 @@ object_static_structure_dantooine_shared_dant_skull_bol = SharedStaticObjectTemp
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 2,
 
@@ -1661,7 +1661,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_dantooine_shared_dant_
 
 object_static_structure_dantooine_shared_dant_skull_lizard = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_dant_lizard_skull.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1692,7 +1692,7 @@ object_static_structure_dantooine_shared_dant_skull_lizard = SharedStaticObjectT
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 2,
 
@@ -1706,7 +1706,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_dantooine_shared_dant_
 
 object_static_structure_dantooine_shared_dant_skull_thune = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_dant_thune_skull.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1737,7 +1737,7 @@ object_static_structure_dantooine_shared_dant_skull_thune = SharedStaticObjectTe
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 2,
 
@@ -1751,7 +1751,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_dantooine_shared_dant_
 
 object_static_structure_dantooine_shared_dant_small_mudhut = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_dant_small_mudhut.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1782,7 +1782,7 @@ object_static_structure_dantooine_shared_dant_small_mudhut = SharedStaticObjectT
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 2,
 
@@ -1796,7 +1796,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_dantooine_shared_dant_
 
 object_static_structure_dantooine_shared_dant_totem_pole = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_dant_totem_pole.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1827,7 +1827,7 @@ object_static_structure_dantooine_shared_dant_totem_pole = SharedStaticObjectTem
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 3,
 

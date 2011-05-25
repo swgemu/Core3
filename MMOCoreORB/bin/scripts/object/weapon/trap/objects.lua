@@ -43,7 +43,7 @@
 
 object_weapon_trap_shared_eqp_weapon_auto_laser_trap = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_weapon_auto_laser_trap.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -79,7 +79,7 @@ object_weapon_trap_shared_eqp_weapon_auto_laser_trap = SharedTangibleObjectTempl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",

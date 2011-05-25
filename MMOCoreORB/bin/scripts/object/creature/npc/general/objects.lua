@@ -45,7 +45,7 @@ object_creature_npc_general_shared_skill_trainer = SharedCreatureObjectTemplate:
 	acceleration = {6,2},
 	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/hum_m.sat",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	cameraHeight = 0,
 	certificationsRequired = {},
@@ -95,7 +95,7 @@ object_creature_npc_general_shared_skill_trainer = SharedCreatureObjectTemplate:
 	sendToClient = 1,
 	slopeModAngle = 15,
 	slopeModPercent = 0.1,
-	slotDescriptors = {"inventory", "datapad", "default_weapon", "mission_bag", "hat", "hair", "earring_r", "earring_l", "eyes", "mouth", "neck", "cloak", "back", "chest1", "chest2", "chest3_r", "chest3_l", "bicep_r", "bicep_l", "bracer_lower_r", "bracer_upper_r", "bracer_lower_l", "bracer_upper_l", "wrist_r", "wrist_l", "gloves", "hold_r", "hold_l", "ring_r", "ring_l", "utility_belt", "pants1", "pants2", "shoes", "ghost", "bank"},
+	slotDescriptorFilename = "abstract/slot/descriptor/player.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	species = 0,

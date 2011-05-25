@@ -43,7 +43,7 @@
 
 object_static_structure_endor_shared_endor_cap = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_endr_village_tree_catwlk_cap_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -74,7 +74,7 @@ object_static_structure_endor_shared_endor_cap = SharedStaticObjectTemplate:new 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 3,
 
@@ -88,7 +88,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_endor_shared_endor_cap
 
 object_static_structure_endor_shared_endor_catwalk = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_endr_village_tree_catwlk_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -119,7 +119,7 @@ object_static_structure_endor_shared_endor_catwalk = SharedStaticObjectTemplate:
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 3,
 
@@ -133,7 +133,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_endor_shared_endor_cat
 
 object_static_structure_endor_shared_endr_imprv_bannerpole_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/mun_corl_imprv_bannerpole_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/structure/endr_imprv_bannerpole_s01.cdf",
@@ -163,7 +163,7 @@ object_static_structure_endor_shared_endr_imprv_bannerpole_s01 = SharedStaticObj
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 1,
 
@@ -177,7 +177,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_endor_shared_endr_impr
 
 object_static_structure_endor_shared_endr_imprv_flagpole_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/mun_corl_imprv_flagpole_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/structure/endr_imprv_flagpole_s01.cdf",
@@ -207,7 +207,7 @@ object_static_structure_endor_shared_endr_imprv_flagpole_s01 = SharedStaticObjec
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 1,
 

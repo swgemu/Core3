@@ -43,7 +43,7 @@
 
 object_building_naboo_shared_association_hall_civilian_naboo = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 35,
@@ -81,7 +81,7 @@ object_building_naboo_shared_association_hall_civilian_naboo = SharedBuildingObj
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -101,7 +101,7 @@ ObjectTemplates:addClientTemplate(object_building_naboo_shared_association_hall_
 
 object_building_naboo_shared_bank_naboo = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/mun_nboo_bank_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 35,
@@ -139,7 +139,7 @@ object_building_naboo_shared_bank_naboo = SharedBuildingObjectTemplate:new {
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -159,7 +159,7 @@ ObjectTemplates:addClientTemplate(object_building_naboo_shared_bank_naboo, "obje
 
 object_building_naboo_shared_bubble_naboo_large_style_1 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/otoh_lrgbuba.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -197,7 +197,7 @@ object_building_naboo_shared_bubble_naboo_large_style_1 = SharedBuildingObjectTe
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -217,7 +217,7 @@ ObjectTemplates:addClientTemplate(object_building_naboo_shared_bubble_naboo_larg
 
 object_building_naboo_shared_bubble_naboo_medium_style_1 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/otoh_meda.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -255,7 +255,7 @@ object_building_naboo_shared_bubble_naboo_medium_style_1 = SharedBuildingObjectT
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -275,7 +275,7 @@ ObjectTemplates:addClientTemplate(object_building_naboo_shared_bubble_naboo_medi
 
 object_building_naboo_shared_bubble_naboo_medium_style_2 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/otoh_medb.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -313,7 +313,7 @@ object_building_naboo_shared_bubble_naboo_medium_style_2 = SharedBuildingObjectT
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -333,7 +333,7 @@ ObjectTemplates:addClientTemplate(object_building_naboo_shared_bubble_naboo_medi
 
 object_building_naboo_shared_bubble_naboo_small_style_1 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/otoh_smalla.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -371,7 +371,7 @@ object_building_naboo_shared_bubble_naboo_small_style_1 = SharedBuildingObjectTe
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -391,7 +391,7 @@ ObjectTemplates:addClientTemplate(object_building_naboo_shared_bubble_naboo_smal
 
 object_building_naboo_shared_cantina_naboo = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 58,
@@ -429,7 +429,7 @@ object_building_naboo_shared_cantina_naboo = SharedBuildingObjectTemplate:new {
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -449,7 +449,7 @@ ObjectTemplates:addClientTemplate(object_building_naboo_shared_cantina_naboo, "o
 
 object_building_naboo_shared_capitol_naboo_theed = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 65,
@@ -487,7 +487,7 @@ object_building_naboo_shared_capitol_naboo_theed = SharedBuildingObjectTemplate:
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -507,7 +507,7 @@ ObjectTemplates:addClientTemplate(object_building_naboo_shared_capitol_naboo_the
 
 object_building_naboo_shared_cloning_facility_naboo = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 40,
@@ -545,7 +545,7 @@ object_building_naboo_shared_cloning_facility_naboo = SharedBuildingObjectTempla
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -565,7 +565,7 @@ ObjectTemplates:addClientTemplate(object_building_naboo_shared_cloning_facility_
 
 object_building_naboo_shared_emperors_retreat = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 60,
@@ -603,7 +603,7 @@ object_building_naboo_shared_emperors_retreat = SharedBuildingObjectTemplate:new
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -623,7 +623,7 @@ ObjectTemplates:addClientTemplate(object_building_naboo_shared_emperors_retreat,
 
 object_building_naboo_shared_filler_building_naboo_style_10 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_thed_imprv_building_s10.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 32,
@@ -661,7 +661,7 @@ object_building_naboo_shared_filler_building_naboo_style_10 = SharedBuildingObje
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -681,7 +681,7 @@ ObjectTemplates:addClientTemplate(object_building_naboo_shared_filler_building_n
 
 object_building_naboo_shared_filler_building_naboo_style_11 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_thed_imprv_building_s11.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 32,
@@ -719,7 +719,7 @@ object_building_naboo_shared_filler_building_naboo_style_11 = SharedBuildingObje
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -739,7 +739,7 @@ ObjectTemplates:addClientTemplate(object_building_naboo_shared_filler_building_n
 
 object_building_naboo_shared_filler_building_naboo_style_2 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_thed_imprv_building_s02.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 10,
@@ -777,7 +777,7 @@ object_building_naboo_shared_filler_building_naboo_style_2 = SharedBuildingObjec
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -797,7 +797,7 @@ ObjectTemplates:addClientTemplate(object_building_naboo_shared_filler_building_n
 
 object_building_naboo_shared_filler_building_naboo_style_3 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_thed_imprv_building_s03.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 35,
@@ -835,7 +835,7 @@ object_building_naboo_shared_filler_building_naboo_style_3 = SharedBuildingObjec
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -855,7 +855,7 @@ ObjectTemplates:addClientTemplate(object_building_naboo_shared_filler_building_n
 
 object_building_naboo_shared_filler_building_naboo_style_4 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_thed_imprv_building_s04.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 15,
@@ -893,7 +893,7 @@ object_building_naboo_shared_filler_building_naboo_style_4 = SharedBuildingObjec
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -913,7 +913,7 @@ ObjectTemplates:addClientTemplate(object_building_naboo_shared_filler_building_n
 
 object_building_naboo_shared_filler_building_naboo_style_5 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_thed_imprv_building_s05.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 20,
@@ -951,7 +951,7 @@ object_building_naboo_shared_filler_building_naboo_style_5 = SharedBuildingObjec
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -971,7 +971,7 @@ ObjectTemplates:addClientTemplate(object_building_naboo_shared_filler_building_n
 
 object_building_naboo_shared_filler_building_naboo_style_6 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_thed_imprv_building_s06.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 12,
@@ -1009,7 +1009,7 @@ object_building_naboo_shared_filler_building_naboo_style_6 = SharedBuildingObjec
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1029,7 +1029,7 @@ ObjectTemplates:addClientTemplate(object_building_naboo_shared_filler_building_n
 
 object_building_naboo_shared_filler_building_naboo_style_8 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_thed_imprv_building_s08.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 12,
@@ -1067,7 +1067,7 @@ object_building_naboo_shared_filler_building_naboo_style_8 = SharedBuildingObjec
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1087,7 +1087,7 @@ ObjectTemplates:addClientTemplate(object_building_naboo_shared_filler_building_n
 
 object_building_naboo_shared_filler_building_naboo_style_9 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_thed_imprv_building_s09.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 15,
@@ -1125,7 +1125,7 @@ object_building_naboo_shared_filler_building_naboo_style_9 = SharedBuildingObjec
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1145,7 +1145,7 @@ ObjectTemplates:addClientTemplate(object_building_naboo_shared_filler_building_n
 
 object_building_naboo_shared_filler_nboo_bldg_32x16_style_01 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_block_bldg_32x16_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 20,
@@ -1183,7 +1183,7 @@ object_building_naboo_shared_filler_nboo_bldg_32x16_style_01 = SharedBuildingObj
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1203,7 +1203,7 @@ ObjectTemplates:addClientTemplate(object_building_naboo_shared_filler_nboo_bldg_
 
 object_building_naboo_shared_filler_nboo_bldg_32x16_style_02 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_block_bldg_32x16_s02.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 20,
@@ -1241,7 +1241,7 @@ object_building_naboo_shared_filler_nboo_bldg_32x16_style_02 = SharedBuildingObj
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1261,7 +1261,7 @@ ObjectTemplates:addClientTemplate(object_building_naboo_shared_filler_nboo_bldg_
 
 object_building_naboo_shared_filler_nboo_bldg_64x32_s02 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_block_bldg_64x32_s02.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 40,
@@ -1299,7 +1299,7 @@ object_building_naboo_shared_filler_nboo_bldg_64x32_s02 = SharedBuildingObjectTe
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1319,7 +1319,7 @@ ObjectTemplates:addClientTemplate(object_building_naboo_shared_filler_nboo_bldg_
 
 object_building_naboo_shared_filler_nboo_bldg_64x32_style_01 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_block_bldg_64x32_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 40,
@@ -1357,7 +1357,7 @@ object_building_naboo_shared_filler_nboo_bldg_64x32_style_01 = SharedBuildingObj
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1377,7 +1377,7 @@ ObjectTemplates:addClientTemplate(object_building_naboo_shared_filler_nboo_bldg_
 
 object_building_naboo_shared_guild_combat_naboo_style_01 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 35,
@@ -1415,7 +1415,7 @@ object_building_naboo_shared_guild_combat_naboo_style_01 = SharedBuildingObjectT
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1435,7 +1435,7 @@ ObjectTemplates:addClientTemplate(object_building_naboo_shared_guild_combat_nabo
 
 object_building_naboo_shared_guild_commerce_naboo_style_01 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 35,
@@ -1473,7 +1473,7 @@ object_building_naboo_shared_guild_commerce_naboo_style_01 = SharedBuildingObjec
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1493,7 +1493,7 @@ ObjectTemplates:addClientTemplate(object_building_naboo_shared_guild_commerce_na
 
 object_building_naboo_shared_guild_theater_naboo_s01 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 80,
@@ -1531,7 +1531,7 @@ object_building_naboo_shared_guild_theater_naboo_s01 = SharedBuildingObjectTempl
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1551,7 +1551,7 @@ ObjectTemplates:addClientTemplate(object_building_naboo_shared_guild_theater_nab
 
 object_building_naboo_shared_guild_university_naboo_style_01 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 35,
@@ -1589,7 +1589,7 @@ object_building_naboo_shared_guild_university_naboo_style_01 = SharedBuildingObj
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1609,7 +1609,7 @@ ObjectTemplates:addClientTemplate(object_building_naboo_shared_guild_university_
 
 object_building_naboo_shared_hangar_naboo_theed = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 40,
@@ -1647,7 +1647,7 @@ object_building_naboo_shared_hangar_naboo_theed = SharedBuildingObjectTemplate:n
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1667,7 +1667,7 @@ ObjectTemplates:addClientTemplate(object_building_naboo_shared_hangar_naboo_thee
 
 object_building_naboo_shared_hospital_naboo = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 55,
@@ -1705,7 +1705,7 @@ object_building_naboo_shared_hospital_naboo = SharedBuildingObjectTemplate:new {
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1725,7 +1725,7 @@ ObjectTemplates:addClientTemplate(object_building_naboo_shared_hospital_naboo, "
 
 object_building_naboo_shared_hospital_naboo_s02 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 30,
@@ -1763,7 +1763,7 @@ object_building_naboo_shared_hospital_naboo_s02 = SharedBuildingObjectTemplate:n
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1783,7 +1783,7 @@ ObjectTemplates:addClientTemplate(object_building_naboo_shared_hospital_naboo_s0
 
 object_building_naboo_shared_hotel_naboo_theed = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 40,
@@ -1821,7 +1821,7 @@ object_building_naboo_shared_hotel_naboo_theed = SharedBuildingObjectTemplate:ne
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1841,7 +1841,7 @@ ObjectTemplates:addClientTemplate(object_building_naboo_shared_hotel_naboo_theed
 
 object_building_naboo_shared_housing_naboo_style_1 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 20,
@@ -1879,7 +1879,7 @@ object_building_naboo_shared_housing_naboo_style_1 = SharedBuildingObjectTemplat
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1899,7 +1899,7 @@ ObjectTemplates:addClientTemplate(object_building_naboo_shared_housing_naboo_sty
 
 object_building_naboo_shared_housing_naboo_style_3 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/ply_nboo_house_m_s02_fp1.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 15,
@@ -1937,7 +1937,7 @@ object_building_naboo_shared_housing_naboo_style_3 = SharedBuildingObjectTemplat
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1957,7 +1957,7 @@ ObjectTemplates:addClientTemplate(object_building_naboo_shared_housing_naboo_sty
 
 object_building_naboo_shared_merchant_tent_naboo_s01 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1995,7 +1995,7 @@ object_building_naboo_shared_merchant_tent_naboo_s01 = SharedBuildingObjectTempl
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2015,7 +2015,7 @@ ObjectTemplates:addClientTemplate(object_building_naboo_shared_merchant_tent_nab
 
 object_building_naboo_shared_palace_naboo_theed = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2053,7 +2053,7 @@ object_building_naboo_shared_palace_naboo_theed = SharedBuildingObjectTemplate:n
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2073,7 +2073,7 @@ ObjectTemplates:addClientTemplate(object_building_naboo_shared_palace_naboo_thee
 
 object_building_naboo_shared_parking_garage_naboo_style_1 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/mun_nboo_garage_s01_u01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -2111,7 +2111,7 @@ object_building_naboo_shared_parking_garage_naboo_style_1 = SharedBuildingObject
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2131,7 +2131,7 @@ ObjectTemplates:addClientTemplate(object_building_naboo_shared_parking_garage_na
 
 object_building_naboo_shared_ply_nboo_house_lg_s01_fp1 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -2169,7 +2169,7 @@ object_building_naboo_shared_ply_nboo_house_lg_s01_fp1 = SharedBuildingObjectTem
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2189,7 +2189,7 @@ ObjectTemplates:addClientTemplate(object_building_naboo_shared_ply_nboo_house_lg
 
 object_building_naboo_shared_ply_nboo_house_m_s01_fp1 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -2227,7 +2227,7 @@ object_building_naboo_shared_ply_nboo_house_m_s01_fp1 = SharedBuildingObjectTemp
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2247,7 +2247,7 @@ ObjectTemplates:addClientTemplate(object_building_naboo_shared_ply_nboo_house_m_
 
 object_building_naboo_shared_ply_nboo_house_m_s02_fp1 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/ply_nboo_house_m_s02_fp1.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -2285,7 +2285,7 @@ object_building_naboo_shared_ply_nboo_house_m_s02_fp1 = SharedBuildingObjectTemp
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2305,7 +2305,7 @@ ObjectTemplates:addClientTemplate(object_building_naboo_shared_ply_nboo_house_m_
 
 object_building_naboo_shared_ply_nboo_house_s_s01_fp1 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -2343,7 +2343,7 @@ object_building_naboo_shared_ply_nboo_house_s_s01_fp1 = SharedBuildingObjectTemp
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2363,7 +2363,7 @@ ObjectTemplates:addClientTemplate(object_building_naboo_shared_ply_nboo_house_s_
 
 object_building_naboo_shared_ply_nboo_house_s_s02_fp1 = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 25,
@@ -2401,7 +2401,7 @@ object_building_naboo_shared_ply_nboo_house_s_s02_fp1 = SharedBuildingObjectTemp
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2421,7 +2421,7 @@ ObjectTemplates:addClientTemplate(object_building_naboo_shared_ply_nboo_house_s_
 
 object_building_naboo_shared_power_generator_naboo_theed = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/thm_nboo_thed_power_generator.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2459,7 +2459,7 @@ object_building_naboo_shared_power_generator_naboo_theed = SharedBuildingObjectT
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2479,7 +2479,7 @@ ObjectTemplates:addClientTemplate(object_building_naboo_shared_power_generator_n
 
 object_building_naboo_shared_salon_corellia = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 40,
@@ -2517,7 +2517,7 @@ object_building_naboo_shared_salon_corellia = SharedBuildingObjectTemplate:new {
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2537,7 +2537,7 @@ ObjectTemplates:addClientTemplate(object_building_naboo_shared_salon_corellia, "
 
 object_building_naboo_shared_salon_naboo = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 40,
@@ -2575,7 +2575,7 @@ object_building_naboo_shared_salon_naboo = SharedBuildingObjectTemplate:new {
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2595,7 +2595,7 @@ ObjectTemplates:addClientTemplate(object_building_naboo_shared_salon_naboo, "obj
 
 object_building_naboo_shared_shuttleport_naboo = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/mun_nboo_shuttleport_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 29,
@@ -2633,7 +2633,7 @@ object_building_naboo_shared_shuttleport_naboo = SharedBuildingObjectTemplate:ne
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2653,7 +2653,7 @@ ObjectTemplates:addClientTemplate(object_building_naboo_shared_shuttleport_naboo
 
 object_building_naboo_shared_starport_naboo = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 100,
@@ -2691,7 +2691,7 @@ object_building_naboo_shared_starport_naboo = SharedBuildingObjectTemplate:new {
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",

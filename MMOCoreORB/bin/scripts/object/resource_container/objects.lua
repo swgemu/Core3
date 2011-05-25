@@ -43,7 +43,7 @@
 
 object_resource_container_shared_resource_container_energy_gas = SharedResourceContainerObjectTemplate:new {
 	appearanceFilename = "appearance/con_gen_energy_gas_sml.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -79,7 +79,7 @@ object_resource_container_shared_resource_container_energy_gas = SharedResourceC
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -98,7 +98,7 @@ ObjectTemplates:addClientTemplate(object_resource_container_shared_resource_cont
 
 object_resource_container_shared_resource_container_energy_gas_lg = SharedResourceContainerObjectTemplate:new {
 	appearanceFilename = "appearance/con_gen_energy_gas_lg.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -134,7 +134,7 @@ object_resource_container_shared_resource_container_energy_gas_lg = SharedResour
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -153,7 +153,7 @@ ObjectTemplates:addClientTemplate(object_resource_container_shared_resource_cont
 
 object_resource_container_shared_resource_container_energy_liquid = SharedResourceContainerObjectTemplate:new {
 	appearanceFilename = "appearance/con_gen_energy_liquid_sml.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -189,7 +189,7 @@ object_resource_container_shared_resource_container_energy_liquid = SharedResour
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -208,7 +208,7 @@ ObjectTemplates:addClientTemplate(object_resource_container_shared_resource_cont
 
 object_resource_container_shared_resource_container_energy_liquid_lg = SharedResourceContainerObjectTemplate:new {
 	appearanceFilename = "appearance/con_gen_energy_liquid_lg.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -244,7 +244,7 @@ object_resource_container_shared_resource_container_energy_liquid_lg = SharedRes
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -263,7 +263,7 @@ ObjectTemplates:addClientTemplate(object_resource_container_shared_resource_cont
 
 object_resource_container_shared_resource_container_energy_radioactive = SharedResourceContainerObjectTemplate:new {
 	appearanceFilename = "appearance/con_gen_energy_radioactive_sml.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -299,7 +299,7 @@ object_resource_container_shared_resource_container_energy_radioactive = SharedR
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -318,7 +318,7 @@ ObjectTemplates:addClientTemplate(object_resource_container_shared_resource_cont
 
 object_resource_container_shared_resource_container_energy_radioactive_lg = SharedResourceContainerObjectTemplate:new {
 	appearanceFilename = "appearance/con_gen_energy_radioactive_lg.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -354,7 +354,7 @@ object_resource_container_shared_resource_container_energy_radioactive_lg = Shar
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -373,7 +373,7 @@ ObjectTemplates:addClientTemplate(object_resource_container_shared_resource_cont
 
 object_resource_container_shared_resource_container_energy_solid = SharedResourceContainerObjectTemplate:new {
 	appearanceFilename = "appearance/con_gen_energy_solid_sml.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -409,7 +409,7 @@ object_resource_container_shared_resource_container_energy_solid = SharedResourc
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -428,7 +428,7 @@ ObjectTemplates:addClientTemplate(object_resource_container_shared_resource_cont
 
 object_resource_container_shared_resource_container_energy_solid_lg = SharedResourceContainerObjectTemplate:new {
 	appearanceFilename = "appearance/con_gen_energy_solid_lg.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -464,7 +464,7 @@ object_resource_container_shared_resource_container_energy_solid_lg = SharedReso
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -483,7 +483,7 @@ ObjectTemplates:addClientTemplate(object_resource_container_shared_resource_cont
 
 object_resource_container_shared_resource_container_inorganic_bottle_water = SharedResourceContainerObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_bottle_s03.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -519,7 +519,7 @@ object_resource_container_shared_resource_container_inorganic_bottle_water = Sha
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -538,7 +538,7 @@ ObjectTemplates:addClientTemplate(object_resource_container_shared_resource_cont
 
 object_resource_container_shared_resource_container_inorganic_chemicals = SharedResourceContainerObjectTemplate:new {
 	appearanceFilename = "appearance/con_gen_inorganic_chemicals_sml.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -574,7 +574,7 @@ object_resource_container_shared_resource_container_inorganic_chemicals = Shared
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -593,7 +593,7 @@ ObjectTemplates:addClientTemplate(object_resource_container_shared_resource_cont
 
 object_resource_container_shared_resource_container_inorganic_chemicals_lg = SharedResourceContainerObjectTemplate:new {
 	appearanceFilename = "appearance/con_gen_inorganic_chemicals_lg.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -629,7 +629,7 @@ object_resource_container_shared_resource_container_inorganic_chemicals_lg = Sha
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -648,7 +648,7 @@ ObjectTemplates:addClientTemplate(object_resource_container_shared_resource_cont
 
 object_resource_container_shared_resource_container_inorganic_gas = SharedResourceContainerObjectTemplate:new {
 	appearanceFilename = "appearance/con_gen_inorganic_gas_sml.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -684,7 +684,7 @@ object_resource_container_shared_resource_container_inorganic_gas = SharedResour
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -703,7 +703,7 @@ ObjectTemplates:addClientTemplate(object_resource_container_shared_resource_cont
 
 object_resource_container_shared_resource_container_inorganic_gas_lg = SharedResourceContainerObjectTemplate:new {
 	appearanceFilename = "appearance/con_gen_inorganic_gas_lg.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -739,7 +739,7 @@ object_resource_container_shared_resource_container_inorganic_gas_lg = SharedRes
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -758,7 +758,7 @@ ObjectTemplates:addClientTemplate(object_resource_container_shared_resource_cont
 
 object_resource_container_shared_resource_container_inorganic_minerals = SharedResourceContainerObjectTemplate:new {
 	appearanceFilename = "appearance/con_gen_inorganic_minerals_sml.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -794,7 +794,7 @@ object_resource_container_shared_resource_container_inorganic_minerals = SharedR
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -813,7 +813,7 @@ ObjectTemplates:addClientTemplate(object_resource_container_shared_resource_cont
 
 object_resource_container_shared_resource_container_inorganic_minerals_lg = SharedResourceContainerObjectTemplate:new {
 	appearanceFilename = "appearance/con_gen_inorganic_minerals_lg.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -849,7 +849,7 @@ object_resource_container_shared_resource_container_inorganic_minerals_lg = Shar
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -868,7 +868,7 @@ ObjectTemplates:addClientTemplate(object_resource_container_shared_resource_cont
 
 object_resource_container_shared_resource_container_inorganic_petrochem_liquid = SharedResourceContainerObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_bottle_s03.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -904,7 +904,7 @@ object_resource_container_shared_resource_container_inorganic_petrochem_liquid =
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -923,7 +923,7 @@ ObjectTemplates:addClientTemplate(object_resource_container_shared_resource_cont
 
 object_resource_container_shared_resource_container_inorganic_water = SharedResourceContainerObjectTemplate:new {
 	appearanceFilename = "appearance/con_gen_inorganic_water_sml.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -959,7 +959,7 @@ object_resource_container_shared_resource_container_inorganic_water = SharedReso
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -978,7 +978,7 @@ ObjectTemplates:addClientTemplate(object_resource_container_shared_resource_cont
 
 object_resource_container_shared_resource_container_inorganic_water_lg = SharedResourceContainerObjectTemplate:new {
 	appearanceFilename = "appearance/con_gen_inorganic_water_lg.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1014,7 +1014,7 @@ object_resource_container_shared_resource_container_inorganic_water_lg = SharedR
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1033,7 +1033,7 @@ ObjectTemplates:addClientTemplate(object_resource_container_shared_resource_cont
 
 object_resource_container_shared_resource_container_organic_bean = SharedResourceContainerObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_powder_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1069,7 +1069,7 @@ object_resource_container_shared_resource_container_organic_bean = SharedResourc
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1088,7 +1088,7 @@ ObjectTemplates:addClientTemplate(object_resource_container_shared_resource_cont
 
 object_resource_container_shared_resource_container_organic_bottle_milk = SharedResourceContainerObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_bottle_s03.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1124,7 +1124,7 @@ object_resource_container_shared_resource_container_organic_bottle_milk = Shared
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1143,7 +1143,7 @@ ObjectTemplates:addClientTemplate(object_resource_container_shared_resource_cont
 
 object_resource_container_shared_resource_container_organic_bristley_hide = SharedResourceContainerObjectTemplate:new {
 	appearanceFilename = "appearance/con_gen_organic_hide_bristly.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1179,7 +1179,7 @@ object_resource_container_shared_resource_container_organic_bristley_hide = Shar
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1198,7 +1198,7 @@ ObjectTemplates:addClientTemplate(object_resource_container_shared_resource_cont
 
 object_resource_container_shared_resource_container_organic_corn = SharedResourceContainerObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_powder_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1234,7 +1234,7 @@ object_resource_container_shared_resource_container_organic_corn = SharedResourc
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1253,7 +1253,7 @@ ObjectTemplates:addClientTemplate(object_resource_container_shared_resource_cont
 
 object_resource_container_shared_resource_container_organic_food = SharedResourceContainerObjectTemplate:new {
 	appearanceFilename = "appearance/con_gen_organic_food_sml.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1289,7 +1289,7 @@ object_resource_container_shared_resource_container_organic_food = SharedResourc
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1308,7 +1308,7 @@ ObjectTemplates:addClientTemplate(object_resource_container_shared_resource_cont
 
 object_resource_container_shared_resource_container_organic_food_lg = SharedResourceContainerObjectTemplate:new {
 	appearanceFilename = "appearance/con_gen_organic_food_lg.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1344,7 +1344,7 @@ object_resource_container_shared_resource_container_organic_food_lg = SharedReso
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1363,7 +1363,7 @@ ObjectTemplates:addClientTemplate(object_resource_container_shared_resource_cont
 
 object_resource_container_shared_resource_container_organic_fruit = SharedResourceContainerObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_powder_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1399,7 +1399,7 @@ object_resource_container_shared_resource_container_organic_fruit = SharedResour
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1418,7 +1418,7 @@ ObjectTemplates:addClientTemplate(object_resource_container_shared_resource_cont
 
 object_resource_container_shared_resource_container_organic_fungi = SharedResourceContainerObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_powder_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1454,7 +1454,7 @@ object_resource_container_shared_resource_container_organic_fungi = SharedResour
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1473,7 +1473,7 @@ ObjectTemplates:addClientTemplate(object_resource_container_shared_resource_cont
 
 object_resource_container_shared_resource_container_organic_green_vegetables = SharedResourceContainerObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_powder_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1509,7 +1509,7 @@ object_resource_container_shared_resource_container_organic_green_vegetables = S
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1528,7 +1528,7 @@ ObjectTemplates:addClientTemplate(object_resource_container_shared_resource_cont
 
 object_resource_container_shared_resource_container_organic_hide = SharedResourceContainerObjectTemplate:new {
 	appearanceFilename = "appearance/con_gen_organic_hide_sml.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1564,7 +1564,7 @@ object_resource_container_shared_resource_container_organic_hide = SharedResourc
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1583,7 +1583,7 @@ ObjectTemplates:addClientTemplate(object_resource_container_shared_resource_cont
 
 object_resource_container_shared_resource_container_organic_hide_lg = SharedResourceContainerObjectTemplate:new {
 	appearanceFilename = "appearance/con_gen_organic_hide_lg.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1619,7 +1619,7 @@ object_resource_container_shared_resource_container_organic_hide_lg = SharedReso
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1638,7 +1638,7 @@ ObjectTemplates:addClientTemplate(object_resource_container_shared_resource_cont
 
 object_resource_container_shared_resource_container_organic_leathery_hide = SharedResourceContainerObjectTemplate:new {
 	appearanceFilename = "appearance/con_gen_organic_hide_leather.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1674,7 +1674,7 @@ object_resource_container_shared_resource_container_organic_leathery_hide = Shar
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1693,7 +1693,7 @@ ObjectTemplates:addClientTemplate(object_resource_container_shared_resource_cont
 
 object_resource_container_shared_resource_container_organic_oats = SharedResourceContainerObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_powder_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1729,7 +1729,7 @@ object_resource_container_shared_resource_container_organic_oats = SharedResourc
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1748,7 +1748,7 @@ ObjectTemplates:addClientTemplate(object_resource_container_shared_resource_cont
 
 object_resource_container_shared_resource_container_organic_rice = SharedResourceContainerObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_powder_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1784,7 +1784,7 @@ object_resource_container_shared_resource_container_organic_rice = SharedResourc
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1803,7 +1803,7 @@ ObjectTemplates:addClientTemplate(object_resource_container_shared_resource_cont
 
 object_resource_container_shared_resource_container_organic_scaley_hide = SharedResourceContainerObjectTemplate:new {
 	appearanceFilename = "appearance/con_gen_organic_hide_scaly.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1839,7 +1839,7 @@ object_resource_container_shared_resource_container_organic_scaley_hide = Shared
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1858,7 +1858,7 @@ ObjectTemplates:addClientTemplate(object_resource_container_shared_resource_cont
 
 object_resource_container_shared_resource_container_organic_structure = SharedResourceContainerObjectTemplate:new {
 	appearanceFilename = "appearance/con_gen_organic_structure_sml.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1894,7 +1894,7 @@ object_resource_container_shared_resource_container_organic_structure = SharedRe
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1913,7 +1913,7 @@ ObjectTemplates:addClientTemplate(object_resource_container_shared_resource_cont
 
 object_resource_container_shared_resource_container_organic_structure_lg = SharedResourceContainerObjectTemplate:new {
 	appearanceFilename = "appearance/con_gen_organic_structure_lg.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1949,7 +1949,7 @@ object_resource_container_shared_resource_container_organic_structure_lg = Share
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1968,7 +1968,7 @@ ObjectTemplates:addClientTemplate(object_resource_container_shared_resource_cont
 
 object_resource_container_shared_resource_container_organic_tuber = SharedResourceContainerObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_powder_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2004,7 +2004,7 @@ object_resource_container_shared_resource_container_organic_tuber = SharedResour
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2023,7 +2023,7 @@ ObjectTemplates:addClientTemplate(object_resource_container_shared_resource_cont
 
 object_resource_container_shared_resource_container_organic_wheat = SharedResourceContainerObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_powder_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2059,7 +2059,7 @@ object_resource_container_shared_resource_container_organic_wheat = SharedResour
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2078,7 +2078,7 @@ ObjectTemplates:addClientTemplate(object_resource_container_shared_resource_cont
 
 object_resource_container_shared_resource_container_organic_wooly_hide = SharedResourceContainerObjectTemplate:new {
 	appearanceFilename = "appearance/con_gen_organic_hide_wooly.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2114,7 +2114,7 @@ object_resource_container_shared_resource_container_organic_wooly_hide = SharedR
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2133,7 +2133,7 @@ ObjectTemplates:addClientTemplate(object_resource_container_shared_resource_cont
 
 object_resource_container_shared_simple = SharedResourceContainerObjectTemplate:new {
 	appearanceFilename = "appearance/con_gen_organic_food_sml.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2169,7 +2169,7 @@ object_resource_container_shared_simple = SharedResourceContainerObjectTemplate:
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",

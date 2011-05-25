@@ -43,7 +43,7 @@
 
 object_building_player_city_shared_bank_corellia = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/ply_corl_bank_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 30,
@@ -79,7 +79,7 @@ object_building_player_city_shared_bank_corellia = SharedInstallationObjectTempl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/building/player/shared_player_city_bank.sfp",
@@ -98,7 +98,7 @@ ObjectTemplates:addClientTemplate(object_building_player_city_shared_bank_corell
 
 object_building_player_city_shared_bank_naboo = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/ply_nboo_bank_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 30,
@@ -134,7 +134,7 @@ object_building_player_city_shared_bank_naboo = SharedInstallationObjectTemplate
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/building/player/shared_player_city_bank.sfp",
@@ -153,7 +153,7 @@ ObjectTemplates:addClientTemplate(object_building_player_city_shared_bank_naboo,
 
 object_building_player_city_shared_bank_tatooine = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/ply_tato_bank_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 30,
@@ -189,7 +189,7 @@ object_building_player_city_shared_bank_tatooine = SharedInstallationObjectTempl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/building/player/shared_player_city_bank.sfp",
@@ -208,7 +208,7 @@ ObjectTemplates:addClientTemplate(object_building_player_city_shared_bank_tatooi
 
 object_building_player_city_shared_cantina_corellia = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 30,
@@ -246,7 +246,7 @@ object_building_player_city_shared_cantina_corellia = SharedBuildingObjectTempla
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/building/player/shared_player_city_cantina.sfp",
@@ -266,7 +266,7 @@ ObjectTemplates:addClientTemplate(object_building_player_city_shared_cantina_cor
 
 object_building_player_city_shared_cantina_naboo = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 30,
@@ -304,7 +304,7 @@ object_building_player_city_shared_cantina_naboo = SharedBuildingObjectTemplate:
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/building/player/shared_player_city_cantina.sfp",
@@ -324,7 +324,7 @@ ObjectTemplates:addClientTemplate(object_building_player_city_shared_cantina_nab
 
 object_building_player_city_shared_cantina_tatooine = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 30,
@@ -362,7 +362,7 @@ object_building_player_city_shared_cantina_tatooine = SharedBuildingObjectTempla
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/building/player/shared_player_city_cantina.sfp",
@@ -382,7 +382,7 @@ ObjectTemplates:addClientTemplate(object_building_player_city_shared_cantina_tat
 
 object_building_player_city_shared_cityhall_corellia = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 30,
@@ -420,7 +420,7 @@ object_building_player_city_shared_cityhall_corellia = SharedBuildingObjectTempl
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/building/player/shared_player_city_cityhall.sfp",
@@ -440,7 +440,7 @@ ObjectTemplates:addClientTemplate(object_building_player_city_shared_cityhall_co
 
 object_building_player_city_shared_cityhall_naboo = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 30,
@@ -478,7 +478,7 @@ object_building_player_city_shared_cityhall_naboo = SharedBuildingObjectTemplate
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/building/player/shared_player_city_cityhall.sfp",
@@ -498,7 +498,7 @@ ObjectTemplates:addClientTemplate(object_building_player_city_shared_cityhall_na
 
 object_building_player_city_shared_cityhall_tatooine = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 30,
@@ -536,7 +536,7 @@ object_building_player_city_shared_cityhall_tatooine = SharedBuildingObjectTempl
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/building/player/shared_player_city_cityhall.sfp",
@@ -556,7 +556,7 @@ ObjectTemplates:addClientTemplate(object_building_player_city_shared_cityhall_ta
 
 object_building_player_city_shared_cloning_corellia = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 30,
@@ -594,7 +594,7 @@ object_building_player_city_shared_cloning_corellia = SharedBuildingObjectTempla
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/building/player/shared_player_city_cloning.sfp",
@@ -614,7 +614,7 @@ ObjectTemplates:addClientTemplate(object_building_player_city_shared_cloning_cor
 
 object_building_player_city_shared_cloning_naboo = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 30,
@@ -652,7 +652,7 @@ object_building_player_city_shared_cloning_naboo = SharedBuildingObjectTemplate:
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/building/player/shared_player_city_cloning.sfp",
@@ -672,7 +672,7 @@ ObjectTemplates:addClientTemplate(object_building_player_city_shared_cloning_nab
 
 object_building_player_city_shared_cloning_tatooine = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 30,
@@ -710,7 +710,7 @@ object_building_player_city_shared_cloning_tatooine = SharedBuildingObjectTempla
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/building/player/shared_player_city_cloning.sfp",
@@ -730,7 +730,7 @@ ObjectTemplates:addClientTemplate(object_building_player_city_shared_cloning_tat
 
 object_building_player_city_shared_garden_corellia_lrg_01 = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/ply_corl_garden_lrg_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 30,
@@ -766,7 +766,7 @@ object_building_player_city_shared_garden_corellia_lrg_01 = SharedInstallationOb
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/building/player/shared_player_city_garden_large.sfp",
@@ -785,7 +785,7 @@ ObjectTemplates:addClientTemplate(object_building_player_city_shared_garden_core
 
 object_building_player_city_shared_garden_corellia_lrg_02 = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/ply_corl_garden_lrg_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 30,
@@ -821,7 +821,7 @@ object_building_player_city_shared_garden_corellia_lrg_02 = SharedInstallationOb
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/building/player/shared_player_city_garden_large.sfp",
@@ -840,7 +840,7 @@ ObjectTemplates:addClientTemplate(object_building_player_city_shared_garden_core
 
 object_building_player_city_shared_garden_corellia_lrg_03 = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/ply_corl_garden_lrg_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 30,
@@ -876,7 +876,7 @@ object_building_player_city_shared_garden_corellia_lrg_03 = SharedInstallationOb
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/building/player/shared_player_city_garden_large.sfp",
@@ -895,7 +895,7 @@ ObjectTemplates:addClientTemplate(object_building_player_city_shared_garden_core
 
 object_building_player_city_shared_garden_corellia_lrg_04 = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/ply_corl_garden_lrg_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 30,
@@ -931,7 +931,7 @@ object_building_player_city_shared_garden_corellia_lrg_04 = SharedInstallationOb
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/building/player/shared_player_city_garden_large.sfp",
@@ -950,7 +950,7 @@ ObjectTemplates:addClientTemplate(object_building_player_city_shared_garden_core
 
 object_building_player_city_shared_garden_corellia_lrg_05 = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/ply_corl_garden_lrg_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 30,
@@ -986,7 +986,7 @@ object_building_player_city_shared_garden_corellia_lrg_05 = SharedInstallationOb
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/building/player/shared_player_city_garden_large.sfp",
@@ -1005,7 +1005,7 @@ ObjectTemplates:addClientTemplate(object_building_player_city_shared_garden_core
 
 object_building_player_city_shared_garden_corellia_med_01 = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/ply_corl_garden_med_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 30,
@@ -1041,7 +1041,7 @@ object_building_player_city_shared_garden_corellia_med_01 = SharedInstallationOb
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/building/player/shared_player_city_garden_medium.sfp",
@@ -1060,7 +1060,7 @@ ObjectTemplates:addClientTemplate(object_building_player_city_shared_garden_core
 
 object_building_player_city_shared_garden_corellia_med_02 = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/ply_corl_garden_med_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 30,
@@ -1096,7 +1096,7 @@ object_building_player_city_shared_garden_corellia_med_02 = SharedInstallationOb
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/building/player/shared_player_city_garden_medium.sfp",
@@ -1115,7 +1115,7 @@ ObjectTemplates:addClientTemplate(object_building_player_city_shared_garden_core
 
 object_building_player_city_shared_garden_corellia_med_03 = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/ply_corl_garden_med_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 30,
@@ -1151,7 +1151,7 @@ object_building_player_city_shared_garden_corellia_med_03 = SharedInstallationOb
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/building/player/shared_player_city_garden_medium.sfp",
@@ -1170,7 +1170,7 @@ ObjectTemplates:addClientTemplate(object_building_player_city_shared_garden_core
 
 object_building_player_city_shared_garden_corellia_med_04 = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/ply_corl_garden_med_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 30,
@@ -1206,7 +1206,7 @@ object_building_player_city_shared_garden_corellia_med_04 = SharedInstallationOb
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/building/player/shared_player_city_garden_medium.sfp",
@@ -1225,7 +1225,7 @@ ObjectTemplates:addClientTemplate(object_building_player_city_shared_garden_core
 
 object_building_player_city_shared_garden_corellia_med_05 = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/ply_corl_garden_med_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 30,
@@ -1261,7 +1261,7 @@ object_building_player_city_shared_garden_corellia_med_05 = SharedInstallationOb
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/building/player/shared_player_city_garden_medium.sfp",
@@ -1280,7 +1280,7 @@ ObjectTemplates:addClientTemplate(object_building_player_city_shared_garden_core
 
 object_building_player_city_shared_garden_corellia_sml_01 = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/ply_corl_garden_sml_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 30,
@@ -1316,7 +1316,7 @@ object_building_player_city_shared_garden_corellia_sml_01 = SharedInstallationOb
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/building/player/shared_player_city_garden_small.sfp",
@@ -1335,7 +1335,7 @@ ObjectTemplates:addClientTemplate(object_building_player_city_shared_garden_core
 
 object_building_player_city_shared_garden_corellia_sml_02 = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/ply_corl_garden_sml_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 30,
@@ -1371,7 +1371,7 @@ object_building_player_city_shared_garden_corellia_sml_02 = SharedInstallationOb
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/building/player/shared_player_city_garden_small.sfp",
@@ -1390,7 +1390,7 @@ ObjectTemplates:addClientTemplate(object_building_player_city_shared_garden_core
 
 object_building_player_city_shared_garden_corellia_sml_03 = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/ply_corl_garden_sml_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 30,
@@ -1426,7 +1426,7 @@ object_building_player_city_shared_garden_corellia_sml_03 = SharedInstallationOb
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/building/player/shared_player_city_garden_small.sfp",
@@ -1445,7 +1445,7 @@ ObjectTemplates:addClientTemplate(object_building_player_city_shared_garden_core
 
 object_building_player_city_shared_garden_corellia_sml_04 = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/ply_corl_garden_sml_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 30,
@@ -1481,7 +1481,7 @@ object_building_player_city_shared_garden_corellia_sml_04 = SharedInstallationOb
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/building/player/shared_player_city_garden_small.sfp",
@@ -1500,7 +1500,7 @@ ObjectTemplates:addClientTemplate(object_building_player_city_shared_garden_core
 
 object_building_player_city_shared_garden_corellia_sml_05 = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/ply_corl_garden_sml_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 30,
@@ -1536,7 +1536,7 @@ object_building_player_city_shared_garden_corellia_sml_05 = SharedInstallationOb
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/building/player/shared_player_city_garden_small.sfp",
@@ -1555,7 +1555,7 @@ ObjectTemplates:addClientTemplate(object_building_player_city_shared_garden_core
 
 object_building_player_city_shared_garden_dantooine_lrg_01 = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/ply_tato_garden_lrg_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 30,
@@ -1591,7 +1591,7 @@ object_building_player_city_shared_garden_dantooine_lrg_01 = SharedInstallationO
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/building/player/shared_player_city_garden_large.sfp",
@@ -1610,7 +1610,7 @@ ObjectTemplates:addClientTemplate(object_building_player_city_shared_garden_dant
 
 object_building_player_city_shared_garden_dantooine_med_01 = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/ply_tato_garden_med_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 30,
@@ -1646,7 +1646,7 @@ object_building_player_city_shared_garden_dantooine_med_01 = SharedInstallationO
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/building/player/shared_player_city_garden_medium.sfp",
@@ -1665,7 +1665,7 @@ ObjectTemplates:addClientTemplate(object_building_player_city_shared_garden_dant
 
 object_building_player_city_shared_garden_dantooine_sml_01 = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/ply_tato_garden_sml_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 30,
@@ -1701,7 +1701,7 @@ object_building_player_city_shared_garden_dantooine_sml_01 = SharedInstallationO
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/building/player/shared_player_city_garden_small.sfp",
@@ -1720,7 +1720,7 @@ ObjectTemplates:addClientTemplate(object_building_player_city_shared_garden_dant
 
 object_building_player_city_shared_garden_dathomir_lrg_01 = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/ply_nboo_garden_lrg_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 30,
@@ -1756,7 +1756,7 @@ object_building_player_city_shared_garden_dathomir_lrg_01 = SharedInstallationOb
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/building/player/shared_player_city_garden_large.sfp",
@@ -1775,7 +1775,7 @@ ObjectTemplates:addClientTemplate(object_building_player_city_shared_garden_dath
 
 object_building_player_city_shared_garden_dathomir_med_01 = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/ply_nboo_garden_med_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 30,
@@ -1811,7 +1811,7 @@ object_building_player_city_shared_garden_dathomir_med_01 = SharedInstallationOb
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/building/player/shared_player_city_garden_medium.sfp",
@@ -1830,7 +1830,7 @@ ObjectTemplates:addClientTemplate(object_building_player_city_shared_garden_dath
 
 object_building_player_city_shared_garden_dathomir_sml_01 = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/ply_nboo_garden_sml_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 30,
@@ -1866,7 +1866,7 @@ object_building_player_city_shared_garden_dathomir_sml_01 = SharedInstallationOb
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/building/player/shared_player_city_garden_small.sfp",
@@ -1885,7 +1885,7 @@ ObjectTemplates:addClientTemplate(object_building_player_city_shared_garden_dath
 
 object_building_player_city_shared_garden_endor_lrg_01 = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/ply_nboo_garden_lrg_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 30,
@@ -1921,7 +1921,7 @@ object_building_player_city_shared_garden_endor_lrg_01 = SharedInstallationObjec
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/building/player/shared_player_city_garden_large.sfp",
@@ -1940,7 +1940,7 @@ ObjectTemplates:addClientTemplate(object_building_player_city_shared_garden_endo
 
 object_building_player_city_shared_garden_endor_med_01 = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/ply_nboo_garden_med_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 30,
@@ -1976,7 +1976,7 @@ object_building_player_city_shared_garden_endor_med_01 = SharedInstallationObjec
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/building/player/shared_player_city_garden_medium.sfp",
@@ -1995,7 +1995,7 @@ ObjectTemplates:addClientTemplate(object_building_player_city_shared_garden_endo
 
 object_building_player_city_shared_garden_endor_sml_01 = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/ply_nboo_garden_sml_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 30,
@@ -2031,7 +2031,7 @@ object_building_player_city_shared_garden_endor_sml_01 = SharedInstallationObjec
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/building/player/shared_player_city_garden_small.sfp",
@@ -2050,7 +2050,7 @@ ObjectTemplates:addClientTemplate(object_building_player_city_shared_garden_endo
 
 object_building_player_city_shared_garden_naboo_large = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/ply_nboo_garden_lrg_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 30,
@@ -2086,7 +2086,7 @@ object_building_player_city_shared_garden_naboo_large = SharedInstallationObject
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/building/player/shared_player_city_bank.sfp",
@@ -2105,7 +2105,7 @@ ObjectTemplates:addClientTemplate(object_building_player_city_shared_garden_nabo
 
 object_building_player_city_shared_garden_naboo_lrg_01 = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/ply_nboo_garden_lrg_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 30,
@@ -2141,7 +2141,7 @@ object_building_player_city_shared_garden_naboo_lrg_01 = SharedInstallationObjec
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/building/player/shared_player_city_garden_large.sfp",
@@ -2160,7 +2160,7 @@ ObjectTemplates:addClientTemplate(object_building_player_city_shared_garden_nabo
 
 object_building_player_city_shared_garden_naboo_lrg_02 = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/ply_nboo_garden_lrg_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 30,
@@ -2196,7 +2196,7 @@ object_building_player_city_shared_garden_naboo_lrg_02 = SharedInstallationObjec
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/building/player/shared_player_city_garden_large.sfp",
@@ -2215,7 +2215,7 @@ ObjectTemplates:addClientTemplate(object_building_player_city_shared_garden_nabo
 
 object_building_player_city_shared_garden_naboo_lrg_03 = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/ply_nboo_garden_lrg_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 30,
@@ -2251,7 +2251,7 @@ object_building_player_city_shared_garden_naboo_lrg_03 = SharedInstallationObjec
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/building/player/shared_player_city_garden_large.sfp",
@@ -2270,7 +2270,7 @@ ObjectTemplates:addClientTemplate(object_building_player_city_shared_garden_nabo
 
 object_building_player_city_shared_garden_naboo_lrg_04 = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/ply_nboo_garden_lrg_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 30,
@@ -2306,7 +2306,7 @@ object_building_player_city_shared_garden_naboo_lrg_04 = SharedInstallationObjec
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/building/player/shared_player_city_garden_large.sfp",
@@ -2325,7 +2325,7 @@ ObjectTemplates:addClientTemplate(object_building_player_city_shared_garden_nabo
 
 object_building_player_city_shared_garden_naboo_lrg_05 = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/ply_nboo_garden_lrg_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 30,
@@ -2361,7 +2361,7 @@ object_building_player_city_shared_garden_naboo_lrg_05 = SharedInstallationObjec
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/building/player/shared_player_city_garden_large.sfp",
@@ -2380,7 +2380,7 @@ ObjectTemplates:addClientTemplate(object_building_player_city_shared_garden_nabo
 
 object_building_player_city_shared_garden_naboo_med_01 = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/ply_nboo_garden_med_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 30,
@@ -2416,7 +2416,7 @@ object_building_player_city_shared_garden_naboo_med_01 = SharedInstallationObjec
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/building/player/shared_player_city_garden_medium.sfp",
@@ -2435,7 +2435,7 @@ ObjectTemplates:addClientTemplate(object_building_player_city_shared_garden_nabo
 
 object_building_player_city_shared_garden_naboo_med_02 = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/ply_nboo_garden_med_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 30,
@@ -2471,7 +2471,7 @@ object_building_player_city_shared_garden_naboo_med_02 = SharedInstallationObjec
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/building/player/shared_player_city_garden_medium.sfp",
@@ -2490,7 +2490,7 @@ ObjectTemplates:addClientTemplate(object_building_player_city_shared_garden_nabo
 
 object_building_player_city_shared_garden_naboo_med_03 = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/ply_nboo_garden_med_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 30,
@@ -2526,7 +2526,7 @@ object_building_player_city_shared_garden_naboo_med_03 = SharedInstallationObjec
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/building/player/shared_player_city_garden_medium.sfp",
@@ -2545,7 +2545,7 @@ ObjectTemplates:addClientTemplate(object_building_player_city_shared_garden_nabo
 
 object_building_player_city_shared_garden_naboo_med_04 = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/ply_nboo_garden_med_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 30,
@@ -2581,7 +2581,7 @@ object_building_player_city_shared_garden_naboo_med_04 = SharedInstallationObjec
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/building/player/shared_player_city_garden_medium.sfp",
@@ -2600,7 +2600,7 @@ ObjectTemplates:addClientTemplate(object_building_player_city_shared_garden_nabo
 
 object_building_player_city_shared_garden_naboo_med_05 = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/ply_nboo_garden_med_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 30,
@@ -2636,7 +2636,7 @@ object_building_player_city_shared_garden_naboo_med_05 = SharedInstallationObjec
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/building/player/shared_player_city_garden_medium.sfp",
@@ -2655,7 +2655,7 @@ ObjectTemplates:addClientTemplate(object_building_player_city_shared_garden_nabo
 
 object_building_player_city_shared_garden_naboo_sml_01 = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/ply_nboo_garden_sml_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 30,
@@ -2691,7 +2691,7 @@ object_building_player_city_shared_garden_naboo_sml_01 = SharedInstallationObjec
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/building/player/shared_player_city_garden_small.sfp",
@@ -2710,7 +2710,7 @@ ObjectTemplates:addClientTemplate(object_building_player_city_shared_garden_nabo
 
 object_building_player_city_shared_garden_naboo_sml_02 = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/ply_nboo_garden_sml_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 30,
@@ -2746,7 +2746,7 @@ object_building_player_city_shared_garden_naboo_sml_02 = SharedInstallationObjec
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/building/player/shared_player_city_garden_small.sfp",
@@ -2765,7 +2765,7 @@ ObjectTemplates:addClientTemplate(object_building_player_city_shared_garden_nabo
 
 object_building_player_city_shared_garden_naboo_sml_03 = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/ply_nboo_garden_sml_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 30,
@@ -2801,7 +2801,7 @@ object_building_player_city_shared_garden_naboo_sml_03 = SharedInstallationObjec
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/building/player/shared_player_city_garden_small.sfp",
@@ -2820,7 +2820,7 @@ ObjectTemplates:addClientTemplate(object_building_player_city_shared_garden_nabo
 
 object_building_player_city_shared_garden_naboo_sml_04 = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/ply_nboo_garden_sml_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 30,
@@ -2856,7 +2856,7 @@ object_building_player_city_shared_garden_naboo_sml_04 = SharedInstallationObjec
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/building/player/shared_player_city_garden_small.sfp",
@@ -2875,7 +2875,7 @@ ObjectTemplates:addClientTemplate(object_building_player_city_shared_garden_nabo
 
 object_building_player_city_shared_garden_naboo_sml_05 = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/ply_nboo_garden_sml_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 30,
@@ -2911,7 +2911,7 @@ object_building_player_city_shared_garden_naboo_sml_05 = SharedInstallationObjec
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/building/player/shared_player_city_garden_small.sfp",
@@ -2930,7 +2930,7 @@ ObjectTemplates:addClientTemplate(object_building_player_city_shared_garden_nabo
 
 object_building_player_city_shared_garden_tatooine_lrg_01 = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/ply_tato_garden_lrg_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 30,
@@ -2966,7 +2966,7 @@ object_building_player_city_shared_garden_tatooine_lrg_01 = SharedInstallationOb
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/building/player/shared_player_city_garden_large.sfp",
@@ -2985,7 +2985,7 @@ ObjectTemplates:addClientTemplate(object_building_player_city_shared_garden_tato
 
 object_building_player_city_shared_garden_tatooine_lrg_02 = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/ply_tato_garden_lrg_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 30,
@@ -3021,7 +3021,7 @@ object_building_player_city_shared_garden_tatooine_lrg_02 = SharedInstallationOb
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/building/player/shared_player_city_garden_large.sfp",
@@ -3040,7 +3040,7 @@ ObjectTemplates:addClientTemplate(object_building_player_city_shared_garden_tato
 
 object_building_player_city_shared_garden_tatooine_lrg_03 = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/ply_tato_garden_lrg_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 30,
@@ -3076,7 +3076,7 @@ object_building_player_city_shared_garden_tatooine_lrg_03 = SharedInstallationOb
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/building/player/shared_player_city_garden_large.sfp",
@@ -3095,7 +3095,7 @@ ObjectTemplates:addClientTemplate(object_building_player_city_shared_garden_tato
 
 object_building_player_city_shared_garden_tatooine_lrg_04 = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/ply_tato_garden_lrg_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 30,
@@ -3131,7 +3131,7 @@ object_building_player_city_shared_garden_tatooine_lrg_04 = SharedInstallationOb
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/building/player/shared_player_city_garden_large.sfp",
@@ -3150,7 +3150,7 @@ ObjectTemplates:addClientTemplate(object_building_player_city_shared_garden_tato
 
 object_building_player_city_shared_garden_tatooine_lrg_05 = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/ply_tato_garden_lrg_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 30,
@@ -3186,7 +3186,7 @@ object_building_player_city_shared_garden_tatooine_lrg_05 = SharedInstallationOb
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/building/player/shared_player_city_garden_large.sfp",
@@ -3205,7 +3205,7 @@ ObjectTemplates:addClientTemplate(object_building_player_city_shared_garden_tato
 
 object_building_player_city_shared_garden_tatooine_med_01 = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/ply_tato_garden_med_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 30,
@@ -3241,7 +3241,7 @@ object_building_player_city_shared_garden_tatooine_med_01 = SharedInstallationOb
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/building/player/shared_player_city_garden_medium.sfp",
@@ -3260,7 +3260,7 @@ ObjectTemplates:addClientTemplate(object_building_player_city_shared_garden_tato
 
 object_building_player_city_shared_garden_tatooine_med_02 = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/ply_tato_garden_med_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 30,
@@ -3296,7 +3296,7 @@ object_building_player_city_shared_garden_tatooine_med_02 = SharedInstallationOb
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/building/player/shared_player_city_garden_medium.sfp",
@@ -3315,7 +3315,7 @@ ObjectTemplates:addClientTemplate(object_building_player_city_shared_garden_tato
 
 object_building_player_city_shared_garden_tatooine_med_03 = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/ply_tato_garden_med_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 30,
@@ -3351,7 +3351,7 @@ object_building_player_city_shared_garden_tatooine_med_03 = SharedInstallationOb
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/building/player/shared_player_city_garden_medium.sfp",
@@ -3370,7 +3370,7 @@ ObjectTemplates:addClientTemplate(object_building_player_city_shared_garden_tato
 
 object_building_player_city_shared_garden_tatooine_med_04 = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/ply_tato_garden_med_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 30,
@@ -3406,7 +3406,7 @@ object_building_player_city_shared_garden_tatooine_med_04 = SharedInstallationOb
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/building/player/shared_player_city_garden_medium.sfp",
@@ -3425,7 +3425,7 @@ ObjectTemplates:addClientTemplate(object_building_player_city_shared_garden_tato
 
 object_building_player_city_shared_garden_tatooine_med_05 = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/ply_tato_garden_med_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 30,
@@ -3461,7 +3461,7 @@ object_building_player_city_shared_garden_tatooine_med_05 = SharedInstallationOb
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/building/player/shared_player_city_garden_medium.sfp",
@@ -3480,7 +3480,7 @@ ObjectTemplates:addClientTemplate(object_building_player_city_shared_garden_tato
 
 object_building_player_city_shared_garden_tatooine_sml_01 = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/ply_tato_garden_sml_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 30,
@@ -3516,7 +3516,7 @@ object_building_player_city_shared_garden_tatooine_sml_01 = SharedInstallationOb
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/building/player/shared_player_city_garden_small.sfp",
@@ -3535,7 +3535,7 @@ ObjectTemplates:addClientTemplate(object_building_player_city_shared_garden_tato
 
 object_building_player_city_shared_garden_tatooine_sml_02 = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/ply_tato_garden_sml_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 30,
@@ -3571,7 +3571,7 @@ object_building_player_city_shared_garden_tatooine_sml_02 = SharedInstallationOb
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/building/player/shared_player_city_garden_small.sfp",
@@ -3590,7 +3590,7 @@ ObjectTemplates:addClientTemplate(object_building_player_city_shared_garden_tato
 
 object_building_player_city_shared_garden_tatooine_sml_03 = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/ply_tato_garden_sml_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 30,
@@ -3626,7 +3626,7 @@ object_building_player_city_shared_garden_tatooine_sml_03 = SharedInstallationOb
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/building/player/shared_player_city_garden_small.sfp",
@@ -3645,7 +3645,7 @@ ObjectTemplates:addClientTemplate(object_building_player_city_shared_garden_tato
 
 object_building_player_city_shared_garden_tatooine_sml_04 = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/ply_tato_garden_sml_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 30,
@@ -3681,7 +3681,7 @@ object_building_player_city_shared_garden_tatooine_sml_04 = SharedInstallationOb
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/building/player/shared_player_city_garden_small.sfp",
@@ -3700,7 +3700,7 @@ ObjectTemplates:addClientTemplate(object_building_player_city_shared_garden_tato
 
 object_building_player_city_shared_garden_tatooine_sml_05 = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/ply_tato_garden_sml_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 30,
@@ -3736,7 +3736,7 @@ object_building_player_city_shared_garden_tatooine_sml_05 = SharedInstallationOb
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/building/player/shared_player_city_garden_small.sfp",
@@ -3755,7 +3755,7 @@ ObjectTemplates:addClientTemplate(object_building_player_city_shared_garden_tato
 
 object_building_player_city_shared_hospital_corellia = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 30,
@@ -3793,7 +3793,7 @@ object_building_player_city_shared_hospital_corellia = SharedBuildingObjectTempl
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/building/player/shared_player_city_hospital.sfp",
@@ -3813,7 +3813,7 @@ ObjectTemplates:addClientTemplate(object_building_player_city_shared_hospital_co
 
 object_building_player_city_shared_hospital_naboo = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 30,
@@ -3851,7 +3851,7 @@ object_building_player_city_shared_hospital_naboo = SharedBuildingObjectTemplate
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/building/player/shared_player_city_hospital.sfp",
@@ -3871,7 +3871,7 @@ ObjectTemplates:addClientTemplate(object_building_player_city_shared_hospital_na
 
 object_building_player_city_shared_hospital_tatooine = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 30,
@@ -3909,7 +3909,7 @@ object_building_player_city_shared_hospital_tatooine = SharedBuildingObjectTempl
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/building/player/shared_player_city_hospital.sfp",
@@ -3929,7 +3929,7 @@ ObjectTemplates:addClientTemplate(object_building_player_city_shared_hospital_ta
 
 object_building_player_city_shared_shuttleport_corellia = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/ply_corl_shuttleport_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 15,
@@ -3965,7 +3965,7 @@ object_building_player_city_shared_shuttleport_corellia = SharedInstallationObje
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/building/player/shared_player_city_shuttleport.sfp",
@@ -3984,7 +3984,7 @@ ObjectTemplates:addClientTemplate(object_building_player_city_shared_shuttleport
 
 object_building_player_city_shared_shuttleport_naboo = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/ply_nboo_shuttleport_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 15,
@@ -4020,7 +4020,7 @@ object_building_player_city_shared_shuttleport_naboo = SharedInstallationObjectT
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/building/player/shared_player_city_shuttleport.sfp",
@@ -4039,7 +4039,7 @@ ObjectTemplates:addClientTemplate(object_building_player_city_shared_shuttleport
 
 object_building_player_city_shared_shuttleport_tatooine = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/ply_tato_shuttleport_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 15,
@@ -4075,7 +4075,7 @@ object_building_player_city_shared_shuttleport_tatooine = SharedInstallationObje
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/building/player/shared_player_city_shuttleport.sfp",
@@ -4094,7 +4094,7 @@ ObjectTemplates:addClientTemplate(object_building_player_city_shared_shuttleport
 
 object_building_player_city_shared_theater_corellia = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 30,
@@ -4132,7 +4132,7 @@ object_building_player_city_shared_theater_corellia = SharedBuildingObjectTempla
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/building/player/shared_player_city_theater.sfp",
@@ -4152,7 +4152,7 @@ ObjectTemplates:addClientTemplate(object_building_player_city_shared_theater_cor
 
 object_building_player_city_shared_theater_naboo = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 30,
@@ -4190,7 +4190,7 @@ object_building_player_city_shared_theater_naboo = SharedBuildingObjectTemplate:
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/building/player/shared_player_city_theater.sfp",
@@ -4210,7 +4210,7 @@ ObjectTemplates:addClientTemplate(object_building_player_city_shared_theater_nab
 
 object_building_player_city_shared_theater_tatooine = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 30,
@@ -4248,7 +4248,7 @@ object_building_player_city_shared_theater_tatooine = SharedBuildingObjectTempla
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/building/player/shared_player_city_theater.sfp",

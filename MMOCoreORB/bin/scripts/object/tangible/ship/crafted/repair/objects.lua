@@ -43,7 +43,7 @@
 
 object_tangible_ship_crafted_repair_shared_repair_kit_armor = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_repair_buildings.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -79,7 +79,7 @@ object_tangible_ship_crafted_repair_shared_repair_kit_armor = SharedTangibleObje
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -98,7 +98,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_repair_shared_rep
 
 object_tangible_ship_crafted_repair_shared_repair_kit_base = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_lightsaber_crafting_kit.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -134,7 +134,7 @@ object_tangible_ship_crafted_repair_shared_repair_kit_base = SharedTangibleObjec
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -153,7 +153,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_repair_shared_rep
 
 object_tangible_ship_crafted_repair_shared_repair_kit_booster = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_repair_buildings.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -189,7 +189,7 @@ object_tangible_ship_crafted_repair_shared_repair_kit_booster = SharedTangibleOb
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -208,7 +208,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_repair_shared_rep
 
 object_tangible_ship_crafted_repair_shared_repair_kit_chassis = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_repair_buildings.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -244,7 +244,7 @@ object_tangible_ship_crafted_repair_shared_repair_kit_chassis = SharedTangibleOb
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -263,7 +263,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_repair_shared_rep
 
 object_tangible_ship_crafted_repair_shared_repair_kit_droid_interface = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_repair_buildings.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -299,7 +299,7 @@ object_tangible_ship_crafted_repair_shared_repair_kit_droid_interface = SharedTa
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -318,7 +318,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_repair_shared_rep
 
 object_tangible_ship_crafted_repair_shared_repair_kit_engine = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_repair_buildings.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -354,7 +354,7 @@ object_tangible_ship_crafted_repair_shared_repair_kit_engine = SharedTangibleObj
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -373,7 +373,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_repair_shared_rep
 
 object_tangible_ship_crafted_repair_shared_repair_kit_hull = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_repair_buildings.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -409,7 +409,7 @@ object_tangible_ship_crafted_repair_shared_repair_kit_hull = SharedTangibleObjec
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -428,7 +428,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_repair_shared_rep
 
 object_tangible_ship_crafted_repair_shared_repair_kit_plasma_conduit = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_repair_buildings.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -464,7 +464,7 @@ object_tangible_ship_crafted_repair_shared_repair_kit_plasma_conduit = SharedTan
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -483,7 +483,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_repair_shared_rep
 
 object_tangible_ship_crafted_repair_shared_repair_kit_reactor = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_repair_buildings.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -519,7 +519,7 @@ object_tangible_ship_crafted_repair_shared_repair_kit_reactor = SharedTangibleOb
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -538,7 +538,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_repair_shared_rep
 
 object_tangible_ship_crafted_repair_shared_repair_kit_shield_generator = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_repair_buildings.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -574,7 +574,7 @@ object_tangible_ship_crafted_repair_shared_repair_kit_shield_generator = SharedT
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -593,7 +593,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_repair_shared_rep
 
 object_tangible_ship_crafted_repair_shared_repair_kit_ship = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_repair_buildings.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -629,7 +629,7 @@ object_tangible_ship_crafted_repair_shared_repair_kit_ship = SharedTangibleObjec
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -648,7 +648,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_repair_shared_rep
 
 object_tangible_ship_crafted_repair_shared_repair_kit_weapon = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_repair_buildings.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -684,7 +684,7 @@ object_tangible_ship_crafted_repair_shared_repair_kit_weapon = SharedTangibleObj
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -703,7 +703,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_repair_shared_rep
 
 object_tangible_ship_crafted_repair_shared_repair_kit_weapon_capacitor = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_repair_buildings.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -739,7 +739,7 @@ object_tangible_ship_crafted_repair_shared_repair_kit_weapon_capacitor = SharedT
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",

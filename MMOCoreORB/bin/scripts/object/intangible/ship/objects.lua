@@ -43,7 +43,7 @@
 
 object_intangible_ship_shared_awing_pcd = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/awing_body.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientData/ship/pcd/client_shared_awing_pcd.cdf",
@@ -74,7 +74,7 @@ object_intangible_ship_shared_awing_pcd = SharedIntangibleObjectTemplate:new {
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"ship_control_device"},
+	slotDescriptorFilename = "abstract/slot/descriptor/ship_control_device.iff",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -88,7 +88,7 @@ ObjectTemplates:addClientTemplate(object_intangible_ship_shared_awing_pcd, "obje
 
 object_intangible_ship_shared_basic_hutt_light_pcd = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/hutt_fighter_light_body_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientData/ship/client_shared_hutt_light_s01.cdf",
@@ -119,7 +119,7 @@ object_intangible_ship_shared_basic_hutt_light_pcd = SharedIntangibleObjectTempl
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"ship_control_device"},
+	slotDescriptorFilename = "abstract/slot/descriptor/ship_control_device.iff",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -133,7 +133,7 @@ ObjectTemplates:addClientTemplate(object_intangible_ship_shared_basic_hutt_light
 
 object_intangible_ship_shared_basic_tiefighter_pcd = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/tie_fighter.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -164,7 +164,7 @@ object_intangible_ship_shared_basic_tiefighter_pcd = SharedIntangibleObjectTempl
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"ship_control_device"},
+	slotDescriptorFilename = "abstract/slot/descriptor/ship_control_device.iff",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -178,7 +178,7 @@ ObjectTemplates:addClientTemplate(object_intangible_ship_shared_basic_tiefighter
 
 object_intangible_ship_shared_basic_z95_pcd = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/z95_body.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -209,7 +209,7 @@ object_intangible_ship_shared_basic_z95_pcd = SharedIntangibleObjectTemplate:new
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"ship_control_device"},
+	slotDescriptorFilename = "abstract/slot/descriptor/ship_control_device.iff",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -223,7 +223,7 @@ ObjectTemplates:addClientTemplate(object_intangible_ship_shared_basic_z95_pcd, "
 
 object_intangible_ship_shared_blacksun_heavy_s01_pcd = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_heavy_body_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientData/ship/pcd/client_shared_blacksun_heavy_pcd_s01.cdf",
@@ -254,7 +254,7 @@ object_intangible_ship_shared_blacksun_heavy_s01_pcd = SharedIntangibleObjectTem
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"ship_control_device"},
+	slotDescriptorFilename = "abstract/slot/descriptor/ship_control_device.iff",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -268,7 +268,7 @@ ObjectTemplates:addClientTemplate(object_intangible_ship_shared_blacksun_heavy_s
 
 object_intangible_ship_shared_blacksun_heavy_s02_pcd = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_heavy_body_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientData/ship/pcd/client_shared_blacksun_heavy_pcd_s02.cdf",
@@ -299,7 +299,7 @@ object_intangible_ship_shared_blacksun_heavy_s02_pcd = SharedIntangibleObjectTem
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"ship_control_device"},
+	slotDescriptorFilename = "abstract/slot/descriptor/ship_control_device.iff",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -313,7 +313,7 @@ ObjectTemplates:addClientTemplate(object_intangible_ship_shared_blacksun_heavy_s
 
 object_intangible_ship_shared_blacksun_heavy_s03_pcd = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_heavy_body_s02.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientData/ship/pcd/client_shared_blacksun_heavy_pcd_s03.cdf",
@@ -344,7 +344,7 @@ object_intangible_ship_shared_blacksun_heavy_s03_pcd = SharedIntangibleObjectTem
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"ship_control_device"},
+	slotDescriptorFilename = "abstract/slot/descriptor/ship_control_device.iff",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -358,7 +358,7 @@ ObjectTemplates:addClientTemplate(object_intangible_ship_shared_blacksun_heavy_s
 
 object_intangible_ship_shared_blacksun_heavy_s04_pcd = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_heavy_body_s02.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientData/ship/pcd/client_shared_blacksun_heavy_pcd_s04.cdf",
@@ -389,7 +389,7 @@ object_intangible_ship_shared_blacksun_heavy_s04_pcd = SharedIntangibleObjectTem
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"ship_control_device"},
+	slotDescriptorFilename = "abstract/slot/descriptor/ship_control_device.iff",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -403,7 +403,7 @@ ObjectTemplates:addClientTemplate(object_intangible_ship_shared_blacksun_heavy_s
 
 object_intangible_ship_shared_blacksun_light_s01_pcd = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_light_body_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientData/ship/pcd/client_shared_blacksun_light_pcd_s01.cdf",
@@ -434,7 +434,7 @@ object_intangible_ship_shared_blacksun_light_s01_pcd = SharedIntangibleObjectTem
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"ship_control_device"},
+	slotDescriptorFilename = "abstract/slot/descriptor/ship_control_device.iff",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -448,7 +448,7 @@ ObjectTemplates:addClientTemplate(object_intangible_ship_shared_blacksun_light_s
 
 object_intangible_ship_shared_blacksun_light_s02_pcd = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_light_body_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientData/ship/pcd/client_shared_blacksun_light_pcd_s02.cdf",
@@ -479,7 +479,7 @@ object_intangible_ship_shared_blacksun_light_s02_pcd = SharedIntangibleObjectTem
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"ship_control_device"},
+	slotDescriptorFilename = "abstract/slot/descriptor/ship_control_device.iff",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -493,7 +493,7 @@ ObjectTemplates:addClientTemplate(object_intangible_ship_shared_blacksun_light_s
 
 object_intangible_ship_shared_blacksun_light_s03_pcd = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_light_body_s02.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientData/ship/pcd/client_shared_blacksun_light_pcd_s01.cdf",
@@ -524,7 +524,7 @@ object_intangible_ship_shared_blacksun_light_s03_pcd = SharedIntangibleObjectTem
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"ship_control_device"},
+	slotDescriptorFilename = "abstract/slot/descriptor/ship_control_device.iff",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -538,7 +538,7 @@ ObjectTemplates:addClientTemplate(object_intangible_ship_shared_blacksun_light_s
 
 object_intangible_ship_shared_blacksun_light_s04_pcd = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_light_body_s02.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientData/ship/pcd/client_shared_blacksun_light_pcd_s02.cdf",
@@ -569,7 +569,7 @@ object_intangible_ship_shared_blacksun_light_s04_pcd = SharedIntangibleObjectTem
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"ship_control_device"},
+	slotDescriptorFilename = "abstract/slot/descriptor/ship_control_device.iff",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -583,7 +583,7 @@ ObjectTemplates:addClientTemplate(object_intangible_ship_shared_blacksun_light_s
 
 object_intangible_ship_shared_blacksun_medium_s01_pcd = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_medium_body_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientData/ship/pcd/client_shared_blacksun_medium_pcd_s01.cdf",
@@ -614,7 +614,7 @@ object_intangible_ship_shared_blacksun_medium_s01_pcd = SharedIntangibleObjectTe
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"ship_control_device"},
+	slotDescriptorFilename = "abstract/slot/descriptor/ship_control_device.iff",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -628,7 +628,7 @@ ObjectTemplates:addClientTemplate(object_intangible_ship_shared_blacksun_medium_
 
 object_intangible_ship_shared_blacksun_medium_s02_pcd = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_medium_body_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientData/ship/pcd/client_shared_blacksun_medium_pcd_s02.cdf",
@@ -659,7 +659,7 @@ object_intangible_ship_shared_blacksun_medium_s02_pcd = SharedIntangibleObjectTe
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"ship_control_device"},
+	slotDescriptorFilename = "abstract/slot/descriptor/ship_control_device.iff",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -673,7 +673,7 @@ ObjectTemplates:addClientTemplate(object_intangible_ship_shared_blacksun_medium_
 
 object_intangible_ship_shared_blacksun_medium_s03_pcd = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_medium_body_s02.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientData/ship/pcd/client_shared_blacksun_medium_pcd_s01.cdf",
@@ -704,7 +704,7 @@ object_intangible_ship_shared_blacksun_medium_s03_pcd = SharedIntangibleObjectTe
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"ship_control_device"},
+	slotDescriptorFilename = "abstract/slot/descriptor/ship_control_device.iff",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -718,7 +718,7 @@ ObjectTemplates:addClientTemplate(object_intangible_ship_shared_blacksun_medium_
 
 object_intangible_ship_shared_blacksun_medium_s04_pcd = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_medium_body_s02.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientData/ship/pcd/client_shared_blacksun_medium_pcd_s02.cdf",
@@ -749,7 +749,7 @@ object_intangible_ship_shared_blacksun_medium_s04_pcd = SharedIntangibleObjectTe
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"ship_control_device"},
+	slotDescriptorFilename = "abstract/slot/descriptor/ship_control_device.iff",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -763,7 +763,7 @@ ObjectTemplates:addClientTemplate(object_intangible_ship_shared_blacksun_medium_
 
 object_intangible_ship_shared_bwing_pcd = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/bwing_cockpit_pod.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientData/ship/pcd/client_shared_bwing_pcd.cdf",
@@ -794,7 +794,7 @@ object_intangible_ship_shared_bwing_pcd = SharedIntangibleObjectTemplate:new {
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"ship_control_device"},
+	slotDescriptorFilename = "abstract/slot/descriptor/ship_control_device.iff",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -808,7 +808,7 @@ ObjectTemplates:addClientTemplate(object_intangible_ship_shared_bwing_pcd, "obje
 
 object_intangible_ship_shared_decimator_pcd = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/vt49_npc.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientData/ship/pcd/client_shared_decimator_pcd.cdf",
@@ -839,7 +839,7 @@ object_intangible_ship_shared_decimator_pcd = SharedIntangibleObjectTemplate:new
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"ship_control_device"},
+	slotDescriptorFilename = "abstract/slot/descriptor/ship_control_device.iff",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -853,7 +853,7 @@ ObjectTemplates:addClientTemplate(object_intangible_ship_shared_decimator_pcd, "
 
 object_intangible_ship_shared_firespray_pcd = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/kse_firespray_body.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientData/ship/pcd/client_shared_firespray_pcd.cdf",
@@ -884,7 +884,7 @@ object_intangible_ship_shared_firespray_pcd = SharedIntangibleObjectTemplate:new
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"ship_control_device"},
+	slotDescriptorFilename = "abstract/slot/descriptor/ship_control_device.iff",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -898,7 +898,7 @@ ObjectTemplates:addClientTemplate(object_intangible_ship_shared_firespray_pcd, "
 
 object_intangible_ship_shared_hutt_heavy_s01_pcd = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/hutt_fighter_heavy_body_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientData/ship/pcd/client_shared_hutt_heavy_pcd_s01.cdf",
@@ -929,7 +929,7 @@ object_intangible_ship_shared_hutt_heavy_s01_pcd = SharedIntangibleObjectTemplat
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"ship_control_device"},
+	slotDescriptorFilename = "abstract/slot/descriptor/ship_control_device.iff",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -943,7 +943,7 @@ ObjectTemplates:addClientTemplate(object_intangible_ship_shared_hutt_heavy_s01_p
 
 object_intangible_ship_shared_hutt_heavy_s02_pcd = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/hutt_fighter_heavy_body_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientData/ship/pcd/client_shared_hutt_heavy_pcd_s02.cdf",
@@ -974,7 +974,7 @@ object_intangible_ship_shared_hutt_heavy_s02_pcd = SharedIntangibleObjectTemplat
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"ship_control_device"},
+	slotDescriptorFilename = "abstract/slot/descriptor/ship_control_device.iff",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -988,7 +988,7 @@ ObjectTemplates:addClientTemplate(object_intangible_ship_shared_hutt_heavy_s02_p
 
 object_intangible_ship_shared_hutt_light_s01_pcd = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/hutt_fighter_light_body_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientData/ship/pcd/client_shared_hutt_light_pcd_s01.cdf",
@@ -1019,7 +1019,7 @@ object_intangible_ship_shared_hutt_light_s01_pcd = SharedIntangibleObjectTemplat
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"ship_control_device"},
+	slotDescriptorFilename = "abstract/slot/descriptor/ship_control_device.iff",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -1033,7 +1033,7 @@ ObjectTemplates:addClientTemplate(object_intangible_ship_shared_hutt_light_s01_p
 
 object_intangible_ship_shared_hutt_light_s02_pcd = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/hutt_fighter_light_body_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientData/ship/pcd/client_shared_hutt_light_pcd_s02.cdf",
@@ -1064,7 +1064,7 @@ object_intangible_ship_shared_hutt_light_s02_pcd = SharedIntangibleObjectTemplat
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"ship_control_device"},
+	slotDescriptorFilename = "abstract/slot/descriptor/ship_control_device.iff",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -1078,7 +1078,7 @@ ObjectTemplates:addClientTemplate(object_intangible_ship_shared_hutt_light_s02_p
 
 object_intangible_ship_shared_hutt_medium_s01_pcd = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/hutt_fighter_medium_body_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientData/ship/pcd/client_shared_hutt_medium_pcd_s01.cdf",
@@ -1109,7 +1109,7 @@ object_intangible_ship_shared_hutt_medium_s01_pcd = SharedIntangibleObjectTempla
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"ship_control_device"},
+	slotDescriptorFilename = "abstract/slot/descriptor/ship_control_device.iff",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -1123,7 +1123,7 @@ ObjectTemplates:addClientTemplate(object_intangible_ship_shared_hutt_medium_s01_
 
 object_intangible_ship_shared_hutt_medium_s02_pcd = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/hutt_fighter_medium_body_s02.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientData/ship/pcd/client_shared_hutt_medium_pcd_s02.cdf",
@@ -1154,7 +1154,7 @@ object_intangible_ship_shared_hutt_medium_s02_pcd = SharedIntangibleObjectTempla
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"ship_control_device"},
+	slotDescriptorFilename = "abstract/slot/descriptor/ship_control_device.iff",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -1168,7 +1168,7 @@ ObjectTemplates:addClientTemplate(object_intangible_ship_shared_hutt_medium_s02_
 
 object_intangible_ship_shared_hutt_turret_ship_pcd = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/hutt_fighter_heavy_body_s03.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientData/ship/pcd/client_shared_hutt_turret_ship.cdf",
@@ -1199,7 +1199,7 @@ object_intangible_ship_shared_hutt_turret_ship_pcd = SharedIntangibleObjectTempl
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"ship_control_device"},
+	slotDescriptorFilename = "abstract/slot/descriptor/ship_control_device.iff",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -1213,7 +1213,7 @@ ObjectTemplates:addClientTemplate(object_intangible_ship_shared_hutt_turret_ship
 
 object_intangible_ship_shared_navicomputer_1 = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1244,7 +1244,7 @@ object_intangible_ship_shared_navicomputer_1 = SharedIntangibleObjectTemplate:ne
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"inventory", "datapad"},
+	slotDescriptorFilename = "abstract/slot/descriptor/droid.iff",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -1258,7 +1258,7 @@ ObjectTemplates:addClientTemplate(object_intangible_ship_shared_navicomputer_1, 
 
 object_intangible_ship_shared_navicomputer_2 = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1289,7 +1289,7 @@ object_intangible_ship_shared_navicomputer_2 = SharedIntangibleObjectTemplate:ne
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"inventory", "datapad"},
+	slotDescriptorFilename = "abstract/slot/descriptor/droid.iff",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -1303,7 +1303,7 @@ ObjectTemplates:addClientTemplate(object_intangible_ship_shared_navicomputer_2, 
 
 object_intangible_ship_shared_navicomputer_3 = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1334,7 +1334,7 @@ object_intangible_ship_shared_navicomputer_3 = SharedIntangibleObjectTemplate:ne
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"inventory", "datapad"},
+	slotDescriptorFilename = "abstract/slot/descriptor/droid.iff",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -1348,7 +1348,7 @@ ObjectTemplates:addClientTemplate(object_intangible_ship_shared_navicomputer_3, 
 
 object_intangible_ship_shared_navicomputer_4 = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1379,7 +1379,7 @@ object_intangible_ship_shared_navicomputer_4 = SharedIntangibleObjectTemplate:ne
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"inventory", "datapad"},
+	slotDescriptorFilename = "abstract/slot/descriptor/droid.iff",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -1393,7 +1393,7 @@ ObjectTemplates:addClientTemplate(object_intangible_ship_shared_navicomputer_4, 
 
 object_intangible_ship_shared_navicomputer_5 = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1424,7 +1424,7 @@ object_intangible_ship_shared_navicomputer_5 = SharedIntangibleObjectTemplate:ne
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"inventory", "datapad"},
+	slotDescriptorFilename = "abstract/slot/descriptor/droid.iff",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -1438,7 +1438,7 @@ ObjectTemplates:addClientTemplate(object_intangible_ship_shared_navicomputer_5, 
 
 object_intangible_ship_shared_navicomputer_6 = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1469,7 +1469,7 @@ object_intangible_ship_shared_navicomputer_6 = SharedIntangibleObjectTemplate:ne
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"inventory", "datapad"},
+	slotDescriptorFilename = "abstract/slot/descriptor/droid.iff",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -1483,7 +1483,7 @@ ObjectTemplates:addClientTemplate(object_intangible_ship_shared_navicomputer_6, 
 
 object_intangible_ship_shared_navicomputer_base = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1514,7 +1514,7 @@ object_intangible_ship_shared_navicomputer_base = SharedIntangibleObjectTemplate
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"inventory", "datapad"},
+	slotDescriptorFilename = "abstract/slot/descriptor/droid.iff",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -1528,7 +1528,7 @@ ObjectTemplates:addClientTemplate(object_intangible_ship_shared_navicomputer_bas
 
 object_intangible_ship_shared_prototype_hutt_light_pcd = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/hutt_fighter_light_body_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientData/ship/client_shared_hutt_light_s01.cdf",
@@ -1559,7 +1559,7 @@ object_intangible_ship_shared_prototype_hutt_light_pcd = SharedIntangibleObjectT
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"ship_control_device"},
+	slotDescriptorFilename = "abstract/slot/descriptor/ship_control_device.iff",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -1573,7 +1573,7 @@ ObjectTemplates:addClientTemplate(object_intangible_ship_shared_prototype_hutt_l
 
 object_intangible_ship_shared_prototype_tiefighter_pcd = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/tie_fighter.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1604,7 +1604,7 @@ object_intangible_ship_shared_prototype_tiefighter_pcd = SharedIntangibleObjectT
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"ship_control_device"},
+	slotDescriptorFilename = "abstract/slot/descriptor/ship_control_device.iff",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -1618,7 +1618,7 @@ ObjectTemplates:addClientTemplate(object_intangible_ship_shared_prototype_tiefig
 
 object_intangible_ship_shared_prototype_z95_pcd = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/z95_body.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1649,7 +1649,7 @@ object_intangible_ship_shared_prototype_z95_pcd = SharedIntangibleObjectTemplate
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"ship_control_device"},
+	slotDescriptorFilename = "abstract/slot/descriptor/ship_control_device.iff",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -1663,7 +1663,7 @@ ObjectTemplates:addClientTemplate(object_intangible_ship_shared_prototype_z95_pc
 
 object_intangible_ship_shared_sorosuub_space_yacht_pcd = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/sorosuub_space_yacht_npc.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1694,7 +1694,7 @@ object_intangible_ship_shared_sorosuub_space_yacht_pcd = SharedIntangibleObjectT
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"ship_control_device"},
+	slotDescriptorFilename = "abstract/slot/descriptor/ship_control_device.iff",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -1708,7 +1708,7 @@ ObjectTemplates:addClientTemplate(object_intangible_ship_shared_sorosuub_space_y
 
 object_intangible_ship_shared_tie_in_pcd = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/tie_fighter.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1739,7 +1739,7 @@ object_intangible_ship_shared_tie_in_pcd = SharedIntangibleObjectTemplate:new {
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"ship_control_device"},
+	slotDescriptorFilename = "abstract/slot/descriptor/ship_control_device.iff",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -1753,7 +1753,7 @@ ObjectTemplates:addClientTemplate(object_intangible_ship_shared_tie_in_pcd, "obj
 
 object_intangible_ship_shared_tie_light_duty_pcd = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/tie_fighter.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1784,7 +1784,7 @@ object_intangible_ship_shared_tie_light_duty_pcd = SharedIntangibleObjectTemplat
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"ship_control_device"},
+	slotDescriptorFilename = "abstract/slot/descriptor/ship_control_device.iff",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -1798,7 +1798,7 @@ ObjectTemplates:addClientTemplate(object_intangible_ship_shared_tie_light_duty_p
 
 object_intangible_ship_shared_tieadvanced_pcd = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/tie_advanced.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1829,7 +1829,7 @@ object_intangible_ship_shared_tieadvanced_pcd = SharedIntangibleObjectTemplate:n
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"ship_control_device"},
+	slotDescriptorFilename = "abstract/slot/descriptor/ship_control_device.iff",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -1843,7 +1843,7 @@ ObjectTemplates:addClientTemplate(object_intangible_ship_shared_tieadvanced_pcd,
 
 object_intangible_ship_shared_tieaggressor_pcd = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/tie_aggressor.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1874,7 +1874,7 @@ object_intangible_ship_shared_tieaggressor_pcd = SharedIntangibleObjectTemplate:
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"ship_control_device"},
+	slotDescriptorFilename = "abstract/slot/descriptor/ship_control_device.iff",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -1888,7 +1888,7 @@ ObjectTemplates:addClientTemplate(object_intangible_ship_shared_tieaggressor_pcd
 
 object_intangible_ship_shared_tiebomber_pcd = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/tie_bomber_b.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1919,7 +1919,7 @@ object_intangible_ship_shared_tiebomber_pcd = SharedIntangibleObjectTemplate:new
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"ship_control_device"},
+	slotDescriptorFilename = "abstract/slot/descriptor/ship_control_device.iff",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -1933,7 +1933,7 @@ ObjectTemplates:addClientTemplate(object_intangible_ship_shared_tiebomber_pcd, "
 
 object_intangible_ship_shared_tiefighter_pcd = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/tie_fighter.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1964,7 +1964,7 @@ object_intangible_ship_shared_tiefighter_pcd = SharedIntangibleObjectTemplate:ne
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"ship_control_device"},
+	slotDescriptorFilename = "abstract/slot/descriptor/ship_control_device.iff",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -1978,7 +1978,7 @@ ObjectTemplates:addClientTemplate(object_intangible_ship_shared_tiefighter_pcd, 
 
 object_intangible_ship_shared_tieinterceptor_pcd = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/tie_interceptor.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -2009,7 +2009,7 @@ object_intangible_ship_shared_tieinterceptor_pcd = SharedIntangibleObjectTemplat
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"ship_control_device"},
+	slotDescriptorFilename = "abstract/slot/descriptor/ship_control_device.iff",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -2023,7 +2023,7 @@ ObjectTemplates:addClientTemplate(object_intangible_ship_shared_tieinterceptor_p
 
 object_intangible_ship_shared_tieoppressor_pcd = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/tie_oppressor.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -2054,7 +2054,7 @@ object_intangible_ship_shared_tieoppressor_pcd = SharedIntangibleObjectTemplate:
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"ship_control_device"},
+	slotDescriptorFilename = "abstract/slot/descriptor/ship_control_device.iff",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -2068,7 +2068,7 @@ ObjectTemplates:addClientTemplate(object_intangible_ship_shared_tieoppressor_pcd
 
 object_intangible_ship_shared_xwing_pcd = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/xwing_body.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientData/ship/pcd/client_shared_xwing_pcd.cdf",
@@ -2099,7 +2099,7 @@ object_intangible_ship_shared_xwing_pcd = SharedIntangibleObjectTemplate:new {
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"ship_control_device"},
+	slotDescriptorFilename = "abstract/slot/descriptor/ship_control_device.iff",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -2113,7 +2113,7 @@ ObjectTemplates:addClientTemplate(object_intangible_ship_shared_xwing_pcd, "obje
 
 object_intangible_ship_shared_ykl37r_pcd = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ykl37r_npc.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientData/ship/pcd/client_shared_ykl37r_pcd.cdf",
@@ -2144,7 +2144,7 @@ object_intangible_ship_shared_ykl37r_pcd = SharedIntangibleObjectTemplate:new {
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"ship_control_device"},
+	slotDescriptorFilename = "abstract/slot/descriptor/ship_control_device.iff",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -2158,7 +2158,7 @@ ObjectTemplates:addClientTemplate(object_intangible_ship_shared_ykl37r_pcd, "obj
 
 object_intangible_ship_shared_yt1300_pcd = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/yt1300_r0.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientData/ship/pcd/client_shared_yt1300_pcd.cdf",
@@ -2189,7 +2189,7 @@ object_intangible_ship_shared_yt1300_pcd = SharedIntangibleObjectTemplate:new {
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"ship_control_device"},
+	slotDescriptorFilename = "abstract/slot/descriptor/ship_control_device.iff",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -2203,7 +2203,7 @@ ObjectTemplates:addClientTemplate(object_intangible_ship_shared_yt1300_pcd, "obj
 
 object_intangible_ship_shared_ywing_longprobe_pcd = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ywing_body.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientData/ship/pcd/client_shared_ywing_pcd.cdf",
@@ -2234,7 +2234,7 @@ object_intangible_ship_shared_ywing_longprobe_pcd = SharedIntangibleObjectTempla
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"ship_control_device"},
+	slotDescriptorFilename = "abstract/slot/descriptor/ship_control_device.iff",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -2248,7 +2248,7 @@ ObjectTemplates:addClientTemplate(object_intangible_ship_shared_ywing_longprobe_
 
 object_intangible_ship_shared_ywing_pcd = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ywing_body.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientData/ship/pcd/client_shared_ywing_pcd.cdf",
@@ -2279,7 +2279,7 @@ object_intangible_ship_shared_ywing_pcd = SharedIntangibleObjectTemplate:new {
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"ship_control_device"},
+	slotDescriptorFilename = "abstract/slot/descriptor/ship_control_device.iff",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -2293,7 +2293,7 @@ ObjectTemplates:addClientTemplate(object_intangible_ship_shared_ywing_pcd, "obje
 
 object_intangible_ship_shared_z95_pcd = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/z95_body.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientData/ship/pcd/client_shared_z95_pcd.cdf",
@@ -2324,7 +2324,7 @@ object_intangible_ship_shared_z95_pcd = SharedIntangibleObjectTemplate:new {
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"ship_control_device"},
+	slotDescriptorFilename = "abstract/slot/descriptor/ship_control_device.iff",
 	snapToTerrain = 0,
 	surfaceType = 0,
 

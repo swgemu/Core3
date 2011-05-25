@@ -43,7 +43,7 @@
 
 object_weapon_melee_sword_shared_bestine_quest_sword = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_sword_junti_mace.apt",
-	arrangementDescriptors = {"hold_r"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hold_r.iff",
 	attackType = 1,
 
 	certificationsRequired = {},
@@ -80,7 +80,7 @@ object_weapon_melee_sword_shared_bestine_quest_sword = SharedWeaponObjectTemplat
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"default_weapon_ammo_slot", "crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/default_weapon.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -102,7 +102,7 @@ ObjectTemplates:addClientTemplate(object_weapon_melee_sword_shared_bestine_quest
 
 object_weapon_melee_sword_shared_sword_01 = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_sword_s01.apt",
-	arrangementDescriptors = {"hold_r"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hold_r.iff",
 	attackType = 1,
 
 	certificationsRequired = {},
@@ -139,7 +139,7 @@ object_weapon_melee_sword_shared_sword_01 = SharedWeaponObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"default_weapon_ammo_slot", "crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/default_weapon.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -161,7 +161,7 @@ ObjectTemplates:addClientTemplate(object_weapon_melee_sword_shared_sword_01, "ob
 
 object_weapon_melee_sword_shared_sword_01_noob = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_sword_s01.apt",
-	arrangementDescriptors = {"hold_r"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hold_r.iff",
 	attackType = 1,
 
 	certificationsRequired = {},
@@ -198,7 +198,7 @@ object_weapon_melee_sword_shared_sword_01_noob = SharedWeaponObjectTemplate:new 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"default_weapon_ammo_slot", "crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/default_weapon.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -220,7 +220,7 @@ ObjectTemplates:addClientTemplate(object_weapon_melee_sword_shared_sword_01_noob
 
 object_weapon_melee_sword_shared_sword_02 = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_sword_s02.apt",
-	arrangementDescriptors = {"hold_r"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hold_r.iff",
 	attackType = 1,
 
 	certificationsRequired = {},
@@ -257,7 +257,7 @@ object_weapon_melee_sword_shared_sword_02 = SharedWeaponObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"default_weapon_ammo_slot", "crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/default_weapon.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -279,7 +279,7 @@ ObjectTemplates:addClientTemplate(object_weapon_melee_sword_shared_sword_02, "ob
 
 object_weapon_melee_sword_shared_sword_blade_ryyk = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_sword_ryyk_blade.apt",
-	arrangementDescriptors = {"hold_r"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hold_r.iff",
 	attackType = 1,
 
 	certificationsRequired = {},
@@ -316,7 +316,7 @@ object_weapon_melee_sword_shared_sword_blade_ryyk = SharedWeaponObjectTemplate:n
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"default_weapon_ammo_slot", "crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/default_weapon.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -338,7 +338,7 @@ ObjectTemplates:addClientTemplate(object_weapon_melee_sword_shared_sword_blade_r
 
 object_weapon_melee_sword_shared_sword_curved_nyax = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_sword_s02.apt",
-	arrangementDescriptors = {"hold_r"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hold_r.iff",
 	attackType = 1,
 
 	certificationsRequired = {},
@@ -375,7 +375,7 @@ object_weapon_melee_sword_shared_sword_curved_nyax = SharedWeaponObjectTemplate:
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"default_weapon_ammo_slot", "crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/default_weapon.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -397,7 +397,7 @@ ObjectTemplates:addClientTemplate(object_weapon_melee_sword_shared_sword_curved_
 
 object_weapon_melee_sword_shared_sword_lightsaber_anakin = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_lightsaber_blade_anakin.lsb",
-	arrangementDescriptors = {"hold_r", "hold_l"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hold_both.iff",
 	attackType = 1,
 
 	certificationsRequired = {},
@@ -434,7 +434,7 @@ object_weapon_melee_sword_shared_sword_lightsaber_anakin = SharedWeaponObjectTem
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"default_weapon_ammo_slot", "crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/default_weapon.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -456,7 +456,7 @@ ObjectTemplates:addClientTemplate(object_weapon_melee_sword_shared_sword_lightsa
 
 object_weapon_melee_sword_shared_sword_lightsaber_andael = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_lightsaber_blade_andael.lsb",
-	arrangementDescriptors = {"hold_r", "hold_l"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hold_both.iff",
 	attackType = 1,
 
 	certificationsRequired = {},
@@ -493,7 +493,7 @@ object_weapon_melee_sword_shared_sword_lightsaber_andael = SharedWeaponObjectTem
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"default_weapon_ammo_slot", "crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/default_weapon.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -515,7 +515,7 @@ ObjectTemplates:addClientTemplate(object_weapon_melee_sword_shared_sword_lightsa
 
 object_weapon_melee_sword_shared_sword_lightsaber_ben = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_lightsaber_blade_ben.lsb",
-	arrangementDescriptors = {"hold_r", "hold_l"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hold_both.iff",
 	attackType = 1,
 
 	certificationsRequired = {},
@@ -552,7 +552,7 @@ object_weapon_melee_sword_shared_sword_lightsaber_ben = SharedWeaponObjectTempla
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"default_weapon_ammo_slot", "crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/default_weapon.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -574,7 +574,7 @@ ObjectTemplates:addClientTemplate(object_weapon_melee_sword_shared_sword_lightsa
 
 object_weapon_melee_sword_shared_sword_lightsaber_dugald = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_lightsaber_blade_dugald.lsb",
-	arrangementDescriptors = {"hold_r", "hold_l"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hold_both.iff",
 	attackType = 1,
 
 	certificationsRequired = {},
@@ -611,7 +611,7 @@ object_weapon_melee_sword_shared_sword_lightsaber_dugald = SharedWeaponObjectTem
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"default_weapon_ammo_slot", "crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/default_weapon.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -633,7 +633,7 @@ ObjectTemplates:addClientTemplate(object_weapon_melee_sword_shared_sword_lightsa
 
 object_weapon_melee_sword_shared_sword_lightsaber_leather = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_lightsaber_blade_leather.lsb",
-	arrangementDescriptors = {"hold_r", "hold_l"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hold_both.iff",
 	attackType = 1,
 
 	certificationsRequired = {},
@@ -670,7 +670,7 @@ object_weapon_melee_sword_shared_sword_lightsaber_leather = SharedWeaponObjectTe
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"default_weapon_ammo_slot", "crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/default_weapon.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -692,7 +692,7 @@ ObjectTemplates:addClientTemplate(object_weapon_melee_sword_shared_sword_lightsa
 
 object_weapon_melee_sword_shared_sword_lightsaber_luke = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_lightsaber_blade_luke.lsb",
-	arrangementDescriptors = {"hold_r", "hold_l"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hold_both.iff",
 	attackType = 1,
 
 	certificationsRequired = {},
@@ -729,7 +729,7 @@ object_weapon_melee_sword_shared_sword_lightsaber_luke = SharedWeaponObjectTempl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"default_weapon_ammo_slot", "crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/default_weapon.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -751,7 +751,7 @@ ObjectTemplates:addClientTemplate(object_weapon_melee_sword_shared_sword_lightsa
 
 object_weapon_melee_sword_shared_sword_lightsaber_luke_2h_test = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_lightsaber_blade_luke_2h_test.lsb",
-	arrangementDescriptors = {"hold_r", "hold_l"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hold_both.iff",
 	attackType = 1,
 
 	certificationsRequired = {},
@@ -788,7 +788,7 @@ object_weapon_melee_sword_shared_sword_lightsaber_luke_2h_test = SharedWeaponObj
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"default_weapon_ammo_slot", "crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/default_weapon.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -810,7 +810,7 @@ ObjectTemplates:addClientTemplate(object_weapon_melee_sword_shared_sword_lightsa
 
 object_weapon_melee_sword_shared_sword_lightsaber_mace = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_lightsaber_blade_mace.lsb",
-	arrangementDescriptors = {"hold_r", "hold_l"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hold_both.iff",
 	attackType = 1,
 
 	certificationsRequired = {},
@@ -847,7 +847,7 @@ object_weapon_melee_sword_shared_sword_lightsaber_mace = SharedWeaponObjectTempl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"default_weapon_ammo_slot", "crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/default_weapon.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -869,7 +869,7 @@ ObjectTemplates:addClientTemplate(object_weapon_melee_sword_shared_sword_lightsa
 
 object_weapon_melee_sword_shared_sword_lightsaber_nebu = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_lightsaber_blade_nebu.lsb",
-	arrangementDescriptors = {"hold_r", "hold_l"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hold_both.iff",
 	attackType = 1,
 
 	certificationsRequired = {},
@@ -906,7 +906,7 @@ object_weapon_melee_sword_shared_sword_lightsaber_nebu = SharedWeaponObjectTempl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"default_weapon_ammo_slot", "crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/default_weapon.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -928,7 +928,7 @@ ObjectTemplates:addClientTemplate(object_weapon_melee_sword_shared_sword_lightsa
 
 object_weapon_melee_sword_shared_sword_lightsaber_obi = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_lightsaber_blade_obi.lsb",
-	arrangementDescriptors = {"hold_r", "hold_l"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hold_both.iff",
 	attackType = 1,
 
 	certificationsRequired = {},
@@ -965,7 +965,7 @@ object_weapon_melee_sword_shared_sword_lightsaber_obi = SharedWeaponObjectTempla
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"default_weapon_ammo_slot", "crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/default_weapon.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -987,7 +987,7 @@ ObjectTemplates:addClientTemplate(object_weapon_melee_sword_shared_sword_lightsa
 
 object_weapon_melee_sword_shared_sword_lightsaber_quigon = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_lightsaber_blade_quigon.lsb",
-	arrangementDescriptors = {"hold_r", "hold_l"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hold_both.iff",
 	attackType = 1,
 
 	certificationsRequired = {},
@@ -1024,7 +1024,7 @@ object_weapon_melee_sword_shared_sword_lightsaber_quigon = SharedWeaponObjectTem
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"default_weapon_ammo_slot", "crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/default_weapon.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1046,7 +1046,7 @@ ObjectTemplates:addClientTemplate(object_weapon_melee_sword_shared_sword_lightsa
 
 object_weapon_melee_sword_shared_sword_lightsaber_sleekblack = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_lightsaber_blade_sleekblack.lsb",
-	arrangementDescriptors = {"hold_r", "hold_l"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hold_both.iff",
 	attackType = 1,
 
 	certificationsRequired = {},
@@ -1083,7 +1083,7 @@ object_weapon_melee_sword_shared_sword_lightsaber_sleekblack = SharedWeaponObjec
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"default_weapon_ammo_slot", "crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/default_weapon.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1105,7 +1105,7 @@ ObjectTemplates:addClientTemplate(object_weapon_melee_sword_shared_sword_lightsa
 
 object_weapon_melee_sword_shared_sword_lightsaber_sleeksilver = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_lightsaber_blade_sleeksilver.lsb",
-	arrangementDescriptors = {"hold_r", "hold_l"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hold_both.iff",
 	attackType = 1,
 
 	certificationsRequired = {},
@@ -1142,7 +1142,7 @@ object_weapon_melee_sword_shared_sword_lightsaber_sleeksilver = SharedWeaponObje
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"default_weapon_ammo_slot", "crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/default_weapon.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1164,7 +1164,7 @@ ObjectTemplates:addClientTemplate(object_weapon_melee_sword_shared_sword_lightsa
 
 object_weapon_melee_sword_shared_sword_lightsaber_vader = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_lightsaber_blade_vader.lsb",
-	arrangementDescriptors = {"hold_r", "hold_l"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hold_both.iff",
 	attackType = 1,
 
 	certificationsRequired = {},
@@ -1201,7 +1201,7 @@ object_weapon_melee_sword_shared_sword_lightsaber_vader = SharedWeaponObjectTemp
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"default_weapon_ammo_slot", "crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/default_weapon.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1223,7 +1223,7 @@ ObjectTemplates:addClientTemplate(object_weapon_melee_sword_shared_sword_lightsa
 
 object_weapon_melee_sword_shared_sword_nyax = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_sword_s01.apt",
-	arrangementDescriptors = {"hold_r"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hold_r.iff",
 	attackType = 1,
 
 	certificationsRequired = {},
@@ -1260,7 +1260,7 @@ object_weapon_melee_sword_shared_sword_nyax = SharedWeaponObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"default_weapon_ammo_slot", "crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/default_weapon.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1282,7 +1282,7 @@ ObjectTemplates:addClientTemplate(object_weapon_melee_sword_shared_sword_nyax, "
 
 object_weapon_melee_sword_shared_sword_rantok = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_sword_rantok.apt",
-	arrangementDescriptors = {"hold_r"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hold_r.iff",
 	attackType = 1,
 
 	certificationsRequired = {},
@@ -1319,7 +1319,7 @@ object_weapon_melee_sword_shared_sword_rantok = SharedWeaponObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"default_weapon_ammo_slot", "crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/default_weapon.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",

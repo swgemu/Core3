@@ -43,7 +43,7 @@
 
 object_tangible_wearables_shoes_shared_shoes_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/shoes_s01_f.sat",
-	arrangementDescriptors = {"shoes"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/shoe.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -79,7 +79,7 @@ object_tangible_wearables_shoes_shared_shoes_s01 = SharedTangibleObjectTemplate:
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -98,7 +98,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_shoes_shared_shoes_s
 
 object_tangible_wearables_shoes_shared_shoes_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/shoes_s02_f.sat",
-	arrangementDescriptors = {"shoes"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/shoe.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -134,7 +134,7 @@ object_tangible_wearables_shoes_shared_shoes_s02 = SharedTangibleObjectTemplate:
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -153,7 +153,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_shoes_shared_shoes_s
 
 object_tangible_wearables_shoes_shared_shoes_s03 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/shoes_s03_f.sat",
-	arrangementDescriptors = {"shoes"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/shoe.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -189,7 +189,7 @@ object_tangible_wearables_shoes_shared_shoes_s03 = SharedTangibleObjectTemplate:
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -208,7 +208,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_shoes_shared_shoes_s
 
 object_tangible_wearables_shoes_shared_shoes_s07 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/shoes_s07_f.sat",
-	arrangementDescriptors = {"shoes"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/shoe.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -244,7 +244,7 @@ object_tangible_wearables_shoes_shared_shoes_s07 = SharedTangibleObjectTemplate:
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -263,7 +263,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_shoes_shared_shoes_s
 
 object_tangible_wearables_shoes_shared_shoes_s08 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/shoes_s08_f.sat",
-	arrangementDescriptors = {"shoes"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/shoe.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -299,7 +299,7 @@ object_tangible_wearables_shoes_shared_shoes_s08 = SharedTangibleObjectTemplate:
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -318,7 +318,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_shoes_shared_shoes_s
 
 object_tangible_wearables_shoes_shared_shoes_s09 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/shoes_s09_f.sat",
-	arrangementDescriptors = {"shoes"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/shoe.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -354,7 +354,7 @@ object_tangible_wearables_shoes_shared_shoes_s09 = SharedTangibleObjectTemplate:
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",

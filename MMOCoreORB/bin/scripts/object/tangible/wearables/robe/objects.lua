@@ -43,7 +43,7 @@
 
 object_tangible_wearables_robe_shared_aakuan_robe = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/robe_s05_h0_f.sat",
-	arrangementDescriptors = {"chest2", "bicep_l", "bicep_r", "bracer_upper_l", "bracer_upper_r", "bracer_lower_l", "bracer_lower_r"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/cloak.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -79,7 +79,7 @@ object_tangible_wearables_robe_shared_aakuan_robe = SharedTangibleObjectTemplate
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -98,7 +98,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_robe_shared_aakuan_r
 
 object_tangible_wearables_robe_shared_robe_inquisitor = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/robe_inquisitor_m.sat",
-	arrangementDescriptors = {"chest2", "chest3_l", "chest3_r", "bicep_l", "bicep_r", "bracer_upper_l", "bracer_upper_r"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/robe_longsleeve.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -134,7 +134,7 @@ object_tangible_wearables_robe_shared_robe_inquisitor = SharedTangibleObjectTemp
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -153,7 +153,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_robe_shared_robe_inq
 
 object_tangible_wearables_robe_shared_robe_jedi_dark_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/robe_jedi_dark_s01_f.sat",
-	arrangementDescriptors = {"chest1", "chest2", "chest3_l", "chest3_r", "bicep_l", "bicep_r", "bracer_lower_l", "bracer_lower_r", "bracer_upper_l", "bracer_upper_r", "cloak", "back", "pants1", "pants2", "shoes"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/jedi_jumpsuit.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -189,7 +189,7 @@ object_tangible_wearables_robe_shared_robe_jedi_dark_s01 = SharedTangibleObjectT
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -208,7 +208,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_robe_shared_robe_jed
 
 object_tangible_wearables_robe_shared_robe_jedi_dark_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/robe_jedi_dark_s02_f.sat",
-	arrangementDescriptors = {"chest1", "chest2", "chest3_l", "chest3_r", "bicep_l", "bicep_r", "bracer_lower_l", "bracer_lower_r", "bracer_upper_l", "bracer_upper_r", "cloak", "back", "pants1", "pants2", "shoes"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/jedi_jumpsuit.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -244,7 +244,7 @@ object_tangible_wearables_robe_shared_robe_jedi_dark_s02 = SharedTangibleObjectT
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -263,7 +263,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_robe_shared_robe_jed
 
 object_tangible_wearables_robe_shared_robe_jedi_dark_s03 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/robe_jedi_dark_s03_f.sat",
-	arrangementDescriptors = {"chest1", "chest2", "chest3_l", "chest3_r", "bicep_l", "bicep_r", "bracer_lower_l", "bracer_lower_r", "bracer_upper_l", "bracer_upper_r", "cloak", "back", "pants1", "pants2", "shoes"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/jedi_jumpsuit.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -299,7 +299,7 @@ object_tangible_wearables_robe_shared_robe_jedi_dark_s03 = SharedTangibleObjectT
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -318,7 +318,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_robe_shared_robe_jed
 
 object_tangible_wearables_robe_shared_robe_jedi_dark_s04 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/robe_jedi_dark_s04_f.sat",
-	arrangementDescriptors = {"chest1", "chest2", "chest3_l", "chest3_r", "bicep_l", "bicep_r", "bracer_lower_l", "bracer_lower_r", "bracer_upper_l", "bracer_upper_r", "cloak", "back", "pants1", "pants2", "shoes"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/jedi_jumpsuit.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -354,7 +354,7 @@ object_tangible_wearables_robe_shared_robe_jedi_dark_s04 = SharedTangibleObjectT
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -373,7 +373,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_robe_shared_robe_jed
 
 object_tangible_wearables_robe_shared_robe_jedi_dark_s05 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/robe_jedi_dark_s05_f.sat",
-	arrangementDescriptors = {"chest1", "chest2", "chest3_l", "chest3_r", "bicep_l", "bicep_r", "bracer_lower_l", "bracer_lower_r", "bracer_upper_l", "bracer_upper_r", "cloak", "back", "pants1", "pants2"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/jedi_robe.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -409,7 +409,7 @@ object_tangible_wearables_robe_shared_robe_jedi_dark_s05 = SharedTangibleObjectT
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -428,7 +428,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_robe_shared_robe_jed
 
 object_tangible_wearables_robe_shared_robe_jedi_light_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/robe_jedi_light_s01_f.sat",
-	arrangementDescriptors = {"chest1", "chest2", "chest3_l", "chest3_r", "bicep_l", "bicep_r", "bracer_lower_l", "bracer_lower_r", "bracer_upper_l", "bracer_upper_r", "cloak", "back", "pants1", "pants2", "shoes"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/jedi_jumpsuit.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -464,7 +464,7 @@ object_tangible_wearables_robe_shared_robe_jedi_light_s01 = SharedTangibleObject
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -483,7 +483,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_robe_shared_robe_jed
 
 object_tangible_wearables_robe_shared_robe_jedi_light_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/robe_jedi_light_s02_f.sat",
-	arrangementDescriptors = {"chest1", "chest2", "chest3_l", "chest3_r", "bicep_l", "bicep_r", "bracer_lower_l", "bracer_lower_r", "bracer_upper_l", "bracer_upper_r", "cloak", "back", "pants1", "pants2", "shoes"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/jedi_jumpsuit.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -519,7 +519,7 @@ object_tangible_wearables_robe_shared_robe_jedi_light_s02 = SharedTangibleObject
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -538,7 +538,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_robe_shared_robe_jed
 
 object_tangible_wearables_robe_shared_robe_jedi_light_s03 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/robe_jedi_light_s03_f.sat",
-	arrangementDescriptors = {"chest1", "chest2", "chest3_l", "chest3_r", "bicep_l", "bicep_r", "bracer_lower_l", "bracer_lower_r", "bracer_upper_l", "bracer_upper_r", "cloak", "back", "pants1", "pants2", "shoes"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/jedi_jumpsuit.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -574,7 +574,7 @@ object_tangible_wearables_robe_shared_robe_jedi_light_s03 = SharedTangibleObject
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -593,7 +593,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_robe_shared_robe_jed
 
 object_tangible_wearables_robe_shared_robe_jedi_light_s04 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/robe_jedi_light_s04_f.sat",
-	arrangementDescriptors = {"chest1", "chest2", "chest3_l", "chest3_r", "bicep_l", "bicep_r", "bracer_lower_l", "bracer_lower_r", "bracer_upper_l", "bracer_upper_r", "cloak", "back", "pants1", "pants2", "shoes"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/jedi_jumpsuit.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -629,7 +629,7 @@ object_tangible_wearables_robe_shared_robe_jedi_light_s04 = SharedTangibleObject
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -648,7 +648,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_robe_shared_robe_jed
 
 object_tangible_wearables_robe_shared_robe_jedi_light_s05 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/robe_jedi_light_s05_f.sat",
-	arrangementDescriptors = {"chest1", "chest2", "chest3_l", "chest3_r", "bicep_l", "bicep_r", "bracer_lower_l", "bracer_lower_r", "bracer_upper_l", "bracer_upper_r", "cloak", "back", "pants1", "pants2"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/jedi_robe.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -684,7 +684,7 @@ object_tangible_wearables_robe_shared_robe_jedi_light_s05 = SharedTangibleObject
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -703,7 +703,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_robe_shared_robe_jed
 
 object_tangible_wearables_robe_shared_robe_jedi_padawan = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/robe_jedi_padawan_f.sat",
-	arrangementDescriptors = {"chest1", "chest2", "chest3_l", "chest3_r", "bicep_l", "bicep_r", "bracer_lower_l", "bracer_lower_r", "bracer_upper_l", "bracer_upper_r", "cloak", "back", "pants1", "pants2", "shoes"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/jedi_jumpsuit.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -739,7 +739,7 @@ object_tangible_wearables_robe_shared_robe_jedi_padawan = SharedTangibleObjectTe
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -758,7 +758,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_robe_shared_robe_jed
 
 object_tangible_wearables_robe_shared_robe_jedi_test = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/robe_s05_h0_f.sat",
-	arrangementDescriptors = {"chest2", "bicep_l", "bicep_r", "bracer_upper_l", "bracer_upper_r", "bracer_lower_l", "bracer_lower_r"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/cloak.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -794,7 +794,7 @@ object_tangible_wearables_robe_shared_robe_jedi_test = SharedTangibleObjectTempl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -813,7 +813,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_robe_shared_robe_jed
 
 object_tangible_wearables_robe_shared_robe_prefect_talmont = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/robe_prefect_talmont_m.sat",
-	arrangementDescriptors = {"chest2", "chest3_l", "chest3_r", "bicep_l", "bicep_r", "bracer_upper_l", "bracer_upper_r"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/robe_longsleeve.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -849,7 +849,7 @@ object_tangible_wearables_robe_shared_robe_prefect_talmont = SharedTangibleObjec
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -868,7 +868,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_robe_shared_robe_pre
 
 object_tangible_wearables_robe_shared_robe_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/robe_s01_f.sat",
-	arrangementDescriptors = {"chest2", "chest3_l", "chest3_r", "bicep_l", "bicep_r", "bracer_upper_l", "bracer_upper_r"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/robe_longsleeve.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -904,7 +904,7 @@ object_tangible_wearables_robe_shared_robe_s01 = SharedTangibleObjectTemplate:ne
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -923,7 +923,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_robe_shared_robe_s01
 
 object_tangible_wearables_robe_shared_robe_s04 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/robe_s04_f.sat",
-	arrangementDescriptors = {"chest2", "chest3_l", "chest3_r", "bicep_l", "bicep_r", "bracer_upper_l", "bracer_upper_r"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/robe_longsleeve.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -959,7 +959,7 @@ object_tangible_wearables_robe_shared_robe_s04 = SharedTangibleObjectTemplate:ne
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -978,7 +978,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_robe_shared_robe_s04
 
 object_tangible_wearables_robe_shared_robe_s05 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/robe_s05_h0_f.sat",
-	arrangementDescriptors = {"chest2", "bicep_l", "bicep_r", "bracer_upper_l", "bracer_upper_r", "bracer_lower_l", "bracer_lower_r"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/cloak.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1014,7 +1014,7 @@ object_tangible_wearables_robe_shared_robe_s05 = SharedTangibleObjectTemplate:ne
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1033,7 +1033,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_robe_shared_robe_s05
 
 object_tangible_wearables_robe_shared_robe_s05_h1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/robe_s05_h1_m.sat",
-	arrangementDescriptors = {"chest2", "bicep_l", "bicep_r", "bracer_upper_l", "bracer_upper_r", "bracer_lower_l", "bracer_lower_r", "hat"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/cloak_hooded.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1069,7 +1069,7 @@ object_tangible_wearables_robe_shared_robe_s05_h1 = SharedTangibleObjectTemplate
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1088,7 +1088,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_robe_shared_robe_s05
 
 object_tangible_wearables_robe_shared_robe_s12 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/robe_s12_f.sat",
-	arrangementDescriptors = {"chest2", "chest3_l", "chest3_r", "bicep_l", "bicep_r", "bracer_upper_l", "bracer_upper_r"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/robe_longsleeve.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1124,7 +1124,7 @@ object_tangible_wearables_robe_shared_robe_s12 = SharedTangibleObjectTemplate:ne
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1143,7 +1143,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_robe_shared_robe_s12
 
 object_tangible_wearables_robe_shared_robe_s18 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/robe_s18_wke_f.sat",
-	arrangementDescriptors = {"chest2", "chest3_l", "chest3_r", "bicep_l", "bicep_r", "bracer_upper_l", "bracer_upper_r"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/robe_longsleeve.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1179,7 +1179,7 @@ object_tangible_wearables_robe_shared_robe_s18 = SharedTangibleObjectTemplate:ne
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1198,7 +1198,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_robe_shared_robe_s18
 
 object_tangible_wearables_robe_shared_robe_s27 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/robe_s27_f.sat",
-	arrangementDescriptors = {"chest2", "chest3_l", "chest3_r", "bicep_l", "bicep_r", "bracer_upper_l", "bracer_upper_r"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/robe_longsleeve.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1234,7 +1234,7 @@ object_tangible_wearables_robe_shared_robe_s27 = SharedTangibleObjectTemplate:ne
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1253,7 +1253,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_robe_shared_robe_s27
 
 object_tangible_wearables_robe_shared_robe_tusken_raider_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/robe_tusken_raider_s01_m.sat",
-	arrangementDescriptors = {"chest2", "chest3_l", "chest3_r", "bicep_l", "bicep_r", "bracer_upper_l", "bracer_upper_r"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/robe_longsleeve.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1289,7 +1289,7 @@ object_tangible_wearables_robe_shared_robe_tusken_raider_s01 = SharedTangibleObj
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1308,7 +1308,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_robe_shared_robe_tus
 
 object_tangible_wearables_robe_shared_robe_tusken_raider_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/robe_tusken_raider_s02_m.sat",
-	arrangementDescriptors = {"chest2", "chest3_l", "chest3_r", "bicep_l", "bicep_r", "bracer_upper_l", "bracer_upper_r"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/robe_longsleeve.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1344,7 +1344,7 @@ object_tangible_wearables_robe_shared_robe_tusken_raider_s02 = SharedTangibleObj
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",

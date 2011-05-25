@@ -43,7 +43,7 @@
 
 object_installation_manufacture_shared_clothing_factory = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/ins_all_factory_clothing.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 15,
@@ -79,7 +79,7 @@ object_installation_manufacture_shared_clothing_factory = SharedInstallationObje
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"ingredient_hopper", "output_hopper", "manf_schematic", "crafted_components", "anythingNoMod1"},
+	slotDescriptorFilename = "abstract/slot/descriptor/manufacture_installation.iff",
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/installation/manufacture/shared_clothing_factory.sfp",
@@ -98,7 +98,7 @@ ObjectTemplates:addClientTemplate(object_installation_manufacture_shared_clothin
 
 object_installation_manufacture_shared_food_factory = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/ins_all_factory_organic.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 15,
@@ -134,7 +134,7 @@ object_installation_manufacture_shared_food_factory = SharedInstallationObjectTe
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"ingredient_hopper", "output_hopper", "manf_schematic", "crafted_components", "anythingNoMod1"},
+	slotDescriptorFilename = "abstract/slot/descriptor/manufacture_installation.iff",
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/installation/manufacture/shared_food_factory.sfp",
@@ -153,7 +153,7 @@ ObjectTemplates:addClientTemplate(object_installation_manufacture_shared_food_fa
 
 object_installation_manufacture_shared_structure_factory = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/ins_all_factory_machine.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 15,
@@ -189,7 +189,7 @@ object_installation_manufacture_shared_structure_factory = SharedInstallationObj
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"ingredient_hopper", "output_hopper", "manf_schematic", "crafted_components", "anythingNoMod1"},
+	slotDescriptorFilename = "abstract/slot/descriptor/manufacture_installation.iff",
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/installation/manufacture/shared_structure_factory.sfp",
@@ -208,7 +208,7 @@ ObjectTemplates:addClientTemplate(object_installation_manufacture_shared_structu
 
 object_installation_manufacture_shared_weapon_factory = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/ins_all_factory_item.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 15,
@@ -244,7 +244,7 @@ object_installation_manufacture_shared_weapon_factory = SharedInstallationObject
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"ingredient_hopper", "output_hopper", "manf_schematic", "crafted_components", "anythingNoMod1"},
+	slotDescriptorFilename = "abstract/slot/descriptor/manufacture_installation.iff",
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/installation/manufacture/shared_weapon_factory.sfp",
@@ -263,7 +263,7 @@ ObjectTemplates:addClientTemplate(object_installation_manufacture_shared_weapon_
 
 object_installation_manufacture_shared_weapon_installation = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 15,
@@ -299,7 +299,7 @@ object_installation_manufacture_shared_weapon_installation = SharedInstallationO
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"ingredient_hopper", "output_hopper", "manf_schematic", "crafted_components", "anythingNoMod1"},
+	slotDescriptorFilename = "abstract/slot/descriptor/manufacture_installation.iff",
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/installation/mining_ore/shared_mining_ore_harvester_style_2.sfp",

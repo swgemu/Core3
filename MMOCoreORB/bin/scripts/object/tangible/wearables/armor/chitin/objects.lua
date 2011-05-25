@@ -43,7 +43,7 @@
 
 object_tangible_wearables_armor_chitin_shared_armor_chitin_s01_bicep_l = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_chitin_s01_bicep_l_f.sat",
-	arrangementDescriptors = {"bicep_l"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/bicep_l.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -79,7 +79,7 @@ object_tangible_wearables_armor_chitin_shared_armor_chitin_s01_bicep_l = SharedT
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -98,7 +98,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_chitin_shared_
 
 object_tangible_wearables_armor_chitin_shared_armor_chitin_s01_bicep_r = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_chitin_s01_bicep_r_f.sat",
-	arrangementDescriptors = {"bicep_r"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/bicep_r.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -134,7 +134,7 @@ object_tangible_wearables_armor_chitin_shared_armor_chitin_s01_bicep_r = SharedT
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -153,7 +153,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_chitin_shared_
 
 object_tangible_wearables_armor_chitin_shared_armor_chitin_s01_boots = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_chitin_s01_boots_f.sat",
-	arrangementDescriptors = {"shoes"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/shoe.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -189,7 +189,7 @@ object_tangible_wearables_armor_chitin_shared_armor_chitin_s01_boots = SharedTan
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -208,7 +208,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_chitin_shared_
 
 object_tangible_wearables_armor_chitin_shared_armor_chitin_s01_bracer_l = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_chitin_s01_bracer_l_f.sat",
-	arrangementDescriptors = {"bracer_upper_l"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/bracer_upper_l.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -244,7 +244,7 @@ object_tangible_wearables_armor_chitin_shared_armor_chitin_s01_bracer_l = Shared
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -263,7 +263,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_chitin_shared_
 
 object_tangible_wearables_armor_chitin_shared_armor_chitin_s01_bracer_r = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_chitin_s01_bracer_r_f.sat",
-	arrangementDescriptors = {"bracer_upper_r"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/bracer_upper_r.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -299,7 +299,7 @@ object_tangible_wearables_armor_chitin_shared_armor_chitin_s01_bracer_r = Shared
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -318,7 +318,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_chitin_shared_
 
 object_tangible_wearables_armor_chitin_shared_armor_chitin_s01_chest_plate = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_chitin_s01_chest_plate_f.sat",
-	arrangementDescriptors = {"chest2"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/vest.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -354,7 +354,7 @@ object_tangible_wearables_armor_chitin_shared_armor_chitin_s01_chest_plate = Sha
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -373,7 +373,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_chitin_shared_
 
 object_tangible_wearables_armor_chitin_shared_armor_chitin_s01_gloves = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_chitin_s01_gloves_f.sat",
-	arrangementDescriptors = {"gloves", "bracer_lower_l", "bracer_lower_r"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/gauntlets_long.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -409,7 +409,7 @@ object_tangible_wearables_armor_chitin_shared_armor_chitin_s01_gloves = SharedTa
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -428,7 +428,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_chitin_shared_
 
 object_tangible_wearables_armor_chitin_shared_armor_chitin_s01_helmet = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_chitin_s01_helmet_f.sat",
-	arrangementDescriptors = {"hat", "eyes", "mouth"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/helmet_closed_full.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -464,7 +464,7 @@ object_tangible_wearables_armor_chitin_shared_armor_chitin_s01_helmet = SharedTa
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -483,7 +483,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_chitin_shared_
 
 object_tangible_wearables_armor_chitin_shared_armor_chitin_s01_leggings = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/armor_chitin_s01_leggings_f.sat",
-	arrangementDescriptors = {"pants1", "pants2"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/skirt.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -519,7 +519,7 @@ object_tangible_wearables_armor_chitin_shared_armor_chitin_s01_leggings = Shared
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",

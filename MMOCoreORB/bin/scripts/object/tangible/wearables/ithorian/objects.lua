@@ -43,7 +43,7 @@
 
 object_tangible_wearables_ithorian_shared_apron_chef_jacket_s01_ith = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/apron_chef_jacket_s01_ith_f.sat",
-	arrangementDescriptors = {"chest2", "bicep_l", "bicep_r", "bracer_upper_l", "bracer_upper_r", "bracer_lower_l", "bracer_lower_r"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/jacket_longsleeve.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -79,7 +79,7 @@ object_tangible_wearables_ithorian_shared_apron_chef_jacket_s01_ith = SharedTang
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -98,7 +98,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_ithorian_shared_apro
 
 object_tangible_wearables_ithorian_shared_hat_chef_s01_ith = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/hat_chef_s01_ith_f.sat",
-	arrangementDescriptors = {"hat"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hat.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -134,7 +134,7 @@ object_tangible_wearables_ithorian_shared_hat_chef_s01_ith = SharedTangibleObjec
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -153,7 +153,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_ithorian_shared_hat_
 
 object_tangible_wearables_ithorian_shared_hat_chef_s02_ith = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/hat_chef_s02_ith_f.sat",
-	arrangementDescriptors = {"hat"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hat.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -189,7 +189,7 @@ object_tangible_wearables_ithorian_shared_hat_chef_s02_ith = SharedTangibleObjec
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -208,7 +208,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_ithorian_shared_hat_
 
 object_tangible_wearables_ithorian_shared_ith_backpack_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_backpack_s01_f.sat",
-	arrangementDescriptors = {"back"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/back.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -244,7 +244,7 @@ object_tangible_wearables_ithorian_shared_ith_backpack_s01 = SharedTangibleObjec
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -263,7 +263,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_ithorian_shared_ith_
 
 object_tangible_wearables_ithorian_shared_ith_backpack_s03 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_backpack_s03_f.sat",
-	arrangementDescriptors = {"back"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/back.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -299,7 +299,7 @@ object_tangible_wearables_ithorian_shared_ith_backpack_s03 = SharedTangibleObjec
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -318,7 +318,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_ithorian_shared_ith_
 
 object_tangible_wearables_ithorian_shared_ith_backpack_s05 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_backpack_s05_f.sat",
-	arrangementDescriptors = {"back"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/back.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -354,7 +354,7 @@ object_tangible_wearables_ithorian_shared_ith_backpack_s05 = SharedTangibleObjec
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -373,7 +373,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_ithorian_shared_ith_
 
 object_tangible_wearables_ithorian_shared_ith_backpack_s06 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_backpack_s06_f.sat",
-	arrangementDescriptors = {"back"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/back.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -409,7 +409,7 @@ object_tangible_wearables_ithorian_shared_ith_backpack_s06 = SharedTangibleObjec
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -428,7 +428,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_ithorian_shared_ith_
 
 object_tangible_wearables_ithorian_shared_ith_bandolier_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_bandolier_s02_f.sat",
-	arrangementDescriptors = {"back"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/bandolier.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -464,7 +464,7 @@ object_tangible_wearables_ithorian_shared_ith_bandolier_s02 = SharedTangibleObje
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -483,7 +483,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_ithorian_shared_ith_
 
 object_tangible_wearables_ithorian_shared_ith_bandolier_s03 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_bandolier_s03_f.sat",
-	arrangementDescriptors = {"back"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/bandolier.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -519,7 +519,7 @@ object_tangible_wearables_ithorian_shared_ith_bandolier_s03 = SharedTangibleObje
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -538,7 +538,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_ithorian_shared_ith_
 
 object_tangible_wearables_ithorian_shared_ith_bandolier_s04 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_bandolier_s04_f.sat",
-	arrangementDescriptors = {"back"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/bandolier.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -574,7 +574,7 @@ object_tangible_wearables_ithorian_shared_ith_bandolier_s04 = SharedTangibleObje
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -593,7 +593,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_ithorian_shared_ith_
 
 object_tangible_wearables_ithorian_shared_ith_bandolier_s05 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_bandolier_s05_f.sat",
-	arrangementDescriptors = {"back"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/bandolier.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -629,7 +629,7 @@ object_tangible_wearables_ithorian_shared_ith_bandolier_s05 = SharedTangibleObje
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -648,7 +648,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_ithorian_shared_ith_
 
 object_tangible_wearables_ithorian_shared_ith_bandolier_s06 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_bandolier_s06_f.sat",
-	arrangementDescriptors = {"back"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/bandolier.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -684,7 +684,7 @@ object_tangible_wearables_ithorian_shared_ith_bandolier_s06 = SharedTangibleObje
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -703,7 +703,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_ithorian_shared_ith_
 
 object_tangible_wearables_ithorian_shared_ith_bandolier_s07 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_bandolier_s07_f.sat",
-	arrangementDescriptors = {"back"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/bandolier.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -739,7 +739,7 @@ object_tangible_wearables_ithorian_shared_ith_bandolier_s07 = SharedTangibleObje
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -758,7 +758,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_ithorian_shared_ith_
 
 object_tangible_wearables_ithorian_shared_ith_bandolier_s08 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_bandolier_s08_f.sat",
-	arrangementDescriptors = {"back"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/bandolier.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -794,7 +794,7 @@ object_tangible_wearables_ithorian_shared_ith_bandolier_s08 = SharedTangibleObje
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -813,7 +813,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_ithorian_shared_ith_
 
 object_tangible_wearables_ithorian_shared_ith_belt_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_belt_s01_f.sat",
-	arrangementDescriptors = {"utility_belt"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/belt.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -849,7 +849,7 @@ object_tangible_wearables_ithorian_shared_ith_belt_s01 = SharedTangibleObjectTem
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -868,7 +868,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_ithorian_shared_ith_
 
 object_tangible_wearables_ithorian_shared_ith_belt_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_belt_s02_f.sat",
-	arrangementDescriptors = {"utility_belt"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/belt.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -904,7 +904,7 @@ object_tangible_wearables_ithorian_shared_ith_belt_s02 = SharedTangibleObjectTem
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -923,7 +923,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_ithorian_shared_ith_
 
 object_tangible_wearables_ithorian_shared_ith_belt_s03 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_belt_s03_f.sat",
-	arrangementDescriptors = {"utility_belt"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/belt.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -959,7 +959,7 @@ object_tangible_wearables_ithorian_shared_ith_belt_s03 = SharedTangibleObjectTem
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -978,7 +978,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_ithorian_shared_ith_
 
 object_tangible_wearables_ithorian_shared_ith_belt_s04 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_belt_s04_f.sat",
-	arrangementDescriptors = {"utility_belt"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/belt.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1014,7 +1014,7 @@ object_tangible_wearables_ithorian_shared_ith_belt_s04 = SharedTangibleObjectTem
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1033,7 +1033,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_ithorian_shared_ith_
 
 object_tangible_wearables_ithorian_shared_ith_belt_s05 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_belt_s05_f.sat",
-	arrangementDescriptors = {"utility_belt"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/belt.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1069,7 +1069,7 @@ object_tangible_wearables_ithorian_shared_ith_belt_s05 = SharedTangibleObjectTem
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1088,7 +1088,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_ithorian_shared_ith_
 
 object_tangible_wearables_ithorian_shared_ith_belt_s07 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_belt_s07_f.sat",
-	arrangementDescriptors = {"utility_belt"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/belt.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1124,7 +1124,7 @@ object_tangible_wearables_ithorian_shared_ith_belt_s07 = SharedTangibleObjectTem
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1143,7 +1143,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_ithorian_shared_ith_
 
 object_tangible_wearables_ithorian_shared_ith_belt_s09 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_belt_s09_f.sat",
-	arrangementDescriptors = {"utility_belt"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/belt.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1179,7 +1179,7 @@ object_tangible_wearables_ithorian_shared_ith_belt_s09 = SharedTangibleObjectTem
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1198,7 +1198,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_ithorian_shared_ith_
 
 object_tangible_wearables_ithorian_shared_ith_belt_s11 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_belt_s11_f.sat",
-	arrangementDescriptors = {"utility_belt"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/belt.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1234,7 +1234,7 @@ object_tangible_wearables_ithorian_shared_ith_belt_s11 = SharedTangibleObjectTem
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1253,7 +1253,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_ithorian_shared_ith_
 
 object_tangible_wearables_ithorian_shared_ith_belt_s12 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_belt_s12_f.sat",
-	arrangementDescriptors = {"utility_belt"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/belt.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1289,7 +1289,7 @@ object_tangible_wearables_ithorian_shared_ith_belt_s12 = SharedTangibleObjectTem
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1308,7 +1308,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_ithorian_shared_ith_
 
 object_tangible_wearables_ithorian_shared_ith_belt_s13 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_belt_s13_f.sat",
-	arrangementDescriptors = {"utility_belt"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/belt.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1344,7 +1344,7 @@ object_tangible_wearables_ithorian_shared_ith_belt_s13 = SharedTangibleObjectTem
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1363,7 +1363,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_ithorian_shared_ith_
 
 object_tangible_wearables_ithorian_shared_ith_belt_s14 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_belt_s14_f.sat",
-	arrangementDescriptors = {"utility_belt"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/belt.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1399,7 +1399,7 @@ object_tangible_wearables_ithorian_shared_ith_belt_s14 = SharedTangibleObjectTem
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1418,7 +1418,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_ithorian_shared_ith_
 
 object_tangible_wearables_ithorian_shared_ith_belt_s15 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_belt_s15_f.sat",
-	arrangementDescriptors = {"utility_belt"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/belt.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1454,7 +1454,7 @@ object_tangible_wearables_ithorian_shared_ith_belt_s15 = SharedTangibleObjectTem
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1473,7 +1473,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_ithorian_shared_ith_
 
 object_tangible_wearables_ithorian_shared_ith_belt_s16 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_belt_s16_f.sat",
-	arrangementDescriptors = {"utility_belt"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/belt.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1509,7 +1509,7 @@ object_tangible_wearables_ithorian_shared_ith_belt_s16 = SharedTangibleObjectTem
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1528,7 +1528,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_ithorian_shared_ith_
 
 object_tangible_wearables_ithorian_shared_ith_belt_s17 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_belt_s17_f.sat",
-	arrangementDescriptors = {"utility_belt"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/belt.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1564,7 +1564,7 @@ object_tangible_wearables_ithorian_shared_ith_belt_s17 = SharedTangibleObjectTem
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1583,7 +1583,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_ithorian_shared_ith_
 
 object_tangible_wearables_ithorian_shared_ith_belt_s18 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_belt_s18_f.sat",
-	arrangementDescriptors = {"utility_belt"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/belt.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1619,7 +1619,7 @@ object_tangible_wearables_ithorian_shared_ith_belt_s18 = SharedTangibleObjectTem
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1638,7 +1638,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_ithorian_shared_ith_
 
 object_tangible_wearables_ithorian_shared_ith_belt_s19 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_belt_s19_f.sat",
-	arrangementDescriptors = {"utility_belt"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/belt.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1674,7 +1674,7 @@ object_tangible_wearables_ithorian_shared_ith_belt_s19 = SharedTangibleObjectTem
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1693,7 +1693,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_ithorian_shared_ith_
 
 object_tangible_wearables_ithorian_shared_ith_belt_s20 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_belt_s20_f.sat",
-	arrangementDescriptors = {"utility_belt"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/belt.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1729,7 +1729,7 @@ object_tangible_wearables_ithorian_shared_ith_belt_s20 = SharedTangibleObjectTem
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1748,7 +1748,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_ithorian_shared_ith_
 
 object_tangible_wearables_ithorian_shared_ith_bodysuit_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_bodysuit_s01_f.sat",
-	arrangementDescriptors = {"chest1", "pants1", "pants2", "bicep_l", "bicep_r", "bracer_upper_r", "bracer_upper_l"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/jumpsuit_longsleeve.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1784,7 +1784,7 @@ object_tangible_wearables_ithorian_shared_ith_bodysuit_s01 = SharedTangibleObjec
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1803,7 +1803,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_ithorian_shared_ith_
 
 object_tangible_wearables_ithorian_shared_ith_bodysuit_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_bodysuit_s02_f.sat",
-	arrangementDescriptors = {"chest1", "pants1", "pants2", "bicep_l", "bicep_r", "bracer_upper_r", "bracer_upper_l"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/jumpsuit_longsleeve.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1839,7 +1839,7 @@ object_tangible_wearables_ithorian_shared_ith_bodysuit_s02 = SharedTangibleObjec
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1858,7 +1858,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_ithorian_shared_ith_
 
 object_tangible_wearables_ithorian_shared_ith_bodysuit_s03 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_bodysuit_s03_f.sat",
-	arrangementDescriptors = {"chest1", "pants1", "pants2", "bicep_l", "bicep_r", "bracer_upper_r", "bracer_upper_l"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/jumpsuit_longsleeve.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1894,7 +1894,7 @@ object_tangible_wearables_ithorian_shared_ith_bodysuit_s03 = SharedTangibleObjec
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1913,7 +1913,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_ithorian_shared_ith_
 
 object_tangible_wearables_ithorian_shared_ith_bodysuit_s04 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_bodysuit_s04_f.sat",
-	arrangementDescriptors = {"chest1", "pants1", "pants2", "bicep_l", "bicep_r", "bracer_upper_r", "bracer_upper_l"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/jumpsuit_longsleeve.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1949,7 +1949,7 @@ object_tangible_wearables_ithorian_shared_ith_bodysuit_s04 = SharedTangibleObjec
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1968,7 +1968,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_ithorian_shared_ith_
 
 object_tangible_wearables_ithorian_shared_ith_bodysuit_s05 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_bodysuit_s05_f.sat",
-	arrangementDescriptors = {"chest1", "pants1", "pants2", "bicep_l", "bicep_r", "bracer_upper_r", "bracer_upper_l"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/jumpsuit_longsleeve.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2004,7 +2004,7 @@ object_tangible_wearables_ithorian_shared_ith_bodysuit_s05 = SharedTangibleObjec
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2023,7 +2023,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_ithorian_shared_ith_
 
 object_tangible_wearables_ithorian_shared_ith_bodysuit_s06 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_bodysuit_s06_f.sat",
-	arrangementDescriptors = {"chest1", "pants1", "pants2", "bicep_l", "bicep_r", "bracer_upper_r", "bracer_upper_l"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/jumpsuit_longsleeve.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2059,7 +2059,7 @@ object_tangible_wearables_ithorian_shared_ith_bodysuit_s06 = SharedTangibleObjec
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2078,7 +2078,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_ithorian_shared_ith_
 
 object_tangible_wearables_ithorian_shared_ith_dress_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_dress_s02_f.sat",
-	arrangementDescriptors = {"chest1", "chest2", "pants1", "pants2"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/dress.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2114,7 +2114,7 @@ object_tangible_wearables_ithorian_shared_ith_dress_s02 = SharedTangibleObjectTe
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2133,7 +2133,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_ithorian_shared_ith_
 
 object_tangible_wearables_ithorian_shared_ith_dress_s03 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_dress_s03_f.sat",
-	arrangementDescriptors = {"chest1", "chest2", "pants1", "pants2"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/dress.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2169,7 +2169,7 @@ object_tangible_wearables_ithorian_shared_ith_dress_s03 = SharedTangibleObjectTe
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2188,7 +2188,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_ithorian_shared_ith_
 
 object_tangible_wearables_ithorian_shared_ith_dress_short_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_dress_short_s01_f.sat",
-	arrangementDescriptors = {"chest2", "bicep_l", "bicep_r"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/jacket_shortsleeve.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2224,7 +2224,7 @@ object_tangible_wearables_ithorian_shared_ith_dress_short_s01 = SharedTangibleOb
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2243,7 +2243,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_ithorian_shared_ith_
 
 object_tangible_wearables_ithorian_shared_ith_gloves_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_gloves_s01_f.sat",
-	arrangementDescriptors = {"gloves"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/gloves.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2279,7 +2279,7 @@ object_tangible_wearables_ithorian_shared_ith_gloves_s01 = SharedTangibleObjectT
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2298,7 +2298,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_ithorian_shared_ith_
 
 object_tangible_wearables_ithorian_shared_ith_gloves_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_gloves_s02_f.sat",
-	arrangementDescriptors = {"gloves"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/gloves.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2334,7 +2334,7 @@ object_tangible_wearables_ithorian_shared_ith_gloves_s02 = SharedTangibleObjectT
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2353,7 +2353,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_ithorian_shared_ith_
 
 object_tangible_wearables_ithorian_shared_ith_hat_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_hat_s01_f.sat",
-	arrangementDescriptors = {"hat"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hat.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2389,7 +2389,7 @@ object_tangible_wearables_ithorian_shared_ith_hat_s01 = SharedTangibleObjectTemp
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2408,7 +2408,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_ithorian_shared_ith_
 
 object_tangible_wearables_ithorian_shared_ith_hat_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_hat_s02_f.sat",
-	arrangementDescriptors = {"hat"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hat.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2444,7 +2444,7 @@ object_tangible_wearables_ithorian_shared_ith_hat_s02 = SharedTangibleObjectTemp
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2463,7 +2463,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_ithorian_shared_ith_
 
 object_tangible_wearables_ithorian_shared_ith_hat_s03 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_hat_s03_f.sat",
-	arrangementDescriptors = {"hat"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hat.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2499,7 +2499,7 @@ object_tangible_wearables_ithorian_shared_ith_hat_s03 = SharedTangibleObjectTemp
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2518,7 +2518,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_ithorian_shared_ith_
 
 object_tangible_wearables_ithorian_shared_ith_hat_s04 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_hat_s04_f.sat",
-	arrangementDescriptors = {"hat"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hat.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2554,7 +2554,7 @@ object_tangible_wearables_ithorian_shared_ith_hat_s04 = SharedTangibleObjectTemp
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2573,7 +2573,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_ithorian_shared_ith_
 
 object_tangible_wearables_ithorian_shared_ith_jacket_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_jacket_s01_f.sat",
-	arrangementDescriptors = {"chest2", "bicep_l", "bicep_r", "bracer_upper_l", "bracer_upper_r", "bracer_lower_l", "bracer_lower_r"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/jacket_longsleeve.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2609,7 +2609,7 @@ object_tangible_wearables_ithorian_shared_ith_jacket_s01 = SharedTangibleObjectT
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2628,7 +2628,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_ithorian_shared_ith_
 
 object_tangible_wearables_ithorian_shared_ith_jacket_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_jacket_s02_f.sat",
-	arrangementDescriptors = {"chest2", "bicep_l", "bicep_r", "bracer_upper_l", "bracer_upper_r", "bracer_lower_l", "bracer_lower_r"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/jacket_longsleeve.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2664,7 +2664,7 @@ object_tangible_wearables_ithorian_shared_ith_jacket_s02 = SharedTangibleObjectT
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2683,7 +2683,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_ithorian_shared_ith_
 
 object_tangible_wearables_ithorian_shared_ith_jacket_s03 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_jacket_s03_f.sat",
-	arrangementDescriptors = {"chest2", "bicep_l", "bicep_r", "bracer_upper_l", "bracer_upper_r", "bracer_lower_l", "bracer_lower_r"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/jacket_longsleeve.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2719,7 +2719,7 @@ object_tangible_wearables_ithorian_shared_ith_jacket_s03 = SharedTangibleObjectT
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2738,7 +2738,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_ithorian_shared_ith_
 
 object_tangible_wearables_ithorian_shared_ith_jacket_s04 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_jacket_s04_f.sat",
-	arrangementDescriptors = {"chest2", "bicep_l", "bicep_r", "bracer_upper_l", "bracer_upper_r"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/jacket_halfsleeve.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2774,7 +2774,7 @@ object_tangible_wearables_ithorian_shared_ith_jacket_s04 = SharedTangibleObjectT
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2793,7 +2793,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_ithorian_shared_ith_
 
 object_tangible_wearables_ithorian_shared_ith_jacket_s05 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_jacket_s05_f.sat",
-	arrangementDescriptors = {"chest2", "bicep_l", "bicep_r", "bracer_upper_l", "bracer_upper_r", "bracer_lower_l", "bracer_lower_r"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/jacket_longsleeve.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2829,7 +2829,7 @@ object_tangible_wearables_ithorian_shared_ith_jacket_s05 = SharedTangibleObjectT
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2848,7 +2848,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_ithorian_shared_ith_
 
 object_tangible_wearables_ithorian_shared_ith_jacket_s06 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_jacket_s06_f.sat",
-	arrangementDescriptors = {"chest2", "bicep_l", "bicep_r", "bracer_upper_l", "bracer_upper_r"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/jacket_halfsleeve.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2884,7 +2884,7 @@ object_tangible_wearables_ithorian_shared_ith_jacket_s06 = SharedTangibleObjectT
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2903,7 +2903,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_ithorian_shared_ith_
 
 object_tangible_wearables_ithorian_shared_ith_jacket_s07 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_jacket_s07_f.sat",
-	arrangementDescriptors = {"chest2", "bicep_l", "bicep_r", "bracer_upper_l", "bracer_upper_r"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/jacket_halfsleeve.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2939,7 +2939,7 @@ object_tangible_wearables_ithorian_shared_ith_jacket_s07 = SharedTangibleObjectT
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2958,7 +2958,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_ithorian_shared_ith_
 
 object_tangible_wearables_ithorian_shared_ith_jacket_s08 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_jacket_s08_f.sat",
-	arrangementDescriptors = {"chest2", "bicep_l", "bicep_r", "bracer_upper_l", "bracer_upper_r"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/jacket_halfsleeve.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2994,7 +2994,7 @@ object_tangible_wearables_ithorian_shared_ith_jacket_s08 = SharedTangibleObjectT
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3013,7 +3013,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_ithorian_shared_ith_
 
 object_tangible_wearables_ithorian_shared_ith_jacket_s09 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_jacket_s09_f.sat",
-	arrangementDescriptors = {"chest2", "bicep_l", "bicep_r", "bracer_upper_l", "bracer_upper_r", "bracer_lower_l", "bracer_lower_r"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/jacket_longsleeve.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -3049,7 +3049,7 @@ object_tangible_wearables_ithorian_shared_ith_jacket_s09 = SharedTangibleObjectT
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3068,7 +3068,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_ithorian_shared_ith_
 
 object_tangible_wearables_ithorian_shared_ith_jacket_s10 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_jacket_s10_f.sat",
-	arrangementDescriptors = {"chest2", "bicep_l", "bicep_r", "bracer_upper_l", "bracer_upper_r", "bracer_lower_l", "bracer_lower_r"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/jacket_longsleeve.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -3104,7 +3104,7 @@ object_tangible_wearables_ithorian_shared_ith_jacket_s10 = SharedTangibleObjectT
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3123,7 +3123,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_ithorian_shared_ith_
 
 object_tangible_wearables_ithorian_shared_ith_jacket_s11 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_jacket_s11_f.sat",
-	arrangementDescriptors = {"chest2", "bicep_l", "bicep_r", "bracer_upper_l", "bracer_upper_r", "bracer_lower_l", "bracer_lower_r"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/jacket_longsleeve.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -3159,7 +3159,7 @@ object_tangible_wearables_ithorian_shared_ith_jacket_s11 = SharedTangibleObjectT
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3178,7 +3178,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_ithorian_shared_ith_
 
 object_tangible_wearables_ithorian_shared_ith_jacket_s12 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_jacket_s12_f.sat",
-	arrangementDescriptors = {"chest2", "bicep_l", "bicep_r", "bracer_upper_l", "bracer_upper_r", "bracer_lower_l", "bracer_lower_r"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/jacket_longsleeve.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -3214,7 +3214,7 @@ object_tangible_wearables_ithorian_shared_ith_jacket_s12 = SharedTangibleObjectT
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3233,7 +3233,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_ithorian_shared_ith_
 
 object_tangible_wearables_ithorian_shared_ith_jacket_s13 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_jacket_s13_f.sat",
-	arrangementDescriptors = {"chest2", "bicep_l", "bicep_r", "bracer_upper_l", "bracer_upper_r", "bracer_lower_l", "bracer_lower_r"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/jacket_longsleeve.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -3269,7 +3269,7 @@ object_tangible_wearables_ithorian_shared_ith_jacket_s13 = SharedTangibleObjectT
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3288,7 +3288,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_ithorian_shared_ith_
 
 object_tangible_wearables_ithorian_shared_ith_jacket_s14 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_jacket_s14_f.sat",
-	arrangementDescriptors = {"chest2", "bicep_l", "bicep_r", "bracer_upper_l", "bracer_upper_r"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/jacket_halfsleeve.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -3324,7 +3324,7 @@ object_tangible_wearables_ithorian_shared_ith_jacket_s14 = SharedTangibleObjectT
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3343,7 +3343,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_ithorian_shared_ith_
 
 object_tangible_wearables_ithorian_shared_ith_jacket_s15 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_jacket_s15_f.sat",
-	arrangementDescriptors = {"chest2", "bicep_l", "bicep_r", "bracer_upper_l", "bracer_upper_r"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/jacket_halfsleeve.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -3379,7 +3379,7 @@ object_tangible_wearables_ithorian_shared_ith_jacket_s15 = SharedTangibleObjectT
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3398,7 +3398,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_ithorian_shared_ith_
 
 object_tangible_wearables_ithorian_shared_ith_necklace_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_necklace_s01_f.sat",
-	arrangementDescriptors = {"neck"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/neck.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -3434,7 +3434,7 @@ object_tangible_wearables_ithorian_shared_ith_necklace_s01 = SharedTangibleObjec
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3453,7 +3453,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_ithorian_shared_ith_
 
 object_tangible_wearables_ithorian_shared_ith_necklace_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_necklace_s02_f.sat",
-	arrangementDescriptors = {"neck"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/neck.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -3489,7 +3489,7 @@ object_tangible_wearables_ithorian_shared_ith_necklace_s02 = SharedTangibleObjec
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3508,7 +3508,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_ithorian_shared_ith_
 
 object_tangible_wearables_ithorian_shared_ith_necklace_s03 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_necklace_s03_f.sat",
-	arrangementDescriptors = {"neck"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/neck.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -3544,7 +3544,7 @@ object_tangible_wearables_ithorian_shared_ith_necklace_s03 = SharedTangibleObjec
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3563,7 +3563,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_ithorian_shared_ith_
 
 object_tangible_wearables_ithorian_shared_ith_necklace_s04 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_necklace_s04_f.sat",
-	arrangementDescriptors = {"neck"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/neck.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -3599,7 +3599,7 @@ object_tangible_wearables_ithorian_shared_ith_necklace_s04 = SharedTangibleObjec
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3618,7 +3618,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_ithorian_shared_ith_
 
 object_tangible_wearables_ithorian_shared_ith_necklace_s05 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_necklace_s05_f.sat",
-	arrangementDescriptors = {"neck"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/neck.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -3654,7 +3654,7 @@ object_tangible_wearables_ithorian_shared_ith_necklace_s05 = SharedTangibleObjec
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3673,7 +3673,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_ithorian_shared_ith_
 
 object_tangible_wearables_ithorian_shared_ith_necklace_s06 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_necklace_s06_f.sat",
-	arrangementDescriptors = {"neck"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/neck.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -3709,7 +3709,7 @@ object_tangible_wearables_ithorian_shared_ith_necklace_s06 = SharedTangibleObjec
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3728,7 +3728,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_ithorian_shared_ith_
 
 object_tangible_wearables_ithorian_shared_ith_necklace_s07 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_necklace_s07_f.sat",
-	arrangementDescriptors = {"neck"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/neck.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -3764,7 +3764,7 @@ object_tangible_wearables_ithorian_shared_ith_necklace_s07 = SharedTangibleObjec
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3783,7 +3783,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_ithorian_shared_ith_
 
 object_tangible_wearables_ithorian_shared_ith_necklace_s08 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_necklace_s08_f.sat",
-	arrangementDescriptors = {"neck"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/neck.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -3819,7 +3819,7 @@ object_tangible_wearables_ithorian_shared_ith_necklace_s08 = SharedTangibleObjec
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3838,7 +3838,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_ithorian_shared_ith_
 
 object_tangible_wearables_ithorian_shared_ith_necklace_s09 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_necklace_s09_f.sat",
-	arrangementDescriptors = {"neck"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/neck.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -3874,7 +3874,7 @@ object_tangible_wearables_ithorian_shared_ith_necklace_s09 = SharedTangibleObjec
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3893,7 +3893,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_ithorian_shared_ith_
 
 object_tangible_wearables_ithorian_shared_ith_necklace_s10 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_necklace_s10_f.sat",
-	arrangementDescriptors = {"neck"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/neck.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -3929,7 +3929,7 @@ object_tangible_wearables_ithorian_shared_ith_necklace_s10 = SharedTangibleObjec
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3948,7 +3948,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_ithorian_shared_ith_
 
 object_tangible_wearables_ithorian_shared_ith_necklace_s11 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_necklace_s11_f.sat",
-	arrangementDescriptors = {"neck"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/neck.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -3984,7 +3984,7 @@ object_tangible_wearables_ithorian_shared_ith_necklace_s11 = SharedTangibleObjec
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -4003,7 +4003,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_ithorian_shared_ith_
 
 object_tangible_wearables_ithorian_shared_ith_necklace_s12 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_necklace_s12_f.sat",
-	arrangementDescriptors = {"neck"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/neck.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -4039,7 +4039,7 @@ object_tangible_wearables_ithorian_shared_ith_necklace_s12 = SharedTangibleObjec
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -4058,7 +4058,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_ithorian_shared_ith_
 
 object_tangible_wearables_ithorian_shared_ith_pants_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_pants_s01_f.sat",
-	arrangementDescriptors = {"pants1"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/pants.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -4094,7 +4094,7 @@ object_tangible_wearables_ithorian_shared_ith_pants_s01 = SharedTangibleObjectTe
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -4113,7 +4113,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_ithorian_shared_ith_
 
 object_tangible_wearables_ithorian_shared_ith_pants_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_pants_s02_f.sat",
-	arrangementDescriptors = {"pants1"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/pants.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -4149,7 +4149,7 @@ object_tangible_wearables_ithorian_shared_ith_pants_s02 = SharedTangibleObjectTe
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -4168,7 +4168,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_ithorian_shared_ith_
 
 object_tangible_wearables_ithorian_shared_ith_pants_s03 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_pants_s03_f.sat",
-	arrangementDescriptors = {"pants1"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/pants.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -4204,7 +4204,7 @@ object_tangible_wearables_ithorian_shared_ith_pants_s03 = SharedTangibleObjectTe
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -4223,7 +4223,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_ithorian_shared_ith_
 
 object_tangible_wearables_ithorian_shared_ith_pants_s04 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_pants_s04_f.sat",
-	arrangementDescriptors = {"pants1"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/pants.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -4259,7 +4259,7 @@ object_tangible_wearables_ithorian_shared_ith_pants_s04 = SharedTangibleObjectTe
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -4278,7 +4278,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_ithorian_shared_ith_
 
 object_tangible_wearables_ithorian_shared_ith_pants_s05 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_pants_s05_f.sat",
-	arrangementDescriptors = {"pants1"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/pants.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -4314,7 +4314,7 @@ object_tangible_wearables_ithorian_shared_ith_pants_s05 = SharedTangibleObjectTe
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -4333,7 +4333,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_ithorian_shared_ith_
 
 object_tangible_wearables_ithorian_shared_ith_pants_s06 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_pants_s06_f.sat",
-	arrangementDescriptors = {"pants1"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/pants.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -4369,7 +4369,7 @@ object_tangible_wearables_ithorian_shared_ith_pants_s06 = SharedTangibleObjectTe
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -4388,7 +4388,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_ithorian_shared_ith_
 
 object_tangible_wearables_ithorian_shared_ith_pants_s07 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_pants_s07_f.sat",
-	arrangementDescriptors = {"pants1"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/pants.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -4424,7 +4424,7 @@ object_tangible_wearables_ithorian_shared_ith_pants_s07 = SharedTangibleObjectTe
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -4443,7 +4443,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_ithorian_shared_ith_
 
 object_tangible_wearables_ithorian_shared_ith_pants_s08 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_pants_s08_f.sat",
-	arrangementDescriptors = {"pants1"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/pants.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -4479,7 +4479,7 @@ object_tangible_wearables_ithorian_shared_ith_pants_s08 = SharedTangibleObjectTe
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -4498,7 +4498,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_ithorian_shared_ith_
 
 object_tangible_wearables_ithorian_shared_ith_pants_s09 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_pants_s09_f.sat",
-	arrangementDescriptors = {"pants1"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/pants.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -4534,7 +4534,7 @@ object_tangible_wearables_ithorian_shared_ith_pants_s09 = SharedTangibleObjectTe
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -4553,7 +4553,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_ithorian_shared_ith_
 
 object_tangible_wearables_ithorian_shared_ith_pants_s10 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_pants_s10_f.sat",
-	arrangementDescriptors = {"pants1"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/pants.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -4589,7 +4589,7 @@ object_tangible_wearables_ithorian_shared_ith_pants_s10 = SharedTangibleObjectTe
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -4608,7 +4608,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_ithorian_shared_ith_
 
 object_tangible_wearables_ithorian_shared_ith_pants_s11 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_pants_s11_f.sat",
-	arrangementDescriptors = {"pants1"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/pants.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -4644,7 +4644,7 @@ object_tangible_wearables_ithorian_shared_ith_pants_s11 = SharedTangibleObjectTe
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -4663,7 +4663,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_ithorian_shared_ith_
 
 object_tangible_wearables_ithorian_shared_ith_pants_s12 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_pants_s12_f.sat",
-	arrangementDescriptors = {"pants1"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/pants.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -4699,7 +4699,7 @@ object_tangible_wearables_ithorian_shared_ith_pants_s12 = SharedTangibleObjectTe
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -4718,7 +4718,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_ithorian_shared_ith_
 
 object_tangible_wearables_ithorian_shared_ith_pants_s13 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_pants_s13_f.sat",
-	arrangementDescriptors = {"pants1"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/pants.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -4754,7 +4754,7 @@ object_tangible_wearables_ithorian_shared_ith_pants_s13 = SharedTangibleObjectTe
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -4773,7 +4773,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_ithorian_shared_ith_
 
 object_tangible_wearables_ithorian_shared_ith_pants_s14 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_pants_s14_f.sat",
-	arrangementDescriptors = {"pants1"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/pants.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -4809,7 +4809,7 @@ object_tangible_wearables_ithorian_shared_ith_pants_s14 = SharedTangibleObjectTe
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -4828,7 +4828,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_ithorian_shared_ith_
 
 object_tangible_wearables_ithorian_shared_ith_pants_s15 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_pants_s15_f.sat",
-	arrangementDescriptors = {"pants1"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/pants.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -4864,7 +4864,7 @@ object_tangible_wearables_ithorian_shared_ith_pants_s15 = SharedTangibleObjectTe
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -4883,7 +4883,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_ithorian_shared_ith_
 
 object_tangible_wearables_ithorian_shared_ith_pants_s16 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_pants_s16_f.sat",
-	arrangementDescriptors = {"pants1"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/pants.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -4919,7 +4919,7 @@ object_tangible_wearables_ithorian_shared_ith_pants_s16 = SharedTangibleObjectTe
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -4938,7 +4938,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_ithorian_shared_ith_
 
 object_tangible_wearables_ithorian_shared_ith_pants_s17 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_pants_s17_f.sat",
-	arrangementDescriptors = {"pants1"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/pants.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -4974,7 +4974,7 @@ object_tangible_wearables_ithorian_shared_ith_pants_s17 = SharedTangibleObjectTe
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -4993,7 +4993,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_ithorian_shared_ith_
 
 object_tangible_wearables_ithorian_shared_ith_pants_s18 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_pants_s18_f.sat",
-	arrangementDescriptors = {"pants1"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/pants.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -5029,7 +5029,7 @@ object_tangible_wearables_ithorian_shared_ith_pants_s18 = SharedTangibleObjectTe
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -5048,7 +5048,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_ithorian_shared_ith_
 
 object_tangible_wearables_ithorian_shared_ith_pants_s19 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_pants_s19_f.sat",
-	arrangementDescriptors = {"pants1"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/pants.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -5084,7 +5084,7 @@ object_tangible_wearables_ithorian_shared_ith_pants_s19 = SharedTangibleObjectTe
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -5103,7 +5103,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_ithorian_shared_ith_
 
 object_tangible_wearables_ithorian_shared_ith_pants_s20 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_pants_s20_f.sat",
-	arrangementDescriptors = {"pants1"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/pants.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -5139,7 +5139,7 @@ object_tangible_wearables_ithorian_shared_ith_pants_s20 = SharedTangibleObjectTe
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -5158,7 +5158,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_ithorian_shared_ith_
 
 object_tangible_wearables_ithorian_shared_ith_pants_s21 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_pants_s21_f.sat",
-	arrangementDescriptors = {"pants1"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/pants.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -5194,7 +5194,7 @@ object_tangible_wearables_ithorian_shared_ith_pants_s21 = SharedTangibleObjectTe
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -5213,7 +5213,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_ithorian_shared_ith_
 
 object_tangible_wearables_ithorian_shared_ith_robe_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_robe_s02_f.sat",
-	arrangementDescriptors = {"chest2", "chest3_l", "chest3_r", "bicep_l", "bicep_r", "bracer_upper_l", "bracer_upper_r"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/robe_longsleeve.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -5249,7 +5249,7 @@ object_tangible_wearables_ithorian_shared_ith_robe_s02 = SharedTangibleObjectTem
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -5268,7 +5268,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_ithorian_shared_ith_
 
 object_tangible_wearables_ithorian_shared_ith_robe_s03 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_robe_s03_f.sat",
-	arrangementDescriptors = {"chest2", "chest3_l", "chest3_r", "bicep_l", "bicep_r", "bracer_upper_l", "bracer_upper_r"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/robe_longsleeve.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -5304,7 +5304,7 @@ object_tangible_wearables_ithorian_shared_ith_robe_s03 = SharedTangibleObjectTem
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -5323,7 +5323,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_ithorian_shared_ith_
 
 object_tangible_wearables_ithorian_shared_ith_shirt_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_shirt_s01_f.sat",
-	arrangementDescriptors = {"chest1"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/shirt.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -5359,7 +5359,7 @@ object_tangible_wearables_ithorian_shared_ith_shirt_s01 = SharedTangibleObjectTe
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -5378,7 +5378,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_ithorian_shared_ith_
 
 object_tangible_wearables_ithorian_shared_ith_shirt_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_shirt_s02_f.sat",
-	arrangementDescriptors = {"chest1"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/shirt.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -5414,7 +5414,7 @@ object_tangible_wearables_ithorian_shared_ith_shirt_s02 = SharedTangibleObjectTe
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -5433,7 +5433,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_ithorian_shared_ith_
 
 object_tangible_wearables_ithorian_shared_ith_shirt_s03 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_shirt_s03_f.sat",
-	arrangementDescriptors = {"chest1"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/shirt.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -5469,7 +5469,7 @@ object_tangible_wearables_ithorian_shared_ith_shirt_s03 = SharedTangibleObjectTe
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -5488,7 +5488,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_ithorian_shared_ith_
 
 object_tangible_wearables_ithorian_shared_ith_shirt_s04 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_shirt_s04_f.sat",
-	arrangementDescriptors = {"chest1"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/shirt.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -5524,7 +5524,7 @@ object_tangible_wearables_ithorian_shared_ith_shirt_s04 = SharedTangibleObjectTe
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -5543,7 +5543,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_ithorian_shared_ith_
 
 object_tangible_wearables_ithorian_shared_ith_shirt_s05 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_shirt_s05_f.sat",
-	arrangementDescriptors = {"chest1"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/shirt.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -5579,7 +5579,7 @@ object_tangible_wearables_ithorian_shared_ith_shirt_s05 = SharedTangibleObjectTe
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -5598,7 +5598,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_ithorian_shared_ith_
 
 object_tangible_wearables_ithorian_shared_ith_shirt_s06 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_shirt_s06_f.sat",
-	arrangementDescriptors = {"chest1"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/shirt.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -5634,7 +5634,7 @@ object_tangible_wearables_ithorian_shared_ith_shirt_s06 = SharedTangibleObjectTe
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -5653,7 +5653,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_ithorian_shared_ith_
 
 object_tangible_wearables_ithorian_shared_ith_shirt_s07 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_shirt_s07_f.sat",
-	arrangementDescriptors = {"chest1"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/shirt.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -5689,7 +5689,7 @@ object_tangible_wearables_ithorian_shared_ith_shirt_s07 = SharedTangibleObjectTe
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -5708,7 +5708,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_ithorian_shared_ith_
 
 object_tangible_wearables_ithorian_shared_ith_shirt_s08 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_shirt_s08_f.sat",
-	arrangementDescriptors = {"chest1"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/shirt.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -5744,7 +5744,7 @@ object_tangible_wearables_ithorian_shared_ith_shirt_s08 = SharedTangibleObjectTe
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -5763,7 +5763,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_ithorian_shared_ith_
 
 object_tangible_wearables_ithorian_shared_ith_shirt_s09 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_shirt_s09_f.sat",
-	arrangementDescriptors = {"chest1"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/shirt.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -5799,7 +5799,7 @@ object_tangible_wearables_ithorian_shared_ith_shirt_s09 = SharedTangibleObjectTe
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -5818,7 +5818,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_ithorian_shared_ith_
 
 object_tangible_wearables_ithorian_shared_ith_shirt_s10 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_shirt_s10_f.sat",
-	arrangementDescriptors = {"chest1"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/shirt.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -5854,7 +5854,7 @@ object_tangible_wearables_ithorian_shared_ith_shirt_s10 = SharedTangibleObjectTe
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -5873,7 +5873,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_ithorian_shared_ith_
 
 object_tangible_wearables_ithorian_shared_ith_shirt_s11 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_shirt_s11_f.sat",
-	arrangementDescriptors = {"chest1"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/shirt.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -5909,7 +5909,7 @@ object_tangible_wearables_ithorian_shared_ith_shirt_s11 = SharedTangibleObjectTe
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -5928,7 +5928,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_ithorian_shared_ith_
 
 object_tangible_wearables_ithorian_shared_ith_shirt_s12 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_shirt_s12_f.sat",
-	arrangementDescriptors = {"chest1"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/shirt.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -5964,7 +5964,7 @@ object_tangible_wearables_ithorian_shared_ith_shirt_s12 = SharedTangibleObjectTe
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -5983,7 +5983,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_ithorian_shared_ith_
 
 object_tangible_wearables_ithorian_shared_ith_shirt_s13 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_shirt_s13_f.sat",
-	arrangementDescriptors = {"chest1"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/shirt.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -6019,7 +6019,7 @@ object_tangible_wearables_ithorian_shared_ith_shirt_s13 = SharedTangibleObjectTe
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -6038,7 +6038,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_ithorian_shared_ith_
 
 object_tangible_wearables_ithorian_shared_ith_shirt_s14 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_shirt_s14_f.sat",
-	arrangementDescriptors = {"chest1"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/shirt.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -6074,7 +6074,7 @@ object_tangible_wearables_ithorian_shared_ith_shirt_s14 = SharedTangibleObjectTe
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -6093,7 +6093,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_ithorian_shared_ith_
 
 object_tangible_wearables_ithorian_shared_ith_skirt_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_skirt_s01_f.sat",
-	arrangementDescriptors = {"pants1", "pants2"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/skirt.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -6129,7 +6129,7 @@ object_tangible_wearables_ithorian_shared_ith_skirt_s01 = SharedTangibleObjectTe
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -6148,7 +6148,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_ithorian_shared_ith_
 
 object_tangible_wearables_ithorian_shared_ith_skirt_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_skirt_s02_f.sat",
-	arrangementDescriptors = {"pants1", "pants2"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/skirt.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -6184,7 +6184,7 @@ object_tangible_wearables_ithorian_shared_ith_skirt_s02 = SharedTangibleObjectTe
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -6203,7 +6203,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_ithorian_shared_ith_
 
 object_tangible_wearables_ithorian_shared_ith_skirt_s03 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_skirt_s03_f.sat",
-	arrangementDescriptors = {"pants1", "pants2"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/skirt.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -6239,7 +6239,7 @@ object_tangible_wearables_ithorian_shared_ith_skirt_s03 = SharedTangibleObjectTe
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -6258,7 +6258,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_ithorian_shared_ith_
 
 object_tangible_wearables_ithorian_shared_ith_underwear_bottom = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_underwear_bottom_f.sat",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -6294,7 +6294,7 @@ object_tangible_wearables_ithorian_shared_ith_underwear_bottom = SharedTangibleO
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -6313,7 +6313,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_ithorian_shared_ith_
 
 object_tangible_wearables_ithorian_shared_ith_underwear_top = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_underwear_top_f.sat",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -6349,7 +6349,7 @@ object_tangible_wearables_ithorian_shared_ith_underwear_top = SharedTangibleObje
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -6368,7 +6368,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_ithorian_shared_ith_
 
 object_tangible_wearables_ithorian_shared_ith_vest_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_vest_s01_f.sat",
-	arrangementDescriptors = {"chest2"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/vest.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -6404,7 +6404,7 @@ object_tangible_wearables_ithorian_shared_ith_vest_s01 = SharedTangibleObjectTem
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -6423,7 +6423,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_ithorian_shared_ith_
 
 object_tangible_wearables_ithorian_shared_ith_vest_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ith_vest_s02_f.sat",
-	arrangementDescriptors = {"chest2"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/vest.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -6459,7 +6459,7 @@ object_tangible_wearables_ithorian_shared_ith_vest_s02 = SharedTangibleObjectTem
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",

@@ -43,7 +43,7 @@
 
 object_static_structure_dathomir_shared_dath_imprv_bannerpole_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/mun_corl_imprv_bannerpole_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/structure/dath_imprv_bannerpole_s01.cdf",
@@ -73,7 +73,7 @@ object_static_structure_dathomir_shared_dath_imprv_bannerpole_s01 = SharedStatic
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 1,
 
@@ -87,7 +87,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_dathomir_shared_dath_i
 
 object_static_structure_dathomir_shared_dath_imprv_flagpole_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/mun_corl_imprv_flagpole_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/structure/dath_imprv_flagpole_s01.cdf",
@@ -117,7 +117,7 @@ object_static_structure_dathomir_shared_dath_imprv_flagpole_s01 = SharedStaticOb
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 1,
 
@@ -131,7 +131,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_dathomir_shared_dath_i
 
 object_static_structure_dathomir_shared_imp_prison = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_dath_imp_prison.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -162,7 +162,7 @@ object_static_structure_dathomir_shared_imp_prison = SharedStaticObjectTemplate:
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 1,
 
@@ -176,7 +176,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_dathomir_shared_imp_pr
 
 object_static_structure_dathomir_shared_mtn_clan_crows_nest_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_dath_mtn_clan_crows_nest_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -207,7 +207,7 @@ object_static_structure_dathomir_shared_mtn_clan_crows_nest_s01 = SharedStaticOb
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 2,
 
@@ -221,7 +221,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_dathomir_shared_mtn_cl
 
 object_static_structure_dathomir_shared_mtn_clan_gate_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_dath_mtn_clan_gate_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -252,7 +252,7 @@ object_static_structure_dathomir_shared_mtn_clan_gate_s01 = SharedStaticObjectTe
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 2,
 
@@ -266,7 +266,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_dathomir_shared_mtn_cl
 
 object_static_structure_dathomir_shared_mtn_clan_hut_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_dath_mtn_clan_hut_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -297,7 +297,7 @@ object_static_structure_dathomir_shared_mtn_clan_hut_s01 = SharedStaticObjectTem
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 2,
 
@@ -311,7 +311,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_dathomir_shared_mtn_cl
 
 object_static_structure_dathomir_shared_mtn_clan_pillar_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_dath_mtn_clan_pillar_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -342,7 +342,7 @@ object_static_structure_dathomir_shared_mtn_clan_pillar_s01 = SharedStaticObject
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 2,
 
@@ -356,7 +356,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_dathomir_shared_mtn_cl
 
 object_static_structure_dathomir_shared_mtn_clan_strong_fence_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_dath_mtn_clan_strong_fence_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -387,7 +387,7 @@ object_static_structure_dathomir_shared_mtn_clan_strong_fence_s01 = SharedStatic
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 2,
 
@@ -401,7 +401,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_dathomir_shared_mtn_cl
 
 object_static_structure_dathomir_shared_mtn_clan_tent_house_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_dath_mtn_clan_tent_house_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -432,7 +432,7 @@ object_static_structure_dathomir_shared_mtn_clan_tent_house_s01 = SharedStaticOb
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 2,
 
@@ -446,7 +446,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_dathomir_shared_mtn_cl
 
 object_static_structure_dathomir_shared_night_sister_banner_s01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_dath_night_sister_banner_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -477,7 +477,7 @@ object_static_structure_dathomir_shared_night_sister_banner_s01 = SharedStaticOb
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 1,
 
@@ -491,7 +491,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_dathomir_shared_night_
 
 object_static_structure_dathomir_shared_night_sister_banner_s02 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_dath_night_sister_banner_s02.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -522,7 +522,7 @@ object_static_structure_dathomir_shared_night_sister_banner_s02 = SharedStaticOb
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 1,
 
@@ -536,7 +536,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_dathomir_shared_night_
 
 object_static_structure_dathomir_shared_night_sister_banner_s03 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_dath_night_sister_banner_s03.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -567,7 +567,7 @@ object_static_structure_dathomir_shared_night_sister_banner_s03 = SharedStaticOb
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 1,
 
@@ -581,7 +581,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_dathomir_shared_night_
 
 object_static_structure_dathomir_shared_nsister_fence_style_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_dath_night_sister_fence_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -612,7 +612,7 @@ object_static_structure_dathomir_shared_nsister_fence_style_01 = SharedStaticObj
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 2,
 
@@ -626,7 +626,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_dathomir_shared_nsiste
 
 object_static_structure_dathomir_shared_nsister_gate_style_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_dath_night_sister_gate_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -657,7 +657,7 @@ object_static_structure_dathomir_shared_nsister_gate_style_01 = SharedStaticObje
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 2,
 
@@ -671,7 +671,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_dathomir_shared_nsiste
 
 object_static_structure_dathomir_shared_nsister_guard_tower_style_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_dath_night_sister_guard_tower_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -702,7 +702,7 @@ object_static_structure_dathomir_shared_nsister_guard_tower_style_01 = SharedSta
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 2,
 
@@ -716,7 +716,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_dathomir_shared_nsiste
 
 object_static_structure_dathomir_shared_nsister_hut_style_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_dath_night_sister_hut_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -747,7 +747,7 @@ object_static_structure_dathomir_shared_nsister_hut_style_01 = SharedStaticObjec
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 2,
 
@@ -761,7 +761,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_dathomir_shared_nsiste
 
 object_static_structure_dathomir_shared_nsister_tent_house_style_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/thm_dath_night_sister_tent_house_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -792,7 +792,7 @@ object_static_structure_dathomir_shared_nsister_tent_house_style_01 = SharedStat
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 2,
 

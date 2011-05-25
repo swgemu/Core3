@@ -43,7 +43,7 @@
 
 object_intangible_vehicle_shared_jetpack_pcd = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/jetpack_mandalorian_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -74,7 +74,7 @@ object_intangible_vehicle_shared_jetpack_pcd = SharedIntangibleObjectTemplate:ne
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"inventory", "default_weapon", "mount_covering", "mount_saddle"},
+	slotDescriptorFilename = "abstract/slot/descriptor/mount_pcd.iff",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -88,7 +88,7 @@ ObjectTemplates:addClientTemplate(object_intangible_vehicle_shared_jetpack_pcd, 
 
 object_intangible_vehicle_shared_landspeeder_av21_pcd = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/landspeeder_av21.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -119,7 +119,7 @@ object_intangible_vehicle_shared_landspeeder_av21_pcd = SharedIntangibleObjectTe
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"inventory", "default_weapon", "mount_covering", "mount_saddle"},
+	slotDescriptorFilename = "abstract/slot/descriptor/mount_pcd.iff",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -133,7 +133,7 @@ ObjectTemplates:addClientTemplate(object_intangible_vehicle_shared_landspeeder_a
 
 object_intangible_vehicle_shared_landspeeder_x31_pcd = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/landspeeder_luke.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -164,7 +164,7 @@ object_intangible_vehicle_shared_landspeeder_x31_pcd = SharedIntangibleObjectTem
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"inventory", "default_weapon", "mount_covering", "mount_saddle"},
+	slotDescriptorFilename = "abstract/slot/descriptor/mount_pcd.iff",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -178,7 +178,7 @@ ObjectTemplates:addClientTemplate(object_intangible_vehicle_shared_landspeeder_x
 
 object_intangible_vehicle_shared_landspeeder_x34_pcd = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/landspeeder_luke.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -209,7 +209,7 @@ object_intangible_vehicle_shared_landspeeder_x34_pcd = SharedIntangibleObjectTem
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"inventory", "default_weapon", "mount_covering", "mount_saddle"},
+	slotDescriptorFilename = "abstract/slot/descriptor/mount_pcd.iff",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -223,7 +223,7 @@ ObjectTemplates:addClientTemplate(object_intangible_vehicle_shared_landspeeder_x
 
 object_intangible_vehicle_shared_speederbike_flash_pcd = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/flash_speeder.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -254,7 +254,7 @@ object_intangible_vehicle_shared_speederbike_flash_pcd = SharedIntangibleObjectT
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"inventory", "default_weapon", "mount_covering", "mount_saddle"},
+	slotDescriptorFilename = "abstract/slot/descriptor/mount_pcd.iff",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -268,7 +268,7 @@ ObjectTemplates:addClientTemplate(object_intangible_vehicle_shared_speederbike_f
 
 object_intangible_vehicle_shared_speederbike_pcd = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/speeder_bike.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -299,7 +299,7 @@ object_intangible_vehicle_shared_speederbike_pcd = SharedIntangibleObjectTemplat
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"inventory", "default_weapon", "mount_covering", "mount_saddle"},
+	slotDescriptorFilename = "abstract/slot/descriptor/mount_pcd.iff",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -313,7 +313,7 @@ ObjectTemplates:addClientTemplate(object_intangible_vehicle_shared_speederbike_p
 
 object_intangible_vehicle_shared_speederbike_swoop_pcd = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/swoop_bike.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -344,7 +344,7 @@ object_intangible_vehicle_shared_speederbike_swoop_pcd = SharedIntangibleObjectT
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"inventory", "default_weapon", "mount_covering", "mount_saddle"},
+	slotDescriptorFilename = "abstract/slot/descriptor/mount_pcd.iff",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -358,7 +358,7 @@ ObjectTemplates:addClientTemplate(object_intangible_vehicle_shared_speederbike_s
 
 object_intangible_vehicle_shared_vehicle_pcd_base = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/pv_speeder_bike.sat",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -389,7 +389,7 @@ object_intangible_vehicle_shared_vehicle_pcd_base = SharedIntangibleObjectTempla
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"inventory", "default_weapon", "mount_covering", "mount_saddle"},
+	slotDescriptorFilename = "abstract/slot/descriptor/mount_pcd.iff",
 	snapToTerrain = 0,
 	surfaceType = 0,
 

@@ -43,7 +43,7 @@
 
 object_tangible_sign_municipal_base_shared_municipal_sign_base = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_all_gravestone_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -79,7 +79,7 @@ object_tangible_sign_municipal_base_shared_municipal_sign_base = SharedTangibleO
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	socketDestinations = {},
 	structureFootprintFileName = "",

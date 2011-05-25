@@ -43,7 +43,7 @@
 
 object_building_poi_hq_shared_hutt_lrg = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -81,7 +81,7 @@ object_building_poi_hq_shared_hutt_lrg = SharedBuildingObjectTemplate:new {
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -101,7 +101,7 @@ ObjectTemplates:addClientTemplate(object_building_poi_hq_shared_hutt_lrg, "objec
 
 object_building_poi_hq_shared_hutt_med = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -139,7 +139,7 @@ object_building_poi_hq_shared_hutt_med = SharedBuildingObjectTemplate:new {
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -159,7 +159,7 @@ ObjectTemplates:addClientTemplate(object_building_poi_hq_shared_hutt_med, "objec
 
 object_building_poi_hq_shared_hutt_sm = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -197,7 +197,7 @@ object_building_poi_hq_shared_hutt_sm = SharedBuildingObjectTemplate:new {
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -217,7 +217,7 @@ ObjectTemplates:addClientTemplate(object_building_poi_hq_shared_hutt_sm, "object
 
 object_building_poi_hq_shared_imperial_lrg = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -255,7 +255,7 @@ object_building_poi_hq_shared_imperial_lrg = SharedBuildingObjectTemplate:new {
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -275,7 +275,7 @@ ObjectTemplates:addClientTemplate(object_building_poi_hq_shared_imperial_lrg, "o
 
 object_building_poi_hq_shared_imperial_med = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -313,7 +313,7 @@ object_building_poi_hq_shared_imperial_med = SharedBuildingObjectTemplate:new {
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -333,7 +333,7 @@ ObjectTemplates:addClientTemplate(object_building_poi_hq_shared_imperial_med, "o
 
 object_building_poi_hq_shared_imperial_sm = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -371,7 +371,7 @@ object_building_poi_hq_shared_imperial_sm = SharedBuildingObjectTemplate:new {
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -391,7 +391,7 @@ ObjectTemplates:addClientTemplate(object_building_poi_hq_shared_imperial_sm, "ob
 
 object_building_poi_hq_shared_rebel_lrg = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -429,7 +429,7 @@ object_building_poi_hq_shared_rebel_lrg = SharedBuildingObjectTemplate:new {
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -449,7 +449,7 @@ ObjectTemplates:addClientTemplate(object_building_poi_hq_shared_rebel_lrg, "obje
 
 object_building_poi_hq_shared_rebel_med = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -487,7 +487,7 @@ object_building_poi_hq_shared_rebel_med = SharedBuildingObjectTemplate:new {
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -507,7 +507,7 @@ ObjectTemplates:addClientTemplate(object_building_poi_hq_shared_rebel_med, "obje
 
 object_building_poi_hq_shared_rebel_sm = SharedBuildingObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -545,7 +545,7 @@ object_building_poi_hq_shared_rebel_sm = SharedBuildingObjectTemplate:new {
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",

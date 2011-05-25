@@ -43,7 +43,7 @@
 
 object_static_vehicle_e3_shared_landspeeder = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/landspeeder_xp34_convertible.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/client_shared_e3_landspeeder.cdf",
@@ -74,7 +74,7 @@ object_static_vehicle_e3_shared_landspeeder = SharedStaticObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	surfaceType = 0,
 

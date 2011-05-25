@@ -43,7 +43,7 @@
 
 object_tangible_ship_attachment_weapon_shared_aggressor_weapon_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/tie_aggressor_turret_base.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -79,7 +79,7 @@ object_tangible_ship_attachment_weapon_shared_aggressor_weapon_s01 = SharedTangi
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -98,7 +98,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_
 
 object_tangible_ship_attachment_weapon_shared_aggressor_weapon_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/tie_aggressor_weapon_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -134,7 +134,7 @@ object_tangible_ship_attachment_weapon_shared_aggressor_weapon_s02 = SharedTangi
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -153,7 +153,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_
 
 object_tangible_ship_attachment_weapon_shared_awing_weapon_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/awing_weapon_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -189,7 +189,7 @@ object_tangible_ship_attachment_weapon_shared_awing_weapon_s01 = SharedTangibleO
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -208,7 +208,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_
 
 object_tangible_ship_attachment_weapon_shared_awing_weapon_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/awing_weapon_s02.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -244,7 +244,7 @@ object_tangible_ship_attachment_weapon_shared_awing_weapon_s02 = SharedTangibleO
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -263,7 +263,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_
 
 object_tangible_ship_attachment_weapon_shared_awing_weapon_s03 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/awing_weapon_s03.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -299,7 +299,7 @@ object_tangible_ship_attachment_weapon_shared_awing_weapon_s03 = SharedTangibleO
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -318,7 +318,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_
 
 object_tangible_ship_attachment_weapon_shared_awing_weapon_s04 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/awing_weapon_s04.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -354,7 +354,7 @@ object_tangible_ship_attachment_weapon_shared_awing_weapon_s04 = SharedTangibleO
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -373,7 +373,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_
 
 object_tangible_ship_attachment_weapon_shared_awing_weapon_s05 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/awing_weapon_s05.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -409,7 +409,7 @@ object_tangible_ship_attachment_weapon_shared_awing_weapon_s05 = SharedTangibleO
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -428,7 +428,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_
 
 object_tangible_ship_attachment_weapon_shared_awing_weapon_s06 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/awing_weapon_s06.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -464,7 +464,7 @@ object_tangible_ship_attachment_weapon_shared_awing_weapon_s06 = SharedTangibleO
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -483,7 +483,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_
 
 object_tangible_ship_attachment_weapon_shared_blacksun_heavy_missile_pod_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_heavy_missile_pod_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -519,7 +519,7 @@ object_tangible_ship_attachment_weapon_shared_blacksun_heavy_missile_pod_s01 = S
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -538,7 +538,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_
 
 object_tangible_ship_attachment_weapon_shared_blacksun_heavy_missile_pod_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_heavy_missile_pod_s02.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -574,7 +574,7 @@ object_tangible_ship_attachment_weapon_shared_blacksun_heavy_missile_pod_s02 = S
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -593,7 +593,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_
 
 object_tangible_ship_attachment_weapon_shared_blacksun_heavy_weapon1_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_heavy_weapon1_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -629,7 +629,7 @@ object_tangible_ship_attachment_weapon_shared_blacksun_heavy_weapon1_s01 = Share
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -648,7 +648,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_
 
 object_tangible_ship_attachment_weapon_shared_blacksun_heavy_weapon1_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_heavy_weapon1_s02.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -684,7 +684,7 @@ object_tangible_ship_attachment_weapon_shared_blacksun_heavy_weapon1_s02 = Share
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -703,7 +703,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_
 
 object_tangible_ship_attachment_weapon_shared_blacksun_heavy_weapon1_s03 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_heavy_weapon1_s03.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -739,7 +739,7 @@ object_tangible_ship_attachment_weapon_shared_blacksun_heavy_weapon1_s03 = Share
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -758,7 +758,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_
 
 object_tangible_ship_attachment_weapon_shared_blacksun_heavy_weapon1_s04 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_heavy_weapon1_s04.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -794,7 +794,7 @@ object_tangible_ship_attachment_weapon_shared_blacksun_heavy_weapon1_s04 = Share
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -813,7 +813,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_
 
 object_tangible_ship_attachment_weapon_shared_blacksun_heavy_weapon1_s05 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_heavy_weapon1_s05.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -849,7 +849,7 @@ object_tangible_ship_attachment_weapon_shared_blacksun_heavy_weapon1_s05 = Share
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -868,7 +868,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_
 
 object_tangible_ship_attachment_weapon_shared_blacksun_heavy_weapon1_s06 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_heavy_weapon1_s06.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -904,7 +904,7 @@ object_tangible_ship_attachment_weapon_shared_blacksun_heavy_weapon1_s06 = Share
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -923,7 +923,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_
 
 object_tangible_ship_attachment_weapon_shared_blacksun_heavy_weapon2_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_heavy_weapon2_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -959,7 +959,7 @@ object_tangible_ship_attachment_weapon_shared_blacksun_heavy_weapon2_s01 = Share
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -978,7 +978,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_
 
 object_tangible_ship_attachment_weapon_shared_blacksun_heavy_weapon2_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_heavy_weapon2_s02.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1014,7 +1014,7 @@ object_tangible_ship_attachment_weapon_shared_blacksun_heavy_weapon2_s02 = Share
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1033,7 +1033,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_
 
 object_tangible_ship_attachment_weapon_shared_blacksun_heavy_weapon2_s03 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_heavy_weapon2_s03.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1069,7 +1069,7 @@ object_tangible_ship_attachment_weapon_shared_blacksun_heavy_weapon2_s03 = Share
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1088,7 +1088,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_
 
 object_tangible_ship_attachment_weapon_shared_blacksun_heavy_weapon2_s04 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_heavy_weapon2_s04.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1124,7 +1124,7 @@ object_tangible_ship_attachment_weapon_shared_blacksun_heavy_weapon2_s04 = Share
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1143,7 +1143,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_
 
 object_tangible_ship_attachment_weapon_shared_blacksun_heavy_weapon2_s05 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_heavy_weapon2_s05.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1179,7 +1179,7 @@ object_tangible_ship_attachment_weapon_shared_blacksun_heavy_weapon2_s05 = Share
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1198,7 +1198,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_
 
 object_tangible_ship_attachment_weapon_shared_blacksun_heavy_weapon2_s06 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_heavy_weapon2_s06.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1234,7 +1234,7 @@ object_tangible_ship_attachment_weapon_shared_blacksun_heavy_weapon2_s06 = Share
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1253,7 +1253,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_
 
 object_tangible_ship_attachment_weapon_shared_blacksun_heavy_weapon3_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_heavy_weapon3_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1289,7 +1289,7 @@ object_tangible_ship_attachment_weapon_shared_blacksun_heavy_weapon3_s01 = Share
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1308,7 +1308,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_
 
 object_tangible_ship_attachment_weapon_shared_blacksun_heavy_weapon3_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_heavy_weapon3_s02.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1344,7 +1344,7 @@ object_tangible_ship_attachment_weapon_shared_blacksun_heavy_weapon3_s02 = Share
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1363,7 +1363,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_
 
 object_tangible_ship_attachment_weapon_shared_blacksun_heavy_weapon3_s03 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_heavy_weapon3_s03.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1399,7 +1399,7 @@ object_tangible_ship_attachment_weapon_shared_blacksun_heavy_weapon3_s03 = Share
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1418,7 +1418,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_
 
 object_tangible_ship_attachment_weapon_shared_blacksun_heavy_weapon3_s04 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_heavy_weapon3_s04.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1454,7 +1454,7 @@ object_tangible_ship_attachment_weapon_shared_blacksun_heavy_weapon3_s04 = Share
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1473,7 +1473,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_
 
 object_tangible_ship_attachment_weapon_shared_blacksun_heavy_weapon3_s05 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_heavy_weapon3_s05.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1509,7 +1509,7 @@ object_tangible_ship_attachment_weapon_shared_blacksun_heavy_weapon3_s05 = Share
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1528,7 +1528,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_
 
 object_tangible_ship_attachment_weapon_shared_blacksun_heavy_weapon3_s06 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_heavy_weapon3_s06.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1564,7 +1564,7 @@ object_tangible_ship_attachment_weapon_shared_blacksun_heavy_weapon3_s06 = Share
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1583,7 +1583,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_
 
 object_tangible_ship_attachment_weapon_shared_blacksun_light_weapon_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_light_weapon_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1619,7 +1619,7 @@ object_tangible_ship_attachment_weapon_shared_blacksun_light_weapon_s01 = Shared
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1638,7 +1638,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_
 
 object_tangible_ship_attachment_weapon_shared_blacksun_light_weapon_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_light_weapon_s02.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1674,7 +1674,7 @@ object_tangible_ship_attachment_weapon_shared_blacksun_light_weapon_s02 = Shared
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1693,7 +1693,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_
 
 object_tangible_ship_attachment_weapon_shared_blacksun_light_weapon_s03 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_light_weapon_s03.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1729,7 +1729,7 @@ object_tangible_ship_attachment_weapon_shared_blacksun_light_weapon_s03 = Shared
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1748,7 +1748,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_
 
 object_tangible_ship_attachment_weapon_shared_blacksun_light_weapon_s04 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_light_weapon_s04.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1784,7 +1784,7 @@ object_tangible_ship_attachment_weapon_shared_blacksun_light_weapon_s04 = Shared
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1803,7 +1803,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_
 
 object_tangible_ship_attachment_weapon_shared_blacksun_light_weapon_s05 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_light_weapon_s05.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1839,7 +1839,7 @@ object_tangible_ship_attachment_weapon_shared_blacksun_light_weapon_s05 = Shared
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1858,7 +1858,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_
 
 object_tangible_ship_attachment_weapon_shared_blacksun_light_weapon_s06 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_light_weapon_s06.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1894,7 +1894,7 @@ object_tangible_ship_attachment_weapon_shared_blacksun_light_weapon_s06 = Shared
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1913,7 +1913,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_
 
 object_tangible_ship_attachment_weapon_shared_blacksun_medium_weapon1_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_medium_weapon1_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1949,7 +1949,7 @@ object_tangible_ship_attachment_weapon_shared_blacksun_medium_weapon1_s01 = Shar
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1968,7 +1968,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_
 
 object_tangible_ship_attachment_weapon_shared_blacksun_medium_weapon1_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_medium_weapon1_s02.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2004,7 +2004,7 @@ object_tangible_ship_attachment_weapon_shared_blacksun_medium_weapon1_s02 = Shar
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2023,7 +2023,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_
 
 object_tangible_ship_attachment_weapon_shared_blacksun_medium_weapon1_s03 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_medium_weapon1_s03.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2059,7 +2059,7 @@ object_tangible_ship_attachment_weapon_shared_blacksun_medium_weapon1_s03 = Shar
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2078,7 +2078,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_
 
 object_tangible_ship_attachment_weapon_shared_blacksun_medium_weapon1_s04 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_medium_weapon1_s04.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2114,7 +2114,7 @@ object_tangible_ship_attachment_weapon_shared_blacksun_medium_weapon1_s04 = Shar
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2133,7 +2133,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_
 
 object_tangible_ship_attachment_weapon_shared_blacksun_medium_weapon2_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_medium_weapon2_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2169,7 +2169,7 @@ object_tangible_ship_attachment_weapon_shared_blacksun_medium_weapon2_s01 = Shar
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2188,7 +2188,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_
 
 object_tangible_ship_attachment_weapon_shared_blacksun_medium_weapon2_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_medium_weapon2_s02.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2224,7 +2224,7 @@ object_tangible_ship_attachment_weapon_shared_blacksun_medium_weapon2_s02 = Shar
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2243,7 +2243,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_
 
 object_tangible_ship_attachment_weapon_shared_blacksun_medium_weapon2_s03 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_medium_weapon2_s03.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2279,7 +2279,7 @@ object_tangible_ship_attachment_weapon_shared_blacksun_medium_weapon2_s03 = Shar
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2298,7 +2298,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_
 
 object_tangible_ship_attachment_weapon_shared_blacksun_medium_weapon2_s04 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_medium_weapon2_s04.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2334,7 +2334,7 @@ object_tangible_ship_attachment_weapon_shared_blacksun_medium_weapon2_s04 = Shar
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2353,7 +2353,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_
 
 object_tangible_ship_attachment_weapon_shared_blacksun_medium_weapon2_s05 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_medium_weapon2_s04.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2389,7 +2389,7 @@ object_tangible_ship_attachment_weapon_shared_blacksun_medium_weapon2_s05 = Shar
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2408,7 +2408,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_
 
 object_tangible_ship_attachment_weapon_shared_blacksun_medium_weapon2_s06 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/black_sun_fighter_medium_weapon2_s04.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2444,7 +2444,7 @@ object_tangible_ship_attachment_weapon_shared_blacksun_medium_weapon2_s06 = Shar
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2463,7 +2463,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_
 
 object_tangible_ship_attachment_weapon_shared_bwing_weapon1_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/bwing_weapon1_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2499,7 +2499,7 @@ object_tangible_ship_attachment_weapon_shared_bwing_weapon1_s01 = SharedTangible
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2518,7 +2518,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_
 
 object_tangible_ship_attachment_weapon_shared_bwing_weapon1_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/bwing_weapon1_s02.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2554,7 +2554,7 @@ object_tangible_ship_attachment_weapon_shared_bwing_weapon1_s02 = SharedTangible
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2573,7 +2573,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_
 
 object_tangible_ship_attachment_weapon_shared_bwing_weapon1_s03 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/bwing_weapon1_s03.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2609,7 +2609,7 @@ object_tangible_ship_attachment_weapon_shared_bwing_weapon1_s03 = SharedTangible
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2628,7 +2628,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_
 
 object_tangible_ship_attachment_weapon_shared_bwing_weapon1_s04 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/bwing_weapon1_s04.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2664,7 +2664,7 @@ object_tangible_ship_attachment_weapon_shared_bwing_weapon1_s04 = SharedTangible
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2683,7 +2683,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_
 
 object_tangible_ship_attachment_weapon_shared_bwing_weapon1_s05 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/bwing_weapon1_s05.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2719,7 +2719,7 @@ object_tangible_ship_attachment_weapon_shared_bwing_weapon1_s05 = SharedTangible
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2738,7 +2738,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_
 
 object_tangible_ship_attachment_weapon_shared_bwing_weapon1_s06 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/bwing_weapon1_s06.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2774,7 +2774,7 @@ object_tangible_ship_attachment_weapon_shared_bwing_weapon1_s06 = SharedTangible
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2793,7 +2793,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_
 
 object_tangible_ship_attachment_weapon_shared_bwing_weapon2l_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/bwing_weapon2l_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2829,7 +2829,7 @@ object_tangible_ship_attachment_weapon_shared_bwing_weapon2l_s01 = SharedTangibl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2848,7 +2848,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_
 
 object_tangible_ship_attachment_weapon_shared_bwing_weapon2l_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/bwing_weapon2l_s02.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2884,7 +2884,7 @@ object_tangible_ship_attachment_weapon_shared_bwing_weapon2l_s02 = SharedTangibl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2903,7 +2903,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_
 
 object_tangible_ship_attachment_weapon_shared_bwing_weapon2l_s03 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/bwing_weapon2l_s03.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2939,7 +2939,7 @@ object_tangible_ship_attachment_weapon_shared_bwing_weapon2l_s03 = SharedTangibl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2958,7 +2958,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_
 
 object_tangible_ship_attachment_weapon_shared_bwing_weapon2l_s04 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/bwing_weapon2l_s04.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2994,7 +2994,7 @@ object_tangible_ship_attachment_weapon_shared_bwing_weapon2l_s04 = SharedTangibl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3013,7 +3013,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_
 
 object_tangible_ship_attachment_weapon_shared_bwing_weapon2l_s05 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/bwing_weapon2l_s05.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -3049,7 +3049,7 @@ object_tangible_ship_attachment_weapon_shared_bwing_weapon2l_s05 = SharedTangibl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3068,7 +3068,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_
 
 object_tangible_ship_attachment_weapon_shared_bwing_weapon2l_s06 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/bwing_weapon2l_s06.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -3104,7 +3104,7 @@ object_tangible_ship_attachment_weapon_shared_bwing_weapon2l_s06 = SharedTangibl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3123,7 +3123,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_
 
 object_tangible_ship_attachment_weapon_shared_bwing_weapon2r_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/bwing_weapon2r_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -3159,7 +3159,7 @@ object_tangible_ship_attachment_weapon_shared_bwing_weapon2r_s01 = SharedTangibl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3178,7 +3178,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_
 
 object_tangible_ship_attachment_weapon_shared_bwing_weapon2r_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/bwing_weapon2r_s02.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -3214,7 +3214,7 @@ object_tangible_ship_attachment_weapon_shared_bwing_weapon2r_s02 = SharedTangibl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3233,7 +3233,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_
 
 object_tangible_ship_attachment_weapon_shared_bwing_weapon2r_s03 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/bwing_weapon2r_s03.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -3269,7 +3269,7 @@ object_tangible_ship_attachment_weapon_shared_bwing_weapon2r_s03 = SharedTangibl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3288,7 +3288,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_
 
 object_tangible_ship_attachment_weapon_shared_bwing_weapon2r_s04 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/bwing_weapon2r_s04.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -3324,7 +3324,7 @@ object_tangible_ship_attachment_weapon_shared_bwing_weapon2r_s04 = SharedTangibl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3343,7 +3343,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_
 
 object_tangible_ship_attachment_weapon_shared_bwing_weapon2r_s05 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/bwing_weapon2r_s05.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -3379,7 +3379,7 @@ object_tangible_ship_attachment_weapon_shared_bwing_weapon2r_s05 = SharedTangibl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3398,7 +3398,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_
 
 object_tangible_ship_attachment_weapon_shared_bwing_weapon2r_s06 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/bwing_weapon2r_s06.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -3434,7 +3434,7 @@ object_tangible_ship_attachment_weapon_shared_bwing_weapon2r_s06 = SharedTangibl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3453,7 +3453,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_
 
 object_tangible_ship_attachment_weapon_shared_bwing_weapon3_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/bwing_weapon3_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -3489,7 +3489,7 @@ object_tangible_ship_attachment_weapon_shared_bwing_weapon3_s01 = SharedTangible
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3508,7 +3508,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_
 
 object_tangible_ship_attachment_weapon_shared_bwing_weapon3_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/bwing_weapon3_s02.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -3544,7 +3544,7 @@ object_tangible_ship_attachment_weapon_shared_bwing_weapon3_s02 = SharedTangible
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3563,7 +3563,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_
 
 object_tangible_ship_attachment_weapon_shared_bwing_weapon3_s03 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/bwing_weapon3_s03.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -3599,7 +3599,7 @@ object_tangible_ship_attachment_weapon_shared_bwing_weapon3_s03 = SharedTangible
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3618,7 +3618,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_
 
 object_tangible_ship_attachment_weapon_shared_bwing_weapon3_s04 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/bwing_weapon3_s04.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -3654,7 +3654,7 @@ object_tangible_ship_attachment_weapon_shared_bwing_weapon3_s04 = SharedTangible
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3673,7 +3673,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_
 
 object_tangible_ship_attachment_weapon_shared_bwing_weapon3_s05 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/bwing_weapon3_s05.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -3709,7 +3709,7 @@ object_tangible_ship_attachment_weapon_shared_bwing_weapon3_s05 = SharedTangible
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3728,7 +3728,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_
 
 object_tangible_ship_attachment_weapon_shared_bwing_weapon3_s06 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/bwing_weapon3_s06.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -3764,7 +3764,7 @@ object_tangible_ship_attachment_weapon_shared_bwing_weapon3_s06 = SharedTangible
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3783,7 +3783,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_
 
 object_tangible_ship_attachment_weapon_shared_corellian_corvette_turret_large_base_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/corellian_corvette_turret_large_base_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -3819,7 +3819,7 @@ object_tangible_ship_attachment_weapon_shared_corellian_corvette_turret_large_ba
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3838,7 +3838,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_
 
 object_tangible_ship_attachment_weapon_shared_corellian_corvette_turret_side_l = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/corellian_corvette_turret_side_l.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -3874,7 +3874,7 @@ object_tangible_ship_attachment_weapon_shared_corellian_corvette_turret_side_l =
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3893,7 +3893,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_
 
 object_tangible_ship_attachment_weapon_shared_corellian_corvette_turret_side_r = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/corellian_corvette_turret_side_r.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -3929,7 +3929,7 @@ object_tangible_ship_attachment_weapon_shared_corellian_corvette_turret_side_r =
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3948,7 +3948,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_
 
 object_tangible_ship_attachment_weapon_shared_corellian_corvette_turret_small_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/corellian_corvette_turret_small_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -3984,7 +3984,7 @@ object_tangible_ship_attachment_weapon_shared_corellian_corvette_turret_small_s0
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -4003,7 +4003,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_
 
 object_tangible_ship_attachment_weapon_shared_decimator_turret_base = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/vt49_turret_base.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -4039,7 +4039,7 @@ object_tangible_ship_attachment_weapon_shared_decimator_turret_base = SharedTang
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -4058,7 +4058,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_
 
 object_tangible_ship_attachment_weapon_shared_hutt_heavy_missile_pod_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/hutt_fighter_heavy_missile_pod_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -4094,7 +4094,7 @@ object_tangible_ship_attachment_weapon_shared_hutt_heavy_missile_pod_s01 = Share
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -4113,7 +4113,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_
 
 object_tangible_ship_attachment_weapon_shared_hutt_heavy_missile_pod_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/hutt_fighter_heavy_missile_pod_s02.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -4149,7 +4149,7 @@ object_tangible_ship_attachment_weapon_shared_hutt_heavy_missile_pod_s02 = Share
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -4168,7 +4168,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_
 
 object_tangible_ship_attachment_weapon_shared_hutt_heavy_weapon1_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/hutt_fighter_heavy_weapon1_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -4204,7 +4204,7 @@ object_tangible_ship_attachment_weapon_shared_hutt_heavy_weapon1_s01 = SharedTan
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -4223,7 +4223,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_
 
 object_tangible_ship_attachment_weapon_shared_hutt_heavy_weapon1_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/hutt_fighter_heavy_weapon1_s02.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -4259,7 +4259,7 @@ object_tangible_ship_attachment_weapon_shared_hutt_heavy_weapon1_s02 = SharedTan
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -4278,7 +4278,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_
 
 object_tangible_ship_attachment_weapon_shared_hutt_heavy_weapon1_s03 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/hutt_fighter_heavy_weapon1_s03.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -4314,7 +4314,7 @@ object_tangible_ship_attachment_weapon_shared_hutt_heavy_weapon1_s03 = SharedTan
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -4333,7 +4333,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_
 
 object_tangible_ship_attachment_weapon_shared_hutt_heavy_weapon1_s04 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/hutt_fighter_heavy_weapon1_s04.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -4369,7 +4369,7 @@ object_tangible_ship_attachment_weapon_shared_hutt_heavy_weapon1_s04 = SharedTan
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -4388,7 +4388,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_
 
 object_tangible_ship_attachment_weapon_shared_hutt_heavy_weapon1_s05 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/hutt_fighter_heavy_weapon1_s05.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -4424,7 +4424,7 @@ object_tangible_ship_attachment_weapon_shared_hutt_heavy_weapon1_s05 = SharedTan
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -4443,7 +4443,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_
 
 object_tangible_ship_attachment_weapon_shared_hutt_heavy_weapon1_s06 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/hutt_fighter_heavy_weapon1_s06.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -4479,7 +4479,7 @@ object_tangible_ship_attachment_weapon_shared_hutt_heavy_weapon1_s06 = SharedTan
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -4498,7 +4498,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_
 
 object_tangible_ship_attachment_weapon_shared_hutt_heavy_weapon2_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/hutt_fighter_heavy_weapon2_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -4534,7 +4534,7 @@ object_tangible_ship_attachment_weapon_shared_hutt_heavy_weapon2_s01 = SharedTan
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -4553,7 +4553,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_
 
 object_tangible_ship_attachment_weapon_shared_hutt_heavy_weapon2_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/hutt_fighter_heavy_weapon2_s02.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -4589,7 +4589,7 @@ object_tangible_ship_attachment_weapon_shared_hutt_heavy_weapon2_s02 = SharedTan
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -4608,7 +4608,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_
 
 object_tangible_ship_attachment_weapon_shared_hutt_heavy_weapon2_s03 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/hutt_fighter_heavy_weapon2_s03.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -4644,7 +4644,7 @@ object_tangible_ship_attachment_weapon_shared_hutt_heavy_weapon2_s03 = SharedTan
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -4663,7 +4663,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_
 
 object_tangible_ship_attachment_weapon_shared_hutt_heavy_weapon2_s04 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/hutt_fighter_heavy_weapon2_s04.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -4699,7 +4699,7 @@ object_tangible_ship_attachment_weapon_shared_hutt_heavy_weapon2_s04 = SharedTan
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -4718,7 +4718,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_
 
 object_tangible_ship_attachment_weapon_shared_hutt_heavy_weapon2_s05 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/hutt_fighter_heavy_weapon2_s05.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -4754,7 +4754,7 @@ object_tangible_ship_attachment_weapon_shared_hutt_heavy_weapon2_s05 = SharedTan
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -4773,7 +4773,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_
 
 object_tangible_ship_attachment_weapon_shared_hutt_heavy_weapon2_s06 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/hutt_fighter_heavy_weapon2_s06.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -4809,7 +4809,7 @@ object_tangible_ship_attachment_weapon_shared_hutt_heavy_weapon2_s06 = SharedTan
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -4828,7 +4828,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_
 
 object_tangible_ship_attachment_weapon_shared_hutt_heavy_weapon3_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/hutt_fighter_heavy_weapon3_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -4864,7 +4864,7 @@ object_tangible_ship_attachment_weapon_shared_hutt_heavy_weapon3_s01 = SharedTan
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -4883,7 +4883,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_
 
 object_tangible_ship_attachment_weapon_shared_hutt_heavy_weapon3_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/hutt_fighter_heavy_weapon3_s02.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -4919,7 +4919,7 @@ object_tangible_ship_attachment_weapon_shared_hutt_heavy_weapon3_s02 = SharedTan
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -4938,7 +4938,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_
 
 object_tangible_ship_attachment_weapon_shared_hutt_heavy_weapon3_s03 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/hutt_fighter_heavy_weapon3_s03.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -4974,7 +4974,7 @@ object_tangible_ship_attachment_weapon_shared_hutt_heavy_weapon3_s03 = SharedTan
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -4993,7 +4993,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_
 
 object_tangible_ship_attachment_weapon_shared_hutt_heavy_weapon3_s04 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/hutt_fighter_heavy_weapon3_s04.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -5029,7 +5029,7 @@ object_tangible_ship_attachment_weapon_shared_hutt_heavy_weapon3_s04 = SharedTan
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -5048,7 +5048,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_
 
 object_tangible_ship_attachment_weapon_shared_hutt_heavy_weapon3_s05 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/hutt_fighter_heavy_weapon3_s05.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -5084,7 +5084,7 @@ object_tangible_ship_attachment_weapon_shared_hutt_heavy_weapon3_s05 = SharedTan
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -5103,7 +5103,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_
 
 object_tangible_ship_attachment_weapon_shared_hutt_heavy_weapon3_s06 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/hutt_fighter_heavy_weapon3_s06.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -5139,7 +5139,7 @@ object_tangible_ship_attachment_weapon_shared_hutt_heavy_weapon3_s06 = SharedTan
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -5158,7 +5158,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_
 
 object_tangible_ship_attachment_weapon_shared_hutt_light_weapon_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/hutt_fighter_light_weapon_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -5194,7 +5194,7 @@ object_tangible_ship_attachment_weapon_shared_hutt_light_weapon_s01 = SharedTang
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -5213,7 +5213,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_
 
 object_tangible_ship_attachment_weapon_shared_hutt_light_weapon_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/hutt_fighter_light_weapon_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -5249,7 +5249,7 @@ object_tangible_ship_attachment_weapon_shared_hutt_light_weapon_s02 = SharedTang
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -5268,7 +5268,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_
 
 object_tangible_ship_attachment_weapon_shared_hutt_light_weapon_s03 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/hutt_fighter_light_weapon_s03.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -5304,7 +5304,7 @@ object_tangible_ship_attachment_weapon_shared_hutt_light_weapon_s03 = SharedTang
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -5323,7 +5323,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_
 
 object_tangible_ship_attachment_weapon_shared_hutt_light_weapon_s04 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/hutt_fighter_light_weapon_s04.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -5359,7 +5359,7 @@ object_tangible_ship_attachment_weapon_shared_hutt_light_weapon_s04 = SharedTang
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -5378,7 +5378,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_
 
 object_tangible_ship_attachment_weapon_shared_hutt_light_weapon_s05 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/hutt_fighter_light_weapon_s05.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -5414,7 +5414,7 @@ object_tangible_ship_attachment_weapon_shared_hutt_light_weapon_s05 = SharedTang
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -5433,7 +5433,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_
 
 object_tangible_ship_attachment_weapon_shared_hutt_light_weapon_s06 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/hutt_fighter_light_weapon_s06.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -5469,7 +5469,7 @@ object_tangible_ship_attachment_weapon_shared_hutt_light_weapon_s06 = SharedTang
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -5488,7 +5488,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_
 
 object_tangible_ship_attachment_weapon_shared_hutt_medium_weapon1_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/hutt_fighter_medium_weapon1_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -5524,7 +5524,7 @@ object_tangible_ship_attachment_weapon_shared_hutt_medium_weapon1_s01 = SharedTa
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -5543,7 +5543,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_
 
 object_tangible_ship_attachment_weapon_shared_hutt_medium_weapon1_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/hutt_fighter_medium_weapon1_s02.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -5579,7 +5579,7 @@ object_tangible_ship_attachment_weapon_shared_hutt_medium_weapon1_s02 = SharedTa
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -5598,7 +5598,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_
 
 object_tangible_ship_attachment_weapon_shared_hutt_medium_weapon1_s03 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/hutt_fighter_medium_weapon1_s03.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -5634,7 +5634,7 @@ object_tangible_ship_attachment_weapon_shared_hutt_medium_weapon1_s03 = SharedTa
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -5653,7 +5653,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_
 
 object_tangible_ship_attachment_weapon_shared_hutt_medium_weapon1_s04 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/hutt_fighter_medium_weapon1_s04.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -5689,7 +5689,7 @@ object_tangible_ship_attachment_weapon_shared_hutt_medium_weapon1_s04 = SharedTa
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -5708,7 +5708,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_
 
 object_tangible_ship_attachment_weapon_shared_hutt_medium_weapon1_s05 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/hutt_fighter_medium_weapon1_s05.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -5744,7 +5744,7 @@ object_tangible_ship_attachment_weapon_shared_hutt_medium_weapon1_s05 = SharedTa
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -5763,7 +5763,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_
 
 object_tangible_ship_attachment_weapon_shared_hutt_medium_weapon1_s06 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/hutt_fighter_medium_weapon1_s06.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -5799,7 +5799,7 @@ object_tangible_ship_attachment_weapon_shared_hutt_medium_weapon1_s06 = SharedTa
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -5818,7 +5818,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_
 
 object_tangible_ship_attachment_weapon_shared_hutt_medium_weapon2_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/hutt_fighter_medium_weapon2_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -5854,7 +5854,7 @@ object_tangible_ship_attachment_weapon_shared_hutt_medium_weapon2_s01 = SharedTa
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -5873,7 +5873,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_
 
 object_tangible_ship_attachment_weapon_shared_hutt_medium_weapon2_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/hutt_fighter_medium_weapon2_s02.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -5909,7 +5909,7 @@ object_tangible_ship_attachment_weapon_shared_hutt_medium_weapon2_s02 = SharedTa
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -5928,7 +5928,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_
 
 object_tangible_ship_attachment_weapon_shared_hutt_medium_weapon2_s03 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/hutt_fighter_medium_weapon2_s03.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -5964,7 +5964,7 @@ object_tangible_ship_attachment_weapon_shared_hutt_medium_weapon2_s03 = SharedTa
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -5983,7 +5983,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_
 
 object_tangible_ship_attachment_weapon_shared_hutt_medium_weapon2_s04 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/hutt_fighter_medium_weapon2_s04.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -6019,7 +6019,7 @@ object_tangible_ship_attachment_weapon_shared_hutt_medium_weapon2_s04 = SharedTa
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -6038,7 +6038,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_
 
 object_tangible_ship_attachment_weapon_shared_hutt_medium_weapon2_s05 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/hutt_fighter_medium_weapon2_s05.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -6074,7 +6074,7 @@ object_tangible_ship_attachment_weapon_shared_hutt_medium_weapon2_s05 = SharedTa
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -6093,7 +6093,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_
 
 object_tangible_ship_attachment_weapon_shared_hutt_medium_weapon2_s06 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/hutt_fighter_medium_weapon2_s06.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -6129,7 +6129,7 @@ object_tangible_ship_attachment_weapon_shared_hutt_medium_weapon2_s06 = SharedTa
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -6148,7 +6148,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_
 
 object_tangible_ship_attachment_weapon_shared_imperial_gunboat_turret_ball = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/imperial_gunboat_turret_ball.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -6184,7 +6184,7 @@ object_tangible_ship_attachment_weapon_shared_imperial_gunboat_turret_ball = Sha
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -6203,7 +6203,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_
 
 object_tangible_ship_attachment_weapon_shared_imperial_gunboat_turretbase_nose = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/imperial_gunboat_turretbase_nose.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -6239,7 +6239,7 @@ object_tangible_ship_attachment_weapon_shared_imperial_gunboat_turretbase_nose =
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -6258,7 +6258,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_
 
 object_tangible_ship_attachment_weapon_shared_imperial_gunboat_turretbase_wing = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/imperial_gunboat_turretbase_wing.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -6294,7 +6294,7 @@ object_tangible_ship_attachment_weapon_shared_imperial_gunboat_turretbase_wing =
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -6313,7 +6313,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_
 
 object_tangible_ship_attachment_weapon_shared_kse_firespray_weapon1_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/kse_firespray_weapon1_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -6349,7 +6349,7 @@ object_tangible_ship_attachment_weapon_shared_kse_firespray_weapon1_s01 = Shared
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -6368,7 +6368,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_
 
 object_tangible_ship_attachment_weapon_shared_kse_firespray_weapon1_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/kse_firespray_weapon1_s02.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -6404,7 +6404,7 @@ object_tangible_ship_attachment_weapon_shared_kse_firespray_weapon1_s02 = Shared
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -6423,7 +6423,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_
 
 object_tangible_ship_attachment_weapon_shared_kse_firespray_weapon1_s03 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/kse_firespray_weapon1_s03.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -6459,7 +6459,7 @@ object_tangible_ship_attachment_weapon_shared_kse_firespray_weapon1_s03 = Shared
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -6478,7 +6478,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_
 
 object_tangible_ship_attachment_weapon_shared_kse_firespray_weapon1_s04 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/kse_firespray_weapon1_s04.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -6514,7 +6514,7 @@ object_tangible_ship_attachment_weapon_shared_kse_firespray_weapon1_s04 = Shared
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -6533,7 +6533,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_
 
 object_tangible_ship_attachment_weapon_shared_kse_firespray_weapon1_s05 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/kse_firespray_weapon1_s05.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -6569,7 +6569,7 @@ object_tangible_ship_attachment_weapon_shared_kse_firespray_weapon1_s05 = Shared
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -6588,7 +6588,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_
 
 object_tangible_ship_attachment_weapon_shared_kse_firespray_weapon1_s06 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/kse_firespray_weapon1_s06.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -6624,7 +6624,7 @@ object_tangible_ship_attachment_weapon_shared_kse_firespray_weapon1_s06 = Shared
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -6643,7 +6643,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_
 
 object_tangible_ship_attachment_weapon_shared_kse_firespray_weapon2_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/kse_firespray_weapon2_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -6679,7 +6679,7 @@ object_tangible_ship_attachment_weapon_shared_kse_firespray_weapon2_s01 = Shared
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -6698,7 +6698,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_
 
 object_tangible_ship_attachment_weapon_shared_kse_firespray_weapon2_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/kse_firespray_weapon2_s02.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -6734,7 +6734,7 @@ object_tangible_ship_attachment_weapon_shared_kse_firespray_weapon2_s02 = Shared
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -6753,7 +6753,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_
 
 object_tangible_ship_attachment_weapon_shared_kse_firespray_weapon2_s03 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/kse_firespray_weapon2_s03.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -6789,7 +6789,7 @@ object_tangible_ship_attachment_weapon_shared_kse_firespray_weapon2_s03 = Shared
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -6808,7 +6808,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_
 
 object_tangible_ship_attachment_weapon_shared_kse_firespray_weapon2_s04 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/kse_firespray_weapon2_s04.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -6844,7 +6844,7 @@ object_tangible_ship_attachment_weapon_shared_kse_firespray_weapon2_s04 = Shared
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -6863,7 +6863,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_
 
 object_tangible_ship_attachment_weapon_shared_kse_firespray_weapon2_s05 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/kse_firespray_weapon2_s05.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -6899,7 +6899,7 @@ object_tangible_ship_attachment_weapon_shared_kse_firespray_weapon2_s05 = Shared
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -6918,7 +6918,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_
 
 object_tangible_ship_attachment_weapon_shared_kse_firespray_weapon2_s06 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/kse_firespray_weapon2_s06.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -6954,7 +6954,7 @@ object_tangible_ship_attachment_weapon_shared_kse_firespray_weapon2_s06 = Shared
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -6973,7 +6973,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_
 
 object_tangible_ship_attachment_weapon_shared_lambda_turret = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/lambda_turret.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -7009,7 +7009,7 @@ object_tangible_ship_attachment_weapon_shared_lambda_turret = SharedTangibleObje
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -7028,7 +7028,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_
 
 object_tangible_ship_attachment_weapon_shared_lambda_weapon1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/lambda_weapon1.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -7064,7 +7064,7 @@ object_tangible_ship_attachment_weapon_shared_lambda_weapon1 = SharedTangibleObj
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -7083,7 +7083,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_
 
 object_tangible_ship_attachment_weapon_shared_lambda_weapon_body = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/lambda_weapon_body.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -7119,7 +7119,7 @@ object_tangible_ship_attachment_weapon_shared_lambda_weapon_body = SharedTangibl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -7138,7 +7138,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_
 
 object_tangible_ship_attachment_weapon_shared_merchant_cruiser_medium_turret_base_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/merchant_cruiser_medium_turretbase_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -7174,7 +7174,7 @@ object_tangible_ship_attachment_weapon_shared_merchant_cruiser_medium_turret_bas
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -7193,7 +7193,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_
 
 object_tangible_ship_attachment_weapon_shared_rebel_gunboat_turretbase_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/rebel_gunboat_turretbase_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -7229,7 +7229,7 @@ object_tangible_ship_attachment_weapon_shared_rebel_gunboat_turretbase_s01 = Sha
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -7248,7 +7248,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_
 
 object_tangible_ship_attachment_weapon_shared_smuggler_warlord_ship_turret_ball = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/smuggler_warlord_ship_turret_ball.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -7284,7 +7284,7 @@ object_tangible_ship_attachment_weapon_shared_smuggler_warlord_ship_turret_ball 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -7303,7 +7303,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_
 
 object_tangible_ship_attachment_weapon_shared_smuggler_warlord_ship_turret_nose = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/smuggler_warlord_ship_turretbase_nose.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -7339,7 +7339,7 @@ object_tangible_ship_attachment_weapon_shared_smuggler_warlord_ship_turret_nose 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -7358,7 +7358,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_
 
 object_tangible_ship_attachment_weapon_shared_smuggler_warlord_ship_turret_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/smuggler_warlord_ship_turretbase_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -7394,7 +7394,7 @@ object_tangible_ship_attachment_weapon_shared_smuggler_warlord_ship_turret_s01 =
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -7413,7 +7413,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_
 
 object_tangible_ship_attachment_weapon_shared_smuggler_warlord_ship_turret_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/smuggler_warlord_ship_turretbase_s02.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -7449,7 +7449,7 @@ object_tangible_ship_attachment_weapon_shared_smuggler_warlord_ship_turret_s02 =
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -7468,7 +7468,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_
 
 object_tangible_ship_attachment_weapon_shared_spacestation_turret_base_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/spacestation_turret_base_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -7504,7 +7504,7 @@ object_tangible_ship_attachment_weapon_shared_spacestation_turret_base_s01 = Sha
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -7523,7 +7523,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_
 
 object_tangible_ship_attachment_weapon_shared_spacestation_turret_base_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/spacestation_turret_base_s02.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -7559,7 +7559,7 @@ object_tangible_ship_attachment_weapon_shared_spacestation_turret_base_s02 = Sha
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -7578,7 +7578,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_
 
 object_tangible_ship_attachment_weapon_shared_star_destroyer_mini_turret_base = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/star_destroyer_mini_turret_base.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -7614,7 +7614,7 @@ object_tangible_ship_attachment_weapon_shared_star_destroyer_mini_turret_base = 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -7633,7 +7633,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_
 
 object_tangible_ship_attachment_weapon_shared_star_destroyer_turret_dome_base = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/star_destroyer_turret_dome_base.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -7669,7 +7669,7 @@ object_tangible_ship_attachment_weapon_shared_star_destroyer_turret_dome_base = 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -7688,7 +7688,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_
 
 object_tangible_ship_attachment_weapon_shared_star_destroyer_turret_dome_body = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/star_destroyer_turret_dome_body.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -7724,7 +7724,7 @@ object_tangible_ship_attachment_weapon_shared_star_destroyer_turret_dome_body = 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -7743,7 +7743,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_
 
 object_tangible_ship_attachment_weapon_shared_star_destroyer_turret_med_base = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/star_destroyer_turret_med_base.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -7779,7 +7779,7 @@ object_tangible_ship_attachment_weapon_shared_star_destroyer_turret_med_base = S
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -7798,7 +7798,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_
 
 object_tangible_ship_attachment_weapon_shared_star_destroyer_turret_med_gun = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/star_destroyer_turret_med_gun.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -7834,7 +7834,7 @@ object_tangible_ship_attachment_weapon_shared_star_destroyer_turret_med_gun = Sh
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -7853,7 +7853,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_
 
 object_tangible_ship_attachment_weapon_shared_star_destroyer_turret_square_base = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/star_destroyer_turret_square_base.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -7889,7 +7889,7 @@ object_tangible_ship_attachment_weapon_shared_star_destroyer_turret_square_base 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -7908,7 +7908,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_
 
 object_tangible_ship_attachment_weapon_shared_star_destroyer_turret_square_body = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/star_destroyer_turret_square_body.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -7944,7 +7944,7 @@ object_tangible_ship_attachment_weapon_shared_star_destroyer_turret_square_body 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -7963,7 +7963,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_
 
 object_tangible_ship_attachment_weapon_shared_xwing_weapon1_neg_s01_0 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/xwing_weapon1_neg_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -7999,7 +7999,7 @@ object_tangible_ship_attachment_weapon_shared_xwing_weapon1_neg_s01_0 = SharedTa
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -8018,7 +8018,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_
 
 object_tangible_ship_attachment_weapon_shared_xwing_weapon1_neg_s01_1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/xwing_weapon1_neg_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -8054,7 +8054,7 @@ object_tangible_ship_attachment_weapon_shared_xwing_weapon1_neg_s01_1 = SharedTa
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -8073,7 +8073,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_
 
 object_tangible_ship_attachment_weapon_shared_xwing_weapon1_neg_s02_0 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/xwing_weapon1_neg_s02.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -8109,7 +8109,7 @@ object_tangible_ship_attachment_weapon_shared_xwing_weapon1_neg_s02_0 = SharedTa
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -8128,7 +8128,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_
 
 object_tangible_ship_attachment_weapon_shared_xwing_weapon1_neg_s02_1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/xwing_weapon1_neg_s02.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -8164,7 +8164,7 @@ object_tangible_ship_attachment_weapon_shared_xwing_weapon1_neg_s02_1 = SharedTa
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -8183,7 +8183,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_
 
 object_tangible_ship_attachment_weapon_shared_xwing_weapon1_neg_s03_0 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/xwing_weapon1_neg_s03.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -8219,7 +8219,7 @@ object_tangible_ship_attachment_weapon_shared_xwing_weapon1_neg_s03_0 = SharedTa
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -8238,7 +8238,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_
 
 object_tangible_ship_attachment_weapon_shared_xwing_weapon1_neg_s03_1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/xwing_weapon1_neg_s03.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -8274,7 +8274,7 @@ object_tangible_ship_attachment_weapon_shared_xwing_weapon1_neg_s03_1 = SharedTa
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -8293,7 +8293,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_
 
 object_tangible_ship_attachment_weapon_shared_xwing_weapon1_neg_s04_0 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/xwing_weapon1_neg_s04.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -8329,7 +8329,7 @@ object_tangible_ship_attachment_weapon_shared_xwing_weapon1_neg_s04_0 = SharedTa
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -8348,7 +8348,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_
 
 object_tangible_ship_attachment_weapon_shared_xwing_weapon1_neg_s04_1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/xwing_weapon1_neg_s04.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -8384,7 +8384,7 @@ object_tangible_ship_attachment_weapon_shared_xwing_weapon1_neg_s04_1 = SharedTa
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -8403,7 +8403,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_
 
 object_tangible_ship_attachment_weapon_shared_xwing_weapon1_neg_s05_0 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/xwing_weapon1_neg_s05.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -8439,7 +8439,7 @@ object_tangible_ship_attachment_weapon_shared_xwing_weapon1_neg_s05_0 = SharedTa
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -8458,7 +8458,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_
 
 object_tangible_ship_attachment_weapon_shared_xwing_weapon1_neg_s05_1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/xwing_weapon1_neg_s05.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -8494,7 +8494,7 @@ object_tangible_ship_attachment_weapon_shared_xwing_weapon1_neg_s05_1 = SharedTa
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -8513,7 +8513,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_
 
 object_tangible_ship_attachment_weapon_shared_xwing_weapon1_neg_s06_0 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/xwing_weapon1_neg_s06.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -8549,7 +8549,7 @@ object_tangible_ship_attachment_weapon_shared_xwing_weapon1_neg_s06_0 = SharedTa
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -8568,7 +8568,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_
 
 object_tangible_ship_attachment_weapon_shared_xwing_weapon1_neg_s06_1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/xwing_weapon1_neg_s06.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -8604,7 +8604,7 @@ object_tangible_ship_attachment_weapon_shared_xwing_weapon1_neg_s06_1 = SharedTa
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -8623,7 +8623,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_
 
 object_tangible_ship_attachment_weapon_shared_xwing_weapon1_pos_s01_0 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/xwing_weapon1_pos_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -8659,7 +8659,7 @@ object_tangible_ship_attachment_weapon_shared_xwing_weapon1_pos_s01_0 = SharedTa
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -8678,7 +8678,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_
 
 object_tangible_ship_attachment_weapon_shared_xwing_weapon1_pos_s01_1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/xwing_weapon1_pos_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -8714,7 +8714,7 @@ object_tangible_ship_attachment_weapon_shared_xwing_weapon1_pos_s01_1 = SharedTa
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -8733,7 +8733,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_
 
 object_tangible_ship_attachment_weapon_shared_xwing_weapon1_pos_s02_0 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/xwing_weapon1_pos_s02.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -8769,7 +8769,7 @@ object_tangible_ship_attachment_weapon_shared_xwing_weapon1_pos_s02_0 = SharedTa
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -8788,7 +8788,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_
 
 object_tangible_ship_attachment_weapon_shared_xwing_weapon1_pos_s02_1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/xwing_weapon1_pos_s02.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -8824,7 +8824,7 @@ object_tangible_ship_attachment_weapon_shared_xwing_weapon1_pos_s02_1 = SharedTa
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -8843,7 +8843,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_
 
 object_tangible_ship_attachment_weapon_shared_xwing_weapon1_pos_s03_0 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/xwing_weapon1_pos_s03.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -8879,7 +8879,7 @@ object_tangible_ship_attachment_weapon_shared_xwing_weapon1_pos_s03_0 = SharedTa
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -8898,7 +8898,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_
 
 object_tangible_ship_attachment_weapon_shared_xwing_weapon1_pos_s03_1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/xwing_weapon1_pos_s03.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -8934,7 +8934,7 @@ object_tangible_ship_attachment_weapon_shared_xwing_weapon1_pos_s03_1 = SharedTa
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -8953,7 +8953,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_
 
 object_tangible_ship_attachment_weapon_shared_xwing_weapon1_pos_s04_0 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/xwing_weapon1_pos_s04.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -8989,7 +8989,7 @@ object_tangible_ship_attachment_weapon_shared_xwing_weapon1_pos_s04_0 = SharedTa
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -9008,7 +9008,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_
 
 object_tangible_ship_attachment_weapon_shared_xwing_weapon1_pos_s04_1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/xwing_weapon1_pos_s04.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -9044,7 +9044,7 @@ object_tangible_ship_attachment_weapon_shared_xwing_weapon1_pos_s04_1 = SharedTa
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -9063,7 +9063,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_
 
 object_tangible_ship_attachment_weapon_shared_xwing_weapon1_pos_s05_0 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/xwing_weapon1_pos_s05.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -9099,7 +9099,7 @@ object_tangible_ship_attachment_weapon_shared_xwing_weapon1_pos_s05_0 = SharedTa
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -9118,7 +9118,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_
 
 object_tangible_ship_attachment_weapon_shared_xwing_weapon1_pos_s05_1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/xwing_weapon1_pos_s05.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -9154,7 +9154,7 @@ object_tangible_ship_attachment_weapon_shared_xwing_weapon1_pos_s05_1 = SharedTa
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -9173,7 +9173,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_
 
 object_tangible_ship_attachment_weapon_shared_xwing_weapon1_pos_s06_0 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/xwing_weapon1_pos_s06.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -9209,7 +9209,7 @@ object_tangible_ship_attachment_weapon_shared_xwing_weapon1_pos_s06_0 = SharedTa
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -9228,7 +9228,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_
 
 object_tangible_ship_attachment_weapon_shared_xwing_weapon1_pos_s06_1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/xwing_weapon1_pos_s06.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -9264,7 +9264,7 @@ object_tangible_ship_attachment_weapon_shared_xwing_weapon1_pos_s06_1 = SharedTa
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -9283,7 +9283,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_
 
 object_tangible_ship_attachment_weapon_shared_xwing_weapon2_neg_s01_0 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/xwing_weapon2_neg_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -9319,7 +9319,7 @@ object_tangible_ship_attachment_weapon_shared_xwing_weapon2_neg_s01_0 = SharedTa
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -9338,7 +9338,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_
 
 object_tangible_ship_attachment_weapon_shared_xwing_weapon2_neg_s01_1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/xwing_weapon2_neg_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -9374,7 +9374,7 @@ object_tangible_ship_attachment_weapon_shared_xwing_weapon2_neg_s01_1 = SharedTa
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -9393,7 +9393,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_
 
 object_tangible_ship_attachment_weapon_shared_xwing_weapon2_neg_s02_0 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/xwing_weapon2_neg_s02.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -9429,7 +9429,7 @@ object_tangible_ship_attachment_weapon_shared_xwing_weapon2_neg_s02_0 = SharedTa
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -9448,7 +9448,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_
 
 object_tangible_ship_attachment_weapon_shared_xwing_weapon2_neg_s02_1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/xwing_weapon2_neg_s02.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -9484,7 +9484,7 @@ object_tangible_ship_attachment_weapon_shared_xwing_weapon2_neg_s02_1 = SharedTa
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -9503,7 +9503,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_
 
 object_tangible_ship_attachment_weapon_shared_xwing_weapon2_neg_s03_0 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/xwing_weapon2_neg_s03.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -9539,7 +9539,7 @@ object_tangible_ship_attachment_weapon_shared_xwing_weapon2_neg_s03_0 = SharedTa
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -9558,7 +9558,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_
 
 object_tangible_ship_attachment_weapon_shared_xwing_weapon2_neg_s03_1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/xwing_weapon2_neg_s03.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -9594,7 +9594,7 @@ object_tangible_ship_attachment_weapon_shared_xwing_weapon2_neg_s03_1 = SharedTa
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -9613,7 +9613,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_
 
 object_tangible_ship_attachment_weapon_shared_xwing_weapon2_neg_s04_0 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/xwing_weapon2_neg_s04.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -9649,7 +9649,7 @@ object_tangible_ship_attachment_weapon_shared_xwing_weapon2_neg_s04_0 = SharedTa
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -9668,7 +9668,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_
 
 object_tangible_ship_attachment_weapon_shared_xwing_weapon2_neg_s04_1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/xwing_weapon2_neg_s04.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -9704,7 +9704,7 @@ object_tangible_ship_attachment_weapon_shared_xwing_weapon2_neg_s04_1 = SharedTa
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -9723,7 +9723,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_
 
 object_tangible_ship_attachment_weapon_shared_xwing_weapon2_neg_s05_0 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/xwing_weapon2_neg_s05.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -9759,7 +9759,7 @@ object_tangible_ship_attachment_weapon_shared_xwing_weapon2_neg_s05_0 = SharedTa
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -9778,7 +9778,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_
 
 object_tangible_ship_attachment_weapon_shared_xwing_weapon2_neg_s05_1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/xwing_weapon2_neg_s05.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -9814,7 +9814,7 @@ object_tangible_ship_attachment_weapon_shared_xwing_weapon2_neg_s05_1 = SharedTa
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -9833,7 +9833,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_
 
 object_tangible_ship_attachment_weapon_shared_xwing_weapon2_neg_s06_0 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/xwing_weapon2_pos_s06.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -9869,7 +9869,7 @@ object_tangible_ship_attachment_weapon_shared_xwing_weapon2_neg_s06_0 = SharedTa
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -9888,7 +9888,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_
 
 object_tangible_ship_attachment_weapon_shared_xwing_weapon2_neg_s06_1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/xwing_weapon2_neg_s06.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -9924,7 +9924,7 @@ object_tangible_ship_attachment_weapon_shared_xwing_weapon2_neg_s06_1 = SharedTa
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -9943,7 +9943,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_
 
 object_tangible_ship_attachment_weapon_shared_xwing_weapon2_pos_s01_0 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/xwing_weapon2_pos_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -9979,7 +9979,7 @@ object_tangible_ship_attachment_weapon_shared_xwing_weapon2_pos_s01_0 = SharedTa
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -9998,7 +9998,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_
 
 object_tangible_ship_attachment_weapon_shared_xwing_weapon2_pos_s01_1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/xwing_weapon2_pos_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -10034,7 +10034,7 @@ object_tangible_ship_attachment_weapon_shared_xwing_weapon2_pos_s01_1 = SharedTa
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -10053,7 +10053,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_
 
 object_tangible_ship_attachment_weapon_shared_xwing_weapon2_pos_s02_0 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/xwing_weapon2_pos_s02.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -10089,7 +10089,7 @@ object_tangible_ship_attachment_weapon_shared_xwing_weapon2_pos_s02_0 = SharedTa
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -10108,7 +10108,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_
 
 object_tangible_ship_attachment_weapon_shared_xwing_weapon2_pos_s02_1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/xwing_weapon2_pos_s02.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -10144,7 +10144,7 @@ object_tangible_ship_attachment_weapon_shared_xwing_weapon2_pos_s02_1 = SharedTa
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -10163,7 +10163,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_
 
 object_tangible_ship_attachment_weapon_shared_xwing_weapon2_pos_s03_0 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/xwing_weapon2_pos_s03.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -10199,7 +10199,7 @@ object_tangible_ship_attachment_weapon_shared_xwing_weapon2_pos_s03_0 = SharedTa
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -10218,7 +10218,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_
 
 object_tangible_ship_attachment_weapon_shared_xwing_weapon2_pos_s03_1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/xwing_weapon2_pos_s03.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -10254,7 +10254,7 @@ object_tangible_ship_attachment_weapon_shared_xwing_weapon2_pos_s03_1 = SharedTa
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -10273,7 +10273,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_
 
 object_tangible_ship_attachment_weapon_shared_xwing_weapon2_pos_s04_0 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/xwing_weapon2_pos_s04.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -10309,7 +10309,7 @@ object_tangible_ship_attachment_weapon_shared_xwing_weapon2_pos_s04_0 = SharedTa
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -10328,7 +10328,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_
 
 object_tangible_ship_attachment_weapon_shared_xwing_weapon2_pos_s04_1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/xwing_weapon2_pos_s04.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -10364,7 +10364,7 @@ object_tangible_ship_attachment_weapon_shared_xwing_weapon2_pos_s04_1 = SharedTa
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -10383,7 +10383,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_
 
 object_tangible_ship_attachment_weapon_shared_xwing_weapon2_pos_s05_0 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/xwing_weapon2_pos_s05.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -10419,7 +10419,7 @@ object_tangible_ship_attachment_weapon_shared_xwing_weapon2_pos_s05_0 = SharedTa
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -10438,7 +10438,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_
 
 object_tangible_ship_attachment_weapon_shared_xwing_weapon2_pos_s05_1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/xwing_weapon2_pos_s05.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -10474,7 +10474,7 @@ object_tangible_ship_attachment_weapon_shared_xwing_weapon2_pos_s05_1 = SharedTa
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -10493,7 +10493,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_
 
 object_tangible_ship_attachment_weapon_shared_xwing_weapon2_pos_s06_0 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/xwing_weapon2_pos_s06.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -10529,7 +10529,7 @@ object_tangible_ship_attachment_weapon_shared_xwing_weapon2_pos_s06_0 = SharedTa
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -10548,7 +10548,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_
 
 object_tangible_ship_attachment_weapon_shared_xwing_weapon2_pos_s06_1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/xwing_weapon2_pos_s06.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -10584,7 +10584,7 @@ object_tangible_ship_attachment_weapon_shared_xwing_weapon2_pos_s06_1 = SharedTa
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -10603,7 +10603,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_
 
 object_tangible_ship_attachment_weapon_shared_xwing_weapon_neg_s01_0 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/xwing_weapon_neg_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -10639,7 +10639,7 @@ object_tangible_ship_attachment_weapon_shared_xwing_weapon_neg_s01_0 = SharedTan
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -10658,7 +10658,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_
 
 object_tangible_ship_attachment_weapon_shared_xwing_weapon_neg_s01_1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/xwing_weapon_neg_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -10694,7 +10694,7 @@ object_tangible_ship_attachment_weapon_shared_xwing_weapon_neg_s01_1 = SharedTan
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -10713,7 +10713,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_
 
 object_tangible_ship_attachment_weapon_shared_xwing_weapon_neg_s02_0 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/xwing_weapon_neg_s02.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -10749,7 +10749,7 @@ object_tangible_ship_attachment_weapon_shared_xwing_weapon_neg_s02_0 = SharedTan
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -10768,7 +10768,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_
 
 object_tangible_ship_attachment_weapon_shared_xwing_weapon_neg_s02_1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/xwing_weapon_neg_s02.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -10804,7 +10804,7 @@ object_tangible_ship_attachment_weapon_shared_xwing_weapon_neg_s02_1 = SharedTan
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -10823,7 +10823,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_
 
 object_tangible_ship_attachment_weapon_shared_xwing_weapon_pos_s01_0 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/xwing_weapon_pos_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -10859,7 +10859,7 @@ object_tangible_ship_attachment_weapon_shared_xwing_weapon_pos_s01_0 = SharedTan
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -10878,7 +10878,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_
 
 object_tangible_ship_attachment_weapon_shared_xwing_weapon_pos_s01_1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/xwing_weapon_pos_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -10914,7 +10914,7 @@ object_tangible_ship_attachment_weapon_shared_xwing_weapon_pos_s01_1 = SharedTan
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -10933,7 +10933,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_
 
 object_tangible_ship_attachment_weapon_shared_xwing_weapon_pos_s02_0 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/xwing_weapon_pos_s02.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -10969,7 +10969,7 @@ object_tangible_ship_attachment_weapon_shared_xwing_weapon_pos_s02_0 = SharedTan
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -10988,7 +10988,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_
 
 object_tangible_ship_attachment_weapon_shared_xwing_weapon_pos_s02_1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/xwing_weapon_pos_s02.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -11024,7 +11024,7 @@ object_tangible_ship_attachment_weapon_shared_xwing_weapon_pos_s02_1 = SharedTan
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -11043,7 +11043,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_
 
 object_tangible_ship_attachment_weapon_shared_ykl37r_turret_barrel_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ykl37r_turret_barrel_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -11079,7 +11079,7 @@ object_tangible_ship_attachment_weapon_shared_ykl37r_turret_barrel_s01 = SharedT
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -11098,7 +11098,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_
 
 object_tangible_ship_attachment_weapon_shared_ykl37r_turret_barrel_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ykl37r_turret_barrel_s02.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -11134,7 +11134,7 @@ object_tangible_ship_attachment_weapon_shared_ykl37r_turret_barrel_s02 = SharedT
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -11153,7 +11153,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_
 
 object_tangible_ship_attachment_weapon_shared_ykl37r_turret_base = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ykl37r_turret_base.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -11189,7 +11189,7 @@ object_tangible_ship_attachment_weapon_shared_ykl37r_turret_base = SharedTangibl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -11208,7 +11208,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_
 
 object_tangible_ship_attachment_weapon_shared_ykl37r_turret_body_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ykl37r_turret_body_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -11244,7 +11244,7 @@ object_tangible_ship_attachment_weapon_shared_ykl37r_turret_body_s01 = SharedTan
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -11263,7 +11263,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_
 
 object_tangible_ship_attachment_weapon_shared_ykl37r_turret_body_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ykl37r_turret_body_s02.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -11299,7 +11299,7 @@ object_tangible_ship_attachment_weapon_shared_ykl37r_turret_body_s02 = SharedTan
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -11318,7 +11318,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_
 
 object_tangible_ship_attachment_weapon_shared_yt1300_radar_s01_0 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/yt1300_radar_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -11354,7 +11354,7 @@ object_tangible_ship_attachment_weapon_shared_yt1300_radar_s01_0 = SharedTangibl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -11373,7 +11373,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_
 
 object_tangible_ship_attachment_weapon_shared_yt1300_turret_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/yt1300_turret_base.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -11409,7 +11409,7 @@ object_tangible_ship_attachment_weapon_shared_yt1300_turret_s01 = SharedTangible
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -11428,7 +11428,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_
 
 object_tangible_ship_attachment_weapon_shared_yt1300_turret_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/yt1300_turret_base.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -11464,7 +11464,7 @@ object_tangible_ship_attachment_weapon_shared_yt1300_turret_s02 = SharedTangible
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -11483,7 +11483,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_
 
 object_tangible_ship_attachment_weapon_shared_yt1300_weapon_s01_0 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/yt1300_turret_base.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -11519,7 +11519,7 @@ object_tangible_ship_attachment_weapon_shared_yt1300_weapon_s01_0 = SharedTangib
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -11538,7 +11538,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_
 
 object_tangible_ship_attachment_weapon_shared_ywing_weapon1_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ywing_weapon1_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -11574,7 +11574,7 @@ object_tangible_ship_attachment_weapon_shared_ywing_weapon1_s01 = SharedTangible
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -11593,7 +11593,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_
 
 object_tangible_ship_attachment_weapon_shared_ywing_weapon1_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ywing_weapon1_s02.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -11629,7 +11629,7 @@ object_tangible_ship_attachment_weapon_shared_ywing_weapon1_s02 = SharedTangible
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -11648,7 +11648,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_
 
 object_tangible_ship_attachment_weapon_shared_ywing_weapon1_s03 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ywing_weapon1_s03.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -11684,7 +11684,7 @@ object_tangible_ship_attachment_weapon_shared_ywing_weapon1_s03 = SharedTangible
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -11703,7 +11703,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_
 
 object_tangible_ship_attachment_weapon_shared_ywing_weapon1_s04 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ywing_weapon1_s04.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -11739,7 +11739,7 @@ object_tangible_ship_attachment_weapon_shared_ywing_weapon1_s04 = SharedTangible
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -11758,7 +11758,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_
 
 object_tangible_ship_attachment_weapon_shared_ywing_weapon1_s05 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ywing_weapon1_s05.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -11794,7 +11794,7 @@ object_tangible_ship_attachment_weapon_shared_ywing_weapon1_s05 = SharedTangible
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -11813,7 +11813,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_
 
 object_tangible_ship_attachment_weapon_shared_ywing_weapon1_s06 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ywing_weapon1_s06.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -11849,7 +11849,7 @@ object_tangible_ship_attachment_weapon_shared_ywing_weapon1_s06 = SharedTangible
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -11868,7 +11868,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_
 
 object_tangible_ship_attachment_weapon_shared_ywing_weapon2_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ywing_weapon2_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -11904,7 +11904,7 @@ object_tangible_ship_attachment_weapon_shared_ywing_weapon2_s01 = SharedTangible
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -11923,7 +11923,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_
 
 object_tangible_ship_attachment_weapon_shared_ywing_weapon2_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ywing_weapon2_s02.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -11959,7 +11959,7 @@ object_tangible_ship_attachment_weapon_shared_ywing_weapon2_s02 = SharedTangible
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -11978,7 +11978,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_
 
 object_tangible_ship_attachment_weapon_shared_ywing_weapon2_s03 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ywing_weapon2_s03.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -12014,7 +12014,7 @@ object_tangible_ship_attachment_weapon_shared_ywing_weapon2_s03 = SharedTangible
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -12033,7 +12033,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_
 
 object_tangible_ship_attachment_weapon_shared_ywing_weapon2_s04 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ywing_weapon2_s04.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -12069,7 +12069,7 @@ object_tangible_ship_attachment_weapon_shared_ywing_weapon2_s04 = SharedTangible
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -12088,7 +12088,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_
 
 object_tangible_ship_attachment_weapon_shared_ywing_weapon2_s05 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ywing_weapon2_s05.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -12124,7 +12124,7 @@ object_tangible_ship_attachment_weapon_shared_ywing_weapon2_s05 = SharedTangible
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -12143,7 +12143,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_
 
 object_tangible_ship_attachment_weapon_shared_ywing_weapon2_s06 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ywing_weapon2_s06.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -12179,7 +12179,7 @@ object_tangible_ship_attachment_weapon_shared_ywing_weapon2_s06 = SharedTangible
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -12198,7 +12198,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_
 
 object_tangible_ship_attachment_weapon_shared_z95_missile = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/z95_missile_pod_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -12234,7 +12234,7 @@ object_tangible_ship_attachment_weapon_shared_z95_missile = SharedTangibleObject
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -12253,7 +12253,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_
 
 object_tangible_ship_attachment_weapon_shared_z95_weapon_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/z95_weapon_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -12289,7 +12289,7 @@ object_tangible_ship_attachment_weapon_shared_z95_weapon_s01 = SharedTangibleObj
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -12308,7 +12308,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_
 
 object_tangible_ship_attachment_weapon_shared_z95_weapon_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/z95_weapon_s02.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -12344,7 +12344,7 @@ object_tangible_ship_attachment_weapon_shared_z95_weapon_s02 = SharedTangibleObj
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -12363,7 +12363,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_
 
 object_tangible_ship_attachment_weapon_shared_z95_weapon_s03 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/z95_weapon_s03.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -12399,7 +12399,7 @@ object_tangible_ship_attachment_weapon_shared_z95_weapon_s03 = SharedTangibleObj
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -12418,7 +12418,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_
 
 object_tangible_ship_attachment_weapon_shared_z95_weapon_s04 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/z95_weapon_s04.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -12454,7 +12454,7 @@ object_tangible_ship_attachment_weapon_shared_z95_weapon_s04 = SharedTangibleObj
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -12473,7 +12473,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_
 
 object_tangible_ship_attachment_weapon_shared_z95_weapon_s05 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/z95_weapon_s05.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -12509,7 +12509,7 @@ object_tangible_ship_attachment_weapon_shared_z95_weapon_s05 = SharedTangibleObj
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -12528,7 +12528,7 @@ ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_weapon_shared_
 
 object_tangible_ship_attachment_weapon_shared_z95_weapon_s06 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/z95_weapon_s06.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -12564,7 +12564,7 @@ object_tangible_ship_attachment_weapon_shared_z95_weapon_s06 = SharedTangibleObj
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",

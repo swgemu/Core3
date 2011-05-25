@@ -43,7 +43,7 @@
 
 object_tangible_hair_trandoshan_shared_hair_trandoshan_female_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/trn_f_hair_s01.sat",
-	arrangementDescriptors = {"hair"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hair.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -79,7 +79,7 @@ object_tangible_hair_trandoshan_shared_hair_trandoshan_female_s01 = SharedTangib
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -98,7 +98,7 @@ ObjectTemplates:addClientTemplate(object_tangible_hair_trandoshan_shared_hair_tr
 
 object_tangible_hair_trandoshan_shared_hair_trandoshan_female_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/trn_f_hair_s02.sat",
-	arrangementDescriptors = {"hair"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hair.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -134,7 +134,7 @@ object_tangible_hair_trandoshan_shared_hair_trandoshan_female_s02 = SharedTangib
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -153,7 +153,7 @@ ObjectTemplates:addClientTemplate(object_tangible_hair_trandoshan_shared_hair_tr
 
 object_tangible_hair_trandoshan_shared_hair_trandoshan_female_s03 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/trn_f_hair_s03.sat",
-	arrangementDescriptors = {"hair"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hair.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -189,7 +189,7 @@ object_tangible_hair_trandoshan_shared_hair_trandoshan_female_s03 = SharedTangib
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -208,7 +208,7 @@ ObjectTemplates:addClientTemplate(object_tangible_hair_trandoshan_shared_hair_tr
 
 object_tangible_hair_trandoshan_shared_hair_trandoshan_female_s04 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/trn_f_hair_s04.sat",
-	arrangementDescriptors = {"hair"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hair.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -244,7 +244,7 @@ object_tangible_hair_trandoshan_shared_hair_trandoshan_female_s04 = SharedTangib
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -263,7 +263,7 @@ ObjectTemplates:addClientTemplate(object_tangible_hair_trandoshan_shared_hair_tr
 
 object_tangible_hair_trandoshan_shared_hair_trandoshan_female_s05 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/trn_f_hair_s05.sat",
-	arrangementDescriptors = {"hair"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hair.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -299,7 +299,7 @@ object_tangible_hair_trandoshan_shared_hair_trandoshan_female_s05 = SharedTangib
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -318,7 +318,7 @@ ObjectTemplates:addClientTemplate(object_tangible_hair_trandoshan_shared_hair_tr
 
 object_tangible_hair_trandoshan_shared_hair_trandoshan_female_s06 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/trn_f_hair_s06.sat",
-	arrangementDescriptors = {"hair"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hair.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -354,7 +354,7 @@ object_tangible_hair_trandoshan_shared_hair_trandoshan_female_s06 = SharedTangib
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -373,7 +373,7 @@ ObjectTemplates:addClientTemplate(object_tangible_hair_trandoshan_shared_hair_tr
 
 object_tangible_hair_trandoshan_shared_hair_trandoshan_female_s07 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/trn_f_hair_s07.sat",
-	arrangementDescriptors = {"hair"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hair.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -409,7 +409,7 @@ object_tangible_hair_trandoshan_shared_hair_trandoshan_female_s07 = SharedTangib
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -428,7 +428,7 @@ ObjectTemplates:addClientTemplate(object_tangible_hair_trandoshan_shared_hair_tr
 
 object_tangible_hair_trandoshan_shared_hair_trandoshan_female_s08 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/trn_f_hair_s08.sat",
-	arrangementDescriptors = {"hair"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hair.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -464,7 +464,7 @@ object_tangible_hair_trandoshan_shared_hair_trandoshan_female_s08 = SharedTangib
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -483,7 +483,7 @@ ObjectTemplates:addClientTemplate(object_tangible_hair_trandoshan_shared_hair_tr
 
 object_tangible_hair_trandoshan_shared_hair_trandoshan_female_s09 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/trn_f_hair_s09.sat",
-	arrangementDescriptors = {"hair"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hair.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -519,7 +519,7 @@ object_tangible_hair_trandoshan_shared_hair_trandoshan_female_s09 = SharedTangib
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -538,7 +538,7 @@ ObjectTemplates:addClientTemplate(object_tangible_hair_trandoshan_shared_hair_tr
 
 object_tangible_hair_trandoshan_shared_hair_trandoshan_female_s10 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/trn_f_hair_s10.sat",
-	arrangementDescriptors = {"hair"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hair.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -574,7 +574,7 @@ object_tangible_hair_trandoshan_shared_hair_trandoshan_female_s10 = SharedTangib
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -593,7 +593,7 @@ ObjectTemplates:addClientTemplate(object_tangible_hair_trandoshan_shared_hair_tr
 
 object_tangible_hair_trandoshan_shared_hair_trandoshan_female_s11 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/trn_f_hair_s11.sat",
-	arrangementDescriptors = {"hair"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hair.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -629,7 +629,7 @@ object_tangible_hair_trandoshan_shared_hair_trandoshan_female_s11 = SharedTangib
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -648,7 +648,7 @@ ObjectTemplates:addClientTemplate(object_tangible_hair_trandoshan_shared_hair_tr
 
 object_tangible_hair_trandoshan_shared_hair_trandoshan_female_s12 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/trn_f_hair_s12.sat",
-	arrangementDescriptors = {"hair"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hair.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -684,7 +684,7 @@ object_tangible_hair_trandoshan_shared_hair_trandoshan_female_s12 = SharedTangib
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -703,7 +703,7 @@ ObjectTemplates:addClientTemplate(object_tangible_hair_trandoshan_shared_hair_tr
 
 object_tangible_hair_trandoshan_shared_hair_trandoshan_female_s13 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/trn_f_hair_s13.sat",
-	arrangementDescriptors = {"hair"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hair.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -739,7 +739,7 @@ object_tangible_hair_trandoshan_shared_hair_trandoshan_female_s13 = SharedTangib
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -758,7 +758,7 @@ ObjectTemplates:addClientTemplate(object_tangible_hair_trandoshan_shared_hair_tr
 
 object_tangible_hair_trandoshan_shared_hair_trandoshan_female_s14 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/trn_f_hair_s14.sat",
-	arrangementDescriptors = {"hair"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hair.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -794,7 +794,7 @@ object_tangible_hair_trandoshan_shared_hair_trandoshan_female_s14 = SharedTangib
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -813,7 +813,7 @@ ObjectTemplates:addClientTemplate(object_tangible_hair_trandoshan_shared_hair_tr
 
 object_tangible_hair_trandoshan_shared_hair_trandoshan_male_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/trn_m_hair_s01.sat",
-	arrangementDescriptors = {"hair"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hair.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -849,7 +849,7 @@ object_tangible_hair_trandoshan_shared_hair_trandoshan_male_s01 = SharedTangible
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -868,7 +868,7 @@ ObjectTemplates:addClientTemplate(object_tangible_hair_trandoshan_shared_hair_tr
 
 object_tangible_hair_trandoshan_shared_hair_trandoshan_male_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/trn_m_hair_s02.sat",
-	arrangementDescriptors = {"hair"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hair.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -904,7 +904,7 @@ object_tangible_hair_trandoshan_shared_hair_trandoshan_male_s02 = SharedTangible
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -923,7 +923,7 @@ ObjectTemplates:addClientTemplate(object_tangible_hair_trandoshan_shared_hair_tr
 
 object_tangible_hair_trandoshan_shared_hair_trandoshan_male_s03 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/trn_m_hair_s03.sat",
-	arrangementDescriptors = {"hair"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hair.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -959,7 +959,7 @@ object_tangible_hair_trandoshan_shared_hair_trandoshan_male_s03 = SharedTangible
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -978,7 +978,7 @@ ObjectTemplates:addClientTemplate(object_tangible_hair_trandoshan_shared_hair_tr
 
 object_tangible_hair_trandoshan_shared_hair_trandoshan_male_s04 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/trn_m_hair_s04.sat",
-	arrangementDescriptors = {"hair"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hair.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1014,7 +1014,7 @@ object_tangible_hair_trandoshan_shared_hair_trandoshan_male_s04 = SharedTangible
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1033,7 +1033,7 @@ ObjectTemplates:addClientTemplate(object_tangible_hair_trandoshan_shared_hair_tr
 
 object_tangible_hair_trandoshan_shared_hair_trandoshan_male_s05 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/trn_m_hair_s05.sat",
-	arrangementDescriptors = {"hair"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hair.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1069,7 +1069,7 @@ object_tangible_hair_trandoshan_shared_hair_trandoshan_male_s05 = SharedTangible
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1088,7 +1088,7 @@ ObjectTemplates:addClientTemplate(object_tangible_hair_trandoshan_shared_hair_tr
 
 object_tangible_hair_trandoshan_shared_hair_trandoshan_male_s06 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/trn_m_hair_s06.sat",
-	arrangementDescriptors = {"hair"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hair.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1124,7 +1124,7 @@ object_tangible_hair_trandoshan_shared_hair_trandoshan_male_s06 = SharedTangible
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1143,7 +1143,7 @@ ObjectTemplates:addClientTemplate(object_tangible_hair_trandoshan_shared_hair_tr
 
 object_tangible_hair_trandoshan_shared_hair_trandoshan_male_s07 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/trn_m_hair_s07.sat",
-	arrangementDescriptors = {"hair"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hair.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1179,7 +1179,7 @@ object_tangible_hair_trandoshan_shared_hair_trandoshan_male_s07 = SharedTangible
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1198,7 +1198,7 @@ ObjectTemplates:addClientTemplate(object_tangible_hair_trandoshan_shared_hair_tr
 
 object_tangible_hair_trandoshan_shared_hair_trandoshan_male_s08 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/trn_m_hair_s08.sat",
-	arrangementDescriptors = {"hair"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hair.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1234,7 +1234,7 @@ object_tangible_hair_trandoshan_shared_hair_trandoshan_male_s08 = SharedTangible
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1253,7 +1253,7 @@ ObjectTemplates:addClientTemplate(object_tangible_hair_trandoshan_shared_hair_tr
 
 object_tangible_hair_trandoshan_shared_hair_trandoshan_male_s09 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/trn_m_hair_s09.sat",
-	arrangementDescriptors = {"hair"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hair.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1289,7 +1289,7 @@ object_tangible_hair_trandoshan_shared_hair_trandoshan_male_s09 = SharedTangible
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1308,7 +1308,7 @@ ObjectTemplates:addClientTemplate(object_tangible_hair_trandoshan_shared_hair_tr
 
 object_tangible_hair_trandoshan_shared_hair_trandoshan_male_s10 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/trn_m_hair_s10.sat",
-	arrangementDescriptors = {"hair"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hair.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1344,7 +1344,7 @@ object_tangible_hair_trandoshan_shared_hair_trandoshan_male_s10 = SharedTangible
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1363,7 +1363,7 @@ ObjectTemplates:addClientTemplate(object_tangible_hair_trandoshan_shared_hair_tr
 
 object_tangible_hair_trandoshan_shared_hair_trandoshan_male_s11 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/trn_m_hair_s11.sat",
-	arrangementDescriptors = {"hair"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hair.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1399,7 +1399,7 @@ object_tangible_hair_trandoshan_shared_hair_trandoshan_male_s11 = SharedTangible
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1418,7 +1418,7 @@ ObjectTemplates:addClientTemplate(object_tangible_hair_trandoshan_shared_hair_tr
 
 object_tangible_hair_trandoshan_shared_hair_trandoshan_male_s12 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/trn_m_hair_s12.sat",
-	arrangementDescriptors = {"hair"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hair.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1454,7 +1454,7 @@ object_tangible_hair_trandoshan_shared_hair_trandoshan_male_s12 = SharedTangible
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1473,7 +1473,7 @@ ObjectTemplates:addClientTemplate(object_tangible_hair_trandoshan_shared_hair_tr
 
 object_tangible_hair_trandoshan_shared_hair_trandoshan_male_s13 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/trn_m_hair_s13.sat",
-	arrangementDescriptors = {"hair"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hair.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1509,7 +1509,7 @@ object_tangible_hair_trandoshan_shared_hair_trandoshan_male_s13 = SharedTangible
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1528,7 +1528,7 @@ ObjectTemplates:addClientTemplate(object_tangible_hair_trandoshan_shared_hair_tr
 
 object_tangible_hair_trandoshan_shared_hair_trandoshan_male_s14 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/trn_m_hair_s14.sat",
-	arrangementDescriptors = {"hair"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hair.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1564,7 +1564,7 @@ object_tangible_hair_trandoshan_shared_hair_trandoshan_male_s14 = SharedTangible
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",

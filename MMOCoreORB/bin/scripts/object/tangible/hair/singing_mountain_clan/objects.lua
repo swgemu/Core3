@@ -43,7 +43,7 @@
 
 object_tangible_hair_singing_mountain_clan_shared_hair_singing_mountain_clan_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/sing_mt_clan_hair_s01.sat",
-	arrangementDescriptors = {"hair"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hair.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -79,7 +79,7 @@ object_tangible_hair_singing_mountain_clan_shared_hair_singing_mountain_clan_s01
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -98,7 +98,7 @@ ObjectTemplates:addClientTemplate(object_tangible_hair_singing_mountain_clan_sha
 
 object_tangible_hair_singing_mountain_clan_shared_hair_singing_mountain_clan_s02 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/sing_mt_clan_hair_s02.sat",
-	arrangementDescriptors = {"hair"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hair.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -134,7 +134,7 @@ object_tangible_hair_singing_mountain_clan_shared_hair_singing_mountain_clan_s02
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -153,7 +153,7 @@ ObjectTemplates:addClientTemplate(object_tangible_hair_singing_mountain_clan_sha
 
 object_tangible_hair_singing_mountain_clan_shared_hair_singing_mountain_clan_s03 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/sing_mt_clan_hair_s03.sat",
-	arrangementDescriptors = {"hair"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hair.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -189,7 +189,7 @@ object_tangible_hair_singing_mountain_clan_shared_hair_singing_mountain_clan_s03
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -208,7 +208,7 @@ ObjectTemplates:addClientTemplate(object_tangible_hair_singing_mountain_clan_sha
 
 object_tangible_hair_singing_mountain_clan_shared_singing_mountain_clan_bangs_s01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/sing_mt_clan_bangs_s01.sat",
-	arrangementDescriptors = {"hair"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hair.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -244,7 +244,7 @@ object_tangible_hair_singing_mountain_clan_shared_singing_mountain_clan_bangs_s0
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",

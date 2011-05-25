@@ -43,7 +43,7 @@
 
 object_weapon_mine_shared_wp_mine_anti_vehicle = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mine_anti_vehicle.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 	attackType = 1,
 
 	certificationsRequired = {},
@@ -80,7 +80,7 @@ object_weapon_mine_shared_wp_mine_anti_vehicle = SharedWeaponObjectTemplate:new 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -102,7 +102,7 @@ ObjectTemplates:addClientTemplate(object_weapon_mine_shared_wp_mine_anti_vehicle
 
 object_weapon_mine_shared_wp_mine_drx55 = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mine_drx55.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 	attackType = 1,
 
 	certificationsRequired = {},
@@ -139,7 +139,7 @@ object_weapon_mine_shared_wp_mine_drx55 = SharedWeaponObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -161,7 +161,7 @@ ObjectTemplates:addClientTemplate(object_weapon_mine_shared_wp_mine_drx55, "obje
 
 object_weapon_mine_shared_wp_mine_xg = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mine_xg.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 	attackType = 1,
 
 	certificationsRequired = {},
@@ -198,7 +198,7 @@ object_weapon_mine_shared_wp_mine_xg = SharedWeaponObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",

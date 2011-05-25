@@ -43,7 +43,7 @@
 
 object_static_structure_military_shared_bunker_crate_style_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_impl_crate_big_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -74,7 +74,7 @@ object_static_structure_military_shared_bunker_crate_style_01 = SharedStaticObje
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 1,
 
@@ -88,7 +88,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_military_shared_bunker
 
 object_static_structure_military_shared_bunker_pillar_style_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_impl_bunker_pillar_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -119,7 +119,7 @@ object_static_structure_military_shared_bunker_pillar_style_01 = SharedStaticObj
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 1,
 
@@ -133,7 +133,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_military_shared_bunker
 
 object_static_structure_military_shared_bunker_pillar_style_02 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_impl_bunker_pillar_s02.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/structure/client_shared_bunker_pillar2_zapper.cdf",
@@ -164,7 +164,7 @@ object_static_structure_military_shared_bunker_pillar_style_02 = SharedStaticObj
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 1,
 
@@ -178,7 +178,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_military_shared_bunker
 
 object_static_structure_military_shared_bunker_pillar_style_03 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_impl_bunker_pillar_s03.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -209,7 +209,7 @@ object_static_structure_military_shared_bunker_pillar_style_03 = SharedStaticObj
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 1,
 
@@ -223,7 +223,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_military_shared_bunker
 
 object_static_structure_military_shared_bunker_pillar_style_04 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_impl_bunker_pillar_s04.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -254,7 +254,7 @@ object_static_structure_military_shared_bunker_pillar_style_04 = SharedStaticObj
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 1,
 
@@ -268,7 +268,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_military_shared_bunker
 
 object_static_structure_military_shared_military_column_med_imperial_style_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/mun_all_military_column_med_impl_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -299,7 +299,7 @@ object_static_structure_military_shared_military_column_med_imperial_style_01 = 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 1,
 
@@ -313,7 +313,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_military_shared_milita
 
 object_static_structure_military_shared_military_column_med_rebel_style_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/mun_all_military_column_med_rebl_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -344,7 +344,7 @@ object_static_structure_military_shared_military_column_med_rebel_style_01 = Sha
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 1,
 
@@ -358,7 +358,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_military_shared_milita
 
 object_static_structure_military_shared_military_column_strong_imperial_style_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/mun_all_military_column_strong_impl_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -389,7 +389,7 @@ object_static_structure_military_shared_military_column_strong_imperial_style_01
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 1,
 
@@ -403,7 +403,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_military_shared_milita
 
 object_static_structure_military_shared_military_column_strong_rebel_style_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/mun_all_military_column_strong_rebl_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -434,7 +434,7 @@ object_static_structure_military_shared_military_column_strong_rebel_style_01 = 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 1,
 
@@ -448,7 +448,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_military_shared_milita
 
 object_static_structure_military_shared_military_column_weak_imperial_style_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/mun_all_military_column_weak_impl_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -479,7 +479,7 @@ object_static_structure_military_shared_military_column_weak_imperial_style_01 =
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 1,
 
@@ -493,7 +493,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_military_shared_milita
 
 object_static_structure_military_shared_military_column_weak_rebel_style_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/mun_all_military_column_weak_rebl_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -524,7 +524,7 @@ object_static_structure_military_shared_military_column_weak_rebel_style_01 = Sh
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 1,
 
@@ -538,7 +538,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_military_shared_milita
 
 object_static_structure_military_shared_military_wall_med_imperial_16_style_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/mun_all_military_wall_med_impl_16_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -569,7 +569,7 @@ object_static_structure_military_shared_military_wall_med_imperial_16_style_01 =
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 1,
 
@@ -583,7 +583,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_military_shared_milita
 
 object_static_structure_military_shared_military_wall_med_imperial_32_style_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/mun_all_military_wall_med_impl_32_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -614,7 +614,7 @@ object_static_structure_military_shared_military_wall_med_imperial_32_style_01 =
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 1,
 
@@ -628,7 +628,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_military_shared_milita
 
 object_static_structure_military_shared_military_wall_med_imperial_style_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/mun_all_military_wall_med_impl_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -659,7 +659,7 @@ object_static_structure_military_shared_military_wall_med_imperial_style_01 = Sh
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 1,
 
@@ -673,7 +673,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_military_shared_milita
 
 object_static_structure_military_shared_military_wall_med_rebl_16_style_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/mun_all_military_wall_med_rebl_16_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -704,7 +704,7 @@ object_static_structure_military_shared_military_wall_med_rebl_16_style_01 = Sha
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 1,
 
@@ -718,7 +718,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_military_shared_milita
 
 object_static_structure_military_shared_military_wall_med_rebl_32_style_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/mun_all_military_wall_med_rebl_32_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -749,7 +749,7 @@ object_static_structure_military_shared_military_wall_med_rebl_32_style_01 = Sha
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 1,
 
@@ -763,7 +763,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_military_shared_milita
 
 object_static_structure_military_shared_military_wall_med_rebl_style_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/mun_all_military_wall_med_rebl_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -794,7 +794,7 @@ object_static_structure_military_shared_military_wall_med_rebl_style_01 = Shared
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 1,
 
@@ -808,7 +808,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_military_shared_milita
 
 object_static_structure_military_shared_military_wall_strong_imperial_16_style_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/mun_all_military_wall_strong_impl_16_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -839,7 +839,7 @@ object_static_structure_military_shared_military_wall_strong_imperial_16_style_0
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 1,
 
@@ -853,7 +853,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_military_shared_milita
 
 object_static_structure_military_shared_military_wall_strong_imperial_32_style_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/mun_all_military_wall_strong_impl_32_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -884,7 +884,7 @@ object_static_structure_military_shared_military_wall_strong_imperial_32_style_0
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 1,
 
@@ -898,7 +898,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_military_shared_milita
 
 object_static_structure_military_shared_military_wall_strong_imperial_style_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/mun_all_military_wall_strong_impl_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -929,7 +929,7 @@ object_static_structure_military_shared_military_wall_strong_imperial_style_01 =
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 1,
 
@@ -943,7 +943,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_military_shared_milita
 
 object_static_structure_military_shared_military_wall_strong_rebl_16_style_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/mun_all_military_wall_strong_rebl_16_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -974,7 +974,7 @@ object_static_structure_military_shared_military_wall_strong_rebl_16_style_01 = 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 1,
 
@@ -988,7 +988,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_military_shared_milita
 
 object_static_structure_military_shared_military_wall_strong_rebl_32_style_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/mun_all_military_wall_strong_rebl_32_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1019,7 +1019,7 @@ object_static_structure_military_shared_military_wall_strong_rebl_32_style_01 = 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 1,
 
@@ -1033,7 +1033,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_military_shared_milita
 
 object_static_structure_military_shared_military_wall_strong_rebl_style_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/mun_all_military_wall_strong_rebl_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1064,7 +1064,7 @@ object_static_structure_military_shared_military_wall_strong_rebl_style_01 = Sha
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 1,
 
@@ -1078,7 +1078,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_military_shared_milita
 
 object_static_structure_military_shared_military_wall_weak_imperial_16_style_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/mun_all_military_wall_weak_impl_16_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1109,7 +1109,7 @@ object_static_structure_military_shared_military_wall_weak_imperial_16_style_01 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 1,
 
@@ -1123,7 +1123,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_military_shared_milita
 
 object_static_structure_military_shared_military_wall_weak_imperial_32_style_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/mun_all_military_wall_weak_impl_32_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1154,7 +1154,7 @@ object_static_structure_military_shared_military_wall_weak_imperial_32_style_01 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 1,
 
@@ -1168,7 +1168,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_military_shared_milita
 
 object_static_structure_military_shared_military_wall_weak_imperial_style_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/mun_all_military_wall_weak_impl_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1199,7 +1199,7 @@ object_static_structure_military_shared_military_wall_weak_imperial_style_01 = S
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 1,
 
@@ -1213,7 +1213,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_military_shared_milita
 
 object_static_structure_military_shared_military_wall_weak_rebl_16_style_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/mun_all_military_wall_weak_rebl_16_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1244,7 +1244,7 @@ object_static_structure_military_shared_military_wall_weak_rebl_16_style_01 = Sh
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 1,
 
@@ -1258,7 +1258,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_military_shared_milita
 
 object_static_structure_military_shared_military_wall_weak_rebl_32_style_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/mun_all_military_wall_weak_rebl_32_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1289,7 +1289,7 @@ object_static_structure_military_shared_military_wall_weak_rebl_32_style_01 = Sh
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 1,
 
@@ -1303,7 +1303,7 @@ ObjectTemplates:addClientTemplate(object_static_structure_military_shared_milita
 
 object_static_structure_military_shared_military_wall_weak_rebl_style_01 = SharedStaticObjectTemplate:new {
 	appearanceFilename = "appearance/mun_all_military_wall_weak_rebl_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1334,7 +1334,7 @@ object_static_structure_military_shared_military_wall_weak_rebl_style_01 = Share
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 1,
 

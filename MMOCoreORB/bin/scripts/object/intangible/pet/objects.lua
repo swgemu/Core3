@@ -43,7 +43,7 @@
 
 object_intangible_pet_shared_21b_surgical_droid = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/droid_21b.sat",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -74,7 +74,7 @@ object_intangible_pet_shared_21b_surgical_droid = SharedIntangibleObjectTemplate
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"inventory", "datapad"},
+	slotDescriptorFilename = "abstract/slot/descriptor/droid.iff",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -88,7 +88,7 @@ ObjectTemplates:addClientTemplate(object_intangible_pet_shared_21b_surgical_droi
 
 object_intangible_pet_shared_3po_protocol_droid = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/protocol_droid_gold.sat",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -119,7 +119,7 @@ object_intangible_pet_shared_3po_protocol_droid = SharedIntangibleObjectTemplate
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"inventory", "datapad"},
+	slotDescriptorFilename = "abstract/slot/descriptor/droid.iff",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -133,7 +133,7 @@ ObjectTemplates:addClientTemplate(object_intangible_pet_shared_3po_protocol_droi
 
 object_intangible_pet_shared_3po_protocol_droid_crafted = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/protocol_droid.sat",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -164,7 +164,7 @@ object_intangible_pet_shared_3po_protocol_droid_crafted = SharedIntangibleObject
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"inventory", "datapad"},
+	slotDescriptorFilename = "abstract/slot/descriptor/droid.iff",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -178,7 +178,7 @@ ObjectTemplates:addClientTemplate(object_intangible_pet_shared_3po_protocol_droi
 
 object_intangible_pet_shared_3po_protocol_droid_red = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/protocol_droid_red.sat",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -209,7 +209,7 @@ object_intangible_pet_shared_3po_protocol_droid_red = SharedIntangibleObjectTemp
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"inventory", "datapad"},
+	slotDescriptorFilename = "abstract/slot/descriptor/droid.iff",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -223,7 +223,7 @@ ObjectTemplates:addClientTemplate(object_intangible_pet_shared_3po_protocol_droi
 
 object_intangible_pet_shared_3po_protocol_droid_silver = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/protocol_droid_silver.sat",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -254,7 +254,7 @@ object_intangible_pet_shared_3po_protocol_droid_silver = SharedIntangibleObjectT
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"inventory", "datapad"},
+	slotDescriptorFilename = "abstract/slot/descriptor/droid.iff",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -268,7 +268,7 @@ ObjectTemplates:addClientTemplate(object_intangible_pet_shared_3po_protocol_droi
 
 object_intangible_pet_shared_angler_hue = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/angler_hue.sat",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -299,7 +299,7 @@ object_intangible_pet_shared_angler_hue = SharedIntangibleObjectTemplate:new {
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -313,7 +313,7 @@ ObjectTemplates:addClientTemplate(object_intangible_pet_shared_angler_hue, "obje
 
 object_intangible_pet_shared_astromech_waiter = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/astromech_waiter.sat",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -344,7 +344,7 @@ object_intangible_pet_shared_astromech_waiter = SharedIntangibleObjectTemplate:n
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"inventory", "datapad"},
+	slotDescriptorFilename = "abstract/slot/descriptor/droid.iff",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -358,7 +358,7 @@ ObjectTemplates:addClientTemplate(object_intangible_pet_shared_astromech_waiter,
 
 object_intangible_pet_shared_bageraset_hue = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/bageraset_hue.sat",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -389,7 +389,7 @@ object_intangible_pet_shared_bageraset_hue = SharedIntangibleObjectTemplate:new 
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -403,7 +403,7 @@ ObjectTemplates:addClientTemplate(object_intangible_pet_shared_bageraset_hue, "o
 
 object_intangible_pet_shared_bantha_hue = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/bantha_hue.sat",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -434,7 +434,7 @@ object_intangible_pet_shared_bantha_hue = SharedIntangibleObjectTemplate:new {
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -448,7 +448,7 @@ ObjectTemplates:addClientTemplate(object_intangible_pet_shared_bantha_hue, "obje
 
 object_intangible_pet_shared_bark_mite_hue = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/bark_mite_hue.sat",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -479,7 +479,7 @@ object_intangible_pet_shared_bark_mite_hue = SharedIntangibleObjectTemplate:new 
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -493,7 +493,7 @@ ObjectTemplates:addClientTemplate(object_intangible_pet_shared_bark_mite_hue, "o
 
 object_intangible_pet_shared_bearded_jax_hue = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/bearded_jax_hue.sat",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -524,7 +524,7 @@ object_intangible_pet_shared_bearded_jax_hue = SharedIntangibleObjectTemplate:ne
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -538,7 +538,7 @@ ObjectTemplates:addClientTemplate(object_intangible_pet_shared_bearded_jax_hue, 
 
 object_intangible_pet_shared_blurrg_hue = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/blurrg_hue.sat",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -569,7 +569,7 @@ object_intangible_pet_shared_blurrg_hue = SharedIntangibleObjectTemplate:new {
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -583,7 +583,7 @@ ObjectTemplates:addClientTemplate(object_intangible_pet_shared_blurrg_hue, "obje
 
 object_intangible_pet_shared_boar_wolf_hue = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/boar_wolf_hue.sat",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -614,7 +614,7 @@ object_intangible_pet_shared_boar_wolf_hue = SharedIntangibleObjectTemplate:new 
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -628,7 +628,7 @@ ObjectTemplates:addClientTemplate(object_intangible_pet_shared_boar_wolf_hue, "o
 
 object_intangible_pet_shared_bocatt_hue = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/bocatt_hue.sat",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -659,7 +659,7 @@ object_intangible_pet_shared_bocatt_hue = SharedIntangibleObjectTemplate:new {
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -673,7 +673,7 @@ ObjectTemplates:addClientTemplate(object_intangible_pet_shared_bocatt_hue, "obje
 
 object_intangible_pet_shared_bol_hue = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/bol_hue.sat",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -704,7 +704,7 @@ object_intangible_pet_shared_bol_hue = SharedIntangibleObjectTemplate:new {
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"inventory", "default_weapon", "mount_covering", "mount_saddle"},
+	slotDescriptorFilename = "abstract/slot/descriptor/mount_pcd.iff",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -718,7 +718,7 @@ ObjectTemplates:addClientTemplate(object_intangible_pet_shared_bol_hue, "object/
 
 object_intangible_pet_shared_bolle_bol_hue = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/bolle_bol_hue.sat",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -749,7 +749,7 @@ object_intangible_pet_shared_bolle_bol_hue = SharedIntangibleObjectTemplate:new 
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -763,7 +763,7 @@ ObjectTemplates:addClientTemplate(object_intangible_pet_shared_bolle_bol_hue, "o
 
 object_intangible_pet_shared_bolma_hue = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/bolma_hue.sat",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -794,7 +794,7 @@ object_intangible_pet_shared_bolma_hue = SharedIntangibleObjectTemplate:new {
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -808,7 +808,7 @@ ObjectTemplates:addClientTemplate(object_intangible_pet_shared_bolma_hue, "objec
 
 object_intangible_pet_shared_bomarr_monk_spider_droid = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/spider_droid.sat",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -839,7 +839,7 @@ object_intangible_pet_shared_bomarr_monk_spider_droid = SharedIntangibleObjectTe
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"inventory", "datapad"},
+	slotDescriptorFilename = "abstract/slot/descriptor/droid.iff",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -853,7 +853,7 @@ ObjectTemplates:addClientTemplate(object_intangible_pet_shared_bomarr_monk_spide
 
 object_intangible_pet_shared_bordok_hue = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/bordok_hue.sat",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -884,7 +884,7 @@ object_intangible_pet_shared_bordok_hue = SharedIntangibleObjectTemplate:new {
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -898,7 +898,7 @@ ObjectTemplates:addClientTemplate(object_intangible_pet_shared_bordok_hue, "obje
 
 object_intangible_pet_shared_borgle_hue = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/borgle_hue.sat",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -929,7 +929,7 @@ object_intangible_pet_shared_borgle_hue = SharedIntangibleObjectTemplate:new {
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -943,7 +943,7 @@ ObjectTemplates:addClientTemplate(object_intangible_pet_shared_borgle_hue, "obje
 
 object_intangible_pet_shared_brackaset_hue = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/brackaset_hue.sat",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -974,7 +974,7 @@ object_intangible_pet_shared_brackaset_hue = SharedIntangibleObjectTemplate:new 
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -988,7 +988,7 @@ ObjectTemplates:addClientTemplate(object_intangible_pet_shared_brackaset_hue, "o
 
 object_intangible_pet_shared_capper_spineflap_hue = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/capper_spineflap_hue.sat",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1019,7 +1019,7 @@ object_intangible_pet_shared_capper_spineflap_hue = SharedIntangibleObjectTempla
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -1033,7 +1033,7 @@ ObjectTemplates:addClientTemplate(object_intangible_pet_shared_capper_spineflap_
 
 object_intangible_pet_shared_carrion_spat_hue = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/carrion_spat_hue.sat",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1064,7 +1064,7 @@ object_intangible_pet_shared_carrion_spat_hue = SharedIntangibleObjectTemplate:n
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -1078,7 +1078,7 @@ ObjectTemplates:addClientTemplate(object_intangible_pet_shared_carrion_spat_hue,
 
 object_intangible_pet_shared_choku_hue = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/choku_hue.sat",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1109,7 +1109,7 @@ object_intangible_pet_shared_choku_hue = SharedIntangibleObjectTemplate:new {
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -1123,7 +1123,7 @@ ObjectTemplates:addClientTemplate(object_intangible_pet_shared_choku_hue, "objec
 
 object_intangible_pet_shared_chuba_hue = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/chuba_hue.sat",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1154,7 +1154,7 @@ object_intangible_pet_shared_chuba_hue = SharedIntangibleObjectTemplate:new {
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -1168,7 +1168,7 @@ ObjectTemplates:addClientTemplate(object_intangible_pet_shared_chuba_hue, "objec
 
 object_intangible_pet_shared_cll8_binary_load_lifter = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/cll8.sat",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1199,7 +1199,7 @@ object_intangible_pet_shared_cll8_binary_load_lifter = SharedIntangibleObjectTem
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"inventory", "datapad"},
+	slotDescriptorFilename = "abstract/slot/descriptor/droid.iff",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -1213,7 +1213,7 @@ ObjectTemplates:addClientTemplate(object_intangible_pet_shared_cll8_binary_load_
 
 object_intangible_pet_shared_condor_dragon_hue = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/condor_dragon_hue.sat",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1244,7 +1244,7 @@ object_intangible_pet_shared_condor_dragon_hue = SharedIntangibleObjectTemplate:
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -1258,7 +1258,7 @@ ObjectTemplates:addClientTemplate(object_intangible_pet_shared_condor_dragon_hue
 
 object_intangible_pet_shared_corellian_butterfly_hue = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/corellian_butterfly_hue.sat",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1289,7 +1289,7 @@ object_intangible_pet_shared_corellian_butterfly_hue = SharedIntangibleObjectTem
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -1303,7 +1303,7 @@ ObjectTemplates:addClientTemplate(object_intangible_pet_shared_corellian_butterf
 
 object_intangible_pet_shared_corellian_sand_panther_hue = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/corellian_sand_panther_hue.sat",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1334,7 +1334,7 @@ object_intangible_pet_shared_corellian_sand_panther_hue = SharedIntangibleObject
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -1348,7 +1348,7 @@ ObjectTemplates:addClientTemplate(object_intangible_pet_shared_corellian_sand_pa
 
 object_intangible_pet_shared_corellian_slice_hound_hue = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/corellian_slice_hound_hue.sat",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1379,7 +1379,7 @@ object_intangible_pet_shared_corellian_slice_hound_hue = SharedIntangibleObjectT
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -1393,7 +1393,7 @@ ObjectTemplates:addClientTemplate(object_intangible_pet_shared_corellian_slice_h
 
 object_intangible_pet_shared_crystal_snake = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/crystal_snake.sat",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1424,7 +1424,7 @@ object_intangible_pet_shared_crystal_snake = SharedIntangibleObjectTemplate:new 
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -1438,7 +1438,7 @@ ObjectTemplates:addClientTemplate(object_intangible_pet_shared_crystal_snake, "o
 
 object_intangible_pet_shared_cu_pa_hue = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/cu_pa_hue.sat",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1469,7 +1469,7 @@ object_intangible_pet_shared_cu_pa_hue = SharedIntangibleObjectTemplate:new {
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -1483,7 +1483,7 @@ ObjectTemplates:addClientTemplate(object_intangible_pet_shared_cu_pa_hue, "objec
 
 object_intangible_pet_shared_dalyrake_hue = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/dalyrake_hue.sat",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1514,7 +1514,7 @@ object_intangible_pet_shared_dalyrake_hue = SharedIntangibleObjectTemplate:new {
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -1528,7 +1528,7 @@ ObjectTemplates:addClientTemplate(object_intangible_pet_shared_dalyrake_hue, "ob
 
 object_intangible_pet_shared_darth_maul_probe_droid = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/maul_probe_droid.sat",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1559,7 +1559,7 @@ object_intangible_pet_shared_darth_maul_probe_droid = SharedIntangibleObjectTemp
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"inventory", "datapad"},
+	slotDescriptorFilename = "abstract/slot/descriptor/droid.iff",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -1573,7 +1573,7 @@ ObjectTemplates:addClientTemplate(object_intangible_pet_shared_darth_maul_probe_
 
 object_intangible_pet_shared_dewback_hue = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/dewback_hue.sat",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1604,7 +1604,7 @@ object_intangible_pet_shared_dewback_hue = SharedIntangibleObjectTemplate:new {
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"inventory", "default_weapon", "mount_covering", "mount_saddle"},
+	slotDescriptorFilename = "abstract/slot/descriptor/mount_pcd.iff",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -1618,7 +1618,7 @@ ObjectTemplates:addClientTemplate(object_intangible_pet_shared_dewback_hue, "obj
 
 object_intangible_pet_shared_droid_pet = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/cll8.sat",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1649,7 +1649,7 @@ object_intangible_pet_shared_droid_pet = SharedIntangibleObjectTemplate:new {
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"inventory", "datapad"},
+	slotDescriptorFilename = "abstract/slot/descriptor/droid.iff",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -1663,7 +1663,7 @@ ObjectTemplates:addClientTemplate(object_intangible_pet_shared_droid_pet, "objec
 
 object_intangible_pet_shared_droideka = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/droideka.sat",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1694,7 +1694,7 @@ object_intangible_pet_shared_droideka = SharedIntangibleObjectTemplate:new {
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"inventory", "datapad"},
+	slotDescriptorFilename = "abstract/slot/descriptor/droid.iff",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -1708,7 +1708,7 @@ ObjectTemplates:addClientTemplate(object_intangible_pet_shared_droideka, "object
 
 object_intangible_pet_shared_dune_lizard_hue = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/dune_lizard_hue.sat",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1739,7 +1739,7 @@ object_intangible_pet_shared_dune_lizard_hue = SharedIntangibleObjectTemplate:ne
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -1753,7 +1753,7 @@ ObjectTemplates:addClientTemplate(object_intangible_pet_shared_dune_lizard_hue, 
 
 object_intangible_pet_shared_durni_hue = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/durni_hue.sat",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1784,7 +1784,7 @@ object_intangible_pet_shared_durni_hue = SharedIntangibleObjectTemplate:new {
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -1798,7 +1798,7 @@ ObjectTemplates:addClientTemplate(object_intangible_pet_shared_durni_hue, "objec
 
 object_intangible_pet_shared_dwarf_nuna_hue = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/dwarf_nuna_hue.sat",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1829,7 +1829,7 @@ object_intangible_pet_shared_dwarf_nuna_hue = SharedIntangibleObjectTemplate:new
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -1843,7 +1843,7 @@ ObjectTemplates:addClientTemplate(object_intangible_pet_shared_dwarf_nuna_hue, "
 
 object_intangible_pet_shared_dz70_fugitive_tracker_droid = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/dz70.sat",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1874,7 +1874,7 @@ object_intangible_pet_shared_dz70_fugitive_tracker_droid = SharedIntangibleObjec
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"inventory", "datapad"},
+	slotDescriptorFilename = "abstract/slot/descriptor/droid.iff",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -1888,7 +1888,7 @@ ObjectTemplates:addClientTemplate(object_intangible_pet_shared_dz70_fugitive_tra
 
 object_intangible_pet_shared_eg6_power_droid = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eg6.sat",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1919,7 +1919,7 @@ object_intangible_pet_shared_eg6_power_droid = SharedIntangibleObjectTemplate:ne
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"inventory", "datapad"},
+	slotDescriptorFilename = "abstract/slot/descriptor/droid.iff",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -1933,7 +1933,7 @@ ObjectTemplates:addClientTemplate(object_intangible_pet_shared_eg6_power_droid, 
 
 object_intangible_pet_shared_eg6_power_droid_crafted = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eg6.sat",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -1964,7 +1964,7 @@ object_intangible_pet_shared_eg6_power_droid_crafted = SharedIntangibleObjectTem
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"inventory", "datapad"},
+	slotDescriptorFilename = "abstract/slot/descriptor/droid.iff",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -1978,7 +1978,7 @@ ObjectTemplates:addClientTemplate(object_intangible_pet_shared_eg6_power_droid_c
 
 object_intangible_pet_shared_eopie_hue = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eopie_hue.sat",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -2009,7 +2009,7 @@ object_intangible_pet_shared_eopie_hue = SharedIntangibleObjectTemplate:new {
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -2023,7 +2023,7 @@ ObjectTemplates:addClientTemplate(object_intangible_pet_shared_eopie_hue, "objec
 
 object_intangible_pet_shared_ev_9d9 = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ev_9d9.sat",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -2054,7 +2054,7 @@ object_intangible_pet_shared_ev_9d9 = SharedIntangibleObjectTemplate:new {
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"inventory", "datapad"},
+	slotDescriptorFilename = "abstract/slot/descriptor/droid.iff",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -2068,7 +2068,7 @@ ObjectTemplates:addClientTemplate(object_intangible_pet_shared_ev_9d9, "object/i
 
 object_intangible_pet_shared_falumpaset_hue = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/falumpaset_hue.sat",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -2099,7 +2099,7 @@ object_intangible_pet_shared_falumpaset_hue = SharedIntangibleObjectTemplate:new
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -2113,7 +2113,7 @@ ObjectTemplates:addClientTemplate(object_intangible_pet_shared_falumpaset_hue, "
 
 object_intangible_pet_shared_fambaa_hue = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/fambaa_hue.sat",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -2144,7 +2144,7 @@ object_intangible_pet_shared_fambaa_hue = SharedIntangibleObjectTemplate:new {
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -2158,7 +2158,7 @@ ObjectTemplates:addClientTemplate(object_intangible_pet_shared_fambaa_hue, "obje
 
 object_intangible_pet_shared_fanned_rawl_hue = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/fanned_rawl_hue.sat",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -2189,7 +2189,7 @@ object_intangible_pet_shared_fanned_rawl_hue = SharedIntangibleObjectTemplate:ne
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -2203,7 +2203,7 @@ ObjectTemplates:addClientTemplate(object_intangible_pet_shared_fanned_rawl_hue, 
 
 object_intangible_pet_shared_flewt_hue = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/flewt_hue.sat",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -2234,7 +2234,7 @@ object_intangible_pet_shared_flewt_hue = SharedIntangibleObjectTemplate:new {
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -2248,7 +2248,7 @@ ObjectTemplates:addClientTemplate(object_intangible_pet_shared_flewt_hue, "objec
 
 object_intangible_pet_shared_flit_hue = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/flit_hue.sat",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -2279,7 +2279,7 @@ object_intangible_pet_shared_flit_hue = SharedIntangibleObjectTemplate:new {
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -2293,7 +2293,7 @@ ObjectTemplates:addClientTemplate(object_intangible_pet_shared_flit_hue, "object
 
 object_intangible_pet_shared_fynock_hue = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/fynock_hue.sat",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -2324,7 +2324,7 @@ object_intangible_pet_shared_fynock_hue = SharedIntangibleObjectTemplate:new {
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -2338,7 +2338,7 @@ ObjectTemplates:addClientTemplate(object_intangible_pet_shared_fynock_hue, "obje
 
 object_intangible_pet_shared_gackle_bat_hue = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/gackle_bat_hue.sat",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -2369,7 +2369,7 @@ object_intangible_pet_shared_gackle_bat_hue = SharedIntangibleObjectTemplate:new
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -2383,7 +2383,7 @@ ObjectTemplates:addClientTemplate(object_intangible_pet_shared_gackle_bat_hue, "
 
 object_intangible_pet_shared_gaping_spider_hue = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/gaping_spider_hue.sat",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -2414,7 +2414,7 @@ object_intangible_pet_shared_gaping_spider_hue = SharedIntangibleObjectTemplate:
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -2428,7 +2428,7 @@ ObjectTemplates:addClientTemplate(object_intangible_pet_shared_gaping_spider_hue
 
 object_intangible_pet_shared_gnort_hue = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/gnort_hue.sat",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -2459,7 +2459,7 @@ object_intangible_pet_shared_gnort_hue = SharedIntangibleObjectTemplate:new {
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -2473,7 +2473,7 @@ ObjectTemplates:addClientTemplate(object_intangible_pet_shared_gnort_hue, "objec
 
 object_intangible_pet_shared_graul_hue = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/graul_hue.sat",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -2504,7 +2504,7 @@ object_intangible_pet_shared_graul_hue = SharedIntangibleObjectTemplate:new {
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -2518,7 +2518,7 @@ ObjectTemplates:addClientTemplate(object_intangible_pet_shared_graul_hue, "objec
 
 object_intangible_pet_shared_gronda_hue = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/gronda_hue.sat",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -2549,7 +2549,7 @@ object_intangible_pet_shared_gronda_hue = SharedIntangibleObjectTemplate:new {
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -2563,7 +2563,7 @@ ObjectTemplates:addClientTemplate(object_intangible_pet_shared_gronda_hue, "obje
 
 object_intangible_pet_shared_gualama_hue = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/gualama_hue.sat",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -2594,7 +2594,7 @@ object_intangible_pet_shared_gualama_hue = SharedIntangibleObjectTemplate:new {
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -2608,7 +2608,7 @@ ObjectTemplates:addClientTemplate(object_intangible_pet_shared_gualama_hue, "obj
 
 object_intangible_pet_shared_gubbur_hue = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/gubbur_hue.sat",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -2639,7 +2639,7 @@ object_intangible_pet_shared_gubbur_hue = SharedIntangibleObjectTemplate:new {
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -2653,7 +2653,7 @@ ObjectTemplates:addClientTemplate(object_intangible_pet_shared_gubbur_hue, "obje
 
 object_intangible_pet_shared_guf_drolg_hue = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/guf_drolg_hue.sat",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -2684,7 +2684,7 @@ object_intangible_pet_shared_guf_drolg_hue = SharedIntangibleObjectTemplate:new 
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -2698,7 +2698,7 @@ ObjectTemplates:addClientTemplate(object_intangible_pet_shared_guf_drolg_hue, "o
 
 object_intangible_pet_shared_gulginaw_hue = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/gulginaw_hue.sat",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -2729,7 +2729,7 @@ object_intangible_pet_shared_gulginaw_hue = SharedIntangibleObjectTemplate:new {
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -2743,7 +2743,7 @@ ObjectTemplates:addClientTemplate(object_intangible_pet_shared_gulginaw_hue, "ob
 
 object_intangible_pet_shared_gurk_hue = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/gurk_hue.sat",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -2774,7 +2774,7 @@ object_intangible_pet_shared_gurk_hue = SharedIntangibleObjectTemplate:new {
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -2788,7 +2788,7 @@ ObjectTemplates:addClientTemplate(object_intangible_pet_shared_gurk_hue, "object
 
 object_intangible_pet_shared_gurnaset_hue = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/gurnaset_hue.sat",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -2819,7 +2819,7 @@ object_intangible_pet_shared_gurnaset_hue = SharedIntangibleObjectTemplate:new {
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -2833,7 +2833,7 @@ ObjectTemplates:addClientTemplate(object_intangible_pet_shared_gurnaset_hue, "ob
 
 object_intangible_pet_shared_gurreck_hue = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/gurreck_hue.sat",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -2864,7 +2864,7 @@ object_intangible_pet_shared_gurreck_hue = SharedIntangibleObjectTemplate:new {
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -2878,7 +2878,7 @@ ObjectTemplates:addClientTemplate(object_intangible_pet_shared_gurreck_hue, "obj
 
 object_intangible_pet_shared_hanadak_hue = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/hanadak_hue.sat",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -2909,7 +2909,7 @@ object_intangible_pet_shared_hanadak_hue = SharedIntangibleObjectTemplate:new {
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -2923,7 +2923,7 @@ ObjectTemplates:addClientTemplate(object_intangible_pet_shared_hanadak_hue, "obj
 
 object_intangible_pet_shared_hermit_spider_hue = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/hermit_spider_hue.sat",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -2954,7 +2954,7 @@ object_intangible_pet_shared_hermit_spider_hue = SharedIntangibleObjectTemplate:
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -2968,7 +2968,7 @@ ObjectTemplates:addClientTemplate(object_intangible_pet_shared_hermit_spider_hue
 
 object_intangible_pet_shared_horned_krevol_hue = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/horned_krevol_hue.sat",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -2999,7 +2999,7 @@ object_intangible_pet_shared_horned_krevol_hue = SharedIntangibleObjectTemplate:
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -3013,7 +3013,7 @@ ObjectTemplates:addClientTemplate(object_intangible_pet_shared_horned_krevol_hue
 
 object_intangible_pet_shared_horned_rasp_hue = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/horned_rasp_hue.sat",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -3044,7 +3044,7 @@ object_intangible_pet_shared_horned_rasp_hue = SharedIntangibleObjectTemplate:ne
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -3058,7 +3058,7 @@ ObjectTemplates:addClientTemplate(object_intangible_pet_shared_horned_rasp_hue, 
 
 object_intangible_pet_shared_huf_dun_hue = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/huf_dun_hue.sat",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -3089,7 +3089,7 @@ object_intangible_pet_shared_huf_dun_hue = SharedIntangibleObjectTemplate:new {
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -3103,7 +3103,7 @@ ObjectTemplates:addClientTemplate(object_intangible_pet_shared_huf_dun_hue, "obj
 
 object_intangible_pet_shared_huurton_hue = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/huurton_hue.sat",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -3134,7 +3134,7 @@ object_intangible_pet_shared_huurton_hue = SharedIntangibleObjectTemplate:new {
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -3148,7 +3148,7 @@ ObjectTemplates:addClientTemplate(object_intangible_pet_shared_huurton_hue, "obj
 
 object_intangible_pet_shared_ig_assassin_droid = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ig88.sat",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -3179,7 +3179,7 @@ object_intangible_pet_shared_ig_assassin_droid = SharedIntangibleObjectTemplate:
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"inventory", "datapad"},
+	slotDescriptorFilename = "abstract/slot/descriptor/droid.iff",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -3193,7 +3193,7 @@ ObjectTemplates:addClientTemplate(object_intangible_pet_shared_ig_assassin_droid
 
 object_intangible_pet_shared_ikopi_hue = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ikopi_hue.sat",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -3224,7 +3224,7 @@ object_intangible_pet_shared_ikopi_hue = SharedIntangibleObjectTemplate:new {
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -3238,7 +3238,7 @@ ObjectTemplates:addClientTemplate(object_intangible_pet_shared_ikopi_hue, "objec
 
 object_intangible_pet_shared_ito_interrogator = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ito.sat",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -3269,7 +3269,7 @@ object_intangible_pet_shared_ito_interrogator = SharedIntangibleObjectTemplate:n
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"inventory", "datapad"},
+	slotDescriptorFilename = "abstract/slot/descriptor/droid.iff",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -3283,7 +3283,7 @@ ObjectTemplates:addClientTemplate(object_intangible_pet_shared_ito_interrogator,
 
 object_intangible_pet_shared_kaadu_hue = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/kaadu_hue.sat",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -3314,7 +3314,7 @@ object_intangible_pet_shared_kaadu_hue = SharedIntangibleObjectTemplate:new {
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -3328,7 +3328,7 @@ ObjectTemplates:addClientTemplate(object_intangible_pet_shared_kaadu_hue, "objec
 
 object_intangible_pet_shared_kai_tok_hue = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/kai_tok_hue.sat",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -3359,7 +3359,7 @@ object_intangible_pet_shared_kai_tok_hue = SharedIntangibleObjectTemplate:new {
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -3373,7 +3373,7 @@ ObjectTemplates:addClientTemplate(object_intangible_pet_shared_kai_tok_hue, "obj
 
 object_intangible_pet_shared_kima_hue = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/kima_hue.sat",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -3404,7 +3404,7 @@ object_intangible_pet_shared_kima_hue = SharedIntangibleObjectTemplate:new {
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -3418,7 +3418,7 @@ ObjectTemplates:addClientTemplate(object_intangible_pet_shared_kima_hue, "object
 
 object_intangible_pet_shared_kimogila_hue = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/kimogila_hue.sat",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -3449,7 +3449,7 @@ object_intangible_pet_shared_kimogila_hue = SharedIntangibleObjectTemplate:new {
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -3463,7 +3463,7 @@ ObjectTemplates:addClientTemplate(object_intangible_pet_shared_kimogila_hue, "ob
 
 object_intangible_pet_shared_kliknik_hue = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/kliknik_hue.sat",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -3494,7 +3494,7 @@ object_intangible_pet_shared_kliknik_hue = SharedIntangibleObjectTemplate:new {
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -3508,7 +3508,7 @@ ObjectTemplates:addClientTemplate(object_intangible_pet_shared_kliknik_hue, "obj
 
 object_intangible_pet_shared_krahbu_hue = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/krahbu_hue.sat",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -3539,7 +3539,7 @@ object_intangible_pet_shared_krahbu_hue = SharedIntangibleObjectTemplate:new {
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -3553,7 +3553,7 @@ ObjectTemplates:addClientTemplate(object_intangible_pet_shared_krahbu_hue, "obje
 
 object_intangible_pet_shared_kusak_hue = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/kusak_hue.sat",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -3584,7 +3584,7 @@ object_intangible_pet_shared_kusak_hue = SharedIntangibleObjectTemplate:new {
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -3598,7 +3598,7 @@ ObjectTemplates:addClientTemplate(object_intangible_pet_shared_kusak_hue, "objec
 
 object_intangible_pet_shared_kwi_hue = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/kwi_hue.sat",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -3629,7 +3629,7 @@ object_intangible_pet_shared_kwi_hue = SharedIntangibleObjectTemplate:new {
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -3643,7 +3643,7 @@ ObjectTemplates:addClientTemplate(object_intangible_pet_shared_kwi_hue, "object/
 
 object_intangible_pet_shared_langlatch_hue = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/langlatch_hue.sat",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -3674,7 +3674,7 @@ object_intangible_pet_shared_langlatch_hue = SharedIntangibleObjectTemplate:new 
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -3688,7 +3688,7 @@ ObjectTemplates:addClientTemplate(object_intangible_pet_shared_langlatch_hue, "o
 
 object_intangible_pet_shared_lantern_bird_hue = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/lantern_bird_hue.sat",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -3719,7 +3719,7 @@ object_intangible_pet_shared_lantern_bird_hue = SharedIntangibleObjectTemplate:n
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -3733,7 +3733,7 @@ ObjectTemplates:addClientTemplate(object_intangible_pet_shared_lantern_bird_hue,
 
 object_intangible_pet_shared_le_repair_droid = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/le_repair.sat",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -3764,7 +3764,7 @@ object_intangible_pet_shared_le_repair_droid = SharedIntangibleObjectTemplate:ne
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"inventory", "datapad"},
+	slotDescriptorFilename = "abstract/slot/descriptor/droid.iff",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -3778,7 +3778,7 @@ ObjectTemplates:addClientTemplate(object_intangible_pet_shared_le_repair_droid, 
 
 object_intangible_pet_shared_lin_demolitionmech = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/lin_demolition.sat",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -3809,7 +3809,7 @@ object_intangible_pet_shared_lin_demolitionmech = SharedIntangibleObjectTemplate
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"inventory", "datapad"},
+	slotDescriptorFilename = "abstract/slot/descriptor/droid.iff",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -3823,7 +3823,7 @@ ObjectTemplates:addClientTemplate(object_intangible_pet_shared_lin_demolitionmec
 
 object_intangible_pet_shared_malkloc_hue = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/malkloc_hue.sat",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -3854,7 +3854,7 @@ object_intangible_pet_shared_malkloc_hue = SharedIntangibleObjectTemplate:new {
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -3868,7 +3868,7 @@ ObjectTemplates:addClientTemplate(object_intangible_pet_shared_malkloc_hue, "obj
 
 object_intangible_pet_shared_mamien_hue = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/mamien_hue.sat",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -3899,7 +3899,7 @@ object_intangible_pet_shared_mamien_hue = SharedIntangibleObjectTemplate:new {
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -3913,7 +3913,7 @@ ObjectTemplates:addClientTemplate(object_intangible_pet_shared_mamien_hue, "obje
 
 object_intangible_pet_shared_mawgax_hue = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/mawgax_hue.sat",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -3944,7 +3944,7 @@ object_intangible_pet_shared_mawgax_hue = SharedIntangibleObjectTemplate:new {
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -3958,7 +3958,7 @@ ObjectTemplates:addClientTemplate(object_intangible_pet_shared_mawgax_hue, "obje
 
 object_intangible_pet_shared_merek_hue = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/merek_hue.sat",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -3989,7 +3989,7 @@ object_intangible_pet_shared_merek_hue = SharedIntangibleObjectTemplate:new {
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -4003,7 +4003,7 @@ ObjectTemplates:addClientTemplate(object_intangible_pet_shared_merek_hue, "objec
 
 object_intangible_pet_shared_mott_hue = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/mott_hue.sat",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -4034,7 +4034,7 @@ object_intangible_pet_shared_mott_hue = SharedIntangibleObjectTemplate:new {
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -4048,7 +4048,7 @@ ObjectTemplates:addClientTemplate(object_intangible_pet_shared_mott_hue, "object
 
 object_intangible_pet_shared_mouse_droid = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/mouse_droid.sat",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -4079,7 +4079,7 @@ object_intangible_pet_shared_mouse_droid = SharedIntangibleObjectTemplate:new {
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"inventory", "datapad"},
+	slotDescriptorFilename = "abstract/slot/descriptor/droid.iff",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -4093,7 +4093,7 @@ ObjectTemplates:addClientTemplate(object_intangible_pet_shared_mouse_droid, "obj
 
 object_intangible_pet_shared_mouse_droid_crafted = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/mouse_droid.sat",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -4124,7 +4124,7 @@ object_intangible_pet_shared_mouse_droid_crafted = SharedIntangibleObjectTemplat
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"inventory", "datapad"},
+	slotDescriptorFilename = "abstract/slot/descriptor/droid.iff",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -4138,7 +4138,7 @@ ObjectTemplates:addClientTemplate(object_intangible_pet_shared_mouse_droid_craft
 
 object_intangible_pet_shared_murra_hue = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/murra_hue.sat",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -4169,7 +4169,7 @@ object_intangible_pet_shared_murra_hue = SharedIntangibleObjectTemplate:new {
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -4183,7 +4183,7 @@ ObjectTemplates:addClientTemplate(object_intangible_pet_shared_murra_hue, "objec
 
 object_intangible_pet_shared_mynock_hue = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/mynock_hue.sat",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -4214,7 +4214,7 @@ object_intangible_pet_shared_mynock_hue = SharedIntangibleObjectTemplate:new {
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -4228,7 +4228,7 @@ ObjectTemplates:addClientTemplate(object_intangible_pet_shared_mynock_hue, "obje
 
 object_intangible_pet_shared_narglatch_hue = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/narglatch_hue.sat",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -4259,7 +4259,7 @@ object_intangible_pet_shared_narglatch_hue = SharedIntangibleObjectTemplate:new 
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -4273,7 +4273,7 @@ ObjectTemplates:addClientTemplate(object_intangible_pet_shared_narglatch_hue, "o
 
 object_intangible_pet_shared_nhelper_droid = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/astromech_r2.sat",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "clientdata/droid/client_shared_data_nhelper_droid.cdf",
@@ -4304,7 +4304,7 @@ object_intangible_pet_shared_nhelper_droid = SharedIntangibleObjectTemplate:new 
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"inventory", "datapad"},
+	slotDescriptorFilename = "abstract/slot/descriptor/droid.iff",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -4318,7 +4318,7 @@ ObjectTemplates:addClientTemplate(object_intangible_pet_shared_nhelper_droid, "o
 
 object_intangible_pet_shared_nuna_hue = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/nuna_hue.sat",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -4349,7 +4349,7 @@ object_intangible_pet_shared_nuna_hue = SharedIntangibleObjectTemplate:new {
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -4363,7 +4363,7 @@ ObjectTemplates:addClientTemplate(object_intangible_pet_shared_nuna_hue, "object
 
 object_intangible_pet_shared_peko_peko_hue = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/peko_peko_hue.sat",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -4394,7 +4394,7 @@ object_intangible_pet_shared_peko_peko_hue = SharedIntangibleObjectTemplate:new 
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -4408,7 +4408,7 @@ ObjectTemplates:addClientTemplate(object_intangible_pet_shared_peko_peko_hue, "o
 
 object_intangible_pet_shared_perlek_hue = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/perlek_hue.sat",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -4439,7 +4439,7 @@ object_intangible_pet_shared_perlek_hue = SharedIntangibleObjectTemplate:new {
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -4453,7 +4453,7 @@ ObjectTemplates:addClientTemplate(object_intangible_pet_shared_perlek_hue, "obje
 
 object_intangible_pet_shared_pet_control = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_prp_camera.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -4484,7 +4484,7 @@ object_intangible_pet_shared_pet_control = SharedIntangibleObjectTemplate:new {
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -4498,7 +4498,7 @@ ObjectTemplates:addClientTemplate(object_intangible_pet_shared_pet_control, "obj
 
 object_intangible_pet_shared_pet_deed = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eopie_hue.sat",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -4529,7 +4529,7 @@ object_intangible_pet_shared_pet_deed = SharedIntangibleObjectTemplate:new {
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -4543,7 +4543,7 @@ ObjectTemplates:addClientTemplate(object_intangible_pet_shared_pet_deed, "object
 
 object_intangible_pet_shared_piket_hue = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/piket_hue.sat",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -4574,7 +4574,7 @@ object_intangible_pet_shared_piket_hue = SharedIntangibleObjectTemplate:new {
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -4588,7 +4588,7 @@ ObjectTemplates:addClientTemplate(object_intangible_pet_shared_piket_hue, "objec
 
 object_intangible_pet_shared_plumed_rasp_hue = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/plumed_rasp_hue.sat",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -4619,7 +4619,7 @@ object_intangible_pet_shared_plumed_rasp_hue = SharedIntangibleObjectTemplate:ne
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -4633,7 +4633,7 @@ ObjectTemplates:addClientTemplate(object_intangible_pet_shared_plumed_rasp_hue, 
 
 object_intangible_pet_shared_probot = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/probe_droid.sat",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -4664,7 +4664,7 @@ object_intangible_pet_shared_probot = SharedIntangibleObjectTemplate:new {
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"inventory", "datapad"},
+	slotDescriptorFilename = "abstract/slot/descriptor/droid.iff",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -4678,7 +4678,7 @@ ObjectTemplates:addClientTemplate(object_intangible_pet_shared_probot, "object/i
 
 object_intangible_pet_shared_pugoriss_hue = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/pugoriss_hue.sat",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -4709,7 +4709,7 @@ object_intangible_pet_shared_pugoriss_hue = SharedIntangibleObjectTemplate:new {
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -4723,7 +4723,7 @@ ObjectTemplates:addClientTemplate(object_intangible_pet_shared_pugoriss_hue, "ob
 
 object_intangible_pet_shared_purbole_hue = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/purbole_hue.sat",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -4754,7 +4754,7 @@ object_intangible_pet_shared_purbole_hue = SharedIntangibleObjectTemplate:new {
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -4768,7 +4768,7 @@ ObjectTemplates:addClientTemplate(object_intangible_pet_shared_purbole_hue, "obj
 
 object_intangible_pet_shared_quenker_hue = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/quenker_hue.sat",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -4799,7 +4799,7 @@ object_intangible_pet_shared_quenker_hue = SharedIntangibleObjectTemplate:new {
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -4813,7 +4813,7 @@ ObjectTemplates:addClientTemplate(object_intangible_pet_shared_quenker_hue, "obj
 
 object_intangible_pet_shared_r2 = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/astromech_r2.sat",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -4844,7 +4844,7 @@ object_intangible_pet_shared_r2 = SharedIntangibleObjectTemplate:new {
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"inventory", "datapad"},
+	slotDescriptorFilename = "abstract/slot/descriptor/droid.iff",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -4858,7 +4858,7 @@ ObjectTemplates:addClientTemplate(object_intangible_pet_shared_r2, "object/intan
 
 object_intangible_pet_shared_r2_crafted = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/astromech_r2.sat",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -4889,7 +4889,7 @@ object_intangible_pet_shared_r2_crafted = SharedIntangibleObjectTemplate:new {
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"inventory", "datapad"},
+	slotDescriptorFilename = "abstract/slot/descriptor/droid.iff",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -4903,7 +4903,7 @@ ObjectTemplates:addClientTemplate(object_intangible_pet_shared_r2_crafted, "obje
 
 object_intangible_pet_shared_r2d2 = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/r2d2.sat",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -4934,7 +4934,7 @@ object_intangible_pet_shared_r2d2 = SharedIntangibleObjectTemplate:new {
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"inventory", "datapad"},
+	slotDescriptorFilename = "abstract/slot/descriptor/droid.iff",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -4948,7 +4948,7 @@ ObjectTemplates:addClientTemplate(object_intangible_pet_shared_r2d2, "object/int
 
 object_intangible_pet_shared_r3 = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/astromech_r3.sat",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -4979,7 +4979,7 @@ object_intangible_pet_shared_r3 = SharedIntangibleObjectTemplate:new {
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"inventory", "datapad"},
+	slotDescriptorFilename = "abstract/slot/descriptor/droid.iff",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -4993,7 +4993,7 @@ ObjectTemplates:addClientTemplate(object_intangible_pet_shared_r3, "object/intan
 
 object_intangible_pet_shared_r3_crafted = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/astromech_r3.sat",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -5024,7 +5024,7 @@ object_intangible_pet_shared_r3_crafted = SharedIntangibleObjectTemplate:new {
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"inventory", "datapad"},
+	slotDescriptorFilename = "abstract/slot/descriptor/droid.iff",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -5038,7 +5038,7 @@ ObjectTemplates:addClientTemplate(object_intangible_pet_shared_r3_crafted, "obje
 
 object_intangible_pet_shared_r4 = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/astromech_r4.sat",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -5069,7 +5069,7 @@ object_intangible_pet_shared_r4 = SharedIntangibleObjectTemplate:new {
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"inventory", "datapad"},
+	slotDescriptorFilename = "abstract/slot/descriptor/droid.iff",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -5083,7 +5083,7 @@ ObjectTemplates:addClientTemplate(object_intangible_pet_shared_r4, "object/intan
 
 object_intangible_pet_shared_r4_crafted = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/astromech_r4.sat",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -5114,7 +5114,7 @@ object_intangible_pet_shared_r4_crafted = SharedIntangibleObjectTemplate:new {
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"inventory", "datapad"},
+	slotDescriptorFilename = "abstract/slot/descriptor/droid.iff",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -5128,7 +5128,7 @@ ObjectTemplates:addClientTemplate(object_intangible_pet_shared_r4_crafted, "obje
 
 object_intangible_pet_shared_r5 = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/astromech_r5.sat",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -5159,7 +5159,7 @@ object_intangible_pet_shared_r5 = SharedIntangibleObjectTemplate:new {
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"inventory", "datapad"},
+	slotDescriptorFilename = "abstract/slot/descriptor/droid.iff",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -5173,7 +5173,7 @@ ObjectTemplates:addClientTemplate(object_intangible_pet_shared_r5, "object/intan
 
 object_intangible_pet_shared_r5_crafted = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/astromech_r5.sat",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -5204,7 +5204,7 @@ object_intangible_pet_shared_r5_crafted = SharedIntangibleObjectTemplate:new {
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"inventory", "datapad"},
+	slotDescriptorFilename = "abstract/slot/descriptor/droid.iff",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -5218,7 +5218,7 @@ ObjectTemplates:addClientTemplate(object_intangible_pet_shared_r5_crafted, "obje
 
 object_intangible_pet_shared_ra7_bug_droid = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ra7.sat",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -5249,7 +5249,7 @@ object_intangible_pet_shared_ra7_bug_droid = SharedIntangibleObjectTemplate:new 
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"inventory", "datapad"},
+	slotDescriptorFilename = "abstract/slot/descriptor/droid.iff",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -5263,7 +5263,7 @@ ObjectTemplates:addClientTemplate(object_intangible_pet_shared_ra7_bug_droid, "o
 
 object_intangible_pet_shared_rancor_hue = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/rancor_hue.sat",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -5294,7 +5294,7 @@ object_intangible_pet_shared_rancor_hue = SharedIntangibleObjectTemplate:new {
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -5308,7 +5308,7 @@ ObjectTemplates:addClientTemplate(object_intangible_pet_shared_rancor_hue, "obje
 
 object_intangible_pet_shared_reptilian_flier_hue = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/reptilian_flier_hue.sat",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -5339,7 +5339,7 @@ object_intangible_pet_shared_reptilian_flier_hue = SharedIntangibleObjectTemplat
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -5353,7 +5353,7 @@ ObjectTemplates:addClientTemplate(object_intangible_pet_shared_reptilian_flier_h
 
 object_intangible_pet_shared_roba_hue = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/roba_hue.sat",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -5384,7 +5384,7 @@ object_intangible_pet_shared_roba_hue = SharedIntangibleObjectTemplate:new {
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -5398,7 +5398,7 @@ ObjectTemplates:addClientTemplate(object_intangible_pet_shared_roba_hue, "object
 
 object_intangible_pet_shared_robo_bartender = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/robo_bartender.sat",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -5429,7 +5429,7 @@ object_intangible_pet_shared_robo_bartender = SharedIntangibleObjectTemplate:new
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"inventory", "datapad"},
+	slotDescriptorFilename = "abstract/slot/descriptor/droid.iff",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -5443,7 +5443,7 @@ ObjectTemplates:addClientTemplate(object_intangible_pet_shared_robo_bartender, "
 
 object_intangible_pet_shared_rock_mite_hue = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/rock_mite_hue.sat",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -5474,7 +5474,7 @@ object_intangible_pet_shared_rock_mite_hue = SharedIntangibleObjectTemplate:new 
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -5488,7 +5488,7 @@ ObjectTemplates:addClientTemplate(object_intangible_pet_shared_rock_mite_hue, "o
 
 object_intangible_pet_shared_ronto_hue = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/ronto_hue.sat",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -5519,7 +5519,7 @@ object_intangible_pet_shared_ronto_hue = SharedIntangibleObjectTemplate:new {
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -5533,7 +5533,7 @@ ObjectTemplates:addClientTemplate(object_intangible_pet_shared_ronto_hue, "objec
 
 object_intangible_pet_shared_salt_mynock_hue = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/salt_mynock_hue.sat",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -5564,7 +5564,7 @@ object_intangible_pet_shared_salt_mynock_hue = SharedIntangibleObjectTemplate:ne
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -5578,7 +5578,7 @@ ObjectTemplates:addClientTemplate(object_intangible_pet_shared_salt_mynock_hue, 
 
 object_intangible_pet_shared_sharnaff_hue = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/sharnaff_hue.sat",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -5609,7 +5609,7 @@ object_intangible_pet_shared_sharnaff_hue = SharedIntangibleObjectTemplate:new {
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -5623,7 +5623,7 @@ ObjectTemplates:addClientTemplate(object_intangible_pet_shared_sharnaff_hue, "ob
 
 object_intangible_pet_shared_shaupaut_hue = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/shaupaut_hue.sat",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -5654,7 +5654,7 @@ object_intangible_pet_shared_shaupaut_hue = SharedIntangibleObjectTemplate:new {
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -5668,7 +5668,7 @@ ObjectTemplates:addClientTemplate(object_intangible_pet_shared_shaupaut_hue, "ob
 
 object_intangible_pet_shared_shear_mite_hue = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/shear_mite_hue.sat",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -5699,7 +5699,7 @@ object_intangible_pet_shared_shear_mite_hue = SharedIntangibleObjectTemplate:new
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -5713,7 +5713,7 @@ ObjectTemplates:addClientTemplate(object_intangible_pet_shared_shear_mite_hue, "
 
 object_intangible_pet_shared_skreeg_hue = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/skreeg_hue.sat",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -5744,7 +5744,7 @@ object_intangible_pet_shared_skreeg_hue = SharedIntangibleObjectTemplate:new {
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -5758,7 +5758,7 @@ ObjectTemplates:addClientTemplate(object_intangible_pet_shared_skreeg_hue, "obje
 
 object_intangible_pet_shared_snorbal_hue = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/snorbal_hue.sat",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -5789,7 +5789,7 @@ object_intangible_pet_shared_snorbal_hue = SharedIntangibleObjectTemplate:new {
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -5803,7 +5803,7 @@ ObjectTemplates:addClientTemplate(object_intangible_pet_shared_snorbal_hue, "obj
 
 object_intangible_pet_shared_spined_puc_hue = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/spined_puc_hue.sat",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -5834,7 +5834,7 @@ object_intangible_pet_shared_spined_puc_hue = SharedIntangibleObjectTemplate:new
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -5848,7 +5848,7 @@ ObjectTemplates:addClientTemplate(object_intangible_pet_shared_spined_puc_hue, "
 
 object_intangible_pet_shared_spined_snake_hue = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/spined_snake_hue.sat",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -5879,7 +5879,7 @@ object_intangible_pet_shared_spined_snake_hue = SharedIntangibleObjectTemplate:n
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -5893,7 +5893,7 @@ ObjectTemplates:addClientTemplate(object_intangible_pet_shared_spined_snake_hue,
 
 object_intangible_pet_shared_squall_hue = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/squall_hue.sat",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -5924,7 +5924,7 @@ object_intangible_pet_shared_squall_hue = SharedIntangibleObjectTemplate:new {
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -5938,7 +5938,7 @@ ObjectTemplates:addClientTemplate(object_intangible_pet_shared_squall_hue, "obje
 
 object_intangible_pet_shared_squill_hue = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/squill_hue.sat",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -5969,7 +5969,7 @@ object_intangible_pet_shared_squill_hue = SharedIntangibleObjectTemplate:new {
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -5983,7 +5983,7 @@ ObjectTemplates:addClientTemplate(object_intangible_pet_shared_squill_hue, "obje
 
 object_intangible_pet_shared_stintaril_hue = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/stintaril_hue.sat",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -6014,7 +6014,7 @@ object_intangible_pet_shared_stintaril_hue = SharedIntangibleObjectTemplate:new 
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -6028,7 +6028,7 @@ ObjectTemplates:addClientTemplate(object_intangible_pet_shared_stintaril_hue, "o
 
 object_intangible_pet_shared_swirl_prong_hue = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/swirl_prong_hue.sat",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -6059,7 +6059,7 @@ object_intangible_pet_shared_swirl_prong_hue = SharedIntangibleObjectTemplate:ne
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -6073,7 +6073,7 @@ ObjectTemplates:addClientTemplate(object_intangible_pet_shared_swirl_prong_hue, 
 
 object_intangible_pet_shared_tanc_mite_hue = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/tanc_mite_hue.sat",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -6104,7 +6104,7 @@ object_intangible_pet_shared_tanc_mite_hue = SharedIntangibleObjectTemplate:new 
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -6118,7 +6118,7 @@ ObjectTemplates:addClientTemplate(object_intangible_pet_shared_tanc_mite_hue, "o
 
 object_intangible_pet_shared_thune_hue = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thune_hue.sat",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -6149,7 +6149,7 @@ object_intangible_pet_shared_thune_hue = SharedIntangibleObjectTemplate:new {
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -6163,7 +6163,7 @@ ObjectTemplates:addClientTemplate(object_intangible_pet_shared_thune_hue, "objec
 
 object_intangible_pet_shared_tip_solicitor_droid = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/maul_probe_droid.sat",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -6194,7 +6194,7 @@ object_intangible_pet_shared_tip_solicitor_droid = SharedIntangibleObjectTemplat
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"inventory", "datapad"},
+	slotDescriptorFilename = "abstract/slot/descriptor/droid.iff",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -6208,7 +6208,7 @@ ObjectTemplates:addClientTemplate(object_intangible_pet_shared_tip_solicitor_dro
 
 object_intangible_pet_shared_torton_hue = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/torton_hue.sat",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -6239,7 +6239,7 @@ object_intangible_pet_shared_torton_hue = SharedIntangibleObjectTemplate:new {
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -6253,7 +6253,7 @@ ObjectTemplates:addClientTemplate(object_intangible_pet_shared_torton_hue, "obje
 
 object_intangible_pet_shared_training_remote = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/jedi_training_droid.sat",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -6284,7 +6284,7 @@ object_intangible_pet_shared_training_remote = SharedIntangibleObjectTemplate:ne
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"inventory", "datapad"},
+	slotDescriptorFilename = "abstract/slot/descriptor/droid.iff",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -6298,7 +6298,7 @@ ObjectTemplates:addClientTemplate(object_intangible_pet_shared_training_remote, 
 
 object_intangible_pet_shared_tt8l = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/tt8l.sat",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -6329,7 +6329,7 @@ object_intangible_pet_shared_tt8l = SharedIntangibleObjectTemplate:new {
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"inventory", "datapad"},
+	slotDescriptorFilename = "abstract/slot/descriptor/droid.iff",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -6343,7 +6343,7 @@ ObjectTemplates:addClientTemplate(object_intangible_pet_shared_tt8l, "object/int
 
 object_intangible_pet_shared_tt8l_y7 = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/tt8l_y7.sat",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -6374,7 +6374,7 @@ object_intangible_pet_shared_tt8l_y7 = SharedIntangibleObjectTemplate:new {
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"inventory", "datapad"},
+	slotDescriptorFilename = "abstract/slot/descriptor/droid.iff",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -6388,7 +6388,7 @@ ObjectTemplates:addClientTemplate(object_intangible_pet_shared_tt8l_y7, "object/
 
 object_intangible_pet_shared_tusk_cat_hue = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/tusk_cat_hue.sat",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -6419,7 +6419,7 @@ object_intangible_pet_shared_tusk_cat_hue = SharedIntangibleObjectTemplate:new {
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -6433,7 +6433,7 @@ ObjectTemplates:addClientTemplate(object_intangible_pet_shared_tusk_cat_hue, "ob
 
 object_intangible_pet_shared_tybis_hue = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/tybis_hue.sat",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -6464,7 +6464,7 @@ object_intangible_pet_shared_tybis_hue = SharedIntangibleObjectTemplate:new {
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -6478,7 +6478,7 @@ ObjectTemplates:addClientTemplate(object_intangible_pet_shared_tybis_hue, "objec
 
 object_intangible_pet_shared_veermok_hue = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/veermok_hue.sat",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -6509,7 +6509,7 @@ object_intangible_pet_shared_veermok_hue = SharedIntangibleObjectTemplate:new {
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -6523,7 +6523,7 @@ ObjectTemplates:addClientTemplate(object_intangible_pet_shared_veermok_hue, "obj
 
 object_intangible_pet_shared_vehicular_prototype = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/monstrosity.sat",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -6554,7 +6554,7 @@ object_intangible_pet_shared_vehicular_prototype = SharedIntangibleObjectTemplat
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"inventory", "default_weapon", "mount_covering", "mount_saddle"},
+	slotDescriptorFilename = "abstract/slot/descriptor/mount_pcd.iff",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -6568,7 +6568,7 @@ ObjectTemplates:addClientTemplate(object_intangible_pet_shared_vehicular_prototy
 
 object_intangible_pet_shared_vehicular_prototype_bike = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/pv_speeder_bike.sat",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -6599,7 +6599,7 @@ object_intangible_pet_shared_vehicular_prototype_bike = SharedIntangibleObjectTe
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"inventory", "default_weapon", "mount_covering", "mount_saddle"},
+	slotDescriptorFilename = "abstract/slot/descriptor/mount_pcd.iff",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -6613,7 +6613,7 @@ ObjectTemplates:addClientTemplate(object_intangible_pet_shared_vehicular_prototy
 
 object_intangible_pet_shared_verne_hue = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/verne_hue.sat",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -6644,7 +6644,7 @@ object_intangible_pet_shared_verne_hue = SharedIntangibleObjectTemplate:new {
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -6658,7 +6658,7 @@ ObjectTemplates:addClientTemplate(object_intangible_pet_shared_verne_hue, "objec
 
 object_intangible_pet_shared_vesp_hue = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/vesp_hue.sat",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -6689,7 +6689,7 @@ object_intangible_pet_shared_vesp_hue = SharedIntangibleObjectTemplate:new {
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -6703,7 +6703,7 @@ ObjectTemplates:addClientTemplate(object_intangible_pet_shared_vesp_hue, "object
 
 object_intangible_pet_shared_vir_vur_hue = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/vir_vur_hue.sat",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -6734,7 +6734,7 @@ object_intangible_pet_shared_vir_vur_hue = SharedIntangibleObjectTemplate:new {
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -6748,7 +6748,7 @@ ObjectTemplates:addClientTemplate(object_intangible_pet_shared_vir_vur_hue, "obj
 
 object_intangible_pet_shared_voritor_lizard_hue = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/voritor_lizard_hue.sat",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -6779,7 +6779,7 @@ object_intangible_pet_shared_voritor_lizard_hue = SharedIntangibleObjectTemplate
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -6793,7 +6793,7 @@ ObjectTemplates:addClientTemplate(object_intangible_pet_shared_voritor_lizard_hu
 
 object_intangible_pet_shared_vynock_hue = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/vynock_hue.sat",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -6824,7 +6824,7 @@ object_intangible_pet_shared_vynock_hue = SharedIntangibleObjectTemplate:new {
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -6838,7 +6838,7 @@ ObjectTemplates:addClientTemplate(object_intangible_pet_shared_vynock_hue, "obje
 
 object_intangible_pet_shared_wed_treadwell = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wed_treadwell.sat",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -6869,7 +6869,7 @@ object_intangible_pet_shared_wed_treadwell = SharedIntangibleObjectTemplate:new 
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"inventory", "datapad"},
+	slotDescriptorFilename = "abstract/slot/descriptor/droid.iff",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -6883,7 +6883,7 @@ ObjectTemplates:addClientTemplate(object_intangible_pet_shared_wed_treadwell, "o
 
 object_intangible_pet_shared_womp_rat_hue = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/womp_rat_hue.sat",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -6914,7 +6914,7 @@ object_intangible_pet_shared_womp_rat_hue = SharedIntangibleObjectTemplate:new {
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -6928,7 +6928,7 @@ ObjectTemplates:addClientTemplate(object_intangible_pet_shared_womp_rat_hue, "ob
 
 object_intangible_pet_shared_woolamander_hue = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/woolamander_hue.sat",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -6959,7 +6959,7 @@ object_intangible_pet_shared_woolamander_hue = SharedIntangibleObjectTemplate:ne
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -6973,7 +6973,7 @@ ObjectTemplates:addClientTemplate(object_intangible_pet_shared_woolamander_hue, 
 
 object_intangible_pet_shared_worrt_hue = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/worrt_hue.sat",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -7004,7 +7004,7 @@ object_intangible_pet_shared_worrt_hue = SharedIntangibleObjectTemplate:new {
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 
@@ -7018,7 +7018,7 @@ ObjectTemplates:addClientTemplate(object_intangible_pet_shared_worrt_hue, "objec
 
 object_intangible_pet_shared_zucca_boar_hue = SharedIntangibleObjectTemplate:new {
 	appearanceFilename = "appearance/zucca_boar_hue.sat",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	clearFloraRadius = 0,
 	clientDataFile = "",
@@ -7049,7 +7049,7 @@ object_intangible_pet_shared_zucca_boar_hue = SharedIntangibleObjectTemplate:new
 	scale = 0,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 0,
 	surfaceType = 0,
 

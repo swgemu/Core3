@@ -43,7 +43,7 @@
 
 object_tangible_loot_quest_shared_2h_sword_scythe_schematic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_prp_document_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -79,7 +79,7 @@ object_tangible_loot_quest_shared_2h_sword_scythe_schematic = SharedTangibleObje
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -98,7 +98,7 @@ ObjectTemplates:addClientTemplate(object_tangible_loot_quest_shared_2h_sword_scy
 
 object_tangible_loot_quest_shared_anakin_helmet = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/hat_s04_m.sat",
-	arrangementDescriptors = {"hat"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hat.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -134,7 +134,7 @@ object_tangible_loot_quest_shared_anakin_helmet = SharedTangibleObjectTemplate:n
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -153,7 +153,7 @@ ObjectTemplates:addClientTemplate(object_tangible_loot_quest_shared_anakin_helme
 
 object_tangible_loot_quest_shared_ardanium_ii = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/con_fs_quest_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -189,7 +189,7 @@ object_tangible_loot_quest_shared_ardanium_ii = SharedTangibleObjectTemplate:new
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -208,7 +208,7 @@ ObjectTemplates:addClientTemplate(object_tangible_loot_quest_shared_ardanium_ii,
 
 object_tangible_loot_quest_shared_bantha_doll = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_all_sclpt_stuffed_bantha.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -244,7 +244,7 @@ object_tangible_loot_quest_shared_bantha_doll = SharedTangibleObjectTemplate:new
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -263,7 +263,7 @@ ObjectTemplates:addClientTemplate(object_tangible_loot_quest_shared_bantha_doll,
 
 object_tangible_loot_quest_shared_carved_stone = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_chance_dice_s2.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -299,7 +299,7 @@ object_tangible_loot_quest_shared_carved_stone = SharedTangibleObjectTemplate:ne
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -318,7 +318,7 @@ ObjectTemplates:addClientTemplate(object_tangible_loot_quest_shared_carved_stone
 
 object_tangible_loot_quest_shared_crude_stone = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -354,7 +354,7 @@ object_tangible_loot_quest_shared_crude_stone = SharedTangibleObjectTemplate:new
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -373,7 +373,7 @@ ObjectTemplates:addClientTemplate(object_tangible_loot_quest_shared_crude_stone,
 
 object_tangible_loot_quest_shared_droid_brain_anakin = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_electronic_module_complex.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -409,7 +409,7 @@ object_tangible_loot_quest_shared_droid_brain_anakin = SharedTangibleObjectTempl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -428,7 +428,7 @@ ObjectTemplates:addClientTemplate(object_tangible_loot_quest_shared_droid_brain_
 
 object_tangible_loot_quest_shared_edb_quest_heirloom_bowl = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_tato_bowl_empty_s03.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -464,7 +464,7 @@ object_tangible_loot_quest_shared_edb_quest_heirloom_bowl = SharedTangibleObject
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -483,7 +483,7 @@ ObjectTemplates:addClientTemplate(object_tangible_loot_quest_shared_edb_quest_he
 
 object_tangible_loot_quest_shared_endrine = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/con_fs_quest_s02.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -519,7 +519,7 @@ object_tangible_loot_quest_shared_endrine = SharedTangibleObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -538,7 +538,7 @@ ObjectTemplates:addClientTemplate(object_tangible_loot_quest_shared_endrine, "ob
 
 object_tangible_loot_quest_shared_frn_quest_dant_skull_bol_01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_dant_bol_skull.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -574,7 +574,7 @@ object_tangible_loot_quest_shared_frn_quest_dant_skull_bol_01 = SharedTangibleOb
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -593,7 +593,7 @@ ObjectTemplates:addClientTemplate(object_tangible_loot_quest_shared_frn_quest_da
 
 object_tangible_loot_quest_shared_frn_quest_krayt_skull_01 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_tato_skel_krayt_head_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -629,7 +629,7 @@ object_tangible_loot_quest_shared_frn_quest_krayt_skull_01 = SharedTangibleObjec
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -648,7 +648,7 @@ ObjectTemplates:addClientTemplate(object_tangible_loot_quest_shared_frn_quest_kr
 
 object_tangible_loot_quest_shared_huff_quest_borvos_money = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_prp_briefcase.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -684,7 +684,7 @@ object_tangible_loot_quest_shared_huff_quest_borvos_money = SharedTangibleObject
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -703,7 +703,7 @@ ObjectTemplates:addClientTemplate(object_tangible_loot_quest_shared_huff_quest_b
 
 object_tangible_loot_quest_shared_huff_quest_corsec_badge = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_prp_ledger.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -739,7 +739,7 @@ object_tangible_loot_quest_shared_huff_quest_corsec_badge = SharedTangibleObject
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -758,7 +758,7 @@ ObjectTemplates:addClientTemplate(object_tangible_loot_quest_shared_huff_quest_c
 
 object_tangible_loot_quest_shared_huff_quest_top_secret_documents = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_prp_document_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -794,7 +794,7 @@ object_tangible_loot_quest_shared_huff_quest_top_secret_documents = SharedTangib
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -813,7 +813,7 @@ ObjectTemplates:addClientTemplate(object_tangible_loot_quest_shared_huff_quest_t
 
 object_tangible_loot_quest_shared_hvy_disruptor_cannon_broken = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wp_hvy_launcher.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -849,7 +849,7 @@ object_tangible_loot_quest_shared_hvy_disruptor_cannon_broken = SharedTangibleOb
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -868,7 +868,7 @@ ObjectTemplates:addClientTemplate(object_tangible_loot_quest_shared_hvy_disrupto
 
 object_tangible_loot_quest_shared_lance_nightsister_schematic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_prp_document_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -904,7 +904,7 @@ object_tangible_loot_quest_shared_lance_nightsister_schematic = SharedTangibleOb
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -923,7 +923,7 @@ ObjectTemplates:addClientTemplate(object_tangible_loot_quest_shared_lance_nights
 
 object_tangible_loot_quest_shared_lifeday_orb = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/lifeday_orb.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -959,7 +959,7 @@ object_tangible_loot_quest_shared_lifeday_orb = SharedTangibleObjectTemplate:new
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -978,7 +978,7 @@ ObjectTemplates:addClientTemplate(object_tangible_loot_quest_shared_lifeday_orb,
 
 object_tangible_loot_quest_shared_nym_droid_memory_chip = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_electronic_module_simple.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1014,7 +1014,7 @@ object_tangible_loot_quest_shared_nym_droid_memory_chip = SharedTangibleObjectTe
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1033,7 +1033,7 @@ ObjectTemplates:addClientTemplate(object_tangible_loot_quest_shared_nym_droid_me
 
 object_tangible_loot_quest_shared_nym_filtered_gas = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/con_gen_inorganic_gas.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1069,7 +1069,7 @@ object_tangible_loot_quest_shared_nym_filtered_gas = SharedTangibleObjectTemplat
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1088,7 +1088,7 @@ ObjectTemplates:addClientTemplate(object_tangible_loot_quest_shared_nym_filtered
 
 object_tangible_loot_quest_shared_nym_hard_drive = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_dna_data_disc.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1124,7 +1124,7 @@ object_tangible_loot_quest_shared_nym_hard_drive = SharedTangibleObjectTemplate:
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1143,7 +1143,7 @@ ObjectTemplates:addClientTemplate(object_tangible_loot_quest_shared_nym_hard_dri
 
 object_tangible_loot_quest_shared_nym_imggc = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wp_grenade_class_a.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1179,7 +1179,7 @@ object_tangible_loot_quest_shared_nym_imggc = SharedTangibleObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1198,7 +1198,7 @@ ObjectTemplates:addClientTemplate(object_tangible_loot_quest_shared_nym_imggc, "
 
 object_tangible_loot_quest_shared_ostrine = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/con_fs_quest_s02.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1234,7 +1234,7 @@ object_tangible_loot_quest_shared_ostrine = SharedTangibleObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1253,7 +1253,7 @@ ObjectTemplates:addClientTemplate(object_tangible_loot_quest_shared_ostrine, "ob
 
 object_tangible_loot_quest_shared_quest_item_goru_calling_card = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_prp_ledger.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1289,7 +1289,7 @@ object_tangible_loot_quest_shared_quest_item_goru_calling_card = SharedTangibleO
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1308,7 +1308,7 @@ ObjectTemplates:addClientTemplate(object_tangible_loot_quest_shared_quest_item_g
 
 object_tangible_loot_quest_shared_quest_item_sarlacc_bile_jar = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_tato_jar_funk_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1344,7 +1344,7 @@ object_tangible_loot_quest_shared_quest_item_sarlacc_bile_jar = SharedTangibleOb
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1363,7 +1363,7 @@ ObjectTemplates:addClientTemplate(object_tangible_loot_quest_shared_quest_item_s
 
 object_tangible_loot_quest_shared_quest_item_spice_jar = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_tato_jar_spice_s02.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1399,7 +1399,7 @@ object_tangible_loot_quest_shared_quest_item_spice_jar = SharedTangibleObjectTem
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1418,7 +1418,7 @@ ObjectTemplates:addClientTemplate(object_tangible_loot_quest_shared_quest_item_s
 
 object_tangible_loot_quest_shared_quest_item_zicx_bug_jar = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/edb_con_tato_jar_bugs_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1454,7 +1454,7 @@ object_tangible_loot_quest_shared_quest_item_zicx_bug_jar = SharedTangibleObject
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1473,7 +1473,7 @@ ObjectTemplates:addClientTemplate(object_tangible_loot_quest_shared_quest_item_z
 
 object_tangible_loot_quest_shared_quest_satchel_charge = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_computer_toolkit.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1509,7 +1509,7 @@ object_tangible_loot_quest_shared_quest_satchel_charge = SharedTangibleObjectTem
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1528,7 +1528,7 @@ ObjectTemplates:addClientTemplate(object_tangible_loot_quest_shared_quest_satche
 
 object_tangible_loot_quest_shared_quest_stimpack_a_schematic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_medic_stimpack_sm_s1.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1564,7 +1564,7 @@ object_tangible_loot_quest_shared_quest_stimpack_a_schematic = SharedTangibleObj
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1583,7 +1583,7 @@ ObjectTemplates:addClientTemplate(object_tangible_loot_quest_shared_quest_stimpa
 
 object_tangible_loot_quest_shared_rifle_quest_tusken = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_rifle_tusken_s01.apt",
-	arrangementDescriptors = {"hold_r", "hold_l"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hold_both.iff",
 	attackType = 1,
 
 	certificationsRequired = {},
@@ -1620,7 +1620,7 @@ object_tangible_loot_quest_shared_rifle_quest_tusken = SharedWeaponObjectTemplat
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"default_weapon_ammo_slot", "crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/default_weapon.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1642,7 +1642,7 @@ ObjectTemplates:addClientTemplate(object_tangible_loot_quest_shared_rifle_quest_
 
 object_tangible_loot_quest_shared_rudic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/con_fs_quest_s02.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1678,7 +1678,7 @@ object_tangible_loot_quest_shared_rudic = SharedTangibleObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1697,7 +1697,7 @@ ObjectTemplates:addClientTemplate(object_tangible_loot_quest_shared_rudic, "obje
 
 object_tangible_loot_quest_shared_schematic_apron_s01_quest = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_prp_document_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1733,7 +1733,7 @@ object_tangible_loot_quest_shared_schematic_apron_s01_quest = SharedTangibleObje
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1752,7 +1752,7 @@ ObjectTemplates:addClientTemplate(object_tangible_loot_quest_shared_schematic_ap
 
 object_tangible_loot_quest_shared_schematic_backpack_s03_quest = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_prp_document_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1788,7 +1788,7 @@ object_tangible_loot_quest_shared_schematic_backpack_s03_quest = SharedTangibleO
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1807,7 +1807,7 @@ ObjectTemplates:addClientTemplate(object_tangible_loot_quest_shared_schematic_ba
 
 object_tangible_loot_quest_shared_schematic_backpack_s06_quest = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_prp_document_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1843,7 +1843,7 @@ object_tangible_loot_quest_shared_schematic_backpack_s06_quest = SharedTangibleO
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1862,7 +1862,7 @@ ObjectTemplates:addClientTemplate(object_tangible_loot_quest_shared_schematic_ba
 
 object_tangible_loot_quest_shared_schematic_bandolier_s02_quest = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_prp_document_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1898,7 +1898,7 @@ object_tangible_loot_quest_shared_schematic_bandolier_s02_quest = SharedTangible
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1917,7 +1917,7 @@ ObjectTemplates:addClientTemplate(object_tangible_loot_quest_shared_schematic_ba
 
 object_tangible_loot_quest_shared_schematic_bandolier_s04_quest = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_prp_document_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -1953,7 +1953,7 @@ object_tangible_loot_quest_shared_schematic_bandolier_s04_quest = SharedTangible
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1972,7 +1972,7 @@ ObjectTemplates:addClientTemplate(object_tangible_loot_quest_shared_schematic_ba
 
 object_tangible_loot_quest_shared_schematic_belt_s05_quest = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_prp_document_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2008,7 +2008,7 @@ object_tangible_loot_quest_shared_schematic_belt_s05_quest = SharedTangibleObjec
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2027,7 +2027,7 @@ ObjectTemplates:addClientTemplate(object_tangible_loot_quest_shared_schematic_be
 
 object_tangible_loot_quest_shared_schematic_carbine_e11_quest = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_prp_document_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2063,7 +2063,7 @@ object_tangible_loot_quest_shared_schematic_carbine_e11_quest = SharedTangibleOb
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2082,7 +2082,7 @@ ObjectTemplates:addClientTemplate(object_tangible_loot_quest_shared_schematic_ca
 
 object_tangible_loot_quest_shared_schematic_dress_s08_quest = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_prp_document_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2118,7 +2118,7 @@ object_tangible_loot_quest_shared_schematic_dress_s08_quest = SharedTangibleObje
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2137,7 +2137,7 @@ ObjectTemplates:addClientTemplate(object_tangible_loot_quest_shared_schematic_dr
 
 object_tangible_loot_quest_shared_schematic_pistol_fwg5_quest = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_prp_document_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2173,7 +2173,7 @@ object_tangible_loot_quest_shared_schematic_pistol_fwg5_quest = SharedTangibleOb
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2192,7 +2192,7 @@ ObjectTemplates:addClientTemplate(object_tangible_loot_quest_shared_schematic_pi
 
 object_tangible_loot_quest_shared_schematic_republic_blaster_quest = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_prp_document_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2228,7 +2228,7 @@ object_tangible_loot_quest_shared_schematic_republic_blaster_quest = SharedTangi
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2247,7 +2247,7 @@ ObjectTemplates:addClientTemplate(object_tangible_loot_quest_shared_schematic_re
 
 object_tangible_loot_quest_shared_sean_campaign_disk = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2283,7 +2283,7 @@ object_tangible_loot_quest_shared_sean_campaign_disk = SharedTangibleObjectTempl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2302,7 +2302,7 @@ ObjectTemplates:addClientTemplate(object_tangible_loot_quest_shared_sean_campaig
 
 object_tangible_loot_quest_shared_sean_history_disk = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_dna_data_disc.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2338,7 +2338,7 @@ object_tangible_loot_quest_shared_sean_history_disk = SharedTangibleObjectTempla
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2357,7 +2357,7 @@ ObjectTemplates:addClientTemplate(object_tangible_loot_quest_shared_sean_history
 
 object_tangible_loot_quest_shared_sean_questn_alog = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2393,7 +2393,7 @@ object_tangible_loot_quest_shared_sean_questn_alog = SharedTangibleObjectTemplat
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2412,7 +2412,7 @@ ObjectTemplates:addClientTemplate(object_tangible_loot_quest_shared_sean_questn_
 
 object_tangible_loot_quest_shared_sean_questn_gpapers = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_handheld_viewscreen_s1.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2448,7 +2448,7 @@ object_tangible_loot_quest_shared_sean_questn_gpapers = SharedTangibleObjectTemp
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2467,7 +2467,7 @@ ObjectTemplates:addClientTemplate(object_tangible_loot_quest_shared_sean_questn_
 
 object_tangible_loot_quest_shared_sean_questn_tdisk = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2503,7 +2503,7 @@ object_tangible_loot_quest_shared_sean_questn_tdisk = SharedTangibleObjectTempla
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2522,7 +2522,7 @@ ObjectTemplates:addClientTemplate(object_tangible_loot_quest_shared_sean_questn_
 
 object_tangible_loot_quest_shared_sean_questp_ctestimony = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_datapad_s2.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2558,7 +2558,7 @@ object_tangible_loot_quest_shared_sean_questp_ctestimony = SharedTangibleObjectT
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2577,7 +2577,7 @@ ObjectTemplates:addClientTemplate(object_tangible_loot_quest_shared_sean_questp_
 
 object_tangible_loot_quest_shared_sean_questp_htestimony = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_prp_document_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2613,7 +2613,7 @@ object_tangible_loot_quest_shared_sean_questp_htestimony = SharedTangibleObjectT
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2632,7 +2632,7 @@ ObjectTemplates:addClientTemplate(object_tangible_loot_quest_shared_sean_questp_
 
 object_tangible_loot_quest_shared_sean_questp_mdisk = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_comp_dna_data_disc.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2668,7 +2668,7 @@ object_tangible_loot_quest_shared_sean_questp_mdisk = SharedTangibleObjectTempla
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2687,7 +2687,7 @@ ObjectTemplates:addClientTemplate(object_tangible_loot_quest_shared_sean_questp_
 
 object_tangible_loot_quest_shared_shellfish_harvester_schematic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2723,7 +2723,7 @@ object_tangible_loot_quest_shared_shellfish_harvester_schematic = SharedTangible
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2742,7 +2742,7 @@ ObjectTemplates:addClientTemplate(object_tangible_loot_quest_shared_shellfish_ha
 
 object_tangible_loot_quest_shared_shield_generator_personal_imperial_test_schematic = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2778,7 +2778,7 @@ object_tangible_loot_quest_shared_shield_generator_personal_imperial_test_schema
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2797,7 +2797,7 @@ ObjectTemplates:addClientTemplate(object_tangible_loot_quest_shared_shield_gener
 
 object_tangible_loot_quest_shared_smooth_stone = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/dragon_pearl.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2833,7 +2833,7 @@ object_tangible_loot_quest_shared_smooth_stone = SharedTangibleObjectTemplate:ne
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2852,7 +2852,7 @@ ObjectTemplates:addClientTemplate(object_tangible_loot_quest_shared_smooth_stone
 
 object_tangible_loot_quest_shared_treasure_map_hedon = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2888,7 +2888,7 @@ object_tangible_loot_quest_shared_treasure_map_hedon = SharedTangibleObjectTempl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2907,7 +2907,7 @@ ObjectTemplates:addClientTemplate(object_tangible_loot_quest_shared_treasure_map
 
 object_tangible_loot_quest_shared_tusken_head = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/helmet_tusken_raider_s01_m.sat",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2943,7 +2943,7 @@ object_tangible_loot_quest_shared_tusken_head = SharedTangibleObjectTemplate:new
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -2962,7 +2962,7 @@ ObjectTemplates:addClientTemplate(object_tangible_loot_quest_shared_tusken_head,
 
 object_tangible_loot_quest_shared_valarian_dagger = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_sword_rantok.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -2998,7 +2998,7 @@ object_tangible_loot_quest_shared_valarian_dagger = SharedTangibleObjectTemplate
 	scale = 0.5,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3017,7 +3017,7 @@ ObjectTemplates:addClientTemplate(object_tangible_loot_quest_shared_valarian_dag
 
 object_tangible_loot_quest_shared_victor_campaign_disk = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_data_disk.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -3053,7 +3053,7 @@ object_tangible_loot_quest_shared_victor_campaign_disk = SharedTangibleObjectTem
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3072,7 +3072,7 @@ ObjectTemplates:addClientTemplate(object_tangible_loot_quest_shared_victor_campa
 
 object_tangible_loot_quest_shared_victor_questn_dseal = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_prp_document_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -3108,7 +3108,7 @@ object_tangible_loot_quest_shared_victor_questn_dseal = SharedTangibleObjectTemp
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3127,7 +3127,7 @@ ObjectTemplates:addClientTemplate(object_tangible_loot_quest_shared_victor_quest
 
 object_tangible_loot_quest_shared_victor_questn_hlist = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_engineering_analysis_board.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -3163,7 +3163,7 @@ object_tangible_loot_quest_shared_victor_questn_hlist = SharedTangibleObjectTemp
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3182,7 +3182,7 @@ ObjectTemplates:addClientTemplate(object_tangible_loot_quest_shared_victor_quest
 
 object_tangible_loot_quest_shared_victor_questn_journal = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_prp_ledger.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -3218,7 +3218,7 @@ object_tangible_loot_quest_shared_victor_questn_journal = SharedTangibleObjectTe
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3237,7 +3237,7 @@ ObjectTemplates:addClientTemplate(object_tangible_loot_quest_shared_victor_quest
 
 object_tangible_loot_quest_shared_victor_questp_jregistry = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_ticket.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -3273,7 +3273,7 @@ object_tangible_loot_quest_shared_victor_questp_jregistry = SharedTangibleObject
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3292,7 +3292,7 @@ ObjectTemplates:addClientTemplate(object_tangible_loot_quest_shared_victor_quest
 
 object_tangible_loot_quest_shared_victor_questp_receipt = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_tool_handheld_viewscreen_s2.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -3328,7 +3328,7 @@ object_tangible_loot_quest_shared_victor_questp_receipt = SharedTangibleObjectTe
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3347,7 +3347,7 @@ ObjectTemplates:addClientTemplate(object_tangible_loot_quest_shared_victor_quest
 
 object_tangible_loot_quest_shared_victor_questp_testimony = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/thm_prp_document_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -3383,7 +3383,7 @@ object_tangible_loot_quest_shared_victor_questp_testimony = SharedTangibleObject
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -3402,7 +3402,7 @@ ObjectTemplates:addClientTemplate(object_tangible_loot_quest_shared_victor_quest
 
 object_tangible_loot_quest_shared_wind_crystal = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/con_fs_quest_s01.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -3438,7 +3438,7 @@ object_tangible_loot_quest_shared_wind_crystal = SharedTangibleObjectTemplate:ne
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",

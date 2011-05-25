@@ -43,7 +43,7 @@
 
 object_tangible_hopper_shared_crafting_station_ingredient_hopper_1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {"ingredient_hopper"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ingredient_hopper.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -79,7 +79,7 @@ object_tangible_hopper_shared_crafting_station_ingredient_hopper_1 = SharedTangi
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -98,7 +98,7 @@ ObjectTemplates:addClientTemplate(object_tangible_hopper_shared_crafting_station
 
 object_tangible_hopper_shared_manufacture_installation_ingredient_hopper_1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {"ingredient_hopper"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ingredient_hopper.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -134,7 +134,7 @@ object_tangible_hopper_shared_manufacture_installation_ingredient_hopper_1 = Sha
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -153,7 +153,7 @@ ObjectTemplates:addClientTemplate(object_tangible_hopper_shared_manufacture_inst
 
 object_tangible_hopper_shared_manufacture_installation_output_hopper_1 = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {"output_hopper"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_output_hopper.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -189,7 +189,7 @@ object_tangible_hopper_shared_manufacture_installation_output_hopper_1 = SharedT
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",

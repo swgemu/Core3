@@ -43,7 +43,7 @@
 
 object_weapon_melee_polearm_crafted_saber_shared_sword_lightsaber_polearm_gen1 = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_lance_lightsaber_blade_s01.lsb",
-	arrangementDescriptors = {"hold_r", "hold_l"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hold_both.iff",
 	attackType = 1,
 
 	certificationsRequired = {},
@@ -80,7 +80,7 @@ object_weapon_melee_polearm_crafted_saber_shared_sword_lightsaber_polearm_gen1 =
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"saber_inv", "crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/default_lightsaber.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -102,7 +102,7 @@ ObjectTemplates:addClientTemplate(object_weapon_melee_polearm_crafted_saber_shar
 
 object_weapon_melee_polearm_crafted_saber_shared_sword_lightsaber_polearm_gen2 = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_lance_lightsaber_blade_s01.lsb",
-	arrangementDescriptors = {"hold_r", "hold_l"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hold_both.iff",
 	attackType = 1,
 
 	certificationsRequired = {},
@@ -139,7 +139,7 @@ object_weapon_melee_polearm_crafted_saber_shared_sword_lightsaber_polearm_gen2 =
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"saber_inv", "crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/default_lightsaber.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -161,7 +161,7 @@ ObjectTemplates:addClientTemplate(object_weapon_melee_polearm_crafted_saber_shar
 
 object_weapon_melee_polearm_crafted_saber_shared_sword_lightsaber_polearm_gen3 = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_lance_lightsaber_blade_s01.lsb",
-	arrangementDescriptors = {"hold_r", "hold_l"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hold_both.iff",
 	attackType = 1,
 
 	certificationsRequired = {},
@@ -198,7 +198,7 @@ object_weapon_melee_polearm_crafted_saber_shared_sword_lightsaber_polearm_gen3 =
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"saber_inv", "crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/default_lightsaber.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -220,7 +220,7 @@ ObjectTemplates:addClientTemplate(object_weapon_melee_polearm_crafted_saber_shar
 
 object_weapon_melee_polearm_crafted_saber_shared_sword_lightsaber_polearm_gen4 = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_lance_lightsaber_blade_s01.lsb",
-	arrangementDescriptors = {"hold_r", "hold_l"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hold_both.iff",
 	attackType = 1,
 
 	certificationsRequired = {},
@@ -257,7 +257,7 @@ object_weapon_melee_polearm_crafted_saber_shared_sword_lightsaber_polearm_gen4 =
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"saber_inv", "crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/default_lightsaber.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -279,7 +279,7 @@ ObjectTemplates:addClientTemplate(object_weapon_melee_polearm_crafted_saber_shar
 
 object_weapon_melee_polearm_crafted_saber_shared_sword_lightsaber_polearm_gen5 = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_lance_lightsaber_blade_s01.lsb",
-	arrangementDescriptors = {"hold_r", "hold_l"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hold_both.iff",
 	attackType = 1,
 
 	certificationsRequired = {},
@@ -316,7 +316,7 @@ object_weapon_melee_polearm_crafted_saber_shared_sword_lightsaber_polearm_gen5 =
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"saber_inv", "crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/default_lightsaber.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -338,7 +338,7 @@ ObjectTemplates:addClientTemplate(object_weapon_melee_polearm_crafted_saber_shar
 
 object_weapon_melee_polearm_crafted_saber_shared_sword_lightsaber_polearm_s1 = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_lance_lightsaber_blade_s01.lsb",
-	arrangementDescriptors = {"hold_r", "hold_l"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hold_both.iff",
 	attackType = 1,
 
 	certificationsRequired = {},
@@ -375,7 +375,7 @@ object_weapon_melee_polearm_crafted_saber_shared_sword_lightsaber_polearm_s1 = S
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"saber_inv", "crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/default_lightsaber.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -397,7 +397,7 @@ ObjectTemplates:addClientTemplate(object_weapon_melee_polearm_crafted_saber_shar
 
 object_weapon_melee_polearm_crafted_saber_shared_sword_lightsaber_polearm_s1_gen1 = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_lance_lightsaber_blade_s01.lsb",
-	arrangementDescriptors = {"hold_r", "hold_l"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hold_both.iff",
 	attackType = 1,
 
 	certificationsRequired = {},
@@ -434,7 +434,7 @@ object_weapon_melee_polearm_crafted_saber_shared_sword_lightsaber_polearm_s1_gen
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"saber_inv", "crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/default_lightsaber.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -456,7 +456,7 @@ ObjectTemplates:addClientTemplate(object_weapon_melee_polearm_crafted_saber_shar
 
 object_weapon_melee_polearm_crafted_saber_shared_sword_lightsaber_polearm_s1_gen2 = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_lance_lightsaber_blade_s01.lsb",
-	arrangementDescriptors = {"hold_r", "hold_l"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hold_both.iff",
 	attackType = 1,
 
 	certificationsRequired = {},
@@ -493,7 +493,7 @@ object_weapon_melee_polearm_crafted_saber_shared_sword_lightsaber_polearm_s1_gen
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"saber_inv", "crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/default_lightsaber.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -515,7 +515,7 @@ ObjectTemplates:addClientTemplate(object_weapon_melee_polearm_crafted_saber_shar
 
 object_weapon_melee_polearm_crafted_saber_shared_sword_lightsaber_polearm_s1_gen3 = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_lance_lightsaber_blade_s01.lsb",
-	arrangementDescriptors = {"hold_r", "hold_l"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hold_both.iff",
 	attackType = 1,
 
 	certificationsRequired = {},
@@ -552,7 +552,7 @@ object_weapon_melee_polearm_crafted_saber_shared_sword_lightsaber_polearm_s1_gen
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"saber_inv", "crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/default_lightsaber.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -574,7 +574,7 @@ ObjectTemplates:addClientTemplate(object_weapon_melee_polearm_crafted_saber_shar
 
 object_weapon_melee_polearm_crafted_saber_shared_sword_lightsaber_polearm_s1_gen4 = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_lance_lightsaber_blade_s01.lsb",
-	arrangementDescriptors = {"hold_r", "hold_l"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hold_both.iff",
 	attackType = 1,
 
 	certificationsRequired = {},
@@ -611,7 +611,7 @@ object_weapon_melee_polearm_crafted_saber_shared_sword_lightsaber_polearm_s1_gen
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"saber_inv", "crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/default_lightsaber.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -633,7 +633,7 @@ ObjectTemplates:addClientTemplate(object_weapon_melee_polearm_crafted_saber_shar
 
 object_weapon_melee_polearm_crafted_saber_shared_sword_lightsaber_polearm_s2 = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_lance_lightsaber_blade_s02.lsb",
-	arrangementDescriptors = {"hold_r", "hold_l"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hold_both.iff",
 	attackType = 1,
 
 	certificationsRequired = {},
@@ -670,7 +670,7 @@ object_weapon_melee_polearm_crafted_saber_shared_sword_lightsaber_polearm_s2 = S
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"saber_inv", "crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/default_lightsaber.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -692,7 +692,7 @@ ObjectTemplates:addClientTemplate(object_weapon_melee_polearm_crafted_saber_shar
 
 object_weapon_melee_polearm_crafted_saber_shared_sword_lightsaber_polearm_s2_gen1 = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_lance_lightsaber_blade_s02.lsb",
-	arrangementDescriptors = {"hold_r", "hold_l"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hold_both.iff",
 	attackType = 1,
 
 	certificationsRequired = {},
@@ -729,7 +729,7 @@ object_weapon_melee_polearm_crafted_saber_shared_sword_lightsaber_polearm_s2_gen
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"saber_inv", "crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/default_lightsaber.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -751,7 +751,7 @@ ObjectTemplates:addClientTemplate(object_weapon_melee_polearm_crafted_saber_shar
 
 object_weapon_melee_polearm_crafted_saber_shared_sword_lightsaber_polearm_s2_gen2 = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_lance_lightsaber_blade_s02.lsb",
-	arrangementDescriptors = {"hold_r", "hold_l"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hold_both.iff",
 	attackType = 1,
 
 	certificationsRequired = {},
@@ -788,7 +788,7 @@ object_weapon_melee_polearm_crafted_saber_shared_sword_lightsaber_polearm_s2_gen
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"saber_inv", "crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/default_lightsaber.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -810,7 +810,7 @@ ObjectTemplates:addClientTemplate(object_weapon_melee_polearm_crafted_saber_shar
 
 object_weapon_melee_polearm_crafted_saber_shared_sword_lightsaber_polearm_s2_gen3 = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_lance_lightsaber_blade_s02.lsb",
-	arrangementDescriptors = {"hold_r", "hold_l"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hold_both.iff",
 	attackType = 1,
 
 	certificationsRequired = {},
@@ -847,7 +847,7 @@ object_weapon_melee_polearm_crafted_saber_shared_sword_lightsaber_polearm_s2_gen
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"saber_inv", "crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/default_lightsaber.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -869,7 +869,7 @@ ObjectTemplates:addClientTemplate(object_weapon_melee_polearm_crafted_saber_shar
 
 object_weapon_melee_polearm_crafted_saber_shared_sword_lightsaber_polearm_s2_gen4 = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_mle_lance_lightsaber_blade_s02.lsb",
-	arrangementDescriptors = {"hold_r", "hold_l"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hold_both.iff",
 	attackType = 1,
 
 	certificationsRequired = {},
@@ -906,7 +906,7 @@ object_weapon_melee_polearm_crafted_saber_shared_sword_lightsaber_polearm_s2_gen
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"saber_inv", "crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/default_lightsaber.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",

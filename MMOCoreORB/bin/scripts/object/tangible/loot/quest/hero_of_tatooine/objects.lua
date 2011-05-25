@@ -43,7 +43,7 @@
 
 object_tangible_loot_quest_hero_of_tatooine_shared_mark_altruism = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_quest_altruism.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -79,7 +79,7 @@ object_tangible_loot_quest_hero_of_tatooine_shared_mark_altruism = SharedTangibl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -98,7 +98,7 @@ ObjectTemplates:addClientTemplate(object_tangible_loot_quest_hero_of_tatooine_sh
 
 object_tangible_loot_quest_hero_of_tatooine_shared_mark_courage = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_quest_courage.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -134,7 +134,7 @@ object_tangible_loot_quest_hero_of_tatooine_shared_mark_courage = SharedTangible
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -153,7 +153,7 @@ ObjectTemplates:addClientTemplate(object_tangible_loot_quest_hero_of_tatooine_sh
 
 object_tangible_loot_quest_hero_of_tatooine_shared_mark_honor = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_quest_honor.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -189,7 +189,7 @@ object_tangible_loot_quest_hero_of_tatooine_shared_mark_honor = SharedTangibleOb
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -208,7 +208,7 @@ ObjectTemplates:addClientTemplate(object_tangible_loot_quest_hero_of_tatooine_sh
 
 object_tangible_loot_quest_hero_of_tatooine_shared_mark_intellect = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/frn_quest_intellect.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -244,7 +244,7 @@ object_tangible_loot_quest_hero_of_tatooine_shared_mark_intellect = SharedTangib
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -263,7 +263,7 @@ ObjectTemplates:addClientTemplate(object_tangible_loot_quest_hero_of_tatooine_sh
 
 object_tangible_loot_quest_hero_of_tatooine_shared_squill_skull = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/poi_all_skeleton_bith_head.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -299,7 +299,7 @@ object_tangible_loot_quest_hero_of_tatooine_shared_squill_skull = SharedTangible
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",

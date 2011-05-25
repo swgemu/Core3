@@ -43,7 +43,7 @@
 
 object_tangible_hopper_crafting_station_hopper_shared_crafting_station_ingredient_hopper_large = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {"ingredient_hopper"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ingredient_hopper.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -79,7 +79,7 @@ object_tangible_hopper_crafting_station_hopper_shared_crafting_station_ingredien
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -98,7 +98,7 @@ ObjectTemplates:addClientTemplate(object_tangible_hopper_crafting_station_hopper
 
 object_tangible_hopper_crafting_station_hopper_shared_crafting_station_ingredient_hopper_medium = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {"ingredient_hopper"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ingredient_hopper.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -134,7 +134,7 @@ object_tangible_hopper_crafting_station_hopper_shared_crafting_station_ingredien
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -153,7 +153,7 @@ ObjectTemplates:addClientTemplate(object_tangible_hopper_crafting_station_hopper
 
 object_tangible_hopper_crafting_station_hopper_shared_crafting_station_ingredient_hopper_small = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {"ingredient_hopper"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ingredient_hopper.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -189,7 +189,7 @@ object_tangible_hopper_crafting_station_hopper_shared_crafting_station_ingredien
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -208,7 +208,7 @@ ObjectTemplates:addClientTemplate(object_tangible_hopper_crafting_station_hopper
 
 object_tangible_hopper_crafting_station_hopper_shared_crafting_station_ingredient_hopper_structure_large = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {"ingredient_hopper"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ingredient_hopper.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -244,7 +244,7 @@ object_tangible_hopper_crafting_station_hopper_shared_crafting_station_ingredien
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -263,7 +263,7 @@ ObjectTemplates:addClientTemplate(object_tangible_hopper_crafting_station_hopper
 
 object_tangible_hopper_crafting_station_hopper_shared_crafting_station_ingredient_hopper_structure_medium = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {"ingredient_hopper"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ingredient_hopper.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -299,7 +299,7 @@ object_tangible_hopper_crafting_station_hopper_shared_crafting_station_ingredien
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -318,7 +318,7 @@ ObjectTemplates:addClientTemplate(object_tangible_hopper_crafting_station_hopper
 
 object_tangible_hopper_crafting_station_hopper_shared_crafting_station_ingredient_hopper_structure_small = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {"ingredient_hopper"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ingredient_hopper.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -354,7 +354,7 @@ object_tangible_hopper_crafting_station_hopper_shared_crafting_station_ingredien
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",

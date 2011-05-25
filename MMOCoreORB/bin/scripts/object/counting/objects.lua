@@ -43,7 +43,7 @@
 
 object_counting_shared_default_battery = SharedCountingObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {"default_weapon_ammo_slot"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_default_weapon_am.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -79,7 +79,7 @@ object_counting_shared_default_battery = SharedCountingObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",

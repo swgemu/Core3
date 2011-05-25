@@ -43,7 +43,7 @@
 
 object_tangible_harvesting_shared_shellfish_harvester = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/eqp_survey_organic.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -79,7 +79,7 @@ object_tangible_harvesting_shared_shellfish_harvester = SharedTangibleObjectTemp
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",

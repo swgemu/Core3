@@ -43,7 +43,7 @@
 
 object_weapon_melee_unarmed_shared_unarmed_default = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {"default_weapon"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_default_weapon.iff",
 	attackType = 1,
 
 	certificationsRequired = {},
@@ -80,7 +80,7 @@ object_weapon_melee_unarmed_shared_unarmed_default = SharedWeaponObjectTemplate:
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -102,7 +102,7 @@ ObjectTemplates:addClientTemplate(object_weapon_melee_unarmed_shared_unarmed_def
 
 object_weapon_melee_unarmed_shared_unarmed_default_player = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "",
-	arrangementDescriptors = {"default_weapon"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_default_weapon.iff",
 	attackType = 1,
 
 	certificationsRequired = {},
@@ -139,7 +139,7 @@ object_weapon_melee_unarmed_shared_unarmed_default_player = SharedWeaponObjectTe
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {},
+	slotDescriptorFilename = "",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",

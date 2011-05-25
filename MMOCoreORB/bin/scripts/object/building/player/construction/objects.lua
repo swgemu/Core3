@@ -43,7 +43,7 @@
 
 object_building_player_construction_shared_construction_player_guildhall_corellia_style_01 = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/ply_all_construction_sign.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 15,
@@ -79,7 +79,7 @@ object_building_player_construction_shared_construction_player_guildhall_corelli
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/building/player/shared_player_guildhall_corellia_style_01.sfp",
@@ -98,7 +98,7 @@ ObjectTemplates:addClientTemplate(object_building_player_construction_shared_con
 
 object_building_player_construction_shared_construction_player_guildhall_naboo_style_01 = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/ply_all_construction_sign.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 15,
@@ -134,7 +134,7 @@ object_building_player_construction_shared_construction_player_guildhall_naboo_s
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/building/player/shared_player_guildhall_naboo_style_01.sfp",
@@ -153,7 +153,7 @@ ObjectTemplates:addClientTemplate(object_building_player_construction_shared_con
 
 object_building_player_construction_shared_construction_player_guildhall_tatooine_style_01 = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/ply_all_construction_sign.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 15,
@@ -189,7 +189,7 @@ object_building_player_construction_shared_construction_player_guildhall_tatooin
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/building/player/shared_player_guildhall_tatooine_style_01.sfp",
@@ -208,7 +208,7 @@ ObjectTemplates:addClientTemplate(object_building_player_construction_shared_con
 
 object_building_player_construction_shared_construction_player_guildhall_tatooine_style_02 = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/ply_all_construction_sign.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 15,
@@ -244,7 +244,7 @@ object_building_player_construction_shared_construction_player_guildhall_tatooin
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/building/player/shared_player_guildhall_tatooine_style_02.sfp",
@@ -263,7 +263,7 @@ ObjectTemplates:addClientTemplate(object_building_player_construction_shared_con
 
 object_building_player_construction_shared_construction_player_house_corellia_large_style_01 = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/ply_all_construction_sign.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 15,
@@ -299,7 +299,7 @@ object_building_player_construction_shared_construction_player_house_corellia_la
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/building/player/shared_player_house_corellia_large_style_01.sfp",
@@ -318,7 +318,7 @@ ObjectTemplates:addClientTemplate(object_building_player_construction_shared_con
 
 object_building_player_construction_shared_construction_player_house_corellia_large_style_02 = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/ply_all_construction_sign.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 15,
@@ -354,7 +354,7 @@ object_building_player_construction_shared_construction_player_house_corellia_la
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/building/player/shared_player_house_corellia_large_style_02.sfp",
@@ -373,7 +373,7 @@ ObjectTemplates:addClientTemplate(object_building_player_construction_shared_con
 
 object_building_player_construction_shared_construction_player_house_corellia_medium_style_01 = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/ply_all_construction_sign.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 15,
@@ -409,7 +409,7 @@ object_building_player_construction_shared_construction_player_house_corellia_me
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/building/player/shared_player_house_corellia_medium_style_01.sfp",
@@ -428,7 +428,7 @@ ObjectTemplates:addClientTemplate(object_building_player_construction_shared_con
 
 object_building_player_construction_shared_construction_player_house_corellia_medium_style_02 = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/ply_all_construction_sign.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 15,
@@ -464,7 +464,7 @@ object_building_player_construction_shared_construction_player_house_corellia_me
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/building/player/shared_player_house_corellia_medium_style_02.sfp",
@@ -483,7 +483,7 @@ ObjectTemplates:addClientTemplate(object_building_player_construction_shared_con
 
 object_building_player_construction_shared_construction_player_house_corellia_small_style_01 = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/ply_all_construction_sign.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 15,
@@ -519,7 +519,7 @@ object_building_player_construction_shared_construction_player_house_corellia_sm
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/building/player/shared_player_house_corellia_small_style_01.sfp",
@@ -538,7 +538,7 @@ ObjectTemplates:addClientTemplate(object_building_player_construction_shared_con
 
 object_building_player_construction_shared_construction_player_house_corellia_small_style_02 = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/ply_all_construction_sign.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 15,
@@ -574,7 +574,7 @@ object_building_player_construction_shared_construction_player_house_corellia_sm
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/building/player/shared_player_house_corellia_small_style_02.sfp",
@@ -593,7 +593,7 @@ ObjectTemplates:addClientTemplate(object_building_player_construction_shared_con
 
 object_building_player_construction_shared_construction_player_house_generic_large_style_01 = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/ply_all_construction_sign.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 15,
@@ -629,7 +629,7 @@ object_building_player_construction_shared_construction_player_house_generic_lar
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/building/player/shared_player_house_generic_large_style_01.sfp",
@@ -648,7 +648,7 @@ ObjectTemplates:addClientTemplate(object_building_player_construction_shared_con
 
 object_building_player_construction_shared_construction_player_house_generic_large_style_02 = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/ply_all_construction_sign.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 15,
@@ -684,7 +684,7 @@ object_building_player_construction_shared_construction_player_house_generic_lar
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/building/player/shared_player_house_generic_large_style_02.sfp",
@@ -703,7 +703,7 @@ ObjectTemplates:addClientTemplate(object_building_player_construction_shared_con
 
 object_building_player_construction_shared_construction_player_house_generic_medium_style_01 = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/ply_all_construction_sign.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 15,
@@ -739,7 +739,7 @@ object_building_player_construction_shared_construction_player_house_generic_med
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/building/player/shared_player_house_generic_medium_style_01.sfp",
@@ -758,7 +758,7 @@ ObjectTemplates:addClientTemplate(object_building_player_construction_shared_con
 
 object_building_player_construction_shared_construction_player_house_generic_medium_style_02 = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/ply_all_construction_sign.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 15,
@@ -794,7 +794,7 @@ object_building_player_construction_shared_construction_player_house_generic_med
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/building/player/shared_player_house_generic_medium_style_02.sfp",
@@ -813,7 +813,7 @@ ObjectTemplates:addClientTemplate(object_building_player_construction_shared_con
 
 object_building_player_construction_shared_construction_player_house_generic_small_style_01 = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/ply_all_construction_sign.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 15,
@@ -849,7 +849,7 @@ object_building_player_construction_shared_construction_player_house_generic_sma
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/building/player/shared_player_house_generic_small_style_01.sfp",
@@ -868,7 +868,7 @@ ObjectTemplates:addClientTemplate(object_building_player_construction_shared_con
 
 object_building_player_construction_shared_construction_player_house_generic_small_style_02 = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/ply_all_construction_sign.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 15,
@@ -904,7 +904,7 @@ object_building_player_construction_shared_construction_player_house_generic_sma
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/building/player/shared_player_house_generic_small_style_02.sfp",
@@ -923,7 +923,7 @@ ObjectTemplates:addClientTemplate(object_building_player_construction_shared_con
 
 object_building_player_construction_shared_construction_player_house_naboo_large_style_01 = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/ply_all_construction_sign.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 15,
@@ -959,7 +959,7 @@ object_building_player_construction_shared_construction_player_house_naboo_large
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/building/player/shared_player_house_naboo_large_style_01.sfp",
@@ -978,7 +978,7 @@ ObjectTemplates:addClientTemplate(object_building_player_construction_shared_con
 
 object_building_player_construction_shared_construction_player_house_naboo_medium_style_01 = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/ply_all_construction_sign.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 15,
@@ -1014,7 +1014,7 @@ object_building_player_construction_shared_construction_player_house_naboo_mediu
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/building/player/shared_player_house_naboo_medium_style_01.sfp",
@@ -1033,7 +1033,7 @@ ObjectTemplates:addClientTemplate(object_building_player_construction_shared_con
 
 object_building_player_construction_shared_construction_player_house_naboo_small_style_01 = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/ply_all_construction_sign.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 15,
@@ -1069,7 +1069,7 @@ object_building_player_construction_shared_construction_player_house_naboo_small
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/building/player/shared_player_house_naboo_small_style_01.sfp",
@@ -1088,7 +1088,7 @@ ObjectTemplates:addClientTemplate(object_building_player_construction_shared_con
 
 object_building_player_construction_shared_construction_player_house_naboo_small_style_02 = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/ply_all_construction_sign.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 15,
@@ -1124,7 +1124,7 @@ object_building_player_construction_shared_construction_player_house_naboo_small
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/building/player/shared_player_house_naboo_small_style_02.sfp",
@@ -1143,7 +1143,7 @@ ObjectTemplates:addClientTemplate(object_building_player_construction_shared_con
 
 object_building_player_construction_shared_construction_player_house_tatooine_large_style_01 = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/ply_all_construction_sign.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 15,
@@ -1179,7 +1179,7 @@ object_building_player_construction_shared_construction_player_house_tatooine_la
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/building/player/shared_player_house_tatooine_large_style_01.sfp",
@@ -1198,7 +1198,7 @@ ObjectTemplates:addClientTemplate(object_building_player_construction_shared_con
 
 object_building_player_construction_shared_construction_player_house_tatooine_medium_style_01 = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/ply_all_construction_sign.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 15,
@@ -1234,7 +1234,7 @@ object_building_player_construction_shared_construction_player_house_tatooine_me
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/building/player/shared_player_house_tatooine_medium_style_01.sfp",
@@ -1253,7 +1253,7 @@ ObjectTemplates:addClientTemplate(object_building_player_construction_shared_con
 
 object_building_player_construction_shared_construction_player_house_tatooine_small_style_01 = SharedInstallationObjectTemplate:new {
 	appearanceFilename = "appearance/ply_all_construction_sign.apt",
-	arrangementDescriptors = {},
+	arrangementDescriptorFilename = "",
 
 	certificationsRequired = {},
 	clearFloraRadius = 15,
@@ -1289,7 +1289,7 @@ object_building_player_construction_shared_construction_player_house_tatooine_sm
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "footprint/building/player/shared_player_house_tatooine_small_style_01.sfp",

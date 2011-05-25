@@ -43,7 +43,7 @@
 
 object_tangible_wearables_bracelet_shared_bracelet_l = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/bracelet_f_s02_l.sat",
-	arrangementDescriptors = {"wrist_l"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/wrist_l.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -79,7 +79,7 @@ object_tangible_wearables_bracelet_shared_bracelet_l = SharedTangibleObjectTempl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -98,7 +98,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_bracelet_shared_brac
 
 object_tangible_wearables_bracelet_shared_bracelet_r = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/bracelet_f_s02_r.sat",
-	arrangementDescriptors = {"wrist_r"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/wrist_r.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -134,7 +134,7 @@ object_tangible_wearables_bracelet_shared_bracelet_r = SharedTangibleObjectTempl
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -153,7 +153,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_bracelet_shared_brac
 
 object_tangible_wearables_bracelet_shared_bracelet_s02_l = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/bracelet_f_s02_l.sat",
-	arrangementDescriptors = {"wrist_l"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/wrist_l.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -189,7 +189,7 @@ object_tangible_wearables_bracelet_shared_bracelet_s02_l = SharedTangibleObjectT
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -208,7 +208,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_bracelet_shared_brac
 
 object_tangible_wearables_bracelet_shared_bracelet_s02_r = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/bracelet_f_s02_r.sat",
-	arrangementDescriptors = {"wrist_r"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/wrist_r.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -244,7 +244,7 @@ object_tangible_wearables_bracelet_shared_bracelet_s02_r = SharedTangibleObjectT
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -263,7 +263,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_bracelet_shared_brac
 
 object_tangible_wearables_bracelet_shared_bracelet_s03_l = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/bracelet_f_s03_l.sat",
-	arrangementDescriptors = {"wrist_l"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/wrist_l.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -299,7 +299,7 @@ object_tangible_wearables_bracelet_shared_bracelet_s03_l = SharedTangibleObjectT
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -318,7 +318,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_bracelet_shared_brac
 
 object_tangible_wearables_bracelet_shared_bracelet_s03_r = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/bracelet_f_s03_r.sat",
-	arrangementDescriptors = {"wrist_r"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/wrist_r.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -354,7 +354,7 @@ object_tangible_wearables_bracelet_shared_bracelet_s03_r = SharedTangibleObjectT
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -373,7 +373,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_bracelet_shared_brac
 
 object_tangible_wearables_bracelet_shared_bracelet_s04_l = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/bracelet_f_s04_l.sat",
-	arrangementDescriptors = {"wrist_l"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/wrist_l.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -409,7 +409,7 @@ object_tangible_wearables_bracelet_shared_bracelet_s04_l = SharedTangibleObjectT
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -428,7 +428,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_bracelet_shared_brac
 
 object_tangible_wearables_bracelet_shared_bracelet_s04_r = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/bracelet_f_s04_r.sat",
-	arrangementDescriptors = {"wrist_r"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/wrist_r.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -464,7 +464,7 @@ object_tangible_wearables_bracelet_shared_bracelet_s04_r = SharedTangibleObjectT
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -483,7 +483,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_bracelet_shared_brac
 
 object_tangible_wearables_bracelet_shared_bracelet_s05_l = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/bracelet_f_s05_l.sat",
-	arrangementDescriptors = {"wrist_l"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/wrist_l.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -519,7 +519,7 @@ object_tangible_wearables_bracelet_shared_bracelet_s05_l = SharedTangibleObjectT
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -538,7 +538,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_bracelet_shared_brac
 
 object_tangible_wearables_bracelet_shared_bracelet_s05_r = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/bracelet_f_s05_r.sat",
-	arrangementDescriptors = {"wrist_r"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/wrist_r.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -574,7 +574,7 @@ object_tangible_wearables_bracelet_shared_bracelet_s05_r = SharedTangibleObjectT
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -593,7 +593,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_bracelet_shared_brac
 
 object_tangible_wearables_bracelet_shared_bracelet_s06_l = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/bracelet_f_s06_l.sat",
-	arrangementDescriptors = {"wrist_l"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/wrist_l.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -629,7 +629,7 @@ object_tangible_wearables_bracelet_shared_bracelet_s06_l = SharedTangibleObjectT
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -648,7 +648,7 @@ ObjectTemplates:addClientTemplate(object_tangible_wearables_bracelet_shared_brac
 
 object_tangible_wearables_bracelet_shared_bracelet_s06_r = SharedTangibleObjectTemplate:new {
 	appearanceFilename = "appearance/bracelet_f_s06_r.sat",
-	arrangementDescriptors = {"wrist_r"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/wrist_r.iff",
 
 	certificationsRequired = {},
 	clearFloraRadius = 0,
@@ -684,7 +684,7 @@ object_tangible_wearables_bracelet_shared_bracelet_s06_r = SharedTangibleObjectT
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/tangible.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",

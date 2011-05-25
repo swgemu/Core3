@@ -43,7 +43,7 @@
 
 object_weapon_ranged_rifle_shared_rifle_acid_beam = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_rifle_beam_rifle.apt",
-	arrangementDescriptors = {"hold_r", "hold_l"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hold_both.iff",
 	attackType = 1,
 
 	certificationsRequired = {},
@@ -80,7 +80,7 @@ object_weapon_ranged_rifle_shared_rifle_acid_beam = SharedWeaponObjectTemplate:n
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"default_weapon_ammo_slot", "crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/default_weapon.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -102,7 +102,7 @@ ObjectTemplates:addClientTemplate(object_weapon_ranged_rifle_shared_rifle_acid_b
 
 object_weapon_ranged_rifle_shared_rifle_beam = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_rifle_beam_rifle.apt",
-	arrangementDescriptors = {"hold_r", "hold_l"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hold_both.iff",
 	attackType = 1,
 
 	certificationsRequired = {},
@@ -139,7 +139,7 @@ object_weapon_ranged_rifle_shared_rifle_beam = SharedWeaponObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"default_weapon_ammo_slot", "crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/default_weapon.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -161,7 +161,7 @@ ObjectTemplates:addClientTemplate(object_weapon_ranged_rifle_shared_rifle_beam, 
 
 object_weapon_ranged_rifle_shared_rifle_berserker = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_rifle_berserker.apt",
-	arrangementDescriptors = {"hold_r", "hold_l"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hold_both.iff",
 	attackType = 1,
 
 	certificationsRequired = {},
@@ -198,7 +198,7 @@ object_weapon_ranged_rifle_shared_rifle_berserker = SharedWeaponObjectTemplate:n
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"default_weapon_ammo_slot", "crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/default_weapon.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -220,7 +220,7 @@ ObjectTemplates:addClientTemplate(object_weapon_ranged_rifle_shared_rifle_berser
 
 object_weapon_ranged_rifle_shared_rifle_bowcaster = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_rifle_bowcaster.apt",
-	arrangementDescriptors = {"hold_r", "hold_l"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hold_both.iff",
 	attackType = 1,
 
 	certificationsRequired = {},
@@ -257,7 +257,7 @@ object_weapon_ranged_rifle_shared_rifle_bowcaster = SharedWeaponObjectTemplate:n
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"default_weapon_ammo_slot", "crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/default_weapon.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -279,7 +279,7 @@ ObjectTemplates:addClientTemplate(object_weapon_ranged_rifle_shared_rifle_bowcas
 
 object_weapon_ranged_rifle_shared_rifle_cdef = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_rifle_dlt20.apt",
-	arrangementDescriptors = {"hold_r", "hold_l"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hold_both.iff",
 	attackType = 1,
 
 	certificationsRequired = {},
@@ -316,7 +316,7 @@ object_weapon_ranged_rifle_shared_rifle_cdef = SharedWeaponObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"default_weapon_ammo_slot", "crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/default_weapon.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -338,7 +338,7 @@ ObjectTemplates:addClientTemplate(object_weapon_ranged_rifle_shared_rifle_cdef, 
 
 object_weapon_ranged_rifle_shared_rifle_dlt20 = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_rifle_dlt20.apt",
-	arrangementDescriptors = {"hold_r", "hold_l"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hold_both.iff",
 	attackType = 1,
 
 	certificationsRequired = {},
@@ -375,7 +375,7 @@ object_weapon_ranged_rifle_shared_rifle_dlt20 = SharedWeaponObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"default_weapon_ammo_slot", "crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/default_weapon.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -397,7 +397,7 @@ ObjectTemplates:addClientTemplate(object_weapon_ranged_rifle_shared_rifle_dlt20,
 
 object_weapon_ranged_rifle_shared_rifle_dlt20a = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_rifle_dlt20.apt",
-	arrangementDescriptors = {"hold_r", "hold_l"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hold_both.iff",
 	attackType = 1,
 
 	certificationsRequired = {},
@@ -434,7 +434,7 @@ object_weapon_ranged_rifle_shared_rifle_dlt20a = SharedWeaponObjectTemplate:new 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"default_weapon_ammo_slot", "crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/default_weapon.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -456,7 +456,7 @@ ObjectTemplates:addClientTemplate(object_weapon_ranged_rifle_shared_rifle_dlt20a
 
 object_weapon_ranged_rifle_shared_rifle_e11 = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_carbine_e11.apt",
-	arrangementDescriptors = {"hold_r", "hold_l"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hold_both.iff",
 	attackType = 1,
 
 	certificationsRequired = {},
@@ -493,7 +493,7 @@ object_weapon_ranged_rifle_shared_rifle_e11 = SharedWeaponObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"default_weapon_ammo_slot", "crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/default_weapon.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -515,7 +515,7 @@ ObjectTemplates:addClientTemplate(object_weapon_ranged_rifle_shared_rifle_e11, "
 
 object_weapon_ranged_rifle_shared_rifle_ewok_crossbow = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_rifle_ewok_crossbow.apt",
-	arrangementDescriptors = {"hold_r", "hold_l"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hold_both.iff",
 	attackType = 1,
 
 	certificationsRequired = {},
@@ -552,7 +552,7 @@ object_weapon_ranged_rifle_shared_rifle_ewok_crossbow = SharedWeaponObjectTempla
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"default_weapon_ammo_slot", "crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/default_weapon.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -574,7 +574,7 @@ ObjectTemplates:addClientTemplate(object_weapon_ranged_rifle_shared_rifle_ewok_c
 
 object_weapon_ranged_rifle_shared_rifle_flame_thrower = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_rifle_flamer.apt",
-	arrangementDescriptors = {"hold_r", "hold_l"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hold_both.iff",
 	attackType = 1,
 
 	certificationsRequired = {},
@@ -611,7 +611,7 @@ object_weapon_ranged_rifle_shared_rifle_flame_thrower = SharedWeaponObjectTempla
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"default_weapon_ammo_slot", "crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/default_weapon.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -633,7 +633,7 @@ ObjectTemplates:addClientTemplate(object_weapon_ranged_rifle_shared_rifle_flame_
 
 object_weapon_ranged_rifle_shared_rifle_jawa_ion = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_rifle_jawa_ion.apt",
-	arrangementDescriptors = {"hold_r", "hold_l"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hold_both.iff",
 	attackType = 1,
 
 	certificationsRequired = {},
@@ -670,7 +670,7 @@ object_weapon_ranged_rifle_shared_rifle_jawa_ion = SharedWeaponObjectTemplate:ne
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"default_weapon_ammo_slot", "crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/default_weapon.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -692,7 +692,7 @@ ObjectTemplates:addClientTemplate(object_weapon_ranged_rifle_shared_rifle_jawa_i
 
 object_weapon_ranged_rifle_shared_rifle_laser = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_rifle_laser.apt",
-	arrangementDescriptors = {"hold_r", "hold_l"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hold_both.iff",
 	attackType = 1,
 
 	certificationsRequired = {},
@@ -729,7 +729,7 @@ object_weapon_ranged_rifle_shared_rifle_laser = SharedWeaponObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"default_weapon_ammo_slot", "crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/default_weapon.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -751,7 +751,7 @@ ObjectTemplates:addClientTemplate(object_weapon_ranged_rifle_shared_rifle_laser,
 
 object_weapon_ranged_rifle_shared_rifle_laser_noob = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_rifle_laser.apt",
-	arrangementDescriptors = {"hold_r", "hold_l"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hold_both.iff",
 	attackType = 1,
 
 	certificationsRequired = {},
@@ -788,7 +788,7 @@ object_weapon_ranged_rifle_shared_rifle_laser_noob = SharedWeaponObjectTemplate:
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"default_weapon_ammo_slot", "crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/default_weapon.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -810,7 +810,7 @@ ObjectTemplates:addClientTemplate(object_weapon_ranged_rifle_shared_rifle_laser_
 
 object_weapon_ranged_rifle_shared_rifle_lightning = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_rifle_lightning_cannon.apt",
-	arrangementDescriptors = {"hold_r", "hold_l"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hold_both.iff",
 	attackType = 1,
 
 	certificationsRequired = {},
@@ -847,7 +847,7 @@ object_weapon_ranged_rifle_shared_rifle_lightning = SharedWeaponObjectTemplate:n
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"default_weapon_ammo_slot", "crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/default_weapon.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -869,7 +869,7 @@ ObjectTemplates:addClientTemplate(object_weapon_ranged_rifle_shared_rifle_lightn
 
 object_weapon_ranged_rifle_shared_rifle_sg82 = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_rifle_sg82.apt",
-	arrangementDescriptors = {"hold_r", "hold_l"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hold_both.iff",
 	attackType = 1,
 
 	certificationsRequired = {},
@@ -906,7 +906,7 @@ object_weapon_ranged_rifle_shared_rifle_sg82 = SharedWeaponObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"default_weapon_ammo_slot", "crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/default_weapon.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -928,7 +928,7 @@ ObjectTemplates:addClientTemplate(object_weapon_ranged_rifle_shared_rifle_sg82, 
 
 object_weapon_ranged_rifle_shared_rifle_spraystick = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_pistol_spraystick.apt",
-	arrangementDescriptors = {"hold_r", "hold_l"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hold_both.iff",
 	attackType = 1,
 
 	certificationsRequired = {},
@@ -965,7 +965,7 @@ object_weapon_ranged_rifle_shared_rifle_spraystick = SharedWeaponObjectTemplate:
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"default_weapon_ammo_slot", "crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/default_weapon.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -987,7 +987,7 @@ ObjectTemplates:addClientTemplate(object_weapon_ranged_rifle_shared_rifle_sprays
 
 object_weapon_ranged_rifle_shared_rifle_t21 = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_rifle_t21.apt",
-	arrangementDescriptors = {"hold_r", "hold_l"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hold_both.iff",
 	attackType = 1,
 
 	certificationsRequired = {},
@@ -1024,7 +1024,7 @@ object_weapon_ranged_rifle_shared_rifle_t21 = SharedWeaponObjectTemplate:new {
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"default_weapon_ammo_slot", "crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/default_weapon.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1046,7 +1046,7 @@ ObjectTemplates:addClientTemplate(object_weapon_ranged_rifle_shared_rifle_t21, "
 
 object_weapon_ranged_rifle_shared_rifle_tenloss_dxr6_disruptor_loot = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_carbine_dxr6_combined.apt",
-	arrangementDescriptors = {"hold_r", "hold_l"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hold_both.iff",
 	attackType = 1,
 
 	certificationsRequired = {},
@@ -1083,7 +1083,7 @@ object_weapon_ranged_rifle_shared_rifle_tenloss_dxr6_disruptor_loot = SharedWeap
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"default_weapon_ammo_slot", "crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/default_weapon.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1105,7 +1105,7 @@ ObjectTemplates:addClientTemplate(object_weapon_ranged_rifle_shared_rifle_tenlos
 
 object_weapon_ranged_rifle_shared_rifle_tusken = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_rifle_tusken_s01.apt",
-	arrangementDescriptors = {"hold_r", "hold_l"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hold_both.iff",
 	attackType = 1,
 
 	certificationsRequired = {},
@@ -1142,7 +1142,7 @@ object_weapon_ranged_rifle_shared_rifle_tusken = SharedWeaponObjectTemplate:new 
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"default_weapon_ammo_slot", "crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/default_weapon.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
@@ -1164,7 +1164,7 @@ ObjectTemplates:addClientTemplate(object_weapon_ranged_rifle_shared_rifle_tusken
 
 object_weapon_ranged_rifle_shared_rifle_victor_tusken = SharedWeaponObjectTemplate:new {
 	appearanceFilename = "appearance/wp_rifle_tusken_s01.apt",
-	arrangementDescriptors = {"hold_r", "hold_l"},
+	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hold_both.iff",
 	attackType = 1,
 
 	certificationsRequired = {},
@@ -1201,7 +1201,7 @@ object_weapon_ranged_rifle_shared_rifle_victor_tusken = SharedWeaponObjectTempla
 	scale = 1,
 	scaleThresholdBeforeExtentTest = 0.5,
 	sendToClient = 1,
-	slotDescriptors = {"default_weapon_ammo_slot", "crafted_components"},
+	slotDescriptorFilename = "abstract/slot/descriptor/default_weapon.iff",
 	snapToTerrain = 1,
 	socketDestinations = {},
 	structureFootprintFileName = "",
