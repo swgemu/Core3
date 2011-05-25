@@ -61,6 +61,11 @@ public:
 	 */
 	byte* getBytes(const String& recordPath, int& size) {
 		int pos = recordPath.lastIndexOf("/");
+
+		//Only folders are allowed at the root level of TRE directories.
+		if (pos == -1)
+			return NULL;
+
 		String dir = recordPath.subString(0, pos);
 		String fileName = recordPath.subString(pos+1, recordPath.length());
 

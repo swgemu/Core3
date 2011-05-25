@@ -41,6 +41,8 @@ public:
 
 	SceneObject* getSceneObject();
 
+	void setSceneObject(SceneObject* obj);
+
 	void notifyLoadFromDatabase();
 
 	DistributedObjectServant* _getImplementation();
@@ -81,6 +83,8 @@ public:
 	void initialize(SceneObject* obj);
 
 	SceneObject* getSceneObject();
+
+	void setSceneObject(SceneObject* obj);
 
 	virtual void notifyLoadFromDatabase();
 
@@ -130,6 +134,8 @@ public:
 	void initialize(SceneObject* obj);
 
 	SceneObject* getSceneObject();
+
+	void setSceneObject(SceneObject* obj);
 
 	void notifyLoadFromDatabase();
 

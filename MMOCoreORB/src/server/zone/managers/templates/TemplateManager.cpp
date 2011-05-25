@@ -81,6 +81,7 @@
 #include "server/zone/templates/appearance/DetailAppearanceTemplate.h"
 #include "server/zone/templates/appearance/ComponentAppearanceTemplate.h"
 #include "server/zone/templates/footprint/StructureFootprint.h"
+#include "server/zone/templates/slots/SlotId.h"
 
 #include "tre3/TreeArchive.h"
 
@@ -110,6 +111,7 @@ TemplateManager::TemplateManager() {
 	registerGlobals();
 
 	loadTreArchive();
+	loadSlotDefinitions();
 	loadPlanetMapCategories();
 }
 
@@ -128,6 +130,72 @@ TemplateManager::~TemplateManager() {
 
 	delete floorMeshMap;
 	floorMeshMap = NULL;
+}
+
+void TemplateManager::loadSlotDefinitions() {
+	info("Loading slot definitions");
+
+	IffStream* iffStream = openIffFile("abstract/slot/slot_definition/slot_definitions.iff");
+
+	if (iffStream == NULL) {
+		error("Slot definitions can't be found.");
+		return;
+	}
+
+	//TODO: Should we fool with encapsulating this within a SlotDefinitionsMap?
+	//Note: There is no parent form type, just the version: 0006...
+
+	iffStream->openForm('0006');
+
+	Chunk* data = iffStream->openChunk('DATA');
+
+	while (data->hasData()) {
+		Reference<SlotId*> slotId = new SlotId();
+		slotId->readObject(data);
+
+		slotDefinitions.put(slotId->getSlotName(), slotId);
+	}
+
+	iffStream->closeChunk('DATA');
+	iffStream->closeForm('0006');
+
+	delete iffStream;
+
+	info("Loaded " + String::valueOf(slotDefinitions.size()) + " slot definitions.", true);
+}
+
+Reference<SlotDescriptor*> TemplateManager::getSlotDescriptor(const String& filename) {
+	//If the slot descriptor doesn't already exist, attempt to load it.
+	if (!slotDescriptors.contains(filename)) {
+		IffStream* iffStream = openIffFile(filename);
+
+		if (iffStream == NULL)
+			return NULL; //Descriptor does not exist.
+
+		Reference<SlotDescriptor*> slotDesc = new SlotDescriptor();
+		slotDesc->readObject(iffStream);
+
+		slotDescriptors.put(filename, slotDesc);
+	}
+
+	return slotDescriptors.get(filename);
+}
+
+Reference<ArrangementDescriptor*> TemplateManager::getArrangementDescriptor(const String& filename) {
+	//If the slot descriptor doesn't already exist, attempt to load it.
+	if (!arrangementDescriptors.contains(filename)) {
+		IffStream* iffStream = openIffFile(filename);
+
+		if (iffStream == NULL)
+			return NULL; //Descriptor does not exist.
+
+		Reference<ArrangementDescriptor*> slotDesc = new ArrangementDescriptor();
+		slotDesc->readObject(iffStream);
+
+		arrangementDescriptors.put(filename, slotDesc);
+	}
+
+	return arrangementDescriptors.get(filename);
 }
 
 void TemplateManager::loadPlanetMapCategories() {
@@ -440,6 +508,9 @@ String TemplateManager::getTemplateFile(uint32 key) {
 }
 
 IffStream* TemplateManager::openIffFile(const String& fileName) {
+	if (fileName.isEmpty())
+		return NULL;
+
 	IffStream* iffStream = NULL;
 
 	if (treeDirectory == NULL)

@@ -14,6 +14,9 @@
 #include "server/zone/templates/SharedObjectTemplate.h"
 
 #include "server/zone/templates/footprint/StructureFootprint.h"
+#include "server/zone/templates/slots/SlotId.h"
+#include "server/zone/templates/slots/SlotDescriptor.h"
+#include "server/zone/templates/slots/ArrangementDescriptor.h"
 
 #include "treLib/treArchive.hpp"
 #include "tre3/TreeArchive.h"
@@ -45,12 +48,17 @@ class TemplateManager : public Singleton<TemplateManager>, public Logger {
 
 	VectorMap<String, Reference<StructureFootprint*> > structureFootprints;
 
+	VectorMap<String, Reference<SlotId*> > slotDefinitions;
+	VectorMap<String, Reference<SlotDescriptor*> > slotDescriptors;
+	VectorMap<String, Reference<ArrangementDescriptor*> > arrangementDescriptors;
+
 	//treArchive* treeDirectory;
 	TreeArchive* treeDirectory;
 
 	ReadWriteLock appearanceMapLock;
 
 	void loadTreArchive();
+	void loadSlotDefinitions();
 	void loadPlanetMapCategories();
 
 public:
@@ -63,6 +71,12 @@ public:
 	void registerTemplateObjects();
 
 	void loadLuaTemplates();
+
+	/**
+	 * Attempts to get the slot descriptor. If the slot descriptor isn't loaded, attempt to load it.
+	 */
+	Reference<SlotDescriptor*> getSlotDescriptor(const String& filename);
+	Reference<ArrangementDescriptor*> getArrangementDescriptor(const String& filename);
 
 	/**
 	 * Attempts to load a Structure Footprint file from the TRE, and places it in the map.
@@ -134,6 +148,9 @@ public:
 		return structureFootprints.contains(filePath);
 	}
 
+	SlotId* getSlotId(const String& slotName) {
+		return slotDefinitions.get(slotName);
+	}
 };
 
 

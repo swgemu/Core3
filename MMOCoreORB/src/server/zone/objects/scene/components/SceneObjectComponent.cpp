@@ -10,7 +10,7 @@
  *	SceneObjectComponentStub
  */
 
-enum {RPC_INITIALIZE__SCENEOBJECT_ = 6,RPC_GETSCENEOBJECT__,RPC_NOTIFYLOADFROMDATABASE__};
+enum {RPC_INITIALIZE__SCENEOBJECT_ = 6,RPC_GETSCENEOBJECT__,RPC_SETSCENEOBJECT__SCENEOBJECT_,RPC_NOTIFYLOADFROMDATABASE__};
 
 SceneObjectComponent::SceneObjectComponent() : ManagedObject(DummyConstructorParameter::instance()) {
 	SceneObjectComponentImplementation* _implementation = new SceneObjectComponentImplementation();
@@ -50,6 +50,20 @@ SceneObject* SceneObjectComponent::getSceneObject() {
 		return (SceneObject*) method.executeWithObjectReturn();
 	} else
 		return _implementation->getSceneObject();
+}
+
+void SceneObjectComponent::setSceneObject(SceneObject* obj) {
+	SceneObjectComponentImplementation* _implementation = (SceneObjectComponentImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_SETSCENEOBJECT__SCENEOBJECT_);
+		method.addObjectParameter(obj);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->setSceneObject(obj);
 }
 
 void SceneObjectComponent::notifyLoadFromDatabase() {
@@ -217,6 +231,11 @@ SceneObject* SceneObjectComponentImplementation::getSceneObject() {
 	return sceneObject;
 }
 
+void SceneObjectComponentImplementation::setSceneObject(SceneObject* obj) {
+	// server/zone/objects/scene/components/SceneObjectComponent.idl():  		sceneObject = obj;
+	sceneObject = obj;
+}
+
 void SceneObjectComponentImplementation::notifyLoadFromDatabase() {
 }
 
@@ -237,6 +256,9 @@ Packet* SceneObjectComponentAdapter::invokeMethod(uint32 methid, DistributedMeth
 	case RPC_GETSCENEOBJECT__:
 		resp->insertLong(getSceneObject()->_getObjectID());
 		break;
+	case RPC_SETSCENEOBJECT__SCENEOBJECT_:
+		setSceneObject((SceneObject*) inv->getObjectParameter());
+		break;
 	case RPC_NOTIFYLOADFROMDATABASE__:
 		notifyLoadFromDatabase();
 		break;
@@ -253,6 +275,10 @@ void SceneObjectComponentAdapter::initialize(SceneObject* obj) {
 
 SceneObject* SceneObjectComponentAdapter::getSceneObject() {
 	return ((SceneObjectComponentImplementation*) impl)->getSceneObject();
+}
+
+void SceneObjectComponentAdapter::setSceneObject(SceneObject* obj) {
+	((SceneObjectComponentImplementation*) impl)->setSceneObject(obj);
 }
 
 void SceneObjectComponentAdapter::notifyLoadFromDatabase() {

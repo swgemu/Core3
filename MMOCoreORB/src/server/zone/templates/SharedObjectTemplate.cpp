@@ -9,6 +9,9 @@
 #include "server/zone/managers/templates/TemplateManager.h"
 #include "server/zone/managers/planet/PlanetManager.h"
 
+#include "server/zone/templates/slots/SlotDescriptor.h"
+#include "server/zone/templates/slots/ArrangementDescriptor.h"
+
 #include "server/ServerCore.h"
 
 void SharedObjectTemplate::readObject(LuaObject* templateData) {
@@ -24,21 +27,19 @@ void SharedObjectTemplate::readObject(LuaObject* templateData) {
 
 	tintPallete = templateData->getStringField("tintPallete");
 
-	LuaObject arrangements = templateData->getObjectField("arrangementDescriptors");
+	String arrangementDescriptorFilename = templateData->getStringField("arrangementDescriptorFilename");
 
-	for (int i = 1; i <= arrangements.getTableSize(); ++i) {
-		arrangementDescriptors.add(arrangements.getStringAt(i));
-	}
+	Reference<ArrangementDescriptor*> arrangementDescriptor = templateManager->getArrangementDescriptor(arrangementDescriptorFilename);
 
-	arrangements.pop();
+	if (arrangementDescriptor != NULL)
+		arrangementDescriptor->clone(arrangementDescriptors);
 
-	LuaObject slots = templateData->getObjectField("slotDescriptors");
+	String slotDescriptorFilename = templateData->getStringField("slotDescriptorFilename");
 
-	for (int i = 1; i <= slots.getTableSize(); ++i) {
-		slotDescriptors.add(slots.getStringAt(i));
-	}
+	Reference<SlotDescriptor*> slotDescriptor = templateManager->getSlotDescriptor(slotDescriptorFilename);
 
-	slots.pop();
+	if (slotDescriptor != NULL)
+		slotDescriptor->clone(slotDescriptors);
 
 	appearanceFilename = templateData->getStringField("appearanceFilename");
 	appearanceTemplate = NULL;
