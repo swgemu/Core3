@@ -23,23 +23,15 @@
 
 // Imported class dependencies
 
-#include "engine/core/ManagedObject.h"
-
-#include "system/util/VectorMap.h"
-
-#include "engine/service/proto/BasePacket.h"
-
-#include "engine/core/ObjectUpdateToDatabaseTask.h"
+#include "system/io/ObjectInputStream.h"
 
 #include "system/io/ObjectOutputStream.h"
 
-#include "server/zone/objects/scene/SceneObject.h"
+#include "engine/core/ManagedObject.h"
 
-#include "engine/service/proto/BaseClientProxy.h"
+#include "engine/core/ObjectUpdateToDatabaseTask.h"
 
-#include "system/io/ObjectInputStream.h"
-
-#include "server/login/account/Account.h"
+#include "system/util/VectorMap.h"
 
 #include "server/login/account/AccountManager.h"
 

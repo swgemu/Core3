@@ -11,21 +11,27 @@
 
 // Imported class dependencies
 
-#include "engine/core/ManagedObject.h"
-
-#include "engine/service/proto/BasePacket.h"
-
-#include "engine/core/ObjectUpdateToDatabaseTask.h"
+#include "system/io/ObjectInputStream.h"
 
 #include "system/io/ObjectOutputStream.h"
 
-#include "server/zone/objects/scene/SceneObject.h"
+#include "engine/core/ManagedObject.h"
 
 #include "engine/service/proto/BaseClientProxy.h"
 
 #include "server/login/account/Account.h"
 
-#include "system/io/ObjectInputStream.h"
+#include "engine/service/proto/BasePacket.h"
+
+#include "engine/core/ObjectUpdateToDatabaseTask.h"
+
+#include "system/util/VectorMap.h"
+
+#include "server/zone/objects/scene/SceneObject.h"
+
+#include "server/login/account/AccountManager.h"
+
+#include "server/zone/ZoneClientSession.h"
 
 /*
  *	AccountStub

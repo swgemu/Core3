@@ -158,12 +158,14 @@ namespace zone {
 namespace managers {
 namespace objectcontroller {
 
-class ObjectControllerImplementation : public ManagedServiceImplementation, public Lua {
+class ObjectControllerImplementation : public ManagedServiceImplementation, public Logger {
 	ManagedReference<ZoneProcessServer* > server;
 
 	Reference<CommandConfigManager* > configManager;
 
 	Reference<CommandList* > queueCommands;
+
+	Reference<Lua* > luaInstance;
 
 public:
 	ObjectControllerImplementation(ZoneProcessServer* srv);

@@ -194,7 +194,7 @@ namespace zone {
 namespace managers {
 namespace resource {
 
-class ResourceManagerImplementation : public ObserverImplementation, public Lua {
+class ResourceManagerImplementation : public ObserverImplementation, public Logger {
 	ManagedReference<ZoneProcessServer* > processor;
 
 	ManagedWeakReference<ZoneServer* > zoneServer;
@@ -204,6 +204,8 @@ class ResourceManagerImplementation : public ObserverImplementation, public Lua 
 	Reference<ObjectManager* > objectManager;
 
 	int shiftInterval;
+
+	Reference<Lua* > luaInstance;
 
 public:
 	static const int RESOURCE_DEED_QUANTITY = 100000;

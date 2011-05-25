@@ -66,13 +66,15 @@ import server.zone.objects.player.sui.listbox.resourcedeedlistbox.ResourceDeedLi
  * The resource manager handles all aspects of in game resources
  * within the Core3 environment
  */
-class ResourceManager extends Observer implements Lua {
+class ResourceManager extends Observer implements Logger {
 	private transient ZoneProcessServer processor;
+	
 	@weakReference
 	private ZoneServer zoneServer;
 	private transient ResourceSpawner resourceSpawner;
 	private transient ObjectManager objectManager;
 	private transient int shiftInterval;
+	private transient Lua luaInstance;
 	
 	public static final int RESOURCE_DEED_QUANTITY = 100000;
 	
@@ -87,6 +89,7 @@ class ResourceManager extends Observer implements Lua {
 		zoneServer = server;
 		processor = impl;
 		objectManager = objectMan;
+		luaInstance = null;
 	}
 	
 	public native void stop();

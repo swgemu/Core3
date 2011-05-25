@@ -184,7 +184,7 @@ namespace zone {
 namespace managers {
 namespace crafting {
 
-class CraftingManagerImplementation : public ZoneManagerImplementation, public Lua {
+class CraftingManagerImplementation : public ZoneManagerImplementation {
 	Reference<SchematicMap* > schematicMap;
 
 public:

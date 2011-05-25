@@ -19,7 +19,7 @@ namespace zone {
 namespace managers {
 namespace creature {
 
-class CreatureTemplateManager : private Lua, public Singleton<CreatureTemplateManager>, public Object {
+class CreatureTemplateManager : public Lua, public Singleton<CreatureTemplateManager>  {
 protected:
 	HashTable<uint32, Reference<CreatureTemplate*> > templates;
 

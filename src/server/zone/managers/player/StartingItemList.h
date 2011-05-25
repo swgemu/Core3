@@ -139,7 +139,7 @@ public:
 	}
 };
 
-class StartingItemList : public Lua, public Singleton<StartingItemList>, public Object {
+class StartingItemList : public Lua, public Singleton<StartingItemList> {
 	StartingItemProfessionSet* professions;
 
 public:

@@ -48,6 +48,7 @@
 void CraftingManagerImplementation::initialize() {
 	schematicMap = SchematicMap::instance();
 	schematicMap->initialize(zoneServer);
+
 }
 
 void CraftingManagerImplementation::awardSchematicGroup(PlayerObject* playerObject, Vector<String>& schematicgroups, bool updateClient) {

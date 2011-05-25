@@ -9,17 +9,17 @@
 
 // Imported class dependencies
 
-#include "engine/core/ManagedObject.h"
-
-#include "server/zone/objects/player/sui/listbox/SuiListBoxMenuItem.h"
-
-#include "engine/core/ObjectUpdateToDatabaseTask.h"
-
-#include "system/io/ObjectOutputStream.h"
+#include "system/util/Vector.h"
 
 #include "system/io/ObjectInputStream.h"
 
-#include "system/util/Vector.h"
+#include "system/io/ObjectOutputStream.h"
+
+#include "engine/core/ManagedObject.h"
+
+#include "engine/core/ObjectUpdateToDatabaseTask.h"
+
+#include "server/zone/objects/player/sui/listbox/SuiListBoxMenuItem.h"
 
 /*
  *	SuiListBoxMenuItemStub

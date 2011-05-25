@@ -52,7 +52,8 @@ which carries forward this exception.
 #include "server/zone/packets/tangible/TangibleObjectDeltaMessage3.h"
 
 void ResourceManagerImplementation::initialize() {
-	Lua::init();
+	luaInstance = new Lua();
+	luaInstance->init();
 
 	info("building resource tree");
 	resourceSpawner = new ResourceSpawner(zoneServer.get(), processor, objectManager);
@@ -72,7 +73,7 @@ void ResourceManagerImplementation::initialize() {
 }
 
 bool ResourceManagerImplementation::loadConfigFile() {
-	return runFile("scripts/resources/config.lua");
+	return luaInstance->runFile("scripts/resources/config.lua");
 }
 
 int ResourceManagerImplementation::notifyObserverEvent(uint32 eventType, Observable* observable, ManagedObject* arg1, int64 arg2) {
@@ -103,7 +104,7 @@ bool ResourceManagerImplementation::loadConfigData() {
 	if (!loadConfigFile())
 		return false;
 
-	String zonesString = getGlobalString("activeZones");
+	String zonesString = luaInstance->getGlobalString("activeZones");
 
 	StringTokenizer zonesTokens(zonesString);
 	zonesTokens.setDelimeter(",");
@@ -113,31 +114,31 @@ bool ResourceManagerImplementation::loadConfigData() {
 		resourceSpawner->addPlanet(token);
 	}
 
-	shiftInterval = getGlobalInt("averageShiftTime");
+	shiftInterval = luaInstance->getGlobalInt("averageShiftTime");
 
-	int aveduration = getGlobalInt("aveduration");
-	float spawnThrottling = float(getGlobalInt("spawnThrottling")) / 100.0f;
-	int lowerGateOverride = getGlobalInt("lowerGateOverride");
-	int maxSpawnQuantity = getGlobalInt("maxSpawnQuantity");
+	int aveduration = luaInstance->getGlobalInt("aveduration");
+	float spawnThrottling = float(luaInstance->getGlobalInt("spawnThrottling")) / 100.0f;
+	int lowerGateOverride = luaInstance->getGlobalInt("lowerGateOverride");
+	int maxSpawnQuantity = luaInstance->getGlobalInt("maxSpawnQuantity");
 
 	resourceSpawner->setSpawningParameters(aveduration,
 			spawnThrottling, lowerGateOverride, maxSpawnQuantity);
 
-	String minpoolinc = getGlobalString("minimumpoolincludes");
-	String minpoolexc = getGlobalString("minimumpoolexcludes");
+	String minpoolinc = luaInstance->getGlobalString("minimumpoolincludes");
+	String minpoolexc = luaInstance->getGlobalString("minimumpoolexcludes");
 	resourceSpawner->initializeMinimumPool(minpoolinc, minpoolexc);
 
-	String randpoolinc = getGlobalString("randompoolincludes");
-	String randpoolexc = getGlobalString("randompoolexcludes");
-	int randpoolsize = getGlobalInt("randompoolsize");
+	String randpoolinc = luaInstance->getGlobalString("randompoolincludes");
+	String randpoolexc = luaInstance->getGlobalString("randompoolexcludes");
+	int randpoolsize = luaInstance->getGlobalInt("randompoolsize");
 	resourceSpawner->initializeRandomPool(randpoolinc, randpoolexc, randpoolsize);
 
-	String fixedpoolinc = getGlobalString("fixedpoolincludes");
-	String fixedpoolexc = getGlobalString("fixedpoolexcludes");
+	String fixedpoolinc = luaInstance->getGlobalString("fixedpoolincludes");
+	String fixedpoolexc = luaInstance->getGlobalString("fixedpoolexcludes");
 	resourceSpawner->initializeFixedPool(fixedpoolinc, fixedpoolexc);
 
-	String natpoolinc = getGlobalString("nativepoolincludes");
-	String natpoolexc = getGlobalString("nativepoolexcludes");
+	String natpoolinc = luaInstance->getGlobalString("nativepoolincludes");
+	String natpoolexc = luaInstance->getGlobalString("nativepoolexcludes");
 	resourceSpawner->initializeNativePool(natpoolinc, natpoolexc);
 
 	return true;

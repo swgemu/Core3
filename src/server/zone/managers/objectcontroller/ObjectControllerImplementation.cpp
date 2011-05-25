@@ -29,8 +29,10 @@ void ObjectControllerImplementation::loadCommands() {
 	info(infoMsg.toString(), true);
 
 	// LUA
-	init();
-	Luna<LuaCreatureObject>::Register(L);
+	luaInstance = new Lua();
+
+	luaInstance->init();
+	//Luna<LuaCreatureObject>::Register();
 }
 
 void ObjectControllerImplementation::finalize() {

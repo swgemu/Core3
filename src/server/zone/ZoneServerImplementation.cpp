@@ -159,9 +159,9 @@ void ZoneServerImplementation::initialize() {
 	stringIdManager = StringIdManager::instance();
 
 	creatureTemplateManager = CreatureTemplateManager::instance();
-#ifndef WITH_STM
+//#ifndef WITH_STM
 	creatureTemplateManager->loadTemplates();
-#endif
+//#endif
 
 	phandler = new BasePacketHandler("ZoneServer", zoneHandler);
 	phandler->setLogging(false);
@@ -250,9 +250,9 @@ void ZoneServerImplementation::startManagers() {
 
 	auctionManager = new AuctionManager(_this);
 	auctionManager->deploy();
-#ifndef WITH_STM
+//#ifndef WITH_STM
 	auctionManager->initialize();
-#endif
+//#endif
 
 	missionManager = new MissionManager(_this, processor);
 	missionManager->deploy("MissionManager");
@@ -262,9 +262,9 @@ void ZoneServerImplementation::startManagers() {
 
 	resourceManager = new ResourceManager(_this, processor, objectManager);
 	resourceManager->deploy("ResourceManager");
-#ifndef WITH_STM
+//#ifndef WITH_STM
 	resourceManager->initialize();
-#endif
+//#endif
 
 	fishingManager = new FishingManager(_this);
 	fishingManager->deploy();
@@ -278,16 +278,16 @@ void ZoneServerImplementation::startManagers() {
 	lootManager = new LootManager(craftingManager);
 	lootManager->deploy("LootManager");
 	lootManager->setZoneProcessor(processor);
-#ifndef WITH_STM
+//#ifndef WITH_STM
 	lootManager->initialize();
-#endif
+//#endif
 
 	guildManager = new GuildManager(_this, processor);
 	guildManager->deploy("GuildManager");
 	guildManager->setChatManager(chatManager);
-#ifndef WITH_STM
+//#ifndef WITH_STM
 	guildManager->loadGuilds();
-#endif
+//#endif
 
 	//Loads the FactionManager LUA Config.
 	FactionManager::instance()->loadLuaConfig();

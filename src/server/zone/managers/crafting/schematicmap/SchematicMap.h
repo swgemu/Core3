@@ -62,7 +62,7 @@ which carries forward this exception.
 
 #include "DraftSchematicGroup.h"
 
-class SchematicMap : public Singleton<SchematicMap>, public Lua, public Object {
+class SchematicMap : public Singleton<SchematicMap>, public Lua {
 
 	VectorMap<uint32, ManagedReference<DraftSchematic* > > schematicIdMap;
 	VectorMap<String, DraftSchematicGroup* > groupMap;

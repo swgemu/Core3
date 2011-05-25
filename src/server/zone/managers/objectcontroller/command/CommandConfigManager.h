@@ -65,7 +65,7 @@ namespace command {
 
 class CommandList;
 
-class CommandConfigManager : public Lua, public Object {
+class CommandConfigManager : public Lua {
 public:
 	static ZoneProcessServer* server;
 	static CommandList* slashCommands;
