@@ -231,7 +231,7 @@ void ManufactureSchematicImplementation::initializeIngredientSlots(
 		SceneObject* tool, DraftSchematic* schematic) {
 
 	cleanupIngredientSlots();
-	craftingValues.clearAll();
+	craftingValues->clearAll();
 
 	assembled = false;
 	completed = false;

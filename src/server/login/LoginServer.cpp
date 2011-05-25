@@ -23,19 +23,19 @@
 
 // Imported class dependencies
 
-#include "system/io/ObjectInputStream.h"
-
-#include "system/io/ObjectOutputStream.h"
-
 #include "engine/core/ManagedObject.h"
 
 #include "engine/core/ObjectUpdateToDatabaseTask.h"
 
-#include "system/util/VectorMap.h"
-
 #include "server/login/account/AccountManager.h"
 
 #include "server/zone/ZoneClientSession.h"
+
+#include "system/io/ObjectInputStream.h"
+
+#include "system/io/ObjectOutputStream.h"
+
+#include "system/util/VectorMap.h"
 
 /*
  *	LoginServerStub

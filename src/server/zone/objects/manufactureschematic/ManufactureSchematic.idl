@@ -84,7 +84,6 @@ class ManufactureSchematic extends IntangibleObject {
 	protected int experimentingCounter;
 	protected int experimentingCounterPrevious;
 	
-	@dereferenced
 	protected CraftingValues craftingValues;
 	
 	@dereferenced
@@ -95,6 +94,9 @@ class ManufactureSchematic extends IntangibleObject {
 	
 	public ManufactureSchematic() {
 		Logger.setLoggingName("ManufactureSchematic");
+		
+		craftingValues = new CraftingValues();
+		
 		prototype = null;
 		firstCraftingUpdate = true;
 	}

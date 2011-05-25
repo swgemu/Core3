@@ -15,97 +15,97 @@
 
 // Imported class dependencies
 
-#include "server/zone/objects/player/ValidatedPosition.h"
-
-#include "server/zone/managers/planet/HeightMap.h"
-
-#include "server/zone/ZonePacketHandler.h"
-
 #include "engine/core/ManagedObject.h"
-
-#include "server/zone/templates/SharedObjectTemplate.h"
-
-#include "system/util/SortedVector.h"
-
-#include "system/util/VectorMap.h"
-
-#include "server/zone/objects/player/events/PlayerRecoveryEvent.h"
-
-#include "server/zone/managers/creature/CreatureManager.h"
-
-#include "server/zone/objects/tangible/TangibleObject.h"
-
-#include "server/login/account/AccountManager.h"
-
-#include "server/zone/ZoneProcessServer.h"
-
-#include "engine/service/proto/BasePacket.h"
-
-#include "system/lang/Time.h"
-
-#include "server/zone/managers/objectcontroller/ObjectController.h"
-
-#include "server/zone/managers/object/ObjectMap.h"
-
-#include "server/zone/managers/vendor/VendorManager.h"
-
-#include "server/zone/objects/player/TradeContainer.h"
-
-#include "server/zone/ZoneClientSession.h"
-
-#include "system/util/Vector.h"
-
-#include "server/zone/objects/player/events/PlayerDisconnectEvent.h"
-
-#include "server/zone/packets/object/ObjectMenuResponse.h"
 
 #include "engine/core/ObjectUpdateToDatabaseTask.h"
 
-#include "server/zone/objects/tangible/tool/SurveyTool.h"
+#include "engine/service/proto/BaseClientProxy.h"
 
-#include "server/zone/objects/player/sui/SuiBox.h"
+#include "engine/service/proto/BasePacket.h"
 
-#include "server/zone/objects/building/BuildingObject.h"
+#include "engine/util/u3d/QuadTree.h"
 
-#include "server/zone/managers/sui/SuiManager.h"
-
-#include "server/zone/objects/creature/CreatureObject.h"
-
-#include "server/zone/objects/scene/SceneObject.h"
-
-#include "server/zone/objects/tangible/tool/CraftingTool.h"
-
-#include "server/zone/managers/planet/MapLocationTable.h"
-
-#include "server/login/account/Account.h"
+#include "engine/util/u3d/QuadTreeEntry.h"
 
 #include "server/chat/room/ChatRoom.h"
 
-#include "system/io/ObjectInputStream.h"
+#include "server/login/account/Account.h"
 
-#include "system/io/ObjectOutputStream.h"
+#include "server/login/account/AccountManager.h"
+
+#include "server/zone/ZoneClientSession.h"
+
+#include "server/zone/ZonePacketHandler.h"
+
+#include "server/zone/ZoneProcessServer.h"
+
+#include "server/zone/ZoneServer.h"
+
+#include "server/zone/managers/city/CityManager.h"
+
+#include "server/zone/managers/creature/CreatureManager.h"
+
+#include "server/zone/managers/holocron/HolocronManager.h"
+
+#include "server/zone/managers/name/NameManager.h"
+
+#include "server/zone/managers/object/ObjectMap.h"
+
+#include "server/zone/managers/objectcontroller/ObjectController.h"
+
+#include "server/zone/managers/planet/HeightMap.h"
+
+#include "server/zone/managers/planet/MapLocationTable.h"
 
 #include "server/zone/managers/planet/PlanetManager.h"
 
 #include "server/zone/managers/professions/ProfessionManager.h"
 
-#include "engine/util/u3d/QuadTreeEntry.h"
+#include "server/zone/managers/sui/SuiManager.h"
 
-#include "engine/service/proto/BaseClientProxy.h"
+#include "server/zone/managers/vendor/VendorManager.h"
 
-#include "server/zone/ZoneServer.h"
+#include "server/zone/objects/building/BuildingObject.h"
 
-#include "server/zone/managers/name/NameManager.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 
-#include "engine/util/u3d/QuadTree.h"
+#include "server/zone/objects/player/PlayerCreature.h"
+
+#include "server/zone/objects/player/TradeContainer.h"
+
+#include "server/zone/objects/player/ValidatedPosition.h"
 
 #include "server/zone/objects/player/badges/Badges.h"
 
-#include "server/zone/managers/city/CityManager.h"
+#include "server/zone/objects/player/events/PlayerDisconnectEvent.h"
 
-#include "server/zone/managers/holocron/HolocronManager.h"
+#include "server/zone/objects/player/events/PlayerRecoveryEvent.h"
 
-#include "server/zone/objects/player/PlayerCreature.h"
+#include "server/zone/objects/player/sui/SuiBox.h"
+
+#include "server/zone/objects/scene/SceneObject.h"
+
+#include "server/zone/objects/tangible/TangibleObject.h"
+
+#include "server/zone/objects/tangible/tool/CraftingTool.h"
+
+#include "server/zone/objects/tangible/tool/SurveyTool.h"
+
+#include "server/zone/packets/object/ObjectMenuResponse.h"
+
+#include "server/zone/templates/SharedObjectTemplate.h"
+
+#include "system/io/ObjectInputStream.h"
+
+#include "system/io/ObjectOutputStream.h"
+
+#include "system/lang/Time.h"
+
+#include "system/util/SortedVector.h"
+
+#include "system/util/Vector.h"
+
+#include "system/util/VectorMap.h"
 
 /*
  *	WeatherManagerStub

@@ -15,85 +15,85 @@
 
 // Imported class dependencies
 
-#include "server/zone/templates/SharedObjectTemplate.h"
+#include "engine/service/proto/BaseClientProxy.h"
 
-#include "server/zone/objects/player/TradeContainer.h"
+#include "engine/service/proto/BasePacket.h"
 
 #include "engine/util/u3d/QuadTreeEntry.h"
 
-#include "server/zone/templates/intangible/DraftSchematicObjectTemplate.h"
+#include "server/chat/room/ChatRoom.h"
 
-#include "server/zone/objects/player/variables/SchematicList.h"
+#include "server/login/account/Account.h"
 
-#include "system/util/Vector.h"
+#include "server/login/account/AccountManager.h"
 
 #include "server/zone/ZoneClientSession.h"
 
-#include "server/zone/objects/manufactureschematic/IngredientSlots.h"
+#include "server/zone/objects/building/BuildingObject.h"
 
-#include "server/zone/objects/tangible/TangibleObject.h"
-
-#include "server/chat/room/ChatRoom.h"
-
-#include "server/zone/objects/player/variables/WaypointList.h"
-
-#include "server/zone/objects/player/variables/IgnoreList.h"
-
-#include "server/zone/objects/player/PlayerCreature.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 
 #include "server/zone/objects/draftschematic/DraftSchematic.h"
 
-#include "server/zone/objects/player/sui/SuiBox.h"
-
-#include "server/zone/packets/object/ObjectMenuResponse.h"
-
-#include "server/zone/objects/tangible/tool/CraftingTool.h"
-
-#include "system/util/SortedVector.h"
-
-#include "server/zone/packets/object/ObjectControllerMessage.h"
-
-#include "server/zone/packets/scene/AttributeListMessage.h"
-
-#include "system/util/VectorMap.h"
-
-#include "server/zone/objects/tangible/tool/SurveyTool.h"
-
-#include "server/zone/objects/player/events/PlayerRecoveryEvent.h"
-
-#include "server/zone/objects/player/variables/FactionStandingList.h"
-
-#include "server/zone/objects/player/variables/FriendList.h"
+#include "server/zone/objects/manufactureschematic/IngredientSlots.h"
 
 #include "server/zone/objects/manufactureschematic/craftingvalues/CraftingValues.h"
 
+#include "server/zone/objects/player/PlayerCreature.h"
+
+#include "server/zone/objects/player/TradeContainer.h"
+
 #include "server/zone/objects/player/ValidatedPosition.h"
-
-#include "server/zone/objects/scene/variables/DeltaVectorMap.h"
-
-#include "server/zone/objects/scene/SceneObject.h"
 
 #include "server/zone/objects/player/badges/Badges.h"
 
 #include "server/zone/objects/player/events/PlayerDisconnectEvent.h"
 
-#include "engine/service/proto/BasePacket.h"
+#include "server/zone/objects/player/events/PlayerRecoveryEvent.h"
+
+#include "server/zone/objects/player/sui/SuiBox.h"
+
+#include "server/zone/objects/player/variables/FactionStandingList.h"
+
+#include "server/zone/objects/player/variables/FriendList.h"
+
+#include "server/zone/objects/player/variables/IgnoreList.h"
+
+#include "server/zone/objects/player/variables/SchematicList.h"
 
 #include "server/zone/objects/player/variables/SkillList.h"
 
-#include "server/login/account/Account.h"
+#include "server/zone/objects/player/variables/WaypointList.h"
 
-#include "server/zone/objects/creature/CreatureObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 
-#include "engine/service/proto/BaseClientProxy.h"
+#include "server/zone/objects/scene/variables/DeltaVectorMap.h"
+
+#include "server/zone/objects/tangible/TangibleObject.h"
+
+#include "server/zone/objects/tangible/tool/CraftingTool.h"
+
+#include "server/zone/objects/tangible/tool/SurveyTool.h"
+
+#include "server/zone/objects/waypoint/WaypointObject.h"
+
+#include "server/zone/packets/object/ObjectControllerMessage.h"
+
+#include "server/zone/packets/object/ObjectMenuResponse.h"
+
+#include "server/zone/packets/scene/AttributeListMessage.h"
+
+#include "server/zone/templates/SharedObjectTemplate.h"
+
+#include "server/zone/templates/intangible/DraftSchematicObjectTemplate.h"
 
 #include "system/lang/Time.h"
 
-#include "server/login/account/AccountManager.h"
+#include "system/util/SortedVector.h"
 
-#include "server/zone/objects/building/BuildingObject.h"
+#include "system/util/Vector.h"
 
-#include "server/zone/objects/waypoint/WaypointObject.h"
+#include "system/util/VectorMap.h"
 
 /*
  *	CraftingManagerStub

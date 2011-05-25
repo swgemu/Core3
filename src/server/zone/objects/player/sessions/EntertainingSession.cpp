@@ -19,113 +19,113 @@
 
 // Imported class dependencies
 
-#include "system/util/Vector.h"
+#include "engine/core/ManagedObject.h"
 
-#include "system/io/ObjectOutputStream.h"
+#include "engine/core/ObjectUpdateToDatabaseTask.h"
 
-#include "server/zone/objects/scene/variables/DeltaVector.h"
+#include "engine/service/proto/BaseClientProxy.h"
 
 #include "engine/service/proto/BaseMessage.h"
 
-#include "server/zone/objects/creature/damageovertime/DamageOverTimeList.h"
+#include "engine/service/proto/BasePacket.h"
+
+#include "engine/util/Observable.h"
+
+#include "engine/util/u3d/QuadTreeEntry.h"
+
+#include "server/chat/StringIdChatParameter.h"
+
+#include "server/chat/room/ChatRoom.h"
+
+#include "server/login/account/Account.h"
+
+#include "server/login/account/AccountManager.h"
+
+#include "server/zone/ZoneClientSession.h"
+
+#include "server/zone/objects/building/BuildingObject.h"
+
+#include "server/zone/objects/creature/CreatureObject.h"
 
 #include "server/zone/objects/creature/SpeedMultiplierModChanges.h"
+
+#include "server/zone/objects/creature/buffs/Buff.h"
+
+#include "server/zone/objects/creature/buffs/BuffList.h"
+
+#include "server/zone/objects/creature/damageovertime/DamageOverTimeList.h"
+
+#include "server/zone/objects/creature/professions/SkillBox.h"
+
+#include "server/zone/objects/creature/variables/CommandQueueAction.h"
+
+#include "server/zone/objects/creature/variables/CooldownTimerMap.h"
+
+#include "server/zone/objects/creature/variables/SkillBoxList.h"
+
+#include "server/zone/objects/draftschematic/DraftSchematic.h"
+
+#include "server/zone/objects/group/GroupList.h"
+
+#include "server/zone/objects/group/GroupObject.h"
+
+#include "server/zone/objects/guild/GuildObject.h"
+
+#include "server/zone/objects/intangible/ControlDevice.h"
+
+#include "server/zone/objects/manufactureschematic/IngredientSlots.h"
+
+#include "server/zone/objects/manufactureschematic/ManufactureSchematic.h"
+
+#include "server/zone/objects/manufactureschematic/craftingvalues/CraftingValues.h"
+
+#include "server/zone/objects/player/PlayerCreature.h"
+
+#include "server/zone/objects/player/TradeContainer.h"
+
+#include "server/zone/objects/player/ValidatedPosition.h"
 
 #include "server/zone/objects/player/badges/Badges.h"
 
 #include "server/zone/objects/player/events/PlayerDisconnectEvent.h"
 
-#include "server/zone/objects/manufactureschematic/craftingvalues/CraftingValues.h"
-
-#include "server/zone/objects/group/GroupList.h"
-
-#include "engine/core/ManagedObject.h"
-
-#include "engine/service/proto/BasePacket.h"
-
 #include "server/zone/objects/player/events/PlayerRecoveryEvent.h"
-
-#include "server/zone/packets/scene/AttributeListMessage.h"
-
-#include "server/zone/objects/tangible/tool/CraftingTool.h"
-
-#include "server/chat/room/ChatRoom.h"
-
-#include "server/zone/objects/creature/professions/SkillBox.h"
-
-#include "server/zone/objects/tangible/TangibleObject.h"
-
-#include "server/zone/objects/manufactureschematic/ManufactureSchematic.h"
-
-#include "server/zone/objects/scene/variables/CustomizationVariables.h"
-
-#include "server/zone/objects/creature/variables/CooldownTimerMap.h"
-
-#include "server/login/account/Account.h"
-
-#include "server/zone/objects/scene/SceneObject.h"
-
-#include "server/zone/objects/player/ValidatedPosition.h"
-
-#include "system/util/SortedVector.h"
-
-#include "system/lang/Time.h"
-
-#include "server/zone/objects/guild/GuildObject.h"
-
-#include "server/zone/objects/player/TradeContainer.h"
-
-#include "server/zone/packets/object/ObjectMenuResponse.h"
-
-#include "server/zone/objects/draftschematic/DraftSchematic.h"
-
-#include "system/util/VectorMap.h"
-
-#include "server/login/account/AccountManager.h"
-
-#include "server/zone/objects/creature/variables/CommandQueueAction.h"
-
-#include "server/zone/objects/tangible/tool/SurveyTool.h"
-
-#include "server/zone/objects/player/PlayerCreature.h"
-
-#include "server/zone/objects/scene/variables/DeltaVectorMap.h"
-
-#include "engine/util/Observable.h"
-
-#include "server/zone/objects/group/GroupObject.h"
-
-#include "server/zone/objects/tangible/weapon/WeaponObject.h"
-
-#include "server/zone/objects/creature/buffs/BuffList.h"
-
-#include "server/zone/objects/creature/variables/SkillBoxList.h"
-
-#include "server/zone/objects/building/BuildingObject.h"
-
-#include "server/zone/objects/intangible/ControlDevice.h"
-
-#include "engine/service/proto/BaseClientProxy.h"
-
-#include "engine/util/u3d/QuadTreeEntry.h"
-
-#include "server/zone/ZoneClientSession.h"
-
-#include "system/io/ObjectInputStream.h"
-
-#include "server/zone/templates/SharedObjectTemplate.h"
-
-#include "server/zone/objects/creature/buffs/Buff.h"
-
-#include "server/chat/StringIdChatParameter.h"
-
-#include "server/zone/objects/manufactureschematic/IngredientSlots.h"
-
-#include "engine/core/ObjectUpdateToDatabaseTask.h"
 
 #include "server/zone/objects/player/sui/SuiBox.h"
 
-#include "server/zone/objects/creature/CreatureObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
+
+#include "server/zone/objects/scene/variables/CustomizationVariables.h"
+
+#include "server/zone/objects/scene/variables/DeltaVector.h"
+
+#include "server/zone/objects/scene/variables/DeltaVectorMap.h"
+
+#include "server/zone/objects/tangible/TangibleObject.h"
+
+#include "server/zone/objects/tangible/tool/CraftingTool.h"
+
+#include "server/zone/objects/tangible/tool/SurveyTool.h"
+
+#include "server/zone/objects/tangible/weapon/WeaponObject.h"
+
+#include "server/zone/packets/object/ObjectMenuResponse.h"
+
+#include "server/zone/packets/scene/AttributeListMessage.h"
+
+#include "server/zone/templates/SharedObjectTemplate.h"
+
+#include "system/io/ObjectInputStream.h"
+
+#include "system/io/ObjectOutputStream.h"
+
+#include "system/lang/Time.h"
+
+#include "system/util/SortedVector.h"
+
+#include "system/util/Vector.h"
+
+#include "system/util/VectorMap.h"
 
 /*
  *	EntertainingSessionStub

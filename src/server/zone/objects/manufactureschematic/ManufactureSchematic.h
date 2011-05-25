@@ -240,7 +240,7 @@ protected:
 
 	int experimentingCounterPrevious;
 
-	CraftingValues craftingValues;
+	Reference<CraftingValues* > craftingValues;
 
 	Vector<byte> customizationOptions;
 

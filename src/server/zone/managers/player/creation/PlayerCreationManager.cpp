@@ -9,29 +9,29 @@
 
 // Imported class dependencies
 
-#include "server/zone/ZoneServer.h"
-
-#include "system/io/ObjectInputStream.h"
-
-#include "server/zone/managers/sui/SuiManager.h"
-
-#include "system/io/ObjectOutputStream.h"
-
-#include "server/zone/managers/objectcontroller/ObjectController.h"
-
 #include "engine/core/ManagedObject.h"
-
-#include "server/zone/managers/name/NameManager.h"
-
-#include "server/zone/managers/holocron/HolocronManager.h"
 
 #include "engine/core/ObjectUpdateToDatabaseTask.h"
 
+#include "server/zone/ZonePacketHandler.h"
+
+#include "server/zone/ZoneServer.h"
+
+#include "server/zone/managers/holocron/HolocronManager.h"
+
+#include "server/zone/managers/name/NameManager.h"
+
+#include "server/zone/managers/objectcontroller/ObjectController.h"
+
 #include "server/zone/managers/professions/ProfessionManager.h"
+
+#include "server/zone/managers/sui/SuiManager.h"
 
 #include "server/zone/managers/vendor/VendorManager.h"
 
-#include "server/zone/ZonePacketHandler.h"
+#include "system/io/ObjectInputStream.h"
+
+#include "system/io/ObjectOutputStream.h"
 
 /*
  *	PlayerCreationManagerStub

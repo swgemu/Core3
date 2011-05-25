@@ -21,193 +21,193 @@
 
 // Imported class dependencies
 
-#include "server/zone/packets/object/ObjectMenuResponse.h"
+#include "engine/core/ManagedObject.h"
+
+#include "engine/core/ObjectUpdateToDatabaseTask.h"
+
+#include "engine/service/DatagramServiceThread.h"
 
 #include "engine/service/Message.h"
 
-#include "server/zone/templates/SharedObjectTemplate.h"
+#include "engine/service/proto/BaseClientProxy.h"
 
-#include "server/zone/objects/intangible/ControlDevice.h"
+#include "engine/service/proto/BaseMessage.h"
 
-#include "server/zone/objects/creature/CreatureObject.h"
-
-#include "server/zone/objects/group/GroupList.h"
-
-#include "server/zone/managers/loot/LootManager.h"
-
-#include "server/login/account/Account.h"
-
-#include "server/chat/room/ChatRoom.h"
-
-#include "server/zone/managers/name/NameManager.h"
-
-#include "server/zone/objects/resource/ResourceSpawn.h"
+#include "engine/service/proto/BasePacket.h"
 
 #include "engine/service/proto/BasePacketHandler.h"
 
-#include "server/zone/managers/minigames/ForageManager.h"
+#include "engine/util/Observable.h"
 
-#include "system/io/ObjectInputStream.h"
+#include "engine/util/Observer.h"
 
-#include "server/zone/objects/player/sui/SuiBox.h"
+#include "engine/util/ObserverEventMap.h"
 
-#include "server/zone/managers/creature/CreatureManager.h"
+#include "engine/util/u3d/QuadTree.h"
 
-#include "server/zone/ZoneHandler.h"
+#include "engine/util/u3d/QuadTreeEntry.h"
+
+#include "server/chat/ChatManager.h"
+
+#include "server/chat/StringIdChatParameter.h"
+
+#include "server/chat/room/ChatRoom.h"
+
+#include "server/login/account/Account.h"
 
 #include "server/login/account/AccountManager.h"
 
-#include "server/zone/objects/creature/buffs/Buff.h"
+#include "server/zone/Zone.h"
 
-#include "server/zone/objects/scene/variables/DeltaVector.h"
+#include "server/zone/ZoneClientSession.h"
 
-#include "system/thread/atomic/AtomicInteger.h"
+#include "server/zone/ZoneHandler.h"
 
-#include "server/zone/managers/player/PlayerManager.h"
+#include "server/zone/ZonePacketHandler.h"
 
-#include "server/zone/managers/vendor/VendorManager.h"
+#include "server/zone/ZoneProcessServer.h"
 
-#include "server/zone/managers/radial/RadialManager.h"
+#include "server/zone/ZoneServer.h"
 
-#include "server/zone/objects/tangible/weapon/WeaponObject.h"
+#include "server/zone/managers/auction/AuctionManager.h"
 
-#include "server/zone/objects/creature/professions/SkillBox.h"
+#include "server/zone/managers/city/CityManager.h"
+
+#include "server/zone/managers/crafting/CraftingManager.h"
+
+#include "server/zone/managers/creature/CreatureManager.h"
 
 #include "server/zone/managers/creature/CreatureTemplateManager.h"
 
 #include "server/zone/managers/guild/GuildManager.h"
 
-#include "server/zone/objects/tangible/tool/SurveyTool.h"
-
-#include "server/zone/managers/stringid/StringIdManager.h"
-
-#include "server/zone/objects/player/events/PlayerDisconnectEvent.h"
-
-#include "server/zone/ZoneServer.h"
-
-#include "server/zone/objects/tangible/tool/CraftingTool.h"
-
-#include "system/net/SocketAddress.h"
-
-#include "engine/util/Observable.h"
-
-#include "server/zone/managers/auction/AuctionManager.h"
-
-#include "server/chat/StringIdChatParameter.h"
-
-#include "engine/core/ObjectUpdateToDatabaseTask.h"
-
-#include "server/zone/objects/scene/variables/DeltaVectorMap.h"
-
-#include "server/zone/objects/player/TradeContainer.h"
-
-#include "server/zone/objects/player/badges/Badges.h"
-
-#include "engine/service/proto/BasePacket.h"
-
-#include "server/zone/managers/objectcontroller/ObjectController.h"
-
-#include "engine/util/ObserverEventMap.h"
-
-#include "server/zone/ZoneProcessServer.h"
-
-#include "server/zone/managers/planet/MapLocationTable.h"
-
-#include "system/util/VectorMap.h"
-
-#include "system/util/Vector.h"
-
-#include "system/lang/Time.h"
-
-#include "server/zone/packets/scene/AttributeListMessage.h"
-
-#include "server/zone/objects/creature/variables/CommandQueueAction.h"
-
-#include "system/lang/Exception.h"
-
-#include "server/chat/ChatManager.h"
-
-#include "server/zone/managers/professions/ProfessionManager.h"
-
-#include "server/zone/objects/guild/GuildObject.h"
-
-#include "server/zone/managers/resource/ResourceManager.h"
-
-#include "server/zone/objects/creature/buffs/BuffList.h"
-
-#include "server/zone/objects/resource/ResourceContainer.h"
-
-#include "server/zone/objects/creature/variables/SkillBoxList.h"
-
 #include "server/zone/managers/holocron/HolocronManager.h"
 
-#include "server/zone/ZonePacketHandler.h"
-
-#include "server/zone/objects/creature/SpeedMultiplierModChanges.h"
-
-#include "server/zone/objects/tangible/TangibleObject.h"
-
-#include "server/zone/managers/planet/HeightMap.h"
-
-#include "server/zone/objects/player/events/PlayerRecoveryEvent.h"
-
-#include "server/zone/managers/object/ObjectManager.h"
-
-#include "server/zone/objects/player/PlayerCreature.h"
-
-#include "server/zone/objects/scene/SceneObject.h"
-
-#include "engine/util/Observer.h"
-
-#include "server/zone/managers/crafting/CraftingManager.h"
-
-#include "server/zone/managers/object/ObjectMap.h"
-
-#include "server/zone/managers/sui/SuiManager.h"
-
-#include "system/net/Packet.h"
-
-#include "server/zone/managers/mission/MissionManager.h"
-
-#include "server/zone/managers/minigames/GamblingManager.h"
-
-#include "engine/core/ManagedObject.h"
-
-#include "system/net/Socket.h"
-
-#include "server/zone/managers/city/CityManager.h"
-
-#include "server/zone/objects/group/GroupObject.h"
-
-#include "engine/service/DatagramServiceThread.h"
-
-#include "server/zone/objects/building/BuildingObject.h"
-
-#include "system/util/SortedVector.h"
+#include "server/zone/managers/loot/LootManager.h"
 
 #include "server/zone/managers/minigames/FishingManager.h"
 
-#include "engine/util/u3d/QuadTree.h"
+#include "server/zone/managers/minigames/ForageManager.h"
 
-#include "server/zone/objects/creature/damageovertime/DamageOverTimeList.h"
+#include "server/zone/managers/minigames/GamblingManager.h"
 
-#include "engine/service/proto/BaseMessage.h"
+#include "server/zone/managers/mission/MissionManager.h"
 
-#include "server/zone/ZoneClientSession.h"
+#include "server/zone/managers/name/NameManager.h"
 
-#include "system/io/ObjectOutputStream.h"
+#include "server/zone/managers/object/ObjectManager.h"
 
-#include "engine/util/u3d/QuadTreeEntry.h"
+#include "server/zone/managers/object/ObjectMap.h"
+
+#include "server/zone/managers/objectcontroller/ObjectController.h"
+
+#include "server/zone/managers/planet/HeightMap.h"
+
+#include "server/zone/managers/planet/MapLocationTable.h"
 
 #include "server/zone/managers/planet/PlanetManager.h"
 
-#include "server/zone/objects/player/ValidatedPosition.h"
+#include "server/zone/managers/player/PlayerManager.h"
 
-#include "server/zone/Zone.h"
+#include "server/zone/managers/professions/ProfessionManager.h"
 
-#include "engine/service/proto/BaseClientProxy.h"
+#include "server/zone/managers/radial/RadialManager.h"
+
+#include "server/zone/managers/resource/ResourceManager.h"
+
+#include "server/zone/managers/stringid/StringIdManager.h"
+
+#include "server/zone/managers/sui/SuiManager.h"
+
+#include "server/zone/managers/vendor/VendorManager.h"
+
+#include "server/zone/objects/building/BuildingObject.h"
+
+#include "server/zone/objects/creature/CreatureObject.h"
+
+#include "server/zone/objects/creature/SpeedMultiplierModChanges.h"
+
+#include "server/zone/objects/creature/buffs/Buff.h"
+
+#include "server/zone/objects/creature/buffs/BuffList.h"
+
+#include "server/zone/objects/creature/damageovertime/DamageOverTimeList.h"
+
+#include "server/zone/objects/creature/professions/SkillBox.h"
+
+#include "server/zone/objects/creature/variables/CommandQueueAction.h"
 
 #include "server/zone/objects/creature/variables/CooldownTimerMap.h"
+
+#include "server/zone/objects/creature/variables/SkillBoxList.h"
+
+#include "server/zone/objects/group/GroupList.h"
+
+#include "server/zone/objects/group/GroupObject.h"
+
+#include "server/zone/objects/guild/GuildObject.h"
+
+#include "server/zone/objects/intangible/ControlDevice.h"
+
+#include "server/zone/objects/player/PlayerCreature.h"
+
+#include "server/zone/objects/player/TradeContainer.h"
+
+#include "server/zone/objects/player/ValidatedPosition.h"
+
+#include "server/zone/objects/player/badges/Badges.h"
+
+#include "server/zone/objects/player/events/PlayerDisconnectEvent.h"
+
+#include "server/zone/objects/player/events/PlayerRecoveryEvent.h"
+
+#include "server/zone/objects/player/sui/SuiBox.h"
+
+#include "server/zone/objects/resource/ResourceContainer.h"
+
+#include "server/zone/objects/resource/ResourceSpawn.h"
+
+#include "server/zone/objects/scene/SceneObject.h"
+
+#include "server/zone/objects/scene/variables/DeltaVector.h"
+
+#include "server/zone/objects/scene/variables/DeltaVectorMap.h"
+
+#include "server/zone/objects/tangible/TangibleObject.h"
+
+#include "server/zone/objects/tangible/tool/CraftingTool.h"
+
+#include "server/zone/objects/tangible/tool/SurveyTool.h"
+
+#include "server/zone/objects/tangible/weapon/WeaponObject.h"
+
+#include "server/zone/packets/object/ObjectMenuResponse.h"
+
+#include "server/zone/packets/scene/AttributeListMessage.h"
+
+#include "server/zone/templates/SharedObjectTemplate.h"
+
+#include "system/io/ObjectInputStream.h"
+
+#include "system/io/ObjectOutputStream.h"
+
+#include "system/lang/Exception.h"
+
+#include "system/lang/Time.h"
+
+#include "system/net/Packet.h"
+
+#include "system/net/Socket.h"
+
+#include "system/net/SocketAddress.h"
+
+#include "system/thread/atomic/AtomicInteger.h"
+
+#include "system/util/SortedVector.h"
+
+#include "system/util/Vector.h"
+
+#include "system/util/VectorMap.h"
 
 /*
  *	ResourceManagerStub
