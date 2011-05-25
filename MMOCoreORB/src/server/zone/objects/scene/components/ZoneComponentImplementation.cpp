@@ -226,9 +226,9 @@ void ZoneComponentImplementation::updateZoneWithParent(SceneObject* newParent, b
 	if (zone == NULL)
 		return;
 
-	SceneObject* parent = sceneObject->getParent();
+	/*SceneObject* parent = sceneObject->getParent();*/
 
-	if (parent != NULL && parent->isVehicleObject())
+	if (sceneObject->getParent() != NULL && sceneObject->getParent()->isVehicleObject())
 		return;
 
 	bool insert = false;
@@ -243,13 +243,13 @@ void ZoneComponentImplementation::updateZoneWithParent(SceneObject* newParent, b
 
 	Locker zoneLocker(zone);
 
-	if (newParent != parent) {
-		if (parent == NULL) {
+	if (newParent != sceneObject->getParent()) {
+		if (sceneObject->getParent() == NULL) {
 			zone->remove(sceneObject);
 			insert = true;
 		} else {
-			if (parent->isCellObject()) {
-				BuildingObject* building = (BuildingObject*) parent->getParent();
+			if (sceneObject->getParent()->isCellObject()) {
+				BuildingObject* building = (BuildingObject*) sceneObject->getParent()->getParent();
 				SceneObject* newObj = newParent->getParent();
 
 				BuildingObject* newBuilding = (BuildingObject*) newObj;
@@ -263,8 +263,8 @@ void ZoneComponentImplementation::updateZoneWithParent(SceneObject* newParent, b
 				}
 
 				// remove from old cell
-				if (parent != NULL)
-					parent->removeObject(sceneObject, false);
+				if (sceneObject->getParent() != NULL)
+					sceneObject->getParent()->removeObject(sceneObject, false);
 			} else
 				insert = true;
 		}
@@ -276,10 +276,10 @@ void ZoneComponentImplementation::updateZoneWithParent(SceneObject* newParent, b
 			error("could not add to parent " + newParent->getLoggingName());
 		}
 
-		sceneObject->broadcastMessage(sceneObject->link(parent->getObjectID(), 0xFFFFFFFF), true, false);
+		sceneObject->broadcastMessage(sceneObject->link(sceneObject->getParent()->getObjectID(), 0xFFFFFFFF), true, false);
 	}
 
-	ManagedReference<BuildingObject*> building = (BuildingObject*) parent->getParent();
+	ManagedReference<BuildingObject*> building = (BuildingObject*) sceneObject->getParent()->getParent();
 
 	if (insert) {
 		info("insertToBuilding from updateZoneWithParent");
