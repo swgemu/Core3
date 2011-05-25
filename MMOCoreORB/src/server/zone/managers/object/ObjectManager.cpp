@@ -517,6 +517,40 @@ SceneObject* ObjectManager::loadObjectFromTemplate(uint32 objectCRC) {
 	return object;
 }
 
+/*ManagedObject* ObjectManager::cloneManagedObject(ManagedObject* object, bool makeTransient) {
+	ObjectOutputStream objectData(500);
+
+	object->writeObject(&objectData);
+	objectData.reset();
+
+	ObjectInputStream objectInput;
+	objectData.copy(&objectInput, 0);
+	objectInput.reset();
+
+	DistributedObjectClassHelper* helper = object->_getClassHelper();
+	String className = helper->getClassName();
+
+	ManagedObject* clonedObject = NULL;
+
+	ObjectDatabase* database = getTable(object->getObjectID());
+	String databaseName;
+
+	if (database != NULL) {
+		database->getDatabaseName(databaseName);
+	}
+
+	if (makeTransient || !object->isPersistent()) {
+		clonedObject = createObject(className, 0, databaseName);
+		clonedObject->setPersistent(0);
+	} else if (object->isPersistent()) {
+		clonedObject = createObject(className, object->getPersistenceLevel(), databaseName);
+	}
+
+	Locker locker(clonedObject);
+
+	clonedObject->readObject(&objectInput);
+}*/
+
 SceneObject* ObjectManager::cloneObject(SceneObject* object, bool makeTransient) {
 	ObjectOutputStream objectData(500);
 
@@ -533,21 +567,34 @@ SceneObject* ObjectManager::cloneObject(SceneObject* object, bool makeTransient)
 
 	ObjectDatabase* database = getTable(object->getObjectID());
 	String databaseName;
+	uint64 oid;
 
 	if (database != NULL) {
 		database->getDatabaseName(databaseName);
-	}
+
+		oid = getNextObjectID(databaseName);
+	} else
+		oid = getNextFreeObjectID();
+
+
+	clonedObject = instantiateSceneObject(serverCRC, oid, false);
 
 	if (makeTransient || !object->isPersistent()) {
-		clonedObject = createObject(serverCRC, 0, databaseName);
+		//clonedObject = createObject(serverCRC, 0, databaseName);
 		clonedObject->setPersistent(0);
 	} else if (object->isPersistent()) {
-		clonedObject = createObject(serverCRC, object->getPersistenceLevel(), databaseName);
+		//clonedObject = createObject(serverCRC, object->getPersistenceLevel(), databaseName);
+		clonedObject->setPersistent(object->getPersistenceLevel());
 	}
 
 	Locker locker(clonedObject);
 
 	clonedObject->readObject(&objectInput);
+	clonedObject->createComponents();
+	clonedObject->setParent(NULL);
+
+	if (clonedObject->isPersistent())
+		updatePersistentObject(clonedObject);
 
 	return clonedObject;
 }

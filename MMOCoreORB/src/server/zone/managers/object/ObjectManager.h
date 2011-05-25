@@ -111,6 +111,8 @@ namespace zone {
 
 		int deployUpdateThreads(Vector<DistributedObject*>* objectsToUpdate, Vector<DistributedObject*>* objectsToDelete, engine::db::berkley::Transaction* transaction);
 
+		//ManagedObject* cloneManagedObject(ManagedObject* object, bool makeTransient = false);
+
 
 	public:
 		ObjectManager();
