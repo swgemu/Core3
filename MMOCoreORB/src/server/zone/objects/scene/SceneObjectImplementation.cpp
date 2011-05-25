@@ -396,6 +396,15 @@ void SceneObjectImplementation::sendWithoutContainerObjectsTo(SceneObject* playe
 void SceneObjectImplementation::notifyLoadFromDatabase() {
 	//Correcting linked list errors becaused of DB errors
 
+	if (zoneComponent != NULL)
+		zoneComponent->setSceneObject(_this);
+
+	if (containerComponent != NULL)
+		containerComponent->setSceneObject(_this);
+
+	if (objectMenuComponent != NULL)
+		objectMenuComponent->setSceneObject(_this);
+
 	if (containerComponent != NULL) {
 		for (int i = 0; i < getSlottedObjectsSize(); ++i) {
 			SceneObject* object = getSlottedObject(i);

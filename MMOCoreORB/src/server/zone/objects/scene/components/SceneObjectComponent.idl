@@ -63,6 +63,10 @@ class SceneObjectComponent extends ManagedObject {
 		return sceneObject;
 	}
 	
+	public void setSceneObject(SceneObject obj) {
+		sceneObject = obj;
+	}
+	
 	public abstract void notifyLoadFromDatabase() {
 		
 	}
