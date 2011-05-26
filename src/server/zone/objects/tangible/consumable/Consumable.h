@@ -320,8 +320,6 @@ public:
 protected:
 	virtual ~ConsumableImplementation();
 
-	Object* clone();
-
 	void finalize();
 
 	void _initializeImplementation();
@@ -347,7 +345,6 @@ protected:
 	int writeObjectMembers(ObjectOutputStream* stream);
 
 	friend class Consumable;
-	friend class TransactionalObjectHandle<ConsumableImplementation*>;
 };
 
 class ConsumableAdapter : public TangibleObjectAdapter {

@@ -162,8 +162,6 @@ public:
 protected:
 	virtual ~CharacterBuilderTerminalImplementation();
 
-	Object* clone();
-
 	void finalize();
 
 	void _initializeImplementation();
@@ -189,7 +187,6 @@ protected:
 	int writeObjectMembers(ObjectOutputStream* stream);
 
 	friend class CharacterBuilderTerminal;
-	friend class TransactionalObjectHandle<CharacterBuilderTerminalImplementation*>;
 };
 
 class CharacterBuilderTerminalAdapter : public TerminalAdapter {

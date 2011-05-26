@@ -176,8 +176,6 @@ public:
 protected:
 	virtual ~FishObjectImplementation();
 
-	Object* clone();
-
 	void finalize();
 
 	void _initializeImplementation();
@@ -203,7 +201,6 @@ protected:
 	int writeObjectMembers(ObjectOutputStream* stream);
 
 	friend class FishObject;
-	friend class TransactionalObjectHandle<FishObjectImplementation*>;
 };
 
 class FishObjectAdapter : public TangibleObjectAdapter {

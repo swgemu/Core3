@@ -100,8 +100,6 @@ public:
 protected:
 	virtual ~DrinkImplementation();
 
-	Object* clone();
-
 	void finalize();
 
 	void _initializeImplementation();
@@ -127,7 +125,6 @@ protected:
 	int writeObjectMembers(ObjectOutputStream* stream);
 
 	friend class Drink;
-	friend class TransactionalObjectHandle<DrinkImplementation*>;
 };
 
 class DrinkAdapter : public ConsumableAdapter {

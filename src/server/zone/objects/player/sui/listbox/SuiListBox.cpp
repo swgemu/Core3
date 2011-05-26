@@ -8,129 +8,6 @@
 
 #include "server/zone/objects/player/PlayerCreature.h"
 
-
-// Imported class dependencies
-
-#include "engine/core/ManagedObject.h"
-
-#include "engine/core/ObjectUpdateToDatabaseTask.h"
-
-#include "engine/core/Task.h"
-
-#include "engine/service/proto/BaseClientProxy.h"
-
-#include "engine/service/proto/BasePacket.h"
-
-#include "engine/stm/TransactionalReference.h"
-
-#include "engine/util/Facade.h"
-
-#include "engine/util/u3d/Coordinate.h"
-
-#include "engine/util/u3d/QuadTree.h"
-
-#include "engine/util/u3d/QuadTreeEntry.h"
-
-#include "engine/util/u3d/Quaternion.h"
-
-#include "server/chat/room/ChatRoom.h"
-
-#include "server/login/account/Account.h"
-
-#include "server/login/account/AccountManager.h"
-
-#include "server/zone/Zone.h"
-
-#include "server/zone/ZoneClientSession.h"
-
-#include "server/zone/ZonePacketHandler.h"
-
-#include "server/zone/ZoneProcessServer.h"
-
-#include "server/zone/ZoneServer.h"
-
-#include "server/zone/managers/city/CityManager.h"
-
-#include "server/zone/managers/creature/CreatureManager.h"
-
-#include "server/zone/managers/holocron/HolocronManager.h"
-
-#include "server/zone/managers/name/NameManager.h"
-
-#include "server/zone/managers/object/ObjectMap.h"
-
-#include "server/zone/managers/objectcontroller/ObjectController.h"
-
-#include "server/zone/managers/planet/HeightMap.h"
-
-#include "server/zone/managers/planet/MapLocationTable.h"
-
-#include "server/zone/managers/planet/PlanetManager.h"
-
-#include "server/zone/managers/professions/ProfessionManager.h"
-
-#include "server/zone/managers/sui/SuiManager.h"
-
-#include "server/zone/managers/vendor/VendorManager.h"
-
-#include "server/zone/objects/area/ActiveArea.h"
-
-#include "server/zone/objects/building/BuildingObject.h"
-
-#include "server/zone/objects/cell/CellObject.h"
-
-#include "server/zone/objects/creature/CreatureObject.h"
-
-#include "server/zone/objects/player/PlayerCreature.h"
-
-#include "server/zone/objects/player/TradeContainer.h"
-
-#include "server/zone/objects/player/ValidatedPosition.h"
-
-#include "server/zone/objects/player/badges/Badges.h"
-
-#include "server/zone/objects/player/events/PlayerDisconnectEvent.h"
-
-#include "server/zone/objects/player/events/PlayerRecoveryEvent.h"
-
-#include "server/zone/objects/player/sui/SuiBox.h"
-
-#include "server/zone/objects/player/sui/SuiCallback.h"
-
-#include "server/zone/objects/scene/SceneObject.h"
-
-#include "server/zone/objects/scene/variables/PendingTasksMap.h"
-
-#include "server/zone/objects/scene/variables/StringId.h"
-
-#include "server/zone/objects/tangible/TangibleObject.h"
-
-#include "server/zone/objects/tangible/sign/SignObject.h"
-
-#include "server/zone/objects/tangible/tool/CraftingTool.h"
-
-#include "server/zone/objects/tangible/tool/SurveyTool.h"
-
-#include "server/zone/packets/object/ObjectMenuResponse.h"
-
-#include "server/zone/packets/scene/AttributeListMessage.h"
-
-#include "server/zone/packets/ui/SuiCreatePageMessage.h"
-
-#include "server/zone/templates/SharedObjectTemplate.h"
-
-#include "system/io/ObjectInputStream.h"
-
-#include "system/io/ObjectOutputStream.h"
-
-#include "system/lang/Time.h"
-
-#include "system/util/SortedVector.h"
-
-#include "system/util/Vector.h"
-
-#include "system/util/VectorMap.h"
-
 /*
  *	SuiListBoxStub
  */
@@ -139,8 +16,8 @@ enum {RPC_INIT__ = 6,RPC_ADDMENUITEM__STRING_LONG_,RPC_GETMENUITEMNAME__INT_,RPC
 
 SuiListBox::SuiListBox(PlayerCreature* player, unsigned int windowType, unsigned int listBoxType) : SuiBox(DummyConstructorParameter::instance()) {
 	SuiListBoxImplementation* _implementation = new SuiListBoxImplementation(player, windowType, listBoxType);
-	ManagedObject::_setImplementation(_implementation);
-	_implementation->_setStub(this);
+	_impl = _implementation;
+	_impl->_setStub(this);
 }
 
 SuiListBox::SuiListBox(DummyConstructorParameter* param) : SuiBox(param) {
@@ -316,10 +193,11 @@ bool SuiListBox::isListBox() {
 DistributedObjectServant* SuiListBox::_getImplementation() {
 
 	_updated = true;
-	return dynamic_cast<DistributedObjectServant*>(getForUpdate());}
+	return _impl;
+}
 
 void SuiListBox::_setImplementation(DistributedObjectServant* servant) {
-	setObject(dynamic_cast<SuiListBoxImplementation*>(servant));
+	_impl = servant;
 }
 
 /*
@@ -358,30 +236,32 @@ SuiListBoxImplementation::operator const SuiListBox*() {
 	return _this;
 }
 
-Object* SuiListBoxImplementation::clone() {
-	return dynamic_cast<Object*>(new SuiListBoxImplementation(*this));
-}
-
-
 void SuiListBoxImplementation::lock(bool doLock) {
+	_this->lock(doLock);
 }
 
 void SuiListBoxImplementation::lock(ManagedObject* obj) {
+	_this->lock(obj);
 }
 
 void SuiListBoxImplementation::rlock(bool doLock) {
+	_this->rlock(doLock);
 }
 
 void SuiListBoxImplementation::wlock(bool doLock) {
+	_this->wlock(doLock);
 }
 
 void SuiListBoxImplementation::wlock(ManagedObject* obj) {
+	_this->wlock(obj);
 }
 
 void SuiListBoxImplementation::unlock(bool doLock) {
+	_this->unlock(doLock);
 }
 
 void SuiListBoxImplementation::runlock(bool doLock) {
+	_this->runlock(doLock);
 }
 
 void SuiListBoxImplementation::_serializationHelperMethod() {

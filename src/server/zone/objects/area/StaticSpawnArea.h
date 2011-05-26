@@ -137,8 +137,6 @@ public:
 protected:
 	virtual ~StaticSpawnAreaImplementation();
 
-	Object* clone();
-
 	void finalize();
 
 	void _initializeImplementation();
@@ -164,7 +162,6 @@ protected:
 	int writeObjectMembers(ObjectOutputStream* stream);
 
 	friend class StaticSpawnArea;
-	friend class TransactionalObjectHandle<StaticSpawnAreaImplementation*>;
 };
 
 class StaticSpawnAreaAdapter : public SpawnAreaAdapter {

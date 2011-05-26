@@ -6,69 +6,6 @@
 
 #include "server/zone/objects/player/PlayerCreature.h"
 
-
-// Imported class dependencies
-
-#include "engine/core/ManagedObject.h"
-
-#include "engine/core/ObjectUpdateToDatabaseTask.h"
-
-#include "engine/service/proto/BaseClientProxy.h"
-
-#include "engine/service/proto/BasePacket.h"
-
-#include "engine/util/u3d/QuadTreeEntry.h"
-
-#include "server/chat/room/ChatRoom.h"
-
-#include "server/login/account/Account.h"
-
-#include "server/login/account/AccountManager.h"
-
-#include "server/zone/ZoneClientSession.h"
-
-#include "server/zone/objects/building/BuildingObject.h"
-
-#include "server/zone/objects/creature/CreatureObject.h"
-
-#include "server/zone/objects/player/PlayerCreature.h"
-
-#include "server/zone/objects/player/TradeContainer.h"
-
-#include "server/zone/objects/player/ValidatedPosition.h"
-
-#include "server/zone/objects/player/badges/Badges.h"
-
-#include "server/zone/objects/player/events/PlayerDisconnectEvent.h"
-
-#include "server/zone/objects/player/events/PlayerRecoveryEvent.h"
-
-#include "server/zone/objects/player/sui/SuiBox.h"
-
-#include "server/zone/objects/scene/SceneObject.h"
-
-#include "server/zone/objects/tangible/TangibleObject.h"
-
-#include "server/zone/objects/tangible/tool/CraftingTool.h"
-
-#include "server/zone/objects/tangible/tool/SurveyTool.h"
-
-#include "server/zone/packets/object/ObjectMenuResponse.h"
-
-#include "server/zone/templates/SharedObjectTemplate.h"
-
-#include "system/io/ObjectInputStream.h"
-
-#include "system/io/ObjectOutputStream.h"
-
-#include "system/lang/Time.h"
-
-#include "system/util/SortedVector.h"
-
-#include "system/util/Vector.h"
-
-#include "system/util/VectorMap.h"
-
 /*
  *	PersistentMessageStub
  */
@@ -77,8 +14,8 @@ enum {RPC_SENDTO__PLAYERCREATURE_BOOL_ = 6,RPC_GETMAILID__,RPC_GETOBJECTID__,RPC
 
 PersistentMessage::PersistentMessage() : ManagedObject(DummyConstructorParameter::instance()) {
 	PersistentMessageImplementation* _implementation = new PersistentMessageImplementation();
-	ManagedObject::_setImplementation(_implementation);
-	_implementation->_setStub(this);
+	_impl = _implementation;
+	_impl->_setStub(this);
 }
 
 PersistentMessage::PersistentMessage(DummyConstructorParameter* param) : ManagedObject(param) {
@@ -372,10 +309,11 @@ void PersistentMessage::addWaypointParameter(WaypointChatParameter& param) {
 DistributedObjectServant* PersistentMessage::_getImplementation() {
 
 	_updated = true;
-	return dynamic_cast<DistributedObjectServant*>(getForUpdate());}
+	return _impl;
+}
 
 void PersistentMessage::_setImplementation(DistributedObjectServant* servant) {
-	setObject(dynamic_cast<PersistentMessageImplementation*>(servant));
+	_impl = servant;
 }
 
 /*
@@ -414,30 +352,32 @@ PersistentMessageImplementation::operator const PersistentMessage*() {
 	return _this;
 }
 
-Object* PersistentMessageImplementation::clone() {
-	return dynamic_cast<Object*>(new PersistentMessageImplementation(*this));
-}
-
-
 void PersistentMessageImplementation::lock(bool doLock) {
+	_this->lock(doLock);
 }
 
 void PersistentMessageImplementation::lock(ManagedObject* obj) {
+	_this->lock(obj);
 }
 
 void PersistentMessageImplementation::rlock(bool doLock) {
+	_this->rlock(doLock);
 }
 
 void PersistentMessageImplementation::wlock(bool doLock) {
+	_this->wlock(doLock);
 }
 
 void PersistentMessageImplementation::wlock(ManagedObject* obj) {
+	_this->wlock(obj);
 }
 
 void PersistentMessageImplementation::unlock(bool doLock) {
+	_this->unlock(doLock);
 }
 
 void PersistentMessageImplementation::runlock(bool doLock) {
+	_this->runlock(doLock);
 }
 
 void PersistentMessageImplementation::_serializationHelperMethod() {

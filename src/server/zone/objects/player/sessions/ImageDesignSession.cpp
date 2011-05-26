@@ -10,115 +10,6 @@
 
 #include "server/zone/objects/player/events/ImageDesignTimeoutEvent.h"
 
-
-// Imported class dependencies
-
-#include "engine/core/ManagedObject.h"
-
-#include "engine/core/ObjectUpdateToDatabaseTask.h"
-
-#include "engine/service/proto/BaseClientProxy.h"
-
-#include "engine/service/proto/BaseMessage.h"
-
-#include "engine/service/proto/BasePacket.h"
-
-#include "engine/util/u3d/QuadTreeEntry.h"
-
-#include "server/chat/StringIdChatParameter.h"
-
-#include "server/chat/room/ChatRoom.h"
-
-#include "server/login/account/Account.h"
-
-#include "server/login/account/AccountManager.h"
-
-#include "server/zone/ZoneClientSession.h"
-
-#include "server/zone/objects/building/BuildingObject.h"
-
-#include "server/zone/objects/creature/CreatureObject.h"
-
-#include "server/zone/objects/creature/SpeedMultiplierModChanges.h"
-
-#include "server/zone/objects/creature/buffs/Buff.h"
-
-#include "server/zone/objects/creature/buffs/BuffList.h"
-
-#include "server/zone/objects/creature/damageovertime/DamageOverTimeList.h"
-
-#include "server/zone/objects/creature/professions/SkillBox.h"
-
-#include "server/zone/objects/creature/variables/CommandQueueAction.h"
-
-#include "server/zone/objects/creature/variables/CooldownTimerMap.h"
-
-#include "server/zone/objects/creature/variables/SkillBoxList.h"
-
-#include "server/zone/objects/draftschematic/DraftSchematic.h"
-
-#include "server/zone/objects/group/GroupList.h"
-
-#include "server/zone/objects/group/GroupObject.h"
-
-#include "server/zone/objects/guild/GuildObject.h"
-
-#include "server/zone/objects/intangible/ControlDevice.h"
-
-#include "server/zone/objects/manufactureschematic/IngredientSlots.h"
-
-#include "server/zone/objects/manufactureschematic/ManufactureSchematic.h"
-
-#include "server/zone/objects/manufactureschematic/craftingvalues/CraftingValues.h"
-
-#include "server/zone/objects/player/PlayerCreature.h"
-
-#include "server/zone/objects/player/TradeContainer.h"
-
-#include "server/zone/objects/player/ValidatedPosition.h"
-
-#include "server/zone/objects/player/badges/Badges.h"
-
-#include "server/zone/objects/player/events/PlayerDisconnectEvent.h"
-
-#include "server/zone/objects/player/events/PlayerRecoveryEvent.h"
-
-#include "server/zone/objects/player/sui/SuiBox.h"
-
-#include "server/zone/objects/scene/SceneObject.h"
-
-#include "server/zone/objects/scene/variables/CustomizationVariables.h"
-
-#include "server/zone/objects/scene/variables/DeltaVector.h"
-
-#include "server/zone/objects/scene/variables/DeltaVectorMap.h"
-
-#include "server/zone/objects/tangible/TangibleObject.h"
-
-#include "server/zone/objects/tangible/tool/CraftingTool.h"
-
-#include "server/zone/objects/tangible/tool/SurveyTool.h"
-
-#include "server/zone/objects/tangible/weapon/WeaponObject.h"
-
-#include "server/zone/packets/object/ObjectMenuResponse.h"
-
-#include "server/zone/packets/scene/AttributeListMessage.h"
-
-#include "server/zone/templates/SharedObjectTemplate.h"
-
-#include "system/io/ObjectInputStream.h"
-
-#include "system/io/ObjectOutputStream.h"
-
-#include "system/lang/Time.h"
-
-#include "system/util/SortedVector.h"
-
-#include "system/util/Vector.h"
-
-#include "system/util/VectorMap.h"
-
 /*
  *	ImageDesignSessionStub
  */
@@ -127,8 +18,8 @@ enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_INITIALIZESESSION__,RPC_DOPAYMENT
 
 ImageDesignSession::ImageDesignSession(CreatureObject* parent) : Facade(DummyConstructorParameter::instance()) {
 	ImageDesignSessionImplementation* _implementation = new ImageDesignSessionImplementation(parent);
-	ManagedObject::_setImplementation(_implementation);
-	_implementation->_setStub(this);
+	_impl = _implementation;
+	_impl->_setStub(this);
 }
 
 ImageDesignSession::ImageDesignSession(DummyConstructorParameter* param) : Facade(param) {
@@ -272,10 +163,11 @@ void ImageDesignSession::sessionTimeout() {
 DistributedObjectServant* ImageDesignSession::_getImplementation() {
 
 	_updated = true;
-	return dynamic_cast<DistributedObjectServant*>(getForUpdate());}
+	return _impl;
+}
 
 void ImageDesignSession::_setImplementation(DistributedObjectServant* servant) {
-	setObject(dynamic_cast<ImageDesignSessionImplementation*>(servant));
+	_impl = servant;
 }
 
 /*
@@ -314,30 +206,32 @@ ImageDesignSessionImplementation::operator const ImageDesignSession*() {
 	return _this;
 }
 
-Object* ImageDesignSessionImplementation::clone() {
-	return dynamic_cast<Object*>(new ImageDesignSessionImplementation(*this));
-}
-
-
 void ImageDesignSessionImplementation::lock(bool doLock) {
+	_this->lock(doLock);
 }
 
 void ImageDesignSessionImplementation::lock(ManagedObject* obj) {
+	_this->lock(obj);
 }
 
 void ImageDesignSessionImplementation::rlock(bool doLock) {
+	_this->rlock(doLock);
 }
 
 void ImageDesignSessionImplementation::wlock(bool doLock) {
+	_this->wlock(doLock);
 }
 
 void ImageDesignSessionImplementation::wlock(ManagedObject* obj) {
+	_this->wlock(obj);
 }
 
 void ImageDesignSessionImplementation::unlock(bool doLock) {
+	_this->unlock(doLock);
 }
 
 void ImageDesignSessionImplementation::runlock(bool doLock) {
+	_this->runlock(doLock);
 }
 
 void ImageDesignSessionImplementation::_serializationHelperMethod() {

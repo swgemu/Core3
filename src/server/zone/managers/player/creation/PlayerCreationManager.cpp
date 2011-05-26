@@ -6,33 +6,6 @@
 
 #include "server/zone/ZoneProcessServer.h"
 
-
-// Imported class dependencies
-
-#include "engine/core/ManagedObject.h"
-
-#include "engine/core/ObjectUpdateToDatabaseTask.h"
-
-#include "server/zone/ZonePacketHandler.h"
-
-#include "server/zone/ZoneServer.h"
-
-#include "server/zone/managers/holocron/HolocronManager.h"
-
-#include "server/zone/managers/name/NameManager.h"
-
-#include "server/zone/managers/objectcontroller/ObjectController.h"
-
-#include "server/zone/managers/professions/ProfessionManager.h"
-
-#include "server/zone/managers/sui/SuiManager.h"
-
-#include "server/zone/managers/vendor/VendorManager.h"
-
-#include "system/io/ObjectInputStream.h"
-
-#include "system/io/ObjectOutputStream.h"
-
 /*
  *	PlayerCreationManagerStub
  */
@@ -41,8 +14,8 @@ enum {};
 
 PlayerCreationManager::PlayerCreationManager(ZoneProcessServer* zoneProcessServer) : ZoneManager(DummyConstructorParameter::instance()) {
 	PlayerCreationManagerImplementation* _implementation = new PlayerCreationManagerImplementation(zoneProcessServer);
-	ManagedObject::_setImplementation(_implementation);
-	_implementation->_setStub(this);
+	_impl = _implementation;
+	_impl->_setStub(this);
 }
 
 PlayerCreationManager::PlayerCreationManager(DummyConstructorParameter* param) : ZoneManager(param) {
@@ -55,10 +28,11 @@ PlayerCreationManager::~PlayerCreationManager() {
 DistributedObjectServant* PlayerCreationManager::_getImplementation() {
 
 	_updated = true;
-	return dynamic_cast<DistributedObjectServant*>(getForUpdate());}
+	return _impl;
+}
 
 void PlayerCreationManager::_setImplementation(DistributedObjectServant* servant) {
-	setObject(dynamic_cast<PlayerCreationManagerImplementation*>(servant));
+	_impl = servant;
 }
 
 /*
@@ -97,30 +71,32 @@ PlayerCreationManagerImplementation::operator const PlayerCreationManager*() {
 	return _this;
 }
 
-Object* PlayerCreationManagerImplementation::clone() {
-	return dynamic_cast<Object*>(new PlayerCreationManagerImplementation(*this));
-}
-
-
 void PlayerCreationManagerImplementation::lock(bool doLock) {
+	_this->lock(doLock);
 }
 
 void PlayerCreationManagerImplementation::lock(ManagedObject* obj) {
+	_this->lock(obj);
 }
 
 void PlayerCreationManagerImplementation::rlock(bool doLock) {
+	_this->rlock(doLock);
 }
 
 void PlayerCreationManagerImplementation::wlock(bool doLock) {
+	_this->wlock(doLock);
 }
 
 void PlayerCreationManagerImplementation::wlock(ManagedObject* obj) {
+	_this->wlock(obj);
 }
 
 void PlayerCreationManagerImplementation::unlock(bool doLock) {
+	_this->unlock(doLock);
 }
 
 void PlayerCreationManagerImplementation::runlock(bool doLock) {
+	_this->runlock(doLock);
 }
 
 void PlayerCreationManagerImplementation::_serializationHelperMethod() {

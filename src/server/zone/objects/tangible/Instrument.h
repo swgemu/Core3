@@ -273,8 +273,6 @@ public:
 protected:
 	virtual ~InstrumentImplementation();
 
-	Object* clone();
-
 	void finalize();
 
 	void _initializeImplementation();
@@ -300,7 +298,6 @@ protected:
 	int writeObjectMembers(ObjectOutputStream* stream);
 
 	friend class Instrument;
-	friend class TransactionalObjectHandle<InstrumentImplementation*>;
 };
 
 class InstrumentAdapter : public TangibleObjectAdapter {

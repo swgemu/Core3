@@ -155,8 +155,6 @@ public:
 protected:
 	virtual ~CloningTerminalImplementation();
 
-	Object* clone();
-
 	void finalize();
 
 	void _initializeImplementation();
@@ -182,7 +180,6 @@ protected:
 	int writeObjectMembers(ObjectOutputStream* stream);
 
 	friend class CloningTerminal;
-	friend class TransactionalObjectHandle<CloningTerminalImplementation*>;
 };
 
 class CloningTerminalAdapter : public TerminalAdapter {

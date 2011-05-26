@@ -190,8 +190,6 @@ public:
 protected:
 	virtual ~ResourceContainerImplementation();
 
-	Object* clone();
-
 	void finalize();
 
 	void _initializeImplementation();
@@ -217,7 +215,6 @@ protected:
 	int writeObjectMembers(ObjectOutputStream* stream);
 
 	friend class ResourceContainer;
-	friend class TransactionalObjectHandle<ResourceContainerImplementation*>;
 };
 
 class ResourceContainerAdapter : public TangibleObjectAdapter {

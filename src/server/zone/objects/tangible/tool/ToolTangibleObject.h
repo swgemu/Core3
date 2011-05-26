@@ -96,8 +96,6 @@ public:
 protected:
 	virtual ~ToolTangibleObjectImplementation();
 
-	Object* clone();
-
 	void finalize();
 
 	void _initializeImplementation();
@@ -123,7 +121,6 @@ protected:
 	int writeObjectMembers(ObjectOutputStream* stream);
 
 	friend class ToolTangibleObject;
-	friend class TransactionalObjectHandle<ToolTangibleObjectImplementation*>;
 };
 
 class ToolTangibleObjectAdapter : public TangibleObjectAdapter {

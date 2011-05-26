@@ -126,8 +126,6 @@ public:
 protected:
 	virtual ~TerminalImplementation();
 
-	Object* clone();
-
 	void finalize();
 
 	void _initializeImplementation();
@@ -153,7 +151,6 @@ protected:
 	int writeObjectMembers(ObjectOutputStream* stream);
 
 	friend class Terminal;
-	friend class TransactionalObjectHandle<TerminalImplementation*>;
 };
 
 class TerminalAdapter : public TangibleObjectAdapter {

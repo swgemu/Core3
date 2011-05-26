@@ -159,8 +159,6 @@ public:
 protected:
 	virtual ~EntertainerMissionObjectiveImplementation();
 
-	Object* clone();
-
 	void _initializeImplementation();
 
 	void _setStub(DistributedObjectStub* stub);
@@ -184,7 +182,6 @@ protected:
 	int writeObjectMembers(ObjectOutputStream* stream);
 
 	friend class EntertainerMissionObjective;
-	friend class TransactionalObjectHandle<EntertainerMissionObjectiveImplementation*>;
 };
 
 class EntertainerMissionObjectiveAdapter : public MissionObjectiveAdapter {

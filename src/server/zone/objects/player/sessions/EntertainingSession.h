@@ -355,8 +355,6 @@ public:
 protected:
 	virtual ~EntertainingSessionImplementation();
 
-	Object* clone();
-
 	void _initializeImplementation();
 
 	void _setStub(DistributedObjectStub* stub);
@@ -380,7 +378,6 @@ protected:
 	int writeObjectMembers(ObjectOutputStream* stream);
 
 	friend class EntertainingSession;
-	friend class TransactionalObjectHandle<EntertainingSessionImplementation*>;
 };
 
 class EntertainingSessionAdapter : public FacadeAdapter {

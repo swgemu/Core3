@@ -155,8 +155,6 @@ public:
 protected:
 	virtual ~CityTerminalImplementation();
 
-	Object* clone();
-
 	void finalize();
 
 	void _initializeImplementation();
@@ -182,7 +180,6 @@ protected:
 	int writeObjectMembers(ObjectOutputStream* stream);
 
 	friend class CityTerminal;
-	friend class TransactionalObjectHandle<CityTerminalImplementation*>;
 };
 
 class CityTerminalAdapter : public TerminalAdapter {

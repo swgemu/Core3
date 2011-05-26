@@ -120,8 +120,6 @@ public:
 protected:
 	virtual ~CampKitImplementation();
 
-	Object* clone();
-
 	void finalize();
 
 	void _initializeImplementation();
@@ -147,7 +145,6 @@ protected:
 	int writeObjectMembers(ObjectOutputStream* stream);
 
 	friend class CampKit;
-	friend class TransactionalObjectHandle<CampKitImplementation*>;
 };
 
 class CampKitAdapter : public TangibleObjectAdapter {

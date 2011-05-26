@@ -169,8 +169,6 @@ public:
 protected:
 	virtual ~AuctionsMapImplementation();
 
-	Object* clone();
-
 	void finalize();
 
 	void _initializeImplementation();
@@ -196,7 +194,6 @@ protected:
 	int writeObjectMembers(ObjectOutputStream* stream);
 
 	friend class AuctionsMap;
-	friend class TransactionalObjectHandle<AuctionsMapImplementation*>;
 };
 
 class AuctionsMapAdapter : public ManagedObjectAdapter {

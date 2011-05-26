@@ -162,8 +162,6 @@ public:
 protected:
 	virtual ~CreateVendorSessionImplementation();
 
-	Object* clone();
-
 	void finalize();
 
 	void _initializeImplementation();
@@ -189,7 +187,6 @@ protected:
 	int writeObjectMembers(ObjectOutputStream* stream);
 
 	friend class CreateVendorSession;
-	friend class TransactionalObjectHandle<CreateVendorSessionImplementation*>;
 };
 
 class CreateVendorSessionAdapter : public FacadeAdapter {

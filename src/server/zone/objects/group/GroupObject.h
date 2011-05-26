@@ -208,8 +208,6 @@ public:
 protected:
 	virtual ~GroupObjectImplementation();
 
-	Object* clone();
-
 	void finalize();
 
 	void _initializeImplementation();
@@ -235,7 +233,6 @@ protected:
 	int writeObjectMembers(ObjectOutputStream* stream);
 
 	friend class GroupObject;
-	friend class TransactionalObjectHandle<GroupObjectImplementation*>;
 };
 
 class GroupObjectAdapter : public SceneObjectAdapter {

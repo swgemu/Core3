@@ -167,8 +167,6 @@ public:
 protected:
 	virtual ~TicketCollectorImplementation();
 
-	Object* clone();
-
 	void finalize();
 
 	void _initializeImplementation();
@@ -194,7 +192,6 @@ protected:
 	int writeObjectMembers(ObjectOutputStream* stream);
 
 	friend class TicketCollector;
-	friend class TransactionalObjectHandle<TicketCollectorImplementation*>;
 };
 
 class TicketCollectorAdapter : public TerminalAdapter {

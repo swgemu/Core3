@@ -173,8 +173,6 @@ public:
 protected:
 	virtual ~ElevatorTerminalImplementation();
 
-	Object* clone();
-
 	void finalize();
 
 	void _initializeImplementation();
@@ -200,7 +198,6 @@ protected:
 	int writeObjectMembers(ObjectOutputStream* stream);
 
 	friend class ElevatorTerminal;
-	friend class TransactionalObjectHandle<ElevatorTerminalImplementation*>;
 };
 
 class ElevatorTerminalAdapter : public TerminalAdapter {

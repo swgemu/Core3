@@ -146,8 +146,6 @@ public:
 protected:
 	virtual ~DurationBuffImplementation();
 
-	Object* clone();
-
 	void finalize();
 
 	void _initializeImplementation();
@@ -173,7 +171,6 @@ protected:
 	int writeObjectMembers(ObjectOutputStream* stream);
 
 	friend class DurationBuff;
-	friend class TransactionalObjectHandle<DurationBuffImplementation*>;
 };
 
 class DurationBuffAdapter : public BuffAdapter {

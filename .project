@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>MMOCoreORB-Testing</name>
+	<name>MMOCoreORB-STM</name>
 	<comment></comment>
 	<projects>
 		<project>MMOEngine</project>

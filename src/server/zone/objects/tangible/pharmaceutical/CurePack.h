@@ -228,8 +228,6 @@ public:
 protected:
 	virtual ~CurePackImplementation();
 
-	Object* clone();
-
 	void finalize();
 
 	void _initializeImplementation();
@@ -255,7 +253,6 @@ protected:
 	int writeObjectMembers(ObjectOutputStream* stream);
 
 	friend class CurePack;
-	friend class TransactionalObjectHandle<CurePackImplementation*>;
 };
 
 class CurePackAdapter : public PharmaceuticalObjectAdapter {

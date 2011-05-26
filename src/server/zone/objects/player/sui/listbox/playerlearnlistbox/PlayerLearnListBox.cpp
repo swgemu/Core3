@@ -8,75 +8,6 @@
 
 #include "server/zone/objects/player/PlayerCreature.h"
 
-
-// Imported class dependencies
-
-#include "engine/core/ManagedObject.h"
-
-#include "engine/core/ObjectUpdateToDatabaseTask.h"
-
-#include "engine/service/proto/BaseClientProxy.h"
-
-#include "engine/service/proto/BasePacket.h"
-
-#include "engine/util/u3d/QuadTreeEntry.h"
-
-#include "server/chat/room/ChatRoom.h"
-
-#include "server/login/account/Account.h"
-
-#include "server/login/account/AccountManager.h"
-
-#include "server/zone/ZoneClientSession.h"
-
-#include "server/zone/objects/building/BuildingObject.h"
-
-#include "server/zone/objects/creature/CreatureObject.h"
-
-#include "server/zone/objects/player/PlayerCreature.h"
-
-#include "server/zone/objects/player/TradeContainer.h"
-
-#include "server/zone/objects/player/ValidatedPosition.h"
-
-#include "server/zone/objects/player/badges/Badges.h"
-
-#include "server/zone/objects/player/events/PlayerDisconnectEvent.h"
-
-#include "server/zone/objects/player/events/PlayerRecoveryEvent.h"
-
-#include "server/zone/objects/player/sui/SuiBox.h"
-
-#include "server/zone/objects/player/sui/SuiCallback.h"
-
-#include "server/zone/objects/player/sui/listbox/SuiListBoxMenuItem.h"
-
-#include "server/zone/objects/scene/SceneObject.h"
-
-#include "server/zone/objects/tangible/TangibleObject.h"
-
-#include "server/zone/objects/tangible/tool/CraftingTool.h"
-
-#include "server/zone/objects/tangible/tool/SurveyTool.h"
-
-#include "server/zone/packets/object/ObjectMenuResponse.h"
-
-#include "server/zone/packets/ui/SuiCreatePageMessage.h"
-
-#include "server/zone/templates/SharedObjectTemplate.h"
-
-#include "system/io/ObjectInputStream.h"
-
-#include "system/io/ObjectOutputStream.h"
-
-#include "system/lang/Time.h"
-
-#include "system/util/SortedVector.h"
-
-#include "system/util/Vector.h"
-
-#include "system/util/VectorMap.h"
-
 /*
  *	PlayerLearnListBoxStub
  */
@@ -85,8 +16,8 @@ enum {RPC_SETTEACHER__PLAYERCREATURE_,RPC_SETTEACHINGOFFER__STRING_,};
 
 PlayerLearnListBox::PlayerLearnListBox(PlayerCreature* player) : SuiListBox(DummyConstructorParameter::instance()) {
 	PlayerLearnListBoxImplementation* _implementation = new PlayerLearnListBoxImplementation(player);
-	ManagedObject::_setImplementation(_implementation);
-	_implementation->_setStub(this);
+	_impl = _implementation;
+	_impl->_setStub(this);
 }
 
 PlayerLearnListBox::PlayerLearnListBox(DummyConstructorParameter* param) : SuiListBox(param) {
@@ -145,10 +76,11 @@ const String PlayerLearnListBox::getTeachingOffer() {
 DistributedObjectServant* PlayerLearnListBox::_getImplementation() {
 
 	_updated = true;
-	return dynamic_cast<DistributedObjectServant*>(getForUpdate());}
+	return _impl;
+}
 
 void PlayerLearnListBox::_setImplementation(DistributedObjectServant* servant) {
-	setObject(dynamic_cast<PlayerLearnListBoxImplementation*>(servant));
+	_impl = servant;
 }
 
 /*
@@ -187,30 +119,32 @@ PlayerLearnListBoxImplementation::operator const PlayerLearnListBox*() {
 	return _this;
 }
 
-Object* PlayerLearnListBoxImplementation::clone() {
-	return dynamic_cast<Object*>(new PlayerLearnListBoxImplementation(*this));
-}
-
-
 void PlayerLearnListBoxImplementation::lock(bool doLock) {
+	_this->lock(doLock);
 }
 
 void PlayerLearnListBoxImplementation::lock(ManagedObject* obj) {
+	_this->lock(obj);
 }
 
 void PlayerLearnListBoxImplementation::rlock(bool doLock) {
+	_this->rlock(doLock);
 }
 
 void PlayerLearnListBoxImplementation::wlock(bool doLock) {
+	_this->wlock(doLock);
 }
 
 void PlayerLearnListBoxImplementation::wlock(ManagedObject* obj) {
+	_this->wlock(obj);
 }
 
 void PlayerLearnListBoxImplementation::unlock(bool doLock) {
+	_this->unlock(doLock);
 }
 
 void PlayerLearnListBoxImplementation::runlock(bool doLock) {
+	_this->runlock(doLock);
 }
 
 void PlayerLearnListBoxImplementation::_serializationHelperMethod() {

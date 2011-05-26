@@ -108,8 +108,6 @@ public:
 protected:
 	virtual ~HarvesterObjectImplementation();
 
-	Object* clone();
-
 	void finalize();
 
 	void _initializeImplementation();
@@ -135,7 +133,6 @@ protected:
 	int writeObjectMembers(ObjectOutputStream* stream);
 
 	friend class HarvesterObject;
-	friend class TransactionalObjectHandle<HarvesterObjectImplementation*>;
 };
 
 class HarvesterObjectAdapter : public InstallationObjectAdapter {

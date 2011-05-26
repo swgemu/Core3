@@ -12,115 +12,6 @@
 
 #include "server/chat/StringIdChatParameter.h"
 
-
-// Imported class dependencies
-
-#include "engine/core/ManagedObject.h"
-
-#include "engine/core/ObjectUpdateToDatabaseTask.h"
-
-#include "engine/service/proto/BaseClientProxy.h"
-
-#include "engine/service/proto/BasePacket.h"
-
-#include "engine/util/u3d/QuadTree.h"
-
-#include "engine/util/u3d/QuadTreeEntry.h"
-
-#include "server/chat/room/ChatRoom.h"
-
-#include "server/login/account/Account.h"
-
-#include "server/login/account/AccountManager.h"
-
-#include "server/zone/Zone.h"
-
-#include "server/zone/ZoneClientSession.h"
-
-#include "server/zone/ZonePacketHandler.h"
-
-#include "server/zone/ZoneProcessServer.h"
-
-#include "server/zone/ZoneServer.h"
-
-#include "server/zone/managers/city/CityManager.h"
-
-#include "server/zone/managers/creature/CreatureManager.h"
-
-#include "server/zone/managers/holocron/HolocronManager.h"
-
-#include "server/zone/managers/name/NameManager.h"
-
-#include "server/zone/managers/object/ObjectMap.h"
-
-#include "server/zone/managers/objectcontroller/ObjectController.h"
-
-#include "server/zone/managers/planet/HeightMap.h"
-
-#include "server/zone/managers/planet/MapLocationTable.h"
-
-#include "server/zone/managers/planet/PlanetManager.h"
-
-#include "server/zone/managers/professions/ProfessionManager.h"
-
-#include "server/zone/managers/sui/SuiManager.h"
-
-#include "server/zone/managers/vendor/VendorManager.h"
-
-#include "server/zone/objects/building/BuildingObject.h"
-
-#include "server/zone/objects/building/city/CityHallObject.h"
-
-#include "server/zone/objects/creature/CreatureObject.h"
-
-#include "server/zone/objects/installation/shuttle/ShuttleInstallation.h"
-
-#include "server/zone/objects/player/PlayerCreature.h"
-
-#include "server/zone/objects/player/TradeContainer.h"
-
-#include "server/zone/objects/player/ValidatedPosition.h"
-
-#include "server/zone/objects/player/badges/Badges.h"
-
-#include "server/zone/objects/player/events/PlayerDisconnectEvent.h"
-
-#include "server/zone/objects/player/events/PlayerRecoveryEvent.h"
-
-#include "server/zone/objects/player/sui/SuiBox.h"
-
-#include "server/zone/objects/region/Region.h"
-
-#include "server/zone/objects/scene/SceneObject.h"
-
-#include "server/zone/objects/tangible/TangibleObject.h"
-
-#include "server/zone/objects/tangible/terminal/city/CityTerminal.h"
-
-#include "server/zone/objects/tangible/terminal/city/CityVoteTerminal.h"
-
-#include "server/zone/objects/tangible/terminal/vendor/bazaar/BazaarTerminal.h"
-
-#include "server/zone/objects/tangible/tool/CraftingTool.h"
-
-#include "server/zone/objects/tangible/tool/SurveyTool.h"
-
-#include "server/zone/packets/object/ObjectMenuResponse.h"
-
-#include "server/zone/templates/SharedObjectTemplate.h"
-
-#include "system/io/ObjectInputStream.h"
-
-#include "system/io/ObjectOutputStream.h"
-
-#include "system/lang/Time.h"
-
-#include "system/util/SortedVector.h"
-
-#include "system/util/Vector.h"
-
-#include "system/util/VectorMap.h"
-
 /*
  *	CityManagerStub
  */
@@ -129,8 +20,8 @@ enum {RPC_LOADLUACONFIG__ = 6,RPC_CREATENEWCITY__CITYHALLOBJECT_PLAYERCREATURE_S
 
 CityManager::CityManager(Zone* zne) : ManagedService(DummyConstructorParameter::instance()) {
 	CityManagerImplementation* _implementation = new CityManagerImplementation(zne);
-	ManagedObject::_setImplementation(_implementation);
-	_implementation->_setStub(this);
+	_impl = _implementation;
+	_impl->_setStub(this);
 }
 
 CityManager::CityManager(DummyConstructorParameter* param) : ManagedService(param) {
@@ -395,10 +286,11 @@ int CityManager::getTotalCities() {
 DistributedObjectServant* CityManager::_getImplementation() {
 
 	_updated = true;
-	return dynamic_cast<DistributedObjectServant*>(getForUpdate());}
+	return _impl;
+}
 
 void CityManager::_setImplementation(DistributedObjectServant* servant) {
-	setObject(dynamic_cast<CityManagerImplementation*>(servant));
+	_impl = servant;
 }
 
 /*
@@ -437,30 +329,32 @@ CityManagerImplementation::operator const CityManager*() {
 	return _this;
 }
 
-Object* CityManagerImplementation::clone() {
-	return dynamic_cast<Object*>(new CityManagerImplementation(*this));
-}
-
-
 void CityManagerImplementation::lock(bool doLock) {
+	_this->lock(doLock);
 }
 
 void CityManagerImplementation::lock(ManagedObject* obj) {
+	_this->lock(obj);
 }
 
 void CityManagerImplementation::rlock(bool doLock) {
+	_this->rlock(doLock);
 }
 
 void CityManagerImplementation::wlock(bool doLock) {
+	_this->wlock(doLock);
 }
 
 void CityManagerImplementation::wlock(ManagedObject* obj) {
+	_this->wlock(obj);
 }
 
 void CityManagerImplementation::unlock(bool doLock) {
+	_this->unlock(doLock);
 }
 
 void CityManagerImplementation::runlock(bool doLock) {
+	_this->runlock(doLock);
 }
 
 void CityManagerImplementation::_serializationHelperMethod() {

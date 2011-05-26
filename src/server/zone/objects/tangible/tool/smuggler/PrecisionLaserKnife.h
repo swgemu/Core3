@@ -205,8 +205,6 @@ public:
 protected:
 	virtual ~PrecisionLaserKnifeImplementation();
 
-	Object* clone();
-
 	void finalize();
 
 	void _initializeImplementation();
@@ -232,7 +230,6 @@ protected:
 	int writeObjectMembers(ObjectOutputStream* stream);
 
 	friend class PrecisionLaserKnife;
-	friend class TransactionalObjectHandle<PrecisionLaserKnifeImplementation*>;
 };
 
 class PrecisionLaserKnifeAdapter : public SlicingToolAdapter {

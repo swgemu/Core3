@@ -169,8 +169,6 @@ public:
 protected:
 	virtual ~VehicleControlDeviceImplementation();
 
-	Object* clone();
-
 	void finalize();
 
 	void _initializeImplementation();
@@ -196,7 +194,6 @@ protected:
 	int writeObjectMembers(ObjectOutputStream* stream);
 
 	friend class VehicleControlDevice;
-	friend class TransactionalObjectHandle<VehicleControlDeviceImplementation*>;
 };
 
 class VehicleControlDeviceAdapter : public ControlDeviceAdapter {

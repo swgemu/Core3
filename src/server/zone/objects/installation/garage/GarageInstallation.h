@@ -90,8 +90,6 @@ public:
 protected:
 	virtual ~GarageInstallationImplementation();
 
-	Object* clone();
-
 	void finalize();
 
 	void _initializeImplementation();
@@ -117,7 +115,6 @@ protected:
 	int writeObjectMembers(ObjectOutputStream* stream);
 
 	friend class GarageInstallation;
-	friend class TransactionalObjectHandle<GarageInstallationImplementation*>;
 };
 
 class GarageInstallationAdapter : public InstallationObjectAdapter {

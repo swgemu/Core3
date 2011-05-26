@@ -96,8 +96,6 @@ public:
 protected:
 	virtual ~MedicalBuildingObjectImplementation();
 
-	Object* clone();
-
 	void finalize();
 
 	void _initializeImplementation();
@@ -123,7 +121,6 @@ protected:
 	int writeObjectMembers(ObjectOutputStream* stream);
 
 	friend class MedicalBuildingObject;
-	friend class TransactionalObjectHandle<MedicalBuildingObjectImplementation*>;
 };
 
 class MedicalBuildingObjectAdapter : public BuildingObjectAdapter {

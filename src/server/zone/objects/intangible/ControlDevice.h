@@ -159,8 +159,6 @@ public:
 protected:
 	virtual ~ControlDeviceImplementation();
 
-	Object* clone();
-
 	void finalize();
 
 	void _initializeImplementation();
@@ -186,7 +184,6 @@ protected:
 	int writeObjectMembers(ObjectOutputStream* stream);
 
 	friend class ControlDevice;
-	friend class TransactionalObjectHandle<ControlDeviceImplementation*>;
 };
 
 class ControlDeviceAdapter : public IntangibleObjectAdapter {

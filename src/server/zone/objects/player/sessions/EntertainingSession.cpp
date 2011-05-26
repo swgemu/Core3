@@ -16,117 +16,6 @@
 
 #include "server/zone/objects/tangible/Instrument.h"
 
-
-// Imported class dependencies
-
-#include "engine/core/ManagedObject.h"
-
-#include "engine/core/ObjectUpdateToDatabaseTask.h"
-
-#include "engine/service/proto/BaseClientProxy.h"
-
-#include "engine/service/proto/BaseMessage.h"
-
-#include "engine/service/proto/BasePacket.h"
-
-#include "engine/util/Observable.h"
-
-#include "engine/util/u3d/QuadTreeEntry.h"
-
-#include "server/chat/StringIdChatParameter.h"
-
-#include "server/chat/room/ChatRoom.h"
-
-#include "server/login/account/Account.h"
-
-#include "server/login/account/AccountManager.h"
-
-#include "server/zone/ZoneClientSession.h"
-
-#include "server/zone/objects/building/BuildingObject.h"
-
-#include "server/zone/objects/creature/CreatureObject.h"
-
-#include "server/zone/objects/creature/SpeedMultiplierModChanges.h"
-
-#include "server/zone/objects/creature/buffs/Buff.h"
-
-#include "server/zone/objects/creature/buffs/BuffList.h"
-
-#include "server/zone/objects/creature/damageovertime/DamageOverTimeList.h"
-
-#include "server/zone/objects/creature/professions/SkillBox.h"
-
-#include "server/zone/objects/creature/variables/CommandQueueAction.h"
-
-#include "server/zone/objects/creature/variables/CooldownTimerMap.h"
-
-#include "server/zone/objects/creature/variables/SkillBoxList.h"
-
-#include "server/zone/objects/draftschematic/DraftSchematic.h"
-
-#include "server/zone/objects/group/GroupList.h"
-
-#include "server/zone/objects/group/GroupObject.h"
-
-#include "server/zone/objects/guild/GuildObject.h"
-
-#include "server/zone/objects/intangible/ControlDevice.h"
-
-#include "server/zone/objects/manufactureschematic/IngredientSlots.h"
-
-#include "server/zone/objects/manufactureschematic/ManufactureSchematic.h"
-
-#include "server/zone/objects/manufactureschematic/craftingvalues/CraftingValues.h"
-
-#include "server/zone/objects/player/PlayerCreature.h"
-
-#include "server/zone/objects/player/TradeContainer.h"
-
-#include "server/zone/objects/player/ValidatedPosition.h"
-
-#include "server/zone/objects/player/badges/Badges.h"
-
-#include "server/zone/objects/player/events/PlayerDisconnectEvent.h"
-
-#include "server/zone/objects/player/events/PlayerRecoveryEvent.h"
-
-#include "server/zone/objects/player/sui/SuiBox.h"
-
-#include "server/zone/objects/scene/SceneObject.h"
-
-#include "server/zone/objects/scene/variables/CustomizationVariables.h"
-
-#include "server/zone/objects/scene/variables/DeltaVector.h"
-
-#include "server/zone/objects/scene/variables/DeltaVectorMap.h"
-
-#include "server/zone/objects/tangible/TangibleObject.h"
-
-#include "server/zone/objects/tangible/tool/CraftingTool.h"
-
-#include "server/zone/objects/tangible/tool/SurveyTool.h"
-
-#include "server/zone/objects/tangible/weapon/WeaponObject.h"
-
-#include "server/zone/packets/object/ObjectMenuResponse.h"
-
-#include "server/zone/packets/scene/AttributeListMessage.h"
-
-#include "server/zone/templates/SharedObjectTemplate.h"
-
-#include "system/io/ObjectInputStream.h"
-
-#include "system/io/ObjectOutputStream.h"
-
-#include "system/lang/Time.h"
-
-#include "system/util/SortedVector.h"
-
-#include "system/util/Vector.h"
-
-#include "system/util/VectorMap.h"
-
 /*
  *	EntertainingSessionStub
  */
@@ -135,8 +24,8 @@ enum {RPC_DOENTERTAINERPATRONEFFECTS__ = 6,RPC_DOPERFORMANCEACTION__,RPC_ADDENTE
 
 EntertainingSession::EntertainingSession(CreatureObject* ent) : Facade(DummyConstructorParameter::instance()) {
 	EntertainingSessionImplementation* _implementation = new EntertainingSessionImplementation(ent);
-	ManagedObject::_setImplementation(_implementation);
-	_implementation->_setStub(this);
+	_impl = _implementation;
+	_impl->_setStub(this);
 }
 
 EntertainingSession::EntertainingSession(DummyConstructorParameter* param) : Facade(param) {
@@ -689,10 +578,11 @@ void EntertainingSession::setTargetInstrument(bool var) {
 DistributedObjectServant* EntertainingSession::_getImplementation() {
 
 	_updated = true;
-	return dynamic_cast<DistributedObjectServant*>(getForUpdate());}
+	return _impl;
+}
 
 void EntertainingSession::_setImplementation(DistributedObjectServant* servant) {
-	setObject(dynamic_cast<EntertainingSessionImplementation*>(servant));
+	_impl = servant;
 }
 
 /*
@@ -705,7 +595,6 @@ EntertainingSessionImplementation::EntertainingSessionImplementation(DummyConstr
 
 
 EntertainingSessionImplementation::~EntertainingSessionImplementation() {
-	if (_this->isCurrentVersion(this))
 	EntertainingSessionImplementation::finalize();
 }
 
@@ -730,30 +619,32 @@ EntertainingSessionImplementation::operator const EntertainingSession*() {
 	return _this;
 }
 
-Object* EntertainingSessionImplementation::clone() {
-	return dynamic_cast<Object*>(new EntertainingSessionImplementation(*this));
-}
-
-
 void EntertainingSessionImplementation::lock(bool doLock) {
+	_this->lock(doLock);
 }
 
 void EntertainingSessionImplementation::lock(ManagedObject* obj) {
+	_this->lock(obj);
 }
 
 void EntertainingSessionImplementation::rlock(bool doLock) {
+	_this->rlock(doLock);
 }
 
 void EntertainingSessionImplementation::wlock(bool doLock) {
+	_this->wlock(doLock);
 }
 
 void EntertainingSessionImplementation::wlock(ManagedObject* obj) {
+	_this->wlock(obj);
 }
 
 void EntertainingSessionImplementation::unlock(bool doLock) {
+	_this->unlock(doLock);
 }
 
 void EntertainingSessionImplementation::runlock(bool doLock) {
+	_this->runlock(doLock);
 }
 
 void EntertainingSessionImplementation::_serializationHelperMethod() {

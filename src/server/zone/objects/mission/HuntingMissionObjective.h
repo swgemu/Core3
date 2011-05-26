@@ -160,8 +160,6 @@ public:
 protected:
 	virtual ~HuntingMissionObjectiveImplementation();
 
-	Object* clone();
-
 	void _initializeImplementation();
 
 	void _setStub(DistributedObjectStub* stub);
@@ -185,7 +183,6 @@ protected:
 	int writeObjectMembers(ObjectOutputStream* stream);
 
 	friend class HuntingMissionObjective;
-	friend class TransactionalObjectHandle<HuntingMissionObjectiveImplementation*>;
 };
 
 class HuntingMissionObjectiveAdapter : public MissionObjectiveAdapter {

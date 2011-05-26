@@ -145,8 +145,6 @@ public:
 protected:
 	virtual ~SuiBankTransferBoxImplementation();
 
-	Object* clone();
-
 	void finalize();
 
 	void _initializeImplementation();
@@ -172,7 +170,6 @@ protected:
 	int writeObjectMembers(ObjectOutputStream* stream);
 
 	friend class SuiBankTransferBox;
-	friend class TransactionalObjectHandle<SuiBankTransferBoxImplementation*>;
 };
 
 class SuiBankTransferBoxAdapter : public SuiBoxAdapter {

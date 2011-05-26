@@ -271,8 +271,6 @@ public:
 protected:
 	virtual ~RegionImplementation();
 
-	Object* clone();
-
 	void finalize();
 
 	void _initializeImplementation();
@@ -298,7 +296,6 @@ protected:
 	int writeObjectMembers(ObjectOutputStream* stream);
 
 	friend class Region;
-	friend class TransactionalObjectHandle<RegionImplementation*>;
 };
 
 class RegionAdapter : public ActiveAreaAdapter {

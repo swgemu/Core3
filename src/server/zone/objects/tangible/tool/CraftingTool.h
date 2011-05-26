@@ -418,8 +418,6 @@ public:
 protected:
 	virtual ~CraftingToolImplementation();
 
-	Object* clone();
-
 	void finalize();
 
 	void _initializeImplementation();
@@ -445,7 +443,6 @@ protected:
 	int writeObjectMembers(ObjectOutputStream* stream);
 
 	friend class CraftingTool;
-	friend class TransactionalObjectHandle<CraftingToolImplementation*>;
 };
 
 class CraftingToolAdapter : public ToolTangibleObjectAdapter {

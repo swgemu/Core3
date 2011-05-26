@@ -2030,8 +2030,6 @@ public:
 protected:
 	virtual ~SceneObjectImplementation();
 
-	Object* clone();
-
 	void _initializeImplementation();
 
 	void _setStub(DistributedObjectStub* stub);
@@ -2055,7 +2053,6 @@ protected:
 	int writeObjectMembers(ObjectOutputStream* stream);
 
 	friend class SceneObject;
-	friend class TransactionalObjectHandle<SceneObjectImplementation*>;
 };
 
 class SceneObjectAdapter : public QuadTreeEntryAdapter {

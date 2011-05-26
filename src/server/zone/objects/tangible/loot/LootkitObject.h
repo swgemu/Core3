@@ -180,8 +180,6 @@ public:
 protected:
 	virtual ~LootkitObjectImplementation();
 
-	Object* clone();
-
 	void finalize();
 
 	void _initializeImplementation();
@@ -207,7 +205,6 @@ protected:
 	int writeObjectMembers(ObjectOutputStream* stream);
 
 	friend class LootkitObject;
-	friend class TransactionalObjectHandle<LootkitObjectImplementation*>;
 };
 
 class LootkitObjectAdapter : public TangibleObjectAdapter {

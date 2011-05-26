@@ -197,8 +197,6 @@ public:
 protected:
 	virtual ~FactoryCrateImplementation();
 
-	Object* clone();
-
 	void finalize();
 
 	void _initializeImplementation();
@@ -224,7 +222,6 @@ protected:
 	int writeObjectMembers(ObjectOutputStream* stream);
 
 	friend class FactoryCrate;
-	friend class TransactionalObjectHandle<FactoryCrateImplementation*>;
 };
 
 class FactoryCrateAdapter : public TangibleObjectAdapter {

@@ -240,8 +240,6 @@ public:
 protected:
 	virtual ~RangedStimPackImplementation();
 
-	Object* clone();
-
 	void finalize();
 
 	void _initializeImplementation();
@@ -267,7 +265,6 @@ protected:
 	int writeObjectMembers(ObjectOutputStream* stream);
 
 	friend class RangedStimPack;
-	friend class TransactionalObjectHandle<RangedStimPackImplementation*>;
 };
 
 class RangedStimPackAdapter : public StimPackAdapter {

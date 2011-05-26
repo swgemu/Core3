@@ -196,8 +196,6 @@ public:
 protected:
 	virtual ~ObjectControllerImplementation();
 
-	Object* clone();
-
 	void _initializeImplementation();
 
 	void _setStub(DistributedObjectStub* stub);
@@ -221,7 +219,6 @@ protected:
 	int writeObjectMembers(ObjectOutputStream* stream);
 
 	friend class ObjectController;
-	friend class TransactionalObjectHandle<ObjectControllerImplementation*>;
 };
 
 class ObjectControllerAdapter : public ManagedServiceAdapter {

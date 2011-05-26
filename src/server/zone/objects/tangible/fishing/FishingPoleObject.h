@@ -188,8 +188,6 @@ public:
 protected:
 	virtual ~FishingPoleObjectImplementation();
 
-	Object* clone();
-
 	void finalize();
 
 	void _initializeImplementation();
@@ -215,7 +213,6 @@ protected:
 	int writeObjectMembers(ObjectOutputStream* stream);
 
 	friend class FishingPoleObject;
-	friend class TransactionalObjectHandle<FishingPoleObjectImplementation*>;
 };
 
 class FishingPoleObjectAdapter : public TangibleObjectAdapter {

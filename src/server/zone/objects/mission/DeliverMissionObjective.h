@@ -241,8 +241,6 @@ public:
 protected:
 	virtual ~DeliverMissionObjectiveImplementation();
 
-	Object* clone();
-
 	void _initializeImplementation();
 
 	void _setStub(DistributedObjectStub* stub);
@@ -266,7 +264,6 @@ protected:
 	int writeObjectMembers(ObjectOutputStream* stream);
 
 	friend class DeliverMissionObjective;
-	friend class TransactionalObjectHandle<DeliverMissionObjectiveImplementation*>;
 };
 
 class DeliverMissionObjectiveAdapter : public MissionObjectiveAdapter {

@@ -108,8 +108,6 @@ public:
 protected:
 	virtual ~PsgArmorObjectImplementation();
 
-	Object* clone();
-
 	void finalize();
 
 	void _initializeImplementation();
@@ -135,7 +133,6 @@ protected:
 	int writeObjectMembers(ObjectOutputStream* stream);
 
 	friend class PsgArmorObject;
-	friend class TransactionalObjectHandle<PsgArmorObjectImplementation*>;
 };
 
 class PsgArmorObjectAdapter : public WearableObjectAdapter {

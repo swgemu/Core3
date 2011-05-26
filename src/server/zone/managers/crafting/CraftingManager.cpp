@@ -12,89 +12,6 @@
 
 #include "server/zone/objects/draftschematic/DraftSchematic.h"
 
-
-// Imported class dependencies
-
-#include "engine/service/proto/BaseClientProxy.h"
-
-#include "engine/service/proto/BasePacket.h"
-
-#include "engine/util/u3d/QuadTreeEntry.h"
-
-#include "server/chat/room/ChatRoom.h"
-
-#include "server/login/account/Account.h"
-
-#include "server/login/account/AccountManager.h"
-
-#include "server/zone/ZoneClientSession.h"
-
-#include "server/zone/objects/building/BuildingObject.h"
-
-#include "server/zone/objects/creature/CreatureObject.h"
-
-#include "server/zone/objects/draftschematic/DraftSchematic.h"
-
-#include "server/zone/objects/manufactureschematic/IngredientSlots.h"
-
-#include "server/zone/objects/manufactureschematic/craftingvalues/CraftingValues.h"
-
-#include "server/zone/objects/player/PlayerCreature.h"
-
-#include "server/zone/objects/player/TradeContainer.h"
-
-#include "server/zone/objects/player/ValidatedPosition.h"
-
-#include "server/zone/objects/player/badges/Badges.h"
-
-#include "server/zone/objects/player/events/PlayerDisconnectEvent.h"
-
-#include "server/zone/objects/player/events/PlayerRecoveryEvent.h"
-
-#include "server/zone/objects/player/sui/SuiBox.h"
-
-#include "server/zone/objects/player/variables/FactionStandingList.h"
-
-#include "server/zone/objects/player/variables/FriendList.h"
-
-#include "server/zone/objects/player/variables/IgnoreList.h"
-
-#include "server/zone/objects/player/variables/SchematicList.h"
-
-#include "server/zone/objects/player/variables/SkillList.h"
-
-#include "server/zone/objects/player/variables/WaypointList.h"
-
-#include "server/zone/objects/scene/SceneObject.h"
-
-#include "server/zone/objects/scene/variables/DeltaVectorMap.h"
-
-#include "server/zone/objects/tangible/TangibleObject.h"
-
-#include "server/zone/objects/tangible/tool/CraftingTool.h"
-
-#include "server/zone/objects/tangible/tool/SurveyTool.h"
-
-#include "server/zone/objects/waypoint/WaypointObject.h"
-
-#include "server/zone/packets/object/ObjectControllerMessage.h"
-
-#include "server/zone/packets/object/ObjectMenuResponse.h"
-
-#include "server/zone/packets/scene/AttributeListMessage.h"
-
-#include "server/zone/templates/SharedObjectTemplate.h"
-
-#include "server/zone/templates/intangible/DraftSchematicObjectTemplate.h"
-
-#include "system/lang/Time.h"
-
-#include "system/util/SortedVector.h"
-
-#include "system/util/Vector.h"
-
-#include "system/util/VectorMap.h"
-
 /*
  *	CraftingManagerStub
  */
@@ -103,8 +20,8 @@ enum {RPC_GETSCHEMATIC__INT_,RPC_SENDDRAFTSLOTSTO__PLAYERCREATURE_INT_,RPC_SENDR
 
 CraftingManager::CraftingManager() : ZoneManager(DummyConstructorParameter::instance()) {
 	CraftingManagerImplementation* _implementation = new CraftingManagerImplementation();
-	ManagedObject::_setImplementation(_implementation);
-	_implementation->_setStub(this);
+	_impl = _implementation;
+	_impl->_setStub(this);
 }
 
 CraftingManager::CraftingManager(DummyConstructorParameter* param) : ZoneManager(param) {
@@ -308,10 +225,11 @@ String CraftingManager::generateSerial() {
 DistributedObjectServant* CraftingManager::_getImplementation() {
 
 	_updated = true;
-	return dynamic_cast<DistributedObjectServant*>(getForUpdate());}
+	return _impl;
+}
 
 void CraftingManager::_setImplementation(DistributedObjectServant* servant) {
-	setObject(dynamic_cast<CraftingManagerImplementation*>(servant));
+	_impl = servant;
 }
 
 /*
@@ -350,30 +268,32 @@ CraftingManagerImplementation::operator const CraftingManager*() {
 	return _this;
 }
 
-Object* CraftingManagerImplementation::clone() {
-	return dynamic_cast<Object*>(new CraftingManagerImplementation(*this));
-}
-
-
 void CraftingManagerImplementation::lock(bool doLock) {
+	_this->lock(doLock);
 }
 
 void CraftingManagerImplementation::lock(ManagedObject* obj) {
+	_this->lock(obj);
 }
 
 void CraftingManagerImplementation::rlock(bool doLock) {
+	_this->rlock(doLock);
 }
 
 void CraftingManagerImplementation::wlock(bool doLock) {
+	_this->wlock(doLock);
 }
 
 void CraftingManagerImplementation::wlock(ManagedObject* obj) {
+	_this->wlock(obj);
 }
 
 void CraftingManagerImplementation::unlock(bool doLock) {
+	_this->unlock(doLock);
 }
 
 void CraftingManagerImplementation::runlock(bool doLock) {
+	_this->runlock(doLock);
 }
 
 void CraftingManagerImplementation::_serializationHelperMethod() {

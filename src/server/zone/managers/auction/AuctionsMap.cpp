@@ -6,17 +6,6 @@
 
 #include "server/zone/objects/auction/AuctionItem.h"
 
-
-// Imported class dependencies
-
-#include "engine/core/ManagedObject.h"
-
-#include "engine/core/ObjectUpdateToDatabaseTask.h"
-
-#include "system/io/ObjectInputStream.h"
-
-#include "system/io/ObjectOutputStream.h"
-
 /*
  *	AuctionsMapStub
  */
@@ -25,8 +14,8 @@ enum {RPC_GETVENDORITEMCOUNT__ = 6,RPC_CONTAINSVENDORITEM__LONG_,RPC_ADDVENDORIT
 
 AuctionsMap::AuctionsMap() : ManagedObject(DummyConstructorParameter::instance()) {
 	AuctionsMapImplementation* _implementation = new AuctionsMapImplementation();
-	ManagedObject::_setImplementation(_implementation);
-	_implementation->_setStub(this);
+	_impl = _implementation;
+	_impl->_setStub(this);
 }
 
 AuctionsMap::AuctionsMap(DummyConstructorParameter* param) : ManagedObject(param) {
@@ -309,10 +298,11 @@ VectorMap<unsigned long long, ManagedReference<AuctionItem* > >* AuctionsMap::ge
 DistributedObjectServant* AuctionsMap::_getImplementation() {
 
 	_updated = true;
-	return dynamic_cast<DistributedObjectServant*>(getForUpdate());}
+	return _impl;
+}
 
 void AuctionsMap::_setImplementation(DistributedObjectServant* servant) {
-	setObject(dynamic_cast<AuctionsMapImplementation*>(servant));
+	_impl = servant;
 }
 
 /*
@@ -351,30 +341,32 @@ AuctionsMapImplementation::operator const AuctionsMap*() {
 	return _this;
 }
 
-Object* AuctionsMapImplementation::clone() {
-	return dynamic_cast<Object*>(new AuctionsMapImplementation(*this));
-}
-
-
 void AuctionsMapImplementation::lock(bool doLock) {
+	_this->lock(doLock);
 }
 
 void AuctionsMapImplementation::lock(ManagedObject* obj) {
+	_this->lock(obj);
 }
 
 void AuctionsMapImplementation::rlock(bool doLock) {
+	_this->rlock(doLock);
 }
 
 void AuctionsMapImplementation::wlock(bool doLock) {
+	_this->wlock(doLock);
 }
 
 void AuctionsMapImplementation::wlock(ManagedObject* obj) {
+	_this->wlock(obj);
 }
 
 void AuctionsMapImplementation::unlock(bool doLock) {
+	_this->unlock(doLock);
 }
 
 void AuctionsMapImplementation::runlock(bool doLock) {
+	_this->runlock(doLock);
 }
 
 void AuctionsMapImplementation::_serializationHelperMethod() {

@@ -106,8 +106,6 @@ public:
 protected:
 	virtual ~ZoneManagerImplementation();
 
-	Object* clone();
-
 	void finalize();
 
 	void _initializeImplementation();
@@ -133,7 +131,6 @@ protected:
 	int writeObjectMembers(ObjectOutputStream* stream);
 
 	friend class ZoneManager;
-	friend class TransactionalObjectHandle<ZoneManagerImplementation*>;
 };
 
 class ZoneManagerAdapter : public ManagedServiceAdapter {

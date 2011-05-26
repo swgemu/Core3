@@ -1399,8 +1399,6 @@ public:
 protected:
 	virtual ~CreatureObjectImplementation();
 
-	Object* clone();
-
 	void _initializeImplementation();
 
 	void _setStub(DistributedObjectStub* stub);
@@ -1424,7 +1422,6 @@ protected:
 	int writeObjectMembers(ObjectOutputStream* stream);
 
 	friend class CreatureObject;
-	friend class TransactionalObjectHandle<CreatureObjectImplementation*>;
 };
 
 class CreatureObjectAdapter : public TangibleObjectAdapter {

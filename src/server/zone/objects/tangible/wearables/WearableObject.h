@@ -184,8 +184,6 @@ public:
 protected:
 	virtual ~WearableObjectImplementation();
 
-	Object* clone();
-
 	void finalize();
 
 	void _initializeImplementation();
@@ -211,7 +209,6 @@ protected:
 	int writeObjectMembers(ObjectOutputStream* stream);
 
 	friend class WearableObject;
-	friend class TransactionalObjectHandle<WearableObjectImplementation*>;
 };
 
 class WearableObjectAdapter : public TangibleObjectAdapter {

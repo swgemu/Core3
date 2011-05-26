@@ -224,8 +224,6 @@ public:
 protected:
 	virtual ~VendorCreatureImplementation();
 
-	Object* clone();
-
 	void finalize();
 
 	void _initializeImplementation();
@@ -251,7 +249,6 @@ protected:
 	int writeObjectMembers(ObjectOutputStream* stream);
 
 	friend class VendorCreature;
-	friend class TransactionalObjectHandle<VendorCreatureImplementation*>;
 };
 
 class VendorCreatureAdapter : public CreatureObjectAdapter {

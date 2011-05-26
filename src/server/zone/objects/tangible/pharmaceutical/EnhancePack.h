@@ -262,8 +262,6 @@ public:
 protected:
 	virtual ~EnhancePackImplementation();
 
-	Object* clone();
-
 	void finalize();
 
 	void _initializeImplementation();
@@ -289,7 +287,6 @@ protected:
 	int writeObjectMembers(ObjectOutputStream* stream);
 
 	friend class EnhancePack;
-	friend class TransactionalObjectHandle<EnhancePackImplementation*>;
 };
 
 class EnhancePackAdapter : public PharmaceuticalObjectAdapter {

@@ -204,8 +204,6 @@ public:
 protected:
 	virtual ~StatePackImplementation();
 
-	Object* clone();
-
 	void finalize();
 
 	void _initializeImplementation();
@@ -231,7 +229,6 @@ protected:
 	int writeObjectMembers(ObjectOutputStream* stream);
 
 	friend class StatePack;
-	friend class TransactionalObjectHandle<StatePackImplementation*>;
 };
 
 class StatePackAdapter : public PharmaceuticalObjectAdapter {

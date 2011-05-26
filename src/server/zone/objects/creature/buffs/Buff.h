@@ -300,8 +300,6 @@ public:
 protected:
 	virtual ~BuffImplementation();
 
-	Object* clone();
-
 	void finalize();
 
 	void _initializeImplementation();
@@ -327,7 +325,6 @@ protected:
 	int writeObjectMembers(ObjectOutputStream* stream);
 
 	friend class Buff;
-	friend class TransactionalObjectHandle<BuffImplementation*>;
 };
 
 class BuffAdapter : public ManagedObjectAdapter {

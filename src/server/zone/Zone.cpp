@@ -22,209 +22,6 @@
 
 #include "server/zone/objects/creature/CreatureObject.h"
 
-
-// Imported class dependencies
-
-#include "engine/core/ManagedObject.h"
-
-#include "engine/core/ObjectUpdateToDatabaseTask.h"
-
-#include "engine/core/Task.h"
-
-#include "engine/lua/Lua.h"
-
-#include "engine/service/proto/BaseClientProxy.h"
-
-#include "engine/service/proto/BaseMessage.h"
-
-#include "engine/service/proto/BasePacket.h"
-
-#include "engine/stm/TransactionalReference.h"
-
-#include "engine/util/Facade.h"
-
-#include "engine/util/u3d/Coordinate.h"
-
-#include "engine/util/u3d/QuadTree.h"
-
-#include "engine/util/u3d/QuadTreeEntry.h"
-
-#include "engine/util/u3d/QuadTreeNode.h"
-
-#include "engine/util/u3d/Quaternion.h"
-
-#include "server/chat/StringIdChatParameter.h"
-
-#include "server/chat/room/ChatRoom.h"
-
-#include "server/login/account/Account.h"
-
-#include "server/login/account/AccountManager.h"
-
-#include "server/zone/Zone.h"
-
-#include "server/zone/ZoneClientSession.h"
-
-#include "server/zone/ZonePacketHandler.h"
-
-#include "server/zone/ZoneProcessServer.h"
-
-#include "server/zone/ZoneServer.h"
-
-#include "server/zone/managers/city/CityManager.h"
-
-#include "server/zone/managers/creature/CreatureManager.h"
-
-#include "server/zone/managers/creature/CreatureTemplateManager.h"
-
-#include "server/zone/managers/creature/SpawnAreaMap.h"
-
-#include "server/zone/managers/holocron/HolocronManager.h"
-
-#include "server/zone/managers/name/NameManager.h"
-
-#include "server/zone/managers/object/ObjectMap.h"
-
-#include "server/zone/managers/objectcontroller/ObjectController.h"
-
-#include "server/zone/managers/objectcontroller/command/CommandConfigManager.h"
-
-#include "server/zone/managers/objectcontroller/command/CommandList.h"
-
-#include "server/zone/managers/planet/HeightMap.h"
-
-#include "server/zone/managers/planet/HuntingTargetMap.h"
-
-#include "server/zone/managers/planet/MapLocationTable.h"
-
-#include "server/zone/managers/planet/MissionTargetMap.h"
-
-#include "server/zone/managers/planet/NoBuildAreaMap.h"
-
-#include "server/zone/managers/planet/PlanetManager.h"
-
-#include "server/zone/managers/planet/RegionMap.h"
-
-#include "server/zone/managers/planet/ShuttleMap.h"
-
-#include "server/zone/managers/professions/ProfessionManager.h"
-
-#include "server/zone/managers/structure/StructureManager.h"
-
-#include "server/zone/managers/sui/SuiManager.h"
-
-#include "server/zone/managers/templates/TemplateManager.h"
-
-#include "server/zone/managers/terrain/TerrainManager.h"
-
-#include "server/zone/managers/vendor/VendorManager.h"
-
-#include "server/zone/managers/weather/WeatherManager.h"
-
-#include "server/zone/objects/area/ActiveArea.h"
-
-#include "server/zone/objects/building/BuildingObject.h"
-
-#include "server/zone/objects/building/city/CityHallObject.h"
-
-#include "server/zone/objects/cell/CellObject.h"
-
-#include "server/zone/objects/creature/AiAgent.h"
-
-#include "server/zone/objects/creature/Creature.h"
-
-#include "server/zone/objects/creature/CreatureObject.h"
-
-#include "server/zone/objects/creature/SpeedMultiplierModChanges.h"
-
-#include "server/zone/objects/creature/buffs/Buff.h"
-
-#include "server/zone/objects/creature/buffs/BuffList.h"
-
-#include "server/zone/objects/creature/commands/QueueCommand.h"
-
-#include "server/zone/objects/creature/damageovertime/DamageOverTimeList.h"
-
-#include "server/zone/objects/creature/professions/SkillBox.h"
-
-#include "server/zone/objects/creature/shuttle/ShuttleCreature.h"
-
-#include "server/zone/objects/creature/variables/CommandQueueAction.h"
-
-#include "server/zone/objects/creature/variables/CooldownTimerMap.h"
-
-#include "server/zone/objects/creature/variables/SkillBoxList.h"
-
-#include "server/zone/objects/group/GroupList.h"
-
-#include "server/zone/objects/group/GroupObject.h"
-
-#include "server/zone/objects/guild/GuildObject.h"
-
-#include "server/zone/objects/intangible/ControlDevice.h"
-
-#include "server/zone/objects/player/PlayerCreature.h"
-
-#include "server/zone/objects/player/TradeContainer.h"
-
-#include "server/zone/objects/player/ValidatedPosition.h"
-
-#include "server/zone/objects/player/badges/Badges.h"
-
-#include "server/zone/objects/player/events/PlayerDisconnectEvent.h"
-
-#include "server/zone/objects/player/events/PlayerRecoveryEvent.h"
-
-#include "server/zone/objects/player/sui/SuiBox.h"
-
-#include "server/zone/objects/region/Region.h"
-
-#include "server/zone/objects/scene/SceneObject.h"
-
-#include "server/zone/objects/scene/variables/DeltaVector.h"
-
-#include "server/zone/objects/scene/variables/DeltaVectorMap.h"
-
-#include "server/zone/objects/scene/variables/PendingTasksMap.h"
-
-#include "server/zone/objects/scene/variables/StringId.h"
-
-#include "server/zone/objects/structure/StructureObject.h"
-
-#include "server/zone/objects/tangible/TangibleObject.h"
-
-#include "server/zone/objects/tangible/sign/SignObject.h"
-
-#include "server/zone/objects/tangible/tool/CraftingTool.h"
-
-#include "server/zone/objects/tangible/tool/SurveyTool.h"
-
-#include "server/zone/objects/tangible/weapon/WeaponObject.h"
-
-#include "server/zone/packets/object/ObjectMenuResponse.h"
-
-#include "server/zone/packets/scene/AttributeListMessage.h"
-
-#include "server/zone/templates/SharedObjectTemplate.h"
-
-#include "server/zone/templates/snapshot/WorldSnapshotIff.h"
-
-#include "server/zone/templates/snapshot/WorldSnapshotNode.h"
-
-#include "server/zone/templates/tangible/SharedStructureObjectTemplate.h"
-
-#include "system/io/ObjectInputStream.h"
-
-#include "system/io/ObjectOutputStream.h"
-
-#include "system/lang/Time.h"
-
-#include "system/util/SortedVector.h"
-
-#include "system/util/Vector.h"
-
-#include "system/util/VectorMap.h"
-
 /*
  *	ZoneStub
  */
@@ -233,8 +30,8 @@ enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_FINALIZE__,RPC_GETNEARESTCLONINGB
 
 Zone::Zone(ZoneProcessServer* processor, int zoneid) : ManagedObject(DummyConstructorParameter::instance()) {
 	ZoneImplementation* _implementation = new ZoneImplementation(processor, zoneid);
-	ManagedObject::_setImplementation(_implementation);
-	_implementation->_setStub(this);
+	_impl = _implementation;
+	_impl->_setStub(this);
 }
 
 Zone::Zone(DummyConstructorParameter* param) : ManagedObject(param) {
@@ -620,10 +417,11 @@ float Zone::getMaxY() {
 DistributedObjectServant* Zone::_getImplementation() {
 
 	_updated = true;
-	return dynamic_cast<DistributedObjectServant*>(getForUpdate());}
+	return _impl;
+}
 
 void Zone::_setImplementation(DistributedObjectServant* servant) {
-	setObject(dynamic_cast<ZoneImplementation*>(servant));
+	_impl = servant;
 }
 
 /*
@@ -636,7 +434,6 @@ ZoneImplementation::ZoneImplementation(DummyConstructorParameter* param) : Manag
 
 
 ZoneImplementation::~ZoneImplementation() {
-	if (_this->isCurrentVersion(this))
 	ZoneImplementation::finalize();
 }
 
@@ -661,30 +458,32 @@ ZoneImplementation::operator const Zone*() {
 	return _this;
 }
 
-Object* ZoneImplementation::clone() {
-	return dynamic_cast<Object*>(new ZoneImplementation(*this));
-}
-
-
 void ZoneImplementation::lock(bool doLock) {
+	_this->lock(doLock);
 }
 
 void ZoneImplementation::lock(ManagedObject* obj) {
+	_this->lock(obj);
 }
 
 void ZoneImplementation::rlock(bool doLock) {
+	_this->rlock(doLock);
 }
 
 void ZoneImplementation::wlock(bool doLock) {
+	_this->wlock(doLock);
 }
 
 void ZoneImplementation::wlock(ManagedObject* obj) {
+	_this->wlock(obj);
 }
 
 void ZoneImplementation::unlock(bool doLock) {
+	_this->unlock(doLock);
 }
 
 void ZoneImplementation::runlock(bool doLock) {
+	_this->runlock(doLock);
 }
 
 void ZoneImplementation::_serializationHelperMethod() {

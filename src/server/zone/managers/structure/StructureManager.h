@@ -220,8 +220,6 @@ public:
 protected:
 	virtual ~StructureManagerImplementation();
 
-	Object* clone();
-
 	void finalize();
 
 	void _initializeImplementation();
@@ -247,7 +245,6 @@ protected:
 	int writeObjectMembers(ObjectOutputStream* stream);
 
 	friend class StructureManager;
-	friend class TransactionalObjectHandle<StructureManagerImplementation*>;
 };
 
 class StructureManagerAdapter : public ManagedServiceAdapter {

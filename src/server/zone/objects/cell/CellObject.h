@@ -141,8 +141,6 @@ public:
 protected:
 	virtual ~CellObjectImplementation();
 
-	Object* clone();
-
 	void finalize();
 
 	void _initializeImplementation();
@@ -168,7 +166,6 @@ protected:
 	int writeObjectMembers(ObjectOutputStream* stream);
 
 	friend class CellObject;
-	friend class TransactionalObjectHandle<CellObjectImplementation*>;
 };
 
 class CellObjectAdapter : public SceneObjectAdapter {

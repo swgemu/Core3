@@ -405,8 +405,6 @@ public:
 protected:
 	virtual ~InstallationObjectImplementation();
 
-	Object* clone();
-
 	void finalize();
 
 	void _initializeImplementation();
@@ -432,7 +430,6 @@ protected:
 	int writeObjectMembers(ObjectOutputStream* stream);
 
 	friend class InstallationObject;
-	friend class TransactionalObjectHandle<InstallationObjectImplementation*>;
 };
 
 class InstallationObjectAdapter : public StructureObjectAdapter {

@@ -152,8 +152,6 @@ public:
 protected:
 	virtual ~BazaarTerminalImplementation();
 
-	Object* clone();
-
 	void finalize();
 
 	void _initializeImplementation();
@@ -179,7 +177,6 @@ protected:
 	int writeObjectMembers(ObjectOutputStream* stream);
 
 	friend class BazaarTerminal;
-	friend class TransactionalObjectHandle<BazaarTerminalImplementation*>;
 };
 
 class BazaarTerminalAdapter : public VendorTerminalAdapter {

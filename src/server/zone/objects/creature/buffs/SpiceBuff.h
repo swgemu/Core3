@@ -154,8 +154,6 @@ public:
 protected:
 	virtual ~SpiceBuffImplementation();
 
-	Object* clone();
-
 	void finalize();
 
 	void _initializeImplementation();
@@ -181,7 +179,6 @@ protected:
 	int writeObjectMembers(ObjectOutputStream* stream);
 
 	friend class SpiceBuff;
-	friend class TransactionalObjectHandle<SpiceBuffImplementation*>;
 };
 
 class SpiceBuffAdapter : public BuffAdapter {

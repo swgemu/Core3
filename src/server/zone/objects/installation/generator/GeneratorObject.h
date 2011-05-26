@@ -97,8 +97,6 @@ public:
 protected:
 	virtual ~GeneratorObjectImplementation();
 
-	Object* clone();
-
 	void finalize();
 
 	void _initializeImplementation();
@@ -124,7 +122,6 @@ protected:
 	int writeObjectMembers(ObjectOutputStream* stream);
 
 	friend class GeneratorObject;
-	friend class TransactionalObjectHandle<GeneratorObjectImplementation*>;
 };
 
 class GeneratorObjectAdapter : public InstallationObjectAdapter {

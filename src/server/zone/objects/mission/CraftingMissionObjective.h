@@ -159,8 +159,6 @@ public:
 protected:
 	virtual ~CraftingMissionObjectiveImplementation();
 
-	Object* clone();
-
 	void _initializeImplementation();
 
 	void _setStub(DistributedObjectStub* stub);
@@ -184,7 +182,6 @@ protected:
 	int writeObjectMembers(ObjectOutputStream* stream);
 
 	friend class CraftingMissionObjective;
-	friend class TransactionalObjectHandle<CraftingMissionObjectiveImplementation*>;
 };
 
 class CraftingMissionObjectiveAdapter : public MissionObjectiveAdapter {

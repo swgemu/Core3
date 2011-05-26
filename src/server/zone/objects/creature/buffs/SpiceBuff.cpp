@@ -12,105 +12,6 @@
 
 #include "server/zone/objects/creature/buffs/SpiceDownerBuff.h"
 
-
-// Imported class dependencies
-
-#include "engine/core/ManagedObject.h"
-
-#include "engine/core/ObjectUpdateToDatabaseTask.h"
-
-#include "engine/service/proto/BaseClientProxy.h"
-
-#include "engine/service/proto/BaseMessage.h"
-
-#include "engine/service/proto/BasePacket.h"
-
-#include "engine/util/u3d/QuadTreeEntry.h"
-
-#include "server/chat/StringIdChatParameter.h"
-
-#include "server/chat/room/ChatRoom.h"
-
-#include "server/login/account/Account.h"
-
-#include "server/login/account/AccountManager.h"
-
-#include "server/zone/ZoneClientSession.h"
-
-#include "server/zone/objects/building/BuildingObject.h"
-
-#include "server/zone/objects/creature/CreatureObject.h"
-
-#include "server/zone/objects/creature/SpeedMultiplierModChanges.h"
-
-#include "server/zone/objects/creature/buffs/Buff.h"
-
-#include "server/zone/objects/creature/buffs/BuffDurationEvent.h"
-
-#include "server/zone/objects/creature/buffs/BuffList.h"
-
-#include "server/zone/objects/creature/damageovertime/DamageOverTimeList.h"
-
-#include "server/zone/objects/creature/professions/SkillBox.h"
-
-#include "server/zone/objects/creature/variables/CommandQueueAction.h"
-
-#include "server/zone/objects/creature/variables/CooldownTimerMap.h"
-
-#include "server/zone/objects/creature/variables/SkillBoxList.h"
-
-#include "server/zone/objects/group/GroupList.h"
-
-#include "server/zone/objects/group/GroupObject.h"
-
-#include "server/zone/objects/guild/GuildObject.h"
-
-#include "server/zone/objects/intangible/ControlDevice.h"
-
-#include "server/zone/objects/player/PlayerCreature.h"
-
-#include "server/zone/objects/player/TradeContainer.h"
-
-#include "server/zone/objects/player/ValidatedPosition.h"
-
-#include "server/zone/objects/player/badges/Badges.h"
-
-#include "server/zone/objects/player/events/PlayerDisconnectEvent.h"
-
-#include "server/zone/objects/player/events/PlayerRecoveryEvent.h"
-
-#include "server/zone/objects/player/sui/SuiBox.h"
-
-#include "server/zone/objects/scene/SceneObject.h"
-
-#include "server/zone/objects/scene/variables/DeltaVector.h"
-
-#include "server/zone/objects/scene/variables/DeltaVectorMap.h"
-
-#include "server/zone/objects/tangible/TangibleObject.h"
-
-#include "server/zone/objects/tangible/tool/CraftingTool.h"
-
-#include "server/zone/objects/tangible/tool/SurveyTool.h"
-
-#include "server/zone/objects/tangible/weapon/WeaponObject.h"
-
-#include "server/zone/packets/object/ObjectMenuResponse.h"
-
-#include "server/zone/templates/SharedObjectTemplate.h"
-
-#include "system/io/ObjectInputStream.h"
-
-#include "system/io/ObjectOutputStream.h"
-
-#include "system/lang/Time.h"
-
-#include "system/util/SortedVector.h"
-
-#include "system/util/Vector.h"
-
-#include "system/util/VectorMap.h"
-
 /*
  *	SpiceBuffStub
  */
@@ -119,8 +20,8 @@ enum {RPC_ACTIVATE__BOOL_ = 6,RPC_DEACTIVATE__BOOL_,RPC_SETDOWNERATTRIBUTES__CRE
 
 SpiceBuff::SpiceBuff(CreatureObject* creo, const String& name, unsigned int buffCRC, int duration) : Buff(DummyConstructorParameter::instance()) {
 	SpiceBuffImplementation* _implementation = new SpiceBuffImplementation(creo, name, buffCRC, duration);
-	ManagedObject::_setImplementation(_implementation);
-	_implementation->_setStub(this);
+	_impl = _implementation;
+	_impl->_setStub(this);
 }
 
 SpiceBuff::SpiceBuff(DummyConstructorParameter* param) : Buff(param) {
@@ -176,10 +77,11 @@ void SpiceBuff::setDownerAttributes(CreatureObject* creature, Buff* buff) {
 DistributedObjectServant* SpiceBuff::_getImplementation() {
 
 	_updated = true;
-	return dynamic_cast<DistributedObjectServant*>(getForUpdate());}
+	return _impl;
+}
 
 void SpiceBuff::_setImplementation(DistributedObjectServant* servant) {
-	setObject(dynamic_cast<SpiceBuffImplementation*>(servant));
+	_impl = servant;
 }
 
 /*
@@ -218,30 +120,32 @@ SpiceBuffImplementation::operator const SpiceBuff*() {
 	return _this;
 }
 
-Object* SpiceBuffImplementation::clone() {
-	return dynamic_cast<Object*>(new SpiceBuffImplementation(*this));
-}
-
-
 void SpiceBuffImplementation::lock(bool doLock) {
+	_this->lock(doLock);
 }
 
 void SpiceBuffImplementation::lock(ManagedObject* obj) {
+	_this->lock(obj);
 }
 
 void SpiceBuffImplementation::rlock(bool doLock) {
+	_this->rlock(doLock);
 }
 
 void SpiceBuffImplementation::wlock(bool doLock) {
+	_this->wlock(doLock);
 }
 
 void SpiceBuffImplementation::wlock(ManagedObject* obj) {
+	_this->wlock(obj);
 }
 
 void SpiceBuffImplementation::unlock(bool doLock) {
+	_this->unlock(doLock);
 }
 
 void SpiceBuffImplementation::runlock(bool doLock) {
+	_this->runlock(doLock);
 }
 
 void SpiceBuffImplementation::_serializationHelperMethod() {

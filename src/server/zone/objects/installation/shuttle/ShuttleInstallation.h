@@ -246,8 +246,6 @@ public:
 protected:
 	virtual ~ShuttleInstallationImplementation();
 
-	Object* clone();
-
 	void finalize();
 
 	void _initializeImplementation();
@@ -273,7 +271,6 @@ protected:
 	int writeObjectMembers(ObjectOutputStream* stream);
 
 	friend class ShuttleInstallation;
-	friend class TransactionalObjectHandle<ShuttleInstallationImplementation*>;
 };
 
 class ShuttleInstallationAdapter : public InstallationObjectAdapter {

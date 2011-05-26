@@ -290,8 +290,6 @@ public:
 protected:
 	virtual ~ChatRoomImplementation();
 
-	Object* clone();
-
 	void finalize();
 
 	void _initializeImplementation();
@@ -317,7 +315,6 @@ protected:
 	int writeObjectMembers(ObjectOutputStream* stream);
 
 	friend class ChatRoom;
-	friend class TransactionalObjectHandle<ChatRoomImplementation*>;
 };
 
 class ChatRoomAdapter : public ManagedObjectAdapter {

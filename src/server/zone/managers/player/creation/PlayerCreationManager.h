@@ -80,8 +80,6 @@ public:
 protected:
 	virtual ~PlayerCreationManagerImplementation();
 
-	Object* clone();
-
 	void finalize();
 
 	void _initializeImplementation();
@@ -107,7 +105,6 @@ protected:
 	int writeObjectMembers(ObjectOutputStream* stream);
 
 	friend class PlayerCreationManager;
-	friend class TransactionalObjectHandle<PlayerCreationManagerImplementation*>;
 };
 
 class PlayerCreationManagerAdapter : public ZoneManagerAdapter {

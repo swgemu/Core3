@@ -414,8 +414,6 @@ public:
 protected:
 	virtual ~ChatManagerImplementation();
 
-	Object* clone();
-
 	void _initializeImplementation();
 
 	void _setStub(DistributedObjectStub* stub);
@@ -439,7 +437,6 @@ protected:
 	int writeObjectMembers(ObjectOutputStream* stream);
 
 	friend class ChatManager;
-	friend class TransactionalObjectHandle<ChatManagerImplementation*>;
 };
 
 class ChatManagerAdapter : public ManagedServiceAdapter {

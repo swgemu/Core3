@@ -10,105 +10,6 @@
 
 #include "server/zone/objects/creature/buffs/BuffDurationEvent.h"
 
-
-// Imported class dependencies
-
-#include "engine/core/ManagedObject.h"
-
-#include "engine/core/ObjectUpdateToDatabaseTask.h"
-
-#include "engine/service/proto/BaseClientProxy.h"
-
-#include "engine/service/proto/BaseMessage.h"
-
-#include "engine/service/proto/BasePacket.h"
-
-#include "engine/util/u3d/QuadTreeEntry.h"
-
-#include "server/chat/StringIdChatParameter.h"
-
-#include "server/chat/room/ChatRoom.h"
-
-#include "server/login/account/Account.h"
-
-#include "server/login/account/AccountManager.h"
-
-#include "server/zone/ZoneClientSession.h"
-
-#include "server/zone/objects/building/BuildingObject.h"
-
-#include "server/zone/objects/creature/CreatureObject.h"
-
-#include "server/zone/objects/creature/SpeedMultiplierModChanges.h"
-
-#include "server/zone/objects/creature/buffs/Buff.h"
-
-#include "server/zone/objects/creature/buffs/BuffDurationEvent.h"
-
-#include "server/zone/objects/creature/buffs/BuffList.h"
-
-#include "server/zone/objects/creature/damageovertime/DamageOverTimeList.h"
-
-#include "server/zone/objects/creature/professions/SkillBox.h"
-
-#include "server/zone/objects/creature/variables/CommandQueueAction.h"
-
-#include "server/zone/objects/creature/variables/CooldownTimerMap.h"
-
-#include "server/zone/objects/creature/variables/SkillBoxList.h"
-
-#include "server/zone/objects/group/GroupList.h"
-
-#include "server/zone/objects/group/GroupObject.h"
-
-#include "server/zone/objects/guild/GuildObject.h"
-
-#include "server/zone/objects/intangible/ControlDevice.h"
-
-#include "server/zone/objects/player/PlayerCreature.h"
-
-#include "server/zone/objects/player/TradeContainer.h"
-
-#include "server/zone/objects/player/ValidatedPosition.h"
-
-#include "server/zone/objects/player/badges/Badges.h"
-
-#include "server/zone/objects/player/events/PlayerDisconnectEvent.h"
-
-#include "server/zone/objects/player/events/PlayerRecoveryEvent.h"
-
-#include "server/zone/objects/player/sui/SuiBox.h"
-
-#include "server/zone/objects/scene/SceneObject.h"
-
-#include "server/zone/objects/scene/variables/DeltaVector.h"
-
-#include "server/zone/objects/scene/variables/DeltaVectorMap.h"
-
-#include "server/zone/objects/tangible/TangibleObject.h"
-
-#include "server/zone/objects/tangible/tool/CraftingTool.h"
-
-#include "server/zone/objects/tangible/tool/SurveyTool.h"
-
-#include "server/zone/objects/tangible/weapon/WeaponObject.h"
-
-#include "server/zone/packets/object/ObjectMenuResponse.h"
-
-#include "server/zone/templates/SharedObjectTemplate.h"
-
-#include "system/io/ObjectInputStream.h"
-
-#include "system/io/ObjectOutputStream.h"
-
-#include "system/lang/Time.h"
-
-#include "system/util/SortedVector.h"
-
-#include "system/util/Vector.h"
-
-#include "system/util/VectorMap.h"
-
 /*
  *	DelayedBuffStub
  */
@@ -117,8 +18,8 @@ enum {RPC_ACTIVATE__ = 6,RPC_DEACTIVATE__,RPC_USECHARGE__CREATUREOBJECT_,RPC_SET
 
 DelayedBuff::DelayedBuff(CreatureObject* creo, unsigned int buffcrc, int duration) : Buff(DummyConstructorParameter::instance()) {
 	DelayedBuffImplementation* _implementation = new DelayedBuffImplementation(creo, buffcrc, duration);
-	ManagedObject::_setImplementation(_implementation);
-	_implementation->_setStub(this);
+	_impl = _implementation;
+	_impl->_setStub(this);
 }
 
 DelayedBuff::DelayedBuff(DummyConstructorParameter* param) : Buff(param) {
@@ -185,10 +86,11 @@ void DelayedBuff::setUsesRemaining(int uses) {
 DistributedObjectServant* DelayedBuff::_getImplementation() {
 
 	_updated = true;
-	return dynamic_cast<DistributedObjectServant*>(getForUpdate());}
+	return _impl;
+}
 
 void DelayedBuff::_setImplementation(DistributedObjectServant* servant) {
-	setObject(dynamic_cast<DelayedBuffImplementation*>(servant));
+	_impl = servant;
 }
 
 /*
@@ -227,30 +129,32 @@ DelayedBuffImplementation::operator const DelayedBuff*() {
 	return _this;
 }
 
-Object* DelayedBuffImplementation::clone() {
-	return dynamic_cast<Object*>(new DelayedBuffImplementation(*this));
-}
-
-
 void DelayedBuffImplementation::lock(bool doLock) {
+	_this->lock(doLock);
 }
 
 void DelayedBuffImplementation::lock(ManagedObject* obj) {
+	_this->lock(obj);
 }
 
 void DelayedBuffImplementation::rlock(bool doLock) {
+	_this->rlock(doLock);
 }
 
 void DelayedBuffImplementation::wlock(bool doLock) {
+	_this->wlock(doLock);
 }
 
 void DelayedBuffImplementation::wlock(ManagedObject* obj) {
+	_this->wlock(obj);
 }
 
 void DelayedBuffImplementation::unlock(bool doLock) {
+	_this->unlock(doLock);
 }
 
 void DelayedBuffImplementation::runlock(bool doLock) {
+	_this->runlock(doLock);
 }
 
 void DelayedBuffImplementation::_serializationHelperMethod() {

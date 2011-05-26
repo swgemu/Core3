@@ -353,8 +353,6 @@ public:
 protected:
 	virtual ~BuildingObjectImplementation();
 
-	Object* clone();
-
 	void finalize();
 
 	void _initializeImplementation();
@@ -380,7 +378,6 @@ protected:
 	int writeObjectMembers(ObjectOutputStream* stream);
 
 	friend class BuildingObject;
-	friend class TransactionalObjectHandle<BuildingObjectImplementation*>;
 };
 
 class BuildingObjectAdapter : public StructureObjectAdapter {

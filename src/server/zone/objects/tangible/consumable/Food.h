@@ -100,8 +100,6 @@ public:
 protected:
 	virtual ~FoodImplementation();
 
-	Object* clone();
-
 	void finalize();
 
 	void _initializeImplementation();
@@ -127,7 +125,6 @@ protected:
 	int writeObjectMembers(ObjectOutputStream* stream);
 
 	friend class Food;
-	friend class TransactionalObjectHandle<FoodImplementation*>;
 };
 
 class FoodAdapter : public ConsumableAdapter {

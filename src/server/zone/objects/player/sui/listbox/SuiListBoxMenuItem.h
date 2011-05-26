@@ -99,8 +99,6 @@ public:
 protected:
 	virtual ~SuiListBoxMenuItemImplementation();
 
-	Object* clone();
-
 	void finalize();
 
 	void _initializeImplementation();
@@ -126,7 +124,6 @@ protected:
 	int writeObjectMembers(ObjectOutputStream* stream);
 
 	friend class SuiListBoxMenuItem;
-	friend class TransactionalObjectHandle<SuiListBoxMenuItemImplementation*>;
 };
 
 class SuiListBoxMenuItemAdapter : public ManagedObjectAdapter {

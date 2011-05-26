@@ -6,75 +6,6 @@
 
 #include "server/zone/objects/player/PlayerCreature.h"
 
-
-// Imported class dependencies
-
-#include "engine/core/ManagedObject.h"
-
-#include "engine/core/ObjectUpdateToDatabaseTask.h"
-
-#include "engine/service/proto/BaseClientProxy.h"
-
-#include "engine/service/proto/BasePacket.h"
-
-#include "engine/util/u3d/QuadTreeEntry.h"
-
-#include "server/chat/room/ChatRoom.h"
-
-#include "server/login/account/Account.h"
-
-#include "server/login/account/AccountManager.h"
-
-#include "server/zone/ZoneClientSession.h"
-
-#include "server/zone/objects/building/BuildingObject.h"
-
-#include "server/zone/objects/creature/CreatureObject.h"
-
-#include "server/zone/objects/player/PlayerCreature.h"
-
-#include "server/zone/objects/player/TradeContainer.h"
-
-#include "server/zone/objects/player/ValidatedPosition.h"
-
-#include "server/zone/objects/player/badges/Badges.h"
-
-#include "server/zone/objects/player/events/PlayerDisconnectEvent.h"
-
-#include "server/zone/objects/player/events/PlayerRecoveryEvent.h"
-
-#include "server/zone/objects/player/sui/SuiBox.h"
-
-#include "server/zone/objects/player/sui/SuiCallback.h"
-
-#include "server/zone/objects/player/sui/listbox/SuiListBoxMenuItem.h"
-
-#include "server/zone/objects/scene/SceneObject.h"
-
-#include "server/zone/objects/tangible/TangibleObject.h"
-
-#include "server/zone/objects/tangible/tool/CraftingTool.h"
-
-#include "server/zone/objects/tangible/tool/SurveyTool.h"
-
-#include "server/zone/packets/object/ObjectMenuResponse.h"
-
-#include "server/zone/packets/ui/SuiCreatePageMessage.h"
-
-#include "server/zone/templates/SharedObjectTemplate.h"
-
-#include "system/io/ObjectInputStream.h"
-
-#include "system/io/ObjectOutputStream.h"
-
-#include "system/lang/Time.h"
-
-#include "system/util/SortedVector.h"
-
-#include "system/util/Vector.h"
-
-#include "system/util/VectorMap.h"
-
 /*
  *	SuiCharacterBuilderBoxStub
  */
@@ -83,8 +14,8 @@ enum {RPC_GENERATEMESSAGE__ = 6,RPC_ISCHARACTERBUILDERBOX__};
 
 SuiCharacterBuilderBox::SuiCharacterBuilderBox(PlayerCreature* player, CharacterBuilderMenuNode* root) : SuiListBox(DummyConstructorParameter::instance()) {
 	SuiCharacterBuilderBoxImplementation* _implementation = new SuiCharacterBuilderBoxImplementation(player, root);
-	ManagedObject::_setImplementation(_implementation);
-	_implementation->_setStub(this);
+	_impl = _implementation;
+	_impl->_setStub(this);
 }
 
 SuiCharacterBuilderBox::SuiCharacterBuilderBox(DummyConstructorParameter* param) : SuiListBox(param) {
@@ -141,10 +72,11 @@ bool SuiCharacterBuilderBox::isCharacterBuilderBox() {
 DistributedObjectServant* SuiCharacterBuilderBox::_getImplementation() {
 
 	_updated = true;
-	return dynamic_cast<DistributedObjectServant*>(getForUpdate());}
+	return _impl;
+}
 
 void SuiCharacterBuilderBox::_setImplementation(DistributedObjectServant* servant) {
-	setObject(dynamic_cast<SuiCharacterBuilderBoxImplementation*>(servant));
+	_impl = servant;
 }
 
 /*
@@ -183,30 +115,32 @@ SuiCharacterBuilderBoxImplementation::operator const SuiCharacterBuilderBox*() {
 	return _this;
 }
 
-Object* SuiCharacterBuilderBoxImplementation::clone() {
-	return dynamic_cast<Object*>(new SuiCharacterBuilderBoxImplementation(*this));
-}
-
-
 void SuiCharacterBuilderBoxImplementation::lock(bool doLock) {
+	_this->lock(doLock);
 }
 
 void SuiCharacterBuilderBoxImplementation::lock(ManagedObject* obj) {
+	_this->lock(obj);
 }
 
 void SuiCharacterBuilderBoxImplementation::rlock(bool doLock) {
+	_this->rlock(doLock);
 }
 
 void SuiCharacterBuilderBoxImplementation::wlock(bool doLock) {
+	_this->wlock(doLock);
 }
 
 void SuiCharacterBuilderBoxImplementation::wlock(ManagedObject* obj) {
+	_this->wlock(obj);
 }
 
 void SuiCharacterBuilderBoxImplementation::unlock(bool doLock) {
+	_this->unlock(doLock);
 }
 
 void SuiCharacterBuilderBoxImplementation::runlock(bool doLock) {
+	_this->runlock(doLock);
 }
 
 void SuiCharacterBuilderBoxImplementation::_serializationHelperMethod() {

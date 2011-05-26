@@ -16,177 +16,6 @@
 
 #include "server/zone/objects/area/ActiveArea.h"
 
-
-// Imported class dependencies
-
-#include "engine/core/ManagedObject.h"
-
-#include "engine/core/ObjectUpdateToDatabaseTask.h"
-
-#include "engine/core/Task.h"
-
-#include "engine/service/proto/BaseClientProxy.h"
-
-#include "engine/service/proto/BaseMessage.h"
-
-#include "engine/service/proto/BasePacket.h"
-
-#include "engine/stm/TransactionalReference.h"
-
-#include "engine/util/Facade.h"
-
-#include "engine/util/Observable.h"
-
-#include "engine/util/Observer.h"
-
-#include "engine/util/ObserverEventMap.h"
-
-#include "engine/util/u3d/Coordinate.h"
-
-#include "engine/util/u3d/QuadTree.h"
-
-#include "engine/util/u3d/QuadTreeEntry.h"
-
-#include "engine/util/u3d/QuadTreeNode.h"
-
-#include "engine/util/u3d/Quaternion.h"
-
-#include "server/chat/StringIdChatParameter.h"
-
-#include "server/chat/room/ChatRoom.h"
-
-#include "server/login/account/Account.h"
-
-#include "server/login/account/AccountManager.h"
-
-#include "server/zone/Zone.h"
-
-#include "server/zone/ZoneClientSession.h"
-
-#include "server/zone/ZonePacketHandler.h"
-
-#include "server/zone/ZoneProcessServer.h"
-
-#include "server/zone/ZoneServer.h"
-
-#include "server/zone/managers/city/CityManager.h"
-
-#include "server/zone/managers/creature/CreatureManager.h"
-
-#include "server/zone/managers/holocron/HolocronManager.h"
-
-#include "server/zone/managers/name/NameManager.h"
-
-#include "server/zone/managers/object/ObjectMap.h"
-
-#include "server/zone/managers/objectcontroller/ObjectController.h"
-
-#include "server/zone/managers/planet/HeightMap.h"
-
-#include "server/zone/managers/planet/MapLocationTable.h"
-
-#include "server/zone/managers/planet/PlanetManager.h"
-
-#include "server/zone/managers/professions/ProfessionManager.h"
-
-#include "server/zone/managers/sui/SuiManager.h"
-
-#include "server/zone/managers/vendor/VendorManager.h"
-
-#include "server/zone/objects/area/ActiveArea.h"
-
-#include "server/zone/objects/building/BuildingObject.h"
-
-#include "server/zone/objects/cell/CellObject.h"
-
-#include "server/zone/objects/creature/CreatureObject.h"
-
-#include "server/zone/objects/creature/SpeedMultiplierModChanges.h"
-
-#include "server/zone/objects/creature/buffs/Buff.h"
-
-#include "server/zone/objects/creature/buffs/BuffList.h"
-
-#include "server/zone/objects/creature/damageovertime/DamageOverTimeList.h"
-
-#include "server/zone/objects/creature/professions/SkillBox.h"
-
-#include "server/zone/objects/creature/variables/CommandQueueAction.h"
-
-#include "server/zone/objects/creature/variables/CooldownTimerMap.h"
-
-#include "server/zone/objects/creature/variables/SkillBoxList.h"
-
-#include "server/zone/objects/draftschematic/DraftSchematic.h"
-
-#include "server/zone/objects/group/GroupList.h"
-
-#include "server/zone/objects/group/GroupObject.h"
-
-#include "server/zone/objects/guild/GuildObject.h"
-
-#include "server/zone/objects/intangible/ControlDevice.h"
-
-#include "server/zone/objects/manufactureschematic/IngredientSlots.h"
-
-#include "server/zone/objects/manufactureschematic/ManufactureSchematic.h"
-
-#include "server/zone/objects/manufactureschematic/craftingvalues/CraftingValues.h"
-
-#include "server/zone/objects/player/PlayerCreature.h"
-
-#include "server/zone/objects/player/TradeContainer.h"
-
-#include "server/zone/objects/player/ValidatedPosition.h"
-
-#include "server/zone/objects/player/badges/Badges.h"
-
-#include "server/zone/objects/player/events/PlayerDisconnectEvent.h"
-
-#include "server/zone/objects/player/events/PlayerRecoveryEvent.h"
-
-#include "server/zone/objects/player/sui/SuiBox.h"
-
-#include "server/zone/objects/scene/SceneObject.h"
-
-#include "server/zone/objects/scene/variables/CustomizationVariables.h"
-
-#include "server/zone/objects/scene/variables/DeltaVector.h"
-
-#include "server/zone/objects/scene/variables/DeltaVectorMap.h"
-
-#include "server/zone/objects/scene/variables/PendingTasksMap.h"
-
-#include "server/zone/objects/scene/variables/StringId.h"
-
-#include "server/zone/objects/tangible/TangibleObject.h"
-
-#include "server/zone/objects/tangible/sign/SignObject.h"
-
-#include "server/zone/objects/tangible/tool/CraftingTool.h"
-
-#include "server/zone/objects/tangible/tool/SurveyTool.h"
-
-#include "server/zone/objects/tangible/weapon/WeaponObject.h"
-
-#include "server/zone/packets/object/ObjectMenuResponse.h"
-
-#include "server/zone/packets/scene/AttributeListMessage.h"
-
-#include "server/zone/templates/SharedObjectTemplate.h"
-
-#include "system/io/ObjectInputStream.h"
-
-#include "system/io/ObjectOutputStream.h"
-
-#include "system/lang/Time.h"
-
-#include "system/util/SortedVector.h"
-
-#include "system/util/Vector.h"
-
-#include "system/util/VectorMap.h"
-
 /*
  *	StructureObjectStub
  */
@@ -195,8 +24,8 @@ enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_FINALIZE__,RPC_CREATECHILDOBJECTS
 
 StructureObject::StructureObject() : TangibleObject(DummyConstructorParameter::instance()) {
 	StructureObjectImplementation* _implementation = new StructureObjectImplementation();
-	ManagedObject::_setImplementation(_implementation);
-	_implementation->_setStub(this);
+	_impl = _implementation;
+	_impl->_setStub(this);
 }
 
 StructureObject::StructureObject(DummyConstructorParameter* param) : TangibleObject(param) {
@@ -1003,10 +832,11 @@ void StructureObject::setWidth(int wid) {
 DistributedObjectServant* StructureObject::_getImplementation() {
 
 	_updated = true;
-	return dynamic_cast<DistributedObjectServant*>(getForUpdate());}
+	return _impl;
+}
 
 void StructureObject::_setImplementation(DistributedObjectServant* servant) {
-	setObject(dynamic_cast<StructureObjectImplementation*>(servant));
+	_impl = servant;
 }
 
 /*
@@ -1019,7 +849,6 @@ StructureObjectImplementation::StructureObjectImplementation(DummyConstructorPar
 
 
 StructureObjectImplementation::~StructureObjectImplementation() {
-	if (_this->isCurrentVersion(this))
 	StructureObjectImplementation::finalize();
 }
 
@@ -1044,30 +873,32 @@ StructureObjectImplementation::operator const StructureObject*() {
 	return _this;
 }
 
-Object* StructureObjectImplementation::clone() {
-	return dynamic_cast<Object*>(new StructureObjectImplementation(*this));
-}
-
-
 void StructureObjectImplementation::lock(bool doLock) {
+	_this->lock(doLock);
 }
 
 void StructureObjectImplementation::lock(ManagedObject* obj) {
+	_this->lock(obj);
 }
 
 void StructureObjectImplementation::rlock(bool doLock) {
+	_this->rlock(doLock);
 }
 
 void StructureObjectImplementation::wlock(bool doLock) {
+	_this->wlock(doLock);
 }
 
 void StructureObjectImplementation::wlock(ManagedObject* obj) {
+	_this->wlock(obj);
 }
 
 void StructureObjectImplementation::unlock(bool doLock) {
+	_this->unlock(doLock);
 }
 
 void StructureObjectImplementation::runlock(bool doLock) {
+	_this->runlock(doLock);
 }
 
 void StructureObjectImplementation::_serializationHelperMethod() {

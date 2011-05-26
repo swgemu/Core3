@@ -636,8 +636,6 @@ public:
 protected:
 	virtual ~TangibleObjectImplementation();
 
-	Object* clone();
-
 	void finalize();
 
 	void _initializeImplementation();
@@ -663,7 +661,6 @@ protected:
 	int writeObjectMembers(ObjectOutputStream* stream);
 
 	friend class TangibleObject;
-	friend class TransactionalObjectHandle<TangibleObjectImplementation*>;
 };
 
 class TangibleObjectAdapter : public SceneObjectAdapter {

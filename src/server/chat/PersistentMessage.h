@@ -207,8 +207,6 @@ public:
 protected:
 	virtual ~PersistentMessageImplementation();
 
-	Object* clone();
-
 	void finalize();
 
 	void _initializeImplementation();
@@ -234,7 +232,6 @@ protected:
 	int writeObjectMembers(ObjectOutputStream* stream);
 
 	friend class PersistentMessage;
-	friend class TransactionalObjectHandle<PersistentMessageImplementation*>;
 };
 
 class PersistentMessageAdapter : public ManagedObjectAdapter {

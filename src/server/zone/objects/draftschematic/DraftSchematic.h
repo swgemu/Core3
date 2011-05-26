@@ -287,8 +287,6 @@ public:
 protected:
 	virtual ~DraftSchematicImplementation();
 
-	Object* clone();
-
 	void finalize();
 
 	void _initializeImplementation();
@@ -314,7 +312,6 @@ protected:
 	int writeObjectMembers(ObjectOutputStream* stream);
 
 	friend class DraftSchematic;
-	friend class TransactionalObjectHandle<DraftSchematicImplementation*>;
 };
 
 class DraftSchematicAdapter : public IntangibleObjectAdapter {

@@ -8,71 +8,6 @@
 
 #include "server/zone/objects/tangible/terminal/vendor/VendorTerminal.h"
 
-
-// Imported class dependencies
-
-#include "engine/core/ManagedObject.h"
-
-#include "engine/core/ObjectUpdateToDatabaseTask.h"
-
-#include "engine/service/proto/BaseClientProxy.h"
-
-#include "engine/service/proto/BasePacket.h"
-
-#include "engine/util/u3d/QuadTreeEntry.h"
-
-#include "server/chat/room/ChatRoom.h"
-
-#include "server/login/account/Account.h"
-
-#include "server/login/account/AccountManager.h"
-
-#include "server/zone/ZoneClientSession.h"
-
-#include "server/zone/objects/auction/Vendor.h"
-
-#include "server/zone/objects/building/BuildingObject.h"
-
-#include "server/zone/objects/creature/CreatureObject.h"
-
-#include "server/zone/objects/player/PlayerCreature.h"
-
-#include "server/zone/objects/player/TradeContainer.h"
-
-#include "server/zone/objects/player/ValidatedPosition.h"
-
-#include "server/zone/objects/player/badges/Badges.h"
-
-#include "server/zone/objects/player/events/PlayerDisconnectEvent.h"
-
-#include "server/zone/objects/player/events/PlayerRecoveryEvent.h"
-
-#include "server/zone/objects/player/sui/SuiBox.h"
-
-#include "server/zone/objects/scene/SceneObject.h"
-
-#include "server/zone/objects/tangible/TangibleObject.h"
-
-#include "server/zone/objects/tangible/tool/CraftingTool.h"
-
-#include "server/zone/objects/tangible/tool/SurveyTool.h"
-
-#include "server/zone/packets/object/ObjectMenuResponse.h"
-
-#include "server/zone/templates/SharedObjectTemplate.h"
-
-#include "system/io/ObjectInputStream.h"
-
-#include "system/io/ObjectOutputStream.h"
-
-#include "system/lang/Time.h"
-
-#include "system/util/SortedVector.h"
-
-#include "system/util/Vector.h"
-
-#include "system/util/VectorMap.h"
-
 /*
  *	AuctionItemStub
  */
@@ -81,8 +16,8 @@ enum {RPC_SETLOCATION__STRING_STRING_LONG_INT_INT_BOOL_ = 6,RPC_SETVENDORID__LON
 
 AuctionItem::AuctionItem(unsigned long long objectid) : ManagedObject(DummyConstructorParameter::instance()) {
 	AuctionItemImplementation* _implementation = new AuctionItemImplementation(objectid);
-	ManagedObject::_setImplementation(_implementation);
-	_implementation->_setStub(this);
+	_impl = _implementation;
+	_impl->_setStub(this);
 }
 
 AuctionItem::AuctionItem(DummyConstructorParameter* param) : ManagedObject(param) {
@@ -692,10 +627,11 @@ bool AuctionItem::isOwner() {
 DistributedObjectServant* AuctionItem::_getImplementation() {
 
 	_updated = true;
-	return dynamic_cast<DistributedObjectServant*>(getForUpdate());}
+	return _impl;
+}
 
 void AuctionItem::_setImplementation(DistributedObjectServant* servant) {
-	setObject(dynamic_cast<AuctionItemImplementation*>(servant));
+	_impl = servant;
 }
 
 /*
@@ -734,30 +670,32 @@ AuctionItemImplementation::operator const AuctionItem*() {
 	return _this;
 }
 
-Object* AuctionItemImplementation::clone() {
-	return dynamic_cast<Object*>(new AuctionItemImplementation(*this));
-}
-
-
 void AuctionItemImplementation::lock(bool doLock) {
+	_this->lock(doLock);
 }
 
 void AuctionItemImplementation::lock(ManagedObject* obj) {
+	_this->lock(obj);
 }
 
 void AuctionItemImplementation::rlock(bool doLock) {
+	_this->rlock(doLock);
 }
 
 void AuctionItemImplementation::wlock(bool doLock) {
+	_this->wlock(doLock);
 }
 
 void AuctionItemImplementation::wlock(ManagedObject* obj) {
+	_this->wlock(obj);
 }
 
 void AuctionItemImplementation::unlock(bool doLock) {
+	_this->unlock(doLock);
 }
 
 void AuctionItemImplementation::runlock(bool doLock) {
+	_this->runlock(doLock);
 }
 
 void AuctionItemImplementation::_serializationHelperMethod() {

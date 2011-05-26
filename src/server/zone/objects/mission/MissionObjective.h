@@ -165,8 +165,6 @@ public:
 protected:
 	virtual ~MissionObjectiveImplementation();
 
-	Object* clone();
-
 	void finalize();
 
 	void _initializeImplementation();
@@ -192,7 +190,6 @@ protected:
 	int writeObjectMembers(ObjectOutputStream* stream);
 
 	friend class MissionObjective;
-	friend class TransactionalObjectHandle<MissionObjectiveImplementation*>;
 };
 
 class MissionObjectiveAdapter : public ManagedObjectAdapter {

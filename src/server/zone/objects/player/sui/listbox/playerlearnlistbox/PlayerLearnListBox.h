@@ -122,8 +122,6 @@ public:
 protected:
 	virtual ~PlayerLearnListBoxImplementation();
 
-	Object* clone();
-
 	void finalize();
 
 	void _initializeImplementation();
@@ -149,7 +147,6 @@ protected:
 	int writeObjectMembers(ObjectOutputStream* stream);
 
 	friend class PlayerLearnListBox;
-	friend class TransactionalObjectHandle<PlayerLearnListBoxImplementation*>;
 };
 
 class PlayerLearnListBoxAdapter : public SuiListBoxAdapter {

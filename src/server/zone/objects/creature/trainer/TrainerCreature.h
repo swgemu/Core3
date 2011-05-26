@@ -190,8 +190,6 @@ public:
 protected:
 	virtual ~TrainerCreatureImplementation();
 
-	Object* clone();
-
 	void finalize();
 
 	void _initializeImplementation();
@@ -217,7 +215,6 @@ protected:
 	int writeObjectMembers(ObjectOutputStream* stream);
 
 	friend class TrainerCreature;
-	friend class TransactionalObjectHandle<TrainerCreatureImplementation*>;
 };
 
 class TrainerCreatureAdapter : public CreatureObjectAdapter {

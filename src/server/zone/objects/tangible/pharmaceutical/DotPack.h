@@ -262,8 +262,6 @@ public:
 protected:
 	virtual ~DotPackImplementation();
 
-	Object* clone();
-
 	void finalize();
 
 	void _initializeImplementation();
@@ -289,7 +287,6 @@ protected:
 	int writeObjectMembers(ObjectOutputStream* stream);
 
 	friend class DotPack;
-	friend class TransactionalObjectHandle<DotPackImplementation*>;
 };
 
 class DotPackAdapter : public PharmaceuticalObjectAdapter {

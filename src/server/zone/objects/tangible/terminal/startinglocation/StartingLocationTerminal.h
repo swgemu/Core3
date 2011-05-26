@@ -117,8 +117,6 @@ public:
 protected:
 	virtual ~StartingLocationTerminalImplementation();
 
-	Object* clone();
-
 	void finalize();
 
 	void _initializeImplementation();
@@ -144,7 +142,6 @@ protected:
 	int writeObjectMembers(ObjectOutputStream* stream);
 
 	friend class StartingLocationTerminal;
-	friend class TransactionalObjectHandle<StartingLocationTerminalImplementation*>;
 };
 
 class StartingLocationTerminalAdapter : public TerminalAdapter {

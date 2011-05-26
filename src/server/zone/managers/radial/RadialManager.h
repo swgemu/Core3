@@ -126,8 +126,6 @@ public:
 protected:
 	virtual ~RadialManagerImplementation();
 
-	Object* clone();
-
 	void finalize();
 
 	void _initializeImplementation();
@@ -153,7 +151,6 @@ protected:
 	int writeObjectMembers(ObjectOutputStream* stream);
 
 	friend class RadialManager;
-	friend class TransactionalObjectHandle<RadialManagerImplementation*>;
 };
 
 class RadialManagerAdapter : public ManagedObjectAdapter {

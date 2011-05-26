@@ -112,8 +112,6 @@ public:
 protected:
 	virtual ~CloningBuildingObjectImplementation();
 
-	Object* clone();
-
 	void finalize();
 
 	void _initializeImplementation();
@@ -139,7 +137,6 @@ protected:
 	int writeObjectMembers(ObjectOutputStream* stream);
 
 	friend class CloningBuildingObject;
-	friend class TransactionalObjectHandle<CloningBuildingObjectImplementation*>;
 };
 
 class CloningBuildingObjectAdapter : public BuildingObjectAdapter {

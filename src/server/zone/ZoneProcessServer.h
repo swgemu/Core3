@@ -261,8 +261,6 @@ public:
 protected:
 	virtual ~ZoneProcessServerImplementation();
 
-	Object* clone();
-
 	void _initializeImplementation();
 
 	void _setStub(DistributedObjectStub* stub);
@@ -286,7 +284,6 @@ protected:
 	int writeObjectMembers(ObjectOutputStream* stream);
 
 	friend class ZoneProcessServer;
-	friend class TransactionalObjectHandle<ZoneProcessServerImplementation*>;
 };
 
 class ZoneProcessServerAdapter : public ManagedServiceAdapter {

@@ -155,8 +155,6 @@ public:
 protected:
 	virtual ~CityVoteTerminalImplementation();
 
-	Object* clone();
-
 	void finalize();
 
 	void _initializeImplementation();
@@ -182,7 +180,6 @@ protected:
 	int writeObjectMembers(ObjectOutputStream* stream);
 
 	friend class CityVoteTerminal;
-	friend class TransactionalObjectHandle<CityVoteTerminalImplementation*>;
 };
 
 class CityVoteTerminalAdapter : public TerminalAdapter {

@@ -215,8 +215,6 @@ public:
 protected:
 	virtual ~WaypointObjectImplementation();
 
-	Object* clone();
-
 	void finalize();
 
 	void _initializeImplementation();
@@ -242,7 +240,6 @@ protected:
 	int writeObjectMembers(ObjectOutputStream* stream);
 
 	friend class WaypointObject;
-	friend class TransactionalObjectHandle<WaypointObjectImplementation*>;
 };
 
 class WaypointObjectAdapter : public IntangibleObjectAdapter {

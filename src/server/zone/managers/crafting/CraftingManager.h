@@ -274,8 +274,6 @@ public:
 protected:
 	virtual ~CraftingManagerImplementation();
 
-	Object* clone();
-
 	void finalize();
 
 	void _initializeImplementation();
@@ -301,7 +299,6 @@ protected:
 	int writeObjectMembers(ObjectOutputStream* stream);
 
 	friend class CraftingManager;
-	friend class TransactionalObjectHandle<CraftingManagerImplementation*>;
 };
 
 class CraftingManagerAdapter : public ZoneManagerAdapter {

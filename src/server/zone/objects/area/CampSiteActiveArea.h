@@ -145,8 +145,6 @@ public:
 protected:
 	virtual ~CampSiteActiveAreaImplementation();
 
-	Object* clone();
-
 	void finalize();
 
 	void _initializeImplementation();
@@ -172,7 +170,6 @@ protected:
 	int writeObjectMembers(ObjectOutputStream* stream);
 
 	friend class CampSiteActiveArea;
-	friend class TransactionalObjectHandle<CampSiteActiveAreaImplementation*>;
 };
 
 class CampSiteActiveAreaAdapter : public ActiveAreaAdapter {

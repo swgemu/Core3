@@ -133,8 +133,6 @@ public:
 protected:
 	virtual ~MigrateStatsSessionImplementation();
 
-	Object* clone();
-
 	void finalize();
 
 	void _initializeImplementation();
@@ -160,7 +158,6 @@ protected:
 	int writeObjectMembers(ObjectOutputStream* stream);
 
 	friend class MigrateStatsSession;
-	friend class TransactionalObjectHandle<MigrateStatsSessionImplementation*>;
 };
 
 class MigrateStatsSessionAdapter : public FacadeAdapter {

@@ -107,8 +107,6 @@ public:
 protected:
 	virtual ~NonPlayerCreatureObjectImplementation();
 
-	Object* clone();
-
 	void finalize();
 
 	void _initializeImplementation();
@@ -134,7 +132,6 @@ protected:
 	int writeObjectMembers(ObjectOutputStream* stream);
 
 	friend class NonPlayerCreatureObject;
-	friend class TransactionalObjectHandle<NonPlayerCreatureObjectImplementation*>;
 };
 
 class NonPlayerCreatureObjectAdapter : public AiAgentAdapter {

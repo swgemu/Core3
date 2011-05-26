@@ -95,8 +95,6 @@ public:
 protected:
 	virtual ~GarageAreaImplementation();
 
-	Object* clone();
-
 	void finalize();
 
 	void _initializeImplementation();
@@ -122,7 +120,6 @@ protected:
 	int writeObjectMembers(ObjectOutputStream* stream);
 
 	friend class GarageArea;
-	friend class TransactionalObjectHandle<GarageAreaImplementation*>;
 };
 
 class GarageAreaAdapter : public ActiveAreaAdapter {

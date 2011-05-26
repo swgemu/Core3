@@ -453,8 +453,6 @@ public:
 protected:
 	virtual ~MissionObjectImplementation();
 
-	Object* clone();
-
 	void finalize();
 
 	void _initializeImplementation();
@@ -480,7 +478,6 @@ protected:
 	int writeObjectMembers(ObjectOutputStream* stream);
 
 	friend class MissionObject;
-	friend class TransactionalObjectHandle<MissionObjectImplementation*>;
 };
 
 class MissionObjectAdapter : public IntangibleObjectAdapter {
