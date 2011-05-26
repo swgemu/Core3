@@ -62,7 +62,7 @@ class ObjectMenuResponse : public ObjectControllerMessage {
 	int listSize;
 	uint8 count;
 
-	RadialMenuItem* root;
+	Reference<RadialMenuItem*> root;
 
 	int indexCount;
 	/**
@@ -102,8 +102,8 @@ public:
 	}
 
 	~ObjectMenuResponse() {
-		delete root;
-		root = NULL;
+		/*delete root;
+		root = NULL;*/
 	}
 
 	RadialMenuItem* getRadialItem(int index) {

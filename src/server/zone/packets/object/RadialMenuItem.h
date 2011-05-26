@@ -59,14 +59,14 @@ which carries forward this exception.
  *  0x03 = Callback
  */
 
-class RadialMenuItem {
+class RadialMenuItem : public Object {
 	uint8 radialID;
 	uint8 callback;
 	UnicodeString text;
 
 	RadialMenuItem* parent;
 
-	Vector<RadialMenuItem*> children;
+	Vector<Reference<RadialMenuItem*> > children;
 
 	int itemIndex;
 
@@ -91,10 +91,10 @@ public:
 	}
 
 	~RadialMenuItem() {
-		for (int i = 0; i < children.size(); ++i)
-			delete children.get(i);
+		/*for (int i = 0; i < children.size(); ++i)
+			delete children.get(i);*/
 
-		children.removeAll();
+		//children.removeAll();
 	}
 
 	void addRadialMenuItem(int itemidx, uint8 radialid, uint8 callback, const UnicodeString& text = "") {

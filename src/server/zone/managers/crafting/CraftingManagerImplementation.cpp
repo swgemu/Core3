@@ -298,6 +298,10 @@ float CraftingManagerImplementation::getWeightedValue(ManufactureSchematic* manu
 
 		ManagedReference<ResourceSpawn* > spawn = resourceContainer->getSpawnObject();
 
+		// FIXME
+		if (spawn == NULL)
+			return 0.0f;
+
 		int combineType = draftslot->getCombineType();
 
 		switch (combineType) {

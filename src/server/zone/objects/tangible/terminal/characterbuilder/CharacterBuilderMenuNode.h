@@ -13,13 +13,13 @@
 #include "server/zone/managers/templates/TemplateManager.h"
 
 class CharacterBuilderMenuNode : public Object {
-	CharacterBuilderMenuNode* parentNode;
+	Reference<CharacterBuilderMenuNode*> parentNode;
 
 	String displayName;
 	String templatePath;
 	uint32 templateCRC;
 
-	SortedVector<CharacterBuilderMenuNode*> childNodes;
+	SortedVector<Reference<CharacterBuilderMenuNode*> > childNodes;
 
 public:
 	CharacterBuilderMenuNode(const String& name) {
