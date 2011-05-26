@@ -167,6 +167,8 @@ using namespace server::zone::objects::scene;
 
 #include "server/zone/managers/planet/PlanetTravelPoint.h"
 
+#include "engine/lua/LuaObject.h"
+
 #include "engine/core/ManagedService.h"
 
 #include "engine/log/Logger.h"
@@ -341,6 +343,8 @@ private:
 	void loadSnapshotObjects();
 
 	void loadTravelFares();
+
+	void loadPlanetObjects(LuaObject* lua);
 
 	void loadLuaConfig();
 

@@ -40,7 +40,6 @@ void PlanetManagerImplementation::initialize() {
 
 	info("Loading planet.");
 
-	//TODO: Load from the TRE files.
 	if (terrainManager->initialize("terrain/" + zone->getZoneName() + ".trn"))
 		info("Loaded terrain file successfully.");
 	else
@@ -48,10 +47,8 @@ void PlanetManagerImplementation::initialize() {
 
 	planetTravelPointList.setZoneName(zone->getZoneName());
 
-	loadLuaConfig();
-
 	loadClientRegions();
-	loadSnapshotObjects();
+	loadLuaConfig();
 	loadTravelFares();
 
 	loadBadgeAreas();
@@ -85,6 +82,12 @@ void PlanetManagerImplementation::loadLuaConfig() {
 		LuaObject planetTravelPointsTable = luaObject.getObjectField("planetTravelPoints");
 		planetTravelPointList.readLuaObject(&planetTravelPointsTable);
 		planetTravelPointsTable.pop();
+
+		loadSnapshotObjects();
+
+		LuaObject planetObjectsTable = luaObject.getObjectField("planetObjects");
+		loadPlanetObjects(&planetObjectsTable);
+		planetObjectsTable.pop();
 	} else {
 		warning("Configuration settings not found.");
 	}
@@ -93,6 +96,40 @@ void PlanetManagerImplementation::loadLuaConfig() {
 
 	delete lua;
 	lua = NULL;
+}
+
+void PlanetManagerImplementation::loadPlanetObjects(LuaObject* luaObject) {
+	if (!luaObject->isValidTable())
+		return;
+
+	for (int i = 1; i <= luaObject->getTableSize(); ++i) {
+		lua_State* L = luaObject->getLuaState();
+		lua_rawgeti(L, -1, i);
+
+		LuaObject planetObject(L);
+
+		String templateFile = planetObject.getStringField("templateFile");
+
+		ManagedReference<SceneObject*> obj = (SceneObject*) ObjectManager::instance()->createObject(templateFile.hashCode(), 0, "");
+
+		if (obj != NULL) {
+			float x = planetObject.getFloatField("x");
+			float y = planetObject.getFloatField("y");
+			float z = planetObject.getFloatField("z");
+			float ox = planetObject.getFloatField("ox");
+			float oy = planetObject.getFloatField("oy");
+			float oz = planetObject.getFloatField("oz");
+			float ow = planetObject.getFloatField("ow");
+			uint64 parentID = planetObject.getLongField("parent");
+
+			obj->initializePosition(x, z, y);
+			obj->setDirection(ow, ox, oy, oz);
+			//TODO: Parent
+			obj->insertToZone(zone);
+		}
+
+		planetObject.pop();
+	}
 }
 
 void PlanetManagerImplementation::loadTravelFares() {

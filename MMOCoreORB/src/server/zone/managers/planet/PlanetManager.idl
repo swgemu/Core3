@@ -72,6 +72,7 @@ include server.zone.templates.snapshot.WorldSnapshotNode;
 include server.zone.templates.snapshot.WorldSnapshotIff;
 include server.zone.managers.planet.PlanetTravelPointList;
 include server.zone.managers.planet.PlanetTravelPoint;
+include engine.lua.LuaObject;
 
 class PlanetManager extends ManagedService implements Logger {
 	@weakReference
@@ -148,6 +149,9 @@ class PlanetManager extends ManagedService implements Logger {
 	private native void loadSnapshotObject(WorldSnapshotNode node, WorldSnapshotIff wsiff, @dereferenced int totalObjects);
 	private native void loadSnapshotObjects();
 	private native void loadTravelFares();
+	
+	@local
+	private native void loadPlanetObjects(LuaObject lua);
 	
 	private native void loadLuaConfig();
 	
