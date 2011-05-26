@@ -28,7 +28,7 @@
  *	PlanetManagerStub
  */
 
-enum {RPC_SCHEDULESHUTTLES__,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_FINALIZE__,RPC_INITIALIZE__,RPC_LOADREGIONS__,RPC_LOADPLAYERREGIONS__,RPC_LOADNOBUILDAREAS__,RPC_LOADBADGEAREAS__,RPC_LOADPERFORMANCELOCATIONS__,RPC_LOADHUNTINGTARGETS__,RPC_LOADRECONLOCATIONS__,RPC_GETTRAVELFARE__STRING_,RPC_SENDPLANETTRAVELPOINTLISTRESPONSE__PLAYERCREATURE_,RPC_GETSTRUCTUREMANAGER__,RPC_GETWEATHERMANAGER__,RPC_GETREGION__FLOAT_FLOAT_,RPC_GETREGIONCOUNT__,RPC_GETNUMBEROFCITIES__,RPC_INCREASENUMBEROFCITIES__,RPC_GETREGION__INT_,RPC_ADDREGION__REGION_,RPC_DROPREGION__REGION_,RPC_HASREGION__STRING_,RPC_ADDPERFORMANCELOCATION__SCENEOBJECT_,RPC_ADDMISSIONNPC__SCENEOBJECT_,RPC_ADDHUNTINGTARGETTEMPLATE__STRING_STRING_INT_,RPC_ADDRECONLOC__SCENEOBJECT_,RPC_ADDINFORMANT__SCENEOBJECT_,RPC_ISEXISTINGPLANETTRAVELPOINT__STRING_,RPC_ISINTERPLANETARYTRAVELALLOWED__STRING_,RPC_ISTRAVELTOLOCATIONPERMITTED__STRING_STRING_STRING_};
+enum {RPC_INITIALIZETRANSIENTMEMBERS__,RPC_FINALIZE__,RPC_INITIALIZE__,RPC_LOADCLIENTREGIONS__,RPC_LOADPLAYERREGIONS__,RPC_LOADNOBUILDAREAS__,RPC_LOADBADGEAREAS__,RPC_LOADPERFORMANCELOCATIONS__,RPC_LOADHUNTINGTARGETS__,RPC_LOADRECONLOCATIONS__,RPC_GETTRAVELFARE__STRING_,RPC_SENDPLANETTRAVELPOINTLISTRESPONSE__PLAYERCREATURE_,RPC_GETSTRUCTUREMANAGER__,RPC_GETWEATHERMANAGER__,RPC_GETREGION__FLOAT_FLOAT_,RPC_GETREGIONCOUNT__,RPC_GETNUMBEROFCITIES__,RPC_INCREASENUMBEROFCITIES__,RPC_GETREGION__INT_,RPC_ADDREGION__REGION_,RPC_DROPREGION__REGION_,RPC_HASREGION__STRING_,RPC_ADDPERFORMANCELOCATION__SCENEOBJECT_,RPC_ADDMISSIONNPC__SCENEOBJECT_,RPC_ADDHUNTINGTARGETTEMPLATE__STRING_STRING_INT_,RPC_ADDRECONLOC__SCENEOBJECT_,RPC_ADDINFORMANT__SCENEOBJECT_,RPC_ISEXISTINGPLANETTRAVELPOINT__STRING_,RPC_ISINTERPLANETARYTRAVELALLOWED__STRING_,RPC_ISTRAVELTOLOCATIONPERMITTED__STRING_STRING_STRING_};
 
 PlanetManager::PlanetManager(Zone* planet, ZoneProcessServer* srv) : ManagedService(DummyConstructorParameter::instance()) {
 	PlanetManagerImplementation* _implementation = new PlanetManagerImplementation(planet, srv);
@@ -42,19 +42,6 @@ PlanetManager::PlanetManager(DummyConstructorParameter* param) : ManagedService(
 PlanetManager::~PlanetManager() {
 }
 
-
-void PlanetManager::scheduleShuttles() {
-	PlanetManagerImplementation* _implementation = (PlanetManagerImplementation*) _getImplementation();
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, RPC_SCHEDULESHUTTLES__);
-
-		method.executeWithVoidReturn();
-	} else
-		_implementation->scheduleShuttles();
-}
 
 void PlanetManager::initializeTransientMembers() {
 	PlanetManagerImplementation* _implementation = (PlanetManagerImplementation*) _getImplementation();
@@ -82,17 +69,17 @@ void PlanetManager::initialize() {
 		_implementation->initialize();
 }
 
-void PlanetManager::loadRegions() {
+void PlanetManager::loadClientRegions() {
 	PlanetManagerImplementation* _implementation = (PlanetManagerImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_LOADREGIONS__);
+		DistributedMethod method(this, RPC_LOADCLIENTREGIONS__);
 
 		method.executeWithVoidReturn();
 	} else
-		_implementation->loadRegions();
+		_implementation->loadClientRegions();
 }
 
 void PlanetManager::loadPlayerRegions() {
@@ -970,9 +957,6 @@ Packet* PlanetManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
-	case RPC_SCHEDULESHUTTLES__:
-		scheduleShuttles();
-		break;
 	case RPC_INITIALIZETRANSIENTMEMBERS__:
 		initializeTransientMembers();
 		break;
@@ -982,8 +966,8 @@ Packet* PlanetManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv
 	case RPC_INITIALIZE__:
 		initialize();
 		break;
-	case RPC_LOADREGIONS__:
-		loadRegions();
+	case RPC_LOADCLIENTREGIONS__:
+		loadClientRegions();
 		break;
 	case RPC_LOADPLAYERREGIONS__:
 		loadPlayerRegions();
@@ -1070,10 +1054,6 @@ Packet* PlanetManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv
 	return resp;
 }
 
-void PlanetManagerAdapter::scheduleShuttles() {
-	((PlanetManagerImplementation*) impl)->scheduleShuttles();
-}
-
 void PlanetManagerAdapter::initializeTransientMembers() {
 	((PlanetManagerImplementation*) impl)->initializeTransientMembers();
 }
@@ -1086,8 +1066,8 @@ void PlanetManagerAdapter::initialize() {
 	((PlanetManagerImplementation*) impl)->initialize();
 }
 
-void PlanetManagerAdapter::loadRegions() {
-	((PlanetManagerImplementation*) impl)->loadRegions();
+void PlanetManagerAdapter::loadClientRegions() {
+	((PlanetManagerImplementation*) impl)->loadClientRegions();
 }
 
 void PlanetManagerAdapter::loadPlayerRegions() {

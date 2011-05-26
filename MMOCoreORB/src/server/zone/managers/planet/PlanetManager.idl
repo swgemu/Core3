@@ -149,8 +149,6 @@ class PlanetManager extends ManagedService implements Logger {
 	private native void loadSnapshotObjects();
 	private native void loadTravelFares();
 	
-	public native void scheduleShuttles();
-
 	private native void loadLuaConfig();
 	
 	public native void initializeTransientMembers();
@@ -158,7 +156,7 @@ class PlanetManager extends ManagedService implements Logger {
 	public native void finalize();
 	
 	public native void initialize();
-	public native void loadRegions();
+	public native void loadClientRegions();
 	public native void loadPlayerRegions();
 	public native void loadNoBuildAreas();
 	public native void loadBadgeAreas();

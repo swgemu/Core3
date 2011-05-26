@@ -190,13 +190,11 @@ class PlanetManager : public ManagedService {
 public:
 	PlanetManager(Zone* planet, ZoneProcessServer* srv);
 
-	void scheduleShuttles();
-
 	void initializeTransientMembers();
 
 	void initialize();
 
-	void loadRegions();
+	void loadClientRegions();
 
 	void loadPlayerRegions();
 
@@ -344,10 +342,6 @@ private:
 
 	void loadTravelFares();
 
-public:
-	void scheduleShuttles();
-
-private:
 	void loadLuaConfig();
 
 public:
@@ -357,7 +351,7 @@ public:
 
 	void initialize();
 
-	void loadRegions();
+	void loadClientRegions();
 
 	void loadPlayerRegions();
 
@@ -476,15 +470,13 @@ public:
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
-	void scheduleShuttles();
-
 	void initializeTransientMembers();
 
 	void finalize();
 
 	void initialize();
 
-	void loadRegions();
+	void loadClientRegions();
 
 	void loadPlayerRegions();
 

@@ -41,7 +41,6 @@
 --which carries forward this exception.
 
 corellia = {
-	loadClientObjects = 1,
 	planetTravelPoints = {
 		{name = "Coronet Shuttle B", x = -329.76605, z = 28, y = -4641.23, interplanetaryTravelAllowed = 0},
 		{name = "Coronet Shuttle A", x = -25.671804, z = 28, y = -4409.7847, interplanetaryTravelAllowed = 0},
@@ -60,7 +59,6 @@ corellia = {
 }
 
 dantooine = {
-	loadClientObjects = 0,
 	planetTravelPoints = {
 		{name = "Dantooine Mining Outpost", x = -635.96887, z = 3, y = 2507.0115, interplanetaryTravelAllowed = 1},
 		{name = "Dantooine Imperial Outpost", x = -4208.6602, z = 3, y = -2350.24, interplanetaryTravelAllowed = 1},
@@ -69,7 +67,6 @@ dantooine = {
 }
 
 dathomir = {
-	loadClientObjects = 0,
 	planetTravelPoints = {
 		{name = "Dathomir Outpost", x = 618.89258, z = 6.039608, y = 3092.0142, interplanetaryTravel = 1},
 		{name = "Science Outpost", x = -49.021923, z = 18, y = -1584.7278, interplanetaryTravel = 1} 
@@ -77,7 +74,6 @@ dathomir = {
 }
 
 endor = {
-	loadClientObjects = 0,
 	planetTravelPoints = {
 		{name = "Smuggler Outpost", x = -950.59241, z = 73, y = 1553.4125, interplanetaryTravelAllowed = 1},
 		{name = "Research Outpost", x = 3201.6599, z = 24, y = -3499.76, interplanetaryTravelAllowed = 1}
@@ -85,14 +81,12 @@ endor = {
 }
 
 lok = {
-	loadClientObjects = 0,
 	planetTravelPoints = {
 		{name = "Nym's Stronghold", x = 478.92676, z = 9, y = 5511.9565, interplanetaryTravelAllowed = 1}
 	}
 }
 
 naboo = {
-	loadClientObjects = 1,
 	planetTravelPoints = {
 		{name = "Keren Starport", x = 1371.5938, z = 13, y = 2747.9043, interplanetaryTravelAllowed = 1},
 		{name = "Keren Shuttleport South", x = 1567.5193, z = 25, y = 2837.8777, interplanetaryTravelAllowed = 0},
@@ -110,7 +104,6 @@ naboo = {
 }
 
 rori = {
-	loadClientObjects = 0,
 	planetTravelPoints = {
 		{name = "Restuss Starport", x = 5301.498, z = 80, y = 6189.1694, interplanetaryTravelAllowed = 1},
 		{name = "Restuss Shuttleport", x = 5220.1011, z = 79.9114, y = 6204.8433, interplanetaryTravelAllowed = 0},
@@ -121,7 +114,6 @@ rori = {
 }
 
 talus = {
-	loadClientObjects = 0,
 	planetTravelPoints = {
 		{name = "Dearic Starport", x = 263.58401, z = 6, y = -2952.1284, interplanetaryTravelAllowed = 1},
 		{name = "Dearic Shuttleport", x = 699.297, z = 6, y = -3041.4199, interplanetaryTravelAllowed = 1},
@@ -132,7 +124,6 @@ talus = {
 }
 
 tatooine = {
-	loadClientObjects = 0,
 	planetTravelPoints = {
 		{name = "Mos Eisley Shuttleport", x = 3416.6914, z = 5, y = -4648.1411, interplanetaryTravelAllowed = 0},
 		{name = "Mos Eisley Starport", x = 3599.894, z = 5, y = -4780.4487, interplanetaryTravelAllowed = 1},
@@ -150,7 +141,6 @@ tatooine = {
 }
 
 yavin4 = {
-	loadClientObjects = 0,
 	planetTravelPoints = {
 		{name = "Yavin IV Labor Outpost", x = -6921.6733, z = 73, y = -5726.5161, interplanetaryTravelAllowed = 1},
 		{name = "Yavin IV Mining Outpost", x = -267.23914, z = 35, y = 4896.3013, interplanetaryTravelAllowed = 1}
@@ -158,13 +148,10 @@ yavin4 = {
 }
 
 space_corellia = {
-	loadClientObjects = 0
 }
 
 tutorial = {
-	loadClientObjects = 0
 }
 
 dungeon1 = {
-	loadClientObjects = 0
 }

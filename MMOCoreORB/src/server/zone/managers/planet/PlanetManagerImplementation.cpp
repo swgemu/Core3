@@ -48,9 +48,10 @@ void PlanetManagerImplementation::initialize() {
 
 	planetTravelPointList.setZoneName(zone->getZoneName());
 
-	loadRegions();
-
 	loadLuaConfig();
+
+	loadClientRegions();
+	loadSnapshotObjects();
 	loadTravelFares();
 
 	loadBadgeAreas();
@@ -61,8 +62,6 @@ void PlanetManagerImplementation::initialize() {
 	loadPlayerRegions();
 
 	loadStaticTangibleObjects();
-
-	scheduleShuttles();
 
 	structureManager = new StructureManager(zone, server);
 	structureManager->loadStructures();
@@ -83,20 +82,16 @@ void PlanetManagerImplementation::loadLuaConfig() {
 	LuaObject luaObject = lua->getGlobalObject(planetName);
 
 	if (luaObject.isValidTable()) {
-		//Have to load the planetTravelPoints first.
 		LuaObject planetTravelPointsTable = luaObject.getObjectField("planetTravelPoints");
 		planetTravelPointList.readLuaObject(&planetTravelPointsTable);
 		planetTravelPointsTable.pop();
 
-		if (luaObject.getIntField("loadClientObjects") > 0)
-			loadSnapshotObjects();
-		else
-			info("Client object loading disabled.");
-
-		luaObject.pop();
+		loadSnapshotObjects();
 	} else {
 		warning("Configuration settings not found.");
 	}
+
+	luaObject.pop();
 
 	delete lua;
 	lua = NULL;
@@ -206,9 +201,6 @@ void PlanetManagerImplementation::loadSnapshotObjects() {
 	info("Loaded " + String::valueOf(totalObjects) + " client objects from world snapshot.", true);
 }
 
-void PlanetManagerImplementation::scheduleShuttles() {
-}
-
 bool PlanetManagerImplementation::isTravelToLocationPermitted(const String& departurePoint, const String& arrivalPlanet, const String& arrivalPoint) {
 	//Check to see that the departure point exists.
 	if (!isExistingPlanetTravelPoint(departurePoint))
@@ -276,7 +268,7 @@ bool PlanetManagerImplementation::isNoBuildArea(float x, float y, StringId& full
 	return noBuildAreaMap.isNoBuildArea(x, y, fullAreaName);
 }
 
-void PlanetManagerImplementation::loadRegions() {
+void PlanetManagerImplementation::loadClientRegions() {
 	TemplateManager* templateManager = TemplateManager::instance();
 
 	IffStream* iffStream = templateManager->openIffFile("datatables/clientregion/" + zone->getZoneName() + ".iff");
