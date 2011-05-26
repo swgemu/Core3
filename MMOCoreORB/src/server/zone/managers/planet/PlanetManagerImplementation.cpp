@@ -85,8 +85,6 @@ void PlanetManagerImplementation::loadLuaConfig() {
 		LuaObject planetTravelPointsTable = luaObject.getObjectField("planetTravelPoints");
 		planetTravelPointList.readLuaObject(&planetTravelPointsTable);
 		planetTravelPointsTable.pop();
-
-		loadSnapshotObjects();
 	} else {
 		warning("Configuration settings not found.");
 	}
