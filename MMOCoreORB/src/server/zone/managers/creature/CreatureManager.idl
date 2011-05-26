@@ -41,11 +41,11 @@ class CreatureManager extends ZoneManager {
 	
 	public void initialize() {
 		setCreatureTemplateManager();
-		/*loadSpawnAreas();
+		loadSpawnAreas();
 		loadTrainers();
 		loadSingleSpawns();
 		loadMissionSpawns();
-		loadInformants();*/
+		loadInformants();
 	}
 	
 	/**

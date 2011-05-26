@@ -15,14 +15,16 @@ namespace zone {
 namespace managers {
 namespace creature {
 
-class SpawnCoordinate : public Coordinate, public Quaternion {
+class SpawnCoordinate : public Object {
 protected:
 	String templateName;
+	Coordinate coordinate;
+	Quaternion quaternion;
 
 public:
 	SpawnCoordinate() {}
 
-	SpawnCoordinate(const SpawnCoordinate& cr) : Object(), Coordinate(cr), Quaternion(cr) {
+	SpawnCoordinate(const SpawnCoordinate& cr) : Object() {
 		templateName = cr.templateName;
 	}
 
@@ -33,8 +35,26 @@ public:
 			return *this;
 
 		templateName = cr.templateName;
+		coordinate = cr.coordinate;
+		quaternion = cr.quaternion;
 
 		return *this;
+	}
+
+	Coordinate* getCoordinate() {
+		return &coordinate;;
+	}
+
+	Quaternion* getDirection() {
+		return &quaternion;
+	}
+
+	void set(float a, float b, float c, float d) {
+		quaternion.set(a, b, c, d);
+	}
+
+	void setPosition(float x, float z, float y) {
+		coordinate.setPosition(x, z, y);
 	}
 
 	String getTemplateName() const {

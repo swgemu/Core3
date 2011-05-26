@@ -49,6 +49,10 @@ public:
 	void clone(Vector<String>& copyVec) {
 		arrangementSlots.clone(copyVec);
 	}
+
+	Vector<String>* getArrangementSlots() {
+		return &arrangementSlots;
+	}
 };
 
 

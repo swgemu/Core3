@@ -46,6 +46,10 @@ public:
 	void clone(Vector<String>& copyVec) {
 		slots.clone(copyVec);
 	}
+
+	Vector<String>* getSlots() {
+		return &slots;
+	}
 };
 
 #endif /* SLOTDESCRIPTOR_H_ */

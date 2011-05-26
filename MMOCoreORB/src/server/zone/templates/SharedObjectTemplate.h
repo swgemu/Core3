@@ -13,9 +13,13 @@
 #include "LuaTemplate.h"
 #include "ChildObject.h"
 #include "server/zone/managers/templates/PlanetMapCategory.h"
+#include "server/zone/templates/slots/SlotDescriptor.h"
+#include "server/zone/templates/slots/ArrangementDescriptor.h"
 
 class PortalLayout;
 class AppearanceTemplate;
+class SlotDescriptor;
+class ArrangementDescriptor;
 
 namespace server {
  namespace zone {
@@ -33,8 +37,10 @@ protected:
 	int containerVolumeLimit;
 
 	String tintPallete;
-	Vector<String> slotDescriptors;
-	Vector<String> arrangementDescriptors;
+	/*Vector<String>* slotDescriptors;
+	Vector<String>* arrangementDescriptors;*/
+	Reference<ArrangementDescriptor*> arrangementDescriptors;
+	Reference<SlotDescriptor*> slotDescriptors;
 	String appearanceFilename;
 	String portalLayoutFilename;
 	int totalCellNumber;
@@ -231,7 +237,7 @@ public:
     AppearanceTemplate* getAppearanceTemplate();
 
     inline Vector<String>* getArrangementDescriptors() {
-		return &arrangementDescriptors;
+		return arrangementDescriptors->getArrangementSlots();
 	}
 
     inline Vector<float>* getScale() {
@@ -247,7 +253,7 @@ public:
 	}
 
     inline Vector<String>* getSlotDescriptors() {
-		return &slotDescriptors;
+		return slotDescriptors->getSlots();
 	}
 
     inline bool getSnapToTerrain() const {
@@ -383,9 +389,9 @@ public:
 		this->portalLayoutFilename = portalLayoutFilename;
 	}
 
-	void setRrangementDescriptors(Vector<String> rrangementDescriptors) {
+	/*void setRrangementDescriptors(Vector<String> rrangementDescriptors) {
 		this->arrangementDescriptors = rrangementDescriptors;
-	}
+	}*/
 
 	void setScale(float scale) {
 		this->scale = scale;
@@ -399,9 +405,9 @@ public:
 		this->sendToClient = sendToClient;
 	}
 
-	void setSlotDescriptors(Vector<String> slotDescriptors) {
+	/*void setSlotDescriptors(Vector<String> slotDescriptors) {
 		this->slotDescriptors = slotDescriptors;
-	}
+	}*/
 
 	void setSnapToTerrain(bool snapToTerrain) {
 		this->snapToTerrain = snapToTerrain;

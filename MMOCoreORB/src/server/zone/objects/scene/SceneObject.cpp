@@ -3356,8 +3356,11 @@ String SceneObjectImplementation::getDetailedDescription() {
 }
 
 int SceneObjectImplementation::getArrangementDescriptorSize() {
-	// server/zone/objects/scene/SceneObject.idl():  		return templateObject.getArrangementDescriptors().size();
+	// server/zone/objects/scene/SceneObject.idl():  		return 
+	if (templateObject->getArrangementDescriptors() != NULL)	// server/zone/objects/scene/SceneObject.idl():  			return templateObject.getArrangementDescriptors().size();
 	return templateObject->getArrangementDescriptors()->size();
+	// server/zone/objects/scene/SceneObject.idl():  		return 0;
+	return 0;
 }
 
 String SceneObjectImplementation::getArrangementDescriptor(int idx) {
@@ -3390,8 +3393,11 @@ SceneObject* SceneObjectImplementation::getSlottedObject(const String& slot) {
 }
 
 int SceneObjectImplementation::getSlotDescriptorSize() {
-	// server/zone/objects/scene/SceneObject.idl():  		return templateObject.getSlotDescriptors().size();
+	// server/zone/objects/scene/SceneObject.idl():  		return 
+	if (templateObject->getSlotDescriptors() != NULL)	// server/zone/objects/scene/SceneObject.idl():  			return templateObject.getSlotDescriptors().size();
 	return templateObject->getSlotDescriptors()->size();
+	// server/zone/objects/scene/SceneObject.idl():  		return 0;
+	return 0;
 }
 
 int SceneObjectImplementation::getContainerObjectsSize() {

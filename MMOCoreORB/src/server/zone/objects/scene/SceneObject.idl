@@ -1080,7 +1080,10 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	}
 
 	public int getArrangementDescriptorSize() {
-		return templateObject.getArrangementDescriptors().size();
+		if (templateObject.getArrangementDescriptors() != null)
+			return templateObject.getArrangementDescriptors().size();
+		
+		return 0;
 	}
 
 	public string getArrangementDescriptor(int idx) {
@@ -1105,7 +1108,10 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	}
 
 	public int getSlotDescriptorSize() {
-		return templateObject.getSlotDescriptors().size();
+		if (templateObject.getSlotDescriptors() != null)
+			return templateObject.getSlotDescriptors().size();
+		
+		return 0;
 	}
 
 	public int getContainerObjectsSize() {

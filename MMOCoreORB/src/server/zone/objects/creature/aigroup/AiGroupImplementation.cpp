@@ -86,9 +86,10 @@ void AiGroupImplementation::setup(StaticSpawnGroup* templ) {
 		SpawnCoordinate protTempl = members.get(i);
 
 		uint32 crc = protTempl.getTemplateName().hashCode();
-		float x = protTempl.getPositionX();
-		float z = protTempl.getPositionZ();
-		float y = protTempl.getPositionY();
+		Coordinate* coordinate = protTempl.getCoordinate();
+		float x = coordinate->getPositionX();
+		float z = coordinate->getPositionZ();
+		float y = coordinate->getPositionY();
 
 		if (cellID == 0) {
 			x += getPositionX();
@@ -100,7 +101,9 @@ void AiGroupImplementation::setup(StaticSpawnGroup* templ) {
 		if (prot == NULL)
 			continue;
 
-		prot->setDirection(protTempl.getW(), protTempl.getX(), protTempl.getY(), protTempl.getZ());
+		Quaternion* dir = protTempl.getDirection();
+
+		prot->setDirection(dir->getW(), dir->getX(), dir->getY(), dir->getZ());
 		prot->setRespawnTimer(templ->getRespawnTime());
 		prot->setHomeLocation(x, z, y, prot->getParent());
 

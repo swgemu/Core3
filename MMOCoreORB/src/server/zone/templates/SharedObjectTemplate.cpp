@@ -29,17 +29,17 @@ void SharedObjectTemplate::readObject(LuaObject* templateData) {
 
 	String arrangementDescriptorFilename = templateData->getStringField("arrangementDescriptorFilename");
 
-	Reference<ArrangementDescriptor*> arrangementDescriptor = templateManager->getArrangementDescriptor(arrangementDescriptorFilename);
+	arrangementDescriptors = templateManager->getArrangementDescriptor(arrangementDescriptorFilename);
 
-	if (arrangementDescriptor != NULL)
-		arrangementDescriptor->clone(arrangementDescriptors);
+	/*if (arrangementDescriptor != NULL)
+		arrangementDescriptor->clone(arrangementDescriptors);*/
 
 	String slotDescriptorFilename = templateData->getStringField("slotDescriptorFilename");
 
-	Reference<SlotDescriptor*> slotDescriptor = templateManager->getSlotDescriptor(slotDescriptorFilename);
+	slotDescriptors = templateManager->getSlotDescriptor(slotDescriptorFilename);
 
-	if (slotDescriptor != NULL)
-		slotDescriptor->clone(slotDescriptors);
+	/*if (slotDescriptor != NULL)
+		slotDescriptor->clone(slotDescriptors);*/
 
 	appearanceFilename = templateData->getStringField("appearanceFilename");
 	appearanceTemplate = NULL;
