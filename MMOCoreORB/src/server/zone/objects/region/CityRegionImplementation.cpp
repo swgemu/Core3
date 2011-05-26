@@ -69,12 +69,6 @@ void CityRegionImplementation::addActiveArea(Zone* zone, float x, float y, float
 
 void CityRegionImplementation::notifyEnter(SceneObject* object) {
 	object->setCityRegion(_this);
-
-	//Check to see if the region already contains the objectid in its region objects
-	if (regionObjects.contains(object->getObjectID()))
-		return;
-
-	Reference<PlanetMapCategory*> category = object->getPlanetMapCategory();
 }
 
 void CityRegionImplementation::notifyExit(SceneObject* object) {
