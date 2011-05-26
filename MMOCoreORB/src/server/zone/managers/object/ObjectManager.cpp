@@ -667,7 +667,7 @@ DistributedObjectStub* ObjectManager::loadPersistentObject(uint64 objectID) {
 
 	try {
 		if (Serializable::getVariable<uint32>("serverObjectCRC", &serverObjectCRC, &objectData)) {
-			object = instantiateSceneObject(serverObjectCRC, objectID, false);
+			object = instantiateSceneObject(serverObjectCRC, objectID, true);
 
 			if (object == NULL) {
 				error("could not load object from database");
