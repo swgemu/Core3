@@ -67,6 +67,7 @@ import engine.util.u3d.Vector3;
 include engine.util.Facade;
 import engine.util.Observable;
 include server.zone.objects.scene.ObserverEventType;
+include server.zone.ZoneReference;
 
 import server.zone.ZoneProcessServer;
 import server.zone.ZoneClientSession;
@@ -85,27 +86,41 @@ include server.zone.managers.templates.PlanetMapCategory;
 include server.zone.managers.templates.TemplateManager;
 import server.zone.templates.SharedObjectTemplate;
 import server.zone.objects.area.ActiveArea;
-import server.zone.objects.scene.components.ZoneComponent;
-import server.zone.objects.scene.components.ObjectMenuComponent;
-import server.zone.objects.scene.components.SceneObjectComponent;
-import server.zone.objects.scene.components.ContainerComponent;
+include server.zone.objects.scene.components.ZoneComponent;
+include server.zone.objects.scene.components.ObjectMenuComponent;
+include server.zone.objects.scene.components.ContainerComponent;
 import server.zone.objects.region.CityRegion;
 
 class SceneObject extends QuadTreeEntry implements Logger {
 	protected transient ZoneProcessServer server;
 	
-	protected ZoneComponent zoneComponent;
-	protected ObjectMenuComponent objectMenuComponent;
-	protected ContainerComponent containerComponent;
-
-	@weakReference
-	protected SceneObject parent;
-
-	/*@dereferenced
+	protected transient ZoneComponent zoneComponent;
+	protected transient ObjectMenuComponent objectMenuComponent;
+	protected transient ContainerComponent containerComponent;
+	
+	@dereferenced
 	protected VectorMap<string, SceneObject> slottedObjects;
 
 	@dereferenced
-	protected VectorMap<unsigned long, SceneObject> containerObjects;*/
+	protected VectorMap<unsigned long, SceneObject> containerObjects;
+	
+	protected unsigned int containerType;
+	protected unsigned int containerVolumeLimit;
+
+	@dereferenced
+	protected ZoneReference zone;
+	
+	@weakReference
+	protected transient CityRegion cityRegion;
+	
+	@dereferenced
+	protected SortedVector<ActiveArea> activeAreas;
+	
+	@dereferenced
+	protected transient SortedVector<SceneObject> notifiedSentObjects;
+
+	@weakReference
+	protected SceneObject parent;
 	
 	@dereferenced
 	protected SortedVector<SceneObject> outdoorChildObjects;
@@ -781,12 +796,12 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	
 	@local
 	public void notifyInsert(QuadTreeEntry entry) {
-		zoneComponent.notifyInsert(entry);
+		zoneComponent.notifyInsert(this, entry);
 	}
 	
 	@local
 	public void notifyDissapear(QuadTreeEntry entry) {
-		zoneComponent.notifyDissapear(entry);
+		zoneComponent.notifyDissapear(this, entry);
 	}
 
 	/**
@@ -889,7 +904,7 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	 * @param objects the vector map that will contain the objects and their occupied slots 
 	 */
 	@local
-	public native void getContainmentObjects(@dereferenced VectorMap<string, SceneObject> objects);
+	public native void getSlottedObjects(@dereferenced VectorMap<string, SceneObject> objects);
 
 	/**
 	 * Returns the object id of the parent of this object
@@ -1005,15 +1020,60 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	}
 	
 	public boolean hasNotifiedSentObject(SceneObject object) {
-		return zoneComponent.hasNotifiedSentObject(object);
+		return notifiedSentObjects.contains(object);
 	}
 	
 	public int addNotifiedSentObject(SceneObject object) {
-		return zoneComponent.addNotifiedSentObject(object);
+		return notifiedSentObjects.put(object);
 	}
 	
 	public void removeNotifiedSentObject(SceneObject object) {
-		zoneComponent.removeNotifiedSentObject(object);
+		notifiedSentObjects.drop(object);
+	}
+	
+	public void addActiveArea(ActiveArea area) {
+		activeAreas.put(area);
+	}
+	
+	public void dropActiveArea(ActiveArea area) {
+		activeAreas.drop(area);
+	}
+	
+	public boolean hasActiveArea(ActiveArea area) {
+		return activeAreas.contains(area);
+	}
+	
+	@local
+	public Vector<ActiveArea> getActiveAreas() {
+		return activeAreas;
+	}
+	
+	public int getActiveAreasSize() {
+		return activeAreas.size();
+	}
+	
+	public ActiveArea getActiveRegion() {
+		for (int i = 0; i < activeAreas.size(); i++) {
+			ActiveArea region = activeAreas.get(i);
+			
+			if (region.isRegion()) {
+				return region;
+			}
+		}
+		
+		return null;
+	}
+	
+	public CityRegion getCityRegion() {
+		return cityRegion;
+	}
+	
+	public void setCityRegion(CityRegion region) {
+		cityRegion = region;
+	}
+	
+	public Zone getZone() {
+		return zone.get();
 	}
 
 	public native unsigned long getObjectID();
@@ -1102,9 +1162,14 @@ class SceneObject extends QuadTreeEntry implements Logger {
 		
 		return false;
 	}
+	
+	@local
+	public VectorMap<string, SceneObject> getSlottedObjects() {
+		return slottedObjects;
+	}
 
 	public SceneObject getSlottedObject(final string slot) {
-		return containerComponent.getSlottedObject(slot);
+		return slottedObjects.get(slot);
 	}
 
 	public int getSlotDescriptorSize() {
@@ -1114,28 +1179,89 @@ class SceneObject extends QuadTreeEntry implements Logger {
 		return 0;
 	}
 
+	public SceneObject getSlottedObject(int idx) {
+		return slottedObjects.get(idx);
+	}
+	
+	public void dropSlottedObject(final string arrengementDescriptor) {
+		slottedObjects.drop(arrengementDescriptor);
+	}
+	
+	public void removeSlottedObject(int index) {
+		slottedObjects.remove(index);
+	}
+	
 	public int getContainerObjectsSize() {
-		return containerComponent.getContainerObjectsSize();
+		return containerObjects.size();
 	}
 	
 	public int getSlottedObjectsSize() {
-		return containerComponent.getSlottedObjectsSize();
+		return slottedObjects.size();
 	}
 	
 	public boolean hasFullContainerObjects() {
-		return containerComponent.hasFullContainerObjects();
+		return containerObjects.size() > containerVolumeLimit || containerObjects.size() == containerVolumeLimit;
 	}
 	
-	public int getContainerVolumeLimit() {
-		return containerComponent.getContainerVolumeLimit();
+	public unsigned int getContainerVolumeLimit() {
+		return containerVolumeLimit;
 	}
 
 	public SceneObject getContainerObject(int idx) {
-		return containerComponent.getContainerObject(idx);
+		return containerObjects.get(idx);
 	}
 	
-	public SceneObject getSlottedObject(int idx) {
-		return containerComponent.getSlottedObject(idx);
+	@local
+	public VectorMap<unsigned long, SceneObject> getContainerObjects() {
+		return containerObjects;
+	}
+	
+	public boolean hasObjectInContainer(unsigned long objectID) {
+		return containerObjects.contains(objectID);
+	}
+	
+	public boolean hasObjectInSlottedContainer(SceneObject object) {
+		int arrangementSize = object.getArrangementDescriptorSize();
+		
+		if (arrangementSize == 0) {
+			return false;
+		}
+		
+		SceneObject obj = slottedObjects.get(object.getArrangementDescriptor(0));
+		
+		if (object == obj) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+	
+	public SceneObject getContainerObject(unsigned long objectID) {
+		return containerObjects.get(objectID);
+	}
+	
+	public void removeAllContainerObjects() {
+		containerObjects.removeAll();
+	}
+	
+	public void putInContainer(SceneObject obj, unsigned long key) {
+		containerObjects.put(key, obj);
+	}
+	
+	public void removeFromContainerObjects(int index) {
+		containerObjects.removeElementAt(index);
+	}
+	
+	public void setContainerVolumeLimit(int lim) {
+		containerVolumeLimit = lim;
+	}
+	
+	public void setContainerType(int type) {
+		containerType = type;
+	}
+	
+	public unsigned int getContainerType() {
+		return containerType;
 	}
 
 	public abstract ZoneClientSession getClient() {
@@ -1154,10 +1280,6 @@ class SceneObject extends QuadTreeEntry implements Logger {
 		return containmentType;
 	}
 
-	public Zone getZone() {
-		return zoneComponent.getZone();
-	}
-
 	public float getDirectionAngle() {
 		return direction.getDegrees();
 	}
@@ -1166,9 +1288,6 @@ class SceneObject extends QuadTreeEntry implements Logger {
 		return direction.getSpecialDegrees();
 	}
 	
-	public unsigned int getContainerType() {
-		return containerComponent.getContainerType();
-	}
 	
 	/**
 	 * Rotates an object by a specified number of degrees.
@@ -1237,14 +1356,12 @@ class SceneObject extends QuadTreeEntry implements Logger {
 		return false;
 	}
 	
-	public ContainerComponent getContainerComponent() {
-		return containerComponent;
-	}
-	
+	@local
 	public ZoneComponent getZoneComponent() {
 		return zoneComponent;
 	}
 	
+	@local
 	public ObjectMenuComponent getObjectMenuComponent() {
 		return objectMenuComponent;
 	}
@@ -1396,14 +1513,6 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	public void setGameObjectType(unsigned int type) {
 		gameObjectType = type;
 	}
-	
-	public void addActiveArea(ActiveArea area) {
-		zoneComponent.addActiveArea(area);
-	}
-	
-	public void dropActiveArea(ActiveArea area) {
-		zoneComponent.dropActiveArea(area);
-	}
 
 	public void setClientObjectCRC(unsigned int objCRC) {
 		clientObjectCRC = objCRC;
@@ -1422,12 +1531,10 @@ class SceneObject extends QuadTreeEntry implements Logger {
 		server = srv;
 	}
 	
+	public native void setZone(Zone zone);
+	
 	@local
 	public native void setObjectName(@dereferenced StringId stringID);
-
-	public void setZone(Zone zon) {
-		zoneComponent.setZone(zon);
-	}
 
 	public void setDirection(float fw, float fx, float fy, float fz) {
 		direction.set(fw, fx, fy, fz);
@@ -1458,23 +1565,6 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	
 	public void setClientObject(boolean val) {
 		staticObject = val;
-	}
-
-	@local
-	public VectorMap<unsigned long, SceneObject> getContainerObjects() {
-		return containerComponent.getContainerObjects();
-	}
-	
-	public boolean hasObjectInContainer(unsigned long objectID) {
-		return containerComponent.hasObjectInContainer(objectID);
-	}
-	
-	public boolean hasObjectInSlottedContainer(SceneObject object) {
-		return containerComponent.hasObjectInSlottedContainer(object);
-	}
-	
-	public SceneObject getContainerObject(unsigned long objectID) {
-		return containerComponent.getContainerObject(objectID);
 	}
 	
 	public abstract native unsigned int getPlanetCRC();
@@ -1511,27 +1601,6 @@ class SceneObject extends QuadTreeEntry implements Logger {
 		return false;
 	}
 
-	@local
-	public Vector<ActiveArea> getActiveAreas() {
-		return zoneComponent.getActiveAreas();
-	}
-	
-	public ActiveArea getActiveRegion() {
-		return zoneComponent.getActiveRegion();
-	}
-	
-	public boolean hasActiveArea(ActiveArea area) {
-		return zoneComponent.hasActiveArea(area);
-	}
-	
-	public CityRegion getCityRegion() {
-		return zoneComponent.getCityRegion();
-	}
-	
-	public void setCityRegion(CityRegion region) {
-		return zoneComponent.setCityRegion(region);
-	}
-	
 	public int getPlanetMapCategoryCRC() {
 		return planetMapCategory;
 	}
@@ -1567,6 +1636,11 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	@local
 	public SortedVector<SceneObject> getOutdoorChildObjects() {
 		return outdoorChildObjects;
+	}
+	
+	@local
+	public SortedVector<SceneObject> getNotifiedSentObjects() {
+		return notifiedSentObjects;
 	}
 	
 	@local

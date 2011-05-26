@@ -36,24 +36,23 @@ void CellObjectImplementation::notifyLoadFromDatabase() {
 
 	//info("CellObjectImplementation::notifyLoadFromDatabase()", true);
 
-	if (containerComponent != NULL) {
-		Vector<ManagedReference<SceneObject*> > tempObjects;
 
-		for (int j = 0; j < getContainerObjectsSize(); ++j) {
-			SceneObject* containerObject = getContainerObject(j);
+	Vector<ManagedReference<SceneObject*> > tempObjects;
 
-			tempObjects.add(containerObject);
-		}
+	for (int j = 0; j < getContainerObjectsSize(); ++j) {
+		SceneObject* containerObject = getContainerObject(j);
 
-		containerComponent->removeAllContainerObjects();
-		//containerObjects.removeAll();
-
-		for (int i = 0; i < tempObjects.size(); ++i) {
-			SceneObject* obj = tempObjects.get(i);
-
-			containerComponent->putInContainer(obj, obj->getObjectID());
-		}
+		tempObjects.add(containerObject);
 	}
+
+	containerObjects.removeAll();
+
+	for (int i = 0; i < tempObjects.size(); ++i) {
+		SceneObject* obj = tempObjects.get(i);
+
+		putInContainer(obj, obj->getObjectID());
+	}
+
 
 	SceneObjectImplementation::notifyLoadFromDatabase();
 }

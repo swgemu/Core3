@@ -63,6 +63,7 @@ which carries forward this exception.
 #include "server/zone/packets/object/DataTransformWithParent.h"
 #include "server/zone/managers/planet/PlanetManager.h"
 #include "server/zone/managers/terrain/TerrainManager.h"
+#include "server/zone/managers/components/ComponentManager.h"
 #include "server/zone/managers/templates/TemplateManager.h"
 #include "server/zone/packets/object/ObjectMenuResponse.h"
 
@@ -91,6 +92,15 @@ void SceneObjectImplementation::initializeTransientMembers() {
 	server = Core::lookupObject<ZoneProcessServer>("ZoneProcessServer");
 
 	templateObject = TemplateManager::instance()->getTemplate(serverObjectCRC);
+
+	String containerComp = templateObject->getContainerComponent();
+	containerComponent = ComponentManager::instance()->getComponent<ContainerComponent*>(containerComp);
+
+	String zoneComponentClassName = templateObject->getZoneComponent();
+	zoneComponent = ComponentManager::instance()->getComponent<ZoneComponent*>(zoneComponentClassName);
+
+	String objectMenuComponentName = templateObject->getObjectMenuComponent();
+	objectMenuComponent = ComponentManager::instance()->getComponent<ObjectMenuComponent*>(objectMenuComponentName);
 
 	movementCounter = 0;
 
@@ -143,17 +153,14 @@ void SceneObjectImplementation::initializePrivateData() {
 
 void SceneObjectImplementation::loadTemplateData(SharedObjectTemplate* templateData) {
 	objectName.setStringId(templateData->getObjectName());
-
 	//detailedDescription.setStringId(templateData->getDetailedDescription());
-
 
 	gameObjectType = templateData->getGameObjectType();
 	clientGameObjectType = templateData->getClientGameObjectType();
 	clientObjectCRC = templateData->getClientObjectCRC();
 
-	/*arrangementDescriptors = templateData->getArrangementDescriptors();
-
-	slotDescriptors = templateData->getSlotDescriptors();*/
+	containerType = templateData->getContainerType();
+	containerVolumeLimit = templateData->getContainerVolumeLimit();
 
 	if (templateData->getCollisionActionBlockFlags() == 255) { //loading meshes for line of sight
 		templateData->getPortalLayout();
@@ -170,48 +177,47 @@ void SceneObjectImplementation::loadTemplateData(SharedObjectTemplate* templateD
 }
 
 void SceneObjectImplementation::createContainerComponent() {
-	int containerType = templateObject->getContainerType();
-	int containerVolumeLimit = templateObject->getContainerVolumeLimit();
 	String containerComp = templateObject->getContainerComponent();
 
-	containerComponent = dynamic_cast<ContainerComponent*>(ObjectManager::instance()->createObject(containerComp, 1, "sceneobjectcomponents"));
+	/*containerComponent = dynamic_cast<ContainerComponent*>(ObjectManager::instance()->createObject(containerComp, 1, "sceneobjectcomponents"));
 	containerComponent->initialize(_this);
 	containerComponent->setContainerVolumeLimit(containerVolumeLimit);
-	containerComponent->setContainerType(containerType);
+	containerComponent->setContainerType(containerType);*/
+
+	//containerComponent = new ContainerComponent();
+	containerComponent = ComponentManager::instance()->getComponent<ContainerComponent*>(containerComp);
 }
 
 void SceneObjectImplementation::createComponents() {
 	if (templateObject != NULL) {
 		String zoneComponentClassName = templateObject->getZoneComponent();
-
-		zoneComponent = dynamic_cast<ZoneComponent*>(ObjectManager::instance()->createObject(zoneComponentClassName, 1, "sceneobjectcomponents"));
-		zoneComponent->initialize(_this);
+		zoneComponent = ComponentManager::instance()->getComponent<ZoneComponent*>(zoneComponentClassName);
+		//zoneComponent->initialize(_this);
 
 		String objectMenuComponentName = templateObject->getObjectMenuComponent();
-
-		objectMenuComponent = dynamic_cast<ObjectMenuComponent*>(ObjectManager::instance()->createObject(objectMenuComponentName, 1, "sceneobjectcomponents"));
-		objectMenuComponent->initialize(_this);
+		objectMenuComponent = ComponentManager::instance()->getComponent<ObjectMenuComponent*>(objectMenuComponentName);
+		//objectMenuComponent->initialize(_this);
 
 		createContainerComponent();
 	} else
 		error("NULL TEMPLATE OBJECT");
 
-	if (zoneComponent == NULL) {
+	/*if (zoneComponent == NULL) {
 		zoneComponent = dynamic_cast<ZoneComponent*>(ObjectManager::instance()->createObject("ZoneComponent", 1, "sceneobjectcomponents"));
 		zoneComponent->initialize(_this);
-	}
+	}*/
 
-	if (objectMenuComponent == NULL) {
+	/*if (objectMenuComponent == NULL) {
 		objectMenuComponent = dynamic_cast<ObjectMenuComponent*>(ObjectManager::instance()->createObject("ObjectMenuComponent", 1, "sceneobjectcomponents"));
 		objectMenuComponent->initialize(_this);
-	}
+	}*/
 
-	if (containerComponent == NULL) {
+	/*if (containerComponent == NULL) {
 		containerComponent = dynamic_cast<ContainerComponent*>(ObjectManager::instance()->createObject("ContainerComponent", 1, "sceneobjectcomponents"));
 		containerComponent->initialize(_this);
 		containerComponent->setContainerVolumeLimit(0);
 		containerComponent->setContainerType(0);
-	}
+	}*/
 }
 
 
@@ -396,15 +402,6 @@ void SceneObjectImplementation::sendWithoutContainerObjectsTo(SceneObject* playe
 void SceneObjectImplementation::notifyLoadFromDatabase() {
 	//Correcting linked list errors becaused of DB errors
 
-	if (zoneComponent != NULL)
-		zoneComponent->setSceneObject(_this);
-
-	if (containerComponent != NULL)
-		containerComponent->setSceneObject(_this);
-
-	if (objectMenuComponent != NULL)
-		objectMenuComponent->setSceneObject(_this);
-
 	if (containerComponent != NULL) {
 		for (int i = 0; i < getSlottedObjectsSize(); ++i) {
 			SceneObject* object = getSlottedObject(i);
@@ -422,13 +419,13 @@ void SceneObjectImplementation::notifyLoadFromDatabase() {
 					int arrangementSize = object->getArrangementDescriptorSize();
 
 					for (int j = 0; j < arrangementSize; ++j)
-						containerComponent->dropSlottedObject(object->getArrangementDescriptor(j));
-						//slottedObjects.drop(object->getArrangementDescriptor(j));
+						//containerComponent->dropSlottedObject(object->getArrangementDescriptor(j));
+						slottedObjects.drop(object->getArrangementDescriptor(j));
 
 					for (int j = 0; j < getSlottedObjectsSize(); ++j) {
 						if (getSlottedObject(j) == object) {
-							//slottedObjects.remove(j);
-							containerComponent->removeSlottedObject(j);
+							slottedObjects.remove(j);
+							//containerComponent->removeSlottedObject(j);
 							--j;
 						}
 					}
@@ -461,8 +458,8 @@ void SceneObjectImplementation::notifyLoadFromDatabase() {
 			} else if (object->getParent() != _this) {
 				if ((inSlotted = object->getParent()->hasObjectInSlottedContainer(object))
 						|| (inContainer = object->getParent()->hasObjectInContainer(object->getObjectID()))) {
-					//containerObjects.removeElementAt(i);
-					containerComponent->removeFromContainerObjects(i);
+					containerObjects.removeElementAt(i);
+					//containerComponent->removeFromContainerObjects(i);
 					--i;
 
 					i = (i < -1) ? -1 : i;
@@ -745,7 +742,7 @@ void SceneObjectImplementation::sendMessage(BasePacket* msg) {
 }
 
 void SceneObjectImplementation::removeFromBuilding(BuildingObject* building) {
-	zoneComponent->removeFromBuilding(building);
+	zoneComponent->removeFromBuilding(_this, building);
 }
 
 void SceneObjectImplementation::updateVehiclePosition() {
@@ -763,7 +760,7 @@ void SceneObjectImplementation::updateVehiclePosition() {
 }
 
 void SceneObjectImplementation::updateZone(bool lightUpdate, bool sendPackets) {
-	zoneComponent->updateZone(lightUpdate, sendPackets);
+	zoneComponent->updateZone(_this, lightUpdate, sendPackets);
 }
 
 void SceneObjectImplementation::notifySelfPositionUpdate() {
@@ -775,27 +772,27 @@ void SceneObjectImplementation::notifyCloseContainer(PlayerCreature* player) {
 }
 
 void SceneObjectImplementation::updateZoneWithParent(SceneObject* newParent, bool lightUpdate, bool sendPackets) {
-	zoneComponent->updateZoneWithParent(newParent, lightUpdate, sendPackets);
+	zoneComponent->updateZoneWithParent(_this, newParent, lightUpdate, sendPackets);
 }
 
 void SceneObjectImplementation::insertToZone(Zone* newZone) {
-	zoneComponent->insertToZone(newZone);
+	zoneComponent->insertToZone(_this, newZone);
 }
 
 void SceneObjectImplementation::teleport(float newPositionX, float newPositionZ, float newPositionY, uint64 parentID) {
-	zoneComponent->teleport(newPositionX, newPositionZ, newPositionY, parentID);
+	zoneComponent->teleport(_this, newPositionX, newPositionZ, newPositionY, parentID);
 }
 
 void SceneObjectImplementation::switchZone(const String& newTerrainName, float newPostionX, float newPositionZ, float newPositionY, uint64 parentID) {
-	zoneComponent->switchZone(newTerrainName, newPostionX, newPositionZ, newPositionY, parentID);
+	zoneComponent->switchZone(_this, newTerrainName, newPostionX, newPositionZ, newPositionY, parentID);
 }
 
 void SceneObjectImplementation::insertToBuilding(BuildingObject* building) {
-	zoneComponent->insertToBuilding(building);
+	zoneComponent->insertToBuilding(_this, building);
 }
 
 void SceneObjectImplementation::removeFromZone() {
-	zoneComponent->removeFromZone();
+	zoneComponent->removeFromZone(_this);
 }
 
 void SceneObjectImplementation::notifyAddedToCloseObjects() {
@@ -807,15 +804,15 @@ void SceneObjectImplementation::notifyRemovedFromCloseObjects() {
 }
 
 int SceneObjectImplementation::canAddObject(SceneObject* object, int containmentType, String& errorDescription) {
-	return containerComponent->canAddObject(object, containmentType, errorDescription);
+	return containerComponent->canAddObject(_this, object, containmentType, errorDescription);
 }
 
 bool SceneObjectImplementation::addObject(SceneObject* object, int containmentType, bool notifyClient) {
-	return containerComponent->addObject(object, containmentType, notifyClient);
+	return containerComponent->addObject(_this, object, containmentType, notifyClient);
 }
 
 bool SceneObjectImplementation::removeObject(SceneObject* object, bool notifyClient) {
-	return containerComponent->removeObject(object, notifyClient);
+	return containerComponent->removeObject(_this, object, notifyClient);
 }
 
 void SceneObjectImplementation::openContainerTo(PlayerCreature* player) {
@@ -831,10 +828,6 @@ void SceneObjectImplementation::closeContainerTo(PlayerCreature* player, bool no
 		ClientOpenContainerMessage* cont = new ClientOpenContainerMessage(_this, true);
 		player->sendMessage(cont);
 	}
-}
-
-void SceneObjectImplementation::getContainmentObjects(VectorMap<String, ManagedReference<SceneObject*> >& objects) {
-	return containerComponent->getContainmentObjects(objects);
 }
 
 SceneObject* SceneObjectImplementation::getRootParent() {
@@ -935,11 +928,11 @@ void SceneObjectImplementation::rotate(int degrees) {
 }
 
 void SceneObjectImplementation::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, PlayerCreature* player) {
-	return objectMenuComponent->fillObjectMenuResponse(menuResponse, player);
+	return objectMenuComponent->fillObjectMenuResponse(_this, menuResponse, player);
 }
 
 int SceneObjectImplementation::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
-	return objectMenuComponent->handleObjectMenuSelect(player, selectedID);
+	return objectMenuComponent->handleObjectMenuSelect(_this, player, selectedID);
 }
 
 void SceneObjectImplementation::setObjectName(StringId& stringID) {
@@ -1088,6 +1081,14 @@ void SceneObjectImplementation::createChildObjects() {
 		obj->insertToZone(getZone());
 		obj->updateToDatabase();
 	}
+}
+
+void SceneObjectImplementation::getSlottedObjects(VectorMap<String, ManagedReference<SceneObject*> >& objects) {
+	objects = slottedObjects;
+}
+
+void SceneObjectImplementation::setZone(Zone* zone) {
+	this->zone = zone;
 }
 
 /*SortedVector<ManagedReference<SceneObject*> >* SceneObjectImplementation::getOutdoorChildObjects() {

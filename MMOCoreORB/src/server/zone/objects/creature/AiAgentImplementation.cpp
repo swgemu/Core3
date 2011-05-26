@@ -96,6 +96,8 @@ void AiAgentImplementation::loadTemplateData(CreatureTemplate* templateData) {
 }
 
 void AiAgentImplementation::initializeTransientMembers() {
+	CreatureObjectImplementation::initializeTransientMembers();
+
 	npcTemplate = NULL;
 
 	SharedObjectTemplate* templ = TemplateManager::instance()->getTemplate(serverObjectCRC);

@@ -36,8 +36,11 @@ void BuildingObjectImplementation::loadTemplateData(SharedObjectTemplate* templa
 
 	SharedBuildingObjectTemplate* buildingData = dynamic_cast<SharedBuildingObjectTemplate*>(templateData);
 
-	totalCellNumber = buildingData->getTotalCellNumber();
+	containerVolumeLimit = 0xFFFFFFFF;
 
+	containerType = 2;
+
+	totalCellNumber = buildingData->getTotalCellNumber();
 
 	optionsBitmask = 0x00000100;
 
@@ -45,17 +48,7 @@ void BuildingObjectImplementation::loadTemplateData(SharedObjectTemplate* templa
 }
 
 void BuildingObjectImplementation::createContainerComponent() {
-	int containerVolumeLimit = 0xFFFFFFFF;
-
-	int containerType = 2;
-
-	/*int containerType = templateObject->getContainerType();
-	int containerVolumeLimit = templateObject->getContainerVolumeLimit();*/
-
-	containerComponent = dynamic_cast<ContainerComponent*>(ObjectManager::instance()->createObject("ContainerComponent", 1, "sceneobjectcomponents"));
-	containerComponent->initialize(_this);
-	containerComponent->setContainerVolumeLimit(containerVolumeLimit);
-	containerComponent->setContainerType(containerType);
+	TangibleObjectImplementation::createContainerComponent();
 }
 
 void BuildingObjectImplementation::notifyLoadFromDatabase() {

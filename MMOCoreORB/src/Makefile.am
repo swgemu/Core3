@@ -57,7 +57,10 @@ LIBS =	$(SYSTEM_LIBS)  \
 	-L../../../src/trelib/lib \
 	-L/usr/local/BerkeleyDB.5.0/lib \
 	-L$(USER_LIBS_PATH)/ -L$(USER_LIBS_PATH)/mysql -L$(USER_LIBS_PATH)/mysql5/mysql -L$(USER_LIBS_PATH)/lua -L$(ENGINE3_PATH)/lib/unix \
+	-L/usr/local/lib \
 	-lmysqlclient -ltreLib -lz -lengine3 -llua -ldb-5.0
+	
+#AM_LDFLAGS = -pagezero_size 10000 -image_base 100000000
 
 bin_PROGRAMS = core3
 
@@ -67,14 +70,6 @@ core3_IDLS =	server/zone/objects/region/CityRegion.cpp \
 				server/zone/objects/ship/ShipObject.cpp \
 				server/zone/objects/intangible/ShipControlDevice.cpp \
 				server/zone/objects/tangible/terminal/spaceship/SpaceshipTerminal.cpp \
-				server/zone/objects/player/components/PlayerContainerComponent.cpp \
-				server/zone/objects/scene/components/ContainerComponent.cpp \
-				server/zone/objects/player/components/PlayerObjectMenuComponent.cpp \
-				server/zone/objects/tangible/components/TangibleObjectMenuComponent.cpp \
-				server/zone/objects/scene/components/ObjectMenuComponent.cpp \
-				server/zone/objects/player/components/PlayerZoneComponent.cpp \
-				server/zone/objects/scene/components/ZoneComponent.cpp \
-				server/zone/objects/scene/components/SceneObjectComponent.cpp \
 				server/login/LoginServer.cpp \
 				server/login/account/Account.cpp \
 				server/zone/ZoneServer.cpp \
@@ -271,13 +266,13 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/ship/ShipObjectImplementation.cpp \
 		server/zone/objects/intangible/ShipControlDeviceImplementation.cpp \
 		server/zone/objects/tangible/terminal/spaceship/SpaceshipTerminalImplementation.cpp \
-		server/zone/objects/player/components/PlayerContainerComponentImplementation.cpp \
-		server/zone/objects/scene/components/ContainerComponentImplementation.cpp \
-		server/zone/objects/player/components/PlayerObjectMenuComponentImplementation.cpp \
-		server/zone/objects/tangible/components/TangibleObjectMenuComponentImplementation.cpp \
-		server/zone/objects/scene/components/ObjectMenuComponentImplementation.cpp \
-		server/zone/objects/player/components/PlayerZoneComponentImplementation.cpp \
-		server/zone/objects/scene/components/ZoneComponentImplementation.cpp \
+		server/zone/objects/player/components/PlayerContainerComponent.cpp \
+		server/zone/objects/scene/components/ContainerComponent.cpp \
+		server/zone/objects/player/components/PlayerObjectMenuComponent.cpp \
+		server/zone/objects/tangible/components/TangibleObjectMenuComponent.cpp \
+		server/zone/objects/scene/components/ObjectMenuComponent.cpp \
+		server/zone/objects/player/components/PlayerZoneComponent.cpp \
+		server/zone/objects/scene/components/ZoneComponent.cpp \
 		server/zone/managers/skill/SkillManager.cpp \
 		server/zone/managers/player/creation/PlayerCreationManager.cpp \
 		tre3/TreeFile.cpp \
@@ -306,6 +301,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/managers/loot/lootgroup/LootGroupObjectImplementation.cpp \
 		server/zone/managers/faction/FactionManager.cpp \
 		server/zone/managers/faction/FactionMap.cpp \
+		server/zone/managers/components/ComponentManager.cpp \
 		server/zone/managers/planet/HeightMap.cpp \
 		server/zone/managers/object/ObjectManager.cpp \
 		server/zone/managers/object/ObjectVersionUpdateManager.cpp \

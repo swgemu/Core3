@@ -150,70 +150,6 @@ using namespace server::zone::objects::area;
 namespace server {
 namespace zone {
 namespace objects {
-namespace scene {
-namespace components {
-
-class ZoneComponent;
-
-} // namespace components
-} // namespace scene
-} // namespace objects
-} // namespace zone
-} // namespace server
-
-using namespace server::zone::objects::scene::components;
-
-namespace server {
-namespace zone {
-namespace objects {
-namespace scene {
-namespace components {
-
-class ObjectMenuComponent;
-
-} // namespace components
-} // namespace scene
-} // namespace objects
-} // namespace zone
-} // namespace server
-
-using namespace server::zone::objects::scene::components;
-
-namespace server {
-namespace zone {
-namespace objects {
-namespace scene {
-namespace components {
-
-class SceneObjectComponent;
-
-} // namespace components
-} // namespace scene
-} // namespace objects
-} // namespace zone
-} // namespace server
-
-using namespace server::zone::objects::scene::components;
-
-namespace server {
-namespace zone {
-namespace objects {
-namespace scene {
-namespace components {
-
-class ContainerComponent;
-
-} // namespace components
-} // namespace scene
-} // namespace objects
-} // namespace zone
-} // namespace server
-
-using namespace server::zone::objects::scene::components;
-
-namespace server {
-namespace zone {
-namespace objects {
 namespace region {
 
 class CityRegion;
@@ -231,6 +167,8 @@ using namespace server::zone::objects::region;
 
 #include "server/zone/objects/scene/ObserverEventType.h"
 
+#include "server/zone/ZoneReference.h"
+
 #include "server/zone/objects/scene/variables/StringId.h"
 
 #include "server/zone/objects/scene/TransferErrorCode.h"
@@ -242,6 +180,12 @@ using namespace server::zone::objects::region;
 #include "server/zone/managers/templates/PlanetMapCategory.h"
 
 #include "server/zone/managers/templates/TemplateManager.h"
+
+#include "server/zone/objects/scene/components/ZoneComponent.h"
+
+#include "server/zone/objects/scene/components/ObjectMenuComponent.h"
+
+#include "server/zone/objects/scene/components/ContainerComponent.h"
 
 #include "engine/log/Logger.h"
 
@@ -914,7 +858,7 @@ public:
 
 	int compareTo(SceneObject* obj);
 
-	void getContainmentObjects(VectorMap<String, ManagedReference<SceneObject* > >& objects);
+	void getSlottedObjects(VectorMap<String, ManagedReference<SceneObject* > >& objects);
 
 	unsigned long long getParentID();
 
@@ -957,6 +901,24 @@ public:
 	int addNotifiedSentObject(SceneObject* object);
 
 	void removeNotifiedSentObject(SceneObject* object);
+
+	void addActiveArea(ActiveArea* area);
+
+	void dropActiveArea(ActiveArea* area);
+
+	bool hasActiveArea(ActiveArea* area);
+
+	Vector<ManagedReference<ActiveArea* > >* getActiveAreas();
+
+	int getActiveAreasSize();
+
+	ActiveArea* getActiveRegion();
+
+	CityRegion* getCityRegion();
+
+	void setCityRegion(CityRegion* region);
+
+	Zone* getZone();
 
 	unsigned long long getObjectID();
 
@@ -1002,9 +964,17 @@ public:
 
 	bool hasSlotDescriptor(const String& descr);
 
+	VectorMap<String, ManagedReference<SceneObject* > >* getSlottedObjects();
+
 	SceneObject* getSlottedObject(const String& slot);
 
 	int getSlotDescriptorSize();
+
+	SceneObject* getSlottedObject(int idx);
+
+	void dropSlottedObject(const String& arrengementDescriptor);
+
+	void removeSlottedObject(int index);
 
 	int getContainerObjectsSize();
 
@@ -1012,11 +982,29 @@ public:
 
 	bool hasFullContainerObjects();
 
-	int getContainerVolumeLimit();
+	unsigned int getContainerVolumeLimit();
 
 	SceneObject* getContainerObject(int idx);
 
-	SceneObject* getSlottedObject(int idx);
+	VectorMap<unsigned long long, ManagedReference<SceneObject* > >* getContainerObjects();
+
+	bool hasObjectInContainer(unsigned long long objectID);
+
+	bool hasObjectInSlottedContainer(SceneObject* object);
+
+	SceneObject* getContainerObject(unsigned long long objectID);
+
+	void removeAllContainerObjects();
+
+	void putInContainer(SceneObject* obj, unsigned long long key);
+
+	void removeFromContainerObjects(int index);
+
+	void setContainerVolumeLimit(int lim);
+
+	void setContainerType(int type);
+
+	unsigned int getContainerType();
 
 	ZoneClientSession* getClient();
 
@@ -1026,13 +1014,9 @@ public:
 
 	unsigned int getContainmentType();
 
-	Zone* getZone();
-
 	float getDirectionAngle();
 
 	float getSpecialDirectionAngle();
-
-	unsigned int getContainerType();
 
 	void rotate(int degrees);
 
@@ -1059,8 +1043,6 @@ public:
 	bool isPlayerCreature();
 
 	bool isVendor();
-
-	ContainerComponent* getContainerComponent();
 
 	ZoneComponent* getZoneComponent();
 
@@ -1140,10 +1122,6 @@ public:
 
 	void setGameObjectType(unsigned int type);
 
-	void addActiveArea(ActiveArea* area);
-
-	void dropActiveArea(ActiveArea* area);
-
 	void setClientObjectCRC(unsigned int objCRC);
 
 	void setServerObjectCRC(unsigned int objCRC);
@@ -1152,9 +1130,9 @@ public:
 
 	void setZoneProcessServer(ZoneProcessServer* srv);
 
-	void setObjectName(StringId& stringID);
+	void setZone(Zone* zone);
 
-	void setZone(Zone* zon);
+	void setObjectName(StringId& stringID);
 
 	void setDirection(float fw, float fx, float fy, float fz);
 
@@ -1171,14 +1149,6 @@ public:
 	void setLoggingName(const String& name);
 
 	void setClientObject(bool val);
-
-	VectorMap<unsigned long long, ManagedReference<SceneObject* > >* getContainerObjects();
-
-	bool hasObjectInContainer(unsigned long long objectID);
-
-	bool hasObjectInSlottedContainer(SceneObject* object);
-
-	SceneObject* getContainerObject(unsigned long long objectID);
 
 	unsigned int getPlanetCRC();
 
@@ -1198,16 +1168,6 @@ public:
 
 	bool isMissionObject();
 
-	Vector<ManagedReference<ActiveArea* > >* getActiveAreas();
-
-	ActiveArea* getActiveRegion();
-
-	bool hasActiveArea(ActiveArea* area);
-
-	CityRegion* getCityRegion();
-
-	void setCityRegion(CityRegion* region);
-
 	int getPlanetMapCategoryCRC();
 
 	int getPlanetMapSubCategoryCRC();
@@ -1221,6 +1181,8 @@ public:
 	PlanetMapCategory* getPlanetMapSubCategory();
 
 	SortedVector<ManagedReference<SceneObject* > >* getOutdoorChildObjects();
+
+	SortedVector<ManagedReference<SceneObject* > >* getNotifiedSentObjects();
 
 	SharedObjectTemplate* getObjectTemplate();
 
@@ -1263,11 +1225,27 @@ class SceneObjectImplementation : public QuadTreeEntryImplementation, public Log
 protected:
 	ManagedReference<ZoneProcessServer* > server;
 
-	ManagedReference<ZoneComponent* > zoneComponent;
+	Reference<ZoneComponent* > zoneComponent;
 
-	ManagedReference<ObjectMenuComponent* > objectMenuComponent;
+	Reference<ObjectMenuComponent* > objectMenuComponent;
 
-	ManagedReference<ContainerComponent* > containerComponent;
+	Reference<ContainerComponent* > containerComponent;
+
+	VectorMap<String, ManagedReference<SceneObject* > > slottedObjects;
+
+	VectorMap<unsigned long long, ManagedReference<SceneObject* > > containerObjects;
+
+	unsigned int containerType;
+
+	unsigned int containerVolumeLimit;
+
+	ZoneReference zone;
+
+	ManagedWeakReference<CityRegion* > cityRegion;
+
+	SortedVector<ManagedReference<ActiveArea* > > activeAreas;
+
+	SortedVector<ManagedReference<SceneObject* > > notifiedSentObjects;
 
 	ManagedWeakReference<SceneObject* > parent;
 
@@ -1934,7 +1912,7 @@ public:
 
 	int compareTo(SceneObject* obj);
 
-	void getContainmentObjects(VectorMap<String, ManagedReference<SceneObject* > >& objects);
+	void getSlottedObjects(VectorMap<String, ManagedReference<SceneObject* > >& objects);
 
 	unsigned long long getParentID();
 
@@ -1977,6 +1955,24 @@ public:
 	int addNotifiedSentObject(SceneObject* object);
 
 	void removeNotifiedSentObject(SceneObject* object);
+
+	void addActiveArea(ActiveArea* area);
+
+	void dropActiveArea(ActiveArea* area);
+
+	bool hasActiveArea(ActiveArea* area);
+
+	Vector<ManagedReference<ActiveArea* > >* getActiveAreas();
+
+	int getActiveAreasSize();
+
+	ActiveArea* getActiveRegion();
+
+	CityRegion* getCityRegion();
+
+	void setCityRegion(CityRegion* region);
+
+	Zone* getZone();
 
 	unsigned long long getObjectID();
 
@@ -2022,9 +2018,17 @@ public:
 
 	bool hasSlotDescriptor(const String& descr);
 
+	VectorMap<String, ManagedReference<SceneObject* > >* getSlottedObjects();
+
 	SceneObject* getSlottedObject(const String& slot);
 
 	int getSlotDescriptorSize();
+
+	SceneObject* getSlottedObject(int idx);
+
+	void dropSlottedObject(const String& arrengementDescriptor);
+
+	void removeSlottedObject(int index);
 
 	int getContainerObjectsSize();
 
@@ -2032,11 +2036,29 @@ public:
 
 	bool hasFullContainerObjects();
 
-	int getContainerVolumeLimit();
+	unsigned int getContainerVolumeLimit();
 
 	SceneObject* getContainerObject(int idx);
 
-	SceneObject* getSlottedObject(int idx);
+	VectorMap<unsigned long long, ManagedReference<SceneObject* > >* getContainerObjects();
+
+	bool hasObjectInContainer(unsigned long long objectID);
+
+	bool hasObjectInSlottedContainer(SceneObject* object);
+
+	SceneObject* getContainerObject(unsigned long long objectID);
+
+	void removeAllContainerObjects();
+
+	void putInContainer(SceneObject* obj, unsigned long long key);
+
+	void removeFromContainerObjects(int index);
+
+	void setContainerVolumeLimit(int lim);
+
+	void setContainerType(int type);
+
+	unsigned int getContainerType();
 
 	virtual ZoneClientSession* getClient();
 
@@ -2046,13 +2068,9 @@ public:
 
 	unsigned int getContainmentType();
 
-	Zone* getZone();
-
 	float getDirectionAngle();
 
 	float getSpecialDirectionAngle();
-
-	unsigned int getContainerType();
 
 	void rotate(int degrees);
 
@@ -2079,8 +2097,6 @@ public:
 	bool isPlayerCreature();
 
 	virtual bool isVendor();
-
-	ContainerComponent* getContainerComponent();
 
 	ZoneComponent* getZoneComponent();
 
@@ -2160,10 +2176,6 @@ public:
 
 	void setGameObjectType(unsigned int type);
 
-	void addActiveArea(ActiveArea* area);
-
-	void dropActiveArea(ActiveArea* area);
-
 	void setClientObjectCRC(unsigned int objCRC);
 
 	void setServerObjectCRC(unsigned int objCRC);
@@ -2172,9 +2184,9 @@ public:
 
 	void setZoneProcessServer(ZoneProcessServer* srv);
 
-	void setObjectName(StringId& stringID);
+	void setZone(Zone* zone);
 
-	void setZone(Zone* zon);
+	void setObjectName(StringId& stringID);
 
 	void setDirection(float fw, float fx, float fy, float fz);
 
@@ -2191,14 +2203,6 @@ public:
 	void setLoggingName(const String& name);
 
 	void setClientObject(bool val);
-
-	VectorMap<unsigned long long, ManagedReference<SceneObject* > >* getContainerObjects();
-
-	bool hasObjectInContainer(unsigned long long objectID);
-
-	bool hasObjectInSlottedContainer(SceneObject* object);
-
-	SceneObject* getContainerObject(unsigned long long objectID);
 
 	virtual unsigned int getPlanetCRC();
 
@@ -2218,16 +2222,6 @@ public:
 
 	virtual bool isMissionObject();
 
-	Vector<ManagedReference<ActiveArea* > >* getActiveAreas();
-
-	ActiveArea* getActiveRegion();
-
-	bool hasActiveArea(ActiveArea* area);
-
-	CityRegion* getCityRegion();
-
-	void setCityRegion(CityRegion* region);
-
 	int getPlanetMapCategoryCRC();
 
 	int getPlanetMapSubCategoryCRC();
@@ -2241,6 +2235,8 @@ public:
 	PlanetMapCategory* getPlanetMapSubCategory();
 
 	SortedVector<ManagedReference<SceneObject* > >* getOutdoorChildObjects();
+
+	SortedVector<ManagedReference<SceneObject* > >* getNotifiedSentObjects();
 
 	SharedObjectTemplate* getObjectTemplate();
 
@@ -2419,6 +2415,22 @@ public:
 
 	void removeNotifiedSentObject(SceneObject* object);
 
+	void addActiveArea(ActiveArea* area);
+
+	void dropActiveArea(ActiveArea* area);
+
+	bool hasActiveArea(ActiveArea* area);
+
+	int getActiveAreasSize();
+
+	ActiveArea* getActiveRegion();
+
+	CityRegion* getCityRegion();
+
+	void setCityRegion(CityRegion* region);
+
+	Zone* getZone();
+
 	unsigned long long getObjectID();
 
 	float getWorldPositionX();
@@ -2457,17 +2469,39 @@ public:
 
 	int getSlotDescriptorSize();
 
+	SceneObject* getSlottedObject(int idx);
+
+	void dropSlottedObject(const String& arrengementDescriptor);
+
+	void removeSlottedObject(int index);
+
 	int getContainerObjectsSize();
 
 	int getSlottedObjectsSize();
 
 	bool hasFullContainerObjects();
 
-	int getContainerVolumeLimit();
+	unsigned int getContainerVolumeLimit();
 
 	SceneObject* getContainerObject(int idx);
 
-	SceneObject* getSlottedObject(int idx);
+	bool hasObjectInContainer(unsigned long long objectID);
+
+	bool hasObjectInSlottedContainer(SceneObject* object);
+
+	SceneObject* getContainerObject(unsigned long long objectID);
+
+	void removeAllContainerObjects();
+
+	void putInContainer(SceneObject* obj, unsigned long long key);
+
+	void removeFromContainerObjects(int index);
+
+	void setContainerVolumeLimit(int lim);
+
+	void setContainerType(int type);
+
+	unsigned int getContainerType();
 
 	ZoneClientSession* getClient();
 
@@ -2477,13 +2511,9 @@ public:
 
 	unsigned int getContainmentType();
 
-	Zone* getZone();
-
 	float getDirectionAngle();
 
 	float getSpecialDirectionAngle();
-
-	unsigned int getContainerType();
 
 	void rotate(int degrees);
 
@@ -2510,12 +2540,6 @@ public:
 	bool isPlayerCreature();
 
 	bool isVendor();
-
-	ContainerComponent* getContainerComponent();
-
-	ZoneComponent* getZoneComponent();
-
-	ObjectMenuComponent* getObjectMenuComponent();
 
 	bool isShuttleInstallation();
 
@@ -2591,17 +2615,13 @@ public:
 
 	void setGameObjectType(unsigned int type);
 
-	void addActiveArea(ActiveArea* area);
-
-	void dropActiveArea(ActiveArea* area);
-
 	void setClientObjectCRC(unsigned int objCRC);
 
 	void setServerObjectCRC(unsigned int objCRC);
 
 	void setParent(SceneObject* par);
 
-	void setZone(Zone* zon);
+	void setZone(Zone* zone);
 
 	void setDirection(float fw, float fx, float fy, float fz);
 
@@ -2616,12 +2636,6 @@ public:
 	void setLoggingName(const String& name);
 
 	void setClientObject(bool val);
-
-	bool hasObjectInContainer(unsigned long long objectID);
-
-	bool hasObjectInSlottedContainer(SceneObject* object);
-
-	SceneObject* getContainerObject(unsigned long long objectID);
 
 	unsigned int getPlanetCRC();
 
@@ -2641,14 +2655,6 @@ public:
 
 	bool isMissionObject();
 
-	ActiveArea* getActiveRegion();
-
-	bool hasActiveArea(ActiveArea* area);
-
-	CityRegion* getCityRegion();
-
-	void setCityRegion(CityRegion* region);
-
 	int getPlanetMapCategoryCRC();
 
 	int getPlanetMapSubCategoryCRC();
@@ -2663,6 +2669,7 @@ protected:
 	String _param0_switchZone__String_float_float_float_long_;
 	String _param0_hasSlotDescriptor__String_;
 	String _param0_getSlottedObject__String_;
+	String _param0_dropSlottedObject__String_;
 	String _param0_setLoggingName__String_;
 };
 

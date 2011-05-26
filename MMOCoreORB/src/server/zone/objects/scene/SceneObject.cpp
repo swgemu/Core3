@@ -26,21 +26,13 @@
 
 #include "server/zone/objects/area/ActiveArea.h"
 
-#include "server/zone/objects/scene/components/ZoneComponent.h"
-
-#include "server/zone/objects/scene/components/ObjectMenuComponent.h"
-
-#include "server/zone/objects/scene/components/SceneObjectComponent.h"
-
-#include "server/zone/objects/scene/components/ContainerComponent.h"
-
 #include "server/zone/objects/region/CityRegion.h"
 
 /*
  *	SceneObjectStub
  */
 
-enum {RPC_FINALIZE__ = 6,RPC_INITIALIZEPRIVATEDATA__,RPC_CREATECOMPONENTS__,RPC_CREATECONTAINERCOMPONENT__,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_NOTIFYLOADFROMDATABASE__,RPC_INFO__STRING_BOOL_,RPC_ERROR__STRING_,RPC_INRANGEOBJECTS__INT_FLOAT_,RPC_ISINRANGE__SCENEOBJECT_FLOAT_,RPC_ADDOBJECT__SCENEOBJECT_INT_BOOL_,RPC_REMOVEOBJECT__SCENEOBJECT_BOOL_,RPC_CANADDOBJECT__SCENEOBJECT_INT_STRING_,RPC_SYNCHRONIZEDUILISTEN__SCENEOBJECT_INT_,RPC_SYNCHRONIZEDUISTOPLISTEN__SCENEOBJECT_INT_,RPC_UPDATETODATABASE__,RPC_UPDATETODATABASEWITHOUTCHILDREN__,RPC_UPDATETODATABASEALLOBJECTS__BOOL_,RPC_DESTROYOBJECTFROMDATABASE__BOOL_,RPC_CANBEDESTROYED__PLAYERCREATURE_,RPC_CREATE__ZONECLIENTSESSION_,RPC_DESTROY__ZONECLIENTSESSION_,RPC_CLOSE__ZONECLIENTSESSION_,RPC_LINK__ZONECLIENTSESSION_INT_,RPC_LINK__LONG_INT_,RPC_SENDTO__SCENEOBJECT_BOOL_,RPC_SENDWITHOUTPARENTTO__SCENEOBJECT_,RPC_SENDWITHOUTCONTAINEROBJECTSTO__SCENEOBJECT_,RPC_SENDDESTROYTO__SCENEOBJECT_,RPC_SENDBASELINESTO__SCENEOBJECT_,RPC_SENDCONTAINEROBJECTSTO__SCENEOBJECT_,RPC_SENDSLOTTEDOBJECTSTO__SCENEOBJECT_,RPC_SENDTOOWNER__BOOL_,RPC_SENDATTRIBUTELISTTO__PLAYERCREATURE_,RPC_SETCUSTOMOBJECTNAME__UNICODESTRING_BOOL_,RPC_OPENCONTAINERTO__PLAYERCREATURE_,RPC_CLOSECONTAINERTO__PLAYERCREATURE_BOOL_,RPC_INSERTTOZONE__ZONE_,RPC_INSERTTOBUILDING__BUILDINGOBJECT_,RPC_SWITCHZONE__STRING_FLOAT_FLOAT_FLOAT_LONG_,RPC_TELEPORT__FLOAT_FLOAT_FLOAT_LONG_,RPC_REMOVEFROMZONE__,RPC_REMOVEFROMBUILDING__BUILDINGOBJECT_,RPC_UPDATEZONE__BOOL_BOOL_,RPC_UPDATEZONEWITHPARENT__SCENEOBJECT_BOOL_BOOL_,RPC_BROADCASTMESSAGE__BASEPACKET_BOOL_BOOL_,RPC_BROADCASTOBJECT__SCENEOBJECT_BOOL_,RPC_BROADCASTDESTROY__SCENEOBJECT_BOOL_,RPC_SENDMESSAGE__BASEPACKET_,RPC_COMPARETO__SCENEOBJECT_,RPC_GETPARENTID__,RPC_GETACTIVESESSION__INT_,RPC_ADDACTIVESESSION__INT_FACADE_,RPC_CONTAINSACTIVESESSION__INT_,RPC_DROPACTIVESESSION__INT_,RPC_GETACTIVESESSIONSCOUNT__,RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_,RPC_NOTIFYADDEDTOCLOSEOBJECTS__,RPC_NOTIFYREMOVEDFROMCLOSEOBJECTS__,RPC_GETDISTANCETO__SCENEOBJECT_,RPC_UPDATEVEHICLEPOSITION__,RPC_NOTIFYOBJECTINSERTED__SCENEOBJECT_,RPC_NOTIFYOBJECTREMOVED__SCENEOBJECT_,RPC_HASNOTIFIEDSENTOBJECT__SCENEOBJECT_,RPC_ADDNOTIFIEDSENTOBJECT__SCENEOBJECT_,RPC_REMOVENOTIFIEDSENTOBJECT__SCENEOBJECT_,RPC_GETOBJECTID__,RPC_GETWORLDPOSITIONX__,RPC_GETWORLDPOSITIONY__,RPC_GETWORLDPOSITIONZ__,RPC_GETDIRECTIONX__,RPC_GETDIRECTIONZ__,RPC_GETDIRECTIONY__,RPC_GETDIRECTIONW__,RPC_GETCLIENTOBJECTCRC__,RPC_GETSERVEROBJECTCRC__,RPC_ISWAYPOINTOBJECT__,RPC_GETOBJECTNAMESTRINGIDFILE__,RPC_GETOBJECTNAMESTRINGIDNAME__,RPC_GETARRANGEMENTDESCRIPTORSIZE__,RPC_GETARRANGEMENTDESCRIPTOR__INT_,RPC_GETSLOTDESCRIPTOR__INT_,RPC_HASSLOTDESCRIPTOR__STRING_,RPC_GETSLOTTEDOBJECT__STRING_,RPC_GETSLOTDESCRIPTORSIZE__,RPC_GETCONTAINEROBJECTSSIZE__,RPC_GETSLOTTEDOBJECTSSIZE__,RPC_HASFULLCONTAINEROBJECTS__,RPC_GETCONTAINERVOLUMELIMIT__,RPC_GETCONTAINEROBJECT__INT_,RPC_GETSLOTTEDOBJECT__INT_,RPC_GETCLIENT__,RPC_GETGAMEOBJECTTYPE__,RPC_GETCLIENTGAMEOBJECTTYPE__,RPC_GETCONTAINMENTTYPE__,RPC_GETZONE__,RPC_GETDIRECTIONANGLE__,RPC_GETSPECIALDIRECTIONANGLE__,RPC_GETCONTAINERTYPE__,RPC_ROTATE__INT_,RPC_NOTIFYSELFPOSITIONUPDATE__,RPC_NOTIFYCLOSECONTAINER__PLAYERCREATURE_,RPC_GETMOVEMENTCOUNTER__,RPC_GETPARENT__,RPC_GETZONESERVER__,RPC_GETROOTPARENT__,RPC_GETPARENTRECURSIVELY__INT_,RPC_ISASUBCHILDOF__SCENEOBJECT_,RPC_GETCUSTOMOBJECTNAME__,RPC_GETLOGGINGNAME__,RPC_ISPLAYERCREATURE__,RPC_ISVENDOR__,RPC_GETCONTAINERCOMPONENT__,RPC_GETZONECOMPONENT__,RPC_GETOBJECTMENUCOMPONENT__,RPC_ISSHUTTLEINSTALLATION__,RPC_ISPLAYEROBJECT__,RPC_ISACTIVEAREA__,RPC_ISREGION__,RPC_ISCREATUREOBJECT__,RPC_ISVEHICLEOBJECT__,RPC_ISBUILDINGOBJECT__,RPC_ISCLONINGBUILDINGOBJECT__,RPC_ISGARAGE__,RPC_ISWEAPONOBJECT__,RPC_ISWEARABLEOBJECT__,RPC_ISARMOROBJECT__,RPC_ISPSGARMOROBJECT__,RPC_ISCELLOBJECT__,RPC_ISTANGIBLEOBJECT__,RPC_ISRESOURCECONTAINER__,RPC_ISCOMPONENT__,RPC_ISINTANGIBLEOBJECT__,RPC_ISINSTRUMENT__,RPC_ISINSTALLATIONOBJECT__,RPC_ISCITYTERMINAL__,RPC_ISCITYVOTETERMINAL__,RPC_ISFACTORY__,RPC_ISFACTORYCRATE__,RPC_ISFISHINGPOLEOBJECT__,RPC_ISDEEDOBJECT__,RPC_ISVEHICLEDEEDOBJECT__,RPC_ISBUILDINGDEED__,RPC_ISSIGNOBJECT__,RPC_ISINSTALLATIONDEED__,RPC_ISCRAFTINGTOOL__,RPC_ISCRAFTINGSTATION__,RPC_ISMANUFACTURESCHEMATIC__,RPC_ISSTRUCTUREOBJECT__,RPC_ISFISHINGBAIT__,RPC_ISATTACHMENT__,RPC_SETGAMEOBJECTTYPE__INT_,RPC_ADDACTIVEAREA__ACTIVEAREA_,RPC_DROPACTIVEAREA__ACTIVEAREA_,RPC_SETCLIENTOBJECTCRC__INT_,RPC_SETSERVEROBJECTCRC__INT_,RPC_SETPARENT__SCENEOBJECT_,RPC_SETZONE__ZONE_,RPC_SETDIRECTION__FLOAT_FLOAT_FLOAT_FLOAT_,RPC_SETDIRECTION__FLOAT_,RPC_SETMOVEMENTCOUNTER__INT_,RPC_INCREMENTMOVEMENTCOUNTER__,RPC_SETCONTAINMENTTYPE__INT_,RPC_SETLOGGINGNAME__STRING_,RPC_SETCLIENTOBJECT__BOOL_,RPC_HASOBJECTINCONTAINER__LONG_,RPC_HASOBJECTINSLOTTEDCONTAINER__SCENEOBJECT_,RPC_GETCONTAINEROBJECT__LONG_,RPC_GETPLANETCRC__,RPC_ISSTATICOBJECT__,RPC_ISCONTAINEROBJECT__,RPC_ISTERMINAL__,RPC_ISGROUPOBJECT__,RPC_ISGUILDOBJECT__,RPC_ISCONTROLDEVICE__,RPC_ISMISSIONTERMINAL__,RPC_ISMISSIONOBJECT__,RPC_GETACTIVEREGION__,RPC_HASACTIVEAREA__ACTIVEAREA_,RPC_GETCITYREGION__,RPC_SETCITYREGION__CITYREGION_,RPC_GETPLANETMAPCATEGORYCRC__,RPC_GETPLANETMAPSUBCATEGORYCRC__,RPC_CREATECHILDOBJECTS__};
+enum {RPC_FINALIZE__ = 6,RPC_INITIALIZEPRIVATEDATA__,RPC_CREATECOMPONENTS__,RPC_CREATECONTAINERCOMPONENT__,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_NOTIFYLOADFROMDATABASE__,RPC_INFO__STRING_BOOL_,RPC_ERROR__STRING_,RPC_INRANGEOBJECTS__INT_FLOAT_,RPC_ISINRANGE__SCENEOBJECT_FLOAT_,RPC_ADDOBJECT__SCENEOBJECT_INT_BOOL_,RPC_REMOVEOBJECT__SCENEOBJECT_BOOL_,RPC_CANADDOBJECT__SCENEOBJECT_INT_STRING_,RPC_SYNCHRONIZEDUILISTEN__SCENEOBJECT_INT_,RPC_SYNCHRONIZEDUISTOPLISTEN__SCENEOBJECT_INT_,RPC_UPDATETODATABASE__,RPC_UPDATETODATABASEWITHOUTCHILDREN__,RPC_UPDATETODATABASEALLOBJECTS__BOOL_,RPC_DESTROYOBJECTFROMDATABASE__BOOL_,RPC_CANBEDESTROYED__PLAYERCREATURE_,RPC_CREATE__ZONECLIENTSESSION_,RPC_DESTROY__ZONECLIENTSESSION_,RPC_CLOSE__ZONECLIENTSESSION_,RPC_LINK__ZONECLIENTSESSION_INT_,RPC_LINK__LONG_INT_,RPC_SENDTO__SCENEOBJECT_BOOL_,RPC_SENDWITHOUTPARENTTO__SCENEOBJECT_,RPC_SENDWITHOUTCONTAINEROBJECTSTO__SCENEOBJECT_,RPC_SENDDESTROYTO__SCENEOBJECT_,RPC_SENDBASELINESTO__SCENEOBJECT_,RPC_SENDCONTAINEROBJECTSTO__SCENEOBJECT_,RPC_SENDSLOTTEDOBJECTSTO__SCENEOBJECT_,RPC_SENDTOOWNER__BOOL_,RPC_SENDATTRIBUTELISTTO__PLAYERCREATURE_,RPC_SETCUSTOMOBJECTNAME__UNICODESTRING_BOOL_,RPC_OPENCONTAINERTO__PLAYERCREATURE_,RPC_CLOSECONTAINERTO__PLAYERCREATURE_BOOL_,RPC_INSERTTOZONE__ZONE_,RPC_INSERTTOBUILDING__BUILDINGOBJECT_,RPC_SWITCHZONE__STRING_FLOAT_FLOAT_FLOAT_LONG_,RPC_TELEPORT__FLOAT_FLOAT_FLOAT_LONG_,RPC_REMOVEFROMZONE__,RPC_REMOVEFROMBUILDING__BUILDINGOBJECT_,RPC_UPDATEZONE__BOOL_BOOL_,RPC_UPDATEZONEWITHPARENT__SCENEOBJECT_BOOL_BOOL_,RPC_BROADCASTMESSAGE__BASEPACKET_BOOL_BOOL_,RPC_BROADCASTOBJECT__SCENEOBJECT_BOOL_,RPC_BROADCASTDESTROY__SCENEOBJECT_BOOL_,RPC_SENDMESSAGE__BASEPACKET_,RPC_COMPARETO__SCENEOBJECT_,RPC_GETPARENTID__,RPC_GETACTIVESESSION__INT_,RPC_ADDACTIVESESSION__INT_FACADE_,RPC_CONTAINSACTIVESESSION__INT_,RPC_DROPACTIVESESSION__INT_,RPC_GETACTIVESESSIONSCOUNT__,RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_,RPC_NOTIFYADDEDTOCLOSEOBJECTS__,RPC_NOTIFYREMOVEDFROMCLOSEOBJECTS__,RPC_GETDISTANCETO__SCENEOBJECT_,RPC_UPDATEVEHICLEPOSITION__,RPC_NOTIFYOBJECTINSERTED__SCENEOBJECT_,RPC_NOTIFYOBJECTREMOVED__SCENEOBJECT_,RPC_HASNOTIFIEDSENTOBJECT__SCENEOBJECT_,RPC_ADDNOTIFIEDSENTOBJECT__SCENEOBJECT_,RPC_REMOVENOTIFIEDSENTOBJECT__SCENEOBJECT_,RPC_ADDACTIVEAREA__ACTIVEAREA_,RPC_DROPACTIVEAREA__ACTIVEAREA_,RPC_HASACTIVEAREA__ACTIVEAREA_,RPC_GETACTIVEAREASSIZE__,RPC_GETACTIVEREGION__,RPC_GETCITYREGION__,RPC_SETCITYREGION__CITYREGION_,RPC_GETZONE__,RPC_GETOBJECTID__,RPC_GETWORLDPOSITIONX__,RPC_GETWORLDPOSITIONY__,RPC_GETWORLDPOSITIONZ__,RPC_GETDIRECTIONX__,RPC_GETDIRECTIONZ__,RPC_GETDIRECTIONY__,RPC_GETDIRECTIONW__,RPC_GETCLIENTOBJECTCRC__,RPC_GETSERVEROBJECTCRC__,RPC_ISWAYPOINTOBJECT__,RPC_GETOBJECTNAMESTRINGIDFILE__,RPC_GETOBJECTNAMESTRINGIDNAME__,RPC_GETARRANGEMENTDESCRIPTORSIZE__,RPC_GETARRANGEMENTDESCRIPTOR__INT_,RPC_GETSLOTDESCRIPTOR__INT_,RPC_HASSLOTDESCRIPTOR__STRING_,RPC_GETSLOTTEDOBJECT__STRING_,RPC_GETSLOTDESCRIPTORSIZE__,RPC_GETSLOTTEDOBJECT__INT_,RPC_DROPSLOTTEDOBJECT__STRING_,RPC_REMOVESLOTTEDOBJECT__INT_,RPC_GETCONTAINEROBJECTSSIZE__,RPC_GETSLOTTEDOBJECTSSIZE__,RPC_HASFULLCONTAINEROBJECTS__,RPC_GETCONTAINERVOLUMELIMIT__,RPC_GETCONTAINEROBJECT__INT_,RPC_HASOBJECTINCONTAINER__LONG_,RPC_HASOBJECTINSLOTTEDCONTAINER__SCENEOBJECT_,RPC_GETCONTAINEROBJECT__LONG_,RPC_REMOVEALLCONTAINEROBJECTS__,RPC_PUTINCONTAINER__SCENEOBJECT_LONG_,RPC_REMOVEFROMCONTAINEROBJECTS__INT_,RPC_SETCONTAINERVOLUMELIMIT__INT_,RPC_SETCONTAINERTYPE__INT_,RPC_GETCONTAINERTYPE__,RPC_GETCLIENT__,RPC_GETGAMEOBJECTTYPE__,RPC_GETCLIENTGAMEOBJECTTYPE__,RPC_GETCONTAINMENTTYPE__,RPC_GETDIRECTIONANGLE__,RPC_GETSPECIALDIRECTIONANGLE__,RPC_ROTATE__INT_,RPC_NOTIFYSELFPOSITIONUPDATE__,RPC_NOTIFYCLOSECONTAINER__PLAYERCREATURE_,RPC_GETMOVEMENTCOUNTER__,RPC_GETPARENT__,RPC_GETZONESERVER__,RPC_GETROOTPARENT__,RPC_GETPARENTRECURSIVELY__INT_,RPC_ISASUBCHILDOF__SCENEOBJECT_,RPC_GETCUSTOMOBJECTNAME__,RPC_GETLOGGINGNAME__,RPC_ISPLAYERCREATURE__,RPC_ISVENDOR__,RPC_ISSHUTTLEINSTALLATION__,RPC_ISPLAYEROBJECT__,RPC_ISACTIVEAREA__,RPC_ISREGION__,RPC_ISCREATUREOBJECT__,RPC_ISVEHICLEOBJECT__,RPC_ISBUILDINGOBJECT__,RPC_ISCLONINGBUILDINGOBJECT__,RPC_ISGARAGE__,RPC_ISWEAPONOBJECT__,RPC_ISWEARABLEOBJECT__,RPC_ISARMOROBJECT__,RPC_ISPSGARMOROBJECT__,RPC_ISCELLOBJECT__,RPC_ISTANGIBLEOBJECT__,RPC_ISRESOURCECONTAINER__,RPC_ISCOMPONENT__,RPC_ISINTANGIBLEOBJECT__,RPC_ISINSTRUMENT__,RPC_ISINSTALLATIONOBJECT__,RPC_ISCITYTERMINAL__,RPC_ISCITYVOTETERMINAL__,RPC_ISFACTORY__,RPC_ISFACTORYCRATE__,RPC_ISFISHINGPOLEOBJECT__,RPC_ISDEEDOBJECT__,RPC_ISVEHICLEDEEDOBJECT__,RPC_ISBUILDINGDEED__,RPC_ISSIGNOBJECT__,RPC_ISINSTALLATIONDEED__,RPC_ISCRAFTINGTOOL__,RPC_ISCRAFTINGSTATION__,RPC_ISMANUFACTURESCHEMATIC__,RPC_ISSTRUCTUREOBJECT__,RPC_ISFISHINGBAIT__,RPC_ISATTACHMENT__,RPC_SETGAMEOBJECTTYPE__INT_,RPC_SETCLIENTOBJECTCRC__INT_,RPC_SETSERVEROBJECTCRC__INT_,RPC_SETPARENT__SCENEOBJECT_,RPC_SETZONE__ZONE_,RPC_SETDIRECTION__FLOAT_FLOAT_FLOAT_FLOAT_,RPC_SETDIRECTION__FLOAT_,RPC_SETMOVEMENTCOUNTER__INT_,RPC_INCREMENTMOVEMENTCOUNTER__,RPC_SETCONTAINMENTTYPE__INT_,RPC_SETLOGGINGNAME__STRING_,RPC_SETCLIENTOBJECT__BOOL_,RPC_GETPLANETCRC__,RPC_ISSTATICOBJECT__,RPC_ISCONTAINEROBJECT__,RPC_ISTERMINAL__,RPC_ISGROUPOBJECT__,RPC_ISGUILDOBJECT__,RPC_ISCONTROLDEVICE__,RPC_ISMISSIONTERMINAL__,RPC_ISMISSIONOBJECT__,RPC_GETPLANETMAPCATEGORYCRC__,RPC_GETPLANETMAPSUBCATEGORYCRC__,RPC_CREATECHILDOBJECTS__};
 
 SceneObject::SceneObject() : QuadTreeEntry(DummyConstructorParameter::instance()) {
 	SceneObjectImplementation* _implementation = new SceneObjectImplementation();
@@ -816,13 +808,13 @@ int SceneObject::compareTo(SceneObject* obj) {
 		return _implementation->compareTo(obj);
 }
 
-void SceneObject::getContainmentObjects(VectorMap<String, ManagedReference<SceneObject* > >& objects) {
+void SceneObject::getSlottedObjects(VectorMap<String, ManagedReference<SceneObject* > >& objects) {
 	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		_implementation->getContainmentObjects(objects);
+		_implementation->getSlottedObjects(objects);
 }
 
 unsigned long long SceneObject::getParentID() {
@@ -1089,6 +1081,123 @@ void SceneObject::removeNotifiedSentObject(SceneObject* object) {
 		method.executeWithVoidReturn();
 	} else
 		_implementation->removeNotifiedSentObject(object);
+}
+
+void SceneObject::addActiveArea(ActiveArea* area) {
+	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_ADDACTIVEAREA__ACTIVEAREA_);
+		method.addObjectParameter(area);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->addActiveArea(area);
+}
+
+void SceneObject::dropActiveArea(ActiveArea* area) {
+	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_DROPACTIVEAREA__ACTIVEAREA_);
+		method.addObjectParameter(area);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->dropActiveArea(area);
+}
+
+bool SceneObject::hasActiveArea(ActiveArea* area) {
+	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_HASACTIVEAREA__ACTIVEAREA_);
+		method.addObjectParameter(area);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return _implementation->hasActiveArea(area);
+}
+
+Vector<ManagedReference<ActiveArea* > >* SceneObject::getActiveAreas() {
+	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		throw ObjectNotLocalException(this);
+
+	} else
+		return _implementation->getActiveAreas();
+}
+
+int SceneObject::getActiveAreasSize() {
+	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_GETACTIVEAREASSIZE__);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return _implementation->getActiveAreasSize();
+}
+
+ActiveArea* SceneObject::getActiveRegion() {
+	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_GETACTIVEREGION__);
+
+		return (ActiveArea*) method.executeWithObjectReturn();
+	} else
+		return _implementation->getActiveRegion();
+}
+
+CityRegion* SceneObject::getCityRegion() {
+	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_GETCITYREGION__);
+
+		return (CityRegion*) method.executeWithObjectReturn();
+	} else
+		return _implementation->getCityRegion();
+}
+
+void SceneObject::setCityRegion(CityRegion* region) {
+	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_SETCITYREGION__CITYREGION_);
+		method.addObjectParameter(region);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->setCityRegion(region);
+}
+
+Zone* SceneObject::getZone() {
+	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_GETZONE__);
+
+		return (Zone*) method.executeWithObjectReturn();
+	} else
+		return _implementation->getZone();
 }
 
 unsigned long long SceneObject::getObjectID() {
@@ -1364,6 +1473,15 @@ bool SceneObject::hasSlotDescriptor(const String& descr) {
 		return _implementation->hasSlotDescriptor(descr);
 }
 
+VectorMap<String, ManagedReference<SceneObject* > >* SceneObject::getSlottedObjects() {
+	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		throw ObjectNotLocalException(this);
+
+	} else
+		return _implementation->getSlottedObjects();
+}
+
 SceneObject* SceneObject::getSlottedObject(const String& slot) {
 	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
 	if (_implementation == NULL) {
@@ -1389,6 +1507,48 @@ int SceneObject::getSlotDescriptorSize() {
 		return method.executeWithSignedIntReturn();
 	} else
 		return _implementation->getSlotDescriptorSize();
+}
+
+SceneObject* SceneObject::getSlottedObject(int idx) {
+	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_GETSLOTTEDOBJECT__INT_);
+		method.addSignedIntParameter(idx);
+
+		return (SceneObject*) method.executeWithObjectReturn();
+	} else
+		return _implementation->getSlottedObject(idx);
+}
+
+void SceneObject::dropSlottedObject(const String& arrengementDescriptor) {
+	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_DROPSLOTTEDOBJECT__STRING_);
+		method.addAsciiParameter(arrengementDescriptor);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->dropSlottedObject(arrengementDescriptor);
+}
+
+void SceneObject::removeSlottedObject(int index) {
+	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_REMOVESLOTTEDOBJECT__INT_);
+		method.addSignedIntParameter(index);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->removeSlottedObject(index);
 }
 
 int SceneObject::getContainerObjectsSize() {
@@ -1430,7 +1590,7 @@ bool SceneObject::hasFullContainerObjects() {
 		return _implementation->hasFullContainerObjects();
 }
 
-int SceneObject::getContainerVolumeLimit() {
+unsigned int SceneObject::getContainerVolumeLimit() {
 	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
@@ -1438,7 +1598,7 @@ int SceneObject::getContainerVolumeLimit() {
 
 		DistributedMethod method(this, RPC_GETCONTAINERVOLUMELIMIT__);
 
-		return method.executeWithSignedIntReturn();
+		return method.executeWithUnsignedIntReturn();
 	} else
 		return _implementation->getContainerVolumeLimit();
 }
@@ -1457,18 +1617,138 @@ SceneObject* SceneObject::getContainerObject(int idx) {
 		return _implementation->getContainerObject(idx);
 }
 
-SceneObject* SceneObject::getSlottedObject(int idx) {
+VectorMap<unsigned long long, ManagedReference<SceneObject* > >* SceneObject::getContainerObjects() {
+	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		throw ObjectNotLocalException(this);
+
+	} else
+		return _implementation->getContainerObjects();
+}
+
+bool SceneObject::hasObjectInContainer(unsigned long long objectID) {
 	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_GETSLOTTEDOBJECT__INT_);
-		method.addSignedIntParameter(idx);
+		DistributedMethod method(this, RPC_HASOBJECTINCONTAINER__LONG_);
+		method.addUnsignedLongParameter(objectID);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return _implementation->hasObjectInContainer(objectID);
+}
+
+bool SceneObject::hasObjectInSlottedContainer(SceneObject* object) {
+	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_HASOBJECTINSLOTTEDCONTAINER__SCENEOBJECT_);
+		method.addObjectParameter(object);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return _implementation->hasObjectInSlottedContainer(object);
+}
+
+SceneObject* SceneObject::getContainerObject(unsigned long long objectID) {
+	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_GETCONTAINEROBJECT__LONG_);
+		method.addUnsignedLongParameter(objectID);
 
 		return (SceneObject*) method.executeWithObjectReturn();
 	} else
-		return _implementation->getSlottedObject(idx);
+		return _implementation->getContainerObject(objectID);
+}
+
+void SceneObject::removeAllContainerObjects() {
+	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_REMOVEALLCONTAINEROBJECTS__);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->removeAllContainerObjects();
+}
+
+void SceneObject::putInContainer(SceneObject* obj, unsigned long long key) {
+	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_PUTINCONTAINER__SCENEOBJECT_LONG_);
+		method.addObjectParameter(obj);
+		method.addUnsignedLongParameter(key);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->putInContainer(obj, key);
+}
+
+void SceneObject::removeFromContainerObjects(int index) {
+	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_REMOVEFROMCONTAINEROBJECTS__INT_);
+		method.addSignedIntParameter(index);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->removeFromContainerObjects(index);
+}
+
+void SceneObject::setContainerVolumeLimit(int lim) {
+	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_SETCONTAINERVOLUMELIMIT__INT_);
+		method.addSignedIntParameter(lim);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->setContainerVolumeLimit(lim);
+}
+
+void SceneObject::setContainerType(int type) {
+	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_SETCONTAINERTYPE__INT_);
+		method.addSignedIntParameter(type);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->setContainerType(type);
+}
+
+unsigned int SceneObject::getContainerType() {
+	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_GETCONTAINERTYPE__);
+
+		return method.executeWithUnsignedIntReturn();
+	} else
+		return _implementation->getContainerType();
 }
 
 ZoneClientSession* SceneObject::getClient() {
@@ -1523,19 +1803,6 @@ unsigned int SceneObject::getContainmentType() {
 		return _implementation->getContainmentType();
 }
 
-Zone* SceneObject::getZone() {
-	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, RPC_GETZONE__);
-
-		return (Zone*) method.executeWithObjectReturn();
-	} else
-		return _implementation->getZone();
-}
-
 float SceneObject::getDirectionAngle() {
 	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
 	if (_implementation == NULL) {
@@ -1560,19 +1827,6 @@ float SceneObject::getSpecialDirectionAngle() {
 		return method.executeWithFloatReturn();
 	} else
 		return _implementation->getSpecialDirectionAngle();
-}
-
-unsigned int SceneObject::getContainerType() {
-	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, RPC_GETCONTAINERTYPE__);
-
-		return method.executeWithUnsignedIntReturn();
-	} else
-		return _implementation->getContainerType();
 }
 
 void SceneObject::rotate(int degrees) {
@@ -1750,28 +2004,11 @@ bool SceneObject::isVendor() {
 		return _implementation->isVendor();
 }
 
-ContainerComponent* SceneObject::getContainerComponent() {
-	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, RPC_GETCONTAINERCOMPONENT__);
-
-		return (ContainerComponent*) method.executeWithObjectReturn();
-	} else
-		return _implementation->getContainerComponent();
-}
-
 ZoneComponent* SceneObject::getZoneComponent() {
 	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
 	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
+		throw ObjectNotLocalException(this);
 
-		DistributedMethod method(this, RPC_GETZONECOMPONENT__);
-
-		return (ZoneComponent*) method.executeWithObjectReturn();
 	} else
 		return _implementation->getZoneComponent();
 }
@@ -1779,12 +2016,8 @@ ZoneComponent* SceneObject::getZoneComponent() {
 ObjectMenuComponent* SceneObject::getObjectMenuComponent() {
 	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
 	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
+		throw ObjectNotLocalException(this);
 
-		DistributedMethod method(this, RPC_GETOBJECTMENUCOMPONENT__);
-
-		return (ObjectMenuComponent*) method.executeWithObjectReturn();
 	} else
 		return _implementation->getObjectMenuComponent();
 }
@@ -2271,34 +2504,6 @@ void SceneObject::setGameObjectType(unsigned int type) {
 		_implementation->setGameObjectType(type);
 }
 
-void SceneObject::addActiveArea(ActiveArea* area) {
-	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, RPC_ADDACTIVEAREA__ACTIVEAREA_);
-		method.addObjectParameter(area);
-
-		method.executeWithVoidReturn();
-	} else
-		_implementation->addActiveArea(area);
-}
-
-void SceneObject::dropActiveArea(ActiveArea* area) {
-	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, RPC_DROPACTIVEAREA__ACTIVEAREA_);
-		method.addObjectParameter(area);
-
-		method.executeWithVoidReturn();
-	} else
-		_implementation->dropActiveArea(area);
-}
-
 void SceneObject::setClientObjectCRC(unsigned int objCRC) {
 	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
 	if (_implementation == NULL) {
@@ -2350,6 +2555,20 @@ void SceneObject::setZoneProcessServer(ZoneProcessServer* srv) {
 		_implementation->setZoneProcessServer(srv);
 }
 
+void SceneObject::setZone(Zone* zone) {
+	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_SETZONE__ZONE_);
+		method.addObjectParameter(zone);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->setZone(zone);
+}
+
 void SceneObject::setObjectName(StringId& stringID) {
 	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
 	if (_implementation == NULL) {
@@ -2357,20 +2576,6 @@ void SceneObject::setObjectName(StringId& stringID) {
 
 	} else
 		_implementation->setObjectName(stringID);
-}
-
-void SceneObject::setZone(Zone* zon) {
-	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, RPC_SETZONE__ZONE_);
-		method.addObjectParameter(zon);
-
-		method.executeWithVoidReturn();
-	} else
-		_implementation->setZone(zon);
 }
 
 void SceneObject::setDirection(float fw, float fx, float fy, float fz) {
@@ -2480,57 +2685,6 @@ void SceneObject::setClientObject(bool val) {
 		method.executeWithVoidReturn();
 	} else
 		_implementation->setClientObject(val);
-}
-
-VectorMap<unsigned long long, ManagedReference<SceneObject* > >* SceneObject::getContainerObjects() {
-	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
-	if (_implementation == NULL) {
-		throw ObjectNotLocalException(this);
-
-	} else
-		return _implementation->getContainerObjects();
-}
-
-bool SceneObject::hasObjectInContainer(unsigned long long objectID) {
-	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, RPC_HASOBJECTINCONTAINER__LONG_);
-		method.addUnsignedLongParameter(objectID);
-
-		return method.executeWithBooleanReturn();
-	} else
-		return _implementation->hasObjectInContainer(objectID);
-}
-
-bool SceneObject::hasObjectInSlottedContainer(SceneObject* object) {
-	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, RPC_HASOBJECTINSLOTTEDCONTAINER__SCENEOBJECT_);
-		method.addObjectParameter(object);
-
-		return method.executeWithBooleanReturn();
-	} else
-		return _implementation->hasObjectInSlottedContainer(object);
-}
-
-SceneObject* SceneObject::getContainerObject(unsigned long long objectID) {
-	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, RPC_GETCONTAINEROBJECT__LONG_);
-		method.addUnsignedLongParameter(objectID);
-
-		return (SceneObject*) method.executeWithObjectReturn();
-	} else
-		return _implementation->getContainerObject(objectID);
 }
 
 unsigned int SceneObject::getPlanetCRC() {
@@ -2650,69 +2804,6 @@ bool SceneObject::isMissionObject() {
 		return _implementation->isMissionObject();
 }
 
-Vector<ManagedReference<ActiveArea* > >* SceneObject::getActiveAreas() {
-	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
-	if (_implementation == NULL) {
-		throw ObjectNotLocalException(this);
-
-	} else
-		return _implementation->getActiveAreas();
-}
-
-ActiveArea* SceneObject::getActiveRegion() {
-	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, RPC_GETACTIVEREGION__);
-
-		return (ActiveArea*) method.executeWithObjectReturn();
-	} else
-		return _implementation->getActiveRegion();
-}
-
-bool SceneObject::hasActiveArea(ActiveArea* area) {
-	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, RPC_HASACTIVEAREA__ACTIVEAREA_);
-		method.addObjectParameter(area);
-
-		return method.executeWithBooleanReturn();
-	} else
-		return _implementation->hasActiveArea(area);
-}
-
-CityRegion* SceneObject::getCityRegion() {
-	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, RPC_GETCITYREGION__);
-
-		return (CityRegion*) method.executeWithObjectReturn();
-	} else
-		return _implementation->getCityRegion();
-}
-
-void SceneObject::setCityRegion(CityRegion* region) {
-	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, RPC_SETCITYREGION__CITYREGION_);
-		method.addObjectParameter(region);
-
-		method.executeWithVoidReturn();
-	} else
-		_implementation->setCityRegion(region);
-}
-
 int SceneObject::getPlanetMapCategoryCRC() {
 	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
 	if (_implementation == NULL) {
@@ -2782,6 +2873,15 @@ SortedVector<ManagedReference<SceneObject* > >* SceneObject::getOutdoorChildObje
 
 	} else
 		return _implementation->getOutdoorChildObjects();
+}
+
+SortedVector<ManagedReference<SceneObject* > >* SceneObject::getNotifiedSentObjects() {
+	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		throw ObjectNotLocalException(this);
+
+	} else
+		return _implementation->getNotifiedSentObjects();
 }
 
 SharedObjectTemplate* SceneObject::getObjectTemplate() {
@@ -2908,18 +3008,33 @@ bool SceneObjectImplementation::readObjectMember(ObjectInputStream* stream, cons
 	if (QuadTreeEntryImplementation::readObjectMember(stream, _name))
 		return true;
 
-	if (_name == "zoneComponent") {
-		TypeInfo<ManagedReference<ZoneComponent* > >::parseFromBinaryStream(&zoneComponent, stream);
+	if (_name == "slottedObjects") {
+		TypeInfo<VectorMap<String, ManagedReference<SceneObject* > > >::parseFromBinaryStream(&slottedObjects, stream);
 		return true;
 	}
 
-	if (_name == "objectMenuComponent") {
-		TypeInfo<ManagedReference<ObjectMenuComponent* > >::parseFromBinaryStream(&objectMenuComponent, stream);
+	if (_name == "containerObjects") {
+		TypeInfo<VectorMap<unsigned long long, ManagedReference<SceneObject* > > >::parseFromBinaryStream(&containerObjects, stream);
 		return true;
 	}
 
-	if (_name == "containerComponent") {
-		TypeInfo<ManagedReference<ContainerComponent* > >::parseFromBinaryStream(&containerComponent, stream);
+	if (_name == "containerType") {
+		TypeInfo<unsigned int >::parseFromBinaryStream(&containerType, stream);
+		return true;
+	}
+
+	if (_name == "containerVolumeLimit") {
+		TypeInfo<unsigned int >::parseFromBinaryStream(&containerVolumeLimit, stream);
+		return true;
+	}
+
+	if (_name == "zone") {
+		TypeInfo<ZoneReference >::parseFromBinaryStream(&zone, stream);
+		return true;
+	}
+
+	if (_name == "activeAreas") {
+		TypeInfo<SortedVector<ManagedReference<ActiveArea* > > >::parseFromBinaryStream(&activeAreas, stream);
 		return true;
 	}
 
@@ -3008,27 +3123,51 @@ int SceneObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	String _name;
 	int _offset;
 	uint16 _totalSize;
-	_name = "zoneComponent";
+	_name = "slottedObjects";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
-	TypeInfo<ManagedReference<ZoneComponent* > >::toBinaryStream(&zoneComponent, stream);
+	TypeInfo<VectorMap<String, ManagedReference<SceneObject* > > >::toBinaryStream(&slottedObjects, stream);
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "objectMenuComponent";
+	_name = "containerObjects";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
-	TypeInfo<ManagedReference<ObjectMenuComponent* > >::toBinaryStream(&objectMenuComponent, stream);
+	TypeInfo<VectorMap<unsigned long long, ManagedReference<SceneObject* > > >::toBinaryStream(&containerObjects, stream);
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "containerComponent";
+	_name = "containerType";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
-	TypeInfo<ManagedReference<ContainerComponent* > >::toBinaryStream(&containerComponent, stream);
+	TypeInfo<unsigned int >::toBinaryStream(&containerType, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "containerVolumeLimit";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<unsigned int >::toBinaryStream(&containerVolumeLimit, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "zone";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<ZoneReference >::toBinaryStream(&zone, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "activeAreas";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<SortedVector<ManagedReference<ActiveArea* > > >::toBinaryStream(&activeAreas, stream);
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
@@ -3145,7 +3284,7 @@ int SceneObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	stream->writeShort(_offset, _totalSize);
 
 
-	return 17 + QuadTreeEntryImplementation::writeObjectMembers(stream);
+	return 20 + QuadTreeEntryImplementation::writeObjectMembers(stream);
 }
 
 SceneObjectImplementation::SceneObjectImplementation() {
@@ -3197,13 +3336,13 @@ void SceneObjectImplementation::setCustomObjectName(const UnicodeString& name, b
 }
 
 void SceneObjectImplementation::notifyInsert(QuadTreeEntry* entry) {
-	// server/zone/objects/scene/SceneObject.idl():  		zoneComponent.notifyInsert(entry);
-	zoneComponent->notifyInsert(entry);
+	// server/zone/objects/scene/SceneObject.idl():  		zoneComponent.notifyInsert(this, entry);
+	zoneComponent->notifyInsert(_this, entry);
 }
 
 void SceneObjectImplementation::notifyDissapear(QuadTreeEntry* entry) {
-	// server/zone/objects/scene/SceneObject.idl():  		zoneComponent.notifyDissapear(entry);
-	zoneComponent->notifyDissapear(entry);
+	// server/zone/objects/scene/SceneObject.idl():  		zoneComponent.notifyDissapear(this, entry);
+	zoneComponent->notifyDissapear(_this, entry);
 }
 
 int SceneObjectImplementation::compareTo(SceneObject* obj) {
@@ -3286,18 +3425,76 @@ int SceneObjectImplementation::notifyObjectRemoved(SceneObject* object) {
 }
 
 bool SceneObjectImplementation::hasNotifiedSentObject(SceneObject* object) {
-	// server/zone/objects/scene/SceneObject.idl():  		return zoneComponent.hasNotifiedSentObject(object);
-	return zoneComponent->hasNotifiedSentObject(object);
+	// server/zone/objects/scene/SceneObject.idl():  		return notifiedSentObjects.contains(object);
+	return (&notifiedSentObjects)->contains(object);
 }
 
 int SceneObjectImplementation::addNotifiedSentObject(SceneObject* object) {
-	// server/zone/objects/scene/SceneObject.idl():  		return zoneComponent.addNotifiedSentObject(object);
-	return zoneComponent->addNotifiedSentObject(object);
+	// server/zone/objects/scene/SceneObject.idl():  		return notifiedSentObjects.put(object);
+	return (&notifiedSentObjects)->put(object);
 }
 
 void SceneObjectImplementation::removeNotifiedSentObject(SceneObject* object) {
-	// server/zone/objects/scene/SceneObject.idl():  		zoneComponent.removeNotifiedSentObject(object);
-	zoneComponent->removeNotifiedSentObject(object);
+	// server/zone/objects/scene/SceneObject.idl():  		notifiedSentObjects.drop(object);
+	(&notifiedSentObjects)->drop(object);
+}
+
+void SceneObjectImplementation::addActiveArea(ActiveArea* area) {
+	// server/zone/objects/scene/SceneObject.idl():  		activeAreas.put(area);
+	(&activeAreas)->put(area);
+}
+
+void SceneObjectImplementation::dropActiveArea(ActiveArea* area) {
+	// server/zone/objects/scene/SceneObject.idl():  		activeAreas.drop(area);
+	(&activeAreas)->drop(area);
+}
+
+bool SceneObjectImplementation::hasActiveArea(ActiveArea* area) {
+	// server/zone/objects/scene/SceneObject.idl():  		return activeAreas.contains(area);
+	return (&activeAreas)->contains(area);
+}
+
+Vector<ManagedReference<ActiveArea* > >* SceneObjectImplementation::getActiveAreas() {
+	// server/zone/objects/scene/SceneObject.idl():  		return activeAreas;
+	return (&activeAreas);
+}
+
+int SceneObjectImplementation::getActiveAreasSize() {
+	// server/zone/objects/scene/SceneObject.idl():  		return activeAreas.size();
+	return (&activeAreas)->size();
+}
+
+ActiveArea* SceneObjectImplementation::getActiveRegion() {
+	// server/zone/objects/scene/SceneObject.idl():  		}
+	for (	// server/zone/objects/scene/SceneObject.idl():  		for (int i = 0;
+	int i = 0;
+	i < (&activeAreas)->size();
+i ++) {
+	// server/zone/objects/scene/SceneObject.idl():  			ActiveArea region = activeAreas.get(i);
+	ActiveArea* region = (&activeAreas)->get(i);
+	// server/zone/objects/scene/SceneObject.idl():  		}
+	if (region->isRegion()){
+	// server/zone/objects/scene/SceneObject.idl():  				return region;
+	return region;
+}
+}
+	// server/zone/objects/scene/SceneObject.idl():  		return null;
+	return NULL;
+}
+
+CityRegion* SceneObjectImplementation::getCityRegion() {
+	// server/zone/objects/scene/SceneObject.idl():  		return cityRegion;
+	return cityRegion;
+}
+
+void SceneObjectImplementation::setCityRegion(CityRegion* region) {
+	// server/zone/objects/scene/SceneObject.idl():  		cityRegion = region;
+	cityRegion = region;
+}
+
+Zone* SceneObjectImplementation::getZone() {
+	// server/zone/objects/scene/SceneObject.idl():  		return zone.get();
+	return (&zone)->get();
 }
 
 float SceneObjectImplementation::getDirectionX() {
@@ -3387,9 +3584,14 @@ bool SceneObjectImplementation::hasSlotDescriptor(const String& descr) {
 	return false;
 }
 
+VectorMap<String, ManagedReference<SceneObject* > >* SceneObjectImplementation::getSlottedObjects() {
+	// server/zone/objects/scene/SceneObject.idl():  		return slottedObjects;
+	return (&slottedObjects);
+}
+
 SceneObject* SceneObjectImplementation::getSlottedObject(const String& slot) {
-	// server/zone/objects/scene/SceneObject.idl():  		return containerComponent.getSlottedObject(slot);
-	return containerComponent->getSlottedObject(slot);
+	// server/zone/objects/scene/SceneObject.idl():  		return slottedObjects.get(slot);
+	return (&slottedObjects)->get(slot);
 }
 
 int SceneObjectImplementation::getSlotDescriptorSize() {
@@ -3400,34 +3602,111 @@ int SceneObjectImplementation::getSlotDescriptorSize() {
 	return 0;
 }
 
+SceneObject* SceneObjectImplementation::getSlottedObject(int idx) {
+	// server/zone/objects/scene/SceneObject.idl():  		return slottedObjects.get(idx);
+	return (&slottedObjects)->get(idx);
+}
+
+void SceneObjectImplementation::dropSlottedObject(const String& arrengementDescriptor) {
+	// server/zone/objects/scene/SceneObject.idl():  		slottedObjects.drop(arrengementDescriptor);
+	(&slottedObjects)->drop(arrengementDescriptor);
+}
+
+void SceneObjectImplementation::removeSlottedObject(int index) {
+	// server/zone/objects/scene/SceneObject.idl():  		slottedObjects.remove(index);
+	(&slottedObjects)->remove(index);
+}
+
 int SceneObjectImplementation::getContainerObjectsSize() {
-	// server/zone/objects/scene/SceneObject.idl():  		return containerComponent.getContainerObjectsSize();
-	return containerComponent->getContainerObjectsSize();
+	// server/zone/objects/scene/SceneObject.idl():  		return containerObjects.size();
+	return (&containerObjects)->size();
 }
 
 int SceneObjectImplementation::getSlottedObjectsSize() {
-	// server/zone/objects/scene/SceneObject.idl():  		return containerComponent.getSlottedObjectsSize();
-	return containerComponent->getSlottedObjectsSize();
+	// server/zone/objects/scene/SceneObject.idl():  		return slottedObjects.size();
+	return (&slottedObjects)->size();
 }
 
 bool SceneObjectImplementation::hasFullContainerObjects() {
-	// server/zone/objects/scene/SceneObject.idl():  		return containerComponent.hasFullContainerObjects();
-	return containerComponent->hasFullContainerObjects();
+	// server/zone/objects/scene/SceneObject.idl():  		return containerObjects.size() > containerVolumeLimit || containerObjects.size() == containerVolumeLimit;
+	return (&containerObjects)->size() > containerVolumeLimit || (&containerObjects)->size() == containerVolumeLimit;
 }
 
-int SceneObjectImplementation::getContainerVolumeLimit() {
-	// server/zone/objects/scene/SceneObject.idl():  		return containerComponent.getContainerVolumeLimit();
-	return containerComponent->getContainerVolumeLimit();
+unsigned int SceneObjectImplementation::getContainerVolumeLimit() {
+	// server/zone/objects/scene/SceneObject.idl():  		return containerVolumeLimit;
+	return containerVolumeLimit;
 }
 
 SceneObject* SceneObjectImplementation::getContainerObject(int idx) {
-	// server/zone/objects/scene/SceneObject.idl():  		return containerComponent.getContainerObject(idx);
-	return containerComponent->getContainerObject(idx);
+	// server/zone/objects/scene/SceneObject.idl():  		return containerObjects.get(idx);
+	return (&containerObjects)->get(idx);
 }
 
-SceneObject* SceneObjectImplementation::getSlottedObject(int idx) {
-	// server/zone/objects/scene/SceneObject.idl():  		return containerComponent.getSlottedObject(idx);
-	return containerComponent->getSlottedObject(idx);
+VectorMap<unsigned long long, ManagedReference<SceneObject* > >* SceneObjectImplementation::getContainerObjects() {
+	// server/zone/objects/scene/SceneObject.idl():  		return containerObjects;
+	return (&containerObjects);
+}
+
+bool SceneObjectImplementation::hasObjectInContainer(unsigned long long objectID) {
+	// server/zone/objects/scene/SceneObject.idl():  		return containerObjects.contains(objectID);
+	return (&containerObjects)->contains(objectID);
+}
+
+bool SceneObjectImplementation::hasObjectInSlottedContainer(SceneObject* object) {
+	// server/zone/objects/scene/SceneObject.idl():  		int arrangementSize = object.getArrangementDescriptorSize();
+	int arrangementSize = object->getArrangementDescriptorSize();
+	// server/zone/objects/scene/SceneObject.idl():  		SceneObject 
+	if (arrangementSize == 0){
+	// server/zone/objects/scene/SceneObject.idl():  			return false;
+	return false;
+}
+	// server/zone/objects/scene/SceneObject.idl():  		SceneObject obj = slottedObjects.get(object.getArrangementDescriptor(0));
+	SceneObject* obj = (&slottedObjects)->get(object->getArrangementDescriptor(0));
+	// server/zone/objects/scene/SceneObject.idl():  		}
+	if (object == obj){
+	// server/zone/objects/scene/SceneObject.idl():  			return true;
+	return true;
+}
+
+	else {
+	// server/zone/objects/scene/SceneObject.idl():  			return false;
+	return false;
+}
+}
+
+SceneObject* SceneObjectImplementation::getContainerObject(unsigned long long objectID) {
+	// server/zone/objects/scene/SceneObject.idl():  		return containerObjects.get(objectID);
+	return (&containerObjects)->get(objectID);
+}
+
+void SceneObjectImplementation::removeAllContainerObjects() {
+	// server/zone/objects/scene/SceneObject.idl():  		containerObjects.removeAll();
+	(&containerObjects)->removeAll();
+}
+
+void SceneObjectImplementation::putInContainer(SceneObject* obj, unsigned long long key) {
+	// server/zone/objects/scene/SceneObject.idl():  		containerObjects.put(key, obj);
+	(&containerObjects)->put(key, obj);
+}
+
+void SceneObjectImplementation::removeFromContainerObjects(int index) {
+	// server/zone/objects/scene/SceneObject.idl():  		containerObjects.removeElementAt(index);
+	(&containerObjects)->removeElementAt(index);
+}
+
+void SceneObjectImplementation::setContainerVolumeLimit(int lim) {
+	// server/zone/objects/scene/SceneObject.idl():  		containerVolumeLimit = lim;
+	containerVolumeLimit = lim;
+}
+
+void SceneObjectImplementation::setContainerType(int type) {
+	// server/zone/objects/scene/SceneObject.idl():  		containerType = type;
+	containerType = type;
+}
+
+unsigned int SceneObjectImplementation::getContainerType() {
+	// server/zone/objects/scene/SceneObject.idl():  		return containerType;
+	return containerType;
 }
 
 ZoneClientSession* SceneObjectImplementation::getClient() {
@@ -3450,11 +3729,6 @@ unsigned int SceneObjectImplementation::getContainmentType() {
 	return containmentType;
 }
 
-Zone* SceneObjectImplementation::getZone() {
-	// server/zone/objects/scene/SceneObject.idl():  		return zoneComponent.getZone();
-	return zoneComponent->getZone();
-}
-
 float SceneObjectImplementation::getDirectionAngle() {
 	// server/zone/objects/scene/SceneObject.idl():  		return direction.getDegrees();
 	return (&direction)->getDegrees();
@@ -3463,11 +3737,6 @@ float SceneObjectImplementation::getDirectionAngle() {
 float SceneObjectImplementation::getSpecialDirectionAngle() {
 	// server/zone/objects/scene/SceneObject.idl():  		return direction.getSpecialDegrees();
 	return (&direction)->getSpecialDegrees();
-}
-
-unsigned int SceneObjectImplementation::getContainerType() {
-	// server/zone/objects/scene/SceneObject.idl():  		return containerComponent.getContainerType();
-	return containerComponent->getContainerType();
 }
 
 unsigned int SceneObjectImplementation::getMovementCounter() {
@@ -3503,11 +3772,6 @@ bool SceneObjectImplementation::isPlayerCreature() {
 bool SceneObjectImplementation::isVendor() {
 	// server/zone/objects/scene/SceneObject.idl():  		return false;
 	return false;
-}
-
-ContainerComponent* SceneObjectImplementation::getContainerComponent() {
-	// server/zone/objects/scene/SceneObject.idl():  		return containerComponent;
-	return containerComponent;
 }
 
 ZoneComponent* SceneObjectImplementation::getZoneComponent() {
@@ -3705,16 +3969,6 @@ void SceneObjectImplementation::setGameObjectType(unsigned int type) {
 	gameObjectType = type;
 }
 
-void SceneObjectImplementation::addActiveArea(ActiveArea* area) {
-	// server/zone/objects/scene/SceneObject.idl():  		zoneComponent.addActiveArea(area);
-	zoneComponent->addActiveArea(area);
-}
-
-void SceneObjectImplementation::dropActiveArea(ActiveArea* area) {
-	// server/zone/objects/scene/SceneObject.idl():  		zoneComponent.dropActiveArea(area);
-	zoneComponent->dropActiveArea(area);
-}
-
 void SceneObjectImplementation::setClientObjectCRC(unsigned int objCRC) {
 	// server/zone/objects/scene/SceneObject.idl():  		clientObjectCRC = objCRC;
 	clientObjectCRC = objCRC;
@@ -3733,11 +3987,6 @@ void SceneObjectImplementation::setParent(SceneObject* par) {
 void SceneObjectImplementation::setZoneProcessServer(ZoneProcessServer* srv) {
 	// server/zone/objects/scene/SceneObject.idl():  		server = srv;
 	server = srv;
-}
-
-void SceneObjectImplementation::setZone(Zone* zon) {
-	// server/zone/objects/scene/SceneObject.idl():  		zoneComponent.setZone(zon);
-	zoneComponent->setZone(zon);
 }
 
 void SceneObjectImplementation::setDirection(float fw, float fx, float fy, float fz) {
@@ -3773,26 +4022,6 @@ void SceneObjectImplementation::setLoggingName(const String& name) {
 void SceneObjectImplementation::setClientObject(bool val) {
 	// server/zone/objects/scene/SceneObject.idl():  		staticObject = val;
 	staticObject = val;
-}
-
-VectorMap<unsigned long long, ManagedReference<SceneObject* > >* SceneObjectImplementation::getContainerObjects() {
-	// server/zone/objects/scene/SceneObject.idl():  		return containerComponent.getContainerObjects();
-	return containerComponent->getContainerObjects();
-}
-
-bool SceneObjectImplementation::hasObjectInContainer(unsigned long long objectID) {
-	// server/zone/objects/scene/SceneObject.idl():  		return containerComponent.hasObjectInContainer(objectID);
-	return containerComponent->hasObjectInContainer(objectID);
-}
-
-bool SceneObjectImplementation::hasObjectInSlottedContainer(SceneObject* object) {
-	// server/zone/objects/scene/SceneObject.idl():  		return containerComponent.hasObjectInSlottedContainer(object);
-	return containerComponent->hasObjectInSlottedContainer(object);
-}
-
-SceneObject* SceneObjectImplementation::getContainerObject(unsigned long long objectID) {
-	// server/zone/objects/scene/SceneObject.idl():  		return containerComponent.getContainerObject(objectID);
-	return containerComponent->getContainerObject(objectID);
 }
 
 bool SceneObjectImplementation::isStaticObject() {
@@ -3835,31 +4064,6 @@ bool SceneObjectImplementation::isMissionObject() {
 	return false;
 }
 
-Vector<ManagedReference<ActiveArea* > >* SceneObjectImplementation::getActiveAreas() {
-	// server/zone/objects/scene/SceneObject.idl():  		return zoneComponent.getActiveAreas();
-	return zoneComponent->getActiveAreas();
-}
-
-ActiveArea* SceneObjectImplementation::getActiveRegion() {
-	// server/zone/objects/scene/SceneObject.idl():  		return zoneComponent.getActiveRegion();
-	return zoneComponent->getActiveRegion();
-}
-
-bool SceneObjectImplementation::hasActiveArea(ActiveArea* area) {
-	// server/zone/objects/scene/SceneObject.idl():  		return zoneComponent.hasActiveArea(area);
-	return zoneComponent->hasActiveArea(area);
-}
-
-CityRegion* SceneObjectImplementation::getCityRegion() {
-	// server/zone/objects/scene/SceneObject.idl():  		return zoneComponent.getCityRegion();
-	return zoneComponent->getCityRegion();
-}
-
-void SceneObjectImplementation::setCityRegion(CityRegion* region) {
-	// server/zone/objects/scene/SceneObject.idl():  		return zoneComponent.setCityRegion(region);
-	return zoneComponent->setCityRegion(region);
-}
-
 int SceneObjectImplementation::getPlanetMapCategoryCRC() {
 	// server/zone/objects/scene/SceneObject.idl():  		return planetMapCategory;
 	return planetMapCategory;
@@ -3897,6 +4101,11 @@ PlanetMapCategory* SceneObjectImplementation::getPlanetMapSubCategory() {
 SortedVector<ManagedReference<SceneObject* > >* SceneObjectImplementation::getOutdoorChildObjects() {
 	// server/zone/objects/scene/SceneObject.idl():  		return outdoorChildObjects;
 	return (&outdoorChildObjects);
+}
+
+SortedVector<ManagedReference<SceneObject* > >* SceneObjectImplementation::getNotifiedSentObjects() {
+	// server/zone/objects/scene/SceneObject.idl():  		return notifiedSentObjects;
+	return (&notifiedSentObjects);
 }
 
 SharedObjectTemplate* SceneObjectImplementation::getObjectTemplate() {
@@ -4113,6 +4322,30 @@ Packet* SceneObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 	case RPC_REMOVENOTIFIEDSENTOBJECT__SCENEOBJECT_:
 		removeNotifiedSentObject((SceneObject*) inv->getObjectParameter());
 		break;
+	case RPC_ADDACTIVEAREA__ACTIVEAREA_:
+		addActiveArea((ActiveArea*) inv->getObjectParameter());
+		break;
+	case RPC_DROPACTIVEAREA__ACTIVEAREA_:
+		dropActiveArea((ActiveArea*) inv->getObjectParameter());
+		break;
+	case RPC_HASACTIVEAREA__ACTIVEAREA_:
+		resp->insertBoolean(hasActiveArea((ActiveArea*) inv->getObjectParameter()));
+		break;
+	case RPC_GETACTIVEAREASSIZE__:
+		resp->insertSignedInt(getActiveAreasSize());
+		break;
+	case RPC_GETACTIVEREGION__:
+		resp->insertLong(getActiveRegion()->_getObjectID());
+		break;
+	case RPC_GETCITYREGION__:
+		resp->insertLong(getCityRegion()->_getObjectID());
+		break;
+	case RPC_SETCITYREGION__CITYREGION_:
+		setCityRegion((CityRegion*) inv->getObjectParameter());
+		break;
+	case RPC_GETZONE__:
+		resp->insertLong(getZone()->_getObjectID());
+		break;
 	case RPC_GETOBJECTID__:
 		resp->insertLong(getObjectID());
 		break;
@@ -4170,6 +4403,15 @@ Packet* SceneObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 	case RPC_GETSLOTDESCRIPTORSIZE__:
 		resp->insertSignedInt(getSlotDescriptorSize());
 		break;
+	case RPC_GETSLOTTEDOBJECT__INT_:
+		resp->insertLong(getSlottedObject(inv->getSignedIntParameter())->_getObjectID());
+		break;
+	case RPC_DROPSLOTTEDOBJECT__STRING_:
+		dropSlottedObject(inv->getAsciiParameter(_param0_dropSlottedObject__String_));
+		break;
+	case RPC_REMOVESLOTTEDOBJECT__INT_:
+		removeSlottedObject(inv->getSignedIntParameter());
+		break;
 	case RPC_GETCONTAINEROBJECTSSIZE__:
 		resp->insertSignedInt(getContainerObjectsSize());
 		break;
@@ -4180,13 +4422,37 @@ Packet* SceneObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 		resp->insertBoolean(hasFullContainerObjects());
 		break;
 	case RPC_GETCONTAINERVOLUMELIMIT__:
-		resp->insertSignedInt(getContainerVolumeLimit());
+		resp->insertInt(getContainerVolumeLimit());
 		break;
 	case RPC_GETCONTAINEROBJECT__INT_:
 		resp->insertLong(getContainerObject(inv->getSignedIntParameter())->_getObjectID());
 		break;
-	case RPC_GETSLOTTEDOBJECT__INT_:
-		resp->insertLong(getSlottedObject(inv->getSignedIntParameter())->_getObjectID());
+	case RPC_HASOBJECTINCONTAINER__LONG_:
+		resp->insertBoolean(hasObjectInContainer(inv->getUnsignedLongParameter()));
+		break;
+	case RPC_HASOBJECTINSLOTTEDCONTAINER__SCENEOBJECT_:
+		resp->insertBoolean(hasObjectInSlottedContainer((SceneObject*) inv->getObjectParameter()));
+		break;
+	case RPC_GETCONTAINEROBJECT__LONG_:
+		resp->insertLong(getContainerObject(inv->getUnsignedLongParameter())->_getObjectID());
+		break;
+	case RPC_REMOVEALLCONTAINEROBJECTS__:
+		removeAllContainerObjects();
+		break;
+	case RPC_PUTINCONTAINER__SCENEOBJECT_LONG_:
+		putInContainer((SceneObject*) inv->getObjectParameter(), inv->getUnsignedLongParameter());
+		break;
+	case RPC_REMOVEFROMCONTAINEROBJECTS__INT_:
+		removeFromContainerObjects(inv->getSignedIntParameter());
+		break;
+	case RPC_SETCONTAINERVOLUMELIMIT__INT_:
+		setContainerVolumeLimit(inv->getSignedIntParameter());
+		break;
+	case RPC_SETCONTAINERTYPE__INT_:
+		setContainerType(inv->getSignedIntParameter());
+		break;
+	case RPC_GETCONTAINERTYPE__:
+		resp->insertInt(getContainerType());
 		break;
 	case RPC_GETCLIENT__:
 		resp->insertLong(getClient()->_getObjectID());
@@ -4200,17 +4466,11 @@ Packet* SceneObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 	case RPC_GETCONTAINMENTTYPE__:
 		resp->insertInt(getContainmentType());
 		break;
-	case RPC_GETZONE__:
-		resp->insertLong(getZone()->_getObjectID());
-		break;
 	case RPC_GETDIRECTIONANGLE__:
 		resp->insertFloat(getDirectionAngle());
 		break;
 	case RPC_GETSPECIALDIRECTIONANGLE__:
 		resp->insertFloat(getSpecialDirectionAngle());
-		break;
-	case RPC_GETCONTAINERTYPE__:
-		resp->insertInt(getContainerType());
 		break;
 	case RPC_ROTATE__INT_:
 		rotate(inv->getSignedIntParameter());
@@ -4250,15 +4510,6 @@ Packet* SceneObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 		break;
 	case RPC_ISVENDOR__:
 		resp->insertBoolean(isVendor());
-		break;
-	case RPC_GETCONTAINERCOMPONENT__:
-		resp->insertLong(getContainerComponent()->_getObjectID());
-		break;
-	case RPC_GETZONECOMPONENT__:
-		resp->insertLong(getZoneComponent()->_getObjectID());
-		break;
-	case RPC_GETOBJECTMENUCOMPONENT__:
-		resp->insertLong(getObjectMenuComponent()->_getObjectID());
 		break;
 	case RPC_ISSHUTTLEINSTALLATION__:
 		resp->insertBoolean(isShuttleInstallation());
@@ -4371,12 +4622,6 @@ Packet* SceneObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 	case RPC_SETGAMEOBJECTTYPE__INT_:
 		setGameObjectType(inv->getUnsignedIntParameter());
 		break;
-	case RPC_ADDACTIVEAREA__ACTIVEAREA_:
-		addActiveArea((ActiveArea*) inv->getObjectParameter());
-		break;
-	case RPC_DROPACTIVEAREA__ACTIVEAREA_:
-		dropActiveArea((ActiveArea*) inv->getObjectParameter());
-		break;
 	case RPC_SETCLIENTOBJECTCRC__INT_:
 		setClientObjectCRC(inv->getUnsignedIntParameter());
 		break;
@@ -4410,15 +4655,6 @@ Packet* SceneObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 	case RPC_SETCLIENTOBJECT__BOOL_:
 		setClientObject(inv->getBooleanParameter());
 		break;
-	case RPC_HASOBJECTINCONTAINER__LONG_:
-		resp->insertBoolean(hasObjectInContainer(inv->getUnsignedLongParameter()));
-		break;
-	case RPC_HASOBJECTINSLOTTEDCONTAINER__SCENEOBJECT_:
-		resp->insertBoolean(hasObjectInSlottedContainer((SceneObject*) inv->getObjectParameter()));
-		break;
-	case RPC_GETCONTAINEROBJECT__LONG_:
-		resp->insertLong(getContainerObject(inv->getUnsignedLongParameter())->_getObjectID());
-		break;
 	case RPC_GETPLANETCRC__:
 		resp->insertInt(getPlanetCRC());
 		break;
@@ -4445,18 +4681,6 @@ Packet* SceneObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 		break;
 	case RPC_ISMISSIONOBJECT__:
 		resp->insertBoolean(isMissionObject());
-		break;
-	case RPC_GETACTIVEREGION__:
-		resp->insertLong(getActiveRegion()->_getObjectID());
-		break;
-	case RPC_HASACTIVEAREA__ACTIVEAREA_:
-		resp->insertBoolean(hasActiveArea((ActiveArea*) inv->getObjectParameter()));
-		break;
-	case RPC_GETCITYREGION__:
-		resp->insertLong(getCityRegion()->_getObjectID());
-		break;
-	case RPC_SETCITYREGION__CITYREGION_:
-		setCityRegion((CityRegion*) inv->getObjectParameter());
 		break;
 	case RPC_GETPLANETMAPCATEGORYCRC__:
 		resp->insertSignedInt(getPlanetMapCategoryCRC());
@@ -4738,6 +4962,38 @@ void SceneObjectAdapter::removeNotifiedSentObject(SceneObject* object) {
 	((SceneObjectImplementation*) impl)->removeNotifiedSentObject(object);
 }
 
+void SceneObjectAdapter::addActiveArea(ActiveArea* area) {
+	((SceneObjectImplementation*) impl)->addActiveArea(area);
+}
+
+void SceneObjectAdapter::dropActiveArea(ActiveArea* area) {
+	((SceneObjectImplementation*) impl)->dropActiveArea(area);
+}
+
+bool SceneObjectAdapter::hasActiveArea(ActiveArea* area) {
+	return ((SceneObjectImplementation*) impl)->hasActiveArea(area);
+}
+
+int SceneObjectAdapter::getActiveAreasSize() {
+	return ((SceneObjectImplementation*) impl)->getActiveAreasSize();
+}
+
+ActiveArea* SceneObjectAdapter::getActiveRegion() {
+	return ((SceneObjectImplementation*) impl)->getActiveRegion();
+}
+
+CityRegion* SceneObjectAdapter::getCityRegion() {
+	return ((SceneObjectImplementation*) impl)->getCityRegion();
+}
+
+void SceneObjectAdapter::setCityRegion(CityRegion* region) {
+	((SceneObjectImplementation*) impl)->setCityRegion(region);
+}
+
+Zone* SceneObjectAdapter::getZone() {
+	return ((SceneObjectImplementation*) impl)->getZone();
+}
+
 unsigned long long SceneObjectAdapter::getObjectID() {
 	return ((SceneObjectImplementation*) impl)->getObjectID();
 }
@@ -4814,6 +5070,18 @@ int SceneObjectAdapter::getSlotDescriptorSize() {
 	return ((SceneObjectImplementation*) impl)->getSlotDescriptorSize();
 }
 
+SceneObject* SceneObjectAdapter::getSlottedObject(int idx) {
+	return ((SceneObjectImplementation*) impl)->getSlottedObject(idx);
+}
+
+void SceneObjectAdapter::dropSlottedObject(const String& arrengementDescriptor) {
+	((SceneObjectImplementation*) impl)->dropSlottedObject(arrengementDescriptor);
+}
+
+void SceneObjectAdapter::removeSlottedObject(int index) {
+	((SceneObjectImplementation*) impl)->removeSlottedObject(index);
+}
+
 int SceneObjectAdapter::getContainerObjectsSize() {
 	return ((SceneObjectImplementation*) impl)->getContainerObjectsSize();
 }
@@ -4826,7 +5094,7 @@ bool SceneObjectAdapter::hasFullContainerObjects() {
 	return ((SceneObjectImplementation*) impl)->hasFullContainerObjects();
 }
 
-int SceneObjectAdapter::getContainerVolumeLimit() {
+unsigned int SceneObjectAdapter::getContainerVolumeLimit() {
 	return ((SceneObjectImplementation*) impl)->getContainerVolumeLimit();
 }
 
@@ -4834,8 +5102,40 @@ SceneObject* SceneObjectAdapter::getContainerObject(int idx) {
 	return ((SceneObjectImplementation*) impl)->getContainerObject(idx);
 }
 
-SceneObject* SceneObjectAdapter::getSlottedObject(int idx) {
-	return ((SceneObjectImplementation*) impl)->getSlottedObject(idx);
+bool SceneObjectAdapter::hasObjectInContainer(unsigned long long objectID) {
+	return ((SceneObjectImplementation*) impl)->hasObjectInContainer(objectID);
+}
+
+bool SceneObjectAdapter::hasObjectInSlottedContainer(SceneObject* object) {
+	return ((SceneObjectImplementation*) impl)->hasObjectInSlottedContainer(object);
+}
+
+SceneObject* SceneObjectAdapter::getContainerObject(unsigned long long objectID) {
+	return ((SceneObjectImplementation*) impl)->getContainerObject(objectID);
+}
+
+void SceneObjectAdapter::removeAllContainerObjects() {
+	((SceneObjectImplementation*) impl)->removeAllContainerObjects();
+}
+
+void SceneObjectAdapter::putInContainer(SceneObject* obj, unsigned long long key) {
+	((SceneObjectImplementation*) impl)->putInContainer(obj, key);
+}
+
+void SceneObjectAdapter::removeFromContainerObjects(int index) {
+	((SceneObjectImplementation*) impl)->removeFromContainerObjects(index);
+}
+
+void SceneObjectAdapter::setContainerVolumeLimit(int lim) {
+	((SceneObjectImplementation*) impl)->setContainerVolumeLimit(lim);
+}
+
+void SceneObjectAdapter::setContainerType(int type) {
+	((SceneObjectImplementation*) impl)->setContainerType(type);
+}
+
+unsigned int SceneObjectAdapter::getContainerType() {
+	return ((SceneObjectImplementation*) impl)->getContainerType();
 }
 
 ZoneClientSession* SceneObjectAdapter::getClient() {
@@ -4854,20 +5154,12 @@ unsigned int SceneObjectAdapter::getContainmentType() {
 	return ((SceneObjectImplementation*) impl)->getContainmentType();
 }
 
-Zone* SceneObjectAdapter::getZone() {
-	return ((SceneObjectImplementation*) impl)->getZone();
-}
-
 float SceneObjectAdapter::getDirectionAngle() {
 	return ((SceneObjectImplementation*) impl)->getDirectionAngle();
 }
 
 float SceneObjectAdapter::getSpecialDirectionAngle() {
 	return ((SceneObjectImplementation*) impl)->getSpecialDirectionAngle();
-}
-
-unsigned int SceneObjectAdapter::getContainerType() {
-	return ((SceneObjectImplementation*) impl)->getContainerType();
 }
 
 void SceneObjectAdapter::rotate(int degrees) {
@@ -4920,18 +5212,6 @@ bool SceneObjectAdapter::isPlayerCreature() {
 
 bool SceneObjectAdapter::isVendor() {
 	return ((SceneObjectImplementation*) impl)->isVendor();
-}
-
-ContainerComponent* SceneObjectAdapter::getContainerComponent() {
-	return ((SceneObjectImplementation*) impl)->getContainerComponent();
-}
-
-ZoneComponent* SceneObjectAdapter::getZoneComponent() {
-	return ((SceneObjectImplementation*) impl)->getZoneComponent();
-}
-
-ObjectMenuComponent* SceneObjectAdapter::getObjectMenuComponent() {
-	return ((SceneObjectImplementation*) impl)->getObjectMenuComponent();
 }
 
 bool SceneObjectAdapter::isShuttleInstallation() {
@@ -5082,14 +5362,6 @@ void SceneObjectAdapter::setGameObjectType(unsigned int type) {
 	((SceneObjectImplementation*) impl)->setGameObjectType(type);
 }
 
-void SceneObjectAdapter::addActiveArea(ActiveArea* area) {
-	((SceneObjectImplementation*) impl)->addActiveArea(area);
-}
-
-void SceneObjectAdapter::dropActiveArea(ActiveArea* area) {
-	((SceneObjectImplementation*) impl)->dropActiveArea(area);
-}
-
 void SceneObjectAdapter::setClientObjectCRC(unsigned int objCRC) {
 	((SceneObjectImplementation*) impl)->setClientObjectCRC(objCRC);
 }
@@ -5102,8 +5374,8 @@ void SceneObjectAdapter::setParent(SceneObject* par) {
 	((SceneObjectImplementation*) impl)->setParent(par);
 }
 
-void SceneObjectAdapter::setZone(Zone* zon) {
-	((SceneObjectImplementation*) impl)->setZone(zon);
+void SceneObjectAdapter::setZone(Zone* zone) {
+	((SceneObjectImplementation*) impl)->setZone(zone);
 }
 
 void SceneObjectAdapter::setDirection(float fw, float fx, float fy, float fz) {
@@ -5132,18 +5404,6 @@ void SceneObjectAdapter::setLoggingName(const String& name) {
 
 void SceneObjectAdapter::setClientObject(bool val) {
 	((SceneObjectImplementation*) impl)->setClientObject(val);
-}
-
-bool SceneObjectAdapter::hasObjectInContainer(unsigned long long objectID) {
-	return ((SceneObjectImplementation*) impl)->hasObjectInContainer(objectID);
-}
-
-bool SceneObjectAdapter::hasObjectInSlottedContainer(SceneObject* object) {
-	return ((SceneObjectImplementation*) impl)->hasObjectInSlottedContainer(object);
-}
-
-SceneObject* SceneObjectAdapter::getContainerObject(unsigned long long objectID) {
-	return ((SceneObjectImplementation*) impl)->getContainerObject(objectID);
 }
 
 unsigned int SceneObjectAdapter::getPlanetCRC() {
@@ -5180,22 +5440,6 @@ bool SceneObjectAdapter::isMissionTerminal() {
 
 bool SceneObjectAdapter::isMissionObject() {
 	return ((SceneObjectImplementation*) impl)->isMissionObject();
-}
-
-ActiveArea* SceneObjectAdapter::getActiveRegion() {
-	return ((SceneObjectImplementation*) impl)->getActiveRegion();
-}
-
-bool SceneObjectAdapter::hasActiveArea(ActiveArea* area) {
-	return ((SceneObjectImplementation*) impl)->hasActiveArea(area);
-}
-
-CityRegion* SceneObjectAdapter::getCityRegion() {
-	return ((SceneObjectImplementation*) impl)->getCityRegion();
-}
-
-void SceneObjectAdapter::setCityRegion(CityRegion* region) {
-	((SceneObjectImplementation*) impl)->setCityRegion(region);
 }
 
 int SceneObjectAdapter::getPlanetMapCategoryCRC() {
