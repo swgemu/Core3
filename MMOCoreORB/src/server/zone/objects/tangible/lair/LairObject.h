@@ -139,7 +139,7 @@ protected:
 
 	Vector<ManagedReference<CreatureObject* > > spawnedCreatures;
 
-	Reference<HealLairEvent*> healLairEvent;
+	Reference<HealLairEvent* > healLairEvent;
 
 	DamageMap damageMap;
 

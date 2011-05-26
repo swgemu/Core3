@@ -61,7 +61,7 @@ public:
 		if (creature->isRidingMount()) {
 			ZoneServer* zoneServer = server->getZoneServer();
 
-			ObjectController* objectController = zoneServer->getObjectController();
+			ManagedReference<ObjectController*> objectController = zoneServer->getObjectController();
 			objectController->activateCommand(creature, String("dismount").hashCode(), 0, 0, "");
 
 			return GENERALERROR;

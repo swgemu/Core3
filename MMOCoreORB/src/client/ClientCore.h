@@ -54,12 +54,16 @@ class ClientCore : public Core, public Logger {
 	int instances;
 
 	Vector<Zone*> zones;
+
 public:
 	ClientCore(int instances);
 
 	void initialize();
 
 	void run();
+
+	void loginCharacter(int index);
+	void logoutCharacter(int index);
 
 	void handleCommands();
 };

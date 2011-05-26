@@ -320,17 +320,17 @@ protected:
 
 	Reference<TerrainManager* > terrainManager;
 
-	NoBuildAreaMap noBuildAreaMap;
+	Reference<NoBuildAreaMap* > noBuildAreaMap;
 
-	MissionTargetMap missionNpcs;
+	Reference<MissionTargetMap* > missionNpcs;
 
-	MissionTargetMap performanceLocations;
+	Reference<MissionTargetMap* > performanceLocations;
 
-	HuntingTargetMap huntingTargets;
+	Reference<HuntingTargetMap* > huntingTargets;
 
-	MissionTargetMap reconLocs;
+	Reference<MissionTargetMap* > reconLocs;
 
-	MissionTargetMap informants;
+	Reference<MissionTargetMap* > informants;
 
 public:
 	PlanetManagerImplementation(Zone* planet, ZoneProcessServer* srv);

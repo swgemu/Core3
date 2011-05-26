@@ -72,8 +72,7 @@ class EntertainingSession extends Facade {
 	@dereferenced
 	protected EntertainingDataMap listeners;
 	
-	@dereferenced
-	protected transient Reference<EntertainingSessionTask> tickTask;
+	protected transient EntertainingSessionTask tickTask;
 	
 	@dereferenced
 	protected Time nextTick;

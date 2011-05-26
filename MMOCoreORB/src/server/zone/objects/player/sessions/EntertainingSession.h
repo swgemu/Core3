@@ -236,7 +236,7 @@ protected:
 
 	EntertainingDataMap listeners;
 
-	Reference<EntertainingSessionTask*> tickTask;
+	Reference<EntertainingSessionTask* > tickTask;
 
 	Time nextTick;
 

@@ -52,9 +52,12 @@ which carries forward this exception.
 #include "../../server/zone/packets/zone/ClientIDMessage.h"
 
 
-ZoneClient::ZoneClient(int port) : BaseClient("localhost", port) {
-	setLogging(false);
-	setLoggingName("ZoneClient");
+ZoneClient::ZoneClient(int port) {
+	client = new BaseClient("localhost", port);
+	client->setHandler(this);
+
+	client->setLogging(false);
+	client->setLoggingName("ZoneClient");
 
 	player = NULL;
 
@@ -76,13 +79,14 @@ ZoneClient::~ZoneClient() {
 	basePacketHandler = NULL;
 }
 
-void ZoneClient::handleMessage(Packet* message) {
-	basePacketHandler->handlePacket(this, message);
+void ZoneClient::handleMessage(ServiceClient* client, Packet* message) {
+	basePacketHandler->handlePacket(ZoneClient::client, message);
 }
 
 void ZoneClient::initialize() {
 	zonePacketHandler = new ZonePacketHandler("ZonePacketHandler", zone);
-	BaseClient::initialize();
+
+	client->initialize();
 }
 
 void ZoneClient::processMessage(Message* message) {

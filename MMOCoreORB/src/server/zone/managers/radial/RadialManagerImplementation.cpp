@@ -29,12 +29,12 @@ void RadialManagerImplementation::handleObjectMenuRequest(PlayerCreature* player
 		Locker clocker(menuObject, player);
 
 		//info("entering object menu request ");
-		menuObject->fillObjectMenuResponse(defaultMenuResponse, player);
+		menuObject->fillObjectMenuResponse((ObjectMenuResponse*) defaultMenuResponse->clone(), player);
 	}
 
 	defaultMenuResponse->finish();
 
-	player->sendMessage(defaultMenuResponse);
+	player->sendMessage(defaultMenuResponse->clone());
 }
 
 void RadialManagerImplementation::handleObjectMenuSelect(PlayerCreature* player, byte selectID, uint64 objectID) {

@@ -37,7 +37,7 @@ SceneObject::SceneObject(LuaObject* templateData) : Logger("SceneObject") {
 
 	containmentType = 4;
 
-	coordinates.initializePosition(0.f, 0.f, 0.f);
+	initializePosition(0.f, 0.f, 0.f);
 
 	movementCounter = 0;
 

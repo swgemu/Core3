@@ -83,7 +83,6 @@ class ManufactureSchematic extends IntangibleObject {
 	protected int experimentingCounter;
 	protected int experimentingCounterPrevious;
 	
-	@dereferenced
 	protected CraftingValues craftingValues;
 	
 	@dereferenced
@@ -94,6 +93,9 @@ class ManufactureSchematic extends IntangibleObject {
 	
 	public ManufactureSchematic() {
 		Logger.setLoggingName("ManufactureSchematic");
+		
+		craftingValues = new CraftingValues();
+		
 		prototype = null;
 		firstCraftingUpdate = true;
 	}
@@ -165,8 +167,7 @@ class ManufactureSchematic extends IntangibleObject {
 	}
 	
 	@local
-	@dereferenced
-	public native Reference<IngredientSlot> getIngredientSlot(int index);
+	public native IngredientSlot getIngredientSlot(int index);
 	
 	public native int getSlotCount();
 	

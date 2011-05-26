@@ -16,7 +16,7 @@ void ElevatorTerminalImplementation::fillObjectMenuResponse(ObjectMenuResponse* 
 	if (player->getParent() != parent) //Must be in same cell to use
 		return;
 
-	ElevatorTerminalTemplate* temp = dynamic_cast<ElevatorTerminalTemplate*>(templateObject.get());
+	ElevatorTerminalTemplate* temp = dynamic_cast<ElevatorTerminalTemplate*>(getObjectTemplate());
 
 	if (temp == NULL)
 		return;
@@ -71,7 +71,7 @@ int ElevatorTerminalImplementation::handleObjectMenuSelect(PlayerCreature* playe
 void ElevatorTerminalImplementation::notifyInsert(QuadTreeEntry* obj) {
 	TerminalImplementation::notifyInsert(obj);
 
-	ElevatorTerminalTemplate* temp = dynamic_cast<ElevatorTerminalTemplate*>(templateObject.get());
+	ElevatorTerminalTemplate* temp = dynamic_cast<ElevatorTerminalTemplate*>(getObjectTemplate());
 
 	if (temp == NULL)
 		return;

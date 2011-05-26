@@ -123,7 +123,7 @@ namespace buffs {
 
 class PowerBoostBuffImplementation : public BuffImplementation {
 protected:
-	Reference<PowerBoostBuffDurationEvent*> pbBuffEvent;
+	Reference<PowerBoostBuffDurationEvent* > pbBuffEvent;
 
 	int pbBonus;
 

@@ -46,6 +46,7 @@ which carries forward this exception.
 #include "zone/managers/object/ObjectManager.h"
 
 #include "ClientCore.h"
+
 #include "login/LoginSession.h"
 
 ClientCore::ClientCore(int instances) : Core("log/core3client.log"), Logger("CoreClient") {
@@ -56,41 +57,93 @@ void ClientCore::initialize() {
 	info("starting up client..");
 }
 
+int connectCount = 0, disconnectCount = 0;
+
 void ClientCore::run() {
 	for (int i = 0; i < instances; ++i) {
-		try {
-			LoginSession loginSession(i);
-			loginSession.run();
-
-			uint32 selectedCharacter = loginSession.getSelectedCharacter();
-			uint64 objid = 0;
-
-			if (selectedCharacter != -1) {
-				objid = loginSession.getCharacterObjectID(selectedCharacter);
-
-				info("trying to login " + String::valueOf(objid), true);
-			}
-
-			uint32 acc = loginSession.getAccountID();
-			uint32 session = loginSession.getSessionID();
-
-			Zone* zone = new Zone(i, objid, acc, session);
-			zone->start();
-
-			zones.add(zone);
-		} catch (Exception& e) {
-
-		}
-
-		Thread::sleep(1 + System::random(5));
+		zones.add(NULL);
 	}
 
 	info("initialized", true);
 
-	handleCommands();
+	int rounds = 0;
 
-	/*delete zone;
-	zone = NULL;*/
+	while (true) {
+		int index = System::random(instances - 1);
+
+		if (System::random(100) < 66)
+			loginCharacter(index);
+		else
+			logoutCharacter(index);
+
+	#ifdef WITH_STM
+		try {
+			TransactionalMemoryManager::commitPureTransaction();
+		} catch (const TransactionAbortedException& e) {
+		}
+	#endif
+
+		info(String::valueOf(connectCount) + " connects, " + String::valueOf(disconnectCount) + " disconnects. " +
+				String::valueOf(++rounds) + " rounds", true);
+
+		Thread::sleep(1000 + System::random(4000));
+	}
+
+	//handleCommands();
+
+	for (int i = 0; i < instances; ++i) {
+		Zone* zone = zones.get(i);
+		if (zone != NULL)
+			zone->disconnect();
+	}
+
+	Thread::sleep(10000);
+}
+
+void ClientCore::loginCharacter(int index) {
+	try {
+		Zone* zone = zones.get(index);
+		if (zone != NULL)
+			return;
+
+		Reference<LoginSession*> loginSession = new LoginSession(index);
+		loginSession->run();
+
+		uint32 selectedCharacter = loginSession->getSelectedCharacter();
+		uint64 objid = 0;
+
+		if (selectedCharacter != -1) {
+			objid = loginSession->getCharacterObjectID(selectedCharacter);
+
+			info("trying to login " + String::valueOf(objid));
+		}
+
+		uint32 acc = loginSession->getAccountID();
+		uint32 session = loginSession->getSessionID();
+
+		zone = new Zone(index, objid, acc, session);
+		zone->start();
+
+		zones.set(index, zone);
+
+		connectCount++;
+	} catch (Exception& e) {
+
+	}
+}
+
+void ClientCore::logoutCharacter(int index) {
+	Zone* zone = zones.get(index);
+	if (zone == NULL || !zone->isStarted())
+		return;
+
+	zones.set(index, NULL);
+
+	zone->disconnect();
+
+	disconnectCount++;
+
+	delete zone;
 }
 
 void ClientCore::handleCommands() {

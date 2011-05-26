@@ -47,20 +47,31 @@ which carries forward this exception.
 
 #include "system/lang.h"
 
-#include "../../objects/scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 
-class ObjectMap : public HashTable<uint64, ManagedReference<SceneObject*> >, public HashTableIterator<uint64, ManagedReference<SceneObject*> > {
+class ObjectMap : public Object {
+	HashTable<uint64, ManagedReference<SceneObject*> > objects;
+
 	int maxConnections;
 
 public:
-	ObjectMap() {
-		ObjectMap(3000);
+	ObjectMap() : objects(3000){
 	}
 
-	ObjectMap(int initsize) : HashTable<uint64, ManagedReference<SceneObject*> >(initsize), HashTableIterator<uint64, ManagedReference<SceneObject*> >(this) {
-		setNullValue(NULL);
+	ObjectMap(int initsize) : objects(initsize) {
 	}
 
+	SceneObject* put(uint64 oid, SceneObject* object) {
+		return objects.put(oid, object);
+	}
+
+	SceneObject* remove(uint64 oid) {
+		return objects.remove(oid);
+	}
+
+	HashTableIterator<uint64, ManagedReference<SceneObject*> > iterator() {
+		return objects.iterator();
+	}
 };
 
 #endif /*OBJECTMAP_H_*/

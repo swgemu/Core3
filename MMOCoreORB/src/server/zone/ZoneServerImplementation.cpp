@@ -516,16 +516,19 @@ void ZoneServerImplementation::printInfo(bool forcedLog) {
 	else
 		packetloss = (100 * totalResentPackets) / (totalResentPackets + totalSentPackets);
 
+#ifndef WITH_STM
 	StringBuffer msg3;
 	msg3 << "sent packets = " << totalSentPackets << ", resent packets = "
 		<< totalResentPackets << " [" << packetloss << "%]";
 	info(msg3, forcedLog);
+#endif
 
 	StringBuffer msg4;
 	msg4 << dec << currentPlayers << " users connected (" << maximumPlayers << " max, " << totalPlayers << " total, "
 		 << totalDeletedPlayers << " deleted)";
 	info(msg4, forcedLog);
 
+#ifndef WITH_STM
 	ObjectManager::instance()->printInfo();
 
 	int totalCreatures = 0;
@@ -546,6 +549,7 @@ void ZoneServerImplementation::printInfo(bool forcedLog) {
 	StringBuffer msg5;
 	msg5 << dec << totalCreatures << " random creatures spawned";
 	info(msg5, forcedLog);
+#endif
 
 	unlock();
 }
@@ -576,7 +580,12 @@ void ZoneServerImplementation::increaseTotalDeletedPlayers() {
 }
 
 void ZoneServerImplementation::lock(bool doLock) {
+#ifdef WITH_STM
+	if (doLock && !datagramService->tryLock())
+		throw TransactionAbortedException();
+#else
 	datagramService->lock(doLock);
+#endif
 }
 
 void ZoneServerImplementation::unlock(bool doLock) {

@@ -129,7 +129,7 @@ public:
 
 	void recalculateValues(bool initial);
 
-	//void toString();
+	String toString();
 
 	inline int getExperimentalPropertyTitleSize(){
 		return experimentalValuesMap.size();

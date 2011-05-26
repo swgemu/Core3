@@ -266,18 +266,20 @@ public:
 			return contents.get(0)->getObjectID();
 	}
 
-	/*void toString() {
+	String toString() {
+		StringBuffer str;
+
 		if (contents.size() == 0) {
 
-			System::out << "Slot is EMPTY" << endl;
-
+			str << "Slot is EMPTY" << endl;
 		} else {
-
 			for(int i = 0; i < contents.size(); ++i) {
-				System::out << "Name: " << contents.get(i)->getCustomObjectName().toString() << endl;
-				System::out << "Quantity: " << contents.get(i)->getUseCount() << endl;
+				str << "Name: " << contents.get(i)->getCustomObjectName().toString() << endl;
+				str << "Quantity: " << contents.get(i)->getUseCount() << endl;
 			}
 		}
-	}*/
+
+		return str.toString();
+	}
 };
 #endif /*COMPONENTSLOT_H_*/

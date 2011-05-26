@@ -64,8 +64,7 @@ import engine.log.Logger;
 
 @nonTransactional
 class ZoneClientSession extends ManagedObject {
-	@dereferenced
-	transient protected Reference<BaseClientProxy> session;
+	transient protected BaseClientProxy session;
 	
 	@weakReference
 	protected SceneObject player;
@@ -101,13 +100,17 @@ class ZoneClientSession extends ManagedObject {
 	public void setPlayer(SceneObject playerCreature) {
 		if (playerCreature != player) {
 			if (playerCreature == null && player != null) {
+				// TODO: find a proper way to acqure zone server
 				ZoneServer zoneServer = player.getZoneServer();
 				
-				zoneServer.decreaseOnlinePlayers();
+				if (zoneServer != null)
+					zoneServer.decreaseOnlinePlayers();
 			} else if (playerCreature != player) {
+				// TODO: find a proper way to acqure zone server
 				ZoneServer zoneServer = playerCreature.getZoneServer();
 				
-				zoneServer.increaseOnlinePlayers();
+				if (zoneServer != null)
+					zoneServer.increaseOnlinePlayers();
 			}
 		}
 		

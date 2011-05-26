@@ -3562,7 +3562,7 @@ bool CreatureObjectImplementation::readObjectMember(ObjectInputStream* stream, c
 	}
 
 	if (_name == "cooldownTimerMap") {
-		TypeInfo<CooldownTimerMap >::parseFromBinaryStream(&cooldownTimerMap, stream);
+		TypeInfo<Reference<CooldownTimerMap* > >::parseFromBinaryStream(&cooldownTimerMap, stream);
 		return true;
 	}
 
@@ -3997,7 +3997,7 @@ int CreatureObjectImplementation::writeObjectMembers(ObjectOutputStream* stream)
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
-	TypeInfo<CooldownTimerMap >::toBinaryStream(&cooldownTimerMap, stream);
+	TypeInfo<Reference<CooldownTimerMap* > >::toBinaryStream(&cooldownTimerMap, stream);
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
@@ -4186,12 +4186,12 @@ void CreatureObjectImplementation::updateTimeOfDeath() {
 
 bool CreatureObjectImplementation::hasAttackDelay() {
 	// server/zone/objects/creature/CreatureObject.idl():  		return !cooldownTimerMap.isPast("nextAttackDelay");
-	return !(&cooldownTimerMap)->isPast("nextAttackDelay");
+	return !cooldownTimerMap->isPast("nextAttackDelay");
 }
 
 void CreatureObjectImplementation::removeAttackDelay() {
 	// server/zone/objects/creature/CreatureObject.idl():  		cooldownTimerMap.updateToCurrentTime("nextAttackDelay");
-	(&cooldownTimerMap)->updateToCurrentTime("nextAttackDelay");
+	cooldownTimerMap->updateToCurrentTime("nextAttackDelay");
 }
 
 bool CreatureObjectImplementation::hasSpice() {
@@ -4206,70 +4206,70 @@ void CreatureObjectImplementation::updateLastSuccessfulCombatAction() {
 
 void CreatureObjectImplementation::updateKnockdownRecovery() {
 	// server/zone/objects/creature/CreatureObject.idl():  		cooldownTimerMap.updateToCurrentAndAddMili("knockdownRecovery", 30000);
-	(&cooldownTimerMap)->updateToCurrentAndAddMili("knockdownRecovery", 30000);
+	cooldownTimerMap->updateToCurrentAndAddMili("knockdownRecovery", 30000);
 }
 
 void CreatureObjectImplementation::updateLastKnockdown() {
 	// server/zone/objects/creature/CreatureObject.idl():  		cooldownTimerMap.updateToCurrentAndAddMili("lastKnockdown", 60000);
-	(&cooldownTimerMap)->updateToCurrentAndAddMili("lastKnockdown", 60000);
+	cooldownTimerMap->updateToCurrentAndAddMili("lastKnockdown", 60000);
 }
 
 bool CreatureObjectImplementation::checkKnockdownRecovery() {
 	// server/zone/objects/creature/CreatureObject.idl():  		return cooldownTimerMap.isPast("knockdownRecovery");
-	return (&cooldownTimerMap)->isPast("knockdownRecovery");
+	return cooldownTimerMap->isPast("knockdownRecovery");
 }
 
 bool CreatureObjectImplementation::checkLastKnockdown() {
 	// server/zone/objects/creature/CreatureObject.idl():  		return cooldownTimerMap.isPast("lastKnockdown");
-	return (&cooldownTimerMap)->isPast("lastKnockdown");
+	return cooldownTimerMap->isPast("lastKnockdown");
 }
 
 void CreatureObjectImplementation::updatePostureDownRecovery() {
 	// server/zone/objects/creature/CreatureObject.idl():  		cooldownTimerMap.updateToCurrentAndAddMili("postureDownRecovery", 30000);
-	(&cooldownTimerMap)->updateToCurrentAndAddMili("postureDownRecovery", 30000);
+	cooldownTimerMap->updateToCurrentAndAddMili("postureDownRecovery", 30000);
 }
 
 void CreatureObjectImplementation::updatePostureUpRecovery() {
 	// server/zone/objects/creature/CreatureObject.idl():  		cooldownTimerMap.updateToCurrentAndAddMili("postureUpRecovery", 30000);
-	(&cooldownTimerMap)->updateToCurrentAndAddMili("postureUpRecovery", 30000);
+	cooldownTimerMap->updateToCurrentAndAddMili("postureUpRecovery", 30000);
 }
 
 bool CreatureObjectImplementation::checkPostureDownRecovery() {
 	// server/zone/objects/creature/CreatureObject.idl():  		return cooldownTimerMap.isPast("postureDownRecovery");
-	return (&cooldownTimerMap)->isPast("postureDownRecovery");
+	return cooldownTimerMap->isPast("postureDownRecovery");
 }
 
 bool CreatureObjectImplementation::checkPostureUpRecovery() {
 	// server/zone/objects/creature/CreatureObject.idl():  		return cooldownTimerMap.isPast("postureUpRecovery");
-	return (&cooldownTimerMap)->isPast("postureUpRecovery");
+	return cooldownTimerMap->isPast("postureUpRecovery");
 }
 
 void CreatureObjectImplementation::updateCooldownTimer(const String& coooldownTimer, unsigned int miliSecondsToAdd) {
 	// server/zone/objects/creature/CreatureObject.idl():  		}
 	if (miliSecondsToAdd != 0){
 	// server/zone/objects/creature/CreatureObject.idl():  			cooldownTimerMap.updateToCurrentAndAddMili(coooldownTimer, miliSecondsToAdd);
-	(&cooldownTimerMap)->updateToCurrentAndAddMili(coooldownTimer, miliSecondsToAdd);
+	cooldownTimerMap->updateToCurrentAndAddMili(coooldownTimer, miliSecondsToAdd);
 }
 
 	else {
 	// server/zone/objects/creature/CreatureObject.idl():  			cooldownTimerMap.updateToCurrentTime(coooldownTimer);
-	(&cooldownTimerMap)->updateToCurrentTime(coooldownTimer);
+	cooldownTimerMap->updateToCurrentTime(coooldownTimer);
 }
 }
 
 bool CreatureObjectImplementation::checkCooldownRecovery(const String& cooldown) {
 	// server/zone/objects/creature/CreatureObject.idl():  		return cooldownTimerMap.isPast(cooldown);
-	return (&cooldownTimerMap)->isPast(cooldown);
+	return cooldownTimerMap->isPast(cooldown);
 }
 
 Time* CreatureObjectImplementation::getCooldownTime(const String& cooldown) {
 	// server/zone/objects/creature/CreatureObject.idl():  		return cooldownTimerMap.getTime(cooldown);
-	return (&cooldownTimerMap)->getTime(cooldown);
+	return cooldownTimerMap->getTime(cooldown);
 }
 
 void CreatureObjectImplementation::addCooldown(const String& name, unsigned int miliseconds) {
 	// server/zone/objects/creature/CreatureObject.idl():  		cooldownTimerMap.updateToCurrentAndAddMili(name, miliseconds);
-	(&cooldownTimerMap)->updateToCurrentAndAddMili(name, miliseconds);
+	cooldownTimerMap->updateToCurrentAndAddMili(name, miliseconds);
 }
 
 void CreatureObjectImplementation::playEffect(const String& file) {

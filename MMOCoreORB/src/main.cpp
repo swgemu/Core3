@@ -36,7 +36,7 @@ and as the GNU LGPL requires distribution of source code.
 
 Note that people who make modified versions of Engine3 are not obligated
 to grant this special exception for their modified versions;
-it is their choice whether to do so. The GtreedirNU Lesser General Public License
+it is their choice whether to do so. The GNU Lesser General Public License
 gives permission to release a modified version without this exception;
 this exception also makes it possible to release a modified version
 which carries forward this exception.
@@ -44,119 +44,7 @@ which carries forward this exception.
 
 #include "server/ServerCore.h"
 
-#include "server/zone/objects/scene/SceneObject.h"
-#include "tre3/TreeArchive.h"
-
-class TestClass : public Object {
-	static const int ELEMENT_COUNT = 100;
-
-	int values[ELEMENT_COUNT];
-
-public:
-	TestClass(int value) {
-		for (int i = 0; i < ELEMENT_COUNT; ++i)
-			values[i] = value;
-	}
-
-	TestClass(TestClass& obj) : Object() {
-		for (int i = 0; i < ELEMENT_COUNT; ++i)
-			values[i] = obj.values[i];
-	}
-
-	void increment() {
-		for (int i = 0; i < ELEMENT_COUNT; ++i)
-			values[i] += 1;
-	}
-
-	int get() {
-		int value = values[0];
-
-		for (int i = 0; i < ELEMENT_COUNT; ++i) {
-			if (values[i] != value)
-				assert(0 && "inconsistency in object");
-		}
-
-		return value;
-	}
-
-	int getz() {
-		int value = values[0];
-
-		return value;
-	}
-
-	Object* clone() {
-		return new TestClass(*this);
-	}
-};
-
-class TestTask : public Task {
-	Vector<TransactionalReference<TestClass*> >* references;
-
-public:
-	TestTask(Vector<TransactionalReference<TestClass*> >* refs) {
-		references = refs;
-	}
-
-	void run() {
-		//Task* task = new TestTask(references);
-
-		for (int i = 0; i < 25; ++i) {
-			TestClass* object = references->get(System::random(references->size() - 1)).getForUpdate();
-
-			/*char str[80];
-			sprintf(str, "values %i\n", object->getz());
-
-			Transaction::currentTransaction()->log(str);*/
-
-			object->increment();
-		}
-	}
-};
-
-void testTransactions() {
-	Vector<TransactionalReference<TestClass*> > references;
-
-	for (int i = 0; i < 100000; ++i)
-		references.add(new TestClass(1));
-
-	for (int i = 0; i < 10000; ++i) {
-		Task* task = new TestTask(&references);
-
-		//Core::getTaskManager()->scheduleTask(task, 1000);
-		Core::getTaskManager()->executeTask(task);
-	}
-
-	TransactionalMemoryManager::commitPureTransaction();
-
-	Thread::sleep(3000);
-
-	while(true) {
-	//while(Core::getTaskManager()->getExecutingTaskSize() > 10) {
-		Thread::sleep(1000);
-
-		/*for (int i = 0; i < 10000; ++i) {
-			Task* task = new TestTask(&references);
-
-			//Core::getTaskManager()->scheduleTask(task, 1000);
-			Core::getTaskManager()->executeTask(task);
-		}*/
-
-		TransactionalMemoryManager::commitPureTransaction();
-	}
-
-	for (int i = 0; i < references.size(); ++i) {
-		TestClass* object = references.get(i);
-
-		printf("%i\n", object->get());
-	}
-
-	TransactionalMemoryManager::commitPureTransaction();
-
-	Thread::sleep(1000);
-
-	exit(0);
-}
+#include "test/stmtest.h"
 
 int main(int argc, char* argv[]) {
 	try {

@@ -53,32 +53,32 @@ namespace server {
 namespace chat {
 namespace room {
 
-class ChatRoomMap : public HashTableIterator<uint32, ChatRoom* >, public Object {
-	HashTable<uint32, ChatRoom*> hashTable;
+class ChatRoomMap : public Object {
+	HashTable<uint32, ManagedReference<ChatRoom*> > rooms;
+
 public:
-	ChatRoomMap(int initsize) : HashTableIterator<uint32, ChatRoom*>(&hashTable) {
+	ChatRoomMap(int initsize) : rooms(initsize) {
 	}
 
 	void put(uint32 key, ChatRoom* room) {
-		if (hashTable.put(key, room) == NULL)
-			room->acquire();
-	}
-
-	void remove(uint32 key) {
-		ChatRoom* room = hashTable.remove(key);
-
-		if (room != NULL)
-			room->release();
+		rooms.put(key, room);
 	}
 
 	ChatRoom* get(uint32 key) {
-		return hashTable.get(key);
+		return rooms.get(key);
+	}
+
+	void remove(uint32 key) {
+		rooms.remove(key);
 	}
 
 	void removeAll() {
-		hashTable.removeAll();
+		rooms.removeAll();
 	}
 
+	HashTableIterator<uint32, ManagedReference<ChatRoom*> > iterator() {
+		return rooms.iterator();
+	}
 };
 
 

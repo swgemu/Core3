@@ -56,11 +56,12 @@ namespace zone {
 namespace managers {
 namespace player {
 
-class PlayerMap : private HashTableIterator<String, ManagedReference<PlayerCreature*> >, public Mutex, public Object {
-	HashTable<String, ManagedReference<PlayerCreature*> > hashTable;
+class PlayerMap : public Mutex, public Object {
+	HashTable<String, ManagedReference<PlayerCreature*> > players;
+	HashTableIterator<String, ManagedReference<PlayerCreature*> > iter;
+
 public:
-	PlayerMap(int initsize) :  HashTableIterator<String, ManagedReference<PlayerCreature*> >(&hashTable), Mutex("PlayerMap") {
-		hashTable.setNullValue(NULL);
+	PlayerMap(int initsize) : Mutex("PlayerMap"), players(initsize), iter(&players) {
 	}
 
 	PlayerCreature* put(const String& name, PlayerCreature* player, bool doLock = true) {
@@ -70,7 +71,7 @@ public:
 
 		try {
 
-			play = hashTable.put(name.toLowerCase(), player);
+			play = players.put(name.toLowerCase(), player);
 
 		} catch (Exception& e) {
 			System::out << e.getMessage();
@@ -95,7 +96,7 @@ public:
 
 		try {
 
-			player = hashTable.get(name.toLowerCase());
+			player = players.get(name.toLowerCase());
 
 		} catch (Exception& e) {
 			System::out << e.getMessage();
@@ -120,7 +121,7 @@ public:
 
 		try {
 
-			player = hashTable.remove(name.toLowerCase());
+			player = players.remove(name.toLowerCase());
 
 		} catch (Exception& e) {
 			System::out << e.getMessage();
@@ -143,7 +144,7 @@ public:
 
 		lock(doLock);
 
-		player = HashTableIterator<String, ManagedReference<PlayerCreature*> >::getNextValue();
+		player = iter.getNextValue();
 
 		unlock(doLock);
 
@@ -159,7 +160,7 @@ public:
 
 		lock(doLock);
 
-		res = HashTableIterator<String, ManagedReference<PlayerCreature*> >::hasNext();
+		res = iter.hasNext();
 
 		unlock(doLock);
 
@@ -169,7 +170,7 @@ public:
 	void resetIterator(bool doLock = true) {
 		lock(doLock);
 
-		HashTableIterator<String, ManagedReference<PlayerCreature*> >::resetIterator();
+		iter.resetIterator();
 
 		unlock(doLock);
 	}
@@ -177,7 +178,7 @@ public:
 	int size(bool doLock = true) {
 		lock(doLock);
 
-		int res = hashTable.size();
+		int res = players.size();
 
 		unlock(doLock);
 

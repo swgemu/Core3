@@ -77,32 +77,17 @@ ZoneProcessServerImplementation::ZoneProcessServerImplementation(ZoneServer* ser
 }
 
 void ZoneProcessServerImplementation::finalize() {
-	if (zonePacketHandler != NULL) {
-		delete zonePacketHandler;
-		zonePacketHandler = NULL;
-	}
+	zonePacketHandler = NULL;
 
-	if (nameManager != NULL) {
-		delete nameManager;
-		nameManager = NULL;
-	}
+	nameManager = NULL;
 
-	if (holocronManager != NULL) {
-		delete holocronManager;
-		holocronManager = NULL;
-	}
+	holocronManager = NULL;
 
-	if (suiManager != NULL) {
-		delete suiManager;
-		suiManager = NULL;
-	}
+	suiManager = NULL;
 
-	if (professionManager != NULL) {
-		professionManager = NULL;
-	}
+	professionManager = NULL;
 
-	if (vendorManager != NULL)
-		vendorManager = NULL;
+	vendorManager = NULL;
 }
 
 void ZoneProcessServerImplementation::initialize() {

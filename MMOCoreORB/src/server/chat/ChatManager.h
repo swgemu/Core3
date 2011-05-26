@@ -171,6 +171,8 @@ using namespace server::zone::objects::waypoint;
 
 #include "system/util/VectorMap.h"
 
+#include "system/util/HashTable.h"
+
 #include "engine/log/Logger.h"
 
 namespace server {

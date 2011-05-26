@@ -61,11 +61,6 @@ ChatManagerImplementation::ChatManagerImplementation(ZoneServer* serv, int inits
 }
 
 void ChatManagerImplementation::finalize() {
-	delete playerMap;
-	playerMap = NULL;
-
-	delete roomMap;
-	roomMap = NULL;
 }
 
 ChatRoom* ChatManagerImplementation::createRoom(const String& roomName, ChatRoom* parent) {
@@ -196,10 +191,10 @@ ChatRoom* ChatManagerImplementation::getChatRoomByFullPath(const String& path) {
 void ChatManagerImplementation::destroyRooms() {
 	Locker _locker(_this);
 
-	roomMap->resetIterator();
+	HashTableIterator<unsigned int, ManagedReference<ChatRoom* > > iter = roomMap->iterator();
 
-	while (roomMap->hasNext()) {
-		ChatRoom* room = roomMap->next();
+	while (iter.hasNext()) {
+		ChatRoom* room = iter.next();
 		room->finalize();
 	}
 

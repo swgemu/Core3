@@ -914,8 +914,8 @@ int GamblingTerminalImplementation::getMachineType() {
 }
 
 GamblingEvent* GamblingTerminalImplementation::getEvent() {
-	// server/zone/objects/tangible/terminal/gambling/GamblingTerminal.idl():  		return event.get();
-	return (&event)->get();
+	// server/zone/objects/tangible/terminal/gambling/GamblingTerminal.idl():  		return event;
+	return event;
 }
 
 void GamblingTerminalImplementation::incGameCount() {

@@ -84,8 +84,8 @@ public:
 		return hashTable.size();
 	}
 
-	HashTable<uint32, Reference<CreatureTemplate*> >* getHashTable() {
-		return &hashTable;
+	HashTableIterator<uint32, Reference<CreatureTemplate*> > iterator() {
+		return hashTable.iterator();
 	}
 
 	CreatureTemplate* getTemplate(uint32 crc) {

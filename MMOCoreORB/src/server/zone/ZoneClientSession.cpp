@@ -466,7 +466,8 @@ void ZoneClientSessionImplementation::setPlayer(SceneObject* playerCreature) {
 	if (playerCreature == NULL && player != NULL){
 	// server/zone/ZoneClientSession.idl():  				ZoneServer zoneServer = player.getZoneServer();
 	ZoneServer* zoneServer = player->getZoneServer();
-	// server/zone/ZoneClientSession.idl():  				zoneServer.decreaseOnlinePlayers();
+	// server/zone/ZoneClientSession.idl():  			}
+	if (zoneServer != NULL)	// server/zone/ZoneClientSession.idl():  					zoneServer.decreaseOnlinePlayers();
 	zoneServer->decreaseOnlinePlayers();
 }
 
@@ -474,7 +475,8 @@ void ZoneClientSessionImplementation::setPlayer(SceneObject* playerCreature) {
 	if (playerCreature != player){
 	// server/zone/ZoneClientSession.idl():  				ZoneServer zoneServer = playerCreature.getZoneServer();
 	ZoneServer* zoneServer = playerCreature->getZoneServer();
-	// server/zone/ZoneClientSession.idl():  				zoneServer.increaseOnlinePlayers();
+	// server/zone/ZoneClientSession.idl():  			}
+	if (zoneServer != NULL)	// server/zone/ZoneClientSession.idl():  					zoneServer.increaseOnlinePlayers();
 	zoneServer->increaseOnlinePlayers();
 }
 }

@@ -89,11 +89,9 @@ class WeatherManager extends ManagedService implements Logger {
 	private float windX;
 	private float windY; 
 
-	@dereferenced
-	protected transient Reference<WeatherChangeEvent> weatherChangeEvent;
+	protected transient WeatherChangeEvent weatherChangeEvent;
 
-	@dereferenced
-	protected transient Reference<SandstormTickEvent> sandstormTickEvent;
+	protected transient SandstormTickEvent sandstormTickEvent;
 
 
 	public WeatherManager(Zone planet) {

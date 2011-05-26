@@ -60,8 +60,7 @@ class Buff extends ManagedObject implements Logger {
 	@weakReference
 	protected CreatureObject creature;
 	
-	@dereferenced
-	protected transient Reference<BuffDurationEvent> buffEvent;
+	protected transient BuffDurationEvent buffEvent;
 
 	@dereferenced
 	protected VectorMap<byte, int> attributeModifiers;

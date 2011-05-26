@@ -870,7 +870,7 @@ protected:
 
 	Time nextAction;
 
-	CooldownTimerMap cooldownTimerMap;
+	Reference<CooldownTimerMap* > cooldownTimerMap;
 
 	BuffList creatureBuffs;
 

@@ -190,9 +190,9 @@ class WeatherManagerImplementation : public ManagedServiceImplementation, public
 	float windY;
 
 protected:
-	Reference<WeatherChangeEvent*> weatherChangeEvent;
+	Reference<WeatherChangeEvent* > weatherChangeEvent;
 
-	Reference<SandstormTickEvent*> sandstormTickEvent;
+	Reference<SandstormTickEvent* > sandstormTickEvent;
 
 public:
 	WeatherManagerImplementation(Zone* planet);

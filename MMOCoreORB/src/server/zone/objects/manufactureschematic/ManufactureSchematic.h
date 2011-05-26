@@ -134,7 +134,7 @@ public:
 
 	DraftSchematic* getDraftSchematic();
 
-	Reference<IngredientSlot*> getIngredientSlot(int index);
+	IngredientSlot* getIngredientSlot(int index);
 
 	int getSlotCount();
 
@@ -242,7 +242,7 @@ protected:
 
 	int experimentingCounterPrevious;
 
-	CraftingValues craftingValues;
+	Reference<CraftingValues* > craftingValues;
 
 	Vector<byte> customizationOptions;
 
@@ -277,7 +277,7 @@ public:
 
 	DraftSchematic* getDraftSchematic();
 
-	Reference<IngredientSlot*> getIngredientSlot(int index);
+	IngredientSlot* getIngredientSlot(int index);
 
 	int getSlotCount();
 

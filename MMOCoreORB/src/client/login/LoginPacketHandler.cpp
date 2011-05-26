@@ -5,9 +5,10 @@
  *      Author: theanswer
  */
 
-#include "LoginPacketHandler.h"
-#include "LoginClient.h"
 #include "LoginSession.h"
+#include "LoginClient.h"
+
+#include "LoginPacketHandler.h"
 
 void LoginPacketHandler::handleMessage(Message* pack) {
 	//info("parsing " + pack->toStringData());
@@ -46,8 +47,8 @@ void LoginPacketHandler::handleMessage(Message* pack) {
 }
 
 void LoginPacketHandler::handleErrorMessage(Message* pack) {
-	LoginClient* client = (LoginClient*) pack->getClient();
-	client->info("received ErrorMessage", true);
+	BaseClient* client = (BaseClient*) pack->getClient();
+	client->info("received ErrorMessage");
 
 	String errorType, errorMessage;
 
@@ -60,8 +61,8 @@ void LoginPacketHandler::handleErrorMessage(Message* pack) {
 }
 
 void LoginPacketHandler::handleLoginClientToken(Message* pack) {
-	LoginClient* client = (LoginClient*) pack->getClient();
-	client->info("received LoginClientToken", true);
+	BaseClient* client = (BaseClient*) pack->getClient();
+	client->info("received LoginClientToken");
 
 	uint32 size = pack->parseInt();
 	uint32 session = pack->parseInt();
@@ -72,13 +73,16 @@ void LoginPacketHandler::handleLoginClientToken(Message* pack) {
 }
 
 void LoginPacketHandler::handleEnumerateCharacterId(Message* pack) {
-	LoginClient* client = (LoginClient*) pack->getClient();
-	client->info("received EnumerateCharacterId", true);
+	BaseClient* client = (BaseClient*) pack->getClient();
+	client->info("received EnumerateCharacterId");
 
 	uint32 characters = pack->parseInt();
 
+	if (loginSession == NULL)
+		return;
+
 	if (characters == 0) {
-		client->info("no characters found", true);
+		client->info("no characters found");
 
 		loginSession->setSelectedCharacter(-1);
 		return;
@@ -96,7 +100,7 @@ void LoginPacketHandler::handleEnumerateCharacterId(Message* pack) {
 		StringBuffer player;
 		player << "Character [" << i << "]: [" << name.toString() << "]";
 
-		client->info(player.toString(), true);
+		client->info(player.toString());
 		loginSession->addCharacter(oid);
 	}
 
@@ -112,7 +116,7 @@ void LoginPacketHandler::handleEnumerateCharacterId(Message* pack) {
 	if (characters > 0)
 		selectedInt = 0;
 
-	client->info("selected character " + String::valueOf(selectedInt), true);
+	client->info("selected character " + String::valueOf(selectedInt));
 
 	loginSession->setSelectedCharacter(selectedInt);
 }

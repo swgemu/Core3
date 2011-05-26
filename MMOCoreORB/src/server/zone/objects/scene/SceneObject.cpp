@@ -3750,8 +3750,12 @@ SceneObject* SceneObjectImplementation::getParent() {
 }
 
 ZoneServer* SceneObjectImplementation::getZoneServer() {
-	// server/zone/objects/scene/SceneObject.idl():  		return server.getZoneServer();
+	// server/zone/objects/scene/SceneObject.idl():  			return null;
+	if (server != NULL)	// server/zone/objects/scene/SceneObject.idl():  			return server.getZoneServer();
 	return server->getZoneServer();
+
+	else 	// server/zone/objects/scene/SceneObject.idl():  			return null;
+	return NULL;
 }
 
 UnicodeString SceneObjectImplementation::getCustomObjectName() {

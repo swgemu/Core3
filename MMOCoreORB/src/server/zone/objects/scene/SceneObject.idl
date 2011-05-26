@@ -1312,7 +1312,10 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	}
 
 	public ZoneServer getZoneServer() {
-		return server.getZoneServer();
+		if (server != null)
+			return server.getZoneServer();
+		else
+			return null;
 	}
 
 	/**

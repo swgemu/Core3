@@ -147,6 +147,8 @@ void CreatureObjectImplementation::initializeMembers() {
 	accelerationMultiplierMod = 1.f;
 	speedMultiplierBase = 1.f;
 	speedMultiplierMod = 1.f;
+
+	cooldownTimerMap = new CooldownTimerMap();
 }
 
 void CreatureObjectImplementation::loadTemplateData(SharedObjectTemplate* templateData) {
@@ -1119,7 +1121,7 @@ void CreatureObjectImplementation::setTerrainNegotiation(float value, bool notif
 }
 
 void CreatureObjectImplementation::enqueueCommand(unsigned int actionCRC, unsigned int actionCount, uint64 targetID, const UnicodeString& arguments, int priority) {
-	ObjectController* objectController = getZoneServer()->getObjectController();
+	ManagedReference<ObjectController*> objectController = getZoneServer()->getObjectController();
 
 	QueueCommand* queueCommand = objectController->getQueueCommand(actionCRC);
 
@@ -1180,7 +1182,7 @@ void CreatureObjectImplementation::activateQueueAction() {
 
 	CommandQueueAction* action = commandQueue.remove(0);
 
-	ObjectController* objectController = getZoneServer()->getObjectController();
+	ManagedReference<ObjectController*> objectController = getZoneServer()->getObjectController();
 
 	float time = objectController->activateCommand(_this, action->getCommand(), action->getActionCounter(), action->getTarget(), action->getArguments());
 
@@ -1301,13 +1303,13 @@ void CreatureObjectImplementation::setCreatureLink(CreatureObject* object, bool 
 }
 
 void CreatureObjectImplementation::executeObjectControllerAction(unsigned int actionCRC) {
-	ObjectController* objectController = getZoneServer()->getObjectController();
+	ManagedReference<ObjectController*> objectController = getZoneServer()->getObjectController();
 
 	objectController->activateCommand(_this, actionCRC, 0, 0, "");
 }
 
 void CreatureObjectImplementation::executeObjectControllerAction(unsigned int actionCRC, uint64 targetID, const UnicodeString& args) {
-	ObjectController* objectController = getZoneServer()->getObjectController();
+	ManagedReference<ObjectController*> objectController = getZoneServer()->getObjectController();
 
 	objectController->activateCommand(_this, actionCRC, 0, targetID, args);
 }
@@ -1356,7 +1358,7 @@ void CreatureObjectImplementation::setDizziedState(int durationSeconds) {
 		showFlyText("combat_effects", "go_dizzy", 0, 0xFF, 0);
 		sendSystemMessage("cbt_spam", "go_dizzy_single");
 
-		cooldownTimerMap.updateToCurrentAndAddMili("dizzyRecoveryTime", durationSeconds * 1000);
+		cooldownTimerMap->updateToCurrentAndAddMili("dizzyRecoveryTime", durationSeconds * 1000);
 	}
 }
 
@@ -1364,7 +1366,7 @@ void CreatureObjectImplementation::setAimingState(int durationSeconds) {
 	if (setState(CreatureState::AIMING)) {
 		playEffect("clienteffect/combat_special_attacker_aim.cef");
 
-		cooldownTimerMap.updateToCurrentAndAddMili("aimRecoveryTime", durationSeconds * 1000);
+		cooldownTimerMap->updateToCurrentAndAddMili("aimRecoveryTime", durationSeconds * 1000);
 	}
 }
 
@@ -1372,7 +1374,7 @@ void CreatureObjectImplementation::setRalliedState(int durationSeconds) {
 	if (setState(CreatureState::RALLIED)) {
 		showFlyText("combat_effects", "go_rally", 0, 0xFF, 0);
 
-		cooldownTimerMap.updateToCurrentAndAddMili("ralliedRecoveryTime", durationSeconds * 1000);
+		cooldownTimerMap->updateToCurrentAndAddMili("ralliedRecoveryTime", durationSeconds * 1000);
 	}
 }
 
@@ -1390,7 +1392,7 @@ void CreatureObjectImplementation::setCoverState(int durationSeconds) {
 			setSpeedMultiplierMod(0.f);
 		}
 
-		cooldownTimerMap.updateToCurrentAndAddMili("coverRecoveryTime", durationSeconds * 1000);
+		cooldownTimerMap->updateToCurrentAndAddMili("coverRecoveryTime", durationSeconds * 1000);
 	}
 }
 
@@ -1399,7 +1401,7 @@ void CreatureObjectImplementation::setBerserkedState(uint32 duration) {
 		playEffect("clienteffect/combat_special_attacker_berserk.cef");
 		showFlyText("combat_effects", "go_berserk", 0, 0xFF, 0);
 
-		cooldownTimerMap.updateToCurrentAndAddMili("berserkRecoveryTime", duration * 1000);
+		cooldownTimerMap->updateToCurrentAndAddMili("berserkRecoveryTime", duration * 1000);
 	}
 }
 void CreatureObjectImplementation::setStunnedState(int durationSeconds) {
@@ -1408,7 +1410,7 @@ void CreatureObjectImplementation::setStunnedState(int durationSeconds) {
 		showFlyText("combat_effects", "go_stunned", 0, 0xFF, 0);
 		sendSystemMessage("cbt_spam", "go_stunned_single");
 
-		cooldownTimerMap.updateToCurrentAndAddMili("stunRecoveryTime", durationSeconds * 1000);
+		cooldownTimerMap->updateToCurrentAndAddMili("stunRecoveryTime", durationSeconds * 1000);
 	}
 }
 
@@ -1418,7 +1420,7 @@ void CreatureObjectImplementation::setBlindedState(int durationSeconds) {
 		showFlyText("combat_effects", "go_blind", 0, 0xFF, 0);
 		sendSystemMessage("cbt_spam", "go_blind_single");
 
-		cooldownTimerMap.updateToCurrentAndAddMili("blindRecoveryTime", durationSeconds * 1000);
+		cooldownTimerMap->updateToCurrentAndAddMili("blindRecoveryTime", durationSeconds * 1000);
 	}
 }
 
@@ -1427,7 +1429,7 @@ void CreatureObjectImplementation::setIntimidatedState(int durationSeconds) {
 		playEffect("clienteffect/combat_special_defender_intimidate.cef");
 		showFlyText("combat_effects", "go_intimidated", 0, 0xFF, 0);
 
-		cooldownTimerMap.updateToCurrentAndAddMili("intimidateRecoveryTime", durationSeconds * 1000);
+		cooldownTimerMap->updateToCurrentAndAddMili("intimidateRecoveryTime", durationSeconds * 1000);
 	}
 }
 
@@ -1436,7 +1438,7 @@ void CreatureObjectImplementation::setSnaredState(int durationSeconds) {
 		//playEffect("clienteffect/combat_special_defender_intimidate.cef");
 		showFlyText("combat_effects", "go_snare", 0, 0xFF, 0);
 
-		cooldownTimerMap.updateToCurrentAndAddMili("snareRecoveryTime", durationSeconds * 1000);
+		cooldownTimerMap->updateToCurrentAndAddMili("snareRecoveryTime", durationSeconds * 1000);
 	}
 }
 
@@ -1445,15 +1447,15 @@ void CreatureObjectImplementation::setRootedState(int durationSeconds) {
 		//playEffect("clienteffect/combat_special_defender_intimidate.cef");
 		showFlyText("combat_effects", "go_rooted", 0, 0xFF, 0);
 
-		cooldownTimerMap.updateToCurrentAndAddMili("rootRecoveryTime", durationSeconds * 1000);
+		cooldownTimerMap->updateToCurrentAndAddMili("rootRecoveryTime", durationSeconds * 1000);
 	}
 }
 
 bool CreatureObjectImplementation::setNextAttackDelay(int del) {
-	if (cooldownTimerMap.isPast("nextAttackDelayRecovery")) {
-		cooldownTimerMap.updateToCurrentAndAddMili("nextAttackDelay", del * 1000);
+	if (cooldownTimerMap->isPast("nextAttackDelayRecovery")) {
+		cooldownTimerMap->updateToCurrentAndAddMili("nextAttackDelay", del * 1000);
 
-		cooldownTimerMap.updateToCurrentAndAddMili("nextAttackDelayRecovery", 30000 + (del * 1000));
+		cooldownTimerMap->updateToCurrentAndAddMili("nextAttackDelayRecovery", 30000 + (del * 1000));
 
 		if (isPlayerCreature()) {
 			StringIdChatParameter stringId("combat_effects", "delay_applied_self");
@@ -1486,32 +1488,32 @@ void CreatureObjectImplementation::queueDizzyFallEvent() {
 }
 
 void CreatureObjectImplementation::activateStateRecovery() {
-	if (isDizzied() && cooldownTimerMap.isPast("dizzyRecoveryTime"))
+	if (isDizzied() && cooldownTimerMap->isPast("dizzyRecoveryTime"))
 		clearState(CreatureState::DIZZY);
 
-	if (isBlinded() && cooldownTimerMap.isPast("blindRecoveryTime"))
+	if (isBlinded() && cooldownTimerMap->isPast("blindRecoveryTime"))
 		clearState(CreatureState::BLINDED);
 
-	if (isStunned() && cooldownTimerMap.isPast("stunRecoveryTime"))
+	if (isStunned() && cooldownTimerMap->isPast("stunRecoveryTime"))
 		clearState(CreatureState::STUNNED);
 
-	if (isIntimidated() && cooldownTimerMap.isPast("intimidateRecoveryTime"))
+	if (isIntimidated() && cooldownTimerMap->isPast("intimidateRecoveryTime"))
 		clearState(CreatureState::INTIMIDATED);
 
-	if (isBerserked() && cooldownTimerMap.isPast("berserkRecoveryTime")) {
+	if (isBerserked() && cooldownTimerMap->isPast("berserkRecoveryTime")) {
 		clearState(CreatureState::BERSERK);
 		//setBerserkDamage(0);
 	}
 
-	if (isAiming() && cooldownTimerMap.isPast("aimRecoveryTime")) {
+	if (isAiming() && cooldownTimerMap->isPast("aimRecoveryTime")) {
 		clearState(CreatureState::AIMING);
 	}
 
-	if (isRallied() && cooldownTimerMap.isPast("ralliedRecoveryTime")) {
+	if (isRallied() && cooldownTimerMap->isPast("ralliedRecoveryTime")) {
 		clearState(CreatureState::RALLIED);
 	}
 
-	if (isInCover() && cooldownTimerMap.isPast("coverRecoveryTime")) {
+	if (isInCover() && cooldownTimerMap->isPast("coverRecoveryTime")) {
 		clearState(CreatureState::COVER);
 	}
 

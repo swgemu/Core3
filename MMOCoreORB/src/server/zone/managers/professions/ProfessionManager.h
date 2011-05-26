@@ -82,7 +82,7 @@ using namespace server::zone::objects::player;
 class Certification;
 class Skill;
 
-namespace server {
+/*namespace server {
 	namespace zone {
 		namespace managers {
 			namespace objectcontroller {
@@ -92,7 +92,8 @@ namespace server {
 	}
 }
 
-using namespace server::zone::managers::objectcontroller;
+using namespace server::zone::managers::objectcontroller;*/
+#include "server/zone/managers/objectcontroller/ObjectController.h"
 
 class PerformanceManager;
 class ImageDesignManager;
@@ -102,8 +103,8 @@ namespace server {
   namespace managers {
    namespace professions {
 
-	class ProfessionManager : public Mutex, public Logger, public Singleton<ProfessionManager>, public Object {
-		ObjectController* objectController;
+	class ProfessionManager : public Mutex, public Logger, public Object, public Singleton<ProfessionManager> {
+		ManagedReference<ObjectController*> objectController;
 		PerformanceManager* performanceManager;
 		ImageDesignManager* imageDesignManager;
 

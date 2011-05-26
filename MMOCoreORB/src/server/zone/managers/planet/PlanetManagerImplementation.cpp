@@ -36,6 +36,17 @@
 void PlanetManagerImplementation::initialize() {
 	terrainManager = new TerrainManager(zone);
 
+	noBuildAreaMap = new NoBuildAreaMap();
+
+	missionNpcs = new MissionTargetMap();
+
+	performanceLocations = new MissionTargetMap();
+
+	huntingTargets = new HuntingTargetMap();
+
+	reconLocs = new MissionTargetMap();
+	informants = new MissionTargetMap();
+
 	numberOfCities = 0;
 
 	info("Loading planet.");
@@ -300,7 +311,7 @@ void PlanetManagerImplementation::loadNoBuildAreas() {
 }
 
 bool PlanetManagerImplementation::isNoBuildArea(float x, float y, StringId& fullAreaName) {
-	return noBuildAreaMap.isNoBuildArea(x, y, fullAreaName);
+	return noBuildAreaMap->isNoBuildArea(x, y, fullAreaName);
 }
 
 void PlanetManagerImplementation::loadClientRegions() {

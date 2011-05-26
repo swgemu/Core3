@@ -350,10 +350,12 @@ bool PlayerManagerImplementation::createPlayer(MessageCallback* data) {
 	UnicodeString name;
 	callback->getCharacterName(name);
 
+#ifndef WITH_STM
 	if (!checkPlayerName(callback)) {
 		info("invalid name " + name.toString());
 		return false;
 	}
+#endif
 
 	ProfessionManager* professionManager = server->getProfessionManager();
 	String profession;
@@ -427,7 +429,7 @@ bool PlayerManagerImplementation::createPlayer(MessageCallback* data) {
 	try {
 		StringBuffer query;
 		query << "INSERT INTO `characters` (`character_oid`, `account_id`, `galaxy_id`, `firstname`, `surname`, `race`, `gender`, `template`)"
-				<< " VALUES (" <<  playerCreature->getObjectID() << "," << client->getAccountID() <<  "," << 2 << ","
+				<< " VALUES (" <<  playerCreature->getObjectID() << "," << client->getAccountID() <<  "," << server->getGalaxyID() << ","
 				<< "'" << firstName.escapeString() << "','" << lastName.escapeString() << "'," << raceID << "," <<  0 << ",'" << race.escapeString() << "')";
 
 		ServerDatabase::instance()->executeStatement(query);
@@ -1551,7 +1553,7 @@ bool PlayerManagerImplementation::checkTradeItems(PlayerCreature* player, Player
 }
 
 void PlayerManagerImplementation::handleVerifyTradeMessage(PlayerCreature* player) {
-	ObjectController* objectController = server->getObjectController();
+	ManagedReference<ObjectController*> objectController = server->getObjectController();
 
 	Locker locker(player);
 

@@ -13,7 +13,7 @@
 class LoginSession;
 
 class LoginPacketHandler : public Logger {
-	LoginSession* loginSession;
+	Reference<LoginSession*> loginSession;
 
 public:
 	LoginPacketHandler(LoginSession* session) : Logger("LoginPacketHandler") {

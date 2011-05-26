@@ -39,11 +39,7 @@ Zone::~Zone() {
 	delete objectManager;
 	objectManager = NULL;
 
-	delete client;
-	client = NULL;
-
-	delete clientThread;
-	clientThread = NULL;
+	clientThread->stop();
 }
 
 void Zone::run() {
@@ -51,23 +47,27 @@ void Zone::run() {
 		client = new ZoneClient(44463);
 		client->setAccountID(accountID);
 		client->setZone(this);
-		client->setLoggingName("ZoneClient" + String::valueOf(instance));
+		client->getClient()->setLoggingName("ZoneClient" + String::valueOf(instance));
 		client->initialize();
 
 		clientThread = new ZoneClientThread(client);
 		clientThread->start();
 
 		if (client->connect()) {
-			client->info("connected", true);
+			client->getClient()->info("connected", true);
 		} else {
-			client->error("could not connect");
+			client->getClient()->error("could not connect");
 			return;
 		}
+
+		startTime.updateToCurrentTime();
 
 		BaseMessage* acc = new ClientIDMessage(accountID, sessionID);
 		client->sendMessage(acc);
 
-		client->info("sent client id message", true);
+		client->getClient()->info("sent client id message");
+
+		started = true;
 
 #ifdef WITH_STM
 	TransactionalMemoryManager::commitPureTransaction();
@@ -119,15 +119,20 @@ PlayerCreature* Zone::getSelfPlayer() {
 }
 
 void Zone::disconnect() {
-	client->disconnect();
-	//client->set
+	if (client != NULL) {
+		client->disconnect();
+	}
+}
+
+void Zone::sceneStarted() {
+	client->getClient()->info("zone started in " + String::valueOf(startTime.miliDifference()) + "ms", true);
 }
 
 void Zone::follow(const String& name) {
 	SceneObject* object = objectManager->getObject(name);
 
 	if (object == NULL) {
-		client->error(name + " not found");
+		client->getClient()->error(name + " not found");
 
 		return;
 	}
@@ -137,7 +142,7 @@ void Zone::follow(const String& name) {
 	Locker _locker(player);
 	player->setFollow(object);
 
-	client->info("started following " + name, true);
+	client->getClient()->info("started following " + name, true);
 }
 
 void Zone::stopFollow() {
@@ -146,7 +151,7 @@ void Zone::stopFollow() {
 	Locker _locker(player);
 
 	player->setFollow(NULL);
-	client->info("stopped following", true);
+	client->getClient()->info("stopped following", true);
 }
 
 void Zone::lurk() {

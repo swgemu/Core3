@@ -140,7 +140,7 @@ protected:
 
 	ImageDesignData imageDesignData;
 
-	Reference<Reference<ImageDesignTimeoutEvent*> > idTimeoutEvent;
+	Reference<ImageDesignTimeoutEvent* > idTimeoutEvent;
 
 public:
 	ImageDesignSessionImplementation(CreatureObject* parent);

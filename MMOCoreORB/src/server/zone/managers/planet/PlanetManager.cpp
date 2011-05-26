@@ -878,52 +878,52 @@ bool PlanetManagerImplementation::hasRegion(const String& name) {
 
 void PlanetManagerImplementation::addPerformanceLocation(SceneObject* obj) {
 	// server/zone/managers/planet/PlanetManager.idl():  		performanceLocations.add(obj);
-	(&performanceLocations)->add(obj);
+	performanceLocations->add(obj);
 }
 
 MissionTargetMap* PlanetManagerImplementation::getPerformanceLocations() {
 	// server/zone/managers/planet/PlanetManager.idl():  		return performanceLocations;
-	return (&performanceLocations);
+	return performanceLocations;
 }
 
 void PlanetManagerImplementation::addMissionNpc(SceneObject* npc) {
 	// server/zone/managers/planet/PlanetManager.idl():  		missionNpcs.add(npc);
-	(&missionNpcs)->add(npc);
+	missionNpcs->add(npc);
 }
 
 MissionTargetMap* PlanetManagerImplementation::getMissionNpcs() {
 	// server/zone/managers/planet/PlanetManager.idl():  		return missionNpcs;
-	return (&missionNpcs);
+	return missionNpcs;
 }
 
 void PlanetManagerImplementation::addHuntingTargetTemplate(const String& temp1, const String& temp2, int level) {
 	// server/zone/managers/planet/PlanetManager.idl():  		huntingTargets.addTarget(temp1, temp2, level);
-	(&huntingTargets)->addTarget(temp1, temp2, level);
+	huntingTargets->addTarget(temp1, temp2, level);
 }
 
 HuntingTargetEntry* PlanetManagerImplementation::getHuntingTargetTemplate(int level) {
 	// server/zone/managers/planet/PlanetManager.idl():  		return huntingTargets.getRandomTarget(level);
-	return (&huntingTargets)->getRandomTarget(level);
+	return huntingTargets->getRandomTarget(level);
 }
 
 void PlanetManagerImplementation::addReconLoc(SceneObject* obj) {
 	// server/zone/managers/planet/PlanetManager.idl():  		reconLocs.add(obj);
-	(&reconLocs)->add(obj);
+	reconLocs->add(obj);
 }
 
 MissionTargetMap* PlanetManagerImplementation::getReconLocs() {
 	// server/zone/managers/planet/PlanetManager.idl():  		return reconLocs;
-	return (&reconLocs);
+	return reconLocs;
 }
 
 void PlanetManagerImplementation::addInformant(SceneObject* obj) {
 	// server/zone/managers/planet/PlanetManager.idl():  		informants.add(obj);
-	(&informants)->add(obj);
+	informants->add(obj);
 }
 
 MissionTargetMap* PlanetManagerImplementation::getInformants() {
 	// server/zone/managers/planet/PlanetManager.idl():  		return informants;
-	return (&informants);
+	return informants;
 }
 
 bool PlanetManagerImplementation::isExistingPlanetTravelPoint(const String& pointName) {

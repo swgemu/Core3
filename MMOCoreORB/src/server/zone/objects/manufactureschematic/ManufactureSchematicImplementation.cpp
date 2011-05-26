@@ -153,7 +153,7 @@ void ManufactureSchematicImplementation::sendBaselinesTo(SceneObject* player) {
 
 }
 
-Reference<IngredientSlot*> ManufactureSchematicImplementation::getIngredientSlot(int index) {
+IngredientSlot* ManufactureSchematicImplementation::getIngredientSlot(int index) {
 	if(index < ingredientSlots.size())
 		return ingredientSlots.get(index);
 
@@ -197,7 +197,7 @@ void ManufactureSchematicImplementation::initializeIngredientSlots(
 		SceneObject* tool, DraftSchematic* schematic) {
 
 	cleanupIngredientSlots();
-	craftingValues.clearAll();
+	craftingValues->clearAll();
 
 	assembled = false;
 	completed = false;

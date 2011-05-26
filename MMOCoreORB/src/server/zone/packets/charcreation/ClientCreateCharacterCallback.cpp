@@ -48,7 +48,7 @@ void ClientCreateCharacterCallback::parse(Message* message) {
 }
 
 void ClientCreateCharacterCallback::run() {
-	client->info("ClientCreateCharacterCallback::run()", true);
+	client->info("ClientCreateCharacterCallback::run()");
 
 	PlayerManager* playerManager = server->getPlayerManager();
 	bool success = playerManager->createPlayer(this);

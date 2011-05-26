@@ -51,7 +51,9 @@ which carries forward this exception.
 class Zone;
 class ZonePacketHandler;
 
-class ZoneClient : public BaseClient, public ServiceHandler {
+class ZoneClient : public ServiceHandler {
+	Reference<BaseClient*> client;
+
 	Zone* zone;
 
 	Reference<PlayerCreature*> player;
@@ -74,6 +76,17 @@ public:
 
 	void initialize();
 
+	bool connect() {
+		return client->connect();
+	}
+
+	void disconnect() {
+		client->disconnect();
+
+
+		client->info("disconnected" , true);
+	}
+
 	ServiceClient* createConnection(Socket* sock, SocketAddress& addr) {
 		return NULL;
 	}
@@ -82,9 +95,7 @@ public:
 		return false;
 	}
 
-	void handleMessage(ServiceClient* client, Packet* message) {
-
-	}
+	void handleMessage(ServiceClient* client, Packet* message);
 
 	void processMessage(Message* message);
 
@@ -93,18 +104,16 @@ public:
 	}
 
 	void sendMessage(Message* msg) {
-		BaseClient::sendPacket((BasePacket*) msg);
+		client->sendPacket((BasePacket*) msg);
 	}
 
 	void sendMessage(StandaloneBaseMessage* msg) {
-		BaseClient::sendPacket((BasePacket*) msg);
+		client->sendPacket((BasePacket*) msg);
 
 	#ifdef WITH_STM
 		TransactionalMemoryManager::commitPureTransaction();
 	#endif
 	}
-
-	void handleMessage(Packet* message);
 
 	bool hasMessages() {
 		return !messageQueue.isEmpty();
@@ -130,6 +139,10 @@ public:
 
 	void setKey(uint32 key) {
 		ZoneClient::key = key;
+	}
+
+	BaseClient* getClient() {
+		return client;
 	}
 
 	PlayerCreature* getPlayer() {

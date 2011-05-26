@@ -66,10 +66,11 @@ class Zone : public Thread, public Mutex, public Logger {
 	uint32 accountID;
 	uint32 sessionID;
 
-	ZoneClient* client;
+	Reference<ZoneClient*> client;
 	ZoneClientThread* clientThread;
 
 	Reference<PlayerCreature*> player;
+
 	ObjectController* objectController;
 
 	Condition characterCreatedCondition;
@@ -79,6 +80,9 @@ class Zone : public Thread, public Mutex, public Logger {
 	ObjectManager* objectManager;
 
 	int instance;
+
+	Time startTime;
+	bool started;
 
 public:
 	Zone(int instance, uint64 characterObjectID, uint32 account, uint32 session);
@@ -90,6 +94,8 @@ public:
 	//void initConnection();
 
 	void disconnect();
+
+	void sceneStarted();
 
 	void follow(const String& name);
 	void stopFollow();
@@ -151,6 +157,10 @@ public:
 
 	Vector<PlayerCreature*>* getNotInitiatedPlayers() {
 		return &playerArray;
+	}
+
+	bool isStarted() {
+		return started;
 	}
 };
 

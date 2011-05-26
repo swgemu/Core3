@@ -53,11 +53,11 @@ public:
 
 				menuResponse->addRadialMenuItem(parentid, radialid, 3, command);
 			}
-		} catch (...) {
+		} catch (const Exception& e) {
 			delete menuResponse;
 			menuResponse = NULL;
 
-			throw;
+			throw e;
 		}
 
 		//menuResponse->addRadialMenuItem(1, 20, 3, "test");

@@ -62,8 +62,7 @@ class LairObject extends TangibleObject {
 	@dereferenced
 	protected Vector<CreatureObject> spawnedCreatures;
 	
-	@dereferenced
-	protected transient Reference<HealLairEvent> healLairEvent;
+	protected transient HealLairEvent healLairEvent;
 	
 	@dereferenced
 	protected DamageMap damageMap;

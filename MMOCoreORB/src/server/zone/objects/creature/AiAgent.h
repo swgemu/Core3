@@ -469,13 +469,13 @@ namespace creature {
 
 class AiAgentImplementation : public CreatureObjectImplementation {
 protected:
-	Reference<AiThinkEvent*> thinkEvent;
+	Reference<AiThinkEvent* > thinkEvent;
 
-	Reference<AiMoveEvent*> moveEvent;
+	Reference<AiMoveEvent* > moveEvent;
 
-	Reference<AiWaitEvent*> waitEvent;
+	Reference<AiWaitEvent* > waitEvent;
 
-	Reference<AiAwarenessEvent*> awarenessEvent;
+	Reference<AiAwarenessEvent* > awarenessEvent;
 
 	Vector<String> skillCommands;
 
@@ -513,7 +513,7 @@ protected:
 
 	int numberOfPlayersInRange;
 
-	Reference<DespawnCreatureOnPlayerDissappear*> despawnEvent;
+	Reference<DespawnCreatureOnPlayerDissappear* > despawnEvent;
 
 public:
 	static const int UPDATEMOVEMENTINTERVAL = 1000;

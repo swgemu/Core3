@@ -197,7 +197,7 @@ DraftSchematic* ManufactureSchematic::getDraftSchematic() {
 		return _implementation->getDraftSchematic();
 }
 
-Reference<IngredientSlot*> ManufactureSchematic::getIngredientSlot(int index) {
+IngredientSlot* ManufactureSchematic::getIngredientSlot(int index) {
 	ManufactureSchematicImplementation* _implementation = (ManufactureSchematicImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
@@ -717,7 +717,7 @@ bool ManufactureSchematicImplementation::readObjectMember(ObjectInputStream* str
 	}
 
 	if (_name == "craftingValues") {
-		TypeInfo<CraftingValues >::parseFromBinaryStream(&craftingValues, stream);
+		TypeInfo<Reference<CraftingValues* > >::parseFromBinaryStream(&craftingValues, stream);
 		return true;
 	}
 
@@ -862,7 +862,7 @@ int ManufactureSchematicImplementation::writeObjectMembers(ObjectOutputStream* s
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
-	TypeInfo<CraftingValues >::toBinaryStream(&craftingValues, stream);
+	TypeInfo<Reference<CraftingValues* > >::toBinaryStream(&craftingValues, stream);
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
@@ -888,8 +888,11 @@ int ManufactureSchematicImplementation::writeObjectMembers(ObjectOutputStream* s
 
 ManufactureSchematicImplementation::ManufactureSchematicImplementation() {
 	_initializeImplementation();
+	Reference<CraftingValues*> _ref0;
 	// server/zone/objects/manufactureschematic/ManufactureSchematic.idl():  		Logger.setLoggingName("ManufactureSchematic");
 	Logger::setLoggingName("ManufactureSchematic");
+	// server/zone/objects/manufactureschematic/ManufactureSchematic.idl():  		craftingValues = new CraftingValues();
+	craftingValues = _ref0 = new CraftingValues();
 	// server/zone/objects/manufactureschematic/ManufactureSchematic.idl():  		prototype = null;
 	prototype = NULL;
 	// server/zone/objects/manufactureschematic/ManufactureSchematic.idl():  		firstCraftingUpdate = true;
@@ -969,7 +972,7 @@ PlayerCreature* ManufactureSchematicImplementation::getCrafter() {
 
 CraftingValues* ManufactureSchematicImplementation::getCraftingValues() {
 	// server/zone/objects/manufactureschematic/ManufactureSchematic.idl():  		return craftingValues;
-	return (&craftingValues);
+	return craftingValues;
 }
 
 void ManufactureSchematicImplementation::setExperimentingCounter(int value) {

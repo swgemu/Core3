@@ -85,7 +85,7 @@ void CreatureManagerImplementation::spawnRandomCreature(int number, float x, flo
 	uint32 randomTemplate = 0;
 	Reference<CreatureTemplate*> creoTempl = NULL;
 
-	HashTableIterator<uint32, Reference<CreatureTemplate*> > iterator(creatureTemplateManager->getHashTable());
+	HashTableIterator<uint32, Reference<CreatureTemplate*> > iterator = creatureTemplateManager->iterator();
 
 	for (int i = 0; i < randomCreature; ++i) {
 		iterator.getNextKeyAndValue(randomTemplate, creoTempl);

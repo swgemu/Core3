@@ -12,33 +12,31 @@
 #include "server/zone/objects/player/PlayerCreature.h"
 
 class CharacterNameMap : public Object {
-	HashTable<String, uint64> hashTable;
-public:
-	CharacterNameMap() {
+	HashTable<String, uint64> names;
 
+public:
+	CharacterNameMap() : names(3000) {
 	}
 
 	void put(PlayerCreature* player) {
-		hashTable.put(player->getFirstName().toLowerCase(), player->getObjectID());
+		names.put(player->getFirstName().toLowerCase(), player->getObjectID());
 	}
 
 	void put(const String& name, uint64 oid) {
-		hashTable.put(name, oid);
+		names.put(name, oid);
 	}
 
-	uint64 get(const String& key) {
-		return hashTable.get(key);
+	uint64& get(const String& name) {
+		return names.get(name);
 	}
 
-	bool containsKey(const String& key) {
-		return hashTable.containsKey(key);
+	bool containsKey(const String& name) {
+		return names.containsKey(name);
 	}
 
 	int size() {
-		return hashTable.size();
+		return names.size();
 	}
-
-
 };
 
 #endif /* CHARACTERNAMEMAP_H_ */

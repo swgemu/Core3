@@ -48,7 +48,9 @@ which carries forward this exception.
 #include "server/zone/objects/region/Region.h"
 #include "engine/engine.h"
 
-class NoBuildAreaMap : public Vector<ManagedReference<Region*> > {
+class NoBuildAreaMap : public Object {
+	Vector<ManagedReference<Region*> > areas;
+
 public:
 	NoBuildAreaMap() { }
 
@@ -56,9 +58,13 @@ public:
 
 	}
 
+	bool add(Region* region) {
+		return areas.add(region);
+	}
+
 	bool isNoBuildArea(float x, float y, StringId& fullAreaName) {
-		for (int i = 0; i < size(); i++) {
-			Region* region = get(i);
+		for (int i = 0; i < areas.size(); i++) {
+			Region* region = areas.get(i);
 
 			if (region->containsPoint(x,y)) {
 				fullAreaName = *region->getObjectName();

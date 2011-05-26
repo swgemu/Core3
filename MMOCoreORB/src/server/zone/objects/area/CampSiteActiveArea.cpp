@@ -188,7 +188,7 @@ bool CampSiteActiveAreaImplementation::readObjectMember(ObjectInputStream* strea
 	}
 
 	if (_name == "despawnEvent") {
-		TypeInfo<Reference<CampDespawnEvent*> >::parseFromBinaryStream(&despawnEvent, stream);
+		TypeInfo<Reference<CampDespawnEvent* > >::parseFromBinaryStream(&despawnEvent, stream);
 		return true;
 	}
 
@@ -300,7 +300,7 @@ int CampSiteActiveAreaImplementation::writeObjectMembers(ObjectOutputStream* str
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
-	TypeInfo<Reference<CampDespawnEvent*> >::toBinaryStream(&despawnEvent, stream);
+	TypeInfo<Reference<CampDespawnEvent* > >::toBinaryStream(&despawnEvent, stream);
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 

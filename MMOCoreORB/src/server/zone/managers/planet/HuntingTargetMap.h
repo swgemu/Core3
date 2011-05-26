@@ -11,17 +11,19 @@
 #include "engine/engine.h"
 #include "HuntingTargetEntry.h"
 
-class HuntingTargetMap : private VectorMap<int, SortedVector<HuntingTargetEntry> >, private ReadWriteLock {
+class HuntingTargetMap :private ReadWriteLock, public Object {
+	VectorMap<int, SortedVector<HuntingTargetEntry> > targets;
+
 public:
 	HuntingTargetMap() {
-		setNoDuplicateInsertPlan();
+		targets.setNoDuplicateInsertPlan();
 	}
 
 	void addTarget(const String& temp1, const String& temp2, int lev) {
 		if (lev <= 0)
 			return;
 
-		int idx = find(lev);
+		int idx = targets.find(lev);
 
 		if (idx == -1) {
 			SortedVector<HuntingTargetEntry> newVec;
@@ -30,12 +32,12 @@ public:
 			HuntingTargetEntry entry(temp1, temp2);
 			newVec.put(entry);
 
-			this->put(lev, newVec);
+			targets.put(lev, newVec);
 		} else {
-			SortedVector<HuntingTargetEntry>* vec = &this->elementAt(idx).getValue();
+			SortedVector<HuntingTargetEntry>& vec = targets.elementAt(idx).getValue();
 
 			HuntingTargetEntry entry(temp1, temp2);
-			vec->put(entry);
+			vec.put(entry);
 		}
 	}
 
@@ -44,13 +46,13 @@ public:
 
 		//rlock();
 
-		int idx = this->find(lev);
+		int idx = targets.find(lev);
 
 		if (idx != -1) {
-			SortedVector<HuntingTargetEntry>* vector = &this->elementAt(idx).getValue();
+			SortedVector<HuntingTargetEntry>& vector = targets.elementAt(idx).getValue();
 
-			if (vector->size() >= 0)
-				result = &vector->get(System::random(vector->size() - 1));
+			if (vector.size() >= 0)
+				result = &vector.get(System::random(vector.size() - 1));
 		}
 
 		//runlock();

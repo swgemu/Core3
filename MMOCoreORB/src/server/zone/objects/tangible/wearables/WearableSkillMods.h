@@ -52,9 +52,7 @@
  * mods that wearables can have
  */
 
-class WearableSkillMods {
-protected:
-
+class WearableSkillMods : public Object {
 public:
 	/*
 	 * Constructor

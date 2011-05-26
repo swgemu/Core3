@@ -12,11 +12,24 @@
 #include "server/zone/Zone.h"
 #include "server/zone/objects/scene/SceneObject.h"
 
-class MissionTargetMap : public SortedVector<ManagedReference<SceneObject*> >, public ReadWriteLock {
+class MissionTargetMap : public ReadWriteLock, public Object {
+	SortedVector<ManagedReference<SceneObject*> > missions;
+
 public:
 	MissionTargetMap() {
+		missions.setNoDuplicateInsertPlan();
+	}
 
-		setNoDuplicateInsertPlan();
+	/*int put(SceneObject* mission) {
+		return missions.put(mission);
+	}*/
+
+	bool add(SceneObject* mission) {
+		return missions.add(mission);
+	}
+
+	int size() {
+		return missions.size();
 	}
 
 	SceneObject* getRandomTarget(SceneObject* origin, int diff) {
@@ -39,8 +52,8 @@ public:
 		//rlock();
 
 		try {
-			for (int i = 0; i < size(); ++i) {
-				SceneObject* vectorObject = get(i);
+			for (int i = 0; i < missions.size(); ++i) {
+				SceneObject* vectorObject = missions.get(i);
 				if (vectorObject == NULL)
 					continue;
 
