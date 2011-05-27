@@ -10,13 +10,15 @@
 
 #include "engine/engine.h"
 
+#include "server/zone/objects/scene/LuaSceneObject.h"
+
 namespace server {
 namespace zone {
 namespace objects {
 namespace creature {
 	class CreatureObject;
 
-	class LuaCreatureObject {
+	class LuaCreatureObject : public LuaSceneObject {
 	public:
 		// Constants
 		static const char className[];
@@ -31,10 +33,18 @@ namespace creature {
 		int getBankCredits(lua_State *L);
 		int setBankCredits(lua_State* L);
 		int setHAM(lua_State* L);
+		int sendSystemMessage(lua_State* L);
+		int playMusicMessage(lua_State *L);
+		int sendNewbieTutorialRequest(lua_State *L);
+		int hasScreenPlayState(lua_State *L);
+		int setScreenPlayState(lua_State *L);
+		int sendNewbieTutorialEnableHudElement(lua_State* L);
+		int getInCellNumber(lua_State* L);
+		int sendOpenHolocronToPageMessage(lua_State* L);
 
 	private:
 		// The pointer to the 'real object' defined in object.cc
-		CreatureObject* realObject;
+		Reference<CreatureObject*> realObject;
 	};
 
 }

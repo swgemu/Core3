@@ -84,6 +84,7 @@ which carries forward this exception.
 #include "server/zone/objects/scene/components/ZoneComponent.h"
 #include "server/zone/objects/scene/components/ObjectMenuComponent.h"
 #include "server/zone/objects/scene/components/ContainerComponent.h"
+#include "PositionUpdateTask.h"
 
 void SceneObjectImplementation::initializeTransientMembers() {
 	ManagedObjectImplementation::initializeTransientMembers();
@@ -93,14 +94,16 @@ void SceneObjectImplementation::initializeTransientMembers() {
 
 	templateObject = TemplateManager::instance()->getTemplate(serverObjectCRC);
 
-	String containerComp = templateObject->getContainerComponent();
-	containerComponent = ComponentManager::instance()->getComponent<ContainerComponent*>(containerComp);
+	if (templateObject != NULL) {
+		String containerComp = templateObject->getContainerComponent();
+		containerComponent = ComponentManager::instance()->getComponent<ContainerComponent*>(containerComp);
 
-	String zoneComponentClassName = templateObject->getZoneComponent();
-	zoneComponent = ComponentManager::instance()->getComponent<ZoneComponent*>(zoneComponentClassName);
+		String zoneComponentClassName = templateObject->getZoneComponent();
+		zoneComponent = ComponentManager::instance()->getComponent<ZoneComponent*>(zoneComponentClassName);
 
-	String objectMenuComponentName = templateObject->getObjectMenuComponent();
-	objectMenuComponent = ComponentManager::instance()->getComponent<ObjectMenuComponent*>(objectMenuComponentName);
+		String objectMenuComponentName = templateObject->getObjectMenuComponent();
+		objectMenuComponent = ComponentManager::instance()->getComponent<ObjectMenuComponent*>(objectMenuComponentName);
+	}
 
 	movementCounter = 0;
 
@@ -769,6 +772,14 @@ void SceneObjectImplementation::notifySelfPositionUpdate() {
 
 void SceneObjectImplementation::notifyCloseContainer(PlayerCreature* player) {
 	notifyObservers(ObserverEventType::CLOSECONTAINER, player);
+}
+
+void SceneObjectImplementation::notifyPositionUpdate(QuadTreeEntry* entry) {
+	//notifyObservers(ObserverEventType::OBJECTINRANGEMOVED, entry);
+	if (_this == NULL || entry == NULL)
+		return;
+
+	Core::getTaskManager()->executeTask(new PositionUpdateTask(_this, entry));
 }
 
 void SceneObjectImplementation::updateZoneWithParent(SceneObject* newParent, bool lightUpdate, bool sendPackets) {

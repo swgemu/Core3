@@ -67,6 +67,20 @@ class CellObject;
 
 using namespace server::zone::objects::cell;
 
+namespace server {
+namespace zone {
+namespace managers {
+namespace director {
+
+class DirectorManager;
+
+} // namespace director
+} // namespace managers
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::managers::director;
+
 #include "server/zone/objects/building/BuildingObject.h"
 
 #include "engine/lua/LuaObject.h"

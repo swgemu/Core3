@@ -57,11 +57,14 @@ void AiAgentImplementation::loadTemplateData(CreatureTemplate* templateData) {
 		Vector<String> wepgroups = npcTemplate->getWeapons();
 		for (int i = 0; i < wepgroups.size(); ++i) {
 			Vector<String> weptemps = CreatureTemplateManager::instance()->getWeapons(wepgroups.get(i));
-			uint32 crc = weptemps.get(System::random(weptemps.size() - 1)).hashCode();
-			ManagedReference<WeaponObject*> weao = dynamic_cast<WeaponObject*>(server->getZoneServer()->createObject(crc, 0));
-			weao->setMinDamage((weao->getMinDamage() / 2) + npcTemplate->getDamageMin());
-			weao->setMaxDamage((weao->getMaxDamage() / 2) + npcTemplate->getDamageMax());
-			weapons.add(weao);
+
+			if (weptemps.size() > 0) {
+				uint32 crc = weptemps.get(System::random(weptemps.size() - 1)).hashCode();
+				ManagedReference<WeaponObject*> weao = dynamic_cast<WeaponObject*>(server->getZoneServer()->createObject(crc, 0));
+				weao->setMinDamage((weao->getMinDamage() / 2) + npcTemplate->getDamageMin());
+				weao->setMaxDamage((weao->getMaxDamage() / 2) + npcTemplate->getDamageMax());
+				weapons.add(weao);
+			}
 		}
 
 		// add the default weapon

@@ -233,6 +233,8 @@ using namespace server::zone::objects::tangible::weapon;
 
 #include "system/util/Vector.h"
 
+#include "system/util/VectorMap.h"
+
 #include "system/lang/Time.h"
 
 #include "system/util/SortedVector.h"
@@ -285,6 +287,14 @@ public:
 	void sendBaselinesTo(SceneObject* player);
 
 	void sendSystemMessage(const String& message);
+
+	void playMusicMessage(const String& file);
+
+	void sendNewbieTutorialRequest(const String& request);
+
+	void sendNewbieTutorialEnableHudElement(const String& ui, bool enable = true);
+
+	void sendOpenHolocronToPageMessage();
 
 	void sendSystemMessage(UnicodeString& message);
 
@@ -517,6 +527,10 @@ public:
 	void updatePostureUpRecovery();
 
 	bool checkPostureDownRecovery();
+
+	unsigned long long getScreenPlayState(const String& screenPlay);
+
+	void setScreenPlayState(const String& screenPlay, unsigned long long state);
 
 	bool checkPostureUpRecovery();
 
@@ -880,6 +894,8 @@ protected:
 
 	Time timeOfDeath;
 
+	VectorMap<String, unsigned long long> screenPlayStates;
+
 public:
 	static const int HUMAN = 0;
 
@@ -926,6 +942,14 @@ public:
 	void sendBaselinesTo(SceneObject* player);
 
 	void sendSystemMessage(const String& message);
+
+	void playMusicMessage(const String& file);
+
+	void sendNewbieTutorialRequest(const String& request);
+
+	void sendNewbieTutorialEnableHudElement(const String& ui, bool enable = true);
+
+	void sendOpenHolocronToPageMessage();
 
 	void sendSystemMessage(UnicodeString& message);
 
@@ -1158,6 +1182,10 @@ public:
 	void updatePostureUpRecovery();
 
 	bool checkPostureDownRecovery();
+
+	unsigned long long getScreenPlayState(const String& screenPlay);
+
+	void setScreenPlayState(const String& screenPlay, unsigned long long state);
 
 	bool checkPostureUpRecovery();
 
@@ -1434,6 +1462,14 @@ public:
 
 	void sendSystemMessage(const String& message);
 
+	void playMusicMessage(const String& file);
+
+	void sendNewbieTutorialRequest(const String& request);
+
+	void sendNewbieTutorialEnableHudElement(const String& ui, bool enable);
+
+	void sendOpenHolocronToPageMessage();
+
 	void sendSystemMessage(UnicodeString& message);
 
 	void sendSystemMessage(const String& file, const String& stringid);
@@ -1660,6 +1696,10 @@ public:
 
 	bool checkPostureDownRecovery();
 
+	unsigned long long getScreenPlayState(const String& screenPlay);
+
+	void setScreenPlayState(const String& screenPlay, unsigned long long state);
+
 	bool checkPostureUpRecovery();
 
 	void updateCooldownTimer(const String& coooldownTimer, unsigned int miliSecondsToAdd);
@@ -1866,6 +1906,9 @@ public:
 
 protected:
 	String _param0_sendSystemMessage__String_;
+	String _param0_playMusicMessage__String_;
+	String _param0_sendNewbieTutorialRequest__String_;
+	String _param0_sendNewbieTutorialEnableHudElement__String_bool_;
 	UnicodeString _param0_sendSystemMessage__UnicodeString_;
 	String _param0_sendSystemMessage__String_String_;
 	String _param1_sendSystemMessage__String_String_;
@@ -1877,6 +1920,8 @@ protected:
 	UnicodeString _param3_enqueueCommand__int_int_long_UnicodeString_int_;
 	String _param0_setMoodString__String_bool_;
 	UnicodeString _param2_executeObjectControllerAction__int_long_UnicodeString_;
+	String _param0_getScreenPlayState__String_;
+	String _param0_setScreenPlayState__String_long_;
 	String _param0_updateCooldownTimer__String_int_;
 	String _param0_checkCooldownRecovery__String_;
 	String _param0_addCooldown__String_int_;

@@ -12,6 +12,8 @@
 
 #include "server/zone/objects/cell/CellObject.h"
 
+#include "server/zone/managers/director/DirectorManager.h"
+
 /*
  *	TutorialBuildingObjectStub
  */
@@ -223,8 +225,10 @@ int TutorialBuildingObjectImplementation::writeObjectMembers(ObjectOutputStream*
 
 TutorialBuildingObjectImplementation::TutorialBuildingObjectImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/building/tutorial/TutorialBuildingObject.idl():  		initializeTransientMembers();
-	initializeTransientMembers();
+	// server/zone/objects/building/tutorial/TutorialBuildingObject.idl():  		unloadTask = null;
+	unloadTask = NULL;
+	// server/zone/objects/building/tutorial/TutorialBuildingObject.idl():  		Logger.setLoggingName("TutorialBuildingObject");
+	Logger::setLoggingName("TutorialBuildingObject");
 }
 
 void TutorialBuildingObjectImplementation::initializeTransientMembers() {
@@ -239,6 +243,8 @@ void TutorialBuildingObjectImplementation::initializeTransientMembers() {
 void TutorialBuildingObjectImplementation::onEnter(PlayerCreature* player) {
 	// server/zone/objects/building/tutorial/TutorialBuildingObject.idl():  		dequeueUnloadEvent();
 	dequeueUnloadEvent();
+	// server/zone/objects/building/tutorial/TutorialBuildingObject.idl():  		DirectorManager.instance().startScreenPlay(player, "TutorialScreenPlay");
+	DirectorManager::instance()->startScreenPlay(player, "TutorialScreenPlay");
 }
 
 void TutorialBuildingObjectImplementation::onExit(PlayerCreature* player) {

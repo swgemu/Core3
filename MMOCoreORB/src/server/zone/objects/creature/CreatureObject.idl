@@ -68,6 +68,7 @@ include server.zone.objects.creature.SpeedMultiplierModChanges;
 import engine.core.ManagedObject;
 import engine.lua.LuaObject;
 import system.util.Vector;
+import system.util.VectorMap;
 import system.lang.Time;
 import server.zone.Zone;
 import system.util.SortedVector;
@@ -180,6 +181,9 @@ class CreatureObject extends TangibleObject {
 	@dereferenced
 	protected Time timeOfDeath;
 	
+	@dereferenced
+	protected VectorMap<string, unsigned long> screenPlayStates; 
+	
 	public static final int HUMAN = 0;
 	public static final int RODIAN = 1;
 	public static final int TRANDOSHAN = 2;
@@ -256,6 +260,23 @@ class CreatureObject extends TangibleObject {
 	 * @param message string message to send
 	 */
 	public native void sendSystemMessage(final string message);
+	
+	/**
+	 * Sends a PlayMusicMessage
+	 */
+	public native void playMusicMessage(final string file);
+	
+	/**
+	 * Sends a tutorial request
+	 */
+	public native void sendNewbieTutorialRequest(final string request);
+	
+	/**
+	 * Sends NewbieTutorialEnableHud
+	 */
+	public native void sendNewbieTutorialEnableHudElement(final string ui, boolean enable = true);
+	
+	public native void sendOpenHolocronToPageMessage();
 	
 	/**
 	 * Sends a system message to the client of this object
@@ -922,6 +943,14 @@ class CreatureObject extends TangibleObject {
 
 	public boolean checkPostureDownRecovery() {
 		return cooldownTimerMap.isPast("postureDownRecovery");
+	}
+	
+	public unsigned long getScreenPlayState(final string screenPlay) {
+		return screenPlayStates.get(screenPlay);
+	}
+	
+	public void setScreenPlayState(final string screenPlay, unsigned long state) {
+		screenPlayStates.put(screenPlay, state);
 	}
 
 	public boolean checkPostureUpRecovery() {

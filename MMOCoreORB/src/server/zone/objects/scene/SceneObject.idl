@@ -1298,6 +1298,8 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	
 	public native abstract void notifySelfPositionUpdate();
 	
+	public native void notifyPositionUpdate(QuadTreeEntry entry);
+	
 	/**
 	 * @param player player that closed the container
 	 */

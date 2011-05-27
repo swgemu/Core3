@@ -23,6 +23,13 @@ public:
 	const static int DESTINATIONREACHED = 11;
 	const static int SPECIALATTACK = 12;
 	const static int CALLFORHELP = 13;
+	const static int NEWBIETUTORIALZOOMCAMERA = 14;
+	const static int CHAT = 15;
+	const static int NEWBIETUTORIALHOLOCRON = 16;
+	const static int OBJECTINRANGEMOVED = 17;
+	const static int PLAYERCHANGEDTARGET = 18;
+	const static int STARTCONVERSATION = 19;
+	const static int SELECTCONVERSATION = 20;
 };
 
 #endif /* OBSERVEREVENTTYPES_H_ */

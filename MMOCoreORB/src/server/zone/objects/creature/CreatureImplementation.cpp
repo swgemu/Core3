@@ -21,6 +21,8 @@
 
 
 void CreatureImplementation::notifyPositionUpdate(QuadTreeEntry* entry) {
+	AiAgentImplementation::notifyPositionUpdate(entry);
+
 	SceneObject* scno = (SceneObject*) entry;
 
 	// don't worry about this if no one's around, and do it for any creature
@@ -41,7 +43,6 @@ void CreatureImplementation::notifyPositionUpdate(QuadTreeEntry* entry) {
 			activateAwarenessEvent(creo);
 		}
 	}
-
 }
 
 void CreatureImplementation::doAwarenessCheck(Coordinate& start, uint64 time, CreatureObject* target) {

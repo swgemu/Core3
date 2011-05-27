@@ -42,6 +42,7 @@
 
 
 object_building_general_newbie_hall = object_building_general_shared_newbie_hall:new {
+	gameObjectType = 516
 }
 
 ObjectTemplates:addTemplate(object_building_general_newbie_hall, "object/building/general/newbie_hall.iff")

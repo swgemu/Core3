@@ -1022,6 +1022,8 @@ public:
 
 	void notifySelfPositionUpdate();
 
+	void notifyPositionUpdate(QuadTreeEntry* entry);
+
 	void notifyCloseContainer(PlayerCreature* player);
 
 	unsigned int getMovementCounter();
@@ -2076,6 +2078,8 @@ public:
 
 	virtual void notifySelfPositionUpdate();
 
+	void notifyPositionUpdate(QuadTreeEntry* entry);
+
 	virtual void notifyCloseContainer(PlayerCreature* player);
 
 	unsigned int getMovementCounter();
@@ -2518,6 +2522,8 @@ public:
 	void rotate(int degrees);
 
 	void notifySelfPositionUpdate();
+
+	void notifyPositionUpdate(QuadTreeEntry* entry);
 
 	void notifyCloseContainer(PlayerCreature* player);
 

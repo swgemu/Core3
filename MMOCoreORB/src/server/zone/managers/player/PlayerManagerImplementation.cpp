@@ -64,6 +64,7 @@
 #include "server/zone/packets/object/StartingLocationListMessage.h"
 
 #include "server/zone/objects/region/CityRegion.h"
+#include "server/zone/managers/director/DirectorManager.h"
 
 #include "server/zone/Zone.h"
 
@@ -76,6 +77,8 @@ PlayerManagerImplementation::PlayerManagerImplementation(ZoneServer* zoneServer,
 	nameMap = new CharacterNameMap();
 
 	globalExpMultiplier = 1.0f;
+
+	DirectorManager::instance();
 
 	loadStartingItems();
 	loadStartingLocations();
@@ -637,6 +640,11 @@ void PlayerManagerImplementation::createTutorialBuilding(PlayerCreature* player)
 
 	BuildingObject* tutorial = (BuildingObject*) server->createObject(tut.hashCode(), 1);
 	tutorial->createCellObjects();
+
+	int totalCellNumber = tutorial->getTotalCellNumber();
+
+	info("totalCellNumber " + String::valueOf(totalCellNumber), true);
+
 	tutorial->initializePosition(System::random(5000), 0, System::random(5000));
 
 	SceneObject* travelTutorialTerminal = server->createObject((uint32)String("object/tangible/beta/beta_terminal_warp.iff").hashCode(), 1);
@@ -646,6 +654,8 @@ void PlayerManagerImplementation::createTutorialBuilding(PlayerCreature* player)
 
 	SceneObject* cellTut = tutorial->getCell(10);
 	cellTut->addObject(travelTutorialTerminal, -1);
+
+	SceneObject* cellTutPlayer = tutorial->getCell(0);
 //	cellTut->addObject(blueFrogTemplate, -1);
 
 	tutorial->insertToZone(zone);
@@ -654,9 +664,10 @@ void PlayerManagerImplementation::createTutorialBuilding(PlayerCreature* player)
 //	blueFrogTemplate->initializePosition(27.0f, -3.5f, -165.0f);
 //	blueFrogTemplate->insertToZone(zone);
 
-	player->initializePosition(27.0f, -3.5f, -165.0f);
+	//player->initializePosition(27.0f, -3.5f, -165.0f);
+	player->initializePosition(0, 0, -3);
 	player->setZone(zone);
-	cellTut->addObject(player, -1);
+	cellTutPlayer->addObject(player, -1);
 	player->setSavedTerrainName(zone->getZoneName());
 	player->setSavedParentID(cellTut->getObjectID());
 

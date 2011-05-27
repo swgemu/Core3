@@ -37,6 +37,11 @@ public:
 		//object->info("received target update");
 
 		object->setTargetID(target, true);
+
+		ManagedReference<SceneObject*> scene = object->getZoneServer()->getObject(target);
+
+		if (scene != NULL)
+			object->notifyObservers(ObserverEventType::PLAYERCHANGEDTARGET, scene);
 	}
 };
 

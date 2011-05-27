@@ -64,7 +64,8 @@ LIBS =	$(SYSTEM_LIBS)  \
 
 bin_PROGRAMS = core3
 
-core3_IDLS =	server/zone/objects/region/CityRegion.cpp \
+core3_IDLS =	server/zone/managers/director/ScreenPlayObserver.cpp \
+				server/zone/objects/region/CityRegion.cpp \
 				server/zone/objects/ship/SpaceStationObject.cpp \
 				server/zone/objects/ship/FighterShipObject.cpp \
 				server/zone/objects/ship/ShipObject.cpp \
@@ -260,6 +261,7 @@ core3_IDLS =	server/zone/objects/region/CityRegion.cpp \
 				server/zone/objects/tangible/terminal/characterbuilder/CharacterBuilderTerminal.cpp
 				
 core3_SOURCES =	$(core3_IDLS) \
+		server/zone/managers/director/ScreenPlayObserverImplementation.cpp \
 		server/zone/objects/region/CityRegionImplementation.cpp \
 		server/zone/objects/ship/SpaceStationObjectImplementation.cpp \
 		server/zone/objects/ship/FighterShipObjectImplementation.cpp \
@@ -297,6 +299,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/ZoneProcessServerImplementation.cpp \
 		server/zone/ZoneImplementation.cpp \
 		server/zone/managers/crafting/CraftingManagerImplementation.cpp \
+		server/zone/managers/director/DirectorManager.cpp \
 		server/zone/managers/loot/LootManagerImplementation.cpp \
 		server/zone/managers/loot/lootgroup/LootGroupObjectImplementation.cpp \
 		server/zone/managers/faction/FactionManager.cpp \
@@ -412,6 +415,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/creature/variables/CommandQueueAction.cpp \
 		server/zone/objects/creature/commands/QueueCommand.cpp \
 		server/zone/objects/creature/LuaCreatureObject.cpp \
+		server/zone/objects/scene/LuaSceneObject.cpp \
 		server/zone/objects/creature/VehicleObjectImplementation.cpp \
 		server/zone/objects/creature/variables/SkillBoxList.cpp \
 		server/zone/objects/creature/aigroup/AiGroupImplementation.cpp \
@@ -430,6 +434,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/cell/CellObjectImplementation.cpp \
 		server/zone/objects/installation/InstallationObjectImplementation.cpp \
 		server/zone/objects/building/BuildingObjectImplementation.cpp \
+		server/zone/objects/building/LuaBuildingObject.cpp \
 		server/zone/objects/building/tutorial/TutorialBuildingObjectImplementation.cpp \
 		server/zone/objects/building/city/CityHallObjectImplementation.cpp \
 		server/zone/objects/structure/StructurePermissionList.cpp \

@@ -46,7 +46,7 @@ package server.zone.objects.manufactureschematic;
 
 import system.lang.ref.Reference;
 import engine.service.proto.BaseMessage;
-
+import system.util.Vector;
 import server.zone.objects.intangible.IntangibleObject;
 import server.zone.packets.scene.AttributeListMessage;
 import server.zone.objects.draftschematic.DraftSchematic;

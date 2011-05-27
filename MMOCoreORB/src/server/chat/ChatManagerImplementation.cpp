@@ -389,68 +389,79 @@ void ChatManagerImplementation::broadcastMessage(BaseMessage* message) {
 }
 
 void ChatManagerImplementation::broadcastMessage(CreatureObject* player, const UnicodeString& message,  uint64 target, uint32 moodid, uint32 mood2) {
-	if (player->isPlayerCreature() /*|| !((Player *)player)->isChatMuted() */) {
-		PlayerCreature* playerCreature = (PlayerCreature*) player;
 		Zone* zone = player->getZone();
 
-		/*if (message.toCharArray() == "LAG") {
-			ZoneClientSession* client = player->getClient();
+	if (zone == NULL)
+		return;
 
-			client->reportStats(true);
+	int language = 0;
 
-			Logger::slog("Client (" + client->getAddress() + ") is experiencing lag", true);
-			return;
-		} else if (message.toCharArray() == "QUEUE") {
-			ZoneClientSession* client = player->getClient();
+	String firstName;
 
-			client->reportStats(true);
+	if (player->isPlayerCreature() /*|| !((Player *)player)->isChatMuted() */) {
+		PlayerCreature* playerCreature = (PlayerCreature*) player;
 
-			Logger::slog("Client (" + client->getAddress() + ") is experiencing queue lag", true);
-			return;
-		}*/
-
-		if (zone == NULL)
-			return;
-
-		String firstName = playerCreature->getFirstName().toLowerCase();
+		firstName = playerCreature->getFirstName().toLowerCase();
 		PlayerObject* myGhost = playerCreature->getPlayerObject();
 
 		if (myGhost == NULL)
 			return;
 
-		//Locker zoneLocker(zone);
-		zone->rlock();
+		language = myGhost->getLanguageID();
+	}
 
-		try {
+	StringIdChatParameter* param = NULL;
 
-			for (int i = 0; i < player->inRangeObjectCount(); ++i) {
-				SceneObject* object = (SceneObject*) player->getInRangeObject(i);
+	if (message[0] == '@' && message.indexOf(":") != -1) {
+		param = new StringIdChatParameter(message.toString());
+	}
 
-				if (object->isPlayerCreature()) {
-					PlayerCreature* creature = (PlayerCreature*) object;
+	//Locker zoneLocker(zone);
+	zone->rlock();
 
-					if (player->isInRange(creature, 128)) {
+	try {
 
-						PlayerObject* ghost = creature->getPlayerObject();
+		for (int i = 0; i < player->inRangeObjectCount(); ++i) {
+			SceneObject* object = (SceneObject*) player->getInRangeObject(i);
 
-						if (ghost == NULL)
-							continue;
+			if (object->isPlayerCreature()) {
+				PlayerCreature* creature = (PlayerCreature*) object;
 
-						if (!ghost->isIgnoring(firstName)) {
-							SpatialChat* cmsg = new SpatialChat(player->getObjectID(), creature->getObjectID(), message, target, moodid, mood2, myGhost->getLanguageID());
-							creature->sendMessage(cmsg);
+				if (player->isInRange(creature, 128)) {
+
+					PlayerObject* ghost = creature->getPlayerObject();
+
+					if (ghost == NULL)
+						continue;
+
+					if (!ghost->isIgnoring(firstName)) {
+						SpatialChat* cmsg = NULL;
+
+						if (param == NULL) {
+							cmsg = new SpatialChat(player->getObjectID(), creature->getObjectID(), message, target, moodid, mood2, language);
+						} else {
+							cmsg = new SpatialChat(player->getObjectID(), creature->getObjectID(), *param, target, moodid, mood2);
 						}
+
+						creature->sendMessage(cmsg);
 					}
 				}
 			}
-		} catch (...) {
-			zone->runlock();
-
-			throw;
 		}
 
+		if (param != NULL) {
+			delete param;
+			param = NULL;
+		}
+
+	} catch (...) {
 		zone->runlock();
+
+		throw;
 	}
+
+	zone->runlock();
+
 }
 
 void ChatManagerImplementation::handleSpatialChatInternalMessage(PlayerCreature* player, const UnicodeString& args) {
@@ -481,6 +492,8 @@ void ChatManagerImplementation::handleSpatialChatInternalMessage(PlayerCreature*
 			}
 		}*/
 		broadcastMessage(player, msg, targetid, moodid, mood2);
+
+		player->notifyObservers(ObserverEventType::CHAT, NULL, 0);
 
 	} catch (Exception& e) {
 		StringBuffer msg;

@@ -99,6 +99,8 @@ using namespace server::zone::objects::area;
 
 #include "engine/service/proto/BaseMessage.h"
 
+#include "system/util/Vector.h"
+
 #include "server/zone/objects/intangible/IntangibleObject.h"
 
 namespace server {

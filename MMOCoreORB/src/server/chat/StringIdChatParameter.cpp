@@ -40,7 +40,7 @@ it is their choice whether to do so. The GNU Lesser General Public License
 gives permission to release a modified version without this exception;
 this exception also makes it possible to release a modified version
 which carries forward this exception.
-*/
+ */
 
 #include "StringIdChatParameter.h"
 
@@ -82,31 +82,31 @@ StringIdChatParameter::StringIdChatParameter(const StringIdChatParameter& custom
 }
 
 void StringIdChatParameter::addToPacketStream(Message* packet) {
-		packet->insertAscii(file);
-		packet->insertInt(0);
-		packet->insertAscii(stringID);
+	packet->insertAscii(file);
+	packet->insertInt(0);
+	packet->insertAscii(stringID);
 
-		packet->insertLong(TU.getPointerParameter());
-		packet->insertAscii(TU.getFileParameter());
-		packet->insertInt(0);
-		packet->insertAscii(TU.getStringIDParameter());
-		packet->insertUnicode(TU.getUnicodeParameter());
+	packet->insertLong(TU.getPointerParameter());
+	packet->insertAscii(TU.getFileParameter());
+	packet->insertInt(0);
+	packet->insertAscii(TU.getStringIDParameter());
+	packet->insertUnicode(TU.getUnicodeParameter());
 
-		packet->insertLong(TT.getPointerParameter());
-		packet->insertAscii(TT.getFileParameter());
-		packet->insertInt(0);
-		packet->insertAscii(TT.getStringIDParameter());
-		packet->insertUnicode(TT.getUnicodeParameter());
+	packet->insertLong(TT.getPointerParameter());
+	packet->insertAscii(TT.getFileParameter());
+	packet->insertInt(0);
+	packet->insertAscii(TT.getStringIDParameter());
+	packet->insertUnicode(TT.getUnicodeParameter());
 
-		packet->insertLong(TO.getPointerParameter());
-		packet->insertAscii(TO.getFileParameter());
-		packet->insertInt(0);
-		packet->insertAscii(TO.getStringIDParameter());
-		packet->insertUnicode(TO.getUnicodeParameter());
+	packet->insertLong(TO.getPointerParameter());
+	packet->insertAscii(TO.getFileParameter());
+	packet->insertInt(0);
+	packet->insertAscii(TO.getStringIDParameter());
+	packet->insertUnicode(TO.getUnicodeParameter());
 
-		packet->insertInt(DI);
-		packet->insertFloat(DF);
-		packet->insertByte(unknownByte);
+	packet->insertInt(DI);
+	packet->insertFloat(DF);
+	packet->insertByte(unknownByte);
 }
 
 void StringIdChatParameter::parse(Message* message) {

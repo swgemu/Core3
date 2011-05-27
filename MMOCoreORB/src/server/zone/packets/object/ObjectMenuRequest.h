@@ -14,7 +14,7 @@ class ObjectMenuRequestCallback : public MessageCallback {
 	uint64 objectID;
 	uint64 playerID;
 
-	ObjectMenuResponse* menuResponse;
+	Reference<ObjectMenuResponse*> menuResponse;
 
 	ObjectControllerMessageCallback* objectControllerMain;
 public:

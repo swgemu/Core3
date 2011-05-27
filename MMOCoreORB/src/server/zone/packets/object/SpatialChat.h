@@ -100,12 +100,26 @@ public:
 		insertShort(0x32);
 		insertShort(mood2);
 		insertShort(moodid);
-		insertShort(0);
+		insertByte(0);
+		insertByte(0);
+
+		int offset = getOffset();
+
+		insertInt(0);
 
 		stringid.insertToMessage(this);
 
-		insertByte(0);
-		insertShort(0);
+		int size = (getOffset() - offset - 4) / 2;
+
+		//System::out << "size: " << size << endl;
+
+		insertInt(offset, size);
+
+		insertInt(0);
+		/*insertInt(0);
+		insertInt(0);
+		insertLong(0);
+		insertLong(0);*/
 
 		setCompression(true);
 	}

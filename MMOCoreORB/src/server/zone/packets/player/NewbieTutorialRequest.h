@@ -67,6 +67,25 @@ public:
 	}
 
 	void run() {
+		if (client == NULL)
+			return;
+
+		Reference<CreatureObject*> sceneObject = dynamic_cast<CreatureObject*>(client->getPlayer());
+
+		if (sceneObject == NULL)
+			return;
+
+		Locker locker(sceneObject);
+
+		sceneObject->info("received response: " + response, true);
+
+		if (response == "zoomCamera") {
+			sceneObject->notifyObservers(ObserverEventType::NEWBIETUTORIALZOOMCAMERA, NULL, 0);
+		} else if (response == "chatbox") {
+			sceneObject->notifyObservers(ObserverEventType::CHAT, NULL, 0);
+		} else if (response == "closeHolocron") {
+			sceneObject->notifyObservers(ObserverEventType::NEWBIETUTORIALHOLOCRON, NULL, 0);
+		}
 	}
 
 };

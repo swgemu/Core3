@@ -50,13 +50,16 @@ import server.zone.objects.player.PlayerCreature;
 import server.zone.objects.building.tutorial.events.UnloadBuildingTask;
 import server.zone.Zone;
 import server.zone.objects.cell.CellObject;
+import server.zone.managers.director.DirectorManager;
 
 class TutorialBuildingObject extends BuildingObject {
 	
 	protected transient UnloadBuildingTask unloadTask;
 
 	public TutorialBuildingObject() {
-		initializeTransientMembers();
+		unloadTask = null;
+
+		Logger.setLoggingName("TutorialBuildingObject");
 	}
 	
 	public native void removeFromZone();
@@ -71,6 +74,8 @@ class TutorialBuildingObject extends BuildingObject {
 	
 	public void onEnter(PlayerCreature player) {
 		dequeueUnloadEvent();
+		
+		DirectorManager.instance().startScreenPlay(player, "TutorialScreenPlay");
 	}
 	
 	public void onExit(PlayerCreature player) {

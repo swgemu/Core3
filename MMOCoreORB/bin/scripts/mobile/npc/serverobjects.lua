@@ -1653,3 +1653,5 @@ includeFile("npc/rori/zeelius_kraymunder.lua")
 includeFile("npc/corellia/zekka_thyne.lua")
 includeFile("npc/dathomir/zideera.lua")
 includeFile("npc/naboo/zogor_storm.lua")
+
+includeFile("npc/tutorial/imperial_officer_1.lua")

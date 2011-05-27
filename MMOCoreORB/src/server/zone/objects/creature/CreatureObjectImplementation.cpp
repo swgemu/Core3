@@ -63,6 +63,10 @@ which carries forward this exception.
 #include "server/zone/packets/object/CommandQueueRemove.h"
 #include "server/zone/packets/object/CombatAction.h"
 #include "server/zone/packets/object/ShowFlyText.h"
+#include "server/zone/packets/player/PlayMusicMessage.h"
+#include "server/zone/packets/player/NewbieTutorialRequest.h"
+#include "server/zone/packets/ui/NewbieTutorialEnableHudElement.h"
+#include "server/zone/packets/ui/OpenHolocronToPageMessage.h"
 #include "server/zone/packets/object/PlayClientEffectObjectMessage.h"
 #include "server/zone/packets/object/Animation.h"
 #include "server/zone/objects/creature/CreaturePosture.h"
@@ -286,6 +290,27 @@ void CreatureObjectImplementation::sendSystemMessage(const String& message) {
 
 	UnicodeString msg(message);
 	sendSystemMessage(msg);
+}
+
+void CreatureObjectImplementation::playMusicMessage(const String& file) {
+	PlayMusicMessage* message = new PlayMusicMessage(file);
+	sendMessage(message);
+}
+
+void CreatureObjectImplementation::sendOpenHolocronToPageMessage() {
+	OpenHolocronToPageMessage* message = new OpenHolocronToPageMessage();
+	sendMessage(message);
+}
+
+void CreatureObjectImplementation::sendNewbieTutorialRequest(const String& request) {
+	//info("sending newbie request " + request, true);
+	NewbieTutorialRequest* message = new NewbieTutorialRequest(request);
+	sendMessage(message);
+}
+
+void CreatureObjectImplementation::sendNewbieTutorialEnableHudElement(const String& ui, bool enable) {
+	NewbieTutorialEnableHudElement* message = new NewbieTutorialEnableHudElement(ui, enable);
+	sendMessage(message);
 }
 
 void CreatureObjectImplementation::sendSystemMessage(const String& file, const String& stringid) {

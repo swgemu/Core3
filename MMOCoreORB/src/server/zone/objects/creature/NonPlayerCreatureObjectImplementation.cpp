@@ -8,6 +8,8 @@
 #include "NonPlayerCreatureObject.h"
 
 void NonPlayerCreatureObjectImplementation::notifyPositionUpdate(QuadTreeEntry* entry) {
+	AiAgentImplementation::notifyPositionUpdate(entry);
+
 	SceneObject* scno = (SceneObject*) entry;
 
 	// don't worry about this if no one's around, and do it for any creature
