@@ -115,6 +115,24 @@ class CityRegion extends Observer implements Logger {
 	@dereferenced
 	public native SortedVector<SceneObject> getRegionObjectsByPlanetMapCategory(final string catname);
 	
+	/**
+	 * Checks to see if any of the active areas belonging to this city region contain the point defined
+	 * by x and y.
+	 * @param x The x coordinate.
+	 * @param y The y coordinate.
+	 * @return Returns true if the active areas contain this point.
+	 */
+	public boolean containsPoint(float x, float y) {
+		for (int i = 0; i < activeAreas.size(); ++i) {
+			ActiveArea activeArea = activeAreas.get(i);
+
+			if (activeArea.containsPoint(x, y))
+				return true;
+		}
+
+		return false;
+	}
+	
 	//public native void sendGreetingMessage(PlayerCreature player);
 	//public native void sendDepartingMessage(PlayerCreature player);
 	

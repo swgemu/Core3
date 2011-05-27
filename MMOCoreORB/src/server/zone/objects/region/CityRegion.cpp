@@ -18,7 +18,7 @@
  *	CityRegionStub
  */
 
-enum {RPC_NOTIFYOBSERVEREVENT__INT_OBSERVABLE_MANAGEDOBJECT_LONG_ = 6,RPC_NOTIFYENTER__SCENEOBJECT_,RPC_NOTIFYEXIT__SCENEOBJECT_,RPC_ADDACTIVEAREA__ZONE_FLOAT_FLOAT_FLOAT_,RPC_GETREGIONNAME__};
+enum {RPC_NOTIFYOBSERVEREVENT__INT_OBSERVABLE_MANAGEDOBJECT_LONG_ = 6,RPC_NOTIFYENTER__SCENEOBJECT_,RPC_NOTIFYEXIT__SCENEOBJECT_,RPC_ADDACTIVEAREA__ZONE_FLOAT_FLOAT_FLOAT_,RPC_CONTAINSPOINT__FLOAT_FLOAT_,RPC_GETREGIONNAME__};
 
 CityRegion::CityRegion(const String& name) : Observer(DummyConstructorParameter::instance()) {
 	CityRegionImplementation* _implementation = new CityRegionImplementation(name);
@@ -102,6 +102,21 @@ SortedVector<ManagedReference<SceneObject* > > CityRegion::getRegionObjectsByPla
 
 	} else
 		return _implementation->getRegionObjectsByPlanetMapCategory(catname);
+}
+
+bool CityRegion::containsPoint(float x, float y) {
+	CityRegionImplementation* _implementation = (CityRegionImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_CONTAINSPOINT__FLOAT_FLOAT_);
+		method.addFloatParameter(x);
+		method.addFloatParameter(y);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return _implementation->containsPoint(x, y);
 }
 
 String CityRegion::getRegionName() {
@@ -319,6 +334,22 @@ int CityRegionImplementation::notifyObserverEvent(unsigned int eventType, Observ
 	return 0;
 }
 
+bool CityRegionImplementation::containsPoint(float x, float y) {
+	// server/zone/objects/region/CityRegion.idl():  		}
+	for (	// server/zone/objects/region/CityRegion.idl():  		for (int i = 0;
+	int i = 0;
+	i < (&activeAreas)->size();
+ ++i) {
+	// server/zone/objects/region/CityRegion.idl():  			ActiveArea activeArea = activeAreas.get(i);
+	ActiveArea* activeArea = (&activeAreas)->get(i);
+	// server/zone/objects/region/CityRegion.idl():  		}
+	if (activeArea->containsPoint(x, y))	// server/zone/objects/region/CityRegion.idl():  				return true;
+	return true;
+}
+	// server/zone/objects/region/CityRegion.idl():  		return false;
+	return false;
+}
+
 String CityRegionImplementation::getRegionName() {
 	// server/zone/objects/region/CityRegion.idl():  		return regionName;
 	return regionName;
@@ -347,6 +378,9 @@ Packet* CityRegionAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	case RPC_ADDACTIVEAREA__ZONE_FLOAT_FLOAT_FLOAT_:
 		addActiveArea((Zone*) inv->getObjectParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter());
 		break;
+	case RPC_CONTAINSPOINT__FLOAT_FLOAT_:
+		resp->insertBoolean(containsPoint(inv->getFloatParameter(), inv->getFloatParameter()));
+		break;
 	case RPC_GETREGIONNAME__:
 		resp->insertAscii(getRegionName());
 		break;
@@ -371,6 +405,10 @@ void CityRegionAdapter::notifyExit(SceneObject* object) {
 
 void CityRegionAdapter::addActiveArea(Zone* zone, float x, float y, float radius) {
 	((CityRegionImplementation*) impl)->addActiveArea(zone, x, y, radius);
+}
+
+bool CityRegionAdapter::containsPoint(float x, float y) {
+	return ((CityRegionImplementation*) impl)->containsPoint(x, y);
 }
 
 String CityRegionAdapter::getRegionName() {

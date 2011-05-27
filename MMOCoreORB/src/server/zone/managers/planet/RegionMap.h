@@ -10,106 +10,85 @@
 
 #include "engine/engine.h"
 
-#include "server/zone/objects/region/Region.h"
+#include "server/zone/objects/region/CityRegion.h"
 #include "server/zone/managers/object/ObjectManager.h"
 
-class RegionMap : public Serializable {
-	SortedVector<ManagedReference<Region*> > regions;
+class RegionMap : public ReadWriteLock, public Object {
+	VectorMap<String, ManagedReference<CityRegion*> > regions;
 
 public:
 	RegionMap() {
-		addSerializableVariable("regions", &regions);
 		regions.setNoDuplicateInsertPlan();
+		regions.setNullValue(NULL);
 	}
 
 	~RegionMap() {
-
 	}
 
-	void addRegion(Zone* zone, const String& name, float x, float y, float radius) {
-		uint32 crc = String("object/region_area.iff").hashCode();
+	inline void addRegion(CityRegion* region) {
+		wlock();
 
-		Region* region = (Region*) ObjectManager::instance()->createObject(crc, 0, "");
-		region->initializePosition(x, 0, y);
-		region->setRadius(radius);
-		region->setClientObject(true);
-		StringId* objectName = region->getObjectName();
-		objectName->setStringId(name);
+		regions.put(region->getRegionName(), region);
 
-		region->insertToZone(zone);
-
-		regions.put(region);
+		unlock();
 	}
 
-	inline void addRegion(Region* region) {
-		regions.put(region);
+	inline void dropRegion(const String& regionName) {
+		wlock();
+
+		regions.drop(regionName);
+
+		unlock();
 	}
 
-	inline void dropRegion(Region* region) {
-		regions.drop(region);
-	}
-
-	Region* getRegion(float x, float y) {
-		Region* region = NULL;
+	CityRegion* getRegion(float x, float y) {
+		rlock();
 
 		for (int i = 0; i < regions.size(); ++i) {
-			region = regions.get(i);
+			ManagedReference<CityRegion*> region = regions.get(i);
 
 			if (region->containsPoint(x, y)) {
+				runlock();
+
 				return region;
 			}
 		}
 
+		runlock();
+
 		return NULL;
 	}
 
-	Vector<ManagedReference<Region*> > getRegions(StringId* regionName) {
-		Vector<ManagedReference<Region*> > regionsToReturn;
-		String fullId;
-		regionName->getFullPath(fullId);
+	Vector<ManagedReference<CityRegion*> > getRegions(StringId* regionName) {
+		Vector<ManagedReference<CityRegion*> > matches;
+
+		rlock();
 
 		for (int i = 0; i < regions.size(); ++i) {
-			Region* region = regions.get(i);
+			ManagedReference<CityRegion*> region = regions.get(i);
 
-			StringId* objectName = region->getObjectName();
-			//UnicodeString custom = objectName->getCustomString();
-
-			String fullPath;
-			objectName->getFullPath(fullPath);
-
-			if (fullPath == fullId)
-				regionsToReturn.add(region);
+			if (region->getRegionName() == regionName->getDisplayedName())
+				matches.add(region);
 		}
 
-		return regionsToReturn;
+		runlock();
+
+		return matches;
 	}
 
-	bool containsRegion(const String& name) {
-		for (int i = 0; i < regions.size(); ++i) {
-			Region* region = regions.get(i);
-
-			StringId* objectName = region->getObjectName();
-			UnicodeString custom = objectName->getCustomString();
-
-			String lowName = name.toLowerCase();
-			String customName = custom.toString().toLowerCase();
-			String file = objectName->getStringID();
-
-			if (customName.indexOf(lowName) != -1)
-				return true;
-
-			if (file.indexOf(lowName) != -1)
-				return true;
-		}
-
-		return false;
+	inline bool containsRegion(const String& name) {
+		return regions.contains(name);
 	}
 
-	inline Region* getRegion(int index) {
+	inline CityRegion* getRegion(int index) {
 		return regions.get(index);
 	}
 
-	inline int size() {
+	inline CityRegion* getRegion(const String& name) {
+		return regions.get(name);
+	}
+
+	inline int getTotalRegions() {
 		return regions.size();
 	}
 };

@@ -38,7 +38,7 @@ void RegionImplementation::insertToZone(Zone* zone) {
 	if (!isInQuadTree())
 		return;
 
-	zone->getPlanetManager()->addRegion(_this);
+	//zone->getPlanetManager()->addRegion(_this);
 }
 
 void RegionImplementation::sendDepartingMessage(PlayerCreature* player) {

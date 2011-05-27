@@ -36,11 +36,11 @@ void CityHallObjectImplementation::spawnCityHallObjects() {
 
 	//TODO: Deprecate this as well.
 
-	if (cityRegion == NULL)
-		return;
+	//if (cityRegion == NULL)
+		//return;
 
-	cityRegion->insertToZone(getZone());
-	getZone()->getPlanetManager()->addRegion(cityRegion);
+	//cityRegion->insertToZone(getZone());
+	//getZone()->getPlanetManager()->addRegion(cityRegion);
 }
 
 void CityHallObjectImplementation::despawnCityHallObjects() {
@@ -48,9 +48,9 @@ void CityHallObjectImplementation::despawnCityHallObjects() {
 		return;
 
 	if (cityRegion != NULL) {
-		cityRegion->removeFromZone();
+		//cityRegion->removeFromZone();
 
-		getZone()->getPlanetManager()->dropRegion(cityRegion);
+		//getZone()->getPlanetManager()->dropRegion(cityRegion);
 	}
 }
 

@@ -86,10 +86,19 @@ public:
 		return *this;
 	}
 
+	int compareTo(const StringId& id) const {
+		return getFullPath().compareTo(id.getFullPath());
+	}
+
 	void clear();
 
 	inline void getFullPath(String& str) const {
 		str = "@" + file + ":" + stringID;
+	}
+
+	String getFullPath() const {
+		String str = "@" + file + ":" + stringID;
+		return str;
 	}
 
 	inline String& getFile() {

@@ -145,7 +145,7 @@ class SceneObject;
 
 using namespace server::zone::objects::scene;
 
-#include "server/zone/objects/region/Region.h"
+#include "server/zone/objects/region/CityRegion.h"
 
 #include "server/zone/managers/planet/RegionMap.h"
 
@@ -218,7 +218,7 @@ public:
 
 	void sendPlanetTravelPointListResponse(PlayerCreature* player);
 
-	Vector<ManagedReference<Region* > > getRegions(StringId& regionName);
+	Vector<ManagedReference<CityRegion* > > getRegions(StringId& regionName);
 
 	StructureManager* getStructureManager();
 
@@ -226,7 +226,7 @@ public:
 
 	TerrainManager* getTerrainManager();
 
-	Region* getRegion(float x, float y);
+	CityRegion* getRegion(float x, float y);
 
 	int getRegionCount();
 
@@ -234,11 +234,11 @@ public:
 
 	void increaseNumberOfCities();
 
-	Region* getRegion(int index);
+	CityRegion* getRegion(int index);
 
-	void addRegion(Region* region);
+	void addRegion(CityRegion* region);
 
-	void dropRegion(Region* region);
+	void dropRegion(const String& region);
 
 	bool hasRegion(const String& name);
 
@@ -298,9 +298,7 @@ class PlanetManagerImplementation : public ManagedServiceImplementation, public 
 protected:
 	ManagedWeakReference<Zone* > zone;
 
-	RegionMap regionMap;
-
-	HashTable<String, ManagedReference<CityRegion* > > cityRegionMap;
+	RegionMap cityRegionMap;
 
 	VectorMap<String, int> travelFares;
 
@@ -381,7 +379,7 @@ public:
 
 	void sendPlanetTravelPointListResponse(PlayerCreature* player);
 
-	Vector<ManagedReference<Region* > > getRegions(StringId& regionName);
+	Vector<ManagedReference<CityRegion* > > getRegions(StringId& regionName);
 
 	StructureManager* getStructureManager();
 
@@ -389,7 +387,7 @@ public:
 
 	TerrainManager* getTerrainManager();
 
-	Region* getRegion(float x, float y);
+	CityRegion* getRegion(float x, float y);
 
 	int getRegionCount();
 
@@ -397,11 +395,11 @@ public:
 
 	void increaseNumberOfCities();
 
-	Region* getRegion(int index);
+	CityRegion* getRegion(int index);
 
-	void addRegion(Region* region);
+	void addRegion(CityRegion* region);
 
-	void dropRegion(Region* region);
+	void dropRegion(const String& region);
 
 	bool hasRegion(const String& name);
 
@@ -502,7 +500,7 @@ public:
 
 	WeatherManager* getWeatherManager();
 
-	Region* getRegion(float x, float y);
+	CityRegion* getRegion(float x, float y);
 
 	int getRegionCount();
 
@@ -510,11 +508,11 @@ public:
 
 	void increaseNumberOfCities();
 
-	Region* getRegion(int index);
+	CityRegion* getRegion(int index);
 
-	void addRegion(Region* region);
+	void addRegion(CityRegion* region);
 
-	void dropRegion(Region* region);
+	void dropRegion(const String& region);
 
 	bool hasRegion(const String& name);
 
@@ -536,6 +534,7 @@ public:
 
 protected:
 	String _param0_getTravelFare__String_;
+	String _param0_dropRegion__String_;
 	String _param0_hasRegion__String_;
 	String _param0_addHuntingTargetTemplate__String_String_int_;
 	String _param1_addHuntingTargetTemplate__String_String_int_;

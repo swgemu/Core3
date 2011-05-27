@@ -1108,8 +1108,9 @@ void AuctionManagerImplementation::getPlanetData(PlayerCreature* player, Vendor*
 	VectorMap<uint64, ManagedReference<AuctionItem*> > items;
 
 	for (int u = 0; u < planetManager->getRegionCount(); ++u) {
-		ManagedReference<Region*> regionObject = planetManager->getRegion(u);
+		ManagedReference<CityRegion*> regionObject = planetManager->getRegion(u);
 
+		/*
 		for (int i = 0; i < regionObject->getBazaarCount(); ++i) {
 			BazaarTerminal* term = regionObject->getBazaar(i);
 			Vendor* vendorObj = term->getVendor();
@@ -1123,6 +1124,7 @@ void AuctionManagerImplementation::getPlanetData(PlayerCreature* player, Vendor*
 				items.put(regionItems->elementAt(j).getKey(), regionItems->elementAt(j).getValue());
 			}
 		}
+		*/
 	}
 
 	AuctionQueryHeadersResponseMessage* msg = fillAuctionQueryHeadersResponseMessage(player, vendor, &items, screen, category, count, offset);

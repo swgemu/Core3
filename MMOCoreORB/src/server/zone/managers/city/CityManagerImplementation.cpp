@@ -101,7 +101,7 @@ void CityManagerImplementation::createNewCity(CityHallObject* city, PlayerCreatu
 	cityRegion->updateToDatabase();
 	city->updateToDatabaseWithoutChildren();
 
-	zone->getPlanetManager()->addRegion(cityRegion);
+	//zone->getPlanetManager()->addRegion(cityRegion);
 
 	Locker lock(_this);
 

@@ -102,6 +102,8 @@ public:
 
 	SortedVector<ManagedReference<SceneObject* > > getRegionObjectsByPlanetMapCategory(const String& catname);
 
+	bool containsPoint(float x, float y);
+
 	String getRegionName();
 
 	DistributedObjectServant* _getImplementation();
@@ -157,6 +159,8 @@ public:
 
 	SortedVector<ManagedReference<SceneObject* > > getRegionObjectsByPlanetMapCategory(const String& catname);
 
+	bool containsPoint(float x, float y);
+
 	String getRegionName();
 
 	CityRegion* _this;
@@ -209,6 +213,8 @@ public:
 	void notifyExit(SceneObject* object);
 
 	void addActiveArea(Zone* zone, float x, float y, float radius);
+
+	bool containsPoint(float x, float y);
 
 	String getRegionName();
 

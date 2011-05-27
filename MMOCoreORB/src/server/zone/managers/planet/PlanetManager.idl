@@ -61,7 +61,7 @@ import server.zone.managers.weather.WeatherManager;
 import server.zone.managers.objectcontroller.ObjectController;
 import server.zone.objects.player.PlayerCreature;
 import server.zone.objects.scene.SceneObject;
-include server.zone.objects.region.Region;
+include server.zone.objects.region.CityRegion;
 include server.zone.managers.planet.RegionMap;
 include server.zone.managers.terrain.TerrainManager;
 include server.zone.managers.planet.NoBuildAreaMap;
@@ -79,10 +79,7 @@ class PlanetManager extends ManagedService implements Logger {
 	protected Zone zone;
 	
 	@dereferenced
-	protected RegionMap regionMap;
-	
-	@dereferenced
-	protected HashTable<string, CityRegion> cityRegionMap;
+	protected RegionMap cityRegionMap;
 	
 	@dereferenced
 	protected VectorMap<string, int> travelFares;
@@ -189,8 +186,8 @@ class PlanetManager extends ManagedService implements Logger {
 	
 	@local
 	@dereferenced
-	public Vector<Region> getRegions(@dereferenced StringId regionName) {
-		return regionMap.getRegions(regionName);
+	public Vector<CityRegion> getRegions(@dereferenced StringId regionName) {
+		return cityRegionMap.getRegions(regionName);
 	}
 	
 	public StructureManager getStructureManager() {
@@ -206,12 +203,12 @@ class PlanetManager extends ManagedService implements Logger {
 		return terrainManager;
 	}
 	
-	public Region getRegion(float x, float y) {
-		return regionMap.getRegion(x, y);
+	public CityRegion getRegion(float x, float y) {
+		return cityRegionMap.getRegion(x, y);
 	}
 	
 	public int getRegionCount() {
-		return regionMap.size();
+		return cityRegionMap.getTotalRegions();
 	}
 	
 	public int getNumberOfCities() {
@@ -222,20 +219,20 @@ class PlanetManager extends ManagedService implements Logger {
 		numberOfCities = numberOfCities + 1;
 	}
 	
-	public Region getRegion(int index) {
-		return regionMap.getRegion(index);
+	public CityRegion getRegion(int index) {
+		return cityRegionMap.getRegion(index);
 	}
 	
-	public void addRegion(Region region) {
-		regionMap.addRegion(region);
+	public void addRegion(CityRegion region) {
+		cityRegionMap.addRegion(region);
 	}
 	
-	public void dropRegion(Region region) {
-		regionMap.dropRegion(region);
+	public void dropRegion(final string region) {
+		cityRegionMap.dropRegion(region);
 	}
 	
 	public boolean hasRegion(final string name) {
-		return regionMap.containsRegion(name);
+		return cityRegionMap.containsRegion(name);
 	}
 	
 	public void addPerformanceLocation(SceneObject obj) {

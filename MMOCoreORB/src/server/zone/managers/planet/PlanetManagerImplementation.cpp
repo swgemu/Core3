@@ -337,20 +337,18 @@ void PlanetManagerImplementation::loadClientRegions() {
 		row->getValue(2, y);
 		row->getValue(3, radius);
 
-		ManagedReference<CityRegion*> cityRegion = cityRegionMap.get(regionName);
+		ManagedReference<CityRegion*> cityRegion = cityRegionMap.getRegion(regionName);
 
 		//If the cityRegion hasn't already been created, then create it.
 		if (cityRegion == NULL) {
 			cityRegion = new CityRegion(regionName);
-			cityRegionMap.put(regionName, cityRegion);
+			cityRegionMap.addRegion(cityRegion);
 		}
 
 		cityRegion->addActiveArea(zone, x, y, radius);
-
-		//regionMap.addRegion(zone, regionName, x, y, radius);
 	}
 
-	info("Added " + String::valueOf(cityRegionMap.size()) + " client regions.");
+	info("Added " + String::valueOf(cityRegionMap.getTotalRegions()) + " client regions.");
 }
 
 void PlanetManagerImplementation::loadPlayerRegions() {

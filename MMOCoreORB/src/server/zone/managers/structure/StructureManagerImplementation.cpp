@@ -182,6 +182,7 @@ int StructureManagerImplementation::placeStructureFromDeed(PlayerCreature* playe
 		return 1;
 	}
 
+	/*
 	ManagedReference<Region*> region = planetManager->getRegion(x, y);
 	ManagedReference<CityHallObject*> cityHall = NULL;
 
@@ -214,6 +215,7 @@ int StructureManagerImplementation::placeStructureFromDeed(PlayerCreature* playe
 			return 1;
 		}
 	}
+	*/
 
 	int lotsRemaining = player->getLotsRemaining();
 	int lotsRequired = 0;
