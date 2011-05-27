@@ -15,7 +15,7 @@ void MapLocationTable::addObject(SceneObject* object) {
 	if (pmc == NULL)
 		return;
 
-	int index = find(pmc->getName());
+	int index = locations.find(pmc->getName());
 
 	if (index == -1) {
 		SortedVector<MapLocationEntry> sorted;
@@ -24,12 +24,12 @@ void MapLocationTable::addObject(SceneObject* object) {
 		MapLocationEntry entry(object);
 		sorted.put(entry);
 
-		put(pmc->getName(), sorted);
+		locations.put(pmc->getName(), sorted);
 	} else {
-		SortedVector<MapLocationEntry>* vector = &this->elementAt(index).getValue();
+		SortedVector<MapLocationEntry>& vector = locations.elementAt(index).getValue();
 
 		MapLocationEntry entry(object);
-		vector->put(entry);
+		vector.put(entry);
 	}
 }
 
@@ -39,15 +39,23 @@ void MapLocationTable::dropObject(SceneObject* object) {
 	if (pmc == NULL)
 		return;
 
-	int index = find(pmc->getName());
+	int index = locations.find(pmc->getName());
 
 	if (index != -1) {
-		SortedVector<MapLocationEntry>* vector = &this->elementAt(index).getValue();
+		SortedVector<MapLocationEntry>& vector = locations.elementAt(index).getValue();
 
 		MapLocationEntry entry(object);
-		vector->drop(entry);
+		vector.drop(entry);
 
-		if (vector->size() == 0)
-			remove(index);
+		if (vector.isEmpty())
+			locations.remove(index);
 	}
+}
+
+SortedVector<MapLocationEntry>& MapLocationTable::getLocation(const String& name) {
+	return locations.get(name);
+}
+
+int MapLocationTable::findLocation(const String& name) {
+	return locations.find(name);
 }

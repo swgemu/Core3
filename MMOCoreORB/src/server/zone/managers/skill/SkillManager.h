@@ -41,6 +41,9 @@ which carries forward this exception.
 
 */
 
+#ifndef SKILLMANAGER_H_
+#define SKILLMANAGER_H_
+
 #include "engine/engine.h"
 #include "SkillInfo.h"
 
@@ -65,3 +68,5 @@ public:
 }
 
 using namespace server::zone::managers::skill;
+
+#endif // SKILLMANAGER_H_

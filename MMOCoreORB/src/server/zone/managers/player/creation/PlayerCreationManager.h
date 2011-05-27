@@ -41,6 +41,9 @@ which carries forward this exception.
 
 */
 
+#ifndef PLAYERCREATIONMANAGER_H_
+#define PLAYERCREATIONMANAGER_H_
+
 #include "engine/engine.h"
 
 namespace server {
@@ -84,3 +87,5 @@ public:
 }
 
 using namespace server::zone::managers::player::creation;
+
+#endif // PLAYERCREATIONMANAGER_H_

@@ -68,10 +68,10 @@ public:
 
 		try {
 			for (int i = 0; i < mapLocations->size(); ++i) {
-				SortedVector<MapLocationEntry>* sortedVector = &mapLocations->elementAt(i).getValue();
+				SortedVector<MapLocationEntry>& sortedVector = mapLocations->get(i);
 
-				for (int j = 0; j < sortedVector->size(); ++j) {
-					(&sortedVector->elementAt(j))->insertToMessage(this);
+				for (int j = 0; j < sortedVector.size(); ++j) {
+					sortedVector.elementAt(j).insertToMessage(this);
 					++totalEntries;
 				}
 			}

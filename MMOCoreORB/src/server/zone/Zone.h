@@ -295,7 +295,7 @@ class ZoneImplementation : public ManagedObjectImplementation {
 
 	Reference<HeightMap* > heightMap;
 
-	MapLocationTable mapLocations;
+	Reference<MapLocationTable* > mapLocations;
 
 	bool managersStarted;
 

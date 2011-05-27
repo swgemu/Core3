@@ -25,11 +25,29 @@ class SceneObject;
 
 using namespace server::zone::objects::scene;
 
-class MapLocationTable : public VectorMap<String, SortedVector<MapLocationEntry> >, public ReadWriteLock {
+class MapLocationTable : public Object, public ReadWriteLock {
+	VectorMap<String, SortedVector<MapLocationEntry> > locations;
+
 public:
+	MapLocationTable() {
+		locations.setNoDuplicateInsertPlan();
+	}
+
 	void addObject(SceneObject* object);
 
 	void dropObject(SceneObject* object);
+
+	SortedVector<MapLocationEntry>& getLocation(const String& name);
+
+	SortedVector<MapLocationEntry>& get(int index) {
+		return locations.elementAt(index).getValue();
+	}
+
+	int findLocation(const String& name);
+
+	int size() {
+		return locations.size();
+	}
 };
 
 #endif /* MAPLOCATIONTABLE_H_ */

@@ -100,7 +100,6 @@ class Zone extends ManagedObject {
 	
 	private transient HeightMap heightMap;
 	
-	@dereferenced
 	private transient MapLocationTable mapLocations;
 	
 	private boolean managersStarted;

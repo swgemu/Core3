@@ -73,7 +73,7 @@ ZoneImplementation::ZoneImplementation(ZoneProcessServer* serv, const String& na
 	regionTree = new QuadTree(-8192, -8192, 8192, 8192);
 	quadTree = new QuadTree(-8192, -8192, 8192, 8192);
 
-	mapLocations.setNoDuplicateInsertPlan();
+	mapLocations = new MapLocationTable();
 
 	managersStarted = false;
 
@@ -107,7 +107,7 @@ void ZoneImplementation::initializeTransientMembers() {
 
 	heightMap = new HeightMap();
 
-	mapLocations.setNoDuplicateInsertPlan();
+	mapLocations = new MapLocationTable();
 
 	//heightMap->load("planets/" + planetName + "/" + planetName + ".hmap");
 }
@@ -270,13 +270,13 @@ void ZoneImplementation::addSceneObject(SceneObject* object) {
 
 //TODO: Do we need to send out some type of update when this happens?
 void ZoneImplementation::registerObjectWithPlanetaryMap(SceneObject* object) {
-	Locker locker(&mapLocations);
-	mapLocations.addObject(object);
+	Locker locker(mapLocations);
+	mapLocations->addObject(object);
 }
 
 void ZoneImplementation::unregisterObjectWithPlanetaryMap(SceneObject* object) {
-	Locker locker(&mapLocations);
-	mapLocations.dropObject(object);
+	Locker locker(mapLocations);
+	mapLocations->dropObject(object);
 }
 
 void ZoneImplementation::dropSceneObject(SceneObject* object)  {
@@ -285,27 +285,27 @@ void ZoneImplementation::dropSceneObject(SceneObject* object)  {
 }
 
 void ZoneImplementation::sendMapLocationsTo(SceneObject* player) {
-	GetMapLocationsResponseMessage* gmlr = new GetMapLocationsResponseMessage(zoneName, &mapLocations);
+	GetMapLocationsResponseMessage* gmlr = new GetMapLocationsResponseMessage(zoneName, mapLocations);
 	player->sendMessage(gmlr);
 }
 
 CloningBuildingObject* ZoneImplementation::getNearestCloningBuilding(CreatureObject* creature) {
 	ManagedReference<CloningBuildingObject*> cloning = NULL;
 
-	mapLocations.rlock();
+	mapLocations->rlock();
 
 	try {
 		//cloning type 5
 
-		int index = mapLocations.find("cloningfacility");
+		int index = mapLocations->findLocation("cloningfacility");
 
 		float distance = 16000.f;
 
 		if (index != -1) {
-			SortedVector<MapLocationEntry>* sortedVector = &mapLocations.elementAt(index).getValue();
+			SortedVector<MapLocationEntry>& sortedVector = mapLocations->get(index);
 
-			for (int i = 0; i < sortedVector->size(); ++i) {
-				SceneObject* object = sortedVector->get(i).getObject();
+			for (int i = 0; i < sortedVector.size(); ++i) {
+				SceneObject* object = sortedVector.get(i).getObject();
 
 				if (object->isCloningBuildingObject()) {
 					float objDistance = object->getDistanceTo(creature);
@@ -319,12 +319,12 @@ CloningBuildingObject* ZoneImplementation::getNearestCloningBuilding(CreatureObj
 
 		}
 	} catch (...) {
-		mapLocations.runlock();
+		mapLocations->runlock();
 
 		throw;
 	}
 
-	mapLocations.runlock();
+	mapLocations->runlock();
 
 	return cloning.get();
 }
@@ -332,20 +332,20 @@ CloningBuildingObject* ZoneImplementation::getNearestCloningBuilding(CreatureObj
 SceneObject* ZoneImplementation::getNearestPlanetaryObject(SceneObject* object, const String& mapObjectLocationType) {
 	ManagedReference<SceneObject*> planetaryObject = NULL;
 
-	mapLocations.rlock();
+	mapLocations->rlock();
 
 	try {
 		//cloning type 5
 
-		int index = mapLocations.find(mapObjectLocationType);
+		int index = mapLocations->findLocation(mapObjectLocationType);
 
 		float distance = 16000.f;
 
 		if (index != -1) {
-			SortedVector<MapLocationEntry>* sortedVector = &mapLocations.elementAt(index).getValue();
+			SortedVector<MapLocationEntry>& sortedVector = mapLocations->get(index);
 
-			for (int i = 0; i < sortedVector->size(); ++i) {
-				SceneObject* vectorObject = sortedVector->get(i).getObject();
+			for (int i = 0; i < sortedVector.size(); ++i) {
+				SceneObject* vectorObject = sortedVector.get(i).getObject();
 
 				float objDistance = vectorObject->getDistanceTo(object);
 
@@ -357,12 +357,12 @@ SceneObject* ZoneImplementation::getNearestPlanetaryObject(SceneObject* object, 
 
 		}
 	} catch (...) {
-		mapLocations.runlock();
+		mapLocations->runlock();
 
 		throw;
 	}
 
-	mapLocations.runlock();
+	mapLocations->runlock();
 
 	return planetaryObject.get();
 }
@@ -371,18 +371,16 @@ SortedVector<ManagedReference<SceneObject*> > ZoneImplementation::getPlanetaryOb
 	SortedVector<ManagedReference<SceneObject*> > retVector;
 	retVector.setNoDuplicateInsertPlan();
 
-	mapLocations.rlock();
+	mapLocations->rlock();
 
-	SortedVector<MapLocationEntry>* entryVector = &mapLocations.get(mapObjectLocationType);
+	SortedVector<MapLocationEntry>& entryVector = mapLocations->getLocation(mapObjectLocationType);
 
-	if (entryVector != NULL) {
-		for (int i = 0; i < entryVector->size(); ++i) {
-			MapLocationEntry entry = entryVector->get(i);
-			retVector.put(entry.getObject());
-		}
+	for (int i = 0; i < entryVector.size(); ++i) {
+		MapLocationEntry entry = entryVector.get(i);
+		retVector.put(entry.getObject());
 	}
 
-	mapLocations.runlock();
+	mapLocations->runlock();
 
 	return retVector;
 }
