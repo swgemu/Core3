@@ -43,6 +43,10 @@ public:
 		return cellTotalNumber;
 	}
 
+	inline int getFloorMeshNumber() {
+		return floorMeshes.size();
+	}
+
 	inline FloorMesh* getFloorMesh(int cellIndex) {
 		return floorMeshes.get(cellIndex);
 	}
