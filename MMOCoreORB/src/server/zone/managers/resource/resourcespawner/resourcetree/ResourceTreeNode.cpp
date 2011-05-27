@@ -237,22 +237,23 @@ void ResourceTreeNode::getEntryPool(Vector<ResourceTreeEntry*>& candidates,
 
 }
 
-void ResourceTreeNode::updateEntries() {
+/*void ResourceTreeNode::updateEntries() {
 	for(int i = 0; i < entries.size(); ++i) {
 		ResourceTreeEntry* ent = entries.get(i);
 		ResourceTreeNode* node = ent->getMyNode();
-		ent->addStfClass(ent->getType());
+		ent->addClass(ent->getType());
 		while(node->getParentNode() != NULL) {
-			ent->addStfClass(node->getStfName());
+			ent->addClass(node->getName());
 			node = node->getParentNode();
 		}
+		ent->toString();
 	}
 
 	for(int i = 0; i < nodes.size(); ++i) {
 		ResourceTreeNode* node = nodes.get(i);
 		node->updateEntries();
 	}
-}
+}*/
 
 void ResourceTreeNode::addToSuiListBox(SuiListBox* suil) {
 	for(int i = 0; i < nodes.size(); ++i) {

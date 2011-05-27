@@ -71,9 +71,6 @@ ResourceSpawner::ResourceSpawner(ManagedReference<ZoneServer*> serv,
 	objectManager = objMan;
 	samplingMultiplier = 1; //should be 1 for normal use
 
-	resourceTree = new ResourceTree(this);
-	resourceMap = new ResourceMap();
-
 	minimumPool = new MinimumPool(this);
 	fixedPool = new FixedPool(this);
 	randomPool = new RandomPool(this);
@@ -93,6 +90,12 @@ ResourceSpawner::~ResourceSpawner() {
 	delete resourceMap;
 
 	activeResourceZones.removeAll();
+}
+
+void ResourceSpawner::init() {
+
+	resourceTree = new ResourceTree(this);
+	resourceMap = new ResourceMap();
 }
 
 void ResourceSpawner::initializeMinimumPool(const String& includes,
@@ -253,6 +256,7 @@ ResourceSpawn* ResourceSpawner::createResourceSpawn(const String& type,
 	for (int i = 0; i < resourceEntry->getClassCount(); ++i) {
 		String resClass = resourceEntry->getClass(i);
 		newSpawn->addClass(resClass);
+
 	}
 
 	for (int i = 0; i < resourceEntry->getStfClassCount(); ++i) {
@@ -290,6 +294,9 @@ ResourceSpawn* ResourceSpawner::createResourceSpawn(const String& type,
 
 	resourceMap->add(name, newSpawn);
 	newSpawn->updateToDatabase();
+
+	//resourceEntry->toString();
+	//newSpawn->print();
 
 	return newSpawn;
 }
@@ -410,11 +417,11 @@ void ResourceSpawner::sendResourceListForSurvey(PlayerCreature* player,
 
 void ResourceSpawner::sendSurvey(PlayerCreature* player, const String& resname) {
 
-	if (player->getHAM(CreatureAttribute::MIND) < 100) {
+	/*if (player->getHAM(CreatureAttribute::MIND) < 100) {
 		player->setPosture(CreaturePosture::UPRIGHT, true);
 		player->sendSystemMessage("error_message", "survey_mind"); //You are exhausted. You nee to clear your head before you can survey again.
 		return;
-	}
+	}*/
 
 	player->inflictDamage(player, CreatureAttribute::MIND, 100, false, true);
 
@@ -514,11 +521,11 @@ void ResourceSpawner::sendSample(PlayerCreature* player, const String& resname,
 			|| player->getZone() == NULL)
 		return;
 
-	if (player->getHAM(CreatureAttribute::ACTION) < 200) {
+	/*if (player->getHAM(CreatureAttribute::ACTION) < 200) {
 		player->setPosture(CreaturePosture::UPRIGHT, true);
 		player->sendSystemMessage("error_message", "survey_mind"); //You are exhausted. You nee to clear your head before you can survey again.
 		return;
-	}
+	}*/
 
 	player->inflictDamage(player, CreatureAttribute::ACTION, 200, false, true);
 

@@ -204,6 +204,9 @@ Vector<String> ResourceSpawnImplementation::getSpawnZones(int minpool, int maxpo
 	else
 		zonecount = System::random(maxpool - minpool) + minpool;
 
+	if(zonecount > activeZones.size())
+		zonecount = activeZones.size();
+
 	/// If resource is zone restricted, add only the restricted zone
 	if (zonerestriction != "") {
 		zonenames.add(zonerestriction);
@@ -256,8 +259,10 @@ ResourceContainer* ResourceSpawnImplementation::createResource(int units) {
    	newResource = dynamic_cast<ResourceContainer*>(getZoneServer()->createObject(containerCRC, 2));
 
    	if(newResource == NULL) {
-   		error("Unable to create resource container: " + String::valueOf(containerCRC));
-   		return NULL;
+   		error("Unable to create resource container, using generic.  CRC attempted was: " + String::valueOf(containerCRC));
+
+   		String genericContainer = "object/resource_container/organic_food.iff";
+   		newResource = dynamic_cast<ResourceContainer*>(getZoneServer()->createObject(genericContainer.hashCode(), 2));
    	}
 
    	newResource->setSpawnObject(_this);
@@ -297,18 +302,18 @@ void ResourceSpawnImplementation::addStatsToDeedListBox(SuiListBox* suil) {
 }
 
 void ResourceSpawnImplementation::print() {
-	info("**** Resource Data ****\n");
-	info("Class: " + getFinalClass());
-	info("Name: " + spawnName);
-	info("--------Classes--------");
+	info("**** Resource Data ****\n", true);
+	info("Class: " + getFinalClass(), true);
+	info("Name: " + spawnName, true);
+	info("--------Classes--------", true);
 	for (int i = 0; i < spawnClasses.size(); ++i)
-		info(spawnClasses.get(i) + "(" + stfSpawnClasses.get(i) + ")");
-	info("------Attributes-------");
+		info(spawnClasses.get(i) + "(" + stfSpawnClasses.get(i) + ")", true);
+	info("------Attributes-------", true);
 
 	for (int i = 0; i < spawnAttributes.size(); ++i) {
 		String attrib;
 		int value = getAttributeAndValue(attrib, i);
-		info(attrib + " " + value);
+		info(attrib + " " + value, true);
 	}
 
 	for (int i = 0; i < spawnMaps.size(); ++i) {
@@ -316,5 +321,5 @@ void ResourceSpawnImplementation::print() {
 		spawnMaps.get(i).print();
 	}
 
-	info("***********************");
+	info("***********************", true);
 }

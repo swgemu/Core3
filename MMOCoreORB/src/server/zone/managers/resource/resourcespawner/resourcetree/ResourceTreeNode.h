@@ -87,7 +87,7 @@ public:
 
 	void addToSuiListBox(SuiListBox* suil);
 
-	void updateEntries();
+	//void updateEntries();
 
 	void toString();
 

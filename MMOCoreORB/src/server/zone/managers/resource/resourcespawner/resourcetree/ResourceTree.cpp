@@ -81,11 +81,13 @@ bool ResourceTree::buildTreeFromClient() {
 	dtiff.readObject(iffStream);
 
 	Vector < String > currentClasses;
+	Vector<String> currentStfClasses;
 	currentClasses.removeAll();
+	currentStfClasses.removeAll();
 
 	baseNode = new ResourceTreeNode("resource", "Resource", 0);
 
-	String stringvalue;
+	String stringvalue, randomname, resourcecontainer;
 	int intvalue;
 	bool boolValue;
 
@@ -104,17 +106,21 @@ bool ResourceTree::buildTreeFromClient() {
 			if (resourceclass == "")
 				continue;
 
-			while (currentClasses.size() > j - 2)
-				currentClasses.removeElementAt(j - 2);
+			while (currentStfClasses.size() > j - 3) {
+				currentStfClasses.removeElementAt(j - 3);
+				currentClasses.removeElementAt(j - 3);
+			}
 
+			currentStfClasses.add(stringvalue);
 			currentClasses.add(resourceclass);
 		}
-		/*System::out << "********* " << type << " ***********" << endl;
-		 for(int j = 0; j < currentClasses.size(); ++j) {
-		 entry->addClass(currentClasses.get(j));
-		 System::out << currentClasses.get(j) << endl;
+		//System::out << "********* " << stringvalue << " ***********" << endl;
+		 for(int j = 0; j < currentStfClasses.size(); ++j) {
+			 entry->addClass(currentClasses.get(j));
+			 entry->addStfClass(currentStfClasses.get(j));
+		 //System::out << currentClasses.get(j) << "|" << currentStfClasses.get(j) << endl;
 		 }
-		 System::out << "************************************" << endl;*/
+		 //System::out << "************************************" << endl;
 
 		row->getValue(10, intvalue);
 		entry->setMaxtype(intvalue);
@@ -146,10 +152,14 @@ bool ResourceTree::buildTreeFromClient() {
 		}
 
 		row->getCell(49)->getValue(stringvalue);
-		entry->setResourceContainerType(stringvalue);
+		if(stringvalue != "")
+			resourcecontainer = stringvalue;
+		entry->setResourceContainerType(resourcecontainer);
 
 		row->getCell(50)->getValue(stringvalue);
-		entry->setRandomNameClass(stringvalue);
+		if(stringvalue != "")
+				randomname = stringvalue;
+		entry->setRandomNameClass(randomname);
 
 		setZoneRestriction(entry);
 		setJtl(entry);
@@ -159,7 +169,7 @@ bool ResourceTree::buildTreeFromClient() {
 		baseNode->add(entry);
 	}
 	/// Update the Stf Entries now that the tree is built
-	baseNode->updateEntries();
+	//baseNode->updateEntries();
 
 	return true;
 }

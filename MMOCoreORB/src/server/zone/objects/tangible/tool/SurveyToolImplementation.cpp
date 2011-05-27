@@ -261,6 +261,12 @@ void SurveyToolImplementation::sendSurveyTo(PlayerCreature* player, const String
 		}
 	}
 
+	if (player->getHAM(CreatureAttribute::MIND) < 100) {
+		player->setPosture(CreaturePosture::UPRIGHT, true);
+		player->sendSystemMessage("error_message", "survey_mind"); //You are exhausted. You nee to clear your head before you can survey again.
+		return;
+	}
+
 	lastResourceSurveyName = resname;
 
 	PlayClientEffectLoc* effect = new PlayClientEffectLoc(surveyAnimation,
@@ -293,6 +299,12 @@ void SurveyToolImplementation::sendSampleTo(PlayerCreature* player, const String
 	}
 
 	if (player->isMounted()) {
+		return;
+	}
+
+	if (player->getHAM(CreatureAttribute::ACTION) < 200) {
+		player->setPosture(CreaturePosture::UPRIGHT, true);
+		player->sendSystemMessage("error_message", "survey_mind"); //You are exhausted. You nee to clear your head before you can survey again.
 		return;
 	}
 

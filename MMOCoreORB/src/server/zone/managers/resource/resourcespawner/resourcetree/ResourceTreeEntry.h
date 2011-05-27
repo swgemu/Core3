@@ -183,7 +183,7 @@ public:
 	 */
 	void addStfClass(const String newclass) {
 
-		stfClassList.add(0, newclass);
+		stfClassList.add(newclass);
 	}
 
 	/**
@@ -513,10 +513,12 @@ public:
      */
 	bool isType(String type) {
 		for (int i = 0; i < stfClassList.size(); ++i) {
+
 			if (stfClassList.get(i) == type)
 				return true;
 		}
 		for (int i = 0; i < classList.size(); ++i) {
+
 			if (classList.get(i) == type)
 				return true;
 		}
@@ -551,6 +553,7 @@ public:
 		System::out << "Resource Container Type = " << resourceContainerType  << endl;
 		System::out << "Random Name Class = " << randomNameClass  << endl;
 		System::out << "Zone Restriction = " << zoneRestriction  << endl;
+		System::out << "Survey Tool Type = " << surveyToolType  << endl;
 	}
 };
 

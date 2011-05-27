@@ -66,6 +66,8 @@ void ResourceManagerImplementation::initialize() {
 		info("***** ERROR in configuration, using default values");
 	}
 
+	resourceSpawner->init();
+
 	info("starting resource spawner");
 	startResourceSpawner();
 	info("resource manager initialized");
