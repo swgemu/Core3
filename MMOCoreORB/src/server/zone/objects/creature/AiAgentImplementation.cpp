@@ -513,29 +513,7 @@ void AiAgentImplementation::checkNewAngle() {
 	if (followObject == NULL)
 		return;
 
-	Vector3 thisWorldPos = getWorldPosition();
-	Vector3 targetWorldPos = followObject->getWorldPosition();
-
-	float directionangle = atan2(targetWorldPos.getX() - thisWorldPos.getX(), targetWorldPos.getY() - thisWorldPos.getY());
-
-	/*StringBuffer msg;
-	msg << "direction angle " << String::valueOf(directionangle) << " getRadians " << direction.getRadians();
-
-	info(msg.toString(), true);*/
-
-	if (directionangle < 0) {
-		float a = M_PI + directionangle;
-		directionangle = M_PI + a;
-	}
-
-	float err = fabs(directionangle - direction.getRadians());
-
-	if (err < 0.05) {
-		//info("not updating " + String::valueOf(directionangle), true);
-		return;
-	}
-
-	direction.setHeadingDirection(directionangle);
+	faceObject(followObject);
 
 	if (!nextStepPosition.isReached()) {
 		broadcastNextPositionUpdate(&nextStepPosition);

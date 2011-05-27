@@ -1020,6 +1020,8 @@ public:
 
 	void rotate(int degrees);
 
+	void faceObject(SceneObject* obj);
+
 	void notifySelfPositionUpdate();
 
 	void notifyPositionUpdate(QuadTreeEntry* entry);
@@ -2076,6 +2078,8 @@ public:
 
 	void rotate(int degrees);
 
+	void faceObject(SceneObject* obj);
+
 	virtual void notifySelfPositionUpdate();
 
 	void notifyPositionUpdate(QuadTreeEntry* entry);
@@ -2520,6 +2524,8 @@ public:
 	float getSpecialDirectionAngle();
 
 	void rotate(int degrees);
+
+	void faceObject(SceneObject* obj);
 
 	void notifySelfPositionUpdate();
 

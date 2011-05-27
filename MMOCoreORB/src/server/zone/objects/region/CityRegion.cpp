@@ -329,6 +329,10 @@ int CityRegionImplementation::notifyObserverEvent(unsigned int eventType, Observ
 	// server/zone/objects/region/CityRegion.idl():  			notifyEnter((SceneObject) arg1);
 	notifyEnter((SceneObject*) arg1);
 	break;
+	case ObserverEventType::EXITEDAREA :
+	// server/zone/objects/region/CityRegion.idl():  			notifyExit((SceneObject) arg1);
+	notifyExit((SceneObject*) arg1);
+	break;
 }
 	// server/zone/objects/region/CityRegion.idl():  		return 0;
 	return 0;

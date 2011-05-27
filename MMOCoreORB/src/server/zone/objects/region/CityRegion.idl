@@ -83,6 +83,9 @@ class CityRegion extends Observer implements Logger {
 		case ObserverEventType.ENTEREDAREA:
 			notifyEnter((SceneObject) arg1);
 			break;
+		case ObserverEventType.EXITEDAREA:
+			notifyExit((SceneObject) arg1);
+			break;
 		}
 		
 		return 0;

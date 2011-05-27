@@ -69,11 +69,7 @@ public:
 		if (!checkInvalidPostures(creature))
 			return INVALIDPOSTURE;
 
-		if (!creature->isPlayerCreature())
-			return GENERALERROR;
-
-		PlayerCreature* player = (PlayerCreature*) creature;
-
+		/*
 		ZoneServer* zserv = server->getZoneServer();
 
 		if (zserv == NULL)
@@ -93,12 +89,12 @@ public:
 		Locker _locker(deed);
 
 		if (creature->isRidingMount()) {
-			creature->sendSystemMessage("player_structure", "cant_place_mounted"); //You may not place a structure while mounted or riding a vehicle.
+			creature->sendSystemMessage("@player_structure:cant_place_mounted"); //You may not place a structure while mounted or riding a vehicle.
 			return GENERALERROR;
 		}
 
 		if (creature->getParentID() > 0) {
-			creature->sendSystemMessage("player_structure", "not_inside"); //You can not place a structure while you are inside a building.
+			creature->sendSystemMessage("@player_structure:not_inside"); //You can not place a structure while you are inside a building.
 			return GENERALERROR;
 		}
 
@@ -134,16 +130,12 @@ public:
 
 		String planetName = zone->getZoneName();
 
-		/*if (planetName == "rori" || planetName == "yavin4") {
-			player->sendSystemMessage("Structure placement is currently disabled on this planet");
-			return GENERALERROR;
-		}*/
 
 		PlanetManager* planetManager = player->getZone()->getPlanetManager();
 		StringId errorStf;
 
 		if (planetManager->isNoBuildArea(player->getPositionX(), player->getPositionY(), errorStf)) {
-			StringIdChatParameter sendString("player_structure", "city_too_close");
+			StringIdChatParameter sendString("@player_structure:city_too_close");
 			sendString.setTO(errorStf.getFile(), errorStf.getStringID());
 
 			player->sendSystemMessage(sendString);
@@ -153,12 +145,8 @@ public:
 
 		ManagedReference<CityRegion*> cityRegion = player->getCityRegion();
 
-		Vector<ManagedReference<ActiveArea*> >* areas = player->getActiveAreas();
-
 		if (cityRegion != NULL) {
-			//Check if it's a player region, or a static region.
-
-			player->sendSystemMessage("You cant place a structure here");
+			player->sendSystemMessage("You cant place a structure here.");
 			return GENERALERROR;
 		}
 
@@ -171,6 +159,8 @@ public:
 
 		EnterStructurePlacementModeMessage* espm = new EnterStructurePlacementModeMessage(deed->getObjectID(), clientTemplateString);
 		player->sendMessage(espm);
+
+		*/
 
 		return SUCCESS;
 	}

@@ -1094,6 +1094,27 @@ void SceneObjectImplementation::createChildObjects() {
 	}
 }
 
+void SceneObjectImplementation::faceObject(SceneObject* obj) {
+	Vector3 thisWorldPos = getWorldPosition();
+	Vector3 targetWorldPos = obj->getWorldPosition();
+
+	float directionangle = atan2(targetWorldPos.getX() - thisWorldPos.getX(), targetWorldPos.getY() - thisWorldPos.getY());
+
+	if (directionangle < 0) {
+		float a = M_PI + directionangle;
+		directionangle = M_PI + a;
+	}
+
+	float err = fabs(directionangle - direction.getRadians());
+
+	if (err < 0.05) {
+		//info("not updating " + String::valueOf(directionangle), true);
+		return;
+	}
+
+	direction.setHeadingDirection(directionangle);
+}
+
 void SceneObjectImplementation::getSlottedObjects(VectorMap<String, ManagedReference<SceneObject*> >& objects) {
 	objects = slottedObjects;
 }
