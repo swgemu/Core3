@@ -13,6 +13,7 @@
 #include "server/zone/objects/structure/StructureObject.h"
 
 #include "server/zone/templates/tangible/SharedBuildingObjectTemplate.h"
+#include "server/zone/templates/appearance/PortalLayout.h"
 #include "server/zone/objects/tangible/terminal/structure/StructureTerminal.h"
 
 #include "server/zone/objects/player/sui/listbox/SuiListBox.h"
@@ -41,6 +42,10 @@ void BuildingObjectImplementation::loadTemplateData(SharedObjectTemplate* templa
 	containerType = 2;
 
 	totalCellNumber = buildingData->getTotalCellNumber();
+	PortalLayout* portalLayout = templateData->getPortalLayout();
+
+	if (portalLayout != NULL)
+		totalCellNumber = portalLayout->getFloorMeshNumber() - 1; //remove the exterior floor
 
 	optionsBitmask = 0x00000100;
 
