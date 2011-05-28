@@ -214,8 +214,8 @@ void BuildingObjectImplementation::notifyInsertToZone(SceneObject* object) {
 	for (int i = 0; i < inRangeObjectCount(); ++i) {
 		QuadTreeEntry* obj = getInRangeObject(i);
 
-		object->addInRangeObject(obj, true);
-		obj->addInRangeObject(object, true);
+		object->addInRangeObject(obj, false);
+		obj->addInRangeObject(object, false);
 	}
 
 	for (int i = 0; i < cells.size(); ++i) {
