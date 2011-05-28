@@ -19,7 +19,7 @@ class FilterDirection : public ProceduralRule<'FDIR'>, public FilterProceduralRu
 
 public:
 	FilterDirection() {
-
+		filterType = 0;
 	}
 
 	void parseFromIffStream(engine::util::IffStream* iffStream) {

@@ -25,6 +25,7 @@ public:
 	const static int HEIGHTFRACTAL = 0x101;
 	const static int HEIGHTTERRACE = 0x102;
 	const static int HEIGHTCONSTANT = 0x103;
+	const static int ENVIRONMENT = 0x200;
 
 	virtual ~AffectorProceduralRule() {
 
@@ -36,6 +37,14 @@ public:
 
 	inline bool isHeightTypeAffector() {
 		return affectorType & HEIGHTTYPE;
+	}
+
+	inline bool isEnvoronmentTypeAffector() {
+		return affectorType & ENVIRONMENT;
+	}
+
+	inline int getAffectorType() {
+		return affectorType;
 	}
 
 	virtual bool isEnabled() {

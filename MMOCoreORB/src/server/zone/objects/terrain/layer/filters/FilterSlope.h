@@ -22,7 +22,7 @@ class FilterSlope : public ProceduralRule<'FSLP'>, public FilterProceduralRule {
 
 public:
 	FilterSlope() {
-
+		filterType = HEIGHTTYPE;
 	}
 
 	void parseFromIffStream(engine::util::IffStream* iffStream) {

@@ -29,7 +29,8 @@ class Layer : public TemplateVariable<'LAYR'> {
 	Vector<AffectorProceduralRule*> affectors;
 	Vector<FilterProceduralRule*> filters;
 
-	Vector<AffectorProceduralRule*> heightAffectors;
+	//Vector<AffectorProceduralRule*> heightAffectors;
+	//Vector<AffectorProceduralRule*> environmentAffectors;
 
 	Layer* parent;
 
@@ -64,9 +65,9 @@ public:
 		return &affectors;
 	}
 
-	Vector<AffectorProceduralRule*>* getHeightAffectors() {
+	/*Vector<AffectorProceduralRule*>* getHeightAffectors() {
 		return &heightAffectors;
-	}
+	}*/
 
 	Vector<FilterProceduralRule*>* getFilters() {
 		return &filters;

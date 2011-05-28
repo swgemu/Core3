@@ -65,7 +65,7 @@ class ProceduralTerrainAppearance : public TemplateVariable<'PTAT'>, public Logg
 
 protected:
 	float calculateFeathering(float value, int featheringType);
-	float processHeight(Layer* layer, float x, float y, float& baseValue, float affectorTransformValue);
+	float processTerrain(Layer* layer, float x, float y, float& baseValue, float affectorTransformValue, int affectorType);
 	Layer* getLayerRecursive(float x, float y, Layer* rootParent);
 	Layer* getLayer(float x, float y);
 
@@ -92,6 +92,7 @@ public:
 
 	bool getWater(float x, float y, float& waterHeight);
 	float getHeight(float x, float y);
+	int getEnvironmentID(float x, float y);
 
 };
 

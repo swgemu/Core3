@@ -108,8 +108,12 @@ void Layer::parseFromIffStream(engine::util::IffStream* iffStream, Version<'0003
 			if (affector != NULL) {
 				affectors.add(affector);
 
-				if (affector->isEnabled() && affector->isHeightTypeAffector())
-					heightAffectors.add(affector);
+				/*if (affector->isEnabled()) {
+
+					if (affector->isHeightTypeAffector())
+						heightAffectors.add(affector);
+					else if (affector->is)
+				}*/
 			}
 		}
 	}

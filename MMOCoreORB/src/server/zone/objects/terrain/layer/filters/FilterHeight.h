@@ -18,7 +18,7 @@ class FilterHeight : public ProceduralRule<'FHGT'>, public FilterProceduralRule 
 
 public:
 	FilterHeight() {
-
+		filterType = HEIGHTTYPE;
 	}
 
 	void parseFromIffStream(engine::util::IffStream* iffStream) {

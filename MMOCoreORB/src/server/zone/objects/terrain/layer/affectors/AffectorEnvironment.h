@@ -17,7 +17,7 @@ class AffectorEnvironment : public ProceduralRule<'AENV'>, public AffectorProced
 
 public:
 	AffectorEnvironment() {
-
+		affectorType = ENVIRONMENT;
 	}
 
 	void parseFromIffStream(engine::util::IffStream* iffStream) {
@@ -47,6 +47,15 @@ public:
 		weight = iffStream->getFloat();
 
 		iffStream->closeChunk('DATA');
+	}
+
+	void process(float x, float y, float transformValue, float& baseValue, TerrainGenerator* terrainGenerator) {
+		//System::out << "processing AffectorEnvironment value:" << environmentId << endl;
+		baseValue = (float)environmentId;
+	}
+
+	bool isEnabled() {
+		return informationHeader.isEnabled();
 	}
 };
 

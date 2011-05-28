@@ -25,6 +25,7 @@ class FilterFractal : public ProceduralRule<'FFRA'>, public FilterProceduralRule
 public:
 	FilterFractal() {
 		mfrc = NULL;
+		filterType = HEIGHTTYPE;
 	}
 
 	void parseFromIffStream(engine::util::IffStream* iffStream);

@@ -16,10 +16,16 @@ class FilterProceduralRule {
 protected:
 	int featheringType; // Feathering type? Leftover?
 	float featheringAmount;
+	int filterType;
 
 public:
+	const static int HEIGHTTYPE = 0x100;
+	const static int ENVIRONMENT = 0x200;
+
+
 	FilterProceduralRule() {
 		featheringType = 0;
+		filterType = 0;
 	}
 
 	virtual ~FilterProceduralRule() {
@@ -36,6 +42,10 @@ public:
 
 	inline int getFeatheringType() {
 		return featheringType;
+	}
+
+	inline int getFilterType() {
+		return filterType;
 	}
 
 };

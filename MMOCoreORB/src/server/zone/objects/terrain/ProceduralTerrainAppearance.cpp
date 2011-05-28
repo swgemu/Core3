@@ -205,9 +205,9 @@ float ProceduralTerrainAppearance::calculateFeathering(float value, int featheri
 	return result;
 }
 
-float ProceduralTerrainAppearance::processHeight(Layer* layer, float x, float y, float& baseValue, float affectorTransformValue) {
+float ProceduralTerrainAppearance::processTerrain(Layer* layer, float x, float y, float& baseValue, float affectorTransformValue, int affectorType) {
 	Vector<Boundary*>* boundaries = layer->getBoundaries();
-	Vector<AffectorProceduralRule*>* affectors = layer->getHeightAffectors();
+	Vector<AffectorProceduralRule*>* affectors = layer->getAffectors();
 	Vector<FilterProceduralRule*>* filters = layer->getFilters();
 
 	float transformValue = 0;
@@ -249,6 +249,9 @@ float ProceduralTerrainAppearance::processHeight(Layer* layer, float x, float y,
 			if (!filter->isEnabled())
 				continue;
 
+			/*if (!(filter->getFilterType() & affectorType))
+				continue;*/
+
 			float result = filter->process(x, y, transformValue, baseValue, terrainGenerator);
 
 			int featheringType = filter->getFeatheringType();
@@ -272,7 +275,8 @@ float ProceduralTerrainAppearance::processHeight(Layer* layer, float x, float y,
 				/*if (!affector->isEnabled()) filtered in height affectors vector
 					continue;*/
 
-				affector->process(x, y, transformValue * affectorTransformValue, baseValue, terrainGenerator);
+				if (affector->isEnabled() && (affector->getAffectorType() & affectorType))
+					affector->process(x, y, transformValue * affectorTransformValue, baseValue, terrainGenerator);
 			}
 
 
@@ -282,7 +286,7 @@ float ProceduralTerrainAppearance::processHeight(Layer* layer, float x, float y,
 				Layer* layer = children->get(i);
 
 				if (layer->isEnabled()) {
-					processHeight(layer, x, y, baseValue, affectorTransformValue * transformValue);
+					processTerrain(layer, x, y, baseValue, affectorTransformValue * transformValue, affectorType);
 				}
 			}
 
@@ -291,6 +295,28 @@ float ProceduralTerrainAppearance::processHeight(Layer* layer, float x, float y,
 	}
 
 	return transformValue;
+}
+
+int ProceduralTerrainAppearance::getEnvironmentID(float x, float y) {
+	LayersGroup* layersGroup = terrainGenerator->getLayersGroup();
+
+	Vector<Layer*>* layers = layersGroup->getLayers();
+
+	float affectorTransform = 1.0;
+
+	float transformValue = 0;
+	float fullTraverse = 0;
+
+	for (int i = 0; i < layers->size(); ++i) {
+		Layer* layer = layers->get(i);
+
+		if (layer->isEnabled())
+			transformValue = processTerrain(layer, x, y, fullTraverse, affectorTransform, AffectorProceduralRule::ENVIRONMENT);
+	}
+
+	//info("full traverse height ... is " + String::valueOf(fullTraverse) + " in mili:" + String::valueOf(start.miliDifference()), true);
+
+	return fullTraverse;
 }
 
 float ProceduralTerrainAppearance::getHeight(float x, float y) {
@@ -309,7 +335,7 @@ float ProceduralTerrainAppearance::getHeight(float x, float y) {
 		Layer* layer = layers->get(i);
 
 		if (layer->isEnabled())
-			transformValue = processHeight(layer, x, y, fullTraverse, affectorTransform);
+			transformValue = processTerrain(layer, x, y, fullTraverse, affectorTransform, AffectorProceduralRule::HEIGHTTYPE);
 	}
 
 	//info("full traverse height ... is " + String::valueOf(fullTraverse) + " in mili:" + String::valueOf(start.miliDifference()), true);
