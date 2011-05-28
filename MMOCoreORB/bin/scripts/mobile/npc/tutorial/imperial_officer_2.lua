@@ -1,4 +1,4 @@
-imperial_officer_tutorial_1 = Creature:new {
+imperial_officer_tutorial_2 = Creature:new {
 	objectName = "@mob/creature_names:warren_imperial_officer",
 	socialGroup = "Imperial",
 	pvpFaction = "Imperial",
@@ -29,8 +29,8 @@ imperial_officer_tutorial_1 = Creature:new {
 	lootgroups = {},
 	weapons = {"imperial_weapons_medium"},
 	attacks = {},
-	conversationTemplate = "imperial_officer_1_conv",
+	conversationTemplate = "imperial_officer_2_conv",
 	optionsBitmask = 264
 }
 
-CreatureTemplates:addCreatureTemplate(imperial_officer_tutorial_1, "imperial_officer_tutorial_1")
+CreatureTemplates:addCreatureTemplate(imperial_officer_tutorial_2, "imperial_officer_tutorial_2")

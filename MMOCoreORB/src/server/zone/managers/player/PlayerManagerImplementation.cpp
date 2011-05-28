@@ -659,6 +659,11 @@ void PlayerManagerImplementation::createTutorialBuilding(PlayerCreature* player)
 //	cellTut->addObject(blueFrogTemplate, -1);
 
 	tutorial->insertToZone(zone);
+
+	//addPermission
+
+	tutorial->addPermission(player, player, "ADMIN");
+
 	travelTutorialTerminal->initializePosition(27.0f, -3.5f, -168.0f);
 	travelTutorialTerminal->insertToZone(zone);
 //	blueFrogTemplate->initializePosition(27.0f, -3.5f, -165.0f);

@@ -92,22 +92,22 @@ public:
 
 		//TODO: Return a usage message?
 		if (!tokenizer.hasMoreTokens())
-			return false;
+			return GENERALERROR;
 
 		String dir;
 		tokenizer.getStringToken(dir);
 
 		if (dir != "left" && dir != "right")
-			return false;
+			return GENERALERROR;
 
 		if (!tokenizer.hasMoreTokens())
-			return false;
+			return GENERALERROR;
 
 		int degrees = tokenizer.getIntToken();
 
 		if (degrees < 1 || degrees > 180) {
 			creature->sendSystemMessage("@player_structure:rotate_params"); //The amount to rotate must be between 1 and 180.
-			return false;
+			return GENERALERROR;
 		}
 
 		ZoneServer* zoneServer = creature->getZoneServer();
@@ -115,13 +115,13 @@ public:
 
 		if (obj == NULL) {
 			creature->sendSystemMessage("@player_structure:rotate_what"); //What do you want to rotate?
-			return false;
+			return GENERALERROR;
 		}
 
 		if (!player->getPlayerObject()->isPrivileged()) {
 			if (obj == NULL || obj->getRootParent() != buildingObject || (obj->isTerminal() && !obj->isVendor())) {
 				creature->sendSystemMessage("@player_structure:rotate_what"); //What do you want to rotate?
-				return false;
+				return GENERALERROR;
 
 			//TODO: clean this up
 			} else if (obj->isVendor()) {
@@ -135,11 +135,11 @@ public:
 					vendor = vendorCreature->getVendor();
 
 				} if (vendor == NULL)
-					return false;
+					return GENERALERROR;
 
 				if (vendor->isInitialized()) {
 					creature->sendSystemMessage("@player_structure:cant_move"); // You cannot move a vendor after it has been initialized
-					return false;
+					return GENERALERROR;
 				}
 			}
 		}

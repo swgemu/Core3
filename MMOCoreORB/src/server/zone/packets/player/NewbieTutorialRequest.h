@@ -85,6 +85,10 @@ public:
 			sceneObject->notifyObservers(ObserverEventType::CHAT, NULL, 0);
 		} else if (response == "closeHolocron") {
 			sceneObject->notifyObservers(ObserverEventType::NEWBIETUTORIALHOLOCRON, NULL, 0);
+		} else if (response == "openInventory") {
+			sceneObject->notifyObservers(ObserverEventType::NEWBIEOPENINVENTORY);
+		} else if (response == "closeInventory") {
+			sceneObject->notifyObservers(ObserverEventType::NEWBIECLOSEINVENTORY);
 		}
 	}
 

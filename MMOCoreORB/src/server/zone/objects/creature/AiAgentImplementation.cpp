@@ -50,6 +50,8 @@ void AiAgentImplementation::loadTemplateData(CreatureTemplate* templateData) {
 	npcTemplate = templateData;
 
 	setPvpStatusBitmask(npcTemplate->getPvpBitmask());
+
+	optionsBitmask = npcTemplate->getOptionsBitmask();
 	//npcTemplate->getCreatureBitmask(); -- TODO: need to add a bitmask for AI (pack, herd, etc)
 	level = npcTemplate->getLevel();
 
@@ -988,7 +990,51 @@ void AiAgentImplementation::sendDefaultConversationTo(SceneObject* player) {
 	if (!player->isPlayerCreature())
 		return;
 
+	faceObject(player);
+
+	PatrolPoint current(coordinates.getPosition(), parent);
+
+	broadcastNextPositionUpdate(&current);
+
 	PlayerCreature* playerCreature = (PlayerCreature*) player;
+
+	if (npcTemplate != NULL) {
+		uint32 convoTemplate = npcTemplate->getConversationTemplate();
+
+		ConversationTemplate* convo = CreatureTemplateManager::instance()->getConversationTemplate(convoTemplate);
+
+		if (convo != NULL) {
+			ConversationNode* root = convo->getRoot();
+
+			playerCreature->setLastNpcConvMessStr(root->getID());
+
+			StartNpcConversation* conv = new StartNpcConversation(playerCreature, getObjectID(), "");
+			player->sendMessage(conv);
+
+			StringIdChatParameter param(root->getLeftDialog());
+
+			NpcConversationMessage* initial = new NpcConversationMessage(playerCreature, param);
+			player->sendMessage(initial);
+
+			StringList* slist = new StringList(playerCreature);
+
+			//slist->insertOption(root->getOptionText());
+
+			Vector<Reference<ConversationNode*> >* children = root->getChildren();
+
+			//playerCreature->info("children->size(): " + String::valueOf(children->size()), true);
+
+			for (int i = 0; i < children->size(); ++i) {
+				//playerCreature->info("inserting " + children->get(i)->getOptionText(), true);
+
+				slist->insertOption(children->get(i)->getOptionText());
+			}
+
+			player->sendMessage(slist);
+
+			return;
+		}
+	}
 
 	//player->setLastNpcConvStr(("npc_" + getFu().toString()));
 	playerCreature->setLastNpcConvMessStr("0,init");
@@ -1050,6 +1096,68 @@ void AiAgentImplementation::selectConversationOption(int option, SceneObject* ob
 	PlayerCreature* player = (PlayerCreature*) obj;
 
 	String chk = player->getLastNpcConvMessStr();
+
+
+	if (npcTemplate != NULL) {
+			uint32 convoTemplate = npcTemplate->getConversationTemplate();
+
+			ConversationTemplate* convo = CreatureTemplateManager::instance()->getConversationTemplate(convoTemplate);
+
+			if (convo != NULL) {
+
+				ConversationNode* lastNode = convo->getNode(chk);
+				ConversationNode* nextNode = NULL;
+
+				if (lastNode == NULL) {
+					//info("lastNode NULL for: " + chk, true);
+					lastNode = convo->getRoot();
+					nextNode = convo->getRoot();
+				} else {
+					Vector<Reference<ConversationNode*> >* childrenT = lastNode->getChildren();
+
+					nextNode = childrenT->get(option);
+				}
+
+				Vector<Reference<ConversationNode*> >* children = nextNode->getChildren();
+				StringIdChatParameter param(nextNode->getLeftDialog());
+
+				NpcConversationMessage* response = new NpcConversationMessage(player, param);
+				player->sendMessage(response);
+
+				String optionLink = nextNode->getOptionLink();
+
+				/*if (!optionLink.isEmpty()) {
+					nextNode = convo->getNode(optionLink);
+
+					if (nextNode == NULL) {
+						nextNode = convo->getRoot();
+					}
+
+					children = nextNode->getChildren();
+				}*/
+
+				// Parse and send the options:
+				StringList* slist = new StringList(player);
+
+				while (children->size() == 0 && nextNode != convo->getRoot()) {
+					nextNode = nextNode->getParent();
+					children = nextNode->getChildren();
+				}
+
+				for (int i = 0; i < children->size(); ++i) {
+					//player->info("inserting " + children->get(i)->getOptionText(), true);
+
+					slist->insertOption(children->get(i)->getOptionText());
+				}
+
+
+				player->sendMessage(slist);
+
+				player->setLastNpcConvMessStr(nextNode->getID());
+
+				return;
+			}
+	}
 
 	if (chk != "chitchat") {
 		return;

@@ -41,6 +41,7 @@ namespace creature {
 		int sendNewbieTutorialEnableHudElement(lua_State* L);
 		int getInCellNumber(lua_State* L);
 		int sendOpenHolocronToPageMessage(lua_State* L);
+		int getTargetID(lua_State* L);
 
 	private:
 		// The pointer to the 'real object' defined in object.cc

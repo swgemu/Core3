@@ -48,6 +48,7 @@ import server.zone.objects.building.BuildingObject;
 import engine.lua.LuaObject;
 import server.zone.objects.player.PlayerCreature;
 import server.zone.objects.building.tutorial.events.UnloadBuildingTask;
+import server.zone.objects.building.tutorial.events.StartTutorialTask;
 import server.zone.Zone;
 import server.zone.objects.cell.CellObject;
 import server.zone.managers.director.DirectorManager;
@@ -75,7 +76,8 @@ class TutorialBuildingObject extends BuildingObject {
 	public void onEnter(PlayerCreature player) {
 		dequeueUnloadEvent();
 		
-		DirectorManager.instance().startScreenPlay(player, "TutorialScreenPlay");
+		StartTutorialTask task = new StartTutorialTask(player);
+		task.schedule(3000);
 	}
 	
 	public void onExit(PlayerCreature player) {

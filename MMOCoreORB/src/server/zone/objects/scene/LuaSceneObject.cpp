@@ -22,6 +22,14 @@ Luna<LuaSceneObject>::RegType LuaSceneObject::Register[] = {
 		{ "isInRangeWithObject", &LuaSceneObject::isInRangeWithObject },
 		{ "getDistanceTo", &LuaSceneObject::getDistanceTo },
 		{ "getServerObjectCRC", &LuaSceneObject::getServerObjectCRC },
+		{ "showFlyText", &LuaSceneObject::showFlyText },
+		{ "getContainerObject", &LuaSceneObject::getContainerObject },
+		{ "getContainerObjectsSize", &LuaSceneObject::getContainerObjectsSize },
+		{ "getSlottedObject", &LuaSceneObject::getSlottedObject },
+		{ "addObject", &LuaSceneObject::addObject },
+		{ "removeObject", &LuaSceneObject::removeObject },
+		{ "getGameObjectType", &LuaSceneObject::getGameObjectType },
+		{ "faceObject", &LuaSceneObject::faceObject },
 
 
 		{ 0, 0 }
@@ -83,6 +91,14 @@ int LuaSceneObject::isInRange(lua_State* L) {
 	return 1;
 }
 
+int LuaSceneObject::getGameObjectType(lua_State* L) {
+	uint32 type = realObject->getGameObjectType();
+
+	lua_pushnumber(L, type);
+
+	return 1;
+}
+
 int LuaSceneObject::getDistanceTo(lua_State* L) {
 	SceneObject* obj = (SceneObject*)lua_touserdata(L, -1);
 
@@ -99,6 +115,14 @@ int LuaSceneObject::getServerObjectCRC(lua_State* L) {
 	lua_pushnumber(L, crc);
 
 	return 1;
+}
+
+int LuaSceneObject::faceObject(lua_State* L) {
+	SceneObject* obj = (SceneObject*)lua_touserdata(L, -1);
+
+	realObject->faceObject(obj);
+
+	return 0;
 }
 
 int LuaSceneObject::isInRangeWithObject(lua_State* L) {
@@ -118,6 +142,73 @@ int LuaSceneObject::getParent(lua_State* L) {
 	lua_pushlightuserdata(L, obj);
 
 	return 1;
+}
+
+int LuaSceneObject::getContainerObject(lua_State* L) {
+	int idx = lua_tonumber(L, -1);
+
+	SceneObject* obj = realObject->getContainerObject(idx);
+
+	lua_pushlightuserdata(L, obj);
+
+	return 1;
+}
+
+int LuaSceneObject::getSlottedObject(lua_State* L) {
+	String slot = lua_tostring(L, -1);
+
+	SceneObject* obj = realObject->getSlottedObject(slot);
+
+	lua_pushlightuserdata(L, obj);
+
+	return 1;
+}
+
+int LuaSceneObject::addObject(lua_State* L) {
+	//addObject(SceneObject object, int containmentType, boolean notifyClient = false);
+
+	bool notifyClient = lua_tonumber(L, -1);
+	int containmentType = lua_tonumber(L, -2);
+	SceneObject* obj = (SceneObject*) lua_touserdata(L, -3);
+
+	realObject->addObject(obj, containmentType, notifyClient);
+
+	return 0;
+}
+
+int LuaSceneObject::removeObject(lua_State* L) {
+
+	//removeObject(SceneObject object, boolean notifyClient = false);
+
+	bool notifyClient = lua_tonumber(L, -1);
+	SceneObject* obj = (SceneObject*) lua_touserdata(L, -2);
+
+	realObject->removeObject(obj, notifyClient);
+
+	return 0;
+}
+
+int LuaSceneObject::getContainerObjectsSize(lua_State* L) {
+	int num = realObject->getContainerObjectsSize();
+
+	lua_pushnumber(L, num);
+
+	return 1;
+}
+
+int LuaSceneObject::showFlyText(lua_State* L) {
+	//final string file, final string uax, byte red, byte green, byte blue
+
+	byte blue = lua_tonumber(L, -1);
+	byte green = lua_tonumber(L, -2);
+	byte red = lua_tonumber(L, -3);
+
+	String aux = lua_tostring(L, -4);
+	String file = lua_tostring(L, -5);
+
+	realObject->showFlyText(file, aux, red, green, blue);
+
+	return 0;
 }
 
 int LuaSceneObject::wlock(lua_State* L) {

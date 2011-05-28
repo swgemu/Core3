@@ -28,7 +28,9 @@ Creature = {
 	templates = {},
 	lootgroups = {},
 	weapons = {},
-	attacks = {}
+	attacks = {},
+	conversationTemplate = "",
+	optionsBitmask = 128
 }
 
 function Creature:new (o)
@@ -52,4 +54,5 @@ function getCreatureTemplate(crc)
 	return CreatureTemplates[crc]
 end
 
+includeFile("conversation.lua")
 includeFile("serverobjects.lua")

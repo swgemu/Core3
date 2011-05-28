@@ -1655,3 +1655,4 @@ includeFile("npc/dathomir/zideera.lua")
 includeFile("npc/naboo/zogor_storm.lua")
 
 includeFile("npc/tutorial/imperial_officer_1.lua")
+includeFile("npc/tutorial/imperial_officer_2.lua")

@@ -67,10 +67,14 @@ public:
 		if (!creature->isPlayerCreature())
 			return GENERALERROR;
 
+		//creature->info("OpenContainerCommand", true);
+
 		ManagedReference<SceneObject*> objectToOpen = server->getZoneServer()->getObject(target);
 
 		if (objectToOpen == NULL)
 			return GENERALERROR;
+
+		Locker clocker(objectToOpen, creature);
 
 		if (objectToOpen->isContainerObject()) {
 			Container* container = (Container*) objectToOpen.get();
@@ -93,6 +97,7 @@ public:
 			ManagedReference<BuildingObject*> building = (BuildingObject*) objectsParent->getParent();
 
 			if (!building->isOnAdminList(creature)) {
+				//info("not on admin list", true);
 				return GENERALERROR;
 			}
 		} else if (!objectToOpen->isASubChildOf(creature)) {
@@ -100,6 +105,8 @@ public:
 		}
 
 		objectToOpen->openContainerTo((PlayerCreature*) creature);
+
+		objectToOpen->notifyObservers(ObserverEventType::OPENCONTAINER, creature);
 
 		return SUCCESS;
 	}

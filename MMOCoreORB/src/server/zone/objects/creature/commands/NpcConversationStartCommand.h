@@ -79,6 +79,8 @@ public:
 				if (creature->isInRange(object, 5)) {
 					player->setConversatingCreature(creatureObject);
 					creatureObject->sendConversationStartTo(creature);
+
+					creatureObject->notifyObservers(ObserverEventType::STARTCONVERSATION, player);
 				}
 
 			} catch (Exception& e) {

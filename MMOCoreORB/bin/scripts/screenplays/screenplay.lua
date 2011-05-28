@@ -2,12 +2,8 @@ function printf(...) io.write(string.format(unpack(arg))) end
 
 function writeData(key, data)
 	keyUnpacked = string.format(key)
-	dataUnpacked = string.format(data)
-	
-	--printf(keyUnpacked)
-	--printf(dataUnpacked)
-	
-	writeSharedMemory(keyUnpacked, dataUnpacked)
+		
+	writeSharedMemory(keyUnpacked, data)
 end
 
 function readData(key)

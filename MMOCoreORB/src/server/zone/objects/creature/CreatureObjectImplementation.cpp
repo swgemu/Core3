@@ -62,7 +62,6 @@ which carries forward this exception.
 #include "server/zone/packets/object/PostureMessage.h"
 #include "server/zone/packets/object/CommandQueueRemove.h"
 #include "server/zone/packets/object/CombatAction.h"
-#include "server/zone/packets/object/ShowFlyText.h"
 #include "server/zone/packets/player/PlayMusicMessage.h"
 #include "server/zone/packets/player/NewbieTutorialRequest.h"
 #include "server/zone/packets/ui/NewbieTutorialEnableHudElement.h"
@@ -1357,12 +1356,6 @@ void CreatureObjectImplementation::playEffect(const String& file, const String& 
 	PlayClientEffectObjectMessage* effect = new PlayClientEffectObjectMessage(_this, file, aux);
 
 	broadcastMessage(effect, true);
-}
-
-void CreatureObjectImplementation::showFlyText(const String& file, const String& aux, uint8 red, uint8 green, uint8 blue) {
-	ShowFlyText* fly = new ShowFlyText(_this, file, aux, red, green, blue);
-
-	broadcastMessage(fly, true);
 }
 
 void CreatureObjectImplementation::dismount() {

@@ -39,8 +39,15 @@ namespace scene {
 		int wlock(lua_State* L);
 		int unlock(lua_State* L);
 		int getServerObjectCRC(lua_State* L);
-
+		int showFlyText(lua_State* L);
 		int getDistanceTo(lua_State* L);
+		int getContainerObject(lua_State* L);
+		int getContainerObjectsSize(lua_State* L);
+		int getSlottedObject(lua_State* L);
+		int addObject(lua_State* L);
+		int removeObject(lua_State* L);
+		int getGameObjectType(lua_State* L);
+		int faceObject(lua_State* L);
 
 
 	private:

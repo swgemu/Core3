@@ -63,6 +63,26 @@ public:
 		if (!checkInvalidPostures(creature))
 			return INVALIDPOSTURE;
 
+		if (!creature->isPlayerCreature())
+			return GENERALERROR;
+
+		PlayerCreature* player = (PlayerCreature*) creature;
+
+		ManagedReference<CreatureObject*> object = player->getConversatingCreature();
+
+		if (object != NULL) {
+
+			try {
+				Locker clocker(object, creature);
+
+				//object->selectConversationOption(option, player);
+
+				object->notifyObservers(ObserverEventType::STOPCONVERSATION, creature);
+			} catch (Exception& e) {
+
+			}
+		}
+
 		return SUCCESS;
 	}
 

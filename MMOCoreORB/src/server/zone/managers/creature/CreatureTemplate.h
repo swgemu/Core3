@@ -11,6 +11,7 @@
 #include "engine/engine.h"
 #include "server/zone/objects/creature/variables/CreatureAttackMap.h"
 #include "server/zone/objects/creature/CreatureFlag.h"
+#include "ConversationTemplate.h"
 
 namespace server {
 namespace zone {
@@ -68,9 +69,12 @@ protected:
 	Vector<String> lootgroups;
 	Vector<String> weapons;
 	CreatureAttackMap* attacks;
+	uint32 conversationTemplate;
+	uint32 optionsBitmask;
 
 public:
 	CreatureTemplate() {
+		conversationTemplate = 0;
 		kinetic = 0;
 		energy = 0;
 		electricity = 0;
@@ -108,6 +112,7 @@ public:
 		pvpBitmask = 0;
 		creatureBitmask = 0;
 		diet = 0;
+		optionsBitmask = 0;
 
 		templates.removeAll();
 		lootgroups.removeAll();
@@ -125,6 +130,7 @@ public:
 	}
 
 	void readObject(LuaObject* templateData) {
+		conversationTemplate = String(templateData->getStringField("conversationTemplate")).hashCode();
 		meatType = templateData->getStringField("meatType");
 		boneType = templateData->getStringField("boneType");
 		hideType = templateData->getStringField("hideType");
@@ -152,6 +158,7 @@ public:
 		pvpBitmask = templateData->getIntField("pvpBitmask");
 		creatureBitmask = templateData->getIntField("creatureBitmask");
 		diet = templateData->getIntField("diet");
+		optionsBitmask = templateData->getIntField("optionsBitmask");
 
 		LuaObject res = templateData->getObjectField("resists");
 		if (res.getTableSize() == 9) {
@@ -322,6 +329,14 @@ public:
 
 	inline String getSocialGroup() {
 		return socialGroup;
+	}
+
+	inline uint32 getConversationTemplate() {
+		return conversationTemplate;
+	}
+
+	inline uint32 getOptionsBitmask() {
+		return optionsBitmask;
 	}
 
 	inline String getFaction() {

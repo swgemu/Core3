@@ -37,6 +37,8 @@ void DirectorManager::initializeLuaEngine(Lua* luaEngine) {
 	lua_register(luaEngine->getLuaState(), "spatialChat", spatialChat);
 	lua_register(luaEngine->getLuaState(), "readSharedMemory", readSharedMemory);
 	lua_register(luaEngine->getLuaState(), "writeSharedMemory", writeSharedMemory);
+	lua_register(luaEngine->getLuaState(), "spawnSceneObject", spawnSceneObject);
+	lua_register(luaEngine->getLuaState(), "getSceneObject", getSceneObject);
 
 	Luna<LuaBuildingObject>::Register(luaEngine->getLuaState());
 	Luna<LuaCreatureObject>::Register(luaEngine->getLuaState());
@@ -59,18 +61,18 @@ int DirectorManager::readSharedMemory(lua_State* L) {
 
 	DirectorManager::instance()->rlock();
 
-	String data = DirectorManager::instance()->sharedMemory.get(key);
+	uint64 data = DirectorManager::instance()->sharedMemory.get(key);
 
 	DirectorManager::instance()->runlock();
 
-	lua_pushstring(L, data);
+	lua_pushnumber(L, data);
 
 	return 1;
 }
 
 int DirectorManager::writeSharedMemory(lua_State* L) {
 	String key = lua_tostring(L, -2);
-	String data = lua_tostring(L, -1);
+	uint64 data = lua_tonumber(L, -1);
 
 	DirectorManager::instance()->wlock();
 
@@ -107,6 +109,16 @@ int DirectorManager::spatialChat(lua_State* L) {
 	return 0;
 }
 
+int DirectorManager::getSceneObject(lua_State* L) {
+	uint64 objectID = lua_tonumber(L, -1);
+	ZoneServer* zoneServer = ServerCore::getZoneServer();
+	SceneObject* object = zoneServer->getObject(objectID);
+
+	lua_pushlightuserdata(L, object);
+
+	return 1;
+}
+
 int DirectorManager::spawnMobile(lua_State* L) {
 	//int zoneid = lua_tonumber(L, -4);
 	uint64 parentID = lua_tonumber(L, -1);
@@ -131,6 +143,50 @@ int DirectorManager::spawnMobile(lua_State* L) {
 
 	return 1;
 	//public native CreatureObject spawnCreature(unsigned int templateCRC, float x, float z, float y, unsigned long parentID = 0);
+}
+
+int DirectorManager::spawnSceneObject(lua_State* L) {
+	float dz = lua_tonumber(L, -1);
+	float dy = lua_tonumber(L, -2);
+	float dx = lua_tonumber(L, -3);
+	float dw = lua_tonumber(L, -4);
+	uint64 parentID = lua_tonumber(L, -5);
+	float y = lua_tonumber(L, -6);
+	float z = lua_tonumber(L, -7);
+	float x = lua_tonumber(L, -8);
+	String script = lua_tostring(L, -9);
+	String zoneid = lua_tostring(L, -10);
+
+	ZoneServer* zoneServer = ServerCore::getZoneServer();
+	Zone* zone = zoneServer->getZone(zoneid);
+
+	ManagedReference<SceneObject*> object = zoneServer->createObject(script.hashCode(), 0);
+
+	if (object != NULL) {
+		object->initializePosition(x, z, y);
+		object->setDirection(dw, dx, dy, dz);
+
+		SceneObject* cellParent = NULL;
+
+		if (parentID != 0) {
+			cellParent = zoneServer->getObject(parentID);
+
+			if (cellParent != NULL && !cellParent->isCellObject()) {
+				//error("trying to set a parent that is not a cell to creature");
+				cellParent = NULL;
+			}
+		}
+
+		if (cellParent != NULL) {
+			cellParent->addObject(object, -1);
+		}
+
+		object->insertToZone(zone);
+	}
+
+	lua_pushlightuserdata(L, object.get());
+
+	return 1;
 }
 
 int DirectorManager::createObserver(lua_State* L) {

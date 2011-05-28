@@ -294,7 +294,8 @@ void BuildingObjectImplementation::insert(QuadTreeEntry* entry) {
 }
 
 void BuildingObjectImplementation::remove(QuadTreeEntry* entry) {
-	quadTree->remove(entry);
+	if (entry->isInQuadTree())
+		quadTree->remove(entry);
 }
 
 void BuildingObjectImplementation::update(QuadTreeEntry* entry) {

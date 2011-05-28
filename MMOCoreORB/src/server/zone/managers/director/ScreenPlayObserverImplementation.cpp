@@ -50,6 +50,7 @@ int ScreenPlayObserverImplementation::notifyObserverEvent(uint32 eventType, Obse
 	LuaFunction startScreenPlay(lua->getLuaState(), play, key, 1);
 	startScreenPlay << observable;
 	startScreenPlay << arg1;
+	startScreenPlay << arg2;
 
 	lua->callFunction(&startScreenPlay);
 

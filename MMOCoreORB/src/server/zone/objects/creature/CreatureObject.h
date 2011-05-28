@@ -550,8 +550,6 @@ public:
 
 	void playEffect(const String& file);
 
-	void showFlyText(const String& file, const String& uax, byte red, byte green, byte blue);
-
 	void activateQueueAction();
 
 	UnicodeString getCreatureName();
@@ -1205,8 +1203,6 @@ public:
 
 	void playEffect(const String& file);
 
-	void showFlyText(const String& file, const String& uax, byte red, byte green, byte blue);
-
 	void activateQueueAction();
 
 	UnicodeString getCreatureName();
@@ -1716,8 +1712,6 @@ public:
 
 	void playEffect(const String& file);
 
-	void showFlyText(const String& file, const String& uax, byte red, byte green, byte blue);
-
 	void activateQueueAction();
 
 	UnicodeString getCreatureName();
@@ -1929,8 +1923,6 @@ protected:
 	String _param0_playEffect__String_String_;
 	String _param1_playEffect__String_String_;
 	String _param0_playEffect__String_;
-	String _param0_showFlyText__String_String_byte_byte_byte_;
-	String _param1_showFlyText__String_String_byte_byte_byte_;
 	String _param0_getSkillMod__String_;
 	String _param0_hasSkillBox__String_;
 };

@@ -60,6 +60,8 @@ void RadialManagerImplementation::handleObjectMenuSelect(PlayerCreature* player,
 
 		selectedObject->info("entering radial call " + String::valueOf(selectID));
 		selectedObject->handleObjectMenuSelect(player, selectID);
+
+		selectedObject->notifyObservers(ObserverEventType::OBJECTRADIALUSED, player, selectID);
 	} catch (Exception& e) {
 		error("exception caught in void RadialManagerImplementation::handleObjectMenuSelect");
 

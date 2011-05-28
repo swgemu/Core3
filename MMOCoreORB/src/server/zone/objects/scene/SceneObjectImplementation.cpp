@@ -66,6 +66,7 @@ which carries forward this exception.
 #include "server/zone/managers/components/ComponentManager.h"
 #include "server/zone/managers/templates/TemplateManager.h"
 #include "server/zone/packets/object/ObjectMenuResponse.h"
+#include "server/zone/packets/object/ShowFlyText.h"
 
 #include "server/zone/ZoneClientSession.h"
 #include "server/zone/Zone.h"
@@ -1121,6 +1122,12 @@ void SceneObjectImplementation::getSlottedObjects(VectorMap<String, ManagedRefer
 
 void SceneObjectImplementation::setZone(Zone* zone) {
 	this->zone = zone;
+}
+
+void SceneObjectImplementation::showFlyText(const String& file, const String& aux, uint8 red, uint8 green, uint8 blue) {
+	ShowFlyText* fly = new ShowFlyText(_this, file, aux, red, green, blue);
+
+	broadcastMessage(fly, true);
 }
 
 /*SortedVector<ManagedReference<SceneObject*> >* SceneObjectImplementation::getOutdoorChildObjects() {

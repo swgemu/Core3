@@ -1,3 +1,6 @@
+-- Conversations
+includeFile("conversations.lua")
+
 -- Creatures
 includeFile("creature/serverobjects.lua") 
 includeFile("npc/serverobjects.lua") 

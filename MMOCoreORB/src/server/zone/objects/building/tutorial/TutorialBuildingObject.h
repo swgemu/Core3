@@ -45,6 +45,24 @@ using namespace server::zone::objects::building::tutorial::events;
 
 namespace server {
 namespace zone {
+namespace objects {
+namespace building {
+namespace tutorial {
+namespace events {
+
+class StartTutorialTask;
+
+} // namespace events
+} // namespace tutorial
+} // namespace building
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::building::tutorial::events;
+
+namespace server {
+namespace zone {
 
 class Zone;
 

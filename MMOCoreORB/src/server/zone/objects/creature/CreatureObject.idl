@@ -987,8 +987,6 @@ class CreatureObject extends TangibleObject {
 		playEffect(file, "");
 	}
 	
-	public native void showFlyText(final string file, final string uax, byte red, byte green, byte blue);
-	
 	public native void activateQueueAction();
 	
 	public native unicode getCreatureName();

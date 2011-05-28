@@ -24,6 +24,7 @@ Luna<LuaCreatureObject>::RegType LuaCreatureObject::Register[] = {
 		{ "getInCellNumber", &LuaCreatureObject::getInCellNumber },
 		{ "sendOpenHolocronToPageMessage", &LuaCreatureObject::sendOpenHolocronToPageMessage },
 		{ "setHAM", &LuaCreatureObject::setHAM },
+		{ "getTargetID", &LuaCreatureObject::getTargetID },
 		{ "getParent", &LuaSceneObject::getParent },
 		{ "getObjectID", &LuaSceneObject::getObjectID },
 		{ "getPositionX", &LuaSceneObject::getPositionX },
@@ -138,6 +139,14 @@ int LuaCreatureObject::setScreenPlayState(lua_State *L) {
 	realObject->setScreenPlayState(play, stateToSet | realObject->getScreenPlayState(play));
 
 	return 0;
+}
+
+int LuaCreatureObject::getTargetID(lua_State* L) {
+	uint64 targetID = realObject->getTargetID();
+
+	lua_pushnumber(L, targetID);
+
+	return 1;
 }
 
 int LuaCreatureObject::getBankCredits(lua_State *L) {

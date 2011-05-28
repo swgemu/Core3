@@ -8,6 +8,8 @@
 
 #include "server/zone/objects/building/tutorial/events/UnloadBuildingTask.h"
 
+#include "server/zone/objects/building/tutorial/events/StartTutorialTask.h"
+
 #include "server/zone/Zone.h"
 
 #include "server/zone/objects/cell/CellObject.h"
@@ -241,10 +243,13 @@ void TutorialBuildingObjectImplementation::initializeTransientMembers() {
 }
 
 void TutorialBuildingObjectImplementation::onEnter(PlayerCreature* player) {
+	Reference<StartTutorialTask*> _ref0;
 	// server/zone/objects/building/tutorial/TutorialBuildingObject.idl():  		dequeueUnloadEvent();
 	dequeueUnloadEvent();
-	// server/zone/objects/building/tutorial/TutorialBuildingObject.idl():  		DirectorManager.instance().startScreenPlay(player, "TutorialScreenPlay");
-	DirectorManager::instance()->startScreenPlay(player, "TutorialScreenPlay");
+	// server/zone/objects/building/tutorial/TutorialBuildingObject.idl():  		StartTutorialTask task = new StartTutorialTask(player);
+	StartTutorialTask* task = _ref0 = new StartTutorialTask(player);
+	// server/zone/objects/building/tutorial/TutorialBuildingObject.idl():  		task.schedule(3000);
+	task->schedule(3000);
 }
 
 void TutorialBuildingObjectImplementation::onExit(PlayerCreature* player) {

@@ -470,7 +470,7 @@ void ZoneComponent::removeFromBuilding(SceneObject* sceneObject, BuildingObject*
 	SceneObject* parent = sceneObject->getParent();
 	Zone* zone = sceneObject->getZone();
 
-	if (/*!isInQuadTree() || */!parent->isCellObject())
+	if (/*!sceneObject->isInQuadTree() || */!parent->isCellObject())
 		return;
 
 	if (building != parent->getParent()) {

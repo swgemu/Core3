@@ -32,7 +32,7 @@ namespace server {
 	class DirectorManager : public Singleton<DirectorManager>, public Object, public Logger, public ReadWriteLock {
 		ThreadLocal<Lua*> localLua;
 
-		HashTable<String, String> sharedMemory;
+		HashTable<String, uint64> sharedMemory;
 
 	public:
 		DirectorManager();
@@ -46,9 +46,11 @@ namespace server {
 		static int createEvent(lua_State* L);
 		static int createObserver(lua_State* L);
 		static int spawnMobile(lua_State* L);
+		static int spawnSceneObject(lua_State* L);
 		static int spatialChat(lua_State* L);
 		static int readSharedMemory(lua_State* L);
 		static int writeSharedMemory(lua_State* L);
+		static int getSceneObject(lua_State* L);
 
 	private:
 		void initializeLuaEngine(Lua* lua);
