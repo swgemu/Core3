@@ -184,7 +184,7 @@ void ServerCore::initialize() {
 
 	#ifndef WITH_STM
 		ObjectManager::instance()->scheduleUpdateToDatabase();
-	#elif
+	#else
 		Task* statiscticsTask = new ZoneStatisticsTask(zoneServerRef);
 		statiscticsTask->schedulePeriodic(1000, 1000);
 	#endif
