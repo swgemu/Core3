@@ -579,6 +579,10 @@ function TutorialScreenPlay:bankerStopConversation(creatureObject, playerObject)
 	
 	createEvent(1000, "TutorialScreenPlay", "activateBankUseCheck", playerObject)
 	createEvent(1000, "TutorialScreenPlay", "activateBazaarUseCheck", playerObject)
+	
+	createObserver(18, "TutorialScreenPlay", "activateBankTargetCheck", creatureObject)
+	createObserver(18, "TutorialScreenPlay", "activateBazaarTargetCheck", creatureObject)
+	
 	return 1
 end
 
@@ -594,7 +598,6 @@ function TutorialScreenPlay:activateBankUseCheck(creatureObject)
 	
 	if state == 0 then
 		createEvent(2000, "TutorialScreenPlay", "activateBankUseCheck", creatureObject)
-		createObserver(18, "TutorialScreenPlay", "activateBankTargetCheck", creatureObject)
 		return
 	end
 
@@ -612,7 +615,6 @@ function TutorialScreenPlay:activateBazaarUseCheck(creatureObject)
 	
 	if state == 0 then
 		createEvent(2000, "TutorialScreenPlay", "activateBazaarUseCheck", creatureObject)
-		createObserver(18, "TutorialScreenPlay", "activateBazaarTargetCheck", creatureObject)
 		return
 	end
 
