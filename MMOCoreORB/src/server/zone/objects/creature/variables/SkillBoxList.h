@@ -72,8 +72,8 @@ public:
 
 	bool containsSkillBox(const String& skillBox);
 
-	bool toString(String& str);
-	bool parseFromString(const String& str, int version = 0);
+	/*bool toString(String& str);
+	bool parseFromString(const String& str, int version = 0);*/
 
 	bool toBinaryStream(ObjectOutputStream* stream);
 	bool parseFromBinaryStream(ObjectInputStream* stream);

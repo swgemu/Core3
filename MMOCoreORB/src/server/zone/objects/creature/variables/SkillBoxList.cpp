@@ -36,15 +36,16 @@ void SkillBoxList::getStringList(Vector<String>& skillBoxes) {
 	}
 }
 
-bool SkillBoxList::toString(String& str) {
+/*bool SkillBoxList::toString(String& str) {
 	Vector<String> names;
 	getStringList(names);
 
 	TypeInfo<uint32>::toString(&updateCounter, str);
+
 	names.toString(str);
 
 	return true;
-}
+}*/
 
 bool SkillBoxList::toBinaryStream(ObjectOutputStream* stream) {
 	Vector<String> names;
@@ -57,7 +58,7 @@ bool SkillBoxList::toBinaryStream(ObjectOutputStream* stream) {
 }
 
 
-bool SkillBoxList::parseFromString(const String& str, int version) {
+/*bool SkillBoxList::parseFromString(const String& str, int version) {
 	Vector<String> skillBoxes;
 
 	TypeInfo<uint32>::parseFromString(&updateCounter, str, version);
@@ -66,7 +67,7 @@ bool SkillBoxList::parseFromString(const String& str, int version) {
 	loadFromNames(skillBoxes);
 
 	return true;
-}
+}*/
 
 bool SkillBoxList::parseFromBinaryStream(ObjectInputStream* stream) {
 	Vector<String> skillBoxes;

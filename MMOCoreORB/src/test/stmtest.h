@@ -116,7 +116,7 @@ void testTransactions() {
 
 	printf("creating objects\n");
 
-	for (int i = 0; i < 100000; ++i)
+	for (int i = 0; i < 10000; ++i)
 		references.add(new TestClass(1));
 
 	printf("adding tasks\n");

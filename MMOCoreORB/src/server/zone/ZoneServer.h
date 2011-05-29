@@ -540,7 +540,7 @@ class ZoneServerImplementation : public ManagedServiceImplementation, public Log
 
 	ManagedReference<ZoneProcessServer* > processor;
 
-	VectorMap<String, ManagedReference<Zone* > > zones;
+	Reference<VectorMap<String, ManagedReference<Zone* > >* > zones;
 
 	Reference<ObjectManager* > objectManager;
 

@@ -80,7 +80,6 @@ class Zone extends ManagedObject {
 	
 	private transient ZoneProcessServer processor;
 
-	@dereferenced
 	private ObjectMap objectMap;
 
 	private PlanetManager planetManager;

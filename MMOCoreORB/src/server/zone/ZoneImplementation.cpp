@@ -73,6 +73,8 @@ ZoneImplementation::ZoneImplementation(ZoneProcessServer* serv, const String& na
 	regionTree = new QuadTree(-8192, -8192, 8192, 8192);
 	quadTree = new QuadTree(-8192, -8192, 8192, 8192);
 
+	objectMap = new ObjectMap();
+
 	mapLocations = new MapLocationTable();
 
 	managersStarted = false;
@@ -265,7 +267,7 @@ void ZoneImplementation::updateActiveAreas(SceneObject* object) {
 }
 
 void ZoneImplementation::addSceneObject(SceneObject* object) {
-	objectMap.put(object->getObjectID(), object);
+	objectMap->put(object->getObjectID(), object);
 	registerObjectWithPlanetaryMap(object);
 }
 
@@ -281,7 +283,7 @@ void ZoneImplementation::unregisterObjectWithPlanetaryMap(SceneObject* object) {
 }
 
 void ZoneImplementation::dropSceneObject(SceneObject* object)  {
-	objectMap.remove(object->getObjectID());
+	objectMap->remove(object->getObjectID());
 	unregisterObjectWithPlanetaryMap(object);
 }
 

@@ -565,7 +565,7 @@ bool ZoneImplementation::readObjectMember(ObjectInputStream* stream, const Strin
 	}
 
 	if (_name == "objectMap") {
-		TypeInfo<ObjectMap >::parseFromBinaryStream(&objectMap, stream);
+		TypeInfo<Reference<ObjectMap* > >::parseFromBinaryStream(&objectMap, stream);
 		return true;
 	}
 
@@ -634,7 +634,7 @@ int ZoneImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
-	TypeInfo<ObjectMap >::toBinaryStream(&objectMap, stream);
+	TypeInfo<Reference<ObjectMap* > >::toBinaryStream(&objectMap, stream);
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 

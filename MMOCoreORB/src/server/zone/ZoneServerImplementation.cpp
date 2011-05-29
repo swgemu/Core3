@@ -162,6 +162,8 @@ void ZoneServerImplementation::initialize() {
 	processor->deploy("ZoneProcessServer");
 	processor->initialize();
 
+	zones = new VectorMap<String, ManagedReference<Zone* > >();
+
 	objectManager = ObjectManager::instance();
 	objectManager->setZoneProcessor(processor);
 	objectManager->updateObjectVersion();
@@ -217,7 +219,7 @@ void ZoneServerImplementation::startZones() {
 		zone->_setObjectID(~0 - i);
 		zone->deploy("Zone " + zoneName);
 
-		zones.put(zoneName, zone);
+		zones->put(zoneName, zone);
 
 		zone->startManagers();
 	}
@@ -289,7 +291,7 @@ void ZoneServerImplementation::shutdown() {
 	info("shutting down zones", true);
 
 	for (int i = 0; i < 45; ++i) {
-		Zone* zone = zones.get(i);
+		ManagedReference<Zone*> zone = zones->get(i);
 
 		if (zone != NULL) {
 			zone->stopManagers();
@@ -297,7 +299,7 @@ void ZoneServerImplementation::shutdown() {
 		}
 	}
 
-	zones.removeAll();
+	zones->removeAll();
 
 	info("zones shut down", true);
 
@@ -533,8 +535,8 @@ void ZoneServerImplementation::printInfo(bool forcedLog) {
 
 	int totalCreatures = 0;
 
-	for (int i = 0; i < zones.size(); ++i) {
-		Zone* zone = zones.get(i);
+	for (int i = 0; i < zones->size(); ++i) {
+		ManagedReference<Zone*> zone = zones->get(i);
 
 		if (zone != NULL) {
 			CreatureManager* manager = zone->getCreatureManager();

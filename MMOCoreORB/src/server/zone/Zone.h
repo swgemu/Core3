@@ -277,7 +277,7 @@ class ZoneImplementation : public ManagedObjectImplementation {
 
 	ManagedReference<ZoneProcessServer* > processor;
 
-	ObjectMap objectMap;
+	Reference<ObjectMap* > objectMap;
 
 	ManagedReference<PlanetManager* > planetManager;
 

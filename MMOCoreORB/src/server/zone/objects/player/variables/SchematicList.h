@@ -38,8 +38,8 @@ public:
 	bool contains(Vector<ManagedReference<DraftSchematic* > > filteredschematics, DraftSchematic* schematic);
 	DraftSchematic* searchForDuplicate(Vector<ManagedReference<DraftSchematic* > > filteredschematics, DraftSchematic* schematic);
 
-	bool toString(String& str);
-	bool parseFromString(const String& str, int version = 0);
+	/*bool toString(String& str);
+	bool parseFromString(const String& str, int version = 0);*/
 
 	bool toBinaryStream(ObjectOutputStream* stream);
 	bool parseFromBinaryStream(ObjectInputStream* stream);

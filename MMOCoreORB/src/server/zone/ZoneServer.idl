@@ -99,7 +99,6 @@ class ZoneServer extends ManagedService implements Logger {
 	
 	private transient ZoneProcessServer processor;
 
-	@dereferenced
 	private VectorMap<string, Zone> zones;
 	
 	private transient ObjectManager objectManager;

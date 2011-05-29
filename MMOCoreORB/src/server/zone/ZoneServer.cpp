@@ -1031,7 +1031,7 @@ bool ZoneServerImplementation::readObjectMember(ObjectInputStream* stream, const
 		return true;
 
 	if (_name == "zones") {
-		TypeInfo<VectorMap<String, ManagedReference<Zone* > > >::parseFromBinaryStream(&zones, stream);
+		TypeInfo<Reference<VectorMap<String, ManagedReference<Zone* > >* > >::parseFromBinaryStream(&zones, stream);
 		return true;
 	}
 
@@ -1169,7 +1169,7 @@ int ZoneServerImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
-	TypeInfo<VectorMap<String, ManagedReference<Zone* > > >::toBinaryStream(&zones, stream);
+	TypeInfo<Reference<VectorMap<String, ManagedReference<Zone* > >* > >::toBinaryStream(&zones, stream);
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
@@ -1406,17 +1406,17 @@ int ZoneServerImplementation::getServerState() {
 
 Zone* ZoneServerImplementation::getZone(const String& terrainName) {
 	// server/zone/ZoneServer.idl():  		return zones.get(terrainName);
-	return (&zones)->get(terrainName);
+	return zones->get(terrainName);
 }
 
 Zone* ZoneServerImplementation::getZone(int idx) {
 	// server/zone/ZoneServer.idl():  		return zones.get(idx);
-	return (&zones)->get(idx);
+	return zones->get(idx);
 }
 
 int ZoneServerImplementation::getZoneCount() {
 	// server/zone/ZoneServer.idl():  		return zones.size();
-	return (&zones)->size();
+	return zones->size();
 }
 
 int ZoneServerImplementation::getMaxPlayers() {

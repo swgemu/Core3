@@ -11,7 +11,7 @@
 #include "server/ServerCore.h"
 #include "server/zone/managers/crafting/CraftingManager.h"
 
-bool SchematicList::toString(String& str) {
+/*bool SchematicList::toString(String& str) {
 	Vector<ManagedReference<DraftSchematic*> > schematics;
 	getLimitedUseSchematicList(schematics);
 
@@ -19,7 +19,7 @@ bool SchematicList::toString(String& str) {
 	schematics.toString(str);
 
 	return true;
-}
+}*/
 
 bool SchematicList::toBinaryStream(ObjectOutputStream* stream) {
 	Vector<ManagedReference<DraftSchematic*> > schematics;
@@ -32,7 +32,7 @@ bool SchematicList::toBinaryStream(ObjectOutputStream* stream) {
 }
 
 
-bool SchematicList::parseFromString(const String& str, int version) {
+/*bool SchematicList::parseFromString(const String& str, int version) {
 	Vector<ManagedReference<DraftSchematic*> > schematics;
 
 	TypeInfo<DraftSchematic*>::parseFromString(&updateCounter, str, version);
@@ -41,7 +41,7 @@ bool SchematicList::parseFromString(const String& str, int version) {
 	loadLimitedUseSchematics(schematics);
 
 	return true;
-}
+}*/
 
 bool SchematicList::parseFromBinaryStream(ObjectInputStream* stream) {
 	Vector<ManagedReference<DraftSchematic*> > schematics;
