@@ -260,7 +260,7 @@ ResourceContainer* ResourceSpawnImplementation::createResource(int units) {
 
    	if(newResource == NULL) {
    		error("Unable to create resource container, using generic.  CRC attempted was: " + String::valueOf(containerCRC));
-
+   		print();
    		String genericContainer = "object/resource_container/organic_food.iff";
    		newResource = dynamic_cast<ResourceContainer*>(getZoneServer()->createObject(genericContainer.hashCode(), 2));
    	}
