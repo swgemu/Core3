@@ -31,7 +31,6 @@ namespace server {
 
 	class DirectorManager : public Singleton<DirectorManager>, public Object, public Logger, public ReadWriteLock {
 		ThreadLocal<Lua*> localLua;
-		bool reload;
 
 		HashTable<String, uint64> sharedMemory;
 

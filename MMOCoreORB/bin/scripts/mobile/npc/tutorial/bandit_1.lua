@@ -1,5 +1,5 @@
 bandit_tutorial_1 = Creature:new {
-	objectName = "@mob/creature_names:warren_imperial_officer",
+	objectName = "@mob/creature_names:bandit",
 	socialGroup = "Imperial",
 	pvpFaction = "Imperial",
 	faction = "imperial",
@@ -8,7 +8,7 @@ bandit_tutorial_1 = Creature:new {
 	damageMin = 5,
 	damageMax = 10,
 	baseXp = 100,
-	baseHAM = 20,
+	baseHAM = 300,
 	baseHAMmax = 400,
 	armor = 0,
 	resists = {-1,-1,-1,-1,-1,-1,-1,-1,-1},

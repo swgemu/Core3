@@ -1,5 +1,5 @@
-panic_npc_1 = Creature:new {
-	objectName = "@mob/creature_names:commoner",
+stormtrooper_filler_tutorial = Creature:new {
+	objectName = "@mob/creature_names:stormtrooper",
 	socialGroup = "Imperial",
 	pvpFaction = "Imperial",
 	faction = "imperial",
@@ -25,12 +25,12 @@ panic_npc_1 = Creature:new {
 	creatureBitmask = NONE,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_commoner_tatooine_bith_male_05.iff"},
+	templates = {"object/mobile/dressed_stormtrooper_m.iff"},
 	lootgroups = {},
-	weapons = {"imperial_weapons_medium"},
+	weapons = {},
 	attacks = {},
 	conversationTemplate = "",
 	optionsBitmask = 0
 }
 
-CreatureTemplates:addCreatureTemplate(panic_npc_1, "panic_npc_1")
+CreatureTemplates:addCreatureTemplate(stormtrooper_filler_tutorial, "stormtrooper_filler_tutorial")

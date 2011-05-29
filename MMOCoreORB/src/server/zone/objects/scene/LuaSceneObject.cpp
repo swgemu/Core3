@@ -21,6 +21,7 @@ Luna<LuaSceneObject>::RegType LuaSceneObject::Register[] = {
 		{ "getParentID", &LuaSceneObject::getParentID },
 		{ "isInRangeWithObject", &LuaSceneObject::isInRangeWithObject },
 		{ "getDistanceTo", &LuaSceneObject::getDistanceTo },
+		{ "updateDirection", &LuaSceneObject::updateDirection },
 		{ "getServerObjectCRC", &LuaSceneObject::getServerObjectCRC },
 		{ "showFlyText", &LuaSceneObject::showFlyText },
 		{ "getContainerObject", &LuaSceneObject::getContainerObject },
@@ -207,6 +208,19 @@ int LuaSceneObject::showFlyText(lua_State* L) {
 	String file = lua_tostring(L, -5);
 
 	realObject->showFlyText(file, aux, red, green, blue);
+
+	return 0;
+}
+
+int LuaSceneObject::updateDirection(lua_State* L) {
+	//void updateDirection(float fw, float fx, float fy, float fz);
+
+	float fz = lua_tonumber(L, -1);
+	float fy = lua_tonumber(L, -2);
+	float fx = lua_tonumber(L, -3);
+	float fw = lua_tonumber(L, -4);
+
+	realObject->updateDirection(fw, fx, fy, fz);
 
 	return 0;
 }

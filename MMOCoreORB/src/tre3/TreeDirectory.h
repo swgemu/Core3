@@ -17,6 +17,19 @@ public:
 		setNoDuplicateInsertPlan();
 	}
 
+	TreeDirectory(const TreeDirectory& d) : SortedVector<Reference<TreeFileRecord*> >(d) {
+		setNoDuplicateInsertPlan();
+	}
+
+	TreeDirectory& operator=(const TreeDirectory& d) {
+		if (this == &d)
+			return *this;
+
+		SortedVector<Reference<TreeFileRecord*> >::operator=(d);
+
+		return *this;
+	}
+
 	int compare(Reference<TreeFileRecord*>& o1, const Reference<TreeFileRecord*>& o2) const {
 		return o1->compareTo(*o2.get());
 	}

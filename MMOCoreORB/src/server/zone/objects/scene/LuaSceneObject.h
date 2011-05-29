@@ -49,6 +49,7 @@ namespace scene {
 		int getGameObjectType(lua_State* L);
 		int faceObject(lua_State* L);
 		int removeFromZone(lua_State* L);
+		int updateDirection(lua_State* L);
 
 
 	private:

@@ -21,7 +21,7 @@ DirectorManager::DirectorManager() : Logger("DirectorManager") {
 
 	getLuaInstance();
 
-	reload = true;
+	sharedMemory.setNullValue(0);
 }
 
 void DirectorManager::initializeLuaEngine(Lua* luaEngine) {

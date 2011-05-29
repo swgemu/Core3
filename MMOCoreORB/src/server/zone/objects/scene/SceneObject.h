@@ -834,6 +834,8 @@ public:
 
 	void teleport(float newPositionX, float newPositionZ, float newPositionY, unsigned long long parentID = 0);
 
+	void updateDirection(float fw, float fx, float fy, float fz);
+
 	void notifyInsert(QuadTreeEntry* entry);
 
 	void notifyDissapear(QuadTreeEntry* entry);
@@ -1894,6 +1896,8 @@ public:
 
 	virtual void teleport(float newPositionX, float newPositionZ, float newPositionY, unsigned long long parentID = 0);
 
+	void updateDirection(float fw, float fx, float fy, float fz);
+
 	void notifyInsert(QuadTreeEntry* entry);
 
 	void notifyDissapear(QuadTreeEntry* entry);
@@ -2376,6 +2380,8 @@ public:
 	void switchZone(const String& newTerrainName, float newPostionX, float newPositionZ, float newPositionY, unsigned long long parentID);
 
 	void teleport(float newPositionX, float newPositionZ, float newPositionY, unsigned long long parentID);
+
+	void updateDirection(float fw, float fx, float fy, float fz);
 
 	void removeFromZone();
 

@@ -794,6 +794,12 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	
 	public native abstract void teleport(float newPositionX, float newPositionZ, float newPositionY, unsigned long parentID = 0);
 	
+	
+	/**
+	 * Updates the direction of this object, and braodcasts DataTransform with the update 
+	 */
+	public native void updateDirection(float fw, float fx, float fy, float fz);
+	
 	@local
 	public void notifyInsert(QuadTreeEntry entry) {
 		zoneComponent.notifyInsert(this, entry);

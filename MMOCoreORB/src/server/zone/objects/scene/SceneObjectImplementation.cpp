@@ -803,6 +803,20 @@ void SceneObjectImplementation::insertToBuilding(BuildingObject* building) {
 	zoneComponent->insertToBuilding(_this, building);
 }
 
+void SceneObjectImplementation::updateDirection(float fw, float fx, float fy, float fz) {
+	setDirection(fw, fx, fy, fz);
+
+	++movementCounter;
+
+	if (parent != NULL) {
+		DataTransformWithParent* pack = new DataTransformWithParent(_this);
+		broadcastMessage(pack, true, true);
+	} else {
+		DataTransform* pack = new DataTransform(_this);
+		broadcastMessage(pack, true, true);
+	}
+}
+
 void SceneObjectImplementation::removeFromZone() {
 	zoneComponent->removeFromZone(_this);
 }

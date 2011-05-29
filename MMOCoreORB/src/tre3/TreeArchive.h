@@ -13,7 +13,7 @@
 #include "TreeDirectory.h"
 
 class TreeArchive : public Logger {
-	VectorMap<String, TreeDirectory> nodeMap;
+	VectorMap<String, Reference<TreeDirectory*> > nodeMap;
 
 public:
 	TreeArchive() {
@@ -38,11 +38,11 @@ public:
 			record->setRecordName(fileName);
 
 			if (nodeMap.contains(dir)) {
-				TreeDirectory* records = &nodeMap.get(dir);
+				TreeDirectory* records = nodeMap.get(dir);
 				records->put(record);
 			} else {
-				TreeDirectory records;
-				records.put(record);
+				TreeDirectory* records = new TreeDirectory();
+				records->put(record);
 
 				nodeMap.put(dir, records);
 			}
@@ -52,7 +52,7 @@ public:
 	}
 
 	TreeDirectory* getTreeDirectory(const String& path) {
-		return &nodeMap.get(path);
+		return nodeMap.get(path);
 	}
 
 	/**
@@ -69,7 +69,7 @@ public:
 		String dir = recordPath.subString(0, pos);
 		String fileName = recordPath.subString(pos+1, recordPath.length());
 
-		TreeDirectory* treeDir = &nodeMap.get(dir);
+		TreeDirectory* treeDir = nodeMap.get(dir);
 		int idx = treeDir->find(fileName);
 
 		if (idx == -1) {
@@ -87,7 +87,7 @@ public:
 		if (!nodeMap.contains(path))
 			return NULL;
 
-		return &nodeMap.get(path);
+		return nodeMap.get(path);
 	}
 };
 
