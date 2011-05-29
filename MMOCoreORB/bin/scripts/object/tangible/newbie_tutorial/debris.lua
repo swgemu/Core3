@@ -42,7 +42,8 @@
 
 
 object_tangible_newbie_tutorial_debris = object_tangible_newbie_tutorial_shared_debris:new {
-
+	pvpStatusBitmask = ATTACKABLE,
+	optionsBitmask = 0
 }
 
 ObjectTemplates:addTemplate(object_tangible_newbie_tutorial_debris, "object/tangible/newbie_tutorial/debris.iff")

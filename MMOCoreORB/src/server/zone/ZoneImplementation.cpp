@@ -186,7 +186,8 @@ void ZoneImplementation::insert(QuadTreeEntry* entry) {
 void ZoneImplementation::remove(QuadTreeEntry* entry) {
 	Locker locker(_this);
 
-	quadTree->remove(entry);
+	if (entry->isInQuadTree())
+		quadTree->remove(entry);
 }
 
 void ZoneImplementation::update(QuadTreeEntry* entry) {

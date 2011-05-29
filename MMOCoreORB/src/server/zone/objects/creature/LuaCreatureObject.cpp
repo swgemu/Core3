@@ -20,11 +20,16 @@ Luna<LuaCreatureObject>::RegType LuaCreatureObject::Register[] = {
 		{ "sendNewbieTutorialRequest", &LuaCreatureObject::sendNewbieTutorialRequest },
 		{ "hasScreenPlayState", &LuaCreatureObject::hasScreenPlayState },
 		{ "setScreenPlayState", &LuaCreatureObject::setScreenPlayState },
+		{ "playEffect", &LuaCreatureObject::playEffect },
 		{ "sendNewbieTutorialEnableHudElement", &LuaCreatureObject::sendNewbieTutorialEnableHudElement },
 		{ "getInCellNumber", &LuaCreatureObject::getInCellNumber },
 		{ "sendOpenHolocronToPageMessage", &LuaCreatureObject::sendOpenHolocronToPageMessage },
+		{ "inflictDamage", &LuaCreatureObject::inflictDamage },
 		{ "setHAM", &LuaCreatureObject::setHAM },
+		{ "getHAM", &LuaCreatureObject::getHAM },
+		{ "getMaxHAM", &LuaCreatureObject::getMaxHAM },
 		{ "getTargetID", &LuaCreatureObject::getTargetID },
+		{ "clearCombatState", &LuaCreatureObject::clearCombatState },
 		{ "getParent", &LuaSceneObject::getParent },
 		{ "getObjectID", &LuaSceneObject::getObjectID },
 		{ "getPositionX", &LuaSceneObject::getPositionX },
@@ -147,6 +152,57 @@ int LuaCreatureObject::getTargetID(lua_State* L) {
 	lua_pushnumber(L, targetID);
 
 	return 1;
+}
+
+int LuaCreatureObject::clearCombatState(lua_State* L) {
+	bool clearDef = lua_tonumber(L, -1);
+
+	realObject->clearCombatState(clearDef);
+
+	return 0;
+}
+
+int LuaCreatureObject::getHAM(lua_State* L) {
+	int type = lua_tonumber(L, -1);
+
+	int value = realObject->getHAM(type);
+
+	lua_pushnumber(L, value);
+
+	return 1;
+}
+
+int LuaCreatureObject::getMaxHAM(lua_State* L) {
+	int type = lua_tonumber(L, -1);
+
+	int value = realObject->getMaxHAM(type);
+
+	lua_pushnumber(L, value);
+
+	return 1;
+}
+
+int LuaCreatureObject::inflictDamage(lua_State* L) {
+ //int inflictDamage(TangibleObject attacker, int damageType, int damage, boolean destroy, boolean notifyClient = true);
+	int destroy = lua_tonumber(L, -1);
+	int damage = lua_tonumber(L, -2);
+	int damageType = lua_tonumber(L, -3);
+	TangibleObject* attacker = (TangibleObject*) lua_touserdata(L, -4);
+
+	realObject->inflictDamage(attacker, damageType, damage, destroy);
+
+	return 0;
+}
+
+int LuaCreatureObject::playEffect(lua_State* L) {
+	//public native void playEffect(final string file, final string aux);
+
+	String aux = lua_tostring(L, -1);
+	String file = lua_tostring(L, -2);
+
+	realObject->playEffect(file, aux);
+
+	return 0;
 }
 
 int LuaCreatureObject::getBankCredits(lua_State *L) {

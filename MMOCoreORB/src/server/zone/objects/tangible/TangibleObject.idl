@@ -53,6 +53,7 @@ import server.zone.packets.scene.AttributeListMessage;
 import server.zone.objects.player.PlayerCreature;
 import server.zone.Zone;
 import server.zone.objects.creature.CreatureObject;
+include server.zone.objects.creature.CreatureFlag;
 import server.zone.objects.manufactureschematic.ManufactureSchematic;
 import server.zone.objects.factorycrate.FactoryCrate;
 
@@ -309,7 +310,7 @@ class TangibleObject extends SceneObject {
 	 * @return returns true if the creature object can attack this 
 	 */
 	public abstract boolean isAttackableBy(CreatureObject object) {
-		return false;
+		return pvpStatusBitmask & CreatureFlag.ATTACKABLE;
 	}
 	
 	/**

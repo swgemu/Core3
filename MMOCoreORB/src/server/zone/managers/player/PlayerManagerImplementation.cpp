@@ -641,9 +641,9 @@ void PlayerManagerImplementation::createTutorialBuilding(PlayerCreature* player)
 	BuildingObject* tutorial = (BuildingObject*) server->createObject(tut.hashCode(), 1);
 	tutorial->createCellObjects();
 
-	int totalCellNumber = tutorial->getTotalCellNumber();
+	/*int totalCellNumber = tutorial->getTotalCellNumber();
 
-	info("totalCellNumber " + String::valueOf(totalCellNumber), true);
+	info("totalCellNumber " + String::valueOf(totalCellNumber), true);*/
 
 	tutorial->initializePosition(System::random(5000), 0, System::random(5000));
 

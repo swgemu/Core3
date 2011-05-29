@@ -206,8 +206,13 @@ int CombatManager::doCombatAction(CreatureObject* attacker, TangibleObject* defe
 	if (!effect.isEmpty())
 		attacker->playEffect(effect);
 
-	if (hit == 1)
+	if (hit == 1) {
 		attacker->updateLastSuccessfulCombatAction();
+
+		Locker clocker(defenderObject, attacker);
+
+		defenderObject->notifyObservers(ObserverEventType::DAMAGERECEIVED, attacker, damage);
+	}
 
 	return damage;
 }

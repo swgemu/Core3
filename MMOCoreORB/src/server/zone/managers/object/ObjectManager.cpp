@@ -203,6 +203,7 @@ void ObjectManager::registerObjectTypes() {
 	objectFactory.registerObject<MissionObject>(SceneObject::MISSIONOBJECT);
 
 	objectFactory.registerObject<Terminal>(SceneObject::TERMINAL);
+	objectFactory.registerObject<Terminal>(SceneObject::INSURANCE);
 	objectFactory.registerObject<SpaceshipTerminal>(SceneObject::SPACETERMINAL);
 	objectFactory.registerObject<Terminal>(SceneObject::SHIPPINGTERMINAL);
 	objectFactory.registerObject<Terminal>(SceneObject::INTERACTIVETERMINAL);

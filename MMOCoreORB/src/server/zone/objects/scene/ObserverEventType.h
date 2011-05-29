@@ -29,12 +29,13 @@ public:
 	const static int OBJECTINRANGEMOVED = 17; //ManagedObject arg1 = MovedObject, long arg2 = 0
 	const static int PLAYERCHANGEDTARGET = 18; //ManagedObject arg1 = newTarget, long arg2 = 0
 	const static int STARTCONVERSATION = 19; //ManagedObject arg1 = playerThatStartedConvo , long arg2 = 0
-	const static int SELECTCONVERSATION = 20; //ManagedObject arg1 = playerThatSelectedConvo , long arg2 = 0
+	const static int SELECTCONVERSATION = 20; //ManagedObject arg1 = playerThatSelectedConvo , long arg2 = option
 	const static int STOPCONVERSATION = 21; //ManagedObject arg1 = playerThatStoppedConvo , long arg2 = 0
 	const static int OPENCONTAINER = 22; //ManagedObject arg1 = creature that opened container , long arg2 = 0
 	const static int NEWBIEOPENINVENTORY = 23; //ManagedObject arg1 = null, long arg2 = 0
 	const static int NEWBIECLOSEINVENTORY = 24; //ManagedObject arg1 = null, long arg2 = 0
 	const static int OBJECTRADIALUSED = 25; //ManagedObject arg1 = player that used the radial, long arg2 = radial selected id
+	const static int DAMAGERECEIVED = 26; //ManagedObject arg1 = object that is doing the damage, long arg2 = damage did
 };
 
 #endif /* OBSERVEREVENTTYPES_H_ */

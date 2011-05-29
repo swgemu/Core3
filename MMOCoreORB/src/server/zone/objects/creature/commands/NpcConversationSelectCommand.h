@@ -81,7 +81,7 @@ public:
 
 				object->selectConversationOption(option, player);
 
-				object->notifyObservers(ObserverEventType::SELECTCONVERSATION, creature);
+				object->notifyObservers(ObserverEventType::SELECTCONVERSATION, creature, option);
 			} catch (Exception& e) {
 
 			}

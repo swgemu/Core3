@@ -77,7 +77,7 @@ public:
 
 		Locker locker(sceneObject);
 
-		sceneObject->info("received response: " + response, true);
+		//sceneObject->info("received response: " + response, true);
 
 		if (response == "zoomCamera") {
 			sceneObject->notifyObservers(ObserverEventType::NEWBIETUTORIALZOOMCAMERA, NULL, 0);

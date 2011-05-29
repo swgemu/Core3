@@ -73,6 +73,7 @@
 #include "server/zone/objects/tangible/wearables/ArmorObject.h"
 #include "server/zone/objects/tangible/weapon/WeaponObject.h"
 #include "server/zone/objects/creature/CreatureState.h"
+#include "server/zone/objects/creature/CreatureFlag.h"
 
 #include "server/zone/templates/appearance/PortalLayout.h"
 #include "server/zone/templates/appearance/AppearanceRedirect.h"
@@ -419,6 +420,15 @@ void TemplateManager::registerGlobals() {
 	luaTemplatesInstance->setGlobalInt("LIGHT", WeaponObject::LIGHT);
 	luaTemplatesInstance->setGlobalInt("MEDIUM", WeaponObject::MEDIUM);
 	luaTemplatesInstance->setGlobalInt("HEAVY", WeaponObject::HEAVY);
+
+	luaTemplatesInstance->setGlobalInt("ATTACKABLE", CreatureFlag::ATTACKABLE);
+	luaTemplatesInstance->setGlobalInt("AGGRESSIVE", CreatureFlag::AGGRESSIVE);
+	luaTemplatesInstance->setGlobalInt("OVERT", CreatureFlag::OVERT);
+	luaTemplatesInstance->setGlobalInt("TEF", CreatureFlag::TEF);
+	luaTemplatesInstance->setGlobalInt("PLAYER", CreatureFlag::PLAYER);
+	luaTemplatesInstance->setGlobalInt("ENEMY", CreatureFlag::ENEMY);
+	luaTemplatesInstance->setGlobalInt("CHANGEFACTIONSTATUS", CreatureFlag::CHANGEFACTIONSTATUS);
+	luaTemplatesInstance->setGlobalInt("BLINK_GREEN", CreatureFlag::BLINK_GREEN);
 
 	luaTemplatesInstance->setGlobalInt("MELEEATTACK", WeaponObject::MELEEATTACK);
 	luaTemplatesInstance->setGlobalInt("RANGEDATTACK", WeaponObject::RANGEDATTACK);

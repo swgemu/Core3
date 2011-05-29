@@ -30,7 +30,7 @@ Luna<LuaSceneObject>::RegType LuaSceneObject::Register[] = {
 		{ "removeObject", &LuaSceneObject::removeObject },
 		{ "getGameObjectType", &LuaSceneObject::getGameObjectType },
 		{ "faceObject", &LuaSceneObject::faceObject },
-
+		{ "removeFromZone", &LuaSceneObject::removeFromZone },
 
 		{ 0, 0 }
 };
@@ -207,6 +207,12 @@ int LuaSceneObject::showFlyText(lua_State* L) {
 	String file = lua_tostring(L, -5);
 
 	realObject->showFlyText(file, aux, red, green, blue);
+
+	return 0;
+}
+
+int LuaSceneObject::removeFromZone(lua_State* L) {
+	realObject->removeFromZone();
 
 	return 0;
 }

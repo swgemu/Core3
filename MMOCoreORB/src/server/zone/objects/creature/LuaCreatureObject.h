@@ -42,6 +42,11 @@ namespace creature {
 		int getInCellNumber(lua_State* L);
 		int sendOpenHolocronToPageMessage(lua_State* L);
 		int getTargetID(lua_State* L);
+		int clearCombatState(lua_State* L);
+		int getHAM(lua_State* L);
+		int getMaxHAM(lua_State* L);
+		int inflictDamage(lua_State* L);
+		int playEffect(lua_State* L);
 
 	private:
 		// The pointer to the 'real object' defined in object.cc

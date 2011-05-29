@@ -20,6 +20,8 @@ DirectorManager::DirectorManager() : Logger("DirectorManager") {
 	info("loading..", true);
 
 	getLuaInstance();
+
+	reload = true;
 }
 
 void DirectorManager::initializeLuaEngine(Lua* luaEngine) {
@@ -133,9 +135,9 @@ int DirectorManager::spawnMobile(lua_State* L) {
 	Zone* zone = zoneServer->getZone(zoneid);
 	CreatureManager* creatureManager = zone->getCreatureManager();
 
-	StringBuffer msg;
+	/*StringBuffer msg;
 	msg << "trying to spawn with mobile: " << mobile << " x:" << x;
-	DirectorManager::instance()->info(msg.toString(), true);
+	DirectorManager::instance()->info(msg.toString(), true);*/
 
 	CreatureObject* creature = creatureManager->spawnCreature(mobile.hashCode(), 0, x, z, y, parentID);
 
@@ -213,6 +215,8 @@ Lua* DirectorManager::getLuaInstance() {
 
 		localLua.set(lua);
 	}
+
+	//lua->runFile("scripts/screenplays/screenplay.lua");
 
 	return lua;
 }

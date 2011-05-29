@@ -1370,8 +1370,8 @@ bool TangibleObjectImplementation::hasDefender(SceneObject* defender) {
 }
 
 bool TangibleObjectImplementation::isAttackableBy(CreatureObject* object) {
-	// server/zone/objects/tangible/TangibleObject.idl():  		return false;
-	return false;
+	// server/zone/objects/tangible/TangibleObject.idl():  		return pvpStatusBitmask & CreatureFlag.ATTACKABLE;
+	return pvpStatusBitmask & CreatureFlag::ATTACKABLE;
 }
 
 bool TangibleObjectImplementation::isAggressiveTo(PlayerCreature* object) {

@@ -1656,3 +1656,7 @@ includeFile("npc/naboo/zogor_storm.lua")
 
 includeFile("npc/tutorial/imperial_officer_1.lua")
 includeFile("npc/tutorial/imperial_officer_2.lua")
+includeFile("npc/tutorial/imperial_officer_3.lua")
+includeFile("npc/tutorial/protocol_droid_3po_silver.lua")
+includeFile("npc/tutorial/panic_npc_1.lua")
+includeFile("npc/tutorial/bandit_1.lua")
