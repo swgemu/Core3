@@ -672,8 +672,11 @@ bool AiAgentImplementation::findNextPosition(float maxDistance, WorldCoordinates
 
 void AiAgentImplementation::doMovement() {
 	//info("doMovement", true);
-	if (isDead() || getZone() == NULL)
+	if (isDead() || getZone() == NULL || !isInQuadTree()) {
+		setFollowObject(NULL);
 		return;
+	}
+
 
 	if (currentSpeed != 0) {
 		updateCurrentPosition(&nextStepPosition);
