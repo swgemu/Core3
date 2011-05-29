@@ -777,7 +777,7 @@ void SceneObjectImplementation::notifyCloseContainer(PlayerCreature* player) {
 
 void SceneObjectImplementation::notifyPositionUpdate(QuadTreeEntry* entry) {
 	//notifyObservers(ObserverEventType::OBJECTINRANGEMOVED, entry);
-	if (_this == NULL || entry == NULL)
+	if (_this == NULL || entry == NULL || _this == entry)
 		return;
 
 	Core::getTaskManager()->executeTask(new PositionUpdateTask(_this, entry));

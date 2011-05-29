@@ -21,9 +21,11 @@ void ObjectControllerMessageCallback::parse(Message* message) {
 
 	objectID = message->parseLong();
 
-	StringBuffer objectCtrl;
-	objectCtrl << "parsing objc type 0x" << hex << type;
-	client->info(objectCtrl.toString());
+	if (client != NULL) {
+		StringBuffer objectCtrl;
+		objectCtrl << "parsing objc type 0x" << hex << type;
+		client->info(objectCtrl.toString());
+	}
 
 	objectControllerCallback = objectMessageControllerFactory->createObject(type, this);
 

@@ -237,7 +237,10 @@ public:
     AppearanceTemplate* getAppearanceTemplate();
 
     inline Vector<String>* getArrangementDescriptors() {
-		return arrangementDescriptors->getArrangementSlots();
+    	if (arrangementDescriptors == NULL)
+    		return NULL;
+    	else
+    		return arrangementDescriptors->getArrangementSlots();
 	}
 
     inline Vector<float>* getScale() {
@@ -253,7 +256,10 @@ public:
 	}
 
     inline Vector<String>* getSlotDescriptors() {
-		return slotDescriptors->getSlots();
+    	if (slotDescriptors == NULL)
+    		return NULL;
+    	else
+    		return slotDescriptors->getSlots();
 	}
 
     inline bool getSnapToTerrain() const {

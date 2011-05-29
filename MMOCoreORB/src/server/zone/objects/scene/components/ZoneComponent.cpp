@@ -203,6 +203,8 @@ void ZoneComponent::updateZone(SceneObject* sceneObject, bool lightUpdate, bool 
 	} else
 		zone->update(sceneObject);
 
+	parent = sceneObject->getParent();
+
 	zone->inRange(sceneObject, 192);
 
 	if (sendPackets && (parent == NULL || !parent->isVehicleObject())) {

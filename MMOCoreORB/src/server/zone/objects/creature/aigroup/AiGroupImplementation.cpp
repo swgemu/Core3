@@ -80,13 +80,13 @@ void AiGroupImplementation::setup(StaticSpawnGroup* templ) {
 		setParent(cellParent);
 	}
 
-	Vector<SpawnCoordinate> members = templ->getSpawnList();
+	Vector<SpawnCoordinate>* members = templ->getSpawnList();
 
-	for (int i = 0; i < members.size(); ++i) {
-		SpawnCoordinate protTempl = members.get(i);
+	for (int i = 0; i < members->size(); ++i) {
+		SpawnCoordinate* protTempl = &members->get(i);
 
-		uint32 crc = protTempl.getTemplateName().hashCode();
-		Coordinate* coordinate = protTempl.getCoordinate();
+		uint32 crc = protTempl->getTemplateName().hashCode();
+		Coordinate* coordinate = protTempl->getCoordinate();
 		float x = coordinate->getPositionX();
 		float z = coordinate->getPositionZ();
 		float y = coordinate->getPositionY();
@@ -101,7 +101,7 @@ void AiGroupImplementation::setup(StaticSpawnGroup* templ) {
 		if (prot == NULL)
 			continue;
 
-		Quaternion* dir = protTempl.getDirection();
+		Quaternion* dir = protTempl->getDirection();
 
 		prot->setDirection(dir->getW(), dir->getX(), dir->getY(), dir->getZ());
 		prot->setRespawnTimer(templ->getRespawnTime());

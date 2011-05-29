@@ -580,8 +580,8 @@ function TutorialScreenPlay:bankerStopConversation(creatureObject, playerObject)
 	createEvent(1000, "TutorialScreenPlay", "activateBankUseCheck", playerObject)
 	createEvent(1000, "TutorialScreenPlay", "activateBazaarUseCheck", playerObject)
 	
-	createObserver(18, "TutorialScreenPlay", "activateBankTargetCheck", creatureObject)
-	createObserver(18, "TutorialScreenPlay", "activateBazaarTargetCheck", creatureObject)
+	createObserver(18, "TutorialScreenPlay", "activateBankTargetCheck", playerObject)
+	createObserver(18, "TutorialScreenPlay", "activateBazaarTargetCheck", playerObject)
 	
 	return 1
 end

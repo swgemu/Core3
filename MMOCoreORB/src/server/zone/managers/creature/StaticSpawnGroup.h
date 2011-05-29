@@ -26,6 +26,8 @@ public:
 
 	SpawnCoordinate(const SpawnCoordinate& cr) : Object() {
 		templateName = cr.templateName;
+		coordinate = cr.coordinate;
+		quaternion = cr.quaternion;
 	}
 
 	virtual ~SpawnCoordinate() {}
@@ -140,8 +142,8 @@ public:
 		return *this;
 	}
 
-	Vector<SpawnCoordinate> getSpawnList() {
-		return spawnMap;
+	Vector<SpawnCoordinate>* getSpawnList() {
+		return &spawnMap;
 	}
 
 	int getRespawnTime() const {
