@@ -91,7 +91,10 @@ class Zone extends ManagedObject {
 	@weakReference
 	private ZoneServer server;
 	
+	@transactional
 	private transient QuadTree regionTree;
+
+	@transactional
 	private transient QuadTree quadTree;
 
 	@dereferenced

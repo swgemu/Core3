@@ -72,6 +72,7 @@ class BuildingObject extends StructureObject {
 	
 	protected unsigned long deedObjectID;
 	
+	@transactional
 	protected transient QuadTree quadTree;
 
 	protected int accessFee;
