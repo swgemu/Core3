@@ -24,7 +24,12 @@ function ConversationEditor() {
 	this.changeScreen = function(conversationScreen) {
 		var parentObject = (this.parentObject != null) ? this.parentObject : this;
 
-		parentObject.ui.replaceChild(conversationScreen.ui, parentObject.conversationScreen.ui);
+		var parentNode = parentObject.conversationScreen.ui.parentNode;
+		
+		if (parentNode != null) {
+			parentNode.replaceChild(conversationScreen.ui, parentObject.conversationScreen.ui);
+		}
+		
 		parentObject.conversationScreen = conversationScreen;
 	}
 
