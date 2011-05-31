@@ -3,20 +3,22 @@ function ConversationEditor() {
 	this.ui = document.createElement("div");
 	this.ui.conversationEditor = this;
 	this.ui.parentObject = this;
-	this.conversationScreenList = new ConversationScreenList(this);
-	this.conversationScreen = this.conversationScreenList.createConversationScreen();
-	this.conversationStringSelectionDialog = new ConversationStringSelectionDialog(this);
 	this.scriptName = document.createElement("input");
 	this.scriptWindow = document.createElement("pre");
 	this.generateScriptButton = document.createElement("input");
+	this.conversationScreenList = new ConversationScreenList(this);
+	this.conversationStringSelectionDialog = new ConversationStringSelectionDialog(this);
+	this.conversationScreen = this.conversationScreenList.createConversationScreen();
 
 	this.appendToElement = function(elementId) {
+		var parentObject = (this.parentObject != null) ? this.parentObject : this;
+	
 		var element = document.getElementById(elementId);
 
 		if (element == null)
 			return;
 
-		element.appendChild(this.ui);
+		element.appendChild(parentObject.ui);
 	}
 
 	this.changeScreen = function(conversationScreen) {
@@ -117,6 +119,9 @@ function ConversationScreenList(conversationEditor) {
 		} catch (ex) {
 			parentObject.conversationScreens.ui.add(option);
 		}
+		
+		//Refresh the available screens.
+		parentObject.conversationEditor.conversationStringSelectionDialog.fillScreens();
 
 		return conversationScreen;
 	}
@@ -134,6 +139,9 @@ function ConversationScreenList(conversationEditor) {
 		delete parentObject.conversationScreens[parentObject.conversationScreens.ui.options[parentObject.conversationScreens.ui.selectedIndex].value];
 
 		parentObject.conversationScreens.ui.remove(parentObject.conversationScreens.ui.selectedIndex);
+		
+		//Refresh the available screens.
+		parentObject.conversationEditor.conversationStringSelectionDialog.fillScreens();
 	}
 
 	this.onselect = function() {
