@@ -51,12 +51,13 @@ function ConversationEditor() {
 
 	//initialize
 	this.ui.setAttribute("class", "conversationEditor");
+	this.ui.setAttribute("className", "conversationEditor");
 
 	var element = document.createElement("div");
 	element.setAttribute("class", "conversationScriptName");
+	element.setAttribute("className", "conversationScriptName");
 	var label = document.createElement("label");
 	this.scriptName.setAttribute("type", "text");
-	this.scriptName.setAttribute("class");
 	this.scriptName.setAttribute("id", "scriptName");
 	label.setAttribute("for", "scriptName");
 	label.innerHTML = "Script Name: ";
@@ -66,9 +67,11 @@ function ConversationEditor() {
 
 	var container = document.createElement("div");
 	container.setAttribute("class", "conversationEditorContainer");
+	container.setAttribute("className", "conversationEditorContainer");
 
 	element = document.createElement("div");
 	element.setAttribute("class", "conversationScriptWindow");
+	element.setAttribute("className", "conversationScriptWindow");
 	element.appendChild(this.scriptWindow);
 	this.generateScriptButton.setAttribute("type", "button");
 	this.generateScriptButton.setAttribute("value", "Generate Script");
@@ -108,7 +111,12 @@ function ConversationScreenList(conversationEditor) {
 		var option = document.createElement("option");
 		option.text = conversationScreen.displayName;
 		option.value = conversationScreen.screenName;
-		parentObject.conversationScreens.ui.add(option);
+		
+		try {
+			parentObject.conversationScreens.ui.add(option, null);
+		} catch (ex) {
+			parentObject.conversationScreens.ui.add(option);
+		}
 
 		return conversationScreen;
 	}
@@ -138,6 +146,7 @@ function ConversationScreenList(conversationEditor) {
 
 	//initialize
 	this.ui.setAttribute("class", "conversationScreenList");
+	this.ui.setAttribute("className", "conversationScreenList");
 
 	this.conversationScreens.ui.setAttribute("multiple", "true");
 	this.conversationScreens.ui.parentObject = this;
@@ -186,8 +195,10 @@ function ConversationScreen(screenName, displayName) {
 
 	//initialize
 	this.ui.setAttribute("class", "conversationScreen");
+	this.ui.setAttribute("className", "conversationScreen");
 
 	this.title.setAttribute("class", "title");
+	this.title.setAttribute("className", "title");
 	this.title.innerHTML = this.displayName;
 	this.ui.appendChild(this.title);
 	this.ui.appendChild(this.conversationWindow.ui);
@@ -222,10 +233,12 @@ function ConversationWindow(conversationScreen) {
 
 	//initialize
 	this.ui.setAttribute("class", "conversationWindow");
+	this.ui.setAttribute("className", "conversationWindow");
 	this.ui.appendChild(this.leftDialog.ui);
 
 	var element = document.createElement("div");
 	element.setAttribute("class", "divisor");
+	element.setAttribute("className", "divisor");
 	this.ui.appendChild(element);
 
 	this.ui.appendChild(this.conversationOptions.ui);
@@ -258,6 +271,7 @@ function ConversationDialog(conversationWindow) {
 
 	//initialize
 	this.ui.setAttribute("class", "conversationDialog");
+	this.ui.setAttribute("className", "conversationDialog");
 	this.ui.innerHTML = "&lt;Click here to set caption&gt;";
 	this.ui.onclick = this.onclick;
 }
@@ -288,7 +302,9 @@ function ConversationOptions(conversationWindow) {
 
 	//initialize
 	this.ui.setAttribute("class", "conversationOptions");
+	this.ui.setAttribute("className", "conversationOptions");
 	this.createButton.setAttribute("class", "conversationOption");
+	this.createButton.setAttribute("className", "conversationOption");
 	this.createButton.innerHTML = "&lt;Click here to add an option&gt;";
 	this.createButton.parentObject = this;
 	this.createButton.onclick = this.createOption;
@@ -358,7 +374,11 @@ function ConversationStringSelectionDialog(conversationEditor) {
 			var option = document.createElement("option");
 			option.text = stringFile.fileName;
 			option.value = key;
-			parentObject.fileSelect.add(option);
+			try {
+				parentObject.fileSelect.add(option, null);
+			} catch (ex) {
+				parentObject.fileSelect.add(option);
+			}
 		}
 			
 	}
@@ -375,7 +395,11 @@ function ConversationStringSelectionDialog(conversationEditor) {
 			var option = document.createElement("option");
 			option.text = entry;
 			option.value = entry;
-			parentObject.keySelect.add(option);
+			try {
+				parentObject.keySelect.add(option, null);
+			} catch (ex) {
+				parentObject.keySelect.add(option);
+			}
 		}
 
 		parentObject.setPreviewString();
@@ -414,7 +438,7 @@ function ConversationStringSelectionDialog(conversationEditor) {
 	}
 
 	this.show = function(event, object, showRemove) {
-		if (!event) { alert("test"); event = window.event; }
+		if (!event) { event = window.event; }
 
 		var pos = [0,0];
 
@@ -469,6 +493,7 @@ function ConversationStringSelectionDialog(conversationEditor) {
 	
 	//initialize
 	this.ui.setAttribute("class", "conversationStringSelectionDialog");
+	this.ui.setAttribute("className", "conversationStringSelectionDialog");
 
 	var element = document.createElement("div");
 	var label = document.createElement("label");
@@ -498,7 +523,6 @@ function ConversationStringSelectionDialog(conversationEditor) {
 	label = document.createElement("label");
 	label.innerHTML = "Select a screen to link: ";
 	this.screenLink.setAttribute("id", "screenLink");
-	this.screenLink.onchange = this.setScreenLink;
 	this.screenLink.parentObject = this;
 	label.appendChild(this.screenLink);
 	element.appendChild(label);
@@ -506,6 +530,7 @@ function ConversationStringSelectionDialog(conversationEditor) {
 	this.fillScreens();
 	
 	this.stringPreview.setAttribute("class", "conversationStringPreview");
+	this.stringPreview.setAttribute("className", "conversationStringPreview");
 	this.stringPreview.innerHTML = "undefined";
 	this.ui.appendChild(this.stringPreview);
 	this.setPreviewString();
