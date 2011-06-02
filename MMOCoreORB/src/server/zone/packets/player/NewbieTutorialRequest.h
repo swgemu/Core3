@@ -9,6 +9,9 @@
 #define NEWBIETUTORIALREQUEST_H_
 
 #include "../MessageCallback.h"
+#include "server/zone/managers/director/DirectorManager.h"
+#include "server/zone/Zone.h"
+#include "server/zone/objects/player/PlayerCreature.h"
 /* Valid action strings found:
  * openCharacterSheet
  * closeCharacterSheet
@@ -75,6 +78,11 @@ public:
 		if (sceneObject == NULL)
 			return;
 
+		PlayerCreature* player = dynamic_cast<PlayerCreature*>(sceneObject.get());
+
+		if (player == NULL)
+			return;
+
 		Locker locker(sceneObject);
 
 		//sceneObject->info("received response: " + response, true);
@@ -89,6 +97,13 @@ public:
 			sceneObject->notifyObservers(ObserverEventType::NEWBIEOPENINVENTORY);
 		} else if (response == "closeInventory") {
 			sceneObject->notifyObservers(ObserverEventType::NEWBIECLOSEINVENTORY);
+		} else if (response == "clientReady") {
+			if (player->getZone() != NULL) {
+				Zone* zone = player->getZone();
+
+				if (zone->getZoneName() == "tutorial")
+					DirectorManager::instance()->startScreenPlay(player, "TutorialScreenPlay");
+			}
 		}
 	}
 

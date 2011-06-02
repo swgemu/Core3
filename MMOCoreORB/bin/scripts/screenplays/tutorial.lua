@@ -201,6 +201,10 @@ function TutorialScreenPlay:start(creatureObject)
 		return
 	end
 	
+	if creature:getParentID() == 0 then
+		return
+	end
+	
 	res = TutorialScreenPlay.spawnObjects(creatureObject, creatureObject)
 	
 	if res == 0 then
@@ -244,7 +248,7 @@ function TutorialScreenPlay:thirdAct(creatureObject)
 	creature:sendNewbieTutorialRequest("zoomCamera")
 	
 	createObserver(14, "TutorialScreenPlay", "zoomEvent", creatureObject)
-	createEvent(9000, "TutorialScreenPlay", "helpZoom", creatureObject)
+	createEvent(18000, "TutorialScreenPlay", "helpZoom", creatureObject)
 end
 
 function TutorialScreenPlay:helpZoom(creatureObject)
@@ -273,7 +277,7 @@ function TutorialScreenPlay:zoomEvent(creatureObject)
 	creature:sendSystemMessage("@newbie_tutorial/system_messages:chatprompt")
 	
 	creature:sendNewbieTutorialRequest("chatbox")
-	createEvent(10000, "TutorialScreenPlay", "helpChat", creatureObject)
+	createEvent(15000, "TutorialScreenPlay", "helpChat", creatureObject)
 	createObserver(15, "TutorialScreenPlay", "chatEvent", creatureObject)
 	
 	return 1 -- 1 to remove observer from observable
@@ -538,7 +542,9 @@ function TutorialScreenPlay:openInventory(creatureObject)
 	player:sendSystemMessage("@newbie_tutorial/system_messages:explain_freemouse_toggle")
 	player:sendSystemMessage("@newbie_tutorial/system_messages:explain_inventory")
 	
-	createEvent(5000, "TutorialScreenPlay", "openInventory2", creatureObject)
+	player:sendNewbieTutorialRequest("openInventory")
+	
+	createEvent(11000, "TutorialScreenPlay", "openInventory2", creatureObject)
 end
 
 function TutorialScreenPlay:openInventory2(creatureObject)
@@ -547,7 +553,6 @@ function TutorialScreenPlay:openInventory2(creatureObject)
 	player:sendSystemMessage("@newbie_tutorial/system_messages:repeat_open_inventory")
 	player:playMusicMessage("sound/tut_25_openinventory.snd")
 	
-	player:sendNewbieTutorialRequest("openInventory")
 	createObserver(23, "TutorialScreenPlay", "openInventoryObserver", creatureObject)
 end
 
@@ -580,7 +585,7 @@ function TutorialScreenPlay:foodUsed(foodObject, creatureObject, selectedID)
 	player:sendSystemMessage("@newbie_tutorial/system_messages:explain_item_used")
 	player:playMusicMessage("sound/tut_22_attributes.snd")
 	
-	createEvent(10000, "TutorialScreenPlay", "activateToolbar", creatureObject)
+	createEvent(5000, "TutorialScreenPlay", "activateToolbar", creatureObject)
 	
 	return 1
 end
@@ -1103,8 +1108,8 @@ function TutorialScreenPlay:banditDamageObserver(banditObject, playerObject, dam
 		spatialChat(banditObject, "@newbie_tutorial/newbie_convo:pirate_taunt3")
 		spatialChat(banditObject, "@newbie_tutorial/newbie_convo:pirate_taunt4")
 		
-		createEvent(500, "TutorialScreenPlay", "killBandit", banditObject) 
-		createEvent(2000, "TutorialScreenPlay", "lootBanditEvent", playerObject)
+		createEvent(2000, "TutorialScreenPlay", "killBandit", banditObject) 
+		createEvent(3000, "TutorialScreenPlay", "lootBanditEvent", playerObject)
 				
 		return 1
 	end

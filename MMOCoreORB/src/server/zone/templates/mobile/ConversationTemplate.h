@@ -14,8 +14,8 @@
 
 namespace server {
 namespace zone {
-namespace managers {
-namespace creature {
+namespace templates {
+namespace mobile {
 
 
 class ConversationTemplate : public Object {
@@ -52,6 +52,6 @@ public:
 }
 }
 
-using namespace server::zone::managers::creature;
+using namespace server::zone::templates::mobile;
 
 #endif /* CONVERSATIONTEMPLATE_H_ */

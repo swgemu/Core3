@@ -75,9 +75,6 @@ class TutorialBuildingObject extends BuildingObject {
 	
 	public void onEnter(PlayerCreature player) {
 		dequeueUnloadEvent();
-		
-		StartTutorialTask task = new StartTutorialTask(player);
-		task.schedule(3000);
 	}
 	
 	public void onExit(PlayerCreature player) {

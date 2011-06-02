@@ -56,7 +56,7 @@ which carries forward this exception.
 
 class IsVendorOwnerResponseMessage : public BaseMessage {
 public:
-    IsVendorOwnerResponseMessage(SceneObject* sceno, PlayerCreature* player, String& planet, String& header, uint32 errorCode = 0) {
+    IsVendorOwnerResponseMessage(SceneObject* sceno, PlayerCreature* player, const String& planet, const String& header, uint32 errorCode = 0) {
 		insertShort(3);
 		insertInt(0xCE04173E);
 

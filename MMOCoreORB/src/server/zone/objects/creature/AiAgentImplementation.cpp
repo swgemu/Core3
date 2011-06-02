@@ -19,7 +19,7 @@
 #include "server/zone/objects/player/PlayerCreature.h"
 #include "server/zone/objects/tangible/weapon/WeaponObject.h"
 #include "server/zone/managers/templates/TemplateManager.h"
-#include "server/zone/managers/creature/CreatureTemplate.h"
+#include "server/zone/templates/mobile/CreatureTemplate.h"
 #include "server/zone/managers/creature/CreatureTemplateManager.h"
 #include "server/zone/managers/combat/CombatManager.h"
 #include "server/zone/managers/collision/PathFinderManager.h"

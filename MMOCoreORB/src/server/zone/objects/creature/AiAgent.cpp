@@ -26,7 +26,7 @@
 
 #include "server/zone/templates/SharedObjectTemplate.h"
 
-#include "server/zone/managers/creature/CreatureTemplate.h"
+#include "server/zone/templates/mobile/CreatureTemplate.h"
 
 #include "server/zone/objects/creature/events/DespawnCreatureOnPlayerDissappear.h"
 

@@ -49,7 +49,6 @@ IDL_DIRECTIVES = -cp $(IDL_CLASSPATH)
 all: build
 
 build: idl
-	cd src/trelib/src && make ../lib/libtreLib.a
 	cd build/unix && make -j4
 	cp build/unix/src/client/core3* bin
 	cp build/unix/src/core3* bin
@@ -76,15 +75,7 @@ clean: cleanidl
 	#cd build/unix/src && rm *
 	#cd build/unix/src/.deps && rm *
 	#done
-
-trelib:
-	cd src/trelib/src && make -j4
-	#done
-	
-cleantrelib:
-	cd src/trelib/src && make clean
-	#done
-	
+		
 cleanidl:
 	$(IDLC) -rebuild $(IDL_DIRECTIVES) -sd src anyadEclipse
 

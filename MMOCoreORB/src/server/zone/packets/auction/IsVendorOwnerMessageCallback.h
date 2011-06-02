@@ -54,10 +54,11 @@ public:
 
 			if (cityRegion == NULL) {
 				sceno->error("NULL AREA FOR THIS TERMINAL");
-				return;
-			}
 
-			vendorRegion = cityRegion->getRegionName();
+				vendorRegion = "";
+				//return;
+			} else
+				vendorRegion = cityRegion->getRegionName();
 
 		}
 

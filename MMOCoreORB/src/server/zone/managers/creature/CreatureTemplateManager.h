@@ -9,8 +9,8 @@
 #define CREATURETEMPLATEMANAGER_H_
 
 #include "engine/engine.h"
-#include "CreatureTemplate.h"
-#include "ConversationTemplate.h"
+#include "server/zone/templates/mobile/CreatureTemplate.h"
+#include "server/zone/templates/mobile/ConversationTemplate.h"
 #include "SpawnGroup.h"
 #include "StaticSpawnGroup.h"
 #include "DynamicSpawnGroup.h"

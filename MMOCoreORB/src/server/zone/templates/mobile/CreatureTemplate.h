@@ -15,8 +15,8 @@
 
 namespace server {
 namespace zone {
-namespace managers {
-namespace creature {
+namespace templates {
+namespace mobile {
 
 class CreatureTemplate : public Object {
 protected:
@@ -416,5 +416,7 @@ public:
 }
 }
 }
+
+using namespace server::zone::templates::mobile;
 
 #endif /* CREATURETEMPLATE_H_ */

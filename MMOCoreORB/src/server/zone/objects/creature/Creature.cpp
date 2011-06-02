@@ -10,7 +10,7 @@
 
 #include "server/zone/packets/object/ObjectMenuResponse.h"
 
-#include "server/zone/managers/creature/CreatureTemplate.h"
+#include "server/zone/templates/mobile/CreatureTemplate.h"
 
 #include "server/zone/objects/player/PlayerCreature.h"
 

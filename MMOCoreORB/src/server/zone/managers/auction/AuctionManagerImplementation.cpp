@@ -1048,6 +1048,16 @@ void AuctionManagerImplementation::getData(PlayerCreature* player, int extent, u
 	//Handle Merchant XP for players using other players vendors...
 	if (!vendor->isBazaarTerminal())
 		VendorManager::instance()->handleAwardVendorLookXP(player, vendor);
+	else {
+		//if ()
+		ManagedReference<CityRegion*> cityRegion = sceno->getCityRegion();
+
+		if (cityRegion == NULL) {
+			getGalaxyData(player, vendor, screen, category, count, offset);
+			return;
+		}
+
+	}
 
 	switch (extent) {
 	case 0:

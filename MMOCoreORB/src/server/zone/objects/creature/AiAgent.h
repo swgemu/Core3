@@ -173,17 +173,17 @@ using namespace server::zone::templates;
 
 namespace server {
 namespace zone {
-namespace managers {
-namespace creature {
+namespace templates {
+namespace mobile {
 
 class CreatureTemplate;
 
-} // namespace creature
-} // namespace managers
+} // namespace mobile
+} // namespace templates
 } // namespace zone
 } // namespace server
 
-using namespace server::zone::managers::creature;
+using namespace server::zone::templates::mobile;
 
 namespace server {
 namespace zone {

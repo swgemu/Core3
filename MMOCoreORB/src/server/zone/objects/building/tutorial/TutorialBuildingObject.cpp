@@ -243,13 +243,8 @@ void TutorialBuildingObjectImplementation::initializeTransientMembers() {
 }
 
 void TutorialBuildingObjectImplementation::onEnter(PlayerCreature* player) {
-	Reference<StartTutorialTask*> _ref0;
 	// server/zone/objects/building/tutorial/TutorialBuildingObject.idl():  		dequeueUnloadEvent();
 	dequeueUnloadEvent();
-	// server/zone/objects/building/tutorial/TutorialBuildingObject.idl():  		StartTutorialTask task = new StartTutorialTask(player);
-	StartTutorialTask* task = _ref0 = new StartTutorialTask(player);
-	// server/zone/objects/building/tutorial/TutorialBuildingObject.idl():  		task.schedule(3000);
-	task->schedule(3000);
 }
 
 void TutorialBuildingObjectImplementation::onExit(PlayerCreature* player) {

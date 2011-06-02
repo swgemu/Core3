@@ -18,7 +18,6 @@
 #include "server/zone/templates/slots/SlotDescriptor.h"
 #include "server/zone/templates/slots/ArrangementDescriptor.h"
 
-#include "treLib/treArchive.hpp"
 #include "tre3/TreeArchive.h"
 
 #include "PlanetMapCategoryList.h"
