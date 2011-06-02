@@ -289,6 +289,8 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/status/StatusServer.cpp \
 		server/ServerCore.cpp \
 		server/web/WebServer.cpp \
+		server/web/servlets/Servlet.cpp \
+		server/web/servlets/resource/ResourceServlet.cpp \
 		server/web/mongoose/mongoose.c \
 		server/zone/ZoneReference.cpp \
 		server/zone/ZoneServerImplementation.cpp \

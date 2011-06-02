@@ -138,20 +138,24 @@ Account* AccountManager::validateAccountCredentials(LoginClient* client, const S
 					reason << "Time remaining: " << round(banExpires.miliDifference() / 1000.0f * -1.0f) << "\n";
 					reason << "Reason: " << banReason;
 
-					client->sendErrorMessage("Account Banned", reason.toString());
+					if(client != NULL)
+						client->sendErrorMessage("Account Banned", reason.toString());
 				}
 			} else {
-				client->sendErrorMessage("Wrong Password", "The password you entered was incorrect.");
+				if(client != NULL)
+					client->sendErrorMessage("Wrong Password", "The password you entered was incorrect.");
 			}
 		} else {
-			client->sendErrorMessage("Account Disabled", "The server administrators have disabled your account.");
+			if(client != NULL)
+				client->sendErrorMessage("Account Disabled", "The server administrators have disabled your account.");
 		}
 	} else {
 		//The user name didn't exist, so we check if auto registration is enabled and create a new account
-		if (isAutoRegistrationEnabled()) {
+		if (isAutoRegistrationEnabled() && client != NULL) {
 			account = createAccount(username, password);
 		} else {
-			client->sendErrorMessage("Login Error", "Automatic registration is currently disabled. Please contact the administrators of the server in order to get an authorized account.");
+			if(client != NULL)
+				client->sendErrorMessage("Login Error", "Automatic registration is currently disabled. Please contact the administrators of the server in order to get an authorized account.");
 		}
 	}
 

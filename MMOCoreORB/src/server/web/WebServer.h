@@ -46,22 +46,29 @@
 #define WEBSERVER_H_
 
 #include "engine/engine.h"
-
 #include "../zone/ZoneServer.h"
-
+#include "../login/LoginServer.h"
+#include "../login/account/Account.h"
+#include "../login/account/AccountManager.h"
 #include "../conf/ConfigManager.h"
-
 #include "mongoose/mongoose.h"
+#include "servlets/Servlet.h"
+#include "WebCredentials.h"
+#include "session/HttpSession.h"
 
 //#include "../zone/objects/tangible/attachment/Attachment.h"
 
 class WebServer : public Singleton<WebServer>, public Logger, public Object {
 
 	ManagedReference<ZoneServer*> zoneServer;
+	ManagedReference<LoginServer*> loginServer;
 
 	ConfigManager* configManager;
 
 	static struct mg_context *ctx;
+
+	VectorMap<String, Servlet*> contexts;
+	VectorMap<String, WebCredentials*> authorizedUsers;
 
 public:
 	WebServer();
@@ -72,13 +79,33 @@ public:
 
 	void stop();
 
+	void whitelistInit();
+
+	bool addContext(String context, Servlet* servlet);
+
 	void mongooseMgrInit();
 
 	static void* uriHandler(enum mg_event event,
 		    struct mg_connection *conn,
 		    const struct mg_request_info *request_info);
+private:
+	bool authorize(String username, String password, String ipaddress);
 
-	String test();
+	void* routeRequest(struct mg_connection *conn, const struct mg_request_info *request_info);
+
+	HttpSession* getSession(const struct mg_request_info *request_info);
+
+	bool validateCredentials(HttpSession* session);
+
+	bool isValidIp(String address);
+
+	bool isLocalHost(long address);
+
+	bool isLocalHost(String address);
+
+	String ipStringToLong(String address);
+
+	String longToIP(long address);
 };
 
 #endif /* WEBSERVER_H_ */

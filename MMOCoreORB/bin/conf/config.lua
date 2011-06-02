@@ -87,46 +87,46 @@ ZonesEnabled = {
 	--"11",
 	--"character_farm",
 	--"cinco_city_test_m5",
-	"corellia",
+	--"corellia",
 	--"creature_test",
-	"dantooine",
-	"dathomir",
-	"dungeon1",
-	"endor",
+	--"dantooine",
+	--"dathomir",
+	--"dungeon1",
+	--"endor",
 	--"endor_asommers",
 	--"floratest",
-	"godclient_test",
-	"lok",
-	"naboo",
+	--"godclient_test",
+	--"lok",
+	--"naboo",
 	--"otoh_gunga",
 	--"rivertest",
-	"rori",
+	--"rori",
 	--"runtimerules",
 	--"simple"
 	--"space_09",
-	"space_corellia",
-	"space_corellia_2",
-	"space_dantooine",
-	"space_dathomir",
-	"space_endor",
+	--"space_corellia",
+	--"space_corellia_2",
+	--"space_dantooine",
+	--"space_dathomir",
+	--"space_endor",
 	--"space_env",
 	--"space_halos",
 	--"space_heavy1",
 	--"space_light1",
-	"space_lok",
-	"space_naboo",
-	"space_naboo_2",
-	"space_tatooine",
-	"space_tatooine_2",
-	"space_yavin4",
+	--"space_lok",
+	--"space_naboo",
+	---"space_naboo_2",
+	--"space_tatooine",
+	--"space_tatooine_2",
+	--"space_yavin4",
 	--"taanab",
-	"talus",
+	--"talus",
 	"tatooine",
 	--"test_wearables",
 	"tutorial",
 	--"umbra",
 	--"watertabletest",
-	"yavin4"
+	--"yavin4"
 }
 
 
@@ -193,5 +193,8 @@ StatusAllowedConnections = 500
 StatusInterval = 30 -- interval to check if zone is locked up (in seconds)
 
 --Web Server Config
-WebPort = 44460
+WebPorts = 44460 -- Can be multiple ports 44460,44461
+WebAccessLog = "../log/webaccess.log"
+WebErrorLog = "../log/weberror.log"
+WebSessionTimeout = 600 -- Length that inactive web sessions expire
 
