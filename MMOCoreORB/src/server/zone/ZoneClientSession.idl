@@ -62,7 +62,7 @@ import engine.service.proto.events.BaseClientEvent;
 
 import engine.log.Logger;
 
-@nonTransactional
+//@nonTransactional
 class ZoneClientSession extends ManagedObject {
 	transient protected BaseClientProxy session;
 	
