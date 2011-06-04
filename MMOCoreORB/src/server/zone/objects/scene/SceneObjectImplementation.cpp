@@ -198,6 +198,10 @@ void SceneObjectImplementation::createComponents() {
 		zoneComponent = ComponentManager::instance()->getComponent<ZoneComponent*>(zoneComponentClassName);
 		//zoneComponent->initialize(_this);
 
+		if (zoneComponent == NULL) {
+			error("zone component null " + zoneComponentClassName);
+		}
+
 		String objectMenuComponentName = templateObject->getObjectMenuComponent();
 		objectMenuComponent = ComponentManager::instance()->getComponent<ObjectMenuComponent*>(objectMenuComponentName);
 		//objectMenuComponent->initialize(_this);
@@ -206,10 +210,9 @@ void SceneObjectImplementation::createComponents() {
 	} else
 		error("NULL TEMPLATE OBJECT");
 
-	/*if (zoneComponent == NULL) {
-		zoneComponent = dynamic_cast<ZoneComponent*>(ObjectManager::instance()->createObject("ZoneComponent", 1, "sceneobjectcomponents"));
-		zoneComponent->initialize(_this);
-	}*/
+	if (zoneComponent == NULL) {
+		zoneComponent = ComponentManager::instance()->getComponent<ZoneComponent*>("ZoneComponent");
+	}
 
 	/*if (objectMenuComponent == NULL) {
 		objectMenuComponent = dynamic_cast<ObjectMenuComponent*>(ObjectManager::instance()->createObject("ObjectMenuComponent", 1, "sceneobjectcomponents"));

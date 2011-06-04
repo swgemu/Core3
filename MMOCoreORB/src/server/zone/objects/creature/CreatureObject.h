@@ -207,6 +207,8 @@ using namespace server::zone::objects::tangible::weapon;
 
 #include "server/zone/objects/scene/variables/DeltaVector.h"
 
+#include "server/zone/objects/creature/variables/CommandQueueActionVector.h"
+
 #include "server/zone/objects/scene/variables/DeltaVectorMap.h"
 
 #include "server/zone/objects/creature/variables/SkillBoxList.h"
@@ -878,7 +880,7 @@ protected:
 
 	DeltaVectorMap<String, long long> skillModList;
 
-	Vector<CommandQueueAction*> commandQueue;
+	CommandQueueActionVector commandQueue;
 
 	Time nextAction;
 

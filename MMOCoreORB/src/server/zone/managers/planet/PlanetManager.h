@@ -298,11 +298,11 @@ class PlanetManagerImplementation : public ManagedServiceImplementation, public 
 protected:
 	ManagedWeakReference<Zone* > zone;
 
-	RegionMap cityRegionMap;
+	Reference<RegionMap* > cityRegionMap;
 
 	VectorMap<String, int> travelFares;
 
-	PlanetTravelPointList planetTravelPointList;
+	Reference<PlanetTravelPointList* > planetTravelPointList;
 
 	int shuttleLandingDelay;
 

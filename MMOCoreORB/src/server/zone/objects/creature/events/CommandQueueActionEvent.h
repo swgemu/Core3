@@ -56,6 +56,10 @@ public:
 	}
 
 	void run() {
+		//TODO: FIXME
+		/*if (creature == NULL)
+			return;*/
+
 		try {
 			Locker creatureLocker(creature);
 			
@@ -71,12 +75,12 @@ public:
 		} catch (...) {
 			creature->error("unreported exception on CommandQueueActionEvent::activate()");
 
-			creature = NULL;
+			//creature = NULL;
 
 			throw;
 		}
 		
-		creature = NULL;
+		//creature = NULL;
 		
 	}
 

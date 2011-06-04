@@ -33,6 +33,14 @@ public:
 		locations.setNoDuplicateInsertPlan();
 	}
 
+	MapLocationTable(const MapLocationTable& t) : Object(), ReadWriteLock() {
+		locations = t.locations;
+	}
+
+	Object* clone() {
+		return new MapLocationTable(*this);
+	}
+
 	void addObject(SceneObject* object);
 
 	void dropObject(SceneObject* object);

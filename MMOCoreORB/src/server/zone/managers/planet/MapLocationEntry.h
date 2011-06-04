@@ -47,7 +47,7 @@ public:
 
 	int compareTo(const MapLocationEntry& entry) const;
 
-	void insertToMessage(BaseMessage* message) const;
+	bool insertToMessage(BaseMessage* message) const;
 
 	MapLocationEntry& operator=(const MapLocationEntry& entry);
 

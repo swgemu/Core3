@@ -69,6 +69,10 @@ public:
 	}
 
 	void run() {
+		// FIXME
+		/*if (player == NULL)
+			return;*/
+
 		try {
 			Locker _locker(player);
 
@@ -96,12 +100,12 @@ public:
 		} catch (...) {
 			player->error("unreported exception on FishingEvent::fishingStep()");
 
-			player = NULL;
+			//player = NULL;
 
 			throw;
 		}
 
-		player = NULL;
+		//player = NULL;
 	}
 };
 

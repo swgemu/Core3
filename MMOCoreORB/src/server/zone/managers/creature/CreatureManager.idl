@@ -35,12 +35,13 @@ class CreatureManager extends ZoneManager {
 		
 		zone = planet;
 		
+		setCreatureTemplateManager();
+		
 		spawnedRandomCreatures = 0;
 		//reservePool.setAllowDuplicateInsertPlan();
 	}
 	
 	public void initialize() {
-		setCreatureTemplateManager();
 		loadSpawnAreas();
 		loadTrainers();
 		loadSingleSpawns();

@@ -21,7 +21,8 @@ DirectorManager::DirectorManager() : Logger("DirectorManager") {
 
 	getLuaInstance();
 
-	sharedMemory.setNullValue(0);
+	sharedMemory = new DirectorSharedMemory();
+	sharedMemory->setNullValue(0);
 }
 
 void DirectorManager::initializeLuaEngine(Lua* luaEngine) {
@@ -61,11 +62,15 @@ int DirectorManager::includeFile(lua_State* L) {
 int DirectorManager::readSharedMemory(lua_State* L) {
 	String key = Lua::getStringParameter(L);
 
+#ifndef WITH_STM
 	DirectorManager::instance()->rlock();
+#endif
 
-	uint64 data = DirectorManager::instance()->sharedMemory.get(key);
+	uint64 data = DirectorManager::instance()->sharedMemory->get(key);
 
+#ifndef WITH_STM
 	DirectorManager::instance()->runlock();
+#endif
 
 	lua_pushnumber(L, data);
 
@@ -76,11 +81,15 @@ int DirectorManager::writeSharedMemory(lua_State* L) {
 	String key = lua_tostring(L, -2);
 	uint64 data = lua_tonumber(L, -1);
 
+#ifndef WITH_STM
 	DirectorManager::instance()->wlock();
+#endif
 
-	DirectorManager::instance()->sharedMemory.put(key, data);
+	DirectorManager::instance()->sharedMemory->put(key, data);
 
+#ifndef WITH_STM
 	DirectorManager::instance()->unlock();
+#endif
 
 	return 0;
 }

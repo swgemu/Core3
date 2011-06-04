@@ -78,13 +78,11 @@ class PlanetManager extends ManagedService implements Logger {
 	@weakReference
 	protected Zone zone;
 	
-	@dereferenced
 	protected RegionMap cityRegionMap;
 	
 	@dereferenced
 	protected VectorMap<string, int> travelFares;
 	
-	@dereferenced
 	protected PlanetTravelPointList planetTravelPointList;
 	
 	//In miliseconds.
@@ -120,7 +118,7 @@ class PlanetManager extends ManagedService implements Logger {
 		Logger.setLoggingName("PlanetManager " + zone.getZoneName());
 		Logger.setLogging(false);
 		Logger.setGlobalLogging(true);
-		
+
 		terrainManager = null;
 		
 		numberOfCities = 0;
@@ -131,9 +129,13 @@ class PlanetManager extends ManagedService implements Logger {
 		structureManager = null;
 
 		weatherManager = null;
+
+		cityRegionMap = new RegionMap();
 		
 		travelFares.setNullValue(0);
 		travelFares.setNoDuplicateInsertPlan();
+		
+		planetTravelPointList = new PlanetTravelPointList();
 	}
 	
 	@local

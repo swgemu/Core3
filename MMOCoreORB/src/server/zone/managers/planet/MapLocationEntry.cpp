@@ -32,7 +32,12 @@ MapLocationEntry& MapLocationEntry::operator=(const MapLocationEntry& entry) {
 	return *this;
 }
 
-void MapLocationEntry::insertToMessage(BaseMessage* message) const {
+bool MapLocationEntry::insertToMessage(BaseMessage* message) const {
+	PlanetMapCategory* category = object->getPlanetMapCategory();
+
+	if (category == NULL)
+		return false;
+
 	message->insertLong(object->getObjectID());
 
 	message->insertUnicode(object->getObjectName()->getDisplayedName());
@@ -40,7 +45,9 @@ void MapLocationEntry::insertToMessage(BaseMessage* message) const {
 	message->insertFloat(object->getWorldPositionX());
 	message->insertFloat(object->getWorldPositionY());
 
-	message->insertByte(object->getPlanetMapCategory()->getIndex());
+	message->insertByte(category->getIndex());
 	message->insertByte((object->getPlanetMapSubCategory() != NULL) ? object->getPlanetMapSubCategory()->getIndex() : 0);
 	message->insertByte(active);
+
+	return true;
 }

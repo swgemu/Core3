@@ -638,7 +638,7 @@ bool PlanetManagerImplementation::readObjectMember(ObjectInputStream* stream, co
 	}
 
 	if (_name == "cityRegionMap") {
-		TypeInfo<RegionMap >::parseFromBinaryStream(&cityRegionMap, stream);
+		TypeInfo<Reference<RegionMap* > >::parseFromBinaryStream(&cityRegionMap, stream);
 		return true;
 	}
 
@@ -648,7 +648,7 @@ bool PlanetManagerImplementation::readObjectMember(ObjectInputStream* stream, co
 	}
 
 	if (_name == "planetTravelPointList") {
-		TypeInfo<PlanetTravelPointList >::parseFromBinaryStream(&planetTravelPointList, stream);
+		TypeInfo<Reference<PlanetTravelPointList* > >::parseFromBinaryStream(&planetTravelPointList, stream);
 		return true;
 	}
 
@@ -704,7 +704,7 @@ int PlanetManagerImplementation::writeObjectMembers(ObjectOutputStream* stream) 
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
-	TypeInfo<RegionMap >::toBinaryStream(&cityRegionMap, stream);
+	TypeInfo<Reference<RegionMap* > >::toBinaryStream(&cityRegionMap, stream);
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
@@ -720,7 +720,7 @@ int PlanetManagerImplementation::writeObjectMembers(ObjectOutputStream* stream) 
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
-	TypeInfo<PlanetTravelPointList >::toBinaryStream(&planetTravelPointList, stream);
+	TypeInfo<Reference<PlanetTravelPointList* > >::toBinaryStream(&planetTravelPointList, stream);
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
@@ -770,6 +770,8 @@ int PlanetManagerImplementation::writeObjectMembers(ObjectOutputStream* stream) 
 
 PlanetManagerImplementation::PlanetManagerImplementation(Zone* planet, ZoneProcessServer* srv) {
 	_initializeImplementation();
+	Reference<RegionMap*> _ref0;
+	Reference<PlanetTravelPointList*> _ref1;
 	// server/zone/managers/planet/PlanetManager.idl():  		zone = planet;
 	zone = planet;
 	// server/zone/managers/planet/PlanetManager.idl():  		server = srv;
@@ -792,10 +794,14 @@ PlanetManagerImplementation::PlanetManagerImplementation(Zone* planet, ZoneProce
 	structureManager = NULL;
 	// server/zone/managers/planet/PlanetManager.idl():  		weatherManager = null;
 	weatherManager = NULL;
+	// server/zone/managers/planet/PlanetManager.idl():  		cityRegionMap = new RegionMap();
+	cityRegionMap = _ref0 = new RegionMap();
 	// server/zone/managers/planet/PlanetManager.idl():  		travelFares.setNullValue(0);
 	(&travelFares)->setNullValue(0);
 	// server/zone/managers/planet/PlanetManager.idl():  		travelFares.setNoDuplicateInsertPlan();
 	(&travelFares)->setNoDuplicateInsertPlan();
+	// server/zone/managers/planet/PlanetManager.idl():  		planetTravelPointList = new PlanetTravelPointList();
+	planetTravelPointList = _ref1 = new PlanetTravelPointList();
 }
 
 int PlanetManagerImplementation::getTravelFare(const String& destinationPlanet) {
@@ -805,7 +811,7 @@ int PlanetManagerImplementation::getTravelFare(const String& destinationPlanet) 
 
 Vector<ManagedReference<CityRegion* > > PlanetManagerImplementation::getRegions(StringId& regionName) {
 	// server/zone/managers/planet/PlanetManager.idl():  		return cityRegionMap.getRegions(regionName);
-	return (&cityRegionMap)->getRegions((&regionName));
+	return cityRegionMap->getRegions((&regionName));
 }
 
 StructureManager* PlanetManagerImplementation::getStructureManager() {
@@ -825,12 +831,12 @@ TerrainManager* PlanetManagerImplementation::getTerrainManager() {
 
 CityRegion* PlanetManagerImplementation::getRegion(float x, float y) {
 	// server/zone/managers/planet/PlanetManager.idl():  		return cityRegionMap.getRegion(x, y);
-	return (&cityRegionMap)->getRegion(x, y);
+	return cityRegionMap->getRegion(x, y);
 }
 
 int PlanetManagerImplementation::getRegionCount() {
 	// server/zone/managers/planet/PlanetManager.idl():  		return cityRegionMap.getTotalRegions();
-	return (&cityRegionMap)->getTotalRegions();
+	return cityRegionMap->getTotalRegions();
 }
 
 int PlanetManagerImplementation::getNumberOfCities() {
@@ -845,22 +851,22 @@ void PlanetManagerImplementation::increaseNumberOfCities() {
 
 CityRegion* PlanetManagerImplementation::getRegion(int index) {
 	// server/zone/managers/planet/PlanetManager.idl():  		return cityRegionMap.getRegion(index);
-	return (&cityRegionMap)->getRegion(index);
+	return cityRegionMap->getRegion(index);
 }
 
 void PlanetManagerImplementation::addRegion(CityRegion* region) {
 	// server/zone/managers/planet/PlanetManager.idl():  		cityRegionMap.addRegion(region);
-	(&cityRegionMap)->addRegion(region);
+	cityRegionMap->addRegion(region);
 }
 
 void PlanetManagerImplementation::dropRegion(const String& region) {
 	// server/zone/managers/planet/PlanetManager.idl():  		cityRegionMap.dropRegion(region);
-	(&cityRegionMap)->dropRegion(region);
+	cityRegionMap->dropRegion(region);
 }
 
 bool PlanetManagerImplementation::hasRegion(const String& name) {
 	// server/zone/managers/planet/PlanetManager.idl():  		return cityRegionMap.containsRegion(name);
-	return (&cityRegionMap)->containsRegion(name);
+	return cityRegionMap->containsRegion(name);
 }
 
 void PlanetManagerImplementation::addPerformanceLocation(SceneObject* obj) {
@@ -915,12 +921,12 @@ MissionTargetMap* PlanetManagerImplementation::getInformants() {
 
 bool PlanetManagerImplementation::isExistingPlanetTravelPoint(const String& pointName) {
 	// server/zone/managers/planet/PlanetManager.idl():  		return planetTravelPointList.contains(pointName);
-	return (&planetTravelPointList)->contains(pointName);
+	return planetTravelPointList->contains(pointName);
 }
 
 bool PlanetManagerImplementation::isInterplanetaryTravelAllowed(const String& pointName) {
 	// server/zone/managers/planet/PlanetManager.idl():  		PlanetTravelPoint ptp = planetTravelPointList.get(pointName);
-	PlanetTravelPoint* ptp = (&planetTravelPointList)->get(pointName);
+	PlanetTravelPoint* ptp = planetTravelPointList->get(pointName);
 	// server/zone/managers/planet/PlanetManager.idl():  		return 
 	if (ptp == NULL)	// server/zone/managers/planet/PlanetManager.idl():  			return false;
 	return false;
@@ -930,7 +936,7 @@ bool PlanetManagerImplementation::isInterplanetaryTravelAllowed(const String& po
 
 PlanetTravelPoint* PlanetManagerImplementation::getPlanetTravelPoint(const String& pointName) {
 	// server/zone/managers/planet/PlanetManager.idl():  		return planetTravelPointList.get(pointName);
-	return (&planetTravelPointList)->get(pointName);
+	return planetTravelPointList->get(pointName);
 }
 
 /*

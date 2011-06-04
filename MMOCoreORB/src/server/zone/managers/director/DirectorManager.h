@@ -9,6 +9,7 @@
 #define DIRECTORMANAGER_H_
 
 #include "engine/engine.h"
+#include "DirectorSharedMemory.h"
 
 class ScreenPlayTask;
 
@@ -31,8 +32,11 @@ namespace server {
 
 	class DirectorManager : public Singleton<DirectorManager>, public Object, public Logger, public ReadWriteLock {
 		ThreadLocal<Lua*> localLua;
-
-		HashTable<String, uint64> sharedMemory;
+#ifdef WITH_STM
+		TransactionalReference<DirectorSharedMemory* > sharedMemory;
+#else
+		Reference<DirectorSharedMemory* > sharedMemory;
+#endif
 
 	public:
 		DirectorManager();

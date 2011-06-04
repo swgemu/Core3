@@ -58,6 +58,7 @@ import server.zone.objects.scene.SceneObject;
 import server.zone.objects.intangible.ControlDevice;
 import server.zone.objects.area.ActiveArea;
 include server.zone.objects.scene.variables.DeltaVector;
+include server.zone.objects.creature.variables.CommandQueueActionVector;
 include server.zone.objects.scene.variables.DeltaVectorMap;
 include server.zone.objects.creature.variables.SkillBoxList;
 include server.zone.objects.creature.variables.CommandQueueAction;
@@ -163,7 +164,7 @@ class CreatureObject extends TangibleObject {
 	protected DeltaVectorMap<string, long> skillModList;
 		
 	@dereferenced
-	protected Vector<CommandQueueAction> commandQueue;
+	protected CommandQueueActionVector commandQueue;
 	
 	@dereferenced
 	protected Time nextAction;

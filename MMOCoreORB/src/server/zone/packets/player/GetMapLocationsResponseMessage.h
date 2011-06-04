@@ -60,7 +60,9 @@ public:
 
 		insertAscii(planet);
 
+#ifndef WITH_STM
 		mapLocations->rlock();
+#endif
 
 		insertInt(0);
 
@@ -71,8 +73,8 @@ public:
 				SortedVector<MapLocationEntry>& sortedVector = mapLocations->get(i);
 
 				for (int j = 0; j < sortedVector.size(); ++j) {
-					sortedVector.elementAt(j).insertToMessage(this);
-					++totalEntries;
+					if (sortedVector.elementAt(j).insertToMessage(this))
+						++totalEntries;
 				}
 			}
 
@@ -81,7 +83,9 @@ public:
 			e.printStackTrace();
 		}
 
+#ifndef WITH_STM
 		mapLocations->runlock();
+#endif
 
 		insertInt(12 + planet.length(), totalEntries);
 

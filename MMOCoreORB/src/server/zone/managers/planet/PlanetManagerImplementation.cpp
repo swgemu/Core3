@@ -56,7 +56,7 @@ void PlanetManagerImplementation::initialize() {
 	else
 		error("Failed to load terrain file.");
 
-	planetTravelPointList.setZoneName(zone->getZoneName());
+	planetTravelPointList->setZoneName(zone->getZoneName());
 
 	loadClientRegions();
 	loadLuaConfig();
@@ -91,7 +91,7 @@ void PlanetManagerImplementation::loadLuaConfig() {
 
 	if (luaObject.isValidTable()) {
 		LuaObject planetTravelPointsTable = luaObject.getObjectField("planetTravelPoints");
-		planetTravelPointList.readLuaObject(&planetTravelPointsTable);
+		planetTravelPointList->readLuaObject(&planetTravelPointsTable);
 		planetTravelPointsTable.pop();
 
 		loadSnapshotObjects();
@@ -277,7 +277,7 @@ bool PlanetManagerImplementation::isTravelToLocationPermitted(const String& depa
 
 void PlanetManagerImplementation::sendPlanetTravelPointListResponse(PlayerCreature* player) {
 	PlanetTravelPointListResponse* ptplr = new PlanetTravelPointListResponse(zone->getZoneName());
-	planetTravelPointList.insertToMessage(ptplr);
+	planetTravelPointList->insertToMessage(ptplr);
 
 	player->sendMessage(ptplr);
 }
@@ -285,8 +285,8 @@ void PlanetManagerImplementation::sendPlanetTravelPointListResponse(PlayerCreatu
 PlanetTravelPoint* PlanetManagerImplementation::getNearestPlanetTravelPoint(SceneObject* object, float range) {
 	Reference<PlanetTravelPoint*> planetTravelPoint = NULL;
 
-	for (int i = 0; i < planetTravelPointList.size(); ++i) {
-		Reference<PlanetTravelPoint*> ptp = planetTravelPointList.get(i);
+	for (int i = 0; i < planetTravelPointList->size(); ++i) {
+		Reference<PlanetTravelPoint*> ptp = planetTravelPointList->get(i);
 
 		Coordinate coord;
 		coord.setPosition(ptp->getX(), ptp->getZ(), ptp->getY());
@@ -337,18 +337,18 @@ void PlanetManagerImplementation::loadClientRegions() {
 		row->getValue(2, y);
 		row->getValue(3, radius);
 
-		ManagedReference<CityRegion*> cityRegion = cityRegionMap.getRegion(regionName);
+		ManagedReference<CityRegion*> cityRegion = cityRegionMap->getRegion(regionName);
 
 		//If the cityRegion hasn't already been created, then create it.
 		if (cityRegion == NULL) {
 			cityRegion = new CityRegion(regionName);
-			cityRegionMap.addRegion(cityRegion);
+			cityRegionMap->addRegion(cityRegion);
 		}
 
 		cityRegion->addActiveArea(zone, x, y, radius);
 	}
 
-	info("Added " + String::valueOf(cityRegionMap.getTotalRegions()) + " client regions.");
+	info("Added " + String::valueOf(cityRegionMap->getTotalRegions()) + " client regions.");
 }
 
 void PlanetManagerImplementation::loadPlayerRegions() {

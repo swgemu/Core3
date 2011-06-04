@@ -273,12 +273,16 @@ void ZoneImplementation::addSceneObject(SceneObject* object) {
 
 //TODO: Do we need to send out some type of update when this happens?
 void ZoneImplementation::registerObjectWithPlanetaryMap(SceneObject* object) {
+#ifndef WITH_STM
 	Locker locker(mapLocations);
+#endif
 	mapLocations->addObject(object);
 }
 
 void ZoneImplementation::unregisterObjectWithPlanetaryMap(SceneObject* object) {
+#ifndef WITH_STM
 	Locker locker(mapLocations);
+#endif
 	mapLocations->dropObject(object);
 }
 
@@ -295,8 +299,9 @@ void ZoneImplementation::sendMapLocationsTo(SceneObject* player) {
 CloningBuildingObject* ZoneImplementation::getNearestCloningBuilding(CreatureObject* creature) {
 	ManagedReference<CloningBuildingObject*> cloning = NULL;
 
+#ifndef WITH_STM
 	mapLocations->rlock();
-
+#endif
 	try {
 		//cloning type 5
 
@@ -322,12 +327,16 @@ CloningBuildingObject* ZoneImplementation::getNearestCloningBuilding(CreatureObj
 
 		}
 	} catch (...) {
+#ifndef WITH_STM
 		mapLocations->runlock();
+#endif
 
 		throw;
 	}
 
+#ifndef WITH_STM
 	mapLocations->runlock();
+#endif
 
 	return cloning.get();
 }
@@ -335,7 +344,9 @@ CloningBuildingObject* ZoneImplementation::getNearestCloningBuilding(CreatureObj
 SceneObject* ZoneImplementation::getNearestPlanetaryObject(SceneObject* object, const String& mapObjectLocationType) {
 	ManagedReference<SceneObject*> planetaryObject = NULL;
 
+#ifndef WITH_STM
 	mapLocations->rlock();
+#endif
 
 	try {
 		//cloning type 5
@@ -360,13 +371,16 @@ SceneObject* ZoneImplementation::getNearestPlanetaryObject(SceneObject* object, 
 
 		}
 	} catch (...) {
+#ifndef WITH_STM
 		mapLocations->runlock();
+#endif
 
 		throw;
 	}
 
+#ifndef WITH_STM
 	mapLocations->runlock();
-
+#endif
 	return planetaryObject.get();
 }
 
@@ -374,16 +388,24 @@ SortedVector<ManagedReference<SceneObject*> > ZoneImplementation::getPlanetaryOb
 	SortedVector<ManagedReference<SceneObject*> > retVector;
 	retVector.setNoDuplicateInsertPlan();
 
+#ifndef WITH_STM
 	mapLocations->rlock();
+#endif
 
-	SortedVector<MapLocationEntry>& entryVector = mapLocations->getLocation(mapObjectLocationType);
+	try {
+		SortedVector<MapLocationEntry>& entryVector = mapLocations->getLocation(mapObjectLocationType);
 
-	for (int i = 0; i < entryVector.size(); ++i) {
-		MapLocationEntry entry = entryVector.get(i);
-		retVector.put(entry.getObject());
+		for (int i = 0; i < entryVector.size(); ++i) {
+			MapLocationEntry entry = entryVector.get(i);
+			retVector.put(entry.getObject());
+		}
+	} catch (...) {
+
 	}
 
+#ifndef WITH_STM
 	mapLocations->runlock();
+#endif
 
 	return retVector;
 }

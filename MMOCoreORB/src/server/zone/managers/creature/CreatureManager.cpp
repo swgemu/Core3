@@ -451,13 +451,13 @@ CreatureManagerImplementation::CreatureManagerImplementation(Zone* planet) : Zon
 	_initializeImplementation();
 	// server/zone/managers/creature/CreatureManager.idl():  		zone = planet;
 	zone = planet;
+	// server/zone/managers/creature/CreatureManager.idl():  		setCreatureTemplateManager();
+	setCreatureTemplateManager();
 	// server/zone/managers/creature/CreatureManager.idl():  		spawnedRandomCreatures = 0;
 	spawnedRandomCreatures = 0;
 }
 
 void CreatureManagerImplementation::initialize() {
-	// server/zone/managers/creature/CreatureManager.idl():  		setCreatureTemplateManager();
-	setCreatureTemplateManager();
 	// server/zone/managers/creature/CreatureManager.idl():  		loadSpawnAreas();
 	loadSpawnAreas();
 	// server/zone/managers/creature/CreatureManager.idl():  		loadTrainers();

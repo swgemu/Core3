@@ -457,8 +457,8 @@ void AiAgentImplementation::notifyDissapear(QuadTreeEntry* entry) {
 
 	if (scno->isPlayerCreature()) {
 		if ((--numberOfPlayersInRange <= 0)  && (despawnEvent == NULL)) {
-			despawnEvent = new DespawnCreatureOnPlayerDissappear(_this);
-			despawnEvent->schedule(30000);
+			/*despawnEvent = new DespawnCreatureOnPlayerDissappear(_this);
+			despawnEvent->schedule(30000);*/
 		}
 	}
 }

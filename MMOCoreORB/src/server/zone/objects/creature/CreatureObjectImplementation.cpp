@@ -221,11 +221,7 @@ void CreatureObjectImplementation::loadTemplateData(SharedObjectTemplate* templa
 }
 
 void CreatureObjectImplementation::finalize() {
-	for (int i = 0; i < commandQueue.size(); ++i) {
-		delete commandQueue.get(i);
-	}
 
-	commandQueue.removeAll();
 }
 
 void CreatureObjectImplementation::sendBaselinesTo(SceneObject* player) {
@@ -1204,13 +1200,13 @@ void CreatureObjectImplementation::activateQueueAction() {
 	if (commandQueue.size() == 0)
 		return;
 
-	CommandQueueAction* action = commandQueue.remove(0);
+	Reference<CommandQueueAction*> action = commandQueue.remove(0);
 
 	ManagedReference<ObjectController*> objectController = getZoneServer()->getObjectController();
 
 	float time = objectController->activateCommand(_this, action->getCommand(), action->getActionCounter(), action->getTarget(), action->getArguments());
 
-	delete action;
+	//delete action;
 
 	nextAction.updateToCurrentTime();
 
@@ -1235,7 +1231,6 @@ void CreatureObjectImplementation::deleteQueueAction(uint32 actionCount) {
 
 		if (action->getActionCounter() == actionCount) {
 			commandQueue.remove(i);
-			delete action;
 			break;
 		}
 	}
