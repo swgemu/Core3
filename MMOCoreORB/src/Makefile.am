@@ -289,6 +289,9 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/status/StatusServer.cpp \
 		server/ServerCore.cpp \
 		server/web/WebServer.cpp \
+		server/web/HttpRequest.cpp \
+		server/web/HttpResponse.cpp \
+		server/web/session/HttpSession.cpp \
 		server/web/servlets/Servlet.cpp \
 		server/web/servlets/resource/ResourceServlet.cpp \
 		server/web/mongoose/mongoose.c \

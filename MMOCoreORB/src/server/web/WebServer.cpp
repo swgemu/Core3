@@ -258,16 +258,17 @@ HttpSession* WebServer::getSession(const struct mg_request_info *request_info) {
 	HttpSession* session = NULL;
 
 	if(activeSessions.contains(request_info->remote_ip)) {
-		session = activeSessions.get();
+		session = activeSessions.get((uint32)request_info->remote_ip);
 
 		if(!session->isValid()) {
 			activeSessions.drop(request_info->remote_ip);
 			delete session;
 		}
 		else {
-			session->update(request_info->uri);
+			session->update(request_info);
 			return session;
 		}
+	}
 
 	HttpSession* newSession = new HttpSession(request_info);
 
