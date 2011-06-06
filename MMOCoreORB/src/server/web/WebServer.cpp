@@ -75,6 +75,10 @@ WebServer::~WebServer() {
 		delete contexts.remove(0).getValue();
 	}
 
+	while(activeSessions.size() > 0) {
+		delete activeSessions.remove(0).getValue();
+	}
+
 }
 
 void WebServer::start(ConfigManager* conf) {
@@ -226,7 +230,7 @@ void* WebServer::uriHandler(
 void* WebServer::routeRequest(struct mg_connection *conn, const struct mg_request_info *request_info) {
 
 	StringBuffer pageBuffer;
-	//HttpSession* session = getSession(request_info);
+	HttpSession* session = getSession(request_info);
 
 	//if(validateCredentials(session)) {
 
@@ -251,6 +255,24 @@ void* WebServer::routeRequest(struct mg_connection *conn, const struct mg_reques
 
 HttpSession* WebServer::getSession(const struct mg_request_info *request_info) {
 
+	HttpSession* session = NULL;
+
+	if(activeSessions.contains(request_info->remote_ip)) {
+		session = activeSessions.get();
+
+		if(!session->isValid()) {
+			activeSessions.drop(request_info->remote_ip);
+			delete session;
+		}
+		else {
+			session->update(request_info->uri);
+			return session;
+		}
+
+	HttpSession* newSession = new HttpSession(request_info);
+
+	activeSessions.put(request_info->remote_ip, newSession);
+	return newSession;
 }
 
 bool WebServer::validateCredentials(HttpSession* session) {

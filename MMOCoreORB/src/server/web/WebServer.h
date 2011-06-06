@@ -69,6 +69,7 @@ class WebServer : public Singleton<WebServer>, public Logger, public Object {
 
 	VectorMap<String, Servlet*> contexts;
 	VectorMap<String, WebCredentials*> authorizedUsers;
+	VectorMap<uint32, HttpSession* > activeSessions;
 
 public:
 	WebServer();
