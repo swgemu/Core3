@@ -15,6 +15,7 @@
 #include "server/zone/managers/creature/CreatureManager.h"
 #include "server/ServerCore.h"
 #include "server/chat/ChatManager.h"
+#include "server/zone/objects/scene/ObserverEventType.h"
 
 DirectorManager::DirectorManager() : Logger("DirectorManager") {
 	info("loading..", true);
@@ -42,6 +43,33 @@ void DirectorManager::initializeLuaEngine(Lua* luaEngine) {
 	lua_register(luaEngine->getLuaState(), "writeSharedMemory", writeSharedMemory);
 	lua_register(luaEngine->getLuaState(), "spawnSceneObject", spawnSceneObject);
 	lua_register(luaEngine->getLuaState(), "getSceneObject", getSceneObject);
+
+	luaEngine->setGlobalInt("POSITIONCHANGED", ObserverEventType::POSITIONCHANGED);
+	luaEngine->setGlobalInt("CLOSECONTAINER", ObserverEventType::CLOSECONTAINER);
+	luaEngine->setGlobalInt("OBJECTDESTRUCTION", ObserverEventType::OBJECTDESTRUCTION);
+	luaEngine->setGlobalInt("SAMPLE", ObserverEventType::SAMPLE);
+	luaEngine->setGlobalInt("CONVERSE", ObserverEventType::CONVERSE);
+	luaEngine->setGlobalInt("KILLEDCREATURE", ObserverEventType::KILLEDCREATURE);
+	luaEngine->setGlobalInt("OBJECTREMOVEDFROMZONE", ObserverEventType::OBJECTREMOVEDFROMZONE);
+	luaEngine->setGlobalInt("ENTEREDAREA", ObserverEventType::ENTEREDAREA);
+	luaEngine->setGlobalInt("EXITEDAREA", ObserverEventType::EXITEDAREA);
+	luaEngine->setGlobalInt("DESTINATIONREACHED", ObserverEventType::DESTINATIONREACHED);
+	luaEngine->setGlobalInt("SPECIALATTACK", ObserverEventType::SPECIALATTACK);
+	luaEngine->setGlobalInt("CALLFORHELP", ObserverEventType::CALLFORHELP);
+	luaEngine->setGlobalInt("NEWBIETUTORIALZOOMCAMERA", ObserverEventType::NEWBIETUTORIALZOOMCAMERA);
+	luaEngine->setGlobalInt("CHAT", ObserverEventType::CHAT);
+	luaEngine->setGlobalInt("NEWBIETUTORIALHOLOCRON", ObserverEventType::NEWBIETUTORIALHOLOCRON);
+	luaEngine->setGlobalInt("OBJECTINRANGEMOVED", ObserverEventType::OBJECTINRANGEMOVED);
+	luaEngine->setGlobalInt("PLAYERCHANGEDTARGET", ObserverEventType::PLAYERCHANGEDTARGET);
+	luaEngine->setGlobalInt("STARTCONVERSATION", ObserverEventType::STARTCONVERSATION);
+	luaEngine->setGlobalInt("SELECTCONVERSATION", ObserverEventType::SELECTCONVERSATION);
+	luaEngine->setGlobalInt("STOPCONVERSATION", ObserverEventType::STOPCONVERSATION);
+	luaEngine->setGlobalInt("OPENCONTAINER", ObserverEventType::OPENCONTAINER);
+	luaEngine->setGlobalInt("NEWBIEOPENINVENTORY", ObserverEventType::NEWBIEOPENINVENTORY);
+	luaEngine->setGlobalInt("NEWBIECLOSEINVENTORY", ObserverEventType::NEWBIECLOSEINVENTORY);
+	luaEngine->setGlobalInt("OBJECTRADIALUSED", ObserverEventType::OBJECTRADIALUSED);
+	luaEngine->setGlobalInt("DAMAGERECEIVED", ObserverEventType::DAMAGERECEIVED);
+
 
 	Luna<LuaBuildingObject>::Register(luaEngine->getLuaState());
 	Luna<LuaCreatureObject>::Register(luaEngine->getLuaState());

@@ -42,7 +42,7 @@ function TutorialScreenPlay:spawnObjects(creatureObject)
 
 	--spawn officer
 	spawnedPointer = spawnMobile("tutorial", "imperial_officer_tutorial_1", 26.7, 0, -31.9, targetCellObject:getObjectID())
-	createObserver(17, "TutorialScreenPlay", "officer1", spawnedPointer) --move observer
+	createObserver(OBJECTINRANGEMOVED, "TutorialScreenPlay", "officer1", spawnedPointer) --move observer
 	
 	spawnedSceneObject:_setObject(spawnedPointer)
 	spawnedSceneObject:updateDirection(-0.71, 0, 0.71, 0)
@@ -66,7 +66,7 @@ function TutorialScreenPlay:spawnObjects(creatureObject)
 		--check if its maroj melon, register use now
 		
 		if itemObj:getGameObjectType() == 8202 then -- food
-			createObserver(25, "TutorialScreenPlay", "foodUsed", item)
+			createObserver(OBJECTRADIALUSED, "TutorialScreenPlay", "foodUsed", item)
 		end 
 		
 		inventoryObj:removeObject(item, 1)
@@ -78,7 +78,7 @@ function TutorialScreenPlay:spawnObjects(creatureObject)
 	--spawn second officer banker
 	spawnedPointer = spawnMobile("tutorial", "imperial_officer_tutorial_2", 44, 0, 2, targetCellObject:getObjectID())
 	--create observer to catch when the player stops talking
-	createObserver(21, "TutorialScreenPlay", "bankerStopConversation", spawnedPointer)
+	createObserver(STOPCONVERSATION, "TutorialScreenPlay", "bankerStopConversation", spawnedPointer)
 	spawnedSceneObject:_setObject(spawnedPointer)
 	spawnedSceneObject:updateDirection(0.418, 0, 0.908, 0)
 	
@@ -93,12 +93,12 @@ function TutorialScreenPlay:spawnObjects(creatureObject)
 	
 	writeData(creature:getObjectID() .. ":tutorial:bank", spawnedSceneObject:getObjectID())
 	-- create use observer
-	createObserver(25, "TutorialScreenPlay", "bankUseObserver", spawnedPointer)
+	createObserver(OBJECTRADIALUSED, "TutorialScreenPlay", "bankUseObserver", spawnedPointer)
 	
 	--spawn bazaar
 	spawnedPointer = spawnSceneObject("tutorial", "object/tangible/terminal/terminal_bazaar.iff", 38.4, 0, -17.7, targetCellObject:getObjectID(), 0.97, 0, 0.241, 0)
 	spawnedSceneObject:_setObject(spawnedPointer)
-	createObserver(25, "TutorialScreenPlay", "bazaarUseObserver", spawnedPointer)
+	createObserver(OBJECTRADIALUSED, "TutorialScreenPlay", "bazaarUseObserver", spawnedPointer)
 	
 	writeData(creature:getObjectID() .. ":tutorial:bazaar", spawnedSceneObject:getObjectID())
 	
@@ -130,7 +130,7 @@ function TutorialScreenPlay:spawnObjects(creatureObject)
 	targetCellObject:_setObject(buildingObject:getCell(4))
 	spawnedPointer = spawnMobile("tutorial", "protocol_droid_3po_silver", 11.9, -7, -56.4, targetCellObject:getObjectID())
 	spawnedSceneObject:_setObject(spawnedPointer)
-	createObserver(21, "TutorialScreenPlay", "cloningDroidStopConversation", spawnedPointer)
+	createObserver(STOPCONVERSATION, "TutorialScreenPlay", "cloningDroidStopConversation", spawnedPointer)
 	writeData(creature:getObjectID() .. ":tutorial:protocol", spawnedSceneObject:getObjectID())
 	spawnedSceneObject:_setObject(spawnedPointer)
 	spawnedSceneObject:updateDirection(0.707, 0, 0.707, 0)
@@ -139,7 +139,7 @@ function TutorialScreenPlay:spawnObjects(creatureObject)
 	spawnedPointer = spawnSceneObject("tutorial", "object/tangible/terminal/terminal_cloning.iff", 3, -7, -56.5, targetCellObject:getObjectID(), 0.707, 0, 0.707, 0)
 	spawnedSceneObject:_setObject(spawnedPointer)
 	
-	createObserver(25, "TutorialScreenPlay", "cloningUseObserver", spawnedPointer)
+	createObserver(OBJECTRADIALUSED, "TutorialScreenPlay", "cloningUseObserver", spawnedPointer)
 	
 	writeData(creature:getObjectID() .. ":tutorial:clone", spawnedSceneObject:getObjectID())
 	
@@ -148,7 +148,7 @@ function TutorialScreenPlay:spawnObjects(creatureObject)
 	spawnedPointer = spawnSceneObject("tutorial", "object/tangible/terminal/terminal_insurance.iff", 8.4, -7, -64, targetCellObject:getObjectID(), 1, 0, 0, 0)
 	spawnedSceneObject:_setObject(spawnedPointer)
 	
-	createObserver(25, "TutorialScreenPlay", "insuranceUseObserver", spawnedPointer)
+	createObserver(OBJECTRADIALUSED, "TutorialScreenPlay", "insuranceUseObserver", spawnedPointer)
 	
 	writeData(creature:getObjectID() .. ":tutorial:insurance", spawnedSceneObject:getObjectID())
 	
@@ -156,23 +156,23 @@ function TutorialScreenPlay:spawnObjects(creatureObject)
 	--targetCellObject:_setObject(buildingObject:getCell(5))
 	spawnedPointer = spawnMobile("tutorial", "panic_npc_1", -3.3, -7, -75.6, targetCellObject:getObjectID())
 	
-	createObserver(17, "TutorialScreenPlay", "panic1MoveObserver", spawnedPointer) --move observer
+	createObserver(OBJECTINRANGEMOVED, "TutorialScreenPlay", "panic1MoveObserver", spawnedPointer) --move observer
 	
 	
 	--spawn officer3
 	targetCellObject:_setObject(buildingObject:getCell(6))
 	spawnedPointer = spawnMobile("tutorial", "imperial_officer_tutorial_3", 38.1, -7, -79.7, targetCellObject:getObjectID())
 	--create observer to catch when the player stops talking
-	createObserver(21, "TutorialScreenPlay", "officer3StopConversation", spawnedPointer)
-	--createObserver(20, "TutorialScreenPlay", "officer3SelectConversation", spawnedPointer) -- select convo observer
-	createObserver(17, "TutorialScreenPlay", "converseWithOfficer3Observer", spawnedPointer) --move observer
+	createObserver(STOPCONVERSATION, "TutorialScreenPlay", "officer3StopConversation", spawnedPointer)
+	--createObserver(SELECTCONVERSATION, "TutorialScreenPlay", "officer3SelectConversation", spawnedPointer) -- select convo observer
+	createObserver(OBJECTINRANGEMOVED, "TutorialScreenPlay", "converseWithOfficer3Observer", spawnedPointer) --move observer
 	
 	--spawn debris
 	targetCellObject:_setObject(buildingObject:getCell(13))
 	
 	spawnedPointer = spawnSceneObject("tutorial", "object/tangible/newbie_tutorial/debris.iff", 76.9, -4, -94.3, targetCellObject:getObjectID(), 1, 0, 0, 0)
-	createObserver(17, "TutorialScreenPlay", "nearDebrisObserver", spawnedPointer) --move observer
-	createObserver(4, "TutorialScreenPlay", "debrisDestroyedObserver", spawnedPointer) --destroy observer
+	createObserver(OBJECTINRANGEMOVED, "TutorialScreenPlay", "nearDebrisObserver", spawnedPointer) --move observer
+	createObserver(OBJECTDESTRUCTION, "TutorialScreenPlay", "debrisDestroyedObserver", spawnedPointer) --destroy observer
 	
 	--spawn retard to kill
 	targetCellObject:_setObject(buildingObject:getCell(7))
@@ -180,11 +180,11 @@ function TutorialScreenPlay:spawnObjects(creatureObject)
 	spawnedSceneObject:_setObject(spawnedPointer)
 	spawnedSceneObject:updateDirection(0.707, 0, 0.707, 0)
 	--register damage observer
-	createObserver(26, "TutorialScreenPlay", "banditDamageObserver", spawnedPointer) --damage observer
+	createObserver(DAMAGERECEIVED, "TutorialScreenPlay", "banditDamageObserver", spawnedPointer) --damage observer
 	
 	--
-	createObserver(1, "TutorialScreenPlay", "part4StartObserver", creatureObject) --move observer
-	createObserver(1, "TutorialScreenPlay", "part5StartObserver", creatureObject) --move observer
+	createObserver(POSITIONCHANGED, "TutorialScreenPlay", "part4StartObserver", creatureObject) --move observer
+	createObserver(POSITIONCHANGED, "TutorialScreenPlay", "part5StartObserver", creatureObject) --move observer
 	
 	return 1
 end
@@ -247,8 +247,8 @@ function TutorialScreenPlay:thirdAct(creatureObject)
 	creature:playMusicMessage("sound/tut_00_camera.snd")
 	creature:sendNewbieTutorialRequest("zoomCamera")
 	
-	createObserver(14, "TutorialScreenPlay", "zoomEvent", creatureObject)
-	createEvent(18000, "TutorialScreenPlay", "helpZoom", creatureObject)
+	createObserver(NEWBIETUTORIALZOOMCAMERA, "TutorialScreenPlay", "zoomEvent", creatureObject)
+	createEvent(25000, "TutorialScreenPlay", "helpZoom", creatureObject)
 end
 
 function TutorialScreenPlay:helpZoom(creatureObject)
@@ -278,7 +278,7 @@ function TutorialScreenPlay:zoomEvent(creatureObject)
 	
 	creature:sendNewbieTutorialRequest("chatbox")
 	createEvent(15000, "TutorialScreenPlay", "helpChat", creatureObject)
-	createObserver(15, "TutorialScreenPlay", "chatEvent", creatureObject)
+	createObserver(CHAT, "TutorialScreenPlay", "chatEvent", creatureObject)
 	
 	return 1 -- 1 to remove observer from observable
 end
@@ -290,7 +290,7 @@ function TutorialScreenPlay:chatEvent(creatureObject)
 	--creature:sendNewbieTutorialEnableHudElement("chatbox", 1)
 		
 	creature:sendOpenHolocronToPageMessage()
-	createObserver(16, "TutorialScreenPlay", "holocronEvent", creatureObject)
+	createObserver(NEWBIETUTORIALHOLOCRON, "TutorialScreenPlay", "holocronEvent", creatureObject)
 	creature:sendNewbieTutorialRequest("closeHolocron")
 	
 	creature:sendSystemMessage("@newbie_tutorial/system_messages:holocube")
@@ -336,7 +336,7 @@ function TutorialScreenPlay:itemRoomCheck(creatureObject)
 		creature:sendSystemMessage("@newbie_tutorial/system_messages:part_2")
 		
 		createEvent(1000, "TutorialScreenPlay", "part2Start", creatureObject)
-		createObserver(18, "TutorialScreenPlay", "officerTargetEvent", creatureObject)
+		createObserver(PLAYERCHANGEDTARGET, "TutorialScreenPlay", "officerTargetEvent", creatureObject)
 	end
 end
 
@@ -412,7 +412,7 @@ function TutorialScreenPlay:officerTargetEvent(creatureObject, targetCreature)
 		player:playMusicMessage("sound/tut_09_lookat.snd")
 		
 		createEvent(5000, "TutorialScreenPlay", "tutorial10", creatureObject)
-		createObserver(19, "TutorialScreenPlay", "officerConversation", targetCreature)
+		createObserver(STARTCONVERSATION, "TutorialScreenPlay", "officerConversation", targetCreature)
 		
 		return 1
 	else
@@ -457,7 +457,7 @@ function TutorialScreenPlay:officerConversation(creatureObject, playerObject)
 	player:playMusicMessage("sound/tut_12_conversation.snd")
 	
 	--createEvent(12000, "TutorialScreenPlay", "tutorial13", playerObject)
-	createObserver(20, "TutorialScreenPlay", "tutorial13", creatureObject)
+	createObserver(SELECTCONVERSATION, "TutorialScreenPlay", "tutorial13", creatureObject)
 	
 	return 1
 end
@@ -468,7 +468,7 @@ function TutorialScreenPlay:tutorial13(creatureObject, playerObject)
 	creature:sendSystemMessage("@newbie_tutorial/system_messages:tut_13")
 	creature:playMusicMessage("sound/tut_13_justtype.snd")
 	
-	createObserver(21, "TutorialScreenPlay", "stopConversation", creatureObject)
+	createObserver(STOPCONVERSATION, "TutorialScreenPlay", "stopConversation", creatureObject)
 	
 	return 1
 end
@@ -488,7 +488,7 @@ function TutorialScreenPlay:stopConversation(creatureObject, playerObject)
 	creature:sendSystemMessage("@newbie_tutorial/system_messages:prompt_open_box")
 	creature:playMusicMessage("sound/tut_14_openbox.snd")
 	
-	createObserver(22, "TutorialScreenPlay", "openDrumEvent", drumRawPointer)
+	createObserver(OPENCONTAINER, "TutorialScreenPlay", "openDrumEvent", drumRawPointer)
 	
 	createEvent(5000, "TutorialScreenPlay", "drumTargetEvent", playerObject)
 	
@@ -517,7 +517,7 @@ function TutorialScreenPlay:openDrumEvent(drumObject, creatureObject)
 	player:sendSystemMessage("@newbie_tutorial/system_messages:prompt_take_items")
 	player:playMusicMessage("sound/tut_16_a_youcantake.snd")
 	
-	createObserver(2, "TutorialScreenPlay", "closeDrumEvent", drumObject)
+	createObserver(CLOSECONTAINER, "TutorialScreenPlay", "closeDrumEvent", drumObject)
 	
 	return 1
 end
@@ -553,7 +553,7 @@ function TutorialScreenPlay:openInventory2(creatureObject)
 	player:sendSystemMessage("@newbie_tutorial/system_messages:repeat_open_inventory")
 	player:playMusicMessage("sound/tut_25_openinventory.snd")
 	
-	createObserver(23, "TutorialScreenPlay", "openInventoryObserver", creatureObject)
+	createObserver(NEWBIEOPENINVENTORY, "TutorialScreenPlay", "openInventoryObserver", creatureObject)
 end
 
 function TutorialScreenPlay:openInventoryObserver(creatureObject)
@@ -562,7 +562,7 @@ function TutorialScreenPlay:openInventoryObserver(creatureObject)
 	player:sendSystemMessage("@newbie_tutorial/system_messages:prompt_find_food")
 	player:playMusicMessage("sound/tut_20_selectfooditem.snd")
 	player:sendNewbieTutorialRequest("closeInventory")
-	createObserver(24, "TutorialScreenPlay", "closeInventoryObserver", creatureObject)
+	createObserver(NEWBIECLOSEINVENTORY, "TutorialScreenPlay", "closeInventoryObserver", creatureObject)
 		
 	return 1
 end
@@ -585,7 +585,7 @@ function TutorialScreenPlay:foodUsed(foodObject, creatureObject, selectedID)
 	player:sendSystemMessage("@newbie_tutorial/system_messages:explain_item_used")
 	player:playMusicMessage("sound/tut_22_attributes.snd")
 	
-	createEvent(5000, "TutorialScreenPlay", "activateToolbar", creatureObject)
+	createEvent(10000, "TutorialScreenPlay", "activateToolbar", creatureObject)
 	
 	return 1
 end
@@ -658,8 +658,8 @@ function TutorialScreenPlay:bankerStopConversation(creatureObject, playerObject)
 	createEvent(1000, "TutorialScreenPlay", "activateBankUseCheck", playerObject)
 	createEvent(1000, "TutorialScreenPlay", "activateBazaarUseCheck", playerObject)
 	
-	createObserver(18, "TutorialScreenPlay", "activateBankTargetCheck", playerObject)
-	createObserver(18, "TutorialScreenPlay", "activateBazaarTargetCheck", playerObject)
+	createObserver(PLAYERCHANGEDTARGET, "TutorialScreenPlay", "activateBankTargetCheck", playerObject)
+	createObserver(PLAYERCHANGEDTARGET, "TutorialScreenPlay", "activateBazaarTargetCheck", playerObject)
 	
 	return 1
 end
@@ -995,7 +995,7 @@ function TutorialScreenPlay:part5StartObserver(creatureObject)
 			
 			createEvent(9000, "TutorialScreenPlay", "explainOverlayMap", creatureObject)
 			
-			--createObserver(1, "TutorialScreenPlay", "officer3Start", creatureObject) --move observer
+			--createObserver(POSITIONCHANGED, "TutorialScreenPlay", "officer3Start", creatureObject) --move observer
 			
 			return 1
 		end
@@ -1076,7 +1076,7 @@ function TutorialScreenPlay:debrisDestroyedObserver(debrisObject, playerObject)
 	player:sendSystemMessage("@newbie_tutorial/system_messages:explain_combat_1")
 	player:playMusicMessage("sound/tut_47_defaultattack.snd")
 	
-	createEvent(8000, "TutorialScreenPlay", "explainCombat", playerObject)
+	createEvent(15000, "TutorialScreenPlay", "explainCombat", playerObject)
 	
 	return 1
 end
