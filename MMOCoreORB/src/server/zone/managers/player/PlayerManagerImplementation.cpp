@@ -353,12 +353,10 @@ bool PlayerManagerImplementation::createPlayer(MessageCallback* data) {
 	UnicodeString name;
 	callback->getCharacterName(name);
 
-#ifndef WITH_STM
 	if (!checkPlayerName(callback)) {
 		info("invalid name " + name.toString());
 		return false;
 	}
-#endif
 
 	ProfessionManager* professionManager = server->getProfessionManager();
 	String profession;

@@ -86,7 +86,7 @@ void ClientCore::run() {
 		info(String::valueOf(connectCount) + " connects, " + String::valueOf(disconnectCount) + " disconnects. " +
 				String::valueOf(++rounds) + " rounds", true);
 
-		Thread::sleep(1000 + System::random(4000));
+		Thread::sleep(100 + System::random(400));
 	}
 
 	//handleCommands();

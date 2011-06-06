@@ -1076,10 +1076,6 @@ int ObjectManager::commitDestroyObjectToDB(uint64 objectID) {
 }
 
 void ObjectManager::updateModifiedObjectsToDatabase(bool startTask) {
-#ifdef WITH_STM
-	return;
-#endif
-
 	//ObjectDatabaseManager::instance()->checkpoint();
 
 	if (objectUpdateInProcess) {

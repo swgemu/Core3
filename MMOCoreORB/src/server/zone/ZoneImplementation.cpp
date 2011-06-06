@@ -122,10 +122,8 @@ void ZoneImplementation::startManagers() {
 
 	planetManager->initialize();
 
-	//FIXME
-#ifndef WITH_STM
 	creatureManager->initialize();
-#endif
+
 	cityManager->loadLuaConfig();
 
 	ObjectDatabaseManager::instance()->commitLocalTransaction();

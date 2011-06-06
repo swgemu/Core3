@@ -9,10 +9,6 @@
 #include "UpdateModifiedObjectsThread.h"
 
 void UpdateModifiedObjectsThread::run() {
-#ifdef WITH_STM
-	return;
-#endif
-
 	while (doRun) {
 		blockMutex.lock();
 
