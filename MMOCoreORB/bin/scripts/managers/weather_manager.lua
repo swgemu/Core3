@@ -136,7 +136,7 @@
 --   Corellia
 -----------------
 corellia_weather = {
-	weatherEnabled = 1,
+	weatherEnabled = 0,
 	startingWeatherID = 5,
 	levelZeroChance = 70,
 	levelOneChance = 14,
@@ -154,7 +154,7 @@ corellia_weather = {
 --   Dantooine
 -----------------
 dantooine_weather = {
-	weatherEnabled = 1,
+	weatherEnabled = 0,
 	startingWeatherID = 5,
 	levelZeroChance = 70,
 	levelOneChance = 14,
@@ -172,7 +172,7 @@ dantooine_weather = {
 --   Dathomir
 -----------------
 dathomir_weather = {
-	weatherEnabled = 1,
+	weatherEnabled = 0,
 	startingWeatherID = 5,
 	levelZeroChance = 70,
 	levelOneChance = 14,
@@ -190,7 +190,7 @@ dathomir_weather = {
 --    Endor
 -----------------
 endor_weather = {
-	weatherEnabled = 1,
+	weatherEnabled = 0,
 	startingWeatherID = 5,
 	levelZeroChance = 70,
 	levelOneChance = 14,
@@ -208,7 +208,7 @@ endor_weather = {
 --     Lok
 -----------------
 lok_weather = {
-	weatherEnabled = 1,
+	weatherEnabled = 0,
 	startingWeatherID = 5,
 	levelZeroChance = 70,
 	levelOneChance = 14,
@@ -232,7 +232,7 @@ lok_weather = {
 --    Naboo
 -----------------
 naboo_weather = {
-	weatherEnabled = 1,
+	weatherEnabled = 0,
 	startingWeatherID = 5,
 	levelZeroChance = 70,
 	levelOneChance = 14,
@@ -250,7 +250,7 @@ naboo_weather = {
 --     Rori
 -----------------
 rori_weather = {
-	weatherEnabled = 1,
+	weatherEnabled = 0,
 	startingWeatherID = 5,
 	levelZeroChance = 70,
 	levelOneChance = 14,
@@ -268,7 +268,7 @@ rori_weather = {
 --    Talus
 -----------------
 talus_weather = {
-	weatherEnabled = 1,
+	weatherEnabled = 0,
 	startingWeatherID = 5,
 	levelZeroChance = 70,
 	levelOneChance = 14,
@@ -286,7 +286,7 @@ talus_weather = {
 --   Tatooine 
 -----------------
 tatooine_weather = {
-	weatherEnabled = 1,
+	weatherEnabled = 0,
 	startingWeatherID = 5,
 	levelZeroChance = 70,
 	levelOneChance = 14,
@@ -310,7 +310,7 @@ tatooine_weather = {
 --    Yavin4
 -----------------
 yavin4_weather = {
-	weatherEnabled = 1,
+	weatherEnabled = 0,
 	startingWeatherID = 5,
 	levelZeroChance = 70,
 	levelOneChance = 14,

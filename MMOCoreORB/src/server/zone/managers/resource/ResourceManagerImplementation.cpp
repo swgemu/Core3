@@ -204,8 +204,6 @@ void ResourceManagerImplementation::sendResourceListForSurvey(PlayerCreature* pl
 	try {
 		resourceSpawner->sendResourceListForSurvey(playerCreature, toolType, surveyType);
 	} catch (...) {
-		error("unreported exception caught in ResourceManagerImplementation::sendResourceListForSurvey");
-
 		runlock();
 
 		throw;
@@ -298,8 +296,6 @@ void ResourceManagerImplementation::getResourceListByType(Vector<ManagedReferenc
 		error(e.getMessage());
 		e.printStackTrace();
 	} catch (...) {
-		error("unreported exception caught in void ResourceManagerImplementation::getResourceListByType(Vector<ManagedReference<ResourceSpawn*> >& list, int type, int zoneid)");
-
 		runlock();
 
 		throw;

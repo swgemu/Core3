@@ -51,11 +51,7 @@ void ObjectControllerMessageCallback::parse(Message* message) {
 		e.printStackTrace();
 
 		throw;
-	} catch (...) {
-		System::out << "unknown exception caught in ObjectControllerMessageCallback::parse";
-		throw;
 	}
-
 }
 
 void ObjectControllerMessageCallback::run() {

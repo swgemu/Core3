@@ -73,8 +73,6 @@ public:
 			creature->error(e.getMessage());
 			e.printStackTrace();
 		} catch (...) {
-			creature->error("unreported exception on CommandQueueActionEvent::activate()");
-
 			//creature = NULL;
 
 			throw;

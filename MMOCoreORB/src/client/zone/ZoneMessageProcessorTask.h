@@ -87,10 +87,6 @@ public:
 			//error(msg);
 
 			e.printStackTrace();
-		} catch (...) {
-			System::out << "[LoginMessageProcessor] unreported Exception caught\n";
-
-			throw;
 		}
 
 		delete message;

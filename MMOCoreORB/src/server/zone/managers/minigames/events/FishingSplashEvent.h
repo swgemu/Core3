@@ -81,8 +81,6 @@ public:
 			//player->info("command queue action activated");
 
 		} catch (...) {
-			player->error("unreported exception on FishingSplashEvent::removeSplash()");
-
 			player = NULL;
 
 			throw;

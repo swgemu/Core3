@@ -77,8 +77,6 @@ public:
 			System::out << e.getMessage();
 			e.printStackTrace();
 		} catch (...) {
-			System::out << "unreported exception caught in PlayerMap::put";
-
 			unlock(doLock);
 
 			throw;
@@ -102,8 +100,6 @@ public:
 			System::out << e.getMessage();
 			e.printStackTrace();
 		} catch (...) {
-			System::out << "unreported exception caught in PlayerMapImpl::get";
-
 			unlock(doLock);
 
 			throw;
@@ -127,8 +123,6 @@ public:
 			System::out << e.getMessage();
 			e.printStackTrace();
 		} catch (...) {
-			System::out << "unreported exception caught in PlayerMapImpl::remove";
-
 			unlock(doLock);
 
 			throw;

@@ -36,7 +36,7 @@ public:
         		db->connect(dbName, dbUser, dbPass, dbPort);
 
         		databases->add(db);
-        	} catch (...) {
+        	} catch (const Exception& e) {
 
         	}
         }

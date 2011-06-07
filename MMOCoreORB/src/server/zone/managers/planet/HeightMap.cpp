@@ -94,7 +94,6 @@ float HeightMap::getHeight(float x, float y) {
 
 		runlock();
 	} catch (...) {
-		System::out << "Exception while getting height";
 		runlock();
 
 		throw;

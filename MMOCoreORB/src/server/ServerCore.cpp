@@ -186,7 +186,7 @@ void ServerCore::initialize() {
 
 	#ifdef WITH_STM
 		Task* statiscticsTask = new ZoneStatisticsTask(zoneServerRef);
-		statiscticsTask->schedulePeriodic(1000, 1000);
+		statiscticsTask->schedulePeriodic(1000, 100000);
 	#endif
 
 		info("initialized", true);

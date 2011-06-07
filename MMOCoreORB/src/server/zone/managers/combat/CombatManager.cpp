@@ -1321,8 +1321,6 @@ int CombatManager::doAreaCombatAction(CreatureObject* attacker, TangibleObject* 
 
 		zone->runlock();
 	} catch (...) {
-		error("unreported exception caught in CombatManager::doAreaCombatAction(CreatureObject* attacker, TangibleObject* defenderObject, const CreatureAttackData& data)");
-
 		zone->runlock();
 
 		throw;

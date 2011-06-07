@@ -27,6 +27,33 @@ public:
 		verifiedTrade = false;
 		moneyToTrade = 0;
 
+		addSerializableVariables();
+	}
+
+	TradeContainer(const TradeContainer& tr) : Object() {
+		tradeTargetPlayer = tr.tradeTargetPlayer;
+		itemsToTrade = tr.itemsToTrade;
+		acceptedTrade = tr.acceptedTrade;
+		verifiedTrade = tr.verifiedTrade;
+		moneyToTrade = tr.moneyToTrade;
+
+		addSerializableVariables();
+	}
+
+	TradeContainer& operator=(const TradeContainer& tr) {
+		if (this == &tr)
+			return *this;
+
+		tradeTargetPlayer = tr.tradeTargetPlayer;
+		itemsToTrade = tr.itemsToTrade;
+		acceptedTrade = tr.acceptedTrade;
+		verifiedTrade = tr.verifiedTrade;
+		moneyToTrade = tr.moneyToTrade;
+
+		return *this;
+	}
+
+	void addSerializableVariables() {
 		addSerializableVariable("tradeTargetPlayer", &tradeTargetPlayer);
 		addSerializableVariable("itemsToTrade", &itemsToTrade);
 		addSerializableVariable("acceptedTrade", &acceptedTrade);

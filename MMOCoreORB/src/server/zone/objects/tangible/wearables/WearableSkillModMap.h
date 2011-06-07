@@ -157,10 +157,39 @@ public:
 	 * Constructor
 	 */
 	WearableSkillModMap() {
+		maxAttachments = 0;
+
+		addSerializableVariables();
+	}
+
+	WearableSkillModMap(const WearableSkillModMap& sk) : Object() {
+		innateSkillModMap = sk.innateSkillModMap;
+		attachmentVector = sk.attachmentVector;
+		maxAttachments = sk.maxAttachments;
+		activeSkillModMap = sk.activeSkillModMap;
+		activeSkillModIndex = sk.activeSkillModIndex;
+
+		addSerializableVariables();
+	}
+
+	void addSerializableVariables() {
 		addSerializableVariable("innateSkillModMap", &innateSkillModMap);
 		addSerializableVariable("attachmentVector", &attachmentVector);
 		addSerializableVariable("activeSkillModMap", &activeSkillModMap);
 		addSerializableVariable("activeSkillModIndex", &activeSkillModIndex);
+	}
+
+	WearableSkillModMap& operator=(const WearableSkillModMap& sk) {
+		if (this == &sk)
+			return *this;
+
+		innateSkillModMap = sk.innateSkillModMap;
+		attachmentVector = sk.attachmentVector;
+		maxAttachments = sk.maxAttachments;
+		activeSkillModMap = sk.activeSkillModMap;
+		activeSkillModIndex = sk.activeSkillModIndex;
+
+		return *this;
 	}
 
 	~WearableSkillModMap() {

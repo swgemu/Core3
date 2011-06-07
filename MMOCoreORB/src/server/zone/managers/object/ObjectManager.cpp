@@ -467,6 +467,8 @@ int ObjectManager::commitUpdatePersistentObjectToDB(DistributedObject* object) {
 			ServerDatabase::instance()->executeStatement(query);*/
 	} catch (...) {
 		error("unreported exception caught in ObjectManager::updateToDatabase(SceneObject* object)");
+
+		throw;
 	}
 
 	return 0;
@@ -513,6 +515,8 @@ SceneObject* ObjectManager::loadObjectFromTemplate(uint32 objectCRC) {
 		e.printStackTrace();
 	} catch (...) {
 		error("unreported exception caught in SceneObject* ObjectManager::loadObjectFromTemplate(uint32 objectCRC)");
+
+		throw;
 	}
 
 	return object;
@@ -696,6 +700,8 @@ DistributedObjectStub* ObjectManager::loadPersistentObject(uint64 objectID) {
 		}
 	} catch (...) {
 		error("could not load object from database");
+
+		throw;
 	}
 
 	return object;
@@ -723,6 +729,8 @@ void ObjectManager::deSerializeObject(ManagedObject* object, ObjectInputStream* 
 		error("could not deserialize object from DB");
 	} catch (...) {
 		error("could not deserialize object from DB");
+
+		throw;
 	}
 }
 
@@ -750,6 +758,8 @@ void ObjectManager::deSerializeObject(SceneObject* object, ObjectInputStream* da
 		error("could not deserialize object from DB");
 	} catch (...) {
 		error("could not deserialize object from DB");
+
+		throw;
 	}
 }
 

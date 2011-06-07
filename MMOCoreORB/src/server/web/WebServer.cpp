@@ -321,7 +321,7 @@ String WebServer::ipStringToLong(String address) {
 				return "";
 			}
 
-		} catch(...) {
+		} catch (const Exception& e) {
 			return "";
 		}
 	}

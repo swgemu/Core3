@@ -76,8 +76,6 @@ void Zone::run() {
 	} catch (sys::lang::Exception& e) {
 		System::out << e.getMessage() << "\n";
 		exit(0);
-	} catch (...) {
-		System::out << "unreported exception\n";
 	}
 }
 

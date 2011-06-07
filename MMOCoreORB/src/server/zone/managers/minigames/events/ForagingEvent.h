@@ -75,14 +75,9 @@ public:
 	}
 
 	void run() {
-		try {
-			ManagedReference<ForageManager*> forageManager = zoneServer->getForageManager();
-			if (forageManager != NULL)
-				forageManager->finishForaging(player, scoutForage, forageX, forageY, zoneName);
-
-		} catch (...) {
-			player->error("unreported exception in ForagingEvent::run()");
-		}
+		ManagedReference<ForageManager*> forageManager = zoneServer->getForageManager();
+		if (forageManager != NULL)
+			forageManager->finishForaging(player, scoutForage, forageX, forageY, zoneName);
 	}
 };
 

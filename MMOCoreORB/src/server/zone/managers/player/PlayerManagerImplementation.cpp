@@ -888,8 +888,6 @@ int PlayerManagerImplementation::notifyDefendersOfIncapacitation(TangibleObject*
 
 		destructedObject->clearCombatState(true);
 	} catch (...) {
-		error("unreported exception caught in int PlayerManagerImplementation::notifyDefendersOfIncapacitation");
-
 		if (destructor != destructedObject)
 			destructor->wlock(destructedObject);
 
@@ -1407,8 +1405,6 @@ void PlayerManagerImplementation::handleAbortTradeMessage(PlayerCreature* player
 		player->unlock(doLock);
 	} catch (...) {
 		player->unlock(doLock);
-
-		error("Unreported exception caught in PlayerManagerImplementation::handleAbortTradeMessage(Player* player)");
 
 		throw;
 	}

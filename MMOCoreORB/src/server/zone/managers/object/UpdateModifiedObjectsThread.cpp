@@ -96,5 +96,7 @@ void UpdateModifiedObjectsThread::commitObjectsToDatabase() {
 		objectManager->error(e.getMessage());
 	} catch (...) {
 		objectManager->error("unreported exception caught");
+
+		throw;
 	}
 }

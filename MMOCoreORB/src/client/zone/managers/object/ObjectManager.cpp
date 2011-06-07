@@ -143,10 +143,6 @@ SceneObject* ObjectManager::createObject(uint32 objectCRC, uint64 objectID) {
 		error(e.getMessage());
 
 		e.printStackTrace();
-	} catch (...) {
-		error("unreported exception caught in SceneObject* ObjectManager::loadObjectFromTemplate(uint32 objectCRC)");
-
-		throw;
 	}
 
 	return object;

@@ -216,10 +216,6 @@ void ClientCore::handleCommands() {
 			error(e.getMessage());
 			e.printStackTrace();
 
-		} catch (...) {
-			System::out << "[ClientCore] unreported Exception caught\n";
-
-			throw;
 		}
 	}
 }
@@ -244,8 +240,6 @@ int main(int argc, char* argv[]) {
 	} catch (Exception& e) {
 		System::out << e.getMessage() << "\n";
 		e.printStackTrace();
-	} catch (...) {
-		System::out << "unreported exception caught main()\n";
 	}
 
 	return 0;

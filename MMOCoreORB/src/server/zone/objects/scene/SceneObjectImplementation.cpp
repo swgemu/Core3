@@ -562,7 +562,6 @@ void SceneObjectImplementation::sendAttributeListTo(PlayerCreature* object) {
 		delete alm;
 		alm = NULL;
 	} catch (...) {
-		error("unreported exception caught in SceneObjectImplementation::sendAttributeListTo");
 		delete alm;
 		alm = NULL;
 
@@ -779,11 +778,11 @@ void SceneObjectImplementation::notifyCloseContainer(PlayerCreature* player) {
 }
 
 void SceneObjectImplementation::notifyPositionUpdate(QuadTreeEntry* entry) {
-	//notifyObservers(ObserverEventType::OBJECTINRANGEMOVED, entry);
-	if (_this == NULL || entry == NULL || _this == entry)
-		return;
+	notifyObservers(ObserverEventType::OBJECTINRANGEMOVED, entry);
+	/*if (_this == NULL || entry == NULL || _this == entry)
+		return;*/
 
-	Core::getTaskManager()->executeTask(new PositionUpdateTask(_this, entry));
+	//Core::getTaskManager()->executeTask(new PositionUpdateTask(_this, entry));
 }
 
 void SceneObjectImplementation::updateZoneWithParent(SceneObject* newParent, bool lightUpdate, bool sendPackets) {

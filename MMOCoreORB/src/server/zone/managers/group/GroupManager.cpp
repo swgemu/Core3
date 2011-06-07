@@ -232,8 +232,6 @@ void GroupManager::leaveGroup(ManagedReference<GroupObject*> group, CreatureObje
 		e.printStackTrace();
 
 	} catch (...) {
-		System::out << "Exception in GroupManager::leaveGroup(GroupObject* group, CreatureObject* player)\n";
-
 		player->wlock();
 
 		throw;
@@ -271,7 +269,6 @@ void GroupManager::disbandGroup(ManagedReference<GroupObject*> group, CreatureOb
 		group->unlock();
 	} catch (...) {
 		group->unlock();
-		System::out << "Exception in GroupManager::disbandGroup(GroupObject* group, CreatureObject* player)\n";
 
 		player->wlock();
 
@@ -328,7 +325,6 @@ void GroupManager::kickFromGroup(ManagedReference<GroupObject*> group, CreatureO
 		group->unlock();
 
 	} catch (...) {
-		System::out << "Exception in GroupManager::kickFromGroup(GroupObject* group, CreatureObject* player, CreatureObject* playerToKick)\n";
 		group->unlock();
 
 		player->wlock();
@@ -356,7 +352,6 @@ void GroupManager::kickFromGroup(ManagedReference<GroupObject*> group, CreatureO
 
 			playerToKick->unlock();
 		} catch (...) {
-			System::out << "Exception in GroupManager::kickFromGroup(GroupObject* group, CreatureObject* player, CreatureObject* playerToKick)\n";
 			playerToKick->unlock();
 
 			player->wlock();
@@ -414,8 +409,6 @@ void GroupManager::makeLeader(GroupObject* group, CreatureObject* player, Creatu
 		group->unlock();
 
 		player->wlock();
-
-		System::out << "Exception in GroupManager::makeLeader(GroupObject* group, CreatureObject* player, CreatureObject* newLeader)\n";
 
 		throw;
 	}

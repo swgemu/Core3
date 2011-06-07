@@ -267,7 +267,7 @@ void ChatManagerImplementation::handleSocialInternalMessage(CreatureObject* send
 		emoteid = tokenizer.getIntToken();
 		unkint = tokenizer.getIntToken();
 		unkint2 = tokenizer.getIntToken();
-	} catch (...) {
+	} catch (const Exception& e) {
 		return;
 	}
 
@@ -612,7 +612,6 @@ void ChatManagerImplementation::handleGroupChat(PlayerCreature* sender, const Un
 
 		group->unlock();
 	} catch (...) {
-		System::out << "Exception in ChatManagerImplementation::handleGroupChat(Player* sender, Message* pack)\n";
 		group->unlock();
 
 		throw;
