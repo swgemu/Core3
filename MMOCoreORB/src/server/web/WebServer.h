@@ -69,7 +69,8 @@ class WebServer : public Singleton<WebServer>, public Logger, public Object {
 
 	VectorMap<String, Servlet*> contexts;
 	VectorMap<String, WebCredentials*> authorizedUsers;
-	VectorMap<uint32, HttpSession* > activeSessions;
+	VectorMap<uint64, HttpSession* > activeSessions;
+	Vector<String> authorizedIpAddresses;
 
 public:
 	WebServer();
@@ -92,11 +93,19 @@ public:
 private:
 	bool authorize(String username, String password, String ipaddress);
 
-	void* routeRequest(struct mg_connection *conn, const struct mg_request_info *request_info);
+	void* handleRequest(struct mg_connection *conn, const struct mg_request_info *request_info);
 
 	HttpSession* getSession(const struct mg_request_info *request_info);
 
+	bool validateAccess(long remoteIp);
+
+	void displayUnauthorized();
+
 	bool validateCredentials(HttpSession* session);
+
+	void displayUnauthorized(StringBuffer* out);
+
+	void displayLogin(StringBuffer* out);
 
 	bool isValidIp(String address);
 
@@ -104,9 +113,9 @@ private:
 
 	bool isLocalHost(String address);
 
-	String ipStringToLong(String address);
+	uint32 ipStringToLong(String address);
 
-	String longToIP(long address);
+	String ipLongToString(long address);
 };
 
 #endif /* WEBSERVER_H_ */

@@ -25,12 +25,12 @@ public:
 	String queryString;
 	String remoteUser;
 	String logMessage;
-	uint32 remoteIp;
+	uint64 remoteIp;
 	short remotePort;
 	short statusCode;
 	bool ssl;
 	Vector<HttpHeader*> headers;
-	uint32 timestamp;
+	uint64 timestamp;
 
     HttpSession(const struct mg_request_info *request_info);
 	virtual ~HttpSession();
@@ -64,7 +64,7 @@ public:
         return queryString;
     }
 
-    uint32 getRemoteIp() const
+    uint64 getRemoteIp() const
     {
         return remoteIp;
     }

@@ -141,6 +141,8 @@ void WebServer::whitelistInit() {
 
 			if(isValidIp(ipaddress)) {
 
+				authorizedIpAddresses.add(ipaddress);
+
 				WebCredentials* credentials;
 
 				if(authorizedUsers.contains(username)) {
@@ -224,28 +226,36 @@ void* WebServer::uriHandler(
 	    struct mg_connection *conn,
 	    const struct mg_request_info *request_info)
 {
-	return WebServer::instance()->routeRequest(conn, request_info);
+	return WebServer::instance()->handleRequest(conn, request_info);
 }
 
-void* WebServer::routeRequest(struct mg_connection *conn, const struct mg_request_info *request_info) {
+void* WebServer::handleRequest(struct mg_connection *conn, const struct mg_request_info *request_info) {
 
-	StringBuffer pageBuffer;
-	HttpSession* session = getSession(request_info);
+	StringBuffer out;
 
-	//if(validateCredentials(session)) {
+	if(!validateAccess(request_info->remote_ip)) {
 
-		pageBuffer << "HTTP/1.1 200 OK\r\n";
-		pageBuffer << "Content-Type: text/html\r\n\r\n";
-		pageBuffer << "<html>\r\n";
-		pageBuffer << "<body>\r\n";
-		pageBuffer << "<p>Dec ip: " << request_info->remote_ip << "</p>\r\n";
-		pageBuffer << "<p>IP Address: " << longToIP(request_info->remote_ip) << "</p>\r\n";
-		pageBuffer << "<p>Context Requested: " << request_info->uri << "</p>\r\n";
-		pageBuffer << "</body>\r\n";
-		pageBuffer << "</html>\r\n";
-	//}
+		displayUnauthorized(&out);
+		log("Unauthorized login attempt from " + ipLongToString((uint32)request_info->remote_ip));
 
-	String page = pageBuffer.toString();
+	} else if(!validateCredentials(getSession(request_info))) {
+
+		displayLogin(&out);
+
+	} else {
+
+		out << "HTTP/1.1 200 OK\r\n";
+		out << "Content-Type: text/html\r\n\r\n";
+		out << "<html>\r\n";
+		out << "<body>\r\n";
+		out << "<p>Dec ip: " << request_info->remote_ip << "</p>\r\n";
+		out << "<p>IP Address: " << ipLongToString(request_info->remote_ip) << "</p>\r\n";
+		out << "<p>Context Requested: " << request_info->uri << "</p>\r\n";
+		out << "</body>\r\n";
+		out << "</html>\r\n";
+
+	}
+	String page = out.toString();
 
 	if(!page.isEmpty())
 		mg_printf(conn, page.toCharArray());
@@ -253,12 +263,17 @@ void* WebServer::routeRequest(struct mg_connection *conn, const struct mg_reques
 	return (void*)1;
 }
 
+
+/**
+ * Find existing session, or create new one if one doesn't exist
+ * or has timed out
+ */
 HttpSession* WebServer::getSession(const struct mg_request_info *request_info) {
 
 	HttpSession* session = NULL;
 
 	if(activeSessions.contains(request_info->remote_ip)) {
-		session = activeSessions.get((uint32)request_info->remote_ip);
+		session = activeSessions.get((uint64)request_info->remote_ip);
 
 		if(!session->isValid()) {
 			activeSessions.drop(request_info->remote_ip);
@@ -270,14 +285,45 @@ HttpSession* WebServer::getSession(const struct mg_request_info *request_info) {
 		}
 	}
 
+
 	HttpSession* newSession = new HttpSession(request_info);
 
 	activeSessions.put(request_info->remote_ip, newSession);
 	return newSession;
 }
 
+/**
+ * Check session IP against valid ip addresses to deny access
+ */
+bool WebServer::validateAccess(long remoteIp) {
+
+	for(int i = 0; i < authorizedIpAddresses.size(); ++i) {
+		long authorizedAddress = ipStringToLong(authorizedIpAddresses.get(i));
+
+		if(remoteIp == authorizedAddress) {
+			return true;
+		}
+	}
+
+	return false;
+}
+
+void WebServer::displayUnauthorized(StringBuffer* out) {
+	out->append("Access denied");
+}
+
 bool WebServer::validateCredentials(HttpSession* session) {
-	return true;
+
+	if(session->isValid())
+		return true;
+
+
+
+	return false;
+}
+
+void WebServer::displayLogin(StringBuffer* out) {
+	out->append("Please login");
 }
 
 bool WebServer::isLocalHost(String address) {
@@ -290,19 +336,20 @@ bool WebServer::isLocalHost(long address) {
 
 bool WebServer::isValidIp(String address) {
 
-	if(ipStringToLong(address) != "")
+	if(ipStringToLong(address) != 0)
 		return true;
 	else
 		return false;
 }
 
-String WebServer::ipStringToLong(String address) {
+uint32 WebServer::ipStringToLong(String address) {
 
-	String returnAddress = "";
+	long returnAddress = 0;
 	int tokencount = 0;
 
 	StringTokenizer ipAddress(address);
 	ipAddress.setDelimeter(".");
+
 
 	while(ipAddress.hasMoreTokens()) {
 		try {
@@ -310,29 +357,29 @@ String WebServer::ipStringToLong(String address) {
 			int octet = ipAddress.getIntToken();
 			tokencount++;
 
+			if(tokencount == 5)
+				return 0;
+
 			if(octet >= 0 && octet <= 255) {
 
-				returnAddress += String::valueOf(octet);
-
-				if(ipAddress.hasMoreTokens())
-					returnAddress += ".";
+				returnAddress += (octet << (32 - (tokencount * 8)));
 
 			} else {
-				return "";
+				return 0;
 			}
 
 		} catch (const Exception& e) {
-			return "";
+			return 0;
 		}
 	}
 
 	if(tokencount == 4)
 		return returnAddress;
 	else
-		return "";
+		return 0;
 }
 
-String WebServer::longToIP(long address) {
+String WebServer::ipLongToString(long address) {
 
 	StringBuffer ipAddress;
 	short octet1, octet2, octet3, octet4;
