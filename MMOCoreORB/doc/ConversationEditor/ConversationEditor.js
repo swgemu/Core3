@@ -41,7 +41,8 @@ function ConversationEditor() {
 			return parentObject.scriptName.focus();
 		}
 
-		var script = "";
+		var script = parentObject.scriptName.value + "_convotemplate = ConvoTemplate:new {\r\n";
+		script += "\tinitialScreen = \"\",\r\n\tscreens = {}\r\n}\r\n\r\n";
 
 		for (key in parentObject.conversationScreenList.conversationScreens) {
 			if (key == "ui")
@@ -52,6 +53,8 @@ function ConversationEditor() {
 			script = convoScreen.writeToScript(script);
 
 		}
+		
+		script += "addConversationTemplate(\"" + parentObject.scriptName.value + "\", " + parentObject.scriptName.value + "_convotemplate);";
 
 		parentObject.scriptWindow.innerHTML = script;
 	}
