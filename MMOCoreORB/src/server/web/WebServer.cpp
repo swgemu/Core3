@@ -49,6 +49,7 @@ which carries forward this exception.
 #include "session/HttpSession.h"
 
 mg_context *WebServer::ctx;
+int WebServer::sessionTimeout;
 
 WebServer::WebServer() {
 
@@ -59,6 +60,8 @@ WebServer::WebServer() {
 
 	// Lookup login for account info
 	loginServer = (LoginServer*)DistributedObjectBroker::instance()->lookUp("LoginServer");
+
+	sessionTimeout = 600;
 
 	setLogging(true);
 	setLoggingName("Webserver");
@@ -165,35 +168,12 @@ void WebServer::whitelistInit() {
 	delete webusersFile;
 }
 
-
-bool WebServer::authorize(String username, String password, String ipaddress) {
-
-	Account* account = loginServer->getAccountManager()->validateAccountCredentials(NULL, username, password);
-
-	if(account == NULL) {
-		info("Attemped login by " + username +", account doesn't exist");
-		return false;
-	}
-
-	if(account->getAdminLevel() == PlayerObject::NORMALPLAYER ||
-			!authorizedUsers.contains(username)) {
-
-		error("User is not authorized for web access: " + username);
-		return false;
-	}
-
-	WebCredentials* credentials = authorizedUsers.get(username);
-	if(credentials->contains(ipaddress))
-		return true;
-	else
-		return false;
-}
-
 void WebServer::mongooseMgrInit() {
 
 	String errorLog = configManager->getWebErrorLog();
 	String webLog = configManager->getWebAccessLog();
 	String ports = configManager->getWebPorts();
+	sessionTimeout = configManager->getWebSessionTimeout();
 
 	const char *options[] = {
 		"error_log_file", errorLog,
@@ -275,21 +255,25 @@ HttpSession* WebServer::getSession(const struct mg_request_info *request_info) {
 	if(activeSessions.contains(request_info->remote_ip)) {
 		session = activeSessions.get((uint64)request_info->remote_ip);
 
-		if(!session->isValid()) {
+		if(session->hasExpired()) {
 			activeSessions.drop(request_info->remote_ip);
+			log("Deleting session for " + ipLongToString(request_info->remote_ip));
 			delete session;
 		}
 		else {
 			session->update(request_info);
+			log("Updating session for" + ipLongToString(request_info->remote_ip));
 			return session;
 		}
 	}
 
 
-	HttpSession* newSession = new HttpSession(request_info);
+	session = new HttpSession(request_info);
 
-	activeSessions.put(request_info->remote_ip, newSession);
-	return newSession;
+	activeSessions.put(request_info->remote_ip, session);
+	log("New session created for " + ipLongToString(request_info->remote_ip));
+
+	return session;
 }
 
 /**
@@ -324,6 +308,29 @@ bool WebServer::validateCredentials(HttpSession* session) {
 
 void WebServer::displayLogin(StringBuffer* out) {
 	out->append("Please login");
+}
+
+bool WebServer::authorize(String username, String password, String ipaddress) {
+
+	Account* account = loginServer->getAccountManager()->validateAccountCredentials(NULL, username, password);
+
+	if(account == NULL) {
+		info("Attemped login by " + username +", account doesn't exist");
+		return false;
+	}
+
+	if(account->getAdminLevel() == PlayerObject::NORMALPLAYER ||
+			!authorizedUsers.contains(username)) {
+
+		error("User is not authorized for web access: " + username);
+		return false;
+	}
+
+	WebCredentials* credentials = authorizedUsers.get(username);
+	if(credentials->contains(ipaddress))
+		return true;
+	else
+		return false;
 }
 
 bool WebServer::isLocalHost(String address) {

@@ -59,7 +59,7 @@
 //#include "../zone/objects/tangible/attachment/Attachment.h"
 
 class WebServer : public Singleton<WebServer>, public Logger, public Object {
-
+private:
 	ManagedReference<ZoneServer*> zoneServer;
 	ManagedReference<LoginServer*> loginServer;
 
@@ -71,6 +71,9 @@ class WebServer : public Singleton<WebServer>, public Logger, public Object {
 	VectorMap<String, WebCredentials*> authorizedUsers;
 	VectorMap<uint64, HttpSession* > activeSessions;
 	Vector<String> authorizedIpAddresses;
+
+public:
+	static int sessionTimeout;
 
 public:
 	WebServer();

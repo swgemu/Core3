@@ -10,94 +10,53 @@
 
 #include "engine/engine.h"
 #include "../mongoose/mongoose.h"
+#include "../HttpRequest.h"
+#include "../HttpResponse.h"
 
-struct HttpHeader {
-	String name;
-	String value;
-};
 
 class HttpSession {
-public:
+private:
+
+	/// The request
+	HttpRequest* request;
+
+	/// The response
+	HttpResponse* response;
+
+	/// Request members
 	bool authenticated;
-	String requestMethod;
-	String uri;
-	String httpVersion;
-	String queryString;
-	String remoteUser;
-	String logMessage;
-	uint64 remoteIp;
-	short remotePort;
-	short statusCode;
-	bool ssl;
-	Vector<HttpHeader*> headers;
+
+	/// Last Activity
 	uint64 timestamp;
 
+	/// Current user - Core3 Account Name
+	String user;
+
+public:
     HttpSession(const struct mg_request_info *request_info);
 	virtual ~HttpSession();
 
 	void update(const struct mg_request_info *request_info);
 
-	void updateHeaders(const struct mg_request_info::mg_header headers[]);
+	bool hasExpired();
 
-    bool isValid()
-    {
-        return authenticated;
+    bool isValid();
+
+    HttpRequest* getRequest() {
+    	return request;
     }
 
-    Vector<HttpHeader*> getHeaders() const
-    {
-        return headers;
+    HttpResponse* getResponse() {
+    	return response;
     }
 
-    String getHttpVersion() const
-    {
-        return httpVersion;
+    String getUser() {
+    	return user;
     }
 
-    String getLogMessage() const
-    {
-        return logMessage;
-    }
+private:
 
-    String getQueryString() const
-    {
-        return queryString;
-    }
-
-    uint64 getRemoteIp() const
-    {
-        return remoteIp;
-    }
-
-    short getRemotePort() const
-    {
-        return remotePort;
-    }
-
-    String getRemoteUser() const
-    {
-        return remoteUser;
-    }
-
-    String getRequestMethod() const
-    {
-        return requestMethod;
-    }
-
-    bool getSsl() const
-    {
-        return ssl;
-    }
-
-    short getStatusCode() const
-    {
-        return statusCode;
-    }
-
-    String getUri() const
-    {
-        return uri;
-    }
+	void updateTimestamp();
 
 };
 

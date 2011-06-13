@@ -82,6 +82,7 @@ namespace server {
 			String webPorts;
 			String webAccessLog;
 			String webErrorLog;
+			int webSessionTimeout;
 
 			String loginRequiredVersion;
 			int loginProcessingThreads;
@@ -133,6 +134,7 @@ namespace server {
 				webPorts = "44460";
 				webErrorLog = "log/web_error.log";
 				webAccessLog = "log/web_access.log";
+				webSessionTimeout = 600;
 
 				loginProcessingThreads = 1;
 				loginRequiredVersion = "20050408-18:00";
@@ -268,6 +270,10 @@ namespace server {
 
 			inline String getWebErrorLog() {
 				return webErrorLog;
+			}
+
+			inline int getWebSessionTimeout() {
+				return webSessionTimeout;
 			}
 
 			inline String& getLoginRequiredVersion() {

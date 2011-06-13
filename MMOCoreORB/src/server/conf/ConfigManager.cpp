@@ -98,7 +98,7 @@ bool ConfigManager::loadConfigData() {
 	webPorts = getGlobalString("WebPorts");
 	webAccessLog = getGlobalString("WebAccessLog");
 	webErrorLog = getGlobalString("WebErrorLog");
-
+	webSessionTimeout = getGlobalInt("WebSessionTimeout");
 
 	return true;
 }
