@@ -139,6 +139,7 @@ core3_IDLS =	server/zone/managers/director/ScreenPlayObserver.cpp \
 				server/zone/objects/player/sessions/ImageDesignSession.cpp \
 				server/zone/objects/player/sessions/SlicingSession.cpp \
 				server/zone/objects/player/sessions/vendor/CreateVendorSession.cpp \
+				server/zone/objects/player/sessions/PlaceStructureSession.cpp \
 				server/zone/objects/player/EntertainingObserver.cpp \
 				server/zone/objects/cell/CellObject.cpp \
 				server/zone/objects/group/GroupObject.cpp \
@@ -447,6 +448,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/player/sessions/ImageDesignSessionImplementation.cpp \
 		server/zone/objects/player/sessions/SlicingSessionImplementation.cpp \
 		server/zone/objects/player/sessions/vendor/CreateVendorSessionImplementation.cpp \
+		server/zone/objects/player/sessions/PlaceStructureSessionImplementation.cpp \
 		server/zone/objects/player/sui/SuiBoxImplementation.cpp \
 		server/zone/objects/player/sui/inputbox/SuiInputBoxImplementation.cpp \
 		server/zone/objects/player/sui/listbox/SuiListBoxImplementation.cpp \

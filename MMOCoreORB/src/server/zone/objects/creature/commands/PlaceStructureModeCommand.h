@@ -52,6 +52,7 @@ which carries forward this exception.
 #include "server/zone/templates/tangible/SharedBuildingObjectTemplate.h"
 #include "server/zone/managers/templates/TemplateManager.h"
 #include "server/zone/managers/planet/PlanetManager.h"
+#include "server/zone/objects/player/sessions/PlaceStructureSession.h"
 
 class PlaceStructureModeCommand : public QueueCommand {
 public:
@@ -69,98 +70,17 @@ public:
 		if (!checkInvalidPostures(creature))
 			return INVALIDPOSTURE;
 
-		/*
-		ZoneServer* zserv = server->getZoneServer();
+		ManagedReference<SceneObject*> obj = server->getZoneServer()->getObject(target);
 
-		if (zserv == NULL)
-			return GENERALERROR;
-
-		ManagedReference<SceneObject*> obj = zserv->getObject(target);
-
-		if (obj == NULL)
-			return GENERALERROR;
-
-		if (!obj->isBuildingDeed() && !obj->isInstallationDeed())
-			return GENERALERROR;
-
-		ManagedReference<Deed*> deed = (Deed*) obj.get();
-
-		//Need to lock the deed ?
-		Locker _locker(deed);
-
-		if (creature->isRidingMount()) {
-			creature->sendSystemMessage("@player_structure:cant_place_mounted"); //You may not place a structure while mounted or riding a vehicle.
-			return GENERALERROR;
+		if (obj == NULL || !obj->isDeedObject()) {
+			creature->sendSystemMessage("@player_structure:not_a_deed"); //That is not a deed.
+			return INVALIDTARGET;
 		}
 
-		if (creature->getParentID() > 0) {
-			creature->sendSystemMessage("@player_structure:not_inside"); //You can not place a structure while you are inside a building.
-			return GENERALERROR;
-		}
+		Deed* deed = (Deed*) obj.get();
 
-		TemplateManager* templateManager = TemplateManager::instance();
-
-		String structureTemplateName = deed->getGeneratedObjectTemplate();
-		uint32 structureTemplateCRC = structureTemplateName.hashCode();
-
-		SharedStructureObjectTemplate* structureTemplate = dynamic_cast<SharedStructureObjectTemplate*>(templateManager->getTemplate(structureTemplateCRC));
-
-		if (structureTemplate == NULL) {
-			player->error("Invalid structure template used to enter placeStructureMode " + structureTemplateName);
-			return GENERALERROR;
-		}
-
-		int lotsRemaining = player->getLotsRemaining();
-		int lotsNeeded = structureTemplate->getLotSize();
-
-		if (lotsRemaining < lotsNeeded) {
-			StringIdChatParameter stringId;
-			stringId.setStringId("@player_structure:not_enough_lots"); //This structure requires %DI lots.
-			stringId.setDI(lotsNeeded);
-			player->sendSystemMessage(stringId);
-			return GENERALERROR;
-		}
-
-		ManagedReference<Zone*> zone = player->getZone();
-
-		if (zone == NULL || !structureTemplate->isAllowedZone(zone->getZoneName())) {
-			player->sendSystemMessage("@player_structure:wrong_planet"); //That deed cannot be used on this planet.
-			return GENERALERROR;
-		}
-
-		String planetName = zone->getZoneName();
-
-
-		PlanetManager* planetManager = player->getZone()->getPlanetManager();
-		StringId errorStf;
-
-		if (planetManager->isNoBuildArea(player->getPositionX(), player->getPositionY(), errorStf)) {
-			StringIdChatParameter sendString("@player_structure:city_too_close");
-			sendString.setTO(errorStf.getFile(), errorStf.getStringID());
-
-			player->sendSystemMessage(sendString);
-
-			return GENERALERROR;
-		}
-
-		ManagedReference<CityRegion*> cityRegion = player->getCityRegion();
-
-		if (cityRegion != NULL) {
-			player->sendSystemMessage("You cant place a structure here.");
-			return GENERALERROR;
-		}
-
-		int clientObjectCRC = structureTemplate->getClientObjectCRC();
-
-		String clientTemplateString = structureTemplateName;
-
-		if (clientObjectCRC != structureTemplateCRC)
-			clientTemplateString = templateManager->getTemplateFile(clientObjectCRC);
-
-		EnterStructurePlacementModeMessage* espm = new EnterStructurePlacementModeMessage(deed->getObjectID(), clientTemplateString);
-		player->sendMessage(espm);
-
-		*/
+		PlaceStructureSession* session = new PlaceStructureSession(creature, deed);
+		session->initializeSession();
 
 		return SUCCESS;
 	}

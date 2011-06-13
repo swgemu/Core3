@@ -14,15 +14,19 @@
 
 #include "server/zone/objects/player/PlayerCreature.h"
 
+#include "server/zone/objects/creature/CreatureObject.h"
+
 #include "server/zone/objects/structure/StructureObject.h"
 
 #include "server/zone/managers/objectcontroller/ObjectController.h"
+
+#include "server/zone/objects/tangible/deed/Deed.h"
 
 /*
  *	StructureManagerStub
  */
 
-enum {RPC_LOADSTRUCTURES__,RPC_PLACESTRUCTUREFROMDEED__PLAYERCREATURE_LONG_FLOAT_FLOAT_INT_,RPC_DESTROYSTRUCTURE__PLAYERCREATURE_STRUCTUREOBJECT_,RPC_REDEEDSTRUCTURE__PLAYERCREATURE_STRUCTUREOBJECT_BOOL_,RPC_DECLARERESIDENCE__PLAYERCREATURE_STRUCTUREOBJECT_,RPC_CHANGEPRIVACY__PLAYERCREATURE_STRUCTUREOBJECT_,RPC_GETTIMESTRING__INT_,RPC_GETINRANGEPARKINGGARAGE__SCENEOBJECT_INT_};
+enum {RPC_LOADSTRUCTURES__,RPC_PLACESTRUCTUREFROMDEED__PLAYERCREATURE_LONG_FLOAT_FLOAT_INT_,RPC_PLACESTRUCTUREFROMDEED__CREATUREOBJECT_LONG_FLOAT_FLOAT_INT_,RPC_DESTROYSTRUCTURE__PLAYERCREATURE_STRUCTUREOBJECT_,RPC_REDEEDSTRUCTURE__PLAYERCREATURE_STRUCTUREOBJECT_BOOL_,RPC_DECLARERESIDENCE__PLAYERCREATURE_STRUCTUREOBJECT_,RPC_CHANGEPRIVACY__PLAYERCREATURE_STRUCTUREOBJECT_,RPC_GETTIMESTRING__INT_,RPC_GETINRANGEPARKINGGARAGE__SCENEOBJECT_INT_};
 
 StructureManager::StructureManager(Zone* zne, ZoneProcessServer* proc) : ManagedService(DummyConstructorParameter::instance()) {
 	StructureManagerImplementation* _implementation = new StructureManagerImplementation(zne, proc);
@@ -66,6 +70,24 @@ int StructureManager::placeStructureFromDeed(PlayerCreature* player, unsigned lo
 		return method.executeWithSignedIntReturn();
 	} else
 		return _implementation->placeStructureFromDeed(player, deedID, x, y, angle);
+}
+
+int StructureManager::placeStructureFromDeed(CreatureObject* creature, unsigned long long deedID, float x, float y, int angle) {
+	StructureManagerImplementation* _implementation = (StructureManagerImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_PLACESTRUCTUREFROMDEED__CREATUREOBJECT_LONG_FLOAT_FLOAT_INT_);
+		method.addObjectParameter(creature);
+		method.addUnsignedLongParameter(deedID);
+		method.addFloatParameter(x);
+		method.addFloatParameter(y);
+		method.addSignedIntParameter(angle);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return _implementation->placeStructureFromDeed(creature, deedID, x, y, angle);
 }
 
 int StructureManager::placeStructure(PlayerCreature* player, StructureObject* structureObject, SharedStructureObjectTemplate* structureTemplate, unsigned long long deedID, float x, float y, const Quaternion& direction) {
@@ -355,6 +377,9 @@ Packet* StructureManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* 
 	case RPC_PLACESTRUCTUREFROMDEED__PLAYERCREATURE_LONG_FLOAT_FLOAT_INT_:
 		resp->insertSignedInt(placeStructureFromDeed((PlayerCreature*) inv->getObjectParameter(), inv->getUnsignedLongParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getSignedIntParameter()));
 		break;
+	case RPC_PLACESTRUCTUREFROMDEED__CREATUREOBJECT_LONG_FLOAT_FLOAT_INT_:
+		resp->insertSignedInt(placeStructureFromDeed((CreatureObject*) inv->getObjectParameter(), inv->getUnsignedLongParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getSignedIntParameter()));
+		break;
 	case RPC_DESTROYSTRUCTURE__PLAYERCREATURE_STRUCTUREOBJECT_:
 		resp->insertSignedInt(destroyStructure((PlayerCreature*) inv->getObjectParameter(), (StructureObject*) inv->getObjectParameter()));
 		break;
@@ -386,6 +411,10 @@ void StructureManagerAdapter::loadStructures() {
 
 int StructureManagerAdapter::placeStructureFromDeed(PlayerCreature* player, unsigned long long deedID, float x, float y, int angle) {
 	return ((StructureManagerImplementation*) impl)->placeStructureFromDeed(player, deedID, x, y, angle);
+}
+
+int StructureManagerAdapter::placeStructureFromDeed(CreatureObject* creature, unsigned long long deedID, float x, float y, int angle) {
+	return ((StructureManagerImplementation*) impl)->placeStructureFromDeed(creature, deedID, x, y, angle);
 }
 
 int StructureManagerAdapter::destroyStructure(PlayerCreature* player, StructureObject* structureObject) {

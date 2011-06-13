@@ -76,6 +76,20 @@ using namespace server::zone::objects::player;
 namespace server {
 namespace zone {
 namespace objects {
+namespace creature {
+
+class CreatureObject;
+
+} // namespace creature
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::creature;
+
+namespace server {
+namespace zone {
+namespace objects {
 namespace structure {
 
 class StructureObject;
@@ -100,6 +114,22 @@ class ObjectController;
 } // namespace server
 
 using namespace server::zone::managers::objectcontroller;
+
+namespace server {
+namespace zone {
+namespace objects {
+namespace tangible {
+namespace deed {
+
+class Deed;
+
+} // namespace deed
+} // namespace tangible
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::tangible::deed;
 
 #include "server/zone/managers/templates/TemplateManager.h"
 
@@ -131,6 +161,8 @@ public:
 	void loadStructures();
 
 	int placeStructureFromDeed(PlayerCreature* player, unsigned long long deedID, float x, float y, int angle);
+
+	int placeStructureFromDeed(CreatureObject* creature, unsigned long long deedID, float x, float y, int angle);
 
 	int placeStructure(PlayerCreature* player, StructureObject* structureObject, SharedStructureObjectTemplate* structureTemplate, unsigned long long deedID, float x, float y, const Quaternion& direction);
 
@@ -194,6 +226,8 @@ public:
 
 	int placeStructureFromDeed(PlayerCreature* player, unsigned long long deedID, float x, float y, int angle);
 
+	int placeStructureFromDeed(CreatureObject* creature, unsigned long long deedID, float x, float y, int angle);
+
 	int placeStructure(PlayerCreature* player, StructureObject* structureObject, SharedStructureObjectTemplate* structureTemplate, unsigned long long deedID, float x, float y, const Quaternion& direction);
 
 	int constructStructure(PlayerCreature* player, StructureObject* structureObject, SharedStructureObjectTemplate* structureTemplate, unsigned long long deedID, float x, float y, const Quaternion& direction);
@@ -256,6 +290,8 @@ public:
 	void loadStructures();
 
 	int placeStructureFromDeed(PlayerCreature* player, unsigned long long deedID, float x, float y, int angle);
+
+	int placeStructureFromDeed(CreatureObject* creature, unsigned long long deedID, float x, float y, int angle);
 
 	int destroyStructure(PlayerCreature* player, StructureObject* structureObject);
 

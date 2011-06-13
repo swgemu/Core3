@@ -61,6 +61,8 @@
 #include "server/zone/templates/footprint/StructureFootprint.h"
 #include "server/zone/objects/region/CityRegion.h"
 
+#include "server/zone/objects/player/sessions/PlaceStructureSession.h"
+
 void StructureManagerImplementation::loadPlayerStructures() {
 
 	StringBuffer msg;
@@ -128,6 +130,44 @@ void StructureManagerImplementation::loadPlayerStructures() {
 	}
 
 	info(String::valueOf(i) + " player structures loaded", true);
+}
+
+int StructureManagerImplementation::placeStructureFromDeed(CreatureObject* creature, uint64 deedID, float x, float y, int angle) {
+	ManagedReference<PlaceStructureSession*> session = dynamic_cast<PlaceStructureSession*>(creature->getActiveSession(SessionFacadeType::PLACESTRUCTURE));
+
+	if (session == NULL)
+		return 1;
+
+	ManagedReference<Deed*> deed = session->getDeed();
+
+	ManagedReference<SceneObject*> inventory = creature->getSlottedObject("inventory");
+
+	//Ensure that it is the correct deed, and that it is in the player's inventory.
+	if (deed == NULL || deed->getObjectID() != deedID ||
+			inventory == NULL || !inventory->hasObjectInContainer(deedID)) {
+
+		creature->sendSystemMessage("@player_structure:no_possession"); //You no longer are in possession of the deed for this structure. Aborting construction.
+
+		session->cancelSession();
+
+		return 1;
+	}
+
+	//Validate that the structure can be placed at the given coordinates:
+		//Ensure that no other objects impede on this structures footprint, or overlap any city regions or no build areas.
+		//Make sure that it is the right zone.
+		//Make sure that the player has zoning rights in the area.
+
+	//Remove the deed from the inventory of the creature.
+	if (inventory != NULL) {
+		inventory->removeObject(deed, true);
+		deed->sendDestroyTo(creature);
+	}
+
+	//Construct the structure.
+	session->constructStructure(x, y, angle);
+
+	return 0;
 }
 
 int StructureManagerImplementation::placeStructureFromDeed(PlayerCreature* player, uint64 deedID, float x, float y, int angle) {

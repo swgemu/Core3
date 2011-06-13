@@ -15,6 +15,8 @@ public:
 	const static int IMAGEDESIGN = 3;
 	const static int SLICING = 4;
 	const static int CREATEVENDOR = 5;
+	const static int PLACESTRUCTURE = 6;
+	const static int CONSTRUCTSTRUCTURE = 7;
 };
 
 #endif /* SESSIONFACADETYPES_H_ */

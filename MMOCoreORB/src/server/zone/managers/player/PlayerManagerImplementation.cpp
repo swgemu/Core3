@@ -2345,11 +2345,11 @@ int PlayerManagerImplementation::checkSpeedHackSecondTest(PlayerCreature* player
 }
 
 void PlayerManagerImplementation::generateHologrindProfessions(PlayerCreature* player) {
-	uint64 holomask = System::random(5);
-	holomask += System::random(5);
-	holomask += System::random(5);
-	holomask += System::random(5);
-	holomask += System::random(5);
+	uint32 holomask = 1 << (System::random(4) + 1);
+	holomask |= (1 << (System::random(4) + 1));
+	holomask |= (1 << (System::random(4) + 1));
+	holomask |= (1 << (System::random(4) + 1));
+	holomask |= (1 << (System::random(4) + 1));
 
 	player->setHologrindMask(holomask);
 }

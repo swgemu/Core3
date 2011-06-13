@@ -40,53 +40,60 @@ it is their choice whether to do so. The GNU Lesser General Public License
 gives permission to release a modified version without this exception;
 this exception also makes it possible to release a modified version
 which carries forward this exception.
-*/
+ */
 
-#ifndef PLACESTRUCTURECOMMAND_H_
-#define PLACESTRUCTURECOMMAND_H_
+package server.zone.objects.player;
 
-#include "server/zone/objects/creature/CreatureObject.h"
-#include "server/zone/objects/player/sessions/PlaceStructureSession.h"
+import engine.util.Facade;
+import server.zone.objects.creature.CreatureObject;
+import server.zone.objects.scene.SceneObject;
+import server.zone.objects.tangible.deed.Deed;
+import server.zone.managers.planet.PlanetManager;
+import server.zone.managers.structure.StructureManager;
+import server.zone.Zone;
+include server.zone.objects.scene.SessionFacadeType;
 
-class PlaceStructureCommand : public QueueCommand {
-public:
+class PlaceStructureSession extends Facade {
+	protected CreatureObject creatureObject;
+	protected Deed deedObject;
+	
+	protected float positionX;
+	protected float positionY;
+	
+	protected int directionAngle;
 
-	PlaceStructureCommand(const String& name, ZoneProcessServer* server)
-		: QueueCommand(name, server) {
-
+	protected SceneObject constructionBarricade;
+	
+	public PlaceStructureSession(CreatureObject creature, Deed deed) {
+		Logger.setLoggingName("PlaceStructureSession");
+		Logger.setLogging(true);
+		
+		creatureObject = creature;
+		deedObject = deed;
+		
+		positionX = 0;
+		positionY = 0;
+		
+		directionAngle = 0;
+		
+		constructionBarricade = null;
 	}
 
-	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
-
-		if (!checkStateMask(creature))
-			return INVALIDSTATE;
-
-		if (!checkInvalidPostures(creature))
-			return INVALIDPOSTURE;
-
-		StringTokenizer tokenizer(arguments.toString());
-		tokenizer.setDelimeter(" ");
-
-		uint64 deedID;
-		float x, y;
-		int angle;
-
-		try {
-			deedID = tokenizer.getLongToken();
-			x = tokenizer.getFloatToken();
-			y = tokenizer.getFloatToken();
-			angle = tokenizer.getIntToken() * 90;
-		} catch (Exception& e) {
-			info(e.getMessage());
-			return INVALIDPARAMETERS;
-		}
-
-		StructureManager* structureManager = creature->getZone()->getPlanetManager()->getStructureManager();
-		structureManager->placeStructureFromDeed(creature, deedID, x, y, angle);
-
-		return SUCCESS;
+	public native int initializeSession();
+	
+	public native int constructStructure(float x, float y, int angle);
+	
+	public int cancelSession() {
+		creatureObject.dropActiveSession(SessionFacadeType.PLACESTRUCTURE);
+		
+		return 0;
 	}
-
-};
-
-#endif //PLACESTRUCTURECOMMAND_H_
+	
+	public int clearSession() {
+		return 0;
+	}
+	
+	public Deed getDeed() {
+		return deedObject;
+	}
+}

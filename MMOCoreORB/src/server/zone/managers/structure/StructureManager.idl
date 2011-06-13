@@ -52,10 +52,12 @@ import engine.log.Logger;
 import server.zone.objects.building.BuildingObject;
 import server.zone.objects.scene.SceneObject;
 import server.zone.objects.player.PlayerCreature;
+import server.zone.objects.creature.CreatureObject;
 import server.zone.objects.structure.StructureObject;
 import system.thread.Thread;
 import server.zone.managers.objectcontroller.ObjectController;
 import system.util.SortedVector;
+import server.zone.objects.tangible.deed.Deed;
 include server.zone.managers.templates.TemplateManager;
 include server.zone.templates.tangible.SharedStructureObjectTemplate;
 include server.zone.templates.tangible.SharedBuildingObjectTemplate;
@@ -101,6 +103,8 @@ class StructureManager extends ManagedService implements Logger {
 	 * @param angle The angle to rotate the building by when placing it.
 	 */
 	public native int placeStructureFromDeed(PlayerCreature player, unsigned long deedID, float x, float y, int angle);
+	
+	public native int placeStructureFromDeed(CreatureObject creature, unsigned long deedID, float x, float y, int angle);
 	/**
 	 * Places a structure at the given coordinates. Can be placed with or without a deed. Specify deed id = 0 if no deed was used.
 	 * This method will pass it to the private functions placeBuilding or placeInstallation depending on the type of structure dictated by the template.
