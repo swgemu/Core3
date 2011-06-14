@@ -12,11 +12,17 @@ HttpSession::HttpSession(const struct mg_request_info *request_info) {
 	// TODO Auto-generated constructor stub
 	authenticated = false;
 
+	request = new HttpRequest();
+	response = new HttpResponse();
+
 	update(request_info);
 }
 
 HttpSession::~HttpSession() {
 	// TODO Auto-generated destructor stub
+
+	delete request;
+	delete response;
 }
 
 bool HttpSession::hasExpired() {
@@ -34,6 +40,7 @@ bool HttpSession::isValid() {
 void HttpSession::update(const struct mg_request_info *request_info) {
 
 	request->update(request_info);
+	response->update();
 
 	updateTimestamp();
 }

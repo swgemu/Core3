@@ -47,6 +47,7 @@ which carries forward this exception.
 #include "server/zone/objects/player/PlayerCreature.h"
 #include "server/zone/managers/player/PlayerManager.h"
 #include "session/HttpSession.h"
+#include "servlets/login/LoginServlet.h"
 
 mg_context *WebServer::ctx;
 int WebServer::sessionTimeout;
@@ -90,14 +91,26 @@ void WebServer::start(ConfigManager* conf) {
 
 	configManager = conf;
 
-	whitelistInit();
-
-	mongooseMgrInit();
-
+	init();
 }
 
 void WebServer::stop() {
 	mg_stop(ctx);
+}
+
+void WebServer::init() {
+
+	registerBaseContexts();
+
+	whitelistInit();
+
+	mongooseMgrInit();
+}
+
+void WebServer::registerBaseContexts() {
+
+	LoginServlet* loginServlet = new LoginServlet("login");
+
 }
 
 void WebServer::whitelistInit() {
@@ -193,7 +206,7 @@ void WebServer::mongooseMgrInit() {
 }
 
 bool WebServer::addContext(String context, Servlet* servlet) {
-	if(contexts.contains(context)) {
+	if(!contexts.contains(context)) {
 		contexts.put(context, servlet);
 		return true;
 	}
@@ -211,34 +224,29 @@ void* WebServer::uriHandler(
 
 void* WebServer::handleRequest(struct mg_connection *conn, const struct mg_request_info *request_info) {
 
-	StringBuffer out;
-
+	/// First we validate the IP address to see if we should proceed
 	if(!validateAccess(request_info->remote_ip)) {
 
-		displayUnauthorized(&out);
-		log("Unauthorized login attempt from " + ipLongToString((uint32)request_info->remote_ip));
+		displayUnauthorized(conn);
+		info("Unauthorized login attempt from " + ipLongToString((uint32)request_info->remote_ip));
+		return (void*)1;
+	}
 
-	} else if(!validateCredentials(getSession(request_info))) {
+	HttpSession* session = getSession(request_info);
 
-		displayLogin(&out);
+	if(!validateSession(session)) {
+
+		contexts.get("login")->handleRequest(conn, session->getRequest(), session->getResponse());
 
 	} else {
 
-		out << "HTTP/1.1 200 OK\r\n";
-		out << "Content-Type: text/html\r\n\r\n";
-		out << "<html>\r\n";
-		out << "<body>\r\n";
-		out << "<p>Dec ip: " << request_info->remote_ip << "</p>\r\n";
-		out << "<p>IP Address: " << ipLongToString(request_info->remote_ip) << "</p>\r\n";
-		out << "<p>Context Requested: " << request_info->uri << "</p>\r\n";
-		out << "</body>\r\n";
-		out << "</html>\r\n";
+		Servlet* servlet = contexts.get(session->getRequest()->getBaseContext());
 
+		if(servlet != NULL)
+			servlet->handleRequest(conn, session->getRequest(), session->getResponse());
+		else
+			displayNotFound(conn);
 	}
-	String page = out.toString();
-
-	if(!page.isEmpty())
-		mg_printf(conn, page.toCharArray());
 
 	return (void*)1;
 }
@@ -257,12 +265,14 @@ HttpSession* WebServer::getSession(const struct mg_request_info *request_info) {
 
 		if(session->hasExpired()) {
 			activeSessions.drop(request_info->remote_ip);
-			log("Deleting session for " + ipLongToString(request_info->remote_ip));
+			System::out << "Deleting session for " << ipLongToString(request_info->remote_ip) << endl;
+			//info("Deleting session for " + ipLongToString(request_info->remote_ip));
 			delete session;
 		}
 		else {
 			session->update(request_info);
-			log("Updating session for" + ipLongToString(request_info->remote_ip));
+			System::out << "Updating session for " << ipLongToString(request_info->remote_ip) << endl;
+			//info("Updating session for " + ipLongToString(request_info->remote_ip));
 			return session;
 		}
 	}
@@ -271,7 +281,8 @@ HttpSession* WebServer::getSession(const struct mg_request_info *request_info) {
 	session = new HttpSession(request_info);
 
 	activeSessions.put(request_info->remote_ip, session);
-	log("New session created for " + ipLongToString(request_info->remote_ip));
+	System::out << "New session created for " << ipLongToString(request_info->remote_ip) << endl;
+	info("New session created for " + ipLongToString(request_info->remote_ip));
 
 	return session;
 }
@@ -292,16 +303,28 @@ bool WebServer::validateAccess(long remoteIp) {
 	return false;
 }
 
-void WebServer::displayUnauthorized(StringBuffer* out) {
-	out->append("Access denied");
+void WebServer::displayUnauthorized(struct mg_connection *conn) {
+
+	StringBuffer out;
+
+	out.append("Access denied");
+
+	mg_printf(conn, out.toString());
 }
 
-bool WebServer::validateCredentials(HttpSession* session) {
+void WebServer::displayNotFound(struct mg_connection *conn) {
+
+	StringBuffer out;
+
+	out.append("404: Page not found");
+
+	mg_printf(conn, out.toString());
+}
+
+bool WebServer::validateSession(HttpSession* session) {
 
 	if(session->isValid())
 		return true;
-
-
 
 	return false;
 }

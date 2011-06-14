@@ -28,11 +28,16 @@ private:
 	bool ssl;
 	Vector<HttpHeader*> headers;
 
+	Vector<String> contexts;
+
 public:
 	HttpRequest();
 	virtual ~HttpRequest();
 
 	void update(const struct mg_request_info *request_info);
+
+	String getBaseContext();
+
 private:
 
 	void updateHeaders(const struct mg_request_info::mg_header incomingheaders[]);

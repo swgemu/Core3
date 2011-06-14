@@ -84,16 +84,21 @@ public:
 
 	void stop();
 
-	void whitelistInit();
-
 	bool addContext(String context, Servlet* servlet);
-
-	void mongooseMgrInit();
 
 	static void* uriHandler(enum mg_event event,
 		    struct mg_connection *conn,
 		    const struct mg_request_info *request_info);
 private:
+
+	void init();
+
+	void registerBaseContexts();
+
+	void whitelistInit();
+
+	void mongooseMgrInit();
+
 	bool authorize(String username, String password, String ipaddress);
 
 	void* handleRequest(struct mg_connection *conn, const struct mg_request_info *request_info);
@@ -102,9 +107,11 @@ private:
 
 	bool validateAccess(long remoteIp);
 
-	void displayUnauthorized();
+	void displayUnauthorized(struct mg_connection *conn);
 
-	bool validateCredentials(HttpSession* session);
+	void displayNotFound(struct mg_connection *conn);
+
+	bool validateSession(HttpSession* session);
 
 	void displayUnauthorized(StringBuffer* out);
 

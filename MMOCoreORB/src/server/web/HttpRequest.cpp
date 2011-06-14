@@ -21,6 +21,16 @@ void HttpRequest::update(const struct mg_request_info *request_info) {
 
 	requestMethod = String(request_info->request_method);
 	uri = String(request_info->uri);
+
+	StringTokenizer tokenizer(uri);
+	tokenizer.setDelimeter("/");
+
+	while(tokenizer.hasMoreTokens()) {
+		String token;
+		tokenizer.getStringToken(token);
+		contexts.add(token);
+	}
+
 	httpVersion = String(request_info->http_version);
 	remoteIp = (uint64) request_info->remote_ip;
 	remotePort = (short) request_info->remote_port;
@@ -33,4 +43,8 @@ void HttpRequest::update(const struct mg_request_info *request_info) {
 void HttpRequest::updateHeaders(const struct mg_request_info::mg_header incomingheaders[]) {
 	headers.removeAll();
 
+}
+
+String HttpRequest::getBaseContext() {
+	return contexts.get(0);
 }
