@@ -282,7 +282,7 @@ HttpSession* WebServer::getSession(const struct mg_request_info *request_info) {
 
 	activeSessions.put(request_info->remote_ip, session);
 	System::out << "New session created for " << ipLongToString(request_info->remote_ip) << endl;
-	info("New session created for " + ipLongToString(request_info->remote_ip));
+	//info("New session created for " + ipLongToString(request_info->remote_ip));
 
 	return session;
 }
