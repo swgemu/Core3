@@ -142,15 +142,42 @@ int StructureManagerImplementation::placeStructureFromDeed(CreatureObject* creat
 
 	ManagedReference<SceneObject*> inventory = creature->getSlottedObject("inventory");
 
-	//Ensure that it is the correct deed, and that it is in the player's inventory.
-	if (deed == NULL || deed->getObjectID() != deedID ||
-			inventory == NULL || !inventory->hasObjectInContainer(deedID)) {
+	//Ensure that it is the correct deed, and that it is in a container in the creature's inventory.
+	//NOTE: We don't need to null check inventory, because if inventory is NULL, then the isASubChildOf will fail.
+	if (deed == NULL || deed->getObjectID() != deedID || !deed->isASubChildOf(inventory)) {
 
 		creature->sendSystemMessage("@player_structure:no_possession"); //You no longer are in possession of the deed for this structure. Aborting construction.
 
-		session->cancelSession();
+		return session->cancelSession();
+	}
 
-		return 1;
+	TemplateManager* templateManager = TemplateManager::instance();
+
+	String serverTemplatePath = deed->getGeneratedObjectTemplate();
+	SharedStructureObjectTemplate* serverTemplate = dynamic_cast<SharedStructureObjectTemplate*>(templateManager->getTemplate(serverTemplatePath.hashCode()));
+
+	if (serverTemplate == NULL)
+		return session->cancelSession();
+
+	//Check to see if this zone allows this structure.
+	if (!serverTemplate->isAllowedZone(zone->getZoneName())) {
+		creature->sendSystemMessage("@player_structure:wrong_planet"); //That deed cannot be used on this planet.
+		return session->cancelSession();
+	}
+
+	ManagedReference<SceneObject*> ghost = creature->getSlottedObject("ghost");
+
+	//Player specific logic.
+	if (ghost != NULL && ghost->isPlayerObject()) {
+		PlayerObject* player = (PlayerObject*) ghost.get();
+
+		//Check that the creature has the ability required to place the structure.
+		String abilityRequired = serverTemplate->getAbilityRequired();
+
+		if (!abilityRequired.isEmpty() && !player->hasSkill(abilityRequired)) {
+			creature->sendSystemMessage("@player_structure:" + abilityRequired);
+			return session->cancelSession();
+		}
 	}
 
 	//Validate that the structure can be placed at the given coordinates:
@@ -159,17 +186,15 @@ int StructureManagerImplementation::placeStructureFromDeed(CreatureObject* creat
 		//Make sure that the player has zoning rights in the area.
 
 	//Remove the deed from the inventory of the creature.
-	if (inventory != NULL) {
-		inventory->removeObject(deed, true);
-		deed->sendDestroyTo(creature);
-	}
+	//NOTE: deed's parent cannot be NULL here because it was already checked to be in inventory.
+	deed->getParent()->removeObject(deed, true);
 
 	//Construct the structure.
 	session->constructStructure(x, y, angle);
 
 	return 0;
 }
-
+/*
 int StructureManagerImplementation::placeStructureFromDeed(PlayerCreature* player, uint64 deedID, float x, float y, int angle) {
 	ZoneServer* zoneServer = player->getZoneServer();
 	ObjectManager* objectManager = ObjectManager::instance();
@@ -222,7 +247,7 @@ int StructureManagerImplementation::placeStructureFromDeed(PlayerCreature* playe
 		return 1;
 	}
 
-	/*
+
 	ManagedReference<Region*> region = planetManager->getRegion(x, y);
 	ManagedReference<CityHallObject*> cityHall = NULL;
 
@@ -255,7 +280,7 @@ int StructureManagerImplementation::placeStructureFromDeed(PlayerCreature* playe
 			return 1;
 		}
 	}
-	*/
+
 
 	int lotsRemaining = player->getLotsRemaining();
 	int lotsRequired = 0;
@@ -321,177 +346,61 @@ int StructureManagerImplementation::placeStructureFromDeed(PlayerCreature* playe
 	constructStructure(player, structureObject, ssot, deedID, x, y, direction);
 
 	return 0;
-}
+}*/
 
-int StructureManagerImplementation::constructStructure(PlayerCreature* player, StructureObject* structureObject, SharedStructureObjectTemplate* ssot, uint64 deedID, float x, float y, const Quaternion& direction) {
-	ZoneServer* zoneServer = player->getZoneServer();
-
-	String constructionMarkerTemplateString = ssot->getConstructionMarkerTemplate();
-	uint32 constructionMarkerTemplateCRC = constructionMarkerTemplateString.hashCode();
-
-	if (constructionMarkerTemplateString.isEmpty()) {
-		placeStructure(player, structureObject, ssot, deedID, x, y, direction);
-		return 1;
-	}
-
-	float z = zone->getHeight(x, y);
-
-	ManagedReference<SceneObject*> constructionMarker = zoneServer->createObject(constructionMarkerTemplateCRC, 1);
-	constructionMarker->initializePosition(x, z, y);
-	constructionMarker->setDirection(direction);
-	constructionMarker->rotate(180); //Construction markers seem to all be 180 degrees rotated from the building they represent.
-	constructionMarker->insertToZone(zone);
-
-	int buildTime = 3000 * ssot->getLotSize();
-
-	Task* task = new StructureConstructionCompleteTask(_this, player, structureObject, ssot, deedID, x, y, direction, constructionMarker);
-	task->schedule(buildTime);
-	//player->info("Scheduled StructureConstructionCompleteTask in " + String::valueOf(buildTime) , true);
-	return 0;
-}
-
-int StructureManagerImplementation::placeStructure(PlayerCreature* player, StructureObject* structureObject, SharedStructureObjectTemplate* structureTemplate, uint64 deedID, float x, float y, const Quaternion& direction) {
-	ZoneServer* zoneServer = player->getZoneServer();
+StructureObject* StructureManagerImplementation::placeStructure(CreatureObject* creature, const String& structureTemplatePath, float x, float y, int angle) {
 	TerrainManager* terrainManager = zone->getPlanetManager()->getTerrainManager();
+	SharedStructureObjectTemplate* serverTemplate = dynamic_cast<SharedStructureObjectTemplate*>(templateManager->getTemplate(structureTemplatePath.hashCode()));
+
+	if (serverTemplate == NULL)
+		return NULL;
 
 	float z = zone->getHeight(x, y);
+	float floraRadius = serverTemplate->getClearFloraRadius();
+	bool snapToTerrain = serverTemplate->getSnapToTerrain();
 
-	float floraRadius = structureTemplate->getClearFloraRadius();
-	bool snapToTerrain = structureTemplate->getSnapToTerrain();
+	Reference<StructureFootprint*> structureFootprint = serverTemplate->getStructureFootprint();
 
-	Reference<StructureFootprint*> structureFootprint = structureTemplate->getStructureFootprint();
-
-	//In a rectangle, the width is defined along the y axis and the length is defined along the x axis.
-	float length = 5; //default them to 5
-	float width = 5;
+	float l = 5; //Along the x axis.
+	float w = 5; //Along the y axis.
 
 	if (structureFootprint != NULL) {
-		length = structureFootprint->getLength();
-		width = structureFootprint->getWidth();
+		//If the angle is odd, then swap them.
+		l = (angle & 1) ? structureFootprint->getWidth() : structureFootprint->getLength();
+		w = (angle & 1) ? structureFootprint->getLength() : structureFootprint->getWidth();
 	}
 
-	int orient = direction.getDegrees() / 4;
-
-	if (orient & 1) {
-		//Orientation is odd, so swap them to account for building rotation
-		width = structureTemplate->getLength();
-		length = structureTemplate->getWidth();
-	}
-
-	float centerOffsetX = 0;
-	float centerOffsetY = 0;
-
-	//half the width and length since we are adding it to the center point.
-	width /= 2;
-	length /= 2;
-
-	//TODO: Implement center offset.
+	//Half the dimensions since we are starting from the center point and going outward.
+	l /= 2;
+	w /= 2;
 
 	if (floraRadius > 0 && !snapToTerrain)
-		z = terrainManager->getHighestHeight(x - width, y - length, x + width, y + length, 1);
+		z = terrainManager->getHighestHeight(x - w, y - l, x + w, y + l, 1);
 
-	if (structureObject->isBuildingObject()) {
-		BuildingObject* buildingObject = (BuildingObject*) structureObject;
-		buildingObject->createCellObjects();
+	ManagedReference<SceneObject*> obj = ObjectManager::instance()->createObject(structureTemplatePath.hashCode(), 1, "playerstructures");
+
+	if (obj == NULL || !obj->isStructureObject()) {
+		if (obj != NULL)
+			obj->destroyObjectFromDatabase(true);
+
+		error("Failed to create structure with template: " + structureTemplatePath);
+		return NULL;
 	}
 
-	//info("initializing position to z:" + String::valueOf(z), true);
+	StructureObject* structureObject = (StructureObject*) obj.get();
 
-	//Finish setting up the structure.
-	structureObject->setPublicStructure(structureTemplate->isPublicStructure());
+	if (structureObject->isBuildingObject())
+		((BuildingObject*) structureObject)->createCellObjects();
+
+	structureObject->setPublicStructure(serverTemplate->isPublicStructure());
 	structureObject->initializePosition(x, z, y);
-	structureObject->setDirection(direction);
-	structureObject->setOwnerObjectID(player->getObjectID());
-	structureObject->setDeedObjectID(deedID);
+	structureObject->rotate(angle);
 	structureObject->insertToZone(zone);
-
 	structureObject->createChildObjects();
 
-	if (structureObject->isBuildingObject()) {
-		SharedBuildingObjectTemplate* sbot = dynamic_cast<SharedBuildingObjectTemplate*>(structureTemplate);
+	structureObject->notifyStructurePlaced(creature);
 
-		if (sbot != NULL) {
-			BuildingObject* buildingObject = (BuildingObject*) structureObject;
-			//Create a sign
-
-			ChildObject* child = sbot->getSign();
-			if (child != NULL && !child->getTemplateFile().isEmpty()) {
-				ManagedReference<SceneObject*> signobj = zoneServer->createObject(child->getTemplateFile().hashCode(), 1);
-
-				if (signobj != NULL) {
-					if (signobj->isSignObject()) {
-						SignObject* sign = (SignObject*) signobj.get();
-						UnicodeString signName = player->getObjectName()->getDisplayedName() + "'s House";
-						sign->setCustomObjectName(signName, false);
-						Vector3 signPos = child->getPosition();
-						Quaternion signDir = child->getDirection();
-
-						float angle = buildingObject->getDirection()->getRadians();
-
-						float signx = (Math::cos(angle) * signPos.getX()) + (signPos.getY() * Math::sin(angle));
-						float signy = (Math::cos(angle) * signPos.getY()) - (signPos.getX() * Math::sin(angle));
-
-						signx += buildingObject->getPositionX();
-						signy += buildingObject->getPositionY();
-
-						float signz = buildingObject->getPositionZ() + signPos.getZ();
-
-						float degrees = buildingObject->getDirection()->getDegrees();
-
-						Quaternion dir = child->getDirection();
-
-						buildingObject->setSignObject(sign);
-
-						sign->initializePosition(signx, signz, signy);
-						sign->setDirection(dir.rotate(Vector3(0, 1, 0), degrees));
-
-						sign->insertToZone(zone);
-					} else {
-						signobj->destroyObjectFromDatabase(true);
-					}
-				}
-			}
-		}
-	}
-
-	structureObject->notifyStructurePlaced(player);
-	structureObject->updateToDatabase();
-
-	//Create a waypoint
-	ManagedReference<PlayerObject*> playerObject = player->getPlayerObject();
-	ManagedReference<WaypointObject*> waypointObject = NULL;
-
-	if (playerObject != NULL) {
-		String full = structureObject->getCustomObjectName().toString();
-
-		if (full.isEmpty())
-			structureObject->getObjectName()->getFullPath(full);
-
-		String waypointTemplateString = "object/waypoint/world_waypoint_blue.iff";
-
-		waypointObject = (WaypointObject*) zoneServer->createObject(waypointTemplateString.hashCode(), 1);
-		waypointObject->setCustomName(full);
-		waypointObject->setActive(true);
-		waypointObject->setPosition(x, z, y);
-		String planetName = zone->getZoneName();
-		waypointObject->setPlanetCRC(planetName.hashCode());
-
-		playerObject->addWaypoint(waypointObject, false, true);
-	}
-
-	//Create an email
-	ManagedReference<ChatManager*> chatManager = zoneServer->getChatManager();
-
-	if (chatManager != NULL) {
-		StringIdChatParameter emailBody;
-		emailBody.setStringId("@player_structure:construction_complete");
-		emailBody.setTO(structureObject->getObjectName());
-		emailBody.setDI(player->getLotsRemaining());
-		UnicodeString subject = "@player_structure:construction_complete_subject";
-		chatManager->sendMail("@player_structure:construction_complete_sender", subject, emailBody, player->getFirstName(), waypointObject);
-	}
-
-	return 0;
+	return NULL;
 }
 
 int StructureManagerImplementation::destroyStructure(PlayerCreature* player, StructureObject* structureObject) {

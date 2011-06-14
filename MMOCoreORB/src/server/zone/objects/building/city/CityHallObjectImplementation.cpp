@@ -115,10 +115,10 @@ void CityHallObjectImplementation::sendCityNamePromptTo(PlayerCreature* player, 
 	player->sendMessage(inputBox->generateMessage());
 }
 
-int CityHallObjectImplementation::notifyStructurePlaced(PlayerCreature* player) {
-	cityName = player->getFirstName();
+int CityHallObjectImplementation::notifyStructurePlaced(CreatureObject* creature) {
+	//cityName = creature->getFirstName();
 
-	sendCityNamePromptTo(player, true);
+	//sendCityNamePromptTo(player, true);
 
 	return 0;
 }

@@ -171,7 +171,7 @@ public:
 
 	void destroyObjectFromDatabase(bool destroyContainedObjects = false);
 
-	int notifyStructurePlaced(PlayerCreature* player);
+	int notifyStructurePlaced(CreatureObject* creature);
 
 	bool isCityHallBuilding();
 
@@ -352,7 +352,7 @@ public:
 
 	void destroyObjectFromDatabase(bool destroyContainedObjects = false);
 
-	int notifyStructurePlaced(PlayerCreature* player);
+	int notifyStructurePlaced(CreatureObject* creature);
 
 	bool isCityHallBuilding();
 
@@ -507,7 +507,7 @@ public:
 
 	void destroyObjectFromDatabase(bool destroyContainedObjects);
 
-	int notifyStructurePlaced(PlayerCreature* player);
+	int notifyStructurePlaced(CreatureObject* creature);
 
 	bool isCityHallBuilding();
 

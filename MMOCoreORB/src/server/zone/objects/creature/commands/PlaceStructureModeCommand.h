@@ -77,6 +77,15 @@ public:
 			return INVALIDTARGET;
 		}
 
+		ManagedReference<SceneObject*> inventory = creature->getSlottedObject("inventory");
+
+		if (!obj->getParent()->isASubChildOf(inventory)) {
+			System::out << "objects parent is not a sub of inv" << endl;
+		}
+
+		if (!obj->isASubChildOf(inventory))
+			return GENERALERROR; //Deed must be in inventory...
+
 		Deed* deed = (Deed*) obj.get();
 
 		PlaceStructureSession* session = new PlaceStructureSession(creature, deed);

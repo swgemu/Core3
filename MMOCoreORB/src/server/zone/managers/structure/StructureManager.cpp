@@ -26,7 +26,7 @@
  *	StructureManagerStub
  */
 
-enum {RPC_LOADSTRUCTURES__,RPC_PLACESTRUCTUREFROMDEED__PLAYERCREATURE_LONG_FLOAT_FLOAT_INT_,RPC_PLACESTRUCTUREFROMDEED__CREATUREOBJECT_LONG_FLOAT_FLOAT_INT_,RPC_DESTROYSTRUCTURE__PLAYERCREATURE_STRUCTUREOBJECT_,RPC_REDEEDSTRUCTURE__PLAYERCREATURE_STRUCTUREOBJECT_BOOL_,RPC_DECLARERESIDENCE__PLAYERCREATURE_STRUCTUREOBJECT_,RPC_CHANGEPRIVACY__PLAYERCREATURE_STRUCTUREOBJECT_,RPC_GETTIMESTRING__INT_,RPC_GETINRANGEPARKINGGARAGE__SCENEOBJECT_INT_};
+enum {RPC_LOADSTRUCTURES__,RPC_PLACESTRUCTUREFROMDEED__CREATUREOBJECT_LONG_FLOAT_FLOAT_INT_,RPC_PLACESTRUCTURE__CREATUREOBJECT_STRING_FLOAT_FLOAT_INT_,RPC_DESTROYSTRUCTURE__PLAYERCREATURE_STRUCTUREOBJECT_,RPC_REDEEDSTRUCTURE__PLAYERCREATURE_STRUCTUREOBJECT_BOOL_,RPC_DECLARERESIDENCE__PLAYERCREATURE_STRUCTUREOBJECT_,RPC_CHANGEPRIVACY__PLAYERCREATURE_STRUCTUREOBJECT_,RPC_GETTIMESTRING__INT_,RPC_GETINRANGEPARKINGGARAGE__SCENEOBJECT_INT_};
 
 StructureManager::StructureManager(Zone* zne, ZoneProcessServer* proc) : ManagedService(DummyConstructorParameter::instance()) {
 	StructureManagerImplementation* _implementation = new StructureManagerImplementation(zne, proc);
@@ -54,24 +54,6 @@ void StructureManager::loadStructures() {
 		_implementation->loadStructures();
 }
 
-int StructureManager::placeStructureFromDeed(PlayerCreature* player, unsigned long long deedID, float x, float y, int angle) {
-	StructureManagerImplementation* _implementation = (StructureManagerImplementation*) _getImplementation();
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, RPC_PLACESTRUCTUREFROMDEED__PLAYERCREATURE_LONG_FLOAT_FLOAT_INT_);
-		method.addObjectParameter(player);
-		method.addUnsignedLongParameter(deedID);
-		method.addFloatParameter(x);
-		method.addFloatParameter(y);
-		method.addSignedIntParameter(angle);
-
-		return method.executeWithSignedIntReturn();
-	} else
-		return _implementation->placeStructureFromDeed(player, deedID, x, y, angle);
-}
-
 int StructureManager::placeStructureFromDeed(CreatureObject* creature, unsigned long long deedID, float x, float y, int angle) {
 	StructureManagerImplementation* _implementation = (StructureManagerImplementation*) _getImplementation();
 	if (_implementation == NULL) {
@@ -90,22 +72,22 @@ int StructureManager::placeStructureFromDeed(CreatureObject* creature, unsigned 
 		return _implementation->placeStructureFromDeed(creature, deedID, x, y, angle);
 }
 
-int StructureManager::placeStructure(PlayerCreature* player, StructureObject* structureObject, SharedStructureObjectTemplate* structureTemplate, unsigned long long deedID, float x, float y, const Quaternion& direction) {
+StructureObject* StructureManager::placeStructure(CreatureObject* creature, const String& structureTemplatePath, float x, float y, int angle) {
 	StructureManagerImplementation* _implementation = (StructureManagerImplementation*) _getImplementation();
 	if (_implementation == NULL) {
-		throw ObjectNotLocalException(this);
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
 
+		DistributedMethod method(this, RPC_PLACESTRUCTURE__CREATUREOBJECT_STRING_FLOAT_FLOAT_INT_);
+		method.addObjectParameter(creature);
+		method.addAsciiParameter(structureTemplatePath);
+		method.addFloatParameter(x);
+		method.addFloatParameter(y);
+		method.addSignedIntParameter(angle);
+
+		return (StructureObject*) method.executeWithObjectReturn();
 	} else
-		return _implementation->placeStructure(player, structureObject, structureTemplate, deedID, x, y, direction);
-}
-
-int StructureManager::constructStructure(PlayerCreature* player, StructureObject* structureObject, SharedStructureObjectTemplate* structureTemplate, unsigned long long deedID, float x, float y, const Quaternion& direction) {
-	StructureManagerImplementation* _implementation = (StructureManagerImplementation*) _getImplementation();
-	if (_implementation == NULL) {
-		throw ObjectNotLocalException(this);
-
-	} else
-		return _implementation->constructStructure(player, structureObject, structureTemplate, deedID, x, y, direction);
+		return _implementation->placeStructure(creature, structureTemplatePath, x, y, angle);
 }
 
 int StructureManager::destroyStructure(PlayerCreature* player, StructureObject* structureObject) {
@@ -374,11 +356,11 @@ Packet* StructureManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* 
 	case RPC_LOADSTRUCTURES__:
 		loadStructures();
 		break;
-	case RPC_PLACESTRUCTUREFROMDEED__PLAYERCREATURE_LONG_FLOAT_FLOAT_INT_:
-		resp->insertSignedInt(placeStructureFromDeed((PlayerCreature*) inv->getObjectParameter(), inv->getUnsignedLongParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getSignedIntParameter()));
-		break;
 	case RPC_PLACESTRUCTUREFROMDEED__CREATUREOBJECT_LONG_FLOAT_FLOAT_INT_:
 		resp->insertSignedInt(placeStructureFromDeed((CreatureObject*) inv->getObjectParameter(), inv->getUnsignedLongParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getSignedIntParameter()));
+		break;
+	case RPC_PLACESTRUCTURE__CREATUREOBJECT_STRING_FLOAT_FLOAT_INT_:
+		resp->insertLong(placeStructure((CreatureObject*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_placeStructure__CreatureObject_String_float_float_int_), inv->getFloatParameter(), inv->getFloatParameter(), inv->getSignedIntParameter())->_getObjectID());
 		break;
 	case RPC_DESTROYSTRUCTURE__PLAYERCREATURE_STRUCTUREOBJECT_:
 		resp->insertSignedInt(destroyStructure((PlayerCreature*) inv->getObjectParameter(), (StructureObject*) inv->getObjectParameter()));
@@ -409,12 +391,12 @@ void StructureManagerAdapter::loadStructures() {
 	((StructureManagerImplementation*) impl)->loadStructures();
 }
 
-int StructureManagerAdapter::placeStructureFromDeed(PlayerCreature* player, unsigned long long deedID, float x, float y, int angle) {
-	return ((StructureManagerImplementation*) impl)->placeStructureFromDeed(player, deedID, x, y, angle);
-}
-
 int StructureManagerAdapter::placeStructureFromDeed(CreatureObject* creature, unsigned long long deedID, float x, float y, int angle) {
 	return ((StructureManagerImplementation*) impl)->placeStructureFromDeed(creature, deedID, x, y, angle);
+}
+
+StructureObject* StructureManagerAdapter::placeStructure(CreatureObject* creature, const String& structureTemplatePath, float x, float y, int angle) {
+	return ((StructureManagerImplementation*) impl)->placeStructure(creature, structureTemplatePath, x, y, angle);
 }
 
 int StructureManagerAdapter::destroyStructure(PlayerCreature* player, StructureObject* structureObject) {

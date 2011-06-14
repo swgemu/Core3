@@ -20,7 +20,7 @@
  *	PlaceStructureSessionStub
  */
 
-enum {RPC_INITIALIZESESSION__ = 6,RPC_CONSTRUCTSTRUCTURE__FLOAT_FLOAT_INT_,RPC_CANCELSESSION__,RPC_CLEARSESSION__,RPC_GETDEED__};
+enum {RPC_INITIALIZESESSION__ = 6,RPC_CONSTRUCTSTRUCTURE__FLOAT_FLOAT_INT_,RPC_COMPLETESESSION__,RPC_CANCELSESSION__,RPC_CLEARSESSION__,RPC_GETDEED__};
 
 PlaceStructureSession::PlaceStructureSession(CreatureObject* creature, Deed* deed) : Facade(DummyConstructorParameter::instance()) {
 	PlaceStructureSessionImplementation* _implementation = new PlaceStructureSessionImplementation(creature, deed);
@@ -62,6 +62,19 @@ int PlaceStructureSession::constructStructure(float x, float y, int angle) {
 		return method.executeWithSignedIntReturn();
 	} else
 		return _implementation->constructStructure(x, y, angle);
+}
+
+int PlaceStructureSession::completeSession() {
+	PlaceStructureSessionImplementation* _implementation = (PlaceStructureSessionImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_COMPLETESESSION__);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return _implementation->completeSession();
 }
 
 int PlaceStructureSession::cancelSession() {
@@ -237,6 +250,11 @@ bool PlaceStructureSessionImplementation::readObjectMember(ObjectInputStream* st
 		return true;
 	}
 
+	if (_name == "zone") {
+		TypeInfo<ManagedReference<Zone* > >::parseFromBinaryStream(&zone, stream);
+		return true;
+	}
+
 
 	return false;
 }
@@ -300,8 +318,16 @@ int PlaceStructureSessionImplementation::writeObjectMembers(ObjectOutputStream* 
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
+	_name = "zone";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<ManagedReference<Zone* > >::toBinaryStream(&zone, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
 
-	return 6 + FacadeImplementation::writeObjectMembers(stream);
+
+	return 7 + FacadeImplementation::writeObjectMembers(stream);
 }
 
 PlaceStructureSessionImplementation::PlaceStructureSessionImplementation(CreatureObject* creature, Deed* deed) {
@@ -358,6 +384,9 @@ Packet* PlaceStructureSessionAdapter::invokeMethod(uint32 methid, DistributedMet
 	case RPC_CONSTRUCTSTRUCTURE__FLOAT_FLOAT_INT_:
 		resp->insertSignedInt(constructStructure(inv->getFloatParameter(), inv->getFloatParameter(), inv->getSignedIntParameter()));
 		break;
+	case RPC_COMPLETESESSION__:
+		resp->insertSignedInt(completeSession());
+		break;
 	case RPC_CANCELSESSION__:
 		resp->insertSignedInt(cancelSession());
 		break;
@@ -380,6 +409,10 @@ int PlaceStructureSessionAdapter::initializeSession() {
 
 int PlaceStructureSessionAdapter::constructStructure(float x, float y, int angle) {
 	return ((PlaceStructureSessionImplementation*) impl)->constructStructure(x, y, angle);
+}
+
+int PlaceStructureSessionAdapter::completeSession() {
+	return ((PlaceStructureSessionImplementation*) impl)->completeSession();
 }
 
 int PlaceStructureSessionAdapter::cancelSession() {

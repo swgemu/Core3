@@ -110,6 +110,8 @@ public:
 
 	int constructStructure(float x, float y, int angle);
 
+	int completeSession();
+
 	int cancelSession();
 
 	int clearSession();
@@ -154,6 +156,8 @@ protected:
 
 	ManagedReference<SceneObject* > constructionBarricade;
 
+	ManagedReference<Zone* > zone;
+
 public:
 	PlaceStructureSessionImplementation(CreatureObject* creature, Deed* deed);
 
@@ -162,6 +166,8 @@ public:
 	int initializeSession();
 
 	int constructStructure(float x, float y, int angle);
+
+	int completeSession();
 
 	int cancelSession();
 
@@ -215,6 +221,8 @@ public:
 	int initializeSession();
 
 	int constructStructure(float x, float y, int angle);
+
+	int completeSession();
 
 	int cancelSession();
 

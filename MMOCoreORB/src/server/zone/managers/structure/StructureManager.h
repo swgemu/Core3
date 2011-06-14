@@ -160,13 +160,9 @@ public:
 
 	void loadStructures();
 
-	int placeStructureFromDeed(PlayerCreature* player, unsigned long long deedID, float x, float y, int angle);
-
 	int placeStructureFromDeed(CreatureObject* creature, unsigned long long deedID, float x, float y, int angle);
 
-	int placeStructure(PlayerCreature* player, StructureObject* structureObject, SharedStructureObjectTemplate* structureTemplate, unsigned long long deedID, float x, float y, const Quaternion& direction);
-
-	int constructStructure(PlayerCreature* player, StructureObject* structureObject, SharedStructureObjectTemplate* structureTemplate, unsigned long long deedID, float x, float y, const Quaternion& direction);
+	StructureObject* placeStructure(CreatureObject* creature, const String& structureTemplatePath, float x, float y, int angle);
 
 	int destroyStructure(PlayerCreature* player, StructureObject* structureObject);
 
@@ -224,13 +220,9 @@ private:
 public:
 	void loadStructures();
 
-	int placeStructureFromDeed(PlayerCreature* player, unsigned long long deedID, float x, float y, int angle);
-
 	int placeStructureFromDeed(CreatureObject* creature, unsigned long long deedID, float x, float y, int angle);
 
-	int placeStructure(PlayerCreature* player, StructureObject* structureObject, SharedStructureObjectTemplate* structureTemplate, unsigned long long deedID, float x, float y, const Quaternion& direction);
-
-	int constructStructure(PlayerCreature* player, StructureObject* structureObject, SharedStructureObjectTemplate* structureTemplate, unsigned long long deedID, float x, float y, const Quaternion& direction);
+	StructureObject* placeStructure(CreatureObject* creature, const String& structureTemplatePath, float x, float y, int angle);
 
 	int destroyStructure(PlayerCreature* player, StructureObject* structureObject);
 
@@ -289,9 +281,9 @@ public:
 
 	void loadStructures();
 
-	int placeStructureFromDeed(PlayerCreature* player, unsigned long long deedID, float x, float y, int angle);
-
 	int placeStructureFromDeed(CreatureObject* creature, unsigned long long deedID, float x, float y, int angle);
+
+	StructureObject* placeStructure(CreatureObject* creature, const String& structureTemplatePath, float x, float y, int angle);
 
 	int destroyStructure(PlayerCreature* player, StructureObject* structureObject);
 
@@ -305,6 +297,8 @@ public:
 
 	SceneObject* getInRangeParkingGarage(SceneObject* obj, int range);
 
+protected:
+	String _param1_placeStructure__CreatureObject_String_float_float_int_;
 };
 
 class StructureManagerHelper : public DistributedObjectClassHelper, public Singleton<StructureManagerHelper> {

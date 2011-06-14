@@ -124,7 +124,7 @@ public:
 
 	void createChildObjects();
 
-	int notifyStructurePlaced(PlayerCreature* player);
+	int notifyStructurePlaced(CreatureObject* creature);
 
 	bool checkRequisitesForPlacement(PlayerCreature* player);
 
@@ -303,7 +303,7 @@ public:
 
 	void createChildObjects();
 
-	virtual int notifyStructurePlaced(PlayerCreature* player);
+	virtual int notifyStructurePlaced(CreatureObject* creature);
 
 	virtual bool checkRequisitesForPlacement(PlayerCreature* player);
 
@@ -460,7 +460,7 @@ public:
 
 	void createChildObjects();
 
-	int notifyStructurePlaced(PlayerCreature* player);
+	int notifyStructurePlaced(CreatureObject* creature);
 
 	bool checkRequisitesForPlacement(PlayerCreature* player);
 

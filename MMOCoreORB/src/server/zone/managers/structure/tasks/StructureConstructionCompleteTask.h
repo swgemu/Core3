@@ -1,45 +1,35 @@
+/*
+ * StructureConstructionCompleteTask.h
+ *
+ *  Created on: Jun 13, 2011
+ *      Author: crush
+ */
+
+
 #ifndef STRUCTURECONSTRUCTIONCOMPLETETASK_H_
 #define STRUCTURECONSTRUCTIONCOMPLETETASK_H_
 
-#include "server/zone/managers/structure/StructureManager.h"
-#include "server/zone/objects/player/PlayerCreature.h"
-#include "server/zone/templates/tangible/SharedStructureObjectTemplate.h"
+#include "server/zone/objects/creature/CreatureObject.h"
+#include "server/zone/objects/player/sessions/PlaceStructureSession.h"
 
 class StructureConstructionCompleteTask : public Task {
-	StructureManager* structureManager;
-	ManagedReference<PlayerCreature*> player;
-	ManagedReference<StructureObject*> structureObject;
-	SharedStructureObjectTemplate* structureTemplate;
-	ManagedReference<SceneObject*> constructionMarker;
-	uint64 deedID;
-	float positionX;
-	float positionY;
-	Quaternion direction;
+	ManagedReference<CreatureObject*> creatureObject;
 
 public:
-	StructureConstructionCompleteTask(StructureManager* structManager, PlayerCreature* play, StructureObject* structure, SharedStructureObjectTemplate* ssot, uint64 deedid, float x, float y, const Quaternion& dir, SceneObject* marker) : Task() {
-		structureManager = structManager;
-		player = play;
-		structureObject = structure;
-		structureTemplate = ssot;
-		deedID = deedid;
-		positionX = x;
-		positionY = y;
-		direction = dir;
-		constructionMarker = marker;
+	StructureConstructionCompleteTask(CreatureObject* creature) : Task() {
+		creatureObject = creature;
 	}
 
 	void run() {
-		Locker locker(player);
+		Locker lock(creatureObject);
 
-		Locker clocker(constructionMarker, player);
+		ManagedReference<PlaceStructureSession*> session = dynamic_cast<PlaceStructureSession*>(creatureObject->getActiveSession(SessionFacadeType::PLACESTRUCTURE));
 
-		constructionMarker->removeFromZone();
-		constructionMarker->destroyObjectFromDatabase(true);
+		if (session == NULL)
+			return;
 
-		structureManager->placeStructure(player, structureObject, structureTemplate, deedID, positionX, positionY, direction);
+		session->completeSession();
 	}
-
 };
 
 #endif /*STRUCTURECONSTRUCTIONCOMPLETETASK_H_*/

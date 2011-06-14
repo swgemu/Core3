@@ -64,6 +64,8 @@ class PlaceStructureSession extends Facade {
 
 	protected SceneObject constructionBarricade;
 	
+	protected Zone zone;
+	
 	public PlaceStructureSession(CreatureObject creature, Deed deed) {
 		Logger.setLoggingName("PlaceStructureSession");
 		Logger.setLogging(true);
@@ -82,6 +84,8 @@ class PlaceStructureSession extends Facade {
 	public native int initializeSession();
 	
 	public native int constructStructure(float x, float y, int angle);
+	
+	public native int completeSession();
 	
 	public int cancelSession() {
 		creatureObject.dropActiveSession(SessionFacadeType.PLACESTRUCTURE);

@@ -141,7 +141,7 @@ class StructureObject extends TangibleObject {
 	/**
 	 * Gets called when the structure has been created;
 	 */
-	public abstract int notifyStructurePlaced(PlayerCreature player) {
+	public abstract int notifyStructurePlaced(CreatureObject creature) {
 		return 0;
 	}
 	

@@ -191,7 +191,7 @@ class CityHallObject extends BuildingObject {
 	/**
 	 * Gets called when the structure has been created;
 	 */
-	public native int notifyStructurePlaced(PlayerCreature player);
+	public native int notifyStructurePlaced(CreatureObject creature);
 	
 	public boolean isCityHallBuilding() {
 		return true;
