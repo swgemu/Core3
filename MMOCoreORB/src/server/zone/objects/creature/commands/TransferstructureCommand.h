@@ -112,13 +112,13 @@ public:
 
 		int lotSize = structureObject->getLotSize();
 
-		if (targetPlayer->getLotsRemaining() < lotSize) {
+		/*if (targetPlayer->getLotsRemaining() < lotSize) {
 			StringIdChatParameter params("@player_structure:not_enough_lots");
 			params.setDI(structureObject->getLotSize());
 			player->sendSystemMessage(params);
 
 			return GENERALERROR;
-		}
+		}*/
 
 		//TODO:
 		//@player_structure:trail_no_transfer Trial accounts may not be involved in a property ownership transfer.
@@ -158,8 +158,8 @@ public:
 		}
 
 		//Transfer the lots.
-		targetPlayer->setLotsRemaining(targetPlayer->getLotsRemaining() - lotSize);
-		player->setLotsRemaining(player->getLotsRemaining() + lotSize);
+		//targetPlayer->setLotsRemaining(targetPlayer->getLotsRemaining() - lotSize);
+		//player->setLotsRemaining(player->getLotsRemaining() + lotSize);
 
 		StringIdChatParameter params("@player_structure:ownership_transferred_in"); //%NT has transfered ownership of the structure to you
 		params.setTT(player);

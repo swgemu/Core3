@@ -554,10 +554,6 @@ public:
 
 	void addSuiBox(SuiBox* sui);
 
-	int getLotsRemaining();
-
-	void setLotsRemaining(int lots);
-
 	int getFactionStatus();
 
 	UnicodeString getBiography();
@@ -681,8 +677,6 @@ protected:
 	String startingProfession;
 
 	UnicodeString biography;
-
-	int lotsRemaining;
 
 	Reference<PlayerDisconnectEvent* > disconnectEvent;
 
@@ -958,10 +952,6 @@ public:
 	SuiBox* getSuiBoxFromWindowType(unsigned int windowType);
 
 	void addSuiBox(SuiBox* sui);
-
-	int getLotsRemaining();
-
-	void setLotsRemaining(int lots);
 
 	int getFactionStatus();
 
@@ -1257,10 +1247,6 @@ public:
 	SuiBox* getSuiBoxFromWindowType(unsigned int windowType);
 
 	void addSuiBox(SuiBox* sui);
-
-	int getLotsRemaining();
-
-	void setLotsRemaining(int lots);
 
 	int getFactionStatus();
 

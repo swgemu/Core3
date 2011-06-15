@@ -125,8 +125,6 @@ class PlayerCreature extends CreatureObject {
 	protected string startingProfession; //starting profession string
 
 	protected unicode biography; //char biography
-
-	protected int lotsRemaining;
 	
 	protected transient PlayerDisconnectEvent disconnectEvent;
 	protected transient PlayerRecoveryEvent recoveryEvent;
@@ -213,7 +211,6 @@ class PlayerCreature extends CreatureObject {
 		suiBoxNextID = 0;
 		
 		factionStatus = 0;
-		lotsRemaining = 10;
 		
 		centeredBonus = 0;
 		
@@ -710,14 +707,6 @@ class PlayerCreature extends CreatureObject {
 	public void addSuiBox(SuiBox sui) {
 		unsigned int key = sui.getBoxID();
 		suiBoxes.put(key, sui);
-	}
-	
-	public int getLotsRemaining() {
-		return lotsRemaining;
-	}
-	
-	public void setLotsRemaining(int lots) {
-		lotsRemaining = lots;
 	}
 	
 	public int getFactionStatus() {

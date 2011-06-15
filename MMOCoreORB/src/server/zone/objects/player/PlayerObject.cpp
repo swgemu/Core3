@@ -12,6 +12,8 @@
 
 #include "server/zone/managers/objectcontroller/ObjectController.h"
 
+#include "server/zone/objects/structure/StructureObject.h"
+
 #include "server/zone/ZoneClientSession.h"
 
 #include "server/zone/objects/waypoint/WaypointObject.h"
@@ -26,7 +28,7 @@
  *	PlayerObjectStub
  */
 
-enum {RPC_FINALIZE__ = 6,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_SENDBASELINESTO__SCENEOBJECT_,RPC_SENDMESSAGE__BASEPACKET_,RPC_ADDEXPERIENCE__STRING_INT_BOOL_,RPC_REMOVEEXPERIENCE__STRING_BOOL_,RPC_ADDWAYPOINT__WAYPOINTOBJECT_BOOL_BOOL_,RPC_SETWAYPOINT__WAYPOINTOBJECT_BOOL_,RPC_ADDWAYPOINT__STRING_FLOAT_FLOAT_BOOL_,RPC_REMOVEWAYPOINT__LONG_BOOL_,RPC_SETLANGUAGEID__BYTE_BOOL_,RPC_ADDFRIEND__STRING_BOOL_,RPC_REMOVEFRIEND__STRING_BOOL_,RPC_ADDIGNORE__STRING_BOOL_,RPC_REMOVEIGNORE__STRING_BOOL_,RPC_SETTITLE__STRING_BOOL_,RPC_SETFOODFILLING__INT_BOOL_,RPC_SETDRINKFILLING__INT_BOOL_,RPC_INCREASEFACTIONSTANDING__STRING_FLOAT_,RPC_DECREASEFACTIONSTANDING__STRING_FLOAT_,RPC_GETFACTIONSTANDING__STRING_,RPC_SETCOMMANDMESSAGESTRING__INT_STRING_,RPC_REMOVECOMMANDMESSAGESTRING__INT_,RPC_NOTIFYONLINE__,RPC_DODIGEST__,RPC_ISDIGESTING__,RPC_NOTIFYOFFLINE__,RPC_HASFRIEND__STRING_,RPC_ISIGNORING__STRING_,RPC_ADDREVERSEFRIEND__STRING_,RPC_REMOVEREVERSEFRIEND__STRING_,RPC_SENDFRIENDLISTS__,RPC_HASWAYPOINT__LONG_,RPC_HASCOMMANDMESSAGESTRING__INT_,RPC_GETCHARACTERBITMASK__,RPC_GETTITLE__,RPC_GETADMINLEVEL__,RPC_SETADMINLEVEL__INT_,RPC_ISDEVELOPER__,RPC_ISCSR__,RPC_ISPRIVILEGED__,RPC_SETCHARACTERBITMASK__INT_,RPC_SETCHARACTERBIT__INT_BOOL_,RPC_CLEARCHARACTERBIT__INT_BOOL_,RPC_TOGGLECHARACTERBIT__INT_,RPC_GETFORCEPOWER__,RPC_GETFORCEPOWERMAX__,RPC_GETSCHEMATIC__INT_,RPC_GETFOODFILLING__,RPC_GETFOODFILLINGMAX__,RPC_GETDRINKFILLING__,RPC_GETDRINKFILLINGMAX__,RPC_GETJEDISTATE__,RPC_GETLANGUAGEID__,RPC_GETEXPERIENCE__STRING_,RPC_GETCOMMANDMESSAGESTRING__INT_};
+enum {RPC_FINALIZE__ = 6,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_SENDBASELINESTO__SCENEOBJECT_,RPC_SENDMESSAGE__BASEPACKET_,RPC_ADDOWNEDSTRUCTURE__STRUCTUREOBJECT_,RPC_REMOVEOWNEDSTRUCTURE__STRUCTUREOBJECT_,RPC_GETTOTALOWNEDSTRUCTURECOUNT__,RPC_GETLOTSREMAINING__,RPC_ADDEXPERIENCE__STRING_INT_BOOL_,RPC_REMOVEEXPERIENCE__STRING_BOOL_,RPC_ADDWAYPOINT__WAYPOINTOBJECT_BOOL_BOOL_,RPC_SETWAYPOINT__WAYPOINTOBJECT_BOOL_,RPC_ADDWAYPOINT__STRING_FLOAT_FLOAT_BOOL_,RPC_REMOVEWAYPOINT__LONG_BOOL_,RPC_SETLANGUAGEID__BYTE_BOOL_,RPC_ADDFRIEND__STRING_BOOL_,RPC_REMOVEFRIEND__STRING_BOOL_,RPC_ADDIGNORE__STRING_BOOL_,RPC_REMOVEIGNORE__STRING_BOOL_,RPC_SETTITLE__STRING_BOOL_,RPC_SETFOODFILLING__INT_BOOL_,RPC_SETDRINKFILLING__INT_BOOL_,RPC_INCREASEFACTIONSTANDING__STRING_FLOAT_,RPC_DECREASEFACTIONSTANDING__STRING_FLOAT_,RPC_GETFACTIONSTANDING__STRING_,RPC_SETCOMMANDMESSAGESTRING__INT_STRING_,RPC_REMOVECOMMANDMESSAGESTRING__INT_,RPC_NOTIFYONLINE__,RPC_DODIGEST__,RPC_ISDIGESTING__,RPC_NOTIFYOFFLINE__,RPC_HASFRIEND__STRING_,RPC_ISIGNORING__STRING_,RPC_ADDREVERSEFRIEND__STRING_,RPC_REMOVEREVERSEFRIEND__STRING_,RPC_SENDFRIENDLISTS__,RPC_HASWAYPOINT__LONG_,RPC_HASCOMMANDMESSAGESTRING__INT_,RPC_GETCHARACTERBITMASK__,RPC_GETTITLE__,RPC_GETADMINLEVEL__,RPC_SETADMINLEVEL__INT_,RPC_ISDEVELOPER__,RPC_ISCSR__,RPC_ISPRIVILEGED__,RPC_SETCHARACTERBITMASK__INT_,RPC_SETCHARACTERBIT__INT_BOOL_,RPC_CLEARCHARACTERBIT__INT_BOOL_,RPC_TOGGLECHARACTERBIT__INT_,RPC_GETFORCEPOWER__,RPC_GETFORCEPOWERMAX__,RPC_GETSCHEMATIC__INT_,RPC_GETFOODFILLING__,RPC_GETFOODFILLINGMAX__,RPC_GETDRINKFILLING__,RPC_GETDRINKFILLINGMAX__,RPC_GETJEDISTATE__,RPC_GETLANGUAGEID__,RPC_GETEXPERIENCE__STRING_,RPC_GETCOMMANDMESSAGESTRING__INT_};
 
 PlayerObject::PlayerObject() : IntangibleObject(DummyConstructorParameter::instance()) {
 	PlayerObjectImplementation* _implementation = new PlayerObjectImplementation();
@@ -89,6 +91,60 @@ void PlayerObject::sendMessage(BasePacket* msg) {
 		method.executeWithVoidReturn();
 	} else
 		_implementation->sendMessage(msg);
+}
+
+void PlayerObject::addOwnedStructure(StructureObject* obj) {
+	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_ADDOWNEDSTRUCTURE__STRUCTUREOBJECT_);
+		method.addObjectParameter(obj);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->addOwnedStructure(obj);
+}
+
+void PlayerObject::removeOwnedStructure(StructureObject* obj) {
+	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_REMOVEOWNEDSTRUCTURE__STRUCTUREOBJECT_);
+		method.addObjectParameter(obj);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->removeOwnedStructure(obj);
+}
+
+int PlayerObject::getTotalOwnedStructureCount() {
+	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_GETTOTALOWNEDSTRUCTURECOUNT__);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return _implementation->getTotalOwnedStructureCount();
+}
+
+int PlayerObject::getLotsRemaining() {
+	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_GETLOTSREMAINING__);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return _implementation->getLotsRemaining();
 }
 
 int PlayerObject::addExperience(const String& xpType, int xp, bool notifyClient) {
@@ -1147,6 +1203,11 @@ bool PlayerObjectImplementation::readObjectMember(ObjectInputStream* stream, con
 		return true;
 	}
 
+	if (_name == "ownedStructures") {
+		TypeInfo<SortedVector<ManagedReference<StructureObject* > > >::parseFromBinaryStream(&ownedStructures, stream);
+		return true;
+	}
+
 	if (_name == "jediState") {
 		TypeInfo<int >::parseFromBinaryStream(&jediState, stream);
 		return true;
@@ -1286,6 +1347,14 @@ int PlayerObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
+	_name = "ownedStructures";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<SortedVector<ManagedReference<StructureObject* > > >::toBinaryStream(&ownedStructures, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
 	_name = "jediState";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
@@ -1383,7 +1452,7 @@ int PlayerObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	stream->writeShort(_offset, _totalSize);
 
 
-	return 20 + IntangibleObjectImplementation::writeObjectMembers(stream);
+	return 21 + IntangibleObjectImplementation::writeObjectMembers(stream);
 }
 
 PlayerObjectImplementation::PlayerObjectImplementation() {
@@ -1395,6 +1464,42 @@ PlayerObjectImplementation::PlayerObjectImplementation() {
 }
 
 void PlayerObjectImplementation::finalize() {
+}
+
+void PlayerObjectImplementation::addOwnedStructure(StructureObject* obj) {
+	Locker _locker(_this);
+	// server/zone/objects/player/PlayerObject.idl():  		ownedStructures.put(obj);
+	(&ownedStructures)->put(obj);
+}
+
+void PlayerObjectImplementation::removeOwnedStructure(StructureObject* obj) {
+	Locker _locker(_this);
+	// server/zone/objects/player/PlayerObject.idl():  		ownedStructures.drop(obj);
+	(&ownedStructures)->drop(obj);
+}
+
+int PlayerObjectImplementation::getTotalOwnedStructureCount() {
+	Locker _locker(_this);
+	// server/zone/objects/player/PlayerObject.idl():  		return ownedStructures.size();
+	return (&ownedStructures)->size();
+}
+
+int PlayerObjectImplementation::getLotsRemaining() {
+	Locker _locker(_this);
+	// server/zone/objects/player/PlayerObject.idl():  		int lotsRemaining = MAXLOTS;
+	int lotsRemaining = MAXLOTS;
+	// server/zone/objects/player/PlayerObject.idl():  		}
+	for (	// server/zone/objects/player/PlayerObject.idl():  		for (int i = 0;
+	int i = 0;
+	i < (&ownedStructures)->size();
+ ++i) {
+	// server/zone/objects/player/PlayerObject.idl():  			StructureObject structure = ownedStructures.get(i);
+	StructureObject* structure = (&ownedStructures)->get(i);
+	// server/zone/objects/player/PlayerObject.idl():  			lotsRemaining = lotsRemaining - structure.getLotSize();
+	lotsRemaining = lotsRemaining - structure->getLotSize();
+}
+	// server/zone/objects/player/PlayerObject.idl():  		return lotsRemaining;
+	return lotsRemaining;
 }
 
 FactionStandingList* PlayerObjectImplementation::getFactionStandingList() {
@@ -1623,6 +1728,18 @@ Packet* PlayerObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv)
 	case RPC_SENDMESSAGE__BASEPACKET_:
 		sendMessage((BasePacket*) inv->getObjectParameter());
 		break;
+	case RPC_ADDOWNEDSTRUCTURE__STRUCTUREOBJECT_:
+		addOwnedStructure((StructureObject*) inv->getObjectParameter());
+		break;
+	case RPC_REMOVEOWNEDSTRUCTURE__STRUCTUREOBJECT_:
+		removeOwnedStructure((StructureObject*) inv->getObjectParameter());
+		break;
+	case RPC_GETTOTALOWNEDSTRUCTURECOUNT__:
+		resp->insertSignedInt(getTotalOwnedStructureCount());
+		break;
+	case RPC_GETLOTSREMAINING__:
+		resp->insertSignedInt(getLotsRemaining());
+		break;
 	case RPC_ADDEXPERIENCE__STRING_INT_BOOL_:
 		resp->insertSignedInt(addExperience(inv->getAsciiParameter(_param0_addExperience__String_int_bool_), inv->getSignedIntParameter(), inv->getBooleanParameter()));
 		break;
@@ -1800,6 +1917,22 @@ void PlayerObjectAdapter::sendBaselinesTo(SceneObject* player) {
 
 void PlayerObjectAdapter::sendMessage(BasePacket* msg) {
 	((PlayerObjectImplementation*) impl)->sendMessage(msg);
+}
+
+void PlayerObjectAdapter::addOwnedStructure(StructureObject* obj) {
+	((PlayerObjectImplementation*) impl)->addOwnedStructure(obj);
+}
+
+void PlayerObjectAdapter::removeOwnedStructure(StructureObject* obj) {
+	((PlayerObjectImplementation*) impl)->removeOwnedStructure(obj);
+}
+
+int PlayerObjectAdapter::getTotalOwnedStructureCount() {
+	return ((PlayerObjectImplementation*) impl)->getTotalOwnedStructureCount();
+}
+
+int PlayerObjectAdapter::getLotsRemaining() {
+	return ((PlayerObjectImplementation*) impl)->getLotsRemaining();
 }
 
 int PlayerObjectAdapter::addExperience(const String& xpType, int xp, bool notifyClient) {

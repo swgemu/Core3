@@ -55,6 +55,9 @@ public:
 		insertShort(0x0D);
 		insertInt(0x9B3A17C4); // CRC
 
+		//We should be passing playerobject into this method, rather than PlayerCreature.
+		ManagedReference<PlayerObject*> ghost = player->getPlayerObject();
+
 		insertInt(0); //??
 		insertInt(0); //??
 
@@ -84,7 +87,7 @@ public:
 		}
 
 		insertUnicode(""); //Spouse Name
-		insertInt(player->getLotsRemaining()); //Lots Remaining
+		insertInt(ghost->getLotsRemaining()); //Lots Remaining
 
 		insertInt(player->getFaction()); //Faction CRC (or hashCode?)
 		insertInt(player->getFactionStatus()); //Faction Status

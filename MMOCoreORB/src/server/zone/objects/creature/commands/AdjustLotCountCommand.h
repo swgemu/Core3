@@ -63,34 +63,8 @@ public:
 		if (!checkInvalidPostures(creature))
 			return INVALIDPOSTURE;
 
-		if (!creature->isPlayerCreature())
-			return INVALIDPARAMETERS;
-
-		PlayerCreature* player = (PlayerCreature*) creature;
-
-		ManagedReference<SceneObject*> obj = server->getZoneServer()->getObject(target);
-
-		if (obj == NULL || !obj->isPlayerCreature())
-			return INVALIDTARGET;
-
-		PlayerCreature* targetPlayer = (PlayerCreature*) obj.get();
-
-		if (arguments.isEmpty())
-			return INVALIDPARAMETERS;
-
-		int adjustLots = Integer::valueOf(arguments.toString());
-
-		Locker _lock(targetPlayer, player);
-
-		int lots = targetPlayer->getLotsRemaining();
-		lots += adjustLots;
-
-		if (lots < 0)
-			lots = 0;
-
-		targetPlayer->setLotsRemaining(lots);
-
-		player->sendSystemMessage(targetPlayer->getObjectName()->getDisplayedName() + " now has " + String::valueOf(targetPlayer->getLotsRemaining()) + " lots remaining.");
+		//This command will be used to raise the maximum number of lots available,
+		//since lot count is now dynamic.
 
 		return SUCCESS;
 	}

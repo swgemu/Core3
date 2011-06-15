@@ -40,6 +40,14 @@
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
 
+-----------------------------------
+--GENERAL PLAYER CREATION SETTINGS
+-----------------------------------
+
+--Maximum number of lots each newly created player receives.
+--Notice: existing players will not affected by this change.
+maxLots = 10
+
 object = {
 	profession = "",
 	species = "",

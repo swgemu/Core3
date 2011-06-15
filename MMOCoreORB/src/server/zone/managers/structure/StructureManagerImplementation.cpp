@@ -400,7 +400,7 @@ StructureObject* StructureManagerImplementation::placeStructure(CreatureObject* 
 
 	structureObject->notifyStructurePlaced(creature);
 
-	return NULL;
+	return structureObject;
 }
 
 int StructureManagerImplementation::destroyStructure(PlayerCreature* player, StructureObject* structureObject) {
@@ -439,10 +439,10 @@ int StructureManagerImplementation::destroyStructure(PlayerCreature* player, Str
 
 	structureObject->removeFromZone();
 
-	int lotsRemaining = player->getLotsRemaining();
+	//int lotsRemaining = player->getLotsRemaining();
 
-	if (!player->getPlayerObject()->isPrivileged())
-		player->setLotsRemaining(lotsRemaining + structureObject->getLotSize());
+	//if (!player->getPlayerObject()->isPrivileged())
+		//player->setLotsRemaining(lotsRemaining + structureObject->getLotSize());
 
 	//If the deed object id is not 0, then the deed wasn't reclaimed.
 	//NOTICE: This could potentially give an erroneous message if the deed never existed when the structure was placed.

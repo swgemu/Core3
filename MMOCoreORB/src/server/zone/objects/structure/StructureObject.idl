@@ -241,9 +241,7 @@ class StructureObject extends TangibleObject {
 		return deedObjectID;
 	}
 	
-	public int getLotSize() {
-		return lotSize;
-	}
+	public native int getLotSize();
 	
 	public unsigned int getDestroyCode() {
 		return destroyCode;
@@ -283,10 +281,6 @@ class StructureObject extends TangibleObject {
 	
 	public void setDeedObjectID(unsigned long deedID) {
 		deedObjectID = deedID;
-	}
-	
-	public void setLotSize(int lots) {
-		lotSize = lots;
 	}
 	
 	public void setDestroyCode(unsigned int code) {

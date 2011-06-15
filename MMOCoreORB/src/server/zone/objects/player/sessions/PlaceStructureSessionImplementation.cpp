@@ -15,6 +15,7 @@
 #include "server/zone/packets/player/EnterStructurePlacementModeMessage.h"
 #include "server/zone/managers/structure/tasks/StructureConstructionCompleteTask.h"
 #include "server/zone/objects/structure/StructureObject.h"
+#include "server/zone/objects/player/PlayerObject.h"
 
 int PlaceStructureSessionImplementation::initializeSession() {
 	//Ensure that the deed can be placed in the current position.
@@ -96,6 +97,14 @@ int PlaceStructureSessionImplementation::completeSession() {
 
 	structureObject->setOwnerObjectID(creatureObject->getObjectID());
 	structureObject->setDeedObjectID(deedObject->getObjectID());
+
+	ManagedReference<SceneObject*> ghost = creatureObject->getSlottedObject("ghost");
+
+	if (ghost != NULL && ghost->isPlayerObject()) {
+		PlayerObject* playerObject = (PlayerObject*) ghost.get();
+
+		playerObject->addOwnedStructure(structureObject);
+	}
 
 	//Create a waypoint.
 

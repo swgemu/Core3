@@ -50,6 +50,7 @@ import server.zone.objects.intangible.IntangibleObject;
 import server.zone.objects.creature.CreatureObject;
 import server.zone.objects.creature.commands.QueueCommand;
 import server.zone.managers.objectcontroller.ObjectController;
+import server.zone.objects.structure.StructureObject;
 include server.zone.objects.creature.professions.Certification;
 include server.zone.objects.draftschematic.DraftSchematic;
 include server.zone.objects.manufactureschematic.ManufactureSchematic;
@@ -84,6 +85,9 @@ class PlayerObject extends IntangibleObject {
 	
 	protected int drinkFilling;
 	protected int drinkFillingMax;
+	
+	@dereferenced
+	protected SortedVector<StructureObject> ownedStructures;
 	
 	protected int jediState;
 	protected unsigned int adminLevel;
@@ -129,6 +133,9 @@ class PlayerObject extends IntangibleObject {
 	public static final int CSR = 1;
 	public static final int DEV = 2;
 	
+	//TODO: Make this configurable in player_manager.lua...
+	public static final int MAXLOTS = 10;
+	
 	public PlayerObject() {
 		commandMessageStrings.setNoDuplicateInsertPlan();
 		
@@ -146,6 +153,30 @@ class PlayerObject extends IntangibleObject {
 	public native void sendBaselinesTo(SceneObject player);
 	
 	public native void sendMessage(BasePacket msg);
+	
+	public synchronized void addOwnedStructure(StructureObject obj) {
+		ownedStructures.put(obj);
+	}
+	
+	public synchronized void removeOwnedStructure(StructureObject obj) {
+		ownedStructures.drop(obj);
+	}
+	
+	public synchronized int getTotalOwnedStructureCount() {
+		return ownedStructures.size();
+	}
+	
+	public synchronized int getLotsRemaining() {
+		int lotsRemaining = MAXLOTS;
+		
+		for (int i = 0; i < ownedStructures.size(); ++i) {
+			StructureObject structure = ownedStructures.get(i);
+			
+			lotsRemaining = lotsRemaining - structure.getLotSize();
+		}
+		
+		return lotsRemaining;
+	}
 	
 	 /**
 	 * Adds experience of a type to the player's experience pool.

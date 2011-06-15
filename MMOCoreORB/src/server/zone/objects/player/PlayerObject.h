@@ -71,6 +71,20 @@ using namespace server::zone::managers::objectcontroller;
 
 namespace server {
 namespace zone {
+namespace objects {
+namespace structure {
+
+class StructureObject;
+
+} // namespace structure
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::structure;
+
+namespace server {
+namespace zone {
 
 class ZoneClientSession;
 
@@ -192,6 +206,8 @@ public:
 
 	static const int DEV = 2;
 
+	static const int MAXLOTS = 10;
+
 	PlayerObject();
 
 	void loadTemplateData(SharedObjectTemplate* templateData);
@@ -201,6 +217,14 @@ public:
 	void sendBaselinesTo(SceneObject* player);
 
 	void sendMessage(BasePacket* msg);
+
+	void addOwnedStructure(StructureObject* obj);
+
+	void removeOwnedStructure(StructureObject* obj);
+
+	int getTotalOwnedStructureCount();
+
+	int getLotsRemaining();
 
 	int addExperience(const String& xpType, int xp, bool notifyClient = true);
 
@@ -392,6 +416,8 @@ protected:
 
 	int drinkFillingMax;
 
+	SortedVector<ManagedReference<StructureObject* > > ownedStructures;
+
 	int jediState;
 
 	unsigned int adminLevel;
@@ -437,6 +463,8 @@ public:
 
 	static const int DEV = 2;
 
+	static const int MAXLOTS = 10;
+
 	PlayerObjectImplementation();
 
 	PlayerObjectImplementation(DummyConstructorParameter* param);
@@ -450,6 +478,14 @@ public:
 	void sendBaselinesTo(SceneObject* player);
 
 	void sendMessage(BasePacket* msg);
+
+	void addOwnedStructure(StructureObject* obj);
+
+	void removeOwnedStructure(StructureObject* obj);
+
+	int getTotalOwnedStructureCount();
+
+	int getLotsRemaining();
 
 	int addExperience(const String& xpType, int xp, bool notifyClient = true);
 
@@ -643,6 +679,14 @@ public:
 	void sendBaselinesTo(SceneObject* player);
 
 	void sendMessage(BasePacket* msg);
+
+	void addOwnedStructure(StructureObject* obj);
+
+	void removeOwnedStructure(StructureObject* obj);
+
+	int getTotalOwnedStructureCount();
+
+	int getLotsRemaining();
 
 	int addExperience(const String& xpType, int xp, bool notifyClient);
 

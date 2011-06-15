@@ -25,6 +25,7 @@
 
 #include "server/zone/templates/appearance/MeshAppearanceTemplate.h"
 #include "server/zone/templates/appearance/PortalLayout.h"
+#include "server/zone/templates/tangible/SharedStructureObjectTemplate.h"
 
 void StructureObjectImplementation::loadTemplateData(SharedObjectTemplate* templateData) {
 	TangibleObjectImplementation::loadTemplateData(templateData);
@@ -52,6 +53,15 @@ void StructureObjectImplementation::initializeTransientMembers() {
 }
 
 void StructureObjectImplementation::finalize() {
+}
+
+int StructureObjectImplementation::getLotSize() {
+	SharedStructureObjectTemplate* ssot = dynamic_cast<SharedStructureObjectTemplate*>(templateObject.get());
+
+	if (ssot == NULL)
+		return 0;
+
+	return ssot->getLotSize();
 }
 
 AABBTree* StructureObjectImplementation::getAABBTree() {

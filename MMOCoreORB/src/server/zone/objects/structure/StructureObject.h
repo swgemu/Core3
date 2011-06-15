@@ -202,8 +202,6 @@ public:
 
 	void setDeedObjectID(unsigned long long deedID);
 
-	void setLotSize(int lots);
-
 	void setDestroyCode(unsigned int code);
 
 	void setBaseMaintenanceRate(int rate);
@@ -381,8 +379,6 @@ public:
 
 	void setDeedObjectID(unsigned long long deedID);
 
-	void setLotSize(int lots);
-
 	void setDestroyCode(unsigned int code);
 
 	void setBaseMaintenanceRate(int rate);
@@ -537,8 +533,6 @@ public:
 	void setOwnerObjectID(unsigned long long objectID);
 
 	void setDeedObjectID(unsigned long long deedID);
-
-	void setLotSize(int lots);
 
 	void setDestroyCode(unsigned int code);
 
