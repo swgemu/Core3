@@ -87,7 +87,7 @@ int PlaceStructureSessionImplementation::completeSession() {
 
 	String serverTemplatePath = deedObject->getGeneratedObjectTemplate();
 
-	StructureManager* structureManager = creatureObject->getZone()->getPlanetManager()->getStructureManager();
+	StructureManager* structureManager = creatureObject->getZone()->getStructureManager();
 	ManagedReference<StructureObject*> structureObject = structureManager->placeStructure(creatureObject, serverTemplatePath, positionX, positionY, directionAngle);
 
 	if (structureObject == NULL) {

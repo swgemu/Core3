@@ -39,7 +39,7 @@ bool VehicleObjectImplementation::checkInRangeGarage() {
 	if (getZone() == NULL)
 		return false;
 
-	ManagedReference<StructureManager*> structureManager = getZone()->getPlanetManager()->getStructureManager();
+	ManagedReference<StructureManager*> structureManager = getZone()->getStructureManager();
 
 	if (structureManager == NULL)
 		return false;

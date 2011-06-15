@@ -222,6 +222,8 @@ public:
 
 	PlanetManager* getPlanetManager();
 
+	StructureManager* getStructureManager();
+
 	CityManager* getCityManager();
 
 	ZoneServer* getZoneServer();
@@ -280,6 +282,8 @@ class ZoneImplementation : public ManagedObjectImplementation {
 	Reference<ObjectMap* > objectMap;
 
 	ManagedReference<PlanetManager* > planetManager;
+
+	ManagedReference<StructureManager* > structureManager;
 
 	ManagedReference<CityManager* > cityManager;
 
@@ -345,6 +349,8 @@ public:
 	void dropSceneObject(SceneObject* object);
 
 	PlanetManager* getPlanetManager();
+
+	StructureManager* getStructureManager();
 
 	CityManager* getCityManager();
 
@@ -438,6 +444,8 @@ public:
 	void dropSceneObject(SceneObject* object);
 
 	PlanetManager* getPlanetManager();
+
+	StructureManager* getStructureManager();
 
 	CityManager* getCityManager();
 

@@ -188,7 +188,7 @@ void CityHallObjectImplementation::sendCityAdvancementTo(PlayerCreature* player)
 	if (getZone() == NULL)
 		return;
 
-	ManagedReference<StructureManager*> structureManager = getZone()->getPlanetManager()->getStructureManager();
+	ManagedReference<StructureManager*> structureManager = getZone()->getStructureManager();
 
 	if (structureManager == NULL)
 		return;

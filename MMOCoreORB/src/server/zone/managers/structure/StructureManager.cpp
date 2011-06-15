@@ -26,7 +26,7 @@
  *	StructureManagerStub
  */
 
-enum {RPC_LOADSTRUCTURES__,RPC_PLACESTRUCTUREFROMDEED__CREATUREOBJECT_LONG_FLOAT_FLOAT_INT_,RPC_PLACESTRUCTURE__CREATUREOBJECT_STRING_FLOAT_FLOAT_INT_,RPC_DESTROYSTRUCTURE__PLAYERCREATURE_STRUCTUREOBJECT_,RPC_REDEEDSTRUCTURE__PLAYERCREATURE_STRUCTUREOBJECT_BOOL_,RPC_DECLARERESIDENCE__PLAYERCREATURE_STRUCTUREOBJECT_,RPC_CHANGEPRIVACY__PLAYERCREATURE_STRUCTUREOBJECT_,RPC_GETTIMESTRING__INT_,RPC_GETINRANGEPARKINGGARAGE__SCENEOBJECT_INT_};
+enum {RPC_INITIALIZE__ = 6,RPC_PLACESTRUCTUREFROMDEED__CREATUREOBJECT_LONG_FLOAT_FLOAT_INT_,RPC_PLACESTRUCTURE__CREATUREOBJECT_STRING_FLOAT_FLOAT_INT_,RPC_DESTROYSTRUCTURE__PLAYERCREATURE_STRUCTUREOBJECT_,RPC_REDEEDSTRUCTURE__PLAYERCREATURE_STRUCTUREOBJECT_BOOL_,RPC_DECLARERESIDENCE__PLAYERCREATURE_STRUCTUREOBJECT_,RPC_CHANGEPRIVACY__PLAYERCREATURE_STRUCTUREOBJECT_,RPC_GETTIMESTRING__INT_,RPC_GETINRANGEPARKINGGARAGE__SCENEOBJECT_INT_};
 
 StructureManager::StructureManager(Zone* zne, ZoneProcessServer* proc) : ManagedService(DummyConstructorParameter::instance()) {
 	StructureManagerImplementation* _implementation = new StructureManagerImplementation(zne, proc);
@@ -41,17 +41,17 @@ StructureManager::~StructureManager() {
 }
 
 
-void StructureManager::loadStructures() {
+void StructureManager::initialize() {
 	StructureManagerImplementation* _implementation = (StructureManagerImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_LOADSTRUCTURES__);
+		DistributedMethod method(this, RPC_INITIALIZE__);
 
 		method.executeWithVoidReturn();
 	} else
-		_implementation->loadStructures();
+		_implementation->initialize();
 }
 
 int StructureManager::placeStructureFromDeed(CreatureObject* creature, unsigned long long deedID, float x, float y, int angle) {
@@ -335,9 +335,7 @@ StructureManagerImplementation::StructureManagerImplementation(Zone* zne, ZonePr
 	Logger::setLogging(false);
 }
 
-void StructureManagerImplementation::loadStructures() {
-	// server/zone/managers/structure/StructureManager.idl():  		Logger.info("Loading structures...", true);
-	Logger::info("Loading structures...", true);
+void StructureManagerImplementation::initialize() {
 	// server/zone/managers/structure/StructureManager.idl():  		loadPlayerStructures();
 	loadPlayerStructures();
 }
@@ -353,8 +351,8 @@ Packet* StructureManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* 
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
-	case RPC_LOADSTRUCTURES__:
-		loadStructures();
+	case RPC_INITIALIZE__:
+		initialize();
 		break;
 	case RPC_PLACESTRUCTUREFROMDEED__CREATUREOBJECT_LONG_FLOAT_FLOAT_INT_:
 		resp->insertSignedInt(placeStructureFromDeed((CreatureObject*) inv->getObjectParameter(), inv->getUnsignedLongParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getSignedIntParameter()));
@@ -387,8 +385,8 @@ Packet* StructureManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* 
 	return resp;
 }
 
-void StructureManagerAdapter::loadStructures() {
-	((StructureManagerImplementation*) impl)->loadStructures();
+void StructureManagerAdapter::initialize() {
+	((StructureManagerImplementation*) impl)->initialize();
 }
 
 int StructureManagerAdapter::placeStructureFromDeed(CreatureObject* creature, unsigned long long deedID, float x, float y, int angle) {

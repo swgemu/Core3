@@ -84,13 +84,11 @@ class StructureManager extends ManagedService implements Logger {
 		Logger.setLogging(false);
 	}
 	
-	private native void loadPlayerStructures();
-	
-	public void loadStructures() {
-		Logger.info("Loading structures...", true);
-
+	public void initialize() {
 		loadPlayerStructures();
 	}
+	
+	private native void loadPlayerStructures();
 
 	public native int placeStructureFromDeed(CreatureObject creature, unsigned long deedID, float x, float y, int angle);
 	

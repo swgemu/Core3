@@ -81,7 +81,7 @@ public:
 			return INVALIDPARAMETERS;
 		}
 
-		StructureManager* structureManager = creature->getZone()->getPlanetManager()->getStructureManager();
+		StructureManager* structureManager = creature->getZone()->getStructureManager();
 		structureManager->placeStructureFromDeed(creature, deedID, x, y, angle);
 
 		return SUCCESS;

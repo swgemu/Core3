@@ -28,7 +28,7 @@
  *	ZoneStub
  */
 
-enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_FINALIZE__,RPC_GETNEARESTCLONINGBUILDING__CREATUREOBJECT_,RPC_GETNEARESTPLANETARYOBJECT__SCENEOBJECT_STRING_,RPC_INITIALIZEPRIVATEDATA__,RPC_UPDATEACTIVEAREAS__SCENEOBJECT_,RPC_STARTMANAGERS__,RPC_STOPMANAGERS__,RPC_GETHEIGHT__FLOAT_FLOAT_,RPC_ADDSCENEOBJECT__SCENEOBJECT_,RPC_SENDMAPLOCATIONSTO__SCENEOBJECT_,RPC_DROPSCENEOBJECT__SCENEOBJECT_,RPC_GETPLANETMANAGER__,RPC_GETCITYMANAGER__,RPC_GETZONESERVER__,RPC_GETCREATUREMANAGER__,RPC_GETGALACTICTIME__,RPC_HASMANAGERSSTARTED__,RPC_GETMINX__,RPC_GETMAXX__,RPC_GETMINY__,RPC_GETMAXY__,RPC_REGISTEROBJECTWITHPLANETARYMAP__SCENEOBJECT_,RPC_UNREGISTEROBJECTWITHPLANETARYMAP__SCENEOBJECT_,RPC_GETZONENAME__,RPC_GETZONECRC__};
+enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_FINALIZE__,RPC_GETNEARESTCLONINGBUILDING__CREATUREOBJECT_,RPC_GETNEARESTPLANETARYOBJECT__SCENEOBJECT_STRING_,RPC_INITIALIZEPRIVATEDATA__,RPC_UPDATEACTIVEAREAS__SCENEOBJECT_,RPC_STARTMANAGERS__,RPC_STOPMANAGERS__,RPC_GETHEIGHT__FLOAT_FLOAT_,RPC_ADDSCENEOBJECT__SCENEOBJECT_,RPC_SENDMAPLOCATIONSTO__SCENEOBJECT_,RPC_DROPSCENEOBJECT__SCENEOBJECT_,RPC_GETPLANETMANAGER__,RPC_GETSTRUCTUREMANAGER__,RPC_GETCITYMANAGER__,RPC_GETZONESERVER__,RPC_GETCREATUREMANAGER__,RPC_GETGALACTICTIME__,RPC_HASMANAGERSSTARTED__,RPC_GETMINX__,RPC_GETMAXX__,RPC_GETMINY__,RPC_GETMAXY__,RPC_REGISTEROBJECTWITHPLANETARYMAP__SCENEOBJECT_,RPC_UNREGISTEROBJECTWITHPLANETARYMAP__SCENEOBJECT_,RPC_GETZONENAME__,RPC_GETZONECRC__};
 
 Zone::Zone(ZoneProcessServer* processor, const String& zoneName) : ManagedObject(DummyConstructorParameter::instance()) {
 	ZoneImplementation* _implementation = new ZoneImplementation(processor, zoneName);
@@ -278,6 +278,19 @@ PlanetManager* Zone::getPlanetManager() {
 		return (PlanetManager*) method.executeWithObjectReturn();
 	} else
 		return _implementation->getPlanetManager();
+}
+
+StructureManager* Zone::getStructureManager() {
+	ZoneImplementation* _implementation = (ZoneImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_GETSTRUCTUREMANAGER__);
+
+		return (StructureManager*) method.executeWithObjectReturn();
+	} else
+		return _implementation->getStructureManager();
 }
 
 CityManager* Zone::getCityManager() {
@@ -574,6 +587,11 @@ bool ZoneImplementation::readObjectMember(ObjectInputStream* stream, const Strin
 		return true;
 	}
 
+	if (_name == "structureManager") {
+		TypeInfo<ManagedReference<StructureManager* > >::parseFromBinaryStream(&structureManager, stream);
+		return true;
+	}
+
 	if (_name == "cityManager") {
 		TypeInfo<ManagedReference<CityManager* > >::parseFromBinaryStream(&cityManager, stream);
 		return true;
@@ -646,6 +664,14 @@ int ZoneImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
+	_name = "structureManager";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<ManagedReference<StructureManager* > >::toBinaryStream(&structureManager, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
 	_name = "cityManager";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
@@ -687,7 +713,7 @@ int ZoneImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	stream->writeShort(_offset, _totalSize);
 
 
-	return 9 + ManagedObjectImplementation::writeObjectMembers(stream);
+	return 10 + ManagedObjectImplementation::writeObjectMembers(stream);
 }
 
 QuadTree* ZoneImplementation::getRegionTree() {
@@ -698,6 +724,11 @@ QuadTree* ZoneImplementation::getRegionTree() {
 PlanetManager* ZoneImplementation::getPlanetManager() {
 	// server/zone/Zone.idl():  		return planetManager;
 	return planetManager;
+}
+
+StructureManager* ZoneImplementation::getStructureManager() {
+	// server/zone/Zone.idl():  		return structureManager;
+	return structureManager;
 }
 
 CityManager* ZoneImplementation::getCityManager() {
@@ -784,6 +815,9 @@ Packet* ZoneAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		break;
 	case RPC_GETPLANETMANAGER__:
 		resp->insertLong(getPlanetManager()->_getObjectID());
+		break;
+	case RPC_GETSTRUCTUREMANAGER__:
+		resp->insertLong(getStructureManager()->_getObjectID());
 		break;
 	case RPC_GETCITYMANAGER__:
 		resp->insertLong(getCityManager()->_getObjectID());
@@ -881,6 +915,10 @@ void ZoneAdapter::dropSceneObject(SceneObject* object) {
 
 PlanetManager* ZoneAdapter::getPlanetManager() {
 	return ((ZoneImplementation*) impl)->getPlanetManager();
+}
+
+StructureManager* ZoneAdapter::getStructureManager() {
+	return ((ZoneImplementation*) impl)->getStructureManager();
 }
 
 CityManager* ZoneAdapter::getCityManager() {

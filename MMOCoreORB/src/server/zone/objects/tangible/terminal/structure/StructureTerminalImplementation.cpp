@@ -70,12 +70,7 @@ int StructureTerminalImplementation::handleObjectMenuSelect(PlayerCreature* play
 	if (getZone() == NULL)
 		return 1;
 
-	ManagedReference<PlanetManager*> planetManager = getZone()->getPlanetManager();
-
-	if (planetManager == NULL)
-		return 1;
-
-	ManagedReference<StructureManager*> structureManager = planetManager->getStructureManager();
+	ManagedReference<StructureManager*> structureManager = getZone()->getStructureManager();
 
 	if (structureManager == NULL)
 		return 1;

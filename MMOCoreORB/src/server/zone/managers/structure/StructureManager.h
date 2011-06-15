@@ -158,7 +158,7 @@ class StructureManager : public ManagedService {
 public:
 	StructureManager(Zone* zne, ZoneProcessServer* proc);
 
-	void loadStructures();
+	void initialize();
 
 	int placeStructureFromDeed(CreatureObject* creature, unsigned long long deedID, float x, float y, int angle);
 
@@ -214,12 +214,12 @@ public:
 
 	StructureManagerImplementation(DummyConstructorParameter* param);
 
+	void initialize();
+
 private:
 	void loadPlayerStructures();
 
 public:
-	void loadStructures();
-
 	int placeStructureFromDeed(CreatureObject* creature, unsigned long long deedID, float x, float y, int angle);
 
 	StructureObject* placeStructure(CreatureObject* creature, const String& structureTemplatePath, float x, float y, int angle);
@@ -279,7 +279,7 @@ public:
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
-	void loadStructures();
+	void initialize();
 
 	int placeStructureFromDeed(CreatureObject* creature, unsigned long long deedID, float x, float y, int angle);
 

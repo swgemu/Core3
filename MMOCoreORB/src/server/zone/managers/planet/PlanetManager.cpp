@@ -14,8 +14,6 @@
 
 #include "server/zone/objects/scene/variables/StringId.h"
 
-#include "server/zone/managers/structure/StructureManager.h"
-
 #include "server/zone/managers/weather/WeatherManager.h"
 
 #include "server/zone/managers/objectcontroller/ObjectController.h"
@@ -28,7 +26,7 @@
  *	PlanetManagerStub
  */
 
-enum {RPC_INITIALIZETRANSIENTMEMBERS__,RPC_FINALIZE__,RPC_INITIALIZE__,RPC_LOADCLIENTREGIONS__,RPC_LOADPLAYERREGIONS__,RPC_LOADNOBUILDAREAS__,RPC_LOADBADGEAREAS__,RPC_LOADPERFORMANCELOCATIONS__,RPC_LOADHUNTINGTARGETS__,RPC_LOADRECONLOCATIONS__,RPC_GETTRAVELFARE__STRING_,RPC_SENDPLANETTRAVELPOINTLISTRESPONSE__PLAYERCREATURE_,RPC_GETSTRUCTUREMANAGER__,RPC_GETWEATHERMANAGER__,RPC_GETREGION__FLOAT_FLOAT_,RPC_GETREGIONCOUNT__,RPC_GETNUMBEROFCITIES__,RPC_INCREASENUMBEROFCITIES__,RPC_GETREGION__INT_,RPC_ADDREGION__CITYREGION_,RPC_DROPREGION__STRING_,RPC_HASREGION__STRING_,RPC_ADDPERFORMANCELOCATION__SCENEOBJECT_,RPC_ADDMISSIONNPC__SCENEOBJECT_,RPC_ADDHUNTINGTARGETTEMPLATE__STRING_STRING_INT_,RPC_ADDRECONLOC__SCENEOBJECT_,RPC_ADDINFORMANT__SCENEOBJECT_,RPC_ISEXISTINGPLANETTRAVELPOINT__STRING_,RPC_ISINTERPLANETARYTRAVELALLOWED__STRING_,RPC_ISTRAVELTOLOCATIONPERMITTED__STRING_STRING_STRING_};
+enum {RPC_INITIALIZETRANSIENTMEMBERS__,RPC_FINALIZE__,RPC_INITIALIZE__,RPC_LOADCLIENTREGIONS__,RPC_LOADPLAYERREGIONS__,RPC_LOADNOBUILDAREAS__,RPC_LOADBADGEAREAS__,RPC_LOADPERFORMANCELOCATIONS__,RPC_LOADHUNTINGTARGETS__,RPC_LOADRECONLOCATIONS__,RPC_GETTRAVELFARE__STRING_,RPC_SENDPLANETTRAVELPOINTLISTRESPONSE__PLAYERCREATURE_,RPC_GETWEATHERMANAGER__,RPC_GETREGION__FLOAT_FLOAT_,RPC_GETREGIONCOUNT__,RPC_GETNUMBEROFCITIES__,RPC_INCREASENUMBEROFCITIES__,RPC_GETREGION__INT_,RPC_ADDREGION__CITYREGION_,RPC_DROPREGION__STRING_,RPC_HASREGION__STRING_,RPC_ADDPERFORMANCELOCATION__SCENEOBJECT_,RPC_ADDMISSIONNPC__SCENEOBJECT_,RPC_ADDHUNTINGTARGETTEMPLATE__STRING_STRING_INT_,RPC_ADDRECONLOC__SCENEOBJECT_,RPC_ADDINFORMANT__SCENEOBJECT_,RPC_ISEXISTINGPLANETTRAVELPOINT__STRING_,RPC_ISINTERPLANETARYTRAVELALLOWED__STRING_,RPC_ISTRAVELTOLOCATIONPERMITTED__STRING_STRING_STRING_};
 
 PlanetManager::PlanetManager(Zone* planet, ZoneProcessServer* srv) : ManagedService(DummyConstructorParameter::instance()) {
 	PlanetManagerImplementation* _implementation = new PlanetManagerImplementation(planet, srv);
@@ -213,19 +211,6 @@ Vector<ManagedReference<CityRegion* > > PlanetManager::getRegions(StringId& regi
 
 	} else
 		return _implementation->getRegions(regionName);
-}
-
-StructureManager* PlanetManager::getStructureManager() {
-	PlanetManagerImplementation* _implementation = (PlanetManagerImplementation*) _getImplementation();
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, RPC_GETSTRUCTUREMANAGER__);
-
-		return (StructureManager*) method.executeWithObjectReturn();
-	} else
-		return _implementation->getStructureManager();
 }
 
 WeatherManager* PlanetManager::getWeatherManager() {
@@ -662,11 +647,6 @@ bool PlanetManagerImplementation::readObjectMember(ObjectInputStream* stream, co
 		return true;
 	}
 
-	if (_name == "structureManager") {
-		TypeInfo<ManagedReference<StructureManager* > >::parseFromBinaryStream(&structureManager, stream);
-		return true;
-	}
-
 	if (_name == "weatherManager") {
 		TypeInfo<ManagedReference<WeatherManager* > >::parseFromBinaryStream(&weatherManager, stream);
 		return true;
@@ -740,14 +720,6 @@ int PlanetManagerImplementation::writeObjectMembers(ObjectOutputStream* stream) 
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "structureManager";
-	_name.toBinaryStream(stream);
-	_offset = stream->getOffset();
-	stream->writeShort(0);
-	TypeInfo<ManagedReference<StructureManager* > >::toBinaryStream(&structureManager, stream);
-	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
-	stream->writeShort(_offset, _totalSize);
-
 	_name = "weatherManager";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
@@ -765,7 +737,7 @@ int PlanetManagerImplementation::writeObjectMembers(ObjectOutputStream* stream) 
 	stream->writeShort(_offset, _totalSize);
 
 
-	return 9 + ManagedServiceImplementation::writeObjectMembers(stream);
+	return 8 + ManagedServiceImplementation::writeObjectMembers(stream);
 }
 
 PlanetManagerImplementation::PlanetManagerImplementation(Zone* planet, ZoneProcessServer* srv) {
@@ -790,8 +762,6 @@ PlanetManagerImplementation::PlanetManagerImplementation(Zone* planet, ZoneProce
 	shuttleLandingDelay = 300000;
 	// server/zone/managers/planet/PlanetManager.idl():  		shuttleTakeoffDelay = 90000;
 	shuttleTakeoffDelay = 90000;
-	// server/zone/managers/planet/PlanetManager.idl():  		structureManager = null;
-	structureManager = NULL;
 	// server/zone/managers/planet/PlanetManager.idl():  		weatherManager = null;
 	weatherManager = NULL;
 	// server/zone/managers/planet/PlanetManager.idl():  		cityRegionMap = new RegionMap();
@@ -812,11 +782,6 @@ int PlanetManagerImplementation::getTravelFare(const String& destinationPlanet) 
 Vector<ManagedReference<CityRegion* > > PlanetManagerImplementation::getRegions(StringId& regionName) {
 	// server/zone/managers/planet/PlanetManager.idl():  		return cityRegionMap.getRegions(regionName);
 	return cityRegionMap->getRegions((&regionName));
-}
-
-StructureManager* PlanetManagerImplementation::getStructureManager() {
-	// server/zone/managers/planet/PlanetManager.idl():  		return structureManager;
-	return structureManager;
 }
 
 WeatherManager* PlanetManagerImplementation::getWeatherManager() {
@@ -986,9 +951,6 @@ Packet* PlanetManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv
 	case RPC_SENDPLANETTRAVELPOINTLISTRESPONSE__PLAYERCREATURE_:
 		sendPlanetTravelPointListResponse((PlayerCreature*) inv->getObjectParameter());
 		break;
-	case RPC_GETSTRUCTUREMANAGER__:
-		resp->insertLong(getStructureManager()->_getObjectID());
-		break;
 	case RPC_GETWEATHERMANAGER__:
 		resp->insertLong(getWeatherManager()->_getObjectID());
 		break;
@@ -1093,10 +1055,6 @@ int PlanetManagerAdapter::getTravelFare(const String& destinationPlanet) {
 
 void PlanetManagerAdapter::sendPlanetTravelPointListResponse(PlayerCreature* player) {
 	((PlanetManagerImplementation*) impl)->sendPlanetTravelPointListResponse(player);
-}
-
-StructureManager* PlanetManagerAdapter::getStructureManager() {
-	return ((PlanetManagerImplementation*) impl)->getStructureManager();
 }
 
 WeatherManager* PlanetManagerAdapter::getWeatherManager() {

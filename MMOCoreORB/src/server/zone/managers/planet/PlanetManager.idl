@@ -56,7 +56,6 @@ import system.util.HashTable;
 import system.util.Vector;
 import server.zone.objects.region.CityRegion;
 import server.zone.objects.scene.variables.StringId;
-import server.zone.managers.structure.StructureManager;
 import server.zone.managers.weather.WeatherManager;
 import server.zone.managers.objectcontroller.ObjectController;
 import server.zone.objects.player.PlayerCreature;
@@ -88,8 +87,6 @@ class PlanetManager extends ManagedService implements Logger {
 	//In miliseconds.
 	protected int shuttleLandingDelay;
 	protected int shuttleTakeoffDelay;
-	
-	protected StructureManager structureManager;
 
 	protected WeatherManager weatherManager;
 	
@@ -125,8 +122,6 @@ class PlanetManager extends ManagedService implements Logger {
 		
 		shuttleLandingDelay = 300000;
 		shuttleTakeoffDelay = 90000;
-		
-		structureManager = null;
 
 		weatherManager = null;
 
@@ -190,10 +185,6 @@ class PlanetManager extends ManagedService implements Logger {
 	@dereferenced
 	public Vector<CityRegion> getRegions(@dereferenced StringId regionName) {
 		return cityRegionMap.getRegions(regionName);
-	}
-	
-	public StructureManager getStructureManager() {
-		return structureManager;
 	}
 
 	public WeatherManager getWeatherManager() {

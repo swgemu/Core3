@@ -78,20 +78,6 @@ using namespace server::zone::objects::scene::variables;
 namespace server {
 namespace zone {
 namespace managers {
-namespace structure {
-
-class StructureManager;
-
-} // namespace structure
-} // namespace managers
-} // namespace zone
-} // namespace server
-
-using namespace server::zone::managers::structure;
-
-namespace server {
-namespace zone {
-namespace managers {
 namespace weather {
 
 class WeatherManager;
@@ -220,8 +206,6 @@ public:
 
 	Vector<ManagedReference<CityRegion* > > getRegions(StringId& regionName);
 
-	StructureManager* getStructureManager();
-
 	WeatherManager* getWeatherManager();
 
 	TerrainManager* getTerrainManager();
@@ -308,8 +292,6 @@ protected:
 
 	int shuttleTakeoffDelay;
 
-	ManagedReference<StructureManager* > structureManager;
-
 	ManagedReference<WeatherManager* > weatherManager;
 
 	int numberOfCities;
@@ -380,8 +362,6 @@ public:
 	void sendPlanetTravelPointListResponse(PlayerCreature* player);
 
 	Vector<ManagedReference<CityRegion* > > getRegions(StringId& regionName);
-
-	StructureManager* getStructureManager();
 
 	WeatherManager* getWeatherManager();
 
@@ -495,8 +475,6 @@ public:
 	int getTravelFare(const String& destinationPlanet);
 
 	void sendPlanetTravelPointListResponse(PlayerCreature* player);
-
-	StructureManager* getStructureManager();
 
 	WeatherManager* getWeatherManager();
 

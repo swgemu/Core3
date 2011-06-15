@@ -84,6 +84,8 @@ class Zone extends ManagedObject {
 
 	private PlanetManager planetManager;
 	
+	private StructureManager structureManager;
+	
 	private CityManager cityManager;
 	
 	private CreatureManager creatureManager;
@@ -160,6 +162,10 @@ class Zone extends ManagedObject {
 	
 	public PlanetManager getPlanetManager() {
 		return planetManager;
+	}
+	
+	public StructureManager getStructureManager() {
+		return structureManager;
 	}
 	
 	public CityManager getCityManager() {

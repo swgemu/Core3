@@ -82,11 +82,14 @@ ZoneImplementation::ZoneImplementation(ZoneProcessServer* serv, const String& na
 	//galacticTime = new Time();
 
 	planetManager = NULL;
+	structureManager = NULL;
 	cityManager = NULL;
 }
 
 void ZoneImplementation::initializePrivateData() {
 	planetManager = new PlanetManager(_this, processor);
+
+	structureManager = new StructureManager(_this, processor);
 
 	creatureManager = new CreatureManager(_this);
 	creatureManager->deploy("CreatureManager " + zoneName);
@@ -121,6 +124,8 @@ void ZoneImplementation::startManagers() {
 	//heightMap->load("planets/" + planetName + "/" + planetName + ".hmap");
 
 	planetManager->initialize();
+
+	structureManager->initialize();
 
 	creatureManager->initialize();
 

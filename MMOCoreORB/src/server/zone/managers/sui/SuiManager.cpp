@@ -1089,12 +1089,7 @@ void SuiManager::handleStructureDestroyCode(PlayerCreature* player, SuiBox* suiB
 	if (zone == NULL)
 		return;
 
-	PlanetManager* planetManager = zone->getPlanetManager();
-
-	if (planetManager == NULL)
-		return;
-
-	StructureManager* structureManager = planetManager->getStructureManager();
+	StructureManager* structureManager = zone->getStructureManager();
 
 	if (structureManager == NULL)
 		return;

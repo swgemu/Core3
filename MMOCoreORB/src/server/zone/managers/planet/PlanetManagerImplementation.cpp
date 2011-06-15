@@ -10,7 +10,6 @@
 #include "server/db/ServerDatabase.h"
 #include "server/zone/Zone.h"
 #include "server/zone/ZoneServer.h"
-#include "server/zone/managers/structure/StructureManager.h"
 #include "server/zone/managers/creature/CreatureManager.h"
 #include "server/zone/managers/weather/WeatherManager.h"
 
@@ -70,9 +69,6 @@ void PlanetManagerImplementation::initialize() {
 	loadPlayerRegions();
 
 	loadStaticTangibleObjects();
-
-	structureManager = new StructureManager(zone, server);
-	structureManager->loadStructures();
 
 	weatherManager = new WeatherManager(zone);
 	weatherManager->initialize();
