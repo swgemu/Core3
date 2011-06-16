@@ -14,6 +14,22 @@
 namespace server {
 namespace zone {
 namespace objects {
+namespace tangible {
+namespace sign {
+
+class SignObserver;
+
+} // namespace sign
+} // namespace tangible
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::tangible::sign;
+
+namespace server {
+namespace zone {
+namespace objects {
 namespace player {
 
 class PlayerCreature;
@@ -49,11 +65,15 @@ class SignObject : public TangibleObject {
 public:
 	SignObject();
 
+	void insertToZone(Zone* zone);
+
 	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
 
 	void sendSignNameTo(PlayerCreature* player);
 
 	bool isSignObject();
+
+	SignObserver* getSignObserver();
 
 	DistributedObjectServant* _getImplementation();
 
@@ -82,17 +102,23 @@ namespace tangible {
 namespace sign {
 
 class SignObjectImplementation : public TangibleObjectImplementation {
+protected:
+	ManagedReference<SignObserver* > signObserver;
 
 public:
 	SignObjectImplementation();
 
 	SignObjectImplementation(DummyConstructorParameter* param);
 
+	void insertToZone(Zone* zone);
+
 	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
 
 	void sendSignNameTo(PlayerCreature* player);
 
 	bool isSignObject();
+
+	SignObserver* getSignObserver();
 
 	SignObject* _this;
 
@@ -137,11 +163,15 @@ public:
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
+	void insertToZone(Zone* zone);
+
 	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
 
 	void sendSignNameTo(PlayerCreature* player);
 
 	bool isSignObject();
+
+	SignObserver* getSignObserver();
 
 };
 

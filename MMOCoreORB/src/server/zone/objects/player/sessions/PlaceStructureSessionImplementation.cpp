@@ -110,8 +110,6 @@ int PlaceStructureSessionImplementation::completeSession() {
 
 	//Create an email.
 
-	creatureObject->info("Session completed", true);
-
 	return cancelSession(); //Cancelling the session just removes the session from the player's map.
 }
 

@@ -45,7 +45,6 @@ object_building_player_city_cantina_tatooine = object_building_player_city_share
 	lotSize = 5,
 	baseMaintenanceRate = 0,
 	allowedZones = {"dantooine", "lok", "tatooine"},
-	sign = {templateFile = "object/tangible/sign/player/house_address_tatooine.iff", x = 3.5, z = 2, y = 12.15, ox = 0, oy = 1, oz = 0, ow = 0.0001, cellid = -1, containmentType = -1},
 	length = 7,
 	width = 7,
 	gameObjectType = 518,
@@ -53,6 +52,7 @@ object_building_player_city_cantina_tatooine = object_building_player_city_share
 	cityRankRequired = 2,
 	abilityRequired = "place_cantina",
 	childObjects = {
+			{templateFile = "object/tangible/sign/player/house_address_tatooine.iff", x = 3.5, z = 2, y = 12.15, ox = 0, oy = 1, oz = 0, ow = 0.0001, cellid = -1, containmentType = -1},
 			{templateFile = "object/tangible/terminal/terminal_player_structure.iff", x = -4.1, z = 0.750001, y = 6.1, ox = 0, oy = 1, oz = 0, ow = 0, cellid = 1, containmentType = -1}
 	}
 }

@@ -337,31 +337,13 @@ void BuildingObjectImplementation::updateCellPermissionsTo(SceneObject* player) 
 	/*	if (!player->isInRange(_this, 256))
 		return;*/
 
-	bool allowEntry = true;
-
-	if (!isPublicStructure() && (!isOnEntryList(player) && !isOnAccessList(player)))
-		allowEntry = false;
-
-	if (isOnBanList(player))
-		allowEntry = false;
-
-	//If they don't have permission to be inside, kick them out.
-	if (!allowEntry && player->getParentRecursively(SceneObject::BUILDING) == _this) {
-		Vector3 ejectionPoint = getEjectionPoint();
-		player->teleport(ejectionPoint.getX(), getZone()->getHeight(ejectionPoint.getX(), ejectionPoint.getY()), ejectionPoint.getY(), 0);
-	}
-
-	//Always allow privileged players to enter any structure.
-	if (player->isPlayerCreature() && ((PlayerCreature*) player)->getPlayerObject()->isPrivileged())
-		allowEntry = true;
-
 	for (int i = 0; i < cells.size(); ++i) {
 		ManagedReference<CellObject*> cell = getCell(i);
 
 		if (cell == NULL)
 			continue;
 
-		BaseMessage* perm = new UpdateCellPermissionsMessage(cell->getObjectID(), allowEntry);
+		BaseMessage* perm = new UpdateCellPermissionsMessage(cell->getObjectID(), true);
 		player->sendMessage(perm);
 	}
 }

@@ -45,11 +45,14 @@ which carries forward this exception.
 package server.zone.objects.tangible.sign;
 
 import server.zone.objects.tangible.TangibleObject;
+import server.zone.objects.tangible.sign.SignObserver;
 import server.zone.objects.player.PlayerCreature;
 import engine.lua.LuaObject;
 import server.zone.Zone;
 
 class SignObject extends TangibleObject {
+	protected transient SignObserver signObserver;
+	
 	public SignObject() {		
 		Logger.setLoggingName("SignObject");
 	}
@@ -63,7 +66,7 @@ class SignObject extends TangibleObject {
 	//@local
 	//public native void loadTemplateData(LuaObject templateData);
 	
-	//public native void initializeTransientMembers();
+	public native void insertToZone(Zone zone);
 	
 	/**
 	 * Handles the radial selection sent by the client
@@ -77,5 +80,9 @@ class SignObject extends TangibleObject {
 	
 	public boolean isSignObject() {
 		return true;
+	}
+	
+	public SignObserver getSignObserver() {
+		return signObserver;
 	}
 }

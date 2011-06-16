@@ -7,6 +7,7 @@
 
 
 #include "SignObject.h"
+#include "SignObserver.h"
 #include "server/zone/objects/player/PlayerCreature.h"
 #include "server/zone/objects/player/sui/messagebox/SuiMessageBox.h"
 
@@ -20,6 +21,12 @@ int SignObjectImplementation::handleObjectMenuSelect(PlayerCreature* player, byt
 	}
 
 	return 0;
+}
+
+void SignObjectImplementation::insertToZone(Zone* zone) {
+	TangibleObjectImplementation::insertToZone(zone);
+
+	signObserver = new SignObserver(_this);
 }
 
 

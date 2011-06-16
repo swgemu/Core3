@@ -111,6 +111,8 @@ which carries forward this exception.
 
 #include "server/zone/objects/tangible/sign/SignObject.h"
 
+#include "server/zone/objects/scene/ObserverEventType.h"
+
 
 SuiManager::SuiManager(ZoneProcessServer* serv) : Logger("SuiManager") {
 	server = serv;
@@ -261,6 +263,11 @@ void SuiManager::handleSetObjectName(PlayerCreature* player, SuiBox* suiBox, uin
 
 	UnicodeString objectName = args->get(0);
 
+	object->setCustomObjectName(objectName , true);
+
+	object->notifyObservers(ObserverEventType::OBJECTNAMECHANGED, object);
+
+	/*
 	if (object->isBuildingObject()) {
 		BuildingObject* building = (BuildingObject*) object.get();
 
@@ -273,9 +280,7 @@ void SuiManager::handleSetObjectName(PlayerCreature* player, SuiBox* suiBox, uin
 			params.setTO(objectName);
 			player->sendSystemMessage(params);
 		}
-	}
-
-	object->setCustomObjectName(objectName , true);
+	}*/
 }
 
 void SuiManager::handleManageMaintenance(PlayerCreature* player, SuiBox* suiBox, uint32 cancel, Vector<UnicodeString>* args) {

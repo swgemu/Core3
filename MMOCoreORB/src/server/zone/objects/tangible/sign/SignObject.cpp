@@ -4,6 +4,8 @@
 
 #include "SignObject.h"
 
+#include "server/zone/objects/tangible/sign/SignObserver.h"
+
 #include "server/zone/objects/player/PlayerCreature.h"
 
 #include "server/zone/Zone.h"
@@ -12,7 +14,7 @@
  *	SignObjectStub
  */
 
-enum {RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_ = 6,RPC_SENDSIGNNAMETO__PLAYERCREATURE_,RPC_ISSIGNOBJECT__};
+enum {RPC_INSERTTOZONE__ZONE_ = 6,RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_,RPC_SENDSIGNNAMETO__PLAYERCREATURE_,RPC_ISSIGNOBJECT__,RPC_GETSIGNOBSERVER__};
 
 SignObject::SignObject() : TangibleObject(DummyConstructorParameter::instance()) {
 	SignObjectImplementation* _implementation = new SignObjectImplementation();
@@ -26,6 +28,20 @@ SignObject::SignObject(DummyConstructorParameter* param) : TangibleObject(param)
 SignObject::~SignObject() {
 }
 
+
+void SignObject::insertToZone(Zone* zone) {
+	SignObjectImplementation* _implementation = (SignObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_INSERTTOZONE__ZONE_);
+		method.addObjectParameter(zone);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->insertToZone(zone);
+}
 
 int SignObject::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
 	SignObjectImplementation* _implementation = (SignObjectImplementation*) _getImplementation();
@@ -67,6 +83,19 @@ bool SignObject::isSignObject() {
 		return method.executeWithBooleanReturn();
 	} else
 		return _implementation->isSignObject();
+}
+
+SignObserver* SignObject::getSignObserver() {
+	SignObjectImplementation* _implementation = (SignObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_GETSIGNOBSERVER__);
+
+		return (SignObserver*) method.executeWithObjectReturn();
+	} else
+		return _implementation->getSignObserver();
 }
 
 DistributedObjectServant* SignObject::_getImplementation() {
@@ -203,6 +232,11 @@ bool SignObjectImplementation::isSignObject() {
 	return true;
 }
 
+SignObserver* SignObjectImplementation::getSignObserver() {
+	// server/zone/objects/tangible/sign/SignObject.idl():  		return signObserver;
+	return signObserver;
+}
+
 /*
  *	SignObjectAdapter
  */
@@ -214,6 +248,9 @@ Packet* SignObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
+	case RPC_INSERTTOZONE__ZONE_:
+		insertToZone((Zone*) inv->getObjectParameter());
+		break;
 	case RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_:
 		resp->insertSignedInt(handleObjectMenuSelect((PlayerCreature*) inv->getObjectParameter(), inv->getByteParameter()));
 		break;
@@ -223,11 +260,18 @@ Packet* SignObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	case RPC_ISSIGNOBJECT__:
 		resp->insertBoolean(isSignObject());
 		break;
+	case RPC_GETSIGNOBSERVER__:
+		resp->insertLong(getSignObserver()->_getObjectID());
+		break;
 	default:
 		return NULL;
 	}
 
 	return resp;
+}
+
+void SignObjectAdapter::insertToZone(Zone* zone) {
+	((SignObjectImplementation*) impl)->insertToZone(zone);
 }
 
 int SignObjectAdapter::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
@@ -240,6 +284,10 @@ void SignObjectAdapter::sendSignNameTo(PlayerCreature* player) {
 
 bool SignObjectAdapter::isSignObject() {
 	return ((SignObjectImplementation*) impl)->isSignObject();
+}
+
+SignObserver* SignObjectAdapter::getSignObserver() {
+	return ((SignObjectImplementation*) impl)->getSignObserver();
 }
 
 /*

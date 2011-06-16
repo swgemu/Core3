@@ -46,8 +46,8 @@ object_building_player_player_house_naboo_medium_style_01 = object_building_play
 	baseMaintenanceRate = 34,
 	allowedZones = {"dantooine", "naboo", "rori"},
 	publicStructure = 0,
-	sign = {templateFile = "object/tangible/sign/player/house_address_naboo.iff", x = 6.4, z = 2, y = -10.59, ox = 0, oy = 0.707107, oz = 0, ow = 0.707107, cellid = -1, containmentType = -1},
 	childObjects = {
+			{templateFile = "object/tangible/sign/player/house_address_naboo.iff", x = 6.4, z = 2, y = -10.59, ox = 0, oy = 0.707107, oz = 0, ow = 0.707107, cellid = -1, containmentType = -1},
 			{templateFile = "object/tangible/terminal/terminal_player_structure.iff", x = 9.89, z = 1.1, y = -10.75, ox = 0, oy = 0, oz = 0, ow = 1, cellid = 0, containmentType = -1},
 	},
 	constructionMarker = "object/building/player/construction/construction_player_house_naboo_medium_style_01.iff",

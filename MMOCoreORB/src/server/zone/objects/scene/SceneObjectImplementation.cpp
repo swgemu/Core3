@@ -87,6 +87,9 @@ which carries forward this exception.
 #include "server/zone/objects/scene/components/ContainerComponent.h"
 #include "PositionUpdateTask.h"
 
+#include "server/zone/objects/tangible/sign/SignObserver.h"
+#include "server/zone/objects/tangible/sign/SignObject.h"
+
 void SceneObjectImplementation::initializeTransientMembers() {
 	ManagedObjectImplementation::initializeTransientMembers();
 
@@ -1099,6 +1102,8 @@ void SceneObjectImplementation::createChildObjects() {
 			outdoorChildObjects.put(obj);
 		}
 
+		obj->insertToZone(getZone());
+
 		//TODO: Is there a better way of handling this?
 		//If we are inserting a terminal, set it's controlled object to this object by default.
 		if (obj->isTerminal()) {
@@ -1106,8 +1111,13 @@ void SceneObjectImplementation::createChildObjects() {
 			terminal->setControlledObject(_this);
 		}
 
-		obj->insertToZone(getZone());
-		obj->updateToDatabase();
+		//TODO: Again, we need to find a more automated, or scripted, way of handling this...
+		if (obj->isSignObject()) {
+			ManagedReference<SignObserver*> observer = ((SignObject*) obj.get())->getSignObserver();
+
+			if (observer != NULL)
+				registerObserver(ObserverEventType::OBJECTNAMECHANGED, observer);
+		}
 	}
 }
 

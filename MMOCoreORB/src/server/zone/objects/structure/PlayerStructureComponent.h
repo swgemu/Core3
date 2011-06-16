@@ -11,7 +11,7 @@
 #include "engine/engine.h"
 #include "MaintenanceComponent.h"
 
-class PlayerStructureComponent : public Object, public Logger {
+class PlayerStructureComponent : public Serializable, public Logger {
 	StructurePermissionList structurePermissionList;
 	Reference<MaintenanceComponent*> maintenanceComponent;
 	Reference<MaintenanceComponent*> powerComponent;
@@ -22,6 +22,11 @@ public:
 	PlayerStructureComponent();
 	PlayerStructureComponent(const PlayerStructureComponent& psc);
 	PlayerStructureComponent& operator= (const PlayerStructureComponent& psc);
+
+
+	void addSerializableVariables() {
+
+	}
 
 
 };
