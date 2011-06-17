@@ -127,6 +127,10 @@ public:
 		//info("Deleting Slot type " + String::valueOf(slottype));
 	}
 
+	Object* clone() {
+		return new IngredientSlot(*this);
+	}
+
 	bool isType(int type) {
 		return type == slottype;
 	}

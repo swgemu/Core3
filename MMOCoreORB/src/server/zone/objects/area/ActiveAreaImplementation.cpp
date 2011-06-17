@@ -99,15 +99,23 @@ void ActiveAreaImplementation::removeFromZone() {
 }
 
 void ActiveAreaImplementation::enqueueEnterEvent(SceneObject* obj) {
+#ifdef WITH_STM
+	notifyEnter(obj);
+#else
 	Reference<Task*> task = new ActiveAreaEvent(_this, obj, ActiveAreaEvent::ENTEREVENT);
 
 	Core::getTaskManager()->executeTask(task);
+#endif
 }
 
 void ActiveAreaImplementation::enqueueExitEvent(SceneObject* obj) {
+#ifdef WITH_STM
+	notifyExit(obj);
+#else
 	Reference<Task*> task = new ActiveAreaEvent(_this, obj, ActiveAreaEvent::EXITEVENT);
 
 	Core::getTaskManager()->executeTask(task);
+#endif
 }
 
 void ActiveAreaImplementation::notifyEnter(SceneObject* obj) {

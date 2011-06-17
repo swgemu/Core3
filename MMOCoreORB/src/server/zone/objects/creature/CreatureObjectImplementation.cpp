@@ -1169,11 +1169,11 @@ void CreatureObjectImplementation::enqueueCommand(unsigned int actionCRC, unsign
 		return;
 	}
 
-	CommandQueueAction* action = new CommandQueueAction(_this, targetID, actionCRC, actionCount, arguments);
+	Reference<CommandQueueAction*> action = new CommandQueueAction(_this, targetID, actionCRC, actionCount, arguments);
 
 	if (commandQueue.size() != 0 || !nextAction.isPast()) {
 		if (commandQueue.size() == 0) {
-			CommandQueueActionEvent* e = new CommandQueueActionEvent(_this);
+			Reference<CommandQueueActionEvent*> e = new CommandQueueActionEvent(_this);
 			e->schedule(nextAction);
 		}
 
@@ -1200,7 +1200,8 @@ void CreatureObjectImplementation::activateQueueAction() {
 	if (commandQueue.size() == 0)
 		return;
 
-	Reference<CommandQueueAction*> action = commandQueue.remove(0);
+	Reference<CommandQueueAction*> action = commandQueue.get(0);
+	commandQueue.remove(0);
 
 	ManagedReference<ObjectController*> objectController = getZoneServer()->getObjectController();
 
@@ -1214,7 +1215,7 @@ void CreatureObjectImplementation::activateQueueAction() {
 		nextAction.addMiliTime((uint32) (time * 1000));
 
 	if (commandQueue.size() != 0) {
-		CommandQueueActionEvent* e = new CommandQueueActionEvent(_this);
+		Reference<CommandQueueActionEvent*> e = new CommandQueueActionEvent(_this);
 
 		if (!nextAction.isFuture()) {
 			nextAction.updateToCurrentTime();

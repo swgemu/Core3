@@ -3618,11 +3618,6 @@ bool CreatureObjectImplementation::readObjectMember(ObjectInputStream* stream, c
 		return true;
 	}
 
-	if (_name == "commandQueue") {
-		TypeInfo<CommandQueueActionVector >::parseFromBinaryStream(&commandQueue, stream);
-		return true;
-	}
-
 	if (_name == "nextAction") {
 		TypeInfo<Time >::parseFromBinaryStream(&nextAction, stream);
 		return true;
@@ -4049,14 +4044,6 @@ int CreatureObjectImplementation::writeObjectMembers(ObjectOutputStream* stream)
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "commandQueue";
-	_name.toBinaryStream(stream);
-	_offset = stream->getOffset();
-	stream->writeShort(0);
-	TypeInfo<CommandQueueActionVector >::toBinaryStream(&commandQueue, stream);
-	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
-	stream->writeShort(_offset, _totalSize);
-
 	_name = "nextAction";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
@@ -4114,7 +4101,7 @@ int CreatureObjectImplementation::writeObjectMembers(ObjectOutputStream* stream)
 	stream->writeShort(_offset, _totalSize);
 
 
-	return 55 + TangibleObjectImplementation::writeObjectMembers(stream);
+	return 54 + TangibleObjectImplementation::writeObjectMembers(stream);
 }
 
 CreatureObjectImplementation::CreatureObjectImplementation() {

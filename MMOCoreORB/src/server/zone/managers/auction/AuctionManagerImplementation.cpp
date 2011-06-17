@@ -284,6 +284,9 @@ void AuctionManagerImplementation::addSaleItem(PlayerCreature* player, uint64 ob
 
 	ManagedReference<SceneObject*> terminal = vendor->getVendor();
 
+	if (terminal == NULL)
+		return;
+
 	if (!terminal->isVendor() || terminal == NULL) {
 		error("terminal is not a valid vendor object");
 		ItemSoldMessage* soldMessage = new ItemSoldMessage(objectid, ItemSoldMessage::VENDORNOTWORKING);

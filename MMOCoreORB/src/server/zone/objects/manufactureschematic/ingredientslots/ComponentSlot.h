@@ -82,6 +82,10 @@ public:
 		cleanup();
 	}
 
+	Object* clone() {
+		return new ComponentSlot(*this);
+	}
+
 	inline void cleanup() {
 
 		contents.removeAll();

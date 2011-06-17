@@ -691,11 +691,6 @@ bool ManufactureSchematicImplementation::readObjectMember(ObjectInputStream* str
 		return true;
 	}
 
-	if (_name == "ingredientSlots") {
-		TypeInfo<IngredientSlots >::parseFromBinaryStream(&ingredientSlots, stream);
-		return true;
-	}
-
 	if (_name == "assembled") {
 		TypeInfo<bool >::parseFromBinaryStream(&assembled, stream);
 		return true;
@@ -818,14 +813,6 @@ int ManufactureSchematicImplementation::writeObjectMembers(ObjectOutputStream* s
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "ingredientSlots";
-	_name.toBinaryStream(stream);
-	_offset = stream->getOffset();
-	stream->writeShort(0);
-	TypeInfo<IngredientSlots >::toBinaryStream(&ingredientSlots, stream);
-	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
-	stream->writeShort(_offset, _totalSize);
-
 	_name = "assembled";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
@@ -883,7 +870,7 @@ int ManufactureSchematicImplementation::writeObjectMembers(ObjectOutputStream* s
 	stream->writeShort(_offset, _totalSize);
 
 
-	return 17 + IntangibleObjectImplementation::writeObjectMembers(stream);
+	return 16 + IntangibleObjectImplementation::writeObjectMembers(stream);
 }
 
 ManufactureSchematicImplementation::ManufactureSchematicImplementation() {

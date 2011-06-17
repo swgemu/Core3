@@ -76,7 +76,7 @@ class ManufactureSchematic extends IntangibleObject {
 	protected FactoryBlueprint factoryBlueprint;
 	
 	@dereferenced
-	protected IngredientSlots ingredientSlots;
+	protected transient IngredientSlots ingredientSlots;
 	
 	protected boolean assembled;
 	protected boolean completed;

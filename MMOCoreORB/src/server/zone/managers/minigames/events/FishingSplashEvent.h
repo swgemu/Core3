@@ -81,12 +81,12 @@ public:
 			//player->info("command queue action activated");
 
 		} catch (...) {
-			player = NULL;
+			//player = NULL;
 
 			throw;
 		}
 
-		player = NULL;
+		//player = NULL;
 
 	}
 

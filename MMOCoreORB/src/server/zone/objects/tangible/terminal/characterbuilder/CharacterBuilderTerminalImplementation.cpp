@@ -49,7 +49,7 @@ void CharacterBuilderTerminalImplementation::sendInitialChoices(PlayerCreature* 
 		return;
 	}
 
-	SuiCharacterBuilderBox* sui = new SuiCharacterBuilderBox(player, rootNode);
+	ManagedReference<SuiCharacterBuilderBox*> sui = new SuiCharacterBuilderBox(player, rootNode);
 	sui->setUsingObject(_this);
 
 	player->sendMessage(sui->generateMessage());

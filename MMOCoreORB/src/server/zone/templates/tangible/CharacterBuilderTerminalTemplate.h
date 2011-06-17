@@ -12,7 +12,7 @@
 #include "server/zone/objects/tangible/terminal/characterbuilder/CharacterBuilderMenuNode.h"
 
 class CharacterBuilderTerminalTemplate : public SharedTangibleObjectTemplate {
-	CharacterBuilderMenuNode* rootNode;
+	Reference<CharacterBuilderMenuNode*> rootNode;
 	int performanceBuff;
 	int medicalBuff;
 	int	performanceDuration;
@@ -25,7 +25,7 @@ public:
 
 	~CharacterBuilderTerminalTemplate() {
 		if (rootNode != NULL) {
-			delete rootNode;
+			//delete rootNode;
 			rootNode = NULL;
 		}
 	}

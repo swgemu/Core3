@@ -77,6 +77,11 @@ public:
 		cleanup();
 	}
 
+
+	Object* clone() {
+		return new ResourceSlot(*this);
+	}
+
 	inline void cleanup() {
 		contents = NULL;
 	}

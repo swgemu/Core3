@@ -233,14 +233,14 @@ void ManufactureSchematicImplementation::initializeIngredientSlots(
 			break;
 		}
 
-		ingredientSlots.add(ingredientSlot);
+		ingredientSlots.add(ingredientSlot.get());
 	}
 }
 
 void ManufactureSchematicImplementation::cleanupIngredientSlots() {
 
 	while (ingredientSlots.size() > 0) {
-		Reference<IngredientSlot* > slot = ingredientSlots.remove(0);
+		Reference<IngredientSlot* > slot = ingredientSlots.remove(0).get();
 
 		if (slot != NULL) {
 

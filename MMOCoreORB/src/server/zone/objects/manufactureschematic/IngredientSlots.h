@@ -47,7 +47,11 @@ which carries forward this exception.
 
 #include "ingredientslots/IngredientSlot.h"
 
+#ifdef WITH_STM
+class IngredientSlots : public Vector<TransactionalReference<IngredientSlot* > >, public Logger {
+#else
 class IngredientSlots : public Vector<Reference<IngredientSlot* > >, public Logger {
+#endif
 
 public:
 
@@ -56,7 +60,11 @@ public:
 		setLogging(false);
 	}
 
+#ifdef WITH_STM
+	IngredientSlots(const IngredientSlots& slots) : Vector<TransactionalReference<IngredientSlot* > >(slots), Logger() {
+#else
 	IngredientSlots(const IngredientSlots& slots) : Vector<Reference<IngredientSlot* > >(slots), Logger() {
+#endif
 		setLoggingName("IngredientSlots");
 		setLogging(false);
 	}
@@ -64,6 +72,12 @@ public:
 	~IngredientSlots() {
 		//info("Deleting IngredientSlots");
 	}
+
+#ifdef WITH_STM
+	IngredientSlot* get(int i) {
+		return Vector<TransactionalReference<IngredientSlot* > >::get(i).getForUpdate();
+	}
+#endif
 
 };
 #endif /*INGREDIENTSLOTS_H_*/

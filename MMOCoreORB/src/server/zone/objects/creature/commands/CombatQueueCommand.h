@@ -112,6 +112,9 @@ public:
 
 		ManagedReference<WeaponObject*> weapon = creature->getWeapon();
 
+		if (weapon == NULL)
+			return GENERALERROR;
+
 		if (checkRange == -1) {
 			checkRange = weapon->getMaxRange();
 		}
