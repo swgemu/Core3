@@ -87,22 +87,7 @@ void CellObjectImplementation::sendBaselinesTo(SceneObject* player) {
 	BaseMessage* cellMsg6 = new CellObjectMessage6(getObjectID());
 	player->sendMessage(cellMsg6);
 
-	//Check if the player has permission to enter the cell.
-	bool allowEntry = true;
-
-	if (parent != NULL && parent->isBuildingObject()) {
-		ManagedReference<BuildingObject*> buildingObject = (BuildingObject*) parent.get();
-
-		if (!buildingObject->isPublicStructure()) {
-			if (!buildingObject->isOnEntryList(player) && !buildingObject->isOnAccessList(player))
-				allowEntry = false;
-		}
-	}
-
-	if (player->isPlayerCreature() && ((PlayerCreature*) player)->getPlayerObject()->isPrivileged())
-		allowEntry = true;
-
-	BaseMessage* perm = new UpdateCellPermissionsMessage(getObjectID(), allowEntry);
+	BaseMessage* perm = new UpdateCellPermissionsMessage(getObjectID(), true);
 	player->sendMessage(perm);
 }
 
