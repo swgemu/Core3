@@ -37,3 +37,8 @@ void SignObjectImplementation::sendSignNameTo(PlayerCreature* player) {
 
 	player->sendMessage(suiBox->generateMessage());
 }
+
+void SignObjectImplementation::initializeChildObject(SceneObject* controllerObject) {
+	if (signObserver != NULL)
+		controllerObject->registerObserver(ObserverEventType::OBJECTNAMECHANGED, signObserver);
+}

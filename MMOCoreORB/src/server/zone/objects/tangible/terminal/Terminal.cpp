@@ -12,7 +12,7 @@
  *	TerminalStub
  */
 
-enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_ISTERMINAL__,RPC_ISGUILDTERMINAL__,RPC_SETCONTROLLEDOBJECT__SCENEOBJECT_,RPC_GETCONTROLLEDOBJECT__,RPC_ISELEVATORTERMINAL__,RPC_ISVENDORTERMINAL__,RPC_ISBAZAARTERMINAL__};
+enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_ISTERMINAL__,RPC_ISGUILDTERMINAL__,RPC_SETCONTROLLEDOBJECT__SCENEOBJECT_,RPC_GETCONTROLLEDOBJECT__,RPC_ISELEVATORTERMINAL__,RPC_ISVENDORTERMINAL__,RPC_ISBAZAARTERMINAL__,RPC_INITIALIZECHILDOBJECT__SCENEOBJECT_};
 
 Terminal::Terminal() : TangibleObject(DummyConstructorParameter::instance()) {
 	TerminalImplementation* _implementation = new TerminalImplementation();
@@ -130,6 +130,20 @@ bool Terminal::isBazaarTerminal() {
 		return method.executeWithBooleanReturn();
 	} else
 		return _implementation->isBazaarTerminal();
+}
+
+void Terminal::initializeChildObject(SceneObject* controllerObject) {
+	TerminalImplementation* _implementation = (TerminalImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_INITIALIZECHILDOBJECT__SCENEOBJECT_);
+		method.addObjectParameter(controllerObject);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->initializeChildObject(controllerObject);
 }
 
 DistributedObjectServant* Terminal::_getImplementation() {
@@ -311,6 +325,11 @@ bool TerminalImplementation::isBazaarTerminal() {
 	return false;
 }
 
+void TerminalImplementation::initializeChildObject(SceneObject* controllerObject) {
+	// server/zone/objects/tangible/terminal/Terminal.idl():  		setControlledObject(controllerObject);
+	setControlledObject(controllerObject);
+}
+
 /*
  *	TerminalAdapter
  */
@@ -345,6 +364,9 @@ Packet* TerminalAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		break;
 	case RPC_ISBAZAARTERMINAL__:
 		resp->insertBoolean(isBazaarTerminal());
+		break;
+	case RPC_INITIALIZECHILDOBJECT__SCENEOBJECT_:
+		initializeChildObject((SceneObject*) inv->getObjectParameter());
 		break;
 	default:
 		return NULL;
@@ -383,6 +405,10 @@ bool TerminalAdapter::isVendorTerminal() {
 
 bool TerminalAdapter::isBazaarTerminal() {
 	return ((TerminalImplementation*) impl)->isBazaarTerminal();
+}
+
+void TerminalAdapter::initializeChildObject(SceneObject* controllerObject) {
+	((TerminalImplementation*) impl)->initializeChildObject(controllerObject);
 }
 
 /*

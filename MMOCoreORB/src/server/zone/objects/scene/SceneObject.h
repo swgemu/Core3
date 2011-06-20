@@ -1196,6 +1196,8 @@ public:
 
 	void createChildObjects();
 
+	void initializeChildObject(SceneObject* controllerObject);
+
 	DistributedObjectServant* _getImplementation();
 
 	void _setImplementation(DistributedObjectServant* servant);
@@ -2258,6 +2260,8 @@ public:
 
 	virtual void createChildObjects();
 
+	virtual void initializeChildObject(SceneObject* controllerObject);
+
 	SceneObject* _this;
 
 	operator const SceneObject*();
@@ -2684,6 +2688,8 @@ public:
 	int getPlanetMapSubCategoryCRC();
 
 	void createChildObjects();
+
+	void initializeChildObject(SceneObject* controllerObject);
 
 protected:
 	String _param0_info__String_bool_;

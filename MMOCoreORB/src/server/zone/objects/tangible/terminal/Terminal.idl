@@ -88,4 +88,8 @@ class Terminal extends TangibleObject {
 	public abstract boolean isBazaarTerminal() {
 		return false;
 	}
+	
+	public void initializeChildObject(SceneObject controllerObject) {
+		setControlledObject(controllerObject);
+	}
 }

@@ -65,6 +65,8 @@ public:
 
 	bool isBazaarTerminal();
 
+	void initializeChildObject(SceneObject* controllerObject);
+
 	DistributedObjectServant* _getImplementation();
 
 	void _setImplementation(DistributedObjectServant* servant);
@@ -115,6 +117,8 @@ public:
 	virtual bool isVendorTerminal();
 
 	virtual bool isBazaarTerminal();
+
+	void initializeChildObject(SceneObject* controllerObject);
 
 	Terminal* _this;
 
@@ -174,6 +178,8 @@ public:
 	bool isVendorTerminal();
 
 	bool isBazaarTerminal();
+
+	void initializeChildObject(SceneObject* controllerObject);
 
 };
 

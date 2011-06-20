@@ -1668,5 +1668,14 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	}
 	
 	public native abstract void createChildObjects();
+	
+	/**
+	 * This method initializes "this" object as if it were a "childObject" of the controller object that is passed
+	 * as an argument to the method.
+	 * NOTE: The controllerObject is not necessarily the "parent" of the child object. The childObject just happens
+	 * to be specified in the controllerObject's childObjects vector.
+	 * @param controllerObject The object that has this object specified as a "childObject".
+	 */
+	public native abstract void initializeChildObject(SceneObject controllerObject);
 }
 

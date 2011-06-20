@@ -44,6 +44,7 @@ which carries forward this exception.
 
 package server.zone.objects.tangible.sign;
 
+import server.zone.objects.scene.SceneObject;
 import server.zone.objects.tangible.TangibleObject;
 import server.zone.objects.tangible.sign.SignObserver;
 import server.zone.objects.player.PlayerCreature;
@@ -55,6 +56,8 @@ class SignObject extends TangibleObject {
 	
 	public SignObject() {		
 		Logger.setLoggingName("SignObject");
+		
+		signObserver = null;
 	}
 	
 	/**
@@ -85,4 +88,6 @@ class SignObject extends TangibleObject {
 	public SignObserver getSignObserver() {
 		return signObserver;
 	}
+	
+	public native void initializeChildObject(SceneObject controllerObject);
 }

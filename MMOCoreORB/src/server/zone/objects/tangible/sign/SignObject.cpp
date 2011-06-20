@@ -4,6 +4,8 @@
 
 #include "SignObject.h"
 
+#include "server/zone/objects/scene/SceneObject.h"
+
 #include "server/zone/objects/tangible/sign/SignObserver.h"
 
 #include "server/zone/objects/player/PlayerCreature.h"
@@ -14,7 +16,7 @@
  *	SignObjectStub
  */
 
-enum {RPC_INSERTTOZONE__ZONE_ = 6,RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_,RPC_SENDSIGNNAMETO__PLAYERCREATURE_,RPC_ISSIGNOBJECT__,RPC_GETSIGNOBSERVER__};
+enum {RPC_INSERTTOZONE__ZONE_ = 6,RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_,RPC_SENDSIGNNAMETO__PLAYERCREATURE_,RPC_ISSIGNOBJECT__,RPC_GETSIGNOBSERVER__,RPC_INITIALIZECHILDOBJECT__SCENEOBJECT_};
 
 SignObject::SignObject() : TangibleObject(DummyConstructorParameter::instance()) {
 	SignObjectImplementation* _implementation = new SignObjectImplementation();
@@ -96,6 +98,20 @@ SignObserver* SignObject::getSignObserver() {
 		return (SignObserver*) method.executeWithObjectReturn();
 	} else
 		return _implementation->getSignObserver();
+}
+
+void SignObject::initializeChildObject(SceneObject* controllerObject) {
+	SignObjectImplementation* _implementation = (SignObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_INITIALIZECHILDOBJECT__SCENEOBJECT_);
+		method.addObjectParameter(controllerObject);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->initializeChildObject(controllerObject);
 }
 
 DistributedObjectServant* SignObject::_getImplementation() {
@@ -225,6 +241,8 @@ SignObjectImplementation::SignObjectImplementation() {
 	_initializeImplementation();
 	// server/zone/objects/tangible/sign/SignObject.idl():  		Logger.setLoggingName("SignObject");
 	Logger::setLoggingName("SignObject");
+	// server/zone/objects/tangible/sign/SignObject.idl():  		signObserver = null;
+	signObserver = NULL;
 }
 
 bool SignObjectImplementation::isSignObject() {
@@ -263,6 +281,9 @@ Packet* SignObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	case RPC_GETSIGNOBSERVER__:
 		resp->insertLong(getSignObserver()->_getObjectID());
 		break;
+	case RPC_INITIALIZECHILDOBJECT__SCENEOBJECT_:
+		initializeChildObject((SceneObject*) inv->getObjectParameter());
+		break;
 	default:
 		return NULL;
 	}
@@ -288,6 +309,10 @@ bool SignObjectAdapter::isSignObject() {
 
 SignObserver* SignObjectAdapter::getSignObserver() {
 	return ((SignObjectImplementation*) impl)->getSignObserver();
+}
+
+void SignObjectAdapter::initializeChildObject(SceneObject* controllerObject) {
+	((SignObjectImplementation*) impl)->initializeChildObject(controllerObject);
 }
 
 /*

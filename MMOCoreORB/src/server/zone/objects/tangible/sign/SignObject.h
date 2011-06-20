@@ -14,6 +14,20 @@
 namespace server {
 namespace zone {
 namespace objects {
+namespace scene {
+
+class SceneObject;
+
+} // namespace scene
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::scene;
+
+namespace server {
+namespace zone {
+namespace objects {
 namespace tangible {
 namespace sign {
 
@@ -75,6 +89,8 @@ public:
 
 	SignObserver* getSignObserver();
 
+	void initializeChildObject(SceneObject* controllerObject);
+
 	DistributedObjectServant* _getImplementation();
 
 	void _setImplementation(DistributedObjectServant* servant);
@@ -119,6 +135,8 @@ public:
 	bool isSignObject();
 
 	SignObserver* getSignObserver();
+
+	void initializeChildObject(SceneObject* controllerObject);
 
 	SignObject* _this;
 
@@ -172,6 +190,8 @@ public:
 	bool isSignObject();
 
 	SignObserver* getSignObserver();
+
+	void initializeChildObject(SceneObject* controllerObject);
 
 };
 

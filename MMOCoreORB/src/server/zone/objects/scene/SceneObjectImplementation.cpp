@@ -1104,20 +1104,7 @@ void SceneObjectImplementation::createChildObjects() {
 
 		obj->insertToZone(getZone());
 
-		//TODO: Is there a better way of handling this?
-		//If we are inserting a terminal, set it's controlled object to this object by default.
-		if (obj->isTerminal()) {
-			Terminal* terminal = (Terminal*) obj.get();
-			terminal->setControlledObject(_this);
-		}
-
-		//TODO: Again, we need to find a more automated, or scripted, way of handling this...
-		if (obj->isSignObject()) {
-			ManagedReference<SignObserver*> observer = ((SignObject*) obj.get())->getSignObserver();
-
-			if (observer != NULL)
-				registerObserver(ObserverEventType::OBJECTNAMECHANGED, observer);
-		}
+		obj->initializeChildObject(_this);
 	}
 }
 
@@ -1159,3 +1146,6 @@ void SceneObjectImplementation::showFlyText(const String& file, const String& au
 /*SortedVector<ManagedReference<SceneObject*> >* SceneObjectImplementation::getOutdoorChildObjects() {
 	return &outdoorChildObjects;
 }*/
+
+void SceneObjectImplementation::initializeChildObject(SceneObject* controllerObject) {
+}

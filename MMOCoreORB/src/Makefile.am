@@ -62,7 +62,8 @@ LIBS =	$(SYSTEM_LIBS)  \
 
 bin_PROGRAMS = core3
 
-core3_IDLS =	server/zone/managers/director/ScreenPlayObserver.cpp \
+core3_IDLS =	server/zone/objects/structure/PlayerStructureComponent.cpp \
+				server/zone/managers/director/ScreenPlayObserver.cpp \
 				server/zone/objects/tangible/sign/SignObserver.cpp \
 				server/zone/objects/region/CityRegion.cpp \
 				server/zone/objects/ship/SpaceStationObject.cpp \
@@ -261,6 +262,7 @@ core3_IDLS =	server/zone/managers/director/ScreenPlayObserver.cpp \
 				server/zone/objects/tangible/terminal/characterbuilder/CharacterBuilderTerminal.cpp
 				
 core3_SOURCES =	$(core3_IDLS) \
+		server/zone/objects/structure/PlayerStructureComponentImplementation.cpp \
 		server/zone/objects/tangible/sign/SignObserverImplementation.cpp \
 		server/zone/managers/director/ScreenPlayObserverImplementation.cpp \
 		server/zone/objects/region/CityRegionImplementation.cpp \
