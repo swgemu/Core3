@@ -1102,9 +1102,9 @@ void SceneObjectImplementation::createChildObjects() {
 			outdoorChildObjects.put(obj);
 		}
 
-		obj->insertToZone(getZone());
-
 		obj->initializeChildObject(_this);
+
+		obj->insertToZone(getZone());
 	}
 }
 
