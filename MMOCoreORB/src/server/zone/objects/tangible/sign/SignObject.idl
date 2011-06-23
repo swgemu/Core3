@@ -46,37 +46,18 @@ package server.zone.objects.tangible.sign;
 
 import server.zone.objects.scene.SceneObject;
 import server.zone.objects.tangible.TangibleObject;
-import server.zone.objects.tangible.sign.SignObserver;
 import server.zone.objects.player.PlayerCreature;
 import engine.lua.LuaObject;
 import server.zone.Zone;
 
 class SignObject extends TangibleObject {
-	protected transient SignObserver signObserver;
+	@weakReference
+	public SceneObject attachedObject;
 	
 	public SignObject() {		
 		Logger.setLoggingName("SignObject");
-		
-		signObserver = null;
 	}
-	
-	/**
-	 * Reads and sets the template data from a SharedTangibleObjectTemplate LuaObject
-	 * @pre { templateData is a valid pointer }
-	 * @post { TangibleObject members are initialized }
-	 * @param templateData templateData points to the SharedTangibleObjectTemplate LuaObject that is used to initialize the TangibleObject members
-	 */
-	//@local
-	//public native void loadTemplateData(LuaObject templateData);
-	
-	public native void insertToZone(Zone zone);
-	
-	/**
-	 * Handles the radial selection sent by the client
-	 * @pre { this object is locked, player is locked }
-	 * @post { this object is locked, player is locked }
-	 * @returns 0 if successfull
-	 */
+
 	public native int handleObjectMenuSelect(PlayerCreature player, byte selectedID);
 	
 	public native void sendSignNameTo(PlayerCreature player);
@@ -84,10 +65,6 @@ class SignObject extends TangibleObject {
 	public boolean isSignObject() {
 		return true;
 	}
-	
-	public SignObserver getSignObserver() {
-		return signObserver;
-	}
-	
+
 	public native void initializeChildObject(SceneObject controllerObject);
 }

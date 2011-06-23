@@ -7,9 +7,9 @@
 
 
 #include "SignObject.h"
-#include "SignObserver.h"
 #include "server/zone/objects/player/PlayerCreature.h"
 #include "server/zone/objects/player/sui/messagebox/SuiMessageBox.h"
+#include "server/zone/objects/building/BuildingObject.h"
 
 int SignObjectImplementation::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
 	switch (selectedID) {
@@ -23,13 +23,6 @@ int SignObjectImplementation::handleObjectMenuSelect(PlayerCreature* player, byt
 	return 0;
 }
 
-void SignObjectImplementation::insertToZone(Zone* zone) {
-	TangibleObjectImplementation::insertToZone(zone);
-
-	signObserver = new SignObserver(_this);
-}
-
-
 void SignObjectImplementation::sendSignNameTo(PlayerCreature* player) {
 	ManagedReference<SuiMessageBox*> suiBox = new SuiMessageBox(player, SuiWindowType::NONE);
 	suiBox->setPromptTitle("@sui:swg"); //Star Wars Galaxies
@@ -39,6 +32,11 @@ void SignObjectImplementation::sendSignNameTo(PlayerCreature* player) {
 }
 
 void SignObjectImplementation::initializeChildObject(SceneObject* controllerObject) {
-	if (signObserver != NULL)
-		controllerObject->registerObserver(ObserverEventType::OBJECTNAMECHANGED, signObserver);
+	if (controllerObject == NULL)
+		return;
+
+	attachedObject = controllerObject;
+
+	if (controllerObject->isBuildingObject())
+		((BuildingObject*) controllerObject)->setSignObject(_this);
 }

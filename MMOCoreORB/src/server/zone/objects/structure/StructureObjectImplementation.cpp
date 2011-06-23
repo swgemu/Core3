@@ -38,10 +38,6 @@ void StructureObjectImplementation::loadTemplateData(SharedObjectTemplate* templ
 
 	basePowerRate = structureTemplate->getBasePowerRate();
 
-	length = structureTemplate->getLength();
-
-	width = structureTemplate->getWidth();
-
 	structureTemplate->getPortalLayout();
 	structureTemplate->getAppearanceTemplate();
 }
@@ -442,17 +438,7 @@ void StructureObjectImplementation::sendChangeNamePromptTo(PlayerCreature* playe
 	inputBox->setPromptText("@sui:set_name_prompt");
 	inputBox->setUsingObject(_this);
 	inputBox->setMaxInputSize(255);
-
-	if (isBuildingObject()) {
-		BuildingObject* buildingObject = (BuildingObject*) _this;
-
-		if (buildingObject->getSignObject() != NULL) {
-			ManagedReference<SignObject*> sign = buildingObject->getSignObject();
-			inputBox->setDefaultInput(sign->getObjectName()->getCustomString().toString());
-		}
-	} else {
-		inputBox->setDefaultInput(objectName.getCustomString().toString());
-	}
+	inputBox->setDefaultInput(objectName.getCustomString().toString());
 
 	player->addSuiBox(inputBox);
 	player->sendMessage(inputBox->generateMessage());

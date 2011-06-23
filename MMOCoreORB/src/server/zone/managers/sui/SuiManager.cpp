@@ -263,24 +263,14 @@ void SuiManager::handleSetObjectName(PlayerCreature* player, SuiBox* suiBox, uin
 
 	UnicodeString objectName = args->get(0);
 
-	object->setCustomObjectName(objectName , true);
+	object->setCustomObjectName(objectName, true);
 
-	object->notifyObservers(ObserverEventType::OBJECTNAMECHANGED, object);
+	if (object->isSignObject()) {
+		StringIdChatParameter params("@player_structure:prose_sign_name_updated"); //Sign name successfully updated to '%TO'.
+		params.setTO(objectName);
 
-	/*
-	if (object->isBuildingObject()) {
-		BuildingObject* building = (BuildingObject*) object.get();
-
-		ManagedReference<SignObject*> sign = building->getSignObject();
-
-		if (sign != NULL) {
-			object = sign;
-
-			StringIdChatParameter params("@player_structure:prose_sign_name_updated"); //Sign name successfully updated to '%TO'.
-			params.setTO(objectName);
-			player->sendSystemMessage(params);
-		}
-	}*/
+		player->sendSystemMessage(params);
+	}
 }
 
 void SuiManager::handleManageMaintenance(PlayerCreature* player, SuiBox* suiBox, uint32 cancel, Vector<UnicodeString>* args) {

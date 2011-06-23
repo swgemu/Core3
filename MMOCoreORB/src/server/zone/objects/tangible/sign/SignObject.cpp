@@ -6,8 +6,6 @@
 
 #include "server/zone/objects/scene/SceneObject.h"
 
-#include "server/zone/objects/tangible/sign/SignObserver.h"
-
 #include "server/zone/objects/player/PlayerCreature.h"
 
 #include "server/zone/Zone.h"
@@ -16,7 +14,7 @@
  *	SignObjectStub
  */
 
-enum {RPC_INSERTTOZONE__ZONE_ = 6,RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_,RPC_SENDSIGNNAMETO__PLAYERCREATURE_,RPC_ISSIGNOBJECT__,RPC_GETSIGNOBSERVER__,RPC_INITIALIZECHILDOBJECT__SCENEOBJECT_};
+enum {RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_ = 6,RPC_SENDSIGNNAMETO__PLAYERCREATURE_,RPC_ISSIGNOBJECT__,RPC_INITIALIZECHILDOBJECT__SCENEOBJECT_};
 
 SignObject::SignObject() : TangibleObject(DummyConstructorParameter::instance()) {
 	SignObjectImplementation* _implementation = new SignObjectImplementation();
@@ -30,20 +28,6 @@ SignObject::SignObject(DummyConstructorParameter* param) : TangibleObject(param)
 SignObject::~SignObject() {
 }
 
-
-void SignObject::insertToZone(Zone* zone) {
-	SignObjectImplementation* _implementation = (SignObjectImplementation*) _getImplementation();
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, RPC_INSERTTOZONE__ZONE_);
-		method.addObjectParameter(zone);
-
-		method.executeWithVoidReturn();
-	} else
-		_implementation->insertToZone(zone);
-}
 
 int SignObject::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
 	SignObjectImplementation* _implementation = (SignObjectImplementation*) _getImplementation();
@@ -85,19 +69,6 @@ bool SignObject::isSignObject() {
 		return method.executeWithBooleanReturn();
 	} else
 		return _implementation->isSignObject();
-}
-
-SignObserver* SignObject::getSignObserver() {
-	SignObjectImplementation* _implementation = (SignObjectImplementation*) _getImplementation();
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, RPC_GETSIGNOBSERVER__);
-
-		return (SignObserver*) method.executeWithObjectReturn();
-	} else
-		return _implementation->getSignObserver();
 }
 
 void SignObject::initializeChildObject(SceneObject* controllerObject) {
@@ -218,6 +189,11 @@ bool SignObjectImplementation::readObjectMember(ObjectInputStream* stream, const
 	if (TangibleObjectImplementation::readObjectMember(stream, _name))
 		return true;
 
+	if (_name == "attachedObject") {
+		TypeInfo<ManagedWeakReference<SceneObject* > >::parseFromBinaryStream(&attachedObject, stream);
+		return true;
+	}
+
 
 	return false;
 }
@@ -233,26 +209,27 @@ int SignObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	String _name;
 	int _offset;
 	uint16 _totalSize;
+	_name = "attachedObject";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<ManagedWeakReference<SceneObject* > >::toBinaryStream(&attachedObject, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
 
-	return 0 + TangibleObjectImplementation::writeObjectMembers(stream);
+
+	return 1 + TangibleObjectImplementation::writeObjectMembers(stream);
 }
 
 SignObjectImplementation::SignObjectImplementation() {
 	_initializeImplementation();
 	// server/zone/objects/tangible/sign/SignObject.idl():  		Logger.setLoggingName("SignObject");
 	Logger::setLoggingName("SignObject");
-	// server/zone/objects/tangible/sign/SignObject.idl():  		signObserver = null;
-	signObserver = NULL;
 }
 
 bool SignObjectImplementation::isSignObject() {
 	// server/zone/objects/tangible/sign/SignObject.idl():  		return true;
 	return true;
-}
-
-SignObserver* SignObjectImplementation::getSignObserver() {
-	// server/zone/objects/tangible/sign/SignObject.idl():  		return signObserver;
-	return signObserver;
 }
 
 /*
@@ -266,9 +243,6 @@ Packet* SignObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
-	case RPC_INSERTTOZONE__ZONE_:
-		insertToZone((Zone*) inv->getObjectParameter());
-		break;
 	case RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_:
 		resp->insertSignedInt(handleObjectMenuSelect((PlayerCreature*) inv->getObjectParameter(), inv->getByteParameter()));
 		break;
@@ -278,9 +252,6 @@ Packet* SignObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	case RPC_ISSIGNOBJECT__:
 		resp->insertBoolean(isSignObject());
 		break;
-	case RPC_GETSIGNOBSERVER__:
-		resp->insertLong(getSignObserver()->_getObjectID());
-		break;
 	case RPC_INITIALIZECHILDOBJECT__SCENEOBJECT_:
 		initializeChildObject((SceneObject*) inv->getObjectParameter());
 		break;
@@ -289,10 +260,6 @@ Packet* SignObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	}
 
 	return resp;
-}
-
-void SignObjectAdapter::insertToZone(Zone* zone) {
-	((SignObjectImplementation*) impl)->insertToZone(zone);
 }
 
 int SignObjectAdapter::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
@@ -305,10 +272,6 @@ void SignObjectAdapter::sendSignNameTo(PlayerCreature* player) {
 
 bool SignObjectAdapter::isSignObject() {
 	return ((SignObjectImplementation*) impl)->isSignObject();
-}
-
-SignObserver* SignObjectAdapter::getSignObserver() {
-	return ((SignObjectImplementation*) impl)->getSignObserver();
 }
 
 void SignObjectAdapter::initializeChildObject(SceneObject* controllerObject) {

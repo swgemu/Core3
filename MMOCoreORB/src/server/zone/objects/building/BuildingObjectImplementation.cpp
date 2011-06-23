@@ -42,6 +42,7 @@ void BuildingObjectImplementation::loadTemplateData(SharedObjectTemplate* templa
 	containerType = 2;
 
 	totalCellNumber = buildingData->getTotalCellNumber();
+
 	PortalLayout* portalLayout = templateData->getPortalLayout();
 
 	if (portalLayout != NULL)
@@ -50,6 +51,23 @@ void BuildingObjectImplementation::loadTemplateData(SharedObjectTemplate* templa
 	optionsBitmask = 0x00000100;
 
 	publicStructure = buildingData->isPublicStructure();
+}
+
+void BuildingObjectImplementation::sendChangeNamePromptTo(PlayerCreature* player) {
+	if (signObject == NULL) {
+		StructureObjectImplementation::sendChangeNamePromptTo(player);
+		return;
+	}
+
+	ManagedReference<SuiInputBox*> inputBox = new SuiInputBox(player, SuiWindowType::OBJECT_NAME, 0x00);
+	inputBox->setPromptTitle("@sui:set_name_title");
+	inputBox->setPromptText("@sui:set_name_prompt");
+	inputBox->setUsingObject(signObject);
+	inputBox->setMaxInputSize(255);
+	inputBox->setDefaultInput(signObject->getCustomObjectName().toString());
+
+	player->addSuiBox(inputBox);
+	player->sendMessage(inputBox->generateMessage());
 }
 
 void BuildingObjectImplementation::createContainerComponent() {
@@ -143,14 +161,15 @@ Vector3 BuildingObjectImplementation::getEjectionPoint() {
 
 	Vector3 ejectionPoint = getWorldPosition();
 
-	float x = ejectionPoint.getX();
+	//TODO: Redo with portal layouts and floor meshes.
+	/*float x = ejectionPoint.getX();
 	float y = ejectionPoint.getY();
 
 	float halfLength = ((float) (length) * 8.0f) / 2.0f; //Half the length of the structure in meters.
 	float radians = getDirection()->getRadians() + Math::deg2rad(270); //Ejection point should be on south side of structure.
 
 	ejectionPoint.setX(x + (Math::cos(radians) * halfLength));
-	ejectionPoint.setY(y + (Math::sin(radians) * halfLength));
+	ejectionPoint.setY(y + (Math::sin(radians) * halfLength));*/
 
 	return ejectionPoint;
 }

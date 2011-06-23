@@ -62,9 +62,6 @@ import system.lang.Time;
 include server.zone.packets.ui.CreateClientPathMessage;
 
 class StructureObject extends TangibleObject {
-	//@dereferenced
-	//protected PlayerStructureComponent playerStructureComponent;
-	
 	protected transient StructureMaintenanceTask structureMaintenanceTask;
 	//protected transient StructurePowerTask structurePowerTask;
 	
@@ -90,9 +87,6 @@ class StructureObject extends TangibleObject {
 	protected float surplusMaintenance;
 	protected float surplusPower;
 	
-	protected int length;
-	protected int width;
-	
 	public StructureObject() {
 		Logger.setLoggingName("StructureObject");
 		
@@ -113,10 +107,6 @@ class StructureObject extends TangibleObject {
 		surplusMaintenance = 0;
 		
 		surplusPower = 0;
-
-		length = 0;
-		
-		width = 0;
 		
 		structureMaintenanceTask = null;
 	}
@@ -153,7 +143,7 @@ class StructureObject extends TangibleObject {
 	public native void sendDestroyConfirmTo(PlayerCreature player);
 	public native void sendDestroyCodeTo(PlayerCreature player);
 	public native void sendManageMaintenanceTo(PlayerCreature player);
-	public native void sendChangeNamePromptTo(PlayerCreature player);
+	public abstract native void sendChangeNamePromptTo(PlayerCreature player);
 	
 	public native string getTimeString(unsigned int timestamp);
 	
@@ -324,22 +314,6 @@ class StructureObject extends TangibleObject {
 		return (getRedeedCost() < (surplusMaintenance + 1));
 	}
 	
-	public int getLength() {
-		return length;
-	}
-	
 	@local
 	public native AABBTree getAABBTree();
-	
-	public void setLength(int len) {
-		length = len;
-	}
-	
-	public int getWidth() {
-		return width;
-	}
-	
-	public void setWidth(int wid) {
-		width = wid;
-	}
 }

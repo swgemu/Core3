@@ -222,15 +222,7 @@ public:
 
 	bool isRedeedable();
 
-	int getLength();
-
 	AABBTree* getAABBTree();
-
-	void setLength(int len);
-
-	int getWidth();
-
-	void setWidth(int wid);
 
 	DistributedObjectServant* _getImplementation();
 
@@ -284,10 +276,6 @@ protected:
 
 	float surplusPower;
 
-	int length;
-
-	int width;
-
 public:
 	StructureObjectImplementation();
 
@@ -313,7 +301,7 @@ public:
 
 	void sendManageMaintenanceTo(PlayerCreature* player);
 
-	void sendChangeNamePromptTo(PlayerCreature* player);
+	virtual void sendChangeNamePromptTo(PlayerCreature* player);
 
 	String getTimeString(unsigned int timestamp);
 
@@ -399,15 +387,7 @@ public:
 
 	bool isRedeedable();
 
-	int getLength();
-
 	AABBTree* getAABBTree();
-
-	void setLength(int len);
-
-	int getWidth();
-
-	void setWidth(int wid);
 
 	StructureObject* _this;
 
@@ -553,14 +533,6 @@ public:
 	bool isStructureObject();
 
 	bool isRedeedable();
-
-	int getLength();
-
-	void setLength(int len);
-
-	int getWidth();
-
-	void setWidth(int wid);
 
 protected:
 	String _param1_sendPermissionListTo__PlayerCreature_String_;

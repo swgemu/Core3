@@ -156,6 +156,8 @@ public:
 
 	void createContainerComponent();
 
+	void sendChangeNamePromptTo(PlayerCreature* player);
+
 	void sendContainerObjectsTo(SceneObject* player);
 
 	void updateCellPermissionsTo(SceneObject* player);
@@ -279,6 +281,8 @@ public:
 
 	void createContainerComponent();
 
+	void sendChangeNamePromptTo(PlayerCreature* player);
+
 	void sendContainerObjectsTo(SceneObject* player);
 
 	void updateCellPermissionsTo(SceneObject* player);
@@ -399,6 +403,8 @@ public:
 	void initializeTransientMembers();
 
 	void createContainerComponent();
+
+	void sendChangeNamePromptTo(PlayerCreature* player);
 
 	void sendContainerObjectsTo(SceneObject* player);
 

@@ -20,7 +20,7 @@
  *	StructureObjectStub
  */
 
-enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_FINALIZE__,RPC_CREATECHILDOBJECTS__,RPC_NOTIFYSTRUCTUREPLACED__CREATUREOBJECT_,RPC_CHECKREQUISITESFORPLACEMENT__PLAYERCREATURE_,RPC_SENDSTATUSTO__PLAYERCREATURE_,RPC_SENDDESTROYCONFIRMTO__PLAYERCREATURE_,RPC_SENDDESTROYCODETO__PLAYERCREATURE_,RPC_SENDMANAGEMAINTENANCETO__PLAYERCREATURE_,RPC_SENDCHANGENAMEPROMPTTO__PLAYERCREATURE_,RPC_GETTIMESTRING__INT_,RPC_GENERATEDESTROYCODE__,RPC_ISVALIDDESTROYCODE__INT_,RPC_SCHEDULEMAINTENANCEEXPIRATIONEVENT__,RPC_ISONADMINLIST__SCENEOBJECT_,RPC_ISONADMINLIST__LONG_,RPC_ISONENTRYLIST__SCENEOBJECT_,RPC_ISONENTRYLIST__LONG_,RPC_ISONBANLIST__SCENEOBJECT_,RPC_ISONBANLIST__LONG_,RPC_ISOWNEROF__SCENEOBJECT_,RPC_ISOWNEROF__LONG_,RPC_ISONACCESSLIST__SCENEOBJECT_,RPC_ISONACCESSLIST__LONG_,RPC_SENDPERMISSIONLISTTO__PLAYERCREATURE_STRING_,RPC_ADDPERMISSION__PLAYERCREATURE_PLAYERCREATURE_STRING_,RPC_ADDPERMISSION__PLAYERCREATURE_STRING_STRING_,RPC_REMOVEPERMISSION__PLAYERCREATURE_PLAYERCREATURE_STRING_,RPC_REMOVEPERMISSION__PLAYERCREATURE_STRING_STRING_,RPC_CREATEVENDOR__PLAYERCREATURE_,RPC_GETREDEEDCOST__,RPC_GETOWNEROBJECTID__,RPC_GETDEEDOBJECTID__,RPC_GETLOTSIZE__,RPC_GETDESTROYCODE__,RPC_GETBASEMAINTENANCERATE__,RPC_GETBASEPOWERRATE__,RPC_GETSURPLUSMAINTENANCE__,RPC_GETSURPLUSPOWER__,RPC_ISPUBLICSTRUCTURE__,RPC_SETOWNEROBJECTID__LONG_,RPC_SETDEEDOBJECTID__LONG_,RPC_SETDESTROYCODE__INT_,RPC_SETBASEMAINTENANCERATE__INT_,RPC_SETBASEPOWERRATE__INT_,RPC_SETSURPLUSMAINTENANCE__INT_,RPC_ADDMAINTENANCE__INT_,RPC_SETSURPLUSPOWER__INT_,RPC_ADDPOWER__INT_,RPC_SETPUBLICSTRUCTURE__BOOL_,RPC_ISSTRUCTUREOBJECT__,RPC_ISREDEEDABLE__,RPC_GETLENGTH__,RPC_SETLENGTH__INT_,RPC_GETWIDTH__,RPC_SETWIDTH__INT_};
+enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_FINALIZE__,RPC_CREATECHILDOBJECTS__,RPC_NOTIFYSTRUCTUREPLACED__CREATUREOBJECT_,RPC_CHECKREQUISITESFORPLACEMENT__PLAYERCREATURE_,RPC_SENDSTATUSTO__PLAYERCREATURE_,RPC_SENDDESTROYCONFIRMTO__PLAYERCREATURE_,RPC_SENDDESTROYCODETO__PLAYERCREATURE_,RPC_SENDMANAGEMAINTENANCETO__PLAYERCREATURE_,RPC_SENDCHANGENAMEPROMPTTO__PLAYERCREATURE_,RPC_GETTIMESTRING__INT_,RPC_GENERATEDESTROYCODE__,RPC_ISVALIDDESTROYCODE__INT_,RPC_SCHEDULEMAINTENANCEEXPIRATIONEVENT__,RPC_ISONADMINLIST__SCENEOBJECT_,RPC_ISONADMINLIST__LONG_,RPC_ISONENTRYLIST__SCENEOBJECT_,RPC_ISONENTRYLIST__LONG_,RPC_ISONBANLIST__SCENEOBJECT_,RPC_ISONBANLIST__LONG_,RPC_ISOWNEROF__SCENEOBJECT_,RPC_ISOWNEROF__LONG_,RPC_ISONACCESSLIST__SCENEOBJECT_,RPC_ISONACCESSLIST__LONG_,RPC_SENDPERMISSIONLISTTO__PLAYERCREATURE_STRING_,RPC_ADDPERMISSION__PLAYERCREATURE_PLAYERCREATURE_STRING_,RPC_ADDPERMISSION__PLAYERCREATURE_STRING_STRING_,RPC_REMOVEPERMISSION__PLAYERCREATURE_PLAYERCREATURE_STRING_,RPC_REMOVEPERMISSION__PLAYERCREATURE_STRING_STRING_,RPC_CREATEVENDOR__PLAYERCREATURE_,RPC_GETREDEEDCOST__,RPC_GETOWNEROBJECTID__,RPC_GETDEEDOBJECTID__,RPC_GETLOTSIZE__,RPC_GETDESTROYCODE__,RPC_GETBASEMAINTENANCERATE__,RPC_GETBASEPOWERRATE__,RPC_GETSURPLUSMAINTENANCE__,RPC_GETSURPLUSPOWER__,RPC_ISPUBLICSTRUCTURE__,RPC_SETOWNEROBJECTID__LONG_,RPC_SETDEEDOBJECTID__LONG_,RPC_SETDESTROYCODE__INT_,RPC_SETBASEMAINTENANCERATE__INT_,RPC_SETBASEPOWERRATE__INT_,RPC_SETSURPLUSMAINTENANCE__INT_,RPC_ADDMAINTENANCE__INT_,RPC_SETSURPLUSPOWER__INT_,RPC_ADDPOWER__INT_,RPC_SETPUBLICSTRUCTURE__BOOL_,RPC_ISSTRUCTUREOBJECT__,RPC_ISREDEEDABLE__,};
 
 StructureObject::StructureObject() : TangibleObject(DummyConstructorParameter::instance()) {
 	StructureObjectImplementation* _implementation = new StructureObjectImplementation();
@@ -752,19 +752,6 @@ bool StructureObject::isRedeedable() {
 		return _implementation->isRedeedable();
 }
 
-int StructureObject::getLength() {
-	StructureObjectImplementation* _implementation = (StructureObjectImplementation*) _getImplementation();
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, RPC_GETLENGTH__);
-
-		return method.executeWithSignedIntReturn();
-	} else
-		return _implementation->getLength();
-}
-
 AABBTree* StructureObject::getAABBTree() {
 	StructureObjectImplementation* _implementation = (StructureObjectImplementation*) _getImplementation();
 	if (_implementation == NULL) {
@@ -772,47 +759,6 @@ AABBTree* StructureObject::getAABBTree() {
 
 	} else
 		return _implementation->getAABBTree();
-}
-
-void StructureObject::setLength(int len) {
-	StructureObjectImplementation* _implementation = (StructureObjectImplementation*) _getImplementation();
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, RPC_SETLENGTH__INT_);
-		method.addSignedIntParameter(len);
-
-		method.executeWithVoidReturn();
-	} else
-		_implementation->setLength(len);
-}
-
-int StructureObject::getWidth() {
-	StructureObjectImplementation* _implementation = (StructureObjectImplementation*) _getImplementation();
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, RPC_GETWIDTH__);
-
-		return method.executeWithSignedIntReturn();
-	} else
-		return _implementation->getWidth();
-}
-
-void StructureObject::setWidth(int wid) {
-	StructureObjectImplementation* _implementation = (StructureObjectImplementation*) _getImplementation();
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, RPC_SETWIDTH__INT_);
-		method.addSignedIntParameter(wid);
-
-		method.executeWithVoidReturn();
-	} else
-		_implementation->setWidth(wid);
 }
 
 DistributedObjectServant* StructureObject::_getImplementation() {
@@ -972,16 +918,6 @@ bool StructureObjectImplementation::readObjectMember(ObjectInputStream* stream, 
 		return true;
 	}
 
-	if (_name == "length") {
-		TypeInfo<int >::parseFromBinaryStream(&length, stream);
-		return true;
-	}
-
-	if (_name == "width") {
-		TypeInfo<int >::parseFromBinaryStream(&width, stream);
-		return true;
-	}
-
 
 	return false;
 }
@@ -1085,24 +1021,8 @@ int StructureObjectImplementation::writeObjectMembers(ObjectOutputStream* stream
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "length";
-	_name.toBinaryStream(stream);
-	_offset = stream->getOffset();
-	stream->writeShort(0);
-	TypeInfo<int >::toBinaryStream(&length, stream);
-	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
-	stream->writeShort(_offset, _totalSize);
 
-	_name = "width";
-	_name.toBinaryStream(stream);
-	_offset = stream->getOffset();
-	stream->writeShort(0);
-	TypeInfo<int >::toBinaryStream(&width, stream);
-	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
-	stream->writeShort(_offset, _totalSize);
-
-
-	return 13 + TangibleObjectImplementation::writeObjectMembers(stream);
+	return 11 + TangibleObjectImplementation::writeObjectMembers(stream);
 }
 
 StructureObjectImplementation::StructureObjectImplementation() {
@@ -1127,10 +1047,6 @@ StructureObjectImplementation::StructureObjectImplementation() {
 	surplusMaintenance = 0;
 	// server/zone/objects/structure/StructureObject.idl():  		surplusPower = 0;
 	surplusPower = 0;
-	// server/zone/objects/structure/StructureObject.idl():  		length = 0;
-	length = 0;
-	// server/zone/objects/structure/StructureObject.idl():  		width = 0;
-	width = 0;
 	// server/zone/objects/structure/StructureObject.idl():  		structureMaintenanceTask = null;
 	structureMaintenanceTask = NULL;
 }
@@ -1314,26 +1230,6 @@ bool StructureObjectImplementation::isRedeedable() {
 	return (getRedeedCost() < (surplusMaintenance + 1));
 }
 
-int StructureObjectImplementation::getLength() {
-	// server/zone/objects/structure/StructureObject.idl():  		return length;
-	return length;
-}
-
-void StructureObjectImplementation::setLength(int len) {
-	// server/zone/objects/structure/StructureObject.idl():  		length = len;
-	length = len;
-}
-
-int StructureObjectImplementation::getWidth() {
-	// server/zone/objects/structure/StructureObject.idl():  		return width;
-	return width;
-}
-
-void StructureObjectImplementation::setWidth(int wid) {
-	// server/zone/objects/structure/StructureObject.idl():  		width = wid;
-	width = wid;
-}
-
 /*
  *	StructureObjectAdapter
  */
@@ -1500,18 +1396,6 @@ Packet* StructureObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* i
 		break;
 	case RPC_ISREDEEDABLE__:
 		resp->insertBoolean(isRedeedable());
-		break;
-	case RPC_GETLENGTH__:
-		resp->insertSignedInt(getLength());
-		break;
-	case RPC_SETLENGTH__INT_:
-		setLength(inv->getSignedIntParameter());
-		break;
-	case RPC_GETWIDTH__:
-		resp->insertSignedInt(getWidth());
-		break;
-	case RPC_SETWIDTH__INT_:
-		setWidth(inv->getSignedIntParameter());
 		break;
 	default:
 		return NULL;
@@ -1726,22 +1610,6 @@ bool StructureObjectAdapter::isStructureObject() {
 
 bool StructureObjectAdapter::isRedeedable() {
 	return ((StructureObjectImplementation*) impl)->isRedeedable();
-}
-
-int StructureObjectAdapter::getLength() {
-	return ((StructureObjectImplementation*) impl)->getLength();
-}
-
-void StructureObjectAdapter::setLength(int len) {
-	((StructureObjectImplementation*) impl)->setLength(len);
-}
-
-int StructureObjectAdapter::getWidth() {
-	return ((StructureObjectImplementation*) impl)->getWidth();
-}
-
-void StructureObjectAdapter::setWidth(int wid) {
-	((StructureObjectImplementation*) impl)->setWidth(wid);
 }
 
 /*

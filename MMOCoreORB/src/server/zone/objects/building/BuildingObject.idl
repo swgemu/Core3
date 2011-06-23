@@ -109,6 +109,8 @@ class BuildingObject extends StructureObject {
 	
 	public native void createContainerComponent();
 	
+	public native void sendChangeNamePromptTo(PlayerCreature player);
+	
 	/**
 	 * Sends the contained non slotted objects to the specified player
 	 * @pre { this object is locked }
@@ -134,20 +136,7 @@ class BuildingObject extends StructureObject {
 	@dereferenced
 	public native Vector3 getEjectionPoint();
 	
-	public native void removeFromZone();/* {
-		for (int i = 0; i < cells.size(); ++i) {
-			CellObject cell = cells.get(i);
-			
-			while (cell.getContainerObjectsSize() > 0) {
-				SceneObject obj = cell.getContainerObject(0);
-				
-				obj.removeFromZone();
-				
-			}
-		}
-		
-		super.removeFromZone();
-	}*/
+	public native void removeFromZone();
 	
 	/**
 	 * Gets called when this objects is loaded from database

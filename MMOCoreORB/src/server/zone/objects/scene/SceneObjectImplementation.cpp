@@ -87,7 +87,6 @@ which carries forward this exception.
 #include "server/zone/objects/scene/components/ContainerComponent.h"
 #include "PositionUpdateTask.h"
 
-#include "server/zone/objects/tangible/sign/SignObserver.h"
 #include "server/zone/objects/tangible/sign/SignObject.h"
 
 void SceneObjectImplementation::initializeTransientMembers() {
@@ -781,11 +780,11 @@ void SceneObjectImplementation::notifyCloseContainer(PlayerCreature* player) {
 }
 
 void SceneObjectImplementation::notifyPositionUpdate(QuadTreeEntry* entry) {
-	notifyObservers(ObserverEventType::OBJECTINRANGEMOVED, entry);
-	/*if (_this == NULL || entry == NULL || _this == entry)
-		return;*/
+	//notifyObservers(ObserverEventType::OBJECTINRANGEMOVED, entry);
+	if (_this == NULL || entry == NULL || _this == entry)
+		return;
 
-	//Core::getTaskManager()->executeTask(new PositionUpdateTask(_this, entry));
+	Core::getTaskManager()->executeTask(new PositionUpdateTask(_this, entry));
 }
 
 void SceneObjectImplementation::updateZoneWithParent(SceneObject* newParent, bool lightUpdate, bool sendPackets) {
