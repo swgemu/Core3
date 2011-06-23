@@ -130,19 +130,11 @@ public:
 
 	void sendStatusTo(PlayerCreature* player);
 
-	void sendDestroyConfirmTo(PlayerCreature* player);
-
-	void sendDestroyCodeTo(PlayerCreature* player);
-
 	void sendManageMaintenanceTo(PlayerCreature* player);
 
 	void sendChangeNamePromptTo(PlayerCreature* player);
 
 	String getTimeString(unsigned int timestamp);
-
-	unsigned int generateDestroyCode();
-
-	bool isValidDestroyCode(unsigned int code);
 
 	void scheduleMaintenanceExpirationEvent();
 
@@ -186,8 +178,6 @@ public:
 
 	int getLotSize();
 
-	unsigned int getDestroyCode();
-
 	int getBaseMaintenanceRate();
 
 	int getBasePowerRate();
@@ -201,8 +191,6 @@ public:
 	void setOwnerObjectID(unsigned long long objectID);
 
 	void setDeedObjectID(unsigned long long deedID);
-
-	void setDestroyCode(unsigned int code);
 
 	void setBaseMaintenanceRate(int rate);
 
@@ -266,8 +254,6 @@ protected:
 
 	int lotSize;
 
-	unsigned int destroyCode;
-
 	int baseMaintenanceRate;
 
 	int basePowerRate;
@@ -295,19 +281,11 @@ public:
 
 	void sendStatusTo(PlayerCreature* player);
 
-	void sendDestroyConfirmTo(PlayerCreature* player);
-
-	void sendDestroyCodeTo(PlayerCreature* player);
-
 	void sendManageMaintenanceTo(PlayerCreature* player);
 
 	virtual void sendChangeNamePromptTo(PlayerCreature* player);
 
 	String getTimeString(unsigned int timestamp);
-
-	virtual unsigned int generateDestroyCode();
-
-	bool isValidDestroyCode(unsigned int code);
 
 	void scheduleMaintenanceExpirationEvent();
 
@@ -351,8 +329,6 @@ public:
 
 	int getLotSize();
 
-	unsigned int getDestroyCode();
-
 	int getBaseMaintenanceRate();
 
 	int getBasePowerRate();
@@ -366,8 +342,6 @@ public:
 	void setOwnerObjectID(unsigned long long objectID);
 
 	void setDeedObjectID(unsigned long long deedID);
-
-	void setDestroyCode(unsigned int code);
 
 	void setBaseMaintenanceRate(int rate);
 
@@ -442,19 +416,11 @@ public:
 
 	void sendStatusTo(PlayerCreature* player);
 
-	void sendDestroyConfirmTo(PlayerCreature* player);
-
-	void sendDestroyCodeTo(PlayerCreature* player);
-
 	void sendManageMaintenanceTo(PlayerCreature* player);
 
 	void sendChangeNamePromptTo(PlayerCreature* player);
 
 	String getTimeString(unsigned int timestamp);
-
-	unsigned int generateDestroyCode();
-
-	bool isValidDestroyCode(unsigned int code);
 
 	void scheduleMaintenanceExpirationEvent();
 
@@ -498,8 +464,6 @@ public:
 
 	int getLotSize();
 
-	unsigned int getDestroyCode();
-
 	int getBaseMaintenanceRate();
 
 	int getBasePowerRate();
@@ -513,8 +477,6 @@ public:
 	void setOwnerObjectID(unsigned long long objectID);
 
 	void setDeedObjectID(unsigned long long deedID);
-
-	void setDestroyCode(unsigned int code);
 
 	void setBaseMaintenanceRate(int rate);
 

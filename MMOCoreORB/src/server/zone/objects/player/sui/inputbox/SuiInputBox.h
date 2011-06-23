@@ -60,7 +60,7 @@ public:
 
 	static const int FILTER = 1;
 
-	SuiInputBox(PlayerCreature* player, unsigned int windowType, int inputtype = 0);
+	SuiInputBox(PlayerCreature* player, unsigned int windowType = 0, int inputtype = 0);
 
 	BaseMessage* generateMessage();
 
@@ -113,7 +113,7 @@ public:
 
 	static const int FILTER = 1;
 
-	SuiInputBoxImplementation(PlayerCreature* player, unsigned int windowType, int inputtype = 0);
+	SuiInputBoxImplementation(PlayerCreature* player, unsigned int windowType = 0, int inputtype = 0);
 
 	SuiInputBoxImplementation(DummyConstructorParameter* param);
 

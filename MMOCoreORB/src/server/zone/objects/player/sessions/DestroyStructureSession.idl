@@ -40,53 +40,45 @@ it is their choice whether to do so. The GNU Lesser General Public License
 gives permission to release a modified version without this exception;
 this exception also makes it possible to release a modified version
 which carries forward this exception.
-*/
+ */
 
-#ifndef PLACESTRUCTURECOMMAND_H_
-#define PLACESTRUCTURECOMMAND_H_
+package server.zone.objects.player;
 
-#include "server/zone/objects/creature/CreatureObject.h"
-#include "server/zone/managers/structure/StructureManager.h"
+import engine.util.Facade;
+import server.zone.objects.creature.CreatureObject;
+import server.zone.objects.scene.SceneObject;
+import server.zone.objects.structure.StructureObject;
+import server.zone.managers.structure.StructureManager;
+include server.zone.objects.scene.SessionFacadeType;
 
-class PlaceStructureCommand : public QueueCommand {
-public:
-
-	PlaceStructureCommand(const String& name, ZoneProcessServer* server)
-		: QueueCommand(name, server) {
-
+class DestroyStructureSession extends Facade {
+	protected CreatureObject creatureObject;
+	
+	protected StructureObject structureObject;
+	
+	protected int destroyCode;
+	
+	public DestroyStructureSession(CreatureObject creature, StructureObject structure) {
+		Logger.setLoggingName("DestroyStructureSession");
+		Logger.setLogging(true);
+		
+		creatureObject = creature;
+		
+		structureObject = structure;
+		
+		destroyCode = 0;
 	}
 
-	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
-
-		if (!checkStateMask(creature))
-			return INVALIDSTATE;
-
-		if (!checkInvalidPostures(creature))
-			return INVALIDPOSTURE;
-
-		StringTokenizer tokenizer(arguments.toString());
-		tokenizer.setDelimeter(" ");
-
-		uint64 deedID;
-		float x, y;
-		int angle;
-
-		try {
-			deedID = tokenizer.getLongToken();
-			x = tokenizer.getFloatToken();
-			y = tokenizer.getFloatToken();
-			angle = tokenizer.getIntToken() * 90;
-		} catch (Exception& e) {
-			info(e.getMessage());
-			return INVALIDPARAMETERS;
-		}
-
-		StructureManager* structureManager = creature->getZone()->getStructureManager();
-		structureManager->placeStructureFromDeed(creature, deedID, x, y, angle);
-
-		return SUCCESS;
+	public native int initializeSession();
+	public native int sendDestroyCode();
+	
+	public int cancelSession() {
+		creatureObject.dropActiveSession(SessionFacadeType.DESTROYSTRUCTURE);
+		
+		return 0;
 	}
-
-};
-
-#endif //PLACESTRUCTURECOMMAND_H_
+	
+	public int clearSession() {
+		return 0;
+	}
+}

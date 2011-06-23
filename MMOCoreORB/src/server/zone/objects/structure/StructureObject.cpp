@@ -20,7 +20,7 @@
  *	StructureObjectStub
  */
 
-enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_FINALIZE__,RPC_CREATECHILDOBJECTS__,RPC_NOTIFYSTRUCTUREPLACED__CREATUREOBJECT_,RPC_CHECKREQUISITESFORPLACEMENT__PLAYERCREATURE_,RPC_SENDSTATUSTO__PLAYERCREATURE_,RPC_SENDDESTROYCONFIRMTO__PLAYERCREATURE_,RPC_SENDDESTROYCODETO__PLAYERCREATURE_,RPC_SENDMANAGEMAINTENANCETO__PLAYERCREATURE_,RPC_SENDCHANGENAMEPROMPTTO__PLAYERCREATURE_,RPC_GETTIMESTRING__INT_,RPC_GENERATEDESTROYCODE__,RPC_ISVALIDDESTROYCODE__INT_,RPC_SCHEDULEMAINTENANCEEXPIRATIONEVENT__,RPC_ISONADMINLIST__SCENEOBJECT_,RPC_ISONADMINLIST__LONG_,RPC_ISONENTRYLIST__SCENEOBJECT_,RPC_ISONENTRYLIST__LONG_,RPC_ISONBANLIST__SCENEOBJECT_,RPC_ISONBANLIST__LONG_,RPC_ISOWNEROF__SCENEOBJECT_,RPC_ISOWNEROF__LONG_,RPC_ISONACCESSLIST__SCENEOBJECT_,RPC_ISONACCESSLIST__LONG_,RPC_SENDPERMISSIONLISTTO__PLAYERCREATURE_STRING_,RPC_ADDPERMISSION__PLAYERCREATURE_PLAYERCREATURE_STRING_,RPC_ADDPERMISSION__PLAYERCREATURE_STRING_STRING_,RPC_REMOVEPERMISSION__PLAYERCREATURE_PLAYERCREATURE_STRING_,RPC_REMOVEPERMISSION__PLAYERCREATURE_STRING_STRING_,RPC_CREATEVENDOR__PLAYERCREATURE_,RPC_GETREDEEDCOST__,RPC_GETOWNEROBJECTID__,RPC_GETDEEDOBJECTID__,RPC_GETLOTSIZE__,RPC_GETDESTROYCODE__,RPC_GETBASEMAINTENANCERATE__,RPC_GETBASEPOWERRATE__,RPC_GETSURPLUSMAINTENANCE__,RPC_GETSURPLUSPOWER__,RPC_ISPUBLICSTRUCTURE__,RPC_SETOWNEROBJECTID__LONG_,RPC_SETDEEDOBJECTID__LONG_,RPC_SETDESTROYCODE__INT_,RPC_SETBASEMAINTENANCERATE__INT_,RPC_SETBASEPOWERRATE__INT_,RPC_SETSURPLUSMAINTENANCE__INT_,RPC_ADDMAINTENANCE__INT_,RPC_SETSURPLUSPOWER__INT_,RPC_ADDPOWER__INT_,RPC_SETPUBLICSTRUCTURE__BOOL_,RPC_ISSTRUCTUREOBJECT__,RPC_ISREDEEDABLE__,};
+enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_FINALIZE__,RPC_CREATECHILDOBJECTS__,RPC_NOTIFYSTRUCTUREPLACED__CREATUREOBJECT_,RPC_CHECKREQUISITESFORPLACEMENT__PLAYERCREATURE_,RPC_SENDSTATUSTO__PLAYERCREATURE_,RPC_SENDMANAGEMAINTENANCETO__PLAYERCREATURE_,RPC_SENDCHANGENAMEPROMPTTO__PLAYERCREATURE_,RPC_GETTIMESTRING__INT_,RPC_SCHEDULEMAINTENANCEEXPIRATIONEVENT__,RPC_ISONADMINLIST__SCENEOBJECT_,RPC_ISONADMINLIST__LONG_,RPC_ISONENTRYLIST__SCENEOBJECT_,RPC_ISONENTRYLIST__LONG_,RPC_ISONBANLIST__SCENEOBJECT_,RPC_ISONBANLIST__LONG_,RPC_ISOWNEROF__SCENEOBJECT_,RPC_ISOWNEROF__LONG_,RPC_ISONACCESSLIST__SCENEOBJECT_,RPC_ISONACCESSLIST__LONG_,RPC_SENDPERMISSIONLISTTO__PLAYERCREATURE_STRING_,RPC_ADDPERMISSION__PLAYERCREATURE_PLAYERCREATURE_STRING_,RPC_ADDPERMISSION__PLAYERCREATURE_STRING_STRING_,RPC_REMOVEPERMISSION__PLAYERCREATURE_PLAYERCREATURE_STRING_,RPC_REMOVEPERMISSION__PLAYERCREATURE_STRING_STRING_,RPC_CREATEVENDOR__PLAYERCREATURE_,RPC_GETREDEEDCOST__,RPC_GETOWNEROBJECTID__,RPC_GETDEEDOBJECTID__,RPC_GETLOTSIZE__,RPC_GETBASEMAINTENANCERATE__,RPC_GETBASEPOWERRATE__,RPC_GETSURPLUSMAINTENANCE__,RPC_GETSURPLUSPOWER__,RPC_ISPUBLICSTRUCTURE__,RPC_SETOWNEROBJECTID__LONG_,RPC_SETDEEDOBJECTID__LONG_,RPC_SETBASEMAINTENANCERATE__INT_,RPC_SETBASEPOWERRATE__INT_,RPC_SETSURPLUSMAINTENANCE__INT_,RPC_ADDMAINTENANCE__INT_,RPC_SETSURPLUSPOWER__INT_,RPC_ADDPOWER__INT_,RPC_SETPUBLICSTRUCTURE__BOOL_,RPC_ISSTRUCTUREOBJECT__,RPC_ISREDEEDABLE__,};
 
 StructureObject::StructureObject() : TangibleObject(DummyConstructorParameter::instance()) {
 	StructureObjectImplementation* _implementation = new StructureObjectImplementation();
@@ -112,34 +112,6 @@ void StructureObject::sendStatusTo(PlayerCreature* player) {
 		_implementation->sendStatusTo(player);
 }
 
-void StructureObject::sendDestroyConfirmTo(PlayerCreature* player) {
-	StructureObjectImplementation* _implementation = (StructureObjectImplementation*) _getImplementation();
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, RPC_SENDDESTROYCONFIRMTO__PLAYERCREATURE_);
-		method.addObjectParameter(player);
-
-		method.executeWithVoidReturn();
-	} else
-		_implementation->sendDestroyConfirmTo(player);
-}
-
-void StructureObject::sendDestroyCodeTo(PlayerCreature* player) {
-	StructureObjectImplementation* _implementation = (StructureObjectImplementation*) _getImplementation();
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, RPC_SENDDESTROYCODETO__PLAYERCREATURE_);
-		method.addObjectParameter(player);
-
-		method.executeWithVoidReturn();
-	} else
-		_implementation->sendDestroyCodeTo(player);
-}
-
 void StructureObject::sendManageMaintenanceTo(PlayerCreature* player) {
 	StructureObjectImplementation* _implementation = (StructureObjectImplementation*) _getImplementation();
 	if (_implementation == NULL) {
@@ -181,33 +153,6 @@ String StructureObject::getTimeString(unsigned int timestamp) {
 		return _return_getTimeString;
 	} else
 		return _implementation->getTimeString(timestamp);
-}
-
-unsigned int StructureObject::generateDestroyCode() {
-	StructureObjectImplementation* _implementation = (StructureObjectImplementation*) _getImplementation();
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, RPC_GENERATEDESTROYCODE__);
-
-		return method.executeWithUnsignedIntReturn();
-	} else
-		return _implementation->generateDestroyCode();
-}
-
-bool StructureObject::isValidDestroyCode(unsigned int code) {
-	StructureObjectImplementation* _implementation = (StructureObjectImplementation*) _getImplementation();
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, RPC_ISVALIDDESTROYCODE__INT_);
-		method.addUnsignedIntParameter(code);
-
-		return method.executeWithBooleanReturn();
-	} else
-		return _implementation->isValidDestroyCode(code);
 }
 
 void StructureObject::scheduleMaintenanceExpirationEvent() {
@@ -508,19 +453,6 @@ int StructureObject::getLotSize() {
 		return _implementation->getLotSize();
 }
 
-unsigned int StructureObject::getDestroyCode() {
-	StructureObjectImplementation* _implementation = (StructureObjectImplementation*) _getImplementation();
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, RPC_GETDESTROYCODE__);
-
-		return method.executeWithUnsignedIntReturn();
-	} else
-		return _implementation->getDestroyCode();
-}
-
 int StructureObject::getBaseMaintenanceRate() {
 	StructureObjectImplementation* _implementation = (StructureObjectImplementation*) _getImplementation();
 	if (_implementation == NULL) {
@@ -612,20 +544,6 @@ void StructureObject::setDeedObjectID(unsigned long long deedID) {
 		method.executeWithVoidReturn();
 	} else
 		_implementation->setDeedObjectID(deedID);
-}
-
-void StructureObject::setDestroyCode(unsigned int code) {
-	StructureObjectImplementation* _implementation = (StructureObjectImplementation*) _getImplementation();
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, RPC_SETDESTROYCODE__INT_);
-		method.addUnsignedIntParameter(code);
-
-		method.executeWithVoidReturn();
-	} else
-		_implementation->setDestroyCode(code);
 }
 
 void StructureObject::setBaseMaintenanceRate(int rate) {
@@ -893,11 +811,6 @@ bool StructureObjectImplementation::readObjectMember(ObjectInputStream* stream, 
 		return true;
 	}
 
-	if (_name == "destroyCode") {
-		TypeInfo<unsigned int >::parseFromBinaryStream(&destroyCode, stream);
-		return true;
-	}
-
 	if (_name == "baseMaintenanceRate") {
 		TypeInfo<int >::parseFromBinaryStream(&baseMaintenanceRate, stream);
 		return true;
@@ -981,14 +894,6 @@ int StructureObjectImplementation::writeObjectMembers(ObjectOutputStream* stream
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "destroyCode";
-	_name.toBinaryStream(stream);
-	_offset = stream->getOffset();
-	stream->writeShort(0);
-	TypeInfo<unsigned int >::toBinaryStream(&destroyCode, stream);
-	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
-	stream->writeShort(_offset, _totalSize);
-
 	_name = "baseMaintenanceRate";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
@@ -1022,7 +927,7 @@ int StructureObjectImplementation::writeObjectMembers(ObjectOutputStream* stream
 	stream->writeShort(_offset, _totalSize);
 
 
-	return 11 + TangibleObjectImplementation::writeObjectMembers(stream);
+	return 10 + TangibleObjectImplementation::writeObjectMembers(stream);
 }
 
 StructureObjectImplementation::StructureObjectImplementation() {
@@ -1037,8 +942,6 @@ StructureObjectImplementation::StructureObjectImplementation() {
 	ownerObjectID = 0;
 	// server/zone/objects/structure/StructureObject.idl():  		deedObjectID = 0;
 	deedObjectID = 0;
-	// server/zone/objects/structure/StructureObject.idl():  		destroyCode = 0;
-	destroyCode = 0;
 	// server/zone/objects/structure/StructureObject.idl():  		baseMaintenanceRate = 0;
 	baseMaintenanceRate = 0;
 	// server/zone/objects/structure/StructureObject.idl():  		basePowerRate = 0;
@@ -1064,18 +967,6 @@ int StructureObjectImplementation::notifyStructurePlaced(CreatureObject* creatur
 bool StructureObjectImplementation::checkRequisitesForPlacement(PlayerCreature* player) {
 	// server/zone/objects/structure/StructureObject.idl():  		return true;
 	return true;
-}
-
-unsigned int StructureObjectImplementation::generateDestroyCode() {
-	// server/zone/objects/structure/StructureObject.idl():  		destroyCode = System.random(899999) + 100000;
-	destroyCode = System::random(899999) + 100000;
-	// server/zone/objects/structure/StructureObject.idl():  		return destroyCode;
-	return destroyCode;
-}
-
-bool StructureObjectImplementation::isValidDestroyCode(unsigned int code) {
-	// server/zone/objects/structure/StructureObject.idl():  		return (destroyCode == code);
-	return (destroyCode == code);
 }
 
 bool StructureObjectImplementation::isOnAdminList(SceneObject* obj) {
@@ -1138,11 +1029,6 @@ unsigned long long StructureObjectImplementation::getDeedObjectID() {
 	return deedObjectID;
 }
 
-unsigned int StructureObjectImplementation::getDestroyCode() {
-	// server/zone/objects/structure/StructureObject.idl():  		return destroyCode;
-	return destroyCode;
-}
-
 int StructureObjectImplementation::getBaseMaintenanceRate() {
 	// server/zone/objects/structure/StructureObject.idl():  		return baseMaintenanceRate;
 	return baseMaintenanceRate;
@@ -1180,11 +1066,6 @@ void StructureObjectImplementation::setOwnerObjectID(unsigned long long objectID
 void StructureObjectImplementation::setDeedObjectID(unsigned long long deedID) {
 	// server/zone/objects/structure/StructureObject.idl():  		deedObjectID = deedID;
 	deedObjectID = deedID;
-}
-
-void StructureObjectImplementation::setDestroyCode(unsigned int code) {
-	// server/zone/objects/structure/StructureObject.idl():  		destroyCode = code;
-	destroyCode = code;
 }
 
 void StructureObjectImplementation::setBaseMaintenanceRate(int rate) {
@@ -1259,12 +1140,6 @@ Packet* StructureObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* i
 	case RPC_SENDSTATUSTO__PLAYERCREATURE_:
 		sendStatusTo((PlayerCreature*) inv->getObjectParameter());
 		break;
-	case RPC_SENDDESTROYCONFIRMTO__PLAYERCREATURE_:
-		sendDestroyConfirmTo((PlayerCreature*) inv->getObjectParameter());
-		break;
-	case RPC_SENDDESTROYCODETO__PLAYERCREATURE_:
-		sendDestroyCodeTo((PlayerCreature*) inv->getObjectParameter());
-		break;
 	case RPC_SENDMANAGEMAINTENANCETO__PLAYERCREATURE_:
 		sendManageMaintenanceTo((PlayerCreature*) inv->getObjectParameter());
 		break;
@@ -1273,12 +1148,6 @@ Packet* StructureObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* i
 		break;
 	case RPC_GETTIMESTRING__INT_:
 		resp->insertAscii(getTimeString(inv->getUnsignedIntParameter()));
-		break;
-	case RPC_GENERATEDESTROYCODE__:
-		resp->insertInt(generateDestroyCode());
-		break;
-	case RPC_ISVALIDDESTROYCODE__INT_:
-		resp->insertBoolean(isValidDestroyCode(inv->getUnsignedIntParameter()));
 		break;
 	case RPC_SCHEDULEMAINTENANCEEXPIRATIONEVENT__:
 		scheduleMaintenanceExpirationEvent();
@@ -1343,9 +1212,6 @@ Packet* StructureObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* i
 	case RPC_GETLOTSIZE__:
 		resp->insertSignedInt(getLotSize());
 		break;
-	case RPC_GETDESTROYCODE__:
-		resp->insertInt(getDestroyCode());
-		break;
 	case RPC_GETBASEMAINTENANCERATE__:
 		resp->insertSignedInt(getBaseMaintenanceRate());
 		break;
@@ -1366,9 +1232,6 @@ Packet* StructureObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* i
 		break;
 	case RPC_SETDEEDOBJECTID__LONG_:
 		setDeedObjectID(inv->getUnsignedLongParameter());
-		break;
-	case RPC_SETDESTROYCODE__INT_:
-		setDestroyCode(inv->getUnsignedIntParameter());
 		break;
 	case RPC_SETBASEMAINTENANCERATE__INT_:
 		setBaseMaintenanceRate(inv->getSignedIntParameter());
@@ -1428,14 +1291,6 @@ void StructureObjectAdapter::sendStatusTo(PlayerCreature* player) {
 	((StructureObjectImplementation*) impl)->sendStatusTo(player);
 }
 
-void StructureObjectAdapter::sendDestroyConfirmTo(PlayerCreature* player) {
-	((StructureObjectImplementation*) impl)->sendDestroyConfirmTo(player);
-}
-
-void StructureObjectAdapter::sendDestroyCodeTo(PlayerCreature* player) {
-	((StructureObjectImplementation*) impl)->sendDestroyCodeTo(player);
-}
-
 void StructureObjectAdapter::sendManageMaintenanceTo(PlayerCreature* player) {
 	((StructureObjectImplementation*) impl)->sendManageMaintenanceTo(player);
 }
@@ -1446,14 +1301,6 @@ void StructureObjectAdapter::sendChangeNamePromptTo(PlayerCreature* player) {
 
 String StructureObjectAdapter::getTimeString(unsigned int timestamp) {
 	return ((StructureObjectImplementation*) impl)->getTimeString(timestamp);
-}
-
-unsigned int StructureObjectAdapter::generateDestroyCode() {
-	return ((StructureObjectImplementation*) impl)->generateDestroyCode();
-}
-
-bool StructureObjectAdapter::isValidDestroyCode(unsigned int code) {
-	return ((StructureObjectImplementation*) impl)->isValidDestroyCode(code);
 }
 
 void StructureObjectAdapter::scheduleMaintenanceExpirationEvent() {
@@ -1540,10 +1387,6 @@ int StructureObjectAdapter::getLotSize() {
 	return ((StructureObjectImplementation*) impl)->getLotSize();
 }
 
-unsigned int StructureObjectAdapter::getDestroyCode() {
-	return ((StructureObjectImplementation*) impl)->getDestroyCode();
-}
-
 int StructureObjectAdapter::getBaseMaintenanceRate() {
 	return ((StructureObjectImplementation*) impl)->getBaseMaintenanceRate();
 }
@@ -1570,10 +1413,6 @@ void StructureObjectAdapter::setOwnerObjectID(unsigned long long objectID) {
 
 void StructureObjectAdapter::setDeedObjectID(unsigned long long deedID) {
 	((StructureObjectImplementation*) impl)->setDeedObjectID(deedID);
-}
-
-void StructureObjectAdapter::setDestroyCode(unsigned int code) {
-	((StructureObjectImplementation*) impl)->setDestroyCode(code);
 }
 
 void StructureObjectAdapter::setBaseMaintenanceRate(int rate) {

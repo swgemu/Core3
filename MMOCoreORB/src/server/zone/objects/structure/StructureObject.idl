@@ -79,8 +79,6 @@ class StructureObject extends TangibleObject {
 	
 	protected int lotSize;
 	
-	protected unsigned int destroyCode;
-	
 	protected int baseMaintenanceRate;
 	protected int basePowerRate;
 	
@@ -97,8 +95,6 @@ class StructureObject extends TangibleObject {
 		ownerObjectID = 0;
 		
 		deedObjectID = 0;
-		
-		destroyCode = 0;
 		
 		baseMaintenanceRate = 0;
 		
@@ -140,26 +136,11 @@ class StructureObject extends TangibleObject {
 	}
 	
 	public native void sendStatusTo(PlayerCreature player);
-	public native void sendDestroyConfirmTo(PlayerCreature player);
-	public native void sendDestroyCodeTo(PlayerCreature player);
 	public native void sendManageMaintenanceTo(PlayerCreature player);
 	public abstract native void sendChangeNamePromptTo(PlayerCreature player);
 	
 	public native string getTimeString(unsigned int timestamp);
-	
-	/**
-	 * Generates and sets a random 6 digit code to be confirmed before allowing a player to destroy a structure.
-	 * @return int The generated 6 digit destroy code.
-	 */
-	public abstract unsigned int generateDestroyCode() {
-		destroyCode = System.random(899999) + 100000;
-		return destroyCode;
-	}
-	
-	public boolean isValidDestroyCode(unsigned int code) {
-		return (destroyCode == code);
-	}
-	
+
 	public native void scheduleMaintenanceExpirationEvent();
 	
 	/**
@@ -233,10 +214,6 @@ class StructureObject extends TangibleObject {
 	
 	public native int getLotSize();
 	
-	public unsigned int getDestroyCode() {
-		return destroyCode;
-	}
-	
 	public int getBaseMaintenanceRate() {
 		return baseMaintenanceRate;
 	}
@@ -271,10 +248,6 @@ class StructureObject extends TangibleObject {
 	
 	public void setDeedObjectID(unsigned long deedID) {
 		deedObjectID = deedID;
-	}
-	
-	public void setDestroyCode(unsigned int code) {
-		destroyCode = code;
 	}
 	
 	public void setBaseMaintenanceRate(int rate) {

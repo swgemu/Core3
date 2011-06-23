@@ -88,7 +88,7 @@ int StructureTerminalImplementation::handleObjectMenuSelect(PlayerCreature* play
 		structureObject->sendPermissionListTo(player, "BAN");
 		break;
 	case 128:
-		structureObject->sendDestroyConfirmTo(player);
+		player->executeObjectControllerAction(0x18FC1726, structureObject->getObjectID(), ""); //destroyStructure command
 		break;
 	case 129:
 		structureObject->sendManageMaintenanceTo(player);

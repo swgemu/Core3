@@ -67,7 +67,7 @@ class SuiListBox extends SuiBox {
 	public static final int HANDLETWOBUTTON = 2;
 	public static final int HANDLETHREEBUTTON = 3;
 	
-	public SuiListBox(PlayerCreature player, unsigned int windowType, unsigned int listBoxType = 0) {
+	public SuiListBox(PlayerCreature player, unsigned int windowType = 0, unsigned int listBoxType = 0) {
 		super(player, windowType, SuiBox.LISTBOX);
 		
 		type = listBoxType;

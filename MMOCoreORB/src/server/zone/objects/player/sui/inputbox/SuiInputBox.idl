@@ -60,7 +60,7 @@ class SuiInputBox extends SuiBox {
 	public final static int DEFAULT = 0;
 	public final static int FILTER = 1;
 
-	public SuiInputBox(PlayerCreature player, unsigned int windowType, int inputtype = 0) {
+	public SuiInputBox(PlayerCreature player, unsigned int windowType = 0, int inputtype = 0) {
 		super(player, windowType, SuiBox.INPUTBOX);
 		
 		maxInputSize = 25;

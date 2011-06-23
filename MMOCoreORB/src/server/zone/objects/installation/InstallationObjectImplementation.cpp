@@ -100,7 +100,7 @@ int InstallationObjectImplementation::handleObjectMenuSelect(PlayerCreature* pla
 		break;
 
 	case 128:
-		sendDestroyConfirmTo(player);
+		player->executeObjectControllerAction(0x18FC1726, getObjectID(), ""); //destroyStructure command
 		break;
 
 	case 50:

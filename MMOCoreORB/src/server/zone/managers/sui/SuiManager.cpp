@@ -1060,7 +1060,7 @@ void SuiManager::handleStructureDestroyConfirm(PlayerCreature* player, SuiBox* s
 	StructureObject* structureObject = (StructureObject*) usingObject.get();
 
 	Locker _lock(structureObject, player);
-	structureObject->sendDestroyCodeTo(player);
+	//structureObject->sendDestroyCodeTo(player);
 }
 
 void SuiManager::handleStructureDestroyCode(PlayerCreature* player, SuiBox* suiBox, uint32 cancel, Vector<UnicodeString>* args) {
@@ -1091,12 +1091,14 @@ void SuiManager::handleStructureDestroyCode(PlayerCreature* player, SuiBox* suiB
 
 	Locker _lock(structureObject, player);
 
+	/*
 	if (structureObject->getDestroyCode() == destroyCode) {
 		structureManager->redeedStructure(player, structureObject);
 	} else {
 		player->sendSystemMessage("@player_structure:incorrect_destroy_code"); //You have entered an incorrect code. You will have to issue the /destroyStructure again if you wish to continue.
 		return;
 	}
+	*/
 }
 
 void SuiManager::handleCityEnableZoning(PlayerCreature* player, SuiBox* suiBox, uint32 cancel, Vector<UnicodeString>* args) {

@@ -46,11 +46,8 @@ which carries forward this exception.
 #define DESTROYSTRUCTURECOMMAND_H_
 
 #include "server/zone/objects/scene/SceneObject.h"
-#include "../../structure/StructureObject.h"
-#include "../../building/BuildingObject.h"
-#include "../../cell/CellObject.h"
-#include "server/zone/managers/planet/PlanetManager.h"
-#include "server/zone/managers/structure/StructureManager.h"
+#include "server/zone/objects/structure/StructureObject.h"
+#include "server/zone/objects/player/sessions/DestroyStructureSession.h"
 
 class DestroystructureCommand : public QueueCommand {
 public:
@@ -67,25 +64,17 @@ public:
 		if (!checkInvalidPostures(creature))
 			return INVALIDPOSTURE;
 
-		if (!creature->isPlayerCreature())
-			return INVALIDPARAMETERS;
+		System::out << target << endl;
 
-		ManagedReference<PlayerCreature*> player = (PlayerCreature*) creature;
+		ManagedReference<SceneObject*> obj = creature->getZoneServer()->getObject(target);
 
-		ManagedReference<PlayerManager*> playerManager = server->getPlayerManager();
+		if (obj == NULL || !obj->isStructureObject())
+			return INVALIDTARGET;
 
-		ManagedReference<SceneObject*> obj = playerManager->getInRangeStructureWithAdminRights(player);
+		StructureObject* structure = (StructureObject*) obj.get();
 
-		if (obj == NULL || !obj->isStructureObject()) {
-			player->sendSystemMessage("@player_structure:no_building"); //You must be in a building, be near an installation, or have one targeted to do that.
-			return INVALIDPARAMETERS;
-		}
-
-		Locker _locker(obj);
-
-		StructureObject* structureObject = (StructureObject*) obj.get();
-
-		structureObject->sendDestroyConfirmTo(player);
+		ManagedReference<DestroyStructureSession*> session = new DestroyStructureSession(creature, structure);
+		session->initializeSession();
 
 		return SUCCESS;
 	}

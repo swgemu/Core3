@@ -66,7 +66,7 @@ public:
 
 	static const int HANDLETHREEBUTTON = 3;
 
-	SuiListBox(PlayerCreature* player, unsigned int windowType, unsigned int listBoxType = 0);
+	SuiListBox(PlayerCreature* player, unsigned int windowType = 0, unsigned int listBoxType = 0);
 
 	void init();
 
@@ -142,7 +142,7 @@ public:
 
 	static const int HANDLETHREEBUTTON = 3;
 
-	SuiListBoxImplementation(PlayerCreature* player, unsigned int windowType, unsigned int listBoxType = 0);
+	SuiListBoxImplementation(PlayerCreature* player, unsigned int windowType = 0, unsigned int listBoxType = 0);
 
 	SuiListBoxImplementation(DummyConstructorParameter* param);
 
