@@ -67,43 +67,13 @@ class ObjectManager;
 
 using namespace server::zone::managers::object;
 
-namespace server {
-namespace zone {
-namespace managers {
-namespace loot {
-namespace lootgroup {
-
-class LootGroupObject;
-
-} // namespace lootgroup
-} // namespace loot
-} // namespace managers
-} // namespace zone
-} // namespace server
-
-using namespace server::zone::managers::loot::lootgroup;
-
-namespace server {
-namespace zone {
-namespace managers {
-namespace loot {
-namespace lootgroup {
-
-class LootObject;
-
-} // namespace lootgroup
-} // namespace loot
-} // namespace managers
-} // namespace zone
-} // namespace server
-
-using namespace server::zone::managers::loot::lootgroup;
+#include "server/zone/managers/loot/LootGroupMap.h"
 
 #include "system/util/VectorMap.h"
 
-#include "engine/lua/Lua.h"
-
 #include "engine/core/ManagedService.h"
+
+#include "engine/lua/Lua.h"
 
 namespace server {
 namespace zone {
@@ -151,8 +121,7 @@ class LootManagerImplementation : public ManagedServiceImplementation, public Lo
 
 	Reference<Lua* > lua;
 
-protected:
-	VectorMap<String, ManagedReference<LootGroupObject* > > lootGroups;
+	LootGroupMap lootGroupMap;
 
 public:
 	LootManagerImplementation(CraftingManager* craftman, ObjectManager* objMan);

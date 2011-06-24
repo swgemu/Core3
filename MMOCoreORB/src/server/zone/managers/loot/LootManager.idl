@@ -45,14 +45,14 @@ which carries forward this exception.
 package server.zone.managers.loot;
 
 import system.util.VectorMap;
-import engine.lua.Lua;
 import engine.core.ManagedService;
 import server.zone.objects.scene.SceneObject;
 import server.zone.objects.creature.CreatureObject;
 import server.zone.managers.crafting.CraftingManager;
 import server.zone.managers.object.ObjectManager;
-import server.zone.managers.loot.lootgroup.LootGroupObject;
-import server.zone.managers.loot.lootgroup.LootObject;
+import engine.lua.Lua;
+
+include server.zone.managers.loot.LootGroupMap;
 
 class LootManager extends ManagedService implements Logger {
 	private transient CraftingManager craftingManager;
@@ -60,13 +60,10 @@ class LootManager extends ManagedService implements Logger {
 	private transient Lua lua;
 	
 	@dereferenced
-	protected VectorMap<string, LootGroupObject> lootGroups;
-	
+	private transient LootGroupMap lootGroupMap;
+
 	public LootManager(CraftingManager craftman, ObjectManager objMan) {
 		
-		lootGroups.setNullValue(null);
-		lootGroups.setNoDuplicateInsertPlan();
-
 		craftingManager = craftman;
 		objectManager = objMan;
 		
@@ -81,7 +78,7 @@ class LootManager extends ManagedService implements Logger {
 	private native boolean loadConfigFile();
 	private native boolean loadConfigData();
 	private native void loadDefaultConfig();
-	
+
 	public native void createLoot(SceneObject container, CreatureObject creature);
 	
 	public native void createLoot(SceneObject container, final string lootGroup);

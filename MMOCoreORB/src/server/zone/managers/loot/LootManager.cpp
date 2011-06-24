@@ -12,10 +12,6 @@
 
 #include "server/zone/managers/object/ObjectManager.h"
 
-#include "server/zone/managers/loot/lootgroup/LootGroupObject.h"
-
-#include "server/zone/managers/loot/lootgroup/LootObject.h"
-
 /*
  *	LootManagerStub
  */
@@ -182,11 +178,6 @@ bool LootManagerImplementation::readObjectMember(ObjectInputStream* stream, cons
 	if (ManagedServiceImplementation::readObjectMember(stream, _name))
 		return true;
 
-	if (_name == "lootGroups") {
-		TypeInfo<VectorMap<String, ManagedReference<LootGroupObject* > > >::parseFromBinaryStream(&lootGroups, stream);
-		return true;
-	}
-
 
 	return false;
 }
@@ -202,24 +193,12 @@ int LootManagerImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	String _name;
 	int _offset;
 	uint16 _totalSize;
-	_name = "lootGroups";
-	_name.toBinaryStream(stream);
-	_offset = stream->getOffset();
-	stream->writeShort(0);
-	TypeInfo<VectorMap<String, ManagedReference<LootGroupObject* > > >::toBinaryStream(&lootGroups, stream);
-	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
-	stream->writeShort(_offset, _totalSize);
 
-
-	return 1 + ManagedServiceImplementation::writeObjectMembers(stream);
+	return 0 + ManagedServiceImplementation::writeObjectMembers(stream);
 }
 
 LootManagerImplementation::LootManagerImplementation(CraftingManager* craftman, ObjectManager* objMan) {
 	_initializeImplementation();
-	// server/zone/managers/loot/LootManager.idl():  		lootGroups.setNullValue(null);
-	(&lootGroups)->setNullValue(NULL);
-	// server/zone/managers/loot/LootManager.idl():  		lootGroups.setNoDuplicateInsertPlan();
-	(&lootGroups)->setNoDuplicateInsertPlan();
 	// server/zone/managers/loot/LootManager.idl():  		craftingManager = craftman;
 	craftingManager = craftman;
 	// server/zone/managers/loot/LootManager.idl():  		objectManager = objMan;

@@ -12,13 +12,12 @@
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/managers/crafting/CraftingManager.h"
 #include "server/zone/managers/templates/TemplateManager.h"
-#include "server/zone/managers/loot/lootgroup/LootGroupObject.h"
-#include "server/zone/managers/loot/lootgroup/LootObject.h"
 
 
 void LootManagerImplementation::initialize() {
-	lua = new Lua();
-	lua->init();
+
+	lootGroupMap.setNullValue(NULL);
+	lootGroupMap.setNoDuplicateInsertPlan();
 
 	info("loading configuration");
 	if(!loadConfigData()) {
@@ -27,6 +26,8 @@ void LootManagerImplementation::initialize() {
 
 		info("***** ERROR in configuration, using default values");
 	}
+
+	lootGroupMap.initialize();
 
 	info("initialized");
 }

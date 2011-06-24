@@ -193,8 +193,9 @@ core3_IDLS =	server/zone/managers/director/ScreenPlayObserver.cpp \
 				server/zone/objects/tangible/weapon/WeaponObject.cpp \
 				server/zone/managers/crafting/CraftingManager.cpp \
 				server/zone/managers/loot/LootManager.cpp \
-				server/zone/managers/loot/lootgroup/LootGroupObject.cpp \
-				server/zone/managers/loot/lootgroup/LootObject.cpp \
+				server/zone/managers/loot/LootGroupMap.cpp \
+				server/zone/managers/loot/lootgroup/LootGroup.cpp \
+				server/zone/managers/loot/lootitems/LootItems.cpp \
 				server/zone/managers/crafting/schematicmap/SchematicMap.cpp \
 				server/zone/managers/structure/StructureManager.cpp \
 				server/zone/managers/weather/WeatherManager.cpp \
@@ -307,7 +308,6 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/managers/crafting/CraftingManagerImplementation.cpp \
 		server/zone/managers/director/DirectorManager.cpp \
 		server/zone/managers/loot/LootManagerImplementation.cpp \
-		server/zone/managers/loot/lootgroup/LootGroupObjectImplementation.cpp \
 		server/zone/managers/faction/FactionManager.cpp \
 		server/zone/managers/faction/FactionMap.cpp \
 		server/zone/managers/components/ComponentManager.cpp \
