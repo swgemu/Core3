@@ -69,16 +69,6 @@ public:
 		if (!checkInvalidPostures(creature))
 			return INVALIDPOSTURE;
 
-		if (creature->isPlayerCreature()) {
-			PlayerCreature* player = (PlayerCreature*) creature;
-			ZoneServer* zoneServer = server->getZoneServer();
-			ManagedReference<Zone*> zone = player->getZone();
-			ManagedReference<SceneObject*> inventory = player->getSlottedObject("inventory");
-
-			ManagedReference<LootManager*> lootManager = zoneServer->getLootManager();
-			lootManager->testLoot(player, inventory);
-		}
-
 		return SUCCESS;
 	}
 

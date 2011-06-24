@@ -4,13 +4,13 @@
 
 #include "LootManager.h"
 
-#include "server/zone/Zone.h"
-
 #include "server/zone/objects/scene/SceneObject.h"
 
-#include "server/zone/objects/player/PlayerCreature.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 
 #include "server/zone/managers/crafting/CraftingManager.h"
+
+#include "server/zone/managers/object/ObjectManager.h"
 
 #include "server/zone/managers/loot/lootgroup/LootGroupObject.h"
 
@@ -20,15 +20,15 @@
  *	LootManagerStub
  */
 
-enum {RPC_INITIALIZE__ = 6,RPC_CONTAINS__INT_,RPC_CREATELOOT__PLAYERCREATURE_SCENEOBJECT_INT_INT_INT_,RPC_TESTLOOT__PLAYERCREATURE_SCENEOBJECT_};
+enum {RPC_INITIALIZE__ = 6,RPC_CREATELOOT__SCENEOBJECT_CREATUREOBJECT_,RPC_CREATELOOT__SCENEOBJECT_STRING_};
 
-LootManager::LootManager(CraftingManager* craftman) : ZoneManager(DummyConstructorParameter::instance()) {
-	LootManagerImplementation* _implementation = new LootManagerImplementation(craftman);
+LootManager::LootManager(CraftingManager* craftman, ObjectManager* objMan) : ManagedService(DummyConstructorParameter::instance()) {
+	LootManagerImplementation* _implementation = new LootManagerImplementation(craftman, objMan);
 	_impl = _implementation;
 	_impl->_setStub(this);
 }
 
-LootManager::LootManager(DummyConstructorParameter* param) : ZoneManager(param) {
+LootManager::LootManager(DummyConstructorParameter* param) : ManagedService(param) {
 }
 
 LootManager::~LootManager() {
@@ -48,60 +48,34 @@ void LootManager::initialize() {
 		_implementation->initialize();
 }
 
-bool LootManager::contains(unsigned int lootGroup) {
+void LootManager::createLoot(SceneObject* container, CreatureObject* creature) {
 	LootManagerImplementation* _implementation = (LootManagerImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_CONTAINS__INT_);
-		method.addUnsignedIntParameter(lootGroup);
-
-		return method.executeWithBooleanReturn();
-	} else
-		return _implementation->contains(lootGroup);
-}
-
-void LootManager::createLoot(PlayerCreature* receiver, SceneObject* container, int level, unsigned int lootGroup, int objectCount) {
-	LootManagerImplementation* _implementation = (LootManagerImplementation*) _getImplementation();
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, RPC_CREATELOOT__PLAYERCREATURE_SCENEOBJECT_INT_INT_INT_);
-		method.addObjectParameter(receiver);
+		DistributedMethod method(this, RPC_CREATELOOT__SCENEOBJECT_CREATUREOBJECT_);
 		method.addObjectParameter(container);
-		method.addSignedIntParameter(level);
-		method.addUnsignedIntParameter(lootGroup);
-		method.addSignedIntParameter(objectCount);
+		method.addObjectParameter(creature);
 
 		method.executeWithVoidReturn();
 	} else
-		_implementation->createLoot(receiver, container, level, lootGroup, objectCount);
+		_implementation->createLoot(container, creature);
 }
 
-void LootManager::createLoot(PlayerCreature* receiver, SceneObject* container, int level, Vector<unsigned int>* lootGroup) {
-	LootManagerImplementation* _implementation = (LootManagerImplementation*) _getImplementation();
-	if (_implementation == NULL) {
-		throw ObjectNotLocalException(this);
-
-	} else
-		_implementation->createLoot(receiver, container, level, lootGroup);
-}
-
-void LootManager::testLoot(PlayerCreature* receiver, SceneObject* container) {
+void LootManager::createLoot(SceneObject* container, const String& lootGroup) {
 	LootManagerImplementation* _implementation = (LootManagerImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_TESTLOOT__PLAYERCREATURE_SCENEOBJECT_);
-		method.addObjectParameter(receiver);
+		DistributedMethod method(this, RPC_CREATELOOT__SCENEOBJECT_STRING_);
 		method.addObjectParameter(container);
+		method.addAsciiParameter(lootGroup);
 
 		method.executeWithVoidReturn();
 	} else
-		_implementation->testLoot(receiver, container);
+		_implementation->createLoot(container, lootGroup);
 }
 
 DistributedObjectServant* LootManager::_getImplementation() {
@@ -118,7 +92,7 @@ void LootManager::_setImplementation(DistributedObjectServant* servant) {
  *	LootManagerImplementation
  */
 
-LootManagerImplementation::LootManagerImplementation(DummyConstructorParameter* param) : ZoneManagerImplementation(param) {
+LootManagerImplementation::LootManagerImplementation(DummyConstructorParameter* param) : ManagedServiceImplementation(param) {
 	_initializeImplementation();
 }
 
@@ -139,7 +113,7 @@ void LootManagerImplementation::_initializeImplementation() {
 
 void LootManagerImplementation::_setStub(DistributedObjectStub* stub) {
 	_this = (LootManager*) stub;
-	ZoneManagerImplementation::_setStub(stub);
+	ManagedServiceImplementation::_setStub(stub);
 }
 
 DistributedObjectStub* LootManagerImplementation::_getStub() {
@@ -179,7 +153,7 @@ void LootManagerImplementation::runlock(bool doLock) {
 }
 
 void LootManagerImplementation::_serializationHelperMethod() {
-	ZoneManagerImplementation::_serializationHelperMethod();
+	ManagedServiceImplementation::_serializationHelperMethod();
 
 	_setClassName("LootManager");
 
@@ -205,11 +179,11 @@ void LootManagerImplementation::readObject(ObjectInputStream* stream) {
 }
 
 bool LootManagerImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
-	if (ZoneManagerImplementation::readObjectMember(stream, _name))
+	if (ManagedServiceImplementation::readObjectMember(stream, _name))
 		return true;
 
 	if (_name == "lootGroups") {
-		TypeInfo<VectorMap<unsigned int, ManagedReference<LootGroupObject* > > >::parseFromBinaryStream(&lootGroups, stream);
+		TypeInfo<VectorMap<String, ManagedReference<LootGroupObject* > > >::parseFromBinaryStream(&lootGroups, stream);
 		return true;
 	}
 
@@ -232,15 +206,15 @@ int LootManagerImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
-	TypeInfo<VectorMap<unsigned int, ManagedReference<LootGroupObject* > > >::toBinaryStream(&lootGroups, stream);
+	TypeInfo<VectorMap<String, ManagedReference<LootGroupObject* > > >::toBinaryStream(&lootGroups, stream);
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
 
-	return 1 + ZoneManagerImplementation::writeObjectMembers(stream);
+	return 1 + ManagedServiceImplementation::writeObjectMembers(stream);
 }
 
-LootManagerImplementation::LootManagerImplementation(CraftingManager* craftman) : ZoneManagerImplementation("LootManager") {
+LootManagerImplementation::LootManagerImplementation(CraftingManager* craftman, ObjectManager* objMan) {
 	_initializeImplementation();
 	// server/zone/managers/loot/LootManager.idl():  		lootGroups.setNullValue(null);
 	(&lootGroups)->setNullValue(NULL);
@@ -248,18 +222,21 @@ LootManagerImplementation::LootManagerImplementation(CraftingManager* craftman) 
 	(&lootGroups)->setNoDuplicateInsertPlan();
 	// server/zone/managers/loot/LootManager.idl():  		craftingManager = craftman;
 	craftingManager = craftman;
-}
-
-bool LootManagerImplementation::contains(unsigned int lootGroup) {
-	// server/zone/managers/loot/LootManager.idl():  		return (lootGroups.contains(lootGroup));
-	return ((&lootGroups)->contains(lootGroup));
+	// server/zone/managers/loot/LootManager.idl():  		objectManager = objMan;
+	objectManager = objMan;
+	// server/zone/managers/loot/LootManager.idl():  		Logger.setLoggingName("LootManager");
+	Logger::setLoggingName("LootManager");
+	// server/zone/managers/loot/LootManager.idl():  		Logger.setLogging(true);
+	Logger::setLogging(true);
+	// server/zone/managers/loot/LootManager.idl():  		Logger.setGlobalLogging(true);
+	Logger::setGlobalLogging(true);
 }
 
 /*
  *	LootManagerAdapter
  */
 
-LootManagerAdapter::LootManagerAdapter(LootManagerImplementation* obj) : ZoneManagerAdapter(obj) {
+LootManagerAdapter::LootManagerAdapter(LootManagerImplementation* obj) : ManagedServiceAdapter(obj) {
 }
 
 Packet* LootManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
@@ -269,14 +246,11 @@ Packet* LootManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 	case RPC_INITIALIZE__:
 		initialize();
 		break;
-	case RPC_CONTAINS__INT_:
-		resp->insertBoolean(contains(inv->getUnsignedIntParameter()));
+	case RPC_CREATELOOT__SCENEOBJECT_CREATUREOBJECT_:
+		createLoot((SceneObject*) inv->getObjectParameter(), (CreatureObject*) inv->getObjectParameter());
 		break;
-	case RPC_CREATELOOT__PLAYERCREATURE_SCENEOBJECT_INT_INT_INT_:
-		createLoot((PlayerCreature*) inv->getObjectParameter(), (SceneObject*) inv->getObjectParameter(), inv->getSignedIntParameter(), inv->getUnsignedIntParameter(), inv->getSignedIntParameter());
-		break;
-	case RPC_TESTLOOT__PLAYERCREATURE_SCENEOBJECT_:
-		testLoot((PlayerCreature*) inv->getObjectParameter(), (SceneObject*) inv->getObjectParameter());
+	case RPC_CREATELOOT__SCENEOBJECT_STRING_:
+		createLoot((SceneObject*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_createLoot__SceneObject_String_));
 		break;
 	default:
 		return NULL;
@@ -289,16 +263,12 @@ void LootManagerAdapter::initialize() {
 	((LootManagerImplementation*) impl)->initialize();
 }
 
-bool LootManagerAdapter::contains(unsigned int lootGroup) {
-	return ((LootManagerImplementation*) impl)->contains(lootGroup);
+void LootManagerAdapter::createLoot(SceneObject* container, CreatureObject* creature) {
+	((LootManagerImplementation*) impl)->createLoot(container, creature);
 }
 
-void LootManagerAdapter::createLoot(PlayerCreature* receiver, SceneObject* container, int level, unsigned int lootGroup, int objectCount) {
-	((LootManagerImplementation*) impl)->createLoot(receiver, container, level, lootGroup, objectCount);
-}
-
-void LootManagerAdapter::testLoot(PlayerCreature* receiver, SceneObject* container) {
-	((LootManagerImplementation*) impl)->testLoot(receiver, container);
+void LootManagerAdapter::createLoot(SceneObject* container, const String& lootGroup) {
+	((LootManagerImplementation*) impl)->createLoot(container, lootGroup);
 }
 
 /*

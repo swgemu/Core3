@@ -251,9 +251,8 @@ void ZoneServerImplementation::startManagers() {
 	forageManager = new ForageManager(_this);
 	forageManager->deploy();
 
-	lootManager = new LootManager(craftingManager);
+	lootManager = new LootManager(craftingManager, objectManager);
 	lootManager->deploy("LootManager");
-	lootManager->setZoneProcessor(processor);
 	lootManager->initialize();
 
 	guildManager = new GuildManager(_this, processor);

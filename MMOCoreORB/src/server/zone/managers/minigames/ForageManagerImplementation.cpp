@@ -182,7 +182,7 @@ void ForageManagerImplementation::forageGiveItems(PlayerCreature* player, bool s
 			} else
 				lootGroup = 9; //Rare forage items.
 
-			lootManager->createLoot(player, inventory, level, lootGroup, charges);
+			lootManager->createLoot(inventory, "forage");
 		}
 
 	} else { //Medical Forage
@@ -206,7 +206,7 @@ void ForageManagerImplementation::forageGiveItems(PlayerCreature* player, bool s
 		else //Exceptional Components
 			lootGroup = 9; // 7 when items implemented
 
-		lootManager->createLoot(player, inventory, level, lootGroup, charges);
+		lootManager->createLoot(inventory, "medicalForage");
 	}
 
 }

@@ -662,15 +662,7 @@ void SlicingSessionImplementation::handleContainerSlice() {
 
 		Locker clocker(container, player);
 
-		lootManager->createLoot(player, container, 1, 0, 1);
-		lootManager->createLoot(player, container, 1, 1, 1);
-
-		int roll = System::random(99) + 1;
-		if (roll == 1) {
-			roll = System::random(99) + 1;
-			if (roll <= 10)
-				lootManager->createLoot(player, container, 1, 97, 1); // Lets make it interesting :P
-		}
+		lootManager->createLoot(container, "lootedContainer");
 
 		inventory->addObject(container, -1);
 		container->sendTo(player, true);
@@ -684,9 +676,7 @@ void SlicingSessionImplementation::handleContainerSlice() {
 		if (container == NULL)
 			return;
 
-		lootManager->createLoot(player, container, 1, 0, 1);
-		lootManager->createLoot(player, container, 1, 1, 1);
-		lootManager->createLoot(player, container, 1, 15, 1);
+		lootManager->createLoot(container, "staticContainer");
 
 		container->setSliced(true);
 		container->setLockedStatus(false);

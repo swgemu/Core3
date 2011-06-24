@@ -44,60 +44,46 @@ which carries forward this exception.
 
 package server.zone.managers.loot;
 
-import system.lang.ref.Reference;
 import system.util.VectorMap;
 import engine.lua.Lua;
-
-import server.zone.Zone;
+import engine.core.ManagedService;
 import server.zone.objects.scene.SceneObject;
-import server.zone.objects.player.PlayerCreature;
-import server.zone.managers.ZoneManager;
+import server.zone.objects.creature.CreatureObject;
 import server.zone.managers.crafting.CraftingManager;
+import server.zone.managers.object.ObjectManager;
 import server.zone.managers.loot.lootgroup.LootGroupObject;
 import server.zone.managers.loot.lootgroup.LootObject;
 
-class LootManager extends ZoneManager {
+class LootManager extends ManagedService implements Logger {
 	private transient CraftingManager craftingManager;
-	
-	public static final unsigned int FORAGEGENERAL = 4;
-	public static final unsigned int MEDICALFORAGEBASIC = 5;
-	public static final unsigned int MEDICALFORAGEADVANCED = 6;
-	public static final unsigned int MEDICALFORAGEEXCEPTIONAL = 7;
-	public static final unsigned int FORAGEBAIT = 8;
-	public static final unsigned int FORAGERARE = 9;
-	public static final unsigned int FISHING = 13;
-	public static final unsigned int FISHINGRARE = 14;
+	private transient ObjectManager objectManager;
+	private transient Lua lua;
 	
 	@dereferenced
-	protected VectorMap<unsigned int, LootGroupObject> lootGroups;
+	protected VectorMap<string, LootGroupObject> lootGroups;
 	
-	public LootManager(CraftingManager craftman) {
-		super("LootManager");
+	public LootManager(CraftingManager craftman, ObjectManager objMan) {
 		
 		lootGroups.setNullValue(null);
 		lootGroups.setNoDuplicateInsertPlan();
 
 		craftingManager = craftman;
+		objectManager = objMan;
+		
+		Logger.setLoggingName("LootManager");
+		
+		Logger.setLogging(true);
+		Logger.setGlobalLogging(true);
 	}
 	
 	public native void initialize();
 	
-	@local
-	protected native LootGroupObject createLootGroup(unsigned int lootGroup);
+	private native boolean loadConfigFile();
+	private native boolean loadConfigData();
+	private native void loadDefaultConfig();
 	
-	public boolean contains(unsigned int lootGroup) {
-		return (lootGroups.contains(lootGroup));
-	}
+	public native void createLoot(SceneObject container, CreatureObject creature);
 	
-	public native void createLoot(PlayerCreature receiver, SceneObject container, int level, unsigned int lootGroup, int objectCount = 0);
-	
-	@local
-	public native void createLoot(PlayerCreature receiver, SceneObject container, int level, Vector<unsigned int> lootGroup);
-	
-	protected native boolean attachLoot(PlayerCreature receiver, LootObject loot, SceneObject container, int objectCount = 0);
-	
-	/*
-	 * @TODO: Remove this
-	 */
-	public native void testLoot(PlayerCreature receiver, SceneObject container);
+	public native void createLoot(SceneObject container, final string lootGroup);
+
 }

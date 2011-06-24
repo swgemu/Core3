@@ -13,16 +13,6 @@
 
 namespace server {
 namespace zone {
-
-class Zone;
-
-} // namespace zone
-} // namespace server
-
-using namespace server::zone;
-
-namespace server {
-namespace zone {
 namespace objects {
 namespace scene {
 
@@ -38,16 +28,16 @@ using namespace server::zone::objects::scene;
 namespace server {
 namespace zone {
 namespace objects {
-namespace player {
+namespace creature {
 
-class PlayerCreature;
+class CreatureObject;
 
-} // namespace player
+} // namespace creature
 } // namespace objects
 } // namespace zone
 } // namespace server
 
-using namespace server::zone::objects::player;
+using namespace server::zone::objects::creature;
 
 namespace server {
 namespace zone {
@@ -62,6 +52,20 @@ class CraftingManager;
 } // namespace server
 
 using namespace server::zone::managers::crafting;
+
+namespace server {
+namespace zone {
+namespace managers {
+namespace object {
+
+class ObjectManager;
+
+} // namespace object
+} // namespace managers
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::managers::object;
 
 namespace server {
 namespace zone {
@@ -95,48 +99,26 @@ class LootObject;
 
 using namespace server::zone::managers::loot::lootgroup;
 
-#include "system/lang/ref/Reference.h"
-
 #include "system/util/VectorMap.h"
 
 #include "engine/lua/Lua.h"
 
-#include "server/zone/managers/ZoneManager.h"
+#include "engine/core/ManagedService.h"
 
 namespace server {
 namespace zone {
 namespace managers {
 namespace loot {
 
-class LootManager : public ZoneManager {
+class LootManager : public ManagedService {
 public:
-	unsigned static const int FORAGEGENERAL = 4;
-
-	unsigned static const int MEDICALFORAGEBASIC = 5;
-
-	unsigned static const int MEDICALFORAGEADVANCED = 6;
-
-	unsigned static const int MEDICALFORAGEEXCEPTIONAL = 7;
-
-	unsigned static const int FORAGEBAIT = 8;
-
-	unsigned static const int FORAGERARE = 9;
-
-	unsigned static const int FISHING = 13;
-
-	unsigned static const int FISHINGRARE = 14;
-
-	LootManager(CraftingManager* craftman);
+	LootManager(CraftingManager* craftman, ObjectManager* objMan);
 
 	void initialize();
 
-	bool contains(unsigned int lootGroup);
+	void createLoot(SceneObject* container, CreatureObject* creature);
 
-	void createLoot(PlayerCreature* receiver, SceneObject* container, int level, unsigned int lootGroup, int objectCount = 0);
-
-	void createLoot(PlayerCreature* receiver, SceneObject* container, int level, Vector<unsigned int>* lootGroup);
-
-	void testLoot(PlayerCreature* receiver, SceneObject* container);
+	void createLoot(SceneObject* container, const String& lootGroup);
 
 	DistributedObjectServant* _getImplementation();
 
@@ -162,51 +144,34 @@ namespace zone {
 namespace managers {
 namespace loot {
 
-class LootManagerImplementation : public ZoneManagerImplementation {
+class LootManagerImplementation : public ManagedServiceImplementation, public Logger {
 	ManagedReference<CraftingManager* > craftingManager;
 
-public:
-	unsigned static const int FORAGEGENERAL = 4;
+	Reference<ObjectManager* > objectManager;
 
-	unsigned static const int MEDICALFORAGEBASIC = 5;
-
-	unsigned static const int MEDICALFORAGEADVANCED = 6;
-
-	unsigned static const int MEDICALFORAGEEXCEPTIONAL = 7;
-
-	unsigned static const int FORAGEBAIT = 8;
-
-	unsigned static const int FORAGERARE = 9;
-
-	unsigned static const int FISHING = 13;
-
-	unsigned static const int FISHINGRARE = 14;
+	Reference<Lua* > lua;
 
 protected:
-	VectorMap<unsigned int, ManagedReference<LootGroupObject* > > lootGroups;
+	VectorMap<String, ManagedReference<LootGroupObject* > > lootGroups;
 
 public:
-	LootManagerImplementation(CraftingManager* craftman);
+	LootManagerImplementation(CraftingManager* craftman, ObjectManager* objMan);
 
 	LootManagerImplementation(DummyConstructorParameter* param);
 
 	void initialize();
 
-protected:
-	LootGroupObject* createLootGroup(unsigned int lootGroup);
+private:
+	bool loadConfigFile();
+
+	bool loadConfigData();
+
+	void loadDefaultConfig();
 
 public:
-	bool contains(unsigned int lootGroup);
+	void createLoot(SceneObject* container, CreatureObject* creature);
 
-	void createLoot(PlayerCreature* receiver, SceneObject* container, int level, unsigned int lootGroup, int objectCount = 0);
-
-	void createLoot(PlayerCreature* receiver, SceneObject* container, int level, Vector<unsigned int>* lootGroup);
-
-protected:
-	bool attachLoot(PlayerCreature* receiver, LootObject* loot, SceneObject* container, int objectCount = 0);
-
-public:
-	void testLoot(PlayerCreature* receiver, SceneObject* container);
+	void createLoot(SceneObject* container, const String& lootGroup);
 
 	LootManager* _this;
 
@@ -245,7 +210,7 @@ protected:
 	friend class LootManager;
 };
 
-class LootManagerAdapter : public ZoneManagerAdapter {
+class LootManagerAdapter : public ManagedServiceAdapter {
 public:
 	LootManagerAdapter(LootManagerImplementation* impl);
 
@@ -253,12 +218,12 @@ public:
 
 	void initialize();
 
-	bool contains(unsigned int lootGroup);
+	void createLoot(SceneObject* container, CreatureObject* creature);
 
-	void createLoot(PlayerCreature* receiver, SceneObject* container, int level, unsigned int lootGroup, int objectCount);
+	void createLoot(SceneObject* container, const String& lootGroup);
 
-	void testLoot(PlayerCreature* receiver, SceneObject* container);
-
+protected:
+	String _param1_createLoot__SceneObject_String_;
 };
 
 class LootManagerHelper : public DistributedObjectClassHelper, public Singleton<LootManagerHelper> {
