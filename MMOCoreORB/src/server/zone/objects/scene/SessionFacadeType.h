@@ -17,6 +17,7 @@ public:
 	const static int CREATEVENDOR = 5;
 	const static int PLACESTRUCTURE = 6;
 	const static int DESTROYSTRUCTURE = 7;
+	const static int FIND = 8;
 };
 
 #endif /* SESSIONFACADETYPES_H_ */

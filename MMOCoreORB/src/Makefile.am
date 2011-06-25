@@ -138,6 +138,7 @@ core3_IDLS =	server/zone/managers/director/ScreenPlayObserver.cpp \
 				server/zone/objects/player/sessions/MigrateStatsSession.cpp \
 				server/zone/objects/player/sessions/ImageDesignSession.cpp \
 				server/zone/objects/player/sessions/SlicingSession.cpp \
+				server/zone/objects/player/sessions/FindSession.cpp \
 				server/zone/objects/player/sessions/vendor/CreateVendorSession.cpp \
 				server/zone/objects/player/sessions/PlaceStructureSession.cpp \
 				server/zone/objects/player/sessions/DestroyStructureSession.cpp \
@@ -413,7 +414,6 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/creature/buffs/SpiceBuffImplementation.cpp \
 		server/zone/objects/creature/buffs/PowerBoostBuffImplementation.cpp \
 		server/zone/objects/creature/buffs/BuffList.cpp \
-		server/zone/objects/creature/commands/sui/FindCommandSuiCallback.cpp \
 		server/zone/objects/creature/vendor/VendorCreatureImplementation.cpp \
 		server/zone/objects/creature/trainer/TrainerCreatureImplementation.cpp \
 		server/zone/objects/creature/informant/InformantCreatureImplementation.cpp \
@@ -449,6 +449,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/player/sessions/EntertainingSessionImplementation.cpp \
 		server/zone/objects/player/sessions/ImageDesignSessionImplementation.cpp \
 		server/zone/objects/player/sessions/SlicingSessionImplementation.cpp \
+		server/zone/objects/player/sessions/FindSessionImplementation.cpp \
 		server/zone/objects/player/sessions/vendor/CreateVendorSessionImplementation.cpp \
 		server/zone/objects/player/sessions/PlaceStructureSessionImplementation.cpp \
 		server/zone/objects/player/sessions/DestroyStructureSessionImplementation.cpp \

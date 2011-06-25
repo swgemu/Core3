@@ -49,19 +49,9 @@
 #include "server/chat/ChatManager.h"
 #include "server/zone/Zone.h"
 
-#include "server/zone/objects/waypoint/WaypointObject.h"
-#include "server/zone/objects/player/PlayerObject.h"
-#include "server/zone/managers/planet/MapLocationType.h"
-#include "server/zone/objects/player/sui/listbox/SuiListBox.h"
-#include "server/zone/objects/player/sui/SuiWindowType.h"
-#include "server/zone/objects/area/ActiveArea.h"
-#include "server/chat/StringIdChatParameter.h"
-#include "server/zone/managers/stringid/StringIdManager.h"
 #include "server/zone/objects/creature/commands/QueueCommand.h"
 
-#include "server/zone/objects/region/CityRegion.h"
-
-#include "server/zone/objects/creature/commands/sui/FindCommandSuiCallback.h"
+#include "server/zone/objects/player/sessions/FindSession.h"
 
 class FindCommand: public QueueCommand {
 
@@ -70,119 +60,6 @@ public:
 	FindCommand(const String& name, ZoneProcessServer* server) :
 		QueueCommand(name, server) {
 
-	}
-
-	void clearWaypoint(PlayerCreature* player) {
-		PlayerObject* pl = player->getPlayerObject();
-
-		WaypointList* waypointlist = pl->getWaypointList();
-		uint64 wpid = waypointlist->getWaypointBySpecialType(
-				WaypointObject::SPECIALTYPE_FIND);
-
-		if (wpid != 0) {
-			pl->removeWaypoint(wpid, true);
-
-		}
-
-	}
-
-	static int addWaypoint(PlayerCreature* player, float x, float y, const String& name) {
-		PlayerObject* ghost = player->getPlayerObject();
-
-		Zone* zone = player->getZone();
-		String planet = zone->getZoneName();
-		StringIdChatParameter msg;
-
-		ManagedReference<WaypointObject*> wpt =
-				(WaypointObject*) player->getZoneServer()->createObject(0xc456e788, 1);
-
-		wpt->setPlanetCRC(planet.hashCode());
-		wpt->setPosition(x, 0, y);
-		wpt->setCustomName(name);
-		wpt->setActive(true);
-		wpt->setSpecialTypeID(WaypointObject::SPECIALTYPE_FIND);
-		msg.setStringId("@base_player:prose_find_set"); // An active waypoint has be set to the nearest '%TO'.
-		msg.setTO(name);
-
-		ghost->addWaypoint(wpt, true, true);
-
-		player->sendSystemMessage(msg);
-
-		return SUCCESS;
-	}
-
-	static int findPlanetaryObject(PlayerCreature* player, String& maplocationtype) {
-		Zone* zone = player->getZone();
-		ManagedReference<SceneObject*> object = zone->getNearestPlanetaryObject(player, maplocationtype);
-
-		if (object == NULL) {
-			player->sendSystemMessage("@find_display:no_registered_locs"); // There currently are not registered map locations on this planet.
-			return GENERALERROR;
-		}
-
-		ManagedReference<CityRegion*> region = object->getCityRegion();
-		String regFullName = "";
-
-		if (region != NULL) {
-			regFullName = region->getRegionName();
-		}
-
-		String objFullName = "@map_loc_cat_n:" + maplocationtype;
-
-		StringIdManager* stringManager = StringIdManager::instance();
-
-		String regClientString = stringManager->getStringId(regFullName.hashCode());
-		String objClientString = stringManager->getStringId(objFullName.hashCode());
-
-		if (regClientString.isEmpty()) {
-			regClientString = object->getZone()->getZoneName();
-			regClientString[0] = toupper(regClientString[0]);
-		}
-
-		String wptName = regClientString + " (" + objClientString + ")"; // Region (BuildingType)
-
-		float objX, objY;
-		objX = object->getWorldPositionX();
-		objY = object->getWorldPositionY();
-
-		addWaypoint(player, objX, objY, wptName);
-
-		return SUCCESS;
-	}
-
-	void createOptions(PlayerCreature* player) {
-		ManagedReference<SuiListBox*> box = new SuiListBox(player, SuiWindowType::COMMAND_FIND, 2);
-		box->setCallback(new FindCommandSuiCallback(server->getZoneServer()));
-		box->setPromptTitle("@base_player:find_title"); // /Find Category Selector
-		box->setPromptText("@base_player:find_prompt"); // Select a category of planetary map locations to search for.
-		box->setCancelButton(true, "@cancel");
-		box->addMenuItem("@find_display:cantina");
-		box->addMenuItem("@find_display:capitol");
-		box->addMenuItem("@find_display:city");
-		box->addMenuItem("@find_display:cloningfacility");
-		box->addMenuItem("@find_display:guild_combat");
-		box->addMenuItem("@find_display:guild_commerce");
-		box->addMenuItem("@find_display:guild_theater");
-		box->addMenuItem("@find_display:guild_university");
-		box->addMenuItem("@find_display:salon");
-		box->addMenuItem("@find_display:hotel");
-		box->addMenuItem("@find_display:medicalcenter");
-		box->addMenuItem("@find_display:garage");
-		box->addMenuItem("@find_display:shuttleport");
-		box->addMenuItem("@find_display:starport");
-		box->addMenuItem("@find_display:vendor_junk");
-		box->addMenuItem("@find_display:terminal_bank");
-		box->addMenuItem("@find_display:terminal_bazaar");
-		box->addMenuItem("@find_display:terminal_mission");
-		box->addMenuItem("@find_display:trainer_brawler");
-		box->addMenuItem("@find_display:trainer_artisan");
-		box->addMenuItem("@find_display:trainer_scout");
-		box->addMenuItem("@find_display:trainer_marksman");
-		box->addMenuItem("@find_display:trainer_entertainer");
-		box->addMenuItem("@find_display:trainer_medic");
-
-		player->addSuiBox(box);
-		player->sendMessage(box->generateMessage());
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
@@ -202,35 +79,38 @@ public:
 			StringTokenizer args(arguments.toString());
 			String location;
 
+			ManagedReference<Facade*> facade = player->getActiveSession(SessionFacadeType::FIND);
+			ManagedReference<FindSession*> session = dynamic_cast<FindSession*>(facade.get());
+
+			if (session == NULL) {
+				session = new FindSession(player);
+			}
+
 			if (args.hasMoreTokens()) {
 				args.getStringToken(location);
 				location = location.toLowerCase();
 
 				if (location == "clear") {
-					clearWaypoint(player);
+					PlayerObject* po = player->getPlayerObject();
+
+					WaypointList* waypointlist = po->getWaypointList();
+					uint64 wpid = waypointlist->getWaypointBySpecialType(WaypointObject::SPECIALTYPE_FIND);
+
+					if (wpid != 0) {
+						po->removeWaypoint(wpid, true);
+					}
+
 					return SUCCESS;
 				}
 
-			} else {
-				if (!player->hasSuiBoxWindowType(SuiWindowType::COMMAND_FIND)) {
-					createOptions(player);
-					return SUCCESS;
-				}
-			}
+				String mapLocType = location;
 
-
-			String mapLocType = location;
-
-			if (!mapLocType.isEmpty()) {
-				findPlanetaryObject(player, mapLocType);
+				if (!mapLocType.isEmpty())
+					session->findPlanetaryObject(mapLocType);
 
 			} else {
-				StringIdChatParameter msg;
-				msg.setStringId("@base_player:prose_find_unknown_arg"); // /Find was unable to parse a category for '%TO'.
-				msg.setTO(location);
-
-				player->sendSystemMessage(msg);
-
+				session->initalizeFindMenu();
+				return SUCCESS;
 			}
 
 		} catch (Exception& e) {

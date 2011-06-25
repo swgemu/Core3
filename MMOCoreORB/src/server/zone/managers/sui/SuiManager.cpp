@@ -89,7 +89,7 @@ which carries forward this exception.
 #include "server/zone/objects/creature/commands/FindCommand.h"
 
 #include "server/zone/objects/creature/commands/sui/DestroyCommandSuiCallback.h"
-#include "server/zone/objects/creature/commands/sui/FindCommandSuiCallback.h"
+#include "server/zone/objects/player/sessions/sui/FindSessionSuiCallback.h"
 #include "server/zone/objects/creature/commands/sui/ListGuildsResponseSuiCallback.h"
 
 #include "server/zone/objects/player/sessions/sui/SlicingSessionSuiCallback.h"

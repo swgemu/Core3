@@ -173,7 +173,7 @@ public:
 
 	//Miscellaneous 1000+
 	static const uint16 OBJECT_NAME = 1000;
-	static const uint16 COMMAND_FIND = 1001;
+	static const uint16 FINDSESSION = 1001;
 	static const uint16 GARAGE_REPAIR = 1002;
 };
 
