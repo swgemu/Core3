@@ -417,6 +417,9 @@ void ObjectManager::loadStaticObjects() {
 int ObjectManager::commitUpdatePersistentObjectToDB(DistributedObject* object) {
 	++totalUpdatedObjects;
 
+	/*if (!((ManagedObject*)object)->isPersistent())
+		return 1;*/
+
 	try {
 		ManagedObject* managedObject = ((ManagedObject*)object);
 		ObjectOutputStream* objectData = new ObjectOutputStream(500);
@@ -1099,6 +1102,10 @@ void ObjectManager::updateModifiedObjectsToDatabase(bool startTask) {
 	Locker _locker(this);
 //#endif
 
+#ifdef WITH_STM
+	TransactionalMemoryManager::instance()->blockTransactions();
+#endif
+
 	objectUpdateInProcess = true;
 
 	databaseManager->updateLastUsedObjectID(nextObjectID);
@@ -1120,22 +1127,31 @@ void ObjectManager::updateModifiedObjectsToDatabase(bool startTask) {
 
 	Time start;
 
+//#ifndef WITH_STM
 	int numberOfThreads = deployUpdateThreads(&objectsToUpdate, &objectsToDelete, transaction);
+//#endif
 
 	info("copied objects into ram in " + String::valueOf(start.miliDifference()) + " ms", true);
+
+#ifdef WITH_STM
+	TransactionalMemoryManager::instance()->unblockTransactions();
+#endif
 
 //#ifndef WITH_STM
 	Core::getTaskManager()->unblockTaskManager(lockers);
 	delete lockers;
 //#endif
-
 	Reference<CommitMasterTransactionTask*> watchDog = new CommitMasterTransactionTask(transaction, &updateModifiedObjectsThreads, numberOfThreads, startTask);
 	watchDog->schedule(500);
 
+	info("objects to delete from ram: " + String::valueOf(objectsToDeleteFromRAM.size()), true);
 
 	for (int i = 0; i < objectsToDeleteFromRAM.size(); ++i) {
 		DistributedObject* object = objectsToDeleteFromRAM.get(i);
 
+		/*DistributedObjectBroker::instance()->undeploy(object->_getName());
+
+		localObjectDirectory.remove(object->_getObjectID());*/
 		localObjectDirectory.removeHelper(object->_getObjectID());
 	}
 

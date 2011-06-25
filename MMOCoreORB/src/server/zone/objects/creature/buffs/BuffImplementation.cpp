@@ -98,7 +98,8 @@ void BuffImplementation::activate(bool applyModifiers) {
 
 		buffEvent = new BuffDurationEvent(creature, _this);
 		buffEvent->schedule((int) (buffDuration * 1000));
-		nextExecutionTime = buffEvent->getNextExecutionTime();
+		//nextExecutionTime = buffEvent->getNextExecutionTime();
+		Core::getTaskManager()->getNextExecutionTime(buffEvent, nextExecutionTime);
 
 		if (creature->isPlayerCreature())
 			sendTo(((PlayerCreature*) creature.get()));
@@ -190,10 +191,14 @@ void BuffImplementation::scheduleBuffEvent() {
 }
 
 float BuffImplementation::getTimeLeft() {
-	if (buffEvent == NULL || !buffEvent->isQueued())
+	if (buffEvent == NULL || !buffEvent->isScheduled())
 		return 0.0f;
 
-	float timeleft = round(Time().miliDifference(buffEvent->getNextExecutionTime()) / 1000.0f);
+	Time next;
+
+	Core::getTaskManager()->getNextExecutionTime(buffEvent, next);
+
+	float timeleft = round(Time().miliDifference(next) / 1000.0f);
 
 	return MAX(0.0f, timeleft);
 }
@@ -323,7 +328,7 @@ void BuffImplementation::removeSkillModifiers() {
 
 void BuffImplementation::clearBuffEvent() {
 	if (buffEvent != NULL) {
-		if (buffEvent->isQueued())
+		if (buffEvent->isScheduled())
 			buffEvent->cancel();
 
 		buffEvent->setBuffObject(NULL);
@@ -333,7 +338,7 @@ void BuffImplementation::clearBuffEvent() {
 }
 
 bool BuffImplementation::isActive() {
-	return (buffEvent != NULL && buffEvent->isQueued());
+	return (buffEvent != NULL && buffEvent->isScheduled());
 }
 
 void BuffImplementation::setStartMessage(StringIdChatParameter& start) {

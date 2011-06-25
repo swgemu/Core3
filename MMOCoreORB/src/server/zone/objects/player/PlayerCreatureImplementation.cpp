@@ -270,7 +270,7 @@ void PlayerCreatureImplementation::doRecovery() {
 	}
 
 	if (isInCombat() && getTargetID() != 0 && !isPeaced()
-			&& (commandQueue.size() == 0) && nextAction.isPast()) {
+			&& (commandQueue->size() == 0) && nextAction.isPast()) {
 		sendExecuteConsoleCommand("/attack");
 		//enqueueCommand(0xA8FEF90A, 0, getTargetID(), ""); // Do default attack
 	}

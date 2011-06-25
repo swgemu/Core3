@@ -163,8 +163,11 @@ class CreatureObject extends TangibleObject {
 	@dereferenced
 	protected DeltaVectorMap<string, long> skillModList;
 		
-	@dereferenced
+	@transactional
 	protected transient CommandQueueActionVector commandQueue;
+	
+	@transactional
+	protected transient CommandQueueActionVector immediateQueue;
 	
 	@dereferenced
 	protected Time nextAction;
@@ -989,6 +992,8 @@ class CreatureObject extends TangibleObject {
 	}
 	
 	public native void activateQueueAction();
+	
+	public native void activateImmediateAction();
 	
 	public native unicode getCreatureName();
 	

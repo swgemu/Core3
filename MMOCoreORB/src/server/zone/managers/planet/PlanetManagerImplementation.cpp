@@ -173,7 +173,7 @@ void PlanetManagerImplementation::loadTravelFares() {
 	info("Loaded travel fares to " + String::valueOf(travelFares.size()) + " planets.");
 }
 
-void PlanetManagerImplementation::loadSnapshotObject(WorldSnapshotNode* node, WorldSnapshotIff* wsiff, int& totalObjects) {
+SceneObject* PlanetManagerImplementation::loadSnapshotObject(WorldSnapshotNode* node, WorldSnapshotIff* wsiff, int& totalObjects) {
 	uint64 objectID = node->getObjectID();
 	String templateName = wsiff->getObjectTemplateName(node->getNameID());
 
@@ -183,7 +183,7 @@ void PlanetManagerImplementation::loadSnapshotObject(WorldSnapshotNode* node, Wo
 
 	//Object already exists, exit.
 	if (object != NULL)
-		return;
+		return NULL;
 
 	SceneObject* parentObject = zoneServer->getObject(node->getParentID());
 
@@ -211,9 +211,11 @@ void PlanetManagerImplementation::loadSnapshotObject(WorldSnapshotNode* node, Wo
 		loadSnapshotObject(childNode, wsiff, totalObjects);
 	}
 
-	object->createChildObjects();
+	//object->createChildObjects();
 
 	++totalObjects;
+
+	return object;
 }
 
 void PlanetManagerImplementation::loadSnapshotObjects() {
@@ -231,14 +233,24 @@ void PlanetManagerImplementation::loadSnapshotObjects() {
 
 	int totalObjects = 0;
 
+	Vector<SceneObject*> objects(1000, 1000);
+
 	for (int i = 0; i < wsiff.getNodeCount(); ++i) {
 		WorldSnapshotNode* node = wsiff.getNode(i);
 
 		if (node == NULL)
 			continue;
 
-		loadSnapshotObject(node, &wsiff, totalObjects);
+		SceneObject* object = loadSnapshotObject(node, &wsiff, totalObjects);
+
+		if (object != NULL)
+			objects.add(object);
 	}
+
+	for (int i = 0; i < objects.size(); ++i)
+		objects.get(i)->createChildObjects();
+
+	delete iffStream;
 
 	info("Loaded " + String::valueOf(totalObjects) + " client objects from world snapshot.", true);
 }

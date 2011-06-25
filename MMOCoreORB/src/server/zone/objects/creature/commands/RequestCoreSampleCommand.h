@@ -79,7 +79,9 @@ public:
 
 			// If the sample task exists, we can't sample again
 			if (sampletask != NULL) {
-				int seconds = (int) ((sampletask->getNextExecutionTime().getMiliTime() - Time().getMiliTime()) / 1000.0f);
+				Time nextExecutionTime;
+				Core::getTaskManager()->getNextExecutionTime(sampletask, nextExecutionTime);
+				int seconds = (int) ((nextExecutionTime.getMiliTime() - Time().getMiliTime()) / 1000.0f);
 
 				StringIdChatParameter message("survey","tool_recharge_time");
 				message.setDI(seconds);

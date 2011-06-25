@@ -111,7 +111,10 @@ public:
 		//Handle our failures.
 		if (roll < 5 || roll > meditateMod) {
 			player->sendSystemMessage("@teraskasi:forceofwill_unsuccessful"); //You are unable to keep yourself centered, and become lost in unconsciousness.
-			player->addCooldown("tkaForceOfWill", incapTask->getNextExecutionTime().miliDifference()); //Disable the command until the current incapacitation is up.
+			Time nextExecutionTime;
+			Core::getTaskManager()->getNextExecutionTime(incapTask, nextExecutionTime);
+			player->addCooldown("tkaForceOfWill", nextExecutionTime.miliDifference()); //Disable the command until the current incapacitation is up.
+
 			return GENERALERROR;
 		}
 

@@ -780,11 +780,14 @@ void SceneObjectImplementation::notifyCloseContainer(PlayerCreature* player) {
 }
 
 void SceneObjectImplementation::notifyPositionUpdate(QuadTreeEntry* entry) {
-	//notifyObservers(ObserverEventType::OBJECTINRANGEMOVED, entry);
+#ifdef WITH_STM
+	notifyObservers(ObserverEventType::OBJECTINRANGEMOVED, entry);
+#else
 	if (_this == NULL || entry == NULL || _this == entry)
 		return;
 
 	Core::getTaskManager()->executeTask(new PositionUpdateTask(_this, entry));
+#endif
 }
 
 void SceneObjectImplementation::updateZoneWithParent(SceneObject* newParent, bool lightUpdate, bool sendPackets) {
@@ -1064,17 +1067,22 @@ void SceneObjectImplementation::createChildObjects() {
 		obj->setDirection(child->getDirection());
 
 		if (isBuildingObject() && child->getCellId() >= 0) {
-			BuildingObject* buildingObject = (BuildingObject*) _this;
+			BuildingObject* buildingObject = (BuildingObject*) (_this.get());
 
 			int totalCells = buildingObject->getTotalCellNumber();
 
-			if (totalCells > child->getCellId()) {
-				ManagedReference<CellObject*> cellObject = buildingObject->getCell(child->getCellId());
+			try {
 
-				if (cellObject != NULL) {
-					cellObject->addObject(obj, child->getContainmentType(), true);
-					cellObject->broadcastObject(obj, false);
+				if (totalCells > child->getCellId()) {
+					ManagedReference<CellObject*> cellObject = buildingObject->getCell(child->getCellId());
+
+					if (cellObject != NULL) {
+						cellObject->addObject(obj, child->getContainmentType(), true);
+						cellObject->broadcastObject(obj, false);
+					}
 				}
+			} catch (Exception& e) {
+				error("ha!");
 			}
 		} else {
 			//Create the object outdoors in relation to its parent.

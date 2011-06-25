@@ -94,6 +94,8 @@ class CommandQueueAction : public Object {
 
 	UnicodeString arguments;
 
+	int compareToCounter;
+
 public:
 	CommandQueueAction(CreatureObject* cr, uint64 tar, uint32 command, uint32 acntr, const UnicodeString& amod);
 
@@ -105,6 +107,27 @@ public:
 
 	void clear(float timer, uint32 tab1 = 0, uint32 tab2 = 0);
 
+	int compareTo(CommandQueueAction* action) {
+		if (compareToCounter == action->compareToCounter) {
+			if (this == action)
+				return 0;
+			else if (this < action)
+				return 1;
+			else
+				return -1;
+		} else if (compareToCounter < action->compareToCounter)
+			return 1;
+		else
+			return -1;
+	}
+
+	inline void setCompareToCounter(int c) {
+		compareToCounter = c;
+	}
+
+	inline int getCompareToCounter() {
+		return compareToCounter;
+	}
 
 	inline CreatureObject* getCreature() {
 		return creature;

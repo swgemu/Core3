@@ -382,7 +382,7 @@ void SurveyToolImplementation::surveyCnodeMinigame(PlayerCreature* player, int v
 	if(value == 0) {
 
 		// Add sampletask
-		SampleTask* sampleTask = new SampleTask(player, _this);
+		SampleTask* sampleTask = new SampleTask(player, _this.get());
 		sampleTask->schedule(18000);
 		player->addPendingTask("sample", sampleTask);
 
@@ -435,7 +435,7 @@ void SurveyToolImplementation::surveyGnodeMinigame(PlayerCreature* player, int v
 	}
 
 	// Add sampletask
-	SampleTask* sampleTask = new SampleTask(player, _this);
+	SampleTask* sampleTask = new SampleTask(player, _this.get());
 	sampleTask->schedule(18000);
 	player->addPendingTask("sample", sampleTask);
 

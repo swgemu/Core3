@@ -49,59 +49,59 @@
 #include "server/zone/objects/auction/Vendor.h"
 
 void VendorCheckTask::run() {
-	if (!vendorObj->isVendor() || vendorObj == NULL)
+	if (vendorObj == NULL || !vendorObj->isVendor())
+		return;
+
+	Vendor* vendor = NULL;
+
+	if (vendorObj->isTerminal()) {
+		VendorTerminal* terminal = dynamic_cast<VendorTerminal*>(vendorObj.get());
+
+		if (terminal == NULL)
 			return;
 
-		Vendor* vendor = NULL;
+		vendor = terminal->getVendor();
+	} else if (vendorObj->isCreatureObject()) {
+		VendorCreature* vendorCreature = dynamic_cast<VendorCreature*>(vendorObj.get());
 
-		if (vendorObj->isTerminal()) {
-			VendorTerminal* terminal = dynamic_cast<VendorTerminal*>(vendorObj.get());
-
-			if (terminal == NULL)
-				return;
-
-			vendor = terminal->getVendor();
-		} else if (vendorObj->isCreatureObject()) {
-			VendorCreature* vendorCreature = dynamic_cast<VendorCreature*>(vendorObj.get());
-
-			if (vendorCreature == NULL)
-				return;
-
-			vendor = vendorCreature->getVendor();
-		}
-
-		if (vendor == NULL)
+		if (vendorCreature == NULL)
 			return;
 
-		if (vendor->isBazaarTerminal())
-			return;
+		vendor = vendorCreature->getVendor();
+	}
 
-		int itemCount = vendor->getVendorItemCount();
-		int itemWarningLevel = vendor->getItemWarningLevel();
+	if (vendor == NULL)
+		return;
 
-		Locker vendorLocker(vendorObj);
+	if (vendor->isBazaarTerminal())
+		return;
 
-		if (itemCount > 0) {
-			vendor->setItemWarningLevel(0);
-			return;
-		}
+	int itemCount = vendor->getVendorItemCount();
+	int itemWarningLevel = vendor->getItemWarningLevel();
 
-		vendor->setItemWarningLevel(itemWarningLevel + 1);
+	Locker vendorLocker(vendorObj);
 
-		if (itemWarningLevel == 0x02) {
-			vendor->sendVendorDestroyMail();
-			vendorObj->removeFromZone();
-			vendorObj->destroyObjectFromDatabase(true);
-			return;
-		}
+	if (itemCount > 0) {
+		vendor->setItemWarningLevel(0);
+		return;
+	}
 
-		vendor->sendVendorUpdateMail(true);
+	vendor->setItemWarningLevel(itemWarningLevel + 1);
 
-		if (this->isScheduled())
-			this->reschedule(((Vendor::CHECKINTERVAL * 60000) * 60) * 24);
-		else
-			this->schedule(((Vendor::CHECKINTERVAL * 60000) * 60) * 24);
+	if (itemWarningLevel == 0x02) {
+		vendor->sendVendorDestroyMail();
+		vendorObj->removeFromZone();
+		vendorObj->destroyObjectFromDatabase(true);
+		return;
+	}
 
-		vendor->setNextCheckTime(this->getNextExecutionTime());
+	vendor->sendVendorUpdateMail(true);
+
+	if (this->isScheduled())
+		this->reschedule(((Vendor::CHECKINTERVAL * 60000) * 60) * 24);
+	else
+		this->schedule(((Vendor::CHECKINTERVAL * 60000) * 60) * 24);
+
+	vendor->setNextCheckTime(this->getNextExecutionTime());
 
 }

@@ -35,7 +35,8 @@ void PowerBoostBuffImplementation::activate(bool applyModifiers) {
 
 			// DurationEvent to handle calling the deactivate() when the timer expires.
 			pbBuffEvent = new PowerBoostBuffDurationEvent(creature, _this);
-			nextTickTime = pbBuffEvent->getNextExecutionTime();
+			//nextTickTime = pbBuffEvent->getNextExecutionTime();
+			Core::getTaskManager()->getNextExecutionTime(pbBuffEvent, nextTickTime);
 
 			counter++;
 			pbBuffEvent->schedule(3000);
@@ -101,7 +102,7 @@ void PowerBoostBuffImplementation::doMindTick(bool up) {
 
 void PowerBoostBuffImplementation::clearBuffEvent() {
 	if (pbBuffEvent != NULL) {
-		if (pbBuffEvent->isQueued())
+		if (pbBuffEvent->isScheduled())
 			pbBuffEvent->cancel();
 		pbBuffEvent->setBuffObject(NULL);
 		pbBuffEvent = NULL;

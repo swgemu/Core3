@@ -152,6 +152,8 @@ void CreatureObjectImplementation::initializeMembers() {
 	speedMultiplierMod = 1.f;
 
 	cooldownTimerMap = new CooldownTimerMap();
+	commandQueue = new CommandQueueActionVector();
+	immediateQueue = new CommandQueueActionVector();
 }
 
 void CreatureObjectImplementation::loadTemplateData(SharedObjectTemplate* templateData) {
@@ -1157,35 +1159,63 @@ void CreatureObjectImplementation::enqueueCommand(unsigned int actionCRC, unsign
 	if (priority < 0)
 		priority = queueCommand->getDefaultPriority();
 
+	Reference<CommandQueueAction*> action = new CommandQueueAction(_this, targetID, actionCRC, actionCount, arguments);
+
 	if (priority == QueueCommand::IMMEDIATE) {
-		objectController->activateCommand(_this, actionCRC, actionCount, targetID, arguments);
+		//objectController->activateCommand(_this, actionCRC, actionCount, targetID, arguments);
+		immediateQueue->put(action.get());
+
+		if (immediateQueue->size() == 1) {
+			Reference<CommandQueueActionEvent*> ev = new CommandQueueActionEvent(_this, CommandQueueActionEvent::IMMEDIATE);
+			Core::getTaskManager()->executeTask(ev);
+		}
 
 		return;
 	}
 
-	if (commandQueue.size() > 15 && priority != QueueCommand::FRONT) {
+	if (commandQueue->size() > 15 && priority != QueueCommand::FRONT) {
 		clearQueueAction(actionCount);
 
 		return;
 	}
 
-	Reference<CommandQueueAction*> action = new CommandQueueAction(_this, targetID, actionCRC, actionCount, arguments);
-
-	if (commandQueue.size() != 0 || !nextAction.isPast()) {
-		if (commandQueue.size() == 0) {
+	if (commandQueue->size() != 0 || !nextAction.isPast()) {
+		if (commandQueue->size() == 0) {
 			Reference<CommandQueueActionEvent*> e = new CommandQueueActionEvent(_this);
 			e->schedule(nextAction);
 		}
 
 		if (priority == QueueCommand::NORMAL)
-			commandQueue.add(action);
-		else if (priority == QueueCommand::FRONT)
-			commandQueue.add(0, action);
+			commandQueue->put(action.get());
+		else if (priority == QueueCommand::FRONT) {
+			if (commandQueue->size() > 0)
+				action->setCompareToCounter(commandQueue->get(0)->getCompareToCounter() - 1);
+
+			commandQueue->put(action.get());
+		}
 	} else {
 		nextAction.updateToCurrentTime();
 
-		commandQueue.add(action);
+		commandQueue->put(action.get());
 		activateQueueAction();
+	}
+}
+
+void CreatureObjectImplementation::activateImmediateAction() {
+	/*if (immediateQueue->size() == 0)
+		return;*/
+
+	Reference<CommandQueueAction*> action = immediateQueue->get(0);
+
+	immediateQueue->remove(0);
+
+	ManagedReference<ObjectController*> objectController = getZoneServer()->getObjectController();
+
+	float time = objectController->activateCommand(_this, action->getCommand(), action->getActionCounter(), action->getTarget(), action->getArguments());
+
+	if (immediateQueue->size() > 0) {
+		Reference<CommandQueueActionEvent*> ev = new CommandQueueActionEvent(_this, CommandQueueActionEvent::IMMEDIATE);
+		Core::getTaskManager()->executeTask(ev);
 	}
 }
 
@@ -1197,11 +1227,11 @@ void CreatureObjectImplementation::activateQueueAction() {
 		return;
 	}
 
-	if (commandQueue.size() == 0)
+	if (commandQueue->size() == 0)
 		return;
 
-	Reference<CommandQueueAction*> action = commandQueue.get(0);
-	commandQueue.remove(0);
+	Reference<CommandQueueAction*> action = commandQueue->get(0);
+	commandQueue->remove(0);
 
 	ManagedReference<ObjectController*> objectController = getZoneServer()->getObjectController();
 
@@ -1214,7 +1244,7 @@ void CreatureObjectImplementation::activateQueueAction() {
 	if (time > 0)
 		nextAction.addMiliTime((uint32) (time * 1000));
 
-	if (commandQueue.size() != 0) {
+	if (commandQueue->size() != 0) {
 		Reference<CommandQueueActionEvent*> e = new CommandQueueActionEvent(_this);
 
 		if (!nextAction.isFuture()) {
@@ -1227,11 +1257,11 @@ void CreatureObjectImplementation::activateQueueAction() {
 }
 
 void CreatureObjectImplementation::deleteQueueAction(uint32 actionCount) {
-	for (int i = 0; i < commandQueue.size(); ++i) {
-		CommandQueueAction* action = commandQueue.get(i);
+	for (int i = 0; i < commandQueue->size(); ++i) {
+		CommandQueueAction* action = commandQueue->get(i);
 
 		if (action->getActionCounter() == actionCount) {
-			commandQueue.remove(i);
+			commandQueue->remove(i);
 			break;
 		}
 	}

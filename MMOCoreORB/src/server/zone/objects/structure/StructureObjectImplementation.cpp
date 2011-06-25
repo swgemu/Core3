@@ -256,7 +256,7 @@ void StructureObjectImplementation::sendStatusTo(PlayerCreature* player) {
 	statusBox->setUsingObject(_this);
 
 	if (isInstallationObject())
-		((InstallationObject*) _this)->updateInstallationWork();
+		((InstallationObjectImplementation*) this)->updateInstallationWork();
 
 	String full = getCustomObjectName().toString();
 
@@ -300,7 +300,7 @@ void StructureObjectImplementation::sendStatusTo(PlayerCreature* player) {
 	ssmrate << dec << "@player_structure:maintenance_rate_prompt " << maintrate << " cr/hr";
 	statusBox->addMenuItem(ssmrate.toString());
 
-	if (isInstallationObject() && !((InstallationObject*) _this)->isGeneratorObject()) {
+	if (isInstallationObject() && !((InstallationObjectImplementation*) this)->isGeneratorObject()) {
 		ssppool << dec << "@player_structure:power_reserve_prompt " << (int) getSurplusPower();
 		statusBox->addMenuItem(ssppool.toString());
 

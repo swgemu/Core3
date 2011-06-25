@@ -26,7 +26,7 @@ namespace vendor {
 
 class VendorManager : public Singleton<VendorManager>, public Mutex, public Logger, public Object {
 protected:
-	VendorSelectionNode rootNode;
+	Reference<VendorSelectionNode*> rootNode;
 	VectorMap<uint64, Vendor*> vendorMap;
 
 public:
@@ -71,7 +71,7 @@ public:
 	void randomizeCustomization(CreatureObject* vendor);
 
 	inline VendorSelectionNode* getRootNode() {
-		return &rootNode;
+		return rootNode;
 	}
 
 	inline void addVendor(uint64 objectID, Vendor* vendor) {

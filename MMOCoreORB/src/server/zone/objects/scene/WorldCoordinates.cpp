@@ -64,6 +64,9 @@ Vector3 WorldCoordinates::getWorldPosition() const {
 
 	SceneObject* root = cell->getRootParent();
 
+	if (root == NULL)
+		return point;
+
 	float length = Math::sqrt(point.getX() * point.getX() + point.getY() * point.getY());
 	float angle = root->getDirection()->getRadians() + atan2(point.getX(), point.getY());
 

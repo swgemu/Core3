@@ -18,7 +18,7 @@ void ActiveAreaImplementation::insertToZone(Zone* newZone) {
 	if (newZone == NULL)
 		return;
 
-	ManagedReference<SceneObject*> thisLocker = _this;
+	ManagedReference<SceneObject*> thisLocker = _this.get();
 
 	Locker zoneLocker(newZone);
 
@@ -61,7 +61,7 @@ void ActiveAreaImplementation::removeFromZone() {
 	if (getZone() == NULL)
 		return;
 
-	ManagedReference<SceneObject*> thisLocker = _this;
+	ManagedReference<SceneObject*> thisLocker = _this.get();
 
 	Locker zoneLocker(getZone());
 

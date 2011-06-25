@@ -185,7 +185,7 @@ void ResourceManagerImplementation::startResourceSpawner() {
 
 	resourceSpawner->start();
 
-	ResourceShiftTask* resourceShift = new ResourceShiftTask(_this);
+	ResourceShiftTask* resourceShift = new ResourceShiftTask(_this.get());
 	resourceShift->schedule(shiftInterval);
 }
 
@@ -194,7 +194,7 @@ void ResourceManagerImplementation::shiftResources() {
 
 	resourceSpawner->shiftResources();
 
-	ResourceShiftTask* resourceShift = new ResourceShiftTask(_this);
+	ResourceShiftTask* resourceShift = new ResourceShiftTask(_this.get());
 	resourceShift->schedule(shiftInterval);
 }
 

@@ -18,7 +18,7 @@ class VendorSelectionNode : public Object {
 	String suiDisplay;
 	int hiringRequired;
 
-	SortedVector<VendorSelectionNode> childNodes;
+	SortedVector<Reference<VendorSelectionNode*> > childNodes;
 
 public:
 	VendorSelectionNode() : Object() {
@@ -68,8 +68,8 @@ public:
 				LuaObject luaNode(L);
 
 				if (luaNode.isValidTable()) {
-					VendorSelectionNode childNode;
-					childNode.parseFromLua(luaNode);
+					Reference<VendorSelectionNode*> childNode = new VendorSelectionNode();
+					childNode->parseFromLua(luaNode);
 
 					addChildNode(childNode);
 				}
@@ -91,7 +91,7 @@ public:
 		return 0;
 	}
 
-	inline void addChildNode(const VendorSelectionNode& node) {
+	inline void addChildNode(VendorSelectionNode* node) {
 		childNodes.add(node);
 	}
 
@@ -113,7 +113,7 @@ public:
 
 	inline void addChildrenToListBox(SuiListBox* listBox, int hiringSkill) {
 		for (int i = 0; i < childNodes.size(); ++i) {
-			VendorSelectionNode* child = &childNodes.get(i);
+			VendorSelectionNode* child = childNodes.get(i);
 			if (child->getHiringRequired() <= hiringSkill)
 				listBox->addMenuItem(child->getNodeName(), i);
 		}
@@ -123,7 +123,7 @@ public:
 		if (idx < 0 || idx >= childNodes.size())
 			return NULL;
 
-		return &childNodes.get(idx);
+		return childNodes.get(idx);
 	}
 
 	inline int getChildNodeSize() {

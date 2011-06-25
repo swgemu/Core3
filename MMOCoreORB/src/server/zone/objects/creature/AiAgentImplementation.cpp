@@ -155,7 +155,7 @@ void AiAgentImplementation::doRecovery() {
 		return;
 	}
 
-	if (commandQueue.size() > 5) {
+	if (commandQueue->size() > 5) {
 		activateRecovery();
 		return;
 	}
@@ -165,7 +165,7 @@ void AiAgentImplementation::doRecovery() {
 
 	selectWeapon();
 
-	if (System::random(2) == 0 && npcTemplate != NULL && commandQueue.size() < 3) {
+	if (System::random(2) == 0 && npcTemplate != NULL && commandQueue->size() < 3) {
 		// do special attack
 		CreatureAttackMap* attackMap = npcTemplate->getAttacks();
 		int attackNum = attackMap->getRandomAttackNumber();
@@ -554,7 +554,7 @@ bool AiAgentImplementation::findNextPosition(float maxDistance, WorldCoordinates
 	while (!found && patrolPoints.size() != 0) {
 		PatrolPoint* targetPosition = &patrolPoints.get(0);
 
-		Vector<WorldCoordinates>* path = pathFinder->findPath(_this, targetPosition->getCoordinates());
+		Vector<WorldCoordinates>* path = pathFinder->findPath(_this.get(), targetPosition->getCoordinates());
 
 		if (path == NULL) {
 			patrolPoints.remove(0);

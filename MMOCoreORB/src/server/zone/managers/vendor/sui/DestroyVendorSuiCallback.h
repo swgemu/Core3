@@ -31,7 +31,7 @@ public:
 
 		ManagedReference<SceneObject*> sceno = suiBox->getUsingObject();
 
-		if (!sceno->isVendor())
+		if (sceno == NULL || !sceno->isVendor())
 			return;
 
 		Vendor* vendor = NULL;

@@ -47,7 +47,9 @@ void VendorManager::loadLuaVendors() {
 
 	LuaObject menu = lua->getGlobalObject("VendorMenu");
 
-	rootNode.parseFromLua(menu);
+	rootNode = new VendorSelectionNode();
+
+	rootNode->parseFromLua(menu);
 
 	menu.pop();
 

@@ -64,6 +64,10 @@ class ObjectMenuResponse : public ObjectControllerMessage {
 
 	Reference<RadialMenuItem*> root;
 
+	/*Reference<SceneObject*> player;
+
+	uint64 target;*/
+
 	int indexCount;
 	/**
 	 * This method is used to write the radial objects to the packet.
@@ -91,6 +95,9 @@ public:
 		insertLong(target);
 		insertLong(player->getObjectID());
 
+		/*this->player = player;
+		this->target = target;*/
+
 		insertInt(0); // size
 
 		listSize = 0;
@@ -100,6 +107,14 @@ public:
 
 		root = new RadialMenuItem();
 	}
+
+	/*ObjectMenuResponse* cloneMenuResponse() {
+		ObjectMenuResponse* resp = new ObjectMenuResponse(player, target, count);
+		resp->player = player;
+		resp->listSize = listSize;
+		resp->indexCount = indexCount;
+		resp->root = root;
+	}*/
 
 	~ObjectMenuResponse() {
 	}

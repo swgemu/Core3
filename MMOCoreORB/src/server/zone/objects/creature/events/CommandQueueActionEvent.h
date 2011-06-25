@@ -49,10 +49,15 @@ which carries forward this exception.
 
 class CommandQueueActionEvent : public Task {
 	ManagedReference<CreatureObject*> creature;
+	int type;
+public:
+	const static int IMMEDIATE = 1;
+	const static int NORMAL = 2;
 	
 public:
-	CommandQueueActionEvent(CreatureObject* pl) : Task() {
+	CommandQueueActionEvent(CreatureObject* pl, int type = NORMAL) : Task() {
 		creature = pl;
+		this->type = type;
 	}
 
 	void run() {
@@ -65,7 +70,10 @@ public:
 			
 			//player->info("activating command queue action");
 
-			creature->activateQueueAction();
+			if (type == NORMAL)
+				creature->activateQueueAction();
+			else
+				creature->activateImmediateAction();
 			
 			//player->info("command queue action activated");
 

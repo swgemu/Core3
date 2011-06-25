@@ -52,7 +52,7 @@ which carries forward this exception.
 class CommandQueueRemove : public ObjectControllerMessage {
 public:
 	CommandQueueRemove(CreatureObject* creo, uint32 actioncnt, float timer, uint32 tab1, uint32 tab2) 
-			: ObjectControllerMessage(creo->getObjectID(), 0x0B, 0x117) {
+			: ObjectControllerMessage(creo->getObjectID(), 0x1B, 0x117) {
 		insertInt(actioncnt);
 		insertFloat(timer);
 		insertInt(tab1);

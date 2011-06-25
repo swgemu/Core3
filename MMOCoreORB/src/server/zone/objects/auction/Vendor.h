@@ -86,7 +86,7 @@ public:
 
 	inline void clearEvents() {
 		if (vendorCheckTask != NULL) {
-			if (vendorCheckTask->isQueued())
+			if (vendorCheckTask->isScheduled())
 				vendorCheckTask->cancel();
 			vendorCheckTask = NULL;
 		}

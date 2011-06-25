@@ -30,7 +30,7 @@ public:
 		addSerializableVariables();
 	}
 
-	TradeContainer(const TradeContainer& tr) : Object() {
+	TradeContainer(const TradeContainer& tr) : Object(), Serializable() {
 		tradeTargetPlayer = tr.tradeTargetPlayer;
 		itemsToTrade = tr.itemsToTrade;
 		acceptedTrade = tr.acceptedTrade;

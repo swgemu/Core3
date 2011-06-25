@@ -82,7 +82,10 @@ void MissionManagerImplementation::handleMissionListRequest(MissionTerminal* mis
 		return;
 	}
 
-	SceneObject* missionBag = player->getSlottedObject("mission_bag");
+	ManagedReference<SceneObject*> missionBag = player->getSlottedObject("mission_bag");
+
+	if (missionBag == NULL)
+		return;
 
 	while (missionBag->getContainerObjectsSize() < 6) {
 		SceneObject* mission = server->createObject(0x18e19914, 1); // empty mission

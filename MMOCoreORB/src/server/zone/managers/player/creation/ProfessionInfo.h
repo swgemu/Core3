@@ -50,7 +50,7 @@ public:
 		attributeMods.add(0);
 	}
 
-	ProfessionInfo(const ProfessionInfo& pi) : Object() {
+	ProfessionInfo(const ProfessionInfo& pi) : Object(), TemplateData(), IffTemplate() {
 		skills = pi.skills;
 		items = pi.items;
 		attributeMods = pi.attributeMods;

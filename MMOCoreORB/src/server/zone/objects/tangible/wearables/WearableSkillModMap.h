@@ -162,7 +162,7 @@ public:
 		addSerializableVariables();
 	}
 
-	WearableSkillModMap(const WearableSkillModMap& sk) : Object() {
+	WearableSkillModMap(const WearableSkillModMap& sk) : Object(), Serializable() {
 		innateSkillModMap = sk.innateSkillModMap;
 		attachmentVector = sk.attachmentVector;
 		maxAttachments = sk.maxAttachments;

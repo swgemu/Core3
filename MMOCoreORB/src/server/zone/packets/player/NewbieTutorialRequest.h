@@ -98,7 +98,7 @@ public:
 		} else if (response == "closeInventory") {
 			sceneObject->notifyObservers(ObserverEventType::NEWBIECLOSEINVENTORY);
 		} else if (response == "clientReady") {
-			if (player->getZone() != NULL) {
+			if (player->getZone() != NULL && player->getParent() != NULL) {
 				Zone* zone = player->getZone();
 
 				if (zone->getZoneName() == "tutorial")
