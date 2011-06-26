@@ -65,6 +65,7 @@ idl:
 	#done
 
 config:
+	aclocal
 	automake --add-missing
 	autoreconf --force
 	cd build/unix && ../../configure
@@ -82,3 +83,6 @@ cleanidl:
 cleardb:
 	cd bin/databases && rm -rf *.*
 	#done
+	
+update:
+	
