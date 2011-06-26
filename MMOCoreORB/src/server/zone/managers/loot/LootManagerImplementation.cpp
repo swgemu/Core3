@@ -16,6 +16,8 @@
 
 void LootManagerImplementation::initialize() {
 
+	lua = new Lua();
+
 	lootGroupMap.setNullValue(NULL);
 	lootGroupMap.setNoDuplicateInsertPlan();
 
