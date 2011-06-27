@@ -44,6 +44,7 @@ which carries forward this exception.
 
 #include "engine/engine.h"
 
+#ifdef WITH_STM
 class TestClass : public Object {
 	static const int ELEMENT_COUNT = 100;
 
@@ -180,3 +181,5 @@ void testTransactions() {
 
 	exit(0);
 }
+
+#endif
