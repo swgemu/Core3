@@ -134,7 +134,7 @@ class PlanetManager extends ManagedService implements Logger {
 	}
 	
 	@local
-	private native void loadSnapshotObject(WorldSnapshotNode node, WorldSnapshotIff wsiff, @dereferenced int totalObjects);
+	private native SceneObject loadSnapshotObject(WorldSnapshotNode node, WorldSnapshotIff wsiff, @dereferenced int totalObjects);
 	private native void loadSnapshotObjects();
 	private native void loadTravelFares();
 	
