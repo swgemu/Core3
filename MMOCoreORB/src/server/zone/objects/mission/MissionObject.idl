@@ -281,7 +281,7 @@ class MissionObject extends IntangibleObject {
 	public native SharedObjectTemplate getTargetTemplate();
 	
 	public boolean isSurveyMission() {
-		return typeCRC == this.SURVEY;
+		return typeCRC == SURVEY;
 	}
 	
 	public boolean isMissionObject() {
