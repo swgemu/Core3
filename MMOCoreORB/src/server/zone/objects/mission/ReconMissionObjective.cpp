@@ -112,7 +112,8 @@ ReconMissionObjectiveImplementation::~ReconMissionObjectiveImplementation() {
 void ReconMissionObjectiveImplementation::_initializeImplementation() {
 	_setClassHelper(ReconMissionObjectiveHelper::instance());
 
-	_serializationHelperMethod();
+	_this = NULL;
+
 	_serializationHelperMethod();
 }
 

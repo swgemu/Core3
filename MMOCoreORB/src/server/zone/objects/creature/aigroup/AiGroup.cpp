@@ -163,7 +163,8 @@ void AiGroupImplementation::finalize() {
 void AiGroupImplementation::_initializeImplementation() {
 	_setClassHelper(AiGroupHelper::instance());
 
-	_serializationHelperMethod();
+	_this = NULL;
+
 	_serializationHelperMethod();
 }
 

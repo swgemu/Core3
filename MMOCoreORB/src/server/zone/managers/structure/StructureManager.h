@@ -236,7 +236,7 @@ public:
 
 	SceneObject* getInRangeParkingGarage(SceneObject* obj, int range = 64);
 
-	StructureManager* _this;
+	WeakReference<StructureManager*> _this;
 
 	operator const StructureManager*();
 

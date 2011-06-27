@@ -150,7 +150,8 @@ ResourceDeedListBoxImplementation::~ResourceDeedListBoxImplementation() {
 void ResourceDeedListBoxImplementation::_initializeImplementation() {
 	_setClassHelper(ResourceDeedListBoxHelper::instance());
 
-	_serializationHelperMethod();
+	_this = NULL;
+
 	_serializationHelperMethod();
 }
 

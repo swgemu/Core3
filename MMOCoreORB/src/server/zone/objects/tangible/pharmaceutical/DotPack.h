@@ -252,7 +252,7 @@ public:
 
 	unsigned int getDotType();
 
-	DotPack* _this;
+	WeakReference<DotPack*> _this;
 
 	operator const DotPack*();
 

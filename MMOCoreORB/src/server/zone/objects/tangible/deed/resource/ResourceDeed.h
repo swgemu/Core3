@@ -144,7 +144,7 @@ public:
 
 	void destroyDeed();
 
-	ResourceDeed* _this;
+	WeakReference<ResourceDeed*> _this;
 
 	operator const ResourceDeed*();
 

@@ -103,7 +103,8 @@ void TeachPlayerListBoxImplementation::finalize() {
 void TeachPlayerListBoxImplementation::_initializeImplementation() {
 	_setClassHelper(TeachPlayerListBoxHelper::instance());
 
-	_serializationHelperMethod();
+	_this = NULL;
+
 	_serializationHelperMethod();
 }
 

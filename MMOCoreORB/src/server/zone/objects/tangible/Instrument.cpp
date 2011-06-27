@@ -236,7 +236,8 @@ void InstrumentImplementation::finalize() {
 void InstrumentImplementation::_initializeImplementation() {
 	_setClassHelper(InstrumentHelper::instance());
 
-	_serializationHelperMethod();
+	_this = NULL;
+
 	_serializationHelperMethod();
 }
 

@@ -116,7 +116,7 @@ public:
 
 	void handleObjectMenuRequest(PlayerCreature* player, ObjectMenuResponse* defaultMenuResponse, unsigned long long objectID);
 
-	RadialManager* _this;
+	WeakReference<RadialManager*> _this;
 
 	operator const RadialManager*();
 

@@ -118,7 +118,8 @@ void CityTerminalImplementation::finalize() {
 void CityTerminalImplementation::_initializeImplementation() {
 	_setClassHelper(CityTerminalHelper::instance());
 
-	_serializationHelperMethod();
+	_this = NULL;
+
 	_serializationHelperMethod();
 }
 

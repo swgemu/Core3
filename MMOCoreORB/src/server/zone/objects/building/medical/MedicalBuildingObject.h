@@ -86,7 +86,7 @@ public:
 
 	bool isMedicalBuildingObject();
 
-	MedicalBuildingObject* _this;
+	WeakReference<MedicalBuildingObject*> _this;
 
 	operator const MedicalBuildingObject*();
 

@@ -86,7 +86,7 @@ public:
 
 	void initializeTransientMembers();
 
-	ToolTangibleObject* _this;
+	WeakReference<ToolTangibleObject*> _this;
 
 	operator const ToolTangibleObject*();
 

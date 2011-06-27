@@ -113,7 +113,8 @@ void TravelTerminalImplementation::finalize() {
 void TravelTerminalImplementation::_initializeImplementation() {
 	_setClassHelper(TravelTerminalHelper::instance());
 
-	_serializationHelperMethod();
+	_this = NULL;
+
 	_serializationHelperMethod();
 }
 

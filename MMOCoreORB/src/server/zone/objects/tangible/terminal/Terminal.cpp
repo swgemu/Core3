@@ -175,7 +175,8 @@ void TerminalImplementation::finalize() {
 void TerminalImplementation::_initializeImplementation() {
 	_setClassHelper(TerminalHelper::instance());
 
-	_serializationHelperMethod();
+	_this = NULL;
+
 	_serializationHelperMethod();
 }
 

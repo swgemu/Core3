@@ -126,7 +126,7 @@ public:
 
 	void sendConversationStartTo(SceneObject* player);
 
-	InformantCreature* _this;
+	WeakReference<InformantCreature*> _this;
 
 	operator const InformantCreature*();
 

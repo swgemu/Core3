@@ -144,7 +144,8 @@ void ControlDeviceImplementation::finalize() {
 void ControlDeviceImplementation::_initializeImplementation() {
 	_setClassHelper(ControlDeviceHelper::instance());
 
-	_serializationHelperMethod();
+	_this = NULL;
+
 	_serializationHelperMethod();
 }
 

@@ -579,7 +579,8 @@ void InstallationObjectImplementation::finalize() {
 void InstallationObjectImplementation::_initializeImplementation() {
 	_setClassHelper(InstallationObjectHelper::instance());
 
-	_serializationHelperMethod();
+	_this = NULL;
+
 	_serializationHelperMethod();
 }
 

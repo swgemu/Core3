@@ -223,7 +223,7 @@ public:
 
 	virtual bool isDynamicArea();
 
-	DynamicSpawnArea* _this;
+	WeakReference<DynamicSpawnArea*> _this;
 
 	operator const DynamicSpawnArea*();
 

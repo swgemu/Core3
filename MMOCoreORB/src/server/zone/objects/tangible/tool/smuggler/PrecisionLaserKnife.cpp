@@ -147,7 +147,8 @@ void PrecisionLaserKnifeImplementation::finalize() {
 void PrecisionLaserKnifeImplementation::_initializeImplementation() {
 	_setClassHelper(PrecisionLaserKnifeHelper::instance());
 
-	_serializationHelperMethod();
+	_this = NULL;
+
 	_serializationHelperMethod();
 }
 

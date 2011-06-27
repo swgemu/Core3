@@ -554,6 +554,8 @@ public:
 
 	void activateQueueAction();
 
+	void activateImmediateAction();
+
 	UnicodeString getCreatureName();
 
 	bool isGrouped();
@@ -880,7 +882,9 @@ protected:
 
 	DeltaVectorMap<String, long long> skillModList;
 
-	CommandQueueActionVector commandQueue;
+	Reference<CommandQueueActionVector* > commandQueue;
+
+	Reference<CommandQueueActionVector* > immediateQueue;
 
 	Time nextAction;
 
@@ -1207,6 +1211,8 @@ public:
 
 	void activateQueueAction();
 
+	void activateImmediateAction();
+
 	UnicodeString getCreatureName();
 
 	bool isGrouped();
@@ -1407,7 +1413,7 @@ public:
 
 	virtual bool isVendorCreature();
 
-	CreatureObject* _this;
+	WeakReference<CreatureObject*> _this;
 
 	operator const CreatureObject*();
 
@@ -1715,6 +1721,8 @@ public:
 	void playEffect(const String& file);
 
 	void activateQueueAction();
+
+	void activateImmediateAction();
 
 	UnicodeString getCreatureName();
 

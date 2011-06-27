@@ -70,7 +70,8 @@ void GarageAreaImplementation::finalize() {
 void GarageAreaImplementation::_initializeImplementation() {
 	_setClassHelper(GarageAreaHelper::instance());
 
-	_serializationHelperMethod();
+	_this = NULL;
+
 	_serializationHelperMethod();
 }
 

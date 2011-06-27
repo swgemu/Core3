@@ -35,7 +35,8 @@ void LootManagerImplementation::initialize() {
 }
 
 bool LootManagerImplementation::loadConfigFile() {
-	return lua->runFile("scripts/managers/loot_manager.lua");
+	return true;
+	//return lua->runFile("scripts/managers/loot_manager.lua");
 }
 
 bool LootManagerImplementation::loadConfigData() {

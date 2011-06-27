@@ -110,7 +110,7 @@ public:
 
 	bool isCampKitOject();
 
-	CampKit* _this;
+	WeakReference<CampKit*> _this;
 
 	operator const CampKit*();
 

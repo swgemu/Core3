@@ -223,7 +223,8 @@ void PharmaceuticalObjectImplementation::finalize() {
 void PharmaceuticalObjectImplementation::_initializeImplementation() {
 	_setClassHelper(PharmaceuticalObjectHelper::instance());
 
-	_serializationHelperMethod();
+	_this = NULL;
+
 	_serializationHelperMethod();
 }
 

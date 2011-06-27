@@ -45,6 +45,7 @@ int DestroyStructureSessionImplementation::initializeSession() {
 	cond << "@player_structure:redeed_condition \\#32CD32 " << (structureObject->getMaxCondition() - structureObject->getConditionDamage()) << "/" << structureObject->getMaxCondition() << "\\#.";
 
 	ManagedReference<SuiListBox*> sui = new SuiListBox(player);
+	sui->setCallback(new DestroyStructureRequestSuiCallback(creatureObject->getZoneServer()));
 	sui->setCancelButton(true, "@no");
 	sui->setOkButton(true, "@yes");
 	sui->setUsingObject(structureObject);

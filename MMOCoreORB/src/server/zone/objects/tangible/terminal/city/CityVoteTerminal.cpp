@@ -118,7 +118,8 @@ void CityVoteTerminalImplementation::finalize() {
 void CityVoteTerminalImplementation::_initializeImplementation() {
 	_setClassHelper(CityVoteTerminalHelper::instance());
 
-	_serializationHelperMethod();
+	_this = NULL;
+
 	_serializationHelperMethod();
 }
 

@@ -218,7 +218,7 @@ public:
 
 	byte getAttribute();
 
-	WoundPack* _this;
+	WeakReference<WoundPack*> _this;
 
 	operator const WoundPack*();
 

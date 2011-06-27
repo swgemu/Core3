@@ -98,7 +98,7 @@ public:
 
 	bool isHarvesterObject();
 
-	HarvesterObject* _this;
+	WeakReference<HarvesterObject*> _this;
 
 	operator const HarvesterObject*();
 

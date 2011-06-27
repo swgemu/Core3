@@ -121,7 +121,8 @@ void GeneratorObjectImplementation::finalize() {
 void GeneratorObjectImplementation::_initializeImplementation() {
 	_setClassHelper(GeneratorObjectHelper::instance());
 
-	_serializationHelperMethod();
+	_this = NULL;
+
 	_serializationHelperMethod();
 }
 

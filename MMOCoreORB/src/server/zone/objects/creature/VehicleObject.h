@@ -221,7 +221,7 @@ public:
 
 	bool isVehicleObject();
 
-	VehicleObject* _this;
+	WeakReference<VehicleObject*> _this;
 
 	operator const VehicleObject*();
 

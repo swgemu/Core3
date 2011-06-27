@@ -98,7 +98,7 @@ public:
 
 	void updateCraftingValues(ManufactureSchematic* schematic);
 
-	PsgArmorObject* _this;
+	WeakReference<PsgArmorObject*> _this;
 
 	operator const PsgArmorObject*();
 

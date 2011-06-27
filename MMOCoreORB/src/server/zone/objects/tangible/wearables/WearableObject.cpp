@@ -205,7 +205,8 @@ void WearableObjectImplementation::finalize() {
 void WearableObjectImplementation::_initializeImplementation() {
 	_setClassHelper(WearableObjectHelper::instance());
 
-	_serializationHelperMethod();
+	_this = NULL;
+
 	_serializationHelperMethod();
 }
 

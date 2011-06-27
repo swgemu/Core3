@@ -72,7 +72,8 @@ void CampSiteActiveAreaImplementation::finalize() {
 void CampSiteActiveAreaImplementation::_initializeImplementation() {
 	_setClassHelper(CampSiteActiveAreaHelper::instance());
 
-	_serializationHelperMethod();
+	_this = NULL;
+
 	_serializationHelperMethod();
 }
 

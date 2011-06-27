@@ -140,7 +140,8 @@ void PowerBoostBuffImplementation::finalize() {
 void PowerBoostBuffImplementation::_initializeImplementation() {
 	_setClassHelper(PowerBoostBuffHelper::instance());
 
-	_serializationHelperMethod();
+	_this = NULL;
+
 	_serializationHelperMethod();
 }
 

@@ -322,7 +322,7 @@ public:
 
 	SuiCallback* getCallback();
 
-	SuiBox* _this;
+	WeakReference<SuiBox*> _this;
 
 	operator const SuiBox*();
 

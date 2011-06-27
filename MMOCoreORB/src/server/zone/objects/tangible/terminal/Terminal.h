@@ -120,7 +120,7 @@ public:
 
 	void initializeChildObject(SceneObject* controllerObject);
 
-	Terminal* _this;
+	WeakReference<Terminal*> _this;
 
 	operator const Terminal*();
 

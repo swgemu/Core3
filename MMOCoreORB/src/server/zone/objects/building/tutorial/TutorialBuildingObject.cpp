@@ -131,7 +131,8 @@ void TutorialBuildingObjectImplementation::finalize() {
 void TutorialBuildingObjectImplementation::_initializeImplementation() {
 	_setClassHelper(TutorialBuildingObjectHelper::instance());
 
-	_serializationHelperMethod();
+	_this = NULL;
+
 	_serializationHelperMethod();
 }
 

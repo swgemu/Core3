@@ -136,7 +136,7 @@ public:
 
 	void activate(bool applyModifiers);
 
-	DurationBuff* _this;
+	WeakReference<DurationBuff*> _this;
 
 	operator const DurationBuff*();
 

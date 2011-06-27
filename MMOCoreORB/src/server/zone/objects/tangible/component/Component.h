@@ -229,7 +229,7 @@ public:
 
 	bool changeAttributeValue(String& property, float value);
 
-	Component* _this;
+	WeakReference<Component*> _this;
 
 	operator const Component*();
 

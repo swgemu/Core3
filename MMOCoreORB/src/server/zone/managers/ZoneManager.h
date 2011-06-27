@@ -96,7 +96,7 @@ public:
 
 	void setZoneProcessor(ZoneProcessServer* server);
 
-	ZoneManager* _this;
+	WeakReference<ZoneManager*> _this;
 
 	operator const ZoneManager*();
 

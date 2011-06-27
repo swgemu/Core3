@@ -178,7 +178,7 @@ public:
 
 	virtual bool removeObject(SceneObject* object, bool notifyClient = false);
 
-	FishingPoleObject* _this;
+	WeakReference<FishingPoleObject*> _this;
 
 	operator const FishingPoleObject*();
 

@@ -55,7 +55,7 @@ public:
 
 	FighterShipObjectImplementation(DummyConstructorParameter* param);
 
-	FighterShipObject* _this;
+	WeakReference<FighterShipObject*> _this;
 
 	operator const FighterShipObject*();
 

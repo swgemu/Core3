@@ -263,7 +263,7 @@ public:
 
 	void setBeingUsed(bool val);
 
-	Instrument* _this;
+	WeakReference<Instrument*> _this;
 
 	operator const Instrument*();
 

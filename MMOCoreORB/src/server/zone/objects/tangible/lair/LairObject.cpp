@@ -193,7 +193,8 @@ void LairObjectImplementation::finalize() {
 void LairObjectImplementation::_initializeImplementation() {
 	_setClassHelper(LairObjectHelper::instance());
 
-	_serializationHelperMethod();
+	_this = NULL;
+
 	_serializationHelperMethod();
 }
 

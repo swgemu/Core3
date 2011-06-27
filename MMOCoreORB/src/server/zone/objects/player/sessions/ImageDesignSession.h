@@ -169,7 +169,7 @@ public:
 
 	void sessionTimeout();
 
-	ImageDesignSession* _this;
+	WeakReference<ImageDesignSession*> _this;
 
 	operator const ImageDesignSession*();
 

@@ -191,7 +191,7 @@ public:
 
 	virtual bool isVendorTerminal();
 
-	VendorTerminal* _this;
+	WeakReference<VendorTerminal*> _this;
 
 	operator const VendorTerminal*();
 

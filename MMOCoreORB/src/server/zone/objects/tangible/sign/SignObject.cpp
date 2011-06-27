@@ -114,7 +114,8 @@ void SignObjectImplementation::finalize() {
 void SignObjectImplementation::_initializeImplementation() {
 	_setClassHelper(SignObjectHelper::instance());
 
-	_serializationHelperMethod();
+	_this = NULL;
+
 	_serializationHelperMethod();
 }
 

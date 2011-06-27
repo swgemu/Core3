@@ -184,7 +184,7 @@ public:
 
 	QueueCommand* getQueueCommand(unsigned int crc);
 
-	ObjectController* _this;
+	WeakReference<ObjectController*> _this;
 
 	operator const ObjectController*();
 

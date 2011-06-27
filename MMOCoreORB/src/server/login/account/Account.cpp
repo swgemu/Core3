@@ -261,7 +261,8 @@ void AccountImplementation::finalize() {
 void AccountImplementation::_initializeImplementation() {
 	_setClassHelper(AccountHelper::instance());
 
-	_serializationHelperMethod();
+	_this = NULL;
+
 	_serializationHelperMethod();
 }
 

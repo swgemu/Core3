@@ -126,7 +126,8 @@ void ResourceDeedImplementation::finalize() {
 void ResourceDeedImplementation::_initializeImplementation() {
 	_setClassHelper(ResourceDeedHelper::instance());
 
-	_serializationHelperMethod();
+	_this = NULL;
+
 	_serializationHelperMethod();
 }
 

@@ -312,7 +312,8 @@ void CityManagerImplementation::finalize() {
 void CityManagerImplementation::_initializeImplementation() {
 	_setClassHelper(CityManagerHelper::instance());
 
-	_serializationHelperMethod();
+	_this = NULL;
+
 	_serializationHelperMethod();
 }
 

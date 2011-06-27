@@ -107,7 +107,7 @@ public:
 
 	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
 
-	StartingLocationTerminal* _this;
+	WeakReference<StartingLocationTerminal*> _this;
 
 	operator const StartingLocationTerminal*();
 

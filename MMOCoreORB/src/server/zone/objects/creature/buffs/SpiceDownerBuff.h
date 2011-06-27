@@ -122,7 +122,7 @@ public:
 
 	void deactivate(bool applyModifiers);
 
-	SpiceDownerBuff* _this;
+	WeakReference<SpiceDownerBuff*> _this;
 
 	operator const SpiceDownerBuff*();
 

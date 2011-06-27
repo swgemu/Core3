@@ -87,7 +87,8 @@ void CloningBuildingObjectImplementation::finalize() {
 void CloningBuildingObjectImplementation::_initializeImplementation() {
 	_setClassHelper(CloningBuildingObjectHelper::instance());
 
-	_serializationHelperMethod();
+	_this = NULL;
+
 	_serializationHelperMethod();
 }
 

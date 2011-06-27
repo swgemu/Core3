@@ -140,7 +140,8 @@ void ForageManagerImplementation::finalize() {
 void ForageManagerImplementation::_initializeImplementation() {
 	_setClassHelper(ForageManagerHelper::instance());
 
-	_serializationHelperMethod();
+	_this = NULL;
+
 	_serializationHelperMethod();
 }
 

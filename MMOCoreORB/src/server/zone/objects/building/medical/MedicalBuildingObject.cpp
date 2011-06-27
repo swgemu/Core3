@@ -69,7 +69,8 @@ void MedicalBuildingObjectImplementation::finalize() {
 void MedicalBuildingObjectImplementation::_initializeImplementation() {
 	_setClassHelper(MedicalBuildingObjectHelper::instance());
 
-	_serializationHelperMethod();
+	_this = NULL;
+
 	_serializationHelperMethod();
 }
 

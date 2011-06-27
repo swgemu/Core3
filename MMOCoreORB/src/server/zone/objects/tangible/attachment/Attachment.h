@@ -224,7 +224,7 @@ public:
 
 	bool isClothingAttachment();
 
-	Attachment* _this;
+	WeakReference<Attachment*> _this;
 
 	operator const Attachment*();
 

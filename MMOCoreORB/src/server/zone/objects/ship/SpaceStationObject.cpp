@@ -52,7 +52,8 @@ void SpaceStationObjectImplementation::finalize() {
 void SpaceStationObjectImplementation::_initializeImplementation() {
 	_setClassHelper(SpaceStationObjectHelper::instance());
 
-	_serializationHelperMethod();
+	_this = NULL;
+
 	_serializationHelperMethod();
 }
 

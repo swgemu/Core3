@@ -90,7 +90,7 @@ public:
 
 	void updateCraftingValues(ManufactureSchematic* schematic);
 
-	ClothingObject* _this;
+	WeakReference<ClothingObject*> _this;
 
 	operator const ClothingObject*();
 

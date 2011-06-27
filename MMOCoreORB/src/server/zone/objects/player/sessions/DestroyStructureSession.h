@@ -80,6 +80,8 @@ class DestroyStructureSession : public Facade {
 public:
 	DestroyStructureSession(CreatureObject* creature, StructureObject* structure);
 
+	bool isDestroyCode(unsigned int code);
+
 	int initializeSession();
 
 	int sendDestroyCode();
@@ -118,12 +120,14 @@ protected:
 
 	ManagedReference<StructureObject* > structureObject;
 
-	int destroyCode;
+	unsigned int destroyCode;
 
 public:
 	DestroyStructureSessionImplementation(CreatureObject* creature, StructureObject* structure);
 
 	DestroyStructureSessionImplementation(DummyConstructorParameter* param);
+
+	bool isDestroyCode(unsigned int code);
 
 	int initializeSession();
 
@@ -133,7 +137,7 @@ public:
 
 	int clearSession();
 
-	DestroyStructureSession* _this;
+	WeakReference<DestroyStructureSession*> _this;
 
 	operator const DestroyStructureSession*();
 
@@ -175,6 +179,8 @@ public:
 	DestroyStructureSessionAdapter(DestroyStructureSessionImplementation* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
+
+	bool isDestroyCode(unsigned int code);
 
 	int initializeSession();
 

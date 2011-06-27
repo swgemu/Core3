@@ -404,7 +404,7 @@ public:
 
 	ChatRoom* getGroupRoom();
 
-	ChatManager* _this;
+	WeakReference<ChatManager*> _this;
 
 	operator const ChatManager*();
 

@@ -189,7 +189,8 @@ void CurePackImplementation::finalize() {
 void CurePackImplementation::_initializeImplementation() {
 	_setClassHelper(CurePackHelper::instance());
 
-	_serializationHelperMethod();
+	_this = NULL;
+
 	_serializationHelperMethod();
 }
 

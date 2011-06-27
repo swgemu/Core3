@@ -194,7 +194,8 @@ void SlicingSessionImplementation::finalize() {
 void SlicingSessionImplementation::_initializeImplementation() {
 	_setClassHelper(SlicingSessionHelper::instance());
 
-	_serializationHelperMethod();
+	_this = NULL;
+
 	_serializationHelperMethod();
 }
 

@@ -60,7 +60,7 @@ public:
 
 	bool isHerdGroup();
 
-	HerdGroup* _this;
+	WeakReference<HerdGroup*> _this;
 
 	operator const HerdGroup*();
 

@@ -105,7 +105,7 @@ public:
 
 	void setMissionObjective(DestroyMissionObjective* mission);
 
-	MissionSpawnActiveArea* _this;
+	WeakReference<MissionSpawnActiveArea*> _this;
 
 	operator const MissionSpawnActiveArea*();
 

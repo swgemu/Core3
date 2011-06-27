@@ -82,7 +82,7 @@ public:
 
 	RecreationBuildingObjectImplementation(DummyConstructorParameter* param);
 
-	RecreationBuildingObject* _this;
+	WeakReference<RecreationBuildingObject*> _this;
 
 	operator const RecreationBuildingObject*();
 

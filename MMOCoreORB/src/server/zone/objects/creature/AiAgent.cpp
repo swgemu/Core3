@@ -1135,7 +1135,8 @@ AiAgentImplementation::~AiAgentImplementation() {
 void AiAgentImplementation::_initializeImplementation() {
 	_setClassHelper(AiAgentHelper::instance());
 
-	_serializationHelperMethod();
+	_this = NULL;
+
 	_serializationHelperMethod();
 }
 

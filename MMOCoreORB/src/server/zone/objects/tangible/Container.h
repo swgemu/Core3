@@ -157,7 +157,7 @@ public:
 
 	void setLockedStatus(bool lock);
 
-	Container* _this;
+	WeakReference<Container*> _this;
 
 	operator const Container*();
 

@@ -443,7 +443,7 @@ public:
 
 	String getTemplateString2();
 
-	MissionObject* _this;
+	WeakReference<MissionObject*> _this;
 
 	operator const MissionObject*();
 

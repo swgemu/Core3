@@ -252,7 +252,7 @@ public:
 
 	bool isEnhancePack();
 
-	EnhancePack* _this;
+	WeakReference<EnhancePack*> _this;
 
 	operator const EnhancePack*();
 

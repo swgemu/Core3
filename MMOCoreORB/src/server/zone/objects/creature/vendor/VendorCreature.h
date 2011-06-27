@@ -216,7 +216,7 @@ public:
 
 	virtual bool isVendorCreature();
 
-	VendorCreature* _this;
+	WeakReference<VendorCreature*> _this;
 
 	operator const VendorCreature*();
 

@@ -247,7 +247,7 @@ public:
 
 	float getWindY();
 
-	WeatherManager* _this;
+	WeakReference<WeatherManager*> _this;
 
 	operator const WeatherManager*();
 

@@ -73,7 +73,8 @@ void InstrumentObserverImplementation::finalize() {
 void InstrumentObserverImplementation::_initializeImplementation() {
 	_setClassHelper(InstrumentObserverHelper::instance());
 
-	_serializationHelperMethod();
+	_this = NULL;
+
 	_serializationHelperMethod();
 }
 

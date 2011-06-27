@@ -269,7 +269,8 @@ void MissionTerminalImplementation::finalize() {
 void MissionTerminalImplementation::_initializeImplementation() {
 	_setClassHelper(MissionTerminalHelper::instance());
 
-	_serializationHelperMethod();
+	_this = NULL;
+
 	_serializationHelperMethod();
 }
 

@@ -223,7 +223,8 @@ VendorCreatureImplementation::~VendorCreatureImplementation() {
 void VendorCreatureImplementation::_initializeImplementation() {
 	_setClassHelper(VendorCreatureHelper::instance());
 
-	_serializationHelperMethod();
+	_this = NULL;
+
 	_serializationHelperMethod();
 }
 

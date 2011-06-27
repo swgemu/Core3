@@ -145,7 +145,7 @@ public:
 
 	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
 
-	CloningTerminal* _this;
+	WeakReference<CloningTerminal*> _this;
 
 	operator const CloningTerminal*();
 

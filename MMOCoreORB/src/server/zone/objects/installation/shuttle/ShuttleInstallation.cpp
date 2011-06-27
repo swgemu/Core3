@@ -84,7 +84,8 @@ void ShuttleInstallationImplementation::finalize() {
 void ShuttleInstallationImplementation::_initializeImplementation() {
 	_setClassHelper(ShuttleInstallationHelper::instance());
 
-	_serializationHelperMethod();
+	_this = NULL;
+
 	_serializationHelperMethod();
 }
 

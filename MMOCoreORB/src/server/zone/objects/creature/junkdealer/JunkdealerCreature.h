@@ -172,7 +172,7 @@ public:
 
 	void createSellJunkLootSelection(PlayerCreature* player);
 
-	JunkdealerCreature* _this;
+	WeakReference<JunkdealerCreature*> _this;
 
 	operator const JunkdealerCreature*();
 

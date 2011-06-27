@@ -205,7 +205,7 @@ public:
 
 	byte getColor();
 
-	WaypointObject* _this;
+	WeakReference<WaypointObject*> _this;
 
 	operator const WaypointObject*();
 

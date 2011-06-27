@@ -549,7 +549,8 @@ void GamblingTerminalImplementation::finalize() {
 void GamblingTerminalImplementation::_initializeImplementation() {
 	_setClassHelper(GamblingTerminalHelper::instance());
 
-	_serializationHelperMethod();
+	_this = NULL;
+
 	_serializationHelperMethod();
 }
 

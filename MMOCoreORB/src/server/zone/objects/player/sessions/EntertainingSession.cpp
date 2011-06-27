@@ -602,7 +602,8 @@ EntertainingSessionImplementation::~EntertainingSessionImplementation() {
 void EntertainingSessionImplementation::_initializeImplementation() {
 	_setClassHelper(EntertainingSessionHelper::instance());
 
-	_serializationHelperMethod();
+	_this = NULL;
+
 	_serializationHelperMethod();
 }
 

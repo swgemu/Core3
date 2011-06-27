@@ -88,7 +88,8 @@ void MissionObserverImplementation::finalize() {
 void MissionObserverImplementation::_initializeImplementation() {
 	_setClassHelper(MissionObserverHelper::instance());
 
-	_serializationHelperMethod();
+	_this = NULL;
+
 	_serializationHelperMethod();
 }
 

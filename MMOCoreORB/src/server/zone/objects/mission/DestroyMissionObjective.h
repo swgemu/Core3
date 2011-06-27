@@ -183,7 +183,7 @@ public:
 
 	void setLairTemplateToSpawn(SharedObjectTemplate* sp);
 
-	DestroyMissionObjective* _this;
+	WeakReference<DestroyMissionObjective*> _this;
 
 	operator const DestroyMissionObjective*();
 

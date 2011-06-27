@@ -136,7 +136,8 @@ void StatePackImplementation::finalize() {
 void StatePackImplementation::_initializeImplementation() {
 	_setClassHelper(StatePackHelper::instance());
 
-	_serializationHelperMethod();
+	_this = NULL;
+
 	_serializationHelperMethod();
 }
 

@@ -162,7 +162,8 @@ void CityRegionImplementation::finalize() {
 void CityRegionImplementation::_initializeImplementation() {
 	_setClassHelper(CityRegionHelper::instance());
 
-	_serializationHelperMethod();
+	_this = NULL;
+
 	_serializationHelperMethod();
 }
 

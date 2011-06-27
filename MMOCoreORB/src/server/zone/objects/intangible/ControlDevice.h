@@ -149,7 +149,7 @@ public:
 
 	bool isControlDevice();
 
-	ControlDevice* _this;
+	WeakReference<ControlDevice*> _this;
 
 	operator const ControlDevice*();
 

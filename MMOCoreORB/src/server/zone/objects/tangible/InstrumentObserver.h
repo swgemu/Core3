@@ -103,7 +103,7 @@ public:
 
 	int notifyObserverEvent(unsigned int eventType, Observable* observable, ManagedObject* arg1, long long arg2);
 
-	InstrumentObserver* _this;
+	WeakReference<InstrumentObserver*> _this;
 
 	operator const InstrumentObserver*();
 

@@ -387,7 +387,8 @@ void SurveyToolImplementation::finalize() {
 void SurveyToolImplementation::_initializeImplementation() {
 	_setClassHelper(SurveyToolHelper::instance());
 
-	_serializationHelperMethod();
+	_this = NULL;
+
 	_serializationHelperMethod();
 }
 

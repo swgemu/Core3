@@ -1001,7 +1001,7 @@ public:
 
 	unsigned int getHologrindMask();
 
-	PlayerCreature* _this;
+	WeakReference<PlayerCreature*> _this;
 
 	operator const PlayerCreature*();
 

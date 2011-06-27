@@ -144,7 +144,7 @@ public:
 
 	void setDownerAttributes(CreatureObject* creature, Buff* buff);
 
-	SpiceBuff* _this;
+	WeakReference<SpiceBuff*> _this;
 
 	operator const SpiceBuff*();
 

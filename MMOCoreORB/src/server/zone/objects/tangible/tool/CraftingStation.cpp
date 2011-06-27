@@ -215,7 +215,8 @@ void CraftingStationImplementation::finalize() {
 void CraftingStationImplementation::_initializeImplementation() {
 	_setClassHelper(CraftingStationHelper::instance());
 
-	_serializationHelperMethod();
+	_this = NULL;
+
 	_serializationHelperMethod();
 }
 

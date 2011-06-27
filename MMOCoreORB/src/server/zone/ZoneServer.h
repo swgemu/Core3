@@ -747,7 +747,7 @@ public:
 
 	String getMessageoftheDay();
 
-	ZoneServer* _this;
+	WeakReference<ZoneServer*> _this;
 
 	operator const ZoneServer*();
 

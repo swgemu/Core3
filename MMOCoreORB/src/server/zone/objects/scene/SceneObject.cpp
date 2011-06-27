@@ -3010,7 +3010,8 @@ SceneObjectImplementation::~SceneObjectImplementation() {
 void SceneObjectImplementation::_initializeImplementation() {
 	_setClassHelper(SceneObjectHelper::instance());
 
-	_serializationHelperMethod();
+	_this = NULL;
+
 	_serializationHelperMethod();
 }
 

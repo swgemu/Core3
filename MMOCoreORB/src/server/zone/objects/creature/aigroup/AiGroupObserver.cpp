@@ -73,7 +73,8 @@ void AiGroupObserverImplementation::finalize() {
 void AiGroupObserverImplementation::_initializeImplementation() {
 	_setClassHelper(AiGroupObserverHelper::instance());
 
-	_serializationHelperMethod();
+	_this = NULL;
+
 	_serializationHelperMethod();
 }
 

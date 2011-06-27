@@ -94,7 +94,7 @@ public:
 
 	virtual int notifyObserverEvent(unsigned int eventType, Observable* observable, ManagedObject* arg1, long long arg2);
 
-	AiGroupObserver* _this;
+	WeakReference<AiGroupObserver*> _this;
 
 	operator const AiGroupObserver*();
 

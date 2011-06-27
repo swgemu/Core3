@@ -336,7 +336,7 @@ public:
 
 	bool isOwner();
 
-	AuctionItem* _this;
+	WeakReference<AuctionItem*> _this;
 
 	operator const AuctionItem*();
 

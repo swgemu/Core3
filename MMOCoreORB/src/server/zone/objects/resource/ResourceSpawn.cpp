@@ -586,7 +586,8 @@ ResourceSpawnImplementation::~ResourceSpawnImplementation() {
 void ResourceSpawnImplementation::_initializeImplementation() {
 	_setClassHelper(ResourceSpawnHelper::instance());
 
-	_serializationHelperMethod();
+	_this = NULL;
+
 	_serializationHelperMethod();
 }
 

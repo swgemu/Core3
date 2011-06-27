@@ -155,7 +155,7 @@ public:
 
 	void setEfficiency(unsigned int eff);
 
-	SurveyMissionObjective* _this;
+	WeakReference<SurveyMissionObjective*> _this;
 
 	operator const SurveyMissionObjective*();
 

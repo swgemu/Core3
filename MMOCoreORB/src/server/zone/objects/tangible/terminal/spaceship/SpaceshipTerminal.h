@@ -79,7 +79,7 @@ public:
 
 	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
 
-	SpaceshipTerminal* _this;
+	WeakReference<SpaceshipTerminal*> _this;
 
 	operator const SpaceshipTerminal*();
 

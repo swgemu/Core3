@@ -60,7 +60,7 @@ public:
 
 	bool isPackGroup();
 
-	PackGroup* _this;
+	WeakReference<PackGroup*> _this;
 
 	operator const PackGroup*();
 

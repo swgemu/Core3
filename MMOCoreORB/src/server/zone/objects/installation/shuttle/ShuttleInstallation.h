@@ -198,7 +198,7 @@ public:
 
 	bool checkRequisitesForPlacement(PlayerCreature* player);
 
-	ShuttleInstallation* _this;
+	WeakReference<ShuttleInstallation*> _this;
 
 	operator const ShuttleInstallation*();
 

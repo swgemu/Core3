@@ -193,7 +193,8 @@ void JunkdealerCreatureImplementation::finalize() {
 void JunkdealerCreatureImplementation::_initializeImplementation() {
 	_setClassHelper(JunkdealerCreatureHelper::instance());
 
-	_serializationHelperMethod();
+	_this = NULL;
+
 	_serializationHelperMethod();
 }
 

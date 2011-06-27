@@ -231,7 +231,7 @@ public:
 
 	bool updateMissionTarget(CreatureObject* player);
 
-	DeliverMissionObjective* _this;
+	WeakReference<DeliverMissionObjective*> _this;
 
 	operator const DeliverMissionObjective*();
 

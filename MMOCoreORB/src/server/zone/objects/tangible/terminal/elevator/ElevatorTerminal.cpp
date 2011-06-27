@@ -168,7 +168,8 @@ void ElevatorTerminalImplementation::finalize() {
 void ElevatorTerminalImplementation::_initializeImplementation() {
 	_setClassHelper(ElevatorTerminalHelper::instance());
 
-	_serializationHelperMethod();
+	_this = NULL;
+
 	_serializationHelperMethod();
 }
 

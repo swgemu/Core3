@@ -82,7 +82,8 @@ void SuiMessageBoxImplementation::finalize() {
 void SuiMessageBoxImplementation::_initializeImplementation() {
 	_setClassHelper(SuiMessageBoxHelper::instance());
 
-	_serializationHelperMethod();
+	_this = NULL;
+
 	_serializationHelperMethod();
 }
 

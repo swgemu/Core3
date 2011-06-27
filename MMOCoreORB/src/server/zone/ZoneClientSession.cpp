@@ -300,7 +300,8 @@ void ZoneClientSessionImplementation::finalize() {
 void ZoneClientSessionImplementation::_initializeImplementation() {
 	_setClassHelper(ZoneClientSessionHelper::instance());
 
-	_serializationHelperMethod();
+	_this = NULL;
+
 	_serializationHelperMethod();
 }
 

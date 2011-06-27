@@ -310,7 +310,7 @@ public:
 
 	bool isSpice();
 
-	Consumable* _this;
+	WeakReference<Consumable*> _this;
 
 	operator const Consumable*();
 

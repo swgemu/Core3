@@ -187,7 +187,7 @@ public:
 
 	void split(int newStackSize);
 
-	FactoryCrate* _this;
+	WeakReference<FactoryCrate*> _this;
 
 	operator const FactoryCrate*();
 

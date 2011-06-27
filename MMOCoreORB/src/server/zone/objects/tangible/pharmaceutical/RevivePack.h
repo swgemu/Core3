@@ -216,7 +216,7 @@ public:
 
 	bool isRevivePack();
 
-	RevivePack* _this;
+	WeakReference<RevivePack*> _this;
 
 	operator const RevivePack*();
 

@@ -102,7 +102,8 @@ void PlayerLearnListBoxImplementation::finalize() {
 void PlayerLearnListBoxImplementation::_initializeImplementation() {
 	_setClassHelper(PlayerLearnListBoxHelper::instance());
 
-	_serializationHelperMethod();
+	_this = NULL;
+
 	_serializationHelperMethod();
 }
 

@@ -183,7 +183,7 @@ public:
 
 	void removeSlicer(PlayerCreature* slicer);
 
-	MissionTerminal* _this;
+	WeakReference<MissionTerminal*> _this;
 
 	operator const MissionTerminal*();
 

@@ -337,7 +337,8 @@ void AuctionManagerImplementation::finalize() {
 void AuctionManagerImplementation::_initializeImplementation() {
 	_setClassHelper(AuctionManagerHelper::instance());
 
-	_serializationHelperMethod();
+	_this = NULL;
+
 	_serializationHelperMethod();
 }
 

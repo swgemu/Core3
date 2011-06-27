@@ -180,7 +180,7 @@ public:
 
 	bool isAttackableBy(CreatureObject* object);
 
-	TrainerCreature* _this;
+	WeakReference<TrainerCreature*> _this;
 
 	operator const TrainerCreature*();
 

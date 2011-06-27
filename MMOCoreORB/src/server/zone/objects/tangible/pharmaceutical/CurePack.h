@@ -218,7 +218,7 @@ public:
 
 	bool isCurePack();
 
-	CurePack* _this;
+	WeakReference<CurePack*> _this;
 
 	operator const CurePack*();
 

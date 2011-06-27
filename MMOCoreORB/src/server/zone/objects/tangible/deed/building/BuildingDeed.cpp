@@ -137,7 +137,8 @@ void BuildingDeedImplementation::finalize() {
 void BuildingDeedImplementation::_initializeImplementation() {
 	_setClassHelper(BuildingDeedHelper::instance());
 
-	_serializationHelperMethod();
+	_this = NULL;
+
 	_serializationHelperMethod();
 }
 

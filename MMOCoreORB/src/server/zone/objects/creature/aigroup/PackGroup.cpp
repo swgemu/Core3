@@ -65,7 +65,8 @@ void PackGroupImplementation::finalize() {
 void PackGroupImplementation::_initializeImplementation() {
 	_setClassHelper(PackGroupHelper::instance());
 
-	_serializationHelperMethod();
+	_this = NULL;
+
 	_serializationHelperMethod();
 }
 

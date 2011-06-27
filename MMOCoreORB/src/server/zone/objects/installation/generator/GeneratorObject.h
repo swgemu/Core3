@@ -87,7 +87,7 @@ public:
 
 	bool isGeneratorObject();
 
-	GeneratorObject* _this;
+	WeakReference<GeneratorObject*> _this;
 
 	operator const GeneratorObject*();
 

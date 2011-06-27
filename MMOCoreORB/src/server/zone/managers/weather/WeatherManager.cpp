@@ -291,7 +291,8 @@ void WeatherManagerImplementation::finalize() {
 void WeatherManagerImplementation::_initializeImplementation() {
 	_setClassHelper(WeatherManagerHelper::instance());
 
-	_serializationHelperMethod();
+	_this = NULL;
+
 	_serializationHelperMethod();
 }
 

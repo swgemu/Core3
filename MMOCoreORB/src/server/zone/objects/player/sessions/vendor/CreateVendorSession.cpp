@@ -139,7 +139,8 @@ void CreateVendorSessionImplementation::finalize() {
 void CreateVendorSessionImplementation::_initializeImplementation() {
 	_setClassHelper(CreateVendorSessionHelper::instance());
 
-	_serializationHelperMethod();
+	_this = NULL;
+
 	_serializationHelperMethod();
 }
 

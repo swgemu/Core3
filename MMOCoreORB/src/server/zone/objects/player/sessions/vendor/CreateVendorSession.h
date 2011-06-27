@@ -152,7 +152,7 @@ public:
 
 	int clearSession();
 
-	CreateVendorSession* _this;
+	WeakReference<CreateVendorSession*> _this;
 
 	operator const CreateVendorSession*();
 

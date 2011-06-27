@@ -85,7 +85,7 @@ public:
 
 	void notifyEnter(SceneObject* player);
 
-	GarageArea* _this;
+	WeakReference<GarageArea*> _this;
 
 	operator const GarageArea*();
 

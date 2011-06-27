@@ -71,7 +71,8 @@ void EntertainingObserverImplementation::finalize() {
 void EntertainingObserverImplementation::_initializeImplementation() {
 	_setClassHelper(EntertainingObserverHelper::instance());
 
-	_serializationHelperMethod();
+	_this = NULL;
+
 	_serializationHelperMethod();
 }
 

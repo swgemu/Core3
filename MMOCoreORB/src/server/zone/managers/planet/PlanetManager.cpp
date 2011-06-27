@@ -542,7 +542,8 @@ PlanetManagerImplementation::~PlanetManagerImplementation() {
 void PlanetManagerImplementation::_initializeImplementation() {
 	_setClassHelper(PlanetManagerHelper::instance());
 
-	_serializationHelperMethod();
+	_this = NULL;
+
 	_serializationHelperMethod();
 }
 

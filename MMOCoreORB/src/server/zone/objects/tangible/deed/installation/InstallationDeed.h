@@ -136,7 +136,7 @@ public:
 
 	bool isInstallationDeed();
 
-	InstallationDeed* _this;
+	WeakReference<InstallationDeed*> _this;
 
 	operator const InstallationDeed*();
 

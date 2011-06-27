@@ -109,7 +109,7 @@ public:
 
 	void updateCraftingValues(ManufactureSchematic* schematic);
 
-	ArmorComponent* _this;
+	WeakReference<ArmorComponent*> _this;
 
 	operator const ArmorComponent*();
 

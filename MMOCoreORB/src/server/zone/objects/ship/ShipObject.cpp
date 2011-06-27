@@ -94,7 +94,8 @@ void ShipObjectImplementation::finalize() {
 void ShipObjectImplementation::_initializeImplementation() {
 	_setClassHelper(ShipObjectHelper::instance());
 
-	_serializationHelperMethod();
+	_this = NULL;
+
 	_serializationHelperMethod();
 }
 

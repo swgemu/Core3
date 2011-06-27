@@ -155,7 +155,7 @@ public:
 
 	PlayerCreature* getPlayerOwner();
 
-	MissionObjective* _this;
+	WeakReference<MissionObjective*> _this;
 
 	operator const MissionObjective*();
 

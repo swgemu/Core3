@@ -146,7 +146,8 @@ void VehicleDeedImplementation::finalize() {
 void VehicleDeedImplementation::_initializeImplementation() {
 	_setClassHelper(VehicleDeedHelper::instance());
 
-	_serializationHelperMethod();
+	_this = NULL;
+
 	_serializationHelperMethod();
 }
 

@@ -150,7 +150,7 @@ public:
 
 	int notifyObserverEvent(MissionObserver* observer, unsigned int eventType, Observable* observable, ManagedObject* arg1, long long arg2);
 
-	HuntingMissionObjective* _this;
+	WeakReference<HuntingMissionObjective*> _this;
 
 	operator const HuntingMissionObjective*();
 

@@ -145,7 +145,8 @@ void PlaceStructureSessionImplementation::finalize() {
 void PlaceStructureSessionImplementation::_initializeImplementation() {
 	_setClassHelper(PlaceStructureSessionHelper::instance());
 
-	_serializationHelperMethod();
+	_this = NULL;
+
 	_serializationHelperMethod();
 }
 

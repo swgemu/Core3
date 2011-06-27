@@ -142,7 +142,7 @@ public:
 
 	virtual bool isBazaarTerminal();
 
-	BazaarTerminal* _this;
+	WeakReference<BazaarTerminal*> _this;
 
 	operator const BazaarTerminal*();
 

@@ -129,7 +129,7 @@ public:
 
 	String getPreviousBox();
 
-	ResourceDeedListBox* _this;
+	WeakReference<ResourceDeedListBox*> _this;
 
 	operator const ResourceDeedListBox*();
 

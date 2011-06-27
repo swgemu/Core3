@@ -125,7 +125,7 @@ public:
 
 	void fillObjectMenuResponse(ObjectMenuResponse* menuResponse, PlayerCreature* player);
 
-	StructureTerminal* _this;
+	WeakReference<StructureTerminal*> _this;
 
 	operator const StructureTerminal*();
 

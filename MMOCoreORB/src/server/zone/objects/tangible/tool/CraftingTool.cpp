@@ -500,7 +500,8 @@ void CraftingToolImplementation::finalize() {
 void CraftingToolImplementation::_initializeImplementation() {
 	_setClassHelper(CraftingToolHelper::instance());
 
-	_serializationHelperMethod();
+	_this = NULL;
+
 	_serializationHelperMethod();
 }
 

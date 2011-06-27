@@ -174,7 +174,7 @@ protected:
 	void enqueueUnloadEvent();
 
 public:
-	TutorialBuildingObject* _this;
+	WeakReference<TutorialBuildingObject*> _this;
 
 	operator const TutorialBuildingObject*();
 

@@ -314,7 +314,8 @@ void ComponentImplementation::finalize() {
 void ComponentImplementation::_initializeImplementation() {
 	_setClassHelper(ComponentHelper::instance());
 
-	_serializationHelperMethod();
+	_this = NULL;
+
 	_serializationHelperMethod();
 }
 

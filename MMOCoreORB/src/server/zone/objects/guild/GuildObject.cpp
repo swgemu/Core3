@@ -520,7 +520,8 @@ void GuildObjectImplementation::finalize() {
 void GuildObjectImplementation::_initializeImplementation() {
 	_setClassHelper(GuildObjectHelper::instance());
 
-	_serializationHelperMethod();
+	_this = NULL;
+
 	_serializationHelperMethod();
 }
 

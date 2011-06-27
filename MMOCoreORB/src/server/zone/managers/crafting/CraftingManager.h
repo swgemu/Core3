@@ -264,7 +264,7 @@ public:
 
 	String generateSerial();
 
-	CraftingManager* _this;
+	WeakReference<CraftingManager*> _this;
 
 	operator const CraftingManager*();
 

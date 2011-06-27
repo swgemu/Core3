@@ -441,7 +441,7 @@ protected:
 	bool invalidPosture(PlayerCreature* player);
 
 public:
-	GamblingTerminal* _this;
+	WeakReference<GamblingTerminal*> _this;
 
 	operator const GamblingTerminal*();
 

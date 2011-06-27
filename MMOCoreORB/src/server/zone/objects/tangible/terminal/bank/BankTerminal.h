@@ -161,7 +161,7 @@ public:
 
 	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
 
-	BankTerminal* _this;
+	WeakReference<BankTerminal*> _this;
 
 	operator const BankTerminal*();
 

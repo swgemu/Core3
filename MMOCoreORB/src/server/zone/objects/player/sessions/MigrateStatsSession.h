@@ -123,7 +123,7 @@ public:
 
 	void migrateStats();
 
-	MigrateStatsSession* _this;
+	WeakReference<MigrateStatsSession*> _this;
 
 	operator const MigrateStatsSession*();
 

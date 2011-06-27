@@ -85,7 +85,8 @@ void ArmorComponentImplementation::finalize() {
 void ArmorComponentImplementation::_initializeImplementation() {
 	_setClassHelper(ArmorComponentHelper::instance());
 
-	_serializationHelperMethod();
+	_this = NULL;
+
 	_serializationHelperMethod();
 }
 

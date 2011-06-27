@@ -987,7 +987,8 @@ void TangibleObjectImplementation::finalize() {
 void TangibleObjectImplementation::_initializeImplementation() {
 	_setClassHelper(TangibleObjectHelper::instance());
 
-	_serializationHelperMethod();
+	_this = NULL;
+
 	_serializationHelperMethod();
 }
 

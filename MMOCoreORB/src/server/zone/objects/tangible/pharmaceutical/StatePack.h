@@ -194,7 +194,7 @@ public:
 
 	bool isStatePack();
 
-	StatePack* _this;
+	WeakReference<StatePack*> _this;
 
 	operator const StatePack*();
 

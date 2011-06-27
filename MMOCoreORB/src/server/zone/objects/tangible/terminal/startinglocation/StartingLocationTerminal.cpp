@@ -86,7 +86,8 @@ void StartingLocationTerminalImplementation::finalize() {
 void StartingLocationTerminalImplementation::_initializeImplementation() {
 	_setClassHelper(StartingLocationTerminalHelper::instance());
 
-	_serializationHelperMethod();
+	_this = NULL;
+
 	_serializationHelperMethod();
 }
 

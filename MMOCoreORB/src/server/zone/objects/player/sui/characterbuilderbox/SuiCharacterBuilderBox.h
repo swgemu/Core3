@@ -95,7 +95,7 @@ public:
 
 	bool isCharacterBuilderBox();
 
-	SuiCharacterBuilderBox* _this;
+	WeakReference<SuiCharacterBuilderBox*> _this;
 
 	operator const SuiCharacterBuilderBox*();
 

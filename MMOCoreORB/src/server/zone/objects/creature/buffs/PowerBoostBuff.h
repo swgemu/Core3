@@ -152,7 +152,7 @@ public:
 
 	void clearBuffEvent();
 
-	PowerBoostBuff* _this;
+	WeakReference<PowerBoostBuff*> _this;
 
 	operator const PowerBoostBuff*();
 

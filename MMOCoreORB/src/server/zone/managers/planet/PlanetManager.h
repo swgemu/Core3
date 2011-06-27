@@ -318,7 +318,7 @@ public:
 	PlanetManagerImplementation(DummyConstructorParameter* param);
 
 private:
-	void loadSnapshotObject(WorldSnapshotNode* node, WorldSnapshotIff* wsiff, int& totalObjects);
+	SceneObject* loadSnapshotObject(WorldSnapshotNode* node, WorldSnapshotIff* wsiff, int& totalObjects);
 
 	void loadSnapshotObjects();
 
@@ -411,7 +411,7 @@ public:
 
 	bool isTravelToLocationPermitted(const String& destinationPoint, const String& arrivalPlanet, const String& arrivalPoint);
 
-	PlanetManager* _this;
+	WeakReference<PlanetManager*> _this;
 
 	operator const PlanetManager*();
 

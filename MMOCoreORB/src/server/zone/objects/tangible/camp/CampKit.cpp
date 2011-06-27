@@ -80,7 +80,8 @@ void CampKitImplementation::finalize() {
 void CampKitImplementation::_initializeImplementation() {
 	_setClassHelper(CampKitHelper::instance());
 
-	_serializationHelperMethod();
+	_this = NULL;
+
 	_serializationHelperMethod();
 }
 

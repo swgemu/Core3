@@ -184,7 +184,7 @@ public:
 
 	void combine(ResourceContainer* fromContainer);
 
-	ResourceContainer* _this;
+	WeakReference<ResourceContainer*> _this;
 
 	operator const ResourceContainer*();
 

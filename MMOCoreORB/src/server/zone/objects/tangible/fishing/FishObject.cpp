@@ -153,7 +153,8 @@ void FishObjectImplementation::finalize() {
 void FishObjectImplementation::_initializeImplementation() {
 	_setClassHelper(FishObjectHelper::instance());
 
-	_serializationHelperMethod();
+	_this = NULL;
+
 	_serializationHelperMethod();
 }
 

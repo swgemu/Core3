@@ -81,7 +81,8 @@ void SuiListBoxMenuItemImplementation::finalize() {
 void SuiListBoxMenuItemImplementation::_initializeImplementation() {
 	_setClassHelper(SuiListBoxMenuItemHelper::instance());
 
-	_serializationHelperMethod();
+	_this = NULL;
+
 	_serializationHelperMethod();
 }
 

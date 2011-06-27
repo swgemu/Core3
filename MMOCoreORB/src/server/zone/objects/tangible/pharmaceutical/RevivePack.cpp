@@ -192,7 +192,8 @@ void RevivePackImplementation::finalize() {
 void RevivePackImplementation::_initializeImplementation() {
 	_setClassHelper(RevivePackHelper::instance());
 
-	_serializationHelperMethod();
+	_this = NULL;
+
 	_serializationHelperMethod();
 }
 

@@ -198,7 +198,7 @@ public:
 
 	virtual bool isRevivePack();
 
-	PharmaceuticalObject* _this;
+	WeakReference<PharmaceuticalObject*> _this;
 
 	operator const PharmaceuticalObject*();
 

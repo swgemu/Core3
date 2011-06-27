@@ -620,7 +620,7 @@ public:
 
 	FactoryCrate* createFactoryCrate(bool insertSelf = false);
 
-	TangibleObject* _this;
+	WeakReference<TangibleObject*> _this;
 
 	operator const TangibleObject*();
 

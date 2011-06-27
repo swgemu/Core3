@@ -145,7 +145,7 @@ public:
 
 	bool isCityTerminal();
 
-	CityTerminal* _this;
+	WeakReference<CityTerminal*> _this;
 
 	operator const CityTerminal*();
 

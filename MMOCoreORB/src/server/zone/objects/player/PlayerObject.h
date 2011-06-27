@@ -631,7 +631,7 @@ public:
 
 	String getCommandMessageString(unsigned int actionCRC);
 
-	PlayerObject* _this;
+	WeakReference<PlayerObject*> _this;
 
 	operator const PlayerObject*();
 

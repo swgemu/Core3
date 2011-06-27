@@ -178,7 +178,8 @@ void ContainerImplementation::finalize() {
 void ContainerImplementation::_initializeImplementation() {
 	_setClassHelper(ContainerHelper::instance());
 
-	_serializationHelperMethod();
+	_this = NULL;
+
 	_serializationHelperMethod();
 }
 

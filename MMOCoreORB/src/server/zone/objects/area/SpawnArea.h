@@ -125,7 +125,7 @@ public:
 
 	virtual bool isDynamicArea();
 
-	SpawnArea* _this;
+	WeakReference<SpawnArea*> _this;
 
 	operator const SpawnArea*();
 

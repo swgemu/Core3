@@ -280,7 +280,7 @@ public:
 
 	int compareTo(ChatRoom* obj);
 
-	ChatRoom* _this;
+	WeakReference<ChatRoom*> _this;
 
 	operator const ChatRoom*();
 

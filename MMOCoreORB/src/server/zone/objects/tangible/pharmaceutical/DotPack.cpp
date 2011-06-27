@@ -267,7 +267,8 @@ void DotPackImplementation::finalize() {
 void DotPackImplementation::_initializeImplementation() {
 	_setClassHelper(DotPackHelper::instance());
 
-	_serializationHelperMethod();
+	_this = NULL;
+
 	_serializationHelperMethod();
 }
 

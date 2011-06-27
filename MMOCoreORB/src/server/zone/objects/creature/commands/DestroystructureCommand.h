@@ -64,7 +64,10 @@ public:
 		if (!checkInvalidPostures(creature))
 			return INVALIDPOSTURE;
 
-		System::out << target << endl;
+		if (creature->containsActiveSession(SessionFacadeType::DESTROYSTRUCTURE)) {
+			creature->sendSystemMessage("@player_structure:pending_destroy"); //You already have an outstanding destroy command for another structure. You must wait for that to expire before attempting a new structure destroy action.
+			return GENERALERROR;
+		}
 
 		ManagedReference<SceneObject*> obj = creature->getZoneServer()->getObject(target);
 

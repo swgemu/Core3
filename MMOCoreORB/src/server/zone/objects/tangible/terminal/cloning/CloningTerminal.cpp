@@ -79,7 +79,8 @@ void CloningTerminalImplementation::finalize() {
 void CloningTerminalImplementation::_initializeImplementation() {
 	_setClassHelper(CloningTerminalHelper::instance());
 
-	_serializationHelperMethod();
+	_this = NULL;
+
 	_serializationHelperMethod();
 }
 

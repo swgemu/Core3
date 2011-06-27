@@ -152,7 +152,8 @@ void StimPackImplementation::finalize() {
 void StimPackImplementation::_initializeImplementation() {
 	_setClassHelper(StimPackHelper::instance());
 
-	_serializationHelperMethod();
+	_this = NULL;
+
 	_serializationHelperMethod();
 }
 

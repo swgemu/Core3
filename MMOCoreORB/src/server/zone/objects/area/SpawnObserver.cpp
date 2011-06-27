@@ -71,7 +71,8 @@ void SpawnObserverImplementation::finalize() {
 void SpawnObserverImplementation::_initializeImplementation() {
 	_setClassHelper(SpawnObserverHelper::instance());
 
-	_serializationHelperMethod();
+	_this = NULL;
+
 	_serializationHelperMethod();
 }
 

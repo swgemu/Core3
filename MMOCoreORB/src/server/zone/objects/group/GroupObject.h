@@ -198,7 +198,7 @@ public:
 
 	void removeGroupModifiers(PlayerCreature* player);
 
-	GroupObject* _this;
+	WeakReference<GroupObject*> _this;
 
 	operator const GroupObject*();
 

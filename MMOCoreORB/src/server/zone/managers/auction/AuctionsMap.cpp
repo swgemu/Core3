@@ -324,7 +324,8 @@ void AuctionsMapImplementation::finalize() {
 void AuctionsMapImplementation::_initializeImplementation() {
 	_setClassHelper(AuctionsMapHelper::instance());
 
-	_serializationHelperMethod();
+	_this = NULL;
+
 	_serializationHelperMethod();
 }
 

@@ -79,7 +79,7 @@ public:
 
 	virtual int notifyObserverEvent(unsigned int eventType, Observable* observable, ManagedObject* arg1, long long arg2);
 
-	SpawnObserver* _this;
+	WeakReference<SpawnObserver*> _this;
 
 	operator const SpawnObserver*();
 

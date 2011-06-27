@@ -149,7 +149,7 @@ public:
 
 	PlanetTravelPoint* getPlanetTravelPoint();
 
-	TravelTerminal* _this;
+	WeakReference<TravelTerminal*> _this;
 
 	operator const TravelTerminal*();
 

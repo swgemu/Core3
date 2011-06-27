@@ -251,7 +251,8 @@ void WaypointObjectImplementation::finalize() {
 void WaypointObjectImplementation::_initializeImplementation() {
 	_setClassHelper(WaypointObjectHelper::instance());
 
-	_serializationHelperMethod();
+	_this = NULL;
+
 	_serializationHelperMethod();
 }
 

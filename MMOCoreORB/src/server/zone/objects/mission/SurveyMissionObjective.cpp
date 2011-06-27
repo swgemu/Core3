@@ -170,7 +170,8 @@ SurveyMissionObjectiveImplementation::~SurveyMissionObjectiveImplementation() {
 void SurveyMissionObjectiveImplementation::_initializeImplementation() {
 	_setClassHelper(SurveyMissionObjectiveHelper::instance());
 
-	_serializationHelperMethod();
+	_this = NULL;
+
 	_serializationHelperMethod();
 }
 

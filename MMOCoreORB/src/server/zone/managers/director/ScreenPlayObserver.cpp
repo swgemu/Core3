@@ -125,7 +125,8 @@ void ScreenPlayObserverImplementation::finalize() {
 void ScreenPlayObserverImplementation::_initializeImplementation() {
 	_setClassHelper(ScreenPlayObserverHelper::instance());
 
-	_serializationHelperMethod();
+	_this = NULL;
+
 	_serializationHelperMethod();
 }
 

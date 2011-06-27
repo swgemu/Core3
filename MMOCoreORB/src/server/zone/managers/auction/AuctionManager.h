@@ -301,7 +301,7 @@ private:
 public:
 	AuctionsMap* getAuctionMap();
 
-	AuctionManager* _this;
+	WeakReference<AuctionManager*> _this;
 
 	operator const AuctionManager*();
 

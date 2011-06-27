@@ -82,7 +82,8 @@ void DrinkImplementation::finalize() {
 void DrinkImplementation::_initializeImplementation() {
 	_setClassHelper(DrinkHelper::instance());
 
-	_serializationHelperMethod();
+	_this = NULL;
+
 	_serializationHelperMethod();
 }
 

@@ -168,7 +168,7 @@ public:
 
 	SortedVector<unsigned int>* getObjectsToSpawn();
 
-	LairObject* _this;
+	WeakReference<LairObject*> _this;
 
 	operator const LairObject*();
 

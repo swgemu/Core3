@@ -536,7 +536,8 @@ void BuffImplementation::finalize() {
 void BuffImplementation::_initializeImplementation() {
 	_setClassHelper(BuffHelper::instance());
 
-	_serializationHelperMethod();
+	_this = NULL;
+
 	_serializationHelperMethod();
 }
 

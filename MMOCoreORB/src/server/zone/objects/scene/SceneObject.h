@@ -2262,7 +2262,7 @@ public:
 
 	virtual void initializeChildObject(SceneObject* controllerObject);
 
-	SceneObject* _this;
+	WeakReference<SceneObject*> _this;
 
 	operator const SceneObject*();
 

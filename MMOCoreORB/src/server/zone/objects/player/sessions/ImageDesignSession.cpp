@@ -189,7 +189,8 @@ void ImageDesignSessionImplementation::finalize() {
 void ImageDesignSessionImplementation::_initializeImplementation() {
 	_setClassHelper(ImageDesignSessionHelper::instance());
 
-	_serializationHelperMethod();
+	_this = NULL;
+
 	_serializationHelperMethod();
 }
 

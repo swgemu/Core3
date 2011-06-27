@@ -82,7 +82,7 @@ public:
 
 	TravelBuildingObjectImplementation(DummyConstructorParameter* param);
 
-	TravelBuildingObject* _this;
+	WeakReference<TravelBuildingObject*> _this;
 
 	operator const TravelBuildingObject*();
 

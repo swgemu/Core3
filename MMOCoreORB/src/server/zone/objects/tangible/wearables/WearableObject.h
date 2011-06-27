@@ -174,7 +174,7 @@ private:
 	void generateSockets(ManufactureSchematic* schematic);
 
 public:
-	WearableObject* _this;
+	WeakReference<WearableObject*> _this;
 
 	operator const WearableObject*();
 

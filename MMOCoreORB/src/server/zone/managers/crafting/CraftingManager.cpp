@@ -251,7 +251,8 @@ void CraftingManagerImplementation::finalize() {
 void CraftingManagerImplementation::_initializeImplementation() {
 	_setClassHelper(CraftingManagerHelper::instance());
 
-	_serializationHelperMethod();
+	_this = NULL;
+
 	_serializationHelperMethod();
 }
 

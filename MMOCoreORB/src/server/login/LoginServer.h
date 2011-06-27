@@ -244,7 +244,7 @@ public:
 
 	LoginClusterStatus* getLoginClusterStatusMessage();
 
-	LoginServer* _this;
+	WeakReference<LoginServer*> _this;
 
 	operator const LoginServer*();
 

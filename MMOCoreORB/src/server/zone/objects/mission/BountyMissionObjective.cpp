@@ -153,7 +153,8 @@ BountyMissionObjectiveImplementation::~BountyMissionObjectiveImplementation() {
 void BountyMissionObjectiveImplementation::_initializeImplementation() {
 	_setClassHelper(BountyMissionObjectiveHelper::instance());
 
-	_serializationHelperMethod();
+	_this = NULL;
+
 	_serializationHelperMethod();
 }
 

@@ -225,7 +225,8 @@ void DynamicSpawnAreaImplementation::finalize() {
 void DynamicSpawnAreaImplementation::_initializeImplementation() {
 	_setClassHelper(DynamicSpawnAreaHelper::instance());
 
-	_serializationHelperMethod();
+	_this = NULL;
+
 	_serializationHelperMethod();
 }
 

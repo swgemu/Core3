@@ -116,7 +116,8 @@ void TicketCollectorImplementation::finalize() {
 void TicketCollectorImplementation::_initializeImplementation() {
 	_setClassHelper(TicketCollectorHelper::instance());
 
-	_serializationHelperMethod();
+	_this = NULL;
+
 	_serializationHelperMethod();
 }
 

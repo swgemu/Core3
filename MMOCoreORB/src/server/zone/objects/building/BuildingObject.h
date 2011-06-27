@@ -353,7 +353,7 @@ public:
 
 	virtual unsigned int getMaximumNumberOfPlayerItems();
 
-	BuildingObject* _this;
+	WeakReference<BuildingObject*> _this;
 
 	operator const BuildingObject*();
 

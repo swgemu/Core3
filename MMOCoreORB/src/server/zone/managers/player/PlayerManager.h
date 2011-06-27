@@ -436,7 +436,7 @@ public:
 
 	void generateHologrindProfessions(PlayerCreature* player);
 
-	PlayerManager* _this;
+	WeakReference<PlayerManager*> _this;
 
 	operator const PlayerManager*();
 

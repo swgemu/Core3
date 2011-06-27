@@ -123,7 +123,8 @@ void SuiInputBoxImplementation::finalize() {
 void SuiInputBoxImplementation::_initializeImplementation() {
 	_setClassHelper(SuiInputBoxHelper::instance());
 
-	_serializationHelperMethod();
+	_this = NULL;
+
 	_serializationHelperMethod();
 }
 

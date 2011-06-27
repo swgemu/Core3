@@ -74,7 +74,8 @@ void DurationBuffImplementation::finalize() {
 void DurationBuffImplementation::_initializeImplementation() {
 	_setClassHelper(DurationBuffHelper::instance());
 
-	_serializationHelperMethod();
+	_this = NULL;
+
 	_serializationHelperMethod();
 }
 

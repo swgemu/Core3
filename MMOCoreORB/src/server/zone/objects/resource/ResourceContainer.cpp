@@ -288,7 +288,8 @@ void ResourceContainerImplementation::finalize() {
 void ResourceContainerImplementation::_initializeImplementation() {
 	_setClassHelper(ResourceContainerHelper::instance());
 
-	_serializationHelperMethod();
+	_this = NULL;
+
 	_serializationHelperMethod();
 }
 

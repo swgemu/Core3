@@ -105,7 +105,7 @@ public:
 
 	unsigned int getStatus();
 
-	IntangibleObject* _this;
+	WeakReference<IntangibleObject*> _this;
 
 	operator const IntangibleObject*();
 

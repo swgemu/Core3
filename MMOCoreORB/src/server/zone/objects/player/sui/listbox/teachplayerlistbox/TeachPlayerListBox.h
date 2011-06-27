@@ -112,7 +112,7 @@ public:
 
 	bool generateSkillList(PlayerCreature* teacher, PlayerCreature* student);
 
-	TeachPlayerListBox* _this;
+	WeakReference<TeachPlayerListBox*> _this;
 
 	operator const TeachPlayerListBox*();
 

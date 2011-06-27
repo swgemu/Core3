@@ -243,7 +243,8 @@ void RegionImplementation::finalize() {
 void RegionImplementation::_initializeImplementation() {
 	_setClassHelper(RegionHelper::instance());
 
-	_serializationHelperMethod();
+	_this = NULL;
+
 	_serializationHelperMethod();
 }
 

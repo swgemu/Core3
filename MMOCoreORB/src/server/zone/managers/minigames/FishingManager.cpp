@@ -778,7 +778,8 @@ void FishingManagerImplementation::finalize() {
 void FishingManagerImplementation::_initializeImplementation() {
 	_setClassHelper(FishingManagerHelper::instance());
 
-	_serializationHelperMethod();
+	_this = NULL;
+
 	_serializationHelperMethod();
 }
 

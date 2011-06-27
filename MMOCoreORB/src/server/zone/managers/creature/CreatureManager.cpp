@@ -301,7 +301,8 @@ void CreatureManagerImplementation::finalize() {
 void CreatureManagerImplementation::_initializeImplementation() {
 	_setClassHelper(CreatureManagerHelper::instance());
 
-	_serializationHelperMethod();
+	_this = NULL;
+
 	_serializationHelperMethod();
 }
 

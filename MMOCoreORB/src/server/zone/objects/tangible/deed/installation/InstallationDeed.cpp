@@ -162,7 +162,8 @@ void InstallationDeedImplementation::finalize() {
 void InstallationDeedImplementation::_initializeImplementation() {
 	_setClassHelper(InstallationDeedHelper::instance());
 
-	_serializationHelperMethod();
+	_this = NULL;
+
 	_serializationHelperMethod();
 }
 

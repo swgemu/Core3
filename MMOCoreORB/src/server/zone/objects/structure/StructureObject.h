@@ -363,7 +363,7 @@ public:
 
 	AABBTree* getAABBTree();
 
-	StructureObject* _this;
+	WeakReference<StructureObject*> _this;
 
 	operator const StructureObject*();
 

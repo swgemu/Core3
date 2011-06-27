@@ -279,7 +279,8 @@ void FactoryObjectImplementation::finalize() {
 void FactoryObjectImplementation::_initializeImplementation() {
 	_setClassHelper(FactoryObjectHelper::instance());
 
-	_serializationHelperMethod();
+	_this = NULL;
+
 	_serializationHelperMethod();
 }
 

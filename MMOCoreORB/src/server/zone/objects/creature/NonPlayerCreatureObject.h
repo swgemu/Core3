@@ -97,7 +97,7 @@ public:
 
 	void doAwarenessCheck(Coordinate& start, unsigned long long time, CreatureObject* target);
 
-	NonPlayerCreatureObject* _this;
+	WeakReference<NonPlayerCreatureObject*> _this;
 
 	operator const NonPlayerCreatureObject*();
 

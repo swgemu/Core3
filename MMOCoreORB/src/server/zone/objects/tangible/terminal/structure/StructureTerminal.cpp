@@ -97,7 +97,8 @@ void StructureTerminalImplementation::finalize() {
 void StructureTerminalImplementation::_initializeImplementation() {
 	_setClassHelper(StructureTerminalHelper::instance());
 
-	_serializationHelperMethod();
+	_this = NULL;
+
 	_serializationHelperMethod();
 }
 

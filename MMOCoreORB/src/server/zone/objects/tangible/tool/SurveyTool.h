@@ -276,7 +276,7 @@ public:
 
 	void sendSampleTo(PlayerCreature* player, const String& resname);
 
-	SurveyTool* _this;
+	WeakReference<SurveyTool*> _this;
 
 	operator const SurveyTool*();
 

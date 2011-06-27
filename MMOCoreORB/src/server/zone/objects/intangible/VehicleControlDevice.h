@@ -159,7 +159,7 @@ public:
 
 	int canBeDestroyed(PlayerCreature* player);
 
-	VehicleControlDevice* _this;
+	WeakReference<VehicleControlDevice*> _this;
 
 	operator const VehicleControlDevice*();
 

@@ -85,7 +85,7 @@ public:
 
 	void sendBaselinesTo(SceneObject* player);
 
-	StaticObject* _this;
+	WeakReference<StaticObject*> _this;
 
 	operator const StaticObject*();
 

@@ -195,7 +195,7 @@ public:
 
 	int getCharges();
 
-	PrecisionLaserKnife* _this;
+	WeakReference<PrecisionLaserKnife*> _this;
 
 	operator const PrecisionLaserKnife*();
 

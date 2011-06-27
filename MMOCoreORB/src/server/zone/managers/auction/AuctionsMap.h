@@ -159,7 +159,7 @@ public:
 
 	VectorMap<unsigned long long, ManagedReference<AuctionItem* > >* getVendorItems();
 
-	AuctionsMap* _this;
+	WeakReference<AuctionsMap*> _this;
 
 	operator const AuctionsMap*();
 

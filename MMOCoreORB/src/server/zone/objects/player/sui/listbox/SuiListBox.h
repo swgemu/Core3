@@ -170,7 +170,7 @@ public:
 
 	bool isListBox();
 
-	SuiListBox* _this;
+	WeakReference<SuiListBox*> _this;
 
 	operator const SuiListBox*();
 

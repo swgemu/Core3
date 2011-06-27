@@ -107,7 +107,8 @@ void BankTerminalImplementation::finalize() {
 void BankTerminalImplementation::_initializeImplementation() {
 	_setClassHelper(BankTerminalHelper::instance());
 
-	_serializationHelperMethod();
+	_this = NULL;
+
 	_serializationHelperMethod();
 }
 

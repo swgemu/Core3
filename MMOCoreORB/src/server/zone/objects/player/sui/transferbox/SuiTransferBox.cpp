@@ -116,7 +116,8 @@ void SuiTransferBoxImplementation::finalize() {
 void SuiTransferBoxImplementation::_initializeImplementation() {
 	_setClassHelper(SuiTransferBoxHelper::instance());
 
-	_serializationHelperMethod();
+	_this = NULL;
+
 	_serializationHelperMethod();
 }
 

@@ -154,7 +154,8 @@ void SpawnAreaImplementation::finalize() {
 void SpawnAreaImplementation::_initializeImplementation() {
 	_setClassHelper(SpawnAreaHelper::instance());
 
-	_serializationHelperMethod();
+	_this = NULL;
+
 	_serializationHelperMethod();
 }
 

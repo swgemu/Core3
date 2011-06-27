@@ -230,7 +230,7 @@ public:
 
 	bool isRangedStimPack();
 
-	RangedStimPack* _this;
+	WeakReference<RangedStimPack*> _this;
 
 	operator const RangedStimPack*();
 

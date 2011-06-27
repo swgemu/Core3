@@ -86,7 +86,8 @@ void MissionReconActiveAreaImplementation::finalize() {
 void MissionReconActiveAreaImplementation::_initializeImplementation() {
 	_setClassHelper(MissionReconActiveAreaHelper::instance());
 
-	_serializationHelperMethod();
+	_this = NULL;
+
 	_serializationHelperMethod();
 }
 

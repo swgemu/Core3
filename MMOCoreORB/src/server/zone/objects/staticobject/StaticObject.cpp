@@ -79,7 +79,8 @@ void StaticObjectImplementation::finalize() {
 void StaticObjectImplementation::_initializeImplementation() {
 	_setClassHelper(StaticObjectHelper::instance());
 
-	_serializationHelperMethod();
+	_this = NULL;
+
 	_serializationHelperMethod();
 }
 

@@ -302,7 +302,8 @@ void VehicleObjectImplementation::finalize() {
 void VehicleObjectImplementation::_initializeImplementation() {
 	_setClassHelper(VehicleObjectHelper::instance());
 
-	_serializationHelperMethod();
+	_this = NULL;
+
 	_serializationHelperMethod();
 }
 

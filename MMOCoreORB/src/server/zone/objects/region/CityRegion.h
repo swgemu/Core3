@@ -163,7 +163,7 @@ public:
 
 	String getRegionName();
 
-	CityRegion* _this;
+	WeakReference<CityRegion*> _this;
 
 	operator const CityRegion*();
 

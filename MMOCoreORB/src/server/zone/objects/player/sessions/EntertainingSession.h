@@ -345,7 +345,7 @@ public:
 
 	void setTargetInstrument(bool var);
 
-	EntertainingSession* _this;
+	WeakReference<EntertainingSession*> _this;
 
 	operator const EntertainingSession*();
 

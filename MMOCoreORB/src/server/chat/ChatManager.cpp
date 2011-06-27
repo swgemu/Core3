@@ -600,7 +600,8 @@ ChatManagerImplementation::~ChatManagerImplementation() {
 void ChatManagerImplementation::_initializeImplementation() {
 	_setClassHelper(ChatManagerHelper::instance());
 
-	_serializationHelperMethod();
+	_this = NULL;
+
 	_serializationHelperMethod();
 }
 

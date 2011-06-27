@@ -241,7 +241,8 @@ void FactoryCrateImplementation::finalize() {
 void FactoryCrateImplementation::_initializeImplementation() {
 	_setClassHelper(FactoryCrateHelper::instance());
 
-	_serializationHelperMethod();
+	_this = NULL;
+
 	_serializationHelperMethod();
 }
 

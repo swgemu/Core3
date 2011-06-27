@@ -715,7 +715,8 @@ void MissionObjectImplementation::finalize() {
 void MissionObjectImplementation::_initializeImplementation() {
 	_setClassHelper(MissionObjectHelper::instance());
 
-	_serializationHelperMethod();
+	_this = NULL;
+
 	_serializationHelperMethod();
 }
 
@@ -1255,8 +1256,8 @@ int MissionObjectImplementation::getMissionNumber() {
 }
 
 bool MissionObjectImplementation::isSurveyMission() {
-	// server/zone/objects/mission/MissionObject.idl():  		return typeCRC == this.SURVEY;
-	return typeCRC == _this->SURVEY;
+	// server/zone/objects/mission/MissionObject.idl():  		return typeCRC == SURVEY;
+	return typeCRC == SURVEY;
 }
 
 bool MissionObjectImplementation::isMissionObject() {

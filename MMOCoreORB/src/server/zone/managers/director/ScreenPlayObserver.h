@@ -84,7 +84,7 @@ public:
 
 	String getScreenKey();
 
-	ScreenPlayObserver* _this;
+	WeakReference<ScreenPlayObserver*> _this;
 
 	operator const ScreenPlayObserver*();
 

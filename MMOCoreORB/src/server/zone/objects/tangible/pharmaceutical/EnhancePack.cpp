@@ -184,7 +184,8 @@ void EnhancePackImplementation::finalize() {
 void EnhancePackImplementation::_initializeImplementation() {
 	_setClassHelper(EnhancePackHelper::instance());
 
-	_serializationHelperMethod();
+	_this = NULL;
+
 	_serializationHelperMethod();
 }
 

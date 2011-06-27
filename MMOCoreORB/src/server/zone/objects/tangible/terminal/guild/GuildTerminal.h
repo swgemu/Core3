@@ -153,7 +153,7 @@ public:
 
 	GuildObject* getGuildObject();
 
-	GuildTerminal* _this;
+	WeakReference<GuildTerminal*> _this;
 
 	operator const GuildTerminal*();
 

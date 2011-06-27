@@ -680,7 +680,8 @@ void GuildManagerImplementation::finalize() {
 void GuildManagerImplementation::_initializeImplementation() {
 	_setClassHelper(GuildManagerHelper::instance());
 
-	_serializationHelperMethod();
+	_this = NULL;
+
 	_serializationHelperMethod();
 }
 

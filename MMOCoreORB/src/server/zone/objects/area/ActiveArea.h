@@ -135,7 +135,7 @@ public:
 
 	void setRadius(float r);
 
-	ActiveArea* _this;
+	WeakReference<ActiveArea*> _this;
 
 	operator const ActiveArea*();
 

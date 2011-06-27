@@ -281,7 +281,8 @@ void LoginServerImplementation::finalize() {
 void LoginServerImplementation::_initializeImplementation() {
 	_setClassHelper(LoginServerHelper::instance());
 
-	_serializationHelperMethod();
+	_this = NULL;
+
 	_serializationHelperMethod();
 }
 

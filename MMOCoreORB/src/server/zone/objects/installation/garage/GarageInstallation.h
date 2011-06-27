@@ -80,7 +80,7 @@ public:
 
 	void destroyObjectFromDatabase(bool destroyContainedObjects = false);
 
-	GarageInstallation* _this;
+	WeakReference<GarageInstallation*> _this;
 
 	operator const GarageInstallation*();
 

@@ -185,7 +185,7 @@ public:
 
 	bool isTicketObject();
 
-	TicketObject* _this;
+	WeakReference<TicketObject*> _this;
 
 	operator const TicketObject*();
 

@@ -63,6 +63,8 @@ public:
 		if (!checkInvalidPostures(creature))
 			return INVALIDPOSTURE;
 
+		//requestcharactermatch 4 characterFlagBitmask 0 0 0 factionCRC raceID skill_box firstname
+
 		return SUCCESS;
 	}
 

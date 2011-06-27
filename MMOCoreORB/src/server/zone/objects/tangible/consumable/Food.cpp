@@ -82,7 +82,8 @@ void FoodImplementation::finalize() {
 void FoodImplementation::_initializeImplementation() {
 	_setClassHelper(FoodHelper::instance());
 
-	_serializationHelperMethod();
+	_this = NULL;
+
 	_serializationHelperMethod();
 }
 

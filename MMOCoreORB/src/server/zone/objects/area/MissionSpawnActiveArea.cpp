@@ -86,7 +86,8 @@ void MissionSpawnActiveAreaImplementation::finalize() {
 void MissionSpawnActiveAreaImplementation::_initializeImplementation() {
 	_setClassHelper(MissionSpawnActiveAreaHelper::instance());
 
-	_serializationHelperMethod();
+	_this = NULL;
+
 	_serializationHelperMethod();
 }
 

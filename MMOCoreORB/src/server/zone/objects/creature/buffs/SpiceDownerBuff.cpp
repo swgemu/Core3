@@ -86,7 +86,8 @@ void SpiceDownerBuffImplementation::finalize() {
 void SpiceDownerBuffImplementation::_initializeImplementation() {
 	_setClassHelper(SpiceDownerBuffHelper::instance());
 
-	_serializationHelperMethod();
+	_this = NULL;
+
 	_serializationHelperMethod();
 }
 

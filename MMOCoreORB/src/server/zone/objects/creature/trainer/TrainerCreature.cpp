@@ -272,7 +272,8 @@ void TrainerCreatureImplementation::finalize() {
 void TrainerCreatureImplementation::_initializeImplementation() {
 	_setClassHelper(TrainerCreatureHelper::instance());
 
-	_serializationHelperMethod();
+	_this = NULL;
+
 	_serializationHelperMethod();
 }
 

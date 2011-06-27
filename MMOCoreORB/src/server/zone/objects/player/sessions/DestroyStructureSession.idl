@@ -56,7 +56,7 @@ class DestroyStructureSession extends Facade {
 	
 	protected StructureObject structureObject;
 	
-	protected int destroyCode;
+	protected unsigned int destroyCode;
 	
 	public DestroyStructureSession(CreatureObject creature, StructureObject structure) {
 		Logger.setLoggingName("DestroyStructureSession");
@@ -67,6 +67,10 @@ class DestroyStructureSession extends Facade {
 		structureObject = structure;
 		
 		destroyCode = 0;
+	}
+	
+	public boolean isDestroyCode(unsigned int code) {
+		return code == destroyCode;
 	}
 
 	public native int initializeSession();

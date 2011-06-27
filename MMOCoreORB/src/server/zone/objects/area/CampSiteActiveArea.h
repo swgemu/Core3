@@ -135,7 +135,7 @@ public:
 
 	void notifyEnter(SceneObject* player);
 
-	CampSiteActiveArea* _this;
+	WeakReference<CampSiteActiveArea*> _this;
 
 	operator const CampSiteActiveArea*();
 

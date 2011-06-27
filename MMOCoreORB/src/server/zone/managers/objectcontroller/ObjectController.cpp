@@ -139,7 +139,8 @@ ObjectControllerImplementation::~ObjectControllerImplementation() {
 void ObjectControllerImplementation::_initializeImplementation() {
 	_setClassHelper(ObjectControllerHelper::instance());
 
-	_serializationHelperMethod();
+	_this = NULL;
+
 	_serializationHelperMethod();
 }
 

@@ -156,7 +156,7 @@ public:
 
 	void launch(PlayerCreature* player);
 
-	FireworkObject* _this;
+	WeakReference<FireworkObject*> _this;
 
 	operator const FireworkObject*();
 

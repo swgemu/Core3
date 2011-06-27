@@ -200,7 +200,7 @@ public:
 
 	bool isStimPack();
 
-	StimPack* _this;
+	WeakReference<StimPack*> _this;
 
 	operator const StimPack*();
 

@@ -395,7 +395,7 @@ public:
 
 	virtual bool isGeneratorObject();
 
-	InstallationObject* _this;
+	WeakReference<InstallationObject*> _this;
 
 	operator const InstallationObject*();
 

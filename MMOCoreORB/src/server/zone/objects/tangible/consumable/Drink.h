@@ -90,7 +90,7 @@ public:
 
 	void initializePrivateData();
 
-	Drink* _this;
+	WeakReference<Drink*> _this;
 
 	operator const Drink*();
 

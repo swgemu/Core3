@@ -103,7 +103,8 @@ void SpiceBuffImplementation::finalize() {
 void SpiceBuffImplementation::_initializeImplementation() {
 	_setClassHelper(SpiceBuffHelper::instance());
 
-	_serializationHelperMethod();
+	_this = NULL;
+
 	_serializationHelperMethod();
 }
 

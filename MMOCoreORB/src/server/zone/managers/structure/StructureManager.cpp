@@ -210,7 +210,8 @@ void StructureManagerImplementation::finalize() {
 void StructureManagerImplementation::_initializeImplementation() {
 	_setClassHelper(StructureManagerHelper::instance());
 
-	_serializationHelperMethod();
+	_this = NULL;
+
 	_serializationHelperMethod();
 }
 

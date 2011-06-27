@@ -224,7 +224,8 @@ void TicketObjectImplementation::finalize() {
 void TicketObjectImplementation::_initializeImplementation() {
 	_setClassHelper(TicketObjectHelper::instance());
 
-	_serializationHelperMethod();
+	_this = NULL;
+
 	_serializationHelperMethod();
 }
 

@@ -71,7 +71,8 @@ void SuiSlotMachineBoxImplementation::finalize() {
 void SuiSlotMachineBoxImplementation::_initializeImplementation() {
 	_setClassHelper(SuiSlotMachineBoxHelper::instance());
 
-	_serializationHelperMethod();
+	_this = NULL;
+
 	_serializationHelperMethod();
 }
 

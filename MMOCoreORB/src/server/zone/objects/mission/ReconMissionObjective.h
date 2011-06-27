@@ -147,7 +147,7 @@ public:
 
 	void complete();
 
-	ReconMissionObjective* _this;
+	WeakReference<ReconMissionObjective*> _this;
 
 	operator const ReconMissionObjective*();
 

@@ -184,7 +184,8 @@ VendorTerminalImplementation::~VendorTerminalImplementation() {
 void VendorTerminalImplementation::_initializeImplementation() {
 	_setClassHelper(VendorTerminalHelper::instance());
 
-	_serializationHelperMethod();
+	_this = NULL;
+
 	_serializationHelperMethod();
 }
 

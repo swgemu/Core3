@@ -209,7 +209,8 @@ void FishingPoleObjectImplementation::finalize() {
 void FishingPoleObjectImplementation::_initializeImplementation() {
 	_setClassHelper(FishingPoleObjectHelper::instance());
 
-	_serializationHelperMethod();
+	_this = NULL;
+
 	_serializationHelperMethod();
 }
 

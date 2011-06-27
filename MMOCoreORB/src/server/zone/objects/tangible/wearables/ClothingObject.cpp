@@ -83,7 +83,8 @@ void ClothingObjectImplementation::finalize() {
 void ClothingObjectImplementation::_initializeImplementation() {
 	_setClassHelper(ClothingObjectHelper::instance());
 
-	_serializationHelperMethod();
+	_this = NULL;
+
 	_serializationHelperMethod();
 }
 

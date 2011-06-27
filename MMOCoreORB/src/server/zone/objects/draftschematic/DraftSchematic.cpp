@@ -464,7 +464,8 @@ void DraftSchematicImplementation::finalize() {
 void DraftSchematicImplementation::_initializeImplementation() {
 	_setClassHelper(DraftSchematicHelper::instance());
 
-	_serializationHelperMethod();
+	_this = NULL;
+
 	_serializationHelperMethod();
 }
 

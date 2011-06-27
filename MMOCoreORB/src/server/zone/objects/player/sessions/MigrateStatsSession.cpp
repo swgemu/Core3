@@ -137,7 +137,8 @@ void MigrateStatsSessionImplementation::finalize() {
 void MigrateStatsSessionImplementation::_initializeImplementation() {
 	_setClassHelper(MigrateStatsSessionHelper::instance());
 
-	_serializationHelperMethod();
+	_this = NULL;
+
 	_serializationHelperMethod();
 }
 

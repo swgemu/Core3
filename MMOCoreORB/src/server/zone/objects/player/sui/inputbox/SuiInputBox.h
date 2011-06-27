@@ -127,7 +127,7 @@ public:
 
 	bool isInputBox();
 
-	SuiInputBox* _this;
+	WeakReference<SuiInputBox*> _this;
 
 	operator const SuiInputBox*();
 

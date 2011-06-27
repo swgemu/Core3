@@ -77,7 +77,7 @@ public:
 
 	bool isLairGroup();
 
-	LairGroup* _this;
+	WeakReference<LairGroup*> _this;
 
 	operator const LairGroup*();
 

@@ -167,7 +167,8 @@ DestroyMissionObjectiveImplementation::~DestroyMissionObjectiveImplementation() 
 void DestroyMissionObjectiveImplementation::_initializeImplementation() {
 	_setClassHelper(DestroyMissionObjectiveHelper::instance());
 
-	_serializationHelperMethod();
+	_this = NULL;
+
 	_serializationHelperMethod();
 }
 

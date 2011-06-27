@@ -197,7 +197,7 @@ public:
 
 	void addWaypointParameter(WaypointChatParameter& param);
 
-	PersistentMessage* _this;
+	WeakReference<PersistentMessage*> _this;
 
 	operator const PersistentMessage*();
 

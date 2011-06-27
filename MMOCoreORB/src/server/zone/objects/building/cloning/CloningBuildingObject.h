@@ -102,7 +102,7 @@ public:
 
 	CloneSpawnPoint* getRandomSpawnPoint();
 
-	CloningBuildingObject* _this;
+	WeakReference<CloningBuildingObject*> _this;
 
 	operator const CloningBuildingObject*();
 

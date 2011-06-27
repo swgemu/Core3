@@ -139,7 +139,8 @@ void CharacterBuilderTerminalImplementation::finalize() {
 void CharacterBuilderTerminalImplementation::_initializeImplementation() {
 	_setClassHelper(CharacterBuilderTerminalHelper::instance());
 
-	_serializationHelperMethod();
+	_this = NULL;
+
 	_serializationHelperMethod();
 }
 

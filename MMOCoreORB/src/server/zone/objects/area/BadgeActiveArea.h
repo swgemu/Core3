@@ -94,7 +94,7 @@ public:
 
 	unsigned int getBadge();
 
-	BadgeActiveArea* _this;
+	WeakReference<BadgeActiveArea*> _this;
 
 	operator const BadgeActiveArea*();
 

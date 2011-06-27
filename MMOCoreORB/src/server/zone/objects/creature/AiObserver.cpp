@@ -73,7 +73,8 @@ void AiObserverImplementation::finalize() {
 void AiObserverImplementation::_initializeImplementation() {
 	_setClassHelper(AiObserverHelper::instance());
 
-	_serializationHelperMethod();
+	_this = NULL;
+
 	_serializationHelperMethod();
 }
 

@@ -167,7 +167,8 @@ void WoundPackImplementation::finalize() {
 void WoundPackImplementation::_initializeImplementation() {
 	_setClassHelper(WoundPackHelper::instance());
 
-	_serializationHelperMethod();
+	_this = NULL;
+
 	_serializationHelperMethod();
 }
 

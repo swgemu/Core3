@@ -332,7 +332,7 @@ public:
 
 	void sendGuildMail(const String& subject, StringIdChatParameter& body, GuildObject* guild);
 
-	GuildManager* _this;
+	WeakReference<GuildManager*> _this;
 
 	operator const GuildManager*();
 

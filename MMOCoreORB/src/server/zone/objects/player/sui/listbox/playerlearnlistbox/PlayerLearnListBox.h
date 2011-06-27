@@ -112,7 +112,7 @@ public:
 
 	const String getTeachingOffer();
 
-	PlayerLearnListBox* _this;
+	WeakReference<PlayerLearnListBox*> _this;
 
 	operator const PlayerLearnListBox*();
 

@@ -565,7 +565,8 @@ SuiBoxImplementation::~SuiBoxImplementation() {
 void SuiBoxImplementation::_initializeImplementation() {
 	_setClassHelper(SuiBoxHelper::instance());
 
-	_serializationHelperMethod();
+	_this = NULL;
+
 	_serializationHelperMethod();
 }
 

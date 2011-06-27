@@ -301,7 +301,7 @@ public:
 
 	bool hasTitlePermission(unsigned long long playerID);
 
-	GuildObject* _this;
+	WeakReference<GuildObject*> _this;
 
 	operator const GuildObject*();
 

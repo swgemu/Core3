@@ -136,7 +136,7 @@ public:
 
 	bool isBuildingDeed();
 
-	BuildingDeed* _this;
+	WeakReference<BuildingDeed*> _this;
 
 	operator const BuildingDeed*();
 

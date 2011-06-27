@@ -209,7 +209,7 @@ public:
 
 	float getMeatMax();
 
-	Creature* _this;
+	WeakReference<Creature*> _this;
 
 	operator const Creature*();
 

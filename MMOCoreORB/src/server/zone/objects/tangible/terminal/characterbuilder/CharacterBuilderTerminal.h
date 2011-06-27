@@ -152,7 +152,7 @@ private:
 	bool doEnhanceCharacter(unsigned int crc, PlayerCreature* player, int amount, int duration, int buffType, byte attribute);
 
 public:
-	CharacterBuilderTerminal* _this;
+	WeakReference<CharacterBuilderTerminal*> _this;
 
 	operator const CharacterBuilderTerminal*();
 

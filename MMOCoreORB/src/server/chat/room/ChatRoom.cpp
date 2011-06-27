@@ -580,7 +580,8 @@ void ChatRoomImplementation::finalize() {
 void ChatRoomImplementation::_initializeImplementation() {
 	_setClassHelper(ChatRoomHelper::instance());
 
-	_serializationHelperMethod();
+	_this = NULL;
+
 	_serializationHelperMethod();
 }
 

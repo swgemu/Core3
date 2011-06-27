@@ -131,7 +131,7 @@ public:
 
 	bool isCellObject();
 
-	CellObject* _this;
+	WeakReference<CellObject*> _this;
 
 	operator const CellObject*();
 

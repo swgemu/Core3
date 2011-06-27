@@ -86,7 +86,8 @@ void StaticSpawnAreaImplementation::finalize() {
 void StaticSpawnAreaImplementation::_initializeImplementation() {
 	_setClassHelper(StaticSpawnAreaHelper::instance());
 
-	_serializationHelperMethod();
+	_this = NULL;
+
 	_serializationHelperMethod();
 }
 

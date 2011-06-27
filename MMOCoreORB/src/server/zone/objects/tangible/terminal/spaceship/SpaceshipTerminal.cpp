@@ -69,7 +69,8 @@ void SpaceshipTerminalImplementation::finalize() {
 void SpaceshipTerminalImplementation::_initializeImplementation() {
 	_setClassHelper(SpaceshipTerminalHelper::instance());
 
-	_serializationHelperMethod();
+	_this = NULL;
+
 	_serializationHelperMethod();
 }
 

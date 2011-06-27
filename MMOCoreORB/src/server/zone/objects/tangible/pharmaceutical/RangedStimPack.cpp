@@ -207,7 +207,8 @@ void RangedStimPackImplementation::finalize() {
 void RangedStimPackImplementation::_initializeImplementation() {
 	_setClassHelper(RangedStimPackHelper::instance());
 
-	_serializationHelperMethod();
+	_this = NULL;
+
 	_serializationHelperMethod();
 }
 

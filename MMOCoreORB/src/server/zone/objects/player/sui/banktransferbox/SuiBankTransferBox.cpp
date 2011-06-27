@@ -123,7 +123,8 @@ void SuiBankTransferBoxImplementation::finalize() {
 void SuiBankTransferBoxImplementation::_initializeImplementation() {
 	_setClassHelper(SuiBankTransferBoxHelper::instance());
 
-	_serializationHelperMethod();
+	_this = NULL;
+
 	_serializationHelperMethod();
 }
 

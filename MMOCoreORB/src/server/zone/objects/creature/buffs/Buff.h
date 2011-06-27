@@ -290,7 +290,7 @@ public:
 
 	void setEndMessage(StringIdChatParameter& start);
 
-	Buff* _this;
+	WeakReference<Buff*> _this;
 
 	operator const Buff*();
 

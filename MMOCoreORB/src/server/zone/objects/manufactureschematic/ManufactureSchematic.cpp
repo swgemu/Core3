@@ -571,7 +571,8 @@ void ManufactureSchematicImplementation::finalize() {
 void ManufactureSchematicImplementation::_initializeImplementation() {
 	_setClassHelper(ManufactureSchematicHelper::instance());
 
-	_serializationHelperMethod();
+	_this = NULL;
+
 	_serializationHelperMethod();
 }
 

@@ -258,7 +258,7 @@ private:
 public:
 	void addChildrenToDeedListBox(const String& name, ResourceDeedListBox* suil, bool parent = false);
 
-	ResourceManager* _this;
+	WeakReference<ResourceManager*> _this;
 
 	operator const ResourceManager*();
 

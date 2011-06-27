@@ -983,7 +983,8 @@ void ZoneServerImplementation::finalize() {
 void ZoneServerImplementation::_initializeImplementation() {
 	_setClassHelper(ZoneServerHelper::instance());
 
-	_serializationHelperMethod();
+	_this = NULL;
+
 	_serializationHelperMethod();
 }
 

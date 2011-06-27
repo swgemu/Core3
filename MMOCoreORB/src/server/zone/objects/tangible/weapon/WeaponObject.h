@@ -528,7 +528,7 @@ public:
 
 	bool isWeaponObject();
 
-	WeaponObject* _this;
+	WeakReference<WeaponObject*> _this;
 
 	operator const WeaponObject*();
 

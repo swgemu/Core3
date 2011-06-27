@@ -132,7 +132,7 @@ public:
 
 	void setUsesRemaining(int uses);
 
-	DelayedBuff* _this;
+	WeakReference<DelayedBuff*> _this;
 
 	operator const DelayedBuff*();
 

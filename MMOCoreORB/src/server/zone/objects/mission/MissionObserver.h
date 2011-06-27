@@ -109,7 +109,7 @@ public:
 
 	virtual void destroyObjectFromDatabase();
 
-	MissionObserver* _this;
+	WeakReference<MissionObserver*> _this;
 
 	operator const MissionObserver*();
 

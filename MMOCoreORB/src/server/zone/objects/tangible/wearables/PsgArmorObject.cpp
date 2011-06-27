@@ -105,7 +105,8 @@ void PsgArmorObjectImplementation::finalize() {
 void PsgArmorObjectImplementation::_initializeImplementation() {
 	_setClassHelper(PsgArmorObjectHelper::instance());
 
-	_serializationHelperMethod();
+	_this = NULL;
+
 	_serializationHelperMethod();
 }
 

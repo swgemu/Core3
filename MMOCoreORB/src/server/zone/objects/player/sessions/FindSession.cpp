@@ -140,7 +140,8 @@ void FindSessionImplementation::finalize() {
 void FindSessionImplementation::_initializeImplementation() {
 	_setClassHelper(FindSessionHelper::instance());
 
-	_serializationHelperMethod();
+	_this = NULL;
+
 	_serializationHelperMethod();
 }
 

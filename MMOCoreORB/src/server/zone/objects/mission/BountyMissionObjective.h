@@ -161,7 +161,7 @@ public:
 
 	void setNpcTemplateToSpawn(SharedObjectTemplate* sp);
 
-	BountyMissionObjective* _this;
+	WeakReference<BountyMissionObjective*> _this;
 
 	operator const BountyMissionObjective*();
 

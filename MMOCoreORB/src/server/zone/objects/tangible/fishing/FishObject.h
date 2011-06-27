@@ -166,7 +166,7 @@ public:
 
 	void filet(PlayerCreature* player);
 
-	FishObject* _this;
+	WeakReference<FishObject*> _this;
 
 	operator const FishObject*();
 

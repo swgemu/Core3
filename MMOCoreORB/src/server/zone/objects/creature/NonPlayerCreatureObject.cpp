@@ -87,7 +87,8 @@ void NonPlayerCreatureObjectImplementation::finalize() {
 void NonPlayerCreatureObjectImplementation::_initializeImplementation() {
 	_setClassHelper(NonPlayerCreatureObjectHelper::instance());
 
-	_serializationHelperMethod();
+	_this = NULL;
+
 	_serializationHelperMethod();
 }
 

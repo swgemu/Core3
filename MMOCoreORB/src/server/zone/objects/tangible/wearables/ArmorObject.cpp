@@ -508,7 +508,8 @@ void ArmorObjectImplementation::finalize() {
 void ArmorObjectImplementation::_initializeImplementation() {
 	_setClassHelper(ArmorObjectHelper::instance());
 
-	_serializationHelperMethod();
+	_this = NULL;
+
 	_serializationHelperMethod();
 }
 

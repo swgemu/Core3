@@ -135,7 +135,8 @@ void VehicleControlDeviceImplementation::finalize() {
 void VehicleControlDeviceImplementation::_initializeImplementation() {
 	_setClassHelper(VehicleControlDeviceHelper::instance());
 
-	_serializationHelperMethod();
+	_this = NULL;
+
 	_serializationHelperMethod();
 }
 

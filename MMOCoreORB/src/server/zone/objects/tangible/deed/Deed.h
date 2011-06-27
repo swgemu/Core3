@@ -156,7 +156,7 @@ public:
 
 	bool isDeedObject();
 
-	Deed* _this;
+	WeakReference<Deed*> _this;
 
 	operator const Deed*();
 

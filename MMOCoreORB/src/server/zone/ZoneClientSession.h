@@ -190,7 +190,7 @@ public:
 
 	Account* getAccount();
 
-	ZoneClientSession* _this;
+	WeakReference<ZoneClientSession*> _this;
 
 	operator const ZoneClientSession*();
 

@@ -55,7 +55,7 @@ public:
 
 	SpaceStationObjectImplementation(DummyConstructorParameter* param);
 
-	SpaceStationObject* _this;
+	WeakReference<SpaceStationObject*> _this;
 
 	operator const SpaceStationObject*();
 

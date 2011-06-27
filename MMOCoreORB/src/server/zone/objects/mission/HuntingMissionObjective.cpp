@@ -130,7 +130,8 @@ HuntingMissionObjectiveImplementation::~HuntingMissionObjectiveImplementation() 
 void HuntingMissionObjectiveImplementation::_initializeImplementation() {
 	_setClassHelper(HuntingMissionObjectiveHelper::instance());
 
-	_serializationHelperMethod();
+	_this = NULL;
+
 	_serializationHelperMethod();
 }
 

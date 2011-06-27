@@ -175,7 +175,7 @@ public:
 
 	Deed* getDeed();
 
-	PlaceStructureSession* _this;
+	WeakReference<PlaceStructureSession*> _this;
 
 	operator const PlaceStructureSession*();
 

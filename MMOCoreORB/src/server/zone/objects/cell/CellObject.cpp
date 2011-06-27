@@ -219,7 +219,8 @@ void CellObjectImplementation::finalize() {
 void CellObjectImplementation::_initializeImplementation() {
 	_setClassHelper(CellObjectHelper::instance());
 
-	_serializationHelperMethod();
+	_this = NULL;
+
 	_serializationHelperMethod();
 }
 

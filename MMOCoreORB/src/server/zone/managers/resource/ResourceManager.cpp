@@ -315,7 +315,8 @@ void ResourceManagerImplementation::finalize() {
 void ResourceManagerImplementation::_initializeImplementation() {
 	_setClassHelper(ResourceManagerHelper::instance());
 
-	_serializationHelperMethod();
+	_this = NULL;
+
 	_serializationHelperMethod();
 }
 

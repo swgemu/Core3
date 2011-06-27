@@ -101,7 +101,7 @@ public:
 
 	bool isMessageBox();
 
-	SuiMessageBox* _this;
+	WeakReference<SuiMessageBox*> _this;
 
 	operator const SuiMessageBox*();
 

@@ -131,7 +131,7 @@ public:
 
 	bool isTicketCollector();
 
-	TicketCollector* _this;
+	WeakReference<TicketCollector*> _this;
 
 	operator const TicketCollector*();
 

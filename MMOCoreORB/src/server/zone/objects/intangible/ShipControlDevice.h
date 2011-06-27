@@ -77,7 +77,7 @@ public:
 
 	void generateObject(PlayerCreature* player);
 
-	ShipControlDevice* _this;
+	WeakReference<ShipControlDevice*> _this;
 
 	operator const ShipControlDevice*();
 

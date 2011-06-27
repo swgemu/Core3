@@ -131,7 +131,8 @@ IntangibleObjectImplementation::~IntangibleObjectImplementation() {
 void IntangibleObjectImplementation::_initializeImplementation() {
 	_setClassHelper(IntangibleObjectHelper::instance());
 
-	_serializationHelperMethod();
+	_this = NULL;
+
 	_serializationHelperMethod();
 }
 

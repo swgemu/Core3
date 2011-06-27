@@ -115,7 +115,8 @@ void FireworkObjectImplementation::finalize() {
 void FireworkObjectImplementation::_initializeImplementation() {
 	_setClassHelper(FireworkObjectHelper::instance());
 
-	_serializationHelperMethod();
+	_this = NULL;
+
 	_serializationHelperMethod();
 }
 

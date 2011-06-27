@@ -1088,7 +1088,8 @@ PlayerObjectImplementation::~PlayerObjectImplementation() {
 void PlayerObjectImplementation::_initializeImplementation() {
 	_setClassHelper(PlayerObjectHelper::instance());
 
-	_serializationHelperMethod();
+	_this = NULL;
+
 	_serializationHelperMethod();
 }
 

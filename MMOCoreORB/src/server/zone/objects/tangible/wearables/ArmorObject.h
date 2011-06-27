@@ -274,7 +274,7 @@ public:
 
 	void setMindEncumbrance(int encumber);
 
-	ArmorObject* _this;
+	WeakReference<ArmorObject*> _this;
 
 	operator const ArmorObject*();
 

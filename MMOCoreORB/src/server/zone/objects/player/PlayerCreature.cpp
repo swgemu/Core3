@@ -1823,7 +1823,8 @@ PlayerCreatureImplementation::~PlayerCreatureImplementation() {
 void PlayerCreatureImplementation::_initializeImplementation() {
 	_setClassHelper(PlayerCreatureHelper::instance());
 
-	_serializationHelperMethod();
+	_this = NULL;
+
 	_serializationHelperMethod();
 }
 

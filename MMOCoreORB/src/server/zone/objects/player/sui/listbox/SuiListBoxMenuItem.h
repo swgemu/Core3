@@ -89,7 +89,7 @@ public:
 
 	String getOptionName();
 
-	SuiListBoxMenuItem* _this;
+	WeakReference<SuiListBoxMenuItem*> _this;
 
 	operator const SuiListBoxMenuItem*();
 

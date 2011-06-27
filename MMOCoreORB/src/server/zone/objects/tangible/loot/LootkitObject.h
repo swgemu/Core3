@@ -170,7 +170,7 @@ public:
 
 	void fillAttributeList(AttributeListMessage* msg, PlayerCreature* object);
 
-	LootkitObject* _this;
+	WeakReference<LootkitObject*> _this;
 
 	operator const LootkitObject*();
 

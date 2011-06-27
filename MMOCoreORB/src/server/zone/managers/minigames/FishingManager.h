@@ -523,7 +523,7 @@ public:
 
 	FishingEvent* getFishingEvent(PlayerCreature* player);
 
-	FishingManager* _this;
+	WeakReference<FishingManager*> _this;
 
 	operator const FishingManager*();
 

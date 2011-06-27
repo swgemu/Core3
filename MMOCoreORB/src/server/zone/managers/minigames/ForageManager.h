@@ -121,7 +121,7 @@ public:
 
 	void forageGiveResource(PlayerCreature* player, float forageX, float forageY, const String& planet);
 
-	ForageManager* _this;
+	WeakReference<ForageManager*> _this;
 
 	operator const ForageManager*();
 

@@ -127,7 +127,7 @@ public:
 
 	virtual bool isStaticArea();
 
-	StaticSpawnArea* _this;
+	WeakReference<StaticSpawnArea*> _this;
 
 	operator const StaticSpawnArea*();
 

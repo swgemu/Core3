@@ -412,7 +412,7 @@ public:
 
 	void setCityRank(byte rank);
 
-	CityHallObject* _this;
+	WeakReference<CityHallObject*> _this;
 
 	operator const CityHallObject*();
 

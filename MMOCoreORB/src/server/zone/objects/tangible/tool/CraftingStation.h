@@ -203,7 +203,7 @@ public:
 
 	void createChildObjects();
 
-	CraftingStation* _this;
+	WeakReference<CraftingStation*> _this;
 
 	operator const CraftingStation*();
 

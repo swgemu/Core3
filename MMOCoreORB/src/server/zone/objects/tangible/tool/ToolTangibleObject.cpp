@@ -69,7 +69,8 @@ void ToolTangibleObjectImplementation::finalize() {
 void ToolTangibleObjectImplementation::_initializeImplementation() {
 	_setClassHelper(ToolTangibleObjectHelper::instance());
 
-	_serializationHelperMethod();
+	_this = NULL;
+
 	_serializationHelperMethod();
 }
 

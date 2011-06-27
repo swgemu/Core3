@@ -225,7 +225,7 @@ public:
 
 	void setCityHall(CityHallObject* hall);
 
-	Region* _this;
+	WeakReference<Region*> _this;
 
 	operator const Region*();
 

@@ -130,7 +130,8 @@ CraftingMissionObjectiveImplementation::~CraftingMissionObjectiveImplementation(
 void CraftingMissionObjectiveImplementation::_initializeImplementation() {
 	_setClassHelper(CraftingMissionObjectiveHelper::instance());
 
-	_serializationHelperMethod();
+	_this = NULL;
+
 	_serializationHelperMethod();
 }
 

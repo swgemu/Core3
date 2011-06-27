@@ -130,7 +130,8 @@ EntertainerMissionObjectiveImplementation::~EntertainerMissionObjectiveImplement
 void EntertainerMissionObjectiveImplementation::_initializeImplementation() {
 	_setClassHelper(EntertainerMissionObjectiveHelper::instance());
 
-	_serializationHelperMethod();
+	_this = NULL;
+
 	_serializationHelperMethod();
 }
 

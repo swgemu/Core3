@@ -335,7 +335,8 @@ void PersistentMessageImplementation::finalize() {
 void PersistentMessageImplementation::_initializeImplementation() {
 	_setClassHelper(PersistentMessageHelper::instance());
 
-	_serializationHelperMethod();
+	_this = NULL;
+
 	_serializationHelperMethod();
 }
 

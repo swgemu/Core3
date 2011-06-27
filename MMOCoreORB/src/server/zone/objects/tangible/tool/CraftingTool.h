@@ -408,7 +408,7 @@ public:
 
 	int getExperimentationResult();
 
-	CraftingTool* _this;
+	WeakReference<CraftingTool*> _this;
 
 	operator const CraftingTool*();
 

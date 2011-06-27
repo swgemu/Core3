@@ -288,7 +288,8 @@ void AttachmentImplementation::finalize() {
 void AttachmentImplementation::_initializeImplementation() {
 	_setClassHelper(AttachmentHelper::instance());
 
-	_serializationHelperMethod();
+	_this = NULL;
+
 	_serializationHelperMethod();
 }
 

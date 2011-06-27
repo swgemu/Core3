@@ -139,7 +139,8 @@ void SlicingToolImplementation::finalize() {
 void SlicingToolImplementation::_initializeImplementation() {
 	_setClassHelper(SlicingToolHelper::instance());
 
-	_serializationHelperMethod();
+	_this = NULL;
+
 	_serializationHelperMethod();
 }
 

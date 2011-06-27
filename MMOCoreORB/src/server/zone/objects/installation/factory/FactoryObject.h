@@ -208,7 +208,7 @@ private:
 	void collectMatchesInInputHopper(BlueprintEntry* entry, SceneObject* inputHopper);
 
 public:
-	FactoryObject* _this;
+	WeakReference<FactoryObject*> _this;
 
 	operator const FactoryObject*();
 

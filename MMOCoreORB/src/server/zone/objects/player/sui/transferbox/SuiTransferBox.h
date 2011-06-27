@@ -125,7 +125,7 @@ public:
 
 	bool isTransferBox();
 
-	SuiTransferBox* _this;
+	WeakReference<SuiTransferBox*> _this;
 
 	operator const SuiTransferBox*();
 

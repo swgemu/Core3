@@ -142,7 +142,8 @@ void LootkitObjectImplementation::finalize() {
 void LootkitObjectImplementation::_initializeImplementation() {
 	_setClassHelper(LootkitObjectHelper::instance());
 
-	_serializationHelperMethod();
+	_this = NULL;
+
 	_serializationHelperMethod();
 }
 

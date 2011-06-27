@@ -698,7 +698,7 @@ public:
 
 	bool hasLoot();
 
-	AiAgent* _this;
+	WeakReference<AiAgent*> _this;
 
 	operator const AiAgent*();
 

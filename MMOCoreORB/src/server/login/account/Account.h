@@ -156,7 +156,7 @@ public:
 
 	unsigned int getTimeCreated();
 
-	Account* _this;
+	WeakReference<Account*> _this;
 
 	operator const Account*();
 

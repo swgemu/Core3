@@ -72,7 +72,8 @@ void ZoneManagerImplementation::finalize() {
 void ZoneManagerImplementation::_initializeImplementation() {
 	_setClassHelper(ZoneManagerHelper::instance());
 
-	_serializationHelperMethod();
+	_this = NULL;
+
 	_serializationHelperMethod();
 }
 

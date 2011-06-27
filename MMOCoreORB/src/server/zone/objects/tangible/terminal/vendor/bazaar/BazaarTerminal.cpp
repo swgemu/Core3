@@ -99,7 +99,8 @@ void BazaarTerminalImplementation::finalize() {
 void BazaarTerminalImplementation::_initializeImplementation() {
 	_setClassHelper(BazaarTerminalHelper::instance());
 
-	_serializationHelperMethod();
+	_this = NULL;
+
 	_serializationHelperMethod();
 }
 

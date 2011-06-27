@@ -148,7 +148,8 @@ void InformantCreatureImplementation::finalize() {
 void InformantCreatureImplementation::_initializeImplementation() {
 	_setClassHelper(InformantCreatureHelper::instance());
 
-	_serializationHelperMethod();
+	_this = NULL;
+
 	_serializationHelperMethod();
 }
 

@@ -143,7 +143,8 @@ void DeedImplementation::finalize() {
 void DeedImplementation::_initializeImplementation() {
 	_setClassHelper(DeedHelper::instance());
 
-	_serializationHelperMethod();
+	_this = NULL;
+
 	_serializationHelperMethod();
 }
 

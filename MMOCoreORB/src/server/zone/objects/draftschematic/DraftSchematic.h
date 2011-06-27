@@ -277,7 +277,7 @@ public:
 
 	void increaseUseCount(int count);
 
-	DraftSchematic* _this;
+	WeakReference<DraftSchematic*> _this;
 
 	operator const DraftSchematic*();
 

@@ -98,7 +98,8 @@ void SuiCharacterBuilderBoxImplementation::finalize() {
 void SuiCharacterBuilderBoxImplementation::_initializeImplementation() {
 	_setClassHelper(SuiCharacterBuilderBoxHelper::instance());
 
-	_serializationHelperMethod();
+	_this = NULL;
+
 	_serializationHelperMethod();
 }
 

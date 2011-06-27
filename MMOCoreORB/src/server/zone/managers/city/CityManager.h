@@ -222,7 +222,7 @@ public:
 
 	int getTotalCities();
 
-	CityManager* _this;
+	WeakReference<CityManager*> _this;
 
 	operator const CityManager*();
 

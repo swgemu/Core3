@@ -291,7 +291,7 @@ public:
 
 	bool hasSurveyMission(PlayerCreature* player, const String& spawn);
 
-	MissionManager* _this;
+	WeakReference<MissionManager*> _this;
 
 	operator const MissionManager*();
 

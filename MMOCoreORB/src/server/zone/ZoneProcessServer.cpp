@@ -191,7 +191,8 @@ ZoneProcessServerImplementation::~ZoneProcessServerImplementation() {
 void ZoneProcessServerImplementation::_initializeImplementation() {
 	_setClassHelper(ZoneProcessServerHelper::instance());
 
-	_serializationHelperMethod();
+	_this = NULL;
+
 	_serializationHelperMethod();
 }
 

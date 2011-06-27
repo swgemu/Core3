@@ -113,7 +113,7 @@ public:
 
 	void clearWaypoint();
 
-	FindSession* _this;
+	WeakReference<FindSession*> _this;
 
 	operator const FindSession*();
 

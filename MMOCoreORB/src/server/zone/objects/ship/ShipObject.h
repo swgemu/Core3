@@ -69,7 +69,7 @@ public:
 
 	float getTotalMass();
 
-	ShipObject* _this;
+	WeakReference<ShipObject*> _this;
 
 	operator const ShipObject*();
 

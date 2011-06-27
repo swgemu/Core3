@@ -97,7 +97,8 @@ void BadgeActiveAreaImplementation::finalize() {
 void BadgeActiveAreaImplementation::_initializeImplementation() {
 	_setClassHelper(BadgeActiveAreaHelper::instance());
 
-	_serializationHelperMethod();
+	_this = NULL;
+
 	_serializationHelperMethod();
 }
 

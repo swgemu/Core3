@@ -9,7 +9,7 @@
 #define DESTROYSTRUCTUREREQUESTSUICALLBACK_H_
 
 #include "server/zone/objects/player/sui/SuiCallback.h"
-
+#include "server/zone/objects/player/sessions/DestroyStructureSession.h"
 
 class DestroyStructureRequestSuiCallback : public SuiCallback {
 public:
@@ -17,6 +17,17 @@ public:
 	}
 
 	void run(PlayerCreature* player, SuiBox* sui, bool cancelPressed, Vector<UnicodeString>* args) {
+		ManagedReference<DestroyStructureSession*> session = dynamic_cast<DestroyStructureSession*>(player->getActiveSession(SessionFacadeType::DESTROYSTRUCTURE));
+
+		if (session == NULL)
+			return;
+
+		if (cancelPressed) {
+			session->cancelSession();
+			return;
+		}
+
+		session->sendDestroyCode();
 	}
 };
 

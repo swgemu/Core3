@@ -145,7 +145,8 @@ void GuildTerminalImplementation::finalize() {
 void GuildTerminalImplementation::_initializeImplementation() {
 	_setClassHelper(GuildTerminalHelper::instance());
 
-	_serializationHelperMethod();
+	_this = NULL;
+
 	_serializationHelperMethod();
 }
 

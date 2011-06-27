@@ -92,7 +92,8 @@ void RadialManagerImplementation::finalize() {
 void RadialManagerImplementation::_initializeImplementation() {
 	_setClassHelper(RadialManagerHelper::instance());
 
-	_serializationHelperMethod();
+	_this = NULL;
+
 	_serializationHelperMethod();
 }
 

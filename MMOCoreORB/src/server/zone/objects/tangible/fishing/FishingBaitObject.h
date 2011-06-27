@@ -136,7 +136,7 @@ public:
 
 	void fillAttributeList(AttributeListMessage* msg, PlayerCreature* object);
 
-	FishingBaitObject* _this;
+	WeakReference<FishingBaitObject*> _this;
 
 	operator const FishingBaitObject*();
 

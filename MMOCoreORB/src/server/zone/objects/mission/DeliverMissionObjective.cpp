@@ -193,7 +193,8 @@ DeliverMissionObjectiveImplementation::~DeliverMissionObjectiveImplementation() 
 void DeliverMissionObjectiveImplementation::_initializeImplementation() {
 	_setClassHelper(DeliverMissionObjectiveHelper::instance());
 
-	_serializationHelperMethod();
+	_this = NULL;
+
 	_serializationHelperMethod();
 }
 

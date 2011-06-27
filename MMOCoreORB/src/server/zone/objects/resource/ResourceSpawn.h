@@ -343,7 +343,7 @@ public:
 
 	void print();
 
-	ResourceSpawn* _this;
+	WeakReference<ResourceSpawn*> _this;
 
 	operator const ResourceSpawn*();
 

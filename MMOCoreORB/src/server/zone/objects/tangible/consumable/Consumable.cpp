@@ -207,7 +207,8 @@ void ConsumableImplementation::finalize() {
 void ConsumableImplementation::_initializeImplementation() {
 	_setClassHelper(ConsumableHelper::instance());
 
-	_serializationHelperMethod();
+	_this = NULL;
+
 	_serializationHelperMethod();
 }
 

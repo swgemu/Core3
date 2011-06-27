@@ -173,7 +173,7 @@ public:
 
 	bool isVehicleDeedObject();
 
-	VehicleDeed* _this;
+	WeakReference<VehicleDeed*> _this;
 
 	operator const VehicleDeed*();
 

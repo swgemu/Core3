@@ -219,7 +219,8 @@ void SuiListBoxImplementation::finalize() {
 void SuiListBoxImplementation::_initializeImplementation() {
 	_setClassHelper(SuiListBoxHelper::instance());
 
-	_serializationHelperMethod();
+	_this = NULL;
+
 	_serializationHelperMethod();
 }
 

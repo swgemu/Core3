@@ -82,7 +82,8 @@ void ShipControlDeviceImplementation::finalize() {
 void ShipControlDeviceImplementation::_initializeImplementation() {
 	_setClassHelper(ShipControlDeviceHelper::instance());
 
-	_serializationHelperMethod();
+	_this = NULL;
+
 	_serializationHelperMethod();
 }
 

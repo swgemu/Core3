@@ -836,7 +836,8 @@ void CityHallObjectImplementation::finalize() {
 void CityHallObjectImplementation::_initializeImplementation() {
 	_setClassHelper(CityHallObjectHelper::instance());
 
-	_serializationHelperMethod();
+	_this = NULL;
+
 	_serializationHelperMethod();
 }
 

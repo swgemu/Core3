@@ -492,7 +492,8 @@ ZoneImplementation::~ZoneImplementation() {
 void ZoneImplementation::_initializeImplementation() {
 	_setClassHelper(ZoneHelper::instance());
 
-	_serializationHelperMethod();
+	_this = NULL;
+
 	_serializationHelperMethod();
 }
 

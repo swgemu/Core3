@@ -119,7 +119,7 @@ public:
 
 	unsigned int getPayoutBoxID();
 
-	SuiSlotMachineBox* _this;
+	WeakReference<SuiSlotMachineBox*> _this;
 
 	operator const SuiSlotMachineBox*();
 

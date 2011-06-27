@@ -16,7 +16,7 @@
  *	DestroyStructureSessionStub
  */
 
-enum {RPC_INITIALIZESESSION__ = 6,RPC_SENDDESTROYCODE__,RPC_CANCELSESSION__,RPC_CLEARSESSION__};
+enum {RPC_ISDESTROYCODE__INT_ = 6,RPC_INITIALIZESESSION__,RPC_SENDDESTROYCODE__,RPC_CANCELSESSION__,RPC_CLEARSESSION__};
 
 DestroyStructureSession::DestroyStructureSession(CreatureObject* creature, StructureObject* structure) : Facade(DummyConstructorParameter::instance()) {
 	DestroyStructureSessionImplementation* _implementation = new DestroyStructureSessionImplementation(creature, structure);
@@ -30,6 +30,20 @@ DestroyStructureSession::DestroyStructureSession(DummyConstructorParameter* para
 DestroyStructureSession::~DestroyStructureSession() {
 }
 
+
+bool DestroyStructureSession::isDestroyCode(unsigned int code) {
+	DestroyStructureSessionImplementation* _implementation = (DestroyStructureSessionImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_ISDESTROYCODE__INT_);
+		method.addUnsignedIntParameter(code);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return _implementation->isDestroyCode(code);
+}
 
 int DestroyStructureSession::initializeSession() {
 	DestroyStructureSessionImplementation* _implementation = (DestroyStructureSessionImplementation*) _getImplementation();
@@ -112,7 +126,8 @@ void DestroyStructureSessionImplementation::finalize() {
 void DestroyStructureSessionImplementation::_initializeImplementation() {
 	_setClassHelper(DestroyStructureSessionHelper::instance());
 
-	_serializationHelperMethod();
+	_this = NULL;
+
 	_serializationHelperMethod();
 }
 
@@ -198,7 +213,7 @@ bool DestroyStructureSessionImplementation::readObjectMember(ObjectInputStream* 
 	}
 
 	if (_name == "destroyCode") {
-		TypeInfo<int >::parseFromBinaryStream(&destroyCode, stream);
+		TypeInfo<unsigned int >::parseFromBinaryStream(&destroyCode, stream);
 		return true;
 	}
 
@@ -237,7 +252,7 @@ int DestroyStructureSessionImplementation::writeObjectMembers(ObjectOutputStream
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
-	TypeInfo<int >::toBinaryStream(&destroyCode, stream);
+	TypeInfo<unsigned int >::toBinaryStream(&destroyCode, stream);
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
@@ -257,6 +272,11 @@ DestroyStructureSessionImplementation::DestroyStructureSessionImplementation(Cre
 	structureObject = structure;
 	// server/zone/objects/player/sessions/DestroyStructureSession.idl():  		destroyCode = 0;
 	destroyCode = 0;
+}
+
+bool DestroyStructureSessionImplementation::isDestroyCode(unsigned int code) {
+	// server/zone/objects/player/sessions/DestroyStructureSession.idl():  		return code == destroyCode;
+	return code == destroyCode;
 }
 
 int DestroyStructureSessionImplementation::cancelSession() {
@@ -282,6 +302,9 @@ Packet* DestroyStructureSessionAdapter::invokeMethod(uint32 methid, DistributedM
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
+	case RPC_ISDESTROYCODE__INT_:
+		resp->insertBoolean(isDestroyCode(inv->getUnsignedIntParameter()));
+		break;
 	case RPC_INITIALIZESESSION__:
 		resp->insertSignedInt(initializeSession());
 		break;
@@ -299,6 +322,10 @@ Packet* DestroyStructureSessionAdapter::invokeMethod(uint32 methid, DistributedM
 	}
 
 	return resp;
+}
+
+bool DestroyStructureSessionAdapter::isDestroyCode(unsigned int code) {
+	return ((DestroyStructureSessionImplementation*) impl)->isDestroyCode(code);
 }
 
 int DestroyStructureSessionAdapter::initializeSession() {

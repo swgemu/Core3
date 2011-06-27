@@ -65,7 +65,8 @@ void HerdGroupImplementation::finalize() {
 void HerdGroupImplementation::_initializeImplementation() {
 	_setClassHelper(HerdGroupHelper::instance());
 
-	_serializationHelperMethod();
+	_this = NULL;
+
 	_serializationHelperMethod();
 }
 

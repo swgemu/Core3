@@ -333,7 +333,7 @@ public:
 
 	BlueprintEntry* getBlueprintEntry(int i);
 
-	ManufactureSchematic* _this;
+	WeakReference<ManufactureSchematic*> _this;
 
 	operator const ManufactureSchematic*();
 

@@ -142,7 +142,7 @@ public:
 
 	void createLoot(SceneObject* container, const String& lootGroup);
 
-	LootManager* _this;
+	WeakReference<LootManager*> _this;
 
 	operator const LootManager*();
 

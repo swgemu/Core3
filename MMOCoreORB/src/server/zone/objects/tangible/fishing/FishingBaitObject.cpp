@@ -141,7 +141,8 @@ void FishingBaitObjectImplementation::finalize() {
 void FishingBaitObjectImplementation::_initializeImplementation() {
 	_setClassHelper(FishingBaitObjectHelper::instance());
 
-	_serializationHelperMethod();
+	_this = NULL;
+
 	_serializationHelperMethod();
 }
 

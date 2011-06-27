@@ -113,7 +113,7 @@ public:
 
 	void initializeChildObject(SceneObject* controllerObject);
 
-	SignObject* _this;
+	WeakReference<SignObject*> _this;
 
 	operator const SignObject*();
 

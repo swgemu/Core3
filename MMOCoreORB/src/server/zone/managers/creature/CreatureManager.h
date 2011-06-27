@@ -259,7 +259,7 @@ public:
 
 	int getSpawnedRandomCreatures();
 
-	CreatureManager* _this;
+	WeakReference<CreatureManager*> _this;
 
 	operator const CreatureManager*();
 

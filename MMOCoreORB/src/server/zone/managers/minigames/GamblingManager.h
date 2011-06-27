@@ -287,7 +287,7 @@ public:
 
 	bool isPlaying(PlayerCreature* player);
 
-	GamblingManager* _this;
+	WeakReference<GamblingManager*> _this;
 
 	operator const GamblingManager*();
 

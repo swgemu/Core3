@@ -198,7 +198,7 @@ public:
 
 	virtual bool isLairGroup();
 
-	AiGroup* _this;
+	WeakReference<AiGroup*> _this;
 
 	operator const AiGroup*();
 

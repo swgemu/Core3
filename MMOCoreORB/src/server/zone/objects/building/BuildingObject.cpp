@@ -562,7 +562,8 @@ void BuildingObjectImplementation::finalize() {
 void BuildingObjectImplementation::_initializeImplementation() {
 	_setClassHelper(BuildingObjectHelper::instance());
 
-	_serializationHelperMethod();
+	_this = NULL;
+
 	_serializationHelperMethod();
 }
 

@@ -811,7 +811,8 @@ void WeaponObjectImplementation::finalize() {
 void WeaponObjectImplementation::_initializeImplementation() {
 	_setClassHelper(WeaponObjectHelper::instance());
 
-	_serializationHelperMethod();
+	_this = NULL;
+
 	_serializationHelperMethod();
 }
 

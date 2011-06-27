@@ -169,7 +169,8 @@ void MissionObjectiveImplementation::finalize() {
 void MissionObjectiveImplementation::_initializeImplementation() {
 	_setClassHelper(MissionObjectiveHelper::instance());
 
-	_serializationHelperMethod();
+	_this = NULL;
+
 	_serializationHelperMethod();
 }
 

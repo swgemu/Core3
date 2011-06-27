@@ -181,7 +181,7 @@ public:
 
 	float getEffectiveness();
 
-	SlicingTool* _this;
+	WeakReference<SlicingTool*> _this;
 
 	operator const SlicingTool*();
 

@@ -67,7 +67,8 @@ void LairGroupImplementation::finalize() {
 void LairGroupImplementation::_initializeImplementation() {
 	_setClassHelper(LairGroupHelper::instance());
 
-	_serializationHelperMethod();
+	_this = NULL;
+
 	_serializationHelperMethod();
 }
 

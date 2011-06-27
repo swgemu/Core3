@@ -285,7 +285,7 @@ public:
 
 	SuiManager* getSuiManager();
 
-	ZoneProcessServer* _this;
+	WeakReference<ZoneProcessServer*> _this;
 
 	operator const ZoneProcessServer*();
 

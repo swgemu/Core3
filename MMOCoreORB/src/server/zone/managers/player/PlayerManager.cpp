@@ -817,7 +817,8 @@ PlayerManagerImplementation::~PlayerManagerImplementation() {
 void PlayerManagerImplementation::_initializeImplementation() {
 	_setClassHelper(PlayerManagerHelper::instance());
 
-	_serializationHelperMethod();
+	_this = NULL;
+
 	_serializationHelperMethod();
 }
 

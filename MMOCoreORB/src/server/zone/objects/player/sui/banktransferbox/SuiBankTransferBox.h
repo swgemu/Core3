@@ -135,7 +135,7 @@ public:
 
 	bool isBankTransferBox();
 
-	SuiBankTransferBox* _this;
+	WeakReference<SuiBankTransferBox*> _this;
 
 	operator const SuiBankTransferBox*();
 

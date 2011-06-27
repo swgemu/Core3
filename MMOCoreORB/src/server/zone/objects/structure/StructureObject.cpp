@@ -706,7 +706,8 @@ StructureObjectImplementation::~StructureObjectImplementation() {
 void StructureObjectImplementation::_initializeImplementation() {
 	_setClassHelper(StructureObjectHelper::instance());
 
-	_serializationHelperMethod();
+	_this = NULL;
+
 	_serializationHelperMethod();
 }
 

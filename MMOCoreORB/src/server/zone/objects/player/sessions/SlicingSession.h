@@ -195,7 +195,7 @@ private:
 	void handleContainerSlice();
 
 public:
-	SlicingSession* _this;
+	WeakReference<SlicingSession*> _this;
 
 	operator const SlicingSession*();
 

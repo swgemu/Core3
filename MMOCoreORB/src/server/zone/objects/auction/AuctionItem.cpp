@@ -653,7 +653,8 @@ void AuctionItemImplementation::finalize() {
 void AuctionItemImplementation::_initializeImplementation() {
 	_setClassHelper(AuctionItemHelper::instance());
 
-	_serializationHelperMethod();
+	_this = NULL;
+
 	_serializationHelperMethod();
 }
 

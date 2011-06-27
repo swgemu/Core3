@@ -235,7 +235,8 @@ void ActiveAreaImplementation::finalize() {
 void ActiveAreaImplementation::_initializeImplementation() {
 	_setClassHelper(ActiveAreaHelper::instance());
 
-	_serializationHelperMethod();
+	_this = NULL;
+
 	_serializationHelperMethod();
 }
 

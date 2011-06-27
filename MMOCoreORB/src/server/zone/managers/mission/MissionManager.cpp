@@ -495,7 +495,8 @@ void MissionManagerImplementation::finalize() {
 void MissionManagerImplementation::_initializeImplementation() {
 	_setClassHelper(MissionManagerHelper::instance());
 
-	_serializationHelperMethod();
+	_this = NULL;
+
 	_serializationHelperMethod();
 }
 

@@ -112,7 +112,8 @@ void DelayedBuffImplementation::finalize() {
 void DelayedBuffImplementation::_initializeImplementation() {
 	_setClassHelper(DelayedBuffHelper::instance());
 
-	_serializationHelperMethod();
+	_this = NULL;
+
 	_serializationHelperMethod();
 }
 

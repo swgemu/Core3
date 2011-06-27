@@ -105,7 +105,7 @@ public:
 
 	void setMissionObjective(ReconMissionObjective* mission);
 
-	MissionReconActiveArea* _this;
+	WeakReference<MissionReconActiveArea*> _this;
 
 	operator const MissionReconActiveArea*();
 

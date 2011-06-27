@@ -103,7 +103,8 @@ void LootManagerImplementation::finalize() {
 void LootManagerImplementation::_initializeImplementation() {
 	_setClassHelper(LootManagerHelper::instance());
 
-	_serializationHelperMethod();
+	_this = NULL;
+
 	_serializationHelperMethod();
 }
 

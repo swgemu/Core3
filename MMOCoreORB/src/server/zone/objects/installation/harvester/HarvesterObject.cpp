@@ -143,7 +143,8 @@ void HarvesterObjectImplementation::finalize() {
 void HarvesterObjectImplementation::_initializeImplementation() {
 	_setClassHelper(HarvesterObjectHelper::instance());
 
-	_serializationHelperMethod();
+	_this = NULL;
+
 	_serializationHelperMethod();
 }
 

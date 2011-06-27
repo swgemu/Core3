@@ -163,7 +163,7 @@ public:
 
 	ElevatorTerminal* getElevatorDown();
 
-	ElevatorTerminal* _this;
+	WeakReference<ElevatorTerminal*> _this;
 
 	operator const ElevatorTerminal*();
 

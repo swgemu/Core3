@@ -378,7 +378,7 @@ public:
 
 	unsigned int getZoneCRC();
 
-	Zone* _this;
+	WeakReference<Zone*> _this;
 
 	operator const Zone*();
 
