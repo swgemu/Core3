@@ -1,7 +1,6 @@
-print("rill")
 rill = LootGroup:new {
 	
 	
 }
 
-LootGroups:addLootTemplate(rill, "rill")
+LootGroups:addLootGroupTemplate(rill, "rill")

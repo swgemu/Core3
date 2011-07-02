@@ -20,10 +20,12 @@ public:
 	virtual ~LootGroupMap();
 
 	void initialize();
-private:
 
+private:
+	//LUA
 	void registerFunctions();
 	void registerGlobals();
+	static int includeFile(lua_State* L);
 	static int addLootGroupTemplate(lua_State* L);
 };
 

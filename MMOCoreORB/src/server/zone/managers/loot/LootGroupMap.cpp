@@ -34,13 +34,21 @@ void LootGroupMap::initialize() {
 void LootGroupMap::registerFunctions() {
 	//lua generic
 	lua_register(lua->getLuaState(), "addLootGroupTemplate", addLootGroupTemplate);
+	lua_register(lua->getLuaState(), "includeFile", includeFile);
 }
 
 void LootGroupMap::registerGlobals() {
 
 }
 
+int LootGroupMap::includeFile(lua_State* L) {
+	String filename = Lua::getStringParameter(L);
+
+	Lua::runFile("scripts/loot/" + filename, L);
+
+	return 0;
+}
+
 int LootGroupMap::addLootGroupTemplate(lua_State* L) {
 
-	int o;
 }

@@ -1,7 +1,4 @@
-LootGroup = {
-	templatePath = ""
-	
-}
+LootGroup = { }
 
 function LootGroup:new (o)
 	o = o or { }
@@ -16,7 +13,7 @@ function LootGroups:addLootGroupTemplate(obj, file)
 	if (obj == nil) then
 		print("null template specified for " .. file)
 	else
-		addTemplate(file, obj)
+		addLootGroupTemplate(file, obj)
 	end
 end
 

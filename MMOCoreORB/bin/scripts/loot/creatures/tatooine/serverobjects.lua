@@ -1,1 +1,1 @@
-includeFile("loot/creatures/tatooine/rill.lua") 
+includeFile("creatures/tatooine/rill.lua") 
