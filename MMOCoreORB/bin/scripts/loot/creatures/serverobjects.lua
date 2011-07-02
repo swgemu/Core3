@@ -1,0 +1,13 @@
+print("creatures")
+includeFile("creatures/all/serverobjects.lua") 
+includeFile("creatures/corellia/serverobjects.lua") 
+includeFile("creatures/dantooine/serverobjects.lua") 
+includeFile("creatures/dathomir/serverobjects.lua") 
+includeFile("creatures/endor/serverobjects.lua") 
+includeFile("creatures/misc/serverobjects.lua") 
+includeFile("creatures/naboo/serverobjects.lua") 
+includeFile("creatures/rori/serverobjects.lua") 
+includeFile("creatures/talus/serverobjects.lua") 
+includeFile("creatures/tatooine/serverobjects.lua") 
+includeFile("creatures/yavin4/serverobjects.lua") 
+

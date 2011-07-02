@@ -13,10 +13,10 @@
 #include "server/zone/managers/crafting/CraftingManager.h"
 #include "server/zone/managers/templates/TemplateManager.h"
 
-
 void LootManagerImplementation::initialize() {
 
 	lua = new Lua();
+	lua->init();
 
 	lootGroupMap.setNullValue(NULL);
 	lootGroupMap.setNoDuplicateInsertPlan();
@@ -35,8 +35,7 @@ void LootManagerImplementation::initialize() {
 }
 
 bool LootManagerImplementation::loadConfigFile() {
-	return true;
-	//return lua->runFile("scripts/managers/loot_manager.lua");
+	return lua->runFile("scripts/managers/loot_manager.lua");
 }
 
 bool LootManagerImplementation::loadConfigData() {

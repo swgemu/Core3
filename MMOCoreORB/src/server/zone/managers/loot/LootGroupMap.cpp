@@ -27,6 +27,7 @@ void LootGroupMap::initialize() {
 	registerFunctions();
 	registerGlobals();
 
+	lua->runFile("scripts/loot/lootgroup.lua");
 	lua->runFile("scripts/loot/serverobjects.lua");
 }
 
@@ -41,4 +42,5 @@ void LootGroupMap::registerGlobals() {
 
 int LootGroupMap::addLootGroupTemplate(lua_State* L) {
 
+	int o;
 }

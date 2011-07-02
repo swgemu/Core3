@@ -1,0 +1,13 @@
+print("otherobjects")
+includeFile("all/serverobjects.lua") 
+includeFile("corellia/serverobjects.lua") 
+includeFile("dantooine/serverobjects.lua") 
+includeFile("dathomir/serverobjects.lua") 
+includeFile("endor/serverobjects.lua") 
+includeFile("misc/serverobjects.lua") 
+includeFile("naboo/serverobjects.lua") 
+includeFile("rori/serverobjects.lua") 
+includeFile("talus/serverobjects.lua") 
+includeFile("tatooine/serverobjects.lua") 
+includeFile("yavin4/serverobjects.lua") 
+

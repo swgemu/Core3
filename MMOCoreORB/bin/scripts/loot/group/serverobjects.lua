@@ -1,2 +1,0 @@
---includeFile("creature/serverobjects.lua") 
-

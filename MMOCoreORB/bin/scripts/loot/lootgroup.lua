@@ -23,5 +23,3 @@ end
 function getLootGroupTemplate(crc)
 	return LootGroups[crc]
 end
-
-includeFile("serverobjects.lua")
