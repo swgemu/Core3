@@ -46,7 +46,7 @@ which carries forward this exception.
 
 int ContainerComponent::canAddObject(SceneObject* sceneObject, SceneObject* object, int containmentType, String& errorDescription) {
 	if (sceneObject == object) {
-		errorDescription = "@container_error_message:container02";
+		errorDescription = "@container_error_message:container02"; //You cannot add something to itself.
 
 		return TransferErrorCode::CANTADDTOITSELF;
 	}
@@ -61,14 +61,14 @@ int ContainerComponent::canAddObject(SceneObject* sceneObject, SceneObject* obje
 			String childArrangement = object->getArrangementDescriptor(i);
 
 			if (slottedObjects->contains(childArrangement)) {
-				errorDescription = "@container_error_message:container04";
+				errorDescription = "@container_error_message:container04"; //This slot is already occupied.
 
 				return TransferErrorCode::SLOTOCCUPIED;
 			}
 		}
 	} else if (containmentType == -1) {
 		if (containerObjects->size() >= sceneObject->getContainerVolumeLimit()) {
-			errorDescription = "@container_error_message:container03";
+			errorDescription = "@container_error_message:container03"; //This container is full.
 
 			return TransferErrorCode::CONTAINERFULL;
 		}

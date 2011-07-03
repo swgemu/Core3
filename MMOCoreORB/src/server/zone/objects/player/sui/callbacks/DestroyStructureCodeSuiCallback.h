@@ -10,6 +10,7 @@
 
 #include "server/zone/objects/player/sui/SuiCallback.h"
 #include "server/zone/objects/player/sessions/DestroyStructureSession.h"
+#include "server/zone/managers/structure/StructureManager.h"
 
 
 class DestroyStructureCodeSuiCallback : public SuiCallback {
@@ -36,18 +37,7 @@ public:
 			return;
 		}
 
-		//Start a task to handle this????
-
-		//ManagedReference<SceneObject*> deed = structureManager->destroyStructure();
-
-		//if (deed == NULL) {
-			//player->sendSystemMessage("@player_structure:structure_destroyed"); //Structure destroyed.
-			//cancelSession();
-			//return;
-		//}
-
-		//Return the deed
-		session->cancelSession();
+		session->destroyStructure();
 	}
 };
 

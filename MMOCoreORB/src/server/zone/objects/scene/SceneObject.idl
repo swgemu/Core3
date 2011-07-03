@@ -1385,6 +1385,10 @@ class SceneObject extends QuadTreeEntry implements Logger {
 		return objectMenuComponent;
 	}
 	
+	public boolean isContainerFull() {
+		return containerVolumeLimit <= containerObjects.size();
+	}
+	
 	public boolean isShuttleInstallation() {
 		return gameObjectType == SHUTTLEINSTALLATION;
 	}

@@ -100,23 +100,21 @@ class StructureManager extends ManagedService implements Logger {
 	/**
 	 * Destroys the structure after the confirmation of the player.
 	 * All items still in the structure will be deleted from the database. If the maintenance requirements are met, it is to be redeeded.
-	 * pre: player locked, structure locked
-	 * post: player locked, structure deleted*
-	 * @param player The player who confimed structure destruction.
+	 * pre: structure locked
+	 * post: structure deleted*
 	 * @param structure The structure that is being destroyed.
 	 */
-	public native int destroyStructure(PlayerCreature player, StructureObject structureObject);
+	public native int destroyStructure(StructureObject structureObject);
 	
 	/**
 	 * Redeeds the structure, returning it to the player in deed form with any surplus maintenance and power attached.
 	 * This should occur after a destroy confirm, but before the structure has been completely destroyed.
 	 * pre: player locked, building locked
 	 * post: player locked, building locked
-	 * @param player The player who is redeeding the structure.
-	 * @param building The building being redeeded.
+	 * @param creature The creatureObject who is redeeding the structure.
 	 * @param destroy Should the structure be destroyed after the deed is retrieved?
 	 */
-	public native int redeedStructure(PlayerCreature player, StructureObject structureObject, boolean destroy = true);
+	public native int redeedStructure(CreatureObject creature);
 	
 	public native int declareResidence(PlayerCreature player, StructureObject structureObject);
 	

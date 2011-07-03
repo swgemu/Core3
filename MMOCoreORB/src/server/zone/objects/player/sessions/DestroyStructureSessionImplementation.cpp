@@ -6,6 +6,7 @@
  */
 
 #include "DestroyStructureSession.h"
+#include "server/zone/Zone.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/player/PlayerCreature.h"
 #include "server/zone/objects/player/sui/inputbox/SuiInputBox.h"
@@ -95,4 +96,14 @@ int DestroyStructureSessionImplementation::sendDestroyCode() {
 	player->sendMessage(sui->generateMessage());
 
 	return 0;
+}
+
+int DestroyStructureSessionImplementation::destroyStructure() {
+	creatureObject->sendSystemMessage("@player_structure:processing_destruction"); //Processing confirmed structure destruction...
+
+	if (structureObject == NULL || structureObject->getZone() == NULL)
+		return cancelSession();
+
+	StructureManager* structureManager = structureObject->getZone()->getStructureManager();
+	structureManager->redeedStructure(creatureObject);
 }

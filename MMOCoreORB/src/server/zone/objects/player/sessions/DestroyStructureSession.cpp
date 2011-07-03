@@ -16,7 +16,7 @@
  *	DestroyStructureSessionStub
  */
 
-enum {RPC_ISDESTROYCODE__INT_ = 6,RPC_INITIALIZESESSION__,RPC_SENDDESTROYCODE__,RPC_CANCELSESSION__,RPC_CLEARSESSION__};
+enum {RPC_ISDESTROYCODE__INT_ = 6,RPC_INITIALIZESESSION__,RPC_SENDDESTROYCODE__,RPC_DESTROYSTRUCTURE__,RPC_CANCELSESSION__,RPC_CLEARSESSION__,RPC_GETSTRUCTUREOBJECT__};
 
 DestroyStructureSession::DestroyStructureSession(CreatureObject* creature, StructureObject* structure) : Facade(DummyConstructorParameter::instance()) {
 	DestroyStructureSessionImplementation* _implementation = new DestroyStructureSessionImplementation(creature, structure);
@@ -71,6 +71,19 @@ int DestroyStructureSession::sendDestroyCode() {
 		return _implementation->sendDestroyCode();
 }
 
+int DestroyStructureSession::destroyStructure() {
+	DestroyStructureSessionImplementation* _implementation = (DestroyStructureSessionImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_DESTROYSTRUCTURE__);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return _implementation->destroyStructure();
+}
+
 int DestroyStructureSession::cancelSession() {
 	DestroyStructureSessionImplementation* _implementation = (DestroyStructureSessionImplementation*) _getImplementation();
 	if (_implementation == NULL) {
@@ -95,6 +108,19 @@ int DestroyStructureSession::clearSession() {
 		return method.executeWithSignedIntReturn();
 	} else
 		return _implementation->clearSession();
+}
+
+StructureObject* DestroyStructureSession::getStructureObject() {
+	DestroyStructureSessionImplementation* _implementation = (DestroyStructureSessionImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_GETSTRUCTUREOBJECT__);
+
+		return (StructureObject*) method.executeWithObjectReturn();
+	} else
+		return _implementation->getStructureObject();
 }
 
 DistributedObjectServant* DestroyStructureSession::_getImplementation() {
@@ -291,6 +317,11 @@ int DestroyStructureSessionImplementation::clearSession() {
 	return 0;
 }
 
+StructureObject* DestroyStructureSessionImplementation::getStructureObject() {
+	// server/zone/objects/player/sessions/DestroyStructureSession.idl():  		return structureObject;
+	return structureObject;
+}
+
 /*
  *	DestroyStructureSessionAdapter
  */
@@ -311,11 +342,17 @@ Packet* DestroyStructureSessionAdapter::invokeMethod(uint32 methid, DistributedM
 	case RPC_SENDDESTROYCODE__:
 		resp->insertSignedInt(sendDestroyCode());
 		break;
+	case RPC_DESTROYSTRUCTURE__:
+		resp->insertSignedInt(destroyStructure());
+		break;
 	case RPC_CANCELSESSION__:
 		resp->insertSignedInt(cancelSession());
 		break;
 	case RPC_CLEARSESSION__:
 		resp->insertSignedInt(clearSession());
+		break;
+	case RPC_GETSTRUCTUREOBJECT__:
+		resp->insertLong(getStructureObject()->_getObjectID());
 		break;
 	default:
 		return NULL;
@@ -336,12 +373,20 @@ int DestroyStructureSessionAdapter::sendDestroyCode() {
 	return ((DestroyStructureSessionImplementation*) impl)->sendDestroyCode();
 }
 
+int DestroyStructureSessionAdapter::destroyStructure() {
+	return ((DestroyStructureSessionImplementation*) impl)->destroyStructure();
+}
+
 int DestroyStructureSessionAdapter::cancelSession() {
 	return ((DestroyStructureSessionImplementation*) impl)->cancelSession();
 }
 
 int DestroyStructureSessionAdapter::clearSession() {
 	return ((DestroyStructureSessionImplementation*) impl)->clearSession();
+}
+
+StructureObject* DestroyStructureSessionAdapter::getStructureObject() {
+	return ((DestroyStructureSessionImplementation*) impl)->getStructureObject();
 }
 
 /*

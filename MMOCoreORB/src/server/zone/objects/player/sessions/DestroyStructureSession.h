@@ -86,9 +86,13 @@ public:
 
 	int sendDestroyCode();
 
+	int destroyStructure();
+
 	int cancelSession();
 
 	int clearSession();
+
+	StructureObject* getStructureObject();
 
 	DistributedObjectServant* _getImplementation();
 
@@ -133,9 +137,13 @@ public:
 
 	int sendDestroyCode();
 
+	int destroyStructure();
+
 	int cancelSession();
 
 	int clearSession();
+
+	StructureObject* getStructureObject();
 
 	WeakReference<DestroyStructureSession*> _this;
 
@@ -186,9 +194,13 @@ public:
 
 	int sendDestroyCode();
 
+	int destroyStructure();
+
 	int cancelSession();
 
 	int clearSession();
+
+	StructureObject* getStructureObject();
 
 };
 

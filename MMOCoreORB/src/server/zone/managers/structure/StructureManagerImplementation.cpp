@@ -62,6 +62,7 @@
 #include "server/zone/objects/region/CityRegion.h"
 
 #include "server/zone/objects/player/sessions/PlaceStructureSession.h"
+#include "server/zone/objects/player/sessions/DestroyStructureSession.h"
 
 void StructureManagerImplementation::loadPlayerStructures() {
 
@@ -403,15 +404,10 @@ StructureObject* StructureManagerImplementation::placeStructure(CreatureObject* 
 	return structureObject;
 }
 
-int StructureManagerImplementation::destroyStructure(PlayerCreature* player, StructureObject* structureObject) {
-	Zone* zone = player->getZone();
-
-	if (zone == NULL)
-		return 0;
-
+int StructureManagerImplementation::destroyStructure(StructureObject* structureObject) {
 	float x = structureObject->getPositionX();
 	float y = structureObject->getPositionY();
-	float z = structureObject->getZone()->getHeight(x, y);
+	float z = zone->getHeight(x, y);
 
 	if (structureObject->isBuildingObject()) {
 		ManagedReference<BuildingObject*> buildingObject = (BuildingObject*) structureObject;
@@ -429,7 +425,7 @@ int StructureManagerImplementation::destroyStructure(PlayerCreature* player, Str
 				ManagedReference<SceneObject*> obj = cellObject->getContainerObject(j);
 
 				if (obj->isPlayerCreature()) {
-					ManagedReference<PlayerCreature*> playerCreature = (PlayerCreature*) obj.get();
+					PlayerCreature* playerCreature = (PlayerCreature*) obj.get();
 
 					playerCreature->teleport(x, z, y, 0);
 				}
@@ -437,78 +433,20 @@ int StructureManagerImplementation::destroyStructure(PlayerCreature* player, Str
 		}
 	}
 
-	structureObject->removeFromZone();
+	//Get the owner of the structure, and remove the structure from their possession.
+	ManagedReference<SceneObject*> owner = zone->getZoneServer()->getObject(structureObject->getOwnerObjectID());
 
-	//int lotsRemaining = player->getLotsRemaining();
+	if (owner != NULL) {
+		ManagedReference<SceneObject*> ghost = owner->getSlottedObject("ghost");
 
-	//if (!player->getPlayerObject()->isPrivileged())
-		//player->setLotsRemaining(lotsRemaining + structureObject->getLotSize());
-
-	//If the deed object id is not 0, then the deed wasn't reclaimed.
-	//NOTICE: This could potentially give an erroneous message if the deed never existed when the structure was placed.
-	if (structureObject->getDeedObjectID() != 0)
-		player->sendSystemMessage("@player_structure:structure_destroyed"); //Structure destroyed.
-	else
-		player->sendSystemMessage("@player_structure:deed_reclaimed"); //Structure destroyed and deed reclaimed.
-
-	if (player->getDeclaredResidence() == structureObject)
-		player->setDeclaredResidence(NULL);
-
-	structureObject->destroyObjectFromDatabase(true);
-
-	return 0;
-}
-
-int StructureManagerImplementation::redeedStructure(PlayerCreature* player, StructureObject* structureObject, bool destroy) {
-	ZoneServer* zoneServer = player->getZoneServer();
-
-	int surplusMaintenance = structureObject->getSurplusMaintenance();
-	int redeedCost = structureObject->getRedeedCost();
-
-	ManagedReference<SceneObject*> obj = zoneServer->getObject(structureObject->getDeedObjectID());
-
-	if (obj != NULL && obj->isDeedObject()) {
-		Deed* deed = (Deed*) obj.get();
-
-		if (surplusMaintenance >= redeedCost) {
-			//Enough surplus maintenance exists to redeed the structure.
-			ManagedReference<SceneObject*> inventory = player->getSlottedObject("inventory");
-
-			if (inventory != NULL) {
-				if (!inventory->hasFullContainerObjects()) {
-					//There is room in the inventory for the deed, set its values and put it in the inventory.
-					if (deed->isBuildingDeed()) {
-						BuildingDeed* buildingDeed = (BuildingDeed*) deed;
-
-						buildingDeed->setSurplusMaintenance(surplusMaintenance - redeedCost);
-					} else if (deed->isInstallationDeed()) {
-						InstallationDeed* installationDeed = (InstallationDeed*) deed;
-
-						installationDeed->setSurplusMaintenance(surplusMaintenance - redeedCost);
-
-						if (structureObject->isInstallationObject())
-							installationDeed->setSurplusPower(((InstallationObject*) structureObject)->getSurplusPower());
-					}
-
-					deed->sendTo(player, true);
-					inventory->addObject(deed, -1, true);
-
-					//Since we have retrieved the deed, set the structures deed id to 0 so that it doesn't get deleted from the database.
-					structureObject->setDeedObjectID(0);
-				} else {
-					//The deed cant be returned to them because their inventory is full. Abort the deletion of the structure here.
-					player->sendSystemMessage("@player_structure:inventory_full"); //This installation can not be redeeded because your inventory does not have room to put the deed.
-					return 1;
-				}
-			}
-		} else {
-			//Not enough surplus maintenance existed to redeed the structure, destroy the deed but continue with structure destruction.
-			deed->destroyObjectFromDatabase(true);
+		if (ghost != NULL && ghost->isPlayerObject()) {
+			PlayerObject* playerObject = (PlayerObject*) ghost.get();
+			playerObject->removeOwnedStructure(structureObject);
 		}
 	}
 
-	if (destroy)
-		destroyStructure(player, structureObject);
+	structureObject->removeFromZone();
+	structureObject->destroyObjectFromDatabase(true);
 
 	return 0;
 }
@@ -727,4 +665,37 @@ SceneObject* StructureManagerImplementation::getInRangeParkingGarage(SceneObject
 	}
 
 	return NULL;
+}
+
+int StructureManagerImplementation::redeedStructure(CreatureObject* creature) {
+	ManagedReference<DestroyStructureSession*> session = dynamic_cast<DestroyStructureSession*>(creature->getActiveSession(SessionFacadeType::DESTROYSTRUCTURE));
+
+	if (session == NULL)
+		return 0;
+
+	ManagedReference<StructureObject*> structureObject = session->getStructureObject();
+
+	if (structureObject == NULL)
+		return 0;
+
+	//Get the deed back.
+	ManagedReference<Deed*> deed = dynamic_cast<Deed*>(zone->getZoneServer()->getObject(structureObject->getDeedObjectID()));
+
+	if (deed != NULL) {
+		creature->sendSystemMessage("@player_structure:deed_reclaimed"); //Structure destroyed and deed reclaimed.
+
+		ManagedReference<SceneObject*> inventory = creature->getSlottedObject("inventory");
+
+		if (inventory == NULL || inventory->isContainerFull()) {
+			creature->sendSystemMessage("@player_structure:inventory_full"); //This installation can not be redeeded because your inventory does not have room to put the deed.
+			creature->sendSystemMessage("@player_structure:deed_reclaimed_failed"); //Structure destroy and deed reclaimed FAILED!
+			return session->cancelSession();
+		}
+	} else {
+		creature->sendSystemMessage("@player_structure:structure_destroyed"); //Structured destroyed.
+	}
+
+	destroyStructure(structureObject);
+
+	return session->cancelSession();
 }

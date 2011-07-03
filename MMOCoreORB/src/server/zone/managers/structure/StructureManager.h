@@ -164,9 +164,9 @@ public:
 
 	StructureObject* placeStructure(CreatureObject* creature, const String& structureTemplatePath, float x, float y, int angle);
 
-	int destroyStructure(PlayerCreature* player, StructureObject* structureObject);
+	int destroyStructure(StructureObject* structureObject);
 
-	int redeedStructure(PlayerCreature* player, StructureObject* structureObject, bool destroy = true);
+	int redeedStructure(CreatureObject* creature);
 
 	int declareResidence(PlayerCreature* player, StructureObject* structureObject);
 
@@ -224,9 +224,9 @@ public:
 
 	StructureObject* placeStructure(CreatureObject* creature, const String& structureTemplatePath, float x, float y, int angle);
 
-	int destroyStructure(PlayerCreature* player, StructureObject* structureObject);
+	int destroyStructure(StructureObject* structureObject);
 
-	int redeedStructure(PlayerCreature* player, StructureObject* structureObject, bool destroy = true);
+	int redeedStructure(CreatureObject* creature);
 
 	int declareResidence(PlayerCreature* player, StructureObject* structureObject);
 
@@ -285,9 +285,9 @@ public:
 
 	StructureObject* placeStructure(CreatureObject* creature, const String& structureTemplatePath, float x, float y, int angle);
 
-	int destroyStructure(PlayerCreature* player, StructureObject* structureObject);
+	int destroyStructure(StructureObject* structureObject);
 
-	int redeedStructure(PlayerCreature* player, StructureObject* structureObject, bool destroy);
+	int redeedStructure(CreatureObject* creature);
 
 	int declareResidence(PlayerCreature* player, StructureObject* structureObject);
 
