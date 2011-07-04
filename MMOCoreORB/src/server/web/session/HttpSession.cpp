@@ -8,14 +8,12 @@
 #include "HttpSession.h"
 #include "../WebServer.h"
 
-HttpSession::HttpSession(const struct mg_request_info *request_info) {
+HttpSession::HttpSession() {
 	// TODO Auto-generated constructor stub
 	authenticated = false;
 
 	request = new HttpRequest();
 	response = new HttpResponse();
-
-	update(request_info);
 }
 
 HttpSession::~HttpSession() {

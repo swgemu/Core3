@@ -170,6 +170,10 @@ void ZoneServerImplementation::initialize() {
 
 	stringIdManager = StringIdManager::instance();
 
+	lootManager = new LootManager(craftingManager, objectManager);
+	lootManager->deploy("LootManager");
+	lootManager->initialize();
+
 	creatureTemplateManager = CreatureTemplateManager::instance();
 	creatureTemplateManager->loadTemplates();
 
@@ -250,10 +254,6 @@ void ZoneServerImplementation::startManagers() {
 
 	forageManager = new ForageManager(_this);
 	forageManager->deploy();
-
-	lootManager = new LootManager(craftingManager, objectManager);
-	lootManager->deploy("LootManager");
-	lootManager->initialize();
 
 	guildManager = new GuildManager(_this, processor);
 	guildManager->deploy("GuildManager");

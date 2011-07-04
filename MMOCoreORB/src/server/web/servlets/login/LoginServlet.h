@@ -15,7 +15,8 @@ public:
 	LoginServlet(String context);
 	virtual ~LoginServlet();
 
-	void processRequest(HttpRequest* request, HttpResponse* response);
+	void handleGet(HttpRequest* request, HttpResponse* response);
+	void handlePost(HttpRequest* request, HttpResponse* response);
 };
 
 #endif /* LOGINSERVLET_H_ */

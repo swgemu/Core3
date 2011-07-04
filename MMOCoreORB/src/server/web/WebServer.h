@@ -56,8 +56,6 @@
 #include "WebCredentials.h"
 #include "session/HttpSession.h"
 
-//#include "../zone/objects/tangible/attachment/Attachment.h"
-
 class WebServer : public Singleton<WebServer>, public Logger, public Object {
 private:
 	ManagedReference<ZoneServer*> zoneServer;
@@ -89,6 +87,9 @@ public:
 	static void* uriHandler(enum mg_event event,
 		    struct mg_connection *conn,
 		    const struct mg_request_info *request_info);
+
+	bool authorize(String username, String password, uint64 ipaddress);
+
 private:
 
 	void init();
@@ -99,11 +100,10 @@ private:
 
 	void mongooseMgrInit();
 
-	bool authorize(String username, String password, String ipaddress);
 
 	void* handleRequest(struct mg_connection *conn, const struct mg_request_info *request_info);
 
-	HttpSession* getSession(const struct mg_request_info *request_info);
+	HttpSession* getSession(struct mg_connection *conn, const struct mg_request_info *request_info);
 
 	bool validateAccess(long remoteIp);
 

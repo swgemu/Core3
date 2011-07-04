@@ -13,13 +13,23 @@
 #include "../HttpResponse.h"
 
 class Servlet : Logger {
+private:
+	String context;
+
 public:
 	Servlet(String context);
 	virtual ~Servlet();
 
-	virtual void processRequest(HttpRequest* request, HttpResponse* response) = 0;
+	virtual void handleGet(HttpRequest* request, HttpResponse* response) = 0;
+
+	virtual void handlePost(HttpRequest* request, HttpResponse* response) = 0;
 
 	void handleRequest(struct mg_connection *conn, HttpRequest* request, HttpResponse* response);
+
+	String getContext() {
+		return context;
+	}
+
 private:
 	void outputResponse(struct mg_connection *conn, HttpResponse* response);
 

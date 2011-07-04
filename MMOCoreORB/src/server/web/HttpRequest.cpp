@@ -37,12 +37,40 @@ void HttpRequest::update(const struct mg_request_info *request_info) {
 	statusCode = (short) request_info->status_code;
 	ssl = request_info->is_ssl == 1;
 
-	updateHeaders(request_info->http_headers);
+	headers.removeAll();
+	for(int i = 0; i < request_info->num_headers; ++i) {
+		headers.put(request_info->http_headers[i].name, request_info->http_headers[i].value);
+	}
 }
 
-void HttpRequest::updateHeaders(const struct mg_request_info::mg_header incomingheaders[]) {
-	headers.removeAll();
+void HttpRequest::updatePostData(String data) {
 
+	parameters.removeAll();
+
+	StringTokenizer tokenizer(data);
+	tokenizer.setDelimeter("&");
+
+	while(tokenizer.hasMoreTokens()) {
+		String nextPair;
+		tokenizer.getStringToken(nextPair);
+
+		StringTokenizer pair(nextPair);
+		pair.setDelimeter("=");
+
+		if(pair.hasMoreTokens()) {
+			String key;
+			pair.getStringToken(key);
+
+			if(pair.hasMoreTokens()) {
+				String value;
+				pair.getStringToken(value);
+
+				if(!pair.hasMoreTokens()) {
+					parameters.put(key, value);
+				}
+			}
+		}
+	}
 }
 
 String HttpRequest::getBaseContext() {

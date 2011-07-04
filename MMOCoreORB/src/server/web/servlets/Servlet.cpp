@@ -5,11 +5,13 @@
  *      Author: kyle
  */
 
-#include "../WebServer.h"
 #include "Servlet.h"
 #include "../mongoose/mongoose.h"
+#include "../WebServer.h"
 
-Servlet::Servlet(String context) {
+Servlet::Servlet(String contxt) {
+
+	context = contxt;
 
 	setLogging(true);
 	setLoggingName("Webserver:" + context);
@@ -25,10 +27,20 @@ Servlet::~Servlet() {
 
 void Servlet::handleRequest(struct mg_connection *conn, HttpRequest* request, HttpResponse* response) {
 
-	processRequest(request, response);
+	if(request->getRequestMethod() == "GET") {
+
+		handleGet(request, response);
+
+	} else if (request->getRequestMethod() == "POST") {
+
+		handlePost(request, response);
+
+	} else {
+
+		error("Error: Webserver doesn't handle request type:" + request->getRequestMethod());
+	}
 
 	outputResponse(conn, response);
-
 }
 
 void Servlet::outputResponse(struct mg_connection *conn, HttpResponse* response) {

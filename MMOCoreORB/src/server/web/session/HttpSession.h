@@ -33,7 +33,7 @@ private:
 	String user;
 
 public:
-    HttpSession(const struct mg_request_info *request_info);
+    HttpSession();
 	virtual ~HttpSession();
 
 	void update(const struct mg_request_info *request_info);

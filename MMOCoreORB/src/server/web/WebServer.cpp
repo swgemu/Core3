@@ -193,7 +193,7 @@ void WebServer::mongooseMgrInit() {
 		"access_log_file", webLog,
 		"listening_ports", ports,
 		"enable_directory_listing", "no",
-		"document_root", "../",
+		"document_root", "../doc/www",
 		NULL
 	};
 
@@ -232,20 +232,27 @@ void* WebServer::handleRequest(struct mg_connection *conn, const struct mg_reque
 		return (void*)1;
 	}
 
-	HttpSession* session = getSession(request_info);
+	HttpSession* session = getSession(conn, request_info);
 
+	Servlet* servlet = contexts.get(session->getRequest()->getBaseContext());
+
+	/// If the session isn't valid, only the login servlet is Accessable
 	if(!validateSession(session)) {
+		servlet = contexts.get("login");
+	}
 
-		contexts.get("login")->handleRequest(conn, session->getRequest(), session->getResponse());
+	/// If it's a CSS request
+	if(session->getRequest()->getUri().indexOf(".css") == session->getRequest()->getUri().length() - 4) {
+		return 0;
+	}
+
+	if(servlet != NULL) {
+
+		servlet->handleRequest(conn, session->getRequest(), session->getResponse());
 
 	} else {
 
-		Servlet* servlet = contexts.get(session->getRequest()->getBaseContext());
-
-		if(servlet != NULL)
-			servlet->handleRequest(conn, session->getRequest(), session->getResponse());
-		else
-			displayNotFound(conn);
+		displayNotFound(conn);
 	}
 
 	return (void*)1;
@@ -256,7 +263,7 @@ void* WebServer::handleRequest(struct mg_connection *conn, const struct mg_reque
  * Find existing session, or create new one if one doesn't exist
  * or has timed out
  */
-HttpSession* WebServer::getSession(const struct mg_request_info *request_info) {
+HttpSession* WebServer::getSession(struct mg_connection *conn, const struct mg_request_info *request_info) {
 
 	HttpSession* session = NULL;
 
@@ -265,24 +272,38 @@ HttpSession* WebServer::getSession(const struct mg_request_info *request_info) {
 
 		if(session->hasExpired()) {
 			activeSessions.drop(request_info->remote_ip);
-			System::out << "Deleting session for " << ipLongToString(request_info->remote_ip) << endl;
-			//info("Deleting session for " + ipLongToString(request_info->remote_ip));
+			info("Deleting session for " + ipLongToString(request_info->remote_ip));
 			delete session;
 		}
-		else {
-			session->update(request_info);
-			System::out << "Updating session for " << ipLongToString(request_info->remote_ip) << endl;
-			//info("Updating session for " + ipLongToString(request_info->remote_ip));
-			return session;
-		}
+
+	} else {
+
+		session = new HttpSession();
+		activeSessions.put(request_info->remote_ip, session);
+		info("New session created for " + ipLongToString(request_info->remote_ip));
+
 	}
 
+	session->update(request_info);
 
-	session = new HttpSession(request_info);
+	/// Get Post Data
+	int length = Integer::valueOf(session->getRequest()->getHeader("Content-Length")) + 1;
 
-	activeSessions.put(request_info->remote_ip, session);
-	System::out << "New session created for " << ipLongToString(request_info->remote_ip) << endl;
-	//info("New session created for " + ipLongToString(request_info->remote_ip));
+	/// Ensure no stack corruption
+	if(length < 1000) {
+
+		char postData [length];
+
+		mg_read(conn, &postData, length);
+
+		postData[length - 1] = 0;
+
+		session->getRequest()->updatePostData(String(postData));
+
+	} else {
+		error("Post data length was too long" + length);
+	}
+	info("Updated session for " + ipLongToString(request_info->remote_ip));
 
 	return session;
 }
@@ -333,7 +354,7 @@ void WebServer::displayLogin(StringBuffer* out) {
 	out->append("Please login");
 }
 
-bool WebServer::authorize(String username, String password, String ipaddress) {
+bool WebServer::authorize(String username, String password, uint64 ipaddress) {
 
 	Account* account = loginServer->getAccountManager()->validateAccountCredentials(NULL, username, password);
 
@@ -350,7 +371,8 @@ bool WebServer::authorize(String username, String password, String ipaddress) {
 	}
 
 	WebCredentials* credentials = authorizedUsers.get(username);
-	if(credentials->contains(ipaddress))
+
+	if(credentials->contains(ipLongToString((long)ipaddress)))
 		return true;
 	else
 		return false;

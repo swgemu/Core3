@@ -26,9 +26,13 @@ private:
 	short remotePort;
 	short statusCode;
 	bool ssl;
-	Vector<HttpHeader*> headers;
+	String userData;
 
 	Vector<String> contexts;
+
+	VectorMap<String, String> headers;
+
+	VectorMap<String, String> parameters;
 
 public:
 	HttpRequest();
@@ -38,9 +42,35 @@ public:
 
 	String getBaseContext();
 
-private:
+	String getUri() {
+		return uri;
+	}
 
-	void updateHeaders(const struct mg_request_info::mg_header incomingheaders[]);
+	String getRequestMethod() {
+		return requestMethod;
+	}
+
+	String getHeader(String key) {
+		if(headers.contains(key))
+			return headers.get(key);
+
+		return "";
+	}
+
+	String getParameter(String key) {
+		if(parameters.contains(key))
+			return parameters.get(key);
+
+		return "";
+	}
+
+	uint64 getRemoteIp() {
+		return remoteIp;
+	}
+
+	void updatePostData(String data);
+
+private:
 
 };
 
