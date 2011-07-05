@@ -17,10 +17,35 @@ public:
 
 	virtual void parse(Chunk* chunk) = 0;
 
-	template<typename V>
+	/*template<typename V>
 	void getValue(V& out) {
 		throw Exception("No valid type specified.");
+	}*/
+
+	virtual void getValue(SortedVector<String>& out) {
+		throw Exception("No valid type specified.");
 	}
+
+	virtual void getValue(String& out) {
+		throw Exception("No valid type specified.");
+	}
+
+	virtual void getValue(int& out) {
+		throw Exception("No valid type specified.");
+	}
+
+	virtual void getValue(uint32& out) {
+		throw Exception("No valid type specified.");
+	}
+
+	virtual void getValue(float& out) {
+		throw Exception("No valid type specified.");
+	}
+
+	virtual void getValue(bool& out) {
+		throw Exception("No valid type specified.");
+	}
+
 
 	virtual byte getType() = 0;
 
@@ -33,6 +58,8 @@ class DataTableCellString : public DataTableCell {
 public:
 	DataTableCellString() {
 	}
+
+	void getValue(SortedVector<String>& out);
 
 	void parse(Chunk* chunk) {
 		chunk->readString(value);

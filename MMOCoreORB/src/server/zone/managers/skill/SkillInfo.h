@@ -67,7 +67,7 @@ public:
 	void parseFromDataTableRow(DataTableRow* row) {
 		try {
 			row->getValue(0, skillName);
-			row->getValue(1, parentSkill);
+			//row->getValue(1, parentSkill);
 			row->getValue(2, graphType);
 			row->getValue(3, godOnly);
 			row->getValue(4, isTitle);
