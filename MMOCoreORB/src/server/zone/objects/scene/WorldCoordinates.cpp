@@ -8,7 +8,7 @@
 #include "WorldCoordinates.h"
 #include "SceneObject.h"
 
-WorldCoordinates::WorldCoordinates() {
+WorldCoordinates::WorldCoordinates() : Object() {
 
 }
 
@@ -27,7 +27,7 @@ WorldCoordinates& WorldCoordinates::operator=(const WorldCoordinates& c) {
 	return *this;
 }
 
-WorldCoordinates::WorldCoordinates(SceneObject* obj) {
+WorldCoordinates::WorldCoordinates(SceneObject* obj) : Object() {
 	point = obj->getPosition();
 
 	SceneObject* parent = obj->getParent();
@@ -36,7 +36,7 @@ WorldCoordinates::WorldCoordinates(SceneObject* obj) {
 		cell = parent;
 }
 
-WorldCoordinates::WorldCoordinates(const Vector3& position, SceneObject* parent) {
+WorldCoordinates::WorldCoordinates(const Vector3& position, SceneObject* parent) : Object() {
 	point = position;
 
 	if (parent != NULL && parent->isCellObject())

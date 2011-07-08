@@ -49,7 +49,7 @@ public:
 		return *this;
 	}
 
-	void read(FileInputStream& fileStream, int offset) {
+	void read(FileInputStream* fileStream, int offset) {
 
 	}
 
@@ -57,7 +57,7 @@ public:
 	 * Uncompresses a block of data and returns it in a byte buffer.
 	 * @param fileStream FileInputStream that has been advanced to the position of the compressedData and will be read for the compressedSize
 	 */
-	byte* uncompress(FileInputStream& fileStream) {
+	byte* uncompress(FileInputStream* fileStream) {
 		byte* uncompressedData = new byte[uncompressedSize];
 
 		switch (compressionType) {
@@ -65,7 +65,7 @@ public:
 		{
 			byte* compressedData = new byte[compressedSize];
 
-			fileStream.read(compressedData, compressedSize);
+			fileStream->read(compressedData, compressedSize);
 
 			int result = zlib::uncompress(uncompressedData, &uncompressedSize, compressedData, compressedSize);
 
@@ -74,7 +74,7 @@ public:
 			break;
 		case 0: //Data is uncompressed
 		default:
-			fileStream.read(uncompressedData, uncompressedSize);
+			fileStream->read(uncompressedData, uncompressedSize);
 		}
 
 		return uncompressedData;

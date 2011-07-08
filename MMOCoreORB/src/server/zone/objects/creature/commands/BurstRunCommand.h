@@ -144,7 +144,7 @@ public:
 
 		uint32 retreatCRC = String("retreat").hashCode();
 
-		if (creature->getRunSpeed() > CreatureObject::DEFAULTRUNSPEED) {
+		if (creature->getRunSpeed() > CreatureObjectImplementation::DEFAULTRUNSPEED) {
 
 			if (!creature->hasBuff(retreatCRC)) {
 

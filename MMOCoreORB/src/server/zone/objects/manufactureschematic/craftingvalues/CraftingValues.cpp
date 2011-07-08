@@ -44,6 +44,8 @@ which carries forward this exception.
 
 #include "CraftingValues.h"
 
+float CraftingValues::VALUENOTFOUND = -999999;
+
 CraftingValues::CraftingValues() {
 	EMPTY = "";
 	experimentalValuesMap.setNullValue(NULL);

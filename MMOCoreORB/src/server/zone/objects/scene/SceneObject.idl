@@ -89,7 +89,7 @@ import server.zone.objects.area.ActiveArea;
 include server.zone.objects.scene.components.ZoneComponent;
 include server.zone.objects.scene.components.ObjectMenuComponent;
 include server.zone.objects.scene.components.ContainerComponent;
-import server.zone.objects.region.CityRegion;
+include server.zone.objects.region.CityRegion;
 
 class SceneObject extends QuadTreeEntry implements Logger {
 	protected transient ZoneProcessServer server;

@@ -638,7 +638,7 @@ void WeatherManagerImplementation::weatherInfo(PlayerCreature* player) {
 		player->sendSystemMessage("weatherChangeEvent is NULL.");
 	else if (weatherChangeEvent->isScheduled()) {
 		executionTime = Core::getTaskManager()->getNextExecutionTime(weatherChangeEvent, executionTime);
-		output << "weatherChangeEvent is scheduled to run in " << abs(executionTime.miliDifference() / 1000) << " seconds.";
+		output << "weatherChangeEvent is scheduled to run in " << abs((float)executionTime.miliDifference() / 1000) << " seconds.";
 		player->sendSystemMessage(output.toString());
 		output.deleteAll();
 	} else
@@ -649,7 +649,7 @@ void WeatherManagerImplementation::weatherInfo(PlayerCreature* player) {
 		player->sendSystemMessage("sandstormTickEvent is NULL.");
 	else if (sandstormTickEvent->isScheduled()) {
 		executionTime = Core::getTaskManager()->getNextExecutionTime(sandstormTickEvent, executionTime);
-		output << "sandstormTickEvent is scheduled to run in " << abs(executionTime.miliDifference() / 1000) << " seconds.";
+		output << "sandstormTickEvent is scheduled to run in " << abs((float)executionTime.miliDifference() / 1000) << " seconds.";
 		player->sendSystemMessage(output.toString());
 		output.deleteAll();
 	} else

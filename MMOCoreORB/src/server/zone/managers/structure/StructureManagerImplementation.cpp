@@ -460,7 +460,7 @@ String StructureManagerImplementation::getTimeString(uint32 timestamp) {
 	StringBuffer str;
 
 	for (int i = 3; i > -1; --i) {
-		values[i] = floor(timestamp / intervals[i]);
+		values[i] = floor((float)timestamp / intervals[i]);
 		timestamp -= values[i] * intervals[i];
 
 		if (values[i] > 0) {

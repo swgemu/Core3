@@ -24,8 +24,9 @@ public:
 	}
 
 	void unpackFile(const String& file) {
-		TreeFile treeFile(this);
-		treeFile.read(file);
+		TreeFile* treeFile = new TreeFile(this);
+		treeFile->read(file);
+		delete treeFile;
 	}
 
 	void addRecord(const String& path, TreeFileRecord* record) {

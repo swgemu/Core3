@@ -18,7 +18,6 @@
 #include "server/zone/managers/templates/TemplateManager.h"
 #include "server/zone/managers/objectcontroller/ObjectController.h"
 #include "server/zone/templates/SharedObjectTemplate.h"
-#include "engine/orb/DistributedHelperObjectMap.h"
 #include "UpdateModifiedObjectsThread.h"
 #include "server/chat/ChatManager.h"
 #include "UpdateModifiedObjectsTask.h"

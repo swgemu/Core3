@@ -77,7 +77,7 @@ public:
 		unknownInt = par.unknownInt;
 		positionX = par.positionX;
 		positionY = par.positionY;
-		positionZ - par.positionZ;
+		positionZ = par.positionZ;
 		color = par.color;
 		active = par.active;
 

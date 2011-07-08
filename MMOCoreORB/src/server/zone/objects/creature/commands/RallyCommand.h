@@ -84,7 +84,7 @@ public:
 
 		int chance = 30;
 
-		if (!System::random(100) > chance)
+		if (System::random(100) > chance)
 			player->sendSystemMessage("@cbt_spam:rally_fail_single");
 		else
 			if (!doRally(player, group))

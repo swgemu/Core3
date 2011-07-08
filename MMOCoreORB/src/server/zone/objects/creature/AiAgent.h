@@ -549,7 +549,7 @@ public:
 	void doMovement();
 
 protected:
-	bool findNextPosition(float maxDistance, WorldCoordinates& nextPosition);
+	bool findNextPosition(float maxDistance, WorldCoordinates* nextPosition);
 
 public:
 	virtual void doAwarenessCheck(Coordinate& start, unsigned long long time, CreatureObject* target);

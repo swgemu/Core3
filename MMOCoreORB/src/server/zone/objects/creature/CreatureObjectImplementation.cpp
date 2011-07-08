@@ -96,6 +96,8 @@ which carries forward this exception.
 #include "professions/SkillBox.h"
 #include "server/zone/objects/player/sessions/EntertainingSession.h"
 
+float CreatureObjectImplementation::DEFAULTRUNSPEED = 5.376;
+
 void CreatureObjectImplementation::initializeTransientMembers() {
 	TangibleObjectImplementation::initializeTransientMembers();
 

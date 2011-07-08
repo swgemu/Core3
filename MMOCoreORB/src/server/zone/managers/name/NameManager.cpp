@@ -222,7 +222,7 @@ const String NameManager::makeCreatureName(bool surname) {
 	bool lastName = surname;
 	bool inLastName = false;
 	int nameLength = 3 + System::random(3);
-	char name[nameLength];
+	char* name = (char*) malloc(sizeof(char) * (nameLength + 1));//new char[nameLength + 1];
 
 	while (true) {
 		int x = 0;
@@ -243,6 +243,9 @@ const String NameManager::makeCreatureName(bool surname) {
 				if (lastName && x == nameLength) {
 					name[x] = ' ';
 					nameLength += 4 + System::random(3);
+
+					name = (char*) realloc(name, nameLength + 1);
+
 					lastName = false;
 					inLastName = true;
 				} else {
@@ -257,17 +260,22 @@ const String NameManager::makeCreatureName(bool surname) {
 		if (!isProfane(name))
 			break;
 	}
+	
+	String ret(name);
 
-	return String(name);
+	//delete [] name;
+	free(name);
+
+	return ret;
 }
 
 const String NameManager::makeResourceName(bool isOrganic) {
 	int nameLength = 4 + System::random(6);
-	char name[nameLength];
+	char* name = new char[nameLength + 1];
+
+	int x = 0;
 
 	while (true) {
-		int x = 0;
-
 		if (System::random(2) == 1 && nameLength > 5 && !isOrganic) {
 			x = addPrefix(name);
 		} else {
@@ -281,7 +289,7 @@ const String NameManager::makeResourceName(bool isOrganic) {
 			if (x < nameLength) {
 				name[x] = chooseNextLetter(name[x-1], name[x-2]);
 			} else {
-				if (System::random(1) == 1 && !isOrganic && !isVowel(name[x-1])	&& name[x-1] != 'q')
+				if (System::random(1) == 1 && !isOrganic && !isVowel(name[x-1])	&& name[x-1] != 'q' && x < nameLength - 4)
 					addSuffix(name, x);
 				else
 					name[x] = '\0';
@@ -296,7 +304,11 @@ const String NameManager::makeResourceName(bool isOrganic) {
 			break;
 	}
 
-	return String(name);
+	String ret(name);
+
+	delete [] name;
+
+	return ret;
 }
 
 char NameManager::chooseNextLetter(const char lastLetter, const char letterBeforeLast) {

@@ -72,13 +72,13 @@ public:
 		return recordName.compareTo(fileName);
 	}
 
-	void read(FileInputStream& fileStream) {
-		fileStream.read((byte*) &checksum, 4);
-		fileStream.read((byte*) &uncompressedSize, 4);
-		fileStream.read((byte*) &fileOffset, 4);
-		fileStream.read((byte*) &compressionType, 4);
-		fileStream.read((byte*) &compressedSize, 4);
-		fileStream.read((byte*) &nameOffset, 4);
+	void read(FileInputStream* fileStream) {
+		fileStream->read((byte*) &checksum, 4);
+		fileStream->read((byte*) &uncompressedSize, 4);
+		fileStream->read((byte*) &fileOffset, 4);
+		fileStream->read((byte*) &compressionType, 4);
+		fileStream->read((byte*) &compressedSize, 4);
+		fileStream->read((byte*) &nameOffset, 4);
 	}
 
 	uint32 readFromBuffer(const byte* buffer) {
@@ -123,7 +123,7 @@ public:
 		db.setUncompressedSize(uncompressedSize);
 		db.setCompressionType(compressionType);
 
-		byte* buffer = db.uncompress(fileStream);
+		byte* buffer = db.uncompress(&fileStream);
 
 		fileStream.close();
 

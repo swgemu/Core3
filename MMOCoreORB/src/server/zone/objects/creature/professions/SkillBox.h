@@ -334,7 +334,6 @@ namespace server {
 
 		friend class SkillManager;
 		friend class server::zone::managers::professions::ProfessionManager;
-		friend class CreatureObjectMessage1;
 
 	};
 

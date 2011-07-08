@@ -28,7 +28,7 @@ WaypointChatParameter::WaypointChatParameter(const WaypointChatParameter& par) :
 	planetCRC = par.planetCRC;
 	positionX = par.positionX;
 	positionY = par.positionY;
-	positionZ - par.positionZ;
+	positionZ = par.positionZ;
 	color = par.color;
 	active = par.active;
 	unknownInt = par.unknownInt;

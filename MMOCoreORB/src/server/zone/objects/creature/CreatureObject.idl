@@ -202,7 +202,7 @@ class CreatureObject extends TangibleObject {
 	public static final int MALE = 0;
 	public static final int FEMALE = 1;
 	
-	public static final float DEFAULTRUNSPEED = 5.376;
+	public static transient float DEFAULTRUNSPEED;
 	
 	public static final unsigned long DEAD_TOO_LONG = 1800000; //30 minutes - How long can someone be dead and still be resuscitated in Miliseconds 
 

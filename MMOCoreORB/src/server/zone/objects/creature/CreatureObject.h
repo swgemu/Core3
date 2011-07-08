@@ -272,8 +272,6 @@ public:
 
 	static const int FEMALE = 1;
 
-	static const float DEFAULTRUNSPEED = 5.376;
-
 	unsigned static const long long DEAD_TOO_LONG = 1800000;
 
 	CreatureObject();
@@ -925,7 +923,7 @@ public:
 
 	static const int FEMALE = 1;
 
-	static const float DEFAULTRUNSPEED = 5.376;
+	static float DEFAULTRUNSPEED;
 
 	unsigned static const long long DEAD_TOO_LONG = 1800000;
 

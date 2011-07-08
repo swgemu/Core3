@@ -147,20 +147,6 @@ class ActiveArea;
 
 using namespace server::zone::objects::area;
 
-namespace server {
-namespace zone {
-namespace objects {
-namespace region {
-
-class CityRegion;
-
-} // namespace region
-} // namespace objects
-} // namespace zone
-} // namespace server
-
-using namespace server::zone::objects::region;
-
 #include "engine/core/ManagedObject.h"
 
 #include "engine/util/Facade.h"
@@ -186,6 +172,8 @@ using namespace server::zone::objects::region;
 #include "server/zone/objects/scene/components/ObjectMenuComponent.h"
 
 #include "server/zone/objects/scene/components/ContainerComponent.h"
+
+#include "server/zone/objects/region/CityRegion.h"
 
 #include "engine/log/Logger.h"
 

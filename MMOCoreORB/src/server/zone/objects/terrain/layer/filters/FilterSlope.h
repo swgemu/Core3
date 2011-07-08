@@ -12,13 +12,15 @@
 #include "../ProceduralRule.h"
 #include "FilterProceduralRule.h"
 
+#define defaultValue 1.5707964
+
 class FilterSlope : public ProceduralRule<'FSLP'>, public FilterProceduralRule {
 	float minAngle; // +32
 	float max; // +40
 	float maxAngle; // +28
 	float min; //+36
 
-	const static float defaultValue = 1.5707964;
+	//const static float defaultValue = 1.5707964;
 
 public:
 	FilterSlope() {

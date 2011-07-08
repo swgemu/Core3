@@ -326,7 +326,7 @@ void ArmorObjectImplementation::calculateSpecialProtection(
 
 	for (int i = 0; i <= 8; ++i) {
 
-		int type = pow(2,i);
+		int type = pow((float)2,i);
 
 		subtitle = getStringType(type);
 		value = craftingValues->getCurrentValue(subtitle);

@@ -50,5 +50,5 @@ int LootGroupMap::includeFile(lua_State* L) {
 }
 
 int LootGroupMap::addLootGroupTemplate(lua_State* L) {
-
+	return 0;
 }

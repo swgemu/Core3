@@ -26,8 +26,6 @@
 
 #include "server/zone/objects/area/ActiveArea.h"
 
-#include "server/zone/objects/region/CityRegion.h"
-
 /*
  *	SceneObjectStub
  */

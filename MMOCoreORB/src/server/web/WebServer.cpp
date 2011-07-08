@@ -292,13 +292,15 @@ HttpSession* WebServer::getSession(struct mg_connection *conn, const struct mg_r
 	/// Ensure no stack corruption
 	if(length < 1000) {
 
-		char postData [length];
+		char* postData = new char[length];
 
 		mg_read(conn, &postData, length);
 
 		postData[length - 1] = 0;
 
 		session->getRequest()->updatePostData(String(postData));
+
+		delete [] postData;
 
 	} else {
 		error("Post data length was too long" + length);

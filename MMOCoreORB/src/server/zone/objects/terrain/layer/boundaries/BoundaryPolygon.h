@@ -14,6 +14,7 @@
 #include "Boundary.h"
 #include "../../ProceduralTerrainAppearance.h"
 
+#include <limits>
 
 class BoundaryPolygon : public ProceduralRule<'BPOL'>,  public Boundary {
 	Vector<Point2D*> vertices;
@@ -211,7 +212,7 @@ public:
 				float k;
 
 				if ( fabs(dx) < eps ){
-					k = INFINITY;	// math.h
+					k = std::numeric_limits<float>::infinity();	// math.h
 				} else {
 					k = dy/dx;
 				}

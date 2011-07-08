@@ -58,8 +58,8 @@ void FactionManager::awardFactionStanding(PlayerCreature* player, const String& 
 	if (!factionMap.contains(factionName))
 		return;
 
-	float lose = floor(130); //TODO: Find the equation for this.
-	float gain = floor(lose / 2); //you gain half of what you lose
+	float lose = floor((float)130); //TODO: Find the equation for this.
+	float gain = floor((float)lose / 2); //you gain half of what you lose
 
 	Faction faction = factionMap.get(factionName);
 	SortedVector<String>* enemies = faction.getEnemies();

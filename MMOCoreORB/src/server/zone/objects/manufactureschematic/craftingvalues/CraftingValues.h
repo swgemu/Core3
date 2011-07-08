@@ -58,7 +58,7 @@ class CraftingValues : public Serializable, public Logger {
 
 public:
 
-	static const float VALUENOTFOUND = -999999;
+	static float VALUENOTFOUND;
 
 	static const int NORMAL = 1;
 	static const int HIDDEN = 2;

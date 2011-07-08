@@ -186,7 +186,7 @@ void FishingManagerImplementation::fishingStep(PlayerCreature* player) {
 	int event = System::random(50);
 	if (pole != NULL) {
 		if (pole->getQuality() != 0)
-			event += (int)ceil(pole->getQuality() / 20);
+			event += (int)ceil((float)pole->getQuality() / 20);
 	}
 
 
@@ -416,7 +416,7 @@ void FishingManagerImplementation::success(PlayerCreature* player, int fish, Sce
 
 				if (pole != NULL) {
 					if (pole->getQuality() != 0)
-						quality += (int)ceil(pole->getQuality() / 25);
+						quality += (int)ceil((float)pole->getQuality() / 25);
 				}
 				int factor = 1;
 

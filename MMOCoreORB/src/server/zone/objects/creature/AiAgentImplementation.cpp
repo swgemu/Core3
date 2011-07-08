@@ -529,7 +529,7 @@ void AiAgentImplementation::checkNewAngle() {
 	}
 }
 
-bool AiAgentImplementation::findNextPosition(float maxDistance, WorldCoordinates& nextPosition) {
+bool AiAgentImplementation::findNextPosition(float maxDistance, WorldCoordinates* nextPosition) {
 	Vector3 thisWorldPos = getWorldPosition();
 
 	float newSpeed = runSpeed;
@@ -542,12 +542,12 @@ bool AiAgentImplementation::findNextPosition(float maxDistance, WorldCoordinates
 	newSpeed *= updateTicks;
 
 	float newSpeedSquared = newSpeed * newSpeed;
-	float newPositionX, newPositionZ, newPositionY;
+	float newPositionX = 0, newPositionZ = 0, newPositionY = 0;
 	PathFinderManager* pathFinder = PathFinderManager::instance();
 
 	bool found = false;
 	float dist = 0;
-	float dx, dy;
+	float dx = 0, dy = 0;
 	ManagedReference<SceneObject*> cellObject;
 
 
@@ -587,7 +587,7 @@ bool AiAgentImplementation::findNextPosition(float maxDistance, WorldCoordinates
 				Vector3 noHeightNextWorldPos(nextWorldPos.getX(), nextWorldPos.getY(), 0);
 				dist = noHeightNextWorldPos.squaredDistanceTo(noHeightWorldPos);
 
-				nextPosition = *coord;
+				*nextPosition = *coord;
 				found = true;
 
 				if (dist <= maxDistance * maxDistance && cellObject == parent) {
@@ -618,36 +618,36 @@ bool AiAgentImplementation::findNextPosition(float maxDistance, WorldCoordinates
 						float distanceToTravel = dist - (pathDistance - newSpeedSquared);
 
 						if (distanceToTravel <= 0) {
-							newPositionX = nextPosition.getX();
-							newPositionY = nextPosition.getY();
+							newPositionX = nextPosition->getX();
+							newPositionY = nextPosition->getY();
 						} else {
 							float rest = Math::sqrt(distanceToTravel);
 
 							dist = Math::sqrt(dist);
 
 							if (dist != 0 && !isnan(dist)) {
-								dx = nextPosition.getX() - oldCoordinates.getX();
-								dy = nextPosition.getY() - oldCoordinates.getY();
+								dx = nextPosition->getX() - oldCoordinates.getX();
+								dy = nextPosition->getY() - oldCoordinates.getY();
 
 								newPositionX = oldCoordinates.getX() + (rest * (dx / dist));// (newSpeed * (dx / dist));
 								newPositionY = oldCoordinates.getY() + (rest * (dy / dist)); //(newSpeed * (dy / dist));
 							} else {
-								newPositionX = nextPosition.getX();
-								newPositionY = nextPosition.getY();
+								newPositionX = nextPosition->getX();
+								newPositionY = nextPosition->getY();
 							}
 						}
 
-						if (nextPosition.getCell() == NULL) {
+						if (nextPosition->getCell() == NULL) {
 							newPositionZ = getZone()->getHeight(newPositionX, newPositionY);
 							//newPositionZ = nextPosition.getZ();
 						} else {
-							newPositionZ = nextPosition.getZ();
+							newPositionZ = nextPosition->getZ();
 						}
 					} else {
 						//info("setting nextPosition point", true);
-						newPositionX = nextPosition.getX();
-						newPositionY = nextPosition.getY();
-						newPositionZ = nextPosition.getZ();
+						newPositionX = nextPosition->getX();
+						newPositionY = nextPosition->getY();
+						newPositionZ = nextPosition->getZ();
 					}
 				}
 			}
@@ -662,10 +662,10 @@ bool AiAgentImplementation::findNextPosition(float maxDistance, WorldCoordinates
 		delete path;
 	}
 
-	nextPosition.setX(newPositionX);
-	nextPosition.setY(newPositionY);
-	nextPosition.setZ(newPositionZ);
-	nextPosition.setCell(cellObject);
+	nextPosition->setX(newPositionX);
+	nextPosition->setY(newPositionY);
+	nextPosition->setZ(newPositionZ);
+	nextPosition->setCell(cellObject);
 
 	return found;
 }
@@ -725,7 +725,7 @@ void AiAgentImplementation::doMovement() {
 
 	WorldCoordinates nextPosition;
 
-	bool found = findNextPosition(maxDistance, nextPosition);
+	bool found = findNextPosition(maxDistance, &nextPosition);
 
 	if (!found) {
 		currentSpeed = 0;

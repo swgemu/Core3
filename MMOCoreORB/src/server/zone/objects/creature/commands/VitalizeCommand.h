@@ -75,7 +75,7 @@ public:
 			Time* cdTime = player->getCooldownTime("innate_vitalize");
 
 			// Returns -time. Multiple by -1 to return positive.
-			int timeLeft = floor(cdTime->miliDifference() / 1000) *-1;
+			int timeLeft = floor((float)cdTime->miliDifference() / 1000) *-1;
 
 			stringId.setStringId("@innate:vit_wait"); // You are still recovering from you last vitalization. Command available in %DI seconds.
 			stringId.setDI(timeLeft);

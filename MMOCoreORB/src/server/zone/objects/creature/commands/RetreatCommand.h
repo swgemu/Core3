@@ -122,7 +122,7 @@ public:
 
 		uint32 crc = String("burstrun").hashCode();
 
-		if ((creature->getRunSpeed() > CreatureObject::DEFAULTRUNSPEED) && (!creature->hasBuff(crc))) {
+		if ((creature->getRunSpeed() > CreatureObjectImplementation::DEFAULTRUNSPEED) && (!creature->hasBuff(crc))) {
 			creature->sendSystemMessage("combat_effects", "burst_run_no");
 
 			return false;

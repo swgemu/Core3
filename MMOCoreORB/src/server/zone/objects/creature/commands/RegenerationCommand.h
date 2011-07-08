@@ -77,7 +77,7 @@ public:
 			Time* cdTime = player->getCooldownTime("innate_regeneration");
 
 			// Returns -time. Multiple by -1 to return positive.
-			int timeLeft = floor(cdTime->miliDifference() / 1000)*-1;
+			int timeLeft = floor((float)cdTime->miliDifference() / 1000)*-1;
 
 			stringId.setStringId("@innate:regen_wait"); // You are still recovering from your last regeneration. Command available in %DI seconds.
 			stringId.setDI(timeLeft);

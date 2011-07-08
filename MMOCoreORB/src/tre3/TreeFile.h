@@ -27,10 +27,10 @@ class TreeFile : public Logger {
 
 	Vector<Reference<TreeFileRecord*> > records;
 
-	void readHeader(FileInputStream& fileStream);
-	void readFileBlock(FileInputStream& fileStream);
-	void readNameBlock(FileInputStream& fileStream);
-	void readMD5Sums(FileInputStream& fileStream);
+	void readHeader(FileInputStream* fileStream);
+	void readFileBlock(FileInputStream* fileStream);
+	void readNameBlock(FileInputStream* fileStream);
+	void readMD5Sums(FileInputStream* fileStream);
 
 public:
 	TreeFile(TreeArchive* archive);
